@@ -1,27 +1,43 @@
 {
-    "translations": {
-      "en": {
-        "duporder": {
-          "type": "select",
-          "description": "An element is in the set, or it's not. When you write out the values for a set, it doesn't matter if you write them more than once, or what order you write them in. It's the same set.",
-          "question": "Let $P = \\{7, 11, 42\\}$. What are some other ways that you can write $P$?",
-          "answer": ["$\\{42, 11, 7\\}$", "$\\{42, 7, 7, 11\\}$"],
-          "choices": ["$\\{42, 11, 7\\}$", "$\\{42, 7\\}$", "$\\{42, 7, 7, 11\\}$","$\\{42, 7, 6, 11\\}$"]
-        },
-        "elements": {
-          "type": "multiple",
-          "description": "Set members are typically drawn from some larger population known as the base type",
-          "question": "If $P = \\{7, 11, 42\\}$, what is the base type of it's elements?",
-          "answer": ["Integers"],
-          "choices": ["Integers", "Letters", "Real Numbers"]
-        },
-        "members": {
-          "type": "select",
-          "description": "Each member of a set is either a primitive element of the base type or is a set itself.",
-          "question": "Let $P = \\{a, b, c, \\{d, e\\}, \\{f\\}\\}$. Which of the followings are an element in the set?",
-          "answer": ["$a$","$b$","$c$","$\\{d, e\\}$","$\\{f\\}$"],
-          "choices": ["$a$","$b$", "$c$", "$d$", "$e$","$\\{d\\}$","$\\{d, e\\}$","$f$","$\\{f\\}$"]
-        }
+  "translations": {
+    "en": {
+      "duporder": {
+        "type": "select",
+        "description": "An element is in the set, or it's not. When you write out the values for a set, it doesn't matter if you write them more than once, or what order you write them in. It's the same set.",
+        "question": "Let $P = \\{7, 11, 42\\}$. What are some other ways that you can write $P$?",
+        "answer": ["$\\{42, 11, 7\\}$", "$\\{42, 7, 7, 11\\}$"],
+        "choices": ["$\\{42, 11, 7\\}$", "$\\{42, 7\\}$", "$\\{42, 7, 7, 11\\}$","$\\{42, 7, 6, 11\\}$"]
+      },
+      "elements": {
+        "type": "multiple",
+        "description": "Set members are typically drawn from some larger population known as the base type",
+        "question": "If $P = \\{7, 11, 42\\}$, what is the base type of it's elements?",
+        "answer": ["Integers"],
+        "choices": ["Integers", "Letters", "Real Numbers"]
+      },
+      "members": {
+        "type": "select",
+        "description": "Each member of a set is either a primitive element of the base type or is a set itself.",
+        "question": "Let $P = \\{a, b, c, \\{d, e\\}, \\{f\\}\\}$. Which of the followings are an element in the set?",
+        "answer": ["$a$","$b$","$c$","$\\{d, e\\}$","$\\{f\\}$"],
+        "choices": ["$a$","$b$", "$c$", "$d$", "$e$","$\\{d\\}$","$\\{d, e\\}$","$f$","$\\{f\\}$"]
+      },
+      "bag": {
+        "type": "multiple",
+        "description": "A collection of elements with no order (like a set), but with duplicate-valued elements is called a <b>bag</b>. To distinguish bags from sets, we will use square brackets [] around a bag's elements.",
+        "question": "For sets, $\\{3, 4, 5, 4\\} = \\{3, 4, 5\\}$.<br/>[T/F] Bag $[3, 4, 5, 4] = [3, 4, 5]$.",
+        "answer": "False",
+        "choices": ["True", "False"],
+        "correctFeedback": ["Bags have duplicates, so repeating an element makes it different from not repeating the element."]
+      },
+      "sequence": {
+        "type": "multiple",
+        "description": "A <b>sequence</b> is a collection of elements with an order, and which may contain duplicate-valued elements. A sequence is also sometimes called a <b>tuple</b> or a <b>vector</b>. In a sequence, there is a 0th element, a 1st element, 2nd element, and so on. We will use angle brackets $$\\langle\\rangle$ to enclose the elements of a sequence.",
+        "question": "For sets, $\\{3, 4, 5\\} = \\{5, 4, 3\\}$.<br/>[T/F] Sequence $\\langle 3, 4, 5\\rangle = \\langle 5, 4, 3\\rangle$.",
+        "answer": "False",
+        "choices": ["True", "False"],
+        "correctFeedback": ["Sequences have order, so changing the order of the elements makes it a different sequence."]
       }
     }
   }
+}

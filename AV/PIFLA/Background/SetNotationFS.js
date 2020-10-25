@@ -4,7 +4,6 @@ $(document).ready(function() {
   "use strict";
   var av_name = "SetNotationFS";
   var av = new JSAV(av_name);
-
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
@@ -63,36 +62,35 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("commuteI"));
   av.step();
 
-  //frame 13
-  av.umsg(Frames.addQuestion("q17"));
+  // Frame 15
+  av.umsg(Frames.addQuestion("setdiff"));
   av.step();
 
-  //frame 14
-  av.umsg(Frames.addQuestion("q18"));
+  // Frame 16
+  av.umsg(Frames.addQuestion("setdiff2"));
   av.step();
 
-  //frame 15
-  av.umsg(Frames.addQuestion("q19"));
+  // Frame 17
+  av.umsg(Frames.addQuestion("setdiffcomm"));
   av.step();
 
-  //frame 16
-  av.umsg(Frames.addQuestion("q20"));
+  // Frame 18
+  av.umsg(Frames.addQuestion("product"));
   av.step();
 
-  //frame 17
-  av.umsg(Frames.addQuestion("q21"));
+  // Frame 19
+  av.umsg(Frames.addQuestion("productsize"));
   av.step();
 
-  //frame 18
-  av.umsg(Frames.addQuestion("q22"));
+  // Frame 20
+  av.umsg(Frames.addQuestion("powerset"));
   av.step();
 
-  //frame 19
-  av.umsg(Frames.addQuestion("q23"));
+  // Frame 21
+  av.umsg(Frames.addQuestion("powersize"));
   av.step();
 
-  //frame 20
-  av.umsg("Completed.");
-  av.step();
+  // Frame 22
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

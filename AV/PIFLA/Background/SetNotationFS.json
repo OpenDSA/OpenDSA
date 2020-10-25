@@ -147,83 +147,79 @@
         "choices": ["True", "False"],
         "correctFeedback": ["Intersection is also commutative."]
       },
-      "q17": {
+      "setdiff": {
         "type": "multiple",
-        "description": "$P\\; -\\; $Q$: difference: all elements of $set$ $P$ NOT in $set$ $Q$",
-        "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$ What is $P-Q$?",
-        "answer": "$\\{1,3\\}$",
+        "description": "$P - Q$ means set difference: all elements of set $P$ NOT in set $Q$",
+        "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$. What is $P - Q$?",
+        "answer": "$\\{1, 3\\}$",
         "choices": [
-          "$\\{1,3\\}$",
-          "$\\{1,3,5\\}$",
-          "$\\{2,3,5,6\\}$",
-          "$\\{2,4,6\\}$",
-          "$\\{1,2,3,4,6\\}$"
+          "$\\{1, 3\\}$",
+          "$\\{1, 3, 5\\}$",
+          "$\\{2, 3, 5, 6\\}$",
+          "$\\{2, 4, 6\\}$",
+          "$\\{1, 2, 3, 4, 6\\}$"
+        ],
+        "correctFeedback": ["Extra elements in $Q$ (like 2, 4, and 6 in this example) do not matter. Only the 5 matters here, it is removed from $P$ in the answer."]
+      },
+      "setdiff2": {
+        "type": "multiple",
+        "description": "$P - Q$ means set difference: all elements of set $P$ NOT in set $Q$",
+        "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$. What is $Q - P?$",
+        "answer": "$\\{2, 4, 6\\}$",
+        "choices": [
+          "$\\{1, 3\\}$",
+          "$\\{1, 3, 5\\}$",
+          "$\\{2, 3, 5, 6\\}$",
+          "$\\{2, 4, 6\\}$",
+          "$\\{1, 2, 3, 4, 6\\}$"
         ]
       },
-      "q18": {
+      "setdiffcomm": {
         "type": "multiple",
-        "description": "$P\\; -\\; $Q$: difference: all elements of $set$ $P$ NOT in $set$ $Q$",
-        "question": "Let $P$ = $\\{1, 3, 5\\}$, and $Q = \\{2, 4, 5, 6\\}$ What is $Q-P?$",
-        "answer": "$\\{2,4,6\\}$",
+        "description": "$P - Q$ means set difference: all elements of set $P$ NOT in set $Q$",
+        "question": "[T/F] $P - Q = Q - P$",
+        "answer": "False",
         "choices": [
-          "$\\{1,3\\}$",
-          "$\\{1,3,5\\}$",
-          "$\\{2,3,5,6\\}$",
-          "$\\{2,4,6\\}$",
-          "$\\{1,2,3,4,6\\}$"
+          "True",
+          "False"
+        ],
+        "correctFeedback": ["Set difference is not commutative."]
+      },
+      "product": {
+        "type": "select",
+        "description": "$P \\times Q$ means set (Cartesian) Product. This operation yields a set of ordered pairs.",
+        "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4\\}$ What is $P \\times Q$? Note that if there are 3 elements in $P$ and 2 elements in $Q$, then there must be $2 \\times 3 = 6$ elements in $P \\times Q$.",
+        "answer": ["$\\{(1, 2), (1, 4), (3, 2), (3, 4), (5, 2), (5, 4)\\}$"],
+        "choices": [
+          "$\\{(1, 2), (1, 4)\\}$",
+          "$\\{(1, 2), (1, 4), (3, 2)\\}$",
+          "$\\{(1, 4), (3, 2), (5, 2), (5, 4)\\}$",
+          "$\\{(1, 2), (1, 4), (3, 2), (3, 4), (5, 2), (5, 4)\\}$"
         ]
       },
-      "q19": {
+      "productsize": {
         "type": "multiple",
-        "description": "$P\\; -\\; $Q$: difference: all elements of $set$ $P$ NOT in $set$ $Q$",
-        "question": " Select the correct fact about the $set$ difference:",
-        "answer": "$P-Q$ ≠ $Q - P$",
-        "choices": [
-          "$P-Q$ = $Q - P$",
-          "$P-Q$ ≠ $Q - P$"
-        ]
-      },
-      "q20": {
-        "type": "multiple",
-        "description": "$P$ $x$ $Q$: Set (Cartesian) Product: yields a $set$ of ordered pairs",
-        "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4\\}$ What is $PxQ$?",
-        "answer": "$\\{(1,2),(1,4),(3,2),(3,4),(5,2),(5,4)\\}$",
-        "choices": [
-          "$\\{(1,2),(1,4)\\}$",
-          "$\\{(1,2),(1,4),(3,2)\\}$",
-          "$\\{(1,4),(3,2),(5,2),(5,4)\\}$",
-          "$\\{(1,2),(1,4),(3,2),(3,4),(5,2),(5,4)\\}$"
-        ]
-      },
-      "q21": {
-        "type": "multiple",
-        "description": "$P$ $x$ $Q$: Set (Cartesian) Product: yields a $set$ of ordered pairs",
-        "question": "Let $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4\\}$ What is $|PxQ|$?",
+        "description": "$P \\times Q$ means set (Cartesian) Product. This operation yields a set of ordered pairs.",
+        "question": "For $P = \\{1, 3, 5\\}$, and $Q = \\{2, 4\\}$, what is $|P \\times Q|$?",
         "answer": "6",
+        "choices": ["1", "2", "3", "4", "5", "6", "7"]
+      },
+      "powerset": {
+        "type": "multiple",
+        "description": "The powerset of set $S$ (written $2^S$ ) is the set of all possible subsets for $S$",
+        "question": "For set $S = \\{a, b, c\\}$, what is $2^S$?",
+        "answer": "$\\{\\emptyset, \\{a\\}, \\{b\\}, \\{c\\}, \\{a, b\\}, \\{a, c\\}, \\{b, c\\}, \\{a, b, c\\}\\}$",
         "choices": [
-          "3",
-          "4",
-          "5",
-          "6",
-          "7"
+          "$\\{\\emptyset\\}$",
+          "$\\{\\emptyset, \\{a\\}, \\{b\\}, \\{c\\}, \\{a, b\\}, \\{a, c\\}, \\{b, c\\}, \\{a, b, c\\}\\}$",
+          "$\\{\\emptyset, \\{a\\}, \\{b\\}, \\{c\\}\\}$",
+          "$\\{\\emptyset, \\{a\\}, \\{b\\}, \\{c\\}, \\{a, b\\}, \\{a, c\\}\\}$"
         ]
       },
-      "q22": {
+      "powersize": {
         "type": "multiple",
-        "description": "The powerset of a $set$ $S$ (denoted $2^S$ ) is the $set$ of all possible subsets for $S$",
-        "question": " Consider the $set$ $S = \\{a,b,c\\}$. What is $2^S$?",
-        "answer": "$\\{∅, \\{a\\}, \\{b\\}, \\{c\\}, \\{a,b\\}, \\{a,c\\}, \\{b,c\\}, \\{a,b,c\\}\\}$",
-        "choices": [
-          "$\\{∅\\}$",
-          "$\\{∅, \\{a\\}, \\{b\\}, \\{c\\}, \\{a,b\\}, \\{a,c\\}, \\{b,c\\}, \\{a,b,c\\}\\}$",
-          "$\\{∅, \\{a\\}, \\{b\\}, \\{c\\}\\}$",
-          "$\\{∅, \\{a\\}, \\{b\\}, \\{c\\}, \\{a,b\\}, \\{a,c\\}\\}$"
-        ]
-      },
-      "q23": {
-        "type": "multiple",
-        "description": "The powerset of a $set$ $S$ (denoted $2^S$ ) is the $set$ of all possible subsets for $S$",
-        "question": " Consider the $set$ $S = \\{a,b,c\\}$. What is $|2^S|$?",
+        "description": "The powerset of set $S$ (written $2^S$ ) is the set of all possible subsets for $S$",
+        "question": "For set $S = \\{a, b, c\\}$, what is $|2^S|$?",
         "answer": "8",
         "choices": [
           "3",

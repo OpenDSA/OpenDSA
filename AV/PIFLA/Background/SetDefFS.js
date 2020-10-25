@@ -24,6 +24,14 @@ $(document).ready(function() {
   av.step();
 
   // Frame 5
+  av.umsg(Frames.addQuestion("bag"));
+  av.step();
+
+  // Frame 6
+  av.umsg(Frames.addQuestion("sequence"));
+  av.step();
+
+  // Frame 7
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });
