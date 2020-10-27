@@ -13,10 +13,14 @@
   <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
-  <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
-  <link rel="stylesheet" href="./css/tester.css" type="text/css" />
-  <link rel="stylesheet" href="./css/FA.css" type="text/css" />
-  <link rel="stylesheet" href="./css/multiRun.css" type="text/css" />
+  <!--link rel="stylesheet" href="./css/customPrompt.css" type="text/css" /--> <!--original line-->
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/customPrompt.css" type="text/css">
+  <!--link rel="stylesheet" href="./css/tester.css" type="text/css" /--> <!-- original line-->
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/tester.css" type="text/css">
+  <!--link rel="stylesheet" href="./css/FA.css" type="text/css" /--> <!--original line-->
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/FA.css" type="text/css">
+  <!--link rel="stylesheet" href="./css/multiRun.css" type="text/css" /--> <!--original line-->
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/multiRun.css" type="text/css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -30,7 +34,7 @@
     integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous">
   </script>
   <!--<link rel="stylesheet" href="./css/FAtoRE.css" type="text/css" />-->
-  <link rel="stylesheet" href="./css/PDAEditor.css" type="text/css" />
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/PDAEditor.css" type="text/css" /> <!--original line: ./cssPDAEditor.css -->
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script> -->
 
@@ -48,7 +52,7 @@
         <td class="headerRight" style="border:hidden;">
           <button id="helpButton"
             style="width: 20px !important; height: 20px !important; position: inherit !important;"><img
-              src="./help.png" /></button>
+              src="../../AV/OpenFLAP/help.png" /></button> <!-- original line: ./help.png-->
         </td>
       </tr>
     </table>
@@ -227,7 +231,7 @@
     <div id="multiRun"></div>
 
 
-
+    <!-- The lines below have been modified to deal with my files being in a different location. The commented line is paired with the one below it-->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="../../lib/jquery.transit.js"></script>
@@ -239,13 +243,17 @@
     <script src="../../DataStructures/FLA/serializableGraph.js"></script>
     <script src="../../lib/underscore.js"></script>
     <script src="../../DataStructures/FLA/FA.js"></script>
-    <script src="../../DataStructures/FLA/PDA.js"></script>
+    <!-- script src="../../DataStructures/FLA/PDA.js"></script -->
+    <script src="./emptyPDADataStruct.js"></script>
     <script src="../../DataStructures/FLA/Commands.js"></script>
     <script src="../../lib/html2canvas.js"></script>
-    <!--<script src="./fa/TraverseAccepter.js"></script>-->
-    <script src="./exercises/exerController/ExerciseController.js"></script>
-    <script src="./PDAEditor.js"></script>
-    <script src="./CustomPrompt.js"></script>
+    <!--<script src="./fa/TraverseAccepter.js"></script>--> <!--already commented out-->
+    <!--script src="./exercises/exerController/ExerciseController.js"></script--> <!--original line-->
+    <script src="../../AV/OpenFLAP/exercises/exerController/ExerciseController.js"></script>
+    <!-- script src="./PDAEditor.js"></script -->
+    <script src="./emptyPDA.js"></script>
+    <!--script src="./CustomPrompt.js"></script--> <!-- original line-->
+    <script src="../../AV/OpenFLAP/CustomPrompt.js"></script>
     <script type="text/javascript"></script>
   </div>
 </body>

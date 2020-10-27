@@ -74,7 +74,7 @@ $(document).ready(function () {
   //frame 15
   av.umsg(Frames.addQuestion("q15"));
   var url2 = "../../../../AV/VisFormalLang/TM/Machines/TMab.jff";
-  var graph2 = av.ds.TM({width: 600, height: 325, url: url2});
+  var graph2 = av.ds.TM({top:250, width: 600, height: 325, url: url2});
   av.step();
 
   //frame 16
@@ -91,26 +91,22 @@ $(document).ready(function () {
   av.step();
 
   //frame 19
-  av.umsg("<i>Turing Transducers</i> <br><br>Formally: Let f be a function from $\\Sigma^*_0$ to $\\Sigma^*_1$. Turing machine $M$ is said to compute $f$ when, for any string $w\\ in \\Sigma^*_0$, if $f(w)=u$ then <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (s, \\#\\underline{w}) \\vdash^*_M (h, \\#u\\underline{\\#}) <br>for some state $h \\in F$ (that is, a Final State for $M$). <br>Such a function f is said to be a <b>Turing-computable function</b>.");
+  av.umsg("<i>Turing Transducers</i> <br><br>Formally: Let $f$ be a function from $\\Sigma^*_0$ to $\\Sigma^*_1$. Turing machine $M$ is said to compute $f$ when, for any string $w\\ in \\Sigma^*_0$, if $f(w)=u$ then <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (s, \\#\\underline{w}) \\vdash^*_M (h, \\#u\\underline{\\#}) <br>for some state $h \\in F$ (that is, a Final State for $M$). <br>Such a function f is said to be a <b>Turing-computable function</b>.");
   av.step();
 
   //frame 20
   av.umsg("Here is how we express multiple parameters: For $f(w_1, ..., w_k) = u$, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $(s, \\#\\underline{w_1}\\#w_2\\#...\\#w_k) \vdash^*_M (h, \\#u\\underline{\\#})$.");
   av.step();
 
-  //frame 8
-  av.umsg("One way to express functions on natural numbers is to represent a number using <i><b>unary notation</i></b>. (Remember, we are not concerned about what is efficient, we are concerned about what is possible.) In this case, we represent the value 0 as an empty string. <br><br> We say that <i>f:N→N<i> is computed by M if M computes $f′:{I}^∗→{I}^∗$ where <i>f′(I<sup> n</sup>)=I<sup> f(n)</sup></i> for each n ∈ N.");
+  //frame 21
+  av.umsg(Frames.addQuestion("q21"));
   av.step();
 
-  //frame 9
-  av.umsg("<b>Example</b> <br><br> Compute f(n)=n+1 for any n∈N. <br><br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;----------------------<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <i> q &nbsp; &sigma; &nbsp; &delta;(q, &sigma;)</i> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;---------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <i>q<sub>0</sub> &nbsp; I  &nbsp; (q<sub>0</sub>, I, R)</i> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <i>q<sub>i</sub> &nbsp; # &nbsp; (h, I, R)</i> <br><br> An example computation: <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (q<sub>0</sub>, # <u>I</u> I #) ⊢<sub>M</sub> (q<sub>0</sub>, # I <u>I</u> #) ⊢<sub>M</sub> (q<sub>0</sub>, # I I <u>#</u>)⊢M(h, # I I I <u>#</u>)</i>.");
-  av.step();
-
-  //frame 10
-  av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head when beginning to process input string 'II'.");
+  //frame 22
+  av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head when beginning to process input string '11'.");
   var url3 = "../../../../AV/VisFormalLang/TM/Machines/TMPlusone.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url3});
-  var tape = av.ds.tape(["#", "I", "I", "#", "#"], 470, 50, "both");
+  var tape = av.ds.tape(["#", "1", "1", "#", "#"], 470, 50, "both");
   var rect = av.g.rect(350 + xStart, 150 + yStart, 110, 110);
   var c1 = av.label("q0", {left: 355 + xStart, top: 120 + yStart});
   var c2 = av.label("q1", {left: 355 + xStart, top: 155 + yStart});
@@ -129,14 +125,14 @@ $(document).ready(function () {
   g.push(c2);
   av.step();
 
-  // frame 11
-  av.umsg("Step 1: Initially, the tape head is scanning the leftmost non-blank tape cell, and the current state is q0");
+  // frame 23
+  av.umsg(Frames.addQuestion("q23"));
   node[0].highlight();
   tape.highlightCurrent();
   av.step();
 
-  // frame 12
-  av.umsg("Step 2: The tape head shifts right one cell. The previous cell stays as 'I' and the current state remains in q0.");
+  // frame 24
+  av.umsg(Frames.addQuestion("q24"));
   g.translateX(30);
   c1.translateX(30);
   c4.translateX(30);
@@ -144,8 +140,8 @@ $(document).ready(function () {
   c2.translateX(30);
   av.step();
 
-  // frame 13
-  av.umsg("Step 3: The tape head shifts right one cell.  The previous cell stays as 'I' and the current state remains in q0.");
+  // frame 25
+  av.umsg(Frames.addQuestion("q25"));
   g.translateX(30);
   c1.translateX(30);
   c4.translateX(30);
@@ -153,12 +149,12 @@ $(document).ready(function () {
   c2.translateX(30);
   av.step();
 
-  // framw 14
-  av.umsg("Step 4: The tape head shifts right one cell.  The previous cell turns into a 'I' and the current state changes to q1.");
+  // framw 26
+  av.umsg(Frames.addQuestion("q26"));
   g.translateX(30);
   c1.translateX(30);
   c4.translateX(30);
-  tape.setValueAt(3, "I");
+  tape.setValueAt(3, "1");
   tape.moveRight();
   var newLine = av.g.line(520 + xStart, 215 + yStart, 480 + xStart, 212 + yStart,
                           {"arrow-end": "classic-wide-long"});
@@ -168,17 +164,14 @@ $(document).ready(function () {
   c2.translateX(30);
   av.step();
 
-  // frame 15
-  av.umsg("Step 5: The tape head stays on the current cell. The current state changes to q2. Since q2 is a member of the Final State set $F$, the machine immediately halts.");
+  // frame 27
+  av.umsg("Step 5: The tape head stays on the current cell. The current state changes to $q_2$. Since $q_2$ is a member of the Final State set $F$, the machine immediately halts.");
   node[1].unhighlight();
   av.g.line(520 + xStart, 220 + yStart, 480 + xStart, 242 + yStart,
               {"arrow-end": "classic-wide-long"});
   newLine.hide();
   node[2].highlight();
-  av.step();
 
-  // frame 16
-  av.umsg("")
 
   av.recorded();
 });

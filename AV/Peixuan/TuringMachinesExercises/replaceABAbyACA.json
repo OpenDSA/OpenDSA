@@ -6,8 +6,6 @@
   "randomStringLength": [0, 15],
   "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
   "hardCodeCasesCounter": 5,
-  "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
-  "generatorflag": 0,
   "expression": "\\Sigma = \\{a, b\\}",
   "description": "Write a Turing machine that replace every substring aba with aca, where___",
   "type": "description",
