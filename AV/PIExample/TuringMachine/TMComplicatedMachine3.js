@@ -32,6 +32,7 @@ $(document).ready(function () {
 
   //frame 2
   av.umsg("The secret to success in modern software development is to build up more powerful tools, especially by packaging behavior together and manipulating the packages.<br/>We can hope to build up similar capability with Turing Machines.")
+  av.step();
 
   //frame 3
   av.umsg(Frames.addQuestion("q3"));
@@ -130,10 +131,13 @@ $(document).ready(function () {
   // Curvy line1
   curvy1.show();
 
-
   av.step();
 
-  //frame
+  //frame 22
+  av.umsg(Frames.addQuestion("q22"))
+  av.step();
+
+  //frame 23
   letter1.hide();
   letter2.hide();
   curvy1.hide();
@@ -141,25 +145,28 @@ $(document).ready(function () {
   letter4 = av.label("$\\overline{\\#}$", {top: 0 + yStart, left: xleft + 115});
   letter5 = av.label("$\\#$", {top: 35 + yStart, left: xleft + 160});
   var letter6 = av.label("$M$", {top: 50 + yStart, left: xleft + 200});
-  // Curvy line2
-  curvy2.show();
-  // Horizontal arrow
   arrow1 = av.g.line(140 + xleft, 75 + yStart, 195 + xleft, 75 + yStart,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+    {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  curvy2.show();
+  // Horizontal line
+  
+  av.umsg(Frames.addQuestion("q23"));
+  av.step();
 
+  //frame 24
   arrow2 = av.g.line(260 + xleft, 10 + yStart, 260 + xleft, 100 + yStart,
-            {"stroke-width": 3});
+    {"stroke-width": 3});
 
   // Right part
   var letter7 = av.label("$>L_{\\#}$", {top: 50 + yStart, left: xleft + 300});
   var letter8 = av.label("$M$", {top: 50 + yStart, left: xleft + 400});
   // Horizontal arrow
   var arrow3 = av.g.line(340 + xleft, 75 + yStart, 395 + xleft, 75 + yStart,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+    {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.umsg(Frames.addQuestion("q24"));
   av.step();
-
-  //frame 5
-  
+    
+  //frame 25
   letter3.hide();
   letter4.hide();
   letter5.hide();
@@ -218,7 +225,7 @@ $(document).ready(function () {
                 {"stroke-width": 2, "arrow-end":"classic-wide-long"});
   av.step();
   
-  //frame 6
+  //frame 26
   letter1.hide();
   letter2.hide();
   letter3.hide();
@@ -242,7 +249,7 @@ $(document).ready(function () {
   av.umsg("<b>9.2.1.6. Turing Machine Extensions</b> <br><br> When we give extensions or new functionality to a computing system, sometimes they change something fundamental about the capabilities of the system. For example, when we add non-determinism to an algorithm, we <b>might</b> change the cost of the underlying problem from exponential to polynomial time. But, other changes do nothing fundamental. In terms of Turing machines, our concern is what the machine can do, rather than how long it takes to do it. Does non-determinism help us to solve the Halting problem? No. Likewise, the following extensions do not increase the power of Turing Machines.");
   av.step();
 
-  //frame 7
+  //frame 27
   av.umsg("&bull; <b><i>Limit the tape to be infinite in only one direction</i></b> <br><br> Our first example actually demonstrates that some limitations do not make a difference. Many textbooks on formal languages present the basic Turing Machine as having a tape that is infinite in only one direction. The folling diagram shows that we can easily simulate a tape infinite in two directions with a one-direction infinite tape. <br><br><br><br><br><br><br><br> The idea is to just bend the 2-way infinite tape in the middle, and store both directions of the tape into a single cell. This requires a greatly expanded alphabet, because we now need to be able to represent any combination of two characters. This will need more states, and probably more time. But it does not allow anything new in terms of capability.");
   ytop = 80;
   var cellwidth = 20;
@@ -314,7 +321,7 @@ $(document).ready(function () {
   av.step();
 
 
-  //frame 8
+  //frame 28
   for (var j = 0; j < clearlist1.length; j++){
     clearlist1[j].hide();
   }
@@ -379,7 +386,7 @@ $(document).ready(function () {
   av.step();
 
 
-  //frame 9
+  //frame 29
   for (var j = 0; j < clearlist1.length; j++){
     clearlist1[j].hide();
   }
