@@ -105,7 +105,7 @@
         "question":"What this machine do?",
         "answer":"Move the head right until an empty cell is found",
         "choices": ["Move the head right until an empty cell is found", "Move the head right until a non-empty cell is found"]
-      },
+      }
     }
   }
 }
