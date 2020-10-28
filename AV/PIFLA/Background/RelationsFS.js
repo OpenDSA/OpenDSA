@@ -7,97 +7,62 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("Now that you know what $set$ is, in this chapter you will learn about $relations$ in $sets$.");
+  av.umsg("Here we will define a <b>relation</b> on elements in a set, and catagorize various types of relations.");
   av.displayInit();
   
-  //frame 2
-  av.umsg(Frames.addQuestion("q1"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("tuple"));
   av.step();
   
-  //frame 3
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("binary"));
   av.step();
   
-  //frame 4
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 4
+  av.umsg(Frames.addQuestion("infix"));
   av.step();
-  //frame 5
-  av.umsg("The Following frames will define the properties of relations as follows, where $R$ is a binary relation over set $S$");
-  av.step();
-  //frame 6
-  av.umsg(Frames.addQuestion("q4"));
+
+  // Frame 5
+  av.umsg(Frames.addQuestion("relation"));
   av.step();
   
-  //frame 7
-  av.umsg(Frames.addQuestion("q5"));
+  // Frame 6
+  av.umsg("Notice that for a set with just 3 elements, there are 9 ordered pairs, any of which might be in a given relation. So there are a <b>lot</b> of possible relations. There are lots of times when we want to know something about the properties of a given relation. If a relation has the given property, this says something about which ordered pairs are or are not allowed into the relation.");
+  av.step();
+
+  // Frame 7
+  av.umsg("Here are some standard classifications for relations.<br/>$R$ is <b>reflexive</b> if $aRb$ for all $a \\in S$.<br/>$R$ is <b>irreflexive</b> if $aRa$ is not true for all $a \\in S$.<br/>$R$ is <b>symmetric</b> if whenever $aRb$, then $bRa$ for all $a, b \\in S$.<br/>$R$ is <b>antisymmetric</b> if whenever $aRb$ and $bRa$, then $a=b$ for all $a, b \\in S$.<br/>$R$ is <b>transitive</b> if whenever $aRb$ and $bRc$, then $aRc$ for all $a, b, c \\in S$.<br/><br/>The following slides will explore the significance to these catagories.");
+  av.step();
+
+  // Frame 8
+  av.umsg(Frames.addQuestion("reflex"));
   av.step();
   
-  //frame 8
-  av.umsg(Frames.addQuestion("q6"));
+  // Frame 9
+  av.umsg(Frames.addQuestion("irreflexleq"));
   av.step();
   
-  //frame 9
-  av.umsg(Frames.addQuestion("q7"));
-  av.step();
-
-  //frame 10
-  av.umsg(Frames.addQuestion("q8"));
-  av.step();
-
-  //frame 11
-  av.umsg(Frames.addQuestion("q9"));
-  av.step();
-
-  //frame 12
-  av.umsg(Frames.addQuestion("q10"));
-  av.step();
-
-  //frame 13
-  av.umsg("A $partition$ of a set $S$ is a collection of subsets that are $disjoint$ from each other and whose union is $S$. An $equivalence$ $relation$ on a set $S$ partitions the set into disjoint subsets whose elements are equivalent. ");
-  av.step();
-
-  //frame 14
-  av.umsg("The $UNION$ / $FIND$ algorithm efficiently maintains equivalence classes on a set. One application for such $disjoint$ $sets$ is the $minimum$ $cost$ $spanning$ $tree$.");
-  av.step();
-
-  //frame 15
-  av.umsg(Frames.addQuestion("q11"));
+  // Frame 10
+  av.umsg(Frames.addQuestion("irreflexle"));
   av.step();
   
-  //frame 16
-  //frame title practicing Equivalence Relations Exercise
-  //av.umsg("Practicing Equivalence Relations Exercise"); //is this the right title?
-  //av.step();
+  // Frame 11
+  av.umsg(Frames.addQuestion("symmetric"));
+  av.step();
   
-  //frame 17
-  av.umsg(Frames.addQuestion("q12"));
+  // Frame 12
+  av.umsg(Frames.addQuestion("antisymmetric"));
   av.step();
 
-  //frame 18
-  //av.umsg("Practicing: Partial Ordering");    
-  //av.step();
-
-  //frame 19
-  av.umsg("A relation is called $non-strict$ $partial$ $order$ if it is a partial order relation and reflexive in the same time.")
+  // Frame 13
+  av.umsg("Here is an interesting fact: $=$ is both symmetric and antisymmetric! How can that be? Because there is no case where $b=a$ unless $b$ and $a$ are the same, so there is no situation where an 'interesting' ordered pair gets into the relation.");
   av.step();
 
-  //frame 20
-  av.umsg("A relation is called $strict$ $partial$ $order$ If the relation is $irreflexive$ and partial order.");
+  // Frame 14
+  av.umsg(Frames.addQuestion("transitive"));
   av.step();
 
-  //frame 21
-  av.umsg("The set on which the partial order is defined is called a $partially$ $ordered$ $set$ or a $poset$.");
-  av.step();
-
-  //frame 22
-  av.umsg("Elements x and y of a set are $comparable$ under a given relation R if either xRy or yRx. Example: For the powerset of the integers, the subset operator defines a partial order (because it is antisymmetric and transitive). For example, {1,2}⊆{1,2,3}. However, sets {1, 2} and {1, 3} are not comparable by the subset operator, because neither is a subset of the other.");
-  av.step();
-
-  //frame 23
-  av.umsg("If every pair of distinct elements in a partial order are comparable, then the order is called a $total$ $order$ or $linear$ $order$.")
-  av.step();
-
-  // Frame 24
+  // Frame 15
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });
