@@ -8,8 +8,8 @@ $(document).ready(function() {
         interpret = config.interpreter, // get the interpreter
         code = config.code;
     var obj = interpret("randomJFF");
-    var pickNumber01 = Math.floor(Math.random() * 2);
-    var pickNumberab = Math.floor(Math.random() * 11);
+    var pickNumber01 = Math.floor(Math.random() * Object.keys(obj.FilenameFor01).length);
+    var pickNumberab = Math.floor(Math.random() * Object.keys(obj.FilenameForAB).length);
     var filename01 = obj.FilenameFor01;
     var filenameab = obj.FilenameForAB;
     var url01 = obj.Pathway + filename01[pickNumber01] + ".jff";
