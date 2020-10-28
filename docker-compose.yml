@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  opendsa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: opendsa:latest
+    command: ["./scripts/start.sh"]
+    volumes:
+      - .:/opendsa
+    ports:
+      - "8080:8080"

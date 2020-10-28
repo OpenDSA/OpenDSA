@@ -4,25 +4,43 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Eunoh Cho, Mostafa Mohammed
-   :topic: Sets Relations
+   :author: Cliff Shaffer, Eunoh Cho, Mostafa Mohammed
+   :satisfies: relations
+   :topic: Relations
+   :requires: set notation
 
 
-Sets and Relations
-==================
+Relations
+=========
 
 Relations
 ---------
 
-In this chapter you will learn about set and relations. After this chapter you will have full understanding of set and relations.
+Hopefully you found the material on sets in the last module fairly
+simple, and maybe familiar from previous courses.
+If you have had a discrete math class, than you are probably also
+familiar with the concept of relations.
+But unlike basic set notation, most people have a lot of trouble
+understanding the concept of a relation (many overthink the idea), and
+even more trouble with the different classifications.
+So we will cover the basics in some detail, and follow up with some
+practice exercises.
 
-.. inlineav:: RelationsFF ff
-   :links: AV/PIExample/RelationsFF.css
-   :scripts: AV/PIExample/RelationsFF.js DataStructures/PIFrames.js 
+.. inlineav:: RelationsFS ff
+   :links: AV/PIFLA/Background/RelationsFS.css
+   :scripts:  DataStructures/PIFrames.js AV/PIFLA/Background/RelationsFS.js
    :output: show
 
-Relations practice exercises
-----------------------------
+.. avembed:: Exercises/Background/SetTFrelation.html ka
+   :long_name: Relations Exercise
+
+Equivalence Classes and Partial Orders
+--------------------------------------
+
+.. inlineav:: EquivFS ff
+   :links: AV/PIFLA/Background/EquivFS.css
+   :scripts:  DataStructures/PIFrames.js AV/PIFLA/Background/EquivFS.js
+   :output: show
 
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
    :long_name: Equivalence Exercise

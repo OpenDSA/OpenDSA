@@ -6,8 +6,6 @@
   "randomStringLength": [0, 15],
   "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
   "hardCodeCasesCounter": 6,
-  "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
-  "generatorflag": 0,
   "expression": "L = \\{a^{2^n}\\mid n>0\\},  \\Sigma = \\{a\\}",
   "description": "Give a Turing Machine that accepts all strings that has a number of a’s that is a power of two.___. In other words, it implements the language in Turing Acceptable form.",
   "type": "description",

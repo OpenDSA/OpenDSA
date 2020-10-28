@@ -303,8 +303,6 @@ solutions for all subproblems
       :align: center
       :output: show
 
-   .. odsafig:: Images/knapsack4_10CAS.png
-
    The dependency graph for this problem instance, laid out in a table of
    size :math:`n × K + 1`, follows:
 
@@ -313,8 +311,6 @@ solutions for all subproblems
    :scripts: /AV/Abhishek/KnapGraphCON.js
    :align: center
    :output: show
-
-.. odsafig:: Images/knapsack_depgraphCAS.png
 
 As mentioned above, there are two approaches to actually solving the
 problem.

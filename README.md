@@ -23,13 +23,12 @@ to the repo):
 
     git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git OpenDSA
 
-Once you have cloned this repository, you will need to initialize and
-update the submodules and compile some of the libraries.
+Once you have cloned this repository, you will need to install the OpenDSA stack using Docker.
 Do the following:
 
-    make pull
+    docker-compose up
 
-[Note that this probably won't work unless you have the proper tools
+[Note that this won't work unless you have the proper tools
 installed.
 See: http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment
 

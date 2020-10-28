@@ -12,7 +12,23 @@
 Turing Machine Exercises
 ========================
 
+Exercise 1
+----------
 
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html pe
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
+
+Exercise 2
+----------
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html pe
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
+
+Exercise 3
+----------
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html pe
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
 Exercise 4
 ----------
@@ -49,4 +65,3 @@ Exercise 9
 
 .. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
    :long_name: Turing Machines Exercise
-
