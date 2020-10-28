@@ -8,30 +8,25 @@ $(document).ready(function() {
         interpret = config.interpreter, // get the interpreter
         code = config.code;
     var obj = interpret("randomJFF");
-    //var RDNumber = Math.floor(Math.random() * 4).toString();
-    //var filenameList = ["EvenBinaryDFACON", "EvenBinaryEvenOnesDFA", "DFA_noTrapState", "DFA_withTrapState", "NFA2DFA2a", "NFA2DFA2b", "NFA2DFAexample1", "NFA2DFAexample2", "NFAexample1", "NFAexample2", "NFAtoRE", "stminDFA1", "stminDFAE2"];
-    var pickNumber = Math.floor(Math.random() * 6);
-    var filename = obj.Filename;
-    var url = obj.Pathway + filename[pickNumber] + ".jff";
-    //var url = "../../../AV/Tenghui/AcceptRejectString" + RDNumber + ".jff";
-    //var url = "../../../AV/Tenghui/AcceptRejectString0.jff";
+    var pickNumber01 = Math.floor(Math.random() * Object.keys(obj.FilenameFor01).length);
+    var pickNumberab = Math.floor(Math.random() * Object.keys(obj.FilenameForAB).length);
+    var filename01 = obj.FilenameFor01;
+    var filenameab = obj.FilenameForAB;
+    var url01 = obj.Pathway + filename01[pickNumber01] + ".jff";
+    var urlab = obj.Pathway + filenameab[pickNumberab] + ".jff";
+    var inputFileArray = [url01, urlab];
     av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept any even number. You can click on any cell to see the process again starting from the clicked cell");
     av.displayInit();
+    var randomFileType = Math.floor(Math.random() * 2).toString();
+    var fileInput = obj.InputType[randomFileType].inputs;
+    var url = inputFileArray[randomFileType];
     var binaryDFA = new av.ds.FA({left: 10, url: url});
     var acceptor = new TraverseAcceptor(av, binaryDFA);
     var stringLength = Math.floor(Math.random() * 10) + 1;
     var inputString = [];
     var i;
-    var abString= ["a", "b"];
-    if (pickNumber === 0 || pickNumber === 1) {
-        for (i = 0; i < stringLength; i++) {
-            inputString.push(Math.floor(Math.random() * 2).toString());
-        }
-    }
-    else{
-        for (i = 0; i < stringLength; i++) {
-            inputString.push(abString[(Math.floor(Math.random() * 2).toString())]);
-        }
+    for (i = 0; i < stringLength; i++) {
+        inputString.push(fileInput[Math.floor(Math.random() * 2).toString()]);
     }
     acceptor.visualize([inputString],
         {left: 500});
