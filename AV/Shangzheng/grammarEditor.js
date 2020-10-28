@@ -537,6 +537,9 @@ $(document).ready(function () {
     $('#ChangeToChomsky').click(transformToChomskyForm);
     $('#ChangeToChomskyAuto').hide();
     $('#ChangeToChomskyAuto').click()
+    $('#buildUselessDependencyGraph').hide();
+    $('#buildUselessDependencyGraph').click(buildUselessDependencyGraph);
+
     $('#back').click(function () {
         if (modelDFA) { modelDFA.clear();}
         if (backup) {
@@ -576,7 +579,8 @@ $(document).ready(function () {
 
         $('#dependencyButton').hide();
         $('#uselessDependencyGraph').hide();
-
+        $('#buildUselessDependencyGraph').hide();
+        $('#buildUnitDependencyGraph').hide();
         $('#toChomskyForm').hide();
         $('#ChangeToChomsky').hide();
         $('#startTransform').hide();
@@ -1112,7 +1116,9 @@ $(document).ready(function () {
     }
 
     function showUselessDependencyGraph() {
+
         $('#uselessDependencyGraph').hide();
+        $('#buildUselessDependencyGraph').hide();
         var noUseless = removeUseless();
         var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
         m = init();
@@ -1127,6 +1133,8 @@ $(document).ready(function () {
                 break;
             }
         }
+
+
         var builtDeriveSet = [];
         var findDeriveHandler = function (index) {
             for (var i = 0; i < this._arrays.length; i++) {
@@ -1299,7 +1307,84 @@ $(document).ready(function () {
         jsav.umsg('Removing useless productions: Select variables that derive terminals.');
         m.click(findDeriveHandler);
     }
+    function buildUselessDependencyGraph() {
+        $('#uselessDependencyGraph').hide();
+        $('#buildUselessDependencyGraph').hide();
+        var noUseless = removeUseless();
+        var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
+        var derivers = {};  // variables that derive a string of terminals
+        var counter = 0;
+        var tGrammar;
+        while (findDerivable(derivers, productions)) {
+            counter++;
+            if (counter > 500) {
+                console.log(counter);
+                break;
+            }
+        }
 
+        var tArr = [].concat(productions);
+        tArr = _.filter(tArr, function(x) {
+            return x[0] in derivers && _.every(x[2], function(y) {return variables.indexOf(y) === -1 || y in derivers});
+        });
+        tArr.push(["", arrow, ""]);
+        var tProductions = {};
+        for (var i = 0; i < productions.length; i++) {
+            var vv = productions[i][0];
+            var r = productions[i][2];
+            if (vv in derivers) {
+                if (!(vv in tProductions)) {
+                    tProductions[vv] = [];
+                }
+                for (var j = 0; j < r.length; j++) {
+                    if (variables.indexOf(r[j]) !== -1 && tProductions[vv].indexOf(r[j]) === -1) {
+                        if (r[j] !== vv && r[j] in derivers){
+                            tProductions[vv].push(r[j]);
+                        }
+                    }
+                }
+            }
+        }
+
+        var tCount = 0;
+        for (var i in tProductions) {
+            tCount = tCount + tProductions[i].length;
+        }
+        var terminals = [];
+        for (var i = 0; i < variables.length; i ++) {
+            if (variables[i] in derivers) {
+                terminals.push(variables[i]);
+            }
+        }
+        modelDFA = jsav.ds.graph({layout: "layered", directed: true}); //VDG
+        $(modelDFA.element).css({top: 0, left: 300, position:'absolute'});
+        for (var i = 0; i <  terminals.length; i++) {
+            modelDFA.addNode(terminals[i]);
+        }
+        modelDFA.layout();
+
+        var nodeList = modelDFA.nodes();
+
+
+        for (var j = 0; j < productions.length; j++) {
+            var firstNode = nodeList.find(function (x) {
+                return x.value() === productions[j][0];
+            });
+            console.log(firstNode.value());
+            var secondNode = null;
+            secondNode =  nodeList.find(function (x) {
+                return productions[j][2].indexOf(x.value()) !== -1
+            });
+            if (secondNode === null) {
+                continue;
+            }
+            var newEdge = modelDFA.addEdge(firstNode,secondNode);
+            if (newEdge) {
+                modelDFA.layout();
+            }
+        }
+        $('#removeUslesspruduction').show();
+    }
     function toUselessProduction() {
         jsav.umsg("Next Step is to build the dependency graph for the grammar using the highlighted productions");
         if (modelDFA != null)
@@ -1313,6 +1398,7 @@ $(document).ready(function () {
 
         $('#toUselessProduction').hide();
         $('#uselessDependencyGraph').show();
+        $('#buildUselessDependencyGraph').show();
     }
     function uselessProduciton() {
         for (var i = 0; i < dsArray.length; i++) {
@@ -1330,7 +1416,7 @@ $(document).ready(function () {
             newArr[j] = splitedProduction;
             tempDsArray[j] = jsav.ds.array(splitedProduction, {center: false});
         }
-        modelDFA.layout();
+
         jsav.umsg("All useless productions removed");
         arr = newArr;
         dsArray = tempDsArray;
@@ -1342,6 +1428,7 @@ $(document).ready(function () {
             var dis = (30*j).toString();
             dsArray[j].css({top:"-=" + dis+ "px",relativeTo: dsArray[0]});
         }
+
         modelDFA.layout();
         $('#removeUslesspruduction').hide();
         $('#toChomskyForm').show();
@@ -1526,16 +1613,41 @@ $(document).ready(function () {
                 }
                 return true;
             }
-            if (tArr.length === fullChomsky.length && checkSame(tArr, fullChomsky)) {
+            if (tArr.length === fullChomsky.length ) {
                 jsav.umsg('All productions completed.');
                 tGrammar.element.off();
-                var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-                if (c) {
-                  attemptExport();
-                }
+                // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
+                // if (c) {
+                //   attemptExport();
+                // }
                 for (var i = 0; i < tGrammar._arrays.length; i++) {
                     tGrammar.unhighlight(i);
                 }
+                tGrammar.hide();
+                var tempDsArray = [];
+                var newArr = [];
+                for (var j = 0; j < fullChomsky.length; j++) {
+                    var splitedProduction = [];
+                    splitedProduction[0] = fullChomsky[j].split(arrow)[0];
+                    splitedProduction[1] = arrow;
+                    splitedProduction[2] = fullChomsky[j].split(arrow)[1];
+                    newArr[j] = splitedProduction;
+                    tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
+                }
+
+                for (var i = 0; i < dsArray.length; i++) {
+                    dsArray[i].hide();
+                }
+
+                for (var j = 0; j < tempDsArray.length; j++)
+                {
+                    if (j == 0) {
+                        continue;
+                    }
+                    var dis = (30*j).toString();
+                    tempDsArray[j].css({top:"-=" + dis+ "px",relativeTo: tempDsArray[0]});
+                }
+                ChomskydsArray = tempDsArray;
             }
             // tGrammar.hide();
             // var tempDsArray = [];
