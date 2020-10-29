@@ -182,7 +182,7 @@ allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
 
 # A Static-Pattern Rule for making Books
 # TODO: can remove -bb option once all py3 str encoding in odsa is debugged
-$(BOOKS): % : config/%.json min
+$(BOOKS): % : config/%.json min pyVenvCheck
 	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) $< --no-lms
 	@echo "Created an eBook in Books/: $@"
 
