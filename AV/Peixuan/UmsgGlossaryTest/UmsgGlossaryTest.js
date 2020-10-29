@@ -1,5 +1,21 @@
 (function($) {
+
   function parseGlossaries(msg){
+    if(ODSA.TP){
+      //get lti config data from server
+      var json_url = $('script[src*="/config.js"]')[0].src.replace("html/_static/config.js","lti_html/lti_config.json");
+      var json_data;
+      $.ajax({
+        url: json_url,
+        dataType: "json",
+        async: false,
+        success: function(data) {
+          json_data = data;
+        }
+      });
+      console.log(json_data);
+    }
+
     var parsedMsg = msg;
     var glossaries = [...msg.matchAll(/:term:`(.*?)`/g)];
     //console.log(glossaries);
@@ -21,19 +37,21 @@
       //parsedMsg = parsedMsg.replace(glossaries[i][0], "<a class=\"reference internal\" href=\"Glossary.html#term-" +
       //refGlossary.replace(" ", "-") + "\" target=\"_parent\"><em class=\"xref std std-term\">" + displayGlossary + "</em></a>")
 
-      //canvas link support
+      if (!ODSA.TP){
+        //local support
+        parsedMsg = parsedMsg.replace(glossaries[i][0], "<a class=\"reference internal\" href=\"Glossary.html#term-" +
+        refGlossary.replace(" ", "-") + "\" target=\"_blank\"><em class=\"xref std std-term\">" + displayGlossary + "</em></a>")
+      }
+      else{
+        //canvas link support
 
-      //if use this one, must include this function after the "ODSA.TP" was defineded
-      //var canvasID = ODSA.TP.toParams.launch_params.custom_canvas_course_id;
-      var canvasID = "2145001"
-      var glossaryPageID = "32913984"; //need to get this from server
-      var canvasGlossaryPageLink = "https://canvas.instructure.com/courses/" + canvasID + "/modules/items/" + glossaryPageID;
-      parsedMsg = parsedMsg.replace(glossaries[i][0], "<a class=\"reference internal\" href=\"" + canvasGlossaryPageLink + "#term-" +
-      refGlossary.replace(" ", "-") + "\" target=\"_blank\"><em class=\"xref std std-term\">" + displayGlossary + "</em></a>");
-
-      //local support
-      //parsedMsg = parsedMsg.replace(glossaries[i][0], "<a class=\"reference internal\" href=\"Glossary.html#term-" +
-      //refGlossary.replace(" ", "-") + "\" target=\"_blank\"><em class=\"xref std std-term\">" + displayGlossary + "</em></a>")
+        //if use this one, must include this function after the "ODSA.TP" was defineded
+        var canvasID = ODSA.TP.toParams.launch_params.custom_canvas_course_id;
+        var glossaryPageID = json_data["chapters"]["Appendix"]["Glossary"]["lms_module_item_id"];
+        var canvasGlossaryPageLink = "https://canvas.instructure.com/courses/" + canvasID + "/modules/items/" + glossaryPageID;
+        parsedMsg = parsedMsg.replace(glossaries[i][0], "<a class=\"reference internal\" href=\"" + canvasGlossaryPageLink + "#term-" +
+        refGlossary.replace(" ", "-") + "\" target=\"_blank\"><em class=\"xref std std-term\">" + displayGlossary + "</em></a>");
+      }
     }
     return parsedMsg;
   }
