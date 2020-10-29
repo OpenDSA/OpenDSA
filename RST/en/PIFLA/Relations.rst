@@ -31,8 +31,16 @@ practice exercises.
    :scripts:  DataStructures/PIFrames.js AV/PIFLA/Background/RelationsFS.js
    :output: show
 
-Relations practice exercises
-----------------------------
+.. avembed:: Exercises/Background/SetTFrelation.html ka
+   :long_name: Relations Exercise
+
+Equivalence Classes and Partial Orders
+--------------------------------------
+
+.. inlineav:: EquivFS ff
+   :links: AV/PIFLA/Background/EquivFS.css
+   :scripts:  DataStructures/PIFrames.js AV/PIFLA/Background/EquivFS.js
+   :output: show
 
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
    :long_name: Equivalence Exercise
