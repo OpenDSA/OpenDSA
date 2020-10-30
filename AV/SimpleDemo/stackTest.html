@@ -38,6 +38,7 @@
     <script
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
       <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../lib/timeme-min.js"></script>
       <script src="../../lib/jquery.transit.js"></script>
       <script src="../../lib/raphael.js"></script>
       <script src="../../lib/JSAV-min.js"></script>
@@ -52,7 +53,7 @@
         av.recorded(); // we are not recording an AV with an algorithm
 
         function initialize() {
-        
+
 
         if (stack) {
         stack.clear();
@@ -66,16 +67,16 @@
 
         return stack;
         }
-        
+
         function modelSolution(jsav) {
         var modelArray = jsav.ds.array(initialArray);
 
         return modelArray;
         }
-        
+
         var exercise = av.exercise(modelSolution, initialize, { feedback: "atend"});
         exercise.reset();
-        
+
         $("#buttonPop").click(function () {
         stack.removeFirst();
         stack.layout();
