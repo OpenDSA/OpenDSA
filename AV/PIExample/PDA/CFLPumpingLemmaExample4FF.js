@@ -125,38 +125,6 @@ av.umsg(Frames.addQuestion("q29"));
 av.step();
 
 //Frame 30
-av.umsg(Frames.addQuestion("q30"));
-av.step();
-
-//Frame 31
-av.umsg(Frames.addQuestion("q31"));
-av.step();
-
-//Frame 32
-av.umsg(Frames.addQuestion("q32"));
-av.step();
-
-//Frame 33
-av.umsg(Frames.addQuestion("q33"));
-av.step();
-
-//Frame 34
-av.umsg(Frames.addQuestion("q34"));
-av.step();
-
-//Frame 35
-av.umsg(Frames.addQuestion("q35"));
-av.step();
-
-//Frame 36
-av.umsg(Frames.addQuestion("q36"));
-av.step();
-
-//Frame 37
-av.umsg(Frames.addQuestion("q37"));
-av.step();
-
-//Frame 38
 av.umsg("Thus, there is no breakdown of $w$ into $uvxyz$ such that $|vy| \\ge 1$, $|vxy| \\le m$ and for all $i \\ge 0$, $uv^ixy^iz$ is in $L$. This is a contradiction, thus, L is not a CFL. Done.");
 av.recorded();
 

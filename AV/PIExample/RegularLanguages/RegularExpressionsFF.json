@@ -4,7 +4,7 @@
         "q4": {
           "type": "select",
           "description": "$\\textbf{Basic Operators:}$<br />'+': The union operator. This operator is equivalent to the Bolloean 'OR' operator.",
-          "question":"Which strings can be matched with the regular expression $a+ab$",
+          "question":"Whcih strings can be matched with the regular expression $a+ab$",
           "answer": ["a",
             "ab"
           ],
@@ -13,7 +13,7 @@
         "q5": {
           "type": "multiple",
           "description": "$\\textbf{Basic Operators:}$<br />'+': The union operator. This operator is equivalent to the Bolloean 'OR' operator.<br />'.': The Concatenation operator. This operator is used to concate strings together.",
-          "question":"Which strings can be matched with the regular expression $a \\cdot ab$",
+          "question":"Whcih strings can be matched with the regular expression $a \\cdot ab$",
           "answer": ["aab"
           ],
           "choices": ["a", "ab", "aab", "baa"]

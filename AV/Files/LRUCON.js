@@ -33,9 +33,9 @@ $(document).ready(function () {
   var buffer_pool = av.ds.array(["", "", "", "", ""],
                                 {layout: "vertical", indexed: true,
                                  top: 40, left: bpLeft });
-  av.label("Disk File", {left: 180, top: 295});
-  av.label("Buffer Pool", {left: 390, top: 295});
-  av.label("Buffers", {left: 630, top: 295});
+  av.label("Disk File", {left: 180, top: 305});
+  av.label("Buffer Pool", {left: 390, top: 305});
+  av.label("Buffers", {left: 630, top: 305});
   var arrB0 = av.ds.array([""], {top: buffTop, left: lRight});
   arrB0.addClass(true, "buffer");
   var arrB1 = av.ds.array([""], {top: buffTop+1*buffdist, left: lRight});
@@ -54,7 +54,7 @@ $(document).ready(function () {
   }
 
   // Slide 1
-  av.umsg("Here is an example of buffer pool replacement using the LRU replacement heuristic. The following series of memory requests will be processed: 9 0 1 7 6 6 0 8 1");
+  av.umsg("Here is an example of buffer pool replacement using the LRU replacement heuristic. The following series of memory requests will be processed: 9 0 1 7 6 6 8 1");
   writelines();
   av.displayInit();
 
@@ -132,32 +132,11 @@ $(document).ready(function () {
   av.step();
 
   // Slide 7
-  av.umsg("Another request for block 6 can be served without reading any new data into memory. And since buffer 0 stores block 6 (it is the least recently used block), the blocks in the buffer pool need not be moved.");
-  arr.removeClass(6, "processing");
+  av.umsg("Another request for block 6 can be served without reading any new data into memory. And since buffer 0 stores block 6, the blocks in the buffer pool need not be moved.");
   av.step();
   
   // Slide 8
-  av.umsg("A request for block 0 can be served without reading any new data into memory.");
-  buffer_pool.removeClass(0, "processing");
-  arrB4.removeClass(0, "processing");
-  buffer_pool.addClass(3, "processing");
-  arrB1.addClass(0, "processing");
-  av.step();
-
-  av.umsg("But since we are using LRU replacement, we still need to move it to the top of the buffer pool.");
-  blockswap(3, 2);
-  blockswap(2, 1);
-  blockswap(1, 0);
-  buffer_pool.swap(3, 2);
-  buffer_pool.swap(2, 1);
-  buffer_pool.swap(1, 0);
-  writelines();
-  buffer_pool.removeClass(3, "processing");
-  buffer_pool.addClass(0, "processing");
-  av.step();
-  
-  // Slide 9
-  av.umsg("The next request, for block 8, requires emptying the contents of the least recently used buffer (the block in position 4), which is block 9. So block 9's data are removed from the buffer pool, the other blocks in the pool shift down one step, and block 8 is read into the buffer now at position 0.");
+  av.umsg("The next request, for block 8, requires emptying the contents of the least recently used buffer (the block in position 4), which is block 9. So block 9's data are removed from the buffer pool, the other blocks in the pool are shifted down one step, and block 8 is read into the buffer now at position 0.");
   buffer_pool.value(4, 8);
   blockswap(4, 3);
   blockswap(3, 2);
@@ -169,12 +148,13 @@ $(document).ready(function () {
   buffer_pool.swap(1, 0);
   av.effects.copyValue(arr, 8, arrB0, 0);
   writelines();
-  arrB1.removeClass(0, "processing");
+  arr.removeClass(6, "processing");
+  arrB4.removeClass(0, "processing");
   arr.addClass(8, "processing");
   arrB0.addClass(0, "processing");
   av.step();
 
-  // Slide 10
+  // Slide 9
   av.umsg("The next request is for block 1 again. Since block 1 is already in the buffer pool (in position 3), it need not be read in from disk. The buffer pool is reorganized to put block 1 at the top.");
   blockswap(3, 2);
   blockswap(2, 1);

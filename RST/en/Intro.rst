@@ -51,9 +51,8 @@ There are many "proficiency exercises" where you show the steps
 taken by an algorithm.
 There are also many sets of multiple choice, fill-in-the-blanks, and
 True/False questions.
-For some topics, there are small programming exercises.
-Rounding things out are various calculators, simulations,
-and other interactive exercises.
+There are also various calculators, simulations, and other types of
+interactive exercises.
 
 **Getting credit:**
 You can get "completion" for doing the various activities.
@@ -70,6 +69,8 @@ your LMS.
 **Seeing your credit and seeing your current score:**
 Usually an exercise or slideshow will give you visual confirmation
 when you have completed it.
+If you complete all exercises and slideshows for a module, the title
+line should show "Module Complete" in green.
 Your LMS might indicate complete modules in its "table of contents"
 listing of modules.
 More likely, the LMS gradebook will indicate which exercises have been
@@ -166,17 +167,13 @@ points of completion credit.
 You can always practice an exercise as many times as you like, whether
 you already have completion credit or not.
 
-**Settings Button and Narration Support:**
+**Settings Button:**
 The visualizations, slideshows, and proficiency exercises usually have
-two buttons in the upper right corner, one with a speaker icon and one
-with a gear icon.
-The gear icon indicates the settings button, which will let you change
-some of the default settings,
+a button in the upper right corner with a gear icon on it.
+That will let you change some of the default settings,
 such as the animation speed (usually used for things like the swap
 steps in the sorting algorithm visualizations), or whether the arrays
 show values or height bars.
-The button with the speaker icon will let you control whether the
-slideshow captions will be narrated or not.
 
 **Enlarging Equations:**
 Math is rendered using the MathJAX library,

@@ -301,11 +301,6 @@ All are required unless otherwise specified.
       and all other external tool exercises are worth one point each. 
       Currently code-workout is the only external tool used by OpenDSA.
 
-* **zeropt_assignments** - (optional) A boolean controlling wheter or not
-  the moduels without exercises should be given 0 point and listed under
-  assignments section.
-  Defaults to ``false`` if omitted.
-
 * **build_JSAV** - (optional) A boolean controlling whether or not the
   JSAV library should be rebuilt whenever the book is compiled.
   Defaults to ``false`` if omitted.

@@ -36,9 +36,9 @@ $(document).ready(function () {
   //  var buffer_pool = av.ds.array(["", "", "", "", ""],
   //                                {layout: "vertical", indexed: true,
   //                                 top: 40, left: bpLeft });
-  av.label("Disk File", {left: 180, top: 295});
-  av.label("Buffer Pool", {left: 390, top: 295});
-  av.label("Buffers", {left: 630, top: 295});
+  av.label("Disk File", {left: 180, top: 305});
+  av.label("Buffer Pool", {left: 390, top: 305});
+  av.label("Buffers", {left: 630, top: 305});
   var arrB0 = av.ds.array([""], {top: buffTop, left: lRight});
   arrB0.addClass(true, "buffer");
   var arrB1 = av.ds.array([""], {top: buffTop+1*buffdist, left: lRight});
@@ -57,7 +57,7 @@ $(document).ready(function () {
   }
 
   // Slide 1
-  av.umsg("Let's see an example of buffer pool replacement using the LRU replacement heuristic and a dirty bit. The following series of memory requests will be processed: 9 0 1 7 6 6 8 1 4");
+  av.umsg("Let's see an example of buffer pool replacement using the LRU replacement heuristic. The following series of memory requests will be processed: 9 0 1 7 6 6 8 1");
   writelines();
   av.displayInit();
 
@@ -188,7 +188,6 @@ $(document).ready(function () {
   arr.addClass(0, "processing");
   arrB1.removeClass(0, "processing");
   buffer_pool.removeClass(0, 0, "processing");
-  arrB1.addClass(0, "processing");
   buffer_pool.addClass(4, 0, "processing");
   buffer_pool.addClass(4, 1, "processing");
   av.step();

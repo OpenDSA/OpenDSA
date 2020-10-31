@@ -6,7 +6,7 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-      interpret = config.interpreter, // get the interpreter
+      interpret = config.interpreter, // get the interprete
       code = config.code;             // get the code object
   var goNext = false;
   var xStart = -270;

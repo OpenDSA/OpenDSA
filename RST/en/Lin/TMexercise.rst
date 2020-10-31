@@ -63,5 +63,51 @@ Exercise 8
 Exercise 9
 ----------
 
+<<<<<<< HEAD
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html ae
+   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
+=======
 .. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
+<<<<<<< HEAD
    :long_name: Turing Machines Exercise
+>>>>>>> master
+
+Exercise 4 For testing purposes. It worth zero points
+-----------------------------------------------------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/aNumsPowerOf2.html ae
+   :long_name: Turing Machines Exercise
+
+Exercise 5 For testing purposes. It worth zero points
+-----------------------------------------------------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/ifaNumsPowerOf2.html ae
+   :long_name: Turing Machines Exercise
+
+Exercise 6 For testing purposes. It worth zero points
+-----------------------------------------------------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abcWInWWROut.html ae
+   :long_name: Turing Machines Exercise
+
+Exercise 7 For testing purposes. It worth zero points
+-----------------------------------------------------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abcNawlargerthanNbw.html ae
+   :long_name: Turing Machines Exercise
+
+Exercise 8 For testing purposes. It worth zero points
+-----------------------------------------------------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/replaceABAbyACA.html ae
+   :long_name: Turing Machines Exercise
+
+Exercise 9 For testing purposes. It worth zero points
+-----------------------------------------------------
+
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html ae
+   :long_name: Turing Machines Exercise
+
+=======
+   :long_name: Turing Machines Exercise
+>>>>>>> origin/master

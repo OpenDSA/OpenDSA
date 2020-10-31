@@ -29,7 +29,7 @@ class Association{
             else if (sourceObject.expectedDomain == 'free')
                 this.domain = targetObject.expectedDomain;
             else {
-                // console.log("attempted to associate domain mismatched quantities, please correct");
+                console.log("attempted to associate domain mismatched quantities, please correct");
                 // Insert jsav dialog text here.
                 this.domain = sourceObject.expectedDomain;
             }
@@ -93,7 +93,7 @@ class Association{
                 // Nothing needs to be done, the expectedDomain takes the same value
             }
             else {
-                // console.log("attempted to associate domain mismatched quantities, please correct");
+                console.log("attempted to associate domain mismatched quantities, please correct");
                 // Insert jsav dialog text here.
                 this.domain = newVar.expectedDomain;
             }

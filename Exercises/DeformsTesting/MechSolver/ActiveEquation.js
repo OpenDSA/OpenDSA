@@ -79,7 +79,7 @@ class ActiveEquation{
         this.visualComponents["help"].element[0].setAttribute("title", "Click here for help about the equations.");
         this.visualComponents["help"].element[0].addEventListener( "click", e=> {
             e.stopPropagation();
-            Window.showHelp("boxedEquation",e);
+            Window.showHelp("boxedEquation")
         });
 
         // Adding a template text for the equation that was added, that shows the equation's subscripts
@@ -95,7 +95,6 @@ class ActiveEquation{
                 top: position_obj["POSITION_Y"]+3
             }
         ).addClass("workspaceEquation");
-        this.visualComponents["text"].element[0].setAttribute("title", "Click to add a subscript to label this equation, or remove label.");
         this.visualComponents["text"].element[0].addEventListener("click", e=> {
             // Window.parentObject = this;
             e.stopPropagation();
@@ -140,7 +139,6 @@ class ActiveEquation{
             //var containerSpan = document.createElement("span");
             boxList[i].className = " boxparam";
             boxList[i].setAttribute("data-domain", "empty");
-            boxList[i].setAttribute("title", "Click to show menu.");
             //boxList[i].innerHTML = '<span class="mord amsrm">&#9634;</span>';
             boxList[i].innerHTML = 
             '<span class="mord value"></span><span class="mord unit"></span>';
@@ -404,8 +402,8 @@ class ActiveEquation{
                     if(equationObject.variables[variable].value.startingAssocSubscriptEquationId 
                         == equationObject.name) // This part is debatable
                     {
-                        // console.log(equationObject.variables[variable].value.startingAssocSubscriptEquationId);
-                        // console.log(equationObject.name);
+                        console.log(equationObject.variables[variable].value.startingAssocSubscriptEquationId);
+                        console.log(equationObject.name);
                         // equationObject.variables[variable].value.varDisplay = 
                         // equationObject.variables[variable].value.varDisplay
                         // .replace(new RegExp('_\{[A-Za-z0-9 ]+\}', 'g'),"_{"+subscriptText+"}");
@@ -420,7 +418,7 @@ class ActiveEquation{
         // TODO: Can be shortened to make the calls from inside one another; makes the segment less complicated.
         // Adjusting the visuals of the equation
         var shiftChain = Window.windowManager.shiftRight(equationObject);
-        // console.log(shiftChain);
+        console.log(shiftChain);
         if(shiftChain == "shiftActiveEqDown") {
             // console.log(Window.parentObject);
             var extend = Window.windowManager.shiftActiveEqDown(equationObject.name);
@@ -442,7 +440,7 @@ class ActiveEquation{
     {
         // Find the unknown variable - which can be an option later, if no parameter is passed.
         // var varName = null;
-        // console.log("in getUnitOfVariable for"+varName);
+        console.log("in getUnitOfVariable for"+varName);
         // NOTES: In our observation, we can either have an unknown that has an association, or that does not (i.e. is null).
         // If an unknown is associated, then it maybe difficult to compute its domain from inside 
         // especially if this equation contains atleast one unknown with a weird datatype.
@@ -537,7 +535,7 @@ class ActiveEquation{
         {
             substituted = substituted.replace(v,"("+values[v]+")");
         }
-        // console.log(substituted);
+        console.log(substituted);
         var resultUnit = mathjs.evaluate(substituted).toString().split(" ")[1];
         if(resultUnit in Window.unitDomainMap)
             var domain = Window.unitDomainMap[resultUnit];
@@ -584,10 +582,10 @@ class ActiveEquation{
             }
             else if(this.variables[v].valueType == "association")
             {
-                console.log("Domain of the current variable box",
-                    this.variables[v].value.domain,
-                    Window.UNIT_DB[this.variables[v].value.domain],
-                )
+                // console.log("Domain of the current variable box",
+                //     this.variables[v].value.domain,
+                //     Window.UNIT_DB[this.variables[v].value.domain],
+                // )
                 var unitName = Window.defaultDomains[this.variables[v].value.domain][Window.unitFamily];
                 
                 // console.log(Window.UNIT_DB[this.variables[v].value.domain][unitName]);
@@ -596,7 +594,7 @@ class ActiveEquation{
                 values[this.variables[v].value.var] = '1 '+
                     Window.UNIT_DB[this.variables[v].value.domain][unitName]['unit'];
                 domains[this.variables[v].value.var] = this.variables[v].value.domain;
-                console.log("Did we find the right unit?",values[this.variables[v].currentSymbol]);
+                // console.log("Did we find the right unit?",values[this.variables[v].currentSymbol]);
             }
             else if(this.variables[v].valueType == null)
             {

@@ -9,7 +9,7 @@ var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
 var goNext = false;
 
 //Frame 1
-av.umsg("A <b>language</b> is simply a collection of strings. A fundamental thing to be able to do with a string is to determine whether or not it is part of a given language. Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
+av.umsg("A $\\textbf{language}$ is simply a collection of strings. A fundamental thing to be able to do with a string is to determine whether or not it is part of a given language. Let’s formally define the concept of a “language”. But first we need some stuff to make them from.");
 av.displayInit();
 //Frame 2
 av.umsg(Frames.addQuestion("q1"));

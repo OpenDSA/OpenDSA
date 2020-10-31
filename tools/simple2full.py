@@ -90,7 +90,6 @@ avembed_element = '''\
 extertool_element = '''\
 <extertool
     resource_name=%(resource_name)s
-    workout_id="%(workout_id)s"
     resource_type="%(resource_type)s"
     learning_tool="%(learning_tool)s"
     points="%(points)s"
@@ -129,7 +128,6 @@ class avembed(Directive):
 
 
   def run(self):
-    print("self: ==================================\n", self.options)
     """ Restructured text extension for inserting embedded AVs with show/hide button """
     av_path = self.arguments[0]
     self.options['type'] = self.arguments[1]
@@ -184,18 +182,16 @@ class extrtoolembed(Directive):
   has_content = True
   option_spec = {
                  'resource_name': directives.unchanged,
-                 'workout_id': directives.unchanged,
                  'resource_type': directives.unchanged,
                  'learning_tool': directives.unchanged,
                  'points': directives.unchanged
                  }
 
   def run(self):
+
     resource_name = self.arguments[0]
     if 'resource_name' not in self.options or self.options['resource_name'] == '':
       self.options['resource_name'] = resource_name
-    if 'workout_id' not in self.options or self.options['workout_id'] == '':
-      self.options['workout_id'] = '0'
     if 'resource_type' not in self.options or self.options['resource_type'] == '':
       self.options['resource_type'] = 'external_assignment'
     if 'learning_tool' not in self.options or self.options['learning_tool'] == '':
@@ -701,7 +697,6 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
-      exs_config['extertool']['workout_id'] = ex_obj['@workout_id']
       if expanded:
         exs_config['extertool']['type'] = 'extr'
         exs_config['extertool']['mod_name'] = ex_obj['@mod_name']
@@ -783,6 +778,7 @@ def remove_markup(source):
   remove unnecessary markups in the rst files
   '''
   global expanded
+
   source = source.replace(' --- ','')
   source = source.replace('|---|','')
   if expanded:
@@ -792,6 +788,7 @@ def remove_markup(source):
     source = re.sub(r"\s+:scripts:.+\n", '\n', source, flags=re.MULTILINE)
     source = re.sub(r"\:(?!output)[a-zA-Z]+\:", '',source, flags=re.MULTILINE)
   source = re.sub(r"\[.+\]\_", '',source, flags=re.MULTILINE)
+
   return source
 
 def get_chapter_module_files(conf_data):
@@ -906,17 +903,12 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
   if 'glob_extr_options' in full_config:
     del full_config['glob_extr_options']
 
-  print(full_config)
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.items():
-    
     full_config['chapters'][chapter] = OrderedDict()
     for x in files:
-      print(x)
       rst_dir_name = x.split(os.sep)[-2]
-      print("rst_dir_name: ", rst_dir_name)
       rst_fname = os.path.basename(x).partition('.')[0]
-      print("rst_fname: ", rst_fname)
       if rst_dir_name == conf_data['lang']:
         mod_path = rst_fname
       else:
@@ -924,11 +916,10 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
       
 
       current_module = mod_path
-      print("current_module: ", current_module)
       if verbose:
         print(("Processing module " + mod_path))
       current_module_base = os.path.basename(mod_path)
-      print("current_module_base: ", current_module_base)
+
       if not os.path.isfile(x):
         print_err("ERROR: '{0}' is not a valid module path".format(mod_path))
         sys.exit(1)
@@ -937,14 +928,18 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
         source = rstfile.read()
 
       source = remove_markup(source)
+
       rst_parts = publish_parts(source,
                   settings_overrides={'output_encoding': 'utf8',
                   'initial_header_level': 2},
                   writer_name="xml",
       source_path=mod_path)
+
       mod_json = xmltodict.parse(rst_parts['whole'])
       mod_config = extract_mod_config(mod_json)
+
       full_config['chapters'][chapter][mod_path] = mod_config
+
   if not slides:
     for mod_name, exercises in ex_options.items():
       for exer in exercises:

@@ -1,7 +1,7 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "GRAMMAR",
-    "totalTrueCases": 8,
+    "totalTrueCases": 10,
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],

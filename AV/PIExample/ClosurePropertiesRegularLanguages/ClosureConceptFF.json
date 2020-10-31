@@ -26,7 +26,7 @@
           "type": "multiple",
           "description": "$\\textbf {Definition}$: A set is $\\textbf {closed}$ over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.",
           "question": "So, is $L$ closed under multiplication?",
-          "answer": "Yes",
+          "answer": "No",
           "choices": ["Yes", "No"]
         },
         "q6": {

@@ -714,7 +714,7 @@
           }
           var current = this.queue.current;
           if (
-             current <= this.skip_to || this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])
+             current < this.skip_to || this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])
           ) {
             this.enableForwardButton();
             // if (($(`#${this.av_name}`).find('.REVEAL').length)) {
@@ -738,10 +738,6 @@
 
     //checkpoint jump functions
     skipToCheckPoint(av_name) {
-      if (!ODSA.UTILS.scoringServerEnabled())
-      {
-          return -1;
-      }
       let data = {
         "frame_name": av_name,
       };
@@ -758,20 +754,16 @@
           withCredentials: true
         },
         success: function(data) {
-          skip_to = parseInt(data.result) || -1
+          skip_to = parseInt(data.result)
         },
         error: function(err) {
-          skip_to = -1;
+          skip_to = 0;
         }
       });
 
       //skip the slides to the checkpoint by triggering the forward button
       //this process need to be done after the page is fully loaded
-      // first question has index of 0
-      // if skip_to = 0, it means the first questions has completed by the user
-      // therefore, continue to second question.
-      // if user has not completed any question for the frame, then the default is set to -1.
-      if(skip_to >= 0){
+      if(skip_to !== 0){
         $(document).ready(function() {
           var counter = $("#"+av_name +" .jsavcounter").text().split("/");
           var limit = parseInt(counter[1]);

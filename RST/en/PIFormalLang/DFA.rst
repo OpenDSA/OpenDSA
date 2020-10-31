@@ -10,10 +10,9 @@
 
 
 DFA: Deterministic Finite Acceptor
-==================================
-
+=================================
 Deterministic Finite Machines
------------------------------
+--------------------------------------
 
 .. inlineav:: DFAFF ff
    :links: AV/PIExample/DFAFF.css DataStructures/FLA/FLA.css
@@ -38,3 +37,5 @@ Deterministic Finite Acceptors Definitions
    :links: AV/PIExample/FADefinitionsFF.css DataStructures/FLA/FLA.css
    :scripts: DataStructures/FLA/FA.js AV/PIExample/FADefinitionsFF.js DataStructures/PIFrames.js
    :output: show
+
+

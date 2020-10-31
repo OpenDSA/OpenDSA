@@ -24,28 +24,28 @@
             "b": false
         },
         {
-            "abababababaab": true
+            "abababababab": false
         },
         {
-            "aaabbbbbbbb": true
+            "aabbbbbbbb": false
         },
         {
             "bbabbbbbbb": true
         },
         {
-            "aabaabaaabb": true
+            "aabaaaaabb": true
         },
         {
-            "babbb": true
+            "abbb": true
         },
         {
-            "aaaaaaabbbb": true
+            "aaabbb": true
         },
         {
             "ababababababa": true
         },
         {
-            "abbabab": true
+            "ababab": true
         }
 
     ],

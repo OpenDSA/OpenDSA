@@ -189,7 +189,7 @@
       "q24":{
         "type": "select",
         "description": "What is the language of the grammar? Answer: It is all strings formed over the alphabet (or set of terminals, note that $T^∗$ is all possible strings over T), SUCH THAT if you start with S (the start symbol in the grammar), you can derive the string.",
-        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P = \\{S \\rightarrow aSb, S \\rightarrow SS, S \\rightarrow ab\\}$. Which of the following strings are in L(G)?",
+        "question":"Suppose the following grammar: $G=(\\{S\\}, \\{a,b\\}, S, P)$, where $P = \\{S \\rightarrow aSb, S \\rightarrow SS, S \\rightarrow ab\\}$. Whcih of the following strings are in L(G)?",
         "answer":["aabb", "abab"],
         "choices": ["aabb", "abab", "abba", "babab"]
       },

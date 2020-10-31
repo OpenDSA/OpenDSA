@@ -39,7 +39,7 @@
             "babababa": true
         },
         {
-            "baaba": true
+            "baaba": false
         }
     ],
     "graph": {

@@ -210,7 +210,7 @@
       "q17": {
         "type": "multiple",
         "description": "Sets concatenation. Concatenating two sets $L1$, and $L2$ means concatenating every string in $L1$ with each string in $L2$.",
-        "question": "Let $\\Sigma=\\{a,b,c\\}$, $L_1=\\{ab,bc,aba\\}$, $L_2=\\{c,bc,bcc\\}$, which of the following is $L_1L_2$?",
+        "question": "Let $\\Sigma=\\{a,b,c\\}$, $L_1=\\{ab,bc,aba\\}$, $L_2=\\{c,bc,bcc\\}$, whcih of the following is $L_1L_2$?",
         "answer": "$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc\\}$",
         "choices": [ "$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,abab\\}$","$\\{abc,abbc,abbcc,bcc,bcbc,bcbcc,abac,ababc,ababcc\\}$", "$\\{abc,abbc,abbcc,bcc,bbcc,bcbcc,abac,abab,ababcc\\}$"]
       },
