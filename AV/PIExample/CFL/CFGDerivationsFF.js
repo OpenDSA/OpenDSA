@@ -64,7 +64,7 @@ av.step();
 av.umsg(Frames.addQuestion("q18"));
 av.step();
 //frame 19
-av.umsg("Greate. This is how the derivation process goes. But, in all previous examples, the sentential forms have only a single variable each time. So, the task was direct to substitute the existing variable.")
+av.umsg("Great. This is how the derivation process goes. But, in all previous examples, the sentential forms have only a single variable each time. So, the task was direct to substitute the existing variable.")
 av.step();
 //frame 20
 av.umsg(Frames.addQuestion("q20"));

@@ -44,14 +44,14 @@ Window.clearGlobalPointerReference = function() {
         Window.eqbank.currentSelectedEquationObject.element.dataset.status='no';
         Window.eqbank.currentSelectedEquationObject = null;
     }
-    else if(
-        Window.globalPointerReference.currentClickedObjectType == "var-box"  && 
-        Window.eqbank.currentSelectedEquationObject == null
-    )
-    {
-        // console.log(Window.eqbank.currentSelectedEquationObject);
-        Window.globalPointerReference.currentClickedObject.element.classList.remove("selectedvalue");
-    }
+    // else if(
+    //     Window.globalPointerReference.currentClickedObjectType == "var-box"  && 
+    //     Window.eqbank.currentSelectedEquationObject == null
+    // )
+    // {
+    //     // console.log(Window.eqbank.currentSelectedEquationObject);
+    //     Window.globalPointerReference.currentClickedObject.element.classList.remove("selectedvalue");
+    // }
     else if(
         Window.globalPointerReference.currentClickedObjectType == "value-box"  && 
         Window.globalPointerReference.currentClickedObjectDescription == "solved-value"
@@ -59,6 +59,14 @@ Window.clearGlobalPointerReference = function() {
     {
         // console.log(Window.eqbank.currentSelectedEquationObject);
         Window.globalPointerReference.currentClickedObject.element.visualComponent.element[0].classList.remove("selectedvalue");
+    }
+    else if(
+        Window.globalPointerReference.currentClickedObjectType == "var-box" &&
+        Window.globalPointerReference.currentClickedObjectDescription == "copy number"
+    )
+    {
+        // console.log(Window.eqbank.currentSelectedEquationObject);
+        this.globalPointerReference.currentClickedObject.element.classList.remove("selectedvalue")
     }
 
     // Last but not the least, this always gets done.
@@ -78,13 +86,15 @@ Window.isThereContext = function() {
     else return true;
 }
 
-Window.showHelp = function(keyword) {
+Window.showHelp = function(keyword, event) {
     if(keyword in Window.helpTexts) {
         var helpText = Window.helpTexts[keyword];
         var helpDialog = JSAV.utils.dialog(
             helpText+`<button type="button" id="closeButton" class="jsavrow">OK</button>`, 
             {width: 600, dialogClass: "helpPage"}
             );
+        if(event != null)
+            helpDialog[0].style.top = window.scrollY+50+"px";
         Window.globalPointerReference.currentClickedObjectType = "help";
         Window.globalPointerReference.currentClickedObjectDescription = "main";
         Window.showBlankPrompt = false;
@@ -98,4 +108,21 @@ Window.showHelp = function(keyword) {
         })
     }
     else console.log(`HelpText for ${keyword} requested`);
+}
+
+Window.bodyClickPrompt = function() {
+    // Creating clickhandlers associated with the body to clear the globalPointerReference
+    document.body.addEventListener("click", e=> {
+        e.stopPropagation();
+        // console.log("Inside the body snatcher");
+        if(Window.showBlankPrompt) {
+            var messageBox = JSAV.utils.dialog("Add an equation from the bank to begin.", {modal: false, width: 100})
+            messageBox[0].style.top = e.pageY+5+"px";
+            messageBox[0].style.left = e.pageX+10+"px";
+            setTimeout(messageBox.close, 900)
+        }
+        else {
+            Window.clearGlobalPointerReference();
+        }
+    });
 }

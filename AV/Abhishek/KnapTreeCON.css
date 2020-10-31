@@ -1,0 +1,16 @@
+#KnapTreeCON {
+  height: 410px
+}
+
+#KnapTreeCON .jsavoutput.jsavline {
+  height: 60px;
+}
+
+#KnapTreeCON .jsavtree .jsavnode {
+  border-radius: 1px;
+  width: 60px;
+  line-height: 15px;
+  color: white;
+  border: 1.2px solid black;
+  background: linear-gradient(0deg, red, red 49%, white 49%, white 51%, blue 51%);
+}

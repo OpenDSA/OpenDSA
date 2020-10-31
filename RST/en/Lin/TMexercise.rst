@@ -15,54 +15,53 @@ Turing Machine Exercises
 Exercise 1
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html ae
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html pe
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
 Exercise 2
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html ae
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html pe
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
 Exercise 3
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html ae
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html pe
    :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
 
-Exercise 4 For testing purposes. It worth zero points
------------------------------------------------------
+Exercise 4
+----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/aNumsPowerOf2.html ae
+.. avembed:: AV/Peixuan/TuringMachinesExercises/aNumsPowerOf2.html pe
    :long_name: Turing Machines Exercise
 
-Exercise 5 For testing purposes. It worth zero points
------------------------------------------------------
+Exercise 5
+----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/ifaNumsPowerOf2.html ae
+.. avembed:: AV/Peixuan/TuringMachinesExercises/ifaNumsPowerOf2.html pe
    :long_name: Turing Machines Exercise
 
-Exercise 6 For testing purposes. It worth zero points
------------------------------------------------------
+Exercise 6
+----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abcWInWWROut.html ae
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abcWInWWROut.html pe
    :long_name: Turing Machines Exercise
 
-Exercise 7 For testing purposes. It worth zero points
------------------------------------------------------
+Exercise 7
+----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abcNawlargerthanNbw.html ae
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abcNawlargerthanNbw.html pe
    :long_name: Turing Machines Exercise
 
-Exercise 8 For testing purposes. It worth zero points
------------------------------------------------------
+Exercise 8
+----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/replaceABAbyACA.html ae
+.. avembed:: AV/Peixuan/TuringMachinesExercises/replaceABAbyACA.html pe
    :long_name: Turing Machines Exercise
 
-Exercise 9 For testing purposes. It worth zero points
------------------------------------------------------
+Exercise 9
+----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html ae
+.. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
    :long_name: Turing Machines Exercise
-

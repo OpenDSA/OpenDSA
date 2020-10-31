@@ -32,16 +32,11 @@ ifeq ($(strip $(ODSA_ENV)),DEV)
 	CSS_MINIFY = cat
 endif
 
-CHECK_ACTIVE = python -c "import sys; assert getattr(sys, 'base_prefix',  sys.exec_prefix) != sys.prefix, '$(INACTIVE_MSG)'"
-INACTIVE_MSG = pyVenv is not activated!!! \n
-INACTIVE_MSG +=Command to activate:   $(ACTIVATE) \n
-INACTIVE_MSG +=Command to deactivate: deactivate \n
-INACTIVE_MSG +=Retry after activating pyVenv.  Exiting now...
 
-.PHONY: venv clean-venv pyVenvCheck # for the python virtual environment
+# For the python virtual environment:
+.PHONY: venv clean-venv pyVenvCheck 
 pyVenvCheck: venv
-	@$(CHECK_ACTIVE)
-	@echo 'pyVenv seems activated, good'
+	$(PYTHON) tools/pyVenvCheck.py
 venv: $(VENVDIR)/.pipMarker
 $(VENVDIR)/.pipMarker: $(VENVDIR)/.venvMarker requirements.txt
 	$(ACTIVATE) && pip install --requirement requirements.txt
@@ -57,6 +52,7 @@ clean-venv:
 	@ echo "Note: Use 'deactivate' if $(VENVDIR) is still activated"
 
 .PHONY: clean min pull Webserver 
+
 Webserver:
 	@-echo -n "System is: " & uname -s
 	@echo "Using env variable: PYTHON=$(PYTHON)"
@@ -191,11 +187,6 @@ $(BOOKS): % : config/%.json min pyVenvCheck
 $(SLIDE_BOOKS) : % : config/%.json min pyVenvCheck
 	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) --slides $< --no-lms
 	@echo "Created an Slide-eBook in Books/: $@"
-
-
-# one book config that does not match the naming convention:
-FL2019: min
-	python $(CONFIG_SCRIPT) config/FormalLanguages2019.json --no-lms
 
 
 # Target eBooks with unique recipies below:::

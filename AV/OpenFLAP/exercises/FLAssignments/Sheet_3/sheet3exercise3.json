@@ -1,15 +1,14 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "REGEXP",
-    "totalTrueCases": 10,
-    "totalFalseCases": 5,
+    "totalTrueCases": 9,
+    "totalFalseCases": 3,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "trueCounter": 9,
     "falseCounter": 3,
-    "_generatorflag": "Comment: 0 - random generate strings, 1 - custom string generator in js file",
-    "generatorflag": 0,
+
     "expression": "",
     "description": "Give a regular expression whose language is strings over {a,b} in which every string as only once occurrance of substring bbb.",
     "type": "description",

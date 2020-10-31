@@ -1,0 +1,22 @@
+{
+    "title": "Ryan Woods Book",
+    "desc": "Code by Ryan Wood",
+    "build_dir": "Books",
+    "code_dir": "SourceCode/",
+    "lang": "en",
+    "build_JSAV": false,
+    "suppress_todo": false,
+    "dispModComp": true,
+    "glob_exer_options": {
+      "JXOP-debug": "true"
+    },
+
+    "chapters": {
+      "Preface":{
+        "Intro":{}
+      },
+      "Work": {
+        "RyanWood/Exercises" : {}
+      }
+    }
+  }

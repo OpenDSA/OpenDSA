@@ -2,7 +2,7 @@
   "translations": {
     "en": {
       "q1": {
-        "type": "multiple",
+        "type": "select",
         "description":"Step 3: The current cell value remains the same and the tape head shifts right one cell, scanning a.",
         "question":"What is the current state?",
         "answer": "q1",
@@ -23,14 +23,14 @@
           "choices": ["Tape will move to q4", "Tape will move to q1", "Tape will stay at q0<br>", "Cell value will become b", "Cell value will not change", "Cell value will become A<br>", "Tape head will shift left", "Tape head will shift right", "Tape head will not move"]
       },
       "q4": {
-          "type":"multiple",
+          "type":"select",
           "description":"Step 24: The current cell value remains the same and the tape head shifts right one cell, scanning #.",
           "question":"After the machine finish reading the entry #, what will be the current state?",
           "answer":"q5",
           "choices": ["q4", "q6", "q5"]
       },
       "q5": {
-          "type":"multiple",
+          "type":"select",
           "description":"",
           "question":"",
           "answer":"",

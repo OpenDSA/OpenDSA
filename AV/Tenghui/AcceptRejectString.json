@@ -1,0 +1,31 @@
+{
+  "translations": {
+    "en": {
+      "randomJFF": {
+        "Pathway": "../../../AV/VisFormalLang/FA/Machines/",
+        "FilenameFor01": [
+          "EvenBinaryDFACON",
+          "EvenBinaryEvenOnesDFA"
+        ],
+        "FilenameForAB": [
+          "DFA_noTrapState",
+          "DFA_withTrapState",
+          "NFA2DFA2a",
+          "NFA2DFA2b",
+          "NFA2DFAexample1",
+          "NFA2DFAexample2",
+          "NFAexample1",
+          "NFAexample2",
+          "NFAtoRE",
+          "stminDFA1",
+          "stminDFAE2"
+        ],
+        "InputType": [
+          {"inputs": ["0", "1"]},
+          {"inputs": ["a", "b"]}
+        ]
+
+      }
+    }
+  }
+}

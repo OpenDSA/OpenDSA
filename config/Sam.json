@@ -26,6 +26,7 @@
   "suppress_todo": true,
   "assumes": "ADT; relations",
   "dispModComp": true,
+  "zeropt_assignments": true,
   "glob_exer_options": {
     "JXOP-debug": "true"
   },

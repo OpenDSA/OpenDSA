@@ -27,15 +27,75 @@ $(document).ready(function () {
   curvy2.hide();
 
   //frame 1
-  av.umsg("While Turing machines might be able to do powerful things, when operating at the individual state level, it can get rather difficult and tedious to program them. In fact, it might feel in some ways like writing machine code or assembly language. The secret to success in modern software development is to build up more powerful tools, especially by packaging behavior together and manipulating the packages. We can hope to build up similar capability with Turing Machines.");
+  av.umsg("While Turing machines might be able to do powerful things, when operating at the individual state level, it can get rather difficult and tedious to program them. In fact, it might feel in some ways like writing machine code or assembly language.");
   av.displayInit();
 
   //frame 2
-  av.umsg("<b>Lemma</b>: If <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (q<sub>1</sub>,w<sub>1</sub> <u>a<sub>1</sub></u> u<sub>1</sub>) ⊢<sup>∗</sup><sub>M</sub> (q<sub>2</sub>, w w<sub>2</sub> <u>a<sub>2</sub></u> u<sub>2</sub>) <br><br> for string <i>w</i> and <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (q<sub>2</sub>,w<sub>2</sub> <u>a<sub>2</sub></u> u<sub>2</sub>) ⊢<sup>∗</sup><sub>M</sub> (q<sub>2</sub>, w<sub>3</sub> <u>a<sub>3</sub></u> u<sub>3</sub>)<br><br> then <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (q<sub>1</sub>,w<sub>1</sub> <u>a<sub>1</sub></u> u<sub>1</sub>) ⊢<sup>∗</sup><sub>M</sub> (q<sub>3</sub>, w w<sub>3</sub> <u>a<sub>3</sub></u> u<sub>3</sub>) <br> <br> Insight: Since (q<sub>1</sub>,w<sub>1</sub> <u>a<sub>1</sub></u> u<sub>1</sub>) ⊢<sup>∗</sup><sub>M</sub> (q<sub>3</sub>, w w<sub>3</sub> <u>a<sub>3</sub></u> u<sub>3</sub>), this computation must take place without moving the head left of w<sub>2</sub> The machine cannot \"sense\" the left end of the tape. (And if it had moved left, it would have hung.) Thus, the head won't move left of w<sub>2</sub> even if it is not at the left end of the tape.<br><br> This means that Turing machine computations can be combined into larger machines: <br><br> &bull; M<sub>2</sub> prepares string as input to M<sub>1</sub>. <br> &bull; M<sub>2</sub> passes control to M<sub>1</sub> with I/O head at the end of the input. <br> &bull; M<sub>2</sub> retrieves control when M<sub>1</sub> has completed.");
+  av.umsg("The secret to success in modern software development is to build up more powerful tools, especially by packaging behavior together and manipulating the packages.<br/>We can hope to build up similar capability with Turing Machines.")
+  av.step();
+
+  //frame 3
+  av.umsg(Frames.addQuestion("q3"));
+  av.step();
+
+  //frame 4
+  av.umsg(Frames.addQuestion("q4"));
+  av.step();
+
+  //frame 5
+  av.umsg(Frames.addQuestion("q5"));
+  av.step();
+
+  //frame 6
+  av.umsg(Frames.addQuestion("q6"));
+  av.step();
+
+  //frame 7
+  av.umsg(Frames.addQuestion("q7"));
+  av.step();
+
+  //frame 8
+  av.umsg(Frames.addQuestion("q8"));
+  av.step();
+
+  //frame 9
+  av.umsg(Frames.addQuestion("q9"));
+  av.step();
+
+  //frame 10
+  av.umsg("How can we benifit from that?. TM can do a series of computations on the input string and each computation passes the result to the next computation.");
+  av.step();
+
+  //frame 11
+  av.umsg("This means that Turing machine computations can be combined into larger machines, suppose we a Turing Machine $M$ that will call another TM $M_2$:<br/> &bull; $M$ prepares string as input to $M_2$. <br> &bull; $M$ passes control to $M_2 with I/O head at the end of the input. <br> &bull; $M$ retrieves control when $M_2$ has completed.");
   av.step();
   
-  //frame 3
-  av.umsg("Here are some basic machines and notation <br><br> &bull; |Σ| symbol-writing machines (one for each symbol): Any give letter σ has a symbol-writing machine named σ. <br> &bull; Head-moving machines, named R and L, move the head appropriately. <br> &bull; Start state indicated with >. <br> &bull; Transitions on anything other than (for example) # are labeled  <i> ̅#̅ </i> <br> &bull; Multiple copies of a machine get a superscript: R<sup>2</sup> means move right twice. <br><br> <i>Let's look at an example: </i> <br> <br>Figure 9.2.3: First do M<sub>1</sub>, then do M<sub>2</sub> or M<sub>3</sub> depending on the current symbol.<br>  ");
+  //frame 12
+  av.umsg("Think about aby programming language. When we write a program we can write lines of code that do all what we need. However, these programming languages also provides us with a number of predefined functions/methods to help us reduce the amount of written code.");
+  av.step();
+
+  //frame 13
+  av.umsg(Frames.addQuestion("q13"));
+  av.step();
+  
+  //frame 14
+  av.umsg(Frames.addQuestion("q14"));
+  av.step();
+
+  //frame 15
+  av.umsg(Frames.addQuestion("q15"));
+  av.step();
+
+  //frame 16
+  av.umsg(Frames.addQuestion("q16"));
+  av.step();
+
+  //frame 17
+  av.umsg("Here are some basic machines and notation <br> &bull; Start state indicated with >.")
+  av.step();
+  
+  //frame 18
+  av.umsg(Frames.addQuestion("q18"));
   var letter1 = av.label("$>M_1$", {top: yStart + 10, left: xleft + 100});
   var letter2 = av.label("$M_2$", {top: yStart + 10, left: xleft + 200});
   var letter3 = av.label("$M_3$", {top: yStart + 90, left: xleft + 115});
@@ -49,7 +109,15 @@ $(document).ready(function () {
             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
   av.step();
   
-  //frame 4
+  //frame 19
+  av.umsg(Frames.addQuestion("q19"));
+  av.step();
+
+  //frame 20
+  av.umsg(Frames.addQuestion("q20"));
+  av.step();
+
+  //frame 21
   letter1.hide();
   letter2.hide();
   letter3.hide();
@@ -57,36 +125,48 @@ $(document).ready(function () {
   letter5.hide();
   arrow1.hide();
   arrow2.hide();
-  av.umsg("Continue with other examples: <br><br> Figure 9.2.4: (For Σ = {a, b, c}) Move head to the right until a blank is found. We will use the notation R<sub>#</sub> for this process.<br><br><br><br><br><br> Figure 9.2.5: Two views of a simple machine to find the first blank square to the left, and then transition to machine <i>M</i>. The version on the left shows this in greater detail. In the more abstract notation on the right, we use the notation <i>L<sub>#</sub></i>, and the transition to <i>M</i> on the horizontal line is assumed to occur on seeing the first <i>#</i> symbol.");
+  av.umsg(Frames.addQuestion("q21"));
   letter1 = av.label("$>R$", {top: 50, left: xleft + 100});
   letter2 = av.label("$\\overline{\\#}$", {top: 0, left: xleft + 115});
   // Curvy line1
   curvy1.show();
 
+  av.step();
+
+  //frame 22
+  av.umsg(Frames.addQuestion("q22"))
+  av.step();
+
+  //frame 23
+  letter1.hide();
+  letter2.hide();
+  curvy1.hide();
   letter3 = av.label("$>L$", {top: 50 + yStart, left: xleft + 100});
   letter4 = av.label("$\\overline{\\#}$", {top: 0 + yStart, left: xleft + 115});
   letter5 = av.label("$\\#$", {top: 35 + yStart, left: xleft + 160});
   var letter6 = av.label("$M$", {top: 50 + yStart, left: xleft + 200});
-  // Curvy line2
-  curvy2.show();
-  // Horizontal arrow
   arrow1 = av.g.line(140 + xleft, 75 + yStart, 195 + xleft, 75 + yStart,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+    {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  curvy2.show();
+  // Horizontal line
+  
+  av.umsg(Frames.addQuestion("q23"));
+  av.step();
 
+  //frame 24
   arrow2 = av.g.line(260 + xleft, 10 + yStart, 260 + xleft, 100 + yStart,
-            {"stroke-width": 3});
+    {"stroke-width": 3});
 
   // Right part
   var letter7 = av.label("$>L_{\\#}$", {top: 50 + yStart, left: xleft + 300});
   var letter8 = av.label("$M$", {top: 50 + yStart, left: xleft + 400});
   // Horizontal arrow
   var arrow3 = av.g.line(340 + xleft, 75 + yStart, 395 + xleft, 75 + yStart,
-            {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+    {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.umsg(Frames.addQuestion("q24"));
   av.step();
-
-  //frame 5
-  letter1.hide();
-  letter2.hide();
+    
+  //frame 25
   letter3.hide();
   letter4.hide();
   letter5.hide();
@@ -96,7 +176,7 @@ $(document).ready(function () {
   arrow1.hide();
   arrow2.hide();
   arrow3.hide();
-  curvy1.hide();
+  
   curvy2.hide();
   av.umsg("Figure 9.2.6: Copy Machine: Transform # w <u>#</u> into # w # w <u>#</u>. Note the difference between L<sub>#</sub> in the start state (which means move left until seeing the first blank), and L<sub>#</sub> at the bottom (which means move left and then write a space). <br><br><br><br><br><br><br><br><br> Figure 9.2.7: Shift a string right.");
   // first diagram
@@ -145,7 +225,7 @@ $(document).ready(function () {
                 {"stroke-width": 2, "arrow-end":"classic-wide-long"});
   av.step();
   
-  //frame 6
+  //frame 26
   letter1.hide();
   letter2.hide();
   letter3.hide();
@@ -169,7 +249,7 @@ $(document).ready(function () {
   av.umsg("<b>9.2.1.6. Turing Machine Extensions</b> <br><br> When we give extensions or new functionality to a computing system, sometimes they change something fundamental about the capabilities of the system. For example, when we add non-determinism to an algorithm, we <b>might</b> change the cost of the underlying problem from exponential to polynomial time. But, other changes do nothing fundamental. In terms of Turing machines, our concern is what the machine can do, rather than how long it takes to do it. Does non-determinism help us to solve the Halting problem? No. Likewise, the following extensions do not increase the power of Turing Machines.");
   av.step();
 
-  //frame 7
+  //frame 27
   av.umsg("&bull; <b><i>Limit the tape to be infinite in only one direction</i></b> <br><br> Our first example actually demonstrates that some limitations do not make a difference. Many textbooks on formal languages present the basic Turing Machine as having a tape that is infinite in only one direction. The folling diagram shows that we can easily simulate a tape infinite in two directions with a one-direction infinite tape. <br><br><br><br><br><br><br><br> The idea is to just bend the 2-way infinite tape in the middle, and store both directions of the tape into a single cell. This requires a greatly expanded alphabet, because we now need to be able to represent any combination of two characters. This will need more states, and probably more time. But it does not allow anything new in terms of capability.");
   ytop = 80;
   var cellwidth = 20;
@@ -241,7 +321,7 @@ $(document).ready(function () {
   av.step();
 
 
-  //frame 8
+  //frame 28
   for (var j = 0; j < clearlist1.length; j++){
     clearlist1[j].hide();
   }
@@ -306,7 +386,7 @@ $(document).ready(function () {
   av.step();
 
 
-  //frame 9
+  //frame 29
   for (var j = 0; j < clearlist1.length; j++){
     clearlist1[j].hide();
   }

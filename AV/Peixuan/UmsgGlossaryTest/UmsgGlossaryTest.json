@@ -1,0 +1,15 @@
+{
+    "translations": {
+        "en": {
+            "q0": {
+                "type": "select",
+				"description": "Test string :term:`linked lists <linked list>` and :term:`binary trees <binary tree>`",
+                "question": "Anwser is $A$",
+                "answer": "$A$",
+                "choices": ["$A$", "B", "C", "D"],
+				"correctFeedback": ["$A$ is the right answer"],
+				"incorrectFeedback": ["The right anwser is $A$"]
+            }
+        }
+    }
+}

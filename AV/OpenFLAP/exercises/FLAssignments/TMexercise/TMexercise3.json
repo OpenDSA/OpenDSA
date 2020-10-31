@@ -1,6 +1,11 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "TM",
+    "totalTestCases": 5,
+    "containLetters": ["a","b","c"],
+    "randomStringLength": [0, 15],
+    "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
+    "hardCodeCasesCounter": 5,
     "expression": "",
     "description": "Create a machine that is just like the one that you just did. However, instead of replacing the string with #'s, you will keep the string intact.",
     "type": "description",
@@ -23,5 +28,6 @@
     "graph": {
         "nodes": [],
         "edges": []
-    }
+    },
+    "solution": "./keepABC.xml"
 }]

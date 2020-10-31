@@ -195,7 +195,7 @@
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "Let us do the same in the PDA, what is the transition we should start with?",
         "answer": "$\\delta(q_0, \\lambda, z) = (q_1, Sz)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, Sz)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
       },
       "q35": {
         "type": "select",
