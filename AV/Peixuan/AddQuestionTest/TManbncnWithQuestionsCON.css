@@ -1,0 +1,9 @@
+#TManbncnWithQuestionsCON {
+  height: 760px;
+  weight: 700px;
+}
+
+#TManbncnWithQuestionsCON .jsavcanvas {
+  min-width: 700px !important;
+  top: 170px;
+}

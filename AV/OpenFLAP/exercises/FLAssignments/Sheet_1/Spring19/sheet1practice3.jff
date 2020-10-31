@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><structure>
+	<type>fa</type>
+	<automaton>
+		<state id="0" name="q0">
+			<x>115.19097137451172</x>
+			<y>82.96875</y>
+			<initial/>
+		</state>
+		<state id="1" name="q1">
+			<x>259.18404388427734</x>
+			<y>87.96875</y>
+		</state>
+		<state id="2" name="q2">
+			<x>419.20140838623047</x>
+			<y>73.9757080078125</y>
+		</state>
+		<state id="3" name="q3">
+			<x>569.2014083862305</x>
+			<y>76.97917175292969</y>
+			<final/>
+		</state>
+		<state id="4" name="q4">
+			<x>117.20487213134766</x>
+			<y>293.9930877685547</y>
+		</state>
+		<state id="5" name="q5">
+			<x>263.19445037841797</x>
+			<y>286.9791717529297</y>
+		</state>
+		<state id="6" name="q6">
+			<x>451.1979293823242</x>
+			<y>286.9791717529297</y>
+		</state>
+		<state id="7" name="q7">
+			<x>594.2014083862305</x>
+			<y>275.98960876464844</y>
+		</state>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>4</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>5</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>6</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>7</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>5</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>0</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>6</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>1</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>7</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>2</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>3</to>
+			<read>a</read>
+		</transition>
+	</automaton>
+</structure>
