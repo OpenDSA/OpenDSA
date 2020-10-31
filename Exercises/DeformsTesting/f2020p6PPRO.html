@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html data-require="jsav math MechSolverCommon">
+<head>
+  <title>Problem 6</title>
+  <script src="./mathjs.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="../../khan-exercises/local-only/main.js"></script>
+  <link rel = "stylesheet" type = "text/css" href = "./styles.css" />
+  <style></style>
+</head>
+
+<body data-height="400" data-width="970" data-canvas-height="1000">
+  <div class="exercise">
+    <div class="vars">
+      <var id="JSAV">mechSolverCommon.initJSAV("f2020p6PPRO","imperial",1000)</var>
+    </div>
+
+    <div class="problems">
+      <div id="f2020p6PPROp">
+        <p class="problem">
+          A solid circular shaft of
+
+          <span class="param" id="param" 
+          data-value="1" 
+          data-unit="in" 
+          data-value-display="1"
+          data-unit-display="in" 
+          data-domain="length">1 inch</span>
+
+          diameter transmits
+
+          <span class="param" id="param" 
+          data-value="20" 
+          data-unit="hp" 
+          data-value-display="20"
+          data-unit-display="hp" 
+          data-domain="power">20 horsepower</span>
+
+          (1 HP = 33,000 ft lb/min)
+
+          at
+
+          <span class="param" id="param" 
+          data-value="3000" 
+          data-unit="rpm" 
+          data-value-display="3000"
+          data-unit-display="rpm" 
+          data-domain="angularvelocity">3000 rpm</span>
+          
+          .
+        </p>
+
+        <div class="question">
+          <p class="question">
+            What is the maximum shear stress in the shaft?
+            <span class="solution-box" data-inputtype="number"></span>
+          </p>
+
+          <div>
+              <!-- no images -->
+          </div>
+          <br>
+        </div>
+        
+        <div id="f2020p6PPRO" class="jsavcanvas"></div>
+        
+        <div class="solution" data-type="custom">
+          <div class="guess"> 
+            [ mechSolverCommon.globalSolutionBoxes ]
+          </div>
+          <div class="validator-function">
+            var answer = mechSolverCommon.checkAnswer();
+            if (!guess[0] && !answer) {
+              return ""; // User did not click, and correct answer is not
+                         // initial array state
+            } else {
+              return answer;
+            }
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="hints">
+      <p>
+        Add different levels of hints corresponding to reaction from
+        the evaluator function in JS file.
+      </p>
+    </div> -->
+
+  </div>
+
+  <!-- Nerdamer solver-exclusive scripts -->
+  <script src="./jiggzson-nerdamer-432dd54/nerdamer.core.js"></script> 
+  <script src="./jiggzson-nerdamer-432dd54/Algebra.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Calculus.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Solve.js"></script>
+  <script src="./jiggzson-nerdamer-432dd54/Extra.js"></script>
+
+  <!-- MathJS scripts for unit conversion, etc. -->
+  <!-- <script src="./mathjs.js" type="text/javascript"></script> -->
+  <!-- This gets used in Variable.js, line 232 changeUnits() onwards -->
+
+  <!--- Scripts exclusive to MechSolver -->
+  <script src="MechSolver/Variable.js"></script>
+  <script src="MechSolver/ActiveEquation.js"></script>
+  <script src="MechSolver/Association.js"></script>
+  <script src="MechSolver/ValueBox.js"></script>
+  <script src="MechSolver/EquationBank.js"></script>
+  <script src="MechSolver/equation_bank.js"></script>
+  <script src="MechSolver/Workspace.js"></script>
+  <script src="MechSolver/WorkspaceList.js"></script>
+  <script src="MechSolver/WindowManager.js"></script>
+  
+  <!-- Utility files -->
+  <script src="MechSolver/Maps.js"></script>
+  <script src="MechSolver/HelpTexts.js"></script>
+  <script src="MechSolver/utils.js"></script>
+
+  <!-- Additional script files containing settings and solution files -->
+  <script src="DeformsDifficultProblemPPROsolution.js"></script>
+
+</body>
+
+</html>

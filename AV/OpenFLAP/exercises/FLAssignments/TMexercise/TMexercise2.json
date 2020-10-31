@@ -28,5 +28,6 @@
     "graph": {
         "nodes": [],
         "edges": []
-    }
+    },
+    "solution": "./eraseABC.xml"
 }]

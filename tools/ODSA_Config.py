@@ -30,7 +30,7 @@ optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_d
 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num',
 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'desc', 'av_origin',
 'av_root_dir', 'code_lang', 'course_id', 'LMS_url', 'module_map', 'inst_book_id','module_position','inst_exercise_id',
-'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled' ]
+'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled', 'zeropt_assignments' ]
 
 
 listed_modules = []
@@ -140,7 +140,7 @@ def validate_module(mod_name, module, conf_data):
     optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises',
                         'lms_module_item_id', 'lms_section_item_id','inst_book_id','module_position','inst_exercise_id',
                         'inst_chapter_id','options','inst_module_id','id', 'total_points', 'lms_assignment_id',
-                        'git_hash']
+                        'git_hash', 'zeropt_assignments']
 
     # Get module name
     get_mod_name(mod_name)
@@ -329,6 +329,9 @@ def set_defaults(conf_data):
                                   "C++": {"ext": [  "cpp",  "h"],"label": "C++","lang": "C++"
                                   }
                                 }
+
+    if 'zeropt_assignments' not in conf_data:
+        conf_data['zeropt_assignments'] = False
 
 def group_exercises(conf_data, no_lms):
     """group all exercises of one module in exercises attribute"""

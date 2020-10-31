@@ -1,12 +1,68 @@
 {
     "translations": {
       "en": {
-        "q1": {
+        "q2": {
+          "type": "select",
+          "description": "So far we have seen a few simple machine types, such as DFA, NFA, PDA, RegEx. And we have seen corresponding grammars:",
+          "question":"What is the corresponding grammar for DFA, NFA, RegEx?",
+          "answer": "Regular Grammars",
+          "choices": ["Regular Grammars", "Context-Free Grammars", "Unrestricted Grammars"]
+        },
+        "q3": {
+          "type": "select",
+          "description": "So far we have seen a few simple machine types, such as DFA, NFA, PDA, RegEx. And we have seen corresponding grammars:",
+          "question":"What is the corresponding grammar for PDAs?",
+          "answer": "Context-Free Grammars",
+          "choices": ["Regular Grammars", "Context-Free Grammars", "Unrestricted Grammars"]
+        },
+        "q4": {
+          "type": "select",
+          "description": "There are some differences in the machines.",
+          "question":"DFAs and NFAs are exactly the same.",
+          "answer": "No, DFAs are deterministic. NFAs add non-determinism, which simply means that there can be multiple choices out of a state for the same input character.",
+          "choices": ["Yes, they are equivelient", "No, DFAs are deterministic. NFAs add non-determinism, which simply means that there can be multiple choices out of a state for the same input character."]
+        },
+        "q5": {
+          "type": "select",
+          "description": "There are some differences in the machines.",
+          "question":"What are the differences between NFA and PDA",
+          "answer": ["DFA has no memory", "PDA has a stack for storage"],
+          "choices": ["DFA has no memory", "PDA has a stack for storage"]
+        },
+        "q6": {
+          "type": "select",
+          "description": "These machines all have some similarities",
+          "question":"What are the similarities between NFA and PDA",
+          "answer": ["They all take an input string.", "They all march across the string from left to right, one character at each step.", "They stop when they reach the end of the string and then make a simple decision (accept/reject"],
+          "choices": ["They all take an input string.", "They all march across the string from left to right, one character at each step.", "They stop when they reach the end of the string and then make a simple decision (accept/reject"]
+        },
+        "q7": {
+          "type": "select",
+          "description": "There are some differences in the machines.",
+          "question":"NFA and PDA are callecd acceptors",
+          "answer": "Yes, all that they can do is determine if a string is a member of the language, and the “more powerful” machines can accept or reject string from more “complicated” languages.",
+          "choices": ["No", "Yes, all that they can do is determine if a string is a member of the language, and the “more powerful” machines can accept or reject string from more “complicated” languages."]
+        },
+        "q8": {
+          "type": "select",
+          "description": "But there is a lot more that we typically expect when we talk about “computation”. Like, the ability to “compute” rather than simply accept.",
+          "question":"Suppose that $L$ is the language of all arithmatic expressions, the input for our machine is the string $2 + 3$, which of the following is a computation?",
+          "answer": "evaluate the expression $2 + 3$ and outpu $5$",
+          "choices": ["accepting the string $2 + 3$ as it is $\\in L$", "evaluate the expression $2 + 3$ and outpu $5$"]
+        },
+        "q13": {
+          "type": "select",
+          "description": "$\\textbf{State machines}$ are simple to understand. There are a number of different state machines, with a range of capabilities. We will discuss a particular one, called a $\\textbf{Turing machine}$. As we define \"capability\", the key is ability, not efficiency.",
+          "question":"Which of the following means ability of the machine",
+          "answer": ["evaluating an expression", "accepting/rejecting a string"],
+          "choices": ["evaluating an expression", "accepting/rejecting a string", "perform operations fast", "consume small amount of memory as possible"]
+        },
+        "q14": {
           "type": "select",
           "description": "The necessary capabilities for any such \"machine\" are these: <br> - Read <br> - Write <br> - Compute",
-          "question":"Please select all the capabilities of a States Machine",
-          "answer": ["Compute", "Write", "Read"],
-          "choices": ["Compute", "Write", "Rotate", "Read"]
+          "question":"What is the cabability of NFAs, DFAs, and PDAs",
+          "answer": "Read",
+          "choices": ["Compute", "Write", "Read"]
         },
         "q15": {
           "type": "select",

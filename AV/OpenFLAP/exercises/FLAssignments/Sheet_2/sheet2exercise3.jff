@@ -37,25 +37,12 @@
 		</state>
 		<transition>
 			<from>0</from>
-<<<<<<< HEAD
-			<to>4</to>
-			<read>a</read>
-		</transition>
-		<transition>
-			<from>0</from>
-=======
->>>>>>> origin/master
 			<to>1</to>
 			<read>b</read>
 		</transition>
 		<transition>
-<<<<<<< HEAD
-			<from>1</from>
-			<to>5</to>
-=======
 			<from>0</from>
 			<to>4</to>
->>>>>>> origin/master
 			<read>a</read>
 		</transition>
 		<transition>
@@ -64,13 +51,8 @@
 			<read>b</read>
 		</transition>
 		<transition>
-<<<<<<< HEAD
-			<from>2</from>
-			<to>6</to>
-=======
 			<from>1</from>
 			<to>5</to>
->>>>>>> origin/master
 			<read>a</read>
 		</transition>
 		<transition>
@@ -79,14 +61,11 @@
 			<read>b</read>
 		</transition>
 		<transition>
-<<<<<<< HEAD
-=======
 			<from>2</from>
 			<to>6</to>
 			<read>a</read>
 		</transition>
 		<transition>
->>>>>>> origin/master
 			<from>3</from>
 			<to>7</to>
 			<read>a</read>
@@ -98,25 +77,12 @@
 		</transition>
 		<transition>
 			<from>4</from>
-<<<<<<< HEAD
-			<to>0</to>
-			<read>a</read>
-		</transition>
-		<transition>
-			<from>4</from>
-=======
->>>>>>> origin/master
 			<to>5</to>
 			<read>b</read>
 		</transition>
 		<transition>
-<<<<<<< HEAD
-			<from>5</from>
-			<to>1</to>
-=======
 			<from>4</from>
 			<to>0</to>
->>>>>>> origin/master
 			<read>a</read>
 		</transition>
 		<transition>
@@ -125,13 +91,8 @@
 			<read>b</read>
 		</transition>
 		<transition>
-<<<<<<< HEAD
-			<from>6</from>
-			<to>2</to>
-=======
 			<from>5</from>
 			<to>1</to>
->>>>>>> origin/master
 			<read>a</read>
 		</transition>
 		<transition>
@@ -140,14 +101,11 @@
 			<read>b</read>
 		</transition>
 		<transition>
-<<<<<<< HEAD
-=======
 			<from>6</from>
 			<to>2</to>
 			<read>a</read>
 		</transition>
 		<transition>
->>>>>>> origin/master
 			<from>7</from>
 			<to>3</to>
 			<read>a</read>

@@ -186,7 +186,7 @@
 			"q28": {
       	"type": "multiple",
         "description": "To convert it to a Left Linear Grammar, we start with $(a+b)^*$.",
-        "question": "Whcih $(a+b)^*$ we should start with?",
+        "question": "Which $(a+b)^*$ we should start with?",
 				"answer": "$(a+b)^*$ at the end of the expression",
         "choices": [
           "$(a+b)^*$ at the end of the expression",
@@ -219,7 +219,7 @@
       	"type": "multiple",
         "description": "We need to convert $r = (a+b)^*aa(a+b)^*$.",
         "question": "What should we do to the higlighted production to generate the $aa$ part?",
-				"answer": "We should replace $\\lambda$ with a new variable that will represent the $aa$ part",
+				"answer": "We should replace $\\lambda$ with a new variable, say A, that will represent the $aa$ part",
         "choices": [
 					"We should replace $\\lambda$ with a new variable, say A, that will represent the $aa$ part",
 					"We should leave the production as it is."

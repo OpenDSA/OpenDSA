@@ -60,7 +60,7 @@
         "q12": {
           "type": "select",
           "description": "Unfortunaitly, there is no algorithm to remove ambiguity. But there are some common tricks<br/>Operator precedence",
-          "question": "Whcih operator has the highest precedence?",
+          "question": "Which operator has the highest precedence?",
           "answer": "*",
           "choices": ["*", "+", "-"]
         },

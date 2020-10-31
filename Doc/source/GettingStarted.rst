@@ -335,8 +335,7 @@ These instructions are geared toward Windows, since that is the
 hardest to install.
 For Linux or Mac, you can do pretty much the same thing (using sudo
 for root permissions, and getting the tools from your package
-manager),
-but can skip some of the steps.
+manager), but can skip some of the steps.
 
 
 First, install Git.
@@ -346,6 +345,7 @@ Use the third option for the path environment:
 "Use Git and optional Unix tools from the Windows Command Prompt".
 Choose "checkout as-is, commit Unix-style line endings",
 and then use "MinTTY".
+You can then check if git is installed with the ``git --version`` command from a fresh terminal.
 
 Finally pop open a **new** Git Bash window, and you are ready to get
 started.
