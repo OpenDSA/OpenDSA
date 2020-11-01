@@ -2577,83 +2577,92 @@ $(document).ready(function () {
 
   // interactive converting regular grammar(RG) to regular expression(RE)
   var RGtoRE = function () {
-    var result = "";
     if(checkLHSVariables()){
-        alert('Your production is unrestricted on the left hand side');
-        return;
-      }
-      if (!checkRightLinear()) {
-        alert('The grammar is not right-linear!');
-        return;
-      }
+      alert('Your production is unrestricted on the left hand side');
+      return;
+    }
+    if (!checkRightLinear()) {
+      alert('The grammar is not right-linear!');
+      return;
+    }
     var productions = _.filter(arr, function(x) { return x[0];});
     startParse();
     $('.jsavcontrols').hide();
+    $('#completeallbutton').show();
     $(m.element).css("margin-left", "auto");
-    if (productions.length === 0) {
-        alert('No grammar.');
-        return;
+    jsav.umsg('Complete the FA.');
+    // keep a map of variables to FA states
+    var nodeMap = {};
+    builtDFA = jsav.ds.FA({width: '90%', height: 440, layout: "automatic"});
+    builtDFA.enableDragging();
+    var newStates = [];     // variables
+    for (var i = 0; i < productions.length; i++) {
+      newStates.push(productions[i][0]);
+      newStates = newStates.concat(_.filter(productions[i][2], function(x) {return variables.indexOf(x) !== -1;}));
+    }
+    newStates = _.uniq(newStates);
+    // create FA states
+    for (var i = 0; i < newStates.length; i++) {
+      var n = builtDFA.addNode();
+      nodeMap[newStates[i]] = n;
+      if (i === 0) {
+        builtDFA.makeInitial(n);
       }
+      n.stateLabel(newStates[i]);
+    }
+    // add final state
+    var f = builtDFA.addNode();
+    // nodeMap[emptystring] = f;
+    f.addClass("final");
+    builtDFA.layout();
+    selectedNode = null;
 
-      var pDict = {};     // a dictionary mapping left sides to right sides
-      var flag = {};      // check where the pointer at
+    // check if FA is finished; if it is, ask if the user wants to export the FA
+    var checkDone = function () {
+      var edges = builtDFA.edges();
+      var tCount = 0;
+      for (var next = edges.next(); next; next = edges.next()) {
+        var w = next.weight().split('<br>');
+        tCount = tCount + w.length;
+      }
+      console.log("tCount: " + tCount + " productions.length: " + productions.length);
+      if (tCount === productions.length) {
+        var confirmed = confirm('Finished! Convert to Regular Expression?');
+        if (confirmed) {
+          localStorage.clear();
+          localStorage.setItem("toRE", true);
+          localStorage.setItem("FAtoREConvert", serialize(builtDFA));
+          window.open("./FAtoRE.html")
+        }
+      }
+    };
+
+
+    var completeConvertToFA = function() {
       for (var i = 0; i < productions.length; i++) {
-         if (!(productions[i][0] in pDict)) {
-           pDict[productions[i][0]] = [];
-           flag[productions[i][0]] = 0;   // initial pointer index
+        // if the current production is not finished yet
+        if (!m.isHighlight(i)){
+          var start = nodeMap[productions[i][0]];
+          var rhs = productions[i][2];
+          //if there is no capital letter, then go to final state
+          if(variables.indexOf(rhs[rhs.length-1]) === -1){
+            var end = f;
+            var w = rhs;
+          } else {
+            var end = nodeMap[rhs[rhs.length-1]];
+            var w = rhs.substring(0, rhs.length-1);
           }
-          pDict[productions[i][0]].push(productions[i][2]);
-      }
-      
-      // Start writting expression first with the starting state
-      result += writeRE(productions[0][0], 0);
-
-      // function for writing regular expression
-      function writeRE (state, index) {
-        var temp_result = "";
-        var has_lambda = checkLambda(state);
-        var has_parentheses = false;
-        for (var i = index; i < pDict[state].length; i++) {   // loop through state elements
-          flag[state] += 1;
-          var productstr = pDict[state][i];
-          if ((pDict[state].length > 1) && (i === 0)){ // open parentheses
-            temp_result += "(";
-            has_parentheses = true;
-          }
-          for (var j = 0; j < productstr.length; j++) { //loop through the element string
-            var product = productstr.charAt(j);
-            if (variables.indexOf(product) === -1 && (product !== emptystring)){
-              if ((pDict[state].length > 1) && (i > index) && j === 0){
-                temp_result += " + ";
-              }
-              temp_result += product;
-            }
-            else if(product !== emptystring){
-              temp_result += writeRE(product, flag[product]);
-            }
-            if ((pDict[state].length > 1) && !has_lambda && (i === (pDict[state].length-1)) && (j === (productstr.length - 1)) && has_parentheses) {
-              temp_result += ")";
-            }
-            else if ((pDict[state].length > 1) && has_lambda && (i === (pDict[state].length-1)) && (j === (productstr.length - 1)) && has_parentheses) {
-              temp_result += ")*";
-            }
+          m.highlight(i);
+          var newEdge = builtDFA.addEdge(start, end, {weight: w});
+          if (newEdge) {
+            newEdge.layout();
+            checkDone();
           }
         }
-        flag[state] = 0;   // set pointer index to initial
-        return temp_result;
       }
+    }
 
-      // check if the state has lambda
-      function checkLambda (state) {
-        var has_lambda = false;
-        for (var i = 0; i < pDict[state].length; i++) {
-          if (pDict[state][i] === emptystring){
-            has_lambda = true;
-          }
-        }
-        return has_lambda;
-      }
-    jsav.umsg("The regular Expression is: \n" + result);
+    $('#completeallbutton').click(completeConvertToFA);
   }
 
   // interactive converting context-free grammar to NPDA
