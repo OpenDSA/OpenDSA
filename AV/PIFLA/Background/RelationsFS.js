@@ -7,7 +7,7 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("Here we will define a <b>relation</b> on elements in a set, and catagorize various types of relations.");
+  av.umsg("Here we will define a :term:`relation` on elements in a set, and catagorize various types of relations.");
   av.displayInit();
   
   // Frame 2
@@ -31,7 +31,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 7
-  av.umsg("Here are some standard classifications for relations.<br/>$R$ is <b>reflexive</b> if $aRb$ for all $a \\in S$.<br/>$R$ is <b>irreflexive</b> if $aRa$ is not true for all $a \\in S$.<br/>$R$ is <b>symmetric</b> if whenever $aRb$, then $bRa$ for all $a, b \\in S$.<br/>$R$ is <b>antisymmetric</b> if whenever $aRb$ and $bRa$, then $a=b$ for all $a, b \\in S$.<br/>$R$ is <b>transitive</b> if whenever $aRb$ and $bRc$, then $aRc$ for all $a, b, c \\in S$.<br/><br/>The following slides will explore the significance to these catagories.");
+  av.umsg("Here are some standard classifications for relations.<br/>$R$ is :term:`reflexive` if $aRb$ for all $a \\in S$.<br/>$R$ is :term:`irreflexive` if $aRa$ is not true for all $a \\in S$.<br/>$R$ is :term:`symmetric` if whenever $aRb$, then $bRa$ for all $a, b \\in S$.<br/>$R$ is :term:`antisymmetric` if whenever $aRb$ and $bRa$, then $a=b$ for all $a, b \\in S$.<br/>$R$ is :term:`transitive` if whenever $aRb$ and $bRc$, then $aRc$ for all $a, b, c \\in S$.<br/><br/>The following slides will explore the significance to these catagories.");
   av.step();
 
   // Frame 8

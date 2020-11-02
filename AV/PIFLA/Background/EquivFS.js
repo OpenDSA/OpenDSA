@@ -7,8 +7,8 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("An <b>equivalence relation</b> is an especially important type of rlation. Relation $R$ on set $S$ is an equivalence relation if it is reflexive, symmetric, and transitive. An equivalence relation can be viewed as partitioning a set into <b>equivalence classes</b>. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$. A <b>partition</b> of a set $S$ is a collection of subsets that are <b>disjoint</b> from each other (that is, they share no elements) and whose union is $S$. An <b>equivalence relation</b> on $S$ partitions the set into disjoint subsets whose elements are equivalent. The UNION/FIND algorithm efficiently maintains equivalence classes on a set. Two graph algorithms that make use of disjoint sets is <b>connected component</b> finding and computing a <b>minimal cost spanning tree</b>.");
-  av.step();
+  av.umsg("An :term:`equivalence relation` is an especially important type of relation. Relation $R$ on set $S$ is an equivalence relation if it is reflexive, symmetric, and transitive. An equivalence relation can be viewed as partitioning a set into :term:`equivalence classes`. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$. A :term:`partition` of a set $S$ is a collection of subsets that are :term:`disjoint` from each other (that is, they share no elements) and whose union is $S$. An equivalence relation on $S$ partitions the set into disjoint subsets whose elements are equivalent. The UNION/FIND algorithm efficiently maintains equivalence classes on a set. Two graph algorithms that make use of disjoint sets is :term:`connected component` finding and computing a :term:`minimal-cost spanning tree`.");
+  av.displayInit();
 
   // Frame 2
   av.umsg(Frames.addQuestion("equivalent"));
@@ -27,7 +27,7 @@ $(document).ready(function () {
   av.step();
   
   // Frame 20
-  av.umsg("A binary relation is called a <b>partial order</b> if it is antisymmetric and transitive. If the relation is reflexive, it is called a <b>non-strict partial order</b>. If the relation is irreflexive, it is called a <b>strict partial order</b>. The set on which the partial order is defined is called a <b>partially ordered set</b> or a <b>poset</b>. Elements $x$ and $y$ of a set are <b>comparable</b> under a given relation $R$ if either $xRy$ or $yRx$. If every pair of distinct elements in a partial order are comparable, then the order is called a <b>total order</b> or <b>linear order</b>.");
+  av.umsg("A binary relation is called a :term:`partial order` if it is antisymmetric and transitive. If the relation is reflexive, it is called a :term:`non-strict partial order`. If the relation is irreflexive, it is called a :term:`strict partial order`. The set on which the partial order is defined is called a :term:`partially ordered set` or a :term:`poset`. Elements $x$ and $y$ of a set are :term:`comparable` under a given relation $R$ if either $xRy$ or $yRx$. If every pair of distinct elements in a partial order are comparable, then the order is called a :term:`total order` or :term:`linear order`.");
   av.step();
 
   // Frame 21
