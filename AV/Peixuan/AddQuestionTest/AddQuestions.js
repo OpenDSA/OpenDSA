@@ -2153,14 +2153,14 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
       tapeVals.push("#")
       return [{
         "type": "multiple",
-        "question": "What will be the tape head shifts scanning?",
+        "question": "What will be the current input letter?",
         "description": "The current cell value is becoming " + state["node"] + ".",
         "answer": state["weight"][0], //String if type is multiple, array of string if select
         "choices":tapeVals
       },
       {
         "type": "multiple",
-        "question": "What will be the state?",
+        "question": "Based on the current input and current state, what is the target state?",
         "description": "The current cell value is becoming " + state["node"] + ".",
         "answer": state["weight"][3], //String if type is multiple, array of string if select
         "choices": strNodes
@@ -2171,21 +2171,21 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
       tapeVals.push("#")
       return [{
         "type": "multiple",
-        "question": "Which direction the tape head is shifting?",
+        "question": "Which direction the tape head is moving toward to?",
         "description": "The current cell remains the same",
         "answer": state["node"] === "right one cell, " ? "Right" : "Left", //String if type is multiple, array of string if select
         "choices": ["Right" , "Left"]
       },
       {
         "type": "multiple",
-        "question": "What will be scanning?",
+        "question": "What will be the current input letter?",
         "description": "The current cell remains the same",
         "answer": state["weight"][2], //String if type is multiple, array of string if select
         "choices": tapeVals
       },
       {
         "type": "multiple",
-        "question": "What will be the state?",
+        "question": "Based on the current input and current state, what is the target state?",
         "description":  "The current cell remains the same",
         "answer": state["weight"][3], //String if type is multiple, array of string if select
         "choices": strNodes
@@ -2196,21 +2196,21 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
       tapeVals.push("#")
       return [{
         "type": "multiple",
-        "question": "Which direction the tape head is shifting?",
+        "question": "Based on the current transition: $\\delat (" + "" + "q_2, c), what which direction the tape head is moving?",
         "description": "The current cell value is becoming " + state["node"] + ".",
         "answer": state["relatedTo"] === "right one cell, " ? "Right" : "Left", //String if type is multiple, array of string if select
         "choices": ["Right" , "Left"]
       },
       {
         "type": "multiple",
-        "question": "What will be scanning?",
+        "question": "What will be the current input letter?",
         "description": "The current cell value is becoming " + state["node"] + ".",
         "answer": state["weight"][2], //String if type is multiple, array of string if select
         "choices": tapeVals
       },
       {
         "type": "multiple",
-        "question": "What will be the state?",
+        "question": "Based on the current input and current state, what is the target state?",
         "description":  "The current cell value is becoming " + state["node"] + ".",
         "answer": state["weight"][3], //String if type is multiple, array of string if select
         "choices": strNodes
@@ -2224,6 +2224,7 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
   };
 
   var currentStack = updateAutoQuestionStack(av_name);
+  console.log(steps);
   var questions = generateQuestions(steps, av, configure, av_name);
   // initialize PI frame
   var Frames = piInit(av_name, questions, piframesLocations);
