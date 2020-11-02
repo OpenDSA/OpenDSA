@@ -3,7 +3,7 @@
     "en": {
       "alpha": {
         "type": "select",
-        "description": "Let's start with an :term:'alphabet'. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). Alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols}.",
+        "description": "Let's start with an :term:`alphabet`. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). Alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols}.",
         "question": "Which of the following is an alphabet?",
         "answer": ["$\\{a, b, c\\}$", "$\\{0, 1\\}$", "$\\{?, a, x\\}$"],
         "choices": ["$\\{a, b, c\\}$", "$\\{0, 1\\}$", "$A$", "$\\{?, a, x\\}$"],
