@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
    <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" /> 
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
   <link rel="stylesheet" href="graphicsTest.css" type="text/css" />
 </head>
 
@@ -25,7 +25,7 @@
     </tr>
   </table>
   <p>
-    Use the buttons to see the effect of accumulated three-dimensional rotations around each of the axes.  
+    Use the buttons to see the effect of accumulated three-dimensional rotations around each of the axes.
   </p>
 
   <form id="ssperform">
@@ -39,7 +39,7 @@
   </form>
 
   <div class="avcontainer">
-    
+
     <br>
     <canvas id="gl-canvas" width="512" height="512">
       Oops ... your browser does not support the HTML5 canvas element
@@ -60,18 +60,18 @@ varying vec4 fColor;
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
 
-void main() 
+void main()
 {
     gl_Position = projectionMatrix*modelViewMatrix*vPosition;
     fColor = vColor;
-} 
+}
 
 </script>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
 
 precision mediump float;
-   
+
 varying vec4 fColor;
 
 void
@@ -83,6 +83,7 @@ main()
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../lib/timeme-min.js"></script>
 <script src="../../lib/jquery.transit.js"></script>
 
 

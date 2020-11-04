@@ -11,47 +11,49 @@ PYTHON_LINT = pyLint --disable=C --reports=y
 ODSA_ENV ?= DEV
 PYTHON ?= python
 VENVDIR = .pyVenv
-ACTIVATE = source $(VENVDIR)/bin/activate 
+ACTIVATE = source $(VENVDIR)/bin/activate
 VENV_PYTHON = $(VENVDIR)/bin/python
-PYTHON_FLAGS = -bb 
-# PYTHON_FLAGS += -Werror 
+PYTHON_FLAGS = -bb
+# PYTHON_FLAGS += -Werror
 
 
 # Changes for installs on native Windows:
-ifeq ($(OS),Windows_NT) 
+ifeq ($(OS),Windows_NT)
 	SHELL = bash.exe
 	ACTIVATE = . $(VENVDIR)/Scripts/activate
 	VENV_PYTHON = $(VENVDIR)/Scripts/python
 endif
 
-JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
+JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
 CSS_MINIFY = cleancss
 ifeq ($(strip $(ODSA_ENV)),DEV)
 	# fake-minify for easier debugging in DEV setups...
-	JS_MINIFY = cat 
+	JS_MINIFY = cat
 	CSS_MINIFY = cat
 endif
 
 
 # For the python virtual environment:
-.PHONY: venv clean-venv pyVenvCheck 
+.PHONY: venv clean-venv pyVenvCheck
 pyVenvCheck: venv
 	$(PYTHON) tools/pyVenvCheck.py
+
 venv: $(VENVDIR)/.pipMarker
 $(VENVDIR)/.pipMarker: $(VENVDIR)/.venvMarker requirements.txt
 	$(ACTIVATE) && pip install --requirement requirements.txt
 	touch $@
-$(VENVDIR)/.venvMarker: 
+$(VENVDIR)/.venvMarker:
 	@echo "Using env variable: PYTHON=$(PYTHON)"
 	@echo -n 'Making new $(VENVDIR) using: ' && $(PYTHON) --version
 	$(PYTHON) -m venv $(VENVDIR)
 	$(ACTIVATE) && python -m pip install --upgrade setuptools pip
 	touch $@
+
 clean-venv:
 	- $(RM) $(VENVDIR)
 	@ echo "Note: Use 'deactivate' if $(VENVDIR) is still activated"
 
-.PHONY: clean min pull Webserver 
+.PHONY: clean min pull Webserver
 
 Webserver:
 	@-echo -n "System is: " & uname -s
@@ -137,21 +139,21 @@ jsonlint:
 
 
 pyLint:
-	$(PYTHON_LINT) server.py tools/*.py RST/ODSAextensions/**/*.py 
+	$(PYTHON_LINT) server.py tools/*.py RST/ODSAextensions/**/*.py
 	# $(PYTHON_LINT) SourceCode/Python/**/*.py # These are python 2!!!
 
 rst2json: pyVenvCheck
 	python tools/rst2json.py
 
-JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV
+JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV timeme
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
 JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 
-CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook  
+CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
-min: $(JS_MIN_FILES) $(CSS_MIN_FILES) 
+min: $(JS_MIN_FILES) $(CSS_MIN_FILES)
 ifeq ($(strip $(ODSA_ENV)),DEV)
 	@echo 'Completed: FAKE-Minify of many .js and .css files (just copied)'
 else
@@ -179,7 +181,7 @@ BOOKS = $(filter-out $(SLIDE_BOOKS),$(ALL_BOOKS))
 allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
 
 # A Static-Pattern Rule for making Books
-# TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
+# TODO: can remove -bb option once all py3 str encoding in odsa is debugged
 $(BOOKS): % : config/%.json min pyVenvCheck
 	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) $< --no-lms
 	@echo "Created an eBook in Books/: $@"
@@ -204,4 +206,3 @@ CS5040MasterN: min pyVenvCheck
 
 CS3SS18notes: min pyVenvCheck
 	python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
-
