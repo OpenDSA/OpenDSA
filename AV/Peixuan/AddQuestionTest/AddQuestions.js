@@ -2145,7 +2145,6 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
   var strNodes = toStrNodes(trav.TM);
 
   var generateNodesChoices = function (answer){
-    debugger;
     var numGenerated = Math.min(2, strNodes.length - 1);
     var res = [answer]
     for(var i = 0 ; i < numGenerated ; i++){
@@ -2206,9 +2205,7 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
   };
 
   var currentStack = updateAutoQuestionStack(av_name);
-  console.log(steps);
   var questions = generateQuestions(steps, av, configure, av_name);
-  console.log(questions);
   // initialize PI frame
   var Frames = piInit(av_name, questions, piframesLocations);
   var questionsIndex = 0;
