@@ -43,11 +43,11 @@
         "choices": ["For Zero part, connct the new start state to the new final state", "Connect the new final state to the new start state"]
       },
       "q12": {
-        "type": "multiple",
+        "type": "select",
         "description": "Exactly, we need to repeat $r$ as much as we want, so we need to go back to the start state using a $\\lambda$ transition",
-        "question":"Why do we used $\\lambda$ transitions?",
-        "answer": "We need a free transitions between states",
-        "choices": ["We need a free transitions between states", "Something else"]
+        "question":"Ee used $\\lambda$ transitions because we need a free transitions between states",
+        "answer": "True",
+        "choices": []
       }
       
     }
