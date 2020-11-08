@@ -51,11 +51,11 @@
         "choices": ["The final state for NFA $s$", "The final state for NFA $r$", "The final state for the NFA $s$ and the NFA $r$"]
       },
       "q14": {
-        "type": "multiple",
+        "type": "select",
         "description": "Correct. Once the string is accepted in any NFA this means that this string belongs to the language $L(r+s)$.",
-        "question":"What is the transitiong letter?",
-        "answer": "$\\lambda$ transition",
-        "choices": ["$\\lambda$ transition", "Something else"]
+        "question":"The transitiong letter is $\\lambda$",
+        "answer": "True",
+        "choices": []
       }
       ,
       "q15": {

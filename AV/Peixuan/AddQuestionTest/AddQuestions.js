@@ -2144,77 +2144,58 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
   var av = trav.jsavs;
   var strNodes = toStrNodes(trav.TM);
 
+  var generateNodesChoices = function (answer){
+    var numGenerated = Math.min(2, strNodes.length - 1);
+    var res = [answer]
+    for(var i = 0 ; i < numGenerated ; i++){
+      var index = Math.floor(Math.random() * strNodes.length);
+      if(res.includes(strNodes[index])){
+        i--;
+      }
+      else{
+        res.push(strNodes[index])
+      }
+    }
+    return res;
+  }
   var generatingFunction = function (state) {
     if (state === "empty"){
       return null;
     }
     else if (state["relatedTo"] === ""){
-      var tapeVals = uniqueChar(state["weight"][1])
-      tapeVals.push("#")
+      var tapeVals = uniqueChar(state["weight"][1]);
+      tapeVals.push("#");
       return [{
-        "type": "multiple",
-        "question": "What will be the current input letter?",
+        "type": "select",
+        "question": "Based on the current cell value and transition, what will be the current input letter and what is the target state? (Please select all the correct answers)",
         "description": "The current cell value is becoming " + state["node"] + ".",
-        "answer": state["weight"][0], //String if type is multiple, array of string if select
-        "choices":tapeVals
-      },
-      {
-        "type": "multiple",
-        "question": "Based on the current input and current state, what is the target state?",
-        "description": "The current cell value is becoming " + state["node"] + ".",
-        "answer": state["weight"][3], //String if type is multiple, array of string if select
-        "choices": strNodes
-      }]
+        "answer": [state["weight"][2], state["weight"][3]], //String if type is multiple, array of string if select
+        "choices": tapeVals.concat(generateNodesChoices(state["weight"][3]))
+      }];
     }
     else if (state["type"] === "sameCellWithTapDefined" || state["type"] === "cellRemainsWithTapNotDefined" || state["type"] === "cellRemainsWithTapValueElse"){
-      var tapeVals = uniqueChar(state["weight"][1])
-      tapeVals.push("#")
-      return [{
-        "type": "multiple",
-        "question": "Which direction the tape head is moving toward to?",
-        "description": "The current cell remains the same",
-        "answer": state["node"] === "right one cell, " ? "Right" : "Left", //String if type is multiple, array of string if select
-        "choices": ["Right" , "Left"]
-      },
-      {
-        "type": "multiple",
-        "question": "What will be the current input letter?",
-        "description": "The current cell remains the same",
-        "answer": state["weight"][2], //String if type is multiple, array of string if select
-        "choices": tapeVals
-      },
-      {
-        "type": "multiple",
-        "question": "Based on the current input and current state, what is the target state?",
-        "description":  "The current cell remains the same",
-        "answer": state["weight"][3], //String if type is multiple, array of string if select
-        "choices": strNodes
-      }]
+      var tapeVals = uniqueChar(state["weight"][1]);
+      tapeVals.push("#");
+      return [
+          {
+            "type": "select",
+            "question": "Based on the current cell value and transition, which direction the tape head is moving, what will be the current input letter and what is the target state? (Please select all the correct answers)",
+            "description": "The current cell remains the same",
+            "answer": [state["weight"][2], state["weight"][3], state["node"].includes("right") ? "Right" : "Left"], //String if type is multiple, array of string if select
+            "choices": tapeVals.concat(generateNodesChoices(state["weight"][3])).concat(["Right" , "Left"])
+          }];
     }
     else if (state["type"] === "cellChangedWithTapDefined" || state["type"] === "cellChangedWithTapNotDefined" || state["type"] === "cellChangedWithTapValueElse"){
-      var tapeVals = uniqueChar(state["weight"][1])
-      tapeVals.push("#")
-      return [{
-        "type": "multiple",
-        "question": "Based on the current transition: $\\delat (" + "" + "q_2, c), what which direction the tape head is moving?",
-        "description": "The current cell value is becoming " + state["node"] + ".",
-        "answer": state["relatedTo"] === "right one cell, " ? "Right" : "Left", //String if type is multiple, array of string if select
-        "choices": ["Right" , "Left"]
-      },
-      {
-        "type": "multiple",
-        "question": "What will be the current input letter?",
-        "description": "The current cell value is becoming " + state["node"] + ".",
-        "answer": state["weight"][2], //String if type is multiple, array of string if select
-        "choices": tapeVals
-      },
-      {
-        "type": "multiple",
-        "question": "Based on the current input and current state, what is the target state?",
-        "description":  "The current cell value is becoming " + state["node"] + ".",
-        "answer": state["weight"][3], //String if type is multiple, array of string if select
-        "choices": strNodes
-      }]
+      var tapeVals = uniqueChar(state["weight"][1]);
+      tapeVals.push("#");
+      return [
+        {
+          "type": "select",
+          "question": "Based on the current cell value and transition, which direction the tape head is moving, what will be the current input letter and what is the target state? (Please select all the correct answers)",
+          "description": "The current cell value is becoming " + state["node"] + ".",
+          "answer": [state["weight"][2], state["weight"][3], state["relatedTo"].includes("right") ? "Right" : "Left"], //String if type is multiple, array of string if select
+          "choices": tapeVals.concat(generateNodesChoices(state["weight"][3])).concat(["Right" , "Left"])
+        }];
     }
   }
   var configure = {
@@ -2224,7 +2205,6 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
   };
 
   var currentStack = updateAutoQuestionStack(av_name);
-  console.log(steps);
   var questions = generateQuestions(steps, av, configure, av_name);
   // initialize PI frame
   var Frames = piInit(av_name, questions, piframesLocations);
@@ -2299,17 +2279,12 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
 
       if(first == "true"){
         first = "false";
-        if(Object.keys(questions["translations"]["en"]).length !== questionsIndex){
-          trav.jsavs.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
-          questionsIndex++;
-          trav.jsavs.step();
-        }
-        if(Object.keys(questions["translations"]["en"]).length !== questionsIndex){
-          trav.jsavs.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
-          questionsIndex++;
-        }
-
         nodess[0].highlight();
+        jsav.step();
+        if(Object.keys(questions["translations"]["en"]).length !== questionsIndex){
+          trav.jsavs.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+          questionsIndex++;
+        }
         jsav.step();
       }
       else{
@@ -2446,12 +2421,10 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
           //configView.push(currentStates[j].toString());
         }
         jsav.step();
-        for (var i = 0 ; i < 3 ; i++){
-          if(Object.keys(questions["translations"]["en"]).length !== questionsIndex){
-            trav.jsavs.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
-            questionsIndex++;
-            trav.jsavs.step();
-          }
+        if(Object.keys(questions["translations"]["en"]).length !== questionsIndex){
+          trav.jsavs.umsg(Frames.addQuestion(String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)));
+          questionsIndex++;
+          trav.jsavs.step();
         }
       }
     }
@@ -2568,7 +2541,7 @@ var getOnClickTraverseData = function(trav, inputStrings) {
                     "relatedTo" :arr[indexx],
                     "type" : "sameCellWithTapDefined",
                     "weight" : ["", inputString, tapeValue]
-                  }]
+                  }];
                 }
                 else{
                   phraseChanged = [{
@@ -2576,7 +2549,7 @@ var getOnClickTraverseData = function(trav, inputStrings) {
                     "relatedTo" :direction,
                     "type" : "cellChangedWithTapDefined",
                     "weight" : [arr[indexx], inputString, tapeValue]
-                  }]
+                  }];
                   tape.setCurrentValue(letChanged);
                 }
                 if (w[1] !== square){

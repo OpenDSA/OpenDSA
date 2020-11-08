@@ -9,6 +9,15 @@
                 "choices": ["$A$", "B", "C", "D"],
 				"correctFeedback": ["$A$ is the right answer"],
 				"incorrectFeedback": ["The right anwser is $A$"]
+            },
+			"q1": {
+                "type": "select",
+				"description": "Test: :term:`minimal-cost spanning tree`, :term:`tree <minimal-cost spanning tree>`",
+                "question": "Anwser is $A$",
+                "answer": "$A$",
+                "choices": ["$A$", "B", "C", "D"],
+				"correctFeedback": ["$A$ is the right answer"],
+				"incorrectFeedback": ["The right anwser is $A$"]
             }
         }
     }
