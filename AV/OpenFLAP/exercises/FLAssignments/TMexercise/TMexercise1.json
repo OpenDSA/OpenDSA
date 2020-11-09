@@ -12,22 +12,28 @@
     "type": "description",
     "testCases": [
       {
-        "": "a"
+        "": "a",
+        "ShowTestCase":false
       },
       {
-        "a": "aa"
+        "a": "aa",
+        "ShowTestCase":false
       },      
       {
-        "aa": "aaa"
+        "aa": "aaa",
+        "ShowTestCase":false
       },
       {
-        "aaa": "aaaa"
+        "aaa": "aaaa",
+        "ShowTestCase":false
       },
       {
-        "aaaa": "aaaaa"
+        "aaaa": "aaaaa",
+        "ShowTestCase":true
       },
       {
-        "aaaaaa": "aaaaaaa"
+        "aaaaaa": "aaaaaaa",
+        "ShowTestCase":true
       }
     ],
     "graph": {

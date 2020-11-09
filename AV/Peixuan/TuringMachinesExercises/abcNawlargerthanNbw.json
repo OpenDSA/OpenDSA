@@ -10,22 +10,28 @@
   "description": "Write a turing machine that accepts the language:___",
   "type": "description",
   "testCases": [{
-      "aaaaaa": true
+      "aaaaaa": true,
+      "ShowTestCase":true
     },
     {
-      "acacaa": false
+      "acacaa": false,
+      "ShowTestCase":true
     },
     {
-      "bbaaba": false
+      "bbaaba": false,
+      "ShowTestCase":true
     },
     {
-      "acacaaa": true
+      "acacaaa": true,
+      "ShowTestCase":true
     },
     {
-      "babaaba": true
+      "babaaba": true,
+      "ShowTestCase":true
     },
     {
-      "abcbaaa": true
+      "abcbaaa": true,
+      "ShowTestCase":true
     }
   ],
   "graph": {

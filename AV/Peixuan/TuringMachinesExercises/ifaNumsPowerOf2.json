@@ -10,19 +10,24 @@
   "description": "Give a Turing Machine that decides if all strings that has a number of a’s that is a power of two or not.___. In other words, it implements the language in Turing Decidable form.",
   "type": "description",
   "testCases": [{
-      "λ": "N"
+      "λ": "N",
+      "ShowTestCase":true
     },
     {
-      "a": "N"
+      "a": "N",
+      "ShowTestCase":true
     },
     {
-      "aa": "Y"
+      "aa": "Y",
+      "ShowTestCase":true
     },
     {
-      "aaa": "N"
+      "aaa": "N",
+      "ShowTestCase":true
     },
     {
-      "aaaa": "Y"
+      "aaaa": "Y",
+      "ShowTestCase":true
     }
   ],
   "graph": {

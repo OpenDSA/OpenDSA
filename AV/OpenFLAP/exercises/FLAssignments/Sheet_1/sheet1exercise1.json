@@ -1,8 +1,8 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "DFA",
-    "totalTrueCases": 9,
-    "totalFalseCases": 6,
+    "totalTrueCases": 10,
+    "totalFalseCases": 10,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
@@ -12,49 +12,65 @@
     "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s.",
     "type": "description",
     "testCases": [{
-            "a": true
+            "a": true,
+            "ShowTestCase":false
         },
         {
-            "bbbba": true
+            "bbbba": true,
+            "ShowTestCase":true
+            
         },
         {
-            "abbbb": true
+            "abbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aa": false
+            "aa": false,
+            "ShowTestCase":true
         },
         {
-            "bbbbb": false
+            "bbbbb": false,
+            "ShowTestCase":true
         },
         {
-            "aaa": true
+            "aaa": true,
+            "ShowTestCase":false
         },
         {
-            "abbabbba": true
+            "abbabbba": true,
+            "ShowTestCase":false
         },
         {
-            "aaabbbb": true
+            "aaabbbb": true,
+            "ShowTestCase":false
         },
         {
-            "bbbbaaa": true
+            "bbbbaaa": true,
+            "ShowTestCase":false
         },
         {
-            "aaaa": false
+            "aaaa": false,
+            "ShowTestCase":false
         },
         {
-            "aba": false
+            "aba": false,
+            "ShowTestCase":false
         },
         {
-            "abbbbbba": false
+            "abbbbbba": false,
+            "ShowTestCase":false
         },
         {
-            "abbbbbaaabbbbba": true
+            "abbbbbaaabbbbba": true,
+            "ShowTestCase":false
         },
         {
-            "bab": true
+            "bab": true,
+            "ShowTestCase":false
         },
         {
-            "baba": false
+            "baba": false,
+            "ShowTestCase":false
         }
     ],
     "graph": {

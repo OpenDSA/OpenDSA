@@ -212,7 +212,7 @@
     $.fx.off = prevFx;
     return this.score;
   };
-
+  
   exerproto.showGrade = function () {
     // shows an alert box of the grade
     this.grade();

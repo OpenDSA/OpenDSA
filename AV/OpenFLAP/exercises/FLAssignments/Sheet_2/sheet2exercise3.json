@@ -12,40 +12,52 @@
     "description": "Construct the DFA that accepts the complement of L, where L is the language over Σ ={a,b} of any even number of a’s and at most three b’s",
     "type": "description",
     "testCases": [{
-            "aaaaaa": false
+            "aaaaaa": false,
+            "ShowTestCase":false
         },
         {
-            "aabbb": false
+            "aabbb": false,
+            "ShowTestCase":true
         },
         {
-            "ababaa": false
+            "ababaa": false,
+            "ShowTestCase":true
         },
         {
-            "b": false
+            "b": false,
+            "ShowTestCase":true
         },
         {
-            "abababababaab": true
+            "abababababaab": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbbbbbb": true
+            "aaabbbbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbabbbbbbb": true
+            "bbabbbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aabaabaaabb": true
+            "aabaabaaabb": true,
+            "ShowTestCase":true
         },
         {
-            "babbb": true
+            "babbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaabbbb": true
+            "aaaaaaabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "ababababababa": true
+            "ababababababa": true,
+            "ShowTestCase":true
         },
         {
-            "abbabab": true
+            "abbabab": true,
+            "ShowTestCase":true
         }
 
     ],

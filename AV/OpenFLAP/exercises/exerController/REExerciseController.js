@@ -50,6 +50,7 @@ controllerProto.load = function () {
 controllerProto.startTesting = function (fa, solution) {
 	tryC++;
 	this.fa = fa;
+
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
 	var count = 0;
@@ -60,6 +61,17 @@ controllerProto.startTesting = function (fa, solution) {
 	}
 	//For DFA exercises, we need to check if the machine is a DFA not an NFA.
 	var exercise = this.tests[this.currentExercise];
+
+	var testCaseList = exercise.testCases;
+	var containHideTest = false;
+	var wrongCounter = 0;
+	for(var check = 0 ; check < testCaseList.length; check++){
+			if(testCaseList[check].ShowTestCase == false ){
+				containHideTest = true;
+				break;
+			}
+	}
+
 	this.fa = FiniteAutomaton.convertNFAtoDFA(this.jsav, this.fa);
 	var type = exercise["type"];
 	var numberOfTestCases = this.testCases.length;
@@ -70,12 +82,28 @@ controllerProto.startTesting = function (fa, solution) {
 		var inputOrLambda = input === "" ? lambda : input;
 		var inputResult = FiniteAutomaton.willReject(this.fa, input);
 		if (inputResult !== testCase[input]) {
+			if(testCaseList[i].ShowTestCase == true){
 			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
+			}
 			count++;
 			testRes.push('Test' + testNum + ':' + 'Correct');
 		} else {
+			if(testCaseList[i].ShowTestCase == true){
 			$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
+			}
+			else{
+				wrongCounter = wrongCounter + 1;
+			}
 			testRes.push('Test' + testNum + ':' + 'Wrong');
+	
+		}
+	}
+	if(containHideTest){
+		if(wrongCounter == 0){
+			$("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" + "Accept"  + "</td><td class='correct'>" + "Accept" + "</td></tr>");
+		}
+		else{
+			$("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" +  "Accept" + "</td><td class='wrong'>" + "Reject" + "</td></tr>");
 		}
 	}
 	var exer = {};

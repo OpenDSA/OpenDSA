@@ -12,22 +12,28 @@
     "description": "",
     "type": "expression",
     "testCases": [{
-            "aaaabb": true
+            "aaaabb": true,
+            "ShowTestCase":true
         },
         {
-            "aab": true
+            "aab": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaabbbb": true
+            "aaaaaaaabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaabbb": true
+            "aaaaaabbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaaabbbbb": true
+            "aaaaaaaaaabbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "": false
+            "": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

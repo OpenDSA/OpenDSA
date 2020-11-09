@@ -12,40 +12,52 @@
     "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s and at most three b’s.",
     "type": "description",
     "testCases": [{
-            "bbb": false
+            "bbb": false,
+            "ShowTestCase":true
         },
         {
-            "bbab": true
+            "bbab": true,
+            "ShowTestCase":true
         },
         {
-            "a": true
+            "a": true,
+            "ShowTestCase":true
         },
         {
-            "bab": true
+            "bab": true,
+            "ShowTestCase":true
         },
         {
-            "baba": false
+            "baba": false,
+            "ShowTestCase":true
         },
         {
-            "babb": true
+            "babb": true,
+            "ShowTestCase":true
         },
         {
-            "bababa": true
+            "bababa": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbb": true
+            "aaabbb": true,
+            "ShowTestCase":true
         },
         {
-            "baabaaba": true
+            "baabaaba": true,
+            "ShowTestCase":true
         },
         {
-            "aabbbaab": false
+            "aabbbaab": false,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaab": true
+            "aaaaaaaaab": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaabbbb": false
+            "aaaaaaaaabbbb": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

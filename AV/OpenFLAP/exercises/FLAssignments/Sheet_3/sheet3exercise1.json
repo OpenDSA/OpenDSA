@@ -12,43 +12,56 @@
     "description": "Give a regular expression whose language is strings over {a, b} in  w contains bba as a substring that starts in an even numbered position.",
     "type": "description",
     "testCases": [{
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "bba": true
+            "bba": true,
+            "ShowTestCase":true
         },
         {
-            "abababaa": false
+            "abababaa": false,
+            "ShowTestCase":true
         },
         {
-            "aabba": true
+            "aabba": true,
+            "ShowTestCase":true
         },
         {
-            "babba": true
+            "babba": true,
+            "ShowTestCase":true
         },
         {
-            "bbaabaaa": true
+            "bbaabaaa": true,
+            "ShowTestCase":true
         },
         {
-            "bbaabbabab": true
+            "bbaabbabab": true,
+            "ShowTestCase":true
         },
         {
-            "bbabbbb": true
+            "bbabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbaaaaa": true
+            "bbaaaaa": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbaaa": false
+            "aaabbaaa": false,
+            "ShowTestCase":true
         },
         {
-            "bbbbabbab": true
+            "bbbbabbab": true,
+            "ShowTestCase":true
         },
         {
-            "aaaabbabbbb": true
+            "aaaabbabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "abbabba": true
+            "abbabba": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

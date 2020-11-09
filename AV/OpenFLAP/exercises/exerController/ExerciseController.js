@@ -48,6 +48,15 @@ controllerProto.load = function () {
 }
 
 controllerProto.startTesting = function () {
+	var testCaseList = this.tests[0].testCases;
+	var containHideTest = false;
+	var wrongCounter = 0;
+	for(var check = 0 ; check < testCaseList.length; check++){
+			if(testCaseList[check].ShowTestCase == false ){
+				containHideTest = true;
+				break;
+			}
+	}
 	tryC++;
 	if (this.fa.initial == null) {
 		window.alert("FA traversal requires an initial state.");
@@ -77,6 +86,7 @@ controllerProto.startTesting = function () {
 			}
 		}
 	}
+
 	for (i = 0; i < this.testCases.length; i++) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
@@ -102,22 +112,49 @@ controllerProto.startTesting = function () {
 		var inputOrLambda = input === "" ? lambda : input;
 		if (this.options.type && this.options.type == "TM") {
 			if (inputResult == testCase[input]) {
+				if(testCaseList[i].ShowTestCase == true){
 				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + testCase[input] + "</td><td class='correct'>" + inputResult + "</td></tr>");
+				}
 				count++;
 				testRes.push('Test' + testNum + ':' + 'Correct');
 			} else {
+				if(testCaseList[i].ShowTestCase == true){
 				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + testCase[input] + "</td><td class='wrong'>" + inputResult + "</td></tr>");
+				}
+				else{
+					wrongCounter = wrongCounter + 1;
+				}
 				testRes.push('Test' + testNum + ':' + 'Wrong');
 			}
 		} else {
-			if (inputResult !== testCase[input]) {
-				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
-				count++;
-				testRes.push('Test' + testNum + ':' + 'Correct');
-			} else {
-				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
-				testRes.push('Test' + testNum + ':' + 'Wrong');
+			// if(hideList[i] == 0){
+				if (inputResult !== testCase[input]) {
+					if(testCaseList[i].ShowTestCase == true){
+					$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
+					}
+					count++;
+					testRes.push('Test' + testNum + ':' + 'Correct');
+				} else {
+					if(testCaseList[i].ShowTestCase == true){
+					$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
+					}
+					else{
+            wrongCounter = wrongCounter + 1;
+          }
+					testRes.push('Test' + testNum + ':' + 'Wrong');
+				
+				}
 			}
+
+		// }
+	}
+	
+	if(containHideTest){
+		if(wrongCounter == 0){
+			$("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" + "Accept"  + "</td><td class='correct'>" + "Accept" + "</td></tr>");
+		}
+		else{
+			$("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" +  "Accept" + "</td><td class='wrong'>" + "Reject" + "</td></tr>");
 		}
 	}
 	var exer = {};
