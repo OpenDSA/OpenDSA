@@ -126,7 +126,7 @@
         "question":"What the machine on the right of the vertical line do?",
         "answer":["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"],
         "choices": ["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"]
-      },
+      }
     }
   }
 }
