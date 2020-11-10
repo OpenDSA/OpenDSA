@@ -10,19 +10,24 @@
   "description": "Give a Turing Machine that accepts all strings that has a number of a’s that is a power of two.___. In other words, it implements the language in Turing Acceptable form.",
   "type": "description",
   "testCases": [{
-      "λ": false
+      "λ": false,
+      "ShowTestCase":true
     },
     {
-      "a": false
+      "a": false,
+      "ShowTestCase":true
     },
     {
-      "aa": true
+      "aa": true,
+      "ShowTestCase":true
     },
     {
-      "aaa": false
+      "aaa": false,
+      "ShowTestCase":true
     },
     {
-      "aaaa": true
+      "aaaa": true,
+      "ShowTestCase":true
     }
   ],
   "graph": {

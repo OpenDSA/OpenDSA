@@ -8,7 +8,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("A <b>set</b> is a collection of distinguishable members or elements. There is no concept of duplication in a set. There is no concept of order.");
+  av.umsg("A :term:`set` is a collection of distinguishable members or elements. There is no concept of duplication in a set. There is no concept of order.");
   av.displayInit();
 
   // Frame 2

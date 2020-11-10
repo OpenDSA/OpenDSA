@@ -41,7 +41,7 @@
         "description":"Prove that $L = \\{ a^{2n}b^{2m}c^nd^m : n,m \\ge 0 \\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
         "question": "What is the length of $w = a^{2m}b^{2m}c^md^m$?",
         "answer": "$6m$",
-        "choices": ["$6m", "$4m$", "$5m$", "$2m^2+2m$"]
+        "choices": ["$6m$", "$4m$", "$5m$", "$2m^2+2m$"]
       },
       "q8": {
         "type": "select",

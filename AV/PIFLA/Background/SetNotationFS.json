@@ -13,7 +13,7 @@
       },
       "former": {
         "type": "multiple",
-        "description": "One way to describe a set is to write out all of it's elements. That is a bit hard to do if the set has an infinite number of elements. Here is another way to describe a set, using a <b>set former</b>: $\\{x\\ |\\ x\\ \\mbox{is a positive integer}\\}$.",
+        "description": "One way to describe a set is to write out all of it's elements. That is a bit hard to do if the set has an infinite number of elements. Here is another way to describe a set, using a :term:`set former`: $\\{x\\ |\\ x\\ \\mbox{is a positive integer}\\}$.",
         "question": "Choose which best describes this set.",
         "answer": "all positive integers",
         "choices": [
@@ -32,7 +32,7 @@
       },
       "null": {
         "type": "select",
-        "description": "$\\emptyset$ is the symbol for the null or empty set. Alternatively, we might write the empty set as $\\{\\}$.",
+        "description": "$\\emptyset$ is the symbol for the null set or the empty set. Alternatively, we might write the empty set as $\\{\\}$.",
         "question": "Which of the following is $\\in \\emptyset$?",
         "answer": ["$\\emptyset$ has no elements because it is the null set"],
         "choices": [

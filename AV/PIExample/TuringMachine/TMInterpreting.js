@@ -8,8 +8,8 @@ $(document).ready(function () {
   var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
       interpret = config.interpreter, // get the interpreter
       code = config.code;             // get the code object
-  var xStart = 150;
-  var yStart = 0;
+  var xStart = 0;
+  var yStart = 200;
 
   
   //frame 1
@@ -106,14 +106,14 @@ $(document).ready(function () {
   av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head when beginning to process input string '11'.");
   var url3 = "../../../../AV/VisFormalLang/TM/Machines/TMPlusone.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url3});
-  var tape = av.ds.tape(["#", "1", "1", "#", "#"], 470, 50, "both");
-  var rect = av.g.rect(350 + xStart, 150 + yStart, 110, 110);
-  var c1 = av.label("q0", {left: 355 + xStart, top: 120 + yStart});
-  var c2 = av.label("q1", {left: 355 + xStart, top: 155 + yStart});
-  var c4 = av.label("q2", {left: 355 + xStart, top: 190 + yStart});
-  var p3 = av.g.line(365 + xStart, 150 + yStart, 365 + xStart, 85 + yStart,
+  var tape = av.ds.tape(["#", "1", "1", "#", "#"], 50 + xStart, 50 + yStart, "both");
+  var rect = av.g.rect(60 + xStart, 140 + yStart, 110, 110);
+  var c1 = av.label("q0", {left: 70 + xStart, top: 130 + yStart});
+  var c2 = av.label("q1", {left: 70 + xStart, top: 165 + yStart});
+  var c4 = av.label("q2", {left: 70 + xStart, top: 200 + yStart});
+  var p3 = av.g.line(100 + xStart, 140 + yStart, 100 + xStart, 85 + yStart,
                       {"arrow-end": "classic-wide-long"});
-  var p4 = av.g.line(420 + xStart, 215 + yStart, 390 + xStart, 185 + yStart,
+  var p4 = av.g.line(130 + xStart, 200 + yStart, 100 + xStart, 175 + yStart,
                       {"arrow-end": "classic-wide-long"});
   var g = av.g.set(); // A set to hold the tape head graphical objects
   var node = tm.nodes();
@@ -156,7 +156,7 @@ $(document).ready(function () {
   c4.translateX(30);
   tape.setValueAt(3, "1");
   tape.moveRight();
-  var newLine = av.g.line(520 + xStart, 215 + yStart, 480 + xStart, 212 + yStart,
+  var newLine = av.g.line(230, 390, 200, 390,
                           {"arrow-end": "classic-wide-long"});
   p4.hide();
   node[0].unhighlight();
@@ -167,7 +167,7 @@ $(document).ready(function () {
   // frame 27
   av.umsg("Step 5: The tape head stays on the current cell. The current state changes to $q_2$. Since $q_2$ is a member of the Final State set $F$, the machine immediately halts.");
   node[1].unhighlight();
-  av.g.line(520 + xStart, 220 + yStart, 480 + xStart, 242 + yStart,
+  av.g.line(230, 390, 200, 412,
               {"arrow-end": "classic-wide-long"});
   newLine.hide();
   node[2].highlight();

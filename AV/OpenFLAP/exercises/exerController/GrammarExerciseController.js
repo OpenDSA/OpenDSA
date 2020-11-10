@@ -187,29 +187,53 @@ controllerProto.startTesting = function () {
       }); //pda = this.convertToPDA();
     else
       parser = this.buildDFAforLLG();
-    for (i = index; i < this.testCases.length; i++) {
-      var testNum = i + 1;
-      var testCase = this.testCases[i];
-      var input = Object.keys(testCase)[0];
-      var inputResult;
-      if (grammarType !== "LLG") {
-        //inputResult = pda.traverseOneInput(input);
-        parser.inputString = input;
-        inputResult = parser.stringAccepted()[0];
-      } else {
+      var wrongCounter = 0
+      var testCaseList = this.testCases;
+      for (i = index; i < this.testCases.length; i++) {
+        if(testCaseList[i].ShowTestCase == false){
+          containHideTest = true;
+        }
+  
+        var testNum = i + 1;
+        var testCase = this.testCases[i];
+        var input = Object.keys(testCase)[0];
+        var inputResult;
+        if (grammarType !== "LLG") {
+          //inputResult = pda.traverseOneInput(input);
+          parser.inputString = input;
+          inputResult = parser.stringAccepted()[0];
+        } else {
+  
+          inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
+        }
+        var inputOrLambda = input === "" ? lambda : input;
+        if (inputResult === testCase[input]) {
+          if(testCaseList[i].ShowTestCase == true){
+          $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept" : "Reject") + "</td></tr>");
+          }
+          count++;
+          testRes.push('Test' + testNum + ':' + 'Correct');
+        } 
+        else {
+          if(testCaseList[i].ShowTestCase == true){
+          $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Accept" : "Reject") + "</td></tr>");
+          }
+          else{
+            wrongCounter = wrongCounter + 1;
+          }
+          testRes.push('Test' + testNum + ':' + 'Wrong');
 
-        inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
+        }
       }
-      var inputOrLambda = input === "" ? lambda : input;
-      if (inputResult === testCase[input]) {
-        $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept" : "Reject") + "</td></tr>");
-        count++;
-        testRes.push('Test' + testNum + ':' + 'Correct');
-      } else {
-        $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Accept" : "Reject") + "</td></tr>");
-        testRes.push('Test' + testNum + ':' + 'Wrong');
+    
+      if(containHideTest){
+        if(wrongCounter == 0){
+          $("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" + "Accept"  + "</td><td class='correct'>" + "Pass" + "</td></tr>");
+        }
+        else{
+          $("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" +  "Reject" + "</td><td class='wrong'>" + "Fail" + "</td></tr>");
+        }
       }
-    }
     var exer = {};
     exer['Attempt' + tryC.toString()] = testRes;
     exer['studentSolution'] = this.serializeGrammar(); //this function is defined inside grammarEditor.js. It serializaes the current grammar

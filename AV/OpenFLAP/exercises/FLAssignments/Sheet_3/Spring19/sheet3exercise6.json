@@ -12,31 +12,40 @@
     "description": "Find a regular grammar for the language L={___ where n+m is odd}.",
     "type": "description",
     "testCases": [{
-            "regular-grammar": true
+            "regular-grammar": true,
+            "ShowTestCase":true
         },
         {
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "a": true
+            "a": true,
+            "ShowTestCase":true
         },
         {
-            "b": true
+            "b": true,
+            "ShowTestCase":true
         },
         {
-            "aab": true
+            "aab": true,
+            "ShowTestCase":true
         },
         {
-            "abb": true
+            "abb": true,
+            "ShowTestCase":true
         },
         {
-            "aabb": false
+            "aabb": false,
+            "ShowTestCase":true
         },
         {
-            "aaaaaabbbbb": true
+            "aaaaaabbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "ba": false
+            "ba": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

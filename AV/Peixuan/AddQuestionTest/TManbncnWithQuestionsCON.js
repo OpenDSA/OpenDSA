@@ -20,7 +20,7 @@ $(document).ready(function() {
   var tm = new av.ds.TM({width: 610, height: 375, top: 10, url: url});
   var trav = new Traversor(tm, av);
   av.displayInit();
-  //window.PIFramesDebugFlag = true;
+  window.PIFramesDebugFlag = true;
   onClickTraverseWithQuestions(av_name, trav, ["aabbcc", "c"], {top: 10, left: 200});
   av.recorded();
 });

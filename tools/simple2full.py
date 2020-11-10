@@ -907,16 +907,13 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
   for chapter, files in mod_files.items():
     full_config['chapters'][chapter] = OrderedDict()
     for x in files:
-      rst_fname, rst_ext  = os.path.splitext(os.path.basename(x))
-      rel_path = os.path.relpath(x, start="RST")
-
-      split_path = rel_path.split(os.sep)
-      if split_path[0] == conf_data['lang']:
-        split_path = split_path[1:]
-
-      # Needs the / character... on every platform... hmm...
-      rel_path = '/'.join(split_path)
-      mod_path, rst_ext = os.path.splitext(rel_path)
+      rst_dir_name = x.split(os.sep)[-2]
+      rst_fname = os.path.basename(x).partition('.')[0]
+      if rst_dir_name == conf_data['lang']:
+        mod_path = rst_fname
+      else:
+        mod_path = rst_dir_name + '/' + rst_fname
+      
 
       current_module = mod_path
       if verbose:

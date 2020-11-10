@@ -12,34 +12,44 @@
     "description": "Construct the DFA that accepts the complement of ",
     "type": "both",
     "testCases": [{
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "aabb": false
+            "aabb": false,
+            "ShowTestCase":true
         },
         {
-            "aabbaabb": false
+            "aabbaabb": false,
+            "ShowTestCase":true
         },
         {
-            "aaaabbaabbaaaaaabb": false
+            "aaaabbaabbaaaaaabb": false,
+            "ShowTestCase":true
         },
         {
-            "a": true
+            "a": true,
+            "ShowTestCase":true
         },
         {
-            "bb": true
+            "bb": true,
+            "ShowTestCase":true
         },
         {
-            "aabbbb": true
+            "aabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaaaaaaaaaaaa": true
+            "aaaaaaaaaaaaaaaaaaa": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbbbbbbbbbbbbb": true
+            "bbbbbbbbbbbbbbbbbb": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

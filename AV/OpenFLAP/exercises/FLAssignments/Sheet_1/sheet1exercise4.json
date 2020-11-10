@@ -12,37 +12,48 @@
     "description": "Give a DFA that accepts the language over Σ ={a, b} where every string does not have 3 consecutive a's.",
     "type": "description",
     "testCases": [{
-            "bbbbbb": true
+            "bbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaa": false
+            "aaa": false,
+            "ShowTestCase":true
         },
         {
-            "aa": true
+            "aa": true,
+            "ShowTestCase":true
         },
         {
-            "bbabb": true
+            "bbabb": true,
+            "ShowTestCase":true
         },
         {
-            "babbabbb": true
+            "babbabbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbaabbbaabbaa": true
+            "bbbbaabbbaabbaa": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbabababbbbbb": true
+            "bbbbabababbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "baabaaa": false
+            "baabaaa": false,
+            "ShowTestCase":true
         },
         {
-            "aabbabababbababbababa": true
+            "aabbabababbababbababa": true,
+            "ShowTestCase":true
         },
         {
-            "aabbabababbababbabaa": true
+            "aabbabababbababbabaa": true,
+            "ShowTestCase":true
         },
         {
-            "aaabababbababbabaa": false
+            "aaabababbababbabaa": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

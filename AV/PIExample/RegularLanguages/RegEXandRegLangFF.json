@@ -37,11 +37,11 @@
           "choices": ["RegEx, DFA, and NFA represent the languages", "One of them is a subset of the others","RegEx, NFA, and DFA are just different collections of languages"]
         },
         "q11": {
-          "type": "multiple",
+          "type": "select",
           "description": "Here is an example of NFA that accepts nothing ($\\emptyset$)",
-          "question":"Why this machine accepts NOTHING?",
-          "answer": "There is no path from the start state to the final state",
-          "choices": ["There is no path from the start state to the final state", "I do not know"]
+          "question":"This machine accepts NOTHING because there is no path from the start state to the final state",
+          "answer": "True",
+          "choices": []
         },
         "q12": {
           "type": "multiple",
@@ -72,18 +72,18 @@
           "choices": ["by adding a new state that will be the final state for the machine.", "Convert NFA to DFA"]
         },
         "q19": {
-          "type": "multiple",
+          "type": "select",
           "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
-          "question":"Then?",
-          "answer": "Connect all old final states with the new final state with $\\lambda$ transitions",
-          "choices": ["Connect all old final states with the new final state with $\\lambda$ transitions", "I do not know"]
+          "question":"Then we need to connect all old final states with the new final state with $\\lambda$ transitions",
+          "answer": "True",
+          "choices": []
         },
         "q20": {
-          "type": "multiple",
+          "type": "select",
           "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
-          "question":"Then?",
-          "answer": "remove the final mark from the old final states",
-          "choices": ["remove the final mark from the old final states", "I do not know"]
+          "question":"Then we need to remove the final mark from the old final states",
+          "answer": "True",
+          "choices": []
         },
         "q21": {
           "type": "multiple",

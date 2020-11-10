@@ -4454,6 +4454,10 @@ Glossary
       A collection of distinguishable :term:`members <member>` or
       :term:`elements <element>`.
 
+   set former
+      A way to define the membership of a set, by using a text
+      description. Example: :math:`\{x\ |\ x\ \mbox{is a positive integer}\}`.
+
    set product
       Written :math:`\mathbf{Q} \times \mathbf{P}`, the set product is
       a set of ordered pairs such that ordered pair :math:`(a, b)` is

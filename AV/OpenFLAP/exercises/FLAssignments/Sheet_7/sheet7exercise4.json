@@ -12,22 +12,28 @@
     "description": "Construct the PDA that accepts ",
     "type": "both",
     "testCases": [{
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "aaabbb": true
+            "aaabbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbcccc": true
+            "bbbbcccc": true,
+            "ShowTestCase":true
         },
         {
-            "aabbbccc": true
+            "aabbbccc": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbccc": true
+            "aaabbbccc": true,
+            "ShowTestCase":true
         },
         {
-            "aaaabbbbc": true
+            "aaaabbbbc": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

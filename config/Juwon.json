@@ -283,8 +283,7 @@
     },
     "JuwonChapters": {
       "Juwon/GeneralOverview": {},
-      "Juwon/REtoRG": {},
-      "Juwon/RGtoRE": {}
+      "Juwon/grammarEditor": {}
     },
     "Appendix": {
       "Glossary": {},

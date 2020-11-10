@@ -37,44 +37,39 @@
           "choices": ["label for transiton from $q_i$ to $q_j$", "label for transiton from $q_j$ to $q_i$", "label for transiton from $q_i$ to $q_i$", "label for transiton from $q_j$ to $q_j$"]
         },
         "q11": {
-          "type": "multiple",
+          "type": "select",
           "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
-          "question":"Now, lets find how this RegEx created form the GTG on the left. Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. What does $r_{ii}^*$ mean?",
-          "answer": "$r_{ii}^*$ means that, when the machine at the start state, it may loop Zero or more times to read Zero or more repeatition of $r_{ii}$",
-          "choices": ["$r_{ii}^*$ means that, when the machine at the start state, it may loop Zero or more times to read Zero or more repeatition of $r_{ii}$",
-          "Something else"]
+          "question":"Now, lets find how this RegEx created form the GTG on the left. Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{ii}^*$ means that, when the machine at the start state, it may loop Zero or more times to read Zero or more repeatition of $r_{ii}$",
+          "answer":"True",
+          "choices": []
         },
         "q12": {
-          "type": "multiple",
+          "type": "select",
           "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
-          "question":"Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. What does $r_{ij}^*$ mean?",
-          "answer": "The machine then will move to state $qj$ by reading $r_{ij}$",
-          "choices": ["The machine then will move to state $qj$ by reading $r_{ij}$",
-          "Something else"]
+          "question":"Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{ij}^*$ means the machine then will move to state $qj$ by reading $r_{ij}$",
+          "answer": "True",
+          "choices": []
         },
         "q13": {
-          "type": "multiple",
+          "type": "select",
           "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
-          "question":"Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. What does $r_{jj}^*$ mean?",
-          "answer": "Once the meachine is at $qj$ it may loop zero or more times to read zero or more occurance of $r_{jj}$",
-          "choices": ["Once the meachine is at $qj$ it may loop zero or more times to read zero or more occurance of $r_{jj}$",
-          "Something else"]
+          "question":"Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{jj}^*$ means that once the meachine is at $qj$ it may loop zero or more times to read zero or more occurance of $r_{jj}$",
+          "answer": "True",
+          "choices": []
         },
         "q14": {
-          "type": "multiple",
+          "type": "select",
           "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
-          "question":"Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. What does $r_{ji}^*$ mean?",
-          "answer": "It means that the machine can go back to $qi$ by reading $r_{ji}$",
-          "choices": ["It means that the machine can go back to $qi$ by reading $r_{ji}$",
-          "Something else"]
+          "question":"Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{ji}^*$ means that the machine can go back to $qi$ by reading $r_{ji}$",
+          "answer": "True",
+          "choices": []
         },
         "q15": {
-          "type": "multiple",
+          "type": "select",
           "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
-          "question":"Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. Why we used the $($___$)^*$?",
-          "answer": "This means that the machine can repeate the previous part for zero or more times and end at $qi$",
-          "choices": ["This means that the machine can repeate the previous part for zero or more times and end at $qi$",
-          "Something else"]
+          "question":"Think about the first part of the RegEx: $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $($___$)^*$ means that the machine can repeate the previous part for zero or more times and end at $qi$",
+          "answer": "True",
+          "choices": []
         },
         
         "q18": {
@@ -85,32 +80,32 @@
           "choices": ["Convert it to a DFA", "Create a new final state and connect all final states to it with $\\lambda$ transitions"]
         },
         "q21": {
-          "type": "multiple",
+          "type": "select",
           "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$",
-          "question":"Why do we made that replacement?",
-          "answer": "$qi$ can go to itself by passing through $qk$. It will read $r_{ik}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving back to $qi$ by reading $r_{ki}$",
-          "choices": ["$qi$ can go to itself by passing through $qk$. It will read $r_{ik}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving back to $qi$ by reading $r_{ki}$", "I do not know"]
+          "question":"We made that replacement because $qi$ can go to itself by passing through $qk$. It will read $r_{ik}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving back to $qi$ by reading $r_{ki}$",
+          "answer": "True",
+          "choices": []
         },
         "q22": {
-          "type": "multiple",
+          "type": "select",
           "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$",
-          "question":"Why do we made that new replacement?",
-          "answer": "$qj$ can go to itself by passing through $qk$. It will read $r_{jk}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving back to $qj$ by reading $r_{kj}$",
-          "choices": ["$qj$ can go to itself by passing through $qk$. It will read $r_{jk}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving back to $qj$ by reading $r_{kj}$", "I do not know"]
+          "question":"We made that new replacement because $qj$ can go to itself by passing through $qk$. It will read $r_{jk}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving back to $qj$ by reading $r_{kj}$",
+          "answer": "True",
+          "choices": []
         },
         "q23": {
-          "type": "multiple",
+          "type": "select",
           "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*k_{kj}$.",
-          "question":"Why do we made that new replacement?",
-          "answer": "$qi$ can go to state $qj$ by passing through $qk$. It will read $r_{ik}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving to $qj$ by reading $r_{kj}$",
-          "choices": ["$qi$ can go to state $qj$ by passing through $qk$. It will read $r_{ik}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving to $qj$ by reading $r_{kj}$", "I do not know"]
+          "question":"We made that new replacement because $qi$ can go to state $qj$ by passing through $qk$. It will read $r_{ik}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving to $qj$ by reading $r_{kj}$",
+          "answer": "True",
+          "choices": []
         },
         "q24": {
-          "type": "multiple",
+          "type": "select",
           "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*k_{kj}$<br> $r_{ji} \\Rightarrow r_{ji}+r_{jk}r_{kk}^*r_{ki}$",
-          "question":"Why do we made that new replacement?",
-          "answer": "$qj$ can go to state $qi$ by passing through $qk$. It will read $r_{jk}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving to $qi$ by reading $r_{ki}$",
-          "choices": ["$qj$ can go to state $qi$ by passing through $qk$. It will read $r_{jk}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving to $qi$ by reading $r_{ki}$", "I do not know"]
+          "question":"We made that new replacement because $qj$ can go to state $qi$ by passing through $qk$. It will read $r_{jk}$ then looping in $qk$ to read zero or more $r_{kk}$ then moving to $qi$ by reading $r_{ki}$",
+          "answer": "True",
+          "choices": []
         }
       }
     }

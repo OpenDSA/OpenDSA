@@ -39,7 +39,7 @@
       "q14": {
         "type": "select",
         "description": "Let us study the language $\\{a^nb^nc^n \\mid n>0\\}$.",
-        "question": "Since we now the number of $a$'s, what will happen to the stack contents while we count $b$'s",
+        "question": "Since we know the number of $a$'s, what will happen to the stack contents while we count $b$'s",
         "answer": "All letters in the stack will be Poped to be able to recognize the number of $b$",
         "choices": ["All letters in the stack will be Poped to be able to recognize the number of $b$", "All letters will remain in the stack"]
       },

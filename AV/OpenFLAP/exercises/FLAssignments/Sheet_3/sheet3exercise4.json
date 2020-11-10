@@ -15,40 +15,52 @@
             "right-linear": true
         },
         {
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "aaaa": false
+            "aaaa": false,
+            "ShowTestCase":true
         },
         {
-            "a": true
+            "a": true,
+            "ShowTestCase":true
         },
         {
-            "bb": true
+            "bb": true,
+            "ShowTestCase":true
         },
         {
-            "baa": false
+            "baa": false,
+            "ShowTestCase":true
         },
         {
-            "bbbb": true
+            "bbbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbbb": true
+            "bbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "ababa": true
+            "ababa": true,
+            "ShowTestCase":true
         },
         {
-            "bbb": false
+            "bbb": false,
+            "ShowTestCase":true
         },
         {
-            "abbaa": true
+            "abbaa": true,
+            "ShowTestCase":true
         },
         {
-            "baaaaaab": true
+            "baaaaaab": true,
+            "ShowTestCase":true
         },
         {
-            "aababa": false
+            "aababa": false,
+            "ShowTestCase":true
         }
 
     ],

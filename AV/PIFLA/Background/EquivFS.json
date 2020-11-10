@@ -3,14 +3,14 @@
     "en": {
       "equivalent": {
         "type": "select",
-        "description": "$R$ is an <b>equivalence relation</b> on set $S$ if it is reflexive, symmetric, and transitive.",
-        "question": "Which of the following is an <b>equivalence relation</b>?",
+        "description": "$R$ is an equivalence relation on set $S$ if it is reflexive, symmetric, and transitive.",
+        "question": "Which of the following is an equivalence relation?",
         "answer": ["$=$"],
         "choices": ["$=$", "$<$", "$>$", "$\\leq$", "$\\geq$"]
       },
       "eqclass": {
         "type": "select",
-        "description": "An equivalence relation can be used to partition a set into <b>equivalence classes</b>. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$.",
+        "description": "An equivalence relation can be used to partition a set into equivalence classes. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$.",
         "question": "Why is $=$  an equivalence relation?",
         "answer": ["because it is reflective", "because it is symmetric", "because it is transitive"],
         "choices": ["because it is reflective", "because it is symmetric", "because it is transitive", "because it is antisymmetric", "because it is irreflexive"]
@@ -24,7 +24,7 @@
       },
       "partorder": {
         "type": "select",
-        "description": "A binary relation is called a <b>partial order</b> if it is antisymmetric and transitive.",
+        "description": "A binary relation is called a partial order if it is antisymmetric and transitive.",
         "question": "Which of the following relations defines a partial order?",
         "answer": ["$<$", "$\\leq$"],
         "choices": ["$<$", "$\\leq$", "$=$"]

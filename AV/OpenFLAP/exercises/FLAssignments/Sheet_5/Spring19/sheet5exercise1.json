@@ -13,40 +13,52 @@
     "description": "Construct a CFG over {a, b} whose language is {___}",
     "type": "description",
     "testCases": [{
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "ba": true
+            "ba": true,
+            "ShowTestCase":true
         },
         {
-            "abba": true
+            "abba": true,
+            "ShowTestCase":true
         },
         {
-            "aaaabbbbba": true
+            "aaaabbbbba": true,
+            "ShowTestCase":true
         },
         {
-            "aa": false
+            "aa": false,
+            "ShowTestCase":true
         },
         {
-            "abbbbaaa": true
+            "abbbbaaa": true,
+            "ShowTestCase":true
         },
         {
-            "aba": false
+            "aba": false,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaaaa": false
+            "aaaaaaaaaaa": false,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbb": false
+            "bbbbbbb": false,
+            "ShowTestCase":true
         },
         {
-            "aaaabbbb": true
+            "aaaabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbaaaa": true
+            "bbbbaaaa": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {
