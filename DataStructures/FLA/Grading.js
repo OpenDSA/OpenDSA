@@ -193,7 +193,7 @@
       else {
         var obj = this.options.exerciseController.startTesting();
         this.score.correct = obj.score;
-        store_solution(obj.solution, obj.score);
+        //store_solution(obj.solution, obj.score);
       }
     }
   }; // end grader specification
