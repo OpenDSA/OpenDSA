@@ -70,19 +70,29 @@ input.
    * :math:`F \subseteq Q` is a set of final states
 
 
-.. TODO::
+Some Examples
+-------------
+The algorithm for how a DFA processes a string:
 
-   Exercise to create this machine in the editor.
+| Start in :term:`start state` with input on tape
+| q = current state
+| s = current symbol on tape
+| while (s != blank) do
+|    :math:`q = \delta(q,s)`
+|    s = next symbol to the right on tape
+| if :math:`q \in F`
+|    then accept
+|    else reject
 
+Here is a detailed trace on a simple input.
 
+.. inlineav:: MachineTraceCON ss
+   :long_name: Machine Trace Slideshow
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/MachineTraceCON.css 
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/MachineTraceCON.js
+   :output: show
 
-Deterministic Finite Machines
------------------------------
-
-Another DFA Acceptance/Rejection Example
-----------------------------------------
-
-Now let's see exactly how this machine accepts / rejects some strings.
+Now let's see how this machine accepts / rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
@@ -90,7 +100,20 @@ Now let's see exactly how this machine accepts / rejects some strings.
    :output: show
    
 
-Deterministic Finite Acceptors Definitions
+Next is an exercise to give you practice in building a machine using
+the DFA machine editor.
+You should not need to think too hard about what machine you need, you
+will simply copy the machine that we have been using.
+But doing this will introduce you to the machine editor that you will
+see a lot of in this book!
+
+.. TODO::
+
+   Exercise to create this machine in the editor.
+
+
+
+   Deterministic Finite Acceptors Definitions
 ------------------------------------------
 
 .. inlineav:: FADefinitionsFF ff

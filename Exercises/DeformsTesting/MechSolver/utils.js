@@ -61,8 +61,9 @@ Window.clearGlobalPointerReference = function() {
         Window.globalPointerReference.currentClickedObject.element.visualComponent.element[0].classList.remove("selectedvalue");
     }
     else if(
-        Window.globalPointerReference.currentClickedObjectType == "var-box" &&
-        Window.globalPointerReference.currentClickedObjectDescription == "copy number"
+        Window.globalPointerReference.currentClickedObjectType == "var-box" 
+        // &&
+        // Window.globalPointerReference.currentClickedObjectDescription == "copy number"
     )
     {
         // console.log(Window.eqbank.currentSelectedEquationObject);
@@ -125,4 +126,8 @@ Window.bodyClickPrompt = function() {
             Window.clearGlobalPointerReference();
         }
     });
+}
+
+Window.returnArithmeticVarUnits = function(activeEqnObject) {
+    
 }

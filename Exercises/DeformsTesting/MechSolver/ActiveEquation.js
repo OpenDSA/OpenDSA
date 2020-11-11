@@ -138,7 +138,7 @@ class ActiveEquation{
         for(var i=0; i<boxList.length; i++)
         {
             //var containerSpan = document.createElement("span");
-            boxList[i].className = " boxparam";
+            boxList[i].className = "boxparam";
             boxList[i].setAttribute("data-domain", "empty");
             boxList[i].setAttribute("title", "Click to show menu.");
             //boxList[i].innerHTML = '<span class="mord amsrm">&#9634;</span>';
@@ -208,6 +208,7 @@ class ActiveEquation{
     createSolvableRepresentation(){
         var unitEquationSet = [];
         var unknowns = {};
+        var knowns = {};
         var splitString = this.equationObjectReference.template.split(" ");
         for(var x=0; x<splitString.length; x++)
         {
@@ -221,11 +222,12 @@ class ActiveEquation{
                 {
                     // Add the variable=value assignment separately, putting only
                     // variables in the equation representation.
-                    unitEquationSet.push(
-                        this.variables[splitString[x]].currentSymbol+
-                        "="+this.variables[splitString[x]].value
-                        );
-                    splitString[x] = this.variables[splitString[x]].currentSymbol;
+                    var value = this.variables[splitString[x]].value;
+                    var varName = this.variables[splitString[x]].currentSymbol;
+                    var currentUnit = this.variables[splitString[x]].currentUnit;
+                    unitEquationSet.push(varName+"="+value);
+                    splitString[x] = varName; // this.variables[splitString[x]].currentSymbol;
+                    knowns[varName] = {"value":value, "unit": currentUnit};
                 }
                 else
                 {
@@ -261,7 +263,8 @@ class ActiveEquation{
         unitEquationSet.push(splitString.join(" "));
         return {
             "equations": unitEquationSet,
-            "unknowns": unknowns
+            "unknowns": unknowns,
+            "knowns": knowns
         };
     }
     solve()

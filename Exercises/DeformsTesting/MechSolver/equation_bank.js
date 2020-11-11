@@ -37,7 +37,7 @@ const equations = [
         },
         domains: {
             'shearstress': 'pressure',
-            'shearforce': 'length3',
+            'shearforce': 'force',
             'area': 'length2'
         },
         height: 60,
@@ -369,7 +369,7 @@ const equations = [
         domains: {
             'deform': 'length',
             'force': 'force',
-            'area': 'area',
+            'area': 'length2',
             'normalstresscoeff': 'pressure',
             'length': 'length'
         },
@@ -501,7 +501,12 @@ const equations = [
             'radius': 'length'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "mominertia": "radius ^ 4",
+            "radius": "mominertia ^ (1/4)",
+        }
     },
     {
         group: 'Torsion',
@@ -520,7 +525,12 @@ const equations = [
             'diameter': 'length'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "mominertia": "diameter ^ 4",
+            "diameter": "mominertia ^ (1/4)",
+        }
     },
     // {
     //     group: 'Torsion',
@@ -637,7 +647,12 @@ const equations = [
             'radius': 'length'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "area": "radius ^ 2",
+            "radius": "area ^ 0.5",
+        }
     },
     {
         group: 'Geometry',
@@ -656,7 +671,12 @@ const equations = [
             'diameter': 'length'
         },
         height: 60,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "area": "diameter ^ 2",
+            "diameter": "area ^ 0.5",
+        }
     },
     {
         group: 'Geometry',
@@ -677,7 +697,15 @@ const equations = [
             'height': 'length'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "area": "base * height",
+            "base": "area / height",
+            "height": "area / base",
+            "base height": "(area)^0.5",
+            "height base": "(area)^0.5",
+        }
     },
     {
         group: 'Geometry',
@@ -717,7 +745,8 @@ const equations = [
             'aterm': 'free'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "any"
     },
     {
         group: 'Arithmetic',
@@ -739,7 +768,8 @@ const equations = [
             'aterm': 'free'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "any"
     },
     // {
     //     group: 'Arithmetic',
@@ -783,7 +813,8 @@ const equations = [
             'aterm': 'free'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "any"
     },
     {
         group: 'Arithmetic',
@@ -805,7 +836,15 @@ const equations = [
             'aterm': 'free'
         },
         height: 60,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "cterm": "aterm / bterm",
+            "aterm": "bterm * cterm",
+            "bterm": "aterm / cterm",
+            "cterm bterm": "(aterm)^0.5",
+            "bterm cterm": "(aterm)^0.5",
+        }
     },
     {
         group: 'Arithmetic',
@@ -827,7 +866,15 @@ const equations = [
             'aterm': 'free'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "cterm": "aterm * bterm",
+            "aterm": "cterm / bterm",
+            "bterm": "cterm / aterm",
+            "aterm bterm": "(cterm)^0.5",
+            "bterm aterm": "(cterm)^0.5",
+        }
     },
     // {
     //     group: 'Arithmetic',
