@@ -22,7 +22,19 @@
     fatoreController,
     exerController;
     var stepBy = '';
-
+    var emptyStackCheckbox =  document.createElement("input");
+    var emptyStackLabel = document.createElement("label");
+    var emptyStackBreak = document.createElement("br");
+    var menuOptionsDiv = document.getElementById("menu_options");
+    emptyStackCheckbox.setAttribute("type", "checkbox");
+    emptyStackCheckbox.setAttribute("id", "emptyStackCheck");
+    emptyStackCheckbox.setAttribute("name", "emptyStackCheck");
+    //emptyStackLabel.setAttribute("for", "emptyStackCheck");
+    emptyStackLabel.innerHTML = "Empty Stack Acceptance";
+    menuOptionsDiv.appendChild(emptyStackBreak);
+    menuOptionsDiv.appendChild(emptyStackCheckbox);
+    menuOptionsDiv.appendChild(emptyStackLabel);
+    localStorage['empty'] = false;
   
     // Add This function to allow creating automated exercises and solving exercises. Copied from FA.JS file associated with FA.HTML
     function onLoadHandler() {
@@ -88,7 +100,15 @@
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
 		});
-		resetUndoButtons();
+    resetUndoButtons();
+    $('#emptyStackCheck').click(function(){
+      if($(this).prop("checked")){
+        localStorage['empty'] = true;
+      }
+      else{
+        localStorage['empty'] = false;
+      }
+    });
 	};
 
 
@@ -508,6 +528,25 @@
       jsavArray.clear();
     }
     jsavArray = jsav.ds.array(travArray, {top: 0, left: 0});//element: $('.arrayPlace')});
+    //jsavArray.setAttribute("id", "emptyPDAArray");
+    //$("#myID").css("width", "auto");
+    //$("#myID").css
+    
+    /*var emptyPDAArrayStyle = {
+      width: "45px",
+      height: "45px",
+      text-align: "center",
+      border: "1px solid black",
+      background-color: "white",
+      color: "black",
+      opacity: 1,
+      padding: 0,
+       prevent text cursor on nodes
+      cursor: "default",
+      add a subtle shadow to nodes 
+      box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5)
+    };
+    */
     for (var j = 0; j < inputs.length; j++) {
     /*
     This function is the one in question. I need to make it know to reject when it finds a Z (work with empty stack). The function willRejectFunction
@@ -531,6 +570,8 @@
         jsavArray.css(j, {"background-color": "green"});
       }
     }
+    jsavArray.css(0, {"width":"auto"});
+    jsavArray.css(0, {"max-width": "1000px"});
     jsavArray.click(arrayClickHandler);
     jsavArray.show();
   };
@@ -552,7 +593,8 @@
     localStorage['graph'] = serialize(g); //Use local storage to send if it should be empty stack or not; localStorage['empty'] = true/false, true is empty stack acceptance
     localStorage['traversal'] = inputString.slice(0, -3);
     localStorage['stepBy'] = stepBy;
-    window.open("../../AV/OpenFLAP/PDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes"); //Changed from ./PDATraversal. Traversal does not work however
+    //localStorage['empty'] = true;
+    window.open("./emptyPDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes"); //Changed from ./PDATraversal. Traversal does not work however
   };
 
   var willAccept = function(graph, input) {
