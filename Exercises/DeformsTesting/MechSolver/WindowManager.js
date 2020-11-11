@@ -14,10 +14,10 @@ class WindowManager{
 
 	extendCanvas(shiftAmount) {
         var minHeight = 600;
-	// console.log(window.parent.ODSA.UTILS.logUserAction("inside","WindowManager"))
-	// console.log(window.parent.document.querySelector("iframe#DeformsSimpleProblemPPRO_iframe").style.height)
+	    // console.log(window.parent.ODSA.UTILS.logUserAction("inside","WindowManager"))
+	    // console.log(window.parent.document.querySelector("iframe#DeformsSimpleProblemPPRO_iframe").style.height)
         document.styleSheets[2].rules[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
-	Window.updateExerciseWindowHeight(shiftAmount);
+	    Window.updateExerciseWindowHeight(shiftAmount);
 	}
 
     /*
