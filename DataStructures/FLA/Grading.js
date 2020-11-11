@@ -192,8 +192,12 @@
         this.score.correct = this.options.checkSolutionFunction();
       else {
         var obj = this.options.exerciseController.startTesting();
-        this.score.correct = obj.score;
-        //store_solution(obj.solution, obj.score);
+        if (typeof obj == "number")
+          this.score.correct = obj;
+        else {
+          this.score.correct = obj.score;
+          store_solution(obj.solution, obj.score);
+        }
       }
     }
   }; // end grader specification
