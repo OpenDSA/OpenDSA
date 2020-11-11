@@ -2355,6 +2355,7 @@ var lambda = String.fromCharCode(955),
     var currentStates = [this.FA.initial];
     currentStates = addLambdaClosure(this.FA, currentStates);
     var nextStates = currentStates;
+    this.jsav.step();
 
     // Create an array of characters in the input string.
     var textArray = [];
@@ -2387,7 +2388,7 @@ var lambda = String.fromCharCode(955),
       // Prepare for the next iteration of the loop. Update the current character in the JSAV array and add a step to the slideshow.
       currentStates = nextStates;
       //arr.css(i, {"background-color": "yellow"});
-      this.jsav.umsg("Read a lettter and follow its transition out of the current state.");
+      this.jsav.umsg("Read a letter and follow its transition out of the current state.");
       this.matrix.css(matrixRow, i, { "background-color": "yellow" });
       this.jsav.step();
     }
@@ -2437,7 +2438,6 @@ var lambda = String.fromCharCode(955),
     this.matrix = this.jsav.ds.matrix(listOfStrings, { style: "table", top: arrayOptions.top, left: arrayOptions.left });
     for (var i = 0; i < listOfStrings.length; i++) {
       this.jsav.umsg("The " + special[i + 1] + " string is " + listOfStrings[i].join(''));
-      this.jsav.step();
       this.resetFA();
       this.run(listOfStrings[i], i);
     }
