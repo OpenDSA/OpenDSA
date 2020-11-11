@@ -196,7 +196,7 @@
           this.score.correct = obj;
         else {
           this.score.correct = obj.score;
-          store_solution(obj.solution, obj.score);
+          //store_solution(obj.solution, obj.score);
         }
       }
     }
