@@ -67,3 +67,12 @@ Auto Generating Questions for DerivationTrees
   :links: AV/Peixuan/AddQuestionTest/DerivationTreesExampleWithQFF.css
   :scripts: AV/Peixuan/AddQuestionTest/DerivationTreesExampleWithQFF.js lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
   :output: show
+
+
+Auto Generating Questions for TManbncnCON
+-----------------------------------------
+.. inlineav:: TManbncnWithQuestionsCON ss
+   :links: DataStructures/FLA/FLA.css AV/Peixuan/AddQuestionTest/TManbncnWithQuestionsCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js  AV/Peixuan/AddQuestionTest/AddQuestions.js AV/Peixuan/AddQuestionTest/TManbncnWithQuestionsCON.js
+   :align: center
+   :output: show

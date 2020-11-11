@@ -12,34 +12,44 @@
     "description": "Give  a  regular  expression  whose  language  is  strings  over {a,b} in  which  every a is  either immediately preceeded or immediately followed by b.",
     "type": "description",
     "testCases": [{
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbbbbbbbbbb": true
+            "bbbbbbbbbbbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "a": false
+            "a": false,
+            "ShowTestCase":true
         },
         {
-            "ba": true
+            "ba": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "abba": true
+            "abba": true,
+            "ShowTestCase":true
         },
         {
-            "bbbaabbabbbbbbb": true
+            "bbbaabbabbbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "abababab": true
+            "abababab": true,
+            "ShowTestCase":true
         },
         {
-            "babababa": true
+            "babababa": true,
+            "ShowTestCase":true
         },
         {
-            "baaba": true
+            "baaba": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

@@ -296,18 +296,14 @@ Setting up a Local Development Environment
 ------------------------------------------
 
 The local development environment for OpenDSA content is provided using Docker.
-
-
-Docker Introduction
-~~~~~~~~~~~~~~~~~~~
-
 Docker is a containerization solution to provide all of the dependencies
 required to run OpenDSA.
 
 
-Installing Docker on Windows
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Installing Docker
+~~~~~~~~~~~~~~~~~
 
+On **Windows**:
 First, download Docker Desktop for Windows at
 https://docs.docker.com/docker-for-windows/install/.
 NOTE: If you have Windows Home Edition, use the following link instead
@@ -315,17 +311,12 @@ https://docs.docker.com/docker-for-windows/install-windows-home/
 and make sure you use the WSL2 with these instructions
 https://docs.docker.com/docker-for-windows/wsl/.
 
-
-Installing Docker on Mac
-~~~~~~~~~~~~~~~~~~~~~~~~
-
+On **Mac**:
 First, download Docker Desktop for Mac
 https://docs.docker.com/docker-for-mac/install/
 
 
-Installing Docker on Linux
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+On **Linux**:
 First, install the Docker Engine for your Linux distribution
 https://docs.docker.com/engine/install/.
 Next, follow the post-installation steps here to finish your setup
@@ -375,6 +366,8 @@ instantiating the OpenDSA container.
 This command runs several setup commands in the background to
 initialize the submodules and install the python packages requirements
 of OpenDSA.
+**This will probably take a long time to run the first time.**
+
 Note: We created a python virtual environment specifically for OpenDSA.
 This ensures complete control over the python environment in the container
 and allows easy version updating.

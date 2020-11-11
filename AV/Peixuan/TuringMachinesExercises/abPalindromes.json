@@ -10,19 +10,24 @@
   "description": "Write a (Turing decidable) program for a Turing machine to recognize the languageof all palindromes over a, b.",
   "type": "description",
   "testCases": [{
-      "aaa": "Y"
+      "aaa": "Y",
+      "ShowTestCase":true
     },
     {
-      "aba": "Y"
+      "aba": "Y",
+      "ShowTestCase":true
     },
     {
-      "aaab": "N"
+      "aaab": "N",
+      "ShowTestCase":true
     },
     {
-      "aababaa": "Y"
+      "aababaa": "Y",
+      "ShowTestCase":true
     },
     {
-      "bbabb": "Y"
+      "bbabb": "Y",
+      "ShowTestCase":true
     }
   ],
   "graph": {

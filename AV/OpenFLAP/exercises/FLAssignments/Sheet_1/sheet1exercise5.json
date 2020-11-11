@@ -12,16 +12,20 @@
     "description": "",
     "type": "expression",
     "testCases": [{
-            "b": true
+            "b": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "bab": true
+            "bab": true,
+            "ShowTestCase":true
         },
         {
-            "": false
+            "": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

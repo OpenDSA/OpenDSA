@@ -65,11 +65,11 @@
           "choices": ["$q_1$", "$q_0$"]
         },
         "q15": {
-          "type": "multiple",
+          "type": "select",
           "description": "Let us convert the NFA to RRG.",
-          "question":"What should we do to after we knew that $q_1$ is the final state?",
-          "answer": "Add rule: $Q_1 \\rightarrow \\lambda$",
-          "choices": ["Add rule: $Q_1 \\rightarrow \\lambda$", "Something else"]
+          "question":"What should we do to after we knew that $q_1$ is the final state is to add rule: $Q_1 \\rightarrow \\lambda$",
+          "answer": "True",
+          "choices": []
         },
         "q16": {
           "type": "multiple",
@@ -79,11 +79,11 @@
           "choices": ["Yes", "No"]
         },
         "q17": {
-          "type": "multiple",
+          "type": "select",
           "description": "We did it. Now we proved that any NAF can be converted to Right Regular Grammar.",
-          "question":"What does this mean?",
-          "answer": "It means that Regular Grammare are equivalent to Regular Languages",
-          "choices": ["It means that Regular Grammare are equivalent to Regular Languages", "I do not know"]
+          "question":"This means that Regular Grammare are equivalent to Regular Languages",
+          "answer": "True",
+          "choices": []
         }
       }
     }

@@ -13,55 +13,72 @@
     "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s and any even number of b’s.",
     "type": "description",
     "testCases": [{
-            "a": true
+            "a": true,
+            "ShowTestCase":true
         },
         {
-            "b": false
+            "b": false,
+            "ShowTestCase":true
         },
         {
-            "ba": false
+            "ba": false,
+            "ShowTestCase":true
         },
         {
-            "bb": false
+            "bb": false,
+            "ShowTestCase":true
         },
         {
-            "bab": true
+            "bab": true,
+            "ShowTestCase":true
         },
         {
-            "bba": true
+            "bba": true,
+            "ShowTestCase":true
         },
         {
-            "abb": true
+            "abb": true,
+            "ShowTestCase":true
         },
         {
-            "abaab": true
+            "abaab": true,
+            "ShowTestCase":true
         },
         {
-            "ababbbbabb": false
+            "ababbbbabb": false,
+            "ShowTestCase":true
         },
         {
-            "bbbbbaaaaa": false
+            "bbbbbaaaaa": false,
+            "ShowTestCase":true
         },
         {
-            "aaaaabbbbbb": true
+            "aaaaabbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aabaabbab": true
+            "aabaabbab": true,
+            "ShowTestCase":true
         },
         {
-            "babbaba": true
+            "babbaba": true,
+            "ShowTestCase":true
         },
         {
-            "bbababbaaba": true
+            "bbababbaaba": true,
+            "ShowTestCase":true
         },
         {
-            "bbababababaab": false
+            "bbababababaab": false,
+            "ShowTestCase":true
         },
         {
-            "bbababbababa": false
+            "bbababbababa": false,
+            "ShowTestCase":true
         },
         {
-            "bbaabababaaba": true
+            "bbaabababaaba": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

@@ -1,0 +1,85 @@
+{
+  "translations": {
+    "en": {
+      "tuple": {
+        "type": "select",
+        "description": "A relation $R$ over set $S$ means a set of :term:`tuples` of elements from set $S$. A tuple is just some elements of the set in $\\langle\\rangle$ brakets.",
+        "question": "If $S$ is $\\{a, b, c\\}$, which of these are tuples?",
+        "answer": ["$\\langle a, b, c\\rangle$", "$\\langle a, c\\rangle$", "$\\langle a \\rangle$"],
+        "choices": ["$\\langle a, b, c\\rangle$", "$\\langle a, c\\rangle$", "$\\langle a \\rangle$", "$\\{a, c\\}$", "$\\langle a, d\\rangle$"]
+      },
+      "binary": {
+        "type": "select",
+        "description": "While a relation might work on an number of items from set $S$ (just like a function might require any number of parameters), nearly always we are going to consider :term:`binary relations`. In this case, the relation is a set of ordered pairs, where the elements in the ordered pair are elements of $S$. We often use relations such as 'plus' ($+$) or the less-than operator ($<$) on the natural numbers.",
+        "question": "The 'less than' operator ($<$) includes which of the following ordered pairs?",
+        "answer": ["$\\langle1, 3\\rangle$", "$\\langle2, 23\\rangle$"],
+        "choices": ["$\\langle1, 3\\rangle$", "$\\langle2, 23\\rangle$", "$\\langle 3, 2\\rangle$", "$\\langle2, 2\\rangle$"],
+        "correctFeedback": ["An ordered pair is in the $<$ relation if and only if the first member of the pair is less than the second."],
+        "incorrectFeedback": ["An ordered pair is in the $<$ relation if and only if the first member of the pair is less than the second."]
+      },
+      "infix": {
+        "type": "multiple",
+        "description": "Rather than writing binary relationship in terms of ordered pairs, we can also use infix notation for such relations.",
+        "question": "What is the infix notation for the pair $\\langle 4, 5\\rangle$ in the relation of $<$?",
+        "answer": "4 $<$ 5",
+        "choices": ["4 $<$ 5", "5 $<$ 4", "4 $=$ 5", "4 $\\le$ 5", "4 $\\ge$ 5"]
+      },
+      "relation": {
+        "type": "select",
+        "description": "For the rest of this discussion, we assume that our relations are always binary, and so the relation is a set of ordered pairs. And remember that a relation $R$ on set $S$ is simply some subset of the ordered pairs possible on elemnts of $S$. This might mean none of them (the empty set of such ordered pairs) all of them, or anything in between.",
+        "question": "For set $S = \\{1, 2, 3\\}$, which of these is the set of ordered pairs making up the $<$ relation?",
+        "answer": ["$\\langle 1, 2\\rangle$", "$\\langle 1, 3\\rangle$", "$\\langle 2, 3\\rangle$"],
+        "choices": ["$\\langle 1, 1\\rangle$", "$\\langle 1, 2\\rangle$", "$\\langle 1, 3\\rangle$", "$\\langle 2, 1\\rangle$", "$\\langle 2, 2\\rangle$", "$\\langle 2, 3\\rangle$", "$\\langle 3, 1\\rangle$", "$\\langle 3, 2\\rangle$", "$\\langle 3, 3\\rangle$"]
+      },
+      "reflex": {
+        "type": "multiple",
+        "description": "$R$ is reflexive if $aRa$ for all $a \\in S$.",
+        "question": "[T/F] The relation 'less than or equal to' ($\\leq$) is irreflexive.",
+        "answer": "True",
+        "choices": ["True", "False"],
+        "correctFeedback": ["For all $a \\in S$, $a\\leq a$ is true."],
+        "incorrectFeedback": ["For all $a \\in S$, $a\\leq a$ is true."]
+      },
+      "irreflexleq": {
+        "type": "multiple",
+        "description": "$R$ is irreflexive if $aRa$ is not true for all $a \\in S$.",
+        "question": "[T/F] The relation 'less than or equal to' ($\\leq$) is irreflexive.",
+        "answer": "False",
+        "choices": ["True", "False"],
+        "correctFeedback": ["For all $a \\in S$, $a\\leq a$ is true."],
+        "incorrectFeedback": ["For all $a \\in S$, $a\\leq a$ is true."]
+      },
+      "irreflexle": {
+        "type": "multiple",
+        "description": "$R$ is irreflexive if $aRa$ is not true for all $a \\in S$.",
+        "question": "[T/F] The relation 'less than' ($<$) is irreflexive.",
+        "answer": "True",
+        "choices": ["True", "False"],
+        "correctFeedback": ["For all $a \\in S$, $a < a$ is false."],
+        "incorrectFeedback": ["For all $a \\in S$, $a < a$ is false."]
+      },
+      "symmetric": {
+        "type": "select",
+        "description": "$R$ is symmetric if whenever $aRb$, then $bRa$ for all $a, b \\in S$.",
+        "question": "Which of the following is a symmetric relation?",
+        "answer": ["$=$"],
+        "choices": ["$<$", "$>$", "$=$"]
+      },
+      "antisymmetric": {
+        "type": "select",
+        "description": "$R$ is antisymmetric if whenever $aRb$ and $bRa$, then $a = b$, for all $a, b \\in S$",
+        "question": "Which of the following relations are antisymmetric?",
+        "answer": ["$>$", "$=$", "$\\leq$"],
+        "choices": ["$>$", "$=$", "$\\leq$"]
+      },
+      "transitive": {
+        "type": "select",
+        "description": "$R$ is transitive if whenever $aRb$ and $bRc$, then $aRc$, for all $a, b, c \\in S$.",
+        "question": "Which of the followings are transitive relations?",
+        "answer": ["$<$", ">", "="],
+        "choices": ["$<$", ">", "="],
+        "correctFeedback": ["For $=$, this is vacuously true."]
+      }
+    }
+  }
+}

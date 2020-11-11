@@ -36,7 +36,7 @@ Set Common Notation
 The following table shows the symbols commonly used to express sets
 and their relationships.
 
-.. _SetNotation:
+.. _SetNoteTable:
 
 .. topic:: Table
 

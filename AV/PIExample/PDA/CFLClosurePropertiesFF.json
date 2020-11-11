@@ -33,7 +33,7 @@
         "type": "select",
         "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The union is also CFL. So CFL are closed under union.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the union between $L_1$ and $L_2$. What is $P_3$?",
-        "answer": "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \rightarrow S_1 | S_2 \\}$",
+        "answer": "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1 | S_2 \\}$",
         "choices": ["$P_3 = P_1$", "$P_3 = P_2$", "$P_3 = P_1 \\cup P_2$", "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1 | S_2 \\}$"]
       },
       "q7": {

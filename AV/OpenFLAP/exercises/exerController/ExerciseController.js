@@ -32,9 +32,9 @@ controllerProto.load = function () {
 		}
 	});
 	this.tests = tests;
-// 	if (this.tests[0].exerciseType != "TM") {
-		generateTestCase(tests, 0);
-// 	}
+	// 	if (this.tests[0].exerciseType != "TM") {
+	generateTestCase(tests, 0);
+	// 	}
 
 	var proto = this;
 	$('#testSolution').click(function () {
@@ -48,10 +48,19 @@ controllerProto.load = function () {
 }
 
 controllerProto.startTesting = function () {
+	var testCaseList = this.tests[0].testCases;
+	var containHideTest = false;
+	var wrongCounter = 0;
+	for (var check = 0; check < testCaseList.length; check++) {
+		if (testCaseList[check].ShowTestCase == false) {
+			containHideTest = true;
+			break;
+		}
+	}
 	tryC++;
 	if (this.fa.initial == null) {
 		window.alert("FA traversal requires an initial state.");
-		return 0;
+		return { score: 0, solution: serializeGraphToXML(this.fa) };
 	}
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
@@ -73,10 +82,11 @@ controllerProto.startTesting = function () {
 			} else {
 				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + "No" + "</td></tr>");
 				testRes.push('Test' + testNum + ':' + 'Wrong');
-				return 0;
+				return { score: 0, solution: serializeGraphToXML(this.fa) }
 			}
 		}
 	}
+
 	for (i = 0; i < this.testCases.length; i++) {
 		var testNum = i + 1;
 		var testCase = this.testCases[i];
@@ -102,22 +112,49 @@ controllerProto.startTesting = function () {
 		var inputOrLambda = input === "" ? lambda : input;
 		if (this.options.type && this.options.type == "TM") {
 			if (inputResult == testCase[input]) {
-				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + testCase[input] + "</td><td class='correct'>" + inputResult + "</td></tr>");
+				if (testCaseList[i].ShowTestCase == true) {
+					$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + testCase[input] + "</td><td class='correct'>" + inputResult + "</td></tr>");
+				}
 				count++;
 				testRes.push('Test' + testNum + ':' + 'Correct');
 			} else {
-				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + testCase[input] + "</td><td class='wrong'>" + inputResult + "</td></tr>");
+				if (testCaseList[i].ShowTestCase == true) {
+					$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + testCase[input] + "</td><td class='wrong'>" + inputResult + "</td></tr>");
+				}
+				else {
+					wrongCounter = wrongCounter + 1;
+				}
 				testRes.push('Test' + testNum + ':' + 'Wrong');
 			}
 		} else {
+			// if(hideList[i] == 0){
 			if (inputResult !== testCase[input]) {
-				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
+				if (testCaseList[i].ShowTestCase == true) {
+					$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
+				}
 				count++;
 				testRes.push('Test' + testNum + ':' + 'Correct');
 			} else {
-				$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
+				if (testCaseList[i].ShowTestCase == true) {
+					$("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Reject" : "Accept") + "</td></tr>");
+				}
+				else {
+					wrongCounter = wrongCounter + 1;
+				}
 				testRes.push('Test' + testNum + ':' + 'Wrong');
+
 			}
+		}
+
+		// }
+	}
+
+	if (containHideTest) {
+		if (wrongCounter == 0) {
+			$("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" + "Accept" + "</td><td class='correct'>" + "Accept" + "</td></tr>");
+		}
+		else {
+			$("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" + "Accept" + "</td><td class='wrong'>" + "Reject" + "</td></tr>");
 		}
 	}
 	var exer = {};
@@ -137,8 +174,8 @@ controllerProto.startTesting = function () {
 	window.scrollTo(0, document.body.scrollHeight);
 	$('#container').scrollTop($('#container').prop("scrollHeight"));
 	if (count === 0)
-		return 0;
-	return count / numberOfTestCases;
+		return { score: 0, solution: serializeGraphToXML(this.fa) }
+	return { score: count / numberOfTestCases, solution: serializeGraphToXML(this.fa) };
 };
 
 // binded with question links at the top of the page

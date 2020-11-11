@@ -12,31 +12,40 @@
     "description": "Construct the DFA for the following language. ___ , Σ ={a, b}. For example, bbba, bababa, babbbbbaaandaaaa are in L.  But baababa is not.",
     "type": "description",
     "testCases": [{
-            "bbba": true
+            "bbba": true,
+            "ShowTestCase":true
         },
         {
-            "bababa": true
+            "bababa": true,
+            "ShowTestCase":true
         },
         {
-            "babbbbbaa": true
+            "babbbbbaa": true,
+            "ShowTestCase":true
         },
         {
-            "aaaa": true
+            "aaaa": true,
+            "ShowTestCase":true
         },
         {
-            "abbbabbaba": true
+            "abbbabbaba": true,
+            "ShowTestCase":true
         },
         {
-            "ababababababa": true
+            "ababababababa": true,
+            "ShowTestCase":true
         },
         {
-            "ababababa": false
+            "ababababa": false,
+            "ShowTestCase":true
         },
         {
-            "aababbbbba": false
+            "aababbbbba": false,
+            "ShowTestCase":true
         },
         {
-            "baababa": false
+            "baababa": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

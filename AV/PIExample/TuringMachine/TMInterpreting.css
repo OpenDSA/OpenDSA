@@ -2,3 +2,7 @@
     height: 700px;
     width: 1000px;
 }
+
+.final {
+	border: 3px double;
+}

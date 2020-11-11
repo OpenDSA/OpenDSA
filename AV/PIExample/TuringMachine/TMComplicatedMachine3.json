@@ -39,7 +39,7 @@
       "q8": {
         "type":"select",
         "description":"<b>Lemma</b>: If <br>&nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$ <br> for string $w$ and <br>&nbsp; &nbsp; $(q_2, w_2\\underline{a_2}u_2) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$<br> then <br> &nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$",
-        "question":"In other words, the machine did <b>another<b> processing on the tape content and modified it accordingly",
+        "question":"In other words, the machine did $\\textbf{another}$ processing on the tape content and modified it accordingly",
         "answer":"True",
         "choices": []
       },
@@ -53,7 +53,7 @@
       "q13": {
         "type":"select",
         "description":"Here are some basic machines and notation <br> &bull; $|\\Sigma|$ symbol-writing machines (one for each symbol): Any give letter $\\sigma$ has a symbol-writing machine named $\\sigma$.",
-        "question":"If $\\Sigma = {a, b}$, what does the TM $a$ do?",
+        "question":"If $\\Sigma = \\{a, b\\}$, what does the TM $a$ do?",
         "answer":"write the letter $a$ to the tape",
         "choices": ["write the letter $a$ to the tape", "$a$ is just a letter in the alphabet set $\\Sigma$"]
       },
@@ -101,11 +101,32 @@
       },
       "q21": {
         "type":"select",
-        "description":"Consider this example, For $\\Sigma = \\{a, b, c\\}$",
+        "description":"Consider this example",
         "question":"What this machine do?",
         "answer":"Move the head right until an empty cell is found",
         "choices": ["Move the head right until an empty cell is found", "Move the head right until a non-empty cell is found"]
       },
+      "q22": {
+        "type":"select",
+        "description":"Consider this example<br/>We will use the notation $R_#$ for this process.",
+        "question":"What $R_#$ machine do?",
+        "answer":"Move the head right until an empty cell is found",
+        "choices": ["Move the head right until an empty cell is found", "Move the head right until a non-empty cell is found"]
+      },
+      "q23": {
+        "type":"select",
+        "description":"Consider this example",
+        "question":"What this machine do?",
+        "answer":["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"],
+        "choices": ["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"]
+      },
+      "q24": {
+        "type":"select",
+        "description":"Consider this example<br/>We will use the notation $L_#$ for the Machine that will go left until it finds an empty cell.",
+        "question":"What the machine on the right of the vertical line do?",
+        "answer":["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"],
+        "choices": ["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"]
+      }
     }
   }
 }

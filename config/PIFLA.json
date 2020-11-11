@@ -1,5 +1,5 @@
 {
-  "title": "Formal Languages and Automata",
+  "title": "Formal Languages and Automata: PIFrames",
   "desc": "Formal Languages and Automata",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
@@ -67,7 +67,7 @@
     "Mathematical Background": {
       "PIFLA/SetNotation": {},
       "PIFLA/Relations": {},
-      "PIFLA/MathProof":{}
+      "Background/Proofs": {}
     },
     "Appendix": {
       "Glossary": {}

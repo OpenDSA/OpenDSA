@@ -6,22 +6,34 @@
     "containLetters": ["a"],
     "randomStringLength": [0, 15],
     "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
-    "hardCodeCasesCounter": 4,
+    "hardCodeCasesCounter": 6,
     "expression": "",
     "description": "Create a machine that increases the number of a's in the string",
     "type": "description",
     "testCases": [
       {
-        "aaa": "aaaa"
+        "": "a",
+        "ShowTestCase":false
       },
       {
-        "": "a"
+        "a": "aa",
+        "ShowTestCase":false
+      },      
+      {
+        "aa": "aaa",
+        "ShowTestCase":false
       },
       {
-        "aaaaa": "aaaaaa"
+        "aaa": "aaaa",
+        "ShowTestCase":false
       },
       {
-        "aaaaaaa": "aaaaaaaa"
+        "aaaa": "aaaaa",
+        "ShowTestCase":true
+      },
+      {
+        "aaaaaa": "aaaaaaa",
+        "ShowTestCase":true
       }
     ],
     "graph": {

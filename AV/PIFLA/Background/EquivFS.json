@@ -1,0 +1,34 @@
+{
+  "translations": {
+    "en": {
+      "equivalent": {
+        "type": "select",
+        "description": "$R$ is an equivalence relation on set $S$ if it is reflexive, symmetric, and transitive.",
+        "question": "Which of the following is an equivalence relation?",
+        "answer": ["$=$"],
+        "choices": ["$=$", "$<$", "$>$", "$\\leq$", "$\\geq$"]
+      },
+      "eqclass": {
+        "type": "select",
+        "description": "An equivalence relation can be used to partition a set into equivalence classes. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$.",
+        "question": "Why is $=$  an equivalence relation?",
+        "answer": ["because it is reflective", "because it is symmetric", "because it is transitive"],
+        "choices": ["because it is reflective", "because it is symmetric", "because it is transitive", "because it is antisymmetric", "because it is irreflexive"]
+      },
+      "mod": {
+        "type": "multiple",
+        "description": "For the set of integers, the modulus function defines a binary relation such that two numbers $x$ and $y$ are in the relation if and only if $x \\bmod m = y \\bmod m$",
+        "question": "[T/F] For $m = 4$, the pair $\\langle 1, 5\\rangle$ belongs to the modulus relation.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "partorder": {
+        "type": "select",
+        "description": "A binary relation is called a partial order if it is antisymmetric and transitive.",
+        "question": "Which of the following relations defines a partial order?",
+        "answer": ["$<$", "$\\leq$"],
+        "choices": ["$<$", "$\\leq$", "$=$"]
+      }
+    }
+  }
+}

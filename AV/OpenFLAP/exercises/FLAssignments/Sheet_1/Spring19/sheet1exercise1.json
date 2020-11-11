@@ -12,13 +12,16 @@
     "description": "Give a DFA that accepts the language over Σ ={a} of any even number of a’s.",
     "type": "description",
     "testCases": [{
-            "a": false
+            "a": false,
+            "ShowTestCase":true
         },
         {
-            "aa": true
+            "aa": true,
+            "ShowTestCase":true
         },
         {
-            "aaa": false
+            "aaa": false,
+            "ShowTestCase":true
         }
 
     ],

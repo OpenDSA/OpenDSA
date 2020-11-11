@@ -1,8 +1,8 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "PDA",
-    "totalTrueCases": 10,
-    "totalFalseCases": 10,
+    "totalTrueCases": 5,
+    "totalFalseCases": 1,
     "containLetters": ["a", "b", "c"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
@@ -12,22 +12,28 @@
     "description": "Construct the PDA that accepts ",
     "type": "both",
     "testCases": [{
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "aaabbb": true
+            "aaabbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbcccc": true
+            "bbbbcccc": true,
+            "ShowTestCase":true
         },
         {
-            "aabbbccc": true
+            "aabbbccc": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbccc": true
+            "aaabbbccc": true,
+            "ShowTestCase":true
         },
         {
-            "aaaabbbbc": true
+            "aaaabbbbc": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

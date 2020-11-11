@@ -12,31 +12,40 @@
     "description": "Give a left-linear grammar for the language L(___)",
     "type": "description",
     "testCases": [{
-            "left-linear": true
+            "left-linear": true,
+            "ShowTestCase":true
         },
         {
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "aaaba": true
+            "aaaba": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbbba": true
+            "aaabbbbba": true,
+            "ShowTestCase":true
         },
         {
-            "aaabaaaabaaaabaaaaba": true
+            "aaabaaaabaaaabaaaaba": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbbbaaaabbbbba": true
+            "aaabbbbbaaaabbbbba": true,
+            "ShowTestCase":true
         },
         {
-            "ba": false
+            "ba": false,
+            "ShowTestCase":true
         },
         {
-            "aaabaaabba": false
+            "aaabaaabba": false,
+            "ShowTestCase":true
         },
         {
-            "aaaaaa": false
+            "aaaaaa": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

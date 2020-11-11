@@ -12,34 +12,44 @@
     "description": "Find a regular grammar for the language over {a, b}, where the number of a's in any string is divisible by 3 .",
     "type": "description",
     "testCases": [{
-            "regular-grammar": true
+            "regular-grammar": true,
+            "ShowTestCase":true
         },
         {
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "aaa": true
+            "aaa": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbb": true
+            "bbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "bababa": true
+            "bababa": true,
+            "ShowTestCase":true
         },
         {
-            "abbbbabbbbabb": true
+            "abbbbabbbbabb": true,
+            "ShowTestCase":true
         },
         {
-            "aabab": true
+            "aabab": true,
+            "ShowTestCase":true
         },
         {
-            "bbabbabbbbabbababba": true
+            "bbabbabbbbabbababba": true,
+            "ShowTestCase":true
         },
         {
-            "ababbaaaaaaa": true
+            "ababbaaaaaaa": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbbbbb": true
+            "bbbbbbbbbb": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {
