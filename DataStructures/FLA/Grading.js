@@ -8,6 +8,56 @@
   if (typeof JSAV === "undefined") {
     return;
   }
+
+  //===Used to store student progress of one exercise===
+  //arthur: zinan@vt.edu
+  var srcToId = function (src) {
+    var reg = new RegExp('ExerciseId=([0-9]+)');
+    var id = reg.exec(src)[1];
+    return parseInt(id);
+  }
+
+  var store_solution = function (solution, grade) {
+    var src = window.frameElement.src;
+    var exerciseId = srcToId(src)
+    let data = {
+      exercise_id: exerciseId,
+      progress: solution,
+      grade: grade * 100
+    }
+    $.ajax({
+      type: "POST",
+      url: '/student_exercise_progress/new_progress',
+      data: data,
+      success: function (result, status, xhr) {
+        console.log(result["result"]);
+      }
+    })
+  }
+
+  // null will be returned if no progress has been stored
+  // otherwise this will return the latest progress object
+  //  example of return obj: {id: 5, user_id: 53, exercise_id: 2832, progress: "</node>...", grade: "52.38"}
+  // user should check if the return obj is null first
+  // then could use the field result['progress'] (it could also be null if previously stored a empty progress) to access the serialized graph
+  var fetch_progress = function () {
+    var src = window.frameElement.src;
+    var exerciseId = srcToId(src)
+    let data = {
+      exercise_id: exerciseId,
+    }
+    $.ajax({
+      type: "POST",
+      url: "/student_exercise_progress/get_progress",
+      data: data,
+      success: function (result, status, xhr) {
+        //console.log(result["progress"]);
+        return (result["progress"]);
+      }
+    })
+  }
+  //=====end of student progress segment=====
+
   // function to filter the steps to those that should be graded
   var gradeStepFilterFunction = function (step) {
     return step.options.grade;
@@ -16,18 +66,18 @@
   var FLExercise = function (jsav, options) {
     this.jsav = jsav;
     this.options = jQuery.extend({
-        reset: function () {},
-        controls: null,
-        feedback: "atend",
-        feedbackSelectable: false,
-        fixmode: "undo",
-        fixmodeSelectable: false,
-        grader: "default",
-        resetButtonTitle: this.jsav._translate("resetButtonTitle"),
-        undoButtonTitle: this.jsav._translate("undoButtonTitle"),
-        modelButtonTitle: this.jsav._translate("modelButtonTitle"),
-        gradeButtonTitle: this.jsav._translate("gradeButtonTitle")
-      },
+      reset: function () { },
+      controls: null,
+      feedback: "atend",
+      feedbackSelectable: false,
+      fixmode: "undo",
+      fixmodeSelectable: false,
+      grader: "default",
+      resetButtonTitle: this.jsav._translate("resetButtonTitle"),
+      undoButtonTitle: this.jsav._translate("undoButtonTitle"),
+      modelButtonTitle: this.jsav._translate("modelButtonTitle"),
+      gradeButtonTitle: this.jsav._translate("gradeButtonTitle")
+    },
       window.JSAV_EXERCISE_OPTIONS,
       options);
     // initialize controls
@@ -59,7 +109,7 @@
       var $reset = $('<input type="button" name="reset" value="' + this.options.resetButtonTitle + '" />')
         .click(resetHandler),
         $model = $('<input type="button" name="answer" value="' + "Show Test Cases" + '" />')
-        .click(modelHandler),
+          .click(modelHandler),
         $action = $('<span class="actionIndicator"></span>');
       var $grade = $('<input type="button" name="grade" value="' + this.options.gradeButtonTitle + '" />').click(
         function () {
@@ -140,8 +190,11 @@
       this.jsav.end();
       if (this.options.checkSolutionFunction)
         this.score.correct = this.options.checkSolutionFunction();
-      else
-        this.score.correct = this.options.exerciseController.startTesting();
+      else {
+        var obj = this.options.exerciseController.startTesting();
+        this.score.correct = obj.score;
+        //store_solution(obj.solution, obj.score);
+      }
     }
   }; // end grader specification
 
@@ -212,7 +265,7 @@
     $.fx.off = prevFx;
     return this.score;
   };
-  
+
   exerproto.showGrade = function () {
     // shows an alert box of the grade
     this.grade();
@@ -239,11 +292,11 @@
       modelav,
       self = this,
       modelOpts = $.extend({
-          "title": "Test Cases",
-          "closeOnClick": false,
-          "modal": false,
-          "closeCallback": function () {} //i removed the logging of model show and close
-        },
+        "title": "Test Cases",
+        "closeOnClick": false,
+        "modal": false,
+        "closeCallback": function () { } //i removed the logging of model show and close
+      },
         this.options.modelDialog); // options passed for the model answer window
     // add a class to "hide" the dialog when preparing it
     if (modelOpts.dialogClass) {

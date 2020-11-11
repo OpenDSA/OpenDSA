@@ -188,6 +188,7 @@ controllerProto.startTesting = function () {
     else
       parser = this.buildDFAforLLG();
       var wrongCounter = 0
+      var containHideTest = false;
       var testCaseList = this.testCases;
       for (i = index; i < this.testCases.length; i++) {
         if(testCaseList[i].ShowTestCase == false){
