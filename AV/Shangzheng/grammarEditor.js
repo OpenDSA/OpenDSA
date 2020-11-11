@@ -1652,26 +1652,26 @@ $(document).ready(function () {
                     // if (!_.find(tArr.concat(sliceIn), function (x) {
                     //     return x[0] === tempB;
                     // })) {
-                        var times = 0;
-                        var input;
-                        var pass = false;
-                        while (times <= 3 && !pass) {
-                            input = prompt("Left side is asigned to"+tempB+". Right side of the production you want to add?");
+                    var times = 0;
+                    var input;
+                    var pass = false;
+                    while (times <= 3 && !pass) {
+                        input = prompt("Left side is asigned to" + tempB + ". Right side of the production you want to add?");
 
-                            if (input === r[i]) {
-                                pass = true;
-                            } else {
-                                times++;
-                                if (times == 3) {
-                                    if (confirm("You have tried 3 times, do you want to try again? If not, click 'Cancel' button") == true) {
-                                        times = 0;
-                                    } else {
-                                      pass = true;
-                                    }
+                        if (input === r[i]) {
+                            pass = true;
+                        } else {
+                            times++;
+                            if (times == 3) {
+                                if (confirm("You have tried 3 times, do you want to try again? If not, click 'Cancel' button") == true) {
+                                    times = 0;
+                                } else {
+                                    pass = true;
                                 }
                             }
                         }
-                        sliceIn.push([tempB, arrow, [r[i]]]);
+                    }
+                    sliceIn.push([tempB, arrow, [r[i]]]);
                     // }
                     r[i] = tempB;
                 }
@@ -1696,8 +1696,7 @@ $(document).ready(function () {
                     tGrammar = tempG;
                     $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
 
-                }
-                else {
+                } else {
                     var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
                         return [x[0], x[1], x[2].join('')];
                     }));
@@ -1727,7 +1726,7 @@ $(document).ready(function () {
                     var input;
                     var pass = false;
                     while (times <= 3 && !pass) {
-                        input = prompt("Left side is asigned to"+tempD+". Right side of the production you want to add?");
+                        input = prompt("Left side is asigned to" + tempD + ". Right side of the production you want to add?");
                         var arrayedInput = input.split("");
                         if (checkSame(arrayedInput, temp2)) {
                             pass = true;
@@ -1752,8 +1751,7 @@ $(document).ready(function () {
                         tGrammar.clear();
                         tGrammar = tempG;
                         $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
-                    }
-                    else {
+                    } else {
                         tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
                         varCounter++;
                         var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
@@ -1778,8 +1776,8 @@ $(document).ready(function () {
             //console.log(temp);
             var stringA = []
             for (var j = 0; j < tArr.length; j++) {
-                var left = tGrammar.value(j,0);
-                var right = tGrammar.value(j,2);
+                var left = tGrammar.value(j, 0);
+                var right = tGrammar.value(j, 2);
                 stringA.push(left + arrow + right);
             }
             console.log(stringA)
@@ -1790,40 +1788,40 @@ $(document).ready(function () {
                     break;
                 }
             }
-            if(same) {
-                    jsav.umsg('All productions completed.');
-                    tGrammar.element.off();
-                    // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-                    // if (c) {
-                    attemptExport();
-                    // }
-                    for (var i = 0; i < tGrammar._arrays.length; i++) {
-                        tGrammar.unhighlight(i);
-                    }
-                    tGrammar.hide();
-                    var tempDsArray = [];
-                    var newArr = [];
-                    for (var j = 0; j < fullChomsky.length; j++) {
-                        var splitedProduction = [];
-                        splitedProduction[0] = fullChomsky[j].split(arrow)[0];
-                        splitedProduction[1] = arrow;
-                        splitedProduction[2] = fullChomsky[j].split(arrow)[1];
-                        newArr[j] = splitedProduction;
-                        tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
-                    }
+            if (same) {
+                jsav.umsg('All productions completed.');
+                tGrammar.element.off();
+                // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
+                // if (c) {
+                attemptExport();
+                // }
+                for (var i = 0; i < tGrammar._arrays.length; i++) {
+                    tGrammar.unhighlight(i);
+                }
+                tGrammar.hide();
+                var tempDsArray = [];
+                var newArr = [];
+                for (var j = 0; j < fullChomsky.length; j++) {
+                    var splitedProduction = [];
+                    splitedProduction[0] = fullChomsky[j].split(arrow)[0];
+                    splitedProduction[1] = arrow;
+                    splitedProduction[2] = fullChomsky[j].split(arrow)[1];
+                    newArr[j] = splitedProduction;
+                    tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
+                }
 
-                    for (var i = 0; i < dsArray.length; i++) {
-                        dsArray[i].hide();
-                    }
+                for (var i = 0; i < dsArray.length; i++) {
+                    dsArray[i].hide();
+                }
 
-                    for (var j = 0; j < tempDsArray.length; j++) {
-                        if (j == 0) {
-                            continue;
-                        }
-                        var dis = (30 * j).toString();
-                        tempDsArray[j].css({top: "-=" + dis + "px", relativeTo: tempDsArray[0]});
+                for (var j = 0; j < tempDsArray.length; j++) {
+                    if (j == 0) {
+                        continue;
                     }
-                    ChomskydsArray = tempDsArray;
+                    var dis = (30 * j).toString();
+                    tempDsArray[j].css({top: "-=" + dis + "px", relativeTo: tempDsArray[0]});
+                }
+                ChomskydsArray = tempDsArray;
 
             }
             // if (tArr.length === fullChomsky.length) {
@@ -2038,7 +2036,8 @@ $(document).ready(function () {
         }
         return true;
     }
-    function checkSame2(src, cfgsrc ) {
+
+    function checkSame2(src, cfgsrc) {
         if (src.length != cfgsrc.length) {
             return false;
         }
@@ -2046,8 +2045,7 @@ $(document).ready(function () {
             for (var j = 0; j < cfgsrc.length; j++) {
                 if (cfgsrc[j][0] == src[i][0] && cfgsrc[j][2][0] == src[i][2][0]) {
                     continue;
-                }
-                else {
+                } else {
                     return false;
                 }
             }
