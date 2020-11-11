@@ -1604,6 +1604,14 @@ $(document).ready(function () {
 
     function transformToChomskyForm() {
         var fullChomsky = convertToChomsky();
+        var splitedFullChomsky = []
+        for (var j = 0; j < fullChomsky.length; j++) {
+            var splitedProduction = [];
+            splitedProduction[0] = fullChomsky[j].split(arrow)[0];
+            splitedProduction[1] = arrow;
+            splitedProduction[2] = [fullChomsky[j].split(arrow)[1]];
+            splitedFullChomsky[j] = splitedProduction;
+        }
         var productions = _.map(_.filter(arr, function (x) {
             return x[0];
         }), function (x) {
@@ -1612,6 +1620,7 @@ $(document).ready(function () {
         //m = init();
         var tGrammar;
         var tArr = [].concat(productions);
+        var diff = Math.abs(tArr.length - splitedFullChomsky.length);
         // Right sides are arrays (unlike the matrix, where RHS is a string)
         _.each(tArr, function (x) {
             x[2] = x[2].split('');
@@ -1640,9 +1649,9 @@ $(document).ready(function () {
             for (var i = 0; i < r.length; i++) {
                 if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
                     var tempB = "B(" + r[i] + ")";
-                    if (!_.find(tArr.concat(sliceIn), function (x) {
-                        return x[0] === tempB;
-                    })) {
+                    // if (!_.find(tArr.concat(sliceIn), function (x) {
+                    //     return x[0] === tempB;
+                    // })) {
                         var times = 0;
                         var input;
                         var pass = false;
@@ -1663,19 +1672,42 @@ $(document).ready(function () {
                             }
                         }
                         sliceIn.push([tempB, arrow, [r[i]]]);
-                    }
+                    // }
                     r[i] = tempB;
                 }
             }
             if (sliceIn.length > 0) {
-                tArr = tArr.slice(0, index + 1).concat(sliceIn).concat(tArr.slice(index + 1));
-                var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
-                    return [x[0], x[1], x[2].join('')];
-                }));
-                tGrammar.clear();
-                tGrammar = tempG;
-                $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
+                var dub = false;
+
+                for (var i = 0; i < sliceIn.length; i++) {
+                    for (var j = 0; j < tArr.length; j++) {
+                        if (tArr[j][0] == sliceIn[i][0] && tArr[j][2][0] == sliceIn[i][2][0]) {
+                            dub = true;
+                        }
+                    }
+                }
+                if (!dub) {
+                    tArr = tArr.slice(0, index + 1).concat(sliceIn).concat(tArr.slice(index + 1));
+                    var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
+                        return [x[0], x[1], x[2].join('')];
+                    }));
+                    diff--;
+                    tGrammar.clear();
+                    tGrammar = tempG;
+                    $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
+
+                }
+                else {
+                    var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
+                        return [x[0], x[1], x[2].join('')];
+                    }));
+                    tGrammar.clear();
+                    tGrammar = tempG;
+                    $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
+                }
                 layoutTable(tGrammar, 2);
+
+
                 //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
                 tGrammar.click(chomskyHandler);
                 for (var i = 0; i < sliceIn.length + 1; i++) {
@@ -1710,14 +1742,29 @@ $(document).ready(function () {
                             }
                         }
                     }
-                    tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
-                    varCounter++;
-                    var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
-                        return [x[0], x[1], x[2].join('')];
-                    }));
-                    tGrammar.clear();
-                    tGrammar = tempG;
-                    $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
+                    if (tArr.indexOf([tempD, arrow, temp2]) === -1) {
+                        tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
+                        varCounter++;
+                        var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
+                            return [x[0], x[1], x[2].join('')];
+                        }));
+                        diff--;
+                        tGrammar.clear();
+                        tGrammar = tempG;
+                        $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
+                    }
+                    else {
+                        tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
+                        varCounter++;
+                        var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
+                            return [x[0], x[1], x[2].join('')];
+                        }));
+                        tGrammar.clear();
+                        tGrammar = tempG;
+                        $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
+                    }
+
+
                     layoutTable(tGrammar, 2);
 
                     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
@@ -1726,76 +1773,95 @@ $(document).ready(function () {
                     tGrammar.highlight(index + 1);
                 }
             }
+            var same = true;
             jsav.umsg('Converted.');
-            // var checkSame = function (list1, list2) {
-            //     for (var i = 0; i < list1.length; i++) {
-            //         var v = list1[i].join('').replace(',', '');
-            //         if (list2.indexOf(v) === -1) {
-            //             return false;
-            //         }
-            //     }
-            //     return true;
-            // }
-            if (tArr.length === fullChomsky.length) {
-                jsav.umsg('All productions completed.');
-                tGrammar.element.off();
-                // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-                // if (c) {
-                //   attemptExport();
-                // }
-                for (var i = 0; i < tGrammar._arrays.length; i++) {
-                    tGrammar.unhighlight(i);
-                }
-                tGrammar.hide();
-                var tempDsArray = [];
-                var newArr = [];
-                for (var j = 0; j < fullChomsky.length; j++) {
-                    var splitedProduction = [];
-                    splitedProduction[0] = fullChomsky[j].split(arrow)[0];
-                    splitedProduction[1] = arrow;
-                    splitedProduction[2] = fullChomsky[j].split(arrow)[1];
-                    newArr[j] = splitedProduction;
-                    tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
-                }
-
-                for (var i = 0; i < dsArray.length; i++) {
-                    dsArray[i].hide();
-                }
-
-                for (var j = 0; j < tempDsArray.length; j++) {
-                    if (j == 0) {
-                        continue;
-                    }
-                    var dis = (30 * j).toString();
-                    tempDsArray[j].css({top: "-=" + dis + "px", relativeTo: tempDsArray[0]});
-                }
-                ChomskydsArray = tempDsArray;
+            //console.log(temp);
+            var stringA = []
+            for (var j = 0; j < tArr.length; j++) {
+                var left = tGrammar.value(j,0);
+                var right = tGrammar.value(j,2);
+                stringA.push(left + arrow + right);
             }
-            // tGrammar.hide();
-            // var tempDsArray = [];
-            // var newArr = [];
-            // for (var j = 0; j < fullChomsky.length; j++) {
-            //     var splitedProduction = [];
-            //     splitedProduction[0] = fullChomsky[j].split(arrow)[0];
-            //     splitedProduction[1] = arrow;
-            //     splitedProduction[2] = fullChomsky[j].split(arrow)[1];
-            //     newArr[j] = splitedProduction;
-            //     tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
-            // }
-            //
-            // for (var i = 0; i < dsArray.length; i++) {
-            //     dsArray[i].hide();
-            // }
-            //
-            // for (var j = 0; j < tempDsArray.length; j++)
-            // {
-            //     if (j == 0) {
-            //         continue;
+            console.log(stringA)
+
+            for (var i = 0; i < stringA.length; i++) {
+                if (fullChomsky.indexOf(stringA[i]) === -1) {
+                    same = false;
+                    break;
+                }
+            }
+            if(same) {
+                    jsav.umsg('All productions completed.');
+                    tGrammar.element.off();
+                    // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
+                    // if (c) {
+                    attemptExport();
+                    // }
+                    for (var i = 0; i < tGrammar._arrays.length; i++) {
+                        tGrammar.unhighlight(i);
+                    }
+                    tGrammar.hide();
+                    var tempDsArray = [];
+                    var newArr = [];
+                    for (var j = 0; j < fullChomsky.length; j++) {
+                        var splitedProduction = [];
+                        splitedProduction[0] = fullChomsky[j].split(arrow)[0];
+                        splitedProduction[1] = arrow;
+                        splitedProduction[2] = fullChomsky[j].split(arrow)[1];
+                        newArr[j] = splitedProduction;
+                        tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
+                    }
+
+                    for (var i = 0; i < dsArray.length; i++) {
+                        dsArray[i].hide();
+                    }
+
+                    for (var j = 0; j < tempDsArray.length; j++) {
+                        if (j == 0) {
+                            continue;
+                        }
+                        var dis = (30 * j).toString();
+                        tempDsArray[j].css({top: "-=" + dis + "px", relativeTo: tempDsArray[0]});
+                    }
+                    ChomskydsArray = tempDsArray;
+
+            }
+            // if (tArr.length === fullChomsky.length) {
+            //     jsav.umsg('All productions completed.');
+            //     tGrammar.element.off();
+            //     // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
+            //     // if (c) {
+            //     attemptExport();
+            //     // }
+            //     for (var i = 0; i < tGrammar._arrays.length; i++) {
+            //         tGrammar.unhighlight(i);
             //     }
-            //     var dis = (30*j).toString();
-            //     tempDsArray[j].css({top:"-=" + dis+ "px",relativeTo: tempDsArray[0]});
+            //     tGrammar.hide();
+            //     var tempDsArray = [];
+            //     var newArr = [];
+            //     for (var j = 0; j < fullChomsky.length; j++) {
+            //         var splitedProduction = [];
+            //         splitedProduction[0] = fullChomsky[j].split(arrow)[0];
+            //         splitedProduction[1] = arrow;
+            //         splitedProduction[2] = fullChomsky[j].split(arrow)[1];
+            //         newArr[j] = splitedProduction;
+            //         tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
+            //     }
+            //
+            //     for (var i = 0; i < dsArray.length; i++) {
+            //         dsArray[i].hide();
+            //     }
+            //
+            //     for (var j = 0; j < tempDsArray.length; j++) {
+            //         if (j == 0) {
+            //             continue;
+            //         }
+            //         var dis = (30 * j).toString();
+            //         tempDsArray[j].css({top: "-=" + dis + "px", relativeTo: tempDsArray[0]});
+            //     }
+            //     ChomskydsArray = tempDsArray;
+            //
             // }
-            // ChomskydsArray = tempDsArray;
         };
         // attempts to convert and export the completed CNF grammar
         var attemptExport = function () {
@@ -1828,10 +1894,10 @@ $(document).ready(function () {
                     tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
                 }
             }
-            localStorage['grammar'] = _.map(tArr, function (x) {
-                return x.join('');
-            });
-            window.open('grammarTest.html', '');
+            // localStorage['grammar'] = _.map(tArr, function (x) {
+            //     return x.join('');
+            // });
+            // window.open('grammarTest.html', '');
         };
 
         tGrammar = jsav.ds.matrix(_.map(tArr, function (x) {
@@ -1969,6 +2035,23 @@ $(document).ready(function () {
             if (list1[i] !== list2[i]) {
                 return false;
             }
+        }
+        return true;
+    }
+    function checkSame2(src, cfgsrc ) {
+        if (src.length != cfgsrc.length) {
+            return false;
+        }
+        for (var i = 0; i < src.length; i++) {
+            for (var j = 0; j < cfgsrc.length; j++) {
+                if (cfgsrc[j][0] == src[i][0] && cfgsrc[j][2][0] == src[i][2][0]) {
+                    continue;
+                }
+                else {
+                    return false;
+                }
+            }
+
         }
         return true;
     }
