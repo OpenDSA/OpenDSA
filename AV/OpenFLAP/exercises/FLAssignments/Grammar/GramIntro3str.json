@@ -1,7 +1,6 @@
 [{
   "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
   "exerciseType": "GRAMMAR",
-  "title":"",
   "totalTrueCases": 3,
   "totalFalseCases": 1,
   "containLetters": ["a", "b"],

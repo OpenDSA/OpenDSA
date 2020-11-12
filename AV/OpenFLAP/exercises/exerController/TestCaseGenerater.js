@@ -73,8 +73,7 @@ function count(obj,tag){
   var counter = 0;
   var searchFrom = obj.testCases;
   for(var i =0;i<searchFrom.length;i++){
-    var each = searchFrom[i];
-    for (const [key, value] of Object.entries(each)) {
+    for (const [key, value] of Object.entries(searchFrom[i])) {
       if(key != "ShowTestCase" && value == tag){
         counter = counter +1;
       }
