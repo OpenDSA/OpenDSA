@@ -6,8 +6,6 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 10],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 10,
-    "falseCounter": 4,
     "expression": "",
     "description": "Construct a CFG over {a,b} whose language contains precisely the strings with the same number of a’s and b’s.",
     "type": "description",
