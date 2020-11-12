@@ -102,18 +102,16 @@ Now let's see how this machine accepts / rejects some strings.
 
 Next is an exercise to give you practice in building a machine using
 the DFA machine editor.
-You should not need to think too hard about what machine you need, you
-will simply copy the machine that we have been using.
+You should not need to think too hard about what machine you need,
+since you can simply recreate the machine that we have been using.
 But doing this will introduce you to the machine editor that you will
 see a lot of in this book!
 
-.. TODO::
-
-   Exercise to create this machine in the editor.
-
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/DFA/EvenBinary.html pe
+   :long_name: Accept even binary numbers
 
 
-   Deterministic Finite Acceptors Definitions
+Deterministic Finite Acceptors Definitions
 ------------------------------------------
 
 .. inlineav:: FADefinitionsFF ff
