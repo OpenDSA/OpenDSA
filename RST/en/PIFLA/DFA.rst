@@ -12,8 +12,8 @@
 DFA: Deterministic Finite Acceptor
 ==================================
 
-DFA: Deterministic Finite Acceptor
-----------------------------------
+Introduction to the DFA
+-----------------------
 
 We start with the simplest of our machines:
 The :term:`Deterministic Finite Acceptor` (:term:`DFA`).
@@ -52,8 +52,8 @@ input.
 
 
 .. inlineav:: DFAintroFS ff
-   :links: DataStructures/FLA/FLA.css AV/PIFLA/DFA/DFAintroFS.css
-   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js AV/PIFLA/DFA/DFAintroFS.js 
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAintroFS.css
+   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js AV/PIFLA/FA/DFAintroFS.js 
    :output: show
 
 .. topic:: Definition
@@ -111,10 +111,36 @@ see a lot of in this book!
    :long_name: Accept even binary numbers
 
 
-Deterministic Finite Acceptors Definitions
-------------------------------------------
+Advanced Concepts
+-----------------
 
-.. inlineav:: FADefinitionsFF ff
-   :links: AV/PIExample/FADefinitionsFF.css DataStructures/FLA/FLA.css
-   :scripts: DataStructures/FLA/FA.js AV/PIExample/FADefinitionsFF.js DataStructures/PIFrames.js
+.. inlineav:: DFAadvancedFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAadvancedFS.css
+   :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js AV/PIFLA/FA/DFAadvancedFS.js
    :output: show
+
+
+Limits to DFAs
+--------------
+           
+A given DFA can accept a set of strings, and a set of stings is a
+language.
+So a DFA :math:`M` accepts a language :math:`L`, written
+:math:`L(M)`.
+
+But go beyond this.
+Think about all possible DFAs.
+And each DFA accepts a language.
+So all the DFAs, collectively, can accept some collection of
+languages.
+This is called a :term:`family <family of languages>`.
+Therefore, the DFAs define a family of languages that they accept.
+A language is :term:`regular <regular language>` if and only iff
+there exists a DFA :math:`M` such that :math:`L = L(M)`.
+
+The important question now is:
+Are there languages that DFAs cannot accept?
+That is, are there languages that are not regular?
+We won't leave you guessing, the answer is yes.
+We'll prove this later, and then introduce machines that can accept
+larger families of languages.
