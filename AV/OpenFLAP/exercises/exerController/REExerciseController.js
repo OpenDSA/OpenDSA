@@ -66,10 +66,11 @@ controllerProto.startTesting = function (fa, solution) {
 	var containHideTest = false;
 	var wrongCounter = 0;
 	for(var check = 0 ; check < testCaseList.length; check++){
-			if(testCaseList[check].ShowTestCase == false ){
-				containHideTest = true;
-				break;
-			}
+		var hideOption = testCaseList[check].ShowTestCase
+		if (hideOption == false || hideOption== undefined) {
+			containHideTest = true;
+			break;
+		}
 	}
 
 	this.fa = FiniteAutomaton.convertNFAtoDFA(this.jsav, this.fa);

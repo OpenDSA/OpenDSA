@@ -52,7 +52,8 @@ controllerProto.startTesting = function () {
 	var containHideTest = false;
 	var wrongCounter = 0;
 	for (var check = 0; check < testCaseList.length; check++) {
-		if (testCaseList[check].ShowTestCase == false) {
+		var hideOption = testCaseList[check].ShowTestCase
+		if (hideOption == false || hideOption== undefined) {
 			containHideTest = true;
 			break;
 		}

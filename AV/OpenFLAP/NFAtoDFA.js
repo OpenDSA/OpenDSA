@@ -53,9 +53,9 @@
 		var testCases = exerController.tests[0]["testCases"];
 		var list = [["Test Number", "Test String"]];
 		for (i = 0; i < testCases.length; i++) {
-		
 			var testCase = testCases[i];
-			if(!testCase.ShowTestCase){
+			var hideOption = testCase.ShowTestCase;
+			if (hideOption == false || hideOption== undefined) {
 				containHideTest = true;
 			}
 			if(testCase.ShowTestCase){	
