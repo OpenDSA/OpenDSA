@@ -214,8 +214,7 @@ $(document).ready(function () {
                     case 13: // enter key
                         if (index2 == 0) {
                             focus(index, 2);
-                        }
-                        else {
+                        } else {
                             // adding a new production
                             addRow(index);
                             jsav.umsg('Editing');
@@ -1552,7 +1551,7 @@ $(document).ready(function () {
                 var r = productions[i][2];
                 for (var j = 0; j < r.length; j++) {
                     if (r[j].length === 1 && variables.indexOf(r[j]) === -1) {
-                        var temp = "B(" + r[j] + ")";
+                        var temp = "$B_{(" + r[j] + ")}$";
                         if (!_.find(productions, function (x) {
                             return x[0] === temp;
                         })) {
@@ -1571,7 +1570,7 @@ $(document).ready(function () {
                 if (r.length === 1 && variables.indexOf(r[0]) === -1) {
                     continue;
                 } else if (r.length > 2) {
-                    var temp = "D(" + varCounter + ")";
+                    var temp = "$D_{(" + varCounter + ")}$";
                     var temp2 = r.splice(1, r.length - 1, temp);
                     var present = _.find(productions, function (x) {
                         return x[0].length > 1 && x[2].join('') === temp2.join('');
@@ -1647,7 +1646,7 @@ $(document).ready(function () {
         }), function (x) {
             return x.slice();
         });
-        m = init();
+        // m = init();
         var tGrammar;
         var tArr = [].concat(productions);
         var diff = Math.abs(tArr.length - splitedFullChomsky.length);
@@ -1777,7 +1776,6 @@ $(document).ready(function () {
                         var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
                             return [x[0], x[1], x[2].join('')];
                         }));
-                        diff--;
                         tGrammar.clear();
                         tGrammar = tempG;
                         $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
