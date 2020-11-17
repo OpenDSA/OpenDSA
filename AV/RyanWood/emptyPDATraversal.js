@@ -170,11 +170,24 @@
         var inputString = currentStates[i].inputString
         if (inputString.length === 0 && endflag == 1) {
           var last = currentStates[i].stack[currentStates[i].stack.length - 1];
-  
-          if (currentStates[i].state.hasClass('final')) {
-            currentStates[i].state.addClass('accepted') //This is the problematic place for traversal. Check local storage for ['empty'] to see if it should check for accepted or not. If it can't see local, find out where it can and move it from there
-          } else {
-            currentStates[i].state.addClass('rejected')
+          if (localStorage['empty'] === "true"){
+
+          
+            if (currentStates[i].stack.length === 0){
+              currentStates[i].state.addClass('accepted');
+              localStorage['emptystackthing'] = currentStates[i].stack.length;
+            }
+            else{
+              currentStates[i].state.addClass('rejected');
+              localStorage['emptystackthing'] = currentStates[i].stack.length;
+            }
+          }
+          else{
+            if (currentStates[i].state.hasClass('final')) {
+              currentStates[i].state.addClass('accepted') //This is the problematic place for traversal. Check local storage for ['empty'] to see if it should check for accepted or not. If it can't see local, find out where it can and move it from there
+            } else {
+              currentStates[i].state.addClass('rejected')
+            }
           }
           continue;
   

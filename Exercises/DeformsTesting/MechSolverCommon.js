@@ -48,7 +48,7 @@ requirejs(["./mathjs.js"], function(){});
             // Creating one rectangle in the middle that allows scrolling through
             // the list of equations.
             Window.unitFamily = unitFamily; // Setting this here since resetting is not going to change this.
-		LTI_CANVAS_HEIGHT = ltiCanvasHeight;
+		    LTI_CANVAS_HEIGHT = ltiCanvasHeight;
             reset(exerciseId);
         },
         
@@ -214,14 +214,23 @@ requirejs(["./mathjs.js"], function(){});
 	if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
 		Window.updateExerciseWindowHeight = function(shiftAmount) {	
 			var minWindowHeight = LTI_CANVAS_HEIGHT;
-			var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
+            var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
+            // TODO:
+            // 
+            // in ODSAMOD.js, there is ltiIframeResize()
+            // Also, there is an eventer() which receives postMessage() calls from the exercise
+            // including, requests to resize the iframe container, which also resizes the
+            // canvas page by calling ltiIframeResize() inside it.
+            // 
+            // TODO: replace this line by passing the resized page height to window.parent.postMessage()
+            // 
+            // 
 			window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
 				Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
 		}
 	else Window.updateExerciseWindowHeight = function() {} ;
         Window.eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
-        Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
-            Window.eqbank, globalPointerReference);
+        Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, Window.eqbank, globalPointerReference);
         Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, Window.wkspacelist);
         Window.exerciseId = exerciseId;
         Window.globalPointerReference = globalPointerReference;
@@ -234,10 +243,10 @@ requirejs(["./mathjs.js"], function(){});
         globalPointerReference.currentClickedObjectType = null;
         globalPointerReference.currentClickedObjectDescription = null;
 
-         $("body").on("jsav-log-event", function(event, eventData) {
-        //     console.log(eventData);
+        $("body").on("jsav-log-event", function(event, eventData) {
+            // console.log(eventData);
             if(window.parent.ODSA != undefined)
-	    console.log(window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc))
+	        console.log(window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc))
         });
         
         // Setting up value boxes for those inside the question body

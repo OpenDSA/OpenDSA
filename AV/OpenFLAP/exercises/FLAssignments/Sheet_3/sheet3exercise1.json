@@ -6,8 +6,6 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 10,
-    "falseCounter": 3,
     "expression": "",
     "description": "Give a regular expression whose language is strings over {a, b} in  w contains bba as a substring that starts in an even numbered position.",
     "type": "description",

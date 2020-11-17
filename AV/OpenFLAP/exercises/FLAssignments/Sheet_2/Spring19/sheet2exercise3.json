@@ -6,8 +6,6 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 6,
-    "falseCounter": 4,
     "expression": "((aa)^+bb)^*",
     "description": "Construct the DFA that accepts the complement of ",
     "type": "both",

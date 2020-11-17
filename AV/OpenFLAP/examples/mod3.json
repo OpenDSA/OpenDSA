@@ -7,8 +7,6 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 6,
-    "falseCounter": 10,
     "expression": "",
     "description": "Give a DFA that accepts the language over Σ ={0, 1a} of any binary number that is divisable by 3.",
     "type": "description",

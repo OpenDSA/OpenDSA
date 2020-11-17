@@ -6,8 +6,6 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 8,
-    "falseCounter": 4,
     "expression": "",
     "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s and at most three b’s.",
     "type": "description",

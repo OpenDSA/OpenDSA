@@ -17,6 +17,7 @@ Exercise 1
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntro3str.html pe
    :long_name: Three string grammar
+   :url_params: JSON=xxx.json
 
 Exercise 2
 ----------
@@ -29,4 +30,3 @@ Exercise 3
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanb2n.html pe
    :long_name: anb2n grammar
-
