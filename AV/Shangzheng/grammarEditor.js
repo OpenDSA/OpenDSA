@@ -58,6 +58,7 @@ $(document).ready(function () {
 
     // Function to initialize/reinitialize the grammar display
     var init = function () {
+
         if (m) {
             m.clear();
         }
@@ -67,15 +68,32 @@ $(document).ready(function () {
             m2._arrays[i].hide();
         }
         layoutTable(m2, 2);
-        if (type !== "transformation")
+        if (type !== "transformation") {
             m2.on('click', matrixClickHandler);
+
+            // document.getElementById("av").oncontextmenu = function(e){
+            //     e.preventDefault();
+            // };
+            //
+            // m2.on('mouseup',function(e) {
+            //     if (!e) e=window.event;
+            //     if (e.button==2) {
+            //
+            //         $("#menu").css({left:this.element.offset().left + e.offsetX, top: this.element.offset().top + e.offsetY});
+            //         $("#menu").show();
+            //     }
+            // });
+
+        }
+
+
         return m2;
     };
 
     // handler for grammar editing
     var matrixClickHandler = function (index, index2) {
         console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
-
+        var deleteTimes = 0;
         // if ((row != index || col != index2) && fi) {
 
         if (fi) {
@@ -102,6 +120,10 @@ $(document).ready(function () {
         if ($('.jsavmatrix').hasClass('deleteMode')) {
             if (index === 0) {
                 alert("Can't delete the last row");
+                $('.jsavmatrix').addClass("editMode");
+                $('.jsavmatrix').removeClass("deleteMode");
+                $('.jsavmatrix').removeClass("addrowMode");
+                jsav.umsg('Editing');
                 return;
             }
             // recreates the matrix when deleting a row..
@@ -110,12 +132,15 @@ $(document).ready(function () {
                 if (result) {
                     arr.splice(index, 1);
                     lastRow--;
+                    deleteTimes++;
                     m = init();
                 }
             } else {
                 arr.splice(index, 1);
                 lastRow--;
+                // deleteTimes++
                 m = init();
+
             }
             $('.jsavmatrix').addClass('deleteMode');
         } else if ($('.jsavmatrix').hasClass('editMode')) {
@@ -127,7 +152,12 @@ $(document).ready(function () {
         } else if ($('.jsavmatrix').hasClass('addrowMode')) {
             addRow(index);
         }
-
+        if (deleteTimes == 1) {
+            $('.jsavmatrix').addClass("editMode");
+            $('.jsavmatrix').removeClass("deleteMode");
+            $('.jsavmatrix').removeClass("addrowMode");
+            jsav.umsg('Editing');
+        }
     };
 
 
@@ -185,10 +215,11 @@ $(document).ready(function () {
                         if (index2 == 0) {
                             focus(index, 2);
                         }
-                        // else {
-                        //     // adding a new production
-                        //     addRow(index);
-                        // }
+                        else {
+                            // adding a new production
+                            addRow(index);
+                            jsav.umsg('Editing');
+                        }
                         break;
                     case 37: // arrow left key
                         if (index2 == 2) {
@@ -293,7 +324,6 @@ $(document).ready(function () {
         $('.jsavmatrix').addClass("addrowMode");
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("editMode");
-        jsav.umsg('Adding');
 
         if (lastRow === arr.length - 1 || lastRow === arr.length) {
             var l = arr.length;
@@ -1579,11 +1609,11 @@ $(document).ready(function () {
     function toChomskyForm() {
         jsav.umsg("Next Step is converting the grammar to  Chomsky Form");
         if (modelDFA != null) {
-            modelDFA.clear();
+            modelDFA.hide();
         }
-
         for (var i = 0; i < dsArray.length; i++) {
             dsArray[i].unhighlight();
+            //dsArray[i].hide();
         }
         $('#toChomskyForm').hide();
         $('#ChangeToChomsky').show();
@@ -1617,7 +1647,7 @@ $(document).ready(function () {
         }), function (x) {
             return x.slice();
         });
-        //m = init();
+        m = init();
         var tGrammar;
         var tArr = [].concat(productions);
         var diff = Math.abs(tArr.length - splitedFullChomsky.length);
@@ -1648,7 +1678,7 @@ $(document).ready(function () {
             // replace terminals
             for (var i = 0; i < r.length; i++) {
                 if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
-                    var tempB = "B(" + r[i] + ")";
+                    var tempB = "$B_{(" + r[i] + ")}$";
                     // if (!_.find(tArr.concat(sliceIn), function (x) {
                     //     return x[0] === tempB;
                     // })) {
@@ -1691,7 +1721,7 @@ $(document).ready(function () {
                     var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
                         return [x[0], x[1], x[2].join('')];
                     }));
-                    diff--;
+
                     tGrammar.clear();
                     tGrammar = tempG;
                     $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
@@ -1714,7 +1744,7 @@ $(document).ready(function () {
                 }
             } else {
                 // replace variables
-                var tempD = "D(" + varCounter + ")";
+                var tempD = "$D_{(" + varCounter + ")}$";
                 var temp2 = r.splice(1, r.length - 1, tempD);
                 var present = _.find(tArr, function (x) {
                     return x[0].length > 1 && x[2].join('') === temp2.join('');
