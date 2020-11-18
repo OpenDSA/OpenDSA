@@ -191,7 +191,8 @@ controllerProto.startTesting = function () {
       var containHideTest = false;
       var testCaseList = this.testCases;
       for (i = index; i < this.testCases.length; i++) {
-        if(testCaseList[i].ShowTestCase == false){
+        var hideOption = testCaseList[i].ShowTestCase
+        if (hideOption == false || hideOption== undefined) {
           containHideTest = true;
         }
   
