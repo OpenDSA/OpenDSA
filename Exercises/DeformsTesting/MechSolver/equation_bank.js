@@ -844,6 +844,7 @@ const equations = [
             "bterm": "aterm / cterm",
             "cterm bterm": "(aterm)^0.5",
             "bterm cterm": "(aterm)^0.5",
+            "consistency": "aterm / bterm / cterm",
         }
     },
     {
@@ -874,6 +875,7 @@ const equations = [
             "bterm": "cterm / aterm",
             "aterm bterm": "(cterm)^0.5",
             "bterm aterm": "(cterm)^0.5",
+            "consistency": "aterm * bterm / cterm",
         }
     },
     // {

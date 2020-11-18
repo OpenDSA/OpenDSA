@@ -21,10 +21,20 @@ Window.valueTruncate = function(numericValue) {
 }
 
 Window.valueStringRepr = function(numericValueString) {
+    // TODO: Replace all of this with solution at
+    // https://mathjs.org/docs/reference/functions/format.html
     var value = parseFloat(numericValueString);
-    if(Math.abs(value) == 0) return "0";
-    if(Math.abs(value) < 1e-3 || Math.abs(value) > 1e3) return value.toExponential(3);
-    else return Window.valueTruncate(value);
+    // return mathjs.format(value, {'notation': 'exponential', 'precision': 4})
+    // if(Math.abs(value) < 1e-3 || Math.abs(value) > 1e3) return value.toExponential(3);
+    // else return Window.valueTruncate(value);
+    if(value == 0) return String(value);
+    else if(Math.abs(value) < 1e-2 || Math.abs(value) > 1e3) 
+        return mathjs.format(value, {'notation': 'exponential', 'precision': 4})
+    else // value between 1 and 1000
+    {
+        if(value % 10 == 0) return String(value);
+        return mathjs.format(value, {'notation': 'auto', 'precision': 4})
+    }
 }
 
 Window.clearGlobalPointerReference = function() {
@@ -128,6 +138,21 @@ Window.bodyClickPrompt = function() {
     });
 }
 
-Window.returnArithmeticVarUnits = function(activeEqnObject) {
-    
+Window.lowestCommonUnit = function(unitListObject) {
+    // Finding the default unit of the same domain as the unitList
+    var minUnit = Object.keys(unitListObject)[0];
+    var domain = Window.unitDomainMap[minUnit][0];
+
+    // We can only proceed with comparisons if the domain exists in our maps
+    // and the domain is not dimensionless (unlike strain/angles/frequency)
+    if(domain in Window.defaultDomains && domain != "dimensionless")
+    {
+        for(var u in unitListObject)
+        {
+            if(mathjs.evaluate("1 "+u+" < 1 "+minUnit))
+                minUnit = u;
+        }
+    }
+    return minUnit;
+    // WORKS; TESTED
 }

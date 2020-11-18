@@ -486,154 +486,154 @@ class Workspace
 
     sEquations()
     {
-        // Step 1: See which equations are selected
-        var equationSet = []; // which stores the solvable representations in all cases.
-        var equationObjectSet = [];
-        var variableSet = {};
-        try {
-            for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
-            {
-                var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
-                if(currentEqn.selected == true)
-                {
-                    equationObjectSet.push(currentEqn);
-                    var solvableRepr = currentEqn.createSolvableRepresentation();
-                    console.log(solvableRepr);
-                    // Add the equation representations
-                    for(var x=0; x<solvableRepr["equations"].length; x++)
-                        equationSet.push(solvableRepr["equations"][x]);
-                    // Find out the unknown varDisplay-varName mapping pairs
-                    for(var vname in solvableRepr["unknowns"])  // vname is the internal symbol
-                    {
-                        var unitDesc = currentEqn.getUnitOfVariable(vname);
-                        // Find the unit of the variable from its corresponding equation
-                        // variableSet[vname] = {
-                        //     "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
-                        //     "unit": null,
-                        //     "domain": null,
-                        //     "unitDisp": null,
-                        // };
-                        if(vname in variableSet) continue;
-                        variableSet[vname] = {
-                            "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
-                            "unit": unitDesc[1],
-                            "domain": unitDesc[2][0],
-                            "unitDisp": unitDesc[2][1],
-                        };
-                        if(unitDesc.length == 4)
-                            variableSet[vname]["correction"] = unitDesc[3]; // multiply the result with this to correct.
-                    }
-                }
-            }
-        }
-        catch (exception) {
-            JSAV.utils.dialog(
-                `<h4>Error</h4>
-                There was likely a problem with the units of the values. Perhaps an unrecognized
-                unit was used, or the unit of a quantity could not be discerned. Please review your work and
-                try again.`, 
-            {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
-                e.stopPropagation();
-            });
-            return;
-        }
-        console.log(variableSet);
-        console.log(equationSet);
+        // // Step 1: See which equations are selected
+        // var equationSet = []; // which stores the solvable representations in all cases.
+        // var equationObjectSet = [];
+        // var variableSet = {};
+        // try {
+        //     for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        //     {
+        //         var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+        //         if(currentEqn.selected == true)
+        //         {
+        //             equationObjectSet.push(currentEqn);
+        //             var solvableRepr = currentEqn.createSolvableRepresentation();
+        //             console.log(solvableRepr);
+        //             // Add the equation representations
+        //             for(var x=0; x<solvableRepr["equations"].length; x++)
+        //                 equationSet.push(solvableRepr["equations"][x]);
+        //             // Find out the unknown varDisplay-varName mapping pairs
+        //             for(var vname in solvableRepr["unknowns"])  // vname is the internal symbol
+        //             {
+        //                 var unitDesc = currentEqn.getUnitOfVariable(vname);
+        //                 // Find the unit of the variable from its corresponding equation
+        //                 // variableSet[vname] = {
+        //                 //     "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
+        //                 //     "unit": null,
+        //                 //     "domain": null,
+        //                 //     "unitDisp": null,
+        //                 // };
+        //                 if(vname in variableSet) continue;
+        //                 variableSet[vname] = {
+        //                     "name": solvableRepr["unknowns"][vname],    // The greek/external symbol
+        //                     "unit": unitDesc[1],
+        //                     "domain": unitDesc[2][0],
+        //                     "unitDisp": unitDesc[2][1],
+        //                 };
+        //                 if(unitDesc.length == 4)
+        //                     variableSet[vname]["correction"] = unitDesc[3]; // multiply the result with this to correct.
+        //             }
+        //         }
+        //     }
+        // }
+        // catch (exception) {
+        //     JSAV.utils.dialog(
+        //         `<h4>Error</h4>
+        //         There was likely a problem with the units of the values. Perhaps an unrecognized
+        //         unit was used, or the unit of a quantity could not be discerned. Please review your work and
+        //         try again.`, 
+        //     {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
+        //         e.stopPropagation();
+        //     });
+        //     return;
+        // }
+        // console.log(variableSet);
+        // console.log(equationSet);
         
-        // Computing solutions
-        var soln = {};
-        var listOfSolutions = null;
-        try {
-            if(equationObjectSet.length > 1)
-            {
-                listOfSolutions = nerdamer.solveEquations(equationSet);
-                //DEBUG: Primary checking for solutions in terms of knowns;
-                // Maybe useful for unit inference in system setting.
-                // listOfSolutions only provides the numbers; someway to 
-                // find the variables? Unknowns in terms of knowns? Ans: Nope, not useful
-                console.log(equationSet);
-            }
-            else
-            {
-                // Confirmed there is only one unknown in the system.
-                listOfSolutions = equationObjectSet[0].solve(); 
-                console.log(listOfSolutions);
-                console.log(variableSet);
-                // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
-                // var unitDesc = equationObjectSet[0].getUnitOfVariable();
-                // variableSet[unitDesc[0]]["unit"] = unitDesc[1];
-                // variableSet[unitDesc[0]]["domain"] = unitDesc[2][0];
-                // variableSet[unitDesc[0]]["unitDisp"] = unitDesc[2][1];
-            }
-        }
-        catch (exception) {
-            JSAV.utils.dialog(
-                `<h4>Error: Inconsistent system</h4>
-                There was an error in defining the system of equations. Namely, #unknowns =/= #equations.<br>
-                Please review the unknowns (associated variables) in the equations, as well as grayed out boxes
-                which by default are treated as unknowns.<br>Please also check that the remaining equation boxes are filled
-                with values.<br>Finally, please make sure to check all the boxes for the equations that are to be
-                included in the system to be solved.<br>`, 
-                {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
-                e.stopPropagation()});
-            return;
-        }
-        for(var i=0; i<listOfSolutions.length; i++)
-            soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
-        console.log(soln);
+        // // Computing solutions
+        // var soln = {};
+        // var listOfSolutions = null;
+        // try {
+        //     if(equationObjectSet.length > 1)
+        //     {
+        //         listOfSolutions = nerdamer.solveEquations(equationSet);
+        //         //DEBUG: Primary checking for solutions in terms of knowns;
+        //         // Maybe useful for unit inference in system setting.
+        //         // listOfSolutions only provides the numbers; someway to 
+        //         // find the variables? Unknowns in terms of knowns? Ans: Nope, not useful
+        //         console.log(equationSet);
+        //     }
+        //     else
+        //     {
+        //         // Confirmed there is only one unknown in the system.
+        //         listOfSolutions = equationObjectSet[0].solve(); 
+        //         console.log(listOfSolutions);
+        //         console.log(variableSet);
+        //         // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
+        //         // var unitDesc = equationObjectSet[0].getUnitOfVariable();
+        //         // variableSet[unitDesc[0]]["unit"] = unitDesc[1];
+        //         // variableSet[unitDesc[0]]["domain"] = unitDesc[2][0];
+        //         // variableSet[unitDesc[0]]["unitDisp"] = unitDesc[2][1];
+        //     }
+        // }
+        // catch (exception) {
+        //     JSAV.utils.dialog(
+        //         `<h4>Error: Inconsistent system</h4>
+        //         There was an error in defining the system of equations. Namely, #unknowns =/= #equations.<br>
+        //         Please review the unknowns (associated variables) in the equations, as well as grayed out boxes
+        //         which by default are treated as unknowns.<br>Please also check that the remaining equation boxes are filled
+        //         with values.<br>Finally, please make sure to check all the boxes for the equations that are to be
+        //         included in the system to be solved.<br>`, 
+        //         {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
+        //         e.stopPropagation()});
+        //     return;
+        // }
+        // for(var i=0; i<listOfSolutions.length; i++)
+        //     soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
+        // console.log(soln);
         
-        // console.log("Before printing solutions", this.DIMENSIONS);
-        for(var unknownName in variableSet)
-        {
-            var value = null;
-            if(variableSet[unknownName].length == 4)
-                value = soln[unknownName]*variableSet[unknownName]["correction"];
-            else
-                value = soln[unknownName];
-            var currSolution = new ValueBox(
-                false,
-                {
-                    "visuals": this.DIMENSIONS.ELEMENTS,
-                    "dataset": {
-                        "value": value,
-                        "unit": variableSet[unknownName]["unit"],
-                        "variable": unknownName,    // The internal variable name eg: x_y
-                        // "valueDisplay": String(Number(Math.round(+'e3')+'e-3')),
-                        "valueDisplay": Window.valueStringRepr(value),
-                        "unitDisplay": variableSet[unknownName]["unitDisp"],
-                        "variableDisplay": variableSet[unknownName]["name"], // The greek/external symbol
-                        "domain": variableSet[unknownName]["domain"]
-                    }
-                },
-                this.globalSectionObj,
-                this.globalPointerReference
-            )
-            console.log(currSolution);
+        // // console.log("Before printing solutions", this.DIMENSIONS);
+        // for(var unknownName in variableSet)
+        // {
+        //     var value = null;
+        //     if(variableSet[unknownName].length == 4)
+        //         value = soln[unknownName]*variableSet[unknownName]["correction"];
+        //     else
+        //         value = soln[unknownName];
+        //     var currSolution = new ValueBox(
+        //         false,
+        //         {
+        //             "visuals": this.DIMENSIONS.ELEMENTS,
+        //             "dataset": {
+        //                 "value": value,
+        //                 "unit": variableSet[unknownName]["unit"],
+        //                 "variable": unknownName,    // The internal variable name eg: x_y
+        //                 // "valueDisplay": String(Number(Math.round(+'e3')+'e-3')),
+        //                 "valueDisplay": Window.valueStringRepr(value),
+        //                 "unitDisplay": variableSet[unknownName]["unitDisp"],
+        //                 "variableDisplay": variableSet[unknownName]["name"], // The greek/external symbol
+        //                 "domain": variableSet[unknownName]["domain"]
+        //             }
+        //         },
+        //         this.globalSectionObj,
+        //         this.globalPointerReference
+        //     )
+        //     console.log(currSolution);
 
-            this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
-            this.solutionCounter++;
+        //     this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
+        //     this.solutionCounter++;
 
-            this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
-            this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
+        //     this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
+        //     this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
 
-            this.lastSolution = currSolution;
+        //     this.lastSolution = currSolution;
 
-            Window.windowManager.shiftDown(null, this.id);
-        }
+        //     Window.windowManager.shiftDown(null, this.id);
+        // }
 
-        // De-select selected equations, the list of selections will get cleared anyway.
-        for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
-        {
-            var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
-            if(currentEqn.selected == true)
-            {
-                // currentEqn.visualComponents.tickmark.addClass("tickunselected");
-                // currentEqn.visualComponents.tickmark.removeClass("tickselected");
-                currentEqn.visualComponents["tickmark"].element[0].dataset.selected="unselected";
-                currentEqn.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
-                currentEqn.selected = false;
-            }
-        }
+        // // De-select selected equations, the list of selections will get cleared anyway.
+        // for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+        // {
+        //     var currentEqn = this.LIST_OF_EQUATIONS_IN_WORKSPACE[index];
+        //     if(currentEqn.selected == true)
+        //     {
+        //         // currentEqn.visualComponents.tickmark.addClass("tickunselected");
+        //         // currentEqn.visualComponents.tickmark.removeClass("tickselected");
+        //         currentEqn.visualComponents["tickmark"].element[0].dataset.selected="unselected";
+        //         currentEqn.visualComponents["tickmark"].element[0].innerHTML = "&#x2610";
+        //         currentEqn.selected = false;
+        //     }
+        // }
 
     }
     solveEquations()
@@ -642,6 +642,10 @@ class Workspace
         var selectedEquations = {};
         var variableSet = {};
         
+        // An error marker that stores all the errors we find in this run
+        var errorFlag = {"error": { "global": {} }, "warning": []};
+        // var errorFlag = [];
+
         for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
         {
             if(this.LIST_OF_EQUATIONS_IN_WORKSPACE[index].selected == true)
@@ -661,11 +665,20 @@ class Workspace
                         // This will be needed anyway down the road.
                         var domain = Window.unitDomainMap[solvableRepr["knowns"][varName]["unit"]][0];
                         var defaultUnit = Window.defaultDomains[domain][Window.unitFamily];
-                        var baseValue = mathjs.evaluate(
-                            "number("+
-                            solvableRepr["knowns"][varName]["value"]+" "+
-                            solvableRepr["knowns"][varName]["unit"]+" "+
-                            ","+defaultUnit["unit"]+")");
+                        // console.log(domain, defaultUnit)
+                        if(domain != "dimensionless" && domain in Window.defaultDomains)
+                        {
+                            // If the domain is dimensionless, don't convert to base Units; there isn't any.
+                            // If the domain is not recognized, don't convert either;
+                            // we don't need to convert back or anything since we don't have base unit info
+                            // as the unit was definitely not converted in this solve session.
+                            var baseValue = mathjs.evaluate(
+                                "number("+
+                                solvableRepr["knowns"][varName]["value"]+" "+
+                                solvableRepr["knowns"][varName]["unit"]+" "+
+                                ","+defaultUnit["unit"]+")");
+                        }
+                        else var baseValue = solvableRepr["knowns"][varName]["value"];
                         solvableRepr["equations"][i] = varName+"="+baseValue;
                     }
                 }
@@ -689,6 +702,28 @@ class Workspace
                     "obj": this.LIST_OF_EQUATIONS_IN_WORKSPACE[index],
                     "repr": solvableRepr
                 }
+
+                // TODO: Add lines with logEvent() that creates a string representation of the
+                // system of equations, adds it to a container, to be pushed to the database later.
+            }
+        }
+
+        // create an event that pu
+
+        // Most basic check: if #unknowns =/= #equations, that's an error
+        if(Object.keys(variableSet).length != Object.keys(selectedEquations).length)
+        {
+            // errorFlag.push({"type":"unequalUnknownsEquations"});
+            errorFlag["error"]["global"] = {
+                "unequalUnknownsEquations": {
+                    "description" :
+                    `The number of unknowns and equations are mismatched.<br>
+                Try the following:<br>
+                1. See if the right equations were checked/selected <br>.
+                2. See if all the appropriate variable associations were made <br>.
+                3. See if any spaces are left blank that should have been filled otherwise.`
+                }
+                
             }
         }
 
@@ -709,9 +744,6 @@ class Workspace
         // description: {domain : {unit : Variable.id, ... }, ... }
         var globalUnitList = {};
 
-        // An error marker that stores all the errors we find in this run
-        var errorFlag = [];
-
         for(var eq in selectedEquations)
         {
             var currentEqn = selectedEquations[eq];
@@ -719,7 +751,9 @@ class Workspace
 
             if(currActiveEqnObject.equationObjectReference.group == "Arithmetic")
                 continue;
-            else { // Canned equations
+            else 
+            {
+                // Canned equations
                 // iterate over the variables in the equation, find unknowns, set their units
 
                 // This unit list is unique to this equation only
@@ -733,7 +767,14 @@ class Workspace
                     {   
                         if(unknown.expectedDomain != unknown.currentDomain)
                         {
-                            errorFlag.push({"type":"wrongDomainNumber", "varID": unknown.id});
+                            // errorFlag.push({"type":"wrongDomainNumber", "varID": unknown.id});
+                            errorFlag["error"][unknown.id] = {
+                                "wrongDomainNumber": {
+                                    "description":
+                                    `This position expected a value of a certain type, but<br>
+                                    received something else. Please re-check and try again.<br>`
+                                }
+                            }
                             continue;
                         }
 
@@ -749,7 +790,6 @@ class Workspace
                         if(!(unknown.currentUnit in globalUnitList[unknown.expectedDomain]))
                         {
                             globalUnitList[unknown.expectedDomain][unknown.currentUnit] = [];
-                            unitList[unknown.expectedDomain][unknown.currentUnit] = null;
                         }
                         if(!(unknown.currentUnit in unitList[unknown.expectedDomain]))
                         {
@@ -848,8 +888,31 @@ class Workspace
                             // var unitSymbol = 
                             // Window.defaultDomains[variableSet[v][i]["domain"]][Window.unitFamily]["unit"];
                             // variableSet[v][i]["unit"][unitSymbol] = null;
-                            var unitSymbol = Window.defaultDomains[dom][Window.unitFamily]["unit"];
-                            variableSet[v][dom]["unit"][unitSymbol] = null;
+                            if(dom in Window.defaultDomains)
+                            {
+                                var unitSymbol = Window.defaultDomains[dom][Window.unitFamily]["unit"];
+                                variableSet[v][dom]["unit"][unitSymbol] = null;
+                            }
+                            else
+                            {
+                                // The domain does not exist in defaultDomains.
+                                // It was not computed in this round clearly, it is coming in from before.
+                                // This domain must be coming from a value quantity, not an association.
+                                //      If it was an association, it would be discerned later in the steps.
+                                //      It cannot be a single unknown, which is determined here or later.
+                                //      So, it has to be a quantity that was dropped in.
+                                // BUT, the quantity units are used to discern specifically what
+                                // non base units we can use for a particular domain in this equation/globally.
+                                // particular domain = domain for singular/associ unknown, which is obtained
+                                // from currentDomain etc., so it can't be something completely weird.
+                                // Still, we leave this here in case it does come up.
+
+                                // ENABLE IF NECESSARY
+                                // var unitSymbol = Object.keys(unitList[dom]["unit"])[0];
+                                // variableSet[v][dom]["unit"][unitSymbol] = null;
+                                console.log("Something weird happened; non-dafaultDomain in canned equation.")
+                                console.log(currentEqn);
+                            }
                         }
                     }
                 }
@@ -964,7 +1027,7 @@ class Workspace
         
         // Creating a list of as yet completely unresolved variables
         var unresolvedVariablesCounter = 0;
-        for(var v in variableSet)   if(variableSet[v].length == 0)  unresolvedVariablesCounter ++;
+        for(var v in variableSet)   if(Object.keys(variableSet[v]).length == 0)  unresolvedVariablesCounter++;
 
         while(passFlag)
         {
@@ -1055,11 +1118,11 @@ class Workspace
                                 //     for(var u in obj.unit)
                                 //         unitList[obj.domain][u] = null;
                                 // }
-                                for(var dom in variableSet[v])
+                                for(var dom in variableSet[unknown.value.var])
                                 {
                                     if(!(dom in unitList))
                                         unitList[dom] = {};
-                                    for(var u in obj.unit)
+                                    for(var u in variableSet[unknown.value.var][dom].unit)
                                         unitList[dom][u] = null;
                                 }
                             }
@@ -1073,48 +1136,43 @@ class Workspace
                     {
                         // Multiple domains in an addition equation; a serious error.
                         // TODO: Fix this to proper error keying when possible.
-                        errorFlag.push({
-                            "type":"conflictingDomain", "var": v,
-                            "eqn": currActiveEqnObject
-                        });
+                        // errorFlag.push({
+                        //     "type":"conflictingDomain",
+                        //     "eqn": currActiveEqnObject
+                        // });
+                        errorFlag["error"][currActiveEqnObject.id] = {
+                            "conflictingDomain": {
+                                "description":
+                                `While inferring units for variables and checking<br>
+                                for consistency, we found that this equation might<br>
+                                have variables which may even have multiple domains <br>
+                                defined for the same unknown. Please revise and retry.<br>`
+                            }
+                        }
                         // Ignore further processing, and continue.
-                        continue;
+                        // continue;
                     }
                     
                     else if (Object.keys(unitList).length == 0)
-                        continue; // We'll find the units in some other iteration
+                        ;// continue; // We'll find the units in some other iteration, let ctrl fall to end
                     
-                    // else if(Object.keys(unitList).length == 1)
-                    // {
-                    //     // Only one domain, and we put the candidate units into 
-                    //     // the candidates for all the unknowns
-                    //     var resolvedDomain = Object.keys(unitList)[0];
-                    //     for(var v in unknowns)
-                    //     {
-                    //         // if(unknowns[v] == null)
-                    //         if(variableSet[v].length == 0)
-                    //         {
-                    //             // First catch, assign to it blindly since resolved
-                    //             variableSet[v] = [{
-                    //                 "domain": resolvedDomain,
-                    //                 "unit": {}
-                    //             }]
-                    //         }
-                    //         for(var d; d<variableSet[v].length; d++)
-                    //             if(variableSet[v][d]["domain"] == resolvedDomain)
-                    //                 for(var u in unitList[resolvedDomain])
-                    //                     variableSet[v][i]["unit"][u] = null;
-                    //     }
-                    // }
-                    // 
                     else if(Object.keys(unitList).length == 1)
                     {
-                        // Technically, the conflict error is not reported until the end
+                        // Technically, the unit conflict error is not reported until the end
                         // when we actually try to resolve all of the domains and units
                         // or in resolve="all" type equations where we need to know one
                         // definite answer for domain and unit. But even there, we assume nothing
-                        // and parse over the entire container (object/list) first.
+                        // and parse over the entire container (object/list) first as long as
+                        // there is only one domain
                         var resolvedDomain = Object.keys(unitList)[0];
+
+                        // Important NOTE: the domains and units are completely free here;
+                        // i.e. we don't refer to ./Maps.js to find units for a domain we recognize
+                        // or even check it. So, any custom unit defined/calculated from previous
+                        // steps can make it through to here, no problems. It can also make it through
+                        // multiple rounds of computations if need be.
+                        // Side note: typically, custom unit quantities are used in Arithmetic
+                        // custom equations, not in canned stuff (unless by mistake). So, this is fine.
 
                         for(var v in unknowns)
                         {
@@ -1130,20 +1188,19 @@ class Workspace
                                 };
                             }
                             // for(var d; d<variableSet[v].length; d++)
-                            for(var dom in variableSet[v])
+
+                            // If the  domain already exists in the variableSet, update it
+                            if(!(resolvedDomain in variableSet[v]))
+                                variableSet[v][resolvedDomain] = {"unit" : {}, "equation" : []}
+                            // Else, it all already exists, so no worries
+                            for(var u in unitList[resolvedDomain])
                             {
-                                // if(variableSet[v][d]["domain"] == resolvedDomain)
-                                //     for(var u in unitList[resolvedDomain])
-                                //         variableSet[v][i]["unit"][u] = null;
-                                if(dom == resolvedDomain)
-                                    for(var u in unitList[resolvedDomain])
-                                    {
-                                        variableSet[v][dom]["unit"][u] = null;
-                                        variableSet[v][dom]["equation"].push(currActiveEqnObject);
-                                    }
+                                variableSet[v][resolvedDomain]["unit"][u] = null;
+                                variableSet[v][resolvedDomain]["equation"].push(currActiveEqnObject);
                             }
                         }
                     }
+                    // else if(Object.keys(unitList).length == 0) continue;
                 }
                 else if(
                     currActiveEqnObject.equationObjectReference.group == "Arithmetic" &&
@@ -1157,7 +1214,7 @@ class Workspace
                     // Find the dimensions you already know.
                     // unlike previous cases where we used unitList 
                     // (which only cares about what units exist overall in the equation),
-                    // here we want to explicitly track what units occur where in 
+                    // here we want to explicitly track what units occur in which equation term
                     var variableTermAssoc = {};
                     
                     for(var v in currActiveEqnObject.variables)
@@ -1166,31 +1223,14 @@ class Workspace
                         variableTermAssoc[unknown.name] = null;
                         if(unknown.valueType == "number")
                         {
-                            if(!(unknown.currentDomain in globalUnitList))
-                            {
+                            if(!(unknown.currentDomain in globalUnitList)){
                                 globalUnitList[unknown.currentDomain] = {};
                             }
-                            // if(!(unknown.currentDomain in unitList))
-                            // {
-                            //     unitList[unknown.currentDomain] = {};
-                            //     variableTermAssoc[unknown.name] = {};
-                            //     variableTermAssoc[unknown.name][unknown.currentDomain] = {};
-                            // }
+                            if(!(unknown.currentUnit in globalUnitList[unknown.currentDomain])){
+                                globalUnitList[unknown.currentDomain][unknown.currentUnit] = [];
+                            }
+                            globalUnitList[unknown.currentDomain][unknown.currentUnit].push(unknown.id);
                             
-                            // variableTermAssoc[unknown.name][unknown.currentDomain] = {};
-                            
-                            // if(!(unknown.currentUnit in globalUnitList[unknown.currentDomain]))
-                            // {
-                            //     globalUnitList[unknown.currentDomain][unknown.currentUnit] = [];
-                            // }
-                            // if(!(unknown.currentUnit in unitList[unknown.currentDomain]))
-                            // {
-                            //     unitList[unknown.currentDomain][unknown.currentUnit] = null;
-                            // }
-                            // globalUnitList[unknown.currentDomain][unknown.currentUnit].push(unknown.id);
-
-                            // variableTermAssoc[unknown.name][unknown.currentDomain][unknown.currentUnit] = {};
-
                             // Only the unit needs to be known if the quantity is already well defined.
                             variableTermAssoc[unknown.name] = {};
                             variableTermAssoc[unknown.name][unknown.currentDomain] = {};
@@ -1201,7 +1241,7 @@ class Workspace
                         // DECIDE WHAT AND HOW TO INCORPORATE AS UNKNOWNS.
                         // 
                         // ALSO NOTE:
-                        // TRACKING ALL THE UNITS IN A DOMAIN HELPS IN RESOLVING INTRA-DOMAIN,
+                        // TRACKING ALL THE UNITS IN A DOMAIN HELPS IN RESOLVING INTRA-DOMAIN CONFLICT,
                         // BUT TRACKING ACROSS DOMAINS IS USELESS, SINCE WE HAVE NO IDEA ABOUT
                         // CONSISTENCY HERE AS THERE IS NO WAY TO TELL WHAT UNITS CAN BE WHERE
                         // IN AN EQUATION, EXCEPT WHAT WE ALREADY KNOW.
@@ -1219,11 +1259,10 @@ class Workspace
                             if(Object.keys(variableSet[unknown.currentSymbol]).length == 0)
                             {
                                 unknowns[unknown.currentSymbol] = unknown.name;
-                                // Do we need to track what symbol the unknown is?
-                                // variableSet[unknown.name] = 
                             }
                             else
                             {
+                                // If info exists, we pull this in for consistency check
                                 variableTermAssoc[unknown.name] = {};
                                 for(var dom in variableSet[unknown.currentSymbol])
                                 {
@@ -1290,64 +1329,113 @@ class Workspace
                     console.log(unknowns)
                     // return;
 
-                    // var countUnknowns = 0;
-                    // for(v in variableTermAssoc) if(variableTermAssoc[v] == null)  countUnknowns++;
-                    // We do this later since we might have the same unknown appear in the same equation.
-                    // We parse the equation once, capture in a dictionary, and then count the unknowns in here.
-
-                    // if(countUnknowns == 1)
                     if(Object.keys(unknowns).length == 1)
                     {
                         // The meat of the matter; calculate the resultant unit and domain
                         var subjectFormKeyString = "";
 
-                        for(var vta in variableTermAssoc) {
-                            if(variableTermAssoc[vta] != null) continue;
-                            subjectFormKeyString+=vta;
+                        for(var vta in unknowns) {
+                            subjectFormKeyString+=unknowns[vta];
                             subjectFormKeyString+=" ";
                         }
-                        console.log(subjectFormKeyString.trimEnd());
-                        var subjectForm = 
-                        currActiveEqnObject.equationObjectReference.subjectForm[
-                            subjectFormKeyString.trimEnd()];
+                        // console.log(subjectFormKeyString.trimEnd());
+                        var subjectForm = currActiveEqnObject.equationObjectReference
+                                          .subjectForm[subjectFormKeyString.trimEnd()];
                         
-                        console.log(subjectForm);
+                        let baseUnit = null;
+                        let baseUnitSubjectForm = currActiveEqnObject.equationObjectReference
+                                                  .subjectForm[subjectFormKeyString.trimEnd()];
+                                                //   simply a copy of subjectForm used to compute the baseUnit
+                        
+                        // console.log(subjectForm);
                         
                         var skipProcessing = false;
-                        // substitute units etc in subjectForm
+
+                        // substitute units etc in subjectForm and baseUnitSubjectForm
                         for(var vta in variableTermAssoc)
                         {
                             if(variableTermAssoc[vta] != null)
                             {
                                 // Then substitute the units and calculate
+
+                                // If the number of units is bigger,
                                 if(Object.keys(variableTermAssoc[vta]).length > 1)
                                 {
-                                    errorFlag.push({
-                                        "type":"conflictingDomain", "var": v,
-                                        "eqn": currActiveEqnObject
-                                    });
+                                    // errorFlag.push({
+                                    //     "type":"conflictingDomain", "var": v,
+                                    //     "eqn": currActiveEqnObject
+                                    // });
+                                    errorFlag["error"][currActiveEqnObject.id] = {
+                                        "conflictingDomain": {
+                                            "description":
+                                            `While inferring units for variables and checking<br>
+                                            for consistency, we found that this equation might<br>
+                                            have variables which have multiple domains <br>
+                                            defined for the same unknown. Please revise and retry.<br>`
+                                        }
+                                    }
                                     skipProcessing = true;
                                     // Ignore further processing, and continue.
                                     break;
                                 }
 
+                                // Get the domain if it's just one domain
                                 var unitDomKey = Object.keys(variableTermAssoc[vta])[0]
-                                var unit = Object.keys(variableTermAssoc[vta][unitDomKey])[0]
-                                subjectForm = subjectForm.replace(
-                                    new RegExp(vta, 'g'),
-                                    "1 "+unit);
+
+                                // Check if there is >1 units, if so, choose
+                                // NOTE: if the unit is weird/custom/unrecognized, then there will be
+                                // (for now) only one unit in that domain, and domain == unit.
+                                // So, this will return one unit only.
+                                if(Object.keys(variableTermAssoc[vta][unitDomKey]).length > 1)
+                                    var unit = Window.lowestCommonUnit(variableTermAssoc[vta][unitDomKey]["unit"]);
+                                else var unit = Object.keys(variableTermAssoc[vta][unitDomKey])[0];
+
+                                subjectForm = subjectForm.replace(new RegExp(vta, 'g'), "1 "+unit);
+
+                                // Now repeat for baseUnitSubjectForm
+                                // If the domain exists, get the base unit
+                                // Else, ignore it, since it wasn't converted in the first place.
+
+                                if(domain in Window.defaultDomains)
+                                    var baseUnitpart = Window.defaultDomains[unitDomKey][Window.unitFamily];
+                                else
+                                    var baseUnitpart = unit; // No conversion was done, just use the unit
+                                baseUnitSubjectForm = 
+                                    baseUnitSubjectForm.replace(new RegExp(vta, 'g'), "1 "+baseUnitpart);
                             }
                         }
 
+                        // If true, skip processing this equation, since an error has occurred
                         if(skipProcessing)  continue;
-                        var resultUnit = mathjs.evaluate(subjectForm.toString.split(" ")[1])
-                        var resultDomain = null;
-                        if(resultUnit in Window.unitDomainMap)
-                            resultDomain = Window.unitDomainMap[resultUnit][0]
-                        else resultDomain = resultUnit;
+                        else
+                        {
+                            // remove the magnitude and get the rest of the units
+                            var resultUnit = mathjs.evaluate(subjectForm).toString().split(" ").slice(1).join(" ");
+                            var resultDomain = null;
+                            if(resultUnit in Window.unitDomainMap)  //  Moment of truth: weird unit, or not?
+                                resultDomain = Window.unitDomainMap[resultUnit][0]
+                            else if(resultUnit ==  undefined) resultDomain = "dimensionless"
+                            else resultDomain = resultUnit;
 
-                        if(resultDomain)
-                        variableSet[Object.keys(unknowns)[0]][resultDomain]["unit"][]
+                            if(resultDomain in variableSet[Object.keys(unknowns)[0]])
+                                variableSet[Object.keys(unknowns)[0]][resultDomain]["unit"][resultUnit] = null;
+                            else {
+                                // variableSet[Object.keys(unknowns)[0]] = {};
+                                variableSet[Object.keys(unknowns)[0]][resultDomain] = {"unit" : {}};
+                                variableSet[Object.keys(unknowns)[0]][resultDomain]["unit"][resultUnit] = null;
+                            }
+
+                            // special case, if the domain is weird/unrecognized
+                            // only in the special case that we need to define an explicit baseUnit,
+                            // will this be used
+                            if(resultDomain == resultUnit)
+                            {
+                                let baseUnit = 
+                                    mathjs.evaluate(baseUnitSubjectForm).toString().split(" ").slice(1).join(" ");
+                                // No need to check if this one exists or not; it doesn't, we've confirmed that
+                                variableSet[Object.keys(unknowns)[0]][resultDomain]["baseUnit"] = baseUnit;
+                            }
+                        }
 
                         // from before:
                         // Now check the units in the terms.
@@ -1355,18 +1443,85 @@ class Workspace
                     }
                     else if(Object.keys(unknowns).length == 0)
                     {
+                        // VERIFICATION ONLY; NO UNITS ARE ASSIGNED IN HERE.
+
                         // For now, treat it as an error and skip
                         // errorFlag.push({
                         //     "type":"overdeterminedEquation",
                         //     "eqn": variableSet[v][i].equation
                         // });
-                        continue;
-                        // Later, come back to verify the units in here.
+
+                        var subjectForm = currActiveEqnObject.equationObjectReference.subjectForm["consistency"];
+
+                        var skipProcessing = false;
+                        for(var vta in variableTermAssoc)
+                        {
+                            // if there is more than one domain for any of the variables, we have a conflict
+                            if(Object.keys(variableTermAssoc[vta]).length > 1)
+                            {
+                                errorFlag["error"][currActiveEqnObject.id] = {
+                                    "conflictingDomain": {
+                                        "description":
+                                        `While inferring units for variables and checking<br>
+                                        for consistency, we found that this equation might<br>
+                                        have variables which have multiple domains <br>
+                                        defined for the same unknown. Please revise and retry.<br>`
+                                    }
+                                }
+                                skipProcessing = true;
+                                // Ignore further processing, and continue.
+                                break;
+                            }
+
+                            // Get the domain if it's just one domain
+                            var unitDomKey = Object.keys(variableTermAssoc[vta])[0]
+
+                            // Check if there is >1 units, if so, choose
+                            if(Object.keys(variableTermAssoc[vta][unitDomKey]).length > 1)
+                                var unit = Window.lowestCommonUnit(variableTermAssoc[vta][unitDomKey]);
+                            else var unit = Object.keys(variableTermAssoc[vta][unitDomKey])[0];
+
+                            subjectForm = subjectForm.replace(new RegExp(vta, 'g'),"1 "+unit);
+                        }
+
+                        // If true, skip processing this equation, since an error has occurred
+                        if(skipProcessing)  ;//continue;
+                        else
+                        {
+                            // remove the magnitude and get the rest of the units
+                            var resultUnit = mathjs.evaluate(subjectForm).toString().split(" ").slice(1).join(" ");
+                            
+                            if(resultUnit ==  "")
+                            {
+                                // Then we're good to go, no problems here!
+                                // Just keep going
+                            }
+                            else
+                            {
+                                // errorFlag.push({
+                                //     "type":"consistencyError",
+                                //     "eqn": currActiveEqnObject
+                                // });
+                                errorFlag["error"][currActiveEqnObject.id] = {
+                                    "consistencyError": {
+                                        "description":
+                                        `While checking for consistency, we found that this equation might<br>
+                                        have variables whose domains are not consistent with<br>
+                                        each other. Please revise and retry.<br>`
+                                    }
+                                }
+                                console.log("Error here")
+                                // record the error and keep going
+                            }
+                        }
+                        // No unit assignments etc. are done here;
+                        // because of how specific the resolution for resolve="all" type equations is,
+                        // we check for consistency errors in here first.
                     }
                     else if(Object.keys(unknowns).length > 1) 
                     {
                         // unresolvable right now, try again later.
-                        continue;
+                        // continue;
                     }
                     // else if(countUnknowns == 3) continue;
                     // This one is a corner case, and we ignore it for now, i.e. classify >1 unknowns as
@@ -1391,8 +1546,14 @@ class Workspace
 
             // Comparing number of unresolved variables
             var tempUVC = 0;
-            for(var v in variableSet)   if(variableSet[v].length == 0)  tempUVC ++;
-            if(tempUVC < unresolvedVariablesCounter)
+            for(var v in variableSet)   if(Object.keys(variableSet[v]).length == 0)  tempUVC++;
+            if(tempUVC == 0)
+            {
+                // no new variables were resolved, quit and throw an error
+                console.log("Quitting time")
+                passFlag = false;
+            }
+            else if(tempUVC < unresolvedVariablesCounter)
             {
                 // number of unresolved variables has gone down, do another round 
                 passFlag = true;
@@ -1401,37 +1562,184 @@ class Workspace
             else if(tempUVC == unresolvedVariablesCounter)
             {
                 // no new variables were resolved, quit and throw an error
+                console.log("Quitting time")
                 passFlag = false;
-                errorFlag.push({"type":"unresolvedVariable", "var": []});
+                // errorFlag({"type":"unresolvedVariable", "var": []});
             }
         }
         console.log(variableSet)
 
-        // Resolving units and domains, and generating inconsistency errors if any
+        // Resolving units and domains for unknowns (single and assoc), 
+        // and generating inconsistency errors if any
+        for(var v in variableSet)
+        {
+            // If there's more than one domain for the variable after all the processing,
+            // We've got a problem, and cannot resolve it.
+            if(Object.keys(variableSet[v]) > 1)
+            {
+                // errorFlag.push({"type":"conflictingDomain", "var": v});
+                errorFlag["error"][v] = {
+                    "conflictingDomain" : {
+                        "description":
+                        `While attempting to discern the units for the quantity,<br>
+                        we noticed inconsistencies, such that the variable may<br>
+                        resolve to multiple domains. Please recheck and revise.<br>`
+                    }
+                }
+            }
+            if(Object.keys(variableSet[v]) == 0)
+            {
+                // errorFlag.push({"type":"unresolvedVar", "var": v});
+                errorFlag["error"][v] = {
+                    "unresolvedVar" : {
+                        "description":
+                        `The units for this variable could not be resolved.<br>
+                        Maybe the equations were setup in a way that creates<br>
+                        non-linearity, or create unresolvable situations. Please<br>
+                        recheck and revise.<br>`
+                    }
+                }
+            }
+            else
+            {
+                var varObject = {};
+                varObject["domain"] = Object.keys(variableSet[v])[0];
+                varObject["unit"] = Window.lowestCommonUnit(variableSet[v][varObject["domain"]]["unit"])
 
+                if(!(varObject["domain"] in Window.UNIT_DB))
+                {
+                    varObject["unitDisp"] = varObject["unit"];
+                    // This also means domain ==  unit, get the baseUnit at that domain for v
+                    varObject["baseUnit"] = variableSet[v][varObject["domain"]]["baseUnit"];
+                }
+                else varObject["unitDisp"] = Window.unitDomainMap[varObject["unit"]][1];
+                
+                variableSet[v]["solution"] = varObject;
+            }
+        }
 
-        // Checking errors in here, to show them on 
+        // Insert line to find out the greek symbols for the variables separately
+        // and put them in as part of the variableSet[v] object.
 
+        var equationSet = {};
+        for(var index in selectedEquations)
+        {
+            var solvableRepr = selectedEquations[index]["repr"];
+            for(var u in solvableRepr["unknowns"])
+                if(u in variableSet)
+                {
+                    variableSet[u]["solution"]["name"] = solvableRepr["unknowns"][u];
+                    if(u in errorFlag["error"])
+                        errorFlag["error"][u]["symbol"] = variableSet[u]["solution"]["name"];
+                }
+        }
 
+        // Insert check for warning: unit conversion was performed, etc.
+        for(var domain in globalUnitList)
+        {
+            if(Object.keys(globalUnitList[domain]).length > 1)
+            {
+                errorFlag["warning"].push({
+                    "implicitUnitConversion": {
+                        "description":
+                        `Several quantities of the `+domain+
+                        ` domain were found in the system,<br>
+                        and not all of them had compatible units. Some implicit<br>
+                        unit conversion was performed to maintain consistency.<br>
+                        Please make note.\n`+JSON.stringify(globalUnitList[domain])
+                    }
+                })
+            }
+        }
+
+        // Checking errors in here, to show them on messages, and see if we should proceed at all or not
+        if(Object.keys(errorFlag).length != 0)
+        {
+            console.log("ERROR FLAG IS DUMPED HERE, PLEASE NOTE");
+            console.log("======================================");
+            console.log(JSON.stringify(errorFlag, null, 4))
+            JSAV.utils.dialog(
+                `<h4>Errors and Warnings</h4>
+                This part is still in progress. Some errors have occurred<br>
+                That have deemed it impossible to correctly solve this system<br>
+                of equations. Please Press F12 to bring up the console log,<br>
+                where the errors are outlined in detail.<br>
+                On Chrome, the errorFlag object would be dumped to the console<br>
+                which can be expanded to see the types of errors as required.<br>`, 
+                {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
+                e.stopPropagation()});
+            return;
+        }
+
+        // =========================================================================================
+        // EXPLICIT ERROR CHECKING ENDS HERE
         // Computing solutions
         var soln = {};
-        var listOfSolutions = null;
+        var listOfSolutions = [];
         try {
-            if(equationObjectSet.length > 1)
+            if(Object.keys(selectedEquations).length > 1)
             {
-                listOfSolutions = nerdamer.solveEquations(equationSet);
+                // Creating the list of equations to solve using solveEquations
+                var equationSet = [];
+                for(let seleq in selectedEquations)
+                    for(let i=0; i<selectedEquations[seleq]["repr"]["equations"].length; i++)
+                        equationSet.push(selectedEquations[seleq]["repr"]["equations"][i])
+
+                let templistOfSolutions = nerdamer.solveEquations(equationSet);
+                // Filter out the unknowns and knowns from the solutions
+
+                for(let i=0; i<templistOfSolutions.length; i++)
+                    if(templistOfSolutions[i][0] in variableSet)
+                        listOfSolutions.push(templistOfSolutions[i])
+
                 //DEBUG: Primary checking for solutions in terms of knowns;
                 // Maybe useful for unit inference in system setting.
                 // listOfSolutions only provides the numbers; someway to 
                 // find the variables? Unknowns in terms of knowns? Ans: Nope, not useful
-                console.log(equationSet);
+                // console.log(equationSet);
             }
             else
             {
                 // Confirmed there is only one unknown in the system.
-                listOfSolutions = equationObjectSet[0].solve(); 
-                console.log(listOfSolutions);
-                console.log(variableSet);
+                let equations = selectedEquations[Object.keys(selectedEquations)[0]]["repr"]["equations"];
+                let knowns = selectedEquations[Object.keys(selectedEquations)[0]]["repr"]["knowns"];
+
+                // Part 1: Separate out the equation body and the values by checking against knowns
+                let equationBody = null;
+                let partialValues = {};
+                for(let i=0; i<equations.length;i++)
+                {
+                    let partial = equations[i].split("=");
+                    if(!isNaN(partial[1]))
+                    {
+                        // Then, extract and store the modified/converted values
+                        partialValues[partial[0]] = partial[1];
+                    }
+                    else
+                    {
+                        // We have found the main equation
+                        equationBody = equations[i];
+                        // This will only happen once since there is only one equation in the system
+                        // and the subject does
+                    }
+                }
+                // Part 2: plug it in to recreate the equation
+                for(let pv in partialValues)
+                {
+                    equationBody = equationBody.replace(new RegExp(pv, 'g'), partialValues[pv]);
+                }
+
+                let subject = Object.keys(
+                    selectedEquations[Object.keys(selectedEquations)[0]]["repr"]["unknowns"]
+                )[0];
+                let solutions = nerdamer.solveEquations([equationBody,subject+" = x + 1"]);
+
+                for(let i=0; i<solutions.length; i++)
+                    if(solutions[i][0] == subject)
+                        listOfSolutions.push(solutions[i]);
+                // console.log(listOfSolutions);
+                // console.log(variableSet);
+
                 // Yeah turns out the combined logic does not work for single solvers; gives erroneous results.
                 // var unitDesc = equationObjectSet[0].getUnitOfVariable();
                 // variableSet[unitDesc[0]]["unit"] = unitDesc[1];
@@ -1441,26 +1749,63 @@ class Workspace
         }
         catch (exception) {
             JSAV.utils.dialog(
-                `<h4>Error: Inconsistent system</h4>
-                There was an error in defining the system of equations. 
-                Possibly because, #unknowns =/= #equations.<br>
-                Please review the unknowns (associated variables) in the equations,
-                as well as grayed out boxes which by default are treated as unknowns.<br>
-                Please also check that the remaining equation boxes are filled with values.<br>
-                Finally, please make sure to check all the boxes for the equations that are to be
-                included in the system to be solved.<br>`, 
+                `<h4>Unexpected Error:</h4>
+                An unexpected error occurred while attempting to solve<br>
+                the system of equations.<br>
+                It would be advisable to:<br>
+                1. Revisit the system of equations and examine associations<br>
+                that might lead to unexpected equation setups, <br>
+                2. Look at the errors and warnings generated, which might help<br>
+                with step 1.<br>`, 
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
             return;
         }
-        for(var i=0; i<listOfSolutions.length; i++)
-            soln[listOfSolutions[i][0]] = listOfSolutions[i][1];
-        console.log(soln);
+
+        // Separating out the solutions
+        for(let i=0; i<listOfSolutions.length; i++)
+        {
+            // Find the variable name, find the unit for it, and convert it to that unit.
+            let quantity = listOfSolutions[i][1];
+            let unit = variableSet[listOfSolutions[i][0]]["solution"]["unit"];
+            let domain = variableSet[listOfSolutions[i][0]]["solution"]["domain"];
+            if(domain != "dimensionless")
+            {
+                // If the domain is dimensionless, we don't need to convert.
+                // If the domain is something else, we look at the.
+                let baseUnit = null;
+                if(domain in Window.defaultDomains)
+                    baseUnit = Window.defaultDomains[domain][Window.unitFamily]["unit"];
+                else if("baseUnit" in variableSet[listOfSolutions[i][0]]["solution"])
+                {
+                    // Use the baseUnit information computed at previous point, if it exists
+                    baseUnit = variableSet[listOfSolutions[i][0]]["solution"]["baseUnit"];
+                }
+                else {
+                    // If the baseUnit information doesn't exist, which means we didn't
+                    // encounter this unit here for the first time,
+                    // which also means the quantity was not converted to baseUnits to begin with
+                    // NOTE: This can be refactored later
+                    // quantity remains unchanged
+                }
+                if(baseUnit != null)
+                {
+                    quantity = mathjs.evaluate("number("+quantity+" "+baseUnit+" "+","+unit+")");
+                }
+            }
+            soln[listOfSolutions[i][0]] = quantity;
+        }
+        // console.log(soln);
+
+        // To do(?): insert a function that checks which unit in a domain has the cleanest
+        // representation (also shortest) for a value, and use that unit.
+        // On top of unit resolution, this one finds out what final unit to actually use.
+        // (Is this useful?)
 
         // Creating the solutions view
         for(var unknownName in variableSet)
         {
-            var value = null;
+            var value = soln[unknownName];
             // if(variableSet[unknownName].length == 4)
             //     value = soln[unknownName]*variableSet[unknownName]["correction"];
             // else
@@ -1471,13 +1816,13 @@ class Workspace
                     "visuals": this.DIMENSIONS.ELEMENTS,
                     "dataset": {
                         "value": value,
-                        "unit": variableSet[unknownName]["unit"],
+                        "unit": variableSet[unknownName]["solution"]["unit"],
                         "variable": unknownName,    // The internal variable name eg: x_y
                         // "valueDisplay": String(Number(Math.round(+'e3')+'e-3')),
                         "valueDisplay": Window.valueStringRepr(value),
-                        "unitDisplay": variableSet[unknownName]["unitDisp"],
-                        "variableDisplay": variableSet[unknownName]["name"], // The greek/external symbol
-                        "domain": variableSet[unknownName]["domain"]
+                        "unitDisplay": variableSet[unknownName]["solution"]["unitDisp"],
+                        "variableDisplay": variableSet[unknownName]["solution"]["name"], // The greek/external symbol
+                        "domain": variableSet[unknownName]["solution"]["domain"]
                     }
                 },
                 this.globalSectionObj,
