@@ -138,7 +138,7 @@ $(document).ready(function () {
             } else {
                 arr.splice(index, 1);
                 lastRow--;
-                // deleteTimes++
+                deleteTimes++
                 m = init();
 
             }
@@ -340,6 +340,7 @@ $(document).ready(function () {
         m._arrays[lastRow + 1].show();
         lastRow++;
         layoutTable(m);
+        jsav.umsg('Editing');
         $('.jsavmatrix').addClass("editMode");
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("addrowMode");
