@@ -1665,7 +1665,7 @@ class Workspace
                 `<h4>Errors generated</h4>
                 This part is still in progress. Some errors have occurred<br>
                 that have deemed it impossible to correctly solve this system<br>
-                of equations. Please Press F12 to bring up the console log,<br>
+                of equations. Please Press <b>Control+Shift+J</b> to bring up the console log,<br>
                 where the errors are outlined in detail.<br>
                 On Chrome, the errorFlag object would be dumped to the console<br>
                 which can be expanded to see the types of errors as required.<br>`, 
@@ -1682,7 +1682,7 @@ class Workspace
                 `<h4>Warnings generated</h4>
                 This part is still in progress. Some warnings were generated<br>
                 that need attention.<br>
-                Please Press F12 to bring up the console log,<br>
+                Please Press <b>Control+Shift+J</b> to bring up the console log,<br>
                 where the warnings are outlined in detail.<br>`, 
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
