@@ -750,6 +750,7 @@ class Workspace
             var currActiveEqnObject = currentEqn.obj;
 
             if(currActiveEqnObject.equationObjectReference.group == "Arithmetic")
+            // if("resolve" in currActiveEqnObject.equationObjectReference)
                 continue;
             else 
             {
@@ -1140,7 +1141,7 @@ class Workspace
                         //     "type":"conflictingDomain",
                         //     "eqn": currActiveEqnObject
                         // });
-                        errorFlag["error"][currActiveEqnObject.id] = {
+                        errorFlag["error"][currActiveEqnObject.name] = {
                             "conflictingDomain": {
                                 "description":
                                 `While inferring units for variables and checking<br>
@@ -1365,7 +1366,7 @@ class Workspace
                                     //     "type":"conflictingDomain", "var": v,
                                     //     "eqn": currActiveEqnObject
                                     // });
-                                    errorFlag["error"][currActiveEqnObject.id] = {
+                                    errorFlag["error"][currActiveEqnObject.name] = {
                                         "conflictingDomain": {
                                             "description":
                                             `While inferring units for variables and checking<br>
@@ -1459,7 +1460,7 @@ class Workspace
                             // if there is more than one domain for any of the variables, we have a conflict
                             if(Object.keys(variableTermAssoc[vta]).length > 1)
                             {
-                                errorFlag["error"][currActiveEqnObject.id] = {
+                                errorFlag["error"][currActiveEqnObject.name] = {
                                     "conflictingDomain": {
                                         "description":
                                         `While inferring units for variables and checking<br>
@@ -1502,7 +1503,7 @@ class Workspace
                                 //     "type":"consistencyError",
                                 //     "eqn": currActiveEqnObject
                                 // });
-                                errorFlag["error"][currActiveEqnObject.id] = {
+                                errorFlag["error"][currActiveEqnObject.name] = {
                                     "consistencyError": {
                                         "description":
                                         `While checking for consistency, we found that this equation might<br>
