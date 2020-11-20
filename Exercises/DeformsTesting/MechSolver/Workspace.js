@@ -750,6 +750,7 @@ class Workspace
             var currActiveEqnObject = currentEqn.obj;
 
             if(currActiveEqnObject.equationObjectReference.group == "Arithmetic")
+            // if("resolve" in currActiveEqnObject.equationObjectReference)
                 continue;
             else 
             {
@@ -1140,7 +1141,7 @@ class Workspace
                         //     "type":"conflictingDomain",
                         //     "eqn": currActiveEqnObject
                         // });
-                        errorFlag["error"][currActiveEqnObject.id] = {
+                        errorFlag["error"][currActiveEqnObject.name] = {
                             "conflictingDomain": {
                                 "description":
                                 `While inferring units for variables and checking<br>
@@ -1365,7 +1366,7 @@ class Workspace
                                     //     "type":"conflictingDomain", "var": v,
                                     //     "eqn": currActiveEqnObject
                                     // });
-                                    errorFlag["error"][currActiveEqnObject.id] = {
+                                    errorFlag["error"][currActiveEqnObject.name] = {
                                         "conflictingDomain": {
                                             "description":
                                             `While inferring units for variables and checking<br>
@@ -1459,7 +1460,7 @@ class Workspace
                             // if there is more than one domain for any of the variables, we have a conflict
                             if(Object.keys(variableTermAssoc[vta]).length > 1)
                             {
-                                errorFlag["error"][currActiveEqnObject.id] = {
+                                errorFlag["error"][currActiveEqnObject.name] = {
                                     "conflictingDomain": {
                                         "description":
                                         `While inferring units for variables and checking<br>
@@ -1502,7 +1503,7 @@ class Workspace
                                 //     "type":"consistencyError",
                                 //     "eqn": currActiveEqnObject
                                 // });
-                                errorFlag["error"][currActiveEqnObject.id] = {
+                                errorFlag["error"][currActiveEqnObject.name] = {
                                     "consistencyError": {
                                         "description":
                                         `While checking for consistency, we found that this equation might<br>
@@ -1653,22 +1654,39 @@ class Workspace
         }
 
         // Checking errors in here, to show them on messages, and see if we should proceed at all or not
-        if(Object.keys(errorFlag).length != 0)
+        if(
+            Object.keys(errorFlag["error"]["global"]).length > 0 ||
+            Object.keys(errorFlag["error"]).length > 1
+        )
         {
-            console.log("ERROR FLAG IS DUMPED HERE, PLEASE NOTE");
+            console.log("ERRORS ARE DUMPED HERE, PLEASE NOTE");
             console.log("======================================");
-            console.log(JSON.stringify(errorFlag, null, 4))
+            console.log(JSON.stringify(errorFlag["error"], null, 4))
             JSAV.utils.dialog(
-                `<h4>Errors and Warnings</h4>
+                `<h4>Errors generated</h4>
                 This part is still in progress. Some errors have occurred<br>
-                That have deemed it impossible to correctly solve this system<br>
-                of equations. Please Press F12 to bring up the console log,<br>
+                that have deemed it impossible to correctly solve this system<br>
+                of equations. Please Press <b>Control+Shift+J</b> to bring up the console log,<br>
                 where the errors are outlined in detail.<br>
                 On Chrome, the errorFlag object would be dumped to the console<br>
                 which can be expanded to see the types of errors as required.<br>`, 
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
             return;
+        }
+        if(errorFlag["warning"].length > 0)
+        {
+            console.log("WARNINGS ARE DUMPED HERE, PLEASE NOTE");
+            console.log("======================================");
+            console.log(JSON.stringify(errorFlag["warning"], null, 4))
+            JSAV.utils.dialog(
+                `<h4>Warnings generated</h4>
+                This part is still in progress. Some warnings were generated<br>
+                that need attention.<br>
+                Please Press <b>Control+Shift+J</b> to bring up the console log,<br>
+                where the warnings are outlined in detail.<br>`, 
+                {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
+                e.stopPropagation()});
         }
 
         // =========================================================================================

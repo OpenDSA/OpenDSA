@@ -506,6 +506,7 @@ const equations = [
         subjectForm: {
             "mominertia": "radius ^ 4",
             "radius": "mominertia ^ (1/4)",
+            "consistency": "mominertia  / ( radius ^ 4)",
         }
     },
     {
@@ -530,6 +531,7 @@ const equations = [
         subjectForm: {
             "mominertia": "diameter ^ 4",
             "diameter": "mominertia ^ (1/4)",
+            "consistency": "mominertia / ( diameter ^ 4 )",
         }
     },
     // {
@@ -652,6 +654,7 @@ const equations = [
         subjectForm: {
             "area": "radius ^ 2",
             "radius": "area ^ 0.5",
+            "consistency": "area / ( radius ^ 2 )",
         }
     },
     {
@@ -676,6 +679,7 @@ const equations = [
         subjectForm: {
             "area": "diameter ^ 2",
             "diameter": "area ^ 0.5",
+            "consistency": "area / ( diameter ^ 2 )",
         }
     },
     {
@@ -705,6 +709,7 @@ const equations = [
             "height": "area / base",
             "base height": "(area)^0.5",
             "height base": "(area)^0.5",
+            "consistency": "area / base / height",
         }
     },
     {
