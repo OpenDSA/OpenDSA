@@ -282,9 +282,9 @@ class Workspace
         // necessarily everything in equation.js
         var equationListEntity = Window.eqbank.currentSelectedEquationObject.eqobject;
         var lastHashMapID = 0;
-        if(equationListEntity.name in this.equationHashMap)
+        if(equationListEntity["id"] in this.equationHashMap)
             lastHashMapID = (list => list[list.length-1])
-            (this.equationHashMap[equationListEntity.name]).counter+1;
+            (this.equationHashMap[equationListEntity["id"]]).counter+1;
         else {
             lastHashMapID = 1;
             Window.eqbank.addToFavourites(Window.eqbank.currentSelectedEquationObject.eqobject);
