@@ -147,11 +147,12 @@ requirejs(["./mathjs.js"], function(){});
                     }
                     else if(solution[solnIndex].type == "number")
                     {
-                        var solutionComparableValue = mathjs.evaluate(
-                            `number(
-                                ${globalSolutionBoxes[solnIndex].solution} ${globalSolutionBoxes[solnIndex].unit},
-                                ${solution[solnIndex].unit})`
-                            )
+                        if(solution[solnIndex].unit == "") var solutionComparableValue = globalSolutionBoxes[solnIndex].solution;
+                        else var solutionComparableValue = mathjs.evaluate(
+                                `number(
+                                    ${globalSolutionBoxes[solnIndex].solution} ${globalSolutionBoxes[solnIndex].unit},
+                                    ${solution[solnIndex].unit})`
+                                )
                         console.log(solutionComparableValue, solution[solnIndex].solution);
                         console.log(Math.abs(solutionComparableValue - solution[solnIndex].solution), 0.005 * solution[solnIndex].solution)
                         if(Math.abs((solutionComparableValue - solution[solnIndex].solution) / solution[solnIndex].solution) <= 0.005)
