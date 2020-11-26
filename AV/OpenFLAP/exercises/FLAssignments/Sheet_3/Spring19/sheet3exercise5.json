@@ -5,8 +5,6 @@
     "totalFalseCases": 3,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-
     "expression": "(aaab^*ba)^*",
     "description": "Give a left-linear grammar for the language L(___)",
     "type": "description",

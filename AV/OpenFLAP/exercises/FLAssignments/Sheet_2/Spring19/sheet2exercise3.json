@@ -5,7 +5,6 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "expression": "((aa)^+bb)^*",
     "description": "Construct the DFA that accepts the complement of ",
     "type": "both",

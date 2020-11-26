@@ -5,7 +5,7 @@
   "totalFalseCases": 1,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
+
   "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}",
   "description": "",
   "type": "expression",

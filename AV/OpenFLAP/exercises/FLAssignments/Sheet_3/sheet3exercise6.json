@@ -5,7 +5,6 @@
     "totalFalseCases": 0,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "expression": "",
     "description": "Find a regular grammar for the language over {a, b}, where the number of a's in any string is divisible by 3 .",
     "type": "description",
