@@ -1,0 +1,63 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "exerciseType": "DFA",
+  "totalTrueCases": 10,
+  "totalFalseCases": 10,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
+  "expression": "",
+  "description": "Give a DFA that accepts the language over Σ ={a, b} where every string does not have 3 consecutive a's.",
+  "type": "description",
+  "testCases": [
+    {
+      "bbbbbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aa": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbabb": true,
+      "ShowTestCase":true
+    },
+    {
+      "babbabbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbbbaabbbaabbaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbbbabababbbbbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "baabaaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aabbabababbababbababa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aabbabababbababbabaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaabababbababbabaa": false,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../../VisFormalLang/FA/Machines/no3a.jff"
+}]

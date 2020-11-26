@@ -70,7 +70,8 @@
       "Background/Proofs": {}
     },
     "Finite Acceptors": {
-      "PIFLA/DFA":{}
+      "PIFLA/DFA":{},
+      "PIFLA/DFAExercises":{}
     },
     "Appendix": {
       "Glossary": {}
