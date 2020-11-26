@@ -5,7 +5,6 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b", "c"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "expression": "\\{a^ic^jb^i \\mid i, j \\geq 0\\}",
     "description": "Construct the PDA that accepts ",
     "type": "both",

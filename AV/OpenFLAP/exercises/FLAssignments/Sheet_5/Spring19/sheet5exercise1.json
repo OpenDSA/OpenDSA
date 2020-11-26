@@ -5,7 +5,6 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 10],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "expression": "a^mb^ia^n:i=m+n",
     "description": "Construct a CFG over {a, b} whose language is {___}",
     "type": "description",

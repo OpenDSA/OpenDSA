@@ -5,7 +5,6 @@
     "totalFalseCases": 2,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "expression": "",
     "description": "Write a Grammar for the language of correctly closed braces.",
     "type": "description",

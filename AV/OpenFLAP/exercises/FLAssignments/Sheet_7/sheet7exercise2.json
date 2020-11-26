@@ -5,7 +5,6 @@
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "expression": "\\{wcw^R \\mid w \\in \\{a, b\\}^*\\}",
     "description": "Construct the PDA that accepts ",
     "type": "both",

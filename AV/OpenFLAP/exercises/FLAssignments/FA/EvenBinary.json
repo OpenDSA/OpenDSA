@@ -5,7 +5,6 @@
   "totalFalseCases": 5,
   "containLetters": ["1", "0"],
   "randomStringLength": [0, 15],
-  "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
   "expression": "\\Sigma = \\{0, 1\\}, \\quad L = \\{\\mbox{All even binary numbers\\}",
   "description": "",
   "type": "expression",
