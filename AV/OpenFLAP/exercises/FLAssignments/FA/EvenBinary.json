@@ -30,5 +30,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../../VisFormalLang/FA/Machines/EvenBinaryDFACON.jff"
+  "solution": "../../../machines/FA/EvenBinaryDFACON.jff"
 }]

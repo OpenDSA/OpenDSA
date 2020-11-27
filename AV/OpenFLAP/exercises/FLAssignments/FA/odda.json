@@ -75,5 +75,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../../VisFormalLang/FA/Machines/odda.jff"
+  "solution": "../../../machines/FA/odda.jff"
 }]

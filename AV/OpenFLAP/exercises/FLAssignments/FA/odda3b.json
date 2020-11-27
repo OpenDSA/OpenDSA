@@ -62,5 +62,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../../VisFormalLang/FA/Machines/odda3b.jff"
+  "solution": "../../../machines/FA/odda3b.jff"
 }]

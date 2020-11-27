@@ -82,5 +82,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../../VisFormalLang/FA/Machines/oddaevenb.jff"
+  "solution": "../../../machines/FA/oddaevenb.jff"
 }]

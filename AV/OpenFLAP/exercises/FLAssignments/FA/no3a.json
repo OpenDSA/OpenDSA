@@ -58,5 +58,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../../VisFormalLang/FA/Machines/no3a.jff"
+  "solution": "../../../machines/FA/no3a.jff"
 }]
