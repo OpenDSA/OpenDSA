@@ -142,5 +142,5 @@ The important question now is:
 Are there languages that DFAs cannot accept?
 That is, are there languages that are not regular?
 We won't leave you guessing, the answer is yes.
-We'll prove this later, and then introduce machines that can accept
-larger families of languages.
+We'll prove this later, and then introduce more powerful machines that
+can accept larger families of languages.
