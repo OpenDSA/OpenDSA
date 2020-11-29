@@ -72,7 +72,8 @@
     "Finite Acceptors": {
       "PIFLA/DFA":{},
       "PIFLA/DFAExercises":{},
-      "PIFLA/NFA":{}
+      "PIFLA/NFA":{},
+      "PIFLA/NFAExercises":{}
     },
     "Appendix": {
       "Glossary": {}

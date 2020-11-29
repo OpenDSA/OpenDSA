@@ -33,7 +33,7 @@ $(document).ready(function() {
   // Frame 7
   //NFA with multi transition
   var urllinkNFA = "../../../AV/OpenFLAP/machines/FA/NFAexample1.jff";
-  var linkNFA = new av.ds.FA({center: true , url: urllinkNFA, top: 50});
+  var linkNFA = new av.ds.FA({center: true, url: urllinkNFA, top: 50});
   av.umsg(Frames.addQuestion("nfaexamp"));
   av.step();
   

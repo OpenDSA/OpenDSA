@@ -42,39 +42,10 @@ and whether it really even matters in the end.
 NFA vs. DFA: Which is more powerful?
 ------------------------------------
 
-Consider the following NFA.
-
-.. inlineav:: NFA2DFAaCON dgm
-   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFACON.css
-   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAaCON.js
-   :align: center
-
-   An NFA.
-
-.. note::
-
-   Q: What language is this?
-
-   A: Alternating a's and b's, starting with a.
-
-Can this NFA be converted to a DFA?
-
-Yes, because here is one.
-Note that the names of the states are chosen
-to help you to see their relationships to the original NFA.
-
-.. inlineav:: NFA2DFAbCON dgm
-   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFACON.css
-   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAbCON.js
-   :align: center
-
-   A DFA that accepts the same language.
-
-.. TODO::
-   :type: Frameset
-
-   Create a small frameset of the material above. Mostly to make the
-   student think about what the language is.
+.. inlineav:: NFAequivFS ff
+   :links:  DataStructures/FLA/FLA.css AV/PIFLA/FA/NFAequivFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/FA/NFAequivFS.js
+   :output: show
 
 Now we are ready for the main event: Proving that every NFA can be
 converted to a DFA, and therefore the two machine types are equally
@@ -142,3 +113,29 @@ NFA to DFA Conversion Example
    :links: AV/PIFLA/FA/NFA2DFAlargeExFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/FA/NFA2DFAlargeExFS.js
    :output: show
+
+
+Conclusions
+-----------
+
+Adding the non-determinism capability to DFAs does not result in any
+new capability to accept languages.
+The set of languages that can be accepted by a NFA is exactly the same
+set of languages that can be accepted by a DFA.
+We proved this constructively:
+Every DFA is automatically an NFA without nondeterminism, so DFAs
+obviously cannnot accept languages that NFAs cannot.
+And any NFA can be converted using an algorithm to a DFA.
+So NFAs cannot accept languages that DFAs cannot.
+
+So, is the NFA a useful concept? Why introduce them at all?
+First, it was not obvious to start that they add no new power in terms
+of new languages that can be accepted.
+Second, NFAs tend to be "simpler" to understand than the equivalent
+DFA.
+See the result of the conversion example, and decide for yourself
+which one is easier for you to deduce the corresponding language.
+Or, try writing the DFA for the language from scratch as a DFA.
+Third, we will introduce some other conversion algorithms over the
+course of the semester that are easier to understand if the target is a NFA
+instead of a DFA.
