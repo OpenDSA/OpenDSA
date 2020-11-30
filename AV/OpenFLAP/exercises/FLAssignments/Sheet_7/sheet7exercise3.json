@@ -5,9 +5,9 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "expression": "\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)",
-    "description": "Construct the PDA that accepts ",
-    "type": "both",
+    "expression": "",
+    "description": "Construct the PDA that accepts L($\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)$) ",
+    "type": "description",
     "testCases": [{
             "": false,
             "ShowTestCase":true

@@ -279,16 +279,45 @@ controllerProto.updateExercise = function (id) {
     $("#description").hide();
   } else {
     var text = exercise["description"];
-    if (text.indexOf('___') > 0) {
-      var parts = text.split("___");
-      var expression = parts[1];
-      text = parts[0] + " " + '<span id="expression2"></span>' + ' ' + parts[2];
-      $("#description").html(text);
-      $("#expression2").html("<img src='" + latexit + expression + "' border='0'/>");
-    } else
+    if (text.indexOf('$') >= 0) {
+      var parts = text.split("$");
+      for(var a= 0; a <parts.length;a++){
+        if(a == 0){
+          var expression = parts[a + 1];
+          text = parts[0] + " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[2];
+          $("#description").html(text);
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+        }
+        else{
+          var expression = parts[a];
+          if(a+2 == parts.length){
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ';
+          }
+          else{
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+2];
+          }
+          $("#description").append(text);
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+        }
+        a=a+2;
+      }
+    } 
+    else
       $("#description").text(text);
     $("#description").show();
     $("#question").hide();
+    // var text = exercise["description"];
+    // if (text.indexOf('$') > 0) {
+    //   var parts = text.split("$");
+    //   var expression = parts[1];
+    //   text = parts[0] + " " + '<span id="expression2"></span>' + ' ' + parts[2];
+    //   $("#description").html(text);
+    //   $("#expression2").html("<img src='" + latexit + expression + "' border='0'/>");
+    // } 
+    // else
+    //   $("#description").text(text);
+    // $("#description").show();
+    // $("#question").hide();
   }
   //if the exercise contains a FA, then draw it and show the graph. Hide the graph otherwise
   if (exercise.graph && exercise.graph.nodes.length > 0) { //there is a grapth and we need to draw it to the student
