@@ -5,7 +5,6 @@
   "totalFalseCases": 10,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
   "expression": "",
   "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s and any even number of b’s.",
   "type": "description",
@@ -83,5 +82,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../../VisFormalLang/FA/Machines/oddaevenb.jff"
+  "solution": "../../../machines/FA/oddaevenb.jff"
 }]

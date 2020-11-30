@@ -5,7 +5,6 @@
     "totalFalseCases": 5,
     "containLetters": ["a"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "expression": "",
     "description": "Give a DFA that accepts the language over Σ ={a} of any even number of a’s.",
     "type": "description",

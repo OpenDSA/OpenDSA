@@ -35,7 +35,7 @@ $(document).ready(function() {
   av.step();
 
   //Add New DFA from link
-  var urlbinaryDFA="../../../AV/VisFormalLang/FA/Machines/EvenBinaryDFACON.jff";
+  var urlbinaryDFA="../../../AV/OpenFLAP/machines/FA/EvenBinaryDFACON.jff";
   var binaryDFA= new av.ds.FA({center: true , url: urlbinaryDFA, top: 100});
 
   //Frame 8

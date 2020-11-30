@@ -5,9 +5,8 @@
     "totalFalseCases": 5,
     "containLetters": ["a", "b", "c"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "expression": "a^mb^ic^n \\mid m > n, 0 \\leq i < 3,  n \\geq 0",
-    "description": "Construct a CFG over {a, b, c} whose language is {___}",
+    "expression": "",
+    "description": "Construct a CFG over {a, b, c} whose language is {$a^mb^ic^n \\mid m > n, 0 \\leq i < 3,  n \\geq 0$}",
     "type": "description",
     "testCases": [{
             "": false,

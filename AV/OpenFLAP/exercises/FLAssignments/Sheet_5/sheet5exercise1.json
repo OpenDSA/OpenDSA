@@ -5,9 +5,7 @@
     "totalFalseCases": 6,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "expression": "a^nb^m : m \\geq n, m-n\\> is\\> odd",
-    "description": "Construct a CFG over {a, b} whose language is {___}",
+    "description": "Construct a CFG over $\\{a, b\\}$ whose language is $\\{a^nb^m: m \\geq n, m - n \\mbox{ is odd}\\}$.",
     "type": "description",
     "testCases": [{
             "": false,

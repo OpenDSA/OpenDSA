@@ -5,7 +5,6 @@
     "totalFalseCases": 2,
     "containLetters": ["1", "0"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
     "expression": "",
     "description": "Give a left-linear grammar for the following NFA",
     "type": "description",

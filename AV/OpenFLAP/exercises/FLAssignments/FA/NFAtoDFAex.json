@@ -1,0 +1,110 @@
+[
+  {
+    "expression": "",
+    "description": "Convert the following NFA to DFA",
+    "type": "description",
+    "testCases": [
+      {
+        "The resulting FA is a DFA": true
+      }
+    ],
+    "graph": {
+      "nodes": [
+        {
+          "left": 21,
+          "top": 54,
+          "i": true,
+          "f": false
+        },
+        {
+          "left": 56,
+          "top": 186,
+          "i": false,
+          "f": false
+        },
+        {
+          "left": 179,
+          "top": 157,
+          "i": false,
+          "f": false
+        },
+        {
+          "left": 291,
+          "top": 161,
+          "i": false,
+          "f": true
+        },
+        {
+          "left": 341,
+          "top": 57,
+          "i": false,
+          "f": true
+        },
+        {
+          "left": 170,
+          "top": 51,
+          "i": false,
+          "f": false
+        }
+      ],
+      "edges": [
+        {
+          "start": 0,
+          "end": 0,
+          "weight": "a<br>b"
+        },
+        {
+          "start": 0,
+          "end": 1,
+          "weight": "a"
+        },
+        {
+          "start": 0,
+          "end": 5,
+          "weight": "b<br>&lambda;"
+        },
+        {
+          "start": 0,
+          "end": 2,
+          "weight": "&lambda;"
+        },
+        {
+          "start": 1,
+          "end": 1,
+          "weight": "a"
+        },
+        {
+          "start": 1,
+          "end": 2,
+          "weight": "b"
+        },
+        {
+          "start": 2,
+          "end": 2,
+          "weight": "a"
+        },
+        {
+          "start": 2,
+          "end": 3,
+          "weight": "b"
+        },
+        {
+          "start": 4,
+          "end": 4,
+          "weight": "a<br>b"
+        },
+        {
+          "start": 5,
+          "end": 4,
+          "weight": "b"
+        },
+        {
+          "start": 5,
+          "end": 5,
+          "weight": "a"
+        }
+      ],
+      "shorthand": false
+    }
+  }
+]
