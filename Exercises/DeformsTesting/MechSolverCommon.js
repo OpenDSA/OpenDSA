@@ -147,11 +147,12 @@ requirejs(["./mathjs.js"], function(){});
                     }
                     else if(solution[solnIndex].type == "number")
                     {
-                        var solutionComparableValue = mathjs.evaluate(
-                            `number(
-                                ${globalSolutionBoxes[solnIndex].solution} ${globalSolutionBoxes[solnIndex].unit},
-                                ${solution[solnIndex].unit})`
-                            )
+                        if(solution[solnIndex].unit == "") var solutionComparableValue = globalSolutionBoxes[solnIndex].solution;
+                        else var solutionComparableValue = mathjs.evaluate(
+                                `number(
+                                    ${globalSolutionBoxes[solnIndex].solution} ${globalSolutionBoxes[solnIndex].unit},
+                                    ${solution[solnIndex].unit})`
+                                )
                         console.log(solutionComparableValue, solution[solnIndex].solution);
                         console.log(Math.abs(solutionComparableValue - solution[solnIndex].solution), 0.005 * solution[solnIndex].solution)
                         if(Math.abs((solutionComparableValue - solution[solnIndex].solution) / solution[solnIndex].solution) <= 0.005)
@@ -198,6 +199,21 @@ requirejs(["./mathjs.js"], function(){});
             return dec;
         }
     };
+
+    function bodyClickPrompt(e) {
+        // Creating clickhandlers associated with the body to clear the globalPointerReference
+        e.stopPropagation();
+        // console.log("Inside the body snatcher");
+        if(Window.showBlankPrompt) {
+            var messageBox = JSAV.utils.dialog("Add an equation from the bank to begin.", {modal: false, width: 100})
+            messageBox[0].style.top = e.pageY+5+"px";
+            messageBox[0].style.left = e.pageX+10+"px";
+            setTimeout(messageBox.close, 900)
+        }
+        else {
+            Window.clearGlobalPointerReference();
+        }
+    };
     
     function reset(exerciseId){
         // Clear the old JSAV canvas
@@ -211,24 +227,24 @@ requirejs(["./mathjs.js"], function(){});
         //     console.log(eventData);
         // }});
         Window.jsavObject = av;
-	if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
-		Window.updateExerciseWindowHeight = function(shiftAmount) {	
-			var minWindowHeight = LTI_CANVAS_HEIGHT;
-            var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
-            // TODO:
-            // 
-            // in ODSAMOD.js, there is ltiIframeResize()
-            // Also, there is an eventer() which receives postMessage() calls from the exercise
-            // including, requests to resize the iframe container, which also resizes the
-            // canvas page by calling ltiIframeResize() inside it.
-            // 
-            // TODO: replace this line by passing the resized page height to window.parent.postMessage()
-            // 
-            // 
-			window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
-				Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
-		}
-	else Window.updateExerciseWindowHeight = function() {} ;
+        if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
+            Window.updateExerciseWindowHeight = function(shiftAmount) {	
+                var minWindowHeight = LTI_CANVAS_HEIGHT;
+                var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
+                // TODO:
+                // 
+                // in ODSAMOD.js, there is ltiIframeResize()
+                // Also, there is an eventer() which receives postMessage() calls from the exercise
+                // including, requests to resize the iframe container, which also resizes the
+                // canvas page by calling ltiIframeResize() inside it.
+                // 
+                // TODO: replace this line by passing the resized page height to window.parent.postMessage()
+                // 
+                // 
+                window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
+                    Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
+            }
+        else Window.updateExerciseWindowHeight = function() {} ;
         Window.eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, Window.eqbank, globalPointerReference);
         Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, Window.wkspacelist);
@@ -419,11 +435,12 @@ requirejs(["./mathjs.js"], function(){});
         // Window.showHelp("general");
         // Window.tutorialSteps();
         
-	
-	// console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
         
-	// Body Clicks registered as directive message was included here, now delegated to utils.
-        Window.bodyClickPrompt();
+	    // console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
+        
+        // Body Clicks registered as directive message was included here, now delegated to utils.
+        document.body.removeEventListener("click", bodyClickPrompt);
+        document.body.addEventListener("click", bodyClickPrompt);
     }
 
     window.mechSolverCommon = window.mechSolverCommon || mechSolverCommon;

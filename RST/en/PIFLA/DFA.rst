@@ -104,10 +104,10 @@ Next is an exercise to give you practice in building a machine using
 the DFA machine editor.
 You should not need to think too hard about what machine you need,
 since you can simply recreate the machine that we have been using.
-But doing this will introduce you to the machine editor that you will
-see a lot of in this book!
+But doing this exercise will introduce you to the machine editor that
+you will see a lot of in this book!
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/DFA/EvenBinary.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/EvenBinary.html pe
    :long_name: Accept even binary numbers
 
 
@@ -142,5 +142,5 @@ The important question now is:
 Are there languages that DFAs cannot accept?
 That is, are there languages that are not regular?
 We won't leave you guessing, the answer is yes.
-We'll prove this later, and then introduce machines that can accept
-larger families of languages.
+We'll prove this later, and then introduce more powerful machines that
+can accept larger families of languages.

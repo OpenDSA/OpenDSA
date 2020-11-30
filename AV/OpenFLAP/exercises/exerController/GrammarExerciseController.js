@@ -304,6 +304,14 @@ controllerProto.updateExercise = function (id) {
     } else
       document.getElementById("graph").style.display = "initial";
     this.exerciseFA.layout();
+
+    var OStype = window.navigator.platform.toLowerCase();
+    if (OStype.indexOf('mac') > -1) {
+      this.exerciseFA.getSvg().canvas.style.position = "relative";
+    } else
+    this.exerciseFA.getSvg().canvas.style.position = "absolute";
+
+    
   } else
     document.getElementById("graph").style.display = "none";
 

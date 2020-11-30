@@ -11,7 +11,7 @@ $(document).ready(function() {
   av.displayInit();
           
   // Show a DFA with no Trap State
-  var urlnoTrapDFA = "../../../AV/VisFormalLang/FA/Machines/DFA_noTrapState.jff";
+  var urlnoTrapDFA = "../../../AV/OpenFLAP/machines/FA/DFA_noTrapState.jff";
   var noTrapDFA= new av.ds.FA({center: true , url: urlnoTrapDFA});
 
   // Frame2
@@ -25,7 +25,7 @@ $(document).ready(function() {
   // Frame 4
   noTrapDFA.hide();
   // Show a DFA with a trap state
-  var urlTrapDFA="../../../AV/VisFormalLang/FA/Machines/DFA_withTrapState.jff";
+  var urlTrapDFA="../../../AV/OpenFLAP/machines/FA/DFA_withTrapState.jff";
   var trapDFA= new av.ds.FA({center: true , url: urlTrapDFA});
   av.umsg("For any DFA that is missing transitions, we can easily create an equivalent DFA that shows all transitions. A new state called the trap state is added. Any transition not defined in the orignal DFA goes to the trap state. Once in the trap state, all symbols in the alphabet transition back to the trap state. That is, once the trap state is entered, the DFA will never trasition out. Here is the equivalent DFA made complete by adding the trap state and the missing transitions.");
   av.step();
@@ -37,7 +37,7 @@ $(document).ready(function() {
   // Frame 6
   trapDFA.hide();
   av.umsg("Now let's think about a more complicated example. The following DFA accepts even binary numbers that have an even number of 1's.");
-  var urlevenBin = "../../../AV/VisFormalLang/FA/Machines/EvenBinaryEvenOnesDFA.jff";
+  var urlevenBin = "../../../AV/OpenFLAP/machines/FA/EvenBinaryEvenOnesDFA.jff";
   var evenBin = new av.ds.FA({top: 60, url: urlevenBin});
   av.step();
 
