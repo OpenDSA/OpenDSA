@@ -239,7 +239,12 @@ Window.helpTexts = {
     "valuebox":
     `
     <h2>Calculated values</h2>
-    
+    These are the values that are computed once "Solve" is clicked, and no errors are encountered.
+    <ol>
+        <li>Clicking on the value once selects it by highlighting it.</li>
+        <li>Double-clicking it (or clicking it again after the box is highlighted) will negate the value.</li>
+        <li>To de-select the value, simply click anywhere else on the screen.</li>
+    </ol>
     `
 }
 
