@@ -177,6 +177,26 @@
     z-index: 1000;
    }
 
+.notification {
+    position: absolute;
+    color: black;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    background-color: whitesmoke;
+    font-size: 120%;
+    font-weight: 400;
+    z-index: 1000;
+    width: 400px;
+    height: 240px;
+    right: -428px;
+    top: 116px;
+   }
+
+.notifelement {
+    border-bottom: 1px solid black;
+}
+
 .workspacebutton {
     /* color: black; */
     font-size: 120%;
