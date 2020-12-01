@@ -337,9 +337,9 @@ class Workspace
         
         // TODO: This needs to be included into deletion of equations, where this also gets updated
         // To possibly reset the counter to 0 if required.
-        if(equationListEntity.name in this.equationHashMap)
+        if(equationListEntity.id in this.equationHashMap)
         {
-            this.equationHashMap[equationListEntity.name]
+            this.equationHashMap[equationListEntity.id]
             .push(
                 {
                     "instance": newActiveEquation,
@@ -350,7 +350,7 @@ class Workspace
         }
         else
         {
-            this.equationHashMap[equationListEntity["name"]] = [
+            this.equationHashMap[equationListEntity["id"]] = [
                 {
                     "instance": newActiveEquation,
                     "counter": 1,
