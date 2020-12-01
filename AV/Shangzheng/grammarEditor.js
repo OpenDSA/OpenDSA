@@ -106,11 +106,13 @@ $(document).ready(function () {
             }
             if (input === "" && col === 0) {
                 alert('Invalid left-hand side.');
+                return
             }
             if (col == 2 && _.find(arr, function (x) {
                 return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;
             })) {
                 alert('This production already exists.');
+                return
             }
             fi.remove();
             m.value(row, col, input);
