@@ -9,7 +9,7 @@
     "description": "Construct the PDA that accepts L($\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)$) ",
     "type": "description",
     "testCases": [{
-            "": false,
+            "": true,
             "ShowTestCase":true
         },
         {
