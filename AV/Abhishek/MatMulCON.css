@@ -3,14 +3,14 @@
 }
 
 #MatMulCON .jsavoutput.jsavline {
-  height: 90px;
+  height: 60px;
 }
 
 #MatMulCON .jsavtree .jsavnode {
   border-radius: 1px;
   text-align: center;
   padding-right: 35px;
-  width: 90px;
+  width: 60px;
   line-height: 15px;
   color: white;
   border: 1.2px solid black;
