@@ -1,0 +1,18 @@
+#MatMulCON {
+  height: 410px
+}
+
+#MatMulCON .jsavoutput.jsavline {
+  height: 90px;
+}
+
+#MatMulCON .jsavtree .jsavnode {
+  border-radius: 1px;
+  text-align: center;
+  padding-right: 35px;
+  width: 90px;
+  line-height: 15px;
+  color: white;
+  border: 1.2px solid black;
+  background: linear-gradient(0deg, red, red 49%, white 49%, white 51%, blue 51%);
+}
