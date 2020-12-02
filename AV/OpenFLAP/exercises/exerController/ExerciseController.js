@@ -201,12 +201,36 @@ controllerProto.updateExercise = function (id) {
 		$("#question").hide();
 	} else {
 		var text = exercise["description"];
-		if (text.indexOf('___') > 0) {
-			var parts = text.split("___");
-			text = parts[0] + " " + '<span id="expression2"></span>' + ' ' + parts[1];
-			$("#description").html(text);
-			$("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
-		} else {
+		// if (text.indexOf('___') > 0) {
+		// 	var parts = text.split("___");
+		// 	text = parts[0] + " " + '<span id="expression2"></span>' + ' ' + parts[1];
+		// 	$("#description").html(text);
+		// 	$("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
+		// } 
+		if (text.indexOf('$') >= 0) {
+      var parts = text.split("$");
+      for(var a= 0; a <parts.length;a++){
+        if(a == 0){
+          var expression = parts[a + 1];
+          text = parts[0] + " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[2];
+          $("#description").html(text);
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+        }
+        else{
+          var expression = parts[a];
+          if(a+2 == parts.length){
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ';
+          }
+          else{
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+2];
+          }
+          $("#description").append(text);
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+        }
+        a=a+2;
+			}
+		}
+		else {
 			$("#description").text(exercise["description"]);
 			$("#description").show();
 		}

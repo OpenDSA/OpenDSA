@@ -202,7 +202,7 @@ const equations = [
         latex: '\\nu_{ } = - \\frac {\\epsilon_{lat_{ }}} {\\epsilon_{long_{ }}}',
         latex_boxes: '\\Box = - \\dfrac \\Box \\Box',
         params_latex: ['\\nu_{ }', '\\epsilon_{lat_{ }}', '\\epsilon_{long_{ }}'],
-        template: 'poissonratio = - latstrain * longstrain',
+        template: 'poissonratio = - latstrain / longstrain',
         params: ['poissonratio', 'longstrain', 'latstrain'],
         variables: {
             'poissonratio': '\\nu_{ }',

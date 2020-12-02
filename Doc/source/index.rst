@@ -26,4 +26,4 @@ Table of Contents
    OpenDSA-LTI-database
    Client-sideFramework
    EventMessages
-   ExerciseJsonFileDocumentation
+   ExerciseJsonFile

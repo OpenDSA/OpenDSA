@@ -6,15 +6,15 @@
   "randomStringLength": [0, 15],
   "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
   "hardCodeCasesCounter": 6,
-  "expression": "L_1 = \\{w \\in \\{a, b, c\\}^* | n_a(w) > n_b(w), n_a(w) > n_c(w)\\}.",
-  "description": "Write a turing machine that accepts the language:___",
+  "expression": "",
+  "description": "Write a turing machine that accepts the language:$L_1 = \\{w \\in \\{a, b, c\\}^* | n_a(w) > n_b(w), n_a(w) > n_c(w)\\}.$",
   "type": "description",
   "testCases": [{
       "aaaaaa": true,
       "ShowTestCase":true
     },
     {
-      "acacaa": false,
+      "acacaa": true,
       "ShowTestCase":true
     },
     {

@@ -111,9 +111,9 @@ class Workspace
         // Adding the Add, Remove, Solve Buttons to add, remove, and solve equations
         this.elements[3] = {
             "jsav":
-                this.globalSectionObj.label("Add", 
+                this.globalSectionObj.label("", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 93, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 80, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
                 .addClass("workspacebutton"),
@@ -121,25 +121,30 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
+
+        var addButton = document.createElement("input");
+        addButton.setAttribute("type", "button");
+        addButton.setAttribute("value", "Add");
+        this.elements[3]["jsav"].element[0].appendChild(addButton);
         this.elements[3]["div"].setAttribute("id",this.name+"addeq");
-        this.elements[3]["jsav"].element[0].dataset.type = "add";
-        document.getElementById(this.name+"addeq").addEventListener('click', e => {
+        
+        // this.elements[3]["jsav"].element[0].dataset.type = "add";
+        this.elements[3]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            // console.log(this.globalEquationBank.currentSelectedEquationObject.eqobject);
-            
-            // this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
-            // this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
+            this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
+            this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
         });
         this.elements[3]["jsav"].element[0]
         .setAttribute("title", "Add selected (highlighted) equation from the palette to this workspace.");
 
+        // Adding the Remove equations button
         this.elements[4] = {
             "jsav":
-                this.globalSectionObj.label("Remove", 
+                this.globalSectionObj.label("", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 45, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 - 36, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
                 .addClass("workspacebutton"),
@@ -147,12 +152,14 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
-        // this.elements[4]["div"].setAttribute("id",this.name+"deleq");
-        // document.getElementById(this.name+"deleq").addEventListener('click', e => {
-        //     e.stopPropagation();
-        //     // Add function call to equation deletion here.
-        // });
-        this.elements[4]["jsav"].element[0].dataset.type = "remove";
+        
+        var removeButton = document.createElement("input");
+        removeButton.setAttribute("type", "button");
+        removeButton.setAttribute("value", "Remove");
+        this.elements[4]["jsav"].element[0].appendChild(removeButton);
+        this.elements[4]["div"].setAttribute("id",this.name+"removeeq");
+        
+        // this.elements[4]["jsav"].element[0].dataset.type = "remove";
         this.elements[4]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation deletion here.
@@ -161,11 +168,12 @@ class Workspace
         });
         this.elements[4]["jsav"].element[0].setAttribute("title", "Remove selected (ticked) equations from this workspace.");
 
+        // Adding solve equations
         this.elements[5] = {
             "jsav":
-                this.globalSectionObj.label("Solve", 
+                this.globalSectionObj.label("", 
                 {
-                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 + 36, 
+                    left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]/2 + 35, 
                     top: this.DIMENSIONS["POSITION_Y"]-15
                 })
                 .addClass("workspacebutton"),
@@ -173,12 +181,14 @@ class Workspace
                 list[list.length-1]
                 )(document.getElementsByClassName("jsavlabel")),
         };
-        // this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
-        // document.getElementById(this.name+"solveeq").addEventListener('click', e => {
-        //     e.stopPropagation();
-        //    // Add function call to equation set solving and result propagation here.
-        // });
-        this.elements[5]["jsav"].element[0].dataset.type = "solve";
+        
+        var solveButton = document.createElement("input");
+        solveButton.setAttribute("type", "button");
+        solveButton.setAttribute("value", "Solve");
+        this.elements[5]["jsav"].element[0].appendChild(solveButton);
+        this.elements[5]["div"].setAttribute("id",this.name+"solveeq");
+        
+        // this.elements[5]["jsav"].element[0].dataset.type = "solve";
         this.elements[5]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
@@ -282,9 +292,9 @@ class Workspace
         // necessarily everything in equation.js
         var equationListEntity = Window.eqbank.currentSelectedEquationObject.eqobject;
         var lastHashMapID = 0;
-        if(equationListEntity.name in this.equationHashMap)
+        if(equationListEntity["id"] in this.equationHashMap)
             lastHashMapID = (list => list[list.length-1])
-            (this.equationHashMap[equationListEntity.name]).counter+1;
+            (this.equationHashMap[equationListEntity["id"]]).counter+1;
         else {
             lastHashMapID = 1;
             Window.eqbank.addToFavourites(Window.eqbank.currentSelectedEquationObject.eqobject);
@@ -327,9 +337,9 @@ class Workspace
         
         // TODO: This needs to be included into deletion of equations, where this also gets updated
         // To possibly reset the counter to 0 if required.
-        if(equationListEntity.name in this.equationHashMap)
+        if(equationListEntity.id in this.equationHashMap)
         {
-            this.equationHashMap[equationListEntity.name]
+            this.equationHashMap[equationListEntity.id]
             .push(
                 {
                     "instance": newActiveEquation,
@@ -340,7 +350,7 @@ class Workspace
         }
         else
         {
-            this.equationHashMap[equationListEntity["name"]] = [
+            this.equationHashMap[equationListEntity["id"]] = [
                 {
                     "instance": newActiveEquation,
                     "counter": 1,
@@ -1688,6 +1698,8 @@ class Workspace
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
         }
+
+        
 
         // =========================================================================================
         // EXPLICIT ERROR CHECKING ENDS HERE

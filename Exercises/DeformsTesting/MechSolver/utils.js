@@ -121,23 +121,6 @@ Window.showHelp = function(keyword, event) {
     else console.log(`HelpText for ${keyword} requested`);
 }
 
-Window.bodyClickPrompt = function() {
-    // Creating clickhandlers associated with the body to clear the globalPointerReference
-    document.body.addEventListener("click", e=> {
-        e.stopPropagation();
-        // console.log("Inside the body snatcher");
-        if(Window.showBlankPrompt) {
-            var messageBox = JSAV.utils.dialog("Add an equation from the bank to begin.", {modal: false, width: 100})
-            messageBox[0].style.top = e.pageY+5+"px";
-            messageBox[0].style.left = e.pageX+10+"px";
-            setTimeout(messageBox.close, 900)
-        }
-        else {
-            Window.clearGlobalPointerReference();
-        }
-    });
-}
-
 Window.lowestCommonUnit = function(unitListObject) {
     // Finding the default unit of the same domain as the unitList
     var minUnit = Object.keys(unitListObject)[0];

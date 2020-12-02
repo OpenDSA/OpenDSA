@@ -1,0 +1,73 @@
+[{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "REGEXP",
+    "totalTrueCases": 10,
+    "totalFalseCases": 4,
+    "containLetters": ["a", "b"],
+    "randomStringLength": [0, 15],
+    "expression": "",
+    "description": "Construct an NFA that accepts L($((ab)^+ba^*) + (b^*(ab)^*)$)",
+    "type": "description",
+    "testCases": [{
+            "": true,
+            "ShowTestCase":true
+        },
+        {
+            "ba": false,
+            "ShowTestCase":true
+        },
+        {
+            "abababababba": true,
+            "ShowTestCase":true
+        },
+        {
+            "ababababab": true,
+            "ShowTestCase":true
+        },
+        {
+            "abba": true,
+            "ShowTestCase":true
+        },
+        {
+            "abbaaaaaaa": true,
+            "ShowTestCase":true
+        },
+        {
+            "abb": true,
+            "ShowTestCase":true
+        },
+        {
+            "abababababab": true,
+            "ShowTestCase":true
+        },
+        {
+            "bbbbbbbab": true,
+            "ShowTestCase":true
+        },
+        {
+            "aaaaaaaaa": false,
+            "ShowTestCase":true
+        },
+        {
+            "baa": false,
+            "ShowTestCase":true
+        },
+        {
+            "aab": false,
+            "ShowTestCase":true
+        },
+        {
+            "bab": true,
+            "ShowTestCase":true
+        },
+        {
+            "bbbbb": true,
+            "ShowTestCase":true
+        }
+    ],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

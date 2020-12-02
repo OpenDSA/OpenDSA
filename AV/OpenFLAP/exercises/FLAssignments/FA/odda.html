@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Binary Even DFA Exercise</title>
+    <title>FA Tester</title>
     <script>
       getExerciseLocation = function () {
-      return "./EvenBinary.json"
+      return "./odda.json"
       };
     </script>
     <meta charset="utf-8">
@@ -42,9 +42,8 @@
 
   <body>
     <div id="container">
-      <h1 id="tester">Even Binary Number DFA Exercise</h1>
-      <h2 id="question">Give a DFA for the following alphabet and
-        language: <span id="expression"></span></h2>
+      <h1 id="tester">Finite Automaton Exercise</h1>
+      <h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
       <h2 id="description"></h2>
       <div id="dialogueoverlay"></div>
 
@@ -59,7 +58,6 @@
       <p id="percentage"></p>
       <table id="testResults"></table>
       <div id='download'></div>
-      <div id="rmenu"></div>
       <div id="jsavcontainer">
         <a class="jsavsettings" href="#">Settings</a>
         <p align="center" class="jsavexercisecontrols"></p>
