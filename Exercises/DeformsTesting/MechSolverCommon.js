@@ -439,35 +439,41 @@ requirejs(["./mathjs.js"], function(){});
 	    // console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
         
         // Adding a notifications div with scrollable part
-        let div_notifications = document.createElement("div");
-        // div_notifications.style["overflow-y"] = "auto";
-        div_notifications.setAttribute("id", "notification");
-        div_notifications.classList.add("notification");
+        // let div_notifications = document.createElement("span");
+        // // div_notifications.style["overflow-y"] = "auto";
+        // div_notifications.setAttribute("id", "notification");
+        // div_notifications.classList.add("notification");
         
-        // Testing adding sample texts
-        let notifHead = document.createElement("div");
-        notifHead.style["max-height"] = "10%";
-        notifHead.innerHTML = "<h2>Notifications</h2>";
-        notifHead.style["border-bottom"] = "2px solid black";
-        div_notifications.appendChild(notifHead);
-        
-        let notifBody = document.createElement("div");
-        notifBody.style["max-height"] = "89%";
-        notifBody.style["overflow-y"] = "auto";
-        div_notifications.appendChild(notifBody);
+        // let notifHead = document.createElement("div");
+        // notifHead.style["max-height"] = "10%";
+        // notifHead.innerHTML = "<h2 style='display: inline-block; padding-left: 10px; padding-right: 10px'>Notifications</h2>";
+        // notifHead.style["border-bottom"] = "2px solid black";
+        // div_notifications.appendChild(notifHead);
 
-        for (let i=0; i<20; i++)
-        {
-            let newelem = document.createElement("div")
-            newelem.innerHTML= "Notification";
-            newelem.classList.add('notifelement')
-            notifBody.appendChild(newelem);
-        }
+        // let showAllErrorButton = document.createElement("input");
+        // showAllErrorButton.setAttribute("type", "button");
+        // showAllErrorButton.setAttribute("value", "show all errors");
+        // notifHead.appendChild(showAllErrorButton);
         
-        document.getElementById("DeformsSimpleProblemPPROp").insertBefore(
-            div_notifications,
-            document.getElementById("DeformsSimpleProblemPPRO")
-            );
+        // let notifBody = document.createElement("div");
+        // notifBody.style["max-height"] = "89%";
+        // notifBody.style["overflow-y"] = "auto";
+        // div_notifications.appendChild(notifBody);
+
+        // // DEBUG: adding sample notifications
+        // // use divs with notifelement class
+        // // for (let i=0; i<20; i++)
+        // // {
+        // //     let newelem = document.createElement("div")
+        // //     newelem.innerHTML= "Notification";
+        // //     newelem.classList.add('notifelement')
+        // //     notifBody.appendChild(newelem);
+        // // }
+        
+        // document.getElementById("DeformsSimpleProblemPPROp").insertBefore(
+        //     div_notifications,
+        //     document.getElementById("DeformsSimpleProblemPPRO")
+        //     );
         
         // Body Clicks registered as directive message was included here, now delegated to utils.
         document.body.removeEventListener("click", bodyClickPrompt);
