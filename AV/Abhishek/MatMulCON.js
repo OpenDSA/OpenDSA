@@ -55,8 +55,10 @@ $(document).ready(function() {
   multree.root().child(0).child(2).addChild("(BC)D");
   val = "(BC)D" + "<br>" + "80" ;
   multree.root().child(0).child(2).child(1).value(val);
+  multree.layout();
   av.step();
 
+  // Slide 4
   multree.root().addChild("(AB)(CDE)");
   val = "(AB)(CDE)" + "<br>" + "?" ;
   multree.root().child(1).value(val);
@@ -68,21 +70,17 @@ $(document).ready(function() {
   multree.root().child(1).addChild("(CD)E)");
   val = "(CD)E)" + "<br>" + "100" ;
   multree.root().child(1).child(1).value(val);
+  multree.layout();
   av.step();
 
 
 
-  // Slide 4
+  // Slide 5
   multree.root().addChild("(ABC)(DE)");
   val = "(ABC)(DE)" + "<br>" + "?" ;
   multree.root().child(2).value(val);
+  multree.layout();
   av.step();
-
-  // Slide 5
-  // multree.root().addChild("(ABC)D");
-  // val = "(ABC)D" + "<br>" + "?" ;
-  // multree.root().child(2).value(val);
-  // av.step();
 
   // Slide 6
   multree.root().child(2).addChild("A(BC)");
@@ -93,6 +91,10 @@ $(document).ready(function() {
   val = "(AB)C" + "<br>" + "48" ;
   multree.root().child(2).child(1).value(val);
 
+  multree.layout();
+  av.step();
+
+  // Slide 7
   multree.root().addChild("(ABCD)E");
   val = "(ABCD)E" + "<br>" + "?" ;
   multree.root().child(3).value(val);
@@ -125,7 +127,10 @@ $(document).ready(function() {
   val = "(AB)C" + "<br>" + "48" ;
   multree.root().child(3).child(2).child(1).value(val);
 
+  multree.layout();
   av.step();
+  // slide 8
+
   val = "B(CDE)" + "<br>" + "78" ;
   multree.root().child(0).child(0).value(val);
 
