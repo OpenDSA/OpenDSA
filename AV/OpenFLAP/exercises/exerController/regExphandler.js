@@ -1,8 +1,5 @@
 'use strict'
 // ******************************************************************************
-// ******************************************************************************
-// ******************************************************************************
-// ******************************************************************************
 
 var testCaseList5 = [];
 var mark = 0;
@@ -206,7 +203,6 @@ function reorder(sep) {
 
 /**
  * Check form m position to the end of the regular expression
- * whether all union contain a star symbol
  * @param sep
  *            part of the regular expression
  * @param m
