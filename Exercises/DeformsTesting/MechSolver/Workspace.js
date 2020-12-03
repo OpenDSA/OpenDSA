@@ -1211,7 +1211,7 @@ class Workspace
                             for(var u in unitList[resolvedDomain])
                             {
                                 variableSet[v][resolvedDomain]["unit"][u] = null;
-                                variableSet[v][resolvedDomain]["equation"].push(currActiveEqnObject);
+                                // variableSet[v][resolvedDomain]["equation"].push(currActiveEqnObject);
                             }
                         }
                     }
