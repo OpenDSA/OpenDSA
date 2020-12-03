@@ -51,6 +51,11 @@ class Variable{
         //         // TODO: INSERT DELETION logEvent here.
         //     }
         // )
+
+        // set an id for this.element, to be accessed from anywhere for visuals
+        this.element.setAttribute("id",this.id);
+        this.element.dataset.csymbol = this.currentSymbol;
+
         this.element.addEventListener(
             "click", e => {
                 e.stopPropagation();

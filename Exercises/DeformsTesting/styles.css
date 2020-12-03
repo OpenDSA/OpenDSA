@@ -195,6 +195,12 @@
 
 .notifelement {
     border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.notiferrorelement {
+    background-color: darksalmon;
+    border: red 2px solid;
 }
 
 .workspacebutton {
