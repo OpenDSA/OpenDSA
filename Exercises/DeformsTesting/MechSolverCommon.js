@@ -471,9 +471,11 @@ requirejs(["./mathjs.js"], function(){});
         //     notifBody.appendChild(newelem);
         // }
         
-        document.getElementById("DeformsSimpleProblemPPROp").insertBefore(
+        // document.getElementById("DeformsSimpleProblemPPROp").insertBefore(
+        document.getElementById(exerciseId+"p").insertBefore(
             div_notifications,
-            document.getElementById("DeformsSimpleProblemPPRO")
+            // document.getElementById("DeformsSimpleProblemPPRO")
+            document.getElementById(exerciseId)
             );
         
         // Body Clicks registered as directive message was included here, now delegated to utils.
