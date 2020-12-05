@@ -20,6 +20,7 @@ String.prototype.replaceAt = function(index, replacement){
 
 
 
+
 function insertString(origString, index, addingString) { 
   newString = origString.slice(0, index) 
           + addingString 

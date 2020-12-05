@@ -5,9 +5,9 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "expression": "((ab)^+ba^*) + (b^*(ab)^*)",
-    "description": "Construct an NFA that accepts",
-    "type": "both",
+    "expression": "",
+    "description": "Construct an NFA that accepts L($((ab)^+ba^*) + (b^*(ab)^*)$).",
+    "type": "description",
     "testCases": [{
             "": true,
             "ShowTestCase":true

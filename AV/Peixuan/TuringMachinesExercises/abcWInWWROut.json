@@ -6,8 +6,8 @@
   "randomStringLength": [0, 15],
   "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
   "hardCodeCasesCounter": 5,
-  "expression": "ww^R",
-  "description": "Write a Turing machine on input alphabet Σ = {a,b,c} that takes input w and outputs___",
+  "expression": "",
+  "description": "Write a Turing machine on input alphabet Σ = {a,b,c} that takes input w and outputs $ww^R$",
   "type": "description",
   "testCases": [{
       "a": "aa",

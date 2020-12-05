@@ -65,3 +65,4 @@ Exercise 9
 
 .. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
    :long_name: Turing Machines Exercise
+

@@ -35,6 +35,11 @@ class Association{
             }
         }
 
+        // Add element.dataset.associationID = this.var for both the elements
+        // and remove for associations when done.
+        sourceObject.element.dataset.association = this.var;
+        targetObject.element.dataset.association = this.var;
+
         this.updateVarDisplay();        
     }
     setAssocVarDisplay(varname, subscript)
@@ -77,6 +82,7 @@ class Association{
         // Add another variable to the association if it is used in >2 equations.
         this.variableObjects[newVar.id] = newVar;
         newVar.valueNegated = false; // reset to false to avoid complications.
+        newVar.element.dataset.association = this.var;
 
         // console.log(newVar);
         var tempElement = Window.jsavObject.label(katex.renderToString(this.varDisplay)).hide();
@@ -103,12 +109,14 @@ class Association{
     {
         // Clicking on the variable to remove this triggers this function first, 
         // then deletes the entire association
-        if (obj.getParentEquationId() == this.startingAssocSubscriptEquationId) this.startingAssocSubscriptEquationId = null;
+        if (obj.getParentEquationId() == this.startingAssocSubscriptEquationId) 
+            this.startingAssocSubscriptEquationId = null;
         if(Object.keys(this.variableObjects).length > 2)
         {
             // console.log(this.variableObjects[obj.id]);
             this.variableObjects[obj.id].removeValue();
             this.variableObjects[obj.id].valueNegated = false; // resets the negation to none to avoid confusion.
+            delete this.variableObjects[obj.id].element.dataset.association;
             delete this.variableObjects[obj.id];
             return;
         }
@@ -116,6 +124,7 @@ class Association{
         {
             this.variableObjects[variable].removeValue();
             this.variableObjects[variable].valueNegated = false; // resets the negation to none to avoid confusion.
+            delete this.variableObjects[variable].element.dataset.association;
         }
     }
 }

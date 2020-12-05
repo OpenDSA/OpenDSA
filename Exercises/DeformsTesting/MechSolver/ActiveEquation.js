@@ -146,6 +146,9 @@ class ActiveEquation{
             '<span class="mord value"></span><span class="mord unit"></span>';
         }
 
+        // setting an id for the main equation box element
+        this.jsavequation.element[0].setAttribute("id",this.name);
+
         // Immediately create the variable boxes
         this.createVariableBoxes();
     }

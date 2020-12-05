@@ -5,8 +5,8 @@
     "totalFalseCases": 3,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "expression": "(aaab^*ba)^*",
-    "description": "Give a left-linear grammar for the language L(___)",
+    "expression": "",
+    "description": "Give a left-linear grammar for the language L($(aaab^*ba)^*$)",
     "type": "description",
     "testCases": [{
             "left-linear": true,

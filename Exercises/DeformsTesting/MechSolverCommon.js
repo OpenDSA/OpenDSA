@@ -267,7 +267,7 @@ requirejs(["./mathjs.js"], function(){});
         
         // Setting up value boxes for those inside the question body
         var selectableParameters = document.getElementsByClassName("param");
-        for (var index=0; index<selectableParameters.length; index++)
+        for (let index=0; index<selectableParameters.length; index++)
         {
             selectableParameters[index].addEventListener(
                 "click", function() {
@@ -300,7 +300,7 @@ requirejs(["./mathjs.js"], function(){});
 
         // Setting up solution boxes clickhandlers 
         var solutionSubmissionBoxes = document.getElementsByClassName("solution-box");
-        for (var index=0; index<solutionSubmissionBoxes.length; index++)
+        for (let index=0; index<solutionSubmissionBoxes.length; index++)
         {
             globalSolutionBoxes[index] = {"solution":null};
             solutionSubmissionBoxes[index].dataset.index = index;
@@ -413,9 +413,9 @@ requirejs(["./mathjs.js"], function(){});
         }
 
         // Creating list of usable variables
-        for(var i=0; i<26; i++)
+        for (let i=0; i<26; i++)
         {
-            for(var j=0; j<26; j++)
+            for(let j=0; j<26; j++)
             {
                 VARIABLE_ID_UNUSED.push(String.fromCharCode(97+i)+"_"+String.fromCharCode(97+j));
             }
@@ -437,6 +437,46 @@ requirejs(["./mathjs.js"], function(){});
         
         
 	    // console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
+        
+        // Adding a notifications div with scrollable part
+        let div_notifications = document.createElement("span");
+        // div_notifications.style["overflow-y"] = "auto";
+        div_notifications.classList.add("notification");
+        
+        let notifHead = document.createElement("div");
+        notifHead.style["max-height"] = "10%";
+        notifHead.innerHTML = "<h2 style='display: inline-block; padding-left: 10px; padding-right: 10px'>Notifications</h2>";
+        notifHead.style["border-bottom"] = "2px solid black";
+        div_notifications.appendChild(notifHead);
+
+        // optional button to show all the errors at once if so desired.
+        // let showAllErrorButton = document.createElement("input");
+        // showAllErrorButton.setAttribute("type", "button");
+        // showAllErrorButton.setAttribute("value", "show all errors");
+        // notifHead.appendChild(showAllErrorButton);
+        
+        let notifBody = document.createElement("div");
+        notifBody.style["max-height"] = "89%";
+        notifBody.style["overflow-y"] = "auto";
+        notifBody.setAttribute("id", "notifications");
+        div_notifications.appendChild(notifBody);
+
+        // DEBUG: adding sample notifications
+        // use divs with notifelement class
+        // for (let i=0; i<20; i++)
+        // {
+        //     let newelem = document.createElement("div")
+        //     newelem.innerHTML= "Notification";
+        //     newelem.classList.add('notifelement')
+        //     notifBody.appendChild(newelem);
+        // }
+        
+        // document.getElementById("DeformsSimpleProblemPPROp").insertBefore(
+        document.getElementById(exerciseId+"p").insertBefore(
+            div_notifications,
+            // document.getElementById("DeformsSimpleProblemPPRO")
+            document.getElementById(exerciseId)
+            );
         
         // Body Clicks registered as directive message was included here, now delegated to utils.
         document.body.removeEventListener("click", bodyClickPrompt);

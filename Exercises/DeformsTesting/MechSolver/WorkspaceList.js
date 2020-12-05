@@ -84,7 +84,6 @@ class WorkspaceList
         helpButtonText.element[0].appendChild(helpButton);
         helpButtonText.element[0].setAttribute("title", "Click to open the help text");
         
-        // this.addbutton.element[0].addEventListener('click', e => {
         helpButtonText.element[0].addEventListener("click", e=> {
             // e.stopPropagation();
             e.stopImmediatePropagation();
