@@ -5,9 +5,8 @@
   "totalFalseCases": 10,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "expression": "",
-  "description": "Give a DFA that accepts the language over Σ ={a, b} of any odd number of a’s and any even number of b’s.",
-  "type": "description",
+  "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{\\mbox{any odd number of a`s and any even number of b`s}\\}",
+  "type": "expression",
   "testCases": [
     {
       "a": true,

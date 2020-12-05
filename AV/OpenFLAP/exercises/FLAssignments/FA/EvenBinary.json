@@ -5,8 +5,7 @@
   "totalFalseCases": 5,
   "containLetters": ["1", "0"],
   "randomStringLength": [0, 15],
-  "expression": "\\Sigma = \\{0, 1\\}, \\quad L = \\{\\mbox{All even binary numbers\\}",
-  "description": "",
+  "expression": "\\Sigma = \\{0, 1\\}, \\quad L = \\{\\mbox{All even binary numbers}\\}",
   "type": "expression",
   "testCases": [
     {
