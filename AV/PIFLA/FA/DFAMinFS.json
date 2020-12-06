@@ -1,0 +1,227 @@
+{
+    "translations": {
+        "en": {
+            "q2": {
+                "type": "multiple",
+                "description": "First, why do we need to minimize the number of states? As mentioned in the last chapter, we use NFAs to easily generate any Fininte Acceptor for any language.",
+                "question": "[T|F] NFA are more powerful than DFA. That is why we use NFAs",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "False",
+                    "True"
+                ]
+            },
+            "q3": {
+                "type": "multiple",
+                "description": "Then we can convert the NFA to a DFA. Can you immagin how big maybe the resulting DFA?",
+                "question": "When we convert NFA to DFA, What is the set of states for the generated DFA?",
+                "answer": [
+                    "the powerset for NFA set of states, $Q_{DFA} = 2^{Q_{NFA}}$"
+                ],
+                "choices": [
+                    "the powerset for NFA set of states, $Q_{DFA} = 2^{Q_{NFA}}$",
+                    "the same set of NFA states, $Q_{DFA} = Q_{NFA}$"
+                ]
+            }, 
+            "q4": {
+                "type": "select",
+                "description": "By looking at the definition of the resulting DFA from the NFA to DFA algorithm we will see that the set of DFA states defined as $Q_D = 2^{Q_N}$.",
+                "question": "What is $|Q_{DFA} = 2^{Q_{NFA}}|$ ",
+                "answer": [
+                    "$|2^{Q_{NFA}}|$",
+                    "$2^{|Q_{NFA}|}$",
+                    "exponential, $2^n$ where n is the number of NFA states"
+                ],
+                "choices": [
+                    "$|2^{Q_{NFA}}|$",
+                    "$2^{|Q_{NFA}|}$",
+                    "exponential, $2^n$ where n is the number of NFA states"
+                ]
+            },
+            "q5": {
+                "type": "multiple",
+                "description": "So, sometimes we will have a DFA with $2^n$ states. This is too large machine. So we need an algorith that reduce this large number of states abd in the same time thre resulting Minimized DFA accept the same exact language that was accepted by the large DFA.",
+                "question": "[T|F] The minimized DFA will be less powerful than the original DFA.",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },  
+            "q8": {
+                "type": "select",
+                "description": "In general any two states in a DFA are either distinquishable or indistinquishable",
+                "question": "Select the words that have the same meaning for 'distinquishable'",
+                "answer": [
+                    "Similar",
+                    "Equivalent"
+                ],
+                "choices": [
+                    "Similar",
+                    "Equivalent"
+                ]
+            }, 
+            "q9": {
+                "type": "multiple",
+                "description": "Definition: Two states $p$ and $q$ are indistinquishable if for all $w \\in \\Sigma^*$ we have $\\delta^*(q, w) \\in F \\Rightarrow \\delta^*(p, w) \\in F\\\\ \\delta^*(p, w) \\not\\in F \\Rightarrow \\delta^*(q, w) \\not\\in F$",
+                "question": "[T|F] We should check all possible strings with states $p$ and $q$ to decide if they are indistinquishable",
+                "answer": [
+                    "True"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q12": {
+                "type": "multiple",
+                "description": "What about distinquishable states? the definition for distinquishable is: Two states p and q are distinquishable, different, if $\\exists \\; w \\in \\Sigma^*$ such that $\\delta^*(q, w)\\in F \\Rightarrow \\delta^*(p, w) \\not\\in F\\; \\mathrm{OR}\\\\ \\delta^*(q, w) \\not\\in F \\Rightarrow \\delta^*(p, w) \\in F$",
+                "question": "[T|F] We should check all possible strings with states $p$ and $q$ to decide if they are distinquishable",
+                "answer": [
+                    "False"
+                ],
+                "choices": [
+                    "True",
+                    "False"
+                ]
+            },
+            "q15": {
+                "type": "select",
+                "description": "The process will be: $\\\\$Select any pair of states $p$ and $q$ then check<br />* If, in either case, we accept/reject the exact same set set of strings, then there is no difference between them.<br />* So, we can combine them.",
+                "question": "What should we do with the similar states?",
+                "answer": [
+                    "Group them into a single state",
+                    "Combine them to ba a single state"
+                ],
+                "choices": [
+                    "Group them into a single state",
+                    "Combine them to ba a single state"
+                ]
+            },       
+            "q19": {
+                "type": "multiple",
+                "description": "Let us see an example to calrify the process. Look at this DFA.",
+                "question": "What is $\\delta^*(A, a)$?",
+                "answer": [
+                    "non-final state"
+                ],
+                "choices": [
+                    "non-final state",
+                    "final state"
+                ]
+            },
+            "q20": {
+                "type": "multiple",
+                "description": "From state A: the letter $a$ goes to a non-final state.",
+                "question": "What about $\\delta^*(A, ab)$?",
+                "answer": [
+                    "final state"
+                ],
+                "choices": [
+                    "non-final state",
+                    "final state"
+                ]
+            },
+            "q21": {
+                "type": "multiple",
+                "description": "From state A: the letter $a$ goes to a non-final state, $ab$ goes to a final state.",
+                "question": "What is $\\delta^*(F, a)$?",
+                "answer": [
+                    "non-final state"
+                ],
+                "choices": [
+                    "non-final state",
+                    "final state"
+                ]
+            },
+            "q22": {
+                "type": "multiple",
+                "description": "From state A: the letter $a$ goes to a non-final state, $ab$ goes to a final state.<br />From state F: the letter $a$ goes to non-final state.",
+                "question": "What is $\\delta^*(F, ab)$?",
+                "answer": [
+                    "non-final state"
+                ],
+                "choices": [
+                    "non-final state",
+                    "final state"
+                ]
+            },
+            "q23": {
+                "type": "multiple",
+                "description": "From state A: the letter $a$ goes to a non-final state, $ab$ goes to a final state.<br />From state F: the letter $a$ goes to non-final state, $ab$ goes to a final state.",
+                "question": "What is $\\delta^*(D, a)$?",
+                "answer": [
+                    "non-final state"
+                ],
+                "choices": [
+                    "non-final state",
+                    "final state"
+                ]
+            },
+            "q24": {
+                "type": "multiple",
+                "description": "From state A: the letter $a$ goes to a non-final state, $ab$ goes to a final state.<br />From state F: the letter $a$ goes to non-final state, $ab$ goes to a final state.<br />From state D: the letter $a$ goes to non-final state.",
+                "question": "What is $\\delta^*(D, a)$?",
+                "answer": [
+                    "non-final state"
+                ],
+                "choices": [
+                    "non-final state",
+                    "final state"
+                ]
+            },
+            "q25": {
+                "type": "multiple",
+                "description": "From state A: the letter $a$ goes to a non-final state, $ab$ goes to a final state.<br />From state F: the letter $a$ goes to non-final state, $ab$ goes to a final state.<br />From state D: the letter $a$ goes to non-final state.",
+                "question": "Do states A, F, and D are indistinquishable (similar)?",
+                "answer": [
+                    "No"
+                ],
+                "choices": [
+                    "Yes",
+                    "No"
+                ]
+            },
+            "q26": {
+                "type": "multiple",
+                "description": "From state A: the letter $a$ goes to a non-final state, $ab$ goes to a final state.<br />From state F: the letter $a$ goes to non-final state, $ab$ goes to a final state.<br />From state D: the letter $a$ goes to non-final state.",
+                "question": "Why?",
+                "answer": [
+                    "F has different destination with string $ab$"
+                ],
+                "choices": [
+                    "F has different destination with string $ab$",
+                    "F has the same destination with letter $a$"
+                ]
+            },
+            "q27": {
+                "type": "multiple",
+                "description": "So, we know that F must be in a different equivalence subset than A and D.",
+                "question": "Are A and D are the equivalent?",
+                "answer": [
+                    "we do not know yet. There is no enough evidence yet to decide."
+                ],
+                "choices": [
+                    "we do not know yet. There is no enough evidence yet to decide.",
+                    "Yes they are equivalent in both $a$ and $ab$."
+                ]
+            },
+            "q28": {
+                "type": "multiple",
+                "description": "Ecactly. We decide if a state is different if we found ONLY one string the makes them behave differntly. But to decide that some states are the same requier us to test all possible strings. If all of them leads to the same destination, then we can decide that these states are the indistinquishable.",
+                "question": "What should we do if we found some states that are distinquishable?",
+                "answer": [
+                    "we know that they will not be in the same group in the minimized DFA"
+                ],
+                "choices": [
+                    "we know that they will not be in the same group in the minimized DFA",
+                    "nothing"
+                ]
+            }
+        }
+    }
+}

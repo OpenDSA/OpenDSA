@@ -386,3 +386,9 @@ cost of the algorithm is :math:`\Theta(nK)`.
    actually reducing the size of the table.
    Otherwise, the table for the knapsack problem could have been
    reduced to a one dimensional array.
+
+.. inlineav:: MatMulCON ss
+   :links:   /AV/Abhishek/MatMulCON.css
+   :scripts: /AV/Abhishek/MatMulCON.js
+   :align: center
+   :output: show
