@@ -1,4 +1,5 @@
 var arr;
+var latexit = "http://latex.codecogs.com/svg.latex?";
 $(document).ready(function () {
     "use strict";
     var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -34,8 +35,28 @@ $(document).ready(function () {
           return d;
         });
         lastRow = arr.length;
+
         //arr.push(["", arrow, ""]);
-        localStorage.removeItem('grammar');
+        var productions = _.map(_.filter(arr, function (x) {
+            return x[0];
+        }), function (x) {
+            return x.slice();
+        });
+        var imgs = "Transfer the following grammars you inputted below from CTG to CNF:" + "<br>";
+        console.log(productions[0][1]);
+        for (var i = 0; i < productions.length; i++) {
+            if (productions[i][2] === lambda) {
+                imgs = imgs + '<img src=' + latexit + productions[i][0]+"%20\\to%20" +"\\lambda"+'>' + "<br>";
+            } else {
+                imgs = imgs + '<img src=' + latexit + productions[i][0]+"%20\\to%20" +productions[i][2]+'>' + "<br>";
+            }
+
+        }
+        imgs = imgs + "Please click startTransform button to start this experience";
+
+        document.getElementById('description').innerHTML = imgs;
+        console.log(productions);
+        //localStorage.removeItem('grammar');
         console.log(arr);
     }
     else {
@@ -136,7 +157,18 @@ $(document).ready(function () {
         });
         return ret;
     }
-
+    var getCombinations = function* (str, l) {
+        for (var i = 0; i < str.length; i++) {
+            if (l === 1) {
+                yield [str[i]];
+            } else {
+                var n = getCombinations(str.substring(i + 1), l - 1);
+                for (var next = n.next(); next.value; next = n.next()) {
+                    yield [str[i]].concat(next.value);
+                }
+            }
+        }
+    };
     function removeLambda() {
         var derivers = {};  // variables that derive lambda
         var productions = _.map(_.filter(arr, function (x) {
@@ -1072,15 +1104,16 @@ $(document).ready(function () {
             // replace terminals
             for (var i = 0; i < r.length; i++) {
                 if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
-                    var tempB = "$B_{(" + r[i] + ")}$";
+                    // var tempB = "$B_{(" + r[i] + ")}$";
                     // if (!_.find(tArr.concat(sliceIn), function (x) {
                     //     return x[0] === tempB;
                     // })) {
+                    var tempB = "B_"+ r[i];
                     var times = 0;
                     var input;
                     var pass = false;
                     while (times <= 3 && !pass) {
-                        input = prompt("Left side is asigned to" + tempB + ". Right side of the production you want to add?");
+                        input = prompt("Left side is asigned to " + tempB + ". Right side of the production you want to add?");
 
                         if (input === r[i]) {
                             pass = true;
@@ -1105,25 +1138,28 @@ $(document).ready(function () {
 
                 for (var i = 0; i < sliceIn.length; i++) {
                     for (var j = 0; j < tArr.length; j++) {
-                        if (tArr[j][0] == sliceIn[i][0] && tArr[j][2][0] == sliceIn[i][2][0]) {
+                        if (tArr[j][0] === sliceIn[i][0] && tArr[j][2][0] === sliceIn[i][2][0]) {
                             dub = true;
                         }
                     }
                 }
+                var tempG = null;
                 if (!dub) {
                     tArr = tArr.slice(0, index + 1).concat(sliceIn).concat(tArr.slice(index + 1));
-                    var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
+                    tempG = jsav.ds.matrix(_.map(tArr, function (x) {
                         return [x[0], x[1], x[2].join('')];
                     }));
-
+                    console.log(tempG.value(0,0));
+                    // tempG.value(0,0,"<img src=\"http://latex.codecogs.com/svg.latex?"+ tempG.value(0,0) +">");
                     tGrammar.clear();
                     tGrammar = tempG;
                     $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
 
                 } else {
-                    var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
+                    tempG = jsav.ds.matrix(_.map(tArr, function (x) {
                         return [x[0], x[1], x[2].join('')];
                     }));
+
                     tGrammar.clear();
                     tGrammar = tempG;
                     $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
@@ -1138,7 +1174,7 @@ $(document).ready(function () {
                 }
             } else {
                 // replace variables
-                var tempD = "$D_{(" + varCounter + ")}$";
+                var tempD = "D_" + varCounter;
                 var temp2 = r.splice(1, r.length - 1, tempD);
                 var present = _.find(tArr, function (x) {
                     return x[0].length > 1 && x[2].join('') === temp2.join('');
@@ -1156,8 +1192,8 @@ $(document).ready(function () {
                             pass = true;
                         } else {
                             times++;
-                            if (times == 3) {
-                                if (confirm("you have tried 3 times, do you want to try again? If not, click 'Cancel' button") == true) {
+                            if (times === 3) {
+                                if (confirm("you have tried 3 times, do you want to try again? If not, click 'Cancel' button") === true) {
                                     times = 0;
                                 } else {
                                     pass = true;

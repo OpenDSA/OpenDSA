@@ -322,9 +322,6 @@ $(document).ready(function () {
         jsav.umsg('Deleting');
     };
     var addrowMode = function () {
-        $('.jsavmatrix').addClass("addrowMode");
-        $('.jsavmatrix').removeClass("deleteMode");
-        $('.jsavmatrix').removeClass("editMode");
 
         if (lastRow === arr.length - 1 || lastRow === arr.length) {
             var l = arr.length;
