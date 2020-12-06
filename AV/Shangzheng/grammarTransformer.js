@@ -543,7 +543,7 @@ $(document).ready(function () {
     $('#addrowbutton').click(addrowMode);
     $('#loadfile').on('change', loadFile);
     $('#savefile').click(saveFile);
-    $('#identifybutton').click(identifyGrammar);
+    // $('#identifybutton').click(identifyGrammar);
     $('#clearbutton').click(clearAll);
     $('#removeLambda').hide();
     $('#removeLambda').click(removeLambdaDisplay);
@@ -598,7 +598,8 @@ $(document).ready(function () {
         $('#addrowbutton').show();
         $('#loadfile').show();
         $('#savefile').show();
-        $('#identifybutton').show();
+        $('#startTransform').show();
+        // $('#identifybutton').show();
         $('#clearbutton').show();
 
         $('#removeLambda').hide();
@@ -614,7 +615,7 @@ $(document).ready(function () {
         $('#buildUnitDependencyGraph').hide();
         $('#toChomskyForm').hide();
         $('#ChangeToChomsky').hide();
-        document.getElementById("startTransform").disabled = true;
+        // document.getElementById("startTransform").disabled = true;
         jsav.umsg('');
     });
     $('#replaceTerminal').hide();
@@ -861,7 +862,7 @@ $(document).ready(function () {
         $('#loadFile').hide();
         $('#saveFile').hide();
         $('#addExerciseButton').hide();
-        document.getElementById("startTransform").disabled = true;
+        //document.getElementById("startTransform").disabled = true;
         $('#back').hide();
         $('#next').hide();
         if (type == "editor") {
@@ -1379,6 +1380,9 @@ $(document).ready(function () {
             // layoutTable(tGrammar, 2);
             // //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, });//anchor: "left bottom", myAnchor: "left top"
             // tGrammar.click(removeUselessHandler);
+            modelDFA = jsav.ds.graph({layout: "layered", directed: true});
+            jsav.umsg('there is no reletionship for those terminals');
+            m.hide();
             $('#removeUslesspruduction').show();
             $('#uselessDependencyGraph').hide();
         };
@@ -1514,7 +1518,8 @@ $(document).ready(function () {
             dsArray[j].css({top: "-=" + dis + "px", relativeTo: dsArray[0]});
         }
 
-        modelDFA.layout();
+        //modelDFA.layout();
+        modelDFA.hide();
         $('#removeUslesspruduction').hide();
         $('#toChomskyForm').show();
     }
@@ -1551,7 +1556,7 @@ $(document).ready(function () {
                 var r = productions[i][2];
                 for (var j = 0; j < r.length; j++) {
                     if (r[j].length === 1 && variables.indexOf(r[j]) === -1) {
-                        var temp = "$B_{(" + r[j] + ")}$";
+                        var temp = "B_" + r[j];
                         if (!_.find(productions, function (x) {
                             return x[0] === temp;
                         })) {
@@ -1570,7 +1575,7 @@ $(document).ready(function () {
                 if (r.length === 1 && variables.indexOf(r[0]) === -1) {
                     continue;
                 } else if (r.length > 2) {
-                    var temp = "$D_{(" + varCounter + ")}$";
+                    var temp = "$D_" + varCounter;
                     var temp2 = r.splice(1, r.length - 1, temp);
                     var present = _.find(productions, function (x) {
                         return x[0].length > 1 && x[2].join('') === temp2.join('');
@@ -1607,7 +1612,7 @@ $(document).ready(function () {
 
     function toChomskyForm() {
         jsav.umsg("Next Step is converting the grammar to  Chomsky Form");
-        if (modelDFA != null) {
+        if (typeof modelDFA != "undefined") {
             modelDFA.hide();
         }
         for (var i = 0; i < dsArray.length; i++) {
@@ -1677,7 +1682,7 @@ $(document).ready(function () {
             // replace terminals
             for (var i = 0; i < r.length; i++) {
                 if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
-                    var tempB = "$B_{(" + r[i] + ")}$";
+                    var tempB = "B_" + r[i];
                     // if (!_.find(tArr.concat(sliceIn), function (x) {
                     //     return x[0] === tempB;
                     // })) {
@@ -1938,78 +1943,116 @@ $(document).ready(function () {
     }
 
     function startTransform() {
-        localStorage['grammar'] = _.map(arr, function (x) {
-            return x.join('');
-        });
-         window.open("grammarTransform.html");
-        // //document.getElementById('startTransform').disabled = true;
-        // jsav.umsg('');
-        // $('#startTransform').hide();
-        // var noLambda = removeLambda();
-        // var noUnit = removeUnit();
-        // var noUseless = removeUseless();
-        // var fullChomsky = convertToChomsky();
-        // var productions = _.map(_.filter(arr, function (x) {
-        //     return x[0];
-        // }), function (x) {
-        //     return x.slice();
-        // });
-        // var strP = _.map(productions, function (x) {
+
+        var identified = identifyGrammar();
+        if (identified === 1)
+        {
+            alert('No grammar.');
+            return;
+        } else if (identified === 2) {
+            alert('This grammar is a Context-Free Grammar, you can go to the next step');
+
+            $('#back').show();
+            //document.getElementById("editor").innerHTML = 'First step:';
+            jsav.umsg('After confirming the grammar is context free grammar, we need to remove some producitons as the following order:<br>' +
+                '1. lambda production<br> 2. unit production<br> 3. useless production.<br> Please click open transforer button to start transforming');
+        }
+        else if (identified === 0) {
+            alert('The CNF (Chomsky Normal Form) can only accept CFG (context free grammar), please change the grammar to CFG');
+            return;
+        }
+        m.hide();
+        // localStorage['grammar'] = _.map(arr, function (x) {
         //     return x.join('');
         // });
-        // backup = "" + strP;
-        // var highlightCounter = 0;
-        // var n = [50, 100, 150, 200, 250, 300, 350, 400, 450]
-        // for (var i = 0; i < arr.length; i++) {
-        //     if (arr[i][0] === '' && arr[i][2] === '') {
-        //         continue;
-        //     }
-        //     //var dis = (30*i).toString();
-        //     if (arr[i][2] === lambda) {
-        //         dsArray[i] = jsav.ds.array(arr[i], {center: false}).highlight();
-        //         // if (i != 0){
-        //         //     dsArray[i].css({top:"-=" + dis+ "px",relativeTo: dsArray[0]})
-        //         // }
-        //
-        //         highlightCounter++;
-        //     } else {
-        //         dsArray[i] = jsav.ds.array(arr[i], {center: false});
-        //         // if (i != 0){
-        //         //     dsArray[i].css({top:"-=" + dis+ "px", relativeTo: dsArray[0]})
-        //         // }
-        //     }
-        // }
-        // // var height = $(dsArray[0].element).outerHeight();
-        // for (var j = 0; j < dsArray.length; j++) {
-        //     if (j == 0) {
-        //         continue;
-        //     }
-        //     var dis = (30 * j).toString();
-        //     dsArray[j].css({top: "-=" + dis + "px", relativeTo: dsArray[0]});
-        // }
-        // if (!checkTransform(strP, noLambda)) {
-        //     $('#removeLambda').show();
-        //
-        //     if (highlightCounter === 1) {
-        //         jsav.umsg("the highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
-        //     } else if (highlightCounter > 1) {
-        //         jsav.umsg("the highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
-        //     }
-        // } else if (!checkTransform(strP, noUnit)) {
-        //     jsav.umsg('You productions do not have any lambda productions! Move to remove unit productions phase');
-        //     $('#toUnitproduction').show();
-        // } else if (!checkTransform(strP, noUseless)) {
-        //     jsav.umsg('You productions do not have any lambda productions and unit productions! Move to remove useless productions phase');
-        //     $('#toUselessProduction').show();
-        // } else if (!checkTransform(strP, fullChomsky)) {
-        //     jsav.umsg('Grammar already in Chomsky Normal Form.');
-        //     return true;
-        // } else {
-        //     backup = null;
-        //     jsav.umsg('Grammar cannot be determined');
-        //     return true;
-        // }
-        //
+         // window.open("grammarTransform.html");
+        //document.getElementById('startTransform').disabled = true;
+        jsav.umsg('');
+        $('#startTransform').hide();
+        var noLambda = removeLambda();
+        var noUnit = removeUnit();
+        var noUseless = removeUseless();
+        var fullChomsky = convertToChomsky();
+        var productions = _.map(_.filter(arr, function (x) {
+            return x[0];
+        }), function (x) {
+            return x.slice();
+        });
+        var imgs = "Transfer the following grammars you inputted below from CTG to CNF:" + "<br>";
+        console.log(productions[0][1]);
+        for (var i = 0; i < productions.length; i++) {
+            if (productions[i][2] === lambda) {
+                imgs = imgs + '<img src=' + latexit + productions[i][0]+"%20\\to%20" +"\\lambda"+'>' + "<br>";
+            } else {
+                imgs = imgs + '<img src=' + latexit + productions[i][0]+"%20\\to%20" +productions[i][2]+'>' + "<br>";
+            }
+
+        }
+        imgs = imgs + "Please click startTransform button to start this experience";
+        document.getElementById('editor').innerText = "Grammar Transform Exercise"
+        document.getElementById('description').innerHTML = imgs;
+        var strP = _.map(productions, function (x) {
+            return x.join('');
+        });
+        backup = "" + strP;
+        var highlightCounter = 0;
+        var n = [50, 100, 150, 200, 250, 300, 350, 400, 450]
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i][0] === '' && arr[i][2] === '') {
+                continue;
+            }
+            //var dis = (30*i).toString();
+            if (arr[i][2] === lambda) {
+                dsArray[i] = jsav.ds.array(arr[i], {center: false}).highlight();
+                // if (i != 0){
+                //     dsArray[i].css({top:"-=" + dis+ "px",relativeTo: dsArray[0]})
+                // }
+
+                highlightCounter++;
+            } else {
+                dsArray[i] = jsav.ds.array(arr[i], {center: false});
+                // if (i != 0){
+                //     dsArray[i].css({top:"-=" + dis+ "px", relativeTo: dsArray[0]})
+                // }
+            }
+        }
+        $('#deletebutton').hide();
+        $('#addrowbutton').hide();
+        $('#loadfile').hide();
+        $('#savefile').hide();
+        $('#clearbutton').hide();
+        // var height = $(dsArray[0].element).outerHeight();
+        for (var j = 0; j < dsArray.length; j++) {
+            if (j == 0) {
+                continue;
+            }
+            var dis = (30 * j).toString();
+            dsArray[j].css({top: "-=" + dis + "px", relativeTo: dsArray[0]});
+        }
+
+        if (!checkTransform(strP, noLambda)) {
+            $('#removeLambda').show();
+
+            if (highlightCounter === 1) {
+                jsav. umsg("the highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
+            } else if (highlightCounter > 1) {
+                jsav.umsg("the highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
+            }
+        } else if (!checkTransform(strP, noUnit)) {
+            jsav.umsg('You productions do not have any lambda productions! Move to remove unit productions phase');
+            $('#toUnitproduction').show();
+        } else if (!checkTransform(strP, noUseless)) {
+            jsav.umsg('You productions do not have any lambda productions and unit productions! Move to remove useless productions phase');
+            $('#toUselessProduction').show();
+        } else if (!checkTransform(strP, fullChomsky)) {
+            jsav.umsg('Grammar already in Chomsky Normal Form.');
+            return true;
+        } else {
+            backup = null;
+            jsav.umsg('Grammar cannot be determined');
+            return true;
+        }
+
 
     }
 
@@ -2028,32 +2071,13 @@ $(document).ready(function () {
             return x.slice();
         });
         if (productions.length === 0) {
-            alert('No grammar.');
-            return;
+            return 1;
         }
         if (isContextFreeGrammar()) {
-            alert('This grammar is a Context-Free Grammar, you can go to the next step');
-
-
-            // $('#helpbutton').hide();
-            // //$('#editbutton').hide();
-            // $('#deletebutton').hide();
-            // $('#addrowbutton').hide();
-            // $('#loadfile').hide();
-            // $('#savefile').hide();
-            // $('#identifybutton').hide();
-            // $('#clearbutton').hide();
-            // $('.jsavmatrix').hide();
-            document.getElementById("startTransform").disabled = false;
-            // $('#back').show();
-            //document.getElementById("editor").innerHTML = 'First step:';
-            jsav.umsg('After confirming the grammar is context free grammar, we need to remove some producitons as the following order:\n' +
-                '1. lambda production\n 2. unit production\n 3. useless production.\n Please click open transforer button to start transforming');
-
-            return;
+            return 2;
         } else {
-            alert('The CNF (Chomsky Normal Form) can only accept CFG (context free grammar), please change the grammar to CFG');
-            return;
+            //alert('The CNF (Chomsky Normal Form) can only accept CFG (context free grammar), please change the grammar to CFG');
+            return 0;
         }
     }
 
