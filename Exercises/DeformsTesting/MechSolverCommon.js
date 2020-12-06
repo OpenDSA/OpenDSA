@@ -262,7 +262,7 @@ requirejs(["./mathjs.js"], function(){});
         $("body").on("jsav-log-event", function(event, eventData) {
             // console.log(eventData);
             if(window.parent.ODSA != undefined)
-	        console.log(window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc))
+	            window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc)
         });
         
         // Setting up value boxes for those inside the question body
@@ -288,7 +288,7 @@ requirejs(["./mathjs.js"], function(){});
                     globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
                     av.logEvent({
                         type: "jsav-something",
-                        av: "SimpleProblemPPRO",
+                        // av: "SimpleProblemPPRO",
                         desc: "example event log",
                     });
                 }

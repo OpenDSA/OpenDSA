@@ -1833,8 +1833,8 @@ class Workspace
                 "click", e=> {
                     e.stopPropagation();
                     JSAV.utils.dialog(
-                        `<h4>${errorFlag["error"]["global"][gerror]["minidescription"]}</h4>
-                        ${errorFlag["error"]["global"][gerror]["description"]}`, 
+                        `<h4>${errorFlag["error"]["global"][werror]["minidescription"]}</h4>
+                        ${errorFlag["error"]["global"][werror]["description"]}`, 
                         {width: 200, closeText: "OK"})[0].addEventListener("click", e2=>{
                         e2.stopPropagation()});
                 })
