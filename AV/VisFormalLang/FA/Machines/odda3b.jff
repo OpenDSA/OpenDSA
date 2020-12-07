@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><structure>
+	<type>fa</type>
+	<automaton>
+		<state id="0" name="q0">
+			<x>111.203125</x>
+			<y>132.203125</y>
+			<initial/>
+		</state>
+		<state id="1" name="q1">
+			<x>263.203125</x>
+			<y>118.203125</y>
+		</state>
+		<state id="2" name="q2">
+			<x>420.203125</x>
+			<y>119.203125</y>
+		</state>
+		<state id="3" name="q3">
+			<x>557.203125</x>
+			<y>115.203125</y>
+		</state>
+		<state id="4" name="q4">
+			<x>121.203125</x>
+			<y>285.203125</y>
+			<final/>
+		</state>
+		<state id="5" name="q5">
+			<x>238.203125</x>
+			<y>278.203125</y>
+			<final/>
+		</state>
+		<state id="6" name="q6">
+			<x>420.203125</x>
+			<y>255.203125</y>
+			<final/>
+		</state>
+		<state id="7" name="q7">
+			<x>579.203125</x>
+			<y>259.203125</y>
+			<final/>
+		</state>
+		<transition>
+			<from>0</from>
+			<to>4</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>5</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>6</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>7</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>0</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>5</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>1</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>6</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>2</to>
+			<read>a</read>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>7</to>
+			<read>b</read>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>3</to>
+			<read>a</read>
+		</transition>
+	</automaton>
+</structure>

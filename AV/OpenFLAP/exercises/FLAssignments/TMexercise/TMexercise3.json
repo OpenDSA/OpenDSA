@@ -10,19 +10,24 @@
     "description": "Create a machine that is just like the one that you just did. However, instead of replacing the string with #'s, you will keep the string intact.",
     "type": "description",
     "testCases": [{
-            "aaa": "aaa"
+            "aaa": "aaa",
+            "ShowTestCase":true
         },
         {
-            "bbb": "bbb"
+            "bbb": "bbb",
+            "ShowTestCase":true
         },
         {
-            "ccc": "ccc"
+            "ccc": "ccc",
+            "ShowTestCase":true
         },
         {
-            "abcab": "abcab"
+            "abcab": "abcab",
+            "ShowTestCase":true
         },
         {
-            "": ""
+            "": "",
+            "ShowTestCase":true
         }
     ],
     "graph": {

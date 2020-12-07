@@ -1,0 +1,85 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "exerciseType": "DFA",
+  "totalTrueCases": 10,
+  "totalFalseCases": 10,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{\\mbox{any odd number of a`s and any even number of b`s}\\}",
+  "type": "expression",
+  "testCases": [
+    {
+      "a": true,
+      "ShowTestCase": true
+    },
+    {
+      "b": false,
+      "ShowTestCase":true
+    },
+    {
+      "ba": false,
+      "ShowTestCase":true
+    },
+    {
+      "bb": false,
+      "ShowTestCase":true
+    },
+    {
+      "bab": true,
+      "ShowTestCase":true
+    },
+    {
+      "bba": true,
+      "ShowTestCase":true
+    },
+    {
+      "abb": true,
+      "ShowTestCase":true
+    },
+    {
+      "abaab": true,
+      "ShowTestCase":true
+    },
+    {
+      "ababbbbabb": false,
+      "ShowTestCase":true
+    },
+    {
+      "bbbbbaaaaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaaaabbbbbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "aabaabbab": true,
+      "ShowTestCase":true
+    },
+    {
+      "babbaba": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbababbaaba": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbababababaab": false,
+      "ShowTestCase":true
+    },
+    {
+      "bbababbababa": false,
+      "ShowTestCase":true
+    },
+    {
+      "bbaabababaaba": true,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/oddaevenb.jff"
+}]

@@ -1,78 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <title>Grammar Exercise: anb2n</title>
-  <script>
-    getExerciseLocation = function () {
+  <head>
+    <meta charset="utf-8">
+    <title>Grammar Exercise: anb2n</title>
+    <script>
+      getExerciseLocation = function () {
       return "./GramIntroanb2n.json"
-    };
-  </script>
-  <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title"
-    charset="utf-8" />
-  <link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
-  <link rel="stylesheet" href="../../../css/customPrompt.css" type="text/css" />
-  <link rel="stylesheet" href="../../../css/FA.css" type="text/css" />
-  <link rel="stylesheet" href="../../../css/grammar.css" type="text/css" media="screen" title="no title"
-    charset="utf-8" />
-  <link rel="stylesheet" href="../../../css/parsing.css" type="text/css" media="screen" title="no title"
-    charset="utf-8" />
-  <link rel="stylesheet" href="../../../css/help.css" type="text/css" />
-  <link rel="stylesheet" href="../../../css/grammarEditor.css" type="text/css" />
-</head>
+      };
+    </script>
+    <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title"
+          charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/grammar.css" type="text/css" media="screen" title="no title"
+          charset="utf-8" />
+    <link rel="stylesheet" href="../../../css/parsing.css" type="text/css" media="screen" title="no title"
+          charset="utf-8" />
+    <link rel="stylesheet" href="../../../css/help.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/grammarEditor.css" type="text/css" />
+  </head>
 
-<body>
-  <!-- We now need to add some buttons related to grading the answer,
-        and showing the results. These buttons taken from FATester and
-        the functionality of them are located on the
-        ExerciseController JS file-->
-  <div id="container">
-    <h1 id="grammarexercise">Grammar Exercise</h1>
-    <button id="helpbutton"><img src="../../help.png" /></button>
-    <div id="help" title="Help" style="display:none">
-      <div id="helpInfo">
-        Help:
-        To delete, click on "Delete" and click on the row you want to delete.
-        To add, click on "Add Row" and click on any row to add a new row.
+  <body>
+    <!-- We now need to add some buttons related to grading the answer,
+         and showing the results. These buttons taken from FATester and
+         the functionality of them are located on the
+         ExerciseController JS file-->
+    <div id="container">
+      <h1 id="grammarexercise">Grammar Exercise</h1>
+      <button id="helpbutton"><img src="../../help.png" /></button>
+      <div id="help" title="Help" style="display:none">
+        <div id="helpInfo">
+          Help:
+          To delete, click on "Delete" and click on the row you want to delete.
+          To add, click on "Add Row" and click on any row to add a new row.
+        </div>
       </div>
-    </div>
-    <h2 id="question">Write a grammar for the following alphabet and
-    language: <span id="expression"></span></h2>
-    <h2 id="description"></h2>
-    <div id="dialogueoverlay"></div>
-    <div id="dialoguebox">
-      <div>
-        <div id="dialogueboxhead"></div>
-        <div id="dialogueboxbody"></div>
-        <div id="dialogueboxfoot"></div>
+      <h2 id="question">Write a grammar for the following alphabet and
+        language: <span id="expression"></span></h2>
+      <h2 id="description"></h2>
+      <div id="dialogueoverlay"></div>
+      <div id="dialoguebox">
+        <div>
+          <div id="dialogueboxhead"></div>
+          <div id="dialogueboxbody"></div>
+          <div id="dialogueboxfoot"></div>
+        </div>
       </div>
-    </div>
-    <p align="center" class="arrayPlace"></p>
-    <button type="button" id="editbutton">Edit Grammar</button>
-    <button type="button" id="addrowbutton">Add Row</button>
-    <button type="button" id="deletebutton">Delete Row</button>
-    <button type="button" class="function" id="identifybutton">Identify Grammar</button>
-    <div id="buttons" align="center">
-      <span id='mode'></span><br>
+      <p align="center" class="arrayPlace"></p>
+      <button type="button" id="editbutton">Edit Grammar</button>
+      <button type="button" id="addrowbutton">Add Row</button>
+      <button type="button" id="deletebutton">Delete Row</button>
+      <button type="button" class="function" id="identifybutton">Identify Grammar</button>
+      <div id="buttons" align="center">
+        <span id='mode'></span><br>
 
-      <p id="percentage"></p>
-      <table id="testResults"></table>
+        <p id="percentage"></p>
+        <table id="testResults"></table>
 
 
-      <div id="jsavcontainer">
-        <a class="jsavsettings" href="#">Settings</a>
-        <p align="center" class="jsavexercisecontrols"></p>
-        <p class="jsavscore"></p>
-        <p class="jsavoutput jsavline"></p>
+        <div id="jsavcontainer">
+          <a class="jsavsettings" href="#">Settings</a>
+          <p align="center" class="jsavexercisecontrols"></p>
+          <p class="jsavscore"></p>
+          <p class="jsavoutput jsavline"></p>
 
-      </div>
-      <div id="graph" class="jsavcanvas"></div>
-      <div id="files">
-        <input id="savefile" type="button" value="Save">
-        <input id="loadfile" type="file">
-        <div style='display: none;' id='download'></div>
+        </div>
+        <div id="graph" class="jsavcanvas"></div>
+        <div id="files">
+          <input id="savefile" type="button" value="Save">
+          <input id="loadfile" type="file">
+          <div style='display: none;' id='download'></div>
+        </div>
       </div>
     </div>
     <script src="../../exerController/TestCaseGenerater.js"></script>
@@ -92,6 +93,6 @@
     <script src="../../../../../DataStructures/FLA/Grading.js"></script>
     <script src="../../../grammarEditorPROF.js"></script>
     <script src="../../exerController/GrammarExerciseController.js"></script>
-</body>
+  </body>
 
 </html>

@@ -5,32 +5,36 @@
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 4,
-    "falseCounter": 3,
     "expression": "",
     "description": "Give a DFA that accepts the language over Σ ={a, b} of any even number of a’s and at least three b’s.",
     "type": "description",
     "testCases": [{
-            "bbb": true
+            "bbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbab": false
+            "bbab": false,
+            "ShowTestCase":true
         },
         {
-            "babb": false
+            "babb": false,
+            "ShowTestCase":true
         },
         {
-            "babab": true
+            "babab": true,
+            "ShowTestCase":true
         },
         {
-            "aabbb": true
+            "aabbb": true,
+            "ShowTestCase":true
         },
         {
-            "aabbbaab": true
+            "aabbbaab": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaabbb": false
+            "aaaaaaaaabbb": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

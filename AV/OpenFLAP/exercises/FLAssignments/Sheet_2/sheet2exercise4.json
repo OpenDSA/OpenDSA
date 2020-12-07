@@ -5,54 +5,64 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 10,
-    "falseCounter": 4,
-
-    "expression": "((ab)^+ba^*) + (b^*(ab)^*)",
-    "description": "Construct an NFA that accepts",
-    "type": "both",
+    "expression": "",
+    "description": "Construct an NFA that accepts L($((ab)^+ba^*) + (b^*(ab)^*)$).",
+    "type": "description",
     "testCases": [{
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "ba": false
+            "ba": false,
+            "ShowTestCase":true
         },
         {
-            "abababababba": true
+            "abababababba": true,
+            "ShowTestCase":true
         },
         {
-            "ababababab": true
+            "ababababab": true,
+            "ShowTestCase":true
         },
         {
-            "abba": true
+            "abba": true,
+            "ShowTestCase":true
         },
         {
-            "abbaaaaaaa": true
+            "abbaaaaaaa": true,
+            "ShowTestCase":true
         },
         {
-            "abb": true
+            "abb": true,
+            "ShowTestCase":true
         },
         {
-            "abababababab": true
+            "abababababab": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbbab": true
+            "bbbbbbbab": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaa": false
+            "aaaaaaaaa": false,
+            "ShowTestCase":true
         },
         {
-            "baa": false
+            "baa": false,
+            "ShowTestCase":true
         },
         {
-            "aab": false
+            "aab": false,
+            "ShowTestCase":true
         },
         {
-            "bab": true
+            "bab": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbb": true
+            "bbbbb": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

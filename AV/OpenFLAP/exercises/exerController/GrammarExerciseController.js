@@ -187,29 +187,55 @@ controllerProto.startTesting = function () {
       }); //pda = this.convertToPDA();
     else
       parser = this.buildDFAforLLG();
-    for (i = index; i < this.testCases.length; i++) {
-      var testNum = i + 1;
-      var testCase = this.testCases[i];
-      var input = Object.keys(testCase)[0];
-      var inputResult;
-      if (grammarType !== "LLG") {
-        //inputResult = pda.traverseOneInput(input);
-        parser.inputString = input;
-        inputResult = parser.stringAccepted()[0];
-      } else {
+      var wrongCounter = 0
+      var containHideTest = false;
+      var testCaseList = this.testCases;
+      for (i = index; i < this.testCases.length; i++) {
+        var hideOption = testCaseList[i].ShowTestCase
+        if (hideOption == false || hideOption== undefined) {
+          containHideTest = true;
+        }
+  
+        var testNum = i + 1;
+        var testCase = this.testCases[i];
+        var input = Object.keys(testCase)[0];
+        var inputResult;
+        if (grammarType !== "LLG") {
+          //inputResult = pda.traverseOneInput(input);
+          parser.inputString = input;
+          inputResult = parser.stringAccepted()[0];
+        } else {
+  
+          inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
+        }
+        var inputOrLambda = input === "" ? lambda : input;
+        if (inputResult === testCase[input]) {
+          if(testCaseList[i].ShowTestCase == true){
+          $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept" : "Reject") + "</td></tr>");
+          }
+          count++;
+          testRes.push('Test' + testNum + ':' + 'Correct');
+        } 
+        else {
+          if(testCaseList[i].ShowTestCase == true){
+          $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Accept" : "Reject") + "</td></tr>");
+          }
+          else{
+            wrongCounter = wrongCounter + 1;
+          }
+          testRes.push('Test' + testNum + ':' + 'Wrong');
 
-        inputResult = !FiniteAutomaton.willReject(parser, input.split("").reverse().join(""));
+        }
       }
-      var inputOrLambda = input === "" ? lambda : input;
-      if (inputResult === testCase[input]) {
-        $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='correct'>" + (inputResult ? "Accept" : "Reject") + "</td></tr>");
-        count++;
-        testRes.push('Test' + testNum + ':' + 'Correct');
-      } else {
-        $("#testResults").append("<tr><td>" + inputOrLambda + "</td><td>" + (testCase[input] ? "Accept" : "Reject") + "</td><td class='wrong'>" + (inputResult ? "Accept" : "Reject") + "</td></tr>");
-        testRes.push('Test' + testNum + ':' + 'Wrong');
+    
+      if(containHideTest){
+        if(wrongCounter == 0){
+          $("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" + "Accept"  + "</td><td class='correct'>" + "Pass" + "</td></tr>");
+        }
+        else{
+          $("#testResults").append("<tr><td>" + "Hidden Tests" + "</td><td>" +  "Reject" + "</td><td class='wrong'>" + "Fail" + "</td></tr>");
+        }
       }
-    }
     var exer = {};
     exer['Attempt' + tryC.toString()] = testRes;
     exer['studentSolution'] = this.serializeGrammar(); //this function is defined inside grammarEditor.js. It serializaes the current grammar
@@ -253,12 +279,30 @@ controllerProto.updateExercise = function (id) {
     $("#description").hide();
   } else {
     var text = exercise["description"];
-    if (text.indexOf('___') > 0) {
-      var parts = text.split("___");
-      text = parts[0] + " " + '<span id="expression2"></span>' + ' ' + parts[1];
-      $("#description").html(text);
-      $("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
-    } else
+    if (text.indexOf('$') >= 0) {
+      var parts = text.split("$");
+      for(var a= 0; a <parts.length;a++){
+        if(a == 0){
+          var expression = parts[a + 1];
+          text = parts[0] + " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[2];
+          $("#description").html(text);
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+        }
+        else{
+          var expression = parts[a];
+          if(a+2 == parts.length){
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ';
+          }
+          else{
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+2];
+          }
+          $("#description").append(text);
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+        }
+        a=a+2;
+      }
+    } 
+    else
       $("#description").text(text);
     $("#description").show();
     $("#question").hide();
@@ -278,6 +322,14 @@ controllerProto.updateExercise = function (id) {
     } else
       document.getElementById("graph").style.display = "initial";
     this.exerciseFA.layout();
+
+    var OStype = window.navigator.platform.toLowerCase();
+    if (OStype.indexOf('mac') > -1) {
+      this.exerciseFA.getSvg().canvas.style.position = "relative";
+    } else
+    this.exerciseFA.getSvg().canvas.style.position = "absolute";
+
+    
   } else
     document.getElementById("graph").style.display = "none";
 

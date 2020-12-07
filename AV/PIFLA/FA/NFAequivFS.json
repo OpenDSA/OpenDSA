@@ -1,0 +1,21 @@
+{
+  "translations": {
+    "en": {
+      "nfaex": {
+        "type": "multiple",
+        "description": "Consider this NFA.",
+        "question": "What language does this NFA accept?",
+        "answer": "Strings of alternating a's and b's that start with a.",
+        "choices": [
+          "Strings of alternating a's and b's that start with a.",
+          "Strings of alternating a's and b's that start with b.",
+          "Strings of a's and b's.",
+          "Strings of alternating a's and b's.",
+          "Strings of alternating a's and b's that start and end with a.",
+          "Strings of alternating a's and b's that start with a and end with b."
+        ]
+      }
+    }
+  }
+}
+

@@ -1,0 +1,149 @@
+{
+  "translations": {
+    "en": {
+      "noedge": {
+        "type": "multiple",
+        "description": "Consider the DFA below. Hopefully it is easy to see that this DFA accepts any string with one or more b followed by an a. It also happens to be an example of an incomplete DFA. This means it does not show every possible transition from every state. For example, it is missing a transition from state $q0$ on letter a. Not showing that transition helps us to focus on what matters, making the machine easier to understand.",
+        "question": "But, what should we do with a string that starts with an a? What interpretation of this situation would make the our descriptions most useful?",
+        "answer": "The string is not accepted",
+        "choices": [
+          "The machine crashes",
+          "The string is not accepted"
+        ],
+        "correctFeedback": "The rule is: If the machine must make a transition not in the diagram, then the string is not accepted. We have no concept with a DFA of a machine 'crashing', or even halting prematurely."
+      },
+      "whichstrings": {
+        "type": "select",
+        "description": "",
+        "question": "Which of the following strings will be accepted?",
+        "answer": [
+          "ba",
+          "bba"
+        ],
+        "choices": [
+          "a",
+          "b",
+          "ab",
+          "ba",
+          "bba"
+        ]
+      },
+      "complete": {
+        "type": "multiple",
+        "description": "A <b>complete</b> DFA has a transition for every alphabet in $\\Sigma$ for all states.",
+        "question": "[T/F] An incomplete DFA can be made complete by adding a trap state.",
+        "answer": [
+          "True"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ]
+      },
+      "delta": {
+        "type": "multiple",
+        "description": "Now we are going to build some notation to help us thing about the behavior of more complicated DFAs. As mentioned before, $\\delta$ is the transition function. $\\delta(qi,a)\\rightarrow qj$ means that when we are in state $qi$, if the machine sees letter $a$, it goes to state $qj$.",
+        "question": "What is $\\delta(q0, 1)$?",
+        "answer": [
+          "q2"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3"
+        ],
+        "correctFeedback": "Good, you remembered that. This is notation that we have seen before."
+      },
+      "string": {
+        "type": "multiple",
+        "description": "What if we want to know which state the DFA will be in if it starts at an arbitrary state with some string of letters, and processes them all?",
+        "question": "If this DFA begins in the state $q1$, which state will it go to after processing string 101?",
+        "answer": [
+          "q3"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "deltastar": {
+        "type": "multiple",
+        "description": "We use the notation $\\delta^*$ to indicate what happens when in a state and we process a string. The star means 'zero or more times'. So $\\delta^*$ means: apply the delta function ZERO or MORE times as needed to process the letters of the given string.",
+        "question": "What is the output type of the $\\delta^*$ function?",
+        "answer": "a state",
+        "choices": [
+          "a state",
+          "a string",
+          "a transition",
+          "'accept' or 'reject'"
+        ]
+      },
+      "deltapractice": {
+        "type": "multiple",
+        "description": "We use the notation $\\delta^*$ to indicate what happens when in a state and we process a string. The star means 'zero or more times'. So $\\delta^*$ means: apply the delta function ZERO or MORE times as needed to process the letters of the given string.",
+        "question": "What is $\\delta^*(q0, 11001)$?",
+        "answer": [
+          "q2"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "dpractice2": {
+        "type": "multiple",
+        "description": "Excellent. Let's do one more.",
+        "question": "What is $\\delta^*(q1, 01011)$",
+        "answer": [
+          "q2"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "lambda": {
+        "type": "multiple",
+        "description": "Remember that $\\lambda$ means the empty string. In other words, no letters to read. If this is the input, the the machine does not change state, it just stays put.",
+        "question": "What is $\\delta^*(q3, \\lambda)$?",
+        "answer": [
+          "q3"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "empty": {
+        "type": "multiple",
+        "description": "Let's think a bit more about the implications of empty strings.",
+        "question": "Can any DFA accept the empty string?",
+        "answer": "Yes",
+        "choices": [
+          "Yes",
+          "No"
+        ],
+        "correctFeedback": "Right, it can. If the start state is $s$, then we know that $\\delta^*(s, \\lambda) = s$. So, a DFA accepts the empty string if and only if the start state is also one of the final states."
+      },
+      "negate": {
+        "type": "multiple",
+        "description": "Recall that $L(M)$ means the language that machine $M$ accepts. Now, we can define $\\overline{L(M)}$ to mean the reverse: Its all the strings that $L(M)$ rejects. That is, if $M'$ is a machine that accepts all strings that $M$ rejects, and rejects all strings that $M$ accepts, then $L(M') = \\overline{L(M)}$.",
+        "question": "Is it hard to build $M'$ if we have machine $M$?",
+        "answer": "No, it is not hard at all.",
+        "choices": [
+          "Yes, it is quite hard.",
+          "No, it is not hard at all."
+        ]
+      }
+    }
+  }
+}

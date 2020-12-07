@@ -5,41 +5,48 @@
     "totalFalseCases": 2,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 8,
-    "falseCounter": 2,
     "expression": "",
     "description": "Give a regular expression whose language is strings over {a, b} in which the number of a’s is divisible by 3.",
     "type": "description",
     "testCases": [{
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbbbbbb": true
+            "bbbbbbbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "a": false
+            "a": false,
+            "ShowTestCase":true
         },
         {
-            "babab": false
+            "babab": false,
+            "ShowTestCase":true
         },
         {
-            "aaa": true
+            "aaa": true,
+            "ShowTestCase":true
         },
         {
-            "bbbaaa": true
+            "bbbaaa": true,
+            "ShowTestCase":true
         },
         {
-            "babaa": true
+            "babaa": true,
+            "ShowTestCase":true
         },
         {
-            "bababa": true
+            "bababa": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbbbb": true
+            "aaabbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaaaaaaaa": true
+            "aaaaaaaaaaaaaaa": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

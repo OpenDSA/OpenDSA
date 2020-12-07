@@ -5,23 +5,24 @@
     "totalFalseCases": 1,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 3,
-    "falseCounter": 1,
-    "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}",
-    "description": "",
-    "type": "expression",
+    "expression": "",
+    "description": "Write a grammar that generates the language: L( $\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}$)",
+    "type": "description",
     "testCases": [{
-            "b": true
+            "b": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "bab": true
+            "bab": true,
+            "ShowTestCase":true
         },
         {
-            "": false
+            "": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

@@ -67,7 +67,14 @@
     "Mathematical Background": {
       "PIFLA/SetNotation": {},
       "PIFLA/Relations": {},
-      "PIFLA/MathProof":{}
+      "Background/Proofs": {}
+    },
+    "Finite Acceptors": {
+      "PIFLA/DFA":{},
+      "PIFLA/DFAExercises": {},
+      "PIFLA/NFA":{},
+      "PIFLA/NFAExercises": {},
+      "PIFLA/DFAMinimization": {}
     },
     "Appendix": {
       "Glossary": {}

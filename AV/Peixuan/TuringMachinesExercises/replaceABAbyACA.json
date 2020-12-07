@@ -6,23 +6,28 @@
   "randomStringLength": [0, 15],
   "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
   "hardCodeCasesCounter": 5,
-  "expression": "\\Sigma = \\{a, b\\}",
-  "description": "Write a Turing machine that replace every substring aba with aca, where___",
+  "expression": "",
+  "description": "Write a Turing machine that replace every substring aba with aca, where $\\Sigma = \\{a, b\\}$",
   "type": "description",
   "testCases": [{
-      "aaaa": "aaaa"
+      "aaaa": "aaaa",
+      "ShowTestCase":true
     },
     {
-      "bbbb": "bbbb"
+      "bbbb": "bbbb",
+      "ShowTestCase":true
     },
     {
-      "aba": "aca"
+      "aba": "aca",
+      "ShowTestCase":true
     },
     {
-      "aababa": "aacaca"
+      "aababa": "aacaca",
+      "ShowTestCase":true
     },
     {
-      "abbaba": "abbaca"
+      "abbaba": "abbaca",
+      "ShowTestCase":true
     }
   ],
   "graph": {

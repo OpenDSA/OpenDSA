@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="FAEditor">
+		<meta name="author" content="Bill Yu">
+
+		<title>Regular Expression to NFA</title>
+    <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./css/tester.css" type="text/css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <h1 id="editor">Regular Expression to NFA</h1>
+      <div id="jsavcontainer">
+				<button id="nextStep">Do Step</button>
+				<button id="allSteps">Do All</button>
+                <button id="export">Export</button>
+                <button id="toRG">Convert to RG</button>
+        <p class="jsavoutput jsavline"></p>
+      </div>
+      <button id="layoutButton">Layout</button>
+
+      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+			<script src="../../lib/paper-core.min.js"></script>
+      <script src="../../lib/jquery.transit.js"></script>
+      <script src="../../lib/raphael.js"></script>
+      <script src="../../lib/dagre.min.js"></script>
+      <script src="../../lib/JSAV.js"></script>
+      <script src="../../lib/odsaUtils-min.js"></script>
+      <script src="../../lib/odsaAV-min.js"></script>
+      <script src="../../DataStructures/FLA/serializableGraph.js"></script>
+      <script src="../../lib/underscore.js"></script>
+      <!-- <script src="../../DataStructures/FLA/FA.js"></script> -->
+      <script src="./FAcopy.js"></script>
+      <script src="./CustomPrompt.js"></script>
+      <script src="../../DataStructures/FLA/Commands.js"></script>
+			<script src="../../DataStructures/FLA/Discretizer.js"></script>
+			<script src="../../DataStructures/FLA/REtoFAController.js"></script>
+			<script src="./REtoRG.js"></script>
+    </div>
+  </body>
+</html>

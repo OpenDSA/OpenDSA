@@ -5,48 +5,56 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 10],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 8,
-    "falseCounter": 4,
-
-    "expression": "a^mb^ia^n:i=m+n",
-    "description": "Construct a CFG over {a, b} whose language is {___}",
+    "expression": "",
+    "description": "Construct a CFG over {a, b} whose language is {$a^mb^ia^n:i=m+n$}",
     "type": "description",
     "testCases": [{
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "ba": true
+            "ba": true,
+            "ShowTestCase":true
         },
         {
-            "abba": true
+            "abba": true,
+            "ShowTestCase":true
         },
         {
-            "aaaabbbbba": true
+            "aaaabbbbba": true,
+            "ShowTestCase":true
         },
         {
-            "aa": false
+            "aa": false,
+            "ShowTestCase":true
         },
         {
-            "abbbbaaa": true
+            "abbbbaaa": true,
+            "ShowTestCase":true
         },
         {
-            "aba": false
+            "aba": false,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaaaa": false
+            "aaaaaaaaaaa": false,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbb": false
+            "bbbbbbb": false,
+            "ShowTestCase":true
         },
         {
-            "aaaabbbb": true
+            "aaaabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbaaaa": true
+            "bbbbaaaa": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

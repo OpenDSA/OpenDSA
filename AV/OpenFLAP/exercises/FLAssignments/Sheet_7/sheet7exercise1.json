@@ -5,44 +5,52 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b", "c"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 7,
-    "falseCounter": 4,
-    "expression": "\\{a^ic^jb^i \\mid i, j \\geq 0\\}",
-    "description": "Construct the PDA that accepts ",
-    "type": "both",
+    "expression": "",
+    "description": "Construct the PDA that accepts L($\\{a^ic^jb^i \\mid i, j \\geq 0\\}$)",
+    "type": "description",
     "testCases": [{
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "ccccc": true
+            "ccccc": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "aaaabbbb": true
+            "aaaabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaacccccccccccccbbb": true
+            "aaacccccccccccccbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaacbbbbbbbb": true
+            "aaaaaaaacbbbbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "accccccccccccccccb": true
+            "accccccccccccccccb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaa": false
+            "aaaaaaaaa": false,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbbbbbb": false
+            "bbbbbbbbbbb": false,
+            "ShowTestCase":true
         },
         {
-            "aaccbbbb": false
+            "aaccbbbb": false,
+            "ShowTestCase":true
         },
         {
-            "aaaccb": false
+            "aaaccb": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

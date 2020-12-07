@@ -197,92 +197,92 @@ for(domain in Window.UNIT_DB)
 
 Window.defaultDomains = {
     'length': {
-        'SI': 'metre',
-        'imperial': 'feet'
+        'SI': Window.UNIT_DB['length']['metre'],
+        'imperial': Window.UNIT_DB['length']['feet']
     },
     'length-1': {
-        'SI': 'metre-1',
-        'imperial': 'feet-1'
+        'SI': Window.UNIT_DB['length-1']['metre-1'],
+        'imperial': Window.UNIT_DB['length-1']['feet-1']
     },
     'length2': {
-        'SI': 'metre2',
-        'imperial': 'feet2'
+        'SI': Window.UNIT_DB['length2']['metre2'],
+        'imperial': Window.UNIT_DB['length2']['feet2']
     },
     'length-2': {
-        'SI': 'metre-2',
-        'imperial': 'feet-2'
+        'SI': Window.UNIT_DB['length-2']['metre-2'],
+        'imperial': Window.UNIT_DB['length-2']['feet-2']
     },
     'length3': {
-        'SI': 'metre3',
-        'imperial': 'feet3'
+        'SI': Window.UNIT_DB['length3']['metre3'],
+        'imperial': Window.UNIT_DB['length3']['feet3']
     },
     'length-3': {
-        'SI': 'metre-3',
-        'imperial': 'feet-3'
+        'SI': Window.UNIT_DB['length-3']['metre-3'],
+        'imperial': Window.UNIT_DB['length-3']['feet-3']
     },
     'length4': {
-        'SI': 'metre4',
-        'imperial': 'feet4'
+        'SI': Window.UNIT_DB['length4']['metre4'],
+        'imperial': Window.UNIT_DB['length4']['feet4']
     },
     'length-4': {
-        'SI': 'metre-4',
-        'imperial': 'feet-4'
+        'SI': Window.UNIT_DB['length-4']['metre-4'],
+        'imperial': Window.UNIT_DB['length-4']['feet-4']
     },
     'temperature': {
-        'SI': 'degree C',
-        'imperial': 'degree F'
+        'SI': Window.UNIT_DB['temperature']['degree C'],
+        'imperial': Window.UNIT_DB['temperature']['degree F']
     },
     'temperature-1': {
-        'SI': 'inv degree C',
-        'imperial': 'inv degree F'
+        'SI': Window.UNIT_DB['temperature-1']['inv degree C'],
+        'imperial': Window.UNIT_DB['temperature-1']['inv degree F']
     },
     'pressure': {
-        'SI': 'pascal',
-        'imperial': 'psi'
+        'SI': Window.UNIT_DB['pressure']['pascal'],
+        'imperial': Window.UNIT_DB['pressure']['psi']
     },
     'pressure-1': {
-        'SI': 'pascal-1',
-        'imperial': 'psi-1'
+        'SI': Window.UNIT_DB['pressure-1']['pascal-1'],
+        'imperial': Window.UNIT_DB['pressure-1']['psi-1']
     },
     'force': {
-        'SI': 'newton',
-        'imperial': 'poundforce'
+        'SI': Window.UNIT_DB['force']['newton'],
+        'imperial': Window.UNIT_DB['force']['poundforce']
     },
     'force-1': {
-        'SI': 'newton-1',
-        'imperial': 'poundforce-1'
+        'SI': Window.UNIT_DB['force-1']['newton-1'],
+        'imperial': Window.UNIT_DB['force-1']['poundforce-1']
     },
     'power': {
-        'SI': 'watt',
-        'imperial': 'horsepower'
+        'SI': Window.UNIT_DB['power']['watt'],
+        'imperial': Window.UNIT_DB['power']['horsepower']
     },
     'torque': {
-        'SI': 'newtonmetre',
-        'imperial': 'footpound'
+        'SI': Window.UNIT_DB['torque']['newtonmetre'],
+        'imperial': Window.UNIT_DB['torque']['footpound']
     },
     'angle': {
-        'SI': 'radian',
-        'imperial': 'degree'
+        'SI': Window.UNIT_DB['angle']['radian'],
+        'imperial': Window.UNIT_DB['angle']['degree']
     },
     'angle-1': {
-        'SI': 'radian-1',
-        'imperial': 'degree-1'
+        'SI': Window.UNIT_DB['angle-1']['radian-1'],
+        'imperial': Window.UNIT_DB['angle-1']['degree-1']
     },
     'angularvelocity': {
-        'SI': 'hertz',
-        'imperial': 'hertz'
+        'SI': Window.UNIT_DB['angularvelocity']['hertz'],
+        'imperial': Window.UNIT_DB['angularvelocity']['hertz']
     },
     'strain': {
-        'SI': 'strain',
-        'imperial': 'strain'
+        'SI': Window.UNIT_DB['strain']['strain'],
+        'imperial': Window.UNIT_DB['strain']['strain']
     },
     'strain-1': {
-        'SI': 'strain-1',
-        'imperial': 'strain-1'
+        'SI': Window.UNIT_DB['strain-1']['strain-1'],
+        'imperial': Window.UNIT_DB['strain-1']['strain-1'],
     },
     'dimensionless': {
-        'SI': '',
-        'imperial': ''
+        'SI': Window.UNIT_DB['dimensionless']['dimensionless'],
+        'imperial': Window.UNIT_DB['dimensionless']['dimensionless']
     }
     // '': {
     //     'SI': '',

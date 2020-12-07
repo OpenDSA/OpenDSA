@@ -5,32 +5,36 @@
     "totalFalseCases": 2,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 5,
-    "falseCounter": 2,
-    "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^{2n} \\mid n > 0\\}",
-    "description": "",
-    "type": "expression",
+    "expression": "",
+    "description": "Write a grammar that generates the language: L($\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^{2n} \\mid n > 0\\}$)",
+    "type": "description",
     "testCases": [{
-            "abb": true
+            "abb": true,
+            "ShowTestCase":true
         },
         {
-            "aabbbb": true
+            "aabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaabbbbbbbbbb": true
+            "aaaaabbbbbbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaabbbbbbbb": true
+            "aaaabbbbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbbbb": true
+            "aaabbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "bb": false
+            "bb": false,
+            "ShowTestCase":true
         },
         {
-            "aaaa": false
+            "aaaa": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

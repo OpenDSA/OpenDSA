@@ -21,10 +21,20 @@ Window.valueTruncate = function(numericValue) {
 }
 
 Window.valueStringRepr = function(numericValueString) {
+    // TODO: Replace all of this with solution at
+    // https://mathjs.org/docs/reference/functions/format.html
     var value = parseFloat(numericValueString);
-    if(Math.abs(value) == 0) return "0";
-    if(Math.abs(value) < 1e-3 || Math.abs(value) > 1e3) return value.toExponential(3);
-    else return Window.valueTruncate(value);
+    // return mathjs.format(value, {'notation': 'exponential', 'precision': 4})
+    // if(Math.abs(value) < 1e-3 || Math.abs(value) > 1e3) return value.toExponential(3);
+    // else return Window.valueTruncate(value);
+    if(value == 0) return String(value);
+    else if(Math.abs(value) < 1e-2 || Math.abs(value) > 1e3) 
+        return mathjs.format(value, {'notation': 'exponential', 'precision': 4})
+    else // value between 1 and 1000
+    {
+        if(value % 10 == 0) return String(value);
+        return mathjs.format(value, {'notation': 'auto', 'precision': 4})
+    }
 }
 
 Window.clearGlobalPointerReference = function() {
@@ -61,8 +71,9 @@ Window.clearGlobalPointerReference = function() {
         Window.globalPointerReference.currentClickedObject.element.visualComponent.element[0].classList.remove("selectedvalue");
     }
     else if(
-        Window.globalPointerReference.currentClickedObjectType == "var-box" &&
-        Window.globalPointerReference.currentClickedObjectDescription == "copy number"
+        Window.globalPointerReference.currentClickedObjectType == "var-box" 
+        // &&
+        // Window.globalPointerReference.currentClickedObjectDescription == "copy number"
     )
     {
         // console.log(Window.eqbank.currentSelectedEquationObject);
@@ -110,19 +121,22 @@ Window.showHelp = function(keyword, event) {
     else console.log(`HelpText for ${keyword} requested`);
 }
 
-Window.bodyClickPrompt = function() {
-    // Creating clickhandlers associated with the body to clear the globalPointerReference
-    document.body.addEventListener("click", e=> {
-        e.stopPropagation();
-        // console.log("Inside the body snatcher");
-        if(Window.showBlankPrompt) {
-            var messageBox = JSAV.utils.dialog("Add an equation from the bank to begin.", {modal: false, width: 100})
-            messageBox[0].style.top = e.pageY+5+"px";
-            messageBox[0].style.left = e.pageX+10+"px";
-            setTimeout(messageBox.close, 900)
+Window.lowestCommonUnit = function(unitListObject, domainKey) {
+    // Finding the default unit of the same domain as the unitList
+    let minUnit = Object.keys(unitListObject)[0];
+    let domain = domainKey;
+    // var domain = Window.unitDomainMap[minUnit][0];
+
+    // We can only proceed with comparisons if the domain exists in our maps
+    // and the domain is not dimensionless (unlike strain/angles/frequency)
+    if(domain in Window.defaultDomains && domain != "dimensionless")
+    {
+        for(var u in unitListObject)
+        {
+            if(mathjs.evaluate("1 "+u+" < 1 "+minUnit))
+                minUnit = u;
         }
-        else {
-            Window.clearGlobalPointerReference();
-        }
-    });
+    }
+    return minUnit;
+    // WORKS; TESTED
 }

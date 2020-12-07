@@ -1,34 +1,37 @@
 [{
   "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
   "exerciseType": "GRAMMAR",
-  "totalTrueCases": 5,
-  "totalFalseCases": 10,
+  "totalTrueCases": 3,
+  "totalFalseCases": 3,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-  "trueCounter": 3,
-  "falseCounter": 3,
-  "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}",
-  "description": "",
-  "type": "expression",
+  "expression": "",
+  "description": "Write a grammar for the following alphabet and language:$\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}$",
+  "type": "description",
   "testCases":
   [{
-    "ab": true
+    "ab": true,
+    "ShowTestCase":true
   },
    {
-     "aaabbb": true
+     "aaabbb": true,
+     "ShowTestCase":true
    },
    {
-     "bbbb": false
+     "bbbb": false,
+     "ShowTestCase":true
    },
    {
-     "abbbbbb": true
+     "abbbbbb": true,
+     "ShowTestCase":true
    },
    {
-     "aaaaaaab": false
+     "aaaaaaab": false,
+     "ShowTestCase":true
    },
    {
-     "bab": false
+     "bab": false,
+     "ShowTestCase":true
    }
   ],
   "solution":

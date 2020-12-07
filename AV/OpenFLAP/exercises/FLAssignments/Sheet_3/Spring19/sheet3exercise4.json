@@ -5,29 +5,32 @@
     "totalFalseCases": 2,
     "containLetters": ["1", "0"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 4,
-    "falseCounter": 2,
     "expression": "",
     "description": "Give a left-linear grammar for the following NFA",
     "type": "description",
     "testCases": [{
-            "left-linear": true
+            "left-linear": true,
+            "ShowTestCase":true
         },
         {
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "1": false
+            "1": false,
+            "ShowTestCase":true
         },
         {
-            "11111111111": false
+            "11111111111": false,
+            "ShowTestCase":true
         },
         {
-            "10": true
+            "10": true,
+            "ShowTestCase":true
         },
         {
-            "10101010101010": true
+            "10101010101010": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

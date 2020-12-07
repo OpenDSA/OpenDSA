@@ -1,0 +1,61 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "exerciseType": "DFA",
+  "totalTrueCases": 10,
+  "totalFalseCases": 10,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{\\mbox{strings that do not have three consecutive a`s}\\}",
+  "type": "expression",
+  "testCases": [
+    {
+      "bbbbbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aa": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbabb": true,
+      "ShowTestCase":true
+    },
+    {
+      "babbabbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbbbaabbbaabbaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbbbabababbbbbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "baabaaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aabbabababbababbababa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aabbabababbababbabaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaabababbababbabaa": false,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/no3a.jff"
+}]

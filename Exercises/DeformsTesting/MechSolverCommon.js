@@ -48,7 +48,7 @@ requirejs(["./mathjs.js"], function(){});
             // Creating one rectangle in the middle that allows scrolling through
             // the list of equations.
             Window.unitFamily = unitFamily; // Setting this here since resetting is not going to change this.
-		LTI_CANVAS_HEIGHT = ltiCanvasHeight;
+		    LTI_CANVAS_HEIGHT = ltiCanvasHeight;
             reset(exerciseId);
         },
         
@@ -77,11 +77,14 @@ requirejs(["./mathjs.js"], function(){});
             //console.log(equationDetails);
             var truthResults = [];
 
+            // Creating solution dump for logs
+            let solnEventText = {};
+
             for(var solnIndex=0; solnIndex<Object.keys(globalSolutionBoxes).length; solnIndex++)
             {
                 // feedBackText += "<h3>Question "+(solnIndex+1)+"</h3>";
                 var solnResults = { decision:false, description:{} };
-            
+
                 // // 1. Check if all the equations are present
                 // feedBackText += "<h4>Equations:</h4> <ul>";
                 // solnResults.description.allEqn = true;
@@ -147,11 +150,12 @@ requirejs(["./mathjs.js"], function(){});
                     }
                     else if(solution[solnIndex].type == "number")
                     {
-                        var solutionComparableValue = mathjs.evaluate(
-                            `number(
-                                ${globalSolutionBoxes[solnIndex].solution} ${globalSolutionBoxes[solnIndex].unit},
-                                ${solution[solnIndex].unit})`
-                            )
+                        if(solution[solnIndex].unit == "") var solutionComparableValue = globalSolutionBoxes[solnIndex].solution;
+                        else var solutionComparableValue = mathjs.evaluate(
+                                `number(
+                                    ${globalSolutionBoxes[solnIndex].solution} ${globalSolutionBoxes[solnIndex].unit},
+                                    ${solution[solnIndex].unit})`
+                                )
                         console.log(solutionComparableValue, solution[solnIndex].solution);
                         console.log(Math.abs(solutionComparableValue - solution[solnIndex].solution), 0.005 * solution[solnIndex].solution)
                         if(Math.abs((solutionComparableValue - solution[solnIndex].solution) / solution[solnIndex].solution) <= 0.005)
@@ -164,6 +168,11 @@ requirejs(["./mathjs.js"], function(){});
                 }
                 catch (exception) {
                     solnResults.decision = false;
+                }
+
+                solnEventText[solnIndex] = {
+                    "solution": globalSolutionBoxes[solnIndex].solution,
+                    "decision": solnResults.decision
                 }
 
                 // solnResults.decision = 
@@ -180,6 +189,11 @@ requirejs(["./mathjs.js"], function(){});
             // TODO: Weird exception error; not sure how.
 
             // truthResults.push({decision:true, description:{}});
+            // pushing event log
+            Window.jsavObject.logEvent({
+                "type": "deforms-submit-answer-check",
+                "desc": JSON.stringify(solnEventText)
+            })
             
             var dec = true;
             console.log(truthResults);
@@ -198,6 +212,21 @@ requirejs(["./mathjs.js"], function(){});
             return dec;
         }
     };
+
+    function bodyClickPrompt(e) {
+        // Creating clickhandlers associated with the body to clear the globalPointerReference
+        e.stopPropagation();
+        // console.log("Inside the body snatcher");
+        if(Window.showBlankPrompt) {
+            var messageBox = JSAV.utils.dialog("Add an equation from the bank to begin.", {modal: false, width: 100})
+            messageBox[0].style.top = e.pageY+5+"px";
+            messageBox[0].style.left = e.pageX+10+"px";
+            setTimeout(messageBox.close, 900)
+        }
+        else {
+            Window.clearGlobalPointerReference();
+        }
+    };
     
     function reset(exerciseId){
         // Clear the old JSAV canvas
@@ -211,17 +240,26 @@ requirejs(["./mathjs.js"], function(){});
         //     console.log(eventData);
         // }});
         Window.jsavObject = av;
-	if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
-		Window.updateExerciseWindowHeight = function(shiftAmount) {	
-			var minWindowHeight = LTI_CANVAS_HEIGHT;
-			var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
-			window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
-				Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
-		}
-	else Window.updateExerciseWindowHeight = function() {} ;
+        if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
+            Window.updateExerciseWindowHeight = function(shiftAmount) {	
+                var minWindowHeight = LTI_CANVAS_HEIGHT;
+                var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
+                // TODO:
+                // 
+                // in ODSAMOD.js, there is ltiIframeResize()
+                // Also, there is an eventer() which receives postMessage() calls from the exercise
+                // including, requests to resize the iframe container, which also resizes the
+                // canvas page by calling ltiIframeResize() inside it.
+                // 
+                // TODO: replace this line by passing the resized page height to window.parent.postMessage()
+                // 
+                // 
+                window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
+                    Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
+            }
+        else Window.updateExerciseWindowHeight = function() {} ;
         Window.eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
-        Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, 
-            Window.eqbank, globalPointerReference);
+        Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, Window.eqbank, globalPointerReference);
         Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, Window.wkspacelist);
         Window.exerciseId = exerciseId;
         Window.globalPointerReference = globalPointerReference;
@@ -234,15 +272,15 @@ requirejs(["./mathjs.js"], function(){});
         globalPointerReference.currentClickedObjectType = null;
         globalPointerReference.currentClickedObjectDescription = null;
 
-         $("body").on("jsav-log-event", function(event, eventData) {
-        //     console.log(eventData);
+        $("body").on("jsav-log-event", function(event, eventData) {
+            // console.log(eventData);
             if(window.parent.ODSA != undefined)
-	    console.log(window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc))
+	            window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc)
         });
         
         // Setting up value boxes for those inside the question body
         var selectableParameters = document.getElementsByClassName("param");
-        for (var index=0; index<selectableParameters.length; index++)
+        for (let index=0; index<selectableParameters.length; index++)
         {
             selectableParameters[index].addEventListener(
                 "click", function() {
@@ -262,9 +300,8 @@ requirejs(["./mathjs.js"], function(){});
                     //     globalPointerReference.currentClickedObject.unitDisplay);
                     globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
                     av.logEvent({
-                        type: "jsav-something",
-                        av: "SimpleProblemPPRO",
-                        desc: "example event log",
+                        type: "deforms-body-value-click",
+                        desc: globalPointerReference.currentClickedObject.element.dataset.value+" "+globalPointerReference.currentClickedObject.element.dataset.unit,
                     });
                 }
             )
@@ -275,7 +312,7 @@ requirejs(["./mathjs.js"], function(){});
 
         // Setting up solution boxes clickhandlers 
         var solutionSubmissionBoxes = document.getElementsByClassName("solution-box");
-        for (var index=0; index<solutionSubmissionBoxes.length; index++)
+        for (let index=0; index<solutionSubmissionBoxes.length; index++)
         {
             globalSolutionBoxes[index] = {"solution":null};
             solutionSubmissionBoxes[index].dataset.index = index;
@@ -388,9 +425,9 @@ requirejs(["./mathjs.js"], function(){});
         }
 
         // Creating list of usable variables
-        for(var i=0; i<26; i++)
+        for (let i=0; i<26; i++)
         {
-            for(var j=0; j<26; j++)
+            for(let j=0; j<26; j++)
             {
                 VARIABLE_ID_UNUSED.push(String.fromCharCode(97+i)+"_"+String.fromCharCode(97+j));
             }
@@ -410,11 +447,52 @@ requirejs(["./mathjs.js"], function(){});
         // Window.showHelp("general");
         // Window.tutorialSteps();
         
-	
-	// console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
         
-	// Body Clicks registered as directive message was included here, now delegated to utils.
-        Window.bodyClickPrompt();
+	    // console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
+        
+        // Adding a notifications div with scrollable part
+        let div_notifications = document.createElement("span");
+        // div_notifications.style["overflow-y"] = "auto";
+        div_notifications.classList.add("notification");
+        
+        let notifHead = document.createElement("div");
+        notifHead.style["max-height"] = "10%";
+        notifHead.innerHTML = "<h2 style='display: inline-block; padding-left: 10px; padding-right: 10px'>Notifications</h2>";
+        notifHead.style["border-bottom"] = "2px solid black";
+        div_notifications.appendChild(notifHead);
+
+        // optional button to show all the errors at once if so desired.
+        // let showAllErrorButton = document.createElement("input");
+        // showAllErrorButton.setAttribute("type", "button");
+        // showAllErrorButton.setAttribute("value", "show all errors");
+        // notifHead.appendChild(showAllErrorButton);
+        
+        let notifBody = document.createElement("div");
+        notifBody.style["max-height"] = "89%";
+        notifBody.style["overflow-y"] = "auto";
+        notifBody.setAttribute("id", "notifications");
+        div_notifications.appendChild(notifBody);
+
+        // DEBUG: adding sample notifications
+        // use divs with notifelement class
+        // for (let i=0; i<20; i++)
+        // {
+        //     let newelem = document.createElement("div")
+        //     newelem.innerHTML= "Notification";
+        //     newelem.classList.add('notifelement')
+        //     notifBody.appendChild(newelem);
+        // }
+        
+        // document.getElementById("DeformsSimpleProblemPPROp").insertBefore(
+        document.getElementById(exerciseId+"p").insertBefore(
+            div_notifications,
+            // document.getElementById("DeformsSimpleProblemPPRO")
+            document.getElementById(exerciseId)
+            );
+        
+        // Body Clicks registered as directive message was included here, now delegated to utils.
+        document.body.removeEventListener("click", bodyClickPrompt);
+        document.body.addEventListener("click", bodyClickPrompt);
     }
 
     window.mechSolverCommon = window.mechSolverCommon || mechSolverCommon;

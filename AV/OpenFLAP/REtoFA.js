@@ -73,15 +73,26 @@ var jsav,
 	  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
 	  //In our case, we will make this function show the test cases only.
 	  function modelSolution(modeljsav) {
+		var containHideTest = false;
+		var testNum = 1;
 		var testCases = exerciseController.tests[0]["testCases"];
 		var list = [["Test Number", "Test String", "Accept/Reject"]];
 		for (i = 0; i < testCases.length; i++) {
-		  var testNum = i + 1;
-		  var testCase = testCases[i];
+			var testCase = testCases[i];
+			var hideOption = testCase.ShowTestCase;
+			if (hideOption == false || hideOption== undefined) {
+				containHideTest = true;
+			}
+			if(testCase.ShowTestCase){
 		  var input = Object.keys(testCase)[0];
 		  //var inputResult = FiniteAutomaton.willReject(this.fa, input);
-		  list.push([testNum, input, testCase[input]]);
+			list.push([testNum, input, testCase[input]]);
+			testNum = testNum + 1;
+			}
 		}
+		if(containHideTest){
+      list.push([testNum, "Hidden Test", "Hidden Solution"]);
+    }
 		var model = modeljsav.ds.matrix(list);
 		//layoutTable(model);
 		modeljsav.displayInit();

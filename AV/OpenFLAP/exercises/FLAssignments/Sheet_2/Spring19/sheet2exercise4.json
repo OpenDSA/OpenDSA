@@ -5,41 +5,48 @@
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 5,
-    "falseCounter": 5,
-    "expression": "((ab)^*ba) + (b^*(ab)^+)",
-    "description": "Construct an NFA that accepts",
-    "type": "both",
+    "expression": "",
+    "description": "Construct an NFA that accepts L($((ab)^*ba) + (b^*(ab)^+)$)",
+    "type": "description",
     "testCases": [{
-            "ba": true
+            "ba": true,
+            "ShowTestCase":true
         },
         {
-            "abababababba": true
+            "abababababba": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "abababababab": true
+            "abababababab": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbbbbbbbbbbbbbbab": true
+            "bbbbbbbbbbbbbbbbbbbab": true,
+            "ShowTestCase":true
         },
         {
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaaaaaaa": false
+            "aaaaaaaaaaaaaa": false,
+            "ShowTestCase":true
         },
         {
-            "baa": false
+            "baa": false,
+            "ShowTestCase":true
         },
         {
-            "aab": false
+            "aab": false,
+            "ShowTestCase":true
         },
         {
-            "bbbbbbbbbbbbbbbbbb": false
+            "bbbbbbbbbbbbbbbbbb": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

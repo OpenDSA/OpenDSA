@@ -1,0 +1,210 @@
+{
+  "translations": {
+    "en": {
+      "nfadfa": {
+        "type": "multiple",
+        "description": "The fundamental difference between Non-Deterministic Finite Automata (NFA) and Deterministic Finite Automata (DFA) is that the NFA <b>may</b> have multiple edges coming out of a given node with the same symbol.",
+        "question": "Is every DFA an NFA?",
+        "answer": [
+          "Yes"
+        ],
+        "choices": [
+          "Yes",
+          "No"
+        ],
+        "correctFeedback": ["Just because an NFA is <b>permitted</b> to have a state in which there are choices on what to do when it sees a given letter, that does not mean that it <b>must</b> do that. So, every DFA is also an NFA. This will be important later."]
+      },
+      
+      "def": {
+        "type": "multiple",
+        "description": "Define a NFA as $(Q, \\Sigma, \\delta, Q_0, F)$ where <br />$Q$ is a finite set of states <br />$\\Sigma$ is the input alphabet (a finite set) <br />$\\delta: Q \\times(\\Sigma \\cup \\{\\lambda\\}) \\rightarrow 2^Q$ ($2^Q$ here means the power set of $Q$)<br />$Q_0$ is the intial state ($q_0 \\in Q$)  <br />$F \\subseteq Q$ is a set of final states. ",
+        "question": "What part of the definition for the NFA is different from definition for the DFA?",
+        "answer": [
+          "$\\delta$"
+        ],
+        "choices": [
+          "$Q$",
+          "$\\Sigma$",
+          "$F$",
+          "$Q_0$",
+          "$\\delta$",
+          "nothing"
+        ]
+      },
+      "multi": {
+        "type": "multiple",
+        "description": "While the result of $\\delta$ for the DFA is some state $q \\in Q$, the result of $\\delta$ for the NFA is any subset of Q",
+        "question": "The NFA can have a state with 2 transitions for the same input symbol.",
+        "answer": [
+          "True"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ]
+      },
+      "moretrans": {
+        "type": "multiple",
+        "description": "While the result of $\\delta$ for the DFA is some state $q \\in Q$, the result of $\\delta$ for the NFA is any subset of Q",
+        "question": "The NFA cannot have 3 or more transitions from a state using the same input alphabet.",
+        "answer": [
+          "False"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ]
+      },
+      "choices": {
+        "type": "multiple",
+        "description": "Non-deterministic means that it allows choices. From a state on input $b$, $\\delta$ might include transitions to more than one state.",
+        "question": "The NFA's state can always be determined.",
+        "answer": [
+          "False"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ],
+        "correctFeedback": ["Though it depends a little bit on what you mean by 'determined'. You can't know the single state that the machine will transition to in a given situation. But you can know the <b>set</b> of possible states that the machine could go to."]
+      },
+      "nfaexamp": {
+        "type": "select",
+        "description": "In the NFA below, there are two choices when the machine sees 'a' when it is in state q0. So, $\\delta(q0, a) = \\{q1, q2\\}$.",
+        "question": "What are the possible states to transition to when the machine is in q0 and sees the symbol 'a'?",
+        "answer": [
+          "q1",
+          "q2"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "the trap state (reject the string)"
+        ]
+      },
+      "badb": {
+        "type": "select",
+        "description": "In the NFA below, there are two choices when the machine sees 'a' when it is in state q0. So, $\\delta(q0, a) = \\{q1, q2\\}$.",
+        "question": "What are the possible states to transition to when the machine is in q0 and sees the symbol 'b'?",
+        "answer": [
+          "the trap state (reject the string)"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "the trap state (reject the string)"
+        ]
+      },
+      "lambda": {
+        "type": "multiple",
+        "description": "A $\\lambda$ transition is a 'free ride' to another state without any input.",
+        "question": "A $\\lambda$ transition does not consume a symbol when it moves to the new state.",
+        "answer": [
+          "True"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ]
+      },
+      "multilambda": {
+        "type": "multiple",
+        "description": "A $\\lambda$ transition is a 'free ride' to another state without any input.",
+        "question": "A $\\lambda$ transition cannot be immediately followed by another $\\lambda$ transition to yet another state.",
+        "answer": [
+          "False"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ],
+        "correctFeedback": ["Potentially, the machine might allow a whole series of 'free ride' $\\lambda$ transitions before the next symbol is processed."]
+      },
+      "starting": {
+        "type": "select",
+        "description": "A $\\lambda$ transition is a 'free ride' to another state without any input.",
+        "question": "Which state(s) might this NFA be in when it processes the first input symbol?",
+        "answer": [
+          "q0",
+          "q1",
+          "q2"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "the trap state (reject the string)"
+        ]
+      },
+      "firstletter": {
+        "type": "select",
+        "description": "A $\\lambda$ transition is a 'free ride' to another state without any input.",
+        "question": "Which state(s) can the NFA be in after processing the first letter of a string that starts with 'a'?",
+        "answer": [
+          "q3",
+          "q4"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "the trap state (reject the string)"
+        ]
+      },
+      "walk": {
+        "type": "select",
+        "description": "<b>Definition:</b> $q_j \\in \\delta^*(q_i, w)$ if and only if there exists some walk from $q_i$ to $q_j$ where $w$ is a string. Note that in this definition, while $w$ is a string, it is not necessarily the entire input to the machine. This definition just refers to states that can be reached from $q_i$ when processing $w$. And if $w$ is three symbols, then that means transitioning over (at least) three edges (one for each symbol, and maybe some $\\lambda$ transitions).",
+        "question": "What is $\\delta^*(q_0, ab)$?",
+        "answer": [
+          "q5",
+          "q6",
+          "q1"
+        ],
+        "choices": [
+          "q0",
+          "q1",
+          "q2",
+          "q3",
+          "q4",
+          "q5",
+          "q6",
+          "the trap state (reject the string)"
+        ]
+      },
+      "formalaccept": {
+        "type": "multiple",
+        "description": "We now have the notation and concepts that we need to provide a formal definition for the language of a NFA. For any NFA $M$,<br/>$L(M)= \\{w \\in {\\Sigma}^{*} \\mid \\delta^{*}(q_0,w) \\cap F \\neq \\emptyset \\}$ <br /> This means that the machine accepts all strings $w$ from the set of all possible strings (generated from the alphabet $\\Sigma$) such that some state reachable on $w$ from the start state ($q_0$) is a final state.",
+        "question": "When $w =ab$, how many accepting paths exist?",
+        "answer": [
+          "2"
+        ],
+        "choices": ["0", "1", "2","3", "4", "5", "6", "7", "8"]
+      },
+      "acceptreject": {
+        "type": "multiple",
+        "description": "The NFA tries every acceptable walk from the start state for the given input. From that set of possible paths, if any ends in a state that is final, then the NFA will ACCEPT the input. If that set is empty (not possible to make a path using this input), or those path(s) do not end in a final state, the NFA will REJECT.",
+        "question": "A NFA ACCEPTS when every possible walk for the input string ends in a final state.",
+        "answer": [
+          "False"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ],
+        "correctFeedback": ["Correct! If 10 possible walks exist, and only one ends in a final state, then the NFA will ACCEPT. It ignores all failure wals."]
+      }
+    }
+  }
+}

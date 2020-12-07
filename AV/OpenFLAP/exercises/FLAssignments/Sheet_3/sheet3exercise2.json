@@ -5,51 +5,60 @@
     "totalFalseCases": 2,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 11,
-    "falseCounter": 2,
-
     "expression": "",
     "description": "Give a regular expression whose language is strings over {a, b} in which there is no occurrence of the substring aa.",
     "type": "description",
     "testCases": [{
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaaaaaaa": false
+            "aaaaaaaaaaaa": false,
+            "ShowTestCase":true
         },
         {
-            "bbb": true
+            "bbb": true,
+            "ShowTestCase":true
         },
         {
-            "ababababb": true
+            "ababababb": true,
+            "ShowTestCase":true
         },
         {
-            "bbbb": true
+            "bbbb": true,
+            "ShowTestCase":true
         },
         {
-            "abb": true
+            "abb": true,
+            "ShowTestCase":true
         },
         {
-            "abababba": true
+            "abababba": true,
+            "ShowTestCase":true
         },
         {
-            "abbbba": true
+            "abbbba": true,
+            "ShowTestCase":true
         },
         {
-            "babbbba": true
+            "babbbba": true,
+            "ShowTestCase":true
         },
         {
-            "baaaa": false
+            "baaaa": false,
+            "ShowTestCase":true
         },
         {
-            "bbbba": true
+            "bbbba": true,
+            "ShowTestCase":true
         },
         {
-            "abbababbaba": true
+            "abbababbaba": true,
+            "ShowTestCase":true
         },
         {
-            "abbbab": true
+            "abbbab": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {
