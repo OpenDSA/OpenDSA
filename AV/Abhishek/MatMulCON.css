@@ -7,9 +7,11 @@
 }
 
 #MatMulCON .jsavtree .jsavnode {
+  /*font-size: 65%;*/
+  font-size: 0.41em;
   border-radius: 1px;
   text-align: center;
-  padding-right: 35px;
+  padding-right: 21px;
   width: 60px;
   line-height: 15px;
   color: white;

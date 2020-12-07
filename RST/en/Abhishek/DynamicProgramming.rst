@@ -387,6 +387,9 @@ cost of the algorithm is :math:`\Theta(nK)`.
    Otherwise, the table for the knapsack problem could have been
    reduced to a one dimensional array.
 
+Matrix Chain Multiplication 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. inlineav:: MatMulCON ss
    :links:   /AV/Abhishek/MatMulCON.css
    :scripts: /AV/Abhishek/MatMulCON.js
