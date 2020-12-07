@@ -43,52 +43,11 @@ var jsav,
 			controller.completeAll();
         });
         $('#toRG').click(function() {
-			new_fa = controller.completeAll();
-			//localStorage['convertNFA'] = true;
-    		//localStorage['toConvert'] = serialize(new_fa);
-			//var new_fa2 = new FiniteAutomaton(jsav);
-			//new_fa3 = convertToDFA(jsav, new_fa, {width: '45%', height: 440, layout: 'automatic'});
-			var variables = "SABCDEFGHIJKLMNOPQRTUVWXYZ";
-			var s = new_fa3.initial;
-			var newVariables = [s];
-			var nodes = new_fa3.nodes();
-			var arrow = String.fromCharCode(8594);
-			var converted = [];
-			// quit if the FA is too large for conversion
-			if (new_fa3.nodeCount() > 26) {
-			  window.alert('The FA must have at most 26 states to convert it into a grammar!');
-			  return;
-			}
-			for (var next = nodes.next(); next; next = nodes.next()) {
-			  if (!next.equals(s)) {
-				newVariables.push(next);
-			  }
-			}
-			var finals = [];
-			for (var i = 0; i < newVariables.length; i++) {
-			  var edges = newVariables[i].getOutgoing();
-			  for (var j = 0; j < edges.length; j++) {
-				var toVar = variables[newVariables.indexOf(edges[j].end())];
-				var weight = edges[j].weight().split("<br>");
-				for (var k = 0; k < weight.length; k++) {
-				  var terminal = weight[k];
-				  if (weight[k] === emptystring) {
-					terminal = "";
-				  }
-				  converted.push([variables[i], arrow, terminal + toVar]);
-				}
-			  }
-			  if (newVariables[i].hasClass('final')) {
-				finals.push([variables[i], arrow, emptystring]);
-			  }
-			}
-			converted = converted.concat(finals);
-			// save resulting grammar as an array of arrays of strings
-			// (same format as how the grammarEditor reads grammars)
-			localStorage.clear();
-			localStorage.setItem("grammar", JSON.stringify(converted));
-			// open grammar
-			window.open("./grammarEditor.html");
+			new_fa1 = controller.completeAll(); //NFA
+			localStorage['convertNFA'] = true;
+    		localStorage['toConvert'] = serialize(new_fa1);
+    		//window.open("./NFAtoDFA.html", "popupWindow", "width=830, height=800, scrollbars=yes");
+    		window.open("./NFAtoDFA.html");
         });
 		$('#layoutButton').click(function() {
 			controller.fa.layout();
