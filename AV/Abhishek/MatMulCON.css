@@ -1,3 +1,4 @@
+/*// Written by Abhishek Jha Fall 2020*/
 #MatMulCON {
   height: 410px
 }
@@ -8,7 +9,8 @@
 
 #MatMulCON .jsavtree .jsavnode {
   /*font-size: 65%;*/
-  font-size: 0.41em;
+  /*font-size: 0.41em; chrome is fixed but illegible? */
+  font-size: 0.70em
   border-radius: 1px;
   text-align: center;
   padding-right: 21px;

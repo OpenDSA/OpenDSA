@@ -1,4 +1,4 @@
-// Written by Abhishek Jha and Cliff Shaffer, Fall 2020
+// Written by Abhishek Jha Fall 2020
 $(document).ready(function() {
   "use strict";
   var av_name = "MatMulCON";

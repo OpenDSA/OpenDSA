@@ -388,7 +388,7 @@ cost of the algorithm is :math:`\Theta(nK)`.
    reduced to a one dimensional array.
 
 Matrix Chain Multiplication 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: MatMulCON ss
    :links:   /AV/Abhishek/MatMulCON.css
