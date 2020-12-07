@@ -111,6 +111,7 @@ class Variable{
                                     // Render the new symbol.
                                     this.grayOut();
                                 }
+                                Window.jsavObject.logEvent({type: "deforms-variable-empty-negate", desc: this.id})
 
                                 Window.clearGlobalPointerReference();
                                 // this.globalPointerReference.currentClickedObject = null;
@@ -247,6 +248,10 @@ class Variable{
                                         Window.box.close();
                                         this.adjustParentEquationVisuals();
                                         delete Window.box;
+
+                                        Window.jsavObject.logEvent({
+                                            type: "deforms-variable-enter-value", desc: this.id
+                                        })
                                     }
                                 );
                             }
@@ -345,6 +350,8 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
                                 this.adjustParentEquationVisuals();
+
+                                Window.jsavObject.logEvent({type: "deforms-variable-value-negate", desc: this.id})
                             }
                         );
                         element[0].childNodes[0].childNodes[1].addEventListener(
@@ -488,6 +495,8 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
                                 this.adjustParentEquationVisuals();
+
+                                Window.jsavObject.logEvent({type: "deforms-variable-assoc-separate-negate", desc: this.id})
                             }
                         );
                         element[0].childNodes[0].childNodes[1].addEventListener(
@@ -700,6 +709,11 @@ class Variable{
         // clickHandler for unit changes()
         this.unitChangeHandler = e => this.changeUnits(e, this);
         this.unitDisplay.addEventListener("click", this.unitChangeHandler);
+
+        // pushing event
+        Window.jsavObject.logEvent({type: "deforms-variable-add-value", desc: {
+            name: this.id, value: this.value, unit: this.currentUnit
+        }});
     }
     setValueUnit(value, unit)
     {
@@ -739,6 +753,8 @@ class Variable{
 
         Window.windowManager.shiftActiveEqUp(this.id);
 
+        // pushing event
+        Window.jsavObject.logEvent({type: "deforms-variable-remove-value", desc: this.id});
     }
     grayOut()
     {
@@ -775,6 +791,11 @@ class Variable{
         }
         this.parentSymbol = this.parentSymbolTemplate;
         this.grayOut();
+
+        // pushing event
+        Window.jsavObject.logEvent({type: "deforms-variable-change-name", desc: {
+            name: this.id, newName: this.parentSymbol
+        }});
     }
     getParentEquationId()
     {

@@ -41,6 +41,10 @@ class Association{
         targetObject.element.dataset.association = this.var;
 
         this.updateVarDisplay();        
+
+        Window.jsavObject.logEvent({type: "deforms-association-created", desc: {
+            name: this.var, source: sourceObject.currentSymbol, target: targetObject.currentSymbol
+        }});
     }
     setAssocVarDisplay(varname, subscript)
     {
@@ -76,6 +80,9 @@ class Association{
             tempElement.clear();
             this.variableObjects[variable].valueDisplay.dataset.status = "filled";   
         }
+        Window.jsavObject.logEvent({type: "deforms-association-name-changed", desc: {
+            name: this.var, newName: this.varDisplay
+        }});
     }
     addVariable(newVar)
     {
@@ -104,6 +111,10 @@ class Association{
                 this.domain = newVar.expectedDomain;
             }
         }
+
+        Window.jsavObject.logEvent({type: "deforms-association-added", desc: {
+            name: this.var, var: newVar.currentSymbol
+        }});
     }
     removeAssociation(obj)
     {
@@ -116,14 +127,25 @@ class Association{
             // console.log(this.variableObjects[obj.id]);
             this.variableObjects[obj.id].removeValue();
             this.variableObjects[obj.id].valueNegated = false; // resets the negation to none to avoid confusion.
+            
+            Window.jsavObject.logEvent({type: "deforms-association-removed", desc: {
+                name: this.var, var: this.variableObjects[obj.id].currentSymbol
+            }});
+
             delete this.variableObjects[obj.id].element.dataset.association;
             delete this.variableObjects[obj.id];
+            
             return;
         }
         for(var variable in this.variableObjects)
         {
             this.variableObjects[variable].removeValue();
             this.variableObjects[variable].valueNegated = false; // resets the negation to none to avoid confusion.
+
+            Window.jsavObject.logEvent({type: "deforms-association-deleted", desc: {
+                name: this.var, var: this.variableObjects[variable].currentSymbol
+            }});
+
             delete this.variableObjects[variable].element.dataset.association;
         }
     }

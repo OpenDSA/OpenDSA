@@ -77,11 +77,14 @@ requirejs(["./mathjs.js"], function(){});
             //console.log(equationDetails);
             var truthResults = [];
 
+            // Creating solution dump for logs
+            let solnEventText = {};
+
             for(var solnIndex=0; solnIndex<Object.keys(globalSolutionBoxes).length; solnIndex++)
             {
                 // feedBackText += "<h3>Question "+(solnIndex+1)+"</h3>";
                 var solnResults = { decision:false, description:{} };
-            
+
                 // // 1. Check if all the equations are present
                 // feedBackText += "<h4>Equations:</h4> <ul>";
                 // solnResults.description.allEqn = true;
@@ -167,6 +170,11 @@ requirejs(["./mathjs.js"], function(){});
                     solnResults.decision = false;
                 }
 
+                solnEventText[solnIndex] = {
+                    "solution": globalSolutionBoxes[solnIndex].solution,
+                    "decision": solnResults.decision
+                }
+
                 // solnResults.decision = 
                 // (solution[solnIndex].solution == globalSolutionBoxes[solnIndex]["solution"]) && 
                 // (solution[solnIndex].unit == globalSolutionBoxes[solnIndex]["unit"]);
@@ -181,6 +189,11 @@ requirejs(["./mathjs.js"], function(){});
             // TODO: Weird exception error; not sure how.
 
             // truthResults.push({decision:true, description:{}});
+            // pushing event log
+            Window.jsavObject.logEvent({
+                "type": "deforms-submit-answer-check",
+                "desc": JSON.stringify(solnEventText)
+            })
             
             var dec = true;
             console.log(truthResults);
@@ -287,9 +300,8 @@ requirejs(["./mathjs.js"], function(){});
                     //     globalPointerReference.currentClickedObject.unitDisplay);
                     globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
                     av.logEvent({
-                        type: "jsav-something",
-                        // av: "SimpleProblemPPRO",
-                        desc: "example event log",
+                        type: "deforms-body-value-click",
+                        desc: globalPointerReference.currentClickedObject.element.dataset.value+" "+globalPointerReference.currentClickedObject.element.dataset.unit,
                     });
                 }
             )
