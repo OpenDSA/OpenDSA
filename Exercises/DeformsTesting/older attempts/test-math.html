@@ -60,37 +60,45 @@
                     ]
         ) */
         
-        var soln = nerdamer.solveEquations(
-            [
-                "a_a=0.001",
-                "a_b=0.000023",
-                "a_d=0.8",
-                "a_a = a_b * a_c * a_d",
-                "b_a = a_a",
-                "b_a = 0.001 * b_b * 0.8"
-            ]
-        );
-        console.log(soln);
+        // var soln = nerdamer.solveEquations(
+        //     [
+        //         "a_a=0.001",
+        //         "a_b=0.000023",
+        //         "a_d=0.8",
+        //         "a_a = a_b * a_c * a_d",
+        //         "b_a = a_a",
+        //         "b_a = 0.001 * b_b * 0.8"
+        //     ]
+        // );
+        // console.log(soln);
 
-        var solnDict = {}
-        for(var i=0; i<soln.length; i++)
-            solnDict[soln[i][0]] = soln[i][1];
+        // var solnDict = {}
+        // for(var i=0; i<soln.length; i++)
+        //     solnDict[soln[i][0]] = soln[i][1];
         
-        console.log(solnDict);
+        // console.log(solnDict);
+
+        // var soln = nerdamer.solveEquations(
+        //     [
+        //         "b_x=25",
+        //         "a_c="+solnDict['a_c'],
+        //         "b_z=b_x+a_c"
+        //     ]
+        // )
+        // console.log(soln);
+
+        // var soln = nerdamer.solveEquations(
+        //     [
+        //         "b_z="+solnDict['a_c']+"+25",
+        //         "x=0+-b_z"
+        //     ]
+        // )
+        // console.log(soln);
 
         var soln = nerdamer.solveEquations(
             [
-                "b_x=25",
-                "a_c="+solnDict['a_c'],
-                "b_z=b_x+a_c"
-            ]
-        )
-        console.log(soln);
-
-        var soln = nerdamer.solveEquations(
-            [
-                "b_z="+solnDict['a_c']+"+25",
-                "x=0+-b_z"
+                "x+y=1",
+                "x-y=5"
             ]
         )
         console.log(soln);

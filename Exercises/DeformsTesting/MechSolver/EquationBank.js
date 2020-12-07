@@ -459,6 +459,11 @@ class EquationBank{
         }
         // this.equation_pages[pageName]["pagejsav"].show();
         this.lastPageShown = pageName;
+
+        Window.jsavObject.logEvent({
+            type: "deforms-view-palette-page",
+            desc: pageName
+        });
     }
     // selectEquation(jsavPageArray, index, eqb)
     // {

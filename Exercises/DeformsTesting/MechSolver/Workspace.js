@@ -132,8 +132,8 @@ class Workspace
         this.elements[3]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
-            this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
+            // this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
+            // this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
         });
         this.elements[3]["jsav"].element[0]
@@ -193,7 +193,6 @@ class Workspace
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
            this.solveEquations();
-           this.globalSectionObj.logEvent({type: "Solution"});
         });
         this.elements[5]["jsav"].element[0].setAttribute("title", "Click to solve the system of equations.");
 
@@ -216,6 +215,7 @@ class Workspace
         this.elements[6].jsav.element[0].addEventListener("click", e=> {
             e.stopPropagation();
             Window.showHelp("workspace", e);
+            Window.jsavObject.logEvent({type: "deforms-workspace-showhelp-clicked", desc: this.id});
         })
     }
     destroyBox()
@@ -489,6 +489,8 @@ class Workspace
                 if(variable.valueType == "association")
                     variable.value.removeAssociation(variable);
             }
+
+            Window.jsavObject.logEvent({type: "deforms-equation-remove", desc: this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].name});
         }
         Window.windowManager.shiftUp(this.id);
         Window.clearGlobalPointerReference();
@@ -753,6 +755,22 @@ class Workspace
         // This error check depends solely on the units of the "numbers" used, and is
         // indicated as a warning at [TODO].
         // description: {domain : {unit : Variable.id, ... }, ... }
+
+        // Create equation representation to push back
+        let solveSet = {};
+
+        for(var vindex in selectedEquations)
+        {
+            solveSet[vindex] = {};
+            solveSet[vindex]["name"] = selectedEquations[vindex].obj.name;
+            solveSet[vindex]["repr"] = selectedEquations[vindex].repr;
+        }
+
+        Window.jsavObject.logEvent({
+            type: "deforms-solve-started",
+            desc: JSON.stringify(solveSet)
+        })
+
         var globalUnitList = {};
 
         for(var eq in selectedEquations)
@@ -1672,18 +1690,25 @@ class Workspace
             if(Object.keys(globalUnitList[domain]).length > 1)
             {
                 errorFlag["warning"].push({
-                    "implicitUnitConversion": {
-                        "description":
-                        `Several quantities of the `+domain+
-                        ` domain were found in the system,<br>
-                        and not all of them had compatible units. Some implicit<br>
-                        unit conversion was performed to maintain consistency.<br>
-                        Please make note.\n`+JSON.stringify(globalUnitList[domain]),
-                        "minidescription" : `Some units were implicitly converted.`
-                    }
+                    "id" :"implicitUnitConversion", 
+                    // : {
+                    "description":
+                    `Several quantities of the `+domain+
+                    ` domain were found in the system,<br>
+                    and not all of them had compatible units. Some implicit<br>
+                    unit conversion was performed to maintain consistency.<br>
+                    Please make note.\n`+JSON.stringify(globalUnitList[domain]),
+                    "minidescription" : `Some units were implicitly converted.`
+                    // }
                 })
             }
         }
+
+        // pushing out errors if any to logevents here
+        this.globalSectionObj.logEvent({
+            type: "deforms-solve-errors",
+            desc: JSON.stringify(errorFlag)
+        })
 
         // Pushing out errors into Notifications right here
         let notifBody = document.getElementById("notifications");
@@ -1812,18 +1837,17 @@ class Workspace
             // console.log(JSON.stringify(errorFlag["warning"], null, 4))
             JSAV.utils.dialog(
                 `<h4>Warnings generated</h4>
-                This part is still in progress. Some warnings were generated<br>
+                Some warnings were generated<br>
                 that need attention.<br>
-                Please Press <b>Control+Shift+J</b> to bring up the console log,<br>
-                where the warnings are outlined in detail.<br>`, 
+                Please Look at the <b>Notifications</b> panel for more details.`, 
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
             
-            for(let werror in errorFlag["warning"])
+            for(let werror=0; werror<errorFlag["warning"].length; werror++)
             {
                 let newelem = document.createElement("div")
                 newelem.innerHTML= "warning: "+
-                errorFlag["warning"][werror]["minidescription"]+". Click here to see more.";;
+                errorFlag["warning"][werror]["minidescription"]+" Click here to see more.";;
                 newelem.classList.add('notifelement')
                 notifBody.appendChild(newelem);
 
@@ -1833,8 +1857,8 @@ class Workspace
                 "click", e=> {
                     e.stopPropagation();
                     JSAV.utils.dialog(
-                        `<h4>${errorFlag["error"]["global"][werror]["minidescription"]}</h4>
-                        ${errorFlag["error"]["global"][werror]["description"]}`, 
+                        `<h4>${errorFlag["warning"][werror]["minidescription"]}</h4>
+                        ${errorFlag["warning"][werror]["description"]}`, 
                         {width: 200, closeText: "OK"})[0].addEventListener("click", e2=>{
                         e2.stopPropagation()});
                 })
@@ -1929,6 +1953,11 @@ class Workspace
                 with step 1.<br>`, 
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
+            
+            this.globalSectionObj.logEvent({
+                type: "deforms-solver-engine-error",
+                desc: "Unexpected error during solving, check solveSet or debug"
+            })
             return;
         }
 
@@ -1965,6 +1994,10 @@ class Workspace
             }
             soln[listOfSolutions[i][0]] = quantity;
         }
+
+        // pushing out solutions to the database
+        let solutionSetLog = {};
+        
         // console.log(soln);
 
         // To do(?): insert a function that checks which unit in a domain has the cleanest
@@ -1998,7 +2031,14 @@ class Workspace
                 this.globalSectionObj,
                 this.globalPointerReference
             )
-            console.log(currSolution);
+            // console.log(currSolution);
+
+            // Creating log entry
+            solutionSetLog[unknownName] = {};
+            solutionSetLog[unknownName]["value"] = value;
+            solutionSetLog[unknownName]["unit"] = variableSet[unknownName]["solution"]["unit"];
+            solutionSetLog[unknownName]["variableDisplay"] = variableSet[unknownName]["solution"]["name"];
+            solutionSetLog[unknownName]["domain"] = variableSet[unknownName]["solution"]["domain"];
 
             this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
             this.solutionCounter++;
@@ -2010,6 +2050,12 @@ class Workspace
 
             Window.windowManager.shiftDown(null, this.id);
         }
+        
+        // Pushing log events
+        Window.jsavObject.logEvent({
+            type: "deforms-solve-solutions",
+            desc: JSON.stringify(solutionSetLog)
+        })
 
         // De-select selected equations, the list of selections will get cleared anyway.
         for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)

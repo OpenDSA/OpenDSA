@@ -106,6 +106,15 @@ class ValueBox{
                     this.valueDisplay = Window.valueStringRepr(this.value);
                     this.setValueUnit(this.valueDisplay,this.unitDisplay);
                     Window.clearGlobalPointerReference();
+
+                    Window.jsavObject.logEvent({
+                        type: "deforms-solutionbox-negated", 
+                        desc: {
+                            name: this.variable,
+                            value: this.value,
+                            unit: this.unit
+                        } 
+                    });
                 }
                 else {
                     this.globalPointerReference.currentClickedObject = this;
@@ -113,6 +122,15 @@ class ValueBox{
                     this.globalPointerReference.currentClickedObjectDescription = "solved-value";
                     this.globalPointerReference.currentClickedObject.element.visualComponent.element[0].classList.add("selectedvalue");
                     Window.showBlankPrompt = false;
+
+                    // Window.jsavObject.logEvent({
+                    //     type: "deforms-solutionbox-selected", 
+                    //     desc: {
+                    //         name: this.variable,
+                    //         value: this.value,
+                    //         unit: this.unit
+                    //     } 
+                    // });
                 }
             }
         )
