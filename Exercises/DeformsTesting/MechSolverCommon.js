@@ -171,7 +171,7 @@ requirejs(["./mathjs.js"], function(){});
                 }
 
                 solnEventText[solnIndex] = {
-                    "solution": globalSolutionBoxes[solnIndex].solution,
+                    "solution": globalSolutionBoxes[solnIndex].solution+" "+globalSolutionBoxes[solnIndex].unit,
                     "decision": solnResults.decision
                 }
 
