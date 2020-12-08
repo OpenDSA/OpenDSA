@@ -1,10 +1,10 @@
-FROM python:3.8
+FROM python:3.8-slim
 
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update -qq \
-    && apt-get install -y make vim lsof curl nodejs npm git-core \
+    && apt-get install -y make nodejs npm git-core \
     && apt-get upgrade -y \
     && npm install -g csslint jsonlint eslint uglify-js clean-css-cli
 
