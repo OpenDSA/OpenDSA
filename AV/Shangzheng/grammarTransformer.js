@@ -104,15 +104,15 @@ $(document).ready(function () {
             if (input === "" && col == 2) {
                 input = emptystring;
             }
-            if (input === "" && col === 0) {
-                alert('Invalid left-hand side.');
-                return
-            }
+            // if (input === "" && col === 0) {
+            //     alert('Invalid left-hand side.');
+            //     fi.remove();
+            //     return
+            // }
             if (col == 2 && _.find(arr, function (x) {
                 return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;
             })) {
                 alert('This production already exists.');
-                return
             }
             fi.remove();
             m.value(row, col, input);
@@ -268,6 +268,7 @@ $(document).ready(function () {
         }
         if (input === "" && col === 0) {
             alert('Invalid left-hand side.');
+            fi.remove();
             return;
         }
         if (col == 2 && _.find(arr, function (x) {
@@ -1978,6 +1979,7 @@ $(document).ready(function () {
         }), function (x) {
             return x.slice();
         });
+        $('#helpbutton').hide();
         var imgs = "Transfer the following grammars you inputted below from CTG to CNF:" + "<br>";
         console.log(productions[0][1]);
         for (var i = 0; i < productions.length; i++) {
@@ -1988,7 +1990,7 @@ $(document).ready(function () {
             }
 
         }
-        imgs = imgs + "Please click startTransform button to start this experience";
+        //imgs = imgs + "Please click startTransform button to start this experience";
         document.getElementById('editor').innerText = "Grammar Transform Exercise"
         document.getElementById('description').innerHTML = imgs;
         var strP = _.map(productions, function (x) {

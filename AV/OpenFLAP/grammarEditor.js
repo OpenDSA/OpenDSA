@@ -70,7 +70,7 @@ $(document).ready(function () {
     }
     var m2 = jsav.ds.matrix(arr, {style: "table"});
     // hide all of the empty rows
-    for (var i = lastRow + 1; i < arr.length; i++) {
+    for (var i = lastRow+1; i < arr.length; i++) {
       m2._arrays[i].hide();
     }
     layoutTable(m2, 2);
@@ -93,9 +93,10 @@ $(document).ready(function () {
       if (input === "" && col == 2) {
         input = emptystring;
       }
-      if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
-      }
+      // if (input === "" && col === 0) {
+      //   alert('Invalid left-hand side.');
+      //   return;
+      // }
       if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
         alert('This production already exists.');
       }
@@ -105,8 +106,11 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if(index === 0){
-        alert("Can't delete the last row");
+      if(index === 0 && arr.length == 1){
+        //alert("Can't delete the last row");
+        arr[index][0] = "";
+        arr[index][2] = "";
+        m = init();
         $('.jsavmatrix').addClass("editMode");
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("addrowMode");
@@ -257,6 +261,7 @@ $(document).ready(function () {
     }
     if (input === "" && col === 0) {
         alert('Invalid left-hand side.');
+        fi.remove();
         return;
     }
     if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
