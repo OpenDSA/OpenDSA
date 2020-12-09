@@ -173,13 +173,15 @@
           if (localStorage['empty'] === "true"){
 
           
-            if (currentStates[i].stack.length === 0){
+            if (currentStates[i].stack.length === 1){ //Should this be 1 and not 0?
               currentStates[i].state.addClass('accepted');
               localStorage['emptystackthing'] = currentStates[i].stack.length;
+              //localStorage['acceptedthing'] = 1;
             }
             else{
               currentStates[i].state.addClass('rejected');
               localStorage['emptystackthing'] = currentStates[i].stack.length;
+              //localStorage['rejectedthing'] = 0;
             }
           }
           else{
