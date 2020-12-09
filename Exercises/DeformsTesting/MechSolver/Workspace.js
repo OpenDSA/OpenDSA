@@ -132,8 +132,8 @@ class Workspace
         this.elements[3]["jsav"].element[0].addEventListener('click', e => {
             e.stopPropagation();
             // Add function call to equation addition here.
-            this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
-            this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
+            // this.globalSectionObj.logEvent({type: "adding new equation", id: this.name+"_"+
+            // this.globalEquationBank.currentSelectedEquationObject.eqobject["id"]+"_"+(this.equationCounter+1)});
             this.addNewEquation();
         });
         this.elements[3]["jsav"].element[0]
@@ -193,7 +193,6 @@ class Workspace
             e.stopPropagation();
            // Add function call to equation set solving and result propagation here.
            this.solveEquations();
-           this.globalSectionObj.logEvent({type: "Solution"});
         });
         this.elements[5]["jsav"].element[0].setAttribute("title", "Click to solve the system of equations.");
 
@@ -216,6 +215,7 @@ class Workspace
         this.elements[6].jsav.element[0].addEventListener("click", e=> {
             e.stopPropagation();
             Window.showHelp("workspace", e);
+            Window.jsavObject.logEvent({type: "deforms-workspace-showhelp-clicked", desc: this.id});
         })
     }
     destroyBox()
@@ -489,6 +489,8 @@ class Workspace
                 if(variable.valueType == "association")
                     variable.value.removeAssociation(variable);
             }
+
+            Window.jsavObject.logEvent({type: "deforms-equation-remove", desc: this.LIST_OF_EQUATIONS_IN_WORKSPACE[eq].name});
         }
         Window.windowManager.shiftUp(this.id);
         Window.clearGlobalPointerReference();
@@ -731,7 +733,8 @@ class Workspace
                 Try the following:<br>
                 1. See if the right equations were checked/selected <br>.
                 2. See if all the appropriate variable associations were made <br>.
-                3. See if any spaces are left blank that should have been filled otherwise.`
+                3. See if any spaces are left blank that should have been filled otherwise.`,
+                    "minidescription" : "The number of unknowns and equations are mismatched"
                 }
                 
             }
@@ -752,6 +755,22 @@ class Workspace
         // This error check depends solely on the units of the "numbers" used, and is
         // indicated as a warning at [TODO].
         // description: {domain : {unit : Variable.id, ... }, ... }
+
+        // Create equation representation to push back
+        let solveSet = {};
+
+        for(var vindex in selectedEquations)
+        {
+            solveSet[vindex] = {};
+            solveSet[vindex]["name"] = selectedEquations[vindex].obj.name;
+            solveSet[vindex]["repr"] = selectedEquations[vindex].repr;
+        }
+
+        Window.jsavObject.logEvent({
+            type: "deforms-solve-started",
+            desc: JSON.stringify(solveSet)
+        })
+
         var globalUnitList = {};
 
         for(var eq in selectedEquations)
@@ -783,7 +802,8 @@ class Workspace
                                 "wrongDomainNumber": {
                                     "description":
                                     `This position expected a value of a certain type, but<br>
-                                    received something else. Please re-check and try again.<br>`
+                                    received something else. Please re-check and try again.<br>`,
+                                    "minidescription" : "Please recheck units of value entered."
                                 }
                             }
                             continue;
@@ -1157,7 +1177,9 @@ class Workspace
                                 `While inferring units for variables and checking<br>
                                 for consistency, we found that this equation might<br>
                                 have variables which may even have multiple domains <br>
-                                defined for the same unknown. Please revise and retry.<br>`
+                                defined for the same unknown. Please revise and retry.<br>`,
+                                "minidescription" : `Conflicting domains for unknowns encountered.
+                                 Unit could not be determined.`
                             }
                         }
                         // Ignore further processing, and continue.
@@ -1207,7 +1229,7 @@ class Workspace
                             for(var u in unitList[resolvedDomain])
                             {
                                 variableSet[v][resolvedDomain]["unit"][u] = null;
-                                variableSet[v][resolvedDomain]["equation"].push(currActiveEqnObject);
+                                // variableSet[v][resolvedDomain]["equation"].push(currActiveEqnObject);
                             }
                         }
                     }
@@ -1382,7 +1404,9 @@ class Workspace
                                             `While inferring units for variables and checking<br>
                                             for consistency, we found that this equation might<br>
                                             have variables which have multiple domains <br>
-                                            defined for the same unknown. Please revise and retry.<br>`
+                                            defined for the same unknown. Please revise and retry.<br>`,
+                                            "minidescription" : `Conflicting domains for unknowns encountered.
+                                            Unit could not be determined.`
                                         }
                                     }
                                     skipProcessing = true;
@@ -1398,7 +1422,8 @@ class Workspace
                                 // (for now) only one unit in that domain, and domain == unit.
                                 // So, this will return one unit only.
                                 if(Object.keys(variableTermAssoc[vta][unitDomKey]).length > 1)
-                                    var unit = Window.lowestCommonUnit(variableTermAssoc[vta][unitDomKey]["unit"]);
+                                    var unit = Window.lowestCommonUnit(
+                                        variableTermAssoc[vta][unitDomKey]["unit"], unitDomKey);
                                 else var unit = Object.keys(variableTermAssoc[vta][unitDomKey])[0];
 
                                 subjectForm = subjectForm.replace(new RegExp(vta, 'g'), "1 "+unit);
@@ -1408,7 +1433,8 @@ class Workspace
                                 // Else, ignore it, since it wasn't converted in the first place.
 
                                 if(domain in Window.defaultDomains)
-                                    var baseUnitpart = Window.defaultDomains[unitDomKey][Window.unitFamily];
+                                    var baseUnitpart = 
+                                    Window.defaultDomains[unitDomKey][Window.unitFamily]["unit"];
                                 else
                                     var baseUnitpart = unit; // No conversion was done, just use the unit
                                 baseUnitSubjectForm = 
@@ -1476,7 +1502,9 @@ class Workspace
                                         `While inferring units for variables and checking<br>
                                         for consistency, we found that this equation might<br>
                                         have variables which have multiple domains <br>
-                                        defined for the same unknown. Please revise and retry.<br>`
+                                        defined for the same unknown. Please revise and retry.<br>`,
+                                        "minidescription" : `Conflicting domains for unknowns encountered.
+                                        Unit could not be determined.`
                                     }
                                 }
                                 skipProcessing = true;
@@ -1489,7 +1517,8 @@ class Workspace
 
                             // Check if there is >1 units, if so, choose
                             if(Object.keys(variableTermAssoc[vta][unitDomKey]).length > 1)
-                                var unit = Window.lowestCommonUnit(variableTermAssoc[vta][unitDomKey]);
+                                var unit = Window.lowestCommonUnit(
+                                    variableTermAssoc[vta][unitDomKey], unitDomKey);
                             else var unit = Object.keys(variableTermAssoc[vta][unitDomKey])[0];
 
                             subjectForm = subjectForm.replace(new RegExp(vta, 'g'),"1 "+unit);
@@ -1518,7 +1547,9 @@ class Workspace
                                         "description":
                                         `While checking for consistency, we found that this equation might<br>
                                         have variables whose domains are not consistent with<br>
-                                        each other. Please revise and retry.<br>`
+                                        each other. Please revise and retry.<br>`,
+                                        "minidescription" : `This equation might have variables whose 
+                                        domains are not consistent with each other.`
                                     }
                                 }
                                 console.log("Error here")
@@ -1594,7 +1625,9 @@ class Workspace
                         "description":
                         `While attempting to discern the units for the quantity,<br>
                         we noticed inconsistencies, such that the variable may<br>
-                        resolve to multiple domains. Please recheck and revise.<br>`
+                        resolve to multiple domains. Please recheck and revise.<br>`,
+                        "minidescription" : `Conflicting domains for unknowns encountered.
+                        Unit could not be determined.`
                     }
                 }
             }
@@ -1607,7 +1640,8 @@ class Workspace
                         `The units for this variable could not be resolved.<br>
                         Maybe the equations were setup in a way that creates<br>
                         non-linearity, or create unresolvable situations. Please<br>
-                        recheck and revise.<br>`
+                        recheck and revise.<br>`,
+                        "minidescription" : `Units of this unknown could not be resolved.`
                     }
                 }
             }
@@ -1615,8 +1649,9 @@ class Workspace
             {
                 var varObject = {};
                 varObject["domain"] = Object.keys(variableSet[v])[0];
-                varObject["unit"] = Window.lowestCommonUnit(variableSet[v][varObject["domain"]]["unit"])
-
+                varObject["unit"] = Window.lowestCommonUnit(
+                    variableSet[v][varObject["domain"]]["unit"], Object.keys(variableSet[v])[0]);
+                
                 if(!(varObject["domain"] in Window.UNIT_DB))
                 {
                     varObject["unitDisp"] = varObject["unit"];
@@ -1639,9 +1674,13 @@ class Workspace
             for(var u in solvableRepr["unknowns"])
                 if(u in variableSet)
                 {
-                    variableSet[u]["solution"]["name"] = solvableRepr["unknowns"][u];
+                    // if a solution exists, it will always be an object, with multiple parts.
+                    // assign the symbol for it here. Otherwise, it must have an error, which
+                    // is why there will be no object in here.
+                    if("solution" in variableSet[u])
+                        variableSet[u]["solution"]["name"] = solvableRepr["unknowns"][u];
                     if(u in errorFlag["error"])
-                        errorFlag["error"][u]["symbol"] = variableSet[u]["solution"]["name"];
+                        errorFlag["error"][u]["symbol"] = solvableRepr["unknowns"][u];
                 }
         }
 
@@ -1651,55 +1690,180 @@ class Workspace
             if(Object.keys(globalUnitList[domain]).length > 1)
             {
                 errorFlag["warning"].push({
-                    "implicitUnitConversion": {
-                        "description":
-                        `Several quantities of the `+domain+
-                        ` domain were found in the system,<br>
-                        and not all of them had compatible units. Some implicit<br>
-                        unit conversion was performed to maintain consistency.<br>
-                        Please make note.\n`+JSON.stringify(globalUnitList[domain])
-                    }
+                    "id" :"implicitUnitConversion", 
+                    // : {
+                    "description":
+                    `Several quantities of the `+domain+
+                    ` domain were found in the system,<br>
+                    and not all of them had compatible units. Some implicit<br>
+                    unit conversion was performed to maintain consistency.<br>
+                    Please make note.\n`+JSON.stringify(globalUnitList[domain]),
+                    "minidescription" : `Some units were implicitly converted.`
+                    // }
                 })
             }
         }
 
+        // pushing out errors if any to logevents here
+        this.globalSectionObj.logEvent({
+            type: "deforms-solve-errors",
+            desc: JSON.stringify(errorFlag)
+        })
+
+        // Pushing out errors into Notifications right here
+        let notifBody = document.getElementById("notifications");
+        notifBody.textContent = ""; // clearing the notification nodes and their events, sourced to these.
+        // removing all instances of notiferrorelement class
+        $(".notiferrorelement").removeClass("notiferrorelement");
+        
         // Checking errors in here, to show them on messages, and see if we should proceed at all or not
         if(
             Object.keys(errorFlag["error"]["global"]).length > 0 ||
             Object.keys(errorFlag["error"]).length > 1
         )
         {
-            console.log("ERRORS ARE DUMPED HERE, PLEASE NOTE");
-            console.log("======================================");
-            console.log(JSON.stringify(errorFlag["error"], null, 4))
+            // console.log("ERRORS ARE DUMPED HERE, PLEASE NOTE");
+            // console.log("======================================");
+            // console.log(JSON.stringify(errorFlag["error"], null, 4))
             JSAV.utils.dialog(
                 `<h4>Errors generated</h4>
-                This part is still in progress. Some errors have occurred<br>
+                Some errors have occurred<br>
                 that have deemed it impossible to correctly solve this system<br>
-                of equations. Please Press <b>Control+Shift+J</b> to bring up the console log,<br>
-                where the errors are outlined in detail.<br>
-                On Chrome, the errorFlag object would be dumped to the console<br>
-                which can be expanded to see the types of errors as required.<br>`, 
+                of equations. Please Look at the <b>Notifications</b> panel for more details.`, 
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
+
+            // New: populate lines in notification panel and set up clickhandlers here
+            for(let gerror in errorFlag["error"]["global"])
+            {
+                let newelem = document.createElement("div")
+                newelem.innerHTML= "global error: "
+                +errorFlag["error"]["global"][gerror]["minidescription"]+". Click here to see more.";
+                newelem.classList.add('notifelement')
+                notifBody.appendChild(newelem);
+
+                // add clickhandler to show dialog box containing detailed explanation for the error.
+                newelem.addEventListener(
+                "click", e=> {
+                    e.stopPropagation();
+                    JSAV.utils.dialog(
+                        `<h4>${errorFlag["error"]["global"][gerror]["minidescription"]}</h4>
+                        ${errorFlag["error"]["global"][gerror]["description"]}.`, 
+                        {width: 200, closeText: "OK"})[0].addEventListener("click", e2=>{
+                        e2.stopPropagation()});
+                })
+            }
+            for(let errorTag in errorFlag["error"])
+            {
+                if(errorTag == "global") continue;
+
+                for(let descTag in errorFlag["error"][errorTag])
+                {
+                    if(descTag == "symbol") continue;
+
+                    let newelem = document.createElement("div");
+                    if("symbol" in errorFlag["error"][errorTag])
+                    {
+                        newelem.innerHTML = 
+                        katex.renderToString(errorFlag["error"][errorTag]["symbol"])+": "+
+                        errorFlag["error"][errorTag][descTag]["minidescription"]+" Click here to see where.";
+
+                        // add clickhandler to highlight associations boxes once clicked, and deselect
+                        // these as soon as something else is clicked. This can be achieved by
+                        // adding a globalPointerContext, and removing it when something else is clicked.
+                        newelem.addEventListener(
+                        "click", e=> {
+                            e.stopPropagation();
+                            if(newelem.classList.contains("notiferrorelement"))
+                            {
+                                newelem.classList.remove("notiferrorelement");
+                                let list = document.querySelectorAll(
+                                    `span[data-association = '${errorTag}']`);
+                                if(list.length == 0) list = document.querySelectorAll(
+                                    `span[data-csymbol = '${errorTag}']`);
+                                for(let i=0; i<list.length; i++)
+                                    list[i].classList.remove("notiferrorelement");
+                            }
+                            else
+                            {
+                                // Don't automatically remove it on clicking elsewhere.
+                                // Keep this persistent.
+                                newelem.classList.add("notiferrorelement");
+                                let list = document.querySelectorAll(
+                                    `span[data-association = '${errorTag}']`);
+                                if(list.length == 0) list = document.querySelectorAll(
+                                    `span[data-csymbol = '${errorTag}']`);
+                                for(let i=0; i<list.length; i++)
+                                    list[i].classList.add("notiferrorelement");
+                            }
+                        })
+                    }
+                    else{
+                        let errorIndex = errorTag.split("_");
+                        errorIndex.splice(2,2);
+                        newelem.innerHTML= errorIndex.join(", ")
+                        +": "+errorFlag["error"][errorTag][descTag]["minidescription"]
+                        +" Click here to see where.";
+
+                        // add clickhandler to highlight equations and boxes once clicked, and deselect
+                        // these as soon as something else is clicked. This can be achieved by
+                        // adding a globalPointerContext, and removing it when something else is clicked.
+                        newelem.addEventListener(
+                        "click", e=> {
+                            e.stopPropagation();
+                            if(newelem.classList.contains("notiferrorelement"))
+                            {
+                                newelem.classList.remove("notiferrorelement");
+                                document.getElementById(errorTag).classList.remove("notiferrorelement");
+                            }
+                            else
+                            {
+                                newelem.classList.add("notiferrorelement");
+                                document.getElementById(errorTag).classList.add("notiferrorelement");
+                            }
+                        })
+                    }
+                    newelem.classList.add('notifelement')
+                    notifBody.appendChild(newelem);
+                }
+            }
+
             return;
         }
         if(errorFlag["warning"].length > 0)
         {
-            console.log("WARNINGS ARE DUMPED HERE, PLEASE NOTE");
-            console.log("======================================");
-            console.log(JSON.stringify(errorFlag["warning"], null, 4))
+            // console.log("WARNINGS ARE DUMPED HERE, PLEASE NOTE");
+            // console.log("======================================");
+            // console.log(JSON.stringify(errorFlag["warning"], null, 4))
             JSAV.utils.dialog(
                 `<h4>Warnings generated</h4>
-                This part is still in progress. Some warnings were generated<br>
+                Some warnings were generated<br>
                 that need attention.<br>
-                Please Press <b>Control+Shift+J</b> to bring up the console log,<br>
-                where the warnings are outlined in detail.<br>`, 
+                Please Look at the <b>Notifications</b> panel for more details.`, 
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
-        }
+            
+            for(let werror=0; werror<errorFlag["warning"].length; werror++)
+            {
+                let newelem = document.createElement("div")
+                newelem.innerHTML= "warning: "+
+                errorFlag["warning"][werror]["minidescription"]+" Click here to see more.";;
+                newelem.classList.add('notifelement')
+                notifBody.appendChild(newelem);
 
-        
+                // create clickhandler to show the error dialog when clicked
+                // also, default pop-out the warning first.
+                newelem.addEventListener(
+                "click", e=> {
+                    e.stopPropagation();
+                    JSAV.utils.dialog(
+                        `<h4>${errorFlag["warning"][werror]["minidescription"]}</h4>
+                        ${errorFlag["warning"][werror]["description"]}`, 
+                        {width: 200, closeText: "OK"})[0].addEventListener("click", e2=>{
+                        e2.stopPropagation()});
+                })
+            }
+        }
 
         // =========================================================================================
         // EXPLICIT ERROR CHECKING ENDS HERE
@@ -1789,6 +1953,11 @@ class Workspace
                 with step 1.<br>`, 
                 {width: 200, closeText: "OK"})[0].addEventListener("click", e=>{
                 e.stopPropagation()});
+            
+            this.globalSectionObj.logEvent({
+                type: "deforms-solver-engine-error",
+                desc: "Unexpected error during solving, check solveSet or debug"
+            })
             return;
         }
 
@@ -1825,6 +1994,10 @@ class Workspace
             }
             soln[listOfSolutions[i][0]] = quantity;
         }
+
+        // pushing out solutions to the database
+        let solutionSetLog = {};
+        
         // console.log(soln);
 
         // To do(?): insert a function that checks which unit in a domain has the cleanest
@@ -1858,7 +2031,14 @@ class Workspace
                 this.globalSectionObj,
                 this.globalPointerReference
             )
-            console.log(currSolution);
+            // console.log(currSolution);
+
+            // Creating log entry
+            solutionSetLog[unknownName] = {};
+            solutionSetLog[unknownName]["value"] = value;
+            solutionSetLog[unknownName]["unit"] = variableSet[unknownName]["solution"]["unit"];
+            solutionSetLog[unknownName]["variableDisplay"] = variableSet[unknownName]["solution"]["name"];
+            solutionSetLog[unknownName]["domain"] = variableSet[unknownName]["solution"]["domain"];
 
             this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
             this.solutionCounter++;
@@ -1870,6 +2050,12 @@ class Workspace
 
             Window.windowManager.shiftDown(null, this.id);
         }
+        
+        // Pushing log events
+        Window.jsavObject.logEvent({
+            type: "deforms-solve-solutions",
+            desc: JSON.stringify(solutionSetLog)
+        })
 
         // De-select selected equations, the list of selections will get cleared anyway.
         for(var index in this.LIST_OF_EQUATIONS_IN_WORKSPACE)

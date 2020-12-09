@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Convert NFA to DFA test</title>
+			<link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+			<link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+			<link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+			<link rel="stylesheet" href="./css/FA.css" type="text/css" />
+			<link rel="stylesheet" href="./css/tester.css" type="text/css" />
+			<link rel="stylesheet" href="./css/NFAtoDFA.css" type="text/css" />
+
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		    <!-- add icon_button library -->
+		    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		    <!-- PDF save link -->
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js" integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous"></script>
+		    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/cupertino/jquery-ui.css" />
+		<style>
+			#av {
+      			text-align: center;
+			}
+			p.jsavoutput.jsavline {
+				height: 10px;
+			}
+			.jsavcanvas{
+				width: 45% !important;
+				height: 445px !important;
+			}
+    		.jsavgraph {
+    			display: inline-block;
+    		}
+    		#editable .jsavnode { cursor: pointer;}
+    		#editable .jsavedge { 
+    			cursor: pointer;
+    			stroke-width: 2;	/*can change to make edges easier to click */
+    		}
+    		#conversionButton {
+    			display: none;
+    		}
+    		.jsavmodelanswer {
+    			text-align: center;
+    		}
+		</style>
+	</head>
+	<body>
+
+		<div id="container">
+		<div id="av">
+			<div style="display:inline;">
+		        <div style="float: right;" id="menu_options">
+	        	  <button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>
+		          <!--<button id="not_implemented" class="icon_btn" title="Expand Group on (T)erminal"><i class="fa fa-joomla"></i></button>
+		          <button id="not_implemented" class="icon_btn" title="Expand State"><i class="fa fa-share-alt"></i></button>-->
+		          <button type="button" id="completeButton">Complete</button>
+				  <button type="button" id="checkDone">Done?</button>
+				  <button type="button" id="exportButton">Export</button>
+		        </div>
+				<p class="jsavoutput jsavline"></p>
+		        <div style="float: left;">
+		          <table class="headerTable" style="font-size: 12px; border-style: hidden;">
+		            <tr>
+		                <td style="display: -webkit-box;border:  hidden;margin-top: 5px;">
+		                 <div class="dropdown" style="height: 20px !important;">
+		                  <button type="button" data-toggle="dropdown">File
+		                  <span class="caret"></span></button>
+		                  <ul class="dropdown-menu">
+		                    <li><a href="#" class="functionality" id="saveButton">Save Machine</a></li>
+		                    <li><a href="#" class="functionality" id="savePDF">Save as Jpeg</a></li>
+		                    <li><a href="#" id="new">
+		                    <label id="getFileLabel" for="loadFile" style="display: inline-block;height: 50%; width: 100%">Load File</label>
+		                    <input type="file" id="loadFile" style=" display: none;" /></a></li>
+		                  </ul>
+
+		                </div>
+
+		                <button class="functionality" id="begin">Input</button>
+		                <div class="dropdown" style="height: 20px !important; width: 73px;">
+		                  <button type="button" data-toggle="dropdown">Convert
+		                  <span class="caret"></span></button>
+		                  <ul class="dropdown-menu">
+
+		                    <li><a href="#" class="functionality" id="toDFAButton">Convert to DFA</a></li>
+		                    
+		                    <li><a href="#" class="functionality" id="minimizeButton">Minimize DFA</a></li>
+		                    
+		                    <li><a href="#" class="functionality" id="toRLGButton" title="convert to Right Linear Grammar">Convert to RLG</a></li>
+		                    
+		                    <li><a href="#" class="functionality" id="toREButton" title="convert to Regular Expression">Convert To RE</a></li>
+						   
+		                  </ul>
+		                  
+		                </div> 
+		             
+		              </td>
+		            </tr>
+		          </table>
+		        </div>
+		      </div>
+		    <br>
+		    <br>
+			<hr style="margin-top: 0px; border-top: 1px solid #333; margin-bottom: 0px;">
+			
+			<div id="graphs">
+				<div id="reference" class="jsavcanvas"></div>
+				<div id="editable" class="jsavcanvas"></div>
+				<div id="answer" class="jsavcanvas"></div>
+			</div>
+		</div>
+		<div align="right">
+			<span id='mode'></span>
+			<button type="button" id="conversionButton">Continue expanding</button>
+			<!-- <button type="button" id="removenodesbutton" class="editButton">Remove nodes</button> -->
+		</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="../../lib/jquery.transit.js"></script>
+		<script src="../../lib/raphael.js"></script>
+		<script src="../../lib/dagre.min.js"></script>
+		<script src="../../lib/JSAV.js"></script>
+		<script src="../../lib/odsaUtils-min.js"></script>
+		<script src="../../lib/odsaAV-min.js"></script>
+		<script src="../../DataStructures/FLA/serializableGraph.js"></script>
+		<script src="../../lib/underscore.js"></script>
+		<script src="../../DataStructures/FLA/FA.js"></script>
+		<script src="./NFAtoDFA.js"></script>
+   	</body>
+  </html>

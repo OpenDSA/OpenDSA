@@ -121,10 +121,11 @@ Window.showHelp = function(keyword, event) {
     else console.log(`HelpText for ${keyword} requested`);
 }
 
-Window.lowestCommonUnit = function(unitListObject) {
+Window.lowestCommonUnit = function(unitListObject, domainKey) {
     // Finding the default unit of the same domain as the unitList
-    var minUnit = Object.keys(unitListObject)[0];
-    var domain = Window.unitDomainMap[minUnit][0];
+    let minUnit = Object.keys(unitListObject)[0];
+    let domain = domainKey;
+    // var domain = Window.unitDomainMap[minUnit][0];
 
     // We can only proceed with comparisons if the domain exists in our maps
     // and the domain is not dimensionless (unlike strain/angles/frequency)

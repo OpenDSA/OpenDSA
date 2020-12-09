@@ -6,5 +6,5 @@
 
 Grammar editor
 --------------
-.. avembed:: AV/Shangzheng/grammarEditor.html ae
-   :long_name: grammar editor
+.. avembed:: AV/Shangzheng/grammarTransformer.html ae
+   :long_name: grammar transformer

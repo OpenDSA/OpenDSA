@@ -3,7 +3,7 @@
     "en": {
       "nfadfa": {
         "type": "multiple",
-        "description": "The fundamental difference between Non-Deterministic Finite Automata (NFA) and Deterministic Finite Automata (DFA) is that a NFA <b>may</b> have multiple edges coming out of a given node with the same symbol.",
+        "description": "The fundamental difference between Non-Deterministic Finite Automata (NFA) and Deterministic Finite Automata (DFA) is that the NFA <b>may</b> have multiple edges coming out of a given node with the same symbol.",
         "question": "Is every DFA an NFA?",
         "answer": [
           "Yes"
@@ -34,7 +34,7 @@
       "multi": {
         "type": "multiple",
         "description": "While the result of $\\delta$ for the DFA is some state $q \\in Q$, the result of $\\delta$ for the NFA is any subset of Q",
-        "question": "A NFA can have a state with 2 transitions for the same input symbol.",
+        "question": "The NFA can have a state with 2 transitions for the same input symbol.",
         "answer": [
           "True"
         ],
@@ -46,7 +46,7 @@
       "moretrans": {
         "type": "multiple",
         "description": "While the result of $\\delta$ for the DFA is some state $q \\in Q$, the result of $\\delta$ for the NFA is any subset of Q",
-        "question": "A NFA cannot have 3 or more transitions from a state using the same input alphabet.",
+        "question": "The NFA cannot have 3 or more transitions from a state using the same input alphabet.",
         "answer": [
           "False"
         ],
@@ -58,7 +58,7 @@
       "choices": {
         "type": "multiple",
         "description": "Non-deterministic means that it allows choices. From a state on input $b$, $\\delta$ might include transitions to more than one state.",
-        "question": "A NFA's state can always be determined.",
+        "question": "The NFA's state can always be determined.",
         "answer": [
           "False"
         ],
@@ -186,16 +186,11 @@
       "formalaccept": {
         "type": "multiple",
         "description": "We now have the notation and concepts that we need to provide a formal definition for the language of a NFA. For any NFA $M$,<br/>$L(M)= \\{w \\in {\\Sigma}^{*} \\mid \\delta^{*}(q_0,w) \\cap F \\neq \\emptyset \\}$ <br /> This means that the machine accepts all strings $w$ from the set of all possible strings (generated from the alphabet $\\Sigma$) such that some state reachable on $w$ from the start state ($q_0$) is a final state.",
-        "question": "For this NFA and $w =ab$, how many accepting paths exist?",
+        "question": "When $w =ab$, how many accepting paths exist?",
         "answer": [
           "2"
         ],
-        "choices": [
-          "0",
-          "1",
-          "2",
-          "3"
-        ]
+        "choices": ["0", "1", "2","3", "4", "5", "6", "7", "8"]
       },
       "acceptreject": {
         "type": "multiple",

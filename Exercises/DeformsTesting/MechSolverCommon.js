@@ -77,11 +77,14 @@ requirejs(["./mathjs.js"], function(){});
             //console.log(equationDetails);
             var truthResults = [];
 
+            // Creating solution dump for logs
+            let solnEventText = {};
+
             for(var solnIndex=0; solnIndex<Object.keys(globalSolutionBoxes).length; solnIndex++)
             {
                 // feedBackText += "<h3>Question "+(solnIndex+1)+"</h3>";
                 var solnResults = { decision:false, description:{} };
-            
+
                 // // 1. Check if all the equations are present
                 // feedBackText += "<h4>Equations:</h4> <ul>";
                 // solnResults.description.allEqn = true;
@@ -167,6 +170,11 @@ requirejs(["./mathjs.js"], function(){});
                     solnResults.decision = false;
                 }
 
+                solnEventText[solnIndex] = {
+                    "solution": globalSolutionBoxes[solnIndex].solution+" "+globalSolutionBoxes[solnIndex].unit,
+                    "decision": solnResults.decision
+                }
+
                 // solnResults.decision = 
                 // (solution[solnIndex].solution == globalSolutionBoxes[solnIndex]["solution"]) && 
                 // (solution[solnIndex].unit == globalSolutionBoxes[solnIndex]["unit"]);
@@ -181,6 +189,11 @@ requirejs(["./mathjs.js"], function(){});
             // TODO: Weird exception error; not sure how.
 
             // truthResults.push({decision:true, description:{}});
+            // pushing event log
+            Window.jsavObject.logEvent({
+                "type": "deforms-submit-answer-check",
+                "desc": JSON.stringify(solnEventText)
+            })
             
             var dec = true;
             console.log(truthResults);
@@ -262,7 +275,7 @@ requirejs(["./mathjs.js"], function(){});
         $("body").on("jsav-log-event", function(event, eventData) {
             // console.log(eventData);
             if(window.parent.ODSA != undefined)
-	        console.log(window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc))
+	            window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc)
         });
         
         // Setting up value boxes for those inside the question body
@@ -287,9 +300,8 @@ requirejs(["./mathjs.js"], function(){});
                     //     globalPointerReference.currentClickedObject.unitDisplay);
                     globalPointerReference.currentClickedObject.element.classList.add("selectedvalue");
                     av.logEvent({
-                        type: "jsav-something",
-                        av: "SimpleProblemPPRO",
-                        desc: "example event log",
+                        type: "deforms-body-value-click",
+                        desc: globalPointerReference.currentClickedObject.element.dataset.value+" "+globalPointerReference.currentClickedObject.element.dataset.unit,
                     });
                 }
             )
@@ -439,41 +451,44 @@ requirejs(["./mathjs.js"], function(){});
 	    // console.log(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height)
         
         // Adding a notifications div with scrollable part
-        // let div_notifications = document.createElement("span");
-        // // div_notifications.style["overflow-y"] = "auto";
-        // div_notifications.setAttribute("id", "notification");
-        // div_notifications.classList.add("notification");
+        let div_notifications = document.createElement("span");
+        // div_notifications.style["overflow-y"] = "auto";
+        div_notifications.classList.add("notification");
         
-        // let notifHead = document.createElement("div");
-        // notifHead.style["max-height"] = "10%";
-        // notifHead.innerHTML = "<h2 style='display: inline-block; padding-left: 10px; padding-right: 10px'>Notifications</h2>";
-        // notifHead.style["border-bottom"] = "2px solid black";
-        // div_notifications.appendChild(notifHead);
+        let notifHead = document.createElement("div");
+        notifHead.style["max-height"] = "10%";
+        notifHead.innerHTML = "<h2 style='display: inline-block; padding-left: 10px; padding-right: 10px'>Notifications</h2>";
+        notifHead.style["border-bottom"] = "2px solid black";
+        div_notifications.appendChild(notifHead);
 
+        // optional button to show all the errors at once if so desired.
         // let showAllErrorButton = document.createElement("input");
         // showAllErrorButton.setAttribute("type", "button");
         // showAllErrorButton.setAttribute("value", "show all errors");
         // notifHead.appendChild(showAllErrorButton);
         
-        // let notifBody = document.createElement("div");
-        // notifBody.style["max-height"] = "89%";
-        // notifBody.style["overflow-y"] = "auto";
-        // div_notifications.appendChild(notifBody);
+        let notifBody = document.createElement("div");
+        notifBody.style["max-height"] = "89%";
+        notifBody.style["overflow-y"] = "auto";
+        notifBody.setAttribute("id", "notifications");
+        div_notifications.appendChild(notifBody);
 
-        // // DEBUG: adding sample notifications
-        // // use divs with notifelement class
-        // // for (let i=0; i<20; i++)
-        // // {
-        // //     let newelem = document.createElement("div")
-        // //     newelem.innerHTML= "Notification";
-        // //     newelem.classList.add('notifelement')
-        // //     notifBody.appendChild(newelem);
-        // // }
+        // DEBUG: adding sample notifications
+        // use divs with notifelement class
+        // for (let i=0; i<20; i++)
+        // {
+        //     let newelem = document.createElement("div")
+        //     newelem.innerHTML= "Notification";
+        //     newelem.classList.add('notifelement')
+        //     notifBody.appendChild(newelem);
+        // }
         
         // document.getElementById("DeformsSimpleProblemPPROp").insertBefore(
-        //     div_notifications,
-        //     document.getElementById("DeformsSimpleProblemPPRO")
-        //     );
+        document.getElementById(exerciseId+"p").insertBefore(
+            div_notifications,
+            // document.getElementById("DeformsSimpleProblemPPRO")
+            document.getElementById(exerciseId)
+            );
         
         // Body Clicks registered as directive message was included here, now delegated to utils.
         document.body.removeEventListener("click", bodyClickPrompt);

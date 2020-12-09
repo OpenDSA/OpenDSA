@@ -7,7 +7,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("Here we define an NFA, and get some understanding about its limitations.");
+  av.umsg("Here we give a formal definition for Nondeterministic Finite Automata (NFA), and gain some understanding about their limitations.");
   av.displayInit();
 
   // Frame 2

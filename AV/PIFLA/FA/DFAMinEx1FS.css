@@ -1,0 +1,90 @@
+#DFAminEx1FS {
+}
+
+#DFAminEx1FS .jsavoutput.jsavline {
+  height: 30px;
+}
+
+#DFAminEx1FS .jsavnode.jsavtreenode {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  max-width: 500px;
+  min-height: 0;
+  max-height: 700px;
+}
+
+.start {
+  font-style: italic;
+  font-weight: bold;
+}
+.final {
+  border: 3px double;
+}
+.testingND {
+  background-color: blue;
+}
+.current {
+  background-color: yellow;
+}
+.accepted {
+  background-color: green;
+}
+.rejected {
+  background-color: red;
+}
+
+.jsavstatelabel {
+  font-size: 1em;
+  z-index: 700;
+  position: absolute;
+  display: inline-block;
+  margin: 0;
+}
+.jsavmooreoutput {
+  font-size: 1em;
+  z-index: 700;
+  position: absolute;
+  display: inline-block;
+  margin: 0;
+}
+
+.jsavnode {
+  cursor: pointer;
+}
+.jsavedge {
+  cursor: pointer;
+  stroke: black;
+  stroke-width: 1;
+}
+.testingLambda {
+  color: red;
+  stroke-width: 3;
+  stroke: red;
+}
+.testingShorthand {
+  stroke-width: 3;
+  stroke: orange;
+}
+.edgeSelect {
+  stroke-width: 3;
+}
+.jsavedgelabel {
+  cursor: pointer;
+  font-size: 1.0em;
+}
+.jsavarray .jsavindex {
+  width: 200px;
+  max-width: 1000px;
+}
+
+.jsavgraph .jsavedge {
+  stroke-width: 2.0px !important;
+}
+.new {
+  display: inline !important;
+  border: none !important;
+}
+.jsavcontrols {
+  display: unset !important;
+}

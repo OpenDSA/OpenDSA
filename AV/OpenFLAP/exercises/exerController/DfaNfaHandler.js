@@ -13,10 +13,14 @@ function findAlledgesFromOneNode(xmlDoc, id) {
   var counter = 0;
   while ($(xmlDoc).find('transition').children()[counter] != undefined) {
     var from = $(xmlDoc).find('transition').children()[counter].firstChild.data;
-    var to = $(xmlDoc).find('transition').children()[counter + 1].firstChild
-      .data;
-    var read = $(xmlDoc).find('transition').children()[counter + 2].firstChild
-      .data;
+    var to = $(xmlDoc).find('transition').children()[counter + 1].firstChild.data;
+    var read = $(xmlDoc).find('transition').children()[counter + 2].firstChild;
+    
+    if(!read){
+      read = "";
+    }else{
+      read = read.data;
+    }
     if (from == id) {
       packagelist.push(from);
       packagelist.push(to);

@@ -1,4 +1,4 @@
-// Written by Abhishek Jha and Cliff Shaffer, Fall 2020
+// Written by Abhishek Jha Fall 2020
 $(document).ready(function() {
   "use strict";
   var av_name = "MatMulCON";
@@ -67,8 +67,8 @@ $(document).ready(function() {
   val = "C(DE)" + "<br>" + "54" ;
   multree.root().child(1).child(0).value(val);
 
-  multree.root().child(1).addChild("(CD)E)");
-  val = "(CD)E)" + "<br>" + "100" ;
+  multree.root().child(1).addChild("(CD)E");
+  val = "(CD)E" + "<br>" + "100" ;
   multree.root().child(1).child(1).value(val);
   multree.layout();
   av.step();
