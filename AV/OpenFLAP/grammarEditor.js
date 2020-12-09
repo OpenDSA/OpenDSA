@@ -106,11 +106,11 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if(index === 0 && arr.length == 1){
-        //alert("Can't delete the last row");
-        arr[index][0] = "";
-        arr[index][2] = "";
-        m = init();
+      if(index === 0){
+        alert("Can't delete the last row");
+        // arr[index][0] = "";
+        // arr[index][2] = "";
+        // m = init();
         $('.jsavmatrix').addClass("editMode");
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("addrowMode");
