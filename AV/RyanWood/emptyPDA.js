@@ -582,7 +582,7 @@
       }
     }
     jsavArray.css(0, {"width":"auto"});
-    jsavArray.css(0, {"max-width": "1000px"});
+    //jsavArray.css(0, {"max-width": "1000px"}); remove this and make sure it doesn't affect the width
     jsavArray.click(arrayClickHandler);
     jsavArray.show();
   };
