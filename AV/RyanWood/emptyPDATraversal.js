@@ -173,20 +173,20 @@
           if (localStorage['empty'] === "true"){
 
           
-            if (currentStates[i].stack.length === 1){ //Should this be 1 and not 0?
+            if (currentStates[i].stack.length === 1){ //Check stack length 
               currentStates[i].state.addClass('accepted');
-              localStorage['emptystackthing'] = currentStates[i].stack.length;
-              //localStorage['acceptedthing'] = 1;
+              //localStorage['emptystackthing'] = currentStates[i].stack.length;
+              //localStorage['acceptedthing'] = 1; Used to check if the string is getting accepted or rejected
             }
             else{
               currentStates[i].state.addClass('rejected');
-              localStorage['emptystackthing'] = currentStates[i].stack.length;
+              //localStorage['emptystackthing'] = currentStates[i].stack.length;
               //localStorage['rejectedthing'] = 0;
             }
           }
           else{
             if (currentStates[i].state.hasClass('final')) {
-              currentStates[i].state.addClass('accepted') //This is the problematic place for traversal. Check local storage for ['empty'] to see if it should check for accepted or not. If it can't see local, find out where it can and move it from there
+              currentStates[i].state.addClass('accepted') 
             } else {
               currentStates[i].state.addClass('rejected')
             }

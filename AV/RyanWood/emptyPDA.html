@@ -10,19 +10,35 @@
   <meta name="author" content="Brannon Angers and Nick Eda">
 
   <title>PDA Editor</title>
+
+  <!--These are the edited links that are used for empty stack pda acceptance. Until a more permanent solution is found, these should be used and modified based on where the work on this is being done.
+  The original set of links are commented out below for future use. If needed, comment out this section. 
+  -->
   <link rel="stylesheet" href="./emptyJSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-  <!--link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" /> <original line-->
   <link rel="stylesheet" href="./emptyOdsaStyle-min.css" type="text/css" />  
   <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/customPrompt.css" type="text/css">
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/tester.css" type="text/css">
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/FA.css" type="text/css">
+  <link rel="stylesheet" href="../../AV/OpenFLAP/css/multiRun.css" type="text/css">
+  <!--link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" /> <original line-->
+  <!--link rel="stylesheet" href="./css/tester.css" type="text/css" /--> <!-- original line-->
   <!--link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" /-->
   <!--link rel="stylesheet" href="./css/customPrompt.css" type="text/css" /--> <!--original line-->
-  <link rel="stylesheet" href="../../AV/OpenFLAP/css/customPrompt.css" type="text/css">
-  <!--link rel="stylesheet" href="./css/tester.css" type="text/css" /--> <!-- original line-->
-  <link rel="stylesheet" href="../../AV/OpenFLAP/css/tester.css" type="text/css">
   <!--link rel="stylesheet" href="./css/FA.css" type="text/css" /--> <!--original line-->
-  <link rel="stylesheet" href="../../AV/OpenFLAP/css/FA.css" type="text/css">
   <!--link rel="stylesheet" href="./css/multiRun.css" type="text/css" /--> <!--original line-->
-  <link rel="stylesheet" href="../../AV/OpenFLAP/css/multiRun.css" type="text/css">
+
+
+  <!--
+    This is the original set of links. Comment out the above set of links to look at the PDA editor without the empty stack modifications 
+  <link rel="stylesheet" href="./emptyJSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+  <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" /> <original line>
+  <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" /> 
+  <link rel="stylesheet" href="./css/tester.css" type="text/css" /> 
+  <link rel="stylesheet" href="./css/FA.css" type="text/css" /> 
+  <link rel="stylesheet" href="./css/multiRun.css" type="text/css" /> 
+  -->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -236,7 +252,10 @@
     <div id="multiRun"></div>
 
 
-    <!-- The lines below have been modified to deal with my files being in a different location. The commented line is paired with the one below it-->
+    <!-- The lines below have been modified to deal with my files being in a different location. The commented line is paired with the one below it
+    If needed, uncomment the original lines and comment out the new ones but doing so will remove empty stack acceptance. Once fully implemented, the lines
+    marked as original can be removed
+    -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="../../lib/jquery.transit.js"></script>
