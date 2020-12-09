@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: opendsa:latest
+    image: opendsa/opendsa:latest
     command: ["./scripts/start.sh"]
     volumes:
       - .:/opendsa
