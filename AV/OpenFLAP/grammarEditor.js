@@ -106,11 +106,11 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if(index === 0){
-        alert("Can't delete the last row");
-        // arr[index][0] = "";
-        // arr[index][2] = "";
-        // m = init();
+      if(index === 0 && lastRow === 0){
+        //alert("Can't delete the last row");
+        arr[index][0] = "";
+        arr[index][2] = "";
+        m = init();
         $('.jsavmatrix').addClass("editMode");
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("addrowMode");
@@ -128,15 +128,22 @@ $(document).ready(function () {
           arr.splice(index, 1);
           lastRow--;
           deleteTimes++;
+          arr.push(["",arrow,""]);
           m = init();
         }
       } else {
         arr.splice(index, 1);
         lastRow--;
-        deleteTimes++
+        deleteTimes++;
+        arr.push(["",arrow,""]);
         m = init();
 
       }
+      for(var i = lastRow + 1; i < arr.length; i++) {
+        arr[i][0] = '';
+        arr[i][2] = '';
+      }
+      m = init();
       $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
       // ignore if the user clicked an arrow
@@ -1391,6 +1398,7 @@ $(document).ready(function () {
     jsav.umsg('Deleting');
   };
   var addrowMode = function(){
+
     if (lastRow === arr.length - 1 || lastRow === arr.length) {
       var l = arr.length;
       for (var i = 0; i < l; i++) {
