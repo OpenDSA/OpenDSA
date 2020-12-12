@@ -267,7 +267,7 @@ $(document).ready(function () {
             input = emptystring;
         }
         if (input === "" && col === 0) {
-            alert('Invalid left-hand side.');
+            //alert('Invalid left-hand side.');
             fi.remove();
             return;
         }
@@ -984,7 +984,8 @@ $(document).ready(function () {
     }
 
     function toUnitProductionStep() {
-
+        document.getElementById('helpInfo').innerHTML = "Help:\n The highlighted produciton is unit produciton.\n Click the \'build dependency graph\' " +
+            "button to set up the relationship of Variables.\n You can choose build the graph manually or automaticlly.";
         jsav.umsg("removing highlighted unit productions needs to build the dependency graph for the grammar");
         for (var i = 0; i < dsArray.length; i++) {
             if (dsArray[i].value(2).length === 1 && variables.indexOf(dsArray[i].value(2)) !== -1) {
@@ -1477,6 +1478,8 @@ $(document).ready(function () {
     }
 
     function toUselessProduction() {
+        document.getElementById('helpInfo').innerHTML = "Help:\n The highlighted produciton is useless produciton.\n Click the \'build dependency graph\' " +
+            "button to set up the relationship of Variables.\n You can choose build the graph manually or automaticlly.";
         jsav.umsg("Next Step is to build the dependency graph for the grammar using the highlighted productions");
         if (modelDFA != null) {
             modelDFA.clear();
@@ -1612,6 +1615,7 @@ $(document).ready(function () {
     }
 
     function toChomskyForm() {
+        document.getElementById('helpInfo').innerHTML = "Help:\n Click the button to start to convert.";
         jsav.umsg("Next Step is converting the grammar to  Chomsky Form");
         if (typeof modelDFA != "undefined") {
             modelDFA.hide();
@@ -1622,18 +1626,6 @@ $(document).ready(function () {
         }
         $('#toChomskyForm').hide();
         $('#ChangeToChomsky').show();
-
-    }
-
-    function changeToChomskyAuto() {
-        var fullChomsky = convertToChomsky();
-        var productions = _.map(_.filter(arr, function (x) {
-            return x[0];
-        }), function (x) {
-            return x.slice();
-        });
-        var tGrammar;
-        var tArr = [].concat(productions);
 
     }
 
@@ -1979,7 +1971,7 @@ $(document).ready(function () {
         }), function (x) {
             return x.slice();
         });
-        $('#helpbutton').hide();
+        //$('#helpbutton').hide();
         var imgs = "Transfer the following grammars you inputted below from CTG to CNF:" + "<br>";
         console.log(productions[0][1]);
         for (var i = 0; i < productions.length; i++) {
@@ -2034,20 +2026,23 @@ $(document).ready(function () {
 
         if (!checkTransform(strP, noLambda)) {
             $('#removeLambda').show();
-
+            document.getElementById('helpInfo').innerHTML = "The highlighted grammar is the lambda production, click \'Remove Lambda\' button to remove them, and may additional productions show up.";
             if (highlightCounter === 1) {
-                jsav. umsg("the highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
+                jsav. umsg("The highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
             } else if (highlightCounter > 1) {
-                jsav.umsg("the highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
+                jsav.umsg("The highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
             }
         } else if (!checkTransform(strP, noUnit)) {
-            jsav.umsg('You productions do not have any lambda productions! Move to remove unit productions phase');
+            jsav.umsg('Your productions do not have any lambda productions! Move to remove unit productions phase');
             $('#toUnitproduction').show();
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
         } else if (!checkTransform(strP, noUseless)) {
-            jsav.umsg('You productions do not have any lambda productions and unit productions! Move to remove useless productions phase');
+            jsav.umsg('Your productions do not have any lambda productions and unit productions! Move to remove useless productions phase');
             $('#toUselessProduction').show();
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
         } else if (!checkTransform(strP, fullChomsky)) {
             jsav.umsg('Grammar already in Chomsky Normal Form.');
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
             return true;
         } else {
             backup = null;

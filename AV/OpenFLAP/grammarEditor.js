@@ -260,7 +260,7 @@ $(document).ready(function () {
       input = emptystring;
     }
     if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
+        //alert('Invalid left-hand side.');
         fi.remove();
         return;
     }
