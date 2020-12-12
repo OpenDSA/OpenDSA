@@ -1,18 +1,18 @@
 .. _Database:
 
-=======================
-Implementation Details:
-=======================
+===============================
+Database Implementation Details
+===============================
 
------------------------------
-Changes for OpenDSA-DevStack:
------------------------------
+----------------------------
+Changes for OpenDSA-DevStack
+----------------------------
 
 #. Changed the db service to be a PostgreSQL image and added a new dbmysql service for the MySQL database. 
 
------------------------------
-Changes for OpenDSA-LTI:
------------------------------
+-----------------------
+Changes for OpenDSA-LTI
+-----------------------
 
 #. Dump the opendsa MySQL database using the MySQL command shown below.
     * The output file will have a bunch of locks and unlocks and postgres does not like this
@@ -44,9 +44,9 @@ Changes for OpenDSA-LTI:
 
 **Reference commit to DevStack:** `DevStack-Commit <https://github.com/OpenDSA/OpenDSA-DevStack/commit/c0cbed1ede6eb9a3f09b059dbd243e531830bfd3>`_.
 
------------------------------
-Database controls: 
------------------------------
+-----------------
+Database controls
+-----------------
 * To drop a table just run the drop TABLENAME command
     * Dropping a partitioned table will drop all its partitioned tables as well 
 * To detach a partition but keep the table 
@@ -54,9 +54,9 @@ Database controls:
     * The partition table will still exist but no longer be included in the table partitioning
 * See `Partitioning <https://www.postgresql.org/docs/10/ddl-partitioning.html>`_ for any questions on partitioning 
 
------------------------------
-Helpful Links: 
------------------------------
+-------------
+Helpful Links
+-------------
 
 https://www.postgresql.org/about/
 
