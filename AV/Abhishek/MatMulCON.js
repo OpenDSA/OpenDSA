@@ -94,7 +94,7 @@ $(document).ready(function() {
 
   // Slide 7
   av.umsg("Yet, we recalculate the number of operations for C(DE) as $(2)(5)(3)+(4)(2)(3) = 54$" +
-      " and (CD)E as $(4)(2)(5)+(4)(5)(3) = 100$." );
+      " and (CD)E as $(4)(2)(5)+(4) (5) (3) = 100$." );
 
   multree.root().child(1).addChild("C(DE)");
   val = "C(DE)" + "<br>" + "54" ;
@@ -201,10 +201,12 @@ $(document).ready(function() {
   val = "A(BCDE)"  + "<br>" + "76" ;
   multree.root().child(0).value(val);
 
-  val = "(AB)(CDE)" + "<br>" + "90" ;
+  // val = "(AB)(CDE)" + "<br>" + "90" ;
+  val = "(AB)(CDE)" + "<br>" + "114" ;
   multree.root().child(1).value(val);
 
-  val = "(ABC)(DE)" + "<br>" + "46" ;
+  // val = "(ABC)(DE)" + "<br>" + "46" ;
+  val = "(ABC)(DE)" + "<br>" + "76" ;
   multree.root().child(2).value(val);
 
   val = "(ABCD)E" + "<br>" + "108" ;
@@ -214,8 +216,8 @@ $(document).ready(function() {
   av.step();
   // slide 13
   av.umsg("Finally, we have determined that the most efficient way to compute ABCDE is to partition it in the manner" +
-      " (A(BC))(DE) and the minimum number of operations required is 46.");
-  val = "ABCDE" + "<br>" + "46" ;
+      " (A(BC))(DE) or A((BC)(DE)) and the minimum number of operations required are 76.");
+  val = "ABCDE" + "<br>" + "7 6" ;
   multree.root().value(val);
 
 
