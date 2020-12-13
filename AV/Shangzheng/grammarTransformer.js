@@ -581,8 +581,6 @@ $(document).ready(function () {
     $('#ChangeToChomsky').hide();
     $('#toChomskyForm').click(toChomskyForm);
     $('#ChangeToChomsky').click(transformToChomskyForm);
-    $('#ChangeToChomskyAuto').hide();
-    $('#ChangeToChomskyAuto').click()
     $('#buildUselessDependencyGraph').hide();
     $('#buildUselessDependencyGraph').click(buildUselessDependencyGraph);
 
@@ -610,13 +608,11 @@ $(document).ready(function () {
         ChomskydsArray = [];
         m = init();
         $('#helpbutton').show();
-        //$('#editbutton').show();
         $('#deletebutton').show();
         $('#addrowbutton').show();
         $('#loadfile').show();
         $('#savefile').show();
         $('#startTransform').show();
-        // $('#identifybutton').show();
         $('#clearbutton').show();
 
         $('#removeLambda').hide();
@@ -635,9 +631,6 @@ $(document).ready(function () {
         // document.getElementById("startTransform").disabled = true;
         jsav.umsg('');
     });
-    $('#replaceTerminal').hide();
-
-    //$('#replaceTerminal').click(replaceTerminal);
 
     $('#buildUnitDependencyGraph').hide();
     $('#buildUnitDependencyGraph').click(buildUnitDependencyGraph);
