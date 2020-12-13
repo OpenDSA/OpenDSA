@@ -217,7 +217,7 @@ $(document).ready(function() {
   // slide 13
   av.umsg("Finally, we have determined that the most efficient way to compute ABCDE is to partition it in the manner" +
       " (A(BC))(DE) or A((BC)(DE)) and the minimum number of operations required are 76.");
-  val = "ABCDE" + "<br>" + "7 6" ;
+  val = "ABCDE" + "<br>" + "76" ;
   multree.root().value(val);
 
 
