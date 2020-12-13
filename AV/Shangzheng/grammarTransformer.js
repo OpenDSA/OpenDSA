@@ -123,6 +123,10 @@ $(document).ready(function () {
             if(index === 0 && lastRow === 0) {
                 arr[index][0] = "";
                 arr[index][2] = "";
+                for(var i = lastRow + 1; i < arr.length; i++) {
+                    arr[i][0] = '';
+                    arr[i][2] = '';
+                }
                 m = init();
                 $('.jsavmatrix').addClass("editMode");
                 $('.jsavmatrix').removeClass("deleteMode");
@@ -146,7 +150,10 @@ $(document).ready(function () {
                 deleteTimes++
                 arr.push(["",arrow,""]);
                 m = init();
-
+                for(var i = lastRow + 1; i < arr.length; i++) {
+                    arr[i][0] = '';
+                    arr[i][2] = '';
+                }
             }
             for(var i = lastRow + 1; i < arr.length; i++) {
                 arr[i][0] = '';
