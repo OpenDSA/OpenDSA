@@ -13,13 +13,25 @@
   //arthur: zinan@vt.edu
   var srcToId = function (src) {
     var reg = new RegExp('ExerciseId=([0-9]+)');
-    var id = reg.exec(src)[1];
-    return parseInt(id);
+    var regResult = reg.exec(src);
+    if (regResult == null)
+      return -1;
+    return parseInt(regResult[1]);
   }
 
+  //it will store a grade of -1 if it is from reset
   var store_solution = function (solution, grade) {
-    var src = window.frameElement.src;
-    var exerciseId = srcToId(src)
+    var exerciseFrame = window.frameElement;
+    //sanity check to adapt stand alone page
+    if (exerciseFrame == null)
+      return;
+    var src = exerciseFrame.src;
+    var exerciseId = srcToId(src);
+    //sanity check to disable the function outside the canvas
+    if (exerciseId == -1) {
+      return;
+    }
+
     let data = {
       exercise_id: exerciseId,
       progress: solution,
@@ -46,16 +58,28 @@
     let data = {
       exercise_id: exerciseId,
     }
-    $.ajax({
-      type: "POST",
-      url: "/student_exercise_progress/get_progress",
-      data: data,
-      success: function (result, status, xhr) {
-        //console.log(result["progress"]);
-        return (result["progress"]);
+
+    return new Promise(function (resolve, reject) {
+      //sanity check to disable the function outside the canvas
+      if (exerciseId == -1) {
+        reject("Not in Canvas");
       }
+      $.ajax({
+        type: "POST",
+        url: "/student_exercise_progress/get_progress",
+        data: data,
+        success: function (result, status, xhr) {
+          resolve(result["progress"]);
+        },
+        error: function (err) {
+          reject(err);
+        }
+      })
     })
   }
+
+  window.StoreProgress = store_solution;
+  window.FetchStoredProgress = fetch_progress;
   //=====end of student progress segment=====
 
   // function to filter the steps to those that should be graded
@@ -92,6 +116,8 @@
         type: "jsav-exercise-reset"
       });
       self.reset();
+      //clear the graph in the database as well 
+      store_solution(null, -1);
     };
     // function to handle the model answer event
     var modelHandler = function () {
@@ -192,11 +218,12 @@
         this.score.correct = this.options.checkSolutionFunction();
       else {
         var obj = this.options.exerciseController.startTesting();
-        if (typeof obj == "number")
+        if (typeof obj == "number"){
           this.score.correct = obj;
+        }
         else {
           this.score.correct = obj.score;
-          //store_solution(obj.solution, obj.score);
+          store_solution(obj.solution, obj.score);
         }
       }
     }
@@ -372,6 +399,7 @@
       fix: 0,
       student: 0
     };
+
     this._undoneSteps = [];
     this.jsav.RECORD = true;
     this.initialStructures = this.options.reset();

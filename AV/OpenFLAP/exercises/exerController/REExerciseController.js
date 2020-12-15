@@ -57,7 +57,7 @@ controllerProto.startTesting = function (fa, solution) {
 	var testRes = [];
 	if (solution.indexOf('*') < 0) {
 		alert("Your Regular Expression is not generic");
-		return 0;
+		return {score: 0, solution: solution};
 	}
 	//For DFA exercises, we need to check if the machine is a DFA not an NFA.
 	var exercise = this.tests[this.currentExercise];
@@ -122,7 +122,7 @@ controllerProto.startTesting = function (fa, solution) {
 	$("#testResults").show();
 	window.scrollTo(0, document.body.scrollHeight);
 	$('#container').scrollTop($('#container').prop("scrollHeight"));
-	return count / numberOfTestCases;
+	return {score: count / numberOfTestCases, solution: solution};
 };
 
 // binded with question links at the top of the page6

@@ -19,6 +19,17 @@ var jsav,
 		}
 		controller = new REtoFAController(jsav, expression, {});	
 	}
+
+	var initAnsFromServer = function() {
+		window.FetchStoredProgress().then(res => {
+			if(res != null && res["progress"] != ""){
+				$("#tb1").val(res["progress"]);
+			}
+		}).catch(err => {
+			console.log('fail' + err);	
+		})
+	};
+
 	var onLoad = function() {
 		jsav = new JSAV($("#jsavcontainer"));
 		pageType = $('h1').attr('id');
@@ -51,19 +62,29 @@ var jsav,
 
 		$('#testSolution').click(testSolution);
     
-    
+		initAnsFromServer();
 	}
 
-  var testSolution = function(){
-    //we need to write the code to test the entered RE
-    expression = document.getElementById('tb1').value;
-    if(controller)
-      controller.clear();
-    controller = new REtoFAController(jsav, expression, false, true, {});
-    controller.completeAll();
-    this.resultingFA = controller.fa;
-    return exerciseController.startTesting(this.resultingFA, expression);
-  }
+	
+
+	var testSolution = function(){
+		//we need to write the code to test the entered RE
+		expression = document.getElementById('tb1').value;
+		if(controller)
+		controller.clear();
+		controller = new REtoFAController(jsav, expression, false, true, {});
+		controller.completeAll();
+		this.resultingFA = controller.fa;
+
+		testResult = exerciseController.startTesting(this.resultingFA, expression);
+		if (typeof obj == "number")
+			score = testResult;
+		else {
+			score = testResult.score;
+			window.StoreProgress(testResult.solution, testResult.score);
+		}
+		return score
+	}
 	//Function sent to exercise constructor to initialize the exercise
 	function initialize() {
     exerciseController.updateExercise(0);

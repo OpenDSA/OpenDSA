@@ -727,6 +727,22 @@ var exerciseLocation;
     	waitForReading(reader);
 		reader.readAsText(file);
 	  }
+
+	 // Initializes a graph by parsing a JSON representation.
+	 var initGraphFromServer = function() {
+		window.FetchStoredProgress().then(res => {
+			console.log("loading:",res);
+			if(res != null && res["progress"] != "") {
+				console.log(res["progress"]);
+				$('.jsavgraph').remove();
+				parseFile(res["progress"]);
+				exerController.fa = g;
+			}
+		}).catch(err => {
+			console.log('fail' + err);	
+		})
+	};
+
 	// Function to convert an FA to a Right-Linear Grammar.
 	// Triggered by clicking the "Convert to Right-Linear Grammar" button.
 	// Currently only works in certain browsers (not Safari).
@@ -999,6 +1015,7 @@ var exerciseLocation;
 
 	// magic happens here
 	onLoadHandler();
+	initGraphFromServer();
 
 
   function layoutTable (mat, index) {
