@@ -1,0 +1,19 @@
+/*// Written by Abhishek Jha Fall 2020*/
+#MatMulCON {
+  height: 410px
+}
+
+#MatMulCON .jsavoutput.jsavline {
+  height: 60px;
+}
+
+#MatMulCON .jsavtree .jsavnode {
+  font-size: 0.70em;
+  border-radius: 1px;
+  text-align: center;
+  min-width: 50px;
+  line-height: 15px;
+  color: white;
+  border: 1.2px solid black;
+  background: linear-gradient(0deg, red, red 49%, white 49%, white 51%, blue 51%);
+}

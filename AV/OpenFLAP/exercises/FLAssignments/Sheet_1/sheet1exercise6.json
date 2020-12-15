@@ -5,12 +5,9 @@
   "totalFalseCases": 3,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-  "trueCounter": 3,
-  "falseCounter": 3,
-  "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}",
-  "description": "",
-  "type": "expression",
+  "expression": "",
+  "description": "Write a grammar that generates the language: L($\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}$)",
+  "type": "description",
   "testCases": [{
           "ab": true,
           "ShowTestCase":true

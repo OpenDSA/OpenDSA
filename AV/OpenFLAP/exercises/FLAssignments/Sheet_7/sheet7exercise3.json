@@ -1,18 +1,15 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "PDA",
-    "totalTrueCases": 7,
-    "totalFalseCases": 4,
+    "totalTrueCases": 8,
+    "totalFalseCases": 3,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 7,
-    "falseCounter": 4,
-    "expression": "\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)",
-    "description": "Construct the PDA that accepts ",
-    "type": "both",
+    "expression": "",
+    "description": "Construct the PDA that accepts L($\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)$) ",
+    "type": "description",
     "testCases": [{
-            "": false,
+            "": true,
             "ShowTestCase":true
         },
         {

@@ -106,7 +106,9 @@
     var testCases = exerController.tests[0]["testCases"];
     var list = [["Test Number", "Test String", "Accept/Reject"]];
     for (i = 0; i < testCases.length; i++) {
-      if(!testCase.ShowTestCase){
+      var testCase = testCases[i];
+      var hideOption = testCase.ShowTestCase;
+      if (hideOption == false || hideOption== undefined) {
         containHideTest = true;
       }
 			if(testCase.ShowTestCase){	

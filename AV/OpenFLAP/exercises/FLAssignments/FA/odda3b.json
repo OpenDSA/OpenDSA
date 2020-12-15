@@ -1,0 +1,65 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "exerciseType": "DFA",
+  "totalTrueCases": 10,
+  "totalFalseCases": 10,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{\\mbox{any odd number of a`s and at most three b`s}\\}",
+  "type": "expression",
+  "testCases": [
+    {
+      "bbb": false,
+      "ShowTestCase":true
+    },
+    {
+      "bbab": true,
+      "ShowTestCase":true
+    },
+    {
+      "a": true,
+      "ShowTestCase":true
+    },
+    {
+      "bab": true,
+      "ShowTestCase":true
+    },
+    {
+      "baba": false,
+      "ShowTestCase":true
+    },
+    {
+      "babb": true,
+      "ShowTestCase":true
+    },
+    {
+      "bababa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaabbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "baabaaba": true,
+      "ShowTestCase":true
+    },
+    {
+      "aabbbaab": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaaaaaaaab": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaaaaaaaabbbb": false,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/odda3b.jff"
+}]

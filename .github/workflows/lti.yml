@@ -1,0 +1,20 @@
+name: deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: lti
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/OpenDSA/LTI_Ruby
+            make pull

@@ -1,0 +1,34 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
+  "exerciseType": "DFA",
+  "totalTrueCases": 4,
+  "totalFalseCases": 5,
+  "containLetters": ["1", "0"],
+  "randomStringLength": [0, 15],
+  "expression": "",
+  "description": "Give a DFA for the following alphabet and language: $\\Sigma = \\{0, 1\\}, \\quad L = \\{\\mbox{All even binary numbers\\}$",
+  "type": "description",
+  "testCases": [
+    {
+      "0": true,
+      "ShowTestCase": true
+    },
+    {
+      "1": false,
+      "ShowTestCase": true
+    },
+    {
+      "010": true,
+      "ShowTestCase": true
+    },
+    {
+      "011": false,
+      "ShowTestCase": true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/EvenBinaryDFACON.jff"
+}]

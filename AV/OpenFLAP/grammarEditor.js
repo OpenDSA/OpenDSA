@@ -70,7 +70,7 @@ $(document).ready(function () {
     }
     var m2 = jsav.ds.matrix(arr, {style: "table"});
     // hide all of the empty rows
-    for (var i = lastRow + 1; i < arr.length; i++) {
+    for (var i = lastRow+1; i < arr.length; i++) {
       m2._arrays[i].hide();
     }
     layoutTable(m2, 2);
@@ -84,7 +84,7 @@ $(document).ready(function () {
     console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
     // if ((row != index || col != index2) && fi) {
-
+    var deleteTimes = 0;
     if (fi) {
       var input = fi.val();
       var regex = new RegExp(emptystring, g);
@@ -93,9 +93,10 @@ $(document).ready(function () {
       if (input === "" && col == 2) {
         input = emptystring;
       }
-      if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
-      }
+      // if (input === "" && col === 0) {
+      //   alert('Invalid left-hand side.');
+      //   return;
+      // }
       if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
         alert('This production already exists.');
       }
@@ -105,13 +106,43 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if(index === 0){
-        alert("Can't delete the last row");
+      if(index === 0 && lastRow === 0){
+        //alert("Can't delete the last row");
+        arr[index][0] = "";
+        arr[index][2] = "";
+        m = init();
+        $('.jsavmatrix').addClass("editMode");
+        $('.jsavmatrix').removeClass("deleteMode");
+        $('.jsavmatrix').removeClass("addrowMode");
+        jsav.umsg('Editing');
         return;
       }
       // recreates the matrix when deleting a row...
-      arr.splice(index, 1);
-      lastRow--;
+      // arr.splice(index, 1);
+      // lastRow--;
+      // m = init();
+
+      if (!(arr[index][0] === "" && arr[index][2] === "")) {
+        var result = confirm("Are you sure you want to delete this production you selected?");
+        if (result) {
+          arr.splice(index, 1);
+          lastRow--;
+          deleteTimes++;
+          arr.push(["",arrow,""]);
+          m = init();
+        }
+      } else {
+        arr.splice(index, 1);
+        lastRow--;
+        deleteTimes++;
+        arr.push(["",arrow,""]);
+        m = init();
+
+      }
+      for(var i = lastRow + 1; i < arr.length; i++) {
+        arr[i][0] = '';
+        arr[i][2] = '';
+      }
       m = init();
       $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
@@ -123,7 +154,12 @@ $(document).ready(function () {
     } else if ($('.jsavmatrix').hasClass('addrowMode')) {
       addRow(index);
     }
-
+    if (deleteTimes == 1) {
+      $('.jsavmatrix').addClass("editMode");
+      $('.jsavmatrix').removeClass("deleteMode");
+      $('.jsavmatrix').removeClass("addrowMode");
+      jsav.umsg('Editing');
+    }
   };
 
 
@@ -231,7 +267,8 @@ $(document).ready(function () {
       input = emptystring;
     }
     if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
+        //alert('Invalid left-hand side.');
+        fi.remove();
         return;
     }
     if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
@@ -1239,7 +1276,7 @@ $(document).ready(function () {
     $(".jsavmatrix").removeClass('editMode');
     $(".jsavmatrix").removeClass('deleteMode');
     $("#mode").html('');
-    $('#editbutton').hide();
+    // $('#editbutton').hide();
     $('#deletebutton').hide();
     $('#addrowbutton').hide();
     $('#convertRLGbutton').hide();
@@ -1358,13 +1395,30 @@ $(document).ready(function () {
     $('.jsavmatrix').addClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
     $('.jsavmatrix').removeClass("editMode");
-    $("#mode").html('Deleting');
+    jsav.umsg('Deleting');
   };
   var addrowMode = function(){
-    $('.jsavmatrix').addClass("addrowMode");
+
+    if (lastRow === arr.length - 1 || lastRow === arr.length) {
+      var l = arr.length;
+      for (var i = 0; i < l; i++) {
+        arr.push(['', arrow, '']);
+      }
+      m = init();
+      $('.jsavmatrix').addClass('editMode');
+      // if (!arr[index][2]) {
+      //     arr[index][2] = lambda;
+      //     m.value(index, 2, lambda);
+      // }
+
+    }
+    m._arrays[lastRow + 1].show();
+    lastRow++;
+    layoutTable(m);
+    jsav.umsg('Editing');
+    $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
-    $('.jsavmatrix').removeClass("editMode");
-    $("#mode").html('Adding');
+    $('.jsavmatrix').removeClass("addrowMode");
   }
 
   //=================================
@@ -2237,10 +2291,10 @@ $(document).ready(function () {
       if (tArr.length === fullChomsky.length) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
-        var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-        if (c) {
-          attemptExport();
-        }
+        // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
+        // if (c) {
+        //   attemptExport();
+        // }
         for (var i = 0; i < tGrammar._arrays.length; i++) {
           tGrammar.unhighlight(i);
         }

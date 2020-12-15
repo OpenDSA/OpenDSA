@@ -302,8 +302,14 @@ All are required unless otherwise specified.
       Currently code-workout is the only external tool used by OpenDSA.
 
 * **zeropt_assignments** - (optional) A boolean controlling wheter or not
-  the moduels without exercises should be given 0 point and listed under
-  assignments section.
+  an assignment with 0 points should be created for any module
+  without exercises or other scoreable element.
+  The point to this is to make every module appear in the assignment
+  list at Canvas, because otherwise a student who focusses only on
+  assignments (and not modules) would miss seeing this content.
+  Unfortunately, the ordering of the assignments in Canvas does not
+  match the module ordering, so adding these 0-pt assignments might
+  not really help students to read all of the material.
   Defaults to ``false`` if omitted.
 
 * **build_JSAV** - (optional) A boolean controlling whether or not the

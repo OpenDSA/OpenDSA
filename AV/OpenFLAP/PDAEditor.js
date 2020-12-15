@@ -107,7 +107,8 @@
     var list = [["Test Number", "Test String", "Accept/Reject"]];
     for (i = 0; i < testCases.length; i++) {
       var testCase = testCases[i];
-      if(!testCase.ShowTestCase){
+      var hideOption = testCase.ShowTestCase;
+      if (hideOption == false || hideOption== undefined) {
         containHideTest = true;
       }
 			if(testCase.ShowTestCase){	

@@ -202,7 +202,7 @@ const equations = [
         latex: '\\nu_{ } = - \\frac {\\epsilon_{lat_{ }}} {\\epsilon_{long_{ }}}',
         latex_boxes: '\\Box = - \\dfrac \\Box \\Box',
         params_latex: ['\\nu_{ }', '\\epsilon_{lat_{ }}', '\\epsilon_{long_{ }}'],
-        template: 'poissonratio = - latstrain * longstrain',
+        template: 'poissonratio = - latstrain / longstrain',
         params: ['poissonratio', 'longstrain', 'latstrain'],
         variables: {
             'poissonratio': '\\nu_{ }',
@@ -506,6 +506,7 @@ const equations = [
         subjectForm: {
             "mominertia": "radius ^ 4",
             "radius": "mominertia ^ (1/4)",
+            "consistency": "mominertia  / ( radius ^ 4)",
         }
     },
     {
@@ -530,6 +531,7 @@ const equations = [
         subjectForm: {
             "mominertia": "diameter ^ 4",
             "diameter": "mominertia ^ (1/4)",
+            "consistency": "mominertia / ( diameter ^ 4 )",
         }
     },
     // {
@@ -652,6 +654,7 @@ const equations = [
         subjectForm: {
             "area": "radius ^ 2",
             "radius": "area ^ 0.5",
+            "consistency": "area / ( radius ^ 2 )",
         }
     },
     {
@@ -676,6 +679,7 @@ const equations = [
         subjectForm: {
             "area": "diameter ^ 2",
             "diameter": "area ^ 0.5",
+            "consistency": "area / ( diameter ^ 2 )",
         }
     },
     {
@@ -705,6 +709,7 @@ const equations = [
             "height": "area / base",
             "base height": "(area)^0.5",
             "height base": "(area)^0.5",
+            "consistency": "area / base / height",
         }
     },
     {
@@ -844,6 +849,7 @@ const equations = [
             "bterm": "aterm / cterm",
             "cterm bterm": "(aterm)^0.5",
             "bterm cterm": "(aterm)^0.5",
+            "consistency": "aterm / bterm / cterm",
         }
     },
     {
@@ -874,6 +880,7 @@ const equations = [
             "bterm": "cterm / aterm",
             "aterm bterm": "(cterm)^0.5",
             "bterm aterm": "(cterm)^0.5",
+            "consistency": "aterm * bterm / cterm",
         }
     },
     // {

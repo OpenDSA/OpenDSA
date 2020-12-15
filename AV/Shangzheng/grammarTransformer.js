@@ -58,6 +58,7 @@ $(document).ready(function () {
 
     // Function to initialize/reinitialize the grammar display
     var init = function () {
+
         if (m) {
             m.clear();
         }
@@ -67,15 +68,32 @@ $(document).ready(function () {
             m2._arrays[i].hide();
         }
         layoutTable(m2, 2);
-        if (type !== "transformation")
+        if (type !== "transformation") {
             m2.on('click', matrixClickHandler);
+
+            // document.getElementById("av").oncontextmenu = function(e){
+            //     e.preventDefault();
+            // };
+            //
+            // m2.on('mouseup',function(e) {
+            //     if (!e) e=window.event;
+            //     if (e.button==2) {
+            //
+            //         $("#menu").css({left:this.element.offset().left + e.offsetX, top: this.element.offset().top + e.offsetY});
+            //         $("#menu").show();
+            //     }
+            // });
+
+        }
+
+
         return m2;
     };
 
     // handler for grammar editing
     var matrixClickHandler = function (index, index2) {
         console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
-
+        var deleteTimes = 0;
         // if ((row != index || col != index2) && fi) {
 
         if (fi) {
@@ -86,9 +104,11 @@ $(document).ready(function () {
             if (input === "" && col == 2) {
                 input = emptystring;
             }
-            if (input === "" && col === 0) {
-                alert('Invalid left-hand side.');
-            }
+            // if (input === "" && col === 0) {
+            //     alert('Invalid left-hand side.');
+            //     fi.remove();
+            //     return
+            // }
             if (col == 2 && _.find(arr, function (x) {
                 return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;
             })) {
@@ -100,8 +120,18 @@ $(document).ready(function () {
             layoutTable(m, 2);
         }
         if ($('.jsavmatrix').hasClass('deleteMode')) {
-            if (index === 0) {
-                alert("Can't delete the last row");
+            if(index === 0 && lastRow === 0) {
+                arr[index][0] = "";
+                arr[index][2] = "";
+                for(var i = lastRow + 1; i < arr.length; i++) {
+                    arr[i][0] = '';
+                    arr[i][2] = '';
+                }
+                m = init();
+                $('.jsavmatrix').addClass("editMode");
+                $('.jsavmatrix').removeClass("deleteMode");
+                $('.jsavmatrix').removeClass("addrowMode");
+                jsav.umsg('Editing');
                 return;
             }
             // recreates the matrix when deleting a row..
@@ -110,13 +140,26 @@ $(document).ready(function () {
                 if (result) {
                     arr.splice(index, 1);
                     lastRow--;
+                    deleteTimes++;
+                    arr.push(["",arrow,""]);
                     m = init();
                 }
             } else {
                 arr.splice(index, 1);
                 lastRow--;
+                deleteTimes++
+                arr.push(["",arrow,""]);
                 m = init();
+                for(var i = lastRow + 1; i < arr.length; i++) {
+                    arr[i][0] = '';
+                    arr[i][2] = '';
+                }
             }
+            for(var i = lastRow + 1; i < arr.length; i++) {
+                arr[i][0] = '';
+                arr[i][2] = '';
+            }
+            m = init();
             $('.jsavmatrix').addClass('deleteMode');
         } else if ($('.jsavmatrix').hasClass('editMode')) {
             // ignore if the user clicked an arrow
@@ -127,7 +170,12 @@ $(document).ready(function () {
         } else if ($('.jsavmatrix').hasClass('addrowMode')) {
             addRow(index);
         }
-
+        if (deleteTimes == 1) {
+            $('.jsavmatrix').addClass("editMode");
+            $('.jsavmatrix').removeClass("deleteMode");
+            $('.jsavmatrix').removeClass("addrowMode");
+            jsav.umsg('Editing');
+        }
     };
 
 
@@ -184,11 +232,11 @@ $(document).ready(function () {
                     case 13: // enter key
                         if (index2 == 0) {
                             focus(index, 2);
+                        } else {
+                            // adding a new production
+                            addRow(index);
+                            jsav.umsg('Editing');
                         }
-                        // else {
-                        //     // adding a new production
-                        //     addRow(index);
-                        // }
                         break;
                     case 37: // arrow left key
                         if (index2 == 2) {
@@ -235,7 +283,8 @@ $(document).ready(function () {
             input = emptystring;
         }
         if (input === "" && col === 0) {
-            alert('Invalid left-hand side.');
+            //alert('Invalid left-hand side.');
+            fi.remove();
             return;
         }
         if (col == 2 && _.find(arr, function (x) {
@@ -290,10 +339,6 @@ $(document).ready(function () {
         jsav.umsg('Deleting');
     };
     var addrowMode = function () {
-        $('.jsavmatrix').addClass("addrowMode");
-        $('.jsavmatrix').removeClass("deleteMode");
-        $('.jsavmatrix').removeClass("editMode");
-        jsav.umsg('Adding');
 
         if (lastRow === arr.length - 1 || lastRow === arr.length) {
             var l = arr.length;
@@ -311,6 +356,7 @@ $(document).ready(function () {
         m._arrays[lastRow + 1].show();
         lastRow++;
         layoutTable(m);
+        jsav.umsg('Editing');
         $('.jsavmatrix').addClass("editMode");
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("addrowMode");
@@ -514,7 +560,7 @@ $(document).ready(function () {
     $('#addrowbutton').click(addrowMode);
     $('#loadfile').on('change', loadFile);
     $('#savefile').click(saveFile);
-    $('#identifybutton').click(identifyGrammar);
+    // $('#identifybutton').click(identifyGrammar);
     $('#clearbutton').click(clearAll);
     $('#removeLambda').hide();
     $('#removeLambda').click(removeLambdaDisplay);
@@ -535,8 +581,6 @@ $(document).ready(function () {
     $('#ChangeToChomsky').hide();
     $('#toChomskyForm').click(toChomskyForm);
     $('#ChangeToChomsky').click(transformToChomskyForm);
-    $('#ChangeToChomskyAuto').hide();
-    $('#ChangeToChomskyAuto').click()
     $('#buildUselessDependencyGraph').hide();
     $('#buildUselessDependencyGraph').click(buildUselessDependencyGraph);
 
@@ -564,12 +608,11 @@ $(document).ready(function () {
         ChomskydsArray = [];
         m = init();
         $('#helpbutton').show();
-        //$('#editbutton').show();
         $('#deletebutton').show();
         $('#addrowbutton').show();
         $('#loadfile').show();
         $('#savefile').show();
-        $('#identifybutton').show();
+        $('#startTransform').show();
         $('#clearbutton').show();
 
         $('#removeLambda').hide();
@@ -585,12 +628,9 @@ $(document).ready(function () {
         $('#buildUnitDependencyGraph').hide();
         $('#toChomskyForm').hide();
         $('#ChangeToChomsky').hide();
-        $('#startTransform').hide();
+        // document.getElementById("startTransform").disabled = true;
         jsav.umsg('');
     });
-    $('#replaceTerminal').hide();
-
-    //$('#replaceTerminal').click(replaceTerminal);
 
     $('#buildUnitDependencyGraph').hide();
     $('#buildUnitDependencyGraph').click(buildUnitDependencyGraph);
@@ -832,7 +872,7 @@ $(document).ready(function () {
         $('#loadFile').hide();
         $('#saveFile').hide();
         $('#addExerciseButton').hide();
-        $('#startTransform').hide();
+        //document.getElementById("startTransform").disabled = true;
         $('#back').hide();
         $('#next').hide();
         if (type == "editor") {
@@ -953,7 +993,8 @@ $(document).ready(function () {
     }
 
     function toUnitProductionStep() {
-
+        document.getElementById('helpInfo').innerHTML = "Help:\n The highlighted produciton is unit produciton.\n Click the \'build dependency graph\' " +
+            "button to set up the relationship of Variables.\n You can choose build the graph manually or automaticlly.";
         jsav.umsg("removing highlighted unit productions needs to build the dependency graph for the grammar");
         for (var i = 0; i < dsArray.length; i++) {
             if (dsArray[i].value(2).length === 1 && variables.indexOf(dsArray[i].value(2)) !== -1) {
@@ -1350,6 +1391,9 @@ $(document).ready(function () {
             // layoutTable(tGrammar, 2);
             // //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, });//anchor: "left bottom", myAnchor: "left top"
             // tGrammar.click(removeUselessHandler);
+            modelDFA = jsav.ds.graph({layout: "layered", directed: true});
+            jsav.umsg('there is no reletionship for those terminals');
+            m.hide();
             $('#removeUslesspruduction').show();
             $('#uselessDependencyGraph').hide();
         };
@@ -1443,6 +1487,8 @@ $(document).ready(function () {
     }
 
     function toUselessProduction() {
+        document.getElementById('helpInfo').innerHTML = "Help:\n The highlighted produciton is useless produciton.\n Click the \'build dependency graph\' " +
+            "button to set up the relationship of Variables.\n You can choose build the graph manually or automaticlly.";
         jsav.umsg("Next Step is to build the dependency graph for the grammar using the highlighted productions");
         if (modelDFA != null) {
             modelDFA.clear();
@@ -1485,7 +1531,8 @@ $(document).ready(function () {
             dsArray[j].css({top: "-=" + dis + "px", relativeTo: dsArray[0]});
         }
 
-        modelDFA.layout();
+        //modelDFA.layout();
+        modelDFA.hide();
         $('#removeUslesspruduction').hide();
         $('#toChomskyForm').show();
     }
@@ -1522,7 +1569,7 @@ $(document).ready(function () {
                 var r = productions[i][2];
                 for (var j = 0; j < r.length; j++) {
                     if (r[j].length === 1 && variables.indexOf(r[j]) === -1) {
-                        var temp = "B(" + r[j] + ")";
+                        var temp = "B_" + r[j];
                         if (!_.find(productions, function (x) {
                             return x[0] === temp;
                         })) {
@@ -1541,7 +1588,7 @@ $(document).ready(function () {
                 if (r.length === 1 && variables.indexOf(r[0]) === -1) {
                     continue;
                 } else if (r.length > 2) {
-                    var temp = "D(" + varCounter + ")";
+                    var temp = "$D_" + varCounter;
                     var temp2 = r.splice(1, r.length - 1, temp);
                     var present = _.find(productions, function (x) {
                         return x[0].length > 1 && x[2].join('') === temp2.join('');
@@ -1577,28 +1624,17 @@ $(document).ready(function () {
     }
 
     function toChomskyForm() {
+        document.getElementById('helpInfo').innerHTML = "Help:\n Click the button to start to convert.";
         jsav.umsg("Next Step is converting the grammar to  Chomsky Form");
-        if (modelDFA != null) {
-            modelDFA.clear();
+        if (typeof modelDFA != "undefined") {
+            modelDFA.hide();
         }
-
         for (var i = 0; i < dsArray.length; i++) {
             dsArray[i].unhighlight();
+            //dsArray[i].hide();
         }
         $('#toChomskyForm').hide();
         $('#ChangeToChomsky').show();
-
-    }
-
-    function changeToChomskyAuto() {
-        var fullChomsky = convertToChomsky();
-        var productions = _.map(_.filter(arr, function (x) {
-            return x[0];
-        }), function (x) {
-            return x.slice();
-        });
-        var tGrammar;
-        var tArr = [].concat(productions);
 
     }
 
@@ -1617,7 +1653,7 @@ $(document).ready(function () {
         }), function (x) {
             return x.slice();
         });
-        //m = init();
+        // m = init();
         var tGrammar;
         var tArr = [].concat(productions);
         var diff = Math.abs(tArr.length - splitedFullChomsky.length);
@@ -1648,30 +1684,30 @@ $(document).ready(function () {
             // replace terminals
             for (var i = 0; i < r.length; i++) {
                 if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
-                    var tempB = "B(" + r[i] + ")";
+                    var tempB = "B_" + r[i];
                     // if (!_.find(tArr.concat(sliceIn), function (x) {
                     //     return x[0] === tempB;
                     // })) {
-                        var times = 0;
-                        var input;
-                        var pass = false;
-                        while (times <= 3 && !pass) {
-                            input = prompt("Left side is asigned to"+tempB+". Right side of the production you want to add?");
+                    var times = 0;
+                    var input;
+                    var pass = false;
+                    while (times <= 3 && !pass) {
+                        input = prompt("Left side is asigned to" + tempB + ". Right side of the production you want to add?");
 
-                            if (input === r[i]) {
-                                pass = true;
-                            } else {
-                                times++;
-                                if (times == 3) {
-                                    if (confirm("You have tried 3 times, do you want to try again? If not, click 'Cancel' button") == true) {
-                                        times = 0;
-                                    } else {
-                                      pass = true;
-                                    }
+                        if (input === r[i]) {
+                            pass = true;
+                        } else {
+                            times++;
+                            if (times == 3) {
+                                if (confirm("You have tried 3 times, do you want to try again? If not, click 'Cancel' button") == true) {
+                                    times = 0;
+                                } else {
+                                    pass = true;
                                 }
                             }
                         }
-                        sliceIn.push([tempB, arrow, [r[i]]]);
+                    }
+                    sliceIn.push([tempB, arrow, [r[i]]]);
                     // }
                     r[i] = tempB;
                 }
@@ -1691,13 +1727,12 @@ $(document).ready(function () {
                     var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
                         return [x[0], x[1], x[2].join('')];
                     }));
-                    diff--;
+
                     tGrammar.clear();
                     tGrammar = tempG;
                     $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
 
-                }
-                else {
+                } else {
                     var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
                         return [x[0], x[1], x[2].join('')];
                     }));
@@ -1715,7 +1750,7 @@ $(document).ready(function () {
                 }
             } else {
                 // replace variables
-                var tempD = "D(" + varCounter + ")";
+                var tempD = "$D_{(" + varCounter + ")}$";
                 var temp2 = r.splice(1, r.length - 1, tempD);
                 var present = _.find(tArr, function (x) {
                     return x[0].length > 1 && x[2].join('') === temp2.join('');
@@ -1727,7 +1762,7 @@ $(document).ready(function () {
                     var input;
                     var pass = false;
                     while (times <= 3 && !pass) {
-                        input = prompt("Left side is asigned to"+tempD+". Right side of the production you want to add?");
+                        input = prompt("Left side is asigned to" + tempD + ". Right side of the production you want to add?");
                         var arrayedInput = input.split("");
                         if (checkSame(arrayedInput, temp2)) {
                             pass = true;
@@ -1748,12 +1783,10 @@ $(document).ready(function () {
                         var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
                             return [x[0], x[1], x[2].join('')];
                         }));
-                        diff--;
                         tGrammar.clear();
                         tGrammar = tempG;
                         $(tGrammar.element).css({top: 0, left: 300, position: 'absolute'});
-                    }
-                    else {
+                    } else {
                         tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
                         varCounter++;
                         var tempG = jsav.ds.matrix(_.map(tArr, function (x) {
@@ -1778,8 +1811,8 @@ $(document).ready(function () {
             //console.log(temp);
             var stringA = []
             for (var j = 0; j < tArr.length; j++) {
-                var left = tGrammar.value(j,0);
-                var right = tGrammar.value(j,2);
+                var left = tGrammar.value(j, 0);
+                var right = tGrammar.value(j, 2);
                 stringA.push(left + arrow + right);
             }
             console.log(stringA)
@@ -1790,40 +1823,40 @@ $(document).ready(function () {
                     break;
                 }
             }
-            if(same) {
-                    jsav.umsg('All productions completed.');
-                    tGrammar.element.off();
-                    // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-                    // if (c) {
-                    attemptExport();
-                    // }
-                    for (var i = 0; i < tGrammar._arrays.length; i++) {
-                        tGrammar.unhighlight(i);
-                    }
-                    tGrammar.hide();
-                    var tempDsArray = [];
-                    var newArr = [];
-                    for (var j = 0; j < fullChomsky.length; j++) {
-                        var splitedProduction = [];
-                        splitedProduction[0] = fullChomsky[j].split(arrow)[0];
-                        splitedProduction[1] = arrow;
-                        splitedProduction[2] = fullChomsky[j].split(arrow)[1];
-                        newArr[j] = splitedProduction;
-                        tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
-                    }
+            if (same) {
+                jsav.umsg('All productions completed.');
+                tGrammar.element.off();
+                // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
+                // if (c) {
+                attemptExport();
+                // }
+                for (var i = 0; i < tGrammar._arrays.length; i++) {
+                    tGrammar.unhighlight(i);
+                }
+                tGrammar.hide();
+                var tempDsArray = [];
+                var newArr = [];
+                for (var j = 0; j < fullChomsky.length; j++) {
+                    var splitedProduction = [];
+                    splitedProduction[0] = fullChomsky[j].split(arrow)[0];
+                    splitedProduction[1] = arrow;
+                    splitedProduction[2] = fullChomsky[j].split(arrow)[1];
+                    newArr[j] = splitedProduction;
+                    tempDsArray[j] = jsav.ds.array(splitedProduction, {center: true});
+                }
 
-                    for (var i = 0; i < dsArray.length; i++) {
-                        dsArray[i].hide();
-                    }
+                for (var i = 0; i < dsArray.length; i++) {
+                    dsArray[i].hide();
+                }
 
-                    for (var j = 0; j < tempDsArray.length; j++) {
-                        if (j == 0) {
-                            continue;
-                        }
-                        var dis = (30 * j).toString();
-                        tempDsArray[j].css({top: "-=" + dis + "px", relativeTo: tempDsArray[0]});
+                for (var j = 0; j < tempDsArray.length; j++) {
+                    if (j == 0) {
+                        continue;
                     }
-                    ChomskydsArray = tempDsArray;
+                    var dis = (30 * j).toString();
+                    tempDsArray[j].css({top: "-=" + dis + "px", relativeTo: tempDsArray[0]});
+                }
+                ChomskydsArray = tempDsArray;
 
             }
             // if (tArr.length === fullChomsky.length) {
@@ -1912,6 +1945,29 @@ $(document).ready(function () {
     }
 
     function startTransform() {
+
+        var identified = identifyGrammar();
+        if (identified === 1)
+        {
+            alert('No grammar.');
+            return;
+        } else if (identified === 2) {
+            alert('This grammar is a Context-Free Grammar, you can go to the next step');
+
+            $('#back').show();
+            //document.getElementById("editor").innerHTML = 'First step:';
+            jsav.umsg('After confirming the grammar is context free grammar, we need to remove some producitons as the following order:<br>' +
+                '1. lambda production<br> 2. unit production<br> 3. useless production.<br> Please click open transforer button to start transforming');
+        }
+        else if (identified === 0) {
+            alert('The CNF (Chomsky Normal Form) can only accept CFG (context free grammar), please change the grammar to CFG');
+            return;
+        }
+        m.hide();
+        // localStorage['grammar'] = _.map(arr, function (x) {
+        //     return x.join('');
+        // });
+         // window.open("grammarTransform.html");
         //document.getElementById('startTransform').disabled = true;
         jsav.umsg('');
         $('#startTransform').hide();
@@ -1924,6 +1980,20 @@ $(document).ready(function () {
         }), function (x) {
             return x.slice();
         });
+        //$('#helpbutton').hide();
+        var imgs = "Transfer the following grammars you inputted below from CTG to CNF:" + "<br>";
+        console.log(productions[0][1]);
+        for (var i = 0; i < productions.length; i++) {
+            if (productions[i][2] === lambda) {
+                imgs = imgs + '<img src=' + latexit + productions[i][0]+"%20\\to%20" +"\\lambda"+'>' + "<br>";
+            } else {
+                imgs = imgs + '<img src=' + latexit + productions[i][0]+"%20\\to%20" +productions[i][2]+'>' + "<br>";
+            }
+
+        }
+        //imgs = imgs + "Please click startTransform button to start this experience";
+        document.getElementById('editor').innerText = "Grammar Transform Exercise"
+        document.getElementById('description').innerHTML = imgs;
         var strP = _.map(productions, function (x) {
             return x.join('');
         });
@@ -1949,6 +2019,11 @@ $(document).ready(function () {
                 // }
             }
         }
+        $('#deletebutton').hide();
+        $('#addrowbutton').hide();
+        $('#loadfile').hide();
+        $('#savefile').hide();
+        $('#clearbutton').hide();
         // var height = $(dsArray[0].element).outerHeight();
         for (var j = 0; j < dsArray.length; j++) {
             if (j == 0) {
@@ -1957,22 +2032,26 @@ $(document).ready(function () {
             var dis = (30 * j).toString();
             dsArray[j].css({top: "-=" + dis + "px", relativeTo: dsArray[0]});
         }
+
         if (!checkTransform(strP, noLambda)) {
             $('#removeLambda').show();
-
+            document.getElementById('helpInfo').innerHTML = "The highlighted grammar is the lambda production, click \'Remove Lambda\' button to remove them, and may additional productions show up.";
             if (highlightCounter === 1) {
-                jsav.umsg("the highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
+                jsav. umsg("The highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
             } else if (highlightCounter > 1) {
-                jsav.umsg("the highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
+                jsav.umsg("The highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
             }
         } else if (!checkTransform(strP, noUnit)) {
-            jsav.umsg('You productions do not have any lambda productions! Move to remove unit productions phase');
+            jsav.umsg('Your productions do not have any lambda productions! Move to remove unit productions phase');
             $('#toUnitproduction').show();
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
         } else if (!checkTransform(strP, noUseless)) {
-            jsav.umsg('You productions do not have any lambda productions and unit productions! Move to remove useless productions phase');
+            jsav.umsg('Your productions do not have any lambda productions and unit productions! Move to remove useless productions phase');
             $('#toUselessProduction').show();
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
         } else if (!checkTransform(strP, fullChomsky)) {
             jsav.umsg('Grammar already in Chomsky Normal Form.');
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
             return true;
         } else {
             backup = null;
@@ -1998,32 +2077,13 @@ $(document).ready(function () {
             return x.slice();
         });
         if (productions.length === 0) {
-            alert('No grammar.');
-            return;
+            return 1;
         }
         if (isContextFreeGrammar()) {
-            alert('This grammar is a Context-Free Grammar, you can go to the next step');
-            isCFG = true;
-
-            $('#helpbutton').hide();
-            //$('#editbutton').hide();
-            $('#deletebutton').hide();
-            $('#addrowbutton').hide();
-            $('#loadfile').hide();
-            $('#savefile').hide();
-            $('#identifybutton').hide();
-            $('#clearbutton').hide();
-            $('.jsavmatrix').hide();
-            $('#startTransform').show();
-            $('#back').show();
-            //document.getElementById("editor").innerHTML = 'First step:';
-            jsav.umsg('After confirming the grammar is context free grammar, we need to remove some producitons as the following order:\n' +
-                '1. lambda production\n 2. unit production\n 3. useless production\n');
-
-            return;
+            return 2;
         } else {
-            alert('The CNF (Chomsky Normal Form) can only accept CFG (context free grammar), please change the grammar to CFG');
-            return;
+            //alert('The CNF (Chomsky Normal Form) can only accept CFG (context free grammar), please change the grammar to CFG');
+            return 0;
         }
     }
 
@@ -2038,7 +2098,8 @@ $(document).ready(function () {
         }
         return true;
     }
-    function checkSame2(src, cfgsrc ) {
+
+    function checkSame2(src, cfgsrc) {
         if (src.length != cfgsrc.length) {
             return false;
         }
@@ -2046,8 +2107,7 @@ $(document).ready(function () {
             for (var j = 0; j < cfgsrc.length; j++) {
                 if (cfgsrc[j][0] == src[i][0] && cfgsrc[j][2][0] == src[i][2][0]) {
                     continue;
-                }
-                else {
+                } else {
                     return false;
                 }
             }

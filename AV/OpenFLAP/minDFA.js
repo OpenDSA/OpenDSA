@@ -667,7 +667,8 @@ if computational complexity is a concern, should be changed to use a union-find 
 		var testNum = 1;
 		for (i = 0; i < testCases.length; i++) {
 			var testCase = testCases[i];
-			if(!testCase.ShowTestCase){
+			var hideOption = testCase.ShowTestCase;
+			if (hideOption == false || hideOption== undefined) {
 				containHideTest = true;
 			}
 			if(testCase.ShowTestCase){	

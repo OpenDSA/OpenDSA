@@ -5,12 +5,9 @@
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 5,
-    "falseCounter": 5,
-    "expression": "((ab)^*ba) + (b^*(ab)^+)",
-    "description": "Construct an NFA that accepts",
-    "type": "both",
+    "expression": "",
+    "description": "Construct an NFA that accepts L($((ab)^*ba) + (b^*(ab)^+)$)",
+    "type": "description",
     "testCases": [{
             "ba": true,
             "ShowTestCase":true

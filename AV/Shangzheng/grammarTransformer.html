@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Grammar Transform Exercise</title>
+    <meta name="description" content="GrammarTransformer">
+    <meta name="author" content="Shangzheng Ji">
+    <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./css/grammar.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    <link rel="stylesheet" href="./css/parsing.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    <link rel="stylesheet" href="./css/help.css" type="text/css" />
+    <link rel="stylesheet" href="./css/grammarEditor.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+    <h1 id="editor">Grammar Transform Exercise</h1>
+    <button id="helpbutton"><img src="./help.png"/></button>
+    <div id="help" title="Help" style="display:none">
+        <div id="helpInfo">
+            Help:
+            To delete, click on "Delete" and click on the row you want to delete. Only one row can be deleted at a time!
+            To add, click on "Add Row" and a new empty row will show up at the bottom.
+        </div>
+    </div>
+    <div id="description", align="center">
+        This is the grammar transformation exercise, please type your productions.
+    </div>
+
+    <div id="buttons" align="center">
+        <span id='mode'></span><br>
+        <button type="button" id="addrowbutton">Add Row</button>
+        <button type="button" id="deletebutton">Delete</button>
+        <button type="button" class="function" id="clearbutton">Clear All</button>
+        <button type="button" class= "function" id="startTransform">Open Transformer</button>
+        <button type="button" class="function" style="display: none" id="back">Back</button> <br>
+        <button type="button" class="function" style="display: none" id="removeLambda">Remove Lambda</button>
+        <button type="button" class="function" style="display: none" id="toUnitproduction">Go to remove Unit production</button>
+        <button type="button" class="function" style="display: none" id="removeUnitproduction">Remove Unit production</button>
+        <button type="button" class="function" style="display: none" id="removeUslesspruduction">Remove Useless production</button>
+
+        <button type="button" class="function" style="display: none" id="dependencyButton">build Unit Dependency Graph manually</button>
+        <button type="button" class="function" style="display: none" id="toUselessProduction">Go to remove Useless production</button>
+        <button type="button" class="function" style="display: none" id="uselessDependencyGraph">Build UselessDependencyGraph</button>
+        <button type="button" class="function" style="display: none" id="toChomskyForm">Go to transform to Chomsky Form</button>
+        <button type="button" class="function" style="display: none" id="ChangeToChomsky">Convert To Chomsky Form</button>
+        <button type="button" class="function" style="display: none" id="buildUnitDependencyGraph">Auto Build Dependency Graph</button>
+        <button type="button" class="function" style="display: none" id="buildUselessDependencyGraph">Auto Build Dependency Graph</button>
+        <input style="display: none;" type="button" id="convertmovebutton" value="Move states">
+    </div>
+    <div id="av">
+        <div id="menu" ></div>
+        <div class="jsavcontrols">
+        </div>
+        <p align="center" class="jsavoutput jsavline"></p>
+
+    </div>
+    <div id="files">
+        <input id="savefile" type="button" value="Save">
+        <input id="loadfile" type="file">
+        <div style='display: none;'id='download'></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../lib/jquery.transit.js"></script>
+<script src="../../lib/raphael.js"></script>
+<script src="../../lib/dagre.min.js"></script>
+<script src="../../lib/JSAV.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+<script src="../../lib/underscore.js"></script>
+<script src="../../DataStructures/FLA/serializableGraph.js"></script>
+<script src="../../DataStructures/FLA/FA.js"></script>
+<script src="./CustomPrompt.js"></script>
+<script src="./grammarTransformer.js"></script>
+</body>
+</html>

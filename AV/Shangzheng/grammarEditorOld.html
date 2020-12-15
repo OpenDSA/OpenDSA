@@ -37,7 +37,8 @@
 <!--        <button type="button" id="editbutton">Edit</button>-->
         <button type="button" id="addrowbutton">Add Row</button>
         <button type="button" id="deletebutton">Delete</button>
-        <button type="button" class= "function" id="startTransform">StartTransform</button>
+        <button type="button" class="function" id="identifybutton">Identify Grammar</button>
+        <button type="button" class= "function" id="startTransform">Open Transformer</button>
         <button type="button" class="function" id="back">Back</button>
         <button type="button" class="function" id="removeLambda">Remove Lambda</button>
         <button type="button" class="function" id="toUnitproduction">Go to remove Unit production</button>
@@ -58,7 +59,7 @@
 <!--        <button type="button" class="function" id="convertCFGbuttonLL">Convert CFG to PDA (LL)</button>-->
 <!--        <button type="button" class="function" id="convertCFGbuttonLR">Convert CFG to PDA (LR1)</button>-->
 <!--        <button type="button" class="function" id="transformbutton">Transform Grammar</button>-->
-        <button type="button" class="function" id="identifybutton">Identify Grammar</button>
+
         <button type="button" class="function" id="clearbutton">Clear All</button>
 <!--        <button type="button" class="function" id="completeallbutton">Complete All</button>-->
         <button type="button" class="function" id="dependencyButton">build Unit Dependency Graph manually</button>
@@ -77,9 +78,11 @@
         <input style="display: none;" type="button" id="convertmovebutton" value="Move states">
     </div>
     <div id="av">
+        <div id="menu" ></div>
         <div class="jsavcontrols">
         </div>
         <p align="center" class="jsavoutput jsavline"></p>
+
     </div>
     <div id="files">
         <input id="savefile" type="button" value="Save">
@@ -100,6 +103,6 @@
 <script src="../../DataStructures/FLA/serializableGraph.js"></script>
 <script src="../../DataStructures/FLA/FA.js"></script>
 <script src="./CustomPrompt.js"></script>
-<script src="./grammarEditor.js"></script>
+<script src="./grammarTransformer.js"></script>
 </body>
 </html>

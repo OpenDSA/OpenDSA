@@ -41,7 +41,8 @@ $(document).ready(function () {
   This is used to import grammars from certain proofs.
   */
    //do not look at the storage if the editor is for an exercise
-  if (type == null && localStorage["grammar"]) {
+  // if (type == null && localStorage["grammar"]) {
+    if (localStorage["grammar"]) {
     // the grammar is saved as a string of a list of strings:
     // turn each production into an array containing the left side, arrow, and right side
     // arr = _.map(localStorage['grammar'].split(','), function(x) {

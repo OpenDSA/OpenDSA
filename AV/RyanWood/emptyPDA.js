@@ -103,10 +103,10 @@
     resetUndoButtons();
     $('#emptyStackCheck').click(function(){
       if($(this).prop("checked")){
-        localStorage['empty'] = true;
+        localStorage['empty'] = true; //If the empty stack acceptance button is clicked and it becomes check, set it to true to allow the acceptance/rejection of empty stack PDAs
       }
       else{
-        localStorage['empty'] = false;
+        localStorage['empty'] = false; //If it is now unchecked, set it to false. 
       }
     });
 	};
@@ -127,7 +127,8 @@
     var testNum = 1;
     for (i = 0; i < testCases.length; i++) {
       var testCase = testCases[i];
-      if(!testCase.ShowTestCase){
+      var hideOption = testCase.ShowTestCase;
+      if (hideOption == false || hideOption== undefined) {
         containHideTest = true;
       }
 			if(testCase.ShowTestCase){	
@@ -558,19 +559,6 @@
     };
     */
     for (var j = 0; j < inputs.length; j++) {
-    /*
-    This function is the one in question. I need to make it know to reject when it finds a Z (work with empty stack). The function willRejectFunction
-    appears to be able to determine if it accepts so in my mind it would make the most sense to edit that function but that function is not in these files.
-    I found it in another file that was named "PDA.js" (I think) but that was through the chrome dev console telling me where it was when I hovered over the function 
-    name. 
-    
-    My idea for if I need to modify that function, would be to add in another argument called 'empty' and have it default to false, but if it's true then have a branch that
-    has a variation in the logic that determines if it is accepted. This boolean would be determined by when the user goes to enter in an input they would be asked if they wanted empty
-    stack or final state. This could also be done by checking a button and flipping it when it is checked/unchecked. The problem is, I am not sure how to do that in these files as it seems 
-    like this is done in other files (outside of just rewriting all of the logic here, then I have an idea of what I need to do, but need confirmation that's the direction I should be going). 
-    We have the input string already so I would have to move the logic that allows it to traverse to this file or call the proper functions from other files and modify what I need here.
-
-    */
       if (willRejectFunction(g, inputs[j])) {
         // If rejected, color red.
         jsavArray.css(j, {"background-color": "red"});
@@ -581,7 +569,7 @@
       }
     }
     jsavArray.css(0, {"width":"auto"});
-    jsavArray.css(0, {"max-width": "1000px"});
+    //jsavArray.css(0, {"max-width": "1000px"}); remove this and make sure it doesn't affect the width
     jsavArray.click(arrayClickHandler);
     jsavArray.show();
   };

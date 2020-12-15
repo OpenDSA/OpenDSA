@@ -1,0 +1,78 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "exerciseType": "DFA",
+  "totalTrueCases": 10,
+  "totalFalseCases": 10,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{\\mbox{any odd number of a`s}\\}",
+  "type": "expression",
+  "testCases": [
+    {
+      "a": true,
+      "ShowTestCase":false
+    },
+    {
+      "bbbba": true,
+      "ShowTestCase":true
+      
+    },
+    {
+      "abbbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "aa": false,
+      "ShowTestCase":true
+    },
+    {
+      "bbbbb": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaa": true,
+      "ShowTestCase":false
+    },
+    {
+      "abbabbba": true,
+      "ShowTestCase":false
+    },
+    {
+      "aaabbbb": true,
+      "ShowTestCase":false
+    },
+    {
+      "bbbbaaa": true,
+      "ShowTestCase":false
+    },
+    {
+      "aaaa": false,
+      "ShowTestCase":false
+    },
+    {
+      "aba": false,
+      "ShowTestCase":false
+    },
+    {
+      "abbbbbba": false,
+      "ShowTestCase":false
+    },
+    {
+      "abbbbbaaabbbbba": true,
+      "ShowTestCase":false
+    },
+    {
+      "bab": true,
+      "ShowTestCase":false
+    },
+    {
+      "baba": false,
+      "ShowTestCase":false
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/odda.jff"
+}]

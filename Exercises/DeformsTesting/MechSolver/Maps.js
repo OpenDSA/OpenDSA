@@ -281,8 +281,8 @@ Window.defaultDomains = {
         'imperial': Window.UNIT_DB['strain-1']['strain-1'],
     },
     'dimensionless': {
-        'SI': Window.UNIT_DB['dimensionless'][''],
-        'imperial': Window.UNIT_DB['dimensionless']['']
+        'SI': Window.UNIT_DB['dimensionless']['dimensionless'],
+        'imperial': Window.UNIT_DB['dimensionless']['dimensionless']
     }
     // '': {
     //     'SI': '',
