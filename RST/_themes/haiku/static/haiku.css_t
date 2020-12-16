@@ -35,7 +35,7 @@ body {
     margin: auto;
     padding: 0px;
     font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
-    min-width: 59em;
+    /* min-width: 59em; */
     max-width: 70em;
     color: {{ theme_textcolor }};
 }
