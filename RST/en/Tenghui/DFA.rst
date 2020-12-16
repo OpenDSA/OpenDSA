@@ -19,7 +19,7 @@ Now let's see how this machine accepts / rejects some strings.
 
 .. inlineav:: AcceptRejectString ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
-   :scripts: DataStructures/FLA/FA.js AV/Tenghui/AcceptRejectString.js
+   :scripts: DataStructures/FLA/FA.js AV/Tenghui/AcceptRejectString.js AV/Tenghui/randomQuestions.js
    :output: show
 
 
