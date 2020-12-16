@@ -18,3 +18,4 @@ jobs:
           script: |
             cd /home/OpenDSA/LTI_Ruby
             make pull
+
