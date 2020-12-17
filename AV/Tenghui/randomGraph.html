@@ -1,10 +1,44 @@
-<script src="../Tenghui/noam.js"></script>
-<script src="../Tenghui/randomGraph.js"></script>
-<p>
-    <button id="generateDFA" class="btn">Generate random DFA</button>
-    <button id="generateNFA" class="btn">Generate random NFA</button>
-</p>
+<!DOCTYPE html>
+<html lang="en">
 
-<p>
-    <textarea id="fsm" class="input-block-level" type="text" placeholder="or write your own" spellcheck="false"></textarea>
-</p>
+<head>
+    <meta charset="utf-8">
+    <title>Grammar Editor</title>
+    <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
+    <link rel="stylesheet" href="./css/FA.css" type="text/css" />
+    <link rel="stylesheet" href="./css/grammar.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    <link rel="stylesheet" href="./css/parsing.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+    <link rel="stylesheet" href="./css/help.css" type="text/css" />
+    <link rel="stylesheet" href="./css/grammarEditor.css" type="text/css" />
+</head>
+
+<body>
+<div id="container">
+    <h1 id="editor">Grammar Editor</h1>
+    <button id="helpbutton"><img src="./help.png"/></button>
+    <div id="buttons" align="center">
+    <div id="av">
+        <div class="jsavcontrols">
+        </div>
+        <p align="center" class="jsavoutput jsavline"></p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="../../lib/jquery.transit.js"></script>
+<script src="../../lib/raphael.js"></script>
+<script src="../../lib/dagre.min.js"></script>
+<script src="../../lib/JSAV.js"></script>
+<script src="../../lib/odsaUtils-min.js"></script>
+<script src="../../lib/odsaAV-min.js"></script>
+<script src="../../lib/underscore.js"></script>
+<script src="../../DataStructures/FLA/serializableGraph.js"></script>
+<script src="../../DataStructures/FLA/FA.js"></script>
+<script src="./CustomPrompt.js"></script>
+<script src="./randomGraph.js"></script>
+</body>
+</html>

@@ -23,4 +23,18 @@ Now let's see how this machine accepts / rejects some strings.
    :output: show
 
 
+Practice Problems
+=================================
+DFA: Deterministic Finite Acceptor
+----------------------------------
+
+.. inlineav:: DFAPracticeB ff
+   :links: AV/Taylor/Practice/DFAPracticeB.css
+   :scripts: DataStructures/FLA/FA.js AV/Taylor/Practice/DFAPracticeB.js DataStructures/PIFrames.js
+   :output: show
+
+
+
+
+
 
