@@ -15,7 +15,7 @@ jobs:
           user: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: |
+          command: |
             cd /home/OpenDSA/LTI_Ruby
             make pull
 
