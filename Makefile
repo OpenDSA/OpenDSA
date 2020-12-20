@@ -7,19 +7,12 @@ CSS_LINT = csslint --quiet --ignore=ids,adjoining-classes
 # CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 JSON_LINT = jsonlint --quiet
 PYTHON_LINT = pyLint --disable=C --reports=y
-# Can be overridden by env varis, such as ODSA_ENV='PROD' or PYTHON="python3.8"
+# Can be overridden by env varis, such as ODSA_ENV='PROD'
 ODSA_ENV ?= DEV
-PYTHON ?= python
-PYTHON_FLAGS = -bb
-# PYTHON_FLAGS += -Werror 
-
-
-# Changes for installs on native Windows:
-ifeq ($(OS),Windows_NT) 
-	SHELL = bash.exe
-else
-	PYTHON = python3
-endif
+# Python used for building books:
+PYTHON = python -bb
+# -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
+# -u flag runs python in unbuffered mode (no output flushes needed)
 
 JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
 CSS_MINIFY = cleancss
@@ -33,15 +26,17 @@ endif
 .PHONY: clean min pull Webserver
 
 Webserver:
-	@-echo -n "System is: " & uname -s
-	@echo "Using env variable: PYTHON=$(PYTHON)"
-	exec $(PYTHON) server.py
+	exec python -u server.py
 
 pull:
 	git pull
 	git submodule init
 	git submodule update
 	make --silent min
+
+printEnv:
+	@-echo -n "System is: " & uname -s
+	@-echo "ODSA_ENV is: $(ODSA_ENV)"
 
 clean:
 	- $(RM) *~
@@ -160,26 +155,26 @@ allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
 # A Static-Pattern Rule for making Books
 # TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
 $(BOOKS): % : config/%.json min
-	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) $< --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) $< --no-lms
 	@echo "Created an eBook in Books/: $@"
 
 $(SLIDE_BOOKS) : % : config/%.json min
-	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) --slides $< --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) --slides $< --no-lms
 	@echo "Created an Slide-eBook in Books/: $@"
 
 
 # Target eBooks with unique recipies below:::
 CS3notes: min
-	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
 
 CS3F18notes: min
-	python $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
 
 CS5040notes: min
-	python $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
 
 CS5040MasterN: min
-	python $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
 
 CS3SS18notes: min
-	python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms

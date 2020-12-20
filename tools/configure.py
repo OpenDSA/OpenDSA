@@ -505,6 +505,9 @@ def configure(config_file_path, options):
         job.append("min")
 
     # if make is visible to shutil, then no need to use shell
+    ''' TODO: Test if shell_needed is always false, which would make some of the below code useless
+    With the odsa docker update, we could safely assume 'make' to be usable and visible to shutil  
+    '''
     shell_needed = shutil.which('make') is None
     if shell_needed:
         print("WARNING: 'make' command is not visible from python... Doing leap of faith...")
