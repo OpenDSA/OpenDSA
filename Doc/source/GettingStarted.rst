@@ -368,14 +368,6 @@ initialize the submodules and install the python packages requirements
 of OpenDSA.
 **This will probably take a long time to run the first time.**
 
-Note: We created a python virtual environment specifically for OpenDSA.
-This ensures complete control over the python environment in the container
-and allows easy version updating.
-This command also starts the virtual environment that can be started manually
-using the following command::
-
-    . .pyVenv/bin/activate
-
 but the Docker container runs this command automatically.
 
 In order to interact with OpenDSA, you must open a bash shell within the container
