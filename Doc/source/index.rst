@@ -27,3 +27,5 @@ Table of Contents
    Client-sideFramework
    EventMessages
    ExerciseJsonFile
+   Database
+

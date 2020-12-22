@@ -4,7 +4,7 @@
    :topic: Context-Free Grammars Transformation
 
 
-Grammar editor
+Grammar transformer
 --------------
 .. avembed:: AV/Shangzheng/grammarTransformer.html ae
    :long_name: grammar transformer

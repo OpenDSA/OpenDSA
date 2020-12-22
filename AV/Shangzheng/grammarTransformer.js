@@ -104,15 +104,15 @@ $(document).ready(function () {
             if (input === "" && col == 2) {
                 input = emptystring;
             }
-            if (input === "" && col === 0) {
-                alert('Invalid left-hand side.');
-                return
-            }
+            // if (input === "" && col === 0) {
+            //     alert('Invalid left-hand side.');
+            //     fi.remove();
+            //     return
+            // }
             if (col == 2 && _.find(arr, function (x) {
                 return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;
             })) {
                 alert('This production already exists.');
-                return
             }
             fi.remove();
             m.value(row, col, input);
@@ -120,8 +120,14 @@ $(document).ready(function () {
             layoutTable(m, 2);
         }
         if ($('.jsavmatrix').hasClass('deleteMode')) {
-            if (index === 0) {
-                alert("Can't delete the last row");
+            if(index === 0 && lastRow === 0) {
+                arr[index][0] = "";
+                arr[index][2] = "";
+                for(var i = lastRow + 1; i < arr.length; i++) {
+                    arr[i][0] = '';
+                    arr[i][2] = '';
+                }
+                m = init();
                 $('.jsavmatrix').addClass("editMode");
                 $('.jsavmatrix').removeClass("deleteMode");
                 $('.jsavmatrix').removeClass("addrowMode");
@@ -135,15 +141,25 @@ $(document).ready(function () {
                     arr.splice(index, 1);
                     lastRow--;
                     deleteTimes++;
+                    arr.push(["",arrow,""]);
                     m = init();
                 }
             } else {
                 arr.splice(index, 1);
                 lastRow--;
                 deleteTimes++
+                arr.push(["",arrow,""]);
                 m = init();
-
+                for(var i = lastRow + 1; i < arr.length; i++) {
+                    arr[i][0] = '';
+                    arr[i][2] = '';
+                }
             }
+            for(var i = lastRow + 1; i < arr.length; i++) {
+                arr[i][0] = '';
+                arr[i][2] = '';
+            }
+            m = init();
             $('.jsavmatrix').addClass('deleteMode');
         } else if ($('.jsavmatrix').hasClass('editMode')) {
             // ignore if the user clicked an arrow
@@ -267,7 +283,8 @@ $(document).ready(function () {
             input = emptystring;
         }
         if (input === "" && col === 0) {
-            alert('Invalid left-hand side.');
+            //alert('Invalid left-hand side.');
+            fi.remove();
             return;
         }
         if (col == 2 && _.find(arr, function (x) {
@@ -564,8 +581,6 @@ $(document).ready(function () {
     $('#ChangeToChomsky').hide();
     $('#toChomskyForm').click(toChomskyForm);
     $('#ChangeToChomsky').click(transformToChomskyForm);
-    $('#ChangeToChomskyAuto').hide();
-    $('#ChangeToChomskyAuto').click()
     $('#buildUselessDependencyGraph').hide();
     $('#buildUselessDependencyGraph').click(buildUselessDependencyGraph);
 
@@ -593,13 +608,11 @@ $(document).ready(function () {
         ChomskydsArray = [];
         m = init();
         $('#helpbutton').show();
-        //$('#editbutton').show();
         $('#deletebutton').show();
         $('#addrowbutton').show();
         $('#loadfile').show();
         $('#savefile').show();
         $('#startTransform').show();
-        // $('#identifybutton').show();
         $('#clearbutton').show();
 
         $('#removeLambda').hide();
@@ -618,9 +631,6 @@ $(document).ready(function () {
         // document.getElementById("startTransform").disabled = true;
         jsav.umsg('');
     });
-    $('#replaceTerminal').hide();
-
-    //$('#replaceTerminal').click(replaceTerminal);
 
     $('#buildUnitDependencyGraph').hide();
     $('#buildUnitDependencyGraph').click(buildUnitDependencyGraph);
@@ -983,7 +993,8 @@ $(document).ready(function () {
     }
 
     function toUnitProductionStep() {
-
+        document.getElementById('helpInfo').innerHTML = "Help:\n The highlighted produciton is unit produciton.\n Click the \'build dependency graph\' " +
+            "button to set up the relationship of Variables.\n You can choose build the graph manually or automaticlly.";
         jsav.umsg("removing highlighted unit productions needs to build the dependency graph for the grammar");
         for (var i = 0; i < dsArray.length; i++) {
             if (dsArray[i].value(2).length === 1 && variables.indexOf(dsArray[i].value(2)) !== -1) {
@@ -1476,6 +1487,8 @@ $(document).ready(function () {
     }
 
     function toUselessProduction() {
+        document.getElementById('helpInfo').innerHTML = "Help:\n The highlighted produciton is useless produciton.\n Click the \'build dependency graph\' " +
+            "button to set up the relationship of Variables.\n You can choose build the graph manually or automaticlly.";
         jsav.umsg("Next Step is to build the dependency graph for the grammar using the highlighted productions");
         if (modelDFA != null) {
             modelDFA.clear();
@@ -1611,6 +1624,7 @@ $(document).ready(function () {
     }
 
     function toChomskyForm() {
+        document.getElementById('helpInfo').innerHTML = "Help:\n Click the button to start to convert.";
         jsav.umsg("Next Step is converting the grammar to  Chomsky Form");
         if (typeof modelDFA != "undefined") {
             modelDFA.hide();
@@ -1621,18 +1635,6 @@ $(document).ready(function () {
         }
         $('#toChomskyForm').hide();
         $('#ChangeToChomsky').show();
-
-    }
-
-    function changeToChomskyAuto() {
-        var fullChomsky = convertToChomsky();
-        var productions = _.map(_.filter(arr, function (x) {
-            return x[0];
-        }), function (x) {
-            return x.slice();
-        });
-        var tGrammar;
-        var tArr = [].concat(productions);
 
     }
 
@@ -1978,6 +1980,7 @@ $(document).ready(function () {
         }), function (x) {
             return x.slice();
         });
+        //$('#helpbutton').hide();
         var imgs = "Transfer the following grammars you inputted below from CTG to CNF:" + "<br>";
         console.log(productions[0][1]);
         for (var i = 0; i < productions.length; i++) {
@@ -1988,7 +1991,7 @@ $(document).ready(function () {
             }
 
         }
-        imgs = imgs + "Please click startTransform button to start this experience";
+        //imgs = imgs + "Please click startTransform button to start this experience";
         document.getElementById('editor').innerText = "Grammar Transform Exercise"
         document.getElementById('description').innerHTML = imgs;
         var strP = _.map(productions, function (x) {
@@ -2032,20 +2035,23 @@ $(document).ready(function () {
 
         if (!checkTransform(strP, noLambda)) {
             $('#removeLambda').show();
-
+            document.getElementById('helpInfo').innerHTML = "The highlighted grammar is the lambda production, click \'Remove Lambda\' button to remove them, and may additional productions show up.";
             if (highlightCounter === 1) {
-                jsav. umsg("the highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
+                jsav. umsg("The highlight production is the Lambda production. In the Transformation, we need to remove it firstly!");
             } else if (highlightCounter > 1) {
-                jsav.umsg("the highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
+                jsav.umsg("The highlight productions are the Lambda productions. In the Transformation, we need to remove them firstly!");
             }
         } else if (!checkTransform(strP, noUnit)) {
-            jsav.umsg('You productions do not have any lambda productions! Move to remove unit productions phase');
+            jsav.umsg('Your productions do not have any lambda productions! Move to remove unit productions phase');
             $('#toUnitproduction').show();
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
         } else if (!checkTransform(strP, noUseless)) {
-            jsav.umsg('You productions do not have any lambda productions and unit productions! Move to remove useless productions phase');
+            jsav.umsg('Your productions do not have any lambda productions and unit productions! Move to remove useless productions phase');
             $('#toUselessProduction').show();
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
         } else if (!checkTransform(strP, fullChomsky)) {
             jsav.umsg('Grammar already in Chomsky Normal Form.');
+            document.getElementById('helpInfo').innerHTML = "Help:\n click button to next step";
             return true;
         } else {
             backup = null;

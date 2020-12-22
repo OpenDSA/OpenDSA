@@ -70,7 +70,7 @@ $(document).ready(function () {
     }
     var m2 = jsav.ds.matrix(arr, {style: "table"});
     // hide all of the empty rows
-    for (var i = lastRow + 1; i < arr.length; i++) {
+    for (var i = lastRow+1; i < arr.length; i++) {
       m2._arrays[i].hide();
     }
     layoutTable(m2, 2);
@@ -93,9 +93,10 @@ $(document).ready(function () {
       if (input === "" && col == 2) {
         input = emptystring;
       }
-      if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
-      }
+      // if (input === "" && col === 0) {
+      //   alert('Invalid left-hand side.');
+      //   return;
+      // }
       if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
         alert('This production already exists.');
       }
@@ -105,8 +106,11 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if(index === 0){
-        alert("Can't delete the last row");
+      if(index === 0 && lastRow === 0){
+        //alert("Can't delete the last row");
+        arr[index][0] = "";
+        arr[index][2] = "";
+        m = init();
         $('.jsavmatrix').addClass("editMode");
         $('.jsavmatrix').removeClass("deleteMode");
         $('.jsavmatrix').removeClass("addrowMode");
@@ -124,15 +128,22 @@ $(document).ready(function () {
           arr.splice(index, 1);
           lastRow--;
           deleteTimes++;
+          arr.push(["",arrow,""]);
           m = init();
         }
       } else {
         arr.splice(index, 1);
         lastRow--;
-        deleteTimes++
+        deleteTimes++;
+        arr.push(["",arrow,""]);
         m = init();
 
       }
+      for(var i = lastRow + 1; i < arr.length; i++) {
+        arr[i][0] = '';
+        arr[i][2] = '';
+      }
+      m = init();
       $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
       // ignore if the user clicked an arrow
@@ -256,7 +267,8 @@ $(document).ready(function () {
       input = emptystring;
     }
     if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
+        //alert('Invalid left-hand side.');
+        fi.remove();
         return;
     }
     if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
@@ -1386,6 +1398,7 @@ $(document).ready(function () {
     jsav.umsg('Deleting');
   };
   var addrowMode = function(){
+
     if (lastRow === arr.length - 1 || lastRow === arr.length) {
       var l = arr.length;
       for (var i = 0; i < l; i++) {

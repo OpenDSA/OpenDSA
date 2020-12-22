@@ -609,6 +609,18 @@
     }
   };
 
+  // Initializes a graph by parsing a JSON representation.
+  var initGraphFromServer = function() {
+		window.FetchStoredProgress().then(res => {
+			if(res != null && res["progress"] != ""){
+				//$('.jsavgraph').remove();
+				g.initFromXML(res["progress"]);
+			}
+		}).catch(err => {
+			console.log('fail' + err);	
+		})
+	};
+
   var startX, startY, endX, endY; // start position of dragging edge line
   function mouseDown(e) {
     if (!$('.jsavgraph').hasClass('addEdges')) return;
@@ -810,6 +822,7 @@
   $('#alphabets').hide();
   $('#closeAv').hide();
   onLoadHandler();
+  //initGraphFromServer();
 
   //g = initGraph({layout: "manual"});
   //g.layout();
