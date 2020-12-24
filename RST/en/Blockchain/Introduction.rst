@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-    :author: Bailey Spell and Jesse Terrazas
+    :author: Bailey Spell, Jesse Terrazas, and Cliff Shaffer
 
 Understanding Blockchain
 ========================
@@ -88,7 +88,7 @@ Next, let's consider a simple example of a "block".
 In the figure below, we show a block as having some number and then
 some data.
 The data might be structured, like a list of transactions.
-But in this example, its just text.
+But in this example, it's just text.
 The point is that hashing a "block" just means taking the various
 fields (here, the block number and the data), and concatenating them
 into a single quantity that is hashed by SHA-256.
@@ -107,8 +107,8 @@ When we combine a pointer with a hash of the data that the pointer
 points to, we get a hash pointer (surprise!).
 In the figure below, the blocks are arranged from left to right with
 the oldest block to the left, and the most recent block to the right.
-As new blocks are added on the right side, they incorporate the hash to
-their left, to form a chain.
+As new blocks are added on the right side, they incorporate the hash
+of the block to their immediate left, to form a chain.
 Change data in any block, and you see that we are also
 altering its hash, and therefore we are altering the
 resulting hash of every block that comes to its right.
@@ -124,6 +124,9 @@ well.
 This is how a blockchain is "secure".
 We cannot change the data in an earlier block in the chain without
 causing an inconsistency in the values of the blocks that come after.
+If you hold the hash to the right-most block, then nothing in any part
+of the blockchain can be altered without your knowledge, because doing
+so will make your hash no longer match with the blockchain.
 
 This next example shows a simple version of how a block might look in
 a cryptocurrency like Bitcoin.
@@ -133,7 +136,9 @@ block to cause the hash value to have some property, typically that it
 be less than some threshold.
 For our example, the nonce has been picked so that the first 4 digits
 of the hash are all zero.
-The idea of "mining" is simply to try different values for the nonce
+You have probably heard the term "mining" in the context of Bitcoin or
+blockchain.
+"Mining" simply means to try different values for the nonce
 until some hash value with 4 zeros at the front is stumbled upon.
 What you should do is add data to each block, and then click the
 "Mine" button.

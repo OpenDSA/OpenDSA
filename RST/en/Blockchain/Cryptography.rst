@@ -22,17 +22,20 @@ There are two main ways that cyrptography fits in.
 The first we already saw: That a standard cryptography algorithm is
 used to generate a hash code.
 Why do it that way? We'll explain that next.
-Below, we talk about how cyrptography allows a seeming contradiction:
+Later, we talk about how cyrptography allows a seeming contradiction:
 On the one hand, people can perform tasks like send messages and
 conduct transactions while remaining anonymous (if they like), while
 on the other hand, the recipient of the message or transaction can be
 confident about the "identity" of who they are dealing with.
 
-TODO: DISCUSS HERE WHY WE USE CRYPTOGRAPHIC HASH FUNCTIONS.
-BASICALLY, TO MAKE THEM EFFECTIVELY RANDOM, SO THAT THEY CANNOT BE
-REVERSE ENGINEERED.
+.. TODO::
+   :type: Explanation
+          
+   DISCUSS HERE WHY WE USE CRYPTOGRAPHIC HASH FUNCTIONS.
+   BASICALLY, TO MAKE THEM EFFECTIVELY RANDOM, SO THAT THEY CANNOT BE
+   REVERSE ENGINEERED.
 
-NOTE THAT PASSWORD SYSTEMS WORK THE SAME WAY.
+   NOTE THAT PASSWORD SYSTEMS WORK THE SAME WAY.
 
 
 Identification
@@ -43,21 +46,29 @@ Blockchain systems often use :term:`public-key cryptography` to
 message or transaction.
 At the same time, this process allows a participant to keep their
 "real world" identity secret, while still convincing everyone else
-involved that they have the right to make the transaction involved.
+involved that they have the right to make a given transaction.
 
 To start, a participant generates a coordinated pair of keys:
 their public key and their private key.
-They use a cryptographic hash function to do this for all the usual
-reasons, that they cannot be reverse engineered.
-They publish the public key, and maintain the private key in secret.
+They use a cryptographic hash function to do this for the usual
+reason, that the resulting hash cannot be reverse engineered.
+The point to the keys is that they are functional inverses of each
+other.
+That is, you can use either one to encrypt a message, and then use the
+other one to decrypt the message.
+The participant will then publish the public key, and maintain the
+private key in secret.
 
-It is possible [EXPLAIN HOW] for the participant to use their private
-key to sign a message or transaction so that anyone can use the
-participant's public key to verify, with a small amount of
+So now, the participant can hash their signature on a message or
+transaction using the private key.
+Anyone with the public key (which ought to be anyone who is
+interested) can then verify, with a small amount of
 computational effort, that the participant signed it.
+They do this by decrypting the signature.
 At the same time, it is computationally infeasible for
 anyone without the private key to sign a message and pass it off as
-signed by the participant. [EXPLAIN]
+signed by the participant.
+Because that public key will just decrypt to gibberish if someone tried.
 This is essential in blockchains to verify who originated a message.
 
 Now we are going to demonstrate how RSA encryption is used to do this.
@@ -137,4 +148,4 @@ decrypt.
 
 You can see that the process is reversable.
 Simply reverse the use of the public and private keys in the widgets
-above, to see that this can go in either direction. [EXPLAIN THIS BETTER.]
+above, to see that this can go in either direction.
