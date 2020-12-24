@@ -16,12 +16,12 @@ Minimizing the Number of States in a DFA
 ----------------------------------------
 
 .. inlineav:: DFAMinFS ff
-   :links: DataStructures/FLA/FLA.css AV/PIExample/DFAMinimizationFF.css
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAMinFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/FA/DFAMinFS.js
    :output: show
 
-Unfortunately, this is not obviously an algorithm, since we cannot
-actually test on all input strings.
+Unfortunately, this is not an algorithm, since we cannot actually test
+on all input strings if the language is infinite.
 
 * But remember the definition for :math:`\delta^*(p, w)`.
   Look at things this way:
@@ -39,11 +39,12 @@ We will build a tree, whose root has all states in the original machine.
 The first step will always be to split the states into the subset of
 non-final vs. the subset of final states, so these are the children of
 the root.
-We then look at each current leaf node of the tree, and check the
+We then look at some current leaf node of the tree, and check the
 transitions from each of the states in that leaf.
 We test a given character against the states in that subset to see if
 they all go to the same subset.
 Split them up when they do not go to the same place.
+
 
 Minimization Example 1
 ----------------------

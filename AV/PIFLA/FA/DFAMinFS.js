@@ -6,104 +6,86 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
-  //frame 1
-  av.umsg("In this chapter we will see how to minimize the DFA number of states. The new minimized DFA will be accepting the same languages accepted by the original DFA.");
+  // Frame 1
+  av.umsg("In this module we will develop an algorithm to minimize the number of states in a DFA. The minimized DFA will accept the same language as the original DFA.");
   av.displayInit();
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+
+  // Frame 2
+  av.umsg(Frames.addQuestion("why"));
   av.step();
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+
+  // Frame 3
+  av.umsg(Frames.addQuestion("manystates"));
   av.step();
-  //frame 4
-  av.umsg(Frames.addQuestion("q4"));
+
+  // Frame 4
+  av.umsg(Frames.addQuestion("power"));
   av.step();
-  //frame 5
-  av.umsg(Frames.addQuestion("q5"));
+
+  // Frame 5
+  av.umsg(Frames.addQuestion("similar"));
   av.step();
-  //frame 6
-  av.umsg("Sometimes, these huge DFA have many states that are similar.");
+
+  // Frame 6
+  av.umsg(Frames.addQuestion("indistinguishable"));
   av.step();
-  //frame 7
-  av.umsg("The word similar here means that some states do the same transitions given the same letters. Combining these states together will minimize the number of states.");
+
+  // Frame 7
+  av.umsg(Frames.addQuestion("distinguishable"));
   av.step();
-  //frame 8
-  av.umsg(Frames.addQuestion("q8"));
-  av.step();
-  //frame 9
-  av.umsg(Frames.addQuestion("q9"));
-  av.step();
-  //frame 10
-  av.umsg("What does that mean? It means that if we have a group of FINAL states $F$, if states $p$ and $q$ are indistinquishable, similar, then both states will end in the same destination, F, while consuming any string $w$");
-  av.step();
-  //frame 11
-  av.umsg("In other words, both states act similarly on any string. Both either lead to accept the string or reject it.");
-  av.step();
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
-  av.step();
-  //frame 13
-  av.umsg("This means that there exist a string $w$ that makes both states lead to different decisions. One of them leads to accepting the string, a final state, an the other leads to a non final state. So these states are different");
-  av.step();
-  //frame 14
+
+  // Frame 8
   av.umsg("All that an acceptor (DFA) cares about is accepting or rejecting strings.")
   av.step();
-//frame 15
-  av.umsg(Frames.addQuestion("q15"));
+
+  // Frame 9
+  av.umsg(Frames.addQuestion("group"));
   av.step();
-  //frame 16
-  av.umsg("Once we knew the simialr states, we group them together into one state. The result is a minimized DFA.");
+
+  // Frame 10
+  av.umsg("Once we knew about all instances of similar states, we group them together. The result is a minimized DFA. Distinguishability is an equivalence relation. We are trying to break the set of all states into subsets that are equivances.");
   av.step();
-  //frame 17
-  av.umsg("Distinguishability is an equivalence relation. We are trying to break the set of all states into subsets that are equivances.");
-  av.step();
-  //frame 18
-  av.umsg("Let us see an example to calrify the process. Look at this DFA.");
+
+  // Frame 11
+  av.umsg("Let us see an example to clarify the process. Look at this DFA.");
   var url = "../../../AV/VisFormalLang/FA/Machines/stminDFA1.jff";
   var dfa = new av.ds.FA({top: 0, left: 10, width: 500, height: 150, url: url});
   av.step();
-  //frame 19
-  av.umsg(Frames.addQuestion("q19"));
+
+  // Frame 12
+  av.umsg(Frames.addQuestion("Aa"));
   var A = dfa.getNodeWithValue("A");
   var F = dfa.getNodeWithValue("F");
   var D = dfa.getNodeWithValue("D");
   A.highlight();
   av.step();
-  //frame 20
-  av.umsg(Frames.addQuestion("q20"));
+
+  // Frame 13
+  av.umsg(Frames.addQuestion("Aab"));
   av.step();
-  //frame 21
+
+  // Frame 14
   A.unhighlight();
   F.highlight();
-  av.umsg(Frames.addQuestion("q21"));
+  av.umsg(Frames.addQuestion("Fa"));
   av.step();
-  //frame 22
-  av.umsg(Frames.addQuestion("q22"));
+
+  // Frame 15
+  av.umsg(Frames.addQuestion("Fab"));
   av.step();
-  //frame 23
+
+  // Frame 16
   F.unhighlight();
   D.highlight();
-  av.umsg(Frames.addQuestion("q23"));
+  av.umsg(Frames.addQuestion("conclusion"));
   av.step();
-  //frame 24
-  av.umsg(Frames.addQuestion("q24"));
+
+  // Frame 17
+  av.umsg(Frames.addQuestion("unknown"));
   av.step();
-  //frame 25
-  A.highlight();
-  F.highlight();
-  av.umsg(Frames.addQuestion("q25"));
-  av.step();
-  //frame 26
-  av.umsg(Frames.addQuestion("q26"));
-  av.step();
-  //frame 27
-  av.umsg(Frames.addQuestion("q27"));
-  av.step();
-  //frame 28
-  av.umsg(Frames.addQuestion("q28"));
-  av.step();
-  //frame 29
-  av.umsg("Completed");
+
+  // Frame 18
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });
 
