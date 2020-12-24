@@ -1,6 +1,6 @@
 {
-  "title": "Programmed Instruction Examples Grading Enabled",
-  "desc": "Programmed Instruction Examples Grading Enabled",
+  "title": "CS4114 Formal Languages Spring 2021",
+  "desc": "CS4114 Formal Languages Spring 2021",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -67,77 +67,56 @@
       "Intro": {}
     },
     "Introduction": {
-      "PIFormalLang/MajorConcepts": {},
-      "PIFormalLang/IntroductoryGrammarExercises":{
-        "sheet1exercise5":{
+      "PIFLA/FLIntro": {},
+      "PIFLA/FLOverview": {},
+      "PIFLA/MajorConcepts": {},
+      "PIFLA/IntroGrammarEx": {
+        "GramIntro3str":{
           "points": 2.0
         },
-        "sheet1exercise6":{
+        "GramIntroanbm":{
           "points": 2.0
         },
-        "sheet1exercise7":{
-          "points": 2.0
-        },
-        "sheet1Practice5":{
-          "points": 2.0
-        },
-        "sheet1Practice6":{
-          "points": 2.0
-        },
-        "sheet1Practice7":{
+        "GramIntroanb2n":{
           "points": 2.0
         }
       }
     },
     "Mathematical Background": {
-      "PIFormalLang/SetDefinitions": {},
-      "PIFormalLang/Relations": {},
-      "PIFormalLang/MathProof":{}
+      "PIFLA/SetNotation": {},
+      "PIFLA/Relations": {},
+      "Background/Proofs": {}
     },
     "Finite Acceptors": {
-      "PIFormalLang/DFA":{},
-      "PIFormalLang/DFAExercises":{
-        "sheet1exercise1":{
+      "PIFLA/DFA":{
+        "DFAEvenBinary": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/DFAExercises": {
+        "DFAodda": {
           "points": 5.0
         },
-        "sheet1exercise2":{
+        "DFAoddaevenb": {
           "points": 5.0
         },
-        "sheet1exercise3":{
+        "DFAodda3b": {
           "points": 5.0
         },
-        "sheet1exercise4":{
-          "points": 5.0
-        },
-        "sheet1Practice1":{
-          "points": 5.0
-        },
-        "sheet1Practice2":{
-          "points": 5.0
-        },
-        "sheet1Practice3":{
-          "points": 5.0
-        },
-        "sheet1Practice4":{
+        "DFAno3a": {
           "points": 5.0
         }
       },
-      "PIFormalLang/NFA":{},
-      "PIFormalLang/NFAExercises":{
-        "NFAtoDFAExerciseEditor":{
-          "points": 10.0
+      "PIFLA/NFA":{
+        "NFAtoDFAex":{
+          "points": 5.0
         },
-        "sheet2exercise4":{
-          "points": 10.0
-        },
-        "NFAtoDFAPracticeEditor":{
-          "points": 10.0
-        },
-        "sheet2Practice4":{
-          "points": 10.0
+        "NFAex1":{
+          "points": 5.0
         }
       },
-      "PIFormalLang/DFAMinimization":{},
+      "PIFLA/NFAExercises": {},
+      "PIFLA/DFAMinimization": {},
       "PIFormalLang/MinimizationExercises":{
         "DFAminimizationExerciseEditor":{
           "points": 10.0
@@ -302,6 +281,10 @@
       "PIFormalLang/NPCCoping": {},
       "PIFormalLang/UnsolveableProblems1": {},
       "PIFormalLang/UnsolveableProblems2": {}
+    },
+    "Appendix": {
+      "Glossary": {},
+      "Bibliography": {}
     }
   }
 }

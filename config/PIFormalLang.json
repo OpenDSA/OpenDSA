@@ -1,6 +1,6 @@
 {
-  "title": "Programmed Instruction Examples",
-  "desc": "Programmed Instruction Examples",
+  "title": "CS4114 Formal Languages Fall 2020",
+  "desc": "CS4114 Formal Languages Fall 2020",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -37,14 +37,14 @@
     "JXOP-debug": "true"
   },
   "glob_ss_options": {
-    "threshold": 1.0, 
-    "points": 0.0, 
-    "required": false
+    "threshold": 0.1, 
+    "points": 1.0, 
+    "required": true
   }, 
   "glob_ff_options": {
     "threshold": 1.0, 
-    "points": 0.0, 
-    "required": false
+    "points": 1.0, 
+    "required": true
   },
   "glob_ka_options": {
     "threshold": 5, 

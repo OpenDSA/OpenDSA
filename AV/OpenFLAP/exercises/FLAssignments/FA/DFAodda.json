@@ -74,5 +74,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../machines/FA/odda.jff"
+  "solution": "../../../machines/FA/DFAodda.jff"
 }]

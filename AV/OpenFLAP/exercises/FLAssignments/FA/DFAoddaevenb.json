@@ -81,5 +81,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../machines/FA/oddaevenb.jff"
+  "solution": "../../../machines/FA/DFAoddaevenb.jff"
 }]

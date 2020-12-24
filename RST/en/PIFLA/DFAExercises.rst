@@ -15,20 +15,20 @@ DFA exercises
 DFA exercises
 -------------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/odda.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda.html pe
    :long_name: Odd number of a's
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/oddaevenb.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAoddaevenb.html pe
    :long_name: Odd number of a's, even number of b's
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/odda3b.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda3b.html pe
    :long_name: Odd number of a's, at most 3 b's
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/no3a.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAno3a.html pe
    :long_name: No string with 3 consecutive a's

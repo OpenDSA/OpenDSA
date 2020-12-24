@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
-   :requires: Deterministic Finite Automata
+   :requires: Non-deterministic Finite Automata
    :satisfies: DFA minimization
    :topic: Finite Automata
 
