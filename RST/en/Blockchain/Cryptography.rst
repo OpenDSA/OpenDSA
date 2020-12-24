@@ -12,8 +12,8 @@
 Cryptography and Blockchain
 ===========================
 
-Cryptography Hashing: It might as well be random
-------------------------------------------------
+Using Cryptography: It might as well be random
+----------------------------------------------
 
 In this section, we talk about how cryptography is a fundamental part
 of blockchain, cryptocurrencies, and any other application that
@@ -28,18 +28,45 @@ conduct transactions while remaining anonymous (if they like), while
 on the other hand, the recipient of the message or transaction can be
 confident about the "identity" of who they are dealing with.
 
-.. TODO::
-   :type: Explanation
-          
-   DISCUSS HERE WHY WE USE CRYPTOGRAPHIC HASH FUNCTIONS.
-   BASICALLY, TO MAKE THEM EFFECTIVELY RANDOM, SO THAT THEY CANNOT BE
-   REVERSE ENGINEERED.
 
-   NOTE THAT PASSWORD SYSTEMS WORK THE SAME WAY.
+Generating a Hash Code
+----------------------
+
+We often want to generate a hash code for some information.
+Specifically, we will take an arbitrary string of any lenght and
+generate a fixed-length number in return.
+As mentioned in the introduction, we will assume that SHA-256 will be
+used to crate a 256-bit (or 64 hexidecimal charater) code.
+
+There are two key features of SHA-256 that we rely on to make the
+system secure.
+First, given a hash code, there is no practical way to recover any
+information about the original string used to generate it.
+So, SHA-256 needs to slice and dice the original string to the point
+that no meaningful information is retained.
+We will never have need to undo the hashing process to recover the
+original message used to create the code.
+The second important property is that minor changes to the input
+string lead to unpredictable changes in the resulting hash value.
+For example, switching two letters in the input string will change the
+resulting hash code in unpredictable ways.
+Going up by one letter (like changing an 'a' to a 'b') will also
+change the resulting hash code in unpredictable ways.
+This property is critical for the "proof of work" concept used by a
+system like Bitcoin (see :ref:`Mining <Mining> <Mining>`).
 
 
-Identification
-~~~~~~~~~~~~~~
+Encrypting and Decrypting
+-------------------------
+
+The second fundamental cryptographic service that we rely on is the
+ability to securely encrypt a message.
+This means that a string (of arbitrary length) can be given to an
+encryption process, and the resulting output string cannot be used to
+deduce the original message.
+But unlike hashing, there has to be a way to decrypt the message.
+When given the decryption key, the process can be reversed, the
+original message can be recovered from the encrypted string.
 
 Blockchain systems often use :term:`public-key cryptography` to
 "identify" participants and confirm which participant originated a
@@ -59,17 +86,27 @@ other one to decrypt the message.
 The participant will then publish the public key, and maintain the
 private key in secret.
 
-So now, the participant can hash their signature on a message or
+So now, the participant can encrypt their signature on a message or
 transaction using the private key.
 Anyone with the public key (which ought to be anyone who is
-interested) can then verify, with a small amount of
-computational effort, that the participant signed it.
-They do this by decrypting the signature.
+interested, because the public key is meant to be exactly that --
+public) can then verify, with little computational effort,
+that the participant signed it.
+They do this by decrypting the encrypted signature with the public
+key.
 At the same time, it is computationally infeasible for
 anyone without the private key to sign a message and pass it off as
 signed by the participant.
-Because that public key will just decrypt to gibberish if someone tried.
-This is essential in blockchains to verify who originated a message.
+Because that public key will just decrypt to gibberish if someone
+tried.
+This is essential in blockchains to verify who originated a message,
+such as a financial transaction.
+Note that what this means is that we can know that the holder of the
+private key that matches this private key did the encryption of the
+signature (and so is authorized to do this transaction).
+But that does not mean that we know who this person is, beyond the
+fact that they hold the private key.
+This is what allows users to be anonymous.
 
 Now we are going to demonstrate how RSA encryption is used to do this.
 To see how this works, you should type some message that you would
@@ -108,7 +145,9 @@ In a real application, you would make your public key, well, public.
 That way, anyone who wants to verify that a message really comes from
 you can do it.
 Or, anyone who wants to send you a message that only you can read can
-do it.
+do so.
+This is because when the public key is used to encrypt a message, only
+the matching private key can decrypt it.
 For this example, assume that someone wants to use your public key 
 to encrypt the message that you typed above.
 By copying the public key into the box, you will see that the message
