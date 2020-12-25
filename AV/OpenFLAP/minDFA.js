@@ -392,7 +392,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 				exerciseLog.errorMessages.push('Incomplete DFA transitions');
 				exerciseLog.errorsCount++;
       		}
-     		return 0;
+     		return {score: 0, solution: serialize(studentGraph)};
 		}
 		else {
 			jsav.umsg("You got it!");

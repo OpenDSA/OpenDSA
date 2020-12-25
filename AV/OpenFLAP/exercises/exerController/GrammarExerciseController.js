@@ -253,8 +253,8 @@ controllerProto.startTesting = function () {
     window.scrollTo(0, document.body.scrollHeight);
     $('#container').scrollTop($('#container').prop("scrollHeight"));
     if (count === 0)
-      return 0;
-    return count / numberOfTestCases;
+    return { score: 0, solution: JSON.stringify(arr)};
+    return {score: count / numberOfTestCases, solution: JSON.stringify(arr)};
   }
 };
 

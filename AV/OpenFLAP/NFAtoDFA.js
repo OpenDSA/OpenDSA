@@ -337,7 +337,7 @@ var nodeClickHandlers = function(e) {
 		exerciseLog.errorsCount++;
 		exerciseLog.errorMessages.push("You're not done yet");
     }
-    return 0;
+    return {score: 0, solution: serialize(studentGraph)};
 	}
 	if(exerController)
 		return exerController.startTesting(studentGraph);
