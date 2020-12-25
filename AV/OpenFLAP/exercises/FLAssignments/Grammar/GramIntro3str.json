@@ -5,7 +5,6 @@
   "totalFalseCases": 1,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "expression": "",
   "description": "Write a grammar for the following alphabet and language:$\\Sigma = \\{a, b\\}, \\quad L = \\{b, ab, bab\\}$",
   "type": "description",
   "testCases": [

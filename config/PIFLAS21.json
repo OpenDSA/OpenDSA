@@ -71,14 +71,20 @@
       "PIFLA/FLOverview": {},
       "PIFLA/MajorConcepts": {},
       "PIFLA/IntroGrammarEx": {
-        "GramIntro3str":{
+        "GramIntro3str": {
           "points": 2.0
         },
-        "GramIntroanbm":{
+        "GramIntroanbm": {
           "points": 2.0
         },
-        "GramIntroanb2n":{
+        "GramIntroanb2n": {
           "points": 2.0
+        },
+        "Parens": {
+          "points": 3.0
+        },
+        "Palendrome": {
+          "points": 3.0
         }
       }
     },

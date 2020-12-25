@@ -27,3 +27,13 @@ Grammar Exercises
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanb2n.html pe
    :long_name: anb2n grammar
+
+|
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Parens.html pe
+   :long_name: Balanced Parentheses grammar
+
+|
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Palendrome.html pe
+   :long_name: Palendrome grammar
