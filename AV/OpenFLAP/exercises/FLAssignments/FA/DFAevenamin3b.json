@@ -1,0 +1,46 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "exerciseType": "DFA",
+  "totalTrueCases": 5,
+  "totalFalseCases": 5,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "expression": "",
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings with any even number of a’s and at least three b’s.",
+  "type": "description",
+  "testCases": [
+    {
+      "bbb": true,
+      "ShowTestCase": true
+    },
+    {
+      "bbab": false,
+      "ShowTestCase":true
+    },
+    {
+      "babb": false,
+      "ShowTestCase":true
+    },
+    {
+      "babab": true,
+      "ShowTestCase":true
+    },
+    {
+      "aabbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "aabbbaab": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaaaaaaaabbb": false,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/DFAevenamin3b.jff"
+}]

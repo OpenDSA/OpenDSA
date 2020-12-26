@@ -178,12 +178,6 @@ Deterministic Finite Acceptors
        with "ab".
 
 
-.. slide:: Another Example
-
-    .. avembed:: AV/OpenFLAP/examples/mod3.html ss
-       :long_name: draw a DFA for a language example
-
-
 .. slide:: Regular Languages
 
    **Definition**: Given some class or type of Finite Acceptors,

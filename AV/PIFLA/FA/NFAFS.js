@@ -1,5 +1,5 @@
 /*global PIFRAMES */
-// Initial draft by ??, Rewritten by Cliff Shaffer, November 2020
+// Initial draft by John Taylor, Rewritten by Cliff Shaffer, November 2020
 $(document).ready(function() {
   "use strict";
   var av_name = "NFAFS";

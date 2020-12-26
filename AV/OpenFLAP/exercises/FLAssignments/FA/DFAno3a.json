@@ -5,8 +5,8 @@
   "totalFalseCases": 10,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "expression": "\\Sigma = \\{a, b\\}, \\quad L = \\{\\mbox{strings that do not have three consecutive a`s}\\}",
-  "type": "expression",
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings that do not have three consecutive a's.",
+  "type": "description",
   "testCases": [
     {
       "bbbbbb": true,

@@ -1,5 +1,5 @@
 /*global PIFRAMES */
-// Initial draft by ??, Rewritten by Cliff Shaffer
+// Initial draft by John Taylor, Rewritten by Cliff Shaffer
 $(document).ready(function() {
   "use strict";
   var av_name = "DFAintroFS";

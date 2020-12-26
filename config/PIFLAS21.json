@@ -113,7 +113,22 @@
           "points": 5.0
         }
       },
-      "PIFLA/NFA":{
+      "PIFLA/DFAExercises2": {
+        "DFAevena": {
+          "points": 5.0
+        },
+        "DFAevenaoddb": {
+          "points": 5.0
+        },
+        "DFAoddamin3b": {
+          "points": 5.0
+        },
+        "DFAbotheo": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/NFA": {},
+      "PIFLA/NFAExercises": {
         "NFAtoDFAex":{
           "points": 5.0
         },
@@ -121,7 +136,6 @@
           "points": 5.0
         }
       },
-      "PIFLA/NFAExercises": {},
       "PIFLA/DFAMinimization": {},
       "PIFormalLang/MinimizationExercises":{
         "DFAminimizationExerciseEditor":{

@@ -16,6 +16,9 @@
 Key Concepts
 ============
 
+Key Concepts
+------------
+
 .. slide:: Key Concept: Language
 
    * :math:`\Sigma`: A set of symbols, an alphabet
@@ -97,10 +100,13 @@ Key Concepts
 
 .. slide:: Example
 
-    .. avembed:: AV/OpenFLAP/examples/braces.html ss
-       :long_name: write a grammar for a language example
+   .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Parens.html pe
+      :long_name: Balanced Parentheses grammar
 
+.. slide:: .
 
+   .
+    
 .. slide:: Grammar Notation
 
    | :math:`w \Rightarrow z: \qquad w` derives :math:`z`

@@ -1,39 +1,39 @@
 [{
-    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
     "exerciseType": "DFA",
     "totalTrueCases": 5,
-    "totalFalseCases": 5,
+    "totalFalseCases": 2,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "expression": "",
-    "description": "Give a DFA that accepts the language over Σ ={a, b} of any even number of a’s and at least three b’s.",
+    "description": "Give a DFA that accepts the language over $\\Sigma =\\{a, b\\}$ where the number of a’s and b’s are either both even or both odd.",
     "type": "description",
     "testCases": [{
-            "bbb": true,
+            "aabb": true,
             "ShowTestCase":true
         },
         {
-            "bbab": false,
+            "ababab": true,
             "ShowTestCase":true
         },
         {
-            "babb": false,
+            "abababab": true,
             "ShowTestCase":true
         },
         {
-            "babab": true,
+            "aabbb": false,
             "ShowTestCase":true
         },
         {
-            "aabbb": true,
+            "baab": true,
             "ShowTestCase":true
         },
         {
-            "aabbbaab": true,
+            "aabbabababbababbababa": false,
             "ShowTestCase":true
         },
         {
-            "aaaaaaaaabbb": false,
+            "aabbabababbababbabaa": true,
             "ShowTestCase":true
         }
     ],
@@ -41,5 +41,5 @@
         "nodes": [],
         "edges": []
     },
-    "solution": "./sheet1practice3.jff"
+    "solution": ""
 }]
