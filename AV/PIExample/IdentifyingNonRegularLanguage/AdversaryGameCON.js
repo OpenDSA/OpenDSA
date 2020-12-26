@@ -2,10 +2,6 @@ $(document).ready(function () {
   "use strict";
   var av_name = "AdversaryGameCON";
   var av = new JSAV(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
 
   av.umsg("Here is an adversary argument way of looking at this. Your goal is to establish a contradiction (to prove the language is not regular), while the opponent tries to stop the proof. The moves in the game are:")
   av.displayInit();
