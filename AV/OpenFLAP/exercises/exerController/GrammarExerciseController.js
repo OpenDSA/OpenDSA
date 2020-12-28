@@ -140,7 +140,7 @@ controllerProto.startTesting = function () {
     });
     if (productions.length == 0) {
       alert("No Grammar to grade");
-      return 0;
+      return { score: 0, solution: JSON.stringify(arr)};
     }
     //we need to find an initial test to know if the student has something to test or not
     $("#testResults").empty();
@@ -155,7 +155,7 @@ controllerProto.startTesting = function () {
     var numberOfTestCases = this.testCases.length;
     if (grammarType == 'unrestricted') {
       alert("Incorrect Grammar.");
-      return 0;
+      return { score: 0, solution: JSON.stringify(arr)};
     }
     //Check if there is a specific tyoe of grammras is required in the first test case.
     if (firstTestcase.indexOf("regular") >= 0 || firstTestcase.indexOf("linear") >= 0) {
@@ -176,7 +176,7 @@ controllerProto.startTesting = function () {
         $("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='wrong'>" + (correctGrammarType ? "Yes" : "No") + "</td></tr>");
         testRes.push('Test' + index + ':' + 'Correct');
         $("#testResults").show();
-        return 0;
+        return { score: 0, solution: JSON.stringify(arr)};
       }
       index++;
     }

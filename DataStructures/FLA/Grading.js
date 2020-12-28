@@ -42,7 +42,7 @@
       url: '/student_exercise_progress/new_progress',
       data: data,
       success: function (result, status, xhr) {
-        console.log(result["result"]);
+        console.log(result["result"], "solution:", solution);
       }
     })
   }

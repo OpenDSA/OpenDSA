@@ -593,6 +593,11 @@
     saver.render();
   }
 
+  window.PDAsaver = function (dummy){
+    removeModeClasses(); 
+    return g.serializeToXML();
+  };
+
   var load = function() {
     var loaded = document.getElementById('loadFile');
     var file = loaded.files[0],
@@ -613,12 +618,17 @@
   var initGraphFromServer = function() {
 		window.FetchStoredProgress().then(res => {
 			if(res != null && res["progress"] != ""){
-				//$('.jsavgraph').remove();
-				g.initFromXML(res["progress"]);
+        console.log(res["progress"]);
+        g.initFromXML(res["progress"]);
+        jsav.displayInit();
+				g.click(nodeClickHandler);
+				g.click(edgeClickHandler, { edge: true });
+				$('.jsavgraph').click(graphClickHandler);
+				$('.jsavedgelabel').click(labelClickHandler);
 			}
-		}).catch(err => {
-			console.log('fail' + err);	
-		})
+		})//.catch(err => {
+			//console.log('fail' + err);	
+		//})
 	};
 
   var startX, startY, endX, endY; // start position of dragging edge line
@@ -822,7 +832,7 @@
   $('#alphabets').hide();
   $('#closeAv').hide();
   onLoadHandler();
-  //initGraphFromServer();
+  initGraphFromServer();
 
   //g = initGraph({layout: "manual"});
   //g.layout();

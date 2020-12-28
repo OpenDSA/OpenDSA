@@ -496,7 +496,7 @@ pda.initFromXML = function(text) {
       xmlDoc.async=false;
       xmlDoc.loadXML(text);
   }
-  if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'pda') {
+  if (typeof xmlDoc.getElementsByTagName("type")[0] == 'undefined' || xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'pda') {
       alert('File does not contain a pushdown automaton.');
       // clear input
       var loaded = $('#loadbutton');
@@ -510,6 +510,7 @@ pda.initFromXML = function(text) {
     }
     // $('.jsavgraph').off();
   }
+
   var nodeMap = {};     // map node IDs to nodes
   var xmlStates = xmlDoc.getElementsByTagName("state");
   xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})

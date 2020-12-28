@@ -1,29 +1,28 @@
 var lambda = String.fromCharCode(955),
-		epsilon = String.fromCharCode(949),
-		square = String.fromCharCode(35),
-		emptystring;
+	epsilon = String.fromCharCode(949),
+	square = String.fromCharCode(35),
+	emptystring;
 
-(function($) {
+(function ($) {
 	var jsav = new JSAV("av");
 	jsav.displayInit();
 	var g;
 	var exerController,
-	exerciseLocation;
+		exerciseLocation;
 
-	var loadHandler = function()
-	{
+	var loadHandler = function () {
 		type = $('h1').attr('id');
-		if(type == 'tester'){
+		if (type == 'tester') {
 			exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
-        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "TM"});
-        	exerController.load();
-        
-        	var exercise = jsav.flexercise(modelSolution, initializeExercise,
-          	{feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController});
-        	exercise.reset();
+			exerController = new ExerciseController(jsav, g, exerciseLocation, "json", { initGraph: initGraph, type: "TM" });
+			exerController.load();
+
+			var exercise = jsav.flexercise(modelSolution, initializeExercise,
+				{ feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController });
+			exercise.reset();
 		}
-		else{
-			g = initGraph({layout: "manual"});
+		else {
+			g = initGraph({ layout: "manual" });
 			g.layout();
 			resetUndoButtons();
 			jsav.displayInit();
@@ -33,62 +32,62 @@ var lambda = String.fromCharCode(955),
 	function initializeExercise() {
 		g.clear();
 		exerController.fa = initGraph();
-	  }
-	  
-	  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
-	  //In our case, we will make this function show the test cases only.
-	  function modelSolution(modeljsav) {
-			var containHideTest = false;
-			var testCases = exerController.tests[0]["testCases"];
-			var list = [["Test Number", "Test String", "Accept/Reject"]];
-			var testNum = 1;
-			for (i = 0; i < testCases.length; i++) {
-				var testCase = testCases[i];
-				var hideOption = testCase.ShowTestCase;
-				if (hideOption == false || hideOption== undefined) {
-					containHideTest = true;
-				}
-				if(testCase.ShowTestCase){	
-					var input = Object.keys(testCase)[0];
-					//var inputResult = FiniteAutomaton.willReject(this.fa, input);
-					list.push([testNum, input, testCase[input]]);
-					testNum = testNum + 1;
-				}
+	}
+
+	//Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+	//In our case, we will make this function show the test cases only.
+	function modelSolution(modeljsav) {
+		var containHideTest = false;
+		var testCases = exerController.tests[0]["testCases"];
+		var list = [["Test Number", "Test String", "Accept/Reject"]];
+		var testNum = 1;
+		for (i = 0; i < testCases.length; i++) {
+			var testCase = testCases[i];
+			var hideOption = testCase.ShowTestCase;
+			if (hideOption == false || hideOption == undefined) {
+				containHideTest = true;
 			}
-			if(containHideTest){
-				list.push([testNum, "Hidden Test", "Hidden Solution"]);
+			if (testCase.ShowTestCase) {
+				var input = Object.keys(testCase)[0];
+				//var inputResult = FiniteAutomaton.willReject(this.fa, input);
+				list.push([testNum, input, testCase[input]]);
+				testNum = testNum + 1;
 			}
-			var model = modeljsav.ds.matrix(list);
+		}
+		if (containHideTest) {
+			list.push([testNum, "Hidden Test", "Hidden Solution"]);
+		}
+		var model = modeljsav.ds.matrix(list);
 		//layoutTable(model);
 		modeljsav.displayInit();
 		return model;
-	  }  
+	}
 	// initialize graph
-	var initGraph = function(opts) {
-		g = jsav.ds.TM($.extend({width: '750px', height: 440, emptystring: square, editable: true}, opts));
+	var initGraph = function (opts) {
+		g = jsav.ds.TM($.extend({ width: '750px', height: 440, emptystring: square, editable: true }, opts));
 		g.enableDragging();
 		emptystring = g.emptystring;
 		var gWidth = g.element.width(),
-		gHeight = g.element.height();
-    	jsav.displayInit();
-    	g.click(nodeClickHandler);
-		g.click(edgeClickHandler, {edge: true});
+			gHeight = g.element.height();
+		jsav.displayInit();
+		g.click(nodeClickHandler);
+		g.click(edgeClickHandler, { edge: true });
 		$('.jsavgraph').click(graphClickHandler);
 		$('.jsavedgelabel').click(labelClickHandler);
 		return g;
 	};
 
 	// handler for editing edges/transitions
-	var labelClickHandler = function(e) {
+	var labelClickHandler = function (e) {
 		initEditEdgeInput(this);
 	};
 
 	// show table for the label clicked
-	var initEditEdgeInput = function(label) {
+	var initEditEdgeInput = function (label) {
 		var weights = $(label).html().split("<br>");
 		if (weights.length == 1 && g.hasClass("delete")) {
 			$(label).html("");
-			g.layout({layout: "manual"});
+			g.layout({ layout: "manual" });
 			g.updateEdgePositions();
 			return;
 		}
@@ -115,12 +114,12 @@ var lambda = String.fromCharCode(955),
 			lastRow.find('#deleteEdge').click(deleteRowInEditEdge);
 		}
 		var editEdgeInput = $('#editEdge');
-		tbody.attr({remove: false});
+		tbody.attr({ remove: false });
 		$('#deleteEdge').text("Delete");
-		editEdgeInput.css({left: $(label).offset().left, top: $(label).offset().top});
+		editEdgeInput.css({ left: $(label).offset().left, top: $(label).offset().top });
 		editEdgeInput.show();
 
-		$(document).off('keyup').keyup(function(e) {
+		$(document).off('keyup').keyup(function (e) {
 			if (e.keyCode == 13) {
 				completeEditEdge(label);
 			} else if (e.keyCode == 27) {
@@ -129,17 +128,17 @@ var lambda = String.fromCharCode(955),
 		});
 	};
 
-	var deleteRowInEditEdge = function() {
+	var deleteRowInEditEdge = function () {
 		var tbody = $(this).parent().parent().parent();
 		if (tbody.children().length == 1) {
 			$('#deleteEdge').text("Deleted");
-			tbody.attr({remove: 'true'});
+			tbody.attr({ remove: 'true' });
 			return;
 		}
 		$(this).parent().parent().remove();
 	};
 
-	var completeEditEdge = function(label) {
+	var completeEditEdge = function (label) {
 		var editEdgeInput = $('#editEdge');
 		var tbody = editEdgeInput.find('tbody');
 		var newWeight = "";
@@ -163,27 +162,27 @@ var lambda = String.fromCharCode(955),
 		}
 		$(label).html(newWeight);
 		g.saveFAState();
-		g.layout({layout: 'manual'});
+		g.layout({ layout: 'manual' });
 		g.updateEdgePositions();
 		editEdgeInput.hide();
 		g.updateAlphabet();
 	};
 
 	// handler for the graph window
-	var graphClickHandler = function(e) {
+	var graphClickHandler = function (e) {
 		if ($(".jsavgraph").hasClass("addNodes")) {
 			g.saveFAState();
 			var newNode = g.addNode(),
-			    nodeX = newNode.element.width()/2.0,
-				nodeY = newNode.element.height()/2.0;
-			$(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
-		} 
+				nodeX = newNode.element.width() / 2.0,
+				nodeY = newNode.element.height() / 2.0;
+			$(newNode.element).offset({ top: e.pageY - nodeY, left: e.pageX - nodeX });
+		}
 		// else if ($('.jsavgraph').hasClass('moveNodes')) {
 		// }
 	};
 
 	// handler for the nodes of the graph
-	var nodeClickHandler = function(e) {	
+	var nodeClickHandler = function (e) {
 		// editing nodes should be changed to match the interface in multitapeTest.js
 		if ($(".jsavgraph").hasClass("edit")) {
 			g.saveFAState();
@@ -203,11 +202,11 @@ var lambda = String.fromCharCode(955),
 
 	function updateNode(wasInitialState, initial_state, wasFinalState, final_state, node_label) {
 		g.saveFAState();
-    	executeEditNode(g, g.selected, wasInitialState, initial_state, wasFinalState, final_state, node_label);
-  	};
+		executeEditNode(g, g.selected, wasInitialState, initial_state, wasFinalState, final_state, node_label);
+	};
 
 	// handler for the edges of the graph
-	var edgeClickHandler = function(e) {
+	var edgeClickHandler = function (e) {
 		if ($('.jsavgraph').hasClass('edit')) {
 			this.highlight();
 			var input = confirm("Delete edge?");
@@ -222,13 +221,32 @@ var lambda = String.fromCharCode(955),
 			this.unhighlight();
 		}
 	};
-	
+
+	window.TMsaver = function (dummy) {
+		return g.serializeToXML();
+	}
+
+	var initGraphFromServer = function () {
+		window.FetchStoredProgress().then(res => {
+			if (res != null && res["progress"] != "") {
+				g.initFromXML(res["progress"]);
+				jsav.displayInit();
+				g.click(nodeClickHandler);
+				g.click(edgeClickHandler, { edge: true });
+				$('.jsavgraph').click(graphClickHandler);
+				$('.jsavedgelabel').click(labelClickHandler);
+			}
+		}).catch(err => {
+			console.log('fail' + err);
+		})
+	};
+
 	//===============================
 	//editing modes
 
-	var addNodesMode = function() {
-		   highlight_select_button();
-    removeModeClasses();
+	var addNodesMode = function () {
+		highlight_select_button();
+		removeModeClasses();
 
 		cancel();
 		var jg = $(".jsavgraph");
@@ -236,7 +254,7 @@ var lambda = String.fromCharCode(955),
 		$("#mode").html('Adding nodes');
 		jsav.umsg("Click to add nodes");
 	};
-	var addEdgesMode = function() {
+	var addEdgesMode = function () {
 		cancel();
 		var jg = $(".jsavgraph");
 		jg.addClass("addEdges");
@@ -248,7 +266,7 @@ var lambda = String.fromCharCode(955),
 		$("#mode").html('Adding edges');
 		jsav.umsg("Drag from one edge to another.");
 	};
-	var moveNodesMode = function() {
+	var moveNodesMode = function () {
 		cancel();
 		g.enableDragging();
 		var jg = $(".jsavgraph");
@@ -256,7 +274,7 @@ var lambda = String.fromCharCode(955),
 		$("#mode").html('');
 		jsav.umsg("Drag to move.");
 	};
-	var editMode = function() {
+	var editMode = function () {
 		cancel();
 		moveNodesMode();
 		var jg = $(".jsavgraph");
@@ -265,7 +283,7 @@ var lambda = String.fromCharCode(955),
 		addEdgeSelect();
 		jsav.umsg("Click a node or edge to edit.");
 	};
-	var deleteMode = function() {
+	var deleteMode = function () {
 		cancel();
 		var jg = $(".jsavgraph");
 		jg.addClass("delete");
@@ -273,7 +291,7 @@ var lambda = String.fromCharCode(955),
 		jsav.umsg("Click a node or edge to delete. Enter to confirm.");
 	};
 	// change between editing and not editing (traversal)
-	var changeEditingMode = function() {
+	var changeEditingMode = function () {
 		cancel();
 		$("#mode").html('Editing');
 		if ($(".notEditing").is(":visible")) {
@@ -284,7 +302,7 @@ var lambda = String.fromCharCode(955),
 		$('.notEditing').toggle();
 		$('.editing').toggle();
 	};
-	var cancel = function() {
+	var cancel = function () {
 		removeEdgeSelect();
 		removeLabelMenu();
 		var jg = $(".jsavgraph");
@@ -307,7 +325,7 @@ var lambda = String.fromCharCode(955),
 	// make edges easier to click
 	var addEdgeSelect = function () {
 		var edges = g.edges();
-		for (var next = edges.next(); next; next= edges.next()) {
+		for (var next = edges.next(); next; next = edges.next()) {
 			next.addClass('edgeSelect');
 			next.layout();
 		}
@@ -321,13 +339,13 @@ var lambda = String.fromCharCode(955),
 			}
 		}
 	};
-	var removeLabelMenu = function() {
+	var removeLabelMenu = function () {
 		if ($('#editedgelabel')) {
 			$('#editedgelabel').remove();
 		}
 	};
 
-	var onClickTraverse = function() {
+	var onClickTraverse = function () {
 		if (!g.initial) {
 			alert('Please define an initial state');
 			return;
@@ -335,36 +353,36 @@ var lambda = String.fromCharCode(955),
 		var inputString = prompt("Input string?", "aaaa");
 		while (inputString == null) {
 			alert("Don't try to trick the program!");
-			inputString = prompt("Input string?", "aaaa");	
+			inputString = prompt("Input string?", "aaaa");
 		}
 		jsav.umsg("");
 		$("#functionality").hide();			//disable buttons
 		$('#alphabets').hide();
 		$("#mode").html('');
 		$('.jsavcontrols').show();
-		$('.jsavoutput').css({"text-align": "center", 'font-size': '2em', 'font-family': 'monospace'});
+		$('.jsavoutput').css({ "text-align": "center", 'font-size': '2em', 'font-family': 'monospace' });
 
 		g.play(inputString);
 	}
 
-	var save = function() {
+	var save = function () {
 		var downloadData = "text/xml;charset=utf-8," + encodeURIComponent(g.serializeToXML());
 		$('#download').html('<a href="data:' + downloadData + '" target="_blank" download="tm.xml">Download TM</a>');
 		$('#download a')[0].click();
 	}
 
-	var load = function() {
+	var load = function () {
 		var loaded = document.getElementById('loadFile');
 		var file = loaded.files[0],
-		reader = new FileReader();
+			reader = new FileReader();
 		waitForReading(reader);
 		reader.readAsText(file);
 	}
 
 	var waitForReading = function (reader) {
-		reader.onloadend = function(event) {
-				var text = event.target.result;
-				g.initFromXML(text);
+		reader.onloadend = function (event) {
+			var text = event.target.result;
+			g.initFromXML(text);
 		}
 	};
 
@@ -377,8 +395,8 @@ var lambda = String.fromCharCode(955),
 		g.first = g.getNodeWithValue(node.text());
 		g.first.highlight();
 		offset = $('.jsavgraph').offset(),
-	 	offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
-		startX = e.pageX - 15; 
+			offset2 = parseInt($('.jsavgraph').css('border-width'), 10);
+		startX = e.pageX - 15;
 		startY = e.pageY - offset.top + offset2 - 5;
 	}
 
@@ -394,7 +412,7 @@ var lambda = String.fromCharCode(955),
 		var node = $(e.target);
 		g.selected = g.getNodeWithValue(node.text());
 		g.selected.highlight();
-		
+
 		initEdgeInput();
 	}
 
@@ -412,12 +430,12 @@ var lambda = String.fromCharCode(955),
 		edgeInput.show();
 		var leftOffset = 15 + box.x + box.width / 2;
 		var topOffset = box.y + box.height / 2 + $('.jsavgraph').offset().top - 5;
-		edgeInput.css({left: leftOffset, top: topOffset});
+		edgeInput.css({ left: leftOffset, top: topOffset });
 		path.remove();
 		first = g.first;
 		g.first = null;
 		$('#toRead').focus();
-		$(document).keyup(function(e) {
+		$(document).keyup(function (e) {
 			if (e.keyCode == 13) {
 				addEdgeWithInputBox();
 			}
@@ -431,7 +449,7 @@ var lambda = String.fromCharCode(955),
 		var toWrite = $('#toWrite').val();
 		var direction = $('#direction').val();
 		var edgeWeight = toRead + ";" + toWrite + "," + direction;
-		g.addEdge(first, g.selected, {weight: edgeWeight});
+		g.addEdge(first, g.selected, { weight: edgeWeight });
 
 
 		$('.jsavedgelabel').off('click').click(labelClickHandler);
@@ -441,7 +459,7 @@ var lambda = String.fromCharCode(955),
 		g.selected.unhighlight();
 		g.updateEdgePositions();
 		first = null;
-		g.selected= null;
+		g.selected = null;
 	}
 
 	function mouseMove(e) {
@@ -449,70 +467,70 @@ var lambda = String.fromCharCode(955),
 		endX = e.pageX - 15;
 		endY = e.pageY - offset.top + offset2 - 5;
 		$('path[opacity="1.5"]').remove();
-		jsav.g.line(startX, startY, endX, endY, {"opacity": 1.5});
+		jsav.g.line(startX, startY, endX, endY, { "opacity": 1.5 });
 	}
 
-	  // Disable all editing modes so that click handlers do not fire.
-	  // Called when the user switches editing modes, or otherwise presses a button that changes the view.
-	var removeModeClasses = function() {
-	    // Clear all superfluous or otherwise outdated information on the page.
-	    $('.arrayPlace').empty();
-	    $('#download').html('');
-	    jsav.umsg('');
-	    // Unselect and unhighlight any selected nodes or edges.
-	    if (g.first) {
-	      g.first.unhighlight();
-	      g.first = null;
-	    }
-	    if (g.selected) {
-	      g.selected.unhighlight();
-	      g.selected = null;
-	    }
-	    if ($(".jsavgraph").hasClass("deleteNodes")) {
-	      $(".jsavgraph").removeClass("deleteNodes");
-	      // Return edges to normal size.
-	      collapseEdges();
-	    }
-	    else {
-	      $(".jsavgraph").removeClass("addNodes");
-	      $(".jsavgraph").removeClass("addEdges");
-	      $(".jsavgraph").removeClass("editNodes");
-	      $(".jsavgraph").removeClass("moveNodes");
-	      $(".jsavgraph").removeClass("working");
-	    }
-	  };
+	// Disable all editing modes so that click handlers do not fire.
+	// Called when the user switches editing modes, or otherwise presses a button that changes the view.
+	var removeModeClasses = function () {
+		// Clear all superfluous or otherwise outdated information on the page.
+		$('.arrayPlace').empty();
+		$('#download').html('');
+		jsav.umsg('');
+		// Unselect and unhighlight any selected nodes or edges.
+		if (g.first) {
+			g.first.unhighlight();
+			g.first = null;
+		}
+		if (g.selected) {
+			g.selected.unhighlight();
+			g.selected = null;
+		}
+		if ($(".jsavgraph").hasClass("deleteNodes")) {
+			$(".jsavgraph").removeClass("deleteNodes");
+			// Return edges to normal size.
+			collapseEdges();
+		}
+		else {
+			$(".jsavgraph").removeClass("addNodes");
+			$(".jsavgraph").removeClass("addEdges");
+			$(".jsavgraph").removeClass("editNodes");
+			$(".jsavgraph").removeClass("moveNodes");
+			$(".jsavgraph").removeClass("working");
+		}
+	};
 
 
 	// Function to reset the size of the undo stack and the redo stack.
 	// Since both of them are empty, both buttons are also disabled.
 	// Called whenever the user loads a new graph.
-	function resetUndoButtons () {
+	function resetUndoButtons() {
 		document.getElementById("undoButton").disabled = true;
 		document.getElementById("redoButton").disabled = true;
 	};
 
-	  function highlight_select_button(){
-    // Add active class to the current button (highlight it)
-    /*var header = document.getElementById("menu_options");
-    var btns = header.getElementsByClassName("icon_btn");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-      });
-    }*/
-    $('#undoButton').removeClass("active");
-    $('#redoButton').removeClass("active");
-    $('#deleteButton').removeClass("active");
-    $('#editButton').removeClass("active");
-    $('#nodeButton').removeClass("active");
-    $('#edgeButton').removeClass("active");
-        $('#collapseButton').removeClass("active");
-  }
+	function highlight_select_button() {
+		// Add active class to the current button (highlight it)
+		/*var header = document.getElementById("menu_options");
+		var btns = header.getElementsByClassName("icon_btn");
+		for (var i = 0; i < btns.length; i++) {
+		  btns[i].addEventListener("click", function() {
+			var current = document.getElementsByClassName("active");
+			current[0].className = current[0].className.replace(" active", "");
+			this.className += " active";
+		  });
+		}*/
+		$('#undoButton').removeClass("active");
+		$('#redoButton').removeClass("active");
+		$('#deleteButton').removeClass("active");
+		$('#editButton').removeClass("active");
+		$('#nodeButton').removeClass("active");
+		$('#edgeButton').removeClass("active");
+		$('#collapseButton').removeClass("active");
+	}
 
 
-	$('#playButton').click(function() {onClickTraverse()});
+	$('#playButton').click(function () { onClickTraverse() });
 	//$('#multiplebutton').click(displayTraversals);
 	$('#nodeButton').click(addNodesMode);
 	$('#changeButton').click(changeEditingMode);
@@ -520,20 +538,20 @@ var lambda = String.fromCharCode(955),
 	$('#moveButton').click(moveNodesMode);
 	$('#editButton').click(editMode);
 	$('#saveButton').click(save);
-  $('#loadFile').on('change', load);
-	$('#undoButton').click(function() {
+	$('#loadFile').on('change', load);
+	$('#undoButton').click(function () {
 		g.undo();
 		$(".jsavgraph").click(graphClickHandler);
 		$('.jsavedgelabel').click(labelClickHandler);
 	});
-	$('#redoButton').click(function() {
+	$('#redoButton').click(function () {
 		g.redo();
 		$(".jsavgraph").click(graphClickHandler);
 		$('.jsavedgelabel').click(labelClickHandler);
 	});
 	$('#cancelButton').click(cancel);
 	$('#deleteButton').click(deleteMode);
-	$(document).keyup(function(e) {
+	$(document).keyup(function (e) {
 		if (e.keyCode == 27) {
 			e.preventDefault();
 			cancel();
@@ -541,5 +559,6 @@ var lambda = String.fromCharCode(955),
 	});
 
 	loadHandler();
+	initGraphFromServer();
 
 }(jQuery));

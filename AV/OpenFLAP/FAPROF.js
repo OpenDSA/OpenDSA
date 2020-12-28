@@ -732,15 +732,13 @@ var exerciseLocation;
 	 // Initializes a graph by parsing a JSON representation.
 	 var initGraphFromServer = function() {
 		window.FetchStoredProgress().then(res => {
-			console.log("loading:",res);
 			if(res != null && res["progress"] != "") {
-				console.log(res["progress"]);
 				$('.jsavgraph').remove();
 				parseFile(res["progress"]);
 				exerController.fa = g;
 			}
 		}).catch(err => {
-			console.log('fail' + err);	
+			console.log('fetch stored progress failed' + err);	
 		})
 	};
 
