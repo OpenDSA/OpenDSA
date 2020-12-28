@@ -305,7 +305,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
             {
                "type": "multiple",
                "question": "",
-               "description": "Will state " +state.node+ " can be divided by reading the letter \"" + state.weight + "\" ?",
+               "description": "Can state " +state.node+ " be divided by reading the symbol \"" + state.weight + "\" ?",
                "answer": "yes", //String if type is multiple, array of string if select
                "choices": ["yes", "no"]
             },
@@ -321,7 +321,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         return [{
            "type": "multiple",
            "question": "",
-           "description": "Will state " +state.node+ " can be divided by reading the letter \"" + state.weight + "\" ?",
+           "description": "Can state " +state.node+ " be divided by reading the symbol \"" + state.weight + "\" ?",
            "answer": "no", //String if type is multiple, array of string if select
            "choices": ["yes", "no"]
         }]
@@ -330,7 +330,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         return [{
            "type": "multiple",
            "question": "",
-           "description": "Which state should we use to represent the transition from node " +state.node+ " to node " + state.relatedTo + "?",
+           "description": "Which symbol should we use to label the transition from node " +state.node+ " to node " + state.relatedTo + "?",
            "answer": state.weight, //String if type is multiple, array of string if select
            "choices": ["a", "b"]
         }]
@@ -343,7 +343,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         {
          "type": "multiple",
          "question": "Select nonfinal states to continue",
-         "description": "Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.",
+         "description": "Initially, the tree will consist of 3 nodes: The root (representing all the states), a leaf node for nonfinal states, and another leaf node for final states.",
          "answer": steps[0][0]["node"].split(','), //String if type is multiple, array of string if select
          "choices": [steps[0][0]["node"].split(','), steps[1][0]["node"].split(',')]
         },
@@ -1287,7 +1287,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
       return [{
         "type": "textBoxStrict",
         "question": "",
-        "description": "There is(are) how many transition(s) for state: " + state["node"] + " ?",
+        "description": "There are how many transitions for state: " + state["node"] + " ?",
         "answer": state["relatedTo"], //String if type is multiple, array of string if select
         "choices": ""
       }]
@@ -1732,7 +1732,7 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
     "specialQuestion" : [{
       "type":  strNodes.length == 1 ? "multiple" : "select",
       "question": "",
-      "description": strNodes.length == 1 ? "Which of the following nodes we may collapse?" : "Select all the nodes we may collapse.",
+      "description": strNodes.length == 1 ? "Which of the following nodes may we collapse?" : "Select all the nodes we may collapse.",
       "answer": strNodes.length == 1 ?  strNodes[0] : strNodes, //String if type is multiple, array of string if select
       "choices": allNodes
     }],
@@ -1971,7 +1971,7 @@ var displayTreeWithQuestions = function (pt, av, av_name, piframesLocations){
       return [{
         "type": "multiple",
         "question": "",
-        "description": "Which of the following productions we should next substitute in to build the tree?",
+        "description": "Which of the following productions should we next substitute in to build the tree?",
         "answer": state["weight"], //String if type is multiple, array of string if select
         "choices": productions
       }]
@@ -2168,7 +2168,7 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
       return [{
         "type": "select",
         "question": "Based on the current cell value and transition, what will be the current input letter and what is the target state? (Please select all the correct answers)",
-        "description": "The current cell value is becoming " + state["node"] + ".",
+        "description": "The current cell value will become " + state["node"] + ".",
         "answer": [state["weight"][2], state["weight"][3]], //String if type is multiple, array of string if select
         "choices": tapeVals.concat(generateNodesChoices(state["weight"][3]))
       }];
@@ -2192,7 +2192,7 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
         {
           "type": "select",
           "question": "Based on the current cell value and transition, which direction the tape head is moving, what will be the current input letter and what is the target state? (Please select all the correct answers)",
-          "description": "The current cell value is becoming " + state["node"] + ".",
+          "description": "The current cell value will become " + state["node"] + ".",
           "answer": [state["weight"][2], state["weight"][3], state["relatedTo"].includes("right") ? "Right" : "Left"], //String if type is multiple, array of string if select
           "choices": tapeVals.concat(generateNodesChoices(state["weight"][3])).concat(["Right" , "Left"])
         }];

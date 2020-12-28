@@ -54,7 +54,7 @@ minimizing the DFA.
 
 .. inlineav:: DFAMinEx1FS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAMinEx1FS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/FA/DFAMinEx1FS.js
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/FA/DFAMinEx1FS.js
    :output: show
 
 
@@ -63,5 +63,5 @@ Minimization Example 2
 
 .. inlineav:: DFAMinEx2FS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAMinEx2FS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/FA/DFAMinEx2FS.js
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/FA/DFAMinEx2FS.js
    :output: show
