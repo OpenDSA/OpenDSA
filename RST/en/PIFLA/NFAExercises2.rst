@@ -9,18 +9,23 @@
    :satisfies:
    :topic: NFA exercises
 
-NFA exercises
-=============
+More NFA exercises
+==================
 
 NFA to DFA
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex1.html pe
-   :long_name: NFAtoDFA exercise 1
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex1long.html pe
+   :long_name: NFAtoDFA exercise 1 long version
+
+|
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex2.html pe
+   :long_name: NFAtoDFA exercise 2
 
 
 Create NFA
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAex1.html pe
-   :long_name: Create a NFA 1
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAex2.html pe
+   :long_name: Create a NFA 2

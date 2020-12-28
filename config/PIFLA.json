@@ -75,7 +75,10 @@
       "PIFLA/DFAExercises2": {},
       "PIFLA/NFA":{},
       "PIFLA/NFAExercises": {},
-      "PIFLA/DFAMinimization": {}
+      "PIFLA/NFAExercises2": {},
+      "PIFLA/DFAMinimization": {},
+      "PIFLA/DFAMinExercises": {},
+      "PIFLA/DFAMinExercises2": {}
     },
     "Appendix": {
       "Glossary": {}

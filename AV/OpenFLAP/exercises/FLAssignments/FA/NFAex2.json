@@ -1,19 +1,15 @@
 [{
   "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
   "exerciseType": "NFA",
-  "totalTrueCases": 10,
-  "totalFalseCases": 4,
+  "totalTrueCases": 5,
+  "totalFalseCases": 5,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "description": "Construct an NFA that accepts L($((ab)^+ba^*) + (b^*(ab)^*)$)",
+  "description": "Construct an NFA that accepts L($((ab)^*ba) + (b^*(ab)^+)$)",
   "type": "description",
   "testCases": [
     {
-      "": true,
-      "ShowTestCase":true
-    },
-    {
-      "ba": false,
+      "ba": true,
       "ShowTestCase":true
     },
     {
@@ -21,19 +17,7 @@
       "ShowTestCase":true
     },
     {
-      "ababababab": true,
-      "ShowTestCase":true
-    },
-    {
-      "abba": true,
-      "ShowTestCase":true
-    },
-    {
-      "abbaaaaaaa": true,
-      "ShowTestCase":true
-    },
-    {
-      "abb": true,
+      "ab": true,
       "ShowTestCase":true
     },
     {
@@ -41,11 +25,15 @@
       "ShowTestCase":true
     },
     {
-      "bbbbbbbab": true,
+      "bbbbbbbbbbbbbbbbbbbab": true,
       "ShowTestCase":true
     },
     {
-      "aaaaaaaaa": false,
+      "": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaaaaaaaaaaaaa": false,
       "ShowTestCase":true
     },
     {
@@ -57,11 +45,7 @@
       "ShowTestCase":true
     },
     {
-      "bab": true,
-      "ShowTestCase":true
-    },
-    {
-      "bbbbb": true,
+      "bbbbbbbbbbbbbbbbbb": false,
       "ShowTestCase":true
     }
   ],

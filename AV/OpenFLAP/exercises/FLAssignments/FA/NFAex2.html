@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-  <title>FA Tester</title>
+  <title>NFA construction exercise</title>
   <script>
     getExerciseLocation = function () {
-      return "./sheet2exercise3.json"
+      return "./NFAex2.json"
     };
   </script>
   <meta charset="utf-8">
@@ -32,7 +30,7 @@
   <!-- PDF save link -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"
     integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous">
-  </script>
+    </script>
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script> -->
   <style>
@@ -45,8 +43,7 @@
 
 <body>
   <div id="container">
-    <h1 id="tester">Finite Automaton Exercise</h1>
-    <h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
+    <h1 id="tester">NFA Exercise</h1>
     <h2 id="description"></h2>
     <div id="dialogueoverlay"></div>
 
@@ -61,7 +58,6 @@
     <p id="percentage"></p>
     <table id="testResults"></table>
     <div id='download'></div>
-    <div id="rmenu"></div>
     <div id="jsavcontainer">
       <a class="jsavsettings" href="#">Settings</a>
       <p align="center" class="jsavexercisecontrols"></p>
@@ -79,7 +75,6 @@
       <p class="jsavoutput jsavline"></p>
     </div>
     <script src="../../exerController/TestCaseGenerater.js"></script>
-    <script src="../../exerController/DfaNfaHandler.js"></script>
   </div>
   <script src="../../../../../lib/jquery.min.js"></script>
 <script src="../../../../../lib/jquery.migrate.min.js"></script>
