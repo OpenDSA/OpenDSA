@@ -9,7 +9,7 @@ $(document).ready(function() {
   var yStart = 250;
   var av = new JSAV(av_name);
 
-  var url = "../../../AV/Yinwen/TMabc.jff";
+  var url = "../../../AV/OpenFLAP/machines/TM/TMabc.jff";
   av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. This machine can accept some number of a's followed by some number of b's followed by some number of c's.");
   var tm = new av.ds.TM({width: 610, height: 375, left: 50, url: url});
   var trav = new Traversor(tm, av);

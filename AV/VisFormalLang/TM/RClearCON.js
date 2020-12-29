@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   av.umsg("Here we see a Turing Machine's states and transitions presented in the form of a graph. This machine will accept strings with an even number of a's. In particular, when in state q0, if the current symbol is 'a' it will be converted to '#' and the head moved to the right. If the current symbol is '#', it will remain a '#' and the machine will stop in state q1 (a final state).");
 
-  var url = "../../../AV/VisFormalLang/TM/Machines/TMexample1.jff";
+  var url = "../../../AV/OpenFLAP/machines/TM/TMexample1.jff";
   var tm = new av.ds.TM({width: 610, height: 375, left: 50, url: url});
   av.displayInit();
 

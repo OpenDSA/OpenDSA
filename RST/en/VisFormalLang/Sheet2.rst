@@ -22,7 +22,7 @@ Exercise 1
 Exercise 2
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAMinEx1 pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAMinEx1.html pe
    :long_name: Sheet 1 Exercise 2 DFA minimization
 
 

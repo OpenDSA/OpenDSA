@@ -8,20 +8,21 @@
   "expression": "",
   "description": "Give a DFA that accepts the language over $\\Sigma = \\{a\\}$ of any even number of a’s.",
   "type": "description",
-  "testCases": [{
-    "a": false,
-    "ShowTestCase":true
-  },
-                {
-                  "aa": true,
-                  "ShowTestCase":true
-                },
-                {
-                  "aaa": false,
-                  "ShowTestCase":true
-                }
+  "testCases": [
+    {
+      "a": false,
+      "ShowTestCase":true
+    },
+    {
+      "aa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaa": false,
+      "ShowTestCase":true
+    }
 
-               ],
+  ],
   "graph": {
     "nodes": [],
     "edges": []

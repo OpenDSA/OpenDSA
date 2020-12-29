@@ -30,7 +30,7 @@
   "lang": "en",
   "build_JSAV": false,
   "build_cmap": false,
-  "suppress_todo": false,
+  "suppress_todo": true,
   "assumes": "recursion",
   "dispModComp": true,
   "glob_exer_options": {
