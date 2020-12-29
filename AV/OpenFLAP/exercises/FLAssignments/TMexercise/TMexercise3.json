@@ -6,9 +6,7 @@
     "randomStringLength": [0, 15],
     "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
     "hardCodeCasesCounter": 5,
-    "expression": "",
     "description": "Create a machine that is just like the one that you just did. However, instead of replacing the string with #'s, you will keep the string intact.",
-    "type": "description",
     "testCases": [{
             "aaa": "aaa",
             "ShowTestCase":true

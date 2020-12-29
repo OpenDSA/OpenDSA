@@ -5,9 +5,7 @@
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "expression": "",
     "description": "Give a right-linear grammar for the following NFA",
-    "type": "description",
     "testCases": [{
             "right-linear": true
         },

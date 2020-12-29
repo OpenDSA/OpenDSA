@@ -6,7 +6,6 @@
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
   "description": "Construct an NFA that accepts L($((ab)^*ba) + (b^*(ab)^+)$)",
-  "type": "description",
   "testCases": [
     {
       "ba": true,

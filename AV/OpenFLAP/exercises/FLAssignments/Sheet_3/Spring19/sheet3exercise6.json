@@ -5,9 +5,7 @@
     "totalFalseCases": 3,
     "containLetters": ["a", "b", "c"],
     "randomStringLength": [0, 15],
-    "expression": "a^nb^m",
     "description": "Find a regular grammar for the language $\\mbox{L=\\{}a^nb^m \\mbox{ where n+m is odd}\\}$.",
-    "type": "description",
     "testCases": [{
             "regular-grammar": true,
             "ShowTestCase":true

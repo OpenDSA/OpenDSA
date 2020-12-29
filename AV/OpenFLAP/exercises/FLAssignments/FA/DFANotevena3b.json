@@ -5,9 +5,7 @@
   "totalFalseCases": 5,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "expression": "",
   "description": "Construct the DFA that accepts the complement of L, where L is the language over $\\Sigma = \\{a, b\\}$ of any even number of a's and at most three b's",
-  "type": "description",
   "testCases": [
     {
       "aaaaaa": false,

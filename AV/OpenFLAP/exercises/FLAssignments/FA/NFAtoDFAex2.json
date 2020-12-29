@@ -1,7 +1,6 @@
 [
   {
     "description": "Convert the following NFA to a DFA.",
-    "type": "description",
     "testCases": [
       {
         "The resulting FA is a DFA": true

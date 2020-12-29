@@ -7,7 +7,6 @@
     "randomStringLength": [0, 15],
     "expression": "",
     "description": "Construct a CFG over {a, b, c} whose language is {$a^mb^ic^n \\mid m > n, 0 \\leq i < 3,  n \\geq 0$}",
-    "type": "description",
     "testCases": [{
             "": false,
             "ShowTestCase":true

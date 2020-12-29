@@ -7,7 +7,6 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "description": "Construct the DFA that accepts the complement of L($((aa)^+bb)^*$)",
-    "type": "description",
     "testCases": [
       {
         "": false,

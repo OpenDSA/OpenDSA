@@ -1,6 +1,5 @@
 [{
     "description": "Give an equivalent CFG grammar with no unit productions,  lambda productions, or useless productions.",
-    "type": "description",
     "testCases": [{
             "No_Lambda": true
         },

@@ -1,12 +1,11 @@
 [{
-  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+
   "exerciseType": "DFA",
   "totalTrueCases": 10,
   "totalFalseCases": 10,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
   "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings that do not have three consecutive a's.",
-  "type": "description",
   "testCases": [
     {
       "bbbbbb": true,

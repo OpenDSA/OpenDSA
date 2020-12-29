@@ -5,9 +5,7 @@
   "totalFalseCases": 5,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "expression": "",
   "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings with any even number of a’s and any odd number of b’s.",
-  "type": "description",
   "testCases": [
     {
       "b": true,

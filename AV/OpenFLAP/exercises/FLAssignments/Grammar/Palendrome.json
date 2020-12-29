@@ -1,12 +1,10 @@
 [{
-  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
   "exerciseType": "GRAMMAR",
   "totalTrueCases": 5,
   "totalFalseCases": 2,
   "containLetters": ["(", ")"],
   "randomStringLength": [0, 15],
   "description": "Write a grammar for the following alphabet and language: $\\Sigma = \\{a, b\\}, \\quad L =$ strings that are palendromes (they read the same forward or backwards)",
-  "type": "description",
   "testCases": [
     {
       "": true
