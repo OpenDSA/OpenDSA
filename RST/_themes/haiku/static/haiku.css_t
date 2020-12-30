@@ -35,7 +35,7 @@ body {
     margin: auto;
     padding: 0px;
     font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
-    min-width: 59em;
+    /* min-width: 59em; */
     max-width: 70em;
     color: {{ theme_textcolor }};
 }
@@ -52,7 +52,7 @@ div.footer {
 a:link {
     font-weight: bold;
     text-decoration: none;
-    color: {{ theme_linkcolor }};
+    color: #d93900;
 }
 
 a:visited {
@@ -143,7 +143,7 @@ div.header h2 {
     font-weight: normal;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #aaa;
+    color: #767676;
     border: 0;
     margin: 0;
     padding: 0 0 0 60px;
@@ -178,7 +178,7 @@ div.topnav p {
     font-size: 12px;  /* 0.8em; */
 }
 div.bottomnav {
-    background: #eeeeee;
+    background: #fefefe;
 }
 div.bottomnav p {
     margin-right: 40px;
