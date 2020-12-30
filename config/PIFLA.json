@@ -55,30 +55,52 @@
     "required": true
   }, 
   "chapters": {
-    "Preface": {
-      "Intro": {}
-    },
-    "Introduction": {
-      "PIFLA/FLIntro": {},
-      "PIFLA/FLOverview": {},
-      "PIFLA/MajorConcepts": {},
-      "PIFLA/IntroGrammarEx": {}
-    },
-    "Mathematical Background": {
-      "PIFLA/SetNotation": {},
-      "PIFLA/Relations": {},
-      "Background/Proofs": {}
-    },
-    "Finite Acceptors": {
-      "PIFLA/DFA":{},
-      "PIFLA/DFAExercises": {},
-      "PIFLA/DFAExercises2": {},
-      "PIFLA/NFA":{},
-      "PIFLA/NFAExercises": {},
-      "PIFLA/NFAExercises2": {},
-      "PIFLA/DFAMinimization": {},
-      "PIFLA/DFAMinExercises": {},
-      "PIFLA/DFAMinExercises2": {}
+    "Regular Languages": {
+      "PIFormalLang/RegularExpression":{},
+      "PIFLA/RegExExercises":{
+        "RegExbbaeven": {
+          "points": 5.0
+        },
+        "RegExnoaa": {
+          "points": 5.0
+        },
+        "RegExonebbb": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/RegExExercises2":{
+        "RegExaby3": {
+          "points": 5.0
+        },
+        "RegExcb3": {
+          "points": 5.0
+        },
+        "RegExabyb": {
+          "points": 5.0
+        }
+      },
+      "PIFormalLang/RegularGrammars": {},
+      "PIFormalLang/RegularGrammarsExercises":{
+        "sheet3exercise4":{
+          "points": 5.0
+        },
+        "sheet3exercise5":{
+          "points": 5.0
+        },
+        "sheet3exercise6":{
+          "points": 5.0
+        },
+        "sheet3practice4":{
+          "points": 5.0
+        },
+        "sheet3practice5":{
+          "points": 5.0
+        },
+        "sheet3practice6":{
+          "points": 5.0
+        }
+      },
+      "PIFormalLang/ClosurePropertiesOfRegularLanguages": {}
     },
     "Appendix": {
       "Glossary": {}
