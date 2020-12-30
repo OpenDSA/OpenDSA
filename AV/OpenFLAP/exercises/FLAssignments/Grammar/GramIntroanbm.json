@@ -5,7 +5,7 @@
   "totalFalseCases": 3,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "description": "Write a grammar for the following alphabet and language: $\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}$",
+  "description": "Write a grammar for the alphabet $\\Sigma = \\{a, b\\}$ and language $L = \\{a^nb^m \\mid n > 0, m \\geq n\\}$.",
   "testCases":
   [{
     "ab": true,

@@ -5,7 +5,7 @@
   "totalFalseCases": 2,
   "containLetters": ["(", ")"],
   "randomStringLength": [0, 15],
-  "description": "Write a grammar for the following alphabet and language: $\\Sigma = \\{(, )\\}, \\quad L =$ strings of parentheses that are properly nested and balanced",
+  "description": "Write a grammar for the alphabet $\\Sigma = \\{(, )\\}$ and language $L =$ strings of parentheses that are properly nested and balanced.",
   "testCases": [
     {
       "": true
