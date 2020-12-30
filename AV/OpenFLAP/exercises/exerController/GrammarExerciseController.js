@@ -290,11 +290,11 @@ controllerProto.updateExercise = function (id) {
         }
         else{
           var expression = parts[a];
-          if(a+2 == parts.length){
+          if(a+1 == parts.length){
             text = " " + '<span id=exp'+(a+1)+'></span>' + ' ';
           }
           else{
-            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+2];
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+1];
           }
           $("#description").append(text);
           $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");

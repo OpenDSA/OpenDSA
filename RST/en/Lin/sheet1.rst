@@ -15,6 +15,6 @@ Sheet 1
 Exercise 1
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Sheet_1/sheet1exercise1.html pe
-   :long_name: Sheet 1 Exercise 1 Draw a FA for a language
 
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Parens.html pe
+   :long_name: Balanced Parentheses grammar

@@ -137,6 +137,7 @@ controllerProto.toExercise = function (button) {
 // the function that really changes the problem displayed
 // called by toExercise
 controllerProto.updateExercise = function (id) {
+  var latexit = "http://latex.codecogs.com/svg.latex?";
 	var exercise = this.tests[id];
 	var type = exercise["type"];
 	this.testCases = exercise["testCases"];
@@ -145,9 +146,34 @@ controllerProto.updateExercise = function (id) {
 		$("#question").show();
 		$("#description").hide();
 	} else {
-		$("#description").text(exercise["description"]);
-		$("#description").show();
-		$("#question").hide();
+    var text = exercise["description"];
+    if (text.indexOf('$') >= 0) {
+      var parts = text.split("$");
+      for(var a= 0; a <parts.length;a++){
+        if(a == 0){
+          var expression = parts[a + 1];
+          text = parts[0] + " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[2];
+          $("#description").html(text);
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+        }
+        else{
+          var expression = parts[a];
+          if(a+1 == parts.length){
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ';
+          }
+          else{
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+1];
+          }
+          $("#description").append(text);
+          $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");
+        }
+        a=a+2;
+      }
+    } 
+    else
+      $("#description").text(text);
+    $("#description").show();
+    $("#question").hide();
 	}
 	$(".links").removeClass("currentExercise");
 	$("#" + this.currentExercise).addClass("currentExercise");
