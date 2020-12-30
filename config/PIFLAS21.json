@@ -160,42 +160,44 @@
         "RegExbbaeven": {
           "points": 5.0
         },
-        "sheet3exercise2":{
+        "RegExnoaa": {
           "points": 5.0
         },
-        "sheet3exercise3":{
+        "RegExonebbb": {
           "points": 5.0
         }
       },
       "PIFLA/RegExExercises2":{
-        "sheet3practice1":{
+        "RegExaby3": {
           "points": 5.0
         },
-        "sheet3practice2":{
+        "RegExcb3": {
           "points": 5.0
         },
-        "sheet3practice3":{
+        "RegExabyb": {
           "points": 5.0
         }
       },
       "PIFormalLang/RegularGrammars": {},
-      "PIFormalLang/RegularGrammarsExercises":{
-        "sheet3exercise4":{
+      "PIFLA/RegGramEx1": {
+        "RegGramNFA1": {
           "points": 5.0
         },
-        "sheet3exercise5":{
+        "RegGrambbbaaaa": {
           "points": 5.0
         },
-        "sheet3exercise6":{
+        "RegGramaby3": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/RegGramEx2": {
+        "RegGramNFA2": {
           "points": 5.0
         },
-        "sheet3practice4":{
+        "RegGramaaabba": {
           "points": 5.0
         },
-        "sheet3practice5":{
-          "points": 5.0
-        },
-        "sheet3practice6":{
+        "RegGramanbmodd": {
           "points": 5.0
         }
       },

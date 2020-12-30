@@ -80,23 +80,25 @@
         }
       },
       "PIFormalLang/RegularGrammars": {},
-      "PIFormalLang/RegularGrammarsExercises":{
-        "sheet3exercise4":{
+      "PIFLA/RegGramEx1": {
+        "RegGramNFA1": {
           "points": 5.0
         },
-        "sheet3exercise5":{
+        "RegGrambbbaaaa": {
           "points": 5.0
         },
-        "sheet3exercise6":{
+        "RegGramaby3": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/RegGramEx2": {
+        "RegGramNFA2": {
           "points": 5.0
         },
-        "sheet3practice4":{
+        "RegGramaaabba": {
           "points": 5.0
         },
-        "sheet3practice5":{
-          "points": 5.0
-        },
-        "sheet3practice6":{
+        "RegGramanbmodd": {
           "points": 5.0
         }
       },
