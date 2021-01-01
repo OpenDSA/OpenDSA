@@ -1,56 +1,57 @@
 {
   "translations": {
     "en": {
-      "q11": {
+      "nothing": {
         "type": "select",
-        "description": "Here is an example of NFA that accepts nothing ($\\emptyset$)",
-        "question":"This machine accepts NOTHING because there is no path from the start state to the final state",
+        "description": "This NFA accepts nothing. In other words, the language is the empty set ($\\emptyset$).",
+        "question":"This machine accepts nothing because there is no path from the start state to the final state",
         "answer": "True",
         "choices": []
       },
-      "q12": {
+      "lambda": {
         "type": "multiple",
-        "description": "Here is an example of NFA that accepts an empty string ($\\lambda$)",
+        "description": "This NFA accepts only the empty string ($\\lambda$).",
         "question":"Can we build a DFA with one state to accept $\\lambda$?",
-        "answer": "Yes, a DFA/NFA with one state that is both start and final",
-        "choices": ["Yes, a DFA/NFA with one state that is both start and final", "No"]
+        "answer": "Yes, a DFA/NFA with one state that is both start and final and has no transitions.",
+        "choices": ["Yes, a DFA/NFA with one state that is both start and final and has no transitions.", "No"]
       },
-      "q13": {
+      "a": {
         "type": "multiple",
-        "description": "Here is an example of NFA that accepts $a$ $\\in$ $\\Sigma$",
+        "description": "This NFA accepts $a$ $\\in$ $\\Sigma$",
         "question":"Can we build a DFA with one state to accept $a$?",
         "answer": "No",
-        "choices": ["Yes, a DFA/NFA with one state that is both start and final, and a looping transition with $a$", "No"]
+        "choices": ["Yes, a DFA/NFA with one state that is both start and final, and a looping transition on $a$.", "No"],
+        "correctFeedback": ["Looping is our only option to get any a's. But that is not what we want because that accepts more than one a."]
       },
-      "q17": {
+      "onefinalq": {
         "type": "multiple",
-        "description": "And since we want to combine machines together, it will be much easier if we know that the arbitrary machine has one start state and one final state. Well, we already know that all NFAs have a single start state. But not all NFAs have a single final state.",
+        "description": "Well, we already know that all NFAs have a single start state. But not all NFAs have a single final state. Below is an abstract representation of an arbitrary NFA. It shows the single start state, along with paths (the dotted lines) that eventually reach each of its final states.",
         "question":"Can we covert any NFA with multiple final states to an equivalent NFA with single NFA?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       },
-      "q18": {
+      "onefinala": {
         "type": "multiple",
-        "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
+        "description": "",
         "question":"How?",
-        "answer": "by adding a new state that will be the final state for the machine.",
-        "choices": ["by adding a new state that will be the final state for the machine.", "Convert NFA to DFA"]
+        "answer": "By adding a new state that will be the final state for the machine.",
+        "choices": ["By adding a new state that will be the final state for the machine.", "By converting the NFA to a DFA"]
       },
-      "q19": {
+      "addfinal": {
         "type": "select",
         "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
-        "question":"Then we need to connect all old final states with the new final state with $\\lambda$ transitions",
+        "question": "Then we need to connect all old final states with the new final state with $\\lambda$ transitions",
         "answer": "True",
         "choices": []
       },
-      "q20": {
+      "addedges": {
         "type": "select",
         "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
         "question":"Then we need to remove the final mark from the old final states",
         "answer": "True",
         "choices": []
       },
-      "q21": {
+      "equiv": {
         "type": "multiple",
         "description": "You did it.",
         "question":"Is the new NFA is equivalent to the old NFA?",

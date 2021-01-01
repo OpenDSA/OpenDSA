@@ -35,15 +35,26 @@ But at least with a regular expression, it is usually quick and easy
 to type once you have it.
 
 
-Definition and Properties of Regular Expressions
-------------------------------------------------
+Definition and Examples of Regular Expressions
+----------------------------------------------
 
 .. inlineav:: RegExFS ff
    :links: AV/PIFLA/Regular/RegExFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RegExFS.js
    :output: show
 
+**Definition** for Regular Expressions (RE): Given :math:`\Sigma`,
+  #. :math:`\lambda`, and :math:`a \in \Sigma` are RE
+  #. If :math:`r` and :math:`s` are regular expressions, then
 
+      * :math:`r + s` is a RE
+      * :math:`r s` is a RE
+      * :math:`(r)` is a RE
+      * :math:`r^*` is a RE
+  #. :math:`r` is a RE if and only if it can be derived from (1) with
+     a finite number of applications of (2). 
+
+            
 Regular Expressions vs. Regular Languages
 -----------------------------------------
 

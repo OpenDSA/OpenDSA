@@ -117,7 +117,7 @@
       "SeniorAlgAnal/Impossible": {}
     },
     "Assignments": {
-      "VisFormalLang/Sheet1":{
+      "VisFormalLang/IntroEx": {
         "GramIntro3str": {
           "points": 2.0
         },
@@ -140,7 +140,7 @@
           "points": 2.0
         }
       },
-      "VisFormalLang/Sheet2":{
+      "VisFormalLang/FAEx":{
         "NFAtoDFAex1long": {
           "points": 5.0
         },
@@ -154,23 +154,23 @@
           "points": 5.0
         }
       },
-      "VisFormalLang/Sheet3":{
-        "sheet3exercise1":{
+      "VisFormalLang/RegLangEx":{
+        "RegExbbaeven": {
           "points": 5.0
         },
-        "sheet3exercise2":{
+        "RegExnoaa": {
           "points": 5.0
         },
-        "sheet3exercise3":{
+        "RegExonebbb": {
           "points": 5.0
         },
-        "sheet3exercise4":{
+        "RegGramNFA1": {
           "points": 5.0
         },
-        "sheet3exercise5":{
+        "RegGrambbbaaaa": {
           "points": 5.0
         },
-        "sheet3exercise6":{
+        "RegGramaby3": {
           "points": 5.0
         }
       },
@@ -213,24 +213,48 @@
       }
     },
     "Practice":{
-      "VisFormalLang/Sheet3Practice":{
-        "sheet3practice1":{
-          "points": 0.0
+      "VisFormalLang/IntroExMore": {},
+      "VisFormalLang/FAExMore": {
+        "DFAevena": {
+          "points": 5.0
         },
-        "sheet3practice2":{
-          "points": 0.0
+        "DFAevenaoddb": {
+          "points": 5.0
         },
-        "sheet3practice3":{
-          "points": 0.0
+        "DFAevenamin3b": {
+          "points": 5.0
         },
-        "sheet3practice4":{
-          "points": 0.0
+        "DFAbotheo": {
+          "points": 5.0
         },
-        "sheet3practice5":{
-          "points": 0.0
+        "NFAtoDFAex1long":{
+          "points": 5.0
         },
-        "sheet3practice6":{
-          "points": 0.0
+        "NFAtoDFAex2":{
+          "points": 5.0
+        },
+        "NFAex2":{
+          "points": 5.0
+        }        
+      },
+      "VisFormalLang/RegLangExMore": {
+        "RegExaby3": {
+          "points": 5.0
+        },
+        "RegExcb3": {
+          "points": 5.0
+        },
+        "RegExabyb": {
+          "points": 5.0
+        },
+        "RegGramNFA2": {
+          "points": 5.0
+        },
+        "RegGramaaabba": {
+          "points": 5.0
+        },
+        "RegGramanbmodd": {
+          "points": 5.0
         }
       }, 
       "VisFormalLang/Sheet5Practice":{

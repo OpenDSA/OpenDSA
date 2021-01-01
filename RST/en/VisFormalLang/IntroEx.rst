@@ -9,8 +9,8 @@
    :satisfies:
    :topic:
 
-Sheet 1
-=======
+Intro Exercises
+===============
 
 Exercise 1
 ----------

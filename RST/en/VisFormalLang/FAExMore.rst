@@ -4,13 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed, Cliff Shaffer
+   :author: Mostafa Mohammed
    :requires:
    :satisfies:
-   :topic: DFA exercises
+   :topic:
 
-DFA exercises 2
-===============
+FA Exercise Practice
+====================
 
 Exercise 1
 ----------
@@ -38,3 +38,24 @@ Exercise 4
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAbotheo.html pe
    :long_name: DFA exercise both even or odd
+
+
+NFA to DFA 1
+------------
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex1long.html pe
+   :long_name: NFAtoDFA exercise 1 long version
+
+
+NFA to DFA 2
+------------
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex2.html pe
+   :long_name: NFAtoDFA exercise 2
+
+
+Create NFA
+----------
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAex2.html pe
+   :long_name: Create a NFA 2

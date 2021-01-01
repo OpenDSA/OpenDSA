@@ -160,21 +160,21 @@ We can easily see NFAs for :math:`\emptyset`, :math:`\lambda`, and
 Here is an NFA that accepts nothing (:math:`\emptyset`).
 
 .. inlineav:: phiREtoNFACON dgm
-   :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/phiREtoNFACON.css
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/phiREtoNFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/phiREtoNFACON.js
    :output: show
 
 Here is an NFA that accepts an empty string (:math:`\lambda`).
 
 .. inlineav:: lambdaREtoNFACON dgm
-   :links:   AV/VisFormalLang/Regular/lambdaREtoNFACON.css
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/lambdaREtoNFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/lambdaREtoNFACON.js
    :output: show
 
 Here is an NFA that accepts :math:`a \in \Sigma`.
 
 .. inlineav:: aREtoNFACON dgm
-   :links:   AV/VisFormalLang/Regular/aREtoNFACON.css
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/aREtoNFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/aREtoNFACON.js
    :output: show
 

@@ -136,6 +136,17 @@
           "points": 5.0
         }
       },
+      "PIFLA/NFAExercises2": {
+        "NFAtoDFAex1long":{
+          "points": 5.0
+        },
+        "NFAtoDFAex2":{
+          "points": 5.0
+        },
+        "NFAex2":{
+          "points": 5.0
+        }
+      },
       "PIFLA/DFAMinimization": {},
       "PIFLA/DFAMinExercises": {
         "DFAMinEx1": {
@@ -155,7 +166,7 @@
       }
     },
     "Regular Languages": {
-      "PIFormalLang/RegularExpression":{},
+      "PIFLA/RegEx":{},
       "PIFLA/RegExExercises":{
         "RegExbbaeven": {
           "points": 5.0

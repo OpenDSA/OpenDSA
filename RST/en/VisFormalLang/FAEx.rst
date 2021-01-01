@@ -9,8 +9,8 @@
    :satisfies:
    :topic:
 
-Sheet 2
-=======
+FA Exercises
+============
 
 Exercise 1
 ----------

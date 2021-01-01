@@ -4,19 +4,19 @@
 		<!--The list of states.-->
 		<state id="0" name="q0">
 			<x>31.0</x>
-			<y>38.0</y>
+			<y>0.0</y>
 			<initial/>
 		</state>
 		<state id="1" name="q1">
 			<x>179.0</x>
-			<y>38.0</y>
+			<y>0.0</y>
 			<final/>
 		</state>
 		<!--The list of transitions.-->
 		<transition>
 			<from>0</from>
 			<to>1</to>
-			<read/>
+			<read>a</read>
 		</transition>
 	</automaton>
 </structure>
