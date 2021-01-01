@@ -248,6 +248,9 @@ controllerProto.startTesting = function () {
     logRecord['Exercise' + exNum + '_Time'].push(end);
 
     $("#percentage").text("Correct cases: " + count + " / " + this.testCases.length);
+    if(count == this.testCases.length){
+      $("#check_mark")[0].style.display = "inline";
+    }
     $("#percentage").show();
     $("#testResults").show();
     window.scrollTo(0, document.body.scrollHeight);
