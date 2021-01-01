@@ -56,7 +56,7 @@
   }, 
   "chapters": {
     "Regular Languages": {
-      "PIFormalLang/RegularExpression":{},
+      "PIFLA/RegEx":{},
       "PIFLA/RegExExercises":{
         "RegExbbaeven": {
           "points": 5.0
