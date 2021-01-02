@@ -147,15 +147,7 @@ form.signin p, form.signin span {
 }
 
 .center {
-  position: relative; 
-  padding-top: 75%;
-  /* overflow: hidden; */
-  /* text-align: center; */
-}
-
-.embedContainer {
-  overflow: hidden;
-  height: 550px;
+  text-align: center;
 }
 
 label {
