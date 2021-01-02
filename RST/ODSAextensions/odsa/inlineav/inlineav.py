@@ -121,7 +121,7 @@ def loadTable():
 
 # div.jsavcanvas is required to ensure it appears before the error message otherwise the container appears over top of the message, blocking the 'Resubmit' link from being clicked
 SLIDESHOW = '''\
-<div id="%(exer_name)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-short-name="%(short_name)s" data-long-name="%(long_name)s" data-exer-id="%(id)s" alt="%(long_name)s" tabIndex="-1">
+<div id="%(exer_name)s" class="ssAV" data-points="%(points)s" data-threshold="%(threshold)s" data-type="%(type)s" data-required="%(required)s" data-short-name="%(short_name)s" data-long-name="%(long_name)s" data-exer-id="%(id)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
