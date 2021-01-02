@@ -1,5 +1,5 @@
 /*global PIFRAMES */
-// Initial draft by ??, Rewritten by Cliff Shaffer
+// Written by Mostafa Mohammed and Cliff Shaffer
 $(document).ready(function() {
   "use strict";
   var av_name = "DFAadvancedFS";

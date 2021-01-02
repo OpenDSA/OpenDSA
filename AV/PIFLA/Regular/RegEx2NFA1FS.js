@@ -2,12 +2,12 @@
 /* Written by ?? and Cliff Shaffer */
 $(document).ready(function() {
   "use strict";
-  var av_name = "RegExRegLangFS";
+  var av_name = "RegEx2NFA1FS";
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("Recall that we define the term :term:`regular language` to mean the languages that are recognized by a DFA. And we know these are the same as the languages recognized by an NFA, because we know that every NFA can be converted to a DFA.<br/><br/>In this frameset, we will show the relationship between regular languages (and thus, DFAs and NFAs) with Regular Expressions.");
+  av.umsg("<b>Part 1.</b> Recall that we define the term :term:`regular language` to mean the languages that are recognized by a DFA. And we know these are the same as the languages recognized by an NFA, because we know that every NFA can be converted to a DFA.<br/><br/>In this frameset, we will show the relationship between regular languages (and thus, DFAs and NFAs) with Regular Expressions.");
   av.displayInit();
   
   // Frame 2
