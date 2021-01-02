@@ -22,7 +22,7 @@ $(document).ready(function() {
   av.umsg("Hopefully it is not too hard to convince yourself that the DFA on the right accepts the same language as the NFA. Note that the names of the states are chosen to help you to see their relationships to the original NFA. In fact, there was a procedure followed to generate this DFA, which also produced these node labels.");
   av.step();
 
-  // Frame 21
+  // Frame 4
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

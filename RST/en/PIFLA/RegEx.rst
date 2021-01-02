@@ -55,15 +55,26 @@ Definition and Examples of Regular Expressions
      a finite number of applications of (2). 
 
             
-Regular Expressions vs. Regular Languages
------------------------------------------
+Converting a Regular Expression to a NFA
+----------------------------------------
 
-.. inlineav:: RegExRegLangFS ff
-   :links: AV/PIFLA/Regular/RegExRegLangFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegExRegLangFS.js
+.. inlineav:: RegEx2NFA1FS ff
+   :links: AV/PIFLA/Regular/RegEx2NFA1FS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFA1FS.js
    :output: show
 
+**Summary:** We can convert any NFA to an equivalent NFA with a single
+final state. This will be a useful first step.
 
+.. inlineav:: RegEx2NFA2FS ff
+   :links: AV/PIFLA/Regular/RegEx2NFA2FS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFA2FS.js
+   :output: show
+
+**Summary:** We can convert any RE to an NFA. So, all REs are
+associated with a regular language.
+
+            
 Regular Expression VS Regular Language (ORing 2 RegEX)
 ------------------------------------------------------
 
