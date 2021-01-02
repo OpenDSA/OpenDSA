@@ -849,7 +849,7 @@ Stackproto.formStack = function() {
       //queue.push(productions[0][0]);
       queue.add(productions[0][0]);
       for(let nextValue = queue.values().next(); nextValue.done !== true; nextValue = queue.values().next()){
-        if(counter > 1000){
+        if(counter > 5000){
           break;
         }
         var next = nextValue.value;
