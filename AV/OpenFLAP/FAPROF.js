@@ -1014,7 +1014,8 @@ var exerciseLocation;
 
 	// magic happens here
 	onLoadHandler();
-	initGraphFromServer();
+	if (window.inCanvas())
+	    initGraphFromServer();
 
 
   function layoutTable (mat, index) {
