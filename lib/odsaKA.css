@@ -7,7 +7,7 @@
 }
 
 div.exercises-card {
-    width: 850px;
+    width: 100%;
 }
 
 .exercises-stack,
@@ -24,11 +24,15 @@ div.exercises-card {
 }
 
 body {
-  min-width: 950px;
+  min-width: 0;
 }
 
 #page-container {
-  min-width: 950px;
+  min-width: 0; 
+}
+
+#container.single-exercise {
+	min-width: 0;
 }
 
 @media screen and (max-width: 950px) {

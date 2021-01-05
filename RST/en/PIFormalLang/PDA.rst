@@ -25,8 +25,8 @@ Transitions Types for PDAs
 --------------------------
 
 .. inlineav:: PDATransitionsFF ff
-   :links: AV/PIExample/PDATransitionsFF.css DataStructures/FLA/FLA.css
-   :scripts: DataStructures/FLA/FA.js AV/PIExample/PDA/PDATransitionsFF.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js lib/underscore.js
+   :links: DataStructures/FLA/FLA.css AV/PIExample/PDA/PDATransitionsFF.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js AV/PIExample/PDA/PDATransitionsFF.js
    :output: show
 
 
@@ -34,8 +34,8 @@ PDA Acceptace Models - Final State Acceptace
 --------------------------------------------
    
 .. inlineav:: PDAAcceptanceFF ff
-   :links: AV/PIExample/PDAAcceptanceFF.css DataStructures/FLA/FLA.css
-   :scripts: DataStructures/FLA/FA.js AV/PIExample/PDA/PDAAcceptanceFF.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js lib/underscore.js
+   :links: DataStructures/FLA/FLA.css AV/PIExample/PDA/PDAAcceptanceFF.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js AV/PIExample/PDA/PDAAcceptanceFF.js
    :output: show
 
 
@@ -43,8 +43,8 @@ PDA Acceptace Models - Empty Stack Acceptace
 --------------------------------------------
    
 .. inlineav:: PDAEmptyStackAcceptanceFF ff
-   :links: AV/PIExample/PDAEmptyStackAcceptanceFF.css DataStructures/FLA/FLA.css
-   :scripts: DataStructures/FLA/FA.js AV/PIExample/PDA/PDAEmptyStackAcceptanceFF.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js lib/underscore.js
+   :links: DataStructures/FLA/FLA.css AV/PIExample/PDA/PDAEmptyStackAcceptanceFF.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js AV/PIExample/PDA/PDAEmptyStackAcceptanceFF.js
    :output: show
 
 
@@ -52,8 +52,6 @@ Equivalence of Acceptance Definitions
 -------------------------------------
 
 .. inlineav:: PDAAcceptanceEquivalenceFF ff
-   :links: AV/PIExample/PDAAcceptanceEquivalenceFF.css DataStructures/FLA/FLA.css
-   :scripts: DataStructures/FLA/FA.js AV/PIExample/PDA/PDAAcceptanceEquivalenceFF.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js lib/underscore.js
+   :links: DataStructures/FLA/FLA.css AV/PIExample/PDA/PDAAcceptanceEquivalenceFF.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js AV/PIExample/PDA/PDAAcceptanceEquivalenceFF.js
    :output: show
-
-

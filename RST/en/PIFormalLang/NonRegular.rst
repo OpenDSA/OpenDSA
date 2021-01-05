@@ -137,7 +137,7 @@ Use Closure Properties to prove L is not regular: Example 3
 
 
 Adversary game
--------------
+--------------
 
 .. inlineav:: AdversaryGameCON ss
    :links: AV/PIExample/IdentifyingNonRegularLanguage/AdversaryGameCON.css
@@ -146,6 +146,6 @@ Adversary game
 
 
 Adversary game examples
-----------------------
+-----------------------
 .. avembed:: AV/VisFormalLang/NonReg/PLGame.html ss
    :long_name: Regular Pumping Lemmma

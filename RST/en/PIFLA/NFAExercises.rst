@@ -15,12 +15,12 @@ NFA exercises
 NFA to DFA
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex.html pe
-   :long_name: NFAtoDFA exercise
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex1.html pe
+   :long_name: NFAtoDFA exercise 1
 
 
 Create NFA
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAex1.html pe
-   :long_name: Create a NFA
+   :long_name: Create a NFA 1

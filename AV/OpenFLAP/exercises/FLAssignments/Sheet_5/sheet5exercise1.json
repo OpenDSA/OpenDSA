@@ -6,7 +6,6 @@
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
     "description": "Construct a CFG over $\\{a, b\\}$ whose language is $\\{a^nb^m: m \\geq n, m - n \\mbox{ is odd}\\}$.",
-    "type": "description",
     "testCases": [{
             "": false,
             "ShowTestCase":true

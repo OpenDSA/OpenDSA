@@ -1,5 +1,5 @@
 /*global PIFRAMES */
-// Initial draft by ??, Rewritten by Cliff Shaffer
+// Initial draft by Mostafa Mohammed and Cliff Shaffer
 $(document).ready(function () {
   "use strict";
   var av_name = "EquivFS";
@@ -7,7 +7,7 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("An :term:`equivalence relation` is an especially important type of relation. Relation $R$ on set $S$ is an equivalence relation if it is reflexive, symmetric, and transitive. An equivalence relation can be viewed as partitioning a set into :term:`equivalence classes`. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$. A :term:`partition` of a set $S$ is a collection of subsets that are :term:`disjoint` from each other (that is, they share no elements) and whose union is $S$. An equivalence relation on $S$ partitions the set into disjoint subsets whose elements are equivalent. The UNION/FIND algorithm efficiently maintains equivalence classes on a set. Two graph algorithms that make use of disjoint sets is :term:`connected component` finding and computing a :term:`minimal-cost spanning tree`.");
+  av.umsg("An :term:`equivalence relation` is an especially important type of relation. Relation $R$ on set $S$ is an equivalence relation if it is <b>reflexive</b>, <b>symmetric</b>, and <b>transitive</b>. An equivalence relation can be viewed as partitioning a set into :term:`equivalence classes`. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$. A :term:`partition` of a set $S$ is a collection of subsets that are :term:`disjoint` from each other (that is, they share no elements) and whose union is $S$. An equivalence relation on $S$ partitions the set into disjoint subsets whose elements are equivalent. The UNION/FIND algorithm efficiently maintains equivalence classes on a set. Two graph algorithms that make use of disjoint sets is :term:`connected component` finding and computing a :term:`minimal-cost spanning tree`.");
   av.displayInit();
 
   // Frame 2

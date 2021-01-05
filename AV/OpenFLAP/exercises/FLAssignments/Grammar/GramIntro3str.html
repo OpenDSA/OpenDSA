@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
   <head>
     <meta charset="utf-8">
     <title>Grammar Exercise: 3 Strings</title>
@@ -9,16 +8,13 @@
       return "./GramIntro3str.json"
       };
     </script>
-    <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title"
-          charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css">
     <link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../css/customPrompt.css" type="text/css" />
     <link rel="stylesheet" href="../../../css/FA.css" type="text/css" />
-    <link rel="stylesheet" href="../../../css/grammar.css" type="text/css" media="screen" title="no title"
-          charset="utf-8" />
-    <link rel="stylesheet" href="../../../css/parsing.css" type="text/css" media="screen" title="no title"
-          charset="utf-8" />
+    <link rel="stylesheet" href="../../../css/grammar.css" type="text/css">
+    <link rel="stylesheet" href="../../../css/parsing.css" type="text/css">
     <link rel="stylesheet" href="../../../css/help.css" type="text/css" />
     <link rel="stylesheet" href="../../../css/grammarEditor.css" type="text/css" />
   </head>
@@ -38,8 +34,6 @@
           To add, click on "Add Row" and click on any row to add a new row.
         </div>
       </div>
-      <h2 id="question">Write a grammar for the following alphabet and
-        language: <span id="expression"></span></h2>
       <h2 id="description"></h2>
       <div id="dialogueoverlay"></div>
       <div id="dialoguebox">
@@ -56,17 +50,13 @@
       <button type="button" class="function" id="identifybutton">Identify Grammar</button>
       <div id="buttons" align="center">
         <span id='mode'></span><br>
-
         <p id="percentage"></p>
         <table id="testResults"></table>
-
-
         <div id="jsavcontainer">
           <a class="jsavsettings" href="#">Settings</a>
           <p align="center" class="jsavexercisecontrols"></p>
           <p class="jsavscore"></p>
           <p class="jsavoutput jsavline"></p>
-
         </div>
         <div id="graph" class="jsavcanvas"></div>
         <div id="files">
@@ -78,8 +68,9 @@
     </div>
     <script src="../../exerController/TestCaseGenerater.js"></script>
     <script src="../../exerController/grammarHandler.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../../../../lib/jquery.min.js"></script>
+<script src="../../../../../lib/jquery.migrate.min.js"></script>
+    <script src="../../../../../lib/jquery.ui.min.js"></script>
     <script src="../../../../../lib/jquery.transit.js"></script>
     <script src="../../../../../lib/raphael.js"></script>
     <script src="../../../../../lib/dagre.min.js"></script>
@@ -94,5 +85,4 @@
     <script src="../../../grammarEditorPROF.js"></script>
     <script src="../../exerController/GrammarExerciseController.js"></script>
   </body>
-
 </html>

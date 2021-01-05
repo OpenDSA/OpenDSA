@@ -62,7 +62,8 @@ var jsav,
 
 		$('#testSolution').click(testSolution);
     
-		initAnsFromServer();
+        if (window.inCanvas())
+		    initAnsFromServer();
 	}
 
 	

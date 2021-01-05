@@ -2,8 +2,8 @@ $(document).ready(function() {
   "use strict";
   var av_name = "EvenBinaryDFACON";
   var av = new JSAV(av_name, {animationMode: "none"});
-  var url = "../../../AV/VisFormalLang/FA/Machines/EvenBinaryDFACON.jff";
-  var binaryDFA = new av.ds.FA({center: true, url: url});
+  var url = "../../../AV/OpenFLAP/machines/FA/EvenBinaryDFACON.jff";
+  var binaryDFA = new av.ds.FA({url: url, top: -50, left: 200});
   av.displayInit();
   av.recorded();
 });

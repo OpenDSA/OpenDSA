@@ -19,6 +19,19 @@
     return parseInt(regResult[1]);
   }
 
+  var inCanvas = function () {
+    var exerciseFrame = window.frameElement;
+    //sanity check to adapt stand alone page
+    if (exerciseFrame == null)
+      return false;
+    var src = exerciseFrame.src;
+    var exerciseId = srcToId(src);
+    //sanity check to disable the function outside the canvas
+    if (exerciseId == -1)
+        return false;
+    return true;
+  }
+
   //it will store a grade of -1 if it is from reset
   var store_solution = function (solution, grade) {
     var exerciseFrame = window.frameElement;
@@ -42,7 +55,7 @@
       url: '/student_exercise_progress/new_progress',
       data: data,
       success: function (result, status, xhr) {
-        console.log(result["result"]);
+        console.log(result["result"], "solution:", solution);
       }
     })
   }
@@ -80,6 +93,7 @@
 
   window.StoreProgress = store_solution;
   window.FetchStoredProgress = fetch_progress;
+  window.inCanvas = inCanvas;
   //=====end of student progress segment=====
 
   // function to filter the steps to those that should be graded

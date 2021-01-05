@@ -4,29 +4,37 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
-   :requires: FL Concepts
+   :author: Susan Rodger, Cliff Shaffer, Mostafa Mohammed, and John Taylor
    :satisfies: Deterministic Finite Automata
    :topic: Finite Automata
 
-Deterministic Finite Acceptors
-==============================
 
 DFA: Deterministic Finite Acceptor
-----------------------------------
+==================================
 
-We start with the simplest of our machines:
-The :term:`Deterministic Finite Acceptor` (:term:`DFA`).
-This machine can process an input string (shown on a tape) from left
-to right.
-There is a control unit (with states), behavior defined for what to do
-when in a given state and with a given symbol on the current square of
-the tape.
-All that we can "do" is change state before going to the next letter
-to the right.
-That is, an acceptor does not modify the contents of the tape.
+Introduction to the DFA
+-----------------------
 
-.. slide:: Example
 
-    .. avembed:: AV/OpenFLAP/examples/braces.html ss
-       :long_name: write a grammar for a language example
+Some Examples
+-------------
+The algorithm for how a DFA processes a string:
+
+| Start in :term:`start state` with input on tape
+| q = current state
+| s = current symbol on tape
+| while (s != blank) do
+|    :math:`q = \delta(q,s)`
+|    s = next symbol to the right on tape
+| if :math:`q \in F`
+|    then accept
+|    else reject
+
+Here is a detailed trace on a simple input.
+
+.. inlineav:: MachineTraceCON ss
+   :long_name: Machine Trace Slideshow
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/MachineTraceCON.css 
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/MachineTraceCON.js
+   :output: show
+

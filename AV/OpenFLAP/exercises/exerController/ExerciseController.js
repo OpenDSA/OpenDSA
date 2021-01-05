@@ -48,6 +48,12 @@ controllerProto.load = function () {
 }
 
 controllerProto.startTesting = function () {
+	var saveFunc = serializeGraphToXML;
+	if (document.getElementsByTagName("title")[0].innerText == "PDA Exercise")
+		saveFunc = window.PDAsaver;
+	else if (document.getElementsByTagName("title")[0].innerText == "TM Editor")
+		saveFunc = window.TMsaver;
+
 	var testCaseList = this.tests[0].testCases;
 	var containHideTest = false;
 	var wrongCounter = 0;
@@ -61,7 +67,7 @@ controllerProto.startTesting = function () {
 	tryC++;
 	if (this.fa.initial == null) {
 		window.alert("FA traversal requires an initial state.");
-		return { score: 0, solution: serializeGraphToXML(this.fa) };
+		return { score: 0, solution: saveFunc(this.fa) };
 	}
 	$("#testResults").empty();
 	$("#testResults").append("<tr><td>Test Case</td><td>Standard Result</td><td>Your Result</td></tr>");
@@ -83,7 +89,7 @@ controllerProto.startTesting = function () {
 			} else {
 				$("#testResults").append("<tr><td> The answer is a DFA </td><td> Yes </td><td class='wrong'>" + "No" + "</td></tr>");
 				testRes.push('Test' + testNum + ':' + 'Wrong');
-				return { score: 0, solution: serializeGraphToXML(this.fa) }
+				return { score: 0, solution: saveFunc(this.fa) }
 			}
 		}
 	}
@@ -175,8 +181,8 @@ controllerProto.startTesting = function () {
 	window.scrollTo(0, document.body.scrollHeight);
 	$('#container').scrollTop($('#container').prop("scrollHeight"));
 	if (count === 0)
-		return { score: 0, solution: serializeGraphToXML(this.fa) }
-	return { score: count / numberOfTestCases, solution: serializeGraphToXML(this.fa) };
+		return { score: 0, solution: saveFunc(this.fa) }
+	return { score: count / numberOfTestCases, solution: saveFunc(this.fa) };
 };
 
 // binded with question links at the top of the page

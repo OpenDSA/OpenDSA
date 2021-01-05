@@ -217,7 +217,7 @@ exclude_patterns = []
 highlight_language = 'guess' #'%(code_lang)s'
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'borland' #'sphinx'
+pygments_style = 'sphinx' #'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -302,16 +302,18 @@ html_static_path = ['_static']
 # to properly link to Privacy.html
 # The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 html_context = {"script_files": [
-                  'https://code.jquery.com/jquery-2.1.4.min.js',
-                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
-                  '//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js'
+                  #'https://code.jquery.com/jquery-2.1.4.min.js',
+                  '%(eb2root)slib/jquery.min.js',
+                  '%(eb2root)slib/jquery.migrate.min.js',
+                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
                   '_static/doctools.js'
                 ],
                 "odsa_scripts": [
-                  'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
+                  #'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
+                  '%(eb2root)slib/jquery.ui.min.js',
                   '%(eb2root)slib/jquery.transit.js',
                   '%(eb2root)slib/raphael.js',
                   '%(eb2root)slib/JSAV-min.js',
@@ -328,7 +330,8 @@ html_context = {"script_files": [
                   '%(eb2root)slib/normalize.css',
                   '%(eb2root)slib/JSAV.css',
                   '%(eb2root)slib/odsaMOD-min.css',
-                  'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
+                  '%(eb2root)slib/jquery.ui.min.css',
+                  #'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
                   '%(eb2root)slib/odsaStyle-min.css'
                 ],
                 "odsa_root_path": "%(eb2root)s",

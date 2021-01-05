@@ -3254,8 +3254,8 @@ $(document).ready(function () {
     }
     var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     localStorage['grammars'] = JSON.stringify(productions);
-//     window.open("./CYKParser.html");
-    window.open("../Ming/CYKParser/CYKParser.html");
+     window.open("../Development/formal_language/CYKParser.html");
+    //window.open("../Ming/CYKParser/CYKParser.html");
   }
 
   //=================================

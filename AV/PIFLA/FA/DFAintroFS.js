@@ -1,5 +1,5 @@
 /*global PIFRAMES */
-// Initial draft by ??, Rewritten by Cliff Shaffer
+// Initial draft by John Taylor, Rewritten by Cliff Shaffer
 $(document).ready(function() {
   "use strict";
   var av_name = "DFAintroFS";
@@ -35,8 +35,8 @@ $(document).ready(function() {
   av.step();
 
   //Add New DFA from link
-  var urlbinaryDFA="../../../AV/OpenFLAP/machines/FA/EvenBinaryDFACON.jff";
-  var binaryDFA= new av.ds.FA({center: true , url: urlbinaryDFA, top: 100});
+  var url = "../../../AV/OpenFLAP/machines/FA/EvenBinaryDFACON.jff";
+  var binaryDFA = new av.ds.FA({center: true , url: url, top: 100});
 
   //Frame 8
   av.umsg("Below is presentation for the details of a DFA. The nodes are states, the edges are transitions. This particular example accepts even binary numbers. Lets match what is in the graphical view to terms in the formal defination of a DFA: $(Q, \\Sigma, \\delta, Q_0, F)$, <br />$Q$ is a finite set of states <br />$\\Sigma$ is the input alphabet (a finite set) <br />$\\delta: Q \\times\\Sigma \\rightarrow Q$ is a set of transitions like $(q_i, a) \\rightarrow q_j$ meaning that when in state $q_i$, if you see letter $a$, consume it and go to state $q_j$ <br />$q_0$ is the intial state ($q_0 \\in Q$)  <br />$F \\subseteq Q$ is a set of final states.");

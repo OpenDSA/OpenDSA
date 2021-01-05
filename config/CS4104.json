@@ -10,6 +10,13 @@
       ],
       "label": "Java",
       "lang": "java"
+    },
+    "Pseudo": {
+      "ext": [
+        "txt"
+      ],
+      "label": "Pseudo",
+      "lang": "pseudo"
     }
   },
   "lang": "en",

@@ -55,26 +55,54 @@
     "required": true
   }, 
   "chapters": {
-    "Preface": {
-      "Intro": {}
-    },
-    "Introduction": {
-      "PIFLA/FLIntro": {},
-      "PIFLA/FLOverview": {},
-      "PIFLA/MajorConcepts": {},
-      "PIFLA/IntroGrammarEx": {}
-    },
-    "Mathematical Background": {
-      "PIFLA/SetNotation": {},
-      "PIFLA/Relations": {},
-      "Background/Proofs": {}
-    },
-    "Finite Acceptors": {
-      "PIFLA/DFA":{},
-      "PIFLA/DFAExercises": {},
-      "PIFLA/NFA":{},
-      "PIFLA/NFAExercises": {},
-      "PIFLA/DFAMinimization": {}
+    "Regular Languages": {
+      "PIFLA/RegEx":{},
+      "PIFLA/RegExExercises":{
+        "RegExbbaeven": {
+          "points": 5.0
+        },
+        "RegExnoaa": {
+          "points": 5.0
+        },
+        "RegExonebbb": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/RegExExercises2":{
+        "RegExaby3": {
+          "points": 5.0
+        },
+        "RegExcb3": {
+          "points": 5.0
+        },
+        "RegExabyb": {
+          "points": 5.0
+        }
+      },
+      "PIFormalLang/RegularGrammars": {},
+      "PIFLA/RegGramEx1": {
+        "RegGramNFA1": {
+          "points": 5.0
+        },
+        "RegGrambbbaaaa": {
+          "points": 5.0
+        },
+        "RegGramaby3": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/RegGramEx2": {
+        "RegGramNFA2": {
+          "points": 5.0
+        },
+        "RegGramaaabba": {
+          "points": 5.0
+        },
+        "RegGramanbmodd": {
+          "points": 5.0
+        }
+      },
+      "PIFormalLang/ClosurePropertiesOfRegularLanguages": {}
     },
     "Appendix": {
       "Glossary": {}

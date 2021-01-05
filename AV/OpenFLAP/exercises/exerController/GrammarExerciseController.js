@@ -140,7 +140,7 @@ controllerProto.startTesting = function () {
     });
     if (productions.length == 0) {
       alert("No Grammar to grade");
-      return 0;
+      return { score: 0, solution: JSON.stringify(arr)};
     }
     //we need to find an initial test to know if the student has something to test or not
     $("#testResults").empty();
@@ -155,7 +155,7 @@ controllerProto.startTesting = function () {
     var numberOfTestCases = this.testCases.length;
     if (grammarType == 'unrestricted') {
       alert("Incorrect Grammar.");
-      return 0;
+      return { score: 0, solution: JSON.stringify(arr)};
     }
     //Check if there is a specific tyoe of grammras is required in the first test case.
     if (firstTestcase.indexOf("regular") >= 0 || firstTestcase.indexOf("linear") >= 0) {
@@ -176,7 +176,7 @@ controllerProto.startTesting = function () {
         $("#testResults").append("<tr><td>" + firstTestcase + "</td><td>" + "Satisfied" + "</td><td class='wrong'>" + (correctGrammarType ? "Yes" : "No") + "</td></tr>");
         testRes.push('Test' + index + ':' + 'Correct');
         $("#testResults").show();
-        return 0;
+        return { score: 0, solution: JSON.stringify(arr)};
       }
       index++;
     }
@@ -248,13 +248,16 @@ controllerProto.startTesting = function () {
     logRecord['Exercise' + exNum + '_Time'].push(end);
 
     $("#percentage").text("Correct cases: " + count + " / " + this.testCases.length);
+    if(count == this.testCases.length){
+      $("#check_mark")[0].style.display = "inline";
+    }
     $("#percentage").show();
     $("#testResults").show();
     window.scrollTo(0, document.body.scrollHeight);
     $('#container').scrollTop($('#container').prop("scrollHeight"));
     if (count === 0)
-      return 0;
-    return count / numberOfTestCases;
+    return { score: 0, solution: JSON.stringify(arr)};
+    return {score: count / numberOfTestCases, solution: JSON.stringify(arr)};
   }
 };
 
@@ -290,11 +293,11 @@ controllerProto.updateExercise = function (id) {
         }
         else{
           var expression = parts[a];
-          if(a+2 == parts.length){
+          if(a+1 == parts.length){
             text = " " + '<span id=exp'+(a+1)+'></span>' + ' ';
           }
           else{
-            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+2];
+            text = " " + '<span id=exp'+(a+1)+'></span>' + ' ' + parts[a+1];
           }
           $("#description").append(text);
           $("#exp"+(a+1)).html("<img src='" + latexit + expression + "' border='0'/>");

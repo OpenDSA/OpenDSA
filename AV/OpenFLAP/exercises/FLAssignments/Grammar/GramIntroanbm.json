@@ -1,13 +1,11 @@
 [{
-  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
   "exerciseType": "GRAMMAR",
   "totalTrueCases": 3,
   "totalFalseCases": 3,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "expression": "",
-  "description": "Write a grammar for the following alphabet and language:$\\Sigma = \\{a, b\\}, \\quad L = \\{a^nb^m \\mid n > 0, m \\geq n\\}$",
-  "type": "description",
+  "description": "Write a grammar for the alphabet $\\Sigma = \\{a, b\\}$ and language $L = \\{a^nb^m \\mid n > 0, m \\geq n\\}$.",
   "testCases":
   [{
     "ab": true,

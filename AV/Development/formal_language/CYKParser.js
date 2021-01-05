@@ -37,7 +37,7 @@ $(document).ready(function () {
       jsavArry.css({"min-height": "0px"});
       jsavArry.css({"height": "30px"})
       cykParse();
-    }MCB, room 122
+    }
   };
 
   function cykParse() {

@@ -5,9 +5,7 @@
     "totalFalseCases": 1,
     "containLetters": ["a", "b", "c"],
     "randomStringLength": [0, 15],
-    "expression": "",
     "description": "Construct the PDA that accepts L($\\{a^ib^jc^k \\mid i = j \\mbox{ or } j = k\\}$)",
-    "type": "description",
     "testCases": [{
             "": false,
             "ShowTestCase":true

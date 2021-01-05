@@ -5,9 +5,7 @@
     "totalFalseCases": 3,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "expression": "",
     "description": "Construct the DFA for the following language. $L\\: =\\: \\{w \\in \\Sigma^* \\mid n_b(w) \b\\:mod\\: 3\\: =\\: 0 \\:and\\: does\\: not\\: have\\: the\\: substring\\: aab\\}$ , Σ ={a, b}. For example, bbba, bababa, babbbbbaaandaaaa are in L.  But baababa is not.",
-    "type": "description",
     "testCases": [{
             "bbba": true,
             "ShowTestCase":true

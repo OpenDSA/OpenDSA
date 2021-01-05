@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Susan Rodger, Cliff Shaffer, Mostafa Mohammed, and John Taylor
-   :satisfies: DFA Module
+   :satisfies: Deterministic Finite Automata
    :topic: Finite Automata
 
 
@@ -107,7 +107,7 @@ since you can simply recreate the machine that we have been using.
 But doing this exercise will introduce you to the machine editor that
 you will see a lot of in this book!
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/EvenBinary.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAEvenBinary.html pe
    :long_name: Accept even binary numbers
 
 
