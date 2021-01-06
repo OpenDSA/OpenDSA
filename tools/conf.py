@@ -207,7 +207,7 @@ html_context = {"script_files": [
                   '../../../lib/odsaUtils-min.js',
                   '../../../lib/odsaMOD-min.js',
                   'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
-                   'https://d3js.org/d3-selection-multi.v1.min.js',
+                  'https://d3js.org/d3-selection-multi.v1.min.js',
                   '../../../lib/dataStructures.js',
                   '../../../lib/conceptMap.js'
                 ],

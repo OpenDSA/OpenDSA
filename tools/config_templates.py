@@ -58,7 +58,7 @@ makefile_template = '''\
 #
 # You can set these variables from the command line.
 # PYTHON should match the exec of the rest of OpenDSA
-PYTHON = %(python_executable)s  
+PYTHON = %(python_executable)s
 SPHINXBUILD   = sphinx-build
 HTMLDIR       = %(rel_book_output_path)s
 MINIMIZE      = uglifyjs
@@ -305,7 +305,8 @@ html_context = {"script_files": [
                   #'https://code.jquery.com/jquery-2.1.4.min.js',
                   '%(eb2root)slib/jquery.min.js',
                   '%(eb2root)slib/jquery.migrate.min.js',
-                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+                  '//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js'
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
