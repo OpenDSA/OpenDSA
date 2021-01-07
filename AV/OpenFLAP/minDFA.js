@@ -45,7 +45,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		else if(type == 'Exercise')
 		{
 			var source = opts.graph;
-			referenceGraph = jsav.ds.FA({width: "45%", height: 440, layout: "manual", element: $("#reference")});
+			referenceGraph = jsav.ds.FA({width: "45%", height: 310, layout: "manual", element: $("#reference")});
 			referenceGraph.initFromParsedJSONSource(source, 0.5);
 			referenceGraph.updateAlphabet();
 			alphabet = Object.keys(referenceGraph.alphabet).sort();
