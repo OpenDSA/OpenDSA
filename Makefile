@@ -14,11 +14,11 @@ PYTHON = python -bb
 # -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
 # -u flag runs python in unbuffered mode (no output flushes needed)
 
-JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
+JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
 CSS_MINIFY = cleancss
 ifeq ($(strip $(ODSA_ENV)),DEV)
 	# fake-minify for easier debugging in DEV setups...
-	JS_MINIFY = cat 
+	JS_MINIFY = cat
 	CSS_MINIFY = cat
 endif
 
@@ -111,21 +111,21 @@ jsonlint:
 
 
 pyLint:
-	$(PYTHON_LINT) server.py tools/*.py RST/ODSAextensions/**/*.py 
+	$(PYTHON_LINT) server.py tools/*.py RST/ODSAextensions/**/*.py
 	# $(PYTHON_LINT) SourceCode/Python/**/*.py # These are python 2!!!
 
 rst2json:
 	$(PYTHON) tools/rst2json.py
 
-JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV
+JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV timeme
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
 JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 
-CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook  
+CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
-min: $(JS_MIN_FILES) $(CSS_MIN_FILES) 
+min: $(JS_MIN_FILES) $(CSS_MIN_FILES)
 ifeq ($(strip $(ODSA_ENV)),DEV)
 	@echo 'Completed: FAKE-Minify of many .js and .css files (just copied)'
 else

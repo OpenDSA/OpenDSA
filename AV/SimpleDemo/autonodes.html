@@ -20,6 +20,7 @@
     <script src="../../lib/jquery.min.js"></script>
 <script src="../../lib/jquery.migrate.min.js"></script>
     <script src="../../lib/jquery.ui.min.js"></script>
+<script src="../../lib/timeme-min.js"></script>
     <script src="../../lib/jquery.transit.js"></script>
     <script src="../../lib/raphael.js"></script>
     <script src="../../lib/JSAV-min.js"></script>
@@ -29,12 +30,12 @@
       var jsav = new JSAV("av");
       var bt = jsav.ds.binarytree();
       bt.root("internallongvalueki"); // set the value of the root
-      
+
       bt.root().highlight(); //highlight root
       bt.root().left("3"); // set left child
-      
+
       bt.root().right("longervalue"); // set right, store reference
-      
+
       bt.root().left().right("another");
       bt.layout();
       jsav.displayInit();
