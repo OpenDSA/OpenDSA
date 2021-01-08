@@ -1,5 +1,5 @@
 /*global PIFRAMES */
-/* Written by ?? and Cliff Shaffer */
+/* Written by Mostafa Mohammed and Cliff Shaffer */
 $(document).ready(function() {
   "use strict";
 
@@ -30,7 +30,7 @@ $(document).ready(function() {
     return fa;
   }
 
-  var av_name = "RegEx2NFA2FS";
+  var av_name = "RegEx2NFAorFS";
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
   
