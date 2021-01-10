@@ -29,8 +29,9 @@
          the functionality of them are located on the
          ExerciseController JS file-->
     <div id="container">
+      <img id="check_mark" src="../../../green_check.png" alt="Proficient" style="display: none;float: left; width: 40px;">
       <h1 id="grammarexercise">Grammar Exercise</h1>
-      <button id="helpbutton"><img src="../../help.png" /></button>
+      <button id="helpbutton"><img src="../../../help.png" /></button>
       <div id="help" title="Help" style="display:none">
         <div id="helpInfo">
           Help:
@@ -54,12 +55,7 @@
       <button type="button" class="function" id="identifybutton">Identify Grammar</button>
       <div id="buttons" align="center">
         <span id='mode'></span><br>
-
-        <p id="percentage"></p>
-        <table id="testResults"></table>
-
-
-        <div id="jsavcontainer">
+        <div id="av">
           <a class="jsavsettings" href="#">Settings</a>
           <p align="center" class="jsavexercisecontrols"></p>
           <p class="jsavscore"></p>
@@ -73,7 +69,9 @@
           <div style='display: none;' id='download'></div>
         </div>
       </div>
-    </div>
+    <p id="percentage"></p>
+      <table id="testResults"></table>
+      </div>
     <script src="../../exerController/TestCaseGenerater.js"></script>
     <script src="../../exerController/grammarHandler.js"></script>
     <script src="../../../../../lib/jquery.min.js"></script>
@@ -90,7 +88,7 @@
     <script src="../../../../../DataStructures/FLA/FA.js"></script>
     <script src="../../../../../DataStructures/FLA/PDA.js"></script>
     <script src="../../../../../DataStructures/FLA/Grading.js"></script>
-    <script src="../../../grammarEditorPROF.js"></script>
+    <script src="../../../grammarEditor.js"></script>
     <script src="../../exerController/GrammarExerciseController.js"></script>
   </body>
 

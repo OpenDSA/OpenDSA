@@ -66,38 +66,29 @@ Converting a Regular Expression to a NFA
 **Summary:** We can convert any NFA to an equivalent NFA with a single
 final state. This will be a useful first step.
 
-.. inlineav:: RegEx2NFA2FS ff
-   :links: AV/PIFLA/Regular/RegEx2NFA2FS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFA2FS.js
+.. inlineav:: RegEx2NFAorFS ff
+   :links: AV/PIFLA/Regular/RegEx2NFAorFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAorFS.js
+   :output: show
+
+|
+
+.. inlineav:: RegEx2NFAcatFS ff
+   :links: AV/PIFLA/Regular/RegEx2NFAcatFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAcatFS.js
+   :output: show
+
+|
+
+.. inlineav:: RegEXandRegLangStarFF ff
+   :links: AV/PIExample/RegularLanguages/RegEXandRegLangStarFF.css
+   :scripts:AV/PIExample/RegularLanguages/RegEXandRegLangStarFF.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
    :output: show
 
 **Summary:** We can convert any RE to an NFA. So, all REs are
 associated with a regular language.
 
             
-Regular Expression VS Regular Language (ORing 2 RegEX)
-------------------------------------------------------
-
-.. inlineav:: RegEXandRegLangORFF ff
-   :links: AV/PIExample/RegularLanguages/RegEXandRegLangORFF.css
-   :scripts:AV/PIExample/RegularLanguages/RegEXandRegLangORFF.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
-   :output: show
-
-Regular Expression VS Regular Language (Concatenating 2 RegEX)
---------------------------------------------------------------
-
-.. inlineav:: RegEXandRegLangConcatFF ff
-   :links: AV/PIExample/RegularLanguages/RegEXandRegLangConcatFF.css
-   :scripts:AV/PIExample/RegularLanguages/RegEXandRegLangConcatFF.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
-   :output: show
-
-Regular Expression VS Regular Language (Closure Operation)
-----------------------------------------------------------
-
-.. inlineav:: RegEXandRegLangStarFF ff
-   :links: AV/PIExample/RegularLanguages/RegEXandRegLangStarFF.css
-   :scripts:AV/PIExample/RegularLanguages/RegEXandRegLangStarFF.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
-   :output: show
 
 Regular Expression VS Regular Language Example
 ----------------------------------------------

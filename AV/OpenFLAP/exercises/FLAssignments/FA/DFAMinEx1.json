@@ -9,56 +9,56 @@
     "graph": {
       "nodes": [
         {
-          "left": 10,
-          "top": 12,
+          "left": 14,
+          "top": 7,
           "i": true,
           "f": false
         },
         {
-          "left": 0,
-          "top": 185,
+          "left": 14,
+          "top": 114,
           "i": false,
           "f": false
         },
         {
-          "left": 135,
-          "top": 96,
+          "left": 300,
+          "top": 108,
           "i": false,
           "f": false
         },
         {
-          "left": 204,
-          "top": 203,
+          "left": 200,
+          "top": 190,
           "i": false,
           "f": false
         },
         {
-          "left": 234,
-          "top": 69,
+          "left": 400,
+          "top": 14,
           "i": false,
           "f": true
         },
         {
-          "left": 127,
-          "top": 8,
+          "left": 200,
+          "top": 14,
           "i": false,
           "f": false
         },
         {
-          "left": 379,
-          "top": 213,
+          "left": 600,
+          "top": 267,
           "i": false,
           "f": false
         },
         {
-          "left": 40,
-          "top": 345,
+          "left": 14,
+          "top": 271,
           "i": false,
           "f": true
         },
         {
-          "left": 408,
-          "top": 72,
+          "left": 600,
+          "top": 18,
           "i": false,
           "f": false
         }

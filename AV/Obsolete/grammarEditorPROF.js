@@ -70,17 +70,16 @@ $(document).ready(function () {
     if (m) {
       m.clear();
     }
-    var m2 = jsav.ds.matrix(arr, { style: "table" });
+    var m2 = jsav.ds.matrix(arr, {style: "table"});
     // hide all of the empty rows
     for (var i = lastRow + 1; i < arr.length; i++) {
       m2._arrays[i].hide();
     }
     layoutTable(m2, 2);
-    if (type !== "transformation")
+    if(type !== "transformation")
       m2.on('click', matrixClickHandler);
     return m2;
   };
-
   var cleanupFetchedSolution = function (fetArr) {
     var fetLastRow = fetArr.length - 1;
     //clean empty lines
@@ -168,11 +167,11 @@ $(document).ready(function () {
   }
 
   // handler for grammar editing
-  var matrixClickHandler = function (index, index2) {
+  var matrixClickHandler = function(index, index2) {
     //console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
     // if ((row != index || col != index2) && fi) {
-
+      var deleteTimes = 0;
     if (fi) {
       var input = fi.val();
       var regex = new RegExp(emptystring, g);
@@ -181,10 +180,11 @@ $(document).ready(function () {
       if (input === "" && col == 2) {
         input = emptystring;
       }
-      if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
-      }
-      if (col == 2 && _.find(arr, function (x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row; })) {
+      // if (input === "" && col === 0) {
+      //   alert('Invalid left-hand side.');
+      //   return;
+      // }
+      if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
         alert('This production already exists.');
       }
       fi.remove();
@@ -193,13 +193,43 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if (index === 0) {
-        alert("Can't delete the last row");
+      if(index === 0 && lastRow === 0){
+        //alert("Can't delete the last row");
+        arr[index][0] = "";
+        arr[index][2] = "";
+        m = init();
+        $('.jsavmatrix').addClass("editMode");
+        $('.jsavmatrix').removeClass("deleteMode");
+        $('.jsavmatrix').removeClass("addrowMode");
+        jsav.umsg('Editing');
         return;
       }
       // recreates the matrix when deleting a row...
-      arr.splice(index, 1);
-      lastRow--;
+// arr.splice(index, 1);
+      // lastRow--;
+      // m = init();
+
+      if (!(arr[index][0] === "" && arr[index][2] === "")) {
+        var result = confirm("Are you sure you want to delete this production you selected?");
+        if (result) {
+          arr.splice(index, 1);
+          lastRow--;
+          deleteTimes++;
+          arr.push(["",arrow,""]);
+          m = init();
+        }
+      } else {
+        arr.splice(index, 1);
+        lastRow--;
+        deleteTimes++;
+        arr.push(["",arrow,""]);
+        m = init();
+
+      }
+      for(var i = lastRow + 1; i < arr.length; i++) {
+        arr[i][0] = '';
+        arr[i][2] = '';
+      }
       m = init();
       $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
@@ -211,11 +241,16 @@ $(document).ready(function () {
     } else if ($('.jsavmatrix').hasClass('addrowMode')) {
       addRow(index);
     }
-
+    if (deleteTimes == 1) {
+      $('.jsavmatrix').addClass("editMode");
+      $('.jsavmatrix').removeClass("deleteMode");
+      $('.jsavmatrix').removeClass("addrowMode");
+      jsav.umsg('Editing');
+    }
   };
 
 
-  function addRow(index) {
+  function addRow(index){
     var newProduction = addProduction(index);
     layoutTable(m);
     // if (newProduction) {
@@ -234,14 +269,14 @@ $(document).ready(function () {
     var topOffset = offset.top;
     var leftOffset = offset.left;
     fi = $('#firstinput');
-    fi.offset({ top: topOffset, left: leftOffset });
+    fi.offset({top: topOffset, left: leftOffset});
     fi.outerHeight($('.jsavvalue').height());
     fi.width($(m._arrays[index]._indices[index2].element).width());
     fi.focus();
     // finalize the changes to the grammar when the enter key is pressed
     var validKeys = [13, 9, 37, 38, 39, 40];
     // keys for functions
-    fi.keyup(function (event) {
+    fi.keyup(function(event){
       var keyCode = event.keyCode;
       if (validKeys.indexOf(keyCode) !== -1) {
         var input = $(this).val();
@@ -319,10 +354,11 @@ $(document).ready(function () {
       input = emptystring;
     }
     if (input === "" && col === 0) {
-      alert('Invalid left-hand side.');
+      //alert('Invalid left-hand side.');
+      fi.remove();
       return;
     }
-    if (col == 2 && _.find(arr, function (x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row; })) {
+    if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
       alert('This production already exists.');
       return;
     }
@@ -357,13 +393,13 @@ $(document).ready(function () {
 
   // LL(1) parsing
   var llParse = function () {
-    if (checkLHSVariables()) {
+    if(checkLHSVariables()){
       alert('Your production is unrestricted on the left hand side');
       return;
     }
     var firsts = {};
     var follows = {};
-    var productions = _.map(_.filter(arr, function (x) { return x[0] }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
       return;
@@ -515,7 +551,7 @@ $(document).ready(function () {
       parseTableDisplay.click(llparseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
-    $('#parsereadybutton').click(function () {
+    $('#parsereadybutton').click(function() {
       checkllParseTable(parseTableDisplay, parseTable);
     });
 
@@ -599,8 +635,8 @@ $(document).ready(function () {
           remainingInput = remainingInput.substring(1);
         }
         updateSLRDisplay('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1),
-          _.map(parseStack, function (x, k) {
-            if (k === parseStack.length - 1) { return '<mark>' + x.value() + '</mark>'; } return x.value();
+          _.map(parseStack, function(x, k) {
+            if (k === parseStack.length - 1) {return '<mark>' + x.value() + '</mark>';} return x.value();
           }));
       }
       jsav.step();
@@ -631,10 +667,10 @@ $(document).ready(function () {
       this.highlight();
       // if node clicked is the toNode for the new edge
       // check for goto set
-      if (selectedNode && localStorage['slrdfareturn']) {
+      if(selectedNode && localStorage['slrdfareturn']) {
         var newItemSet = localStorage['slrdfareturn'].replace(/,/g, '<br>');
         if (this.stateLabel() === newItemSet) {
-          builtDFA.addEdge(selectedNode, this, { weight: localStorage['slrdfasymbol'] });
+          builtDFA.addEdge(selectedNode, this, {weight: localStorage['slrdfasymbol']});
           builtDFA.layout();
           jsav.umsg("Build the DFA: Click a state.");
           selectedNode.unhighlight();
@@ -682,8 +718,8 @@ $(document).ready(function () {
         var w = edges[i].weight().split('<br>');
         if (w.indexOf(pr) !== -1) {
           // open goto window for user to fill out the item set
-          var productions = _.filter(arr, function (x) { return x[0]; });
-          localStorage['slrdfaproductions'] = ["S'" + arrow + productions[0][0]].concat(_.map(productions, function (x) { return x.join(''); }));
+          var productions = _.filter(arr, function(x) {return x[0];});
+          localStorage['slrdfaproductions'] = ["S'" + arrow + productions[0][0]].concat(_.map(productions, function(x) {return x.join('');}));
           localStorage['slrdfaitemset'] = this.stateLabel().split('<br>');
           localStorage['slrdfasymbol'] = pr;
           window.open('slrGoTo.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
@@ -700,10 +736,10 @@ $(document).ready(function () {
   var graphHandler = function (e) {
     // if adding initial node
     if (localStorage['slrdfareturn'] && localStorage['slrdfasymbol'] === 'initial') {
-      var builtInitial = builtDFA.addNode({ left: 50, top: 50 }),
+      var builtInitial = builtDFA.addNode({left: 50, top: 50}),
         nodeX = builtInitial.element.width() / 2.0,
         nodeY = builtInitial.element.height() / 2.0;
-      $(builtInitial.element).offset({ top: e.pageY - nodeY, left: e.pageX - nodeX });
+      $(builtInitial.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
       builtDFA.makeInitial(builtInitial);
       builtInitial.stateLabel(localStorage['slrdfareturn'].replace(/,/g, '<br>'));
       builtDFA.layout();
@@ -713,7 +749,7 @@ $(document).ready(function () {
       return;
     }
     // if user has determined the next item set and is ready to place the new DFA node
-    if (selectedNode && localStorage['slrdfareturn']) {
+    if(selectedNode && localStorage['slrdfareturn']) {
       var newItemSet = localStorage['slrdfareturn'].replace(/,/g, '<br>');
       var newItemSetArr = newItemSet.split('<br>');
       // check to see if the toNode has already been created
@@ -730,9 +766,9 @@ $(document).ready(function () {
       var newNode = builtDFA.addNode(),
         nodeX = newNode.element.width() / 2.0,
         nodeY = newNode.element.height() / 2.0;
-      $(newNode.element).offset({ top: e.pageY - nodeY, left: e.pageX - nodeX });
+      $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
       newNode.stateLabel(newItemSet);
-      builtDFA.addEdge(selectedNode, newNode, { weight: localStorage['slrdfasymbol'] });
+      builtDFA.addEdge(selectedNode, newNode, {weight: localStorage['slrdfasymbol']});
       builtDFA.layout();
       jsav.umsg("Build the DFA: Click a state.");
       selectedNode.unhighlight();
@@ -741,8 +777,8 @@ $(document).ready(function () {
   };
 
   //Multiple Brute Force Parsing
-  function mbfParse(productions) {
-    var productions = _.filter(arr, function (x) { return x[0]; });
+  function mbfParse(productions){
+    var productions = _.filter(arr, function(x) {return x[0];});
     localStorage['grammars'] = JSON.stringify(productions);
     window.open("./MBFParse.html");
   };
@@ -752,11 +788,11 @@ $(document).ready(function () {
   Does not check to see if the grammar is correct format.
   */
   var slrParse = function () {
-    if (checkLHSVariables()) {
+    if(checkLHSVariables()){
       alert('Your production is unrestricted on the left hand side');
       return;
     }
-    var productions = _.map(_.filter(arr, function (x) { return x[0] }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
       return;
@@ -806,7 +842,7 @@ $(document).ready(function () {
     if (m) {
       m.clear();
     }
-    m = jsav.ds.matrix(slrM, { style: "table" });
+    m = jsav.ds.matrix(slrM, {style: "table"});
     layoutTable(m);
 
     var ffDisplay = [];
@@ -821,7 +857,7 @@ $(document).ready(function () {
     arrayStep = 1;
 
     // build DFA to model the parsing stack
-    modelDFA = jsav.ds.FA({ width: '90%', height: 440, layout: 'automatic' });
+    modelDFA = jsav.ds.FA({width: '90%', height: 440, layout: 'automatic'});
     var sNode = modelDFA.addNode();
     modelDFA.makeInitial(sNode);
     sNode.stateLabel("S'" + arrow + dot + productions[0][0]);
@@ -849,7 +885,7 @@ $(document).ready(function () {
             toNode = modelDFA.addNode();
             toNode.stateLabel(nextItems.join('<br>'));
           }
-          modelDFA.addEdge(nextNode, toNode, { weight: symbol });
+          modelDFA.addEdge(nextNode, toNode, {weight: symbol});
           if (!toNode.hasClass('slrvisited')) {
             nodeStack.push(toNode);
           }
@@ -936,7 +972,7 @@ $(document).ready(function () {
         var l = next.stateLabel().split('<br>');
         var rItem = null;
         var rk = [];
-        for (var i = 0; i < l.length; i++) {
+        for (var i = 0; i < l.length; i++){
           if (l[i].indexOf(dot) === l[i].length - 1) {
             rItem = l[i].substring(0, l[i].length - 1);
             if (!rItem.split(arrow)[1]) {
@@ -969,10 +1005,10 @@ $(document).ready(function () {
 
     // var conflict = _.filter(conflictTable, function(row) {return _.filter(row, function(entry) {return entry.length > 1;});});
 
-    var conflict = _.filter(conflictTable, function () {
+    var conflict = _.filter(conflictTable, function() {
       for (var r = 0; r < conflictTable.length; r++) {
         for (var c = 0; c < conflictTable[r].length; c++) {
-          if (conflictTable[r][c].length > 1) {
+          if (conflictTable[r][c].length > 1){
             return true;
           }
         }
@@ -1025,7 +1061,7 @@ $(document).ready(function () {
       $('#parsetablebutton').show();
       jsav.umsg('Build the DFA: Click a state.');
       // create the DFA
-      builtDFA = jsav.ds.FA({ width: '90%', height: 440 });
+      builtDFA = jsav.ds.FA({width: '90%', height: 440});
       builtDFA.enableDragging();
       builtDFA.click(dfaHandler);
       $('.jsavgraph').click(graphHandler);
@@ -1034,13 +1070,13 @@ $(document).ready(function () {
       var pr = confirm("Would you like to define the initial set yourself?");
       if (pr) {
         // user fills out the initial set in the goTo window and adds the initial node to the graph manually
-        localStorage['slrdfaproductions'] = _.map(productions, function (x) { return x.join(''); });
+        localStorage['slrdfaproductions'] = _.map(productions, function(x) {return x.join('');});
         localStorage['slrdfasymbol'] = 'initial';
         window.open('slrGoTo.html', '', 'width = 800, height = 750, screenX = 300, screenY = 25');
         jsav.umsg("Add the initial node.");
       } else {
         // initial state is added automatically
-        var builtInitial = builtDFA.addNode({ left: 50, top: 50 });
+        var builtInitial = builtDFA.addNode({left: 50, top: 50});
         builtDFA.makeInitial(builtInitial);
         builtInitial.stateLabel(modelDFA.initial._stateLabel.element[0].innerHTML);
         builtDFA.layout();
@@ -1064,7 +1100,7 @@ $(document).ready(function () {
       var bNodes = builtDFA.nodes();
       for (var next = bNodes.next(); next; next = bNodes.next()) {
         var nis = next.stateLabel().split('<br>');
-        var ff = _.find(nis, function (x) { return x[x.length - 1] === dot; });
+        var ff = _.find(nis, function(x) {return x[x.length - 1] === dot; });
         if (ff && !next.hasClass('final')) {
           correctFinals = false;
           break;
@@ -1104,7 +1140,7 @@ $(document).ready(function () {
       parseTableDisplay.click(slrparseTableHandler);
     };
     $('#parsetablebutton').click(continueToParseTable);
-    $('#parsereadybutton').click(function () {
+    $('#parsereadybutton').click(function() {
       checkslrParseTable(parseTableDisplay, parseTable);
     });
 
@@ -1124,7 +1160,7 @@ $(document).ready(function () {
       if (m) {
         m.clear();
       }
-      m = jsav.ds.matrix(slrM, { style: "table" });
+      m = jsav.ds.matrix(slrM, {style: "table"});
       layoutTable(m);
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(tv));
@@ -1137,7 +1173,7 @@ $(document).ready(function () {
       parseTableDisplay = new jsav.ds.matrix(pTableDisplay);
       layoutTable(parseTableDisplay);
       // The parse 'tree' is a directed graph with layered output. This allows the tree to be built bottom up
-      parseTree = new jsav.ds.graph({ layout: "layered", directed: true });
+      parseTree = new jsav.ds.graph({layout: "layered", directed: true});
       parseTree.element.addClass('parsetree');
       var remainingInput = inputString + '$';
       var parseStack = [0];
@@ -1218,7 +1254,7 @@ $(document).ready(function () {
           }
           parseTree.layout();
           updateSLRDisplay(remainingInput,
-            _.map(parseStack, function (x, k) {
+            _.map(parseStack, function(x, k) {
               if (typeof x === 'number' || typeof x === 'string') {
                 return x;
               }
@@ -1236,7 +1272,7 @@ $(document).ready(function () {
           parseTree.layout();
         }
         updateSLRDisplay(remainingInput,
-          _.map(parseStack, function (x, k) {
+          _.map(parseStack, function(x, k) {
             if (typeof x === 'number' || typeof x === 'string') {
               return x;
             }
@@ -1269,7 +1305,7 @@ $(document).ready(function () {
     var counter = 0;
     while (next) {
       counter++;
-      if (counter > 500) {
+      if(counter > 500) {
         console.warn(counter);
         break;
       }
@@ -1320,17 +1356,17 @@ $(document).ready(function () {
       jsav = new JSAV("av");
       m = init();
     }
-    if (derivationTable) { derivationTable.clear(); }
-    if (ffTable) { ffTable.clear(); }
-    if (parseTableDisplay) { parseTableDisplay.clear(); }
-    if (modelDFA) { modelDFA.clear(); }
-    if (builtDFA) { builtDFA.clear(); }
-    if (tGrammar) { tGrammar.clear(); }
+    if (derivationTable) { derivationTable.clear();}
+    if (ffTable) { ffTable.clear();}
+    if (parseTableDisplay) { parseTableDisplay.clear();}
+    if (modelDFA) { modelDFA.clear();}
+    if (builtDFA) { builtDFA.clear();}
+    if (tGrammar) { tGrammar.clear();}
     $("#firstinput").remove();
     $(".jsavmatrix").removeClass('editMode');
     $(".jsavmatrix").removeClass('deleteMode');
     $("#mode").html('');
-    $('#editbutton').hide();
+    // $('#editbutton').hide();
     $('#deletebutton').hide();
     $('#addrowbutton').hide();
     $('#convertRLGbutton').hide();
@@ -1369,7 +1405,7 @@ $(document).ready(function () {
     }
     if (str === emptystring) {
       return [emptystring];
-    } if (str.length === 1) {
+    } if (str.length === 1){
       if (variables.indexOf(str) === -1) {
         return [str];
       } else {
@@ -1425,7 +1461,7 @@ $(document).ready(function () {
     return ret;
   };
 
-  var getLeaves = function (node) {
+  var getLeaves = function(node) {
     var leaves = [];
     if (node.childnodes == false) {
       return leaves.concat(node);
@@ -1438,24 +1474,41 @@ $(document).ready(function () {
   };
 
   // change editing modes
-  var editMode = function () {
+  var editMode = function() {
     $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
     $("#mode").html('Editing');
   };
-  var deleteMode = function () {
+  var deleteMode = function() {
     $('#firstinput').remove();
     $('.jsavmatrix').addClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
     $('.jsavmatrix').removeClass("editMode");
-    $("#mode").html('Select a row to delete. Click on Edit Grammar when you are finished deleting.');
+    jsav.umsg('Deleting');
   };
-  var addrowMode = function () {
-    $('.jsavmatrix').addClass("addrowMode");
+  var addrowMode = function(){
+
+    if (lastRow === arr.length - 1 || lastRow === arr.length) {
+      var l = arr.length;
+      for (var i = 0; i < l; i++) {
+        arr.push(['', arrow, '']);
+      }
+      m = init();
+      $('.jsavmatrix').addClass('editMode');
+      // if (!arr[index][2]) {
+      //     arr[index][2] = lambda;
+      //     m.value(index, 2, lambda);
+      // }
+
+    }
+    m._arrays[lastRow + 1].show();
+    lastRow++;
+    layoutTable(m);
+    jsav.umsg('Editing');
+    $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
-    $('.jsavmatrix').removeClass("editMode");
-    $("#mode").html('Click on the last row to add a new one. Click on Edit Grammar when you are finished adding');
+    $('.jsavmatrix').removeClass("addrowMode");
   }
 
   //=================================
@@ -1464,7 +1517,7 @@ $(document).ready(function () {
   // remove lambda productions
   var removeLambda = function () {
     var derivers = {};  // variables that derive lambda
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     var counter = 0;
     // find lambda-deriving variables
     while (removeLambdaHelper(derivers, productions)) {
@@ -1479,12 +1532,12 @@ $(document).ready(function () {
     }
     var transformed = [];
     // remove lambda productions
-    productions = _.filter(productions, function (x) { return x[2] !== emptystring; });
+    productions = _.filter(productions, function(x) { return x[2] !== emptystring;});
     transformed = transformed.concat(productions);
     for (var i = 0; i < productions.length; i++) {
       var p = productions[i];
       // find lambda deriving variables in right hand side
-      var v = _.filter(p[2], function (x) { return x in derivers; });
+      var v = _.filter(p[2], function(x) { return x in derivers;});
       if (v.length > 0) {
         v = v.join('');
         for (var j = v.length - 1; j >= 0; j--) {
@@ -1496,14 +1549,14 @@ $(document).ready(function () {
               replaced = replaced.replace(next.value[k], "");
             }
             // if not a lambda production
-            if (replaced && !_.find(transformed, function (x) { return x[0] === p[0] && x[2] === replaced })) {
+            if (replaced && !_.find(transformed, function(x) {return x[0] === p[0] && x[2] === replaced})) {
               transformed.push([p[0], arrow, replaced]);
             }
           }
         }
       }
     }
-    var ret = _.map(transformed, function (x) { return x.join(''); });
+    var ret = _.map(transformed, function(x) {return x.join('');});
     return ret;
   };
 
@@ -1515,7 +1568,7 @@ $(document).ready(function () {
   */
   function removeLambdaHelper(set, productions) {
     for (var i = 0; i < productions.length; i++) {
-      if (productions[i][2] === emptystring || _.every(productions[i][2], function (x) { return x in set; })) {
+      if (productions[i][2] === emptystring || _.every(productions[i][2], function(x) { return x in set;})) {
         if (!(productions[i][0] in set)) {
           set[productions[i][0]] = true;
           return true;
@@ -1529,7 +1582,7 @@ $(document).ready(function () {
     try {
       eval("(function*(){})()");
       return true;
-    } catch (err) {
+    } catch(err){
       console.log(err);
       console.log("No generator support.");
       return false;
@@ -1557,7 +1610,7 @@ $(document).ready(function () {
 
   // remove unit productions
   var removeUnit = function () {
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     var pDict = {};
     // a dictionary mapping left sides to right sides
     for (var i = 0; i < productions.length; i++) {
@@ -1575,10 +1628,10 @@ $(document).ready(function () {
       }
     };
     // remove original unit productions
-    productions = _.filter(productions, function (x) {
+    productions = _.filter(productions, function(x) {
       return !(x[2].length === 1 && variables.indexOf(x[2]) !== -1);
     });
-    var ret = _.map(productions, function (x) { return x.join(''); });
+    var ret = _.map(productions, function(x) {return x.join('');});
     return ret;
   };
 
@@ -1591,7 +1644,7 @@ $(document).ready(function () {
         for (var j = 0; j < p.length; j++) {
           if (p[j].length === 1 && variables.indexOf(p[j]) !== -1) {
             continue;
-          } else if (!_.find(productions, function (x) { return x[0] === productions[i][0] && x[2] === p[j]; })) {
+          } else if (!_.find(productions, function(x){ return x[0] === productions[i][0] && x[2] === p[j];})) {
             n = p[j];
             break;
           }
@@ -1609,7 +1662,7 @@ $(document).ready(function () {
   // remove useless productions
   var removeUseless = function () {
     var derivers = {};  // variables that derive a string of terminals
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     var counter = 0;
     while (findDerivable(derivers, productions)) {
       counter++;
@@ -1621,7 +1674,7 @@ $(document).ready(function () {
     var transformed = [];
     // remove productions which do not derive a string of terminals
     for (var i = 0; i < productions.length; i++) {
-      if (_.every(productions[i][2], function (x) { return x in derivers || variables.indexOf(x) === -1; })) {
+      if (_.every(productions[i][2], function(x) { return x in derivers || variables.indexOf(x) === -1;})) {
         transformed.push(productions[i]);
       }
     }
@@ -1633,7 +1686,7 @@ $(document).ready(function () {
         pDict[transformed[i][0]] = [];
       }
       // map left hand side to the variables in the right hand side
-      var r = _.uniq(_.filter(transformed[i][2], function (x) { return variables.indexOf(x) !== -1; }));
+      var r = _.uniq(_.filter(transformed[i][2], function(x) {return variables.indexOf(x) !== -1;}));
       pDict[transformed[i][0]] = _.union(pDict[transformed[i][0]], r);
     }
     var visited = {};
@@ -1641,14 +1694,14 @@ $(document).ready(function () {
     // find reachable variables and map them in pDict
     findReachable(start, pDict, visited);
     // remove unreachable productions
-    transformed = _.filter(transformed, function (x) { return x[0] === start || pDict[start].indexOf(x[0]) !== -1; });
-    var ret = _.map(transformed, function (x) { return x.join(''); });
+    transformed = _.filter(transformed, function(x) { return x[0] === start || pDict[start].indexOf(x[0]) !== -1;});
+    var ret = _.map(transformed, function(x) {return x.join('');});
     return ret;
   };
   // Function to get variables which can derive a string of terminals
   var findDerivable = function (set, productions) {
     for (var i = 0; i < productions.length; i++) {
-      if (_.every(productions[i][2], function (x) { return x in set || variables.indexOf(x) === -1; })) {
+      if (_.every(productions[i][2], function(x) { return x in set || variables.indexOf(x) === -1;})) {
         if (!(productions[i][0] in set)) {
           set[productions[i][0]] = true;
           return true;
@@ -1672,7 +1725,7 @@ $(document).ready(function () {
   var convertToChomsky = function () {
     var v = {};
     // find all the variables in the grammar
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     for (var i = 0; i < productions.length; i++) {
       var x = productions[i];
       // change RHS to an array
@@ -1697,7 +1750,7 @@ $(document).ready(function () {
         for (var j = 0; j < r.length; j++) {
           if (r[j].length === 1 && variables.indexOf(r[j]) === -1) {
             var temp = "B(" + r[j] + ")";
-            if (!_.find(productions, function (x) { return x[0] === temp; })) {
+            if (!_.find(productions, function(x) { return x[0] === temp;})) {
               productions.push([temp, arrow, [r[j]]]);
               tempVars.push(temp);
             }
@@ -1715,7 +1768,7 @@ $(document).ready(function () {
         } else if (r.length > 2) {
           var temp = "D(" + varCounter + ")";
           var temp2 = r.splice(1, r.length - 1, temp);
-          var present = _.find(productions, function (x) { return x[0].length > 1 && x[2].join('') === temp2.join(''); });
+          var present = _.find(productions, function(x) { return x[0].length > 1 && x[2].join('') === temp2.join('');});
           if (present) {
             r[1] = present[0];
           } else {
@@ -1740,7 +1793,7 @@ $(document).ready(function () {
       var x = productions[i];
       x[2] = x[2].join("");
     }
-    var ret = _.map(productions, function (x) { return x.join(''); });
+    var ret = _.map(productions, function(x) {return x.join('');});
     return ret;
   };
 
@@ -1761,7 +1814,7 @@ $(document).ready(function () {
       console.error("No generator support.");
       return;
     }
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
       return;
@@ -1771,7 +1824,7 @@ $(document).ready(function () {
     var noUnit = removeUnit();
     var noUseless = removeUseless();
     var fullChomsky = convertToChomsky();
-    var strP = _.map(productions, function (x) { return x.join(''); });
+    var strP = _.map(productions, function(x) {return x.join('');});
     // store original grammar for reloading later
     backup = "" + strP;
 
@@ -1791,7 +1844,7 @@ $(document).ready(function () {
   };
 
   var interactableLambdaTransform = function (noLambda) {
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     m = init();
     startParse();
     $('.jsavcontrols').hide();
@@ -1863,7 +1916,7 @@ $(document).ready(function () {
         if (transformed.indexOf(toAdd) === -1) {
           alert('This production is not part of the reformed grammar.');
           return;
-        } if (_.map(tArr, function (x) { return x.join(''); }).indexOf(toAdd) !== -1) {
+        } if (_.map(tArr, function(x) {return x.join('');}).indexOf(toAdd) !== -1) {
           alert('This production is already in the grammar.');
           return;
         }
@@ -1876,7 +1929,7 @@ $(document).ready(function () {
         //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
         tGrammar.click(removeLambdaHandler);
       }
-      if (tArr.length - 1 === transformed.length && !_.find(tArr, function (x) { return x[2] === emptystring })) {
+      if (tArr.length - 1 === transformed.length && !_.find(tArr, function(x){return x[2] === emptystring})) {
         var confirmed = confirm('Grammar completed; export?');
         // if export, open the completed grammar in a new tab
         if (confirmed) {
@@ -1890,7 +1943,7 @@ $(document).ready(function () {
           jsav.umsg("Null start variable; transformation finished.");
           return;
         }
-        var strT = _.map(tArr, function (x) { return x.join('') });
+        var strT = _.map(tArr, function(x) {return x.join('')});
         var noUnit = removeUnit();
         if (!checkTransform(strT, noUnit)) {
           interactableUnitTransform(noUnit);
@@ -1924,7 +1977,7 @@ $(document).ready(function () {
   };
 
   var interactableUnitTransform = function (noUnit) {
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     m = init();
     startParse();
     $('.jsavcontrols').hide();
@@ -1935,7 +1988,7 @@ $(document).ready(function () {
       }
     }
     $(m.element).css("margin-left", "auto");
-    modelDFA = jsav.ds.graph({ layout: "layered", directed: true });    //VDG
+    modelDFA = jsav.ds.graph({layout: "layered", directed: true});    //VDG
     //modelDFA.css('display', 'inline-block')
     //m.element.css('display', 'inline-block')
     //$('#av').css('text-align', 'center')
@@ -1944,7 +1997,7 @@ $(document).ready(function () {
       modelDFA.addNode(v[i]);
     }
     modelDFA.layout();
-    var unitProductions = _.filter(productions, function (x) {
+    var unitProductions = _.filter(productions, function(x) {
       // return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
       return x[2].length === 1 && variables.indexOf(x[2]) !== -1;
     });
@@ -1960,9 +2013,9 @@ $(document).ready(function () {
           selectedNode = null;
           return;
         }
-        if (_.find(unitProductions, function (x) { return x[0] === selectedNode.value() && x[2] === self.value(); })) {
+        if (_.find(unitProductions, function(x) {return x[0] === selectedNode.value() && x[2] === self.value();})) {
           var newEdge = modelDFA.addEdge(selectedNode, self);
-          if (newEdge) { modelDFA.layout(); }
+          if (newEdge) {modelDFA.layout();}
           jsav.umsg('Transition added.');
           if (modelDFA.edgeCount() === unitProductions.length) {
             modelDFA.element.off();
@@ -2013,7 +2066,7 @@ $(document).ready(function () {
         if (noUnit.indexOf(toAdd) === -1) {
           alert('This production is not part of the reformed grammar.');
           return;
-        } if (_.map(tArr, function (x) { return x.join(''); }).indexOf(toAdd) !== -1) {
+        } if (_.map(tArr, function(x) {return x.join('');}).indexOf(toAdd) !== -1) {
           alert('This production is already in the grammar.');
           return;
         }
@@ -2026,7 +2079,7 @@ $(document).ready(function () {
         //tGrammar = jsav.ds.matrix(tArr, {top: "50px", relativeTo: modelDFA, anchor: "left bottom", myAnchor: "left top"});
         tGrammar.click(removeUnitHandler);
       }
-      if (tArr.length - 1 === noUnit.length && !_.find(tArr, function (x) { return x[2].length === 1 && variables.indexOf(x[2]) !== -1 })) {
+      if (tArr.length - 1 === noUnit.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
         var confirmed = confirm('Grammar completed; export?');
         if (confirmed) {
           localStorage['grammar'] = noUnit;
@@ -2038,7 +2091,7 @@ $(document).ready(function () {
           jsav.umsg("Null start variable; transformation finished.");
           return;
         }
-        var strT = _.map(tArr, function (x) { return x.join('') });
+        var strT = _.map(tArr, function(x) {return x.join('')});
         var noUseless = removeUseless();
         if (!checkTransform(strT, noUseless)) {
           interactableUselessTransform(noUseless);
@@ -2067,7 +2120,7 @@ $(document).ready(function () {
   };
 
   var interactableUselessTransform = function (noUseless) {
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     m = init();
     startParse();
     $('.jsavcontrols').hide();
@@ -2123,7 +2176,7 @@ $(document).ready(function () {
           return;
         }
       }
-      if (tArr.length - 1 === noUseless.length && !_.find(tArr, function (x) { return x[2].length === 1 && variables.indexOf(x[2]) !== -1 })) {
+      if (tArr.length - 1 === noUseless.length && !_.find(tArr, function(x){return x[2].length === 1 && variables.indexOf(x[2]) !== -1})) {
         var confirmed = confirm('Grammar completed; export?');
         if (confirmed) {
           localStorage['grammar'] = noUseless;
@@ -2135,7 +2188,7 @@ $(document).ready(function () {
           jsav.umsg("Null start variable; transformation finished.");
           return;
         }
-        var strT = _.map(tArr, function (x) { return x.join('') });
+        var strT = _.map(tArr, function(x) {return x.join('')});
         var fullChomsky = convertToChomsky();
         if (!checkTransform(strT, fullChomsky)) {
           interactableChomsky(fullChomsky);
@@ -2147,8 +2200,8 @@ $(document).ready(function () {
     };
 
     var tArr = [].concat(productions);
-    tArr = _.filter(tArr, function (x) {
-      return x[0] in derivers && _.every(x[2], function (y) { return variables.indexOf(y) === -1 || y in derivers });
+    tArr = _.filter(tArr, function(x) {
+      return x[0] in derivers && _.every(x[2], function(y) {return variables.indexOf(y) === -1 || y in derivers});
     });
     tArr.push(["", arrow, ""]);
     // find transitions of the VDG
@@ -2162,7 +2215,7 @@ $(document).ready(function () {
         }
         for (var j = 0; j < r.length; j++) {
           if (variables.indexOf(r[j]) !== -1 && tProductions[vv].indexOf(r[j]) === -1) {
-            if (r[j] !== vv && r[j] in derivers) {
+            if (r[j] !== vv && r[j] in derivers){
               tProductions[vv].push(r[j]);
             }
           }
@@ -2185,9 +2238,9 @@ $(document).ready(function () {
           selectedNode = null;
           return;
         }
-        if (_.find(productions, function (x) { return x[0] === selectedNode.value() && x[2].indexOf(self.value()) !== -1; })) {
+        if (_.find(productions, function(x) {return x[0] === selectedNode.value() && x[2].indexOf(self.value()) !== -1;})) {
           var newEdge = modelDFA.addEdge(selectedNode, self);
-          if (newEdge) { modelDFA.layout(); }
+          if (newEdge) { modelDFA.layout();}
           jsav.umsg('Transition added.');
           if (modelDFA.edgeCount() === tCount) {
             modelDFA.element.off();
@@ -2216,19 +2269,19 @@ $(document).ready(function () {
    What if the grammar has no DG. All nodes are go to terminals only. (Special case)
    */
       var onlyTerminalsExist = true;
-      for (var variableIndex = 0; variableIndex < da.length; variableIndex++) {
+      for(var variableIndex = 0; variableIndex < da.length; variableIndex++){
         var variable = da[variableIndex];
-        var variableProductions = _.filter(productions, function (x) { return x[0] == variable; });
-        for (var ruleIndex = 0; ruleIndex < variableProductions.length; ruleIndex++) {
+        var variableProductions = _.filter(productions,function(x){ return x[0] == variable;});
+        for(var ruleIndex = 0; ruleIndex < variableProductions.length; ruleIndex++){
           var rule = variableProductions[ruleIndex];
-          if (_.filter(rule[2], function (x) { return variables.indexOf(x) >= 0 }).length !== 0) {
+          if(_.filter(rule[2], function(x){return variables.indexOf(x) >= 0}).length !== 0){
             onlyTerminalsExist = false;
             break;
           }
         }
       }
-      if (!onlyTerminalsExist) {
-        modelDFA = jsav.ds.graph({ layout: "layered", directed: true });
+      if(!onlyTerminalsExist){
+        modelDFA = jsav.ds.graph({layout: "layered", directed: true});
         for (var i = 0; i < da.length; i++) {
           modelDFA.addNode(da[i]);
         }
@@ -2252,7 +2305,7 @@ $(document).ready(function () {
   };
 
   var interactableChomsky = function (fullChomsky) {
-    var productions = _.map(_.filter(arr, function (x) { return x[0]; }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0];}), function(x) { return x.slice();});
     m = init();
     startParse();
     $('.jsavcontrols').hide();
@@ -2264,7 +2317,7 @@ $(document).ready(function () {
     // array holding the productions
     var tArr = [].concat(productions);
     // Right sides are arrays (unlike the matrix, where RHS is a string)
-    _.each(tArr, function (x) { x[2] = x[2].split(''); });
+    _.each(tArr, function(x) { x[2] = x[2].split('');});
     var varCounter = 1;
 
     // handler for the table for converting productions
@@ -2287,7 +2340,7 @@ $(document).ready(function () {
       for (var i = 0; i < r.length; i++) {
         if (r[i].length === 1 && variables.indexOf(r[i]) === -1) {
           var tempB = "B(" + r[i] + ")";
-          if (!_.find(tArr.concat(sliceIn), function (x) { return x[0] === tempB; })) {
+          if (!_.find(tArr.concat(sliceIn), function(x) {return x[0] === tempB;})) {
             sliceIn.push([tempB, arrow, [r[i]]]);
           }
           r[i] = tempB;
@@ -2295,7 +2348,7 @@ $(document).ready(function () {
       }
       if (sliceIn.length > 0) {
         tArr = tArr.slice(0, index + 1).concat(sliceIn).concat(tArr.slice(index + 1));
-        var tempG = jsav.ds.matrix(_.map(tArr, function (x) { return [x[0], x[1], x[2].join('')]; }));
+        var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')]; }));
         tGrammar.clear();
         tGrammar = tempG;
         layoutTable(tGrammar, 2);
@@ -2308,13 +2361,13 @@ $(document).ready(function () {
         // replace variables
         var tempD = "D(" + varCounter + ")";
         var temp2 = r.splice(1, r.length - 1, tempD);
-        var present = _.find(tArr, function (x) { return x[0].length > 1 && x[2].join('') === temp2.join(''); });
+        var present = _.find(tArr, function(x) { return x[0].length > 1 && x[2].join('') === temp2.join(''); });
         if (present) {
           r[1] = present[0];
         } else {
           tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
           varCounter++;
-          var tempG = jsav.ds.matrix(_.map(tArr, function (x) { return [x[0], x[1], x[2].join('')]; }));
+          var tempG = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
           tGrammar.clear();
           tGrammar = tempG;
           layoutTable(tGrammar, 2);
@@ -2328,10 +2381,10 @@ $(document).ready(function () {
       if (tArr.length === fullChomsky.length) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
-        var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-        if (c) {
-          attemptExport();
-        }
+        // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
+        // if (c) {
+        //   attemptExport();
+        // }
         for (var i = 0; i < tGrammar._arrays.length; i++) {
           tGrammar.unhighlight(i);
         }
@@ -2345,7 +2398,7 @@ $(document).ready(function () {
           tempVars.push(tArr[i][0]);
         }
       }
-      var newVariables = _.difference(variables.split(""), _.map(tArr, function (x) { return x[0]; }));
+      var newVariables = _.difference(variables.split(""), _.map(tArr, function(x) {return x[0]; }));
       if (tempVars.length + varCounter > newVariables.length) {
         alert('Too large to export!');
         return;
@@ -2355,7 +2408,7 @@ $(document).ready(function () {
       for (var i = 1; i < varCounter + 1; i++) {
         tempVars.push("D(" + i + ")");
       }
-      _.each(tArr, function (x) { x[2] = x[2].join(''); });
+      _.each(tArr, function(x) {x[2] = x[2].join(''); });
       for (var i = 0; i < tempVars.length; i++) {
         var re = tempVars[i].replace(/[\(\)]/g, "\\$&");
         var regex = new RegExp(re, 'g');
@@ -2364,11 +2417,11 @@ $(document).ready(function () {
           tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
         }
       }
-      localStorage['grammar'] = _.map(tArr, function (x) { return x.join(''); });
+      localStorage['grammar'] = _.map(tArr, function(x) {return x.join(''); });
       window.open('grammarTest.html', '');
     };
 
-    tGrammar = jsav.ds.matrix(_.map(tArr, function (x) { return [x[0], x[1], x[2].join('')]; }));
+    tGrammar = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
     layoutTable(tGrammar, 2);
     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     tGrammar.click(chomskyHandler);
@@ -2381,7 +2434,7 @@ $(document).ready(function () {
 
   // Function to check if the grammar is right-linear
   var checkRightLinear = function () {
-    var productions = _.filter(arr, function (x) { return x[0] });
+    var productions = _.filter(arr, function(x) { return x[0]});
     for (var i = 0; i < productions.length; i++) {
       var r = productions[i][2];
       for (var j = 0; j < r.length; j++) {
@@ -2511,7 +2564,7 @@ $(document).ready(function () {
 
   // interactive converting right-linear grammar to FA
   var convertToFA = function () {
-    if (checkLHSVariables()) {
+    if(checkLHSVariables()){
       alert('Your production is unrestricted on the left hand side');
       return;
     }
@@ -2519,7 +2572,7 @@ $(document).ready(function () {
       alert('The grammar is not right-linear!');
       return;
     }
-    var productions = _.filter(arr, function (x) { return x[0]; });
+    var productions = _.filter(arr, function(x) { return x[0];});
     startParse();
     $('.jsavcontrols').hide();
     $('#completeallbutton').show();
@@ -2527,12 +2580,12 @@ $(document).ready(function () {
     jsav.umsg('Complete the FA.');
     // keep a map of variables to FA states
     var nodeMap = {};
-    builtDFA = jsav.ds.FA({ width: '90%', height: 440, layout: "automatic" });
+    builtDFA = jsav.ds.FA({width: '90%', height: 440, layout: "automatic"});
     builtDFA.enableDragging();
     var newStates = [];     // variables
     for (var i = 0; i < productions.length; i++) {
       newStates.push(productions[i][0]);
-      newStates = newStates.concat(_.filter(productions[i][2], function (x) { return variables.indexOf(x) !== -1; }));
+      newStates = newStates.concat(_.filter(productions[i][2], function(x) {return variables.indexOf(x) !== -1;}));
     }
     newStates = _.uniq(newStates);
     // create FA states
@@ -2569,14 +2622,14 @@ $(document).ready(function () {
     };
 
 
-    var completeConvertToFA = function () {
+    var completeConvertToFA = function() {
       for (var i = 0; i < productions.length; i++) {
         // if the current production is not finished yet
-        if (!m.isHighlight(i)) {
+        if (!m.isHighlight(i)){
           var start = nodeMap[productions[i][0]];
           var rhs = productions[i][2];
           //if there is no capital letter, then go to final state
-          if (variables.indexOf(rhs[rhs.length - 1]) === -1) {
+          if(variables.indexOf(rhs[rhs.length - 1]) === -1){
             var end = f;
             var w = rhs;
           } else {
@@ -2584,7 +2637,7 @@ $(document).ready(function () {
             var w = rhs.substring(0, rhs.length - 1);
           }
           m.highlight(i);
-          var newEdge = builtDFA.addEdge(start, end, { weight: w });
+          var newEdge = builtDFA.addEdge(start, end, {weight: w});
           if (newEdge) {
             newEdge.layout();
             checkDone();
@@ -2621,7 +2674,7 @@ $(document).ready(function () {
           }
           if (add) {
             m.highlight(i);
-            var newEdge = builtDFA.addEdge(selectedNode, this, { weight: t });
+            var newEdge = builtDFA.addEdge(selectedNode, this, {weight: t});
             selectedNode.unhighlight();
             selectedNode = null;
             this.unhighlight();
@@ -2649,9 +2702,9 @@ $(document).ready(function () {
       var r = this.value(index, 2);
       var nodes = builtDFA.nodes();
       if (variables.indexOf(r[r.length - 1]) === -1) {
-        var newEdge = builtDFA.addEdge(nodeMap[l], f, { weight: r });
+        var newEdge = builtDFA.addEdge(nodeMap[l], f, {weight: r});
       } else {
-        var newEdge = builtDFA.addEdge(nodeMap[l], nodeMap[r[r.length - 1]], { weight: r.substring(0, r.length - 1) });
+        var newEdge = builtDFA.addEdge(nodeMap[l], nodeMap[r[r.length - 1]], {weight: r.substring(0, r.length - 1)});
       }
       if (newEdge) {
         newEdge.layout();
@@ -2666,25 +2719,25 @@ $(document).ready(function () {
 
   // interactive converting context-free grammar to NPDA
   var convertToPDA = function (event) {
-    if (checkLHSVariables()) {
+    if(checkLHSVariables()){
       alert('Your production is unrestricted on the left hand side');
       return;
     }
-    var productions = _.filter(arr, function (x) { return x[0]; });
+    var productions = _.filter(arr, function(x) { return x[0];});
     startParse();
     $('.jsavcontrols').hide();
     $(m.element).css("margin-left", "auto");
     jsav.umsg('Complete the NPDA.');
-    builtDFA = jsav.ds.FA({ width: '90%', height: 440 });
+    builtDFA = jsav.ds.FA({width: '90%', height: 440});
     var gWidth = builtDFA.element.width(),
       gHeight = builtDFA.element.height();
-    var a = builtDFA.addNode({ left: 0.17 * gWidth, top: 0.87 * gHeight }),
-      b = builtDFA.addNode({ left: 0.47 * gWidth, top: 0.87 * gHeight }),
-      c = builtDFA.addNode({ left: 0.77 * gWidth, top: 0.87 * gHeight });
+    var a = builtDFA.addNode({left: 0.17 * gWidth, top: 0.87 * gHeight}),
+      b = builtDFA.addNode({left: 0.47 * gWidth, top: 0.87 * gHeight}),
+      c = builtDFA.addNode({left: 0.77 * gWidth, top: 0.87 * gHeight});
     builtDFA.makeInitial(a);
     c.addClass('final');
     var startVar = productions[0][0];
-    if (event.data.param1) {
+    if(event.data.param1){
       convertToPDAinLL(a, b, c, productions, startVar);
     } else {
       convertToPDAinLR(a, b, c, productions, startVar);
@@ -2692,14 +2745,14 @@ $(document).ready(function () {
   };
 
   function convertToPDAinLL(a, b, c, productions, startVar) {
-    builtDFA.addEdge(a, b, { weight: emptystring + ':Z:' + startVar + 'Z' });
-    builtDFA.addEdge(b, c, { weight: emptystring + ':Z:' + emptystring });
+    builtDFA.addEdge(a, b, {weight: emptystring + ':Z:' + startVar + 'Z'});
+    builtDFA.addEdge(b, c, {weight: emptystring + ':Z:' + emptystring});
     // add a transition for each terminal
     for (var i = 0; i < productions.length; i++) {
       var t = productions[i][2].split("");
       for (var j = 0; j < t.length; j++) {
         if (variables.indexOf(t[j]) === -1 && t[j] !== emptystring) {
-          builtDFA.addEdge(b, b, { weight: t[j] + ':' + t[j] + ':' + emptystring });
+          builtDFA.addEdge(b, b, {weight: t[j] + ':' + t[j] + ':' + emptystring});
         }
       }
     }
@@ -2714,7 +2767,7 @@ $(document).ready(function () {
       this.highlight(index);
       var l = this.value(index, 0);
       var r = this.value(index, 2);
-      var newEdge = builtDFA.addEdge(b, b, { weight: emptystring + ':' + this.value(index, 0) + ':' + this.value(index, 2) });
+      var newEdge = builtDFA.addEdge(b, b, {weight: emptystring + ':' + this.value(index, 0) + ':' + this.value(index, 2)});
       if (newEdge) {
         newEdge.layout();
         pCount++;
@@ -2725,9 +2778,9 @@ $(document).ready(function () {
           var graphOffset = (newLabelHeight - labelHeight) / pCount;
           $(".jsavgraph").height(h + graphOffset);
           var nodeY = $(a.element).offset().top;
-          $(a.element).offset({ top: nodeY + graphOffset });
-          $(b.element).offset({ top: nodeY + graphOffset });
-          $(c.element).offset({ top: nodeY + graphOffset });
+          $(a.element).offset({top: nodeY + graphOffset});
+          $(b.element).offset({top: nodeY + graphOffset});
+          $(c.element).offset({top: nodeY + graphOffset});
           builtDFA.layout();
         }
         if (pCount === productions.length) {
@@ -2742,14 +2795,14 @@ $(document).ready(function () {
   };
 
   function convertToPDAinLR(a, b, c, productions, startVar) {
-    builtDFA.addEdge(a, b, { weight: emptystring + ':' + startVar + ':' + emptystring });
-    builtDFA.addEdge(b, c, { weight: emptystring + ':Z:' + emptystring });
+    builtDFA.addEdge(a, b, {weight: emptystring + ':' + startVar + ':' + emptystring});
+    builtDFA.addEdge(b, c, {weight: emptystring + ':Z:' + emptystring});
     // add a transition for each terminal
     for (var i = 0; i < productions.length; i++) {
       var t = productions[i][2].split("");
       for (var j = 0; j < t.length; j++) {
         if (variables.indexOf(t[j]) === -1 && t[j] !== emptystring) {
-          builtDFA.addEdge(a, a, { weight: t[j] + ':' + emptystring + ':' + t[j] });
+          builtDFA.addEdge(a, a, {weight: t[j] + ':' + emptystring + ':' + t[j]});
         }
       }
     }
@@ -2766,7 +2819,7 @@ $(document).ready(function () {
       var l = this.value(index, 0);
       var r = this.value(index, 2);
       var reversed = r.split('').reverse().join('');
-      var newEdge = builtDFA.addEdge(a, a, { weight: emptystring + ':' + reversed + ':' + l });
+      var newEdge = builtDFA.addEdge(a, a, {weight: emptystring + ':' + reversed + ':' + l});
       if (newEdge) {
         newEdge.layout();
         pCount++;
@@ -2777,9 +2830,9 @@ $(document).ready(function () {
           var graphOffset = (newLabelHeight - labelHeight) / pCount;
           $(".jsavgraph").height(h + graphOffset);
           var nodeY = $(b.element).offset().top;
-          $(a.element).offset({ top: nodeY + graphOffset });
-          $(b.element).offset({ top: nodeY + graphOffset });
-          $(c.element).offset({ top: nodeY + graphOffset });
+          $(a.element).offset({top: nodeY + graphOffset});
+          $(b.element).offset({top: nodeY + graphOffset});
+          $(c.element).offset({top: nodeY + graphOffset});
           builtDFA.layout();
         }
         if (pCount === productions.length) {
@@ -2800,7 +2853,7 @@ $(document).ready(function () {
   // Saving:
   // Function to encode grammar to XML
   function serializeGrammar() {
-    var productions = _.filter(arr, function (x) { return x[0] });
+    var productions = _.filter(arr, function(x) { return x[0]});
     if (productions.length == 0) {
       if (multiple) {
         return "<grammar></grammar>";
@@ -2842,7 +2895,7 @@ $(document).ready(function () {
     else {
       grammars[currentExercise] = serializeGrammar();
       var data = '<?xml version="1.0" encoding="UTF-8"?><structure><type>grammar</type>';
-      _.each(grammars, function (grammar) {
+      _.each(grammars, function(grammar) {
         data += grammar;
       });
       data += "</structure>";
@@ -2915,8 +2968,8 @@ $(document).ready(function () {
   };
 
   // Function for reading the XML file
-  var waitForReading = function (reader) {
-    reader.onloadend = function (event) {
+  var waitForReading = function(reader) {
+    reader.onloadend = function(event) {
       var text = event.target.result;
       parseFile(text);
     }
@@ -2940,7 +2993,7 @@ $(document).ready(function () {
         }
     }*/
     for (var i = 0; i < mat._arrays.length; i++) {
-      if (typeof mat._arrays[i]._indices[index] !== undefined) {
+      if (typeof mat._arrays[i]._indices[index] !== undefined){
         var cell = mat._arrays[i]._indices[index].element;
         if ($(cell).width() > maxWidth) {
           maxWidth = $(cell).width();
@@ -3047,7 +3100,7 @@ $(document).ready(function () {
     }
     $('#parsereadybutton').hide();
     $('#parsebutton').show();
-    $temp = $('<div>').attr({ "align": "center" });
+    $temp = $('<div>').attr({"align": "center"});
     $temp.append($('#parsebutton'));
     $temp.insertBefore($('.jsavcanvas .jsavmatrix:last-child'));
     jsav.umsg("");
@@ -3119,13 +3172,13 @@ $(document).ready(function () {
     var leftOffset = offset.left;
     var w = $(this._arrays[index]._indices[arrayStep].element).width();
     var fi = $('#firstinput');
-    fi.offset({ top: topOffset, left: leftOffset });
+    fi.offset({top: topOffset, left: leftOffset});
     fi.outerHeight($('.jsavvalue').height());
     fi.width(w);
     fi.focus();
     // finalize changes when enter key is pressed
-    fi.keyup(function (event) {
-      if (event.keyCode == 13) {
+    fi.keyup(function(event){
+      if(event.keyCode == 13){
         var firstInput = $(this).val();
         firstInput = firstInput.split("");
         // read ! as lambda
@@ -3156,13 +3209,13 @@ $(document).ready(function () {
     var topOffset = offset.top;
     var leftOffset = offset.left;
     var fi = $('#firstinput');
-    fi.offset({ top: topOffset, left: leftOffset });
+    fi.offset({top: topOffset, left: leftOffset});
     fi.outerHeight($('.jsavvalue').height());
     fi.width($(this._arrays[index]._indices[index2].element).width());
     fi.focus();
     // finalize changes when enter key is pressed
-    fi.keyup(function (event) {
-      if (event.keyCode == 13) {
+    fi.keyup(function(event){
+      if(event.keyCode == 13){
         var firstInput = $(this).val();
         firstInput = firstInput.replace(/!/g, emptystring);
         self.value(index, index2, firstInput);
@@ -3181,11 +3234,11 @@ $(document).ready(function () {
       $('.conflictMenu').remove();
       var offsetX = e.pageX;
       var offsetY = e.pageY;
-      var $chooseConflict = $("<div>", { class: "conflictMenu" });
-      _.each(conflictTable[index - 1][index2 - 1], function (choice) { $chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/><br>"); });
+      var $chooseConflict = $("<div>", {class: "conflictMenu"});
+      _.each(conflictTable[index - 1][index2 - 1], function(choice) {$chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/><br>");});
       // in order to pass indices of matrix
-      $chooseConflict.attr({ "i": index, "j": index2 });
-      $chooseConflict.css({ "position": "absolute", top: offsetY, left: offsetX });
+      $chooseConflict.attr({"i": index, "j": index2});
+      $chooseConflict.css({"position": "absolute", top: offsetY, left: offsetX});
       $chooseConflict.show();
       $('#container').append($chooseConflict);
       $('.choice').off('click').click(choiceClickHandler);
@@ -3201,13 +3254,13 @@ $(document).ready(function () {
     var topOffset = offset.top;
     var leftOffset = offset.left;
     var fi = $('#firstinput');
-    fi.offset({ top: topOffset, left: leftOffset });
+    fi.offset({top: topOffset, left: leftOffset});
     fi.outerHeight($('.jsavvalue').height());
     fi.width($(this._arrays[index]._indices[index2].element).width());
     fi.focus();
     // finalize changes when enter key is pressed
-    fi.keyup(function (event) {
-      if (event.keyCode == 13) {
+    fi.keyup(function(event){
+      if(event.keyCode == 13){
         var firstInput = $(this).val();
         firstInput = firstInput.replace(/!/g, emptystring);
         self.value(index, index2, firstInput);
@@ -3254,23 +3307,23 @@ $(document).ready(function () {
   }
 
   function cykParse() {
-    if (!transformGrammar()) {
+    if(!transformGrammar()){
       alert("The grammar must be in CNF form to be parsed!");
       return;
     }
-    var productions = _.map(_.filter(arr, function (x) { return x[0] }), function (x) { return x.slice(); });
+    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     localStorage['grammars'] = JSON.stringify(productions);
     window.open("./CYKParser.html");
   }
 
   //=================================
   // Buttons for editing the SLR DFA
-  $('#finalbutton').click(function () {
+  $('#finalbutton').click(function() {
     $('.jsavgraph').removeClass('builddfa');
     $('.jsavgraph').addClass('addfinals');
     jsav.umsg('Click a node to toggle final state.');
   });
-  $('#gotobutton').click(function () {
+  $('#gotobutton').click(function() {
     $('.jsavgraph').removeClass('addfinals');
     $('.jsavgraph').addClass('builddfa');
     jsav.umsg('Build the DFA: Click a state.');
@@ -3283,16 +3336,16 @@ $(document).ready(function () {
       jsav.clear();
       jsav = new JSAV("av");
     }
-    if (derivationTable) { derivationTable.clear(); }
-    if (ffTable) { ffTable.clear(); }
+    if (derivationTable) { derivationTable.clear();}
+    if (ffTable) { ffTable.clear();}
     parseTable = [];
     $('.conflictMenu').remove();
-    if (parseTableDisplay) { parseTableDisplay.clear(); }
-    if (modelDFA) { modelDFA.clear(); }
-    if (builtDFA) { builtDFA.clear(); }
-    if (tGrammar) { tGrammar.clear(); }
+    if (parseTableDisplay) { parseTableDisplay.clear();}
+    if (modelDFA) { modelDFA.clear();}
+    if (builtDFA) { builtDFA.clear();}
+    if (tGrammar) { tGrammar.clear();}
     if (backup) {
-      arr = _.map(backup.split(','), function (x) {
+      arr = _.map(backup.split(','), function(x) {
         var d = x.split(arrow);
         d.splice(1, 0, arrow);
         return d;
@@ -3335,8 +3388,8 @@ $(document).ready(function () {
   $('#loadfile').on('change', loadFile);
   $('#savefile').click(saveFile);
   $('#convertRLGbutton').click(convertToFA);
-  $('#convertCFGbuttonLL').click({ param1: true }, convertToPDA);
-  $('#convertCFGbuttonLR').click({ param1: false }, convertToPDA);
+  $('#convertCFGbuttonLL').click({param1: true}, convertToPDA);
+  $('#convertCFGbuttonLR').click({param1: false}, convertToPDA);
   $('#multipleButton').click(toggleMultiple);
   $('#addExerciseButton').click(addExercise);
   $('#identifybutton').click(identifyGrammar);
@@ -3345,7 +3398,7 @@ $(document).ready(function () {
   $('#completeallbutton').hide();
 
   $(document).click(defocus);
-  $(document).keyup(function (e) {
+  $(document).keyup(function(e) {
     if (e.keyCode == 27) {
       $('#firstinput').remove();
       fi = null;
@@ -3358,6 +3411,11 @@ $(document).ready(function () {
     $('#backbutton').hide();
     $('.multiple').hide();
     $('#addExerciseButton').hide();
+    if (type == "editor") {
+      m = init();
+      $('.jsavmatrix').addClass("editMode");
+      return;
+    }
     if (type == "grammarexercise") {
       var exerciseLocation = getExerciseLocation();
       m = init();
@@ -3383,12 +3441,12 @@ $(document).ready(function () {
       $('.jsavmatrix').addClass("editMode");
 
     }
-    else {//this part loads a grammar from xml file. We may use it when we need to provide an exercise that requires loading grammars
+    else{//this part loads a grammar from xml file. We may use it when we need to provide an exercise that requires loading grammars
       $.ajax({
         url: "./Formal_Languages_Automated_Exerciese/exercises/grammarTests.jff",
         dataType: 'xml',
         async: true,
-        success: function (data) {
+        success: function(data) {
           grammars = data.getElementsByTagName("grammar");
           initQuestionLinks();
           updateExercise(0);
@@ -3478,16 +3536,16 @@ $(document).ready(function () {
   /////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////
 
-  function displayHelp() {
+  function displayHelp(){
     alert(document.getElementById('helpInfo').innerHTML);
   }
 
-  function isRegularGrammar() {
+  function isRegularGrammar(){
     return (checkRightLinear() || checkLeftLinear());
   }
 
-  function checkLeftLinear() {
-    var productions = _.filter(arr, function (x) { return x[0] });
+  function checkLeftLinear(){
+    var productions = _.filter(arr, function(x) { return x[0]});
     for (var i = 0; i < productions.length; i++) {
       //r is the RHS
       var r = productions[i][2];
@@ -3500,8 +3558,8 @@ $(document).ready(function () {
     return true;
   }
 
-  function isContextFreeGrammar() {
-    var productions = _.filter(arr, function (x) { return x[0] });
+  function isContextFreeGrammar(){
+    var productions = _.filter(arr, function(x) { return x[0]});
     for (var i = 0; i < productions.length; i++) {
       var lhs = productions[i][0];
       if (lhs.length !== 1 || variables.indexOf(lhs) === -1) {
@@ -3512,49 +3570,49 @@ $(document).ready(function () {
   }
 
 
-  function checkLHSVariables() {
+  function checkLHSVariables(){
     //check if there is more than one variable on the LHS
-    var productions = _.filter(arr, function (x) { return x[0] });
+    var productions = _.filter(arr, function(x) { return x[0]});
     for (var i = 0; i < productions.length; i++) {
       var lhs = productions[i][0];
       if (lhs.length !== 1) {
         return true;
-      } else if (variables.indexOf(lhs) === -1) {
+      } else if (variables.indexOf(lhs) === -1){
         return true;
       }
     }
     return false;
   }
 
-  function clearAll() {
+  function clearAll(){
     window.location.href = "";
   }
 
   function identifyGrammar() {
 
     //Check if there is more than one variable on the LHS, if so it is an unrestricted grammar.
-    if (checkLHSVariables()) {
+    if(checkLHSVariables()){
       alert('This grammar is an unrestricted grammar');
       return;
     }
 
     // e.g. S->a could be both
-    if (checkLeftLinear() && checkRightLinear()) {
+    if(checkLeftLinear() && checkRightLinear()){
       alert('This grammar is both left-linear and right-linear (Regular Grammar and Context-Free Grammar)');
       return;
     }
 
-    if (checkLeftLinear()) {
+    if(checkLeftLinear()) {
       alert('This grammar is a left-linear Grammar (Regular Grammar and Context-Free Grammar)');
       return;
     }
 
-    if (checkRightLinear()) {
+    if(checkRightLinear()) {
       alert('This grammar is a right-linear Grammar (Regular Grammar and Context-Free Grammar)');
       return;
     }
 
-    if (isContextFreeGrammar()) {
+    if(isContextFreeGrammar()){
       alert('This grammar is a Context-Free Grammar');
       return;
     }

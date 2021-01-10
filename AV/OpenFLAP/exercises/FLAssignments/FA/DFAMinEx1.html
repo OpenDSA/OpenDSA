@@ -31,7 +31,7 @@
       margin-top: 16px;
       margin-bottom: 16px;
       width: 100%;
-      height: 440px;
+      height: 300px;
       
       outline: 1px black solid;
       border: 10px transparent solid;
@@ -55,12 +55,12 @@
   <body>
     <div id="container">        
       <div id="av">
-        <h1 id="Exercise">DFA Minimization Exercise</h1>
-        <h2 id="description"></h2>
+        <h1 id="Exercise">Minimize the following DFA</h1>
+        <!--<h2 id="description"></h2>-->
         <a class="jsavsettings" href="#">Settings</a>
         <p align="center" class="jsavexercisecontrols"></p>
         <p class="jsavscore"></p>
-        <p style="font-size: 30px">&Sigma;: <span id='alphabet'></span></p>
+        <!--<p style="font-size: 30px">&Sigma;: <span id='alphabet'></span></p>-->
         <button type='button' id="addchildbutton" class='treework'>Add child</button>
         <button type='button' id='removetreenodebutton' class='treework'>Remove selected partition</button>
         <button type="button" id="checkbutton" class="treework">Check nodes</button>
@@ -74,8 +74,6 @@
         <!--<button type="button" id="completebutton" class="hide">Complete</button>-->
         <!--<button type="button" id="dfadonebutton" class="hide">Check if the Minimization is finished</button>-->
         <!--<button id="showResult">Show Results</button>-->
-        <p id="percentage"></p>
-        <table id="testResults"></table>
         <p class="jsavoutput jsavline"></p>
         <div id="graphs">
           <div id="reference" class="jsavcanvas"></div>
@@ -83,8 +81,9 @@
         </div>
       </div>
       <button type="button" id="layoutRef">Layout</button>
-    </div>
-    
+    <p id="percentage"></p>
+      <table id="testResults"></table>
+      </div>
     <script src="../../../../../lib/jquery.min.js"></script>
     <script src="../../../../../lib/jquery.migrate.min.js"></script>
     <script src="../../../../../lib/jquery.ui.min.js"></script>
