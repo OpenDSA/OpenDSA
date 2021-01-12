@@ -80,13 +80,13 @@ final state. This will be a useful first step.
 
 |
 
-.. inlineav:: RegEXandRegLangStarFF ff
-   :links: AV/PIExample/RegularLanguages/RegEXandRegLangStarFF.css
-   :scripts:AV/PIExample/RegularLanguages/RegEXandRegLangStarFF.js DataStructures/FLA/FA.js DataStructures/PIFrames.js 
+.. inlineav:: RegEx2NFAstarFS ff
+   :links: AV/PIFLA/Regular/RegEx2NFAstarFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAstarFS.js
    :output: show
 
-**Summary:** We can convert any RE to an NFA. So, all REs are
-associated with a regular language.
+**Summary:** We can convert any RE to an NFA.
+So, all REs are associated with a regular language.
 
             
 
