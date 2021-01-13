@@ -5,53 +5,62 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 10],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 10,
-    "falseCounter": 4,
-    "expression": "",
     "description": "Construct a CFG over {a,b} whose language contains precisely the strings with the same number of a’s and b’s.",
-    "type": "description",
     "testCases": [{
-            "": true
+            "": true,
+            "ShowTestCase":true
         },
         {
-            "ab": true
+            "ab": true,
+            "ShowTestCase":true
         },
         {
-            "ba": true
+            "ba": true,
+            "ShowTestCase":true
         },
         {
-            "aabb": true
+            "aabb": true,
+            "ShowTestCase":true
         },
         {
-            "bbaa": true
+            "bbaa": true,
+            "ShowTestCase":true
         },
         {
-            "abba": true
+            "abba": true,
+            "ShowTestCase":true
         },
         {
-            "abab": true
+            "abab": true,
+            "ShowTestCase":true
         },
         {
-            "baab": true
+            "baab": true,
+            "ShowTestCase":true
         },
         {
-            "ababa": false
+            "ababa": false,
+            "ShowTestCase":true
         },
         {
-            "bbbbbaaa": false
+            "bbbbbaaa": false,
+            "ShowTestCase":true
         },
         {
-            "baababa": false
+            "baababa": false,
+            "ShowTestCase":true
         },
         {
-            "abbaaabb": true
+            "abbaaabb": true,
+            "ShowTestCase":true
         },
         {
-            "abbab": false
+            "abbab": false,
+            "ShowTestCase":true
         },
         {
-            "aaabbbab": true
+            "aaabbbab": true,
+            "ShowTestCase":true
         }
     ],
     "graph": {

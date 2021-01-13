@@ -1,28 +1,31 @@
 [{
     "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
     "exerciseType": "TM",
-    "totalTestCases": 6,
+    "totalTestCases": 5,
     "containLetters": ["a","b","c"],
     "randomStringLength": [0, 15],
     "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
     "hardCodeCasesCounter": 5,
-    "expression": "",
     "description": "Create a machine that is just like the one that you just did. However, instead of replacing the string with #'s, you will keep the string intact.",
-    "type": "description",
     "testCases": [{
-            "aaa": "aaa"
+            "aaa": "aaa",
+            "ShowTestCase":true
         },
         {
-            "bbb": "bbb"
+            "bbb": "bbb",
+            "ShowTestCase":true
         },
         {
-            "ccc": "ccc"
+            "ccc": "ccc",
+            "ShowTestCase":true
         },
         {
-            "abcab": "abcab"
+            "abcab": "abcab",
+            "ShowTestCase":true
         },
         {
-            "": ""
+            "": "",
+            "ShowTestCase":true
         }
     ],
     "graph": {

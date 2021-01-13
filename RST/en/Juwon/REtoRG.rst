@@ -12,10 +12,8 @@
 Regular Expression to Regular Grammar
 =======================
 
-JF
+REtoRG
 ----------
 
-.. inlineav:: REtoRG ss
-    :links: AV/Juwon/REtoRG.css
-    :scripts: AV/Juwon/REtoRG.js
-    :align: justify
+.. avembed:: AV\Juwon\REtoRG.html ss
+   :long_name: Regular Expression to Regular Grammar

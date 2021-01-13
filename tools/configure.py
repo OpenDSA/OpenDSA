@@ -278,8 +278,7 @@ def generate_todo_rst(config, slides=False):
         header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
         header_data['mod_options'] = ''
         header_data['build_cmap'] = str(config.build_cmap).lower()
-        header_data[
-            'unicode_directive'] = rst_header_unicode if not slides else ''
+        header_data['unicode_directive'] = rst_header_unicode if not slides else ''
         todo_file.write(rst_header % header_data)
         todo_file.write(todo_rst_template)
 
@@ -375,7 +374,7 @@ def initialize_conf_py_options(config, slides):
     options['slides_lib'] = 'hieroglyph' if slides else ''
     options['local_mode'] = str(config.local_mode).title()
 
-    # makes sure the ebook uses the same python exec as this script 
+    # makes sure the ebook uses the same python exec as this script
     options['python_executable'] = sys.executable
 
     return options
@@ -424,7 +423,7 @@ def configure(config_file_path, options):
     if os.path.isdir(html_dir):
         print ("Clearing HTML directory")
         shutil.rmtree(html_dir, ignore_errors=True)
-        # ignore_errors needed to delete files marked readonly or busy 
+        # ignore_errors needed to delete files marked readonly or busy
 
     # Add the list of topics the book assumes students know to the list of
     # fulfilled prereqs
@@ -505,6 +504,9 @@ def configure(config_file_path, options):
         job.append("min")
 
     # if make is visible to shutil, then no need to use shell
+    ''' TODO: Test if shell_needed is always false, which would make some of the below code useless
+    With the odsa docker update, we could safely assume 'make' to be usable and visible to shutil  
+    '''
     shell_needed = shutil.which('make') is None
     if shell_needed:
         print("WARNING: 'make' command is not visible from python... Doing leap of faith...")
@@ -515,11 +517,11 @@ def configure(config_file_path, options):
         print_err("Creating eBook failed.  See above error")
         exit(1)
     print("$$$ Subprocess Complete: " + " ".join(job), flush=True)
-    
+
     ''' TODO: Keep looking for encoding errors.
-    These are because python 2.7 implicitly converted string encodings.  
-    python2.7 encodes strings IMplicitly, python3 does this EXplicitly instead. 
-    ''' 
+    These are because python 2.7 implicitly converted string encodings.
+    python2.7 encodes strings IMplicitly, python3 does this EXplicitly instead.
+    '''
 
     # Calls the postprocessor to update chapter, section, and module numbers,
     # and glossary terms definition

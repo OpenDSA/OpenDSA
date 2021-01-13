@@ -1835,10 +1835,17 @@
           tconfigurations = $("<ul>");
           for (var j = 0; j < currentStates.length; j++) {
             if (currentStates[j].curIndex === inputString.length) {
-                if (currentStates[j].stack[0] === "Z" && currentStates[j].stack.length === 1){
-                //if (currentStates[j].state.hasClass('final')) { //HERE I THINK FOR WHERE IT DETERMINES IF THE LAST STATE IS Z OR NOT
-                currentStates[j].state.addClass('accepted');
-                stringAccepted = true;
+              if(localStorage['empty'] === "true"){
+                if ((currentStates[j].stack[0] === "Z" || currentStates[j].stack[0] === "z") && currentStates[j].stack.length === 1){ //Does it matter if it can be accepted as final state when empty stack is turned on? Add check for final state if it does
+                  currentStates[j].state.addClass('accepted');
+                  stringAccepted = true;
+                }
+              }
+              else{
+                if (currentStates[j].state.hasClass('final')) { 
+                  currentStates[j].state.addClass('accepted');
+                  stringAccepted = true;
+                }
               }
             }
             currentStates[j].update();

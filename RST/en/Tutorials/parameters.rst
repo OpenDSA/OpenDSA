@@ -7,9 +7,9 @@
    :author: Jordan Sablan
    :requires: Commmand line
    :satisfies: Command line parameters
-   :topic: 
+   :topic:
 
-==============================================
+
 Parsing Command Line Parameters In Your Progam
 ==============================================
 
@@ -27,7 +27,7 @@ function is named Main and takes an array of strings as its parameter
    public static void main(String[] args)
 
 
-So when you launch the command from the terminal it passes in an array of all 
+So when you launch the command from the terminal it passes in an array of all
 the additional information (and it usually trims white space). So if I run
 
 .. odsafig:: Images/parameterexample.png
@@ -35,7 +35,7 @@ the additional information (and it usually trims white space). So if I run
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: ls with paramaters 
+   :alt: ls with paramaters
 
 
 Then args is an array containing::
@@ -43,14 +43,14 @@ Then args is an array containing::
    {"-l", "file.txt"}
 
 \*Authors Note: This is true for Java, but is a little different for C or C++.
-In C, the first parameter that you are given is always the command name so 
+In C, the first parameter that you are given is always the command name so
 your array in C would be::
 
    {"ls", "-l", "file.txt"}
 
 Java however, removes the command name and only provides parameters.
 
-I have created a main function skeleton for you to use in your projects. It is 
+I have created a main function skeleton for you to use in your projects. It is
 set up simply and makes use of switch cases. You can |external_link1|.
 Let's see how it works.
 

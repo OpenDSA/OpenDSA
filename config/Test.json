@@ -64,12 +64,11 @@
   },
   "chapters": {
     "Stuff": {
-      "Design/IntroOO": {}, 
-      "PointersJava/BasicPointers1": {},
-      "MDTest/MDTest1": {},
+      "PIFLA/SetNotation": {},
       "PointersJava/Exercises": {},
       "NP/NPComplete": {},
-      "SeniorAlgAnal/Impossible": {}
+      "SeniorAlgAnal/Impossible": {},
+      "SeniorAlgAnal/DynamicProgramming": {}
     }, 
     "Appendix": {
       "Glossary": {},

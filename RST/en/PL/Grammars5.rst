@@ -26,8 +26,7 @@ of the demo at http://zaa.ch/jison/demos/calc, as made available by
 Jison developer Zach Carter::
   
   /* 
-      description: Parse and interpret simple arithmetic expressions
-                   and evaluates them
+      description: Parse and interpret/evaluate simple arithmetic expressions
       source:      this grammar is adapted from: 
                    http://zaach.github.io/jison/demos/calc/
   */

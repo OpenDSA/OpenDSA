@@ -87,9 +87,9 @@ controllerProto.startTesting = function(studentSolution, exerciseType) {//exerci
 	window.scrollTo(0,document.body.scrollHeight);
 	$('#container').scrollTop($('#container').prop("scrollHeight"));
 	if(exerciseLog.numberOfSteps > 0)
-		return exerciseLog.numberOfSteps / (exerciseLog.numberOfSteps + exerciseLog.errorsCount);
+		return {score: exerciseLog.numberOfSteps / (exerciseLog.numberOfSteps + exerciseLog.errorsCount), solution: exer['studentSolution']};
 	else
-		return 0;
+		return {score: 0, solution: exer['studentSolution']};
 };
 
 // binded with question links at the top of the page

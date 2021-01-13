@@ -113,8 +113,8 @@ $(document).ready(function () {
 
   //frame 23
   av.umsg(Frames.addQuestion("q23"));
-  var c1 = av.label("q0", {left: 355 + xStart, top: 130 + yStart});
-  var c2 = av.label("q1", {left: 355 + xStart, top: 160 + yStart});
+  var c1 = av.label("q0", {left: 355 + xStart, top: 145 + yStart});
+  var c2 = av.label("q1", {left: 355 + xStart, top: 175 + yStart});
   av.step();
 
   //frame 24
@@ -190,7 +190,7 @@ $(document).ready(function () {
   //frame 33
   av.umsg(Frames.addQuestion("q33"));
   p4.hide();
-  var lastArrow = av.g.line(570 + xStart, 195 + yStart, 540 + xStart, 212 + yStart, {"arrow-end": "classic-wide-long"});
+  var lastArrow = av.g.line(570 + xStart, 195 + yStart, 540 + xStart, 240, {"arrow-end": "classic-wide-long"});
   av.step();
   
   //frame 34
@@ -243,6 +243,8 @@ $(document).ready(function () {
 
   //frame 45
   av.umsg("Turing machines operate as follows: For $q\\in Q$, $a \\in \\Sigma$ and $\\delta(q,a)=(p,b,m)$, when in state $q$ and scanning $a$, enter state $p$, replace $a$ with $b$, and move the head ($m$ is $L$, $R$, or $S$).");
+  tm.hide();
+  tape.hide();
   av.step();
   
   //frame 46
@@ -272,12 +274,12 @@ $(document).ready(function () {
   //frame 52
   av.umsg("Here is the graphical view of the machine.");
   var url = "../../../../AV/VisFormalLang/TM/Machines/TMabc.jff";
-  var graph1 = av.ds.TM({left: 50, top: 200, width: 600, height: 325, url: url});
+  var graph1 = av.ds.TM({left: 100, top: 200, width: 600, height: 325, url: url});
   av.step();
 
   //frame 53
   av.umsg(Frames.addQuestion("q53"));
-  var complicatedTape = av.ds.tape(["#", "a", "b", "c", "#", "#", "#"], 50, 90, "both");
+  var complicatedTape = av.ds.tape(["#", "a", "b", "c", "#", "#", "#"], 100, 90, "both");
   av.step();
 
   //frame 54

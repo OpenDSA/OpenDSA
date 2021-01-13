@@ -6,23 +6,26 @@
   "randomStringLength": [0, 15],
   "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
   "hardCodeCasesCounter": 5,
-  "expression": "",
-  "description": "Write a (Turing decidable) program for a Turing machine to recognize the languageof all palindromes over a, b.",
-  "type": "description",
+  "description": "Write a (Turing decidable) program for a Turing machine to recognize the language of all palindromes over a, b.",
   "testCases": [{
-      "aaa": "Y"
+      "aaa": "Y",
+      "ShowTestCase":true
     },
     {
-      "aba": "Y"
+      "aba": "Y",
+      "ShowTestCase":true
     },
     {
-      "aaab": "N"
+      "aaab": "N",
+      "ShowTestCase":true
     },
     {
-      "aababaa": "Y"
+      "aababaa": "Y",
+      "ShowTestCase":true
     },
     {
-      "bbabb": "Y"
+      "bbabb": "Y",
+      "ShowTestCase":true
     }
   ],
   "graph": {

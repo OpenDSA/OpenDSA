@@ -15,6 +15,14 @@ Structure of a Compiler
 What is a compiler?
 -------------------
 
+.. TODO::
+   :type: Diagrams
+
+   Look at Susan's original notes (sectcomdes) to see what these are
+   supposed to look like (she used cline to help build boxes, but
+   MathJax cannot support it). 
+
+
 Translator
 ~~~~~~~~~~
 
@@ -23,11 +31,10 @@ Translator
 .. math::
 
    \begin{array}{cc|c|cc}
-   \cline{3-3} program in & & & & program in \\ 
-   source language & \longrightarrow & translator & \longrightarrow
-   & object (target) \\ 
-   X & & for X & & language Y \\
-   \cline{3-3} 
+   \mbox{program in} & & & & \mbox{program in} \\ 
+   \mbox{source language} & \longrightarrow & \mbox{translator} & \longrightarrow
+   & \mbox{object (target)} \\ 
+   \mbox{X} & & \mbox{for X} & & \mbox{language Y} \\
    \end{array}
 
 **Examples:**
@@ -47,11 +54,11 @@ Translator
    \end{array}
 
 Preprocessor: If you have a language that has while statements 
-but no for statements, construct a new language that allows for 
-statements and use preprocessor to translate new language into old 
-language::
+but no ``for`` statements, construct a new language that allows ``for`` 
+statements and use the preprocessor to translate the new language into
+the old language::
 
-   for i=1 to n do
+   for i = 1 to n do
      (stmts)
    end for
 

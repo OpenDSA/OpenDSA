@@ -6,23 +6,26 @@
     "randomStringLength": [0, 15],
     "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
     "hardCodeCasesCounter": 5,
-    "expression": "",
     "description": "Create a machine that erases a string of a's, b's, and c's",
-    "type": "description",
     "testCases": [{
-            "aaa": ""
+            "aaa": "",
+            "ShowTestCase":true
         },
         {
-            "bbb": ""
+            "bbb": "",
+            "ShowTestCase":true
         },
         {
-            "ccc": ""
+            "ccc": "",
+            "ShowTestCase":true
         },
         {
-            "abcabcbacb": ""
+            "abcabcbacb": "",
+            "ShowTestCase":true
         },
         {
-            "": ""
+            "": "",
+            "ShowTestCase":true
         }
     ],
     "graph": {

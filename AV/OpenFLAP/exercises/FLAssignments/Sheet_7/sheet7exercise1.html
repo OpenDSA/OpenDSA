@@ -24,7 +24,8 @@
   <link rel="stylesheet" href="../../../css/FA.css" type="text/css" />
   <link rel="stylesheet" href="../../../css/multiRun.css" type="text/css" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../../../../../lib/jquery.min.js"></script>
+<script src="../../../../../lib/jquery.migrate.min.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -63,7 +64,7 @@
         <td class="headerRight" style="border:hidden;">
           <button id="helpButton"
             style="width: 20px !important; height: 20px !important; position: inherit !important;"><img
-              src="./help.png" /></button>
+              src="../../../help.png" /></button>
         </td>
       </tr>
     </table>
@@ -123,8 +124,6 @@
     </div>
     <div id='download'></div>
     <div id="rmenu"></div>
-    <p id="percentage"></p>
-    <table id="testResults"></table>
     <div id="dialogueoverlay"></div>
     <div id="dialoguebox">
       <div>
@@ -174,14 +173,17 @@
           </td>
         </tr>
       </table>
-    </div>
+    <p id="percentage"></p>
+      <table id="testResults"></table>
+      </div>
     <script src="../../exerController/TestCaseGenerater.js"></script>
     <script src="../../exerController/PDAHandler.js"></script>
 
     <!-- Multi Line run Support: adapted from https://codepen.io/johnraiz/pen/jvYRey/-->
     <div id="multiRun"></div>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../../../../lib/jquery.min.js"></script>
+<script src="../../../../../lib/jquery.migrate.min.js"></script>
+    <script src="../../../../../lib/jquery.ui.min.js"></script>
     <script src="../../../../../lib/jquery.transit.js"></script>
     <script src="../../../../../lib/raphael.js"></script>
     <script src="../../../../../lib/dagre.min.js"></script>

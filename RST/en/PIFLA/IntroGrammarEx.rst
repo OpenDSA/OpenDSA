@@ -12,21 +12,28 @@
 Grammar Exercises
 =================
 
-Exercise 1
-----------
+Grammar Exercises
+-----------------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntro3str.html pe
    :long_name: Three string grammar
 
-Exercise 2
-----------
+|
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanbm.html pe
    :long_name: anbm grammar
 
-Exercise 3
-----------
+|
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanb2n.html pe
    :long_name: anb2n grammar
 
+|
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Parens.html pe
+   :long_name: Balanced Parentheses grammar
+
+|
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Palendrome.html pe
+   :long_name: Palendrome grammar

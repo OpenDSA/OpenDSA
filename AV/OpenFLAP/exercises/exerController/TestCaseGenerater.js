@@ -69,7 +69,19 @@ function stringGenerate() {
   return str;
 }
 
+function count(obj,tag){
+  var counter = 0;
+  var searchFrom = obj.testCases;
+  for(var i =0;i<searchFrom.length;i++){
+    for (const [key, value] of Object.entries(searchFrom[i])) {
+      if(key != "ShowTestCase" && value == tag){
+        counter = counter +1;
+      }
+    }
+  }
+    return counter;
 
+}
 
 function generateTestCase(exObj, flag) {
   var copyObj;
@@ -80,8 +92,8 @@ function generateTestCase(exObj, flag) {
   }
   trueStringLimit = copyObj.totalTrueCases;
   falseStringLimit = copyObj.totalFalseCases;
-  trueCounter = copyObj.trueCounter;
-  falseCounter = copyObj.falseCounter;
+  trueCounter = count(copyObj,true);
+  falseCounter = count(copyObj,false);
   caseCounter = trueCounter + falseCounter;
   containLetters = copyObj.containLetters;
   randomStringLength = copyObj.randomStringLength;

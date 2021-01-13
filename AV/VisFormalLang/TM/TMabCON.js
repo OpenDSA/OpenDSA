@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   var av_name = "TMabCON";
   var av = new JSAV(av_name, {animationMode: "none"});
-  var url = "../../../AV/VisFormalLang/TM/Machines/TMab.jff";
+  var url = "../../../AV/OpenFLAP/machines/TM/TMab.jff";
   av.ds.TM({width: 600, height: 325, url: url});
   av.displayInit();
   av.recorded();

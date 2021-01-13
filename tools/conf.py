@@ -188,15 +188,18 @@ html_static_path = ['_static']
 # to properly link to Privacy.html
 # The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 html_context = {"script_files": [
-                  'https://code.jquery.com/jquery-2.1.4.min.js',
-                  '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                  #'https://code.jquery.com/jquery-2.1.4.min.js',
+                  '../../../lib/jquery.min.js',
+                  '../../../lib/jquery.migrate.min.js',
+                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
                   '_static/doctools.js'
                 ],
                 "odsa_scripts": [
-                  'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
+                  #'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
+                  '../../../lib/jquery.ui.min.js',
                   '../../../lib/jquery.transit.js',
                   '../../../lib/raphael.js',
                   '../../../lib/JSAV-min.js',
@@ -204,7 +207,7 @@ html_context = {"script_files": [
                   '../../../lib/odsaUtils-min.js',
                   '../../../lib/odsaMOD-min.js',
                   'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
-                   'https://d3js.org/d3-selection-multi.v1.min.js',
+                  'https://d3js.org/d3-selection-multi.v1.min.js',
                   '../../../lib/dataStructures.js',
                   '../../../lib/conceptMap.js'
                 ],
@@ -212,7 +215,8 @@ html_context = {"script_files": [
                   '../../../lib/normalize.css',
                   '../../../lib/JSAV.css',
                   '../../../lib/odsaMOD-min.css',
-                  'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
+                  '../../../lib/jquery.ui.min.css',
+                  #'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
                   '../../../lib/odsaStyle-min.css'
                 ],
                 "odsa_root_path": "../../../",

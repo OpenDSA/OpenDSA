@@ -2,6 +2,7 @@ var latexit = "http://latex.codecogs.com/svg.latex?";
 var arr;
 $(document).ready(function () {
   "use strict";
+  localStorage["jsav-speed"] = 1;
   var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var jsav = new JSAV("av");
   var arrow = String.fromCharCode(8594),
@@ -26,7 +27,8 @@ $(document).ready(function () {
       multiple = false,   // if multiple grammar editing is enabled
       fi,                 // input box for matrix
       row,              // row number for input box
-      col;              // column number for input box
+      col,              // column number for input box
+      exerController;
 
   var parenthesis = "(";
 
@@ -78,13 +80,98 @@ $(document).ready(function () {
       m2.on('click', matrixClickHandler);
     return m2;
   };
+  var cleanupFetchedSolution = function (fetArr) {
+  var fetLastRow = fetArr.length - 1;
+  //clean empty lines
+  for (var i = fetArr.length - 1; i >= 0; i--) {
+    if (fetArr[i][0] == "" && fetArr[i][2] == "")
+    fetLastRow--;
+    else 
+      break;
+  }
+    //build clean arr to init
+  var cleanArr = []
+  for (var i = 0; i < fetLastRow + 1; i++) {
+    cleanArr.push([fetArr[i][0], arrow, fetArr[i][2]]);
+  }
+  return cleanArr;
+  }
+
+  var initGraphFromServer = function () {
+    window.FetchStoredProgress().then(res => {
+      if (res != null && res["progress"] != "") {
+        var fetchedArr = JSON.parse(res["progress"]);
+        arr = cleanupFetchedSolution(fetchedArr);
+        lastRow = arr.length - 1;
+        if (type == "grammarexercise") {
+          m = init();
+          fi = null;
+          $('.jsavmatrix').addClass("editMode");
+          exerController.updateExercise(0);
+        }
+      }
+    }).catch(err => {
+      console.log('fetch stored progress failed' + err);
+    })
+  };
+
+  //Function sent to exercise constructor to initialize grammar exercises
+  function initializeGrammarExercise() {
+    var arr2 = new Array(20);    // arbitrary array size
+    for (var i = 0; i < arr2.length; i++) {
+      arr2[i] = ["", arrow, ""];
+    }
+    lastRow = 0;
+    arr = arr2;
+
+    m = init();
+    fi = null;
+    $('.jsavmatrix').addClass("editMode");
+    exerController.updateExercise(0);
+  }
+
+  function initializeTransformationExercise() {
+    exerciseLog.errorMessages = [];
+    exerciseLog.errorsCount = 0;
+    exerciseLog.numberOfSteps = 0;
+    exerController.updateExercise(0);
+  }
+
+  //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
+  //In our case, we will make this function show the test cases only.
+  function modelSolution(modeljsav) {
+    var containHideTest = false;
+    var testCases = exerController.tests[0]["testCases"];
+    var list = [["Test Number", "Test String", "Accept/Reject"]];
+    var testNum = 1;
+    for (i = 0; i < testCases.length; i++) {
+      var testCase = testCases[i];
+      var hideOption = testCase.ShowTestCase;
+      if (hideOption == false || hideOption == undefined) {
+        containHideTest = true;
+      }
+      if (testCase.ShowTestCase) {
+        var input = Object.keys(testCase)[0];
+        //var inputResult = FiniteAutomaton.willReject(this.fa, input);
+        list.push([testNum, input, testCase[input]]);
+        testNum = testNum + 1;
+      }
+    }
+    if (containHideTest) {
+      list.push([testNum, "Hidden Test", "Hidden Solution"]);
+    }
+    var model = modeljsav.ds.matrix(list);
+    //layoutTable(model);
+    modeljsav.displayInit();
+    return model;
+  }
 
   // handler for grammar editing
   var matrixClickHandler = function(index, index2) {
-    console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
+    //console.log("row: " + row + " index: " + index + " col: " + col + " index2: " + index2 + " fi: " + fi + " m: " + m + " arr: " + arr);
 
     // if ((row != index || col != index2) && fi) {
-
+    var deleteTimes = 0;
     if (fi) {
       var input = fi.val();
       var regex = new RegExp(emptystring, g);
@@ -93,9 +180,10 @@ $(document).ready(function () {
       if (input === "" && col == 2) {
         input = emptystring;
       }
-      if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
-      }
+      // if (input === "" && col === 0) {
+      //   alert('Invalid left-hand side.');
+      //   return;
+      // }
       if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
         alert('This production already exists.');
       }
@@ -105,13 +193,43 @@ $(document).ready(function () {
       layoutTable(m, 2);
     }
     if ($('.jsavmatrix').hasClass('deleteMode')) {
-      if(index === 0){
-        alert("Can't delete the last row");
+      if(index === 0 && lastRow === 0){
+        //alert("Can't delete the last row");
+        arr[index][0] = "";
+        arr[index][2] = "";
+        m = init();
+        $('.jsavmatrix').addClass("editMode");
+        $('.jsavmatrix').removeClass("deleteMode");
+        $('.jsavmatrix').removeClass("addrowMode");
+        jsav.umsg('Editing');
         return;
       }
       // recreates the matrix when deleting a row...
-      arr.splice(index, 1);
-      lastRow--;
+      // arr.splice(index, 1);
+      // lastRow--;
+      // m = init();
+
+      if (!(arr[index][0] === "" && arr[index][2] === "")) {
+        var result = confirm("Are you sure you want to delete this production you selected?");
+        if (result) {
+          arr.splice(index, 1);
+          lastRow--;
+          deleteTimes++;
+          arr.push(["",arrow,""]);
+          m = init();
+        }
+      } else {
+        arr.splice(index, 1);
+        lastRow--;
+        deleteTimes++;
+        arr.push(["",arrow,""]);
+        m = init();
+
+      }
+      for(var i = lastRow + 1; i < arr.length; i++) {
+        arr[i][0] = '';
+        arr[i][2] = '';
+      }
       m = init();
       $('.jsavmatrix').addClass('deleteMode');
     } else if ($('.jsavmatrix').hasClass('editMode')) {
@@ -123,7 +241,12 @@ $(document).ready(function () {
     } else if ($('.jsavmatrix').hasClass('addrowMode')) {
       addRow(index);
     }
-
+    if (deleteTimes == 1) {
+      $('.jsavmatrix').addClass("editMode");
+      $('.jsavmatrix').removeClass("deleteMode");
+      $('.jsavmatrix').removeClass("addrowMode");
+      jsav.umsg('Editing');
+    }
   };
 
 
@@ -140,7 +263,7 @@ $(document).ready(function () {
     var prev = m.value(index, index2);
     // create an input box for editing the cell
     $('#firstinput').remove();
-    var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;' value="+prev+">";
+    var createInput = "<input type='text' id='firstinput' onfocus='this.value = this.value;' value=" + prev + ">";
     $('body').append(createInput);
     var offset = m._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
@@ -231,7 +354,8 @@ $(document).ready(function () {
       input = emptystring;
     }
     if (input === "" && col === 0) {
-        alert('Invalid left-hand side.');
+        //alert('Invalid left-hand side.');
+        fi.remove();
         return;
     }
     if (col == 2 && _.find(arr, function(x) { return x[0] == arr[row][0] && x[2] == input && arr.indexOf(x) !== row;})) {
@@ -379,7 +503,7 @@ $(document).ready(function () {
       var vv = v[i];
       ffDisplay.push([vv, "", ""]);
     }
-    jsav.umsg('Define FIRST sets. ! is '+emptystring+'.');
+    jsav.umsg('Define FIRST sets. ! is ' + emptystring + '.');
     ffTable = new jsav.ds.matrix(ffDisplay);
     // ffTable = new jsav.ds.matrix(ffDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     arrayStep = 1;
@@ -412,7 +536,7 @@ $(document).ready(function () {
       $(ffTable.element).off();
       $('#parsetablebutton').hide();
       $('#parsereadybutton').show();
-      jsav.umsg('Fill entries in parse table. ! is '+emptystring+'.');
+      jsav.umsg('Fill entries in parse table. ! is ' + emptystring + '.');
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(t));
       for (var i = 0; i < v.length; i++) {
@@ -451,7 +575,7 @@ $(document).ready(function () {
       //parseTableDisplay = new jsav.ds.matrix(pTableDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
       var remainingInput = inputString + '$';
       // display remaining input and the parse stack
-      updateSLRDisplay('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1) , ' <mark>' + productions[0][0] + '</mark>');
+      updateSLRDisplay('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1), ' <mark>' + productions[0][0] + '</mark>');
       jsav.displayInit();
       parseTree = new jsav.ds.tree();
 
@@ -495,7 +619,7 @@ $(document).ready(function () {
           parseTableDisplay.highlight(vi + 1, ti + 1);
           var temp = [];
           // create parse tree nodes
-          for (var i = 0 ; i < toAdd.length; i++) {
+          for (var i = 0; i < toAdd.length; i++) {
             // note: .child(x, y) creates a child node but returns the parent
             var n = next.child(i, toAdd[i]).child(i);
             if (v.indexOf(toAdd[i]) === -1) {
@@ -512,7 +636,8 @@ $(document).ready(function () {
         }
         updateSLRDisplay('<mark>' + remainingInput[0] + '</mark>' + remainingInput.substring(1),
            _.map(parseStack, function(x, k) {
-          if (k === parseStack.length - 1) {return '<mark>'+x.value()+'</mark>';} return x.value();}));
+          if (k === parseStack.length - 1) {return '<mark>' + x.value() + '</mark>';} return x.value();
+        }));
       }
       jsav.step();
       if (accept && remainingInput[0] === '$' && !next) {
@@ -612,8 +737,8 @@ $(document).ready(function () {
     // if adding initial node
     if (localStorage['slrdfareturn'] && localStorage['slrdfasymbol'] === 'initial') {
       var builtInitial = builtDFA.addNode({left: 50, top: 50}),
-          nodeX = builtInitial.element.width()/2.0,
-          nodeY = builtInitial.element.height()/2.0;
+          nodeX = builtInitial.element.width() / 2.0,
+          nodeY = builtInitial.element.height() / 2.0;
       $(builtInitial.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
       builtDFA.makeInitial(builtInitial);
       builtInitial.stateLabel(localStorage['slrdfareturn'].replace(/,/g, '<br>'));
@@ -639,8 +764,8 @@ $(document).ready(function () {
       }
       // add new node
       var newNode = builtDFA.addNode(),
-          nodeX = newNode.element.width()/2.0,
-          nodeY = newNode.element.height()/2.0;
+          nodeX = newNode.element.width() / 2.0,
+          nodeY = newNode.element.height() / 2.0;
       $(newNode.element).offset({top: e.pageY - nodeY, left: e.pageX - nodeX});
       newNode.stateLabel(newItemSet);
       builtDFA.addEdge(selectedNode, newNode, {weight: localStorage['slrdfasymbol']});
@@ -712,7 +837,7 @@ $(document).ready(function () {
     var slrM = [[0, "S'", arrow, productions[0][0]]];
     for (var i = 0; i < productions.length; i++) {
       var prod = productions[i];
-      slrM.push([i+1, prod[0], prod[1], prod[2]]);
+      slrM.push([i + 1, prod[0], prod[1], prod[2]]);
     }
     if (m) {
       m.clear();
@@ -726,7 +851,7 @@ $(document).ready(function () {
       var vv = v[i];
       ffDisplay.push([vv, "", ""]);
     }
-    jsav.umsg('Define FIRST sets. ! is '+emptystring+'.');
+    jsav.umsg('Define FIRST sets. ! is ' + emptystring + '.');
     ffTable = new jsav.ds.matrix(ffDisplay);
     // ffTable = new jsav.ds.matrix(ffDisplay, {left: "30px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     arrayStep = 1;
@@ -735,7 +860,7 @@ $(document).ready(function () {
     modelDFA = jsav.ds.FA({width: '90%', height: 440, layout: 'automatic'});
     var sNode = modelDFA.addNode();
     modelDFA.makeInitial(sNode);
-    sNode.stateLabel("S'"+arrow+dot+productions[0][0]);
+    sNode.stateLabel("S'" + arrow + dot + productions[0][0]);
     var nodeStack = [sNode];
     while (nodeStack.length > 0) {
       var nextNode = nodeStack.pop();
@@ -849,7 +974,7 @@ $(document).ready(function () {
         var rk = [];
         for (var i = 0; i < l.length; i++){
           if (l[i].indexOf(dot) === l[i].length - 1) {
-            rItem = l[i].substring(0, l[i].length-1);
+            rItem = l[i].substring(0, l[i].length - 1);
             if (!rItem.split(arrow)[1]) {
               rItem = rItem + emptystring;
             }
@@ -999,7 +1124,7 @@ $(document).ready(function () {
       $('#dfabuttons').hide();
       $('#parsetablebutton').hide();
       $('#parsereadybutton').show();
-      jsav.umsg('Fill entries in parse table. ! is '+emptystring+'.');
+      jsav.umsg('Fill entries in parse table. ! is ' + emptystring + '.');
       // initialize parse table display
       var pTableDisplay = [];
       pTableDisplay.push([""].concat(tv));
@@ -1065,7 +1190,7 @@ $(document).ready(function () {
       jsav.displayInit();
       // m.hide();
       // parseTableDisplay.hide();
-      updateSLRDisplay(remainingInput ,"");
+      updateSLRDisplay(remainingInput, "");
 
       counter = 0;
       while (true) {
@@ -1084,7 +1209,7 @@ $(document).ready(function () {
         for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
           parseTableDisplay.unhighlight(j);
         }
-        parseTableDisplay.highlight(currentRow+1, lookAhead+1);
+        parseTableDisplay.highlight(currentRow + 1, lookAhead + 1);
         if (!entry) {
           break;
         }
@@ -1133,7 +1258,8 @@ $(document).ready(function () {
             if (typeof x === 'number' || typeof x === 'string') {
               return x;
             }
-            return x.value();}));
+            return x.value();
+          }));
           jsav.step();
           parseStack.push(par);
           displayOrder.push(par);
@@ -1141,7 +1267,7 @@ $(document).ready(function () {
           for (var j = 0; j < parseTableDisplay._arrays.length; j++) {
             parseTableDisplay.unhighlight(j);
           }
-          parseTableDisplay.highlight(n+1, tv.indexOf(p[0]) + 1);
+          parseTableDisplay.highlight(n + 1, tv.indexOf(p[0]) + 1);
           parseStack.push(currentRow);
           parseTree.layout();
         }
@@ -1150,7 +1276,8 @@ $(document).ready(function () {
           if (typeof x === 'number' || typeof x === 'string') {
             return x;
           }
-          return x.value();}));
+          return x.value();
+        }));
         jsav.step();
       }
       if (accept) {
@@ -1163,7 +1290,7 @@ $(document).ready(function () {
     $('#parsebutton').click(continueParse);
   };
 
-  function updateSLRDisplay (remainingInput, stack) {
+  function updateSLRDisplay(remainingInput, stack) {
     jsav.umsg("<pre>Remaining Input: " + remainingInput + "\nStack: " + stack + "</pre>");
   }
 
@@ -1178,7 +1305,7 @@ $(document).ready(function () {
     var counter = 0;
     while (next) {
       counter++;
-      if(counter>500) {
+      if(counter > 500) {
         console.warn(counter);
         break;
       }
@@ -1239,7 +1366,7 @@ $(document).ready(function () {
     $(".jsavmatrix").removeClass('editMode');
     $(".jsavmatrix").removeClass('deleteMode');
     $("#mode").html('');
-    $('#editbutton').hide();
+    // $('#editbutton').hide();
     $('#deletebutton').hide();
     $('#addrowbutton').hide();
     $('#convertRLGbutton').hide();
@@ -1358,13 +1485,30 @@ $(document).ready(function () {
     $('.jsavmatrix').addClass("deleteMode");
     $('.jsavmatrix').removeClass("addrowMode");
     $('.jsavmatrix').removeClass("editMode");
-    $("#mode").html('Deleting');
+    jsav.umsg('Deleting');
   };
   var addrowMode = function(){
-    $('.jsavmatrix').addClass("addrowMode");
+
+    if (lastRow === arr.length - 1 || lastRow === arr.length) {
+      var l = arr.length;
+      for (var i = 0; i < l; i++) {
+        arr.push(['', arrow, '']);
+      }
+      m = init();
+      $('.jsavmatrix').addClass('editMode');
+      // if (!arr[index][2]) {
+      //     arr[index][2] = lambda;
+      //     m.value(index, 2, lambda);
+      // }
+
+    }
+    m._arrays[lastRow + 1].show();
+    lastRow++;
+    layoutTable(m);
+    jsav.umsg('Editing');
+    $('.jsavmatrix').addClass("editMode");
     $('.jsavmatrix').removeClass("deleteMode");
-    $('.jsavmatrix').removeClass("editMode");
-    $("#mode").html('Adding');
+    $('.jsavmatrix').removeClass("addrowMode");
   }
 
   //=================================
@@ -1384,7 +1528,7 @@ $(document).ready(function () {
       }
     };
     if (productions[0][0] in derivers) {
-      alert('The start variable derives '+emptystring+'.');
+      alert('The start variable derives ' + emptystring + '.');
     }
     var transformed = [];
     // remove lambda productions
@@ -1422,7 +1566,7 @@ $(document).ready(function () {
   composed only of lambda-deriving variables.
   Used during parsing as well.
   */
-  function removeLambdaHelper (set, productions) {
+  function removeLambdaHelper(set, productions) {
     for (var i = 0; i < productions.length; i++) {
       if (productions[i][2] === emptystring || _.every(productions[i][2], function(x) { return x in set;})) {
         if (!(productions[i][0] in set)) {
@@ -1649,7 +1793,7 @@ $(document).ready(function () {
       var x = productions[i];
       x[2] = x[2].join("");
     }
-    var ret =  _.map(productions, function(x) {return x.join('');});
+    var ret = _.map(productions, function(x) {return x.join('');});
     return ret;
   };
 
@@ -1682,7 +1826,7 @@ $(document).ready(function () {
     var fullChomsky = convertToChomsky();
     var strP = _.map(productions, function(x) {return x.join('');});
     // store original grammar for reloading later
-    backup = ""+strP;
+    backup = "" + strP;
 
     if (!checkTransform(strP, noLambda)) {
       interactableLambdaTransform(noLambda);
@@ -1729,7 +1873,7 @@ $(document).ready(function () {
       var found = builtLambdaSet.indexOf(vv);
       if ((vv in derivers) && found === -1) {
         builtLambdaSet.push(vv);
-        jsav.umsg(vv + ' added! Set that derives '+emptystring+': [' + builtLambdaSet + ']');
+        jsav.umsg(vv + ' added! Set that derives ' + emptystring + ': [' + builtLambdaSet + ']');
         if (builtLambdaSet.length === Object.keys(derivers).length) {
           for (var i = 0; i < m._arrays.length; i++) {
             m.unhighlight(i);
@@ -1738,9 +1882,9 @@ $(document).ready(function () {
           continueLambda();
         }
       } else if (!(vv in derivers)) {
-        jsav.umsg(vv + ' does not derive '+emptystring+'. Set that derives '+emptystring+': [' + builtLambdaSet + ']');
+        jsav.umsg(vv + ' does not derive ' + emptystring + '. Set that derives ' + emptystring + ': [' + builtLambdaSet + ']');
       } else if (found !== -1) {
-        jsav.umsg(vv + ' already selected! Set that derives '+emptystring+': [' + builtLambdaSet + ']');
+        jsav.umsg(vv + ' already selected! Set that derives ' + emptystring + ': [' + builtLambdaSet + ']');
       }
     };
     // handler for the table for removing lambda-productions and adding equivalent productions
@@ -1785,7 +1929,7 @@ $(document).ready(function () {
         //tGrammar = jsav.ds.matrix(tArr, {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
         tGrammar.click(removeLambdaHandler);
       }
-      if (tArr.length - 1 === transformed.length && !_.find(tArr, function(x){return x[2]===emptystring})) {
+      if (tArr.length - 1 === transformed.length && !_.find(tArr, function(x){return x[2] === emptystring})) {
         var confirmed = confirm('Grammar completed; export?');
         // if export, open the completed grammar in a new tab
         if (confirmed) {
@@ -1821,7 +1965,7 @@ $(document).ready(function () {
     };
     // transition from finding lambda-deriving variables to modifying the grammar
     var continueLambda = function () {
-      jsav.umsg("Modify the grammar to remove "+emptystring+". Set that derives "+emptystring+": [" + builtLambdaSet + ']');
+      jsav.umsg("Modify the grammar to remove " + emptystring + ". Set that derives " + emptystring + ": [" + builtLambdaSet + ']');
       //$(m.element).css("margin-left", "50px");
       tGrammar = jsav.ds.matrix(tArr);
       layoutTable(tGrammar, 2);
@@ -1829,7 +1973,7 @@ $(document).ready(function () {
       tGrammar.click(removeLambdaHandler);
     };
     m.click(findLambdaHandler);
-    jsav.umsg("Removing "+emptystring+"-productions: Select variables that derive "+emptystring+".");
+    jsav.umsg("Removing " + emptystring + "-productions: Select variables that derive " + emptystring + ".");
   };
 
   var interactableUnitTransform = function (noUnit) {
@@ -1871,7 +2015,7 @@ $(document).ready(function () {
         }
         if (_.find(unitProductions, function(x) {return x[0] === selectedNode.value() && x[2] === self.value();})) {
           var newEdge = modelDFA.addEdge(selectedNode, self);
-          if (newEdge) { modelDFA.layout();}
+          if (newEdge) {modelDFA.layout();}
           jsav.umsg('Transition added.');
           if (modelDFA.edgeCount() === unitProductions.length) {
             modelDFA.element.off();
@@ -2019,7 +2163,7 @@ $(document).ready(function () {
     // handler for the table for removing unreachable productions
     var removeUselessHandler = function (index, index2, e) {
       if (this.value(index, 0)) {
-        if (noUseless.indexOf(this.value(index,0) + arrow + this.value(index,2)) === -1) {
+        if (noUseless.indexOf(this.value(index, 0) + arrow + this.value(index, 2)) === -1) {
           tArr.splice(index, 1);
           var tempG = jsav.ds.matrix(tArr);
           tGrammar.clear();
@@ -2130,7 +2274,7 @@ $(document).ready(function () {
     var variableProductions = _.filter(productions,function(x){ return x[0] == variable;});
     for(var ruleIndex = 0; ruleIndex < variableProductions.length; ruleIndex++){
       var rule = variableProductions[ruleIndex];
-      if(_.filter(rule[2], function(x){return variables.indexOf(x)>=0}).length !==0){
+      if(_.filter(rule[2], function(x){return variables.indexOf(x) >= 0}).length !== 0){
         onlyTerminalsExist = false;
         break;
       }
@@ -2203,8 +2347,8 @@ $(document).ready(function () {
         }
       }
       if (sliceIn.length > 0) {
-        tArr = tArr.slice(0, index + 1).concat(sliceIn).concat(tArr.slice(index+1));
-        var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+        tArr = tArr.slice(0, index + 1).concat(sliceIn).concat(tArr.slice(index + 1));
+        var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')]; }));
         tGrammar.clear();
         tGrammar = tempG;
         layoutTable(tGrammar, 2);
@@ -2217,13 +2361,13 @@ $(document).ready(function () {
         // replace variables
         var tempD = "D(" + varCounter + ")";
         var temp2 = r.splice(1, r.length - 1, tempD);
-        var present = _.find(tArr, function(x) { return x[0].length > 1 && x[2].join('') === temp2.join('');});
+        var present = _.find(tArr, function(x) { return x[0].length > 1 && x[2].join('') === temp2.join(''); });
         if (present) {
           r[1] = present[0];
         } else {
           tArr.splice(index + 1, 0, [tempD, arrow, temp2]);
           varCounter++;
-          var tempG = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+          var tempG = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
           tGrammar.clear();
           tGrammar = tempG;
           layoutTable(tGrammar, 2);
@@ -2237,10 +2381,10 @@ $(document).ready(function () {
       if (tArr.length === fullChomsky.length) {
         jsav.umsg('All productions completed.');
         tGrammar.element.off();
-        var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
-        if (c) {
-          attemptExport();
-        }
+        // var c = confirm('All productions completed.\nExport? Exporting will rename the variables.');
+        // if (c) {
+        //   attemptExport();
+        // }
         for (var i = 0; i < tGrammar._arrays.length; i++) {
           tGrammar.unhighlight(i);
         }
@@ -2254,7 +2398,7 @@ $(document).ready(function () {
           tempVars.push(tArr[i][0]);
         }
       }
-      var newVariables = _.difference(variables.split(""), _.map(tArr, function(x) {return x[0];}));
+      var newVariables = _.difference(variables.split(""), _.map(tArr, function(x) {return x[0]; }));
       if (tempVars.length + varCounter > newVariables.length) {
         alert('Too large to export!');
         return;
@@ -2264,7 +2408,7 @@ $(document).ready(function () {
       for (var i = 1; i < varCounter + 1; i++) {
         tempVars.push("D(" + i + ")");
       }
-      _.each(tArr, function(x) {x[2] = x[2].join('');});
+      _.each(tArr, function(x) {x[2] = x[2].join(''); });
       for (var i = 0; i < tempVars.length; i++) {
         var re = tempVars[i].replace(/[\(\)]/g, "\\$&");
         var regex = new RegExp(re, 'g');
@@ -2273,11 +2417,11 @@ $(document).ready(function () {
           tArr[j][2] = tArr[j][2].replace(regex, newVariables[i]);
         }
       }
-      localStorage['grammar'] = _.map(tArr, function(x) {return x.join('');});
+      localStorage['grammar'] = _.map(tArr, function(x) {return x.join(''); });
       window.open('grammarTest.html', '');
     };
 
-    tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}));
+    tGrammar = jsav.ds.matrix(_.map(tArr, function(x){return [x[0], x[1], x[2].join('')]; }));
     layoutTable(tGrammar, 2);
     //tGrammar = jsav.ds.matrix(_.map(tArr,function(x){return [x[0], x[1], x[2].join('')];}), {left: "50px", relativeTo: m, anchor: "right top", myAnchor: "left top"});
     tGrammar.click(chomskyHandler);
@@ -2485,12 +2629,12 @@ $(document).ready(function () {
           var start = nodeMap[productions[i][0]];
           var rhs = productions[i][2];
           //if there is no capital letter, then go to final state
-          if(variables.indexOf(rhs[rhs.length-1]) === -1){
+          if(variables.indexOf(rhs[rhs.length - 1]) === -1){
             var end = f;
             var w = rhs;
           } else {
-            var end = nodeMap[rhs[rhs.length-1]];
-            var w = rhs.substring(0, rhs.length-1);
+            var end = nodeMap[rhs[rhs.length - 1]];
+            var w = rhs.substring(0, rhs.length - 1);
           }
           m.highlight(i);
           var newEdge = builtDFA.addEdge(start, end, {weight: w});
@@ -2595,7 +2739,7 @@ $(document).ready(function () {
     var startVar = productions[0][0];
     if(event.data.param1){
       convertToPDAinLL(a, b, c, productions, startVar);
-    }else{
+    } else {
       convertToPDAinLR(a, b, c, productions, startVar);
     }
   };
@@ -2708,7 +2852,7 @@ $(document).ready(function () {
 
   // Saving:
   // Function to encode grammar to XML
-  function serializeGrammar () {
+  function serializeGrammar() {
     var productions = _.filter(arr, function(x) { return x[0]});
     if (productions.length == 0) {
       if (multiple) {
@@ -2773,11 +2917,11 @@ $(document).ready(function () {
         xmlElem;
     if (!condition) {
       if (window.DOMParser) {
-        parser=new DOMParser();
-        xmlDoc=parser.parseFromString(text,"text/xml");
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text, "text/xml");
       } else {
-        xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
-        xmlDoc.async=false;
+        xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+        xmlDoc.async = false;
         xmlDoc.loadXML(text);
       }
       if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue !== 'grammar') {
@@ -2792,11 +2936,11 @@ $(document).ready(function () {
     }
     else if (condition == "multiple") {
       if (window.DOMParser) {
-        parser=new DOMParser();
-        xmlDoc=parser.parseFromString(text,"text/xml");
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text, "text/xml");
       } else {
-        xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
-        xmlDoc.async=false;
+        xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+        xmlDoc.async = false;
         xmlDoc.loadXML(text);
       }
       xmlElem = xmlDoc.getElementsByTagName("production");
@@ -2824,7 +2968,7 @@ $(document).ready(function () {
   };
 
   // Function for reading the XML file
-  var waitForReading = function (reader) {
+  var waitForReading = function(reader) {
     reader.onloadend = function(event) {
         var text = event.target.result;
         parseFile(text);
@@ -2840,7 +2984,7 @@ $(document).ready(function () {
   };
 
   // Function to lay out a single column width
-  function layoutColumn (mat, index) {
+  function layoutColumn(mat, index) {
     var maxWidth = 100;     // default cell size
     /*for (var i = 0; i < mat._arrays.length; i++) {
         var cell = mat._arrays[i]._indices[index].element;
@@ -2864,7 +3008,7 @@ $(document).ready(function () {
     }
   };
   // Function to fix all table column widths
-  function layoutTable (mat, index) {
+  function layoutTable(mat, index) {
     // if column index is given, does layout for that column, otherwise lays out all columns
     if (typeof index === 'undefined') {
       for (var i = 0; i < mat._arrays[0]._indices.length; i++) {
@@ -2914,19 +3058,19 @@ $(document).ready(function () {
         // check conflict table first to avoid mistaken the students
         var wrongEntry = false;
         if (conflictTable[i - 1] && conflictTable[i - 1][j - 1]) {
-          if (conflictTable[i-1][j-1].indexOf(parseTableDisplay.value(i, j)) == -1) {
+          if (conflictTable[i - 1][j - 1].indexOf(parseTableDisplay.value(i, j)) == -1) {
             parseTableDisplay.highlight(i, j);
             incorrect = true;
             wrongEntry = true;
           }
         }
-        else if (parseTable[i-1][j-1] !== parseTableDisplay.value(i, j)) {
+        else if (parseTable[i - 1][j - 1] !== parseTableDisplay.value(i, j)) {
           parseTableDisplay.highlight(i, j);
           incorrect = true;
           wrongEntry = true;
         }
         if (!wrongEntry) {
-          parseTable[i-1][j-1] = parseTableDisplay.value(i, j);
+          parseTable[i - 1][j - 1] = parseTableDisplay.value(i, j);
         }
       }
     }
@@ -2934,7 +3078,7 @@ $(document).ready(function () {
     if (incorrect) {
       var container = document.getElementById("container");
       container.scrollTop = container.scrollHeight;
-      window.scrollTo(0,document.body.scrollHeight);
+      window.scrollTo(0, document.body.scrollHeight);
       var confirmed = confirm('Highlighted cells are incorrect.\nFix automatically?');
       if (confirmed) {
         for (var i = 1; i < parseTableDisplay._arrays.length; i++) {
@@ -2942,11 +3086,11 @@ $(document).ready(function () {
             var wrong = parseTableDisplay.isHighlight(i, j);
             parseTableDisplay.unhighlight(i, j);
             // when current entry is wrong && there is a conflict
-            if (wrong && conflictTable[i-1] && conflictTable[i-1][j-1] && conflictTable[i-1][j-1].length > 1) {
+            if (wrong && conflictTable[i - 1] && conflictTable[i - 1][j - 1] && conflictTable[i - 1][j - 1].length > 1) {
               // there is a conflict, either reduce-reduce or reduce-shift
               parseTableDisplay.highlight(i, j);
             }
-            parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
+            parseTableDisplay.value(i, j, parseTable[i - 1][j - 1]);
           }
         }
         layoutTable(parseTableDisplay);
@@ -2956,7 +3100,7 @@ $(document).ready(function () {
     }
     $('#parsereadybutton').hide();
     $('#parsebutton').show();
-    $temp = $('<div>').attr({"align":"center"});
+    $temp = $('<div>').attr({"align": "center"});
     $temp.append($('#parsebutton'));
     $temp.insertBefore($('.jsavcanvas .jsavmatrix:last-child'));
     jsav.umsg("");
@@ -2971,7 +3115,7 @@ $(document).ready(function () {
       var ptr = parseTableDisplay._arrays[i];
       ptr.unhighlight();
       for (var j = 1; j < ptr._indices.length; j++) {
-        if (parseTable[i-1][j-1] !== parseTableDisplay.value(i, j)) {
+        if (parseTable[i - 1][j - 1] !== parseTableDisplay.value(i, j)) {
           parseTableDisplay.highlight(i, j);
           incorrect = true;
         }
@@ -2987,7 +3131,7 @@ $(document).ready(function () {
           var ptr = parseTableDisplay._arrays[i];
           ptr.unhighlight();
           for (var j = 1; j < ptr._indices.length; j++) {
-            parseTableDisplay.value(i, j, parseTable[i-1][j-1]);
+            parseTableDisplay.value(i, j, parseTable[i - 1][j - 1]);
           }
         }
         layoutTable(parseTableDisplay);
@@ -3006,9 +3150,9 @@ $(document).ready(function () {
     var $menu = $(this).parent();
     var i = $menu.attr('i');
     var j = $menu.attr('j');
-    parseTable[i-1][j-1] = $(this).attr('value');
-    parseTableDisplay.value(i, j, parseTable[i-1][j-1]);  // NOT WORKING
-    $('.jsavmatrixtable:eq(2)').children().eq(i).children().eq(j).children().first().children().first().text(parseTable[i-1][j-1]);
+    parseTable[i - 1][j - 1] = $(this).attr('value');
+    parseTableDisplay.value(i, j, parseTable[i - 1][j - 1]);  // NOT WORKING
+    $('.jsavmatrixtable:eq(2)').children().eq(i).children().eq(j).children().first().children().first().text(parseTable[i - 1][j - 1]);
     // I had no choice
     $menu.hide();
   }
@@ -3021,7 +3165,7 @@ $(document).ready(function () {
     prev = prev.replace(/,/g, "");
     // create input box
     $('#firstinput').remove();
-    var createInput = "<input type='text' id='firstinput' value="+prev+">";
+    var createInput = "<input type='text' id='firstinput' value=" + prev + ">";
     $('body').append(createInput);
     var offset = this._arrays[index]._indices[arrayStep].element.offset();
     var topOffset = offset.top;
@@ -3059,7 +3203,7 @@ $(document).ready(function () {
     var prev = this.value(index, index2);
     // create input box
     $('#firstinput').remove();
-    var createInput = "<input type='text' id='firstinput' value="+prev+">";
+    var createInput = "<input type='text' id='firstinput' value=" + prev + ">";
     $('body').append(createInput);
     var offset = this._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
@@ -3082,16 +3226,16 @@ $(document).ready(function () {
   };
 
   // click handler for the SLR parse table
-  function slrparseTableHandler (index, index2, e) {
+  function slrparseTableHandler(index, index2, e) {
     // ignore if first row or column
     $('#firstinput').remove();
     if (index === 0 || index2 === 0) { return; }
-    if (conflictTable[index-1] && conflictTable[index-1][index2-1] && conflictTable[index-1][index2-1].length > 1) {
+    if (conflictTable[index - 1] && conflictTable[index - 1][index2 - 1] && conflictTable[index - 1][index2 - 1].length > 1) {
       $('.conflictMenu').remove();
       var offsetX = e.pageX;
       var offsetY = e.pageY;
       var $chooseConflict = $("<div>", {class: "conflictMenu"});
-      _.each(conflictTable[index-1][index2-1], function(choice) {$chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/><br>");});
+      _.each(conflictTable[index - 1][index2 - 1], function(choice) {$chooseConflict.append("<input type='button' value='" + choice + "' class='choice'/><br>");});
       // in order to pass indices of matrix
       $chooseConflict.attr({"i": index, "j": index2});
       $chooseConflict.css({"position": "absolute", top: offsetY, left: offsetX});
@@ -3104,7 +3248,7 @@ $(document).ready(function () {
     var prev = this.value(index, index2);
     if (!prev) return;
     // create input box
-    var createInput = "<input type='text' id='firstinput' value="+prev+" onfocus='this.value = this.value;'>";
+    var createInput = "<input type='text' id='firstinput' value=" + prev + " onfocus='this.value = this.value;'>";
     $('body').append(createInput);
     var offset = this._arrays[index]._indices[index2].element.offset();
     var topOffset = offset.top;
@@ -3127,7 +3271,7 @@ $(document).ready(function () {
   };
 
   // Function to transition from editing FIRST sets to editing FOLLOW sets
-  function continueToFollow (firsts, follows) {
+  function continueToFollow(firsts, follows) {
     $('#firstinput').remove();
     var incorrect = checkTable(firsts, follows);
     // provide option to complete the FIRST sets automatically
@@ -3151,7 +3295,7 @@ $(document).ready(function () {
     return true;
   };
 
-  function bruteForceParse () {
+  function bruteForceParse() {
     var serializedGrammar = "";
     for (var i = 0; i < arr.length && arr[i][0] !== ""; i++) {
       serializedGrammar = serializedGrammar + arr[i][0] + arrow + arr[i][2] + ",";
@@ -3276,18 +3420,24 @@ $(document).ready(function () {
       var exerciseLocation = getExerciseLocation();
 		  m = init();
       //var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json": exerciseLocation;
-  		var exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
+  		exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
       exerController.load();
       
       $('.jsavmatrix').addClass("editMode");
+
+      var exercise = jsav.flexercise(modelSolution, initializeGrammarExercise,
+        { feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController });
+      exercise.reset();
 
     } 
     else if (type == "transformation") {//grammar transformation exercise
       var exerciseLocation = getExerciseLocation();
       //var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_6/sheet6P3_4_5.json": exerciseLocation;
-  		var exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
+  		exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
       exerController.load();
-      
+      var exercise = jsav.flexercise(modelSolution, initializeTransformationExercise,
+        { feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController });
+      exercise.reset();
       $('.jsavmatrix').addClass("editMode");
 
     }
@@ -3325,7 +3475,7 @@ $(document).ready(function () {
     //not from localStorage but from XML file
     if (grammars) {
       for (i = 0; i < grammars.length; i++) {
-        $("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i+1) + "</a>");
+        $("#exerciseLinks").append("<a href='#' id='" + i + "' class='links'>" + (i + 1) + "</a>");
       }
       $('.links').click(toExercise);
     }
@@ -3380,7 +3530,8 @@ $(document).ready(function () {
   }
 
   onLoadHandler();
-
+  if (window.inCanvas())
+    initGraphFromServer();
 
   /////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////
@@ -3434,7 +3585,7 @@ $(document).ready(function () {
   }
 
   function clearAll(){
-    window.location.href="";
+    window.location.href = "";
   }
 
   function identifyGrammar() {

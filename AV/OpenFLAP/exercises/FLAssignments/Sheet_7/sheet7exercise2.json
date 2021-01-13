@@ -5,44 +5,50 @@
     "totalFalseCases": 5,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 6,
-    "falseCounter": 5,
-    "expression": "\\{wcw^R \\mid w \\in \\{a, b\\}^*\\}",
-    "description": "Construct the PDA that accepts ",
-    "type": "both",
+    "description": "Construct the PDA that accepts L($\\{wcw^R \\mid w \\in \\{a, b\\}^*\\}$)",
     "testCases": [{
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "c": true
+            "c": true,
+            "ShowTestCase":true
         },
         {
-            "aaacaaa": true
+            "aaacaaa": true,
+            "ShowTestCase":true
         },
         {
-            "bbbcbbb": true
+            "bbbcbbb": true,
+            "ShowTestCase":true
         },
         {
-            "abcba": true
+            "abcba": true,
+            "ShowTestCase":true
         },
         {
-            "abbabbaacaabbabba": true
+            "abbabbaacaabbabba": true,
+            "ShowTestCase":true
         },
         {
-            "aaaaaaa": false
+            "aaaaaaa": false,
+            "ShowTestCase":true
         },
         {
-            "abbcabb": false
+            "abbcabb": false,
+            "ShowTestCase":true
         },
         {
-            "bbaacaabb": true
+            "bbaacaabb": true,
+            "ShowTestCase":true
         },
         {
-            "ababacababa": true
+            "ababacababa": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbbb": false
+            "bbbbbb": false,
+            "ShowTestCase":true
         }
     ],
     "graph": {

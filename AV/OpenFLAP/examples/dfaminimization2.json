@@ -1,8 +1,6 @@
 [
     {
-        "expression": "",
         "description": "Minimize the following DFA",
-        "type": "description",
         "testCases": [
             {
                 "": true

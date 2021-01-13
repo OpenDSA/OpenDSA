@@ -1,0 +1,129 @@
+{
+  "translations": {
+    "en": {
+      "start": {
+        "type": "select",
+        "description": "First we will define the DFA's start state. This is Closure(q0), meaning q0 and all other states reachable from q0 by $\\lambda$ transitions.",
+        "question": "What states from the NFA are in Closure(q0)?",
+        "answer": ["q0", "q1", "q2"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"]
+      },
+      "starta": {
+        "type": "select",
+        "description": "Next, we pick some transition out of one of the states currently in the DFA. Any such state and transition would be fine, but there is only one to choose right now anyway.",
+        "question": "In the NFA, what states can be reached by a transition on 'a' from any of the states q0, q1, or q2?",
+        "answer": ["q3", "q4"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"]
+      },
+      "startb":{
+        "type": "multiple",
+        "description": "OK, let's finish up with the DFA's start state transitions. The alphabet includes 'b'. So what should we do when the input starts with 'b'?",
+        "question":"In the NFA, is there any transition on 'b' that can be reached from the start state?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+      },
+      "q3q4a": {
+        "type": "select",
+        "description": "Next we pick a node in the DFA for which we have not completed the transitions. The only one left right now is {q3, q4}.",
+        "question":"In the NFA, what states are reachable from q3 or q4 on 'a'?",
+        "answer": ["q4"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"]
+      },
+      "q3q4b": {
+        "type": "select",
+        "description": "Note that this created a new node {q4}, because this is a different subset of states than {q3, q4}. Eventually we have to deal with the transitions for this new node. But first, let's wrap up {q3, q4} by determining what to do on 'b'.",
+        "question":"In the NFA, what states are reachable from q3 or q4 on 'b'?",
+        "answer": ["q1", "q5", "q6"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+      },
+      "q1q5q6a": {
+        "type": "select",
+        "description": "Now we have two nodes in the DFA that need transitions. We could pick either one to do next. Let's work on {q1, q5, q6}.",
+        "question":"In the NFA, what states are reachable from q1, q5, or q6 on 'a'?",
+        "answer": ["q3"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"]
+      },
+      "q1q5q6b": {
+        "type": "select",
+        "description": "Now we will finish up node {q1, q5, q6}",
+        "question":"In the NFA, what states are reachable from q1, q5, or q6 on 'b'?",
+        "answer": ["none"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "correctFeedback": "So, no new node gets added to the DFA. And we are now finished with transitions from node {q1, q5, q6}."
+      },
+      "q3a": {
+        "type": "select",
+        "description": "Now nodes {q3} and {q4} remain to be processed. Let's work on {q3}.",
+        "question":"In the NFA, what states are reachable from q3 on 'a'?",
+        "answer": ["none"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "correctFeedback": "So, no new node gets added to the DFA."
+      },
+      "q3b": {
+        "type": "select",
+        "description": "Now we will finish up node {q3}",
+        "question":"In the NFA, what states are reachable from q3 on 'b'?",
+        "answer": ["q1", "q5"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+      },
+      "q4a": {
+        "type": "select",
+        "description": "Now process {q4}",
+        "question":"In the NFA, what states are reachable from q4 on 'a'?",
+        "answer": ["q4"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "correctFeedback": "But since we already have a node for {q4} in the DFA, we don't need to create it again. Just make a transition to itself."
+      },
+      "q4b": {
+        "type": "select",
+        "description": "Finish processing {q4}",
+        "question":"In the NFA, what states are reachable from q4 on 'b'?",
+        "answer": ["q6"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "correctFeedback": "So add new node {q6} to the DFA."
+      },
+      "q1q5a": {
+        "type": "select",
+        "description": "Now process {q1, q5}.",
+        "question":"In the NFA, what states are reachable from q1 and q5 on 'a'?",
+        "answer": ["q3"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "correctFeedback": "But since we already have a node for {q3} in the DFA, we don't need to create it again. Just make a transition to it on 'a'."
+      },
+      "q1q5b": {
+        "type": "select",
+        "description": "Now finish {q1, q5}.",
+        "question":"In the NFA, what states are reachable from q1 and q5 on 'b'?",
+        "answer": ["none"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "correctFeedback": "So, no new node gets added to the DFA."
+      },
+      "q6a": {
+        "type": "select",
+        "description": "Currently, only {q6} needs to be processed.",
+        "question":"In the NFA, what states are reachable from q6 on 'a'?",
+        "answer": ["none"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "correctFeedback": "So, no new node gets added to the DFA."
+      },
+      "q6b": {
+        "type": "select",
+        "description": "Now finish {q6}.",
+        "question":"In the NFA, what states are reachable from q6 on 'b'?",
+        "answer": ["none"],
+        "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
+        "correctFeedback": "So, no new node gets added to the DFA."
+      },
+      "final": {
+        "type": "select",
+        "description": "All that remains is to pick the set of final states. To do this, look at the list of states (from the NFA) that are listed on the labels for each node in the DFA. If any of them are a final state in the NFA, then make that a final state in the DFA. In other words, since q5 and q6 are final states in the NFA, every node in the DFA that includes q5 <b>or</b> q6 in its node label will become final.",
+        "question":"What are the final states for the DFA?",
+        "answer": ["q5, q1", "q1, q5, q6", "q6"],
+        "choices": ["q0, q1, q2", "q3, q4","q4", "q1, q5, q6", "q3", "q6", "q5, q1", "none"]
+      }
+    }
+  }
+}

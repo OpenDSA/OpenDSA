@@ -1,10 +1,10 @@
 #! /usr/bin/env python
 
-""" Runs a simple web server for viewing OpenDSA books. 
-This allows us to see the Khan Academy exercises and JSAV code objects 
-correctly without a full webserver running.  
+""" Runs a simple web server for viewing OpenDSA books.
+This allows us to see the Khan Academy exercises and JSAV code objects
+correctly without a full webserver running.
 With python 3 installed, just run the command: 'python3 server.py'.
-Then point your web browser to one of the addresses listed.  
+Then point your web browser to one of the addresses listed.
 Any created will be in the 'Books' directory.
 Pressing Ctrl + C at the command line should stop the webserver at any time.
 """
@@ -21,7 +21,10 @@ def makeSimpleServer(port=8080, bind=""):
     with HTTPServer(server_address, HandlerClass) as httpd:
         host, port = httpd.socket.getsockname()
         if host == "0.0.0.0":
-            hosts = ["localhost", "127.0.0.1", gethostname(), getfqdn(), gethostbyname(gethostname())]
+            # Finding hostnames dynamically is broken with odsa's new docker update
+            # We must hope that these default URLs work:
+            hosts = ["localhost", "127.0.0.1"]
+            # hosts.extend([gethostname(), getfqdn(), gethostbyname(gethostname())])
             print("Server now live at these addresses:")
             for realHost in set(hosts):
                 print("    http://{0}:{1}/".format(realHost, port))

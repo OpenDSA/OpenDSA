@@ -9,7 +9,7 @@ $(document).ready(function() {
   var xStart = 150;
   var yStart = 0;
   av.umsg("In this example, we see how the machine head moves over the tape when processing input string '100'.");
-  var url = "../../../AV/VisFormalLang/FA/Machines/EvenBinaryDFACON.jff";
+  var url = "../../../AV/OpenFLAP/machines/FA/EvenBinaryDFACON.jff";
   var binaryDFA = new av.ds.FA({left: 10, url: url});
   var node = binaryDFA.nodes();
   var tape = av.ds.tape([1, 0, 0, "", "", "", ""], 300 + xStart, yStart + 20, "right", 0);

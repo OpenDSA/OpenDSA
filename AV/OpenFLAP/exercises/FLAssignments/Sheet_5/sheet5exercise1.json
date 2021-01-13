@@ -5,44 +5,50 @@
     "totalFalseCases": 6,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "_trueCounter/falseCounter": "Comment: Number of hard code test cases.",
-    "trueCounter": 5,
-    "falseCounter": 6,
-    "expression": "a^nb^m : m \\geq n, m-n\\> is\\> odd",
-    "description": "Construct a CFG over {a, b} whose language is {___}",
-    "type": "description",
+    "description": "Construct a CFG over $\\{a, b\\}$ whose language is $\\{a^nb^m: m \\geq n, m - n \\mbox{ is odd}\\}$.",
     "testCases": [{
-            "": false
+            "": false,
+            "ShowTestCase":true
         },
         {
-            "b": true
+            "b": true,
+            "ShowTestCase":true
         },
         {
-            "bb": false
+            "bb": false,
+            "ShowTestCase":true
         },
         {
-            "bbb": true
+            "bbb": true,
+            "ShowTestCase":true
         },
         {
-            "bbbbb": true
+            "bbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaaa": false
+            "aaaa": false,
+            "ShowTestCase":true
         },
         {
-            "aaab": false
+            "aaab": false,
+            "ShowTestCase":true
         },
         {
-            "aaabbb": false
+            "aaabbb": false,
+            "ShowTestCase":true
         },
         {
-            "aaabbbb": true
+            "aaabbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbbbb": true
+            "aaabbbbbb": true,
+            "ShowTestCase":true
         },
         {
-            "aaabbbbb": false
+            "aaabbbbb": false,
+            "ShowTestCase":true
         }
     ],
 

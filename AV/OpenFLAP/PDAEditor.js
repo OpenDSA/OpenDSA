@@ -101,13 +101,24 @@
   //Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
   //In our case, we will make this function show the test cases only.
   function modelSolution(modeljsav) {
+    var containHideTest = false;
+    var testNum = 1;
     var testCases = exerController.tests[0]["testCases"];
     var list = [["Test Number", "Test String", "Accept/Reject"]];
     for (i = 0; i < testCases.length; i++) {
-      var testNum = i + 1;
       var testCase = testCases[i];
+      var hideOption = testCase.ShowTestCase;
+      if (hideOption == false || hideOption== undefined) {
+        containHideTest = true;
+      }
+			if(testCase.ShowTestCase){	
       var input = Object.keys(testCase)[0];
       list.push([testNum, input, testCase[input]]);
+      testNum = testNum + 1;
+      }
+    }
+    if(containHideTest){
+      list.push([testNum, "Hidden Test", "Hidden Solution"]);
     }
     var model = modeljsav.ds.matrix(list);
     //layoutTable(model);
@@ -582,6 +593,11 @@
     saver.render();
   }
 
+  window.PDAsaver = function (dummy){
+    removeModeClasses(); 
+    return g.serializeToXML();
+  };
+
   var load = function() {
     var loaded = document.getElementById('loadFile');
     var file = loaded.files[0],
@@ -597,6 +613,23 @@
       $('.jsavedgelabel').click(labelClickHandler);
     }
   };
+
+  // Initializes a graph by parsing a JSON representation.
+  var initGraphFromServer = function() {
+		window.FetchStoredProgress().then(res => {
+			if(res != null && res["progress"] != ""){
+        console.log(res["progress"]);
+        g.initFromXML(res["progress"]);
+        jsav.displayInit();
+				g.click(nodeClickHandler);
+				g.click(edgeClickHandler, { edge: true });
+				$('.jsavgraph').click(graphClickHandler);
+				$('.jsavedgelabel').click(labelClickHandler);
+			}
+		})//.catch(err => {
+			//console.log('fail' + err);	
+		//})
+	};
 
   var startX, startY, endX, endY; // start position of dragging edge line
   function mouseDown(e) {
@@ -799,6 +832,7 @@
   $('#alphabets').hide();
   $('#closeAv').hide();
   onLoadHandler();
+  initGraphFromServer();
 
   //g = initGraph({layout: "manual"});
   //g.layout();

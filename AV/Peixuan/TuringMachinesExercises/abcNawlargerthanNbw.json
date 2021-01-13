@@ -1,31 +1,35 @@
 [{
-  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
   "exerciseType": "TM",
   "totalTestCases": 6,
   "containLetters": ["a","b","c"],
   "randomStringLength": [0, 15],
   "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
   "hardCodeCasesCounter": 6,
-  "expression": "L_1 = \\{w \\in \\{a, b, c\\}^* | n_a(w) > n_b(w), n_a(w) > n_c(w)\\}.",
-  "description": "Write a turing machine that accepts the language:___",
-  "type": "description",
+  "description": "Write a turing machine that accepts the language:$L_1 = \\{w \\in \\{a, b, c\\}^* | n_a(w) > n_b(w), n_a(w) > n_c(w)\\}.$",
   "testCases": [{
-      "aaaaaa": true
+      "aaaaaa": true,
+      "ShowTestCase":true
     },
     {
-      "acaccaa": false
+      "acacaa": true,
+      "ShowTestCase":true
     },
     {
-      "bbaaba": false
+      "bbaaba": false,
+      "ShowTestCase":true
     },
     {
-      "acaccaaa": true
+      "acacaaa": true,
+      "ShowTestCase":true
     },
     {
-      "babaaba": true
+      "babaaba": true,
+      "ShowTestCase":true
     },
     {
-      "abccbabaa": true
+      "abcbaaa": true,
+      "ShowTestCase":true
     }
   ],
   "graph": {
