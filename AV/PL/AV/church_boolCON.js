@@ -8,8 +8,8 @@ $(document).ready(function() {
     av.umsg("TRUE AND FALSE in Church Booleans");
     l.addClass("church");
     av.displayInit();
-    av.umsg("First beta-reduce the application containing the λp abstraction by applying the λp abstraction to λx.λy.x");
-    l.text("(&nbsp;&nbsp;&nbsp;<span style='color:red'>(λp.λq.((p q) λx.λy.y)&nbsp;&nbsp;&nbsp;</Span> λx.λy.x) λx.λy.y)");
+    av.umsg("First beta-reduce the application containing the λp abstraction by applying it to λx.λy.x");
+    l.text("(<span style='color:red'>(λp.λq.((p q) λx.λy.y) λx.λy.x)</span> λx.λy.y)");
     av.step();
     av.umsg("With λx.λy.x appropriately substituted for p in the prior λp abstraction, we get ... ");
     l.text("(λq.((λx.λy.x q) λx.λy.y) λx.λy.y)");
