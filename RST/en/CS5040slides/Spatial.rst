@@ -46,7 +46,7 @@ Spatial Trees
 
 .. slide:: PR Quadtree
 
-   - On average, half of the leafs in a PR Quadtree are empty
+   - On average, half of the leaves in a PR Quadtree are empty
 
    - How to approach designing for this?
 
