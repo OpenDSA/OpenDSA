@@ -110,10 +110,13 @@
       "CS5040slides/BTree": {}
     },
     "Week 11": {
-      "CS5040slides/SkipList": {}
+      "CS5040slides/Graphs": {}
+
     },
     "Week 13": {
-      "CS5040slides/Graphs": {}
+      "CS5040slides/SkipList": {},
+      "CS5040slides/Spatial": {}
+
     }
   }
 }
