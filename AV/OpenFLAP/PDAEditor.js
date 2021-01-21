@@ -620,15 +620,11 @@
 			if(res != null && res["progress"] != ""){
         console.log(res["progress"]);
         g.initFromXML(res["progress"]);
-        jsav.displayInit();
-				g.click(nodeClickHandler);
-				g.click(edgeClickHandler, { edge: true });
-				$('.jsavgraph').click(graphClickHandler);
-				$('.jsavedgelabel').click(labelClickHandler);
+        finalize();
 			}
-		})//.catch(err => {
-			//console.log('fail' + err);	
-		//})
+		}).catch(err => {
+			console.log('fail' + err);	
+		})
 	};
 
   var startX, startY, endX, endY; // start position of dragging edge line
@@ -832,7 +828,8 @@
   $('#alphabets').hide();
   $('#closeAv').hide();
   onLoadHandler();
-  initGraphFromServer();
+  if (window.inCanvas())
+    initGraphFromServer();
 
   //g = initGraph({layout: "manual"});
   //g.layout();

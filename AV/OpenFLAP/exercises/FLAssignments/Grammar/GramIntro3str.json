@@ -21,6 +21,18 @@
     {
       "": false,
       "ShowTestCase":true
+    },
+    {
+      "aaa": false,
+      "ShowTestCase":false
+    },
+    {
+      "bbb": false,
+      "ShowTestCase":false
+    },
+    {
+      "abba": false,
+      "ShowTestCase":false
     }
   ],
   "solution":

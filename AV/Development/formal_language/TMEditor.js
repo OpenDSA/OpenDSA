@@ -559,6 +559,7 @@ var lambda = String.fromCharCode(955),
 	});
 
 	loadHandler();
-	initGraphFromServer();
+	if (window.inCanvas())
+		initGraphFromServer();
 
 }(jQuery));

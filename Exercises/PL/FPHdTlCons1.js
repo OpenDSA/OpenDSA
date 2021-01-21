@@ -36,7 +36,6 @@
       });
       jsav.displayInit();
       jsav.recorded();
-      console.log("Done");
     }
   };
 
