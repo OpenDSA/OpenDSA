@@ -69,6 +69,7 @@ CONTAINER_HTML= '''\
     data-frame-width="%(width)s"
     data-frame-height="%(height)s"
     data-type="%(type)s"
+    data-workout-id="%(workout_id)s"
     data-exer-id="%(id)s">
   %(content)s
   <div class="center">
@@ -92,6 +93,7 @@ class extrtoolembed(Directive):
                  'learning_tool': directives.unchanged,
                  'launch_url': directives.unchanged,
                  'id': directives.unchanged,
+                 'workout_id': directives.unchanged
                  }
 
   def run(self):
@@ -103,11 +105,19 @@ class extrtoolembed(Directive):
     if 'learning_tool' not in self.options or self.options['learning_tool'] =='' :
         print('ERROR: External learning tool is not properly configured missing learning_tool option')
         sys.exit()
+    
+    # if 'workout_id' not in self.options or self.options['workout_id'] =='' :
+    #     print('ERROR: External learning tool is not properly configured missing workout_id option')
+    #     sys.exit()
+
+
 
     self.options['type'] = 'external_tool'
     self.options['content'] = ''
     self.options['exer_name'] = self.options['long_name'].replace(":", "").replace(" ", "_")
     self.options['short_name'] = self.options['long_name']
+    if 'workout_id' not in self.options:
+      self.options['workout_id'] = 0
 
     external_tool = external_tools_urls[self.options['learning_tool']]
     self.options['width'] = external_tool['width']
@@ -126,7 +136,6 @@ class extrtoolembed(Directive):
       self.options['id'] = ''
 
     res = CONTAINER_HTML % (self.options)
-
     return [nodes.raw('', res, format='html')]
 
 
@@ -143,7 +152,6 @@ if __name__ == '__main__':
   from docutils.core import publish_parts
 
   directives.register_directive('extrtoolembed',extrtoolembed)
-
   doc_parts = publish_parts(source,
           settings_overrides={'output_encoding': 'utf8',
           'initial_header_level': 2},

@@ -16,15 +16,16 @@ Mirror Image Binary Trees Exercise
 ----------------------------------
 
 .. extrtoolembed:: 'Mirror Image Binary Trees Exercise'
-
+   :workout_id: 74
 
 Same Binary Tree Exercise
 -------------------------
 
 .. extrtoolembed:: 'Same Binary Tree Exercise'
-
+   :workout_id: 69
 
 Structurally Identical Binary Trees Exercise
 --------------------------------------------
 
 .. extrtoolembed:: 'Structurally Identical Binary Trees Exercise'
+   :workout_id: 75

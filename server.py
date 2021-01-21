@@ -14,7 +14,7 @@ import argparse
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from socket import gethostname, getfqdn, gethostbyname
 
-def makeSimpleServer(port=8080, bind=""):
+def makeSimpleServer(port=8000, bind=""):
     server_address = (bind, port)
     HandlerClass = SimpleHTTPRequestHandler
     HandlerClass.protocol_version = "HTTP/1.0"
@@ -38,8 +38,8 @@ def makeSimpleServer(port=8080, bind=""):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('port', default=8080, type=int, nargs='?',
-                        help='Specify alternate port [default: 8080]')
+    parser.add_argument('port', default=8000, type=int, nargs='?',
+                        help='Specify alternate port [default: 8000]')
     parser.add_argument('--bind', '-b', default='', metavar='ADDRESS',
                         help='Specify alternate bind address [default: all interfaces]')
     args = parser.parse_args()
