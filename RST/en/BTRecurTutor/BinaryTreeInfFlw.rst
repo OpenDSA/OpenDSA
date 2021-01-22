@@ -58,6 +58,7 @@ Binary Tree Set Depth Exercise
 ------------------------------
 
 .. extrtoolembed:: 'Binary Tree Set Depth Exercise'
+   :workout_id: 66
 
 
 Collect-and-return
@@ -107,18 +108,21 @@ Binary Tree Check Sum Exercise
 ------------------------------
 
 .. extrtoolembed:: 'Binary Tree Check Sum Exercise'
+   :workout_id: 71
 
 
 Binary Tree Leaf Nodes Count Exercise
 -------------------------------------
 
 .. extrtoolembed:: 'Binary Tree Leaf Nodes Count Exercise'
+   :workout_id: 72
 
 
 Binary Tree Sum Nodes Exercise
 ------------------------------
 
 .. extrtoolembed:: 'Binary Tree Sum Nodes Exercise'
+   :workout_id: 68
 
 
 Combining Information Flows
@@ -140,7 +144,7 @@ Binary Tree Check Value Exercise
 --------------------------------
 
 .. extrtoolembed:: 'Binary Tree Check Value Exercise'
-
+   :workout_id: 65
 
 Combination Problems
 --------------------
@@ -154,16 +158,16 @@ Binary Tree Height Exercise
 ---------------------------
 
 .. extrtoolembed:: 'Binary Tree Height Exercise'
-
+   :workout_id: 70
 
 Binary Tree Get Difference Exercise
 -----------------------------------
 
 .. extrtoolembed:: 'Binary Tree Get Difference Exercise'
-
+   :workout_id: 73
 
 Binary Tree Has Path Sum Exercise
 ---------------------------------
 
 .. extrtoolembed:: 'Binary Tree Has Path Sum Exercise'
-
+   :workout_id: 67

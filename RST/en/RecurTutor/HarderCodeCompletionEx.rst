@@ -16,15 +16,16 @@ Recursion Programming Exercise: Minimum of array
 ------------------------------------------------
 
 .. extrtoolembed:: 'Recursion Programming Exercise: Minimum of array'
-
+   :workout_id: 55
 
 Recursion Programming Exercise: Is Reverse
 ------------------------------------------
 
 .. extrtoolembed:: 'Recursion Programming Exercise: Is Reverse'
-
+   :workout_id: 56
 
 Recursion Programming Exercise: Decimal to Binary
 -------------------------------------------------
 
 .. extrtoolembed:: 'Recursion Programming Exercise: Decimal to Binary'
+   :workout_id: 57
