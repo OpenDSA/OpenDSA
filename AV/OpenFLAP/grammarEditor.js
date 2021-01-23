@@ -64,7 +64,7 @@ $(document).ready(function () {
     }
     lastRow = 0;
   }
-  
+
   // Function to initialize/reinitialize the grammar display
   var init = function () {
     if (m) {
@@ -86,7 +86,7 @@ $(document).ready(function () {
   for (var i = fetArr.length - 1; i >= 0; i--) {
     if (fetArr[i][0] == "" && fetArr[i][2] == "")
     fetLastRow--;
-    else 
+    else
       break;
   }
     //build clean arr to init
@@ -344,6 +344,7 @@ $(document).ready(function () {
   // saves current fi input value
   function defocus(e) {
     if ($(e.target).hasClass("jsavvaluelabel")) return;
+    if ($(e.target).hasClass("jsavvalue")) return;
     if ($(e.target).attr('id') == "firstinput") return;
     if (!fi || !fi.is(':visible')) return;
     var input = fi.val();
@@ -3422,14 +3423,14 @@ $(document).ready(function () {
       //var exercisePath = (exerciseLocation == null)? "./Formal_Languages_Automated_Exerciese/exercises/Sheet_3/sheet3P2.json": exerciseLocation;
   		exerController = new GrammarExerciseController(jsav, m, exerciseLocation, "json");
       exerController.load();
-      
+
       $('.jsavmatrix').addClass("editMode");
 
       var exercise = jsav.flexercise(modelSolution, initializeGrammarExercise,
         { feedback: "atend", grader: "finalStep", controls: $(".jsavexercisecontrols"), exerciseController: exerController });
       exercise.reset();
 
-    } 
+    }
     else if (type == "transformation") {//grammar transformation exercise
       var exerciseLocation = getExerciseLocation();
       //var exercisePath = (exerciseLocation == null)? "../exercises/Sheet_6/sheet6P3_4_5.json": exerciseLocation;
