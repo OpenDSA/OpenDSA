@@ -15,7 +15,7 @@ $(document).ready(function() {
     l.text("(λq.((λx.λy.x q) λx.λy.y) λx.λy.y)");
     av.step();
     av.umsg("Then reduce the leftmost innermost β-redex highlighted below");
-    l.text("(λq.(&nbsp;&nbsp;&nbsp;<span style='color:red'>(λx.λy.x q)&nbsp;&nbsp;&nbsp;</span> λx.λy.y) λx.λy.y)");
+    l.text("(λq.(<span style='color:red'>(λx.λy.x q)</span> λx.λy.y) λx.λy.y)");
     av.step();
     av.umsg("Doing that reduction with the appropriate substitution for x results in ...");
     l.text("(λq.(λy.q λx.λy.y) λx.λy.y)");
