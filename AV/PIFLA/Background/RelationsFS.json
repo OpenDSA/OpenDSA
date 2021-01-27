@@ -34,7 +34,7 @@
       "reflex": {
         "type": "multiple",
         "description": "$R$ is reflexive if $aRa$ for all $a \\in S$.",
-        "question": "[T/F] The relation 'less than or equal to' ($\\leq$) is irreflexive.",
+        "question": "[T/F] The relation 'less than or equal to' ($\\leq$) is reflexive.",
         "answer": "True",
         "choices": ["True", "False"],
         "correctFeedback": ["For all $a \\in S$, $a\\leq a$ is true."],
@@ -46,7 +46,7 @@
         "question": "[T/F] The relation 'less than or equal to' ($\\leq$) is irreflexive.",
         "answer": "False",
         "choices": ["True", "False"],
-        "correctFeedback": ["For all $a \\in S$, $a\\leq a$ is true."],
+        "correctFeedback": ["For all $a \\in S$, $a\\leq a$ is true. In other words, it is <b>not true</b> for all $a \\in S$ that $a\\leq a$ is false, which is what the irreflexive property demands."],
         "incorrectFeedback": ["For all $a \\in S$, $a\\leq a$ is true."]
       },
       "irreflexle": {
