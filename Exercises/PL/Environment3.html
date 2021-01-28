@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version1.04/scripts/absyn ../../AV/PL/interpreters/version1.04/scripts/env ../../AV/PL/interpreters/version1.04/scripts/grammar ../../AV/PL/interpreters/version1.04/scripts/interpreter PLutils Environment3" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>Determining Denoted Values in SLang 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script>var SLang = {};</script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version1.04/scripts/absyn",
+            "../../AV/PL/interpreters/version1.04/scripts/env",
+            "../../AV/PL/interpreters/version1.04/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version1.04/scripts/interpreter",
+              "../../DataStructures/PLutils",
+              "Environment3"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -22,9 +37,9 @@
       <div class="problems">
         <div id="Environment3p">
           <p class="question">Assume that the following expression is
-          evaluated in a global environment in which 
+          evaluated in a global environment in which
 	    <span class="string">x</span>, <span class="string">y</span>, and
-	    <span class="string">z</span> are bound to the values 
+	    <span class="string">z</span> are bound to the values
 	    <span class="string">1</span>, <span class="string">2</span>, and
 	    <span class="string">3</span>, respectively.</p>
 <pre class="string">
@@ -54,7 +69,7 @@
 	    <p>Match parameters to arguments in function calls.</p>
 	    <p>Remember that the overall expression is evaluated in a
 	    global environment that is not empty.</p>
-	  </div>	 
+	  </div>
         </div>
       </div>
     </div>

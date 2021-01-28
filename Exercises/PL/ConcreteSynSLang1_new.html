@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version1.04/scripts/absyn ../../AV/PL/interpreters/version1.04/scripts/interpreter ConcreteSynSLang1_new" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>Concrete Syntax of SLang 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version1.04/scripts/absyn"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version1.04/scripts/interpreter",
+              "ConcreteSynSLang1_new"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
-  </head>
 
   <body data-height="950" data-width="950">
     <div class="exercise">
@@ -30,7 +41,7 @@
 	    <li>True</li>
 	    <li>False</li>
 	  </ol>
-	  
+
 	  <div class="hints">
 	    <p>Review the syntax for the five types of expressions in
 	    SLang 1.</p>
@@ -40,7 +51,7 @@
 	      syntactically correct program only has to have a parse
 	      tree according to the grammar for SLang 1; it does not
 	      have to make sense!</p>
-	  </div>	 
+	  </div>
         </div>
       </div>
     </div>
