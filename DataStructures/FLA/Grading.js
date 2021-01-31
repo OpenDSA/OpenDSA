@@ -321,7 +321,6 @@
 
   exerproto.showGrade = function () {
     // shows an alert box of the grade
-    debugger;
     this.grade();
     var grade = this.score,
       msg = this.jsav._translate("yourScore") + " " + (grade.correct * 100).toFixed(2) + "%";
