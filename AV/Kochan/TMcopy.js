@@ -5,9 +5,9 @@ $(document).ready(function() {
     var ytop = 25;
 
     //Slide 1
-    av.umsg("In this slideshow, we will see how a copy machine processes input string 'abc'.<br>" +
-        "The following machine is a copy machine that can transform #w<u>#</u> into #w#w<u>#</u> <br>" +
-        "(Note: w represents the input string ('abc' in this case) and <u>#</u> (with the underscore) represents the head.)");
+    av.umsg("In this slideshow, we will see how a copy machine processes input string 'ab'.<br>" +
+        "The following machine is a copy machine that can transform #w<u>#</u> into #w#w<u>#</u>:<br>" +
+        "(Note: w represents the input string ('ab' in this case) and <u>#</u> (with the underscore) represents the head.)");
 
     var r = av.label("$R$", {top: 10 + ytop, left: xleft + 120});
     // var h1 = av.label("$\\# R^{2}_{\\#} \\sigma L^{2}_{\\#} \\sigma$", {top: 10 + ytop, left: xleft + 200});
@@ -36,20 +36,20 @@ $(document).ready(function() {
     av.displayInit();
 
     // Slide 2
-    av.umsg("Lets make a tape to keep track of the copy machine. The highlighted cell is the head.");
+    av.umsg("Let's make a tape to keep track of the copy machine. The highlighted cell is the head.");
     var tape = av.ds.tape(["#", "a", "b", "<u>#</u>", "#", "#", "#"], 300, 200, "both", 3);
     av.step();
 
     // Slide 3
     l.css({'color':'red'});
-    av.umsg("Starting from $>L_{\\#}$, $L_{\\#}$ means going to first hash(#) on the left from the head.");
+    av.umsg("We start from the $>L_{\\#}$. $L_{\\#}$ means going to the closest space (denoted by '#') on the left, from the head.");
     tape.highlightPosition("0");
     av.step();
 
     // Slide 4
     l.css({'color':'black'});
     r.css({'color':'red'});
-    av.umsg("The $R$ in red means moving current tape cell to the right cell.");
+    av.umsg("The $R$ in red means moving from the current tape cell to the right cell.");
     tape.highlightPosition("1");
     av.step();
 
@@ -58,7 +58,7 @@ $(document).ready(function() {
     ol.css({'color': 'red'});
     h1.css({'color': 'red'});
     av.umsg("$\\overline{\\#}$: Is the current tape cell a space (i.e. #)?<br>" +
-        "No. It is an 'a', so we erase the value 'a' by making the cell '#'.");
+        "No. It is an 'a', so we erase the value 'a' by making the cell empty (denoted by '#').");
     tape.setValueAt("1", "#");
     av.step();
 
@@ -66,7 +66,7 @@ $(document).ready(function() {
     ol.css({'color': 'black'});
     h1.css({'color': 'black'});
     r2.css({'color': 'red'});
-    av.umsg("$R^{2}_{\\#}$: Go to the second hash(#) on the right.");
+    av.umsg("$R^{2}_{\\#}$: Go to the second space(#) on the right.");
     tape.highlightPosition("3");
     tape.moveRight();
     av.step();
@@ -82,7 +82,7 @@ $(document).ready(function() {
     //Slide 8
     s1.css({'color': 'black'});
     l2.css({'color': 'red'});
-    av.umsg("$L^{2}_{\\#}$: Go to the second hash(#) on the left.");
+    av.umsg("$L^{2}_{\\#}$: Go to the second space(#) on the left.");
     tape.highlightPosition("3");
     tape.highlightPosition("1");
     av.step();
@@ -98,7 +98,7 @@ $(document).ready(function() {
     //Slide 10
     r.css({'color':'red'});
     s2.css({'color': 'black'});
-    av.umsg("The $R$ in red means moving current tape cell to the right cell.");
+    av.umsg("The $R$ in red means moving from the current tape cell to the right cell.");
     tape.moveRight();
     av.step();
 
@@ -107,7 +107,7 @@ $(document).ready(function() {
     ol.css({'color': 'red'});
     h1.css({'color': 'red'});
     av.umsg("$\\overline{\\#}$: Is the current tape cell a space (i.e. #)?<br>" +
-        "No. It is a 'b', so we erase the value 'b' by making the cell '#'.");
+        "No. It is a 'b', so we erase the value 'b' by making the cell empty (denoted by '#').");
     tape.setCurrentValue("#");
     av.step();
 
@@ -115,7 +115,7 @@ $(document).ready(function() {
     ol.css({'color': 'black'});
     h1.css({'color': 'black'});
     r2.css({'color': 'red'});
-    av.umsg("$R^{2}_{\\#}$: Go to the second hash(#) on the right.");
+    av.umsg("$R^{2}_{\\#}$: Go to the second space(#) on the right.");
     tape.highlightPosition("3");
     tape.highlightPosition("5");
     av.step();
@@ -131,7 +131,7 @@ $(document).ready(function() {
     //Slide 14
     s1.css({'color': 'black'});
     l2.css({'color': 'red'});
-    av.umsg("$L^{2}_{\\#}$: Go to the second hash(#) on the left.");
+    av.umsg("$L^{2}_{\\#}$: Go to the second space(#) on the left.");
     tape.highlightPosition("3");
     tape.highlightPosition("2");
     av.step();
@@ -147,23 +147,23 @@ $(document).ready(function() {
     //Slide 16
     s2.css({'color': 'black'});
     r.css({'color':'red'});
-    av.umsg("The $R$ in red means moving current tape cell to the right cell.");
+    av.umsg("The $R$ in red means moving from the current tape cell to the right cell.");
     tape.moveRight();
     av.step();
-    
+
     //Slide 17
     r.css({'color': 'black'});
     r3.css({'color':'red'});
     h2.css({'color':'red'});
     av.umsg("$\\overline{\\#}$: Is the current tape cell a space (i.e. #)?<br>" +
-        "Yes. It is a space(#), so we move to first hash(#) on the right.");
+        "Yes. It is a space(#), so we move to the closest space (denoted by '#') on the right.");
     av.step();
 
     //Slide 18
     tape = av.ds.tape(["#", "a", "b", "#", "a", "b", "<u>#</u>"], 300, 200, "both", 6);
     r3.css({'color':'black'});
     h2.css({'color':'black'});
-    av.umsg("The final string is 'abab'. We successfully made a duplicate for the string 'ab'.");
+    av.umsg("The final string is 'abab'. We successfully made a duplicate for the string 'ab', by using this copy machine.");
 
     av.recorded();
 });
