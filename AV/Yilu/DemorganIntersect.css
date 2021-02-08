@@ -1,3 +1,22 @@
 #DemorganIntersection {
-  height: 500px;
+  height: 1000px;
+}
+
+.final {
+    border: 3px double;
+}
+.jsavhorizontalarray .jsavnode {
+  min-width: 60px !important;
+  max-width: 1000px !important;
+}
+
+.jsavcanvas{
+    height: auto;
+    width:auto;
+}
+
+.jsavstatelabel {
+	position: relative;
+	font-size: 16px;
+    text-align: center;
 }
