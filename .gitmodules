@@ -1,4 +1,0 @@
-[submodule "lib/hieroglyph"]
-	path = lib/hieroglyph
-	url = https://github.com/sublime09/hieroglyph.git
-	branch = master

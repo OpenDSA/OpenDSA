@@ -11,7 +11,5 @@ RUN apt-get update -qq \
 RUN mkdir /opendsa
 WORKDIR /opendsa
 
-RUN mkdir lib
-RUN git clone https://github.com/sublime09/hieroglyph.git /opendsa/lib/hieroglyph
 ADD requirements.txt /opendsa
 RUN pip install -r requirements.txt
