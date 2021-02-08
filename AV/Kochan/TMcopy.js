@@ -6,8 +6,8 @@ $(document).ready(function() {
 
     //Slide 1
     av.umsg("In this slideshow, we will see how a copy machine processes input string 'ab'.<br>" +
-        "The following machine is a copy machine that can transform #w<u>#</u> into #w#w<u>#</u>:<br>" +
-        "(Note: w represents the input string ('ab' in this case) and <u>#</u> (with the underscore) represents the head.)");
+        "The following machine is a copy machine that can transform #w# into #w#w#:<br>" +
+        "(Note: w represents the input string ('ab' in this case).)");
 
     var r = av.label("$R$", {top: 10 + ytop, left: xleft + 120});
     // var h1 = av.label("$\\# R^{2}_{\\#} \\sigma L^{2}_{\\#} \\sigma$", {top: 10 + ytop, left: xleft + 200});
@@ -37,12 +37,13 @@ $(document).ready(function() {
 
     // Slide 2
     av.umsg("Let's make a tape to keep track of the copy machine. The highlighted cell is the head.");
-    var tape = av.ds.tape(["#", "a", "b", "<u>#</u>", "#", "#", "#"], 300, 200, "both", 3);
+    var tape = av.ds.tape(["#", "a", "b", "#", "#", "#", "#"], 300, 200, "both", 3);
     av.step();
 
     // Slide 3
     l.css({'color':'red'});
-    av.umsg("We start from the $>L_{\\#}$. $L_{\\#}$ means going to the closest space (denoted by '#') on the left, from the head.");
+    av.umsg("We start from the $>L_{\\#}$. $L_{\\#}$ means going to the closest space (denoted by #) " +
+        "on the left, from the head.");
     tape.highlightPosition("0");
     av.step();
 
@@ -50,16 +51,17 @@ $(document).ready(function() {
     l.css({'color':'black'});
     r.css({'color':'red'});
     av.umsg("The $R$ in red means moving from the current tape cell to the right cell.");
-    tape.highlightPosition("1");
+    tape.highlightPosition(1);
     av.step();
 
     // Slide 5
     r.css({'color':'black'});
     ol.css({'color': 'red'});
     h1.css({'color': 'red'});
-    av.umsg("$\\overline{\\#}$: Is the current tape cell a space (i.e. #)?<br>" +
-        "No. It is an 'a', so we erase the value 'a' by making the cell empty (denoted by '#').");
-    tape.setValueAt("1", "#");
+    av.umsg("Is the current tape cell a space (i.e. #)?<br>" +
+        "No, the current tape cell is an 'a', so we follow the $\\overline{\\#}$ direction to go to the # state. <BR>" +
+        "Then, erase the value 'a' by making the cell empty (denoted by #).");
+    tape.arr.value(1, "#");
     av.step();
 
     // Slide 6
@@ -67,7 +69,7 @@ $(document).ready(function() {
     h1.css({'color': 'black'});
     r2.css({'color': 'red'});
     av.umsg("$R^{2}_{\\#}$: Go to the second space(#) on the right.");
-    tape.highlightPosition("3");
+    tape.highlightPosition(3);
     tape.moveRight();
     av.step();
 
@@ -76,15 +78,15 @@ $(document).ready(function() {
     s1.css({'color': 'red'});
     av.umsg("Sigma($\\sigma$): Write the letter we just read to the current tape cell. " +
         "<br> We just read 'a', so we need write 'a' to the cell.");
-    tape = av.ds.tape(["#", "#", "b", "<u>#</u>", "a", "#", "#"], 300, 200, "both", 4);
+    tape.arr.value(4, "a");
     av.step();
 
     //Slide 8
     s1.css({'color': 'black'});
     l2.css({'color': 'red'});
     av.umsg("$L^{2}_{\\#}$: Go to the second space(#) on the left.");
-    tape.highlightPosition("3");
-    tape.highlightPosition("1");
+    tape.highlightPosition(3);
+    tape.highlightPosition(1);
     av.step();
 
     //Slide 9
@@ -92,7 +94,9 @@ $(document).ready(function() {
     s2.css({'color': 'red'});
     av.umsg("Sigma($\\sigma$): Write the letter we just read to the current tape cell. <br>" +
         " We just read 'a', so we need write 'a' to the cell.");
-    tape = av.ds.tape(["#", "a", "b", "<u>#</u>", "a", "#", "#"], 300, 200, "both", 1);
+    tape.current = 1;
+    tape.arr.value(1, 'a');
+    tape.highlightCurrent();
     av.step();
 
     //Slide 10
@@ -106,8 +110,9 @@ $(document).ready(function() {
     r.css({'color':'black'});
     ol.css({'color': 'red'});
     h1.css({'color': 'red'});
-    av.umsg("$\\overline{\\#}$: Is the current tape cell a space (i.e. #)?<br>" +
-        "No. It is a 'b', so we erase the value 'b' by making the cell empty (denoted by '#').");
+    av.umsg("Is the current tape cell a space (i.e. #)?<br>" +
+        "No, the current tape cell is 'b', so we follow the $\\overline{\\#}$ direction to go to the # state <br>" +
+        "Then, erase the value 'b' by making the cell empty (denoted by #).");
     tape.setCurrentValue("#");
     av.step();
 
@@ -116,8 +121,8 @@ $(document).ready(function() {
     h1.css({'color': 'black'});
     r2.css({'color': 'red'});
     av.umsg("$R^{2}_{\\#}$: Go to the second space(#) on the right.");
-    tape.highlightPosition("3");
-    tape.highlightPosition("5");
+    tape.highlightPosition(3);
+    tape.highlightPosition(5);
     av.step();
 
     //Slide 13
@@ -125,15 +130,16 @@ $(document).ready(function() {
     s1.css({'color': 'red'});
     av.umsg("Sigma($\\sigma$): Write the letter we just read to the current tape cell. " +
         "<br> We just read 'b', so we need write 'b' to the cell.");
-    tape = av.ds.tape(["#", "a", "#", "<u>#</u>", "a", "b", "#"], 300, 200, "both", 5);
+    tape.current = 5;
+    tape.arr.value(5, 'b');
     av.step();
 
     //Slide 14
     s1.css({'color': 'black'});
     l2.css({'color': 'red'});
     av.umsg("$L^{2}_{\\#}$: Go to the second space(#) on the left.");
-    tape.highlightPosition("3");
-    tape.highlightPosition("2");
+    tape.highlightPosition(3);
+    tape.highlightPosition(2);
     av.step();
 
     //Slide 15
@@ -141,7 +147,8 @@ $(document).ready(function() {
     s2.css({'color': 'red'});
     av.umsg("Sigma($\\sigma$): Write the letter we just read to the current tape cell. <br>" +
         " We just read 'b', so we need write 'b' to the cell.");
-    tape = av.ds.tape(["#", "a", "b", "<u>#</u>", "a", "b", "#"], 300, 200, "both", 2);
+    tape.current = 2;
+    tape.arr.value(2, 'b');
     av.step();
 
     //Slide 16
@@ -155,15 +162,19 @@ $(document).ready(function() {
     r.css({'color': 'black'});
     r3.css({'color':'red'});
     h2.css({'color':'red'});
-    av.umsg("$\\overline{\\#}$: Is the current tape cell a space (i.e. #)?<br>" +
-        "Yes. It is a space(#), so we move to the closest space (denoted by '#') on the right.");
+    av.umsg("Is the current tape cell a space (i.e. #)?<br>" +
+        "Yes, it is a space(#), so we follow the # direction to go to the $R_{\\#}$ state. <br>" +
+        "Then, move to the closest space (denoted by #) on the right.");
+    tape.highlightPosition(6);
     av.step();
 
     //Slide 18
-    tape = av.ds.tape(["#", "a", "b", "#", "a", "b", "<u>#</u>"], 300, 200, "both", 6);
+    tape.current = 6;
+    tape.unhighlightCurrent();
     r3.css({'color':'black'});
     h2.css({'color':'black'});
-    av.umsg("The final string is 'abab'. We successfully made a duplicate for the string 'ab', by using this copy machine.");
 
+    av.umsg("The final string is 'abab'. We successfully made a duplicate for the string 'ab', " +
+        "by using this copy machine.");
     av.recorded();
 });
