@@ -1,0 +1,66 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+
+.. slideconf::
+   :autoslides: False
+
+===============
+Project 1 Day 2
+===============
+
+Project 1 Day 2
+---------------
+
+.. slide:: What you need to know about Hashing
+
+   * Read Module 13.1, Skim 13.3, Read 13.6 carefully, Read 13.7.3
+     Quadratic Probing, Read 13.9 Deletion
+
+   * Feel free to use code posted as part of OpenDSA modules (Insert, search)
+
+   * You can write Hash Table Class **assuming** that it uses the
+     given hash function, and that the key is a string.
+
+.. slide:: Primary design issue: Communications
+
+   * World/DB class, Hash Table, Memory Manager need appropriate
+     coordination.
+   
+   * World probably initializes memory manager, but probably does not
+     interact with it to insert/process records. Mostly it interacts
+     with hash table.
+   
+   * Hash table needs to interact with Memory Manager as it needs to
+     get or store information.
+   
+   * You might have a record class that does more or less processing,
+     and might or might not interact with the memory manager
+           
+.. slide:: What is stored in the hash table?                      
+
+   * Clearly there has to be a key, and there has to be a value
+     (a record?)
+   
+   * The key is a string; it is the name field for the record
+  
+   * The "value" might be dealt with in different ways.
+      * Definitely NOT the record string (this is in memory manager)
+      * Maybe the handle for the record? That means that the hash
+        table needs to know about handles.
+
+   * Can hide handles behind a Record class.
+      * What is key? Store string? Get from Record? Space vs. Time
+        tradeoff, either is reasonable
+
+.. slide:: Milestone 2
+
+   * Must pass some number of tests, some code coverage (from your
+     JUnit tests), some style points
+
+   * Functionally: Get the hash table working, get string update
+     working.
