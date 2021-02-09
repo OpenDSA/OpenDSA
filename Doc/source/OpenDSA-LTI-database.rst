@@ -4,5 +4,4 @@ OpenDSA-LTI database schema design
 ==================================
 
 .. raw:: html
-
-   <iframe src="_static/model_report/index.html"></iframe>
+    :file: _static/model_report/index.html
