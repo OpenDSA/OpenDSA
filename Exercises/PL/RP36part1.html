@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html data-require="math PLutils ../../AV/PL/interpreters/version3.01/scripts/absyn ../../AV/PL/interpreters/version3.01/scripts/env ../../AV/PL/interpreters/version3.01/scripts/grammar ../../AV/PL/interpreters/version3.01/scripts/interpreter RP36part1" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 36 part 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version3.01/scripts/absyn",
+            "../../AV/PL/interpreters/version3.01/scripts/env",
+            "../../AV/PL/interpreters/version3.01/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version3.01/scripts/interpreter",
+              "RP36part1"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -28,7 +42,7 @@
 	    that represents the denoted value that the variable
 	    <span class="string">o</span> is bound to after the last
 	  method call in the body of <span class="string">main</span>
-	  is executed, that is, at the time the interpreter is about 
+	  is executed, that is, at the time the interpreter is about
 	  to return the value of this program.</p>
 
 	  <textarea rows="20" cols="80" style="resize:none"
@@ -49,7 +63,7 @@
 	      around each string in the answer, if any.</p>
 	    <p>Remember that the default value for instance variables
 	    that never get explicitly assigned a value is -12345.</p>
-	  </div>	 
+	  </div>
         </div>
       </div>
     </div>

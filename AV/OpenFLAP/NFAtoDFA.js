@@ -337,10 +337,10 @@ var nodeClickHandlers = function(e) {
 		exerciseLog.errorsCount++;
 		exerciseLog.errorMessages.push("You're not done yet");
     }
-    return {score: 0, solution: serialize(studentGraph)};
+    return 0;
 	}
 	if(exerController)
-		return exerController.startTesting(studentGraph);
+		return exerController.startTesting(studentGraph).score;
   };
   /*
   These function added to compare student solution with the expected solution. Previously, the code was calling the equals method for Grapths, which depend that the 

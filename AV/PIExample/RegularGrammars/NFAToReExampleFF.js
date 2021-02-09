@@ -4,7 +4,7 @@ $(document).ready(function() {
     var av_name = "NFAToReExampleFF";
     var arrow = String.fromCharCode(8594);
     var av = new JSAV(av_name);
-    var url = "../../../AV/VisFormalLang/FA/Machines/NFAtoRE.jff";
+    var url = "../../../AV/OpenFLAP/machines/FA/NFAtoRE.jff";
     var arr = new Array(7);    // arbitrary array size
     for (var i = 0; i < arr.length; i++) {
         arr[i] = ["", arrow, ""];

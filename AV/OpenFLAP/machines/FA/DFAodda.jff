@@ -5,11 +5,11 @@
 			<x>226.203125</x>
 			<y>219.203125</y>
 			<initial/>
-			<final/>
 		</state>
 		<state id="1" name="q1">
 			<x>620.203125</x>
 			<y>169.203125</y>
+			<final/>
 		</state>
 		<transition>
 			<from>0</from>
@@ -17,9 +17,19 @@
 			<read>a</read>
 		</transition>
 		<transition>
+			<from>0</from>
+			<to>0</to>
+			<read>b</read>
+		</transition>
+		<transition>
 			<from>1</from>
 			<to>0</to>
 			<read>a</read>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>1</to>
+			<read>b</read>
 		</transition>
 	</automaton>
 </structure>

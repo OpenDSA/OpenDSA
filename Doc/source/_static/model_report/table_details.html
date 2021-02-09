@@ -1,0 +1,3914 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>OpenDSA Model Report - Table Details</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="basic.css">
+</head>
+
+<body class="tbl_detail_page">
+
+
+  <a name="Schema_Nr_0">
+  <div class="schema_header">Schema opendsa <div class="small_text">(0/1)</div></div>
+  <img src="https://raw.githubusercontent.com/OpenDSA/OpenDSA-LTI/master/ERD/OpenDSA-LTI_v2_simple.png">
+  </a>
+
+
+  <a name="Table_0_0">
+  <div class="table_header">Table course_enrollments <div class="small_text">(0/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">course_enrollments table defines students enromments in many course_offerings</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">course_offering_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">course_role_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_enrollments_course_offering_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">course_enrollments</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_enrollments_course_role_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">course_roles</td>
+      <td class="subitem_table_field">course_enrollments</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_enrollments_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">course_enrollments</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_1">
+  <div class="table_header">Table course_offerings <div class="small_text">(1/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Course_offerings table defines instances of courses offered by organizations</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">course_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">term_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">label</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Used to differentiate multiple sections in a course offering
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">url</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Not used
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">self_enrollment_allowed</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">'1'</td>
+      <td class="subitem_table_field">Whether students are allowed to self-enroll or not
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">cutoff_date</td>
+      <td class="subitem_table_field">DATE</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Course offering closing date
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">late_policy_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_instance_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_course_code</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The code/name of a course in the LMS
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_course_num</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The identifier of a course in the LMS system
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">archived</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field">When an old course is archived it will be hidden in all instructor's interfaces.
+</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_offerings_course_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">courses</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_offerings_late_policy_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">late_policies</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_offerings_lms_instance_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">lms_instances</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_offerings_term_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">terms</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_enrollments_course_offering_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">course_enrollments</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_books_course_offering_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_2">
+  <div class="table_header">Table course_roles <div class="small_text">(2/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">course_roles defines the user's role in the course</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">There are two roles "Instructor" and "Student"
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">can_manage_course</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">can_manage_assignments</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">can_grade_submissions</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">can_view_other_submissions</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">builtin</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_enrollments_course_role_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">course_roles</td>
+      <td class="subitem_table_field">course_enrollments</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_3">
+  <div class="table_header">Table courses <div class="small_text">(3/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">This table defines courses offered by an organization</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The official organization course name.
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">number</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The official organization course number.
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">organization_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">slug</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Lower case of the course number. It lets you create pretty and human-friendly URLs.
+</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">courses_organization_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">organizations</td>
+      <td class="subitem_table_field">courses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_offerings_course_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">courses</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_4">
+  <div class="table_header">Table global_roles <div class="small_text">(4/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">global_role table defines user's system level role</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">There are three roles "Administrator", "Instructor", and "Student"</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">can_manage_all_courses</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">can_edit_system_configuration</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">builtin</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">users_global_role_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">global_roles</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_5">
+  <div class="table_header">Table inst_book_section_exercises <div class="small_text">(5/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_section_exercises table defines a configuration of an exercise in a section </td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_section_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_exercise_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">points</td>
+      <td class="subitem_table_field">DECIMAL(5,2)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Number of points that this exercise worth</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">required</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field">Whether it is required for module proficiency </td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">threshold</td>
+      <td class="subitem_table_field">DECIMAL(5,2)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">For Khan Academy exercises:
+The number of questions students need to answer
+correctly to get the exercise points.
+For proficiency exercises:
+The percentage of steps students need to perform them correctly
+to get the exercise points.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">type</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Not used</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">options</td>
+      <td class="subitem_table_field">LONGTEXT</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Exercise specific configurations (e.g. code language used)</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_book_section_exercises_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_book_section_exercises_inst_exercise_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_exercises</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_book_section_exercises_inst_section_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_attempts_inst_book_section_exercise_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">odsa_exercise_attempts</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_progresses_inst_book_section_exercise_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">odsa_exercise_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_user_interactions_inst_book_section_exercise_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">odsa_user_interactions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_6">
+  <div class="table_header">Table inst_books <div class="small_text">(6/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines OpenDSA Book configuration used by a course offering</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">course_offering_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">title</td>
+      <td class="subitem_table_field">VARCHAR(50)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">template</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field">Whether the book configuration is used as a template
+that instractor can clone and change it.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">desc</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">last_compiled</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The last time the book got compiled</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">options</td>
+      <td class="subitem_table_field">LONGTEXT</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Stores book level options</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">book_type</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">whether it is a normal book or a book that contains only exercies</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_books_course_offering_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_books_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_book_section_exercises_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_chapters_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">inst_chapters</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_book_progresses_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">odsa_book_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_attempts_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">odsa_exercise_attempts</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_module_progresses_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">odsa_module_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_user_interactions_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">odsa_user_interactions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_7">
+  <div class="table_header">Table inst_chapter_modules <div class="small_text">(7/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">When OpenDSA module is used in a book instance it defines a record in this table.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_chapter_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_module_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">module_position</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The Module order in a chapter</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_module_item_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The Module Id in an LMS system</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_section_item_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">If a module has only one section, the Module Id in an LMS system goes here.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_chapter_modules_inst_chapter_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_chapters</td>
+      <td class="subitem_table_field">inst_chapter_modules</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_chapter_modules_inst_module_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_modules</td>
+      <td class="subitem_table_field">inst_chapter_modules</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_sections_inst_chapter_module_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_chapter_modules</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_module_progresses_inst_chapter_module_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_chapter_modules</td>
+      <td class="subitem_table_field">odsa_module_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_8">
+  <div class="table_header">Table inst_chapters <div class="small_text">(8/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines OpenDSA Book configuration used by a course offering</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(100)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">short_display_name</td>
+      <td class="subitem_table_field">VARCHAR(45)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">position</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The chapter order in the book</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_chapter_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The chapter ID in the LMS course</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_assignment_group_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The LMS group ID for all the assignments in the chapter</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_chapters_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">inst_chapters</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_chapter_modules_inst_chapter_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_chapters</td>
+      <td class="subitem_table_field">inst_chapter_modules</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_9">
+  <div class="table_header">Table inst_exercises <div class="small_text">(9/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines a list of all exercises in OpenDSA system</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">short_name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">ex_type</td>
+      <td class="subitem_table_field">VARCHAR(50)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">KA "Khan Academy"
+PE "Proficiency Exercise"
+AV "Algorithm Visualization"
+SS "Slide Show"</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">description</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_book_section_exercises_inst_exercise_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_exercises</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_10">
+  <div class="table_header">Table inst_modules <div class="small_text">(10/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines a complete list of OpenDSA modules, which maps to a list of all ReST files in OpenDSA repository</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">path</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_chapter_modules_inst_module_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_modules</td>
+      <td class="subitem_table_field">inst_chapter_modules</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_sections_inst_module_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_modules</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_11">
+  <div class="table_header">Table inst_sections <div class="small_text">(11/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines different sections in each module</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_module_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_chapter_module_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">short_display_name</td>
+      <td class="subitem_table_field">VARCHAR(50)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">position</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Section order in a module</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">gradable</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field">Whether a section contains gradable exercise</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">soft_deadline</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">If gradable, this field defines the deadline after which student
+can still submit answers however late penalties could be applied</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">hard_deadline</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">No submisions would be accepted after this deadline</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">time_limit</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Not used</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">show</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">'1'</td>
+      <td class="subitem_table_field">Whether a section to be shown in the LMS course or not.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_item_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The LMS external tool item ID</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_assignment_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The LMS assignment ID if the section is gradable</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">learning_tool</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">If the section reference a learning tool, this field stores the tool code</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">resource_type</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Whether the learning tool resource is "external link" or "assignment"</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">resource_name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">The learning tool resource name</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_posted</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">When the section is gradable, this field indecate
+whether a grade was posted to the LMS or not</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">time_posted</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">When the section is gradable, this field indecate
+the time  a grade was posted to the LMS</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_sections_inst_chapter_module_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_chapter_modules</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_sections_inst_module_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_modules</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_book_section_exercises_inst_section_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_attempts_inst_section_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">odsa_exercise_attempts</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_student_extensions_inst_section_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">odsa_student_extensions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_user_interactions_inst_section_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">odsa_user_interactions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_12">
+  <div class="table_header">Table late_policies <div class="small_text">(12/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines the course offerings late policy</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">late_days</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The number of late days during which students are allowed to
+submit their exercises attempts.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">late_percent</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">When a student submits an exercise attempt during the late
+days, this field defines the percentage of the grade points to be deducted from his score.
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_offerings_late_policy_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">late_policies</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_13">
+  <div class="table_header">Table learning_tools <div class="small_text">(13/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines learning tools used by OpenDSA-LTI infrastructure. Currently, there is only one external tool (CodeWorkout) used within OpenDSA book.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">External learning tool name
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">key</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">LTI consumer key
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">secret</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">LTI shared secret
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">launch_url</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The external tool launch url
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_14">
+  <div class="table_header">Table lms_accesses <div class="small_text">(14/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines user level access to an LMS</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">access_token</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Access tokens are what allow third-party applications to access Canvas
+resources on the user behalf. </td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_instance_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">consumer_key</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">User level LTI consumer key
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">consumer_secret</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">User level LTI shared secret</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">lms_accesses_lms_instance_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">lms_instances</td>
+      <td class="subitem_table_field">lms_accesses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">lms_accesses_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">lms_accesses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_15">
+  <div class="table_header">Table lms_instances <div class="small_text">(15/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines different LMS installations</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">url</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">LMS instance url</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">lms_type_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">consumer_key</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">LMS level LTI consumer key used by OpenDSA-LTI application</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">consumer_secret</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">LMS level LTI secret used by OpenDSA-LTI application</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">lms_instances_lms_type_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">lms_types</td>
+      <td class="subitem_table_field">lms_instances</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_offerings_lms_instance_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">lms_instances</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">lms_accesses_lms_instance_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">lms_instances</td>
+      <td class="subitem_table_field">lms_accesses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_16">
+  <div class="table_header">Table lms_types <div class="small_text">(16/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines LMS names (e.g. Canvas, Moodle)</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">lms_instances_lms_type_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">lms_types</td>
+      <td class="subitem_table_field">lms_instances</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_17">
+  <div class="table_header">Table odsa_book_progresses <div class="small_text">(17/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Stores the student progress for each OpenDSA book instance</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">started_exercises</td>
+      <td class="subitem_table_field">LONGTEXT</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Comma separated list of exercises IDs</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">proficient_exercises</td>
+      <td class="subitem_table_field">LONGTEXT</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Comma separated list of exercises IDs</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_book_progresses_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">odsa_book_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_book_progresses_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_book_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_18">
+  <div class="table_header">Table odsa_exercise_attempts <div class="small_text">(18/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Stores students attempts for KA and PE exercises</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_section_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_section_exercise_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">worth_credit</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">When the attempt is correct, from first time, and without using hits it worth a credit.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">time_done</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">time_taken</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">count_hints</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Number of hints used so far when the students submitted this attempt.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">hint_used</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Whether a hint is used on this question or not.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">points_earned</td>
+      <td class="subitem_table_field">DECIMAL(5,2)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">When this attempt is the final attmpt to got the student the
+proficiency, this field stores how many points the student got.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">earned_proficiency</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Whether the student earned the proficiency when he submitted this attempt or not.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">count_attempts</td>
+      <td class="subitem_table_field">BIGINT(20)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Number of attempts so far for the current question.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">ip_address</td>
+      <td class="subitem_table_field">VARCHAR(20)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">question_name</td>
+      <td class="subitem_table_field">VARCHAR(50)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The specific question name in a summary exercise</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">request_type</td>
+      <td class="subitem_table_field">VARCHAR(50)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Whether this attempt is a hint object or attempt object</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">correct</td>
+      <td class="subitem_table_field">TINYINT(1)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">True if the student answer is correct</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">pe_score</td>
+      <td class="subitem_table_field">DECIMAL(5,2)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">When the exercise is PE, this field stores the points
+a student should get when he correctly solve the question. </td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">pe_steps_fixed</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">When the exercise is PE, this fields stores the number of steps
+that the student did not get correctly and the exercise fixed them for him.</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_attempts_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">odsa_exercise_attempts</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_attempts_inst_book_section_exercise_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">odsa_exercise_attempts</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_attempts_inst_section_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">odsa_exercise_attempts</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_19">
+  <div class="table_header">Table odsa_exercise_progresses <div class="small_text">(19/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Stores statistics about student attempts each record contains the data related to one student and one exercise.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_section_exercise_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">current_score</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">For KA exercises, this field stores the student current points for an exercise. </td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">highest_score</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">For KA exercises, this field stores the student highest number of points
+he could get for an exercise.
+The highest_score should always be bigger than or equal the current_score</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">first_done</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">last_done</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">total_correct</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The total correct attempts</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">total_worth_credit</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The total number of attempts that are correct, from first
+time, and without using hints.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">proficient_date</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">current_exercise</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">This field tracks the student current question name
+so that when he reload the module page he will get the same question again.
+
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">correct_exercises</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">This field stores A list of correct exercises in order for KA
+framework to be able to remove them from the question pool.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">hinted_exercise</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">This field tracks the question name on which the student used the hints.
+So when the student refreshes the module page he won't get credit for this question
+even if he solved it correctly.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_progresses_inst_book_section_exercise_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">odsa_exercise_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_progresses_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_exercise_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_20">
+  <div class="table_header">Table odsa_module_progresses <div class="small_text">(20/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Stores the student progress for each OpenDSA book module</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">first_done</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">When any of the module's exercises was first done.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">last_done</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The last time the student done any of the module's exercises.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">proficient_date</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">When the student achieved the module's proficiency</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_chapter_module_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_module_progresses_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">odsa_module_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_module_progresses_inst_chapter_module_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_chapter_modules</td>
+      <td class="subitem_table_field">odsa_module_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_module_progresses_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_module_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_21">
+  <div class="table_header">Table odsa_student_extensions <div class="small_text">(21/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Used to store extension information for each section per student in case the instructor wants to extend a section deadline for some students for any reasons.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_section_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">soft_deadline</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">hard_deadline</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">time_limit</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">opening_date</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_student_extensions_inst_section_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">odsa_student_extensions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_student_extensions_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_student_extensions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_22">
+  <div class="table_header">Table odsa_user_interactions <div class="small_text">(22/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Stores students click stream</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">user_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_section_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">inst_book_section_exercise_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(50)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The event name (e.g. slide show step forward)</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">description</td>
+      <td class="subitem_table_field">LONGTEXT</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">action_time</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">uiid</td>
+      <td class="subitem_table_field">BIGINT(20)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">the unique instance identifier, which allows an event to be tied to a
+specific load of a module page</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">browser_family</td>
+      <td class="subitem_table_field">VARCHAR(20)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">browser_version</td>
+      <td class="subitem_table_field">VARCHAR(20)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">os_family</td>
+      <td class="subitem_table_field">VARCHAR(50)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">os_version</td>
+      <td class="subitem_table_field">VARCHAR(20)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">device</td>
+      <td class="subitem_table_field">VARCHAR(50)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">ip_address</td>
+      <td class="subitem_table_field">VARCHAR(20)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_user_interactions_inst_book_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">odsa_user_interactions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_user_interactions_inst_book_section_exercise_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_book_section_exercises</td>
+      <td class="subitem_table_field">odsa_user_interactions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_user_interactions_inst_section_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">inst_sections</td>
+      <td class="subitem_table_field">odsa_user_interactions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_user_interactions_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_user_interactions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_23">
+  <div class="table_header">Table organizations <div class="small_text">(23/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">The organization name
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">abbreviation</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field">Abbreviated organization name
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">slug</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Lower case abbreviation used to create pretty and human-friendly URLs.
+</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">courses_organization_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">organizations</td>
+      <td class="subitem_table_field">courses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_24">
+  <div class="table_header">Table terms <div class="small_text">(24/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Defines a list of semesters</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">season</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Enumeration for semesters: 100-Spring 200-SummerI 300-SummerII 400-Fall 500-Winter
+</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">starts_on</td>
+      <td class="subitem_table_field">DATE</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">ends_on</td>
+      <td class="subitem_table_field">DATE</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">year</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">slug</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">Lower case of semester string literal and year (e.g. fall-2016). It lets you create pretty and human-friendly URLs.
+</td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_offerings_term_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">terms</td>
+      <td class="subitem_table_field">course_offerings</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+  <a name="Table_0_25">
+  <div class="table_header">Table users <div class="small_text">(25/26)</div></div>
+  </a>
+  <div class="table_body">
+
+  <div class="subitem_header">Columns</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="0" width="100%">
+    <tr>
+      <td class="subitem_table_head">Key</td>
+      <td class="subitem_table_head">Column Name</td>
+      <td class="subitem_table_head">Datatype</td>
+      <td class="subitem_table_head">Not Null</td>
+      <td class="subitem_table_head">Default</td>
+      <td class="subitem_table_head">Comment</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">PK</td>
+      <td class="subitem_table_field">id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">email</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">''</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">encrypted_password</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">''</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">reset_password_token</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">reset_password_sent_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">remember_created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">sign_in_count</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field">'0'</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">current_sign_in_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">last_sign_in_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">current_sign_in_ip</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">last_sign_in_ip</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">confirmation_token</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">confirmed_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">confirmation_sent_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">created_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">updated_at</td>
+      <td class="subitem_table_field">DATETIME</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">first_name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">last_name</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">global_role_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">avatar</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">slug</td>
+      <td class="subitem_table_field">VARCHAR(255)</td>
+      <td class="subitem_table_field">Yes</td>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field"></td>
+      <td class="subitem_table_field">time_zone_id</td>
+      <td class="subitem_table_field">INT(11)</td>
+      <td class="subitem_table_field">No</td>
+      <td class="subitem_table_field">NULL</td>
+      <td class="subitem_table_field"></td>
+    </tr>
+
+  </table>
+
+
+
+  <div class="subitem_header">Relationships</div>
+
+  <table class="subitems_table" border="0" cellpadding="2" cellspacing="" width="100%">
+    <tr>
+      <td class="subitem_table_head">Relationship Name</td>
+      <td class="subitem_table_head">Relationship Type</td>
+      <td class="subitem_table_head">Parent Table</td>
+      <td class="subitem_table_head">Child Table</td>
+      <td class="subitem_table_head">Card.</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">users_global_role_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">global_roles</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">course_enrollments_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">course_enrollments</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">inst_books_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">inst_books</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">lms_accesses_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">lms_accesses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_book_progresses_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_book_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_exercise_progresses_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_exercise_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_module_progresses_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_module_progresses</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_student_extensions_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_student_extensions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+    <tr>
+      <td class="subitem_table_field">odsa_user_interactions_user_id_fk</td>
+      <td class="subitem_table_field">Non-Identifying</td>
+      <td class="subitem_table_field">users</td>
+      <td class="subitem_table_field">odsa_user_interactions</td>
+      <td class="subitem_table_field">1:n</td>
+    </tr>
+
+  </table>
+
+  </div><!-- table_body -->
+  <br>
+
+
+
+</body>
+</html>

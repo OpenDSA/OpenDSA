@@ -1,37 +1,34 @@
 [{
   "exerciseType": "DFA",
+  "HINT": "This exercise changed to be every string not end with ba",
   "totalTrueCases": 5,
   "totalFalseCases": 5,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings with any even number of a’s and at least three b’s.",
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings that does not end with 'ba'",
   "testCases": [
     {
-      "bbb": true,
+      "aaa": true,
       "ShowTestCase": true
     },
     {
-      "bbab": false,
+      "baba": false,
       "ShowTestCase":true
     },
     {
-      "babb": false,
+      "bbbb": true,
       "ShowTestCase":true
     },
     {
-      "babab": true,
+      "baa": true,
       "ShowTestCase":true
     },
     {
-      "aabbb": true,
+      "bababab": true,
       "ShowTestCase":true
     },
     {
-      "aabbbaab": true,
-      "ShowTestCase":true
-    },
-    {
-      "aaaaaaaaabbb": false,
+      "aba": false,
       "ShowTestCase":true
     }
   ],
@@ -39,5 +36,5 @@
     "nodes": [],
     "edges": []
   },
-  "solution": "../../../machines/FA/DFAevenamin3b.jff"
+  "solution": "../../../machines/FA/DFAnotendinba.jff"
 }]
