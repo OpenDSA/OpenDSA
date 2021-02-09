@@ -18,16 +18,8 @@ Midterm 1
 
 .. slide:: Structure
 
-   You may bring one 8 1/2 by 11 inch sheet of paper with anything that
-   you want written or typed ON ONE SIDE.
-
-   Format: Short answers, working out problems, writing short code, T/F.
-
-   About 10-15 questions, with subparts
+   TBD
    
 .. slide:: What to study
 
-   Will post list to Piazza.
-
-   Mainly: Chapters on Algorithm Analysis, Linear Structures, Binary
-   Trees
+   TBD

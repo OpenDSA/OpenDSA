@@ -21,7 +21,7 @@ by Nick Parlante, Copyright 1998-2000,
 Stanford CS Education Library.
 
 This version of the book focuses on pointers in Java.
-The orginal version of the material was written for C/CPP.
+The original version of the material was written for C/CPP.
 
 Our goals for this project include the following:
 

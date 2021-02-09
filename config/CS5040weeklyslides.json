@@ -60,36 +60,35 @@
   }, 
   "chapters": {
     "Week 1": {
-      "CourseSpecific/CS5040Fall2020Intro": {},
+      "CourseSpecific/CS5040Sp2021Intro": {},
       "CS5040slides/Intro": {},
-      "CourseSpecific/CS5040Fall2020P1": {},
-      "CS5040slides/MemManage": {}
+      "CourseSpecific/CS5040Sp2021P1": {},
+      "CS5040slides/Math": {}
     },
     "Week 2": {
-      "CS5040slides/ProjManage": {},
-      "CS5040slides/Math": {},
-      "CS5040slides/AlgAnal": {}
-    },
-    "Week 3": {
-      "CS5040slides/Pointers": {},
-      "CS5040slides/Lists": {},
-      "CS5040slides/Testing": {},      
-      "CS5040slides/StackQueue": {}
-    },
-    "Week 4": {
-      "CS5040slides/Coding": {},
+     "CS5040slides/ProjManage": {},
       "CS5040slides/Binary": {},
+      "CS5040slides/Binary3": {},
+      "CS5040slides/AlgAnal": {},
       "CS5040slides/BST": {}
     },
-    "Week 5": {
+    "Week 3": {
       "CS5040slides/Recursion": {},
-      "CS5040slides/Binary3": {},
+      "CS5040slides/Pointers": {},
+      "CS5040slides/Lists": {},
+      "CS5040slides/Testing": {}
+    },
+    "Week 4": {
+      "CS5040slides/StackQueue": {},
+      "CS5040slides/Coding": {}
+    },
+    "Week 5": {
       "CS5040slides/Heaps": {},
-      "CS5040slides/Comparison": {}
+      "CS5040slides/Comparison": {},
+      "CS5040slides/Huffman": {},
+      "CourseSpecific/CS5040Sp2021Mid1": {}
     },
-    "Week 6": {
-      "CS5040slides/Huffman": {}
-    },
+
     "Week 7": {
       "CS5040slides/Trie": {},
       "CS5040slides/Overconstrained": {},
@@ -102,7 +101,8 @@
     },
     "Week 9": {
       "CS5040slides/Buffering": {},
-      "CS5040slides/Hashing": {}
+      "CS5040slides/Hashing": {},
+      "CS5040slides/MemManage": {}
     },
     "Week 10": {
       "CS5040slides/Indexing": {},

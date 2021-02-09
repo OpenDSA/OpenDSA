@@ -36,7 +36,7 @@ Project 1 Design
    |   Multiple data structures (hash table class, memory manager class)
    |   "Main" routine, that sets things up
    |   Command syntactic parsing (separate the behavior, NOT the code length)
-   |   Command semantic processig (separate the behavior, NOT the code length)
+   |   Command semantic processing (separate the behavior, NOT the code length)
            
 .. slide:: Project 1 Class Organization (2)
 
@@ -60,16 +60,16 @@ Project 1 Design
    | Scheduling the project:
    |   1. Main/Parser first.
    |   2. World Database class next.
-   |   3. Hash table, implemented with direct access to strings in memory
-          (hidden behind record interface)
-   |   4. Memory manager last!
+   |   3. Complete BST and Node classes next.
+   |   4. Everything else.
          
 
 .. slide:: General Project Info              
 
    | You are usually banned from using standard Java data structures
      classes
-   |   You may **not** use things like ``HashMap``, ``ListArray``, ``Vector``
+   |   You may **not** use things like ``HashMap``, ``ListArray``, ``Vector``, etc.
+   |   You **may** use the java.awt.Rectangle Class as the basis for your Rectangle.
    |   You may use standard language features like arrays
    |   You may use string and file manipulation classes/methods that
        make parsing of the command file easy.          
@@ -79,19 +79,18 @@ Project 1 Design
    | Good names matter. REALLY!
    | Every competent software development organization enforces some
      coding style.
-        Web-CAT does impose a code 
+        Web-CAT does impose a code style. See OpenDSA Section 3.4.4
    | Generalize your container classes
-   |   For P1, your hash table should not be more specialized than the
-       fact that it is storing strings.
-   |   For P1, your memory manager should not know anything about the
-       rest of the project, it just stored bytes
+   |   For P1, your BST should not be so specialized than it can only
+       hold rectangles. It should be possible to replace the Rectangle
+       with some other shape without altering the BST itself.
+
 
 .. slide:: Container Classes
 
-   | The hash table is a container class. A container class is anything
+   | The Node is a container class. A container class is anything
      that stores a collection of arbitrary objects.
-   | Want to support any record type. (Actually, any string is fine)
-   | We will talk about this later in general. For now, just hide
-     details behind some Record class
-   | Need to deal with concept of comparison. Your record should give
-     you back the string as its key.
+   | Want to support any shape type.
+   | We will talk about this later in general.
+   | Need to deal with concept of comparison. Your program will need to
+     address comparing two Rectangles.

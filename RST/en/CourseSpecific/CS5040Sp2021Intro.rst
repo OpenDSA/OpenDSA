@@ -75,18 +75,19 @@ Introduction
 
 .. slide:: Administration stuff
 
-   * `Canvas site`_-> <https://canvas.vt.edu/courses/115673>
+   * `Canvas site`_-> <https://canvas.vt.edu/courses/125208>
    * Do you have a ForceAdd issue?
    * Who is here today?
 
-   .. _Canvas site: https://canvas.vt.edu/courses/115673
+   .. _Canvas site: https://canvas.vt.edu/courses/125208
 
 .. slide:: Course Mechanics
 
    * Go over `Syllabus`_
    * Course online support: Canvas, OpenDSA, Web-CAT
 
-   .. _Syllabus: https://canvas.vt.edu/courses/115673/assignments/syllabus
+   .. _Syllabus: https://canvas.vt.edu/courses/125208/assignments/syllabus
+
 .. slide:: Canvas
 
    We will use `Canvas`_
@@ -95,7 +96,7 @@ Introduction
    * Link to Piazza forum
    * Post scores and grades
    * Access to OpenDSA (online textbook)
-   .. _Canvas: https://canvas.vt.edu/courses/115673
+   .. _Canvas: https://canvas.vt.edu/courses/125208
 
 .. slide:: Role in the Curriculum
 
@@ -120,21 +121,23 @@ Introduction
 
   * Access OpenDSA through Canvas->`Modules`_
 
+  * This is the textbook.
+
   * Lots of visualizations, exercises
 
   * Mastery-based approach
 
   * Homework due periodically through the semester
 
-    * Small homework (Chapter 1) due at 11pm this Friday (in 2 days)
+    * Small homework (Chapter 1) due at 11pm this Friday (in 3 days)
 
-  .. _Modules: https://canvas.vt.edu/courses/115673/modules
+  .. _Modules: https://canvas.vt.edu/courses/125208/modules
 
 .. slide:: Web-CAT
 
   * Auto-grading: Correctness, style
   * Support for `junit`_ testing
-  * Get the updated plugin
+  * Get the updated plugin (see Module section 3)
   * Project submission
 
   .. _junit: https://junit.org/junit4/
@@ -156,7 +159,7 @@ Introduction
    * Look at Canvas
    * Look at Piazza site, make sure you are enrolled there (if not, email me)
    * Look at Project 1 spec: more on that in a minute
-   * Do Chapter 1 exercises in OpenDSA by 11:00pm Friday (in 2 days)
+   * Do Chapter 1 exercises in OpenDSA by 11:00pm Friday (in 3 days)
 
 .. slide:: Before you log out today
 
