@@ -271,7 +271,11 @@ requirejs(["./mathjs.js"], function(){});
         globalPointerReference.currentClickedObject = null;
         globalPointerReference.currentClickedObjectType = null;
         globalPointerReference.currentClickedObjectDescription = null;
-
+        
+        
+        // TODO: Work on this to update this with
+        // 1. Schedule event flushing to server immediately when attempt is submitted
+        // 2. Setup calls to event logger without context from HTML files.
         $("body").on("jsav-log-event", function(event, eventData) {
             // console.log(eventData);
             if(window.parent.ODSA != undefined)
