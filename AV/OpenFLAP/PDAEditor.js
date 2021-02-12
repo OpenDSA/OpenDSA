@@ -592,7 +592,7 @@
     localStorage['traversal'] = inputString.slice(0, -3);
     localStorage['stepBy'] = stepBy;
     //localStorage['empty'] = true;
-    window.open("./emptyPDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes"); //Changed from ./PDATraversal. Traversal does not work however
+    window.open("./PDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes"); 
   };
 
   var willAccept = function(graph, input) {
@@ -641,6 +641,11 @@
     saver.render();
   }
 
+  window.PDAsaver = function (dummy){
+    removeModeClasses(); 
+    return g.serializeToXML();
+  };
+
   var load = function() {
     var loaded = document.getElementById('loadFile');
     var file = loaded.files[0],
@@ -656,6 +661,19 @@
       $('.jsavedgelabel').click(labelClickHandler);
     }
   };
+
+  // Initializes a graph by parsing a JSON representation.
+  var initGraphFromServer = function() {
+		window.FetchStoredProgress().then(res => {
+			if(res != null && res["progress"] != ""){
+        console.log(res["progress"]);
+        g.initFromXML(res["progress"]);
+        finalize();
+			}
+		}).catch(err => {
+			console.log('fail' + err);	
+		})
+	};
 
   var startX, startY, endX, endY; // start position of dragging edge line
   function mouseDown(e) {
@@ -858,6 +876,8 @@
   $('#alphabets').hide();
   $('#closeAv').hide();
   onLoadHandler();
+  if (window.inCanvas())
+    initGraphFromServer();
 
   //g = initGraph({layout: "manual"});
   //g.layout();
