@@ -594,9 +594,10 @@ Here are some basic machines and notation
 
 |
 
-.. inlineav:: TuringCopyCON dgm
-   :links: AV/SeniorAlgAnal/TuringCopyCON.css
-   :scripts: AV/SeniorAlgAnal/TuringCopyCON.js
+.. inlineav:: TMcopy ss
+   :links: AV/VisFormalLang/TM/TMcopy.css
+   :scripts: AV/VisFormalLang/TM/TMcopy.js AV/Juwon/FAcopy.js
+   :output: show
    :align: center
 
    Copy Machine: Transform :math:`\#w\underline{\#}` into

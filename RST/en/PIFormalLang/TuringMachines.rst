@@ -68,3 +68,8 @@ Making More Complicated Machines part 3
    :links: AV/PIExample/TuringMachine/TMComplicatedMachine3.css
    :scripts:  lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/PIExample/TuringMachine/TMComplicatedMachine3.js DataStructures/PIFrames.js 
    :output: show
+
+.. inlineav:: TMcopy ss
+   :links: AV/Kochan/TMcopy.css
+   :scripts: AV/Kochan/TMcopy.js AV/Juwon/FAcopy.js
+   :output: show
