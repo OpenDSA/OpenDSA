@@ -1766,46 +1766,73 @@ var lambda = String.fromCharCode(955),
       }*/
   };
 
+  /*
+  graphproto.clone = function (opts) {
+    var cloneOpts = $.extend(this.options, {
+      visible: false
+    }, opts);
+    if ('element' in cloneOpts) {
+      delete cloneOpts.element;
+    }
+    var cloneGraph = this.jsav.ds.graph(cloneOpts),
+      nodes = this.nodes(Graph._nodeSortFunction),
+      cloneNode, cloneNodes,
+      edges = this.edges(),
+      n, e, i, fromInd, toInd, edgeOpts;
 
+    // clone all the nodes
+    for (i = 0; i < nodes.length; i++) {
+      n = nodes[i];
+      cloneNode = cloneGraph.addNode(n.value(), cloneOpts);
+      cloneNode.element.attr("style", n.element.attr("style"));
+      cloneNode.element.attr("class", n.element.attr("class"));
+    }
+    cloneNodes = cloneGraph.nodes(Graph._nodeSortFunction);
+
+    // clone all the edges
+    for (i = 0; i < edges.length; i++) {
+      e = edges[i];
+      fromInd = nodes.indexOf(e.start());
+      toInd = nodes.indexOf(e.end());
+      // add edge weight
+      if (typeof e.weight() !== "undefined") {
+        edgeOpts = {
+          weight: e.weight()
+        };
+      } else {
+        edgeOpts = {};
+      }
+      cloneGraph.addEdge(cloneNodes[fromInd], cloneNodes[toInd], $.extend({}, cloneOpts, edgeOpts));
+    }
+    return cloneGraph;
+  };*/
   var combine = function(jsav, newOne, other, opts) {
-    jsav.umsg("hello combine");
-    var g;
-    g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
+    //g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
+    newOne.options = $.extend({ layout: 'automatic' }, opts);
     var otherStates = other.nodes();
-    var newOneStates = other.nodes();
-    for (var next = otherStates.next(); next; next = newOneStates.next()) {
-      newOne.addNode();
+    //var otherToNew = {};
+    for(i = 0; i < otherStates.length; i++){
+      s = otherStates[i];
+      var s1 = newOne.addNode({ left: s.position().left, top:s.position().top + 200});
+      if (s.hasClass('final')){
+        s1.addClass('final');
+      }
+      //otherToNew[s] = s1;
+    }
+    otherEdges = other.edges();
+    newNodes = newOne.nodes();
+    for(i = 0; i < otherEdges.length; i++){
+      e = otherEdges[i];
+      fromInd = otherStates.indexOf(e.start());
+      toInd = otherStates.indexOf(e.end());
+      label = e.label();
+      weight = e.weight();
+      newOne.addEdge(newNodes[fromInd+3], newNodes[toInd+3], { label: label, weight: weight });
     }
 
-    /*
-for (int i = 0; i < otherStates.length; i++) {
-      State s = otherStates[i];
-      Point p = new Point(s.getPoint().x, s.getPoint().y + (int) d);
-      State s2 = newOne.createState(p);
-      if (other.isFinalState(s))
-        newOne.addFinalState(s2);
-      s2.setLabel(s.getLabel());
-            
-            if(newOne instanceof MooreMachine && other instanceof MooreMachine)
-            {
-                MooreMachine m = (MooreMachine) newOne;
-                MooreMachine n = (MooreMachine) other;
-                m.setOutput(s2, n.getOutput(s));
-            }
-            
-      otherToNew.put(s, s2);
-    }
-    Transition[] otherTransitions = other.getTransitions();
-    for (int i = 0; i < otherTransitions.length; i++) {
-      Transition t = otherTransitions[i];
-      State from = (State) otherToNew.get(t.getFromState()), to = (State) otherToNew
-          .get(t.getToState());
-      newOne.addTransition(t.copy(from, to));
-    }
-    */
-
-    return g;
-  }
+    //return g;
+    return newOne;
+  };
   /*
     Take the complement of a NFA
   */
@@ -1828,6 +1855,7 @@ for (int i = 0; i < otherStates.length; i++) {
     }
     //var nodes = g.nodes();
     //g.layout();
+    graph.updateNodes();
     return graph;
   };
 

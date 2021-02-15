@@ -9,19 +9,20 @@ $(document).ready(function(){
 
     //Slide 2
     var urlLinkStep1 = "../../../AV/Yilu/figure.jff";
-    var figure1 = new av.ds.FA({center:true, url: urlLinkStep1, left: 10, top:0, width: 500});
+    var figure1 = new av.ds.FA({center:true, url: urlLinkStep1, left: 10, top:0, height: 500, width: 500});
     var figure2 = new av.ds.FA({center:true, url: urlLinkStep1, left: 10, top:200, width: 500});
     av.umsg("Start with two machines");
 	av.step();
 
-	FiniteAutomaton.complement(av, figure1, {center:true, url: urlLinkStep1, left: 10, top:0, width: 500});
-	FiniteAutomaton.complement(av, figure2, {center:true, url: urlLinkStep1, left: 10, top:200, width: 500});
+	figure1=FiniteAutomaton.complement(av, figure1, {center:true, left: 10, top:0, width: 500});
+	figure2=FiniteAutomaton.complement(av, figure2, {center:true, left: 10, top:200, width: 500});
 	av.step();
 
 	//var combine = function(jsav, newOne, other, opts);
-	//figure1 = hide();
+	//figure1.hide();
+	figure1 = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 500, width: 500});
+
 	figure2.hide();
-	FiniteAutomaton.combine(av, figure1, figure2, {center:true, url: urlLinkStep1, left: 10, top:0, width: 500})
 	
 	av.recorded();
 	/*
