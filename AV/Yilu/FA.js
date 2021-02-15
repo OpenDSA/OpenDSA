@@ -1767,45 +1767,9 @@ var lambda = String.fromCharCode(955),
   };
 
   /*
-  graphproto.clone = function (opts) {
-    var cloneOpts = $.extend(this.options, {
-      visible: false
-    }, opts);
-    if ('element' in cloneOpts) {
-      delete cloneOpts.element;
-    }
-    var cloneGraph = this.jsav.ds.graph(cloneOpts),
-      nodes = this.nodes(Graph._nodeSortFunction),
-      cloneNode, cloneNodes,
-      edges = this.edges(),
-      n, e, i, fromInd, toInd, edgeOpts;
-
-    // clone all the nodes
-    for (i = 0; i < nodes.length; i++) {
-      n = nodes[i];
-      cloneNode = cloneGraph.addNode(n.value(), cloneOpts);
-      cloneNode.element.attr("style", n.element.attr("style"));
-      cloneNode.element.attr("class", n.element.attr("class"));
-    }
-    cloneNodes = cloneGraph.nodes(Graph._nodeSortFunction);
-
-    // clone all the edges
-    for (i = 0; i < edges.length; i++) {
-      e = edges[i];
-      fromInd = nodes.indexOf(e.start());
-      toInd = nodes.indexOf(e.end());
-      // add edge weight
-      if (typeof e.weight() !== "undefined") {
-        edgeOpts = {
-          weight: e.weight()
-        };
-      } else {
-        edgeOpts = {};
-      }
-      cloneGraph.addEdge(cloneNodes[fromInd], cloneNodes[toInd], $.extend({}, cloneOpts, edgeOpts));
-    }
-    return cloneGraph;
-  };*/
+    Combine two NFAs. 
+    Note: When the union argument is set to true, it will automatically take the union of the two NFAs
+  */
   var combine = function(jsav, newOne, other, opts, union = false) {
     var lambda = String.fromCharCode(955)
     g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
