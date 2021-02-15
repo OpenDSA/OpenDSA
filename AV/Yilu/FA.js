@@ -1807,32 +1807,55 @@ var lambda = String.fromCharCode(955),
     return cloneGraph;
   };*/
   var combine = function(jsav, newOne, other, opts) {
-    //g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
-    newOne.options = $.extend({ layout: 'automatic' }, opts);
+    g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
     var otherStates = other.nodes();
+    var newOneStates = newOne.nodes();
     //var otherToNew = {};
-    for(i = 0; i < otherStates.length; i++){
-      s = otherStates[i];
-      var s1 = newOne.addNode({ left: s.position().left, top:s.position().top + 200});
+    for(i = 0; i < newOneStates.length; i++){
+      s = newOneStates[i];
+      var s1 = g.addNode({ left: s.position().left, top:s.position().top + 200});
       if (s.hasClass('final')){
         s1.addClass('final');
       }
+
       //otherToNew[s] = s1;
     }
+    for(i = 0; i < otherStates.length; i++){
+      s = otherStates[i];
+      var s1 = g.addNode({ left: s.position().left, top:s.position().top + 200});
+      if (s.hasClass('final')){
+        s1.addClass('final');
+      }
+
+      //otherToNew[s] = s1;
+    }
+
     otherEdges = other.edges();
-    newNodes = newOne.nodes();
+    newOneEdges = newOne.edges();
+    newNodes = g.nodes();
+    for(i = 0; i < newOneEdges.length; i++){
+      e1 = newOneEdges[i];
+      fromInd = newOneStates.indexOf(e1.start());
+      toInd = newOneStates.indexOf(e1.end());
+      label = e1.label();
+      weight = e1.weight();
+      g.addEdge(newNodes[fromInd], newNodes[toInd], { weight: weight});
+    }
+
     for(i = 0; i < otherEdges.length; i++){
       e = otherEdges[i];
       fromInd = otherStates.indexOf(e.start());
       toInd = otherStates.indexOf(e.end());
       label = e.label();
       weight = e.weight();
-      newOne.addEdge(newNodes[fromInd+3], newNodes[toInd+3], { label: label, weight: weight });
+      g.addEdge(newNodes[fromInd+newOneStates.length], newNodes[toInd+newOneStates.length], { weight: weight});
     }
 
     //return g;
-    return newOne;
+    //g.updateNodes();
+    return g;
   };
+
   /*
     Take the complement of a NFA
   */

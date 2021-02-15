@@ -20,10 +20,13 @@ $(document).ready(function(){
 
 	//var combine = function(jsav, newOne, other, opts);
 	//figure1.hide();
-	figure1 = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 500, width: 500});
-
-	figure2.hide();
 	
+	figure2.hide();
+	figure1.hide();
+	var combined = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 500, width: 500});
+
+	av.step();
+
 	av.recorded();
 	/*
 	
