@@ -12,7 +12,8 @@
 <body data-height="400" data-width="970" data-canvas-height="1400">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("f2020p9PPRO","imperial",1400)</var>
+      <!-- <var id="JSAV">mechSolverCommon.initJSAV("f2020p9PPRO","imperial",1400)</var> -->
+      <var id="JSAV">mechSolverCommon.initJSAV("f2020p9PPRO","SI",1400)</var>
     </div>
 
     <div class="problems">
@@ -20,21 +21,32 @@
         <p class="problem">
           The bar BC shown in the figure has a diameter
           
-          <span class="param" id="param" 
+          <!-- <span class="param" id="param" 
           data-value="2" 
           data-unit="in" 
           data-value-display="2"
           data-unit-display="in" 
-          data-domain="length">2 inches</span>
+          data-domain="length">2 inches</span> -->
+          <span class="param" id="param" 
+          data-value="4" 
+          data-unit="cm" 
+          data-value-display="4"
+          data-unit-display="cm" 
+          data-domain="length">4 cm</span>
           
           and its ultimate tensile stress is 
           
-          <span class="param" id="param" 
+          <!-- <span class="param" id="param" 
           data-value="30" 
           data-unit="ksi" 
           data-value-display="30"
           data-unit-display="ksi" 
-          data-domain="pressure">30 ksi</span>
+          data-domain="pressure">30 ksi</span> -->
+          <span class="param" id="param" 
+          data-value="30" data-unit="kPa" 
+          data-value-display="30"
+          data-unit-display="kPa" 
+          data-domain="pressure">30 kPa</span>
           
           .
         </p>
@@ -43,12 +55,17 @@
           <p class="question">
             What is the factor of safety of bar BC if the applied force is
             
-            <span class="param" id="param" 
+            <!-- <span class="param" id="param" 
             data-value="50" 
             data-unit="kip" 
             data-value-display="50"
             data-unit-display="kip" 
-            data-domain="force">50 kips</span>
+            data-domain="force">50 kips</span> -->
+            <span class="param" id="param" 
+            data-value="50" data-unit="kN" 
+            data-value-display="50"
+            data-unit-display="kN" 
+            data-domain="force">50 kN</span>
 
             ?
             <br>
@@ -58,29 +75,50 @@
           <div>
               <img class="figure1" src="./problemfigures/ph2-p9.png" style="width: 400px;" alt="description">
 
-              <div class="text-overlay param" style="width: 26px; top: -394px;right: -140px; padding: 2px 7px" 
+              <!-- <div class="text-overlay param" style="width: 26px; top: -394px;right: -140px; padding: 2px 7px" 
               id="param8" 
               data-value="12"
               data-unit="ft"
               data-value-display="12"
               data-unit-display="ft"
-              data-domain="length">12 ft</div>
+              data-domain="length">12 ft</div> -->
+              <div class="text-overlay param" style="width: 26px; top: -394px;right: -140px; padding: 2px 7px" 
+              id="param8" 
+              data-value="4"
+              data-unit="m"
+              data-value-display="4"
+              data-unit-display="m"
+              data-domain="length">4 m</div>
 
-              <div class="text-overlay param" style="width: 26px; top: -300px;right: -348px; padding: 2px 7px" 
+              <!-- <div class="text-overlay param" style="width: 26px; top: -300px;right: -348px; padding: 2px 7px" 
               id="param8" 
               data-value="5"
               data-unit="ft"
               data-value-display="5"
               data-unit-display="ft"
-              data-domain="length">5 ft</div>
+              data-domain="length">5 ft</div> -->
+              <div class="text-overlay param" style="width: 35px; top: -300px;right: -348px; padding: 2px 7px" 
+              id="param8" 
+              data-value="1.5"
+              data-unit="m"
+              data-value-display="1.5"
+              data-unit-display="m"
+              data-domain="length">1.5 m</div>
 
-              <div class="text-overlay param" style="width: 26px; top: -200px;right: -348px; padding: 2px 7px" 
+              <!-- <div class="text-overlay param" style="width: 26px; top: -200px;right: -348px; padding: 2px 7px" 
               id="param8" 
               data-value="5"
               data-unit="ft"
               data-value-display="5"
               data-unit-display="ft"
-              data-domain="length">5 ft</div>
+              data-domain="length">5 ft</div> -->
+              <div class="text-overlay param" style="width: 35px; top: -200px;right: -348px; padding: 2px 7px" 
+              id="param8" 
+              data-value="1.5"
+              data-unit="m"
+              data-value-display="1.5"
+              data-unit-display="m"
+              data-domain="length">1.5 m</div>
           </div>
         </div>
         
