@@ -1806,33 +1806,55 @@ var lambda = String.fromCharCode(955),
     }
     return cloneGraph;
   };*/
-  var combine = function(jsav, newOne, other, opts) {
+  var combine = function(jsav, newOne, other, opts, union = false) {
+    var lambda = String.fromCharCode(955)
     g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
     var otherStates = other.nodes();
     var newOneStates = newOne.nodes();
+    var newOneStart = 0;
+    var otherStart = newOneStates.length;
+    
     //var otherToNew = {};
     for(i = 0; i < newOneStates.length; i++){
       s = newOneStates[i];
-      var s1 = g.addNode({ left: s.position().left, top:s.position().top + 200});
+      var s1 = g.addNode();
       if (s.hasClass('final')){
         s1.addClass('final');
       }
+      if (s.hasClass('start')){
+        newOneStart = i;
+      }
+
 
       //otherToNew[s] = s1;
     }
     for(i = 0; i < otherStates.length; i++){
       s = otherStates[i];
-      var s1 = g.addNode({ left: s.position().left, top:s.position().top + 200});
+      var s1 = g.addNode();
       if (s.hasClass('final')){
         s1.addClass('final');
       }
-
+      if (s.hasClass('start')){
+        otherStart += i;
+      }
       //otherToNew[s] = s1;
     }
 
     otherEdges = other.edges();
     newOneEdges = newOne.edges();
     newNodes = g.nodes();
+
+    if (union){
+      var start = g.addNode();
+      g.makeInitial(start);
+      g.addEdge(start, newNodes[newOneStart] /*newNodes[newOneStates.length]*/, {weight: lambda});
+      g.addEdge(start, newNodes[otherStart] /*newNodes[0]*/, {weight: lambda});
+    }
+    else{
+      g.makeInitial(newNodes[newOneStart]);
+      g.layout();
+    }
+
     for(i = 0; i < newOneEdges.length; i++){
       e1 = newOneEdges[i];
       fromInd = newOneStates.indexOf(e1.start());
@@ -1851,8 +1873,7 @@ var lambda = String.fromCharCode(955),
       g.addEdge(newNodes[fromInd+newOneStates.length], newNodes[toInd+newOneStates.length], { weight: weight});
     }
 
-    //return g;
-    //g.updateNodes();
+    
     return g;
   };
 
@@ -1877,8 +1898,8 @@ var lambda = String.fromCharCode(955),
       }
     }
     //var nodes = g.nodes();
-    //g.layout();
-    graph.updateNodes();
+    
+    graph.layout();
     return graph;
   };
 

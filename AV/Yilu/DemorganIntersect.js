@@ -14,19 +14,41 @@ $(document).ready(function(){
     av.umsg("Start with two machines");
 	av.step();
 
+
+	//Slide 3
 	figure1=FiniteAutomaton.complement(av, figure1, {center:true, left: 10, top:0, width: 500});
 	figure2=FiniteAutomaton.complement(av, figure2, {center:true, left: 10, top:200, width: 500});
 	av.step();
 
-	//var combine = function(jsav, newOne, other, opts);
-	//figure1.hide();
-	
+
+	//Slide 4
 	figure2.hide();
 	figure1.hide();
-	var combined = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 500, width: 500});
-
+	var combined = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
 	av.step();
 
+
+	//Slide5
+	var start = combined.addNode();
+	combined.removeInitial(combined.initial);
+    combined.makeInitial(start);
+    var newOneStart = figure1.nodes().indexOf(figure1.initial);
+    var otherStart = figure2.nodes().indexOf(figure2.initial) + figure1.nodes().length;
+    combined.addEdge(start, combined.nodes()[newOneStart] /*newNodes[newOneStates.length]*/, {weight: lambda});
+    combined.addEdge(start, combined.nodes()[otherStart] /*newNodes[0]*/, {weight: lambda});
+    combined.layout();
+    av.step();
+
+    //Slide 6
+    combined.hide();
+    var dfa = FiniteAutomaton.convertNFAtoDFA(av, combined, {top: 0, left: 10, width: 500, height: 150});
+	av.step();
+
+	//Slide 7
+	var mytree = new av.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
+  	var minm = new Minimizer();
+  	var newGraphDimensions = {top: 320, left: 400, width: 400, height: 260};
+  	var minimized = minm.minimizeDFA(av, dfa, mytree, newGraphDimensions);
 	av.recorded();
 	/*
 	
