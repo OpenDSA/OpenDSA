@@ -62,6 +62,9 @@
     "required": true
   },
   "chapters": {
+    "Ko Chan Testing Book": {
+      "Kochan/TMshift": {}
+    },
     "Models of Computation": {
       "VisFormalLang/TuringIntro": {},
       "VisFormalLang/Turing": {}
