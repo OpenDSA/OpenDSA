@@ -203,6 +203,24 @@ requirejs(["./mathjs.js"], function(){});
             }
             console.log(dec);
 
+            // Record unique marker events for success or failure 
+            // to avoid having to join tables later
+            if(dec == true)
+                Window.jsavObject.logEvent({
+                    "type": "deforms-submit-answer-correct",
+                    "desc": "correct answer submitted"
+                })
+            else
+                Window.jsavObject.logEvent({
+                    "type": "deforms-submit-answer-incorrect",
+                    "desc": "incorrect answer submitted, check description for related event"
+                })
+            
+            // Regardless of success or failure, 
+            // push out the events to the server when the button is clicked
+            if(window.parent.ODSA != undefined)
+	            window.parent.ODSA.UTILS.sendEventData()
+
             Window.showBlankPrompt = false;
             JSAV.utils.dialog( feedBackText, {closeText: "OK"} 
                 )[0].querySelector("button").addEventListener("click", e=>{
@@ -243,19 +261,25 @@ requirejs(["./mathjs.js"], function(){});
         if(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe")!=null)
             Window.updateExerciseWindowHeight = function(shiftAmount) {	
                 var minWindowHeight = LTI_CANVAS_HEIGHT;
-                var currentHeight = parseInt(window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height);
-                // TODO:
+                var currentHeight = parseInt(
+                    window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise")
+                    .height
+                    );
+                // window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
+                //     Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
                 // 
                 // in ODSAMOD.js, there is ltiIframeResize()
                 // Also, there is an eventer() which receives postMessage() calls from the exercise
                 // including, requests to resize the iframe container, which also resizes the
                 // canvas page by calling ltiIframeResize() inside it.
-                // 
-                // TODO: replace this line by passing the resized page height to window.parent.postMessage()
-                // 
-                // 
-                window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
-                    Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
+                window.parent.postMessage({
+                    type: "resize-iframe",
+                    exerName: exerciseId,
+                    width: 970,
+                    height: Math.max(minWindowHeight, currentHeight+shiftAmount)
+                }, '*');
+
+                // TODO: $('.content') can be addressed to change height
             }
         else Window.updateExerciseWindowHeight = function() {} ;
         Window.eqbank = new EquationBank(av, CANVAS_DIMENSIONS);

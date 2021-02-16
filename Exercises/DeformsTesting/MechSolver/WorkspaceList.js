@@ -67,7 +67,7 @@ class WorkspaceList
             // e.stopPropagation();
             e.stopImmediatePropagation();
             this.addNewWorkspace();
-            this.globalJSAVobject.logEvent({type: "adding new workspace", "id": this.workspaceCounter-1});
+            this.globalJSAVobject.logEvent({type: "adding new workspace", desc: `Added workspace ${this.workspaceCounter-1}`});
             // console.log(this.globalJSAVobject);
         });
 
@@ -88,7 +88,7 @@ class WorkspaceList
             // e.stopPropagation();
             e.stopImmediatePropagation();
             Window.showHelp("general", null);
-            this.globalJSAVobject.logEvent({type: "getting help from the workspace", "id": this.workspaceCounter-1});
+            this.globalJSAVobject.logEvent({type: "getting help from the workspace", desc: `workspace help from no. ${this.workspaceCounter-1}`});
             // console.log(this.globalJSAVobject);
         });
         
@@ -121,13 +121,13 @@ class WorkspaceList
             this.updateShape();
         });
 
-	// TODO: Clean this up and replace with call to WindowManager functions
+	    // TODO: Clean this up and replace with call to WindowManager functions
         // Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);
         // console.log(document.styleSheets[2].rules[0].style.height);
         document.styleSheets[2].rules[0].style.height = 
         Math.max(600, (this.DIMENSIONS["HEIGHT"] + this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"])) + "px";
 	
-	Window.updateExerciseWindowHeight(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"]);
+	    Window.updateExerciseWindowHeight(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"]);
     }
     updateShape()
     {
