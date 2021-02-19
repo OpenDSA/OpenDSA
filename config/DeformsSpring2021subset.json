@@ -65,13 +65,11 @@
   "chapters": {
     "Deforms Problems": {
       "DeformsTesting/deformsf2020p5": {},
+      "DeformsTesting/deformsf2020p10": {},
       "DeformsTesting/DeformsExample": {},
-      "DeformsTesting/DeformsDifficultExample": {},
-      "DeformsTesting/deformsf2020p3": {},
       "DeformsTesting/deformsf2020p1": {},
-      "DeformsTesting/deformsf2020p7": {},
-      "DeformsTesting/deformsf2020p9": {},
-      "DeformsTesting/deformsf2020p10": {}
+      "DeformsTesting/DeformsDifficultExample": {},
+      "DeformsTesting/deformsf2020p3": {}
     }
   }
 }
