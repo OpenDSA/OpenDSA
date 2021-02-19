@@ -210,7 +210,7 @@ tm.initFromXML = function(text) {
   }
   var nodeMap = {};     // map node IDs to nodes
   var xmlStates = xmlDoc.getElementsByTagName("state");
-  xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
+  xmlStates = sortBy(xmlStates, function(x) {return x.id;})//xmlStates = _.sortBy(xmlStates, function(x) {return x.id;})
   var xmlTrans = xmlDoc.getElementsByTagName("transition");
   for (var i = 0; i < xmlStates.length; i++) {
     var x = Number(xmlStates[i].getElementsByTagName("x")[0].childNodes[0].nodeValue);

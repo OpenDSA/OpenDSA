@@ -210,6 +210,7 @@
 
     while (initialArray[low] < key && initialArray[high] >= key) {
       // highlight guesstimate
+      //mid = intersectionX(low, high);
       mid = intersectionX(low, high);
       mid = Math.floor(mid * 100) / 100;
       jsav.umsg(interpret("av_ms_intersect"), {fill: {

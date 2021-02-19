@@ -1826,7 +1826,8 @@ var lambda = String.fromCharCode(955),
         var letter = alphabet[i];
         var next = [];
         for (var j = 0; j < valArr.length; j++) {
-          next = _.union(next, lambdaClosure(graph.transitionFunction(graph.getNodeWithValue(valArr[j]), letter), graph));
+          //next = _.union(next, lambdaClosure(graph.transitionFunction(graph.getNodeWithValue(valArr[j]), letter), graph));
+          next = union(next, lambdaClosure(graph.transitionFunction(graph.getNodeWithValue(valArr[j]), letter), graph));
         }
         var nodeName = next.sort().join();
         var node;
@@ -1898,7 +1899,8 @@ var lambda = String.fromCharCode(955),
     for (var i = 0; i < input.length; i++) {
       arr.push(input[i]);
       var next = graph.transitionFunction(graph.getNodeWithValue(input[i]), lambda);
-      arr = _.union(arr, next);
+      //arr = _.union(arr, next);
+      arr = union(arr, next);
     }
     var temp = arr.slice(0);
     while (temp.length > 0) {
@@ -3365,7 +3367,8 @@ function getRandomInt(max) {
         nObj[next[0]].push(node.value());
       }
       var nArr = Object.keys(nObj);
-      if (!_.find(leaves, function (v) { return _.difference(nArr, v.split(',')).length === 0 })) {
+      if (!find(leaves, function (v) { return _.difference(nArr, v.split(',')).length === 0 })) {
+      //if (!_.find(leaves, function (v) { return _.difference(nArr, v.split(',')).length === 0 })) {
         break;
       } else if (k === this.alphabet.length - 1) {
         //this.selectedNode.unhighlight();
@@ -3686,7 +3689,8 @@ function getRandomInt(max) {
       newStates.push(productions[i][0]);
       newStates = newStates.concat(_.filter(productions[i][2], function (x) { return variables.indexOf(x) !== -1; }));
     }
-    newStates = _.uniq(newStates);
+    //newStates = _.uniq(newStates);
+    newStates = uniq(newStates);
     // create FA states
     for (var i = 0; i < newStates.length; i++) {
       var n = this.builtDFA.addNode({ value: newStates[i] });

@@ -233,9 +233,11 @@ if computational complexity is a concern, should be changed to use a union-find 
 			if (selectedNode.value() === "") {
 				selectedNode.value(this.value());
 			} else if (_.contains(values, this.value())) {
-				selectedNode.value(_.without(values, this.value()).join());
+				//selectedNode.value(_.without(values, this.value()).join());
+				selectedNode.value(withOut(values, this.value()).join());
 			} else {
-				selectedNode.value(_.union(values, [this.value()]).sort().join());
+				//selectedNode.value(_.union(values, [this.value()]).sort().join());
+				selectedNode.value(union(values, [this.value()]).sort().join());
 			}
 			bt.layout();
 		}

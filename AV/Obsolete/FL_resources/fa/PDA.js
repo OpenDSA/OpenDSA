@@ -213,7 +213,8 @@ pda.traverse = function(currentStates) {
       }
     }
   }
-  nextStates = _.each(nextStates, function(x) {return x.toString();});
+  //nextStates = _.each(nextStates, function(x) {return x.toString();});
+  nextStates =each(nextStates, function(x) {return x.toString();});
   nextStates = this.addLambdaClosure(nextStates);
   return nextStates;
 };

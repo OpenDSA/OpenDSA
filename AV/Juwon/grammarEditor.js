@@ -277,7 +277,8 @@ $(document).ready(function () {
     }
     var firsts = {};
     var follows = {};
-    var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
+    //var productions = _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
+    var productions = map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
     if (productions.length === 0) {
       alert('No grammar.');
       return;

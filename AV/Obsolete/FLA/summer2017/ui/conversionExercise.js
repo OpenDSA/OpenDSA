@@ -180,7 +180,8 @@ var correctSteps = 0,
 			 if (expandT === null) {
 				 this.unhighlight();
 				 return;
-			 } else if (!_.contains(alphabet, expandT)) {
+			 } else if (!contains(alphabet, expandT)) {
+			 //} else if (!_.contains(alphabet, expandT)) {
 				 alert("That terminal is not in the alphabet!");
 				 incorrectSteps++;
 			 	 studentScore -= 0.25;
