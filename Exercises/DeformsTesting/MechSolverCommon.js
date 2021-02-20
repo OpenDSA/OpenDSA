@@ -265,13 +265,18 @@ requirejs(["./mathjs.js"], function(){});
                     window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise")
                     .height
                     );
-                // window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
-                //     Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
+                // IMPORTANT: Removing this line for some reason doesn't let the canvas area increase, so keep this.
+                window.parent.document.querySelector("iframe#"+exerciseId+"_iframe.embeddedExercise").height = 
+                    Math.max(minWindowHeight, currentHeight+shiftAmount) + "px";
                 // 
                 // in ODSAMOD.js, there is ltiIframeResize()
                 // Also, there is an eventer() which receives postMessage() calls from the exercise
                 // including, requests to resize the iframe container, which also resizes the
                 // canvas page by calling ltiIframeResize() inside it.
+                
+                // DEBUG
+                // console.log(window.parent);
+                
                 window.parent.postMessage({
                     type: "resize-iframe",
                     exerName: exerciseId,
