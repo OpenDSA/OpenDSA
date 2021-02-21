@@ -18,40 +18,55 @@ $(document).ready(function(){
 	//Slide 3
 	figure1=FiniteAutomaton.complement(av, figure1, {center:true, left: 10, top:0, width: 500});
 	figure2=FiniteAutomaton.complement(av, figure2, {center:true, left: 10, top:200, width: 500});
+	av.umsg("Take complement of the two machines");
 	av.step();
 
 
 	//Slide 4
-	figure2.hide();
-	figure1.hide();
-	var combined = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
-	av.step();
-
-
+	var combined = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750});	
+	var nodes = figure1.nodes();
+	for (var next = nodes.next(); next; next = nodes.next()) {
+      figure1.removeNode(next);
+    }
+    nodes = figure2.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      figure2.removeNode(next);
+    }
+    av.step();
 	//Slide5
 	var start = combined.addNode();
 	combined.removeInitial(combined.initial);
     combined.makeInitial(start);
-    var newOneStart = figure1.nodes().indexOf(figure1.initial);
-    var otherStart = figure2.nodes().indexOf(figure2.initial) + figure1.nodes().length;
-    combined.addEdge(start, combined.nodes()[newOneStart] /*newNodes[newOneStates.length]*/, {weight: lambda});
-    combined.addEdge(start, combined.nodes()[otherStart] /*newNodes[0]*/, {weight: lambda});
+    combined.addEdge(start, combined.nodes()[0] /*newNodes[newOneStates.length]*/, {weight: lambda});
+    combined.addEdge(start, combined.nodes()[3] /*newNodes[0]*/, {weight: lambda});
     combined.layout();
+    av.umsg("Combine the two machines into one machine and take the union of them");
     av.step();
 
     //Slide 6
     combined.hide();
     var dfa = FiniteAutomaton.convertNFAtoDFA(av, combined, {top: 0, left: 10, width: 500, height: 150});
+    dfa.layout();
+    av.umsg("Convert the NFA machine to DFA")
 	av.step();
-
+	
 	//Slide 7
 	var mytree = new av.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
+	mytree.hide();
+  	combined.hide();
   	var minm = new Minimizer();
-  	var newGraphDimensions = {top: 320, left: 400, width: 400, height: 260};
-  	var minimized = minm.minimizeDFA(av, dfa, mytree, newGraphDimensions);
-	av.recorded();
+  	var minized = minm.minimizeDFA(av, dfa, mytree, {left: 10, top:0, height: 450, width: 750}, false);
+  	minized.layout();
+  	av.umsg("Then, minimize the DFA");
+  	av.step();
+
+  	//Slide 8
+  	s = minized.initial;
+  	minized = FiniteAutomaton.complement(av, minized, {left: 10, top:0, height: 450, width: 750});
+    minized.makeInitial(s);
+  	av.umsg("Finaly, take the complement of the minimized DFA so we will get the intersection");
+  	av.recorded();
 	/*
-	
 	//Slide 3
 	figure1.hide();
 	var urlLinkStep2 = "../../../AV/Yilu/figure2.jff";

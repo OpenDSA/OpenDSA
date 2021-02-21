@@ -3277,24 +3277,21 @@ function getRandomInt(max) {
 
   var minimizer = Minimizer.prototype;
   window.Minimizer = Minimizer;
-  minimizer.minimizeDFA = function (jsav, referenceGraph, tree, newGraphDimensions) {
-    this.init(jsav, referenceGraph, tree);
+  /*
+  minimizer.minizeDFAClean = function (jsav, graph, tree,  newGraphDimensions ) {
+    this.init(jsav, referenceGraph, tree, display);
     var listOfVisitedLeaves = [];
     var listOfLeaves = this.getLeaves(this.tree.root());
     var leaf;
     var moreToSplit = true;
-    this.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
-    while (moreToSplit) {
+    while(moreToSplit){
       moreToSplit = null;
       for (var i = 0; i < listOfLeaves.length; i++) {
         listOfVisitedLeaves = listOfVisitedLeaves.concat(listOfLeaves);
-        this.jsav.step();
-        this.unhighlightAllTreeNodes(this.tree);
-        this.unhighlightAll(this.referenceGraph);
         leaf = listOfLeaves[i];
         var leafTreeNode = getTreeNode(leaf, this.tree.root());
         leafTreeNode.highlight();
-        var split = this.autoPartition(leaf);
+        var split = this.autoPartition(leaf, display);
         if (moreToSplit !== null)
           moreToSplit = split || moreToSplit;
         else
@@ -3302,14 +3299,53 @@ function getRandomInt(max) {
       }
       listOfLeaves = _.difference(this.getLeaves(this.tree.root()), listOfVisitedLeaves);
     }
-    this.jsav.step();
-    this.unhighlightAllTreeNodes(this.tree);
-    this.unhighlightAll(this.referenceGraph);
-    this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
-    this.jsav.step();
-    return this.done(newGraphDimensions);
   }
-  minimizer.init = function (jsav, referenceGraph, tree) {
+  */
+  minimizer.minimizeDFA = function (jsav, referenceGraph, tree, newGraphDimensions, display=true) {
+    this.init(jsav, referenceGraph, tree, display);
+    var listOfVisitedLeaves = [];
+    var listOfLeaves = this.getLeaves(this.tree.root());
+    var leaf;
+    var moreToSplit = true;
+    if (display)
+      this.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
+    while (moreToSplit) {
+      moreToSplit = null;
+      for (var i = 0; i < listOfLeaves.length; i++) {
+        listOfVisitedLeaves = listOfVisitedLeaves.concat(listOfLeaves);
+        if (display){
+          this.jsav.step();
+          this.unhighlightAllTreeNodes(this.tree);
+          this.unhighlightAll(this.referenceGraph);
+        }
+        leaf = listOfLeaves[i];
+        var leafTreeNode = getTreeNode(leaf, this.tree.root());
+        leafTreeNode.highlight();
+        var split = this.autoPartition(leaf, display);
+        if (moreToSplit !== null)
+          moreToSplit = split || moreToSplit;
+        else
+          moreToSplit = split;
+      }
+      listOfLeaves = _.difference(this.getLeaves(this.tree.root()), listOfVisitedLeaves);
+    }
+    if (display){
+      this.jsav.step();
+      this.unhighlightAllTreeNodes(this.tree);
+      this.unhighlightAll(this.referenceGraph);
+      this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
+      this.jsav.step();
+    }
+    /*nodes = figure2.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      figure2.removeNode(next);
+    }
+
+    */
+
+    return this.done(newGraphDimensions, display);
+  }
+  minimizer.init = function (jsav, referenceGraph, tree, display=true) {
     this.selectedNode = null;
     this.jsav = jsav;
     this.referenceGraph = referenceGraph;
@@ -3323,20 +3359,22 @@ function getRandomInt(max) {
     this.addTrapState();
     var val = this.getReachable();
     this.initTree(val);
-    this.jsav.umsg("Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.")
-    this.jsav.step();
-    this.jsav.umsg("These are the nonfinal states.")
-    highlightAllNodes(this.nonfinals, this.referenceGraph);
-    getTreeNode(this.nonfinals.sort().join(), this.tree.root()).highlight();
-    this.jsav.step();
-    this.unhighlightAllTreeNodes(this.tree);
-    this.unhighlightAll(this.referenceGraph);
-    this.jsav.umsg("These are the final states.")
-    highlightAllNodes(this.finals, this.referenceGraph);
-    getTreeNode(this.finals.sort().join(), this.tree.root()).highlight();
-    this.jsav.step();
-    this.unhighlightAllTreeNodes(this.tree);
-    this.unhighlightAll(this.referenceGraph);
+    if (display){
+      this.jsav.umsg("Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.")
+      this.jsav.step();
+      this.jsav.umsg("These are the nonfinal states.")
+      highlightAllNodes(this.nonfinals, this.referenceGraph);
+      getTreeNode(this.nonfinals.sort().join(), this.tree.root()).highlight();
+      this.jsav.step();
+      this.unhighlightAllTreeNodes(this.tree);
+      this.unhighlightAll(this.referenceGraph);
+      this.jsav.umsg("These are the final states.")
+      highlightAllNodes(this.finals, this.referenceGraph);
+      getTreeNode(this.finals.sort().join(), this.tree.root()).highlight();
+      this.jsav.step();
+      this.unhighlightAllTreeNodes(this.tree);
+      this.unhighlightAll(this.referenceGraph);
+    }
   }
 
   // minimizing DFA needs a complete FA, so this function adds trap states
@@ -3450,7 +3488,7 @@ function getRandomInt(max) {
       node.unhighlight();
     })
   };
-  minimizer.autoPartition = function (treeNode) {
+  minimizer.autoPartition = function (treeNode, display = true) {
     var leaves = this.getLeaves(this.tree.root());
     var val = treeNode.split(','); //this.selectedNode.value().split(',');
     var nObj = {},
@@ -3472,11 +3510,13 @@ function getRandomInt(max) {
       if (!_.find(leaves, function (v) { return _.difference(nArr, v.split(',')).length === 0 })) {
         break;
       } else if (k === this.alphabet.length - 1) {
-        //this.selectedNode.unhighlight();
-        this.unhighlightAll(this.referenceGraph);
-        //this.selectedNode = null;
-        this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
-        highlightAllNodes(treeNode.split(','), this.referenceGraph);
+        if (display){
+          //this.selectedNode.unhighlight();
+          this.unhighlightAll(this.referenceGraph);
+          //this.selectedNode = null;
+          this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
+          highlightAllNodes(treeNode.split(','), this.referenceGraph);
+        }
         return false;
       }
     }
@@ -3506,15 +3546,17 @@ function getRandomInt(max) {
         nodeListAsString += "Node " + nVal;
       }
     }
-    nodeListAsString = listOFNodesToString(nodeListAsString);
-    nodeListAsString += " by using the transition label " + letter;
-    this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will be divided into " + nodeListAsString + ".");
-    highlightAllNodes(treeNode.split(','), this.referenceGraph);
-    //this.unhighlightAll(this.referenceGraph);
-    this.tree.layout();
+    if (display){
+      nodeListAsString = listOFNodesToString(nodeListAsString);
+      nodeListAsString += " by using the transition label " + letter;
+      this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will be divided into " + nodeListAsString + ".");
+      highlightAllNodes(treeNode.split(','), this.referenceGraph);
+      //this.unhighlightAll(this.referenceGraph);
+      this.tree.layout();
+    }
     return true;
   };
-  minimizer.done = function (newGraphDimensions) {
+  minimizer.done = function (newGraphDimensions, display = true) {
     var leaves = this.getLeaves(this.tree.root());
     for (var i = 0; i < leaves.length; i++) {
       var leaf = leaves[i].split(',');
@@ -3587,13 +3629,15 @@ function getRandomInt(max) {
         next.weight().split("<br>"));
     }
     graph.layout();
-    this.jsav.step();
-    //graph.click(nodeClickHandlers);
-    this.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
-    studentGraph = graph;
-    return this.complete(graph);
+    if (display){
+      this.jsav.step();
+      //graph.click(nodeClickHandlers);
+      this.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
+      studentGraph = graph;
+    }
+    return this.complete(graph, display);
   };
-  minimizer.complete = function (studentGraph) {
+  minimizer.complete = function (studentGraph, display = true) {
     for (var i in this.minimizedEdges) {
       for (var j in this.minimizedEdges[i]) {
         var n1 = studentGraph.getNodeWithValue(i),
@@ -3603,6 +3647,12 @@ function getRandomInt(max) {
         if (newEdge) {
           newEdge.layout();
         }
+      }
+    }
+    if (!display){
+      oldNodes = this.referenceGraph.nodes();
+      for(var next = oldNodes.next(); next; next = oldNodes.next()){
+        this.referenceGraph.removeNode(next);
       }
     }
     studentGraph.disableDragging();
