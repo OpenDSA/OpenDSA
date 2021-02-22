@@ -733,7 +733,7 @@ var lambda = String.fromCharCode(955),
 
 
   /*
-  *
+  * Spiral layout algorithms
   */
   automatonproto.spiralLayoutAlg = function(options) {
     var vertices = this.nodes();
@@ -741,24 +741,25 @@ var lambda = String.fromCharCode(955),
       return;
     }
     vertices.sort(function(a, b) {
-      return b.neighbors().length - a.neighbors().length
+      return b.neighbors().length - a.neighbors().length;
     });
     var r = 0;
     var theta = 0;
-    var posShift = (Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2))) + 30;
+    var posShift = (Math.sqrt(Math.pow(100, 2) + Math.pow(100, 2))) + 100;
     for (var i=0; i<this.nodeCount(); i++) {
       r = Math.sqrt(Math.pow(r, 2) + Math.pow(posShift, 2));      
       theta = theta + Math.asin(posShift / r);
       //vertices[i].moveTo(Math.cos(r * theta), Math.sin(r * theta));
       vertices[i].moveTo(r, theta);
     }
+    
+    this.shiftOntoScreen(900, 100, true);
     var edges = this.edges();
     var edge;
     while (edges.hasNext()) {
       edge = edges.next();
       edge.layout();
     }
-    this.shiftOntoScreen(900, 30, true);
 
   };
   automatonproto.shiftOntoScreen = function(size, buffer, scaleOnlyOverflow) {
