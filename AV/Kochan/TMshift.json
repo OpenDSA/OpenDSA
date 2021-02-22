@@ -17,7 +17,7 @@
       "q3": {
         "type": "select",
         "description": "Before we start, let's take a look at the below turing machine and answer a question on the right.",
-        "question": "Which state is the initial state of this turing machine.",
+        "question": "Which machine is the initial machine of this turing machine.",
         "answer": [
           "$>L_{\\#}$"
         ],
@@ -29,7 +29,7 @@
       },
       "q4": {
         "type": "true/false",
-        "description": "Your classmate Alan says that the initial state <font color='red'>$>L_{\\#}$</font> means we need to go to the closest space (denoted by #) on the left, from the head.",
+        "description": "Your classmate Alan says that the initial machine <font color='red'>$>L_{\\#}$</font> means we need to go to the closest space (denoted by #) on the left, from the head.",
         "question": "Is that a true statement?",
         "answer": [
           "True"
@@ -39,8 +39,8 @@
       },
       "q6": {
         "type": "select",
-        "description": "We move to the next state <font color='red'>$R$</font> following the arrow direction. ",
-        "question": "What does the <font color='red'>$R$</font> state means?",
+        "description": "We move to the next machine <font color='red'>$R$</font> following the arrow direction. ",
+        "question": "What does the <font color='red'>$R$</font> machine means?",
         "answer": [
           "moving from the current tape cell to the right tape cell."
         ],
@@ -66,20 +66,20 @@
       },
       "q9": {
         "type": "select",
-        "description": "Well Done! The current tape cell contains 'a' rather than '#', so we are following the right arrow to the next state <font color='red'>$L$</font>.",
-        "question": "What does the <font color='red'>$L$</font> state mean?",
+        "description": "Well Done! The current tape cell contains 'a' rather than '#', so we are following the right arrow to the next machine <font color='red'>$L$</font>.",
+        "question": "What does the <font color='red'>$L$</font> machine mean?",
         "answer": [
           "<font color='red'>$L$</font> means going to one cell on the left."
         ],
         "choices": [
           "<font color='red'>$L$</font> means going to one cell on the left.",
-          "<font color='red'>$L$</font> means going back to the previous state of the turing machine.",
+          "<font color='red'>$L$</font> means going back to the previous machine of the turing machine.",
           "<font color='red'>$L$</font> means going to the closest empty cell on the left."
         ]
       },
       "q11": {
         "type": "select",
-        "description": "Now we move to the state Sigma(<font color='red'>$\\sigma$</font>). <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
+        "description": "Now we move to the machine Sigma(<font color='red'>$\\sigma$</font>). <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
         "question": "What value should you write to the current tape cell?",
         "answer": [
           "a"
@@ -93,7 +93,7 @@
       },
       "q17": {
         "type": "select",
-        "description": "Now we move to the state Sigma(<font color='red'>$\\sigma$</font>). <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
+        "description": "Now we move to the machine Sigma(<font color='red'>$\\sigma$</font>). <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
         "question": "What value should you write to the current tape cell?",
         "answer": [
           "b"
@@ -107,7 +107,7 @@
       },
       "q18": {
         "type": "select",
-        "description": "Now we move to the state Sigma(<font color='red'>$\\sigma$</font>). <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
+        "description": "Now we move to the machine Sigma(<font color='red'>$\\sigma$</font>). <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
         "question": "What value should you write to the current tape cell?",
         "answer": [
           "c"
@@ -136,14 +136,14 @@
       },
       "q23": {
         "type": "select",
-        "description": "Is the current tape cell a space (i.e. #)?<br>Yes, the current tape cell is #, so we follow the # direction to go to the <font color='red'>$L\\#$</font> state. <br>",
+        "description": "Is the current tape cell a space (i.e. #)?<br>Yes, the current tape cell is #, so we follow the # direction to go to the <font color='red'>$L\\#$</font> machine. <br>",
         "question": "Now, what does the <font color='red'>$L\\#$</font> mean?",
         "answer": [
           "<font color='red'>$L\\#$</font> means going to one cell on the left, and then change the cell to #."
         ],
         "choices": [
           "<font color='red'>$L\\#$</font> means going to one cell on the left, and then change the cell to #.",
-          "<font color='red'>$L\\#$</font> means going back to the previous state of the turing machine.",
+          "<font color='red'>$L\\#$</font> means going back to the previous machine of the turing machine.",
           "<font color='red'>$L\\#$</font> means going to the closest empty cell on the left."
         ]
       }
