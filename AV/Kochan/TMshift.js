@@ -42,7 +42,7 @@ $(document).ready(function() {
     av.displayInit();
 
     // Slide 1.1
-    av.umsg(Frames.addQuestion("q1"));
+    // av.umsg(Frames.addQuestion("q1"));
     av.step();
     // Slide 2
     av.umsg("Let's make a tape to keep track of this shift machine. The highlighted cell is the head.");
@@ -231,12 +231,12 @@ $(document).ready(function() {
     // Slide 24
     tape.moveLeft();
     tape.arr.value(tape.current, "#");
-    tape.unhighlightCurrent();
+    // tape.unhighlightCurrent();
     h1.css({'color':'black'});
     l2.css({'color':'black'});
     av.label("Initial Tape: ", {top: 140, left: 180});
     av.label("Final Tape: ", {top: 190, left: 180});
-    var tape1 = av.ds.tape(["#", "#", "a", "b", "c", "#"], 300, 155, "both", -2);
+    var tape1 = av.ds.tape(["#", "#", "a", "b", "c", "#"], 300, 155, "both", 5);
     // tape1.unhighlightCurrent();
 
     av.umsg("We successfully shift the string 'abc' to the left by one tape cell.");
