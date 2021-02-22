@@ -15,5 +15,5 @@ Visualization of Shift Machine
 
 .. inlineav:: TMshift ss
    :links: AV/Kochan/TMshift.css
-   :scripts: AV/Kochan/TMshift.js AV/Juwon/FAcopy.js
+   :scripts: AV/Kochan/TMshift.js AV/Juwon/FAcopy.js DataStructures/PIFrames.js
    :output: show
