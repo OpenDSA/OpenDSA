@@ -523,7 +523,8 @@ var exerciseLocation;
   var circleLayout = function() {
     removeModeClasses();
     removeND();
-    layoutCircle(0, Math.PI, 2*Math.PI);
+    g.layout({layout: "layered"});
+    //layoutCircle(100, Math.PI, 2*Math.PI);
   };
 
   //layout in Circle
@@ -541,6 +542,7 @@ var exerciseLocation;
       }
       return;
     }
+    //var radius = diagonalLength / thetaDivision;
     var startTheta;
     var thetaDivision;
     var divisions;
@@ -558,7 +560,7 @@ var exerciseLocation;
     }
 
 
-  }
+  };
   // Triggered by clicking the "GEM" button.
   var gemLayout = function() {
     removeModeClasses();
@@ -570,7 +572,7 @@ var exerciseLocation;
   var spiralLayout = function() {
     removeModeClasses();
     removeND();
-    g.layout();
+    g.spiralLayoutAlg();
   };
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
