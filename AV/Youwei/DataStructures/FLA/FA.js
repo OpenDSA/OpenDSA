@@ -743,9 +743,26 @@ var lambda = String.fromCharCode(955),
     if (this.nodeCount() == 0) {
       return;
     }
+    /*
     vertices.sort(function(a, b) {
       return b.neighbors().length - a.neighbors().length;
     });
+    */
+    vertices.sort(function(a, b) {
+      var degreea = 0;
+      var degreeb = 0;
+      for (var q = 0; q < vertices.length; q++) {
+        if (a.edgeTo(vertices[q])) {
+          degreea++;
+        }
+        if (b.edgeTo(vertices[q])) {
+          degreeb++;
+        }
+      }
+      console.log(degreeb - degreea);
+      return degreeb - degreea;
+    });
+    
     var r = 0;
     var theta = 0;
     var posShift = (Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2))) + 30;
@@ -765,6 +782,19 @@ var lambda = String.fromCharCode(955),
     }
 
   };
+  automatonproto.findDegree = function(node) {
+    var vertices = this.nodes();
+    var degree = 0;
+    for (var q= 0; q < this.nodeCount(); q++) {
+      if (this.hasEdge(vertices[q], node)) {
+        degree++;
+      }
+    }
+    if (this.hasEdge(node, node)) {
+      degree++;
+    }
+    return degree;
+  }
   automatonproto.shiftOntoScreen = function(size, buffer, scaleOnlyOverflow) {
     if (size == 0) {
       return;
