@@ -731,7 +731,10 @@ var lambda = String.fromCharCode(955),
     return ret;
   };
 
-
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
   /*
   * Spiral layout algorithms
   */
@@ -745,15 +748,15 @@ var lambda = String.fromCharCode(955),
     });
     var r = 0;
     var theta = 0;
-    var posShift = (Math.sqrt(Math.pow(100, 2) + Math.pow(100, 2))) + 100;
+    var posShift = (Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2))) + 30;
     for (var i=0; i<this.nodeCount(); i++) {
       r = Math.sqrt(Math.pow(r, 2) + Math.pow(posShift, 2));      
       theta = theta + Math.asin(posShift / r);
-      //vertices[i].moveTo(Math.cos(r * theta), Math.sin(r * theta));
-      vertices[i].moveTo(r, theta);
+      vertices[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+      //vertices[i].moveTo(r, theta);
     }
     
-    this.shiftOntoScreen(900, 100, true);
+    this.shiftOntoScreen(900, 30, true);
     var edges = this.edges();
     var edge;
     while (edges.hasNext()) {
@@ -862,6 +865,10 @@ var lambda = String.fromCharCode(955),
     }
   };
   */
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////
 
   // function to hide the right click menu
   // called when mouse clicks on anywhere on the page except the menu
