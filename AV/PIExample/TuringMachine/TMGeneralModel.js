@@ -15,11 +15,11 @@ $(document).ready(function () {
   //frame 1
   av.umsg("So far we have seen a few simple machine types, such as DFA, NFA, PDA, RegEx.");
   av.displayInit();
-  
+
   //frame 2
   av.umsg(Frames.addQuestion("q2"));
   av.step();
-  
+
   //frame 3
   av.umsg(Frames.addQuestion("q3"));
   av.step();
@@ -67,12 +67,12 @@ $(document).ready(function () {
   //frame 14
   av.umsg(Frames.addQuestion("q14"));
   av.step();
-  
+
   //frame 15
   av.umsg(Frames.addQuestion("q15"));
   var tempTape = av.ds.tape(["", "", "", "", "", "", "", ""], 50, 70, "both");
   av.step();
-  
+
   //frame 16
   av.umsg(Frames.addQuestion("q16"));
   av.step();
@@ -107,7 +107,7 @@ $(document).ready(function () {
 
   //frame 22
   av.umsg(Frames.addQuestion("q22"));
-  var url = "../../../../AV/OpenFLAP/Machines/TM/TMexample1.jff";
+  var url = "../../../../AV/OpenFLAP/machines/TM/TMexample1.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, top:300, url: url});
   av.step();
 
@@ -127,7 +127,7 @@ $(document).ready(function () {
   g.push(p4);
   node[0].highlight();
   av.step();
-  
+
   //frame 25
   av.umsg(Frames.addQuestion("q25"));
   av.step();
@@ -186,13 +186,13 @@ $(document).ready(function () {
   node[0].unhighlight();
   node[1].highlight();
   av.step();
-  
+
   //frame 33
   av.umsg(Frames.addQuestion("q33"));
   p4.hide();
   var lastArrow = av.g.line(570 + xStart, 195 + yStart, 540 + xStart, 240, {"arrow-end": "classic-wide-long"});
   av.step();
-  
+
   //frame 34
   av.umsg(Frames.addQuestion("q34"));
   lastArrow.hide();
@@ -246,7 +246,7 @@ $(document).ready(function () {
   tm.hide();
   tape.hide();
   av.step();
-  
+
   //frame 46
   av.umsg("To do computation, we have to have some conventions about starting and ending the process. The machine stops immediately if (1) it enters any final state, or (2) it is in a state and scans a character for which there is no transition. (Note that there are many ways to define Turing Machines, and some definitions require an explicit reject state. We do not.)");
   av.step();
@@ -273,7 +273,7 @@ $(document).ready(function () {
 
   //frame 52
   av.umsg("Here is the graphical view of the machine.");
-  var url = "../../../../AV/OpenFLAP/Machines/TM/TMabc.jff";
+  var url = "../../../../AV/OpenFLAP/machines/TM/TMabc.jff";
   var graph1 = av.ds.TM({left: 100, top: 200, width: 600, height: 325, url: url});
   av.step();
 
