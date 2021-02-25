@@ -354,7 +354,10 @@ def initialize_conf_py_options(config, slides):
     options['tabbed_code'] = config.tabbed_codeinc
     options['code_lang'] = json.dumps(config.code_lang)
     options['text_lang'] = json.dumps(config.lang)
-
+    if config.sphinx_debug:
+        options['sphinx_options'] = '-E -P'
+    else:
+        options['sphinx_options'] = ''
 
     #Adding multiple tags support
     if config.tag:
