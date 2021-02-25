@@ -30,7 +30,7 @@ import datetime
 import re
 import codecs
 from string import whitespace as ws
-from config_templates import *
+import config_templates
 from collections import OrderedDict
 
 # Prints the given string to standard error
@@ -369,10 +369,10 @@ class ODSA_RST_Module:
             header_data['mod_options'] = format_mod_options(mod_options)
             header_data['build_cmap'] = str(config.build_cmap).lower()
             # Include an empty unicode directive when building slides
-            header_data['unicode_directive'] = rst_header_unicode if os.environ.get(
+            header_data['unicode_directive'] = config_templates.rst_header_unicode if os.environ.get(
                 'SLIDES', None) == "no" else ''
             # Prepend the header data to the exisiting module data
-            mod_data.insert(0, rst_header % header_data)
+            mod_data.insert(0, config_templates.rst_header % header_data)
 
             avmetadata_found = False
 
@@ -887,7 +887,7 @@ class ODSA_RST_Module:
                 pattern, "", module_name.lower().replace(' ', '-').replace('\'', '-'))
             footer_data['sections'] = [re.sub(pattern, "", sec.lower().replace(' ', '-').replace('\'', '-'))
                                        for sec in sections]
-            mod_data.insert(0, rst_footer % footer_data)
+            mod_data.insert(0, config_templates.rst_footer % footer_data)
 
             # Write the contents of the module file to the output src directory
             with codecs.open(''.join([config.book_src_dir, mod_name, '.rst']), 'w', 'utf-8') as mod_file:

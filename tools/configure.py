@@ -41,7 +41,7 @@ import simple2full
 
 from collections.abc import Iterable
 from argparse import ArgumentParser
-from config_templates import *
+import config_templates
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
 from postprocessor import update_TOC, update_TermDef, make_lti
@@ -235,12 +235,12 @@ def generate_index_rst(config, slides=False, standalone_modules=False):
     header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
     header_data['mod_options'] = ''
     header_data['build_cmap'] = str(config.build_cmap).lower()
-    header_data['unicode_directive'] = rst_header_unicode if not slides else ''
+    header_data['unicode_directive'] = config_templates.rst_header_unicode if not slides else ''
 
     # Generate the index.rst file
     with codecs.open(config.book_src_dir + 'index.rst', 'w+', "utf-8") as index_rst:
-        index_rst.write(index_header.format(config.start_chap_num))
-        index_rst.write(rst_header % header_data)
+        index_rst.write(config_templates.index_header.format(config.start_chap_num))
+        index_rst.write(config_templates.rst_header % header_data)
 
         # Process all the chapter and module information
         process_section(config, config.chapters, index_rst, 0, standalone_modules=standalone_modules)
@@ -278,9 +278,9 @@ def generate_todo_rst(config, slides=False):
         header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
         header_data['mod_options'] = ''
         header_data['build_cmap'] = str(config.build_cmap).lower()
-        header_data['unicode_directive'] = rst_header_unicode if not slides else ''
-        todo_file.write(rst_header % header_data)
-        todo_file.write(todo_rst_template)
+        header_data['unicode_directive'] = config_templates.rst_header_unicode if not slides else ''
+        todo_file.write(config_templates.rst_header % header_data)
+        todo_file.write(config_templates.todo_rst_template)
 
         current_type = ''
 
@@ -324,13 +324,13 @@ def initialize_output_directory(config):
     # Create source/_static/config.js in the output directory
     # Used to set global settings for the client-side framework
     with open(config.book_src_dir + '_static/config.js', 'w') as config_js:
-        config_js.writelines(config_js_template % config)
+        config_js.writelines(config_templates.config_js_template % config)
 
     # Create an index.html page in the book directory that redirects the user
     # to the book_output_dir
     with open(config.book_dir + 'index.html', 'w') as index_html:
         index_html.writelines(
-            index_html_template % config.rel_book_output_path)
+            config_templates.index_html_template % config.rel_book_output_path)
 
 
 def initialize_conf_py_options(config, slides):
@@ -481,11 +481,11 @@ def configure(config_file_path, options):
 
     # Create a Makefile in the output directory
     with open(config.book_dir + 'Makefile', 'w') as makefile:
-        makefile.writelines(makefile_template % options)
+        makefile.writelines(config_templates.makefile_template % options)
 
     # Create conf.py file in output source directory
     with codecs.open(config.book_src_dir + 'conf.py', 'w', "utf-8") as conf_py:
-        conf_py.writelines(conf % options)
+        conf_py.writelines(config_templates.conf % options)
 
     # Copy only the images used by the book from RST/Images/ to the book
     # source directory
