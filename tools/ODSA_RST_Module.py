@@ -372,6 +372,10 @@ class ODSA_RST_Module:
             header_data['unicode_directive'] = config_templates.rst_header_unicode if os.environ.get(
                 'SLIDES', None) == "no" else ''
             # Prepend the header data to the exisiting module data
+
+            if os.environ.get('SLIDES', None) == "yes":
+                # implicit hyperlink from '.. _%(mod_name)s:' creates a critical error when building slides
+                config_templates.rst_header = config_templates.rst_header.replace('.. _%(mod_name)s:', '.. LINK REMOVED for slides')
             mod_data.insert(0, config_templates.rst_header % header_data)
 
             avmetadata_found = False

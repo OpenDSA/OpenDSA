@@ -240,6 +240,9 @@ def generate_index_rst(config, slides=False, standalone_modules=False):
     # Generate the index.rst file
     with codecs.open(config.book_src_dir + 'index.rst', 'w+', "utf-8") as index_rst:
         index_rst.write(config_templates.index_header.format(config.start_chap_num))
+        if slides:
+            # implicit hyperlink from '.. _%(mod_name)s:' creates a critical error when building slides
+            config_templates.rst_header = config_templates.rst_header.replace('.. _%(mod_name)s:', '.. removed from slides: .. _%(mod_name)s:')
         index_rst.write(config_templates.rst_header % header_data)
 
         # Process all the chapter and module information
@@ -279,6 +282,10 @@ def generate_todo_rst(config, slides=False):
         header_data['mod_options'] = ''
         header_data['build_cmap'] = str(config.build_cmap).lower()
         header_data['unicode_directive'] = config_templates.rst_header_unicode if not slides else ''
+        if slides:
+            # implicit hyperlink from '.. _%(mod_name)s:' creates a critical error when building slides
+            config_templates.rst_header = config_templates.rst_header.replace('.. _%(mod_name)s:', '.. removed from slides: .. _%(mod_name)s:')
+            
         todo_file.write(config_templates.rst_header % header_data)
         todo_file.write(config_templates.todo_rst_template)
 
