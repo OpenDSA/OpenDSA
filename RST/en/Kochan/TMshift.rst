@@ -8,7 +8,7 @@
    :satisfies: TM Module
    :topic: TM Support
 
-TM Support
+Create Shift TM SS
 =================
 Visualization of Shift Machine
 ------------------------
