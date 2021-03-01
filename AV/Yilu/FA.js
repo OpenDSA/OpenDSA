@@ -1777,13 +1777,15 @@ var lambda = String.fromCharCode(955),
     var newOneStates = newOne.nodes();
     var newOneStart = 0;
     var otherStart = newOneStates.length;
-    
+    var newOneFinals = [];
+    var otehrFinals = [];
     //var otherToNew = {};
     for(i = 0; i < newOneStates.length; i++){
       s = newOneStates[i];
       var s1 = g.addNode();
       if (s.hasClass('final')){
         s1.addClass('final');
+        newOneFinals.push(s1);
       }
       if (s.hasClass('start')){
         newOneStart = i;
@@ -1797,6 +1799,7 @@ var lambda = String.fromCharCode(955),
       var s1 = g.addNode();
       if (s.hasClass('final')){
         s1.addClass('final');
+        otehrFinals.push(s1);
       }
       if (s.hasClass('start')){
         otherStart += i;
@@ -1813,6 +1816,15 @@ var lambda = String.fromCharCode(955),
       g.makeInitial(start);
       g.addEdge(start, newNodes[newOneStart] /*newNodes[newOneStates.length]*/, {weight: lambda});
       g.addEdge(start, newNodes[otherStart] /*newNodes[0]*/, {weight: lambda});
+
+      var end = g.addNode();
+      g.makeFinal(end);
+      for (i in newOneFinals){
+        g.addEdge(newOneFinals[i], end, {weight: lambda});
+      }
+      for (i in otehrFinals){
+        g.addEdge(otehrFinals[i], end, {weight: lambda});
+      }
     }
     else{
       g.makeInitial(newNodes[newOneStart]);
@@ -1845,21 +1857,11 @@ var lambda = String.fromCharCode(955),
     Take the complement of a NFA
   */
   var complement = function(jsav, graph, opts) {
-    jsav.umsg("bye world");
-    //var g;
     //g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
     var nodes = graph.nodes();
 
     for (var next = nodes.next(); next; next = nodes.next()) {
-      next.highlight();
-      if (next.hasClass('final')){
-        next.unhighlight();
-        next.removeClass('final');
-      }
-      else{
-        next.unhighlight();
-        next.addClass('final');
-      }
+      toggleFinal(graph, next);    
     }
     //var nodes = g.nodes();
     
@@ -2122,6 +2124,64 @@ var lambda = String.fromCharCode(955),
     return g;
   };
 
+
+  var getNodeWithValue = function (jsav, value) {
+    var nodes = jsav.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      if (next.value() === value) {
+        return next;
+      }
+    }
+  };
+
+  var completeDFA = function(jsav, graph){
+    nodes = graph.nodes();
+    edges = graph.edges();
+    alp = graph.alphabet;
+    alphabet = [];
+    missing = {};
+    hasMissing = false;
+    for (const key in alp) {
+      alphabet.push(key);
+    }
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      var edgesFromNext = next.container._edges[next.container._nodes.indexOf(next)];
+      if (edgesFromNext.length != alphabet.length){
+        if (edgesFromNext.length == 0){
+          missing[next.container._nodes.indexOf(next)] = [];
+          for (i in alphabet){
+            missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
+          }
+        }
+        else {
+          for (edge in edgesFromNext){
+            var weights = edgesFromNext[edge]._weight.split('<br>');
+            if (weights.length != alphabet.length){
+              hasMissing =true;
+              missing[next.container._nodes.indexOf(next)] = [];
+              for (i in alphabet){
+                if (weights.indexOf(alphabet[i]) == -1){
+                  missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (hasMissing){
+      var newNode = graph.addNode();
+      var newLabel = alphabet.toString().replace(',', '<br>');
+      graph.addEdge(newNode, newNode, {weight: newLabel});
+      for (i in missing){
+        var label = missing[i].toString().replace(',', '<br>');
+        graph.addEdge(nodes[i], newNode, {weight: label});
+      }
+    }
+    return graph;
+  };
+
   /**
    * MAke publicly available methods
    */
@@ -2131,6 +2191,7 @@ var lambda = String.fromCharCode(955),
 
   FiniteAutomaton.complement = complement;
   FiniteAutomaton.combine = combine
+  FiniteAutomaton.completeDFA = completeDFA;
 }(jQuery));
 /*
 ****************************************************************************

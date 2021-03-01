@@ -10,6 +10,7 @@ $(document).ready(function(){
     //Slide 2
     var urlLinkStep1 = "../../../AV/Yilu/figure.jff";
     var figure1 = new av.ds.FA({center:true, url: urlLinkStep1, left: 10, top:0, height: 500, width: 500});
+    //var str = FiniteAutomaton.completeDFA(av, figure1);
     var figure2 = new av.ds.FA({center:true, url: urlLinkStep1, left: 10, top:200, width: 500});
     av.umsg("Start with two machines");
 	av.step();
@@ -23,7 +24,7 @@ $(document).ready(function(){
 
 
 	//Slide 4
-	var combined = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750});	
+	var combined = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750}, true);	
 	var nodes = figure1.nodes();
 	for (var next = nodes.next(); next; next = nodes.next()) {
       figure1.removeNode(next);
@@ -32,17 +33,19 @@ $(document).ready(function(){
     for (var next = nodes.next(); next; next = nodes.next()) {
       figure2.removeNode(next);
     }
+    combined.layout();
     av.step();
 	//Slide5
+	/*
 	var start = combined.addNode();
 	combined.removeInitial(combined.initial);
     combined.makeInitial(start);
-    combined.addEdge(start, combined.nodes()[0] /*newNodes[newOneStates.length]*/, {weight: lambda});
-    combined.addEdge(start, combined.nodes()[3] /*newNodes[0]*/, {weight: lambda});
+    combined.addEdge(start, combined.nodes()[0] , {weight: lambda});
+    combined.addEdge(start, combined.nodes()[3] , {weight: lambda});
     combined.layout();
     av.umsg("Combine the two machines into one machine and take the union of them");
     av.step();
-
+	*/
     //Slide 6
     combined.hide();
     var dfa = FiniteAutomaton.convertNFAtoDFA(av, combined, {top: 0, left: 10, width: 500, height: 150});
