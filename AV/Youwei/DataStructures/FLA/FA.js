@@ -794,7 +794,7 @@ var lambda = String.fromCharCode(955),
       while (counter != null && notPlaced.length > 0) {
         counter = this.processChildren(notPlaced, counter, nextLevel);
       }
-      treelayoutHelper(firstLevel, 0);
+      this.treelayoutHelper(firstLevel, 0);
       this.shiftOntoScreen(900, 30, true);
     }
 
@@ -823,7 +823,7 @@ var lambda = String.fromCharCode(955),
     var nodes = this.nodes();
     for (var i = 0; i < this.nodeCount(); i++) {
       chain = [];
-      for (var j = notPlaced.length - 1; j--) {
+      for (var j = notPlaced.length - 1; j >= 0; j--) {
         if (this.hasEdge(nodes[i], notPlaced[j]) && nodes[i] != notPlaced[j]) {
           this.addVertex(chain, notPlaced[j]);
           notPlaced.splice(j, 1);
@@ -901,7 +901,7 @@ var lambda = String.fromCharCode(955),
       toMove.splice(i-start, 1, chain[i]);
     }
     for (var j = 0; j < toMove.length; j++) {
-      chain.splice(chain.indexOf(toMove[j], 1);
+      chain.splice(chain.indexOf(toMove[j]), 1);
     }
     for (var k = 0; k < toMove.length; k++) {
       if (shuffleDirection) {
@@ -946,10 +946,24 @@ var lambda = String.fromCharCode(955),
         chain.splice(destIndex, 0, vertex);
 
         for (var j=i+2; j<chain.length; j++) {
-          if (this.hasEdge(vertex, chain[0]) && )
+          if (this.hasEdge(vertex, chain[0]) && this.getDegreeInChain(chain, chain[j]) <= 2) {
+            if (j<chain.length - 1 && this.hasEdge(chain[j], chain[j+1])) {
+              this.orientSubChain(chain, destIndex, j, j, size()-1, (destIndex==i+1));
+            }
+            else {
+              subChainBound = j;
+              while (subChainBound > i+2 && this.hasEdge(chain[subChainBound-1], chain[subChainBound])) {
+                subChainBound--;
+              }
+              this.orientSubChain(chain, destIndex, j, subChainBound, j, (destIndex==i+1));
+            }
+            return;
+          }
         }
+        return;
       }
     }
+    chain.push(vertex);
   };
 
   /*
