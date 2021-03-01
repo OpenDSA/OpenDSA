@@ -1025,6 +1025,11 @@ var lambda = String.fromCharCode(955),
     }
     
     this.shiftOntoScreen(900, 30, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
     var edges = this.edges();
     var edge;
     while (edges.hasNext()) {
