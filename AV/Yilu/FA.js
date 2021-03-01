@@ -1766,6 +1766,23 @@ var lambda = String.fromCharCode(955),
       }*/
   };
 
+
+
+  var union = function(graph, Starts, Ends){
+    var start = graph.addNode();
+    var nodes = graph.nodes();
+    graph.makeInitial(start);
+    for (i in Starts){
+      graph.addEdge(start, Starts[i], {weight: lambda});
+    }
+    var end = graph.addNode();
+    graph.makeFinal(end);
+    for (i in Ends){
+      graph.addEdge(Ends[i], end, {weight: lambda});
+    }
+    graph.layout();
+  }
+
   /*
     Combine two NFAs. 
     Note: When the union argument is set to true, it will automatically take the union of the two NFAs
@@ -1779,15 +1796,19 @@ var lambda = String.fromCharCode(955),
     var otherStart = newOneStates.length;
     var newOneFinals = [];
     var otehrFinals = [];
+    var starts = [];
+    var ends = [];
     //var otherToNew = {};
     for(i = 0; i < newOneStates.length; i++){
       s = newOneStates[i];
       var s1 = g.addNode();
       if (s.hasClass('final')){
-        s1.addClass('final');
+        //s1.addClass('final');
+        ends.push(s1);
         newOneFinals.push(s1);
       }
       if (s.hasClass('start')){
+        starts.push(s1);
         newOneStart = i;
       }
 
@@ -1798,10 +1819,12 @@ var lambda = String.fromCharCode(955),
       s = otherStates[i];
       var s1 = g.addNode();
       if (s.hasClass('final')){
-        s1.addClass('final');
+        //s1.addClass('final');
+        ends.push(s1);
         otehrFinals.push(s1);
       }
       if (s.hasClass('start')){
+        starts.push(s1);
         otherStart += i;
       }
       //otherToNew[s] = s1;
@@ -1810,12 +1833,12 @@ var lambda = String.fromCharCode(955),
     otherEdges = other.edges();
     newOneEdges = newOne.edges();
     newNodes = g.nodes();
-
+    /*
     if (union){
       var start = g.addNode();
       g.makeInitial(start);
-      g.addEdge(start, newNodes[newOneStart] /*newNodes[newOneStates.length]*/, {weight: lambda});
-      g.addEdge(start, newNodes[otherStart] /*newNodes[0]*/, {weight: lambda});
+      g.addEdge(start, newNodes[newOneStart], {weight: lambda});
+      g.addEdge(start, newNodes[otherStart], {weight: lambda});
 
       var end = g.addNode();
       g.makeFinal(end);
@@ -1830,7 +1853,7 @@ var lambda = String.fromCharCode(955),
       g.makeInitial(newNodes[newOneStart]);
       g.layout();
     }
-
+*/
     for(i = 0; i < newOneEdges.length; i++){
       e1 = newOneEdges[i];
       fromInd = newOneStates.indexOf(e1.start());
@@ -1848,9 +1871,10 @@ var lambda = String.fromCharCode(955),
       weight = e.weight();
       g.addEdge(newNodes[fromInd+newOneStates.length], newNodes[toInd+newOneStates.length], { weight: weight});
     }
+    g.layout();
 
-    
-    return g;
+    var result = {'graph': g, 'start': starts, 'end': ends}
+    return result;
   };
 
   /*
@@ -2179,6 +2203,7 @@ var lambda = String.fromCharCode(955),
         graph.addEdge(nodes[i], newNode, {weight: label});
       }
     }
+    graph.layout();
     return graph;
   };
 
@@ -2192,6 +2217,7 @@ var lambda = String.fromCharCode(955),
   FiniteAutomaton.complement = complement;
   FiniteAutomaton.combine = combine
   FiniteAutomaton.completeDFA = completeDFA;
+  FiniteAutomaton.union = union;
 }(jQuery));
 /*
 ****************************************************************************
@@ -3716,7 +3742,8 @@ function getRandomInt(max) {
         this.referenceGraph.removeNode(next);
       }
     }
-    studentGraph.disableDragging();
+    if (display)
+      studentGraph.disableDragging();
     return studentGraph;
   };
   var getTreeNode = function (nodeValue, node) {

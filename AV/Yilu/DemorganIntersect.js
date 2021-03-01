@@ -24,8 +24,13 @@ $(document).ready(function(){
 
 
 	//Slide 4
-	var combined = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750}, true);	
+	av.umsg("combine the two machines in one window")
+	var combinedResult = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750}, false);
+	console.log(combinedResult);
+	var combined = combinedResult['graph'];
+	/*
 	var nodes = figure1.nodes();
+	
 	for (var next = nodes.next(); next; next = nodes.next()) {
       figure1.removeNode(next);
     }
@@ -33,8 +38,18 @@ $(document).ready(function(){
     for (var next = nodes.next(); next; next = nodes.next()) {
       figure2.removeNode(next);
     }
+    */
+    figure1.hide();
+    figure2.hide();
     combined.layout();
     av.step();
+
+
+    //Slide5
+    av.umsg("take union of the two machines")
+    FiniteAutomaton.union(combined, combinedResult['start'], combinedResult['end']);
+    av.step();
+
 	//Slide5
 	/*
 	var start = combined.addNode();
@@ -46,6 +61,7 @@ $(document).ready(function(){
     av.umsg("Combine the two machines into one machine and take the union of them");
     av.step();
 	*/
+	
     //Slide 6
     combined.hide();
     var dfa = FiniteAutomaton.convertNFAtoDFA(av, combined, {top: 0, left: 10, width: 500, height: 150});
@@ -56,7 +72,7 @@ $(document).ready(function(){
 	//Slide 7
 	var mytree = new av.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
 	mytree.hide();
-  	combined.hide();
+	dfa.hide();
   	var minm = new Minimizer();
   	var minized = minm.minimizeDFA(av, dfa, mytree, {left: 10, top:0, height: 450, width: 750}, false);
   	minized.layout();
@@ -68,35 +84,8 @@ $(document).ready(function(){
   	minized = FiniteAutomaton.complement(av, minized, {left: 10, top:0, height: 450, width: 750});
     minized.makeInitial(s);
   	av.umsg("Finaly, take the complement of the minimized DFA so we will get the intersection");
+
+
+  	
   	av.recorded();
-	/*
-	//Slide 3
-	figure1.hide();
-	var urlLinkStep2 = "../../../AV/Yilu/figure2.jff";
-	var figure2 = new av.ds.FA({center:true, url: urlLinkStep2, width: 600, height:600});
-	av.umsg("Take the union of the two complemented machines");
-	av.step();
-	
-	//Slide 4
-	figure2.hide();
-	var urlLinkStep3 = "../../../AV/Yilu/figure3.jff";
-	var figure3 = new av.ds.FA({center:true, url: urlLinkStep3, width: 600, height:600});
-	av.umsg("Convert it to DFA");
-	av.step();
-	
-	//Slide 5
-	figure3.hide();
-	var urlLinkStep4 = "../../../AV/Yilu/figure4.jff";
-	var figure4 = new av.ds.FA({center:true, url: urlLinkStep4, width: 600, height:600});
-	av.umsg("Minimize the DFA");
-	av.step();
-	
-	//Slide 6
-	figure4.hide();
-	var urlLinkStep5 = "../../../AV/Yilu/figure5.jff";
-	var figure5 = new av.ds.FA({center:true, url: urlLinkStep5, width: 600, height:600});
-	av.umsg("Take the complement");
-	av.step();
-	av.recorded();
-	*/
 });
