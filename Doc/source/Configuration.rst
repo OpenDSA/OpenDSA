@@ -210,6 +210,11 @@ All are required unless otherwise specified.
   Any RST files not found in the indicated subdirectory will then be
   located in ``~OpenDSA/RST/en``.
 
+* **sphinx_debug** - (optional) A boolean for debugging errors that 
+  occur within sphinx while it builds books. Useful for advanced developers. 
+  It enables the -E and -P options when running sphinx to build books. It is 
+  false by default. 
+
 * **glob_mod_options** - (optional) An object containing options to be
   applied to every module in the book.
   Can be overridden by module-specific options.

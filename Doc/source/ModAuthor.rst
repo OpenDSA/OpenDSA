@@ -144,17 +144,15 @@ for that language.
 Creating Classroom Presentation Slides
 --------------------------------------
 
-At the moment, OpenDSA uses a 
-`custom hieroglyph <https://github.com/sublime09/hieroglyph/>`_ 
-extention of Sphinx to build HTML-based slideshows.  
-It is forked off of the main 
-`hieroglyph <https://github.com/nyergler/hieroglyph/>`_ repository at version
-still has issues with Sphinx versions 1.8 and above.  
+OpenDSA uses `hieroglyph <https://github.com/nyergler/hieroglyph/>`_, a Sphinx 
+extension to build HTML slideshows to view in your browser.
 
 The course notes infrastructures is similar to eTextBook creation, and uses
-``OpenDSA/Makefile``. The only difference is the ``-s`` option for slides
+``OpenDSA/Makefile``.   The only difference is the ``-s`` option for slides
 when calling the configuration, for example ``python tools/configure.py -s config/OpenDSA.json``.
-
+The Makefile will use the ``-s`` option automatically if your JSON config's 
+filename ends with the word 'slides' or 'Slides' (e.g. ``make TestSlides`` 
+will use ``config/TestSlides.json`` and create class presentation slides).
 
 Internationalization Support
 ----------------------------
