@@ -63,7 +63,8 @@
   },
   "chapters": {
     "Ko Chan Testing Book": {
-      "Kochan/TMshift": {}
+      "Kochan/TMshift": {},
+      "Kochan/TMcopyQ": {}
     },
     "Models of Computation": {
       "VisFormalLang/TuringIntro": {},
