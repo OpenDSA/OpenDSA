@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Model Report</title>
+  <style>
+    #main_block {
+      display: block; /* Useless, divs are display:block */
+      width: 100%;    /* Useless, display:block elements are width:100% by default */
+      height: 100%;   /* Fairly useless now, should take children's height */
+      font-size:0;    /* Force space between inline-block elements to be 0 */
+    }
+    #left_frame {
+      width: 29%;
+    }
+    #right_frame {
+      width: 70%;
+    }
+    #left_frame,#right_frame {
+      display: inline-block;
+      box-sizing: border-box;
+      height: calc(100vh - 50px);
+    }
+  </style>
+</head>
+
+<div id="main-frame">
+  <iframe id="left_frame" src = "_static/model_report_v3/overview.html" name="overview" scrolling="auto" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+  <iframe id="right_frame" src = "_static/model_report_v3/table_details.html" name="content" scrolling="auto" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+</div>
+  
+  <noframes>
+  <body>
+    <p>This browser does not support frames. Please try Mozilla Firefox.</p>
+  </body>
+  </noframes>
+
+</html>

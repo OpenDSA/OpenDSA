@@ -43,9 +43,9 @@
         "type": "select",
         "description": "We add a new final state",
         "question":"Which state should be connected to the new final state?",
-        "answer": ["The final state for NFA $s$.",
-                   "The final state for NFA $r$."],
-        "choices": ["The final state for NFA $s$.",
+        "answer": ["The final state for NFA $s$",
+                   "The final state for NFA $r$"],
+        "choices": ["The final state for NFA $s$",
                     "The final state for NFA $r$"]
       }
     }

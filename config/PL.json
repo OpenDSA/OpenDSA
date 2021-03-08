@@ -30,7 +30,7 @@
     "required": false
   },
   "glob_ka_options": {
-    "threshold": 3,
+    "threshold": 3.0,
     "points": 1.0,
     "required": true
   },
@@ -42,7 +42,7 @@
   },
   "glob_pe_options": {
     "threshold": 1,
-    "points": 2.0,
+    "points": 1.0,
     "required": true
   },
   "chapters": {
@@ -214,7 +214,17 @@
       "PL/RecursiveFunctions": {}
     },
     "Interpreting the Functional Language SLang 1": {
-      "PL/SLang1": {},
+	"PL/SLang1": {
+            "AbstractSynSLang1": {
+		"threshold": 1
+            },
+            "CurryInSLang1": {
+		"threshold": 1
+            },
+	     "SemanticsSLang1": {
+		"threshold": 1
+            }
+	},
       "PL/Environment": {},
       "PL/SLang1withLetExpressions": {}
     },
@@ -222,13 +232,39 @@
       "PL/SLang2": {},
       "PL/SLang2TTK": {}
     },
-    "Variations on Parameter Passing": {
-      "PL/SLang2ParameterPassing": {},
-      "PL/LazyLists": {}
-    },
+      "Variations on Parameter Passing": {
+	  "PL/SLang2ParameterPassing": {},
+	  "PL/LazyLists": {
+	       "InfSeq1": {
+		"threshold": 1
+               },
+	       "InfSeq4": {
+		"threshold": 1
+               }	      
+	  }
+      },
     "Type Systems": {
 	"PL/TypeSystems": {},
-	"PL/TypeInference": {}	
+	"PL/TypeInference": {
+	    "Typing1": {
+		"threshold": 1
+               },
+	    "Typing2": {
+		"threshold": 1
+               },
+	    "Typing3": {
+		"threshold": 1
+               },
+	    "Typing4": {
+		"threshold": 1
+               },
+	    "Typing5": {
+		"threshold": 1
+               },
+	    "Typing6": {
+		"threshold": 1
+               }
+	}	
     },
     "Appendices": {
       "PL/PL_Glossary": {}

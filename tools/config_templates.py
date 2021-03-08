@@ -1,6 +1,8 @@
 # Header prepended to every RST file, contains settings for a specific module
 rst_header = '''\
+
 .. _%(mod_name)s:
+
 
 .. raw:: html
 
@@ -60,6 +62,10 @@ makefile_template = '''\
 # PYTHON should match the exec of the rest of OpenDSA
 PYTHON = %(python_executable)s
 SPHINXBUILD   = sphinx-build
+SPHINXOPTS    = %(sphinx_options)s
+# -E is option to always build from new environment, regardless of changed files
+# -vv and -vvv are options for verbose build output
+# -P is for starting pdb exactly when and where exception occurs
 HTMLDIR       = %(rel_book_output_path)s
 MINIMIZE      = uglifyjs
 TAGS = %(tag)s
@@ -88,7 +94,7 @@ min-searchtools:
 	@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js > $(HTMLDIR)_static/searchtools.js
 
 html:
-	$(SPHINXBUILD) $(TAGS) -b html source $(HTMLDIR)
+	$(SPHINXBUILD) $(TAGS) $(SPHINXOPTS) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js
 	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
 	rm *.json
@@ -98,7 +104,7 @@ html:
 
 slides:
 	@SLIDES=yes \
-	$(SPHINXBUILD) -b slides source $(HTMLDIR)
+	$(SPHINXBUILD) $(SPHINXOPTS) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js
 	cp "%(odsa_dir)slib/styles.css" html/_static/ # Overwrites
 	rm *.json

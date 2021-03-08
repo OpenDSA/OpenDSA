@@ -130,7 +130,7 @@
         type: "jsav-exercise-reset"
       });
       self.reset();
-      //clear the graph in the database as well 
+      //clear the graph in the database as well
       store_solution(null, -1);
     };
     // function to handle the model answer event
@@ -228,8 +228,16 @@
       this.score.total = 1;
       this.modelav.end();
       this.jsav.end();
-      if (this.options.checkSolutionFunction)
-        this.score.correct = this.options.checkSolutionFunction();
+      if (this.options.checkSolutionFunction) {
+        var obj = this.options.checkSolutionFunction();
+        if (typeof obj == "number"){
+          this.score.correct = obj;
+        }
+        else {
+          this.score.correct = obj.score;
+          store_solution(obj.solution, obj.score);
+        }
+      }
       else {
         var obj = this.options.exerciseController.startTesting();
         if (typeof obj == "number"){
@@ -502,4 +510,5 @@
     //  - controls: a DOM/jQuery element or a selector for the element where the exercise
     //              controls (reset, model, grade) are to be added
   };
+
 }(jQuery));

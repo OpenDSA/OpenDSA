@@ -364,7 +364,7 @@ Once the repository is cloned (we assume here into a directory named
 This command will first pull and build the OpenDSA images before
 instantiating the OpenDSA container.
 This command runs several setup commands in the background to
-initialize the submodules and install the python packages requirements
+initialize the container and install the python packages requirements
 of OpenDSA.
 **This will probably take a long time to run the first time.**
 

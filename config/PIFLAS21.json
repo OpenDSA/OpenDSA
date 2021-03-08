@@ -47,7 +47,7 @@
     "required": false
   },
   "glob_ka_options": {
-    "threshold": 5, 
+    "threshold": 1, 
     "points": 1.0, 
     "required": true
   }, 

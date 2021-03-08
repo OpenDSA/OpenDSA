@@ -22,7 +22,19 @@
     fatoreController,
     exerController;
     var stepBy = '';
-
+    var emptyStackCheckbox =  document.createElement("input");
+    var emptyStackLabel = document.createElement("label");
+    var emptyStackBreak = document.createElement("br");
+    var menuOptionsDiv = document.getElementById("menu_options");
+    emptyStackCheckbox.setAttribute("type", "checkbox");
+    emptyStackCheckbox.setAttribute("id", "emptyStackCheck");
+    emptyStackCheckbox.setAttribute("name", "emptyStackCheck");
+    //emptyStackLabel.setAttribute("for", "emptyStackCheck");
+    emptyStackLabel.innerHTML = "Empty Stack Acceptance";
+    menuOptionsDiv.appendChild(emptyStackBreak);
+    menuOptionsDiv.appendChild(emptyStackCheckbox);
+    menuOptionsDiv.appendChild(emptyStackLabel);
+    localStorage['empty'] = false; //Initialized for empty stack acceptance. The button starts off unchecked so it starts at false
   
     // Add This function to allow creating automated exercises and solving exercises. Copied from FA.JS file associated with FA.HTML
     function onLoadHandler() {
@@ -88,7 +100,15 @@
 			$('.jsavgraph').click(graphClickHandler);
 			$('.jsavedgelabel').click(labelClickHandler);
 		});
-		resetUndoButtons();
+    resetUndoButtons();
+    $('#emptyStackCheck').click(function(){
+      if($(this).prop("checked")){
+        localStorage['empty'] = true; //If the empty stack acceptance button is clicked and it becomes check, set it to true to allow the acceptance/rejection of empty stack PDAs
+      }
+      else{
+        localStorage['empty'] = false; //If it is now unchecked, set it to false. 
+      }
+    });
 	};
 
 
@@ -102,9 +122,9 @@
   //In our case, we will make this function show the test cases only.
   function modelSolution(modeljsav) {
     var containHideTest = false;
-    var testNum = 1;
     var testCases = exerController.tests[0]["testCases"];
     var list = [["Test Number", "Test String", "Accept/Reject"]];
+    var testNum = 1;
     for (i = 0; i < testCases.length; i++) {
       var testCase = testCases[i];
       var hideOption = testCase.ShowTestCase;
@@ -480,6 +500,9 @@
     onClickTraverse()
   }
 
+  /*
+  THIS FUNCTION IS WHERE I AM TALKING ABOUT FROM MY EMAIL
+  */
   var onClickTraverse = function() {
     if (!g.initial) {
       alert('Please define an initial state');
@@ -500,7 +523,7 @@
     readyTraversal();
     for (var i = 0; i < inputs.length; i++) {
       // Create an array of the input strings.
-      if (inputs[i]) {
+      if (inputs[i]) { //added "" to allow empty string
         if(willRejectFunction(g,inputs[i])){
           travArray.push(inputs[i]+"(" + String.fromCharCode(10005) + ")");
         }else{
@@ -508,11 +531,33 @@
         }
       }
       else {
-        travArray.push(emptystring);
+        travArray.push(emptystring); //Add an if statement in the for loop below (or above the for loop) that will deal with when it's an emptystring. It will need to make sure that it is for empty stack 
       }
     }
     // Use this array to populate the JSAV array.
+    if (typeof jsavArray !== 'undefined'){
+      jsavArray.clear();
+    }
     jsavArray = jsav.ds.array(travArray, {top: 0, left: 0});//element: $('.arrayPlace')});
+    //jsavArray.setAttribute("id", "emptyPDAArray");
+    //$("#myID").css("width", "auto");
+    //$("#myID").css
+    
+    /*var emptyPDAArrayStyle = {
+      width: "45px",
+      height: "45px",
+      text-align: "center",
+      border: "1px solid black",
+      background-color: "white",
+      color: "black",
+      opacity: 1,
+      padding: 0,
+       prevent text cursor on nodes
+      cursor: "default",
+      add a subtle shadow to nodes 
+      box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5)
+    };
+    */
     for (var j = 0; j < inputs.length; j++) {
       if (willRejectFunction(g, inputs[j])) {
         // If rejected, color red.
@@ -523,6 +568,8 @@
         jsavArray.css(j, {"background-color": "green"});
       }
     }
+    jsavArray.css(0, {"width":"auto"});
+    //jsavArray.css(0, {"max-width": "1000px"}); remove this and make sure it doesn't affect the width
     jsavArray.click(arrayClickHandler);
     jsavArray.show();
   };
@@ -541,10 +588,11 @@
   // Function to open the graph in another window and run the input string on it.
   // Triggered by clicking on an input string in the JSAV array.
   var play = function (inputString) {
-    localStorage['graph'] = serialize(g);
+    localStorage['graph'] = serialize(g); //Use local storage to send if it should be empty stack or not; localStorage['empty'] = true/false, true is empty stack acceptance
     localStorage['traversal'] = inputString.slice(0, -3);
     localStorage['stepBy'] = stepBy;
-    window.open("./PDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes");
+    //localStorage['empty'] = true;
+    window.open("./PDATraversal.html", "popupWindow", "width=830, height=800, scrollbars=yes"); 
   };
 
   var willAccept = function(graph, input) {

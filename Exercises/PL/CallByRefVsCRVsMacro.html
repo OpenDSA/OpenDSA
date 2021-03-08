@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version2.00/scripts/absyn ../../AV/PL/interpreters/version2.00/scripts/env ../../AV/PL/interpreters/version2.00/scripts/grammar ../../AV/PL/interpreters/version2.00/scripts/interpreter PLutils CallByRefVsCRVsMacro" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>Reference vs. Copy Restore vs. Macro</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version2.00/scripts/absyn",
+            "../../AV/PL/interpreters/version2.00/scripts/env",
+            "../../AV/PL/interpreters/version2.00/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version2.00/scripts/interpreter",
+              "../../DataStructures/PLutils",
+              "CallByRefVsCRVsMacro"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -18,7 +33,7 @@
 
       <div class="problems">
         <div class="CallByRefVsCRVsMacrop">
-          <p class="question">Consider the following program written in generic pseudocode:</p> 
+          <p class="question">Consider the following program written in generic pseudocode:</p>
 <pre class="string">
 <var>expression</var>
 </pre>
@@ -29,15 +44,15 @@
 	    which is a list of integers to be entered below.</p>
 
 	  <table class="answerRP22part2">
-	    <tr><td>Output for call-by-reference:</td> 
+	    <tr><td>Output for call-by-reference:</td>
 	      <td><textarea rows="1" cols="40" style="resize:none"
 			    id="byrefAnswer"></textarea></td>
 	    </tr>
-	    <tr><td>Output for call-by-copy-restore:</td> 
+	    <tr><td>Output for call-by-copy-restore:</td>
 	      <td><textarea rows="1" cols="40" style="resize:none"
 			    id="bycprAnswer"></textarea></td>
 	    </tr>
-	    <tr><td>Output for call-by-macro:</td> 
+	    <tr><td>Output for call-by-macro:</td>
 	      <td><textarea rows="1" cols="40" style="resize:none"
 			    id="bymacAnswer"></textarea></td>
 	    </tr>
@@ -52,7 +67,7 @@
 	      return CallByRefVsCRVsMacro.validateAnswer(guess);
             </div>
 	  </div>
-	  
+
 	  <div class="hints">
 	    <p>Since this program is not a SLang program, each value
 	    that is output to the console is an integer, <em>not</em>
@@ -63,7 +78,7 @@
 	      on paper with the graphical representation of the memory
 	      that we used in class.</p>
 
-	  </div>	 
+	  </div>
         </div>
       </div>
     </div>

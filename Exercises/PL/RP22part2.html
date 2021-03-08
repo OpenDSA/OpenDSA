@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version1.04/scripts/absyn ../../AV/PL/interpreters/version1.04/scripts/env ../../AV/PL/interpreters/version1.04/scripts/grammar ../../AV/PL/interpreters/version1.04/scripts/interpreter PLutils RP22part2" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 22 part 2</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version1.04/scripts/absyn",
+            "../../AV/PL/interpreters/version1.04/scripts/env",
+            "../../AV/PL/interpreters/version1.04/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version1.04/scripts/interpreter",
+              "../../DataStructures/PLutils",
+              "RP22part2"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -19,15 +34,15 @@
       <div class="problems">
         <div class="RP22part2p">
           <p class="question">Consider the following SLang
-	    1 expression:</p> 
+	    1 expression:</p>
 <pre class="string">
 <var>expression</var>
 </pre>
           <p class="question">
-	    What is the value of this expression when it is evaluated in 
+	    What is the value of this expression when it is evaluated in
 	    a global environment in which
 	    <span class="string">x</span>, <span class="string">y</span>, and
-	    <span class="string">z</span> are bound to the values 
+	    <span class="string">z</span> are bound to the values
 	    <span class="string">1</span>, <span class="string">2</span>, and
 	    <span class="string">3</span>, respectively?  To get
 	    credit for this problem, you must provide two answers: the
@@ -36,14 +51,14 @@
 	    denoted value that would be output if the interpreter were
 	    using dynamic binding. Each answer is either a denoted
 	    value or the word "error" if the evaluation of the
-	    expression throws an exception (because the expression is 
+	    expression throws an exception (because the expression is
 	    syntactically or semantically invalid). In the latter case, the
 	    one-word answer is in all lowercase letters and does NOT
 	    include the double quotes.</p>
 
 
 	  <table class="answerRP22part2">
-	    <tr><td>Value under STATIC binding:</td> 
+	    <tr><td>Value under STATIC binding:</td>
 	      <td><textarea rows="1" cols="20" style="resize:none"
 			    id="answerStatic"></textarea></td>
 	    </tr>
@@ -53,14 +68,14 @@
 	    </tr>
 	  </table>
 	  <div class="solution" data-type="custom">
-            <div class="guess"> 
+            <div class="guess">
 	      $('#answerStatic').val() + "/////" +
 	      $('#answerDynamic').val()</div>
             <div class="validator-function">
 	      return RP22part2.validateAnswer(guess);
             </div>
 	  </div>
-	  
+
 	  <div class="hints">
 	    <p>Determine the scope of the binding occurrences in each
 	    function definition that this expression contains. If needed,
@@ -72,7 +87,7 @@
 	    evaluation. Therefore, in a function call, all arguments
 	    are evaluated before the body of the function.</p>
 
-	  </div>	 
+	  </div>
         </div>
       </div>
     </div>

@@ -12,7 +12,8 @@
 <body data-height="400" data-width="970" data-canvas-height="1100">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("f2020p10PPRO","imperial",1100)</var>
+      <!-- <var id="JSAV">mechSolverCommon.initJSAV("f2020p10PPRO","imperial",1100)</var> -->
+      <var id="JSAV">mechSolverCommon.initJSAV("f2020p10PPRO","SI",1100)</var>
     </div>
 
     <div class="problems">
@@ -20,21 +21,33 @@
         <p class="problem">
           A
 
-          <span class="param" id="param" 
+          <!-- <span class="param" id="param" 
           data-value="0.5" 
           data-unit="in" 
           data-value-display="0.5"
           data-unit-display="in" 
-          data-domain="length">0.5 in</span>
+          data-domain="length">0.5 in</span> -->
+          <span class="param" id="param" 
+          data-value="1" 
+          data-unit="cm" 
+          data-value-display="1"
+          data-unit-display="cm" 
+          data-domain="length">1 cm</span>
 
           diameter pin is used in the hinge illustrated. Assume that the ultimate shear strength of the pin is
 
-          <span class="param" id="param" 
+          <!-- <span class="param" id="param" 
           data-value="18" 
           data-unit="ksi" 
           data-value-display="18"
           data-unit-display="ksi" 
-          data-domain="pressure">18 ksi</span>
+          data-domain="pressure">18 ksi</span> -->
+          <span class="param" id="param" 
+          data-value="18" 
+          data-unit="kPa" 
+          data-value-display="18"
+          data-unit-display="kPa" 
+          data-domain="pressure">18 kPa</span>
 
           , and the factor safety is to be
 
@@ -120,7 +133,7 @@
   <script src="MechSolver/utils.js"></script>
 
   <!-- Additional script files containing settings and solution files -->
-  <script src="DeformsDifficultProblemPPROsolution.js"></script>
+  <script src="f2020p10PPROsolution.js"></script>
 
 </body>
 

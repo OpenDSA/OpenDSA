@@ -1,11 +1,26 @@
 <!DOCTYPE html>
+<html data-require="math" lang="en">
 <html data-require="math PLutils ../../AV/PL/interpreters/version3.01/scripts/absyn ../../AV/PL/interpreters/version3.01/scripts/env ../../AV/PL/interpreters/version3.01/scripts/grammar ../../AV/PL/interpreters/version3.01/scripts/interpreter RP37part1" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 37 part 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version3.01/scripts/absyn",
+            "../../AV/PL/interpreters/version3.01/scripts/env",
+            "../../AV/PL/interpreters/version3.01/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version3.01/scripts/interpreter",
+              "RP37part1"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -24,7 +39,7 @@
 <var>program</var>
 </pre>
 
-          <p class="question">How many times is the 
+          <p class="question">How many times is the
 	    <span class="string">findAndInvoke</span>
             function in the SLang 3 interpeter called when interpreting
             the program above?</p>
@@ -42,7 +57,7 @@
 	  <div class="hints">
 	    <p>The correct answer is an integer written as a number
 	    (e.g., 3), not as a word (e.g., three).</p>
-	  </div>	 
+	  </div>
         </div>
       </div>
     </div>

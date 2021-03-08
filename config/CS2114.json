@@ -145,6 +145,34 @@
       }, 
       "AlgAnal/AlgAnalSummCS2": {}
     },
+    "Introduction to Pointers in Java": {
+      "PointersJava/PointerIntro": {},
+      "PointersJava/BasicPointers1": {},
+      "PointersJava/BasicPointers2": {
+        "PointerEX1PRO": {
+          "threshold": 1
+        }, 
+        "PointerEX2PRO": {
+          "threshold": 1
+        }
+      }, 
+      "PointersJava/Syntax": {},
+      "PointersJava/LocalMem": {}, 
+      "PointersJava/HeapMem": {}, 
+      "PointersJava/Links1": {
+        "PointerEX3PRO": {
+          "threshold": 1
+        }
+      },
+      "PointersJava/Links2": {},
+      "PointersJava/PointersCM": {
+        "CMpointersSumm": {
+          "threshold": 5
+        }
+      },
+      "PointersJava/Exercises": {},
+      "PointersJava/LinkedChains": {}
+    }, 
     "Stacks": {
       "List/StackArray": {},
       "List/StackLinked": {}
