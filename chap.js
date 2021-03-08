@@ -11,11 +11,20 @@ window.onload = () => {
   }
 }
 
-
-
 const addCodeSnippetSupport = () => {
   const snippets = document.getElementsByClassName("codeSnippet");
   Array.from(snippets).forEach((snippet, index) => {
+    const buttons = snippet.getElementsByTagName("a");
+    Array.from(buttons).forEach((button, idx) => {
+      if(idx == 0){
+        button.addEventListener("click", () => {showTreeViewAndButton(`tv${index}`, `treeView${index}`);});
+      }
+      else{
+        button.addEventListener("click", () => {hideTreeViewAndButton(`tv${index}`);});
+      }
+    });
+
+
     const snippetCodeLangs = snippet.getElementsByClassName("highlight");
     const javaGenLang = snippetCodeLangs[0];
     const javaTokens = parseJavaToTokens(javaGenLang.textContent);
@@ -53,6 +62,22 @@ const toggleTreeViewOn = (buttonId) => {
   const treeViewId = `treeView${buttonId.replaceAll(/[^0-9]/g, "")}`;
   document.getElementById(treeViewId).style["display"] = "";
   document.getElementById(treeViewId).classList.add("col-md-6");
+}
+
+const hideTreeViewAndButton = (buttonId) => {
+  const button = document.getElementById(buttonId);
+  button.style.display = "none";
+  toggleTreeViewOff(buttonId);
+}
+
+const showTreeViewAndButton = (buttonId, treeId) => {
+  const button = document.getElementById(buttonId);
+  button.style.display = "";
+  const displayStyle = document.getElementById(treeId).style["display"];
+  if(displayStyle != "none"){
+    toggleTreeViewOn(buttonId);
+  }
+  
 }
 
 const toggleTreeViewOff = (buttonId) => {
@@ -124,6 +149,7 @@ const parseJavaToTokens = (txt) => {
 
 
 const tokenList = [
+  {"ID": "Annotation", "Regex": /@[^\s\/]*/g},
   {"ID": "Comment", "Regex": /^\/\/.*/g},
   {"ID": "Right Brace", "Regex": /^}/g},
   {"ID": "Loop","Regex": /^for\s*\([^{]*{/g},
@@ -135,7 +161,7 @@ const tokenList = [
 
 const wrapCodeWithSnippets = () => {
   const nodeList = document.querySelectorAll('*[id]');
-  var regex = /^([^_])*_([^_])*_code$/g;
+  var regex = /^\w*_([^_])*_code$/g;
   var codeSnippets = Array.from(nodeList).filter((entry) => entry.id.match(regex));
   codeSnippets.forEach((snippet) => {
     const wrapObj = wrap(snippet.id);
@@ -165,34 +191,3 @@ const wrap = (id) => {
     "self": elem,
   };
 }
-
-
-/*
-Add the bootstrap
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-Add this to all blocks and areas
-<div class="codeWrapper">
-<div id="####" class="codeSnippet">
-*/
-
-/* 
-For Loop:
-  for\s*\([^{]*{
-If Statement: 
-  if\s*\([^{]*{
-*/
-
-//what can we expect to see?
-//lets only have support for {}
-
-//for(){}
-//if(){}
-//else if(){}
-//else{}
-//(public | private | abstract) class
-//(public | private) | interface
-//(static) (public | private | protected) [void | type | Generic] name (){}
-
-const tokens = parseJavaToTokens(`static boolean find(List<Integer> L, int k) {\n  for (L.moveToStart();!L.isAtEnd();L.next()){\n    if (k == L.getValue()) {\n      return true;`);
-buildParseTree(tokens);
