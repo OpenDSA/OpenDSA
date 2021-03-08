@@ -11,6 +11,12 @@ window.onload = () => {
   }
 }
 
+/**
+ * This method iterates through all divs with the class name codeSnippet. It 
+ * updates the code navigation buttons to hide the tree view when the language
+ * is not support. It parses the supported code language (java), adds the tree
+ * view div, and adds the button for toggling the tree view.
+ */
 const addCodeSnippetSupport = () => {
   const snippets = document.getElementsByClassName("codeSnippet");
   Array.from(snippets).forEach((snippet, index) => {
@@ -111,7 +117,8 @@ const buildParseTree = (tokens) => {
         html = html.concat(`${new Array(height*2).join(' ')}<span>H${height} | ${token.ID}: ${token.Match.replace(/{/g, '')}</span>\n`)
       }
     }
-    if(token.ID != "Comment" && token.ID != "Code Block" && token.ID != "Right Brace" && !(token.ID == "Method" && token.Match.match(/;/g) != null)){
+    if(token.ID != "Comment" && token.ID != "Code Block" && token.ID != "Right Brace" 
+        && !(token.ID == "Method" && token.Match.match(/;/g) != null)){
       height += 1;
     }
     else if(token.ID == "Right Brace"){
@@ -149,13 +156,14 @@ const parseJavaToTokens = (txt) => {
 
 
 const tokenList = [
-  {"ID": "Annotation", "Regex": /@[^\s\/]*/g},
+  {"ID": "Annotation", "Regex": /^@[^\s\/]*/g},
   {"ID": "Comment", "Regex": /^\/\/.*/g},
   {"ID": "Right Brace", "Regex": /^}/g},
   {"ID": "Loop","Regex": /^for\s*\([^{]*{/g},
   {"ID": "If Statement","Regex": /^if\s*\([^{]*{/g},
   {"ID": "Interface", "Regex": /^public\s+interface[^{]*{/g},
-  {"ID": "Method", "Regex": /^((public|private|protected|)\s+|static)\s*(static\s+|)\s*(void|byte|long|short|double|int|float|boolean|char|([A-Z]\w*))\s*\w*\([^;{]*[;{]/g},
+  {"ID": "Class", "Regex": /^((public|private|protected|)\s+|)(static\s+|)(abstract\s+|)class\s+[^{]*{/g},
+  {"ID": "Method", "Regex": /^((public|private|protected|)\s+|static|)\s*(static\s+|)\s*(void|byte|long|short|double|int|float|boolean|char|([A-Z]\w*))\s*\w*\([^;{]*[;{]/g},
   {"ID": "Code Block", "Regex": /^[^;]*;/g},
 ]
 
