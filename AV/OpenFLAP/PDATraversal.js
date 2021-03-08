@@ -170,11 +170,26 @@
       var inputString = currentStates[i].inputString
       if (inputString.length === 0 && endflag == 1) {
         var last = currentStates[i].stack[currentStates[i].stack.length - 1];
+        if (localStorage['empty'] === "true"){ //Checks if the empty stack acceptance button was clicked. If it has not been clicked, that value will be false
 
-        if (currentStates[i].state.hasClass('final')) {
-          currentStates[i].state.addClass('accepted')
-        } else {
-          currentStates[i].state.addClass('rejected')
+        
+          if (currentStates[i].stack.length === 1){ //Checks stack length 
+            currentStates[i].state.addClass('accepted');
+            //localStorage['emptystack'] = currentStates[i].stack.length; //Used to get a look at the stack for testing purposes. Uncomment or delete as warranted
+            //localStorage['emptystackacceptance'] = 1; //Used to check if the string is getting accepted or rejected. 1 is accepted, 0 is rejected
+          }
+          else{
+            currentStates[i].state.addClass('rejected');
+            //localStorage['emptystack'] = currentStates[i].stack.length;
+            //localStorage['emptystackacceptance'] = 0; 
+          }
+        }
+        else{
+          if (currentStates[i].state.hasClass('final')) {
+            currentStates[i].state.addClass('accepted') 
+          } else {
+            currentStates[i].state.addClass('rejected')
+          }
         }
         continue;
 

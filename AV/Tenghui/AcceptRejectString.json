@@ -2,7 +2,7 @@
   "translations": {
     "en": {
       "randomJFF": {
-        "Pathway": "../../../AV/VisFormalLang/FA/Machines/",
+        "Pathway": "../../../AV/OpenFLAP/machines/FA/",
         "FilenameFor01": [
           "EvenBinaryDFACON",
           "EvenBinaryEvenOnesDFA"

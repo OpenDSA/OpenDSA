@@ -137,6 +137,7 @@ changePointeeDataDirect
 -----------------------
 
 .. extrtoolembed:: 'changePointeeDataDirect'
+   :workout_id: 419
 
 
 
@@ -197,4 +198,5 @@ circularList1
 -------------
 
 .. extrtoolembed:: 'circularList1'
+   :workout_id: 421
 

@@ -22,6 +22,12 @@ ifeq ($(strip $(ODSA_ENV)),DEV)
 	CSS_MINIFY = cat
 endif
 
+SUBMODULES_MSG = "Note: OpenDSA does not use submodules anymore\n\
+\tIn the future, 'git pull' should suffice\n\
+\tTo fully remove all submodule remains, try:\n\
+\tgit submodule deinit -f -- lib/hieroglyph JSAV OpenPOP QBank khan-exercises\n\
+\trm -rf .git/modules/*"
+
 
 .PHONY: clean min pull Webserver
 
@@ -30,8 +36,7 @@ Webserver:
 
 pull:
 	git pull
-	git submodule init
-	git submodule update
+	@echo -e $(SUBMODULES_MSG)
 	make --silent min
 
 printEnv:

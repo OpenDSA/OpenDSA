@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version2.00/scripts/absyn ../../AV/PL/interpreters/version2.00/scripts/env ../../AV/PL/interpreters/version2.00/scripts/grammar ../../AV/PL/interpreters/version2.00/scripts/interpreter PLutils OutputOfSLang2Prog" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>Output of SLang 2 Program</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version2.00/scripts/absyn",
+            "../../AV/PL/interpreters/version2.00/scripts/env",
+            "../../AV/PL/interpreters/version2.00/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version2.00/scripts/interpreter",
+              "../../DataStructures/PLutils",
+              "OutputOfSLang2Prog"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -18,7 +33,7 @@
 
       <div class="problems">
         <div class="OutputOfSLang2Progp">
-          <p class="question">Consider the following SLang 2 program:</p> 
+          <p class="question">Consider the following SLang 2 program:</p>
 <pre class="string">
 <var>expression</var>
 </pre>
@@ -26,7 +41,7 @@
 	    console by this program when it is interpreted in a global
 	    environment in which
 	    <span class="string">x</span>, <span class="string">y</span>, and
-	    <span class="string">z</span> are bound to the values 
+	    <span class="string">z</span> are bound to the values
 	    <span class="string">1</span>, <span class="string">2</span>, and
 	    <span class="string">3</span>, respectively?</p>
 
@@ -40,7 +55,7 @@
 	      return OutputOfSLang2Prog.validateAnswer(guess);
             </div>
 	  </div>
-	  
+
 	  <div class="hints">
 	    <p>Recall that the SLang 2 interpreter uses static binding.</p>
 	    <p>When two or more bindings are included in a
@@ -50,7 +65,7 @@
 	    are passed by value.</p>
 	    <p>Recall that this program is interpreted in a global
 	      environment that is not empty.</p>
-	  </div>	 
+	  </div>
         </div>
       </div>
     </div>
