@@ -67,18 +67,20 @@ $(document).ready(function(){
     var dfa = FiniteAutomaton.convertNFAtoDFA(av, combined, {top: 0, left: 10, width: 500, height: 150});
     dfa.layout();
     av.umsg("Convert the NFA machine to DFA")
-	av.step();
-	
-	//Slide 7
-	var mytree = new av.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
-	mytree.hide();
-	dfa.hide();
+  	av.step();
+  	
+  	//Slide 7
+  	var mytree = new av.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
+  	mytree.hide();
+  	dfa.hide();
   	var minm = new Minimizer();
   	var minized = minm.minimizeDFA(av, dfa, mytree, {left: 10, top:0, height: 450, width: 750});
   	minized.layout();
   	av.umsg("Then, minimize the DFA");
   	av.step();
 
+
+  	//minDFA.jsav = av;
   	//Slide 8
   	//s = minized.initial;
   	minized = FiniteAutomaton.complement(av, minized, {left: 10, top:0, height: 450, width: 750});

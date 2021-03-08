@@ -2208,6 +2208,26 @@ var lambda = String.fromCharCode(955),
     graph.layout();
     return graph;
   };
+
+  FiniteAutomaton.intersect = function(jsav,first, second,opts){
+    figure1 = this.complement(jsav, first, opts);
+    figure2 = this.complement(jsav, first, opts);
+    first.hide();
+    second.hide();
+    var combinedResult = this.combine(jsav, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
+    var combined = combinedResult['graph'];
+    FiniteAutomaton.union(combined, combinedResult['start'], combinedResult['end']);
+    combined.hide();
+    var dfa = this.convertNFAtoDFA(jsav, combined, {top: 0, left: 10, width: 500, height: 150});
+    var mytree = new jsav.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
+    mytree.hide();
+    dfa.hide();
+    var minm = new Minimizer();
+    var minized = minm.minimizeDFA(jsav, dfa, mytree, {left: 10, top:0, height: 450, width: 750});
+    minized = this.complement(jsav, minized, {left: 10, top:0, height: 450, width: 750});
+    minized.layout();
+    return minized;
+  };
   /**
    * MAke publicly available methods
    */

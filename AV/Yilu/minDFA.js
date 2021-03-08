@@ -25,7 +25,7 @@ if computational complexity is a concern, should be changed to use a union-find 
 		}
 	};
 	localStorage["jsav-speed"] = 0; // set default animation speed to max
-	var jsav,
+	var jsav = new JSAV("av"),
 		input,						// terminal to partition on
 		selectedNode = null,
 		referenceGraph,							// reference (original DFA); assumes its a DFA
