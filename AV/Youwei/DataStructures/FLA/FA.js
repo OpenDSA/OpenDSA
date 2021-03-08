@@ -780,15 +780,15 @@ var lambda = String.fromCharCode(955),
           }
         }
         return degreeb - degreea;
+        //return b.neighbors().length - a.neighbors().length;
       });
     }
     var notPlaced = [];
     for (var m=0; m<vertices.length; m++) {
-    	notPlaced.push(vertices[m]);
+      notPlaced.push(vertices[m]);
     }
     //var notPlaced = vertices;
     var firstLevel = [];
-    var nextLevel;
     var counter;
     var nextLevels = [];
     while (notPlaced.length > 0) {
@@ -798,6 +798,7 @@ var lambda = String.fromCharCode(955),
       while (counter != null && notPlaced.length > 0) {
         counter = this.processChildren(notPlaced, counter);
         if (counter != null) {
+          console.log(counter.length);
           var next = [];
           for (var g = 0; g < counter.length; g++) {
             next.push(counter[g]);
@@ -846,7 +847,7 @@ var lambda = String.fromCharCode(955),
     for (var i = 0; i < level.length; i++) {
       chain = [];
       for (var j = notPlaced.length - 1; j >= 0; j--) {
-        if (this.hasEdge(level[i], notPlaced[j]) && level[i] != notPlaced[j]) {
+        if ((this.hasEdge(level[i], notPlaced[j]) || this.hasEdge(notPlaced[j], level[i])) && level[i] != notPlaced[j]) {
           chain = this.addVertex(chain, notPlaced[j]);
           notPlaced.splice(j, 1);
         }
