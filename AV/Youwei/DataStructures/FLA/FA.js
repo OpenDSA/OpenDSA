@@ -739,30 +739,30 @@ var lambda = String.fromCharCode(955),
   *
   */
   automatonproto.treeLayoutAlg = function(hierarchical) {
-    var nodes = this.nodes();
+  	var vertices = this.nodes();
     if (this.nodeCount() == 0) {
       return;
     }
 
     if (hierarchical) {
-      //make sure the right kind of graph is present for
-      //hierarchical graphs.
-      nodes.sort(function(a, b) {
-        var degreea = 0;
-        var degreeb = 0;
-        for (var q = 0; q < vertices.length; q++) {
-          if (vertices[q].edgeTo(a)) {
-            degreea++;
-          }
-          if (vertices[q].edgeTo(b)) {
-            degreeb++;
-          }
-        }
-        return degreea - degreeb;
-      });
+    	//make sure the right kind of graph is present for
+		//hierarchical graphs.
+		vertices.sort(function(a, b) {
+		var degreea = 0;
+		var degreeb = 0;
+		for (var q = 0; q < vertices.length; q++) {
+		  if (vertices[q].edgeTo(a)) {
+		    degreea++;
+		  }
+		  if (vertices[q].edgeTo(b)) {
+		    degreeb++;
+		  }
+		}
+		return degreea - degreeb;
+		});
     }
     else {
-      nodes.sort(function(a, b) {
+      vertices.sort(function(a, b) {
         var degreea = 0;
         var degreeb = 0;
         for (var q = 0; q < vertices.length; q++) {
@@ -782,33 +782,49 @@ var lambda = String.fromCharCode(955),
         return degreea - degreeb;
       });
     }
-
-    var notPlaced = this.nodes();
+    var notPlaced = [];
+    for (var m=0; m<vertices.length; m++) {
+    	notPlaced.push(vertices[m]);
+    }
+    //var notPlaced = vertices;
     var firstLevel = [];
-    var counter = [];
     var nextLevel;
+    var counter;
+    var counterNext;
     while (notPlaced.length > 0) {
       firstLevel.push(notPlaced[0]);
       notPlaced.splice(0, 1);
       counter = firstLevel;
+      counterNext = nextLevel;
       while (counter != null && notPlaced.length > 0) {
-        counter = this.processChildren(notPlaced, counter, nextLevel);
+        counter = this.processChildren(notPlaced, counter, counterNext);
       }
-      this.treelayoutHelper(firstLevel, 0);
-      this.shiftOntoScreen(900, 30, true);
+    }
+    this.treelayoutHelper(firstLevel, nextLevel, 0);
+    this.shiftOntoScreen(900, 30, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
     }
 
 
   };
-  automatonproto.treelayoutHelper = function(level, height) {
-    var vertices = this.nodes();
-    var currentX = -1.0 * this.nodeCount() * (30 * 30) / 2;
-    for (var v = 0; v < this.nodeCount(); v++) {
+  automatonproto.treelayoutHelper = function(level, nextlevel, height) {
+    var vertices = level;
+    var currentX = -1.0 * vertices.length * (30 * 30) / 2;
+    for (var v = 0; v < vertices.length; v++) {
       vertices[v].moveTo(currentX, height);
       currentX = currentX + 30 + 30;
     }
-    if (level != null) {
-      this.treelayoutHelper(level, height + 60);
+    if (nextlevel != null) {
+      this.treelayoutHelper(nextlevel, null, height + 60);
     }
   };
 
@@ -819,13 +835,13 @@ var lambda = String.fromCharCode(955),
   */
   automatonproto.processChildren = function(notPlaced, level, nextLevel) {
     var chain;
-    var lastChain;
+    var lastChain = null;
     var nodes = this.nodes();
-    for (var i = 0; i < this.nodeCount(); i++) {
+    for (var i = 0; i < level.length; i++) {
       chain = [];
       for (var j = notPlaced.length - 1; j >= 0; j--) {
-        if (this.hasEdge(nodes[i], notPlaced[j]) && nodes[i] != notPlaced[j]) {
-          this.addVertex(chain, notPlaced[j]);
+        if (this.hasEdge(level[i], notPlaced[j]) && level[i] != notPlaced[j]) {
+          chain = this.addVertex(chain, notPlaced[j]);
           notPlaced.splice(j, 1);
         }
       }
@@ -841,9 +857,17 @@ var lambda = String.fromCharCode(955),
           }
         }
       }
+      lastChain = chain;
 
-
-
+    }
+    //Finally, add the last chain generated to the graph.
+    if (lastChain != null && lastChain.length > 0) {
+    	if (nextLevel == null) {
+    		nextLevel = [];
+    	}
+    	for (var b = 0; b < lastChain.length; b++) {
+    		nextLevel.push(lastChain[b]);
+    	}
     }
     return nextLevel;
   };
@@ -856,7 +880,7 @@ var lambda = String.fromCharCode(955),
     for (var j = 0; j < firstChain.length; j++) {
       for (var k = 0; k < nextChain.length; k++) {
         if (this.getDegreeInChain(firstChain, firstChain[j]) < 2 
-          && this.getDegreeInChain(nextChain, nextChain[k])
+          && this.getDegreeInChain(nextChain, nextChain[k]) < 2
           && this.hasEdge(firstChain[j], nextChain[k])) {
           fstart=j;   
           fend=j;   
@@ -865,17 +889,17 @@ var lambda = String.fromCharCode(955),
           while (fstart > 0 && this.hasEdge(firstChain[fstart], firstChain[fstart - 1])) {
             fstart--;
           }
-          while (fend < firstChain.length - 1 && this.hasEdge(firstChain[fend, firstChain[fend + 1]])) {
-            fend--;
+          while (fend < firstChain.length - 1 && this.hasEdge(firstChain[fend], firstChain[fend + 1])) {
+            fend++;
           }
           while (nstart > 0 && this.hasEdge(nextChain[nstart], nextChain[nstart - 1])) {
-            nstart;
+            nstart--;
           }
-          while (nend < nextChain.length - 1 && this.hasEdge(nextChain[nend, nextChain[nend + 1]])) {
-            nend--;
+          while (nend < nextChain.length - 1 && this.hasEdge(nextChain[nend], nextChain[nend + 1])) {
+            nend++;
           }
-          this.alignTwoChains(firstChain, firstChain.length - 1, fstart + fend - j, fstart, fend, true);
-          this.alignTwoChains(nextChain, 0, nstart+nend-k, nstart, nend, false);
+          this.orientSubChain(firstChain, firstChain.length - 1, fstart + fend - j, fstart, fend, true);
+          this.orientSubChain(nextChain, 0, nstart+nend-k, nstart, nend, false);
           return;
         }
       }
@@ -892,7 +916,7 @@ var lambda = String.fromCharCode(955),
     var dest, chainSize;
     chainSize = chain.length;
     if (destIndex > 0 && destIndex >= start) {
-      dest = destIndex+ start-end-1;
+      dest = destIndex + start - end - 1;
     }
     else {
       dest = destIndex;
@@ -901,30 +925,41 @@ var lambda = String.fromCharCode(955),
       toMove.splice(i-start, 1, chain[i]);
     }
     for (var j = 0; j < toMove.length; j++) {
-      chain.splice(chain.indexOf(toMove[j]), 1);
+    	if (toMove[j] != 0) {
+    		chain.splice(chain.indexOf(toMove[j]), 1);
+    	}
     }
     for (var k = 0; k < toMove.length; k++) {
       if (shuffleDirection) {
         if (destIndex == chainSize || dest == chain.length) {
-          if (matchingIndex == start) {
+          if (matchingIndex == start && toMove[toMove.length-1-k] != 0) {
             chain.push(toMove[toMove.length-1-k]);
           }
           else {
-            chain.push(toMove[k]);
+          	if (toMove[k] != 0) {
+          		chain.push(toMove[k]);
+          	}
           }
         }
-        else if (matchingIndex == start) {
+        else if (matchingIndex == start && toMove[toMove.length-1-k] != 0) {
           chain.splice(dest+1, 0, toMove[toMove.length-1-k]);
         }
         else {
-          chain.splice(dest+1, 0, toMove[k]);
+        	if (toMove[k] != 0) {
+        		chain.splice(dest+1, 0, toMove[k]);
+        	}
         }
       }
       else if (matchingIndex == start) {
-        chain.splice(dest, 0, toMove[k]);
+      	if (toMove[k] != 0) {
+    		chain.splice(dest, 0, toMove[k]);
+    	}
+        
       }
       else {
-        chain.splice(dest, 0, toMove[toMove.length-1-k]);
+      	if (toMove[toMove.length-1-k] != 0) {
+    		chain.splice(dest, 0, toMove[toMove.length-1-k]);
+    	}
       }
     }
   };
@@ -946,9 +981,9 @@ var lambda = String.fromCharCode(955),
         chain.splice(destIndex, 0, vertex);
 
         for (var j=i+2; j<chain.length; j++) {
-          if (this.hasEdge(vertex, chain[0]) && this.getDegreeInChain(chain, chain[j]) <= 2) {
+          if (this.hasEdge(vertex, chain[j]) && this.getDegreeInChain(chain, chain[j]) <= 2) {
             if (j<chain.length - 1 && this.hasEdge(chain[j], chain[j+1])) {
-              this.orientSubChain(chain, destIndex, j, j, size()-1, (destIndex==i+1));
+              this.orientSubChain(chain, destIndex, j, j, chain.length-1, (destIndex==i+1));
             }
             else {
               subChainBound = j;
@@ -964,6 +999,7 @@ var lambda = String.fromCharCode(955),
       }
     }
     chain.push(vertex);
+    return chain;
   };
 
   /*
@@ -978,7 +1014,7 @@ var lambda = String.fromCharCode(955),
     }
     return count;
   };
-
+/////////////////////////////////////////////////////////////////////////////////////
 
 
   /*
