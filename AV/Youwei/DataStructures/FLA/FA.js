@@ -746,20 +746,20 @@ var lambda = String.fromCharCode(955),
 
     if (hierarchical) {
     	//make sure the right kind of graph is present for
-		//hierarchical graphs.
-		vertices.sort(function(a, b) {
-		var degreea = 0;
-		var degreeb = 0;
-		for (var q = 0; q < vertices.length; q++) {
-		  if (vertices[q].edgeTo(a)) {
-		    degreea++;
-		  }
-		  if (vertices[q].edgeTo(b)) {
-		    degreeb++;
-		  }
-		}
-		return degreea - degreeb;
-		});
+  		//hierarchical graphs.
+  		vertices.sort(function(a, b) {
+  		var degreea = 0;
+  		var degreeb = 0;
+  		for (var q = 0; q < vertices.length; q++) {
+  		  if (vertices[q].edgeTo(a) && vertices[q] != a) {
+  		    degreea++;
+  		  }
+  		  if (vertices[q].edgeTo(b) && vertices[q] != b) {
+  		    degreeb++;
+  		  }
+  		}
+  		return degreea - degreeb;
+  		});
     }
     else {
       vertices.sort(function(a, b) {
@@ -779,7 +779,7 @@ var lambda = String.fromCharCode(955),
             degreeb++;
           }
         }
-        return degreea - degreeb;
+        return degreeb - degreea;
       });
     }
     var notPlaced = [];
@@ -790,17 +790,23 @@ var lambda = String.fromCharCode(955),
     var firstLevel = [];
     var nextLevel;
     var counter;
-    var counterNext;
+    var nextLevels = [];
     while (notPlaced.length > 0) {
       firstLevel.push(notPlaced[0]);
       notPlaced.splice(0, 1);
       counter = firstLevel;
-      counterNext = nextLevel;
       while (counter != null && notPlaced.length > 0) {
-        counter = this.processChildren(notPlaced, counter, counterNext);
+        counter = this.processChildren(notPlaced, counter);
+        if (counter != null) {
+          var next = [];
+          for (var g = 0; g < counter.length; g++) {
+            next.push(counter[g]);
+          }
+          nextLevels.push(next);
+        }
       }
     }
-    this.treelayoutHelper(firstLevel, nextLevel, 0);
+    this.treelayoutHelper(firstLevel, nextLevels, 0, 0);
     this.shiftOntoScreen(900, 30, true);
     var nodes = this.nodes();
     // Update the position of the state label for each node
@@ -816,15 +822,14 @@ var lambda = String.fromCharCode(955),
 
 
   };
-  automatonproto.treelayoutHelper = function(level, nextlevel, height) {
-    var vertices = level;
-    var currentX = -1.0 * vertices.length * (30 * 30) / 2;
-    for (var v = 0; v < vertices.length; v++) {
-      vertices[v].moveTo(currentX, height);
+  automatonproto.treelayoutHelper = function(level, nextLevels, height, index) {
+    var currentX = -1.0 * level.length * (30 + 30) / 2;
+    for (var v = 0; v < level.length; v++) {
+      level[v].moveTo(currentX, height);
       currentX = currentX + 30 + 30;
     }
-    if (nextlevel != null) {
-      this.treelayoutHelper(nextlevel, null, height + 60);
+    if (nextLevels[index] != null) {
+      this.treelayoutHelper(nextLevels[index], nextLevels, height + 60, index + 1);
     }
   };
 
@@ -833,9 +838,10 @@ var lambda = String.fromCharCode(955),
   * vertices in this level have any non-placed vertices as children.  All children found are placed in
   * the next level down the hierarchy.
   */
-  automatonproto.processChildren = function(notPlaced, level, nextLevel) {
+  automatonproto.processChildren = function(notPlaced, level) {
     var chain;
     var lastChain = null;
+    var nextLevel = null;
     var nodes = this.nodes();
     for (var i = 0; i < level.length; i++) {
       chain = [];
@@ -1047,7 +1053,7 @@ var lambda = String.fromCharCode(955),
           degreeb++;
         }
       }
-      return degreea - degreeb;
+      return degreeb - degreea;
     });
     
     var r = 0;
