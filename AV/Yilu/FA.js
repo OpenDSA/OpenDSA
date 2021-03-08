@@ -1787,7 +1787,7 @@ var lambda = String.fromCharCode(955),
     Combine two NFAs. 
     Note: When the union argument is set to true, it will automatically take the union of the two NFAs
   */
-  var combine = function(jsav, newOne, other, opts, union = false) {
+  var combine = function(jsav, newOne, other, opts) {
     var lambda = String.fromCharCode(955)
     g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
     var otherStates = other.nodes();
@@ -2159,6 +2159,8 @@ var lambda = String.fromCharCode(955),
   };
 
   var completeDFA = function(jsav, graph){
+
+    graph.options = $.extend({layout: 'automatic'}, graph.options);
     nodes = graph.nodes();
     edges = graph.edges();
     alp = graph.alphabet;
@@ -2206,7 +2208,6 @@ var lambda = String.fromCharCode(955),
     graph.layout();
     return graph;
   };
-
   /**
    * MAke publicly available methods
    */
@@ -3364,51 +3365,21 @@ function getRandomInt(max) {
 
   var minimizer = Minimizer.prototype;
   window.Minimizer = Minimizer;
-  /*
-  minimizer.minizeDFAClean = function (jsav, graph, tree,  newGraphDimensions ) {
-    this.init(jsav, referenceGraph, tree, display);
+
+  minimizer.minimizeDFA = function (jsav, referenceGraph, tree, newGraphDimensions) {
+    this.init(jsav, referenceGraph, tree);
     var listOfVisitedLeaves = [];
     var listOfLeaves = this.getLeaves(this.tree.root());
     var leaf;
     var moreToSplit = true;
-    while(moreToSplit){
-      moreToSplit = null;
-      for (var i = 0; i < listOfLeaves.length; i++) {
-        listOfVisitedLeaves = listOfVisitedLeaves.concat(listOfLeaves);
-        leaf = listOfLeaves[i];
-        var leafTreeNode = getTreeNode(leaf, this.tree.root());
-        leafTreeNode.highlight();
-        var split = this.autoPartition(leaf, display);
-        if (moreToSplit !== null)
-          moreToSplit = split || moreToSplit;
-        else
-          moreToSplit = split;
-      }
-      listOfLeaves = _.difference(this.getLeaves(this.tree.root()), listOfVisitedLeaves);
-    }
-  }
-  */
-  minimizer.minimizeDFA = function (jsav, referenceGraph, tree, newGraphDimensions, display=true) {
-    this.init(jsav, referenceGraph, tree, display);
-    var listOfVisitedLeaves = [];
-    var listOfLeaves = this.getLeaves(this.tree.root());
-    var leaf;
-    var moreToSplit = true;
-    if (display)
-      this.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
     while (moreToSplit) {
       moreToSplit = null;
       for (var i = 0; i < listOfLeaves.length; i++) {
         listOfVisitedLeaves = listOfVisitedLeaves.concat(listOfLeaves);
-        if (display){
-          this.jsav.step();
-          this.unhighlightAllTreeNodes(this.tree);
-          this.unhighlightAll(this.referenceGraph);
-        }
         leaf = listOfLeaves[i];
         var leafTreeNode = getTreeNode(leaf, this.tree.root());
         leafTreeNode.highlight();
-        var split = this.autoPartition(leaf, display);
+        var split = this.autoPartition(leaf);
         if (moreToSplit !== null)
           moreToSplit = split || moreToSplit;
         else
@@ -3416,23 +3387,9 @@ function getRandomInt(max) {
       }
       listOfLeaves = _.difference(this.getLeaves(this.tree.root()), listOfVisitedLeaves);
     }
-    if (display){
-      this.jsav.step();
-      this.unhighlightAllTreeNodes(this.tree);
-      this.unhighlightAll(this.referenceGraph);
-      this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
-      this.jsav.step();
-    }
-    /*nodes = figure2.nodes();
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      figure2.removeNode(next);
-    }
-
-    */
-
-    return this.done(newGraphDimensions, display);
+    return this.done(newGraphDimensions);
   }
-  minimizer.init = function (jsav, referenceGraph, tree, display=true) {
+  minimizer.init = function (jsav, referenceGraph, tree) {
     this.selectedNode = null;
     this.jsav = jsav;
     this.referenceGraph = referenceGraph;
@@ -3446,22 +3403,6 @@ function getRandomInt(max) {
     this.addTrapState();
     var val = this.getReachable();
     this.initTree(val);
-    if (display){
-      this.jsav.umsg("Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.")
-      this.jsav.step();
-      this.jsav.umsg("These are the nonfinal states.")
-      highlightAllNodes(this.nonfinals, this.referenceGraph);
-      getTreeNode(this.nonfinals.sort().join(), this.tree.root()).highlight();
-      this.jsav.step();
-      this.unhighlightAllTreeNodes(this.tree);
-      this.unhighlightAll(this.referenceGraph);
-      this.jsav.umsg("These are the final states.")
-      highlightAllNodes(this.finals, this.referenceGraph);
-      getTreeNode(this.finals.sort().join(), this.tree.root()).highlight();
-      this.jsav.step();
-      this.unhighlightAllTreeNodes(this.tree);
-      this.unhighlightAll(this.referenceGraph);
-    }
   }
 
   // minimizing DFA needs a complete FA, so this function adds trap states
@@ -3575,13 +3516,13 @@ function getRandomInt(max) {
       node.unhighlight();
     })
   };
-  minimizer.autoPartition = function (treeNode, display = true) {
+
+  minimizer.autoPartition = function(treeNode){
     var leaves = this.getLeaves(this.tree.root());
     var val = treeNode.split(','); //this.selectedNode.value().split(',');
     var nObj = {},
       sets = {},
       letter;
-    // check all terminals (even if one was inputted by the user)
     for (var k = 0; k < this.alphabet.length; k++) {
       nObj = {};
       letter = this.alphabet[k];
@@ -3597,13 +3538,6 @@ function getRandomInt(max) {
       if (!_.find(leaves, function (v) { return _.difference(nArr, v.split(',')).length === 0 })) {
         break;
       } else if (k === this.alphabet.length - 1) {
-        if (display){
-          //this.selectedNode.unhighlight();
-          this.unhighlightAll(this.referenceGraph);
-          //this.selectedNode = null;
-          this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
-          highlightAllNodes(treeNode.split(','), this.referenceGraph);
-        }
         return false;
       }
     }
@@ -3633,17 +3567,11 @@ function getRandomInt(max) {
         nodeListAsString += "Node " + nVal;
       }
     }
-    if (display){
-      nodeListAsString = listOFNodesToString(nodeListAsString);
-      nodeListAsString += " by using the transition label " + letter;
-      this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will be divided into " + nodeListAsString + ".");
-      highlightAllNodes(treeNode.split(','), this.referenceGraph);
-      //this.unhighlightAll(this.referenceGraph);
-      this.tree.layout();
-    }
     return true;
+
   };
-  minimizer.done = function (newGraphDimensions, display = true) {
+
+  minimizer.done = function (newGraphDimensions) {
     var leaves = this.getLeaves(this.tree.root());
     for (var i = 0; i < leaves.length; i++) {
       var leaf = leaves[i].split(',');
@@ -3716,15 +3644,10 @@ function getRandomInt(max) {
         next.weight().split("<br>"));
     }
     graph.layout();
-    if (display){
-      this.jsav.step();
-      //graph.click(nodeClickHandlers);
-      this.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
-      studentGraph = graph;
-    }
-    return this.complete(graph, display);
+    return this.complete(graph);
   };
-  minimizer.complete = function (studentGraph, display = true) {
+
+  minimizer.complete = function (studentGraph) {
     for (var i in this.minimizedEdges) {
       for (var j in this.minimizedEdges[i]) {
         var n1 = studentGraph.getNodeWithValue(i),
@@ -3736,16 +3659,14 @@ function getRandomInt(max) {
         }
       }
     }
-    if (!display){
-      oldNodes = this.referenceGraph.nodes();
-      for(var next = oldNodes.next(); next; next = oldNodes.next()){
-        this.referenceGraph.removeNode(next);
-      }
+    oldNodes = this.referenceGraph.nodes();
+    for(var next = oldNodes.next(); next; next = oldNodes.next()){
+      this.referenceGraph.removeNode(next);
     }
-    if (display)
-      studentGraph.disableDragging();
+    
     return studentGraph;
   };
+
   var getTreeNode = function (nodeValue, node) {
     if (node.childnodes == false && node.value() === nodeValue) { //leaf
       return node;
@@ -3755,31 +3676,6 @@ function getRandomInt(max) {
         result = result || getTreeNode(nodeValue, node.child(i));
       }
       return result;
-    }
-  }
-
-  var listOFNodesToString = function (nodeListAsString) {
-    var lastCommaIndex = nodeListAsString.lastIndexOf('-');
-    if (lastCommaIndex > 0) {
-      nodeListAsString = nodeListAsString.slice(0, lastCommaIndex) + ", and " + nodeListAsString.slice(lastCommaIndex + 1);
-      nodeListAsString = nodeListAsString.split('-').join(', ');
-    }
-
-    return latixifyNodeName(nodeListAsString);
-  }
-  var latixifyNodeName = function (nodeListAsString) {
-    var re = /q\d+/g;
-    var listOfNodes = nodeListAsString.match(re);
-    if (listOfNodes)
-      listOfNodes.map(function (node) {
-        nodeListAsString = nodeListAsString.replace(node, '$' + node.slice(0, 1) + '_{' + node.slice(1) + '}$');
-      })
-    return nodeListAsString;
-  }
-
-  var highlightAllNodes = function (listOfNodes, graph) {
-    for (var i = 0; i < listOfNodes.length; i++) {
-      graph.getNodeWithValue(listOfNodes[i]).highlight("green");
     }
   }
 

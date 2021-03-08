@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 	//Slide 4
 	av.umsg("combine the two machines in one window")
-	var combinedResult = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750}, false);
+	var combinedResult = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
 	console.log(combinedResult);
 	var combined = combinedResult['graph'];
 	/*
@@ -74,7 +74,7 @@ $(document).ready(function(){
 	mytree.hide();
 	dfa.hide();
   	var minm = new Minimizer();
-  	var minized = minm.minimizeDFA(av, dfa, mytree, {left: 10, top:0, height: 450, width: 750}, false);
+  	var minized = minm.minimizeDFA(av, dfa, mytree, {left: 10, top:0, height: 450, width: 750});
   	minized.layout();
   	av.umsg("Then, minimize the DFA");
   	av.step();
