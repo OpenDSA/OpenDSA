@@ -1,6 +1,6 @@
 /* *** ODSATag: preorder *** */
 static <E> void preorder(BinNode<E> rt) {
-  if (rt == null) return; // Empty subtree - do nothing
+  if (rt == null) {return;} // Empty subtree - do nothing
   visit(rt);              // Process root node
   preorder(rt.left());    // Process all nodes in left
   preorder(rt.right());   // Process all nodes in right

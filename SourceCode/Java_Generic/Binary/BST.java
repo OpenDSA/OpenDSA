@@ -41,12 +41,14 @@ class BST<E extends Comparable<E>> {
   // Return a record that matches the key value
 /* *** ODSATag: findhelp *** */
   private E findhelp(BSTNode<E> rt, E key) {
-    if (rt == null) return null;
-    if (rt.value().compareTo(key) > 0)
+    if (rt == null) {return null};
+    if (rt.value().compareTo(key) > 0){
       return findhelp(rt.left(), key);
-    else if (rt.value().compareTo(key) == 0)
+    }
+    else if (rt.value().compareTo(key) == 0){
       return rt.value();
-    else return findhelp(rt.right(), key);
+    }
+    else {return findhelp(rt.right(), key)};
   }
 /* *** ODSAendTag: findhelp *** */
 
@@ -76,7 +78,7 @@ class BST<E extends Comparable<E>> {
 /* *** ODSATag: getmax *** */
   // Get the maximum valued element in a subtree
   private BSTNode<E> getmax(BSTNode<E> rt) {
-    if (rt.right() == null) return rt;
+    if (rt.right() == null) {return rt};
     return getmax(rt.right());
   }
 /* *** ODSAendTag: getmax *** */
@@ -105,7 +107,7 @@ class BST<E extends Comparable<E>> {
 
 /* *** ODSATag: printhelp *** */
   private void printhelp(BSTNode<E> rt) {
-    if (rt == null) return;
+    if (rt == null) {return};
     printhelp(rt.left());
     printVisit(rt.value());
     printhelp(rt.right());
