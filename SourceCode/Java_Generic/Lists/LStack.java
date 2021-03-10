@@ -34,7 +34,7 @@ class LStack<E> implements Stack<E> {
 // Remove "it" from stack
 /* *** ODSATag: LStackPop *** */    
   public E pop() {           
-    if (top == null) {return null};
+    if (top == null) {return null;}
     E it = top.element();
     top = top.next();
     size--;

@@ -71,9 +71,11 @@ for (i=1; i<=n; i++){     // Second double loop
 
 /* *** ODSATag: c3p6 *** */
 sum1 = 0;
-for (k=1; k<=n; k*=2)    // Do log n times
-  for (j=1; j<=n; j++)  // Do n times
+for (k=1; k<=n; k*=2){    // Do log n times
+  for (j=1; j<=n; j++){  // Do n times
     sum1++;
+  }
+}
 
 sum2 = 0;
 for (k=1; k<=n; k*=2){    // Do log n times
