@@ -1766,26 +1766,49 @@ var lambda = String.fromCharCode(955),
       }*/
   };
 
+
+
+  var union = function(graph, Starts, Ends){
+    var start = graph.addNode();
+    var nodes = graph.nodes();
+    graph.makeInitial(start);
+    for (i in Starts){
+      graph.addEdge(start, Starts[i], {weight: lambda});
+    }
+    var end = graph.addNode();
+    graph.makeFinal(end);
+    for (i in Ends){
+      graph.addEdge(Ends[i], end, {weight: lambda});
+    }
+    graph.layout();
+  }
+
   /*
     Combine two NFAs. 
     Note: When the union argument is set to true, it will automatically take the union of the two NFAs
   */
-  var combine = function(jsav, newOne, other, opts, union = false) {
+  var combine = function(jsav, newOne, other, opts) {
     var lambda = String.fromCharCode(955)
     g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
     var otherStates = other.nodes();
     var newOneStates = newOne.nodes();
     var newOneStart = 0;
     var otherStart = newOneStates.length;
-    
+    var newOneFinals = [];
+    var otehrFinals = [];
+    var starts = [];
+    var ends = [];
     //var otherToNew = {};
     for(i = 0; i < newOneStates.length; i++){
       s = newOneStates[i];
       var s1 = g.addNode();
       if (s.hasClass('final')){
-        s1.addClass('final');
+        //s1.addClass('final');
+        ends.push(s1);
+        newOneFinals.push(s1);
       }
       if (s.hasClass('start')){
+        starts.push(s1);
         newOneStart = i;
       }
 
@@ -1796,9 +1819,12 @@ var lambda = String.fromCharCode(955),
       s = otherStates[i];
       var s1 = g.addNode();
       if (s.hasClass('final')){
-        s1.addClass('final');
+        //s1.addClass('final');
+        ends.push(s1);
+        otehrFinals.push(s1);
       }
       if (s.hasClass('start')){
+        starts.push(s1);
         otherStart += i;
       }
       //otherToNew[s] = s1;
@@ -1807,18 +1833,27 @@ var lambda = String.fromCharCode(955),
     otherEdges = other.edges();
     newOneEdges = newOne.edges();
     newNodes = g.nodes();
-
+    /*
     if (union){
       var start = g.addNode();
       g.makeInitial(start);
-      g.addEdge(start, newNodes[newOneStart] /*newNodes[newOneStates.length]*/, {weight: lambda});
-      g.addEdge(start, newNodes[otherStart] /*newNodes[0]*/, {weight: lambda});
+      g.addEdge(start, newNodes[newOneStart], {weight: lambda});
+      g.addEdge(start, newNodes[otherStart], {weight: lambda});
+
+      var end = g.addNode();
+      g.makeFinal(end);
+      for (i in newOneFinals){
+        g.addEdge(newOneFinals[i], end, {weight: lambda});
+      }
+      for (i in otehrFinals){
+        g.addEdge(otehrFinals[i], end, {weight: lambda});
+      }
     }
     else{
       g.makeInitial(newNodes[newOneStart]);
       g.layout();
     }
-
+*/
     for(i = 0; i < newOneEdges.length; i++){
       e1 = newOneEdges[i];
       fromInd = newOneStates.indexOf(e1.start());
@@ -1836,30 +1871,21 @@ var lambda = String.fromCharCode(955),
       weight = e.weight();
       g.addEdge(newNodes[fromInd+newOneStates.length], newNodes[toInd+newOneStates.length], { weight: weight});
     }
+    g.layout();
 
-    
-    return g;
+    var result = {'graph': g, 'start': starts, 'end': ends}
+    return result;
   };
 
   /*
     Take the complement of a NFA
   */
   var complement = function(jsav, graph, opts) {
-    jsav.umsg("bye world");
-    //var g;
     //g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
     var nodes = graph.nodes();
 
     for (var next = nodes.next(); next; next = nodes.next()) {
-      next.highlight();
-      if (next.hasClass('final')){
-        next.unhighlight();
-        next.removeClass('final');
-      }
-      else{
-        next.unhighlight();
-        next.addClass('final');
-      }
+      toggleFinal(graph, next);    
     }
     //var nodes = g.nodes();
     
@@ -2122,6 +2148,86 @@ var lambda = String.fromCharCode(955),
     return g;
   };
 
+
+  var getNodeWithValue = function (jsav, value) {
+    var nodes = jsav.nodes();
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      if (next.value() === value) {
+        return next;
+      }
+    }
+  };
+
+  var completeDFA = function(jsav, graph){
+
+    graph.options = $.extend({layout: 'automatic'}, graph.options);
+    nodes = graph.nodes();
+    edges = graph.edges();
+    alp = graph.alphabet;
+    alphabet = [];
+    missing = {};
+    hasMissing = false;
+    for (const key in alp) {
+      alphabet.push(key);
+    }
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      var edgesFromNext = next.container._edges[next.container._nodes.indexOf(next)];
+      if (edgesFromNext.length != alphabet.length){
+        if (edgesFromNext.length == 0){
+          missing[next.container._nodes.indexOf(next)] = [];
+          for (i in alphabet){
+            missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
+          }
+        }
+        else {
+          for (edge in edgesFromNext){
+            var weights = edgesFromNext[edge]._weight.split('<br>');
+            if (weights.length != alphabet.length){
+              hasMissing =true;
+              missing[next.container._nodes.indexOf(next)] = [];
+              for (i in alphabet){
+                if (weights.indexOf(alphabet[i]) == -1){
+                  missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (hasMissing){
+      var newNode = graph.addNode();
+      var newLabel = alphabet.toString().replace(',', '<br>');
+      graph.addEdge(newNode, newNode, {weight: newLabel});
+      for (i in missing){
+        var label = missing[i].toString().replace(',', '<br>');
+        graph.addEdge(nodes[i], newNode, {weight: label});
+      }
+    }
+    graph.layout();
+    return graph;
+  };
+
+  FiniteAutomaton.intersect = function(jsav,first, second,opts){
+    figure1 = this.complement(jsav, first, opts);
+    figure2 = this.complement(jsav, first, opts);
+    first.hide();
+    second.hide();
+    var combinedResult = this.combine(jsav, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
+    var combined = combinedResult['graph'];
+    FiniteAutomaton.union(combined, combinedResult['start'], combinedResult['end']);
+    combined.hide();
+    var dfa = this.convertNFAtoDFA(jsav, combined, {top: 0, left: 10, width: 500, height: 150});
+    var mytree = new jsav.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
+    mytree.hide();
+    dfa.hide();
+    var minm = new Minimizer();
+    var minized = minm.minimizeDFA(jsav, dfa, mytree, {left: 10, top:0, height: 450, width: 750});
+    minized = this.complement(jsav, minized, {left: 10, top:0, height: 450, width: 750});
+    minized.layout();
+    return minized;
+  };
   /**
    * MAke publicly available methods
    */
@@ -2131,6 +2237,8 @@ var lambda = String.fromCharCode(955),
 
   FiniteAutomaton.complement = complement;
   FiniteAutomaton.combine = combine
+  FiniteAutomaton.completeDFA = completeDFA;
+  FiniteAutomaton.union = union;
 }(jQuery));
 /*
 ****************************************************************************
@@ -3277,51 +3385,21 @@ function getRandomInt(max) {
 
   var minimizer = Minimizer.prototype;
   window.Minimizer = Minimizer;
-  /*
-  minimizer.minizeDFAClean = function (jsav, graph, tree,  newGraphDimensions ) {
-    this.init(jsav, referenceGraph, tree, display);
+
+  minimizer.minimizeDFA = function (jsav, referenceGraph, tree, newGraphDimensions) {
+    this.init(jsav, referenceGraph, tree);
     var listOfVisitedLeaves = [];
     var listOfLeaves = this.getLeaves(this.tree.root());
     var leaf;
     var moreToSplit = true;
-    while(moreToSplit){
-      moreToSplit = null;
-      for (var i = 0; i < listOfLeaves.length; i++) {
-        listOfVisitedLeaves = listOfVisitedLeaves.concat(listOfLeaves);
-        leaf = listOfLeaves[i];
-        var leafTreeNode = getTreeNode(leaf, this.tree.root());
-        leafTreeNode.highlight();
-        var split = this.autoPartition(leaf, display);
-        if (moreToSplit !== null)
-          moreToSplit = split || moreToSplit;
-        else
-          moreToSplit = split;
-      }
-      listOfLeaves = _.difference(this.getLeaves(this.tree.root()), listOfVisitedLeaves);
-    }
-  }
-  */
-  minimizer.minimizeDFA = function (jsav, referenceGraph, tree, newGraphDimensions, display=true) {
-    this.init(jsav, referenceGraph, tree, display);
-    var listOfVisitedLeaves = [];
-    var listOfLeaves = this.getLeaves(this.tree.root());
-    var leaf;
-    var moreToSplit = true;
-    if (display)
-      this.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
     while (moreToSplit) {
       moreToSplit = null;
       for (var i = 0; i < listOfLeaves.length; i++) {
         listOfVisitedLeaves = listOfVisitedLeaves.concat(listOfLeaves);
-        if (display){
-          this.jsav.step();
-          this.unhighlightAllTreeNodes(this.tree);
-          this.unhighlightAll(this.referenceGraph);
-        }
         leaf = listOfLeaves[i];
         var leafTreeNode = getTreeNode(leaf, this.tree.root());
         leafTreeNode.highlight();
-        var split = this.autoPartition(leaf, display);
+        var split = this.autoPartition(leaf);
         if (moreToSplit !== null)
           moreToSplit = split || moreToSplit;
         else
@@ -3329,23 +3407,9 @@ function getRandomInt(max) {
       }
       listOfLeaves = _.difference(this.getLeaves(this.tree.root()), listOfVisitedLeaves);
     }
-    if (display){
-      this.jsav.step();
-      this.unhighlightAllTreeNodes(this.tree);
-      this.unhighlightAll(this.referenceGraph);
-      this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
-      this.jsav.step();
-    }
-    /*nodes = figure2.nodes();
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      figure2.removeNode(next);
-    }
-
-    */
-
-    return this.done(newGraphDimensions, display);
+    return this.done(newGraphDimensions);
   }
-  minimizer.init = function (jsav, referenceGraph, tree, display=true) {
+  minimizer.init = function (jsav, referenceGraph, tree) {
     this.selectedNode = null;
     this.jsav = jsav;
     this.referenceGraph = referenceGraph;
@@ -3359,22 +3423,6 @@ function getRandomInt(max) {
     this.addTrapState();
     var val = this.getReachable();
     this.initTree(val);
-    if (display){
-      this.jsav.umsg("Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.")
-      this.jsav.step();
-      this.jsav.umsg("These are the nonfinal states.")
-      highlightAllNodes(this.nonfinals, this.referenceGraph);
-      getTreeNode(this.nonfinals.sort().join(), this.tree.root()).highlight();
-      this.jsav.step();
-      this.unhighlightAllTreeNodes(this.tree);
-      this.unhighlightAll(this.referenceGraph);
-      this.jsav.umsg("These are the final states.")
-      highlightAllNodes(this.finals, this.referenceGraph);
-      getTreeNode(this.finals.sort().join(), this.tree.root()).highlight();
-      this.jsav.step();
-      this.unhighlightAllTreeNodes(this.tree);
-      this.unhighlightAll(this.referenceGraph);
-    }
   }
 
   // minimizing DFA needs a complete FA, so this function adds trap states
@@ -3488,13 +3536,13 @@ function getRandomInt(max) {
       node.unhighlight();
     })
   };
-  minimizer.autoPartition = function (treeNode, display = true) {
+
+  minimizer.autoPartition = function(treeNode){
     var leaves = this.getLeaves(this.tree.root());
     var val = treeNode.split(','); //this.selectedNode.value().split(',');
     var nObj = {},
       sets = {},
       letter;
-    // check all terminals (even if one was inputted by the user)
     for (var k = 0; k < this.alphabet.length; k++) {
       nObj = {};
       letter = this.alphabet[k];
@@ -3510,13 +3558,6 @@ function getRandomInt(max) {
       if (!_.find(leaves, function (v) { return _.difference(nArr, v.split(',')).length === 0 })) {
         break;
       } else if (k === this.alphabet.length - 1) {
-        if (display){
-          //this.selectedNode.unhighlight();
-          this.unhighlightAll(this.referenceGraph);
-          //this.selectedNode = null;
-          this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
-          highlightAllNodes(treeNode.split(','), this.referenceGraph);
-        }
         return false;
       }
     }
@@ -3546,17 +3587,11 @@ function getRandomInt(max) {
         nodeListAsString += "Node " + nVal;
       }
     }
-    if (display){
-      nodeListAsString = listOFNodesToString(nodeListAsString);
-      nodeListAsString += " by using the transition label " + letter;
-      this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will be divided into " + nodeListAsString + ".");
-      highlightAllNodes(treeNode.split(','), this.referenceGraph);
-      //this.unhighlightAll(this.referenceGraph);
-      this.tree.layout();
-    }
     return true;
+
   };
-  minimizer.done = function (newGraphDimensions, display = true) {
+
+  minimizer.done = function (newGraphDimensions) {
     var leaves = this.getLeaves(this.tree.root());
     for (var i = 0; i < leaves.length; i++) {
       var leaf = leaves[i].split(',');
@@ -3629,15 +3664,10 @@ function getRandomInt(max) {
         next.weight().split("<br>"));
     }
     graph.layout();
-    if (display){
-      this.jsav.step();
-      //graph.click(nodeClickHandlers);
-      this.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
-      studentGraph = graph;
-    }
-    return this.complete(graph, display);
+    return this.complete(graph);
   };
-  minimizer.complete = function (studentGraph, display = true) {
+
+  minimizer.complete = function (studentGraph) {
     for (var i in this.minimizedEdges) {
       for (var j in this.minimizedEdges[i]) {
         var n1 = studentGraph.getNodeWithValue(i),
@@ -3649,15 +3679,14 @@ function getRandomInt(max) {
         }
       }
     }
-    if (!display){
-      oldNodes = this.referenceGraph.nodes();
-      for(var next = oldNodes.next(); next; next = oldNodes.next()){
-        this.referenceGraph.removeNode(next);
-      }
+    oldNodes = this.referenceGraph.nodes();
+    for(var next = oldNodes.next(); next; next = oldNodes.next()){
+      this.referenceGraph.removeNode(next);
     }
-    studentGraph.disableDragging();
+    
     return studentGraph;
   };
+
   var getTreeNode = function (nodeValue, node) {
     if (node.childnodes == false && node.value() === nodeValue) { //leaf
       return node;
@@ -3667,31 +3696,6 @@ function getRandomInt(max) {
         result = result || getTreeNode(nodeValue, node.child(i));
       }
       return result;
-    }
-  }
-
-  var listOFNodesToString = function (nodeListAsString) {
-    var lastCommaIndex = nodeListAsString.lastIndexOf('-');
-    if (lastCommaIndex > 0) {
-      nodeListAsString = nodeListAsString.slice(0, lastCommaIndex) + ", and " + nodeListAsString.slice(lastCommaIndex + 1);
-      nodeListAsString = nodeListAsString.split('-').join(', ');
-    }
-
-    return latixifyNodeName(nodeListAsString);
-  }
-  var latixifyNodeName = function (nodeListAsString) {
-    var re = /q\d+/g;
-    var listOfNodes = nodeListAsString.match(re);
-    if (listOfNodes)
-      listOfNodes.map(function (node) {
-        nodeListAsString = nodeListAsString.replace(node, '$' + node.slice(0, 1) + '_{' + node.slice(1) + '}$');
-      })
-    return nodeListAsString;
-  }
-
-  var highlightAllNodes = function (listOfNodes, graph) {
-    for (var i = 0; i < listOfNodes.length; i++) {
-      graph.getNodeWithValue(listOfNodes[i]).highlight("green");
     }
   }
 

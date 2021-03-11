@@ -8,12 +8,12 @@
    :satisfies: TM Module
    :topic: TM Support
 
-Create Shift TM SS
+Update Copy TM SS
 =================
-Visualization of Shift Machine
+Update the Visualization of Copy Machine in Production
 ------------------------
 
-.. inlineav:: TMshift ss
-   :links: AV/Kochan/TMshift.css
-   :scripts: AV/Kochan/TMshift.js AV/Juwon/FAcopy.js DataStructures/PIFrames.js
+.. inlineav:: TMcopyQ ss
+   :links: AV/Kochan/TMcopyQ.css
+   :scripts: AV/Kochan/TMcopyQ.js AV/Juwon/FAcopy.js DataStructures/PIFrames.js
    :output: show

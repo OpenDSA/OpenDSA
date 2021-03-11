@@ -3,6 +3,7 @@
   "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "sphinx_debug": false,
   "code_lang": {
     "Java_Generic": {
       "ext": [

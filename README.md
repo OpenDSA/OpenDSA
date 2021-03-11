@@ -93,12 +93,8 @@ directives that we have created.
 Exercises: Our Khan Academy Infrastructure-based exercises. Subdirectories
 divide the content by topic.
 
-JSAV: The JavaScript Algorithm Visualization library (JSAV). This is a submodule
-for the OpenDSA repository, linked to: https://github.com/vkaravir/JSAV. Thus,
-when you check out OpenDSA, you must get the JSAV submodule by either running
-the command "make pull" or by doing the following:
-  git submodule init
-  git submodule update
+JSAV: The JavaScript Algorithm Visualization library (JSAV). This is sourced
+from: https://github.com/vkaravir/JSAV and is updated occassionally.  
 More information about JSAV can be found here:
 http://jsav.io/
 
@@ -128,7 +124,7 @@ Python, and JavaScript. In this way, instructors would be able to generate
 versions of tutorials that support any or all of these three languages.
 
 **Storyboard: Materials related to "storyboarding" designs for tutorials. This
-concept never gained much traction, and this might be removed at some point.
+concept never gained much traction, and this might be removed at some point.**
 
 WebServer: A command for invoking a simple python-based web server that will
 enable you to run the Khan Academy exercises if your machine is not running a

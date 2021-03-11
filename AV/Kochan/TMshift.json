@@ -4,7 +4,7 @@
       "q1": {
         "type": "select",
         "description": "Let's first guess what the following turing machine does.",
-        "question": "Select one of the following statements that best describe this turing machine",
+        "question": "Select one of the following statements that best describe this turing machine.",
         "answer": [
           "A shift machine that can shift a string to the LEFT of its original tape."
         ],
@@ -16,7 +16,7 @@
       },
       "q3": {
         "type": "select",
-        "description": "Before we start, let's take a look at the below turing machine and answer a question on the right.",
+        "description": "Before we start, let's take a look at the below turing machine and answer the question on the right.",
         "question": "Which machine is the initial machine of this turing machine.",
         "answer": [
           "$>L_{\\#}$"
@@ -40,7 +40,7 @@
       "q6": {
         "type": "select",
         "description": "We move to the next machine <font color='red'>$R$</font> following the arrow direction. ",
-        "question": "What does the <font color='red'>$R$</font> machine means?",
+        "question": "What does the <font color='red'>$R$</font> machine mean?",
         "answer": [
           "moving from the current tape cell to the right tape cell."
         ],
@@ -52,7 +52,7 @@
       "q8": {
         "type": "select",
         "description": "Now we can see that <font color='red'>$R$</font> is followed by two different arrows. Answer the questions on the right to determine which arrow direction you should follow.",
-        "question": "Is the current tape cell a space or empty(i.e. #)? Then, which arrow direction you should follow? (Select all the correct answers.)",
+        "question": "Is the current tape cell a space or empty(i.e. #)? Then, which arrow direction should you follow? (Select all the correct answers.)",
         "answer": [
           "No, it is not a space($\\overline{\\#}$).",
           "Follow the arrow pointing right."
@@ -122,7 +122,7 @@
       "q22": {
         "type": "select",
         "description": "Now we can see that <font color='red'>$R$</font> is followed by two different arrows. Answer the questions on the right to determine which arrow direction you should follow.",
-        "question": "Is the current tape cell a space or empty(i.e. #)? Then, which arrow direction you should follow? (Select all the correct answers.)",
+        "question": "Is the current tape cell a space or empty(i.e. #)? Then, which arrow direction should you follow? (Select all the correct answers.)",
         "answer": [
           "Yes, it is a space(#).",
           "Follow the arrow pointing down."

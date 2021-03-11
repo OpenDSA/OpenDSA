@@ -736,6 +736,295 @@ var lambda = String.fromCharCode(955),
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   /*
+  *
+  */
+  automatonproto.treeLayoutAlg = function(hierarchical) {
+  	var vertices = this.nodes();
+    if (this.nodeCount() == 0) {
+      return;
+    }
+
+    if (hierarchical) {
+    	//make sure the right kind of graph is present for
+  		//hierarchical graphs.
+  		vertices.sort(function(a, b) {
+  		var degreea = 0;
+  		var degreeb = 0;
+  		for (var q = 0; q < vertices.length; q++) {
+  		  if (vertices[q].edgeTo(a) && vertices[q] != a) {
+  		    degreea++;
+  		  }
+  		  if (vertices[q].edgeTo(b) && vertices[q] != b) {
+  		    degreeb++;
+  		  }
+  		}
+  		return degreea - degreeb;
+  		});
+    }
+    else {
+      vertices.sort(function(a, b) {
+        var degreea = 0;
+        var degreeb = 0;
+        for (var q = 0; q < vertices.length; q++) {
+          if (vertices[q].edgeTo(a)) {
+            degreea++;
+          }
+          if (a.edgeTo(vertices[q])) {
+            degreea++;
+          }
+          if (vertices[q].edgeTo(b)) {
+            degreeb++;
+          }
+          if (b.edgeTo(vertices[q])) {
+            degreeb++;
+          }
+        }
+        return degreeb - degreea;
+        //return b.neighbors().length - a.neighbors().length;
+      });
+    }
+    var notPlaced = [];
+    for (var m=0; m<vertices.length; m++) {
+      notPlaced.push(vertices[m]);
+    }
+    //var notPlaced = vertices;
+    var firstLevel = [];
+    var counter;
+    var nextLevels = [];
+    while (notPlaced.length > 0) {
+      firstLevel.push(notPlaced[0]);
+      notPlaced.splice(0, 1);
+      counter = firstLevel;
+      while (counter != null && notPlaced.length > 0) {
+        counter = this.processChildren(notPlaced, counter);
+        if (counter != null) {
+          console.log(counter.length);
+          var next = [];
+          for (var g = 0; g < counter.length; g++) {
+            next.push(counter[g]);
+          }
+          nextLevels.push(next);
+        }
+      }
+    }
+    this.treelayoutHelper(firstLevel, nextLevels, 0, 0);
+    this.shiftOntoScreen(900, 30, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+
+
+  };
+  automatonproto.treelayoutHelper = function(level, nextLevels, height, index) {
+    var currentX = -1.0 * level.length * (30 + 30) / 2;
+    for (var v = 0; v < level.length; v++) {
+      level[v].moveTo(currentX, height);
+      currentX = currentX + 30 + 30;
+    }
+    if (nextLevels[index] != null) {
+      this.treelayoutHelper(nextLevels[index], nextLevels, height + 60, index + 1);
+    }
+  };
+
+  /*
+  * This method checks the list of vertices that haven't been placed in a level to determine if any
+  * vertices in this level have any non-placed vertices as children.  All children found are placed in
+  * the next level down the hierarchy.
+  */
+  automatonproto.processChildren = function(notPlaced, level) {
+    var chain;
+    var lastChain = null;
+    var nextLevel = null;
+    var nodes = this.nodes();
+    for (var i = 0; i < level.length; i++) {
+      chain = [];
+      for (var j = notPlaced.length - 1; j >= 0; j--) {
+        if ((this.hasEdge(level[i], notPlaced[j]) || this.hasEdge(notPlaced[j], level[i])) && level[i] != notPlaced[j]) {
+          chain = this.addVertex(chain, notPlaced[j]);
+          notPlaced.splice(j, 1);
+        }
+      }
+
+      if (lastChain != null) {
+        this.alignTwoChains(lastChain, chain);
+        if (lastChain.length > 0) {
+          if (nextLevel == null) {
+            nextLevel = [];
+          }
+          for (var m = 0; m < lastChain.length; m++) {
+            nextLevel.push(lastChain[m]);
+          }
+        }
+      }
+      lastChain = chain;
+
+    }
+    //Finally, add the last chain generated to the graph.
+    if (lastChain != null && lastChain.length > 0) {
+    	if (nextLevel == null) {
+    		nextLevel = [];
+    	}
+    	for (var b = 0; b < lastChain.length; b++) {
+    		nextLevel.push(lastChain[b]);
+    	}
+    }
+    return nextLevel;
+  };
+
+  /*
+  * alignTwoChains
+  */
+  automatonproto.alignTwoChains = function(firstChain, nextChain) {
+    var fstart, fend, nstart, nend;
+    for (var j = 0; j < firstChain.length; j++) {
+      for (var k = 0; k < nextChain.length; k++) {
+        if (this.getDegreeInChain(firstChain, firstChain[j]) < 2 
+          && this.getDegreeInChain(nextChain, nextChain[k]) < 2
+          && this.hasEdge(firstChain[j], nextChain[k])) {
+          fstart=j;   
+          fend=j;   
+          nstart=k;   
+          nend=k;
+          while (fstart > 0 && this.hasEdge(firstChain[fstart], firstChain[fstart - 1])) {
+            fstart--;
+          }
+          while (fend < firstChain.length - 1 && this.hasEdge(firstChain[fend], firstChain[fend + 1])) {
+            fend++;
+          }
+          while (nstart > 0 && this.hasEdge(nextChain[nstart], nextChain[nstart - 1])) {
+            nstart--;
+          }
+          while (nend < nextChain.length - 1 && this.hasEdge(nextChain[nend], nextChain[nend + 1])) {
+            nend++;
+          }
+          this.orientSubChain(firstChain, firstChain.length - 1, fstart + fend - j, fstart, fend, true);
+          this.orientSubChain(nextChain, 0, nstart+nend-k, nstart, nend, false);
+          return;
+        }
+      }
+    }
+  }
+  /*
+  * 
+  */
+  automatonproto.orientSubChain = function(chain, destIndex, matchingIndex, start, end, shuffleDirection) {
+    var toMove = [];
+    for (var l = 0; l < end-start+1; l++) {
+      toMove.push(0);
+    }
+    var dest, chainSize;
+    chainSize = chain.length;
+    if (destIndex > 0 && destIndex >= start) {
+      dest = destIndex + start - end - 1;
+    }
+    else {
+      dest = destIndex;
+    }
+    for (var i = start; i <= end; i++) {
+      toMove.splice(i-start, 1, chain[i]);
+    }
+    for (var j = 0; j < toMove.length; j++) {
+    	if (toMove[j] != 0) {
+    		chain.splice(chain.indexOf(toMove[j]), 1);
+    	}
+    }
+    for (var k = 0; k < toMove.length; k++) {
+      if (shuffleDirection) {
+        if (destIndex == chainSize || dest == chain.length) {
+          if (matchingIndex == start && toMove[toMove.length-1-k] != 0) {
+            chain.push(toMove[toMove.length-1-k]);
+          }
+          else {
+          	if (toMove[k] != 0) {
+          		chain.push(toMove[k]);
+          	}
+          }
+        }
+        else if (matchingIndex == start && toMove[toMove.length-1-k] != 0) {
+          chain.splice(dest+1, 0, toMove[toMove.length-1-k]);
+        }
+        else {
+        	if (toMove[k] != 0) {
+        		chain.splice(dest+1, 0, toMove[k]);
+        	}
+        }
+      }
+      else if (matchingIndex == start) {
+      	if (toMove[k] != 0) {
+    		chain.splice(dest, 0, toMove[k]);
+    	}
+        
+      }
+      else {
+      	if (toMove[toMove.length-1-k] != 0) {
+    		chain.splice(dest, 0, toMove[toMove.length-1-k]);
+    	}
+      }
+    }
+  };
+
+  /*
+  * Vertex Chain functions
+  */
+  automatonproto.addVertex = function(chain, vertex) {
+    var destIndex, subChainBound;
+
+    for (var i=0; i<chain.length; i++) {
+      if (this.hasEdge(vertex, chain[i])) {
+        if (i = chain.length - 1 || !this.hasEdge(chain[i], chain[i+1])) {
+          destIndex = i + 1;
+        }
+        else {
+          destIndex = i;
+        }
+        chain.splice(destIndex, 0, vertex);
+
+        for (var j=i+2; j<chain.length; j++) {
+          if (this.hasEdge(vertex, chain[j]) && this.getDegreeInChain(chain, chain[j]) <= 2) {
+            if (j<chain.length - 1 && this.hasEdge(chain[j], chain[j+1])) {
+              this.orientSubChain(chain, destIndex, j, j, chain.length-1, (destIndex==i+1));
+            }
+            else {
+              subChainBound = j;
+              while (subChainBound > i+2 && this.hasEdge(chain[subChainBound-1], chain[subChainBound])) {
+                subChainBound--;
+              }
+              this.orientSubChain(chain, destIndex, j, subChainBound, j, (destIndex==i+1));
+            }
+            return;
+          }
+        }
+        return;
+      }
+    }
+    chain.push(vertex);
+    return chain;
+  };
+
+  /*
+  * 
+  */
+  automatonproto.getDegreeInChain = function(chain, vertex) {
+    var count = 0;
+    for (var i = 0; i < chain.length; i++) {
+      if (this.hasEdge(vertex, chain[i]) && vertex != chain[i]) {
+        count++;
+      }
+    }
+    return count;
+  };
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+  /*
   * Spiral layout algorithms
   */
   automatonproto.spiralLayoutAlg = function(options) {
@@ -752,14 +1041,19 @@ var lambda = String.fromCharCode(955),
       var degreea = 0;
       var degreeb = 0;
       for (var q = 0; q < vertices.length; q++) {
+        if (vertices[q].edgeTo(a)) {
+          degreea++;
+        }
         if (a.edgeTo(vertices[q])) {
           degreea++;
+        }
+        if (vertices[q].edgeTo(b)) {
+          degreeb++;
         }
         if (b.edgeTo(vertices[q])) {
           degreeb++;
         }
       }
-      console.log(degreeb - degreea);
       return degreeb - degreea;
     });
     
@@ -774,6 +1068,11 @@ var lambda = String.fromCharCode(955),
     }
     
     this.shiftOntoScreen(900, 30, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
     var edges = this.edges();
     var edge;
     while (edges.hasNext()) {
@@ -843,14 +1142,14 @@ var lambda = String.fromCharCode(955),
     }
   };
   /*
-    Circle Layout Algorithm
+  *Circle Layout Algorithm
   
-  automatonproto.circleLayout = function (options) {
+  automatonproto.circleLayoutAlg = function (options) {
     var vertices = this.nodes();
     if (this.nodeCount() == 0) {
       return;
     }
-    var box = [];
+    var boxes = [];
     for (var i=0; i < this.nodeCount(); i++) {
 
     }
@@ -863,8 +1162,8 @@ var lambda = String.fromCharCode(955),
     }
   };
   //Layout in circle 
-  automatonproto.layoutCircle = function(r, midTheta, span) {
-    var diagonalLength = Math.sqrt(Math.pow(2, 2) + Math.pow(2, 2)) + 2;
+  automatonproto.layoutInCircle = function(r, midTheta, span) {
+    var diagonalLength = Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2)) + 30;
     if (g.nodeCount() == 0) {
       return;
     }
@@ -889,12 +1188,27 @@ var lambda = String.fromCharCode(955),
       divisions = g.nodeCount() - 1;
     }
     thetaDivision = span / divisions;
-    
+
+    if (radius < r + diagonalLength) {
+      radius = r + diagonalLength;
+    }
+
     for (var i=0; i<g.nodeCount(); i++) {
       g.nodes()[i].moveTo(diagonalLength / thetaDivision, startTheta + thetaDivision * i)
     }
+    return radius;
   };
-  */
+
+  automatonproto.layoutInCircleAndPack = function (options) {
+    var radius = this.layoutInCircle(0, Math.PI, 2*Math.PI);
+    for (var i=0; i<this.nodeCount(); i++) {
+      r = vertices[i].element.position().left;      
+      theta = vertices[i].element.position().top;
+      vertices[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+    }
+    var sizex = 2 * (radius + 30) + 30;
+    var sizey = 2 * (radius + 30) + 30;
+  };*/
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////

@@ -581,6 +581,16 @@ var exerciseLocation;
     jsav.umsg('Click on an input to trace its traversal.');
   };
 
+  var treeLayoutDegree = function() {
+    removeModeClasses();
+    removeND();
+    g.treeLayoutAlg(false);
+  };
+  var treeLayoutHierarchy = function() {
+    removeModeClasses();
+    removeND();
+    g.treeLayoutAlg(true);
+  };
 
   //-----------------------------------------------------------------------------------------------
 
@@ -860,13 +870,11 @@ var exerciseLocation;
         var list_transition = JSON.parse(lines[2]);
         var list_final_state = JSON.parse(lines[4]);
         var start_state = lines[3].trim();
-
         // verify that start state character is in list of state
         if (!list_state.includes(start_state)){
         alert("start state not in alphabet");
         return;
         }
-
         // verify that every letter in transition is in the alphabet
         for (var i = 0; i < list_transition.length; i += 3){
         var from = list_transition[i];
@@ -880,13 +888,10 @@ var exerciseLocation;
         }
         }
         }
-
         // Create the states
         var states_id = {};
-
         for (var i = 0; i < list_state.length; i++){
         var cur_state = list_state[i];
-
         if (cur_state === 'trap'){
         xml_txt += state_to_xml(cur_state, i, 'trap')
         }
@@ -899,7 +904,6 @@ var exerciseLocation;
         }
         states_id[cur_state] = i;
         }
-
         // create the transition
         for (var i = 0; i < list_transition.length; i += 3){
         var from = list_transition[i];
@@ -919,7 +923,6 @@ var exerciseLocation;
         var inc_x = 20
         var inc_y = 20
         xml_id = 0;
-
         for (var i = 0; i < states.length; i++){
         if (i == 0){
         xml_txt += '<state id= "' + xml_id + '" name= "' + states[i].substring(1) + '" >'
@@ -954,7 +957,6 @@ var exerciseLocation;
         }
         
         for (var i = 0; i < transition.length; i++){
-
         var ind_trans = transition[i].split(' ')
         if (i == 0){
         xml_txt += '<transition>'
@@ -1103,7 +1105,6 @@ var exerciseLocation;
       $('#finalize').click(function() {
       fatoreController.finalizeRE();
       });
-
       fatoreController.checkForTransitions();*/
   }
 
@@ -1238,16 +1239,11 @@ var exerciseLocation;
       if (svg){
       svg = svg.replace(/\r?\n|\r/g, '').trim();
       }
-
       var canvas = document.createElement('canvas');
       var context = canvas.getContext('2d');
-
       context.clearRect(0, 0, canvas.width, canvas.height);
       canvg(canvas, svg);
-
-
       var imgData = canvas.toDataURL('image/png');
-
       // Generate PDF
       var doc = new jsPDF('p', 'pt', 'a4');
       doc.addImage(imgData, 'PNG', 40, 40, 75, 75);
@@ -1301,6 +1297,8 @@ var exerciseLocation;
   $('#circleButton').click(circleLayout);
   $('#gemButton').click(gemLayout);
   $('#spiralButton').click(spiralLayout);
+  $('#treeDegreeButton').click(treeLayoutDegree);
+  $('#treeHieButton').click(treeLayoutHierarchy);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
   $('#epsilonButton').click(switchEmptyString);
