@@ -28,11 +28,11 @@ You need to create a configuration file in the ``OpenDSA/config``
 directory.
 You will probably start by copying an existing one (``Test.json`` is a
 good place to start).
-With that file in place, the main Makefile for OpenDSA 
-(``OpenDSA/Makefile``) will recognize it as a valid target to compile. 
-If you want a specialized build process, append a rule to the Makefile 
-that overrides the target, and put in the steps for the new build 
-process.  
+With that file in place, the main Makefile for OpenDSA
+(``OpenDSA/Makefile``) will recognize it as a valid target to compile.
+If you want a specialized build process, append a rule to the Makefile
+that overrides the target, and put in the steps for the new build
+process.
 Once your config file is set up, then you will execute your Makefile
 target (a command like ``make Test`` called from a commandline window
 from the OpenDSA repository top level will do this).
@@ -101,7 +101,7 @@ Here is a list of the individual repositories that we use:
 
 * The back-end server source can be found at
   https://github.com/OpenDSA/OpenDSA-LTI.
-  
+
 An up-to-date development version of the OpenDSA repository is
 mirrored at http://lti.cs.vt.edu/OpenDSA.
 The built version of the stable standard book configurations
@@ -283,7 +283,7 @@ can be used.
 * Debugger - a full featured JavaScript debugger (useful for debugging
   or simply following code execution).
 
-  For more details on browser developer tools see the 
+  For more details on browser developer tools see the
   `Chrome Developer Tools documentation`_,
   or the `Firefox developer tools documentation`_.
 
@@ -368,8 +368,6 @@ initialize the submodules and install the python packages requirements
 of OpenDSA.
 **This will probably take a long time to run the first time.**
 
-but the Docker container runs this command automatically.
-
 In order to interact with OpenDSA, you must open a bash shell within the container
 to run commands using the following command::
 
@@ -393,7 +391,7 @@ To see most OpenDSA content properly, it must be viewed through a web
 server.
 It won't work just to point your browser at the local HTML files.
 But you probably don't want to install a real web server like Apache
-on your local machine.  So we have made a simple solution: :: 
+on your local machine.  So we have made a simple solution: ::
 
   make Webserver
 
