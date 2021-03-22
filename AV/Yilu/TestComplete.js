@@ -28,6 +28,8 @@ $(document).ready(function(){
   var figure1 = new av.ds.FA({center:true, url: urlLink, left: 10, top:0, height: 500, width: 500});
   //var str = FiniteAutomaton.completeDFA(av, figure1);
   var figure2 = new av.ds.FA({center:true, url: urlLink, left: 10, top:200, width: 500});
+  figure1.hide();
+  figure2.hide();
   var minimized = FiniteAutomaton.intersect(av,figure1, figure2, {left: 10, top:0, height: 450, width: 750});
 	av.recorded();
 });

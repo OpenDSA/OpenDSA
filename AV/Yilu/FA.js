@@ -2209,11 +2209,31 @@ var lambda = String.fromCharCode(955),
     return graph;
   };
 
+
+  FiniteAutomaton.findLanguageSet = function(g){ 
+    var languageSet = [];
+    var edgesSet = {};
+    var edges = g.edges();
+    for (var next = edges.next(); next; next = edges.next()) {
+      //console.log(next._weight);
+      console.log(next.startnode);
+      if (edgesSet[next.container._nodes.indexOf(next.startnode)] == null){
+        edgesSet[next.container._nodes.indexOf(next.startnode)] = [];
+      }
+      edgesSet[next.container._nodes.indexOf(next.startnode)].push(next);
+    }
+    /*
+    var startInd = g.nodes().indexOf(g.initial);
+    while (true){
+      for (var edge = edgesSet[startInd].next; edge; edge = edgesSet[startInd].next()){
+        console.log(edge);
+      }
+    }*/
+  };
+
   FiniteAutomaton.intersect = function(jsav,first, second,opts){
     figure1 = this.complement(jsav, first, opts);
     figure2 = this.complement(jsav, first, opts);
-    first.hide();
-    second.hide();
     var combinedResult = this.combine(jsav, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
     var combined = combinedResult['graph'];
     FiniteAutomaton.union(combined, combinedResult['start'], combinedResult['end']);
@@ -3437,8 +3457,8 @@ function getRandomInt(max) {
         var toNode = this.referenceGraph.transitionFunction(node, letter)[0];
         if (toNode) continue;
         if (!trapNode) {
-          this.jsav.step();
-          this.jsav.umsg("Adding a Trap state to the DFA");
+          //this.jsav.step();
+          //this.jsav.umsg("Adding a Trap state to the DFA");
           trapNode = this.referenceGraph.addNode();
           this.referenceGraph.addEdge(trapNode, trapNode, { weight: trapEdge });
         }
@@ -3447,7 +3467,7 @@ function getRandomInt(max) {
     }
     if (trapNode) {
       this.referenceGraph.layout();
-      this.jsav.step();
+      //this.jsav.step();
     }
   };
 
