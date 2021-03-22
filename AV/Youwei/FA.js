@@ -523,43 +523,8 @@ var exerciseLocation;
   var circleLayout = function() {
     removeModeClasses();
     removeND();
-    g.layout({layout: "layered"});
+    g.circleLayoutAlg();
     //layoutCircle(100, Math.PI, 2*Math.PI);
-  };
-
-  //layout in Circle
-  var layoutCircle = function(r, midTheta, span) {
-    var diagonalLength = Math.sqrt(Math.pow(2, 2) + Math.pow(2, 2)) + 2;
-    if (g.nodeCount() == 0) {
-      return;
-    }
-    if (g.nodeCount() == 1) {
-      if (r == 0) {
-        g.nodes()[0].moveTo(0, 0);
-      }
-      else {
-        g.nodes()[0].moveTo(r + diagonalLength, midTheta);
-      }
-      return;
-    }
-    //var radius = diagonalLength / thetaDivision;
-    var startTheta;
-    var thetaDivision;
-    var divisions;
-    startTheta = midTheta - span / 2;
-    if (2 * Math.PI - span < .0001) {
-      divisions = g.nodeCount();
-    }
-    else {
-      divisions = g.nodeCount() - 1;
-    }
-    thetaDivision = span / divisions;
-    
-    for (var i=0; i<g.nodeCount(); i++) {
-      g.nodes()[i].moveTo(diagonalLength / thetaDivision, startTheta + thetaDivision * i)
-    }
-
-
   };
   // Triggered by clicking the "GEM" button.
   var gemLayout = function() {
