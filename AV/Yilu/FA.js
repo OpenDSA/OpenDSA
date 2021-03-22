@@ -2209,19 +2209,56 @@ var lambda = String.fromCharCode(955),
     return graph;
   };
 
+  FiniteAutomaton.getTransition = function (graph, nextStates, alph) {
+    // Either lambda or epsilon may be used to represent the empty string.
+    var lambdaStates = [];
+    // Iterate over the array of states.
+    for (var i = 0; i < nextStates.length; i++) {
+      var successors = nextStates[i].neighbors();
+      // Iterate over the states reachable from those states.
+      for (var next = successors.next(); next; next = successors.next()) {
+        var weight = graph.getEdge(nextStates[i], next).weight().split('<br>');
+        // Iterate over the edge weights connecting these states.
+        for (var j = 0; j < weight.length; j++) {
+          // If any of these edge weights are the empty string, mark the next state as reachable (if it hasn't already been accounted for).
+          if ((weight[j] == alph || weight[j] == alph) && !next.hasClass('current')) {
+            next.addClass('current');
+            lambdaStates.push(next);
+          }
+        }
+      }
+    }
+    // If some states were added because we could reach them on a lambda transition, we then need to check if there are any more states that THOSE states can reach on a lambda transition...
+    if (lambdaStates.length > 0) {
+      // ... And this necessitates a recursive call:
+      lambdaStates = FiniteAutomaton.getTransition(graph, lambdaStates, alph);
+    }
+    // Once we are completely done finding the lambda closure, add them to the original array of states and return that array.
+    for (var k = 0; k < lambdaStates.length; k++) {
+      nextStates.push(lambdaStates[k]);
+    }
+    return nextStates;
+  };
+
+  FiniteAutomaton.addEmpty = function(g){
+    var none = String.fromCharCode(248)
+    var nodes1 = g.nodes();
+    var nodes2 = g.nodes();
+    for (var from = nodes1.next(); from; from = nodes1.next()) {
+      for (var to = nodes2.next(); to; to = nodes2.next()) {
+        if (!g.hasEdge(from, to)) {
+          g.addEdge(from, to, { weight: none });
+        }
+      }
+      nodes2.reset();
+    }
+  }
 
   FiniteAutomaton.findLanguageSet = function(g){ 
-    var languageSet = [];
-    var edgesSet = {};
-    var edges = g.edges();
-    for (var next = edges.next(); next; next = edges.next()) {
-      //console.log(next._weight);
-      console.log(next.startnode);
-      if (edgesSet[next.container._nodes.indexOf(next.startnode)] == null){
-        edgesSet[next.container._nodes.indexOf(next.startnode)] = [];
-      }
-      edgesSet[next.container._nodes.indexOf(next.startnode)].push(next);
-    }
+    var list = [];
+    list.push(g.initial)
+    lambda = FiniteAutomaton.getTransition(g, list, 'b');
+    console.log(lambda);
     /*
     var startInd = g.nodes().indexOf(g.initial);
     while (true){
@@ -2248,6 +2285,8 @@ var lambda = String.fromCharCode(955),
     minized.layout();
     return minized;
   };
+
+
   /**
    * MAke publicly available methods
    */
@@ -3160,7 +3199,7 @@ function getRandomInt(max) {
     });
     return results;
   }
-
+  controllerProto.getAllNonStartNorFinalStates = getAllNonStartNorFinalStates;
   function drawTheFinalGraph(jsav, options, expression) {
     var fa = jsav.ds.FA($.extend(options));
     var start = fa.addNode({ left: '15px' });
@@ -3172,6 +3211,8 @@ function getRandomInt(max) {
     var t = fa.addEdge(start, end, { weight: expression });
     return fa;
   }
+  controllerProto.drawTheFinalGraph = drawTheFinalGraph;
+
 }(jQuery));
 
 
@@ -4022,4 +4063,5 @@ function getRandomInt(max) {
       this.convertGrammarHandler(i);
     }
   };
+
 }(jQuery));

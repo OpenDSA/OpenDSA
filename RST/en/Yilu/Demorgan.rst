@@ -10,15 +10,6 @@ Visualization
 	   :align: center
 	   :output: show
 
-Complete
-
-------------------------
-
-	.. inlineav:: TestComplete ff
-	   :links: AV/Yilu/DemorganIntersect.css DataStructures/FLA/FLA.css 
-	   :scripts: lib/underscore.js AV/Yilu/TestComplete.js AV/Yilu/FA.js
-	   :output: show
-
 RightQuotient
 ------------------------
 	
