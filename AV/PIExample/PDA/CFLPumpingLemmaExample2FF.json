@@ -165,14 +165,14 @@
       "q25": {
         "type": "select",
         "description":"let $w = a^mb^mc^{m+1}$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $c$'s only, let $u = c^{t_1}$ and $v = c^{t_2}$ where $0 < t_1 + t_2 \\le m$",
-        "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
-        "answer": "$a^mb^mc^{m+t_1+t_2}$",
-        "choices": ["$a^mb^mc^{m+t_1+t_2}$", "$a^mb^mc^{m+t_2}$", "$a^mb^mc^{m+t_1}$"]
+        "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
+        "answer": "$a^mb^mc^{m+1-t_1-t_2}$",
+        "choices": ["$a^mb^mc^{m+1-t_1-t_2}$", "$a^mb^mc^{m+1-t_2}$", "$a^mb^mc^{m+1+t_1}$"]
       },
       "q26": {
         "type": "select",
         "description":"let $w = a^mb^mc^{m+1}$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $c$'s only, let $u = c^{t_1}$ and $v = c^{t_2}$ where $0 < t_1 + t_2 \\le m$",
-        "question": "Is $a^mb^mc^{m+t_1+t_2}$ $\\in L$?",
+        "question": "Is $a^mb^mc^{m+1-t_1-t_2}$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },

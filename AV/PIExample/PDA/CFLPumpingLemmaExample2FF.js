@@ -16,10 +16,6 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("q2"));
   av.step();
 
-  //Frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
-
   //Frame 3
   av.umsg(Frames.addQuestion("q3"));
   av.step();
