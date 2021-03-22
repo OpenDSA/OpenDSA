@@ -313,7 +313,7 @@ html_context = {"script_files": [
                   '%(eb2root)slib/jquery.migrate.min.js',
                   '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
                   '//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js',
-                  '../../../lib/accessibility.js',
+                  '../../../lib/accessibility.min.js',
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
