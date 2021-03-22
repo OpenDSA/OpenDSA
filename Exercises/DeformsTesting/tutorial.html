@@ -1,120 +1,588 @@
 <html>
-    <body>
-        <h1>
-            Welcome to the tutorial for the DEFORMS problem solving system! 
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "./tutorial_style.css" />
+</head>
+<body style="align-items: center; max-width: 1200px; background-color: lightgrey; padding-bottom: 10px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;">
+<div >
+    
+    <a name="top"></a>
+    
+    <div>
+        <h1 style="text-align: center;">
+            Welcome to the tutorial for the DEFORMS problem solving system!
         </h1>
-        <p>
+        <p style="text-align: center;">
             We'll guide you through the basic steps on how to use this system to solve equations, submit answers, and get feedback.
+            <br>
             <b>Important:</b> Please use the Google Chrome browser to use this system for the best experience. Otherwise, the user interface may not appear correctly.
         </p>
+    </div>
 
-        <h2>
-            1. Getting started: The workspace
-        </h2>
-        <p>
-            <div>
-                <img src="img/wkspace.gif">
-            </div>
-            The workspace is the white area marked with "wkN" on the left side. This is where one adds all the equations from the equation bank to create a system of equations to solve.
-            One can add more workspaces to create separate areas for trying out different variations of a problem, or delete entire workspaces to create a clean slate.
-        </p>
-
-        <h2>
-            2. Adding equations and populating with values
-        </h2>
-        <p>
-            <div>
-                <img src="img/eqbank.gif">
-            </div>
-            To add an equation to a workspace, select the proper page of equations from the drop down menu on the right, and click on an equation. When it is highlighted, it is ready to be added.
+    <div class="helpcontent">
+        <div>
+            <h2>Different parts of the system</h2>
+            <p style="text-align: center;">
+                There are three main parts of the system: 
+                <a href="#prose" title="Problem Prose">the prose</a>, 
+                <a href="#workarea" title="Work Area">the work area</a>, 
+                <a href="#notif" title="Notifications">the notifications</a>
+                <b>(Click on images to go to tutorials)</b>:
+            </p>
             <div>
                 <span>
-                    <img src="img/eqbank2.gif">
-                <!-- </div>
-                <div> -->
-                    <img src="img/eqbank3.gif">
+                <!-- <div class="left" title="Problem Prose"> -->
+                    <a href="#prose" title="Problem Prose">
+                        <img style="width: 35%; margin: 1%;" src='./img/prose.gif'>
+                    </a>
+                <!-- </div> -->
+                <!-- <div class="center" title="Work Area"> -->
+                    <a href="#workarea" title="Work Area">
+                        <img style="width: 35%; margin: 1%;" src='./img/workarea.gif'>
+                    </a>
+                <!-- </div> -->
+                <!-- <div class="right" title="Notifications"> -->
+                    <a href="#notif" title="Notifications">
+                        <img style="width: 15%; margin: 1%;" src='./img/notif.gif'>
+                    </a>
+                <!-- </div> -->
                 </span>
             </div>
-            Then, click on the <b>Add</b> button for the workspace you want to add it to. A boxed version of the equation will appear. You can click on the boxes to bring up different options.
             <div>
-                <img src="img/eqbox.gif">
+                <p>
+                    Additionally, to jump to instructions on how to solve problems, click on the sections for:
+                    <ol>
+                        <li>
+                            <a href="#equations" title="Equations">Working with Equations</a>
+                        </li>
+                        <li>
+                            <a href="#assoc" title="Associations">Working with Variable associations</a>
+                        </li>
+                    </ol>
+                </p>
             </div>
-            To add a value from the question prose, click on the value box to highlight it,
-            <div>
-                <img src="img/value1.gif">
+        </div>
+    </div>
+
+    <a name="prose"></a>
+    <div class="helpcontent">
+        <h2>
+            The problem prose
+        </h2>
+        <p>
+            The problem prose contains the text of the problem and values that can be added.
+        </p>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    The quantities in the problem can be clicked to select them. These are boxes that highlight when hovered over, and appear in both problem texts as well as the figures.
+                </p>
             </div>
-            and then click on the box in the equation to place it in.
-            <div>
-                <img src="img/value2.gif">
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img src="./MechSolver/gifs/general-click-1.gif">
             </div>
-            Units of quantities can be changed by clicking on the unit part of the populated values to bring up a list of units to convert to.
-            <div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    The yellow solution boxes next to each sub-part question can be clicked on to add quantities computed from the system.
+                    The "&#x2702" icon can be clicked to clear the boxes, and "&#xFFFD" for a quick in-system help.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img src="./MechSolver/gifs/general-click-4.gif">
+            </div>
+        </div>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Sometimes, solution boxes may allow entry from a list of options. See the instructions for such exercises.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img src="./MechSolver/gifs/submissionbox-dropdown.gif">
+            </div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Once solution boxes have been populated, click on "Check Answer" to submit the answers and get feedback.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <span>
+                    <img style="width: 40%;" src="./MechSolver/gifs/prose-check-answer.gif">
+                    <img style="width: 40%;" src="./MechSolver/gifs/prose-feedback.gif">
+                </span>
+            </div>
+        </div>
+        <a href="#top" title="">[back to top]</a>
+    </div>
+
+    <a name="workarea"></a>
+    <div class="helpcontent">
+        <h2>
+            Introducing the workspace and the palette
+        </h2>
+        <p style="text-align: left;">
+            The workarea is where all calculations are carried out. Systems of equations are built here, and populated with quantities from the prose.
+            <br>At the end, solutions computed are put back into the solution boxes for each question, which are then subsequently evaluated.
+        </p>
+        <p style="text-align: center;">
+            There are two parts here: The workspace and the equation palette.
+        </p>
+        <div>
+            <table>
+                <tr>
+                    <td style="border-right: 2px solid;"> Workspace <br><img style="width: 70%; margin: 1%;" src='./img/wkspace.gif'></td>
+                    <td style="border-left: 2px solid;"> Palette <br><span>
+                        <img style="float:left; width:200px; margin:5px" src='./img/eqbank.gif'>
+                        <img style="float:left; width:200px; margin:5px" src='./img/eqbank2.gif'>
+                        <img style="float:left; width:200px; margin:5px" src='./MechSolver/gifs/eqbank-dropdown.gif'></span></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Equations are added by going to the appropriate equation palette page,
+                    clicking on the equation to be added to select it (highlighted),
+                    and then clicking on the <button>Add</button> button for the corresponding workspace to add it in.
+                    <ul>
+                        <li>
+                            For creating arithmetic combinations of values or creating your own equations, use the Arithmetic page.
+                        </li>
+                        <li>
+                            To access equations frequently/recently used, go to the Favourites page.
+                        </li>
+                    </ul>
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img style="width: 90%" src="MechSolver/gifs/workspace-add.gif">
+                <!-- <span>
+                    <img style="width: 40%;" src="">
+                    <img style="width: 40%;" src="">
+                </span> -->
+            </div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Equations can be removed:
+                </p>
+                <ul>
+                    <li>
+                        Individually by clicking on the "&#x2702" icon for the equations
+                    </li>
+                    <li>
+                        In groups by checking the checkbox "&#x2610" to select it ("&#x2611") for each equation to be deleted, and then clicking the <button>Remove</button> for the workspace.
+                    </li>
+                </ul>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img style="width: 70%" src="img/remove-eq.gif">
+                <!-- <span>
+                    <img style="width: 40%;" src="">
+                    <img style="width: 40%;" src="">
+                </span> -->
+            </div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Workspaces are added one below the other by clicking on the <button>Add Workspace</button>. They can be deleted in any order by clicking on the "&#x2702" icon in the corner for the workspace.
+                </p>
+                <p>
+                    <b>Note:</b> Deleting a workspace deletes all solutions and equations in the workspace, so this makes it ideal for creating a clean slate for a fresh start!
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img style="width: 60%" src="MechSolver/gifs/workspace-all.gif">
+                <!-- <span>
+                    <img style="width: 40%;" src="">
+                    <img style="width: 40%;" src="">
+                </span> -->
+            </div>
+        </div>
+        <a href="#top" title="">[back to top]</a>
+    </div>
+
+    <a name="equations"></a>
+    <div class="helpcontent">
+        <h2>
+            Working with equations
+        </h2>
+        <p>
+            Equations form the main workhorse of this system. Any kind of calculations or verifications with quantities starts with equation objects added from the palette to the workspace.
+            Each equation has a clickable template with greyed out boxes on the right. These boxes represent variables to which anything can be assigned (quantities, variable associations, etc.)
+        </p>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Values can be added to an equation's variables by clicking on a quantity in the prose (or figure) to select it and then clicking on the box in the equation where it should appear.
+                    <b>Note:</b> The sign of the value added can also be negated by clicking to bring up the menu and selecting "multiply by -1".
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <span>
+                    <img style="width: 25%;" src="img/prose-value-click.gif">
+                    <img style="width: 75%;" src="img/eq-click-add-value.gif">
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Alternatively, one could insert quantities manually into boxes as well. This is accessed by clicking on an empty box to bring up the menu, then clicking on the "insert" option
+                    to add the magnitude and quantity. This is often useful for using the system as a calculator, when used with physical quantities. <b>Note:</b> To work with plain numbers that aren't 
+                    physical quantities (or quantities like angles and strain), select "dimensionless" for the domain and unit.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <span>
+                    <img style="width: 40%;" src="img/eq-menu-value-add-1.gif">
+                    <img style="width: 40%;" src="img/eq-menu-value-add-2.gif">
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Once a quantity is added, its unit can be changed by clicking on the green-highlighted prompt for unit of the entered quantity.
+                    This brings up a list of units in the same domain as the unit of this quantity.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <!-- <img src=""> -->
                 <span>
                     <img src="img/unit1.gif">
-                <!-- </div>
-                <div> -->
                     <img src="img/unit2.gif">
                 </span>
             </div>
-            You can create simple arithmetic equations from the Arithmetic equations palette by adding values and associating variables, as outlined later.
-        </p>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    To solve 1 equation or a system of n>1 equations - once the system is set up to show the number of knowns and unknowns, we select ("&#x2611") the equations by clicking on the checkbox,
+                    and then click on <button>Solve</button> for the corresponding workspace the equations appear in. 
+                    <br>
+                    <b>Note:</b> <ul>
+                        <li>
+                            Only equations in one workspace can be solved at a time.
+                        </li>
+                        <li>
+                            To solve an equation in one variable, simply leave one (or corresponding elements in case of duplication) elements in the equation blank.
+                            <b>Note:</b> The sign associated with a single unknown (empty variable box) can also be negated by clicking to bring up the menu and selecting "multiply by -1".
+                        </li>
+                    </ul>
+                </p>
+            </div>
+            <div class="image">
+                <img style="margin: 2px;" src="MechSolver/gifs/equation-check.gif">
+                <span>
+                    <img style="margin: 2px; width: 40%;" src="img/solve1.gif">
+                    <img style="margin: 2px; width: 40%;" src="img/solve2.gif">
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Solving equations creates solution boxes as shown. These can be selected to be entered into other equations just like quantities from the prose.
+                    To submit the value calculated as the answer for a question, click on it to select it, and then click on the submission box for the question to enter it.
+                    <b>Note:</b> Double clicking the box negates the magnitude of the value in the solution box.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <span>
+                    <img style="width: 40%;" src="MechSolver/gifs/valuebox-click.gif">
+                    <img style="width: 40%;" src="MechSolver/gifs/submissionbox-submit-2.gif">
+                </span>
+            </div>
+        </div>
+        <br>
+        <a href="#top" title="">[back to top]</a>
+    </div>
 
+    <a name="assoc"></a>
+    <div class="helpcontent">
         <h2>
-            3. Associating variables (for multivariable systems)
+            Working with variable associations
         </h2>
+        <div class="simplecontent">
+            <div class="text">
+                <ul>
+                    <li>
+                        To create a variable association among two terms in two equations, click on any one of the empty boxes for the terms to bring up the menu, and select "start association".
+                        This highlights the start of the association. Then, click on the variable box for the second term, which will then bolden the text for the two boxes, indicating the variables 
+                        have been associated.
+                    </li>
+                    <li>
+                        To create a variable association in n>2 terms, first create an association with any two of the n terms. Then, click on either of the associated terms to bring up the menu and select
+                        "add new to association". Then, repeat the process as above to select another target variable to add to the association.
+                    </li>
+                </ul>
+                <p>
+                    <b>Note:</b> The sign associated with an unknown can also be negated by clicking to bring up the menu and selecting "multiply by -1".
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img style="width: 70%;" src="img/assoc-create-add.gif">
+                <!-- <span>
+                    <img style="width: 40%;" src="">
+                    <img style="width: 40%;" src="">
+                </span> -->
+            </div>
+        </div>
+        <br>
+        <h3>
+            Customising association names/equations for readability
+        </h3>
         <p>
-            To create a system of equation with more than one variables, where the same variable appears in another equation, one needs to associate variables.
-            This is done by clicking on an empty box in an equation, clicking on "start association" in the menu to highlight the box, then clicking on another empty box to associate it with.
-            An example is as follows:
-            <div>
-                <img src="img/assoc1.gif">
-            </div>
-            <div>
-                <img src="img/assoc2.gif">
-            </div>
-            <div>
-                <img src="img/assoc3.gif">
-            </div>
+            To enhance readability for students and to facilitate keeping track of contexts for different problem setups, we provide some features to customize the names of unknowns and associations and equations.
         </p>
-
-        <h2>
-            4. Solving equations and submitting answers
-        </h2>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    For an unknown that appears in only one equation (i.e. an empty box), to rename this unknown, simple click on it to bring up its menu, and select "rename variables",
+                     followed by entering a variable name and/or a subscript for the variable.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img style="width: 70%" src="img/rename-box.gif">
+                <!-- <span>
+                    <img style="width: 40%;" src="">
+                    <img style="width: 40%;" src="">
+                </span> -->
+            </div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    For an n-way variable association, to rename this unknown variable, simple click on it to bring up its menu, and select "rename association",
+                    followed by entering a variable name and/or a subscript for the variable.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img style="width: 70%" src="img/rename-assoc.gif">
+                <!-- <span>
+                    <img style="width: 40%;" src="">
+                    <img style="width: 40%;" src="">
+                </span> -->
+            </div>
+        </div>
+        <br>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    To add a subscript to all the variables in an equation to indicate the specific context that equation belongs to (eg: different materials, numerical index, etc.), 
+                    click on the text template for the equation to bring up the dialog box to enter a subscript for the equation.
+                </p>
+            </div>
+            <div class="image" style="display: flex; align-items: center; justify-content: center;">
+                <img style="width: 70%" src="img/rename-eqn-all.gif">
+                <!-- <span>
+                    <img style="width: 40%;" src="">
+                    <img style="width: 40%;" src="">
+                </span> -->
+            </div>
+        </div>
         <p>
-            To solve a system of equations, after you have populated the values and associated variables, click the check mark on the left side to select (&#x2611) the equation(s), and click on the "Solve button" for that workspace.
-            <div>
-                <img src="img/solve1.gif">
-            </div>
-            This will create a set of boxes with solutions for the system you created.
-            <div>
-                <img src="img/solve2.gif">
-            </div>
-            Click on this box once to highlight it, and then click on the yellow submission box for the question you are answering to submit this answer.
-            <div>
-                <img src="img/solve3.gif">
-            </div>
-            Some cases, you may have to click on a box to select a value from a menu to input. In both cases, the scissors can be clicked to clear the box.
+            <b>Note:</b> In all of these cases, to reset the variable name back to original or to remove subscripts, simply click "Set" etc. without filling in the blanks.
         </p>
+        <a href="#top" title="">[back to top]</a>
+    </div>
 
+    <a name="notif"></a>
+    <div class="helpcontent">
         <h2>
-            5. Receiving feedback
+            Receiving feedback
         </h2>
         <p>
             The notifications panel on the right side shows errors for anything that may have happened with your system. Click on the errors to show more details about them.
             In some cases, clicking on the boxes will also show where in the equations an error has occurred.
-            <span>
-                <img src="img/feedback1.gif">
-            <!-- </div> -->
-            <!-- <div> -->
-                <img src="img/feedback2.gif">
-            </span>
         </p>
+        <div>
+            <span>
+                <img style="width: 40%; margin-left: 2%; margin-right: 2%" src="img/feedback1.gif">
+                <img style="width: 40%; margin-left: 2%; margin-right: 2%" src="img/feedback2.gif">
+            </span>
+        </div>
+        <h3>
+            These are some of the errors you might encounter:
+        </h3>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Number of unknowns is not equal to the number of known quantities. (shows up as a global error)
+                </p>
+            </div>    
+            <div class="image" style="display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+                <img src="./MechSolver/gifs/global-error-1.gif">
+            </div>
+        </div>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    Quantities with wrong units have been entered in the wrong place in an equation.
+                    Alternatively, an entire equation might be inconsistent because of the associations created or quantities entered.
+                    Click on these errors to see where the error may have occurred.
+                </p>
+            </div>    
+            <div class="image" style="display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+                <img src="./MechSolver/gifs/units-error-1.gif">
+            </div>
+        </div>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    (Not an error, but a warning) Inconsistent units were used in the system which were implicitly converted by the solver prior to computation.
+                </p>
+            </div>    
+            <div class="image" style="display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+                <img src="./MechSolver/gifs/implicit-units.gif">
+            </div>
+        </div>
+        <a href="#top" title="">[back to top]</a>
+    </div>
 
+    <div class="helpcontent">
+        <div class='text'>
+            <h2>
+                A demonstration
+            </h2>
+            <p>
+                We solved a demo problem in the following video.
+            </p>
+        </div>
+        <div class="image">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/YTVuf2ahdm0" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+        </div>
+        <a href="#top" title="">[back to top]</a>
+    </div>
+
+    <div class="helpcontent">
         <h2>
-            6. Additional help
+            Additional help
         </h2>
         <p>
             For any additional help during using the system, click on the help symbols (&#xFFFD) located throughout the system to bring up a mini-tutorial for the specific components.
         </p>
-    </body>
+        <a href="#top" title="">[back to top]</a>
+    </div>
+
+    <!-- Older content starts here -->
+    <!--
+    <div class="helpcontent">
+        <h2>
+            Getting started: The workspace
+        </h2>
+        <div class="simplecontent">
+            <div class="text">
+                <p>
+                    The workspace is the main area where all equations are added and solutions are computed. It's the main work area, and is marked by "wkN" on the side.
+                    <ul>
+                        <li>You can create new workspaces by clicking the <span><button>Add Workspace</button></span> button to separate out work for different sub parts</li>
+                        <li>The <span><button>Add</button></span> button is used to add equations from the equation palette</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="image">
+                <img  style="width: 80%;" src="img/wkspace.gif">
+            </div>
+        </div>
+    </div> 
+    <h2>
+        Adding equations and populating with values
+    </h2>
+    <p>
+        <div>
+            <img src="img/eqbank.gif">
+        </div>
+        To add an equation to a workspace, select the proper page of equations from the drop down menu on the right, and click on an equation. When it is highlighted, it is ready to be added.
+        <div>
+            <span>
+                <img src="img/eqbank2.gif">
+            <!- </div>
+            <div> ->
+                <img src="img/eqbank3.gif">
+            </span>
+        </div>
+        Then, click on the <b>Add</b> button for the workspace you want to add it to. A boxed version of the equation will appear. You can click on the boxes to bring up different options.
+        <div>
+            <img src="img/eqbox.gif">
+        </div>
+        To add a value from the question prose, click on the value box to highlight it,
+        <div>
+            <img src="img/value1.gif">
+        </div>
+        and then click on the box in the equation to place it in.
+        <div>
+            <img src="img/value2.gif">
+        </div>
+        Units of quantities can be changed by clicking on the unit part of the populated values to bring up a list of units to convert to.
+        <div>
+            <span>
+                <img src="img/unit1.gif">
+            <!- </div>
+            <div> ->
+                <img src="img/unit2.gif">
+            </span>
+        </div>
+        You can create simple arithmetic equations from the Arithmetic equations palette by adding values and associating variables, as outlined later.
+    </p>
+
+    <h2>
+        Associating variables (for multivariable systems)
+    </h2>
+    <p>
+        To create a system of equation with more than one variables, where the same variable appears in another equation, one needs to associate variables.
+        This is done by clicking on an empty box in an equation, clicking on "start association" in the menu to highlight the box, then clicking on another empty box to associate it with.
+        An example is as follows:
+        <div>
+            <img src="img/assoc1.gif">
+        </div>
+        <div>
+            <img src="img/assoc2.gif">
+        </div>
+        <div>
+            <img src="img/assoc3.gif">
+        </div>
+    </p>
+
+    <h2>
+        Solving equations and submitting answers
+    </h2>
+    <p>
+        To solve a system of equations, after you have populated the values and associated variables, click the check mark on the left side to select (&#x2611) the equation(s), and click on the "Solve button" for that workspace.
+        <div>
+            <img src="img/solve1.gif">
+        </div>
+        This will create a set of boxes with solutions for the system you created.
+        <div>
+            <img src="img/solve2.gif">
+        </div>
+        Click on this box once to highlight it, and then click on the yellow submission box for the question you are answering to submit this answer.
+        <div>
+            <img src="img/solve3.gif">
+        </div>
+        Some cases, you may have to click on a box to select a value from a menu to input. In both cases, the scissors can be clicked to clear the box.
+    </p> -->
+</div>
+</body>
 </html>

@@ -748,17 +748,19 @@ var lambda = String.fromCharCode(955),
     	//make sure the right kind of graph is present for
   		//hierarchical graphs.
   		vertices.sort(function(a, b) {
-  		var degreea = 0;
-  		var degreeb = 0;
-  		for (var q = 0; q < vertices.length; q++) {
-  		  if (vertices[q].edgeTo(a) && vertices[q] != a) {
-  		    degreea++;
-  		  }
-  		  if (vertices[q].edgeTo(b) && vertices[q] != b) {
-  		    degreeb++;
-  		  }
-  		}
-  		return degreea - degreeb;
+  			var degreea = 0;
+	  		var degreeb = 0;
+	  		
+	  		for (var q = 0; q < vertices.length; q++) {
+	  		  if (vertices[q].edgeTo(a) && vertices[q] != a) {
+	  		    degreea++;
+	  		  }
+	  		  if (vertices[q].edgeTo(b) && vertices[q] != b) {
+	  		    degreeb++;
+	  		  }
+	  		}
+	  		return degreea - degreeb;
+	  		//return a.neighbors().length - b.neighbors().length;
   		});
     }
     else {
@@ -798,7 +800,6 @@ var lambda = String.fromCharCode(955),
       while (counter != null && notPlaced.length > 0) {
         counter = this.processChildren(notPlaced, counter);
         if (counter != null) {
-          console.log(counter.length);
           var next = [];
           for (var g = 0; g < counter.length; g++) {
             next.push(counter[g]);
@@ -826,11 +827,11 @@ var lambda = String.fromCharCode(955),
   automatonproto.treelayoutHelper = function(level, nextLevels, height, index) {
     var currentX = -1.0 * level.length * (30 + 30) / 2;
     for (var v = 0; v < level.length; v++) {
-      level[v].moveTo(currentX, height);
-      currentX = currentX + 30 + 30;
+    	level[v].moveTo(currentX, height);
+    	currentX = currentX + 30 + 30;
     }
     if (nextLevels[index] != null) {
-      this.treelayoutHelper(nextLevels[index], nextLevels, height + 60, index + 1);
+     	this.treelayoutHelper(nextLevels[index], nextLevels, height + 60, index + 1);
     }
   };
 
@@ -844,17 +845,20 @@ var lambda = String.fromCharCode(955),
     var lastChain = null;
     var nextLevel = null;
     var nodes = this.nodes();
+
     for (var i = 0; i < level.length; i++) {
       chain = [];
       for (var j = notPlaced.length - 1; j >= 0; j--) {
-        if ((this.hasEdge(level[i], notPlaced[j]) || this.hasEdge(notPlaced[j], level[i])) && level[i] != notPlaced[j]) {
-          chain = this.addVertex(chain, notPlaced[j]);
+      	if ((this.hasEdge(level[i], notPlaced[j]) || this.hasEdge(notPlaced[j], level[i])) && level[i] != notPlaced[j]) {
+          this.addVertex(chain, notPlaced[j]);
+          //chain = thisChain.slice();
           notPlaced.splice(j, 1);
         }
       }
 
       if (lastChain != null) {
-        this.alignTwoChains(lastChain, chain);
+
+      	this.alignTwoChains(lastChain, chain);
         if (lastChain.length > 0) {
           if (nextLevel == null) {
             nextLevel = [];
@@ -867,20 +871,29 @@ var lambda = String.fromCharCode(955),
       lastChain = chain;
 
     }
+    console.log(lastChain.length);
     //Finally, add the last chain generated to the graph.
     if (lastChain != null && lastChain.length > 0) {
     	if (nextLevel == null) {
     		nextLevel = [];
     	}
+    	
     	for (var b = 0; b < lastChain.length; b++) {
     		nextLevel.push(lastChain[b]);
     	}
+      
+
     }
+
     return nextLevel;
   };
 
   /*
-  * alignTwoChains
+  * If there is an edge between a vertex in <code>first</code> and a vertex in <code>last</code>, then the two
+  * vertices are moved in their respective chains to their common border, with subchains in tow behind them.  This
+  * only happens for the first matching pair, and other matching pairs have no effect.  The vertex in 
+  * <code>first</code> will be moved to the end of vertices in its <code>VertexChain</code>, and the vertex in 
+  * <code>last</code> will be moved to the beginning of vertices in its <code>VertexChain</code>.
   */
   automatonproto.alignTwoChains = function(firstChain, nextChain) {
     var fstart, fend, nstart, nend;
@@ -888,21 +901,21 @@ var lambda = String.fromCharCode(955),
       for (var k = 0; k < nextChain.length; k++) {
         if (this.getDegreeInChain(firstChain, firstChain[j]) < 2 
           && this.getDegreeInChain(nextChain, nextChain[k]) < 2
-          && this.hasEdge(firstChain[j], nextChain[k])) {
+          && (this.hasEdge(firstChain[j], nextChain[k]) || this.hasEdge(nextChain[k], firstChain[j]))) {
           fstart=j;   
           fend=j;   
           nstart=k;   
           nend=k;
-          while (fstart > 0 && this.hasEdge(firstChain[fstart], firstChain[fstart - 1])) {
+          while (fstart > 0 && (this.hasEdge(firstChain[fstart], firstChain[fstart - 1]) || this.hasEdge(firstChain[fstart - 1], firstChain[fstart]))) {
             fstart--;
           }
-          while (fend < firstChain.length - 1 && this.hasEdge(firstChain[fend], firstChain[fend + 1])) {
+          while (fend < firstChain.length - 1 && (this.hasEdge(firstChain[fend], firstChain[fend + 1]) || this.hasEdge(firstChain[fend + 1], firstChain[fend]))) {
             fend++;
           }
-          while (nstart > 0 && this.hasEdge(nextChain[nstart], nextChain[nstart - 1])) {
+          while (nstart > 0 && (this.hasEdge(nextChain[nstart], nextChain[nstart - 1]) || this.hasEdge(nextChain[nstart - 1], nextChain[nstart]))) {
             nstart--;
           }
-          while (nend < nextChain.length - 1 && this.hasEdge(nextChain[nend], nextChain[nend + 1])) {
+          while (nend < nextChain.length - 1 && (this.hasEdge(nextChain[nend], nextChain[nend + 1]) || this.hasEdge(nextChain[nend + 1], nextChain[nend]))) {
             nend++;
           }
           this.orientSubChain(firstChain, firstChain.length - 1, fstart + fend - j, fstart, fend, true);
@@ -929,10 +942,12 @@ var lambda = String.fromCharCode(955),
       dest = destIndex;
     }
     for (var i = start; i <= end; i++) {
-      toMove.splice(i-start, 1, chain[i]);
+      toMove[i-start] = chain[i];
+      //toMove.splice(i-start, 1, chain[i]);
     }
     for (var j = 0; j < toMove.length; j++) {
     	if (toMove[j] != 0) {
+        console.log(chain.indexOf(toMove[j]));
     		chain.splice(chain.indexOf(toMove[j]), 1);
     	}
     }
@@ -976,10 +991,13 @@ var lambda = String.fromCharCode(955),
   */
   automatonproto.addVertex = function(chain, vertex) {
     var destIndex, subChainBound;
+    if (chain == null) {
 
+    	chain = [];
+    }
     for (var i=0; i<chain.length; i++) {
-      if (this.hasEdge(vertex, chain[i])) {
-        if (i = chain.length - 1 || !this.hasEdge(chain[i], chain[i+1])) {
+      if (this.hasEdge(vertex, chain[i]) || this.hasEdge(chain[i], vertex)) {
+        if (i = chain.length - 1 || !(this.hasEdge(chain[i], chain[i+1]) || this.hasEdge(chain[i+1], chain[i]))) {
           destIndex = i + 1;
         }
         else {
@@ -988,13 +1006,13 @@ var lambda = String.fromCharCode(955),
         chain.splice(destIndex, 0, vertex);
 
         for (var j=i+2; j<chain.length; j++) {
-          if (this.hasEdge(vertex, chain[j]) && this.getDegreeInChain(chain, chain[j]) <= 2) {
-            if (j<chain.length - 1 && this.hasEdge(chain[j], chain[j+1])) {
+          if ((this.hasEdge(vertex, chain[j]) || this.hasEdge(chain[j], vertex)) && this.getDegreeInChain(chain, chain[j]) <= 2) {
+            if (j<chain.length - 1 && (this.hasEdge(chain[j], chain[j+1]) || this.hasEdge(chain[j+1], chain[j]))) {
               this.orientSubChain(chain, destIndex, j, j, chain.length-1, (destIndex==i+1));
             }
             else {
               subChainBound = j;
-              while (subChainBound > i+2 && this.hasEdge(chain[subChainBound-1], chain[subChainBound])) {
+              while (subChainBound > i+2 && (this.hasEdge(chain[subChainBound-1], chain[subChainBound]) || this.hasEdge(chain[subChainBound], chain[subChainBound-1]))) {
                 subChainBound--;
               }
               this.orientSubChain(chain, destIndex, j, subChainBound, j, (destIndex==i+1));
@@ -1015,12 +1033,14 @@ var lambda = String.fromCharCode(955),
   automatonproto.getDegreeInChain = function(chain, vertex) {
     var count = 0;
     for (var i = 0; i < chain.length; i++) {
-      if (this.hasEdge(vertex, chain[i]) && vertex != chain[i]) {
+      if ((this.hasEdge(vertex, chain[i]) || this.hasEdge(chain[i], vertex)) && vertex != chain[i]) {
         count++;
       }
     }
     return count;
   };
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 
 
