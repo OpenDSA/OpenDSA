@@ -10,10 +10,17 @@ static void DijkstraPQ(Graph G, int s, int[] D) {
   }
   D[s] = 0;
   for (int i=0; i<G.nodeCount(); i++) {          // For each vertex
-    do { KVPair temp = (KVPair)(H.removemin());
-         if (temp == null) return;       // Unreachable nodes exist
-         v = (Integer)temp.value(); } // Get position
-      while (G.getValue(v) == VISITED);
+
+    KVPair temp = (KVPair)(H.removemin());
+    if (temp == null) { return; }      // Unreachable nodes exist
+    v = (Integer)temp.value();
+    
+    while (G.getValue(v) == VISITED){
+      temp = (KVPair)(H.removemin());
+      if (temp == null) { return; }      // Unreachable nodes exist
+      v = (Integer)temp.value();
+    }
+      
     G.setValue(v, VISITED);
     if (D[v] == INFINITY) {return;}        // Unreachable
     int[] nList = G.neighbors(v);

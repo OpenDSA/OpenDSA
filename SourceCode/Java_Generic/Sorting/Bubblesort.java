@@ -115,11 +115,12 @@ static <T extends Comparable<T>> void bubblecheckswap(T[] A) {
 static void unwikipedia(int[] A) {
   int n = A.length-1;
   while (n>0) {
-    for (int i=0; i<n; i++)
+    for (int i=0; i<n; i++){
       /* if this pair is out of order */
       if (A[i] > A[i+1]) {
         swap(A, i, i+1);
       }
+    }
     n -= 1;
   }
 }

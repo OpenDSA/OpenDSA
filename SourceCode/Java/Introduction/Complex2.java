@@ -8,7 +8,8 @@ public class Complex {
     this.imag = imag;
   }
 
-  @Override public boolean equals(Object o) {
+  @Override 
+  public boolean equals(Object o) {
     if (o == this){
       return true;
     }
