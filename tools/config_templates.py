@@ -313,7 +313,7 @@ html_context = {"script_files": [
                   '%(eb2root)slib/jquery.migrate.min.js',
                   '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
                   '//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js',
-                  '../../../lib/accessibility.min.js',
+                  '%(eb2root)slib/accessibility.js',
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
@@ -341,7 +341,7 @@ html_context = {"script_files": [
                   '%(eb2root)slib/jquery.ui.min.css',
                   #'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
                   '%(eb2root)slib/odsaStyle-min.css',
-                  '../../../lib/bootstrap.min.css'
+                  '%(eb2root)slib/accessibility.css'
                 ],
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}
