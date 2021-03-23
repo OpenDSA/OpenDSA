@@ -6,16 +6,14 @@ Visualization
 
 	.. inlineav:: DemorganIntersect ff
 	   :links: AV/Yilu/DemorganIntersect.css DataStructures/FLA/FLA.css 
-	   :scripts: lib/underscore.js AV/Yilu/DemorganIntersect.js AV/Yilu/FA.js 
+	   :scripts: lib/underscore.js AV/Yilu/DemorganIntersect.js AV/Yilu/FA.js
 	   :align: center
 	   :output: show
 
-Complete
-
+RightQuotient
 ------------------------
-
-	.. inlineav:: TestComplete ff
+	
+	.. inlineav:: RightQuotient ff
 	   :links: AV/Yilu/DemorganIntersect.css DataStructures/FLA/FLA.css 
-	   :scripts: lib/underscore.js AV/Yilu/TestComplete.js AV/Yilu/FA.js 
-	   :align: center
+	   :scripts: lib/underscore.js AV/Yilu/RightQuotient.js AV/Yilu/FA.js
 	   :output: show

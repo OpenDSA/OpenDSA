@@ -62,9 +62,17 @@
     "required": true
   },
   "chapters": {
-    "Ko Chan Testing Book": {
-      "Kochan/TMshift": {}
+    "Ko Chan Testing Book for Single-tape TM": {
+      "Kochan/TMshift": {},
+      "Kochan/TMcopyQ": {},
+      "Kochan/TMbranch": {},
+      "Kochan/TMblankR": {},
+      "Kochan/TMblankL": {}
     },
+    "Ko TB for Multi-tape TM":{
+
+    }
+    ,
     "Models of Computation": {
       "VisFormalLang/TuringIntro": {},
       "VisFormalLang/Turing": {}
