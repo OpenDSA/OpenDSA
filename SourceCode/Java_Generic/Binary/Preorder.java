@@ -11,7 +11,7 @@ static <E> void preorder(BinNode<E> rt) {
 // This is a bad idea
 static <E> void preorder2(BinNode<E> rt) {
   visit(rt);
-  if (rt.left() != null) preorder2(rt.left());
-  if (rt.right() != null) preorder2(rt.right());
+  if (rt.left() != null) {preorder2(rt.left());}
+  if (rt.right() != null) {preorder2(rt.right());}
 }
 /* *** ODSAendTag: preorder2 *** */

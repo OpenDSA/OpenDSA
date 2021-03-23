@@ -9,8 +9,9 @@ static void sorttime(int[] B) {
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
-  for (i=0; i<B.length; i++)
+  for (i=0; i<B.length; i++){
     Aint[i] = new Integer(B[i]);
+  }
   time1 = millis();
   bubblesort(Aint);
   time2 = millis();
