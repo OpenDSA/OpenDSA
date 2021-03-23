@@ -1,0 +1,20 @@
+.helpcontent {
+    background-color: azure;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.simplecontent {
+    clear: both;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "text image";
+    margin: 3px;
+}
+
+.clickable {
+    cursor: pointer !important;
+}

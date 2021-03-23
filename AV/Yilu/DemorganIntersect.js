@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 	//Slide 4
 	av.umsg("combine the two machines in one window")
-	var combinedResult = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750}, false);
+	var combinedResult = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
 	console.log(combinedResult);
 	var combined = combinedResult['graph'];
 	/*
@@ -67,21 +67,24 @@ $(document).ready(function(){
     var dfa = FiniteAutomaton.convertNFAtoDFA(av, combined, {top: 0, left: 10, width: 500, height: 150});
     dfa.layout();
     av.umsg("Convert the NFA machine to DFA")
-	av.step();
-	
-	//Slide 7
-	var mytree = new av.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
-	mytree.hide();
-	dfa.hide();
+  	av.step();
+  	
+  	//Slide 7
+  	var mytree = new av.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
+  	mytree.hide();
+  	dfa.hide();
   	var minm = new Minimizer();
-  	var minized = minm.minimizeDFA(av, dfa, mytree, {left: 10, top:0, height: 450, width: 750}, false);
+  	var minized = minm.minimizeDFA(av, dfa, mytree, {left: 10, top:0, height: 450, width: 750});
   	minized.layout();
   	av.umsg("Then, minimize the DFA");
   	av.step();
 
+
+  	//minDFA.jsav = av;
   	//Slide 8
   	//s = minized.initial;
   	minized = FiniteAutomaton.complement(av, minized, {left: 10, top:0, height: 450, width: 750});
+    FiniteAutomaton.findLanguageSet(minized);
     //minized.makeInitial(s);
   	av.umsg("Finaly, take the complement of the minimized DFA so we will get the intersection");
 
