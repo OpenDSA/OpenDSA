@@ -42,6 +42,7 @@
 
   <body id="bd">
     <div id="container">
+      <img id="check_mark" src="../../OpenFLAP/green_check.png" alt="Proficient" style="display: none;float: left; width: 40px;">
       <h1 id="tester">Turing Machines Exercise</h1>
       <h2 id="question">Write a grammar that generates the language: L(<span id="expression"></span>)</h2>
       <h2 id="description"></h2>
@@ -126,7 +127,25 @@
       </div>
 
       <div id='download' style='visibility:hidden'></div>
-      <div id="rmenu"></div>
+      <div id="rmenu">
+        <ul>
+          <li class="editNode" id="makeInitial">
+            Initial
+          </li>
+          <li class="editNode" id="makeFinal">
+            Final
+          </li>
+          <li class="editNode" id="deleteNode">
+            Delete
+          </li>
+          <li class="editNode" id="changeLabel">
+            Change Label
+          </li>
+          <li class="editNode" id="clearLabel">
+            Clear Label
+          </li>
+        </ul>
+      </div>
 			<div id="edge">
 				<table>
 					<tr>
