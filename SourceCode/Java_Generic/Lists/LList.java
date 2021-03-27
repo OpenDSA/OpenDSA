@@ -91,7 +91,7 @@ class LList<E> implements List<E> {
 
 /* *** ODSATag: LListNext *** */
   // Move curr one step right; no change if now at end
-  public void next() { if (curr != tail) { curr = curr.next(); }}
+  public void next() { if (curr != tail) { curr = curr.next(); } }
 /* *** ODSAendTag: LListNext *** */
 
   public int length() { return listSize; } // Return list length
@@ -101,7 +101,7 @@ class LList<E> implements List<E> {
   public int currPos() {
     Link<E> temp = head.next();
     int i;
-    for (i=0; curr != temp; i++){
+    for (i=0; curr != temp; i++) {
       temp = temp.next();
     }
     return i;
@@ -114,7 +114,7 @@ class LList<E> implements List<E> {
       return false;
     }
     curr = head.next();
-    for(int i=0; i<pos; i++) {curr = curr.next()};
+    for(int i=0; i<pos; i++) { curr = curr.next() };
     return true;
   }
 /* *** ODSAendTag: LListPos *** */

@@ -6,7 +6,7 @@ class BSTNode<E extends Comparable<? super E>> implements BinNode<E> {
   private BSTNode<E> right;    // Pointer to right child
 
   // Constructors
-  BSTNode() {left = right = null; }
+  BSTNode() { left = right = null; }
   BSTNode(E val) { left = right = null; element = val; }
   BSTNode(E val, BSTNode<E> l, BSTNode<E> r)
     { left = l; right = r; element = val; }

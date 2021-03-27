@@ -23,7 +23,7 @@ static int fibrt(int n) {
   // slots are initialized to 0
   if ((n <= 0) || (n > 91)) { return -1; }
   if (n <= 2) { return 1; }             // Base case
-  if (Values[n] == 0){
+  if (Values[n] == 0) {
     Values[n] = fibrt(n-1) + fibrt(n-2);
   }
   return Values[n];

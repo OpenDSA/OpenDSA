@@ -1,4 +1,4 @@
-static void QuickSortDouble(double[] B,int startpos,int length){
+static void QuickSortDouble(double[] B,int startpos,int length) {
 
 
 int low = startpos;
@@ -8,7 +8,7 @@ quickSortDouble(B, low, high);
 }
 
 
-static void QuickSortInteger(Integer[] B,int startpos,int length){
+static void QuickSortInteger(Integer[] B,int startpos,int length) {
 
 
 
@@ -59,7 +59,7 @@ quickSortInteger(arr, i, high);
 }
 
 
-static void QuickSort(int[] B,int startpos,int length){
+static void QuickSort(int[] B,int startpos,int length) {
 
   	int low = startpos;
 	int high = startpos+length - 1;

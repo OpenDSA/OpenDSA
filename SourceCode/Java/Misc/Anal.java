@@ -23,8 +23,8 @@ static void dum() {
 
 /* *** ODSATag: Analp1 *** */
 sum = 0;
-for (i=1; i<=n; i++){
-  for (j=1; j<=n; j++){
+for (i=1; i<=n; i++) {
+  for (j=1; j<=n; j++) {
     sum++;
   }
 }
@@ -36,34 +36,34 @@ a = b;
 
 /* *** ODSATag: c3p3 *** */
 sum = 0;
-for (i=1; i<=n; i++){
+for (i=1; i<=n; i++) {
    sum += n;
 }
 /* *** ODSAendTag: c3p3 *** */
 
 /* *** ODSATag: c3p4 *** */
 sum = 0;
-for (j=1; j<=n; j++){     // First for loop
-  for (i=1; i<=j; i++){  //   is a double loop
+for (j=1; j<=n; j++) {     // First for loop
+  for (i=1; i<=j; i++) {  //   is a double loop
     sum++;
   }
 }
-for (k=0; k<n; k++){      // Second for loop
+for (k=0; k<n; k++) {      // Second for loop
    A[k] = k;
 }
 /* *** ODSAendTag: c3p4 *** */
 
 /* *** ODSATag: c3p5 *** */
 sum1 = 0;
-for (i=1; i<=n; i++){     // First double loop
-  for (j=1; j<=n; j++){  //   do n times
+for (i=1; i<=n; i++) {     // First double loop
+  for (j=1; j<=n; j++) {  //   do n times
     sum1++;
   }
 }
 
 sum2 = 0;
-for (i=1; i<=n; i++){     // Second double loop
-  for (j=1; j<=i; j++){  //   do i times
+for (i=1; i<=n; i++) {     // Second double loop
+  for (j=1; j<=i; j++) {  //   do i times
     sum2++;
   }
 }
@@ -71,25 +71,25 @@ for (i=1; i<=n; i++){     // Second double loop
 
 /* *** ODSATag: c3p6 *** */
 sum1 = 0;
-for (k=1; k<=n; k*=2){    // Do log n times
-  for (j=1; j<=n; j++){  // Do n times
+for (k=1; k<=n; k*=2) {    // Do log n times
+  for (j=1; j<=n; j++) {  // Do n times
     sum1++;
   }
 }
 
 sum2 = 0;
-for (k=1; k<=n; k*=2){    // Do log n times
-  for (j=1; j<=k; j++){  // Do k times
+for (k=1; k<=n; k*=2) {    // Do log n times
+  for (j=1; j<=k; j++) {  // Do k times
     sum2++;
   }
 }
 /* *** ODSAendTag: c3p6 *** */
 
 /* *** ODSATag: c3p16 *** */
-  for (i=0; i<C; i++){   // Initialize count
+  for (i=0; i<C; i++) {   // Initialize count
      count[i] = 0;
   }
-  for (i=0; i<P; i++){   // Look at all of the pixels
+  for (i=0; i<P; i++) {   // Look at all of the pixels
      count[value(i)]++; // Increment a pixel value count
   }
   sort(count);          // Sort pixel value counts
@@ -103,8 +103,8 @@ static boolean ODD(int n) {
 
 static void collatz(int n) {
 /* *** ODSATag: Collatz *** */
-while (n > 1){
-  if (ODD(n)){
+while (n > 1) {
+  if (ODD(n)) {
     n = 3 * n + 1;
   }
    else{

@@ -7,7 +7,7 @@ static void BFS(Graph G, int v) {
     v = (Integer)Q.dequeue();
     PreVisit(G, v);
     int[] nList = G.neighbors(v);
-    for (int i=0; i< nList.length; i++){
+    for (int i=0; i< nList.length; i++) {
       if (G.getValue(nList[i]) != VISITED) { // Put neighbors on Q
         G.setValue(nList[i], VISITED);
         Q.enqueue(nList[i]);

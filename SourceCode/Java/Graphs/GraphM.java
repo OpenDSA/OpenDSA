@@ -29,8 +29,8 @@ class GraphM implements Graph {
   // Adds a new edge from node v to node w
   // Returns the new edge
   public void addEdge(int v, int w, int wgt) {
-    if (wgt == 0) {return;} // Can't store weight of 0
-    if (matrix[v][w] == 0){
+    if (wgt == 0) { return; } // Can't store weight of 0
+    if (matrix[v][w] == 0) {
       numEdge++;
     }
     matrix[v][w] = wgt;
@@ -56,12 +56,12 @@ class GraphM implements Graph {
     int count = 0;
     int[] temp;
     
-    for (i=0; i<nodeValues.length; i++){
-      if (matrix[v][i] != 0) {count++;}
+    for (i=0; i<nodeValues.length; i++) {
+      if (matrix[v][i] != 0) { count++; }
     }
     temp = new int[count];
-    for (i=0, count=0; i<nodeValues.length; i++){
-      if (matrix[v][i] != 0) {temp[count++] = i;}
+    for (i=0, count=0; i<nodeValues.length; i++) {
+      if (matrix[v][i] != 0) { temp[count++] = i; }
     }
     return temp;
   }

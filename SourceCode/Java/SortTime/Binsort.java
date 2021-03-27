@@ -32,7 +32,7 @@ class LinkedList implements List {
 
 void output(Object x) {} */
 
-static void sorttime(){
+static void sorttime() {
 System.out.println();
 
 System.out.println("Bin Sort");

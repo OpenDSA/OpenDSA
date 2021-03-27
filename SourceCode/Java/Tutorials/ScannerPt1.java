@@ -12,13 +12,13 @@ public class Main {
       beginParsing(filename);//call the parsing function
    }
    
-   public static void beginParsing(String filename){
+   public static void beginParsing(String filename) {
       try {
          Scanner sc = new Scanner(new File(filename));//Create our new scanner
-         while(sc.hasNext()){//While the scanner has information to read
+         while(sc.hasNext()) {//While the scanner has information to read
             String cmd = sc.next();//Read the next term
             double x; double y; double radius;
-            switch(cmd){
+            switch(cmd) {
                case "debug" :
                   System.out.println("debug cmd activated");
                break;

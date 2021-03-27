@@ -10,10 +10,10 @@ public class Complex {
 
   @Override 
   public boolean equals(Object o) {
-    if (o == this){
+    if (o == this) {
       return true;
     }
-    if (!(o instanceof Complex)){
+    if (!(o instanceof Complex)) {
       return false;
     }
     Complex c = (Complex) o;

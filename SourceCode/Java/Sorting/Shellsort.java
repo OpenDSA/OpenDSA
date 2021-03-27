@@ -8,8 +8,8 @@ static Boolean sorttest(int[] A) {
 
 /* *** ODSATag: Shellsort *** */
 static void shellsort(int[] A) {
-  for (int i=A.length/2; i>2; i/=2){ // For each increment
-    for (int j=0; j<i; j++){         // Sort each sublist
+  for (int i=A.length/2; i>2; i/=2) { // For each increment
+    for (int j=0; j<i; j++) {         // Sort each sublist
       inssort2(A, j, i);
     }
   }

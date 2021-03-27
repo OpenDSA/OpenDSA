@@ -13,8 +13,8 @@ static void Neighbor(Graph G) {
   int v = 0;
 /* *** ODSATag: GraphNeighbor *** */
   int[] nList = G.neighbors(v);
-  for (int i=0; i< nList.length; i++){
-    if (G.getValue(nList[i]) != VISITED){
+  for (int i=0; i< nList.length; i++) {
+    if (G.getValue(nList[i]) != VISITED) {
       DoSomething();
     }
   }

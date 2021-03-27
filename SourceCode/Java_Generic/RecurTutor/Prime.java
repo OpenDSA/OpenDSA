@@ -1,8 +1,8 @@
 boolean prime(int x, int y) {
-  if (y == 1){
+  if (y == 1) {
     return true;
   }
-  else if (x % y == 0){
+  else if (x % y == 0) {
     return false;	
   }
   else{

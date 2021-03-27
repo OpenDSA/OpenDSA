@@ -1,10 +1,10 @@
-if ( base case 1 ){
+if ( base case 1 ) {
   // return some simple expression
 }
-else if ( base case 2 ){
+else if ( base case 2 ) {
   // return some simple expression
 }
-else if ( base case 3 ){
+else if ( base case 3 ) {
   // return some simple expression
 }
 else if ( recursive case 1 ) {

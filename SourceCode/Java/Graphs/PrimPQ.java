@@ -5,17 +5,17 @@ void PrimPQ(Graph G, int s, int[] D, int[] V) {
   KVPair[] E = new KVPair[G.edgeCount()];        // Heap for edges
   E[0] = new KVPair(0, s);               // Initial vertex
   MinHeap H = new MinHeap(E, 1, G.edgeCount());
-  for (int i=0; i<G.nodeCount(); i++){            // Initialize distance
+  for (int i=0; i<G.nodeCount(); i++) {            // Initialize distance
     D[i] = INFINITY;
   }
   D[s] = 0;
   for (int i=0; i<G.nodeCount(); i++) {          // For each vertex
     KVPair temp = H.removemin();
-    if (temp == null) {return; }      // Unreachable nodes exist
+    if (temp == null) { return; }      // Unreachable nodes exist
     v = (Integer)temp.value();
-      while (G.getValue(v) == VISITED){
+      while (G.getValue(v) == VISITED) {
         KVPair temp = H.removemin();
-        if (temp == null) {return; }      // Unreachable nodes exist
+        if (temp == null) { return; }      // Unreachable nodes exist
         v = (Integer)temp.value();
       }
     G.setValue(v, VISITED);

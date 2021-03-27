@@ -46,7 +46,7 @@ class AQueue<E> implements Queue<E> {
 
   // Remove and return front value
   public E dequeue() {
-    if(length() == 0){
+    if(length() == 0) {
       return null;
     }
     E it = queueArray[front];
@@ -56,7 +56,7 @@ class AQueue<E> implements Queue<E> {
 
   // Return front value
   public E frontValue() {
-    if (length() == 0){
+    if (length() == 0) {
       return null;
     }
     return queueArray[front];

@@ -9,7 +9,7 @@ static void sorttime(int[] B) {
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
-  for (i=0; i<B.length; i++){
+  for (i=0; i<B.length; i++) {
     Aint[i] = new Integer(B[i]);
   }
   time1 = millis();
@@ -115,7 +115,7 @@ static <T extends Comparable<T>> void bubblecheckswap(T[] A) {
 static void unwikipedia(int[] A) {
   int n = A.length-1;
   while (n>0) {
-    for (int i=0; i<n; i++){
+    for (int i=0; i<n; i++) {
       /* if this pair is out of order */
       if (A[i] > A[i+1]) {
         swap(A, i, i+1);
@@ -162,9 +162,9 @@ static Boolean sorttest(int[] B) {
 
 /* *** ODSATag: Bubblesort *** */
 static <T extends Comparable<T>> void bubblesort(T[] A) {
-  for (int i=0; i<A.length-1; i++){ // Insert i'th record
-    for (int j=1; j<A.length-i; j++){
-      if (A[j-1].compareTo(A[j]) > 0){
+  for (int i=0; i<A.length-1; i++) { // Insert i'th record
+    for (int j=1; j<A.length-i; j++) {
+      if (A[j-1].compareTo(A[j]) > 0) {
         swap(A, j-1, j);
       }
     }

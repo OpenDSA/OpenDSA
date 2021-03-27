@@ -34,7 +34,7 @@ class AList<E> implements List<E> {
     if (listSize >= maxSize) {
       return false;
     }
-    for (int i=listSize; i>curr; i--){  // Shift elements up
+    for (int i=listSize; i>curr; i--) {  // Shift elements up
       listArray[i] = listArray[i-1];   //   to make room
     }
     listArray[curr] = it;
