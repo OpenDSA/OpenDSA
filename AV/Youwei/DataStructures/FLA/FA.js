@@ -735,6 +735,226 @@ var lambda = String.fromCharCode(955),
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+
+  /*
+  * Two Circle layout algorithm
+  */
+  automatonproto.twoCircleLayoutAlg = function(options) {
+    //First, initialize classwide variables.
+    var innerCircle = [];
+    var outerCircle = [];
+    var vertices = this.nodes();
+    if (vertices.length == 0) {
+      return;
+    }
+    
+    //Put in the inner circle all vertices with degree >= 3 and all those pointing to two members of the inner circle.
+    this.assignToCircles(vertices, innerCircle, outerCircle);
+
+    //console.log(innerCircle.length);
+    //console.log(outerCircle.length);
+    //Create inner circle chain and place it in graph
+    var innerCircleChain = [];
+    for (var i = 0; i < innerCircle.length; i++) {
+      this.addVertex(innerCircleChain, innerCircle[i]);
+    }
+    var radius = this.layoutInCircle(innerCircleChain, 0, Math.PI, 2*Math.PI);
+    innerCircle = innerCircleChain;
+
+    //Create outer circle chains and place them in the graph.
+    if (outerCircle.length > 0) {
+      var lengthOfChain = innerCircle.length;
+      var outerCircleChains = this.createOuterCircleChains(innerCircle, outerCircle, lengthOfChain);
+      this.shuffleOuterChains(outerCircleChains, lengthOfChain);
+
+      var span, division;
+      division = (2*Math.PI / lengthOfChain);
+      span = division * 4/5;
+      for (var i = 0; i < lengthOfChain; i++) {
+        this.layoutInCircle(outerCircleChains[i], radius, division*i, span);
+      }
+    }
+
+    //Finally, adjust the points so that they can be presented on the screen.
+    for (var i=0; i<vertices.length; i++) {
+      var r = vertices[i].element.position().left;      
+      var theta = vertices[i].element.position().top;
+      vertices[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+    }
+
+    this.shiftOntoScreen(900, 30, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+  };
+
+  /**
+  * Shuffles the order of vertices in the outer circle <code>CircleChains</code> in order to minimize overlapping
+  * transitions between vertices in two different <code>CircleChains</code>.  If a vertex from one <code>CircleChain
+  * </code> has an edge to another vertex in an adjacent <code>CircleChain</code>, the two vertices will be moved to 
+  * their <code>CircleChain's</code> common border, and whatever other vertices to which the two vertices are linked 
+  * will be adjusted accordingly. 
+  */
+  automatonproto.shuffleOuterChains = function(outerCircleChains, lengthOfChain) {
+    var currentChain;
+    var nextChain;
+    for (var i = 0; i < lengthOfChain; i++) {
+      currentChain = outerCircleChains[i];
+      if (i < lengthOfChain - 1) {
+        nextChain = outerCircleChains[i+1];
+      }
+      else {
+        nextChain = outerCircleChains[0];
+      }
+      this.alignTwoChains(currentChain, nextChain);
+    }
+  }
+
+  /**
+  * Divides the vertices that are in the outer circle into <code>VertexChains</code>, which correspond to an inner circle
+  * vertex.  Outer circle vertices are assigned to a specific <code>VertexChain</code> according to the following priorities. 
+  * <br><br> 1. Whether they link to an inner circle vertex <br> 2.  Whether they link to an existing outer circle item <br>
+  * 3.  If they link to two outer circle items in different <code>VertexChains</code> or have a degree = 0, they are
+  * assigned to the smaller of the two <code>VertexChains</code> or the smallest existing <code>VertexChain</code>, 
+  * respectively.
+  */
+  automatonproto.createOuterCircleChains = function(innerCircle, outerCircle, lengthOfChain) {
+    var outerCircleChains = [];
+    //var lengthOfChain = innerCircle.length;
+    for (var m = 0; m < lengthOfChain; m++) {
+      outerCircleChains[m] = [];
+    }
+    var chainIndex = [];
+    var lengthOfIndex = outerCircle.length;
+
+    for (var i = 0; i < outerCircle.length; i++) {
+      chainIndex[i] = -1;
+      for (var j = 0; j < innerCircle.length; j++) {
+        if (this.hasEdge(outerCircle[i], innerCircle[j]) || this.hasEdge(innerCircle[j], outerCircle[i])) {
+          this.addVertex(outerCircleChains[j], outerCircle[i]);
+          chainIndex[i] = j;
+        }
+      }
+    }
+
+    //Next, if a vertex is linked to an outercircle item, add it; if to items in two different chains, add
+    //it to the one with the minimum size.
+    var match1, match2, min;
+    var addedToChain = false;
+    do {
+      addedToChain = false;
+      for (var i = 0; i < outerCircle.length; i++) {
+        if (chainIndex[i] == -1) {
+          match1 = -1; 
+          match2 = -1;
+          for (var j = 0; j < lengthOfChain; j++) {
+            if (this.isEdgeToChainMember(outerCircleChains[j], outerCircle[i]) && chainIndex[i] == -1) {
+              if (match1 == -1) {
+                match1 = j;
+              }
+              else {
+                match2 = j;
+              }
+            }
+          }
+
+          if (match1 > -1 && match2 == -1) {
+            this.addVertex(outerCircleChains[match1], outerCircle[i]);
+            chainIndex[i] = match1;
+            addedToChain = true;
+          }
+          else if (match1 > -1 && match2 > -1) {
+            if (outerCircleChains[match1].length < outerCircleChains[match2].length) {
+              min = match1;
+            }
+            else {
+              min = match2;
+            }
+            chainIndex[i] = min;
+            addedToChain = true;
+          }
+        }
+      }
+    } while (addedToChain);
+
+    //If no vertex can be added, find the chain with minimum length, and then add all unplaceded vertices to it.
+    min = 0;
+    for (var i = 0; i < lengthOfChain; i++) {
+      if (outerCircleChains[min].length > outerCircleChains[i].length) {
+        min = i;
+      }
+    }
+    for (var i = 0; i < outerCircle.length; i++) {
+      if (chainIndex[i] == -1) {
+        this.addVertex(outerCircleChains[min], outerCircle[i]);
+      }
+    }
+    return outerCircleChains;
+  };
+
+  /**
+  * Divides the vertices by placing them either in the inner circle or outer circle.  All inner circle vertices will have 
+  * a degree greater than 2 or will be adjacent to two other inner circle vertices.  The rest of the vertices are placed
+  * in the outer circles. 
+  */
+  automatonproto.assignToCircles = function (vertices, innerCircle, outerCircle) {
+    for (var i = 0; i < vertices.length; i++) {
+      
+      if (this.degree(vertices, vertices[i]) > 2) {
+        innerCircle.push(vertices[i]);
+      }
+      else {
+        outerCircle.push(vertices[i]);
+      }
+    }
+    if (innerCircle.length == 0) {
+      innerCircle = outerCircle;
+      outerCircle = [];
+      return;
+    }
+
+    var innerCircleInsertion;
+    var count;
+    do {
+      innerCircleInsertion = false;
+      for (var i = 0; i < outerCircle.length; i++) {
+        count = 0;
+        for (var j = 0; j < innerCircle.length; j++) {
+          if (this.hasEdge(outerCircle[i], innerCircle[j]) || this.hasEdge(innerCircle[j], outerCircle[i])) {
+            count++;
+          }
+        }
+        if (count >= 2) {
+          innerCircle.push(outerCircle[i]);
+          outerCircle.splice(i, 1);
+          innerCircleInsertion = true;
+        }
+      }
+    } while (innerCircleInsertion);
+  };
+  //Find the degree of a given node
+  automatonproto.degree = function(vertices, node) {
+    var degree = 0;
+    for (var q = 0; q < vertices.length; q++) {
+      if (vertices[q].edgeTo(node) || node.edgeTo(vertices[q])) {
+        degree++;
+      }
+      /*
+      if (node.edgeTo(vertices[q])) {
+        degree++;
+      }*/
+    }
+    return degree;
+  };
+  ////////////////////////////////////////////////////////////////////////////////
   /*
   *
   */
@@ -768,18 +988,20 @@ var lambda = String.fromCharCode(955),
         var degreea = 0;
         var degreeb = 0;
         for (var q = 0; q < vertices.length; q++) {
-          if (vertices[q].edgeTo(a)) {
+          if (vertices[q].edgeTo(a) || a.edgeTo(vertices[q])) {
             degreea++;
           }
+          /*
           if (a.edgeTo(vertices[q])) {
             degreea++;
-          }
-          if (vertices[q].edgeTo(b)) {
+          }*/
+          if (vertices[q].edgeTo(b) || b.edgeTo(vertices[q])) {
             degreeb++;
           }
+          /*
           if (b.edgeTo(vertices[q])) {
             degreeb++;
-          }
+          }*/
         }
         return degreeb - degreea;
         //return b.neighbors().length - a.neighbors().length;
@@ -1261,20 +1483,20 @@ var lambda = String.fromCharCode(955),
     return false;
   };
   //Layout in circle 
-  automatonproto.layoutInCircle = function(r, midTheta, span) {
+  automatonproto.layoutInCircle = function(vertices, r, midTheta, span) {
     var diagonalLength = Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2)) + 30;
-    var vertices = this.nodes();
-    if (this.nodeCount() == 0) {
+
+    if (vertices.length == 0) {
       return;
     }
-    if (this.nodeCount() == 1) {
+    if (vertices.length == 1) {
       if (r == 0) {
         vertices[0].moveTo(0, 0);
       }
       else {
         vertices[0].moveTo(r + diagonalLength, midTheta);
       }
-      return;
+      return diagonalLength;
     }
     //var radius = diagonalLength / thetaDivision;
     var startTheta;
@@ -1282,10 +1504,10 @@ var lambda = String.fromCharCode(955),
     var divisions;
     startTheta = midTheta - span / 2;
     if (2 * Math.PI - span < .0001) {
-      divisions = this.nodeCount();
+      divisions = vertices.length;
     }
     else {
-      divisions = this.nodeCount() - 1;
+      divisions = vertices.length - 1;
     }
     thetaDivision = span / divisions;
     var radius = diagonalLength / thetaDivision;
@@ -1293,7 +1515,7 @@ var lambda = String.fromCharCode(955),
       radius = r + diagonalLength;
     }
 
-    for (var i=0; i<this.nodeCount(); i++) {
+    for (var i=0; i<vertices.length; i++) {
       vertices[i].moveTo(radius, startTheta + thetaDivision * i)
     }
     return radius;
@@ -1301,7 +1523,7 @@ var lambda = String.fromCharCode(955),
 
   automatonproto.layoutInCircleAndPack = function (upperLeftArray, downArray, boxes, box) {
     var vertices = this.nodes();
-    var radius = this.layoutInCircle(0, Math.PI, 2*Math.PI);
+    var radius = this.layoutInCircle(vertices, 0, Math.PI, 2*Math.PI);
     for (var i=0; i<this.nodeCount(); i++) {
       var r = vertices[i].element.position().left;      
       var theta = vertices[i].element.position().top;
