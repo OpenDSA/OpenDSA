@@ -14,7 +14,9 @@ class AQueue<E> implements Queue<E> {
     rear = 0; front = 1;
     queueArray = (E[])new Object[maxSize];  // Create queueArray
   }
-  AQueue() { this(DEFAULT_SIZE); }
+  AQueue() { 
+    this(DEFAULT_SIZE); 
+  }
 /* *** ODSAendTag: AQueue1 *** */
 
   public String toString() {
@@ -28,11 +30,15 @@ class AQueue<E> implements Queue<E> {
 /* *** ODSATag: AQueue2 *** */
 
   // Reinitialize
-  public void clear() { rear = 0; front = 1; }
+  public void clear() {
+    rear = 0; front = 1; 
+  }
 
   // Put "it" in queue
   public boolean enqueue(E it) {
-    if (((rear+2) % maxSize) == front) return false;  // Full
+    if (((rear+2) % maxSize) == front) {
+      return false;  // Full
+    }
     rear = (rear+1) % maxSize; // Circular increment
     queueArray[rear] = it;
     return true;
@@ -40,7 +46,9 @@ class AQueue<E> implements Queue<E> {
 
   // Remove and return front value
   public E dequeue() {
-    if(length() == 0) return null;
+    if(length() == 0) {
+      return null;
+    }
     E it = queueArray[front];
     front = (front+1) % maxSize; // Circular increment
     return it;
@@ -48,14 +56,20 @@ class AQueue<E> implements Queue<E> {
 
   // Return front value
   public E frontValue() {
-    if (length() == 0) return null;
+    if (length() == 0) {
+      return null;
+    }
     return queueArray[front];
   }
 
   // Return queue size
-  public int length() { return ((rear+maxSize) - front + 1) % maxSize; }
+  public int length() {
+    return ((rear+maxSize) - front + 1) % maxSize; 
+  }
   
   //Tell if the queue is empty or not
-  public boolean isEmpty() { return front - rear == 1; }
+  public boolean isEmpty() { 
+    return front - rear == 1; 
+  }
 }
 /* *** ODSAendTag: AQueue2 *** */

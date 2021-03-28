@@ -5,8 +5,8 @@ class AList implements List {
     int pos;
 
     AListIndex(int posit) { pos = posit; }
-    void prev() { if (pos != 0) pos--; }
-    void next() { if (pos < listSize) pos++; }
+    void prev() { if (pos != 0) { pos--; } }
+    void next() { if (pos < listSize) { pos++; } }
   }
 
   private static final int defaultSize = 10; // Default size
@@ -34,8 +34,9 @@ class AList implements List {
       return;
     }
     int pos = ((AListIndex)where).pos;
-    for (int i=listSize; i>pos; i--)     // Shift elements up
+    for (int i=listSize; i>pos; i--) {     // Shift elements up
       listArray[i] = listArray[i-1];      //   to make room
+    }
     listArray[pos] = it;
     listSize++;                           // Increment list size
   }
@@ -52,11 +53,13 @@ class AList implements List {
   // Remove and return the current element
   Object remove(ListIndex where) {
     int pos = ((AListIndex)where).pos;
-    if ((pos<0) || (pos>=listSize))     // No current element
+    if ((pos<0) || (pos>=listSize)) {     // No current element
       return null;
+    }
     Object it = listArray[pos];          // Copy the element
-    for(int i=pos; i<listSize-1; i++)    // Shift them down
+    for(int i=pos; i<listSize-1; i++) {    // Shift them down
       listArray[i] = listArray[i+1];
+    }
     listSize--;                           // Decrement size
     return it;
   }
@@ -81,8 +84,9 @@ class AList implements List {
   // Return the current element
   Object getValue(ListIndex where) {
     int pos = ((AListIndex)where).pos;
-    if ((pos < 0) || (pos >= listSize)) // No current element
+    if ((pos < 0) || (pos >= listSize)) { // No current element
       return null;
+    }
     return listArray[pos];
   }
 }

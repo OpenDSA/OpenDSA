@@ -19,8 +19,9 @@ class Link<E> {      // Singly linked list node with freelist support
 
   // Return a new link, from freelist if possible
   static <E> Link<E> get(E it, Link<E> inn) {
-    if (freelist == null)
+    if (freelist == null) {
       return new Link<E>(it, inn);                 // Get from "new"
+    }
     Link<E> temp = freelist;                       // Get from freelist
     freelist = freelist.next();
     temp.setElement(it);

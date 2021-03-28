@@ -191,7 +191,7 @@ html_context = {"script_files": [
                   #'https://code.jquery.com/jquery-2.1.4.min.js',
                   '../../../lib/jquery.min.js',
                   '../../../lib/jquery.migrate.min.js',
-                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
                 ],
                 "search_scripts": [
                   '_static/underscore.js',

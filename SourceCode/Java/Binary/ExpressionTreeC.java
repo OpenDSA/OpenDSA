@@ -37,8 +37,8 @@
 
      public void traverse() {
        Visit.VisitInternalNode(operator);
-       if (left != null) left.traverse();
-       if (right != null) right.traverse();
+       if (left != null) { left.traverse(); }
+       if (right != null) { right.traverse(); }
      }
    }
 /* *** ODSAendTag: Composite2 *** */
@@ -46,7 +46,7 @@
 /* *** ODSATag: Composite3 *** */
    /** Preorder traversal */
    public static void traverse(VarBinNode rt) {
-     if (rt != null) rt.traverse();
+     if (rt != null) { rt.traverse(); }
    }
 /* *** ODSAendTag: Composite3 *** */
 /* *** ODSAendTag: Composite *** */

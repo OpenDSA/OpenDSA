@@ -30,7 +30,7 @@ class LList<E> implements List<E> {
   public boolean insert(E it) {
     curr.setNext(Link.get(curr.element(), curr.next())); // Get link
     curr.setElement(it);
-    if (tail == curr) tail = curr.next();    // New tail
+    if (tail == curr) { tail = curr.next(); }    // New tail
     listSize++;
     return true;
   }
@@ -47,10 +47,10 @@ class LList<E> implements List<E> {
 
   // Remove and return current element
   public E remove () {
-    if (curr == tail) return null;          // Nothing to remove
+    if (curr == tail) { return null; }        // Nothing to remove
     E it = curr.element();                  // Remember value
     curr.setElement(curr.next().element()); // Pull forward the next element
-    if (curr.next() == tail) tail = curr;   // Removed last, move tail
+    if (curr.next() == tail) { tail = curr; } // Removed last, move tail
     Link<E> tempptr = curr.next();             // Remember the link
     curr.setNext(curr.next().next());       // Point around unneeded link
     tempptr.release();                      // Release the link

@@ -31,7 +31,7 @@ class AStack<E> implements Stack<E> {
 // Push "it" onto stack
 /* *** ODSATag: AStackPush *** */
   public boolean push(E it) {
-    if (top >= maxSize) return false;
+    if (top >= maxSize) { return false; }
     stackArray[top++] = it;
     return true;
   }
@@ -40,13 +40,13 @@ class AStack<E> implements Stack<E> {
 // Remove and return top element
 /* *** ODSATag: AStackPop *** */
   public E pop() {
-    if (top == 0) return null;
+    if (top == 0) { return null; }
     return stackArray[--top];
   }
 /* *** ODSAendTag: AStackPop *** */
 
   public E topValue() {          // Return top element
-    if (top == 0) return null;
+    if (top == 0) { return null; }
     return stackArray[top-1];
   }
 

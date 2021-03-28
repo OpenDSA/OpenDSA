@@ -8,11 +8,14 @@ public class Complex {
     this.imag = imag;
   }
 
-  @Override public boolean equals(Object o) {
-    if (o == this)
+  @Override 
+  public boolean equals(Object o) {
+    if (o == this) {
       return true;
-    if (!(o instanceof Complex))
+    }
+    if (!(o instanceof Complex)) {
       return false;
+    }
     Complex c = (Complex) o;
 
     return Double.compare(real, c.real) == 0 &&

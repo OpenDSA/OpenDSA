@@ -41,12 +41,14 @@ class BST<E extends Comparable<E>> {
   // Return a record that matches the key value
 /* *** ODSATag: findhelp *** */
   private E findhelp(BSTNode<E> rt, E key) {
-    if (rt == null) return null;
-    if (rt.value().compareTo(key) > 0)
+    if (rt == null) { return null; }
+    if (rt.value().compareTo(key) > 0) {
       return findhelp(rt.left(), key);
-    else if (rt.value().compareTo(key) == 0)
+    }
+    else if (rt.value().compareTo(key) == 0) {
       return rt.value();
-    else return findhelp(rt.right(), key);
+    }
+    else { return findhelp(rt.right(), key); }
   }
 /* *** ODSAendTag: findhelp *** */
 
@@ -55,11 +57,13 @@ class BST<E extends Comparable<E>> {
   // modified to contain the new item
 /* *** ODSATag: inserthelp *** */
   private BSTNode<E> inserthelp(BSTNode<E> rt, E e) {
-    if (rt == null) return new BSTNode<E>(e);
-    if (rt.value().compareTo(e) >= 0)
+    if (rt == null) { return new BSTNode<E>(e); }
+    if (rt.value().compareTo(e) >= 0) {
       rt.setLeft(inserthelp(rt.left(), e));
-    else
+    }
+    else{
       rt.setRight(inserthelp(rt.right(), e));
+    }
     return rt;
   }
 /* *** ODSAendTag: inserthelp *** */
@@ -67,7 +71,7 @@ class BST<E extends Comparable<E>> {
 /* *** ODSATag: deletemax *** */
   // Delete the maximum valued element in a subtree
   private BSTNode<E> deletemax(BSTNode<E> rt) {
-    if (rt.right() == null) return rt.left();
+    if (rt.right() == null) { return rt.left(); }
     rt.setRight(deletemax(rt.right()));
     return rt;
   }
@@ -76,7 +80,7 @@ class BST<E extends Comparable<E>> {
 /* *** ODSATag: getmax *** */
   // Get the maximum valued element in a subtree
   private BSTNode<E> getmax(BSTNode<E> rt) {
-    if (rt.right() == null) return rt;
+    if (rt.right() == null) { return rt; }
     return getmax(rt.right());
   }
 /* *** ODSAendTag: getmax *** */
@@ -85,14 +89,16 @@ class BST<E extends Comparable<E>> {
   // Return the tree with the node removed
 /* *** ODSATag: removehelp *** */
   private BSTNode<E> removehelp(BSTNode<E> rt, E key) {
-    if (rt == null) return null;
-    if (rt.value().compareTo(key) > 0)
+    if (rt == null) { return null; }
+    if (rt.value().compareTo(key) > 0) {
       rt.setLeft(removehelp(rt.left(), key));
-    else if (rt.value().compareTo(key) < 0)
+    }
+    else if (rt.value().compareTo(key) < 0) {
       rt.setRight(removehelp(rt.right(), key));
+    }
     else { // Found it
-      if (rt.left() == null) return rt.right();
-      else if (rt.right() == null) return rt.left();
+      if (rt.left() == null) { return rt.right(); }
+      else if (rt.right() == null) { return rt.left(); }
       else { // Two children
         BSTNode<E> temp = getmax(rt.left());
         rt.setValue(temp.value());
@@ -105,7 +111,7 @@ class BST<E extends Comparable<E>> {
 
 /* *** ODSATag: printhelp *** */
   private void printhelp(BSTNode<E> rt) {
-    if (rt == null) return;
+    if (rt == null) { return; }
     printhelp(rt.left());
     printVisit(rt.value());
     printhelp(rt.right());
