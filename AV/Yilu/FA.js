@@ -2149,11 +2149,11 @@ var lambda = String.fromCharCode(955),
   };
 
 
-  var getNodeWithValue = function (jsav, value) {
-    var nodes = jsav.nodes();
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      if (next.value() === value) {
-        return next;
+  var getNodeWithValue = function (graph, value) {
+    var nodes = graph.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      if (node.value() === value) {
+        return node;
       }
     }
   };
@@ -2284,6 +2284,67 @@ var lambda = String.fromCharCode(955),
     minized = this.complement(jsav, minized, {left: 10, top:0, height: 450, width: 750});
     minized.layout();
     return minized;
+  };
+
+  /*
+    Get edge outgoing edge from the node
+  */
+  FiniteAutomaton.edgeFrom = function(node){
+    return  node.container._edges[node.container._nodes.indexOf(node)];
+  };
+
+  FiniteAutomaton.findTable = function(jsav, graph){
+    var table = [];
+    var alp =  graph.alphabet;
+    var alphabet = [];
+    for (const key in alp) {
+      alphabet.push(key);
+    }
+    alphabet.sort();
+    console.log(alphabet);
+
+    
+
+    var nodes = graph.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()){
+      //console.log(node.container._nodes.indexOf(node));
+      //var newLabel = alphabet.toString().replace(',', '<br>');
+      var edgesFromNode = node.container._edges[node.container._nodes.indexOf(node)];
+      /*
+      console.log(node.options["value"]);
+      var nodeFromValue = getNodeWithValue(graph, node.options["value"]);
+      
+      if (node == nodeFromValue){
+        console.log("gotcha");
+      }
+      */
+      var startNodeValue = node.options["value"];
+      var index = node.container._nodes.indexOf(node);
+      
+      table[index] = {};
+
+      console.log(startNodeValue);
+      for (edge in edgesFromNode){
+        //console.log(edgesFromNode[edge]);
+        var oneEdge = edgesFromNode[edge];
+        //console.log(oneEdge.endnode);
+        var endNode = oneEdge.endnode;
+        var label = oneEdge._weight;
+        var labels = label.split("<br>");
+        for(i in labels){
+          var endNodeValue = endNode.options["value"];
+
+          console.log(startNodeValue + ', ' +  labels[i] +', '+ endNodeValue);
+          table[index][labels[i]] = endNode.container._nodes.indexOf(endNode);
+        }
+        
+        //console.log(label);
+
+      }
+    }
+    console.log(table);
+    //matrix = jsav.ds.matrix(table, { rows:3, columns: 3, style: "matrix"});
+    return table;
   };
 
 

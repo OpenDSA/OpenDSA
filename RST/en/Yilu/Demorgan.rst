@@ -10,6 +10,15 @@ Visualization
 	   :align: center
 	   :output: show
 
+Another Intersection
+------------------------
+	.. inlineav:: Intersection ff
+	   :links: AV/Yilu/DemorganIntersect.css DataStructures/FLA/FLA.css 
+	   :scripts: lib/underscore.js AV/Yilu/Intersection.js AV/Yilu/FA.js
+	   :align: center
+	   :output: show
+
+
 RightQuotient
 ------------------------
 	
@@ -17,3 +26,4 @@ RightQuotient
 	   :links: AV/Yilu/DemorganIntersect.css DataStructures/FLA/FLA.css 
 	   :scripts: lib/underscore.js AV/Yilu/RightQuotient.js AV/Yilu/FA.js
 	   :output: show
+

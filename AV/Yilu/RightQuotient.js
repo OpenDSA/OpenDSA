@@ -70,18 +70,18 @@ $(document).ready(function(){
       figure2.removeEdge(next);
     }
 
-    l1 = languageSet1.split();
-    l2 = languageSet2.split();
-    console.log(l1);
-    console.log(l2);
+    var l1 = languageSet1.split();
+    var l2 = languageSet2.split();
+    //console.log(l1);
+    //console.log(l2);
 
-    console.log(languageSet1);
+    //console.log(languageSet1);
     let truncated = languageSet1;
     if (languageSet1.endsWith(')')){
       truncated = languageSet1.substring(0, languageSet1.length-1);
     }
-    console.log(truncated);
-    console.log(languageSet2);
+    //console.log(truncated);
+    //console.log(languageSet2);
     var quotient = '';
     if (truncated.endsWith(languageSet2)){
       quotient = truncated.substring(0, truncated.length-languageSet2.length);
@@ -90,7 +90,7 @@ $(document).ready(function(){
 
     
     quotient+=')';
-    console.log(quotient);
+    //console.log(quotient);
     controller.drawTheFinalGraph(av, {center:true, left: 10, top:0, height: 500, width: 500}, quotient);
     //controller.transitions.hide();
     //controller.drawTheFinalGraph(av, {center:true, url: urlLink1, left: 10, top:0, height: 500, width: 500}, controller.generateExpression());

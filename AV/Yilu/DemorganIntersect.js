@@ -87,6 +87,6 @@ $(document).ready(function(){
     FiniteAutomaton.findLanguageSet(minized);
     //minized.makeInitial(s);
   	av.umsg("Finaly, take the complement of the minimized DFA so we will get the intersection");
-
+    
   	av.recorded();
 });
