@@ -84,7 +84,6 @@ $(document).ready(function(){
   	//Slide 8
   	//s = minized.initial;
   	minized = FiniteAutomaton.complement(av, minized, {left: 10, top:0, height: 450, width: 750});
-    FiniteAutomaton.findLanguageSet(minized);
     //minized.makeInitial(s);
   	av.umsg("Finaly, take the complement of the minimized DFA so we will get the intersection");
     

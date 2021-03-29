@@ -5,10 +5,11 @@ $(document).ready(function(){
     av.displayInit();
     av.umsg("Another Intersection algorithm");
     //av.nodes();
-    var urlLinkStep1 = "../../../AV/Yilu/figure.jff";
-    var figure1 = new av.ds.FA({center:true, url: urlLinkStep1, left: 10, top:0, height: 500, width: 500});
+    var url1 = "../../../AV/Yilu/int1.jff";
+    var url2 = "../../../AV/Yilu/int2.jff";
+    var figure1 = new av.ds.FA({center:true, url: url1, left: 10, top:0, height: 500, width: 500});
     //var str = FiniteAutomaton.completeDFA(av, figure1);
-    var figure2 = new av.ds.FA({center:true, url: urlLinkStep1, left: 10, top:200, width: 500});
+    var figure2 = new av.ds.FA({center:true, url: url2, left: 10, top:200, width: 500});
 	av.step();
 
     
@@ -22,11 +23,12 @@ $(document).ready(function(){
    	console.log(matrix1);
    	console.log(matrix2);
    	console.log(figure1);
+   	console.log(figure1);
 
     figure1.hide();
     figure2.hide();
 
-    var inter = new av.ds.FA({center:true, left: 0, top:0, height: 500, width: 500});
+    var inter = new av.ds.FA({center:true, left: 0, top:0, height: 500, width: 500, layout: 'automatic'});
     FiniteAutomaton.intersectionFromTable(inter, figure1, figure2, matrix1, matrix2, alphabet);
     inter.layout();
     av.recorded();

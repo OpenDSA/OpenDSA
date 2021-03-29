@@ -64,6 +64,14 @@
   "chapters": {
     "Demorgan": {
       "Yilu/Demorgan": {}
+    },
+
+    "Intersection With Transition Table": {
+      "Yilu/TransitionTable":{}
+    }, 
+
+    "Right quotient algorithm": {
+      "Yilu/RightQuotient":{}
     }
   }
 }
