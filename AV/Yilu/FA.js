@@ -2309,6 +2309,7 @@ var lambda = String.fromCharCode(955),
     //var unitsize = graph.
     let counter = 0;
     for (var i in table1){
+
       //var leftNodeName = getNodeWithValue(graph1, )
       var leftNodeName = graph1.nodes()[i].options['value'];
       //console.log(leftNodeName.options['value']);
@@ -2427,7 +2428,7 @@ var lambda = String.fromCharCode(955),
       var finalInd = finals[find].container._nodes.indexOf(finals[find]);
       table[finalInd]['final'] = true;
     }
-    console.log(table);
+    //console.log(table);
     return table;
   };
 

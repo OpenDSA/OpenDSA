@@ -17,13 +17,8 @@ $(document).ready(function(){
     av.umsg("start with two machines");
 
    	var matrix1 = FiniteAutomaton.findTable(av, figure1);
-   	var matrix2 = FiniteAutomaton.findTable(av, figure1);
+   	var matrix2 = FiniteAutomaton.findTable(av, figure2);
    	var alphabet = FiniteAutomaton.findAlphabet(figure1);
-   	console.log(alphabet);
-   	console.log(matrix1);
-   	console.log(matrix2);
-   	console.log(figure1);
-   	console.log(figure1);
 
     figure1.hide();
     figure2.hide();
