@@ -100,17 +100,22 @@ controllerProto.startTesting = function () {
 		var input = Object.keys(testCase)[0];
 		var inputResult;
 		if (this.options.type && this.options.type == "TM") {
-			var res = this.fa.play(input);
-			res = res.split('|')[1].split('|')[0];
-			res = res.replace('<mark>', '').replace('</mark>', '');
-			var letters = _.uniq(res, false);
-			if (letters.length == 1 && letters[0] == square) {
-				inputResult = "";
-			} else {
-				inputResult = res.split(square).filter(function (list) {
-					if (list.length > 0)
-						return list;
-				})[0];
+			if(typeof(testCase[input]) == "boolean"){
+				inputResult = this.fa.playAndReturnAcceptance(input);
+			}
+			else{
+				var res = this.fa.play(input);
+				res = res.split('|')[1].split('|')[0];
+				res = res.replace('<mark>', '').replace('</mark>', '');
+				var letters = _.uniq(res, false);
+				if (letters.length == 1 && letters[0] == square) {
+					inputResult = "";
+				} else {
+					inputResult = res.split(square).filter(function (list) {
+						if (list.length > 0)
+							return list;
+					})[0];
+				}
 			}
 		} else if (this.options.type && this.options.type == "PDA")
 			inputResult = PDAwillReject(this.fa, input);
@@ -212,7 +217,7 @@ controllerProto.updateExercise = function (id) {
 		// 	text = parts[0] + " " + '<span id="expression2"></span>' + ' ' + parts[1];
 		// 	$("#description").html(text);
 		// 	$("#expression2").html("<img src='" + latexit + exercise["expression"] + "' border='0'/>");
-		// } 
+		// }
 		if (text.indexOf('$') >= 0) {
       var parts = text.split("$");
       for(var a= 0; a <parts.length;a++){

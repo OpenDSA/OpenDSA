@@ -3,11 +3,11 @@ import student.TestCase;
 public class TestBST extends TestCase{
    private BST<Integer> bst;
    
-   public void setUp(){
+   public void setUp() {
       bst = new BST<Integer>();
    }
    
-   public void testAdd(){
+   public void testAdd() {
       bst.insert(new Integer(8));//We see this tree on the Wikipedia as an example of a bst 
       bst.insert(new Integer(3));//We will use it to test our insert function since we
       bst.insert(new Integer(1));//know how the traversal at the end should work. There
@@ -29,12 +29,12 @@ public class TestBST extends TestCase{
       assertFuzzyEquals("1 3 4 6 7 8 10 13 14", systemOut().getHistory());
    }
    
-   public void testRemove(){
+   public void testRemove() {
       Exception d = null;
       try{
          bst.delete(new Integer(1));//It possible to throw an exception if
          //deleting on an empty tree
-      } catch(Exception e){
+      } catch(Exception e) {
          d = e;
          assertEquals(e.getMessage(), "cannot delete.");
          assertEquals(e.getClass(), RuntimeException.class);
@@ -48,22 +48,22 @@ public class TestBST extends TestCase{
       }
       assertNotNull(d);//Make sure an exception was thrown
       String tree = "";
-      for(int i=10; i < 20; i++){
+      for(int i=10; i < 20; i++) {
          bst.insert(new Integer(i));
          tree += i+" ";
       }
-      for(int k=9; k > -1; k--){
+      for(int k=9; k > -1; k--) {
          bst.insert(new Integer(k));
          tree = k+" "+tree;
       }
-      for(int j=0; j < 10; j++){
+      for(int j=0; j < 10; j++) {
          bst.delete(new Integer(j));//Test basic delete functionality
          tree = tree.replaceFirst(Integer.toString(j), "");
          systemOut().clearHistory();//Clear system so we only haver current tree
          bst.inOrderTraversal();//After each removal
          assertFuzzyEquals(tree, systemOut().getHistory());//See if the tree is what we expect
       }
-      for(int l=19; l > 9; l--){
+      for(int l=19; l > 9; l--) {
          bst.delete(new Integer(l));
          tree = tree.replaceFirst(Integer.toString(l), "");
          systemOut().clearHistory();

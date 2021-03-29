@@ -81,15 +81,15 @@ power = power*10;
 }
 }
 
-public static void callRadixMethodInt(int[] array,int startpos,int length){
+public static void callRadixMethodInt(int[] array,int startpos,int length) {
 radixInt(array,startpos,length);
 
 }
 
-public static void funcRadixSortInteger(Integer[] array,int startpos,int length){
+public static void funcRadixSortInteger(Integer[] array,int startpos,int length) {
 
 
-for(int z=0;z<10;z++){
+for(int z=0;z<10;z++) {
     bucket.add(new LinkedList<Integer>());
 }
 

@@ -36,8 +36,11 @@ for (L.moveToStart(); !L.isAtEnd(); L.next()) {
 /* *** ODSATag: listfind *** */
 // Return true if k is in list L, false otherwise
 static boolean find(List<Integer> L, int k) {
-  for (L.moveToStart(); !L.isAtEnd(); L.next())
-    if (k == L.getValue()) return true; // Found k
+  for (L.moveToStart(); !L.isAtEnd(); L.next()) {
+    if (k == L.getValue()) {
+      return true; // Found k
+    }
+  }
   return false;                         // k not found
 }
 /* *** ODSAendTag: listfind *** */

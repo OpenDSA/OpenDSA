@@ -12,8 +12,9 @@
      int xlength = x.length();
 
      int i, sum;
-     for (sum=0, i=0; i < x.length(); i++)
+     for (sum=0, i=0; i < x.length(); i++) {
        sum += ch[i];
+     }
      return sum % M;
    }
 /* *** ODSAendTag: sascii *** */
@@ -56,12 +57,13 @@ int sfold(String s, int M) {
      int pos = home = h(K); // Initial position is the home slot
      for (int i = 1;
           (K != (HT[pos]).key()) && (EMPTYKEY != (HT[pos]).key());
-          i++)
+          i++) {
        pos = (home + p(K, i)) % M; // Next on probe sequence
+          }
      if (K == (HT[pos]).key()) {   // Found it
        e = HT[pos];
        return true;
      }
-     else return false;            // K not in hash table
+     else { return false; }            // K not in hash table
    }
 /* *** ODSAendTag: hashSearch *** */

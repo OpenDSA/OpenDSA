@@ -42,10 +42,10 @@ class LQueue<E> implements Queue<E> {
 /* *** ODSATag: LQueueDequeue *** */
   // Remove and return element from front
   public E dequeue() {
-    if (size == 0) return null;
+    if (size == 0) { return null; }
     E it = front.next().element(); // Store the value
     front.setNext(front.next().next()); // Advance front
-    if (front.next() == null) rear = front; // Last element
+    if (front.next() == null) { rear = front; } // Last element
     size--;
     return it; // Return element
   }
@@ -53,7 +53,7 @@ class LQueue<E> implements Queue<E> {
 
   // Return front element
   public E frontValue() {
-    if (size == 0) return null;
+    if (size == 0) { return null; }
     return front.next().element();
   }
 

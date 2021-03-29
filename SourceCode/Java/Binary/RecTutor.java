@@ -7,7 +7,7 @@ static boolean SUCCESS = true;
 
 /* *** ODSATag: EffCnt *** */
 static int count(BinNode root) {
-  if (root == null) return 0;  // Nothing to count
+  if (root == null) { return 0; }  // Nothing to count
   return 1 + count(root.left()) + count(root.right());
 }
 /* *** ODSAendTag: EffCnt *** */
@@ -15,7 +15,7 @@ static int count(BinNode root) {
 
 /* *** ODSATag: IneffCnt *** */
 static int ineff_count(BinNode root) {
-  if (root == null) return 0;  // Nothing to count
+  if (root == null) { return 0; }  // Nothing to count
   int count = 0;
   if (root.left() != null) {
     count = 1 + ineff_count(root.left());
@@ -49,7 +49,7 @@ static void ineff_BTinc(BinNode root) {
 
 /* *** ODSATag: bad_count *** */
 static int bad_count(BinNode root) {
-  if (root == null) return 0;  // Nothing to count
+  if (root == null) { return 0; }  // Nothing to count
   bad_count(root.left());
   1 + bad_count(root.left()) + bad_count(root.right());
 }

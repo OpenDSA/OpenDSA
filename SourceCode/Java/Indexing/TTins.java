@@ -1,24 +1,26 @@
 private TTNode<Key,E> inserthelp(TTNode<Key,E> rt, Key k, E e) {
   TTNode<Key,E> retval;
-  if (rt == null) // Empty tree: create a leaf node for root
+  if (rt == null) {// Empty tree: create a leaf node for root
     return new TTNode<Key,E>(k, e, null, null, null, null, null);
-  if (rt.isLeaf()) // At leaf node: insert here
+  }
+  if (rt.isLeaf()) { // At leaf node: insert here
     return rt.add(new TTNode<Key,E>(k, e, null, null, null, null, null));
+  }
   // Add to internal node
   if (k.compareTo(rt.lkey()) < 0) { // Insert left
     retval = inserthelp(rt.lchild(), k, e);
-    if (retval == rt.lchild()) return rt;
-    else return rt.add(retval);
+    if (retval == rt.lchild()) { return rt; }
+    else { return rt.add(retval); }
   }
   else if((rt.rkey() == null) || (k.compareTo(rt.rkey()) < 0)) {
     retval = inserthelp(rt.cchild(), k, e);
-    if (retval == rt.cchild()) return rt;
-    else return rt.add(retval);
+    if (retval == rt.cchild()) { return rt; }
+    else { return rt.add(retval); }
   }
   else { // Insert right
     retval = inserthelp(rt.rchild(), k, e);
-    if (retval == rt.rchild()) return rt;
-    else return rt.add(retval);
+    if (retval == rt.rchild()) { return rt; }
+    else { return rt.add(retval); }
   }
 }
 

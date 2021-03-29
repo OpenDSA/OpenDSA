@@ -546,6 +546,11 @@ var exerciseLocation;
     jsav.umsg('Click on an input to trace its traversal.');
   };
 
+  var twoCircleLayout = function() {
+    removeModeClasses();
+    removeND();
+    g.twoCircleLayoutAlg();
+  };
   var treeLayoutDegree = function() {
     removeModeClasses();
     removeND();
@@ -1264,6 +1269,7 @@ var exerciseLocation;
   $('#spiralButton').click(spiralLayout);
   $('#treeDegreeButton').click(treeLayoutDegree);
   $('#treeHieButton').click(treeLayoutHierarchy);
+  $('#twoCircleButton').click(twoCircleLayout);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
   $('#epsilonButton').click(switchEmptyString);

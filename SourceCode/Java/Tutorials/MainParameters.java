@@ -6,11 +6,11 @@ public class Main {
     */
    public static void main(String[] args) {
       int count = 0;//Set our counter
-      if(args.length < 1){
+      if(args.length < 1) {
          //No parameters is this a problem?
       }
-      while(count < args.length){//While we have not reached the end of our arguments keep going.
-         switch(args[count]){
+      while(count < args.length) {//While we have not reached the end of our arguments keep going.
+         switch(args[count]) {
             case "-h"://Display help info
                System.out.println("This is the help message. Proper command syntax:");
                System.out.println("cmdline -v: Displays version information");
