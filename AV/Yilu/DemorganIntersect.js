@@ -26,7 +26,7 @@ $(document).ready(function(){
 	//Slide 4
 	av.umsg("combine the two machines in one window")
 	var combinedResult = FiniteAutomaton.combine(av, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
-	console.log(combinedResult);
+	//console.log(combinedResult);
 	var combined = combinedResult['graph'];
 	/*
 	var nodes = figure1.nodes();

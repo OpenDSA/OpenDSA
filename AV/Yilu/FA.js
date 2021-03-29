@@ -2258,7 +2258,7 @@ var lambda = String.fromCharCode(955),
     var list = [];
     list.push(g.initial)
     lambda = FiniteAutomaton.getTransition(g, list, 'b');
-    console.log(lambda);
+    //console.log(lambda);
     /*
     var startInd = g.nodes().indexOf(g.initial);
     while (true){
@@ -2293,6 +2293,74 @@ var lambda = String.fromCharCode(955),
     return  node.container._edges[node.container._nodes.indexOf(node)];
   };
 
+  FiniteAutomaton.findAlphabet = function(graph){
+    var alp =  graph.alphabet;
+    var alphabet = [];
+    for (const key in alp) {
+      alphabet.push(key);
+    }
+    alphabet.sort();
+    return alphabet;
+  };
+
+  FiniteAutomaton.intersectionFromTable = function(graph, graph1, graph2, table1, table2, alphabet){
+    nodes = [];
+    toNodes = [];
+    let counter = 0;
+    for (var i in table1){
+      //var leftNodeName = getNodeWithValue(graph1, )
+      var leftNodeName = graph1.nodes()[i].options['value'];
+      //console.log(leftNodeName.options['value']);
+      for (var j in table2){
+        var rightNodeName = graph2.nodes()[j].options['value'];
+        //nodes.push('(' + leftNodeName + ',' + rightNodeName + ')');
+        var fromNodeName = '(' + leftNodeName + ',' + rightNodeName + ')';
+        graph.addNode({ value: fromNodeName });
+        nodes[counter] = fromNodeName;
+        toNodes[counter] = {};
+
+        for (var k in alphabet){
+          //console.log(table1[i][alphabet[k]]);
+          //console.log(i + ': '+alphabet[k] + ': ' + table1[i][alphabet[k]]);
+          var toLeftNodeInd = table1[i][alphabet[k]];
+          var toRightNodeInd = table2[j][alphabet[k]];
+          var toLeftNodeName = graph1.nodes()[toLeftNodeInd].options['value'];
+          var toRightNodeName = graph2.nodes()[toRightNodeInd].options['value'];
+
+          var toNodeName = '(' + toLeftNodeName + ',' + toRightNodeName + ')';
+          toNodes[counter][alphabet[k]] = toNodeName;
+        }
+
+        counter += 1;
+        //console.log(fromNodeName);
+
+        //console.log(rightNodeName);
+        //var rightInd = table2[i];
+        //nodes.push("(q"+ leftInd + ",")
+      }
+    }
+    //console.log(nodes);
+    //console.log(toNodes)
+    for (var oneName in toNodes){
+      var fromNodeName = nodes[oneName];
+      for (var oneEdge in  alphabet){
+        var edgeweight = alphabet[oneEdge];
+        var toNodeName = toNodes[oneName][edgeweight];
+        var fromNode = getNodeWithValue(graph, fromNodeName);
+        var toNode = getNodeWithValue(graph, toNodeName);
+        console.log(graph.addEdge(fromNode, toNode, { weight: edgeweight }));
+        //console.log(fromNode);
+        //console.log(toNode);
+
+      }
+    }
+
+    /*
+        */
+    
+    graph.layout();
+  };
+
   FiniteAutomaton.findTable = function(jsav, graph){
     var table = [];
     var alp =  graph.alphabet;
@@ -2301,7 +2369,7 @@ var lambda = String.fromCharCode(955),
       alphabet.push(key);
     }
     alphabet.sort();
-    console.log(alphabet);
+    //console.log(alphabet);
 
     
 
@@ -2323,7 +2391,7 @@ var lambda = String.fromCharCode(955),
       
       table[index] = {};
 
-      console.log(startNodeValue);
+      //console.log(startNodeValue);
       for (edge in edgesFromNode){
         //console.log(edgesFromNode[edge]);
         var oneEdge = edgesFromNode[edge];
@@ -2334,7 +2402,7 @@ var lambda = String.fromCharCode(955),
         for(i in labels){
           var endNodeValue = endNode.options["value"];
 
-          console.log(startNodeValue + ', ' +  labels[i] +', '+ endNodeValue);
+          //console.log(startNodeValue + ', ' +  labels[i] +', '+ endNodeValue);
           table[index][labels[i]] = endNode.container._nodes.indexOf(endNode);
         }
         
@@ -2342,7 +2410,7 @@ var lambda = String.fromCharCode(955),
 
       }
     }
-    console.log(table);
+    //console.log(table);
     //matrix = jsav.ds.matrix(table, { rows:3, columns: 3, style: "matrix"});
     return table;
   };
