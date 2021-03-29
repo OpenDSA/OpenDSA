@@ -735,7 +735,31 @@ var lambda = String.fromCharCode(955),
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+  /*
+  * The random layout algorithm.
+  */
+  automatonproto.randomLayoutAlg = function (options) {
+    var vertices = this.nodes();
+    if (vertices.length == 0) {
+      return;
+    }
+    //Then, generate random points and assign the vertices to a
+    //VertexChain to minimize a few edge collisions
+    var chain = [];
+    //this.assignPointsAndVertices
 
+  };
+  /**
+  * This method creates random points and assigns all movable vertices to the VertexChain
+  */
+  automatonproto.assignPointsAndVertices = function(chain) {
+    var x, y;
+    var random = Math.random();
+    var points = [];
+    for (var i = 0; i < vertices.length; i++) {
+      x = random;
+    }
+  };
   /*
   * Two Circle layout algorithm
   */
@@ -816,7 +840,7 @@ var lambda = String.fromCharCode(955),
       }
       this.alignTwoChains(currentChain, nextChain);
     }
-  }
+  };
 
   /**
   * Divides the vertices that are in the outer circle into <code>VertexChains</code>, which correspond to an inner circle

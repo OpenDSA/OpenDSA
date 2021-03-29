@@ -518,7 +518,11 @@ var exerciseLocation;
     removeND();
     g.layout();
   };
-
+  //Apply a random layout algorithm to the graph
+  var randomLayout = function() {
+    removeModeClasses();
+    removeND();
+  };
   // Triggered by clicking the "Circle" button.
   var circleLayout = function() {
     removeModeClasses();
@@ -1270,6 +1274,7 @@ var exerciseLocation;
   $('#treeDegreeButton').click(treeLayoutDegree);
   $('#treeHieButton').click(treeLayoutHierarchy);
   $('#twoCircleButton').click(twoCircleLayout);
+  $('#randomButton').click(randomLayout);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
   $('#epsilonButton').click(switchEmptyString);
