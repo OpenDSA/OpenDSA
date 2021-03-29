@@ -70,6 +70,11 @@ $(document).ready(function(){
       figure2.removeEdge(next);
     }
 
+    l1 = languageSet1.split();
+    l2 = languageSet2.split();
+    console.log(l1);
+    console.log(l2);
+
     console.log(languageSet1);
     let truncated = languageSet1;
     if (languageSet1.endsWith(')')){
@@ -81,6 +86,8 @@ $(document).ready(function(){
     if (truncated.endsWith(languageSet2)){
       quotient = truncated.substring(0, truncated.length-languageSet2.length);
     }
+
+
     
     quotient+=')';
     console.log(quotient);
