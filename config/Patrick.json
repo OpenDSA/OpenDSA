@@ -64,8 +64,8 @@
     "required": true
   },
   "chapters": {
-    "Test Deep Directory": {
-      "Patrick/Deep/TestDeepDir": {}
+    "Test Subdirectory": {
+      "Patrick/testSubdir/test": {}
     },
     "Test ShowHideContent": {
       "Patrick/ShowHideContentTest": {}
