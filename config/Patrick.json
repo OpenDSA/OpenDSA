@@ -65,7 +65,8 @@
   },
   "chapters": {
     "Test Subdirectory": {
-      "Patrick/testSubdir/test": {}
+      "Patrick/subdir/TestSubdir": {},
+      "Patrick/testNonSubdir": {}
     },
     "Test ShowHideContent": {
       "Patrick/ShowHideContentTest": {}
