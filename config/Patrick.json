@@ -68,14 +68,32 @@
       "Patrick/subdir/TestSubdir": {},
       "Patrick/testNonSubdir": {}
     },
-    "Test ShowHideContent": {
-      "Patrick/ShowHideContentTest": {}
+    "Test inlineav dgm": {
+      "Binary/BinaryTreeFullThm": {}
+    }, 
+    "Test inlineav ss": {
+      "Binary/TreeTrie": {}
+    }, 
+    "Test inlineav ff": {
+      "PIExample/CFGTransormations": {}
     },
-    "Main Tests": {
-      "NP/NPComplete": {},
-      "Patrick/testInlineAV": {},
-      "Patrick/testInlineAVff": {},
-      "SeniorAlgAnal/Impossible": {}
+    "Test codeinclude" :{
+      "Binary/BSTDict": {}
+    },
+    "Test todos" :{
+      "BTRecurTutor/recSorting": {}
+    },
+    "Test code workout exercises" :{
+      "PointersJava/Exercises": {}
+    },
+    "Test Kahn exercise" :{
+      "Background/MathpreSumm": {}
+    },
+    "Test odsafigs" :{
+      "PointersCPP/BasicPointers": {}
+    },
+    "Test ShowHideContent": {
+      "Test/BasicPointers1t": {}
     },
     "Design I": {
       "Design/ADT": {
