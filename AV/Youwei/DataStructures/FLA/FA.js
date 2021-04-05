@@ -736,6 +736,132 @@ var lambda = String.fromCharCode(955),
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   /*
+  * GEM layout algorithm
+  */
+  automatonproto.gemLayoutAlg = function (isovertices) {
+    if (isovertices == null) {
+      isovertices = new Set();
+    }
+    var Tmax = 256.0;
+    var Tmin = 3.0;
+    var OPTIMAL_EDGE_LENGTH = 100.0;
+    var GRAVITATIONAL_CONSTANT = 1.0 / 16.0;
+    var vArray = this.nodes();
+    var Rmax = 120 * (vArray.length - isovertices.size);
+    var Tglobal = Tmin + 1.0;
+    // Determine an optimal edge length. With isovertices, we
+    // want optimal length to be about average of existing edges
+    // that will remain unchanged due to isovertex status.
+    var optimalEdgeLength = OPTIMAL_EDGE_LENGTH;
+    if (isovertices.size > 0) {
+      var iso = Array.from(isovertices);
+      var count = 0;
+      var lengths = 0.0;
+      for (var i = 0; i < iso.length; i++) {
+        for (var j = i + 1; j < iso.length; j++) {
+          if (!(this.hasEdge(iso[i], iso[j]) || this.hasEdge(iso[j], iso[i]))) {
+            continue;
+          } 
+          var leftSquare = Math.pow(iso[i].element.position().left - iso[j].element.position().left, 2);
+          var topSquare = Math.pow(iso[i].element.position().top - iso[j].element.position().top, 2);
+          var distance = Math.sqrt(leftSquare + topSquare);
+          lengths += distance;
+          count++;
+        }
+      }
+      if (count > 0) {
+        optimalEdgeLength = lengths / count;
+      }
+    }
+    // The barycenter of the graph.
+    var c = [0.0, 0.0];
+
+    // Initialize the record for each vertex.
+    var records = new Map();
+    for (var i = 0; i < vArray.length; i++) {
+      var temperature = Tmin;
+      var skew = 0.0;
+      var r = [[0, 0], [0.0, 0.0], temperature, skew];
+      r[0] = [vArray[i].element.position().left, vArray[i].element.position().top];
+      // The barycenter will be updated.
+      c[0] += r[0][0];
+      c[1] += r[0][1];
+      records.set(vArray[i], r);
+    }
+
+    // Iterate until done.
+    var vertices = [];
+    for (var i = 0; i < Rmax && Tglobal > Tmin; i++) {
+      if (vertices.length == 0) {
+        vertices = this.nodes();
+        if (vertices.length == 0) {
+          return;
+        }
+      }
+
+      // Choose a vertex V to update.
+      var index = Math.floor(Math.random() * vertices.length);
+      var vertex = vertices[index];
+      vertices.splice(index, 1);
+      var record = records.get(vertex);
+      var point = [vertex.element.position().left, vertex.element.position().top];
+
+      // Compute the impulse of V.
+      var Theta = this.degree(this.nodes(), vertex);
+      Theta *= 1.0 + Theta / 2.0;
+      var p = [(c[0] / this.nodeCount() - point[0]) * GRAVITATIONAL_CONSTANT * Theta, (c[1] / this.nodeCount() - point[1]) * GRAVITATIONAL_CONSTANT * Theta];
+      // Random disturbance.
+      p[0] += Math.random() * 10.0 - 5.0;
+      p[1] += Math.random() * 10.0 - 5.0;
+
+      // Forces exerted by other nodes.
+      for (var j = 0; j < vArray.length; j++) {
+        if (vArray[j] == vertex) {
+          continue;
+        }
+        var otherPoint = [vArray[j].element.position().left, vArray[j].element.position().top];
+        var delta = [point[0] - otherPoint[0], point[1] - otherPoint[1]];
+        var D2 = delta[0] * delta[0] + delta[1] * delta[1];
+        var O2 = optimalEdgeLength * optimalEdgeLength;
+        if (delta[0] != 0.0 || delta[1] != 0.0) {
+          for (var k = 0; k < 2; k++) {
+            p[k] += delta[k] * O2 / D2;
+          }
+        }
+        if (!(this.hasEdge(vertex, vArray[j]) || this.hasEdge(vArray[j], vertex))) {
+          continue;
+        }
+        for (var k = 0; k < 2; k++) {
+          p[k] -= delta[k] * D2 / (O2 * Theta);
+        }
+      }
+      if (p[0] != 0.0 || p[1] != 0.0) {
+        var absp = Math.sqrt(Math.abs(p[0] * p[0] + p[1] * p[1]));
+        for (var j = 0; j < 2; j++) {
+          p[j] *= record[2] / absp;
+        }
+        // update the position!
+        vertex.moveTo(point[0] + p[0], point[1] + p[1]);
+        // update the barycenter
+        c[0] += p[0];
+        c[1] += p[1];
+      }
+    }
+    //Finally, shift all points onto the screen.
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+  };
+  /*
   * The random layout algorithm.
   */
   automatonproto.randomLayoutAlg = function (options) {

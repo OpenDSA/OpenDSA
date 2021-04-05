@@ -535,7 +535,7 @@ var exerciseLocation;
   var gemLayout = function() {
     removeModeClasses();
     removeND();
-    g.layout();
+    g.gemLayoutAlg();
   };
 
   // Triggered by clicking the "Spiral" button.
