@@ -18,6 +18,18 @@
     text-align: center;
 }
 
+.jsavtree, .jsavgraph, .jsavlist {
+  position: relative;
+  background-color: inherit;
+  display: inline;
+}
+
+.jsavcenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .jsavhorizontalarray .jsavnode {
 
 	min-width: 50px !important;

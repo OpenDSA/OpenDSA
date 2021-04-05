@@ -3,7 +3,7 @@ $(document).ready(function(){
 	 
     var av = new JSAV("Intersection");
     
-    av.umsg("Another Intersection algorithm");
+    //av.umsg("Another Intersection algorithm");
     //av.nodes();
     var url1 = "../../../AV/Yilu/int1.jff";
     var url2 = "../../../AV/Yilu/int2.jff";
@@ -108,7 +108,7 @@ $(document).ready(function(){
     //table1g.hide();
     //table2g.hide();
 
-    var inter = new av.ds.FA({left: 0, top:20, height: 450, width: 500, layout: 'automatic'});
+    var inter = new av.ds.FA({left: 0, top:20, layout: 'automatic'});
 
     FiniteAutomaton.intersectionFromTable(av, inter, figure1, figure2, matrix1, matrix2,table1g, table2g, alphabet, intersectionTable);
     var matrix = FiniteAutomaton.findTable(av, inter);
