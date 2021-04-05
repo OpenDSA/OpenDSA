@@ -2303,11 +2303,13 @@ var lambda = String.fromCharCode(955),
     return alphabet;
   };
 
-  FiniteAutomaton.intersectionFromTable = function(graph, graph1, graph2, table1, table2, alphabet){
+  FiniteAutomaton.intersectionFromTable = function(av, graph, graph1, graph2, table1, table2,tabl1g, tabl2g, alphabet, intersectionTable){
     var nodes = [];
     var toNodes = [];
     //var unitsize = graph.
     let counter = 0;
+    var tableNum = 0;
+    graph.hide();
     for (var i in table1){
 
       //var leftNodeName = getNodeWithValue(graph1, )
@@ -2317,7 +2319,8 @@ var lambda = String.fromCharCode(955),
         var rightNodeName = graph2.nodes()[j].options['value'];
         //nodes.push('(' + leftNodeName + ',' + rightNodeName + ')');
         var fromNodeName = '(' + leftNodeName + ',' + rightNodeName + ')';
-
+        tableNum+=1;
+        intersectionTable._arrays[tableNum].value(0, fromNodeName);
         var added = graph.addNode({ value: fromNodeName });
         if (table1[i]['initial'] && table2[j]['initial']){
           graph.makeInitial(added);
@@ -2329,18 +2332,6 @@ var lambda = String.fromCharCode(955),
         nodes[counter] = fromNodeName;
         toNodes[counter] = {};
 
-        for (var k in alphabet){
-          //console.log(table1[i][alphabet[k]]);
-          //console.log(i + ': '+alphabet[k] + ': ' + table1[i][alphabet[k]]);
-          var toLeftNodeInd = table1[i][alphabet[k]];
-          var toRightNodeInd = table2[j][alphabet[k]];
-          var toLeftNodeName = graph1.nodes()[toLeftNodeInd].options['value'];
-          var toRightNodeName = graph2.nodes()[toRightNodeInd].options['value'];
-
-          var toNodeName = '(' + toLeftNodeName + ',' + toRightNodeName + ')';
-          toNodes[counter][alphabet[k]] = toNodeName;
-        }
-
         counter += 1;
         //console.log(fromNodeName);
 
@@ -2349,8 +2340,83 @@ var lambda = String.fromCharCode(955),
         //nodes.push("(q"+ leftInd + ",")
       }
     }
+    
+    tableNum = 0;
+    counter = 0;
+    graph1.hide();
+    graph2.hide();
+
+    graph.layout();
+    graph.show();
+    av.step();
+    for (var i in table1){
+
+      //var leftNodeName = getNodeWithValue(graph1, )
+      intersectionTable._arrays[tableNum+1].highlight(0);
+      tabl1g._arrays[Number(i)+1].highlight(0);
+      //console.log(tabl1g);
+      var leftNodeName = graph1.nodes()[i].options['value'];
+      //graph1.nodes()[i].highlight();
+      //console.log(leftNodeName.options['value']);
+      for (var j in table2){
+        tabl2g._arrays[Number(j)+1].highlight(0);
+        var rightNodeName = graph2.nodes()[j].options['value'];
+        //graph2.nodes()[j].highlight();
+        //nodes.push('(' + leftNodeName + ',' + rightNodeName + ')');
+        var fromNodeName = '(' + leftNodeName + ',' + rightNodeName + ')';
+        tableNum+=1;
+        intersectionTable._arrays[tableNum].highlight(0);
+        //var added = graph.addNode({ value: fromNodeName });
+        nodes[counter] = fromNodeName;
+        toNodes[counter] = {};
+
+        for (var k in alphabet){
+          tabl1g._arrays[0].highlight(Number(k)+1);
+          tabl2g._arrays[0].highlight(Number(k)+1);
+          //console.log(table1[i][alphabet[k]]);
+          //console.log(i + ': '+alphabet[k] + ': ' + table1[i][alphabet[k]]);
+          tabl1g._arrays[Number(i)+1].highlight(Number(k)+1);
+          tabl2g._arrays[Number(j)+1].highlight(Number(k)+1);
+          var toLeftNodeInd = table1[i][alphabet[k]];
+          var toRightNodeInd = table2[j][alphabet[k]];
+          var toLeftNodeName = graph1.nodes()[toLeftNodeInd].options['value'];
+          var toRightNodeName = graph2.nodes()[toRightNodeInd].options['value'];
+          graph1.nodes()[toLeftNodeInd].highlight();
+          graph2.nodes()[toRightNodeInd].highlight();
+          var toNodeName = '(' + toLeftNodeName + ',' + toRightNodeName + ')';
+          intersectionTable._arrays[tableNum].value(Number(k)+1, toNodeName);
+
+
+          var edgeweight = alphabet[k];
+          var fromNode = getNodeWithValue(graph, fromNodeName);
+          var toNode = getNodeWithValue(graph, toNodeName);
+          graph.addEdge(fromNode, toNode, { weight: edgeweight });
+
+
+          av.step();
+          graph1.nodes()[toLeftNodeInd].unhighlight();
+          graph2.nodes()[toRightNodeInd].unhighlight();
+          tabl1g._arrays[Number(i)+1].unhighlight(Number(k)+1);
+          tabl2g._arrays[Number(j)+1].unhighlight(Number(k)+1);
+          tabl1g._arrays[0].unhighlight(Number(k)+1);
+          tabl2g._arrays[0].unhighlight(Number(k)+1);
+          toNodes[counter][alphabet[k]] = toNodeName;
+        }
+
+        counter += 1;
+        intersectionTable._arrays[tableNum].unhighlight(0);
+        //console.log(fromNodeName);
+
+        //console.log(rightNodeName);
+        //var rightInd = table2[i];
+        //nodes.push("(q"+ leftInd + ",")
+        tabl2g._arrays[Number(j)+1].unhighlight(0);
+      }
+     tabl1g._arrays[Number(i)+1].unhighlight(0);
+    }
     //console.log(nodes);
     //console.log(toNodes)
+    /*
     for (var oneName in toNodes){
       var fromNodeName = nodes[oneName];
       for (var oneEdge in  alphabet){
@@ -2363,6 +2429,7 @@ var lambda = String.fromCharCode(955),
         //console.log(toNode);
       }
     }
+    */
     graph.layout();
   };
 
