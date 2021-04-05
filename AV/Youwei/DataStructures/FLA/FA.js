@@ -744,21 +744,154 @@ var lambda = String.fromCharCode(955),
       return;
     }
     //Then, generate random points and assign the vertices to a
+    var points = [];
     //VertexChain to minimize a few edge collisions
     var chain = [];
-    //this.assignPointsAndVertices
+    this.assignPointsAndVertices(chain, points, vertices);
+    //Then minimize vertex overlap.
+    this.lessenVertexOverlap(points, vertices);
+    //Next, find a more optimal point order with which to match the points to the vertices.
+    points = this.findCorrectPointOrder(points);
 
+    //Finally, move all vertices to their corresponding points.  Wrap up the algorithm by 
+    //making sure all points are on the screen.
+    for (var i = 0; i<points.length; i++) {
+      chain[i].moveTo(points[i][0], points[i][1]);
+    }
+
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+
+  };
+  /**
+  * This method shifts the random points away from each other, if needed, in order to minimize
+  * vertex overlap.
+  */
+  automatonproto.findCorrectPointOrder = function(points) {
+    var notProcessedPoints, newPointOrder;
+    var current, anchor, minPoint;
+    var currentTheta, minTheta, anchorTheta;
+
+    anchor = [0, 0];
+    anchorTheta = 0;
+    newPointOrder = [];
+    notProcessedPoints = [];
+    for (var i = 0; i < points.length; i++) {
+      notProcessedPoints.push(points[i]);
+    }
+
+    //Find the angle of all points relative to the last point placed and "anchorTheta".  Then place
+    //the point with the minimum angle.  "anchorTheta" will slowly rotate around a circle counterclockwise.
+    while (notProcessedPoints.length > 0) {
+      minPoint = notProcessedPoints[0];
+      minTheta = 2*Math.PI + 1;
+      for (var j = 0; j < notProcessedPoints.length; j++) {
+        current = notProcessedPoints[j];
+
+        if (current[1] != anchor[1]) {
+          currentTheta = Math.atan((current[0] - anchor[0]) / (current[1] - anchor[1]));
+        }
+        else if (current[0] > anchor[0]) {
+          currentTheta = Math.PI / 2;
+        }
+        else {
+          currentTheta = Math.PI / (-2);
+        }
+        /* atan -> -pi/2...pi/2.  Adding 4pi to the currentTheta, subtracting the anchorTheta, and taking
+        * the remainder when dividing by pi works for all four quadrants the angle could be in.
+        * The object is to find the smallest absolute polar theta of the current point from the anchor
+        * which is greater than, or next in a counterclockwise traversal, from the anchorTheta.
+        */
+        currentTheta = (currentTheta + 4*Math.PI - anchorTheta) % (Math.PI);
+        if (currentTheta < minTheta) {
+          minTheta = currentTheta;
+          minPoint = current;
+        }
+      }
+      anchor = minPoint;
+      anchorTheta = (anchorTheta + minTheta) % (2*Math.PI);
+      notProcessedPoints.splice(notProcessedPoints.indexOf(minPoint), 1);
+      newPointOrder.push(minPoint);
+    }
+    points = newPointOrder;
+    return points;
   };
   /**
   * This method creates random points and assigns all movable vertices to the VertexChain
   */
-  automatonproto.assignPointsAndVertices = function(chain) {
+  automatonproto.assignPointsAndVertices = function(chain, points, vertices) {
     var x, y;
     var random = Math.random();
-    var points = [];
     for (var i = 0; i < vertices.length; i++) {
-      x = random;
+      x = Math.random() * (900 - 30 * 2);
+      y = Math.random() * (900 - 30 * 2);
+      //x = random * (30 - 60);
+      //y = random * (30 - 60);
+      points.push([x, y]);
+      this.addVertex(chain, vertices[i]);
     }
+  };
+  /**
+  * This method shifts the random points away from each other, if needed, in order to minimize
+  * vertex overlap.
+  */
+  automatonproto.lessenVertexOverlap = function(points, vertices) {
+    var point;
+    var xOrder = [];
+    var yOrder = [];
+
+    for (var i = 0; i < points.length; i++) {
+      xOrder.push(points[i]);
+      yOrder.push(points[i]);
+    }
+    xOrder.sort(function(a, b) {
+      var ax = a[0];
+      var bx = b[0];
+      return bx - ax;
+    });
+    yOrder.sort(function(a, b) {
+      var ax = a[0];
+      var bx = b[0];
+      return bx - ax;
+    });
+    var xBuffer, yBuffer, xDiff, yDiff;
+    xBuffer = 30 + 30;
+    yBuffer = 30 + 30;
+    for (var i = 0; i<vertices.length - 1; i++) {
+      //if (xOrder[i] != null) {
+      xDiff = (xOrder[i][0] - xOrder[i+1][0]);
+      yDiff = (xOrder[i][1] - xOrder[i+1][1]);
+      if (xDiff < xBuffer && yDiff < yBuffer) {
+        for (var j = i; j>=0; j--) {
+          point = xOrder[j];
+          point[0] = point[0] + xBuffer - xDiff;
+          point[1] = point[1];
+        }
+      }
+      //}
+      //if (yOrder[i] != null) {
+      xDiff = yOrder[i][0] - yOrder[i+1][0];
+      yDiff = yOrder[i][1] - yOrder[i+1][1];
+      if (xDiff < xBuffer && yDiff < yBuffer) {
+        for (var j = i; j>=0; j--) {
+          point = yOrder[j];
+          point[0] = point[0];
+          point[1] = point[1] + yBuffer - yDiff;
+        }
+      }
+      //}
+    }
+
   };
   /*
   * Two Circle layout algorithm

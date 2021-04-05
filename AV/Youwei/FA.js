@@ -522,6 +522,7 @@ var exerciseLocation;
   var randomLayout = function() {
     removeModeClasses();
     removeND();
+    g.randomLayoutAlg();
   };
   // Triggered by clicking the "Circle" button.
   var circleLayout = function() {
