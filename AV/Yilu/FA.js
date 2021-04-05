@@ -2390,10 +2390,14 @@ var lambda = String.fromCharCode(955),
           var edgeweight = alphabet[k];
           var fromNode = getNodeWithValue(graph, fromNodeName);
           var toNode = getNodeWithValue(graph, toNodeName);
+          fromNode.highlight();
+          toNode.highlight();
           graph.addEdge(fromNode, toNode, { weight: edgeweight });
 
 
           av.step();
+          fromNode.unhighlight();
+          toNode.unhighlight();
           graph1.nodes()[toLeftNodeInd].unhighlight();
           graph2.nodes()[toRightNodeInd].unhighlight();
           tabl1g._arrays[Number(i)+1].unhighlight(Number(k)+1);

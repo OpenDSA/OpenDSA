@@ -66,8 +66,8 @@ $(document).ready(function(){
     	table2.push(tableRow);
     }
 
-    var table1g = av.ds.matrix(table1, { left: 600, style: "table" });
-    var table2g = av.ds.matrix(table2, { left: 600, top: 200, style:"table"});
+    var table1g = av.ds.matrix(table1, { left: 500, style: "table" });
+    var table2g = av.ds.matrix(table2, { left: 500, top: 200, style:"table"});
 
 
 	av.step();
@@ -95,7 +95,7 @@ $(document).ready(function(){
     	table.push(tableRow);
     }
     //console.log(table);
-    var intersectionTable = av.ds.matrix(table, { left: 800, style:"table" });
+    var intersectionTable = av.ds.matrix(table, { left: 700, style:"table" });
     console.log(intersectionTable);
 	console.log(table);
 
@@ -108,7 +108,7 @@ $(document).ready(function(){
     //table1g.hide();
     //table2g.hide();
 
-    var inter = new av.ds.FA({left: 0, top:20, layout: 'automatic'});
+    var inter = new av.ds.FA({left: 0, top:20, height: 300, layout: 'automatic'});
 
     FiniteAutomaton.intersectionFromTable(av, inter, figure1, figure2, matrix1, matrix2,table1g, table2g, alphabet, intersectionTable);
     var matrix = FiniteAutomaton.findTable(av, inter);
