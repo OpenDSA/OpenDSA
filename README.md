@@ -35,8 +35,6 @@ initialize the submodules and install the python packages requirements
 of OpenDSA.
 **This will probably take a long time to run the first time.**
 
-[Note that if any of the python packages have been upgraded since the last time the container has been run, you will need to run `docker-compose build` before you `docker-compose up`. This should be taken care of automatically but should be noted in case there are errors.]
-
 In order to interact with OpenDSA, you must open a bash shell within the container
 in order to run commands use the following command:
 
@@ -70,6 +68,17 @@ readthedocs.io.
 You can also re-compile the documentation by going to the "Doc"
 directory and typing "make".
 The result will then be in "Doc/manual".
+
+
+## Common Errors
+
+Make sure that you have started Docker before running of the Makefile commands.
+
+If you are on Windows, you may run into issues with line endings.  If you do, simply open Git Bash and run `$ dos2unix filename` to fix them.  This will most likely happen on a script file.
+
+If you are on Windows, you may run into issues with any `docker exec` commands (such as `make ssh`).  To solve them, you may have to start any such command with `winpty`.
+
+If any of the python packages (or any of the ruby gems) have been upgraded since the last time the container has been run, you will need to run `docker-compose build` before you `docker-compose up`.
 
 
 ## Directory Structure
