@@ -91,3 +91,7 @@ SourceCode/Java/Lists/ErrorRec.java
 success
 ListTest_error.log
 venv
+
+# For OpenDSA-Devstack to manage docker build order. 
+# Is mutex lock; do NOT commit this file
+docker.pause
