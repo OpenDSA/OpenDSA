@@ -2303,6 +2303,62 @@ var lambda = String.fromCharCode(955),
     return alphabet;
   };
 
+  FiniteAutomaton.matrixFromRelation = function(figure, matrix, alphabet){
+    var table = [];
+    var row1 = [];
+    row1.push(' ');
+    for (var row in matrix){
+      var tableRow = [];
+      tableRow.push(figure.nodes()[row].options['value']);
+      for (var a in alphabet){
+        if (row == 0){
+          row1.push(alphabet[a]);
+        }
+        var ind = matrix[row][alphabet[a]];
+        //console.log(ind);
+        var aNode = figure.nodes()[ind].options['value'];
+        tableRow.push(aNode);
+      }
+      if (row == 0){
+        table.push(row1);
+      }
+      table.push(tableRow);
+    }
+    return table;
+  }
+
+  FiniteAutomaton.changeNodeName = function(figure, name){
+    for (i in figure._nodes) {
+      figure._nodes[i].value(name + i);
+      figure._nodes[i].options['value'] = name + i;
+    }
+  }
+
+  FiniteAutomaton.emptyMatrix = function(alphabet, rowNum){
+    var table = [];
+    var row1 = [];
+    row1.push(' ');
+    //var row = 0;
+    for (var row = 0;row<rowNum;row+=1){
+      var tableRow = [];
+      tableRow.push('');
+      for (var a in alphabet){
+        if (row == 0){
+          row1.push(alphabet[a]);
+        }
+        //var ind = matrix[row][alphabet[a]];
+        //console.log(ind);
+        var aNode = '';
+        tableRow.push(aNode);
+      }
+      if (row == 0){
+        table.push(row1);
+      }
+      table.push(tableRow);
+    }
+    return table;
+  }
+
   FiniteAutomaton.intersectionFromTable = function(av, graph, graph1, graph2, table1, table2,tabl1g, tabl2g, alphabet, intersectionTable){
     var nodes = [];
     var toNodes = [];
@@ -2333,11 +2389,6 @@ var lambda = String.fromCharCode(955),
         toNodes[counter] = {};
 
         counter += 1;
-        //console.log(fromNodeName);
-
-        //console.log(rightNodeName);
-        //var rightInd = table2[i];
-        //nodes.push("(q"+ leftInd + ",")
       }
     }
     
@@ -2351,30 +2402,21 @@ var lambda = String.fromCharCode(955),
     av.step();
     for (var i in table1){
 
-      //var leftNodeName = getNodeWithValue(graph1, )
       intersectionTable._arrays[tableNum+1].highlight(0);
       tabl1g._arrays[Number(i)+1].highlight(0);
-      //console.log(tabl1g);
       var leftNodeName = graph1.nodes()[i].options['value'];
-      //graph1.nodes()[i].highlight();
-      //console.log(leftNodeName.options['value']);
       for (var j in table2){
         tabl2g._arrays[Number(j)+1].highlight(0);
         var rightNodeName = graph2.nodes()[j].options['value'];
-        //graph2.nodes()[j].highlight();
-        //nodes.push('(' + leftNodeName + ',' + rightNodeName + ')');
         var fromNodeName = '(' + leftNodeName + ',' + rightNodeName + ')';
         tableNum+=1;
         intersectionTable._arrays[tableNum].highlight(0);
-        //var added = graph.addNode({ value: fromNodeName });
         nodes[counter] = fromNodeName;
         toNodes[counter] = {};
 
         for (var k in alphabet){
           tabl1g._arrays[0].highlight(Number(k)+1);
           tabl2g._arrays[0].highlight(Number(k)+1);
-          //console.log(table1[i][alphabet[k]]);
-          //console.log(i + ': '+alphabet[k] + ': ' + table1[i][alphabet[k]]);
           tabl1g._arrays[Number(i)+1].highlight(Number(k)+1);
           tabl2g._arrays[Number(j)+1].highlight(Number(k)+1);
           var toLeftNodeInd = table1[i][alphabet[k]];
@@ -2393,8 +2435,7 @@ var lambda = String.fromCharCode(955),
           fromNode.highlight();
           toNode.highlight();
           graph.addEdge(fromNode, toNode, { weight: edgeweight });
-
-
+          graph.layout();
           av.step();
           fromNode.unhighlight();
           toNode.unhighlight();
@@ -2409,31 +2450,11 @@ var lambda = String.fromCharCode(955),
 
         counter += 1;
         intersectionTable._arrays[tableNum].unhighlight(0);
-        //console.log(fromNodeName);
-
-        //console.log(rightNodeName);
-        //var rightInd = table2[i];
-        //nodes.push("(q"+ leftInd + ",")
         tabl2g._arrays[Number(j)+1].unhighlight(0);
       }
      tabl1g._arrays[Number(i)+1].unhighlight(0);
     }
-    //console.log(nodes);
-    //console.log(toNodes)
-    /*
-    for (var oneName in toNodes){
-      var fromNodeName = nodes[oneName];
-      for (var oneEdge in  alphabet){
-        var edgeweight = alphabet[oneEdge];
-        var toNodeName = toNodes[oneName][edgeweight];
-        var fromNode = getNodeWithValue(graph, fromNodeName);
-        var toNode = getNodeWithValue(graph, toNodeName);
-        graph.addEdge(fromNode, toNode, { weight: edgeweight });
-        //console.log(fromNode);
-        //console.log(toNode);
-      }
-    }
-    */
+
     graph.layout();
   };
 
