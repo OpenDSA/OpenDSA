@@ -23,12 +23,12 @@ def configure():
 def simple2full():
     if request.method == 'POST':
         script_path = "tools/simple2full.py"
-        config_file_path = request.form['config_file_path']
-        build_path = request.form['build_path']
+        input_path = request.form['input_path']
+        output_path = request.form['output_path']
         if request.form['rake']:
-            list_files = subprocess.run(["python3", script_path, config_file_path, "-b", build_path, "--expanded", "--verbose"])
+            list_files = subprocess.run(["python3", script_path, input_path, output_path, "--expanded", "--verbose"])
         else:
-            list_files = subprocess.run(["python3", script_path, config_file_path, "-b", build_path])
+            list_files = subprocess.run(["python3", script_path, input_path, output_path])
         return jsonify({"ok": True, "message": list_files.returncode})
     else:
         return jsonify({"ok", False})
