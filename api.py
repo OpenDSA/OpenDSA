@@ -10,7 +10,10 @@ def configure():
         script_path = "tools/configure.py"
         config_file_path = request.form['config_file_path']
         build_path = request.form['build_path']
-        list_files = subprocess.run(["python3", script_path, config_file_path, "-b", build_path])
+        if request.form['rake']:
+            list_files = subprocess.run(["python3", script_path, config_file_path, "--standalone-modules", "-b", build_path])
+        else:
+            list_files = subprocess.run(["python3", script_path, config_file_path, "-b", build_path])
         return jsonify({"ok": True, "message": list_files.returncode})
     else:
         return jsonify({"ok", False})
@@ -22,7 +25,10 @@ def simple2full():
         script_path = "tools/simple2full.py"
         config_file_path = request.form['config_file_path']
         build_path = request.form['build_path']
-        list_files = subprocess.run(["python3", script_path, config_file_path, "-b", build_path])
+        if request.form['rake']:
+            list_files = subprocess.run(["python3", script_path, config_file_path, "-b", build_path, "--expanded", "--verbose"])
+        else:
+            list_files = subprocess.run(["python3", script_path, config_file_path, "-b", build_path])
         return jsonify({"ok": True, "message": list_files.returncode})
     else:
         return jsonify({"ok", False})
