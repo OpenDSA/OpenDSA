@@ -1,0 +1,17 @@
+#TMmultiD .jsavcanvas {
+    height: 650px;
+    width: 1000px;
+}
+
+#TMmultiD .final {
+    border: 5px double;
+}
+
+#red {
+    color: red;
+}
+
+
+#TMmultiD .jsavoutput.jsavline {
+    height: 200px;
+}

@@ -70,7 +70,8 @@
       "Kochan/TMblankL": {}
     },
     "Ko TB for Multi-tape TM":{
-
+      "Kochan/TMmultiND": {},
+      "Kochan/TMmultiD": {}
     }
     ,
     "Models of Computation": {
