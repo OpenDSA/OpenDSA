@@ -1,0 +1,8 @@
+FROM python:3.9
+
+ENV PYTHONUNBUFFERED=1
+WORKDIR /opendsa
+COPY requirements-flask.txt /opendsa/
+COPY requirements.txt /opendsa/
+RUN pip3 install -r requirements-flask.txt
+RUN pip3 install -r requirements.txt
