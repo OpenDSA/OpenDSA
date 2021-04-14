@@ -1,6 +1,7 @@
 import subprocess
 from flask import Flask, jsonify, request
 from flask_autoindex import AutoIndex
+import os
 import logging
 
 api = Flask(__name__)
