@@ -1,5 +1,5 @@
 import subprocess
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect
 from flask_autoindex import AutoIndex
 import os
 import logging
@@ -10,6 +10,11 @@ api = Flask(__name__)
 ############################## Direct File Index ###############################
 
 AutoIndex(api, browse_root=os.path.curdir)
+
+@api.route('/Books/<book>/')
+def redirect_to_rendered_index(book):
+    '''Quickly access a book instead of browsing to the exact file'''
+    return redirect(f"/Books/{book}/html/index.html", code=302)
 
 
 ################################## API calls ###############################
