@@ -1,7 +1,15 @@
-FROM python:3.9
+FROM python:3.8-slim
 
 ENV PYTHONUNBUFFERED=1
+ENV TZ=America/New_York
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 WORKDIR /opendsa
+
+RUN apt-get update -qq \
+    && apt-get install -y make nodejs npm git \
+    && apt-get upgrade -y \
+    && npm install -g csslint jsonlint eslint uglify-js clean-css-cli
+
 COPY requirements-flask.txt /opendsa/
 COPY requirements.txt /opendsa/
 RUN pip3 install -r requirements-flask.txt
