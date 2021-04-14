@@ -11,6 +11,7 @@ api = Flask(__name__)
 
 AutoIndex(api, browse_root=os.path.curdir)
 
+
 @api.route('/Books/<book>/')
 def redirect_to_rendered_index(book):
     '''Quickly access a book instead of browsing to the exact file'''
@@ -31,9 +32,7 @@ def configure():
         cmd += " --standalone-modules"
     api.logger.info("API call for run command: {cmd}")
     proc = subprocess.run(cmd.split(), capture_output=True)
-    resp = {"ok":True, "message": proc.returncode}
-    resp['stdout'] = proc.stdout
-    resp['stderr'] = proc.stderr
+    resp = {"ok": True, "message": proc.returncode}
     resp['stdout_compressed'] = compress_lines(proc.stdout)
     resp['stderr_compressed'] = compress_lines(proc.stderr)
     if proc.returncode:
@@ -57,15 +56,13 @@ def simple2full():
         cmd += " --expanded --verbose"
     api.logger.info("API call for run command: {cmd}")
     proc = subprocess.run(cmd.split(), capture_output=True)
-    resp = {"ok":True, "message": proc.returncode}
-    resp['stdout'] = proc.stdout
-    resp['stderr'] = proc.stderr
+    resp = {"ok": True, "message": proc.returncode}
     resp['stdout_compressed'] = compress_lines(proc.stdout)
     resp['stderr_compressed'] = compress_lines(proc.stderr)
     if proc.returncode:
         api.logger.error(f"API: simple2full failure for: {cmd}")
         api.logger.error(resp['stderr_compressed'])
-    else: 
+    else:
         api.logger.info("simple2full command success, responding via API...")
     return jsonify(resp)
 
