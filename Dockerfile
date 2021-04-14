@@ -1,5 +1,6 @@
 FROM python:3.8-slim
 
+ENV PYTHONUNBUFFERED=1
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -8,7 +9,6 @@ RUN apt-get update -qq \
     && apt-get upgrade -y \
     && npm install -g csslint jsonlint eslint uglify-js clean-css-cli
 
-RUN mkdir /opendsa
 WORKDIR /opendsa
 
 ADD requirements.txt /opendsa
