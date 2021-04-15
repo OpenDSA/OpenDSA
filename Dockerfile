@@ -1,5 +1,12 @@
 FROM python:3.9-alpine
-# old: FROM alpine:3.13
+
+ARG ODSA_ENV="DEV"
+ENV ODSA_ENV=${ODSA_ENV}
+
+ARG FLASK_ENV="development"
+ENV FLASK_ENV=${FLASK_ENV}
+ARG FLASK_APP='app.py'
+ENV FLASK_APP=${FLASK_APP}
 
 ENV PYTHONUNBUFFERED=1
 ENV TZ=America/New_York
@@ -13,13 +20,5 @@ WORKDIR /opendsa
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
-
-ARG ODSA_ENV=DEV
-ENV ODSA_ENV=${ODSA_ENV}
-
-ARG FLASK_ENV="development"
-ENV FLASK_ENV=${FLASK_ENV}
-
-# ENV FLASK_APP="app.py" # is default anyways
 
 CMD ["make", "webserver"]
