@@ -809,7 +809,7 @@ var lambda = String.fromCharCode(955),
       // Compute the impulse of V.
       var Theta = this.degree(this.nodes(), vertex);
       Theta *= 1.0 + Theta / 2.0;
-      var p = [(c[0] / this.nodeCount() - point[0]) * GRAVITATIONAL_CONSTANT * Theta, (c[1] / this.nodeCount() - point[1]) * GRAVITATIONAL_CONSTANT * Theta];
+      var p = [(c[0] / this.nodeCount() - point[0]) * GRAVITATIONAL_CONSTANT * Theta, (c[1] / this.nodeCount() - point[1]) * GRAVITATIONAL_CONSTANT * Theta]; // Attraction to BC.
       // Random disturbance.
       p[0] += Math.random() * 10.0 - 5.0;
       p[1] += Math.random() * 10.0 - 5.0;
@@ -835,6 +835,7 @@ var lambda = String.fromCharCode(955),
           p[k] -= delta[k] * D2 / (O2 * Theta);
         }
       }
+      // Adjust the position and temperature.
       if (p[0] != 0.0 || p[1] != 0.0) {
         var absp = Math.sqrt(Math.abs(p[0] * p[0] + p[1] * p[1]));
         for (var j = 0; j < 2; j++) {
@@ -862,7 +863,8 @@ var lambda = String.fromCharCode(955),
     }
   };
   /*
-  * The random layout algorithm.
+  * This algorithm assigns all vertices to random points in the graph, while applying a
+  * little effort taken to minimize edge intersections.
   */
   automatonproto.randomLayoutAlg = function (options) {
     var vertices = this.nodes();
@@ -973,6 +975,7 @@ var lambda = String.fromCharCode(955),
   */
   automatonproto.lessenVertexOverlap = function(points, vertices) {
     var point;
+    //First, sort the vertices by their x and y values
     var xOrder = [];
     var yOrder = [];
 
@@ -990,11 +993,11 @@ var lambda = String.fromCharCode(955),
       var bx = b[0];
       return bx - ax;
     });
+    //Then, shift over any points that need to be shifted over
     var xBuffer, yBuffer, xDiff, yDiff;
     xBuffer = 30 + 30;
     yBuffer = 30 + 30;
     for (var i = 0; i<vertices.length - 1; i++) {
-      //if (xOrder[i] != null) {
       xDiff = (xOrder[i][0] - xOrder[i+1][0]);
       yDiff = (xOrder[i][1] - xOrder[i+1][1]);
       if (xDiff < xBuffer && yDiff < yBuffer) {
@@ -1004,8 +1007,6 @@ var lambda = String.fromCharCode(955),
           point[1] = point[1];
         }
       }
-      //}
-      //if (yOrder[i] != null) {
       xDiff = yOrder[i][0] - yOrder[i+1][0];
       yDiff = yOrder[i][1] - yOrder[i+1][1];
       if (xDiff < xBuffer && yDiff < yBuffer) {
@@ -1015,7 +1016,6 @@ var lambda = String.fromCharCode(955),
           point[1] = point[1] + yBuffer - yDiff;
         }
       }
-      //}
     }
 
   };
@@ -1274,20 +1274,13 @@ var lambda = String.fromCharCode(955),
           if (vertices[q].edgeTo(a) || a.edgeTo(vertices[q])) {
             degreea++;
           }
-          /*
-          if (a.edgeTo(vertices[q])) {
-            degreea++;
-          }*/
+          
           if (vertices[q].edgeTo(b) || b.edgeTo(vertices[q])) {
             degreeb++;
           }
-          /*
-          if (b.edgeTo(vertices[q])) {
-            degreeb++;
-          }*/
+          
         }
         return degreeb - degreea;
-        //return b.neighbors().length - a.neighbors().length;
       });
     }
     var notPlaced = [];
@@ -1530,7 +1523,7 @@ var lambda = String.fromCharCode(955),
   };
 
   /*
-  * 
+  * Get the degree of give vertex in a given chain.
   */
   automatonproto.getDegreeInChain = function(chain, vertex) {
     var count = 0;
