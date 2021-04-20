@@ -2524,6 +2524,77 @@ var lambda = String.fromCharCode(955),
     return table;
   };
 
+  FiniteAutomaton.rightQuotient = function(jsav, graph1, graph2, option){
+    var controller = new window.FAtoREController(jsav, graph1);
+    var finalLeft = graph1.getFinals()[0];
+    var finalRight = graph2.getFinals()[0];
+    console.log(graph2.getEdge(graph2.initial, finalRight));
+    console.log(finalLeft);
+    console.log(finalRight);
+    console.log(finalLeft.getIncoming());
+    console.log(finalRight.getIncoming());
+    var edgesCheckedLeft = [];
+    var edgesCheckedRight = [];
+    var end = finalLeft;
+    while(finalRight != graph2.initial && finalLeft != graph1.initial){
+      var edgesLeft = finalLeft.getIncoming();
+      var edgesRight = finalRight.getIncoming();
+      var keepGoing = false;
+      var found = false;
+      for (var edgeRight in edgesRight){
+        if (found){
+          break;
+        }
+        var edge2 = edgesRight[edgeRight];
+        for (var edgeLeft in edgesLeft){
+          var edge1 = edgesLeft[edgeLeft];
+          if (edge1._weight == edge2._weight){
+            edgesCheckedLeft.push(edge1);
+            edgesCheckedRight.push(edge2);
+            
+            finalLeft =  edge1.startnode;
+            finalRIght = edge2.startnode;
+
+            if (finalRight == graph2.initial){
+              found = true;
+            }
+          }
+        }
+      }
+      
+    }
+    console.log(edgesCheckedLeft);
+    console.log(edgesCheckedRight);
+    jsav.step();
+    graph1.hide();
+    graph2.hide();
+    var figure = new jsav.ds.FA(option);
+    var edges = graph1.edges();
+    // "create" edges, store as a reference
+    for (var next = edges.next(); next; next = edges.next()) {
+      if (!edgesCheckedLeft.includes(next)){
+        var start = next.startnode;
+        var end = next.endnode;
+        console.log(start);
+        console.log(end);
+        var finalFrom = figure.getNodeWithValue(start.options.value);
+        
+        if (!finalFrom){
+          finalFrom = figure.addNode({value: start.options.value});
+        }
+        var finalTo = figure.getNodeWithValue(end.options.value);
+        if (!finalTo){
+          finalTo = figure.addNode({value: end.options.value});
+        }
+        figure.addEdge(finalFrom, finalTo, {weight: next.weight()} );
+      }
+    }
+    figure.makeInitial(figure.nodes()[0]);
+    figure.makeFinal(figure.nodes()[figure.nodes().length-1]);
+    figure.layout();
+    return figure;
+  };
+
 
   /**
    * MAke publicly available methods

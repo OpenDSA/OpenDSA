@@ -13,18 +13,13 @@
 			<final/>&#13;
 		</state>&#13;
 		<state id="2" name="q2">&#13;
-			<x>342.0</x>&#13;
-			<y>64.0</y>&#13;
+			<x>305.0</x>&#13;
+			<y>47.0</y>&#13;
 		</state>&#13;
 		<!--The list of transitions.-->&#13;
 		<transition>&#13;
-			<from>2</from>&#13;
-			<to>2</to>&#13;
-			<read>a</read>&#13;
-		</transition>&#13;
-		<transition>&#13;
 			<from>0</from>&#13;
-			<to>1</to>&#13;
+			<to>0</to>&#13;
 			<read>a</read>&#13;
 		</transition>&#13;
 		<transition>&#13;
@@ -34,8 +29,13 @@
 		</transition>&#13;
 		<transition>&#13;
 			<from>0</from>&#13;
-			<to>2</to>&#13;
+			<to>1</to>&#13;
 			<read>a</read>&#13;
+		</transition>&#13;
+		<transition>&#13;
+			<from>0</from>&#13;
+			<to>2</to>&#13;
+			<read>b</read>&#13;
 		</transition>&#13;
 	</automaton>&#13;
 </structure>
