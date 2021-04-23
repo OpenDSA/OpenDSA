@@ -58,7 +58,7 @@ $(document).ready(function () {
   av.step();
 
   // step 5
-  av.umsg("Since both 19 and 31 are less than 16 we are done.");
+  av.umsg("Since 16 is less than both 19 and 31, we are done.");
   unhighlight(0, t);
   av.step();
 
