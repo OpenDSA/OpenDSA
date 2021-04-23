@@ -1,9 +1,10 @@
-#DemorganIntersection {
-  height: 1000px;
+#Demorgan {
+  height: 600px;
+  width: 1000px;
 }
 
 .final {
-    border: 3px double;
+	border: 3px double;
 }
 
 .jsavcanvas{
@@ -15,4 +16,10 @@
 	position: relative;
 	font-size: 16px;
     text-align: center;
+}
+
+.jsavhorizontalarray .jsavnode {
+
+	min-width: 50px !important;
+	max-width: 50px !important;
 }

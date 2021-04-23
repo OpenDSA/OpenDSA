@@ -10,12 +10,12 @@ $(document).ready(function() {
         code = config.code;             // get the code object
     var xStart = 50;
     var yStart = 250;
-  
+
     var Traversor = function(TM, jsavs) {
       this.TM = TM;
       this.jsavs = jsavs;
     }
-  
+
     Traversor.prototype.onClickTraverse = function(inputStrings) {
       var tape;
       for(var strCnt = 0; strCnt < inputStrings.length; strCnt++){
@@ -29,7 +29,7 @@ $(document).ready(function() {
         var currState = "";
         var prevLet = "";
         var g = this.TM;
-  
+
         //      $("#functionality").hide();                       //disable buttons
         //      $('#alphabets').hide();
         //      $("#mode").html('');
@@ -43,16 +43,16 @@ $(document).ready(function() {
         for(var x = 0; x < inputString.length; x++){
           arr[7-Math.round(inputString.length/2) + x] = inputString.charAt(x);
         }
-  
+
         var nodess = g.nodes();
         var topos = 0;
         for(var y = 0; y<nodess.length; y++){
           if(topos<nodess[y].position().top){
             topos = nodess[y].position().top;
           }
-  
+
         }
-  
+
         jsav.umsg("We will see how the machine processes input string '" + inputString + "'.");
         if(tape){//tape is defined so we will reset the tape and add new string to it.
           tape.clearTapeContent();
@@ -73,7 +73,7 @@ $(document).ready(function() {
         // this.jsav.umsg(configView.join(' | '));
         g.initial.highlight();
         //jsav.displayInit();
-  
+
         while (true) {
           if (counter === 500) {
             console.log(counter);
@@ -136,8 +136,8 @@ $(document).ready(function() {
                       direction = "left one cell, ";
                       tape.moveLeft();
                     }
-                    
-  
+
+
                     nextStates.push(nextConfig);
                     break;
                   }
@@ -169,7 +169,7 @@ $(document).ready(function() {
                         direction = "left one cell, ";
                         tape.moveLeft();
                       }
-                      
+
                     }
                     else{
                       prevLet = w[0];
@@ -195,7 +195,7 @@ $(document).ready(function() {
                         direction = "left one cell, ";
                         tape.moveLeft();
                       }
-                      
+
                     }
                     nextConfig.tape.move(w[2]);
                     nextStates.push(nextConfig);
@@ -231,7 +231,7 @@ $(document).ready(function() {
             }
             jsav.step();
           }
-          
+
         }
         for (var k = 0; k < currentStates.length; k++) {
           if (g.isFinal(currentStates[k].state)) {
@@ -245,7 +245,7 @@ $(document).ready(function() {
             /*p3.hide();
             rects.hide();*/
           }
-  
+
         }
         jsav.step();
         for (var j = 0; j < currentStates.length; j++) {
@@ -262,7 +262,7 @@ $(document).ready(function() {
 
 
     // av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head.");
-    var url = "../../../../AV/OpenFLAP/Machines/TM/TManbncn.jff";
+    var url = "../../../../AV/OpenFLAP/machines/TM/TManbncn.jff";
     av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept any even number. You can click on any cell to see the process again starting from the clicked cell");
     var tm = new av.ds.TM({width: 610, height: 375, left: 50, url: url});
     var trav = new Traversor(tm, av);

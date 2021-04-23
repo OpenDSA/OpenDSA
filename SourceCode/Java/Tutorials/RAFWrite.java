@@ -13,7 +13,7 @@ public class Main {
          int length = rdn.nextInt(max - min + 1) + min;//Get the length of our file
          raf.setLength((long)length);//Set the length or size of the file, note that the we do not have to
          //set length of the file as the write method will "grow" the file with each sequential write
-         for(int i=0; i < length; i++){//Run until our file is full
+         for(int i=0; i < length; i++) {//Run until our file is full
             int chr = rdn.nextInt(amax - amin + 1) + amin;//Randomly get our offset
             chr += 65;//ASCII capital letters range from 65-90, so add 65 to whatever we got
             raf.write(chr);//Write the int to the file

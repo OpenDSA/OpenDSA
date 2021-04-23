@@ -38,7 +38,7 @@ public class TOH {
 // temp: The other pole
 /* *** ODSATag: TOHshort *** */
 static void TOHr(int n, Pole start, Pole goal, Pole temp) {
-  if (n == 0) return;          // Base case
+  if (n == 0) { return; }         // Base case
   TOHr(n-1, start, temp, goal); // Recursive call: n-1 rings
   move(start, goal);            // Move bottom disk to goal
   TOHr(n-1, temp, goal, start); // Recursive call: n-1 rings
@@ -67,8 +67,9 @@ static void TOHs(int n, Pole start, Pole goal, Pole temp) {
   S.push(new TOHobj(TOH, n, start, goal, temp));
   while (S.length() > 0) {
     TOHobj it = (TOHobj)S.pop();   // Get next task
-    if (it.op == MOVE) // Do a move
+    if (it.op == MOVE) { // Do a move
       move(it.start, it.goal);
+    }
     else if (it.num > 0) { // Imitate TOH recursive solution (in reverse)
       S.push(new TOHobj(TOH, it.num-1, it.temp, it.goal, it.start));
       S.push(new TOHobj(MOVE, it.start, it.goal));  // A move to do

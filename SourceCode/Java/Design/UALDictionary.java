@@ -20,7 +20,7 @@ public class UALDictionary implements Dictionary {
   // Use sequential search to find the element to remove
   public Object remove(Comparable k) {
     Object temp = find(k);
-    if (temp != null) list.remove();
+    if (temp != null) { list.remove(); }
     return temp;
   }
 
@@ -32,7 +32,7 @@ public class UALDictionary implements Dictionary {
       KVPair e = (KVPair)list.remove();
       return e.value();
     }
-    else return null;
+    else { return null; }
   }
 
   // Find k using sequential search
@@ -41,8 +41,9 @@ public class UALDictionary implements Dictionary {
     for(list.moveToStart(); list.currPos() < list.length();
         list.next()) {
       KVPair temp = (KVPair)list.getValue();
-      if (k.compareTo(temp.key()) == 0)
+      if (k.compareTo(temp.key()) == 0) {
         return temp.value();
+      }
     }
     return null; // "k" does not appear in dictionary
   }

@@ -3,6 +3,7 @@
   "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "sphinx_debug": false,
   "code_lang": {
     "Java_Generic": {
       "ext": [
@@ -32,7 +33,6 @@
   "build_cmap": false,
   "suppress_todo": false,
   "dispModComp": true,
-  "tag": "CPP;CS2",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -71,8 +71,7 @@
       "SeniorAlgAnal/DynamicProgramming": {}
     }, 
     "Appendix": {
-      "Glossary": {},
-      "Bibliography": {}
+      "Glossary": {}
     }
   }
 }

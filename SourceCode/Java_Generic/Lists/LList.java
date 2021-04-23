@@ -12,8 +12,12 @@ class LList<E> implements List<E> {
 
 /* *** ODSATag: LListCons *** */
   // Constructors
-  LList(int size) { this(); }     // Constructor -- Ignore size
-  LList() { clear(); }
+  LList(int size) {      // Constructor -- Ignore size
+    this(); 
+  }
+  LList() { 
+    clear(); 
+  }
 
   // Remove all elements
   public void clear() {
@@ -28,7 +32,9 @@ class LList<E> implements List<E> {
   public boolean insert(E it) {
     curr.setNext(new Link<E>(curr.element(), curr.next()));
     curr.setElement(it);
-    if (tail == curr) tail = curr.next();  // New tail
+    if (tail == curr) {
+      tail = curr.next();  // New tail
+    }
     listSize++;
     return true;
   }
@@ -46,35 +52,46 @@ class LList<E> implements List<E> {
 /* *** ODSATag: LListRemove *** */
   // Remove and return current element
   public E remove () throws NoSuchElementException {
-    if (curr == tail) // Nothing to remove
+    if (curr == tail) {// Nothing to remove
       throw new NoSuchElementException("remove() in LList has current of " + curr + " and size of "
         + listSize + " that is not a a valid element");
+    }
     E it = curr.element();                  // Remember value
     curr.setElement(curr.next().element()); // Pull forward the next element
-    if (curr.next() == tail) tail = curr;   // Removed last, move tail
+    if (curr.next() == tail) {
+      tail = curr;   // Removed last, move tail
+    }
     curr.setNext(curr.next().next());       // Point around unneeded link
     listSize--;                             // Decrement element count
     return it;                              // Return value
   }
 /* *** ODSAendTag: LListRemove *** */
 
-  public void moveToStart() { curr = head.next(); } // Set curr at list start
-  public void moveToEnd() { curr = tail; }     // Set curr at list end
+  public void moveToStart() { 
+    curr = head.next(); // Set curr at list start
+  } 
+  public void moveToEnd() {      
+    curr = tail; // Set curr at list end
+  }
 
 /* *** ODSATag: LListPrev *** */
   // Move curr one step left; no change if now at front
   public void prev() {
-    if (head.next() == curr) return; // No previous element
+    if (head.next() == curr) {
+      return; // No previous element
+    }
     Link<E> temp = head;
     // March down list until we find the previous element
-    while (temp.next() != curr) temp = temp.next();
+    while (temp.next() != curr) {
+      temp = temp.next();
+    }
     curr = temp;
   }
 /* *** ODSAendTag: LListPrev *** */
 
 /* *** ODSATag: LListNext *** */
   // Move curr one step right; no change if now at end
-  public void next() { if (curr != tail) curr = curr.next(); }
+  public void next() { if (curr != tail) { curr = curr.next(); } }
 /* *** ODSAendTag: LListNext *** */
 
   public int length() { return listSize; } // Return list length
@@ -84,17 +101,20 @@ class LList<E> implements List<E> {
   public int currPos() {
     Link<E> temp = head.next();
     int i;
-    for (i=0; curr != temp; i++)
+    for (i=0; curr != temp; i++) {
       temp = temp.next();
+    }
     return i;
   }
   
 /* *** ODSATag: LListPos *** */
   // Move down list to "pos" position
   public boolean moveToPos(int pos) {
-    if ((pos < 0) || (pos > listSize)) return false;
+    if ((pos < 0) || (pos > listSize)) {
+      return false;
+    }
     curr = head.next();
-    for(int i=0; i<pos; i++) curr = curr.next();
+    for(int i=0; i<pos; i++) { curr = curr.next() };
     return true;
   }
 /* *** ODSAendTag: LListPos *** */
@@ -105,8 +125,10 @@ class LList<E> implements List<E> {
   // Return current element value. Note that null gets returned if curr is at the tail
   public E getValue() throws NoSuchElementException {
     if (curr == tail) // No current element
+    {
       throw new NoSuchElementException("getvalue() in LList has current of " + curr + " and size of "
         + listSize + " that is not a a valid element");
+    }
     return curr.element(); 
  }
   

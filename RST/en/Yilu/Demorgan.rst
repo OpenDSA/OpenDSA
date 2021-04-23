@@ -5,7 +5,7 @@ Visualization
 ------------------------
 
 	.. inlineav:: DemorganIntersect ff
-	   :links: AV/Yilu/DemorganIntersect.css
-	   :scripts: AV/Yilu/DemorganIntersect.js DataStructures/FLA/FA.js
+	   :links: AV/Yilu/DemorganIntersect.css DataStructures/FLA/FLA.css 
+	   :scripts: lib/underscore.js AV/Yilu/DemorganIntersect.js AV/Yilu/FA.js
 	   :align: center
 	   :output: show

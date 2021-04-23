@@ -27,7 +27,7 @@ public class FFTprocedureCON {
       Complex[] list2 = new Complex[n/2];
       Complex[] newPoly = new Complex[n];
       if (n == 1) {
-        Complex[] poly = {new Complex(polynomial[0], 0)};
+        Complex[] poly = { new Complex(polynomial[0], 0) };
         return poly;
       }        
       for (int i = 0; i <= (n / 2 -1); i++) {

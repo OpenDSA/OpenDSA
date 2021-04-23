@@ -1,6 +1,8 @@
 # Header prepended to every RST file, contains settings for a specific module
 rst_header = '''\
+
 .. _%(mod_name)s:
+
 
 .. raw:: html
 
@@ -60,6 +62,10 @@ makefile_template = '''\
 # PYTHON should match the exec of the rest of OpenDSA
 PYTHON = %(python_executable)s
 SPHINXBUILD   = sphinx-build
+SPHINXOPTS    = %(sphinx_options)s
+# -E is option to always build from new environment, regardless of changed files
+# -vv and -vvv are options for verbose build output
+# -P is for starting pdb exactly when and where exception occurs
 HTMLDIR       = %(rel_book_output_path)s
 MINIMIZE      = uglifyjs
 TAGS = %(tag)s
@@ -88,7 +94,7 @@ min-searchtools:
 	@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js > $(HTMLDIR)_static/searchtools.js
 
 html:
-	$(SPHINXBUILD) $(TAGS) -b html source $(HTMLDIR)
+	$(SPHINXBUILD) $(TAGS) $(SPHINXOPTS) -b html source $(HTMLDIR)
 	rm html/_static/jquery.js
 	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
 	rm *.json
@@ -98,7 +104,7 @@ html:
 
 slides:
 	@SLIDES=yes \
-	$(SPHINXBUILD) -b slides source $(HTMLDIR)
+	$(SPHINXBUILD) $(SPHINXOPTS) -b slides source $(HTMLDIR)
 	rm html/_static/jquery.js
 	cp "%(odsa_dir)slib/styles.css" html/_static/ # Overwrites
 	rm *.json
@@ -306,7 +312,8 @@ html_context = {"script_files": [
                   '%(eb2root)slib/jquery.min.js',
                   '%(eb2root)slib/jquery.migrate.min.js',
                   '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
-                  '//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js'
+                  '//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js',
+                  '%(eb2root)slib/accessibility.js',
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
@@ -333,7 +340,8 @@ html_context = {"script_files": [
                   '%(eb2root)slib/odsaMOD-min.css',
                   '%(eb2root)slib/jquery.ui.min.css',
                   #'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
-                  '%(eb2root)slib/odsaStyle-min.css'
+                  '%(eb2root)slib/odsaStyle-min.css',
+                  '%(eb2root)slib/accessibility.css'
                 ],
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}

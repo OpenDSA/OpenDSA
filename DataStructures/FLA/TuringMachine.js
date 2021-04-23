@@ -78,6 +78,63 @@ tm.play = function(inputString) {
 	return configView[0];
 };
 
+// traverse on a given input string (can do nondeterministic traversal)
+// same function as above but return whether the string is accepted or not
+tm.playAndReturnAcceptance = function(inputString) {
+	var currentStates = [new Configuration(this.initial, inputString)],
+			cur,
+			counter = 0,
+			configView = [];		// configurations to display in the message box
+			//TODO: issue here, displaying multiple configurations in the message box
+	for (var j = 0; j < currentStates.length; j++) {
+		configView.push(currentStates[j].toString());
+	}
+	this.jsav.umsg(configView.join(' | '));
+	this.initial.highlight();
+	this.jsav.displayInit();
+	var accepted = true;
+
+	while (true) {
+		if (counter === 500) {
+			console.log(counter);
+			break;
+		}
+		counter++;
+		for (var j = 0; j < currentStates.length; j++) {
+			currentStates[j].state.unhighlight();
+			this.removeAccept(currentStates[j].state);
+		}
+		// get next states
+		cur = this.traverse(currentStates);
+		if (!cur || cur.length === 0) {
+			break;
+		}
+		currentStates = cur;
+		configView = [];
+		// add highlighting and display
+		for (var j = 0; j < currentStates.length; j++) {
+			currentStates[j].state.highlight();
+			if (this.isFinal(currentStates[j].state)) {
+				this.showAccept(currentStates[j].state);
+			}
+			configView.push(currentStates[j].toString());
+		}
+		this.jsav.umsg(configView.join(' | '));
+		this.jsav.step();
+	}
+	for (var k = 0; k < currentStates.length; k++) {
+		if (this.isFinal(currentStates[k].state)) {
+			this.showAccept(currentStates[k].state);
+		} else {
+			accepted = false;
+			this.showReject(currentStates[k].state);
+		}
+	}
+	this.jsav.step();
+	this.jsav.recorded();
+	return accepted;
+};
+
 tm.showAccept = function(state) {
 	state.addClass('accepted');
 }

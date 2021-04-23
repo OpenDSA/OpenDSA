@@ -3,6 +3,7 @@
   "desc": "OpenDSA Test for slides",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "sphinx_debug": false,
   "lang": "en",
   "code_lang": {
     "Java": {

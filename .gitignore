@@ -91,3 +91,6 @@ SourceCode/Java/Lists/ErrorRec.java
 success
 ListTest_error.log
 venv
+
+# For OpenDSA-Devstack to manage docker build order
+devstackPlaceholder.md
