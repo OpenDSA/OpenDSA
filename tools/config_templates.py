@@ -178,7 +178,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenDSA'
-copyright = u'2016 by OpenDSA Project Contributors and distributed under an MIT license'
+copyright = u'2021 by OpenDSA Project Contributors and distributed under an MIT license'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -247,7 +247,7 @@ slide_link_html_to_slides = not on_slides
 slide_link_html_sections_to_slides = not on_slides
 #slide_relative_path = "./slides/"
 
-slide_link_to_html = True
+slide_link_to_html = False
 slide_html_relative_path = "../"
 
 
