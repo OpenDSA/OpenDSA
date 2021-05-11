@@ -2528,11 +2528,6 @@ var lambda = String.fromCharCode(955),
     var controller = new window.FAtoREController(jsav, graph1);
     var finalLeft = graph1.getFinals()[0];
     var finalRight = graph2.getFinals()[0];
-    console.log(graph2.getEdge(graph2.initial, finalRight));
-    console.log(finalLeft);
-    console.log(finalRight);
-    console.log(finalLeft.getIncoming());
-    console.log(finalRight.getIncoming());
     var edgesCheckedLeft = [];
     var edgesCheckedRight = [];
     var end = finalLeft;
@@ -2540,6 +2535,7 @@ var lambda = String.fromCharCode(955),
       var edgesLeft = finalLeft.getIncoming();
       var edgesRight = finalRight.getIncoming();
       var keepGoing = false;
+      //console.log(finalRight);
       var found = false;
       for (var edgeRight in edgesRight){
         if (found){
@@ -2549,22 +2545,44 @@ var lambda = String.fromCharCode(955),
         for (var edgeLeft in edgesLeft){
           var edge1 = edgesLeft[edgeLeft];
           if (edge1._weight == edge2._weight){
+
+            finalRight.highlight();
+            finalLeft.highlight();
+            var lastRight = finalRight;
+            var lastLeft = finalLeft;
+            
             edgesCheckedLeft.push(edge1);
+            
+
             edgesCheckedRight.push(edge2);
             
             finalLeft =  edge1.startnode;
-            finalRIght = edge2.startnode;
+            finalRight = edge2.startnode;
+            finalRight.highlight();
+            finalLeft.highlight();
+            jsav.step();
+            edge1.hide();
+            jsav.step();
+            lastRight.unhighlight();
+            lastLeft.unhighlight();
+            found = true;
 
-            if (finalRight == graph2.initial){
-              found = true;
+            lastLeft.hide();
+            for (var hiddenLeft in edgesLeft){
+              if (edgesLeft[hiddenLeft].isVisible()){
+                lastLeft.show();
+              }
             }
+
+            console.log(finalRight);
+            break;
           }
         }
       }
-      
+      console.log(finalRight)
     }
-    console.log(edgesCheckedLeft);
-    console.log(edgesCheckedRight);
+    //console.log(edgesCheckedLeft);
+    //console.log(edgesCheckedRight);
     jsav.step();
     graph1.hide();
     graph2.hide();
@@ -2575,8 +2593,8 @@ var lambda = String.fromCharCode(955),
       if (!edgesCheckedLeft.includes(next)){
         var start = next.startnode;
         var end = next.endnode;
-        console.log(start);
-        console.log(end);
+        //console.log(start);
+        //console.log(end);
         var finalFrom = figure.getNodeWithValue(start.options.value);
         
         if (!finalFrom){

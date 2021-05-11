@@ -730,7 +730,1106 @@ var lambda = String.fromCharCode(955),
     }
     return ret;
   };
+  //Layout algorithms
+  /*
+  * GEM layout algorithm
+  */
+  automatonproto.gemLayoutAlg = function (isovertices) {
+    if (isovertices == null) {
+      isovertices = new Set();
+    }
+    var Tmax = 256.0;
+    var Tmin = 3.0;
+    var OPTIMAL_EDGE_LENGTH = 100.0;
+    var GRAVITATIONAL_CONSTANT = 1.0 / 16.0;
+    var vArray = this.nodes();
+    var Rmax = 120 * (vArray.length - isovertices.size);
+    var Tglobal = Tmin + 1.0;
+    // Determine an optimal edge length. With isovertices, we
+    // want optimal length to be about average of existing edges
+    // that will remain unchanged due to isovertex status.
+    var optimalEdgeLength = OPTIMAL_EDGE_LENGTH;
+    if (isovertices.size > 0) {
+      var iso = Array.from(isovertices);
+      var count = 0;
+      var lengths = 0.0;
+      for (var i = 0; i < iso.length; i++) {
+        for (var j = i + 1; j < iso.length; j++) {
+          if (!(this.hasEdge(iso[i], iso[j]) || this.hasEdge(iso[j], iso[i]))) {
+            continue;
+          } 
+          var leftSquare = Math.pow(iso[i].element.position().left - iso[j].element.position().left, 2);
+          var topSquare = Math.pow(iso[i].element.position().top - iso[j].element.position().top, 2);
+          var distance = Math.sqrt(leftSquare + topSquare);
+          lengths += distance;
+          count++;
+        }
+      }
+      if (count > 0) {
+        optimalEdgeLength = lengths / count;
+      }
+    }
+    // The barycenter of the graph.
+    var c = [0.0, 0.0];
 
+    // Initialize the record for each vertex.
+    var records = new Map();
+    for (var i = 0; i < vArray.length; i++) {
+      var temperature = Tmin;
+      var skew = 0.0;
+      var r = [[0, 0], [0.0, 0.0], temperature, skew];
+      r[0] = [vArray[i].element.position().left, vArray[i].element.position().top];
+      // The barycenter will be updated.
+      c[0] += r[0][0];
+      c[1] += r[0][1];
+      records.set(vArray[i], r);
+    }
+
+    // Iterate until done.
+    var vertices = [];
+    for (var i = 0; i < Rmax && Tglobal > Tmin; i++) {
+      if (vertices.length == 0) {
+        vertices = this.nodes();
+        if (vertices.length == 0) {
+          return;
+        }
+      }
+
+      // Choose a vertex V to update.
+      var index = Math.floor(Math.random() * vertices.length);
+      var vertex = vertices[index];
+      vertices.splice(index, 1);
+      var record = records.get(vertex);
+      var point = [vertex.element.position().left, vertex.element.position().top];
+
+      // Compute the impulse of V.
+      var Theta = this.degree(this.nodes(), vertex);
+      Theta *= 1.0 + Theta / 2.0;
+      var p = [(c[0] / this.nodeCount() - point[0]) * GRAVITATIONAL_CONSTANT * Theta, (c[1] / this.nodeCount() - point[1]) * GRAVITATIONAL_CONSTANT * Theta]; // Attraction to BC.
+      // Random disturbance.
+      p[0] += Math.random() * 10.0 - 5.0;
+      p[1] += Math.random() * 10.0 - 5.0;
+
+      // Forces exerted by other nodes.
+      for (var j = 0; j < vArray.length; j++) {
+        if (vArray[j] == vertex) {
+          continue;
+        }
+        var otherPoint = [vArray[j].element.position().left, vArray[j].element.position().top];
+        var delta = [point[0] - otherPoint[0], point[1] - otherPoint[1]];
+        var D2 = delta[0] * delta[0] + delta[1] * delta[1];
+        var O2 = optimalEdgeLength * optimalEdgeLength;
+        if (delta[0] != 0.0 || delta[1] != 0.0) {
+          for (var k = 0; k < 2; k++) {
+            p[k] += delta[k] * O2 / D2;
+          }
+        }
+        if (!(this.hasEdge(vertex, vArray[j]) || this.hasEdge(vArray[j], vertex))) {
+          continue;
+        }
+        for (var k = 0; k < 2; k++) {
+          p[k] -= delta[k] * D2 / (O2 * Theta);
+        }
+      }
+      // Adjust the position and temperature.
+      if (p[0] != 0.0 || p[1] != 0.0) {
+        var absp = Math.sqrt(Math.abs(p[0] * p[0] + p[1] * p[1]));
+        for (var j = 0; j < 2; j++) {
+          p[j] *= record[2] / absp;
+        }
+        // update the position!
+        vertex.moveTo(point[0] + p[0], point[1] + p[1]);
+        // update the barycenter
+        c[0] += p[0];
+        c[1] += p[1];
+      }
+    }
+    //Finally, shift all points onto the screen.
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+  };
+  /*
+  * This algorithm assigns all vertices to random points in the graph, while applying a
+  * little effort taken to minimize edge intersections.
+  */
+  automatonproto.randomLayoutAlg = function (options) {
+    var vertices = this.nodes();
+    if (vertices.length == 0) {
+      return;
+    }
+    //Then, generate random points and assign the vertices to a
+    var points = [];
+    //VertexChain to minimize a few edge collisions
+    var chain = [];
+    this.assignPointsAndVertices(chain, points, vertices);
+    //Then minimize vertex overlap.
+    this.lessenVertexOverlap(points, vertices);
+    //Next, find a more optimal point order with which to match the points to the vertices.
+    points = this.findCorrectPointOrder(points);
+
+    //Finally, move all vertices to their corresponding points.  Wrap up the algorithm by 
+    //making sure all points are on the screen.
+    for (var i = 0; i<points.length; i++) {
+      chain[i].moveTo(points[i][0], points[i][1]);
+    }
+
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+
+  };
+  /**
+  * This method shifts the random points away from each other, if needed, in order to minimize
+  * vertex overlap.
+  */
+  automatonproto.findCorrectPointOrder = function(points) {
+    var notProcessedPoints, newPointOrder;
+    var current, anchor, minPoint;
+    var currentTheta, minTheta, anchorTheta;
+
+    anchor = [0, 0];
+    anchorTheta = 0;
+    newPointOrder = [];
+    notProcessedPoints = [];
+    for (var i = 0; i < points.length; i++) {
+      notProcessedPoints.push(points[i]);
+    }
+
+    //Find the angle of all points relative to the last point placed and "anchorTheta".  Then place
+    //the point with the minimum angle.  "anchorTheta" will slowly rotate around a circle counterclockwise.
+    while (notProcessedPoints.length > 0) {
+      minPoint = notProcessedPoints[0];
+      minTheta = 2*Math.PI + 1;
+      for (var j = 0; j < notProcessedPoints.length; j++) {
+        current = notProcessedPoints[j];
+
+        if (current[1] != anchor[1]) {
+          currentTheta = Math.atan((current[0] - anchor[0]) / (current[1] - anchor[1]));
+        }
+        else if (current[0] > anchor[0]) {
+          currentTheta = Math.PI / 2;
+        }
+        else {
+          currentTheta = Math.PI / (-2);
+        }
+        /* atan -> -pi/2...pi/2.  Adding 4pi to the currentTheta, subtracting the anchorTheta, and taking
+        * the remainder when dividing by pi works for all four quadrants the angle could be in.
+        * The object is to find the smallest absolute polar theta of the current point from the anchor
+        * which is greater than, or next in a counterclockwise traversal, from the anchorTheta.
+        */
+        currentTheta = (currentTheta + 4*Math.PI - anchorTheta) % (Math.PI);
+        if (currentTheta < minTheta) {
+          minTheta = currentTheta;
+          minPoint = current;
+        }
+      }
+      anchor = minPoint;
+      anchorTheta = (anchorTheta + minTheta) % (2*Math.PI);
+      notProcessedPoints.splice(notProcessedPoints.indexOf(minPoint), 1);
+      newPointOrder.push(minPoint);
+    }
+    points = newPointOrder;
+    return points;
+  };
+  /**
+  * This method creates random points and assigns all movable vertices to the VertexChain
+  */
+  automatonproto.assignPointsAndVertices = function(chain, points, vertices) {
+    var x, y;
+    var random = Math.random();
+    for (var i = 0; i < vertices.length; i++) {
+      x = Math.random() * (900 - 30 * 2);
+      y = Math.random() * (900 - 30 * 2);
+      //x = random * (30 - 60);
+      //y = random * (30 - 60);
+      points.push([x, y]);
+      this.addVertex(chain, vertices[i]);
+    }
+  };
+  /**
+  * This method shifts the random points away from each other, if needed, in order to minimize
+  * vertex overlap.
+  */
+  automatonproto.lessenVertexOverlap = function(points, vertices) {
+    var point;
+    //First, sort the vertices by their x and y values
+    var xOrder = [];
+    var yOrder = [];
+
+    for (var i = 0; i < points.length; i++) {
+      xOrder.push(points[i]);
+      yOrder.push(points[i]);
+    }
+    xOrder.sort(function(a, b) {
+      var ax = a[0];
+      var bx = b[0];
+      return bx - ax;
+    });
+    yOrder.sort(function(a, b) {
+      var ax = a[0];
+      var bx = b[0];
+      return bx - ax;
+    });
+    //Then, shift over any points that need to be shifted over
+    var xBuffer, yBuffer, xDiff, yDiff;
+    xBuffer = 30 + 30;
+    yBuffer = 30 + 30;
+    for (var i = 0; i<vertices.length - 1; i++) {
+      xDiff = (xOrder[i][0] - xOrder[i+1][0]);
+      yDiff = (xOrder[i][1] - xOrder[i+1][1]);
+      if (xDiff < xBuffer && yDiff < yBuffer) {
+        for (var j = i; j>=0; j--) {
+          point = xOrder[j];
+          point[0] = point[0] + xBuffer - xDiff;
+          point[1] = point[1];
+        }
+      }
+      xDiff = yOrder[i][0] - yOrder[i+1][0];
+      yDiff = yOrder[i][1] - yOrder[i+1][1];
+      if (xDiff < xBuffer && yDiff < yBuffer) {
+        for (var j = i; j>=0; j--) {
+          point = yOrder[j];
+          point[0] = point[0];
+          point[1] = point[1] + yBuffer - yDiff;
+        }
+      }
+    }
+
+  };
+  /*
+  * Two Circle layout algorithm
+  */
+  automatonproto.twoCircleLayoutAlg = function(options) {
+    //First, initialize classwide variables.
+    var innerCircle = [];
+    var outerCircle = [];
+    var vertices = this.nodes();
+    if (vertices.length == 0) {
+      return;
+    }
+    
+    //Put in the inner circle all vertices with degree >= 3 and all those pointing to two members of the inner circle.
+    this.assignToCircles(vertices, innerCircle, outerCircle);
+
+    //console.log(innerCircle.length);
+    //console.log(outerCircle.length);
+    //Create inner circle chain and place it in graph
+    var innerCircleChain = [];
+    for (var i = 0; i < innerCircle.length; i++) {
+      this.addVertex(innerCircleChain, innerCircle[i]);
+    }
+    var radius = this.layoutInCircle(innerCircleChain, 0, Math.PI, 2*Math.PI);
+    innerCircle = innerCircleChain;
+
+    //Create outer circle chains and place them in the graph.
+    if (outerCircle.length > 0) {
+      var lengthOfChain = innerCircle.length;
+      var outerCircleChains = this.createOuterCircleChains(innerCircle, outerCircle, lengthOfChain);
+      this.shuffleOuterChains(outerCircleChains, lengthOfChain);
+
+      var span, division;
+      division = (2*Math.PI / lengthOfChain);
+      span = division * 4/5;
+      for (var i = 0; i < lengthOfChain; i++) {
+        this.layoutInCircle(outerCircleChains[i], radius, division*i, span);
+      }
+    }
+
+    //Finally, adjust the points so that they can be presented on the screen.
+    for (var i=0; i<vertices.length; i++) {
+      var r = vertices[i].element.position().left;      
+      var theta = vertices[i].element.position().top;
+      vertices[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+    }
+
+    this.shiftOntoScreen(900, 30, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+  };
+
+  /**
+  * Shuffles the order of vertices in the outer circle <code>CircleChains</code> in order to minimize overlapping
+  * transitions between vertices in two different <code>CircleChains</code>.  If a vertex from one <code>CircleChain
+  * </code> has an edge to another vertex in an adjacent <code>CircleChain</code>, the two vertices will be moved to 
+  * their <code>CircleChain's</code> common border, and whatever other vertices to which the two vertices are linked 
+  * will be adjusted accordingly. 
+  */
+  automatonproto.shuffleOuterChains = function(outerCircleChains, lengthOfChain) {
+    var currentChain;
+    var nextChain;
+    for (var i = 0; i < lengthOfChain; i++) {
+      currentChain = outerCircleChains[i];
+      if (i < lengthOfChain - 1) {
+        nextChain = outerCircleChains[i+1];
+      }
+      else {
+        nextChain = outerCircleChains[0];
+      }
+      this.alignTwoChains(currentChain, nextChain);
+    }
+  };
+
+  /**
+  * Divides the vertices that are in the outer circle into <code>VertexChains</code>, which correspond to an inner circle
+  * vertex.  Outer circle vertices are assigned to a specific <code>VertexChain</code> according to the following priorities. 
+  * <br><br> 1. Whether they link to an inner circle vertex <br> 2.  Whether they link to an existing outer circle item <br>
+  * 3.  If they link to two outer circle items in different <code>VertexChains</code> or have a degree = 0, they are
+  * assigned to the smaller of the two <code>VertexChains</code> or the smallest existing <code>VertexChain</code>, 
+  * respectively.
+  */
+  automatonproto.createOuterCircleChains = function(innerCircle, outerCircle, lengthOfChain) {
+    var outerCircleChains = [];
+    //var lengthOfChain = innerCircle.length;
+    for (var m = 0; m < lengthOfChain; m++) {
+      outerCircleChains[m] = [];
+    }
+    var chainIndex = [];
+    var lengthOfIndex = outerCircle.length;
+
+    for (var i = 0; i < outerCircle.length; i++) {
+      chainIndex[i] = -1;
+      for (var j = 0; j < innerCircle.length; j++) {
+        if (this.hasEdge(outerCircle[i], innerCircle[j]) || this.hasEdge(innerCircle[j], outerCircle[i])) {
+          this.addVertex(outerCircleChains[j], outerCircle[i]);
+          chainIndex[i] = j;
+        }
+      }
+    }
+
+    //Next, if a vertex is linked to an outercircle item, add it; if to items in two different chains, add
+    //it to the one with the minimum size.
+    var match1, match2, min;
+    var addedToChain = false;
+    do {
+      addedToChain = false;
+      for (var i = 0; i < outerCircle.length; i++) {
+        if (chainIndex[i] == -1) {
+          match1 = -1; 
+          match2 = -1;
+          for (var j = 0; j < lengthOfChain; j++) {
+            if (this.isEdgeToChainMember(outerCircleChains[j], outerCircle[i]) && chainIndex[i] == -1) {
+              if (match1 == -1) {
+                match1 = j;
+              }
+              else {
+                match2 = j;
+              }
+            }
+          }
+
+          if (match1 > -1 && match2 == -1) {
+            this.addVertex(outerCircleChains[match1], outerCircle[i]);
+            chainIndex[i] = match1;
+            addedToChain = true;
+          }
+          else if (match1 > -1 && match2 > -1) {
+            if (outerCircleChains[match1].length < outerCircleChains[match2].length) {
+              min = match1;
+            }
+            else {
+              min = match2;
+            }
+            chainIndex[i] = min;
+            addedToChain = true;
+          }
+        }
+      }
+    } while (addedToChain);
+
+    //If no vertex can be added, find the chain with minimum length, and then add all unplaceded vertices to it.
+    min = 0;
+    for (var i = 0; i < lengthOfChain; i++) {
+      if (outerCircleChains[min].length > outerCircleChains[i].length) {
+        min = i;
+      }
+    }
+    for (var i = 0; i < outerCircle.length; i++) {
+      if (chainIndex[i] == -1) {
+        this.addVertex(outerCircleChains[min], outerCircle[i]);
+      }
+    }
+    return outerCircleChains;
+  };
+
+  /**
+  * Divides the vertices by placing them either in the inner circle or outer circle.  All inner circle vertices will have 
+  * a degree greater than 2 or will be adjacent to two other inner circle vertices.  The rest of the vertices are placed
+  * in the outer circles. 
+  */
+  automatonproto.assignToCircles = function (vertices, innerCircle, outerCircle) {
+    for (var i = 0; i < vertices.length; i++) {
+      
+      if (this.degree(vertices, vertices[i]) > 2) {
+        innerCircle.push(vertices[i]);
+      }
+      else {
+        outerCircle.push(vertices[i]);
+      }
+    }
+    if (innerCircle.length == 0) {
+      innerCircle = outerCircle;
+      outerCircle = [];
+      return;
+    }
+
+    var innerCircleInsertion;
+    var count;
+    do {
+      innerCircleInsertion = false;
+      for (var i = 0; i < outerCircle.length; i++) {
+        count = 0;
+        for (var j = 0; j < innerCircle.length; j++) {
+          if (this.hasEdge(outerCircle[i], innerCircle[j]) || this.hasEdge(innerCircle[j], outerCircle[i])) {
+            count++;
+          }
+        }
+        if (count >= 2) {
+          innerCircle.push(outerCircle[i]);
+          outerCircle.splice(i, 1);
+          innerCircleInsertion = true;
+        }
+      }
+    } while (innerCircleInsertion);
+  };
+  //Find the degree of a given node
+  automatonproto.degree = function(vertices, node) {
+    var degree = 0;
+    for (var q = 0; q < vertices.length; q++) {
+      if (vertices[q].edgeTo(node) || node.edgeTo(vertices[q])) {
+        degree++;
+      }
+      /*
+      if (node.edgeTo(vertices[q])) {
+        degree++;
+      }*/
+    }
+    return degree;
+  };
+  ////////////////////////////////////////////////////////////////////////////////
+  /*
+  *
+  */
+  automatonproto.treeLayoutAlg = function(hierarchical) {
+    var vertices = this.nodes();
+    if (this.nodeCount() == 0) {
+      return;
+    }
+
+    if (hierarchical) {
+      //make sure the right kind of graph is present for
+      //hierarchical graphs.
+      vertices.sort(function(a, b) {
+        var degreea = 0;
+        var degreeb = 0;
+        
+        for (var q = 0; q < vertices.length; q++) {
+          if (vertices[q].edgeTo(a)/* && vertices[q] != a*/) {
+            degreea++;
+          }
+          if (vertices[q].edgeTo(b)/* && vertices[q] != b*/) {
+            degreeb++;
+          }
+        }
+        return degreea - degreeb;
+        //return a.neighbors().length - b.neighbors().length;
+      });
+    }
+    else {
+      vertices.sort(function(a, b) {
+        var degreea = 0;
+        var degreeb = 0;
+        for (var q = 0; q < vertices.length; q++) {
+          if (vertices[q].edgeTo(a) || a.edgeTo(vertices[q])) {
+            degreea++;
+          }
+          
+          if (vertices[q].edgeTo(b) || b.edgeTo(vertices[q])) {
+            degreeb++;
+          }
+          
+        }
+        return degreeb - degreea;
+      });
+    }
+    var notPlaced = [];
+    for (var m=0; m<vertices.length; m++) {
+      notPlaced.push(vertices[m]);
+    }
+    //var notPlaced = vertices;
+    var firstLevel = [[], null];
+    var counter;
+    while (notPlaced.length > 0) {
+      firstLevel[0].push(notPlaced[0]);
+      notPlaced.splice(0, 1);
+      counter = firstLevel;
+      while (counter != null && notPlaced.length > 0) {
+        this.processChildren(notPlaced, counter, hierarchical);
+        counter = counter[1];
+      }
+    }
+    this.treelayoutHelper(firstLevel, 0);
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+
+
+  };
+  automatonproto.treelayoutHelper = function(level, height) {
+    var currentX = -1.0 * level[0].length * (30 + 30) / 2;
+    for (var v = 0; v < level[0].length; v++) {
+      level[0][v].moveTo(currentX, height);
+      currentX = currentX + 30 + 30;
+    }
+    if (level[1] != null) {
+      this.treelayoutHelper(level[1], height + 60);
+    }
+  };
+
+  /*
+  * This method checks the list of vertices that haven't been placed in a level to determine if any
+  * vertices in this level have any non-placed vertices as children.  All children found are placed in
+  * the next level down the hierarchy.
+  */
+  automatonproto.processChildren = function(notPlaced, level, hierarchy) {
+    var chain;
+    var lastChain = null;
+
+    for (var i = 0; i < level[0].length; i++) {
+      chain = [];
+      for (var j = notPlaced.length - 1; j >= 0; j--) {
+        if ((this.hasEdge(level[0][i], notPlaced[j]) || (this.hasEdge(notPlaced[j], level[0][i]) && !hierarchy)) && level[0][i] != notPlaced[j]) {
+          this.addVertex(chain, notPlaced[j]);
+          //chain = thisChain.slice();
+          notPlaced.splice(j, 1);
+        }
+      }
+      /* Then, align this VertexChain to the last chain generated in the level to minimize overlaps.        
+       * If there are vertices in the last chain, add the vertices in the last chain generated to the next, 
+       * level, since the last chain is done with alignment.  Define the next level if necessary.  After
+       * this, set the current chain to be the last chain.
+       */
+      if (lastChain != null) {
+        this.alignTwoChains(lastChain, chain);
+        if (lastChain.length > 0) {
+          if (level[1] == null) {
+            level[1] = [[], null];
+          }
+          for (var m = 0; m < lastChain.length; m++) {
+            level[1][0].push(lastChain[m]);
+          }
+        }
+      }
+      lastChain = chain;
+      
+
+
+    }
+    //Finally, add the last chain generated to the graph.
+    if (lastChain != null && lastChain.length > 0) {
+      if (level[1] == null) {
+        level[1] = [[], null];
+      }
+      for (var b = 0; b < lastChain.length; b++) {
+        level[1][0].push(lastChain[b]);
+      }
+      
+
+    }
+
+    //return nextLevel;
+  };
+
+  /*
+  * If there is an edge between a vertex in <code>first</code> and a vertex in <code>last</code>, then the two
+  * vertices are moved in their respective chains to their common border, with subchains in tow behind them.  This
+  * only happens for the first matching pair, and other matching pairs have no effect.  The vertex in 
+  * <code>first</code> will be moved to the end of vertices in its <code>VertexChain</code>, and the vertex in 
+  * <code>last</code> will be moved to the beginning of vertices in its <code>VertexChain</code>.
+  */
+  automatonproto.alignTwoChains = function(firstChain, nextChain) {
+    var fstart, fend, nstart, nend;
+    for (var j = 0; j < firstChain.length; j++) {
+      for (var k = 0; k < nextChain.length; k++) {
+        if (this.getDegreeInChain(firstChain, firstChain[j]) < 2 
+          && this.getDegreeInChain(nextChain, nextChain[k]) < 2
+          && (this.hasEdge(firstChain[j], nextChain[k]) || this.hasEdge(nextChain[k], firstChain[j]))) {
+          fstart=j;   
+          fend=j;   
+          nstart=k;   
+          nend=k;
+          while (fstart > 0 && (this.hasEdge(firstChain[fstart], firstChain[fstart - 1]) || this.hasEdge(firstChain[fstart - 1], firstChain[fstart]))) {
+            fstart--;
+          }
+          while (fend < firstChain.length - 1 && (this.hasEdge(firstChain[fend], firstChain[fend + 1]) || this.hasEdge(firstChain[fend + 1], firstChain[fend]))) {
+            fend++;
+          }
+          while (nstart > 0 && (this.hasEdge(nextChain[nstart], nextChain[nstart - 1]) || this.hasEdge(nextChain[nstart - 1], nextChain[nstart]))) {
+            nstart--;
+          }
+          while (nend < nextChain.length - 1 && (this.hasEdge(nextChain[nend], nextChain[nend + 1]) || this.hasEdge(nextChain[nend + 1], nextChain[nend]))) {
+            nend++;
+          }
+          this.orientSubChain(firstChain, firstChain.length - 1, fstart + fend - j, fstart, fend, true);
+          this.orientSubChain(nextChain, 0, nstart+nend-k, nstart, nend, false);
+          return;
+        }
+      }
+    }
+  }
+  /*
+  * 
+  */
+  automatonproto.orientSubChain = function(chain, destIndex, matchingIndex, start, end, shuffleDirection) {
+    var toMove = [];
+    for (var l = 0; l < end-start+1; l++) {
+      toMove.push(0);
+    }
+    var dest, chainSize;
+    chainSize = chain.length;
+    if (destIndex > 0 && destIndex >= start) {
+      dest = destIndex + start - end - 1;
+    }
+    else {
+      dest = destIndex;
+    }
+    for (var i = start; i <= end; i++) {
+      //toMove.splice(i-start, 1, chain[i]);
+      toMove[i-start] = chain[i];
+    }
+    for (var j = 0; j < toMove.length; j++) {
+      //if (toMove[j] != 0) {
+      chain.splice(chain.indexOf(toMove[j]), 1);
+      //}
+    }
+    for (var k = 0; k < toMove.length; k++) {
+      if (shuffleDirection) {
+
+        if (destIndex == chainSize || dest == chain.length) {
+          if (matchingIndex == start/* && toMove[toMove.length-1-k] != 0*/) {
+            chain.push(toMove[toMove.length-1-k]);
+          }
+          else {
+            if (toMove[k] != 0) {
+             chain.push(toMove[k]);
+            }
+          }
+        }
+        else if (matchingIndex == start) {
+          chain.splice(dest+1, 0, toMove[toMove.length-1-k]);
+        }
+        else {
+          //if (toMove[k] != 0) {
+          chain.splice(dest+1, 0, toMove[k]);
+          //}
+        }
+      }
+      else if (matchingIndex == start) {
+        //if (toMove[k] != 0) {
+        chain.splice(dest, 0, toMove[k]);
+        //}
+        
+      }
+      else {
+        //if (toMove[toMove.length-1-k] != 0) {
+        chain.splice(dest, 0, toMove[toMove.length-1-k]);
+        //}
+      }
+    }
+    return chain;
+  };
+
+  /*
+  * Vertex Chain functions
+  */
+  automatonproto.addVertex = function(chain, vertex) {
+    var destIndex, subChainBound;
+    if (chain == null) {
+      chain = [];
+    }
+    for (var i=0; i<chain.length; i++) {
+      if (this.hasEdge(vertex, chain[i]) || this.hasEdge(chain[i], vertex)) {
+        //If there is an open node to the right of the vertex, then it is inserted there.
+        if (i == chain.length - 1 || !(this.hasEdge(chain[i], chain[i+1]) || this.hasEdge(chain[i+1], chain[i]))) {
+          destIndex = i + 1;
+        }
+        //Otherwise, then the node is inserted to the left.
+        else {
+          destIndex = i;
+        }
+        chain.splice(destIndex, 0, vertex);
+        //Now check to see if there is at least one more node in the chain that this links to.  That node,
+         //if it has a degree <= 2 (inc. the newly added node), can be put on the opposite side of this.
+        for (var j=i+2; j<chain.length; j++) {
+          if ((this.hasEdge(vertex, chain[j]) || this.hasEdge(chain[j], vertex)) && this.getDegreeInChain(chain, chain[j]) <= 2) {
+            if (j<chain.length - 1 && (this.hasEdge(chain[j], chain[j+1]) || this.hasEdge(chain[j+1], chain[j]))) {
+              chain = this.orientSubChain(chain, destIndex, j, j, chain.length-1, (destIndex==i+1));
+            }
+            else {
+              subChainBound = j;
+              while (subChainBound > i+2 && (this.hasEdge(chain[subChainBound-1], chain[subChainBound]) || this.hasEdge(chain[subChainBound], chain[subChainBound-1]))) {
+                subChainBound--;
+              }
+              this.orientSubChain(chain, destIndex, j, subChainBound, j, (destIndex==i+1));
+            }
+            return;
+          }
+        }
+        return;
+      }
+    }
+    //Added at end if there are no adjacencies.
+    chain.push(vertex);
+  };
+
+  /*
+  * Get the degree of give vertex in a given chain.
+  */
+  automatonproto.getDegreeInChain = function(chain, vertex) {
+    var count = 0;
+    for (var i = 0; i < chain.length; i++) {
+      if ((this.hasEdge(vertex, chain[i]) || this.hasEdge(chain[i], vertex)) && vertex != chain[i]) {
+        count++;
+      }
+    }
+    return count;
+  };
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+  /*
+  * Spiral layout algorithms
+  */
+  automatonproto.spiralLayoutAlg = function(options) {
+    var vertices = this.nodes();
+    if (this.nodeCount() == 0) {
+      return;
+    }
+    /*
+    vertices.sort(function(a, b) {
+      return b.neighbors().length - a.neighbors().length;
+    });
+    */
+    var chain = [];
+    vertices.sort(function(a, b) {
+      var degreea = 0;
+      var degreeb = 0;
+      for (var q = 0; q < vertices.length; q++) {
+        if (vertices[q].edgeTo(a)) {
+          degreea++;
+        }
+        if (a.edgeTo(vertices[q])) {
+          degreea++;
+        }
+        if (vertices[q].edgeTo(b)) {
+          degreeb++;
+        }
+        if (b.edgeTo(vertices[q])) {
+          degreeb++;
+        }
+      }
+      return degreeb - degreea;
+    });
+    for (var j = 0; j < vertices.length; j++) {
+      this.addVertex(chain, vertices[j]);
+    }
+    var r = 0;
+    var theta = 0;
+    var posShift = (Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2))) + 30;
+    for (var i=0; i<this.nodeCount(); i++) {
+      r = Math.sqrt(Math.pow(r, 2) + Math.pow(posShift, 2));      
+      theta = theta + Math.asin(posShift / r);
+      chain[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+      //vertices[i].moveTo(r, theta);
+    }
+    
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+
+  };
+  automatonproto.findDegree = function(node) {
+    var vertices = this.nodes();
+    var degree = 0;
+    for (var q= 0; q < this.nodeCount(); q++) {
+      if (this.hasEdge(vertices[q], node)) {
+        degree++;
+      }
+    }
+    if (this.hasEdge(node, node)) {
+      degree++;
+    }
+    return degree;
+  }
+  automatonproto.shiftOntoScreen = function(size, buffer, scaleOnlyOverflow) {
+    if (size == 0) {
+      return;
+    }
+    var vertices = this.nodes();
+    var currentX, currentY, minX, minY, maxX, maxY, heightRatio, widthRatio;
+    //First, find the extreme values of x & y
+    minX=100000;   minY=100000;   
+    maxX=0;   maxY=0;
+    for (var j=0; j<vertices.length; j++) {
+      currentX = vertices[j].element.position().left;
+      currentY = vertices[j].element.position().top; 
+      if (currentX < minX)
+        minX = currentX;
+      if (currentX > maxX)
+        maxX = currentX;
+      if (currentY < minY)
+        minY = currentY;      
+      if (currentY > maxY)
+        maxY = currentY;
+    }
+    //Then, set all points so that their coordinates range from (0...maxX-minX, 0...maxY-minY)
+    for (var k=0; k<vertices.length; k++) {
+      vertices[k].moveTo(vertices[k].element.position().left - minX, vertices[k].element.position().top - minY);        
+    }
+    
+    //Calculate whether the points go off the defined screen minus buffer space, and adjust
+    widthRatio = (maxX - minX) / (size - 2 * buffer);
+    heightRatio = (maxY - minY) / (size - 2 * buffer);        
+    if (widthRatio > 1.0 || !scaleOnlyOverflow) {
+      for (var m=0; m<vertices.length; m++) {
+        vertices[m].moveTo(vertices[m].element.position().left / widthRatio, vertices[m].element.position().top);   
+      }
+    }
+    if (heightRatio > 1.0 || !scaleOnlyOverflow) {
+      for (var n=0; n<vertices.length; n++) {
+
+        vertices[n].moveTo(vertices[n].element.position().left, vertices[n].element.position().top / heightRatio);
+
+      }
+    }
+    
+    //Finally, shift the points right and down the respective buffer values
+    for (var x=0; x<vertices.length; x++) {
+      vertices[x].moveTo(vertices[x].element.position().left + buffer, vertices[x].element.position().top + buffer);
+    }
+  };
+  /*
+  *Circle Layout Algorithm
+  */
+  automatonproto.circleLayoutAlg = function (options) {
+    var vertices = this.nodes();
+    if (vertices.length == 0) {
+      return;
+    }
+    var boxes = [];
+    for (var i=0; i < vertices.length; i++) {
+      var addTo = this.addToExistingBox(boxes, vertices[i]);
+      if (!addTo) {
+        //[chain, right, down, upperleft, size]
+        var box = [[], null, null, [0, 0], [0, 0]];
+        var vertexDim = 30;
+        var vertexBuffer = 30;
+        this.addVertex(box[0], vertices[i]);
+        boxes.push(box);
+      }
+    }
+    for (var m = boxes.length - 1; m > 0; m--) {
+      this.mergeIfPossible(boxes, boxes[m], m);
+    }
+    
+    for (var i = 0; i<boxes.length; i++) {
+      this.layoutInCircleAndPack(boxes, boxes[i]);
+    }
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+  };
+  
+  /**
+   * Tries to merge two boxes, and will do so if one vertex in the given
+   * box has an edge with any boxes in the list of boxes.
+   *
+   */
+  automatonproto.mergeIfPossible = function(boxes, current, max) {
+    var toSearch = [[], null, null, [0, 0], [0, 0]];
+    for (var n = max-1; n >= 0; n--) {
+      toSearch = boxes[n];
+      for (var k = 0; k<current[0].length; k++) {
+        if (this.isEdgeToChainMember(toSearch[0], current[0][k])) {
+          this.merge(toSearch[0], current[0]);
+          boxes.splice(boxes.indexOf(current), 1);
+          return;
+        }
+      }
+    }
+  };
+  /**
+   * Moves all vertices in the box given into this box.
+   * 
+   */
+   automatonproto.merge = function(chain, box) {
+    for (var i = 0; i<box.length; i++) {
+      this.addVertex(chain, box[i]);
+    }
+   }
+  /**
+   * Adds the given vertex to a box if it has an edge to one of them.
+   * 
+   * return Whether the given vertex was added.
+   */
+  automatonproto.addToExistingBox = function(boxes, vertex) {
+    for (var j = 0; j < boxes.length; j++) {
+      if (this.isEdgeToChainMember(boxes[j][0], vertex)) {
+        this.addVertex(boxes[j][0], vertex);
+        return true;
+      }
+    }
+    return false;
+  };
+  /**
+   * Returns whether the given vertex has an edge to a <code>VertexChain</code> member.
+   *  
+   */
+  automatonproto.isEdgeToChainMember = function(chain, vertex) {
+    if (this.getDegreeInChain(chain, vertex) > 0) {
+      return true;
+    }
+    return false;
+  };
+  //Layout in circle 
+  automatonproto.layoutInCircle = function(vertices, r, midTheta, span) {
+    var diagonalLength = Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2)) + 30;
+
+    if (vertices.length == 0) {
+      return;
+    }
+    if (vertices.length == 1) {
+      if (r == 0) {
+        vertices[0].moveTo(0, 0);
+      }
+      else {
+        vertices[0].moveTo(r + diagonalLength, midTheta);
+      }
+      return diagonalLength;
+    }
+    //var radius = diagonalLength / thetaDivision;
+    var startTheta;
+    var thetaDivision;
+    var divisions;
+    startTheta = midTheta - span / 2;
+    if (2 * Math.PI - span < .0001) {
+      divisions = vertices.length;
+    }
+    else {
+      divisions = vertices.length - 1;
+    }
+    thetaDivision = span / divisions;
+    var radius = diagonalLength / thetaDivision;
+    if (radius < r + diagonalLength) {
+      radius = r + diagonalLength;
+    }
+
+    for (var i=0; i<vertices.length; i++) {
+      vertices[i].moveTo(radius, startTheta + thetaDivision * i)
+    }
+    return radius;
+  };
+
+  automatonproto.layoutInCircleAndPack = function (boxes, box) {
+    var vertices = box[0];
+    var radius = this.layoutInCircle(vertices, 0, Math.PI, 2*Math.PI);
+    for (var i=0; i<this.nodeCount(); i++) {
+      var r = vertices[i].element.position().left;      
+      var theta = vertices[i].element.position().top;
+      vertices[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+    }
+    box[4] = [2 * (radius + 30) + 30, 2 * (radius + 30) + 30];
+    if (boxes.indexOf(box) != 0) {
+      this.setUpperLeft(boxes, box, boxes[0]);
+      for (var j = 0; j < box.length; j++) {
+        box[j].moveTo(upperLeftArray[j][0] + vertices[j].element.position().left, upperLeftArray[j][1] + vertices[j].element.position().top);
+      }
+    }
+  };
+  /**
+   * Sets the value of the point representing this box's upper-left corner.  This is calculated
+   * by traversing the linked list the boxes form and attempting to find an open space.  If
+   * the height of this box is less than or equal to the parameter box, then this box's upperLeft 
+   * point will be in the first available point to the right of the parameter box, with the same
+   * height.  If not, the point will be below and perhaps to the right of the parameter box.   
+   * 
+   * @param current the current box in the traversal of the linked list.
+   */
+  automatonproto.setUpperLeft = function(boxes, thisBox, current) {
+    if (thisBox[4][1] <= current[4][1]) {
+      thisBox[3] = [thisBox[3][0] + current[4][0], thisBox[3][1]];
+      while (current[1] != null) {
+        current = current[1];
+        thisBox[3] = [thisBox[3][0] + current[4][0], thisBox[3][1]];
+      }
+      current[1] = thisBox;
+      return;
+    }
+    var upperLeft = [upperLeftArray[currIndex][0], upperLeftArray[currIndex][1] + 30];
+    thisBox[3] = [thisBox[3][0], thisBox[3][1] + current[4][1]];
+    if (current[2] == null) {
+      current[2] = thisBox;
+    }
+    else {
+      this.setUpperLeft(boxes, thisBox, current[2]);
+    }
+  };
   // function to hide the right click menu
   // called when mouse clicks on anywhere on the page except the menu
   automatonproto.hideRMenu = function () {
