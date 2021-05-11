@@ -50,30 +50,34 @@ Pointer Manipulation
 
 .. slide:: Reference Variables (1)
 
-   * In Java::
+   * In Java - \
+     .. code-block:: java
 
-     Employee empRef;
+       Employee empRef;
 
-   * Techically this has no value (though Java will **try** to protect
-     you from using an unitialized variable).
+   * Technically this has no value (though Java will **try** to protect \
+     you from using an uninitialized variable).
 
      .. inlineav:: empRefnullCON dgm
         :links: AV/Pointers/empRefnullCON.css
         :scripts: AV/Pointers/empRefnullCON.js
         :align: center
 
+
 .. slide:: Reference Variables (2)
 
-   * Assignment::
-    
-     empRef = new Employee("John", 1000);
-        
-     .. inlineav:: employeeEmpRefCON dgm
-        :links: AV/Pointers/employeeEmpRefCON.css
-        :scripts: AV/Pointers/employeeEmpRefCON.js
-        :align: center
+   * Variable assignment:: \
+     .. code-block:: java
 
-   * Everyone's favorite bug: pointers not pointing in the right place.
+       empRef = new Employee("John", 1000);
+
+
+   .. inlineav:: employeeEmpRefCON dgm
+      :links: AV/Pointers/employeeEmpRefCON.css
+      :scripts: AV/Pointers/employeeEmpRefCON.js
+      :align: center
+
+   * **Everyone's** favorite bug: pointers not pointing in the right place.
 
 
 .. slide:: Shallow vs. Deep Copy

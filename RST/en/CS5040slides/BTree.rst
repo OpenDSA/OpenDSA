@@ -23,6 +23,7 @@ B-Trees
 
    * The B-Tree is now the standard file organization for applications
      requiring insertion, deletion, and key range searches.
+
       * Databases
       * File Systems
 
@@ -56,6 +57,7 @@ B-Trees
 
    * A B-Tree node is usually selected to match the size of a disk
      block.
+
       * A B-Tree node could have hundreds of children.
 
 

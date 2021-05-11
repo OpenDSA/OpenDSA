@@ -29,11 +29,12 @@ Spatial Trees
 .. slide:: PR Quadtree
 
    .. odsafig:: Images/PRexamp.png
-
         :align: center
         :capalign: justify
         :figwidth: 90%
         :alt: Example of a PR quadtree
+
+        ..
 
 
 .. slide:: PR Quadtree

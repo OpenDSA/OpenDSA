@@ -96,6 +96,7 @@ Introduction
    * Link to Piazza forum
    * Post scores and grades
    * Access to OpenDSA (online textbook)
+
    .. _Canvas: https://canvas.vt.edu/courses/125208
 
 .. slide:: Role in the Curriculum
