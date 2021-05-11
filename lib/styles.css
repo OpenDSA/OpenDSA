@@ -3,7 +3,7 @@
 /*
   Google HTML5 slides template
 
-  Authors: Luke Mahé (code)
+  Authors: Luke Mahï¿½ (code)
            Marcin Wichary (code and design)
 
            Dominic Mazzoni (browser compatibility)
@@ -55,7 +55,7 @@ body {
   /* Problem */
   /*position: absolute;
   overflow: hidden;*/
-  width: 1100px;
+  min-width: 850px;
   height: 700px;
 
   /*left: 50%;
@@ -65,7 +65,7 @@ body {
   /*margin-left: -450px;
   margin-top: -350px; */
 
-  padding: 40px 60px;
+  padding: 20px 30px;
 
   box-sizing: border-box;
   -o-box-sizing: border-box;
@@ -79,7 +79,7 @@ body {
 
   background-color: white;
 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .21);
   border: 1px solid rgba(0, 0, 0, .3);
 
   transition: transform .3s ease-out;
@@ -436,7 +436,7 @@ li {
   margin-bottom: .5em;
 }
 ul li::before {
-  content: '·';
+  content: 'ï¿½';
 
   width: .75em;
   margin-left: -.75em;
@@ -562,7 +562,7 @@ q {
   margin-right: 150px;
 }
 q::before {
-  content: '“';
+  content: 'ï¿½';
 
   position: absolute;
   display: inline-block;
@@ -574,7 +574,7 @@ q::before {
   color: rgb(192, 192, 192);
 }
 q::after {
-  content: '”';
+  content: 'ï¿½';
 
   position: absolute;
   margin-left: .1em;
@@ -590,7 +590,7 @@ div.author {
   margin-right: 150px;
 }
 div.author::before {
-  content: '—';
+  content: 'ï¿½';
 }
 
 /* Size variants */

@@ -55,7 +55,7 @@ body {
   position: absolute;
   overflow: hidden;
 
-  width: 1000px;
+  min-width: 700px;
   height: 700px;
 
   left: 50%;
@@ -64,7 +64,7 @@ body {
   margin-left: -450px;
   margin-top: -350px;
 
-  padding: 40px 60px;
+  padding: 20px 30px;
 
   box-sizing: border-box;
   -o-box-sizing: border-box;
@@ -78,7 +78,7 @@ body {
 
   background-color: white;
 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .21);
   border: 1px solid rgba(0, 0, 0, .3);
 
   transition: transform .3s ease-out;
