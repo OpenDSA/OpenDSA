@@ -9,10 +9,10 @@
    :satisfies:
    :topic: FAEditor
 
-formal language graphs
+Original
 ======================
 
-test Editor
+fa Editor
 ---------------
 
 .. avembed:: AV/OpenFLAP/FA.html pe
