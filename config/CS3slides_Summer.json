@@ -1,0 +1,108 @@
+{
+  "title": "CS3 Coursenotes",
+  "desc": "CS3 Coursenotes",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "glob_exer_options": {},
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
+  "chapters": {
+    "Week 1": {
+      "CS3slides/Intro": {}
+    },
+    "Week 2": {
+      "CS3slides/AlgAnal": {}
+    },
+    "Week 3": {
+      "CS3slides/Lists": {},
+      "CS3slides/Binary": {}
+    },
+    "Week 4": {
+      "CS3slides/Binary2": {},
+      "CS3slides/Binary3": {}
+    },
+    "Week 5": {
+      "CS3slides/Heaps": {}
+    },
+    "Week 6": {
+      "CS3slides/Huffman": {},
+      "CS3slides/Trie": {},
+      "CS3slides/Overconstrained": {}
+    },
+    "Week 7-8": {
+      "CS3slides/Sorting1": {},
+      "CS3slides/Sorting2": {}
+    },
+    "Week 8-9": {
+      "CS3slides/FileProc": {}
+    },
+    "Week 10": {
+      "CS3slides/Hashing": {},
+      "CS3slides/MemManage": {}
+    },
+    "Week 11": {
+      "CS3slides/Union-Find": {}
+    },
+    "Week 12": {
+      "CS3slides/Graphs": {}
+    },
+    "Week 13": {
+      "CS3slides/Indexing": {}
+    },
+    "Week 14": {
+      "CS3slides/General": {}
+    }
+  }
+}

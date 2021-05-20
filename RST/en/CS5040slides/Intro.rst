@@ -31,8 +31,8 @@ Introduction
 
 .. slide:: Costs and Benefits
 
-   * Each data structure has costs and benefits.
-      * Rarely is one data structure better than another in all situations.
+   * Each data structure and each algorithm has costs and benefits.
+      * Rarely is one better than another in *all* situations.
    * Any data structure requires:
       * space for each data item it stores,
       * time to perform each basic operation,
