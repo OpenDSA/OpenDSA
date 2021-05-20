@@ -75,18 +75,18 @@ Introduction
 
 .. slide:: Administration stuff
 
-   * `Canvas site`_-> <https://canvas.vt.edu/courses/125208>
+   * `Canvas site`_-> <https://canvas.vt.edu/courses/131834>
    * Do you have a ForceAdd issue?
    * Who is here today?
 
-   .. _Canvas site: https://canvas.vt.edu/courses/125208
+   .. _Canvas site: https://canvas.vt.edu/courses/131834
 
 .. slide:: Course Mechanics
 
    * Go over `Syllabus`_
    * Course online support: Canvas, OpenDSA, Web-CAT
 
-   .. _Syllabus: https://canvas.vt.edu/courses/125208/assignments/syllabus
+   .. _Syllabus: https://canvas.vt.edu/courses/131834/pages/full-syllabus
 
 .. slide:: Canvas
 
@@ -97,11 +97,18 @@ Introduction
    * Post scores and grades
    * Access to OpenDSA (online textbook)
 
-   .. _Canvas: https://canvas.vt.edu/courses/125208
+   .. _Canvas: https://canvas.vt.edu/courses/131834
 
 .. slide:: Role in the Curriculum
 
-   * This course is recommended for graduate students who may not have had a formal data structures and algorithms course in the past.
+   * This course till show you how the choices you make in data structure and algorithm use and design impact the software tools you write.
+
+   * Who is the class intended for?
+     * Undergrad CS Majors, Minors and other computing intensive majors
+     * Graduate students who may not have had a formal data structures and algorithms course as undergrads.
+
+.. slide:: Being Successful in the Course
+
    * To do well, you must be able to handle both
       * Programming (we focus on projects with dynamic memory allocation and
         file processing, and they have significant design challenges)
@@ -130,9 +137,8 @@ Introduction
 
   * Homework due periodically through the semester
 
-    * Small homework (Chapter 1) due at 11pm this Friday (in 3 days)
 
-  .. _Modules: https://canvas.vt.edu/courses/125208/modules
+  .. _Modules: https://canvas.vt.edu/courses/131834/modules
 
 .. slide:: Web-CAT
 
@@ -143,24 +149,23 @@ Introduction
 
   .. _junit: https://junit.org/junit4/
 
-.. slide:: Project Milestones
+.. slide:: Project & Milestones
 
-   * 4 projects, each with a 3-4 week life cycle
-   * Most projects will have 3 milestones
+   * 3 projects, each with a 2 week life cycle
+   * Most projects will have 2 milestones
       * Intermediate deliverables with due dates
       * First due about a week after assignment
-      * Second due about 2 weeks before due date
-      * Third due about 1 week before due date
+      * Second due about 2 days before due date
    * Milestones designed to encourage incremental development
    * In previous semesters, milestones had the effect of boosting the final
      grade of the middle third of the class by about a full letter grade.
 
 .. slide:: Homework
 
-   * Look at Canvas
+   * Complete the course pre-assessment
+   * Log into Web-CAT: https://web-cat.cs.vt.edu
    * Look at Piazza site, make sure you are enrolled there (if not, email me)
    * Look at Project 1 spec: more on that in a minute
-   * Do Chapter 1 exercises in OpenDSA by 11:00pm Friday (in 3 days)
 
 .. slide:: Before you log out today
 

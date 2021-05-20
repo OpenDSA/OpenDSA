@@ -1,6 +1,6 @@
 {
-  "title": "CS3 Coursenotes",
-  "desc": "CS3 Coursenotes",
+  "title": "Data Structures and Algorithms Coursenotes",
+  "desc": "Data Structures and Algorithms Coursenotes for Summer terms",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
@@ -60,48 +60,46 @@
   }, 
   "chapters": {
     "Week 1": {
-      "CS3slides/Intro": {}
+      "CourseSpecific/CS3114SumI2021Intro": {},
+      "CS3slides/Intro": {},
+      "CourseSpecific/CS3114SumIIP1": {},
+      "CS5040slides/ProjManage": {},
+      "CS5040slides/Testing": {},
+      "CS3slides/AlgAnal": {},
+      "CS3slides/Lists": {},
+      "CS5040slides/Pointers": {}
     },
     "Week 2": {
-      "CS3slides/AlgAnal": {}
-    },
-    "Week 3": {
-      "CS3slides/Lists": {},
-      "CS3slides/Binary": {}
-    },
-    "Week 4": {
+      "CS5040slides/StackQueue": {},
+      "CS3slides/Binary": {},
+      "CS5040slides/Recursion": {},
       "CS3slides/Binary2": {},
-      "CS3slides/Binary3": {}
-    },
-    "Week 5": {
-      "CS3slides/Heaps": {}
-    },
-    "Week 6": {
-      "CS3slides/Huffman": {},
-      "CS3slides/Trie": {},
+      "CS3slides/Binary3": {},
+      "CS5040slides/BST": {},
+      "CS3slides/Heaps": {},
       "CS3slides/Overconstrained": {}
     },
-    "Week 7-8": {
+    "Week 3": {
       "CS3slides/Sorting1": {},
-      "CS3slides/Sorting2": {}
+      "CS3slides/Sorting2": {},
+      "CS5040slides/Sorting3": {},
+      "CS3slides/FileProc": {},
+
     },
-    "Week 8-9": {
-      "CS3slides/FileProc": {}
-    },
-    "Week 10": {
+    "Week 4": {
+      "CS5040slides/Buffering": {},
       "CS3slides/Hashing": {},
-      "CS3slides/MemManage": {}
-    },
-    "Week 11": {
-      "CS3slides/Union-Find": {}
-    },
-    "Week 12": {
-      "CS3slides/Graphs": {}
-    },
-    "Week 13": {
+      "CS3slides/MemManage": {},
       "CS3slides/Indexing": {}
     },
-    "Week 14": {
+    "Week 5": {
+      "CS5040slides/TTTree": {},
+      "CS5040slides/BTree": {},
+      "CS3slides/Graphs": {}
+    },
+    "Week 6": {
+      "CS5040slides/SkipList": {},
+      "CS3slides/Union-Find": {},
       "CS3slides/General": {}
     }
   }
