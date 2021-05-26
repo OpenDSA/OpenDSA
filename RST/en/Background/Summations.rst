@@ -75,40 +75,18 @@ comfortable with it.
 Here is a list of useful summations, along with their closed-form solutions.
 
 .. math::
-   \sum_{i = 1}^{n} i &=& \frac{n (n+1)}{2}.
-
-.. math::
-   \sum_{i = 1}^{n} i^2 &=& \frac{2 n^3 + 3 n^2 + n}{6} =
-   \frac{n(2n + 1)(n + 1)}{6}.
-
-.. math::
-   \sum_{i = 1}^{\log n} n &=& n \log n.
-
-.. math::
-   \sum_{i = 0}^\infty a^i &=& \frac{1}{1-a}\ \mbox{for}
-   \ 0 < a < 1.
-
-.. math::
-   \sum_{i=0}^{n} a^i &=& \frac{a^{n+1} - 1}{a - 1}\ \mbox{for}
-   \ a \neq 1.
-
-As special cases to this last summation, we have the following two:
-
-.. math::
-   \sum_{i = 1}^{n} \frac{1}{2^i} &=& 1 - \frac{1}{2^n},
-
-.. math::
-   \sum_{i = 0}^{n} 2^i &=& 2^{n+1} - 1.
-
-As a corollary to :eq:`sum7`,
-
-.. math::
-   \sum_{i = 0}^{\log n} 2^i &=& 2^{\log n + 1} - 1 = 2n - 1.
-
-Finally,
-
-.. math::
-   \sum_{i=1}^{n} \frac{i}{2^i} &=& 2 - \frac{n+2}{2^n}.
+   \sum_{i = 1}^{n} i &= \frac{n (n+1)}{2} \\
+   \sum_{i = 1}^{n} i^2 &= \frac{2 n^3 + 3 n^2 + n}{6} = \frac{n(2n + 1)(n + 1)}{6} \\
+   \sum_{i = 1}^{\log n} n &= n \log n \\
+   \sum_{i = 0}^\infty a^i &= \frac{1}{1-a}\ \text{for} \ 0 < a < 1 \\
+   \sum_{i = 0}^{n} a^i &= \frac{a^{n+1} - 1}{a - 1}\ \text{for} \ a \neq 1 \\
+   \text{As special cases to the last summation, we have the following two:} \ 
+   \sum_{i = 1}^{n} \frac{1}{2^i} &= 1 - \frac{1}{2^n} \\
+   \sum_{i = 0}^{n} 2^i &= 2^{n+1} - 1 \\
+   \text{As a corollary to the previous summation: } \ 
+   \sum_{i = 0}^{\log n} 2^i &= 2^{\log n + 1} - 1 = 2n - 1 \\
+   \text{Finally: } \ 
+   \sum_{i = 1}^{n} \frac{i}{2^i} &= 2 - \frac{n+2}{2^n} 
 
 The sum of reciprocals from 1 to :math:`n`, called the
 :term:`Harmonic Series` and written :math:`{\cal H}_n`, has a value
