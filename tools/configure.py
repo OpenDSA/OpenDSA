@@ -347,6 +347,15 @@ def initialize_conf_py_options(config, slides):
     options['book_name'] = config.book_name
     options['theme_dir'] = config.theme_dir
     options['theme'] = config.theme
+    options['html_theme_options'] = "'{}'"
+    if config.html_theme_options:
+      options['html_theme_options'] = "'" + json.dumps(config.html_theme_options).replace("'", "\\'") + "'"
+    options['html_css_files'] = ""
+    if config.html_css_files:
+      options['html_css_files'] = ", '" + "', '".join(config.html_css_files) + "'"
+    options['html_js_files'] = ""
+    if config.html_js_files:
+      options['html_js_files'] = ", '" + "', '".join(config.html_js_files) + "'"
     options['odsa_dir'] = config.odsa_dir
     options['book_dir'] = config.book_dir
     options['code_dir'] = config.code_dir
