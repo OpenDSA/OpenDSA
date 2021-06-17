@@ -35,14 +35,26 @@ initialize the submodules and install the python packages requirements
 of OpenDSA.
 **This will probably take a long time to run the first time.**
 
-In order to interact with OpenDSA, you must open a bash shell within the container
-in order to run commands use the following command:
+Once this command completes, it will fire up a local web server, that
+you can reach at this URL: `http://127.0.0.1:8080/`. This terminal
+will not be useable at this point since it is a console for the web
+server.
+
+In order to interact with OpenDSA, you must get access to a shell
+within the container. To do this, open another console window, go
+to the root of your OpenDSA repository, and issue the following
+command:
 
     docker-compose exec opendsa bash
 
-which will place you in the correct location within the container to run any OpenDSA commands including `Make Test`
+which will place you in the correct location within the container to
+run any OpenDSA commands including `Make Test`. Note: If you are on
+Windows using the MINGW64 shell, you might need to use the command:
 
-In order to stop the container you can use CTRL + C (sending an interrupt signal).
+    winpty docker-compose exec opendsa bash
+
+In order to stop the container you can use CTRL + C (sending an
+interrupt signal).
 
 [Note that this won't work unless you have the proper tools
 installed.]
