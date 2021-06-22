@@ -64,17 +64,36 @@
     "required": true
   },
   "chapters": {
-    "Test Deep Directory": {
-      "Patrick/Deep/TestDeepDir": {}
+    "Test Subdirectory": {
+      "Patrick/subdir/TestSubdir": {},
+      "Patrick/testNonSubdir": {}
+    },
+    "Test inlineav dgm": {
+      "Binary/BinaryTreeFullThm": {}
+    }, 
+    "Test inlineav ss": {
+      "Binary/TreeTrie": {}
+    }, 
+    "Test inlineav ff": {
+      "PIExample/CFGTransormations": {}
+    },
+    "Test codeinclude" :{
+      "Binary/BSTDict": {}
+    },
+    "Test todos" :{
+      "BTRecurTutor/recSorting": {}
+    },
+    "Test code workout exercises" :{
+      "PointersJava/Exercises": {}
+    },
+    "Test Kahn exercise" :{
+      "Background/MathpreSumm": {}
+    },
+    "Test odsafigs" :{
+      "PointersCPP/BasicPointers": {}
     },
     "Test ShowHideContent": {
-      "Patrick/ShowHideContentTest": {}
-    },
-    "Main Tests": {
-      "NP/NPComplete": {},
-      "Patrick/testInlineAV": {},
-      "Patrick/testInlineAVff": {},
-      "SeniorAlgAnal/Impossible": {}
+      "Test/BasicPointers1t": {}
     },
     "Design I": {
       "Design/ADT": {

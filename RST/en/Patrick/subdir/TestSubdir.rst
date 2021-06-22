@@ -4,16 +4,29 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Patrick
-   :requires:
-   :satisfies: 
-   :topic: 
+    :author: Patrick
+    :requires:
+    :satisfies: 
+    :topic: 
 
+.. _ref_to_test_deep_folder:
 
 Test Deep Folder
 ================
 
 This is a test of a RST file that is deeper in the RST folder structure than usual.  
+
+Testing links
+-------------
+
+Link to top of the SubDir test page: :ref:`ref_to_test_deep_folder`
+
+Link to top of the non-SubDir test page: :ref:`ref_to_test_not_deep_folder`
+
+Doc Link to the SubDir test page: :doc:`TestSubdir` (note that creating this link does NOT need directory specificied)
+
+Doc Link to the non-SubDir test page: :doc:`testNonSubdir`
+
 
 A small iframe
 --------------
@@ -33,7 +46,8 @@ A small slideshow
 -----------------
 
 .. inlineav:: FibTreeCON ss
-   :links:   /AV/Abhishek/FibTreeCON.css
-   :scripts: /AV/Abhishek/FibTreeCON.js
+   :links:   /AV/SeniorAlgAnal/FibTreeCON.css
+   :scripts: /AV/SeniorAlgAnal/FibTreeCON.js
    :align: center
    :output: show
+
