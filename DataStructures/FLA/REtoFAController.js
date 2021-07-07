@@ -209,6 +209,7 @@ controllerProto.nextStep = function() {
 		this.jsav.step();
 		this.jsav.umsg("The automaton is complete.");
 		this.fa.layout();
+		$('#export').show();
 		}
 		//$('#export').show();
 	}
@@ -247,6 +248,7 @@ controllerProto.completeAll = function() {
 		}
 		this.completeStep();
 	}
+	$('#export').show();
 	return this.fa;
 }
 

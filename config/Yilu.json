@@ -72,6 +72,10 @@
 
     "Right quotient algorithm": {
       "Yilu/RightQuotient":{}
+    }, 
+
+    "Intersection with PDA": {
+      "Yilu/IntersectPDA":{}
     }
   }
 }

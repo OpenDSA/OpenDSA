@@ -16,11 +16,12 @@ Parsing Command Line Parameters In Your Progam
 Parameters In Programming
 -------------------------
 
-Alright I get the idea of parameters for a function, that's easy enough. But
-how does a Program itself have parameters? This comes in the Main function that
-every Java program has. Consider this the "launch" function. Usually the "main"
-function is named Main and takes an array of strings as its parameter
-(see below).
+You probably understand the concept of arameters for a function.
+But how does a Program itself have parameters?
+This comes in the Main function that every Java program has.
+Consider this the "launch" function.
+Usually the "main" function is named Main and takes an array of
+strings as its parameter, like this.
 
 ::
 
@@ -28,7 +29,8 @@ function is named Main and takes an array of strings as its parameter
 
 
 So when you launch the command from the terminal it passes in an array of all
-the additional information (and it usually trims white space). So if I run
+the additional information (and it usually trims white space).
+So if I run
 
 .. odsafig:: Images/parameterexample.png
    :width: 500
@@ -38,11 +40,11 @@ the additional information (and it usually trims white space). So if I run
    :alt: ls with paramaters
 
 
-Then args is an array containing::
+then `args` is an array containing::
 
    {"-l", "file.txt"}
 
-\*Authors Note: This is true for Java, but is a little different for C or C++.
+Note while this is true for Java, it is a little different for C or C++.
 In C, the first parameter that you are given is always the command name so
 your array in C would be::
 
@@ -61,23 +63,33 @@ Let's see how it works.
 
 .. codeinclude:: Java/Tutorials/MainParameters.java
 
-We have our main function take an array of Strings (named args). If that array
-is empty then we may or may not want to exit as we have no parameters. It will
-then progress into a while loop that iterates through all parameters. The syntax
-of this loop is useful as it does not lock parameters into any fixed order. You
-can invoke them anyway you wish. The switch case statement allows you to easily
-write for any parameter and add a case for unrecognized parameters by using the
-default case for any non matching parameters. In this example I choose to exit
-after printing the unrecognized string. In the future you may wish to change
-this to something else. You can learn more about |external_link2|.
-It is also important to note that this function will possibly throw an exception
-or behave in an unexpected way if you use "-f" but do not give a file name. For
-example you call the program with {"-f", "-v"}, this will set the filename to -v.
-Or if you call the program with {"-f"}, you will get an exception for trying to
-access outside the array bounds. You can prevent this by using a try catch, but
-for simplicity's sake I chose to make example very simple. Once you have your
-parameters set, you can call the appropriate methods to launch your program.
-There you go simple command line parsing!
+We have our main function take an array of Strings (named args).
+If that array is empty then we may or may not want to exit as we have
+no parameters.
+It will then progress into a while loop that iterates through all
+parameters.
+The syntax of this loop is useful as it does not lock parameters into
+any fixed order.
+You can invoke them any way you wish.
+The switch case statement allows you to easily write for any parameter
+and add a case for unrecognized parameters by using the default case
+for any non matching parameters.
+In this example I choose to exit after printing the unrecognized
+string.
+In the future you may wish to change this to something else.
+You can learn more about |external_link2|.
+It is also important to note that this function will possibly throw an
+exception or behave in an unexpected way if you use "-f" but do not
+give a file name.
+For example if you call the program with {"-f", "-v"}, this will set
+the filename to -v.
+Or if you call the program with {"-f"}, you will get an exception for
+trying to access outside the array bounds.
+You can prevent this by using a try-catch, but I chose to keep this
+example very simple.
+Once you have your parameters set, you can call the appropriate
+methods to launch your program.
+There you go, simple command line parsing!
 
 .. |external_link2| raw:: html
 
