@@ -107,7 +107,7 @@ $(document).ready(function () {
 
   //frame 22
   av.umsg(Frames.addQuestion("q22"));
-  var url = "../../../../AV/OpenFLAP/machines/TM/TMexample1.jff";
+  var url = "../../../AV/OpenFLAP/machines/TM/TMexample1.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, top:300, url: url});
   av.step();
 
@@ -273,7 +273,7 @@ $(document).ready(function () {
 
   //frame 52
   av.umsg("Here is the graphical view of the machine.");
-  var url = "../../../../AV/OpenFLAP/machines/TM/TMabc.jff";
+  var url = "../../../AV/OpenFLAP/machines/TM/TMabc.jff";
   var graph1 = av.ds.TM({left: 100, top: 200, width: 600, height: 325, url: url});
   av.step();
 

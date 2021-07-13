@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   //frame 6
   av.umsg(Frames.addQuestion("q6"));
-  var url = "../../../../AV/OpenFLAP/machines/TM/TMexample1.jff";
+  var url = "../../../AV/OpenFLAP/machines/TM/TMexample1.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, top:300, url: url});
   av.step();
 
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
   //frame 15
   av.umsg(Frames.addQuestion("q15"));
-  var url2 = "../../../../AV/OpenFLAP/machines/TM/TMab.jff";
+  var url2 = "../../../AV/OpenFLAP/machines/TM/TMab.jff";
   var graph2 = av.ds.TM({top:250, width: 600, height: 325, url: url2});
   av.step();
 
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
   //frame 22
   av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head when beginning to process input string '11'.");
-  var url3 = "../../../../AV/OpenFLAP/machines/TM/TMPlusone.jff";
+  var url3 = "../../../AV/OpenFLAP/machines/TM/TMPlusone.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url3});
   var tape = av.ds.tape(["#", "1", "1", "#", "#"], 50 + xStart, 50 + yStart, "both");
   var rect = av.g.rect(60 + xStart, 140 + yStart, 110, 110);
