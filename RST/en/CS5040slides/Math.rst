@@ -116,18 +116,12 @@ Math Background
 .. slide:: Summations and Recurrences
    
    .. math::
-      \sum_{i = 1}^{n} i &=& \frac{n (n+1)}{2}.
-
-   .. math::
-      \sum_{i = 1}^{n} \frac{1}{2^i} &=& 1 - \frac{1}{2^n},
-
-   .. math::
-      \sum_{i = 0}^{n} 2^i &=& 2^{n+1} - 1.
+      \Huge \sum_{i = 1}^{n} i =& \Huge \frac{n (n+1)}{2} \\
+      \Huge \sum_{i = 1}^{n} \frac{1}{2^i} =& \Huge 1 - \frac{1}{2^n} \\
+      \Huge \sum_{i = 0}^{n} 2^i =& \Huge 2^{n+1} - 1
 
    | Factorial: 
-
-     .. math::
-        n! = (n-1)! \cdot n\ \mbox{for}\ n>1; \quad 1! = 0! = 1.
+   | :math:`n! = (n-1)! \cdot n\ \mbox{for}\ n>1; \quad 1! = 0! = 1`.
 
 
 .. slide:: Estimation Techniques

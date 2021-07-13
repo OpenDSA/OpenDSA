@@ -71,16 +71,23 @@
         }
       },
       "Design/ADT": {
+        "CMdatatypeSumm": {
+          "threshold": 5
+        },
         "IntroADTSumm": {
           "threshold": 4
         }
       }
     },
     "Object Oriented Programming": {
-      "Design/IntroOO": {}, 
+      "Design/IntroOO": {
+        "CMoopSumm": {
+          "threshold": 5
+        }
+      },
       "Design/IntroUML": {}, 
       "Design/IntroProcess": {}
-    }, 
+    },
     "List Interface & Array based Lists": {
       "List/ListADT": {
         "List ADT Programming Exercise": {
@@ -164,7 +171,8 @@
     },
     "Introduction to Pointers in Java": {
       "PointersJava/PointerIntro": {},
-      "PointersJava/BasicPointers": {
+      "PointersJava/BasicPointers1": {},
+      "PointersJava/BasicPointers2": {
         "PointerEX1PRO": {
           "threshold": 1
         }, 
@@ -175,12 +183,19 @@
       "PointersJava/Syntax": {},
       "PointersJava/LocalMem": {}, 
       "PointersJava/HeapMem": {}, 
-      "PointersJava/Links": {
+      "PointersJava/Links1": {
         "PointerEX3PRO": {
           "threshold": 1
         }
       },
-      "PointersJava/Exercises": {}
+      "PointersJava/Links2": {},
+      "PointersJava/PointersCM": {
+        "CMpointersSumm": {
+          "threshold": 5
+        }
+      },
+      "PointersJava/Exercises": {},
+      "PointersJava/LinkedChains": {}
     }, 
     "Linked Lists": {
       "List/ListLinked": {
