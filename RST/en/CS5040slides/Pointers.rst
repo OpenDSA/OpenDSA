@@ -16,7 +16,9 @@ Pointer Manipulation
 Pointer Manipulation
 --------------------
 
-.. TODO::
+.. 
+   Commented due to a sphinx/hieroglyph bug when generating TODO directives:
+   /.. TODO::
    
    | Lesson Plan for Today:
    |    Chance to catch up if AlgAnal not completed last time

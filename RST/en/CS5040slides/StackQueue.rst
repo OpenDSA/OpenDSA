@@ -13,7 +13,9 @@
 Stacks and Queues
 =================
 
-.. TODO::
+.. 
+   Commented due to a sphinx/hieroglyph bug when generating TODO directives:
+   /.. TODO::
    
    | Lesson Plan for Today:
    |    Standard presentation on Stacks and Queues

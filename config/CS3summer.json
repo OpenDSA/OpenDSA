@@ -1,0 +1,622 @@
+{
+  "title": "CS3 Data Structures & Algorithms",
+  "desc": "CS3 Data Structures & Algorithms",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "build_JSAV": false,
+  "build_cmap": true,
+  "suppress_todo": true,
+  "dispModComp": true,
+  "zeropt_assignments": false,
+  "tabbed_codeinc": true,
+  "narration_enabled": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "glob_ss_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_ka_options": {
+    "required": true,
+    "points": 1,
+    "threshold": 5
+  },
+  "glob_pe_options": {
+    "required": true,
+    "points": 2,
+    "threshold": 0.9
+  },
+  "glob_ff_options": {
+    "required": true,
+    "points": 1,
+    "threshold": 1
+  },
+  "glob_extr_options": {
+    "points": 1,
+    "code-workout": {
+      "points": 2
+    }
+  },
+  "chapters": {
+    "Preface": {
+      "Intro": {}
+    },
+    "Introduction": {
+      "Background/IntroDSA": {
+        "Some Software Engineering Topics": {
+          "showsection": false
+        }
+      },
+      "Design/ADT": {
+        "IntroADTSumm": {
+          "threshold": 4
+        }
+      }
+    },
+    "Programming Tutorials": {
+      "Tutorials/cmdline": {},
+      "Tutorials/parameters": {},
+      "Tutorials/eclipseparameters": {},
+      "Tutorials/webcattools": {},
+      "Tutorials/debugmethods": {},
+      "Tutorials/debug": {},
+      "Tutorials/scanning": {},
+      "Tutorials/randomaccessfile": {},
+      "Tutorials/junitstart": {},
+      "Tutorials/junitbasic": {},
+      "Tutorials/junitcoverage": {},
+      "Testing/TestIntro": {},
+      "Testing/TestCoverage": {
+        "TriangleApplet": {
+          "exer_options": {
+            "code": "true"
+          }
+        }
+      },
+      "Testing/Example2": {},
+      "Testing/Bowling": {
+        "BowlingApplet": {
+          "exer_options": {
+            "code": "true"
+          }
+        }
+      }
+    },
+    "Object Oriented Programming": {
+      "Design/IntroOO": {},
+      "Design/IntroUML": {},
+      "Design/IntroProcess": {}
+    },
+    "Mathematical Background": {
+      "Background/MathpreIntro": {},
+      "Background/SetDef": {
+        "SetTFequivrel": {
+          "threshold": 3
+        },
+        "SetTFpartialorder": {
+          "threshold": 3
+        },
+        "SetTFrelation": {
+          "points": 2
+        }
+      },
+      "Background/MiscMath": {},
+      "Background/Logarithms": {
+        "MathLogSumm": {
+          "points": 2,
+          "threshold": 10
+        }
+      },
+      "Background/Summations": {},
+      "Background/RecurrenceIntro": {},
+      "Background/Proofs": {},
+      "Background/Estimation": {},
+      "Background/MathpreSumm": {}
+    },
+    "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {},
+      "AlgAnal/AnalPrelim": {
+        "AnalPrelimSumm": {
+          "threshold": 4
+        }
+      },
+      "AlgAnal/AnalIntro": {
+        "CompareGrowth": {
+          "points": 2,
+          "threshold": 3
+        },
+        "GrowthRatesPRO": {
+          "threshold": 3
+        }
+      },
+      "AlgAnal/AnalCases": {},
+      "AlgAnal/AnalCompvsAlg": {
+        "FasterCorASumm": {
+          "threshold": 2
+        }
+      },
+      "AlgAnal/AnalAsymptotic": {
+        "UpperBoundsSumm": {
+          "threshold": 4
+        }
+      },
+      "AlgAnal/AnalLower": {
+        "LowerThetaSumm": {
+          "points": 2
+        }
+      },
+      "AlgAnal/AnalProgram": {
+        "binarySearchPRO": {
+          "points": 1,
+          "threshold": 1,
+          "exer_options": {
+            "JXOP-code": "none"
+          }
+        }
+      },
+      "AlgAnal/AnalProblem": {},
+      "AlgAnal/AnalMisunderstanding": {
+        "MisSumm": {
+          "threshold": 4
+        }
+      },
+      "AlgAnal/AnalMultiple": {},
+      "AlgAnal/AnalSpace": {},
+      "AlgAnal/AnalTuning": {},
+      "AlgAnal/AlgAnalSummCS3": {}
+    },
+    "Linear Structures": {
+      "List/ListIntro": {},
+      "List/ListADT": {
+        "List ADT Programming Exercise": {
+          "points": 1
+        }
+      },
+      "List/ListArray": {
+        "AlistRemovePRO": {
+          "threshold": 4
+        },
+        "AlistInsertPRO": {
+          "threshold": 3
+        },
+        "ALSumm": {
+          "threshold": 3
+        }
+      },
+      "List/ListLinked": {
+        "LlistRemovePRO": {
+          "points": 2
+        }
+      },
+      "List/ListAnalysis": {
+        "ListOverhead": {
+          "threshold": 3
+        },
+        "LLSumm": {
+          "points": 2,
+          "threshold": 6
+        }
+      },
+      "List/ListDouble": {},
+      "List/ListElement": {
+        "ListSumm": {
+          "threshold": 3
+        }
+      },
+      "List/StackArray": {},
+      "List/StackLinked": {},
+      "List/Freelist": {},
+      "List/StackRecur": {},
+      "List/Queue": {},
+      "List/QueueLinked": {},
+      "List/ListSumm": {
+        "ListChapterSumm": {
+          "points": 2,
+          "threshold": 10
+        },
+        "ListdsSumm": {
+          "points": 2
+        }
+      }
+    },
+    "Design": {
+      "Design/DesignPatterns": {
+        "DesignPatternSumm": {
+          "threshold": 4
+        }
+      },
+      "Design/DesignAltList": {},
+      "Design/Comparison": {},
+      "Design/Dictionary": {
+        "DesignDictionarySumm": {
+          "threshold": 3
+        }
+      }
+    },
+    "Introduction to Pointers in Java": {
+      "PointersJava/PointerIntro": {},
+      "PointersJava/BasicPointers1": {},
+      "PointersJava/BasicPointers2": {},
+      "PointersJava/Syntax": {},
+      "PointersJava/LocalMem": {},
+      "PointersJava/HeapMem": {},
+      "PointersJava/Links1": {},
+      "PointersJava/Links2": {},
+      "PointersJava/PointersCM": {},
+      "PointersJava/Exercises": {}
+    },
+    "Binary Trees": {
+      "Binary/BinaryTreeIntro": {},
+      "Binary/BinaryTree": {
+        "DefSumm": {
+          "points": 2,
+          "threshold": 8
+        },
+        "Treeprobs": {
+          "threshold": 4
+        }
+      },
+      "Binary/RecursiveDS": {},
+      "Binary/BinaryTreeFullThm": {},
+      "Binary/BinaryTreeTraversal": {
+        "btTravPreorderPRO": {
+          "points": 1,
+          "exer_options": {
+            "JXOP-code": "none"
+          }
+        },
+        "btTravInorderPRO": {
+          "points": 1,
+          "exer_options": {
+            "JXOP-code": "none"
+          }
+        },
+        "btTravPostorderPRO": {
+          "points": 1,
+          "exer_options": {
+            "JXOP-code": "none"
+          }
+        },
+        "TravSumm": {
+          "threshold": 3
+        }
+      },
+      "Binary/WritingTraversals": {},
+      "BTRecurTutor/BinaryTreeInfFlw": {},
+      "Binary/BinaryTreeImpl": {},
+      "Binary/Composite": {},
+      "Binary/BinaryTreeNodeSpace": {
+        "TreeOverheadFIB": {
+          "points": 2
+        }
+      },
+      "Binary/BST": {
+        "BSTSumm": {
+          "threshold": 2
+        },
+        "BSTinsertPRO": {
+          "points": 1,
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          }
+        },
+        "BSTremovePRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          }
+        },
+        "BSTsearchPRO": {
+          "points": 1,
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          }
+        }
+      },
+      "Binary/BSTDict": {},
+      "BTRecurTutor/BinaryTreeGuidedInfFlw": {},
+      "BTRecurTutor/MultipleBinaryTrees": {},
+      "BTRecurTutor/BSTCheck": {},
+      "Binary/CompleteTree": {},
+      "Binary/Heaps": {
+        "heapbuildPRO": {
+          "points": 1,
+          "exer_options": {
+            "JXOP-code": "none"
+          }
+        },
+        "heapinsertPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          }
+        },
+        "HeapSumm": {
+          "points": 2
+        },
+        "heapremovePRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          }
+        }
+      },
+      "Binary/Huffman": {},
+      "Binary/TreeTrie": {},
+      "Binary/HuffProof": {},
+      "Binary/BinaryChapSumm": {
+        "BinaryChapSumm": {
+          "points": 2,
+          "threshold": 10
+        }
+      }
+    },
+    "Sorting": {
+      "Sorting/InSort": {},
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      },
+      "Sorting/InsertionSort": {},
+      "Sorting/BubbleSort": {
+        "BubsortPRO": {
+          "points": 2,
+          "threshold": 3
+        }
+      },
+      "Sorting/SelectionSort": {
+        "SelsortPRO": {
+          "points": 2
+        }
+      },
+      "Sorting/ExchangeSort": {
+        "FindInversionsPRO": {
+          "points": 2
+        }
+      },
+      "Sorting/SortOpt": {
+        "insertionSortWithoutSwapPRO": {
+          "points": 0,
+          "exer_options": {
+            "JXOP-code": "none"
+          }
+        }
+      },
+      "Sorting/Shellsort": {
+        "shellsortPerf": {
+          "threshold": 1
+        },
+        "shellsortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "fix"
+          }
+        }
+      },
+      "Sorting/Mergesort": {
+        "mergesortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "fix"
+          }
+        }
+      },
+      "Sorting/MergesortImpl": {},
+      "Sorting/Quicksort": {
+        "quicksortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "fix"
+          }
+        }
+      },
+      "Sorting/Heapsort": {
+        "HeapsortStepPRO": {
+          "points": 2
+        },
+        "heapsortPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "fix"
+          }
+        }
+      },
+      "Sorting/BinSort": {},
+      "Sorting/RadixSort": {
+        "RadixsortPRO": {
+          "points": 2,
+          "threshold": 4
+        }
+      },
+      "Sorting/SortingEmpirical": {},
+      "Sorting/SortingLowerBound": {
+        "SortBoundSumm": {
+          "threshold": 4
+        }
+      },
+      "Sorting/SortSumm": {
+        "SortChapterSumm": {
+          "points": 2,
+          "threshold": 10
+        }
+      }
+    },
+    "File Processing": {
+      "Files/FileProc": {},
+      "Files/Secondary": {},
+      "Files/Diskdrive": {},
+      "Files/BuffPool": {},
+      "Files/FileProg": {},
+      "Files/ExternalSort": {
+        "extRSPRO": {
+          "points": 1,
+          "threshold": 1
+        },
+        "extMultiMergePRO": {
+          "points": 1
+        }
+      }
+    },
+    "Hashing": {
+      "Hashing/HashIntro": {},
+      "Hashing/HashFunc": {
+        "BirthdayFIB": {
+          "threshold": 3
+        }
+      },
+      "Hashing/HashFuncExamp": {
+        "StringSimple": {
+          "points": 0.5,
+          "threshold": 1
+        },
+        "MidSquare": {
+          "points": 0.5,
+          "threshold": 1
+        },
+        "StringSfold": {
+          "points": 0.5,
+          "threshold": 1
+        }
+      },
+      "Hashing/OpenHash": {
+        "OpenHashPRO": {
+          "points": 2
+        }
+      },
+      "Hashing/BucketHash": {},
+      "Hashing/HashCSimple": {},
+      "Hashing/HashCImproved": {
+        "HashDoublePPRO": {
+          "points": 2
+        },
+        "HashLinearStepPPRO": {
+          "points": 2
+        },
+        "HashPseudoRandomPPRO": {
+          "points": 2
+        },
+        "HashQuadraticPPRO": {
+          "points": 2
+        }
+      },
+      "Hashing/HashAnal": {},
+      "Hashing/HashDel": {
+        "HashDelSumm": {
+          "threshold": 3
+        }
+      },
+      "Hashing/HashSumm": {
+        "HashChapterSumm": {
+          "points": 2,
+          "threshold": 10
+        }
+      }
+    },
+    "Memory Management": {
+      "MemManage/MemmanIntro": {},
+      "MemManage/Dynamic": {},
+      "MemManage/SequentialFit": {},
+      "MemManage/FirstFit": {
+        "firstFitPRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          }
+        }
+      },
+      "MemManage/CircularFit": {},
+      "MemManage/BestFit": {},
+      "MemManage/WorstFit": {},
+      "MemManage/MMPerformance": {},
+      "MemManage/Buddy": {},
+      "MemManage/Garbage": {}
+    },
+    "Indexing": {
+      "Indexing/IndexIntro": {},
+      "Indexing/LinearIndexing": {},
+      "Indexing/ISAM": {},
+      "Indexing/TreeIndexing": {},
+      "Indexing/TwoThreeTree": {},
+      "Indexing/BTree": {
+        "bPlusTreeInsertPRO": {
+          "exer_options": {
+            "JXOP-feedback": "continuous"
+          }
+        }
+      },
+      "Indexing/IndexingSumm": {
+        "IndexChoice": {
+          "points": 2
+        }
+      }
+    },
+    "Graphs": {
+      "Graph/GraphIntro": {
+        "GraphIntroSumm": {
+          "points": 3,
+          "threshold": 10
+        },
+        "GspaceCalcSumm": {
+          "points": 2
+        }
+      },
+      "Graph/GraphImpl": {},
+      "Graph/GraphTraversal": {},
+      "Graph/GraphTopsort": {},
+      "Graph/GraphShortest": {},
+      "Graph/MCST": {},
+      "Graph/Kruskal": {},
+      "Graph/Floyd": {},
+      "Graph/GraphCM": {}
+    },
+    "General Trees": {
+      "General/GenTreeIntro": {},
+      "General/UnionFind": {},
+      "General/SequentialRep": {}
+    },
+    "Advanced Data Structures": {
+      "SearchStruct/SkipList": {},
+      "Spatial/Spatial": {},
+      "Spatial/PRquadtree": {},
+      "Spatial/KDtree": {},
+      "Spatial/Bintree": {},
+      "Spatial/OtherSpatial": {}
+    },
+    "Appendix": {
+      "Glossary": {},
+      "Bibliography": {}
+    }
+  }
+}
