@@ -175,10 +175,12 @@ $(document).ready(function () {
   av.step();
 
   // Slide 10
-  av.umsg("The next request is for block 1 again. Since block 1 is already in the buffer pool (in position 3), it need not be read in from disk. The buffer pool is reorganized to put block 1 at the top.");
+  av.umsg("The next request is for block 1 again. Since block 1 is already in the buffer pool (in position 4), it need not be read in from disk. The buffer pool is reorganized to put block 1 at the top.");
+  blockswap(4, 3);
   blockswap(3, 2);
   blockswap(2, 1);
   blockswap(1, 0);
+  buffer_pool.swap(4, 3);
   buffer_pool.swap(3, 2);
   buffer_pool.swap(2, 1);
   buffer_pool.swap(1, 0);
