@@ -7,20 +7,21 @@
    :author: Molly
 
 
-Module 1: Inheretence and Polymorphism
-=========
+Compound Conditionals and Software Testing
+==========================================
 
 
 Introduction
 ------------
 
-* Making sure infrastructure works
-* Micro Worlds and traversing a 2D grid
-* Sequential nature of programming
-* Basic vocabulary
-* Creating objects, methods, and comments
+At the end of this module you will..
 
-
+* Know more operations available when using the boolean type
+  * Java Java Java! --> Section 5.2
+  * Think Java --> Section 5.2
+* Know the basics of unit testing using assertJ
+  * Java Java Java! --> Section 3.7
+* Have Reviewed weeks 1-3
 
 Syntax Review
 -------------
@@ -54,4 +55,4 @@ Reading Quiz 1
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/1114Sample/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka

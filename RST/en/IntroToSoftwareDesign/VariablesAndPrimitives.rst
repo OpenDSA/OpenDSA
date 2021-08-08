@@ -7,18 +7,27 @@
    :author: Molly
 
 
-Module 1: Inheretence and Polymorphism
-=========
+Variables and Primitives
+========================
 
 
 Introduction
 ------------
 
-* Data Structures for grouping (lists, sets, and maps)
-* Generics
-* For each loops
-* Using loops
+At the end of this module you will..
 
+* Have more practice declaring variables
+  * Java Java Java! --> Sections 0.76 - 0.77
+  * Think Java --> Chapter 2
+* Think about how best to use variables as fields when designing a class
+  * Java Java Java! --> Chapter 0
+  * Think Java --> Section 10.2
+* Know more about what primitive types and which types we've seen are primitive
+  * Java Java Java! --> Sections 1.4
+  * Think Java --> Chapter 2
+* Learn about how to iterate without going infinite with a for loop
+  * Java Java Java! --> Section 6.3
+  * Think Java --> Section 7.5
 
 
 Syntax Review
@@ -53,4 +62,4 @@ Reading Quiz 1
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/1114Sample/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka

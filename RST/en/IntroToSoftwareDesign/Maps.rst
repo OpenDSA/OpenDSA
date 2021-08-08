@@ -7,18 +7,17 @@
    :author: Molly
 
 
-Module 1: Inheretence and Polymorphism
-=========
+Maps
+====
 
 
 Introduction
 ------------
 
-* Reviewing
-* null
-* ArrayLists
-* Generics
-* Iterators
+At the end of this module you will..
+
+* Know how to store key, value pairs in a Map data structure
+    * Java Java Java! --> Sections 16.7
 
 
 
@@ -54,4 +53,4 @@ Reading Quiz 1
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/1114Sample/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka

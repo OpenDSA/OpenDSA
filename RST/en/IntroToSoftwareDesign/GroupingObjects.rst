@@ -7,18 +7,16 @@
    :author: Molly
 
 
-Module 1: Inheretence and Polymorphism
-=========
+Grouping Objects
+================
 
 
 Introduction
 ------------
 
-* Interfaces
-* collections and libraries as a whole
-* ArrayLists
-* Arrays
+At the end of this module you will..
 
+* Learn more about how to use objects and polymorphism to help aggregate, compose, and delegate
 
 
 Syntax Review
@@ -53,4 +51,4 @@ Reading Quiz 1
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/1114Sample/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka

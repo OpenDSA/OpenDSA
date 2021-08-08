@@ -7,17 +7,27 @@
    :author: Molly
 
 
-Module 1: Inheretence and Polymorphism
-=========
+Conditional Actions
+===================
 
 
 Introduction
 ------------
 
-* Declaring variables
-* Design: using variables as fields
-* Primitive types
-* for loops
+At the end of this module you will..
+
+* Know about the boolean type and and the not (!) operator
+  * Java Java Java! --> Section 5.2
+  * Think Java --> Section 5.1
+* Know about how to control the order statements execute using if/then/else statements
+  * Java Java Java! --> Section 3.6
+  * Think Java --> Section 5.3 - 5.4
+* Know about how to control the order statements execute using while loops
+  * Java Java Java! --> Section 3.6
+  * Think Java --> Section 7.1
+* Know about how to use sensor methods
+
+
 
 
 Syntax Review
@@ -52,4 +62,6 @@ Reading Quiz 1
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/1114Sample/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz2.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz3.html ka

@@ -7,19 +7,20 @@
    :author: Molly
 
 
-Module 1: Inheretence and Polymorphism
-=========
+File I/O
+========
 
 
 Introduction
 ------------
 
-* Fields
-* Parameters
-* Variable Assignment
-* Typing
-* Constructors
+At the end of this module you will..
 
+* Know how to read in and write out files using code a practice called File I/O
+  * Java Java Java! --> Sections 11.1 - 11.4, 11.8, all of chapter 10
+* Know how to take in data directly from the console using Scanner
+  * Java Java Java! --> Sections 4.3-4.4, 4.6
+  * Think Java --> Section 3.2
 
 
 
@@ -55,4 +56,4 @@ Reading Quiz 1
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/1114Sample/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka

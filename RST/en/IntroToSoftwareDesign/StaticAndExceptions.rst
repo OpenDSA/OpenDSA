@@ -7,16 +7,20 @@
    :author: Molly
 
 
-Module 1: Inheretence and Polymorphism
-=========
+Static and Exceptions
+=====================
 
 
 Introduction
 ------------
 
-* File I/O
-* Scanner
+At the end of this module you will..
 
+* Know what the static keyword is and why it can be useful in object oriented programming
+  * Java Java Java! --> Section 1.4.10
+* Know how to handle errors and exceptions in code using a try/except/finally control structure
+  * Java Java Java! --> Chapter 10
+* Review for the final exam
 
 
 Syntax Review
@@ -51,4 +55,4 @@ Reading Quiz 1
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/1114Sample/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka

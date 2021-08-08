@@ -7,7 +7,7 @@
    :author: Molly
 
 
-Module 2: Inheretence and Polymorphism
+Template
 =========
 
 

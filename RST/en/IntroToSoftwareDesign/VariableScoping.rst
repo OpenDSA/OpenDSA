@@ -7,19 +7,23 @@
    :author: Molly
 
 
-Module 1: Inheretence and Polymorphism
-=========
+Variable Scoping
+================
 
 
 Introduction
 ------------
 
-* Intro to Iclicker
-* Basic Polymorphism
-* Parameters
-* Creating and Using methods
-* Using Super
-* Creating algorithms 
+At the end of this module you will..
+
+* Know about when a variable is in scope
+  * Java Java Java! --> Section 3.2
+* Learn about reference types
+  * Java Java Java! --> Section 3.1
+  * Think Java --> Section 8.2
+* Know when to use the "==" operator and when to use the ".equals()" method
+  * Java Java Java! --> Page 41
+  * Think Java --> Section 5.1
 
 
 
@@ -55,4 +59,4 @@ Reading Quiz 1
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/1114Sample/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka
