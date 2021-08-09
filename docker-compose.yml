@@ -5,8 +5,25 @@ services:
       context: .
       dockerfile: Dockerfile
     image: opendsa/opendsa:latest
-    command: ["./scripts/start.sh"]
     volumes:
       - .:/opendsa
     ports:
-      - "8080:8080"
+      - 8080:8080
+    expose:
+      - 8080
+    labels:
+      traefik.http.routers.opendsa.rule: Host(`opendsa.localhost.devcom.vt.edu`)
+      traefik.http.services.opendsa.loadbalancer.server.port: 8080
+
+  proxy:
+    image: dtr.it.vt.edu/devcom/devcom-localhost-proxy:traefik-2.3
+    ports:
+      - 80:80
+      - 443:443
+      - 127.0.0.1:8000:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      default:
+        aliases: # Ensure all container-to-container HTTP requests go through the proxy
+          - opendsa.localhost.devcom.vt.edu
