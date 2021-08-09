@@ -918,7 +918,7 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
         mod_path = rst_fname
       else:
         mod_path = rst_dir_name + '/' + rst_fname
-      
+
 
       current_module = mod_path
       print("current_module: ", current_module)
