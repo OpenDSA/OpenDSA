@@ -73,7 +73,7 @@ var setRed = function (arr, index) {
   av.step();
 
   // Slide 10
-  av.umsg("... and then to slot (6 + 1) % 7...");
+  av.umsg("... and then to slot  6 + 1 = 7...");
   setRed(arr, 7);
   av.step();
 
