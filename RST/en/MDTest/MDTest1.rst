@@ -116,8 +116,4 @@ KA style question
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/MDTest/MDTest_question1.html ka
-
-.. avembed:: Exercises/MDTest/MDTest_question2.html ka
-
-.. avembed:: Exercises/MDTest/MDTest_question3.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Dynamic_quiz.html ka

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html data-require="math Week3Quiz3">
+  <head>
+    <title>evaluating if/else if/else and ! operator statements in code</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+
+        <var id="Q1xValue">Khan.randRange(0, 31)</var>
+        <var id="Q1Solution">Quiz3.Q1setRight(Q1xValue)</var>
+        <var id="Q1wrong1">Quiz3.Q1option[0]</var>
+        <var id="Q1wrong2">Quiz3.Q1option[1]</var>
+
+        <var id="Q2xValue">Khan.randRange(0, 101)</var>
+        <var id="Q2Solution">Quiz3.Q2setRight(Q2xValue)</var>
+        <var id="Q2wrong1">Quiz3.Q2option[0]</var>
+        <var id="Q2wrong2">Quiz3.Q2option[1]</var>
+        <var id="Q2wrong3">Quiz3.Q2option[2]</var>
+
+        <var id="Q3xInt">Khan.randRange(0, 2)</var>
+        <var id="Q3xValue">Quiz3.Q3intToBool(Q3xInt)</var>
+        <var id="Q3Solution">Quiz3.Q3setRight(Q3xValue)</var>
+        <var id="Q3wrong1">Quiz3.Q3option[0]</var>
+      </div>
+
+      <div class="problems">
+
+        <div id="ReadingQuiz1Q1">
+          <p class="question">
+            If this code runs, what will be printed out?
+            You can assume the variable x equals <var>Q1xValue</var>
+            The correct answer is <var>Q1Solution</var>
+            <pre class="prettyprint">
+          			if (x<20){
+          				System.out.println("STATEMENT 1");
+          			else if(x <25){
+          				System.out.println("STATEMENT 2");
+          			}else{
+          				System.out.println("STATEMENT 3");
+          			}
+            </pre>
+          </p>
+
+          <div class="solution"> <var>Q1Solution</var> </div>
+          <ul class="choices" >
+            <li>  <var> Q1wrong1 </var>  </li>
+            <li>  <var> Q1wrong2 </var>   </li>
+          </ul>
+          <div class="hints">
+            <p>There are no hints for this question</p>
+          </div>
+        </div>
+
+         <div id="ReadingQuiz1Q2">
+          <p class="question">
+            If this code runs, what will be printed out?
+            You can assume the variable x equals <var>Q2Solution</var>
+            <pre class="prettyprint">
+              if (x<20){
+                System.out.println("STATEMENT 1");
+              }
+
+              if (x>50){
+                System.out.println ("STATEMENT 2");
+              }else{
+                System.out.println("STATEMENT 3");
+              }
+
+              if(x>90){
+                System.out.println("STATEMENT 4");
+              }
+            </pre>
+          </p>
+
+          <div class="solution"> <var>Q2Solution</var> </div>
+          <ul class="choices" >
+            <li>  <var> Q2wrong1 </var>  </li>
+            <li>  <var> Q2wrong2 </var>   </li>
+            <li>  <var> Q2wrong3 </var>   </li>
+          </ul>
+          <div class="hints">
+            <p>There are no hints for this question</p>
+          </div>
+        </div>
+
+
+        <div id="ReadingQuiz1Q3">
+          <p class="question">
+            If this code runs, what will be printed out?
+            You can assume the variable x equals <var>Q3xValue</var>
+            <pre class="prettyprint">
+              if (!x){
+          			print("STATEMENT 1");
+          		else{
+          			print("STATEMENT 2");
+          		}
+            </pre>
+          </p>
+
+          <div class="solution"> <var>Q3Solution</var> </div>
+          <ul class="choices" >
+            <li>  <var> Q3wrong1 </var>  </li>
+          </ul>
+          <div class="hints">
+            <p>There are no hints for this question</p>
+          </div>
+        </div>
+
+
+
+
+
+        </div>
+        </div>
+      </div>
+  </body>
+</html>
