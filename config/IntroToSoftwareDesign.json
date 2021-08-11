@@ -1,6 +1,6 @@
 {
-  "title": "Test",
-  "desc": "Test",
+  "title": "Intro To Software Design",
+  "desc": "An objects first approach to introductory programming adn design",
   "theme": "sphinx_book_theme",
   "html_theme_options": {
     "use_download_button": false,
