@@ -69,3 +69,24 @@ Using Codeworkout
 Additionally, in this course, some programming assignments will be completed through an online tool called Codeworkout.
 
 <TODO: Directions on using codeworkout and any pertinant information>
+
+
+Workout with 1 exercise in it
+-----------------------------
+
+Recursion Programming Exercise: Check Palindrome
+------------------------------------------------
+
+.. extrtoolembed:: 'Recursion Programming Exercise: Check Palindrome'
+   :workout_id: 339
+
+
+
+Workout with many exercises in it
+---------------------------------
+
+CodeWorkout LinkedBag Practice
+------------------------------
+
+.. extrtoolembed:: 'CodeWorkout LinkedBag Practice'
+   :workout_id: 388
