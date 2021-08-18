@@ -65,9 +65,6 @@
   "chapters": {
     "Simple Demonstration Examples":{
       "MDTest/MDTest1": {}
-    },
-    "LinkedChain": {
-      "MDTest/LinkedChain":{}
     }
   }
 }

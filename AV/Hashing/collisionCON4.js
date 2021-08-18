@@ -52,28 +52,28 @@ var setRed = function (arr, index) {
   av.step();
 
   // Slide 6
-  av.umsg("The probe sequence extending out of slot 3 first goes to slot 3 + 3 = 6...");
+  av.umsg("The probe sequence extending out of slot 3 first goes to slot (3 + 3) % 10 = 6...");
   arr.highlight(6);
   av.step();
 
   // Slide 7
-  av.umsg("... and then to slot 3 + 1 = 4...");
+  av.umsg("... and then to slot (3 + 1) % 10 = 4...");
   arr.highlight(4);
   av.step();
 
   // Slide 8
-  av.umsg("... and next to slot 3 + 4 = 7.");
+  av.umsg("... and next to slot (3 + 4) % 10 = 7.");
   arr.highlight(7);
   av.step();
 
   // Slide 9
-  av.umsg("However, the probe sequence extending out of slot 6 first goes to slot 6 + 3 = 9...");
+  av.umsg("However, the probe sequence extending out of slot 6 first goes to slot (6 + 3) % 10 = 9...");
   arr.unhighlight(7);
   setRed(arr, 9);
   av.step();
 
   // Slide 10
-  av.umsg("... and then to slot (6 + 1) % 7...");
+  av.umsg("... and then to slot (6 + 1) % 10 = 7...");
   setRed(arr, 7);
   av.step();
 

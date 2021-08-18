@@ -7,26 +7,21 @@ Data Structures and Algorithms courses, that deeply integrates textbook-quality
 content with algorithm visualizations and interactive, automatically assessed
 exercises.
 
-## Documentation
-
 System documentation can be found at http://opendsa.readthedocs.io/.
-
 
 ## Setup
 
-To check out a read-only copy of this repository:
-
-    git clone git://github.com/OpenDSA/OpenDSA.git OpenDSA
-
-To check out a read-write copy of this repository (requires permission to commit
-to the repo):
-
-    git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git OpenDSA
-
-Once you have cloned this repository, you will need to install the OpenDSA stack using Docker.
-Once you have the environment set up, including making sure Docker is currently running on your machine, you can run the following command:
-
-    docker-compose up
+1. Install [Docker](https://docs.docker.com/get-docker/).  It is the only requirement, and it runs on just about every platform.
+2. Clone this repository
+    - For reading only: `git clone git://github.com/OpenDSA/OpenDSA.git`
+    - For read/write: `git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git`
+3. Spin up the service: `docker-compose up` (and leave this running)
+    - The first builds of images takes under 5 minutes.  Running them later takes under 10 seconds.
+    - The service is ready when you see `opendsa_1 | * Serving Flask app "app.py"`
+    - An interrupt signal (Press CTRL + C) or the `docker-compose down` command will stop the containers.
+4. Build any books from within the container:
+    - To make the book defined in `config/Test.json`, you would simply run `make Test`
+5. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
 
 This command will first pull and build the OpenDSA images before
 instantiating the OpenDSA container.
@@ -60,11 +55,7 @@ interrupt signal).
 installed.]
 ### Toolchain Installation
 
-First, install Docker using the provided instructions linked below.
-
-Once Docker is installed, make sure the Docker Desktop application is running if you are on Windows or Mac. Linux should take care of this in the post-install instructions.
-
-See: http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment for more information
+For more information on OpenDSA's toolchain: [See our documentation here](http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment)
 
 OpenDSA makes use of the JSAV data structures visualization
 library. Nearly all developers and users can make do with the version
@@ -84,7 +75,7 @@ The result will then be in "Doc/manual".
 
 ## Common Errors
 
-Make sure that you have started Docker before running of the Makefile commands.
+The Docker containers of OpenDSA will likely have a different set of command line tools than your host operating system.  Be sure to run the commands within the right environment.  For example, the `make` commands are only meant to be run within a running container.
 
 If you are on Windows, you may run into issues with line endings.  If you do, simply open Git Bash and run `$ dos2unix filename` to fix them.  This will most likely happen on a script file.
 
@@ -115,7 +106,7 @@ Exercises: Our Khan Academy Infrastructure-based exercises. Subdirectories
 divide the content by topic.
 
 JSAV: The JavaScript Algorithm Visualization library (JSAV). This is sourced
-from: https://github.com/vkaravir/JSAV and is updated occassionally.  
+from: https://github.com/vkaravir/JSAV and is updated occassionally.
 More information about JSAV can be found here:
 http://jsav.io/
 
