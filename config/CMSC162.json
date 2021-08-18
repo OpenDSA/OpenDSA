@@ -141,29 +141,29 @@
       "RecurTutor/RecIntro": {},
       "RecurTutor/Write": {},
       "RecurTutor/CodeCompletionEx": {
-        "Recursion Programming Exercise: Add odd positions": {
-          "points": 1
-        },
-        "Recursion Programming Exercise: Count Characters": {
-          "points": 1
-        },
-        "Recursion Programming Exercise: Cummulative Sum": {
-          "points": 1
-        },
-        "Recursion Programming Exercise: GCD": {
-          "points": 1
-        },
         "Recursion Programming Exercise: Largest": {
-          "points": 1
-        },
+          "points": 1.0
+        }, 
         "Recursion Programming Exercise: Multiply": {
-          "points": 1
-        },
-        "Recursion Programming Exercise: Sum Of the Digits": {
-          "points": 1
-        },
+          "points": 1.0
+        }, 
+        "Recursion Programming Exercise: GCD": {
+          "points": 1.0
+        }, 
         "Recursion Programming Exercise: log": {
-          "points": 1
+          "points": 1.0
+        }, 
+        "Recursion Programming Exercise: Cummulative Sum": {
+          "points": 1.0
+        }, 
+        "Recursion Programming Exercise: Add odd values": {
+          "points": 1.0
+        }, 
+        "Recursion Programming Exercise: Sum Of the Digits": {
+          "points": 1.0
+        }, 
+        "Recursion Programming Exercise: Count Characters": {
+          "points": 1.0
         }
       },
       "RecurTutor/HarderWrite": {},
