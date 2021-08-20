@@ -75,7 +75,7 @@ Introducing LightBot
 
 Lightbot is a very simple robot programming simulation game. It runs right in your web browser, and looks like this:
 
-.. odsafig:: Images/GettingStarted/LightBot.png
+.. odsafig:: Images/LightBot.png
    :width: 200
    :align: center
    :capalign: justify
@@ -85,9 +85,11 @@ In the Light-Bot game, you create a **program** to control a little robot to sol
 
 Your task on each level of the Light-Bot game is to get the robot to light up all of the blue squares. To create a program to control the robot simply drag the icons at the top and drop them on the main method squares left to right.
 
-**TODO: This isn't free.**  We'll need to figure something out there
-You can try Lightbot by clicking on the link below.  The flash game will no longer work in your browser, but you can download the game as an app or on your desktop by scrolling down to where it says "Ages 9 and Up" and clicking the platform of your choice:
-`Try Lightbot Here! <https://lightbot.com/flash.html>`_
+
+You can try Lightbot by clicking on the link below.
+`Try Lightbot Here! <https://www.lightbot.lu/>`_
+
+**Note: this is a free version of the game and the 'move forward' command is not always viewable (especially if using Google Chrome)  There is a box above "Turn 90 degrees to the right" with the "move forward" command**.
 
 The Light-Bot game illustrates several basic programming concepts. The robot itself is an **object**, and we can request it to perform specific actions that it knows how to carry out. We can write a series of these requests down as a **program**. The series of actions that we write down is a plan for solving a specific problem (an **algorithm**).
 
@@ -105,22 +107,11 @@ The Light-Bot game is an example of a **micro-world**. A micro-world is a miniat
 
 Micro-worlds typically use a **grid** to represent locations in the simulated world. You can see this in the Light-Bot game, where the robot walks on square tiles. In this course, we will use the same approach. We can refer to any location on a grid using x and y coordinates:
 
-**TODO: Find a way to make the gridlines appear**
-
-+------------+------------+------------+------------+------------+-----------+
-|            |                         X Coordinates                         |
-+============+============+============+============+============+===========+
-|            |            |     0      |     1      |     2      |     3     |
-+            +------------+------------+------------+------------+-----------+
-|     Y      |      0     |            |            |            |           |
-+            +------------+------------+------------+------------+-----------+
-|   Coords   |      1     |            |            |xxxxxxxxxxxx|           |
-+            +------------+------------+------------+------------+-----------+
-|            |      2     |            |            |            |           |
-+            +------------+------------+------------+------------+-----------+
-|            |      3     |            |            |            |           |
-+------------+------------+------------+-----------+-------------+-----------+
-
+.. odsafig:: Images/MicroWorldVisual.png
+   :width: 200
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
 
 
 We will use a variation of **Cartesian coordinates** to write any location as an *(x, y)* pair, where x (the first coordinate) represents the distance from the origin horizontally, and y (the second coordinate) represents the distance from the origin vertically. The only catch is that the **y axis points downward** in our grid, making this a *left-handed Cartesian plane*. We use a left-handed orientation for our axes because that convention is predominant in computer programming contexts (even though it is the opposite of what is typical in studying geometry!).
@@ -371,24 +362,21 @@ The first thing to notice about the :code:`HelloWorld` program is the use of com
 
 The :code:`HelloWorld` program contains examples of two types of Java comments.  Any text contained within :code:`/*` and :code:`*/` is considered a comment.  As you can see in :code:`HelloWorld`, this kind of comment can extend over several lines and is sometimes called a *multiline* comment.  A second type of comment is any text that follows double slashes (:code`//`) on a line.  This is known as a *single-line comment* because it cannot extend beyond a single line.
 
-When the compiler encounters the beginning marker (:code:`/*`) of a multiline comment, it skips over everything until it finds a matching end marker (:code:`*/`).  One implication of this is that it is not possible to put one multiline comment inside of another. That is, one comment cannot be *nested*, or contained, within another comment. The following code
+When the compiler encounters the beginning marker (:code:`/*`) of a multiline comment, it skips over everything until it finds a matching end marker (:code:`*/`).  One implication of this is that it is not possible to put one multiline comment inside of another. That is, one comment cannot be *nested*, or contained, within another comment. The following code::
 
-::
+    /* This first comment begins and ends on the same line. */
+    /* A second comment starts on this line ...
+       and goes on ...
+       and this is the last line of the second comment.
+    */
+    /* A third comment starts on this line ...
+        /* This is NOT a fourth comment. It is just
+           part of the third comment.
+       And this is the last line of the third comment.
+    */
+    */  This is an error because it is an unmatched end marker.
 
-  /* This first comment begins and ends on the same line. */
-  /* A second comment starts on this line ...
-     and goes on ...
-     and this is the last line of the second comment.
-  */
-  /* A third comment starts on this line ...
-      /* This is NOT a fourth comment. It is just
-         part of the third comment.
-     And this is the last line of the third comment.
-  */
-  */  This is an error because it is an unmatched end marker.
-
-
-As you can see from this example, it is impossible to begin a new comment inside an already-started comment because all text inside the first comment, including :code:`/*`, is ignored by the compiler.
+As you can see from this example, it is impossible to begin a new comment inside an already-started comment because all text inside the first comment, including :code:`/* , is ignored by the compiler.
 
 .. admonition:: Java Rule: Comments
 
