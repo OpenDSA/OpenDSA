@@ -315,10 +315,9 @@ Self-Check
 Questions
 ---------
 
+
 .. avembed:: Exercises/IntroToSoftwareDesign/HonorCodeSumm.html ka
     :long_name: Honor Code Understanding
-
-
 
 
 Workout with 1 exercise in it
