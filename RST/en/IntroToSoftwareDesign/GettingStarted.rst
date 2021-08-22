@@ -44,9 +44,9 @@ the icons at the top and drop them on the main method squares left to right.
 .. admonition:: Try It Yourself
 
     Play the first two levels of LightBot to try things out here:
-    
+
     `LightBot <https://www.lightbot.lu/>`_
-    
+
     Be sure your browser window is tall enough to see the "Instructions" label
     in the upper right of the game.
 
@@ -183,10 +183,8 @@ Each action is phrased as a request to an object that performs the desired behav
 
 One solution to this level is:
 
-.. literalinclude:: JavaFiles/GettingStarted/LightBotSolution.java
-  :linenos:
-  :language: java
-  :lines: 1-11
+.. codeinclude:: IntroToSoftwareDesign/LightBotSolution
+
 
 .. admonition:: Exercise 3
 
