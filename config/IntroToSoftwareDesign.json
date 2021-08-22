@@ -1,13 +1,7 @@
 {
   "title": "Intro To Software Design",
   "desc": "An objects first approach to introductory programming adn design",
-  "theme": "sphinx_book_theme",
-  "html_theme_options": {
-    "use_download_button": false,
-    "single_page": true
-  },
-  "html_css_files": ["_static/renku-book.css"],
-  "html_js_files": ["_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"],
+  "theme": "haiku",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -71,7 +65,13 @@
   },
   "chapters": {
     "Course Policies":{
-      "IntroToSoftwareDesign/CoursePolicies": {}
+      "IntroToSoftwareDesign/CoursePolicies": {
+        "HonorCodeSumm": {
+          "points": 10,
+          "threshold": 1,
+          "required": true
+        }
+      }
     },
     "Getting Started":{
       "IntroToSoftwareDesign/GettingStarted": {}
