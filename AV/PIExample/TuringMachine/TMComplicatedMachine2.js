@@ -262,7 +262,7 @@ $(document).ready(function() {
 
 
     // av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head.");
-    var url = "../../../../AV/OpenFLAP/machines/TM/TManbncn.jff";
+    var url = "../../../AV/OpenFLAP/machines/TM/TManbncn.jff";
     av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept any even number. You can click on any cell to see the process again starting from the clicked cell");
     var tm = new av.ds.TM({width: 610, height: 375, left: 50, url: url});
     var trav = new Traversor(tm, av);
