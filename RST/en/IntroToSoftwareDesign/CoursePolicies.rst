@@ -7,8 +7,11 @@
    :author: Molly
 
 
+Week 0: Course Policies
+=======================
+
 Read the Course Syllabus
-========================
+------------------------
 
 Welcome to CS 1114!
 
@@ -21,7 +24,7 @@ Before continuing, please **read the course syllabus** posted on Canvas.
 
 
 Who Is This Class For?
-======================
+----------------------
 
 This course teaches introductory programming in Java, with a significant
 emphasis on object-oriented software design and on software testing. In many
@@ -37,7 +40,7 @@ have any significant programming background.
 
 
 Students of Many Experience Levels
-==================================
+----------------------------------
 
 While this course is designed and intended for beginners, please be aware
 that students from a very wide range of backgrounds take this course, including
@@ -60,7 +63,7 @@ who do not already know how to program.
 
 
 Online and Face-to-face Sections
-================================
+--------------------------------
 
 This course includes a mix of both online lecture and lab sections
 as well as in-person (face-to-face) lecture and lab sections. All
@@ -84,7 +87,7 @@ extenuating circumstances.
 
 
 Weekly Schedule
-===============
+---------------
 
 This course runs on a weekly schedule, and learning the schedule will help
 you develop a routine, anticipate deadlines, and stay on track and in sync
@@ -119,7 +122,7 @@ activities:
 
 
 Reading Activities
-==================
+------------------
 
 Each week begins with a Reading Activity due Sunday night. This activity
 includes embedded exercises to check your understanding and to allow
@@ -133,7 +136,7 @@ sessions.
 
 
 Labs
-====
+----
 
 Each week also includes a lab assignment that is posted at the beginning
 of the week, typically on Monday. Lab assignments are posted early so that
@@ -170,7 +173,7 @@ questions, so do make use of them during that time as you learn.
 
 
 Programming Assignments
-=======================
+-----------------------
 
 Programming assignments will be given almost every week, posted on Tuesdays
 and due the following Tuesday night. Programming assignments typically come
@@ -203,7 +206,7 @@ periods to work on programming.
 
 
 Late Assignments
-================
+----------------
 
 As detailed in the syllabus, students are allowed to turn in Reading Activities,
 Lab Assignments, and Programming Assignments up to 5 days late. There is
@@ -218,7 +221,7 @@ discretion of the instructor.
 
 
 Grading
-=======
+-------
 
 This course is being graded using a form of "Specification Grading",
 where completion of an assignment is determined by the evidence the
@@ -241,7 +244,7 @@ assignments received an "Excellent" score.
 
 
 Programming Language and Environment
-====================================
+------------------------------------
 
 This course teaching programming using Java. We will use the BlueJ IDE
 for code development in class, including all examples shown in lecture.
@@ -253,7 +256,7 @@ and lab or programming assignments will not compile without these.
 
 
 Cheating and The Honor Code
-===========================
+---------------------------
 
 .. topic:: Excerpt from Honor System Policy
 
@@ -261,7 +264,7 @@ Cheating and The Honor Code
 
     [...]
 
-    Virginia Tech students are expected to uphold and to encourage other students to abide by the Honor Code. A primary responsibility of Virginia Tech students is to refrain from any form of violation of the Honor Code. 
+    Virginia Tech students are expected to uphold and to encourage other students to abide by the Honor Code. A primary responsibility of Virginia Tech students is to refrain from any form of violation of the Honor Code.
 
 Honor code violations are unfortunately common in early computer science
 courses, and the Office of Academic Integrity has seen a significant
@@ -294,7 +297,7 @@ from scratch. Resubmitting work from an earlier semester does not demonstrate
 your current level of understanding or ability, and does not reflect whether
 your skills have degraded. Instead, repeating the work is important for
 increasing your skills so that you can successfully complete the course
-this time. 
+this time.
 
 Also, please remember that when any students are reported for cheating on any
 assignment in this course, we recommend they receive the **F* sanction**, a
@@ -303,17 +306,17 @@ violation. Further, students with an F in CS 1114 are required to repeat and
 successfully complete the course before they can take subsequent CS courses,
 which can negatively impact your planned timeline for graduation. For students
 in General Engineering, it can also reduce your competitiveness when applying
-to change your major. 
+to change your major.
 
-.. topic:: The Undergraduate Honor Code Pledge 
+.. topic:: The Undergraduate Honor Code Pledge
 
     "As a Hokie, I will conduct myself with honor and integrity at all times. I will not lie, cheat, or steal, nor will I accept the actions of those who do."
 
 
 Self-Check
-==========
+----------
 Questions
----------
+~~~~~~~~~
 
 
 .. avembed:: Exercises/IntroToSoftwareDesign/HonorCodeSumm.html ka

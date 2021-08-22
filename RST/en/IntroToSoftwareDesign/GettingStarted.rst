@@ -7,8 +7,11 @@
    :author: Molly
 
 
+Week 1: Getting Started
+=======================
+
 Installing BlueJ
-================
+----------------
 
 Follow the instructions on Canvas to `Install BlueJ <https://canvas.vt.edu/courses/135890/pages/install-bluej>`_.
 
@@ -19,7 +22,7 @@ What is a Micro-World?
 
 
 Introducing LightBot
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 LightBot is a very simple robot programming simulation game. It runs right in
 your web browser, and looks like this:
@@ -58,7 +61,7 @@ a specific problem (an **algorithm**).
 
 
 From LightBot to Micro Worlds
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The LightBot game is an example of a **micro-world**. A micro-world is a
 miniature simulated environment that is populated with one or more objects
@@ -96,7 +99,7 @@ left), rather than starting with one.
 
 
 A Bit More LightBot
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 If you only played the first two levels of LightBot, there's definitely more
 interesting stuff you haven't seen! As the levels progress, the puzzles get
@@ -118,7 +121,7 @@ the later levels.
 
 
 Textually Representing Programs
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Computer programs are most often written in textual form--in fact, one of the most important goals of programming is to write programs so that they communicate well to *other people*. So let's look at how we can represent LightBot puzzle solutions as text.
 
@@ -212,7 +215,7 @@ Moving from Micro Worlds to Programming
 
 
 What Does LightBot Say About Programming?
-------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The LightBot game illustrates several basic programming concepts:
 
@@ -258,6 +261,11 @@ So what is an object? Just as in the real world, an object is any thing whatsoev
 Exercises
 ---------
 
+
+
+Reading Quiz
+~~~~~~~~~~~~
+
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz3.html ka
 
 
@@ -273,4 +281,4 @@ Week 1 Syntax Drills
 --------------------
 
 .. extrtoolembed:: 'Week 1 Syntax Drills'
-   :workout_id: 1308
+   :workout_id: 1307
