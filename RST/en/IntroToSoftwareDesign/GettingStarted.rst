@@ -15,7 +15,7 @@ Follow the instructions on Canvas to `Install BlueJ <https://canvas.vt.edu/cours
 
 
 What is a Micro-World?
-======================
+----------------------
 
 
 Introducing LightBot
