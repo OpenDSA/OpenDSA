@@ -44,9 +44,9 @@ the icons at the top and drop them on the main method squares left to right.
 .. admonition:: Try It Yourself
 
     Play the first two levels of LightBot to try things out here:
-    
+
     `LightBot <https://www.lightbot.lu/>`_
-    
+
     Be sure your browser window is tall enough to see the "Instructions" label
     in the upper right of the game.
 
@@ -259,5 +259,12 @@ So what is an object? Just as in the real world, an object is any thing whatsoev
 
 Exercises
 ---------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz3.html ka
+
+
+
+Reading Quiz
+------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz3.html ka
