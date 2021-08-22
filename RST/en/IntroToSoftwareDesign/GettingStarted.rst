@@ -267,3 +267,10 @@ Reading Quiz
 ------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1ReadingQuizSumm.html ka
+
+
+Week 1 Syntax Drills
+--------------------
+
+.. extrtoolembed:: 'Week 1 Syntax Drills'
+   :workout_id: 1308
