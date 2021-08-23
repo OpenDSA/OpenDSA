@@ -261,6 +261,7 @@ Exercises
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz3.html ka
 
 
+THIS IS A LINE I ADDED TO SEE IF IT WOULD PROPOGATE
 
 Reading Quiz
 ------------
