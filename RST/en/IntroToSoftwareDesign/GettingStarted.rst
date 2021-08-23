@@ -46,9 +46,9 @@ the icons at the top and drop them on the main method squares left to right.
 .. admonition:: Try It Yourself
 
     Play the first two levels of LightBot to try things out here:
-    
+
     `LightBot <https://www.lightbot.lu/>`_
-    
+
     Be sure your browser window is tall enough to see the "Instructions" label
     in the upper right of the game.
 
@@ -854,5 +854,5 @@ simple problems using the concepts in this module.
 Check Your Understanding
 ------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz3.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week1ReadingQuizSumm.html ka
     :long_name: Programming Concepts

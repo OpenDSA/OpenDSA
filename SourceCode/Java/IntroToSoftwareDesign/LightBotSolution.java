@@ -1,0 +1,11 @@
+andy.move();
+andy.turnRight();
+andy.move();
+andy.turnLeft();
+andy.move();
+andy.move();
+andy.turnLeft();
+andy.move();
+andy.turnRight();
+andy.move();
+andy.turnLightOn();
