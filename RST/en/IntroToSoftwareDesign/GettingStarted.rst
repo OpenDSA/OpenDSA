@@ -256,19 +256,15 @@ A kitchen model is mostly *static* It doesn’t change. Once put into place, its
 So what is an object? Just as in the real world, an object is any thing whatsoever. An object can be a physical thing, such as a :code:`Car`, or a mental thing, such as an :code:`Idea`. It can be a natural thing, such as an :code:`Animal`, or an artificial, human-made thing, such as a :code:`ATM`. A program that manages an ATM would involve :code:`BankAccounts` and :code:`Customer` objects. A chess program would involve a :code:`Board1 object and :code:`ChessPiece` objects.
 
 
-
-
-Exercises
----------
-
-
-
-Reading Quiz
-~~~~~~~~~~~~
+Programming Concepts Quiz
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz3.html ka
 
 
+
+Exercises
+---------
 
 
 Reading Quiz
@@ -282,3 +278,10 @@ Week 1 Syntax Drills
 
 .. extrtoolembed:: 'Week 1 Syntax Drills'
    :workout_id: 1307
+
+
+Week1 Practice Exercises
+------------------------
+
+.. extrtoolembed:: 'Week1 Practice Exercises'
+   :workout_id: 1323
