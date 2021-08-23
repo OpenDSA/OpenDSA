@@ -7,8 +7,11 @@
    :author: Molly
 
 
+Understanding this Course
+=========================
+
 Read the Course Syllabus
-========================
+------------------------
 
 Welcome to CS 1114!
 
@@ -21,7 +24,7 @@ Before continuing, please **read the course syllabus** posted on Canvas.
 
 
 Who Is This Class For?
-======================
+----------------------
 
 This course teaches introductory programming in Java, with a significant
 emphasis on object-oriented software design and on software testing. In many
@@ -37,7 +40,8 @@ have any significant programming background.
 
 
 Students of Many Experience Levels
-==================================
+----------------------------------
+
 
 While this course is designed and intended for beginners, please be aware
 that students from a very wide range of backgrounds take this course, including
@@ -60,7 +64,7 @@ who do not already know how to program.
 
 
 Online and Face-to-face Sections
-================================
+--------------------------------
 
 This course includes a mix of both online lecture and lab sections
 as well as in-person (face-to-face) lecture and lab sections. All
@@ -84,7 +88,7 @@ extenuating circumstances.
 
 
 Weekly Schedule
-===============
+---------------
 
 This course runs on a weekly schedule, and learning the schedule will help
 you develop a routine, anticipate deadlines, and stay on track and in sync
@@ -119,7 +123,7 @@ activities:
 
 
 Reading Activities
-==================
+------------------
 
 Each week begins with a Reading Activity due Sunday night. This activity
 includes embedded exercises to check your understanding and to allow
@@ -133,7 +137,7 @@ sessions.
 
 
 Labs
-====
+----
 
 Each week also includes a lab assignment that is posted at the beginning
 of the week, typically on Monday. Lab assignments are posted early so that
@@ -170,7 +174,7 @@ questions, so do make use of them during that time as you learn.
 
 
 Programming Assignments
-=======================
+-----------------------
 
 Programming assignments will be given almost every week, posted on Tuesdays
 and due the following Tuesday night. Programming assignments typically come
@@ -203,7 +207,7 @@ periods to work on programming.
 
 
 Late Assignments
-================
+----------------
 
 As detailed in the syllabus, students are allowed to turn in Reading Activities,
 Lab Assignments, and Programming Assignments up to 5 days late. There is
@@ -218,7 +222,7 @@ discretion of the instructor.
 
 
 Grading
-=======
+-------
 
 This course is being graded using a form of "Specification Grading",
 where completion of an assignment is determined by the evidence the
@@ -241,7 +245,7 @@ assignments received an "Excellent" score.
 
 
 Programming Language and Environment
-====================================
+------------------------------------
 
 This course teaching programming using Java. We will use the BlueJ IDE
 for code development in class, including all examples shown in lecture.
@@ -253,7 +257,7 @@ and lab or programming assignments will not compile without these.
 
 
 Cheating and The Honor Code
-===========================
+---------------------------
 
 .. topic:: Excerpt from Honor System Policy
 
@@ -310,11 +314,8 @@ to change your major.
     "As a Hokie, I will conduct myself with honor and integrity at all times. I will not lie, cheat, or steal, nor will I accept the actions of those who do."
 
 
-Self-Check
-==========
-Questions
----------
-
+Self-Check: Confirm Your Understanding
+--------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/HonorCodeSumm.html ka
-    :long_name: Honor Code Understanding
+    :long_name: Understanding the Honor Code

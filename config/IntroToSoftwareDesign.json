@@ -5,13 +5,6 @@
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
-    "Java_Generic": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java (Generic)",
-      "lang": "java"
-    },
     "Java": {
       "ext": [
         "java"
@@ -28,6 +21,7 @@
       "lang": "C++"
     }
   },
+  "tabbed_codeinc": false,
   "lang": "en",
   "build_JSAV": false,
   "build_cmap": false,
@@ -54,7 +48,8 @@
   },
   "glob_extr_options": {
     "code-workout": {
-      "points": 2.0
+      "points": 30.0,
+      "required": true
     },
     "points": 1.0
   },
@@ -67,14 +62,35 @@
     "Course Policies":{
       "IntroToSoftwareDesign/CoursePolicies": {
         "HonorCodeSumm": {
-          "points": 10,
-          "threshold": 1,
+          "points": 100,
+          "threshold": 10,
           "required": true
         }
       }
     },
     "Getting Started":{
-      "IntroToSoftwareDesign/GettingStarted": {}
+      "IntroToSoftwareDesign/GettingStarted": {
+        "Syntax Practice": {
+          "points": 30,
+          "required": true
+        },
+        "Week1Quiz1": {
+          "points": 13,
+          "threshold": 3,
+          "required": true
+        },
+        "Week1Quiz2": {
+          "points": 13,
+          "threshold": 3,
+          "required": true
+        },
+        "Week1Quiz3": {
+          "points": 14,
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        }
+      }
     },
     "Inheritance And Polymorphism":{
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {}
