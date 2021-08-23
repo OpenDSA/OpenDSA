@@ -262,7 +262,8 @@ Exercises
 
 
 
+
 Reading Quiz
 ------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz3.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week1ReadingQuizSumm.html ka
