@@ -114,7 +114,7 @@ class LList<E> implements List<E> {
       return false;
     }
     curr = head.next();
-    for(int i=0; i<pos; i++) { curr = curr.next() };
+    for(int i=0; i<pos; i++) { curr = curr.next(); }
     return true;
   }
 /* *** ODSAendTag: LListPos *** */
