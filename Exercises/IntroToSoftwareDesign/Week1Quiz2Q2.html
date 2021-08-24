@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Turning MicroWorlds into Code</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  </head>
+
+  <body data-height="880" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+
+        <div id="ReadingQuiz2Q2">
+          <p class="question">
+            Consider the following example of a LightBot program written out in text.  Again, in this case we have named our robot "andy".  When would andy jump?
+            <pre class="prettyprint">
+              f1:
+                andy.move()
+                andy.turnRight()
+                andy.move()
+
+              main:
+                run f1()
+                run f1()
+                andy.jump()
+            </pre>
+
+          </p>
+
+          <div class="solution">Jumping will be the SEVENTH thing andy does</div>
+          <ul class="choices" >
+            <li>Jumping will be the FOURTH thing andy does</li>
+            <li>Jumping will be the SIXTH thing andy does</li>]
+            <li>Jumping will be the THIRD thing andy does</li>
+
+          </ul>
+          <div class="hints">
+            <p>>The f1 method is run twice.  This means andy would move, turn right, and move, then do it all over again </p>
+          </div>
+        </div>
+        </div>
+      </div>
+  </body>
+</html>
