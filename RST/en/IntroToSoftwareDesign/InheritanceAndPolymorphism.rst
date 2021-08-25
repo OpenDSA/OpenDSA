@@ -10,33 +10,10 @@
 Inheritance and Polymorphism
 ============================
 
-
-Introduction
-------------
-
-At the end of this module you will..
-* Have been introduced to using the Iclicker
-* Know some of the basics of Polymorphism
-  * Java Java Java! --> Sections 0.78, 1.3, 8.1 - 8.5, and 8.7
-* Know how methods send messages to each other using parameters
-  * Java Java Java! --> Sections 0.76, 3.2
-  * Think Java --> Section 1.5
-
-* Have more practice creating and using methods
-  * Java Java Java! --> Chapter 4
-  * Think Java --> Chapter 3
-* Know about the 'super' keyword and how to use it
-  * Java Java Java! --> Section 8.2.6
-* Know some of the strategies Computer Scientists use when creating algorithms
-  * Java Java Java! --> Sections 1.2 - 1.3
-  * Think Java --> Section 1.2
-
-
 Working with IClicker
 ---------------------
 
-<TODO: add any information about Iclicker>
-
+TODO: add any information about Iclicker.
 
 Variables and Methods (from Java Java Java!)
 --------------------------------------------
@@ -53,7 +30,6 @@ For example, as the above diagram shows, a :code:``Rectangle`` 's  :code:``lengt
 An int value is a whole number, such as 76 or -5.
 
 A **method**, which corresponds to an action or a behavior, is a named chunk of code that can be called upon or invoked to perform a certain pre-defined set of actions. For example, in our :code:``Rectangle`` object, the :code:``calculateArea()`` method can be called upon to calculate the rectangle’s area. It would do this, of course, by multiplying the rectangle’s :code:``length`` by its :code:``width``. Similarly, the :code:``draw()`` method can be invoked to draw a picture of the rectangle. It would take the actions necessary to draw a rectangle on the console
-
 
 Creating and using Methods
 --------------------------
@@ -89,7 +65,7 @@ When you use a method, you provide the arguments. When you write a method, you n
         }
     }
 
-:code:``printTwice`` has a parameter named :code:``s`` with type :code:``String``. When we invoke :code:``printTwice``, we have to provide an argument with type :code:``String``.
+:code:``printTwice`` has a parameter named :code:`` s`` with type :code:`` string``. When we invoke :code:``printTwice``, we have to provide an argument with type :code:`` string``.
 
 Lets say we wanted to call that printTwice method:
 
@@ -97,10 +73,9 @@ Lets say we wanted to call that printTwice method:
 
     printTwice("Don't make me say this twice!")
 
+Before the method executes, the argument gets assigned to the parameter. In this example, the argument "Don't make me say this twice!" gets assigned to the parameters.
 
-Before the method executes, the argument gets assigned to the parameter. In this example, the argument "Don't make me say this twice!" gets assigned to the parameter s.
-
-This process is called **parameter passing** because the value gets passed from outside the method to the inside. An argument can be any kind of expression, so if you have a  :code:``String`` variable, you can use it as an argument:
+This process is called **parameter passing** because the value gets passed from outside the method to the inside. An argument can be any kind of expression, so if you have a  :code:`` string`` variable, you can use it as an argument:
 
 .. code-block:: java
 
@@ -108,20 +83,20 @@ This process is called **parameter passing** because the value gets passed from 
     printTwice(argument);
 
 
-This time, the phrase "never say never" is asigned to the the parameter :code:``s`` in the method and is printed twice. You can call a method as many times as you like with different parameters.  The only restriction is that the value you provide as an argument must have the same type as the parameter.  For example, the following code would cause a syntax error.
+This time, the phrase "never say never" is asigned to the the parameter :code:`` s`` in the method and is printed twice. You can call a method as many times as you like with different parameters.  The only restriction is that the value you provide as an argument must have the same type as the parameter.  For example, the following code would cause a syntax error.
 
 .. code-block:: java
 
     printTwice(17);
 
-
-Parameters and other variables only exist inside their own methods. Outiside of the :code:``printTwice`` method, you would not be able to use the variable :code:``s``.  Because variables only exist inside the methods where they are defined, they are often called **local variables**.
+Parameters and other variables only exist inside their own methods. Outiside of the :code:``printTwice`` method, you would not be able to use the variable :code:`` s``.  Because variables only exist inside the methods where they are defined, they are often called **local variables**.
 
 It may also be helpful to think about methods like algebraic functions.
 
 .. raw:: html
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/GY6Q2f2kvY0?start=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 Using Multiple Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -130,53 +105,68 @@ Here is an example of a method that takes two parameters
 
 .. code-block:: java
 
-    public void printSum(int x, int y){
-      int z = x + y;
-      System.out.println(z);
-    }
+  public void printSum(int x, int y){
+    int z = x + y;
+    System.out.println(z);
+  }
 
 To invoke this method, we have to provide two integers as arguments:
 
 .. code-block:: java
 
-    int firstNum = 7;
-    int secondNum = 8;
-    printSum(firstNum, secondNum);
+  int firstNum = 7;
+  int secondNum = 8;
+  printSum(firstNum, secondNum);
 
 Which would print out 15.
 
+Class Hierarchy and Inheritance (From Java Java Java!)
+------------------------------------------------------
 
+How are classes related to each other? In Java, and in any other object oriented language, classes are organized in a **class hierarchy**.  A class hierarchy is like an upside-down tree. At the very top of the hierarchy is the most general class. In Java, the most general class is the :code:``Object`` class. The classes below :code:``Object`` in the hierarchy are known as its **subclasses**.  Since all of the objects we use in our programs belong to some class or other, this is like saying that all objects are :code:``Object`` s.
 
+The figure below illustrates the concept of a class hierarchy using the classes that we have described in this section. Notice that the :code:``Object`` class occurs at the top of the hierarchy. It is the most general class. It has features that are common to all Java objects. As you move down the hierarchy, the classes become more and more specialized. A :code:``Rectangle`` is an :code:``Object`` but it contains attributes – length and width – that are common to all rectangles but not to other objects in the hierarchy. For example, an :code:``ATM`` object does not necessarily have a length and a width. Notice that we have added a :code:`` square`` class to the hierarchy. A :code:`` square`` is a special type of :code:``Rectangle`` , namely one who’s length equals its width.
+
+.. odsafig:: Images/ClassHierarchy.png
+   :align: center
+
+To introduce some important terminology associated with this kind of hierarchy, we say that the :code:``Rectangle`` class is a subclass of the :code:``Object`` class. The :code:`` square`` class is a subclass of both :code:`` square`` and :code:``Object``. Classes that occur above a given class in the hierarchy are said to be its **superclasses**. Thus :code:``Rectangle`` class is superclass of the :code:`` square`` class.  The :code:``Object`` class is also aa superclass of :code:`` square``. In general, we say that a subclass *extends* a superclass, meaning that it adds additional elements (attributes and/or methods) to those contained in its superclasses. We saw this in the case of the :code:`` square`` class. It adds the feature that its length and width are always equal.
+
+Another important concept associated with a class hierarchy is the notion of **class inheritance**, whereby a subclass inherits elements (attributes and / or methods) from its superclass.  To take an example from the natural world, think of the sort of inheritance that occurs between a horse and a mammal. A horse is a mammal. So horses inherit the characteristic of being warm blooded by virtue of also being mammals. (This is different from the kind of individual inheritance whereby you inherit your mother’s blue eyes and your father’s black hair).
+
+To illustrate how inheritance works in programming, consider a chess program.  There are several different types of :code:``ChessPiece`` s. There are :code:``Pawn`` s, and :code:``Knight`` s, and :code:``Queen`` s and :code:``King`` s. The figure below illustrates the chess piece hierarchy.
+
+.. odsafig:: Images/ChessPieceHierarchy.png
+   :align: center
 
 Class Hierarchy and Inheritance (From Java Java Java!)
 ------------------------------------------------------
 
 How are classes related to each other? In Java, and in any other object oriented language, classes are organized in a **class hierarchy**. A class hierarchy is like an upside-down tree. At the very top of the hierarchy is the most general class. In Java, the most general class is the :code:``Object`` class. The classes below :code:``Object`` in the hierarchy are known as its **subclasses**. Since
 all of the objects we use in our programs belong to some class or other,
-this is like saying that all objects are :code:``Object``s.
+this is like saying that all objects are :code:``Object`` s.
 
-The figure below illustrates the concept of a class hierarchy using the classes that we have described in this section. Notice that the :code:``Object`` class occurs at the top of the hierarchy. It is the most general class. It has features that are common to all Java objects. As you move down the hierarchy, the classes become more and more specialized. A :code:``Rectangle`` is an :code:``Object`` but it contains attributes – length and width – that are common to all rectangles but not to other objects in the hierarchy. For example, an :code:``ATM`` object does not necessarily have a length and a width. Notice that we have added a :code:``Square`` class to the hierarchy. A :code:``Square`` is a special type of :code:``Rectangle``, namely one who’s length equals its width
+The figure below illustrates the concept of a class hierarchy using the classes that we have described in this section. Notice that the :code:``Object`` class occurs at the top of the hierarchy. It is the most general class. It has features that are common to all Java objects. As you move down the hierarchy, the classes become more and more specialized. A :code:``Rectangle`` is an :code:``Object`` but it contains attributes – length and width – that are common to all rectangles but not to other objects in the hierarchy. For example, an :code:``ATM`` object does not necessarily have a length and a width. Notice that we have added a :code:`` square`` class to the hierarchy. A :code:`` square`` is a special type of :code:``Rectangle``, namely one who’s length equals its width
 
 .. odsafig:: Images/ClassHierarchy.png
-   :align: center
+  :align: center
 
-To introduce some important terminology associated with this kind of hierarchy, we say that the :code:``Rectangle`` class is a subclass of the :code:``Object`` class. The :code:``Square`` class is a subclass of both :code:``Square`` and :code:``Object``. Classes that occur above a given class in the hierarchy are said to be its **superclasses**. Thus :code:``Rectangle`` class is superclass of the :code:``Square`` class.  The :code:``Object`` class is also a superclass of :code:``Square``. In general, we say that a subclass *extends* a superclass, meaning that it adds additional elements (attributes and/or methods) to those contained in its superclasses. We saw this in the case of the :code:``Square`` class. It adds the feature that its length and width are always equal.
+To introduce some important terminology associated with this kind of hierarchy, we say that the :code:``Rectangle`` class is a subclass of the :code:``Object`` class. The :code:`` square`` class is a subclass of both :code:`` square`` and :code:``Object``. Classes that occur above a given class in the hierarchy are said to be its **superclasses**. Thus :code:``Rectangle`` class is superclass of the :code:`` square`` class.  The :code:``Object`` class is also a superclass of :code:`` square``. In general, we say that a subclass *extends* a superclass, meaning that it adds additional elements (attributes and/or methods) to those contained in its superclasses. We saw this in the case of the :code:`` square`` class. It adds the feature that its length and width are always equal.
 
 Another important concept associated with a class hierarchy is the notion of **class inheritance**, whereby a subclass inherits elements (attributes and / or methods) from its superclass.  To take an example from the natural world, think of the sort of inheritance that occurs between a horse and a mammal. A horse is a mammal. So horses inherit the characteristic of being warm blooded by virtue of also being mammals. (This is different from the kind of individual inheritance whereby you inherit your mother’s blue eyes and your father’s black hair).
 
-To illustrate how inheritence works in programming, consider a chess program.  There are several different types of :code:``ChessPiece``s. There are :code:``Pawn``s, and :code:``Knight``s, and :code:``Queen``s and :code:``King``s. The figure below illustrates the chess piece hierarchy.
+To illustrate how inheritance works in programming, consider a chess program.  There are several different types of :code:``ChessPiece`` s. There are :code:``Pawn`` s, and :code:``Knight`` s, and :code:``Queen`` s and :code:``King`` s. The figure below illustrates the chess piece hierarchy.
 
 .. odsafig:: Images/ChessPieceHierarchy.png
    :align: center
 
 A pair of attributes that all chess pieces have in common is their :code:``row`` and :code:``column`` position on the chess board. Because all chess pieces have these attributes in common, they are located at the top of the :code:``ChessPiece`` hierarchy and inherited by all :code:``ChessPiece`` subclasses. Of course, the :code:``row`` and :code:``column`` attributes are given different values in each :code:``ChessPiece`` object.
 
-One of the actions that all chess pieces have in common is that they can :code:``moveTo()`` a given square on the chess board. But different types of chess pieces have different ways of moving. For example, a :code:``Bishop`` can only move along diagonals on the chess board, whereas a :code:``Rook`` can only move along a :code:``row`` or :code:``column`` on the chess board. So, clearly, we can’t describe a :code:``moveTo()`` method that will work for all :code:``ChessPiece``s. This is why we put the :code:``moveTo()`` method in all of the :code:``ChessPiece`` subclasses. The :code:``ChessPiece`` class also has a :code:``moveTo()`` method, but note that its name is italicized in the diagram. This indicates that it cannot be completely defined at that level.
+One of the actions that all chess pieces have in common is that they can :code:``moveTo()`` a given square on the chess board. But different types of chess pieces have different ways of moving. For example, a :code:``Bishop`` can only move along diagonals on the chess board, whereas a :code:``Rook`` can only move along a :code:``row`` or :code:``column`` on the chess board. So, clearly, we can’t describe a :code:``moveTo()`` method that will work for all :code:``ChessPiece`` s. This is why we put the :code:``moveTo()`` method in all of the :code:``ChessPiece`` subclasses. The :code:``ChessPiece`` class also has a :code:``moveTo()`` method, but note that its name is italicized in the diagram. This indicates that it cannot be completely defined at that level.
 
-Finally, note that in chess, the king has certain special attributes and actions. Thus only the king can be put *in check*. This means that the king is under attack and in danger of being captured, thereby ending the game. Similarly, only the king has the ability to castle. This is special move that a king can make together with one of its rooks under certain conditions. Thus, the reason we show the :code:``inCheck`` attribute and :code:``castle()`` action in the :code:``King`` class is because these are characteristics that particular to :code:``King``s.
+Finally, note that in chess, the king has certain special attributes and actions. Thus only the king can be put *in check*. This means that the king is under attack and in danger of being captured, thereby ending the game. Similarly, only the king has the ability to castle. This is special move that a king can make together with one of its rooks under certain conditions. Thus, the reason we show the :code:``inCheck`` attribute and :code:``castle()`` action in the :code:``King`` class is because these are characteristics that particular to :code:``King`` s.
 
 In this way, a class hierarchy represents a *specialization* of classes as you move from top to bottom. The most general class, :code:``ChessPiece``, is at the top of the hierarchy. Its attributes and methods are passed on to (inherited by) its subclasses. However, in addition to the attributes and methods they inherit from their superclasses, the subclasses define their own special attributes and methods. Each of the subclasses, :code:``Pawn``, :code:``Bishop``, and so on, represents some kind of specialization of the superclass. In this example, each of the subclasses have their own distinctive ways of moving. And the :code:``King`` subclass has unique attributes and actions (:code:``inCheck`` and :code:``castle()``.
-
 
 Creating Subclasses
 ~~~~~~~~~~~~~~~~~~~
@@ -234,7 +224,7 @@ Fortunately, while constructors are not inherited, there is a simple pattern for
 
 While we have not yet covered all of the features in this small piece of code, the gist is straightforward. A constructor is declared like a regular method, except that we omit the word void and its name is exactly the same as the class name. Here, we are defining a constructor for our :code:``PlantingJeroo`` subclass that takes three numbers (ints) as arguments, representing the x and y coordinates of the Jeroo's location and the number of flowers in its pouch.
 
-The body of this constructor contains only a single line that uses the special Java keyword :code:``super``. This word can only be used as the first word inside a subclass constructor, and it allows us to invoke a superclass constructor, passing it any information it might need. So here, we are saying that the first (and only) action in our :code:``PlantingJeroo`` constructor is to call the constructor for its superclass (Jeroo), passing the x and y coordinates and number of flowers. This allows the superclass to initialize all of its attributes correctly with the given information. If our subclass needed more initialization, we would perform that in following statements in the subclass constructor's body.
+The body of this constructor contains only a single line that uses the special Java keyword :code:`` super``. This word can only be used as the first word inside a subclass constructor, and it allows us to invoke a superclass constructor, passing it any information it might need. So here, we are saying that the first (and only) action in our :code:``PlantingJeroo`` constructor is to call the constructor for its superclass (Jeroo), passing the x and y coordinates and number of flowers. This allows the superclass to initialize all of its attributes correctly with the given information. If our subclass needed more initialization, we would perform that in following statements in the subclass constructor's body.
 
 But for now, this constructor is enough for our :code:``PlantingJeroo`` class. It will allow us to create a :code:``PlantingJeroo`` object by specifying its location and number of flowers. That will in turn allow us to instantiate the Ali Jeroo in the previous example without problems.
 
@@ -244,7 +234,6 @@ This video may also be helpful when learning about the super keyword:
 .. raw:: html
 
    <iframe width="560" height="315" src="https://www.youtube.com/embed/oKZnHNM9Ew4?start=24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 
 Thinking through an algorithm
@@ -261,7 +250,6 @@ The development of an algorithm (a plan) is a key step in solving a problem. Onc
 #. Develop a high-level algorithm.
 #. Refine the algorithm by adding more detail.
 #. Review the algorithm.
-
 
 Step 1: Obtain a description of the problem
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -317,6 +305,7 @@ This algorithm is satisfactory for daily use, but it lacks details that would ha
 These kinds of details are considered in the next step of our process.
 
 
+
 Step 4: Refine the algorithm by adding more detail
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -326,10 +315,9 @@ When our goal is to develop algorithms that will lead to computer programs, we n
 
 Most of our examples will move from a high-level to a detailed algorithm in a single step, but this is not always reasonable. For larger, more complex problems, it is common to go through this process several times, developing intermediate level algorithms as we go. Each time, we add more detail to the previous algorithm, stopping when we see no benefit to further refinement. This technique of gradually working from a high-level to a detailed algorithm is often called **stepwise refinement**.
 
-
-
 .. note::
     **Stepwise Refinement** is a process for developing a detailed algorithm by gradually adding detail to a high-level algorithm.
+
 
 
 Step 5: Review the Algorithm
@@ -338,17 +326,16 @@ Step 5: Review the Algorithm
 The final step is to review the algorithm. What are we looking for? First, we need to work through the algorithm step by step to determine whether or not it will solve the original problem. Once we are satisfied that the algorithm does provide a solution to the problem, we start to look for other things. The following questions are typical of ones that should be asked whenever we review an algorithm. Asking these questions and seeking their answers is a good way to develop skills that can be applied to the next problem.
 
 
+What problems does this algorithm solve?
+""""""""""""""""""""""""""""""""""""""""
 
-Does this algorithm solve a **very specific problem** or does it solve a **more general** problem? Should it be generalized?
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-For example, an algorithm that computes the area of a circle having radius 5.2 meters (formula π*5.22) solves a very specific problem, but an algorithm that computes the area of any circle (formula π*R2) solves a more general problem.
-
+Does this algorithm solve a **very specific problem** or does it solve a **more general** problem? Should it be generalized?  For example, an algorithm that computes the area of a circle having radius 5.2 meters (formula π*5.22) solves a very specific problem, but an algorithm that computes the area of any circle (formula π*R2) solves a more general problem.
 
 Can this algorithm be **simplified**?
 """""""""""""""""""""""""""""""""""""
 
 One formula for computing the perimeter of a rectangle is: :code:``length + width + length + width`` but a simpler formula would be:  :code:``2.0 * (length + width)``.
+
 
 
 Is this solution similar to the solution to another problem?
@@ -364,39 +351,3 @@ Similarities: Each computes an area. Each multiplies two measurements.
 Differences: Different measurements are used. The triangle formula contains 0.5.
 
 Hypothesis: Perhaps every area formula involves multiplying two measurements.
-
-
-
-Syntax Review
--------------
-
-
-
-Syntax Practice
----------------
-
-Codeworkout exercises
-
-
-
-changePointeeDataDirect
------------------------
-
-Molly is practicing adding a CW style question (still in progress)
-
-.. extrtoolembed:: 'changePointeeDataDirect'
-
-
-
-Programming Practice
---------------------
-
-Codeworkout exercises
----------------------
-
-Reading Quiz 1
----------------------
-
-Practicing making a multiple choice question to mimic a Khan Academy question
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka
