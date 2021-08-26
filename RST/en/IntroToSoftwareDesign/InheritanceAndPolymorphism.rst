@@ -351,3 +351,11 @@ Similarities: Each computes an area. Each multiplies two measurements.
 Differences: Different measurements are used. The triangle formula contains 0.5.
 
 Hypothesis: Perhaps every area formula involves multiplying two measurements.
+
+
+
+Week 2: Syntax Drills
+---------------------
+
+.. extrtoolembed:: 'Week 2: Syntax Drills'
+   :workout_id: 1334
