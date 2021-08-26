@@ -366,3 +366,10 @@ Week 2: Practice
 
 .. extrtoolembed:: 'Week 2: Practice'
    :workout_id: 1336
+
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week2ReadingQuizSumm.html ka
+   :long_name: Programming Concepts
