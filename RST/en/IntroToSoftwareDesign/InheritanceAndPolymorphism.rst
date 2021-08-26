@@ -359,3 +359,10 @@ Week 2: Syntax Drills
 
 .. extrtoolembed:: 'Week 2: Syntax Drills'
    :workout_id: 1334
+
+
+Week 2: Practice
+----------------
+
+.. extrtoolembed:: 'Week 2: Practice'
+  :workout_id: 1336
