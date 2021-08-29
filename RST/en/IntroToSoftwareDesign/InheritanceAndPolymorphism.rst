@@ -382,6 +382,9 @@ is pressed.
    from (3, 4) to (5, 4).
 
 
+.. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz1Summ.html ka
+
+
 Class Hierarchy and Inheritance
 -------------------------------
 
@@ -503,6 +506,8 @@ Creating the ``King`` class would then look like this:
 
 This ``extends`` keyword tells java that the ``King`` class is a subclass
 of ``ChessPiece``.
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz2Summ.html ka
 
 
 Creating Smarter Jeroos
@@ -1084,7 +1089,7 @@ Let's name the first Jeroo Ann and the second one Andy.
 
          Turn around (either left or right twice) |br|
          Hop (to location (0, 1))
-   
+
       Give a flower to Andy
 
          Give ahead
@@ -1129,7 +1134,7 @@ As usual, the first build will contain the main method, the declaration
 and instantiation of the Jeroo objects, and the high-level algorithm in
 the form of comments.  The second build will have Ann give her flower to
 Andy. The third build will have Andy locate and disable the net.  In the
-final build, Andy will place the flower and turn East. 
+final build, Andy will place the flower and turn East.
 
 
 FIRST BUILD
@@ -1265,6 +1270,9 @@ turn South.
        andy.turn(RIGHT);
 
    }   // ===== end of method myProgram() =====
+
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz3Summ.html ka
 
 
 Creating and Using Jeroo Methods
@@ -1759,7 +1767,7 @@ Java Code for "Clear Nets and Pick"
 """""""""""""""""""""""""""""""""""
 
 As before, we should develop the code as a series of builds.  To
-start this process, create a new project using BlueJ 
+start this process, create a new project using BlueJ
 use the "New Class..." button to create a new subclass of `Island` called
 ``ClearNetsAndPick`` for this example.  Also, create a
 new subclass of ``Jeroo`` called ``ClearingJeroo``
@@ -2035,6 +2043,8 @@ In the ``ClearNetsAndPick`` class:
        kim.hop(3);           // new code
        kim.turnAround();     // new code
    }
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz4Summ.html ka
 
 
 
