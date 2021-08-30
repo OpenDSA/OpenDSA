@@ -544,6 +544,13 @@ to add a method, we need to a class of our own to write it in.
    square and then plants a flower.
 
 
+Syntax Practice 2a: Jeroo Methods
+---------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 2a: Jeroo Methods'
+   :workout_id: 1342
+
+
 Problem Solving and Algorithms
 ------------------------------
 
@@ -2067,18 +2074,18 @@ Self-Check
    :long_name: Writing Methods
 
 
-Syntax Practice 2
------------------
+Syntax Practice 2b: Subclass Constructors
+-----------------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 2'
-   :workout_id: 1334
+.. extrtoolembed:: 'Syntax Practice 2b: Subclass Constructors'
+   :workout_id: 1343
 
 
 Programming Practice 2
 ----------------------
 
 .. extrtoolembed:: 'Programming Practice 2'
-   :workout_id: 1336
+   :workout_id: 1344
 
 
 Check Your Understanding

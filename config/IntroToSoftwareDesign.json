@@ -93,30 +93,34 @@
     },
     "Inheritance And Polymorphism":{
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
-        "Syntax Practice 2": {
-          "points": 30,
+        "Syntax Practice 2a: Jeroo Methods": {
+          "points": 20,
+          "required": true
+        },
+        "Syntax Practice 2b: Subclass Constructors": {
+          "points": 20,
           "required": true
         },
         "Programming Practice 2": {
-          "points": 30,
+          "points": 20,
           "required": true
         },
-        "Week1Quiz1Summ": {
+        "Week2Quiz1Summ": {
           "points": 8,
           "threshold": 3,
           "required": true
         },
-        "Week1Quiz2Summ": {
+        "Week2Quiz2Summ": {
           "points": 8,
           "threshold": 3,
           "required": true
         },
-        "Week1Quiz3Summ": {
+        "Week2Quiz3Summ": {
           "points": 8,
           "threshold": 3,
           "required": true
         },
-        "Week1Quiz4Summ": {
+        "Week2Quiz4Summ": {
           "points": 8,
           "threshold": 3,
           "required": true
