@@ -2061,7 +2061,7 @@ In the ``ClearNetsAndPick`` class:
 
 
 Self-Check
-----------
+~~~~~~~~~~
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz4Summ.html ka
    :long_name: Writing Methods
