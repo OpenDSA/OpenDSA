@@ -381,10 +381,12 @@ is pressed.
    have the jeroo ``jessica`` plant a row of three flowers
    from (3, 4) to (5, 4).
 
+
 Self-Check
 ~~~~~~~~~~
+
 .. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz1Summ.html ka
-    :long_name: Working with Jeroos
+   :long_name: Working with Jeroos
 
 
 Class Hierarchy and Inheritance
@@ -509,10 +511,12 @@ Creating the ``King`` class would then look like this:
 This ``extends`` keyword tells java that the ``King`` class is a subclass
 of ``ChessPiece``.
 
+
 Self-Check
 ~~~~~~~~~~
+
 .. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz2Summ.html ka
-    :long_name: Working class hierarchy and inheritance
+   :long_name: Working class hierarchy and inheritance
 
 
 
@@ -1280,6 +1284,7 @@ turn South.
 
 Self-Check
 ~~~~~~~~~~
+
 .. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz3Summ.html ka
    :long_name: Developing Algorithms
 
@@ -2054,12 +2059,12 @@ In the ``ClearNetsAndPick`` class:
        kim.turnAround();     // new code
    }
 
+
 Self-Check
-~~~~~~~~~~
+----------
+
 .. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz4Summ.html ka
-  :long_name: Writing Methods
-
-
+   :long_name: Writing Methods
 
 
 Syntax Practice 2
