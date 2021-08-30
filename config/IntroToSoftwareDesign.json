@@ -86,14 +86,47 @@
         },
         "Week1ReadingQuizSumm": {
           "points": 14,
-          "points": 10,
           "threshold": 3,
           "required": true
         }
       }
     },
     "Inheritance And Polymorphism":{
-      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {}
+      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
+        "Syntax Practice 2": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 2": {
+          "points": 30,
+          "required": true
+        },
+        "Week1Quiz1Summ": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        },
+        "Week1Quiz2Summ": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        },
+        "Week1Quiz3Summ": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        },
+        "Week1Quiz4Summ": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        },
+        "Week2ReadingQuizSumm": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        }
+      }
     },
     "Conditional Actions": {
       "IntroToSoftwareDesign/ConditionalActions": {}
