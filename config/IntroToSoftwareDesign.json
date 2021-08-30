@@ -86,14 +86,51 @@
         },
         "Week1ReadingQuizSumm": {
           "points": 14,
-          "points": 10,
-          "threshold": 3,
+          "threshold": 10,
           "required": true
         }
       }
     },
     "Inheritance And Polymorphism":{
-      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {}
+      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
+        "Syntax Practice 2a: Jeroo Methods": {
+          "points": 20,
+          "required": true
+        },
+        "Syntax Practice 2b: Subclass Constructors": {
+          "points": 20,
+          "required": true
+        },
+        "Programming Practice 2": {
+          "points": 20,
+          "required": true
+        },
+        "Week2Quiz1Summ": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        },
+        "Week2Quiz2Summ": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        },
+        "Week2Quiz3Summ": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        },
+        "Week2Quiz4Summ": {
+          "points": 8,
+          "threshold": 3,
+          "required": true
+        },
+        "Week2ReadingQuizSumm": {
+          "points": 8,
+          "threshold": 10,
+          "required": true
+        }
+      }
     },
     "Conditional Actions": {
       "IntroToSoftwareDesign/ConditionalActions": {}

@@ -511,7 +511,7 @@ you double-click on ``Level3Solution``, you will see its contents:
 In the editor notice that a method has already been provided
 to hold new code.  This method is called ``myProgram()``,
 and it represents the behavior that will be carried out when you
-press the ``Run`` button at the bottom of Greenfoot4Sofia.
+press the ``Run`` button at the bottom of your program's window.
 This method has the following structure:
 
 .. odsafig:: Images/method_structure0.png
@@ -559,11 +559,11 @@ indicates that the programmer plans to use a ``LightBot``
 to help solve the problem at hand.  The programmer must provide an
 identifier (or name) for the ``LightBot`` object.
 
-..note::
-    * An **identifier** (or name) in Java should start with a letter, which may be followed by other letters or numeric digits.
-    * We will use a **lowercase letter** as the first letter in an identifier when we are giving names to variables or methods.
-    * We will use a **capital letter** as the first letter in an identifier when we are giving names to *classes* (a class is a family of objects that all understand the same methods, like ``LightBot``, which represents all the ``LightBot`` objects we can create--they all understand the same seven basic methods).
-    * Java also allows underscores (_) and dollar signs ($) to be used in identifiers, but we will not use them in this course.
+.. note::
+   * An **identifier** (or name) in Java should start with a letter, which may be followed by other letters or numeric digits.
+   * We will use a **lowercase letter** as the first letter in an identifier when we are giving names to variables or methods.
+   * We will use a **capital letter** as the first letter in an identifier when we are giving names to *classes* (a class is a family of objects that all understand the same methods, like ``LightBot``, which represents all the ``LightBot`` objects we can create--they all understand the same seven basic methods).
+   * Java also allows underscores (_) and dollar signs ($) to be used in identifiers, but we will not use them in this course.
 
 The **instantiation portion** of the figure above is
 a request that the ``LightBot`` object be created.  The
@@ -619,18 +619,17 @@ world objects understand called ``add()``, like this:
 
 
 Now it is time to try out your first program!  If you have
-typed these lines into Greenfoot4Sofia's editor, you may notice
-that the ``Level3Solution`` icon in Greenfoot4Sofia's main
+typed these lines into BlueJ's editor, you may notice
+that the ``Level3Solution`` icon in BlueJ's main
 window has changed so that it has diagonal lines across it.  These
 indicate that the source code has been changed--because you typed
 new instructions.  Before the computer can execute our program,
 however, we first need to convert the source code you wrote into a
 form that can be executed by the computer.  Click the "Compile"
 button at the top of the editor window (or the "Compile" button
-on Greenfoot4Sofia's main window).  This will convert the source
-code into a form the computer can execute.  Finally, press the
-"Run" button at the bottom of the Greenfoot4Sofia main window to
-run the code you wrote.
+on BlueJ's main window).  This will convert the source
+code into a form the computer can execute.  Finally, right-click on
+the `Application` class and select "Run JavaFX Application".
 
 OK, it isn't exciting, but you will see a new LightBot created
 and added to the level at the coordinates you specified.  You can

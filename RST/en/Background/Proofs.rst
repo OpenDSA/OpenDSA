@@ -230,7 +230,7 @@ hypothesis to prove the theorem.
 The induction hypothesis does not come out of thin air.
 It is true if and only if the theorem itself is true, and
 therefore is reliable within the proof context.
-Using the induction hypothesis it do work is exactly the same as using
+Using the induction hypothesis to do work is exactly the same as using
 a recursive call to do work.
 
 .. _SumIEx:
