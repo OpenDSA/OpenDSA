@@ -86,7 +86,7 @@
         },
         "Week1ReadingQuizSumm": {
           "points": 14,
-          "threshold": 3,
+          "threshold": 10,
           "required": true
         }
       }
@@ -123,7 +123,7 @@
         },
         "Week2ReadingQuizSumm": {
           "points": 8,
-          "threshold": 3,
+          "threshold": 10,
           "required": true
         }
       }
