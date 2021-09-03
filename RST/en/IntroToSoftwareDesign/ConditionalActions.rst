@@ -32,16 +32,6 @@ An **if-then** structure (sometimes called simply an if structure) is a special 
 
 A **multi-way-if** structure (sometimes called a multi-way branching structure) defines several different blocks of statements, only one of which will be executed. Java also has a **switch** structure to create a multi-way branching structure, but we'll learn about it later.
 
-If-Then-Else
-------------
-
-An if-then-else structure (sometimes called an *if-else* structure) defines two different blocks of statements, only one of which will be executed. An if-else structure consists of three parts, the selection condition, the true branch, and the false branch. The true branch contains a block of statements that will be executed whenever the selection condition is true. The false branch contains a block of statements that will be executed whenever the selection condition is false.
-
-
-.. odsafig:: Images/ifThenElseDiagram.png
-   :align: center
-
-The figure above illustrates the generic if-then-else structure and uses arrows to show the order in which statements are executed and the condition is checked. The if-then-else structure defines a choice between two courses of action, only one of which will be executed.
 
 Conditions Using Sensor Methods
 -------------------------------
@@ -140,6 +130,11 @@ There are two parts to an if structure, the selection condition and the true bra
 The figure above shows a generic if-then structure, and uses arrows to show the order in which statements will be executed. The if structure defines optional code, and that code is either skipped or executed just once.
 
 
+Self-Check
+~~~~~~~~~~
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz1Summ.html ka
+    :long_name: Working with If-Then-Else Statements
+
 Java's Syntax for the If-then Structure
 ---------------------------------------
 
@@ -175,6 +170,15 @@ Have the Jeroo named Jessica check for a net to her right. If there is one, have
     }
 
     jessica.hop();
+
+
+
+Self-Check
+~~~~~~~~~~
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz2Summ.html ka
+    :long_name: Working with If-Then Statements
+
+
 
 
 Java's Syntax for the Multi-way Selection Structure (a cascaded if)
@@ -229,6 +233,12 @@ Assume that a Jeroo named Louisa is carrying at least one flower. Have her check
         louisa.hop();
         louisa.turn(LEFT);
     }
+
+Self-Check
+~~~~~~~~~~
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz1Summ.html ka
+    :long_name: Deciding When to Use Each Type of Structure
+
 
 Compound Conditions
 -------------------
@@ -313,10 +323,16 @@ This line of code is more like a question.  "Does the jeroo see a net ahead of t
      - Bob is facing west and there is no net ahead
 
 
+Self-Check
+~~~~~~~~~~
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz4Summ.html ka
+   :long_name: AND, OR, and NOT
+
+
 Repeating Actions
 -----------------
 
-In the previous sections, we learned how to use an if-then-else or if-then structure to decide which action to perform. In this chapter, we will learn how to create a block of statements that can be executed several times in succession. We do this using a repetition structur (also called a loop), which is one of the fundamental control structures supported by most imperative and object-oriented programming languages.
+In the previous sections, we learned how to use an if-then-else or if-then structure to decide which action to perform. In this section, we will learn how to create a block of statements that can be executed several times in succession. We do this using a repetition structure (also called a loop), which is one of the fundamental control structures supported by most imperative and object-oriented programming languages.
 
 A **repetition structure** (or **loop**) allows a group of statements to be executed several times in succession. There are three important repetition structures: a loop repeats an action for every object in a collection of objects, a loop that is controlled by the state of the objects in the program, and a loop that is controlled by a counter (usually a number). In this chapter, we are going to focus on just one kind of loop, one that is controlled by the state of the objects in the program. This happens to be the most general and most fundamental kind of repetition structure in many programming languages.
 
@@ -379,7 +395,6 @@ Assume that a Jeroo named Kim is not standing on a flower, but there is a line o
 
 .. code-block:: java
 
-    if (timmy.seesNet(AHEAD))
     while (kim.seesFlower(AHEAD))
     {
         kim.hop();
@@ -387,6 +402,12 @@ Assume that a Jeroo named Kim is not standing on a flower, but there is a line o
     }
 
     kim.turn(LEFT);
+
+
+Self-Check
+~~~~~~~~~~
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz5Summ.html ka
+    :long_name: Working with While Loops
 
 
 
@@ -421,7 +442,3 @@ Reading Quiz 1
 ---------------------
 
 Practicing making a multiple choice question to mimic a Khan Academy question
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz1.html ka
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz2.html ka
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz3.html ka
