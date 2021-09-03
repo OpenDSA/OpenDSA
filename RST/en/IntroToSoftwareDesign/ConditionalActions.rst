@@ -71,7 +71,7 @@ For Jeroos, the sensor methods are the basic building blocks for creating condit
      - :code:``dean.seesJeroo(RIGHT)``
    * - :code:``seesWater(relativeDirection)``
      - 	Is there water in the indicated direction? [:code:``seesWater(AHEAD)`` is meaningless]
-     - :code:````
+     - :code:``seesWater(AHEAD)``
 
 
 Notably, when you see :code:`relativeDirection`, your choices of direction include :code:``HERE``, :code:``LEFT``, :code:``RIGHT``, and :code:``AHEAD``.  When you see :code:`compassDirection`, your choices of direction are: :code:``NORTH``, :code:``SOUTH``, :code:``EAST``, and :code:``WEST``.
@@ -308,18 +308,18 @@ This line of code is more like a question.  "Does the jeroo see a net ahead of t
 
 
 .. list-table:: Operators for conditions
-   :widths: 25 25 50
+   :widths: 50 50
    :header-rows: 1
 
    * - Boolean Expression (Java-style)
      - English Translation (if true)
    * - :code:``!bob.seesNet(AHEAD)``
      - There is not a net ahead of Bob
-   * - :code:````
+   * - :code:``bob.hasFlower() && bob.isClear(LEFT)``
      - Bob has at least one flower and there is nothing in the cell immediately to the left of Bob.
-   * - :code:````
+   * - :code:``bob.seesWater(AHEAD) || bob.seesWater(RIGHT)``
      - There is water ahead of Bob or to the right of Bob, or both
-   * - :code:````
+   * - :code:``bob.isFacing(WEST) &&(!bob.seesNet(AHEAD))``
      - Bob is facing west and there is no net ahead
 
 
