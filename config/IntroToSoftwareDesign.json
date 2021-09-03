@@ -70,22 +70,26 @@
     },
     "Getting Started":{
       "IntroToSoftwareDesign/GettingStarted": {
-        "Syntax Practice": {
+        "Syntax Practice 1": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 1": {
           "points": 30,
           "required": true
         },
         "Week1Quiz1": {
-          "points": 13,
+          "points": 8,
           "threshold": 3,
           "required": true
         },
         "Week1Quiz2": {
-          "points": 13,
+          "points": 8,
           "threshold": 3,
           "required": true
         },
         "Week1ReadingQuizSumm": {
-          "points": 14,
+          "points": 24,
           "threshold": 10,
           "required": true
         }
@@ -106,27 +110,27 @@
           "required": true
         },
         "Week2Quiz1Summ": {
-          "points": 8,
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week2Quiz2Summ": {
-          "points": 8,
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week2Quiz3Summ": {
-          "points": 8,
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week2Quiz4Summ": {
-          "points": 8,
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week2ReadingQuizSumm": {
-          "points": 8,
+          "points": 16,
           "threshold": 10,
           "required": true
         }
