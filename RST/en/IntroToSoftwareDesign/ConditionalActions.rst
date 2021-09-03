@@ -197,6 +197,7 @@ There are five important things to observe about this structure.
 #. The final :code:``else`` branch is optional.
 #. Thisn structure is not a method, which means that we do not send it as a message to a Jeroo object.
 
+
 There are three important things to observe about the coding style.
 
 #. Braces are used to define the beginning and end of the true branch. *Always include them.*
@@ -236,7 +237,7 @@ Assume that a Jeroo named Louisa is carrying at least one flower. Have her check
 
 Self-Check
 ~~~~~~~~~~
-.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz1Summ.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3Quiz3Summ.html ka
     :long_name: Deciding When to Use Each Type of Structure
 
 
