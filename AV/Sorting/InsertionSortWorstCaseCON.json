@@ -19,8 +19,8 @@
     }
   },
   "code": {
-    "Python": {
-      "url": "../../SourceCode/Python/Sorting/Insertionsort.py",
+    "python": [{
+      "url": "../../../SourceCode/Python/Sorting/Insertionsort.py",
       "startAfter": "/* *** ODSATag: Insertionsort *** */",
       "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
       "tags": {
@@ -30,7 +30,7 @@
         "swap": 5,
         "end": 6
       }
-    },
+    }],
     "c++": [{
       "url": "../../../SourceCode/C++/Sorting/Insertionsort.cpp",
       "lineNumbers": false,
