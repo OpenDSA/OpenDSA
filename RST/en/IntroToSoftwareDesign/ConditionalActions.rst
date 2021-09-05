@@ -416,30 +416,22 @@ Syntax Review
 -------------
 
 
+Syntax Practice 3
+-----------------
 
-Syntax Practice
----------------
-
-Codeworkout exercises
-
-
-
-changePointeeDataDirect
------------------------
-
-Molly is practicing adding a CW style question (still in progress)
-
-.. extrtoolembed:: 'changePointeeDataDirect'
+.. extrtoolembed:: 'Syntax Practice 3'
+   :workout_id: 1371
 
 
+Programming Practice 3
+----------------------
 
-Programming Practice
---------------------
+.. extrtoolembed:: 'Programming Practice 3'
+   :workout_id: 1372
 
-Codeworkout exercises
----------------------
 
-Reading Quiz 1
----------------------
+Check Your Understanding
+------------------------
 
-Practicing making a multiple choice question to mimic a Khan Academy question
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3ReadingQuizSumm.html ka
+   :long_name: Programming Concepts
