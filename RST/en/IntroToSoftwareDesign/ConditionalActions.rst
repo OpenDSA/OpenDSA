@@ -7,8 +7,8 @@
    :author: Molly
 
 
-Conditional Actions
-===================
+Conditional and Repeating Actions
+=================================
 
 Selection
 ---------
