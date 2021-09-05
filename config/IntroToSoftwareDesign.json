@@ -189,42 +189,6 @@
           "required": true
         }
       }
-    },
-    "Compound Conditions And Software Testing": {
-      "IntroToSoftwareDesign/CompoundConditionsAndSoftwareTesting": {}
-    },
-    "Fields And Parameters": {
-      "IntroToSoftwareDesign/FieldsAndParameters": {}
-    },
-    "ArrayList, Generics, Iterators, And Null": {
-      "IntroToSoftwareDesign/ArrayListGenericsIteratorsAndNull": {}
-    },
-    "Variables And Primitives": {
-      "IntroToSoftwareDesign/VariablesAndPrimitives": {}
-    },
-    "Grouping Objects": {
-      "IntroToSoftwareDesign/GroupingObjects": {}
-    },
-    "Using Lists": {
-      "IntroToSoftwareDesign/UsingLists": {}
-    },
-    "Grouping Using Lists And Fixed Size Arrays": {
-      "IntroToSoftwareDesign/GroupingUsingListsAndFixedSizeArrays": {}
-    },
-    "More On Fixed Sized Arrays": {
-      "IntroToSoftwareDesign/MoreOnFixedSizedArrays": {}
-    },
-    "Fle I/O": {
-      "IntroToSoftwareDesign/FleIO": {}
-    },
-    "Maps": {
-      "IntroToSoftwareDesign/Maps": {}
-    },
-    "Variable Scoping": {
-      "IntroToSoftwareDesign/VariableScoping": {}
-    },
-    "Static And Exceptions": {
-      "IntroToSoftwareDesign/StaticAndExceptions": {}
     }
 
     }
