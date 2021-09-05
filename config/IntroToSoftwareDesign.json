@@ -106,34 +106,89 @@
           "required": true
         },
         "Week2Quiz1Summ": {
-          "points": 8,
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week2Quiz2Summ": {
-          "points": 8,
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week2Quiz3Summ": {
-          "points": 8,
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week2Quiz4Summ": {
-          "points": 8,
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week2ReadingQuizSumm": {
-          "points": 8,
+          "points": 16,
           "threshold": 10,
           "required": true
         }
       }
     },
-    "Conditional Actions": {
-      "IntroToSoftwareDesign/ConditionalActions": {}
+    "Conditional and Repeating Actions": {
+      "IntroToSoftwareDesign/ConditionalActions": {
+        "Syntax Practice 3a: If-Then-Else": {
+          "points": 10,
+          "required": true
+        },
+        "Syntax Practice 3b: If-Then": {
+          "points": 10,
+          "required": true
+        },
+        "Syntax Practice 3c: Multi-way If": {
+          "points": 10,
+          "required": true
+        },
+        "Syntax Practice 3d: Compound Conditions": {
+          "points": 10,
+          "required": true
+        },
+        "Syntax Practice 3e: While Loops": {
+          "points": 10,
+          "required": true
+        },
+        "Programming Practice 3": {
+          "points": 10,
+          "required": true
+        },
+        "Week3Quiz1Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz2Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz3Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz4Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz5Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3ReadingQuizSumm": {
+          "points": 15,
+          "threshold": 10,
+          "required": true
+        }
+      }
     },
     "Compound Conditions And Software Testing": {
       "IntroToSoftwareDesign/CompoundConditionsAndSoftwareTesting": {}
