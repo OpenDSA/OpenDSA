@@ -70,28 +70,32 @@
     },
     "Getting Started":{
       "IntroToSoftwareDesign/GettingStarted": {
-        "Syntax Practice": {
+        "Syntax Practice 1": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 1": {
           "points": 30,
           "required": true
         },
         "Week1Quiz1": {
-          "points": 13,
+          "points": 8,
           "threshold": 3,
           "required": true
         },
         "Week1Quiz2": {
-          "points": 13,
+          "points": 8,
           "threshold": 3,
           "required": true
         },
         "Week1ReadingQuizSumm": {
-          "points": 14,
+          "points": 24,
           "threshold": 10,
           "required": true
         }
       }
     },
-    "Inheritance And Polymorphism":{
+    "Inheritance and Polymorphism: Subclasses and Methods":{
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
         "Syntax Practice 2a: Jeroo Methods": {
           "points": 20,

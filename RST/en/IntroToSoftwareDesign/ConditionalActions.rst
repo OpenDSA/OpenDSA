@@ -589,7 +589,8 @@ Programming Practice 3
    :workout_id: 1
 
 
-Reading Quiz 1
----------------------
+Check Your Understanding
+------------------------
 
-Practicing making a multiple choice question to mimic a Khan Academy question
+.. avembed:: Exercises/IntroToSoftwareDesign/Week3ReadingQuizSumm.html ka
+   :long_name: Programming Concepts
