@@ -412,10 +412,6 @@ Self-Check
 
 
 
-Syntax Review
--------------
-
-
 Syntax Practice 3
 -----------------
 
