@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Reading Quiz</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+#problemarea code, #problemarea tt, #problemarea pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+    background-color: #f0f0f0;
+}
+#problemarea pre {
+    overflow: auto;
+    line-height: 125%;
+    border-color: #0c3762;
+    border-style: dotted;
+    border-width: thin;
+    margin: 0 0 12px 0;
+    padding: 0.8em;
+    font-size: 15px;
+    line-height: 1.3;
+}
+    </style>
+  </head>
+
+  <body data-height="1100" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+
+        <div id="FullReadingQuizQ8">
+          <p class="question">
+            Suppose I want to make a Jeroo (named "dave") hop if he is facing west. And, if the Jeroo is not facing west, I want the Jeroo turn to the right. What is the proper way to write this in Java? (Note that some answers may compile, but are not <b>proper</b>.)
+          </p>
+
+          <div class="solution"><pre class="prettyprint">
+if (dave.isFacing(WEST))
+{
+    dave.hop();
+}
+else
+{
+    dave.turn(RIGHT);
+}</pre></div>
+          <ul class="choices" >
+
+            <li><pre class="prettyprint">
+if dave.isFacing(WEST)
+{
+    dave.hop();
+}
+else
+{
+    dave.turn(RIGHT);
+}</pre> </li>
+
+            <li><pre class="prettyprint">if (dave.isFacing(WEST)
+    dave.hop();
+else
+    dave.turn(RIGHT);</pre> </li>
+            <li><pre class="prettyprint">if (dave.isFacing(WEST));
+{
+    dave.hop();
+}
+else;
+{
+    dave.turn(RIGHT);
+}</pre> </li>
+
+
+          </ul>
+          <div class="hints">
+            <p>There are not hints for this question</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

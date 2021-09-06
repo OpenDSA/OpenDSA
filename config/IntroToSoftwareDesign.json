@@ -136,44 +136,63 @@
         }
       }
     },
-    "Conditional Actions": {
-      "IntroToSoftwareDesign/ConditionalActions": {}
-    },
-    "Compound Conditions And Software Testing": {
-      "IntroToSoftwareDesign/CompoundConditionsAndSoftwareTesting": {}
-    },
-    "Fields And Parameters": {
-      "IntroToSoftwareDesign/FieldsAndParameters": {}
-    },
-    "ArrayList, Generics, Iterators, And Null": {
-      "IntroToSoftwareDesign/ArrayListGenericsIteratorsAndNull": {}
-    },
-    "Variables And Primitives": {
-      "IntroToSoftwareDesign/VariablesAndPrimitives": {}
-    },
-    "Grouping Objects": {
-      "IntroToSoftwareDesign/GroupingObjects": {}
-    },
-    "Using Lists": {
-      "IntroToSoftwareDesign/UsingLists": {}
-    },
-    "Grouping Using Lists And Fixed Size Arrays": {
-      "IntroToSoftwareDesign/GroupingUsingListsAndFixedSizeArrays": {}
-    },
-    "More On Fixed Sized Arrays": {
-      "IntroToSoftwareDesign/MoreOnFixedSizedArrays": {}
-    },
-    "Fle I/O": {
-      "IntroToSoftwareDesign/FleIO": {}
-    },
-    "Maps": {
-      "IntroToSoftwareDesign/Maps": {}
-    },
-    "Variable Scoping": {
-      "IntroToSoftwareDesign/VariableScoping": {}
-    },
-    "Static And Exceptions": {
-      "IntroToSoftwareDesign/StaticAndExceptions": {}
+    "Conditional and Repeating Actions": {
+      "IntroToSoftwareDesign/ConditionalActions": {
+        "Syntax Practice 3a: If-Then-Else": {
+          "points": 10,
+          "required": true
+        },
+        "Syntax Practice 3b: If-Then": {
+          "points": 10,
+          "required": true
+        },
+        "Syntax Practice 3c: Multi-way If": {
+          "points": 10,
+          "required": true
+        },
+        "Syntax Practice 3d: Compound Conditions": {
+          "points": 10,
+          "required": true
+        },
+        "Syntax Practice 3e: While Loops": {
+          "points": 10,
+          "required": true
+        },
+        "Programming Practice 3": {
+          "points": 10,
+          "required": true
+        },
+        "Week3Quiz1Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz2Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz3Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz4Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz5Summ": {
+          "points": 5,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3ReadingQuizSumm": {
+          "points": 15,
+          "threshold": 12,
+          "required": true
+        }
+      }
     }
 
     }
