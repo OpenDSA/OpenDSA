@@ -4,7 +4,24 @@
     <title>Reading Quiz</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
-    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <style>
+#problemarea code, #problemarea tt, #problemarea pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+    background-color: #f0f0f0;
+}
+#problemarea pre {
+    overflow: auto;
+    line-height: 125%;
+    border-color: #0c3762;
+    border-style: dotted;
+    border-width: thin;
+    margin: 0 0 12px 0;
+    padding: 0.8em;
+    font-size: 15px;
+    line-height: 1.3;
+}
+    </style>
   </head>
 
   <body data-height="880" data-width="950">
@@ -13,34 +30,32 @@
 
         <div id="FullReadingQuizQ1">
           <p class="question">
-            Suppose I have made the following code segment:
+            Suppose I have made the following code segment:</p>
 
-            <pre class="prettyprint">Jeroo dave = new Jeroo();
-            //Note to self: Jeroos start with no flowers.
+<pre class="prettyprint">
+Jeroo dave = new Jeroo();
+// Jeroos start with no flowers.
 
-            if (dave.hasFlower())
-            {
-               dave.toss();
-            }
+if (dave.hasFlower())
+{
+    dave.toss();
+}
+else
+{
+    dave.turn(RIGHT);
+}
+dave.hop();</pre>
 
-            else
-            {
-               dave.turn(RIGHT);
-            }
-
-            dave.hop();</pre>
-
-            Which of the following lines will NOT be executed (if any)?
+          <p>Which of the following lines will NOT be executed (if any)?
           </p>
 
-          <div class="solution"> <pre class="prettyprint">dave.toss();</pre></div>
+          <div class="solution"> <tt>dave.toss();</tt></div>
           <ul class="choices" >
 
             <li>All of these will be executed.</li>
-            <li> <pre class="prettyprint">Jeroo dave = new Jeroo(); </pre></li>
-            <li> <pre class="prettyprint">dave.hop(); </pre></li>
-            <li> <pre class="prettyprint">dave.turn(RIGHT); </pre></li>
-
+            <li> <tt>Jeroo dave = new Jeroo(); </tt></li>
+            <li> <tt>dave.turn(RIGHT); </tt></li>
+            <li> <tt>dave.hop(); </tt></li>
 
           </ul>
           <div class="hints">

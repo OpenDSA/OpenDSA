@@ -172,7 +172,7 @@ Syntax Practice 3a: If-Then-Else
 --------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 3a: If-Then-Else'
-   :workout_id: 1
+   :workout_id: 1373
 
 
 Creating Optional Statements With If-then
@@ -247,7 +247,7 @@ Syntax Practice 3b: If-Then
 ---------------------------
 
 .. extrtoolembed:: 'Syntax Practice 3b: If-Then'
-   :workout_id: 1
+   :workout_id: 1374
 
 
 Java's Syntax for the Multi-way Selection Structure (a cascaded if)
@@ -326,7 +326,7 @@ Syntax Practice 3c: Multi-way If
 --------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 3c: Multi-way If'
-   :workout_id: 1
+   :workout_id: 1375
 
 
 Compound Conditions
@@ -446,7 +446,7 @@ Syntax Practice 3d: Compound Conditions
 ---------------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 3d: Compound Conditions'
-   :workout_id: 1
+   :workout_id: 1376
 
 
 Repeating Actions
@@ -579,14 +579,14 @@ Syntax Practice 3e: While Loops
 -------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 3e: While Loops'
-   :workout_id: 1
+   :workout_id: 1377
 
 
 Programming Practice 3
 ----------------------
 
 .. extrtoolembed:: 'Programming Practice 3'
-   :workout_id: 1
+   :workout_id: 1378
 
 
 Check Your Understanding

@@ -189,7 +189,7 @@
         },
         "Week3ReadingQuizSumm": {
           "points": 15,
-          "threshold": 10,
+          "threshold": 12,
           "required": true
         }
       }
