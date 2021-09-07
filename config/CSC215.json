@@ -18,13 +18,12 @@
       "label": "Java (Generic)",
       "lang": "java"
     },
-    "C++": {
+    "Pseudo": {
       "ext": [
-        "cpp",
-        "h"
+        "txt"
       ],
-      "label": "C++",
-      "lang": "C++"
+      "label": "Pseudo",
+      "lang": "pseudo"
     }
   },
   "lang": "en",
