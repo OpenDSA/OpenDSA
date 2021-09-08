@@ -702,14 +702,8 @@
       "Spatial/OtherSpatial": {}
     },
     "Appendix": {
-      "Glossary": {
-        "long_name": "Glossary",
-        "sections": {}
-      },
-      "Bibliography": {
-        "long_name": "Bibliography",
-        "sections": {}
-      }
+      "Glossary": {},
+      "Bibliography": {}
     }
   }
 }
