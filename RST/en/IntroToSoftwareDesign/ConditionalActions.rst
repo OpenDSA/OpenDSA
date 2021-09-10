@@ -107,10 +107,10 @@ For Jeroos, the sensor methods are the basic building blocks for creating condit
      - ``dean.seesJeroo(RIGHT)``
    * - ``seesWater(relativeDirection)``
      - 	Is there water in the indicated direction? [``seesWater(AHEAD)`` is meaningless]
-     - ``seesWater(AHEAD)``
+     - ``dean.seesWater(AHEAD)``
 
 
-Notably, when you see ``relativeDirection```, your choices of direction
+Notably, when you see ``relativeDirection``, your choices of direction
 include ``HERE``, ``LEFT``, ``RIGHT``, and ``AHEAD``.  When you
 see ``compassDirection``, your choices of direction are: ``NORTH``,
 ``SOUTH``, ``EAST``, and ``WEST``.
