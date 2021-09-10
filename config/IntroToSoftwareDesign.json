@@ -46,7 +46,6 @@
     "points": 1.0,
     "required": true,
     "partial_credit": true
-
   },
   "glob_extr_options": {
     "code-workout": {
