@@ -29,35 +29,42 @@ _default_ex_options = {
     'ka': {
       'required': True,
       'points': 1,
-      'threshold': 5
+      'threshold': 5,
+      'partial_credit': False
     }, 
     'ss': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     }, 
     'ff': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     }, 
     'pe': {
       'required': True,
       'points': 1,
-      'threshold': 0.9
+      'threshold': 0.9,
+      'partial_credit': False
     },
     'ae': {
       'required': True,
       'points': 1,
-      'threshold': 0
+      'threshold': 0,
+      'partial_credit': False
     },
     'dgm': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     },
     'extr': {
-      'points': 1.0
+      'points': 1.0,
+      'partial_credit': False
     }
 }
 
@@ -70,7 +77,7 @@ default_ex_options = {
 
 }
 
-EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options', 'showhide']
+EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options', 'showhide', 'partial_credit']
 MODULE_FIELDS = ['dispModComp', 'mod_options', 'codeinclude']
 REQUIRED_EXERCISE_FIELDS = ['points', 'required', 'threshold']
 
