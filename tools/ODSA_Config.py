@@ -27,7 +27,7 @@ error_count = 0
 required_fields = ['chapters']
 
 optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_dir', 'build_JSAV','code_dir',
-'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num',
+'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num', 'max_toc_depth',
 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'desc', 'av_origin',
 'av_root_dir', 'code_lang', 'course_id', 'LMS_url', 'module_map', 'inst_book_id','module_position','inst_exercise_id',
 'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled', 'zeropt_assignments',
@@ -298,6 +298,9 @@ def set_defaults(conf_data):
 
     if 'start_chap_num' not in conf_data:
         conf_data['start_chap_num'] = 0  # 1
+
+    if 'max_toc_depth' not in conf_data:
+        conf_data['max_toc_depth'] = 3
 
     if 'suppress_todo' not in conf_data:
         conf_data['suppress_todo'] = False
