@@ -261,7 +261,177 @@ as arguments:
 which would cause the jeroo to turn right, then hop seven times.
 
 
-Conditionals Continued
+Good Habits for Conditionals
+----------------------------
+
+Just like with commenting, readability is an important factor when writing
+conditionals.
+
+
+Logical NOT and the If-Else Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One thing to consider is that when writing  if/else statements,
+starting with a ! usually makes code harder to read.
+
+.. code-block:: java
+
+    if(!this.isClear(AHEAD))
+    {
+      this.toss();
+    }
+    else
+    {
+      this.hop();
+    }
+
+It's easy to miss the ``!`` above and misread what this conditional does.
+Instead, it's preferable to phrase the same condition like this:
+
+.. code-block:: java
+
+    if(this.isClear(AHEAD))
+    {
+      this.hop();
+    }
+    else
+    {
+      this.toss();
+    }
+
+You can see that logically these two if-then-else structures achieve the same
+thing, but one is easier to read.
+
+.. note::
+    Keep in mind, this may not always be possible for you to write the right
+    condition without using the ``!`` operator.  Especially if you have no
+    ``else`` clause, you may need to use it, but it is good practice if you can
+    get around it.
+
+
+Too Many Conditionals
+~~~~~~~~~~~~~~~~~~~~~
+
+Another thing to keep in mind is writing too many conditions.  When solving a
+complex problem it can be tempting to just keep adding new conditions for
+every new scenario you find yourself in.  However, this is both harder to read
+and can introduce bugs into your code that could be hard to find later.
+
+Take for example:
+
+
+.. code-block:: java
+
+    if(this.isClear(AHEAD))
+    {
+      this.hop();
+    }
+    else if (!this.isClear(AHEAD))
+    {
+      this.toss();
+    }
+    else
+    {
+      this.turn(RIGHT);
+    }
+
+Logically, the if and else-if branch of this conditional do the same things as
+we saw above.  However, there is a third branch here that will never execute.
+This is because the area ahead of ``aaron`` will either be clear or not clear.
+The code will always find a branch to execute and will always skip the ``else``
+branch.
+
+If you're not entirely sure if two boolean statements are equivalent, it can be
+helpful to write out a truth table.  For example, we can see below that writing
+``b`` and ``!!b`` are equivalent.
+
+.. list-table:: Truth Table
+   :header-rows: 1
+
+   * - ``b``
+     - ``!b``
+     - ``!!b``
+   * - True
+     - False
+     - True
+   * - False
+     - True
+     - False
+
+Whatever value ``b`` has, we can see that ``!!b`` matches it!
+
+Empty Condition Branches
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is also good practice not to leave empty conditions in your code.
+
+.. code-block:: java
+
+    if(this.isClear(AHEAD))
+    {
+      // do nothing
+    }
+    else
+    {
+      this.turn(RIGHT);
+    }
+
+It is always preferred to have just one if statement rather than an empty
+if-else.
+
+.. code-block:: java
+
+    if(this.isClear(AHEAD))
+    {
+      // do nothing
+    }
+    else
+    {
+      this.turn(RIGHT);
+    }
+
+
+
+Here, it would be preferred to use the ``!`` operator rather than to have empty
+conditions:
+
+
+.. code-block:: java
+
+    if(!this.isClear(AHEAD))
+    {
+      this.turn(RIGHT);
+    }
+
+
+Many Conditions vs Compound Conditions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Taking a look at the following code snippet:
+
+
+.. code-block:: java
+
+    if(this.isClear(AHEAD))
+    {
+      if(this.seesNet(RIGHT)){
+        this.turn(RIGHT);
+      }
+    }
+
+Here we see one condition nested within another.  It is generally preferable to
+instead write the same condition like this:
+
+.. code-block:: java
+
+    if(this.isClear(AHEAD) && this.seesNet(RIGHT))
+    {
+        this.turn(RIGHT);
+    }
+
+
+
+More Complex Conditionals
 ----------------------
 
 Sometimes you want to check related conditions and choose one of several
@@ -333,16 +503,16 @@ For example,
 
 .. code-block:: java
 
-    if((molly.isFacing(NORTH) && molly.hasFlower()) || molly.seesNet(AHEAD))
+    if((caroline.isFacing(NORTH) && caroline.hasFlower()) || caroline.seesNet(AHEAD))
 
 This statement could be generalized to ``if(A || B)`` where:
 
-* ``A = molly.isFacing(NORTH) && molly.hasFlower()``
-* ``B = molly.seesNet(AHEAD)``
+* ``A = caroline.isFacing(NORTH) && caroline.hasFlower()``
+* ``B = caroline.seesNet(AHEAD)``
 
 If the jeroo has a flower while facing north OR sees a net ahead of it, this if
 statement will trigger.  Notably, if the jeroo only has a flower the logical AND
- will force the statement ``molly.isFacing(NORTH) && molly.hasFlower()``
+ will force the statement ``caroline.isFacing(NORTH) && caroline.hasFlower()``
  to be false.  Thus, the jeroo would have to see a net ahead for this if
  statement to trigger.
 
@@ -350,11 +520,11 @@ statement will trigger.  Notably, if the jeroo only has a flower the logical AND
 
  .. code-block:: java
 
-     if(!(molly.isFacing(NORTH) && molly.hasFlower()))
+     if(!(caroline.isFacing(NORTH) && caroline.hasFlower()))
 
-Remember, for ``molly.isFacing(NORTH) && molly.hasFlower()`` to be true, the
+Remember, for ``caroline.isFacing(NORTH) && caroline.hasFlower()`` to be true, the
 jeroo must have a flower and be facing North.  Writing
-``!(molly.isFacing(NORTH) && molly.hasFlower())`` will be true as long as the
+``!(caroline.isFacing(NORTH) && caroline.hasFlower())`` will be true as long as the
 compound condition within the parentheses is false.
 
 When looking at these sort of complex operations, it is easy to get mixed up.
@@ -368,14 +538,84 @@ Using this, instead of writing
 
 .. code-block:: java
 
-    if(!(molly.isFacing(NORTH) && molly.hasFlower()))
+    if(!(caroline.isFacing(NORTH) && caroline.hasFlower()))
 
 It is be logically equivalent to write:
 
 .. code-block:: java
 
-    if(!molly.isFacing(NORTH) || !molly.hasFlower())
+    if(!caroline.isFacing(NORTH) || !caroline.hasFlower())
 
+Again, if we use a truth table we can see these two columns match:
+
+.. list-table:: Truth Table: DeMorgan's Law
+   :header-rows: 1
+
+   * - ``A``
+     - ``B``
+     - ``(A && B)``
+     - ``!(A && B)``
+     - ``!A``
+     - ``!B``
+     - ``!A || !B``
+   * - True
+     - True
+     - True
+     - **False**
+     - False
+     - False
+     - **False**
+   * - True
+     - False
+     - False
+     - **True**
+     - False
+     - True
+     - **True**
+   * - False
+     - True
+     - False
+     - **True**
+     - True
+     - False
+     - **True**
+   * - False
+     - False
+     - False
+     - **True**
+     - True
+     - True
+     - **True**
+
+
+
+
+Short Circuit Evaluation (Think Java)
+-------------------------------------
+
+Another important feature of the boolean operators is that they utilize a
+form of evaluation known as short-circuit evaluation. In **short-circuit
+evaluation**, a boolean expression is evaluated from left to right, and the
+evaluation is discontinued as soon as the expression’s value can be determined,
+regardless of whether it contains additional operators and operands. For
+example, in the expression
+
+
+.. code-block:: java
+
+    basil.isFacing(WEST) && basil.seesNet(AHEAD)
+
+if ``basil.isFacing(WEST)`` is false, then the AND expression must be false,
+so java will not evaluate ``basil.seesNet(AHEAD)``.
+
+Similarly, in the expression:
+
+.. code-block:: java
+
+    basil.isFacing(NORTH) || basil.seesNet(AHEAD)
+
+if ``basil.isFacing(WEST)`` is true, then java will not evaluate
+``basil.seesNet(AHEAD)`` as we know the OR expression is already true.
 
 
 
