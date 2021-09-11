@@ -647,9 +647,8 @@ Programming Practice
 Codeworkout exercises
 ---------------------
 
-Reading Quiz 1
----------------------
+Check Your Understanding
+------------------------
 
-Practicing making a multiple choice question to mimic a Khan Academy question
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Question1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSumm.html ka
+   :long_name: Programming Concepts

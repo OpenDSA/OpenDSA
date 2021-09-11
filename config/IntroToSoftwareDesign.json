@@ -193,6 +193,10 @@
           "required": true
         }
       }
+    },
+
+    "Attributes, Methods and More Complex Conditionals":{
+        "IntroToSoftwareDesign/AttrsMethodsAndCompoundConditions": {
     }
 
     }
