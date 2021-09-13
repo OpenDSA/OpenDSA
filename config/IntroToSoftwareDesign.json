@@ -195,9 +195,27 @@
       }
     },
 
-    "Attributes, Methods and More Complex Conditionals":{
-        "IntroToSoftwareDesign/AttrsMethodsAndCompoundConditions": {
-    }
-
+    "Software Testing":{
+      "IntroToSoftwareDesign/SoftwareTesting": {
+        "Syntax Practice 4": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 4": {
+          "points": 30,
+          "required": true
+        },
+        "Week3Quiz5Summ": {
+          "points": 14,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3ReadingQuizSumm": {
+          "points": 36,
+          "threshold": 10,
+          "required": true
+        }
+      }
     }
   }
+}
