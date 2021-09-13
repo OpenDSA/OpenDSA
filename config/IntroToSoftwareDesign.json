@@ -95,7 +95,7 @@
         }
       }
     },
-    "Inheritance and Polymorphism: Subclasses and Methods":{
+    "Inheritance and Polymorphism":{
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
         "Syntax Practice 2a: Jeroo Methods": {
           "points": 20,
@@ -193,7 +193,29 @@
           "required": true
         }
       }
-    }
+    },
 
+    "Software Testing":{
+      "IntroToSoftwareDesign/SoftwareTesting": {
+        "Syntax Practice 4": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 4": {
+          "points": 30,
+          "required": true
+        },
+        "Week3Quiz5Summ": {
+          "points": 14,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3ReadingQuizSumm": {
+          "points": 36,
+          "threshold": 10,
+          "required": true
+        }
+      }
     }
   }
+}
