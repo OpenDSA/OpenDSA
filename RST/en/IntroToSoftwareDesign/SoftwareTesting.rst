@@ -1275,6 +1275,59 @@ if ``basil.isFacing(WEST)`` is true, then java will not evaluate
 ``basil.seesNet(AHEAD)`` as we know the OR expression is already true.
 
 
+Relational Operators with Primitive Data Types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Relational operators are used to check conditions like whether two values
+are equal, or whether one is greater than the other. These kinds of operators
+do not work on objects at all, so you cannot use them on jeroos. However,
+they work on numeric values such as ``int``s. The following expressions
+show how they are used.
+
+.. list-table:: Relational Operators
+   :header-rows: 1
+
+   * - Operator
+     - Example
+     - Meaning
+   * - ``==``
+     - ``x == y``
+     - x *is equal to* y
+   * - ``!=``
+     - ``x != y``
+     - x *is not equal to* y
+   * - ``>``
+     - ``x > y``
+     - x *is greater than* y
+   * - ``<``
+     - ``x < y``
+     - x *is less than* y
+   * - ``>=``
+     - ``x >= y``
+     - x *is greater than or equal to* y
+   * - ``<=``
+     - ``x <=  y``
+     - x *is less than or equal to* y
+
+
+The result of a relational operator is one of the two Boolean values: ``true``
+or ``false``.  These values belong to the data type ``boolean``; in fact, they
+are the only ``boolean`` values.
+
+You are probably familiar with these operations, but notice that the Java
+operators compare program values. The behave similar to the mathematical
+operators you are familiar with, but are not written the same way
+as mathematical symbols like =, ≤, and ≠.
+
+A common error is to use a single = instead of a double == when you wish
+to compare two values. Remember that = is
+the assignment operator, and == is a comparison operator. Also, writing
+=< or => by accident will produce a compiler error.  The equals sign always
+comes after the `<` or `>`, just like when you say the names of those
+comparisons in English: "less than or equal" has the less than symbol first,
+followed by the equal sign second.
+
+
 Syntax Practice 4
 -----------------
 
