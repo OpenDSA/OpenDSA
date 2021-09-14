@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Methods with Parameters</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <style>
+#problemarea code, #problemarea tt, #problemarea pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+    background-color: #f0f0f0;
+}
+#problemarea pre {
+    overflow: auto;
+    line-height: 125%;
+    border-color: #0c3762;
+    border-style: dotted;
+    border-width: thin;
+    margin: 0 0 12px 0;
+    padding: 0.8em;
+    font-size: 15px;
+    line-height: 1.3;
+}
+    </style>
+  </head>
+
+  <body data-height="880" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+
+        <div id="ReadingQuiz3Q2">
+          <p class="question">
+            Assume for this question, the following method:</p>
+<pre class="prettyprint">
+public int add2Ints(int a, int b, int c){
+  return a + b + c;
+}
+</pre>
+          <p>Which of the following is NOT a correct method call?
+          </p>
+
+          <div class="solution"><tt>add2Ints(12);</tt></div>
+          <ul class="choices" >
+            <li><tt>add2Ints(10+2, 3+1);</tt></li>
+            <li><tt>add2Ints(add2Ints(10, 2), 4)</tt></li>
+            <li><tt>add2Ints(12, 5-1)</tt></li>
+          </ul>
+          <div class="hints">
+            <p>There are no hints for this question</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>

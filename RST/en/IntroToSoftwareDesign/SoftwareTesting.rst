@@ -291,7 +291,7 @@ working code.
 Testing software in this way promotes incremental development.  It
 promotes the concept of always having a **running (although
 incomplete) version** of the program on hand.  Most importantly, it
-promotes early detection and correction of errors introduced 
+promotes early detection and correction of errors introduced
 by coding changes.
 
 
@@ -380,7 +380,7 @@ tests when you fix bugs helps you ensure that your fixes don't
 accidentally break anything else you've written.
 
 When you choose this approach to integration, your software testing
-efforts also provide a **lively sense of progress**, because you are 
+efforts also provide a **lively sense of progress**, because you are
 always clearly aware of the growing size of your test suite and how
 much of the required behavior is already "in the bag" and verified.
 
@@ -444,13 +444,13 @@ There are three principal ideas behind TDD:
   of code at once, you should add new code in "baby steps": one small
   method, or one small piece of a method at a time, writing a new test
   case or two for each small bit.
-  
+
   For example, the ``isEven()`` discussed earlier is
   small enough that you could write test cases for it, then
   write the method body in one step (just one line of code is
   needed), and finally run your test cases and debug as
   necessary.
-  
+
   However, if you were writing a method with more complex behavior,
   it can be far too complex to write in one step. Consider a
   method that takes three numbers representing the lengths of the
@@ -458,7 +458,7 @@ There are three principal ideas behind TDD:
   return whether the corresponding triangle is equilateral,
   isosceles, or scalene, while reporting that the numbers do not
   form a triangle if no triangle exists with those side lengths.
-  
+
   If you are writing tests for this method, you will need to check
   many distinct types of situations.
   Does it handle zero-length sides?  Does it
@@ -472,7 +472,7 @@ There are three principal ideas behind TDD:
   re-run *all* your tests.  Proceed through the remaining cases
   one step at a time, writing a few tests and then writing the code
   that implements the corresponding behavior.
-  
+
   Using **case anaylsis**--that is, breaking a problem down
   into two or more subproblems, and defining the conditions under
   which one or another of these subproblems applies--is a powerful
@@ -485,7 +485,7 @@ There are three principal ideas behind TDD:
   add a small piece of code, you re-run *all* of the tests you
   have for the unit under development, and you do not move on to the
   next step until *all* of your tests pass 100%.
-  
+
   In short, add
   a small number of tests first, then add the corresponding (small)
   piece of code, run all your tests, and debug any problems
@@ -497,7 +497,7 @@ There are three principal ideas behind TDD:
   measuring your success, and as you incrementally grow your test
   suite, you can see how close you are to completing all the
   required behavior.
-  
+
   Most testing tools for automatically running your test cases
   will show you a progress bar as the tests run, and color it green
   as long as tests are successful, and red when any tests fail.
@@ -522,13 +522,13 @@ some quotes (from Kent Beck) that intuitively describe TDD:
 
 .. raw:: html
 
-   <blockquote> 
+   <blockquote>
    The style here is to write a few lines of code, then a test that
    should run, or even better, to write a test that won't run, then write
    the code that will make it run.
-   
+
    ...
-    
+
    [After figuring out how to write one small piece of code ...]
    Now, instead of just coding on, we want to get immediate feedback and
    practice "code a little, test a little, code a little, test a little."
@@ -552,7 +552,7 @@ defects.  The problem is most likely in the tiny bit of code you just
 wrote, since all the other code passes all the other tests you'd
 previously written.  If some previously working behavior breaks, again
 it is probably a result of interference caused by the newly added
-code.  And bugs are so much easier to find if you have 
+code.  And bugs are so much easier to find if you have
 only written five new lines of code rather than five hundred, or five
 thousand.
 
@@ -606,7 +606,7 @@ Java class called ``FlowerPickerTest``.
 
    By convention, all our test classes will be named after the class
    they are testing with ``Test`` **added on the end** of the name.
-   
+
    A common mistake is to place ``Test`` at the front of the name
    instead of the end, so always double-check your test class names.
 
@@ -636,9 +636,9 @@ We can write our first test in the ``FlowerPickerTest`` class like this:
    public void testPickFlowers()
    {
        // 1. set up initial conditions
-        
+
        // 2. call the method
-        
+
        // 3. check expected results
    }
 
@@ -657,9 +657,9 @@ just an example to show the process):
        Lab04Island island = new Lab04Island();
        FlowerPicker picker = new FlowerPicker();
        island.addObject(picker, 1, 2);
-        
+
        // 2. call the method
-        
+
        // 3. check expected results
    }
 
@@ -674,10 +674,10 @@ once the Jeroo has been placed on the island is easy:
        Lab04Island island = new Lab04Island();
        FlowerPicker picker = new FlowerPicker();
        island.addObject(picker, 1, 2);
-        
+
        // 2. call the method
        picker.pickFlowers();
-        
+
        // 3. check expected results
    }
 
@@ -731,10 +731,10 @@ We can add these to our test case method:
        Lab04Island island = new Lab04Island();
        FlowerPicker picker = new FlowerPicker();
        island.addObject(picker, 1, 2);
-        
+
        // 2. call the method
        picker.pickFlowers();
-        
+
        // 3. check expected results
        assertThat(picker.getX()).isEqualTo(6);
        assertThat(picker.getY()).isEqualTo(2);
@@ -824,8 +824,8 @@ started with writing your first tests.
 Check Your Understanding
 ------------------------
 
-.. .. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz1Summ.html ka
-..    :long_name: Software Testing Concepts
+.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz3Summ.html ka
+   :long_name: Software Testing Concepts
 
 
 More About Methods
@@ -864,6 +864,13 @@ name follows the method’s return type. This is the name that is used when the
 method is called. We could call the method anything we wanted, but spaces cannot
 be included.  Following the method’s name is the method’s **parameter list**
 which we'll talk about in the next section.
+
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz3Summ.html ka
+   :long_name: Understanding Method Signatures
 
 
 Passing Information using Parameters
@@ -918,6 +925,13 @@ as arguments:
     turnThenHop(RIGHT, 7);
 
 This would cause the jeroo to turn right and then hop seven times.
+
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz3Summ.html ka
+   :long_name: Methods with Parameters
 
 
 Good Habits for Conditionals
@@ -1275,6 +1289,13 @@ if ``basil.isFacing(WEST)`` is true, then java will not evaluate
 ``basil.seesNet(AHEAD)`` as we know the OR expression is already true.
 
 
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz4Summ.html ka
+   :long_name: Logical Equivalence
+
+
 Relational Operators with Primitive Data Types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1328,18 +1349,18 @@ comparisons in English: "less than or equal" has the less than symbol first,
 followed by the equal sign second.
 
 
-Syntax Practice 4
------------------
+Week 4 Syntax
+-------------
 
-.. extrtoolembed:: 'Syntax Practice 4'
-   :workout_id: 1403
+.. extrtoolembed:: ''
+   :workout_id: 1411
 
 
-Programming Practice 4
+Practice Exercises 4
 ----------------------
 
-.. extrtoolembed:: 'Programming Practice 4'
-   :workout_id: 1403
+.. extrtoolembed:: 'Practice Exercises 4'
+   :workout_id: 1412
 
 
 Check Your Understanding
