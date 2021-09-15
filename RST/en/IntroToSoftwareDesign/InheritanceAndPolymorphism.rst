@@ -140,7 +140,7 @@ There as seven action methods that a ``Jeroo`` understands
    <td><code>jessica.hop();</code></td></tr>
    <tr><td><code>hop(<i>number</i>)</code></td><td>Hop <i>number</i> times
    in a row, where <i>number</i> is a positive integer.</td>
-   <td><code>jessica.hop(3);</code></br>
+   <td><code>jessica.hop(3);</code><br/>
    <code>jessica.hop(12);</code></td></tr>
    <tr><td><code>pick()</code></td><td>Pick a flower from the current
    location. Nothing happens if there is no flower at the current
@@ -155,15 +155,15 @@ There as seven action methods that a ``Jeroo`` understands
    <tr><td><code>turn(<i>relativeDirection</i>)</code></td><td>Turn in the
    indicated direction [&nbsp;<code>turn(AHEAD)</code> and
    <code>turn(HERE)</code> are meaningless&nbsp;]</td>
-   <td><code>jessica.turn(LEFT);</code>|br|
+   <td><code>jessica.turn(LEFT);</code><br/>
    <code>jessica.turn(RIGHT);</code></td></tr>
    <tr><td><code>give(<i>relativeDirection</i>)</code></td><td>Give a flower
    to a neighboring Jeroo in the indicated direction.   Nothing happens
    if the giving Jeroo has no flowers, or if there is no neighboring
    Jeroo in the indicated direction.  [&nbsp;<code>give(HERE)</code> is
    meaningless&nbsp;]</td>
-   <td><code>jessica.give(LEFT);</code>|br|
-   <code>jessica.give(RIGHT);</code>|br|
+   <td><code>jessica.give(LEFT);</code><br/>
+   <code>jessica.give(RIGHT);</code><br/>
    <code>jessica.give(AHEAD);</code></td></tr>
    </table>
 
@@ -1121,7 +1121,7 @@ Let's name the first Jeroo Ann and the second one Andy.
 
          Toss
 
-      Plant a flower at the location of the net|br|
+      Plant a flower at the location of the net |br|
 
          Hop (to location (3, 2)) |br|
          Plant a flower
@@ -1598,7 +1598,7 @@ how a method can change the attributes of the Jeroo object that executes
 the method.  In some cases, Jeroo actions like ``pick()``,
 ``plant()``, and ``toss()`` can change the attributes
 of the world by adding or removing objects, although we normally don't
-send messages to these other object directly.  Behind the scenes,
+send messages to these other objects directly.  Behind the scenes,
 the ``pick()``, ``plant()``, and
 ``toss()`` methods send appropriate messages to the island in
 order to add or remove objects corresponding to the desired behavior.

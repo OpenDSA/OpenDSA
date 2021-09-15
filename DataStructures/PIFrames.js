@@ -442,11 +442,11 @@
 
         getAttempts: function() {
           let data = {
-            "frame_name": av_name,
+            "question_name": av_name,
             "question":  this.queue.current,
           };
           $.ajax({
-            url: "/pi_attempts/get_attempts",
+            url: "/odsa_exercise_attempts/get_attempts",
             type: "POST",
             async: false,
             data: JSON.stringify(data),
@@ -466,10 +466,10 @@
 
         getProgress: function() {
           let data = {
-            "frame_name": av_name,
+            "question_name": av_name,
           };
           $.ajax({
-            url: "/pi_attempts/get_progress",
+            url: "/odsa_exercise_attempts/get_progress",
             type: "POST",
             async: false,
             data: JSON.stringify(data),
@@ -491,17 +491,37 @@
           var current = this.queue.current;
           this.setStudentAnswer(this.queue.elements[current], answer);
           var question = this.getQuestion(this.queue.elements[current]);
-
+          
           const correct = this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current]);
+          
           let data = {
-            "frame_name": av_name,
-            "question":  this.queue.current,
-            "correct":   correct
+            "exercise": av_name,
+            "question_id":  this.queue.current,
+            "correct":   correct,
+            "request_type": "PI",
           };
+          
+          if (ODSA.UTILS.hasBook()) {
+            data['inst_book_id'] = ODSA.TP.instBookId;
+            if (ODSA.UTILS.isFullModule()) {
+              data['inst_chapter_module_id'] = ODSA.UTILS.getChapterModuleID();
+            }
+            frame = $(`[data-long-name=${av_name}`)[0];
+            inst_section_id = $(frame).attr("data-exer-id");
+            data['inst_section_id'] = inst_section_id;
+            
+          }
+          else if (ODSA.UTILS.isStandaloneModule()) {
+            data['inst_module_version_id'] = ODSA.UTILS.getInstModuleVersionId();
+          }
+          else {
+            data['inst_course_offering_exercise_id'] = ODSA.UTILS.getInstCourseOfferingExerciseId();
+          }
+          
           if (ODSA.UTILS.scoringServerEnabled())
           {
             $.ajax({
-              url: "/pi_attempts",
+              url: "/odsa_exercise_attempts/pi",
               type: "POST",
               data: JSON.stringify(data),
               contentType: "application/json; charset=utf-8",
@@ -743,12 +763,12 @@
           return -1;
       }
       let data = {
-        "frame_name": av_name,
+        "question_name": av_name,
       };
       var skip_to;
       // get user checkout
       $.ajax({
-        url: "/pi_attempts/get_checkpoint",
+        url: "/odsa_exercise_attempts/get_checkpoint",
         type: "POST",
         async: false,
         data: JSON.stringify(data),
