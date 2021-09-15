@@ -33,7 +33,7 @@ specification and its user's needs.
 In other words, testing is all about **discovering defects** (a.k.a., bugs),
 that is, showing that a piece of software fails somehow.
 
-As a result, Glenford Myers (the author th classic book
+As a result, Glenford Myers (author of the classic book
 *The Art of Software Testing*) says that a **successful test**
 is one that **does** reveal a defect.  Such a test conclusively
 proves there is a bug.  In contrast, if we run a test and the software
@@ -309,7 +309,7 @@ the correct behavior in this case*?
 
 Sometimes, you will find the answer in the assignment description
 (or program specification).  Other times, the desired behavior may be
-up to, as an internal design choice.  Occasionally, the corrrect
+up to you, as an internal design choice.  Occasionally, the corrrect
 behavior may be ambiguous, and you will have to ask an instructor or
 TA for clarification.  The net result is that you will end up with a
 better understanding of what is truly required.  In addition, if you
@@ -347,7 +347,7 @@ name from the "big bang" that happens at the end when you first start
 testing the final system: **nothing works**, and it usually
 requires a huge (and draining) burst of time, energy, and effort to
 try to squash as many problems as possible before the project's
-deadline.  End the end, the project must be turned over as-is, with
+deadline.  In the end, the project must be turned over as-is, with
 many faults still unfixed.
 
 Believe it or not, many commercial software projects used this
@@ -414,7 +414,7 @@ scores on assignments.
 In our studies of a junior-level class, before students were
 encouraged to test incrementally and required to turn in their tests,
 they rarely produced bug-free programs.  Even the best students still
-submitted work with singificant behavioral faults.  Once we began
+submitted work with significant behavioral faults.  Once we began
 requiring students to write and turn in their own software tests (on
 which they were graded), nearly 20% of the final submissions from
 students were completely or nearly bug-free.
@@ -535,8 +535,8 @@ some quotes (from Kent Beck) that intuitively describe TDD:
    [... So we immediately write a test for it.]
    </blockquote>
 
-TDD grew out of `Extreme Programming <a href="http://www.xprogramming.com">`_,
-ad evolved from the simple XP idea of "build a little, test a little"
+TDD grew out of `Extreme Programming <a href="http://www.xprogramming.com">`_
+and evolved from the simple XP idea of "build a little, test a little"
 during coding.  Basically, your code always has a complete set of tests
 that exercises its capabilities, and you write new tests as you add to
 your code.
@@ -560,7 +560,7 @@ thousand.
 Writing Your First Software Test
 --------------------------------
 
-Writing software tests for each method as you good is your best defense for
+Writing software tests for each method as you go is your best defense for
 confirming you understand what your code does, confirming your code behaves
 the way you intend, and finding problems as soon as possible so they won't
 cause trouble later. The longer you put off testing, the harder it is to
@@ -598,7 +598,7 @@ To create your software tests, what do they look like and where do they
 go? We will write our software tests as plain old Java methods, one
 method per test case. Like all Java methods, you place them inside of
 some class. But what class? We will use a separate Java class to hold
-our tests, and call it a **test class*. Since our Jeroo subclass is
+our tests, and call it a **test class**. Since our Jeroo subclass is
 called ``FlowerPicker``, we will place its software tests in a new
 Java class called ``FlowerPickerTest``.
 
@@ -849,20 +849,24 @@ Put together, a method definition may look like this:
 
 Above, this method starts with the access modifier, ``public``, to declare
 that this method can be accessed or referred to by other classes. The next part
-of the method header is the method’s return type. This is the type of value, if
-any, that the method returns. In the code above, we specify that we are
-expecting to return an ``int``.  When we've been writing methods so far, we've
-written methods like this:
+of the method header is the method's return type. This is the type of value, if
+any, that the method returns. In the method declaration above, we specify that
+the method returns an ``int`` value as its result.  When we've been writing
+methods so far, we've written methods like this:
 
 .. code-block:: java
 
    public void pickFlowersAndDisableNets()
 
-Instead of an int here we see the keyword ``void`` which specifies we aren't
-going to return anything.  We'll get more into return types later.  The method’s
-name follows the method’s return type. This is the name that is used when the
+Instead of an ``int``` here we see the keyword ``void`` which means the method
+does not return anything and is only being called for the action it performs,
+without expecting it to return an answer of some kind.  We'll get more into
+return types later.
+
+In the method declaration, the method's
+name follows the method's return type. This is the name that is used when the
 method is called. We could call the method anything we wanted, but spaces cannot
-be included.  Following the method’s name is the method’s **parameter list**
+be included.  Following the method's name is the method's **parameter list**
 which we'll talk about in the next section.
 
 
@@ -1011,13 +1015,22 @@ Take for example:
 
 Logically, the if and else-if branch of this conditional do the same things as
 we saw above.  However, there is a third branch here that will never execute.
-This is because the area ahead of ``aaron`` will either be clear or not clear.
-The code will always find a branch to execute and will always skip the ``else``
-branch.
+This is because the area ahead of the jeroo will always be either clear or
+not clear.
+The code will always find a branch to execute between the first two choices,
+and there is never any situation where the ``else`` branch will ever be
+applicable.
 
-If you're not entirely sure if two boolean statements are equivalent, it can be
-helpful to write out a truth table.  For example, we can see below that writing
-``b`` and ``!!b`` are equivalent.
+In computer terms, code that you write that can never be executed under
+any possible circumstances, is called **unreachable code**. Such code is
+usually a programming problem, since the reason it can never be executed is
+often due to improperly constructed programming logic, as in the example
+here. The first two branches cover all possible situations, so the third
+option is useless.
+
+If you're not entirely sure if two boolean statements are equivalent, it can
+be helpful to write out a truth table.  For example, we can see below that
+writing ``b`` and ``!!b`` are equivalent.
 
 .. list-table:: Truth Table
    :header-rows: 1
@@ -1186,24 +1199,24 @@ This statement could be generalized to ``if (A || B)`` where:
 
 If the jeroo has a flower while facing north OR sees a net ahead of it, this if
 statement will trigger.  Notably, if the jeroo only has a flower the logical AND
- will force the statement ``caroline.isFacing(NORTH) && caroline.hasFlower()``
- to be false.  Thus, the jeroo would have to see a net ahead for this if
- statement to trigger.
+will force the statement ``caroline.isFacing(NORTH) && caroline.hasFlower()``
+to be false.  Thus, the jeroo would have to see a net ahead for this if
+statement to trigger.
 
- Logical NOT can also negate a compound statement.
+Logical NOT can also negate a compound statement.
 
  .. code-block:: java
 
    if (!(caroline.isFacing(NORTH) && caroline.hasFlower()))
 
-Remember, for ``caroline.isFacing(NORTH) && caroline.hasFlower()`` to be true, the
-jeroo must have a flower and be facing North.  Writing
-``!(caroline.isFacing(NORTH) && caroline.hasFlower())`` will be true as long as the
-compound condition within the parentheses is false.
+Remember, for ``caroline.isFacing(NORTH) && caroline.hasFlower()`` to be true,
+the jeroo must have a flower and be facing North.
+Writing ``!(caroline.isFacing(NORTH) && caroline.hasFlower())`` will be true
+as long as the compound condition within the parentheses is false.
 
 When looking at these sort of complex operations, it is easy to get mixed up.
 When considering negated compound conditions re-writing them  according
-**De Morgan’s laws** may be helpful to you:
+**De Morgan's laws** may be helpful to you:
 
 * ``!(A && B)`` is the same as ``!A || !B``
 * ``!(A || B)`` is the same as ``!A && !B``
@@ -1212,13 +1225,13 @@ Using this, instead of writing
 
 .. code-block:: java
 
-    if (!(caroline.isFacing(NORTH) && caroline.hasFlower()))
+   if (!(caroline.isFacing(NORTH) && caroline.hasFlower()))
 
 It is be logically equivalent to write:
 
 .. code-block:: java
 
-    if (!caroline.isFacing(NORTH) || !caroline.hasFlower())
+   if (!caroline.isFacing(NORTH) || !caroline.hasFlower())
 
 Again, if we use a truth table we can see these two columns match:
 
@@ -1268,7 +1281,7 @@ Short Circuit Evaluation
 Another important feature of the boolean operators is that they utilize a
 form of evaluation known as short-circuit evaluation. In **short-circuit
 evaluation**, a boolean expression is evaluated from left to right, and the
-evaluation is discontinued as soon as the expression’s value can be determined,
+evaluation is discontinued as soon as the expression's value can be determined,
 regardless of whether it contains additional operators and operands. For
 example, in the expression
 
@@ -1276,8 +1289,9 @@ example, in the expression
 
    basil.isFacing(WEST) && basil.seesNet(AHEAD)
 
-if ``basil.isFacing(WEST)`` is false, then the AND expression must be false,
-so java will not evaluate ``basil.seesNet(AHEAD)``.
+if ``basil.isFacing(WEST)`` is false, then the AND expression must be false.
+Because the computer already knows the whole AND expression is false, it
+will not evaluate ``basil.seesNet(AHEAD)``, since there is no need.
 
 Similarly, in the expression:
 
@@ -1285,8 +1299,9 @@ Similarly, in the expression:
 
    basil.isFacing(NORTH) || basil.seesNet(AHEAD)
 
-if ``basil.isFacing(WEST)`` is true, then java will not evaluate
-``basil.seesNet(AHEAD)`` as we know the OR expression is already true.
+if ``basil.isFacing(NORTH)`` is true, then the computer knows the whole
+OR expression will also be true, and so it will not evaluate
+``basil.seesNet(AHEAD)``, since it is unnecessary.
 
 
 Check Your Understanding
@@ -1302,7 +1317,7 @@ Relational Operators with Primitive Data Types
 Relational operators are used to check conditions like whether two values
 are equal, or whether one is greater than the other. These kinds of operators
 do not work on objects at all, so you cannot use them on jeroos. However,
-they work on numeric values such as ``int``s. The following expressions
+they work on numeric values such as ``int``\ s. The following expressions
 show how they are used.
 
 .. list-table:: Relational Operators
@@ -1336,7 +1351,7 @@ or ``false``.  These values belong to the data type ``boolean``; in fact, they
 are the only ``boolean`` values.
 
 You are probably familiar with these operations, but notice that the Java
-operators compare program values. The behave similar to the mathematical
+operators compare program values. They behave similar to the mathematical
 operators you are familiar with, but are not written the same way
 as mathematical symbols like =, ≤, and ≠.
 
@@ -1349,22 +1364,22 @@ comparisons in English: "less than or equal" has the less than symbol first,
 followed by the equal sign second.
 
 
-Week 4 Syntax
--------------
+Syntax Practice 4
+-----------------
 
-.. extrtoolembed:: ''
+.. extrtoolembed:: 'Syntax Practice 4'
    :workout_id: 1411
 
 
-Practice Exercises 4
+Programming Practice 4
 ----------------------
 
-.. extrtoolembed:: 'Practice Exercises 4'
+.. extrtoolembed:: 'Programming Practice 4'
    :workout_id: 1412
 
 
 Check Your Understanding
 ------------------------
 
-.. .. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSummx.html ka
-..    :long_name: Module Review
+.. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSumm.html ka
+   :long_name: Module Review
