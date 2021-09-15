@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="math">
   <head>
-    <title>Reading Quiz</title>
+    <title>Logical Equivalence</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
@@ -11,23 +11,23 @@
     <div class="exercise">
       <div class="problems">
 
-        <div id="FullReadingQuizQ2">
+        <div id="ReadingQuiz3Q2">
           <p class="question">
-            When a class is instantiated, what is responsible for initializing
-            the new object's attributes?
+            Assume for this question, the following conditional</p>
+<pre class="prettyprint">
+if (!(!this.hasFlower()))
+</pre>
+          <p>Which of the following is logically equivalent?
           </p>
 
-          <div class="solution">The class's constructor.</div>
+          <div class="solution"><tt>if (this.hasFlower())</tt></div>
           <ul class="choices" >
-
-            <li>A new object's attributes are randomly initialized by the Java
-              compiler.</li>
-            <li>The class's <tt>main()</tt> method.</li>
-            <li>The class's <tt>myProgram()</tt> method. </li>
+            <li><tt>if (!this.hasFlower())</tt></li>
+            <li><tt>if (this.hasFlower() &amp;&amp; !this.hasFlower)</tt></li>
 
           </ul>
           <div class="hints">
-            <p>There are not hints for this question</p>
+            <p>There are no hints for this question</p>
           </div>
         </div>
 
