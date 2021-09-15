@@ -22,3 +22,4 @@ p.topic-title {
     margin-left: 1.5em;
 }
 .prev-next-bottom { display: none; }
+table.docutils col { width: auto; }

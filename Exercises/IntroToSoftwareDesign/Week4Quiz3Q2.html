@@ -4,39 +4,30 @@
     <title>Methods with Parameters</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
-    <style>
-#problemarea code, #problemarea tt, #problemarea pre {
-    font-family: monospace, monospace;
-    font-size: 1em;
-    background-color: #f0f0f0;
-}
-#problemarea pre {
-    overflow: auto;
-    line-height: 125%;
-    border-color: #0c3762;
-    border-style: dotted;
-    border-width: thin;
-    margin: 0 0 12px 0;
-    padding: 0.8em;
-    font-size: 15px;
-    line-height: 1.3;
-}
-    </style>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="880" data-width="950">
+  <body data-height="750" data-width="950">
     <div class="exercise">
       <div class="problems">
 
         <div id="ReadingQuiz2Q1">
           <p class="question">
             Assume for this question, the following method:</p>
+<pre class="prettyprint">
+public void hopInDirection(RelativeDirection direction, int distance)
+{
+    // code goes here
+}
+</pre>
+          <p>To call this method without a compiler error,
+          all of the following are necessary EXCEPT:</p>
 
-          <div class="solution"><tt></tt></div>
+          <div class="solution">We can omit parameters we don't need</div>
           <ul class="choices" >
-            <li><tt></tt></li>
-            <li><tt></tt></li>
-            <li><tt></tt></li>
+            <li>We provide two parameter values</li>
+            <li>Our parameter values match the specified types</li>
+            <li>We give the parameters in the order specified in the declaration</li>
           </ul>
           <div class="hints">
             <p>There are no hints for this question</p>

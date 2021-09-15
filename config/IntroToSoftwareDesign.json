@@ -205,13 +205,28 @@
           "points": 30,
           "required": true
         },
-        "Week3Quiz5Summ": {
-          "points": 14,
+        "Week3Quiz1Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz2Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz3Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week3Quiz4Summ": {
+          "points": 6,
           "threshold": 3,
           "required": true
         },
         "Week3ReadingQuizSumm": {
-          "points": 36,
+          "points": 16,
           "threshold": 10,
           "required": true
         }

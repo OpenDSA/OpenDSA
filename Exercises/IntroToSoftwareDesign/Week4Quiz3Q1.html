@@ -4,27 +4,10 @@
     <title>Methods with Parameters</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
-    <style>
-#problemarea code, #problemarea tt, #problemarea pre {
-    font-family: monospace, monospace;
-    font-size: 1em;
-    background-color: #f0f0f0;
-}
-#problemarea pre {
-    overflow: auto;
-    line-height: 125%;
-    border-color: #0c3762;
-    border-style: dotted;
-    border-width: thin;
-    margin: 0 0 12px 0;
-    padding: 0.8em;
-    font-size: 15px;
-    line-height: 1.3;
-}
-    </style>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="880" data-width="950">
+  <body data-height="750" data-width="950">
     <div class="exercise">
       <div class="problems">
 
@@ -38,10 +21,9 @@ public void turnAndDisable(RelativeDirection direction)
     this.toss();
 }
 </pre>
-          <p>What would happen if we ran:</p>
-<pre class="prettyprint">turnAndDisable(4)</pre><p>?</p>
+          <p>What would happen if we called <tt>turnAndDisable(4);</tt>?</p>
 
-          <div class="solution">An error would be thrown.</div>
+          <div class="solution">An compiler error would be produced.</div>
           <ul class="choices" >
             <li>The jeroo would turn 4 times and toss a flower.</li>
             <li>Nothing would happen.</li>

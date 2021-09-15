@@ -824,7 +824,7 @@ started with writing your first tests.
 Check Your Understanding
 ------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz3Summ.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz1Summ.html ka
    :long_name: Software Testing Concepts
 
 
@@ -873,7 +873,7 @@ which we'll talk about in the next section.
 Check Your Understanding
 ------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz3Summ.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz2Summ.html ka
    :long_name: Understanding Method Signatures
 
 
