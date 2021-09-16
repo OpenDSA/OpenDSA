@@ -859,7 +859,7 @@ methods so far, we've written methods like this:
 
    public void pickFlowersAndDisableNets()
 
-Instead of an ``int``` here we see the keyword ``void`` which means the method
+Instead of an ``int`` here we see the keyword ``void`` which means the method
 does not return anything and is only being called for the action it performs,
 without expecting it to return an answer of some kind.  We'll get more into
 return types later.
@@ -871,8 +871,8 @@ be included.  Following the method's name is the method's **parameter list**
 which we'll talk about in the next section.
 
 
-Check Your Understanding: Understanding Method Signatures
----------------------------------------------------------
+Check Your Understanding: Method Signatures
+-------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz2Summ.html ka
    :long_name: Understanding Method Signatures
