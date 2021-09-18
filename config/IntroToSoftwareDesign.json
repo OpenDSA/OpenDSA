@@ -205,27 +205,27 @@
           "points": 30,
           "required": true
         },
-        "Week3Quiz1Summ": {
+        "Week4Quiz1Summ": {
           "points": 6,
           "threshold": 3,
           "required": true
         },
-        "Week3Quiz2Summ": {
+        "Week4Quiz2Summ": {
           "points": 6,
           "threshold": 3,
           "required": true
         },
-        "Week3Quiz3Summ": {
+        "Week4Quiz3Summ": {
           "points": 6,
           "threshold": 3,
           "required": true
         },
-        "Week3Quiz4Summ": {
+        "Week4Quiz4Summ": {
           "points": 6,
           "threshold": 3,
           "required": true
         },
-        "Week3ReadingQuizSumm": {
+        "Week4ReadingQuizSumm": {
           "points": 16,
           "threshold": 10,
           "required": true

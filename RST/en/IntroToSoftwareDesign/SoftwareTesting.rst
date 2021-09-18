@@ -260,6 +260,7 @@ testing in our assignments:
 * It Preempts "big bang" integration problems
 * It improves your grades
 
+
 Software Testing Increases Confidence
 """""""""""""""""""""""""""""""""""""
 
@@ -821,8 +822,8 @@ you intend to occur in a test case, but these methods will get you
 started with writing your first tests.
 
 
-Check Your Understanding
-------------------------
+Check Your Understanding: Software Testing Concepts
+---------------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz1Summ.html ka
    :long_name: Software Testing Concepts
@@ -858,7 +859,7 @@ methods so far, we've written methods like this:
 
    public void pickFlowersAndDisableNets()
 
-Instead of an ``int``` here we see the keyword ``void`` which means the method
+Instead of an ``int`` here we see the keyword ``void`` which means the method
 does not return anything and is only being called for the action it performs,
 without expecting it to return an answer of some kind.  We'll get more into
 return types later.
@@ -870,8 +871,8 @@ be included.  Following the method's name is the method's **parameter list**
 which we'll talk about in the next section.
 
 
-Check Your Understanding
-------------------------
+Check Your Understanding: Method Signatures
+-------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz2Summ.html ka
    :long_name: Understanding Method Signatures
@@ -931,8 +932,8 @@ as arguments:
 This would cause the jeroo to turn right and then hop seven times.
 
 
-Check Your Understanding
-------------------------
+Check Your Understanding: Methods with Parameters
+-------------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz3Summ.html ka
    :long_name: Methods with Parameters
@@ -1304,8 +1305,8 @@ OR expression will also be true, and so it will not evaluate
 ``basil.seesNet(AHEAD)``, since it is unnecessary.
 
 
-Check Your Understanding
-------------------------
+Check Your Understanding: Logical Equivalence
+---------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week4Quiz4Summ.html ka
    :long_name: Logical Equivalence
@@ -1378,8 +1379,8 @@ Programming Practice 4
    :workout_id: 1404
 
 
-Check Your Understanding
-------------------------
+Module Review
+-------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSumm.html ka
    :long_name: Module Review

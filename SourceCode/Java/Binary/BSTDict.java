@@ -40,7 +40,7 @@ public class BSTDict implements Dictionary {
   public Object find(Comparable k) {
     Object temp = theBST.find(k);
     if (temp == null) { return temp; }
-    else { return ((KVPair)temp).value() };
+    else { return ((KVPair)temp).value(); }
   }
 
   // Return the number of records in the dictionary.
