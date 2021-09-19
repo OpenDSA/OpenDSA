@@ -59,6 +59,7 @@
     "required": true
   },
   "chapters": {
+
     "Course Policies":{
       "IntroToSoftwareDesign/CoursePolicies": {
         "HonorCodeSumm": {
@@ -68,6 +69,7 @@
         }
       }
     },
+
     "Getting Started":{
       "IntroToSoftwareDesign/GettingStarted": {
         "Syntax Practice 1": {
@@ -95,6 +97,7 @@
         }
       }
     },
+
     "Inheritance and Polymorphism":{
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
         "Syntax Practice 2a: Jeroo Methods": {
@@ -136,6 +139,7 @@
         }
       }
     },
+
     "Conditional and Repeating Actions": {
       "IntroToSoftwareDesign/ConditionalActions": {
         "Syntax Practice 3a: If-Then-Else": {
@@ -230,6 +234,11 @@
           "threshold": 10,
           "required": true
         }
+      }
+    },
+
+    "Variables, Fields, and Parameters":{
+      "IntroToSoftwareDesign/VariablesFieldsAndParameters": {
       }
     }
   }
