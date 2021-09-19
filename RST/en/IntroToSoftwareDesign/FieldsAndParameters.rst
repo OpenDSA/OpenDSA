@@ -342,34 +342,7 @@ Check Your Understanding: Variables
 .. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz1Summ.html ka
    :long_name: Variables
 
-Q1: What do we call the following statement: ``int x;``
-  A variable declaration*
-  A method declaration
-  A variable instantiation
-  A boolean variable
 
-Q2: Look at the following line of code.  What value will the variable ``x`` hold?
-  ``double x = 1/2;``
-  0*
-  0.5
-  1
-  this will cause an error.
-
-Q3: Look at the following line of code.  What will the variable ``a`` hold?
-
-  ```
-  int a = 5;
-  int b = a;
-  int c = a + 2;
-  ```
-  5*
-  7
-  2
-  We don't have enough information to determine what value ``a`` will hold.
-
-
-Syntax practice questions:
-//nothing on comparisons of double
 
 Fields versus Local Variables
 -----------------------------
@@ -520,36 +493,8 @@ In this code, ``x`` could not be referenced outside of the ``doMath()`` method. 
 Check your Understanding: Scope
 -------------------------------
 
-True or False: in the following code, the variable `age` is accessible within the method ``increase()``
-
-```
-public class AgedJeroo{
-  private int age;
-  public void increase(){
-    age = age + 1;
-  }
-}
-
-True or False: in the following code, the variable `age` is accessible anywhere in the ``AgedJeroo`` class.
-
-```
-public class AgedJeroo{
-
-  public void increase(){
-    int age;
-    age = age + 1;
-  }
-}
-
-True or False: in the following code, the variable `age` is accessible outside of in the ``AgedJeroo`` class.
-
-```
-public class AgedJeroo{
-  public int age;
-  public void increase(){
-    age = age + 1;
-  }
-}
+.. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz2Summ.html ka
+   :long_name: Variables
 
 
 Accessor Methods
@@ -575,25 +520,8 @@ What is different is the return type and this new ``return`` keyword, which we'l
 Check Your Understanding: Fields, Getters and Setters
 --------------------------------
 
-Why can it be important to use the ``private`` keyword?
-  All of these answers are correct *
-  It helps reduce one classes' dependence on another.
-  It provides a safety net to ensure no fields are mistakenly changed.
-
-
-
-Assume we are writing a mutator method for a field called ``boolean isRaining;``.  What would the correct name for this method be?
-  setIsRaining*
-  getIsRaining
-  setBoolean
-  mutateRaining
-
-Assume we were writing a getter method for a field called ``boolean isSunny;``.
-What would the correct return type for this method be?
-  boolean *
-  int
-  void
-  we can't tell from the information given.
+.. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz3Summ.html ka
+   :long_name: Variables
 
 
 The Return Keyword
@@ -804,35 +732,8 @@ Java uses this same principle, though with many different types of data, things 
 Check your Understanding: Typed Methods and Return Statements
 -------------------------------------------------------------
 
-When looking at the following code, what sort of data do we know it needs to return?
-
-  ```
-  public void hop3Times(){
-    this.hop();
-    this.hop();
-    this.hop();
-  }
-  ```
-  no return statement is needed *
-  this needs to return a boolean
-  this needs to return an int
-  this needs to return a double
-
-
-Say we wanted to write a method that would take in three integers and return their sum.  What would be the BEST method signature to write for this?
-
-  public int add3Ints(int a, int b, int c) *
-  public void add3Ints(int a, int b, int c)
-  public double add3Ints(int a, int b, int c)
-  public boolean add3Ints(int a, int b, int c)
-
-Say we wanted to write a method that would take in three integers and return their average (the total of all three numbers divided by 3).  What would be the BEST method signature to write for this?
-
-  public double average(int a, int b, int c) *
-  public int average(int a, int b, int c)
-  public void average(int a, int b, int c)
-  public boolean average(int a, int b, int c)
-
+.. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz4Summ.html ka
+   :long_name: Variables
 
 
 
