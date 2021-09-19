@@ -203,7 +203,7 @@ division” when the operands are integers, as in this case. By design, integer
 division always rounds toward zero, even in cases like this one where the next
 integer is close. Further, ``fractionOfHour``
 is declared to be an ``int`` variable, so it can *only* hold an integer
-value anyway, not a decimal fraction. 
+value anyway, not a decimal fraction.
 
 As an alternative, we can calculate a percentage rather than a fraction:
 
@@ -381,10 +381,10 @@ the variable declaration is not visible (can't be used) in other methods.
        {
            ...
        }
-       
+
        // scope of x ends at closing brace
    }
-   
+
    public void doOtherStuff()
    {
       if (x == 17)  // compiler error! x can't be referenced
@@ -419,7 +419,7 @@ closing brace. As a further example:
            // scope of x ends at closing brace
        }
 
-       x = 4;  // compiler error! x can't be referenced       
+       x = 4;  // compiler error! x can't be referenced
    }
 
 Local variables can be declared inside any pair of braces demarking a
@@ -475,7 +475,7 @@ We can declare fields in our ``Rectangle`` class:
        private int width;
        private int xCoord;
        private int yCoord;
-       
+
        // other parts of the class go here ...
    }
 
@@ -536,7 +536,7 @@ that takes in 4 integers as parameters:
            this.xCoord = initialX;
            this.yCoord = initialY;
        }
-       
+
        // other parts of the class go here ...
    }
 
@@ -1045,16 +1045,3 @@ Syntax ideas
 
 Practice Ideas:
 ---------------
-
-
-Question 1
-If you are given three sticks, you may or may not be able to
-arrange them in a triangle. For example, if one of the sticks is 12 inches long
-and the other two are one inch long, you will not be able to get the short sticks
-to meet in the middle. For any three lengths, there is a simple test to see if it
-is possible to form a triangle:
-If any of the three lengths is greater than the sum of the other two,
-you cannot form a triangle.
-Write a method named isTriangle that takes three integers as arguments
-and returns either true or false, depending on whether you can or cannot
-form a triangle from sticks with the given lengths.
