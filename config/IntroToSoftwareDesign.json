@@ -27,7 +27,7 @@
   "build_cmap": false,
   "suppress_todo": false,
   "dispModComp": true,
-  "tag": "CPP;CS2",
+  "tag": "Java;CS1",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
