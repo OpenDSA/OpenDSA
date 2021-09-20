@@ -201,37 +201,32 @@
 
     "Software Testing":{
       "IntroToSoftwareDesign/SoftwareTesting": {
-        "Syntax Practice 4": {
+        "Syntax Practice 5": {
           "points": 30,
           "required": true
         },
-        "Programming Practice 4": {
+        "Programming Practice 5": {
           "points": 30,
           "required": true
         },
-        "Week4Quiz1Summ": {
-          "points": 6,
+        "Week5Quiz1Summ": {
+          "points": 10,
           "threshold": 3,
           "required": true
         },
-        "Week4Quiz2Summ": {
-          "points": 6,
+        "Week5Quiz2Summ": {
+          "points": 10,
           "threshold": 3,
           "required": true
         },
-        "Week4Quiz3Summ": {
-          "points": 6,
+        "Week5Quiz3Summ": {
+          "points": 10,
           "threshold": 3,
           "required": true
         },
-        "Week4Quiz4Summ": {
-          "points": 6,
+        "Week5Quiz4Summ": {
+          "points": 10,
           "threshold": 3,
-          "required": true
-        },
-        "Week4ReadingQuizSumm": {
-          "points": 16,
-          "threshold": 10,
           "required": true
         }
       }

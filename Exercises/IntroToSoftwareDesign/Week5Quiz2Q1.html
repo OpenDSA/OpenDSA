@@ -10,14 +10,17 @@
   <body data-height="650" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="ReadingQuiz2Q1">
-        <p class="question">True or False: in the following code, the variable age is accessible within the method.</p>
+        <div id="Week5Quiz2Q1">
+        <p class="question">True or False: in the following code, the variable
+        <tt>age</tt> is accessible within the method.</p>
 <pre class="prettyprint">
-public class AgedJeroo{
-  private int age;
-  public void increase(){
-    age = age + 1;
-  }
+public class AgingJeroo
+{
+    private int age;
+    public void increase()
+    {
+        age = age + 1;
+    }
 }
 </pre>
         <div class="solution">True: since <tt>age</tt> is declared as a field, it is accessible everywhere within the class.</div>

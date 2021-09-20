@@ -11,18 +11,21 @@
     <div class="exercise">
       <div class="problems">
         <div id="ReadingQuiz2Q2">
-        <p class="question">True or False: in the following code, the variable age is accessible outside of the AgedJeroo class.</p>
+        <p class="question">True or False: in the following code,
+        <tt>age</tt> is accessible outside of the <tt>AgingJeroo</tt> class.</p>
 <pre class="prettyprint">
-public class AgedJeroo{
-  public void increase(){
-    int age;
-    age = age + 1;
-  }
+public class AgingJeroo
+{
+    public void increase()
+    {
+        int age = 0;
+        age = age + 1;
+    }
 }
 </pre>
         <div class="solution">False: since <tt>age</tt> is declared within the method, it only is accessible within the method.</div>
         <ul class="choices">
-        <li>True: since <tt>age</tt> is declared inside the AgedJeroo class any other class can access it. </li>
+        <li>True: since <tt>age</tt> is declared inside the <tt>AgingJeroo</tt> class, any other class can access it. </li>
         <li>False: since <tt>age</tt> is private, it cannot be accessed by methods.</li>
         <li>False: since <tt>age</tt> is declared as a field, it cannot be accessed by methods.</li>
         </ul>
