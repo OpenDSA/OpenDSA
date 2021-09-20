@@ -201,6 +201,44 @@
 
     "Software Testing":{
       "IntroToSoftwareDesign/SoftwareTesting": {
+        "Syntax Practice 4": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 4": {
+          "points": 30,
+          "required": true
+        },
+        "Week4Quiz1Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week4Quiz2Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week4Quiz3Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week4Quiz4Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week4ReadingQuizSumm": {
+          "points": 16,
+          "threshold": 10,
+          "required": true
+        }
+      }
+    },
+
+    "Variables, Fields, and Parameters":{
+      "IntroToSoftwareDesign/VariablesFieldsAndParameters": {
         "Syntax Practice 5": {
           "points": 30,
           "required": true
@@ -229,11 +267,6 @@
           "threshold": 3,
           "required": true
         }
-      }
-    },
-
-    "Variables, Fields, and Parameters":{
-      "IntroToSoftwareDesign/VariablesFieldsAndParameters": {
       }
     }
   }
