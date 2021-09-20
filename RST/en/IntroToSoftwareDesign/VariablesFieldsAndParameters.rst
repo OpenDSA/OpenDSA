@@ -845,44 +845,80 @@ accessor method for that field needs to also return an ``int``.
 Writing More Complex Methods with Return
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sometimes it is useful to have multiple return statements, for example, one in
-each branch of a conditional:
+Sometimes you may feel the need to write multiple return statements, for
+example, one in each branch of a conditional:
 
 .. code-block:: java
 
-   public double absoluteValue(double x) {
-     if (x < 0)
-     {
-        return -x;
-     }
-     else
-     {
-        return x;
-     }
+   public double absoluteValue(double x)
+   {
+       if (x < 0)
+       {
+           return -x;
+       }
+       else
+       {
+           return x;
+       }
    }
 
 Since these return statements are in a conditional statement, only one will be
-executed. As soon as either of them executes, the method terminates without
-executing any more statements.
+executed. As soon as either of them executes, the **method terminates** without
+executing any more statements. Of course, this means that other parts of
+the method will not be executed after the ``return`` statement is reached.
+Further, since a method that returns a value must **always** use a return
+statement, no matter how the method ends, that is why you must include a
+return statement in each and every branch, not just the first one.
+
+Because of these constraints, some beginners find it easier to try always
+writing a *single* return statement and placeing it as the very last statement
+in the method--this ensures the method always returns a value, and never
+accidentally skips any important steps. As you develop your skills, you may
+find using multiple return statements easier in some situations, but always
+remember they require more care and are subject to more possibilities for
+mistakes, so fall back on using a single return statement when you have
+trouble:
+
+.. code-block:: java
+
+   public double absoluteValue(double x)
+   {
+       double answer = x;
+       if (x < 0)
+       {
+           answer = -x;
+       }
+       return answer;
+   }
 
 Here’s an example: ``calculateArea`` takes a double as a parameter and returns
 the area of a circle with that radius:
 
 .. code-block:: java
 
-   public double calculateArea(double radius) {
-      double result = 3.14 * radius * radius;
+   public double calculateArea(double radius)
+   {
+      // Note that Math.PI is a constant with the value of pi
+      double result = Math.PI * radius * radius;
       return result;
    }
 
-This last line is a return statement.  This statement means, "exit immediately from this method and use the following expression as the return value."
+This last line is a return statement.  This statement means, "exit immediately
+from this method and use the following expression as the return value." Also,
+note the use of the constant ``PI`` from the built-in Java utility class
+called ``Math``. The Java ``Math`` class provides many useful and common
+math functions, as well as definitions for the constants ``PI`` and ``E``.
+In Java, by convention, programmers give constants names that are written
+in all capitals, so you can easily distinguish them from variables or fields.
 
-The expression you provide can be arbitrarily complex, so we could have written this method more concisely:
+The expression you provide in a ``return`` statement can be arbitrarily
+complex, so we could have written this method more concisely:
 
 .. code-block:: java
 
-   public double calculateArea(double radius) {
-      return 3.14 * radius * radius;
+   public double calculateArea(double radius)
+   {
+      return Math.PI * radius * radius;
    }
 
 Code that appears after a return statement (in the same block), or any place
@@ -893,7 +929,8 @@ example, this method contains dead code:
 
 .. code-block:: java
 
-   public double absoluteValue(double x) {
+   public double absoluteValue(double x)
+   {
       if (x < 0)
       {
          return -x;
@@ -902,19 +939,21 @@ example, this method contains dead code:
       {
          return x;
       }
-      x = 5;
+      x = 5;    // can never be executed
     }
 
-That last line, ``x = 5`` would never run as a value would always be returned before that line could execute.
+That last line, ``x = 5`` would never run as a value would always be returned
+from the method (ending the method) before that line could be reached.
 
 If you put return statements inside a conditional statement, you have to
 make sure that every possible path through the program reaches a return
-statement. The compiler will let you know if that’s not the case. For example, the following method is incomplete:
-
+statement. The compiler will let you know if that’s not the case. For
+example, the following method is incomplete:
 
 .. code-block:: java
 
-   public double absoluteValue(double x) {
+   public double absoluteValue(double x)
+   {
       if (x < 0)
       {
          return -x;
@@ -931,6 +970,10 @@ a return statement. The error message in this case might be something like
 “missing return statement”, which is confusing since there are already two of
 them. But hopefully you will know what it means.
 
+Again, if you run into difficulties, often an easy answer is to change the
+structure of the method so that there is only a single ``return`` statement
+at the very end of the method.
+
 
 Using the Results of a Method
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -940,9 +983,10 @@ itself. For example here is a simple hop and pick method for Jeroos.
 
 .. code-block:: java
 
-   public void hopAndPick() {
-      this.hop();
-      this.pick();
+   public void hopAndPick()
+   {
+       this.hop();
+       this.pick();
    }
 
 And here is how it is called:
@@ -951,45 +995,59 @@ And here is how it is called:
 
    this.hopAndPick();
 
-On the other hand, when you invoke a method with a return type, you have to do something with the return value. We usually assign it to a variable or use it as part of an expression.
+On the other hand, when you invoke a method with a return type, you have to
+do something with the return value. We usually assign it to a variable or
+use it as part of an expression.
 
 Take for example this method:
 
 .. code-block:: java
 
-   public int squared(int x) {
-    return x * x;
+   public int square(int x)
+   {
+       return x * x;
    }
 
-This method would take in some number ``x``, and return the value of that number raised to the power of 2.
+This method would take in some number ``x``, and return the value of that
+number raised to the power of 2.
 
-We could then call the method *and* instantiate a new variable to save the result by running
-
-.. code-block:: java
-
-   int base = 3;
-   int raised = squared(base);
-
-In this situation, ``raised`` is set to the value 9 (the result of doing 3 * 3).
-
-Additionally, we can use the results of methods as parameters for other method calls:
+We could then call the method *and* instantiate a new variable to save the
+result:
 
 .. code-block:: java
 
    int base = 3;
-   int raised = squared(base);
-   int raisedAgain = squared(squared(base));
+   int raised = square(base);
 
-This new variable ``raisedAgain`` will be set equal to 81.  This is because the nested method call will retun the value 9, which will immediately get sent back to the ``squared`` method to run ``9 * 9``.
+In this situation, ``raised`` is set to the value 9 (the result of
+computing 3 * 3).
 
-This might remind you of working with functions in algebra classes.  In those classes, we might see this same idea written out as:
+Additionally, we can use the result of a method as a parameter for another
+method call:
+
+.. code-block:: java
+
+   int base = 3;
+   int raisedAgain = square(square(base));
+
+This new variable ``raisedAgain`` will be set equal to 81. The calls to
+``square()`` are evaluated "inside out", with the one inside parentheses
+performed first. So ``base`` is passed as the argument to ``square()`` in
+the first call, which returns 9. The return value 9 of the first call is
+used as the parameter value in a second call to ``square()``, which then
+returns 9 * 9 = 81.
+
+This might remind you of working with functions in algebra classes.  In those
+classes, we might see this same idea written out as:
 
 Assume
 f(x) = x * x
 What is the value of f(3)?
 What is the value of f(f(3))?
 
-Java uses this same principle, though with many different types of data, things can get a bit more complex.
+Java uses this same principle, though with many different types of data,
+things can get a bit more complex.
+
 
 Check your Understanding: Typed Methods and Return Statements
 -------------------------------------------------------------
@@ -999,49 +1057,188 @@ Check your Understanding: Typed Methods and Return Statements
 
 
 Using Fields in Testing
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
-Last week, we worked on creating some simple test suites for a Jeroo.  You may remember needing to do a lot of set-up work at the start of each test to ensure the jeroo was exactly where you wanted it and with the right number of flowers.
+Last week, we worked on creating some simple test suites for a Jeroo.  You
+may remember needing to do a lot of set-up work at the start of each test
+to ensure the jeroo was exactly where you wanted it and with the right
+number of flowers.
 
-However, what if you had several tests in a row that all required the same set up?  To help make testing a bit more streamlined, you can use a special method called ``setUp()``.  This method will run before each of your tests executes.  To be clear, that means that if you had 3 tests called ``test1``, ``test2``, and ``test3``, set up would run before ``test1`` executes AND before ``test2`` AND before ``test3``.
+However, what if you had several tests in a row that all required the same
+initial starting conditions?  To help make testing a bit more streamlined,
+you can declare **fields** instead of local variables to hold the common
+objects you are using in most or all of your tests. When you do this, instead
+of repeatedly declaring them as local variables in each test method, declaring
+them as fields makes them visible to *all* test methods so they only need to
+be declared once.
 
-We can use fields with this setUp method to efficiently set up our testing environment.
+Further, rather than repeating the code to set up the initial conditions in
+every test method, you can also write that just once, instead of repeating it
+in each test method.
 
-For example if we had a simple Jeroo class like this:
-
-.. code-block:: java
-
-   public class SimpleJeroo extends Jeroo{
-    private int age;
-    private int idNumber;
-
-    public SimpleJeroo(int a, int id){
-      this.age = a;
-      this.idNumber = id;
-    }
-   }
-
-We could ensure that each test starts with a 5 year old jeroo with an id number of 4567 by creating a field and using our ``setUp()`` method.
+To see how this works, consider this example test method from the Software
+Testing module:
 
 .. code-block:: java
 
-   public class SimpleJerooTest{
-    private SimpleJeroo steve;
+   public void testPickFlowers()
+   {
+       // 1. set up initial conditions
+       Lab04Island island = new Lab04Island();
+       FlowerPicker picker = new FlowerPicker();
+       island.addObject(picker, 1, 2);
 
-    public void setUp(){
-      steve = new SimpleJeroo(5, 4567);
-    }
+       // 2. call the method
+       picker.pickFlowers();
+
+       // 3. check expected results
+       assertThat(picker.getX()).isEqualTo(6);
+       assertThat(picker.getY()).isEqualTo(2);
+       assertThat(picker.getFlowers()).isEqualTo(5);
+       assertThat(picker.getHeading()).isEqualTo(EAST);
    }
 
-Then, because ``steve`` is a field, we could reference it in all of our tests.  Additionally, becauce ``steve`` is re-set to a new Jeroo object each time the ``setUp`` method is run, we never have to worry about the results of one test causing issues in another test.
+Now suppose you were writing a test class with multiple tests in it:
+
+.. code-block:: java
+
+   public class FlowerPickerTest
+       extends TestCase
+   {
+       public void testPickFlowers()
+       {
+           // 1. set up initial conditions
+           Lab04Island island = new Lab04Island();
+           FlowerPicker picker = new FlowerPicker();
+           island.addObject(picker, 1, 2);
+
+           ...
+       }
+
+       public void testPickFlowersAgain()
+       {
+           // 1. set up initial conditions
+           Lab04Island island = new Lab04Island();
+           FlowerPicker picker = new FlowerPicker();
+           island.addObject(picker, 1, 2);
+
+           // turn picker south and move forward 1
+           // for this test
+
+           ...
+       }
+   }
+
+Here, the two tests both use an ``island`` and both use a ``picker``.
+They both have to create the ``island``, create the ``picker``, and place
+the ``picker`` on the ``island``. This is just repeated code.
+
+Repeated code is an example of a **code smell**, or a red flag that a
+design can be improved. Sometimes you look at code and you just get a
+feeling that there is a better way to do it--that's a *code smell*. If
+you get that feeling, almost certainly there *is* a better way to do it,
+and revising the code would improve it.
+
+First, instead of using local variables called ``island`` and ``picker`` in
+each method, we can move those to be fields:
+
+.. code-block:: java
+
+   public class FlowerPickerTest
+       extends TestCase
+   {
+       private Lab04Island island;
+       private FlowerPicker picker;
+
+       public void testPickFlowers()
+       {
+           // 1. No extra setup needed
+           ...
+       }
+
+       public void testPickFlowersAgain()
+       {
+           // 1. set up initial conditions
+           // turn picker south and move forward 1
+           // for this test
+
+           ...
+       }
+   }
+
+But where do we put the initialization code to create the objects?
+While it might seem the constructor would be a good place, a constructor
+is executed *once only* when an object is created. But this initialization
+code needs to be executed for each and every test method in our class,
+not just once.
+
+In test classes, we use a special method called ``setUp()`` for this purpose
+(note the capitalization!).
+This method will be automatically executed before each of the tests in
+the class.  To be clear, that means that if you had 3 test
+called ``test1()``, ``test2()``, and ``test3()``, the ``setUp()`` method
+would run before ``test1()`` executes AND before ``test2()`` AND
+before ``test3()``. It provides common initialization steps for *all* of
+your test methods in the class.
+
+We can use fields with this ``setUp()`` method to efficiently set up our
+initial conditions. Programmers often call the common set of initial conditions
+used for all of the tests in a class the **test fixture**.
+
+.. code-block:: java
+
+   public class FlowerPickerTest
+       extends TestCase
+   {
+       private Lab04Island island;
+       private FlowerPicker picker;
+       
+       public void setUp()
+       {
+           this.island = new Lab04Island();
+           this.picker = new FlowerPicker();
+           this.island.addObject(this.picker, 1, 2);
+       }
+
+       public void testPickFlowers()
+       {
+           // 1. No extra setup needed
+           ...
+       }
+
+       public void testPickFlowersAgain()
+       {
+           // 1. set up initial conditions
+           // turn picker south and move forward 1
+           // for this test
+
+           ...
+       }
+   }
+
+Note that the fields look slightly different than the original local
+variable declarations. The include the keyword ``private`` in front,
+because all our fields are private. You can never use ``private`` in
+front of a local variable inside a method, only with fields, but we
+*always* use it with fields.
 
 
+Also, inside ``setUp()`` you'll notice that there is no type at the beginning
+of each line. We aren't *declaring* local variables inside that method.
+Whenever you specify a type in front of a name, you are declaring a new
+name in some way.
 
 
+Syntax Practice 5
+-----------------
 
-Syntax ideas
-------------
+.. extrtoolembed:: 'Syntax Practice 5'
+   :workout_id: 1426
 
 
-Practice Ideas:
----------------
+Programming Practice 5
+----------------------
+
+.. extrtoolembed:: 'Programming Practice 5'
+   :workout_id: 1427
+
