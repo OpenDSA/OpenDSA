@@ -78,7 +78,7 @@ variable by itself, followed by an equal sign (``=``), followed by
 the new variable we want the variable to store. An assignment statement
 *changes the value stored in the variable*, so that the next time we
 use the variable, the corresponding value will be the new one. Remember
-that the name "variable" reflect that fact that its value can *change (or
+that the name "variable" reflects that fact that its value can *change (or
 vary) over time* as your program runs, and assignment is how you change
 that value.
 
@@ -287,7 +287,7 @@ Using Booleans as Variables
 When working with conditions in the previous two modules, you may remember
 hearing a lot about the boolean values.
 Just like ``int`` and ``double``, ``boolean`` is another data type Java
-provides. Unlike ``int``s or ``double``\ s, a
+provides. Unlike ``int``\ s or ``double``\ s, a
 ``boolean`` value can only be ``true`` or ``false``.
 
 We use these when working with while loops or if statements like this:
@@ -393,7 +393,7 @@ the variable declaration is not visible (can't be used) in other methods.
       }
    }
 
-In the code shown above, the local variabe ``x`` is declared at the start of
+In the code shown above, the local variable ``x`` is declared at the start of
 method ``doSomeStuff()``, so that variable can be used anywhere inside that
 method. However, the scope of ``x`` ends at the end of ``doSomeStuff()``, at
 the closing brace that marks the end of the method.
@@ -767,7 +767,7 @@ The Return Keyword
 ------------------
 
 Outside of methods with a return type of ``void``, all other methods you will
-write in Java will specify a return type--they type of *answer* or *result*
+write in Java will specify a return type--the type of *answer* or *result*
 the method will return. So far, we have primarily used ``void`` methods, which
 do not return any result--in fact, ``void`` means "nothing", and we call those
 methods for the actions they perform rather than any value they compute.
@@ -870,8 +870,8 @@ Further, since a method that returns a value must **always** use a return
 statement, no matter how the method ends, that is why you must include a
 return statement in each and every branch, not just the first one.
 
-Because of these constraints, some beginners find it easier to try always
-writing a *single* return statement and placeing it as the very last statement
+Because of these constraints, some beginners find it easier always to
+write a *single* return statement and place it as the very last statement
 in the method--this ensures the method always returns a value, and never
 accidentally skips any important steps. As you develop your skills, you may
 find using multiple return statements easier in some situations, but always
@@ -1175,7 +1175,7 @@ not just once.
 In test classes, we use a special method called ``setUp()`` for this purpose
 (note the capitalization!).
 This method will be automatically executed before each of the tests in
-the class.  To be clear, that means that if you had 3 test
+the class.  To be clear, that means that if you had 3 tests
 called ``test1()``, ``test2()``, and ``test3()``, the ``setUp()`` method
 would run before ``test1()`` executes AND before ``test2()`` AND
 before ``test3()``. It provides common initialization steps for *all* of
@@ -1217,7 +1217,7 @@ used for all of the tests in a class the **test fixture**.
    }
 
 Note that the fields look slightly different than the original local
-variable declarations. The include the keyword ``private`` in front,
+variable declarations. They include the keyword ``private`` in front,
 because all our fields are private. You can never use ``private`` in
 front of a local variable inside a method, only with fields, but we
 *always* use it with fields.
