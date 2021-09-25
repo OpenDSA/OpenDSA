@@ -312,7 +312,7 @@ The following is a table of methods you might need for an ArrayList.
 Check Your Understanding: ArrayLists
 -----------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz1Summ.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week6Quiz1Summ.html ka
   :long_name: ArrayLists
 
 
@@ -347,7 +347,7 @@ We would write a for-each loop that looked like this:
    }
 
 In English, the code above, would read "for each Pixel object in pixelList, set red to 0,
-green to 0, and blue to 0.
+green to 0, and blue to 0".
 
 The For-Each Loop Syntax
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -418,6 +418,12 @@ The last time through ``total`` now equals 3 and ``value`` equals 3.  ``total = 
 value`` then sets the variable ``total`` to 3 + 3, or 6.  Finally, the value 6 is returned
 once our for-each loop terminates.
 
+Check Your Understanding: For-Each Loops
+----------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week6Quiz2Summ.html ka
+  :long_name: For-Each Loops
+
 
 
 Maybe add in: Generics
@@ -445,3 +451,10 @@ be found at compile time. Thus, if a programmer wishes to create an array of ``d
 objects, using generic types will help guarantee that the objects being stored are actually
 of type ``double``. In this way, using generic types helps to reduce the number of
 programming errors and thereby makes programs safer and more robust.
+
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week6ReadingQuizSumm.html ka
+  :long_name: Programming Concepts
