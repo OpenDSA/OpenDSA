@@ -29,14 +29,20 @@ How Is It Used?
 Merkle Trees act as the message hash of a single block. So far in this module, the requirement of a message has been to represent it as a hash so that we may derive a hash pointer. The Merkle Tree satisifies this with the root hash value. The root is representative of all data leaves of the tree and can act as the message hash.
 
 The primary use-case of Merkle Tree's in common public Blockcahins is to serve as an efficient means of 
-verifying that transactions are legitimate. In the case of Bitcoin as of September 2021, one block added to 
-the chain contains anywhere from 1.5k to 2.5k transactions each. Imagine a malicious user was attempting to add
- a new Block to the chain with an altered transaction. Without a Merkle tree, identifying this unauthorized 
- editing of prior transactions would requiring comparing each and every individual transactions hash to one 
- another. The use of a Merkle tree enables the Block to store the Merkle Root which serves as a "proof of 
- legitimacy" indicator for all transactions within the given block. If any un-trusted user attempts to change 
- a transaction within the block, the Merkle Roots will not be the same and there will be a clear indicator of 
- fraudulency in the chain.
+providing customers with :term:`Simple Payment Verification (SPV)`. In the case of Bitcoin as of September 2021, one block added to 
+the chain contains anywhere from 1.5k to 2.5k transactions each. In theory, you could provide SPV without the need for a Merkle Tree by 
+hashing all the transaction IDs together in a single block; however, this would require users to posess the transaction IDs of 
+all transactions in that block in order to verify any given individual transaction. 
+
+In the common use-case of a customer paying a merchant or another individual for goods or services, it is necessary for either or both 
+parties to be able to quickly search the blockchain and tell whether or not this transaction has been verified. Without a Merkle tree, 
+searching the Blockchain for this transaction would require searching the entire transaction history of the blockchain (over 350Gb 
+as of June 2021). 
+
+The use of a Merkle tree allows a user to query the network for the hash of the given transaction they're hoping to 
+verify. Referencing the diagram above, if you are hoping to verify transaction 4, you'd query the network for H(4) and it
+would return H(H1+H2) and H(3). If the Merkle root formed from these hashes, in combination with the H(4) you're trying to verify, 
+matches the Merkle root of the block, then it is clear that the transaction has been added to the chain. 
 
 Why Is It Useful?
 -----------------
@@ -52,6 +58,7 @@ transaction is changed. In the same way that a malicious actor would change the 
 a new hash pointer, the same actor would change a transaction. However, this change must agree with verification of the tree.
 
 This fact leads us to the fact that Merkle Trees also allow these transactions to be efficiently verifiable. 
+The Merkle Tree enables verification of transactions in 
 To this end, it's important to note that the branches of a Merkle Tree are inherently modular. 
 The verification of a single transaction does not require the verification of every other transaction as shown below.
 
