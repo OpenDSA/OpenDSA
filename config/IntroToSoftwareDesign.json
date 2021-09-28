@@ -268,6 +268,12 @@
           "required": true
         }
       }
+    },
+
+    "Pictures and For-each Loops":{
+      "IntroToSoftwareDesign/ArrayListGenericsIteratorsAndNull": {
+      }
     }
+
   }
 }
