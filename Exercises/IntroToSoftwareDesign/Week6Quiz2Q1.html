@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Typed Methods and Return Statements</title>
+    <title>For-each Loops</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
@@ -11,20 +11,17 @@
     <div class="exercise">
       <div class="problems">
         <div id="Week6Quiz2Q1">
-        <p class="question">Assume for this next question we have an ArrayList
-          of Pixel objects called pixelList that contains 5 items  </p>
+        <p class="question">Consider an image that is 25 x 10 pixels in size.</p>
 <pre class="prettyprint">
-for(Pixel pi: pixelList)
+for (Pixel pix : image.getPixels())
 {
-  pi.setRed(0);
-}
-
-</pre>
+    pix.setRed(0);
+}</pre>
         <p>how many Pixel objects would have their "Red" value set to 0?</p>
-        <div class="solution">All 5 Pixel objects</div>
+        <div class="solution">All 250 Pixel objects</div>
         <ul class="choices">
-        <li>4 Pixel objects - excluding the object at index 0</li>
-        <li>4 Pixel objects - there is no Pixel object at index 5.</li>
+        <li>249 <tt>Pixel</tt> objects, excluding the object at (0, 0)</li>
+        <li>216 <tt>Pixel</tt> objects, since rows go from 0-9 and columns go from 0-24.</li>
         <li>This loop would not run</li>
         </ul>
         <div class="hints">

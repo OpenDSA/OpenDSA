@@ -383,7 +383,7 @@ Check Your Understanding: For-Each Loops
 ----------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week6Quiz2Summ.html ka
-  :long_name: For-Each Loops
+   :long_name: For-Each Loops
 
 
 Methods on Pictures
@@ -464,5 +464,20 @@ details.
 Check Your Understanding
 ------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week6ReadingQuizSumm.html ka
-  :long_name: Programming Concepts
+.. avembed:: Exercises/IntroToSoftwareDesign/Week6Quiz3Summ.html ka
+   :long_name: Module Review
+
+
+Syntax Practice 6
+-----------------
+
+.. extrtoolembed:: 'Syntax Practice 6'
+   :workout_id: 1459
+
+
+Programming Practice 6
+----------------------
+
+.. extrtoolembed:: 'Programming Practice 6'
+   :workout_id: 1460
+
