@@ -260,7 +260,6 @@ like this:
        pixel.setRed(255);
    }
 
-
 In English, the code above, would read "for each pixel in the image,
 set its red intensity to 255."
 
@@ -380,6 +379,13 @@ will have repeated over all possible pixels in the image, and ``maxRed``
 will then equal the largest red value from any pixel in the entire picture.
 
 
+Check Your Understanding: For-Each Loops
+----------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week6Quiz2Summ.html ka
+  :long_name: For-Each Loops
+
+
 Methods on Pictures
 ~~~~~~~~~~~~~~~~~~~
 
@@ -454,3 +460,9 @@ any location in the image to see its coordinates and color value. The
 ``explore()`` method can be useful when you need to inspect an image's
 details.
 
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week6ReadingQuizSumm.html ka
+  :long_name: Programming Concepts

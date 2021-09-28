@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>For-Each Loops</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week6Quiz2Q2">
+          <p class="question">Assume for this next question we have an ArrayList
+            of Pixel objects called pixelList that contains 5 items.  Would the following code run?  </p>
+  <pre class="prettyprint">
+  for(Pixel pi: pixelList)
+  {
+    pi.setRed(0);
+  }
+
+  pi.setGreen(255);
+
+
+  </pre>
+        <div class="solution">No - the Pixel variable <tt>pi</tt> is only usable
+           inside the for-each loop</div>
+        <ul class="choices">
+        <li>No - we need to write the for-each loop as <tt>for(Pixel pi: ArrayList pixelList)</tt></li>
+        <li>Yes, this code would call <tt>setGreen</tt> on the last Pixel object stored in pixelList.</li>
+        <li>Yes, this code would call <tt>setGreen</tt> on the first Pixel object stored in pixelList.</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
