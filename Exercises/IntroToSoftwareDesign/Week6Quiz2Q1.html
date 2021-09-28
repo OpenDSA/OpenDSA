@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>For-each Loops</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week6Quiz2Q1">
+        <p class="question">Consider an image that is 25 x 10 pixels in size.</p>
+<pre class="prettyprint">
+for (Pixel pix : image.getPixels())
+{
+    pix.setRed(0);
+}</pre>
+        <p>how many Pixel objects would have their "Red" value set to 0?</p>
+        <div class="solution">All 250 Pixel objects</div>
+        <ul class="choices">
+        <li>249 <tt>Pixel</tt> objects, excluding the object at (0, 0)</li>
+        <li>216 <tt>Pixel</tt> objects, since rows go from 0-9 and columns go from 0-24.</li>
+        <li>This loop would not run</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

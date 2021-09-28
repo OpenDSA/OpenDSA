@@ -268,6 +268,30 @@
           "required": true
         }
       }
+    },
+
+    "Pictures and For-each Loops":{
+      "IntroToSoftwareDesign/PicturesAndForEachLoops": {
+        "Syntax Practice 6": {
+          "points": 35,
+          "required": true
+        },
+        "Programming Practice 6": {
+          "points": 35,
+          "required": true
+        },
+        "Week6Quiz2Summ": {
+          "points": 15,
+          "threshold": 3,
+          "required": true
+        },
+        "Week6Quiz3Summ": {
+          "points": 15,
+          "threshold": 3,
+          "required": true
+        }
+      }
     }
+
   }
 }
