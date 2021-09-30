@@ -20,6 +20,37 @@ the hash pointer of a node X depends on state of the chain thus far
 (represented by the previous hash pointer) and the data in node X.
 Therefore, using the same hashing process, the data of a node is verifiable.
 
+
+What makes up a Block?
+------------------------------
+
+A block is an abstract object used to hold critical data that enables the continued operation of a 
+public ledger, otherwise known as a Blockchain. The figure below provides a visual breakdown of the major 
+components that make up a given block. A brief summary of each is included beneath the diagram. 
+
+.. avembed:: AV/Blockchain/BlockDiagram.html pe
+   :long_name: Bitcoin Block Diagram
+
+**Block Size:** The size (stored in bytes) of the given block.
+
+**Block Header:** An internal object of a block containing relevant metadata.
+
+**Version:** Describes the version / protocol edition.
+
+**Previous Block Hash:** The root hash of the previous block.
+
+**Merkle Root:** The hash of the root node of merkle tree (see 3.1).
+
+**Timestamp:** The timestamp of block's creation.
+
+**Difficulty Target:** Numeric representation of difficulty when block was mined.
+
+**Nonce:** Cryptographic key used to generate accurate hash.
+
+**Transaction Counter:** Number of transactions in block.
+
+**Transactions:** Collection of individual transactions.
+
 Public Ledgers
 --------------
 

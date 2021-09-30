@@ -153,7 +153,7 @@ the average case.
 For a skip list of size :math:`n`, the expected 
 memory usage is :math:`2n`.
 This is because a level :math:`l` node needs 
-:math:`l+1` forward pointers, but occurs with probability :math:`2^{(l+1)}`.
+:math:`l+1` forward pointers, but occurs with probability :math:`(1/2)^{(l+1)}`.
 So a skip list is expected to have
 :math:`\sum_{l=0}^{l=\infty} (l+1)/2^{(l+1)}` pointers, which is 2.
 Thus, the  number of pointers needed by both the BST and the skip list

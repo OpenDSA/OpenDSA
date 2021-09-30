@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scope</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week5Quiz2Q1">
+        <p class="question">True or False: in the following code, the variable
+        <tt>age</tt> is accessible within the method.</p>
+<pre class="prettyprint">
+public class AgingJeroo
+{
+    private int age;
+    public void increase()
+    {
+        age = age + 1;
+    }
+}
+</pre>
+        <div class="solution">True: since <tt>age</tt> is declared as a field, it is accessible everywhere within the class.</div>
+        <ul class="choices">
+        <li>True: since <tt>age</tt> is declared within the method, it is accessible within the method.</li>
+        <li>False: since <tt>age</tt> is private, it cannot be accessed by methods.</li>
+        <li>False: since <tt>age</tt> is declared as a field, it cannot be accessed by methods.</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

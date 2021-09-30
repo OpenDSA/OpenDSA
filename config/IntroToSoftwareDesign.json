@@ -27,7 +27,7 @@
   "build_cmap": false,
   "suppress_todo": false,
   "dispModComp": true,
-  "tag": "CPP;CS2",
+  "tag": "Java;CS1",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
@@ -59,6 +59,7 @@
     "required": true
   },
   "chapters": {
+
     "Course Policies":{
       "IntroToSoftwareDesign/CoursePolicies": {
         "HonorCodeSumm": {
@@ -68,6 +69,7 @@
         }
       }
     },
+
     "Getting Started":{
       "IntroToSoftwareDesign/GettingStarted": {
         "Syntax Practice 1": {
@@ -95,6 +97,7 @@
         }
       }
     },
+
     "Inheritance and Polymorphism":{
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
         "Syntax Practice 2a: Jeroo Methods": {
@@ -136,6 +139,7 @@
         }
       }
     },
+
     "Conditional and Repeating Actions": {
       "IntroToSoftwareDesign/ConditionalActions": {
         "Syntax Practice 3a: If-Then-Else": {
@@ -205,17 +209,89 @@
           "points": 30,
           "required": true
         },
-        "Week3Quiz5Summ": {
-          "points": 14,
+        "Week4Quiz1Summ": {
+          "points": 6,
           "threshold": 3,
           "required": true
         },
-        "Week3ReadingQuizSumm": {
-          "points": 36,
+        "Week4Quiz2Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week4Quiz3Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week4Quiz4Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week4ReadingQuizSumm": {
+          "points": 16,
           "threshold": 10,
           "required": true
         }
       }
+    },
+
+    "Variables, Fields, and Parameters":{
+      "IntroToSoftwareDesign/VariablesFieldsAndParameters": {
+        "Syntax Practice 5": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 5": {
+          "points": 30,
+          "required": true
+        },
+        "Week5Quiz1Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week5Quiz2Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week5Quiz3Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week5Quiz4Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        }
+      }
+    },
+
+    "Pictures and For-each Loops":{
+      "IntroToSoftwareDesign/PicturesAndForEachLoops": {
+        "Syntax Practice 6": {
+          "points": 35,
+          "required": true
+        },
+        "Programming Practice 6": {
+          "points": 35,
+          "required": true
+        },
+        "Week6Quiz2Summ": {
+          "points": 15,
+          "threshold": 3,
+          "required": true
+        },
+        "Week6Quiz3Summ": {
+          "points": 15,
+          "threshold": 3,
+          "required": true
+        }
+      }
     }
+
   }
 }

@@ -288,6 +288,9 @@ h4 {
 p {
     text-align: justify;
 }
+table p {
+    text-align: left;
+}
 
 p.last {
     margin-bottom: 0;
