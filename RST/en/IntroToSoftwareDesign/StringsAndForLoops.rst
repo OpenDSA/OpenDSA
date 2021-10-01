@@ -221,6 +221,37 @@ Here are some common string methods you might find yourself needing.
      - Returns ``true`` if and only if this string contains the specified string
      - ``"racecar".contains("car"); // would return true
 
+Substrings
+~~~~~~~~~~
+
+The ``substring`` method returns a new string that copies letters from an existing string, starting at the given index.
+
+.. code-block:: java
+
+    String fruit = "banana";
+    fruit.substring(0); // returns "banana"
+    fruit.substring(2); // returns "nana"
+    fruit.substring(6); // returns ""
+
+The first example returns a copy of the entire string. The second example returns all but the first two characters. As the last example shows, substring returns the empty string if the argument is the length of the string.
+
+There are other versions of substring that have different parameters. If it’s invoked with two arguments, they are treated as a start and end index:
+
+.. code-block:: java
+
+    String fruit = "banana";
+    fruit.substring(0, 3); // returns "ban"
+    fruit.substring(2, 5); // returns "nan"
+
+Notice that the character indicated by the end index is not included.
+
+Defining substring this way simplifies some common operations. For example,
+to select a substring with length ``len``, starting at index ``i``, you could write
+
+.. code-block:: java
+
+    fruit.substring(i, i + len).
+
 
 
 Counter Controlled Loops
