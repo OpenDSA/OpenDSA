@@ -52,36 +52,25 @@ In Unicode, each character is represented by a "code unit", which you can think 
 Strings
 -------
 
-In Java and other object-oriented languages, an object is a collection of data that provides a set of methods.  For example our ``Pixel``s from the previous module represents a single Pixel of a picture.
-
-One kind of built-in object we can work with in Java are called ``String``s. ``String``s are designed to store text and can be considered a string of characters.  ``String``s also  provide methods for manipulating character data.
+Phrases that appear in quotation marks are called **strings**, because they contain a sequence of "characters" strung together. Characters can be letters, numbers, punctuation marks, symbols, spaces, tabs, etc. ``String``s are designed to store text and can be considered a string of characters.  ``String``s also  provide methods for manipulating character data.
 
 Lets say we wanted to create a ``String`` variable.  We could create one like this:
 
 .. code-block:: java
 
-    String food = new String("banana");
-
-Strings are ultimately objects, so we can create them by calling a constructor, just as we have done with other objects we've made in this class.
-
-This example will create a String that contains, as its value, the word "banana" that is passed in by the constructor.
-
-We can also use a constructor with an empty parameter list.
-
-.. code-block:: java
-
-    String food = new String();
-
-
-This example will create a String object that contains the empty string as its value. The empty string has the literal value "" – that is, a pair of double quotes that contain no characters.
-
-Because strings are so important, Java allows a number of shortcuts to be used when creating and concatenating strings. For example, you don’t have to use new String() when creating a new string object. The following code will also work:
-
-.. code-block:: java
-
     String food = "banana";
 
-Note that we use a constructor to assign an initial value to a variable of type String (or of a type equal to any other class). This differs from how we assign an initial value to variables like an ``int`` or a ``boolean``.  The code above is just a shortcut to calling the constructor.  We'll talk more about this difference and what it means next week, but for now it is just good to notice.
+This example will create a String that stores the word "banana".
+
+We can also create what is called an empty string by doing this:
+
+.. code-block:: java
+
+    String food = "";
+
+
+This example will create a string that contains the empty string as its value. The empty string has the literal value "" – that is, a pair of double quotes that contain no characters.
+
 
 Accessing Single Characters in Strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -165,52 +154,6 @@ This would cause "Hello" and "World" to be printed out on separate lines.
 moves to the beginning of the next line. If you don’t want a newline at the
 end, you can use print instead of println.
 
-Escape Sequences
-~~~~~~~~~~~~~~~~
-
-It is possible to display multiple lines of output in just one line of code. You
-just have to tell Java where to put the line breaks.
-
-.. code-block:: java
-
-    System.out.print("Hello!\nHow are you doing?\n");
-
-The output is two lines, each ending with a newline character:
-
-.. code-block:: java
-
-    Hello!
-    How are you doing?
-
-
-The ``\n`` seen in the print statement above is an **escape sequence**, which is a sequence of characters that represents a special character. The backslash allows you to "escape" the string’s
-literal interpretation. Notice there is no space between ``\n`` and ``How``. If you add
-a space there, there will be a space at the beginning of the second line
-
-Another common use of escape sequences is to have quotation marks inside
-of strings. Since double quotes indicate the beginning and end of strings, you
-need to escape them with a backslash.
-
-.. code-block:: java
-
-    System.out.println("She said \"Hello!\" to me.");
-
-Here are some escape sequences that might be useful for you:
-
-.. list-table:: Truth Table
-   :header-rows: 1
-
-   * - Sequence
-     - Meaning
-   * - `\n`
-     - newline
-   * - `\t`
-     - tab
-   * - \"
-     - make a double quote appear in the outputted text
-   * - \\
-     - make a backslash appear in the outputted text
-
 Operators on strings
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -259,9 +202,24 @@ Java executes these operations from left to right. In the first line, ``1 + 2`` 
 
 
 
+Here are some common string methods you might find yourself needing.
 
 
+.. list-table:: String Methods
+   :header-rows: 1
 
+   * - Method
+     - Purpose
+     - Example
+   * - ``indexOf(char)``
+     - Returns the index within this string of the first occurrence of the specified character.
+     - ``"banana".indexOf('a');//returns 1 (the index of the first a)
+   * - ``isEmpty()``
+     - Returns ``true`` if, and only if, length() is 0
+     - ``"red".isEmpty(); //would return false
+   * - ``contains(String)``
+     - Returns ``true`` if and only if this string contains the specified string
+     - ``"racecar".contains("car"); // would return true
 
 
 
@@ -426,5 +384,194 @@ Object-Oriented Design: Aggregation, Composition, and Delegation
    <iframe width="560" height="315" src="https://www.youtube.com/embed/ry7hWZm5oEw?start=698" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
+Tips on Random Numbers
+----------------------
+
+Generating Random Numbers
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes you might find it helps to make random choices in some of your programs where you want your choices to more independent and varied.  Java provides a built-in class called ``Random`` for generating random numbers, and our student class library includes a special version of this class that is helpful for beginners. To use this class, add the following import statement at the top of your file:
+
+.. code-block:: java
+
+   import student.util.Random;
+
+The Random class provides a method called ``generator()`` to get an object that represents a random number generator. Here, we only need to deal with generating random integers, and the generator provides a method that is very useful for this purpose. You can use it like this:
+
+.. code-block:: java
+
+   Random generator = Random.generator();   // local variable to refer to the random number generator
+   int value = generator.nextInt(4);        // generate a random number from 0 - 3
+
+The generator provides a method called ``nextInt()`` that generates a random integer. It takes a single parameter, which is an upper limit. When you provide this upper limit, the ``nextInt()`` method will generate a number from 0 (inclusive) up to (but not including) the upper limit.
+
+So, for example, if you want to generate a number from 0-99, you would call ``nextInt(100)``.
+
+Suppose that you would like to perform some action 15% of the time. You could do this:
+
+.. code-block:: java
+
+   Random generator = Random.generator();   // local variable to refer to the random number generator
+   int value = generator.nextInt(100);
+   if (value < 15)
+   {
+       //code in here will happen 15% of the time
+   }
+
+Here, the call to ``nextInt()`` will produce a number from 0-99 (that is 100 possible values), and the if statement will execute its true branch if the generated number is in the range 0-14 (which is 15 possible values, or 15% of the time).
+
+Testing Random Behaviors
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Random behaviors are great for chance-based events. But random behaviors also make software testing hard. When you add random behavior to your code and then want to test it, what will your test case do? Suppose you want your Actor to turn left in a specific situation half the time, and right the other half. If you write a test case where the Actor is in that situation, it might turn left ... or it might not. How can you write tests for that?
+
+The answer is simple: the ``Random`` class helps you. Consider the following code sequence, which generates three random numbers less than 100:
+
+.. code-block:: java
+
+   // using the same local variable "generator" from before
+   int x = generator.nextInt(100);
+   int y = generator.nextInt(100);
+   int z = generator.nextInt(100);
+
+It would be difficult to write a test case that used this code, since you have no way of controlling what values end up in x, y, and z. For test cases, however, the Random class provides a special method called setNextInts() that lets you control what numbers are generated for testing purposes. You use it like this:
+
+
+.. code-block:: java
+
+   // In your test case, do this:
+   Random.setNextInts(40, 50, 60);
+
+   // In the code you are testing, this happens:
+   int x = generator.nextInt(100);
+   int y = generator.nextInt(100);
+   int z = generator.nextInt(100);
+
+   // You know x will get the value 40, while y is 50, and z is 60
+
+So, when you are testing behaviors that are random, you can horse the actions to be predictable just by saying in your test cases what sequence of values you want the random number generator to produce. Outside of test cases, the generator will produce a truly (pseudo-)random sequence, but inside your test cases, the numbers will be completely determined by you.
+
 Method Overriding
 -----------------
+
+The most general class in Java’s class hierarchy is the ``java.lang.Object`` class. It is the superclass of all classes that occur in Java programs. By default, it is the direct superclass of any class that does not explicitly specify a something else in its class definition.
+
+One of the most useful methods in the Object class is the
+toString() method:
+
+.. code-block:: java
+
+   public class Object
+   {
+     public String toString( );
+   }
+
+The ``toString()`` method returns a String representation of its object, but these may not always be useful.  For example, if we ran:
+
+.. code-block:: java
+
+   Jeroo jerr = new Jeroo();
+   System.out.println(jerr.toString());
+
+We'd see something like ``Jeroo@5f93274e`` outputted (though you may see a different set of numbers and letters if you run this).
+
+What this experiment shows is that the default definition of ``toString()`` returns some kind of internal representation of its object. It looks as if it returns the name of the object’s class concatenated with its memory address. This may be useful for some applications. But for most objects we will want to override the default definition to make the ``toString()`` method return a string that is more appropriate for whatever object we are working with.
+
+Overriding the toString method
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For this example, lets consider a class representing an ATM that tracks its location and the amount of money the machine has.
+
+.. code-block:: java
+
+   public class ATM{
+       private String location;
+       private double moneyInside;
+
+       public ATM(String l, double m){
+           this.location = l;
+           this.moneyInside = m;
+       }
+   }
+
+And let's make an object of this class.  This ATM will be at the bank and have $4000.00 (USD) inside of it.
+
+.. code-block:: java
+
+   ATM bankATM = new ATM("bank", 4000.00)
+   System.out.println(bankATM.toString());
+   //output: ATM@149f5b42
+
+Runnung ``bankAtm.toString()``, we would see the default behavior for toString occur, which wouldn't be very helpful for telling us anything about this machine.
+
+Instead, let's write a toString method that will be more helpful for telling us about where this ATM is.
+
+Since a toString method already exists, we need to **override** the method and replace it with one of our own.  To override a method, you simply define a method with the same signature in the subclass.  If you call ``toString()`` with an instance of the subclass, its version of the method will be used. In this way, the subclass method overrides the superclass version.
+
+First, let's add the method signature we saw above to the ATM class.
+
+.. code-block:: java
+
+   public class ATM{
+       private String location;
+       private double moneyInside;
+
+       public ATM(String l, double m){
+           this.location = l;
+           this.moneyInside = m;
+       }
+
+       public String toString(){
+
+       }
+   }
+
+Since we are overriding the toString method objects inherently have, this method signature needs to look exactly like what is defined above.  Next, we'll create a String variable that will tell us where this ATM is.
+
+
+.. code-block:: java
+
+   public class ATM{
+       private String location;
+       private double moneyInside;
+
+       public ATM(String l, double m){
+           this.location = l;
+           this.moneyInside = m;
+       }
+
+       public String toString(){
+           String data = "This ATM is at the: " + this.location;
+       }
+   }
+
+Then, because the return type in the toString method is a string, we need to return that string.
+
+.. code-block:: java
+
+   public class ATM{
+       private String location;
+       private double moneyInside;
+
+       public ATM(String l, double m){
+           this.location = l;
+           this.moneyInside = m;
+       }
+
+       public String toString(){
+           String data = "This ATM is at the: " + this.location;
+           return data;
+       }
+   }
+
+Now let's consider our ``bankATM`` again...
+
+.. code-block:: java
+
+   ATM bankATM = new ATM("bank", 4000.00)
+   System.out.println(bankATM.toString());
+   //output: "This ATM is at the: bank"
+
+Now that we've overridden the toString method, we can see some useful information.
+
+While this new method may not play an important role in the ``ATM`` class, it does provide a very brief, understandable description of the state of the object. This is the reason that the ``toString()`` method was included in the Object class.
