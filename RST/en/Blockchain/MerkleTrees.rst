@@ -39,6 +39,12 @@ parties to be able to quickly search the blockchain and tell whether or not this
 searching the Blockchain for this transaction would require searching the entire transaction history of the blockchain (over 350Gb 
 as of June 2021). 
 
+.. inlineav:: MerkleTreeUsage ss
+   :long_name: Merkle Tree Usage Slideshow
+   :links: AV/Blockchain/MerkleTree.css
+   :scripts: AV/Blockchain/MerkleTreeUsage.js
+   :output: show
+
 The use of a Merkle tree allows a user to query the network for the hash of the given transaction they're hoping to 
 verify. Referencing the diagram above, if you are hoping to verify transaction 4, you'd query the network for H(4) and it
 would return H(H1+H2) and H(3). If the Merkle root formed from these hashes, in combination with the H(4) you're trying to verify, 
