@@ -33,27 +33,32 @@ Generating a Hash Code
 ----------------------
 
 We often want to generate a hash code for some information.
-Specifically, we will take an arbitrary string of any lenght and
+Specifically, we will take an arbitrary string of any length and
 generate a fixed-length number in return.
-As mentioned in the introduction, we will assume that SHA-256 will be
-used to crate a 256-bit (or 64 hexidecimal charater) code.
+As mentioned in the introduction, we assume in this tutorial that
+SHA-256 will be used to crate a 256-bit (or 64 hexidecimal charater)
+code.
 
 There are two key features of SHA-256 that we rely on to make the
 system secure.
 First, given a hash code, there is no practical way to recover any
 information about the original string used to generate it.
-So, SHA-256 needs to slice and dice the original string to the point
-that no meaningful information is retained.
+SHA-256 will effectively slice and dice the original string to the
+point that no meaningful information is retained.
 We will never have need to undo the hashing process to recover the
 original message used to create the code.
+(In fact, so far as anyone knows, this is impossible.
+Cryptography systems depend on that to be true to work securely.)
 The second important property is that minor changes to the input
 string lead to unpredictable changes in the resulting hash value.
 For example, switching two letters in the input string will change the
 resulting hash code in unpredictable ways.
 Going up by one letter (like changing an 'a' to a 'b') will also
 change the resulting hash code in unpredictable ways.
-This property is critical for the "proof of work" concept used by a
-system like Bitcoin (see :ref:`Mining <Mining> <Mining>`).
+Not only is this property necessary to make sure that nobody can
+deduce the original information from the hash,
+but this property is also critical for the "proof of work" concept
+used by a system like Bitcoin (see :ref:`Mining <Mining> <Mining>`).
 
 
 Encrypting and Decrypting
@@ -67,6 +72,12 @@ deduce the original message.
 But unlike hashing, there has to be a way to decrypt the message.
 When given the decryption key, the process can be reversed, the
 original message can be recovered from the encrypted string.
+So, of course we use different algorithms for encrypting/decrypting
+than the SHA-256 algorithm that we have been using to create a hash
+code.
+For one thing, the encrypted message is not of a pre-determined fixed
+length (it can't be fixed-length if its going to contain all of the
+information from the original variable-length message).
 
 Blockchain systems often use :term:`public-key cryptography` to
 "identify" participants and confirm which participant originated a
@@ -94,21 +105,27 @@ public) can then verify, with little computational effort,
 that the participant signed it.
 They do this by decrypting the encrypted signature with the public
 key.
+The result should be whatever the sender claims it would be to
+identify themselves.
 At the same time, it is computationally infeasible for
 anyone without the private key to sign a message and pass it off as
 signed by the participant.
 Because that public key will just decrypt to gibberish if someone
 tried.
-This is essential in blockchains to verify who originated a message,
-such as a financial transaction.
+This is essential in public key identity systems to verify who
+originated a message, such as a financial transaction.
 Note that what this means is that we can know that the holder of the
 private key that matches this private key did the encryption of the
 signature (and so is authorized to do this transaction).
 But that does not mean that we know who this person is, beyond the
 fact that they hold the private key.
 This is what allows users to be anonymous.
+You know their public persona within that public key ecosystem, but
+you cannot necessarily relate that back to their "real world"
+identity.
 
-Now we are going to demonstrate how RSA encryption is used to do this.
+Now we are going to demonstrate how something called RSA encryption is
+used to do this.
 To see how this works, you should type some message that you would
 like to be encrypted and then decrypted.
 We suggest that you type some real phrase rather than just gibberish

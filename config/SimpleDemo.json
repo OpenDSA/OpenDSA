@@ -1,6 +1,6 @@
 {
-  "title": "Example of Simple Book",
-  "desc": "Simple Book Example",
+  "title": "Developer Introduction",
+  "desc": "Intro to OpenDSA Development",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
@@ -40,6 +40,14 @@
     "Preface": {
       "Intro": {}
     },
+    "Introduction to OpenDSA for Developers": {
+      "SimpleDemo/Tour": {
+        "Binary Search Tree Small Count Exercise": {
+          "points": 1.0
+        }
+      },
+      "SimpleDemo/Contributing": {}
+    },      
     "Simple Demonstration Examples": {
       "SimpleDemo/DemoIntro": {},
       "SimpleDemo/MoreExamples": {}
