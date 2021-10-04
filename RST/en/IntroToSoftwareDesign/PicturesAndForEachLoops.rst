@@ -248,7 +248,7 @@ a mistake with them.
 
 A ``Picture`` is actually a big group of ``Pixel``\ s. The ``Picture``
 class provides a method called ``getPixels()`` that allows you to repeat
-over all the pixels in the image. We can use this is a for-each loop
+over all the pixels in the image. We can use this in a for-each loop
 like this:
 
 .. code-block:: java
