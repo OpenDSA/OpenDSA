@@ -289,6 +289,13 @@ to select a substring with length ``len``, starting at index ``i``, you could wr
     fruit.substring(i, i + len).
 
 
+Check Your Understanding: Strings
+----------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz1Summ.html ka
+   :long_name: Strings
+
+
 
 Counter Controlled Loops
 ------------------------
@@ -467,6 +474,14 @@ of ``s`` in reverse order. Each time through the loop, it creates a new string a
 of reverse(``"banana"``) is ``"ananab"``.
 
 
+
+Check Your Understanding: Counter Controlled Loops
+--------------------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz2Summ.html ka
+   :long_name: For-Each Loops
+
+
 Object-Oriented Design: Aggregation, Composition, and Delegation
 ----------------------------------------------------------------
 
@@ -563,6 +578,13 @@ So, when you are testing behaviors that are random, you can horse the actions to
 just by saying in your test cases what sequence of values you want the random number generator to
 produce. Outside of test cases, the generator will produce a truly (pseudo-)random sequence, but
 inside your test cases, the numbers will be completely determined by you.
+
+Check Your Understanding: Counter Controlled Loops
+--------------------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz3Summ.html ka
+   :long_name: Random Numbers
+
 
 Method Overriding
 -----------------
@@ -705,5 +727,19 @@ Now let's consider our ``bankATM`` again...
 Now that we've overridden the toString method, we can see some useful information.
 
 While this new method may not play an important role in the ``ATM`` class, it does provide a very
-brief, understandable description of the state of the object. This is the reason that the 
+brief, understandable description of the state of the object. This is the reason that the
 ``toString()`` method was included in the Object class.
+
+Check Your Understanding: Method Overriding
+-------------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz4Summ.html ka
+   :long_name: Method Overriding
+
+
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week7ReadingQuizSum.html ka
+  :long_name: Reading Quiz
