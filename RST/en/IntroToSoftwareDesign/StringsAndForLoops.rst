@@ -579,8 +579,8 @@ just by saying in your test cases what sequence of values you want the random nu
 produce. Outside of test cases, the generator will produce a truly (pseudo-)random sequence, but
 inside your test cases, the numbers will be completely determined by you.
 
-Check Your Understanding: Counter Controlled Loops
---------------------------------------------------
+Check Your Understanding: Random Numbers
+----------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz3Summ.html ka
    :long_name: Random Numbers
@@ -735,11 +735,3 @@ Check Your Understanding: Method Overriding
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz4Summ.html ka
    :long_name: Method Overriding
-
-
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week7ReadingQuizSum.html ka
-  :long_name: Reading Quiz
