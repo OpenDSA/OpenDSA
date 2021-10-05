@@ -10,43 +10,67 @@
 Strings and For Loops
 =====================
 
+Object-Oriented Design: Aggregation, Composition, and Delegation
+----------------------------------------------------------------
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/ry7hWZm5oEw?start=698" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 Characters
 ----------
 
-So far in this course, we've worked  storing and manipulating various kinds of data. We've used ``int``s and ``double``s to hold numbers and ``boolean``s to store ``true`` and ``false`` values.  Characters are a new type that can store single letters, punctuation, symbols, spaces, tabs, etc.
+So far in this course, we've worked  storing and manipulating various kinds
+of data. We've used ``int``\ s and ``double``\ s to hold numbers and ``boolean``\ s
+to store ``true`` and ``false`` values.  Characters are a new type that can
+store single letters, punctuation, symbols, spaces, tabs, etc.
 
-To create a character variable we'd declare and instantiate a variable like this:
-
-.. code-block:: java
-
-    char letterA = 'a';
-
-Here we define the type character as `char`, create a variable named `letterA` and set it equal to the value `'a'`.  Importantly, when defining characters, we use single quotation marks.
-
-Character literals, like 'a', appear in single quotes. Unlike string literals, which appear in double quotes,
-character literals can only contain a single character.
-
-Characters work like the other data types we have seen so far. You can compare them using relational operators:
+To create a character variable we'd declare and instantiate a variable like
+this:
 
 .. code-block:: java
 
-    if(letter == 'a')
-    {
+   char letterA = 'a';
 
-    }
+Here use the Java type ``char`` to declare a variable named ``letterA`` that
+can hold a single character, and initialize the variable to a lowercase "a".
+Note that we use single quotes (') around a literal character value we want
+to treat as part of our program text. Some programmers pronounce the
+type ``char`` the same as the word "care", the first syllable of the
+word "character". Others pronounce it the same as the word "char", as
+in "char-broiled", because that is how it is spelled. You'll hear
+both pronunciations, and either is acceptable (and there
+are ` even more <https://english.stackexchange.com/questions/60154/how-to-pronounce-the-programmers-abbreviation-char>_`).
 
-The increment and decrement operators work with characters. So the following code would work:
+Character literals, like 'a', appear in single quotes. Unlike string literals,
+which appear in double quotes, character literals can only contain a
+single character.
+
+Characters work like the other data types we have seen so far. You can compare
+them using relational operators:
 
 .. code-block:: java
 
-    char letter = 'a';
-    letter = letter + 1; //letter now represents 'b'
+   if (letter == 'a')
+   {
 
-Java uses Unicode to represent characters, so strings can store text in other alphabets like Cyrillic and Greek, and non-alphabetic languages like Chinese. You can read more about it `here <http://unicode.org/>`_.
+   }
 
-In Unicode, each character is represented by a "code unit", which you can think of (and sometimes treat) as an integer.
+The increment and decrement operators work with characters. So the following
+code would work:
 
+.. code-block:: java
 
+   char letter = 'a';
+   letter = letter + 1;  // now holds the value 'b'
+
+Java uses Unicode to represent characters, so strings can store text in other
+alphabets like Cyrillic and Greek, and non-alphabetic languages like Chinese.
+You can `read more about it <http://unicode.org/>`_.
+
+In Unicode, each character is represented by a "code unit", which you can
+think of (and sometimes treat) as an integer.
 
 
 Strings
@@ -404,15 +428,6 @@ Many string traversals involve reading one string and creating another. For exam
     }
 
 The initial value of ``r`` is ``""``, which is the **empty string**. The loop traverses the letters of ``s`` in reverse order. Each time through the loop, it creates a new string and assigns it to ``r``. When the loop exits, ``r`` contains the letters from ``s`` in reverse order. So the result of reverse(``"banana"``) is ``"ananab"``.
-
-
-Object-Oriented Design: Aggregation, Composition, and Delegation
-----------------------------------------------------------------
-
-
-.. raw:: html
-
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/ry7hWZm5oEw?start=698" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Tips on Random Numbers
