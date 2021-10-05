@@ -291,6 +291,39 @@
           "required": true
         }
       }
+    },
+
+    "Aggregation, Strings and More Loops":{
+      "IntroToSoftwareDesign/AggregationStringsandMoreLoops": {
+        "Syntax Practice 7": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 7": {
+          "points": 30,
+          "required": true
+        },
+        "Week7Quiz1Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week7Quiz2Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week7Quiz3Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week7Quiz4Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        }
+      }
     }
 
   }

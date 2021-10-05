@@ -13,20 +13,20 @@
         <div id="Week7Quiz3Q2">
         <p class="question">Assume we were trying to test the following method:</p>
 <pre class="prettyprint">
-  public boolean foo(){
-    Random generator = new Random();
-    if(generator.nextInt(100) < 10)
+public boolean foo()
+{
+    Random generator = Random.generator();
+    if (generator.nextInt(100) < 10)
     {
-      return true;
+        return true;
     }
     return false;
-  }
-</pre>
-        <p>We want to test to make sure the method above returns true when it should.  How should we call setNextInts? </p>
-        <div class="solution"><tt>Random.setNextInts(2)</tt></div>
+}</pre>
+        <p>We want to test to make sure the method above returns true when it should.  How should we call <tt>setNextInts()</tt>? </p>
+        <div class="solution"><tt>Random.setNextInts(2);</tt></div>
         <ul class="choices">
-        <li><tt>Random.setNextInts(10)</tt></li>
-        <li><tt>Random.setNextInts(40)</tt></li>
+        <li><tt>Random.setNextInts(10);</tt></li>
+        <li><tt>Random.setNextInts(40);</tt></li>
         <li>None of these would work</li>
         </ul>
         <div class="hints">

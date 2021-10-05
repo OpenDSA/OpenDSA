@@ -11,16 +11,16 @@
     <div class="exercise">
       <div class="problems">
         <div id="Week7Quiz4Q3">
-          <p class="question">Assume we have a parent class Person and a child class Student both with a method called getID()</p>
+          <p class="question">Assume we have a parent class <tt>Person</tt> and a child class <tt>Student</tt> both with a method called <tt>getID()</tt>.</p>
 <pre class="prettyprint">
 Person p = new Person();
-p.getID()
+int id = p.getID();
 </pre>
-          <p>Which getID method will run in this situation?</p>
-          <div class="solution">The getID method on the Person class</div>
+          <p>Which <tt>getID()</tt> method will run in this situation?</p>
+          <div class="solution">The <tt>getID()</tt> method defined in the <tt>Person</tt> class</div>
           <ul class="choices">
-          <li>the getID method on the Student class</li>
-          <li>This code will break</li>
+          <li>the <tt>getID()</tt> method defined in the <tt>Student</tt> class</li>
+          <li>This code will produce an exception</li>
           <li>We don't have enough information to answer this question</li>
           </ul>
           <div class="hints">
