@@ -15,10 +15,10 @@
 <pre class="prettyprint">
 for (Pixel pix : image.getPixels())
 {
-    pi.setRed(0);
+    pix.setRed(0);
 }
 pix.setGreen(255);</pre>
-        <div class="solution">No, the <tt>Pixel</tt> variable <tt>pi</tt> is only usable
+        <div class="solution">No, the <tt>Pixel</tt> variable <tt>pix</tt> is only usable
            inside the for-each loop</div>
         <ul class="choices">
         <li>No, we need to write the for-each loop as <tt>for (Pixel pix : Picture image)</tt></li>
