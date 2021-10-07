@@ -32,7 +32,7 @@ For example, an island knows about all of the jeroos (and flowers, and nets)
 on it. Similarly, an object representing a course might have field(s) to keep
 track of the instructor and the student(s).
 
-**Aggregatioon**: When one object "knows about" other object(s) through its
+**Aggregation**: When one object "knows about" other object(s) through its
 fields, so that it can communicate with the other object, we call this
 "aggregation".
 The other object(s) may be meaningful or useful on their own, and accessible
@@ -87,7 +87,7 @@ type ``char`` the same as the word "care", the first syllable of the
 word "character". Others pronounce it the same as the word "char", as
 in "char-broiled", because that is how it is spelled. You'll hear
 both pronunciations, and either is acceptable (and there
-are ` even more <https://english.stackexchange.com/questions/60154/how-to-pronounce-the-programmers-abbreviation-char>_`).
+are `even more <https://english.stackexchange.com/questions/60154/how-to-pronounce-the-programmers-abbreviation-char>`_).
 
 Character literals, like 'a', appear in single quotes. Unlike string literals,
 which appear in double quotes, character literals can only contain a
@@ -823,7 +823,8 @@ purposes. You use it like this:
 
    // You know x will get the value 40, while y is 50, and z is 60
 
-So, when you are testing behaviors that are random, you can horse the actions to be predictable
+So, when you are testing behaviors that are random, you can force the actions
+to be predictable
 just by saying in your test cases what sequence of values you want the random number generator to
 produce. Outside of test cases, the generator will produce a truly (pseudo-)random sequence, but
 inside your test cases, the numbers will be completely determined by you.
@@ -843,8 +844,7 @@ The most general class in Java’s class hierarchy is the ``java.lang.Object`` c
 superclass of all classes that occur in Java programs. By default, it is the direct superclass of
 any class that does not explicitly specify a something else in its class definition.
 
-One of the most useful methods in the Object class is the
-toString() method:
+One of the most useful methods in the Object class is the ``toString()`` method:
 
 .. code-block:: java
 
@@ -945,7 +945,7 @@ First, let's add the method signature we saw above to the ATM class.
    }
 
 Since we are overriding the ``toString()`` method objects inherently have, this method signature needs to
-look exactly like what is defined above.  Next, we'll create a ``String``` variable that will tell us
+look exactly like what is defined above.  Next, we'll create a ``String`` variable that will tell us
 where this ATM is.
 
 
