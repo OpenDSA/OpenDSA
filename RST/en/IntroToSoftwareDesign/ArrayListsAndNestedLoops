@@ -55,6 +55,12 @@ probably.  But what if we needed to make many different types of shape class?  O
 we needed to ensure 15 methods were implemented across many classes?  It is in
 these situations an interface really shines.
 
+Check Your Understanding: Interfaces
+------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week8Quiz3Summ.html ka
+  :long_name: Interfaces
+
 
 Data Structures and the List Interface
 --------------------------------------
@@ -298,7 +304,7 @@ In these situations a counter controlled loop might be better.
 Lets assume we know our picture is a rectangle of 100 pixels wide by 200 pixels long and we have an object of ``Picture`` called ``pic``  We could write a for loop like this.
 
 
-<TODO: DOUBLE CHECK THIS CODE>
+<TODO: DOUBLE CHECK THIS CODE is the method getPixel?>
 
 .. code-block:: java
 
@@ -307,7 +313,7 @@ Lets assume we know our picture is a rectangle of 100 pixels wide by 200 pixels 
 
    for (int i = 0; i<width; i++)
    {
-       Pixel p = pic.getPixelAt(i, 0);
+       Pixel p = pic.getPixel(i, 0);
        p.setRed(0);
        p.setGreen(0);
        p.setBlue(0);
@@ -328,7 +334,7 @@ through every Pixel object using a counter controlled loop, we need to do someth
    {
        for(int j = 0; j < length; j++)
        {
-           Pixel p = pic.getPixelAt(i, j);
+           Pixel p = pic.getPixel(i, j);
            p.setRed(0);
            p.setGreen(0);
            p.setBlue(0);
@@ -347,8 +353,16 @@ set the value of ``i`` to 1.  Then the whole process would repeat, this time acc
 Pixel at (1, 0), then (1, 1), all the way to (1, 199).
 
 
-Check Your Understanding: Nested Loops
------------------------------------
+Check Your Understanding: Nested For Loops
+------------------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>
-  :long_name: Nested Loops
+.. avembed:: Exercises/IntroToSoftwareDesign/Week8Quiz2Summ.html ka
+  :long_name: Nested For Loops
+
+
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week8ReadingQuizSumm.html ka
+  :long_name: Programming Concepts
