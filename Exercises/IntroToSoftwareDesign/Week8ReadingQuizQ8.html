@@ -11,19 +11,27 @@
     <div class="exercise">
       <div class="problems">
 
-        <div id="Week8FullReadingQuizQ2">
+        <div id="Week8FullReadingQuizQ8">
           <p class="question">
-            For this question, assume "collection" is an ArrayList.
-
-            Which of the following get methods will get the second element in the ArrayList?
+            What is wrong with the following nested for loop?
           </p>
+<pre class="prettyprint">
+for(int i = 0; i<3; i++)
+{
+  for(int i = 0; i<=5; i++)
+  {
+    //body of the loop here
+  }
+}
+</pre>
 
-          <div class="solution"><tt>collection.get(1);</tt></div>
+          <div class="solution">Both the internal and the external loop define a variable called i</div>
           <ul class="choices" >
 
-            <li><tt>collection.get(0);</tt></li>
-            <li><tt>collection.get(collection.size()-1);</tt></li>
-            <li><tt>collection.get(collection.size());</tt></li>
+            <li>The nested for loop uses "<=" while the external for loop uses "<"</li>
+            <li>The code <tt>i++</tt> will cause a syntax error</li>
+            <li>Nothing is wrong with these nested for loops</li>
+
 
           </ul>
           <div class="hints">
