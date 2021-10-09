@@ -106,7 +106,7 @@ is either (1) an internal node with exactly two non-empty children or
 A :term:`complete binary tree` has a restricted shape obtained by
 starting at the root and filling the tree by levels from left to
 right.
-In the complete binary tree of height :math:`d`, all levels
+In a complete binary tree of height :math:`d`, all levels
 except possibly level :math:`d` are completely full.
 The bottom level has its nodes filled in from the left side.
 
