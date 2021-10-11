@@ -84,13 +84,15 @@ anonymous, at least to the extent of divorcing their persona within
 the transaction from their real-world identity.
 If there is any transaction that an entity can participate in that you
 don't believe they should be permitted to participate in, then that is
-a reason for you to object to this anonymity.
+a reason why you might object to this anonymity.
 Examples of transactions that people (or governments!) object to
 include illegal drug deals, sales of stolen property, money
-laundering, murder for hire, weapons deals, and tax avoidance.
+laundering, murder for hire, illegal weapons deals, ransomware attack
+and other blackmail payments, and tax avoidance transactions.
 Governments in particular object to many of these, and typically build
-complex systems for controlling them in the "real world".
-Thus, they often object to such transactions taking place in the
+complex systems for controlling anonymous transactions in "real world"
+currencies.
+Thus, they often object to anonymous transactions taking place in the
 cryptocurrency world.
 
 **Speculative Investment:** Some cryptocurrencies, and especially
@@ -99,11 +101,17 @@ trading as an investment.
 Many things that are traded are considered "speculation" investments,
 meaning that their trade value is disconnected from their intrinsic
 value.
-Bitcoin has no intrinsic value, it is only worth what someone is
-willing to provide to you in exchange.
-And its value has varied widely over short timescales.
+Moreso than stocks, bonds, and commodities that sometimes are traded
+speculatively, Bitcoin has no intrinsic value.
+It is only worth what someone is willing to provide to you in exchange.
+Some argue that this is true for "real world" currencies as well,
+with the counter-argument being that government-backed currencies have
+a value that is generally related to the perceived stability of the
+associated government.
+Certainly there have been periods when the value of Bitcoin has varied
+widely over short timescales.
 Those who object to the notion of speculative investments tend to view
-cryptocurrencies negatively.
+cryptocurrency investments negatively.
 
 **Proof of Work Consumes Resources:** One consequence of the huge rise
 in value of Bitcoins is that it gives incentive for many to compete as
