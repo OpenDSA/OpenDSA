@@ -107,7 +107,8 @@ cryptocurrencies negatively.
 
 **Proof of Work Consumes Resources:** One consequence of the huge rise
 in value of Bitcoins is that it gives incentive for many to compete as
-miners. As a consequence, the cost to mine a Bitcoin block has risen
+miners.
+As a consequence, the cost to mine a Bitcoin block has risen
 in proportion (see "Target and Difficulty").
 Thus, it is quite expensive now in terms of computational cost to mine
 a new block of transactions.
@@ -115,13 +116,13 @@ Computational cost is directly proportional to energy cost.
 That is, increasing the computation required to mine a block causes
 the power consumed to mine that block to grow in proportion.
 In 2021, Bitcoin mining was responsible for consuming roughly one half
-of one percent of all electricty production.
+of one percent of all electricty production in the world.
 In a world where the effects of climate change are directly related to
-the amount of power consumed, this is a signficant impact on the
+the amount of power consumed, this has a signficant impact on the
 world.
 There is no intrinsic reason why any cryptocurrency needs to be
 consuming significant amounts of energy to operate.
-It is causes solely by the economic incentives created by the
+It is caused solely by the economic incentives created by the
 combination of Bitcoin value and the Proof of Work algorithm that
 Bitcoin happens to use.
 This is a major motivation for finding other ways to build a consensus
