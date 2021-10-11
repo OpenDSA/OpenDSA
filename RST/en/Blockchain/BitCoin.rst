@@ -78,7 +78,7 @@ Bitcoin is controversial for a number of reasons.
 Some are intrinsic to the nature of cryptocurrencies, and some derive
 from the particular implementation of Bitcoin.
 
-**Anonymity:** Like many cryptocurrencies, Bitcoin support public key
+**Anonymity:** Like many cryptocurrencies, Bitcoin supports public key
 cryptography as a mechanism to make participants in transactions
 anonymous, at least to the extent of divorcing their persona within
 the transaction from their real-world identity.
@@ -108,7 +108,7 @@ cryptocurrencies negatively.
 **Proof of Work Consumes Resources:** One consequence of the huge rise
 in value of Bitcoins is that it gives incentive for many to compete as
 miners. As a consequence, the cost to mine a Bitcoin block has risen
-in proportion (see "Target and Difficulty" below).
+in proportion (see "Target and Difficulty").
 Thus, it is quite expensive now in terms of computational cost to mine
 a new block of transactions.
 Computational cost is directly proportional to energy cost.
