@@ -324,6 +324,39 @@
           "required": true
         }
       }
+    },
+
+    "Grouping Objects Using Lists and Nested For Loops":{
+      "IntroToSoftwareDesign/GroupingObjectsUsingListsAndNestedForLoops": {
+        "Syntax Practice 8": {
+          "points": 30,
+          "required": true
+        },
+        "Programming Practice 8": {
+          "points": 30,
+          "required": true
+        },
+        "Week8Quiz1Summ": {
+          "points": 7,
+          "threshold": 3,
+          "required": true
+        },
+        "Week8Quiz2Summ": {
+          "points": 7,
+          "threshold": 3,
+          "required": true
+        },
+        "Week8Quiz3Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week8ReadingQuizSumm": {
+          "points": 20,
+          "threshold": 10,
+          "required": true
+        }
+      }
     }
 
   }
