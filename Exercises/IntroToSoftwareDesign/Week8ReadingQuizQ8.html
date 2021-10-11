@@ -11,24 +11,23 @@
     <div class="exercise">
       <div class="problems">
 
-        <div id="Week8FullReadingQuizQ8">
+        <div id="Week8ReadingQuizQ8">
           <p class="question">
             What is wrong with the following nested for loop?
           </p>
 <pre class="prettyprint">
-for(int i = 0; i<3; i++)
+for (int i = 0; i &lt; 3; i++)
 {
-  for(int i = 0; i<=5; i++)
-  {
-    //body of the loop here
-  }
-}
-</pre>
+    for (int i = 0; i &lt;= 5; i++)
+    {
+        // body of the loop here
+    }
+}</pre>
 
-          <div class="solution">Both the internal and the external loop define a variable called i</div>
+          <div class="solution">Both the internal and the external loop define variables with the same name <tt>i</tt></div>
           <ul class="choices" >
 
-            <li>The nested for loop uses "<=" while the external for loop uses "<"</li>
+            <li>The nested for loop uses "&lt;=" while the external for loop uses "&lt;"</li>
             <li>The code <tt>i++</tt> will cause a syntax error</li>
             <li>Nothing is wrong with these nested for loops</li>
 

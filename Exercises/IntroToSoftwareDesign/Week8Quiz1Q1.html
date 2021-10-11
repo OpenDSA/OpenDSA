@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ArrayLists</title>
+    <title>List Practice</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
@@ -11,21 +11,19 @@
     <div class="exercise">
       <div class="problems">
         <div id="Week8Quiz1Q1">
-        <p class="question">After the following code runs, how big would the ArrayList "boolList" be?  </p>
+        <p class="question">After the following code runs, how many items would the list contain?</p>
 <pre class="prettyprint">
-ArrayList<Boolean> boolList = new ArrayList<Boolean>();
-boolList.add(true);
-boolList.add(true);
-boolList.add(true);
-boolList.remove(0);
-boolList.add(false);
-
-</pre>
-        <div class="solution">boolList would contain 3 items</div>
+List&lt;Boolean&gt; list = new ArrayList&lt;Boolean&gt;();
+list.add(true);
+list.add(true);
+list.add(true);
+list.remove(0);
+list.add(false);</pre>
+        <div class="solution">3</div>
         <ul class="choices">
-        <li>boolList would contain 4 items</li>
-        <li>boolList would contain 5 items</li>
-        <li>boolList would contain 2 items</li>
+        <li>4</li>
+        <li>5</li>
+        <li>2</li>
         </ul>
         <div class="hints">
         <p>There are no hints for this question</p>
