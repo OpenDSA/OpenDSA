@@ -155,44 +155,6 @@ understand.
 This explains everything that there is to know about an actual
 blockchain, though there is a lot more to know about how blockchains
 are useful for real applications.
-
-This next example shows a simplified version of how a block might look
-in a cryptocurrency like Bitcoin.
-The key idea added here is the box labled "Nonce".
-The purpose of the nonce is to work with the data in the rest of the
-block to cause the hash value to have some property, typically that it
-be less than some threshold.
-For our example, the nonce has been picked so that the first 4 digits
-of the hash are all zero.
-You have probably heard the term "mining" in the context of Bitcoin or
-blockchain.
-"Mining" simply means to try different values for the nonce
-until some hash value with 4 zeros at the front is stumbled upon.
-What you should do is add data to each block, and then click the
-"Mine" button.
-This will discover nonces that cause the proper number of zeros to
-appear in each hash value.
-Then try modifying the data in a block, to see which other blocks are
-affected.
-You can always click the "Mine" button again to get a consistent set
-of nonces and hash codes.
-
-.. _BlockchainNonceExample:
-
-.. avembed:: AV/Blockchain/BlockchainNonceExample.html pe
-   :long_name: Blockchain Nonce Example
-
-Below is a slideshow demonstrating the importance of each of these
-concepts as a blockchain would grow.
-
-.. inlineav:: llistBlockchain ss
-   :long_name: Blockchain Slideshow 1
-   :links: AV/Blockchain/llistBlockchain.css
-   :scripts: AV/List/llist.js AV/Blockchain/llistBlockchain.js
-   :output: show
-
-You know have a rough overview of many basic concepts related to
-Blockchain.
 In the rest of this tutorial, we will cover:
 
 * Cryptographic services associated with blockchain applications,

@@ -9,25 +9,39 @@
 Mining in a Blockchain System
 =============================
 
-What is Mining?
----------------
 
-Blockchain systems allows individuals to mine for more coins, just as one 
-would mine for gold. Mining 
+What is a Nonce?
+----------------
 
-What is a Nonce
-~~~~~~~~~~~~~~~
+A nonce is a number added to the contents of a block whose purpose is
+to change the hash value of the block to achieve some goal.
+Typically, a nonce is used in an application that relies on something
+called Proof of Work.
+The Bitcoin cryptocurrency is an example of such a system.
+The idea behind Proof of Work is that a particpant in the
+system, on average, has to take a certain amount of effort to find a
+hash value that achieves the desired property.
+The reason of this is explained when we discuss consensus algorithm.
+For now, just know that we use the nonce to change the hash value of
+the block.
 
-A :term:`crypotographic nonce`, similar to a :term:`nonce word`, is simply a 
-random number that is only used once during cryptograhic communciation. 
-The nonce allows for an extra layer of security within the blockchain system.
-Typically, a nonce is used in a :term:`proof-of-work system`, Bitcoin, 
-to ensure a variancewithin the :term:`hash pointers`. The nonce is included in the 
-:term:`cryptographic hash function` to acquire a hash that satifies an arbitrary
-condition agreed upon by all nodes within the network. For example, a system might
-require that a hash have some arbitrary amount of preceeding zeros in front in 
-order for the block to be accepted into the chain, which is where mining becomes important.
+The purpose of the nonce is to work with the data in the rest of the
+block to cause the hash value to have some property, typically that it
+be less than some threshold.
+For example, the requirement of the system might be that all block
+hash values have their leading digit be zero.
 
+Recall that the hash value and the data that generated the hash are
+rather unrelated, such that given the block data, it is hard to
+predict what the hash value will be (until you actually make the
+effort of running the hash algorithm).
+Thus, picking a value for the nonce is effectively guessing what the
+resulting hash value will be.
+To simplify the math, let's assume that hash values are in base 10
+(the ones that we actually show in our examples are in hexidecimal).
+If picking a value for the nonce is effectively making a random guess
+about the resulting hash value, then any nonce you pick has a one in
+10 chance of making the first digit of the base-10 hash be a zero.
 
 .. avembed:: AV/Blockchain/TextFieldHashingGame.html ss
    :long_name: Text-Field Hashing Game
@@ -38,43 +52,65 @@ order for the block to be accepted into the chain, which is where mining becomes
 How Mining Works
 ~~~~~~~~~~~~~~~~
 
-Since a blockchain system creates hash pointers with a :term:`cryptographic hash function`
-that is nearly impossible to predict what the value of some hash will be depending on the 
-input, individuals need to :term:`mine` in order to "obtain" the specific amount of coins. 
-The mining process is essentially :term:`miners` competing to be the first to create a block 
-containing a nonce that will create a :term:`hash pointer` that has a certain number of 
-preceeding zeros. These puzzles become increasing difficult as more coins become mined because 
-if we recall the current blocks hash is determined by its previous blocks hash, its data, 
-and now a nonce to create the correct number of zeros. These calculations are next to impossible
-to guess as the only way to obtain the correct nonce is to simply guess (i.e. brute force attacks). 
+You have probably heard the term "mining" in the context of Bitcoin or
+blockchain.
+"Mining" simply means to try different values for the nonce
+until some hash value with the right property is stumbled upon.
+That property is usually that its value be below some threshold.
+If the system wants to make the cost of finding a hash value be at a
+certain level, then all the system needs to do is set the threshold to
+be right.
+For example (again, in base 10 values), setting the requirement to be
+that the hash value have four leading zeros, then any nonce (and thus the
+resulting hash value) has a one in ten thousand chance of hitting the
+target.
+If the system wants this cost to be hire, then it lowers the
+threshold.
 
-The idea of mining is for your computer to guess the correct value of the nonce that makes 
-the hash have the correct number of zeros. The first individual to compute the correct nonce 
-is awarded the block and it is recorded into the ledger that they own the coin. This will 
-normally take millions, billions or even trillions of guesses before the correct value gets 
-found. Many miners try to obtain as much compute power as they can inorder become awarded the 
-coin. 
+In Bitcoin, the concensus algorithm for updating the public ledger
+relies on miners.
+A miner is an entity that tries to find a nonce for a block of
+transactions that meets the threshold.
+The first miner to do so gets the right to add the block to the
+bitcoin blockchain.
+And their reward is some bitcoin.
+The Proof of Work consensus algorithm is a bit complicated to explain
+how the consensus is actually reached, we will discuss that later.
 
-One might wonder, what if two miners create a block with the correct nonce with the correct hash? 
-Within these blocks, there will be different transactions that have occurred. Here, the miner 
-who has construct a block, or mini blockchain, with the largest proof-of-work will be chosen by 
-the system to be a part of the blockchain. 
+Here is a simplified version of how a block might look
+in a cryptocurrency like Bitcoin.
+The key idea added here (compared to the Intro module) is the box
+labled "Nonce".
+What you should do is add data to each block, and then click the
+"Mine" button.
+This will discover nonces that cause the proper number of zeros (four
+in our example) to appear in each hash value.
+Then try modifying the data in a block, to see which other blocks are
+affected.
+You can always click the "Mine" button again to get a consistent set
+of nonces and hash codes.
 
-The process of mining provides a structure of validating transactions and makes creating alternative
-blocks extremely difficult. This is why a blockchain is exceptionally secure. A miner attempting to dupe
-the blockchain would have to convince over half the nodes in the system that they are correct. Since 
-each nodes has their own copy of the blockchain, it requires significant compute power to do so. There is 
-a fear that a malicious group may gain 51% control of the blockchain and utilize their influence to 
-their advantage. A 51% attack would cost an immense amount of money to obtain a profound amount of 
-compute power. As of the end of 2019, it would take about 120 terrahashes per second to be computed inorder 
-to mine one Bitcoin. 
+.. _BlockchainNonceExample:
+
+.. avembed:: AV/Blockchain/BlockchainNonceExample.html pe
+   :long_name: Blockchain Nonce Example
 
 
 Who is a Miner?
 ~~~~~~~~~~~~~~~
 
-During the infancy of cryptocurrencies, miners would be enthusiasts who would utilize their spare
-compute power on their laptop or desktop to mine coins. As the popularity of these coins have become 
-and their prices rising, many individuals have bought more computers and even warehouses to harness 
-as much compute power inorder to mine as many as possible. As the major cost of mining comes from the 
-electricity to power these computers, many miners try to exploit areas of low electricity costs.
+During the infancy of cryptocurrencies, miners would be enthusiasts
+who would utilize their spare compute power on their laptop or desktop
+to mine coins.
+As the popularity of these coins have become and their prices rising,
+many individuals have bought more computers and even warehouses to
+harness as much compute power inorder to mine as many as possible.
+As the major cost of mining comes from the electricity to power these
+computers, many miners try to exploit areas of low electricity costs.
+
+As the value of Bitcoin in particular has risen, the cost to mine a
+new block has grown.
+This has become a major consumer of electricity, estimated to account
+for one half of one percent of all power consumed in the world
+in 2021.
+This in turn has become quite controversial.
