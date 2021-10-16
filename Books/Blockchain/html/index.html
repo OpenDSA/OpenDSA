@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Chapter 0 Overview &mdash; Blockchain Tutorial</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaMOD-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/jquery.ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/accessibility.css" type="text/css" />
+    
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '0.4.1',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE:  true
+    };
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+  </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="Blockchain Tutorial" href="#" />
+    <link rel="next" title="1. Understanding Blockchain" href="Introduction.html" />
+
+  <style>
+ul li {
+	background: none;
+	list-style-type: none;
+}
+</style>
+</head>
+
+  <body>
+
+
+      <div class="header">
+        
+  
+      <script type="text/javascript" src="../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery.migrate.min.js"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+      <script type="text/javascript" src="../../../lib/accessibility.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.transit.js"></script>
+    <script type="text/javascript" src="../../../lib/raphael.js"></script>
+    <script type="text/javascript" src="../../../lib/JSAV-min.js"></script>
+    <script type="text/javascript" src="_static/config.js"></script>
+    <script type="text/javascript" src="../../../lib/timeme-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaUtils-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaMOD-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script type="text/javascript" src="../../../lib/dataStructures.js"></script>
+    <script type="text/javascript" src="../../../lib/conceptMap.js"></script>
+
+        
+<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
+<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#"><Macro 'login'></a>
+<div id="login-box" class="login-popup">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <label class="username">
+        <span>Username</span>
+        <input id="username" value="" type="text" autocomplete="on" placeholder="Username" tabindex="1">
+      </label>
+      <label class="password">
+        <span>Password</span>
+        <input id="password" value="" type="password" placeholder="Password" tabindex="2">
+        <span><a id="forgot" href="#">Forgot your password?</a></span>
+      </label>
+
+      <p>
+        <input type="submit" id="login-submit-button" value="Sign in" tabindex="3" />
+      </p>
+      <p>
+        <input type="button" id="register-button" value="Register" tabindex="4" />
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+        
+<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">Register</a>
+<div id="registration-box" class="registration-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <div id="register_error" class="error"></div>
+      <label class="username">
+        <span>Username:</span>
+        <input type="text" id="user" placeholder="Username" />
+      </label>
+
+      <label class="password">
+        <span>Password</span>
+        <input id="pass" type="password" placeholder="Password" />
+      </label>
+
+      <label class="password">
+        <span>Confirm Password</span>
+        <input id="rpass" type="password" placeholder="Confirm Password" />
+      </label>
+
+      <label class="email">
+        <span>Email:</span>
+        <input type="text" id="email" placeholder="Email">
+      </label>
+
+      <p>
+        <input type="submit" id="register-submit-button" value="Register &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+<img class="leftlogo" src="_static/OpenDSALogoT64.png" alt="Logo"/><div class="title-wrapper">
+          <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
+            <div class="title-content">
+              <h1 class="heading" ><a href="#">
+                <span>Blockchain Tutorial</span></a></h1><h2 class="heading" ><span> Table Of Contents </span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="topnav">
+        <p>
+            <a style="float:left;color:blue;" href="../source/index.rst.rst"
+              target="_blank" rel="nofollow">Show Source | </a>&#160;&#160;
+            <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
+
+          
+        <a  class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod" href="Introduction.html">0.<span class="section-number">1. </span>Understanding Blockchain</a>&#160;&#160;»
+
+
+        </p>
+      </div>
+       
+      <div class="content"><div class="sidebar" style="border-style:none;background-color:transparent">
+          <h3 style="margin-top:0em;">Search the book</h3>
+          <form class="search" action="search.html" method="get">
+            <input type="text" />
+            <input type="submit" value="Go" />
+            <input type="hidden" value="yes" />
+            <input type="hidden" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 60%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        
+  <script>ODSA.SETTINGS.DISP_MOD_COMP = false;ODSA.SETTINGS.MODULE_NAME = "index";ODSA.SETTINGS.MODULE_LONG_NAME = "Contents";ODSA.SETTINGS.MODULE_CHAPTER = ""; ODSA.SETTINGS.BUILD_DATE = "2021-09-07 15:09:53"; ODSA.SETTINGS.BUILD_CMAP = false;</script><div class="section" id="overview">
+<h1><span class="sectnum">Chapter 0</span> Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">0.1. Understanding Blockchain</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Introduction.html#an-overview-of-blockchain-concepts">0.1.1. An Overview of Blockchain Concepts</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="cryptography">
+<h1><span class="sectnum">Chapter 1</span> Cryptography<a class="headerlink" href="#cryptography" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Cryptography.html">1.1. Cryptography and Blockchain</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography.html#using-cryptography-it-might-as-well-be-random">1.1.1. Using Cryptography: It might as well be random</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography.html#generating-a-hash-code">1.1.2. Generating a Hash Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Cryptography.html#encrypting-and-decrypting">1.1.3. Encrypting and Decrypting</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ledgers">
+<h1><span class="sectnum">Chapter 2</span> Ledgers<a class="headerlink" href="#ledgers" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Ledgers.html">2.1. Blockchain Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Ledgers.html#what-is-a-blockchain">2.1.1. What is a Blockchain?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ledgers.html#public-ledgers">2.1.2. Public Ledgers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ledgers.html#distributed-public-ledgers">2.1.3. Distributed Public Ledgers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ledgers.html#what-s-the-point">2.1.4. What’s The Point?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="merkle-trees">
+<h1><span class="sectnum">Chapter 3</span> Merkle Trees<a class="headerlink" href="#merkle-trees" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="MerkleTrees.html">3.1. Merkle Trees</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="MerkleTrees.html#id1">3.1.1. Merkle Trees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MerkleTrees.html#how-is-it-used">3.1.2. How Is It Used?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MerkleTrees.html#why-is-it-useful">3.1.3. Why Is It Useful?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mining">
+<h1><span class="sectnum">Chapter 4</span> Mining<a class="headerlink" href="#mining" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Mining.html">4.1. Mining in a Blockchain System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Mining.html#what-is-mining">4.1.1. What is Mining?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Mining.html#what-is-a-nonce">4.1.1.1. What is a Nonce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mining.html#how-mining-works">4.1.1.2. How Mining Works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mining.html#who-is-a-miner">4.1.1.3. Who is a Miner?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="consensus-algorithms">
+<h1><span class="sectnum">Chapter 5</span> Consensus Algorithms<a class="headerlink" href="#consensus-algorithms" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Consensus.html">5.1. Consensus Algorithms Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Consensus.html#what-is-a-ledger">5.1.1. What is a ledger?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Consensus.html#what-is-a-distributed-ledger">5.1.2. What is a distributed ledger?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Consensus.html#how-can-a-distributed-ledger-be-updated">5.1.3. How can a distributed ledger be updated?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Consensus.html#what-is-a-consensus-algorithm">5.1.4. What is a consensus algorithm?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Permissionless.html">5.2. Permissionless Consensus Algorithms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Permissionless.html#introduction">5.2.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Permissionless.html#the-original-proof-of-work-and-bitcoin">5.2.2. The Original: Proof of Work and Bitcoin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Permissionless.html#ethereum">5.2.3. Ethereum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Permissionless.html#byzantine-agreement">5.2.3.1. Byzantine Agreement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Permissionless.html#proof-of-stake">5.2.3.2. Proof of Stake</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Permissionless.html#algorand">5.2.4. Algorand</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Permissioned.html">5.3. Permissioned Consensus Algorithms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Permissioned.html#what-is-hyperledger">5.3.1. What is Hyperledger?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Permissioned.html#hyperledger-design-philosophy">5.3.2. Hyperledger Design Philosophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Permissioned.html#the-importance-of-hyperledger">5.3.3. The Importance of Hyperledger</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="cryptocurrencies">
+<h1><span class="sectnum">Chapter 6</span> CryptoCurrencies<a class="headerlink" href="#cryptocurrencies" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BitCoin.html">6.1. Bitcoin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="BitCoin.html#id2">6.1.1. Bitcoin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="BitCoin.html#bitcoin-wallet">6.1.2. Bitcoin Wallet</a></li>
+</ul>
+</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Ethereum.html#">6.2. Ethereum</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Ethereum.html#EthereumVM">6.2.2. Ethereum Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ethereum.html#EthereumGas">6.2.3. Gas</a></li>
+</ul>
+<li class="toctree-l1"><a class="reference internal" href="OtherCrypto.html">6.3. Chapter 8</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="OtherCrypto.html#other-cyptocurrencies">6.3.1. Other Cyptocurrencies</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="applications-of-blockchain">
+<h1><span class="sectnum">Chapter 7</span> Applications of Blockchain<a class="headerlink" href="#applications-of-blockchain" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="SmartContracts.html">7.1. Smart Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SmartContracts.html#introduction">7.1.1. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SmartContracts.html#what-is-a-smart-contract">7.1.1.1. What is a Smart Contract?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SmartContracts.html#why-is-it-used-in-blockchain-systems">7.1.1.2. Why is it used in Blockchain Systems?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SmartContracts.html#how-can-this-be-implemented">7.1.1.3. How can this be Implemented?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="OtherApplications.html">7.2. Other Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="OtherApplications.html#other-applications-of-blockchain">7.2.1. Other Applications of Blockchain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OtherApplications.html#blockone">7.2.2. Blockone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OtherApplications.html#git">7.2.3. Git</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="../../../lib/Privacy.html" target="_blank">| Privacy |</a> <a style="float:left;color:blue;" rel="nofollow" href="../../../lib/license.html" target="_blank">| License</a></span>&#160;&#160;
+      
+        <a  class="uplink" href="#">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod1" href="Introduction.html">0.<span class="section-number">1. </span>Understanding Blockchain</a>&#160;&#160;»
+
+</p>
+      </div>
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
+
+
+    <div class="footer">
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a>
+          <a id="bugreport-link" style="float:left;color:blue;" class="bugreport-link" href="#">| Report a bug</a>
+        </span>
+      </p>
+        &copy; Copyright 2016 by OpenDSA Project Contributors and distributed under an MIT license.
+      Last updated on Sep 07, 2021.
+      Created using <a target="_blank" href="http://sphinx.pocoo.org/">Sphinx</a> 2.4.4.
+    </div>
+    
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="report" action="https://#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+      <label>
+        <span>Summary*:</span>
+        <input type="text" id="b_title" placeholder="Summary" />
+      </label>
+
+      <label class="os">
+        <span>Operating system*:</span>
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="browser">
+        <span>Browser*:</span>
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="description">
+        <span>Description*:</span><br>
+        <textarea id="b_description" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>Attach a screenshot (optional):</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="Attach a screenshot (optional)">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="Submit &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+  </body>
+</html>

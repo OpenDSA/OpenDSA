@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6.2. Ethereum &mdash; Blockchain Tutorial</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/normalize.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaMOD-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/jquery.ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../lib/accessibility.css" type="text/css" />
+    
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:    './',
+      VERSION:     '0.4.1',
+      COLLAPSE_INDEX: false,
+      FILE_SUFFIX: '.html',
+      HAS_SOURCE:  true
+    };
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+      },
+      "HTML-CSS": {
+        scale: "80"
+      }
+    });
+  </script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="Blockchain Tutorial" href="index.html" />
+    <link rel="next" title="3. Chapter 8" href="OtherCrypto.html" />
+    <link rel="prev" title="1. Bitcoin" href="BitCoin.html" />
+
+  </head>
+
+  <body>
+
+
+      <div class="header">
+        
+  
+      <script type="text/javascript" src="../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../lib/jquery.migrate.min.js"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+      <script type="text/javascript" src="../../../lib/accessibility.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="../../../lib/jquery.transit.js"></script>
+    <script type="text/javascript" src="../../../lib/raphael.js"></script>
+    <script type="text/javascript" src="../../../lib/JSAV-min.js"></script>
+    <script type="text/javascript" src="_static/config.js"></script>
+    <script type="text/javascript" src="../../../lib/timeme-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaUtils-min.js"></script>
+    <script type="text/javascript" src="../../../lib/odsaMOD-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script type="text/javascript" src="../../../lib/dataStructures.js"></script>
+    <script type="text/javascript" src="../../../lib/conceptMap.js"></script>
+
+        
+<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
+<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#"><Macro 'login'></a>
+<div id="login-box" class="login-popup">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <label class="username">
+        <span>Username</span>
+        <input id="username" value="" type="text" autocomplete="on" placeholder="Username" tabindex="1">
+      </label>
+      <label class="password">
+        <span>Password</span>
+        <input id="password" value="" type="password" placeholder="Password" tabindex="2">
+        <span><a id="forgot" href="#">Forgot your password?</a></span>
+      </label>
+
+      <p>
+        <input type="submit" id="login-submit-button" value="Sign in" tabindex="3" />
+      </p>
+      <p>
+        <input type="button" id="register-button" value="Register" tabindex="4" />
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+        
+<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">Register</a>
+<div id="registration-box" class="registration-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="signin" action="https://#">
+    <fieldset class="textbox">
+      <div id="register_error" class="error"></div>
+      <label class="username">
+        <span>Username:</span>
+        <input type="text" id="user" placeholder="Username" />
+      </label>
+
+      <label class="password">
+        <span>Password</span>
+        <input id="pass" type="password" placeholder="Password" />
+      </label>
+
+      <label class="password">
+        <span>Confirm Password</span>
+        <input id="rpass" type="password" placeholder="Confirm Password" />
+      </label>
+
+      <label class="email">
+        <span>Email:</span>
+        <input type="text" id="email" placeholder="Email">
+      </label>
+
+      <p>
+        <input type="submit" id="register-submit-button" value="Register &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+<img class="leftlogo" src="_static/OpenDSALogoT64.png" alt="Logo"/><div class="title-wrapper">
+          <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
+            <div class="title-content">
+              <h1 class="heading" ><a href="index.html">
+                <span>Blockchain Tutorial</span></a></h1>
+              <h2 class="heading" ><span>Chapter 6 CryptoCurrencies</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="topnav">
+        <p>
+            <a style="float:left;color:blue;" href="../source/BitCoin.rst.rst"
+              target="_blank" rel="nofollow">Show Source | </a>&#160;&#160;
+            <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| About</a>&#160;&#160;
+
+          
+        «&#160;&#160;<a id="prevmod" href="Permissioned.html">5.<span class="section-number">3. </span>Permissioned Consensus Algorithms</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod" href="OtherCrypto.html">6.<span class="section-number">2. </span>Chapter 8</a>&#160;&#160;»
+
+
+        </p>
+      </div>
+       
+      <div class="content">
+        
+  <script>ODSA.SETTINGS.MODULE_SECTIONS = ['bitcoin-wallet'];</script><script>ODSA.SETTINGS.DISP_MOD_COMP = true;ODSA.SETTINGS.MODULE_NAME = "Ethereum";ODSA.SETTINGS.MODULE_LONG_NAME = "Bitcoin";ODSA.SETTINGS.MODULE_CHAPTER = "CryptoCurrencies"; ODSA.SETTINGS.BUILD_DATE = "2021-09-07 15:09:53"; ODSA.SETTINGS.BUILD_CMAP = false;JSAV_OPTIONS['lang']='en';JSAV_EXERCISE_OPTIONS['code']='java';</script><div class="section" id="id1">
+<h1>6.<span class="section-number">2. </span>Ethereum<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>6.<span class="section-number">2.1. </span>Ethereum<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Stuff about Ethereum goes here.</p>
+</div>
+<div class="section" id="bitcoin-wallet">
+<h2>6.<span class="section-number">2.2. </span>Ethereum Virtual Machine<a class="headerlink" href="#EthereumVM" title="Permalink to this headline">¶</a></h2>
+<p>What is the Ethereum Virtual Machine(EVM)? The EVM acts as the underlying framework of Ethereum's entire operating structure. It facilitates executions and deployments of smart contracts, which essentially verifies transactions are legitimate then executes them. Anyone can run the EVM on their personal computers, and in fact, this is how Ethereum is mined. Ethereum mining software is built on top of the EVM, where the EVM is the runtime environment. So, what exactly does the EVM do?
+<br/>
+<br/>
+Under the hood, the EVM completes tasks given by smart contracts, which are composed of instructions. Within each instruction are opcodes, which denote what the goal of the instruction is. The size of an opcode is 1 byte (or 8 bits), and as a result the maximum number of opcodes is 8*8 = 256. As of now, there are about 140 designated opcodes. Here are some of them grouped into categories:
+
+<ul>
+    <li>Stack-manipulating opcodes (POP, PUSH, DUP, SWAP)</li>
+    <li>Arithmetic/comparison/bitwise opcodes (ADD, SUB, GT, LT, AND, OR)</li>
+    <li>Environmental opcodes (CALLER, CALLVALUE, NUMBER)</li>
+    <li>Memory-manipulating opcodes (MLOAD, MSTORE, MSTORE8, MSIZE)</li>
+    <li>Storage-manipulating opcodes (SLOAD, SSTORE)</li>
+    <li>Program counter related opcodes (JUMP, JUMPI, PC, JUMPDEST)</li>
+    <li>Halting opcodes (STOP, RETURN, REVERT, INVALID, SELFDESTRUCT)</li>
+</ul>
+
+As you might assume by the existance of stack-manipulating opcodes, the EVM uses a stack-based implementation to store and retrieve data. It uses a 256-bit register stack, and performs simple store and retrieve operations on the stack. This means that operations such as <i>PUSH</i> and <i>POP</i> are commonly used for this purpose. When the stack is insufficient for storing and retreiving data, then the EVM will use memory or storage manipulating opcodes. These accesses are far more expensive though, so they are minimized when possible.
+<br/>
+<br/>
+The job of the EVM is to execute these instructions and eventually update the Ethereum state. This gives Ethereum the title of a <i>transition-based state machine</i>, as that's essentially what these contracts accomplish. Once a smart contract is completed, the state of Ethereum will transition to one where the completed contract is registered, and operations will continue from there. This ability also gives the EVM another title: a <i>Turing-complete machine</i>. This means that the EVM can run any program. However, this comes with a catch. The EVM must also be able to execute programs that take forever to run. Now, this would be impossible because we would never know whether the EVM would sucessfully run the program. As a fix, the EVM implemented a solution, gas (6.2.3). As a result, the EVM is a <i>quasi-Turing-complete machine</i>, meaning that it can run any program thrown at it and can also exit within a finite amount of time.
+
+</p>
+<h2>6.<span class="section-number">2.3. </span>Gas<a class="headerlink" href="#EthereumGas" title="Permalink to this headline">¶</a></h2>
+<p>Gas keeps the Ethereum blockchain safe. It is what also allows miners to profit, and provides incentive for doing so. So, what exactly is gas, and how does it work?
+<br/>
+<br/>
+Gas is a fee placed on top of any transaction on the Ethereum network. It keeps the network safe through stopping transactions from being spammed, as the spammer would quickly run out of capital. Gas is measured in gwei, which is one one-billionth, or 0.000000001 ETH. Every transaction has a base cost of 21000 gas, and from there, it increments depending on the smart contract and opcodes used. Each opcode has an <a href="https://github.com/djrtwo/evm-opcode-gas-costs/blob/master/opcode-gas-costs_EIP-150_revision-1e18248_2017-04-12.csv">associated gas cost </a>, and when executed, consumes that amount of gas. For example, an opcode consisting of a simple operation such as ADD, has a very low cost of 2 gas. On the other hand, SLOAD, an operation that loads words from storage, consumes 200 gas per call. Gas also goes both ways. Setting a storage value to zero from nonzero refunds 15000 gas, and completely removing a contract with the SELFDESTRUCT opcode refunds 24000 gas. However, a refund cannot exceed half the cost of the initial call. This is to ensure that the miner processing the contract will still receive a profit, and not end up having to pay for the operation.
+</p>
+Here is a typical successful Ethereum transaction:
+<ol>
+    <li>The originator will initialize a transaction and supply an amount of fuel (usually determined by the blockchain), called <b>startGas</b></li>
+    <li>After each operation on the miner's EVM, <b>startGas</b> is decremented the operation's fee</li>
+    <li>The transaction successfully finishes, all remaining <b>startGas</b> is refunded to the originator, and all gas used up is sent to the miner as revenue</li>
+</ol>
+Now, in the case of an unsucessful transaction where the originator doesn't supply enough gas, the transaction will fail at step 2. Here, the EVM will likely remove the contract with the SELFDESTRUCT opcode, with a value of -24000 gas. However, since this amount is still capped to half the initial cost, this ensures that the miner will still recieve a portion of the gas used and have a profit. The transaction will also be reverted, and the originator will be returned the money attempted to be sent + the gas refund.
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a><a style="float:left;color:blue;" rel="nofollow" href="../../../lib/Privacy.html" target="_blank">| Privacy |</a> <a style="float:left;color:blue;" rel="nofollow" href="../../../lib/license.html" target="_blank">| License</a></span>&#160;&#160;
+      
+        «&#160;&#160;<a id="prevmod1" href="BitCoin.html">6.<span class="section-number">1. </span>Bitcoin</a>
+        &#160;&#160;::&#160;&#160;
+        <a  class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a  id="nextmod1" href="OtherCrypto.html">6.<span class="section-number">3. </span>Chapter 8</a>&#160;&#160;»
+
+</p>
+      </div>
+      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
+
+
+    <div class="footer">
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">Contact Us |</a>
+          <a id="bugreport-link" style="float:left;color:blue;" class="bugreport-link" href="#">| Report a bug</a>
+        </span>
+      </p>
+        &copy; Copyright 2016 by OpenDSA Project Contributors and distributed under an MIT license.
+      Last updated on Sep 07, 2021.
+      Created using <a target="_blank" href="http://sphinx.pocoo.org/">Sphinx</a> 2.4.4.
+    </div>
+    
+<div id="bugreport-box" class="bugreport-popup ">
+  <a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="Close Window" alt="Close Window" /></a>
+  <form method="post" class="report" action="https://#">
+    <fieldset class="textbox">
+      <div id="bug_error" class="error"></div>
+      <label>
+        <span>Summary*:</span>
+        <input type="text" id="b_title" placeholder="Summary" />
+      </label>
+
+      <label class="os">
+        <span>Operating system*:</span>
+        <select id="b_os">
+          <option value="windows">Windows</option>
+          <option value="macos">Mac OS</option>
+          <option value="linux">Linux</option>
+          <option value="ios">iOS</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="browser">
+        <span>Browser*:</span>
+        <select id="b_browser">
+          <option value="chrome">Chrome</option>
+          <option value="safari">Safari</option>
+          <option value="internetexplorer">Internet Explorer</option>
+          <option value="opera">Opera</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <label class="description">
+        <span>Description*:</span><br>
+        <textarea id="b_description" rows="5" cols="25" placeholder="***BUG** Please enter: (1) a consice description of the problem. (2) steps to reproduce bug. (3) the version of your browser and operating system."></textarea>
+      </label>
+
+      <label class="screenshot">
+        <span>Attach a screenshot (optional):</span>
+        <input type="file" id="b_screenshot" accept="image/*" placeholder="Attach a screenshot (optional)">
+      </label>
+
+      <p>
+        <input type="submit" id="bug-submit-button" value="Submit &rarr;"/>
+      </p>
+    </fieldset>
+  </form>
+</div>
+
+  </body>
+</html>
