@@ -330,6 +330,12 @@ most of those if I know "The Godfather" is close to the end.
 This loop would start at the Book object at the highest index and work its way down
 to the Book object at index 0.
 
+Check Your Understanding: Loop Idioms
+-------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>.html ka
+   :long_name: Loop Idioms
+
 
 
 Accumulating an Answer: Calculate the Total number of Books by an Author
@@ -439,11 +445,11 @@ So far, whenever we've worked with variables, we've always known what type they 
 For instance, whenever we're working with a ``String`` we'll declare a variable like
 ``String s = "Hello World";``.  However, there are some cases in Java when we'll
 need to create methods without knowing what type of data we'll be working with.
-For these, we use what is called the **Generic Type**.D
+For these, we use what is called the **Generic Type**.
 
-Declaring classes that use the generic type construct introduced in Java 5.0
-involves using new syntax to refer to the class name. Such classes and interfaces,
-including those in the collections framework, use angle brackets containing one
+Declaring classes that use the generic type construct involves using new syntax
+to refer to the class name. Such classes and interfaces, including those in the
+collections framework, use angle brackets containing one
 or more variables (separated by commas) to refer to unspecified type names.
 For example, you would use <E> or <K,V> to refer to unspecified type names.
 Thus, names of classes or interfaces implemented with generic types are written
@@ -496,3 +502,77 @@ compile time.  For example, the following code would cause an error when compile
 
     Box<Integer> box1 = new Box<Integer>(42);
     box1.setValue("banana");
+
+Thus, if a programmer wishes to create a List of String objects, using generic
+types will help guarantee that the objects being stored are actually of type
+String. In this way, using generic types helps to reduce the number of
+programming errors and thereby makes programs safer and more robust.
+
+
+Check Your Understanding: Generics
+-----------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>.html ka
+   :long_name: Generics
+
+
+The Null Keyword
+----------------
+
+When you create an object variable, remember that you are storing a reference
+to an object. In Java, the keyword ``null`` is a special value that means "no
+object". You can declare and initialize object variables this way:
+
+.. code-block:: java
+
+    Pixel pix = null;
+
+Additionally, most objects will default to a value of ``null`` if they are declared
+but not initialized:
+
+.. code-block:: java
+
+    Pixel pix;  // pix is null
+    pix = new Pixel(0, 0); // pix now refers to a Pixel object
+
+If you try to use a ``null`` value, either by accessing an attribute or invoking a
+method, Java throws a ``NullPointerException``.  The following is an example of
+code that will throw a null pointer exception.
+
+.. code-block:: java
+
+    Pixel pix;
+    pix.setRed(0); // This was a cause a NullPointerException.
+
+``NullPointerException``s are a common error for programmers to encounter.  Be
+aware that if you see it in your own code, you're probably working with a variable
+that hasn't been initialized yet!
+
+
+Check Your Understanding: Null
+------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>.html ka
+   :long_name: Null
+
+
+
+Syntax Practice 2b: Subclass Constructors
+-----------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 2b: Subclass Constructors'
+  :workout_id: 1343
+
+
+Programming Practice 2
+----------------------
+
+.. extrtoolembed:: 'Programming Practice 2'
+  :workout_id: 1344
+
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9ReadingQuizSumm.html ka
+   :long_name: Programming Concepts
