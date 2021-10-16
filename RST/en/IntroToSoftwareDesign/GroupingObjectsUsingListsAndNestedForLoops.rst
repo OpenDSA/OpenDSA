@@ -28,7 +28,7 @@ languages:
 
 * **Lists** allow us to store a sequence of values in order.
 * **Sets** allow us to store an unordered collection of values.
-* **Maps** allow us to store *lookup tables* that allow us to uses one
+* **Maps** allow us to store *lookup tables* that allow us to use one
   piece of data to look up another piece of data associated with it, like
   using a word to look up its definition in a dictionary. Besides the word
   *map*, they also are often called
@@ -160,13 +160,13 @@ signature ``public void draw()``.
 We can add any other fields or methods we want, but that ``draw()``
 method *must* be implemented.
 
-However, by declaring that ``classs Rectangle implements Drawable``, now
+However, by declaring that ``class Rectangle implements Drawable``, now
 any and all programmers (or source code) that use the ``Rectangle`` class
-will know that it provide a ``draw()`` method, and that this method can be
+will know that it provides a ``draw()`` method, and that this method can be
 used the same way it can for any other drawable objects.
 
 By itself, this can seem like something of an odd structure in a language.
-Couldn't a developer just remember to implement a that one method?  In our
+Couldn't a developer just remember to implement that one method?  In our
 example, probably. But interfaces provide a way for us to explicitly write
 these requirements down so we can share them, and also provides a mechanism
 for the compiler to check that we have included the required methods with
@@ -290,7 +290,7 @@ ArrayList
 Remember that because ``List`` is an interface, it does not provide any
 information to create an object--it only specifies the required methods.
 To create an actual object, you need a class that implements the interface--often
-called a **concrete class*, because it provides the concrete implementation
+called a **concrete class**, because it provides the concrete implementation
 details of how all fields are initialized and how all methods behave internally.
 While there are multiple implementations of the ``List`` interface, in this
 course we will rely on the one that is used most commonly: **ArrayList**.
@@ -298,7 +298,7 @@ course we will rely on the one that is used most commonly: **ArrayList**.
 Because ``ArrayList`` implements ``List``, you know it provides all of the
 methods described in the previous section. ``ArrayList`` is also a generic
 type, and takes a parameter in angle brackets (<...>) to indicate the type
-of items go in the list.
+of items that go in the list.
 
 Take a few minutes to watch the following video:
 
@@ -345,7 +345,7 @@ Declaring and Instantiating an ArrayList
 
 Since the ``List`` interface tells us everything we need to know about all
 the methods available on lists, we can use it to declare a variable like this
-(remember to include the type of elements inside ange brackets):
+(remember to include the type of elements inside angle brackets):
 
 .. code-block:: java
 
@@ -374,11 +374,11 @@ You may also notice we used the word ``Integer`` instead of ``int``.  This has
 to do with what are called "primitive types" versus objects.  We'll get more
 into what the differences between these two things are later as well.  For
 now, just know that if you wanted to create an
-``ArrayList`` of ``double``s, you'd specify ``<Double>``.  For ``boolean``s,
+``ArrayList`` of ``double``\ s, you'd specify ``<Double>``.  For ``boolean``\ s,
 you'd similarly use ``<Boolean>``.
 
 
-Adding our Numbers
+Adding Our Numbers
 """"""""""""""""""
 
 A ``List`` has a set of methods we can call.  To add an item, we could use
@@ -477,7 +477,7 @@ stored at index 0, "Joey" at index 1, and "Maria" at index 2.  This list
 contains 3 items, but since it ends at index 2, the call to ``set()`` would
 fail.
 
-In short, if you your code fails and you see an ``IndexOutOfBoundsException``,
+In short, if your code fails and you see an ``IndexOutOfBoundsException``,
 you're trying to access a location in the list that does not exist.
 
 
