@@ -24,12 +24,23 @@ public static void main(String args[]) throws IOException {
   // Since we actually store KVPairs, we will give it a "data" value
   // That is simply the count + OFFSET (so we can distinguish "data" from keys)
   for (i=0; i<A.length; i++)
-    b.insert(A[i], i + OFFSET);
+    b.insert(new Integer(A[i]), new Integer(A[i] + OFFSET));
 
   if (b.size() != testsize) {
     System.out.println("Oops! Tree size is " + b.size() + ", it should be " + testsize);
     SUCCESS = false;
   }
+
+  // Test that search actually works.
+  for (i=0; i<A.length; i++) {
+    Integer found = (Integer)b.find(A[i]);
+    if (found != A[i] + OFFSET) {
+      System.out.println("Oops, expected " + (A[i] + OFFSET) + " but got " + found);
+      SUCCESS = false;
+    }
+  }
+
+  
   // Now, let's test removeAny
   while (b.size() != 0) {
     Object k = b.removeAny();

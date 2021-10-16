@@ -107,10 +107,10 @@ For Jeroos, the sensor methods are the basic building blocks for creating condit
      - ``dean.seesJeroo(RIGHT)``
    * - ``seesWater(relativeDirection)``
      - 	Is there water in the indicated direction? [``seesWater(AHEAD)`` is meaningless]
-     - ``seesWater(AHEAD)``
+     - ``dean.seesWater(AHEAD)``
 
 
-Notably, when you see ``relativeDirection```, your choices of direction
+Notably, when you see ``relativeDirection``, your choices of direction
 include ``HERE``, ``LEFT``, ``RIGHT``, and ``AHEAD``.  When you
 see ``compassDirection``, your choices of direction are: ``NORTH``,
 ``SOUTH``, ``EAST``, and ``WEST``.
@@ -357,7 +357,7 @@ special keystrokes for each of these as shown in the following table.
      - OR
 
 Notably, java recognizes single ``&`` and ``|`` as separate operators (they
-have to do with binary math) from ``&&`` and :code:``||``.  No errors will
+have to do with binary math) from ``&&`` and ``||``.  No errors will
 be thrown if you mistake one for the other and your code will simply behave
 oddly.  Also, ``!`` is a unary operator.  It can modify a single if
 statement but not combine two together.
@@ -391,8 +391,8 @@ original expressions are false:
 .. odsafig:: Images/TruthTable3.png
    :align: center
 
-In this table,**P** and **Q** once again represent arbitrary boolean
-expressions. The rows underneath**P** and **Q** show all possible combinations
+In this table, **P** and **Q** once again represent arbitrary boolean
+expressions. The rows underneath **P** and **Q** show all possible combinations
 of their values. The third column shows the corresponding values for the
 expression ``P || Q``.
 
@@ -532,20 +532,20 @@ Java's Syntax for the While Loop
    :align: center
 
 
-The figure above shows the Java system for a pretest while loop in Java. There
+The figure above shows the Java syntax for a pretest while loop in Java. There
 are three important things to observe about the syntax.
 
 1. The condition **must** be in parentheses.
-2. There is **no semicolon** after the parentheses.
-3. There is no semicolon after the keyword ``else``.
-4. The *whilee* structure is not a method, which means that we do not send
+2. There is **no semicolon** after the parentheses containing the condition
+   or after the keyword ``else``.
+3. The *while* structure is not a method, which means that we do not send
    it as a message to a Jeroo object.
 
 There are three important things to observe about the coding style.
 
-1. Braces are used to define the beginning and end of both the true branch
-   and the false branch. *Always include them.*
-2. The braces are aligned with the start of the words ``if`` and ``else``.
+1. Braces are used to define the beginning and end of both the body
+   of the while statement. *Always include them.*
+2. The braces are aligned with the start of the word ``while``.
 3. The statements between the braces should be indented (we use 4 spaces).
 
 
