@@ -22,27 +22,32 @@ author, and ISBN number.
 
 .. code-block:: java
 
-    public class Book{
-      private String title;
-      private String author;
-      private int isbn;
+    public class Book {
+        private String title;
+        private String author;
+        private int isbn;
 
-      public Book(String t, String a, int i){
-        this.title = t;
-        this.author = a;
-        this.isbn = i;
-      }
+        public Book(String t, String a, int i) {
+            this.title = t;
+            this.author = a;
+            this.isbn = i;
+        }
 
-      //Getters for our field.
-      public String getTitle(){
-        return title;
-      }
-      public String getAuthor(){
-        return title;
-      }
-      public int getISBN(){
-        return isbn;
-      }
+
+        // Getters for our field.
+        public String getTitle() {
+            return title;
+        }
+
+
+        public String getAuthor() {
+            return author;
+        }
+
+
+        public int getISBN() {
+            return isbn;
+        }
     }
 
 Once a book is created, we won't need to change any of these fields, thus we only
@@ -52,27 +57,27 @@ Next, we want to represent a shelf, which can store up to 50 books:
 
 .. code-block:: java
 
-    public class Shelf{
-      private int maxCapacity;
-      private List<Book> shelfContents;
+    public class Shelf {
+        private int maxCapacity;
+        private List<Book> shelfContents;
 
-      public Shelf(int id){
-        maxCapacity = 50;
-        shelfContents = new ArrayList<Book>();
-      }
-
-      //adds a book if there is space on the shelf
-      public void addBook(Book b){
-        if(shelfContents.size() < 50)
-        {
-          shelfContents.add(b);
+        public Shelf() {
+            this.maxCapacity = 50;
+            shelfContents = new ArrayList<Book>();
         }
 
-      }
 
-      public List<Book> getShelfContents(){
-        return this.shelfContents;
-      }
+        // adds a book if there is space on the shelf
+        public void addBook(Book b) {
+            if (shelfContents.size() < maxCapacity) {
+                shelfContents.add(b);
+            }
+
+        }
+
+        public List<Book> getShelfContents() {
+            return this.shelfContents;
+        }
 
     }
 
@@ -81,16 +86,16 @@ We'll also have a library which contains many shelves:
 
 .. code-block:: java
 
-    public class Library{
-      private List<Shelf> stacks;
+    public class Library {
+        private List<Shelf> stacks;
 
-      public Shelf(){
-        stacks = new ArrayList<Shelf>();
-      }
+        public Library() {
+            stacks = new ArrayList<Shelf>();
+        }
 
-      public void addShelf(Shelf s){
-        shelfContents.add(s);
-      }
+        public void addShelf(Shelf s) {
+            stacks.add(s);
+        }
     }
 
 
@@ -201,7 +206,7 @@ loop.  For this example take a look at how we'd write this with a for-each loop:
 
     public boolean hasTitle(String t){
       boolean returnValue = false;
-      for(Book b: this.shelfContents())
+      for(Book b: this.shelfContents
       {
         String title = b.getTitle();
         if(title.equals(t))
@@ -227,7 +232,7 @@ and  revise our code to make better use of ``return`` statements.
 .. code-block:: java
 
     public boolean hasTitle(String t){
-      for(Book b: this.shelfContents())
+      for(Book b: this.shelfContents
       {
         String title = b.getTitle();
 
@@ -313,7 +318,7 @@ most of those if I know "The Godfather" is close to the end.
 .. code-block:: java
 
     public boolean hasTitle(String t){
-      for(int i = this.shelfContents.size(); i > =0 ; i--)
+      for(int i = this.shelfContents.size(); i >= 0 ; i--)
       {
         Book b = shelfContents.get(i);
         String title = b.getTitle();
@@ -372,26 +377,26 @@ finally want to return our ``int`` variable.
 .. code-block:: java
 
     //new method
-    public int countBooksByAuthor(String auth){
-      //declare our counter
+    public int countBooksByAuthor(String auth) {
+      // declare our counter
       int counter = 0;
-      //iterate over every shelf:
-      for(Shelf s: this.shelfContents)
-      {
-          //iterate over every book on a given shelf
+
+      // iterate over every shelf:
+      for (Shelf s : this.stacks) {
+
+          // iterate over every book on a given shelf
           List<Book> bookList = s.getShelfContents();
-          for(Book b: bookList)
-          {
-            //if we find a book by our desired author...
-            if(b.getAuthor.equals(auth))
-            {
-              // increase counter by 1
-              counter++;
-            }
+          for (Book b : bookList) {
+
+              // if we find a book by our desired author...
+              if (b.getAuthor().equals(auth)) {
+                  // increase counter by 1
+                  counter++;
+              }
 
           }
       }
-      //return our count
+      // return our count
       return counter;
     }
 
@@ -405,20 +410,19 @@ to accumulate an as above, but we'll generate and return a List of Books.
 
 .. code-block:: java
 
-    //new method
     public List<Book> getAllBooksByAuthor(String auth){
       //declare our ArrayList
       List<Book> allBooks = new ArrayList<Book>();
 
       //iterate over every shelf:
-      for(Shelf s: this.shelfContents)
+      for(Shelf s: this.stacks)
       {
           //iterate over every book on a given shelf
           List<Book> bookList = s.getShelfContents();
           for(Book b: bookList)
           {
             //if we find a book by our desired author...
-            if(b.getAuthor.equals(auth))
+            if(b.getAuthor().equals(auth))
             {
               //add the book to our ArrayList
               allBooks.add(b);
