@@ -381,26 +381,26 @@ finally want to return our ``int`` variable.
 .. code-block:: java
 
     //new method
-    public int countBooksByAuthor(String auth) {
-      // declare our counter
+    public int countBooksByAuthor(String auth){
+      //declare our counter
       int counter = 0;
-
-      // iterate over every shelf:
-      for (Shelf s : this.stacks) {
-
-          // iterate over every book on a given shelf
+      //iterate over every shelf:
+      for(Shelf s: this.shelfContents)
+      {
+          //iterate over every book on a given shelf
           List<Book> bookList = s.getShelfContents();
-          for (Book b : bookList) {
-
-              // if we find a book by our desired author...
-              if (b.getAuthor().equals(auth)) {
-                  // increase counter by 1
-                  counter++;
-              }
+          for(Book b: bookList)
+          {
+            //if we find a book by our desired author...
+            if(b.getAuthor.equals(auth))
+            {
+              // increase counter by 1
+              counter++;
+            }
 
           }
       }
-      // return our count
+      //return our count
       return counter;
     }
 
@@ -578,10 +578,3 @@ Programming Practice 2
 
 .. extrtoolembed:: 'Programming Practice 2'
    :workout_id: 1344
-
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week9ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
