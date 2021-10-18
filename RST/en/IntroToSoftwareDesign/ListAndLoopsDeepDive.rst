@@ -141,6 +141,7 @@ To make a single shelf, we'd create an object of our shelf class and add it to
 our ArrayList:
 
 .. code-block:: java
+
     //Create a single shelf
     public void createShelves(){
         Shelf s = new Shelf();
@@ -338,7 +339,7 @@ to the Book object at index 0.
 Check Your Understanding: Loop Idioms
 -------------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz2Summ.html ka
    :long_name: Loop Idioms
 
 
@@ -516,7 +517,7 @@ programming errors and thereby makes programs safer and more robust.
 Check Your Understanding: Generics
 -----------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz1Summ.html ka
    :long_name: Generics
 
 
@@ -556,27 +557,5 @@ that hasn't been initialized yet!
 Check Your Understanding: Null
 ------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz3Summ.html ka
    :long_name: Null
-
-
-
-Syntax Practice 2b: Subclass Constructors
------------------------------------------
-
-.. extrtoolembed:: 'Syntax Practice 2b: Subclass Constructors'
-  :workout_id: 1343
-
-
-Programming Practice 2
-----------------------
-
-.. extrtoolembed:: 'Programming Practice 2'
-  :workout_id: 1344
-
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week9ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
