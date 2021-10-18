@@ -7,16 +7,17 @@
    :author: Molly
 
 
-More On Lists and Loops
-=======================
+Lists, Loop Idioms, Generics, and the Null Keyword
+==================================================
 
-Last week we talked about what Lists are and how they work.  This week, we'll
-focus more on why they can be useful in more complicated programming tasks.
+Last week we talked about what ``List``\ s are and how they work.  This week,
+we'll focus more on why they can be useful in more complicated programming tasks.
 
-Making a Library
-----------------
+Modelling the Contents of a Library
+-----------------------------------
 
-In this module, we'll be using Java to try to model a library of books.
+As an example, let's try to model a library of books inside a computer
+program.
 To start with, lets create a ``Book`` class with fields tracking the title,
 author, and ISBN number.
 
@@ -28,11 +29,11 @@ author, and ISBN number.
        private String author;
        private int isbn;
 
-       public Book(String t, String a, int i)
+       public Book(String aTitle, String anAuthor, int theISBN)
        {
-           this.title = t;
-           this.author = a;
-           this.isbn = i;
+           this.title = aTitle;
+           this.author = anAuthor;
+           this.isbn = theISBN;
        }
 
        public String getTitle()
@@ -51,36 +52,43 @@ author, and ISBN number.
        }
    }
 
-Once a book is created, we won't need to change any of these fields, thus we only
-need to create getters - no setters.
+Once a book is created, we won't need to change any of these fields, thus
+we only need to create getter methods. No setter methods when the fields
+are read-only.
 
-Next, we want to represent a shelf, which can store up to 50 books:
+Next, we want to represent a *shelf*, which can store up to 50 books.
+Obviously, we don't want to create 50 fields to hold the books, and 50
+getter and setter methods to change them. Instead, we will store the
+books in a list of books, and provide a method to add another book
+to the shelf.
 
 .. code-block:: java
+
+   import java.uti.*;
 
    public class Shelf
    {
        private int maxCapacity;
-       private List<Book> shelfContents;
+       private List<Book> contents;
 
-       public Shelf(int id)
+       public Shelf()
        {
            maxCapacity = 50;
-           shelfContents = new ArrayList<Book>();
+           contents = new ArrayList<Book>();
        }
 
        // adds a book if there is space on the shelf
-       public void addBook(Book b)
+       public void addBook(Book book)
        {
-           if(shelfContents.size() < 50)
+           if (contents.size() < maxCapacity)
            {
-               shelfContents.add(b);
+               contents.add(book);
            }
        }
 
-       public List<Book> getShelfContents()
+       public List<Book> getContents()
        {
-           return this.shelfContents;
+           return this.contents;
        }
    }
 
@@ -89,67 +97,82 @@ We'll also have a library which contains many shelves:
 
 .. code-block:: java
 
-    public class Library{
-      private List<Shelf> stacks;
+   import java.util.*;
 
-      public Shelf(){
-        stacks = new ArrayList<Shelf>();
-      }
+   public class Library
+   {
+       private List<Shelf> stacks;
 
-      public void addShelf(Shelf s){
-        shelfContents.add(s);
-      }
-    }
+       public Shelf()
+       {
+           stacks = new ArrayList<Shelf>();
+       }
+
+       public void addShelf(Shelf shelf)
+       {
+           stacks.add(shelf);
+       }
+   }
 
 
-We'll be making this basic representation more complicated as we go through today's module.
+We'll be enhancing this basic as we go in the following sections.
+
 
 Looping Idioms
 --------------
 
 An "idiom" is a common pattern or expression.  When working with loops in Java,
-you may begin to see some common patterns in what loops can do.
-For Loops are particularly good for situations when you need to:
+you may begin to see some common patterns in how loops are used.
+For loops are particularly good for situations when you need to:
 
-* Repeat code some number of times
-* Find the fist object (for some condition)
-* Find the last object (for some condition)
+* Repeat code a specific number of times
+* Repeat over a sequence of positions
 * Accumulate an answer over some numeric range
 
-Repeat code some number of times: Shelving Books
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In addition, loops are often used for searching through a sequence of values
+to find the first (or last) value matching some condition.
 
-Lets start in our ``Library`` class by creating some shelves for Books.
+
+Repeating a Specific Number of Times: Shelving Books
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Lets start in our ``Library`` class by creating some shelves for books.
 
 .. code-block:: java
 
-    public class Library{
-      private List<Shelf> stacks;
+   import java.util.*;
 
-      public Shelf(){
-        stacks = new ArrayList<Shelf>();
-      }
+   public class Library
+   {
+       private List<Shelf> stacks;
 
-      public void addShelf(Shelf s){
-        shelfContents.add(s);
-      }
+       public Shelf()
+       {
+           stacks = new ArrayList<Shelf>();
+       }
 
-      //new method!
-      public void createShelves(){
-        //will add Shelf objects to our ArrayList called stacks
-      }
-    }
+       public void addShelf(Shelf shelf)
+       {
+           stacks.add(shelf);
+       }
+
+       // new method
+       public void createShelves()
+       {
+           // will add Shelf objects to our stacks
+       }
+   }
 
 To make a single shelf, we'd create an object of our shelf class and add it to
-our ArrayList:
+our list:
 
 .. code-block:: java
 
    // Create a single shelf
    public void createShelves()
    {
-       Shelf s = new Shelf();
-       this.stacks.add(s);
+       Shelf shelf = new Shelf();
+       this.stacks.add(shelf);
    }
 
 However, as the name ``createShelves`` implies, we may want to make many shelves
@@ -158,160 +181,184 @@ specifies how many shelves we want to make:
 
 .. code-block:: java
 
-    //Create n shelves
-    public void createShelves(int n){
-        for (int i = 0; i<n; i++)
-        {
-            Shelf s = new Shelf();
-            this.stacks.add(s);
-        }
+   public void createShelves(int n)
+   {
+       for (int i = 0; i < n; i++)
+       {
+            Shelf shelf = new Shelf();
+            this.stacks.add(shelf);
+       }
+   }
 
-    }
-
-Counter-controlled loops are the best option for when you want to run some code
-a set number of times!
-
-
-Finding the First Object That Matches Some Condition: Searching for a Book
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Finding the First Object with a For-Each
-""""""""""""""""""""""""""""""""""""""""
-
-Lets say someone came into our library and asked if we had the book "Catch-22"
-in stock.  We would need some way to determine if this book was on one of our shelves.
-
-To accomplish this, we'll add a method to our ``Shelf`` class that will return ``true``
-if a book with a given title is on that shelf.
+Counter-controlled loops are a good choice when you want to perform an
+action a specific number of times.
 
 
-.. code-block:: java
+Finding the First Match: Searching for a Book
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public class Shelf{
-      private int maxCapacity;
-      private List<Book> shelfContents;
+Finding a Match with a For-Each
+"""""""""""""""""""""""""""""""
 
-      public Shelf(int id){
-        maxCapacity = 50;
-        shelfContents = new ArrayList<Book>();
-      }
+Lets say someone came into our library and asked if we had the
+book "Catch-22".  We would need some way to determine if this book
+was on one of our shelves.
 
-      //new method!
-      public boolean hasTitle(String t){
-        //should return true if a book with a title matching the parameter t
-        //is in our shelfContents arrayList
-        //otherwise return false
-      }
+To accomplish this, we'll add a method to our ``Shelf`` class that
+will return ``true`` if a book with a given title is on that shelf.
 
-We could accomplish this either with a counter-controlled for loop or a for-each
-loop.  For this example take a look at how we'd write this with a for-each loop:
 
 .. code-block:: java
 
-    public boolean hasTitle(String t){
-      boolean returnValue = false;
-      for(Book b: this.shelfContents())
-      {
-        String title = b.getTitle();
-        if(title.equals(t))
-        {
-          returnValue = true;
-        }
-      }
-      return returnValue;
-    }
+   import java.util.*;
+   
+   public class Shelf
+   {
+       private int maxCapacity;
+       private List<Book> contents;
 
-Here, we iterate through every Book object in the ArrayList ``shelfContents``.
-In each iteration we declare a String variable called ``title`` that is set to
+       public Shelf()
+       {
+           maxCapacity = 50;
+           contents = new ArrayList<Book>();
+       }
+
+       // new method
+       public boolean hasTitle(String title)
+       {
+           // should return true if a book with the specified title
+           // is in our list of books,
+           // otherwise return false
+      }
+
+We could accomplish this either with a counter-controlled loop or a for-each
+loop.  Let's look at how we'd write this with a for-each loop:
+
+.. code-block:: java
+
+   public boolean hasTitle(String title)
+   {
+       boolean result = false;
+       for (Book book : this.contents())
+       {
+           if(title.equals(book.getTitle()))
+           {
+               result = true;
+           }
+       }
+       return result;
+   }
+
+Here, we iterate through every ``Book``` in the list of ``contents``.
+In each iteration we declare the title we want to
 the title of whatever book we're looking at.
 
-If we find a book with a title that matches our parameter String ``t``, we set
-the boolean ``returnValue`` to ``true``. Once our loop has finished, we return
-whatever ``returnValue`` has been set to.
+If we find a book with a title that matches our parameter ``title``, we set
+the boolean ``result`` to ``true``. Once our loop has finished, we return
+whatever ``result`` has been set to.
 
 However, once we find the book we're looking for, there is no need to continue
-looking through the rest of the shelf.  Instead, lets get rid of ``returnValue``
+looking through the rest of the shelf.  Instead, lets get rid of ``result``
 and  revise our code to make better use of ``return`` statements.
 
 .. code-block:: java
 
-    public boolean hasTitle(String t){
-      for(Book b: this.shelfContents())
-      {
-        String title = b.getTitle();
+   public boolean hasTitle(String title)
+   {
+       for (Book book : this.contents())
+       {
+           if (title.equals(book.getTitle()))
+           {
+               return true;
+           }
+       }
+       return false;
+   }
 
-        if(title.equals(t))
-        {
-          return true;
-        }
-      }
-      return false;
-    }
 
+A ``return`` statement terminates a method on the line where it is executed,
+so no other code within the method will be executed after the ``return``
+happens.
+With this change, instead of looking through all the books and not returning
+the answer until searching the entire shelf, we have changed the if statement
+so that as soon as we find a matching title, the method *immediately*
+returns true. This ends the method immediately, stopping the loop in its
+tracks as soon as the desired book is found. However, if no books match the
+given title, the loop continues until all loops have been checked. After
+the loop a separate return statement returns the answer in that situation.
 
-Return statements terminate a method on the line they're run.
-Here, instead of returning either ``true`` or ``false`` after looping through all
-of the books on the shelf, we stop as soon as we find one with a matching title.
+This particular approach is called **early loop termination** or
+an **early loop exit**, where we
+immediately stop the loop as soon as the answer is available, so that we
+avoid any unnecessary work.
 
 
 Finding the First Object with a Counter-Controlled Loop
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 It would be equally correct to implement this method with a counter-controlled
-for loop.
+for loop. In this style, we would access the list by position using an
+index variable.
 
 .. code-block:: java
 
-    public boolean hasTitle(String t){
-      for(int i = 0; i < this.shelfContents.size(); i++)
-      {
-        Book b = shelfContents.get(i);
-        String title = b.getTitle();
+   public boolean hasTitle(String title)
+   {
+       for (int i = 0; i < this.contents.size(); i++)
+       {
+           Book book = this.contents.get(i);
+           if (title.equals(book.getTitle()))
+           {
+               return true;
+           }
+       }
+       return false;
+   }
 
-        if(title.equals(t))
-        {
-          return true;
-        }
-      }
-      return false;
-    }
-
-You'll notice, outside of the how the actual for loop is structured, this implementation
-is almost identical to the for-each implementation above.
+You'll notice that other than the nature of the for loop, this implementation
+is almost identical to the for-each implementation in the previous section.
 
 
 The Break Keyword
 """""""""""""""""
 
-Sometimes, we may want a loop to end early without causing the entire method to terminate.
-In these situations, we can use the ``break`` command:
+Sometimes, we may want a loop to end early without causing the entire method
+to terminate. In these situations, we can use the ``break`` command:
 
 .. code-block:: java
 
-    for(int i = 0; i < this.shelfContents.size(); i++)
-    {
-        Book b = shelfContents.get(i);
-        String title = b.getTitle();
+   for (int i = 0; i < this.contents.size(); i++)
+   {
+       Book book = this.contents.get(i);
+       if (title.equals(book.getTitle()))
+       {
+           break;
+       }
+   }
+   System.out.println("Found it!");
 
-        if(title.equals(t))
-        {
-          break;
-        }
-    }
-    System.out.println("Found it!");
+Here, once a book with a matching title is found, the ``break`` statement
+is executed. This immediately stops, or "breaks", the loop, and execution
+continues with the statement following the loop.
 
-Here, once a book with a matching title is found, the loop stops and the print statement
-runs.
-
-You can use a break statement with any type of iteration, running ``break`` in a for-each
-or while loop will stop the loops in just the same way.
+You can use a break statement with any type of loop. Executing ``break``
+in a for-each or while loop will stop those loops in just the same way.
+However, make sure you understand the purpose when you use a ``break``
+statement, since they can make code harder to read and more error-prone.
+Using a single ``break``` when you want an early loop exit to terminate
+the loop when the answer is found is useful, but placing many ``break``
+statements in a loop, or using them without clearly understanding the
+plan, is more likely to create bugs. In fact, many programmers stay away
+from ``break`` except in early exit situations because of its potential
+for problems.
 
 
 Finding the Last Object with a For Loop
 """""""""""""""""""""""""""""""""""""""
 
-The loops above will find the first ``Book`` that matches the title passed as a paramter.
-It can also be useful to find the last item in a List that matches our criteria.
+The loops above will find the very first book in the list with a matching
+title. However, sometimes you might want to find the last item in a list
+instead.
 
 For example, what if a person came to the library asking for "The Godfather" and I
 remember putting that book on the shelf that just a moment ago.
