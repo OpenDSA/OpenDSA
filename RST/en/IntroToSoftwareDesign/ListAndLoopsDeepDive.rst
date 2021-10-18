@@ -22,28 +22,34 @@ author, and ISBN number.
 
 .. code-block:: java
 
-    public class Book{
-      private String title;
-      private String author;
-      private int isbn;
+   public class Book
+   {
+       private String title;
+       private String author;
+       private int isbn;
 
-      public Book(String t, String a, int i){
-        this.title = t;
-        this.author = a;
-        this.isbn = i;
-      }
+       public Book(String t, String a, int i)
+       {
+           this.title = t;
+           this.author = a;
+           this.isbn = i;
+       }
 
-      //Getters for our field.
-      public String getTitle(){
-        return title;
-      }
-      public String getAuthor(){
-        return title;
-      }
-      public int getISBN(){
-        return isbn;
-      }
-    }
+       public String getTitle()
+       {
+           return title;
+       }
+
+       public String getAuthor()
+       {
+           return title;
+       }
+
+       public int getISBN()
+       {
+           return isbn;
+       }
+   }
 
 Once a book is created, we won't need to change any of these fields, thus we only
 need to create getters - no setters.
@@ -52,29 +58,31 @@ Next, we want to represent a shelf, which can store up to 50 books:
 
 .. code-block:: java
 
-    public class Shelf{
-      private int maxCapacity;
-      private List<Book> shelfContents;
+   public class Shelf
+   {
+       private int maxCapacity;
+       private List<Book> shelfContents;
 
-      public Shelf(int id){
-        maxCapacity = 50;
-        shelfContents = new ArrayList<Book>();
-      }
+       public Shelf(int id)
+       {
+           maxCapacity = 50;
+           shelfContents = new ArrayList<Book>();
+       }
 
-      //adds a book if there is space on the shelf
-      public void addBook(Book b){
-        if(shelfContents.size() < 50)
-        {
-          shelfContents.add(b);
-        }
+       // adds a book if there is space on the shelf
+       public void addBook(Book b)
+       {
+           if(shelfContents.size() < 50)
+           {
+               shelfContents.add(b);
+           }
+       }
 
-      }
-
-      public List<Book> getShelfContents(){
-        return this.shelfContents;
-      }
-
-    }
+       public List<Book> getShelfContents()
+       {
+           return this.shelfContents;
+       }
+   }
 
 
 We'll also have a library which contains many shelves:
@@ -136,12 +144,13 @@ To make a single shelf, we'd create an object of our shelf class and add it to
 our ArrayList:
 
 .. code-block:: java
-    //Create a single shelf
-    public void createShelves(){
-        Shelf s = new Shelf();
-        this.stacks.add(s);
-    }
 
+   // Create a single shelf
+   public void createShelves()
+   {
+       Shelf s = new Shelf();
+       this.stacks.add(s);
+   }
 
 However, as the name ``createShelves`` implies, we may want to make many shelves
 at one time. Instead, we'll change ``createShelves`` to take in a parameter that
@@ -544,7 +553,7 @@ code that will throw a null pointer exception.
     Pixel pix;
     pix.setRed(0); // This was a cause a NullPointerException.
 
-``NullPointerException``s are a common error for programmers to encounter.  Be
+``NullPointerException``\ s are a common error for programmers to encounter.  Be
 aware that if you see it in your own code, you're probably working with a variable
 that hasn't been initialized yet!
 
@@ -561,14 +570,14 @@ Syntax Practice 2b: Subclass Constructors
 -----------------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 2b: Subclass Constructors'
-  :workout_id: 1343
+   :workout_id: 1343
 
 
 Programming Practice 2
 ----------------------
 
 .. extrtoolembed:: 'Programming Practice 2'
-  :workout_id: 1344
+   :workout_id: 1344
 
 
 Check Your Understanding
