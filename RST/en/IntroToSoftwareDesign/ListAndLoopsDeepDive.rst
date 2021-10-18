@@ -655,12 +655,101 @@ code that will throw a null pointer exception.
 .. code-block:: java
 
    Pixel pix = null;
-   pix.setRed(0); // This was a cause a NullPointerException
+   pix.setRed(255); // This was a cause a NullPointerException
 
 ``NullPointerException``\ s are a common error for programmers to encounter.
 Be aware that if you see one arise in your own code, you're probably working
 with a variable that has not been set to refer to a specific object, or
 you are working with a method that sometimes returns no object.
+
+
+Diagnosing a Null Pointer Exception
+-----------------------------------
+
+First, remember that a ``NullPointerException``` (also called an "NPE") occurs
+when you try to use ``null``` as the receiver for something--basically, when
+you have a dot (".") used to call a method or reference a field, but the
+expression to the left of the dot (the "receiver") is ``null``. In other words,
+you have a "." where there is no object to act as the receiver.
+
+If this happens while executing a test, the test will fail. In the test
+results window, if you click on the failed test, the bottom half of the
+window will show the ``NullPointerException``` along with information about
+where it occurred, as shown in this example.
+
+.. odsafig:: Images/ColorSpace1.png
+   :align: center
+
+Here, by clicking on the failed test ``testMaxRed()``, the lower half of
+the BlueJ test window shows the information. If the error happened while you
+were not running tests, the same information would appear in BlueJ's
+terminal window instead.
+
+At the top of this information, you can see that NPE's normally do not contain
+any exception message or information.  You will aso see the class name of
+the exception, ``NullPointerException``. Do not simply look at the exception
+name and/or message--they are useful for saying what happened, but they are
+only part of the content. In addition, there is a (possibly long) list of
+methods below the exception's message. This list of methods is called a
+"stack trace", and it basically shows exactly where the failure occured, and
+how your program arrived at that location. The topmost entry in that list
+shows the class, method name, file name, and line number where the exception
+occurred. The file name and line number are in parentheses. Sometimes that
+is in your own code--if so, go directly to the specific line in the named
+file and you'll be right at the location where the exception occurred.
+
+For example, this stack trace points to the ``maxRed()`` method in the
+``TransformablePicture`` class, on line 38 of the class. If we look there,
+we find the line where the NPE occurred (taken from the previous section).
+
+.. code-block:: java
+
+   pix.setRed(255); // This was a cause a NullPointerException
+
+If the topmost line isn't your code--perhaps it is a library method--don't
+despair. While the exception might have happened in some method that is part
+of another class, it almost certainly happened because of the way your code
+called something. Just look lower down in the list. Look at the second method
+listed, the third method listed, the fourth, and so on, until you find a
+method in one of your own classes. Now you know exactly where in your own
+code the problem happened. Again, you can use the file name and line number
+to go right to the spot in your source code where the problem occurred. After
+that, it is time to debug--figure out why the problem happened, so you can
+fix it.
+
+To diagnose a null pointer exception once you've found the location, just look
+at the dots (periods) on the line where the exception occurs. There could be
+just one, or maybe several. Examine every single one of them. You need to
+figure out which one happens to have "null" (that is, no object) to the left
+of the dot. You can often do this by the process of elimination.
+
+In our example, the line where the problem arose contains ``pix.setRed(255);``,
+so there is only one dot. The name to the left of the dot is ``pix``, so this
+problem happened because ``pix`` was ``null``, but then we tried to use it
+to call a method as if an object was there.
+
+Some of the most common causes for NPEs in this course are:
+
+* You are not initializing a field or variable properly
+* You are using the result of a method, assuming that the method always returns an object, when the method may in fact return null sometimes
+* You are passing null as a parameter value to a library method, when an actual object is required
+
+You'll need to go through each "dot" on the line where the exception occurs
+to rule out these kinds of problems and narrow down the possibilities until
+you figure out where the null is occurring and why. If you have to look
+several lines down the stack trace, it is always possible you're in the last
+situation mentioned above--instead of having a null value to the left of
+a "dot", you are instead passing a null value to some other method (a
+library method, or a method inherited from a parent class).
+
+Try this and see if you can figure it out. While these are the most common,
+there are a limitless number of ways you can experience this problem, but
+the process of diagnosing them is always the same. If you have trouble
+figuring out the location of the error, post the contents of your exception
+message and stack trace as a follow-up here for more info. If you find the
+line where the problem is occurring but cannot determine why/how after
+trying the advice above, post the line where the NPE occurs along with
+the stack trace so we can coach you through it.
 
 
 Check Your Understanding: Null
@@ -669,6 +758,21 @@ Check Your Understanding: Null
 .. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz3Summ.html ka
    :long_name: Null
 
+
+Using BlueJ's Debugger
+----------------------
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/w_iy0jmMmkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+Using BlueJ's Code Pad
+----------------------
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/OXQoxhuriGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 Syntax Practice 9
