@@ -103,7 +103,7 @@ We'll also have a library which contains many shelves:
    {
        private List<Shelf> stacks;
 
-       public Shelf()
+       public Library()
        {
            stacks = new ArrayList<Shelf>();
        }
@@ -146,7 +146,7 @@ Lets start in our ``Library`` class by creating some shelves for books.
    {
        private List<Shelf> stacks;
 
-       public Shelf()
+       public Library()
        {
            stacks = new ArrayList<Shelf>();
        }
@@ -222,6 +222,8 @@ will return ``true`` if a book with a given title is on that shelf.
            maxCapacity = 50;
            contents = new ArrayList<Book>();
        }
+       
+       // other methods omitted ...
 
        // new method
        public boolean hasTitle(String title)
@@ -229,7 +231,8 @@ will return ``true`` if a book with a given title is on that shelf.
            // should return true if a book with the specified title
            // is in our list of books,
            // otherwise return false
-      }
+       }
+   }
 
 We could accomplish this either with a counter-controlled loop or a for-each
 loop.  Let's look at how we'd write this with a for-each loop:
@@ -360,31 +363,33 @@ The loops above will find the very first book in the list with a matching
 title. However, sometimes you might want to find the last item in a list
 instead.
 
-For example, what if a person came to the library asking for "The Godfather" and I
-remember putting that book on the shelf that just a moment ago.
+For example, what if a person came to the library asking for "The Godfather"
+and I remember putting that book on the shelf just a moment ago.
 
-if our shelfContents List contained 50 books, there is no need to search through
-most of those if I know "The Godfather" is close to the end.
+if the shelf's list of contents contained 50 books, there is no need to
+search through most of those if I know "The Godfather" is close to the end.
+Instead, we could use a counter-controlled loop to start at the last
+position of the list, and count *backwards*.
 
 .. code-block:: java
 
-    public boolean hasTitle(String t){
-      for(int i = this.shelfContents.size(); i >= 0; i--)
-      {
-        Book b = shelfContents.get(i);
-        String title = b.getTitle();
+   public boolean hasTitle(String title)
+   {
+       for (int i = this.contents.size(); i >= 0; i--)
+       {
+           Book book = shelfContents.get(i);
+           if (title.equals(book.getTitle()))
+           {
+               return true;
+           }
+       }
+       return false;
+   }
 
-        if(title.equals(t))
-        {
-          return true;
-        }
-      }
-      return false;
-    }
+This loop would start with the book at the highest index in the list and work
+its way down to index 0. This loop still uses the *early loop exit* technique
+to stop the loop as soon as the desired book is found.
 
-
-This loop would start at the Book object at the highest index and work its way down
-to the Book object at index 0.
 
 Check Your Understanding: Loop Idioms
 -------------------------------------
@@ -394,175 +399,216 @@ Check Your Understanding: Loop Idioms
 
 
 
-Accumulating an Answer: Calculate the Total number of Books by an Author
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Accumulating an Answer: Count the Books by an Author
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lets assume for this problem that someone has asked how many Stephen King books
+Suppose another library visitor has asked how many books by Stephen King
 our library carries.
 
 .. code-block:: java
 
-    public class Library{
-      private List<Shelf> stacks;
+   import java.util.*;
 
-      public Shelf(){
-        stacks = new ArrayList<Shelf>();
-      }
+   public class Library
+   {
+       private List<Shelf> stacks;
 
-      public void addShelf(Shelf s){
-        shelfContents.add(s);
-      }
+       public Library()
+       {
+           stacks = new ArrayList<Shelf>();
+       }
 
-      //new method
-      public int countBooksByAuthor(String auth){
+       public void addShelf(Shelf shelf)
+       {
+           stack.add(shelf);
+       }
 
-      }
+       // new method
+       public int countBooksByAuthor(String author)
+       {
+           // ...
+       }
+   }
 
-In this method, we want to use a loop to calculate the number of books by a given
-author.  To do this, we will declare an ``int`` variable and initialize it to 0.
-Then, we will need to iterate over every shelf in our library, and search every shelf
-for any books that match our parameter ``auth``.  When we find one, we want to increment
-the ``int`` variable by 1 using our ``++`` operator.  When we finish looping, we
-finally want to return our ``int`` variable.
+In this method, we want to use a loop to count the number of books by a given
+author. We know how to use an if statement to check a book to see if the
+author matches. If we do this to a loop, we can add one to a counter variable
+each time we find a book that matches. To do this, we will need a variable
+to store the count of matching books. This kind of variable is often
+called an **accumulator**--a variable that "accumulates" the answer we
+are calculating (or counting, or summing, or whatever). Each time we go
+through another iteration of the loop, we add a little bit more information
+to the accumulator, and when our loop has finished repeating, the accumulator
+holds the whole answer.
 
 .. code-block:: java
 
-    //new method
-    public int countBooksByAuthor(String auth){
-      //declare our counter
-      int counter = 0;
-      //iterate over every shelf:
-      for(Shelf s: this.shelfContents)
-      {
-          //iterate over every book on a given shelf
-          List<Book> bookList = s.getShelfContents();
-          for(Book b: bookList)
-          {
-            //if we find a book by our desired author...
-            if(b.getAuthor.equals(auth))
-            {
-              // increase counter by 1
-              counter++;
-            }
+   public int countBooksByAuthor(String author)
+   {
+       // declare our counter (accumulator)
+       int count = 0;
+       // iterate over every shelf:
+       for (Shelf shelf : this.stacks)
+       {
+           // iterate over every book on a given shelf
+           for (Book book : shelf.getContents())
+           {
+               // if we find a book by our desired author...
+               if (book.getAuthor.equals(author))
+               {
+                   // increase counter by 1
+                   count++;
+               }
+           }
+       }
+       // return our count
+       return count;
+   }
 
-          }
-      }
-      //return our count
-      return counter;
-    }
+To use our accumulator, we declare an ``int`` variable called ``count`` and
+initialize it to 0.
+Then, we use two loops. The outer loop repeats for every shelf in our library.
+The inner loop searches each shelf for any books that match our
+parameter ``author``.  When we find one, we increment (add one to)
+the counter using the ``++`` operator.  When we finish looping, we
+finally return the ``count`` we have accumulated.
+
+Note that the value in ``count`` is not computed all at once. It is built
+up incrementally, one book at a time. At any point in time, ``count``
+represents the total number of books by the given author we have seen so
+far in the combined operation of the two loops. It is only when the
+loops have entirely finished that ``count`` has reached the final answer.
 
 
 Accumulating a Different Kind of Answer
 """""""""""""""""""""""""""""""""""""""
 
-What if, instead of just knowing the number of Stephen King books our library has,
-we wanted to pull them all into one place?  Here, we will use the same structure
-to accumulate an as above, but we'll generate and return a List of Books.
+What if, instead of just knowing the number of Stephen King books in our
+library, we wanted to pull them all into one place?  Here, we will use the
+same structure to accumulate an as above, but we'll generate and return a
+list of books that contains all of that author's books. This time, our
+accumulator will be a list, rather than a simple number.
 
 .. code-block:: java
 
-    //new method
-    public List<Book> getAllBooksByAuthor(String auth){
-      //declare our ArrayList
-      List<Book> allBooks = new ArrayList<Book>();
+   // new method
+   public List<Book> getAllBooksByAuthor(String author)
+   {
+       // declare our List
+       List<Book> foundBooks = new ArrayList<Book>();
 
-      //iterate over every shelf:
-      for(Shelf s: this.shelfContents)
-      {
-          //iterate over every book on a given shelf
-          List<Book> bookList = s.getShelfContents();
-          for(Book b: bookList)
-          {
-            //if we find a book by our desired author...
-            if(b.getAuthor.equals(auth))
-            {
-              //add the book to our ArrayList
-              allBooks.add(b);
-            }
+       // iterate over every shelf:
+       for (Shelf shelf : this.stacks)
+       {
+           // iterate over every book on a given shelf
+           for(Book books : shelf.getContents())
+           {
+               // if we find a book by our desired author...
+               if (book.getAuthor().equals(author))
+               {
+                   // add the book to our List
+                   foundBooks.add(book);
+               }
+           }
+       }
+       // return our list
+       return foundBooks;
+   }
 
-          }
-      }
-      //return our count
-      return allBooks;
-    }
+Here, instead of incrementing a counter variable, every time we find a book
+that matches our author parameter, we add it to a list (our accumulator).
+Then after we've looked through all shelves, we return that list.
 
-Here, instead of incrementing a counter variable, every time we find a book that
-matches our author parameter, we add it to a new ArrayList.  Then after we've looked
-everywhere, we return that ArrayList.
-
-This can be useful when we have many items that fulfil the criteria in our if statement.
-
+This can be useful when we have many items that fulfill the criteria in our
+if statement.
 
 
-Generics
---------
+Generics Revisited
+------------------
 
-So far, whenever we've worked with variables, we've always known what type they are.
-For instance, whenever we're working with a ``String`` we'll declare a variable like
-``String s = "Hello World";``.  However, there are some cases in Java when we'll
-need to create methods without knowing what type of data we'll be working with.
-For these, we use what is called the **Generic Type**.
+So far, whenever we've worked with variables, we've always known what type
+they are.
+For instance, whenever we're working with a ``String`` we'll declare a
+variable like
+``String s = "Hello World";``.  However, there are some cases in Java when
+we'll need to create methods without knowing what type of data we'll be
+working with--or, more properly, so they'll work with *any type*.
+For these, we use what is called a **Generic Type Parameter** to represent
+the type of data we're working with.
 
-Declaring classes that use the generic type construct involves using new syntax
-to refer to the class name. Such classes and interfaces, including those in the
-collections framework, use angle brackets containing one
+Declaring classes that use generic type parameter(s) involves using new syntax
+to refer to the class name. Such classes and interfaces, including those for
+Java's collections, use angle brackets (<...>) containing one
 or more variables (separated by commas) to refer to unspecified type names.
-For example, you would use <E> or <K,V> to refer to unspecified type names.
-Thus, names of classes or interfaces implemented with generic types are written
-with the syntax ClassName<E>.
+For example, you would use <Element> or <Key, Value> to refer to unspecified
+type names. Sometimes, you will see super short variable names used in
+this way, such as <E> or <K, V>, although the longer names are more
+understandable for beginners.
+Using this technique, names of classes or interfaces implemented with generic
+types are written with the syntax ``ClassName<E>``.
 
-Lets take a look at a class that uses the generic type.  The following ``Box``
-class can hold a piece of any type of data:
-
-.. code-block:: java
-
-    public class Box <T>{
-      private T value;
-
-      public Box(T val){
-        value = val;
-      }
-
-      public T getValue(){
-        return value;
-      }
-
-      public void setValue(T val){
-        value = val;
-      }
-
-    }
-
-
-We could then instantiate a ``Box`` object by running
+Lets take a look at a class that uses a generic type parameter.  The
+following ``Box`` class can hold a piece of any type of data. We'll use
+the parameter name ``Content`` to refer to the type of data held in
+the ``Box``.
 
 .. code-block:: java
 
-    Box<Integer> box1 = new Box<Integer>(42);
+   public class Box <Content>
+   {
+       private Content value;
+
+       public Box(Content newValue)
+       {
+           this.value = newValue;
+       }
+
+       public Content getValue()
+       {
+           return this.value;
+       }
+
+       public void setValue(Content newValue)
+       {
+           this.value = newValue;
+       }
+   }
+
+We could then create a ``Box`` object.
+
+.. code-block:: java
+
+    Box<String> box1 = new Box<String>("surprise");
 
 
 And not all ``Box`` objects need to be the same type:
 
 .. code-block:: java
 
-    Box<Integer> box1 = new Box<Integer>(42);
-    Box<String> box2 = new Box<String>("banana");
+    Box<String> box1 = new Box<String>("surprise");
+    Box<Integer> box2 = new Box<Integer>(42);
 
-In effect, the ``<T>`` serves as parameter for the type of objects that will be
-stored in the ``Box``.
+In effect, the ``<Content>`` serves as parameter for the type of objects that
+will be stored in the ``Box``.
 
-One benefit a generic type provides is type checking of method arguments at
-compile time.  For example, the following code would cause an error when compiled:
+One benefit a generic type provides is checking the types of method arguments
+at compile time.  For example, the following code would cause an error when
+compiled:
 
 .. code-block:: java
 
-    Box<Integer> box1 = new Box<Integer>(42);
-    box1.setValue("banana");
+    Box<String> box1 = new Box<String>("surprise");
+    box1.setValue(42);
 
-Thus, if a programmer wishes to create a List of String objects, using generic
-types will help guarantee that the objects being stored are actually of type
-String. In this way, using generic types helps to reduce the number of
-programming errors and thereby makes programs safer and more robust.
+Thus, if a programmer wishes to create a list of strings, using generic
+types will help guarantee that the objects being stored actually belong to
+the correct type. Even though you can create a list of any type of object,
+this specific list only contains strings, nothing else. In this way, using
+generic types helps to reduce the number of programming errors and thereby
+makes programs safer and more robust. At the same time, it allows us to
+create more reusable classes, since we can create types that work with a
+variety of other classes without having to know in advance what those
+classes are.
 
 
 Check Your Understanding: Generics
@@ -575,34 +621,46 @@ Check Your Understanding: Generics
 The Null Keyword
 ----------------
 
-When you create an object variable, remember that you are storing a reference
+When you declare an object variable, remember that you are storing a reference
 to an object. In Java, the keyword ``null`` is a special value that means "no
 object". You can declare and initialize object variables this way:
 
 .. code-block:: java
 
-    Pixel pix = null;
+   Pixel pix = null;
 
-Additionally, most objects will default to a value of ``null`` if they are declared
-but not initialized:
+This can sometimes be useful when you do not want to create a new object or
+initialize the variable to refer to a specific existing object. It can also
+be useful when a method should return an object, but sometimes there is no
+object to return. Think of a "find" method that looks for a specific book,
+and returns that book if it is found. What happens if it is not found?
+In many cases, having such a method return the special value ``null`` is
+a useful way to indicate that a method returns no object, perhaps because
+"no object" is a meaningful answer.
 
-.. code-block:: java
+If you try to use a variable that has ``null`` as its value (or an expression
+that returns ``null``), either to access a field or invoke a
+method, Java throws a ``NullPointerException``. An exception indicates
+that an unusual situation has occurred, and this can mean your program
+"broke the rules"--either the rules of Java program behavior or the rules of
+a specific library method or class.
 
-    Pixel pix;  // pix is null
-    pix = new Pixel(0, 0); // pix now refers to a Pixel object
-
-If you try to use a ``null`` value, either by accessing an attribute or invoking a
-method, Java throws a ``NullPointerException``.  The following is an example of
+Programmers often use the phrase "null pointer exception" or the acronym
+NPE to refer to these types of errors. NPEs virtually always mean there
+is a bug in your program, because your program tried to use "null" in a
+situation where an object was required, but null means "no object", so
+the requirement wasn't met. The following is an example of
 code that will throw a null pointer exception.
 
 .. code-block:: java
 
-    Pixel pix;
-    pix.setRed(0); // This was a cause a NullPointerException.
+   Pixel pix = null;
+   pix.setRed(0); // This was a cause a NullPointerException
 
-``NullPointerException``\ s are a common error for programmers to encounter.  Be
-aware that if you see it in your own code, you're probably working with a variable
-that hasn't been initialized yet!
+``NullPointerException``\ s are a common error for programmers to encounter.
+Be aware that if you see one arise in your own code, you're probably working
+with a variable that has not been set to refer to a specific object, or
+you are working with a method that sometimes returns no object.
 
 
 Check Your Understanding: Null
@@ -613,15 +671,15 @@ Check Your Understanding: Null
 
 
 
-Syntax Practice 2b: Subclass Constructors
------------------------------------------
+Syntax Practice 9
+-----------------
 
-.. extrtoolembed:: 'Syntax Practice 2b: Subclass Constructors'
-   :workout_id: 1343
+.. extrtoolembed:: 'Syntax Practice 9'
+   :workout_id: 1513
 
 
-Programming Practice 2
+Programming Practice 9
 ----------------------
 
-.. extrtoolembed:: 'Programming Practice 2'
-   :workout_id: 1344
+.. extrtoolembed:: 'Programming Practice 9'
+   :workout_id: 1514
