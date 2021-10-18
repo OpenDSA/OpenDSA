@@ -22,33 +22,34 @@ author, and ISBN number.
 
 .. code-block:: java
 
-    public class Book {
-        private String title;
-        private String author;
-        private int isbn;
+   public class Book
+   {
+       private String title;
+       private String author;
+       private int isbn;
 
-        public Book(String t, String a, int i) {
-            this.title = t;
-            this.author = a;
-            this.isbn = i;
-        }
+       public Book(String t, String a, int i)
+       {
+           this.title = t;
+           this.author = a;
+           this.isbn = i;
+       }
 
+       public String getTitle()
+       {
+           return title;
+       }
 
-        // Getters for our field.
-        public String getTitle() {
-            return title;
-        }
+       public String getAuthor()
+       {
+           return title;
+       }
 
-
-        public String getAuthor() {
-            return author;
-        }
-
-
-        public int getISBN() {
-            return isbn;
-        }
-    }
+       public int getISBN()
+       {
+           return isbn;
+       }
+   }
 
 Once a book is created, we won't need to change any of these fields, thus we only
 need to create getters - no setters.
@@ -57,45 +58,47 @@ Next, we want to represent a shelf, which can store up to 50 books:
 
 .. code-block:: java
 
-    public class Shelf {
-        private int maxCapacity;
-        private List<Book> shelfContents;
+   public class Shelf
+   {
+       private int maxCapacity;
+       private List<Book> shelfContents;
 
-        public Shelf() {
-            this.maxCapacity = 50;
-            shelfContents = new ArrayList<Book>();
-        }
+       public Shelf(int id)
+       {
+           maxCapacity = 50;
+           shelfContents = new ArrayList<Book>();
+       }
 
+       // adds a book if there is space on the shelf
+       public void addBook(Book b)
+       {
+           if(shelfContents.size() < 50)
+           {
+               shelfContents.add(b);
+           }
+       }
 
-        // adds a book if there is space on the shelf
-        public void addBook(Book b) {
-            if (shelfContents.size() < maxCapacity) {
-                shelfContents.add(b);
-            }
-
-        }
-
-        public List<Book> getShelfContents() {
-            return this.shelfContents;
-        }
-
-    }
+       public List<Book> getShelfContents()
+       {
+           return this.shelfContents;
+       }
+   }
 
 
 We'll also have a library which contains many shelves:
 
 .. code-block:: java
 
-    public class Library {
-        private List<Shelf> stacks;
+    public class Library{
+      private List<Shelf> stacks;
 
-        public Library() {
-            stacks = new ArrayList<Shelf>();
-        }
+      public Shelf(){
+        stacks = new ArrayList<Shelf>();
+      }
 
-        public void addShelf(Shelf s) {
-            stacks.add(s);
-        }
+      public void addShelf(Shelf s){
+        shelfContents.add(s);
+      }
     }
 
 
@@ -142,12 +145,12 @@ our ArrayList:
 
 .. code-block:: java
 
-    //Create a single shelf
-    public void createShelves(){
-        Shelf s = new Shelf();
-        this.stacks.add(s);
-    }
-
+   // Create a single shelf
+   public void createShelves()
+   {
+       Shelf s = new Shelf();
+       this.stacks.add(s);
+   }
 
 However, as the name ``createShelves`` implies, we may want to make many shelves
 at one time. Instead, we'll change ``createShelves`` to take in a parameter that
@@ -207,7 +210,7 @@ loop.  For this example take a look at how we'd write this with a for-each loop:
 
     public boolean hasTitle(String t){
       boolean returnValue = false;
-      for(Book b: this.shelfContents
+      for(Book b: this.shelfContents())
       {
         String title = b.getTitle();
         if(title.equals(t))
@@ -233,7 +236,7 @@ and  revise our code to make better use of ``return`` statements.
 .. code-block:: java
 
     public boolean hasTitle(String t){
-      for(Book b: this.shelfContents
+      for(Book b: this.shelfContents())
       {
         String title = b.getTitle();
 
@@ -319,7 +322,7 @@ most of those if I know "The Godfather" is close to the end.
 .. code-block:: java
 
     public boolean hasTitle(String t){
-      for(int i = this.shelfContents.size(); i >= 0 ; i--)
+      for(int i = this.shelfContents.size(); i >= 0; i--)
       {
         Book b = shelfContents.get(i);
         String title = b.getTitle();
@@ -411,19 +414,20 @@ to accumulate an as above, but we'll generate and return a List of Books.
 
 .. code-block:: java
 
+    //new method
     public List<Book> getAllBooksByAuthor(String auth){
       //declare our ArrayList
       List<Book> allBooks = new ArrayList<Book>();
 
       //iterate over every shelf:
-      for(Shelf s: this.stacks)
+      for(Shelf s: this.shelfContents)
       {
           //iterate over every book on a given shelf
           List<Book> bookList = s.getShelfContents();
           for(Book b: bookList)
           {
             //if we find a book by our desired author...
-            if(b.getAuthor().equals(auth))
+            if(b.getAuthor.equals(auth))
             {
               //add the book to our ArrayList
               allBooks.add(b);
@@ -559,3 +563,25 @@ Check Your Understanding: Null
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz3Summ.html ka
    :long_name: Null
+
+
+
+Syntax Practice 2b: Subclass Constructors
+-----------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 2b: Subclass Constructors'
+   :workout_id: 1343
+
+
+Programming Practice 2
+----------------------
+
+.. extrtoolembed:: 'Programming Practice 2'
+   :workout_id: 1344
+
+
+Check Your Understanding
+------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9ReadingQuizSumm.html ka
+   :long_name: Programming Concepts
