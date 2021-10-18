@@ -549,7 +549,7 @@ code that will throw a null pointer exception.
     Pixel pix;
     pix.setRed(0); // This was a cause a NullPointerException.
 
-``NullPointerException``s are a common error for programmers to encounter.  Be
+``NullPointerException``\ s are a common error for programmers to encounter.  Be
 aware that if you see it in your own code, you're probably working with a variable
 that hasn't been initialized yet!
 
