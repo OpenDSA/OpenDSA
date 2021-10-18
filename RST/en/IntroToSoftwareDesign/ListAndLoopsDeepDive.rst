@@ -677,7 +677,7 @@ results window, if you click on the failed test, the bottom half of the
 window will show the ``NullPointerException``` along with information about
 where it occurred, as shown in this example.
 
-.. odsafig:: Images/ColorSpace1.png
+.. odsafig:: Images/bluej-test-npe.png
    :align: center
 
 Here, by clicking on the failed test ``testMaxRed()``, the lower half of
