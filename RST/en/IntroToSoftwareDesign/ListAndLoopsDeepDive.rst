@@ -369,7 +369,7 @@ most of those if I know "The Godfather" is close to the end.
 .. code-block:: java
 
     public boolean hasTitle(String t){
-      for(int i = this.shelfContents.size(); i > =0 ; i--)
+      for(int i = this.shelfContents.size(); i >= 0; i--)
       {
         Book b = shelfContents.get(i);
         String title = b.getTitle();
@@ -389,7 +389,7 @@ to the Book object at index 0.
 Check Your Understanding: Loop Idioms
 -------------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/TBD.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz2Summ.html ka
    :long_name: Loop Idioms
 
 
@@ -568,7 +568,7 @@ programming errors and thereby makes programs safer and more robust.
 Check Your Understanding: Generics
 -----------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/TBD.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz1Summ.html ka
    :long_name: Generics
 
 
@@ -608,7 +608,7 @@ that hasn't been initialized yet!
 Check Your Understanding: Null
 ------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/TBD.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz3Summ.html ka
    :long_name: Null
 
 
@@ -625,10 +625,3 @@ Programming Practice 2
 
 .. extrtoolembed:: 'Programming Practice 2'
    :workout_id: 1344
-
-
-Check Your Understanding
-------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week9ReadingQuizSumm.html ka
-   :long_name: Programming Concepts
