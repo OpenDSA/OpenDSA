@@ -357,6 +357,34 @@
           "required": true
         }
       }
+    },
+
+    "Lists, Loop Idioms, Generics, and the Null Keyword":{
+      "IntroToSoftwareDesign/ListAndLoopsDeepDive": {
+        "Syntax Practice 9": {
+          "points": 35,
+          "required": true
+        },
+        "Programming Practice 9": {
+          "points": 35,
+          "required": true
+        },
+        "Week9Quiz1Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week9Quiz2Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week9Quiz3Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        }
+      }
     }
 
   }
