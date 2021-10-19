@@ -9,11 +9,51 @@
 Understanding Blockchain
 ========================
 
+About this Tutorial
+-------------------
+
+Why a tutorial on Blockchain?
+Isn't there already plenty of material about Blockchain
+on the Internet?
+Yes, there is.
+But in our experience, much of it does a poor job of
+either explaining the pieces or putting the pieces together.
+And while there many popular press articles about Blockchain these
+days, one usually comes away from them not really knowing any more
+than when you started.
+
+What about Blockchain books?
+Are there any good ones?
+Yes, absolutely.
+In particular, we can recommend that you read:
+Arvind Narayanan, Joseph Bonneau, Edward Felten,
+Andrew Miller, and Steven Goldfeder,
+*Bitocoin and Cryptocurrency Technologies*,
+Princeton University Press, 2016.
+You can probably find a free copy if you search the Internet.
+While it is more focussed on the cryptocurrency side of Blockchain
+technologies, it does go through all the basics, and it is relatively
+comprehenisble.
+
+But there are reasons why we feel this tutorial is a valueable
+addition to the Blockchain literature.
+First, we want to provide a reasonably comprehensive introduction to
+the basics of Blockchain, but not in a book-long setting.
+Our goal is to give you enough that you can hope to understand what
+the typical Blockchain research paper is talking about when it dives
+into the details.
+And so that you have enough background to fill in the inevitable
+blanks in any popular press or business article about Blockchain.
+The second reason for this tutorial is our unique ability to provide
+interactive visuals.
+As part of the OpenDSA project, we are able to present our content
+with various widgets and slideshows that can help you to try things
+out for yourself, or better see how an algorithm works.
+
+
 An Overview of Blockchain Concepts
 ----------------------------------
 
-The goal of this tutorial is to give you a thorough understanding of
-what Blockchain is, how it works, and what it is used for.
 This section presents a quick overview of what a blockchain is.
 (This is amazingly simple!)
 In later sections, we will go through the fundamental background on
@@ -140,15 +180,17 @@ We somewhat arbitrarily give it a "previous" hash code of all zeros.
 Here is how a blockchain is "secure":
 We cannot change the data in an earlier block in the chain without
 causing an inconsistency in the values of the blocks that come after.
-If you hold the hash to the right-most block, then nothing in any part
-of the blockchain can be altered without your knowledge, because doing
-so will make your hash no longer match with the blockchain.
-Changing the data in the rightmost block obviously changes the hash
-for that block (and you know that it has been changed if you are
+If you hold the hash to the first block in the chain,
+then nothing in any part of the blockchain can be altered without your
+knowledge, because doing so will make your hash no longer match with
+the altered contents of the blockchain.
+Changing the data in the right-most block above obviously changes the
+hash for that block (and you know that it has been changed if you are
 holding a copy of the what was the hash code before the change).
-But also, changing any other block in the chain will also change the
-hash code of the rightmost block (by the cascading change in hash
-codes that moves to the right from whever the data gets changed).
+But also, changing any other block in the chain will also ultimately
+change the hash code of the right-most block (by the cascading change
+in hash codes that moves to the right from whever the data gets
+changed).
 You should try this out in the widget to make sure that you
 understand.
 

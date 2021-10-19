@@ -24,8 +24,11 @@ components that might be found a given block.
 No given application is likely to use all of these.
 A brief summary of each item is included beneath the diagram. 
 
-.. avembed:: AV/Blockchain/BlockDiagram.html pe
-   :long_name: Bitcoin Block Diagram
+.. odsafig:: Images/BlockDiagram.png
+   :width: 350
+   :align: center
+   :alt: Typical fields found in Blockchain blocks.
+
 
 **Block Size:** The size (stored in bytes) of the given block.
 
@@ -48,26 +51,75 @@ A brief summary of each item is included beneath the diagram.
 **Transactions:** Collection of individual transactions.
 
 
-What is a Node?
-----------------------
-Operating a decentralized blockchain requires coordination among multiple members of the network. These "members"
-can be classified as nodes. In the case of Bitcoin, there are 3 classifications of nodes the make up the network. Each of these types of nodes serve
-a different function that contribute to making the overall network operate effectively. 
+Full vs. Thin Blocks and a Community of Nodes
+--------------------------------------------
 
-A :term:`Full Node` is a node on the bitcoin network that contains a complete record of every block 
-including all transactions stored within each block. Full nodes can be large in size, currently as large
-as 300+Gb as they have to store a verbose copy of each individual transaction stored on the blockchain. 
-The purpose of a full node, otherwise known as a super node, is to inspect the validity of any and all
-new blocks appended to the blockchain. Full nodes serve as validators for mining nodes which submit 
-potential solutions for new blocks, this process will be discussed more in chapter 3.
- 
-Conversely, there also exists a :term:`Thin Node` which only stores the headers of each block.
-These headers contain the :term:`Merkle Root`, but they DO NOT contain a full record of the Merkle 
-Tree. The purpose of thin nodes, otherwise known as light nodes, is to allow the blockchain network to scale
-more easily than if each node were required to be a full node. Light nodes can rely on full nodes to provide them with
-transaction verification without the need for them to store the full blockchain transaction history.
+Why use a Blockchain?
+We have already seen that one of the primary distinctions of a
+Blockchain is that, if any contents are altered, then this can be
+verified by anyone who knows the initial hashpointer value, and can
+see the contents of the blockchain.
+Which begs the question: Why would you be worried that the contents
+might be altered?
 
-The third and final type of node is a :term:`Mining Node`. A Mining Node is tasked with completing an action, finding a compliant nonce, that
-satisfies the current network difficulty level. We will discuss this in more detail in Chapter 3 Consensus Algorithms. These nodes must receive validation
-from full nodes which have access to the full history of transactions on the chain. It is important to node that mining nodes are responsible for creating blocks
-to add to the chain. Mining nodes are not responsible for the maintenance or validity of future blocks, this is the role of a full node. 
+Blockchains are most typically used in the context of a
+:ref:`Public Ledger <Public Ledger> <Ledgers>`.
+This is an application that exposes the entire blockchain publicly.
+In some such applications, only a central, trusted authority can
+change the contents of the Blockchain, and tampering is not a concern.
+In other applications (such as cryptocurrencies), many parties are
+allowed to change the ledger, but there is not much trust involved.
+This is difficult to get right, and is the domain of
+:ref:`Consensus Algorithms <Consensus Algorithms> <Consensus>`.
+For now, just accept that there is away to handle these updates,
+but the public parties involved might or might not want to be able to
+verify that the Blockchain is self-consistent.
+     
+There is another practical constraint involved: Some Blockchains are
+really, really big.
+For example, the public ledger for BitCoin (including its transaction
+history) by 2020 had become hundreds of gigabytes in size.
+This means both that it is expensive to store (space) expensive to
+search (time) and expensive to verify its consistency (time again).
+
+Fortunately, a Blockchain application of significant size is likely to
+also attract a signifcant community to it.
+Operating a large, decentralized blockchain requires coordination among
+multiple members of the community.
+These members are sometimes referred to as "nodes" in a network.
+
+A :term:`Full Node` contains a complete record of every block,
+including all transactions stored within each block.
+This means storing the entire blockchain and all transactions, which
+as we mentioned is hundreds of gigabytes of data in the case of Bitcoin.
+A full node has the ability to inspect the validity of the consistency
+of the blockchain, and therefore can also assess the validity of new
+blocks proposed to be appended to the blockchain.
+This is an important safeguard to the community,
+but not one that every participant feels the need to do for themselves.
+
+Many participants in the community will host a :term:`Thin Node` which
+only stores the metadata needed for each block.
+This includes the hash pointer for each block, and other descriptive
+data (time when it was added to the blockchain, etc) that the holder
+feels necessary for their needs.
+They might also hold copies of transactions that they are particularly
+interested in, along with enough information to verify that they are
+really a part of the blockchain (we discuss this further in connection
+with
+:ref:`Simplified Payment Verification <Simplified Payment Verification> <MerkleTrees>`).
+The purpose of Thin Nodes is to allow the blockchain network to scale
+more easily than if each node were required to be a full node.
+A BitCoin Wallet is an example of a thin node.
+Thin nodes can rely on full nodes to provide them with
+transaction verification when needed.
+
+The third type of node is one that might, depending on the details of
+the consensus algorithm used, propose new blocks to add to the
+blockchain.
+
+There can be additional members of the community that play an
+important role in the ecosystem.
+For example, Bitcoin has associated entities known as "block
+explorers" that organize the transactions into a a searchable database
+to allow efficient lookup of transactions of interest.
