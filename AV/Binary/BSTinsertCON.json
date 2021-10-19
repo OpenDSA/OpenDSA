@@ -1,7 +1,7 @@
 {
   "translations": {
     "en": {
-      "sc1": "Consider inserting a record with key value 30 in this tree. We call the findhelp method with a pointer to the BST root (the node with value 37).",
+      "sc1": "Consider inserting a record with key value 30 in this tree. We call the inserthelp method with a pointer to the BST root (the node with value 37).",
       "sc2": "Check what rt is pointing to. It is not null.",
       "sc3": "Check the value at the root. We find that it is greater than what we are looking for.",
       "sc4": "So we want to visit the left child.",
