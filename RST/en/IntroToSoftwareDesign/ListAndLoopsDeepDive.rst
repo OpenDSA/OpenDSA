@@ -115,7 +115,7 @@ We'll also have a library which contains many shelves:
    }
 
 
-We'll be enhancing this basic as we go in the following sections.
+We'll be enhancing this basic design as we go in the following sections.
 
 
 Looping Idioms
@@ -485,8 +485,9 @@ Accumulating a Different Kind of Answer
 
 What if, instead of just knowing the number of Stephen King books in our
 library, we wanted to pull them all into one place?  Here, we will use the
-same structure to accumulate an as above, but we'll generate and return a
-list of books that contains all of that author's books. This time, our
+same structure to accumulate an answer as above, but we'll generate and
+return a list of books that contains all of that author's books instead of
+just counting. This time, our
 accumulator will be a list, rather than a simple number.
 
 .. code-block:: java
