@@ -385,6 +385,44 @@
           "required": true
         }
       }
+    },
+
+    "Arrays":{
+      "IntroToSoftwareDesign/Arrays": {
+        "Syntax Practice 10": {
+          "points": 35,
+          "required": true
+        },
+        "Programming Practice 10": {
+          "points": 35,
+          "required": true
+        },
+        "Week10Quiz1Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week10Quiz2Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week10Quiz3Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week10Quiz4Summ": {
+          "points": 10,
+          "threshold": 3,
+          "required": true
+        },
+        "Week10ReadingQuizSumm": {
+          "points": 20,
+          "threshold": 10,
+          "required": true
+        }
+      }
     }
 
   }
