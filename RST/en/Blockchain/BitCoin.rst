@@ -71,6 +71,61 @@ The target value is recalculated periodically, based on the actual
 history of blocks being added to the chain.
 
 
+Transactions
+------------
+
+Recall that we previously discussed how most participants in the
+BitCoin ecossytem are Thin Nodes.
+An example is a BitCoin wallet.
+Thin nodes do not keep the entire transaction history for the system.
+Instead, they query a 3rd party for the needed information about a
+transaction, and then verify to their satisfaction that this
+information is correct.
+BitCoin uses Merkle Trees stored in its blocks to organize the
+transactions to support :term:`Simple Payment Verification` (SPV).
+
+However, we have a problem.
+SPV only really applies to transactions that are safely on the
+blockchain.
+The standard for an "acceptable" level of trust is that six blocks
+have been added to the blockchain beyond the block in question to be
+fairly confident that the consensus algorithm has "confirmed"
+settlement of your transaction.
+Since BitCoin is tuned to add a new block every 10 minutes, this means
+that reliable confirmation of a transaction takes on the order of hours.
+
+When you swipe your credit card at a grocery store, the store is
+relying on payment providers such as Visa or Mastercard to "verify"
+that your credit is sufficient and that the transaction has been
+processed.
+In order to accomplish this, Visa and Mastercard employ
+staffs of thousands of individuals, spanning multiple continents, all
+working to build and maintain infrastructure for payment processing
+systems.
+Bitcoin aims to accomplish this without the need for human
+intervention, while also avoiding the need for any trust in the
+process.
+In the credit card example, both the client and the merchant are
+forced to trust that the payment processor is acting in an accurate
+and honest way.
+
+The rule of thumbs for bitcoin is you need to receive at least 6
+transaction confirmations to ensure somebody already sent the coin to
+you before you ship the real product.
+This poses a lot of problems as the buyer does not trust the seller
+(what if seller receives money but never ships), and vice-versa (what
+if seller sends product and buyer does not pay).
+Thus in practice we need a third party (escrow) to establish an
+exchange channel between buyer and seller.
+Buyer deposits coins to the 3rd trusted party and the seller sends the
+product to the 3rd party.
+After the 3rd party receives things from the seller and buyer, it will
+forward the product to the buyer, and deposit the coin to the seller.
+Of course you have to trust the 3rd party.
+It is tricky because the bitcoin philosophy is to get rid of the
+centralized party, but in the end we have to rely on a 3rd party.
+
+
 Bitcoin controversies
 ---------------------
 

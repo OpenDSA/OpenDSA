@@ -38,7 +38,8 @@ A brief summary of each item is included beneath the diagram.
 
 **Previous Block Hash:** The root hash of the previous block.
 
-**Merkle Root:** The hash of the root node of merkle tree (see 3.1).
+**Merkle Root:** The hash of the root node of merkle tree
+(see :ref:`Merkle Trees <Merkle Trees> <MerkleTrees>`).
 
 **Timestamp:** The timestamp of block's creation.
 
@@ -79,8 +80,8 @@ There is another practical constraint involved: Some Blockchains are
 really, really big.
 For example, the public ledger for BitCoin (including its transaction
 history) by 2020 had become hundreds of gigabytes in size.
-This means both that it is expensive to store (space) expensive to
-search (time) and expensive to verify its consistency (time again).
+This means both that it is expensive to store (space), expensive to
+search (time), and expensive to verify its consistency (time again).
 
 Fortunately, a Blockchain application of significant size is likely to
 also attract a signifcant community to it.
@@ -88,10 +89,11 @@ Operating a large, decentralized blockchain requires coordination among
 multiple members of the community.
 These members are sometimes referred to as "nodes" in a network.
 
-A :term:`Full Node` contains a complete record of every block,
-including all transactions stored within each block.
-This means storing the entire blockchain and all transactions, which
-as we mentioned is hundreds of gigabytes of data in the case of Bitcoin.
+A :term:`Full Node` contains the entire blockchain and it's contents.
+This includes a complete record of every block,
+including all transactions stored within each block,
+which as we mentioned is hundreds of gigabytes of data in the case of
+Bitcoin.
 A full node has the ability to inspect the validity of the consistency
 of the blockchain, and therefore can also assess the validity of new
 blocks proposed to be appended to the blockchain.

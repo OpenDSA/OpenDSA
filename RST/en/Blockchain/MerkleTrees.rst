@@ -54,21 +54,44 @@ affected by of all leaves that were continually paired and hashed.
 Why Is It Useful?
 -----------------
 
-Merkle Trees are useful in providing for less overhead per piece of data. In the case of Bitcoin, Merkle Trees provide
-an efficient means of :term:`Simple Payment Verification (SPV)` (described below). To need a block for a single piece of data 
-would mean a quickly growing chain where the verification work largely exceeds the information kept. Merkle Trees allow 
-for an incredible amount of different data to be stored into a singular hash. These are called the transactions of a block. 
+Recall (see :ref:`Blocks & Nodes <Nodes> <Blocks>`) that many
+participants in a blockchain ecosystem are "Thin Nodes".
+This means that they only keep a relatively small amount of
+information on hand about the blockchain:
+That is, the hash for each block and a small amount of metadata about
+the block.
+When a Thin Node wants to confirm whether a particular transaction is
+indeed on the blockchain, it first will get the necessary information
+from an entity that maintains more information.
+This might be a node that stores the complete blockchain, or it might
+be a "block explorer", which indexes that blockchain transaction
+database.
+The information that comes back will typically be something like the
+block number and transaction index within the block, along with the
+complete contents of the block that the entity reports as containing
+the transaction.
 
-They also provide a way to not only create another level of cryptographic security. With each tree level, there exists more 
-hashes that act as a level of security. In addition to finding a nonce that agrees with the previous hash pointer
-and the message, the message itself contains a hurdle: an entire half of the tree must be made to agree with the Merkle root when one 
-transaction is changed. In the same way that a malicious actor would change the message of a block and reproduce 
-a new hash pointer, the same actor would change a transaction. However, this change must agree with verification of the tree.
+However, since anyone can participate in a distributed ledger
+blockchain system, a given thin node might not trust the entity
+providing this transaction information.
+The thin node would like a way to verify that information that was
+just provided to it is in fact taken from the blockchain.
+Since blocks are rather large, it would be time consuming to work
+through the entire contents of the block to verify that everything is
+consistent with the hash for the block that the thin node has stored.
 
-This fact leads us to the fact that Merkle Trees also allow these transactions to be efficiently verifiable. 
-The Merkle Tree enables verification of transactions in 
-To this end, it's important to note that the branches of a Merkle Tree are inherently modular. 
-The verification of a single transaction does not require the verification of every other transaction as shown below.
+
+Simple Payment Verification
+---------------------------
+
+Now that we understand what a Merkle Tree is, let's see how it helps
+with verifying that a transaction is really part of the blockchain as
+claimed by a 3rd party information provider.
+The primary use-case of Merkle Trees in common public Blockcahins,
+Bitcoin included, is to serve as an efficient means of providing
+customers with :term:`Simple Payment Verification` (SPV).
+SPV is a process by which a node on the network can easily verify that
+a transaction took place.
 
 .. inlineav:: MerkleTreeVerification ss
    :long_name: Merkle Tree Verification Slideshow
@@ -76,45 +99,17 @@ The verification of a single transaction does not require the verification of ev
    :scripts: AV/Blockchain/MerkleTreeVerification.js
    :output: show
 
-Simple Payment Verification
----------------
-Now that we understand what a Merkle Tree is, it is equally important to understand exactly how they are leveraged in Bitcoin and what purpose they serve.
-The primary use-case of Merkle Trees in common public Blockcahins, Bitcoin included, is to serve as an efficient means of providing customers
-with :term:`Simple Payment Verification (SPV)`. SPV is a process by which a node on the network can easily verify that payment has been made
-and can be proven legitimate on the Blockchain.
-
-When you swipe your credit card at a grocery store, the store is relying on payment providers such as Visa or Mastercard to "verify" that your credit
-is sufficient and that the transaction has been processed. In order to accomplish this, Visa and Mastercard employ staffs of thousands of individuals, 
-spanning multiple continents, all working to build and maintain infrastructure for payment processing systems. Bitcoin aims to accomplish this without the need
-for human intervention while also avoiding the need for any trust in the process. In the credit card example, both the client and the merchant are forced
-to trust that the payment processor is acting in an accurate and honest way. As we will learn, Simple Payment Verification provides both the client
-and the merchant with an efficient means of verifying with absolute certainty that a given transaction has been appended to the Blockchain. 
-
-
-As discussed in Chapter 0, there are different types of nodes on the Bitcoin network including thin and full nodes. In the example of a client and merchant,
-it can be assumed that neither the client nor the merchant will be a full node. Full nodes are incredibly large as they store the entire history of all Blockchain
-transactions. As thin nodes, the client and merchant still need a means by which they can acquire SPV. 
-
-How Is It Used?
----------------
-Imagine a similar scenario in which a grocery store needs to verify that a customer has indeed paid for their groceries. In technical terms, we can say that a 
-thin node (grocery store) wants to verify that a given transaction, "X", has been added to the Blockchain.
-
-A full node, having a full comprehensive history of every transaction in the chain, can perform a linear search for this transaction in the Blockchain. 
-The transactions are sorted by their timestamp rather than transaction ID and thus, the complexity of this search is O(N) unless you choose to 
-reference an external index data structure such as a website that indexes historical Blockchain transactions.
-
-You may be wondering, if there exists an external data structure that contains this transaction, why do I need to work with a full node to get proof of its existence?
-This emphasizes a fundamental strength of Blockchain technology which is removing any expectation of trust. There is no means by which you can 
-prove the legitimacy of whatever data that external data structure is providing you. The owners of the website could have been compromised or could
-have an error in their system. Merkle Proofs and SPV allow you to know with certainty that your transaction has been appended to the Blockchain.
-
-A :term:`Merkle Proof` can be thought of as an efficient means of proving that a transaction is legitimate. As shown in the figure in 1.3, transaction 2 was verified 
-using only 3 different values. This merkle proof consists of O(log(n)) hashes plus the final root hash. The thin node can then compute the root node by 
-itself using the provided O(log(n)) hashes and compare its calculated root node to the root node stored in the block header. If the calculated and actual root 
-nodes match, the transaction is verified. This is a much more efficient means of payment verification than requiring any thin node to store the entire 
+A :term:`Merkle Proof` is an efficient means of proving that a
+transaction is legitimate.
+As shown in the figure in 1.3, transaction 2 was verified 
+using only 3 different values.
+This merkle proof consists of O(log(n)) hashes plus the final root
+hash.
+The thin node can then compute the root node by 
+itself using the provided O(log(n)) hashes and compare its calculated
+root node to the root node stored in the block header.
+If the calculated and actual root nodes match, the transaction is
+verified.
+This is a much more efficient means of payment verification
+than requiring any thin node to store the entire 
 transaction history of one or more blocks. 
-
-
-
-
