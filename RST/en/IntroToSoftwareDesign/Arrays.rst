@@ -10,6 +10,16 @@
 Arrays
 ======
 
+This video discusses a "Web-Analyzer Project" and mentions a set of classes.  You
+don't need to worry too much about what this project does or how it works.  Additionally,
+You do not need to worry about completing the exercise given in the video.  It is
+all just an example used to explain arrays.
+
+.. raw:: html
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/xs9HnwBAg14?start=96&end=755" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 So far in this class, we have used ``List``\ s  when we need to store many
 pieces of data in a single object. Lists provide many advantages for this,
 but they are not the only way to group many values into one object.
@@ -297,7 +307,7 @@ Iterating Over Arrays
 Lets say we wanted to iterate over all values in an array of integers to
 print them all out.
 
-We could do this with a conter-controlled loop or a for-each loop.
+We could do this with a counter-controlled loop or a for-each loop.
 
 
 Counter-Controlled Loops Over Arrays
@@ -349,7 +359,7 @@ the *method* ``length()``.
 
    String str = "Hello";
    int y = str.length();   // y is set to 5
-   
+
    List<String> moreWords = new ArrayList<>();
    int z = moreWords.size();  // z is set to 0
 
@@ -616,7 +626,7 @@ it is a better choice.
 In practice, you will make a judgement call about which is a better
 fit for your situation. When in doubt, use a plural name, since that
 is more common and avoids misleading impressions even if there are some
-uses of the name where a singular name would be a better fit. 
+uses of the name where a singular name would be a better fit.
 
 
 Syntax Practice 10
