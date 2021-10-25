@@ -10,16 +10,6 @@
 Arrays
 ======
 
-This video discusses a "Web-Analyzer Project" and mentions a set of classes.  You
-don't need to worry too much about what this project does or how it works.  Additionally,
-You do not need to worry about completing the exercise given in the video.  It is
-all just an example used to explain arrays.
-
-.. raw:: html
-
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/xs9HnwBAg14?start=96&end=755" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 So far in this class, we have used ``List``\ s  when we need to store many
 pieces of data in a single object. Lists provide many advantages for this,
 but they are not the only way to group many values into one object.
@@ -41,7 +31,17 @@ number or position in the group (its **index**).
 You may have also noticed that the class ``ArrayList`` uses "array" in its
 name. That is because the ``ArrayList`` class uses an array internally to
 store the data in the list. However, there are several differences, as
-we'll see below.
+we'll see below. You'll often see arrays depicted graphically using
+diagrams like this:
+
+.. odsafig:: Images/jjj-array-fig9.1.png
+   :align: center
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/ei_4Nt7XWOw?start=21" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Creating An Array
@@ -213,6 +213,16 @@ treat ``arrayname[<any subscript>]`` just like a variable.
    countries[0] = "Columbia"; // changes the item at index 0 from Brazil to Columbia
 
 
+Arrays Compared to Lists (or ArrayList)
+---------------------------------------
+
+.. raw:: html
+
+   <div class="align-center">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/NbYgm0r7u6o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
 Putting It All Together
 -----------------------
 
@@ -292,6 +302,12 @@ written as a for loop:
 For the ``counts`` array, the only legal indexes are 0, 1, 2, and 3. If the
 index is negative or greater than 3, the result is
 an ``ArrayIndexOutOfBoundsException``.
+
+.. raw:: html
+
+   <div class="align-center">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/1hUUsuDfmSw?start=40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Check Your Understanding: Arrays
@@ -592,6 +608,12 @@ like ``Arrays.compare()``, ``Arrays.equals()``, ``Arrays.fill()``,
 and ``Arrays.sort``. Take a moment to read the documentation by searching
 the web for ``java.util.Arrays``.
 
+.. raw:: html
+
+   <div class="align-center">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/GQWbUdb4d58?start=46" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Naming Array Variables
 ----------------------
@@ -627,6 +649,22 @@ In practice, you will make a judgement call about which is a better
 fit for your situation. When in doubt, use a plural name, since that
 is more common and avoids misleading impressions even if there are some
 uses of the name where a singular name would be a better fit.
+
+
+Applying Arrays in a Problem
+----------------------------
+
+This video discusses a "Web-Analyzer" project and discusses how arrays
+could be used in this type of problem.  You don't need to worry too much
+about what this project does or how it works, or about completing the
+exercise given in the video.  It is just a more detailed example used to
+explain arrays and how they might be used in a problem.
+
+.. raw:: html
+
+   <div class="align-center">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/xs9HnwBAg14?start=96&end=755" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Syntax Practice 10
