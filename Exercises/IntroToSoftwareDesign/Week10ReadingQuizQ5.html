@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-require="math">
+  <head>
+    <title>Week 10 Reading Quiz</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+
+        <div id="Week10ReadingQuizQ5">
+          <p class="question">
+            What is wrong with the code fragment below, which is intended to add
+            the numbers from 1 to 4 together and print out the result,
+            which should be 10
+          </p>
+<pre class="prettyprint">
+int sum = 0;
+for (int i = 1; i < 4; i++)
+{
+    sum = sum + i;
+}
+System.out.println("sum = " + sum);</pre>
+
+          <div class="solution">The test condition must be <tt><=</tt></div>
+          <ul class="choices" >
+
+            <li>The test condition must be <tt>==</tt></li>
+            <li>None of these are correct</li>
+            <li>The loop control variable i must be declared prior to the loop</li>
+            <li>The loop control variable i must be initialized to zero</li>
+            <li>The <tt>sum</tt> variable must be initialized to one</li>
+
+          </ul>
+          <div class="hints">
+            <p>There are not hints for this question</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
