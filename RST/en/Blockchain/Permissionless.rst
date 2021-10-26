@@ -85,6 +85,38 @@ from driving the consensus process of the Bitcoin blockchain.
    :scripts: AV/Blockchain/ProofOfWork.js
    :output: show
 
+
+How does trusting the chain with the greatest amount of work prevent fraud?
+In the example above, imagine that 'Blk B' as proposed by node 4 contains a 
+fraudulent transaction pretending that some arbitrary user sent node 4 $100.
+It is entirely possible that node 4 can win the "mini lottery" of proposing a 
+valid solution to the chain and successfully have 'Blk B' appended. For the time being, 
+this fraudulent transaction will begin to propagate from node B to other nodes, 
+convincing different users on the network that this transaction did indeed 
+occur. What prevents this inaccurate and fraudulent 'Blk B' from remaining part 
+of the chain is that node B is unable to consistently win the "mini lottery" of 
+solving the block puzzle before all other nodes. 
+
+There will always be a greater number of nodes who have NOT yet received any 
+indication that the fraudulent transaction in 'Blk B' exists. This is because at-first,
+there is only 1 node preaching the existence of this fake transaction whereas all other 
+nodes on the network are working on the assumption that said transaction has never ocurred. 
+
+As time continues, we see that node 2 is the first node to propose the next valid solution. 
+This solution does NOT fit the header of 'Blk B' due to the fact that node B would never 
+have been notified of the fraudulent transaction present in 'Blk B', and thus would not 
+produce a valid solution to match the block. Over time, the population of nodes who do not contain
+'Blk B' will continue to win the majority of puzzle solutions simply due to their greater
+control over the network. Eventually, every node will be forced to disregard any forked chains 
+with 'Blk B' since there exists such a greater proof of work supporting the chain without 'Blk B'.  
+
+The only way for a malicious user to truly take over control of the public ledger would be
+for a single entity to effectively and continuously control over 50% of the network's computing
+power. This is the only way to ensure that one user will continually beat-out other nodes
+in the race to propose valid solutions for the next block. In this regard, proof of work 
+preserves consensus by increasing the difficulty for one user to control the network. 
+
+
 How is a transact propagated through network? Good question. 
 When a node receives a transaction, it adds the transaction to a 
 list that it maintains for the other nodes. Each node has its own list
