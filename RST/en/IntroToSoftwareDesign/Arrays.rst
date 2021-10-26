@@ -651,6 +651,92 @@ is more common and avoids misleading impressions even if there are some
 uses of the name where a singular name would be a better fit.
 
 
+Writing Test Assertions Involving Arrays
+----------------------------------------
+
+When testing with array values, sometimes basic assertions are
+convenient, but other times it can be complicated. You can
+use ``assertThat(...).isEqualTo(...)`` to check that an array
+has an expected value, as you would expect, but there are many
+other options.
+
+.. code-block:: java
+
+   // We expect result is {"Espresso", "Mocha", "Decaf", "Americano"}
+   String[] result = someObject.MethodThatReturnsArray();
+   
+   // If you want to check the size
+   assertThat(result.length).isEqualTo(4);
+   
+   // Alternate way of checking the size
+   assertThat(result).hasSize(4);
+   
+   // If you want to check a specific index
+   assertThat(result[1]).isEqualTo("Mocha");
+
+   // If you want to check the entire array
+   String[] coffees = {"Espresso", "Mocha", "Decaf", "Americano"};
+   assertThat(result).isEqualTo(words);
+
+However, sometimes an array may be long, or it may not be
+convenient to write out all the values, or you may want to
+avoid declaring/creating/initializing a separate array to
+compare against. Fortunately, there are some additional
+methods you can use when making assertions about arrays.
+
+The first method is ``containsExactly()``, which allows you
+to directly list out the values you expect to find in the
+array:
+
+.. code-block:: java
+
+   // If you want to check the entire array
+   assertThat(result).containsExactly(
+       "Espresso", "Mocha", "Decaf", "Americano");
+
+When you make an assertion using ``containsExactly()``, you list
+*all* of the array's contents in the order you expect, and that's it.
+``containsOnly()`` succeeds if the array contains exactly the values
+you specify, in the order you list them, and nothing else. It is a
+useful shorthand for having to create a separate array object to
+compare against. Even better, it **works for list objects too**!
+
+However, sometimes if you have a really long array, you don't want to
+list all the values. Instead, you can use:
+
+.. code-block:: java
+
+   // If you want to check the entire array
+   assertThat(result).contains("Americano", "Mocha");
+
+The ``contains()`` method allows you to list out
+as many values as necessary. However, ``contains()`` will succeed
+if the array has the specified values anywhere in the array in *any order*,
+mixed in among its slots. The array may be longer, and may have other
+values besides the ones you list, but it must include the values
+you specify. This can be useful when there are a few values in the
+array that matter, but the array is too long to list out all the
+values. Again, this **works for lists too**.
+
+There are also several other methods you can use on **arrays or
+lists** when constructing tests, where you can specify as many or
+few of the values as you need:
+
+.. code-block:: java
+
+   // If you want to check values are not present
+   assertThat(result).doesNotContain("table", "chair");
+
+   // To check the first few elements, without worrying about others
+   assertThat(result).startsWith("Espresso", "Mocha");
+
+   // To check the last few elements, without worrying about others
+   assertThat(result).endsWith("Mocha", "Decaf", "Americano");
+
+   // To check these occur only once in array, are not duplicated
+   assertThat(result).containsOnlyOnce("Mocha", "Americano");
+
+
 Applying Arrays in a Problem
 ----------------------------
 
