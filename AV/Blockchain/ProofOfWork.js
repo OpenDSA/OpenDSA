@@ -122,6 +122,13 @@ $(document).ready(function() {
 
     // Slide 4
     av.umsg(interpret("sc4"));
+    b.addClass('greennode');
+    c.addClass('greennode');
+
+    av.step();
+
+    // Slide 4a
+    av.umsg(interpret("sc4a"));
 
     blockProposal4To3.removeFirst();
     blockProposal4To2.removeFirst();
