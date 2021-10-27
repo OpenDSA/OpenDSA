@@ -82,9 +82,13 @@ They then broadcast that block (with the hash value and the nonce) to
 the system.
 Why would they do that?
 Because the system then rewards them with some Bitcoins.
-As Bitcoins change in value, the value that the hash has to be less
-than will vary to keep the expected time to discover the next block
-roughly consistent.
+(Specifically, miners are permitted to include in the block of
+transactions a specific transaction to credit themselves with a
+standard amount of BitCoin.)
+As Bitcoins change in value, and therefore as the amount of compute
+cycles put into mining changes,
+the value that the hash has to be less than will vary to keep the
+expected time to discover the next block roughly consistent.
 
 So, the first miner to solve the puzzle for their block of
 transactions is has a lot of incentive to propose that block of
