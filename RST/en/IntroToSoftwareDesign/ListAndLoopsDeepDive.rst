@@ -242,7 +242,7 @@ loop.  Let's look at how we'd write this with a for-each loop:
    public boolean hasTitle(String title)
    {
        boolean result = false;
-       for (Book book : this.contents())
+       for (Book book : this.contents)
        {
            if(title.equals(book.getTitle()))
            {
@@ -268,7 +268,7 @@ and  revise our code to make better use of ``return`` statements.
 
    public boolean hasTitle(String title)
    {
-       for (Book book : this.contents())
+       for (Book book : this.contents)
        {
            if (title.equals(book.getTitle()))
            {
