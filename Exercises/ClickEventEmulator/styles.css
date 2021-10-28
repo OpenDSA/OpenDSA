@@ -1,0 +1,13 @@
+#exerciseLoader {
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+}
+#exerciseLoadIframe {
+    position: absolute;
+   /* min-height: auto; /*100%*/
+/* min-width: auto; */
+    width: 70%;
+    height: 70%;
+    overflow: hidden;
+}
