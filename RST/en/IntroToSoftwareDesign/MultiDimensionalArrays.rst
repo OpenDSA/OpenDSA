@@ -302,7 +302,22 @@ we'd write
 
 You can use modulus to "extract" digits from a number:
 ``x % 10`` yields the rightmost digit of x, and x % 100 yields the last two digits.
-Also, many encryption algorithms use the modulus operator extensively
+Also, many encryption algorithms use the modulus operator extensively.
+
+
+Here are two really short videos you can check out that will help explain modulo arithmetic
+as well:
+
+
+.. raw:: html
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/MrTtsX2Wg9Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+.. raw:: html
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/VUZpocjQFWo?start=200&end=259" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
 Check Your Understanding: Modulus
