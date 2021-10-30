@@ -753,7 +753,7 @@ class ODSA_RST_Module:
                             exer_conf = exercises[external_tool_name]
                             # List of valid options for avembed directive
                             options = ['long_name', 'enable_scrolling',
-                                       'width', 'height',
+                                       'frame_width', 'frame_height',
                                        'learning_tool', 'launch_url', 'id']
                             dir_opts = parse_directive_options(mod_data, i)
                             options = [

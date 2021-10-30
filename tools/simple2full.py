@@ -58,8 +58,8 @@ _default_ex_options = {
     },
     'extr': {
       'enable_scrolling' : 'no',
-      'width': 1000,
-      'height': 900,
+      'frame_width': 1000,
+      'frame_height': 900,
       'points': 1.0
     }
 }
@@ -98,8 +98,8 @@ extertool_element = '''\
     learning_tool="%(learning_tool)s"
     points="%(points)s"
     enable_scrolling="%(enable_scrolling)s"
-    width="%(width)s"
-    height="%(height)s"
+    frame_width="%(frame_width)s"
+    frame_height="%(frame_height)s"
     mod_name="%(mod_name)s">
 </extertool>
 '''
@@ -195,8 +195,8 @@ class extrtoolembed(Directive):
                  'learning_tool': directives.unchanged,
                  'enable_scrolling': directives.unchanged,
                  'points': directives.unchanged,
-                 'width': directives.unchanged,
-                 'height': directives.unchanged
+                 'frame_width': directives.unchanged,
+                 'frame_height': directives.unchanged
                  }
 
   def run(self):
@@ -215,10 +215,10 @@ class extrtoolembed(Directive):
       self.options['points'] = get_default_ex_option('extr', 'points', self.options['learning_tool'])
     if 'enable_scrolling' not in self.options or self.options['enable_scrolling'] == '':
       self.options['enable_scrolling'] = get_default_ex_option('extr', 'enable_scrolling', self.options['learning_tool'])
-    if 'width' not in self.options or self.options['width'] == '':
-      self.options['width'] = get_default_ex_option('extr', 'width', self.options['learning_tool'])
-    if 'height' not in self.options or self.options['height'] == '':
-      self.options['height'] = get_default_ex_option('extr', 'height', self.options['learning_tool'])
+    if 'frame_width' not in self.options or self.options['frame_width'] == '':
+      self.options['frame_width'] = get_default_ex_option('extr', 'frame_width', self.options['learning_tool'])
+    if 'frame_height' not in self.options or self.options['frame_height'] == '':
+      self.options['frame_height'] = get_default_ex_option('extr', 'frame_height', self.options['learning_tool'])
 
     self.options['mod_name'] = current_module_base
     
@@ -641,8 +641,8 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
         exs_config['extertool']['long_name'] = ex_obj['@resource_name']
         exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
-        exs_config['extertool']['width'] = ex_obj['@width']
-        exs_config['extertool']['height'] = ex_obj['@height']
+        exs_config['extertool']['frame_width'] = ex_obj['@frame_width']
+        exs_config['extertool']['frame_height'] = ex_obj['@frame_height']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
         if expanded:
           exs_config['extertool']['type'] = 'extr'
@@ -723,8 +723,8 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
       exs_config['extertool']['long_name'] = ex_obj['@resource_name']
       exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
-      exs_config['extertool']['width'] = ex_obj['@width']
-      exs_config['extertool']['height'] = ex_obj['@height']
+      exs_config['extertool']['frame_width'] = ex_obj['@frame_width']
+      exs_config['extertool']['frame_height'] = ex_obj['@frame_height']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
       exs_config['extertool']['workout_id'] = ex_obj['@workout_id']
       if expanded:
