@@ -11,15 +11,22 @@
     <div class="exercise">
       <div class="problems">
         <div id="Week11Quiz3Q3">
-        <p class="question"> </p>
-<pre class="prettyprint">
-</pre>
-        <p></p>
-        <div class="solution"></div>
+          <p class="question">What do we know about the variable x if the following method returns true?</p>
+  <pre class="prettyprint">
+  public boolean question(int x){
+    if(x%2 == 2)
+    {
+      return true;
+    }
+    return false;
+  }
+
+  </pre>
+        <div class="solution">The above method could never return true as <tt>x % 2 </tt> can only return 0 or 1</div>
         <ul class="choices">
-        <li></li>
-        <li></li>
-        <li></li>
+        <li><tt>x</tt> must be an even number</li>
+        <li><tt>x</tt> must be an odd number</li>
+        <li><tt>x</tt> must equal 2</li>
 
         </ul>
         <div class="hints">
