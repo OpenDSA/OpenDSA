@@ -14,6 +14,7 @@ from collections import OrderedDict
 from docutils.core import publish_parts
 from argparse import ArgumentParser
 from ODSA_Config import read_conf_file, get_odsa_dir
+from pprint import pp
 
 mod_options = None    # custom options specified for modules
 ex_options = None     # custom options specified for exercises/slideshows
@@ -94,6 +95,7 @@ avembed_element = '''\
     required="True"
     threshold="%(threshold)s"
     av_address="%(av_address)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </avembed>
 '''
@@ -108,6 +110,7 @@ extertool_element = '''\
     enable_scrolling="%(enable_scrolling)s"
     width="%(width)s"
     height="%(height)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </extertool>
 '''
@@ -123,6 +126,7 @@ inlineav_element = '''\
     threshold="%(threshold)s"
     links="%(links)s"
     scripts="%(scripts)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </inlineav>
 '''
@@ -152,6 +156,7 @@ class avembed(Directive):
     self.options['required'] = get_default_ex_option(self.options['type'], 'required')
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
+    self.options['partial_credit'] = get_default_ex_option(self.options['type'], 'partial_credit')
     self.options['mod_name'] = current_module_base
     self.options['av_address'] = av_path
 
@@ -208,6 +213,8 @@ class extrtoolembed(Directive):
                  }
 
   def run(self):
+    print("extrtoolembed()")
+    pp(vars(self))
     resource_name = self.arguments[0].strip()
     # change any single-quotes to double-quotes for XML
     resource_name = re.sub(r"'(.*)'", r'"\1"', resource_name)
@@ -227,10 +234,13 @@ class extrtoolembed(Directive):
       self.options['width'] = get_default_ex_option('extr', 'width', self.options['learning_tool'])
     if 'height' not in self.options or self.options['height'] == '':
       self.options['height'] = get_default_ex_option('extr', 'height', self.options['learning_tool'])
+    self.options['partial_credit'] = get_default_ex_option('extr', 'partial_credit', self.options['learning_tool'])
 
     self.options['mod_name'] = current_module_base
     
     res = extertool_element % (self.options)
+    pp(self.options)
+    pp(res)
     return [nodes.raw('', res, format='xml')]
 
 
@@ -259,6 +269,7 @@ class inlineav(Directive):
     self.options['required'] = get_default_ex_option(self.options['type'], 'required')
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
+    self.options['partial_credit'] = get_default_ex_option(self.options['type'], 'partial_credit')
     
     self.options['mod_name'] = current_module_base
 
