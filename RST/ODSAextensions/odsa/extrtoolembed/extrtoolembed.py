@@ -29,31 +29,31 @@ external_tools_urls = {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
           "frame_width": 1000,
           "frame_height": 900,
-          "enable_scrolling": "no"
+          "enable_scrolling": False
     },
     "code-workout-jhavepop": {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
           "frame_width": 1000,
           "frame_height": 900,
-          "enable_scrolling": "no"
+          "enable_scrolling": False
     },
     "mastery-grid-jsparsons-python": {
           "url": "https://pitt-acos.herokuapp.com/html/jsparsons/jsparsons-python/",
           "frame_width": 1000,
           "frame_height": 900,
-          "enable_scrolling": "no"
+          "enable_scrolling": False
     },
     "mastery-grid-java-animations": {
           "url": "https://pitt-acos.herokuapp.com/html/jsvee/jsvee-java/",
           "frame_width": 1000,
           "frame_height": 900,
-          "enable_scrolling": "no"
+          "enable_scrolling": False
     },
     "mastery-grid-python-animations": {
           "url": "https://pitt-acos.herokuapp.com/html/jsvee/jsvee-python/",
           "frame_width": 1000,
           "frame_height": 900,
-          "enable_scrolling": "no"
+          "enable_scrolling": False
     }
 }
 
@@ -138,6 +138,13 @@ class extrtoolembed(Directive):
       self.options['frame_height'] = external_tool['frame_height']
     if 'enable_scrolling' not in self.options:
       self.options['enable_scrolling'] = external_tool['enable_scrolling']
+
+    es = self.options['enable_scrolling']
+    if es in ["yes", "Yes", "true", "True", "on", "On", "auto", 1, True]:
+      es = "yes"
+    else:
+      es = "no"
+    self.options['enable_scrolling'] = es
 
     if 'launch_url' in self.options:
       self.options['tool_address'] = self.options['launch_url']
