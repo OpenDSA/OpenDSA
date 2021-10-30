@@ -147,7 +147,6 @@ class avembed(Directive):
 
 
   def run(self):
-    print("self: ==================================\n", self.options)
     """ Restructured text extension for inserting embedded AVs with show/hide button """
     av_path = self.arguments[0]
     self.options['type'] = self.arguments[1]
@@ -213,8 +212,6 @@ class extrtoolembed(Directive):
                  }
 
   def run(self):
-    print("extrtoolembed()")
-    pp(vars(self))
     resource_name = self.arguments[0].strip()
     # change any single-quotes to double-quotes for XML
     resource_name = re.sub(r"'(.*)'", r'"\1"', resource_name)
@@ -239,8 +236,6 @@ class extrtoolembed(Directive):
     self.options['mod_name'] = current_module_base
     
     res = extertool_element % (self.options)
-    pp(self.options)
-    pp(res)
     return [nodes.raw('', res, format='xml')]
 
 
@@ -952,7 +947,6 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
   if 'glob_extr_options' in full_config:
     del full_config['glob_extr_options']
 
-  print(full_config)
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.items():
     
