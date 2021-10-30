@@ -662,6 +662,7 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
         exs_config['extertool']['frame_width'] = ex_obj['@frame_width']
         exs_config['extertool']['frame_height'] = ex_obj['@frame_height']
+        exs_config['extertool']['partial_credit'] = ex_obj['@partial_credit']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
         if expanded:
           exs_config['extertool']['type'] = 'extr'
@@ -744,6 +745,7 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
       exs_config['extertool']['frame_width'] = ex_obj['@frame_width']
       exs_config['extertool']['frame_height'] = ex_obj['@frame_height']
+      exs_config['extertool']['partial_credit'] = ex_obj['@partial_credit']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
       exs_config['extertool']['workout_id'] = ex_obj['@workout_id']
       if expanded:
