@@ -191,7 +191,9 @@ class extrtoolembed(Directive):
                  }
 
   def run(self):
-    resource_name = self.arguments[0]
+    resource_name = self.arguments[0].strip()
+    # change any single-quotes to double-quotes for XML
+    resource_name = re.sub(r"'(.*)'", r'"\1"', resource_name)
     if 'resource_name' not in self.options or self.options['resource_name'] == '':
       self.options['resource_name'] = resource_name
     if 'workout_id' not in self.options or self.options['workout_id'] == '':
@@ -700,6 +702,7 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+      exs_config['extertool']['long_name'] = ex_obj['@resource_name']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
       exs_config['extertool']['workout_id'] = ex_obj['@workout_id']
       if expanded:

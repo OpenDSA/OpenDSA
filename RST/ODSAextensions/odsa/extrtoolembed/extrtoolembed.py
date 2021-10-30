@@ -17,6 +17,7 @@ __author__ = 'hshahin'
 from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
+from pprint import pp
 import random
 import os, sys
 import urllib.request, urllib.parse, urllib.error
@@ -100,10 +101,12 @@ class extrtoolembed(Directive):
     """ Restructured text extension for inserting embedded external learning tools """
     if 'long_name' not in self.options or self.options['long_name'] == '' :
         print('ERROR: External learning tool is not properly configured -- missing long_name option')
+        pp(vars(self), indent = 2, compact = False)
         sys.exit()
 
     if 'learning_tool' not in self.options or self.options['learning_tool'] =='' :
         print('ERROR: External learning tool is not properly configured missing learning_tool option')
+        pp(vars(self), indent = 2, compact = False)
         sys.exit()
     
     # if 'workout_id' not in self.options or self.options['workout_id'] =='' :
