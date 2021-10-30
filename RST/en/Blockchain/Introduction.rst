@@ -9,11 +9,51 @@
 Understanding Blockchain
 ========================
 
+About this Tutorial
+-------------------
+
+Why a tutorial on Blockchain?
+Isn't there already plenty of material about Blockchain
+on the Internet?
+Yes, there is.
+But in our experience, much of it does a poor job of
+either explaining the pieces or putting the pieces together.
+And while there many popular press articles about Blockchain these
+days, one usually comes away from them not really knowing any more
+than when you started.
+
+What about Blockchain books?
+Are there any good ones?
+Yes, absolutely.
+In particular, we can recommend that you read:
+Arvind Narayanan, Joseph Bonneau, Edward Felten,
+Andrew Miller, and Steven Goldfeder,
+*Bitocoin and Cryptocurrency Technologies*,
+Princeton University Press, 2016.
+You can probably find a free copy if you search the Internet.
+While it is more focussed on the cryptocurrency side of Blockchain
+technologies, it does go through all the basics, and it is relatively
+comprehenisble.
+
+But there are reasons why we feel this tutorial is a valueable
+addition to the Blockchain literature.
+First, we want to provide a reasonably comprehensive introduction to
+the basics of Blockchain, but not in a book-long setting.
+Our goal is to give you enough that you can hope to understand what
+the typical Blockchain research paper is talking about when it dives
+into the details.
+And so that you have enough background to fill in the inevitable
+blanks in any popular press or business article about Blockchain.
+The second reason for this tutorial is our unique ability to provide
+interactive visuals.
+As part of the OpenDSA project, we are able to present our content
+with various widgets and slideshows that can help you to try things
+out for yourself, or better see how an algorithm works.
+
+
 An Overview of Blockchain Concepts
 ----------------------------------
 
-The goal of this tutorial is to give you a thorough understanding of
-what Blockchain is, how it works, and what it is used for.
 This section presents a quick overview of what a blockchain is.
 (This is amazingly simple!)
 In later sections, we will go through the fundamental background on
@@ -26,46 +66,56 @@ We will examine in detail the most famous use for Blockchain:
 Cryptocurrency.
 We'll show how the original cryptocurrency (Bitcoin) works, and how it
 differs from a few other well-known cryptocurrencies.
-Finally, we will present other uses for Blockchain.
+Then we will discuss the concept of a smart contract and what it is
+used for.
+Finally, we will discuss how all these concepts have been used for
+other applications of Blockchain.
 
 The most important thing to know about Blockchain is that
 **none of this is difficult**.
 (Well, except maybe for some of the cryptography parts.
-But you can consider all of the hard parts there as a black box.
+But you can consider all of the hard parts related to cryptography as
+a black box.
 You only need to understand what the basic cryptograpy services
-provide to a Blockchain system, not necessarily how they work
-internally.)
+provide to a Blockchain application, not necessarily the details for
+how the cryptography works internally.)
 The main reason why many people find Blockchain confusing is because
 you need to put about half a dozen unfamiliar (but easy) things
-together to get full understanding. 
+together to get to an application.
 
 The most basic concept in blockchain is a hash, which is the backbone
 for all blockchain applications.
-If you have ever used a hash table or know how password systems work,
-then you know what a hash is.
+If you have ever studied how hash tables work or if you know how
+password systems work, then you know what a hash is.
 Broadly speaking, a hash is a function that converts an input of
 some sort (in our case, strings and numbers) into an output
 of a fixed length.
+(In a hash table storage system, that output will be a slot in the hash
+table.
+But there are many other uses for hashes.)
 A hash is created using some deterministic algorithm, so that if you
 give the same information to the hash function again, you get the same
 result.
 Ideally (for reasons that we will see soon), we would like for it to
-be fairly impossible to recover the original information if all we
+be fairly impossible to recover the original information, or even to
+know anything about the original information, if all we
 know is the hash.
 
 There are many different hashing algorithms that are used
 commercially, such as SHA-1, SHA-2, SHA-3, SHA-256, SHA-512, etc.
 The one that we will focus on is SHA-256.
 The Secure Hashing Algorithm 256, or SHA-256, has the reputation of
-being one of the most secure ways to protect digital
-information.
+being one of the most secure ways to protect digital information.
 SHA-256 always will generate a 256 bit quantity
 (which can be viewed as 64 hexidecimal digits)
-no matter what input your provide.
-Viewed as a number, a 256-bit binary quantity has more permutations
+no matter what input you provide.
+Viewed as a number, a 256-bit quantity has more permutations
 than grains of sand on Earth!
-In the following example, you can type anything and see
+In the following widget, you can type anything and see
 its SHA-256 hash.
+You should try it out, to get a feeling for how this works.
+As you type things, the corresponding SHA-256 hash will be generated
+automatically.
 
 .. _HashExample:
 
@@ -74,10 +124,11 @@ its SHA-256 hash.
 
 Throughout this tutorial, we will use the SHA-256 hash method whenever
 we need to generate a hash value.
-But showing 64 characters in the visualizations is unwieldy. 
+But showing 64 hexidecimal characters in the visualizations is
+unwieldy.
 So, we will only show the first 16 characters, like this.
-Try copy-and-pasting whatever you typed above for the full hash
-conversion into the box below.
+Try copy-and-pasting whatever you last typed in the widget above (that
+shows the full hash conversion) into the box below.
 
 .. _SmallerHashExample:
 
@@ -91,7 +142,7 @@ The data might be structured, like a list of transactions.
 But in this example, it's just text.
 The point is that hashing a "block" just means taking the various
 fields (here, the block number and the data), and concatenating them
-into a single quantity that is hashed by SHA-256.
+into a single string that is hashed by SHA-256.
 (You can check this by copying the number and the text in the box back
 into the hash widget above, and see if you get the same result.)
 
@@ -115,54 +166,37 @@ resulting hash of every block that comes to its right.
 Try adding data into the data fields below.
 Then change some data fields, and observe which hash values change as
 well.
+To be clear: An "earlier" block is to the left in the diagram,
+and is being pointed at by the "later" block immediately to its
+right.
+The leftmost block is the "first" block in the Blockchain.
+We somewhat arbitrarily give it a "previous" hash code of all zeros.
 
 .. _BlockchainExample:
 
 .. avembed:: AV/Blockchain/BlockchainExample.html pe
    :long_name: Blockchain Example
 
-This is how a blockchain is "secure".
+Here is how a blockchain is "secure":
 We cannot change the data in an earlier block in the chain without
 causing an inconsistency in the values of the blocks that come after.
-If you hold the hash to the right-most block, then nothing in any part
-of the blockchain can be altered without your knowledge, because doing
-so will make your hash no longer match with the blockchain.
+If you hold the hash to the first block in the chain,
+then nothing in any part of the blockchain can be altered without your
+knowledge, because doing so will make your hash no longer match with
+the altered contents of the blockchain.
+Changing the data in the right-most block above obviously changes the
+hash for that block (and you know that it has been changed if you are
+holding a copy of the what was the hash code before the change).
+But also, changing any other block in the chain will also ultimately
+change the hash code of the right-most block (by the cascading change
+in hash codes that moves to the right from whever the data gets
+changed).
+You should try this out in the widget to make sure that you
+understand.
 
-This next example shows a simple version of how a block might look in
-a cryptocurrency like Bitcoin.
-The key idea added here is the box labled "Nonce".
-The purpose of the nonce is to work with the data in the rest of the
-block to cause the hash value to have some property, typically that it
-be less than some threshold.
-For our example, the nonce has been picked so that the first 4 digits
-of the hash are all zero.
-You have probably heard the term "mining" in the context of Bitcoin or
-blockchain.
-"Mining" simply means to try different values for the nonce
-until some hash value with 4 zeros at the front is stumbled upon.
-What you should do is add data to each block, and then click the
-"Mine" button.
-This will discover nonces that cause the proper number of zeros to
-appear in each hash value.
-Then try modifying the data in a block, to see which other blocks are
-affected.
-
-.. _BlockchainNonceExample:
-
-.. avembed:: AV/Blockchain/BlockchainNonceExample.html pe
-   :long_name: Blockchain Nonce Example
-
-Below is a slideshow demonstrating the importance of each of these
-concepts as a blockchain would grow.
-
-.. inlineav:: llistBlockchain ss
-   :long_name: Blockchain Slideshow 1
-   :links: AV/Blockchain/llistBlockchain.css
-   :scripts: AV/List/llist.js AV/Blockchain/llistBlockchain.js
-   :output: show
-
-You know have a rough overview of many basic concepts related to
-Blockchain.
+This explains everything that there is to know about an actual
+blockchain, though there is a lot more to know about how blockchains
+are useful for real applications.
 In the rest of this tutorial, we will cover:
 
 * Cryptographic services associated with blockchain applications,

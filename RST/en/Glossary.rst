@@ -3085,7 +3085,6 @@ Glossary
 
    merge insert sort
       A synonym for the :term:`Ford and Johnson sort`.
-
    message
       In a :term:`memory manager` implementation
       (particularly a memory manager implemented with a
