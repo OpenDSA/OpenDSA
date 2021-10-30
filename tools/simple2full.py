@@ -57,6 +57,9 @@ _default_ex_options = {
       'threshold': 1
     },
     'extr': {
+      'enable_scrolling' : 'no',
+      'width': 1000,
+      'height': 900,
       'points': 1.0
     }
 }
@@ -94,6 +97,9 @@ extertool_element = '''\
     resource_type="%(resource_type)s"
     learning_tool="%(learning_tool)s"
     points="%(points)s"
+    enable_scrolling="%(enable_scrolling)s"
+    width="%(width)s"
+    height="%(height)s"
     mod_name="%(mod_name)s">
 </extertool>
 '''
@@ -187,7 +193,10 @@ class extrtoolembed(Directive):
                  'workout_id': directives.unchanged,
                  'resource_type': directives.unchanged,
                  'learning_tool': directives.unchanged,
-                 'points': directives.unchanged
+                 'enable_scrolling': directives.unchanged,
+                 'points': directives.unchanged,
+                 'width': directives.unchanged,
+                 'height': directives.unchanged
                  }
 
   def run(self):
@@ -204,6 +213,12 @@ class extrtoolembed(Directive):
       self.options['learning_tool'] = 'code-workout'
     if 'points' not in self.options or self.options['points'] == '':
       self.options['points'] = get_default_ex_option('extr', 'points', self.options['learning_tool'])
+    if 'enable_scrolling' not in self.options or self.options['enable_scrolling'] == '':
+      self.options['enable_scrolling'] = get_default_ex_option('extr', 'enable_scrolling', self.options['learning_tool'])
+    if 'width' not in self.options or self.options['width'] == '':
+      self.options['width'] = get_default_ex_option('extr', 'width', self.options['learning_tool'])
+    if 'height' not in self.options or self.options['height'] == '':
+      self.options['height'] = get_default_ex_option('extr', 'height', self.options['learning_tool'])
 
     self.options['mod_name'] = current_module_base
     
@@ -485,17 +500,17 @@ def get_default_ex_option(ex_type, option, learning_tool=None):
     if 'extr' not in default_ex_options:
       print_err('WARNING: Missing "glob_extr_options", using default values instead.')
       default_ex_options['extr'] = _default_ex_options['extr']
-      return default_ex_options['extr']['points']
+      return default_ex_options['extr'][option]
     elif learning_tool in default_ex_options['extr']:
-      if 'points' in default_ex_options['extr'][learning_tool]:
-        return default_ex_options['extr'][learning_tool]['points']
-    if 'points' not in default_ex_options['extr']:
-      def_val = _default_ex_options['extr']['points']
-      print_err('WARNING: "glob_extr_options" is missing field "points". Using default value "{0}".'.format(def_val))
-      default_ex_options['extr']['points'] = def_val
+      if option in default_ex_options['extr'][learning_tool]:
+        return default_ex_options['extr'][learning_tool][option]
+    if option not in default_ex_options['extr']:
+      def_val = _default_ex_options['extr'][option]
+      print_err('WARNING: "glob_extr_options" is missing field "{0}". Using default value "{1}".'.format(option, def_val))
+      default_ex_options['extr'][option] = def_val
       return def_val
     else:
-      return default_ex_options['extr']['points']
+      return default_ex_options['extr'][option]
   elif ex_type == 'dgm':
     return _default_ex_options['dgm']
   else:
@@ -624,6 +639,10 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
         exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
         exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+        exs_config['extertool']['long_name'] = ex_obj['@resource_name']
+        exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
+        exs_config['extertool']['width'] = ex_obj['@width']
+        exs_config['extertool']['height'] = ex_obj['@height']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
         if expanded:
           exs_config['extertool']['type'] = 'extr'
@@ -703,6 +722,9 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
       exs_config['extertool']['long_name'] = ex_obj['@resource_name']
+      exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
+      exs_config['extertool']['width'] = ex_obj['@width']
+      exs_config['extertool']['height'] = ex_obj['@height']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
       exs_config['extertool']['workout_id'] = ex_obj['@workout_id']
       if expanded:

@@ -28,27 +28,32 @@ external_tools_urls = {
   "code-workout": {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
           "width": 1000,
-          "height": 900
+          "height": 900,
+          "enable_scrolling": "no"
     },
     "code-workout-jhavepop": {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
           "width": 1000,
-          "height": 900
+          "height": 900,
+          "enable_scrolling": "no"
     },
     "mastery-grid-jsparsons-python": {
           "url": "https://pitt-acos.herokuapp.com/html/jsparsons/jsparsons-python/",
           "width": 1000,
-          "height": 900
+          "height": 900,
+          "enable_scrolling": "no"
     },
     "mastery-grid-java-animations": {
           "url": "https://pitt-acos.herokuapp.com/html/jsvee/jsvee-java/",
           "width": 1000,
-          "height": 900
+          "height": 900,
+          "enable_scrolling": "no"
     },
     "mastery-grid-python-animations": {
           "url": "https://pitt-acos.herokuapp.com/html/jsvee/jsvee-python/",
           "width": 1000,
-          "height": 900
+          "height": 900,
+          "enable_scrolling": "no"
     }
 }
 
@@ -71,6 +76,7 @@ CONTAINER_HTML= '''\
     data-frame-height="%(height)s"
     data-type="%(type)s"
     data-workout-id="%(workout_id)s"
+    data-enable-scrolling="%(enable_scrolling)s"
     data-exer-id="%(id)s">
   %(content)s
   <div class="center">
@@ -84,8 +90,8 @@ def print_err(*args, **kwargs):
   print(*args, file=sys.stderr, **kwargs)
 
 class extrtoolembed(Directive):
-  required_arguments = 0
-  optional_arguments = 4
+  required_arguments = 1
+  optional_arguments = 0
   final_argument_whitespace = True
   has_content = True
   option_spec = {
@@ -94,7 +100,10 @@ class extrtoolembed(Directive):
                  'learning_tool': directives.unchanged,
                  'launch_url': directives.unchanged,
                  'id': directives.unchanged,
-                 'workout_id': directives.unchanged
+                 'workout_id': directives.unchanged,
+                 'enable_scrolling': directives.unchanged,
+                 'width': directives.unchanged,
+                 'height': directives.unchanged
                  }
 
   def run(self):
@@ -123,8 +132,12 @@ class extrtoolembed(Directive):
       self.options['workout_id'] = 0
 
     external_tool = external_tools_urls[self.options['learning_tool']]
-    self.options['width'] = external_tool['width']
-    self.options['height'] = external_tool['height']
+    if 'width' not in self.options:
+      self.options['width'] = external_tool['width']
+    if 'height' not in self.options:
+      self.options['height'] = external_tool['height']
+    if 'enable_scrolling' not in self.options:
+      self.options['enable_scrolling'] = external_tool['enable_scrolling']
 
     if 'launch_url' in self.options:
       self.options['tool_address'] = self.options['launch_url']
