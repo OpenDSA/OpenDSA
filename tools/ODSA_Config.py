@@ -366,12 +366,21 @@ def group_exercises(conf_data, no_lms):
                               conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
                     if 'learning_tool' in list(section_obj.keys()):
                         exercise_obj = {}
-                        exercise_obj['long_name'] = section
+                        if 'long_name' in section_obj:
+                          exercise_obj['long_name'] = section_obj['long_name']
+                        else:
+                          exercise_obj['long_name'] = section
+                        if 'enable_scrolling' in section_obj:
+                          exercise_obj['enable_scrolling'] = section_obj['enable_scrolling']
+                        if 'width' in section_obj:
+                          exercise_obj['width'] = section_obj['width']
+                        if 'height' in section_obj:
+                          exercise_obj['height'] = section_obj['height']
                         exercise_obj['learning_tool'] = section_obj['learning_tool']
                         if 'launch_url' in section_obj:
                             exercise_obj['launch_url'] = section_obj['launch_url']
                             exercise_obj['id'] = section_obj['id']
-                        conf_data['chapters'][chapter][module]['exercises'][section] = exercise_obj
+                        conf_data['chapters'][chapter][module]['exercises'][exercise_obj['long_name']] = exercise_obj
 
 def get_translated_text(lang_):
     """ Loads appropriate text from language_msg.json file based on book language  """
