@@ -67,7 +67,12 @@ on a certain percentage of coins, if those blocks for the coins are invalid, you
 
 .. Creating a new rst file for cryptohacking as a whole. Will link here when it is done.
 
-
+When a blockchain forks in the Proof of Work algorithm, the miners must choose how their mining power
+goes whether it be the original chain, or the new forked one which causes the miners to have
+less power in the mining process since it is divided. In the proof of stake algorithm, the validators
+do not choose between the two chains. Instead, both are validated. This can cause issues where the
+cryptocurrency is spent twice because spending can happen before and after the split. This makes proof of
+work more secure.
 
 Energy Concerns
 ---------------
