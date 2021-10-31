@@ -29,7 +29,7 @@ and Stratis (STRAX).
 ..possibly add more files related to the different cryptocurrencies that use proof of stake
 
 How does it work?
------------------
+~~~~~~~~~~~~~~~~~
 
 A committee is a group of at least 128 validators. A committee is what is required
 for attesting each block in a transaction within a set period of time or a slot of
@@ -48,10 +48,10 @@ can be removed from the position [1].
 .. Possibly put an exercise here to practice validating blocks.
 
 Proof of Stake versus Proof of Work
-===================================
+-----------------------------------
 
 Security Concerns
------------------
+~~~~~~~~~~~~~~~~~
 
 For both Proof of Stake and Proof of Work consensus algorithms, attacks such as the 51% attacks
 are a risk to the systems. 51% attacks are made by users or user groups that own more than 50% 
@@ -75,7 +75,7 @@ cryptocurrency is spent twice because spending can happen before and after the s
 work more secure.
 
 Energy Concerns
----------------
+~~~~~~~~~~~~~~~
 
 Proof of stake addresses concerns with the environmental impacts that proof of work causes. 
 Proof of work requires a large amount of power to run the mining algorithm (i.e, many, many
@@ -96,7 +96,7 @@ users mining for cryptocurrency using proof of stake does not need to spend high
 of money for computers to process the mining like they do in proof of work.
 
 Ability for Concentration
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For proof of work algorithms, a business or group of individuals can collect coin by mining
 with several computers. Because of this conglomeration of resources to one group, it causes
@@ -108,10 +108,10 @@ in stocks. The user may get this back but this method for investment prevents us
 gaining a majority.
 
 Concerns with Proof of Stake
-============================
+----------------------------
 
 The top 1%
-----------
+~~~~~~~~~~
 
 Because Proof of Stake depends on investing coins and money in order to receive some return, 
 there is concern related to who can invest in cryptocurrencies that use proof of stake.
