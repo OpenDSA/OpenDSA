@@ -413,6 +413,39 @@
           "required": true
         }
       }
+    },
+
+    "Multi-dimensional Arrays":{
+      "IntroToSoftwareDesign/MultiDimensionalArrays": {
+        "Syntax Practice 11": {
+          "points": 31,
+          "required": true
+        },
+        "Programming Practice 11": {
+          "points": 31,
+          "required": true
+        },
+        "Week11Quiz1Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week11Quiz2Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week11Quiz3Summ": {
+          "points": 6,
+          "threshold": 3,
+          "required": true
+        },
+        "Week11ReadingQuizSumm": {
+          "points": 20,
+          "threshold": 10,
+          "required": true
+        }
+      }
     }
 
   }
