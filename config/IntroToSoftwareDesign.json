@@ -417,32 +417,43 @@
 
     "Multi-dimensional Arrays":{
       "IntroToSoftwareDesign/MultiDimensionalArrays": {
-        "Syntax Practice 11": {
-          "points": 31,
+        "Syntax Practice: 2D Array Basics": {
+          "points": 12,
           "required": true
         },
-        "Programming Practice 11": {
-          "points": 31,
+        "Syntax Practice: Syntax Practice: Looping Over 2D Arrays": {
+          "points": 6,
+          "required": true
+        },
+        "Syntax Practice: 3D Arrays": {
+          "points": 3,
+          "required": true
+        },
+        "Syntax Practice: Modulus": {
+          "points": 9,
+          "required": true
+        },
+        "Programming Practice: Multi-dimensional Arrays": {
+          "points": 15,
+          "required": true
+        },
+        "Programming Practice: Modulus": {
+          "points": 15,
           "required": true
         },
         "Week11Quiz1Summ": {
-          "points": 6,
+          "points": 10,
           "threshold": 3,
           "required": true
         },
         "Week11Quiz2Summ": {
-          "points": 6,
+          "points": 10,
           "threshold": 3,
           "required": true
         },
         "Week11Quiz3Summ": {
-          "points": 6,
+          "points": 10,
           "threshold": 3,
-          "required": true
-        },
-        "Week11ReadingQuizSumm": {
-          "points": 20,
-          "threshold": 10,
           "required": true
         }
       }

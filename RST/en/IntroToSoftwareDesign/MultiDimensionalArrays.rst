@@ -32,7 +32,9 @@ a line--an array whose components are themselves arrays.
 
 .. raw:: html
 
+   <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/alwukGslBG8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 For example, you might use a two-dimensional of array (or 2D array, for short)
 if you are doing a scientific
@@ -119,7 +121,9 @@ examples would cause an ``IndexOutOfBoundsException`` when executed:
 
 .. raw:: html
 
+   <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/L3-q2GxAqZA?start=105" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Check Your Understanding: 2D Arrays
@@ -129,8 +133,15 @@ Check Your Understanding: 2D Arrays
    :long_name: 2D Arrays
 
 
-Iterating through a 2D array
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Syntax Practice: 2D Array Basics 
+--------------------------------
+
+.. extrtoolembed:: 'Syntax Practice: 2D Array Basics'
+   :workout_id: 1549
+
+
+Iterating through a 2D Array
+----------------------------
 
 As we've mentioned before, a ``double`` array will automatically initialize
 every value to 0.0 so we do not need to initialize the elements unless we
@@ -148,7 +159,7 @@ initialize each element of the ``rainfall`` array to 0:
    {
        for (int day = 1 ; day < rainfall[month].length ; day++)
        {
-           rainfall[month][day] = 0.0 ;
+           rainfall[month][day] = 0.0;
        }
    }
 
@@ -182,6 +193,13 @@ Check Your Understanding: Iterating with 2D Arrays
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week11Quiz2Summ.html ka
    :long_name: Iterating with 2D Arrays
+
+
+Syntax Practice: Looping Over 2D Arrays 
+---------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice: Looping Over 2D Arrays'
+   :workout_id: 1550
 
 
 Multi-Dimensional Arrays
@@ -314,6 +332,13 @@ and so arrays initialized this way are often used to provide tabular
 data literals in Java programs.
 
 
+Syntax Practice: 3D Arrays 
+--------------------------
+
+.. extrtoolembed:: 'Syntax Practice: 3D Arrays'
+   :workout_id: 1551
+
+
 But Can You Have Multi-dimensional Lists?
 -----------------------------------------
 
@@ -330,8 +355,9 @@ objects, so it makes sense that you can put lists inside lists.
 
 .. raw:: html
 
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/L3-q2GxAqZA?start=105" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9tBxJoQF74E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/9tBxJoQF74E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Integer Division and Modulus
@@ -390,13 +416,16 @@ modulo arithmetic as well:
 
 .. raw:: html
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/MrTtsX2Wg9Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/MrTtsX2Wg9Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 .. raw:: html
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/VUZpocjQFWo?start=200&end=259" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/VUZpocjQFWo?start=200&end=259" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Check Your Understanding: Modulus
@@ -406,22 +435,22 @@ Check Your Understanding: Modulus
    :long_name: Modulus
 
 
-Syntax Practice 11
-------------------
-
-.. extrtoolembed:: 'Syntax Practice 11'
-   :workout_id: 1513
-
-
-Programming Practice 11
------------------------
-
-.. extrtoolembed:: 'Programming Practice 11'
-   :workout_id: 1514
-
-
-Check Your Understanding
+Syntax Practice: Modulus
 ------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week11ReadingQuizSumm.html ka
-   :long_name: Module Review
+.. extrtoolembed:: 'Syntax Practice: Modulus'
+   :workout_id: 1552
+
+
+Programming Practice: Multi-dimensional Arrays
+----------------------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Multi-dimensional Arrays'
+   :workout_id: 1553
+
+
+Programming Practice: Mod
+-------------------------
+
+.. extrtoolembed:: 'Programming Practice: Mod'
+   :workout_id: 1554

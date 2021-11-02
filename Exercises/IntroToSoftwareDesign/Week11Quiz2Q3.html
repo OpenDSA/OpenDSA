@@ -10,23 +10,22 @@
   <body data-height="650" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="Week11Quiz2Q2">
-        <p class="question">True or False, the following code would print out every element in a 2D int array called <tt>arr</tt></p>
+        <div id="Week11Quiz2Q3">
+        <p class="question">True or False, the following code would print out every element in a 2D int array called <tt>values</tt></p>
 <pre class="prettyprint">
-for(int[] row: arr)
+for (int[] row: values)
 {
-  for(int value: row)
-  {
-    System.out.println(value);
-  }
-}
-</pre>
+    for (int value: row)
+    {
+        System.out.println(value);
+    }
+}</pre>
         <p></p>
-        <div class="solution">True - but no values could be changed this way</div>
+        <div class="solution">True - but no values could be changed this way.</div>
         <ul class="choices">
-        <li>True</li>
-        <li>False - only counter controlled for loops would work</li>
-        <li>False - only while loops would work</li>
+        <li>True - but the values could be accidentally changed inside the inner loop if you're not careful.</li>
+        <li>False - only counter controlled for loops can be used with 2D arrays.</li>
+        <li>False - only while loops can be used with 2D arrays.</li>
 
         </ul>
         <div class="hints">
