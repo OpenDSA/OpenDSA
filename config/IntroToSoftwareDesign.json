@@ -421,7 +421,7 @@
           "points": 12,
           "required": true
         },
-        "Syntax Practice: Syntax Practice: Looping Over 2D Arrays": {
+        "Syntax Practice: Looping Over 2D Arrays": {
           "points": 6,
           "required": true
         },
@@ -434,11 +434,11 @@
           "required": true
         },
         "Programming Practice: Multi-dimensional Arrays": {
-          "points": 15,
+          "points": 20,
           "required": true
         },
         "Programming Practice: Modulus": {
-          "points": 15,
+          "points": 20,
           "required": true
         },
         "Week11Quiz1Summ": {
