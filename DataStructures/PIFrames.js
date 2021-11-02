@@ -577,7 +577,6 @@
             //the last question in the slideshow has been answered correctly, so enable the jsavend button
             if (current == this.queue.elements.length - 1) {
               this.enableFastForwardButton();
-              ODSA.AV.awardCompletionCredit(); // Give exercise credit
             }
           } else {
             //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
