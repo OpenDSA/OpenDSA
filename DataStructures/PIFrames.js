@@ -493,12 +493,13 @@
           var question = this.getQuestion(this.queue.elements[current]);
           
           const correct = this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current]);
-          
+          const finishedFrame = current == this.queue.elements.length - 1 ? true : false
           let data = {
             "exercise": av_name,
             "question_id":  this.queue.current,
             "correct":   correct,
             "request_type": "PI",
+            "finishedFrame": finishedFrame
           };
           
           if (ODSA.UTILS.hasBook()) {
@@ -561,11 +562,8 @@
               $("." + av_name + "> input[type=submit]").hide();
               $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
             }
-          } else if (
-            this.studentHasAnsweredQuestionCorrectly(
-              this.queue.elements[current]
-            )
-          ) {
+          } 
+          else if (this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) {
             this.enableForwardButton();
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
@@ -578,7 +576,8 @@
             if (current == this.queue.elements.length - 1) {
               this.enableFastForwardButton();
             }
-          } else {
+          } 
+          else {
             //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> #noAnswerFeedback").hide();
