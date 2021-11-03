@@ -19,9 +19,6 @@ Inheritance and Polymorphism: Subclasses and Methods
    write in a new way.  Learning to program is transformative and empowering.”
    -- Todd Neller
 
-.. role:: raw-html(raw)
-   :format: html
-
 .. |br| raw:: html
 
    <br />
@@ -714,7 +711,7 @@ These details include answers to questions such as the following:
 * "How will I get there: walk, drive, ride my bicycle, take the
   bus?"
 * "What kind of card does Mark like: humorous, sentimental,
-  risqu\ :raw-html:`&eacute;`?"
+  risque?"
 
 These kinds of details are considered in the next step of our
 process.
