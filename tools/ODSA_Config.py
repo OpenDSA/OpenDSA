@@ -31,7 +31,7 @@ optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_d
 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'desc', 'av_origin',
 'av_root_dir', 'code_lang', 'course_id', 'LMS_url', 'module_map', 'inst_book_id','module_position','inst_exercise_id',
 'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled', 'zeropt_assignments',
-'sphinx_debug', 'html_theme_options', 'html_css_files', 'html_js_files']
+'sphinx_debug', 'html_theme_options', 'html_css_files', 'html_js_files', 'include_tree_view']
 
 
 listed_modules = []
@@ -301,6 +301,9 @@ def set_defaults(conf_data):
 
     if 'suppress_todo' not in conf_data:
         conf_data['suppress_todo'] = False
+
+    if 'include_tree_view' not in conf_data:
+        conf_data['include_tree_view'] = False
 
     # Require slideshows to be fully completed for credit by default
     if 'req_full_ss' not in conf_data:

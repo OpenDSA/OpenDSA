@@ -67,7 +67,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenDSA'
-copyright = u'2020 by OpenDSA Project Contributors and distributed under an MIT license'
+copyright = u'2021 by OpenDSA Project Contributors and distributed under an MIT license'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -191,14 +191,14 @@ html_context = {"script_files": [
                   #'https://code.jquery.com/jquery-2.1.4.min.js',
                   '../../../lib/jquery.min.js',
                   '../../../lib/jquery.migrate.min.js',
-                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+                  'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
                   '_static/doctools.js'
                 ],
                 "odsa_scripts": [
-                  #'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
+                  # 'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
                   '../../../lib/jquery.ui.min.js',
                   '../../../lib/jquery.transit.js',
                   '../../../lib/raphael.js',
