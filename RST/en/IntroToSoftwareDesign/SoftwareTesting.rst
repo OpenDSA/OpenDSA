@@ -840,7 +840,7 @@ A method definition consists of two parts: the method header and the method
 body.  In general, a method header takes the following form, including some
 parts which are optional:
 
-*Modifiers*:sub:`optional` *ReturnType*  *MethodName* ( *ParameterList*:sub:`optional`)
+*Modifiers*\ :sub:`optional` *ReturnType*  *MethodName*\ (*ParameterList*\ :sub:`optional`)
 
 Put together, a method definition may look like this:
 
