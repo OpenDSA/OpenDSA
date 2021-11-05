@@ -123,19 +123,33 @@ they do not have any coin staked.
 
 .. Creating a new rst file for cryptohacking as a whole. Will link here when it is done.
 
-When a blockchain forks in the Proof of Work algorithm, the miners
-must choose how their mining power goes whether it be the original
-chain, or the new forked one which causes the miners to have 
-less power in the mining process since it is divided. [That is too vague.]
-In the proof of stake algorithm, the validators
-do not choose between the two chains. [How do we get two chains? I
-wouldn't ask that question if the consensus process had been better
-explained above.]
-Instead, both are validated. This can cause issues where the
-cryptocurrency is spent twice because spending can happen before and
-after the split. [Huh? Again, are you using "double spending" as a
-proxy for malicious transactions in general?]
-This makes proof of work more secure. [That needs explaination!]
+Another risk to consensus algorithms like proof of stake and proof of work is hard forks. Hard forks are where there is 
+a change in the blockchain's technology where blocks that had already determined to be invalid, become valid. These forks
+can be started by developers or miners who are not satisfied with the current progress of the blockchain. They also are A
+way to fund projects. Specifically, hard forks are caused by additions to block code that causes a new path with upgraded 
+blockchain. This fork causes two paths to appear for miners. A fork like this can occur in any form of cryptocurrency that 
+is based on blockchain. When a fork occurs, the miners, validators, and forgers of a particular coin must follow the changes
+since when a fork occurs, developers update the base code of blockchain to match the new networking rules. Hard forks can be
+implemented to undo damage caused by a hack (i.e. reversing transactions), adding new functionality, and patching security 
+risks. This is a contrast with a soft fork which allows one side of the fork to continue to exist, removing the choice of 
+path a miner can take in a hard fork. Hard forks create a new cryptocurrency and soft forks do not. Although these changes
+can be beneficial to blockchain users, they can cause a blockchain to become unstable. This is because hard forks can result
+from disagreements from within the cryptocurrency's community. Forks can result in price inflations as well, raising the cost
+of the coin. In addtion, in some cases, adding a hard fork can introduce vulnerabilities into the cryptocurrency. An example 
+of this is from Ethereum in 2019. When the fork was introduced for Ethereum, where the fork caused issues with smart contracts.
+
+In the case of a hard fork for the proof of work algorithm, the miners must decide whethere to continue in the current path,
+or join the new blockchain. If the miner decides to choose to continue to support both chains in the fork, they must divide
+their resources between the two chains. Since the computing power is divided between the two chains, there is reduced resources
+dedicated to a chain or more strain on the computers they use to mine coin. In general, a fork is discouraged for proof of work systems
+because this causes more of an impact on the value of the currency by decreasing it and the developers of the cryptocurrency
+would need to choose the fork that does not cause vulnerabilities in the code base.
+
+In proof of stake algorithms, forking is part of the validator's job. A validator must choose which block is beneficial to the 
+cryptocurrency. If the validator chooses the wrong side of the fork, leading to vulnerabilities, the validator would lose their
+stake. However, unlike proof of work systems, a validator does not have to choose one block. There is not as much of an computational
+cost with maintaining a fork, the validator can choose to support both directions of the fork. Because of this, forking is more
+prevalent in proof of stake systems than in proof of work systems and makes people worry about the stability of the cryptocurrency.
 
 Energy Concerns
 ~~~~~~~~~~~~~~~
@@ -152,7 +166,7 @@ that year. [Not sure that you have the year/country right. Use
 something more recent.]
 The amount grows annually.
 This growth is so significant to make this approach unsustainable in
-the future. [2] [What citation is this?]
+the future.
 
 As for proof of stake, this issue is addressed by the priority of the
 user.
