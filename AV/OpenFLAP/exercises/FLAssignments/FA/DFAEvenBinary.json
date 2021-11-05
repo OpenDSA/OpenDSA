@@ -4,7 +4,7 @@
   "totalFalseCases": 5,
   "containLetters": ["1", "0"],
   "randomStringLength": [0, 15],
-  "description": "Give a DFA for the following alphabet and language: $\\Sigma = \\{0, 1\\}, \\quad L = \\{\\mbox{All even binary numbers\\}$",
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{0, 1\\}$ of strings that represent even binary numbers.",
   "testCases": [
     {
       "0": true,
