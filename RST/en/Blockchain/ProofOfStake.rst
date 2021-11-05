@@ -154,72 +154,30 @@ prevalent in proof of stake systems than in proof of work systems and makes peop
 Energy Concerns
 ~~~~~~~~~~~~~~~
 
-Proof of stake addresses concerns with the environmental impacts that
-proof of work causes.
-Proof of work requires a large amount of power to run the mining
-algorithm (i.e, many, many guesses at the nonce until finally finding
-one that works).
-This power translates into higher amounts of electricity used and
-increases the demand for utility providers to create more.
-For example, in 2004 mining cryptocurrency used power as did Ireland
-that year. [Not sure that you have the year/country right. Use
-something more recent.]
-The amount grows annually.
-This growth is so significant to make this approach unsustainable in
-the future.
+Proof of stake addresses concerns with the environmental impacts that proof of work causes. Proof of work requires a large amount
+of power to run the mining algorithm (i.e, many, many guesses at the nonce until finally finding one that works). This power translates
+into higher amounts of electricity used and increases the demand for utility providers to create more.
+For example, in 2016, the cost of a transaction in the bitcoin network costs 830,000 watt hours (WH) or 830 kWH where the network processes
+around 5 transactions a second. This means, that in one second of transactions, 4,150,000 WH. In addition, when the value of the cryptocurrency
+increases, the energy cost consumed rises because of the higher incentive to mine new cryptocurrency leading to more mining. This growth is so
+significant to make this approach unsustainable in the future.
 
-As for proof of stake, this issue is addressed by the priority of the
-user.
-This priority is where the user’s mining power is limited based on the
-amount of coin they possess.
-Meaning, the miner is limited to mining the certain percentage of
-coins they already have
-[This explanation is really vague. Need to carefully explain how stake
-translates to validating transactions. Does more stake translate to
-higher chance of being a validator? And what controls are there on
-high-stake players? And, what is the process that creates the next
-block proposed to the network?]
-Because of this limit, there is not a high consumption of energy by
-all users attempting to mine as many coins as possible as in the proof
-of work concept.
-Not only that, but users mining for cryptocurrency using proof of
-stake does not need to spend high amounts of money for computers to
+As for proof of stake, this computation power issue is addressed by the priority of the user. There is no need for high computing power
+when attesting for new blocks, meaning the environmental cost is decreased. However, the user is limited to mining the certain percentage
+of coins they already have. What prevents the user from owning a majority of the coin in the cryptocurrency is the fact that they have to
+stake a percentage of their own coin in exchange for more. Meaning, the miner is limited to forging the certain percentage of coins they already 
+have. Because of this limit, there is not a high consumption of energy by all users attempting to mine as many coins as possible as in the proof
+of work concept. Not only that, but users mining for cryptocurrency using proof of stake does not need to spend high amounts of money for computers to
 process the mining like they do in proof of work.
 
+Ability for Concentration into the top 1%
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ability for Concentration
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-For proof of work algorithms, a business or group of individuals can
-collect coin by mining with several computers.
-Because of this conglomeration of resources to one group, it causes
-single groups to own the majority of a particular cryptocrurrency
-(i.e. Bitcoin for some investors in China) with no extra cost of
-bitcoin other than the cost of mining them.
-For  proof of stake algorithms, when an individual is working to get
-more cryptocurrency, they must put some percentage of their coin in
-for exchange.
-This exchange is a holding similar to investing in stocks.
-The user may get this back [How??] but this method for investment
-prevents users or groups from gaining a majority. [How?? Vague.]
-
-
-Concerns with Proof of Stake
-----------------------------
-
-The top 1%
-~~~~~~~~~~
-
-Because Proof of Stake depends on investing coins and money in order
-to receive some return,
-there is concern related to who can invest in cryptocurrencies that
-use proof of stake.
-This concern is that in order to have a stake or be considered for
-validation, you must have a minimum amount of the coin to participate.
-This would limit the people who can get involved
-and invest more to the individuals who have an amount of wealth to
-them.
-This is similar to the worry of making the rich richer.
-[So, why does amount of stake matter? Why does the algorithm give some
-sort of priority to those with more stake? This all needs to be
-explained.]
+For proof of work algorithms, a business or group of individuals can collect coin by mining with several computers. Because of this conglomeration of
+resources to one group, it causes single groups to own the majority of a particular cryptocrurrency (i.e. Bitcoin for some investors in China) with
+no extra cost of bitcoin other than the cost of mining them. For proof of stake algorithms, when an individual is working to get more cryptocurrency,
+they must put some percentage of their coin in for exchange. This exchange is a holding similar to investing in stocks.
+The user may get this back when they attest for the right blocks in the currency. This means that an individual with a large amount of wealth could invest
+more for higher gains. An individual or group with lower investment availability has a lower rate of return. However, even if an individual with a large stake
+invested in the cryptocurrencies, will still not have a majority since the value of the cryptocurrency is more than the individual's worth.
+Meaning that this method for investment prevents users or groups from gaining a majority.
