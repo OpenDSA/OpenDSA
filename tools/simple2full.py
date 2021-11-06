@@ -57,7 +57,7 @@ _default_ex_options = {
       'threshold': 1
     },
     'extr': {
-      'enable_scrolling' : 'no',
+      'enable_scrolling' : False,
       'frame_width': 1000,
       'frame_height': 900,
       'points': 1.0
