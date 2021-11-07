@@ -26,7 +26,7 @@ In fact, we can use ``System.out.println`` to display the value of ``System.out`
 
 The result is:
 
-.. code-block:: java
+.. code-block::
 
    java.io.PrintStream@685d72cd
 
@@ -99,41 +99,43 @@ for creating ``PrintWriter`` objects, including methods that append to an existi
 file instead of overwriting it, or streams that are connected to the console for
 output.
 
+
 Writing to an Output Stream
 ---------------------------
 
-Three basic methods provided by ``PrintWriter` objects provide virtually all of the output capabilities you will need in this course:
+Three basic methods provided by ``PrintWriter`` objects provide virtually all
+of the output capabilities you will need in this course:
 
 * ``<stream>.print(<value>);`` writes the specified <value> to the given
-<stream>. There are actually many versions of this method that support every
-possible type of <value> you might want to print.
+  <stream>. There are actually many versions of this method that support every
+  possible type of <value> you might want to print.
 
 * ``<stream>.println(<value>);`` writes the specified <value> to the given
-<stream>, and then follows it by writing a 'line terminator' to mark the end of
-the current line (Java writes an appropriate line termination character sequence based on the current operating system's text file format conventions). As with
-``print()``, you can provide any type of value to ``println()``. You can even
-call ``println()`` without giving any argument at all, for example, to terminate
-the current line after several previous ``print()`` messages.
+  <stream>, and then follows it by writing a 'line terminator' to mark the end
+  of the current line (Java writes an appropriate line termination character
+  sequence based on the current operating system's text file format
+  conventions). As with ``print()``, you can provide any type of value
+  to ``println()``. You can even call ``println()`` without giving any argument
+  at all, for example, to terminate the current line after several
+  previous ``print()`` messages.
 
-* ``<stream>.write(<value>);`` writes a single character specified by an integer
-<value>. This operation is most often used when you are producing output one
-character at a time, rather than in larger chunks. However, If you pass an entire
-String value to ``write()`` instead of an ``int`` value, then the entire string will be
-written to the ``PrintWriter()`` just as if you had used ``print()``.
+* ``<stream>.write(<value>);`` writes a single character specified by an
+  integer <value>. This operation is most often used when you are producing
+  output one character at a time, rather than in larger chunks. However, if
+  you pass an entire ``String`` value to ``write()`` instead of an ``int``
+  value, then the entire string will be written to the ``PrintWriter()`` just
+  as if you had used ``print()``.
 
 For example:
-
 
 .. code-block:: java
 
    outStream.print("This is a message, and ");
    outStream.println("these words appear on the same line as those above");
-   outStream.println(100 / 2); // prints the value "50"
-   outStream.write(65); // writes the letter 'A', whose ASCII code is 65
+   outStream.println(100 / 2);  // prints the value "50"
+   outStream.write(65);         // writes the letter 'A', whose ASCII code is 65
 
 
-
-<TODO: FIGURE THIS OUT>
 Closing a Stream
 ----------------
 
@@ -145,11 +147,9 @@ device involved (if any).
 
 Closing a stream is easy:
 
-
 .. code-block:: java
 
    outStream.close();
-
 
 You should close both input streams and output streams this way. In many simple
 programs, a good rule of thumb is to make sure that the method that creates the
@@ -253,27 +253,28 @@ the other value is converted into a human-readable string representation first.
 * As a result, here are some recommendations for output in this course:
 
 * When you just want to produce simple messages in the terminal window to help
-debug a problem with your code, use ``System.out``.
+  debug a problem with your code, use ``System.out``.
 
 * When you just want to interactively prompt the user for some value(s),
-use ``System.out``.
+  use ``System.out``.
 
 * When your program is supposed to produce a series of output lines in a file,
-use a ``PrintWriter``.
+  use a ``PrintWriter``.
 
-* When your program is supposed to produce a series of output lines that may go
-either to the terminal window or to a file, write one or more methods that use a
-``PrintWriter`` provided as a parameter. You can always call such a method and
-provide it with a ``PrintWriter`` produced with a ``System.out`` stream in order to
-produce output on the screen (see the ``IOHelper.createConsoleWriter()`` method).
-Alternatively, you can pass in a ``PrintWriter`` connected to a file instead (or
-even one connected to an internet socket for communicating with another program
-on another machine!).
+* When your program is supposed to produce a series of output lines that may
+  go either to the terminal window or to a file, write one or more methods
+  that use a ``PrintWriter`` provided as a parameter. You can always call such
+  a method and provide it with a ``PrintWriter`` produced with a ``System.out``
+  stream in order to produce output on the screen (see
+  the ``IOHelper.createConsoleWriter()`` method). Alternatively, you can pass
+  in a ``PrintWriter`` connected to a file instead (or even one connected to
+  an internet socket for communicating with another program on another
+  machine!).
 
 Check Your Understanding: Output
 --------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>
+.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz1Summ.html ka
    :long_name: Output
 
 Opening a Stream for Input
@@ -303,47 +304,50 @@ Reading from an Input Stream
 
 Several methods provided by
 `Scanner <https://docs.oracle.com/javase/1.5.0/docs/api/index.html>`_
-objects provide virtually all of the input capabilities you will need in this course:
+objects provide virtually all of the input capabilities you will need in
+this course:
 
 * ``<scanner>.hasNext();`` Returns ``true`` if this scanner has another
-token in its input.
+  token in its input.
 
 * ``<scanner>.next();`` Finds and returns the next complete token
-(by default the next whitespace delimited string as a String object like the
-next line or next tab-seperated word) from this scanner. A
-`NoSuchElementException`<https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
-is thrown if no more tokens are available, (i.e., you have reached the end of input).
+  (by default the next whitespace delimited string as a String object like
+  the next line or next tab-seperated word) from this scanner.
+  A `NoSuchElementException <https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
+  is thrown if no more tokens are available, (i.e., you have reached the end
+  of input).
 
-* ``<scanner>.hasNextLine();`` Returns ``true`` if this scanner has another line
-in its input.
+* ``<scanner>.hasNextLine();`` Returns ``true`` if this scanner has another
+  line in its input.
 
-* ``<scanner>.nextLine();`` Finds and returns the next complete line A
-`NoSuchElementException`<https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
-is thrown if no more tokens are available, (i.e., you have reached the end of input).
+* ``<scanner>.nextLine();`` Finds and returns the next complete line.
+  A `NoSuchElementException <https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
+  is thrown if no more tokens are available, (i.e., you have reached the end
+  of input).
 
 * ``<scanner>.hasNext<PrimitiveType>();`` The ``<PrimitiveType>`` can be
-replaced by ``double``, ``float``, ``int``, etc. Returns ``true`` if this
-scanner has another token in its input and it can be interpreted as a value of
-the ``<PrimitiveType>``.
+  replaced by ``double``, ``float``, ``int``, etc. Returns ``true`` if this
+  scanner has another token in its input and it can be interpreted as a value
+  of the ``<PrimitiveType>``.
 
 * ``<scanner>.next<PrimitiveType>();`` he ``<PrimitiveType>`` can be
-replaced by ``double``, ``float``, ``int``, etc.  The method scans the next
-token of the input as an ``<PrimitiveType>`` and returns back the corresponding
-``<PrimitiveType>`` value. It throws an
-`InputMismatchException<https://docs.oracle.com/javase/1.5.0/docs/api/java/util/InputMismatchException.html>`_
-if the next token does not match the ``<PrimitiveType>``, or if the value scanned
-is out of range. It also throws a `NoSuchElementException`<https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
-if no more tokens are available.
+  replaced by ``double``, ``float``, ``int``, etc.  The method scans the next
+  token of the input as an ``<PrimitiveType>`` and returns back the
+  corresponding ``<PrimitiveType>`` value. It throws an `InputMismatchException <https://docs.oracle.com/javase/1.5.0/docs/api/java/util/InputMismatchException.html>`_
+  if the next token does not match the ``<PrimitiveType>``, or if the value
+  scanned is out of range. It also throws
+  a `NoSuchElementException <https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
+  if no more tokens are available.
 
 * ``<scanner>.useDelimiter(String pattern);`` by default whitespace (spaces,
- tabs, or new line characters) are used as delimiters for separating the input
- into tokens to return. This method allows the user to set the delimiter characters
- to whatever they wish for breaking up the input.  Commas are a common other
- delimiter to use as tables or data is often stored in what are called CSV
- (comma seperated value) files.
+  tabs, or new line characters) are used as delimiters for separating the input
+  into tokens to return. This method allows the user to set the delimiter characters
+  to whatever they wish for breaking up the input.  Commas are a common other
+  delimiter to use as tables or data is often stored in what are called CSV
+  (comma seperated value) files.
 
 * ``<scanner>.close();`` closes the scanner to release system resources being
-used by the scanner.
+  used by the scanner.
 
 To use these methods, normally you will process the input by scanning one line
 at a time and then scanning the line for the desired tokens.
@@ -372,7 +376,7 @@ in Java are encoded using unicode, a 16-bit character code. Programmers in other
 languages are probably more familiar with ASCII, the
 American Standard Code for Information Interchange, which is a 7-bit character
 code. Fortunately, the first 128 codes in unicode are equivalent to the entire
-`ASCII character set<https://www.asciitable.com/>`_ . For American users, ASCII
+`ASCII character set <https://www.asciitable.com/>`_ . For American users, ASCII
 values may thus be freely used when reading and writing character-by-character
 without error, although this approach does not directly extend to programs
 written for an international audience.
@@ -410,9 +414,8 @@ Web if you know the URL:
 Check Your Understanding: Input
 -------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>
+.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz2Summ.html ka
    :long_name: Input
-
 
 
 A Complete Input Example
@@ -526,6 +529,7 @@ character by character:
        }
    }
 
+
 Testing I/O-based Operations
 ----------------------------
 
@@ -550,18 +554,18 @@ To make these tasks easy, the ``TestCase`` base class from which all your test
 cases inherit provides a few helper methods for you:
 
 * ``setIn(<contents>);`` takes a string and uses it to create a ``Scanner``
-for your test to use as input. The scanner gets cleared automatically before
-each test case, so you can call this in ``setUp()`` if you want to use the same
-input sequence for all your tests.
+  for your test to use as input. The scanner gets cleared automatically
+  before each test case, so you can call this in ``setUp()`` if you want to
+  use the same input sequence for all your tests.
 
 * ``in();`` returns the current ``Scanner`` being used for input. You can use
-this, in combination with ``setIn()`` to set up an input stream for your own
-input-based methods inside test cases. The scanner gets cleared automatically
-at the start of each test case.
+  this, in combination with ``setIn()`` to set up an input stream for your own
+  input-based methods inside test cases. The scanner gets cleared automatically
+  at the start of each test case.
 
-* ``out();`` returns a ``PrintWriter`` that you can use for output. This
-PrintWriter captures all of its own output for later use in assertions, and its
-contents are reset before each test case.
+* ``out();`` returns a ``PrintWriter`` that you can use for output.
+  This ``PrintWriter`` captures all of its own output for later use in
+  assertions, and its contents are reset before each test case.
 
 As an example, consider the following test method (which assumes your text fixture
 includes a ``doIt`` object created from some DoIt class that provides a
@@ -618,16 +622,16 @@ for more details.
 Check Your Understanding: Testing
 ---------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/<TBD>
+.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz3Summ.html ka
    :long_name: Testing
 
 
-.. html ::
+.. raw:: html
 
    <footer>
      <p>Content adapted from </p>
-     <p><a href="http://www.cs.trincoll.edu/~ram/jjj/jjj-os-20170625.pdf">Java Java Java, Object-Oriented Problem    Solving 3rd edition by R. Morelli and R. Walde</a></p>
-       <p><a href="http://www.cs.trincoll.edu/~ram/jjj/jjj-os-20170625.pdf">Think Java: How to Think Like a    Computer Scientist version 6.1.3 by Allen B. Downey and Chris Mayfield</a></p>
+     <p><a href="http://www.cs.trincoll.edu/~ram/jjj/jjj-os-20170625.pdf">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde</p>
+       <p><a href="http://www.cs.trincoll.edu/~ram/jjj/jjj-os-20170625.pdf">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield</p>
      <p>
        Adapted by Stephen H. Edwards and Molly Domino
      </p>
