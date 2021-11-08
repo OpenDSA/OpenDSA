@@ -7,9 +7,272 @@
    :author: Molly
 
 
-Java I/O
-========
+Java I/O and Variable Scoping
+=============================
 
+Variable Scoping
+----------------
+
+Local Scope
+~~~~~~~~~~~
+
+Recall that mutator methods (or "setters" as they're often called) are used to
+change the values of private fields in a class.  For example:
+
+.. code-block:: java
+
+   public class Cat{
+
+       private String color;
+
+       ...
+
+       public void setColor(String s){
+            color = s;
+       }
+   }
+
+This  ``setColor`` method makes use of both a field and a parameter.
+It is important to note that there is a difference in where these two types of
+variables can be used. The **scope** of a variable or method refers to where it
+can be used in a program.
+
+A parameter’s scope is limited to the body of the method in which it is
+declared.  Parameters are local variables
+which are declared in the parameter list of a method’s header and which
+have initial values specified by the arguments in a method call.  For example,
+if we had an object of ``Cat`` called ``c``, we could call the ``setColor`` method like so:
+
+.. code-block:: java
+
+   c.setColor("Black")
+
+When we write the method, we declare the variable ``s``, and when we call it here,
+we set ``s`` equal to the string "Black".  If we wanted to call the method again,
+we would need to provide a new value to set the variable ``s`` to.  P
+
+.. code-block:: java
+
+   c.setColor("Black")
+   c.setColor("Grey")
+
+Such values do not carry over between method calls.
+
+Variables that are declared in the body of a method have scope
+which extends from the point where they are declared to the end of the
+block of code in which they are declared.  The scope of a parameter is the
+same as the scope of a variable declared at the
+very beginning of the body of a method.   Once the flow of execution leaves a
+method, its parameters and other local variables cease to exist. The scope
+of local variables is referred to as **local scope**.
+
+.. admonition:: Local Variables
+
+    Local variables, that is, parameters and variables declared in the body of
+    a method, have **local scope** which extends from the point at which they
+    are defined to the end of the block of code in which they are defined. In
+    particular, the scope of a parameter is the entire body of the method in
+    which it is declared.
+
+It would be a syntax error to refer to a method’s parameters or other local
+variables from outside the method.
+
+Class Scope
+~~~~~~~~~~~
+
+By contrast, fields and all methods have scope that extends throughout the
+entire class, that is, **class scope**. They
+can be used in the body of any method and in the expressions that assign initial
+values to class level variables.
+
+.. admonition:: Class-Level Variables
+
+    Fields and methods have class scope, which extends throughout the class.
+
+
+A Common Misconception
+~~~~~~~~~~~~~~~~~~~~~~
+
+After declaring a variable it is tempting to use to both the variable name and
+the variable's type whenever referring to it.  For example:
+
+.. code-block:: java
+
+    public class Cat{
+
+        private String color;
+
+        ...
+
+        public void setColor(String s){
+             String color = s;
+        }
+    }
+
+This setter will **not** change the value of the field ``color``.  To Java,
+whenever the type of a variable is included, that is a variable declaration.
+In the above code, there is a field called ``color`` with class-level scope, *and*
+a local variable called ``color`` that only exists within the ``setColor`` method.
+
+Even though these variables have the same name and type, they are are different.
+Changing one will not change the other.  Another common example of this can be
+Seen when testing.  Let's look at a hypothetical test file for our ``Cat`` class.
+
+.. code-block:: java
+
+    public class CatTest
+        extends TestCase
+    {
+        //~ Fields ................................................................
+        private Cat testCat;
+
+        public void setUp(){
+          Cat testCat = new Cat();
+        }
+
+        public void test1(){
+          testCat.setColor("White"); // this won't work!
+        }
+    }
+
+This is the same issue as we saw in the previous example.
+There is a class-level Cat object declared (``private Cat testCat;``)
+*and* a Cat object local to the ``setUp`` method also called ``testCat``.  This means
+the field ``testCat`` has not been instantiated.  When
+we refer to the ``testCat`` variable in ``test1``, we refer to the field,
+which is currently ``null``.  Thus, this test will result in a ``NullPointerException``.
+
+Fortunately, the problem is easily fixed.  Once a variable has been declared,
+we only need to refer to it by the variable's name.
+
+.. code-block:: java
+
+    public class CatTest
+        extends TestCase
+    {
+        //~ Fields ................................................................
+        private Cat testCat;
+
+        public void setUp(){
+          testCat = new Cat();
+        }
+
+        public void test1(){
+          testCat.setColor("White"); // this won't work!
+        }
+    }
+
+This code would run without error.  ``testCat`` is still declared outside any method,
+giving it a class-level scope.  But this time, it is initialized in our ``setUp`` method
+which runs before every test.  This means that in test1, ``testCat`` would refer to a ``Cat``
+object, not the value ``null``.
+
+
+
+
+A Note on Naming
+~~~~~~~~~~~~~~~~
+
+As we saw above, Java can handle having two variables with the same name and type, but with
+different scopes.  This can also lead to confusion with parameters.  For example, we could
+have two String variables called ``color``.  One a field and one a parameter.
+
+.. code-block:: java
+
+    public class Cat{
+
+        private String color;
+
+        ...
+
+        public void setColor(String color){
+             color = color;
+        }
+    }
+
+This code would compile but it is not advisable to use such naming conventions.
+This is because it is not clear if the field ``color`` is being set to the parameter ``color`` or
+vice-versa, or something else entirely.  Let's take a look at what is happening
+here by adding a few print statements:
+
+
+.. code-block:: java
+
+    public class Cat{
+
+        private String color;
+
+        public Cat(){
+            this.color = "Black";
+        }
+
+        public void setColor(String color){
+            color = color;
+            System.out.println(this.color);
+            System.out.println(color);
+        }
+    }
+
+In this example, whenever we make a new ``Cat`` object, the value of the field ``color``
+is set to "Black" at first.  When we run ``setColor("Green")`` we see an interesting
+result in our print statements
+
+
+.. odsafig:: Images/ScopeCatOutput.png
+   :align: center
+
+The first thing to be printed out is ``this.color``.  Which we see is "Black".
+The value of the field was not changed to "Green"! This means that when we write
+``color = color`` we know that the field color was not on the left side of the equals
+sign.
+
+One might assume, then, that the parameter ``color`` is the value on the left side of
+the equals sign.  This would mean that the parameter was changed from "Green" to "Black".
+But our second print statement tells us otherwise.  When we print out the parameter ``color``
+we see it is still "Green".  This means that the field ``color`` was not on the
+right side of the equals sign either!
+
+What happened in this code is that we set the parameter variable ``color`` equal
+to itself - meaning nothing changed!
+
+Generally, the best way to avoid such confusion is to give your variables
+distinct names like we did initially:
+
+
+.. code-block:: java
+
+    public void setColor(String s){
+        color = s;
+    }
+
+
+
+Alternately, if for some reason you *must* use the same variable name at two
+different scope levels, using the modifier ``this`` will help clarify which variable
+you are referring to:
+
+.. code-block:: java
+
+    public void setColor(String color){
+        this.color = color;
+    }
+
+Now, the field ``color`` is on the left side of the equals sign and the
+parameter ``color`` is on the right.  So, if we ran ``setColor("Green");``
+the field ``color`` would be changed from "Black" to "Green".
+
+
+
+Check Your Understanding: Scope
+-------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz4Summ.html ka
+   :long_name: Scope
+
+
+
+Java Input and Output
+---------------------
 
 We have been using ``System.out.println`` for a while, but you might not
 have thought about what it means. ``System`` is a class that provides methods
@@ -40,7 +303,7 @@ Note
 raw html footer section attributions
 
 Basic Input and Output Concepts
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Java provides an extensive library of classes for managing input and output of
 all forms of data.  In Java, any source or destination for I/O is considered
@@ -72,8 +335,9 @@ package:
    import java.io.*;
    import java.util.*;
 
+
 Opening a Stream for Output
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this class, we will only deal with textual, human-readable output. The main
 class we will use for generating output is Java's ``PrintWriter`` class, from
@@ -101,7 +365,7 @@ output.
 
 
 Writing to an Output Stream
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Three basic methods provided by ``PrintWriter`` objects provide virtually all
 of the output capabilities you will need in this course:
@@ -137,7 +401,7 @@ For example:
 
 
 Closing a Stream
-----------------
+~~~~~~~~~~~~~~~~
 
 Once you have completed all of the operations you intend to carry out on a given
 stream, the stream should be closed. Closing the stream frees up operating system
@@ -155,13 +419,9 @@ You should close both input streams and output streams this way. In many simple
 programs, a good rule of thumb is to make sure that the method that creates the
 stream should also be the one responsible for closing it.
 
-Also, note that in some cases, ``close()`` may cause an error. If you write a
-call to ``close()`` and the compiler complains about a possible ``IOException``,
-refer to the section on "Dealing with Exceptions" below.
-
 
 A Complete Output Example
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We can put all these pieces together to show how to generate output to a file,
 for example. Let's say we want to create a file called ``output.txt`` containing
@@ -218,7 +478,7 @@ all the ``println()`` calls in one or more other methods. Then you can pass a
    }
 
 Output with System.out
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 It turns out that printing to the terminal is such a common action that Java
 provides a pre-initialized output stream just for that purpose, called
@@ -278,7 +538,7 @@ Check Your Understanding: Output
    :long_name: Output
 
 Opening a Stream for Input
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The main class we will use for reading input is Java's ``Scanner`` class, from the
 ``java.io package``, (the ``Scanner`` class is a new util class that was added
@@ -300,7 +560,7 @@ from text files. The ``Scanner`` class was added to simplify text input and is t
 preferred over the other classes.
 
 Reading from an Input Stream
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Several methods provided by
 `Scanner <https://docs.oracle.com/javase/1.5.0/docs/api/index.html>`_
