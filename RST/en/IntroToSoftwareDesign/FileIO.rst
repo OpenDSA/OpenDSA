@@ -58,9 +58,7 @@ we would need to provide a new value to set the variable ``s`` to.  P
 
 Such values do not carry over between method calls.
 
-Variables that are declared in the body of a method have scope
-which extends from the point where they are declared to the end of the
-block of code in which they are declared.  The scope of a parameter is the
+The scope of a parameter is the
 same as the scope of a variable declared at the
 very beginning of the body of a method.   Once the flow of execution leaves a
 method, its parameters and other local variables cease to exist. The scope
@@ -76,6 +74,77 @@ of local variables is referred to as **local scope**.
 
 It would be a syntax error to refer to a method’s parameters or other local
 variables from outside the method.
+
+Block-Level Scope
+~~~~~~~~~~~~~~~~~
+
+Variables that are declared in the body of a method have scope
+which extends from the point where they are declared to the end
+of the **block** of code in which they are declared.  When a variable is declared
+in a method, it has the local scope discussed above.
+
+However, there are some exceptions to that rule.  When control structures
+like if-statements or loops are involved, scope can be a bit more specific.
+
+.. code-block:: java
+
+   public void exampleMethod(int x){
+       if(x%2 == 0)
+       {
+           int value = 4;
+       }
+       value = value + 2; //This will not work!
+   }
+
+Variables declared inside the curly braces (``{}``) of a control structure like a
+loop or conditional only exist within those curly braces.  The method above would
+not work as the variable ``value`` is only declared and initialized inside the
+if statement.  It stops existing as soon as the closing curly brace for the
+if statement occurs.
+
+The same is true for looping structures:
+
+.. code-block:: java
+
+   for(int i = 0; i< 12; i++){
+    System.out.println(i);
+   }
+   i = i + 1; // This will not work!
+
+The variable ``i`` is defined as part of the for loop and stops existing after
+the for loop is finished.
+
+To get around this issue, all we need to do is declare a variable before
+the control structure:
+
+.. code-block:: java
+
+   public void exampleMethod(int x){
+       int value = 0;
+       if(x%2 == 0)
+       {
+           value = 4;
+       }
+       value = value + 2;
+   }
+
+We could also do something similar with a for loop:
+
+.. code-block:: java
+
+   int i;
+   for(i = 0; i< 12; i++){
+    System.out.println(i);
+   }
+   i = i + 1; // This will work!
+
+
+Syntax Practice: Scoping
+------------------------
+
+.. extrtoolembed:: 'Syntax Practice: Scoping'
+   :workout_id: 1572
+
 
 Class Scope
 ~~~~~~~~~~~
@@ -297,10 +366,6 @@ This output indicates that ``System.out`` is a ``PrintStream``, which is defined
 package called ``java.io``. A package is a collection of related classes; ``java.io``
 contains classes for "I/O" which stands for input and output.
 
-
-
-Note
-raw html footer section attributions
 
 Basic Input and Output Concepts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -870,7 +935,7 @@ Finally, you can even deal with both input and output at the same time:
        doIt.processSomeStuff(in(), out());
 
        // test that the result is what was expected
-       assertEquals("output I want", out().getHistory());
+       assertThat("output I want").isEqualTo( out().getHistory()));
    }
 
 The ``TestCase`` base class provides similar methods for setting ``System.in``
