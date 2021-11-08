@@ -11,20 +11,31 @@
     <div class="exercise">
       <div class="problems">
         <div id="Week12Quiz4Q1">
-        <p class="question"></p>
+        <p class="question">What is the scope of the variable <tt>a</tt> in the following code</p>
 <pre class="prettyprint">
 
+  public class Example{
+    private int a;
+
+    public void doSomething(){
+      a = 4;
+    }
+    public void setA(int value){
+      a = value;
+    }
+  }
+
 </pre>
-        <p></p>
-        <div class="solution"></div>
+
+        <div class="solution">Class-Level</div>
         <ul class="choices">
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>Local to the <tt>doSomething</tt> method</li>
+        <li>Local to the <tt>setA</tt> method</li>
+        <li>Local to both the <tt>setA</tt> and <tt>doSomething</tt> methods</li>
 
         </ul>
         <div class="hints">
-        <p>There are no hints for this question.</p>
+        <p>Remember a variable can't be local to two methods!</p>
         </div>
         </div>
       </div>
