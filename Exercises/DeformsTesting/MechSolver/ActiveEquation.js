@@ -231,9 +231,10 @@ class ActiveEquation{
                     var value = this.variables[splitString[x]].value;
                     var varName = this.variables[splitString[x]].currentSymbol;
                     var currentUnit = this.variables[splitString[x]].currentUnit;
+                    var source = this.variables[splitString[x]].valueSource; // stores where this value came from for graph creation.
                     unitEquationSet.push(varName+"="+value);
                     splitString[x] = varName; // this.variables[splitString[x]].currentSymbol;
-                    knowns[varName] = {"value":value, "unit": currentUnit};
+                    knowns[varName] = {"value":value, "unit": currentUnit, "source": source};
                 }
                 else
                 {
