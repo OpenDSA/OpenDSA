@@ -112,7 +112,7 @@ The more general syntax for writing an interface looks like this:
 
 .. code-block:: java
 
-   public interface <Interface Name>
+   public interface InterfaceName
    {
        // any number of constant values
 
@@ -129,20 +129,20 @@ to conform to this interface should **implement** it:
    public class Rectangle
        implements Drawable
    {
-       ...
+       // ...
        public void draw()
        {
-           ...
+           // ...
        }
    }
 
    public class Circle
        implements Drawable
    {
-       ...
+       // ...
        public void draw()
        {
-           ...
+           // ...
        }
    }
 
