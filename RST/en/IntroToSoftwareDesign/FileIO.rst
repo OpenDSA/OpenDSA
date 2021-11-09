@@ -15,7 +15,7 @@ Variable Scoping
 
 Now that you have experience with fields, parameters, and variables in a
 variety of situations, it is time to learn more about exactly where a
-user-defined name. The *scope* of a user-defined name is the region of
+user-defined name can be accessed. The *scope* of a user-defined name is the region of
 source code where the name is visible and can be used.
 
 
@@ -156,7 +156,7 @@ We could also do something similar with a for loop:
 .. code-block:: java
 
    int i = 0;
-   for (i = 0; i< 12; i++)
+   for (i = 0; i < 12; i++)
    {
        System.out.println(i);
    }
@@ -204,9 +204,9 @@ In the code above, there is a field called ``color`` with class-level
 scope, *and* a local variable called ``color`` that only exists within
 the ``setColor()`` method.
 
-Even though these variables have the same name and type, they are are different.
+Even though these variables have the same name and type, they are different.
 Changing one will not change the other.  Another common example of this can be
-Seen when testing.  Let's look at a hypothetical test file for our ``Cat`` class.
+seen when testing.  Let's look at a hypothetical test file for our ``Cat`` class.
 
 .. code-block:: java
 
@@ -222,7 +222,7 @@ Seen when testing.  Let's look at a hypothetical test file for our ``Cat`` class
 
         public void test1()
         {
-            testCat.setColor("White"); // this won't work!
+            testCat.setColor("White");
         }
     }
 
@@ -322,10 +322,10 @@ we see an interesting result in our print statements:
 The first thing to be printed out is ``this.color``.  Which we see is "Black".
 The value of the field was not changed to "Green"! This means that when we write
 ``color = color`` we know that the field color was not on the left side of
-the equals sign.
+the assignment operator.
 
 One might assume, then, that the parameter ``color`` is the value on the left
-side of the equals sign.  This would mean that the parameter was changed
+side of the assignment operator.  This would mean that the parameter was changed
 from "Green" to "Black". But our second print statement tells us otherwise.
 When we print out the parameter ``color`` we see it is still "Green".  This
 means that the field ``color`` was not on the right side of the equals
@@ -358,7 +358,7 @@ variable you are referring to:
         this.color = color;
     }
 
-Now, the field ``color`` is on the left side of the equals sign and the
+Now, the field ``color`` is on the left side of the assignment operator and the
 parameter ``color`` is on the right.  So, if we ran ``setColor("Green");``
 the field ``color`` would be changed from "Black" to "Green".
 
