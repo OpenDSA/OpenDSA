@@ -7,11 +7,17 @@
    :author: Molly
 
 
-Java I/O and Variable Scoping
-=============================
+Input, Output and Variable Scoping
+==================================
 
 Variable Scoping
 ----------------
+
+Now that you have experience with fields, parameters, and variables in a
+variety of situations, it is time to learn more about exactly where a
+user-defined name. The *scope* of a user-defined name is the region of
+source code where the name is visible and can be used.
+
 
 Local Scope
 ~~~~~~~~~~~
@@ -21,40 +27,43 @@ change the values of private fields in a class.  For example:
 
 .. code-block:: java
 
-   public class Cat{
-
+   public class Cat
+   {
        private String color;
 
-       ...
+       // ...
 
-       public void setColor(String s){
-            color = s;
+       public void setColor(String newColor)
+       {
+            color = newColor;
        }
    }
 
-This  ``setColor`` method makes use of both a field and a parameter.
-It is important to note that there is a difference in where these two types of
-variables can be used. The **scope** of a variable or method refers to where it
-can be used in a program.
+This  ``setColor()`` method makes use of both a field and a parameter.
+It is important to note that there is a difference in where these two types
+of variables can be used. The **scope** of a variable or method refers to where
+it can be used in a program.
 
 A parameter’s scope is limited to the body of the method in which it is
 declared.  Parameters are local variables
 which are declared in the parameter list of a method’s header and which
 have initial values specified by the arguments in a method call.  For example,
-if we had an object of ``Cat`` called ``c``, we could call the ``setColor`` method like so:
+if we had an object of type ``Cat`` called ``c``, we could call
+the ``setColor()`` method like so:
 
 .. code-block:: java
 
-   c.setColor("Black")
+   c.setColor("Black");
 
-When we write the method, we declare the variable ``s``, and when we call it here,
-we set ``s`` equal to the string "Black".  If we wanted to call the method again,
-we would need to provide a new value to set the variable ``s`` to.  P
+When we write the method, we declare the variable ``newColor``, and when we call
+the method here,
+we set ``s`` equal to the string "Black".  If we wanted to call the method
+again, we would need to provide a new value for the variable ``newColor``.
 
 .. code-block:: java
 
-   c.setColor("Black")
-   c.setColor("Grey")
+   c.setColor("Black");
+   c.setColor("Grey");
 
 Such values do not carry over between method calls.
 
@@ -64,7 +73,7 @@ very beginning of the body of a method.   Once the flow of execution leaves a
 method, its parameters and other local variables cease to exist. The scope
 of local variables is referred to as **local scope**.
 
-.. admonition:: Local Variables
+.. note:: Local Variables
 
     Local variables, that is, parameters and variables declared in the body of
     a method, have **local scope** which extends from the point at which they
@@ -75,53 +84,67 @@ of local variables is referred to as **local scope**.
 It would be a syntax error to refer to a method’s parameters or other local
 variables from outside the method.
 
+
 Block-Level Scope
 ~~~~~~~~~~~~~~~~~
 
 Variables that are declared in the body of a method have scope
 which extends from the point where they are declared to the end
-of the **block** of code in which they are declared.  When a variable is declared
-in a method, it has the local scope discussed above.
+of the **block** of code in which they are declared.  When a local variable
+is declared at the beginning of a method, it has the local scope discussed
+above.
 
-However, there are some exceptions to that rule.  When control structures
+However, local variables are not restricted to the beginning of a method, and
+their declarations can be placed elsewhere, which can affect their scope.  When
+control structures
 like if-statements or loops are involved, scope can be a bit more specific.
 
 .. code-block:: java
 
-   public void exampleMethod(int x){
-       if(x%2 == 0)
+   public void exampleMethod(int x)
+   {
+       if (x % 2 == 0)
        {
            int value = 4;
        }
-       value = value + 2; //This will not work!
+       value = value + 2; // This will not work!
    }
 
-Variables declared inside the curly braces (``{}``) of a control structure like a
-loop or conditional only exist within those curly braces.  The method above would
-not work as the variable ``value`` is only declared and initialized inside the
-if statement.  It stops existing as soon as the closing curly brace for the
-if statement occurs.
+Variables declared inside the curly braces (``{}``) of a control structure
+like a loop or conditional only exist within those curly braces.  The method
+above would not work as the variable ``value`` is only declared and initialized
+inside the if statement's true branch, and that variable ceases to exist when
+the corresponding closing brace marking the end of the if statement's true
+branch is reached. As a result, its name is no longer visible once execution
+has left the block (the pair of braces) where it is declared. Any attempt to
+use the variable outside of the braces where it is declared will result in a
+compiler error, since the variable is no longer visible or accessible--no longer
+"in scope".
 
 The same is true for looping structures:
 
 .. code-block:: java
 
-   for(int i = 0; i< 12; i++){
-    System.out.println(i);
+   for (int i = 0; i < 12; i++)
+   {
+       System.out.println(i);
    }
    i = i + 1; // This will not work!
 
-The variable ``i`` is defined as part of the for loop and stops existing after
-the for loop is finished.
+The variable ``i`` is defined as part of the for loop and its scope is the
+body of the for loop--the braces surrounding the loop's body. The variable ``i``
+ceases to exist after the for loop is finished.
 
-To get around this issue, all we need to do is declare a variable before
-the control structure:
+To get around this issue, you will sometimes see code where a variable
+is declared *before* a control structure, so that it can be accessed inside
+the control structure and also after it.
 
 .. code-block:: java
 
-   public void exampleMethod(int x){
+   public void exampleMethod(int x)
+   {
        int value = 0;
-       if(x%2 == 0)
+       if (x % 2 == 0)
        {
            value = 4;
        }
@@ -132,18 +155,12 @@ We could also do something similar with a for loop:
 
 .. code-block:: java
 
-   int i;
-   for(i = 0; i< 12; i++){
-    System.out.println(i);
+   int i = 0;
+   for (i = 0; i< 12; i++)
+   {
+       System.out.println(i);
    }
    i = i + 1; // This will work!
-
-
-Syntax Practice: Scoping
-------------------------
-
-.. extrtoolembed:: 'Syntax Practice: Scoping'
-   :workout_id: 1572
 
 
 Class Scope
@@ -151,10 +168,10 @@ Class Scope
 
 By contrast, fields and all methods have scope that extends throughout the
 entire class, that is, **class scope**. They
-can be used in the body of any method and in the expressions that assign initial
-values to class level variables.
+can be used in the body of any method and in the expressions that assign
+initial values to class level variables.
 
-.. admonition:: Class-Level Variables
+.. note:: Class-Level Variables
 
     Fields and methods have class scope, which extends throughout the class.
 
@@ -167,21 +184,25 @@ the variable's type whenever referring to it.  For example:
 
 .. code-block:: java
 
-    public class Cat{
-
+    public class Cat
+    {
         private String color;
 
-        ...
+        // ...
 
-        public void setColor(String s){
-             String color = s;
+        public void setColor(String newColor)
+        {
+             String color = newColor;
         }
     }
 
 This setter will **not** change the value of the field ``color``.  To Java,
-whenever the type of a variable is included, that is a variable declaration.
-In the above code, there is a field called ``color`` with class-level scope, *and*
-a local variable called ``color`` that only exists within the ``setColor`` method.
+whenever the type of a variable is included, you are declaring a variable.
+Java will allow you to declare variables with the same name, as long as they
+are in different scopes.
+In the code above, there is a field called ``color`` with class-level
+scope, *and* a local variable called ``color`` that only exists within
+the ``setColor()`` method.
 
 Even though these variables have the same name and type, they are are different.
 Changing one will not change the other.  Another common example of this can be
@@ -192,24 +213,29 @@ Seen when testing.  Let's look at a hypothetical test file for our ``Cat`` class
     public class CatTest
         extends TestCase
     {
-        //~ Fields ................................................................
         private Cat testCat;
 
-        public void setUp(){
-          Cat testCat = new Cat();
+        public void setUp()
+        {
+            Cat testCat = new Cat();
         }
 
-        public void test1(){
-          testCat.setColor("White"); // this won't work!
+        public void test1()
+        {
+            testCat.setColor("White"); // this won't work!
         }
     }
 
 This is the same issue as we saw in the previous example.
-There is a class-level Cat object declared (``private Cat testCat;``)
-*and* a Cat object local to the ``setUp`` method also called ``testCat``.  This means
-the field ``testCat`` has not been instantiated.  When
-we refer to the ``testCat`` variable in ``test1``, we refer to the field,
-which is currently ``null``.  Thus, this test will result in a ``NullPointerException``.
+There is a class-level ``Cat`` object declared as a field (``private Cat testCat;``).
+But, instead of initializing the field inside ``setUp()``, we also
+have a local variable being declared, also called ``testCat``.  This means
+the field ``testCat`` will not be initialized, since the object created inside
+``setUp()`` is being used to initialize the local variable inside that method,
+which will cease to exist when the method ends.  When
+we refer to the ``testCat`` variable in ``test1()``, we refer to the field,
+which was never initialized and will therefore contain ``null``.  Thus, this
+test will produce a ``NullPointerException``.
 
 Fortunately, the problem is easily fixed.  Once a variable has been declared,
 we only need to refer to it by the variable's name.
@@ -219,90 +245,94 @@ we only need to refer to it by the variable's name.
     public class CatTest
         extends TestCase
     {
-        //~ Fields ................................................................
         private Cat testCat;
 
-        public void setUp(){
-          testCat = new Cat();
+        public void setUp()
+        {
+            testCat = new Cat();
         }
 
-        public void test1(){
-          testCat.setColor("White"); // this won't work!
+        public void test1()
+        {
+            testCat.setColor("White"); // this won't work!
         }
     }
 
-This code would run without error.  ``testCat`` is still declared outside any method,
-giving it a class-level scope.  But this time, it is initialized in our ``setUp`` method
-which runs before every test.  This means that in test1, ``testCat`` would refer to a ``Cat``
-object, not the value ``null``.
-
-
+This code would run without error. The field ``testCat`` is still declared
+outside any method, giving it a class-level scope.  But this time, it is
+initialized in our ``setUp()`` method correctly, and ``setUp()``
+runs before every test.  This means that in ``test1()``, ``testCat`` would
+refer to a ``Cat`` object, not the value ``null``.
 
 
 A Note on Naming
 ~~~~~~~~~~~~~~~~
 
-As we saw above, Java can handle having two variables with the same name and type, but with
-different scopes.  This can also lead to confusion with parameters.  For example, we could
+As we saw above, Java can handle having two variables with the same name
+and type when they are declared in different scopes.  This can also lead to
+confusion.  For example, we could
 have two String variables called ``color``.  One a field and one a parameter.
 
 .. code-block:: java
 
-    public class Cat{
-
+    public class Cat
+    {
         private String color;
 
-        ...
+        // ...
 
-        public void setColor(String color){
+        public void setColor(String color)
+        {
              color = color;
         }
     }
 
 This code would compile but it is not advisable to use such naming conventions.
-This is because it is not clear if the field ``color`` is being set to the parameter ``color`` or
-vice-versa, or something else entirely.  Let's take a look at what is happening
-here by adding a few print statements:
+This is because it is not clear if the field ``color`` is being set to the
+parameter ``color`` or vice-versa, or something else entirely.  Let's take a
+look at what is happening here by adding a few print statements:
 
 
 .. code-block:: java
 
-    public class Cat{
-
+    public class Cat
+    {
         private String color;
 
-        public Cat(){
+        public Cat()
+        {
             this.color = "Black";
         }
 
-        public void setColor(String color){
+        public void setColor(String color)
+        {
             color = color;
             System.out.println(this.color);
             System.out.println(color);
         }
     }
 
-In this example, whenever we make a new ``Cat`` object, the value of the field ``color``
-is set to "Black" at first.  When we run ``setColor("Green")`` we see an interesting
-result in our print statements
-
+In this example, whenever we make a new ``Cat`` object, the value of the
+field ``color`` is set to "Black" at first.  When we run ``setColor("Green")``
+we see an interesting result in our print statements:
 
 .. odsafig:: Images/ScopeCatOutput.png
    :align: center
 
 The first thing to be printed out is ``this.color``.  Which we see is "Black".
 The value of the field was not changed to "Green"! This means that when we write
-``color = color`` we know that the field color was not on the left side of the equals
-sign.
+``color = color`` we know that the field color was not on the left side of
+the equals sign.
 
-One might assume, then, that the parameter ``color`` is the value on the left side of
-the equals sign.  This would mean that the parameter was changed from "Green" to "Black".
-But our second print statement tells us otherwise.  When we print out the parameter ``color``
-we see it is still "Green".  This means that the field ``color`` was not on the
-right side of the equals sign either!
+One might assume, then, that the parameter ``color`` is the value on the left
+side of the equals sign.  This would mean that the parameter was changed
+from "Green" to "Black". But our second print statement tells us otherwise.
+When we print out the parameter ``color`` we see it is still "Green".  This
+means that the field ``color`` was not on the right side of the equals
+sign either!
 
-What happened in this code is that we set the parameter variable ``color`` equal
-to itself - meaning nothing changed!
+What happened in this code is that we set the parameter variable ``color``
+equal to itself--meaning nothing changed!
 
 Generally, the best way to avoid such confusion is to give your variables
 distinct names like we did initially:
@@ -310,19 +340,21 @@ distinct names like we did initially:
 
 .. code-block:: java
 
-    public void setColor(String s){
-        color = s;
+    public void setColor(String newColor)
+    {
+        color = newColor;
     }
 
 
 
 Alternately, if for some reason you *must* use the same variable name at two
-different scope levels, using the modifier ``this`` will help clarify which variable
-you are referring to:
+different scope levels, using the modifier ``this`` will help clarify which
+variable you are referring to:
 
 .. code-block:: java
 
-    public void setColor(String color){
+    public void setColor(String color)
+    {
         this.color = color;
     }
 
@@ -330,6 +362,13 @@ Now, the field ``color`` is on the left side of the equals sign and the
 parameter ``color`` is on the right.  So, if we ran ``setColor("Green");``
 the field ``color`` would be changed from "Black" to "Green".
 
+You will sometimes see this convention in setter methods or constructors,
+where the programmer has intentionally used the same name for both the
+parameter and the field, to communicate the intent that the parameter is
+the value that will be stored in the field. When using this approach it
+is mandatory to alway include ``this.`` as a prefix when referring to the
+field name, because otherwise, all uses of the name would refer to the
+parameter only.
 
 
 Check Your Understanding: Scope
@@ -340,21 +379,28 @@ Check Your Understanding: Scope
 
 
 
+Syntax Practice: Scoping
+------------------------
+
+.. extrtoolembed:: 'Syntax Practice: Scoping'
+   :workout_id: 1572
+
+
 Java Input and Output
 ---------------------
 
-We have been using ``System.out.println`` for a while, but you might not
+We have been using ``System.out.println()`` for a while, but you might not
 have thought about what it means. ``System`` is a class that provides methods
 related to the "system" or environment where programs run. It also provides
-``System.out``, which is a special value that provides methods for displaying
-output, including ``println``.
-In fact, we can use ``System.out.println`` to display the value of ``System.out``:
+``System.out``, which is a special field that refers to an object providing
+methods for displaying output, including ``println()``.
+In fact, we can use ``System.out.println()`` to display the value
+of ``System.out``:
 
 
 .. code-block:: java
 
    System.out.println(System.out);
-
 
 The result is:
 
@@ -362,9 +408,10 @@ The result is:
 
    java.io.PrintStream@685d72cd
 
-This output indicates that ``System.out`` is a ``PrintStream``, which is defined in a
-package called ``java.io``. A package is a collection of related classes; ``java.io``
-contains classes for "I/O" which stands for input and output.
+This output indicates that ``System.out`` refers to a ``PrintStream`` object,
+which is defined in a package called ``java.io``. A package is a collection of
+related classes; ``java.io`` contains classes for "I/O" which stands for
+*input and output*.
 
 
 Basic Input and Output Concepts
@@ -372,28 +419,28 @@ Basic Input and Output Concepts
 
 Java provides an extensive library of classes for managing input and output of
 all forms of data.  In Java, any source or destination for I/O is considered
-a stream of bytes or characters. To perform output, we insert bytes or
-characters into the stream. To perform input, we extract bytes or characters
-from the stream.  Even characters entered at a keyboard (if we think about them
-as a sequence of keystrokes) can be represented as a stream.
+a "stream" or sequence of bytes or characters. To perform output, we insert
+bytes or characters into the stream. To perform input, we extract bytes or
+characters from the stream.  Even characters entered at a keyboard (if we
+think about them as a sequence of keystrokes) can be represented as a stream.
 
-**Input** operations are framed in terms of reading from a stream in a three-step
-process:
+**Input** operations are framed in terms of reading from a stream in a
+three-step process:
 
 1. open the stream
 2. read data items from the stream front to back in sequence
 3. close the stream.
 
-**Output** operations are framed in terms of writing to a stream in a three-step
-process:
+**Output** operations are framed in terms of writing to a stream in a
+similar three-step process:
 
 1. open the stream
 2. write data onto the end of the stream in sequence
 3. close the stream.
 
-To use Java's input/output classes, make sure that in addition to importing any
-other necessary packages, also import the ``java.io`` package and the ``java.util``
-package:
+To use Java's input/output classes, make sure that in addition to importing
+any other necessary packages, also import the ``java.io`` package and
+the ``java.util`` package:
 
 .. code-block:: java
 
@@ -401,15 +448,17 @@ package:
    import java.util.*;
 
 
+Output Using PrintWriters
+-------------------------
+
 Opening a Stream for Output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this class, we will only deal with textual, human-readable output. The main
 class we will use for generating output is Java's ``PrintWriter`` class, from
-the ``java.io package``. To create a ``PrintWriter``, we'll use a utility
-method in the ``IOHelper`` class from the VT student package:
-( ``import student.*;`` )
-
+the ``java.io`` package. To create a ``PrintWriter``, we'll use a utility
+method in the ``IOHelper`` class from the VT student package
+(``import student.*;``\ ):
 
 .. code-block:: java
 
@@ -421,12 +470,12 @@ the name already exists in the project directory it will be deleted before a new
 empty file with the same name is created.
 
 The ``PrintWriter`` object provides formatting and conversion operations.
-A ``PrintWriter`` object is designed to send its output to a stream. It does not
-know (or care) whether the stream is connected to a disk file or a network
-connection or other device. The ``IOHelper`` class provides a few other methods
-for creating ``PrintWriter`` objects, including methods that append to an existing
-file instead of overwriting it, or streams that are connected to the console for
-output.
+A ``PrintWriter`` object is designed to send its output to a stream. It does
+not know (or care) whether the stream is connected to a disk file or a network
+connection or another device. The ``IOHelper`` class provides a few other
+methods for creating ``PrintWriter`` objects, including methods that append to
+an existing file instead of overwriting it, or streams that are connected to
+the console for output.
 
 
 Writing to an Output Stream
@@ -505,9 +554,9 @@ forget to import ``java.io.*`` in your class):
        out.close();
    }
 
-If called with a specific argument, like ``printResultFile(42);``, the method will
-produce a file called ``output.txt`` in your BlueJ project directory containing
-these lines:
+If called with a specific argument, like ``printResultFile(42);``, the method
+will produce a file called ``output.txt`` in your BlueJ project directory
+containing these lines:
 
 .. code-block:: java
 
@@ -528,19 +577,18 @@ all the ``println()`` calls in one or more other methods. Then you can pass a
        out.close();
    }
 
-
    public void printHeader(PrintWriter outStream)
    {
        outStream.println("This is the output for ...");
        // other output commands go here.
    }
 
-
    public void printData(PrintWriter outStream)
    {
        outStream.print(/* ... */);
        // more, as needed ...
    }
+
 
 Output with System.out
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -569,11 +617,12 @@ on ``System.out`` anywhere you like.
        System.out.println("y = " + y);
    }
 
-Above, notice the way the plus operator (``+``) was used to combine a textual string
-with another value to make a larger message. This is a nice feature of Java--the
-plus operator works to "concatenate" two strings into a larger string by placing
-one after the other. Further, when you concatenate a string with any other value,
-the other value is converted into a human-readable string representation first.
+Above, notice the way the plus operator (``+``) was used to combine a textual
+string with another value to make a larger message. This is a nice feature of
+Java--the plus operator works to "concatenate" two strings into a larger string
+by placing one after the other. Further, when you concatenate a string with
+any other type of value, the other value is converted into a human-readable
+string representation first by calling its ``toString()`` method.
 
 * As a result, here are some recommendations for output in this course:
 
@@ -596,39 +645,44 @@ the other value is converted into a human-readable string representation first.
   an internet socket for communicating with another program on another
   machine!).
 
+
 Check Your Understanding: Output
 --------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz1Summ.html ka
    :long_name: Output
 
+
+Input Using Scanners
+--------------------
+
 Opening a Stream for Input
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The main class we will use for reading input is Java's ``Scanner`` class, from the
-``java.io package``, (the ``Scanner`` class is a new util class that was added
-to Java 1.5). Creating a ``Scanner`` is simple:
+The main class we will use for reading input is Java's ``Scanner`` class, from
+the ``java.io package``. Creating a ``Scanner`` is simple:
 
 .. code-block:: java
 
    Scanner inStream = IOHelper.createScanner("input.txt");
 
 This line declares a new name, ``inStream`` and creates a Scanner object that
-reads characters from the file. The ``createScanner()`` method opens files using
-path names relative to your project directory, so the file called ``input.txt``
-should be located there.
-You can provide a fully qualified path name instead of a relative path name if
-you desire.
+reads characters from the named file. The ``createScanner()`` method opens
+files using path names relative to your project directory, so the file
+called ``input.txt`` should be located there.
+You can provide a fully qualified path name instead of a relative path name
+if you desire.
 
-The ``java.io`` package offers a rich inheritance hierarchy of classes for reading
-from text files. The ``Scanner`` class was added to simplify text input and is thus
-preferred over the other classes.
+The ``java.io`` package offers a rich inheritance hierarchy of classes for
+reading from text files. The ``Scanner`` class was created to simplify text
+input and is thus preferred over the other classes.
+
 
 Reading from an Input Stream
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Several methods provided by
-`Scanner <https://docs.oracle.com/javase/1.5.0/docs/api/index.html>`_
+`Scanner <https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html>`_
 objects provide virtually all of the input capabilities you will need in
 this course:
 
@@ -638,7 +692,7 @@ this course:
 * ``<scanner>.next();`` Finds and returns the next complete token
   (by default the next whitespace delimited string as a String object like
   the next line or next tab-seperated word) from this scanner.
-  A `NoSuchElementException <https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
+  A ``NoSuchElementException``
   is thrown if no more tokens are available, (i.e., you have reached the end
   of input).
 
@@ -646,7 +700,7 @@ this course:
   line in its input.
 
 * ``<scanner>.nextLine();`` Finds and returns the next complete line.
-  A `NoSuchElementException <https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
+  A ``NoSuchElementException``
   is thrown if no more tokens are available, (i.e., you have reached the end
   of input).
 
@@ -658,10 +712,10 @@ this course:
 * ``<scanner>.next<PrimitiveType>();`` he ``<PrimitiveType>`` can be
   replaced by ``double``, ``float``, ``int``, etc.  The method scans the next
   token of the input as an ``<PrimitiveType>`` and returns back the
-  corresponding ``<PrimitiveType>`` value. It throws an `InputMismatchException <https://docs.oracle.com/javase/1.5.0/docs/api/java/util/InputMismatchException.html>`_
+  corresponding ``<PrimitiveType>`` value. It throws an ``InputMismatchException``
   if the next token does not match the ``<PrimitiveType>``, or if the value
   scanned is out of range. It also throws
-  a `NoSuchElementException <https://docs.oracle.com/javase/1.5.0/docs/api/java/util/NoSuchElementException.html>`_
+  a ``NoSuchElementException``
   if no more tokens are available.
 
 * ``<scanner>.useDelimiter(String pattern);`` by default whitespace (spaces,
@@ -682,11 +736,15 @@ For example:
 .. code-block:: java
 
    Scanner inStream = IOHelper.createScanner("input.txt");
-   if (inStream.hasNextLine()) // NOT at the end of the stream, more input is available
+   // if NOT at the end of the stream, more input is available
+   if (inStream.hasNextLine())
    {
-       String thisLine = inStream.nextLine(); // Get an entire line
-       Scanner line = new Scanner(thisLine); // Create a scanner to process the line
-       if (line.hasNextInt()) // Check for the next whitespace delimited int
+       // Get an entire line
+       String thisLine = inStream.nextLine();
+       // Create a scanner to process the line
+       Scanner line = new Scanner(thisLine);
+       // Check for the next whitespace delimited int
+       if (line.hasNextInt())
        {
            System.out.println(line.nextInt());
        }
@@ -697,8 +755,8 @@ Notice how the existence of each input is checked before it is extracted to
 avoid exceptions.
 
 Also, if you have programmed in another language before, note that characters
-in Java are encoded using unicode, a 16-bit character code. Programmers in other
-languages are probably more familiar with ASCII, the
+in Java are encoded using unicode, a 16-bit character code. Programmers in
+other languages may instead be familiar with ASCII, the
 American Standard Code for Information Interchange, which is a 7-bit character
 code. Fortunately, the first 128 codes in unicode are equivalent to the entire
 `ASCII character set <https://www.asciitable.com/>`_ . For American users, ASCII
@@ -727,7 +785,8 @@ Web if you know the URL:
 
 .. code-block:: java
 
-   Scanner inWebFile = IOHelper.createScannerForURL( "http://server.subdomain.domain/dir/file.txt");
+   Scanner inWebFile = IOHelper.createScannerForURL(
+       "http://server.subdomain.domain/dir/file.txt");
    while (inWebFile.hasNextLine())
    {
        String line = inWebFile.nextLine();
@@ -736,30 +795,24 @@ Web if you know the URL:
    inWebFile.close();
 
 
-Check Your Understanding: Input
--------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz2Summ.html ka
-   :long_name: Input
-
-
 A Complete Input Example
 ------------------------
 
 We can put all these pieces together to show how to read input from a file one
-character at a time, for example. Let's say we want to read the characters from a
-file called ``input.txt``. We can do it in one method like this (don't forget to
-``import java.io.*`` and ``java.util.*`` in your class):
+character at a time, for example. Let's say we want to read the characters
+from a file called ``input.txt``. We can do it in one method like this (don't
+forget to ``import java.io.*`` and ``java.util.*`` in your class):
 
 .. code-block:: java
 
    public void readChars()
    {
        Scanner in = IOHelper.createScanner("input.txt");
-       while (in.hasNextLine()) // NOT at the end of the stream, more input is available
+       // while NOT at the end of the stream, more input is available
+       while (in.hasNextLine())
        {
            String thisLine = in.nextLine(); // Get an entire line
-           for (int index=0; index < thisLine.length(); index++)
+           for (int index = 0; index < thisLine.length(); index++)
            {
                char ch = thisLine.charAt(index);
                System.out.print(ch);
@@ -783,7 +836,6 @@ all the ``read()`` calls in one or more other methods. Then you can pass a
        in.close();
    }
 
-
    public void readHeader(Scanner inStream)
    {
        String nextLine = null;
@@ -793,7 +845,6 @@ all the ``read()`` calls in one or more other methods. Then you can pass a
            // other input commands go here.
        }
    }
-
 
    public void readData(Scanner inStream)
    {
@@ -806,12 +857,19 @@ all the ``read()`` calls in one or more other methods. Then you can pass a
    }
 
 
+Check Your Understanding: Input
+-------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week12Quiz2Summ.html ka
+   :long_name: Input
+
+
 A Complete Input/Output Example
 -------------------------------
 
-Often, it is necessary to combine the processes of reading from some source and
-writing to some destination. Here is a simple example that copies an input file
-character by character:
+Often, it is necessary to combine the processes of reading from some source
+and writing to some destination. Here is a simple example that copies an input
+file character by character:
 
 .. code-block:: java
 
@@ -954,10 +1012,12 @@ Check Your Understanding: Testing
 .. raw:: html
 
    <footer>
-     <p>Content adapted from </p>
-     <p><a href="http://www.cs.trincoll.edu/~ram/jjj/jjj-os-20170625.pdf">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde</p>
-       <p><a href="http://www.cs.trincoll.edu/~ram/jjj/jjj-os-20170625.pdf">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield</p>
+     <p>Content adapted from:</p>
+     <p><a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).</p>
+     <p><a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
      <p>
-       Adapted by Stephen H. Edwards and Molly Domino
+     Adapted by Stephen H. Edwards and Molly Domino.
      </p>
    </footer>

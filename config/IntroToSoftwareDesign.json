@@ -458,25 +458,29 @@
         }
       }
     },
-    "File I/O":{
+    "Input, Output and Variable Scoping":{
       "IntroToSoftwareDesign/FileIO": {
+        "Syntax Practice: Scoping": {
+          "points": 40,
+          "required": true
+        },
         "Week12Quiz1Summ": {
-          "points": 10,
+          "points": 20,
           "threshold": 5,
           "required": true
         },
         "Week12Quiz2Summ": {
-          "points": 10,
-          "threshold": 5,
+          "points": 16,
+          "threshold": 4,
           "required": true
         },
         "Week12Quiz3Summ": {
-          "points": 10,
+          "points": 12,
           "threshold": 3,
           "required": true
         },
         "Week12Quiz4Summ": {
-          "points": 10,
+          "points": 12,
           "threshold": 3,
           "required": true
         }

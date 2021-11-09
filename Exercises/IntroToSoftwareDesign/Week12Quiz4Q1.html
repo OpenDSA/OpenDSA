@@ -11,27 +11,27 @@
     <div class="exercise">
       <div class="problems">
         <div id="Week12Quiz4Q1">
-        <p class="question">What is the scope of the variable <tt>a</tt> in the following code</p>
+        <p class="question">What is the scope of the field <tt>a</tt> in the following code:</p>
 <pre class="prettyprint">
-
-  public class Example{
+public class Example
+{
     private int a;
 
-    public void doSomething(){
-      a = 4;
+    public void doSomething()
+    {
+        a = 4;
     }
-    public void setA(int value){
-      a = value;
+    public void setA(int value)
+    {
+        a = value;
     }
-  }
+  }</pre>
 
-</pre>
-
-        <div class="solution">Class-Level</div>
+        <div class="solution">Class-level scope</div>
         <ul class="choices">
-        <li>Local to the <tt>doSomething</tt> method</li>
-        <li>Local to the <tt>setA</tt> method</li>
-        <li>Local to both the <tt>setA</tt> and <tt>doSomething</tt> methods</li>
+        <li>Local to the <tt>doSomething()</tt> method</li>
+        <li>Local to the <tt>setA()</tt> method</li>
+        <li>Local to both the <tt>setA()</tt> and <tt>doSomething()</tt> methods</li>
 
         </ul>
         <div class="hints">
