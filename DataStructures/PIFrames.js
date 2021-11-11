@@ -493,49 +493,53 @@
           var question = this.getQuestion(this.queue.elements[current]);
           
           const correct = this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current]);
-          
+          const finishedFrame = current == this.queue.elements.length - 1 ? true : false
           let data = {
             "exercise": av_name,
             "question_id":  this.queue.current,
             "correct":   correct,
             "request_type": "PI",
+            "finishedFrame": finishedFrame
           };
           
-          if (ODSA.UTILS.hasBook()) {
-            data['inst_book_id'] = ODSA.TP.instBookId;
-            if (ODSA.UTILS.isFullModule()) {
-              data['inst_chapter_module_id'] = ODSA.UTILS.getChapterModuleID();
-            }
-            frame = $(`[data-long-name=${av_name}`)[0];
-            inst_section_id = $(frame).attr("data-exer-id");
-            data['inst_section_id'] = inst_section_id;
-            
-          }
-          else if (ODSA.UTILS.isStandaloneModule()) {
-            data['inst_module_version_id'] = ODSA.UTILS.getInstModuleVersionId();
-          }
-          else {
-            data['inst_course_offering_exercise_id'] = ODSA.UTILS.getInstCourseOfferingExerciseId();
-          }
-          
-          if (ODSA.UTILS.scoringServerEnabled())
-          {
-            $.ajax({
-              url: "/odsa_exercise_attempts/pi",
-              type: "POST",
-              data: JSON.stringify(data),
-              contentType: "application/json; charset=utf-8",
-              datatype: "json",
-              xhrFields: {
-                withCredentials: true
-              },
-              success: function(data) {
-                console.log(data)
-              },
-              error: function(err) {
-                console.log(err)
+          if (ODSA.UTILS.hasToolProvider()) {
+            if (ODSA.UTILS.hasBook()) {
+              data['inst_book_id'] = ODSA.TP.instBookId;
+              if (ODSA.UTILS.isFullModule()) {
+                data['inst_chapter_module_id'] = ODSA.UTILS.getChapterModuleID();
               }
-            });
+              frame = $(`[data-long-name=${av_name}`)[0];
+              inst_section_id = $(frame).attr("data-exer-id");
+              data['inst_section_id'] = inst_section_id;
+            }
+            else if (ODSA.UTILS.isStandaloneModule()) {
+              data['inst_module_version_id'] = ODSA.UTILS.getInstModuleVersionId();
+            }
+            else {
+              data['inst_course_offering_exercise_id'] = ODSA.UTILS.getInstCourseOfferingExerciseId();
+            }
+          }
+
+          if (ODSA.UTILS.hasToolProvider()) {
+            if (ODSA.UTILS.scoringServerEnabled())
+            {
+              $.ajax({
+                url: "/odsa_exercise_attempts/pi",
+                type: "POST",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                xhrFields: {
+                  withCredentials: true
+                },
+                success: function(data) {
+                  console.log(data)
+                },
+                error: function(err) {
+                  console.log(err)
+                }
+              });
+            }
           }
 
           //feedback elements are built when the question is injected to the slideshow
@@ -561,11 +565,8 @@
               $("." + av_name + "> input[type=submit]").hide();
               $("#" + av_name + " > .canvaswrapper > .picanvas > .PIFRAMES").append(`<p>Answer: ${question.answer}</p>`);
             }
-          } else if (
-            this.studentHasAnsweredQuestionCorrectly(
-              this.queue.elements[current]
-            )
-          ) {
+          } 
+          else if (this.studentHasAnsweredQuestionCorrectly(this.queue.elements[current])) {
             this.enableForwardButton();
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> input[type=submit]").hide();
@@ -578,7 +579,8 @@
             if (current == this.queue.elements.length - 1) {
               this.enableFastForwardButton();
             }
-          } else {
+          } 
+          else {
             //scenario where student submits an answer on a slide, and then resubmits a wrong answer without switching slides
             if ($("." + av_name + "> input[type=submit]").is(":visible")) {
               $("." + av_name + "> #noAnswerFeedback").hide();
@@ -758,6 +760,12 @@
 
     //checkpoint jump functions
     skipToCheckPoint(av_name) {
+      if (ODSA.UTILS.hasToolProvider()) {
+        if (!ODSA.UTILS.scoringServerEnabled())
+        {
+            return -1;
+        }
+      }
       if (!ODSA.UTILS.scoringServerEnabled())
       {
           return -1;

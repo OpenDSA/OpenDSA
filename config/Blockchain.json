@@ -57,6 +57,8 @@
       "CryptoCurrencies": {
         "Blockchain/BitCoin": {},
         "Blockchain/Ethereum": {},
+        "Blockchain/EVMandGAS": {},
+        "Blockchain/ProofOfStake": {},
         "Blockchain/OtherCrypto": {}
       },
       "Applications of Blockchain": {
