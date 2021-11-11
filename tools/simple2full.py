@@ -66,7 +66,7 @@ _default_ex_options = {
     'extr': {
       'points': 1.0,
       'partial_credit': False,
-      'enable_scrolling' : 'no',
+      'enable_scrolling' : False,
       'frame_width': 1000,
       'frame_height': 900,
       'points': 1.0
