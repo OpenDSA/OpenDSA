@@ -142,7 +142,8 @@
           "q5",
           "q6",
           "the trap state (reject the string)"
-        ]
+        ],
+        "incorrectFeedback": ["The answer we want is all states that the $\\lambda$ transitions might take you to before processing the first input symbol. Beware: Even if a state does not show a transition out of a given symbol, there is always a default transition to the trap state."]
       },
       "firstletter": {
         "type": "select",

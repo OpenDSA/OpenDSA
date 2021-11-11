@@ -716,9 +716,9 @@ const equations = [
         group: 'Geometry',
         id: 'radiusDiamReln',
         name: 'radiusDiamReln',
-        latex: 'd_{ } = \\frac { r_{ } }{2}',
+        latex: 'r_{ } = \\frac { d_{ } }{2}',
         latex_boxes: '\\Box = \\dfrac { \\Box }{2}',
-        template: 'diameter = 0.5 * radius',
+        template: 'radius = 0.5 * diameter',
         params: ['diameter', 'radius'],
         variables: {
             'diameter': 'd_{ }',

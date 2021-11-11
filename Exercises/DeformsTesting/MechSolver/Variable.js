@@ -28,6 +28,7 @@ class Variable{
         this.valueNegated = false;
         this.valueRepr = null;
         this.valueType = null;
+        this.valueSource = null; // Stores where the value came from, i.e. the body param(/param[0-9]+/)/gen soln(unknownName)/created by user(" ")
         
         this.element = element;
         this.globalPointerReference = globalPointerReference;
@@ -233,11 +234,15 @@ class Variable{
                                                     valueDisplay: null,
                                                     domain: domain,
                                                     unit: Window.UNIT_DB[domain][unit]['unit'],
-                                                    unitDisplay: Window.UNIT_DB[domain][unit]['unitDisp']
+                                                    unitDisplay: Window.UNIT_DB[domain][unit]['unitDisp'],
+                                                    id: ""
                                                 }
                                             },
                                             null, null
                                         );
+                                        // We pretend that the newly created value was like a question param (avoiding jsav positioning),
+                                        // with a null source, hence use id for sourceParent
+
                                         this.globalPointerReference.currentClickedObjectType = "value-box";
                                         // this.changeVarName(
                                         //     Window.box[0].querySelector("#value").value,
@@ -259,6 +264,7 @@ class Variable{
                     }
                     else if(this.globalPointerReference.currentClickedObject == this) // Clicked on the same thing
                     {
+                        // DEPRECATED: FUNCTIONALITY MOVED TO CONTEXT MENU
                         // negate and clear context
                         // this.valueNegated = !this.valueNegated;
                         // if(this.valueNegated) {
@@ -675,10 +681,14 @@ class Variable{
         if(this.globalPointerReference.currentClickedObjectType == "value-box") {
             this.currentDomain = this.globalPointerReference.currentClickedObject.domain;
             this.currentUnit = this.globalPointerReference.currentClickedObject.unit;
+            this.valueSource = this.globalPointerReference.currentClickedObject.valueSourceParent;
         }
         else {
+            // currently this is for when a number is copied in, in which case the valueSource 
+            // already exists and needs to be simply copied over
             this.currentDomain = this.globalPointerReference.currentClickedObject.currentDomain;
             this.currentUnit = this.globalPointerReference.currentClickedObject.currentUnit;
+            this.valueSource = this.globalPointerReference.currentClickedObject.valueSource;
         }
         // this.valueRepr = Window.valueTruncate(this.value);
         this.valueRepr = Window.valueStringRepr(this.value);
@@ -746,6 +756,7 @@ class Variable{
         this.value = null;
         this.valueType = null;
         this.valueNegated = false;
+        this.valueSource = null;
 
         this.unitDisplay.removeEventListener("click", this.unitChangeHandler);
         this.valueDisplay.dataset.status = "empty";
