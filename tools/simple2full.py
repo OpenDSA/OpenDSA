@@ -14,7 +14,6 @@ from collections import OrderedDict
 from docutils.core import publish_parts
 from argparse import ArgumentParser
 from ODSA_Config import read_conf_file, get_odsa_dir
-from pprint import pp
 
 mod_options = None    # custom options specified for modules
 ex_options = None     # custom options specified for exercises/slideshows
