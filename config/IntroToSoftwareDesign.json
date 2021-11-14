@@ -486,6 +486,55 @@
         }
 
       }
+    },
+
+    "Sets and Maps":{
+      "IntroToSoftwareDesign/SetsAndMaps": {
+        "Syntax Practice 10": {
+          "points": 40,
+          "required": true
+        },
+
+        "Syntax Practice 10": {
+          "points": 40,
+          "required": true
+        },
+
+        "Syntax Practice 10": {
+          "points": 40,
+          "required": true
+        },
+
+        "Syntax Practice 10": {
+          "points": 40,
+          "required": true
+        },
+
+        "Week13Quiz1Summ": {
+          "points": 12,
+          "threshold": 3,
+          "required": true
+        },
+
+        "Syntax Practice 10": {
+          "points": 40,
+          "required": true
+        },
+
+        "Syntax Practice 10": {
+          "points": 40,
+          "required": true
+        },
+        "Syntax Practice 10": {
+          "points": 40,
+          "required": true
+        },
+        "Week13Quiz2Summ": {
+          "points": 12,
+          "threshold": 3,
+          "required": true
+        }
+      }
     }
 
   }

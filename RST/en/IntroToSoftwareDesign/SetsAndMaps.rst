@@ -10,8 +10,6 @@
 Sets and Maps
 =============
 
-
-
 The Set and Map Interface
 -------------------------
 
@@ -62,9 +60,8 @@ The Set<E> interface, which is a subclass of Collection<E>, describes the import
 
 
 
-
-Using a ``Set``
-~~~~~~~~~~~~~~~
+Using a Set
+~~~~~~~~~~~
 
 Let’s think about a simple example for using a set data structure.
 Suppose that a programmer is developing an application for a large
@@ -263,8 +260,10 @@ Check Your Understanding: Sets
    :long_name: Sets
 
 
-Using the ``Map<K, V> Interface
--------------------------------
+
+Using the Map Interface
+-----------------------
+
 
 The ``Map<K,V>`` interface is modeled after looking up definitions for words
 in a dictionary. In computer science, maps are considered to be a collection
@@ -284,8 +283,6 @@ Value could be a string.  Or Key and Value could both be booleans.  Or Key could
 be a ``Jeroo`` object and ``Value`` a ``Pixel`` object.  There are no limits on
 possible combinations!
 
-The most important ``Map`` operations are:
-
 .. code-block:: java
 
    public boolean put(K key, V val);       // store a given key,value pair
@@ -293,6 +290,9 @@ The most important ``Map`` operations are:
    public boolean remove(Object key);      // remove key,value pair for given key
    public boolean containsKey(Object key); // determine whether key exists in Map
    public Set<K> keySet();                 // return the set of keys
+
+
+The most important ``Map`` operations are listed above.
 
 Using a ``Map``
 ~~~~~~~~~~~~~~~
@@ -349,7 +349,7 @@ To access those pairs, we run the ``get`` method:
    }
 
 When we run the code above, the following message would be printed out:
-``"Jane Q's number is: 999-777-1234"``
+`` "Jane Q's number is: 999-777-1234" ``
 
 
 //3 CW exercises practicing adding values to a map
@@ -361,7 +361,7 @@ Syntax Practice 10
    :workout_id: 1525
 
 
-Remove and contains act largely the same as they do with ``Set``s.  The main
+Remove and contains act largely the same as they do with ``Set``.  The main
 difference is that we don't need to specify a full key, value pair to run either method.
 Since keys must be unique in a map, we really only need a key.
 
@@ -387,6 +387,7 @@ Syntax Practice 10
 .. extrtoolembed:: 'Syntax Practice 10'
    :workout_id: 1525
 
+
 Here, we add "Jane Q" and her phone number to the Map, remove it, then the value ``false``
 would be printed out as there is no longer a key called "Jane Q" in our Map.
 
@@ -403,6 +404,9 @@ we could write a method like this:
 
       return noCallMap.keySet();
    }
+
+This method would return a set of strings contianing "Roger M" and "Jane Q"
+
 
 Check Your Understanding: Maps
 ------------------------------
