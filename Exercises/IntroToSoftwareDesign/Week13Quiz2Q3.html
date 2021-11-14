@@ -11,13 +11,22 @@
     <div class="exercise">
       <div class="problems">
         <div id="Week13Quiz2Q3">
-        <p class="question"></p>
+        <p class="question">The following code is the body of a method.  What would it return?</p>
+<pre class="prettyprint">
+//maps names to whether or not they have been validated
+Map <String, boolean> validated = new TreeMap<String, boolean>();
 
-        <div class="solution"></div>
+validated.put("Dillon", false);
+validated.put("Roger", true);
+
+return validated.keySet();
+</pre>
+
+        <div class="solution">A Set of Strings containing <tt>{"Dillon", "Roger"}</tt></div>
         <ul class="choices">
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>A Set of booleans contaning <tt>{false, true}</tt></li>
+        <li>The full Map of both String (key) and boolean (value) pairs</li>
+        <li>We can't know what will be returned without a method signature</li>
 
 
         </ul>

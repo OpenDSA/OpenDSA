@@ -399,13 +399,13 @@ we could write a method like this:
    public Set<String> getKeys(){
       Map <String, String> noCallMap = new TreeMap<String, String>();
 
-      noCallMap.put(Roger M", "090−997−2918");
+      noCallMap.put("Roger M", "090−997−2918");
       noCallMap.put("Jane Q", "999-777-1234");
 
       return noCallMap.keySet();
    }
 
-This method would return a set of strings contianing "Roger M" and "Jane Q"
+This method would return a set of strings containing "Roger M" and "Jane Q"
 
 
 Check Your Understanding: Maps
