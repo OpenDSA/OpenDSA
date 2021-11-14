@@ -490,22 +490,22 @@
 
     "Sets and Maps":{
       "IntroToSoftwareDesign/SetsAndMaps": {
-        "Syntax Practice 10": {
+        "Syntax Practice: Making A Set": {
           "points": 40,
           "required": true
         },
 
-        "Syntax Practice 10": {
+        "Syntax Practice: Adding to a Set": {
           "points": 40,
           "required": true
         },
 
-        "Syntax Practice 10": {
+        "Syntax Practice: Set Contains": {
           "points": 40,
           "required": true
         },
 
-        "Syntax Practice 10": {
+        "Syntax Practice: Set Remove": {
           "points": 40,
           "required": true
         },
@@ -516,16 +516,16 @@
           "required": true
         },
 
-        "Syntax Practice 10": {
+        "Syntax Practice: Making Maps": {
           "points": 40,
           "required": true
         },
 
-        "Syntax Practice 10": {
+        "Syntax Practice: Adding to Maps": {
           "points": 40,
           "required": true
         },
-        "Syntax Practice 10": {
+        "Syntax Practice: Contains and Remove": {
           "points": 40,
           "required": true
         },

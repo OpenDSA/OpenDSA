@@ -102,11 +102,11 @@ You can try it yourself here:
 
 //3 CW exercises making sets of different types
 
-Syntax Practice 10
-------------------
+Syntax Practice: Making A Set
+-----------------------------
 
-.. extrtoolembed:: 'Syntax Practice 10'
-   :workout_id: 1525
+.. extrtoolembed:: 'Syntax Practice: Making A Set'
+   :workout_id: 1584
 
 
 Now, lets add some records to our Set:
@@ -152,11 +152,11 @@ in your code.  Only the first call will actually add the object to the set, howe
 
 //3 CW exercises adding values to existing sets
 
-Syntax Practice 10
-------------------
+Syntax Practice: Adding to a Set
+--------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 10'
-   :workout_id: 1525
+.. extrtoolembed:: 'Syntax Practice: Adding to a Set'
+   :workout_id: 1585
 
 
 
@@ -208,11 +208,11 @@ This method would output the following message:
 
 //3 CW exercises practicing contains
 
-Syntax Practice 10
-------------------
+Syntax Practice: Set Contains
+-----------------------------
 
-.. extrtoolembed:: 'Syntax Practice 10'
-   :workout_id: 1525
+.. extrtoolembed:: 'Syntax Practice: Set Contains'
+   :workout_id: 1586
 
 The final important method on a Set is ``remove`` which removes something from a set
 
@@ -246,11 +246,11 @@ just as we saw before.  However then we remove roger from the set and then print
 
 //3 CW exercises practicing remove
 
-Syntax Practice 10
-------------------
+Syntax Practice: Set Remove
+---------------------------
 
-.. extrtoolembed:: 'Syntax Practice 10'
-   :workout_id: 1525
+.. extrtoolembed:: 'Syntax Practice: Set Remove'
+   :workout_id: 1587
 
 
 Check Your Understanding: Sets
@@ -310,11 +310,11 @@ object, we could use a Map where both Key and value are Strings:
 
 //3 CW exercises practicing making Maps of different type combinations
 
-Syntax Practice 10
-------------------
+Syntax Practice: Making Maps
+----------------------------
 
-.. extrtoolembed:: 'Syntax Practice 10'
-   :workout_id: 1525
+.. extrtoolembed:: 'Syntax Practice: Making Maps'
+   :workout_id: 1588
 
 
 Now, lets add some values to our ``noCallMap``.  This time, to add something to
@@ -354,11 +354,11 @@ When we run the code above, the following message would be printed out:
 
 //3 CW exercises practicing adding values to a map
 
-Syntax Practice 10
-------------------
+Syntax Practice: Adding to Maps
+-------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 10'
-   :workout_id: 1525
+.. extrtoolembed:: 'Syntax Practice: Adding to Maps'
+   :workout_id: 1589
 
 
 Remove and contains act largely the same as they do with ``Set``.  The main
@@ -381,11 +381,11 @@ Since keys must be unique in a map, we really only need a key.
 
 //3 CW exercises practicing using contains and remove
 
-Syntax Practice 10
-------------------
+Syntax Practice: Contains and Remove
+------------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 10'
-   :workout_id: 1525
+.. extrtoolembed:: 'Syntax Practice: Contains and Remove'
+   :workout_id: 1590
 
 
 Here, we add "Jane Q" and her phone number to the Map, remove it, then the value ``false``
