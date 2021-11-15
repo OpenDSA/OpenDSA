@@ -11,24 +11,24 @@
     <div class="exercise">
       <div class="problems">
         <div id="Week13Quiz2Q3">
-        <p class="question">The following code is the body of a method.  What would it return?</p>
+        <p class="question">What will this method return?</p>
 <pre class="prettyprint">
-//maps names to whether or not they have been validated
-Map <String, boolean> validated = new TreeMap<String, boolean>();
+public _____ method()
+{
+    // maps names to whether or not they have been validated
+    Map&lt;String, boolean&gt; validated = new HashMap&lt;String, boolean&gt;();
 
-validated.put("Dillon", false);
-validated.put("Roger", true);
+    validated.put("Dillon", false);
+    validated.put("Roger", true);
 
-return validated.keySet();
-</pre>
+    return validated.keySet();
+}</pre>
 
-        <div class="solution">A Set of Strings containing <tt>{"Dillon", "Roger"}</tt></div>
+        <div class="solution">A set of strings containing <tt>{"Dillon", "Roger"}</tt></div>
         <ul class="choices">
-        <li>A Set of booleans contaning <tt>{false, true}</tt></li>
-        <li>The full Map of both String (key) and boolean (value) pairs</li>
+        <li>A set of booleans contaning <tt>{false, true}</tt></li>
+        <li>The full map of both string (key) and boolean (value) pairs</li>
         <li>We can't know what will be returned without a method signature</li>
-
-
         </ul>
         <div class="hints">
         <p>There are no hints for this question.</p>
