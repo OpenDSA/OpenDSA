@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maps</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week13Quiz2Q3">
+        <p class="question">What will this method return?</p>
+<pre class="prettyprint">
+public _____ method()
+{
+    // maps names to whether or not they have been validated
+    Map&lt;String, boolean&gt; validated = new HashMap&lt;String, boolean&gt;();
+
+    validated.put("Dillon", false);
+    validated.put("Roger", true);
+
+    return validated.keySet();
+}</pre>
+
+        <div class="solution">A set of strings containing <tt>{"Dillon", "Roger"}</tt></div>
+        <ul class="choices">
+        <li>A set of booleans contaning <tt>{false, true}</tt></li>
+        <li>The full map of both string (key) and boolean (value) pairs</li>
+        <li>We can't know what will be returned without a method signature</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

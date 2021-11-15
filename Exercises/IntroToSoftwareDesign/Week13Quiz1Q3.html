@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scope</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week13Quiz1Q3">
+        <p class="question">After the following code runs, what would the set look like?</p>
+<pre class="prettyprint">
+Set&lt;String&gt; names = new TreeSet&lt;String&gt;();
+names.add("Daniel");
+names.add("Jenny");
+names.add("Daniel");
+names.add("Laurie");
+names.add("Daniel");</pre>
+
+        <div class="solution"><tt>{"Daniel", "Jenny", "Laurie"}</tt></div>
+        <ul class="choices">
+        <li><tt>{"Daniel", "Jenny", "Daniel", "Laurie"}</tt></li>
+        <li><tt>{"Daniel", "Jenny", "Daniel", "Laurie", "Daniel"}</tt></li>
+        <li><tt>{"Daniel", "Daniel", "Daniel", "Jenny", "Laurie"}</tt></li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
