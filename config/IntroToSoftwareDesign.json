@@ -488,49 +488,53 @@
       }
     },
 
-    "Sets and Maps":{
-      "IntroToSoftwareDesign/SetsAndMaps": {
+    "Maps and Sets":{
+      "IntroToSoftwareDesign/MapsAndSets": {
         "Syntax Practice: Making A Set": {
-          "points": 40,
+          "points": 8,
           "required": true
         },
 
         "Syntax Practice: Adding to a Set": {
-          "points": 40,
+          "points": 9,
           "required": true
         },
 
         "Syntax Practice: Set Contains": {
-          "points": 40,
+          "points": 9,
           "required": true
         },
 
         "Syntax Practice: Set Remove": {
-          "points": 40,
+          "points": 9,
           "required": true
         },
 
         "Week13Quiz1Summ": {
-          "points": 12,
+          "points": 9,
           "threshold": 3,
           "required": true
         },
 
         "Syntax Practice: Making Maps": {
-          "points": 40,
+          "points": 9,
           "required": true
         },
 
         "Syntax Practice: Adding to Maps": {
-          "points": 40,
+          "points": 9,
           "required": true
         },
-        "Syntax Practice: Contains and Remove": {
-          "points": 40,
+        "Syntax Practice: Map Contains and Remove": {
+          "points": 9,
+          "required": true
+        },
+        "Programming Practice: Maps": {
+          "points": 20,
           "required": true
         },
         "Week13Quiz2Summ": {
-          "points": 12,
+          "points": 9,
           "threshold": 3,
           "required": true
         }
