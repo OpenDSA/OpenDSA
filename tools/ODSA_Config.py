@@ -141,7 +141,7 @@ def validate_module(mod_name, module, conf_data):
     optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises',
                         'lms_module_item_id', 'lms_section_item_id','inst_book_id','module_position','inst_exercise_id',
                         'inst_chapter_id','options','inst_module_id','id', 'total_points', 'lms_assignment_id',
-                        'git_hash', 'zeropt_assignments']
+                        'git_hash', 'zeropt_assignments', 'due_dates']
 
     # Get module name
     get_mod_name(mod_name)
