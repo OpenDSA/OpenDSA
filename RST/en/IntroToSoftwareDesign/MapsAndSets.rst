@@ -198,6 +198,15 @@ since keys must be unique in a map, we really only need a key.
 Here, we add "Jane Q" and her phone number to the Map, remove it, then the value ``false``
 would be printed out as there is no longer a key called "Jane Q" in our Map.
 
+A Visual Summary of Using Map and HashMap
+-----------------------------------------
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/H62Jfv1DJlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Syntax Practice: Map Contains and Remove
 ----------------------------------------
@@ -255,7 +264,7 @@ use ``entrySet()`` to write a more advanced loop that looks like this:
        noCallMap.put(Roger M", "090−997−2918");
        noCallMap.put("Jane Q", "999-777-1234");
 
-       for (Map<String, String>.Entry pair : noCallMap.entrySet())
+       for (Map.Entry<String, String> pair : noCallMap.entrySet())
        {
            System.out.println("name: " + pair.getKey(),
                + ", phone: " + pair.getValue());
@@ -528,6 +537,31 @@ Syntax Practice: Set Remove
 .. 3 CW exercises practicing remove
 .. extrtoolembed:: 'Syntax Practice: Set Remove'
    :workout_id: 1587
+
+
+Looping Over Sets
+-----------------
+
+Iterating over a set is easiest if you use a for-each loop, and is virtually
+identical to using a for-each loop over a list.
+
+.. code-block:: java
+
+   public void testMap()
+   {
+       Set<PhoneRecord> noCall = new TreeSet<PhoneRecord>();
+
+       // insert records into the set
+
+       for (PhoneRecord record : noCall)
+       {
+           System.out.println("name: " + record.getName()
+               + ", phone: " + record.getPhoneNumber());
+       }
+   }
+
+This method would print out the entire contents of the set by using a
+for-each loop over all of the elements in the set.
 
 
 Check Your Understanding: Sets
