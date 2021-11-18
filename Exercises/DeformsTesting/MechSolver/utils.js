@@ -140,3 +140,23 @@ Window.lowestCommonUnit = function(unitListObject, domainKey) {
     return minUnit;
     // WORKS; TESTED
 }
+
+Window.saveTextToFile = function saveTextToFile(textContent, fileName)
+{
+    let link = document.createElement('a')
+    link.download = fileName
+    let dataURI = null
+    try
+    {
+        const url = window.URL || window.webkitURL
+        const b = new Blob([textContent], { type: 'text/plain' })
+        dataURI = url.createObjectURL(b)
+    }
+    catch (e)
+    {
+        dataURI = 'data:text/plain;charset=utf-8,' + encodeURIComponent(textContent)
+    }
+    link.href = dataURI
+    link.click()
+    link = null
+}

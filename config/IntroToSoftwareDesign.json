@@ -457,6 +457,88 @@
           "required": true
         }
       }
+    },
+    "Input, Output and Variable Scoping":{
+      "IntroToSoftwareDesign/FileIO": {
+        "Syntax Practice: Scoping": {
+          "points": 40,
+          "required": true
+        },
+        "Week12Quiz1Summ": {
+          "points": 20,
+          "threshold": 5,
+          "required": true
+        },
+        "Week12Quiz2Summ": {
+          "points": 16,
+          "threshold": 4,
+          "required": true
+        },
+        "Week12Quiz3Summ": {
+          "points": 12,
+          "threshold": 3,
+          "required": true
+        },
+        "Week12Quiz4Summ": {
+          "points": 12,
+          "threshold": 3,
+          "required": true
+        }
+
+      }
+    },
+
+    "Maps and Sets":{
+      "IntroToSoftwareDesign/MapsAndSets": {
+        "Syntax Practice: Making A Set": {
+          "points": 8,
+          "required": true
+        },
+
+        "Syntax Practice: Adding to a Set": {
+          "points": 9,
+          "required": true
+        },
+
+        "Syntax Practice: Set Contains": {
+          "points": 9,
+          "required": true
+        },
+
+        "Syntax Practice: Set Remove": {
+          "points": 9,
+          "required": true
+        },
+
+        "Week13Quiz1Summ": {
+          "points": 9,
+          "threshold": 3,
+          "required": true
+        },
+
+        "Syntax Practice: Making Maps": {
+          "points": 9,
+          "required": true
+        },
+
+        "Syntax Practice: Adding to Maps": {
+          "points": 9,
+          "required": true
+        },
+        "Syntax Practice: Map Contains and Remove": {
+          "points": 9,
+          "required": true
+        },
+        "Programming Practice: Maps": {
+          "points": 20,
+          "required": true
+        },
+        "Week13Quiz2Summ": {
+          "points": 9,
+          "threshold": 3,
+          "required": true
+        }
+      }
     }
 
   }

@@ -1,6 +1,8 @@
 /*global window*/
 requirejs(["./mathjs.js"], function(){});
 
+// graphml( cytoscape, jquery ); // register extension
+
 (function() {
     "use strict";
     //var definitions
@@ -222,11 +224,37 @@ requirejs(["./mathjs.js"], function(){});
 	            window.parent.ODSA.UTILS.sendEventData()
 
             Window.showBlankPrompt = false;
-            JSAV.utils.dialog( feedBackText, {closeText: "OK"} 
-                )[0].querySelector("button").addEventListener("click", e=>{
+            var dialogBoxResults = JSAV.utils.dialog( feedBackText+
+                '<br><button id="graphDownload">Download Graph Description of solution</button>'+
+                '<button id="listDownload">Download List Description of solution</button>', 
+                {closeText: "OK"} 
+                );
+            // var dialogBoxResults = JSAV.utils.dialog( feedBackText );
+            console.log(dialogBoxResults)
+            dialogBoxResults[0].querySelectorAll("button")[2].addEventListener("click", e=>{
                     e.stopPropagation();
                     Window.clearGlobalPointerReference();
+                    console.log("Close button clicked")
                 });
+            
+            if(ANALYZER_OPTIONS.ENABLE_LIST_DOWNLOAD == true) {
+                // dialogBoxResults[0].innerHTML += '<button id="listDownload">Download List Description of solution</button>';
+                dialogBoxResults[0].querySelector("#listDownload").addEventListener("click", e=>{
+                    e.stopPropagation();
+                    Window.getListAnswer()
+                    console.log("List button clicked")
+                });
+            }
+            if(ANALYZER_OPTIONS.ENABLE_GRAPH_DOWNLOAD == true) {
+                // dialogBoxResults[0].innerHTML += '<button id="graphDownload">Download Graph Description of solution</button>';
+                dialogBoxResults[0].querySelector("#graphDownload").addEventListener("click", e=>{
+                    e.stopPropagation();
+                    dialogBoxResults.close();    // TEMP ONLY
+                    Window.getGraphAnswer()
+                    console.log("Graph button clicked")
+                });
+            }
+            
             return dec;
         }
     };

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scope</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week12Quiz4Q1">
+        <p class="question">What is the scope of the field <tt>a</tt> in the following code:</p>
+<pre class="prettyprint">
+public class Example
+{
+    private int a;
+
+    public void doSomething()
+    {
+        a = 4;
+    }
+    public void setA(int value)
+    {
+        a = value;
+    }
+  }</pre>
+
+        <div class="solution">Class-level scope</div>
+        <ul class="choices">
+        <li>Local to the <tt>doSomething()</tt> method</li>
+        <li>Local to the <tt>setA()</tt> method</li>
+        <li>Local to both the <tt>setA()</tt> and <tt>doSomething()</tt> methods</li>
+
+        </ul>
+        <div class="hints">
+        <p>Remember a variable can't be local to two methods!</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

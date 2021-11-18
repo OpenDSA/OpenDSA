@@ -4,13 +4,56 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-    :author: Cliff Shaffer
+    :author: Arib Ali and Cliff Shaffer
 
 Ethereum
 ========
 
-The Problem to Solve
---------------------
+Introduction
+------------
+
+Ethereum is an open-source public service that utilizes blockchain
+technology to enable smart contracts and cryptocurrency trading
+without the involvement of a middleman.
+Regarded as the second most popular crypto currency after Bitcoin, it
+is home to digital money, global payments, and applications.
+It is a decentralized blockchain network [What is a "blockchain
+network"?] powered by the Ether token
+that enables users to make transactions, earn interest on their
+holdings through staking, use and store non fungible tokens (NFTs),
+trade cryptocurrencies, play games, and use social media.
+It is meant to be more than just a cryptocurrency, providing an
+ecosystem for blockchain applications, and a sophisticated Smart
+Contracts virtual machine.
+
+Like all cryptocurrencies, Ethereum works on the basis of a blockchain
+network. [What is a "blockchain network"?]
+It hosts a notable amount of functionality for developers building
+solutions on Ethereum as a base. [What does this mean? Are you talking
+about libraries and APIs for developers to build applications? And is
+this separate from the Smart Contracts scripting support?]
+It has a native coin that is known as Ether (ETH), which is used
+to pay for activity on the Ethereum blockchain. [At some point (not
+right here), there
+needs to be a section on how Ether is used to motivate
+participants. It is simple to understand how bitcoin is used to
+motivate minors to add blocks to the chain. What are the equivalent
+incentives in Ethereum?]
+The coin also trades on crypto exchanges and fluctuates in
+value. [Explicitly say that, separate from its use within the
+community to motivate community activities, it is also a
+cryptocurrency in the normal way.]
+The Ethereum ecosystem is written in the Solidity programming
+language. [Need a section that discusses Solidity, and what it gets
+used for.]
+It’s currently a proof-of-work (PoW) blockchain, but is making the
+move to proof-of-stake (PoS) with Ethereum 2.0 [When?] for scalability
+purposes [What does this mean?] and for a more environmentally
+friendly approach.
+
+
+Problems to Solve
+-----------------
 
 Bitcoin as a cryptocurrency has a major problem.
 It is based on Proof of Work as the heart of its consensus algorithm.
@@ -25,10 +68,37 @@ to managing a secure public distributed ledger.
 Finding alternatives to the Proof of Work consensus algoorithm has
 proved to be difficult.
 
-Introduction to Ethereum
-------------------------
+[Are there other motivations for Ethereum as compared to Bitcoin or
+other cryptocurrencies?]
 
-Ethereum is intended to use a consensus algorithm that is not based on
-Proof of Work.
-It has gone through significant evolution as the Ethereum community
-figures out how to make this work.
+
+History of Ethereum
+-------------------
+
+Vitalik Buterin is considered the creator of Ethereum,
+as he published the original Ethereum concept whitepaper.
+Buterin presented his concepts at a Bitcoin conference in Florida in
+early 2014.
+Following his initial work, others joined to help bring the project to
+fruition.
+His project raised capital through initial coin offering later the
+same year, selling millions of dollars worth of ETH coins in exchange
+for funds to use for the development of the project.
+Ethereum went live officially in July 2015 even though ETH coins were
+purchasable the year before.
+Buyers had to wait for its launch before they were able
+to move [between accounts?] or use [Is there any way to "use" ETH
+other than move it to someone else's account?] their ETH.
+
+The first iteration of the Ethereum blockchain was called the
+Frontier, and it hosted smart contracts and used a proof of work
+consensus algorithm.
+This provided opportunities for people to set up
+their mining apparatuses [since Ethereum was originally Proof of
+Work?] and start building on the network.
+After the initial launch, Ethereum saw many other updates such as
+Byzantium, Constantinople, and the Beacon Chain, where each of the updates
+changed certain aspects of the blockchain. [This needs a lot of explanation!]
+Beacon Chain provided a shift from a proof-of-work to a proof-of-stake
+consensus mechanism.  {When? How? What was (will be?) the process for
+doing this change?]

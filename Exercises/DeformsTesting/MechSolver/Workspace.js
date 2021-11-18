@@ -2025,7 +2025,8 @@ class Workspace
                         "valueDisplay": Window.valueStringRepr(value),
                         "unitDisplay": variableSet[unknownName]["solution"]["unitDisp"],
                         "variableDisplay": variableSet[unknownName]["solution"]["name"], // The greek/external symbol
-                        "domain": variableSet[unknownName]["solution"]["domain"]
+                        "domain": variableSet[unknownName]["solution"]["domain"],
+                        "sourceParent": unknownName
                     }
                 },
                 this.globalSectionObj,
