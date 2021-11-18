@@ -15,9 +15,8 @@ What is a consensus algorithm?
 A consensus algorithm is a method by which a distributed ledger is
 updated (that is, a new block is added to the block chain), and all
 parties come to agreement that this did happen.
-More information on what a consensus algorithm is can be seen at
-.. include:: Consensus.rst
-[Look up how to do this correctly!]
+For more information on what a consensus algorithm is, see :doc:`Consensus`.
+
 
 
 What is Proof of Stake?
@@ -42,28 +41,6 @@ algorithm include
 Peercoin, Ethereum, Tezos (XZT), Binance coin (BNB), NEO, PIVX, Neblio
 (NEBL), Cardano (ADA), and Stratis (STRAX).
 
-
-Structure of a Block in a Proof of Stake Algorithm
---------------------------------------------------
-
-The first block in the chain contains details of the underlying
-software hardcoded into it. [Explain.]
-This block is referred to as the genesis block.
-
-In the usual way, each block in the blockchain has a reference to the
-block before it, which is the fundamental guarantee of immutability of
-prior blocks on the chain.
-As there are new additions to the chain, there are more complex
-versions of a ledger. [What does this mean? Anything more than simply
-that the chain grows??]
-This ledger contains details of the block itself and the ones before
-it. [What does this mean? Anything more than simply that this block
-stores the hash of the prior block?]
-[I don't see that this sub-section says anything. How is a block
-different? The consensus algorithm shouldn't really affect block
-structure, should it?]
-
-
 How does it work?
 ~~~~~~~~~~~~~~~~~
 
@@ -74,37 +51,38 @@ The committee is formed, and then must propose the next block
 within a set period of time.
 After the time limit passes, or once the committee proposes a block,
 that committee is disbanded and a new one is created with
-a new set of validators.
-Users are chosen at random from a pool of invested members who have
-stakes portions of their coin. [Needs reworded. What are "invested
-members"? Is it just everyone with coin? Is it some participants
-who (1) have coin, and (2) have agreed to be in the pool?]
-The goal of the committee selection mechanism is to prevent bias
+a new set of validators. The goal of the committee selection mechanism is to prevent bias
 within the system.
-Potential users will pay some amount of Ethereum to become
-validators. [What do you mean? To become members of the potential
-pool? Or if they get selected to be on the next committee?]
-Priority is given to individuals who have more coin in the system and
-for longer amounts of time. [I think "priority" is the wrong word
-here? I am guessing that everyone eligible to be selected gets some
-measure that affects the probability that they get selected, right?
-And that this measure is affected by amount of coin and longevity?]
+Therefore when a new committe is formed, users are chosen at random from a pool of users. 
+These users stake a portion of their currency to become validators 
+in the committee. An example of this is putting a certain amount of
+Ethereum in their wallet related to the blockchain.
+
+Individuals who have more coin invested for a longer period of time have
+a higher chance of being chosen for the validaiton committee.
 This means that users that have invested more into their stake, will
 have a higher chance of being selected as a validator.
-Individuals who have a low number of coin join staking pools.
+Individuals who have a lower number of coin join staking pools.
 These staking pools are places where groups of individuals combine
 their coin together to increase the chances of the pool being chosen
-for the next committee.
+for the next committee. If they are successful, the participants of the pool share the
+rewards. This is because when the individual or group completes their term in the validation
+committe, the amount staked is returned with extra coin or gas in the case of Ethereum.
 
 .. avembed:: Exercises/Blockchain/Proof_of_stake_chances_validation.html ka
+    :long_name: Validation Chances Quiz
 
-If they are successful, the participants of the pool share the
-rewards. [This needs spelled out. A major motivation for joining a
-committee is the gas fee that gets paid back.]
 
 [Put a visualization or exercise here to visualize validating
 blocks. We need first a storyboard for what the visualization or
-exercise will look like.]
+exercise will look like.] [Exercise in the works]
+
+In a block in the blockchain, there is a header and a footer where the
+header contains hashing information related to the identity of the block
+such as the creation time stamp and reference to the block before it. The 
+footer contains a ledger detailing the history of the block and the blocks
+before it in the chain. Please see :doc:`Blocks` for more information about 
+block structures.
 
 The validator's role is to create new blocks and check the blocks of
 other validators to prevent malicious blocks or to prevent false
@@ -188,26 +166,9 @@ keep running into this problem: To issue a refund transaction requires
 the malicious actor to have the private key of the refunder. But they
 don't. So how do they issue the transaction? It won't validate, right?]
 
-For example, an attacker can buy a Dell Latitude 7410 using
-ethereum.
-Assume that this user owns 53% of ethereum coin. 
-The user receives the computer.
-They then complete a request for a refund for the computer. [So what?
-Requesting a refund is not the same as getting a refund.]
-In the process, the attacker halts any other transaction from
-occurring.
-[So? I mean, yes, that is bad from a denial of service point of
-view. But what does it have to do with the refund example? Wouldn't it
-be easier to control the validation process and just never let the
-transaction get into the blockchain? But that leads to another
-issue. At least in bitcoin, "clearing" a transaction takes way to long
-(like an hour or more). So some external mechanism like an escrow
-account proabably is needed to convince merchants that a customer has
-the coin to spend.]
-
 [Either in this or the cryptohacking rst provide an exercise used to
 detect strange events in a 51% attack. But first, need to come up with
-some actual malicious transactions that are plausible.]
+some actual malicious transactions that are plausible.] [Cryptohacking work on next week]
 
 Attacks such as the 51% attack are difficult to recognize until the
 attack is executed.
@@ -218,20 +179,17 @@ majority stake. Its just that the mechanism to catch them might be
 different.]
 In a proof of stake system, a 51% attack is discouraged and punished
 as those who participate in such an attack will lose part of their
-stake or coin as a result.
-[Why? What is actually different from Proof of Work? I am guessing the
-difference is that in Proof of Stake, all participants are putting in
-some coin to get their transaction processed, in the form of
-gas. Right?] [Second issue: How does the malicious actor with 51% of
-stake get caught?]
-Upon discovery, not only will the attacker lose stake, but the value
-of the cryptocurrency will go down, especially for the coin owned by
-the attacker. [Why does that happen? And why is it a good thing?]
+stake or coin as a result. [Todo: add how get caught]
 
-After the attacker has been discovered, the coin they have invested in
-the stake will be lost for them. [Why? How? I thought they just lost
-the gas they paid for the transaction, and to be on the committee? Not
-all stake that the own?]
+Upon discovery, not only will the attacker lose their stake, but the value
+of the cryptocurrency will go down, especially for the coin owned by
+the attacker. When this happens, it prevents the individual with the
+majority from gaining another majority since more people are able to
+afford more coin. If more coin is in process, the majority is lost for
+the hacker. In addition, the discovered attacker lost the gas paid for
+the transaction, further reducing their wealth within the cryptocurrency
+system.
+
 This means that the chances for the attacker gaining a chance at
 validating are reduced in a proof of stake algorithm since they do not
 have any coin staked.
