@@ -96,6 +96,8 @@ These staking pools are places where groups of individuals combine
 their coin together to increase the chances of the pool being chosen
 for the next committee.
 
+.. avembed:: Exercises/Blockchain/Proof_of_stake_chances_validation.html ka
+
 If they are successful, the participants of the pool share the
 rewards. [This needs spelled out. A major motivation for joining a
 committee is the gas fee that gets paid back.]
