@@ -18,66 +18,85 @@ $(document).ready(function() {
     let node4ATop = "90%"
 
 
-    var blockchain = av.ds.list({top: topMargin, left: leftMargin, nodegap: 10});
+    var blockchain = av.ds.list({top: 0, left: leftMargin, nodegap: 10});
+    var blockchain2 = av.ds.list({top: 50, left: leftMargin, nodegap: 10});
+    var blockchain3 = av.ds.list({top: 100, left: leftMargin, nodegap: 10});
+    var blockchain4 = av.ds.list({top: 150, left: leftMargin, nodegap: 10});
+    
     var graph = av.ds.graph({visible: true, left: -10, bottom: 5});
-    var blockProposal1To3 = av.ds.list({top: topProposal, left: leftProposal});
-    var blockProposal1To2 = av.ds.list({top: topProposal, left: leftProposal});
-    var blockProposal4To3 = av.ds.list({top: "77%", left: "24.5%"});
-    var blockProposal4To2 = av.ds.list({top: "77%", left: "24.5%"});
-    var blockProposal2To1 = av.ds.list({top: "77%", left: "3.5%"});
-    var blockProposal2To4 = av.ds.list({top: "77%", left: "3.5%"});
-    var blockProposal3To1 = av.ds.list({top: "-5%", left: "24.5%"});
-    var blockProposal3To4 = av.ds.list({top: "-5%", left: "24.5%"});
-    var blockProposal4 = av.ds.list({top: "77%", left: "24.5%"});
 
     // this code is the starting state of the graph
     graph.css({"font-size": "12px"});
-    const a = graph.addNode('1', { "left": "10%", "bottom":"90%"});
-    const b = graph.addNode('2', {"right": "90%", "left":"10%", "top":"90%"});
-    const c = graph.addNode('3', {"left": "55%", "bottom":"90%"});
-    const d = graph.addNode('4', {"bottom":"10%", "top":node4ATop, "left":node4ALeft});
-    graph.addEdge(a,b);
-    graph.addEdge(a,c);
-    // graph.addEdge(a,d);
-    // graph.addEdge(b,c);
-    graph.addEdge(b,d);
-    graph.addEdge(c,d);
+    const a = graph.addNode('1', { "left": "30%", "bottom":"90%"});
+    const b = graph.addNode('2', {"right": "80%", "left":"20%", "top":"10%"});
+    const c = graph.addNode('3', {"right": "90%", "left":"10%", "top":"25%"});
+    const d = graph.addNode('4', {"right": "95%", "left":"5%", "top":"50%"});
+    const e = graph.addNode('5', {"right": "90%", "left":"10%", "top":"75%"});
+    const f = graph.addNode('6', {"right": "80%", "left":"20%", "top":"90%"});
+    const g = graph.addNode('7', {"right": "70%", "left":"30%", "top":"100%"});
+    const h = graph.addNode('8', {"right": "60%", "left":"40%", "top":"90%"});
+    const i = graph.addNode('9', {"right": "50%", "left":"50%", "top":"75%"});
+    const j = graph.addNode('10', {"right": "45%", "left":"55%", "top":"50%"});
+    const k = graph.addNode('11', {"right": "50%", "left":"50%", "top":"25%"});
+    const l = graph.addNode('12', {"right": "60%", "left":"40%", "top":"10%"});
+
+    const m1 = graph.addNode('M1', {"right": "80%", "left":"20%", "top":"30%"});
+    const m2 = graph.addNode('M2', {"right": "80%", "left":"20%", "top":"70%"});
+    const m3 = graph.addNode('M3', {"right": "60%", "left":"40%", "top":"70%"});
+    const m4 = graph.addNode('M4', {"right": "60%", "left":"40%", "top":"30%"});
+
+    const f1 = graph.addNode('F1', {"right": "85%", "left":"15%", "top":"50%"});
+    const f2 = graph.addNode('F2', {"right": "75%", "left":"25%", "top":"50%"});
+    const f3 = graph.addNode('F3', {"right": "65%", "left":"35%", "top":"50%"});
+    const f4 = graph.addNode('F4', {"right": "55%", "left":"45%", "top":"50%"});
+
+
+    const f1Chain = graph.addNode('F1', {"right": "12%", "left":"88%", "top":"5%"});
+    const f2Chain = graph.addNode('F2', {"right": "12%", "left":"88%", "top":"30%"});
+    const f3Chain = graph.addNode('F3', {"right": "12%", "left":"88%", "top":"55%"});
+    const f4Chain = graph.addNode('F4', {"right": "12%", "left":"88%", "top":"80%"});
+
+    m1.addClass('brownnode')
+    m2.addClass('brownnode')
+    m3.addClass('brownnode')
+    m4.addClass('brownnode')
+
+    f1.addClass('bluenode')
+    f2.addClass('bluenode')
+    f3.addClass('bluenode')
+    f4.addClass('bluenode')
+    f1Chain.addClass('bluenode')
+    f2Chain.addClass('bluenode')
+    f3Chain.addClass('bluenode')
+    f4Chain.addClass('bluenode')
+    
     av.g.line(300, 10, 300, 220);
 
     graph.addClass('backward'); //move the graph behind the new proposed blocks
     graph.layout();
   
     // Slide 1
-    av.umsg(interpret("sc1"));
+    av.umsg("Slide 1 text");
 
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
+    blockchain2.addFirst("Blk 2").addFirst("Blk 1");
+    blockchain3.addFirst("Blk 2").addFirst("Blk 1");
+    blockchain4.addFirst("Blk 2").addFirst("Blk 1");
 
     let forkMargin = 163; //the distance we want in the fork
 
     blockchain.layout({updateTop: false});
+    blockchain2.layout({updateTop: false});
+    blockchain3.layout({updateTop: false});
+    blockchain4.layout({updateTop: false});
+        
 
     av.displayInit();
   
     // Slide 2
-    av.umsg(interpret("sc2"));
+    av.umsg("Slide 2 message");
     
-    let blkATo3 = blockProposal1To3.addFirst("Blk A").get(0);
-    let blkATo2 = blockProposal1To2.addFirst("Blk A").get(0);
-    blkATo3.addClass("greenBlock");
-    blkATo2.addClass("greenBlock");
-
-    blockProposal1To3.css({top: "58%", left: "3.5%"});
-    blockProposal1To2.css({top: "-5%", left: "20%"});
-    graph.layout({updateLeft: false, updateTop: false});
-
-    let node1Block = blockchain.newNode("Blk A");
-    
-    node1Block.css({top: topMargin-100, left: leftAdding * 2});
-    node1Block.addClass('greenBlock');
-
-    a.addClass('greennode');
-    graph.layout({updateTop: false});
-    blockchain.layout();
+    const cEdge = graph.addEdge(e,m2);
 
     av.step();
 
