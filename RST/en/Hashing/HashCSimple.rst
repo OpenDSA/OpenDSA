@@ -72,7 +72,7 @@ searches.
 Thus, the hash system should keep a count of the number of records stored,
 and refuse to insert into a table that has only one free slot.
 
-The simplest approach to collsion resolution is simply to move down
+The simplest approach to collision resolution is simply to move down
 the table from the home slot until a free slot is found.
 This is known as :term:`linear probing`.
 The probe function for simple linear probing is
