@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List Practice</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week8Quiz1Q3">
+        <p class="question">After the following code runs, would the number 5 be added to the list?  </p>
+<pre class="prettyprint">
+List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+list.add(1);
+list.add(2);
+list.add(3);
+list.remove(0);
+list.add(4);
+
+if (list.contains(1))
+{
+    list.add(5);
+}</pre>
+        <div class="solution">No, the number 1 is not in the list so the if condition is false</div>
+        <ul class="choices">
+        <li>Yes, the number 1 is in the lisst so the if condition is true</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -502,41 +502,44 @@
             "finishedFrame": finishedFrame
           };
           
-          if (ODSA.UTILS.hasBook()) {
-            data['inst_book_id'] = ODSA.TP.instBookId;
-            if (ODSA.UTILS.isFullModule()) {
-              data['inst_chapter_module_id'] = ODSA.UTILS.getChapterModuleID();
-            }
-            frame = $(`[data-long-name=${av_name}`)[0];
-            inst_section_id = $(frame).attr("data-exer-id");
-            data['inst_section_id'] = inst_section_id;
-            
-          }
-          else if (ODSA.UTILS.isStandaloneModule()) {
-            data['inst_module_version_id'] = ODSA.UTILS.getInstModuleVersionId();
-          }
-          else {
-            data['inst_course_offering_exercise_id'] = ODSA.UTILS.getInstCourseOfferingExerciseId();
-          }
-          
-          if (ODSA.UTILS.scoringServerEnabled())
-          {
-            $.ajax({
-              url: "/odsa_exercise_attempts/pi",
-              type: "POST",
-              data: JSON.stringify(data),
-              contentType: "application/json; charset=utf-8",
-              datatype: "json",
-              xhrFields: {
-                withCredentials: true
-              },
-              success: function(data) {
-                console.log(data)
-              },
-              error: function(err) {
-                console.log(err)
+          if (ODSA.UTILS.hasToolProvider()) {
+            if (ODSA.UTILS.hasBook()) {
+              data['inst_book_id'] = ODSA.TP.instBookId;
+              if (ODSA.UTILS.isFullModule()) {
+                data['inst_chapter_module_id'] = ODSA.UTILS.getChapterModuleID();
               }
-            });
+              frame = $(`[data-long-name=${av_name}`)[0];
+              inst_section_id = $(frame).attr("data-exer-id");
+              data['inst_section_id'] = inst_section_id;
+            }
+            else if (ODSA.UTILS.isStandaloneModule()) {
+              data['inst_module_version_id'] = ODSA.UTILS.getInstModuleVersionId();
+            }
+            else {
+              data['inst_course_offering_exercise_id'] = ODSA.UTILS.getInstCourseOfferingExerciseId();
+            }
+          }
+
+          if (ODSA.UTILS.hasToolProvider()) {
+            if (ODSA.UTILS.scoringServerEnabled())
+            {
+              $.ajax({
+                url: "/odsa_exercise_attempts/pi",
+                type: "POST",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                xhrFields: {
+                  withCredentials: true
+                },
+                success: function(data) {
+                  console.log(data)
+                },
+                error: function(err) {
+                  console.log(err)
+                }
+              });
+            }
           }
 
           //feedback elements are built when the question is injected to the slideshow
@@ -757,6 +760,12 @@
 
     //checkpoint jump functions
     skipToCheckPoint(av_name) {
+      if (ODSA.UTILS.hasToolProvider()) {
+        if (!ODSA.UTILS.scoringServerEnabled())
+        {
+            return -1;
+        }
+      }
       if (!ODSA.UTILS.scoringServerEnabled())
       {
           return -1;

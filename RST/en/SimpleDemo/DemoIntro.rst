@@ -23,6 +23,8 @@ the visualizations) at ``RST/en/SimpleDemo/DemoIntro.rst``.
 The configuration file that lets you compile this "book" is in
 ``config/SimpleDemo.json``.
 
+`SimpleDemo.json <https://github.com/OpenDSA/OpenDSA/blob/master/config/SimpleDemo.json>`_
+
 If you haven't done so already, you probabably should read the Getting
 Started documentation for setting up the OpenDSA environment on your
 own computer:
@@ -30,6 +32,9 @@ See https://opendsa.readthedocs.io/en/latest/GettingStarted.html.
 You will probably also want to have handy the documentation on the
 JSAV graphics library that we use, available at
 http://jsav.io/.
+
+`Source for this RST file <https://github.com/OpenDSA/OpenDSA/blob/master/RST/en/SimpleDemo/DemoIntro.json>`_
+
 
 
 A simple diagram
@@ -58,6 +63,7 @@ with three lines.
 
    A two-coloring for the regions formed by three lines in the plane.
 
+`Source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Background/twoColorCON.js>`_
 
 There is a certain amount of art and judgment to writing even
 something as simple as this diagram.
@@ -89,6 +95,8 @@ slideshow.
    :links: 
    :scripts: AV/SimpleDemo/simple_demo1.js
    :output: show
+
+`Source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/SimpleDemo/simple_demo1.js>`_
 
 This slideshow also shows the power of the JSAV library, which was
 written explicitly to help with developing algorithm visualizations.
@@ -124,13 +132,17 @@ languages (English, French, Finnish, etc.).
    :scripts: AV/Sorting/insertionsortCON.js
    :output: show
 
+`JavaScript Source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/insertionsortCON.js>`_
+
+`Configuration Source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Sorting/insertionsortCON.json>`_
+
+
 This same mechanism is also used to compile books that use different
 programming languages for its examples.
 To see a good example of how the code from different languages can be
 included, and how the resulting line highlighting is altered to match
 changes in the line numbers that results, see
-``[OpenDSA]/AV/List/alistInsertCON.json``.
-
+`here <https://github.com/OpenDSA/OpenDSA/blob/master/AV/alistInsertCON.json>`_
 
 Swapping array elements with user input of the array and a reset button
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -149,6 +161,13 @@ the user.
 (See *simple_demo2* in the AV/SimpleDemo directory.)
 
 .. avembed:: AV/SimpleDemo/simple_demo2.html ss
+
+`HTML source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/SimpleDemo/simple_demo2.html>`_
+
+`JavaScript source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/SimpleDemo/simple_demo2.js>`_
+
+`CSS source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/SimpleDemo/simple_demo2.css>`_
+
 
 The general rule is: If there is no user input or interaction beyond
 clicking through slides, then do it as a "slideshow" with the
@@ -169,6 +188,9 @@ Here is diagram that uses the linked list ADT.
    :scripts: AV/List/llist.js AV/List/llistRepCON.js
    :align: center
 
+`JavaScript source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/List/llistRepCON.js>`_
+
+
 And here is a slideshow that shows how to insert into a linked list.
 It also shows a code display object.
 
@@ -177,6 +199,8 @@ It also shows a code display object.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistInsertCON.js
    :output: show
+
+`JavaScript source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/List/llistInsertCON.js>`_
 
 Here is an example of using the binary tree API, along with a pointer
 object and ``addClass`` to color some nodes.
@@ -187,7 +211,11 @@ object and ``addClass`` to color some nodes.
    :scripts: AV/Binary/BSTsearchCON.js
    :output: show
 
-            
+`JavaScript source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Binary/BSTsearchCON.js>`_
+
+`CSS source <https://github.com/OpenDSA/OpenDSA/blob/master/AV/Binary/BSTCON.css>`_
+
+
 A Khan Academy Exercise with JSAV object
 ----------------------------------------
 

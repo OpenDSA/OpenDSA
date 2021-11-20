@@ -38,27 +38,27 @@
     }, 
     "chapters": {
       "Overview": {
-        "Blockchain/Introduction": {}
-      },
-      "Cryptography": {
-        "Blockchain/Cryptography": {}
+        "Blockchain/Introduction": {},
+        "Blockchain/Cryptography": {},
+        "Blockchain/Blocks": {}
       },
       "Ledgers": {
         "Blockchain/Ledgers": {}
       },
-      "Merkle Trees": {
+      "Data Structures": {
         "Blockchain/MerkleTrees": {}
       },
-      "Mining": {
-        "Blockchain/Mining": {}
-      },
       "Consensus Algorithms": {
+        "Blockchain/Mining": {},
         "Blockchain/Consensus": {},
         "Blockchain/Permissionless": {},
         "Blockchain/Permissioned": {}
       },
       "CryptoCurrencies": {
         "Blockchain/BitCoin": {},
+        "Blockchain/Ethereum": {},
+        "Blockchain/EVMandGAS": {},
+        "Blockchain/ProofOfStake": {},
         "Blockchain/OtherCrypto": {}
       },
       "Applications of Blockchain": {

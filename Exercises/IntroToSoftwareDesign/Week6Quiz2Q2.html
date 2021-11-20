@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>For-each Loops</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week6Quiz2Q2">
+          <p class="question">Would the following code run?  </p>
+<pre class="prettyprint">
+for (Pixel pix : image.getPixels())
+{
+    pix.setRed(0);
+}
+pix.setGreen(255);</pre>
+        <div class="solution">No, the <tt>Pixel</tt> variable <tt>pix</tt> is only usable
+           inside the for-each loop</div>
+        <ul class="choices">
+        <li>No, we need to write the for-each loop as <tt>for (Pixel pix : Picture image)</tt></li>
+        <li>Yes, this code would call <tt>setGreen()</tt> on the last <tt>Pixel</tt> object in the image.</li>
+        <li>Yes, this code would call <tt>setGreen()</tt> on the first <tt>Pixel</tt> object in the image.</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -12,6 +12,7 @@ class ValueBox{
             this.domain = element.dataset.domain;
             this.globalPointerReference = Window.globalPointerReference;
             this.element = element;
+            this.valueSourceParent = element.dataset.id;
         }
         else
         {
@@ -23,6 +24,7 @@ class ValueBox{
             this.domain = element.dataset.domain;
             this.globalPointerReference = Window.globalPointerReference;
             this.element = null;
+            this.valueSourceParent = element.dataset.sourceParent;
             this.createSolutionBox(element, Window.jsavObject);
         }
     }
@@ -31,6 +33,7 @@ class ValueBox{
         // Create the JSAV label object with variable = value notation
         // element contains the location for the JSAV label
         // AND the value, unit, etc. things
+        
         this.element = {};
 
         // Delete buttons

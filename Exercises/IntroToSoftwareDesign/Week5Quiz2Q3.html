@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scope</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week5Quiz2Q3">
+        <p class="question">True or False: in the following code, the variable
+        <tt>age</tt> is accessible where <tt>newAge</tt> is declared.</p>
+<pre class="prettyprint">
+public class AgedJeroo
+{
+    public void increase()
+    {
+        if (this.seesFlower(HERE))
+        {
+            int age = 0;
+            // ...
+        }
+        
+        int newAge = age + 1;
+    }
+}
+</pre>
+        <div class="solution">False: since <tt>age</tt> is declared inside the if statement, its scope ends at the closing brace of the block where it is declared.</div>
+        <ul class="choices">
+        <li>True: since <tt>age</tt> is declared inside the method, it can be accessed anywhere inside the method. </li>
+        <li>False: <tt>age</tt> cannot be accessed at that location because it is not a field.</li>
+        <li>True: since <tt>age</tt> is declared as a field, it can be accessed anywhere inside the class.</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iterating with Arrays</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week10Quiz2Q1">
+        <p class="question">For this question, assume we have an array of
+        boolean values called <tt>arr</tt> that has a length of 5.  We want
+        to print out the elements in arr in reverse order. </p>
+<pre class="prettyprint">
+for (int i = arr.length; i &gt;= 0; i--)
+{
+    System.out.println(arr[i]);
+}</pre>
+        <p>What is wrong with this loop?</p>
+        <div class="solution">This would throw an ArrayIndexOutOfBoundsException.  The last value in arr is stored at index 4 (one less than length).</div>
+        <ul class="choices">
+        <li>This would throw an IncompatibleTypeException as we can't iterate through an array of booleans.</li>
+        <li>This would cause a syntax error because the square brackets ([]) are used incorrectly.</li>
+        <li>This loop has no problems and would run without issue.</li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Numbers</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week7Quiz3Q2">
+        <p class="question">Assume we were trying to test the following method:</p>
+<pre class="prettyprint">
+public boolean foo()
+{
+    Random generator = Random.generator();
+    if (generator.nextInt(100) < 10)
+    {
+        return true;
+    }
+    return false;
+}</pre>
+        <p>We want to test to make sure the method above returns true when it should.  How should we call <tt>setNextInts()</tt>? </p>
+        <div class="solution"><tt>Random.setNextInts(2);</tt></div>
+        <ul class="choices">
+        <li><tt>Random.setNextInts(10);</tt></li>
+        <li><tt>Random.setNextInts(40);</tt></li>
+        <li>None of these would work</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

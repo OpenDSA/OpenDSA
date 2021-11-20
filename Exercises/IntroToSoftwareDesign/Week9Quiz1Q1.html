@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Generics</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week9Quiz1Q1">
+        <p class="question">Assume we are using the <tt>Box</tt> class described in this module.
+           Which line would cause an error and when would the error occur?  </p>
+<pre class="prettyprint">
+public Box&lt;String&gt; b = new Box&lt;String&gt;("");
+b.setValue(42);</pre>
+
+        <div class="solution">The call to <tt>setValue()</tt> would cause an error at compile time.</div>
+        <ul class="choices">
+        <li>The call to <tt>setValue()</tt> would cause an error at runtime.</li>
+        <li>The creation of the Box would cause an error at compile time.</li>
+        <li> The creation of the Box would cause an error at runtime.</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
