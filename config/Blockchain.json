@@ -64,7 +64,9 @@
           }
         },
         "Blockchain/Cryptohacking": {
-          "Hacker Types": 1.0
+          "Hacker Types": {
+            "points": 1.0
+          }
         },
         "Blockchain/OtherCrypto": {}
       },
