@@ -17,7 +17,15 @@ updated (that is, a new block is added to the block chain), and all
 parties come to agreement that this did happen.
 For more information on what a consensus algorithm is, see :doc:`Consensus`.
 
+Block Structure Review
+----------------------
 
+In a block in the blockchain, there is a header and a footer where the
+header contains hashing information related to the identity of the block
+such as the creation time stamp and reference to the block before it. The 
+footer contains a ledger detailing the history of the block and the blocks
+before it in the chain. Please see :doc:`Blocks` for more information about 
+block structures.
 
 What is Proof of Stake?
 -----------------------
@@ -46,20 +54,21 @@ How does it work?
 
 A new block is proposed for addition to the blockchain by a committee
 of community members selected for the purpose.
-A committee is a group of at least 128 validators.
+A committee is a group of at least 128 validators. The number of committee
+members is determined by the number of validations required for a block in
+approving a transaction or addition of a block. 
 The committee is formed, and then must propose the next block
 within a set period of time.
-After the time limit passes, or once the committee proposes a block,
-that committee is disbanded and a new one is created with
-a new set of validators. The goal of the committee selection mechanism is to prevent bias
-within the system.
-Therefore when a new committe is formed, users are chosen at random from a pool of users. 
+When a new committe is formed, users are chosen at random from a pool of users. 
 These users stake a portion of their currency to become validators 
 in the committee. An example of this is putting a certain amount of
 Ethereum in their wallet related to the blockchain.
 
 Individuals who have more coin invested for a longer period of time have
-a higher chance of being chosen for the validaiton committee.
+a higher chance of being chosen for the validaiton committee. This
+process is similar to ones in the lottery because the more the user
+invests, the higher chance they have to win. However, in Ethereum 2.0, 
+users are required to stake 32 ETH to be entered for the chance to be a validator.
 This means that users that have invested more into their stake, will
 have a higher chance of being selected as a validator.
 Individuals who have a lower number of coin join staking pools.
@@ -77,56 +86,23 @@ committe, the amount staked is returned with extra coin or gas in the case of Et
 blocks. We need first a storyboard for what the visualization or
 exercise will look like.] [Exercise in the works]
 
-In a block in the blockchain, there is a header and a footer where the
-header contains hashing information related to the identity of the block
-such as the creation time stamp and reference to the block before it. The 
-footer contains a ledger detailing the history of the block and the blocks
-before it in the chain. Please see :doc:`Blocks` for more information about 
-block structures.
+The process of validators adding a new block to the blockchain occurs in three
+phases: proposing the block, voting on the block, and adding transactions to the block. 
+After being selected for the validation committee, one random validator in the committee
+is chosen to propose a new block. The remaining members' job is to vote on the proposed
+block and attest to transactions within the block. These remaining members 
+vote to approve the newly proposed block. Once this phase is complete, the remaining
+127 members attest to a transaction to a previously created block within the chain. This process of
+adding a transaction to the previously created block is used to prevent fraudulent transactions
+from occurring. One such fraudulent transaction is attempting to reverse a previously approved
+transaction in the shard. If a validator witnesses one or more other validators attempting to 
+approve such fraudulent transactions in the block, it is their job to report it.
 
-The validator's role is to create new blocks and check the blocks of
-other validators to prevent malicious blocks or to prevent false
-claiming of blocks.
-If a validator created a block, the other validators will attest the
-block.
-Validators work to choose where the block goes into the transaction.
-If the block in the transaction that a particular validator selected,
-they gain more funds.
-For ethereum, the attestation is recorded in a ledger named "beacon
-chain."
-[Sorry, but I find this so confusing that I can't even begin to pick
-apart where the problems are. Please try writing this again. Give more
-detail. I *think* you are trying to shed light on the process whereby
-the committee proposes a block, right? One confusion comes from
-talking about "choosing where a block goes in a transaction". Don't
-transactions go into blocks? I think blocks contain transactions an
-smart contracts.]
-
-Each block requires that at least 128 users validate it.
-[At least? That is confusing. I thought there was a process to select
-a committee, and then the committee does its work. One goal of the
-selection process is to include 128+ participants, but that is a
-detail that is not relevant here. What is relevant here is that the
-committee got selected somehow. In other words, we need an explanation
-of how and why a committee gets selected (I thought that was above),
-and then a discussion of what the committee DOES.]
-The block is available for validation in a slot of time.
-This slot of time is called a slot and encompasses 12 seconds long.
-32 of these slots encompass an epoch. 
-After an epoch has completed, a new group of validators is chosen.
-If the validator does not respond during the slotted
-time, they are removed from the position.
-[This sounds somewhat redundant with the discussion of committees
-above, though slightly more detail is being provided here. Not sure
-yet what the best approach is. Perhaps put less detail above, and most
-of the detail here.]
-
-Another way of being removed from a validation position is 
-is to create or attest to a malicious block.
-In the case that this removal occurs, the validator would 
-lose their stake they invested.
-[How would this be detected? This needs a lot of explanation!]
-
+From there, 32 new committees are chosen in slots of time called epoches to repeat the steps of 
+proposing blocks and attesting to new transactions on the newly proposed block.
+After the epochs are added, the block has two remaining transaction bundle before all transactions
+in the block are final. They cannot be changed. This means that a block in the blockchain has 
+room for 34 transaction bundles in their history. 
 
 Proof of Stake versus Proof of Work
 -----------------------------------
@@ -142,10 +118,10 @@ For proof of work algorithms, it means that someone controls 51%
 or more of the mining cycles.
 For proof of stake algorithms, this means that one individual or a group 
 invested in a stake pool as described in 'How does it work?' maintains
-control of 51% of the bitcoin in the market and are currently
-performing duties in the validation process. [Do you actually mean
-that the next committee has at least 51% control by some particular
-entity?]
+control of 51% of the particular cryptocurrency in the market and are currently
+performing duties in the validation process. In the case of proof of work
+systems, the individual must have at least 51% of the computing power used
+in mining coin.
 For both algorithms, a 51% attack selects the next block to add to the
 chain, and has the power to drive the consensus algorithm such that
 the community accepts it.
@@ -160,11 +136,8 @@ transaction appear to spend certain coins (allowing a malicous user to
 re-spend coins).
 Another example of events that can occur during a 51% attack is the
 attacker giving themselves refunds from transactions that have already
-occured.
-[I have another student working on proof of work consensus, and we
-keep running into this problem: To issue a refund transaction requires
-the malicious actor to have the private key of the refunder. But they
-don't. So how do they issue the transaction? It won't validate, right?]
+occured by overwriting block transactions in a fork that the attacker controls.
+The fork uses the same coin in another transaction.
 
 [Either in this or the cryptohacking rst provide an exercise used to
 detect strange events in a 51% attack. But first, need to come up with
@@ -174,12 +147,14 @@ Attacks such as the 51% attack are difficult to recognize until the
 attack is executed.
 Detection can occur when duplicate transactions or repeating refunds
 are found for a user with a majority of the coin in the
-cryptocurrency. [I don't think the issue here is that the user has a
-majority stake. Its just that the mechanism to catch them might be
-different.]
+cryptocurrency. When a 51% attack occurs, a branch appears where the
+attacker can double spend coin where two transactions occur on the same
+coin amount. In order to catch this, validators must pay attention to
+details of branching for such transactions that overwrite previously 
+written block logs.
 In a proof of stake system, a 51% attack is discouraged and punished
 as those who participate in such an attack will lose part of their
-stake or coin as a result. [Todo: add how get caught]
+stake or coin as a result.
 
 Upon discovery, not only will the attacker lose their stake, but the value
 of the cryptocurrency will go down, especially for the coin owned by
@@ -235,7 +210,10 @@ In addtion, in some cases, adding a hard fork can introduce
 vulnerabilities into the cryptocurrency.
 An example of this happened to Ethereum in 2019.
 When the fork was introduced for Ethereum, where the fork caused
-issues with smart contracts. [Explain.]
+issues with smart contracts. The Constantinople fork was proposed in 
+increased vulnerabilities within the smart contracts. The hashing algorithm
+within these contracts became repeatable and thus, increased the chances of 
+a hacker accessing the information within the contracts.
 
 In the case of a hard fork for the proof of work algorithm, the miners
 must decide whethere to continue in the current path,
@@ -276,7 +254,7 @@ one that works).
 This power translates into higher amounts of electricity used and
 increases the demand for utility providers to create more.
 For example, in 2016, the cost of a transaction in the bitcoin network
-costs 830,000 watt hours (WH) or 830 kWH where the network processes 
+costs 830,000 watt hours (WH) or 830 kWH of energy consumption where the network processes 
 around 5 transactions a second.
 This means, that in one second of transactions, 4,150,000 WH.
 When the value of the cryptocurrency increases, the energy cost
@@ -309,31 +287,25 @@ Risks of Concentration
 
 For proof of work algorithms, a business or group of individuals can
 collect coin by mining with several computers.
-Because of this conglomeration of resources to one group, potentially
-a single group could own the majority of a particular cryptocrurrency
+Because of this collection of resources to one group, potentially
+a single group could own the majority of the mining power
 (i.e. Bitcoin for some investors in China) with no extra cost of
-bitcoin other than the cost of mining them. [I don't think the issue
-is the percentage of bitcoin owned. It is the percentage of mining
-resources available. Right?]
+bitcoin other than the cost of mining them.
 
-For proof of stake algorithms, when an individual is working to get
+For proof of stake algorithms, when an individual is investing in
 more cryptocurrency, they must put some percentage of their coin in
-for exchange. [What does it mean to "work to get more cryptocurrency"?
-Do you mean the process of getting onto a committee to get a share of
-the processing fee?]
+for exchange for a chance to be selected for the validation committee.
 This exchange is a holding similar to investing in stocks. 
 The user may get this back when they attest for the right blocks in
-the currency. [I think that is a separate issue. A person can always
-use their coin. Its just that within the system, the payoff from the
-equivalent to mining is limited, right?]
+the currency. The coin not invested in the stake can be used for transactions.
 This means that an individual with a large amount of wealth could
 invest more for higher gains.
 An individual or group with lower investment availability has a lower
-rate of return. [All of this assumes that being on the committee is
-sufficiently lucrative, right?]
+rate of return since there is a lower chance of being assigned to a
+committee.
 However, even if an individual with a large stake invested in the
 cryptocurrencies, will still not have a majority since the value of
-the cryptocurrency is more than the individual's worth. [Why should
-that be the case?]
-Meaning that this method for investment prevents users or groups from
-gaining a majority. [I don't see this conclusion.]
+the cryptocurrency is more than the individual's worth. If the cryptocurrency
+equates to an individual's worth, it would be easy to invest higher pecentages
+in stake and increase chances of being chosen for validation committees where,
+if the user has malicious intent, they can initiate the 51% attack.
