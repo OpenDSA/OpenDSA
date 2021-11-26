@@ -15,8 +15,8 @@ Introduction to Formal Languages
 Introduction
 ------------
 
-In this module, we present the three major concepts for the semester:
-Languages, Grammars, and Automata.
+In this module, we present the three foundational concepts for the
+semester: Languages, Grammars, and Automata.
 
 
 Languages
@@ -66,7 +66,7 @@ Automata should be thought of as simple computers.
 The advantage to "simple" is that we can hope to completely understand
 how "powerful" the various types of machines are.
 Here "powerful" means what languages they can be programmed to
-:term:`recognize`, where "recognize" means to reliably determine if a
+:term:`recognize`, which means to reliably determine if a
 string is in the langauge or not.
 
 .. inlineav:: AutomataCON dgm
@@ -79,8 +79,8 @@ string is in the langauge or not.
    current square on the tape), a control unit, and possibly some
    optional storage in the form of a stack.
    Within the control unit, the numbers represent
-   :term:`states`, which are the specific positions on the dial that the
-   arrow may point to.
+   :term:`states <state>`, which are the specific positions on the
+   dial that the arrow may point to.
    
 While this picture shows the physical components of the "computer",
 it is not showing the control behavior (what to do when we are in a

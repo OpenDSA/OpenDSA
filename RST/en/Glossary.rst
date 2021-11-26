@@ -63,6 +63,12 @@ Glossary
       the computation in an accepting state, then the machine is said
       to :term:`accept` the string.
 
+   acceptor
+      In formal languages, any machine whose primary purpose is to
+      determine whether a string is accepted (is recognized to be in a
+      language) or rejected. This is in contrast to a machine that
+      computes some value.
+
    activation record
       :to-term: local variable :label: stores
 
@@ -4049,6 +4055,10 @@ Glossary
       :term:`AVL Tree` or :term:`Splay Tree`, for the purpose of
       keeping the tree :term:`height balanced`.
 
+   recognize
+      In the study of formal languages, the ability to reliably
+      determine whether some string is in a given language or not.
+
    record
       A collection of information, typically implemented as an
       :term:`object` in an
@@ -4762,6 +4772,8 @@ Glossary
       possibly with associated information, that is primarily defined
       in terms of the conditions that the automata may transition from
       its present state to another state.
+      This type of state is generally represented by a node in the
+      graph that represents the automata.
 
    State Machine
       Synonym for :term:`finite automata`.
