@@ -186,3 +186,8 @@ For any given language :math:`L`, define the language co-:math:`L` to be all
 strings **not** in :math:`L`.
 Is co-:math:`L` always the same type of language (in our hierarchy) as
 :math:`L`?
+
+Turing machines can do anything
+(at least, anything that a computer can do).
+
+And, how can it be that you can't always tell if a loop will halt?!

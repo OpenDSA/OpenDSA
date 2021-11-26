@@ -89,10 +89,16 @@ is who should be logging into the system.
 In addition, to mitigate the affects for DNS phishing, use a Virtual Private Network
 (VPN) to send data on encrypted networks. Also, verifying URLs for trusted certificates
 aids in ensuring the website is trustable.
+
 .. odsafig:: Images/LocalBitCoins.jpg
    :align: center
+   :width: 800
+
+|
+
 .. avembed:: Exercises/Blockchain/PhishingEmail.html ka
     :long_name: Phishing Email
+
 
 History of Crypto Hacking
 -------------------------

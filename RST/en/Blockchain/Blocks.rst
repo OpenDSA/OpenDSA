@@ -7,7 +7,8 @@
     :author: Kyle Papili and Cliff Shaffer
 
 Blocks & Nodes
-======
+==============
+
 What makes up a Block?
 ----------------------
 
@@ -53,7 +54,7 @@ A brief summary of each item is included beneath the diagram.
 
 
 Full vs. Thin Blocks and a Community of Nodes
---------------------------------------------
+---------------------------------------------
 
 Why use a Blockchain?
 We have already seen that one of the primary distinctions of a

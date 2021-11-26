@@ -127,7 +127,8 @@ For example, if you know what you can or cannot do with a regular
 expression, then maybe you can solve a hard problem with simple calls
 to a regex library.
 On the other hand, maybe you can avoid wasting your time trying
-use regex tools to solve the wrong problem.
+to use regex tools to solve the wrong problem
+(not all sets of strings can be represented by a regex).
 Likewise, if you know the limits of the types of grammar supported by
 a given compiler generator like YACC or Bison, then you know whether
 you can use that tool to get your job done, or whether you need to go
@@ -152,7 +153,7 @@ the following.
 
   Answer: Yes. You can solve this by looking at the symbols one at
   a time, left to right, without looking back at a previous symbol and
-  without using any variables keep track of anything.
+  without using any variables to keep track of anything.
 
 * Can you write a program to tell if a string has an odd number of
   characters?
@@ -177,9 +178,9 @@ the following.
   How would you solve this?
   What do you need to keep track of?
 
-  One issue is balanced parentheses.
+  One sub-problem is balanced parentheses.
   Can you just determine if there are the correct number of
-  parenthesis, and that they are in the right order?
+  parenthesis, and that they are in a legal order?
   ``(()(()))`` is good, but ``())(`` is not good.
   For this, a stack will let you do the job.
 
@@ -204,8 +205,7 @@ the following.
   to look at expressions of length 12 or less?
 
   YES you could.
-  You could write a program to check each possible string.
-  Note the alphabet would be finite, say :math:`N` characters.
+  The alphabet must be finite, say :math:`N` characters.
   How many possible strings are there to check?
   :math:`N^{12}`, some which are valid, some which are not.
   Your program would be brute force and incredibly
@@ -220,6 +220,14 @@ the following.
   states.
   So, this is another solution that does not need working memory.
 
+  By the way, this idea of trying to solve problems without working
+  memory probably seems alien to you in the context of writing
+  programs.
+  But we are going to see other ways of doing computation (in
+  particular, checking if a given string is in some set of strings or
+  not), and these methods do not use working memory in a way that will
+  seem quite natural within their context.
+
 * Can you write a program to determine the **value** of a valid
   mathematical expression?
 
@@ -227,8 +235,10 @@ the following.
 
     * ((34 + 7 ∗ (18/6)))
 
-  This question is different. Instead of asking if it is valid, we are
-  asking to evaluate it and solve it.
+  This question is different. Instead of asking if the form of an
+  expression is valid, we are asking to evaluate it and solve it
+  (well, of course that will only successfully happen if the
+  expression happens to be valid).
 
 * But, what memory or computational power is required?
   Does the ability to recognize if a string is a valid mathematical
@@ -239,16 +249,16 @@ the following.
 
 * Can you write a program to determine if a file is a valid Java program?
 
-  This is what a compiler does!
+  This is what a Java compiler does!
   It first determines if the program is valid Java.
   If so, it turns the program into a form that is more efficient for
   the computer to execute.
-  Finally, it executes the program.
+  Finally, (at least, when you ask it to) it executes the program.
 
 * Can you write a program to determine if a Java program given as
   input will ever halt?
 
-  The input is a java program and the output is whether or not the
+  The input is a Java program and the output is whether or not the
   program will halt.
   How might such a program work?
 
@@ -256,16 +266,26 @@ the following.
   if the program will halt or not?
   Loops can be difficult to determine as they might not be obvious
   that they terminate.
-  Recursion (both direct and indirect through a function calling
+  Recursion can also be hard to tell if it stops.
+  And we can have direct recursion (a function calls itself),
+  or indirect recursion (a function calls
   another function which then calls the first function).
   Just focusing on loops, how do you determine if a loop condition will
   be met so that the loop halts?
-  This is a very hard (actually, impossible) problem.
+  This is a very hard problem to solve.
+  (That is wrong.
+  Actually, this is an **impossible** problem to solve in
+  the general case.
+  It is **not possible** always to tell if a loop will halt.)
   This is another topic that we will be looking at this semester:
   What functions are **possible** to compute?
 
 * What types of languages can we represent with Regular Expressions,
   BNF Grammars, and Context Free Grammars?
+  Are these all "the same" in that they deal with the same languages,
+  or are they different?
 
 * What is the relative "power" of a Push-down Automata, a Finate State
   Automata, a Non-Deterministic Finite Automata, and a Turing Machine?
+  For any pair of these, are there problems that one can solve that
+  the other cannot?

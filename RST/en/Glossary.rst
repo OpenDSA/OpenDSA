@@ -1205,6 +1205,10 @@ Glossary
    deallocation
       Free the memory allocated to an unused object.
 
+   debugging
+      Correcting a program once we determine that it is not operating
+      as we intend. This is in contrast to :term:`testing`.
+
    decision tree
       A theoretical construct for modeling the behavior of algorithms.
       Each point at which the algorithm makes a decision (such as an
@@ -2138,6 +2142,9 @@ Glossary
       A hanging configuration occurs in a :term:`Turing machine` when
       the I/O head moves to the left from the left-most square of the
       tape, or when the machine goes into an infinite loop.
+
+   happy path testing
+      Testing "proper" inputs or uses of a program.
 
    hard algorithm
       "Hard" is traditionally defined in relation to running time, and
@@ -3085,6 +3092,7 @@ Glossary
 
    merge insert sort
       A synonym for the :term:`Ford and Johnson sort`.
+
    message
       In a :term:`memory manager` implementation
       (particularly a memory manager implemented with a
@@ -4910,6 +4918,10 @@ Glossary
       abstract state in the production.
       Similar to a :term:`literal`, but this is the term more
       typically used in the context of a :term:`compiler`.
+
+   testing
+      Determining whether a program operates as we intend.
+      This is in contrast to :term:`debugging`.
 
    Theta notation
       In :term:`algorithm analysis`, :math:`\Theta` notation is used

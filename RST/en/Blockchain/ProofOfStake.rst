@@ -15,18 +15,21 @@ What is a consensus algorithm?
 A consensus algorithm is a method by which a distributed ledger is
 updated (that is, a new block is added to the block chain), and all
 parties come to agreement that this did happen.
-For more information on what a consensus algorithm is, see :doc:`Consensus`.
+For more information, see
+:ref:`consensus <consensus> <Consensus>`.
 
 Block Structure Review
 ----------------------
 
-In a block in the blockchain, there is a header and a footer where the
-header contains hashing information related to the identity of the block
-such as the creation time stamp and reference to the block before it. The 
-footer contains a ledger detailing the history of the block and the blocks
-before it in the chain. Please see :doc:`Blocks` for more information about 
-block structures.
-
+A blockchain is a series of blocks linked by hash pointers (pointers
+that each have an associated hashcode).
+A block has a header and a footer where the
+header contains information related to the identity of the block
+such as the creation time stamp and reference to the block before it.
+The footer contains data such as a collection of transactions.
+For more information, see
+:ref:`blocks <block> <Blocks>`.
+     
 What is Proof of Stake?
 -----------------------
 
@@ -34,75 +37,94 @@ Proof of stake is a way for an individual to validate
 (that is, claim the right to add) a new block to a distributed ledger.
 Proof of Stake is in contrast to the Proof of Work approach used in
 BitCoin.
-Proof of Stake is used by the Ethereum cryptocurrency, and its most
-important distinction is that this validation process does not require
-“mining” in the sense of expending a significant amount of computing
-resources to claim the right to validate (and add) the next block.
-As of December 2020, Ethereum 2.0 uses proof of stake to validate blocks.
+Proof of Stake is used by the Ethereum cryptocurrency since December
+2020, and its most important distinction is that this validation
+process does not require “mining” in the sense of expending a
+significant amount of computing resources to claim the right to
+validate (and add) the next block.
 To indicate the distinction, the process of making the claim to
 validate the next block (and thereby gain the associated coin as a
 reward for this contribution to the community)
 is referred to as "forging" instead of "mining".
 
-Examples of cryptocurrency that uses proof of stake as their consensus
-algorithm include
-Peercoin, Ethereum, Tezos (XZT), Binance coin (BNB), NEO, PIVX, Neblio
-(NEBL), Cardano (ADA), and Stratis (STRAX).
+Other cryptocurrencies that uses proof of stake as their consensus
+algorithm include Peercoin, Tezos (XZT), Binance coin (BNB), NEO,
+PIVX, Neblio (NEBL), Cardano (ADA), and Stratis (STRAX).
 
 How does it work?
 ~~~~~~~~~~~~~~~~~
 
 A new block is proposed for addition to the blockchain by a committee
 of community members selected for the purpose.
-A committee is a group of at least 128 validators. The number of committee
-members is determined by the number of validations required for a block in
-approving a transaction or addition of a block. 
+A committee is a group of at least 128 validators.
+The number of committee members is determined by the number of
+validations required for a block in approving a transaction or
+addition of a block.
+[I don't understand what this means. Especially the term "validations
+required".]
 The committee is formed, and then must propose the next block
 within a set period of time.
-When a new committe is formed, users are chosen at random from a pool of users. 
-These users stake a portion of their currency to become validators 
-in the committee. An example of this is putting a certain amount of
-Ethereum in their wallet related to the blockchain.
 
-Individuals who have more coin invested for a longer period of time have
-a higher chance of being chosen for the validaiton committee. This
-process is similar to ones in the lottery because the more the user
-invests, the higher chance they have to win. However, in Ethereum 2.0, 
-users are required to stake 32 ETH to be entered for the chance to be a validator.
-This means that users that have invested more into their stake, will
-have a higher chance of being selected as a validator.
-Individuals who have a lower number of coin join staking pools.
-These staking pools are places where groups of individuals combine
+To form a new committee, members are chosen at random from a pool
+of users.
+Individuals who have more coin invested in the cryptocurrency,
+and for a longer period of time, 
+have a higher chance of being chosen for the validation committee.
+In Ethereum 2.0, users are required to stake 32 ETH to be entered for
+a chance to be a validator in the next committee.
+Those who have put up this stake form the population that competes to
+be selected.
+Individuals with less coin might choose to join a staking pool.
+Staking pools are groups of individuals who combine
 their coin together to increase the chances of the pool being chosen
-for the next committee. If they are successful, the participants of the pool share the
-rewards. This is because when the individual or group completes their term in the validation
-committe, the amount staked is returned with extra coin or gas in the case of Ethereum.
+as a member in the next committee.
+
+The reason that an individual might stake some coin to compete for a
+place in the next committee (or might join a staking pool) is that
+when the committee successfully has a block added to the
+blockchain, they receive a reward
+(as explained in the discussion on Ethereum
+:ref:`gas <gas> <EVMandGAS>`).
 
 .. avembed:: Exercises/Blockchain/Proof_of_stake_chances_validation.html ka
     :long_name: Validation Chances Quiz
-
 
 [Put a visualization or exercise here to visualize validating
 blocks. We need first a storyboard for what the visualization or
 exercise will look like.] [Exercise in the works]
 
-The process of validators adding a new block to the blockchain occurs in three
-phases: proposing the block, voting on the block, and adding transactions to the block. 
-After being selected for the validation committee, one random validator in the committee
-is chosen to propose a new block. The remaining members' job is to vote on the proposed
-block and attest to transactions within the block. These remaining members 
-vote to approve the newly proposed block. Once this phase is complete, the remaining
-127 members attest to a transaction to a previously created block within the chain. This process of
-adding a transaction to the previously created block is used to prevent fraudulent transactions
-from occurring. One such fraudulent transaction is attempting to reverse a previously approved
-transaction in the shard. If a validator witnesses one or more other validators attempting to 
-approve such fraudulent transactions in the block, it is their job to report it.
+The process of validators adding a new block to the blockchain occurs
+in three phases:
+proposing the block, voting on the block, and adding transactions to
+the block.
+After being selected for the validation committee, one random
+validator in the committee is chosen to propose a new block.
+The remaining members' job is to vote on the proposed
+block and attest to transactions within the block.
+These remaining members vote to approve the newly proposed block.
+Once this phase is complete, the remaining members attest to a
+transaction from a previously created block within the chain.
+This process of adding a transaction to the previously created block
+is used to prevent fraudulent transactions from occurring.
+[I don't undertand this. How do you add a transaction to a previously
+created block?]
+One such fraudulent transaction is attempting to reverse a previously
+approved transaction in the blockchain.
+If a validator witnesses one or more other validators attempting to
+approve such fraudulent transactions in the block, it is their job to
+report it. [How would they notice? How would they report it?]
 
-From there, 32 new committees are chosen in slots of time called epoches to repeat the steps of 
-proposing blocks and attesting to new transactions on the newly proposed block.
-After the epochs are added, the block has two remaining transaction bundle before all transactions
-in the block are final. They cannot be changed. This means that a block in the blockchain has 
-room for 34 transaction bundles in their history. 
+From there, 32 new committees are chosen in slots of time called
+epoches to repeat the steps of proposing blocks and attesting to new
+transactions on the newly proposed block. [What timescale are we
+talking about? How long is an epoch?]
+After the epochs are added, the block has two remaining transaction
+bundle before all transactions in the block are final. [I don't
+understand this sentence, words might be missing. What is a bundle?]
+They cannot be changed.
+This means that a block in the blockchain has 
+room for 34 transaction bundles in their history.
+
 
 Proof of Stake versus Proof of Work
 -----------------------------------
@@ -111,72 +133,87 @@ Security Concerns
 ~~~~~~~~~~~~~~~~~
 
 For both Proof of Stake and Proof of Work consensus algorithms,
-attacks such as the 51% attacks are a risk to the system.
-51% attacks are made by users or user groups that own more than 50%
+various types of attacks are a risk to the system.
+"51% attacks" are made by users or user groups that own more than 50%
 of some critical resource.
-For proof of work algorithms, it means that someone controls 51% 
+For Proof of Work algorithms, it means that someone controls 51% 
 or more of the mining cycles.
-For proof of stake algorithms, this means that one individual or a group 
-invested in a stake pool as described in 'How does it work?' maintains
-control of 51% of the particular cryptocurrency in the market and are currently
-performing duties in the validation process. In the case of proof of work
-systems, the individual must have at least 51% of the computing power used
-in mining coin.
+For Proof of Stake algorithms, this means that one individual
+(or a group invested in a stake pool as described in 'How does it
+work?') maintains control of 51% of the particular cryptocurrency in
+the market and are currently performing duties in the validation
+process.
 For both algorithms, a 51% attack selects the next block to add to the
 chain, and has the power to drive the consensus algorithm such that
 the community accepts it.
 If the successful perpetrator of the 51% attack has injected a
-malicious transaction, then to will be accepted by the community.
+malicious transaction, then it will be accepted by the community.
 
 Examples of things that can occur in a 51% attack include preventing
-valid transactions from receiving verification (being added to the
-chain).
-If verification does not occur in a timely manner, then an alternative
-transaction appear to spend certain coins (allowing a malicous user to
-re-spend coins).
+valid transactions from receiving verification
+(and so being added to the chain).
+If verification of the transaction does not occur in a timely manner,
+then an alternative transaction can get onto the blockchain that
+spends those same coins
+(effectively allowing a malicous user to re-spend coins).
 Another example of events that can occur during a 51% attack is the
 attacker giving themselves refunds from transactions that have already
-occured by overwriting block transactions in a fork that the attacker controls.
+occured by overwriting block transactions in a fork that the attacker
+controls.
 The fork uses the same coin in another transaction.
+[I don't see how this can happen. I can't manufacture a transaction
+for Bob to give me coin unless I have Bob's private key, right? And I
+don't see how forks are necessary here. Basically, the big threat
+seems to be that I block one (legitimate) transaction, and substitute
+another (legitimate) transaction on the same coin, right?]
 
 [Either in this or the cryptohacking rst provide an exercise used to
 detect strange events in a 51% attack. But first, need to come up with
-some actual malicious transactions that are plausible.] [Cryptohacking work on next week]
+some actual malicious transactions that are plausible.]
+[Cryptohacking work on next week]
 
-Attacks such as the 51% attack are difficult to recognize until the
-attack is executed.
+51% attacks are difficult to recognize until the attack is executed.
 Detection can occur when duplicate transactions or repeating refunds
 are found for a user with a majority of the coin in the
-cryptocurrency. When a 51% attack occurs, a branch appears where the
+cryptocurrency.
+When a 51% attack occurs, a branch appears where the
 attacker can double spend coin where two transactions occur on the same
-coin amount. In order to catch this, validators must pay attention to
+coin amount. [Why does it need to be the same coin amount?]
+In order to catch this, validators must pay attention to
 details of branching for such transactions that overwrite previously 
-written block logs.
-In a proof of stake system, a 51% attack is discouraged and punished
+written block logs. [I don't understand the mechanics of "overwriting
+a previously written block log".]
+In a Proof of Stake system, a 51% attack is discouraged and punished
 as those who participate in such an attack will lose part of their
 stake or coin as a result.
+[How? If someone has 51%, how can they be punished?]
 
-Upon discovery, not only will the attacker lose their stake, but the value
-of the cryptocurrency will go down, especially for the coin owned by
-the attacker. When this happens, it prevents the individual with the
+Upon discovery, not only will the attacker lose their stake, [How?]
+but the value of the cryptocurrency will go down, especially for the
+coin owned by the attacker. [How does value go down differentially for
+some participants?]
+When this happens, it prevents the individual with the
 majority from gaining another majority since more people are able to
-afford more coin. If more coin is in process, the majority is lost for
-the hacker. In addition, the discovered attacker lost the gas paid for
-the transaction, further reducing their wealth within the cryptocurrency
-system.
-
+afford more coin.
+If more coin is in process, the majority is lost for the hacker.
+In addition, the discovered attacker lost the gas paid for
+the transaction, further reducing their wealth within the
+cryptocurrency system.
 This means that the chances for the attacker gaining a chance at
-validating are reduced in a proof of stake algorithm since they do not
-have any coin staked.
+validating are reduced in a Proof of Stake algorithm since the have
+less coin to stake.
 
 .. Creating a new rst file for cryptohacking as a whole. Will link
    here when it is done.
 
+[The topic of "hard forks" has nothing to do with proof of stake,
+ethereum, etc. It should get put into a separate RST file.]
+
 Another risk to consensus algorithms like proof of stake and proof of
 work is hard forks.
 Hard forks might be caused by a change in the blockchain's technology.
-Hard forks might reult in blocks that had previously been validated
-becoming invalid, while other blocks might become valide by adding
+Hard forks might result in blocks that had previously been validated
+becoming invalid, while other blocks might become valid by adding
 them to the chain.
 These forks can be started by developers or miners who are not
 satisfied with the current progress of the blockchain.
@@ -184,7 +221,8 @@ They also are a way to fund projects.
 
 Specifically, hard forks are caused by additions to block code that
 causes a new path with an upgraded blockchain.
-This fork causes two paths in the blockchain to appear for miners.
+This fork causes two paths in the blockchain to appear for miners or
+validators.
 A fork like this can occur in any form of cryptocurrency that 
 is based on blockchain.
 When a fork occurs, the miners, validators, and forgers of a
@@ -192,7 +230,8 @@ particular coin must follow the changes since when a fork occurs,
 developers update the base code of blockchain to match the new
 networking rules.
 Hard forks can be implemented to undo damage caused by a hack
-(i.e. reversing transactions), adding new functionality, and patching
+(i.e. reversing transactions), adding new functionality (such as
+changing the consensus algorithm), and patching
 security risks.
 
 Hard forks are in contrast to soft forks, which allows one side of the
@@ -209,9 +248,11 @@ of the coin.
 In addtion, in some cases, adding a hard fork can introduce
 vulnerabilities into the cryptocurrency.
 An example of this happened to Ethereum in 2019.
-When the fork was introduced for Ethereum, where the fork caused
-issues with smart contracts. The Constantinople fork was proposed in 
-increased vulnerabilities within the smart contracts. The hashing algorithm
+A fork was introduced for Ethereum, which caused
+issues with smart contracts.
+The Constantinople fork was proposed in 
+increased vulnerabilities within the smart contracts.
+The hashing algorithm
 within these contracts became repeatable and thus, increased the chances of 
 a hacker accessing the information within the contracts.
 
