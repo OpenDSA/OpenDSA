@@ -34,7 +34,7 @@ word is used in Formal Languages.
 Grammars
 --------
 
-The following frameset will provide an introduction to the concept of
+The following frameset provides an introduction to the concept of
 a grammar, as used in Formal Languages.
 
 .. inlineav:: GrammarIntroFS ff
@@ -82,16 +82,27 @@ string is in the langauge or not.
    :term:`states <state>`, which are the specific positions on the
    dial that the arrow may point to.
    
-While this picture shows the physical components of the "computer",
-it is not showing the control behavior (what to do when we are in a
-given state with a given symbol on the current square of the
+While the picture above shows the physical components of the
+"computer", it is not showing the control behavior (what to do when we
+are in a given state with a given symbol on the current square of the
 tape, and a given value is at the current position in the storage
 unit).
 This control behavior is like the "software" of the computer.
 The "program" used to control this machine will be a set of rules
 that check the current letter on the tape and the current state of
 the machine, and then decide what state to move to.
-In some machine types, the tape head then automatically moves to
-the right at each steps.
-Some machines are able to also alter the symbol in the current
+Some machine types automatically move the tape head to the right at
+each step.
+Some machines are able to alter the symbol in the current
 square, and maybe have a choice of whether to move right or left.
+
+.. inlineav:: AutomataExCON dgm
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/AutomataExCON.css
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/AutomataExCON.js
+   :align: center
+
+   This diagram shows an example of an automata in a form that shows
+   its control behavior.
+   This one accepts any string made of 1's and 0's that ends in 0
+   (in other words, any even binary number).
+   Can you figure out how it does that?
