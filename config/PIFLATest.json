@@ -55,27 +55,10 @@
     "required": true
   }, 
   "chapters": {
-    "Introduction": {
-      "PIFLA/FLIntro": {},
-      "PIFLA/FLOverview": {},
-      "PIFLA/MajorConcepts": {},
-      "PIFLA/IntroGrammarEx": {
-        "GramIntro3str": {
-          "points": 2.0
-        },
-        "GramIntroanbm": {
-          "points": 2.0
-        },
-        "GramIntroanb2n": {
-          "points": 2.0
-        },
-        "Parens": {
-          "points": 3.0
-        },
-        "Palendrome": {
-          "points": 3.0
-        }
-      }
+    "Mathematical Background": {
+      "PIFLA/SetNotation": {},
+      "PIFLA/Relations": {},
+      "Background/Proofs": {}
     },
     "Appendix": {
       "Glossary": {}
