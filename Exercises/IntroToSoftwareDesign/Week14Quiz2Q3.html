@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Static</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week14Quiz2Q3">
+        <p class="question">What will happen when we compile and run the <tt>printImportant</tt> method below?</p>
+<pre class="prettyprint">
+public int findLargest(int[] ages){
+   int largest = -1;
+   for(int personAge: ages)
+   {
+       if(personAge > largest)
+       {
+           largest = personAge;
+       }
+   }
+   return largest;
+}
+
+public static int printImportant(String[] names, int[] ages){
+   System.out.println("The first name in the list is: " + names[0]);
+   int largestAge = findLargest(ages);
+   System.out.println("The largest age is: " + largestAge);
+}
+</pre>
+        <div class="solution">An error would happen at compile-time becuase <tt>printImportant</tt> calls a non-static method</div>
+        <ul class="choices">
+        <li><tt>printImportant</tt> would print out the first value in the String array <tt>names</tt> and the largest number in the int array </li>
+        <li><tt>findLargest</tt> would not work as expected because it references non-static content </li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
