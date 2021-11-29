@@ -57,11 +57,10 @@ How does it work?
 A new block is proposed for addition to the blockchain by a committee
 of community members selected for the purpose.
 A committee is a group of at least 128 validators.
-The number of committee members is determined by the number of
-validations required for a block in approving a transaction or
-addition of a block.
-[I don't understand what this means. Especially the term "validations
-required".]
+The number of committee members is decided by how many transactions that
+need to be approved at a time. For each transaction, there needs to be 32 
+validators. In addtion, there must also be one more validator to propose
+a new block to the blockchain.
 The committee is formed, and then must propose the next block
 within a set period of time.
 
@@ -104,24 +103,14 @@ block and attest to transactions within the block.
 These remaining members vote to approve the newly proposed block.
 Once this phase is complete, the remaining members attest to a
 transaction from a previously created block within the chain.
-This process of adding a transaction to the previously created block
-is used to prevent fraudulent transactions from occurring.
-[I don't undertand this. How do you add a transaction to a previously
-created block?]
-One such fraudulent transaction is attempting to reverse a previously
-approved transaction in the blockchain.
-If a validator witnesses one or more other validators attempting to
-approve such fraudulent transactions in the block, it is their job to
-report it. [How would they notice? How would they report it?]
 
 From there, 32 new committees are chosen in slots of time called
 epoches to repeat the steps of proposing blocks and attesting to new
-transactions on the newly proposed block. [What timescale are we
-talking about? How long is an epoch?]
-After the epochs are added, the block has two remaining transaction
-bundle before all transactions in the block are final. [I don't
-understand this sentence, words might be missing. What is a bundle?]
-They cannot be changed.
+transactions on the newly proposed block. There is no set timeframe for an
+epoch but on average, an epoch is around 12 minutes.
+After the epochs are completed, the block has two remaining slots
+for transactions before all of the transactions in the block are considered
+final and cannot be reversed.
 This means that a block in the blockchain has 
 room for 34 transaction bundles in their history.
 
@@ -160,38 +149,28 @@ Another example of events that can occur during a 51% attack is the
 attacker giving themselves refunds from transactions that have already
 occured by overwriting block transactions in a fork that the attacker
 controls.
-The fork uses the same coin in another transaction.
-[I don't see how this can happen. I can't manufacture a transaction
-for Bob to give me coin unless I have Bob's private key, right? And I
-don't see how forks are necessary here. Basically, the big threat
-seems to be that I block one (legitimate) transaction, and substitute
-another (legitimate) transaction on the same coin, right?]
-
-[Either in this or the cryptohacking rst provide an exercise used to
-detect strange events in a 51% attack. But first, need to come up with
-some actual malicious transactions that are plausible.]
-[Cryptohacking work on next week]
+The fork uses the same coin in another transaction by substituting the
+coin used in the previous transaction in the new transaction.
 
 51% attacks are difficult to recognize until the attack is executed.
 Detection can occur when duplicate transactions or repeating refunds
 are found for a user with a majority of the coin in the
 cryptocurrency.
 When a 51% attack occurs, a branch appears where the
-attacker can double spend coin where two transactions occur on the same
-coin amount. [Why does it need to be the same coin amount?]
+attacker can double spend coin where two transactions occur where coin is
+used from the first transaction in a second transaction. This amount may be 
+more or less than the value spent in the first transaction.
+
 In order to catch this, validators must pay attention to
 details of branching for such transactions that overwrite previously 
-written block logs. [I don't understand the mechanics of "overwriting
-a previously written block log".]
-In a Proof of Stake system, a 51% attack is discouraged and punished
-as those who participate in such an attack will lose part of their
-stake or coin as a result.
-[How? If someone has 51%, how can they be punished?]
+written transactions within the block. On the other hand, users whose transactions
+are the ones overwritten can support suspicious activity within their wallets.
+In a Proof of Stake system, a 51% attack is discouraged and those who participate
+in such an attack will lose part of their stake or coin as a result.
 
-Upon discovery, not only will the attacker lose their stake, [How?]
-but the value of the cryptocurrency will go down, especially for the
-coin owned by the attacker. [How does value go down differentially for
-some participants?]
+Upon discovery, not only will the attacker lose their stake by losing all
+of the coin taken in the fraudulent transactions, 
+but the value of the cryptocurrency will go down. 
 When this happens, it prevents the individual with the
 majority from gaining another majority since more people are able to
 afford more coin.
@@ -202,86 +181,8 @@ cryptocurrency system.
 This means that the chances for the attacker gaining a chance at
 validating are reduced in a Proof of Stake algorithm since the have
 less coin to stake.
-
-.. Creating a new rst file for cryptohacking as a whole. Will link
-   here when it is done.
-
-[The topic of "hard forks" has nothing to do with proof of stake,
-ethereum, etc. It should get put into a separate RST file.]
-
-Another risk to consensus algorithms like proof of stake and proof of
-work is hard forks.
-Hard forks might be caused by a change in the blockchain's technology.
-Hard forks might result in blocks that had previously been validated
-becoming invalid, while other blocks might become valid by adding
-them to the chain.
-These forks can be started by developers or miners who are not
-satisfied with the current progress of the blockchain.
-They also are a way to fund projects.
-
-Specifically, hard forks are caused by additions to block code that
-causes a new path with an upgraded blockchain.
-This fork causes two paths in the blockchain to appear for miners or
-validators.
-A fork like this can occur in any form of cryptocurrency that 
-is based on blockchain.
-When a fork occurs, the miners, validators, and forgers of a
-particular coin must follow the changes since when a fork occurs,
-developers update the base code of blockchain to match the new
-networking rules.
-Hard forks can be implemented to undo damage caused by a hack
-(i.e. reversing transactions), adding new functionality (such as
-changing the consensus algorithm), and patching
-security risks.
-
-Hard forks are in contrast to soft forks, which allows one side of the
-fork to continue to exist, removing the choice of path a miner can
-take in a hard fork.
-Hard forks effectively create a new cryptocurrency, while soft forks
-do not.
-Although these changes can be beneficial to blockchain users, they can
-cause a blockchain to become unstable.
-This is because hard forks can result from disagreements from within
-the cryptocurrency's community.
-Forks can result in price inflations as well, raising the cost 
-of the coin.
-In addtion, in some cases, adding a hard fork can introduce
-vulnerabilities into the cryptocurrency.
-An example of this happened to Ethereum in 2019.
-A fork was introduced for Ethereum, which caused
-issues with smart contracts.
-The Constantinople fork was proposed in 
-increased vulnerabilities within the smart contracts.
-The hashing algorithm
-within these contracts became repeatable and thus, increased the chances of 
-a hacker accessing the information within the contracts.
-
-In the case of a hard fork for the proof of work algorithm, the miners
-must decide whethere to continue in the current path,
-or join the new blockchain.
-If the miner decides to choose to continue to support both chains in
-the fork, they must divide their resources between the two chains.
-Since the computing power is divided between the two chains, there is
-reduced resources dedicated to a chain or more strain on the computers
-they use to mine coin.
-In general, a fork is discouraged for proof of work systems 
-because this causes more of an impact on the value of the currency by
-decreasing it and the developers of the cryptocurrency would need to
-choose the fork that does not cause vulnerabilities in the code base.
-
-In proof of stake algorithms, forking is part of the validator's job.
-A validator must choose which block is beneficial to the
-cryptocurrency.
-If the validator chooses the wrong side of the fork, leading to
-vulnerabilities, the validator would lose their stake.
-However, unlike proof of work systems, a validator does not have to
-choose one block.
-There is not as much of a computational cost with maintaining a fork,
-the validator can choose to support both directions of the
-fork.
-Because of this, forking is more prevalent in proof of stake systems
-than in proof of work systems and makes people worry about the
-stability of the cryptocurrency.
+Please see :ref:`cryptohacking <Hacking Strategies> <Cryptohacking>` for more information
+related to crypto hacking.
 
 
 Energy Concerns
