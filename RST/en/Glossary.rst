@@ -462,6 +462,10 @@ Glossary
       is theoretically useful if we only care to count the cost of
       comparisons.
 
+   binary relation
+      In set theory, a :term:`relation` defined by a collection of
+      binary :term:`tuples`.
+
    binary search
       A standard :term:`recursive <recursion>` algorithm for finding
       the :term:`record` with a given :term:`search key` value within
@@ -4186,7 +4190,7 @@ Glossary
 
    relation
       In set notation, a relation :math:`R` over set
-      :math:`\mathbf{S}` is a set of ordered pairs from
+      :math:`\mathbf{S}` is a set of :term:`tuples` from
       :math:`\mathbf{S}`.
 
    replacement selection
