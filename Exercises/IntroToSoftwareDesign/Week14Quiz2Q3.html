@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Static</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week14Quiz2Q3">
+        <p class="question">What will happen when we compile and run the <tt>printImportant()</tt> method below?</p>
+<pre class="prettyprint">
+public int findLargest(int[] ages)
+{
+   // assume this method works and returns the largest age
+}
+
+public static int printImportant(String[] names, int[] ages)
+{
+    System.out.println("The first name in the list is: " + names[0]);
+    int largestAge = findLargest(ages);
+    System.out.println("The largest age is: " + largestAge);
+}</pre>
+        <div class="solution">An error would happen at compile-time becuase <tt>printImportant()</tt> calls a non-static method</div>
+        <ul class="choices">
+        <li><tt>printImportant()</tt> would produce a NullPointerException when trying to call <tt>findLargest()</tt>, because no object exists</li>
+        <li><tt>printImportant()</tt> would print out the first value in the String array <tt>names</tt> and the largest value in the array </li>
+        <li><tt>findLargest()</tt> would throw an exception because it is called from a static method</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
