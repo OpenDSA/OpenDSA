@@ -15,8 +15,8 @@
         with the message "this array was out of bounds!".  What is the right way to do this?</p>
         <div class="solution"><tt>throw new ArrayIndexOutOfBoundsException("this array was out of bounds!");</tt></div>
         <ul class="choices">
-        <li>throw new ArrayIndexOutOfBoundsException();</li>
-        <li>throw new Exception(ArrayIndexOutOfBoundsException)</li>
+        <li><tt>throw new ArrayIndexOutOfBoundsException();</tt></li>
+        <li><tt>throw new Exception(ArrayIndexOutOfBoundsException, "this array was out of bounds!");</tt></li>
 
         </ul>
         <div class="hints">

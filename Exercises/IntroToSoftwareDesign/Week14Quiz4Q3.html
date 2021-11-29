@@ -15,23 +15,21 @@
 <pre class="prettyprint">
 try
 {
-  fibonacci();
+    fibonacci();
 }
-catch(Exception excp)
+catch (Exception excp)
 {
-  System.out.println("An error occured");
+    System.out.println("An error occured");
 }
-catch(ArrayIndexOutOfBoundsException illegal)
+catch (ArrayIndexOutOfBoundsException illegal)
 {
-  System.out.println("Array Out of Bounds!");
-}
-
-</pre>
-        <div class="solution">The second catch block would never get run. </div>
+    System.out.println("Array Out of Bounds!");
+}</pre>
+        <div class="solution">The second catch block can never run</div>
         <ul class="choices">
         <li>There are two catch statements</li>
         <li>There is no finally block</li>
-        <li>The try block contains only one statement.</li>
+        <li>The try block contains only one statement</li>
 
         </ul>
         <div class="hints">
