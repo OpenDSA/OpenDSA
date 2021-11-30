@@ -8,9 +8,10 @@ $(document).ready(function() {
   var yStart = 40;
   av.label("input tape", {left: xStart + 40, top: yStart - 45});
   var strings = ["a", "a", "b", "b", "a", "b", "", "", "", "", ""];
-  av.ds.tape(strings, xStart, yStart, "right");
-  // av.ds.array(strings, {left: xStart, top: yStart});
-
+  var tape = av.ds.tape(strings, xStart, yStart, "right");
+  tape.arr.unhighlight(1); // Why is this highlighted at start??
+  tape.arr.highlight(2);
+  
   av.g.line(xStart + 80, yStart + 95, xStart + 80, yStart + 35,
             {"arrow-end": "classic-wide-long"});
   av.label("tape head", {left: xStart + 5, top: yStart + 25});

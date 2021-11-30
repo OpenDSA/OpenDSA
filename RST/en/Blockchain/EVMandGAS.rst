@@ -22,9 +22,9 @@ operating structure.
 Ethereum is a distributed state machine, meaning
 that on top of holding all accounts and balances, it will update it's
 global state from block to block.
-The specific rules how state changes are defined by the EVM, which you can
-read more about in the `Ethereum state`_ section.
-Anyone can run the EVM on their personal computers, and in fact, this
+The specific rules for how state is changed are defined by the EVM,
+as described next.
+Anyone can run the EVM on their personal computer, and in fact, this
 is how Ethereum is mined.
 The EVM facilitates transactions between both regular accounts and
 smart contracts, which fill blocks that update Ethereum's state. 

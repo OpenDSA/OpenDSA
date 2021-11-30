@@ -92,8 +92,8 @@ But this table gives you a quick overview.
    \mathrm{Finite\ Automata}&       \mathrm{recognize\ integers}& \mathrm{recognize\ arithmetic\ expressions}\\
    \mathrm{(no\ memory)}\\
    \hline
-   \mathrm{Push-Down\ Automata}&      \mathrm{recognize\ arithmetic& \mathrm{compute\ expression\ value}\\
-   \mathrm{(stack)}& expressions)\\
+   \mathrm{Push-Down\ Automata}&      \mathrm{recognize\ arithmetic}& \mathrm{compute\ expression\ value}\\
+   \mathrm{(stack)}& \mathrm{expressions}\\
    \hline
    \mathrm{Turing\ Machine}&       \mathrm{compute\ expression}&
    \mathrm{decide\ if\ program\ halts}\\

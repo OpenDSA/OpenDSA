@@ -464,7 +464,7 @@ Glossary
 
    binary relation
       In set theory, a :term:`relation` defined by a collection of
-      binary :term:`tuples`.
+      binary :term:`tuples <tuple>`.
 
    binary search
       A standard :term:`recursive <recursion>` algorithm for finding
@@ -4190,7 +4190,7 @@ Glossary
 
    relation
       In set notation, a relation :math:`R` over set
-      :math:`\mathbf{S}` is a set of :term:`tuples` from
+      :math:`\mathbf{S}` is a set of :term:`tuples <tuple>` from
       :math:`\mathbf{S}`.
 
    replacement selection

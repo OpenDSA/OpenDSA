@@ -84,7 +84,7 @@
       "PIFLA/SetNotation": {
         "SetDefFS": {
           "points": 1.0
-        },
+        }
       },
       "PIFLA/Relations": {
         "SetTFrelation": {
@@ -93,7 +93,7 @@
         "SetTFequivrel": {
           "threshold": 3
         },
-        "SetTFequivrel": {
+        "SetTFpartialorder": {
           "threshold": 3
         },
         "EquivFS": {
