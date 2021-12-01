@@ -75,6 +75,8 @@ The hashing algorithm
 within these contracts became repeatable and thus, increased the chances of 
 a hacker accessing the information within the contracts.
 
+
+
 How a Consensus Algorithm Influences a Hard Fork's Effect
 ---------------------------------------------------------
 
@@ -104,3 +106,6 @@ fork.
 Because of this, forking is more prevalent in proof of stake systems
 than in proof of work systems and makes people worry about the
 stability of the cryptocurrency.
+
+.. avembed:: Exercises/Blockchain/HardForksQuiz.html ka
+    :long_name: Hard Forks
