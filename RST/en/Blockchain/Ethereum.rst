@@ -115,7 +115,22 @@ Key Differences Between Bitcoin and Ethereum
 
 ---------------------------------------------
 
-Bitcoin and Ethereum networks are based on the concept of distributed ledgers and encryption; however, there are differences in terms of technical specifications. To illustrate, Bitcoin is seen as a digital equivalent of gold used to store value. Contrastingly, Ether is used to power the Ethereum network and its applications. Also, Bitcoin serves as a credible alternative to traditional fiat currencies, whereas Ethereum is a platform to run programmatic contracts and applications via Ether. Another one of the key differences is that Bitcoin transactions are monetary, but they can have notes and messages attached to them by encoding them into data fields in the transactions. On the other hand, Ethereum transactions encompass executable code to create smart contracts or interact with self-executing contracts and applications built using them. Furthermore, Bitcoin utilizes a Proof-of-Work consensus algorithm, whereas Ethereum is transitioning to Proof-of-Stake. Another one of the key differences between the two networks is in their Hashing Algorithms, which are essentially how these systems maintain their privacy and ensure security. Bitcoin utilizes a hashing algorithm called SHA-256, whereas Ethereum uses Keccak-256 algorithm. Other differences include the time for new blocks of data to be added, which determines the time it takes to confirm transactions. The average block time on the Bitcoin network is 10 minutes, while the time is 10 to 15 seconds for Ethereum.
+Bitcoin and Ethereum networks are based on the concept of distributed ledgers and encryption; 
+however, there are differences in terms of technical specifications. To illustrate, Bitcoin 
+is seen as a digital equivalent of gold used to store value. Contrastingly, Ether is used to 
+power the Ethereum network and its applications. Also, Bitcoin serves as a credible alternative 
+to traditional fiat currencies, whereas Ethereum is a platform to run programmatic contracts
+and applications via Ether. Another one of the key differences is that Bitcoin transactions
+are monetary, but they can have notes and messages attached to them by encoding them into data
+fields in the transactions. On the other hand, Ethereum transactions encompass executable code
+to create smart contracts or interact with self-executing contracts and applications built using them.
+Furthermore, Bitcoin utilizes a Proof-of-Work consensus algorithm, whereas Ethereum is transitioning to
+Proof-of-Stake. Another one of the key differences between the two networks is in their Hashing Algorithms,
+which are essentially how these systems maintain their privacy and ensure security. Bitcoin utilizes a hashing
+algorithm called SHA-256, whereas Ethereum uses Keccak-256 algorithm. Other differences include the time for new
+blocks of data to be added, which determines the time it takes to confirm transactions. The average block time on
+the Bitcoin network is 10 minutes, while the time is 10 to 15 seconds for Ethereum.
+
 
 Sources:
 
