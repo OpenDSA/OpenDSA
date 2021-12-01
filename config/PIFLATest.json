@@ -58,35 +58,35 @@
     "Finite Acceptors": {
       "PIFLA/DFA":{
         "DFAEvenBinary": {
-          "points": 2.0
+          "points": 1.0
         }
       },
-      "PIFLA/DFAExercises": {
+      "PIFLA/DFAExercises1": {
         "DFAodda": {
-          "points": 5.0
+          "points": 1.0
         },
         "DFAoddaevenb": {
-          "points": 5.0
+          "points": 2.0
         },
         "DFAodda3b": {
-          "points": 5.0
+          "points": 2.0
         },
         "DFAno3a": {
-          "points": 5.0
+          "points": 2.0
         }
       },
       "PIFLA/DFAExercises2": {
         "DFAevena": {
-          "points": 5.0
+          "points": 1.0
         },
-        "DFAevenaoddb": {
-          "points": 5.0
+        "DFAbsurrounda": {
+          "points": 2.0
         },
         "DFAevenamin3b": {
-          "points": 5.0
+          "points": 2.0
         },
         "DFAbotheo": {
-          "points": 5.0
+          "points": 2.0
         }
       },
       "PIFLA/NFA": {},

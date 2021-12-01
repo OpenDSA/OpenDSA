@@ -3,35 +3,39 @@
     "exerciseType": "DFA",
     "totalTrueCases": 5,
     "totalFalseCases": 2,
-    "containLetters": ["a", "b"],
+    "containLetters": ["0", "1"],
     "randomStringLength": [0, 15],
-    "description": "Give a DFA that accepts the language over $\\Sigma =\\{a, b\\}$ where the number of a’s and b’s are either both even or both odd.",
+    "description": "Give a DFA that accepts the language over $\\Sigma =\\{0, 1\\}$ that represents all binary numbers, without leading 0’s, of natural numbers that are evenly divisible by 4",
     "testCases": [{
-            "aabb": true,
+            "0": false,
             "ShowTestCase":true
         },
         {
-            "ababab": true,
+            "1": false,
             "ShowTestCase":true
         },
         {
-            "abababab": true,
+            "10": false,
             "ShowTestCase":true
         },
         {
-            "aabbb": false,
+            "11": false,
             "ShowTestCase":true
         },
         {
-            "baab": true,
+            "100": true,
             "ShowTestCase":true
         },
         {
-            "aabbabababbababbababa": false,
+            "111": false,
             "ShowTestCase":true
         },
         {
-            "aabbabababbababbabaa": true,
+            "1010100": true,
+            "ShowTestCase":true
+        },
+        {
+            "100000": true,
             "ShowTestCase":true
         }
     ],
@@ -39,5 +43,5 @@
         "nodes": [],
         "edges": []
     },
-  "solution": "../../../machines/FA/DFAevenamin3b.jff"
+    "solution": "../../../machines/FA/divisibleBy4.jff"
 }]
