@@ -18,34 +18,55 @@ Introduction
 What is the Ethereum Virtual Machine(EVM)?
 The EVM acts as a distributed computer running 
 the underlying framework of Ethereum's
-operating structure.
-Ethereum is a distributed state machine, meaning
-that on top of holding all accounts and balances, it will update it's
-global state from block to block.
-The specific rules how state changes are defined by the EVM, which you can
-read more about in the `Ethereum state`_ section.
-Anyone can run the EVM on their personal computers, and in fact, this
-is how Ethereum is mined.
-The EVM facilitates transactions between both regular accounts and
-smart contracts, which fill blocks that update Ethereum's state. 
+operating structure. 
+You can think of Ethereum as a single entity mantained
+by thousands of connected computers running a copy of
+the EVM. This entity is a blockchain, and we can describe
+any given block in the chain as having a "state_". The rules for
+changing state from block to block are defined by the EVM and are covered
+in the rest of this section.
 
-
-.. _Ethereum state:
+.. _state:
 
 Ethereum State
 ~~~~~~~~~~~~~~
 
-Ethereum State is a snapshot of the blockchain at a point in time. This includes all balances and previous transactions under addresses, 
-all smart contracts existing on the blockchain -- essentially all data on the blockchain. This data is all stored in an enormous data structure 
-(a `modified Merkle Patricia Trie <https://eth.wiki/en/fundamentals/patricia-tree>`_). So, how does this state update?
+Before we get started, let's define a few terms:
+
+1. Transaction: Something that changes data within the blockchain. Common examples of this are changing account balances (sending ETH to someone else) or editing data within a `smart contract`_.
+
+2. Block: A blockchain is composed of blocks, which are each filled with transactions.
+
+3. Ethereum State: A snapshot of the Ethereum blockchain at a point in time.
+
+4. Global Ethereum State: The agreed upon state of Ethereum by all instances of the EVM.
+
+Elaborating on the Ethereum State -- it's all stored in an enormous data structure.
+The data structure stores data for every account: current balance, nonce (number of previous transactions), smart
+contract code, etc. It also stores other data such as previous blocks and all data pertaining to them.
+All running instances of the EVM have a local copy of this giant data structure downloaded, 
+and it is identical across all machines.
+ 
+So, how does this global state update?
 
 Once a block is committed every 15 seconds or so, AKA chained onto the blockchain, 
-the global Ethereum state will transition from the previously known state to the new one. 
-This means that the old
-data structure will be overwritten with new data, and all Ethereum applications will 
-adopt it. So if we look up the transaction history of an address with a transaction in 
-the most recently committed block, we will see a new transaction has occured. This is also why transactions
-aren't instant; you must wait for the next block to be committed before it goes through.
+the global Ethereum state will transition from the previously known state to the new one
+(details on how a `block is committed`_).
+A block being committed means that all transactions it contains has been deemed
+legitimate, and therefore, the giant data structure containing Ethereum's state has
+been updated with the new block's information. All running instances of the EVM
+must have adopted this new global state through downloading new data into their local
+giant data structures. So some account balances will have changed
+and some smart contract transactions will have been made, which all these 
+machines must collectively agree on. Once this is complete, the block 
+is finally committed to the blockchain and Ethereum's state will update.
+
+One thing to note is that the process for committing a new block onto the blockchain
+takes rougly 15 seconds for Ethereum, and that's one reason why transactions aren't instant.
+Only a few dozen to a few hundred transactions fill each block, and a transaction
+will only have completed once it is included in a block. (Note: it takes approximately 15 seconds 
+to commit a block because the mean time to propegate new data 
+across all running instances of the EVM is 12.6 seconds).
 
 Thus, we are able to describe Ethereum as having the state transition
 function Y(S, T)= S'.
@@ -58,52 +79,80 @@ continue onward processing transactions.
 .. avembed:: Exercises/Blockchain/EthereumState.html ka
     :long_name: Ethereum State Quiz
 
+.. _`smart contract`:
+
 Smart Contract Refresher
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are two types of accounts designated addresses on the blockchain: Externally Owned Accounts
-that most people own to send and receive ETH, and Contract Accounts which contain a smart contract.
+that most people own to send and receive ETH, and Contract Accounts which contain a smart contract
+compiled down into bytecode. Both of these accounts are given addresses, can receive, hold, and send
+ETH and `fungible tokens`_, and can interact with smart contracts.
 Smart contracts are written in special-purpose
 programming langauges, one popular language one being Solidity.
 Here is an example Solidity code snippet. 
 
 .. image:: https://arpitmathur.files.wordpress.com/2018/04/solidity.png
 
-As you might infer, these contracts are highly customizable and are the building blocks
-for more advanced parts of blockchains. Developers can assign whatever they want to
-exist inside a smart contract, which allows for many different applications.
-For example, the most common use of smart contracts is to represent a non-fungible token(NFT).
-On the blockchain, a smart contract representing a NFT would hold some metadata such as
-name, image/gif/video url to represent the NFT, address that possesses
-ownership of that NFT, and more. When someone purchases the NFT, a function would be called
-to transfer ownership of the NFT to the new address.
+This code snippet is a simple smart contract with a function that lets a user set a local variable and retrieve it. It can be thought of as a storage, hence the contract name, "SimpleStorage".
+
+A developer can put whatever data and functions they desire inside of a smart contract. Once a smart 
+contract is put onto the blockchain, functions are able to be called through third-party
+software. If these functions change data within the smart contract, they will change the blockchain's state and are
+considered transactions. In the image, calling the function "set" would be considered a transaction since
+it changes data within the smart contract. Calling "get", however, would not be since it only reads data.
+
+Since smart contracts are so customizable, multiple different applications of them have
+arisen. For example, the most common use of smart contracts is to represent a non-fungible token(NFT).
+A smart contract representing a NFT would hold some metadata such as name, image/gif/video url 
+to represent the NFT, address that possesses ownership of that NFT, and more. 
+When someone purchases the NFT, a function would be called
+to transfer ownership of the NFT to the new address. This will change data inside the
+smart contract, so it is considered a transaction.
+
+.. _`fungible tokens`:
 
 Smart contracts are also how fungible tokens get built on a blockchain. A fungible token is
 the opposite of a NFT -- meaning that every token is the same. This is what Ethereum, or Bitcoin, or
-any other coin on a blockchain is. A smart contract representing a coin would have metadata such as 
-the total supply of the coin, the coin's symbol, if the minting is finished, etc. It would also a function to transfer coins
+any other coin on a blockchain is. You are able to trade one coin for another, as they all have the same value.
+A smart contract representing a coin would have metadata such as 
+the total supply of the coin, the coin's symbol, if the minting is finished, etc. It would also have a function to transfer coins
 between addresses, and these addresses are either the same as Ethereum addresses or a mapping
 of an Ethereum address. Some of these coins include $USDT (Tether), $SHIB (Shiba Inu), $USDC (USD Coin),
 $UNI (Uniswap), and more. You can take a look at all coins built on top of blockchains here: https://coinmarketcap.com/tokens/views/all/
 
+.. _`block is committed`:
+
 What does the EVM do?
 ~~~~~~~~~~~~~~~~~~~~~
 
-Every Ethereum node runs a copy of the EVM.
-In the EVM, every pending transaction will get added to each node's local 
-mempool; a list of all transaction requests that haven't been committed
-to a block yet. At some point in time, a single mining node will collect
-a few dozen to a few hundred of these transactions into a potential block, 
-in a way that maximizes the gas_ fees. Then, the mining node will verify each
-transaction, execute its bytecode to perform the transaction on their local
+Before we get started, let me define an Ethereum node. A node is a computer 
+running an instance of the EVM that someone has set up to verify all transactions in each block. 
+This means the node will ensure no requests are malformed, all accounts are valid, etc.
+So what's the difference between a node and a miner? Well, 
+all miners are nodes, but a node is not a miner. Miners have the ability
+to validate blocks as a whole through the proof-of-work consensus
+algorithm, while nodes cannot.
+
+Once a transaction is made anywhere on the Ethereum network, it will be sent to a node. 
+That node will broadcast this transaction to all
+other nodes, and it will be added to every nodes' list of pending transactions.
+This is called the nodes' mempool: a list of all transaction requests 
+that haven't been committed to a block yet. At some point in time, a single 
+miner will collect a few dozen to a few hundred of these transactions 
+from its local mempool into a potential block, 
+in a way that maximizes the gas_ fees attached to each transaction. 
+Then, the miner will verify each transaction, 
+execute its bytecode to perform the transaction on their local
 version of the EVM, then collect the transaction's gas fee. Finally, the 
-mining node will begin the Proof-of-Work process to produce a certificate that
-shows the block is valid. Once completed by a miner, that miner will broadcast
+miner will begin the proof-of-work process to produce a certificate that
+shows the block is valid. Once completed by the miner, that miner will broadcast
 the new block, the certificate, and a checksum of the new EVM state to all 
-other nodes. Then, every other node will follow the same steps and approve
-all transactions in the block. Once this is complete, the new block is 
-chained onto the blockchain, and the EVM's state transitions to include 
-this block.
+other nodes. Then, every other node will validate the proof-of-work certificate and re-approve
+all transactions in the block. Once this is complete, all nodes will have their giant data structure 
+holding Ethereum's state to update to include this new block. Finally, the block will be 
+chained onto the blockchain and the global state of Ethereum will transition to
+include the new block.
 
 .. _gas:
 
@@ -207,10 +256,12 @@ gas price would be, depending on the base fee:
 
 Recall that a higher base fee comes with higher network congestion. So you might end up paying 
 a substantial amount of money in ETH just because the network was congested at the time! The base
-fee of a transaction is the most variable number when calculating gas, so all real gas prices will 
-be fairly reflective of this chart.
-Note that Ethereum tends to stay between 1 and 10 blocks, so gas prices will very rarely spike to
-crazy numbers. Gas spikes have occured when a popular NFT is released to the public at a single date,
+fee of a transaction is the most volatile number when calculating gas, so all real gas prices will 
+be fairly reflective of this chart. So you might be wondering why anyone would use Ethereum when 
+fees get so high. One major benefit of Ethereum is that their fees are flat -- meaning that 
+the fee for sending $10 versus $100,000 is the same.
+Additionally, Ethereum tends to stay between 1 and 10 blocks, so gas prices will very rarely spike to
+crazy numbers. Historically, gas price spikes have occured when a popular NFT is released to the public all at once,
 and thousands of smart contracts are attempted to be minted at once. 
 
 .. _here:
@@ -223,10 +274,19 @@ Ethereum being decentralized due to mining profits.
 On top of that, Ethereum mining is more profitable than 
 Bitcoin mining due to high gas fees during periods of high network congestion
 coupled with ~5-6x more Ethereum transactions per day. This means that the 
-network is more likely to be highly congested and miners will be paid more.
+network is more likely to be highly congested and miners will be paid more
+to validate transactions.
 Gas also removes incentive to attack and overload the network with
-transactions, as gas fees will compound (as the base fee compounds)
-and quickly consume the attacker's capital. If gas didn't exist, the 
+transactions, as gas fees will quickly consume the attacker's capital. 
+If someone wanted to stall the network
+for 15 seconds, they would have to put enough transactions in to fill a block.
+The gas limit for all blocks (aside from block 1 and 2) is 30M gwei, which 
+equates to 0.03 ETH. If you wanted to stall the network, for let's say 1 hour (3600 seconds),
+you would have to fill 3600/15 = 240 blocks. This would equate to spending
+240*0.03 = 7.2 ETH, which is an unreasonable amount of money to stall the network
+for just 1 hour. As you can imagine, taking down the network for any extended
+period of time is simply not worth it.
+If gas didn't exist, the 
 attacker's transactions could fill blocks over and over such that no other transactions could
 be added into a block. This would stall the Ethereum network to the point where it would become
 unusable. All in all, gas is an important
