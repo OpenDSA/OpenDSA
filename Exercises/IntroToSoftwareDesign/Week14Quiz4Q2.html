@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Try/Catch Blocks</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week14Quiz4Q2">
+        <p class="question">What is the final action performed by this code?</p>
+<pre class="prettyprint">
+try
+{
+    fibonacci();
+}
+catch (IllegalArgumentException illegal)
+{
+    System.out.println("Bad Argument!");
+}
+catch (ArrayIndexOutOfBoundsException illegal)
+{
+    System.out.println("Array Out of Bounds!");
+}
+finally
+{
+    System.out.println("Done")
+}</pre>
+        <div class="solution">The word "Done" is printed</div>
+        <ul class="choices">
+        <li>The method <tt>fibonacci()</tt> is called</li>
+        <li>The words "Bad Argument!" are printed</li>
+        <li>The words "Array Out of Bounds!" are printed</li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

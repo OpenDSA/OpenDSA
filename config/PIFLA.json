@@ -64,25 +64,42 @@
       "PIFLA/MajorConcepts": {},
       "PIFLA/IntroGrammarEx": {
         "GramIntro3str": {
-          "points": 2.0
+          "points": 1.0
         },
         "GramIntroanbm": {
-          "points": 2.0
+          "points": 1.0
         },
         "GramIntroanb2n": {
-          "points": 2.0
+          "points": 1.0
         },
         "Parens": {
-          "points": 3.0
+          "points": 1.0
         },
         "Palendrome": {
-          "points": 3.0
+          "points": 1.0
         }
       }
     },
     "Mathematical Background": {
-      "PIFLA/SetNotation": {},
-      "PIFLA/Relations": {},
+      "PIFLA/SetNotation": {
+        "SetDefFS": {
+          "points": 1.0
+        }
+      },
+      "PIFLA/Relations": {
+        "SetTFrelation": {
+          "threshold": 5
+        },
+        "SetTFequivrel": {
+          "threshold": 3
+        },
+        "SetTFpartialorder": {
+          "threshold": 3
+        },
+        "EquivFS": {
+          "points": 1.0
+        }
+      },
       "Background/Proofs": {}
     },
     "Finite Acceptors": {

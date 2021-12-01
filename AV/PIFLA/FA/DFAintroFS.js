@@ -39,7 +39,7 @@ $(document).ready(function() {
   var binaryDFA = new av.ds.FA({center: true , url: url, top: 100});
 
   //Frame 8
-  av.umsg("Below is presentation for the details of a DFA. The nodes are states, the edges are transitions. This particular example accepts even binary numbers. Lets match what is in the graphical view to terms in the formal defination of a DFA: $(Q, \\Sigma, \\delta, Q_0, F)$, <br />$Q$ is a finite set of states <br />$\\Sigma$ is the input alphabet (a finite set) <br />$\\delta: Q \\times\\Sigma \\rightarrow Q$ is a set of transitions like $(q_i, a) \\rightarrow q_j$ meaning that when in state $q_i$, if you see letter $a$, consume it and go to state $q_j$ <br />$q_0$ is the intial state ($q_0 \\in Q$)  <br />$F \\subseteq Q$ is a set of final states.");
+  av.umsg("Below is representation for the details of a DFA, shown as a graph. The nodes are states, the edges are transitions. This particular example accepts even binary numbers, that is, any string of 0's and 1's that ends in 0. Lets match what is in the graphical view to terms in the formal defination of a DFA: $(Q, \\Sigma, \\delta, Q_0, F)$, <br />$Q$ is a finite set of states <br />$\\Sigma$ is the input alphabet (a finite set) <br />$\\delta: Q \\times\\Sigma \\rightarrow Q$ is a set of transitions like $(q_i, a) \\rightarrow q_j$ meaning that when in state $q_i$, if you see symbol $a$, consume it and go to state $q_j$ <br />$q_0$ is the intial state ($q_0 \\in Q$)  <br />$F \\subseteq Q$ is a set of final states.");
   av.step();
 
   //Frame 9

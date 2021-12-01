@@ -7,7 +7,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
   
   // Frame 1
-  av.umsg("As you were building your first DFA, perhaps this question occurred to you: What happens if I leave out one of the transitions? What happens if the DFA is in a state and sees a letter that has no transition?");
+  av.umsg("As you were building your first DFA, perhaps this question occurred to you: What happens if I leave out one of the transitions? What happens if the DFA is in a state and sees a letter that has no transition? That is, what if there is no transition given for this state and this symbol (equivalently, no such edge in the graph)?");
   av.displayInit();
           
   // Show a DFA with no Trap State
@@ -26,7 +26,7 @@ $(document).ready(function() {
   noTrapDFA.hide();
   // Show a DFA with a trap state
   var urlTrapDFA="../../../AV/OpenFLAP/machines/FA/DFA_withTrapState.jff";
-  var trapDFA= new av.ds.FA({center: true , url: urlTrapDFA});
+  var trapDFA= new av.ds.FA({center: true, top: 20, url: urlTrapDFA});
   av.umsg("For any DFA that is missing transitions, we can easily create an equivalent DFA that shows all transitions. A new state called the trap state is added. Any transition not defined in the orignal DFA goes to the trap state. Once in the trap state, all symbols in the alphabet transition back to the trap state. That is, once the trap state is entered, the DFA will never trasition out. Here is the equivalent DFA made complete by adding the trap state and the missing transitions.");
   av.step();
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
   // Frame 6
   trapDFA.hide();
-  av.umsg("Now let's think about a more complicated example. The following DFA accepts even binary numbers that have an even number of 1's.");
+  av.umsg("Now let's look at a more complicated example. The following DFA accepts even binary numbers that have an even number of 1's. You might want to stop for a moment to think about whether this DFA really does this.");
   var urlevenBin = "../../../AV/OpenFLAP/machines/FA/EvenBinaryEvenOnesDFA.jff";
   var evenBin = new av.ds.FA({top: 60, url: urlevenBin});
   av.step();

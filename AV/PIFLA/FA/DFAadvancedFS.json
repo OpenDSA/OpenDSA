@@ -3,7 +3,7 @@
     "en": {
       "noedge": {
         "type": "multiple",
-        "description": "Consider the DFA below. Hopefully it is easy to see that this DFA accepts any string with one or more b followed by an a. It also happens to be an example of an incomplete DFA. This means it does not show every possible transition from every state. For example, it is missing a transition from state $q0$ on letter a. Not showing that transition helps us to focus on what matters, making the machine easier to understand.",
+        "description": "Consider the DFA below. Hopefully it is easy to see that this DFA accepts any string with one or more b followed by an a. It also happens to be an example of an incomplete DFA. This means it does not show every possible transition from every state. For example, it is missing a transition from state $q0$ on symbol a. Not showing that transition helps us to focus on what matters, thus making the machine easier to understand.",
         "question": "But, what should we do with a string that starts with an a? What interpretation of this situation would make the our descriptions most useful?",
         "answer": "The string is not accepted",
         "choices": [
@@ -42,7 +42,7 @@
       },
       "delta": {
         "type": "multiple",
-        "description": "Now we are going to build some notation to help us thing about the behavior of more complicated DFAs. As mentioned before, $\\delta$ is the transition function. $\\delta(qi,a)\\rightarrow qj$ means that when we are in state $qi$, if the machine sees letter $a$, it goes to state $qj$.",
+        "description": "Now we are going to build some notation to help us think about the behavior of more complicated DFAs. As mentioned before, $\\delta$ is the transition function. $\\delta(q_i, a)\\rightarrow q_j$ means that when we are in state $q_i$, if the machine sees symbol $a$, it goes to state $q_j$.",
         "question": "What is $\\delta(q0, 1)$?",
         "answer": [
           "q2"
@@ -57,8 +57,8 @@
       },
       "string": {
         "type": "multiple",
-        "description": "What if we want to know which state the DFA will be in if it starts at an arbitrary state with some string of letters, and processes them all?",
-        "question": "If this DFA begins in the state $q1$, which state will it go to after processing string 101?",
+        "description": "What if we want to know which state the DFA will be in if it starts at an arbitrary state with some string of symbolss, and processes them all?",
+        "question": "If this DFA happens to be in state $q1$, which state will it go to after processing string 101?",
         "answer": [
           "q3"
         ],
@@ -71,7 +71,7 @@
       },
       "deltastar": {
         "type": "multiple",
-        "description": "We use the notation $\\delta^*$ to indicate what happens when in a state and we process a string. The star means 'zero or more times'. So $\\delta^*$ means: apply the delta function ZERO or MORE times as needed to process the letters of the given string.",
+        "description": "We use the notation $\\delta^*$ to indicate what happens when in a state and we process a string. The star means 'zero or more times'. So $\\delta^*$ means: apply the delta function ZERO or MORE times as needed to process the (zero or more) symbols of the given string.",
         "question": "What is the output type of the $\\delta^*$ function?",
         "answer": "a state",
         "choices": [
@@ -83,7 +83,7 @@
       },
       "deltapractice": {
         "type": "multiple",
-        "description": "We use the notation $\\delta^*$ to indicate what happens when in a state and we process a string. The star means 'zero or more times'. So $\\delta^*$ means: apply the delta function ZERO or MORE times as needed to process the letters of the given string.",
+        "description": "We use the notation $\\delta^*$ to indicate what happens when in a state and we process a string. The star means 'zero or more times'. So $\\delta^*$ means: apply the delta function ZERO or MORE times as needed to process the (zero or more) symbols of the given string.",
         "question": "What is $\\delta^*(q0, 11001)$?",
         "answer": [
           "q2"

@@ -71,6 +71,38 @@ of stake systems, this means that the investor has a majority of the available c
 into the system, increasing the influence they have on the network. Please see :doc:`ProofOfStake`
 to find more information about proof of stake and the differences between the consensus algorithms.
 
+The chance of this happening in a developed cryptocurrency is not significant, but they do still
+occur. Once a person has the majority in computing power or stake, they can target individuals
+by hacking their wallets and obtaining information from their 
+
+Overall, there is not much legislation related to 51% attacks or a user's ability to gain
+51% of the computing power. Given that cryptocurrency usage is increasing worldwide, this
+may change.
+
+Cryptojacking
+~~~~~~~~~~~~~
+
+Cryptojacking is the act of attaching cryptomining code onto what seems to be trustworthy items.
+There are three methods of cryptojacking including attaching malware onto emails, embedding malicious
+code into websites, and cloud cryptojacking. This type of crypto hacking is typically used
+to mine cryptocurrency that uses a proof of work system.
+
+File-based cryptojacking is the practice of attaching malware on links in emails. These links, when clicked,
+download malware onto the computer and then runs an executable. From there, the executable begins
+mining cryptocurrency for the hacker using the computer's or system's resources. This typically runs without
+the user being aware of anything occurring. This method would target users in a proof of work system such as 
+bitcoin. However, the user may notice their system slowing down or an excess use in the computer'S
+computer processing units (CPU).
+
+Browser-Based Cryptojacking or the act of embedding malicious code into websites or advertisements, uses the 
+computer's system to run a cryptomining script. Once the object the code is embeded in is clicked on,
+the script begins to mine coins without downloading files. These objects the code is embedded in are 
+typically advertisements or features that are out of date (vulnerable to security threats).
+
+The last main type of cryptojacking is cloud cryptojacking or using an organization's file structure
+to gain access to their cloud services. Then the hackers use the resources the company has in the cloud
+to mine cryptocurrency.
+
 
 
 Mitigation (Reduce Risk) Strategies
@@ -99,6 +131,14 @@ aids in ensuring the website is trustable.
 .. avembed:: Exercises/Blockchain/PhishingEmail.html ka
     :long_name: Phishing Email
 
+51% Attack
+~~~~~~~~~~
 
-History of Crypto Hacking
--------------------------
+Although the attack is different than a phishing attack, several mitigation strategies are shared
+between the two hacking strategies. The first is using two-step authentication on wallets
+to prevent unauthorized users from accessing their data. To prevent large amounts of cryptocurrency
+from being stolen from wallets, maintain several wallets with small amounts of coin in it. That way,
+if one of the wallets have been compromised, only a small percentage of the wealth could be lost. Also
+keep track of any transactions in the accounts to determine if someone has issued a 51% attack on 
+the system. If your account is affected, report the suspicious transaction(s) to the company that
+the wallet is made with.
