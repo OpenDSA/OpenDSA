@@ -85,13 +85,6 @@ blockchain, they receive a reward
 (as explained in the discussion on Ethereum
 :ref:`gas <gas> <EVMandGAS>`).
 
-.. avembed:: Exercises/Blockchain/Proof_of_stake_chances_validation.html ka
-    :long_name: Validation Chances Quiz
-
-[Put a visualization or exercise here to visualize validating
-blocks. We need first a storyboard for what the visualization or
-exercise will look like.] [Exercise in the works]
-
 The process of validators adding a new block to the blockchain occurs
 in three phases:
 proposing the block, voting on the block, and adding transactions to
@@ -114,6 +107,8 @@ final and cannot be reversed.
 This means that a block in the blockchain has 
 room for 34 transaction bundles in their history.
 
+.. avembed:: Exercises/Blockchain/ProofOfStakeValidatorsSumm.html ka
+    :long_name: Proof of Stake Validator
 
 Proof of Stake versus Proof of Work
 -----------------------------------
@@ -155,7 +150,7 @@ coin used in the previous transaction in the new transaction.
 51% attacks are difficult to recognize until the attack is executed.
 Detection can occur when duplicate transactions or repeating refunds
 are found for a user with a majority of the coin in the
-cryptocurrency.
+cryptocurrency. However, how a 51% attack is detected is not publicly known.
 When a 51% attack occurs, a branch appears where the
 attacker can double spend coin where two transactions occur where coin is
 used from the first transaction in a second transaction. This amount may be 
@@ -251,3 +246,6 @@ the cryptocurrency is more than the individual's worth. If the cryptocurrency
 equates to an individual's worth, it would be easy to invest higher pecentages
 in stake and increase chances of being chosen for validation committees where,
 if the user has malicious intent, they can initiate the 51% attack.
+
+.. avembed:: Exercises/Blockchain/PoWvPoSSumm.html ka
+    :long_name: Proof of Stake vs Proof of Work
