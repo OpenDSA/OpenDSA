@@ -49,8 +49,8 @@
         "Blockchain/MerkleTrees": {}
       },
       "Consensus Algorithms": {
-        "Blockchain/Mining": {},
         "Blockchain/Consensus": {},
+        "Blockchain/Mining": {},
         "Blockchain/Permissionless": {},
         "Blockchain/Permissioned": {}
       },

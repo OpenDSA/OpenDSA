@@ -44,7 +44,7 @@
       },
       "whatdefinition": {
         "type": "select",
-        "description": "We are going to talk about many DFAs. And you will build some yourself. So we need a precise definition for a DFA actually is. Think about this a moment: What do we need to completely specify a DFA and its behavior? We want to define the DFA with the parts that are needed, and nothing more.",
+        "description": "We are going to talk about many DFAs. And you will build some yourself. So we need a precise definition for a DFA actually is. Think about this a moment: What do we need to completely specify a DFA and its behavior? We want to define the DFA with the parts that are needed, and nothing more.<br/><br/>One more thing that you need to know: Some states in the machine are labeled as 'final' states. If at the end of processing the string the machine is in a 'final state, then the machine outputs 'yes', otherwise it outputs 'no'.",
         "question": "Which of the following need to be in the definition of a DFA?",
         "answer": [
           "the start state",
@@ -63,7 +63,8 @@
           "a language",
           "a set of transitions that define, given a state and a current symbol, what state to go to",
           "a set of transitions that define, given a state and a current symbol, what state to go to, and where to move the tape head"
-        ]
+        ],
+        "incorrectFeedback": ["Hint: You will need exactly 5 of these things."]
       },
       "determine": {
         "type": "multiple",
@@ -79,7 +80,7 @@
       },
       "states": {
         "type": "multiple",
-        "description": "$Q$ is a set of all the states of a DFA. In the graph, it is exactly the same as the set of node for the graph.",
+        "description": "$Q$ is a set of all the states in the DFA. In our graph representation, this is the set of nodes for the graph.",
         "question": "Which of the following represents $Q$?",
         "answer": [
           "{q0, q1}"
@@ -108,7 +109,7 @@
       },
       "transitions": {
         "type": "multiple",
-        "description": "$\\delta$ is the set of transtions between the states in the form $(q_i, a) \\rightarrow q_j$. In other words, a transition is defined by a state and an input symbol, and it tells what to do in that case. Transitions are represented by edges in the graph, and the labels tell what symbols are bing processed.",
+        "description": "$\\delta$ is the set of transtions between the states in the form $(q_i, a) \\rightarrow q_j$. In other words, a transition is defined by a state and an input symbol, and it tells what to do in that case (which is to be in some state after consuming the symbol). Transitions are represented by edges in the graph, and the labels tell what symbol(s) can be processed by that transition.",
         "question": "What is $\\delta$(q0, 0)?",
         "answer": [
           "q1"
@@ -122,7 +123,7 @@
       },
       "delta": {
         "type": "multiple",
-        "description": "$\\delta$ is the set of transtions between the states in the form $(q_i, a) \\rightarrow q_j$. In other words, a transition is defined by a state and an input symbol, and it tells what to do in that case. Transitions are represented by edges in the graph, and the labels tell what symbols are bing processed.",
+        "description": "$\\delta$ is the set of transtions between the states in the form $(q_i, a) \\rightarrow q_j$. In other words, a transition is defined by a state and an input symbol, and it tells what to do in that case (which is to be in some state after consuming the symbol). Transitions are represented by edges in the graph, and the labels tell what symbol(s) can be processed by that transition.",
         "question": "What is  $\\delta$(q1, 1)?",
         "answer": [
           "q0"
@@ -137,7 +138,7 @@
       "deltatable": {
         "type": "multiple",
         "description": "$\\delta$ is sometimes expressed in tabular format to show all possible transitions. $\\begin{array}{r|cc}\n      & 0  & 1 \\\\\n      \\hline\n      q0 &  &  \\\\\n      q1 &  &  \\\\\n      \\end{array}$",
-        "question": "Which of these is the $\\delta$ for the DFA graph? ",
+        "question": "Which of these is the $\\delta$ for this example?",
         "answer": [
           "\\begin{array}{r|cc} & 0 & 1\n \\\\ \\hline q0 & q1 & q0 \\\\ q1 & q1 & q0 \\\\ \\end{array}"
         ],
@@ -149,7 +150,7 @@
       },
       "start": {
         "type": "multiple",
-        "description": "$Q_0$ is the start state of the DFA. Every DFA has to define which state to start in, so there is only one start state. We will show the start state with a triangle.",
+        "description": "$Q_0$ is the start state of the DFA. Every DFA has to define which state to start in, so there is only one start state. We show the start state by putting a triangle next to it.",
         "question": "Which of the following is the start state for this DFA?",
         "answer": [
           "q0"
@@ -180,7 +181,7 @@
       },
       "whygraph": {
         "type": "multiple",
-        "description": "The DFA shown as a graph below can be expressed in text as: M=$(Q,\\Sigma,\\delta,Q_0,F)$=$(\\{q0,q1\\},\\{0,1\\},\\delta,q_0,\\{q1\\})$",
+        "description": "The DFA shown as a graph below can be expressed in text as: $M = (Q,\\Sigma,\\delta,Q_0,F) = (\\{q0,q1\\},\\{0,1\\},\\delta,q_0,\\{q1\\})$. We would also need to add a description for the $\\delta$ transitions.",
         "question": "Which representation makes it easier to grasp the behavior the machine? The text or the graph?",
         "answer": [
           "the graph"
@@ -192,7 +193,7 @@
       },
       "semantics": {
         "type": "select",
-        "description": "A way to make it even easier to understand the behavior of a DFA is to assign semantic meaning to the states. In this example, the machine is in state $q_0$ when the digits proccessed so far make the input an odd number, and the machine is in state $q_1$ when the digits processed so far make the input an even number.",
+        "description": "A way to make it even easier to understand the behavior of a DFA is to assign semantic meaning to the states. In this example, the machine is in state $q_0$ when the digits proccessed so far make the input an odd number (the last symbol seen is '1'), and the machine is in state $q_1$ when the digits processed so far make the input an even number (the last symbol seen is '0').",
         "question": "Which of the following strings will be accepted?",
         "answer": [
           "101010",
@@ -207,107 +208,6 @@
           "0000",
           "01010",
           "0101001"
-        ]
-      },
-      "q21": {
-        "type": "select",
-        "description": "When making a transition not shown in the diagram, then the string is not accepted. ",
-        "question": "Which of the following strings will be accepted?",
-        "answer": [
-          "ba",
-          "bba"
-        ],
-        "choices": [
-          "a",
-          "b",
-          "ab",
-          "ba",
-          "bba"
-        ]
-      },
-      "q22": {
-        "type": "multiple",
-        "description": "A complete DFA has a transition for every alphabet in $\\Sigma$ for all states.",
-        "question": "An incomplete DFA can be made complete by adding a trap state?",
-        "answer": [
-          "True"
-        ],
-        "choices": [
-          "True",
-          "False"
-        ]
-      },
-      "text11": {
-        "description": "Lets practice the DFA algorithm by tracing the acceptance or rejections of some strings. The given machine can accept any even number."
-      },
-      "q16": {
-        "type": "multiple",
-        "description": "The DFA below only accepts even number inputs.",
-        "question": "What state will we start in? (Hint: what is $Q_0$)",
-        "answer": [
-          "q0"
-        ],
-        "choices": [
-          "q0",
-          "q1",
-          "Accept",
-          "Reject"
-        ]
-      },
-      "q17": {
-        "type": "multiple",
-        "description": "Step 1: Initially, the tape head is at the leftmost tape cell with character '1', and the current state is q0",
-        "question": "\nWhat state will we move to next?",
-        "answer": [
-          "q0"
-        ],
-        "choices": [
-          "q0",
-          "q1",
-          "Accept",
-          "Reject"
-        ]
-      },
-      "q18": {
-        "type": "multiple",
-        "description": "Step 2: The tape head shifts right one cell. The current state remains in q0.",
-        "question": "What state will we move to next?",
-        "answer": [
-          "q1"
-        ],
-        "choices": [
-          "q0",
-          "q1",
-          "Accept",
-          "Reject"
-        ]
-      },
-      "q19": {
-        "type": "multiple",
-        "description": "Step 3: The tape head shifts right one cell. The current state changes to q1.",
-        "question": "What state will we move to next?",
-        "answer": [
-          "q1"
-        ],
-        "choices": [
-          "q0",
-          "q1",
-          "Accept",
-          "Reject"
-        ]
-      },
-      "q20": {
-        "type": "multiple",
-        "description": "Since the last character of the string has now been processed, the machine is done with this input.",
-        "question": "What does the DFA do?",
-        "answer": [
-          "Accept"
-        ],
-        "choices": [
-          "q0",
-          "q1",
-          "Accept",
-          "Reject"
         ]
       }
     }

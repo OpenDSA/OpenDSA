@@ -55,10 +55,77 @@
     "required": true
   }, 
   "chapters": {
-    "Mathematical Background": {
-      "PIFLA/SetNotation": {},
-      "PIFLA/Relations": {},
-      "Background/Proofs": {}
+    "Finite Acceptors": {
+      "PIFLA/DFA":{
+        "DFAEvenBinary": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/DFAExercises": {
+        "DFAodda": {
+          "points": 5.0
+        },
+        "DFAoddaevenb": {
+          "points": 5.0
+        },
+        "DFAodda3b": {
+          "points": 5.0
+        },
+        "DFAno3a": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/DFAExercises2": {
+        "DFAevena": {
+          "points": 5.0
+        },
+        "DFAevenaoddb": {
+          "points": 5.0
+        },
+        "DFAevenamin3b": {
+          "points": 5.0
+        },
+        "DFAbotheo": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/NFA": {},
+      "PIFLA/NFAExercises": {
+        "NFAtoDFAex1":{
+          "points": 5.0
+        },
+        "NFAex1":{
+          "points": 5.0
+        }
+      },
+      "PIFLA/NFAExercises2": {
+        "NFAtoDFAex1long":{
+          "points": 5.0
+        },
+        "NFAtoDFAex2":{
+          "points": 5.0
+        },
+        "NFAex2":{
+          "points": 5.0
+        }
+      },
+      "PIFLA/DFAMinimization": {},
+      "PIFLA/DFAMinExercises": {
+        "DFAMinEx1": {
+          "points": 5.0
+        },
+        "DFANotevena3b": {
+          "points": 5.0
+        }
+      },
+      "PIFLA/DFAMinExercises2": {
+        "DFAMinEx2": {
+          "points": 5.0
+        },
+        "DFANotaabb": {
+          "points": 5.0
+        }
+      }
     },
     "Appendix": {
       "Glossary": {}
