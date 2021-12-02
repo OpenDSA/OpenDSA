@@ -7,7 +7,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("A :term:`language` is simply a collection of strings. A fundamental thing to be able to do with a string is to determine whether or not it is part of a given language. We will give a way to formally define a particular language. But first we need some notations to use.");
+  av.umsg("A :term:`language` is simply a collection (that is, a set) of strings. A fundamental thing to be able to do with a string is to determine whether or not it is part of a given language. We will give a way to formally define a particular language. But first we need some notation to help express ourselves.");
   av.displayInit();
   // Frame 2
   av.umsg(Frames.addQuestion("alpha"));
@@ -40,7 +40,7 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("infinite"));
   av.step();
   // Frame 12
-  av.umsg("For $\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$, $L=\\{set\\ of\\ all\\ even\\ numbers\\}$ is a somewhat informal way to describe a language.");
+  av.umsg("For $\\Sigma$={$0,1,2,3,4,5,6,7,8, 9\\}$, $L=\\{all\\ even\\ numbers\\}$ is a somewhat informal way to describe a language.");
   av.step();
   // Frame 13
   av.umsg(Frames.addQuestion("empty"));
@@ -64,7 +64,7 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("nocirc"));
   av.step();
   // Frame 20
-  av.umsg("Sometimes we want to talk about the string that has no characters. If we literally wrote a string with no characters, it would be hard for you to understand what we wrote! So we have a special symbol to use for the empty string: $\\lambda$. It is called <b>lambda</b>.");
+  av.umsg("Sometimes we want to talk about the string that has no characters. If we literally wrote a string with no characters, it would be hard for you to understand what we wrote! So we have a special symbol to use for the empty string: $\\lambda$. It is the Greek letter <b>lambda</b>.");
   av.step();
   // Frame 21
   av.umsg(Frames.addQuestion("emptystring"));

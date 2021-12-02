@@ -12,14 +12,14 @@
       "char":{
         "type": "multiple",
         "description": "Let's start with an alphabet. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). Alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols}.",
-        "question": "[T/F] c) $A$ is not an alphabet because it is just a character",
+        "question": "[T/F] $A$ is not an alphabet because it is just a character",
         "answer": "True",
         "choices": ["True", "False"]
       },
       "strings": {
         "type": "select",
         "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course).",
-        "question": "Suppose we have $\\Sigma$ = $\\{a, b\\}$. Which of the following are valid strings?",
+        "question": "Suppose we have $\\Sigma$ = $\\{a, b\\}$. Which of the following are valid strings on $\\Sigma$?",
         "answer": ["$babababbaba$", "$a$"],
         "choices": ["$babababbaba$", "$a$", "$\\{aaa, bbb\\}$", "$bacbabcba$"],
         "incorrectFeedback": ["Strings are not sets, and a valid string can only have characters from the alphabet."]
@@ -42,7 +42,7 @@
       "examplelang": {
         "type": "select",
         "description": "A <b>language</b> is simply a collection of strings defined over $\\Sigma$. We normally use the variable $L$ to indicate a language.",
-        "question": "Which of the following are correct languages from their respective $\\Sigma$?",
+        "question": "Which of the following are languages from their respective $\\Sigma$?",
         "answer": [
           "$\\Sigma = \\{0,1,2,3,4,5,6,7,8, 9\\}$, $L = \\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...\\}$",
           "$\\Sigma = \\{a,b,c\\}$, $L=\\{ab,ac,cabb\\}$",
@@ -61,7 +61,7 @@
         "answer": "No",
         "choices": ["Yes", "No"],
         "correctFeedback": ["$ab$ is not a set."],
-        "incorrectFeedback": ["$ab$ is not a set."]
+        "incorrectFeedback": ["Careful! A language is a set of strings, but $ab$ is not a set."]
       },
       "isset": {
         "type": "multiple",
@@ -69,12 +69,12 @@
         "question": "For $\\Sigma$=$\\{a,b,c\\}$, is $L = \\{ab\\}$ a language?",
         "answer": "Yes",
         "choices": ["Yes", "No"],
-        "correctFeedback": ["$\\{ab\\}$ is a set."],
-        "incorrectFeedback": ["$\\{ab\\}$ is a set."]
+        "correctFeedback": ["$\\{ab\\}$ is a set (with only one string)."],
+        "incorrectFeedback": ["$\\{ab\\}$ is a set of (one) string, and any set of strings is a language."]
       },
       "infinite": {
         "type": "multiple",
-        "description": "For $\\Sigma$={$0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}$, we can define $L=\\{set\\ of\\ all\\ even\\ numbers\\}$. This is an example of a descriptive <b>set former</b>.",
+        "description": "For $\\Sigma$={$0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}$, we can define $L=\\{all\\ even\\ numbers\\}$. This is an example of a <b>descriptive set former</b>.",
         "question": "How many strings are in this language?",
         "answer": "An infinite number",
         "choices": ["A finite number", "An infinite number"]
@@ -197,7 +197,7 @@
       "union": {
         "type": "select",
         "description": "Since languages are sets, all set operations can be applied to them.",
-        "question": " Let $\\Sigma$={$a$,$b$,$c$}, $L_1$={$ab$,$bc$,$aba$}, and $L_2$={$c$,$bc$,$bcc$}. Which string sare included in $L_1 \\cup L_2$ ?",
+        "question": " Let $\\Sigma$={$a$,$b$,$c$}, $L_1$={$ab$,$bc$,$aba$}, and $L_2$={$c$,$bc$,$bcc$}. Which strings are included in $L_1 \\cup L_2$ ?",
         "answer": ["ab" ,"bc","aba","c","bcc"],
         "choices": ["ab", "bc","a", "bca", "aba","c", "bcc","cb"],
         "correctFeedback": ["$\\cup$ is the symbol for set union."]

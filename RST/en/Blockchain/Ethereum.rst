@@ -39,12 +39,7 @@ programming language to connect with an Ethereum node, there are many convenienc
 within the ecosystem that make this much easier. With these libraries, developers can write
 intuitive, one-line methods to initialize JSON-RPC requests (under the hood) that interact with Ethereum.
 Moreover, Ethereum has a native coin that is known as Ether (ETH), which is used
-to pay for activity on the Ethereum blockchain. [At some point (not
-right here), there
-needs to be a section on how Ether is used to motivate
-participants. It is simple to understand how bitcoin is used to
-motivate minors to add blocks to the chain. What are the equivalent
-incentives in Ethereum?]
+to pay for activity on the Ethereum blockchain.
 The coin also trades on crypto exchanges and fluctuates in
 value. Separate from its use within the
 community to motivate community activities, it is also a
@@ -94,18 +89,52 @@ for funds to use for the development of the project.
 Ethereum went live officially in July 2015 even though ETH coins were
 purchasable the year before.
 Buyers had to wait for its launch before they were able
-to move [between accounts?] or use [Is there any way to "use" ETH
-other than move it to someone else's account?] their ETH.
+to move between accounts or use their ETH.
 
 The first iteration of the Ethereum blockchain was called the
 Frontier, and it hosted smart contracts and used a proof of work
 consensus algorithm.
 This provided opportunities for people to set up
-their mining apparatuses [since Ethereum was originally Proof of
-Work?] and start building on the network.
+their mining apparatuses since Ethereum was originally Proof of
+Work and start building on the network.
 After the initial launch, Ethereum saw many other updates such as
 Byzantium, Constantinople, and the Beacon Chain, where each of the updates
-changed certain aspects of the blockchain. [This needs a lot of explanation!]
+changed certain aspects of the blockchain.
 Beacon Chain provided a shift from a proof-of-work to a proof-of-stake
-consensus mechanism.  {When? How? What was (will be?) the process for
-doing this change?]
+consensus mechanism. One of the most substantial change to the Ethereum blockchain
+is the transitioning over to PoS initiated to scale the blockchain. Many projects
+have built applications on the Ethereum blockchain over the years. Still, the network
+struggled when traffic notably increased. During the years 2020 and 2021, decentralized
+finance projects built on Ethereum gained substantial attention, which brought Ethereum’s
+scalability issues to the forefront as high network fees plagued participants. 
+Ethereum’s transition to Eth2 and PoS aims to bring scalability to the blockchain,
+although the shift took place in various stages.
+
+
+Key Differences Between Bitcoin and Ethereum
+
+---------------------------------------------
+
+Bitcoin and Ethereum networks are based on the concept of distributed ledgers and encryption; 
+however, there are differences in terms of technical specifications. To illustrate, Bitcoin 
+is seen as a digital equivalent of gold used to store value. Contrastingly, Ether is used to 
+power the Ethereum network and its applications. Also, Bitcoin serves as a credible alternative 
+to traditional fiat currencies, whereas Ethereum is a platform to run programmatic contracts
+and applications via Ether. Another one of the key differences is that Bitcoin transactions
+are monetary, but they can have notes and messages attached to them by encoding them into data
+fields in the transactions. On the other hand, Ethereum transactions encompass executable code
+to create smart contracts or interact with self-executing contracts and applications built using them.
+Furthermore, Bitcoin utilizes a Proof-of-Work consensus algorithm, whereas Ethereum is transitioning to
+Proof-of-Stake. Another one of the key differences between the two networks is in their Hashing Algorithms,
+which are essentially how these systems maintain their privacy and ensure security. Bitcoin utilizes a hashing
+algorithm called SHA-256, whereas Ethereum uses Keccak-256 algorithm. Other differences include the time for new
+blocks of data to be added, which determines the time it takes to confirm transactions. The average block time on
+the Bitcoin network is 10 minutes, while the time is 10 to 15 seconds for Ethereum.
+
+
+Sources:
+
+-----------
+https://cointelegraph.com/ethereum-for-beginners/history-of-eth-the-rise-of-the-ethereum-blockchain
+https://cointelegraph.com/ethereum-for-beginners/what-is-ethereum-a-beginners-guide-to-eth-cryptocurrency
+https://cointelegraph.com/ethereum-for-beginners/bitcoin-vs-ethereum-key-differences-between-btc-and-eth

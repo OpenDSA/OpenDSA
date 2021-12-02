@@ -49,8 +49,8 @@
         "Blockchain/MerkleTrees": {}
       },
       "Consensus Algorithms": {
-        "Blockchain/Mining": {},
         "Blockchain/Consensus": {},
+        "Blockchain/Mining": {},
         "Blockchain/Permissionless": {},
         "Blockchain/Permissioned": {}
       },
@@ -58,7 +58,16 @@
         "Blockchain/BitCoin": {},
         "Blockchain/Ethereum": {},
         "Blockchain/EVMandGAS": {},
-        "Blockchain/ProofOfStake": {},
+        "Blockchain/ProofOfStake": {
+          "Validation Chances Quiz": {
+            "points": 1.0
+          }
+        },
+        "Blockchain/Cryptohacking": {
+          "Hacker Types": {
+            "points": 1.0
+          }
+        },
         "Blockchain/OtherCrypto": {}
       },
       "Applications of Blockchain": {
