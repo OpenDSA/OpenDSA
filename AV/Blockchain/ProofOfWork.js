@@ -125,6 +125,7 @@ $(document).ready(function() {
     //-----------------------------------------------
     // Slide 4
     av.umsg("An important note is that no other thin node can broadcast transactions on behalf of someone else. Each thin node can ONLY broadcast transactions when it holds the private key for the sending wallet. This prevents fake transactions from being sent on behalf of someone else.");
+    //@TODO: Reword the private key usage
     //@TODO: 
     //Animate a lock icon next to thin node 7 as to denote that it must hold its own private key
     
@@ -164,6 +165,7 @@ $(document).ready(function() {
     //-----------------------------------------------
     // Slide 7
     av.umsg("M1 now has arrived at a valid solution which it proposes to the full node, F2. Because this is the first solution to be proposed and it is valid, the solution is accepted by F2 and begins to get propagated throughout the network. Notice how the state of F2's chain has been updated but the other full nodes still have the original chain. Currently this network lacks consensus.");
+    // Be more specific about what a valid solution is
     f2m1Edge.removeClass("orangeedge");
     f2m1Edge.addClass("greenedge");
     f2m1Edge.show();
