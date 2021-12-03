@@ -17,6 +17,7 @@ __author__ = 'hshahin'
 from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
+from pprint import pp
 import random
 import os, sys
 import urllib.request, urllib.parse, urllib.error
@@ -26,28 +27,33 @@ import urllib.request, urllib.parse, urllib.error
 external_tools_urls = {
   "code-workout": {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
-          "width": 1000,
-          "height": 900
+          "frame_width": 1000,
+          "frame_height": 900,
+          "enable_scrolling": False
     },
     "code-workout-jhavepop": {
           "url": "https://codeworkout.cs.vt.edu/gym/workouts/embed",
-          "width": 1000,
-          "height": 900
+          "frame_width": 1000,
+          "frame_height": 900,
+          "enable_scrolling": False
     },
     "mastery-grid-jsparsons-python": {
           "url": "https://pitt-acos.herokuapp.com/html/jsparsons/jsparsons-python/",
-          "width": 1000,
-          "height": 900
+          "frame_width": 1000,
+          "frame_height": 900,
+          "enable_scrolling": False
     },
     "mastery-grid-java-animations": {
           "url": "https://pitt-acos.herokuapp.com/html/jsvee/jsvee-java/",
-          "width": 1000,
-          "height": 900
+          "frame_width": 1000,
+          "frame_height": 900,
+          "enable_scrolling": False
     },
     "mastery-grid-python-animations": {
           "url": "https://pitt-acos.herokuapp.com/html/jsvee/jsvee-python/",
-          "width": 1000,
-          "height": 900
+          "frame_width": 1000,
+          "frame_height": 900,
+          "enable_scrolling": False
     }
 }
 
@@ -66,10 +72,11 @@ CONTAINER_HTML= '''\
     data-long-name="%(long_name)s"
     data-short-name="%(short_name)s"
     data-frame-src="%(tool_address)s"
-    data-frame-width="%(width)s"
-    data-frame-height="%(height)s"
+    data-frame-width="%(frame_width)s"
+    data-frame-height="%(frame_height)s"
     data-type="%(type)s"
     data-workout-id="%(workout_id)s"
+    data-enable-scrolling="%(enable_scrolling)s"
     data-exer-id="%(id)s">
   %(content)s
   <div class="center">
@@ -83,8 +90,8 @@ def print_err(*args, **kwargs):
   print(*args, file=sys.stderr, **kwargs)
 
 class extrtoolembed(Directive):
-  required_arguments = 0
-  optional_arguments = 4
+  required_arguments = 1
+  optional_arguments = 0
   final_argument_whitespace = True
   has_content = True
   option_spec = {
@@ -93,17 +100,22 @@ class extrtoolembed(Directive):
                  'learning_tool': directives.unchanged,
                  'launch_url': directives.unchanged,
                  'id': directives.unchanged,
-                 'workout_id': directives.unchanged
+                 'workout_id': directives.unchanged,
+                 'enable_scrolling': directives.unchanged,
+                 'frame_width': directives.unchanged,
+                 'frame_height': directives.unchanged
                  }
 
   def run(self):
     """ Restructured text extension for inserting embedded external learning tools """
     if 'long_name' not in self.options or self.options['long_name'] == '' :
         print('ERROR: External learning tool is not properly configured -- missing long_name option')
+        pp(vars(self), indent = 2, compact = False)
         sys.exit()
 
     if 'learning_tool' not in self.options or self.options['learning_tool'] =='' :
         print('ERROR: External learning tool is not properly configured missing learning_tool option')
+        pp(vars(self), indent = 2, compact = False)
         sys.exit()
     
     # if 'workout_id' not in self.options or self.options['workout_id'] =='' :
@@ -120,8 +132,19 @@ class extrtoolembed(Directive):
       self.options['workout_id'] = 0
 
     external_tool = external_tools_urls[self.options['learning_tool']]
-    self.options['width'] = external_tool['width']
-    self.options['height'] = external_tool['height']
+    if 'frame_width' not in self.options:
+      self.options['frame_width'] = external_tool['frame_width']
+    if 'frame_height' not in self.options:
+      self.options['frame_height'] = external_tool['frame_height']
+    if 'enable_scrolling' not in self.options:
+      self.options['enable_scrolling'] = external_tool['enable_scrolling']
+
+    es = self.options['enable_scrolling']
+    if es in ["yes", "Yes", "true", "True", "on", "On", "auto", 1, True]:
+      es = "yes"
+    else:
+      es = "no"
+    self.options['enable_scrolling'] = es
 
     if 'launch_url' in self.options:
       self.options['tool_address'] = self.options['launch_url']

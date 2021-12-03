@@ -29,34 +29,45 @@ _default_ex_options = {
     'ka': {
       'required': True,
       'points': 1,
-      'threshold': 5
+      'threshold': 5,
+      'partial_credit': False
     }, 
     'ss': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     }, 
     'ff': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     }, 
     'pe': {
       'required': True,
       'points': 1,
-      'threshold': 0.9
+      'threshold': 0.9,
+      'partial_credit': False
     },
     'ae': {
       'required': True,
       'points': 1,
-      'threshold': 0
+      'threshold': 0,
+      'partial_credit': False
     },
     'dgm': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     },
     'extr': {
+      'points': 1.0,
+      'partial_credit': False,
+      'enable_scrolling' : False,
+      'frame_width': 1000,
+      'frame_height': 900,
       'points': 1.0
     }
 }
@@ -70,7 +81,7 @@ default_ex_options = {
 
 }
 
-EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options', 'showhide']
+EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options', 'showhide', 'partial_credit']
 MODULE_FIELDS = ['dispModComp', 'mod_options', 'codeinclude']
 REQUIRED_EXERCISE_FIELDS = ['points', 'required', 'threshold']
 
@@ -83,6 +94,7 @@ avembed_element = '''\
     required="True"
     threshold="%(threshold)s"
     av_address="%(av_address)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </avembed>
 '''
@@ -94,6 +106,10 @@ extertool_element = '''\
     resource_type="%(resource_type)s"
     learning_tool="%(learning_tool)s"
     points="%(points)s"
+    enable_scrolling="%(enable_scrolling)s"
+    frame_width="%(frame_width)s"
+    frame_height="%(frame_height)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </extertool>
 '''
@@ -109,6 +125,7 @@ inlineav_element = '''\
     threshold="%(threshold)s"
     links="%(links)s"
     scripts="%(scripts)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </inlineav>
 '''
@@ -129,7 +146,6 @@ class avembed(Directive):
 
 
   def run(self):
-    print("self: ==================================\n", self.options)
     """ Restructured text extension for inserting embedded AVs with show/hide button """
     av_path = self.arguments[0]
     self.options['type'] = self.arguments[1]
@@ -138,6 +154,7 @@ class avembed(Directive):
     self.options['required'] = get_default_ex_option(self.options['type'], 'required')
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
+    self.options['partial_credit'] = get_default_ex_option(self.options['type'], 'partial_credit')
     self.options['mod_name'] = current_module_base
     self.options['av_address'] = av_path
 
@@ -187,11 +204,16 @@ class extrtoolembed(Directive):
                  'workout_id': directives.unchanged,
                  'resource_type': directives.unchanged,
                  'learning_tool': directives.unchanged,
-                 'points': directives.unchanged
+                 'enable_scrolling': directives.unchanged,
+                 'points': directives.unchanged,
+                 'frame_width': directives.unchanged,
+                 'frame_height': directives.unchanged
                  }
 
   def run(self):
-    resource_name = self.arguments[0]
+    resource_name = self.arguments[0].strip()
+    # change any single-quotes to double-quotes for XML
+    resource_name = re.sub(r"'(.*)'", r'"\1"', resource_name)
     if 'resource_name' not in self.options or self.options['resource_name'] == '':
       self.options['resource_name'] = resource_name
     if 'workout_id' not in self.options or self.options['workout_id'] == '':
@@ -202,6 +224,13 @@ class extrtoolembed(Directive):
       self.options['learning_tool'] = 'code-workout'
     if 'points' not in self.options or self.options['points'] == '':
       self.options['points'] = get_default_ex_option('extr', 'points', self.options['learning_tool'])
+    if 'enable_scrolling' not in self.options or self.options['enable_scrolling'] == '':
+      self.options['enable_scrolling'] = get_default_ex_option('extr', 'enable_scrolling', self.options['learning_tool'])
+    if 'frame_width' not in self.options or self.options['frame_width'] == '':
+      self.options['frame_width'] = get_default_ex_option('extr', 'frame_width', self.options['learning_tool'])
+    if 'frame_height' not in self.options or self.options['frame_height'] == '':
+      self.options['frame_height'] = get_default_ex_option('extr', 'frame_height', self.options['learning_tool'])
+    self.options['partial_credit'] = get_default_ex_option('extr', 'partial_credit', self.options['learning_tool'])
 
     self.options['mod_name'] = current_module_base
     
@@ -234,6 +263,7 @@ class inlineav(Directive):
     self.options['required'] = get_default_ex_option(self.options['type'], 'required')
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
+    self.options['partial_credit'] = get_default_ex_option(self.options['type'], 'partial_credit')
     
     self.options['mod_name'] = current_module_base
 
@@ -483,17 +513,17 @@ def get_default_ex_option(ex_type, option, learning_tool=None):
     if 'extr' not in default_ex_options:
       print_err('WARNING: Missing "glob_extr_options", using default values instead.')
       default_ex_options['extr'] = _default_ex_options['extr']
-      return default_ex_options['extr']['points']
+      return default_ex_options['extr'][option]
     elif learning_tool in default_ex_options['extr']:
-      if 'points' in default_ex_options['extr'][learning_tool]:
-        return default_ex_options['extr'][learning_tool]['points']
-    if 'points' not in default_ex_options['extr']:
-      def_val = _default_ex_options['extr']['points']
-      print_err('WARNING: "glob_extr_options" is missing field "points". Using default value "{0}".'.format(def_val))
-      default_ex_options['extr']['points'] = def_val
+      if option in default_ex_options['extr'][learning_tool]:
+        return default_ex_options['extr'][learning_tool][option]
+    if option not in default_ex_options['extr']:
+      def_val = _default_ex_options['extr'][option]
+      print_err('WARNING: "glob_extr_options" is missing field "{0}". Using default value "{1}".'.format(option, def_val))
+      default_ex_options['extr'][option] = def_val
       return def_val
     else:
-      return default_ex_options['extr']['points']
+      return default_ex_options['extr'][option]
   elif ex_type == 'dgm':
     return _default_ex_options['dgm']
   else:
@@ -622,6 +652,11 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
         exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
         exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+        exs_config['extertool']['long_name'] = ex_obj['@resource_name']
+        exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
+        exs_config['extertool']['frame_width'] = ex_obj['@frame_width']
+        exs_config['extertool']['frame_height'] = ex_obj['@frame_height']
+        exs_config['extertool']['partial_credit'] = ex_obj['@partial_credit']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
         if expanded:
           exs_config['extertool']['type'] = 'extr'
@@ -700,6 +735,11 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+      exs_config['extertool']['long_name'] = ex_obj['@resource_name']
+      exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
+      exs_config['extertool']['frame_width'] = ex_obj['@frame_width']
+      exs_config['extertool']['frame_height'] = ex_obj['@frame_height']
+      exs_config['extertool']['partial_credit'] = ex_obj['@partial_credit']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
       exs_config['extertool']['workout_id'] = ex_obj['@workout_id']
       if expanded:
@@ -906,7 +946,6 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
   if 'glob_extr_options' in full_config:
     del full_config['glob_extr_options']
 
-  print(full_config)
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.items():
     
