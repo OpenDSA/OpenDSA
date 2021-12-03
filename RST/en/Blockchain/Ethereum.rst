@@ -133,8 +133,10 @@ the Bitcoin network is 10 minutes, while the time is 10 to 15 seconds for Ethere
 
 
 Sources:
+--------
 
------------
 https://cointelegraph.com/ethereum-for-beginners/history-of-eth-the-rise-of-the-ethereum-blockchain
+
 https://cointelegraph.com/ethereum-for-beginners/what-is-ethereum-a-beginners-guide-to-eth-cryptocurrency
+
 https://cointelegraph.com/ethereum-for-beginners/bitcoin-vs-ethereum-key-differences-between-btc-and-eth

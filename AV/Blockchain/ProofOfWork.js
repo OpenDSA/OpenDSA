@@ -15,15 +15,15 @@ $(document).ready(function() {
     let topCenterGraph = "35%";
     let leftCenterGraph = "14%";
     let node4ALeft = "55%";
-    let node4ATop = "90%"
+  let node4ATop = "90%";
+  var blocktop = 17;
 
-
-    var blockchain = av.ds.list({top: 0, left: leftMargin, nodegap: 10});
-    var blockchain2 = av.ds.list({top: 50, left: leftMargin, nodegap: 10});
-    var blockchain3 = av.ds.list({top: 100, left: leftMargin, nodegap: 10});
-    var blockchain4 = av.ds.list({top: 150, left: leftMargin, nodegap: 10});
+    var blockchain = av.ds.list({top: blocktop + 0, left: leftMargin, nodegap: 10});
+    var blockchain2 = av.ds.list({top: blocktop + 50, left: leftMargin, nodegap: 10});
+    var blockchain3 = av.ds.list({top: blocktop + 100, left: leftMargin, nodegap: 10});
+    var blockchain4 = av.ds.list({top: blocktop + 150, left: leftMargin, nodegap: 10});
     
-    var graph = av.ds.graph({visible: true, left: -10, bottom: 5});
+    var graph = av.ds.graph({visible: true, left: -10, top: blocktop });
 
     // this code is the starting state of the graph
     graph.css({"font-size": "12px"});

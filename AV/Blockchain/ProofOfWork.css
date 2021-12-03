@@ -1,3 +1,15 @@
+#ProofOfWork {
+    height: 600px;
+    position: relative;
+}
+
+.jsavcanvas {
+    height: 400px;
+}
+
+.jsavoutput.jsavline {
+  height: 90px;
+}
 
 .jsavlistnode {
   height: 30px;
