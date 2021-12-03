@@ -28,9 +28,10 @@ Wouldn't that be a hugely powerful upgrade to our lives?
 
 That gets into some pretty complicated philosophy in real life.
 But in the world of Finite Automata, the concept of
-:term:`nondeterminism` turns out to be something that we can make
+:term:`non-determinism <non-deterministic>` turns out to be something
+that we can make 
 quite concrete.
-In this module, we study what it means to make an FA nondeterministic,
+In this module, we study what it means to make an FA non-deterministic,
 and whether it really even matters in the end.
 
 .. inlineav:: NFAFS ff
@@ -123,7 +124,7 @@ new capability to accept languages.
 The set of languages that can be accepted by a NFA is exactly the same
 set of languages that can be accepted by a DFA.
 We proved this constructively:
-Every DFA is automatically an NFA without nondeterminism, so DFAs
+Every DFA is automatically an NFA without non-determinism, so DFAs
 obviously cannnot accept languages that NFAs cannot.
 And any NFA can be converted using an algorithm to a DFA.
 So NFAs cannot accept languages that DFAs cannot.

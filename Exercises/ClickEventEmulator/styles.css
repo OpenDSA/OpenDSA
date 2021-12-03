@@ -11,3 +11,14 @@
     height: 70%;
     overflow: hidden;
 }
+#custom-button {
+    padding: 10 px;
+    color: white;
+    border: 1px solid #000;
+    border-radius: 5 px;
+    cursor: pointer;
+    background-color: #009578;
+}
+#custom-button:hover {
+    background-color: #00b28f;
+}

@@ -25,10 +25,10 @@ DFA exercises
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda3b.html pe
-   :long_name: Odd number of a's, at most 3 b's
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAno3a.html pe
+   :long_name: No string with 3 consecutive a's
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAno3a.html pe
-   :long_name: No string with 3 consecutive a's
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda3b.html pe
+   :long_name: Odd number of a's, at most 3 b's

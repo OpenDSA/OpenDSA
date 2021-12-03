@@ -75,8 +75,9 @@ $(document).ready(function() {
     graph.addClass('backward'); //move the graph behind the new proposed blocks
     graph.layout();
   
+    //-----------------------------------------------
     // Slide 1
-    av.umsg("Slide 1 text");
+    av.umsg("Brown squares labeled (M1-M4) are mining nodes, Blue Circles labeled (F1-F4) are full nodes, White circles represent thin nodes");
 
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
     blockchain2.addFirst("Blk 2").addFirst("Blk 1");
@@ -93,260 +94,147 @@ $(document).ready(function() {
 
     av.displayInit();
   
+    //-----------------------------------------------
     // Slide 2
-    av.umsg("Slide 2 message");
+    av.umsg("Thin node 7 has a new transaction it wants to broadcast. It begins telling all the nodes nearby. Orange lines denote an UNCONFIRMED transaction being broadcast to various nodes throughout the network.");
     
-    const cEdge = graph.addEdge(e,m2);
+    g.addClass("orangenode");
+    const gm2Edge = graph.addEdge(g,m2).addClass("orangeedge");
+    const gm3Edge = graph.addEdge(g,m3).addClass("orangeedge");
+    const gf2Edge = graph.addEdge(g,f2).addClass("orangeedge");
+    const gf3Edge = graph.addEdge(g,f3).addClass("orangeedge");
 
     av.step();
-
+    
+    //-----------------------------------------------
     // Slide 3
-    av.umsg(interpret("sc3"));
+    av.umsg("Transactions continue to propagate throughout the network via each node that receives them in transmission.");
+    const m2f1Edge = graph.addEdge(m2, f1).addClass("orangeedge");
+    const m2f2Edge = graph.addEdge(m2, f2).addClass("orangeedge");
+    const m3f3Edge = graph.addEdge(m3, f3).addClass("orangeedge");
+    const m3f4Edge = graph.addEdge(m3, f4).addClass("orangeedge");
 
-    blockProposal1To3.removeFirst();
-    blockProposal1To2.removeFirst();
 
-    let blkBTo3 = blockProposal4To3.addFirst("Blk B").get(0);
-    let blkBTo2 = blockProposal4To2.addFirst("Blk B").get(0);
-    blkBTo3.addClass("redBlock");
-    blkBTo2.addClass("redBlock");
-
-    blockProposal4To3.css({top: "77%", left: "8.5%"});
-    blockProposal4To2.css({top: "15%", left: "24.5%"});
+    const f1m1Edge = graph.addEdge(f1, m1).addClass("orangeedge");
+    const f2m1Edge = graph.addEdge(f2, m1).addClass("orangeedge");
+    const f3m4Edge = graph.addEdge(f3, m4).addClass("orangeedge");
+    const f4m4Edge = graph.addEdge(f4, m4).addClass("orangeedge");
     
-    graph.layout({updateLeft: false, updateTop: false});
-
-    d.addClass('rednode');
-
-    let node4Block = blockchain.newNode("Blk B");
-    
-    // node 4 arrow
-    // subtracting 15 because the start of the auto-gen arrows are about 15 pixels    
-    let node1Arrow = av.g.line(leftMargin + leftAdding*2 - 15, topMargin + 31,
-        leftMargin + leftAdding*2 + 10, topMargin ,
-        {"arrow-end": "classic-wide-long",
-        opacity: 0, "stroke-width": 2});
-
-    // move node 1 block up
-    // node1Block.css({top: topMargin, left: leftAdding * 2});
-
-    // add node 4 block and move it down
-    node4Block.css({top: topMargin, left: leftAdding * 2});
-    node4Block.addClass('redBlock');
-    
-    graph.layout({updateTop: false, updateLeft: false});
-    blockchain.layout({updateTop: false});
-
     av.step();
 
+    //-----------------------------------------------
     // Slide 4
-    av.umsg(interpret("sc4"));
-    b.addClass('greennode');
-    c.addClass('greennode');
-
+    av.umsg("An important note is that no other thin node can broadcast transactions on behalf of someone else. Each thin node can ONLY broadcast transactions when it holds the private key for the sending wallet. This prevents fake transactions from being sent on behalf of someone else.");
+    //@TODO: Reword the private key usage
+    //@TODO: 
+    //Animate a lock icon next to thin node 7 as to denote that it must hold its own private key
+    
     av.step();
 
-    // Slide 4a
-    av.umsg(interpret("sc4a"));
-
-    blockProposal4To3.removeFirst();
-    blockProposal4To2.removeFirst();
-    
-    graph.layout();
-
-    // start blockchain
-    blockchain.removeFirst();
-    blockchain.removeFirst();
-    
-    let blockchain1Copy = av.ds.list({top: "0%", left: "45%", nodegap: 10});
-    let blockchain4Copy = av.ds.list({top: "65%", left: "45%", nodegap: 10});
-    blockchain1Copy.addFirst("Blk 2").addFirst("Blk 1");
-    // let blk2For1 = blockchain1Copy.newNode("Blk 2");
-    // blockchain1Copy.get(0).next(blk2For1);
-    blockchain4Copy.addFirst("Blk 2").addFirst("Blk 1");
-    // let blk2For4 = blockchain4Copy.newNode("Blk 2");
-    // blockchain4Copy.get(0).next(blk2For4);
-
-    node1Block.hide();
-    node4Block.hide();
-
-    let newNode1Block = blockchain1Copy.newNode("Blk A");
-    newNode1Block.addClass('greenBlock');
-    let newNode4Block = blockchain4Copy.newNode("Blk B");
-    newNode4Block.addClass('redBlock');
-    
-    blockchain1Copy.get(1).next(newNode1Block);
-    blockchain4Copy.get(1).next(newNode4Block);
-
-    blockchain1Copy.layout({updateTop: false});
-    blockchain4Copy.layout({updateTop: false});
-
-    av.step();
-    
+    //-----------------------------------------------
     // Slide 5
-    av.umsg(interpret("sc5"));
+    av.umsg("As shown below, each mining node now maintains its own ledger of unconfirmed transactions denoted A1-A4. It is important to recognize that each mining node will have slightly different ledgers of unconfirmed transactions as not all transactions are propagated at the same speed across the network.");
+    gm2Edge.hide();
+    gm3Edge.hide();
+    gf2Edge.hide();
+    gf3Edge.hide();
+    m2f1Edge.hide();
+    m2f2Edge.hide();
+    m3f3Edge.hide();
+    m3f4Edge.hide();
+    f1m1Edge.hide();
+    f2m1Edge.hide();
+    f3m4Edge.hide();
+    f4m4Edge.hide();
 
-    // graph
+    g.removeClass("orangenode");
 
-    b.addClass('bluenode');
-    // bBlock.addClass('bluenode');
-    // bEdge.addClass('blueedge');
-
-    // let blockProposal2 = av.ds.list({top: "76%", left: "3.6%"});
+    var m1Bundle = av.ds.list({"top": "25%", left: "12%", nodegap: 10}).addFirst("A1");
+    var m2Bundle = av.ds.list({"top": "65%", left: "12%", nodegap: 10}).addFirst("A2");
+    var m3Bundle = av.ds.list({"top": "65%", left: "21%", nodegap: 10}).addFirst("A3");
+    var m4Bundle = av.ds.list({"top": "25%", left: "21%", nodegap: 10}).addFirst("A4");
     
-
-    let blkCTo4 = blockProposal2To4.addFirst("Blk C").get(0);
-    let blkCTo1 = blockProposal2To1.addFirst("Blk C").get(0);
-    blkCTo4.addClass("blueBlock");
-    blkCTo1.addClass("blueBlock");
-
-    blockProposal2To4.css({top: "77%", left: "20.5%"});
-    blockProposal2To1.css({top: "14%", left: "3.5%"});
-
-    // blockProposal2.css({top: topCenterGraph, left: leftCenterGraph});
-
-    graph.layout();
-
-    // blockchain
-    let node2Block = blockchain1Copy.newNode("Blk C");
-    // node2Block.css({top: topMargin});
-    node2Block.addClass('blueBlock');
-    blockchain1Copy.get(2).next(node2Block);
-    // blockchain.get(2).next(node2Block);
-    blockchain1Copy.layout({updateTop: false});
-
     av.step();
+
+    //-----------------------------------------------
     // Slide 6
-    av.umsg(interpret("sc6"));
-    // graph
-
-    blockProposal2To4.removeFirst();
-    blockProposal2To1.removeFirst();
-
-    let blkETo1 = blockProposal3To1.addFirst("Blk E").get(0);
-    let blkETo2 = blockProposal3To4.addFirst("Blk E").get(0);
-    blkETo1.addClass("orangeBlock");
-    blkETo2.addClass("orangeBlock");
-
-    blockProposal3To1.css({left: "8.5%"});
-    blockProposal3To4.css({top: "58%"});
-
-    let blkD = blockProposal4.addFirst("Blk D").get(0);
-    blkD.addClass("redBlock");
-    blockProposal4.css({top: topCenterGraph, left: leftCenterGraph});
-
-    // graph.removeNode(bBlock);
-    // graph.removeEdge(bEdge);
+    av.umsg("As now evident by the orange block A1, M1 has received enough transaction for it to begin proposing solutions to the block. This process of hashing is described in 3.1.");
+    m1Bundle.addClass("orangenode") //THIS DOES NOT WORK, NEED TO FIND A WAY TO TARGET FIRST ELEMENT IN LIST
+    av.step();
     
-    // blockProposal2.removeFirst();
+    //-----------------------------------------------
+    // Slide 7
+    av.umsg("M1 now has arrived at a valid solution which it proposes to the full node, F2. Because this is the first solution to be proposed and it is valid, the solution is accepted by F2 and begins to get propagated throughout the network. Notice how the state of F2's chain has been updated but the other full nodes still have the original chain. Currently this network lacks consensus.");
+    // Be more specific about what a valid solution is
+    f2m1Edge.removeClass("orangeedge");
+    f2m1Edge.addClass("greenedge");
+    f2m1Edge.show();
 
-    // const cBlock = graph.addNode("Block", {"left":"33%", "top":"30%"});
-    // const cEdge = graph.addEdge(c,cBlock);
+    f2.removeClass("bluenode");
+    f2.addClass("greennode");
 
-    c.addClass('orangenode');
-    // cBlock.addClass('orangenode');
-    // cEdge.addClass('orangeedge');
-
-    // const red2 = graph.addNode("Block", {"left":"33%", "top":"50%"});
-    // const red2edge = graph.addEdge(d,red2);
-
-    // red2.addClass('rednode');
-    // red2edge.addClass('rededge');
-    graph.layout();
-
-    let node4Arrow = av.g.line(leftMargin + leftAdding*3 - 12, topMargin - 17,
-        leftMargin + leftAdding*3 + 2, topMargin - 17,
-        {"arrow-end": "classic-wide-long",
-        opacity: 0, "stroke-width": 2});
+    f2Chain.removeClass("bluenode");
+    f2Chain.addClass("greennode");
     
-    let node3Block = blockchain1Copy.newNode("Blk E");
-    let node4aBlock = blockchain4Copy.newNode("Blk D");
 
-    // node4aBlock.css({top: topMargin-100, left: forkMargin});
-    // node3Block.css({top: topMargin})
-    node4aBlock.addClass('redBlock')
-    node3Block.addClass('orangeBlock');
-    blockchain1Copy.get(3).next(node3Block);
-    blockchain4Copy.get(2).next(node4aBlock);
-    // node4Arrow.show();
-    blockchain1Copy.layout({updateTop: false});
-    blockchain4Copy.layout({updateTop: false});
+    // @TODO:
+    // Is there a way to just append to existing chain rather than hiding it and making a copy?
+    blockchain2.hide();
+    var blockchain2_1 = av.ds.list({top: 50, left: leftMargin, nodegap: 10});
+    blockchain2_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
+    blockchain2_1.layout({updateTop: false});
     
 
     av.step();
-    // // Slide 7
-    av.umsg(interpret("sc7"));
 
-    blockProposal3To1.removeFirst();
-    blockProposal3To4.removeFirst();
-    blockProposal4.removeFirst();
+    //-----------------------------------------------
+    // Slide 8
+    av.umsg("F2 will begin to propagate its valid solution to other neighboring full nodes.");
+    const f2f3Edge = graph.addEdge(f2, f3).addClass("greenedge");
+    const f2f1Edge = graph.addEdge(f2, f1).addClass("greenedge");
+    const f3f4Edge = graph.addEdge(f3, f4).addClass("greenedge");
 
-    // graph.removeNode(cBlock);
-    // graph.removeEdge(cEdge);
+    f1.removeClass("bluenode");
+    f1.addClass("greennode");
+    f3.removeClass("bluenode");
+    f3.addClass("greennode");
+    f4.removeClass("bluenode");
+    f4.addClass("greennode");
 
-    // graph.removeNode(red2);
-    // graph.removeEdge(red2edge);
+    blockchain.hide();
+    blockchain3.hide();
+    blockchain4.hide();
 
-    // const eBlock = graph.addNode("Block", {"left":"33%", "top":"30%"});
-    // const eEdge = graph.addEdge(a,eBlock);
-
-    // eBlock.addClass('greennode');
-    // eEdge.addClass('greenedge');
-
-    // const fBlock = graph.addNode("Block", {"left":"33%", "top":"50%"});
-    // const fEdge = graph.addEdge(b,fBlock);
-
-    // fBlock.addClass('bluenode');
-    // fEdge.addClass('blueedge');
-
-    blockchain4Copy.remove(3);
-    blockchain4Copy.remove(2);
+    var blockchain1_1 = av.ds.list({top: 0, left: leftMargin, nodegap: 10});
+    var blockchain3_1 = av.ds.list({top: 100, left: leftMargin, nodegap: 10});
+    var blockchain4_1 = av.ds.list({top: 150, left: leftMargin, nodegap: 10});
     
-    let blkAfor4 = blockchain4Copy.newNode("Blk A");
-    blkAfor4.addClass("greenBlock");
-    let blkCfor4 = blockchain4Copy.newNode("Blk C");
-    blkCfor4.addClass("blueBlock");
-    let blkEfor4 = blockchain4Copy.newNode("Blk E");
-    blkEfor4.addClass("orangeBlock");
-    
-    blockchain4Copy.get(1).next(blkAfor4);
-    blockchain4Copy.get(2).next(blkCfor4);
-    blockchain4Copy.get(3).next(blkEfor4);
-    blockchain4Copy.layout({updateTop: false});
-    
-    // graph.layout();
+    blockchain1_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
+    blockchain3_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
+    blockchain4_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
 
-    // let node2aBlock = blockchain.newNode("Blk F");
-    // let node1aBlock = blockchain.newNode("Blk G");
-    
-    // node2aBlock.css({top: topMargin});
-    // node1aBlock.css({top: topMargin});
-    // node2aBlock.addClass('blueBlock');
-    // node1aBlock.addClass('greenBlock');
-    // node3Block.next(node2aBlock);
-    // node2aBlock.next(node1aBlock);
-    // blockchain.layout({updateTop: false});
+    blockchain1_1.layout({updateTop: false});
+    blockchain3_1.layout({updateTop: false});
+    blockchain4_1.layout({updateTop: false});
+
+    f1Chain.removeClass("bluenode");
+    f1Chain.addClass("greennode");
+    f3Chain.removeClass("bluenode");
+    f3Chain.addClass("greennode");
+    f4Chain.removeClass("bluenode");
+    f4Chain.addClass("greennode");
+
 
     av.step();
 
-    av.umsg(interpret("sc8"));
+    //-----------------------------------------------
+    // Slide 9
+    av.umsg("At this point, all full nodes have accepted the solution of M1. The network has reached consensus on the current state of the blockchain.");
+    f2m1Edge.hide();
+    f2f1Edge.hide();
+    f2f3Edge.hide();
+    f3f4Edge.hide();
 
-    blockchain4Copy.removeLast();
-    blockchain4Copy.removeLast();
-    blockchain4Copy.removeLast();
-    blockchain4Copy.removeLast();
-    blockchain4Copy.removeLast();
-    blockchain1Copy.get(2).removeClass("greenBlock");
-    blockchain1Copy.get(3).removeClass("blueBlock");
-    blockchain1Copy.get(4).removeClass("orangeBlock");
-    blockchain1Copy.css({top: "35%"});
-    blockchain1Copy.layout({updateLeft: false});
-
-    node1Arrow.hide();
-    node4Arrow.hide();
-    node4Block.hide();
-    node4aBlock.hide();
-    blockchain.layout();
 
     av.recorded();
   });

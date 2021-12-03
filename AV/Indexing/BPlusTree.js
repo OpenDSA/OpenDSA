@@ -146,7 +146,7 @@ $(document).ready(function() {
         trackLeafIndex++;
       }
 
-      (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "Leaf node is full, the leaf node has to be split, add another empty node to the right.");
+      (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "Since the leaf node is full, it must be split. Add a new empty node to the right.");
       (this.jsav).step();
     }
     //add new value to the left TreeNode
@@ -159,7 +159,7 @@ $(document).ready(function() {
       }
       if(this.detail){
         next.addInfoGraph();
-        (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "because the position we need to add " + addInfo + " is smaller than " + leftSize + " which is the min size of this full node, move the rest of the key-value pair to the new node to make sure the current node has min size after adding key-value pair (" + addInfo + ", " + information + ").");
+        (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "Because the value " + addInfo + " is smaller than " + leftSize + " (which is the min value in this node), move the rest of the key-value pair to the new node to make sure the current node is not overfull after adding key-value pair (" + addInfo + ", " + information + ").");
         (this.jsav).step();
       }
       rt.insert(addInfo, information);
@@ -178,7 +178,7 @@ $(document).ready(function() {
       }
       if(this.detail){
         next.addInfoGraph();
-        (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "because the position we need to add " + addInfo + " is bigger than " + leftSize + " which is the min size of this full node, move the rest of the key-value pair to the new node.");
+        (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): " + "Because the value " + addInfo + " is greater than or equal to " + leftSize + " (which is the min value in this full node), move the rightmost key-value pair to the new node.");
         (this.jsav).step();
       }
 			next.insert(addInfo, information);
@@ -265,7 +265,7 @@ $(document).ready(function() {
         trackLeafIndex++;
       }
       rt.highlight(false);
-      (this.jsav).umsg("The parent node is full, it has to be split.");
+      (this.jsav).umsg("The parent node is full, so it has to be split.");
       (this.jsav).step();
     }
     var leftSize = Math.trunc((this.max + 1) / 2);
@@ -286,7 +286,7 @@ $(document).ready(function() {
       rt.setValue(addPos, this.update, this.updateInfo);
       if(this.detail){
         rt.highlight(false);
-        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "move all the key-value pair after index " + leftSize + " (included) which is the min size in a node to the new parent node and change the new update key-value pair to (" + updateBackUp + "," + updateBackUpInfo + ").");
+        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "Move all key-value pairs after index " + leftSize + " (included) which is the min value in the node to the new parent node and change the newly updated key-value pair to (" + updateBackUp + "," + updateBackUpInfo + ").");
         (this.jsav).step();
       }
 			this.update = updateBackUp;
@@ -302,7 +302,7 @@ $(document).ready(function() {
         rt.delete(rt.getValue()[i]);
       }
       if(this.detail){
-        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "move all the key-value pair after index " + leftSize + " (but not included) which is the min size in a node to the new parent node and change the new update key-value pair to (" + updateBackUp + "," + updateBackUpInfo + ").");
+        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "Move all key-values pair after index " + leftSize + " (but not included), which is the min value in this node, to the new parent node and change the newly updated key-value pair to (" + updateBackUp + "," + updateBackUpInfo + ").");
         (this.jsav).step();
       }
 			this.update = updateBackUp;
@@ -315,7 +315,7 @@ $(document).ready(function() {
         rt.delete(rt.getValue()[i]);
       }
       if(this.detail){
-        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "move all the key-value pair after index " + leftSize + " (included) which is the min size in a node to the new parent node and keep the update key-value pair to (" + this.update + "," + this.updateInfo + ").");
+        (this.jsav).umsg("Update key-value pair (" + this.update + "," + this.updateInfo + "): " + "Move all key-value pairs after index " + leftSize + " (included), which is the min value in the node, to the new parent node and keep the update key-value pair as (" + this.update + "," + this.updateInfo + ").");
         (this.jsav).step();
       }
 		}
@@ -385,7 +385,7 @@ $(document).ready(function() {
 			// Borrow from Left
 			if (index != 0 && (this.leafValue[index - 1].size() - 1) >= this.max / 2) {
         if(this.detail){
-          (this.jsav).umsg("The size of the current node is less than the half of the maximum size of one node, however, its left side sibling has enough to give one key-value pair to the current node.");
+          (this.jsav).umsg("The size of the current node is less than the half of the capacity for a node. However, its left sibling has enough records to give one key-value pair to the current node.");
           (this.jsav).step();
         }
 				var biggestPos = this.leafValue[index - 1].size() - 1;
@@ -396,7 +396,7 @@ $(document).ready(function() {
         rt.array.value(0, rt.value[0] + "<br><div class='leaf-node-value'>" + rt.info[0] + "</div>");
         rt.addInfoGraph();
         if(this.detail){
-          (this.jsav).umsg("Borrow key-value pair (" + biggest + ", " + biggestInfo + ") from the left side sibling to the current node.");
+          (this.jsav).umsg("Borrow key-value pair (" + biggest + ", " + biggestInfo + ") from the current node's left sibling.");
           (this.jsav).step();
         }
 			}
@@ -404,7 +404,7 @@ $(document).ready(function() {
 			else if (index != this.leafValue.length - 1
 					&& (this.leafValue[index + 1].size() - 1) >= (this.max / 2)) {
         if(this.detail){
-          (this.jsav).umsg("The size of the current node is less than the half of the maximum size of one node, however, its right side sibling has enough to give one key-value pair to the current node. (We cannot borrow from the left sibling, because after borrowing, left side sibling will have the size of node less than a half of the maximum size of a node.)");
+          (this.jsav).umsg("The current node holds less than half its capacity. However, its right sibling has enough records to give one key-value pair to the current node. (We cannot borrow from the left sibling, because after borrowing, the left sibling would not have enough records.)");
           (this.jsav).step();
         }
 				var smallest = this.leafValue[index + 1].getValue()[0];
@@ -415,7 +415,7 @@ $(document).ready(function() {
         var len = rt.size_value;
         rt.array.value(len - 1, rt.value[len - 1] + "<br><div class='leaf-node-value'>" + rt.info[len - 1] + "</div>");
         if(this.detail){
-          (this.jsav).umsg("Borrow key-value pair (" + smallest + ", " + smallestInfo + ") from the right side sibling to the current node.");
+          (this.jsav).umsg("Borrow key-value pair (" + smallest + ", " + smallestInfo + ") from the right sibling. Move it to the current node.");
           (this.jsav).step();
         }
         if(this.detail){
@@ -427,7 +427,7 @@ $(document).ready(function() {
 			// Merge to the Left - Deal with the Value
 			else if (index != 0) {
         if(this.detail){
-          (this.jsav).umsg("The size of the current node is less than the half of the maximum size of one node, however, we cannot borrow key-value pair from either of the left or right sibling node, so we need to merge current node to the left side sibling.");
+          (this.jsav).umsg("The number of records in the current node is less than the half the capcity. However, we cannot borrow a key-value pair from either of the left or right sibling. So we need to merge the current node to the left sibling.");
           (this.jsav).step();
         }
 				var prev = this.leafValue[index - 1];
@@ -438,14 +438,14 @@ $(document).ready(function() {
 				rt.clearValue();
         prev.addInfoGraph();
         if(this.detail){
-          (this.jsav).umsg("Move key-value pairs to the left sibling node.");
+          (this.jsav).umsg("Move key-value pairs to the left sibling.");
           (this.jsav).step();
         }
 			}
 			// Merge to the Right - Deal with the Value
 			else {
         if(this.detail){
-          (this.jsav).umsg("The size of the current node is less than the half of the maximum size of one node, however, we cannot borrow key-value pair from either of the left or right sibling node, and also cannot merge to the left side sibling, so we need to merge current node to the right side sibling.");
+          (this.jsav).umsg("The current node now holds less than the half of the node capacity. However, we cannot borrow a key-value pair from either of the left or right sibling nodes. We also cannot merge with the left sibling. So we need to merge with the right sibling.");
           (this.jsav).step();
         }
 				var next = this.leafValue[index + 1];
@@ -456,7 +456,7 @@ $(document).ready(function() {
 				rt.clearValue();
         next.addInfoGraph();
         if(this.detail){
-          (this.jsav).umsg("Move key-value pairs to the right sibling node.");
+          (this.jsav).umsg("Move key-value pairs to the right sibling.");
           (this.jsav).step();
         }
 			}
@@ -523,7 +523,7 @@ $(document).ready(function() {
       if(this.detail){
         this.printTree();
         rt.highlight(true);
-        (this.jsav).umsg("After remove the empty node, current node only has one child, and since left sibling has more than 2 child, we will borrow one child from left sibling.");
+        (this.jsav).umsg("After removing the empty node, the current node only has one child. Since the left sibling has more than 2 children, we will borrow one child from left sibling.");
         (this.jsav).step();
         this.checkUpdateMergeLeaf = false;
       }
@@ -551,7 +551,7 @@ $(document).ready(function() {
       if(this.detail){
         this.printTree();
         rt.highlight(true);
-        (this.jsav).umsg("After remove the empty node, current node only has one child, and since left sibling only has 2 children and right sibling has more than 2 children, we will borrow one child from right sibling.");
+        (this.jsav).umsg("After removing the empty node, the current node only has one child. Since the left sibling only has 2 children, and the right sibling has more than 2 children, we will borrow one child from right sibling.");
         (this.jsav).step();
         this.checkUpdateMergeLeaf = false;
       }
@@ -566,7 +566,7 @@ $(document).ready(function() {
       if(this.detail){
         this.printTree();
         rt.highlight(true);
-        (this.jsav).umsg("After remove the empty node, current node only has one child, and since both left and right sibling only has 2 children, we will merge current internal node to left sibling.");
+        (this.jsav).umsg("After removing the empty node, the current node only has one child. Since both left and right siblings only have 2 children, we will merge the current node with the left sibling.");
         (this.jsav).step();
         this.checkUpdateMergeLeaf = false;
       }
@@ -585,7 +585,7 @@ $(document).ready(function() {
       if(this.detail){
         this.printTree();
         rt.highlight(true);
-        (this.jsav).umsg("After remove the empty node, current node only has one child, and since both left and right sibling only has 2 children, and there is no left sibling, we will merge current internal node to right sibling.");
+        (this.jsav).umsg("After removing the empty node, the current node only has one child. Since there is no left sibling, and theright sibling only has 2 children, we will merge the current node with the right sibling.");
         (this.jsav).step();
         this.checkUpdateMergeLeaf = false;
       }
@@ -605,7 +605,7 @@ $(document).ready(function() {
       if(this.detail){
         rt.unhighlight(this.list[lev]);
         rt.highlight(true);
-        (this.jsav).umsg("We have found the correct leaf node, now delete " + delInfo);
+        (this.jsav).umsg("We have found the correct leaf node. Now delete " + delInfo);
         (this.jsav).step();
       }
       if(this.level > 1){
@@ -621,19 +621,19 @@ $(document).ready(function() {
         if(rt != this.root){
           rt.unhighlight(this.list[lev]);
           if(pos == 0){
-            (this.jsav).umsg("Delete " + delInfo + ": Because " + delInfo + " is less than " + rt.value[0] + ", go to the most left child node.");
+            (this.jsav).umsg("Delete " + delInfo + ": Because " + delInfo + " is less than " + rt.value[0] + ", follow the leftmost pointer.");
           }else if(pos == rt.size_value){
             (this.jsav).umsg("Delete " + delInfo + ": Because " + delInfo + " is bigger or equal than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
           }else{
-            (this.jsav).umsg("Delete " + delInfo + ": Because " + delInfo + " is bigger than " + rt.value[pos - 1] + " and " + delInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+            (this.jsav).umsg("Delete " + delInfo + ": Because " + delInfo + " is greater than or equal to " + rt.value[pos - 1] + " and " + delInfo + " is less than " + rt.value[pos] + ", follow the middle pointer.");
           }
         }else {
           if(pos == 0){
-            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node, because " + delInfo + " is less than " + rt.value[0] + ", go to the most left child node.");
+            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node. Because " + delInfo + " is less than " + rt.value[0] + ", follow the leftmost pointer.");
           }else if(pos == rt.size_value){
-            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node, because " + delInfo + " is bigger or equal than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node. Because " + delInfo + " is greater than or equal to " + rt.value[rt.size_value - 1] + ", follow the rightmost pointer.");
           }else{
-            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node, because " + delInfo + " is bigger than " + rt.value[pos - 1] + " and " + delInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+            (this.jsav).umsg("Delete " + delInfo + ": First look at the root node. Because " + delInfo + " is greater than or equal to " + rt.value[pos - 1] + " and " + delInfo + " is less than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
           }
         }
         rt.highlight(true);
@@ -701,7 +701,7 @@ $(document).ready(function() {
           this.list.pop();
           this.level--;
           if(this.detail){
-            (this.jsav).umsg("Since the root node is empty and only has one child, remove the root node, and set the only child to be root.");
+            (this.jsav).umsg("Since the root node is empty and only has one child, remove the root node, and set the only child to be the new root.");
           }
 					return this.root;
 				} else if (rt.getChildrenSize() == 1) { // need borrow and merge
@@ -738,7 +738,7 @@ $(document).ready(function() {
           var temp = rt.value[pos];
           if(temp != small){
             rt.highlight(true);
-            (this.jsav).umsg("update Internal node");
+            (this.jsav).umsg("Update Internal node");
           }
         }
 				rt.setValue(pos, small, smallestInfo);
@@ -814,7 +814,7 @@ $(document).ready(function() {
           if(this.detail){
             parent.setValue(0, "", "");
             this.printNode();
-            (this.jsav).umsg("a new internal node is created. This is going to become the new root node.");
+            (this.jsav).umsg("A new internal node is created. This is going to become the new root node.");
             (this.jsav).step();
             parent.setValue(0, temp, tempInfo);
             this.printNode();
@@ -837,19 +837,19 @@ $(document).ready(function() {
         rt.highlight(true);
         if(rt == this.root){
           if(pos == 0){
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is less or equal than " + rt.value[0] + ", go to the most left child node.");
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node. Because " + addInfo + " is less than " + rt.value[0] + ", follow the leftmost pointer.");
           }else if(pos == rt.size_value){
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is bigger than " + rt.value[rt.size_value - 1] + ", go to the most right child node.");
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node. Because " + addInfo + " is greater than or equal to " + rt.value[rt.size_value - 1] + ", follow the rightmost pointer.");
           }else{
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node, because " + addInfo + " is bigger than " + rt.value[pos - 1] + " and " + addInfo + " is less or equal than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): First look at the root node. Because " + addInfo + " is greater than or equal to " + rt.value[pos - 1] + " and " + addInfo + " is less than " + rt.value[pos] + ", follow the pointer between " + rt.value[pos - 1] + " and " + rt.value[pos]);
           }
         }else{
           if(pos == 0){
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is less than " + rt.value[0] + ", go to the left-most child node.");
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is less than " + rt.value[0] + ", follow the leftmost pointer.");
           }else if(pos == rt.size_value){
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is bigger than or equal to " + rt.value[rt.size_value - 1] + ", go to the right-most child node.");
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is greater than or equal to " + rt.value[rt.size_value - 1] + ", follow the rightmost pointer.");
           }else{
-            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is bigger than or equal to" + rt.value[pos - 1] + " and is less than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+            (this.jsav).umsg("Insert key-value pair (" + addInfo + ", " + information + "): Because " + addInfo + " is greater than or equal to" + rt.value[pos - 1] + " and is less than " + rt.value[pos] + ", follow the pointer between " + rt.value[pos - 1] + " and " + rt.value[pos]);
           }
         }
         (this.jsav).step();
@@ -859,7 +859,7 @@ $(document).ready(function() {
       if (next != rt.getChildren()[pos]) {
         if(this.detail){
           rt.highlight(true);
-          (this.jsav).umsg("The lowest value in the new node created gets promoted: Update current parent node (insert the update key-value pair (" + this.update + "," + this.updateInfo + "))");
+          (this.jsav).umsg("The lowest value in the new node created gets promoted: Update current parent node (insert the updated key-value pair (" + this.update + "," + this.updateInfo + "))");
           (this.jsav).step();
         }
 				var checkAdd = rt.insert(this.update, this.updateInfo);
@@ -870,7 +870,7 @@ $(document).ready(function() {
           if(this.detail){
             rt.highlight(false);
             this.printTree();
-            (this.jsav).umsg("Link the leaf node get updated");
+            (this.jsav).umsg("Link the leaf node being updated");
             (this.jsav).step();
           }
 					return rt;
@@ -894,10 +894,10 @@ $(document).ready(function() {
   					this.list[this.level - 1] = newList;
             if(this.detail){
               this.printNode();
-              (this.jsav).umsg("a new internal node is created. This is going to become the new root node.");
+              (this.jsav).umsg("A new internal node is created. This is going to become the new root node.");
               (this.jsav).step();
               this.printArrow(this.aw);
-              (this.jsav).umsg("Link all the node");
+              (this.jsav).umsg("Link all the nodes");
               (this.jsav).step();
             }
 						return parent;
@@ -926,11 +926,11 @@ $(document).ready(function() {
       var pos = rt.findHelp(findInfo, 0, rt.size() - 1);
       rt.highlight(true);
       if(pos == 0){
-        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is less than " + rt.value[0] + ", go to the left-most child node.");
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is less than " + rt.value[0] + ", follow the leftmost pointer.");
       }else if(pos == rt.size_value){
-        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is greater than or equal to " + rt.value[rt.size_value - 1] + ", go to the right-most child node.");
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is greater than or equal to " + rt.value[rt.size_value - 1] + ", follow the rightmost pointer.");
       }else{
-        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is greater than or equal to " + rt.value[pos - 1] + " and is less than " + rt.value[pos] + ", go to the child node between " + rt.value[pos - 1] + " and " + rt.value[pos]);
+        (this.jsav).umsg("Find " + findInfo + ": Because " + findInfo + " is greater than or equal to " + rt.value[pos - 1] + " and is less than " + rt.value[pos] + ", follow the pointer between " + rt.value[pos - 1] + " and " + rt.value[pos]);
       }
       (this.jsav).step();
       if(rt != this.root){

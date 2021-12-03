@@ -19,11 +19,11 @@ We start with the simplest of our machines:
 The :term:`Deterministic Finite Acceptor` (:term:`DFA`).
 This machine can process an input string (shown on a tape) from left
 to right.
-There is a control unit (with states), behavior defined for what to do
-when the machine sees a given symbol on the current square of
-the tape while in a given state.
-All that the machine can "do" is change state before going to the next
-symbol to the right.
+There is a control unit (with states), which has behavior defined for
+what to do when the machine sees a given symbol on the current square
+of the tape while in a given state.
+But all that the machine can actually "do" is to change state before
+going to the next symbol to the right.
 That is, an acceptor cannot modify the contents of the tape.
 
 :term:`Deterministic` in this context has a particular meaning:
@@ -133,10 +133,12 @@ Think about all possible DFAs.
 And each DFA accepts a language.
 So all the DFAs, collectively, can accept some collection of
 languages.
-This is called a :term:`family <family of languages>`.
+This is called a :term:`family of languages`.
 Therefore, the DFAs define a family of languages that they accept.
-A language is :term:`regular <regular language>` if and only iff
+We will give a name to this particular family:
+A language is :term:`regular <regular language>` if and only if
 there exists a DFA :math:`M` such that :math:`L = L(M)`.
+We will explain later why we used the name "regular" for this family.
 
 The important question now is:
 Are there languages that DFAs cannot accept?

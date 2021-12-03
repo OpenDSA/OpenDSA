@@ -63,6 +63,12 @@ Glossary
       the computation in an accepting state, then the machine is said
       to :term:`accept` the string.
 
+   acceptor
+      In formal languages, any machine whose primary purpose is to
+      determine whether a string is accepted (is recognized to be in a
+      language) or rejected. This is in contrast to a machine that
+      computes some value.
+
    activation record
       :to-term: local variable :label: stores
 
@@ -455,6 +461,10 @@ Glossary
       comparison is high compared to that of moving an element, or
       is theoretically useful if we only care to count the cost of
       comparisons.
+
+   binary relation
+      In set theory, a :term:`relation` defined by a collection of
+      binary :term:`tuples <tuple>`.
 
    binary search
       A standard :term:`recursive <recursion>` algorithm for finding
@@ -1204,6 +1214,10 @@ Glossary
    deallocated
    deallocation
       Free the memory allocated to an unused object.
+
+   debugging
+      Correcting a program once we determine that it is not operating
+      as we intend. This is in contrast to :term:`testing`.
 
    decision tree
       A theoretical construct for modeling the behavior of algorithms.
@@ -2138,6 +2152,9 @@ Glossary
       A hanging configuration occurs in a :term:`Turing machine` when
       the I/O head moves to the left from the left-most square of the
       tape, or when the machine goes into an infinite loop.
+
+   happy path testing
+      Testing "proper" inputs or uses of a program.
 
    hard algorithm
       "Hard" is traditionally defined in relation to running time, and
@@ -3085,6 +3102,7 @@ Glossary
 
    merge insert sort
       A synonym for the :term:`Ford and Johnson sort`.
+
    message
       In a :term:`memory manager` implementation
       (particularly a memory manager implemented with a
@@ -4041,6 +4059,10 @@ Glossary
       :term:`AVL Tree` or :term:`Splay Tree`, for the purpose of
       keeping the tree :term:`height balanced`.
 
+   recognize
+      In the study of formal languages, the ability to reliably
+      determine whether some string is in a given language or not.
+
    record
       A collection of information, typically implemented as an
       :term:`object` in an
@@ -4168,7 +4190,7 @@ Glossary
 
    relation
       In set notation, a relation :math:`R` over set
-      :math:`\mathbf{S}` is a set of ordered pairs from
+      :math:`\mathbf{S}` is a set of :term:`tuples <tuple>` from
       :math:`\mathbf{S}`.
 
    replacement selection
@@ -4754,6 +4776,8 @@ Glossary
       possibly with associated information, that is primarily defined
       in terms of the conditions that the automata may transition from
       its present state to another state.
+      This type of state is generally represented by a node in the
+      graph that represents the automata.
 
    State Machine
       Synonym for :term:`finite automata`.
@@ -4910,6 +4934,10 @@ Glossary
       abstract state in the production.
       Similar to a :term:`literal`, but this is the term more
       typically used in the context of a :term:`compiler`.
+
+   testing
+      Determining whether a program operates as we intend.
+      This is in contrast to :term:`debugging`.
 
    Theta notation
       In :term:`algorithm analysis`, :math:`\Theta` notation is used

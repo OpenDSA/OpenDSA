@@ -30,7 +30,7 @@ each step.
 They stop when they reach the end of the string and then make a
 simple decision: If the machine is in a final state, then it accepts
 the string, and otherwise it rejects the string.
-In other words, they are :term:`acceptors` for some language.
+In other words, they are :term:`acceptors <acceptor>` for some language.
 All that they can do is determine if a string is a member of the
 language, and the "more powerful" machines can accept or reject string
 from more "complicated" languages.
