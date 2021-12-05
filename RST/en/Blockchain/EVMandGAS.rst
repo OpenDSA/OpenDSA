@@ -39,17 +39,20 @@ Before we get started, let's define a few terms:
 
 3. Ethereum State: A snapshot of the Ethereum blockchain at a point in time.
 
-4. Global Ethereum State: The agreed upon state of Ethereum by all instances of the EVM.
+4. Global Ethereum State: The agreed upon state of Ethereum by up-to-date instances of the EVM.
 
-Elaborating on the Ethereum State -- it's all stored in an enormous data structure.
-The data structure stores data for every account: current balance, nonce (number of previous transactions), smart
+Elaborating on the Ethereum State -- it's all stored in an `enormous data structure`_.
+The data structure stores data for every account: current balance, number of previous transactions, smart
 contract code, etc. It also stores other data such as previous blocks and all data pertaining to them.
 All running instances of the EVM have a local copy of this giant data structure downloaded, 
-and it is identical across all machines.
+and it is identical or slightly behind across all machines. This is because each EVM instance
+receives a new state from other EVM instances, and that new state will propegate throughout the network
+which takes time.
+
  
 So, how does this global state update?
 
-Once a block is committed every 15 seconds or so, AKA chained onto the blockchain, 
+Once a block is committed, AKA chained onto the blockchain, 
 the global Ethereum state will transition from the previously known state to the new one
 (details on how a `block is committed`_).
 A block being committed means that all transactions it contains has been deemed
@@ -64,9 +67,12 @@ is finally committed to the blockchain and Ethereum's state will update.
 One thing to note is that the process for committing a new block onto the blockchain
 takes rougly 15 seconds for Ethereum, and that's one reason why transactions aren't instant.
 Only a few dozen to a few hundred transactions fill each block, and a transaction
-will only have completed once it is included in a block. (Note: it takes approximately 15 seconds 
-to commit a block because the mean time to propegate new data 
-across all running instances of the EVM is 12.6 seconds).
+will only have completed once it is included in a block. So why 15 seconds, instead of 
+1 or 2 seconds? Well, the mean time to propagate new data 
+across all running instances of the EVM is 12.6 seconds. Additonally, there is the 
+proof-of-work puzzle that the miner needs to solve. The EVM will adjust the difficulty
+of the puzzle to target the 15 second block time to keep block time relatively
+constant.
 
 Thus, we are able to describe Ethereum as having the state transition
 function Y(S, T)= S'.
@@ -78,6 +84,23 @@ continue onward processing transactions.
 
 .. avembed:: Exercises/Blockchain/EthereumState.html ka
     :long_name: Ethereum State Quiz
+
+.. _`enormous data structure`:
+
+**Brief description of the enormous data structure:**
+
+A modified Merkle-Patricia tree stores the Ethereum state. 
+The tree is essentially a giant key-value map, where every key is 
+an Ethereum address and the value is an array containing account
+data. Specifically, it holds account balance, number of previous 
+transactions, and two hashed fields pertaining only to `smart
+contract`_ accounts. For regular accounts, these fields will be 
+empty. For smart contracts, one field is a hash of a piece of the
+smart contract code, which is executed if the account
+receives a message call (a read only operation).
+The other is a hash of the root of another
+Merkle-Patricia tree, called the Account Storage tree. This
+tree is where *all* of the smart contract data is stored. 
 
 .. _`smart contract`:
 
@@ -94,28 +117,36 @@ Here is an example Solidity code snippet.
 
 .. image:: https://arpitmathur.files.wordpress.com/2018/04/solidity.png
 
-This code snippet is a simple smart contract with a function that lets a user set a local variable and retrieve it. It can be thought of as a storage, hence the contract name, "SimpleStorage".
+This code snippet is a example smart contract with a function that lets a user set a local variable and retrieve it. 
+It can be thought of as a storage, hence the contract name, "SimpleStorage".
+In a realistic smart contract, someone might store a party that agreed to a legal document.
 
 A developer can put whatever data and functions they desire inside of a smart contract. Once a smart 
-contract is put onto the blockchain, functions are able to be called through third-party
+contract is put onto the blockchain, code within it is immutable. However, functions are able to be called through third-party
 software. If these functions change data within the smart contract, they will change the blockchain's state and are
 considered transactions. In the image, calling the function "set" would be considered a transaction since
 it changes data within the smart contract. Calling "get", however, would not be since it only reads data.
 
 Since smart contracts are so customizable, multiple different applications of them have
-arisen. For example, the most common use of smart contracts is to represent a non-fungible token(NFT).
-A smart contract representing a NFT would hold some metadata such as name, image/gif/video url 
-to represent the NFT, address that possesses ownership of that NFT, and more. 
-When someone purchases the NFT, a function would be called
+arisen. For example, the most common use of smart contracts is to transfer a non-fungible token(NFT).
+The most popular smart contract for doing so is `ERC-721
+<http://erc721.org/>`_, which is a standard for NFTs. It has functions
+like transfer(current_owner, new_owner, NFT_id), ownerOf(NFT_id), and more.
+When someone purchases the NFT, a the transfer function would be called
 to transfer ownership of the NFT to the new address. This will change data inside the
-smart contract, so it is considered a transaction.
+smart contract, so it is considered a transaction. If you call the ownerOf function
+to find the owner of an NFT, it won't modify blockchain data, and won't be
+considered a transaction.
 
 .. _`fungible tokens`:
 
 Smart contracts are also how fungible tokens get built on a blockchain. A fungible token is
-the opposite of a NFT -- meaning that every token is the same. This is what Ethereum, or Bitcoin, or
+the opposite of a NFT -- meaning that every token is the same. This is what Ether, or Bitcoin, or
 any other coin on a blockchain is. You are able to trade one coin for another, as they all have the same value.
-A smart contract representing a coin would have metadata such as 
+The most popular standard for implementing one of these coins is `ERC-20
+<https://ethereum.org/en/developers/docs/standards/tokens/erc-20/>`_, and a coin must implement
+specific methods to be considered an ERC-20 coin.
+Any one of these coins would have metadata such as 
 the total supply of the coin, the coin's symbol, if the minting is finished, etc. It would also have a function to transfer coins
 between addresses, and these addresses are either the same as Ethereum addresses or a mapping
 of an Ethereum address. Some of these coins include $USDT (Tether), $SHIB (Shiba Inu), $USDC (USD Coin),
@@ -132,7 +163,9 @@ This means the node will ensure no requests are malformed, all accounts are vali
 So what's the difference between a node and a miner? Well, 
 all miners are nodes, but a node is not a miner. Miners have the ability
 to validate blocks as a whole through the proof-of-work consensus
-algorithm, while nodes cannot.
+algorithm, while nodes cannot. Note that this pertains only to the proof-of-work
+protocol.
+
 
 Once a transaction is made anywhere on the Ethereum network, it will be sent to a node. 
 That node will broadcast this transaction to all
@@ -149,10 +182,16 @@ miner will begin the proof-of-work process to produce a certificate that
 shows the block is valid. Once completed by the miner, that miner will broadcast
 the new block, the certificate, and a checksum of the new EVM state to all 
 other nodes. Then, every other node will validate the proof-of-work certificate and re-approve
-all transactions in the block. Once this is complete, all nodes will have their giant data structure 
-holding Ethereum's state to update to include this new block. Finally, the block will be 
-chained onto the blockchain and the global state of Ethereum will transition to
+all transactions in the block. This includes the transactions to pay the miner
+their collected gas fee from the block. Once validated, the node's local
+state will update to include the new block, and it will continue 
+propegating through the network.
+In general, once a node has propegated
+throughout at least 51% of the network, we can say the global state of Ethereum will transition to
 include the new block.
+
+In the proof-of-stake protocol, all mentions of gas being collected by miners are instead collected by validators.
+The process for adding a new block essentially stays the same.
 
 .. _gas:
 
@@ -283,7 +322,7 @@ for 15 seconds, they would have to put enough transactions in to fill a block.
 The gas limit for all blocks (aside from block 1 and 2) is 30M gwei, which 
 equates to 0.03 ETH. If you wanted to stall the network, for let's say 1 hour (3600 seconds),
 you would have to fill 3600/15 = 240 blocks. This would equate to spending
-240*0.03 = 7.2 ETH, which is an unreasonable amount of money to stall the network
+240*0.03 = 7.2 ETH = ~$31,000 (as of 12/5/2021), which is an unreasonable amount of money to stall the network
 for just 1 hour. As you can imagine, taking down the network for any extended
 period of time is simply not worth it.
 If gas didn't exist, the 
