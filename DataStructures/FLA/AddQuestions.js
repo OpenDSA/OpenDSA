@@ -305,7 +305,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
             {
                "type": "multiple",
                "question": "",
-               "description": "Can state " +state.node+ " be divided by reading the symbol \"" + state.weight + "\" ?",
+               "description": "Can state " +state.node+ " be divided by reading the symbol '" + state.weight + "'? That is, does following '" + state.weight + "' out of some states in the set lead to a different node in the tree than does following it out of other states?",
                "answer": "yes", //String if type is multiple, array of string if select
                "choices": ["yes", "no"]
             },
@@ -321,7 +321,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
         return [{
            "type": "multiple",
            "question": "",
-           "description": "Can state " +state.node+ " be divided by reading the symbol \"" + state.weight + "\" ?",
+           "description": "Can state " +state.node+ " be divided by reading the symbol '" + state.weight + "'?",
            "answer": "no", //String if type is multiple, array of string if select
            "choices": ["yes", "no"]
         }]
@@ -404,7 +404,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
   var listOfLeaves = minimizer.getLeaves(minimizer.tree.root());
   var leaf;
   var moreToSplit = true;
-  minimizer.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.");
+  minimizer.jsav.umsg("Now we will test the terminals against the states in each subset to see if they all go to the same subset. Split them up when they do not go to the same place.");
   jsav.step();
 
 
@@ -1709,7 +1709,7 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
       if(state["type"] === "affectedTransition"){
         return [{
           "type": "textBoxStrict",
-          "question": "Example: a+a*b. Input \"none\" without quotes if there is no regular expression can be infered.",
+          "question": "Example: a+a*b. Input 'none' without quotes if there is no regular expression can be infered.",
           "description": "Removing node $"+ currentNode +"$, what will be the new transition from $" + state["node"] + "$ to $"+state["relatedTo"]+"$?",
           "answer": state["weight"] === String.fromCharCode(248) ? "none" : state["weight"], //String if type is multiple, array of string if select
           "choices": ""

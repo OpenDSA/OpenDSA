@@ -24,10 +24,11 @@ Why do we need another one?
 The problem with an English description (or any other language that
 people speak) is that it is too imprecise, and not something that we
 can easily implement.
-Using a DFA or NFA requires typically requires some sort of graphical
-editor, and this takes a bit of time to enter.
-We will see that regular expressions are easy to just type, and they
-tend to be relatively short descriptions for common languages that we
+Using a DFA or NFA typically requires some sort of graphical
+editor, and this takes a bit of time to enter all the states and
+transitions.
+We will see that regular expressions are easy to type, and they
+tend to use relatively short descriptions for common languages that we
 want to represent.
 Of course, even a relatively small precise specification for a
 language can be hard to come up with (or to understand).

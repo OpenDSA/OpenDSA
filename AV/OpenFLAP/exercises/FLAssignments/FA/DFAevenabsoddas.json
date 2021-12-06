@@ -1,6 +1,5 @@
 [{
   "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
-  "HINT": "This exercise was about even a's but I changed it to be even a at least one b zero or odd a",
   "exerciseType": "DFA",
   "totalTrueCases": 5,
   "totalFalseCases": 5,
