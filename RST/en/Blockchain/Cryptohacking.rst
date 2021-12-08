@@ -165,7 +165,7 @@ Private Network (VPN) to send data on encrypted networks.
 Also, verifying URLs for trusted certificates aids in ensuring the
 website is trustable.
 
-.. odsafig:: Images/LocalBitCoins.jpg
+.. odsafig:: Images/LocalBitcoins.jpg
    :align: center
    :width: 800
 
