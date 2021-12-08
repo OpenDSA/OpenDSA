@@ -13,5 +13,8 @@ Glossary
 
 .. glossary::
    :sorted:
+
    Merkle Proof
-       An efficient means of proving that a transaction is legitimate accomplished with just O(log(n)) nodes where n is the number of nodes in a Block.
+      An efficient means of proving that a transaction is legitimate
+      accomplished with just O(log(n)) nodes where n is the number of
+      nodes in a Block.

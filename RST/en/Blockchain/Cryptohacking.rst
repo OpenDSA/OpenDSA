@@ -7,7 +7,7 @@
     :author: Elizabeth Mulvaney
 
 Crypto Hacking
-=============
+==============
 
 What is Crypto Hacking?
 -----------------------
