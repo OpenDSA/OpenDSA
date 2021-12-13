@@ -35,7 +35,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
   
   // Frame 1
-  av.umsg("<b>Part 3.</b> Now, we need to find the NFA that can accept the RE $r \\cdot s$, given that we have NFAs that are equivalent to $r$ and $s$.");
+  av.umsg("<b>Part 3.</b> Next, we will define a construction for the NFA that can accept the RE $r \\cdot s$, given that we have NFAs that are equivalent to $r$ and $s$.");
   av.displayInit();
 
   // Frame 2
@@ -79,13 +79,13 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("connector"));
   sFA.initial._initialMarker.hide();
   sFA.initial.css({"font-weight": "normal"});
-  sFA.getFinals()[0].css({"border-style": "dotted"});
   av.g.line(350, 98, 145, 300, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 200, top: 170});
   av.step();
 
   // Frame 10
   av.umsg(Frames.addQuestion("final"));
+  sFA.getFinals()[0].css({"border-style": "dotted"});
   var fa2 = new av.ds.FA({left: 500, top: 0, width: 20, height: 600});
   var newF = fa2.addNode({value:"f", left: -40, top: 180});
   toggleFinal(fa2, newF);

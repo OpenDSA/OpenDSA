@@ -37,7 +37,7 @@
       },
       "startconnect": {
         "type": "multiple",
-        "description": "Concatenation is something like an AND operation, in that the result is a string that is a string from $r$ AND a string from $s$. But actually, a better way to think of this is that the result of the operation is first some string from $r$ and THEN some string from $s$.",
+        "description": "Concatenation is something like an AND operation, in that the result is a string that takes a string from $r$ AND a string from $s$. But actually, a better way to think of this is that the result of the operation of taking first some string from $r$ and THEN some string from $s$.",
         "question":"Which state should we connect the new start state to?",
         "answer": "The start state for $r$",
         "choices": ["The start state for $s$",

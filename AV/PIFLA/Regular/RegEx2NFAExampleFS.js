@@ -1,57 +1,66 @@
 $(document).ready(function() {
   "use strict";
-  var av_name = "RegEXtoNFAExampleFF";
+  var av_name = "RegEx2NFAExampleFS";
   var av = new JSAV(av_name);
-  var Frames = PIFRAMES.init(av_name);
+  var frames = PIFRAMES.init(av_name);
   
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter, // get the interpreter
       code = config.code;             // get the code object
-  var fourthFA = new av.ds.FA({width: 900, height: 600,left: 10, top:0});
-  var fFA = new av.ds.FA({width: 900, height: 600,left: 10, top:0});
+  var fourthFA = new av.ds.FA({width: 900, height: 600, left: 10, top: -50});
+  var fFA = new av.ds.FA({width: 900, height: 600, left: 10, top: 0});
   //var DFA = new av.ds.FA({width: 350, height: 300, left: 10, top:250});
   //var separator =  av.g.path(["M", 350, 0, "v", 500].join(","));
   //separator.show();
   
-  // frame 1
-  av.umsg("In this slide, we will convert the NFA that accepts $ab^*\+\c$ to a minimized DFA");
+  // Frame 1
+  av.umsg("From the previous section, we know how to convert one or two NFAs that represent RegExs into a single NFA that implements an associated RegEx operator. In this frameset, we show the process to convert a RegEx into an NFA.");
   av.displayInit();
-  // frame 2
+
+  // Frame 2
   av.umsg("But before we follow the steps of converting the RegEx to a NFA, let us think about drawing the NFA directly.");
   av.step();
-  // frame 3
+
+  // Frame 3
   av.umsg("A possible NFA for $ab^*\+\c$ will be:")
   var url1 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrC.jff";
-  var nfa = new av.ds.FA({left: 0, top: 0, width: 300, url: url1});
+  var nfa = new av.ds.FA({left: 0, top: -30, width: 300, url: url1});
   av.step();
-  // frame 4
-  av.umsg(Frames.addQuestion("q4"));
+
+  // Frame 4
+  av.umsg(frames.addQuestion("nonminDFA"));
   var url2 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrCDFA.jff";
-  var dfa = new av.ds.FA({left: 250, top: 0, width: 300, height: 350, url: url2});
+  var dfa = new av.ds.FA({left: 250, top: 20, width: 300, height: 350, url: url2});
   av.step();
-  // frame 5
-  av.umsg(Frames.addQuestion("q5"));
+
+  // Frame 5
+  av.umsg(frames.addQuestion("group"));
   av.step();
-  // frame 6
-  av.umsg("Correct, the minimized DFA will be");
+
+  // Frame 6
+  av.umsg("Correct, the minimized DFA will be the one shown at the bottom.");
   var url3 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrCMinDFA.jff";
-  var minDfa = new av.ds.FA({left: 0, top: 200, url: url3});
+  var minDfa = new av.ds.FA({left: 0, top: 170, url: url3});
   av.step();
-// frame 7
-  av.umsg("Finding the NFA for a RegEx is not trivial especially for complicated RegEXs. That is why we have tools like OpenFLAP that applies RegEx to NFA algorithm to give the NFA / DFA for any RegEx.");
+
+  // Frame 7
+  av.umsg("Finding the NFA for a RegEx is not trivial for complicated RegEXs. So it might be hard to look at the RegEx and immediately draw the NFA. And then we won't have a DFA, or a minimized DFA. All of this is a bit tedious, even if we are experts at all of the steps. That is why we have tools like OpenFLAP that apply RegEx to NFA to DFA to DFA minimization algorithms to give the NFA or DFA for any RegEx.");
   nfa.hide();
   dfa.hide();
   minDfa.hide();
   av.step();
-  //frame 8
-  av.umsg("You should notice that when OpenFLAP automatically converts the R.E. to a NFA, the resulting NFA does not look like the 'intuitive' version in the diagram above. This is because the automatic process is a little more complicated.");
+
+  //Frame 8
+  av.umsg("When OpenFLAP automatically converts a RegEx to a NFA, the resulting NFA does not typically look like the 'intuitive' version. This is because the automated process is a little more complicated.");
   av.step();
-  // frame 9
-  av.umsg("To understand how an algorithm can automatically convert an R.E. to a NFA, a lot of the steps are simply building the machine with the transformations in the diagrams shown earlier in this module—such as combining two machines to OR them or to AND them, etc.")
+
+  // Frame 9
+  av.umsg("To understand how an algorithm can automatically convert a RegEx to a NFA, a lot of the steps are simply building the machine with the transformations for each operator as shown in the previous section. This means doing things like combining two machines to OR them or to AND them.")
   av.step();
-  //frame 10
-  av.umsg("$\\textbf{Definition}$: A Generalized Transition Graph (GTG) is a transition graph whose edges can be labeled with any regular expression. Thus, it 'generalizes' the standard transition graph.");
+
+  //Frame 10
+  av.umsg("To help us with the conversion process, we will use the concept of a Generalized Transition Graph. $\\textbf{Definition}$: A Generalized Transition Graph (GTG) is a transition graph whose edges can be labeled with any regular expression. Thus, it 'generalizes' the standard transition graph.");
   var fourthFA = new av.ds.FA({width: 900, height: 600,left: 10, top:0});
   var factor = 0.6;
   var q11 = fourthFA.addNode({left: 10, top: 100});
@@ -60,18 +69,21 @@ $(document).ready(function() {
   toggleFinal(fourthFA, q12);
   fourthFA.addEdge(q11,q12, {weight: "$ab^* + c$"});
   av.step();
-  //frame 11
+
+  //Frame 11
   av.umsg("We will convert the this GTG to an NFA");
   av.step();
 
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
+  //Frame 12
+  av.umsg(frames.addQuestion("breakdown"));
   av.step();
 
-  //frame 13
-  av.umsg(Frames.addQuestion("q13"));
+  //Frame 13
+  av.umsg(frames.addQuestion("deor"));
   av.step();
-  av.umsg(Frames.addQuestion("q14"));
+
+  //Frame 14
+  av.umsg(frames.addQuestion("nextop"));
   var q17 = fourthFA.addNode({left: 810*factor, top: 480});
   var q13 = fourthFA.addNode({left: 310*factor, top: 100});
   var q14 = fourthFA.addNode({left: 610*factor, top: 100});
@@ -85,15 +97,14 @@ $(document).ready(function() {
   fourthFA.addEdge(q15,q16, {weight: "c"});
   fourthFA.addEdge(q16,q17, {weight: "$\\lambda$"});
   fourthFA.addEdge(q14,q17, {weight: "$\\lambda$"});
-  
-  
-  
-  
   av.step();
-  av.umsg(Frames.addQuestion("q15"));
+
+  // Frame 15
+  av.umsg(frames.addQuestion("deconcat"));
   av.step();
-  //frame 9
-  av.umsg(Frames.addQuestion("q16"));
+
+  // Frame 16
+  av.umsg(frames.addQuestion("pickclose"));
   fourthFA.removeEdge(q13,q14, {weight: "$ab^*$"});
   var q18 = fourthFA.addNode({left: 430*factor, top: 100});
   var q19 = fourthFA.addNode({left: 550*factor, top: 100});
@@ -105,10 +116,13 @@ $(document).ready(function() {
   fourthFA.addEdge(q20,q21, {weight: "$b^*$"});
   fourthFA.addEdge(q21,q14, {weight: "$\\lambda$"});
   av.step();
-  av.umsg(Frames.addQuestion("q17"));
+
+  // Frame 17
+  av.umsg(frames.addQuestion("destar"));
   av.step();
-  //frame 10
-  av.umsg(Frames.addQuestion("q18"));
+
+  //Frame 18
+  av.umsg(frames.addQuestion("done"));
   var q22 = fourthFA.addNode({left: 350*factor, top: 260});
   var q23 = fourthFA.addNode({left: 450*factor, top: 260});
   fourthFA.removeEdge(q20,q21, {weight: "$b^*$"});
@@ -117,11 +131,14 @@ $(document).ready(function() {
   fourthFA.addEdge(q23, q21, {weight: "$\\lambda$"});
   fourthFA.addEdge(q20,q21, {weight: "$\\lambda$"});
   fourthFA.addEdge(q21,q20, {weight: "$\\lambda$"});
-
   av.step();
 
-  //frame 11
-  av.umsg("The automation is complete");
+  // Frame 19
+  av.umsg("Fortunately, we don't have to do anything for the part of this graph that represents the RegEx for $c$. It is nothing more than what we have: A transition from q4 to q5 on the symbol $c$.");
+  av.step();
+  
+  // Frame 20
+  av.umsg("The automation is complete. Here it is, redrawn.");
   fourthFA.removeNode(q11);
   fourthFA.removeNode(q12);
   fourthFA.removeNode(q13);
@@ -168,8 +185,8 @@ $(document).ready(function() {
   fFA.addEdge(q35, q33, {weight: "$\\lambda$"});//q11-9
   av.step();
 
-  //frame12
-  av.umsg("One thing that this example should make clear is that the concept of an NFA is really helpful for our understanding. While every NFA can be replaced by an equivalent DFA, it is a lot easier to understand instuitively the process of converting an R.E. to an NFA than it would be if we had come up with the DFA directly.");
+  // Frame 21
+  av.umsg("One thing that this example should make clear is that the concept of an NFA is really helpful for our understanding. While every NFA can be replaced by an equivalent DFA, it is a lot easier to understand instuitively the process of converting a RegEx to an NFA than it would be if we had come up with the DFA directly.");
   fFA.removeNode(q24);
   fFA.removeNode(q25);
   fFA.removeNode(q26);
@@ -184,9 +201,15 @@ $(document).ready(function() {
   fFA.removeNode(q35);
   av.step();
 
-  //frame 13
-  av.umsg("Let us answer the following question. What should we do if we been told to convert RegEx to a NFA?");
+  // Frame 22
+  av.umsg("Let us answer the following question. What should we do if we been told to convert a RegEx to a DFA?");
   av.step();
-  av.umsg("The answer is simple. If you know how to draw the NFA / DFA directly, then go and draw it without following the lengthy process. If you do not know how to find the DFA / NFA inutively, then follow the algorithm to convert the R.E. to the NFA / DFA.");
+
+  // Frame 23
+  av.umsg("You have a choice. If you know how to draw the DFA directly, then go and draw it without following the lengthy process. If you do not know how to find the DFA inutively, then follow the algorithm to convert the RegEx to the DFA. Better yet, get OpenFLAP to do it for you.");
+  av.step();
+
+  // Frame 24
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

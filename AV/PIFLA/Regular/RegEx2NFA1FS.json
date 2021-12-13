@@ -21,7 +21,7 @@
         "question":"Can we build a DFA with one state to accept $a$?",
         "answer": "No",
         "choices": ["Yes, a DFA/NFA with one state that is both start and final, and a looping transition on $a$.", "No"],
-        "correctFeedback": ["Looping is our only option to get any a's. But that is not what we want because that accepts more than one a."]
+        "correctFeedback": ["Looping is our only option to get any a's from a one-state machine. But that is not what we want because that accepts more than one a."]
       },
       "onefinalq": {
         "type": "multiple",
@@ -47,7 +47,7 @@
       "addedges": {
         "type": "select",
         "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
-        "question":"Then we need to remove the final mark from the old final states",
+        "question":"Then we need to remove the 'final' marker from the old final states",
         "answer": "True",
         "choices": []
       },

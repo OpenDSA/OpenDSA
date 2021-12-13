@@ -1,6 +1,16 @@
 {
   "translations": {
     "en": {
+      "Start": {
+        "type": "select",
+        "description": "Regular expressions (RE) are defined recursively with base symbols and operators to combine things know to be RE. To start us off, the empty string and any letter in the alphabet for our language are themselves regular expressions.",
+        "question":"Which of these are base case RE for the language with $\\Sigma = \\{a, b\\}$?",
+        "answer": ["a",
+                   "b",
+                   "$\\lambda$"
+                  ],
+        "choices": ["a", "ab", "c", "b", "baa", "$\\lambda$"]
+      },
       "Operators": {
         "type": "select",
         "description": "Regular Expressions are defined using three basic operators.<br/><b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together. We often don't actually show the '$\\cdot$'. For example, to concatenate the letters a and b, we could write $a \\cdot b$ or just $ab$.<br/>$*$: Star-Closure. Repeat something zero or more times.",
@@ -35,7 +45,8 @@
         "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
         "question":"Suppose we have RegEx $r = a$, which of the following is the language represented by $L(r^*)$?",
         "answer": ["$\\{a^n\\mid n\\ge0\\}$"],
-        "choices": ["$\\lambda$","a", "aa", "aaa","aaaaaaaaa", "$\\{a^n\\mid n\\ge0\\}$"]
+        "choices": ["$\\lambda$","a", "aa", "aaa","aaaaaaaaa", "$\\{a^n\\mid n\\ge0\\}$"],
+        "incorrectFeedback": ["The question asks for ways of describing the language, not for examples of strings in the language."]
       },
       "alla": {
         "type": "select",
@@ -47,14 +58,15 @@
       "ab": {
         "type": "select",
         "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
-        "question":"Suppose we have RegEx $r = a$, and $s = b$. Which of the following is $L((r+s)^*)$?",
+        "question":"Suppose we have two RegEx $r = a$, and $s = b$. Which of the following is $L((r+s)^*)$?",
         "answer": ["$\\{w\\mid w\\in \\{a, b\\}^*\\}$", "any strings of a's and b's"],
-        "choices": ["ab", "aba", "baaa","aababababa", "$\\{w\\mid w\\in \\{a, b\\}^*\\}$", "any strings of a's and b's"]
+        "choices": ["ab", "aba", "baaa","aababababa", "$\\{w\\mid w\\in \\{a, b\\}^*\\}$", "any strings of a's and b's", "strings with at least one a and at least one b"],
+        "incorrectFeedback": ["The question asks for ways of describing the language, not for examples of strings in the language."]
       },
       "abstrings": {
         "type": "select",
         "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
-        "question":"Suppose we have RegEx $r = a$, and $s = b$. Which of the following strings are matched by the regular expression $(r+s)^*$?",
+        "question":"Suppose we have two RegEx $r = a$, and $s = b$. Which of the following strings are matched by the regular expression $(r+s)^*$?",
         "answer": ["ab", "aba", "baaa","aababababa"],
         "choices": ["ab", "aba", "baaa","aababababa"]
       },
@@ -81,16 +93,9 @@
       "regexstrings": {
         "type": "multiple",
         "description": "Definition: Given $\\Sigma$<br/>1. $\\lambda$ and $a \\in \\Sigma$ are RE.<br/>2. If $r$ and $s$ are RE, then $(r)$, $r + s$, $rs$, and $r^∗$ are RE.<br/>3. $r$ is a RE if and only if it can be derived from (1) with a finite number of applications of (2).",
-        "question": "Did you notice that a regular expression is a string? [T/F] The regular expressions for some alphabet $\\Sigma$ forms a language.",
+        "question": "[T/F] The regular expressions for some alphabet $\\Sigma$ forms a language.",
         "answer": "True",
         "choices": ["True", "False"]
-      },
-      "definition": {
-        "type": "select",
-        "description": "Definition: Given $\\Sigma$<br/>1. $\\lambda$ and $a \\in \\Sigma$ are RE.<br/>2. If $r$ and $s$ are RE, then $(r)$, $r + s$, $rs$, and $r^∗$ are RE.<br/>3. $r$ is a RE if and only if it can be derived from (1) with a finite number of applications of (2).",
-        "question": "Suppose $\\Sigma = \\{a, b, c\\}$, which of the following are valid regular expressions?",
-        "answer": ["$\\lambda$", "$a$", "$b$", "$c$"],
-        "choices": ["$\\lambda$", "$a$", "$b$", "$c$"]
       },
       "buildregex": {
         "type": "select",
@@ -109,9 +114,9 @@
       "empty": {
         "type": "select",
         "description": "Note that $\\emptyset$ $=$ $\\{\\}$ (the empty set), while $\\{\\lambda\\}$ means the set containing just the empty string.",
-        "question":"Select all true statements",
+        "question":"Select all true statements.",
         "answer": ["$\\emptyset = \\{\\}$",
-                   "$L(\\lambda) = \\{\\}$",
+                    "$L(\\lambda) = \\{\\lambda\\}$",
                    "$\\lambda$ is the empty string",
                    "$\\emptyset$ means no strings at all"],
         "choices": ["$\\emptyset = \\{\\}$",
@@ -119,7 +124,8 @@
                     "$L(\\lambda) = \\{\\}$",
                     "$\\emptyset = \\lambda$",
                     "$\\lambda$ is the empty string",
-                    "$\\emptyset$ means no strings at all"]
+                    "$\\emptyset$ means no strings at all"],
+        "incorrectFeedback": ["$L(\\lambda)$ is a tricky one. This is the set of strings that just contains $\\lambda$ (the empty string)."]
       },
       "abcstar": {
         "type": "select",
@@ -139,7 +145,8 @@
                     "$\\{a,b\\}\\cup L(c^*)$",
                     "$\\{a,b\\}\\cup\\{\\lambda, c, cc, ccc, ...)$",
                     "$\\{\\lambda, a, b, c, cc, ccc, ...)$",
-                    "$\\{a, b, c, cc, ccc, ...)$"]
+                    "$\\{a, b, c, cc, ccc, ...)$"],
+        "incorrectFeedback": ["Be sure that you consider whether $\\lambda$ is in the language properly."]
       },
       "precedence": {
         "type": "select",
@@ -189,10 +196,8 @@
         "question":"Can every finite set of strings be described by a RE?",
         "answer": "Yes",
         "choices": ["Yes", "No"],
-        "correctFeedback": ["Sure, even if the set has 100,000 strings. The RegEx will be $string_1+string_2+\\ldots+string_{100000}$"]
+        "correctFeedback": ["Sure, even if the set has 100,000 strings. The RegEx will be $string_1+string_2+\\ldots+string_{100000}$."]
       }
     }
   }
 }
-
-

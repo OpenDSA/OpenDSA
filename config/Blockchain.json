@@ -52,9 +52,9 @@
     },
     "Consensus Algorithms": {
       "Blockchain/Consensus": {},
-      "Blockchain/Mining": {},
       "Blockchain/Permissionless": {},
-      "Blockchain/Permissioned": {}
+      "Blockchain/Permissioned": {},
+      "Blockchain/HardForks": {}
     },
     "CryptoCurrencies": {
       "Blockchain/BitCoin": {},

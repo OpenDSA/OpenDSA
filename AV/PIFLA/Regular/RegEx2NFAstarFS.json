@@ -15,8 +15,8 @@
         "answer": "Create a new start state",
         "choices": ["Create a new start state",
                     "Create a new final state",
-                    "Conncet the new start state with old start state(s)",
-                    "connect the new final state with old final state(s)"]
+                    "Connect the new start state with old start state(s)",
+                    "Connect the new final state with old final state(s)"]
       },
       "connectstart": {
         "type": "multiple",
@@ -24,7 +24,7 @@
         "question": "To which state we need to connect the new start state with?",
         "answer": "The start state for $r$",
         "choices": ["The start state for $r$",
-                    "The finalt state for $r$"]
+                    "The final state for $r$"]
       },
       "final": {
         "type": "multiple",
@@ -36,16 +36,16 @@
       "zero": {
         "type": "multiple",
         "description": "$r^*$ means that you can repeat the same regular expression zero or more times.",
-        "question":"What should we do?",
-        "answer": "For Zero part, connct the new start state to the new final state",
-        "choices": ["For Zero part, connct the new start state to the new final state", "Connect the new final state to the new start state"]
+        "question":"What should we do to deal with the zero case?",
+        "answer": "Connect the new start state to the new final state",
+        "choices": ["Connect the new start state to the new final state", "Connect the new final state to the new start state"]
       },
       "more": {
         "type": "multiple",
         "description": "Repeating $r$ zero times means that you can go from the start state to the final state using a $\\lambda$ transition.",
-        "question":"What should we do next?",
+        "question":"What should we do next to handle the 'one or more' part?",
         "answer": "Connect the new final state to the new start state",
-        "choices": ["For Zero part, connct the new start state to the new final state", "Connect the new final state to the new start state"]
+        "choices": ["Connect the new start state to the new final state", "Connect the new final state to the new start state"]
       }
     }
   }

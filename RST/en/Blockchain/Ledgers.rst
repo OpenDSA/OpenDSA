@@ -62,7 +62,7 @@ order to know their current account balance.
 
 Fortunately, there is a fairly simple way to keep track of account
 balances even within the paradigm of storing a series of transactions.
-This is the Unspent Transaction Output (UTXO) model.
+This is the :term:`Unspent Transaction Output` (UTXO) model.
 Under this model, your total account balance is reflected by the
 output of your transaction.
 For example, if you currently have a total of 10 coins and you want to
@@ -78,8 +78,9 @@ balance, as their total balance is stored at the latest transaction.
 Distributed Public Ledgers
 --------------------------
 
-A basic public ledger is probably maintained by some central entity.
-The blockchain is used to guarantee that the prior transactions have
+A basic :term:`public ledger` is probably maintained by some central
+entity.
+A blockchain is used to guarantee that the prior transactions have
 not been tampered with.
 So long as the current start hash for the blockchain is publicly
 known, even the central entity that controls updating the ledger
@@ -91,8 +92,9 @@ If everyone trusts the central keeper, that is fine.
 But there are applications where the users of the system don't want
 there to be a central keeper of the ledger.
 
-Distributed ledgers are public ledgers that do not have a central
-controller who is in charge of adding blocks to the system.
+:term:`Distributed ledgers <distributed ledger>` are public ledgers
+that do not have a central controller who is in charge of adding
+blocks to the system.
 A distributed ledger has all of the goals of any public ledger.
 However, across a network of nodes, there are multiple copies of the
 ledger (the blockchain and its contents).
