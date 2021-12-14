@@ -1,8 +1,7 @@
 $(document).ready(function(){
   "use strict";
-  var av_name = "NFAToREFF";
+  var av_name = "NFAToREFS";
   var av = new JSAV(av_name);
-  var arrow = String.fromCharCode(8594);
   
   var grammar =  "[\
       [\"S\",\"→\",\"aB\"],\
@@ -11,20 +10,16 @@ $(document).ready(function(){
       [\"A\",\"→\",\"bS\"],\
       [\"A\",\"→\",\"bB\"],\
       [\"B\",\"→\",\"bS\"],\
-      [\"B\",\"→\",\"$\lambda$\"]\
+      [\"B\",\"→\",\"λ\"]\
   ]";
 
   var grammerArray = JSON.parse(grammar);
-
   var grammerMatrix = new GrammarMatrix(av, grammerArray, {top: 50, left: 0});
 
   var Frames = PIFRAMES.init(av_name);
   // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
   var goNext = false;
-  var FA = new av.ds.FA({width: 600, height: 200,left: 0, top:300});
+  var FA = new av.ds.FA({width: 500, height: 250, left: 0, top: 30});
   grammerMatrix.hide();
   //frame 1
   av.umsg("In this module we will prove that any NFA can be converted to a Right Linear Grammar.");
@@ -47,8 +42,8 @@ $(document).ready(function(){
   av.umsg(Frames.addQuestion("q9"));
   var factor = 0.6;
   var A = FA.addNode({left: 510*factor, top: 70, value: "A"});
-  var B = FA.addNode({left: 250*factor, top: 170, value: "B"});
-  var S = FA.addNode({left: 610*factor, top: 170, value: "S"});
+  var B = FA.addNode({left: 250*factor, top: 190, value: "B"});
+  var S = FA.addNode({left: 610*factor, top: 190, value: "S"});
   av.step();
   av.umsg(Frames.addQuestion("q10"));
   toggleInitial(FA, S);
@@ -95,7 +90,7 @@ $(document).ready(function(){
   FA.disableDragging();
   av.umsg("This is the equivalent NFA for this Regular Grammar");
   FA.removeEdge(S,B);
-  var D = FA.addNode({left: 450*factor, top: 150, value: "D"});
+  var D = FA.addNode({left: 450*factor, top: 140, value: "D"});
   FA.addEdge(S, D, {weight: "a"});
   FA.addEdge(D, B, {weight: "b"});
   av.step();

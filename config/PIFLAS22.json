@@ -145,6 +145,20 @@
       },
       "PIFLA/DFAMinimization": {}
     },
+    "Regular Languages": {
+      "PIFLA/RegEx":{},
+      "PIFLA/RegExExercises":{
+        "RegExbbaeven": {
+          "points": 2.0
+        },
+        "RegExnoaa": {
+          "points": 2.0
+        },
+        "RegExonebbb": {
+          "points": 2.0
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {}
     }

@@ -95,7 +95,7 @@ $(document).ready(function() {
   // Frame 11
   av.umsg("Once the string is accepted by the NFA for $s$, this means that this string belongs to the language $L(r \\cdot s)$. The transition symbol is $\\lambda$.");
   av.g.line(365, 315, 460, 210, {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  av.label(lambda, {left: 420, top: 230});
+  av.label(lambda, {left: 420, top: 245});
   av.step();
 
   // Frame 12

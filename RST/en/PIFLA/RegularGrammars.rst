@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed
+   :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies: Regular Grammar
    :topic: Regular Grammars
 
@@ -14,9 +14,10 @@ Regular Grammars
 
 Introduction to regular grammar
 -------------------------------
-.. inlineav:: RegularGrammarFF ff
-   :links: AV/PIExample/RegularGrammars/RegularGrammarFF.css
-   :scripts: AV/PIExample/RegularGrammars/RegularGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+
+.. inlineav:: RegularGrammarFS ff
+   :links: AV/PIFLA/Regular/RegularGrammarFS.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RegularGrammarFS.js
    :output: show
 
 

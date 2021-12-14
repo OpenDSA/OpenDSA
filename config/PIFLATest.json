@@ -61,27 +61,27 @@
       "PIFLA/RegEx":{},
       "PIFLA/RegExExercises":{
         "RegExbbaeven": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegExnoaa": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegExonebbb": {
-          "points": 5.0
+          "points": 2.0
         }
       },
       "PIFLA/RegExExercises2":{
         "RegExaby3": {
-          "points": 5.0
+          "points": 2.0
         },
-        "RegExcb3": {
-          "points": 5.0
+        "RegExcb2": {
+          "points": 2.0
         },
         "RegExabyb": {
-          "points": 5.0
+          "points": 2.0
         }
       },
-      "PIFormalLang/RegularGrammars": {},
+      "PIFLA/RegularGrammarsX": {},
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
           "points": 5.0

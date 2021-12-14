@@ -1,54 +1,58 @@
 [{
   "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
   "exerciseType": "REGEXP",
-  "totalTrueCases": 9,
-  "totalFalseCases": 2,
-  "containLetters": ["a", "b"],
+  "totalTrueCases": 8,
+  "totalFalseCases": 4,
+  "containLetters": ["a", "b", "c"],
   "randomStringLength": [0, 15],
-  "description": "Give a regular expression whose language is strings over $\\{a, b\\}$ in which the number of a's is divisible by 3.",
+  "description": "Give a regular expression whose language is strings over $\\{a, b, c\\}$ in which the total number of b’s and c’s sums to 2.",
   "testCases": [
     {
-      "": true,
+      "": false,
       "ShowTestCase": true
     },
     {
-      "bbbbbbbbbbb": true,
+      "aaaaaaaaaaaa": false,
       "ShowTestCase": true
     },
     {
-      "a": false,
+      "bb": true,
       "ShowTestCase": true
     },
     {
-      "babab": false,
+      "cc": true,
       "ShowTestCase": true
     },
     {
-      "aaa": true,
+      "bc": true,
       "ShowTestCase": true
     },
     {
-      "bbbaaa": true,
+      "cb": true,
       "ShowTestCase": true
     },
     {
-      "babaa": true,
+      "ababa": true,
       "ShowTestCase": true
     },
     {
-      "bababa": true,
+      "aaaacaaabaaaa": true,
       "ShowTestCase": true
     },
     {
-      "aaabbbbbb": true,
+      "caba": true,
       "ShowTestCase": true
     },
     {
-      "aaabbbababbba": true,
+      "bcaaaaaaaaaaa": true,
       "ShowTestCase": true
     },
     {
-      "aaaaaaaaaaaaaaa": true,
+      "bbbb": false,
+      "ShowTestCase": true
+    },
+    {
+      "bcbcbcb": false,
       "ShowTestCase": true
     }
   ],
