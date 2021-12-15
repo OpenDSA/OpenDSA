@@ -1,6 +1,6 @@
 {
-  "title": "CS4114 Formal Languages and Automata",
-  "desc": "CS4114 Formal Languages and Automata",
+  "title": "CS4114 Formal Languages and Automata: Spring 2022",
+  "desc": "CS4114 Formal Languages and Automata: Spring 2022",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -146,7 +146,20 @@
       "PIFLA/DFAMinimization": {}
     },
     "Regular Languages": {
-      "PIFLA/RegEx":{},
+      "PIFLA/RegEx":{
+        "RegEx2NFA1FS": {
+          "points": 1.0
+        },
+        "RegEx2NFAorFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAcatFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAstarFS": {
+          "points": 1.0
+        }
+      },
       "PIFLA/RegExExercises":{
         "RegExbbaeven": {
           "points": 2.0
@@ -156,6 +169,36 @@
         },
         "RegExonebbb": {
           "points": 2.0
+        }
+      },
+      "PIFLA/RegularGrammars": {
+        "REtoFAExampleFS": {
+          "points": 1.0
+        },
+        "STAFS": {
+          "points": 1.0
+        }
+      },
+      "PIFLA/RegGramEx1": {
+        "RegGramNFA1": {
+          "points": 2.0
+        },
+        "RegGrambbbaaaa": {
+          "points": 2.0
+        },
+        "RegGramaby3": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegClosure": {
+        "RLClosConceptFS": {
+          "points": 1.0
+        },
+        "RLHomomorphFS": {
+          "points": 1.0
+        },
+        "RLQuestionsFS": {
+          "points": 1.0
         }
       }
     },

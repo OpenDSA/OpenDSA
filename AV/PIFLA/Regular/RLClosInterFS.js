@@ -1,16 +1,11 @@
 $(document).ready(function () {
   "use strict";
-  var av_name = "RegularLangClosedInterFF";
+  var av_name = "RLClosInterFS";
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
-  var goNext = false;
 
   //frame 1
-  av.umsg("In this module, we will present an algorithm to find the interse intersection and difference operators.");
+  av.umsg("In this slideshow, we will prove that regular languages are closed under intersection. We do this by using a construction: Given the DFAs for the two languages, we will show how to build a DFA for the intersection of the two languages.");
   av.displayInit();
 
   //frame 2
@@ -48,7 +43,7 @@ $(document).ready(function () {
   //frame 10
   av.umsg(Frames.addQuestion("q10"));
   var FA = new av.ds.FA({width: 200, height: 150,left: 10, top:0});
-  var DFA = new av.ds.FA({width: 200, height: 150,left: 10, top:150});
+  var DFA = new av.ds.FA({width: 250, height: 200,left: 10, top:150});
   var newFA = new av.ds.FA({width: 400, height: 300,left: 10, top:300});
   var q0 = FA.addNode({left: 10, top: 50});
   q0.value("1");
@@ -56,15 +51,15 @@ $(document).ready(function () {
   q1.value("2");
   toggleInitial(FA, q0);
   toggleFinal(FA,q1);
-  FA.addEdge(q0,q0,{weight: "a"});
+  FA.addEdge(q0, q0,{weight: "a"});
   FA.addEdge(q0, q1, {weight: "b"});
   av.step();
 
   //frame 11
   av.umsg(Frames.addQuestion("q11"));
   var A = DFA.addNode({left: 10, top: 50});
-  var B = DFA.addNode({left: 700, top: 50});
-  var C = DFA.addNode({left: 140, top: 50});
+  var B = DFA.addNode({left: 100, top: 50});
+  var C = DFA.addNode({left: 190, top: 50});
   A.value("A");
   B.value("B");
   C.value("C");

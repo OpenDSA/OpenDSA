@@ -1,13 +1,8 @@
 $(document).ready(function () {
   "use strict";
-  var av_name = "RightQuotientFF";
+  var av_name = "RLClosQuotientFS";
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
-  var goNext = false;
 
   //frame 1
   av.umsg("The right quotient of $L_1$ with $L_2$ is the set of all strings $x$ where you can pick some element $y$ from $L_2$ and append it to $x$ to get something from $L_1$.");
@@ -71,7 +66,7 @@ $(document).ready(function () {
 
   //frame 16
   av.umsg("Let us see an example. Suppose the following DFA for $L_1 = \\{a^nb^m \\mid n\\ge 1,\\ m \\ge 0\\} \\cup \\{ba\\}$. We need to find the DFA for $L_1 \\backslash L_2$ where $L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$.");
-  var DFA1 = new av.ds.FA({left: 50, height: 500, url: "../../../AV/PIExample/ClosurePropertiesRegularLanguages/machines/RightQuotient1.jff"});
+  var DFA1 = new av.ds.FA({left: 50, height: 500, url: "../../../AV/OpenFLAP/machines/Regular/RightQuotient1.jff"});
   var q0 = DFA1.getNodeWithValue("q0");
   var q1 = DFA1.getNodeWithValue("q1");
   var q2 = DFA1.getNodeWithValue("q2");
@@ -156,7 +151,7 @@ $(document).ready(function () {
 
   //frame 32
   av.umsg("Exactly. Here is the DFA for $L_1$")
-  var DFA2 = new av.ds.FA({left: 50, top:50, height: 500, url: "../../../AV/PIExample/ClosurePropertiesRegularLanguages/machines/RightQuotient2.jff"});
+  var DFA2 = new av.ds.FA({left: 50, top:50, height: 500, url: "../../../AV/OpenFLAP/machines/Regular/RightQuotient2.jff"});
   var q00 = DFA2.getNodeWithValue("q0");
   var q11 = DFA2.getNodeWithValue("q1");
   var q22 = DFA2.getNodeWithValue("q2");

@@ -5,10 +5,9 @@
 
 .. avmetadata::
    :author: Mostafa Mohammed and Cliff Shaffer
-   :satisfies:
-   :requires: Regular Grammar
-   :topic: Regular Grammar exercises
-
+   :satisfies: Regular Grammars Exercises
+   :requires: Regular Grammars
+   :topic: Regular Languages
 
 More Regular Grammar Exercises
 ==============================

@@ -265,7 +265,17 @@
           "points": 2.0
         }
       },
-      "PIFormalLang/ClosurePropertiesOfRegularLanguages": {}
+      "PIFLA/RegClosure": {
+        "RLClosConceptFS": {
+          "points": 1.0
+        },
+        "RLHomomorphFS": {
+          "points": 1.0
+        },
+        "RLQuestionsFS": {
+          "points": 1.0
+        }
+      }
     },
     "Identifying Non-regular Languages":{
       "PIFormalLang/NonRegular":{}

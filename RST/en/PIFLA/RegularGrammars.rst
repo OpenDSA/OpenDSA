@@ -6,8 +6,8 @@
 .. avmetadata::
    :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
    :requires: FLA Introduction
-   :satisfies: Regular Grammar
-   :topic: Regular Grammars
+   :satisfies: Regular Grammars
+   :topic: Regular Languages
 
 
 Regular Grammars

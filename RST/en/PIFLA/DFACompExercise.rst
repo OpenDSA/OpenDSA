@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :author: Mostafa Mohammed, Cliff Shaffer
-   :requires: DFA
+   :requires: Deterministic Finite Automata
    :satisfies:
    :topic: DFA Complement exercise
 
