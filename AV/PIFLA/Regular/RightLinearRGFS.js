@@ -1,15 +1,13 @@
 $(document).ready(function() {
   "use strict";
   var arrow = String.fromCharCode(8594);
-  var av_name = "RightLinearRGFF";
+  var av_name = "RightLinearRGFS";
   var av = new JSAV(av_name);
   var url = "../../../AV/VisFormalLang/Regular/Machines/FA1.jff"
   var Frames = PIFRAMES.init(av_name);
-  var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-      interpret = config.interpreter;
 
-  var grammerMatrix = new GrammarMatrix( av,null, {style: "table", left: 10, top: 300});
-  var FA = new av.ds.FA({width: 300, height: 150, left: 10, url: url});
+  var FA = new av.ds.FA({top: -100, width: 300, height: 100, left: 10, url: url});
+  var grammerMatrix = new GrammarMatrix( av,null, {style: "table", left: 10, top: 100});
   grammerMatrix.createRow(["", arrow, ""]);
   grammerMatrix.createRow(["", arrow, ""]);
   grammerMatrix.createRow(["", arrow, ""]);

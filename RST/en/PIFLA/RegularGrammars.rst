@@ -4,7 +4,8 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
+   :requires: FLA Introduction
    :satisfies: Regular Grammar
    :topic: Regular Grammars
 
@@ -15,72 +16,90 @@ Regular Grammars
 Introduction to regular grammar
 -------------------------------
 
+Regular grammars are another way to describe regular languages.
+Recall that a grammar is made of of terminals, variables, and
+production rule.
+As the name implies, a **regular** grammar is a special type of
+grammar (we will see plenty of grammars later that are not regular).
+Which begs the question: What makes a grammar regular?
+
 .. inlineav:: RegularGrammarFS ff
    :links: AV/PIFLA/Regular/RegularGrammarFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RegularGrammarFS.js
    :output: show
 
+|  What we have already done this semester:
+|      Definition: DFA represents regular language
+|      Theorem: NFA :math:`\Longleftrightarrow` DFA
+|      Theorem: RE :math:`\Longleftrightarrow` NFA
+|  What we will do next:
+|      Theorem: DFA :math:`\Longleftrightarrow` regular grammar
 
-NFA from Regular Grammar
+Of course, this will mean that DFAs, NFAs, REs, regular languages, and
+regular grammars all have exactly the same power.
+
+
+Regular Grammars to NFAs
 ------------------------
 
-.. inlineav:: NFAToREFF ff
-   :links: AV/PIExample/RegularGrammars/NFAToREFF.css
-   :scripts: AV/PIExample/RegularGrammars/NFAToREFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js
+.. inlineav:: NFAToREFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/NFAToREFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/GrammarMatrix.js AV/PIFLA/Regular/NFAToREFS.js
    :output: show
 
-Regular Grammar to NFA Example
-------------------------------
-.. inlineav:: REtoFAExampleFF ff
-   :links: AV/PIExample/RegularGrammars/REtoFAExampleFF.css
-   :scripts: AV/PIExample/RegularGrammars/REtoFAExampleFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js
+|
+
+.. inlineav:: REtoFAExampleFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/REtoFAExampleFS.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/AddQuestions.js DataStructures/PIFrames.js DataStructures/FLA/GrammarMatrix.js AV/PIFLA/Regular/REtoFAExampleFS.js
    :output: show
 
-Right-linear Regular Grammar from NFA
--------------------------------------
 
-.. inlineav:: RightLinearRGFF ff
-   :links: AV/PIExample/RegularGrammars/RightLinearRGFF.css
-   :scripts: AV/PIExample/RegularGrammars/RightLinearRGFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
+Regular Grammars from NFAs
+--------------------------
+
+.. inlineav:: RightLinearRGFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RightLinearRGFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RightLinearRGFS.js 
    :output: show
 
-Regular Grammar from NFA Example
---------------------------------
+|
 
-.. inlineav:: NFAToReExampleFF ff
-   :links: AV/PIExample/RegularGrammars/NFAToReExampleFF.css
-   :scripts: AV/PIExample/RegularGrammars/NFAToReExampleFF.js AV/Peixuan/AddQuestionTest/AddQuestions.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js lib/underscore.js
+.. inlineav:: NFAToReExampleFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/NFAToReExampleFS.css
+   :scripts: lib/underscore.js DataStructures/FLA/AddQuestions.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/GrammarMatrix.js AV/PIFLA/Regular/NFAToReExampleFS.js 
    :output: show
+
 
 Left Regular Grammars
 ---------------------
-.. inlineav:: LeftLinearGrammarFF ff
-   :links: AV/PIExample/RegularGrammars/LeftLinearGrammarFF.css
-   :scripts: AV/PIExample/RegularGrammars/LeftLinearGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
+
+.. inlineav:: LeftLinearGrammarFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/LeftLinearGrammarFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/LeftLinearGrammarFS.js
    :output: show
 
 
-RegEx to Right Regular Grammar
-------------------------------
+RegEx and Regular Grammars
+--------------------------
 
-.. inlineav:: RegEXtoRegGrammarFF ff
-   :links: AV/PIExample/RegularGrammars/RegEXtoRegGrammarFF.css
-   :scripts: AV/PIExample/RegularGrammars/RegEXtoRegGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
+.. inlineav:: RegEXtoRegGrammarFS ff
+   :links: AV/PIFLA/Regular/RegEXtoRegGrammarFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEXtoRegGrammarFS.js
    :output: show
 
-RegEx to Left Regular Grammar
------------------------------
+|
 
-.. inlineav:: RegEXtoLeftRegGrammarFF ff
-   :links: AV/PIExample/RegularGrammars/RegEXtoLeftRegGrammarFF.css
-   :scripts: AV/PIExample/RegularGrammars/RegEXtoLeftRegGrammarFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js 
+.. inlineav:: RegEXtoLeftRegGrammarFS ff
+   :links: AV/PIFLA/Regular/RegEXtoLeftRegGrammarFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEXtoLeftRegGrammarFS.js
    :output: show
 
 
 Something to Think About
 ------------------------
 
-.. inlineav:: STA ff
-   :links: AV/PIExample/RegularGrammars/STA.css
-   :scripts: AV/PIExample/RegularGrammars/STA.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+.. inlineav:: STAFS ff
+   :links: AV/PIFLA/Regular/STAFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/STAFS.js
    :output: show

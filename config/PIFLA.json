@@ -196,7 +196,20 @@
       "PIFLA/DFAMinimization": {}
     },
     "Regular Languages": {
-      "PIFLA/RegEx":{},
+      "PIFLA/RegEx":{
+        "RegEx2NFA1FS": {
+          "points": 1.0
+        },
+        "RegEx2NFAorFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAcatFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAstarFS": {
+          "points": 1.0
+        }
+      },
       "PIFLA/RegExExercises":{
         "RegExbbaeven": {
           "points": 2.0
@@ -219,27 +232,37 @@
           "points": 2.0
         }
       },
-      "PIFormalLang/RegularGrammars": {},
+      "PIFLA/RegularGrammars": {
+        "REtoFAExampleFS": {
+          "points": 1.0
+        },
+        "STAFS": {
+          "points": 1.0
+        }
+      },
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegGrambbbaaaa": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegGramaby3": {
-          "points": 5.0
+          "points": 2.0
         }
       },
       "PIFLA/RegGramEx2": {
         "RegGramNFA2": {
-          "points": 5.0
+          "points": 2.0
+        },
+        "RegGramNFA2r": {
+          "points": 2.0
         },
         "RegGramaaabba": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegGramanbmodd": {
-          "points": 5.0
+          "points": 2.0
         }
       },
       "PIFormalLang/ClosurePropertiesOfRegularLanguages": {}

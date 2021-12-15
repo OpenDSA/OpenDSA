@@ -67,6 +67,7 @@ $(document).ready(function() {
   //frame 18
   av.umsg("We now have covered<br> Definition: DFA represents regular language <br> Theorem: NFA $\\Longleftrightarrow$ DFA<br> Theorem: RE $\\Longleftrightarrow$ NFA .<br> The next step will be Theorem: DFA $\\Longleftrightarrow$ Regular Grammar");
 
-
+  // Frame 19
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

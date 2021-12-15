@@ -1,7 +1,7 @@
 /*global Minimizer*/
 $(document).ready(function() {
     "use strict";
-    var av_name = "NFAToReExampleFF";
+    var av_name = "NFAToReExampleFS";
     var arrow = String.fromCharCode(8594);
     var av = new JSAV(av_name);
     var url = "../../../AV/OpenFLAP/machines/FA/NFAtoRE.jff";
@@ -10,7 +10,7 @@ $(document).ready(function() {
         arr[i] = ["", arrow, ""];
     }
     var lastRow = 0;
-    var grammarMatrix = av.ds.matrix(arr, {style: "table", left: 0, top: 250});
+    var grammarMatrix = av.ds.matrix(arr, {style: "table", left: 30, top: 200});
     // hide all of the empty rows
     for (var i = lastRow + 1; i < arr.length; i++) {
         grammarMatrix._arrays[i].hide();
