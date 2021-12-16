@@ -275,7 +275,8 @@
         "RLQuestionsFS": {
           "points": 1.0
         }
-      }
+      },
+      "VisFormalLang/DFAproperties": {}
     },
     "Identifying Non-regular Languages":{
       "PIFormalLang/NonRegular":{}

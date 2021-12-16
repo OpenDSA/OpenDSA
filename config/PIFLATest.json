@@ -57,87 +57,8 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Regular Languages": {
-      "PIFLA/RegEx":{
-        "RegEx2NFA1FS": {
-          "points": 1.0
-        },
-        "RegEx2NFAorFS": {
-          "points": 1.0
-        },
-        "RegEx2NFAcatFS": {
-          "points": 1.0
-        },
-        "RegEx2NFAstarFS": {
-          "points": 1.0
-        }
-      },
-      "PIFLA/RegExExercises":{
-        "RegExbbaeven": {
-          "points": 2.0
-        },
-        "RegExnoaa": {
-          "points": 2.0
-        },
-        "RegExonebbb": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegExExercises2":{
-        "RegExaby3": {
-          "points": 2.0
-        },
-        "RegExcb2": {
-          "points": 2.0
-        },
-        "RegExabyb": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegularGrammars": {
-        "REtoFAExampleFS": {
-          "points": 1.0
-        },
-        "STAFS": {
-          "points": 1.0
-        }
-      },
-      "PIFLA/RegGramEx1": {
-        "RegGramNFA1": {
-          "points": 2.0
-        },
-        "RegGrambbbaaaa": {
-          "points": 2.0
-        },
-        "RegGramaby3": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegGramEx2": {
-        "RegGramNFA2": {
-          "points": 2.0
-        },
-        "RegGramNFA2r": {
-          "points": 2.0
-        },
-        "RegGramaaabba": {
-          "points": 2.0
-        },
-        "RegGramanbmodd": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegClosure": {
-        "RLClosConceptFS": {
-          "points": 1.0
-        },
-        "RLHomomorphFS": {
-          "points": 1.0
-        },
-        "RLQuestionsFS": {
-          "points": 1.0
-        }
-      }
+    "Identifying Non-regular Languages": {
+      "PIFLA/NonRegular": {}
     },
     "Appendix": {
       "Glossary": {}
