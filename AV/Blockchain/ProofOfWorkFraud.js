@@ -3,8 +3,6 @@
 $(document).ready(function() {
     "use strict";
     var av_name = "ProofOfWorkFraud";
-    var config = ODSA.UTILS.loadConfig({av_name: av_name}),
-        interpret = config.interpreter;                   // get the code object
     var av = new JSAV(av_name);
     
     var topMargin = 50;
