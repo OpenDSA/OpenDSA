@@ -2,7 +2,7 @@
 // Inseh1234 slideshow
 $(document).ready(function() {
     "use strict";
-    var av_name = "ProofOfWork";
+    var av_name = "ProofOfWorkFraud";
     var config = ODSA.UTILS.loadConfig({av_name: av_name}),
         interpret = config.interpreter;                   // get the code object
     var av = new JSAV(av_name);
@@ -77,7 +77,7 @@ $(document).ready(function() {
   
     //-----------------------------------------------
     // Slide 1
-    av.umsg("Brown squares labeled (M1-M4) are mining nodes, Blue Circles labeled (F1-F4) are full nodes, White circles represent thin nodes");
+    av.umsg("The Consensus Process Begins just as above, nodes propagate transactions to be added to the chain");
 
     blockchain.addFirst("Blk 2").addFirst("Blk 1");
     blockchain2.addFirst("Blk 2").addFirst("Blk 1");
@@ -91,23 +91,16 @@ $(document).ready(function() {
     blockchain3.layout({updateTop: false});
     blockchain4.layout({updateTop: false});
         
-
-    av.displayInit();
-  
-    //-----------------------------------------------
-    // Slide 2
-    av.umsg("Thin node 7 has a new transaction it wants to broadcast. It begins telling all the nodes nearby. Orange lines denote an UNCONFIRMED transaction being broadcast to various nodes throughout the network.");
-    
     g.addClass("orangenode");
     const gm2Edge = graph.addEdge(g,m2).addClass("orangeedge");
     const gm3Edge = graph.addEdge(g,m3).addClass("orangeedge");
     const gf2Edge = graph.addEdge(g,f2).addClass("orangeedge");
     const gf3Edge = graph.addEdge(g,f3).addClass("orangeedge");
 
-    av.step();
-    
+    av.displayInit();
+  
     //-----------------------------------------------
-    // Slide 3
+    // Slide 2
     av.umsg("Transactions continue to propagate throughout the network via each node that receives them in transmission.");
     const m2f1Edge = graph.addEdge(m2, f1).addClass("orangeedge");
     const m2f2Edge = graph.addEdge(m2, f2).addClass("orangeedge");
@@ -121,18 +114,9 @@ $(document).ready(function() {
     const f4m4Edge = graph.addEdge(f4, m4).addClass("orangeedge");
     
     av.step();
-
-    //-----------------------------------------------
-    // Slide 4
-    av.umsg("An important note is that no other thin node can broadcast transactions on behalf of someone else. Each thin node can ONLY broadcast transactions when it holds the private key for the sending wallet. This prevents fake transactions from being sent on behalf of someone else.");
-    //@TODO: Reword the private key usage
-    //@TODO: 
-    //Animate a lock icon next to thin node 7 as to denote that it must hold its own private key
     
-    av.step();
-
     //-----------------------------------------------
-    // Slide 5
+    // Slide 3
     av.umsg("As shown below, each mining node now maintains its own ledger of unconfirmed transactions denoted A1-A4. It is important to recognize that each mining node will have slightly different ledgers of unconfirmed transactions as not all transactions are propagated at the same speed across the network.");
     gm2Edge.hide();
     gm3Edge.hide();
@@ -148,43 +132,32 @@ $(document).ready(function() {
     f4m4Edge.hide();
 
     g.removeClass("orangenode");
-
+    
     var m1Bundle = av.ds.list({"left": "160px",   "top":"130px", nodegap: 10}).addFirst("A1");
     var m2Bundle = av.ds.list({"left": "260px",   "top":"230px", nodegap: 10}).addFirst("A2");
     var m3Bundle = av.ds.list({"left": "160px",   "top":"230px", nodegap: 10}).addFirst("A3");
     var m4Bundle = av.ds.list({"left": "260px",   "top":"130px", nodegap: 10}).addFirst("A4");
-
-
-
     
-    av.step();
-
-    //-----------------------------------------------
-    // Slide 6
-    av.umsg("As now evident by the orange block A1, M1 has received enough transaction for it to begin proposing solutions to the block. This process of hashing is described in 3.1.");
-    m1Bundle.addClass("orangenode") //THIS DOES NOT WORK, NEED TO FIND A WAY TO TARGET FIRST ELEMENT IN LIST
     av.step();
     
     //-----------------------------------------------
-    // Slide 7
+    // Slide 4
     av.umsg("M1 now has arrived at a valid solution which it proposes to the full node, F2. Because this is the first solution to be proposed and it is valid, the solution is accepted by F2 and begins to get propagated throughout the network. Notice how the state of F2's chain has been updated but the other full nodes still have the original chain. Currently this network lacks consensus.");
     // Be more specific about what a valid solution is
     f2m1Edge.removeClass("orangeedge");
-    f2m1Edge.addClass("greenedge");
+    f2m1Edge.addClass("yellowedge");
     f2m1Edge.show();
 
     f2.removeClass("bluenode");
-    f2.addClass("greennode");
+    f2.addClass("yellownode");
 
     f2Chain.removeClass("bluenode");
-    f2Chain.addClass("greennode");
-    
+    f2Chain.addClass("yellownode");
 
     // @TODO:
     // Is there a way to just append to existing chain rather than hiding it and making a copy?
     blockchain2.hide();
     var blockchain2_1 = av.ds.list({top: blocktop + 50, left: "550px", nodegap: 10});
-    
     blockchain2_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
     blockchain2_1.layout({updateTop: false});
     
@@ -192,54 +165,135 @@ $(document).ready(function() {
     av.step();
 
     //-----------------------------------------------
-    // Slide 8
-    av.umsg("F2 will begin to propagate its valid solution to other neighboring full nodes.");
-    const f2f3Edge = graph.addEdge(f2, f3).addClass("greenedge");
-    const f2f1Edge = graph.addEdge(f2, f1).addClass("greenedge");
-    const f3f4Edge = graph.addEdge(f3, f4).addClass("greenedge");
-
-    f1.removeClass("bluenode");
-    f1.addClass("greennode");
+    // Slide 5
+    av.umsg("At this point, it is entirely possible and very likely that another mining node will propose a second valid solution to the network. This block also contains valid transactions; however, it is a slightly different bundle than what was proposed by M1. See below as M3 proposes A3 as the next block to be appended.");
+    m3f3Edge.removeClass("orangeedge");
+    m3f3Edge.addClass("purpleedge");
+    m3f3Edge.show();
     f3.removeClass("bluenode");
-    f3.addClass("greennode");
-    f4.removeClass("bluenode");
-    f4.addClass("greennode");
-
-    blockchain.hide();
-    blockchain3.hide();
-    blockchain4.hide();
-
-
-    var blockchain1_1 = av.ds.list({top: blocktop + 0, left: "550px", nodegap: 10});
-    var blockchain3_1 = av.ds.list({top: blocktop + 100, left: "550px", nodegap: 10});
-    var blockchain4_1 = av.ds.list({top: blocktop + 150, left: "550px", nodegap: 10});
-    
-    blockchain1_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
-    blockchain3_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
-    blockchain4_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
-
-    blockchain1_1.layout({updateTop: false});
-    blockchain3_1.layout({updateTop: false});
-    blockchain4_1.layout({updateTop: false});
-
-    f1Chain.removeClass("bluenode");
-    f1Chain.addClass("greennode");
+    f3.addClass("purplenode");
     f3Chain.removeClass("bluenode");
-    f3Chain.addClass("greennode");
-    f4Chain.removeClass("bluenode");
-    f4Chain.addClass("greennode");
+    f3Chain.addClass("purplenode");
 
+    blockchain3.hide();
+    var blockchain3_1 = av.ds.list({top: blocktop + 100, left: "550px", nodegap: 10});
+    blockchain3_1.addFirst("A3").addFirst("Blk2").addFirst("Blk1");
+    blockchain3_1.layout({updateTop: false});
+    av.step()
 
-    av.step();
 
     //-----------------------------------------------
-    // Slide 9
-    av.umsg("At this point, all full nodes have accepted the solution of M1. The network has reached consensus on the current state of the blockchain.");
+    // Slide 6
+    av.umsg("These conflicting chains will propagate to other nodes and now there are two separate versions of the blockchain in the network. The network is lacking consensus.");
+    
+    const f3f4Edge = graph.addEdge(f3, f4).addClass("purpleedge");
+    const f1f2Edge = graph.addEdge(f1, f2).addClass("yellowedge");
+
+    f4.removeClass("bluenode");
+    f4.addClass("purplenode");
+    f4Chain.removeClass("bluenode");
+    f4Chain.addClass("purplenode");
+    f1.removeClass("bluenode");
+    f1.addClass("yellownode");
+    f1Chain.removeClass("bluenode");
+    f1Chain.addClass("yellownode");
+
+    blockchain.hide();
+    var blockchain1_1 = av.ds.list({top: blocktop + 0, left: "550px", nodegap: 10});
+    blockchain1_1.addFirst("A1").addFirst("Blk2").addFirst("Blk1");
+    blockchain1_1.layout({updateTop: false});
+
+
+    blockchain4.hide();
+    var blockchain4_1 = av.ds.list({top: blocktop + 150, left: "550px", nodegap: 10});
+    blockchain4_1.addFirst("A3").addFirst("Blk2").addFirst("Blk1");
+    blockchain4_1.layout({updateTop: false});
+    av.step()
+
+    //-----------------------------------------------
+    // Slide 7
+    av.umsg("As time goes on, more transactions are broadcast and eventually a mining node will arrive at a solution for the next block! Shown below, M4 has just proposed a valid block to the chain.");
+    
+    //Hide Edges
+    f1f2Edge.hide();
     f2m1Edge.hide();
-    f2f1Edge.hide();
-    f2f3Edge.hide();
+    m3f3Edge.hide();
     f3f4Edge.hide();
 
+    //Repaint the Bundles
+    m1Bundle.hide();
+    m2Bundle.hide();
+    m3Bundle.hide();
+    m4Bundle.hide();
+
+    var m1BundleB = av.ds.list({"left": "160px",   "top":"130px", nodegap: 10}).addFirst("B1");
+    var m2BundleB = av.ds.list({"left": "260px",   "top":"230px", nodegap: 10}).addFirst("B2");
+    var m3BundleB = av.ds.list({"left": "160px",   "top":"230px", nodegap: 10}).addFirst("B3");
+    var m4BundleB = av.ds.list({"left": "260px",   "top":"130px", nodegap: 10}).addFirst("B4");
+
+
+    m4.removeClass("brownnode");
+    m4.addClass("greennode");
+    f4m4Edge.removeClass("orangeedge");
+    f4m4Edge.addClass("greenedge")
+    f4m4Edge.show();
+    f4.removeClass("purplenode");
+    f4.addClass("greennode");
+
+
+    blockchain4_1.hide();
+    var blockchain4_2 = av.ds.list({top: blocktop + 150, left: "550px", nodegap: 10});
+    blockchain4_2.addFirst("B4").addFirst("A3").addFirst("Blk2").addFirst("Blk1");
+    blockchain4_2.layout({updateTop: false});
+
+    f4Chain.removeClass("purplenode");
+    f4Chain.addClass("greennode");
+
+    av.step()
+
+    //-----------------------------------------------
+    // Slide 8
+    av.umsg("Because M4 had the same copy of the chain as F4, the proposed block is valid from the perspective of F4; however, that same block would be considered INVALID by F1 and F2.");
+    f4m4Edge.hide();
+    f3f4Edge.removeClass("purpleedge");
+    f3f4Edge.addClass("greenedge");
+    f3f4Edge.show();
+    f3.removeClass("purplenode");
+    f3.addClass("greennode");
+
+
+    blockchain3_1.hide();
+    var blockchain3_2 = av.ds.list({top: blocktop + 100, left: "550px", nodegap: 10});
+    blockchain3_2.addFirst("B4").addFirst("A3").addFirst("Blk2").addFirst("Blk1");
+    blockchain3_2.layout({updateTop: false});
+    f3Chain.removeClass("purplenode");
+    f3Chain.addClass("greennode");
+    av.step()
+
+    //-----------------------------------------------
+    // Slide 10
+    av.umsg("For a short period of time, it is possible that both chains continue to propagate; however, one chain will always grow larger faster than the other. Over the course of ~6 blocks, the full nodes will surrender their beliefs and subscribe the the chain with the greatest proof of work.");
+    f3f4Edge.hide();
+    f1.removeClass("yellownode");
+    f2.removeClass("yellownode");
+    f1.addClass("greennode");
+    f2.addClass("greennode");
+    
+
+    blockchain1_1.hide();
+    var blockchain1_2 = av.ds.list({top: blocktop + 0, left: "550px", nodegap: 10});
+    blockchain1_2.addFirst("B4").addFirst("A1").addFirst("Blk2").addFirst("Blk1");
+    blockchain1_2.layout({updateTop: false});
+
+    blockchain2_1.hide();
+    var blockchain2_2 = av.ds.list({top: blocktop + 50, left: "550px", nodegap: 10});
+    blockchain2_2.addFirst("B4").addFirst("A1").addFirst("Blk2").addFirst("Blk1");
+    blockchain2_2.layout({updateTop: false});
+
+    f1Chain.removeClass("yellownode");
+    f2Chain.removeClass("yellownode");
+    f1Chain.addClass("greennode");
+    f2Chain.addClass("greennode");
 
     av.recorded();
   });
