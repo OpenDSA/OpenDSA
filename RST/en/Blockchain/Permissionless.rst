@@ -237,6 +237,14 @@ not any left or a limit has been reached, which rarely occurs.
 But what if some miner wants to claim a fraudulant transaction?
 How does trusting the chain with the greatest amount of work prevent
 fraud?
+
+.. inlineav:: ProofOfWorkFraud ss
+   :long_name: ProofOfWorkFraud Slideshow
+   :links: AV/Blockchain/ProofOfWork.css
+   :scripts: AV/Blockchain/ProofOfWorkFraud.js
+   :output: show
+
+
 In the example above, imagine that 'Blk B' as proposed by node 4
 contains a fraudulent transaction pretending that some arbitrary user
 sent node 4 $100.
