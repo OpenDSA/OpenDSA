@@ -1,20 +1,15 @@
 $(document).ready(function () {
   "use strict";
-  var av_name = "PLExample5FF";
+  var av_name = "PLExample6FS";
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
-  var goNext = false;
 
   //frame 1
-  av.umsg("Prove that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.");
+  av.umsg("This time we will try a hard example.");
   av.displayInit();
 
   //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  av.umsg("Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular.");
   av.step();
 
   //frame 3
@@ -90,6 +85,38 @@ $(document).ready(function () {
   av.step();
 
   //frame 21
-  av.umsg("We proved that $\\Sigma=\\{a,b\\}, L = \\{w\\in{\\Sigma}^{*}\\mid n_a(w) > n_b(w)\\}$ is not regular.");
+  av.umsg(Frames.addQuestion("q21"));
+  av.step();
+
+  //frame 22
+  av.umsg(Frames.addQuestion("q22"));
+  av.step();
+
+  //frame 23
+  av.umsg(Frames.addQuestion("q23"));
+  av.step();
+
+  //frame 24
+  av.umsg(Frames.addQuestion("q24"));
+  av.step();
+
+  //frame 25
+  av.umsg(Frames.addQuestion("q25"));
+  av.step();
+
+  //frame 26
+  av.umsg(Frames.addQuestion("q26"));
+  av.step();
+
+  //frame 27
+  av.umsg(Frames.addQuestion("q27"));
+  av.step();
+
+  //frame 28
+  av.umsg(Frames.addQuestion("q28"));
+  av.step();
+
+  //frame 21
+  av.umsg("Therefore, there is no possible partition of $w$. This means that $L$ is not regular.");
   av.recorded();
 });

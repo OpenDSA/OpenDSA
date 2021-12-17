@@ -1,13 +1,8 @@
 $(document).ready(function () {
   "use strict";
-  var av_name = "introToPumpingFF";
+  var av_name = "introPumpingFS";
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
-  var goNext = false;
 
   //frame 1
   av.umsg("In the previous proof, we introduce the concept of $ \\textbf{pumping}$ the string as we go around the loop. Loops are how we get infinite languages. They are also how we lose count or otherwise lose the ability to distinguish various properties of the string being processed");
