@@ -279,7 +279,23 @@
       "VisFormalLang/DFAproperties": {}
     },
     "Identifying Non-regular Languages":{
-      "PIFormalLang/NonRegular":{}
+      "PIFLA/NonRegular": {
+        "introPumpingFS": {
+          "points": 1.0
+        },
+        "ClosPropFS": {
+          "points": 1.0
+        },
+        "ClosPropEx1FS": {
+          "points": 1.0
+        },
+        "ClosPropEx2FS": {
+          "points": 1.0
+        },
+        "ClosPropEx3FS": {
+          "points": 1.0
+        }
+      }
     },
     "Context-Free Grammars and Languages":{
       "PIFormalLang/ContexFreeLanguages": {},
@@ -369,23 +385,18 @@
         }
       }
     },
+    "Limits to Computing": {
+      "PIFLA/LimCompFLA": {},
+      "PIFLA/Reduction": {},
+      "PIFLA/NPComplete": {},
+      "PIFLA/Impossible": {}
+    },
     "Parsing":{
       "VisFormalLang/ParseIntro":{},
       "VisFormalLang/LLParsing":{},
       "VisFormalLang/LRParsing":{},
       "VisFormalLang/CYKParsing":{},
       "VisFormalLang/Compiler":{}
-    },
-    "Limits to Computing": {
-      "PIFormalLang/PairToSortCONPI": {},
-      "PIFormalLang/LowerBound": {},
-      "PIFormalLang/TwoMulExample": {},
-      "PIFormalLang/TravelSalesman": {},
-      "PIFormalLang/KClique": {},
-      "PIFormalLang/SATProof": {},
-      "PIFormalLang/NPCCoping": {},
-      "PIFormalLang/UnsolveableProblems1": {},
-      "PIFormalLang/UnsolveableProblems2": {}
     },
     "Appendix": {
       "Glossary": {}
