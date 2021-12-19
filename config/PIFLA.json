@@ -352,36 +352,35 @@
     "Properties of Context-free Languages":{
       "PIFormalLang/CFLProp":{}
     },
-    "Models of Computation":{
-      "VisFormalLang/TuringIntro":{},
-      "PIFormalLang/TuringMachines":{},
-      "PIFormalLang/TMExercises":{
+    "Turing Machines":{
+      "PIFLA/TuringMachines":{},
+      "PIFLA/TMExercises":{
         "addOnea":{ 
-          "points": 5.0
+          "points": 2.0
         },
         "eraseABC":{ 
-          "points": 5.0
+          "points": 2.0
         },
         "keepABC":{ 
-          "points": 5.0
+          "points": 2.0
         },
         "aNumsPowerOf2":{ 
-          "points": 5.0
+          "points": 2.0
         },
         "ifaNumsPowerOf2":{ 
-          "points": 5.0
+          "points": 2.0
         },
         "abcWInWWROut":{ 
-          "points": 5.0
+          "points": 2.0
         },
         "abcNawlargerthanNbw":{ 
-          "points": 5.0
+          "points": 2.0
         },
         "replaceABAbyACA":{ 
-          "points": 5.0
+          "points": 2.0
         },
         "abPalindromes":{ 
-          "points": 5.0
+          "points": 2.0
         }
       }
     },

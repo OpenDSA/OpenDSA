@@ -33,36 +33,35 @@ Exercise 3
 Exercise 4
 ----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/aNumsPowerOf2.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/aNumsPowerOf2.html pe
    :long_name: Turing Machines Exercise
 
 Exercise 5
 ----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/ifaNumsPowerOf2.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/ifaNumsPowerOf2.html pe
    :long_name: Turing Machines Exercise
 
 Exercise 6
 ----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abcWInWWROut.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/abcWInWWROut.html pe
    :long_name: Turing Machines Exercise
 
 Exercise 7
 ----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abcNawlargerthanNbw.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/abcNawlargerthanNbw.html pe
    :long_name: Turing Machines Exercise
 
 Exercise 8
 ----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/replaceABAbyACA.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/replaceABAbyACA.html pe
    :long_name: Turing Machines Exercise
 
 Exercise 9
 ----------
 
-.. avembed:: AV/Peixuan/TuringMachinesExercises/abPalindromes.html pe
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/abPalindromes.html pe
    :long_name: Turing Machines Exercise
-

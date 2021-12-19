@@ -57,11 +57,37 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Limits to Computing": {
-      "PIFLA/LimCompFLA": {},
-      "PIFLA/Reduction": {},
-      "PIFLA/NPComplete": {},
-      "PIFLA/Impossible": {}
+    "Turing Machines":{
+      "PIFLA/TuringMachines":{},
+      "PIFLA/TMExercises":{
+        "addOnea":{ 
+          "points": 5.0
+        },
+        "eraseABC":{ 
+          "points": 5.0
+        },
+        "keepABC":{ 
+          "points": 5.0
+        },
+        "aNumsPowerOf2":{ 
+          "points": 5.0
+        },
+        "ifaNumsPowerOf2":{ 
+          "points": 5.0
+        },
+        "abcWInWWROut":{ 
+          "points": 5.0
+        },
+        "abcNawlargerthanNbw":{ 
+          "points": 5.0
+        },
+        "replaceABAbyACA":{ 
+          "points": 5.0
+        },
+        "abPalindromes":{ 
+          "points": 5.0
+        }
+      }
     },
     "Appendix": {
       "Glossary": {}
