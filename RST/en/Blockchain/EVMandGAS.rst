@@ -34,13 +34,14 @@ Ethereum State
 
 Before we get started, let's define a few terms:
 
-1. Transaction: Something that changes data within the blockchain.
+ 1. Transaction: Something that changes data within the blockchain.
 Common examples of this are changing account balances (sending ETH to
 someone else) or editing data within a `smart contract`.
-2. Block: A blockchain is composed of blocks, which are each filled
+ 2. Block: A blockchain is composed of blocks, which are each filled
 with transactions.
-3. Ethereum State: A snapshot of the Ethereum blockchain at a point in time.  
-4. Global Ethereum State: The agreed upon state of Ethereum by
+
+ 3. Ethereum State: A snapshot of the Ethereum blockchain at a point in time.  
+ 4. Global Ethereum State: The agreed upon state of Ethereum by
 up-to-date instances of the EVM.
 
 Elaborating on the Ethereum State -- it's all stored in an
