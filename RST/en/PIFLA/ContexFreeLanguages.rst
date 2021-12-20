@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed
+   :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies:
    :topic: Context-Free Grammars and Languages
 
@@ -13,30 +13,33 @@ Context-Free Languages
 
 Context-Free Languages 
 ----------------------
-.. inlineav:: ContextFreeLanguagesFF ff
-   :links: AV/PIExample/CFL/ContextFreeLanguagesFF.css
-   :scripts: AV/PIExample/CFL/ContextFreeLanguagesFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+.. inlineav:: CFLFS ff
+   :links: AV/PIFLA/CFL/CFLFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/CFL/CFLFS.js
    :output: show
+
 
 String Derivation
 -----------------
-.. inlineav:: CFGDerivationsFF ff
-   :links: AV/PIExample/CFL/CFGDerivationsFF.css
-   :scripts: AV/PIExample/CFL/CFGDerivationsFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+.. inlineav:: CFGDerivationsFS ff
+   :links: AV/PIFLA/CFL/CFGDerivationsFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/CFL/CFGDerivationsFS.js
    :output: show
+
 
 Derivation Trees
 ----------------
-.. inlineav:: DerivationTreesFF ff
-   :links: AV/PIExample/CFL/DerivationTreesFF.css
-   :scripts: AV/PIExample/CFL/DerivationTreesFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+.. inlineav:: DerivationTreesFS ff
+   :links: AV/PIFLA/CFL/DerivationTreesFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/CFL/DerivationTreesFS.js
    :output: show
 
 Derivation Trees Example
 ------------------------
-.. inlineav:: DerivationTreesExampleFF ff
-   :links: AV/PIExample/CFL/DerivationTreesExampleFF.css
-   :scripts: AV/PIExample/CFL/DerivationTreesExampleFF.js lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+
+.. inlineav:: TreeExampleCON ss
+   :links: AV/PIFLA/CFL/TreeExampleCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/PIFLA/CFL/TreeExampleCON.js
    :output: show
 
 
@@ -46,13 +49,15 @@ Practice question 1
 .. avembed:: Exercises/FLA/NumParseTreeNodes.html ka
    :long_name: Determine Number of nodes
 
+
 Membership Problem
 ------------------
 
-.. inlineav:: MembershipProblemFF ff
-   :links: AV/PIExample/CFL/MembershipProblemFF.css
-   :scripts: AV/PIExample/CFL/MembershipProblemFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+.. inlineav:: MembershipFS ff
+   :links: AV/PIFLA/CFL/MembershipFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/CFL/MembershipFS.js
    :output: show
+
 
 Practice question 2
 -------------------
@@ -63,9 +68,9 @@ Practice question 2
 
 Ambiguity
 ---------
-.. inlineav:: AmbiguityFF ff
-   :links: AV/PIExample/CFL/AmbiguityFF.css
-   :scripts: AV/PIExample/CFL/AmbiguityFF.js DataStructures/PIFrames.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js
+.. inlineav:: AmbiguityFS ff
+   :links: AV/PIFLA/CFL/AmbiguityFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/CFL/AmbiguityFS.js
    :output: show
 
 
@@ -115,7 +120,7 @@ Unambiguous grammar parse tree Example
 
 .. inlineav:: ParseTreeForExpCON ss
    :links:   AV/VisFormalLang/CFG/ParseTreeForExpCON.css
-   :scripts: AV/VisFormalLang/CFG/ParseTreeForExpCON.js
+   :scripts: DataStructures/FLA/PDA.js AV/VisFormalLang/CFG/ParseTreeForExpCON.js
    :output: show
 
 Associativity
@@ -254,5 +259,3 @@ and type:
 
    | declare: int Sum(int a, int b, int c) ...
    | call: newsum = Sum(x,y);
-
-.. odsascript:: Exercises/FLA/EvalExp.js

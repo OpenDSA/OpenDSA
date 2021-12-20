@@ -99,18 +99,21 @@ Turing-Decidable vs. Turing-Acceptable Languages
 Making More Complicated Machines part 1
 ---------------------------------------
 
+Obviously, Turing Machines can take an input and modify it.
+We will see examples of how this leads to powerful computational
+capability, even if it does not seem yet like they are so powerful.
+To get a quick idea of their power, consider the following relatively
+simple machine to accept :math:`L(a^nb^nc^n)`.
+This is significant, because this language is in fact not context
+free.
+Which means that this simple Turing Machine is doing something that no
+DFA, NFA, or PDA can do!
+
 .. inlineav:: TMComplicated1FS ff
    :links: AV/PIFLA/TM/TMComplicated1FS.css
    :scripts:  lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMComplicated1FS.js
    :output: show
 
-|
-
-.. inlineav:: TMComplicated2FS ff
-   :links: AV/PIFLA/TM/TMComplicated2FS.css
-   :scripts:  lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMComplicated2FS.js
-   :output: show
-   
 |
 
 .. inlineav:: TMComplicated3FS ff

@@ -1,13 +1,8 @@
 $(document).ready(function () {
   "use strict";
-  var av_name = "ContextFreeLanguagesFF";
+  var av_name = "CFLFS";
   var av = new JSAV(av_name,);
   var Frames = PIFRAMES.init(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
-  var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-      interpret = config.interpreter, // get the interpreter
-      code = config.code;             // get the code object
-  var goNext = false;
 
   //frame 1
   av.umsg("In the previous chapters, we see that some languages are regular languages, which means that we can define a DFA, NFA, Regular expression, or Regular grammar for them.");
