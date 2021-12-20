@@ -59,7 +59,7 @@ instances might be slightly behind due to not yet having received the
 latest updates through the network.
 This is because each EVM instance receives a new state from other EVM
 instances.
-That new state will propegate throughout the network,
+That new state will propagate throughout the network,
 which takes time.
 
 So, how does this global state update?
@@ -242,8 +242,8 @@ re-approve all transactions in the block.
 This includes the transactions to pay the miner their collected gas
 fee from the block.
 Once validated, the node's local state will update to include the new
-block, and it will continue propegating through the network.
-In general, once a node has propegated throughout at least 51% of the
+block, and it will continue propagating through the network.
+In general, once a node has propagated throughout at least 51% of the
 network, we can say the global state of Ethereum will transition to 
 include the new block.
 
