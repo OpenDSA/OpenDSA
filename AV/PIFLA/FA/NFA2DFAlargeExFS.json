@@ -71,7 +71,7 @@
       },
       "q4a": {
         "type": "select",
-        "description": "Now process {q4}",
+        "description": "That finishes {q3}. So, now we process {q4}",
         "question":"In the NFA, what states are reachable from q4 on 'a'?",
         "answer": ["q4"],
         "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
@@ -99,7 +99,7 @@
         "question":"In the NFA, what states are reachable from q1 and q5 on 'b'?",
         "answer": ["none"],
         "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
-        "correctFeedback": "So, no new node gets added to the DFA."
+        "correctFeedback": "So, no new node or transition gets added to the DFA."
       },
       "q6a": {
         "type": "select",

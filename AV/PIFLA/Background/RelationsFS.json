@@ -3,14 +3,14 @@
     "en": {
       "tuple": {
         "type": "select",
-        "description": "A relation $R$ over set $S$ means a set of :term:`tuples` of elements from set $S$. A tuple is just some elements of the set in $\\langle\\rangle$ brakets.",
-        "question": "If $S$ is $\\{a, b, c\\}$, which of these are tuples?",
+        "description": "A relation $R$ over set $S$ means a set of :term:`tuples <tuple>` of elements from set $S$. A tuple is just some elements of the set in $\\langle\\rangle$ brakets.",
+        "question": "If $S$ is $\\{a, b, c\\}$, which of these are tuples from $S$?",
         "answer": ["$\\langle a, b, c\\rangle$", "$\\langle a, c\\rangle$", "$\\langle a \\rangle$"],
         "choices": ["$\\langle a, b, c\\rangle$", "$\\langle a, c\\rangle$", "$\\langle a \\rangle$", "$\\{a, c\\}$", "$\\langle a, d\\rangle$"]
       },
       "binary": {
         "type": "select",
-        "description": "While a relation might work on an number of items from set $S$ (just like a function might require any number of parameters), nearly always we are going to consider :term:`binary relations`. In this case, the relation is a set of ordered pairs, where the elements in the ordered pair are elements of $S$. We often use relations such as 'plus' ($+$) or the less-than operator ($<$) on the natural numbers.",
+        "description": "While a relation might involve any number of items from set $S$ (just like a function might require any number of parameters), nearly always we are going to consider :term:`binary relations <binary relation>`. In this case, the relation is a set of ordered pairs, where the elements in the ordered pair are elements of $S$. We often use relations such as 'plus' ($+$) or the less-than operator ($<$) on the natural numbers.",
         "question": "The 'less than' operator ($<$) includes which of the following ordered pairs?",
         "answer": ["$\\langle1, 3\\rangle$", "$\\langle2, 23\\rangle$"],
         "choices": ["$\\langle1, 3\\rangle$", "$\\langle2, 23\\rangle$", "$\\langle 3, 2\\rangle$", "$\\langle2, 2\\rangle$"],
@@ -24,9 +24,16 @@
         "answer": "4 $<$ 5",
         "choices": ["4 $<$ 5", "5 $<$ 4", "4 $=$ 5", "4 $\\le$ 5", "4 $\\ge$ 5"]
       },
+      "plus": {
+        "type": "select",
+        "description":"The plus ($+$) operator also defines a relation on a set.Let's assume that we are considering plus on integers (another relation is to apply plus to real numbers). Since plus is a binary operator with two integer inputs and an integer output, it is a relation defined by a collection of 3-tuples. A 3-tuple is in the relation if the sum of the first two values is equal to the third. For example, tuple $\\langle 5, 4, 9\\rangle$ is in the relation, and tuple $\\langle 5, 4, 8\\rangle$ is not.",
+        "question": "Which of these tuples is in the relation 'plus' on integers?",
+        "answer": ["$\\langle 1, 1, 2\\rangle$", "$\\langle 2, 2, 4\\rangle$"],
+        "choices": ["$\\langle 1, 1, 2\\rangle$", "$\\langle 1, 1\\rangle$", "$\\langle 1, 2, 2\\rangle$", "$\\langle 2, 2, 4\\rangle$"]
+      },
       "relation": {
         "type": "select",
-        "description": "For the rest of this discussion, we assume that our relations are always binary, and so the relation is a set of ordered pairs. And remember that a relation $R$ on set $S$ is simply some subset of the ordered pairs possible on elemnts of $S$. This might mean none of them (the empty set of such ordered pairs) all of them, or anything in between.",
+        "description": "For the rest of this discussion, we assume that our relations are always binary, and so the relation is a set of ordered pairs. And remember that a relation $R$ on set $S$ is simply some subset of the ordered pairs possible on elemnts of $S$. This might mean none of them (the empty set of such ordered pairs), all of them, or anything in between.",
         "question": "For set $S = \\{1, 2, 3\\}$, which of these is the set of ordered pairs making up the $<$ relation?",
         "answer": ["$\\langle 1, 2\\rangle$", "$\\langle 1, 3\\rangle$", "$\\langle 2, 3\\rangle$"],
         "choices": ["$\\langle 1, 1\\rangle$", "$\\langle 1, 2\\rangle$", "$\\langle 1, 3\\rangle$", "$\\langle 2, 1\\rangle$", "$\\langle 2, 2\\rangle$", "$\\langle 2, 3\\rangle$", "$\\langle 3, 1\\rangle$", "$\\langle 3, 2\\rangle$", "$\\langle 3, 3\\rangle$"]
@@ -70,7 +77,8 @@
         "description": "$R$ is antisymmetric if whenever $aRb$ and $bRa$, then $a = b$, for all $a, b \\in S$",
         "question": "Which of the following relations are antisymmetric?",
         "answer": ["$>$", "$=$", "$\\leq$"],
-        "choices": ["$>$", "$=$", "$\\leq$"]
+        "choices": ["$>$", "$=$", "$\\leq$"],
+        "correctFeedback": ["For $>$, this is vacuously true since there is never a case where $aRa$ is in the relation, nor where $aRb$ and $bRa$ are both in the relation."]
       },
       "transitive": {
         "type": "select",

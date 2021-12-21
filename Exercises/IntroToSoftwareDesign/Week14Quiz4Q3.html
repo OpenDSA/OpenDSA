@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Try/Catch Blocks</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Week14Quiz4Q3">
+        <p class="question">What is wrong with the following try/catch block?</p>
+<pre class="prettyprint">
+try
+{
+    fibonacci();
+}
+catch (Exception excp)
+{
+    System.out.println("An error occured");
+}
+catch (ArrayIndexOutOfBoundsException illegal)
+{
+    System.out.println("Array Out of Bounds!");
+}</pre>
+        <div class="solution">The second catch block can never run</div>
+        <ul class="choices">
+        <li>There are two catch statements</li>
+        <li>There is no finally block</li>
+        <li>The try block contains only one statement</li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

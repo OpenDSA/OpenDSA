@@ -15,6 +15,20 @@ Grammar Exercises
 Grammar Exercises
 -----------------
 
+Note: For these exercises, non-terminals are assumed to be single capital
+letters, and the start symbol is whatever non-terminal (a single capital
+letter) is on the left side of the first rule.
+There can be only one production per rule, so you may not have a rule
+like :math:`S \rightarrow a | b`.
+Instead, you need to use a separate row for each production,
+like :math:`S \rightarrow a` and :math:`S \rightarrow b`.
+If you want a production to go to :math:`\lambda`, then click in the
+box, leave it empty, and click outside the box.
+
+Occasionally, it can take the autograder a little while to run for an
+exercise, so give it some time (up to a minute) if it seems like there
+is no response.
+
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntro3str.html pe
    :long_name: Three string grammar
 

@@ -79,24 +79,36 @@ this update is called a :term:`consensus algorithm`.
 
 A variety of consensus algorithms have been proposed and implemented.
 These include :term:`Proof of Work`, :term:`Proof of Stake`,
-:term:`Byzantine agreement`, and variants of each.
-Two fundamental features of a consensus algorithm
-are (1) who is most able to control defining the next block (or the
-probability distribution among possible contributors to decide who
-gets that right), and (2) the actual mechanism for communicating the
-update information among all observers of the ledger.
+:term:`Byzantine agreement`, :term:`Proof of Burn`,
+:term:`Proof of Capacity`, and many variations on these.
+Some fundamental features of a consensus algorithm are
+(1) Who gets to propose the next block? (Sometimes this is a subset
+of the community.)
+(2) How does the rest of the community "verify" that the proposed
+block is acceptable?
+(3) What is the actual mechanism for communicating the
+update information among all observers of the ledger?
+Many of the consensus algorithms solve (1) by requiring proposers to
+consume some resource (compute cycles, memory, or some of their
+cryptocurreny).
+If the proposer(s) are successful at adding a new block, then they are
+rewarded with come cryptocurrency or other resource, paid either by
+the cryptocurrency system itself (BitCoin works this way), or by the
+participants in the transactions that were added to the blockchain by
+this process (Ethereum is an example).
 
 There are at least two challenges to implementing the mechanics
 of distributing this update information to reach consensus in a
 distributed environment.
 The first challenge is that there is no guarantee of a 
-universal clock or of message delivery to rely on.
+universal clock or even of reliable message delivery within the
+network.
 Only after making some reasonable timing assumptions can an algorithm
 be certain that all messages have been successfully delivered and that
 a consistent decision has been reached.
-The second challenge is that there may be malicious 
-actors in the system who are not honest (do not follow the consensus 
-protocol) and who even subvert other actors in the system.
+The second challenge is that there may be malicious actors in the
+system who are not honest (do not follow the consensus protocol)
+and who even subvert other actors in the system.
 If there are enough malicious actors (often called *adversaries*) in
 the system, then no consensus algorithm can be successful.
 Consequently, there must be assumptions about the powers of an
@@ -106,7 +118,7 @@ well.
 Fortunately, good consensus algorithms can succeed so long as a
 majority of the participants are "honest".
 
-Consensus has clearly failed if there is a long-lasting *fork* in the 
+Consensus has clearly failed if there is a long-lasting :term:`fork` in the 
 blockchain, where more than one block has been accepted as the next block 
 in the blockchain by different groups of participants.
 Pay particular attention to the way in which each consensus protocol
@@ -115,10 +127,11 @@ avoids long-lasting forks.
 Rather than discuss consensus protocols in the abstract, we address 
 consensus concretely in existing blockchain systems.
 These systems naturally fall into two categories:
-:term:`permissionless systems` where anyone can  
-join as a potential participant in the consensus protocol;
-and :term:`permissioned systems`, where only designated, trusted
-participants are allowed to perform the consensus protocol.
+:term:`permissionless systems <permissionless ledger system>` where
+anyone can join as a potential participant in the consensus protocol;
+and :term:`permissioned systems <permissioned ledger system>`,
+where only designated, trusted participants are allowed to perform the
+consensus protocol.
 Permissionless systems are more common, and we consider these examples:
 
 * Bitcoin
@@ -126,7 +139,7 @@ Permissionless systems are more common, and we consider these examples:
 * Algorand
 
 Each of these systems has an associated cybercurrency.
-Though, a cybercurrency is not essential in a permissioned system,
+Though, a cybercurrency is not essential in a permissionless system,
 this is just what they have mostly been used for historically.
 
 We also will describe this  permissioned system:

@@ -57,5 +57,7 @@ of input to the program, not just the ones that the user will provide
 when they "use the program correctly".
 Only testing for "proper" inputs or uses of the program is called
 :term:`happy path testing`.
-But happy path testing alone is not good enough to write reliable
+Happy path testing alone is not good enough to write reliable
 programs.
+Programs need to also work reliably when the input is not "proper",
+and so the testing process needs to consider such inputs as well.

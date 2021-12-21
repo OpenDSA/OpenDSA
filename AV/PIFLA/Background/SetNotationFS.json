@@ -65,7 +65,7 @@
       },
       "subset": {
         "type": "select",
-        "description": "The notation $P \\subseteq Q$, $Q \\supseteq P$ means that set $P$ is included in set $Q$. That is, set $P$ is a subset of set $Q$ ($\\subseteq$), or set $Q$ is a superset of the set $P$ ($\\supseteq$)",
+        "description": "The notation $P \\subseteq Q$ or $Q \\supseteq P$ both mean that set $P$ is included in set $Q$. That is, set $P$ is a subset of set $Q$ ($\\subseteq$), or set $Q$ is a superset of the set $P$ ($\\supseteq$).",
         "question": "Let $P = \\{x\\ |\\ x\\ \\mbox{is a positive integer}\\}$. Which of the following is a subset of $P$?",
         "answer": [
           "$\\{1, 2, 3\\}$",
@@ -226,7 +226,8 @@
           "9",
           "8",
           "10"
-        ]
+        ],
+        "correctFeedback": ["If $|S| = n$, then $|2^S| = 2^n$. Which helps to explain why this notation is used."]
       }
     }
   }

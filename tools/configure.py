@@ -171,7 +171,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
     global module_chap_map
     global num_ref_map
     global cmap_map
-
+    
     # Parse the name of the module from mod_path and remove the file extension
     # if it exists
     mod_name = os.path.splitext(os.path.basename(mod_path))[0]

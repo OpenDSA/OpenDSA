@@ -5,30 +5,25 @@
 
 .. avmetadata::
    :author: Mostafa Mohammed and Cliff Shaffer
-   :satisfies:
-   :requires: Regular Grammar
-   :topic: Regular Grammar exercises
-
+   :satisfies: Regular Grammars Exercises
+   :requires: Regular Grammars
+   :topic: Regular Languages
 
 Regular Grammars Exercises
 ==========================
 
-Exercise 1
-----------
+Regular Grammars Exercises
+--------------------------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramNFA1.html pe
    :long_name: Regular Grammar: right-linear grammar for NFA
 
-
-Exercise 2
-----------
+|
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGrambbbaaaa.html pe
    :long_name: Regular Grammar: left-linear grammar for bbbsaaaas
 
-
-Exercise 3
-----------
+|
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramaby3.html pe
    :long_name: Regular Grammar: regular grammar for a divisible by 3

@@ -164,6 +164,8 @@ iframe {
   overflow: hidden;
 }
 
+iframe.enable-scrolling { overflow: auto; }
+
 .embeddedExercise {
   /* Set the position and top attributes to prevent the page from */
   /* automatically scrolling to iframes as they load */

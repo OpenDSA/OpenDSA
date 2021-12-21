@@ -1,0 +1,21 @@
+#SATProofFS {
+  height: 700px;
+  width: 1000px
+}
+
+#SATProofFS .jsavoutput.jsavline {
+  height: 60px;
+}
+
+#SATProofFS .jsavhorizontalarray .jsavnode {
+  min-width: 30px !important;
+  max-width: 300px !important;
+}
+
+.over {
+  text-decoration: overline;
+}
+
+#SATProofFS .jsavlabel {
+  z-index: 999;
+}

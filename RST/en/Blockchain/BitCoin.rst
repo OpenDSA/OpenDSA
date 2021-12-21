@@ -181,8 +181,8 @@ the power consumed to mine that block to grow in proportion.
 In 2021, Bitcoin mining was responsible for consuming roughly one half
 of one percent of all electricty production in the world.
 In a world where the effects of climate change are directly related to
-the amount of power consumed, this has a signficant impact on the
-world.
+the amount of power consumed, this has a signficant negative impact on
+the world.
 There is no intrinsic reason why any cryptocurrency needs to be
 consuming significant amounts of energy to operate.
 It is caused solely by the economic incentives created by the

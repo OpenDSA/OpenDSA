@@ -3,14 +3,18 @@
         <meta charset="utf-8">
         <meta name = "viewport" content="width = device-width, initial-scale = 1">
         <title> OpenDSA Click Emulator </title>
-        <style>
-
-        </style>
+        <style></style>
         <link rel="stylesheet" href="styles.css">
         
     </head>
     <body>
-        
+        <form id = "myForm">
+        <input type = "file" id = "real-file" accept = ".csv, .txt">
+        <br />
+        <input type = "submit" value = "Submit" />
+        </form>
+       <!-- <button type = "button" onclick = "load()" id = "custom-button"> Load a File </button> --> 
+
         <div id="exerciseLoader" title = "DeformsSimpleProblemPPRO"> <!-- hardcoded in the name of the exercise for now -->
             <!-- Load the exercise in here(put iframe here) -->
             <iframe id="exerciseLoadIframe" src = "https://opendsa.localhost.devcom.vt.edu/Exercises/DeformsTesting/DeformsSimpleProblemPPRO.html"> 
@@ -20,7 +24,6 @@
                 <!-- HINT: Iframe takes a parameter which is the URL to the page being loaded. (done)-->
                 <!-- HINT: Change/Set this URL from inside the javascript file, and then reload this iframe LOOK AT THIS AGAIN MAKE THE URL SET FROM JS NOT HTML-->
             <br>
-            
         </div>
         <div>
         <script src="emulator.js"></script> 

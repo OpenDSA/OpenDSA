@@ -42,111 +42,115 @@ $(document).ready(function() {
   av.step();
 
   // Frame 5
-  av.umsg(Frames.addQuestion("production"));
+  av.umsg("A grammar is made up of a series of <b>substitution rules</b> with something on the left, something on the right, and the arrow ($\\rightarrow$) separating them. In the grammars that we are going to look at for now, there is always one variable to the left of the arrow. Later in the semester, we will see grammars that do not have this restriction.")
   av.step();
 
   // Frame 6
-  av.umsg(Frames.addQuestion("start"));
+  av.umsg(Frames.addQuestion("production"));
   av.step();
 
   // Frame 7
-  av.umsg(Frames.addQuestion("sentence"));
+  av.umsg(Frames.addQuestion("start"));
   av.step();
 
   // Frame 8
-  av.umsg(Frames.addQuestion("first"));
+  av.umsg(Frames.addQuestion("sentence"));
   av.step();
 
   // Frame 9
-  av.umsg(Frames.addQuestion("Fritz"));
+  av.umsg(Frames.addQuestion("first"));
   av.step();
 
   // Frame 10
-  av.umsg(Frames.addQuestion("verb"));
+  av.umsg(Frames.addQuestion("Fritz"));
   av.step();
 
   // Frame 11
-  av.umsg(Frames.addQuestion("do"));
+  av.umsg(Frames.addQuestion("verb"));
   av.step();
 
   // Frame 12
-  av.umsg(Frames.addQuestion("article"));
+  av.umsg(Frames.addQuestion("do"));
   av.step();
 
   // Frame 13
-  av.umsg(Frames.addQuestion("noun"));
+  av.umsg(Frames.addQuestion("article"));
   av.step();
 
   // Frame 14
-  av.umsg(Frames.addQuestion("bad"));
+  av.umsg(Frames.addQuestion("noun"));
   av.step();
 
   // Frame 15
-  av.umsg(Frames.addQuestion("syntax"));
+  av.umsg(Frames.addQuestion("bad"));
   av.step();
 
   // Frame 16
-  av.umsg("Throughout this course, we will need to talk about many things like different types of grammars and different types of computing machines. In each case, we will want to be very precise about what they can do. And in order to talk precisely about what they can do, we need to be very precise about what they are. So, we will often create a mathematical definition that precisely describes the thing in question.");
+  av.umsg(Frames.addQuestion("syntax"));
   av.step();
 
   // Frame 17
-  av.umsg("A good mathematical definition for something identifies those parts that are necessary and ignores those parts that are not. Think for a moment before going on: If you want to describe a grammar precisely, then what do you need to know about it?. Take a look at the grammar below, and think about what you need to know to define and use it. Obviously, part of the defintion for this grammar is its productions. What else do we need?");
+  av.umsg("Throughout this course, we will need to talk about many things like different types of grammars and different types of computing machines. In each case, we will want to be very precise about what they can do. And in order to talk precisely about what they can do, we need to be very precise about what they are. So, we will often create a mathematical definition that precisely describes the thing in question.");
   av.step();
 
   // Frame 18
-  av.umsg(Frames.addQuestion("leftside"));
+  av.umsg("A good mathematical definition for something identifies those parts that are necessary and ignores those parts that are not. Think for a moment before going on: If you want to describe a grammar precisely, then what do you need to know about it?. Take a look at the grammar below, and think about what you need to know to define and use it. Obviously, part of the defintion for this grammar is its productions. What else do we need?");
   av.step();
 
   // Frame 19
-  av.umsg(Frames.addQuestion("rightside"));
+  av.umsg(Frames.addQuestion("leftside"));
   av.step();
 
   // Frame 20
+  av.umsg(Frames.addQuestion("rightside"));
+  av.step();
+
+  // Frame 21
   av.umsg("$W⇒z$ means that W derives string z, $W⇒^∗z$ means that W derives string z in 0 or more steps, $W⇒^+z$ means that W derives string z in 1 or more steps.");
   grammar.hide();
   av.step();
 
-  // Frame 21
-  av.umsg("$L(G)$ represents the language described by the some grammar $G$. The formal definition for $L(G)$ is: $L(G) = \\{w \\in T{}^{*} \\mid S \\stackrel{*}{\\Rightarrow} w\\}$.");
-  av.step();
-
   // Frame 22
-  av.umsg("Now, try to describe this in words: What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.");
+  av.umsg("$L(G)$ means the language described by the some grammar $G$. The formal definition for $L(G)$ is: $L(G) = \\{w \\in T{}^{*} \\mid S \\stackrel{*}{\\Rightarrow} w\\}$.");
   av.step();
 
   // Frame 23
-  av.umsg(Frames.addQuestion("parts"));
+  av.umsg("Now, try to describe this in words: What is the language of the grammar? Answer: It is all strings formed from the set of terminals ($T^∗$ is all possible strings over $T$), such that if you start with $S$ (the start symbol for the grammar), then you can derive the string.");
   av.step();
 
   // Frame 24
-  av.umsg(Frames.addQuestion("parts2"));
+  av.umsg(Frames.addQuestion("parts"));
   av.step();
 
   // Frame 25
-  av.umsg(Frames.addQuestion("LG"));
+  av.umsg(Frames.addQuestion("parts2"));
   av.step();
 
   // Frame 26
-  av.umsg(Frames.addQuestion("G"));
+  av.umsg(Frames.addQuestion("LG"));
   av.step();
 
   // Frame 27
-  av.umsg(Frames.addQuestion("LGlist"));
+  av.umsg(Frames.addQuestion("G"));
   av.step();
 
   // Frame 28
-  av.umsg(Frames.addQuestion("whichrules"));
+  av.umsg(Frames.addQuestion("LGlist"));
   av.step();
 
   // Frame 29
-  av.umsg(Frames.addQuestion("pickstrings"));
+  av.umsg(Frames.addQuestion("whichrules"));
   av.step();
 
   // Frame 30
+  av.umsg(Frames.addQuestion("pickstrings"));
+  av.step();
+
+  // Frame 31
   av.umsg(Frames.addQuestion("whatlang"));
   av.step(); 
 
-  // Frame 31
+  // Frame 32
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

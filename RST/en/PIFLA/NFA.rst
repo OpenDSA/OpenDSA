@@ -28,9 +28,10 @@ Wouldn't that be a hugely powerful upgrade to our lives?
 
 That gets into some pretty complicated philosophy in real life.
 But in the world of Finite Automata, the concept of
-:term:`nondeterminism` turns out to be something that we can make
+:term:`non-determinism <non-deterministic>` turns out to be something
+that we can make 
 quite concrete.
-In this module, we study what it means to make an FA nondeterministic,
+In this module, we study what it means to make an FA non-deterministic,
 and whether it really even matters in the end.
 
 .. inlineav:: NFAFS ff
@@ -65,7 +66,7 @@ converts any NFA to an equivalent DFA.
 
    * :math:`Q_D = 2^{Q_N}` (the powerset of :math:`Q_N`)
 
-   * :math:`F_D = \{Q\in Q_D \mid \exists q_i \in Q \mathrm{with} q_i \in F_N \}`
+   * :math:`F_D = \{Q\in Q_D \mid \exists q_i \in Q\ \mathrm{with}\ q_i \in F_N \}`
      
      Interpretation: A state :math:`q_D` in :math:`M_D` is final if
      **any** of the states from :math:`M_N` in the subset that
@@ -80,13 +81,14 @@ converts any NFA to an equivalent DFA.
       ("Closure" of :math:`q_0` is a set of states defined as
       :math:`q_0` plus all states reachable from :math:`q_0` by
       :math:`\lambda` transitions.)
+      Add this this state to $Q_D$.
 
    #. While there is an edge to add
       (that is, while our DFA is missing a transition from
       :math:`\delta_D`):
 
-      a) Choose a state :math:`A = \{q_i, q_j, ..., q_k\}` with a
-         missing edge for :math:`a \in \Sigma` 
+      a) Choose a state :math:`A = \{q_i, q_j, ..., q_k\}` from $Q_D$
+         with a missing edge for :math:`a \in \Sigma` 
       b) Compute :math:`B = \delta^{*}(q_i, a) \cup
          \delta^{*}(q_j, a) \cup \ldots \cup \delta^{*}(q_k, a)`
       c) Add state :math:`B` to :math:`M_D` if it doesn't already exist
@@ -123,19 +125,20 @@ new capability to accept languages.
 The set of languages that can be accepted by a NFA is exactly the same
 set of languages that can be accepted by a DFA.
 We proved this constructively:
-Every DFA is automatically an NFA without nondeterminism, so DFAs
+Every DFA is automatically an NFA without non-determinism, so DFAs
 obviously cannnot accept languages that NFAs cannot.
 And any NFA can be converted using an algorithm to a DFA.
 So NFAs cannot accept languages that DFAs cannot.
 
 So, is the NFA a useful concept? Why introduce them at all?
-First, it was not obvious to start that they add no new power in terms
+First, it was not obvious at the start that they add no new power in terms
 of new languages that can be accepted.
+So, we had to work through that to convince ourselves that it is true.
 Second, NFAs tend to be "simpler" to understand than the equivalent
 DFA.
 See the result of the conversion example, and decide for yourself
 which one is easier for you to deduce the corresponding language.
 Or, try writing the DFA for the language from scratch as a DFA.
 Third, we will introduce some other conversion algorithms over the
-course of the semester that are easier to understand if the target is a NFA
-instead of a DFA.
+course of the semester that are easier to understand if the target is
+a NFA instead of a DFA.

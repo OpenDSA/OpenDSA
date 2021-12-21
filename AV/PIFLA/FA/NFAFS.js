@@ -54,7 +54,7 @@ $(document).ready(function() {
   //NFA with lambda
   var urllinkNFAlambda = "../../../AV/OpenFLAP/machines/FA/NFAexample2.jff";
   var linkNFAlambda = new av.ds.FA({center: true, url: urllinkNFAlambda, top: 30});
-  av.umsg("You might have noticed that there is another difference in how the $\\delta$ function is defined for the NFA. In addition to the symbols of the alphabet, a transition is also permitted on the $\\lambda$ symbol. This is called a \"lambda transition\". Of course, in the input string there is no actual $\\lambda$ symbol.");
+  av.umsg("If you read carefully, you might have noticed that there is another difference in how the $\\delta$ function is defined for the NFA. In addition to the symbols of the alphabet, a transition is also permitted on the $\\lambda$ symbol. This is called a \"lambda transition\". Of course, in the input string there is no actual $\\lambda$ symbol.");
   av.step();
 
   // Frame 12
