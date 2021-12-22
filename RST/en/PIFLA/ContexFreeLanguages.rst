@@ -13,6 +13,32 @@ Context-Free Languages
 
 Context-Free Languages 
 ----------------------
+
+In the previous chapters, we saw that some languages are regular
+languages, which means that we can define a DFA, NFA, regular
+expression, or regular grammar for them.
+
+Examples of regular languages:
+
+* keywords in a programming language
+* names of identifiers
+* integers
+* a finite list of miscillaneous symbols: = \ ;
+
+Then we covered the Pumping Lemma which is a tool to
+prove that if a language is not regular.
+
+Examples for Not Regular languages:
+
+* expressions: :math:`((a + b) - c)`
+* block structures (:math:`\{\}` in Java/C++ and ``begin`` ... ``end``
+  in Pascal)
+
+We know that not all languages are not regular, since we've proved
+some are not. Now we will look at a class of languages that is
+larger than the regular languages, and more powerful:
+Context-free languages.
+
 .. inlineav:: CFLFS ff
    :links: AV/PIFLA/CFL/CFLFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/CFL/CFLFS.js
