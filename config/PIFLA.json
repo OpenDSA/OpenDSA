@@ -330,26 +330,30 @@
       }
     },
     "Pushdown Automata":{
-      "PIFormalLang/PDA": {},
-      "PIFormalLang/PDAExercises":{
-        "sheet7exercise1":{
-          "points": 5.0
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAaicjbi":{
+          "points": 2.0
         },
-        "sheet7exercise2":{
-          "points": 5.0
+        "PDAwcwR":{
+          "points": 2.0
         },
-        "sheet7exercise3":{
-          "points": 5.0
+        "PDA2asperb":{
+          "points": 2.0
         },
-        "sheet7exercise4":{
-          "points": 5.0
+        "PDAaibjck":{
+          "points": 2.0
         }
       },
-      "PIFormalLang/PDACFL": {},
-      "PIFormalLang/DPDA": {}
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {
+        "NCFLvsDCFLFS": {
+          "points": 1.0
+        }
+      }
     },
     "Properties of Context-free Languages":{
-      "PIFormalLang/CFLProp":{}
+      "PIFLA/CFLProp":{}
     },
     "Turing Machines":{
       "PIFLA/TuringMachines":{},
