@@ -1,13 +1,8 @@
 $(document).ready(function () {
     "use strict";
-    var av_name = "InductionProofExample2FF";
+    var av_name = "InductFactFS";
     var av = new JSAV(av_name);
     var Frames = PIFRAMES.init(av_name);
-    // Load the config object with interpreter and code created by odsaUtils.js
-    var config = ODSA.UTILS.loadConfig({ av_name: av_name }),
-        interpret = config.interpreter, // get the interpreter
-        code = config.code;             // get the code object
-    var goNext = false;
 
     //frame  1
     av.umsg("This Module provides an example that shows how induction can be used to prove that a recursive function produces the correct result.");

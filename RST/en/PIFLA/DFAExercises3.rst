@@ -35,17 +35,6 @@ DFA exercises
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAevenamin3b.html pe
    :long_name: DFA exercise even a min 3 b
 
-DFA Minimization Exercise
--------------------------
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAMinEx1.html pe
-   :long_name: DFA minimization exercise
-
-|
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAMinEx2.html pe
-   :long_name: DFA minimization exercise
-
 DFA Complement Exercise
 -----------------------
 
