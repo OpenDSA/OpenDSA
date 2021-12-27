@@ -48,7 +48,27 @@
 	    <p>Common sources of grammatical ambiguity include
 	    recursive patterns such as double recursion and single,
 	    indirect recursion (i.e., from one non-terminal back to itself
-	    via one or more other non-terminals).</p>
+	      via one or more other non-terminals).</p>
+	    <p>Grammar 1 is not ambiguous because every string in its
+	    language is either empty or starts with an <code>a</code>
+	    or a <code>b</code>. This grammar handles each case once
+	    and generates each string in only one way, namely from
+	    left to right.</p>
+	    <p>Grammar 2 is ambiguous because of the double recursion
+	    in its third production. For example, the strings
+	    &epsilon; and <code>a</code> have more than one parse
+	    tree.</p>
+	    <p>Grammar 3 is not ambiguous because the only production
+	    that can produce a non-empty string is the first one.</p>
+	    <p>Grammar 4 is not ambiguous because every string in its
+	    language is either empty or ends with an <code>a</code> or
+	    a <code>b</code>. This grammar handles each case once and
+	    generates each string in only one way, namely from right
+	    to left.</p>
+	    <p>Grammar 5 is ambiguous because, for example, &lt;s&gt;
+	    can generate &lt;r&gt;, which in turn can re-generate
+	    &lt;s&gt;, leading to infinitely many, arbitrarily deep
+	    parse trees for all strings, including &epsilon;.</p>
           </div>
         </div>
       </div>
