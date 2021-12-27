@@ -7,7 +7,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("This frameset presents the definition and some examples for a RegEx.");
+  av.umsg("This slideshow presents the definition and some examples for a RegEx.");
   av.displayInit();
 
   // Frame 2

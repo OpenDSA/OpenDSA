@@ -18,12 +18,11 @@ $(document).ready(function() {
     toggleInitial(fa, s);
     toggleFinal(fa, f);
     var e1 = fa.addEdge(s, n1, {weight:" "});
-    e1.css({"stroke-dasharray": "."});
+    e1.css({"stroke": "red"});
     var e2 = fa.addEdge(s, n2, {weight:" "});
-    e2.css({"stroke-dasharray": "."});
+    e2.css({"stroke": "red"});
     var e3 = fa.addEdge(s, n3, {weight:" "});
-    e3.css({"stroke-dasharray": "."});
-    //fa.css({outline: "1px black solid", border: "10px transparent solid;"});
+    e3.css({"stroke": "red"});
     av.g.rect(left + 30, top + 10, 260, 150);
     av.label("NFA that accepts $" + name + "$", {left: left + 40, top: top +125});
     fa.disableDragging();
@@ -95,7 +94,9 @@ $(document).ready(function() {
   // Frame 11
   av.umsg("If a string is accepted by either NFA, this means that this string belongs to the language $L(r+s)$.");
   av.g.line(375, 90, 465, 215, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.label(lambda, {left: 430, top: 120});
   av.g.line(375, 310, 465, 230, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.label(lambda, {left: 430, top: 260});
   av.step();
 
   // Frame 12

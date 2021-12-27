@@ -18,12 +18,11 @@ $(document).ready(function() {
     toggleInitial(fa, s);
     toggleFinal(fa, f);
     var e1 = fa.addEdge(s, n1, {weight:" "});
-    e1.css({"stroke-dasharray": "."});
+    e1.css({"stroke": "red"});
     var e2 = fa.addEdge(s, n2, {weight:" "});
-    e2.css({"stroke-dasharray": "."});
+    e2.css({"stroke": "red"});
     var e3 = fa.addEdge(s, n3, {weight:" "});
-    e3.css({"stroke-dasharray": "."});
-    //fa.css({outline: "1px black solid", border: "10px transparent solid;"});
+    e3.css({"stroke": "red"});
     av.g.rect(left + 30, top + 10, 260, 150);
     av.label("NFA that accepts $" + name + "$", {left: left + 40, top: top +125});
     fa.disableDragging();
