@@ -20,6 +20,7 @@
     var i;
     var left1;
     var left2;
+    var high_prec, low_prec;
 
     function parse_exp() {
 	
@@ -110,6 +111,9 @@
 	    ops = ["+","-","*","/"];
 	    PLutils.shuffle(ops);
 
+	    low_prec = ops[0] + " and " + ops[1];
+	    high_prec = ops[2] + " and " + ops[3];
+	    
 	    left1 = (Math.random() < 0.5);
 	    left2 = (Math.random() < 0.5);
 
@@ -233,8 +237,26 @@
 	    v = val_stack.pop();
 	    //console.log(v);
 	    return v === -Infinity ? Infinity : v;
- 	}
+ 	},
+
+	hint2:  function () {
+	    return "In this grammar, the " + high_prec + " operators have the same precedence, and both operators have higher precedence than the " + low_prec + " operators.";
+	},
 	
+       hint4:  function () {
+	   if (left1)
+	       return "In this grammar, the " + low_prec + " operators are left-associative.";
+	   else
+	       return "In this grammar, the " + low_prec + " operators are right-associative.";	       
+       },
+
+	hint5:  function () {
+	   if (left2)
+	       return "In this grammar, the " + high_prec + " operators are left-associative.";
+	   else
+	       return "In this grammar, the " + high_prec + " operators are right-associative.";	       
+	}
+
     };
 
     window.expGrammar = window.expGrammar || expGrammar;
