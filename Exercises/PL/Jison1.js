@@ -51,6 +51,7 @@
     var numOptions = 5;
     var validStrings;
     var invalidStrings;
+    var hint3;
     
     function generateTokens() {
 
@@ -433,12 +434,24 @@
 	    generateTokens();
 	    generateStrings();
 
-/*
-	    console.log("valid:");
-	    console.log(validStrings);
-	    console.log("invalid:");
-	    console.log(invalidStrings);
-*/
+	    if (validStrings.length == 0)
+	    {
+		hint3 = "None of these strings can be parsed with this grammar.";
+	    } else if (invalidStrings.length == 0)
+	    {
+		hint3 = "All of these strings can be parsed with this grammar.";
+	    } else if (validStrings.length == 1)
+	    {
+		hint3 = "Only the string " + validStrings[0] +
+		    " can be parsed with this grammar.";
+	    } else
+	    {
+		hint3 = "Only the following strings can be parsed with this grammar:";
+		for(var i = 0; i < validStrings.length; i++ )
+		{
+                    hint3 += " " + validStrings[i];
+		}
+	    }
 
 	    // export to the HTML page
 	    this.tokenLines = tokenLines.join("");
@@ -449,7 +462,7 @@
 		.join("<li>\n<li>") +
 		"</li>\n";
 	    this.answer = validStrings.length;
-
+	    this.hint3 = hint3;
 	}// init function
 
     };// Jison1 object
