@@ -39,11 +39,12 @@
   "chapters": {
     "Preface": {
       "Intro": {},
-      "Database/DB_Demo":{}
+      "BIO/Preface":{}
 
     },
     "DNA Sequencing": {
-      "BIO/DNASeq": {}
+      "BIO/DNASeq": {},
+      "BIO/CH2": {}
     }
   }
 }

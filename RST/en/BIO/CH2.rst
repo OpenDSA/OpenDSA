@@ -9,8 +9,8 @@
    :topic: DNASeq
 
 
-DNA Sequencing
-==============
+Test Chapter
+============
 This is a visualization for DNA Sequencing
 
 .. inlineav:: DNASeq ss
