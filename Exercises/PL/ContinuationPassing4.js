@@ -25,7 +25,10 @@
 	return true;
     }
 
-    var ContinuationPassing4 = {    
+    var ContinuationPassing4 = {
+
+	answer: null,
+	    
 	init: function() {
 	    var functions = [
 
@@ -37,7 +40,7 @@
                                     the input
                                     the output
                                     the trace of the execution
-		   index 3: one correct answer (not used here; for reference)
+		   index 3: one correct answer (used as the last hint)
 		*/
     [ "The following function takes in a (flat) list of integers. After " +
       "you replace the comment made up of question marks with the correct " +
@@ -841,7 +844,10 @@ function (ns) {
 
 	    // pick a random function
 	    var functionNumber = Math.floor(Math.random() * 
-					    (functions.length-1)); 
+					    (functions.length-1));
+
+	    this.answer = functions[ functionNumber ][3];
+	    
 	    //  the -1 above is because we do not want to use function #19
 	    //functionNumber = 19;
 	    this.initialStatement = functions[ functionNumber ][0];
@@ -876,15 +882,10 @@ function (ns) {
 			     ' " x=" + JSON.stringify(x) + "}";'
 			     );
 		for(i=0; i<this.tests.length; i++) {
-		    //console.log("test " + i);
 		    output = 			
 			eval(fDefinition + "[ f( " + this.tests[i][0] + " ), " +
 			     "trace ]");
 		    trace = output[1];		    
-		    //console.log(trace);
-		    //console.log(this.tests[i][2]);
-		    //console.log(trace === this.tests[i][2]);
-		    //console.log(output[0]);
 		    if (JSON.stringify(output[0]).replace(/\s+/g,"") !==
 			this.tests[i][1].replace(/\s+/g,"") ||
 			trace !== this.tests[i][2]) {
