@@ -1,0 +1,86 @@
+{
+  "translations": {
+    "en": {
+      "RRG": {
+        "type": "select",
+        "description": "We will use a process that is pretty much the same as what we just did to convert a right-linear grammar to an NFA. By the way, right-regular grammar is a synonym for right-linear grammar.",
+        "question":"What do we mean by RRG?",
+        "answer": ["Right-regular Grammar", "Right-linear grammar"],
+        "choices": ["Regular Expression", "Right-regular Grammar", "Left-regular Grammar", "Regular Grammar", "Right-linear grammar"]
+      },
+      "states": {
+        "type": "multiple",
+        "description": "We will use a process that is pretty much the same as what we just did to convert a RRG to an NFA.<br>Each state from the NFA will have a variable in the grammar.",
+        "question":"How many variables do we need in the grammar for the NFA on the left?",
+        "answer": "2",
+        "choices": ["1", "2", "3", "4"],
+        "correctFeedback": ["There are two states in the NFA."]
+      },
+      "rules": {
+        "type": "multiple",
+        "description": "We will use a process that is pretty much the same as what we just did to convert a RRG to an NFA.<br>Each state from the NFA will have a variable in the grammar.<br>Each transition gets a production rule.",
+        "question":"How many production rules will we need to create?",
+        "answer": "3",
+        "choices": ["1", "2", "3", "4"],
+        "correctFeedback": ["There are three transitions in the NFA."]
+      },
+      "start": {
+        "type": "multiple",
+        "description": "We will convert this NFA to a RRG.",
+        "question":"What is the start variable?",
+        "answer": "Q0, because it is the start state of the NFA",
+        "choices": ["Q0, because it is the start state of the NFA", "Q1", "S, because that is always the start variable."]
+      },
+      "Q0aQ1": {
+        "type": "multiple",
+        "description": "We will convert this NFA to a RRG.",
+        "question":"What is the production rule equivalent to the transition $\\delta(Q_0, a) = Q_1$?",
+        "answer": "$Q_0 \\rightarrow aQ_1$",
+        "choices": ["$Q_0 \\rightarrow aQ_1$", "$Q_1 \\rightarrow bQ_1$", "$Q_1 \\rightarrow aQ_0$"]
+      },
+      "Q1bQ1": {
+        "type": "multiple",
+        "description": "We will convert this NFA to a RRG.",
+        "question":"What is the production rule equivalent to the transition $\\delta(Q_1, b) = Q_1$?",
+        "answer": "$Q_1 \\rightarrow bQ_1$",
+        "choices": ["$Q_0 \\rightarrow aQ_1$", "$Q_1 \\rightarrow bQ_1$", "$Q_1 \\rightarrow aQ_0$"]
+      },
+      "Q1aQ0": {
+        "type": "multiple",
+        "description": "We will convert this NFA to a RRG.",
+        "question":"What is the production rule equivalent to the transition $\\delta(Q_1, a) = Q_0$?",
+        "answer": "$Q_1 \\rightarrow aQ_0$",
+        "choices": ["$Q_0 \\rightarrow aQ_1$", "$Q_1 \\rightarrow bQ_1$", "$Q_1 \\rightarrow aQ_0$"]
+      },
+      "final": {
+        "type": "multiple",
+        "description": "We will convert this NFA to a RRG.",
+        "question":"Which state(s) are the final state(s)?",
+        "answer": "$Q_1$",
+        "choices": ["$Q_1$", "$Q_0$"]
+      },
+      "lambda": {
+        "type": "select",
+        "description": "We will convert this NFA to a RRG.",
+        "question":"Since $Q_1$ is a final state, we add the production: $Q_1 \\rightarrow \\lambda$",
+        "answer": "True",
+        "choices": [],
+        "correctFeedback": ["If we had more final states, then we would add more such productions."]
+      },
+      "done": {
+        "type": "multiple",
+        "description": "We will convert this NFA to a RRG.",
+        "question":"Are we done?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "equiv": {
+        "type": "select",
+        "description": "We did it. Now we have proved that any NFA can be converted to Right-regular Grammar.",
+        "question":"This means that Right-regular Grammare are equivalent to Regular Languages",
+        "answer": "True",
+        "choices": []
+      }
+    }
+  }
+}
