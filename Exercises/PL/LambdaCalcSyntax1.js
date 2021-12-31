@@ -3,14 +3,16 @@
   "use strict";
     var L = LAMBDA;
     var question = {};
-
     var LambdaCalcSyntax1 = {    
 
 	init: function() {
 	    var vs = "uvxyz";
 	    var maxDepth = 6;
 	    var minDepth = 4;
-	    
+	    	
+	    var subExp = "";
+	    var hint4 =  "The expression above is syntactically correct.";
+
 	    // David: all of these helper functions are duplicated in 
 	    // LambdaCalcSyntax2.js. Because...
 	    // When I moved them to a separate JS file that I loaded (with 
@@ -46,12 +48,14 @@
 	    function removeParenPair(s) {
 		var openParen = pickRndCharacter('(',s);
 		var closeParen = findMatchingParen(s,openParen);
+		subExp =  s.substring(openParen+1,closeParen);
 		return s.substring(0,openParen) + 
 		    s.substring(openParen+1,closeParen) + 
 		    s.substring(closeParen+1);
 	    }
 	    function removeDot(s) {
 		var dot = pickRndCharacter('.',s);
+		subExp =  s.substring(dot - 2, dot);		
 		return s.substring(0,dot) + " " + s.substring(dot+1);
 	    }
 	    function addParens(s) {
@@ -83,6 +87,8 @@
 		    if (s.indexOf('(') !== -1) {
 			s = removeParenPair(s);
 			question.answer = "False";
+			hint4 = "There are missing parentheses around " +
+			      subExp;
 		    }
 		    //  leave s unchanged if it does not contain any parens
 		    break;
@@ -90,17 +96,23 @@
 		    if (s.indexOf('.') !== -1) {
 			s = removeDot(s);
 			question.answer = "False";
+			hint4 = "There is a dot missing after " +
+			    subExp;			
 		    }
 		    //  leave s unchanged if it does not contain any dot
 		    break;
-		case 3: 
+		case 3:
+		    var correct = s;
 		    s = addParens(s);
 		    question.answer = "False";
+		    hint4 = "A correctly parenthesized modification of this expression (with two parentheses removed) would be: " + correct;
 		    break;
 		}    
 		return s;
 	    }// getSyntaxError function
 
+
+	
 
 	    if (L.getRnd(0,1) === 0) {
 		// syntactically correct lambda exp
@@ -111,6 +123,7 @@
 		this.expression = getSyntaxError(minDepth,maxDepth,vs);
 		this.answer = question.answer;
 	    }
+	    this.hint4 = hint4;
 	} //init
 
     };// LambdaCalcSyntax1  
