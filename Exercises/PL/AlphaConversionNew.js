@@ -69,18 +69,18 @@
 		}
 	    }
 	    answer = answer.join("");
-	    this.answer = answer.replace(/@|\#/g,"a")
-		.replace(/\s+/g,"")
-		.replace(/\u03BB/g,"^").replace(/\s+/g,"");
+	    answer = answer.replace(/@|\#/g,"a")
+		.replace(/\u03BB/g,"^");
+	    this.displayableAnswer =
+		"<span style=\"font-family:'Courier New'\">"
+		+ answer + "</span>";
+	    this.answer = answer.replace(/\s+/g,"");
 
 	}, // init function
 
 	validateAnswer: function (studentAnswer) {
-	    //console.log(this.answer);
-	    //console.log(studentAnswer);
-	    return this.answer ===
-		studentAnswer.replace(/\s+/g,"");
-	}// validateAnswer function
+	    return this.answer === studentAnswer.replace(/\s+/g,"");
+	}
 
     };// AlphaConversionNew
     
