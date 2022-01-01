@@ -4,91 +4,59 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
-  //frame 1
-  av.umsg("Now let us study the Regular Properties for Regular Languages. We will start with the known closure properties for Regular Languages.");
+  // Frame 1
+  av.umsg("Now we'll discuss properties for regular languages. We will start with properties that we already know are closed for regular languages.");
   av.displayInit();
 
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("RLreview"));
   av.step();
 
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("union"));
   av.step();
 
-  //frame 4
-  av.umsg(Frames.addQuestion("q4"));
+  // Frame 4
+  av.umsg(Frames.addQuestion("unionways"));
   av.step();
 
-  //frame 5
-  av.umsg("Exactly. So, Regular Languages are closed under Union.");
+  // Frame 5
+  av.umsg(Frames.addQuestion("concat"));
+  av.step();
+
+  // Frame 6
+  av.umsg(Frames.addQuestion("concatways"));
+  av.step();
+
+  // Frame 7
+  av.umsg(Frames.addQuestion("star"));
+  av.step();
+
+  // Frame 8
+  av.umsg(Frames.addQuestion("starways"));
+  av.step();
+
+  // Frame 9
+  av.umsg(Frames.addQuestion("complement"));
+  av.step();
+
+  // Frame 10
+  av.umsg(Frames.addQuestion("reverse"));
   av.step();
   
-  //frame 6
-  av.umsg(Frames.addQuestion("q6"));
-  av.step();
-
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
-  av.step();
-
-  //frame 8
-  av.umsg("Exactly. So, Regular Languages are closed under Concatenation.");
-  av.step();
-
-  //frame 9
-  av.umsg(Frames.addQuestion("q9"));
-  av.step();
-
-  //frame 10
-  av.umsg(Frames.addQuestion("q10"));
-  av.step();
-
-  //frame 11
-  av.umsg("Exactly. So, Regular Languages are closed under Star-closure.");
-  av.step();
-
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
-  av.step();
-
-  //frame 13
-  av.umsg("Exactly. So, Regular Languages are closed under complementation.");
-  av.step();
-
-  //frame 14
-  av.umsg(Frames.addQuestion("q14"));
+  // Frame 11
+  av.umsg(Frames.addQuestion("intersect"));
   av.step();
   
-  //frame 15
-  av.umsg("Exactly. So, Regular Languages are closed under reverse.");
+  // Frame 12
+  av.umsg(Frames.addQuestion("setdiff"));
+  av.step();
+  
+  // Frame 13
+  av.umsg(Frames.addQuestion("setdiff2"));
   av.step();
 
-  //frame 16
-  av.umsg(Frames.addQuestion("q16"));
-  av.step();
-  
-  //frame 17
-  av.umsg(Frames.addQuestion("q17"));
-  av.step();
-  
-  //frame 18
-  av.umsg("Exactly. So, Regular Languages are closed under intersection.");
-  av.step();
-
-  //frame 19
-  av.umsg(Frames.addQuestion("q19"));
-  av.step();
-  
-  //frame 20
-  av.umsg(Frames.addQuestion("q20"));
-  av.step();
-
-  //frame 
-  av.umsg("Exactly. So, Regular Languages are closed under difference.");
-  av.step();
-  
-  
-  av.umsg("We learned about some easy to proof regular languages closure properties.")
+  // Frame 14
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

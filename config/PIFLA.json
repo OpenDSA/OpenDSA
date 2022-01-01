@@ -103,7 +103,7 @@
         }
       },
       "Background/Proofs": {},
-      "PIFLA/MathProof": {},
+      "PIFLA/MathProof": {}
     },
     "Finite Acceptors": {
       "PIFLA/DFA":{
@@ -242,6 +242,7 @@
           "points": 1.0
         }
       },
+      "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
           "points": 2.0
@@ -267,17 +268,7 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegClosure": {
-        "RLClosConceptFS": {
-          "points": 1.0
-        },
-        "RLHomomorphFS": {
-          "points": 1.0
-        },
-        "RLQuestionsFS": {
-          "points": 1.0
-        }
-      },
+      "PIFLA/RegClosure": {},
       "VisFormalLang/DFAproperties": {}
     },
     "Identifying Non-regular Languages":{
@@ -301,7 +292,7 @@
     },
     "Context-Free Grammars and Languages":{
       "PIFLA/ContexFreeLanguages": {},
-      "PIFLA/CFLExercises": {
+      "PIFLA/CFGExercises": {
         "anbmodd":{
           "points": 2.0
         },

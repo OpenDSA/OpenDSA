@@ -23,7 +23,7 @@ $(document).ready(function(){
   grammerMatrix.hide();
 
   // Frame 1
-  av.umsg("We want to prove that for any regular language, there is a regular grammar that describes it. We will use our regular approach of proving two representations are equivalent by constructing a way to convert between them. So, we should prove 3 things.<br>1 - For any Regular Grammar there is an equivalent NFA. This will mean that Regular Grammars don't accept more than regular languages.<br/>2 - For any NFA, there is a Linear grammar. This will mean that all regular languages can be represented by a regular grammar.<br/>3 - Actually, we are going to show how to turn an NFA into a right-linear grammar. Which might leave us uncertain about whether left-linear and right-linear grammars are equally powerful. So our last step will be to show that we can convert between them.");
+  av.umsg("We want to prove that for any regular language, there is a regular grammar that describes it. We will use our regular approach of proving two representations are equivalent by constructing a way to convert between them. So, we prove this equivalence:<br>1 - For any right-linear grammar there is an equivalent NFA. This will mean that regular grammars don't accept more than regular languages.<br/>2 - For any NFA, there is a right-linear grammar. This will mean that all regular languages can be represented by a regular grammar.");
   av.displayInit();
 
   // Frame 2
