@@ -51,12 +51,6 @@ Converting Regular Grammars to NFAs
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/GrammarMatrix.js AV/PIFLA/Regular/RGtoNFAFS.js
    :output: show
 
-.. .. Leave this one out, another example is unnecessary
-   .. .. inlineav:: REtoFAExampleFS ff
-..   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/REtoFAExampleFS.css
-..   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/AddQuestions.js DataStructures/PIFrames.js DataStructures/FLA/GrammarMatrix.js AV/PIFLA/Regular/REtoFAExampleFS.js
-..   :output: show
-
             
 Converting NFAs to Regular Grammars
 -----------------------------------
@@ -66,42 +60,25 @@ Converting NFAs to Regular Grammars
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/NFAtoRGFS.js 
    :output: show
 
-.. .. Leave this one out, another example is unnecessary
-   .. .. inlineav:: NFAToReExampleFS ff
-..   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/NFAToReExampleFS.css
-..   :scripts: lib/underscore.js DataStructures/FLA/AddQuestions.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/GrammarMatrix.js AV/PIFLA/Regular/NFAToReExampleFS.js 
-..   :output: show
-
-
-Converting between Left-linear and Right-linear Grammars
---------------------------------------------------------
-
-.. inlineav:: LeftLinearGrammarFS ff
-   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/LeftLinearGrammarFS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/Regular/LeftLinearGrammarFS.js
-   :output: show
-
-
-RegEx and Regular Grammars
---------------------------
-
-.. inlineav:: RegEXtoRegGrammarFS ff
-   :links: AV/PIFLA/Regular/RegEXtoRegGrammarFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEXtoRegGrammarFS.js
-   :output: show
-
-|
-
-.. inlineav:: RegEXtoLeftRegGrammarFS ff
-   :links: AV/PIFLA/Regular/RegEXtoLeftRegGrammarFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEXtoLeftRegGrammarFS.js
-   :output: show
+Actually, we have only shown that right-linear grammars are equivalent
+to regular languages.
+This might leave us with some doubts about the relationship between
+left-linear and right-linear grammars.
+However, similar constructions can be used to show the ability to
+convert to/from left-linear grammars as well.
 
 
 Something to Think About
 ------------------------
 
-.. inlineav:: STAFS ff
-   :links: AV/PIFLA/Regular/STAFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/STAFS.js
-   :output: show
+Consider the language :math:`L = \{a^nb^n \mid n>0\}`.
+Is language :math:`L` regular?
+Do you think that you can draw a DFA, regular expression, or Regular
+grammar for this language?
+Think about it for a moment |---| but don't spend a long time trying.
+
+Consider this grammar: :math:`G = \{S \rightarrow aSb \mid ab\}`.
+This is a nice and easy solution to finding a grammar for this
+language.
+There is just one problem: This grammar is not regular!
+We will come back to this question later.

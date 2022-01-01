@@ -58,7 +58,7 @@
   }, 
   "chapters": {
     "Stuff":{
-      "PIFLA/RegularGrammars": {}
+      "PIFLA/RegClosure": {}
     },
     "Appendix": {
       "Glossary": {}

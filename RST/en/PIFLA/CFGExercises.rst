@@ -9,10 +9,10 @@
    :satisfies:
    :topic: CFL exercises
 
-CFL exercises
+CFG exercises
 =============
 
-CFL exercises
+CFG exercises
 -------------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/CFL/anbmodd.html pe
