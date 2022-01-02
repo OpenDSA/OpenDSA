@@ -45,6 +45,11 @@
 			<read>b</read>
 		</transition>
 		<transition>
+			<from>2</from>
+			<to>2</to>
+			<read>a</read>
+		</transition>
+		<transition>
 			<from>3</from>
 			<to>3</to>
 			<read>a</read>
