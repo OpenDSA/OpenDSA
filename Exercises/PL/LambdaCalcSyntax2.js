@@ -15,7 +15,9 @@
 	    var exps = [ ];
 	    var isCorrect;
 	    var options = [ 0, 1, 2, 3, 4];
-
+	    var hint4 = "";
+	    var correctIndices = [];
+	    
 	    // David: all of these helper functions (except isNew) are 
 	    // duplicated in LambdaCalcSyntax1.js. Because...
 	    // When I moved them to a separate JS file that I loaded (with 
@@ -128,14 +130,38 @@
 		
 		if (isNew(exps)) {
 		    numCorrect += isCorrect ? 1 : 0;
+		    if (isCorrect)
+          		correctIndices.push( exps.length );
 		} else {
 		    exps.pop();
 		}
 	    }
 
-	    this.expressions = exps.join("<br />");
+	    this.expressions  = "Line 1: " + exps[0] + "<br />";
+	    this.expressions += "Line 2: " + exps[1] + "<br />";
+	    this.expressions += "Line 3: " + exps[2] + "<br />";
+	    this.expressions += "Line 4: " + exps[3] + "<br />";
+
 	    this.answer = String(numCorrect);
-	} //init
+	    if (correctIndices.length == 0)
+		this.hint4 = "None of the expressions above are syntactically correct.";
+	    else if (correctIndices.length == 4)
+		this.hint4 = "All of the expressions above are syntactically correct.";
+	    else if (correctIndices.length == 1)
+		this.hint4 = "Only the expression on line " + correctIndices[0]
+		+ " above is syntactically correct.";
+	    else
+	    {
+		this.hint4 = "Only the expressions on lines " +
+		    correctIndices[0];
+		for( var i = 1; i < correctIndices.length - 1; i++)
+		    this.hint4 += ", " + correctIndices[i];
+		this.hint4 += " and "
+		    + correctIndices[correctIndices.length - 1]
+                    + " above are syntactically correct.";
+	    }
+	} //i
+
 
     };// LambdaCalcSyntax2  
     
