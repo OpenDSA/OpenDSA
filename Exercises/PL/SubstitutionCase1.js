@@ -105,7 +105,18 @@
 	    var B = subst[3];
 	    this.substExpression = "subst( " + L.printExp(a) + ", " + 
 		L.printExp(p) + ", " + 	L.printExp(B) + " )";
-	    this.answer = substCase;	    
+	    this.answer = substCase;
+	    this.hint3 = "This is not an instance of case 1 because the third "
+		+ "argument of <span style=\"font-family: 'Courier New'\">subst"
+		+ "</span> (i.e., <span style=\"font-family: 'Courier New'\">" + L.printExp(B) + "</span>) is not a variable."
+	    if (substCase === "1a")
+		this.hint3 = "This is case 1a because the last two arguments "
+		+ " of <span style=\"font-family: 'Courier New'\">subst"
+		+ "</span> are the same variable.";
+	    else if (substCase === "1b")
+		this.hint3 = "This is case 1b because the last two arguments "
+		+ " of <span style=\"font-family: 'Courier New'\">subst"
+		+ "</span> are not the same variable.";
 	} // init function
 
 
