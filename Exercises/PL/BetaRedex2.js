@@ -13,7 +13,7 @@
 	    if (L.getRnd(0,1) === 0 ) {
 		// most likely not to need an alpha conversion (very rare)
 		e = L.getRndExp(1,4,6,"xyzuvw","");
-		while (L.countBetaRedexes(e) !== 1) {
+		while (L.countBetaRedexes(e).length !== 1) {
 		    e = L.getRndExp(1,4,6,"xyzuvw","");
 		}
 		redex = L.findLeftmostOutermostBetaRedex(e);
@@ -28,7 +28,7 @@
 		// guarantee an alpha conversion
 		while ( ! done ) {
 		    e = L.getRndExp(1,4,6,"xyzuvw","");
-		    while (L.countBetaRedexes(e) !== 1) {
+		    while (L.countBetaRedexes(e).length !== 1) {
 			e = L.getRndExp(1,4,6,"xyzuvw","");
 		    }
 		    redex = L.findLeftmostOutermostBetaRedex(e);
