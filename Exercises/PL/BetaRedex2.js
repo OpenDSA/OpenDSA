@@ -43,10 +43,14 @@
 		    }
 		}// loop on finding an alpha-conversion
 	    }// guaranteed alpha conversion
-	    
+	    var span = "<span style=\"font-family: 'Courier new'\">";
 	    this.answer = LAMBDA.alpha ? "True" : "False";
 	    this.expression = L.printExp(e).replace(/\s/g,"  "); // increase spacing
-
+	    this.hint5 = "The beta-redex is:</br>"
+		+ span
+		+ LAMBDA.printExp(redex)
+		+ "</span></br>and performing one beta-reduction on it yields:</br>"
+		+ span + LAMBDA.printExp(result) + "</span>";
 	    // print reduced redex only	    
 	    //console.log(LAMBDA.alpha + " " + L.printExp(result));
 	} // init function
