@@ -682,16 +682,20 @@ function startAV(av_name, exps,order) {
 
 // end of code for slide shows
 
-function countBetaRedexes(exp) {
+    function countBetaRedexes(exp) {
+	console.log("here");
     function helper(e) {
 	if (LAMBDA.absyn.isAppExp(e)) {
-	    return countBetaRedexes(LAMBDA.absyn.getAppExpFn(e)) +
-		countBetaRedexes(LAMBDA.absyn.getAppExpArg(e)) +
-		(isBetaRedex(e) ? 1 : 0);
+	    var tmp1 = countBetaRedexes(LAMBDA.absyn.getAppExpFn(e));
+	    var tmp2 = countBetaRedexes(LAMBDA.absyn.getAppExpArg(e));
+	    var arr = tmp1[1].concat(tmp2[1]);
+	    if (isBetaRedex(e))
+		arr.unshift(e);
+	    return arr;
 	} else if (LAMBDA.absyn.isLambdaAbs(e)) {
 	    return countBetaRedexes(LAMBDA.absyn.getLambdaAbsBody(e));
 	} else {
-	    return 0; // no beta-redex in a variable
+	    return []; // no beta-redex in a variable
 	}	
     }
     return helper(exp,0);

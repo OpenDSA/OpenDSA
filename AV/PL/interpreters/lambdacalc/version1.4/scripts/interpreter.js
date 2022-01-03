@@ -667,6 +667,7 @@ function startAV(exps,order) {
 
 // end of code for slide shows
 
+    /*
 function countBetaRedexes(exp) {
     function helper(e) {
 	if (LAMBDA.absyn.isAppExp(e)) {
@@ -677,6 +678,26 @@ function countBetaRedexes(exp) {
 	    return countBetaRedexes(LAMBDA.absyn.getLambdaAbsBody(e));
 	} else {
 	    return 0; // no beta-redex in a variable
+	}	
+    }
+    return helper(exp,0);
+}// countBetaRedexes function
+    */
+
+    function countBetaRedexes(exp) {
+
+    function helper(e) {
+	if (LAMBDA.absyn.isAppExp(e)) {
+	    var tmp1 = countBetaRedexes(LAMBDA.absyn.getAppExpFn(e));
+	    var tmp2 = countBetaRedexes(LAMBDA.absyn.getAppExpArg(e));
+	    var arr = tmp1.concat(tmp2);
+	    if (isBetaRedex(e))
+		arr.unshift(e);
+	    return arr;
+	} else if (LAMBDA.absyn.isLambdaAbs(e)) {
+	    return countBetaRedexes(LAMBDA.absyn.getLambdaAbsBody(e));
+	} else {
+	    return []; // no beta-redex in a variable
 	}	
     }
     return helper(exp,0);
