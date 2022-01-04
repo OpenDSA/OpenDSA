@@ -7,7 +7,8 @@
 	init: function () {
 	    var vars = "uvxyz";
 	    var numSteps = 3;  // minimum number of reductions in this exercise
-
+	    var pair;
+	    
 	    function infiniteLoop(reduction) { 
 		return reduction[0].length > 1; 
 	    }
@@ -44,11 +45,15 @@
 
 	    function generateExpression(sameFirstReduction) {
 		var normalRed, applicativeRed;
+		var firstRedexNormal, firstRedexApplicative;
 		var e;
+		var hint5;
 		while ( true ) {		    
 		    e = L.getRndExp(1,2,6,vars,"");
 		    normalRed = L.reduceToNormalForm(e,"normal");
-		    applicativeRed = L.reduceToNormalForm(e,"applicative");   
+		    firstRedexNormal = L.getFirstRedex();
+		    applicativeRed = L.reduceToNormalForm(e,"applicative");
+		    firstRedexApplicative = L.getFirstRedex();		    
 		    if ( infiniteLoop(normalRed) ||
 			 infiniteLoop(applicativeRed) ||
 			 expressionIsTooLong(normalRed) ||
@@ -58,13 +63,24 @@
 			 sameReduction(normalRed,applicativeRed)) {
 			continue;
 		    }
+		    var span = "<span style=\"font-family: 'Courier New'\">";
+
 		    if (sameFirstReduction) {
 			if (normalRed[1][0] === applicativeRed[1][0]) {
-			    return e;
+			    hint5 =  "The correct answer is True</br> because both strategies "
+				+ "reduce the following beta-redex first: "
+				+ span + firstRedexNormal + "</span>";
+			    return [e,hint5];
 			}
 		    } else{
 			if (normalRed[1][0] !== applicativeRed[1][0]) {
-			    return e;
+			    hint5 =  "The correct answer is False</br> because the applicative "
+				+ "order strategy reduces the following beta-redex first: "
+			        + span + firstRedexApplicative + "</span></br>"
+				+ "whereas the normal order strategy reduces the following "
+				+ " beta-redex first: " + span + firstRedexNormal
+				+ "</span>";
+			    return [e,hint5];
 			}
 		    }
 		}// infinite loop
@@ -72,15 +88,18 @@
 
 	    if (L.getRnd(0,1) === 0) {
 		// same first reduction
-		this.expression = L.printExp(generateExpression(true));
+		pair = generateExpression(true);
+		this.expression = L.printExp( pair[0] );
 		this.answer = "True";
+		this.hint5 = pair[1];
 	    } else {
 		// different first reduction
-		this.expression = L.printExp(generateExpression(false));
+		pair = generateExpression(false);		
+		this.expression = L.printExp( pair[0] );
 		this.answer = "False";
+		this.hint5 = pair[1];		
 	    }
 	    this.expression = this.expression.replace(/\s/g," ");
-	    //console.log(this.answer)
 
 	} // init function
 
