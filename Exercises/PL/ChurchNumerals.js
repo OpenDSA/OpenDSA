@@ -57,7 +57,7 @@
 	}, // init function
 
 	validateAnswer: function (studentAnswer) {
-	    console.log(this.answer.replace(/\s+/g,"").replace(/\u03BB/g,"^"));
+	    //console.log(this.answer.replace(/\s+/g,"").replace(/\u03BB/g,"^"));
 	    return this.answer.replace(/\s+/g,"").replace(/\u03BB/g,"^") ===
 		studentAnswer.replace(/\s+/g,"");
 	}// validateAnswer function
