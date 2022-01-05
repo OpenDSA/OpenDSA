@@ -45,6 +45,10 @@
     "DNA Sequencing": {
       "BIO/DNASeq": {},
       "BIO/CH2": {}
+    },
+    
+    "RNA Sequencing": {
+      "BIO/kruskalCON": {}
     }
   }
 }

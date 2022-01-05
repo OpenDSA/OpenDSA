@@ -9,21 +9,12 @@
    :topic: DNASeq
 
 
-RNA Sequencing
-==============
-This is a visualization for RNA Sequencing
+kruskalCON
+==========
+This is a visualization for kruskalCON
 
-.. inlineav:: DNASeq ss
+.. inlineav:: kruskalCON ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/DNASeq.css 
-   :scripts: AV/BIO/DNASeq.js
-   :output: show
-Subtitle
---------
-This is a visualization for RNA Sequencing
-
-.. inlineav:: Test ss
-   :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/Test.css 
-   :scripts: AV/BIO/Test.js
+   :links: AV/BIO/kruskalCON.css 
+   :scripts: AV/BIO/kruskalCON.js
    :output: show
