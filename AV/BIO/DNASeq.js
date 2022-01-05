@@ -4,6 +4,13 @@ $(document).ready(function() {
     "use strict";
     var av_name = "DNASeq";
     var av = new JSAV(av_name);
+  // Click handler for pointer
+  JSAV._types.Pointer.prototype.click = function(fn) {
+    var pointer = this;
+    this.element.click(function() {
+      fn(pointer);
+    });
+  };
   
     var xPosition = 550;
     var yPositionR1 = 10;
