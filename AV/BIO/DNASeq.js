@@ -39,28 +39,6 @@ $(document).ready(function() {
      {"stroke-width": 3, stroke: "red"});
     polygon.hide();
     
-    // Slide 1
-    av.umsg("At first, <tt>badPointer</tt> points to nothing because it is uninitialized.");
-    var code1 = av.label('<tt>Employee badPointer;</tt>', 
-                         {top: -10, left: 145});
-    av.label("badPointer", {top: yPositionR1 + 40,
-                            left: xPosition - 280});
-    var rect1 = av.g.rect(xPosition - 180, yPositionR1 + 50, length1, width);
-    var nullslash = av.g.line(xPosition - 180, yPositionR1 + 50,
-                              xPosition - 80, yPositionR1 + width + 50);
-    av.displayInit();
-  
-    // Slide 2
-    // Explosion
-    av.umsg("Because the reference doesn't point to anything, trying to follow it gives us a null pointer exception");
-    nullslash.hide();
-    code1.hide
-    av.label('<tt>System.out.println(badPointer.getName());</tt>', 
-             {top: 10, left: 145});
-    ptrline.show();
-    av.label("NullPointerException",  {top: 50, left: 550});
-  //  av.g.ellipse(680, 27, 78, 25, {stroke: "red", "stroke-width": 3}); 
-    polygon.show();
-    av.recorded();
+   
   });
   
