@@ -287,15 +287,15 @@
 	    //     exp is either a string, or an array in which the first
 	    //     element is always a string
 	    function myStringify(indent,arr,maxLength) {
-		//function nSpaces(n) { return new Array(n+1).join(' '); }
-		var spaces = new Array(indent+1).join(' ');
+		var space = " ";
+		var spaces = new Array(indent+1).join(space);
 		var line = JSON.stringify(arr);
 		if (line.length <= maxLength) {
 		    return [ spaces + line ];
 		}
 		var i, result = [], prefix, suffix; 
 		for(i=0; i<arr.length; i++) {
-		    prefix = spaces + (i=== 0 ? "[ " : "  ");
+		    prefix = spaces + (i=== 0 ? "[" + space : space + space);
 		    suffix = i === arr.length-1 ? "" : ",";
 		    if (typeof arr[i] === "object") {
 			line = JSON.stringify(arr[i]);
@@ -441,7 +441,8 @@
 	    }// while loop
 
 	    this.expression = expStr;
-
+	    var span = "<span style=\"font-family: 'Courier New'\">";
+	    
 	    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	    //  	   pick correct answer
 	    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -476,6 +477,10 @@
 		    selectedVar = 
 			varBoundToClosure[A.getRnd(
 			    0,varBoundToClosure.length-1)];
+		    this.correctValue = span + "<pre>" +
+			myStringify(0,selectedVar.value,maxLength)
+			.join("<br />") + "</pre></span>";
+
 		    if (A.getRnd(0,1)===0) {
 			// ... display another closure
 			rnd = A.getRnd(0,2);
@@ -507,7 +512,9 @@
 		    selectedVar = 
 			varBoundToInt[A.getRnd(
 			    0,varBoundToInt.length-1)];
-
+		    this.correctValue = span + "<pre>" +
+			myStringify(0,selectedVar.value,maxLength)
+			.join("<br />") + "</pre></span>";
 		    if (A.getRnd(0,1)===0) {
 			// ... display another integer
 			value = pickAnotherInteger(
@@ -524,10 +531,21 @@
 		
 	    }
 
-	    selectedVar.selected = true;		    
+	    selectedVar.selected = true;		   
 	    this.underlinedExpression = underlineExp(exp);
 	    this.value = myStringify(0,value,maxLength)
 		.join("<br />");
+	    
+	    if (this.answer === "True")
+		this.hint5 = "The correct answer is True.";
+	    else
+	    {
+		this.hint5 = "The correct answer is False. The underlined "
+		+ "variable occurrence in the expression above is bound to "
+		+ "the following value:</br> "
+		    + this.correctValue;
+		//console.log( this.correctValue);
+	    }
 	    //console.log(JSON.stringify(selectedVar.value));
 	}// init function
 
