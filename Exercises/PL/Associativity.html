@@ -38,7 +38,7 @@
 		<td>&lt;exp&gt;</td> 
 		<td>::= &lt;integer&gt;</td>
 		<td>| &lt;exp&gt; ^ &lt;exp&gt;</td>
-		<td>| ( &lt;exp&gt;)</td></tr>
+		<td>| ( &lt;exp&gt; )</td></tr>
 	    </table>
 	    <p class="question">If ^ represents exponentiation, how
 	    many of these grammars force 2^3^2 to evaluate to 512?</p>
@@ -58,7 +58,12 @@
 	    <p>How does the double-recursion pattern (i.e.,
 	    simultaneous left- and right-recursion) in a production
 	    impact the associativity of the operator defined by the
-	    production?</p>
+	      production?</p>
+	    <p>In Grammar 1, the ^ operator is left-associative.</p>
+	    <p>In Grammar 2, the ^ operator is right-associative.</p>
+	    <p>In Grammar 3, the ^ operator is neither left- nor
+	    right-associative because of the double-recursion in its
+	    second production. This grammar is ambiguous.</p>
           </div>
         </div>
       </div>

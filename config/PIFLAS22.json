@@ -90,7 +90,8 @@
       },
       "PIFLA/Relations": {
         "SetTFrelation": {
-          "threshold": 5
+          "threshold": 5,
+          "points": 2.0
         },
         "SetTFequivrel": {
           "threshold": 3
@@ -138,7 +139,7 @@
           "points": 2.0
         }
       },
-      "PIFLA/DFACompExercise": {
+      "PIFLA/DFAComplementEx": {
         "DFANotaabb": {
           "points": 2.0
         }
@@ -171,14 +172,7 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegularGrammars": {
-        "REtoFAExampleFS": {
-          "points": 1.0
-        },
-        "STAFS": {
-          "points": 1.0
-        }
-      },
+      "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
           "points": 2.0
@@ -190,17 +184,122 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegClosure": {
-        "RLClosConceptFS": {
+      "PIFLA/RegClosure": {}
+    },
+    "Identifying Non-regular Languages":{
+      "PIFLA/NonRegular": {
+        "introPumpingFS": {
           "points": 1.0
         },
-        "RLHomomorphFS": {
+        "ClosPropFS": {
           "points": 1.0
         },
-        "RLQuestionsFS": {
+        "ClosPropEx1FS": {
+          "points": 1.0
+        },
+        "ClosPropEx2FS": {
+          "points": 1.0
+        },
+        "ClosPropEx3FS": {
           "points": 1.0
         }
       }
+    },
+    "Context-Free Grammars and Languages":{
+      "PIFLA/ContexFreeLanguages": {},
+      "PIFLA/CFGExercises": {
+        "anbmodd":{
+          "points": 2.0
+        },
+        "ambicn":{
+          "points": 2.0
+        },
+        "ambian":{
+          "points": 2.0
+        },
+        "asbsequal":{
+          "points": 2.0
+        }
+      },
+      "PIFLA/CFGTransformations":{},
+      "PIFLA/CFGTransEx":{
+        "DFAmod3b":{
+          "points": 2.0
+        },
+        "CFGTransEx1":{
+          "points": 2.0
+        },
+        "CFGTransEx2":{
+          "points": 2.0
+        },
+        "ChomskyEx":{
+          "points": 2.0
+        }
+      }
+    },
+    "Pushdown Automata":{
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAaicjbi":{
+          "points": 2.0
+        },
+        "PDAwcwR":{
+          "points": 2.0
+        },
+        "PDA2asperb":{
+          "points": 2.0
+        },
+        "PDAaibjck":{
+          "points": 2.0
+        }
+      },
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {
+        "NCFLvsDCFLFS": {
+          "points": 1.0
+        }
+      }
+    },
+    "Properties of Context-free Languages":{
+      "PIFLA/CFLProp":{}
+    },
+    "Turing Machines":{
+      "PIFLA/TuringMachines":{},
+      "PIFLA/TMExercises":{
+        "addOnea":{ 
+          "points": 2.0
+        },
+        "eraseABC":{ 
+          "points": 2.0
+        },
+        "keepABC":{ 
+          "points": 2.0
+        },
+        "aNumsPowerOf2":{ 
+          "points": 2.0
+        },
+        "ifaNumsPowerOf2":{ 
+          "points": 2.0
+        },
+        "abcWInWWROut":{ 
+          "points": 2.0
+        },
+        "abcNawlargerthanNbw":{ 
+          "points": 2.0
+        },
+        "replaceABAbyACA":{ 
+          "points": 2.0
+        },
+        "abPalindromes":{ 
+          "points": 2.0
+        }
+      }
+    },
+    "Limits to Computing": {
+      "PIFLA/LimCompFLA": {},
+      "PIFLA/Reduction": {},
+      "PIFLA/NPComplete": {},
+      "PIFLA/Impossible": {}
     },
     "Appendix": {
       "Glossary": {}

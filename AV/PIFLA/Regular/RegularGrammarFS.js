@@ -6,68 +6,83 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
-  //frame 1
-  av.umsg("In this module we will learn about Regular Grammars")
+  // Frame 1
+  av.umsg("This slideshow will define Regular Grammars.")
   av.displayInit();
-  av.umsg(Frames.addQuestion("q1"));
-  av.step();
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
-  av.step();
-  //frame 4
-  av.umsg(Frames.addQuestion("q4"));
-  av.step();
-  //frame 5
-  av.umsg(Frames.addQuestion("q5"));
-  av.step();
-  //frame 6
-  av.umsg(Frames.addQuestion("q6"));
-  av.step();
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
-  av.step();
-  //frame 8
-  av.umsg("Suppose we have the following Grammar $G$ = $(V,T,S,P)$ where, <br> $V$ =  variables(nonterminals) = $A, B, \\ldots Z$ <br>$T$ = $terminals$ = $a,b,\\ldots ,z,0,1,\\ldots 9$ <br>$P$ = productions(rules)<br>$S$ = $start \\ symbol$ <br> $V,T$ and $P$ are finite sets")
-  av.step();
-  //frame 9
-  av.umsg("In this module, we will see what makes a grammar regular.");
-  av.step();
-  //frame 10
-  av.umsg(Frames.addQuestion("q10"));
-  av.step();
-  //frame 11
-  av.umsg("$Linear \\ grammar$: A grammar that is linear if has a single variable in the RHS of every production rule. <br> $All \\ productions \\ are \\ of \\ the \\ form$ <br> $A$ $\\rightarrow$ $xB$ <br> $A \\ \\rightarrow Cx$ <br> $A \\ \\rightarrow x$ <br> $where \\ A,B,C \\in V, \\ x \\in \\ T^*$ <br> In this grammar, each production rule has at most one variable on the RHS");
-  av.step();
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
-  av.step();
-  //frame 13
-  av.umsg(Frames.addQuestion("q13"));
+
+  // Frame 2
+  av.umsg(Frames.addQuestion("RL"));
   av.step();
 
-  //frame 14
-  av.umsg(Frames.addQuestion("q14"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("RG"));
   av.step();
 
-  //frame 15
-  av.umsg(Frames.addQuestion("q15"));
+  // Frame 4
+  av.umsg(Frames.addQuestion("variable"));
   av.step();
 
-  //frame 16
-  av.umsg(Frames.addQuestion("q16"));
+  // Frame 5
+  av.umsg(Frames.addQuestion("terminal"));
   av.step();
 
-  //frame 17
-  av.umsg(Frames.addQuestion("q17"));
+  // Frame 6
+  av.umsg(Frames.addQuestion("production"));
   av.step();
 
-  //frame 18
-  av.umsg("We now have covered<br> Definition: DFA represents regular language <br> Theorem: NFA $\\Longleftrightarrow$ DFA<br> Theorem: RE $\\Longleftrightarrow$ NFA .<br> The next step will be Theorem: DFA $\\Longleftrightarrow$ Regular Grammar");
+  // Frame 7
+  av.umsg(Frames.addQuestion("start"));
+  av.step();
+
+  // Frame 8
+  av.umsg(Frames.addQuestion("sets"));
+  av.step();
+
+  // Frame 9
+  av.umsg("A grammar $G$ is defined as $G = (V, T, S, P)$ where<br>$V =$ variables (or non-terminals) $= A, B, \\ldots, Z$<br>$T =$ terminals $= a, b, \\ldots, z, 0, 1, \\ldots 9$<br>$P =$ productions (replacement rules)<br>$S =$ start symbol<br>$V, T$ and $P$ are finite sets.")
+  av.step();
+
+  // Frame 10
+  av.umsg("Now that we have been reminded about the pieces of a grammar definition, let's start defining what makes a grammar regular.");
+  av.step();
+
+  // Frame 11
+  av.umsg(Frames.addQuestion("linear"));
+  av.step();
+
+  // Frame 12
+  av.umsg("<b>Definition</b>: A grammar is <b>linear</b> if has a single variable in the RHS of every production rule (and a single variable on the LHS of every production rule).<br>So, all productions are of one of these forms:<br>$A \\rightarrow xB$<br>$A \\rightarrow Cx$<br>$A \\rightarrow x$<br>where $A, B, C \\in V, x \\in \\ T^*$.");
+  av.step();
+
+  // Frame 13
+  av.umsg(Frames.addQuestion("right"));
+  av.step();
+
+  // Frame 14
+  av.umsg(Frames.addQuestion("left"));
+  av.step();
+
+  // Frame 15
+  av.umsg(Frames.addQuestion("regular"));
+  av.step();
+
+  // Frame 16
+  av.umsg(Frames.addQuestion("Ex2"));
+  av.step();
+
+  // Frame 17
+  av.umsg(Frames.addQuestion("Ex3"));
+  av.step();
+
+  // Frame 18
+  av.umsg(Frames.addQuestion("Ex4"));
+  av.step();
 
   // Frame 19
+  av.umsg("We have now made a definition for a linear grammar. And we also defined a regular grammar as one that is <b>either</b> right-linear or left-linear. Perhaps this seems a bit restrictive to you, and maybe you can't be sure if a grammar with, for example, only left-linear rules is really general enough to describe all regular languages? And maybe its also not obvious that right-linear and left-linear grammars are equivalent. In the rest of this module, we will prove that both these claims are true.");
+  av.step();
+  
+  // Frame 20
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

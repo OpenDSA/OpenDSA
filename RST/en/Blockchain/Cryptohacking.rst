@@ -95,7 +95,7 @@ influence they have on the network
 (see :ref:`Proof Of Stake <Proof of Stake> <ProofOfStake>`).
 
 The chance of this happening in a developed cryptocurrency is not
-significant, but they do still occur. [Really? Examples?]
+significant, but they do still occur. [Need Examples]
 Once a person has the majority in computing power or stake, they can
 target individuals by hacking their wallets and obtaining information
 from their [... looks like something missing here.]

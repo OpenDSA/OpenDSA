@@ -15,6 +15,13 @@
           "answer": "Add all missing edges with $\\emptyset$ labels",
           "choices": ["Add all missing edges with $\\emptyset$ labels", "Connect all nodes together"]
         },
+        "emptyset": {
+          "type": "select",
+          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed.",
+          "question":"How is a transition on $\\emptyset$ different from a transition on $\\lambda$?",
+          "answer": "A transition on $\\lambda$ is a free transition, while a transition on $\\emptyset$ means there is no symbol that allows that transition.",
+          "choices": ["They are the same", "A transition on $\\lambda$ is a free transition, while a transition on $\\emptyset$ means there is no symbol that allows that transition.", "A transition on $\\emptyset$ is a free transition, while a transition on $\\lambda$ means there is no symbol that allows that transition."]
+        },
         "regular": {
           "type": "select",
           "description": "$\\textbf {Proof}$:<br> $L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.",
@@ -22,7 +29,7 @@
           "answer": ["L is accepted by a DFA", "L is accepted by a NFA", "L is described by a regular expression"],
           "choices": ["L is accepted by a DFA", "L is accepted by a NFA", "L is described by a regular expression"]
         },
-        "q9": {
+        "rji": {
           "type": "multiple",
           "description": "$\\textbf {Proof}$:<br>$L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.<br>$\\textbf {1}$ Assume $M$ has one final state, and that start state $s \\not\\in F$.<br>$\\textbf {2}$ Convert $M$ to a complete GTG.<br>Let $r_{ij}$ stand for the label of the edge from $q_i$ to $q_j$.",
           "question":"What does $r_{ji}$ mean?",
@@ -50,7 +57,7 @@
           "answer": "True",
           "choices": []
         },
-        "rji": {
+        "rjiagain": {
           "type": "select",
           "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
           "question":"The next part of the RegEx is $r_{ji}^*$, which means that the machine can go back to $qi$ by reading $r_{ji}$",

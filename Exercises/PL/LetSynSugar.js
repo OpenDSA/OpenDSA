@@ -224,10 +224,12 @@
 		    break;
 		}
 	    }
+	    var span = "<span style=\"font-family: 'Courier New'\">";
 
 	    this.expression = expStr.join("<br />");
 	    this.answer = SL.printExp(exp);
-
+	    this.hint4 = "The correct answer is:</br>" + span
+		+ this.answer + "<span>";
 	    //console.log(this.answer);
 	    //console.log(value);
 	},// init function

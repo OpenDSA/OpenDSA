@@ -47,8 +47,8 @@ The Concept of Pumping
    :output: show
 
 
-Pumping Lemma
--------------
+The Pumping Lemma
+-----------------
 
 .. inlineav:: PumpingLemmaCON ss
    :long_name: Pumping Lemma Slideshow
@@ -78,6 +78,10 @@ is regular.
 And the pumping lemma is not a universal solution for determining that
 a language is non-regular.
 Its just a tool in the toolbox.
+
+
+Some Pumping Lemma Examples
+---------------------------
 
 .. inlineav:: PLExample1FS ff
    :links: AV/PIFLA/NonRegular/PLExample1FS.css
@@ -120,8 +124,8 @@ Its just a tool in the toolbox.
    :output: show
 
 
-Pumping Lemma Adversary Game
-----------------------------
+The Pumping Lemma Adversary Game
+--------------------------------
 
 Here is an adversary argument way of looking at this.
 Your goal is to establish a contradiction (to prove the language is
@@ -173,7 +177,7 @@ we divide proof into steps as follows:
    :long_name: Regular Pumping Lemmma
 
 
-Using Closure Properties to prove L is not regular
+Using Closure Properties to Prove L is Not Regular
 --------------------------------------------------
 
 Sometimes we cannot prove that a language is not regular by using the

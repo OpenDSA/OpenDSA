@@ -1,0 +1,85 @@
+{
+  "translations": {
+    "en": {
+      "right": {
+        "type": "multiple",
+        "description": "Let us start with:<br>Given a regular grammar $G$, construct NFA $M$ such that $L(G) = L(M)$.",
+        "question":"[T|F] The grammar shown is a right-linear grammar",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "states": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.",
+        "question":"How many sates we need in for this grammar?",
+        "answer": "At least 3",
+        "choices": ["At least 2", "At least 3", "At least 4"],
+        "correctFeedback": ["We need a state for each non-terminal, and this grammar has three: $S, A,$ and $B$."]
+      },
+      "start": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.",
+        "question":"Which state will be the start state?",
+        "answer": "$S$, because it is the start variable",
+        "choices": ["$S$, because it is the start variable", "A", "B"]
+      },
+      "S2aB": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.<br>2. Make a transition out of the state for a non-terminal on each associated production rule.",
+        "question":"What is the transition for the highlighted rule?",
+        "answer": "$\\delta(S, a) = B$",
+        "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+      },
+      "S2aA": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.<br>2. Make a transition out of the state for a non-terminal on each associated production rule.",
+        "question":"What is the transition for the highlighted rule?",
+        "answer": "$\\delta(S, a) = A$",
+        "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"],
+        "correctFeedback": ["Notice that grammars can be non-deterministic."]
+      },
+      "A2aA": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.<br>2. Make a transition out of the state for a non-terminal on each associated production rule.",
+        "question":"What is the transition for the highlighted rule?",
+        "answer": "$\\delta(A, a) = A$",
+        "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+      },
+      "A2bS": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.<br>2. Make a transition out of the state for a non-terminal on each associated production rule.",
+        "question":"What is the transition for the highlighted rule?",
+        "answer": "$\\delta(A, b) = S$",
+        "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+      },
+      "A2bB": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.<br>2. Make a transition out of the state for a non-terminal on each associated production rule.",
+        "question":"What is the transition for the highlighted rule?",
+        "answer": "$\\delta(A, b) = B$",
+        "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+      },
+      "B2bS": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.<br>2. Make a transition out of the state for a non-terminal on each associated production rule.",
+        "question":"What is the transition for the highlighted rule?",
+        "answer": "$\\delta(B, b) = S$",
+        "choices": ["$\\delta(S, a) = B$", "$\\delta(S, a) = A$", "$\\delta(A, a) = A$", "$\\delta(A, b) = S$", "$\\delta(A, b) = B$", "$\\delta(B, b) = S$", "$\\delta(B, \\lambda) = S$"]
+      },
+      "lambda": {
+        "type": "multiple",
+        "description": "The process is:<br>1. Make a state for each non-terminal.<br>2. Make a transition out of the state for a non-terminal on each associated production rule.",
+        "question":"What is the transition for the highlighted rule?",
+        "answer": "B will be the final state because it has a $\\lambda$ transition to no Variable",
+        "choices": ["$\\delta(B, \\lambda) = S$", "B will be the final state because it has a $\\lambda$ transition to no Variable"]
+      },
+      "multiple": {
+        "type": "multiple",
+        "description": "One thing that we have not considered so far is what to do if a rule has multiple terminals on the RHS. When this happens, we make the necessary number of dummy states to consume the non-terminals.",
+        "question":"Suppose the first production is changed to be $S \\rightarrow abB$. What should we do in the NFA?",
+        "answer": "Add a new (dummy) state name $D$, and make these transitions: $\\delta(S, a) = D$, and $\\delta(D, b) = B$.",
+        "choices": ["Add a new (dummy) state name $D$, and make these transitions: $\\delta(S, a) = D$, and $\\delta(D, b) = B$.", "This is an invalid transition.", "The grammar is not right-linear any more."]
+      }
+    }
+  }
+}

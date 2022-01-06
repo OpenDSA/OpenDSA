@@ -102,7 +102,8 @@
           "points": 1.0
         }
       },
-      "Background/Proofs": {}
+      "Background/Proofs": {},
+      "PIFLA/MathProof": {}
     },
     "Finite Acceptors": {
       "PIFLA/DFA":{
@@ -188,12 +189,13 @@
           "points": 2.0
         }
       },
-      "PIFLA/DFACompExercise": {
+      "PIFLA/DFAComplementEx": {
         "DFANotaabb": {
           "points": 2.0
         }
       },
-      "PIFLA/DFAMinimization": {}
+      "PIFLA/DFAMinimization": {},
+      "PIFLA/MinimizationEx": {}
     },
     "Regular Languages": {
       "PIFLA/RegEx":{
@@ -240,6 +242,7 @@
           "points": 1.0
         }
       },
+      "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
           "points": 2.0
@@ -265,17 +268,7 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegClosure": {
-        "RLClosConceptFS": {
-          "points": 1.0
-        },
-        "RLHomomorphFS": {
-          "points": 1.0
-        },
-        "RLQuestionsFS": {
-          "points": 1.0
-        }
-      },
+      "PIFLA/RegClosure": {},
       "VisFormalLang/DFAproperties": {}
     },
     "Identifying Non-regular Languages":{
@@ -299,58 +292,61 @@
     },
     "Context-Free Grammars and Languages":{
       "PIFLA/ContexFreeLanguages": {},
-      "PIFormalLang/CFLExercises": {
-        "sheet5exercise1":{
-          "points": 5.0
+      "PIFLA/CFGExercises": {
+        "anbmodd":{
+          "points": 2.0
         },
-        "sheet5exercise2":{
-          "points": 5.0
+        "ambicn":{
+          "points": 2.0
         },
-        "sheet5Practice1":{
-          "points": 5.0
+        "ambian":{
+          "points": 2.0
         },
-        "sheet5Practice2":{
-          "points": 5.0
+        "asbsequal":{
+          "points": 2.0
         }
       },
-      "PIFormalLang/CFGTransormations":{},
-      "PIFormalLang/CFGTransformationsExercies":{
-        "sheet6exercise1":{
-          "points": 5.0
+      "PIFLA/CFGTransformations":{},
+      "PIFLA/CFGTransEx":{
+        "DFAmod3b":{
+          "points": 2.0
         },
-        "sheet6exercise2":{
-          "points": 5.0
+        "CFGTransEx1":{
+          "points": 2.0
         },
-        "sheet6exercise3":{
-          "points": 5.0
+        "CFGTransEx2":{
+          "points": 2.0
         },
-        "sheet6exercise4":{
-          "points": 5.0,
-          "threshold": 0.9
+        "ChomskyEx":{
+          "points": 2.0
         }
       }
     },
     "Pushdown Automata":{
-      "PIFormalLang/PDA": {},
-      "PIFormalLang/PDAExercises":{
-        "sheet7exercise1":{
-          "points": 5.0
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAaicjbi":{
+          "points": 2.0
         },
-        "sheet7exercise2":{
-          "points": 5.0
+        "PDAwcwR":{
+          "points": 2.0
         },
-        "sheet7exercise3":{
-          "points": 5.0
+        "PDA2asperb":{
+          "points": 2.0
         },
-        "sheet7exercise4":{
-          "points": 5.0
+        "PDAaibjck":{
+          "points": 2.0
         }
       },
-      "PIFormalLang/PDACFL": {},
-      "PIFormalLang/DPDA": {}
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {
+        "NCFLvsDCFLFS": {
+          "points": 1.0
+        }
+      }
     },
     "Properties of Context-free Languages":{
-      "PIFormalLang/CFLProp":{}
+      "PIFLA/CFLProp":{}
     },
     "Turing Machines":{
       "PIFLA/TuringMachines":{},

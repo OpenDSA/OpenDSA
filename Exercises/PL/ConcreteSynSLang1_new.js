@@ -15,7 +15,8 @@
 	    var options = [ "True", "False" ];
 	    var exps = [ ];
 	    var exp, badExp;
-
+	    var error;
+	    
 	    function getRndExp() {
 		var exp =
 		    SL.printExp(
@@ -36,6 +37,8 @@
 	    // replace a with b in exp
 	    function replaceWith(exp,a,b) {
 		var index, lastIndex, rnd;
+		var from = a === " " ? "space" : "comma";
+		var to = b === " " ? "space" : "comma";		
 		index = exp.indexOf(a); 
 		lastIndex = exp.lastIndexOf(a); 
 		rnd = SL.absyn.getRnd(1,3);
@@ -44,13 +47,19 @@
 		    case 1: // replace first a
 			exp = exp.substring(0,index) + b +
 			    exp.substring(index+1);
+			error = "replacing the first " + from + " with a "
+			    + to;
 			break;
 		    case 2: // replace last a
 			exp = exp.substring(0,lastIndex) + b +
 			    exp.substring(lastIndex+1);
+			error = "replacing the last " + from + " with a "
+			    + to;
 			break;
-		    case 3: // replace all bs
+		    case 3: // replace all as
 			exp = exp.replace(new RegExp(a,'g'),b);
+			error = "replacing all occurrences of " + from 
+			    + " with a " + to;
 			break;
 		    }
 		}// there is at least one blank space		
@@ -61,7 +70,6 @@
 	    function addSyntaxError(exp) {
 		var type = SL.absyn.getRnd(1,4);
 		var rnd, index, lastIndex;
-		type =4;
 		switch (type) {
 		    case 1:  // replace space(s) with comma
 		    return replaceWith(exp," ",",");
@@ -71,8 +79,10 @@
 
 		    case 3: // replace "=>" with " "
 		    index = exp.indexOf("=>");
+		    error = "replacing the first => with a space";
 		    if (index > -1) {
 			if (SL.absyn.getRnd(0,1) === 0) {
+			    error = "replacing the last => with a space";
 			    index = exp.lastIndexOf("=>");
 			}
 			return exp.substring(0,index) + " " +
@@ -81,8 +91,10 @@
 		    break;
 		    case 4: // replace " " with "=>"
 		    index = exp.indexOf(" ");
+		    error = "replacing the first space with a =>";
 		    if (index > -1) {
 			if (SL.absyn.getRnd(0,1) === 0) {
+			    error = "replacing the last space with a =>";
 			    index = exp.lastIndexOf(" ");
 			}
 			return exp.substring(0,index) + "=>" +
@@ -111,6 +123,17 @@
 
 	    this.expression = exps[0];
 	    this.answer = numCorrect == 1 ? "True" : "False";
+	    if ( this.answer === "True")
+		this.hint4 = "The correct answer is True.";
+	    else
+	    {
+		var span = "<span style=\"font-family: 'Courier New'\">";
+		this.hint4 = "The correct answer is False. The expression "
+		    + " above was obtained by starting with the following "
+		    + " syntactically correct expression:</br>"
+		    + span + exp + "</span>"
+		    + "</br> and then " + error;
+	    }
 	}// init function
     };
 

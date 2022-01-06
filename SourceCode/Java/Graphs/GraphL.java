@@ -60,9 +60,9 @@ public class GraphL implements Graph {
     }
     else {
       curr.next = new Edge(w, wgt, curr, curr.next);
+      numEdge++;
       if (curr.next.next != null) { curr.next.next.prev = curr.next; }
     }
-    numEdge++;
   }
 
   // Get the weight value for an edge

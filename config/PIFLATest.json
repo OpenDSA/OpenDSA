@@ -57,38 +57,8 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Context-Free Grammars and Languages":{
-      "PIFLA/ContexFreeLanguages": {},
-      "PIFormalLang/CFLExercises": {
-        "sheet5exercise1":{
-          "points": 5.0
-        },
-        "sheet5exercise2":{
-          "points": 5.0
-        },
-        "sheet5Practice1":{
-          "points": 5.0
-        },
-        "sheet5Practice2":{
-          "points": 5.0
-        }
-      },
-      "PIFormalLang/CFGTransormations":{},
-      "PIFormalLang/CFGTransformationsExercies":{
-        "sheet6exercise1":{
-          "points": 5.0
-        },
-        "sheet6exercise2":{
-          "points": 5.0
-        },
-        "sheet6exercise3":{
-          "points": 5.0
-        },
-        "sheet6exercise4":{
-          "points": 5.0,
-          "threshold": 0.9
-        }
-      }
+    "Stuff":{
+      "PIFLA/RegClosure": {}
     },
     "Appendix": {
       "Glossary": {}

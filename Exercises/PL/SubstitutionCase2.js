@@ -4,11 +4,11 @@
     var L = LAMBDA;
     var question = {};
     var arr;
-
+    var x;
     function pickExpressionSubcase(minDepth,maxDepth,vars,
 				    prob1a,prob1b,prob3) {
 	/* pick a, p, abd B in subst(a,p,B) */
-	var substCase,a,p,B,tmp,tmp2, x;
+	var substCase,a,p,B,tmp,tmp2;
 	var rnd = Math.random();
 	a = L.getRndExp(1,1,3,vars,"");
 	if (rnd < prob1a) {
@@ -105,9 +105,41 @@
 	    var p = subst[2];
 	    var B = subst[3];
 	    //var options = ["2a","2b","2c", "This is not an instance of case 2"];
+	    var substTxt = "<span style=\"font-family: 'Courier New'\">subst</span>";
 	    this.substExpression = "subst( " + L.printExp(a) + ", " + 
 		L.printExp(p) + ", " + 	L.printExp(B) + " )";
 	    this.answer = substCase;
+	    this.hint4 = "This is not an instance of case 2 because the third "
+		+ "argument of " + substTxt
+		+ " (i.e., <span style=\"font-family: 'Courier New'\">"
+		+ L.printExp(B) + "</span>) is not a lambda abstraction."
+	    if (substCase === "2a")
+		this.hint4 = "This is case 2a because the last argument of "
+		+ substTxt + " is a lambda abstraction whose parameter "
+		+ " (i.e., "
+		+ "<span style=\"font-family: 'Courier New'\">"
+		+ L.printExp(x) + "</span>"
+		+ ") is equal to the second argument of " + substTxt + ".";
+	    else if (substCase === "2b")
+		this.hint4 = "This is case 2b because the last argument of "
+		+ substTxt + " is a lambda abstraction whose parameter "
+		+ " (i.e., "
+		+ "<span style=\"font-family: 'Courier New'\">"
+		+ L.printExp(x) + "</span>"
+		+ ") is not equal to the second argument of " + substTxt
+		+ " and does not occur free in "
+		+ "<span style=\"font-family: 'Courier New'\">"
+		+ L.printExp(a) + "</span>."
+	    else if (substCase === "2c")
+		this.hint4 = "This is case 2c because the last argument of "
+		+ substTxt + " is a lambda abstraction whose parameter "
+		+ " (i.e., "
+		+ "<span style=\"font-family: 'Courier New'\">"
+		+ L.printExp(x) + "</span>"
+		+ ") is not equal to the second argument of " + substTxt
+		+ " but does occur free in "
+		+ "<span style=\"font-family: 'Courier New'\">"
+		+ L.printExp(a) + "</span>."
 	    
 	    //options.splice(options.indexOf(substCase),1);
 	} // init function

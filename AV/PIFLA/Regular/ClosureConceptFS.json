@@ -1,0 +1,94 @@
+{
+  "translations": {
+    "en": {
+      "add": {
+        "type": "select",
+        "description": "<b>Definition</b>: A set is <b>closed</b> over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.",
+        "question": "Suppose $L = \\{x\\ |\\ x$ is a positive even integer$\\}$. What is the result of adding two positive even integers?",
+        "answer": ["Another positive even integer", "A number $\\in L$"],
+        "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
+      },
+      "addclosed": {
+        "type": "multiple",
+        "description": "<b>Definition</b>: A set is <b>closed</b> over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.",
+        "question": "So, is $L$ closed under addition?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "multiply": {
+        "type": "select",
+        "description": "<b>Definition</b>: A set is <b>closed</b> over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.",
+        "question": "Suppose $L = \\{x\\ |\\ x$ is a positive even integer$\\}$. What is the result of multiplying two positive even integers?",
+        "answer": ["Another positive even integer", "A number $\\in L$"],
+        "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
+      },
+      "multclosed": {
+        "type": "multiple",
+        "description": "<b>Definition</b>: A set is <b>closed</b> over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.",
+        "question": "So, is $L$ closed under multiplication?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "subtract": {
+        "type": "select",
+        "description": "<b>Definition</b>: A set is <b>closed</b> over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.",
+        "question": "Suppose $L = \\{x\\ |\\ x$ is a positive even integer$\\}$. What is the result of subtracting a positive even integer from another? A couple of examples are $6 - 4$ and $4 - 6$.",
+        "answer": ["Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"],
+        "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
+      },
+      "subnotclosed": {
+        "type": "multiple",
+        "description": "<b>Definition</b>: A set is <b>closed</b> over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.",
+        "question": "So, is $L$ closed under subtraction?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["To be closed, it has to be true for <b>any</b> two members of the set."]
+      },
+      "div": {
+        "type": "select",
+        "description": "<b>Definition</b>: A set is <b>closed</b> over a (binary) operation if, whenever that operation is applied to any two members of the set, the result is a member of the set.",
+        "question": "Suppose $L = \\{x\\ |\\ x$ is a positive even integer$\\}$. What is the result of dividing one positive even integer by another?",
+        "answer": ["Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"],
+        "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
+      },
+      "generalize": {
+        "type": "select",
+        "description": "So far, we have been looking at binary operators that we generally think of as written in <b>infix</b> notation. A more general way to write this is like a function call, for example we might write addition as <b>addition(x, y)</b>. And, we don't need to stick to binary operators. We can do unary operators, for example. Such as an operator to make a value negative: <b>negative(x)</b>.",
+        "question": "Suppose $L = \\{x\\ |\\ x$ is a positive even integer$\\}$. What is the result of <b>negative(x)</b> for $x \\in L$?",
+        "answer": ["A number $\\not\\in L$"],
+        "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
+      },
+      "increment": {
+        "type": "select",
+        "description": "Consider the operator <b>++(x)</b>, which increments $x$.",
+        "question": "Suppose $L = \\{x\\ |\\ x$ is a positive even integer$\\}$. What is the result of <b>++(x)</b> for $x \\in L$?",
+        "answer": ["A number $\\not\\in L$"],
+        "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
+      },
+      "strings": {
+        "type": "select",
+        "description": "Of course, we can also talk about sets of strings. Suppose $L = \\{x\\ |\\ x$ is a string containing any even number of a's.$\\}$.",
+        "question": "For strings $x$ and $y$ in $L$, what is the result of $x \\cup y$?",
+        "answer": ["A string", "A string $\\in L$"],
+        "choices": ["A string", "A string $\\in L$", "A string $\\not\\in L$", "Sometimes a string $\\in L$, and sometimes a string $\\not\\in L$"]
+      },
+      "addstrings": {
+        "type": "select",
+        "description": "Of course, we can also talk about sets of strings. Suppose $L = \\{x\\ |\\ x$ is a string containing any even number of a's.$\\}$.",
+        "question": "Consider binary operator <b>addition</b> that adds two numbers. What is <b>addition(x, y)</b> for $x$, $y$ in $L$?",
+        "answer": ["This makes no sense"],
+        "choices": ["This makes no sense", "A string $\\in L$", "A string $\\not\\in L$", "Sometimes a string $\\in L$, and sometimes a string $\\not\\in L$"],
+        "correctFeedback": ["$x$ and $y$ are strings, and <b>addition</b> is defined on numbers. So, $L$ is not closed on <b>addition</b>."]
+      },
+      "regular": {
+        "type": "multiple",
+        "description": "In the rest of this module, we are going to talk about whether certain operators are closed or not for regular languages.",
+        "question": "What is a regular language?",
+        "answer": "A set of strings",
+        "choices": ["A set of strings"],
+        "correctFeedback": ["Like any language, a regular language is just a set of string."]
+      }
+    }
+  }
+}
+

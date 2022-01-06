@@ -234,6 +234,16 @@ rates, so the parent transactions can be sent before the child ones.
 Transactions selected from this sorted list are sent until there are
 not any left or a limit has been reached, which rarely occurs. 
 
+So what happens if two mining nodes both reach valid (but different) solutions at the same time? How does the network know which chain to agree upon as the single source of truth?
+
+
+.. inlineav:: ProofOfWorkConsensus ss
+   :long_name: ProofOfWorkConsensus Slideshow
+   :links: AV/Blockchain/ProofOfWork.css
+   :scripts: AV/Blockchain/ProofOfWorkConsensus.js
+   :output: show
+
+
 But what if some miner wants to claim a fraudulant transaction?
 How does trusting the chain with the greatest amount of work prevent
 fraud?

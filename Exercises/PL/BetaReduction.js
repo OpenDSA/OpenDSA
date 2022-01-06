@@ -5,7 +5,7 @@
     var BetaReduction = {    
 
 	init: function () {
-	    var redex, result;
+	    var redex, result, span;
 	    while (true) {
 		redex = L.absyn.createAppExp(
 		    // add type 2 for lambda abstraction
@@ -21,7 +21,9 @@
 	    
 	    this.answer = L.printExp(result);
 	    this.expression = L.printExp(redex).replace(/\s/g,"  "); // increase spacing
-	    //console.log(this.answer);
+	    span = "<span style=\"font-family: 'Courier new'\">";
+	    this.hint5 = "The correct answer is: " 
+		+ span +  LAMBDA.printExp(result).replace(/\u03BB/g,"^"); + "</span>";
 	}, // init function
 
 	validateAnswer: function (guess) {

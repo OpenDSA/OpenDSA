@@ -136,7 +136,7 @@ In other words, it is prefixs of appropriate strings in :math:`L_1`.
 
    | :math:`L_1 = \{a^*b^* \cup b^*a^*\}`
    | :math:`L_2 = \{b^n\ |\ n` is even, :math:`n > 0 \}`
-   | :math:`L_1/L_2 = \{a^*b^*\}`
+   | :math:`L_1 \backslash L_2 = \{a^*b^*\}`
 
 **Theorem:** If :math:`L_1` and :math:`L_2` are regular, then
 :math:`L_1 \backslash L_2` is regular.

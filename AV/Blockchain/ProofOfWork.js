@@ -161,8 +161,7 @@ $(document).ready(function() {
 
     //-----------------------------------------------
     // Slide 6
-    av.umsg("As now evident by the orange block A1, M1 has received enough transaction for it to begin proposing solutions to the block. This process of hashing is described in 3.1.");
-    m1Bundle.addClass("orangenode") //THIS DOES NOT WORK, NEED TO FIND A WAY TO TARGET FIRST ELEMENT IN LIST
+    av.umsg("As now evident by the orange block A1, M1 has received enough transactions for it to begin proposing solutions to the block. This process of hashing is described in 3.1.");
     av.step();
     
     //-----------------------------------------------

@@ -101,11 +101,21 @@
 	    var a = subst[1];
 	    var p = subst[2];
 	    var B = subst[3];
-
+	    var substTxt = "<span style=\"font-family: 'Courier New'\">subst</span>";
 	    this.substExpression = "subst( " + L.printExp(a) + ", " + 
 		L.printExp(p) + ", " + 	L.printExp(B) + " )";
 	    this.answer = subst[0];
-	    
+	    if (this.answer === "True")
+		this.hint3 = "This is an instance of case 3 because the last "
+		+ "argument of " + substTxt
+		+ " (i.e., <span style=\"font-family: 'Courier New'\">"
+		+ L.printExp(B) + "</span>)" + " is an application."
+	    else
+		this.hint3 = "This is not an instance of case 3 because the last "
+		+ "argument of " + substTxt
+		+ " (i.e., <span style=\"font-family: 'Courier New'\">"
+		+ L.printExp(B) + "</span>)" + " is not an application."
+		
 	} // init function
 
 
