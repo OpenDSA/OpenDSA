@@ -396,6 +396,8 @@
 
 	    this.expression = expStr.join("<br />");
 	    this.answer = JSON.stringify(value);
+	    this.hint4 = "<span style=\"font-family: 'Courier New'\">"
+		+ this.answer + "</span>";
 	    
 	    //console.log(this.answer);
 	},// init function
