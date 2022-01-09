@@ -124,8 +124,8 @@
            (randomDigit+1) + "]"]
       ],
        [
-	   "if (is.hd(s) === 3) {",
-           "   return is.cons(4, function () { return f(is.tl(s)); });",
+	   "if (is.hd(s) === " + randomDigit + ") {",
+           "   return is.cons(" + (randomDigit + 1) + ", function () { return f(is.tl(s)); });",
 	   "} else {",
            "   return is.cons(is.hd(s), function () { return f(is.tl(s)); });",
 	   "}"
@@ -149,7 +149,7 @@
            "[10,10,10,10,10,10,10,10,10,10]".replace(/(\d+)/g,randomDigit + ",$1") ],
       ],
        [
-	   "return is.cons(0,",
+	   "return is.cons(" + randomDigit + ",",
            "               function () {",
            "                    return is.cons(is.hd(s),",
            "                                   function () {",
@@ -176,7 +176,7 @@
        [
 	   "return is.cons(is.hd(s),",
            "               function () {",
-           "                    return is.cons(0,",
+           "                    return is.cons(" + randomDigit + " ,",
            "                                   function () {",
            "                                        return f(is.tl(s)); });});"
        ]
@@ -468,10 +468,8 @@
             ];// functions array
 
             // pick a random function
-            //var functionNumber = Math.floor(Math.random() * 
-            //                                functions.length);
-	    var functionNumber = 1;
-	    console.log( functionNumber );
+            var functionNumber = Math.floor(Math.random() * 
+                                            functions.length);
             this.initialStatement = functions[ functionNumber ][0];
             this.functionDisplayed = "var f = function (" + 
                 functions[functionNumber][1] + ")" +
