@@ -2860,26 +2860,26 @@ $(document).ready(function () {
         return "<grammar></grammar>";
       }
       else {
-        return "<?xml version='1.0' encoding='UTF-8'?><structure><type>grammar</type></structure>";
+        return "<?xml version='1.0' encoding='UTF-8'?><structure><type>grammar</type></structure>\n";
       }
     }
     var text = "";
     if (!multiple) {
-      text = text + '<?xml version="1.0" encoding="UTF-8"?>';
-      text = text + "<structure>";
-      text = text + "<type>grammar</type>"
+      text = text + '<?xml version="1.0" encoding="UTF-8"?>\n';
+      text = text + "<structure>\n";
+      text = text + "<type>grammar</type>\n"
     }
     else {
-      text = text + "<grammar>";
+      text = text + "<grammar>\n";
     }
     for (var i = 0; i < productions.length; i++) {
-      text = text + "<production>";
+      text = text + "\t\t<production>";
       text = text + "<left>" + productions[i][0] + "</left>";
       text = text + "<right>" + productions[i][2] + "</right>";
-      text = text + "</production>";
+      text = text + "</production>\n";
     }
     if (multiple) {
-      text = text + "</grammar>";
+      text = text + "</grammar>\n";
     }
     else {
       text = text + "</structure>"
