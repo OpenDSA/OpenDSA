@@ -88,7 +88,7 @@ var lambda = String.fromCharCode(955),
       t.hideRMenu();
     });
 
-    $("#rmenu").load("../../../rmenu.html");
+    $("#rmenu").load("../../AV/OpenFLAP/rmenu.html");
     $("#rmenu").hide();
 
     /**************** Add ability to run multiple inputs ***************************/
