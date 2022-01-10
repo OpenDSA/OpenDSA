@@ -4,8 +4,12 @@
 var TuringMachine = function(jsav, options) {
 	Automaton.apply(this, arguments);
 	this.transitions = [];
+	if(options.url){ //load the machine from the file
+		this.loadFromFile(options.url);
+		this.disableDragging();
+	  }   
 }
-
+var square = String.fromCharCode(35);
 JSAV.ext.ds.TM = function (options) {
 	var opts = $.extend(true, {visible: true, autoresize: true}, options);
 	return new TuringMachine(this, opts);
@@ -146,7 +150,9 @@ tm.removeAccept = function(state) {
 tm.showReject = function(state) {
 	state.addClass('rejected');
 }
-
+tm.removeReject = function(state) {
+	state.removeClass('rejected');
+}
 tm.isInitial = function(state) {
 	return state == this.initial;
 }
@@ -239,7 +245,22 @@ tm.serializeToXML = function() {
 	text = text + "</automaton></structure>"
 		return text;
 };
-
+tm.loadFromFile = function(url){
+	var text;
+	if(ODSA.UTILS.scoringServerEnabled()){//we need to change the url from relative path to absolute path
+		var oldUrlParts = url.split('/AV');
+		url = '/OpenDSA/AV' + oldUrlParts[1];
+	}
+  $.ajax( {
+    url: url,
+    async: false, // we need it now, so not asynchronous request
+    success: function(data) {
+      text = data;
+    }
+  });
+  if(text)
+  	this.initFromXML(text);
+}
 // load a TM from an XML file
 tm.initFromXML = function(text) {
 	var parser,
@@ -626,40 +647,93 @@ tm.getTapeAlphabet = function () {
 	 symbols to the left and right of the current position.
 	 The current position is highlighted as well.
  */
-var viewTape = function (t) {
-	var square = String.fromCharCode(35);
-	var arr = new Array(15);    // arbitrary size
-	for (var i = 0; i < 15; i++) {
-		arr[i] = square;
-	}
-	i = 7;
-	var temp = t.current;
-	while (temp) {
-		if (i < 0) {break;}
-		arr[i] = temp.value();
-		i--;
-		temp = temp._left;
-	}
-	i = 7;
-	temp = t.current;
-	while (temp) {
-		if (i >= arr.length) {break;}
-		arr[i] = temp.value();
-		i++;
-		temp = temp._right;
-	}
-	var view = "|";
-	for (var i = 0; i < arr.length; i++) {
-		if (i === 7) {
-			view+="<mark>" + arr[i] + "</mark>";
-		} else {
-			view+=arr[i];
+	 var Tape = function(str) {
+		"use strict";
+		this.arr = [];
+		this.current = 0;
+		this.currentIndex = 0;
+	
+		if (typeof str === 'string') {
+			this.arr = str.split("");
+			this.current = this.arr[0];  // the current symbol
+			this.currentIndex = 0;                // the current position
 		}
-	}
-	view+="|";
-	return view;
-};
-
+		// else, assume that a Tape object was passed in, and create a copy of it
+		else {
+			this.currentIndex = str.currentIndex;
+			this.arr = str.getArr();
+			this.current = this.arr[this.currentIndex];
+		}
+	
+		this.copy = function(value){
+			var newarr = new Array(value.length);
+			for (var i = 0; i < value.length; i++){
+				newarr[i] = value[i];
+			}
+			return newarr;
+		}
+	
+		this.toString = function(){
+			return this.arr.toString();
+		}
+	
+		this.write = function(value, location){
+			this.arr[location] = value;
+			size++;
+			this.current = location;
+		}
+	
+		this.getArr = function(){
+			return this.arr;
+		}
+	
+		this.currentValue = function() {
+			return this.arr[this.currentIndex];
+		}
+	
+		this.value = function(newValue) {
+			if (typeof newValue === "undefined") {
+				return undefined;
+			}
+			this.arr[this.currentIndex] = newValue;
+			return this.arr[this.currentIndex];
+		}
+	
+		this.goRight = function() {
+				this.currentIndex+=1;
+				this.current = this.arr[this.currentIndex];
+				return this.current;
+		}
+	
+		this.goLeft = function() {
+				this.currentIndex-=1;
+				this.current = this.arr[this.currentIndex];
+				return this.current;
+		}
+	
+		this.removeValue = function(location) {
+			this.arr[location] = null;
+			for (var i = 0; i < arr.length; i++)	{
+				arr[i] = arr[i+1];
+			}
+		}
+	
+		// Move the tape and read the symbol
+		this.move = function (str) {
+			if (str === "L") {
+				return this.goLeft();
+			} else if (str === "R") {
+				return this.goRight();
+			} else if (str === "S") {
+				return this.curren;
+			}
+		}
+	
+		this.viewTape = function (t, av) {
+			var arr = av.ds.tape(t, 325, 30, "both", this.currentIndex);
+			return arr;
+		};
+	};
 tm.updateAlphabetFunction = tm.updateAlphabet;
 tm.updateAlphabet = function() {
 	this.updateAlphabetFunction();
