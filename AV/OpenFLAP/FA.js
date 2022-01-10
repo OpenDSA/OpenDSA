@@ -1,4 +1,5 @@
 var latexit = "http://latex.codecogs.com/svg.latex?";
+
 var exerciseLocation;
 (function ($) {
   "use strict";
@@ -15,7 +16,8 @@ var exerciseLocation;
       type,//type of editor: fixer, tester or editor
       fatoreController,
       exerController;
-
+      $("#rmenu").load("./rmenu.html");
+      $("#rmenu").hide();
   // Handler for initializing graph upon loading the web page.
   // Loads the graph from conversionExercise.html / minimizationTest.html if we are navigating here from those pages.
   // Otherwise simply initializes a default data set.

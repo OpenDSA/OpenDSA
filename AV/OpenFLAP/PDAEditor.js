@@ -35,7 +35,8 @@
     menuOptionsDiv.appendChild(emptyStackCheckbox);
     menuOptionsDiv.appendChild(emptyStackLabel);
     localStorage['empty'] = false; //Initialized for empty stack acceptance. The button starts off unchecked so it starts at false
-  
+    $("#rmenu").load("./rmenu.html");
+    $("#rmenu").hide();
     // Add This function to allow creating automated exercises and solving exercises. Copied from FA.JS file associated with FA.HTML
     function onLoadHandler() {
       // initialize right click menu and hide it for future use

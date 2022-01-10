@@ -11,7 +11,8 @@ var lambda = String.fromCharCode(955),
 	var g;
 	var exerController,
 	exerciseLocation;
-
+	$("#rmenu").load("./rmenu.html");
+    $("#rmenu").hide();
 	var loadHandler = function()
 	{
 		
