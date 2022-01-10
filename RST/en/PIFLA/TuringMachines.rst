@@ -74,7 +74,7 @@ Turing Machines
 
 .. inlineav:: TMGeneralFS ff
    :links: AV/PIFLA/TM/TMGeneralFS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMGeneralFS.js
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMGeneralFS.js
    :output: show
 
 
@@ -83,7 +83,7 @@ Interpreting Turing Machines
 
 .. inlineav:: TMInterpretingFS ff
    :links: AV/PIFLA/TM/TMInterpretingFS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMInterpretingFS.js
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMInterpretingFS.js
    :output: show
 
 
@@ -92,7 +92,7 @@ Turing-Decidable vs. Turing-Acceptable Languages
 
 .. inlineav:: TMDecidableFS ff
    :links: AV/PIFLA/TM/TMDecidableFS.css
-   :scripts:  lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMDecidableFS.js
+   :scripts:  lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMDecidableFS.js
    :output: show
 
 
@@ -111,14 +111,14 @@ DFA, NFA, or PDA can do!
 
 .. inlineav:: TMComplicated1FS ff
    :links: AV/PIFLA/TM/TMComplicated1FS.css
-   :scripts:  lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMComplicated1FS.js
+   :scripts:  lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMComplicated1FS.js
    :output: show
 
 |
 
 .. inlineav:: TMComplicated3FS ff
    :links: AV/PIFLA/TM/TMComplicated3FS.css
-   :scripts:  lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMComplicated3FS.js
+   :scripts:  lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMComplicated3FS.js
    :output: show
 
 |
