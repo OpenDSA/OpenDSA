@@ -22,13 +22,13 @@ we actually want to "evaluate" valid expressions in some way and
 return the result of doing that evaluation.
 
 Consider the following Jison grammar, which is a scaled-down version
-of the demo at http://zaa.ch/jison/demos/calc, as made available by
-Jison developer Zach Carter::
+of the demo at https://gerhobbelt.github.io/jison/demos/calc/, as made
+available by Jison developer Zach Carter::
   
   /* 
       description: Parse and interpret/evaluate simple arithmetic expressions
       source:      this grammar is adapted from: 
-                   http://zaach.github.io/jison/demos/calc/
+                   https://gerhobbelt.github.io/jison/demos/calc/
   */
   
   // lexical section of the grammar 
@@ -84,7 +84,7 @@ Jison developer Zach Carter::
         { $$ = $2; }
       ;
 
-This grammar produces a parser/interpreter that evaluates simple arithmetic expressions.  To try it, merely cut-and-paste it into the online version of Jison at http://zaa.ch/jison/try.  Let Jison produce the parser/interpreter for you, and then see what happens when you type in expressions like :math:`6.4 - 3.2 * (42.6/13)` and click Jison's *Parse* button.  When you give this grammar to Jison, you get back an interpreter that is a simple calculator.
+This grammar produces a parser/interpreter that evaluates simple arithmetic expressions.  To try it, merely cut-and-paste it into the online version of Jison at https://gerhobbelt.github.io/jison/try/.  Let Jison produce the parser/interpreter for you, and then see what happens when you type in expressions like :math:`6.4 - 3.2 * (42.6/13)` and click Jison's *Parse* button.  When you give this grammar to Jison, you get back an interpreter that is a simple calculator.
 
 "New" features of Jison are introduced in this grammar.  First,
 consider the lexical specification given by the line::
