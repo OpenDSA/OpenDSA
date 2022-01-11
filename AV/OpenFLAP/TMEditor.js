@@ -754,7 +754,12 @@ jsav.recorded();
 			cancel();
 		}
 	});
-
+	$('#addEdge').click(function() {
+		addEdgeWithInputBox();
+	});
+	$('#cancelEdge').click(function() {
+		cancel();
+	});
 	loadHandler();
 
 }(jQuery));
