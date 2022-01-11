@@ -59,7 +59,7 @@ code fragment.
        * - 1
          - :math:`x`
          - the variable named :math:`x`
-         - .. code:: javascript
+         - .. code::
          
             x
 
@@ -117,7 +117,7 @@ code fragment.
        * - 6
          - :math:`\lambda y.x`
          - the constant function (of :math:`y`) that returns :math:`x`
-         - .. code:: javascript
+         - .. code::
 
               function (y) { return x; }
        * - 7
