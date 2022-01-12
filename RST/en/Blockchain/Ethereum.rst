@@ -70,8 +70,8 @@ to managing a secure public distributed ledger.
 Finding alternatives to the Proof of Work consensus algoorithm has
 proved to be difficult.
 
-[Are there other motivations for Ethereum as compared to Bitcoin or
-other cryptocurrencies?]
+[What are other motivations for creating Ethereum as compared to
+Bitcoin or other cryptocurrencies?]
 
 
 History of Ethereum
@@ -112,8 +112,7 @@ although the shift took place in various stages.
 
 
 Key Differences Between Bitcoin and Ethereum
-
----------------------------------------------
+--------------------------------------------
 
 Bitcoin and Ethereum networks are based on the concept of distributed ledgers and encryption; 
 however, there are differences in terms of technical specifications. To illustrate, Bitcoin 
@@ -133,8 +132,10 @@ the Bitcoin network is 10 minutes, while the time is 10 to 15 seconds for Ethere
 
 
 Sources:
+--------
 
------------
 https://cointelegraph.com/ethereum-for-beginners/history-of-eth-the-rise-of-the-ethereum-blockchain
+
 https://cointelegraph.com/ethereum-for-beginners/what-is-ethereum-a-beginners-guide-to-eth-cryptocurrency
+
 https://cointelegraph.com/ethereum-for-beginners/bitcoin-vs-ethereum-key-differences-between-btc-and-eth

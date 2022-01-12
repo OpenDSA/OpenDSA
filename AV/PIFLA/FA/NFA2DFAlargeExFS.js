@@ -32,7 +32,7 @@ $(document).ready(function() {
   NFA.addEdge(q4, q6, {weight: "b"});
 
   // Frame 1
-  av.umsg("We will work through in detail the process of converting the NFA below to the equivalent DFA");
+  av.umsg("We will work through in detail the process of converting the NFA below to the equivalent DFA. By the way, to simplify things, we are going to ignore transitions to the trap state.");
   av.displayInit();
 
   // Frame 2

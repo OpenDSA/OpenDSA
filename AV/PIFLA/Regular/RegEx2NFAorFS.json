@@ -3,7 +3,7 @@
     "en": {
       "blackbox": {
         "type": "multiple",
-        "description": "Remember that we have an abstract NFA scheme that represents any NFA converted to have a single final state.",
+        "description": "Remember that we have an abstract NFA scheme that represents any NFA converted to have a single final state. The red lines out of $s$ represent arbitrary paths that lead to nodes that would be final states in the original machine, but which are modified to link to a single final state $f$ through $\\lambda$ transitions.",
         "question":"Do we need to know the internal details for this NFA?",
         "answer": "No, we can think of it as a black box represents an arbitrary NFA.",
         "choices": ["Yes",

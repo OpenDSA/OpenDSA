@@ -7,55 +7,55 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("This frameset presents the definition and some examples for a RegEx.");
+  av.umsg("This slideshow presents the definition and some examples for a RegEx.");
   av.displayInit();
 
   // Frame 2
-  av.umsg(Frames.addQuestion("Operators"));
+  av.umsg(Frames.addQuestion("Start"));
   av.step();
 
   // Frame 3
-  av.umsg(Frames.addQuestion("Concat"));
+  av.umsg(Frames.addQuestion("Operators"));
   av.step();
 
   // Frame 4
-  av.umsg(Frames.addQuestion("ConcatStr"));
+  av.umsg(Frames.addQuestion("Concat"));
   av.step();
 
   // Frame 5
+  av.umsg(Frames.addQuestion("ConcatStr"));
+  av.step();
+
+  // Frame 6
   av.umsg(Frames.addQuestion("star"));
   av.step();
   
-  // Frame 6
+  // Frame 7
   av.umsg(Frames.addQuestion("alla"));
   av.step();
 
-  // Frame 7
+  // Frame 8
   av.umsg(Frames.addQuestion("ab"));
   av.step();
 
-  // Frame 8
+  // Frame 9
   av.umsg(Frames.addQuestion("abstrings"));
   av.step();
 
-  // Frame 9
+  // Frame 10
   av.umsg(Frames.addQuestion("evena"));
   av.step();
 
-  // Frame 10
+  // Frame 11
   av.umsg(Frames.addQuestion("onea"));
   av.step();
 
-  // Frame 11
+  // Frame 12
   av.umsg("Here is the complete definition for regular expressions on some alphabet $\\Sigma$.<br/><br/>1. <b>Base Cases:</b>$\\lambda$ and $a$ $\\in$ $\\Sigma$ are RE.<br/>2. If $r$ and $s$ are RE, then $(r)$, $r + s$, $rs$, and $r^∗$ are RE.<br/>3. $r$ is a RE if and only if it can be derived from (1) with a finite number of applications of (2).");
   av.step();
 
-  // Frame 12
-  av.umsg(Frames.addQuestion("regexstrings"));
-  av.step();
-
   // Frame 13
-  av.umsg(Frames.addQuestion("definition"));
+  av.umsg(Frames.addQuestion("regexstrings"));
   av.step();
 
   // Frame 14

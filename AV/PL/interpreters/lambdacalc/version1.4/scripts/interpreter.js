@@ -7,7 +7,13 @@
     var maxReductionSteps = 15;
     var arr;
     var LAMBDA = window.LAMBDA;
+    var firstRedex;
 
+    function getFirstRedex()
+    {
+	return firstRedex;
+    }
+    
 /** takes in a VarExp and a lambda expression
  */
 function free(x,exp) {
@@ -277,7 +283,7 @@ function alreadySeen(str,array) {
     }
     return false;
 }
-function reduceToNormalForm(e,order) {
+    function reduceToNormalForm(e,order) {
     var isApplicative = order === "applicative";
     var output = [ ];
     var redex, redexStr, start, length, eStr, prefix, suffix, reducedStr;
@@ -299,6 +305,11 @@ function reduceToNormalForm(e,order) {
 		return output;
 	    }
 	    redexStr = printExp(redex);
+	    if (numReductions === 1)
+	    {
+		// remember the first redex to be used in the last hint
+		firstRedex = redexStr;
+	    }
 	    eStr = printExp(e);
 	    length = redexStr.length;
 	    start = eStr.indexOf(redexStr);
@@ -667,6 +678,7 @@ function startAV(exps,order) {
 
 // end of code for slide shows
 
+    /*
 function countBetaRedexes(exp) {
     function helper(e) {
 	if (LAMBDA.absyn.isAppExp(e)) {
@@ -677,6 +689,26 @@ function countBetaRedexes(exp) {
 	    return countBetaRedexes(LAMBDA.absyn.getLambdaAbsBody(e));
 	} else {
 	    return 0; // no beta-redex in a variable
+	}	
+    }
+    return helper(exp,0);
+}// countBetaRedexes function
+    */
+
+    function countBetaRedexes(exp) {
+
+    function helper(e) {
+	if (LAMBDA.absyn.isAppExp(e)) {
+	    var tmp1 = countBetaRedexes(LAMBDA.absyn.getAppExpFn(e));
+	    var tmp2 = countBetaRedexes(LAMBDA.absyn.getAppExpArg(e));
+	    var arr = tmp1.concat(tmp2);
+	    if (isBetaRedex(e))
+		arr.unshift(e);
+	    return arr;
+	} else if (LAMBDA.absyn.isLambdaAbs(e)) {
+	    return countBetaRedexes(LAMBDA.absyn.getLambdaAbsBody(e));
+	} else {
+	    return []; // no beta-redex in a variable
 	}	
     }
     return helper(exp,0);
@@ -707,6 +739,7 @@ LAMBDA.substitute = substitute;
 LAMBDA.countBetaRedexes = countBetaRedexes;
 LAMBDA.findLeftmostOutermostBetaRedex = findLeftmostOutermostBetaRedex;
 LAMBDA.beta = beta;
+LAMBDA.getFirstRedex = getFirstRedex;
 })();
 
 // the code below is only used when creating slide shows

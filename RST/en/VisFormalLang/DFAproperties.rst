@@ -13,6 +13,13 @@
 Properties
 ==========
 
+Introduction
+------------
+
+Here are two more (slightly odd) properties that are closed for
+regular languages.
+
+
 Properties and Proving: Problem 1
 ---------------------------------
 

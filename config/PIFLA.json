@@ -31,28 +31,30 @@
   "glob_ss_options": {
     "threshold": 1.0, 
     "points": 0.0, 
-    "required": false
+    "required": false,
+    "partial_credit": false
   }, 
   "glob_ff_options": {
     "threshold": 1.0, 
     "points": 2.0,
-    "required": true
+    "required": true,
+    "partial_credit": false
   },
   "glob_ka_options": {
     "threshold": 1, 
     "points": 1.0,
-    "required": true
+    "required": true,
+    "partial_credit": false
   }, 
   "glob_extr_options": {
-    "code-workout": {
-      "points": 2.0
-    }, 
-    "points": 1.0
+    "points": 1.0,
+    "partial_credit": false
   }, 
   "glob_pe_options": {
     "threshold": 0.9, 
     "points": 2.0, 
-    "required": true
+    "required": true,
+    "partial_credit": false
   }, 
   "chapters": {
     "Preface": {
@@ -100,7 +102,8 @@
           "points": 1.0
         }
       },
-      "Background/Proofs": {}
+      "Background/Proofs": {},
+      "PIFLA/MathProof": {}
     },
     "Finite Acceptors": {
       "PIFLA/DFA":{
@@ -140,190 +143,248 @@
         "DFAevenaoddb": {
           "points": 2.0
         },
+        "DFAevenabsoddas": {
+          "points": 2.0
+        },
         "DFAbotheo": {
           "points": 2.0
         },
         "DFAevenamin3b": {
           "points": 2.0
+        },
+        "DFAMinEx1": {
+          "points": 2.0
+        },
+        "DFAMinEx2": {
+          "points": 2.0
+        },
+        "DFANotevena3b": {
+          "points": 2.0
         }
       },
-      "PIFLA/NFA": {},
+      "PIFLA/NFA": {
+        "NFAequivFS": {
+          "points": 1.0
+        }
+      },
       "PIFLA/NFAExercises": {
         "NFAtoDFAex1":{
-          "points": 5.0
+          "points": 2.0,
+          "threshold": 0.85
         },
         "NFAex1":{
-          "points": 5.0
+          "points": 2.0
         }
       },
       "PIFLA/NFAExercises2": {
         "NFAtoDFAex1long":{
-          "points": 5.0
+          "points": 2.0,
+          "threshold": 0.85
         },
         "NFAtoDFAex2":{
-          "points": 5.0
+          "points": 2.0,
+          "threshold": 0.85
         },
         "NFAex2":{
-          "points": 5.0
+          "points": 2.0
+        }
+      },
+      "PIFLA/DFAComplementEx": {
+        "DFANotaabb": {
+          "points": 2.0
         }
       },
       "PIFLA/DFAMinimization": {},
-      "PIFLA/DFAMinExercises": {
-        "DFAMinEx1": {
-          "points": 5.0
-        },
-        "DFANotevena3b": {
-          "points": 5.0
-        }
-      },
-      "PIFLA/DFAMinExercises2": {
-        "DFAMinEx2": {
-          "points": 5.0
-        },
-        "DFANotaabb": {
-          "points": 5.0
-        }
-      }
+      "PIFLA/MinimizationEx": {}
     },
     "Regular Languages": {
-      "PIFLA/RegEx":{},
+      "PIFLA/RegEx":{
+        "RegEx2NFA1FS": {
+          "points": 1.0
+        },
+        "RegEx2NFAorFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAcatFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAstarFS": {
+          "points": 1.0
+        }
+      },
       "PIFLA/RegExExercises":{
         "RegExbbaeven": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegExnoaa": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegExonebbb": {
-          "points": 5.0
+          "points": 2.0
         }
       },
       "PIFLA/RegExExercises2":{
         "RegExaby3": {
-          "points": 5.0
+          "points": 2.0
         },
-        "RegExcb3": {
-          "points": 5.0
+        "RegExcb2": {
+          "points": 2.0
         },
         "RegExabyb": {
-          "points": 5.0
+          "points": 2.0
         }
       },
-      "PIFormalLang/RegularGrammars": {},
+      "PIFLA/RegularGrammars": {
+        "REtoFAExampleFS": {
+          "points": 1.0
+        },
+        "STAFS": {
+          "points": 1.0
+        }
+      },
+      "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegGrambbbaaaa": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegGramaby3": {
-          "points": 5.0
+          "points": 2.0
         }
       },
       "PIFLA/RegGramEx2": {
         "RegGramNFA2": {
-          "points": 5.0
+          "points": 2.0
+        },
+        "RegGramNFA2r": {
+          "points": 2.0
         },
         "RegGramaaabba": {
-          "points": 5.0
+          "points": 2.0
         },
         "RegGramanbmodd": {
-          "points": 5.0
+          "points": 2.0
         }
       },
-      "PIFormalLang/ClosurePropertiesOfRegularLanguages": {}
+      "PIFLA/RegClosure": {},
+      "VisFormalLang/DFAproperties": {}
     },
     "Identifying Non-regular Languages":{
-      "PIFormalLang/NonRegular":{}
+      "PIFLA/NonRegular": {
+        "introPumpingFS": {
+          "points": 1.0
+        },
+        "ClosPropFS": {
+          "points": 1.0
+        },
+        "ClosPropEx1FS": {
+          "points": 1.0
+        },
+        "ClosPropEx2FS": {
+          "points": 1.0
+        },
+        "ClosPropEx3FS": {
+          "points": 1.0
+        }
+      }
     },
     "Context-Free Grammars and Languages":{
-      "PIFormalLang/ContexFreeLanguages": {},
-      "PIFormalLang/CFLExercises": {
-        "sheet5exercise1":{
-          "points": 5.0
+      "PIFLA/ContexFreeLanguages": {},
+      "PIFLA/CFGExercises": {
+        "anbmodd":{
+          "points": 2.0
         },
-        "sheet5exercise2":{
-          "points": 5.0
+        "ambicn":{
+          "points": 2.0
         },
-        "sheet5Practice1":{
-          "points": 5.0
+        "ambian":{
+          "points": 2.0
         },
-        "sheet5Practice2":{
-          "points": 5.0
+        "asbsequal":{
+          "points": 2.0
         }
       },
-      "PIFormalLang/CFGTransormations":{},
-      "PIFormalLang/CFGTransformationsExercies":{
-        "sheet6exercise1":{
-          "points": 5.0
+      "PIFLA/CFGTransformations":{},
+      "PIFLA/CFGTransEx":{
+        "DFAmod3b":{
+          "points": 2.0
         },
-        "sheet6exercise2":{
-          "points": 5.0
+        "CFGTransEx1":{
+          "points": 2.0
         },
-        "sheet6exercise3":{
-          "points": 5.0
+        "CFGTransEx2":{
+          "points": 2.0
         },
-        "sheet6exercise4":{
-          "points": 5.0,
-          "threshold": 0.9
+        "ChomskyEx":{
+          "points": 2.0
         }
       }
     },
     "Pushdown Automata":{
-      "PIFormalLang/PDA": {},
-      "PIFormalLang/PDAExercises":{
-        "sheet7exercise1":{
-          "points": 5.0
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAaicjbi":{
+          "points": 2.0
         },
-        "sheet7exercise2":{
-          "points": 5.0
+        "PDAwcwR":{
+          "points": 2.0
         },
-        "sheet7exercise3":{
-          "points": 5.0
+        "PDA2asperb":{
+          "points": 2.0
         },
-        "sheet7exercise4":{
-          "points": 5.0
+        "PDAaibjck":{
+          "points": 2.0
         }
       },
-      "PIFormalLang/PDACFL": {},
-      "PIFormalLang/DPDA": {}
-    },
-    "Properties of Context-free Languages":{
-      "PIFormalLang/CFLProp":{}
-    },
-    "Models of Computation":{
-      "VisFormalLang/TuringIntro":{},
-      "PIFormalLang/TuringMachines":{},
-      "PIFormalLang/TMExercises":{
-        "addOnea":{ 
-          "points": 5.0
-        },
-        "eraseABC":{ 
-          "points": 5.0
-        },
-        "keepABC":{ 
-          "points": 5.0
-        },
-        "aNumsPowerOf2":{ 
-          "points": 5.0
-        },
-        "ifaNumsPowerOf2":{ 
-          "points": 5.0
-        },
-        "abcWInWWROut":{ 
-          "points": 5.0
-        },
-        "abcNawlargerthanNbw":{ 
-          "points": 5.0
-        },
-        "replaceABAbyACA":{ 
-          "points": 5.0
-        },
-        "abPalindromes":{ 
-          "points": 5.0
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {
+        "NCFLvsDCFLFS": {
+          "points": 1.0
         }
       }
+    },
+    "Properties of Context-free Languages":{
+      "PIFLA/CFLProp":{}
+    },
+    "Turing Machines":{
+      "PIFLA/TuringMachines":{},
+      "PIFLA/TMExercises":{
+        "addOnea":{ 
+          "points": 2.0
+        },
+        "eraseABC":{ 
+          "points": 2.0
+        },
+        "keepABC":{ 
+          "points": 2.0
+        },
+        "aNumsPowerOf2":{ 
+          "points": 2.0
+        },
+        "ifaNumsPowerOf2":{ 
+          "points": 2.0
+        },
+        "abcWInWWROut":{ 
+          "points": 2.0
+        },
+        "abcNawlargerthanNbw":{ 
+          "points": 2.0
+        },
+        "replaceABAbyACA":{ 
+          "points": 2.0
+        },
+        "abPalindromes":{ 
+          "points": 2.0
+        }
+      }
+    },
+    "Limits to Computing": {
+      "PIFLA/LimCompFLA": {},
+      "PIFLA/Reduction": {},
+      "PIFLA/NPComplete": {},
+      "PIFLA/Impossible": {}
     },
     "Parsing":{
       "VisFormalLang/ParseIntro":{},
@@ -331,17 +392,6 @@
       "VisFormalLang/LRParsing":{},
       "VisFormalLang/CYKParsing":{},
       "VisFormalLang/Compiler":{}
-    },
-    "Limits to Computing": {
-      "PIFormalLang/PairToSortCONPI": {},
-      "PIFormalLang/LowerBound": {},
-      "PIFormalLang/TwoMulExample": {},
-      "PIFormalLang/TravelSalesman": {},
-      "PIFormalLang/KClique": {},
-      "PIFormalLang/SATProof": {},
-      "PIFormalLang/NPCCoping": {},
-      "PIFormalLang/UnsolveableProblems1": {},
-      "PIFormalLang/UnsolveableProblems2": {}
     },
     "Appendix": {
       "Glossary": {}

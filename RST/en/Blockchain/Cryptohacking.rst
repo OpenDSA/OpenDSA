@@ -7,7 +7,7 @@
     :author: Elizabeth Mulvaney
 
 Crypto Hacking
-=============
+==============
 
 What is Crypto Hacking?
 -----------------------
@@ -95,7 +95,7 @@ influence they have on the network
 (see :ref:`Proof Of Stake <Proof of Stake> <ProofOfStake>`).
 
 The chance of this happening in a developed cryptocurrency is not
-significant, but they do still occur. [Really? Examples?]
+significant, but they do still occur. [Need Examples]
 Once a person has the majority in computing power or stake, they can
 target individuals by hacking their wallets and obtaining information
 from their [... looks like something missing here.]
@@ -165,7 +165,7 @@ Private Network (VPN) to send data on encrypted networks.
 Also, verifying URLs for trusted certificates aids in ensuring the
 website is trustable.
 
-.. odsafig:: Images/LocalBitCoins.jpg
+.. odsafig:: Images/LocalBitcoins.jpg
    :align: center
    :width: 800
 

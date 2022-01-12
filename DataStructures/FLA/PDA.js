@@ -923,12 +923,12 @@
       }
     
       controllerProto.removeLambda = function(string){
-        for(var i = 0; i < string.length; i++){
+        /*for(var i = 0; i < string.length; i++){
           if(string[i] === lambda){
             string = string.replace(lambda, "");
           }
-        }
-        return string;
+        }*/
+        return _.filter(string, function(x) {return x != lambda;}).join("");
       }
       controllerProto.displayTree = function(){
         var inputString = this.inputString;

@@ -29,7 +29,8 @@
           "$Q_0$",
           "$\\delta$",
           "nothing"
-        ]
+        ],
+        "correctFeedback": ["$\\delta$ change, so that instead of transitioning to a single state when we see a symbol, the machine is allowed to transition to any set of states."]
       },
       "multi": {
         "type": "multiple",
@@ -66,7 +67,7 @@
           "True",
           "False"
         ],
-        "correctFeedback": ["Though it depends a little bit on what you mean by 'determined'. You can't know the single state that the machine will transition to in a given situation. But you can know the <b>set</b> of possible states that the machine could go to."]
+        "correctFeedback": ["Though it depends a little bit on what you mean by 'determined'. You can't know the single state that the machine will transition to when there are choices. But you can know the <b>set</b> of possible states that the machine could transition to."]
       },
       "nfaexamp": {
         "type": "select",
@@ -151,7 +152,8 @@
         "question": "Which state(s) can the NFA be in after processing the first letter of a string that starts with 'a'?",
         "answer": [
           "q3",
-          "q4"
+          "q4",
+          "the trap state (reject the string)"
         ],
         "choices": [
           "q0",
@@ -166,12 +168,13 @@
       },
       "walk": {
         "type": "select",
-        "description": "<b>Definition:</b> $q_j \\in \\delta^*(q_i, w)$ if and only if there exists some walk from $q_i$ to $q_j$ where $w$ is a string. Note that in this definition, while $w$ is a string, it is not necessarily the entire input to the machine. This definition just refers to states that can be reached from $q_i$ when processing $w$. And if $w$ is three symbols, then that means transitioning over (at least) three edges (one for each symbol, and maybe some $\\lambda$ transitions).",
+        "description": "<b>Definition:</b> $q_j \\in \\delta^*(q_i, w)$ if and only if there exists some walk from $q_i$ to $q_j$ using $w$ where $w$ is a string. Note that in this definition, while $w$ is a string, it is not necessarily the entire input to the machine. This definition just refers to states that can be reached from $q_i$ when processing $w$. And if $w$ is three symbols, then that means transitioning over (at least) three edges (one for each symbol, and maybe some $\\lambda$ transitions).",
         "question": "What is $\\delta^*(q_0, ab)$?",
         "answer": [
           "q5",
           "q6",
-          "q1"
+          "q1",
+          "the trap state (reject the string)"
         ],
         "choices": [
           "q0",
@@ -204,7 +207,7 @@
           "True",
           "False"
         ],
-        "correctFeedback": ["Correct! If 10 possible walks exist, and only one ends in a final state, then the NFA will ACCEPT. It ignores all failure wals."]
+        "correctFeedback": ["Correct! If 10 possible walks exist, and only one ends in a final state, then the NFA will ACCEPT. It ignores all failure walks."]
       }
     }
   }

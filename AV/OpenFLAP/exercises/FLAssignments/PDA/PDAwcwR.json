@@ -1,0 +1,59 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+  "exerciseType": "PDA",
+  "totalTrueCases": 7,
+  "totalFalseCases": 5,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "description": "Construct the PDA that accepts L($\\{wcw^R \\mid w \\in \\{a, b\\}^*\\}$)",
+  "testCases": [{
+    "": false,
+    "ShowTestCase":true
+  },
+                {
+                  "c": true,
+                  "ShowTestCase":true
+                },
+                {
+                  "aaacaaa": true,
+                  "ShowTestCase":true
+                },
+                {
+                  "bbbcbbb": true,
+                  "ShowTestCase":true
+                },
+                {
+                  "abcba": true,
+                  "ShowTestCase":true
+                },
+                {
+                  "abbabbaacaabbabba": true,
+                  "ShowTestCase":true
+                },
+                {
+                  "aaaaaaa": false,
+                  "ShowTestCase":true
+                },
+                {
+                  "abbcabb": false,
+                  "ShowTestCase":true
+                },
+                {
+                  "bbaacaabb": true,
+                  "ShowTestCase":true
+                },
+                {
+                  "ababacababa": true,
+                  "ShowTestCase":true
+                },
+                {
+                  "bbbbbb": false,
+                  "ShowTestCase":true
+                }
+               ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/PDA/PDAwcwR.jff"
+}]

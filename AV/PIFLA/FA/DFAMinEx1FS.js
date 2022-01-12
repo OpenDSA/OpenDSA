@@ -9,7 +9,7 @@ $(document).ready(function() {
   var mytree = new av.ds.tree({width: 200, height: 340, editable: true, left: 20, top: 350});
   var minm = new Minimizer();
   av.displayInit();
-  var newGraphDimensions = {top: 400, left: 270, width: 400, height: 260};
+  var newGraphDimensions = {top: 360, left: 290, width: 380, height: 300};
   var piframesLocations = {top: 10, left: -100};
   //minm.minimizeDFA(av, dfa, mytree, newGraphDimensions);
   minimizeDFAWithQuestions(minm, av_name, av, dfa, mytree, newGraphDimensions, piframesLocations);

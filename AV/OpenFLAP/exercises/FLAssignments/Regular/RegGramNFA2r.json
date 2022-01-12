@@ -1,0 +1,90 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
+  "exerciseType": "GRAMMAR",
+  "totalTrueCases": 4,
+  "totalFalseCases": 3,
+  "containLetters": ["1", "0"],
+  "randomStringLength": [0, 15],
+  "description": "Give a right-linear grammar for the following NFA.",
+  "testCases": [
+    {
+      "right-linear": true,
+      "ShowTestCase":true
+    },
+    {
+      "": true,
+      "ShowTestCase":true
+    },
+    {
+      "101": false,
+      "ShowTestCase":true
+    },
+    {
+      "1": false,
+      "ShowTestCase":true
+    },
+    {
+      "11111111111": false,
+      "ShowTestCase":true
+    },
+    {
+      "10": true,
+      "ShowTestCase":true
+    },
+    {
+      "10101010101010": true,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "left": 43.19999694824219,
+        "top": 22.76666259765625,
+        "i": true,
+        "f": true
+      },
+      {
+        "left": 213.1999969482422,
+        "top": 20.76666259765625,
+        "i": false,
+        "f": false
+      },
+      {
+        "left": 131.1999969482422,
+        "top": 143.76666259765625,
+        "i": false,
+        "f": false
+      }
+    ],
+    "edges": [
+      {
+        "start": 0,
+        "end": 1,
+        "weight": "1"
+      },
+      {
+        "start": 0,
+        "end": 2,
+        "weight": "&lambda;"
+      },
+      {
+        "start": 1,
+        "end": 0,
+        "weight": "0"
+      },
+      {
+        "start": 1,
+        "end": 2,
+        "weight": "0"
+      },
+      {
+        "start": 2,
+        "end": 2,
+        "weight": "1"
+      }
+    ],
+    "shorthand": false
+  },
+  "solution": ""
+}]

@@ -127,10 +127,11 @@ avoids long-lasting forks.
 Rather than discuss consensus protocols in the abstract, we address 
 consensus concretely in existing blockchain systems.
 These systems naturally fall into two categories:
-:term:`permissionless systems` where anyone can  
-join as a potential participant in the consensus protocol;
-and :term:`permissioned systems`, where only designated, trusted
-participants are allowed to perform the consensus protocol.
+:term:`permissionless systems <permissionless ledger system>` where
+anyone can join as a potential participant in the consensus protocol;
+and :term:`permissioned systems <permissioned ledger system>`,
+where only designated, trusted participants are allowed to perform the
+consensus protocol.
 Permissionless systems are more common, and we consider these examples:
 
 * Bitcoin

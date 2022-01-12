@@ -22,8 +22,8 @@ Exercise 1
 Exercise 2
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExcb3.html pe
-   :long_name: Regular Expression construction: c and b total 3
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExcb2.html pe
+   :long_name: Regular Expression construction: c and b total 2
 
                
 Exercise 3

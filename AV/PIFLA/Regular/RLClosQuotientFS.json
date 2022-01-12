@@ -1,0 +1,195 @@
+{
+  "translations": {
+    "en": {
+      "ex1": {
+        "type": "select",
+        "description": "Lets see some examples to explain this. Suppose that $L_1 = \\{$fish, dog, carrot$\\}$ and that $L_2 = \\{$rot, g$\\}$.",
+        "question": "What words in $L_1$ end with some string from $L_2$?",
+        "answer": ["carrot", "dog"],
+        "choices": ["fish", "dog", "carrot"]
+      },
+      "ex1b": {
+        "type": "select",
+        "description": "The right quotient $L_1 \\backslash L_2 = \\{x\\ |\\ xy \\in L_1$ for some $\\ y \\in L_2\\}$<br/><br/>$L_1 = \\{$fish, carrot, dog$\\}$, $L_2 = \\{$rot, g$\\}$.",
+        "question": "What are the strings in $L_1 \\backslash L_2$?",
+        "answer": ["car", "do"],
+        "choices": ["fish", "dog", "do", "g", "rot", "carrot", "car"],
+        "correctFeedback": ["'car' is what is left after cutting off 'rot' from 'carrot', and 'do' is left after cutting off 'g' from 'dog'."],
+        "incorrectFeedback": ["You want the strings that you get by cutting off the part in $L_2$ that is at the end of a word in $L_1$. Do this for any strings of $L_1$ that end in either 'rot' or 'g'. There are two such words in $L_1$, and you want just what is left after the matching ending is removed."]
+      },
+      "ex2": {
+        "type": "select",
+        "description": "Lets try another example. Suppose that $L_1 = \\{$carrot, parrot, rot$\\}$ and that $L_2 = \\{$rot$\\}$.",
+        "question": "What are the words in $L_1$ that end with words in $L_2$?",
+        "answer": ["carrot", "parrot", "rot"],
+        "choices": ["carrot", "parrot", "rot"]
+      },
+      "ex2b": {
+        "type": "select",
+        "description": "The right quotient $L_1 \\backslash L_2 = \\{x\\ |\\ xy \\in L_1$ for some $\\ y \\in L_2\\}$<br/><br/>$L_1 = \\{$carrot, parrot, rot$\\}$, $L_2 = \\{$rot$\\}$.",
+        "question": "What is $L_1 \\backslash L_2$?",
+        "answer": ["$\\lambda$", "car", "par"],
+        "choices": ["carrot", "parrot", "rot", "$\\lambda$", "car", "par"],
+        "incorrectFeedback": ["You want the strings that you get by cutting off 'rot' (the only string in $L_2$) from each string in $L_1$ that ends in 'rot' (which is all of them). If we cut off the whole string, what is left is $\\lambda$."]
+      },
+      "ex3": {
+        "type": "select",
+        "description": "Suppose that $L_1 = \\{$carrot$\\}$ and that $L_2 = \\{$t, ot$\\}$.",
+        "question": "What is $L_1 \\backslash L_2$?",
+        "answer": ["carr", "carro"],
+        "choices": ["carrot", "car", "rot", "$\\lambda$", "carr", "carro"],
+        "incorrectFeedback": ["This is just a little tricky, because it shows that multiple strings from $L_2$ can operate on a given string from $L_1$. So there are two strings in the answer for this example."]
+      },
+      "ex4": {
+        "type": "select",
+        "description": "Suppose that $L_1 = \\{$cab, dab$\\}$ and that $L_2 = \\{$b, ab$\\}$.",
+        "question": "What are the words in $L_1 \\backslash L_2$?",
+        "answer": ["c", "d", "ca", "da"],
+        "choices": ["a", "b", "c", "d", "ca", "da", "cab", "dab"]
+      },
+      "lambda": {
+        "type": "multiple",
+        "description": "Remember that $L_1 \\backslash L_2 = \\{x\\ |\\ xy \\in L_1$ for some $\\ y \\in L_2\\}$. And note that $\\lambda$ is a perfectly good string, and could be a member of either $L_1$ or $L_2$.",
+        "question": "If $\\lambda \\in L_2$, which of the following is a part of $L_1 \\backslash L_2$?",
+        "answer": "$L_1$",
+        "choices": ["$L_2$", "$L_1$", "$\\lambda$" ]
+      },
+      "complexex": {
+        "type": "multiple",
+        "description": "Here is our last example. Suppose that $L_1 = \\{a^*b^* \\cup b^*a^*\\}$ and that $L_2 = \\{b^n\\ |\\ n$ is even, $n > 0 \\}$.",
+        "question": "What is $L_1 \\backslash L_2$?",
+        "answer": "$\\{a^*b^*\\}$",
+        "choices": ["$\\{a^*b^*\\}$","$\\{b^*a^*\\}$", "$\\{b^n\\ |\\ n$ is even, $n > 0 \\}$"],
+        "correctFeedback": ["Make sure that you really understand why before going on."]
+      },
+      "different": {
+        "type": "multiple",
+        "description": "Assume that we have a DFA called $M$ that accepts $L_1$. Our goal is to construct a DFA that accepts $L_1 \\backslash L_2$, and we will call this machine $M'$. It turns out that $M' = (Q, \\Sigma, \\delta, q_0, F')$ where $M = (Q, \\Sigma, \\delta, q_0, F)$.",
+        "question": "What is the only difference between $M$ (the DFA for $L_1$) and $M'$ (the DFA for $L_1 \\backslash L_2$)?",
+        "answer": "Different final states",
+        "choices": ["They are identical", "Differnt transition function", "Different states", "Different final states"]
+      },
+      "q0": {
+        "type": "multiple",
+        "description": "Let us test every state to see if it has a walk labled with strings $\\in L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$ to any final state",
+        "question": "Is there a walk to a final state labeled with one or more $b$'s for $q_0$?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "incorrectFeedback": ["It is not possible to get to a final state when starting at q0 without including an 'a' character."]
+      },
+      "q0final": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state.",
+        "question": "Should $q_0$ be labeled as a final state?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q1": {
+        "type": "multiple",
+        "description": "Let us test every state to see if it has a walk labled with strings $\\in L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$ to any final state",
+        "question": "Is there a walk to a final state labeled with one or more $b$'s for $q_1$?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q1final": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state.",
+        "question": "Should $q_1$ be a final state?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q2": {
+        "type": "multiple",
+        "description": "Let us test every state to see if it has a walk labled with strings $\\in L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$ to any final state",
+        "question": "Is there a walk to a final state labeled with one or more $b$'s for $q_2$?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q2final": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state.",
+        "question": "Should $q_2$ be a final state?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "q3": {
+        "type": "multiple",
+        "description": "Let us test every state to see if it has a walk labled with strings $\\in L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$ to any final state",
+        "question": "Is there a walk to a final state labeled with one or more $b$'s for $q_3$?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q3final": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state.",
+        "question": "Should $q_3$ be a final state?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q4": {
+        "type": "multiple",
+        "description": "Let us test every state to see if it has a walk labled with strings $\\in L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$ to any final state",
+        "question": "Is there a walk to a final state labeled with one or more $b$'s for $q_4$?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Of course not. This was the trap state, so there is no path out to any final state in $M$."]
+      },
+      "q4final": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state.",
+        "question": "Should $q_4$ be a final state?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q5": {
+        "type": "multiple",
+        "description": "Let us test every state to see if it has a walk labled with strings $\\in L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$ to any final state",
+        "question": "Is there a walk to a final state labeled with one or more $b$'s for $q_5$?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "q5final": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state.",
+        "question": "Should $q_5$ be a final state?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "lastex": {
+        "type": "multiple",
+        "description": "Let's do one last example. Suppose that $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$. What is $L_1 \\backslash L_2$?",
+        "question": "Which DFA should we build first?",
+        "answer": "The DFA for $L_1$",
+        "choices": ["The DFA for $L_1$", "The DFA for $L_2$", "The DFA for $L_1 \\backslash L_2$"]
+      },      
+      "q0again": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state. $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$.",
+        "question": "Let $L_0'$ to be the language that represented by the DFA where $q_0$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_0$ should be a final state.)",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "q1again": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state. $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$.",
+        "question": "Let $L_1'$ to be the language that represented by the DFA where $q_1$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_1$ should be a final state.)",
+        "answer": "Yes",
+        "choices": ["No", "Yes"]
+      },
+      "q2again": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state. $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$.",
+        "question": "Let $L_2'$ to be the language that represented by the DFA where $q_2$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_2$ should be a final state.)",
+        "answer": "Yes",
+        "choices": ["No", "Yes"]
+      },
+      "q3again": {
+        "type": "multiple",
+        "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state. $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$.",
+        "question": "Let $L_3'$ to be the language that represented by the DFA where $q_3$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_3$ should be a final state.)",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      }
+    }
+  }
+}

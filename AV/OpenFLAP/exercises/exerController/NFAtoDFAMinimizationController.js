@@ -87,7 +87,8 @@ controllerProto.startTesting = function(studentSolution, exerciseType) {//exerci
 	window.scrollTo(0,document.body.scrollHeight);
 	$('#container').scrollTop($('#container').prop("scrollHeight"));
 	if(exerciseLog.numberOfSteps > 0)
-		return {score: exerciseLog.numberOfSteps / (exerciseLog.numberOfSteps + exerciseLog.errorsCount), solution: exer['studentSolution']};
+		return {score: 1, solution: exer['studentSolution']};//Changed due to a request from Dr.Shaffer to not deduct points for mistakes
+		//return {score: exerciseLog.numberOfSteps / (exerciseLog.numberOfSteps + exerciseLog.errorsCount), solution: exer['studentSolution']};
 	else
 		return {score: 0, solution: exer['studentSolution']};
 };

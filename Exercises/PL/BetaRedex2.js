@@ -13,7 +13,7 @@
 	    if (L.getRnd(0,1) === 0 ) {
 		// most likely not to need an alpha conversion (very rare)
 		e = L.getRndExp(1,4,6,"xyzuvw","");
-		while (L.countBetaRedexes(e) !== 1) {
+		while (L.countBetaRedexes(e).length !== 1) {
 		    e = L.getRndExp(1,4,6,"xyzuvw","");
 		}
 		redex = L.findLeftmostOutermostBetaRedex(e);
@@ -28,7 +28,7 @@
 		// guarantee an alpha conversion
 		while ( ! done ) {
 		    e = L.getRndExp(1,4,6,"xyzuvw","");
-		    while (L.countBetaRedexes(e) !== 1) {
+		    while (L.countBetaRedexes(e).length !== 1) {
 			e = L.getRndExp(1,4,6,"xyzuvw","");
 		    }
 		    redex = L.findLeftmostOutermostBetaRedex(e);
@@ -43,10 +43,14 @@
 		    }
 		}// loop on finding an alpha-conversion
 	    }// guaranteed alpha conversion
-	    
+	    var span = "<span style=\"font-family: 'Courier new'\">";
 	    this.answer = LAMBDA.alpha ? "True" : "False";
 	    this.expression = L.printExp(e).replace(/\s/g,"  "); // increase spacing
-
+	    this.hint5 = "The beta-redex is:</br>"
+		+ span
+		+ LAMBDA.printExp(redex)
+		+ "</span></br>and performing one beta-reduction on it yields:</br>"
+		+ span + LAMBDA.printExp(result) + "</span>";
 	    // print reduced redex only	    
 	    //console.log(LAMBDA.alpha + " " + L.printExp(result));
 	} // init function

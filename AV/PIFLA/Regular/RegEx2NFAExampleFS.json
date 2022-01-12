@@ -1,0 +1,107 @@
+{
+  "translations": {
+    "en": {
+      "nonminDFA": {
+       "type": "multiple",
+        "description":"After applying the NFA to DFA algorithm covered in the last chapter, the resulting DFA will be:",
+        "question": "Is this DFA minimized?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "incorrectFeedback": ["Can you see where two of these nodes in the machine on the right could be combined into one?"]
+      },
+      "group": {
+        "type": "select",
+         "description":"After applying the NFA to DFA algorithm covered in the last chapter, the resulting DFA will be:",
+         "question": "Which states should be grouped together to minimize the DFA?",
+         "answer": ["$q1$", "$q3$"],
+         "choices": ["$q0$", "$q1$", "$q2$", "$q3$"]
+       },
+       "breakdown": {
+        "type": "multiple",
+         "description":"In the beginning, we have the regular expression $ab^* + c$ on a transition between a start state and a final state",
+         "question": "Which operator should we start with?",
+         "answer": "the OR operator (the lowest precedence)",
+         "choices": ["the closure operator (the highest precedence)", "the concatenation", "the OR operator (the lowest precedence)"],
+         "correctFeedback": ["We want to go through a process of breaking down the RegEx into smaller parts. We want to begin with an operator that safely lets us break the RegEx into two parts. So we want the one with lowest precedence."],
+         "incorrectFeedback": ["We want to go through a process of breaking down the RegEx into smaller parts. We want to begin with an operator that safely lets us break the RegEx into two parts. So we want the one with lowest precedence."]
+       },
+       "deor": {
+        "type": "select",
+         "description":"In the beginning, we have the regular expression $ab^* + c$ on a transition between a start state and a final state",
+         "question": "Which steps will be involved (in some order) in removing the OR operator from the expression $ab^*+ c$?",
+         "answer": [
+          "We need 2 NFAs, one for $ab^*$ and the other for $c$",
+          "Create a new start state and a new final state",
+          "Connect the new start state with the two NFAs' existing start states with $\\lambda$ transitions",
+          "Connect the NFAs' final states with the new final state using $\\lambda$ transitions"],
+         "choices": [
+          "We need 2 NFAs, one for $ab^*$ and the other for $c$",
+          "Create a new start state and a new final state",
+          "Connect the new start state with the two NFAs' existing start states with $\\lambda$ transitions",
+           "Connect the NFAs' final states with the new final state using $\\lambda$ transitions"],
+         "incorrectFeedback": ["We will need several of these steps."]
+       },
+       "nextop": {
+        "type": "multiple",
+         "description":"To remove the OR operator from the expression $ab^* + c$, we make a start state with 2 $\\lambda$ transitions to machines that will represent $ab^*$, and $c$, and we link those two machines' final states to a new final state with $\\lambda$ transitions. Of course, right now we don't have actual machines for $ab^*$ and $c. So we represent them with GTGs for now.",
+         "question": "Which operator should we do next?",
+         "answer": "The concatenation operator",
+         "choices": ["The closure operator (the highest precedence)", "The concatenation operator"]
+       },
+       "deconcat": {
+        "type": "select",
+         "description":"Now we need remove the concatenation operator from $a\\cdot b^*$. We make use of the process that we have already seen to concatenate machines for $a$ and $b^*$.",
+         "question": "Which steps will we need to remove concatenation (in some order, not necessarily the one shown)?",
+         "answer": [
+          "We need 2 NFAs, one for $a$ and the other for $b^*$",
+          "Create a new start state and new final state",
+          "Connect the new start state with the $a$ NFA start state with a $\\lambda$ transition",
+          "Connect the final state for $a$ NFA with the start state for the $b^*$ NFA using a $\\lambda$ transition",
+          "Connect the $b^*$ NFA final state with the new final state using a $\\lambda$ transition"],
+         "choices": [
+          "We need 2 NFAs, one for $a$ and the other for $b^*$",
+          "Create a new start state and new final state",
+          "Connect the new start state with the $a$ NFA start state with a $\\lambda$ transition",
+          "Connect the final state for $a$ NFA with the start state for the $b^*$ NFA using a $\\lambda$ transition",
+           "Connect the $b^*$ NFA final state with the new final state using a $\\lambda$ transition"],
+         "incorrectFeedback": ["We will need several of these steps."]
+       },
+       "pickclose": {
+        "type": "multiple",
+         "description": "Removing concatenation from the expression $ab^*$ requires creating two machines, one for $a$ (represented here by nodes q6 and q7) and one for $b^*$ (represented here by nodes q8 and q9). We link a new start state (node q2) to the start state for the machine for $a$ (q6), we link the final state of the machine for $a$ (q7) to the start state for the machine for $b^*$ (node q8), and finally we link the final state for $b^*$ (currently, node q9) to a new final state for the concatenation (now, q3).",
+         "question": "Which operator should we do next?",
+         "answer": "The closure operator (the highest precedence)",
+         "choices": ["The closure operator (the highest precedence)", "We are done"]
+       },
+       "destar": {
+        "type": "select",
+         "description":"We remove the star operator using the construction that we learned about earlier.",
+         "question": "How?",
+         "answer": [
+          "We need one NFA, for $b$",
+          "Create a new start state and new final state",
+          "Connect the new start state with the $b$ NFA start state with $\\lambda$ transition",
+          "Connect the final state for $b$ NFA with the new final state using $\\lambda$ transition",
+          "Connect the new start state with the new final state using $\\lambda$ transition",
+          "Connect the new final state with the new start state using $\\lambda$ transition"],
+         "choices": [
+          "We need one NFA, for $b$",
+          "Create a new start state and new final state",
+          "Connect the new start state with the $b$ NFA start state with $\\lambda$ transition",
+          "Connect the final state for $b$ NFA with the new final state using $\\lambda$ transition",
+          "Connect the new start state with the new final state using $\\lambda$ transition",
+          "Connect the new final state with the new start state using $\\lambda$ transition"],
+         "incorrectFeedback": ["We will need several of these steps."]
+       },
+       "done": {
+        "type": "multiple",
+         "description":"Removing the star operator from $b^*$ involved creating a new start state (q8), a new final state (q9), and linking them together so that the expression can be processed zero or more times.",
+         "question": "What next?",
+         "answer": "We are done",
+         "choices": ["Not finished yet", "We are done"]
+       }
+
+    }
+  }
+}
+      

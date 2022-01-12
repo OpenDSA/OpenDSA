@@ -17,15 +17,15 @@
       },
       "a": {
         "type": "multiple",
-        "description": "This NFA accepts $a$ $\\in$ $\\Sigma$",
+        "description": "This NFA accepts $a$. We can create a similar machine to accept any other string of one symbol in $\\Sigma$.",
         "question":"Can we build a DFA with one state to accept $a$?",
         "answer": "No",
         "choices": ["Yes, a DFA/NFA with one state that is both start and final, and a looping transition on $a$.", "No"],
-        "correctFeedback": ["Looping is our only option to get any a's. But that is not what we want because that accepts more than one a."]
+        "correctFeedback": ["Looping is our only option to get any a's from a one-state machine. But that is not what we want because that accepts more than one a."]
       },
       "onefinalq": {
         "type": "multiple",
-        "description": "Well, we already know that all NFAs have a single start state. But not all NFAs have a single final state. Below is an abstract representation of an arbitrary NFA. It shows the single start state, along with paths (the dotted lines) that eventually reach each of its final states.",
+        "description": "Well, we already know that all NFAs have a single start state. But not all NFAs have a single final state. Below is an abstract representation of an arbitrary NFA. It shows the single start state, along with paths (the red lines) that eventually reach each of its final states.",
         "question":"Can we covert any NFA with multiple final states to an equivalent NFA with single NFA?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
@@ -47,14 +47,14 @@
       "addedges": {
         "type": "select",
         "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
-        "question":"Then we need to remove the final mark from the old final states",
+        "question":"Then we need to remove the 'final' marker from the old final states",
         "answer": "True",
         "choices": []
       },
       "equiv": {
         "type": "multiple",
         "description": "You did it.",
-        "question":"Is the new NFA is equivalent to the old NFA?",
+        "question":"Is this new NFA equivalent to the old NFA?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       }

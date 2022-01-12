@@ -270,14 +270,14 @@
 		else if (A.isVarExp(exp)) {
 		    return E.lookup(envir,A.getVarExpId(exp));
 		} else if (A.isPrintExp(exp)) {
-		    SL.output += JSON.stringify(
-			evalExpOutputOfSLang2Prog( A.getPrintExpExp(exp), envir ));
+		    SL.output.push( JSON.stringify(
+			evalExpOutputOfSLang2Prog( A.getPrintExpExp(exp), envir )));
 		} else if (A.isPrint2Exp(exp)) {
-		    SL.output += A.getPrint2ExpString(exp) +
+		    SL.output.push( A.getPrint2ExpString(exp) +
 				 (A.getPrint2ExpExp(exp) !== null ?
 				  " " + JSON.stringify( evalExpOutputOfSLang2Prog( A.getPrint2ExpExp(exp), 
 								 envir ) )
-				  : "");
+				  : ""));
 		} else if (A.isAssignExp(exp)) {
 		    var v = evalExpOutputOfSLang2Prog(A.getAssignExpRHS(exp),envir);
 		    E.lookupReference(
@@ -379,7 +379,7 @@
 		value = null;
 		try {
 		    expStr = undefined;
-		    SL.output = "";
+		    SL.output = [];
 		    value = evalExpOutputOfSLang2Prog(exp,globalEnv);
 		    expStr = convertToLetExpressions(exp);
 		} catch (e) {
@@ -398,7 +398,10 @@
 	    }
 
 	    this.expression = expStr.join("<br />");
-	    this.answer = SL.output;
+	    this.answer = SL.output.join("");
+	    var span = "<span style=\"font-family: 'Courier New'\">";
+	    this.answerForHint = "</br>" + span + SL.output.join("</br>")
+		+ "</span>";
 	    
 	    //console.log(SL.output);
 	},// init function

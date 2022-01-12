@@ -18,12 +18,11 @@ $(document).ready(function() {
     toggleInitial(fa, s);
     toggleFinal(fa, f);
     var e1 = fa.addEdge(s, n1, {weight:" "});
-    e1.css({"stroke-dasharray": "."});
+    e1.css({"stroke": "red"});
     var e2 = fa.addEdge(s, n2, {weight:" "});
-    e2.css({"stroke-dasharray": "."});
+    e2.css({"stroke": "red"});
     var e3 = fa.addEdge(s, n3, {weight:" "});
-    e3.css({"stroke-dasharray": "."});
-    //fa.css({outline: "1px black solid", border: "10px transparent solid;"});
+    e3.css({"stroke": "red"});
     av.g.rect(left + 30, top + 10, 260, 150);
     av.label("NFA that accepts $" + name + "$", {left: left + 40, top: top +125});
     fa.disableDragging();
@@ -44,7 +43,7 @@ $(document).ready(function() {
 
   // Frame 3
   av.umsg(Frames.addQuestion("blackbox"));
-  var rFA = drawSchema(av, "r", 100, 10);
+  var rFA = drawSchema(av, "r", 90, 10);
   av.step();
 
   // Frame 4
@@ -57,7 +56,7 @@ $(document).ready(function() {
 
   // Frame 6
   av.umsg("To do this, we use two NFA schemas. One represents the RegEx $r$ and the other NFA represents $s$. We will use these two NFA schemas as building blocks to create the NFA that represents the RegEx $r+s$.");
-  var sFA = drawSchema(av, "s", 100, 230);
+  var sFA = drawSchema(av, "s", 90, 230);
   av.step();
 
   // Frame 7
@@ -73,10 +72,10 @@ $(document).ready(function() {
 
   // Frame 8
   av.umsg(Frames.addQuestion("whylambda"));
-  av.g.line(50, 215, 150, 90, {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  av.label(lambda, {left: 90, top: 75});
-  av.g.line(50, 230, 150, 310, {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  av.label(lambda, {left: 90, top: 240});
+  av.g.line(50, 215, 140, 90, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.label(lambda, {left: 80, top: 100});
+  av.g.line(50, 230, 140, 310, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.label(lambda, {left: 80, top: 270});
   av.step();
 
   // Frame 9
@@ -85,7 +84,7 @@ $(document).ready(function() {
 
   // Frame 10
   av.umsg(Frames.addQuestion("final"));
-  var fa2 = new av.ds.FA({left: 500, top: 0, width: 20, height: 600});
+  var fa2 = new av.ds.FA({left: 460, top: 0, width: 20, height: 600});
   var newF = fa2.addNode({value:"f", left: 0, top: 190});
   toggleFinal(fa2, newF);
   rFA.getFinals()[0].css({"border-style": "dotted"});
@@ -94,8 +93,10 @@ $(document).ready(function() {
 
   // Frame 11
   av.umsg("If a string is accepted by either NFA, this means that this string belongs to the language $L(r+s)$.");
-  av.g.line(385, 90, 500, 220, {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  av.g.line(385, 310, 500, 220, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.g.line(375, 90, 465, 215, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.label(lambda, {left: 430, top: 120});
+  av.g.line(375, 310, 465, 230, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.label(lambda, {left: 430, top: 260});
   av.step();
 
   // Frame 12

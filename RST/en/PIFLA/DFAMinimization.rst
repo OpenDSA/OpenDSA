@@ -43,7 +43,7 @@ We then look at some current leaf node of the tree, and check the
 transitions from each of the states in that leaf.
 We test a given character against the states in that subset to see if
 they all go to the same subset.
-Split them up when they do not go to the same place.
+We split them up when they do not go to the same place.
 
 
 Minimization Example 1

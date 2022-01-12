@@ -1,0 +1,19 @@
+#KCliqueFS {
+  height: 700px;
+  width: 1000px
+}
+
+#KCliqueFS .jsavoutput.jsavline {
+  height: 60px;
+}
+
+#KCliqueFS .jsavhorizontalarray .jsavnode {
+  min-width: 30px !important;
+  max-width: 300px !important;
+}
+
+#KCliqueFS .edgehighlight{
+  stroke:LightCoral;
+  stroke-width: 5;
+}
+

@@ -117,23 +117,25 @@ Pumping Lemma
    :scripts: AV/VisFormalLang/NonReg/PumpingLemmaCON.js
    :output: show
 
-**How To Use the Pumping Lemma to prove L is not regular:**
+**How To Use the Pumping Lemma to prove language L is not regular:**
 
-   | Proof by Contradiction.
-   | Assume L is regular.
+   | We will use a proof by Contradiction.
+   | So we start by assuming that L is regular.
    | Therefore :math:`L` satisfies the pumping lemma. 
    | Choose a long string :math:`w \in L`, :math:`|w| \ge m`.
      The choice of the string is crucial.
      We must pick a string that will yield a contradiction.
    | Show that there is NO division of :math:`w` into :math:`xyz`
      (we must consider all possible divisions) such that
-     :math:`|xy| \le m`, :math:`|y| \ge 1` and :math:`xy^iz \in L \forall i \ge 0`.
-   | If we show that there is NO possible division, then we have a contradiction!
+     :math:`|xy| \le m`, :math:`|y| \ge 1` and
+     :math:`xy^iz \in L \forall i \ge 0`.
+   | If we show that there is NO possible division,
+     then we have a contradiction!
    | :math:`\Rightarrow L` is not regular.
 
-Note that, unfortunately, the pumping lemma is one-way:
+Unfortunately, the pumping lemma is one-way:
 For (some) languages we can use the pumping lemma to prove that they
-are not regular.
+are **not** regular.
 But we cannot use the pumping lemma to help us prove that a language
 is regular.
 And the pumping lemma is not a universal solution for determining that

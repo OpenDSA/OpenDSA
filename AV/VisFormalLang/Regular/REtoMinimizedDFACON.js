@@ -4,7 +4,7 @@ $(document).ready(function() {
   var av_name = "REtoMinimizedDFACON";
   var av = new JSAV(av_name);
   var regex = "ab*+c";
-  var avWidth = 500,
+  var avWidth = 400,
       avHeight = 300;
   av.umsg("In this example, we will convert the regular expression " + regex + " to a minimized DFA.");
   av.displayInit();

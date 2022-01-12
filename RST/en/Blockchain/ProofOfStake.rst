@@ -61,8 +61,7 @@ The number of committee members is decided by how many transactions
 need to be approved at the time.
 For each transaction, there needs to be 32 validators.
 In addtion, there must also be one more validator to propose
-a new block to the blockchain. [Something missing here. Why 128 or
-more instead of 33?]
+a new block to the blockchain. [WHY? What is the process?]
 The committee is formed, and then must propose the next block
 within a set period of time.
 
@@ -108,14 +107,13 @@ Once this phase is complete, the remaining members attest to a
 transaction from a previously created block within the chain. [What
 does that mean? Any particular transaction? What is the point to this?]
 
-From there [From where? When does this happen?],
+From there [When does this happen?],
 32 new committees are chosen in slots of time called
 epoches to repeat the steps of proposing blocks and attesting to new
-transactions on the newly proposed block. [This does not make
-sense. Why 32? How are they chosen?]
+transactions on the newly proposed block. [Why 32? How are they chosen?]
 There is no set timeframe for an
 epoch but on average, an epoch is around 12 minutes. [What is an
-epoch? One committee's time when it is in charge of defining the next block?]s
+epoch? One committee's time when it is in charge of defining the next block?]
 After the epochs are completed, the block has two remaining slots
 for transactions before all of the transactions in the block are considered
 final and cannot be reversed.
@@ -128,6 +126,7 @@ committees and 34 slots/bundles came up. What is the relationship?]
 
 .. avembed:: Exercises/Blockchain/ProofOfStakeValidatorsSumm.html ka
     :long_name: Proof of Stake Validator
+
 
 Proof of Stake versus Proof of Work
 -----------------------------------
@@ -165,6 +164,7 @@ occured by overwriting block transactions in a fork that the attacker
 controls.
 The fork uses the same coin in another transaction by substituting the
 coin used in the previous transaction in the new transaction.
+
 [This would benefit from a slideshow to explain what is going on.]
 
 51% attacks are difficult to recognize until the attack is executed.
@@ -222,8 +222,8 @@ was about 830 kWH of energy consumption where the network processes
 around 5 transactions a second.
 This means that in one second of transactions, 4,150 kWH were
 consumed. [This does not look right. That means something like $500 at
-US energy rates, or $100/transaction. Even if that is overpriced, its
-still probably $50/transaction. Is that really right?]
+US energy rates, or $100/transaction. Even if that is an overestimate,
+its still probably $50/transaction. Is that really right?]
 When the value of the cryptocurrency increases, the energy cost
 consumed rises because of the higher incentive to mine new
 cryptocurrency leading to more mining.

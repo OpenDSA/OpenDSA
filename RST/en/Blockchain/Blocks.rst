@@ -65,14 +65,14 @@ Which begs the question: Why would you be worried that the contents
 might be altered?
 
 Blockchains are most typically used in the context of a
-:ref:`Public Ledger <Public Ledger> <Ledgers>`.
+:ref:`Public Ledger <public ledger> <Ledgers>`.
 This is an application that exposes the entire blockchain publicly.
 In some such applications, only a central, trusted authority can
 change the contents of the Blockchain, and tampering is not a concern.
 In other applications (such as cryptocurrencies), many parties are
 allowed to change the ledger, but there is not much trust involved.
 This is difficult to get right, and is the domain of
-:ref:`Consensus Algorithms <Consensus Algorithms> <Consensus>`.
+:ref:`Consensus Algorithms <consensus algorithm> <Consensus>`.
 For now, just accept that there is away to handle these updates,
 but the public parties involved might or might not want to be able to
 verify that the Blockchain is self-consistent.
@@ -90,7 +90,7 @@ Operating a large, decentralized blockchain requires coordination among
 multiple members of the community.
 These members are sometimes referred to as "nodes" in a network.
 
-A :term:`Full Node` contains the entire blockchain and it's contents.
+A :term:`full node` contains the entire blockchain and it's contents.
 This includes a complete record of every block,
 including all transactions stored within each block,
 which as we mentioned is hundreds of gigabytes of data in the case of
@@ -101,7 +101,7 @@ blocks proposed to be appended to the blockchain.
 This is an important safeguard to the community,
 but not one that every participant feels the need to do for themselves.
 
-Many participants in the community will host a :term:`Thin Node` which
+Many participants in the community will host a :term:`thin node` which
 only stores the metadata needed for each block.
 This includes the hash pointer for each block, and other descriptive
 data (time when it was added to the blockchain, etc) that the holder

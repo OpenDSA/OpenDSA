@@ -4,7 +4,7 @@
       "why": {
         "type": "multiple",
         "description": "First, why would we need to minimize the number of states? Remember that we might build an NFA when it is easier for us to design an acceptor for some language. And later in this book, we will present other conversion algorithms that make an NFA.",
-        "question": "An NFA is more powerful than a DFA. That is why we use NFAs.",
+        "question": "[T|F] An NFA is more powerful than a DFA. That is why we use NFAs.",
         "answer": [
           "False"
         ],
@@ -41,7 +41,7 @@
       },  
       "similar": {
         "type": "select",
-        "description": "Sometimes, these huge DFA have many states that are <b>similar</b>. The word similar here means that some states do the same transitions when given the same letters. Combining these states together will minimize the total number of states in the machine without changing its behavior. In general, any two states in a DFA are either distinquishable or indistinquishable. They are indistinguishable if they are equivalent, meaning they effectively have identical behavior.",
+        "description": "Sometimes, these huge DFA have many states that are <b>similar</b>. The word similar here means that some states do the same transitions (go to the same target states) when given the same inputs. Combining these states together will minimize the total number of states in the machine without changing its behavior. In general, any two states in a DFA are either distinquishable or indistinquishable. They are indistinguishable if they are equivalent, meaning they effectively have identical behavior.",
         "question": "What are reasonable words to describe 'distinquishable'?",
         "answer": [
           "Similar",
@@ -56,7 +56,7 @@
       }, 
       "indistinguishable": {
         "type": "multiple",
-        "description": "Definition: Two states $p$ and $q$ are <b>indistinquishable</b> if, for all $w \\in \\Sigma^*$, we have $\\delta^*(q, w) \\in F \\Rightarrow \\delta^*(p, w) \\in F\\\\ \\delta^*(p, w) \\not\\in F \\Rightarrow \\delta^*(q, w) \\not\\in F$.<br/><br/> What does that mean? It means that if we have a group of FINAL states $F$, if states $p$ and $q$ are indistinquishable, then both states will end in the same destination, F, while consuming any string $w$. In other words, both states act similarly on any string. Both either lead to accept the string or reject it.",
+        "description": "Definition: Two states $p$ and $q$ are <b>indistinquishable</b> if, for all $w \\in \\Sigma^*$, we have $\\delta^*(q, w) \\in F \\Rightarrow \\delta^*(p, w) \\in F\\\\ \\delta^*(p, w) \\not\\in F \\Rightarrow \\delta^*(q, w) \\not\\in F$.<br/><br/> What does that mean? It means that if we have a group of FINAL states $F$, if states $p$ and $q$ are indistinquishable, then both states will end in the same destination, among set $F$, while consuming any string $w$. In other words, both states act similarly on any string. Both either lead to accept the string or reject it.",
         "question": "This definition tells us that we should check all possible strings against states $p$ and $q$ to decide if they are indistinquishable",
         "answer": [
           "True"
@@ -82,7 +82,7 @@
       },
       "group": {
         "type": "select",
-        "description": "The process will be: $\\\\$Select any pair of states $p$ and $q$ then check<br />* If we accept/reject the exact same set set of stringsfor both states, then there is no difference between them.<br />* So, we can combine them.",
+        "description": "The process will be: $\\\\$Select any pair of states $p$ and $q$ then check<br />* If we accept/reject the exact same set set of strings for both states, then there is no difference between them.<br />* So, we can combine them.",
         "question": "What should we do with similar states?",
         "answer": [
           "Group them into a single state",
@@ -104,7 +104,7 @@
           "non-final state",
           "final state"
         ],
-        "correctFeedback": ["From state A, processing the string $a$ takes the machine to a non-final state."]
+        "correctFeedback": ["From state $A$, processing the string $a$ takes the machine to non-final state $B$."]
       },
       "Aab": {
         "type": "multiple",
@@ -117,7 +117,7 @@
           "non-final state",
           "final state"
         ],
-        "correctFeedback": ["From state A, processing the string $ab$ takes the machine to a final state."]
+        "correctFeedback": ["From state $A$, processing the string $ab$ takes the machine to final state $C$."]
       },
       "Fa": {
         "type": "multiple",
@@ -130,7 +130,7 @@
           "non-final state",
           "final state"
         ],
-        "correctFeedback": ["From state F, processing the string $a$ takes the machine to a non-final state."]
+        "correctFeedback": ["From state $F$, processing the string $a$ takes the machine to non-final state $F$."]
       },
       "Fab": {
         "type": "multiple",
@@ -143,7 +143,7 @@
           "non-final state",
           "final state"
         ],
-        "correctFeedback": ["From state F, processing the string $a$ takes the machine to a non-final state."]
+        "correctFeedback": ["From state $F$, processing the string $ab$ takes the machine to non-final state $D$."]
       },
       "conclusion": {
         "type": "multiple",
@@ -156,7 +156,7 @@
           "Yes",
           "No"
         ],
-        "correctFeedback": ["We already know enough to see that states A and F behave differently (have different outcomes) on at least one string. But you should look at the behavior of D on the strings $a$ and $ab$. At least so far as those two stings go, states A and D are indistinguishable."]
+        "correctFeedback": ["We already know enough to see that states A and F behave differently (have different outcomes) on at least one string. But you should look at the behavior of $D$ on the strings $a$ and $ab$. At least so far as those two stings go, states $A$ and $D$ are indistinguishable."]
       },
       "unknown": {
         "type": "multiple",

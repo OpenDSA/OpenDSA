@@ -1893,15 +1893,6 @@ Glossary
       Written :math:`\lfloor x \rfloor`, for real value :math:`x` the
       floor is the greatest integer :math:`\leq x`.
 
-   flush
-      The act of removing data from a :term:`cache <caching>`, most
-      typically because other data considered of higher future value
-      must replace it in the cache.
-      If the data being flushed has been modified since it was first
-      read in from :term:`secondary storage` (and the changes are
-      meant to be saved), then it must be written back to that
-      secondary storage.
-
    Floyd's algorithm
       :to-term: k-path :label: uses
 
@@ -1918,6 +1909,13 @@ Glossary
       vertices 0 and 1, and so on.
 
    flush
+      The act of removing data from a :term:`cache <caching>`, most
+      typically because other data considered of higher future value
+      must replace it in the cache.
+      If the data being flushed has been modified since it was first
+      read in from :term:`secondary storage` (and the changes are
+      meant to be saved), then it must be written back to that
+      secondary storage.
       The the context of a :term:`buffer pool`, the process of
       removing the contents stored in a :term:`buffer`
       when that buffer is required in order to store new data.

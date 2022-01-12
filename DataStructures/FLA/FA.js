@@ -88,8 +88,8 @@ var lambda = String.fromCharCode(955),
       t.hideRMenu();
     });
 
-    $("#rmenu").load("../../../rmenu.html");
-    $("#rmenu").hide();
+    //$("#rmenu").load("../../AV/OpenFLAP/rmenu.html");
+    //$("#rmenu").hide();
 
     /**************** Add ability to run multiple inputs ***************************/
     // Bind opening of modal to a button
@@ -4647,27 +4647,29 @@ function getRandomInt(max) {
   controllerProto.visualizeConversion = function (transitionOptions = {}, finaGraphOptions = {}) {
     this.visualize = true;
     this.jsav.step();
-    this.jsav.umsg("We need to complete all the missing tansitions for this Machine");
+    this.jsav.umsg("We start by completing all missing tansitions for this Machine by adding transistions on $\\emptyset$.");
     this.completeTransitions();
     var nodes = getAllNonStartNorFinalStates(this.fa);
     for (var i = 0; i < nodes.length; i++) {
       this.jsav.step();
-      this.jsav.umsg("We should collapse the node " + nodes[i].value());
+      this.jsav.umsg("We will collapse the node " + nodes[i].value() + ".");
       localStorage.trans = 'false';
       nodes[i].highlight();
       this.fa.selected = nodes[i];
       this.collapseState(nodes[i], transitionOptions);
       this.jsav.step();
-      this.jsav.umsg("You can click on each table row to heighlight the affected transitions.");
+      this.jsav.umsg("You can click on each table row to highlight the affected transitions.");
       nodes[i].unhighlight();
       this.jsav.step();
-      this.jsav.umsg("Removing the node " + nodes[i].value() + " will create an new but equivalent graph");
+      this.jsav.umsg("Changing the labels while removing the node " + nodes[i].value() + " will create a new but equivalent machine.");
       this.finalizeRE();
     }
     this.jsav.step();
-    this.jsav.umsg("After removing all nodes that are not fianl and not start, the resulting Regular Exepression is");
+    this.jsav.umsg("After removing all nodes that are not final and not start, the resulting Regular Exepression is:");
     this.transitions.hide();
     drawTheFinalGraph(this.jsav, finaGraphOptions, this.generateExpression());
+    this.jsav.step();
+    this.jsav.umsg("The result might not be an intuitive regular expression corresponding to the original machine, but it is a legitimate regular expression. Which demonstrates that the conversion can be made.");
   }
 
   function getAllNonStartNorFinalStates(graph) {

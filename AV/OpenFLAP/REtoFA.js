@@ -71,6 +71,7 @@ var jsav,
 	var testSolution = function(){
 		//we need to write the code to test the entered RE
 		expression = document.getElementById('tb1').value;
+		expression = _.filter(expression, function(x) {return x != ' ';}).join('');
 		if(controller)
 		controller.clear();
 		controller = new REtoFAController(jsav, expression, false, true, {});

@@ -18,12 +18,11 @@ $(document).ready(function() {
     toggleInitial(fa, s);
     toggleFinal(fa, f);
     var e1 = fa.addEdge(s, n1, {weight:" "});
-    e1.css({"stroke-dasharray": "."});
+    e1.css({"stroke": "red"});
     var e2 = fa.addEdge(s, n2, {weight:" "});
-    e2.css({"stroke-dasharray": "."});
+    e2.css({"stroke": "red"});
     var e3 = fa.addEdge(s, n3, {weight:" "});
-    e3.css({"stroke-dasharray": "."});
-    //fa.css({outline: "1px black solid", border: "10px transparent solid;"});
+    e3.css({"stroke": "red"});
     av.g.rect(left + 30, top + 10, 260, 150);
     av.label("NFA that accepts $" + name + "$", {left: left + 40, top: top +125});
     fa.disableDragging();
@@ -44,7 +43,7 @@ $(document).ready(function() {
 
   // Frame 3
   av.umsg(Frames.addQuestion("start"));
-  var rFA = drawScheme(av, "r", 110, 50);
+  var rFA = drawScheme(av, "r", 100, 50);
   av.step();
 
   // Frame 4
@@ -58,21 +57,21 @@ $(document).ready(function() {
 
   // Frame 5
   av.umsg("Connect the new start state with the NFA start state using a lambda transition.");
-  av.g.line(70, 130, 160, 130, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.g.line(70, 130, 150, 130, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 110, top: 95});
   av.step();
 
   // Frame 6
   av.umsg(Frames.addQuestion("final"));
-  var fa2 = new av.ds.FA({left: 510, top: 0, width: 20, height: 600});
-  var newF = fa2.addNode({value:"f", left: -30, top: 100});
+  var fa2 = new av.ds.FA({left: 450, top: 0, width: 20, height: 600});
+  var newF = fa2.addNode({value:"f", left: 0, top: 100});
   toggleFinal(fa2, newF);
   rFA.getFinals()[0].css({"border-style": "dotted"});
   av.step();
 
   // Frame 7
   av.umsg("Connect the final state for the NFA with the new final state by a lambda transition.");
-  av.g.line(390, 130, 480, 130, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.g.line(385, 132, 450, 132, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 420, top: 95});
   av.step();
 
@@ -83,15 +82,15 @@ $(document).ready(function() {
   // Frame 9
   av.umsg(Frames.addQuestion("more"));
   av.g.path('M '+ 55 + ',' + 145 + ' Q' + 300 + ','
-            + 480 + ' ' + 495 + ',' + 145, {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  av.label(lambda, {left: 280, top: 275});
+            + 455 + ' ' + 470 + ',' + 145, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.label(lambda, {left: 280, top: 265});
   av.step();
 
   // Frame 10
   av.umsg("Since we need to repeat $r$ as much as we want, we need to be able to go back to the start state using a $\\lambda$ transition. We used $\\lambda$ transitions because we need a free transitions between states.");
-  av.g.path('M '+ 490 + ',' + 120 + ' Q' + 280 + ','
-            + -100 + ' ' + 70 + ',' + 120, {"arrow-end": "classic-wide-long", "stroke-width": 2});
-  av.label(lambda, {left: 300, top: -50});
+  av.g.path('M '+ 470 + ',' + 115 + ' Q' + 270 + ','
+            + -100 + ' ' + 55 + ',' + 115, {"arrow-end": "classic-wide-long", "stroke-width": 2});
+  av.label(lambda, {left: 260, top: 0});
   fa.disableDragging();
   fa2.disableDragging();
   av.step();
