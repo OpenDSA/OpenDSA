@@ -95,7 +95,7 @@ def read_conf_file(config_file_path):
         print_err("INFO: course will be created for the first time")
         return False
 
-    # Try to read the configurat    ion file data as JSON
+    # Try to read the configuration file data as JSON
     try:
         with open(config_file_path) as config:
             # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
@@ -395,6 +395,17 @@ def initialize_conf_py_options(config, slides):
 
     # makes sure the ebook uses the same python exec as this script
     options['python_executable'] = sys.executable
+
+    if config.include_tree_view:
+        if options['html_js_files'] != "":
+            options['html_js_files'] = options['html_js_files'] + ", '" + options['eb2root']+"lib/accessibility.js" + "'"
+        else:
+            options['html_js_files'] = ",'" + options['eb2root'] + "lib/accessibility.js" + "'"
+        if options['html_css_files'] != "":
+            options['html_css_files'] = options['html_css_files'] + ", '" + options['eb2root']+"lib/accessibility.css" + "'"
+        else:
+            options['html_css_files'] = ",'" + options['eb2root']+"lib/accessibility.css" + "'"
+
 
     return options
 

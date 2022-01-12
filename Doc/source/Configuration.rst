@@ -202,6 +202,11 @@ All are required unless otherwise specified.
   determined by the order specified in ``code_lang``).
   Defaults to ``true`` if omitted.
 
+* **include_tree_view** - (optional) A boolean controlling whether or not
+  a Tree view is displayed with code examples to facilitate using screen
+  readers.
+  Defaults to ``false`` if omitted.
+
 * **lang** (optional) - Specifies the native language of the book
   using the official ISO 639-1 or 639-2 standard abbreviation,
   defaults to ``en`` if omitted.
