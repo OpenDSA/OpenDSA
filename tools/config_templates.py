@@ -179,7 +179,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenDSA'
-copyright = u'2016 by OpenDSA Project Contributors and distributed under an MIT license'
+copyright = u'2021 by OpenDSA Project Contributors and distributed under an MIT license'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -313,9 +313,9 @@ html_context = {"script_files": [
                   #'https://code.jquery.com/jquery-2.1.4.min.js',
                   '%(eb2root)slib/jquery.min.js',
                   '%(eb2root)slib/jquery.migrate.min.js',
-                  '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
-                  '//cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js',
-                  '%(eb2root)slib/accessibility.js' %(html_js_files)s
+                  'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+                  'https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js'
+                  %(html_js_files)s
                 ],
                 "search_scripts": [
                   '_static/underscore.js',
@@ -342,8 +342,8 @@ html_context = {"script_files": [
                   '%(eb2root)slib/odsaMOD-min.css',
                   '%(eb2root)slib/jquery.ui.min.css',
                   #'https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css',
-                  '%(eb2root)slib/odsaStyle-min.css',
-                  '%(eb2root)slib/accessibility.css' %(html_css_files)s                  
+                  '%(eb2root)slib/odsaStyle-min.css'
+                   %(html_css_files)s                  
                 ],
                 "odsa_root_path": "%(eb2root)s",
                 %(text_translated)s}
