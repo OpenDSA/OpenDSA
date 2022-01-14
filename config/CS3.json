@@ -37,28 +37,36 @@
   "glob_ss_options": {
     "threshold": 1.0, 
     "points": 0.0, 
-    "required": false
+    "required": false,
+    "partial_credit": false
   }, 
   "glob_ff_options": {
     "threshold": 1.0, 
     "points": 0.0, 
-    "required": false
+    "required": false,
+    "partial_credit": false
   },
   "glob_ka_options": {
     "threshold": 5, 
     "points": 1.0, 
-    "required": true
+    "required": true,
+    "partial_credit": false
   }, 
   "glob_extr_options": {
     "code-workout": {
-      "points": 2.0
+      "points": 2.0,
+      "required": true,
+      "partial_credit": true,
+      "enable_scrolling": true
     }, 
-    "points": 1.0
+    "points": 1.0,
+    "partial_credit": false
   }, 
   "glob_pe_options": {
     "threshold": 0.9, 
     "points": 2.0, 
-    "required": true
+    "required": true,
+    "partial_credit": false
   }, 
   "chapters": {
     "Preface": {
