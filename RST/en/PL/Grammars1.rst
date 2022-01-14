@@ -6,8 +6,6 @@
 .. avmetadata:: 
    :author: David Furcy and Tom Naps
 
-.. odsalink::  AV/PL/AV/parseTree.css
-.. odsalink::  AV/PL/main.css
 
 ===========================
 Derivations and Parse Trees
@@ -102,7 +100,7 @@ the production that is being applied to "grow" the parse tree.
    
 
 .. inlineav:: parseTree4 ss
-   :links: AV/PL/AV/parseTree.css AV/PL/main.css
+   :links: AV/PL/main.css AV/PL/AV/parseTree.css
    :scripts: AV/PL/AV/parseTree4.js
    :output: show
 
