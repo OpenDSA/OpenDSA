@@ -92,7 +92,7 @@ left), rather than starting with one.
 Self Check: Micro-Worlds
 ------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz1.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz1Summ.html ka
    :long_name: Micro-Worlds
 
 
@@ -191,7 +191,7 @@ One solution to this level is:
 Self-Check: Turning Micro-Worlds into Code
 ------------------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz2.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz2Summ.html ka
     :long_name: Turning Micro-Worlds into Code
 
 
