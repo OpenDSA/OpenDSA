@@ -74,16 +74,19 @@
 
     "Getting Started":{
       "IntroToSoftwareDesign/GettingStarted": {
-        "Syntax Practice 1": {
-          "points": 30
+        "Syntax Practice 1a": {
+          "points": 15
+        },
+        "Syntax Practice 1b": {
+          "points": 15
         },
         "Programming Practice 1": {
           "points": 30
         },
-        "Week1Quiz1": {
+        "Week1Quiz1Summ": {
           "points": 8
         },
-        "Week1Quiz2": {
+        "Week1Quiz2Summ": {
           "points": 8
         },
         "Week1ReadingQuizSumm": {
