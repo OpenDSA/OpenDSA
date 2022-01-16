@@ -93,7 +93,7 @@ Self Check: Micro-Worlds
 ------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz1.html ka
-  :long_name: Micro-Worlds
+   :long_name: Micro-Worlds
 
 
 A Bit More LightBot
@@ -871,4 +871,4 @@ Check Your Understanding
 ------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1ReadingQuizSumm.html ka
-    :long_name: Programming Concepts
+   :long_name: Programming Concepts
