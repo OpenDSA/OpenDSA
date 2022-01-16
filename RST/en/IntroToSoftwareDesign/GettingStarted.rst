@@ -89,7 +89,11 @@ grid positions--i.e., we always start counting from zero at the origin (top
 left), rather than starting with one.
 
 
+Self Check: Micro-Worlds
+------------------------
+
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz1.html ka
+  :long_name: Micro-Worlds
 
 
 A Bit More LightBot
@@ -184,11 +188,11 @@ One solution to this level is:
     it again. This will help you practice writing down program steps.
 
 
-Self-Check
-----------
+Self-Check: Turning Micro-Worlds into Code
+------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz2.html ka
-    :long_name: Turning MicroWorlds into Code
+    :long_name: Turning Micro-Worlds into Code
 
 
 What Does LightBot Say About Programming?
@@ -230,6 +234,7 @@ a computer we are using one or more computer programs.  Each
 is simply a set of instructions for the computer.
 
 .. note:: 
+
     A computer **program** is a set of instructions for a computer.
 
 Every program is written by one or more programmers.  Programmers
@@ -245,6 +250,7 @@ machine language before it can be executed (run) by the
 computer.
 
 .. note::
+
     The **source code** for a program
     is written by a programmer in some programming language.
 
@@ -257,6 +263,7 @@ interpreter, since it converts each source code action directly into
 computer behavior, one statement at a time.
 
 .. note::
+
     A **compiler** translates a program,
     as a whole, from one form to another.
 
@@ -275,6 +282,7 @@ as it provides a good way to describe and check the logic of the
 plan.
 
 .. note::
+
     An **algorithm** is a plan for solving a problem.
 
 
@@ -289,6 +297,7 @@ and a logical representation of something else.  A good approach is
 to define an object in terms of what it represents.
 
 .. note::
+
     An **object** represents a specific
     concept or item that is relevant to the problem we are trying to
     solve.
@@ -322,6 +331,7 @@ LightBot to move from one location to another, or jump up on an
 obstacle.
 
 .. note::
+
     A **behavior** is an action that an
     object can take or a task that it can perform in response to a
     request from an external source.
@@ -358,6 +368,7 @@ objects and ask them to perform specific tasks.  We use message to
 make these requests.
 
 .. note::
+
     A **message** is a request for a
     specific object to perform a specific task.
 
@@ -367,10 +378,10 @@ make these requests.
 
 
 A Programmable LightBot in Java
---------------------------------
+-------------------------------
 
 The LightBot World Top-Down
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the sections above, you played with the
 LightBot game, and even saw a textual representation for the graphical
@@ -529,6 +540,7 @@ actually need an object!  That means that creating the objects we
 need to solve a problem is part of our work in constructing a solution.
 
 .. note::
+
     Creating a new object is called **instantiation**.
 
 Sometimes, all we need to do is create and object, and that
@@ -540,6 +552,7 @@ a *name* that refers to the object.  These names are called
 **variables** (although we'll get more precise about that later).
 
 .. note::
+
     A new name is introduced in a program in a **declaration**.
 
 It is common for these two tasks--declaring a new name, and
@@ -556,6 +569,7 @@ to help solve the problem at hand.  The programmer must provide an
 identifier (or name) for the ``LightBot`` object.
 
 .. note::
+
    * An **identifier** (or name) in Java should start with a letter, which may be followed by other letters or numeric digits.
    * We will use a **lowercase letter** as the first letter in an identifier when we are giving names to variables or methods.
    * We will use a **capital letter** as the first letter in an identifier when we are giving names to *classes* (a class is a family of objects that all understand the same methods, like ``LightBot``, which represents all the ``LightBot`` objects we can create--they all understand the same seven basic methods).
@@ -612,7 +626,6 @@ world objects understand called ``add()``, like this:
 
         // ... more goes here ...
     }
-
 
 Now it is time to try out your first program!  If you have
 typed these lines into BlueJ's editor, you may notice
@@ -752,6 +765,7 @@ Another important tool in making source code easy to read is
 is **commenting**.
 
 .. note::
+
     A **comment** is a textual
     note included in source code for the benefit of other (human)
     readers.  Coments have no effect on how the program is executed
