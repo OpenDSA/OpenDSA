@@ -90,8 +90,8 @@
           "points": 6
         },
         "Week1ReadingQuizSumm": {
-          "points": 24,
-          "threshold": 18
+          "points": 18,
+          "threshold": 10
         }
       }
     }
