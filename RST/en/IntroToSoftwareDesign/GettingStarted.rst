@@ -12,16 +12,11 @@ Getting Started
 Installing BlueJ
 ----------------
 
-Follow the instructions on Canvas to `Install BlueJ <https://canvas.vt.edu/courses/135890/pages/install-bluej>`_.
-
-
-
-What is a Micro-World?
-----------------------
+Follow the instructions on Canvas to `Install BlueJ <https://canvas.vt.edu/courses/145218/pages/install-bluej>`_.
 
 
 Introducing LightBot
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 LightBot is a very simple robot programming simulation game. It runs right in
 your web browser, and looks like this:
@@ -60,7 +55,7 @@ a specific problem (an **algorithm**).
 
 
 From LightBot to Micro Worlds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 The LightBot game is an example of a **micro-world**. A micro-world is a
 miniature simulated environment that is populated with one or more objects
@@ -98,7 +93,7 @@ left), rather than starting with one.
 
 
 A Bit More LightBot
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 If you only played the first two levels of LightBot, there's definitely more
 interesting stuff you haven't seen! As the levels progress, the puzzles get
@@ -125,7 +120,7 @@ the later levels.
 
 
 Textually Representing Programs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 Computer programs are most often written in textual form--in fact, one of the most important goals of programming is to write programs so that they communicate well to *other people*. So let's look at how we can represent LightBot puzzle solutions as text.
 
@@ -190,13 +185,14 @@ One solution to this level is:
 
 
 Self-Check
-~~~~~~~~~~
+----------
+
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1Quiz2.html ka
     :long_name: Turning MicroWorlds into Code
 
 
 What Does LightBot Say About Programming?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------
 
 The LightBot game illustrates several basic programming concepts:
 
@@ -226,7 +222,7 @@ chapter to review the meaning of important words and phrases.
 
 
 Programs and Programming Languages
-""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It doesn't matter whether we are sending email, surfing the net,
 to music, writing an essay, or playing a game, whenever we
@@ -269,7 +265,7 @@ computer behavior, one statement at a time.
 
 
 Algorithms
-""""""""""
+~~~~~~~~~~
 
 Every computer program starts with a plan.  That plan is called an
 algorithm.  There are many ways to write an algorithm.  Some are very
@@ -283,7 +279,7 @@ plan.
 
 
 Objects
-"""""""
+~~~~~~~
 
 It should come as no surprise to learn that an object-oriented
 programming language works with objects.  But what is an object?
@@ -316,7 +312,7 @@ tasks are called methods.
 
 
 Methods and Behaviors
-"""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~
 
 When we design an object, we need to determin what tasks it should
 perform.  In doing so, we tend to anthropomorphize the item that the
@@ -355,7 +351,7 @@ behavior or method).
 
 
 Messages (Invoking Methods)
-"""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When we write an object-oriented program, we instantiate appropriate
 objects and ask them to perform specific tasks.  We use message to
@@ -518,15 +514,15 @@ This method has the following structure:
    :align: center
 
 
-Syntax Practice 1
------------------
+Syntax Practice 1a
+------------------
 
-.. extrtoolembed:: 'Syntax Practice 1'
-   :workout_id: 1307
+.. extrtoolembed:: 'Syntax Practice 1a'
+   :workout_id: 1722
 
 
 Creating New Objects
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 In order to call methods on an object to solve a problem, first we
 actually need an object!  That means that creating the objects we
@@ -644,7 +640,7 @@ running.
 
 
 Calling Methods on an Object
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
 OK, so we've created a ``LightBot``, but it doesn't
 do very much.  How do we request it to carry out actions?
@@ -690,7 +686,7 @@ where each statement ends.
 
 
 Putting it All Together
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 We can add the method call we just wrote to ``myProgram()``
 like this:
@@ -732,8 +728,8 @@ Finish writing the rest of the instructions for ``andy``
 so that he can light up all the blue tiles.
 
 
-A Word Making Code Easy to Read
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A Word on Making Code Easy to Read
+----------------------------------
 
 When programmers write source code, they must pay particular
 attention to making it easy to read for other people.  Most programmers
@@ -838,6 +834,13 @@ by four spaces.  You'll see that the editor automatically tries to
 help you keep this indentation habit as you write code, but it won't
 force you.  Ultimately, you are responsible for making your code
 look clean, neat, and readable.
+
+
+Syntax Practice 1b
+------------------
+
+.. extrtoolembed:: 'Syntax Practice 1b'
+   :workout_id: 1723
 
 
 Programming Practice 1

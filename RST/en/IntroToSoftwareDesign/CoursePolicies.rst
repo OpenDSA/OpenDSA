@@ -119,7 +119,7 @@ activities:
 * Tuesday: Program Assignment due, posted the previous week
 * Tuesday: New Program Assignment posted, due next week
 * Wednesday: Lecture meeting
-* Wednesday/Thursday/Friday: Lab assignment due in your scheduled lab meeting
+* Thursday/Friday/Monday/Tuesday/Wednesday: Lab assignment due in your scheduled lab meeting
 
 
 Reading Activities
@@ -143,10 +143,18 @@ Each week also includes a lab assignment that is posted at the beginning
 of the week, typically on Monday. Lab assignments are posted early so that
 you can read them ahead of time, ask questions if you are unclear on any
 of the behaviors or tasks described in the lab, and review any concepts or
-skills needed for the lab that you feel unsure about. Further, poosting the
+skills needed for the lab that you feel unsure about. Further, posting the
 labs early allows you to try your hand at starting out the lab on your own.
 We encourage you to start the lab and get a far a you can before you go to
 lab.
+
+Note that lab meetings will not start until *Thursday* the first week. The
+first lab sections to work on a given lab assignment will be on Thursdays,
+with the same lab assignment being completed by following lab sections on
+Fridays, Mondays, Tuesdays, and Wednesdays. This allows all students to go
+to both class lecture meetings during the week the lab is posted, before
+the lab is due. This also means lab meetings will continue through the last
+*Wednesday* of classes.
 
 You will not be able to submit your lab for a grade or any feedback until
 the start of your lab period. You can submit your lab as many times a you
@@ -206,48 +214,10 @@ the program assignment is due, so plan ahead so you build in regular time
 periods to work on programming.
 
 
-Late Assignments
-----------------
-
-As detailed in the syllabus, students are allowed to turn in Reading Activities,
-Lab Assignments, and Programming Assignments up to 5 days late. There is
-no grade penalty for this, but please remember your weekly schedule. Delaying
-assignments is the fastest way to fall behind in the course, and working
-past a deadline will take away time that should be spent on the next
-round of weekly activities. For In-Class Quizzes, there are no late
-submissions. Verified absences with a letter from the Dean of Students,
-together with an appropriate explanation of the emergency reason for your
-absence, are necessary to request a make-up quiz, which is only given at the
-discretion of the instructor.
-
-
-Grading
--------
-
-This course is being graded using a form of "Specification Grading",
-where completion of an assignment is determined by the evidence the
-work provides about mastery of the corresponding concepts or skills.
-Most assignments can be submitted as many times as you like for automated
-feedback so that you can practice and refine your skills to the point
-where you can demonstrate them successfully. We use the EMRN scale
-(described in the syllabus) to indicate successful completion of each
-assignment.
-
-The letter grade you will receive for this course is based on the
-number of assignments you successfully complete, plus the score you
-receive on the final exam. The syllabus specifies the minimum number of
-completed assignments (receiving either an M or E grade) you must
-achieve in each category. You must meet the minimums in every assignment
-category to receive a specific letter grade. Except for the final
-exam, grading is based on the number of assignments successfully
-completed, and for higher letter grades, which successfully completed
-assignments received an "Excellent" score.
-
-
 Programming Language and Environment
 ------------------------------------
 
-This course teaching programming using Java. We will use the BlueJ IDE
+This course teaches programming using Java. We will use the BlueJ IDE
 for code development in class, including all examples shown in lecture.
 See the "Install BlueJ" link on the course home page for installation
 instructions--please be sure to download and install directly from Canvas
@@ -274,7 +244,7 @@ to understand how serious these issues are. You must complete the following
 Canvas modules:
 
 1. Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/CE7YK9>`_
-2. Between August 31 - September 3, enroll in and earn the badge for the: `Understanding the Code <https://canvas.vt.edu/enroll/7HR4PF>`_
+2. Enroll in and earn the badge for the: `Understanding the Code <https://canvas.vt.edu/enroll/7HR4PF>`_
 
 Remember that there are certain issues you can freely discuss with each
 other in order to learn. In this course, you may freely offer and receive
