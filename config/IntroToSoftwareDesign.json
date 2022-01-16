@@ -1,6 +1,6 @@
 {
   "title": "Intro To Software Design",
-  "desc": "An objects first approach to introductory programming adn design",
+  "desc": "An objects first approach to introductory programming and design in Java.",
   "theme": "haiku",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
@@ -75,23 +75,23 @@
     "Getting Started":{
       "IntroToSoftwareDesign/GettingStarted": {
         "Syntax Practice 1a": {
-          "points": 15
+          "points": 20
         },
         "Syntax Practice 1b": {
-          "points": 15
+          "points": 20
         },
         "Programming Practice 1": {
           "points": 30
         },
         "Week1Quiz1Summ": {
-          "points": 8
+          "points": 6
         },
         "Week1Quiz2Summ": {
-          "points": 8
+          "points": 6
         },
         "Week1ReadingQuizSumm": {
           "points": 24,
-          "threshold": 10
+          "threshold": 18
         }
       }
     }
