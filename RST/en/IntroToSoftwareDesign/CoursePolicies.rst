@@ -80,7 +80,7 @@ We strongly encourage students with prior programming experience to
 consider the online sections, and encourage those without any prior
 experience to choose in-person sections where possible. Also, due to
 the university's Wellness Principles, including the university's
-vaccination and masking requirements for Fall 2021, we
+vaccination and masking requirements for the current semester, we
 encourage students who are exempt from vaccination or who are unable
 to wear masks to consider the online sections of the course available
 this semester as a safer and more comfortable alternative in those
@@ -113,12 +113,12 @@ Throughout the week, pay attention to the following recurring weekly
 activities:
 
 * Sunday: Reading Activity due, to prepare for the week's lectures
-* Monday: Lecture meeting
-* Monday (or Wednesday): In-Class Quiz approximately every other week
 * Monday: Lab Assignment for the week posted, get started early
+* Monday or Tuesday: Lecture meeting
 * Tuesday: Program Assignment due, posted the previous week
 * Tuesday: New Program Assignment posted, due next week
-* Wednesday: Lecture meeting
+* Wednesday or Thursday: Lecture meeting
+* During one lecture meeting: In-Class Quiz approximately every other week
 * Thursday/Friday/Monday/Tuesday/Wednesday: Lab assignment due in your scheduled lab meeting
 
 
