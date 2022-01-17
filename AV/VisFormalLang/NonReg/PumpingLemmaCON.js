@@ -4,18 +4,16 @@ $(document).ready(function() {
   var av_name = "PumpingLemmaCON";
   var av;
   av = new JSAV(av_name);
-  MathJax.Hub.Config({tex2jax: {inlineMath: [["$", "$"], ["\\(", "\\)"]]}});
-  $(".avcontainer").on("jsav-message", function() {
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-  });
+
   var xoffset = 350;
   var yoffset = 0;
+
   // Slide 1
-  av.umsg("Let $L$ be an infinite regular language.");
+  av.umsg("Now we come to one of the most important ideas of the semester: The Pumping Lemma.<br/><br/>Let $L$ be an infinite regular language.");
   av.displayInit();
 
   // Slide 2
-  av.umsg("There exists a constant $m>0$ such that any $w \\in L$ with $|w| \\geq m$ can be decomposed into three parts as $w=xyz$ with:");
+  av.umsg("<b>Pumping Lemma:</b></br>There exists a constant $m > 0$ such that any $w \\in L$ with $|w| \\geq m$ can be decomposed into three parts as $w = xyz$ with:");
   var arrValues = ["x", "y", "z"];
   av.ds.array(arrValues, {left: xoffset, top: yoffset + 50});
   av.label("$\\geq m$", {left: xoffset + 35, top: yoffset + 25});
@@ -27,8 +25,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
-  av.umsg("There exists a constant $m>0$ such that any $w \\in L$ with $|w| \\geq m$ can be decomposed into three parts as $w=xyz$ with:");
-  av.umsg("<br> 1. $|xy| \\leq m$", {preserve: true});
+  av.umsg("<br/> 1. $|xy| \\leq m$", {preserve: true});
   var labelxy = av.label("$\\leq m$", {left: xoffset + 20, top: yoffset + 90});
   var arrow3 = av.g.line(xoffset + 18, yoffset + 117, xoffset + 2, yoffset + 117,
                          {"stroke-width": 1, "arrow-end": "classic-wide-long"});
@@ -37,19 +34,14 @@ $(document).ready(function() {
   av.step();
 
   // Slide 4
-  av.umsg("There exists a constant $m>0$ such that any $w \\in L$ with $|w| \\geq m$ can be decomposed into three parts as $w=xyz$ with:");
+  av.umsg("<br> 2. $|y| \\geq 1$", {preserve: true});
   arrow3.hide();
   arrow4.hide();
-  av.umsg("<br> 1. $|xy| \\leq m$", {preserve: true});
-  av.umsg("<br> 2. $|y| \\geq 1$", {preserve: true});
   labelxy.hide();
   var labely = av.label("$\\geq 1$", {left: xoffset + 35, top: yoffset + 90});
   av.step();
 
   // Slide 5
-  av.umsg("There exists a constant $m>0$ such that any $w \\in L$ with $|w| \\geq m$ can be decomposed into three parts as $w=xyz$ with:");
-  av.umsg("<br> 1. $|xy| \\leq m$", {preserve: true});
-  av.umsg("<br> 2. $|y| \\geq 1$", {preserve: true});
   av.umsg("<br> 3. $xy^iz \\in L$  for all $i \\geq 0$", {preserve: true});
   labely.hide();
   labelw.hide();
@@ -76,6 +68,6 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  av.umsg("<b>Meaning:</b> Every sufficiently long string in $L$ (the constant m corresponds to the finite number of states in $M$) can be partitioned into three parts such that the middle part can be pumped, resulting in strings that must be in $L$.");
+  av.umsg("<b>Meaning:</b> Every sufficiently long string in $L$ (the constant $m$ corresponds to the finite number of states in $M$) can be partitioned into three parts such that the middle part can be pumped. All string resulting from pumping some number of times must be in $L$.");
   av.recorded();
 });

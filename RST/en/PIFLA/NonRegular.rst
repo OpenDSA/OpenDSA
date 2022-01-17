@@ -29,9 +29,7 @@ language is non-regular.
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/introNonRegularFS.js
    :output: show
 
-
-The Concept of Pumping
-----------------------
+|
 
 .. inlineav:: Proof1NonRegularCON ss
    :long_name: Proof 1 Non-Regular Grammar Slideshow
@@ -39,7 +37,42 @@ The Concept of Pumping
    :scripts: AV/VisFormalLang/NonReg/Proof1NonRegularCON.js
    :output: show
 
-|
+We are about to formalize the proof in the slideshow into a tool for
+proving some languages to be nonregular.
+But first, let's explore the relationship of loops in DFAs to regular
+languages a bit more.
+
+First, we know that loops don't always cause a problem.
+In fact, there is a simple relationship between DFAs with or without
+loops, and languages that are infinite or finite.
+That is, a finite language is accepted by a DFA with no loop.
+Its not possible that the language accepted would be finite, since we
+can't control the number of times that the machine goes around the
+loop.
+That is, the machine can accept all strings in the finite language,
+but it has to accept more strings as well.
+Conversely, any infinite language must be accepted by a DFA with one
+or more loops.
+
+Next, consider that we can use a DFA to "count" a finite number of
+things.
+For example, we can make a DFA that never has three consecutive a's,
+or one that has at most three a's in the string.
+So long as we want to count a fixed number (or maximum number) of
+things, we are OK.
+And of course, such a machine can have a loop.
+What **cannot** happen is for the loop to affect the counting process.
+So, the series of states that counts to three a's can include a loop
+to process an arbitrary number of b's, because that will not disrupt
+the count of a's.
+But if the loop includes a's, then we "lose count" of how many a's we
+have seen, because we can't control the number of times through the
+loop (or more precisely, we must accept strings that add characters
+processed an arbitrary number of times through the loop).
+
+
+The Concept of Pumping
+----------------------
 
 .. inlineav:: introPumpingFS ff
    :links: AV/PIFLA/NonRegular/introPumpingFS.css
@@ -56,19 +89,22 @@ The Pumping Lemma
    :scripts: AV/VisFormalLang/NonReg/PumpingLemmaCON.js
    :output: show
 
-**How To Use the Pumping Lemma to prove L is not regular:**
+**How To Use the Pumping Lemma to prove L is not regular: Proof by Contradiction**
 
-   | Proof by Contradiction.
-   | Assume L is regular.
-   | Therefore :math:`L` satisfies the pumping lemma. 
-   | Choose a long string :math:`w \in L`, :math:`|w| \ge m`.
+   * Assume L is regular.
+   * Therefore :math:`L` satisfies the pumping lemma. 
+   * Choose a long string :math:`w \in L`, :math:`|w| \ge m`.
      The choice of the string is crucial.
      We must pick a string that will yield a contradiction.
-   | Show that there is NO division of :math:`w` into :math:`xyz`
-     (we must consider all possible divisions) such that
-     :math:`|xy| \le m`, :math:`|y| \ge 1` and :math:`xy^iz \in L \forall i \ge 0`.
-   | If we show that there is NO possible division, then we have a contradiction!
-   | :math:`\Rightarrow L` is not regular.
+     And we succeed with the proof if we find any such string,
+     even if there exist other stings that don't let us succeed.
+   * Show that, for our string, there is NO division of :math:`w` into
+     :math:`xyz` (we must consider all possible divisions) such that
+     :math:`|xy| \le m`, :math:`|y| \ge 1` and
+     :math:`xy^iz \in L` for all  :math:`i \ge 0`.
+   * If we show that there is NO possible division,
+     then we have a contradiction!
+   * :math:`\Rightarrow L` is not regular.
 
 Unfortunately, the pumping lemma is one-way:
 For (some) languages we can use the pumping lemma to prove that they
@@ -219,3 +255,38 @@ that we already know is not regular.
    :links: AV/PIFLA/NonRegular/ClosPropEx3FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/ClosPropEx3FS.js
    :output: show
+
+
+Questions to Think About
+------------------------
+
+To review what we now know: There are languages that are regular, and
+there are languages that are nonregular.
+Regular languages can be represented in any of several interchangeable
+ways.
+Some nonregular languages can be proved such using tools like the
+Pumping Lemma, and closure properties.
+
+These facts should lead us to ask some broader questions.
+In particular, is every language either regular or nonregular?
+And if so, can we always **decide**, for every language, whether it is
+regular or nonregular?
+
+Remember what a language is: It is simply a set of strings.
+Most sets of strings are infinite, in that there are many more
+infinite sets of strings than there are finite sets of strings.
+(Is this claim **really** true? Does that actually make sense?
+There are an infinite number of finite sets of strings.)
+An important point is that a language is not just those sets of
+strings that have a description as, for example, a RegEx (of course
+not, since not all languages are regular).
+A language is not even just those sets that can be described in
+English, or a mix of English and math notation.
+
+We will come back to these and similar questions later in the book.
+They relate to issues of Turing decideable vs. Turing acceptable
+languages, P vs. NP, and what questions about languages are
+decideable vs. undecideable.
+By the end of this book, we should have some answers to these
+questions, and a better understanding of our limits to what can be
+known about languages.

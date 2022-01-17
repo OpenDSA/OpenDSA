@@ -4,44 +4,48 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
-  //frame 1
-  av.umsg("In the previous proof, we introduce the concept of $ \\textbf{pumping}$ the string as we go around the loop. Loops are how we get infinite languages. They are also how we lose count or otherwise lose the ability to distinguish various properties of the string being processed");
+  // Frame 1
+  av.umsg("We have been talking about the idea that a DFA with a cycle has to accept strings that skip the cycle, strings that go through the cycle once, and strings that go through the cycle more times. We call this concept $ \\textbf{pumping}$ the string as we go around the loop. Loops are how we get infinite languages. They are also how we lose count or otherwise lose the ability to distinguish various properties of the string being processed.");
   av.displayInit();
 
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("finite"));
   av.step();
 
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("infinite"));
   av.step();
 
-  //frame 4
-  av.umsg(Frames.addQuestion("q4"));
+  // Frame 4
+  av.umsg(Frames.addQuestion("cycle"));
   av.step();
 
-  //frame 5
-  av.umsg("Let us say that the part captured by the NFA before the loop is denoted by $w_1$, the part captured by loop is denoted by $v$, and the part captured after the cycle is denoted by $w_2$.");
+  // Frame 5
+  av.umsg("Let us call the part captured by the DFA before the loop $w_1$, the part captured by loop $v$, and the part captured after the cycle $w_2$.");
   av.step();
 
-  //frame 6
-  av.umsg(Frames.addQuestion("q6"));
+  // Frame 6
+  av.umsg(Frames.addQuestion("once"));
   av.step();
 
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
+  // Frame 7
+  av.umsg(Frames.addQuestion("none"));
   av.step();
   
 
-  //frame 8
-  av.umsg(Frames.addQuestion("q8"));
+  // Frame 8
+  av.umsg(Frames.addQuestion("twice"));
   av.step();
 
-  //frame 9
-  av.umsg(Frames.addQuestion("q9"));
+  // Frame 9
+  av.umsg(Frames.addQuestion("many"));
   av.step();
 
-  //frame 10
-  av.umsg("In next module we will study about Pumping Lemma.");
+  // Frame 10
+  av.umsg("Next we will formalize this concept into a useful tool called the Pumping Lemma.");
+  av.step();
+
+  // Frame 11
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });
