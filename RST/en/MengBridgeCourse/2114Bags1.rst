@@ -118,7 +118,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="BagInterface">
+   <img src="" alt="DownloadLinkHere">
    </a>
 
 .. code-block:: java
@@ -299,7 +299,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="BagInterface">
+   <img src="" alt="Download Link Here">
    </a>
 
 TODO: fix URLS.
