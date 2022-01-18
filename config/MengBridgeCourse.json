@@ -1,0 +1,79 @@
+{
+  "title": "Masters of Engineering Bridge Course",
+  "desc": "A 12-week self-paced course that will serve as a introduction to Java programming and the basic data structures and algorithms in Computer Science",
+  "theme": "haiku",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "tag": "Java;CS1",
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "glob_ss_options": {
+    "threshold": 1.0,
+    "points": 0.0,
+    "required": false
+  },
+  "glob_ff_options": {
+    "threshold": 1.0,
+    "points": 0.0,
+    "required": false
+  },
+  "glob_ka_options": {
+    "threshold": 3,
+    "points": 1.0,
+    "required": true,
+    "partial_credit": true
+  },
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 30.0,
+      "required": true,
+      "partial_credit": true,
+      "enable_scrolling": true
+    },
+    "points": 1.0
+  },
+  "glob_pe_options": {
+    "threshold": 0.9,
+    "points": 2.0,
+    "required": true
+  },
+  "chapters": {
+
+    "The Bag Interface and ArrayBags":{
+      "MengBridgeCourse/2114Bags1": {
+        "BlankQuizSumm": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Programming Practice 3": {
+          "points": 0,
+          "required": false
+        }
+      }
+    }
+  }
+}
