@@ -476,10 +476,10 @@ NOTE:
 Above is a temporary workout I put in place that would contain the following exercises
 TODO.  Remove this note and create the actual workout when confirmed.
 
-https://codeworkout.cs.vt.edu/gym/exercises/670/practice
-https://codeworkout.cs.vt.edu/gym/exercises/790/practice
-https://codeworkout.cs.vt.edu/gym/exercises/791/practice
-https://codeworkout.cs.vt.edu/gym/exercises/789/practice
-https://codeworkout.cs.vt.edu/gym/exercises/816/practice
+* https://codeworkout.cs.vt.edu/gym/exercises/670/practice
+* https://codeworkout.cs.vt.edu/gym/exercises/790/practice
+* https://codeworkout.cs.vt.edu/gym/exercises/791/practice
+* https://codeworkout.cs.vt.edu/gym/exercises/789/practice
+* https://codeworkout.cs.vt.edu/gym/exercises/816/practice
 
 When fixed this will be called: "Coding Practice: ArrayBags"
