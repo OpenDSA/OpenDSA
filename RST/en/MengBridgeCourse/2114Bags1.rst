@@ -204,9 +204,8 @@ Using Bags: Shopping Cart Demo
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.htmll ka
+.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
    :long_name: Quiz Unavailable
-
 
 
 Array Implementation of Bags
@@ -311,7 +310,7 @@ This  `link <>`_ will direct you to the steps to `download and import <>`_ previ
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.htmll ka
+.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
    :long_name: Quiz Unavailable
 
 Demo: More Bag Method Implementation
@@ -354,7 +353,7 @@ This implementation of the ArrayBag does not impose such a constraint.
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.htmll ka
+.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
    :long_name: Quiz Unavailable
 
 
@@ -422,7 +421,7 @@ TODO: fix URLS.
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.htmll ka
+.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
    :long_name: Quiz Unavailable
 
 
