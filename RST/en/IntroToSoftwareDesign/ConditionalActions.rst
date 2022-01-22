@@ -116,6 +116,17 @@ see ``compassDirection``, your choices of direction are: ``NORTH``,
 ``SOUTH``, ``EAST``, and ``WEST``.
 
 
+An Overview of Conditional Statements
+-------------------------------------
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/HQ3dCWjfRZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
+
 Java's Syntax for the If-Then-Else Structure
 --------------------------------------------
 
@@ -356,6 +367,13 @@ special keystrokes for each of these as shown in the following table.
      - ``||`` (2 keystrokes; no space between)
      - OR
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/yW8IShT12yQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
 Notably, java recognizes single ``&`` and ``|`` as separate operators (they
 have to do with binary math) from ``&&`` and ``||``.  No errors will
 be thrown if you mistake one for the other and your code will simply behave
@@ -395,6 +413,12 @@ In this table, **P** and **Q** once again represent arbitrary boolean
 expressions. The rows underneath **P** and **Q** show all possible combinations
 of their values. The third column shows the corresponding values for the
 expression ``P || Q``.
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/NamXVn34QDI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Examples (compound conditions)
@@ -527,6 +551,13 @@ the order in which statements are executed and the condition is checked.
 
 Java's Syntax for the While Loop
 --------------------------------
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/t6gmQaTMTtM?start=18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 .. odsafig:: Images/whileDiagram2.png
    :align: center

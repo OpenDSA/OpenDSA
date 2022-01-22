@@ -4,40 +4,23 @@
     <title>If-Then Structure</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
-    <style>
-#problemarea code, #problemarea tt, #problemarea pre {
-    font-family: monospace, monospace;
-    font-size: 1em;
-    background-color: #f0f0f0;
-}
-#problemarea pre {
-    overflow: auto;
-    line-height: 125%;
-    border-color: #0c3762;
-    border-style: dotted;
-    border-width: thin;
-    margin: 0 0 12px 0;
-    padding: 0.8em;
-    font-size: 15px;
-    line-height: 1.3;
-}
-    </style>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
   <body data-height="880" data-width="950">
     <div class="exercise">
       <div class="problems">
 
-        <div id="ReadingQuiz2Q2">
+        <div id="Week3Quiz2Q2">
           <p class="question">
             Assume we want to write an if statement that will perform an action if a jeroo named martha has a flower.  Which of the following is the correct syntax for that?  For this question don't worry about the placement of curly braces.
           </p>
 
-          <div class="solution"><pre class="prettyprint">if (martha.hasFlower())</code></div>
+          <div class="solution"><tt>if (martha.hasFlower())</tt></div>
           <ul class="choices" >
-            <li><pre class="prettyprint">if martha.hasFlower() </code></li>
-            <li><pre class="prettyprint">if (martha.hasFlower());</code></li>
-            <li><pre class="prettyprint">else(martha.hasFlower) </code></li>
+            <li><tt>if martha.hasFlower() </tt></li>
+            <li><tt>if (martha.hasFlower());</tt></li>
+            <li><tt>else (martha.hasFlower) </tt></li>
           </ul>
           <div class="hints">
             <p>Remember there isn't a special behavior we want to do if there <b>isn't</b> a flower ahead of the jeroo so an else would not be a good choice here!</p>
