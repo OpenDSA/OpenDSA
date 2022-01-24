@@ -1,0 +1,54 @@
+{
+  "translations": {
+    "en": {
+      "wchoices": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Which of the following strings are $\\in L$?",
+        "answer": ["$w = a^3b^mc^{m-3}$", "$w = aaabbbbc$"],
+        "choices": ["$w = a^3b^mc^{m-3}$", "$w = b^mc^m-3$", "$w = a^3b^m$", "$w = aaabbbbc$"],
+        "correctFeedback": "Both of those are in $L$. But we cannot select the choice for $m$, which is implied by picking $w = aaabbbbc$. So, let's see if we can complete the proof using $w = a^3b^mc^{m-3}$."
+      },
+      "xychoices": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$. Choose $w = a^3b^mc^{m-3}$.<br/>Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$.",
+        "question": "Since $|xy| \\le m$, which of the following is a possible value for the $xy$ part?",
+        "answer": ["$a^3$", "$a^3b^{m-3}$", "$a^3b^{m-3-l}$"],
+        "choices": ["$a^3$", "$a^3b^{m-3}$", "$a^3b^mc^{m-3}$", "$a^3b^{m-3-l}$"],
+        "correctFeedback": ["These are all the ways that we can pick a substring of length $m$ or less from $w = a^3b^mc^{m-3}$. Note that $l \\le m-3$."]
+      },
+      "ychoices": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$. Choose $w = a^3b^mc^{m-3}$.<br/>Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$.",
+        "question": "What are the 3 possible cases for the $y$ part?",
+        "answer": ["$y$ contains a's", "$y$ contains b's", "$y$ contains a's and b's"],
+        "answer": ["$y$ contains a's", "$y$ contains b's", "$y$ contains a's and b's", "$y$ contains a's, b's, and c's"],
+        "correctFeedback": ["Given the possible choices for $xy$, the $y$ part could be one of these three things. So we next need to consider each one in turn, and prove that they cannot be pumped."]
+      },
+      "as": {
+        "type": "select",
+        "description":"Choose $w = a^3b^mc^{m-3}$.<br/>Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 1:</b> $y$ contains one or more a's.",
+        "question": "Can we pump $y$ (which adds more a's) to create strings that are in the language?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["The number of a's is fixed, so we cannot alter this part of the string. So no choice that involves $y$ being one or more a's can be pumped."]
+      },
+      "abs": {
+        "type": "select",
+        "description":"Choose $w = a^3b^mc^{m-3}$.<br/>Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 1:</b> $y$ contains one or more a's.<br/><b>Case 2:</b> $y$ contains one or more a's and one or more b's.",
+        "question": "Can we pump $y$ (which adds more repeats of $y$, meaning more alternating strings of a's and b's) to create strings that are in the language?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Again, the total number of a's is fixed to be 3, so we cannot alter this part of the string. So no choice that includes any a's in $y$ can be pumped."]
+      },
+      "bs": {
+        "type": "select",
+        "description":"Choose $w = a^3b^mc^{m-3}$.<br/>Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 1:</b> $y$ contains one or more a's.<br/><b>Case 2:</b> $y$ contains one or more a's and one or more b's.<br/><b>Case 3:</b> $y$ contains one or more b's.",
+        "question": "Can we pump $y$ (which adds more b's without changing the number of a's or c's)?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["The language requires that we keep a relationship between the number of b's and c's. So, pumping just the number of b's cannot create strings in the language."]
+      }
+    }
+  }
+}

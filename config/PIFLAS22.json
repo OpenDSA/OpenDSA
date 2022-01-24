@@ -186,6 +186,26 @@
       },
       "PIFLA/RegClosure": {}
     },
+    "Identifying Non-regular Languages":{
+      "PIFLA/NonRegular": {
+        "introPumpingFS": {
+          "points": 1.0
+        },
+        "PLGame": {
+          "points": 0.0,
+          "required": false
+        },
+        "ClosPropFS": {
+          "points": 1.0
+        },
+        "ClosPropEx1FS": {
+          "points": 1.0
+        },
+        "ClosPropEx2FS": {
+          "points": 1.0
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {}
     }
