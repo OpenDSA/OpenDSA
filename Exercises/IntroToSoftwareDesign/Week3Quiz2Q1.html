@@ -4,40 +4,23 @@
     <title>If-Then Structure</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
-    <style>
-#problemarea code, #problemarea tt, #problemarea pre {
-    font-family: monospace, monospace;
-    font-size: 1em;
-    background-color: #f0f0f0;
-}
-#problemarea pre {
-    overflow: auto;
-    line-height: 125%;
-    border-color: #0c3762;
-    border-style: dotted;
-    border-width: thin;
-    margin: 0 0 12px 0;
-    padding: 0.8em;
-    font-size: 15px;
-    line-height: 1.3;
-}
-    </style>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
   <body data-height="880" data-width="950">
     <div class="exercise">
       <div class="problems">
 
-        <div id="ReadingQuiz2Q1">
+        <div id="Week3Quiz2Q1">
           <p class="question">
             Which of the following if statements will compile but won't give us meaningful information?  Assume for this question you have a jeroo named martha.
           </p>
 
-          <div class="solution">  <pre class="prettyprint">if (martha.seesJeroo(HERE))</pre></div>
+          <div class="solution"><tt>if (martha.seesJeroo(HERE))</tt></div>
           <ul class="choices" >
-            <li><pre class="prettyprint">if (martha.seesJeroo(NORTH))</pre> </li>
-            <li><pre class="prettyprint">if (martha.seesJeroo(LEFT));</pre></li>
-            <li><pre class="prettyprint">if martha.seesJeroo(AHEAD)</pre> </li>
+            <li><tt>if (martha.seesJeroo(NORTH))</tt> </li>
+            <li><tt>if (martha.seesJeroo(LEFT));</tt></li>
+            <li><tt>if martha.seesJeroo(AHEAD)</tt> </li>
           </ul>
           <div class="hints">
             <p>Remember there isn't a special behavior we want to do if there <b>isn't</b> a flower ahead of the jeroo so an else would not be a good choice here!</p>

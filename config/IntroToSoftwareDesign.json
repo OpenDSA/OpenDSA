@@ -54,7 +54,9 @@
       "partial_credit": true,
       "enable_scrolling": true
     },
-    "points": 1.0
+    "points": 1.0,
+    "frame_width": 1000,
+    "frame_height": 900    
   },
   "glob_pe_options": {
     "threshold": 0.9,
@@ -92,6 +94,81 @@
         "Week1ReadingQuizSumm": {
           "points": 18,
           "threshold": 10
+        }
+      }
+    },
+
+    "Inheritance and Polymorphism":{
+      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
+        "Syntax Practice 2a: Jeroo Methods": {
+          "points": 18
+        },
+        "Syntax Practice 2b: Subclass Constructors": {
+          "points": 15
+        },
+        "Syntax Practice 2c: More Subclass Constructors": {
+          "points": 12
+        },
+        "Programming Practice 2": {
+          "points": 20
+        },
+        "Week2Quiz1Summ": {
+          "points": 5
+        },
+        "Week2Quiz2Summ": {
+          "points": 5
+        },
+        "Week2Quiz3Summ": {
+          "points": 5
+        },
+        "Week2Quiz4Summ": {
+          "points": 5
+        },
+        "Week2ReadingQuizSumm": {
+          "points": 15,
+          "threshold": 10
+        }
+      }
+    },
+
+    "Conditional and Repeating Actions": {
+      "IntroToSoftwareDesign/ConditionalActions": {
+        "Syntax Practice 3a: If-Then-Else": {
+          "points": 10
+        },
+        "Syntax Practice 3b: If-Then": {
+          "points": 10
+        },
+        "Syntax Practice 3c: Multi-way If": {
+          "points": 10
+        },
+        "Syntax Practice 3d: Compound Conditions": {
+          "points": 10
+        },
+        "Syntax Practice 3e: While Loops": {
+          "points": 10
+        },
+        "Programming Practice 3": {
+          "points": 10
+        },
+        "Week3Quiz1Summ": {
+          "points": 5
+        },
+        "Week3Quiz2Summ": {
+          "points": 5
+        },
+        "Week3Quiz3Summ": {
+          "points": 5
+        },
+        "Week3Quiz4Summ": {
+          "points": 5
+        },
+        "Week3Quiz5Summ": {
+          "points": 5
+        },
+        "Week3ReadingQuizSumm": {
+          "points": 15,
+          "threshold": 12
         }
       }
     }

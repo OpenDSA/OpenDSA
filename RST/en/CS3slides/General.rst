@@ -69,7 +69,7 @@ General Trees
       :alt: A dynamic general tree with linked lists of child pointers
 
 
-.. slide:: Rep: Lift-Child/Right-Sibling
+.. slide:: Rep: Left-Child/Right-Sibling
 
    .. odsafig:: Images/FortoBin.png
       :width: 600
