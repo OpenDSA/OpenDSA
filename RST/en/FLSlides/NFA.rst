@@ -58,8 +58,8 @@ Non-Deterministic Finite Acceptor
    | (So, :math:`\delta` is no longer meets the mathematical definition
      of a function!)
 
-   Hopefully this one is easy to understand: We two disjoint paths,
-   effectively giving us the union of two languages:
+   Hopefully this one is easy to understand: Two disjoint paths,
+   effectively giving us union of two languages:
    :math:`L =` << ?? >>.
 
 
@@ -152,10 +152,10 @@ Non-Deterministic Finite Acceptor
 
    Here is a bit of intution that might give some insight:
 
-     Nondeterminism gives branches. If we are trying to create a
-     non-determinism simulator in a computer, we can simulate it by
-     alternating between all of the branches, pushing each branch
-     forward by a step. This will eventually terminate.
+   *  Nondeterminism gives branches. If we are trying to create a
+      non-determinism simulator in a computer, we can simulate it by
+      alternating between all of the branches, pushing each branch
+      forward by a step. This will eventually terminate.
 
 
 .. slide:: Key Theorem
