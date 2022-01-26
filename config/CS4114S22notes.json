@@ -1,0 +1,39 @@
+{
+  "title": "CS4114 Coursenotes",
+  "desc": "CS4114 Coursenotes",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "build_JSAV": false,
+   "suppress_todo": true,
+  "chapters": {
+    "Week 1": {
+      "FLSlides/FLIntro": {}
+    }
+  }
+}

@@ -57,8 +57,24 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Stuff":{
-      "PIFLA/RegClosure": {}
+    "Identifying Non-regular Languages":{
+      "PIFLA/NonRegular": {
+        "introPumpingFS": {
+          "points": 1.0
+        },
+        "ClosPropFS": {
+          "points": 1.0
+        },
+        "ClosPropEx1FS": {
+          "points": 1.0
+        },
+        "ClosPropEx2FS": {
+          "points": 1.0
+        },
+        "ClosPropEx3FS": {
+          "points": 1.0
+        }
+      }
     },
     "Appendix": {
       "Glossary": {}
