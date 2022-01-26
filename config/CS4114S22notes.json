@@ -36,6 +36,9 @@
       "FLSlides/FLIntro": {},
       "FLSlides/FLConcepts": {},
       "FLSlides/DFA": {}
+    },
+    "Week 2": {
+      "FLSlides/NFA": {}
     }
   }
 }
