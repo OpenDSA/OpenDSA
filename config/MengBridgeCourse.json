@@ -64,12 +64,70 @@
   "chapters": {
 
     "The Bag Interface and ArrayBags":{
-      "MengBridgeCourse/2114Bags1": {
-        "BlankQuizSumm": {
+      "MengBridgeCourse/2114Bags": {
+        "Checkpoint 1": {
           "points": 0,
           "threshold": 0
         },
-        "Programming Practice 3": {
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 4": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
+          "points": 0,
+          "required": false
+        }
+      },
+      "MengBridgeCourse/2114Efficiency": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
+          "points": 0,
+          "required": false
+        }
+      },
+      "MengBridgeCourse/2114Stacks": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
+          "points": 0,
+          "required": false
+        }
+      },
+      "MengBridgeCourse/2114LinkedChainPointers": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
           "points": 0,
           "required": false
         }
