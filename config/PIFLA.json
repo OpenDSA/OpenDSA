@@ -276,6 +276,10 @@
         "introPumpingFS": {
           "points": 1.0
         },
+        "PLGame": {
+          "points": 0.0,
+          "required": false
+        },
         "ClosPropFS": {
           "points": 1.0
         },
@@ -283,9 +287,6 @@
           "points": 1.0
         },
         "ClosPropEx2FS": {
-          "points": 1.0
-        },
-        "ClosPropEx3FS": {
           "points": 1.0
         }
       }
