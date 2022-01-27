@@ -173,29 +173,28 @@ The Eclipse Console
 So you can now view memory, set breakpoints and even step through functions to
 the points you care about. gdb's command line interface is very handy for dumping
 information quickly and programmatically when debugging C programs.
-Eclipse has a similar functionality. Eclipse's Display
-window is a debug terminal. If the Display window is not visible you can
-enable it using ``Window->Show View->Display``. Once the Display window is open
+Eclipse has a similar functionality. Eclipse's Debug Shell
+window is a debug terminal. If the Debug Shell window is not visible you can
+enable it using ``Window->Show View->Debug Shell``. Once the Debug Shell window is open
 you can turn on autocomplete by right clicking and selecting Content Assist, or
 by hitting CTRL-SPACE (similar to the completion assist Eclipse provides for coding).
-The Display window allows you to write Java code and then execute it. It is a live
+The Debug Shell window allows you to write Java code and then execute it. It is a live
 window where you can write code, execute methods and demo code without having to
 recompile.  Anytime you pause your program, you may access local variables,
 change them, and print information out about them. In the below example
-I have chosen to print the String ``loc`` (from the byte array sample code)
-out to the output. While this particular example may not appear useful
-(as the program will print ``loc`` anyway), imagine you are debugging a program.
+I have chosen to print the String ``args[0]`` (from the main() method from a command line program)
+out to the output. While this particular example may not initially appear useful , imagine you are debugging a program.
 You know a bug occurs, now instead of stopping and
 recompiling your program with bug changes, you can rapidly prototype
 your replacement code and test it on the spot to insure success.
 
-.. odsafig:: Images/DebugDisplay1.png
+.. odsafig:: Images/EclipseDebugShell.png
    :align: center
    :capalign: center
    :figwidth: 90%
-   :alt: Result Of Running Display
+   :alt: Result Of Running Code in Debug Shell
 
-   Figure 9: The Display
+   Figure 9: The Debug Shell
 
 Conditional Breakpoints
 ~~~~~~~~~~~~~~~~~~~~~~~
