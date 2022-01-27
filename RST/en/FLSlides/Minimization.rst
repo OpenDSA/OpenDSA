@@ -71,13 +71,8 @@ Minimizing the Number of States in a DFA
 
 .. slide:: Example 1 (1)
 
-   .. odsafig:: Images/stmindfa1spart.png
-      :width: 400
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Minimization 1
-
+   <<Look at first slide in frameset of Module 3.6.2.>>
+   
    Look at A on a, ab. Look at F on a, ab. Look at D on a, ab.
 
    .. A on a is non-final, and on ab is final.
@@ -109,11 +104,4 @@ Minimizing the Number of States in a DFA
 
 .. slide:: Example 1 (2)
 
-   .. avembed:: AV/OpenFLAP/examples/dfaminimization2.html ss
-      :long_name: Minimization example 1
-
-
-.. slide:: Example 2
-
-   .. avembed:: AV/OpenFLAP/examples/dfaminimization1.html ss
-      :long_name: Minimization example 2
+   <<See Frameset 3.6.2>>
