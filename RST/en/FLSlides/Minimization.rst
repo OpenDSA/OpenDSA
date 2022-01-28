@@ -102,6 +102,6 @@ Minimizing the Number of States in a DFA
    *any* of its base states (from the old machine) are final.
 
 
-.. slide:: Example 1 (2)
+.. slide:: Example 1
 
    <<See Frameset 3.6.2>>

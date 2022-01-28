@@ -38,7 +38,8 @@
       "FLSlides/DFA": {}
     },
     "Week 2": {
-      "FLSlides/NFA": {}
+      "FLSlides/NFA": {},
+      "FLSlides/Minimization": {}
     }
   }
 }
