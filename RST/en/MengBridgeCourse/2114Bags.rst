@@ -188,7 +188,8 @@ Documentation of Bag Interface Methods Video Demonstration
 .. raw:: html
 
      <center>
-     <iframe style="width: 560px; height: 640px;" title="Bags Interface Methods (07:28)" src="https://canvas.vt.edu/courses/145304/external_tools/retrieve?display=borderless&amp;url=https%3A%2F%2Fvcms.tlos.vt.edu%2Fbrowseandembed%2Findex%2Fmedia%2Fentryid%2F1_kn4272o0%2FshowDescription%2Ffalse%2FshowTitle%2Ffalse%2FshowTags%2Ffalse%2FshowDuration%2Ffalse%2FshowOwner%2Ffalse%2FshowUploadDate%2Ffalse%2FplayerSize%2F560x775%2FplayerSkin%2F41950791%2F" width="560" height="640" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allow="autoplay *"></iframe>
+     <iframe style="width: 560px; height: 640px;" title="Bags Interface Methods (07:28)"
+     src="https://canvas.vt.edu/courses/145304/external_tools/retrieve?display=borderless&amp;url=https%3A%2F%2Fvcms.tlos.vt.edu%2Fbrowseandembed%2Findex%2Fmedia%2Fentryid%2F1_kn4272o0%2FshowDescription%2Ffalse%2FshowTitle%2Ffalse%2FshowTags%2Ffalse%2FshowDuration%2Ffalse%2FshowOwner%2Ffalse%2FshowUploadDate%2Ffalse%2FplayerSize%2F560x775%2FplayerSkin%2F41950791%2F" width="560" height="640" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allow="autoplay *"></iframe>
      </center>
 
 
