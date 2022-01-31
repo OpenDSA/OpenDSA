@@ -55,7 +55,7 @@ Union/FIND
    (consistent with efficient processing).
 
    Weighted Union rule:
-    * When two trees are union'ed, add one with fewer nodes as a child
+    * When two trees are unioned, add one with fewer nodes as a child
       of the root of the tree with more nodes.
     * Depth is :math:`O(\log n)`
 

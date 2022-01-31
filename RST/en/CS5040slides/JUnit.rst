@@ -116,7 +116,7 @@ JUnit Testing
      against what your program does do.
    * Executing commands puts your program into a certain state
      (expressed by the output).
-   * The assertions define characterstics of what you expect from that
+   * The assertions define characteristics of what you expect from that
      state. This is the model.
    * The test then compares what state YOUR program is in (expressed
      by the output) against the model (assertions).

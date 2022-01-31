@@ -40,7 +40,7 @@ Sorting Part 2
 
    * Mergesort cost:
 
-   * Mergsort is also good for sorting linked lists.
+   * Mergesort is also good for sorting linked lists.
 
    * Mergesort requires twice the space.
 

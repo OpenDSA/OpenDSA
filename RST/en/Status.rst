@@ -15,7 +15,7 @@ Status Report
 
 This status report was last updated on December 26, 2021.
 
-OpenDSA content contintues to grow, evolve, become more polished,
+OpenDSA content continues to grow, evolve, become more polished,
 break, get fixed, and so on.
 In general, specific chapters get periodic attention and slowly
 improve.
@@ -28,7 +28,7 @@ course, and the data structures component of a standard CS2 course.
 If you are looking at the "Everything" book (which is actually only
 "everything" directly related to data structures and algorithms,
 you will see these as well as all other DSA modules that are in
-various stages of perparation.
+various stages of preparation.
 There you will also see the "TODO" list items in some modules.
 
 We are constantly expanding our content.
@@ -43,7 +43,7 @@ the learner.
 Ideally, it presents a small amount of information, and then asks a
 question or gives some sort of exercise.
 Most of the time, these questions or exercises are intended to be
-etremely simple, with the main purpose of making sure that the student
+extremely simple, with the main purpose of making sure that the student
 absorbed the small bit of information just provided.
 Sometimes, the questions or exercises are more integrative.
 
@@ -65,7 +65,7 @@ LTI, including Moodle and Blackboard.
 At this time there is no ETA on improved connections to any LMS aside
 from Canvas.
 However, we do provide the option to load individual visualizations,
-exercises, and modules into any LTI-compilant LMS.
+exercises, and modules into any LTI-compliant LMS.
 Details can be found at 
 https://opendsa-server.cs.vt.edu/home/guide.
 Technical discussion of how OpenDSA supports LTI can be found at
