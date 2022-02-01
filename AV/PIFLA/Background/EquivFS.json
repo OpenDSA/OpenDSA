@@ -26,8 +26,9 @@
         "type": "select",
         "description": "A binary relation is called a partial order if it is antisymmetric and transitive.",
         "question": "Which of the following relations defines a partial order?",
-        "answer": ["$<$", "$\\leq$"],
-        "choices": ["$<$", "$\\leq$", "$=$"]
+        "answer": ["$<$", "$\\leq$", "$=$"],
+        "choices": ["$<$", "$\\leq$", "$=$"],
+        "correctFeedback": ["It might seem odd to think that $=$ is a partial order. But it is in fact vacuously antisymmetric (there is never a case where $a=b$ and $b=a$ unless they are in fact the same thing) and vacuously transitive (again, $a=b$ and $b=c$ can only be true if $a=c$ because they are all the same)."]
       }
     }
   }

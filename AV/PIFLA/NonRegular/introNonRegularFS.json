@@ -50,7 +50,7 @@
         "question": "$L_2 = \\{a^nb^n\\ |\\ n > 0 \\}$. Do we need memory to help with deciding whether to accept a string in this language?",
         "answer": "Yes",
         "choices": ["Yes", "No"],
-        "correctFeedback": ["This is not obvious. There are languages where it seems like an acceptor would help to have memory, but we don't <b>need</b> it. Like palindromes and balanced parentheses. But for $L_2 = \\{a^nb^n\\ |\\ n > 0 \\}$, there doesn't seem to be any way around the fact that we have to remember how many a's we see to decide if it matches the number of b's."]
+        "correctFeedback": ["This is not obvious. There are languages where it seems like an acceptor would help to have memory, but we don't <b>need</b> it. But for $L_2 = \\{a^nb^n\\ |\\ n > 0 \\}$, there doesn't seem to be any way around the fact that we have to remember how many a's we see to decide if it matches the number of b's."]
       },
       "dfamemory": {
         "type": "select",
