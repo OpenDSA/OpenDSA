@@ -79,7 +79,7 @@
 
       "MengBridgeCourse/1114Arrays":{},
       "MengBridgeCourse/1114MDArrays":{},
-      
+
       "MengBridgeCourse/1114FileIO":{},
       "MengBridgeCourse/1114MapsAndSets":{},
       "MengBridgeCourse/1114StaticMainAndExceptions":{},
@@ -155,7 +155,20 @@
           "points": 0,
           "required": false
         }
-      }
+      },
+
+      "MengBridgeCourse/2114Ethics": { },
+      "MengBridgeCourse/2114Recursion": { },
+      "MengBridgeCourse/2114SoftwareDesignAndMVC": { },
+      "MengBridgeCourse/2114Queues": { },
+      "MengBridgeCourse/2114Lists": { },
+      "MengBridgeCourse/2114Generics2": { },
+      "MengBridgeCourse/2114ComparingAndSorting": { },
+      "MengBridgeCourse/2114Iterators": { },
+      "MengBridgeCourse/": { },
+      "MengBridgeCourse/": { },
+      "MengBridgeCourse/": { },
+
     }
   }
 }
