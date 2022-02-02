@@ -64,6 +64,30 @@
   "chapters": {
 
     "The Bag Interface and ArrayBags":{
+      "MengBridgeCourse/1114GettingStarted":{},
+      "MengBridgeCourse/1114InheritanceAndPolymorphism":{},
+      "MengBridgeCourse/1114ConditionalActions":{},
+
+      "MengBridgeCourse/1114SoftwareTesting":{},
+      "MengBridgeCourse/1114VariablesFieldsAndParameters":{},
+
+      "MengBridgeCourse/1114PicturesAndForEachLoops":{},
+      "MengBridgeCourse/1114AggregationStringsandMoreLoops":{},
+
+      "MengBridgeCourse/1114GroupingObjectsUsingListsAndNestedForLoops":{},
+      "MengBridgeCourse/1114ListAndLoopsDeepDive":{},
+
+      "MengBridgeCourse/1114Arrays":{},
+      "MengBridgeCourse/1114MDArrays":{},
+      
+      "MengBridgeCourse/1114FileIO":{},
+      "MengBridgeCourse/1114MapsAndSets":{},
+      "MengBridgeCourse/1114StaticMainAndExceptions":{},
+
+
+
+
+
       "MengBridgeCourse/2114Bags": {
         "Checkpoint 1": {
           "points": 0,
