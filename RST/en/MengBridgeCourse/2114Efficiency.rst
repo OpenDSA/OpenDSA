@@ -25,8 +25,8 @@ Suggested Reading
 
 Chapter 4 from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-Intro to Algorithmic Efficiency
--------------------------------
+[6:07] Intro to Algorithmic Efficiency
+--------------------------------------
 
 
 .. raw:: html
@@ -51,8 +51,8 @@ Checkpoint 1
    :long_name: Quiz Unavailable
 
 
-Efficiency of Summation Algorithms Video
-----------------------------------------
+[14:29] Efficiency of Summation Algorithms Video
+------------------------------------------------
 
 
 .. raw:: html
@@ -69,8 +69,8 @@ Checkpoint 2
    :long_name: Quiz Unavailable
 
 
-Efficiency of Bag Methods Video
--------------------------------
+[7:18] Efficiency of Bag Methods Video
+--------------------------------------
 
 .. raw:: html
 

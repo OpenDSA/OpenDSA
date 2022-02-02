@@ -22,8 +22,8 @@ Upon completion of this module, students will be able to:
 * Practice linked chain manipulation
 
 
-Intro to Linked Chains of Nodes
--------------------------------
+[10:51] Intro to Linked Chains of Nodes
+---------------------------------------
 
 .. raw:: html
 
@@ -39,8 +39,8 @@ Checkpoint 1
    :long_name: Quiz Unavailable
 
 
-Demo in Visualizer Video
-------------------------
+[11:31] Demo in Visualizer Video
+--------------------------------
 
 .. raw:: html
 
@@ -74,8 +74,8 @@ Checkpoint 2
    :long_name: Quiz Unavailable
 
 
-Contains Animation Video
-------------------------
+[5:14] Contains Animation Video
+-------------------------------
 
 .. raw:: html
 

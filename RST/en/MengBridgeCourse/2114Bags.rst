@@ -182,8 +182,8 @@ TODO: fix URLS.
    } // end BagInterface
 
 
-Documentation of Bag Interface Methods Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7:28] Documentation of Bag Interface Methods Video Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -192,8 +192,8 @@ Documentation of Bag Interface Methods Video Demonstration
      </center>
 
 
-Using Bags: Shopping Cart Demo
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4:34] Using Bags Video Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -217,8 +217,8 @@ Suggested Reading
 Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 
-Fixed-Size Array Implementation Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:39] Fixed-Size Array Implementation Video Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -279,8 +279,8 @@ depicted below.
    :align: center
 
 
-ExArrayBagJunit Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:17] ExArrayBagJunit Video Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -313,8 +313,8 @@ Checkpoint 2
 .. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
    :long_name: Quiz Unavailable
 
-Demo: More Bag Method Implementation
-------------------------------------
+[5:28] More Bag Method Implementation Video Demonstration
+---------------------------------------------------------
 
 .. raw:: html
 
@@ -360,8 +360,8 @@ Checkpoint 3
 Methods that Remove and Design Improvement Lesson and Demo
 ----------------------------------------------------------
 
-Methods that Remove and Design Improvement Video Demonstration, Part 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:28] Methods that Remove and Design Improvement Video Demonstration, Part 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -379,8 +379,8 @@ TODO: fix URLS.
    </a>
 
 
-Methods that Remove and Design Improvement Video Demonstration, Part 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[6:45] Methods that Remove and Design Improvement Video Demonstration, Part 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -398,8 +398,8 @@ TODO: fix URLS.
    </a>
 
 
-Methods that Remove and Design Improvement Video Demonstration, Part 3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:03] Methods that Remove and Design Improvement Video Demonstration, Part 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -426,7 +426,7 @@ Checkpoint 3
 
 
 
-Array resizing description and coding Demo
+[14:47] Array Resizing Video Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
