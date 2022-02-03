@@ -117,8 +117,6 @@ Regular Grammars
    **Theorem:** L is a regular language iff :math:`\exists` regular
    grammar G such that :math:`L = L(G)`.
 
-   | (Doing here for RR grammar, see book for proof sketch for LR
-     grammar.)
    | (:math:`\Longleftarrow`) Given a regular grammar G, 
      Construct NFA M such that :math:`L(G)=L(M)`
    | Make a state for each non-terminal.
@@ -131,21 +129,7 @@ Regular Grammars
 
 .. slide:: RRG to NFA Example
 
-   |       :math:`S \rightarrow aB | bS | \lambda`
-   |       :math:`B \rightarrow aS | bB`
-   |
-   |   This is a right linear grammar representing the language
-   |   :math:`L = \{` strings with an even number of a's :math:`\}, \Sigma = \{a,b\}`
-
-   .. odsafig:: Images/strgtonfa.png
-      :width: 200
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: strgtonfa
-
-   What about a rule like :math:`S \rightarrow abB`?
-   Or :math:`S \rightarrow ab`?
+   <<See 4.3.2>>
 
 
 .. slide:: Proof: RR Grammar from DFA
@@ -162,35 +146,11 @@ Regular Grammars
    |    Each transition gets a production rule.
 
 
-.. slide:: Example (1)
+.. slide:: NFA to RRG Example
 
-   Construct the Regular Grammar for the NFA
+   <<See 4.3.3>>
 
-   .. odsafig:: Images/stnfatorg.png
-      :width: 200
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfatorg
-
-
-.. slide:: Example (2)
-
-   Construct the Regular Grammar for the NFA
-
-   .. odsafig:: Images/stnfatorg.png
-      :width: 200
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfatorg
-
-   |  :math:`G = (\{S,B\},\{a,b\},S,P)`,
-   |    :math:`P =`
-   |      :math:`Q0 \rightarrow a Q1`
-   |      :math:`Q1 \rightarrow a Q0 | b Q1 | \lambda`
-
-
+   
 .. slide:: Something to Think About
 
    :math:`L = \{a^nb^n \mid n>0\}`

@@ -42,7 +42,9 @@
       "FLSlides/Minimization": {}
     },
     "Week 3": {
-      "FLSlides/RegEx": {}
+      "FLSlides/RegEx": {},
+      "FLSlides/RegGram": {},
+      "FLSlides/RegClosure": {}
     }
   }
 }
