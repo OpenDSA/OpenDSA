@@ -9,14 +9,19 @@
 Proof of Stake
 ==============
 
-What is a consensus algorithm?
+What is a consensus mechanism?
 ------------------------------
 
-A consensus algorithm is a method by which a distributed ledger is
+A consensus mechanism is a method by which a distributed ledger is
 updated (that is, a new block is added to the block chain), and all
 parties come to agreement that this did happen.
 For more information, see
 :ref:`consensus <consensus> <Consensus>`.
+
+Note: A consensus algorithm differs from a consensus mechanism in that an 
+algorithm is an isolated series of instructions that can be executed on a 
+single machine, whereas a mechanism involves multiple nodes in a network 
+operating in a coordinated manner as to accomplish a unified goal.
 
 Block Structure Review
 ----------------------
@@ -29,6 +34,33 @@ such as the creation time stamp and reference to the block before it.
 The footer contains data such as a collection of transactions.
 For more information, see
 :ref:`blocks <block> <Blocks>`.
+
+Why do we need proof of anything?
+------------------------------
+As you will soon learn, the previously discussed proof of work mechanism,
+popularized by the Bitcoin protocol, is not the only means of achieving consensus.
+In fact, the Ethereum network is currently amidst a transition to the proof of stake
+mechanism. But why do cryptocurrencies require a consensus algorithm in the first place
+and why must there be a 'burden of proof'?
+
+The short answer: Economic civil resistance.
+If you have a network consisting of hundreds, thousands, or millions of participating
+nodes, it is necessary to deploy a means through which the network can agree on the order
+in which transactions are processed. At the highest level, it is necessary to have some form
+of voting mechanism that decides who can participate in deciding the order of transactions. 
+How this voting mechanism works is where things get complicated for many crypto protocols.
+
+You cannot simply provide "each person" gets one vote because you need some form of authority
+or mechanism that determines what a "person" is. Otherwise, any individual can spin up hundreds
+of billions of virtual nodes that can act as "people" in the network thus garnering the majority
+of votes and controlling the network.
+
+Proof of ___ mechanisms issue network control authority proportional to each node's control of a designated
+economic resource. In the case of Bitcoin's proof-of-work mechanism, that economic resource is one's ability to compute a valid
+solution to complicated hashing algorithms. Proof of stake, rather than utilizing algorithmic complexity
+and computational resources as a measurement of voting authority, utilizes an underlying token 
+or asset to denote control in the network.
+
      
 What is Proof of Stake?
 -----------------------
