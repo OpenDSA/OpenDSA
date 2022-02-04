@@ -90,16 +90,16 @@ Closure Properties of Regular Languages
 .. slide:: More Closure Properties (2)
 
    | **Right quotient:**
-     :math:`L_1 / L_2 = \{x \mid xy \in L_1\ \mbox{for some}\ y \in L_2\}`.
+     :math:`L_1 \backslash L_2 = \{x \mid xy \in L_1\ \mbox{for some}\ y \in L_2\}`.
    | In other words, it is prefixs of appropriate strings in
      :math:`L_1`. Example:
    |    :math:`L_1 = \{a^*b^* \cup b^*a^*\}`
    |    :math:`L_2 = \{b^n \mid n` is even, :math:`n > 0 \}`
-   |    :math:`L_1/L_2 = \{a^*b^*\}`
+   |    :math:`L_1 \backslash L_2 = \{a^*b^*\}`
 
 
    **Theorem:** If :math:`L_1` and :math:`L_2` are regular, then
-   :math:`L_1 / L_2` is regular.
+   :math:`L_1 \backslash L_2` is regular.
 
    | **Proof:** (sketch)
    |   :math:`\exists` DFA :math:`M = (Q, \Sigma, \delta, q_0, F)` such that
