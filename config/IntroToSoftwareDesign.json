@@ -171,6 +171,36 @@
           "threshold": 12
         }
       }
+    },
+
+    "Software Testing":{
+      "IntroToSoftwareDesign/SoftwareTesting": {
+        "Syntax Practice 4a: Compound Conditionals": {
+          "points": 15
+        },
+        "Syntax Practice 4b: Conditionals and Relational Operators": {
+          "points": 15
+        },
+        "Programming Practice 4": {
+          "points": 30
+        },
+        "Week4Quiz1Summ": {
+          "points": 6
+        },
+        "Week4Quiz2Summ": {
+          "points": 6
+        },
+        "Week4Quiz3Summ": {
+          "points": 6
+        },
+        "Week4Quiz4Summ": {
+          "points": 6
+        },
+        "Week4ReadingQuizSumm": {
+          "points": 16,
+          "threshold": 10
+        }
+      }
     }
   }
 }
