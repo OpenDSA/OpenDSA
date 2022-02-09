@@ -146,23 +146,33 @@ Some Pumping Lemma Examples
    number.
    If the language is indeed regular, you should find it impossible to
    use the pumping lemma to prove it non-regular.
-   In particular, regardless of what value for :math:`w` is picked
-   it should not be possible to decompose :math:`w` into :math:`xyz`
-   such that :math:`|xy| \le m`, :math:`|y| \ge 1`, and
-   :math:`xy^iz \in L` for all values of :math:`i \ge 0`.
+   In particular, not all values of :math:`m` should have a value for
+   :math:`w` that can be decomposed into :math:`xyz`
+   such that it is pumpable
+   (that is, :math:`|xy| \le m`, :math:`|y| \ge 1`, and
+   :math:`xy^iz \in L` for all values of :math:`i \ge 0`).
+   The intuition here is that for any suitably long string,
+   we can always find a decomposition that lets us pump the :math:`y`
+   substring.
 
-   The intuition here is that for any suitably long string, we can
-   find a decomposition that lets us pump the :math:`y` substring.
-   In particular, for any value of :math:`m \ge 2`, :math:`w`
-   has to be at least 3 symbols long (since it has to be of
+   Let's start by considering the value :math:`m = 1`.
+   For string :math:`w = abb`, it turns out that the only legitimate
+   decomposition yields :math:`y = a`, which cannot be pumped.
+   But this does **not** mean that the language is non-regular.
+   We can't just pick our favorite value value for :math:`m`,
+   the Pumping Lemma demands that this condition be true for
+   all other legitimate values of :math:`m` as well.
+   
+   In particular, for any value of :math:`m \ge 2`,
+   :math:`w` has to be at least 3 symbols long (since it has to be of
    odd length to be in the language).
    And in this case, we can always decompose the string such that
-   :math:`y` is two symbols long.
+   :math:`y` has either two a's or two b's.
    Which means that it can be pumped any number of times (or deleted),
-   and the resulting string is still of odd length, and therefore in
-   the language.
+   and the resulting string is still of odd length,
+   and therefore is in the language.
 
-
+ 
 .. topic:: Example
 
    Let's look at some more languages that are easily shown to be
