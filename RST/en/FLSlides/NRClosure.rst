@@ -63,9 +63,9 @@ Using Closure Properties to Prove a Language Non-Regular
    |   We showed earlier that :math:`\{a^nb^n | n > 0 \}` is not
        regular. Contradiction.
 
-.. 
+
 .. slide:: Example
-.. 
+
    | Prove that :math:`L_1 = \{a^nb^na^n\ |\ n > 0\}` is not regular.
    |   Assume :math:`L_1` is regular.
    |   The goal is to try to construct :math:`\{a^nb^n | n > 0\}` which
@@ -77,4 +77,22 @@ Using Closure Properties to Prove a Language Non-Regular
        is regular. 
    |   By closure under intersection,
        :math:`L_4 = L_3 \cap \{a^{*}b^{*}\} = \{a^nb^n | n > 0\}` is regular. 
-   |  We already proved that :math:`L_4` is not regular. Contradiction.
+   |   We already proved that :math:`L_4` is not regular. Contradiction.
+
+
+.. slide:: Things to Think About
+
+   | Is every language either regular or not regular?
+
+   | Regardless of "truth", can **we know** for every language if it is
+     regular or not regular?
+
+   | There are more infinite sets of strings than there are finite sets
+     of strings.
+   |   (Really? Aren't there an infinite number of finite
+       sets of strings?)
+
+   | Since any "description" of a language (as a RegEx, in English, as
+     a DFA) is ultimately a string, that means there are more
+     languages than we can describe!
+     
