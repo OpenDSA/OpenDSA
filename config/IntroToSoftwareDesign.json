@@ -201,6 +201,35 @@
           "threshold": 10
         }
       }
+    },
+
+    "Variables, Fields, and Parameters":{
+      "IntroToSoftwareDesign/VariablesFieldsAndParameters": {
+        "Syntax Practice 5a: Fields and Accessors": {
+          "points": 12
+        },
+        "Syntax Practice 5b: Mutators and Return Statements": {
+          "points": 20
+        },
+        "Programming Practice 5a": {
+          "points": 16
+        },
+        "Programming Practice 5b": {
+          "points": 16
+        },
+        "Week5Quiz1Summ": {
+          "points": 9
+        },
+        "Week5Quiz2Summ": {
+          "points": 9
+        },
+        "Week5Quiz3Summ": {
+          "points": 9
+        },
+        "Week5Quiz4Summ": {
+          "points": 9
+        }
+      }
     }
   }
 }
