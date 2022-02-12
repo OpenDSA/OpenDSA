@@ -8,28 +8,13 @@
    :satisfies: DNASeq
    :topic: DNASeq
 
+Dot Matrix
+==========
 
-Test Chapter
-============
 This is a visualization for DNA Sequencing
 
-.. inlineav:: DNASeq ss
+.. inlineav:: Dot ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/DNASeq.css 
-   :scripts: AV/BIO/DNASeq.js
-   :output: show
-
-asdlkfdsfhflhfkd
-
-Subtitle
---------
-asdasdasajksfjkasf
-asdasdasajksfjkasfasf
-asdlkfdsfhflhfkdasf
-asdlkfdsfhflhfkdasf
-
-.. inlineav:: Test ss
-   :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/Test.css 
-   :scripts: AV/BIO/Test.js
+   :links: AV/BIO/Dot.css 
+   :scripts: AV/BIO/Dot.js
    :output: show

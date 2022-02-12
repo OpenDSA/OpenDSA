@@ -38,13 +38,14 @@
   }, 
   "chapters": {
     "Preface": {
-      "Intro": {},
-      "BIO/Preface":{}
-
+      "Intro": {}
     },
-    "DNA Sequencing": {
-      "BIO/DNASeq": {},
-      "BIO/CH2": {}
+    "Sequence Alignment": {
+      "BIO/Manhattan": {},
+      "BIO/Dot Matrix": {},
+      "BIO/Global Alignment": {},
+      "BIO/Local Alignment": {},
+      "BIO/Suffix Tree": {}
     }
  
   }

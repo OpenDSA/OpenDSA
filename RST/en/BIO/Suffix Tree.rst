@@ -8,22 +8,13 @@
    :satisfies: DNASeq
    :topic: DNASeq
 
+Suffix Tree
+===========
 
-RNA Sequencing
-==============
-This is a visualization for RNA Sequencing
+This is a visualization for DNA Sequencing
 
-.. inlineav:: DNASeq ss
+.. inlineav:: Suffix ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/DNASeq.css 
-   :scripts: AV/BIO/DNASeq.js
-   :output: show
-Subtitle
---------
-This is a visualization for RNA Sequencing
-
-.. inlineav:: Test ss
-   :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/Test.css 
-   :scripts: AV/BIO/Test.js
+   :links: AV/BIO/Suffix.css 
+   :scripts: AV/BIO/Suffix.js
    :output: show

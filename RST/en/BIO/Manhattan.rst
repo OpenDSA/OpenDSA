@@ -8,28 +8,13 @@
    :satisfies: DNASeq
    :topic: DNASeq
 
+Manhattan Tourist Problem
+=========================
 
-DNA Sequencing
-==============
 This is a visualization for DNA Sequencing
 
-.. inlineav:: DNASeq ss
+.. inlineav:: Manhattan ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/DNASeq.css 
-   :scripts: AV/BIO/DNASeq.js
-   :output: show
-
-asdlkfdsfhflhfkd
-
-Subtitle
---------
-asdasdasajksfjkasf
-asdasdasajksfjkasfasf
-asdlkfdsfhflhfkdasf
-asdlkfdsfhflhfkdasf
-
-.. inlineav:: Test ss
-   :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/Test.css 
-   :scripts: AV/BIO/Test.js
+   :links: AV/BIO/Manhattan.css 
+   :scripts: AV/BIO/Manhattan.js
    :output: show
