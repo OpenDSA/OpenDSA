@@ -57,28 +57,13 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Identifying Non-regular Languages":{
-      "PIFLA/NonRegular": {
-        "introPumpingFS": {
-          "points": 1.0
-        },
-        "PLGame": {
-          "points": 0.0,
-          "required": false
-        },
-        "ClosPropFS": {
-          "points": 1.0
-        },
-        "ClosPropEx1FS": {
-          "points": 1.0
-        },
-        "ClosPropEx2FS": {
+    "Context-Free Grammars and Languages":{
+      "PIFLA/CFG1": {
+        "DerivationTreesFS": {
           "points": 1.0
         }
-      }
-    },
-    "Context-Free Grammars and Languages":{
-      "PIFLA/ContexFreeLanguages": {},
+      },
+      "PIFLA/CFG2": {},
       "PIFLA/CFGExercises": {
         "anbmodd":{
           "points": 2.0

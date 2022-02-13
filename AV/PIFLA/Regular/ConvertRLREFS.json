@@ -94,14 +94,14 @@
         },
         "clearqk3": {
           "type": "select",
-          "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*k_{kj}$.",
+          "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*r_{kj}$.",
           "question":"We make the third replacement because $qi$ can go to state $qj$ by passing through $qk$. It will read $r_{ik}$, then loop in $qk$ to read zero or more $r_{kk}$, then move to $qj$ by reading $r_{kj}$",
           "answer": "True",
           "choices": []
         },
         "clearqk4": {
           "type": "select",
-          "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*k_{kj}$<br> $r_{ji} \\Rightarrow r_{ji}+r_{jk}r_{kk}^*r_{ki}$",
+          "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*r_{kj}$<br> $r_{ji} \\Rightarrow r_{ji}+r_{jk}r_{kk}^*r_{ki}$",
           "question": "We make the fourth replacement because $qj$ can go to state $qi$ by passing through $qk$. It will read $r_{jk}$, then loop in $qk$ to read zero or more $r_{kk}$, then move to $qi$ by reading $r_{ki}$",
           "answer": "True",
           "choices": []

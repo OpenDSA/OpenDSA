@@ -355,7 +355,7 @@ using closure operations.
      defining this using a regular expression.
    * Now define
      :math:`L_3 = L_1 \backslash L_2 = \{a^nb^na^p\ |\ 0 \le p \le n, n > 0\}`.
-     This is using the right closure operation, which we know is closed
+     This is using the right quotient operation, which we know is closed
      for regular languages.
      In this case, we are just trimming some number of a's from the end
      of :math:`L_1`.
