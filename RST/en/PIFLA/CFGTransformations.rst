@@ -36,9 +36,10 @@ We will look at lots of methods for transforming grammars.
 Some will be forms that are easier to work with,
 some are easier to use in proofs.
 
-| Key question: Are there ways to transform (restrict) CFGs such that
-|   1) We can process them efficiently?
-|   2) Without restricting the power of CFGs?
+| What we seek to answer in this module:
+| Are there ways to transform (restrict) CFGs such that:
+|   1) we can process them efficiently?
+|   2) but without restricting the power of CFGs?
 
 .. inlineav:: TransformGrammarsFS ff
    :links: AV/PIFLA/CFL/TransformGrammarsFS.css

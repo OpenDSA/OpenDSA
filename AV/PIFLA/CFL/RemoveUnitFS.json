@@ -1,24 +1,17 @@
 {
   "translations": {
     "en": {
-      "q2":{
-        "type": "select",
-        "description": "Last section, we talked about the need to remove unit productions to enhance the membership problem algorithm",
-        "question": "What is the membership problem?",
-        "answer": "Given a string $w$ and language $L$, we need to know if $w \\in L$",
-        "choices": ["Given a string $w$ and language $L$, we need to know if $w \\in L$", "Given a grammar $G$, we need to identify the type of $G$"]
-      },
       "q3":{
         "type": "select",
-        "description": "Last section, we talked about the need to remove unit productions to enhance the membership problem algorithm",
-        "question": "Which of the following is a unit production",
+        "description": "Unit productions of the form where a variable is replaced by a variable.",
+        "question": "Which of the following is a unit production?",
         "answer": "$A \\rightarrow B$",
         "choices": ["$A \\rightarrow aA$", "$A \\rightarrow B$", "$A \\rightarrow \\lambda$"]
       },
       "q4":{
         "type": "select",
         "description": "In the begining of this section, we talked about the $\\textbf{Substitution Theorem}$.",
-        "question": "Suppose we have this grammar <br/>$A\\rightarrow B$<br/>$B\\rightarrow a \\ mid ab$<br/>What is the result of substituting the value of $B$ into $A$?",
+        "question": "Suppose we have this grammar <br/>$A\\rightarrow B$<br/>$B\\rightarrow a \\mid ab$<br/>What is the result of substituting the rules for $B$ into $A$?",
         "answer": "$A \\rightarrow a \\mid ab$",
         "choices": ["$A \\rightarrow a$", "$A \\rightarrow ab$", "$A \\rightarrow a \\mid ab$"]
       },
@@ -31,154 +24,154 @@
       },
       "q6":{
         "type": "select",
-        "description": "But what if we have<br/>$A\\rightarrow B$<br/>$B\\rightarrow C$<br/>$C \\rightarrow A$<br/>Using the substitution theorem will lead to<br/>$A \\rightarrow C$<br/>$B \\rightarrow A$<br/>$C\\rightarrow B$",
-        "question": "Did that substitution removed the unit production?",
+        "description": "But what if we have:<br/>$A\\rightarrow B$<br/>$B\\rightarrow C$<br/>$C \\rightarrow A$<br/><br/>Using simple substitutions throughout will lead to<br/>$A \\rightarrow C$<br/>$B \\rightarrow A$<br/>$C\\rightarrow B$",
+        "question": "Did that substitution removed the unit productions?",
         "answer": "No",
         "choices": ["Yes", "No"]
       },
       "q7":{
         "type": "select",
-        "description": "$\\textbf{Theorem}$ (Remove unit productions):<br/>Let $G=(V,T,S,P)$ be a CFG without $\\lambda$-productions. Then $\\exists$ CFG $G=(V\\prime,T\\prime,S,P\\prime)$ that does not have any unit-productions and $L(G)=L(G\\prime)$.",
+        "description": "$\\textbf{Theorem}$ (Remove unit productions):<br/>Let $G = (V,T,S,P)$ be a CFG without $\\lambda$-productions. Then there exists a CFG $G' = (V',T',S,P')$ that does not have any unit-productions and $L(G) = L(G')$.",
         "question": "What if the grammar has $\\lambda$-productions",
         "answer": "We must remove $\\lambda$-productions first before removing unit productions",
-        "choices": ["We must remove $\\lambda$-productions first before removing unit productions", "In this case, unit productions can not be removed"]
+        "choices": ["We must remove $\\lambda$-productions first before removing unit productions", "In this case, unit productions cannot be removed"]
       },
       "q9":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$. In other words, find all unit productions for variable $A$ either directly or indirectly.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$. In other words, find all unit productions for variable $A$ either directly or indirectly.",
         "question": "Suppose we have $A\\rightarrow B$ and $B \\rightarrow C$ this means that $A \\stackrel{*}{\\Rightarrow} $?",
         "answer": ["B", "C"],
         "choices": ["B", "C"]
       },
       "q10":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.",
         "question": "For the grammar on the left, how many nodes we need ?",
         "answer": "5",
         "choices": ["4", "5", "6"]
       },
       "q11":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.",
         "question": "What is the edge we need to add for the highlighted production?",
         "answer": "A to B",
         "choices": ["D to A", "A to B", "B to C", "C to A"]
       },
       "q12":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.",
         "question": "What is the edge we need to add for the highlighted production?",
         "answer": "B to C",
         "choices": ["D to A", "A to B", "B to C", "C to A"]
       },
       "q13":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.",
         "question": "What is the edge we need to add for the highlighted production?",
         "answer": "C to A",
         "choices": ["D to A", "A to B", "B to C", "C to A"]
       },
       "q14":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.",
         "question": "What is the edge we need to add for the highlighted production?",
         "answer": "D to A",
         "choices": ["D to A", "A to B", "B to C", "C to A"]
       },
       "q15":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$",
-        "question": "Which productions should be moved to $P\\prime$?",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$",
+        "question": "Which productions should be moved to $P'$?",
         "answer": ["$S \\rightarrow AB$", "$B \\rightarrow Bb$", "$C \\rightarrow c$", "$C \\rightarrow Da$"],
         "choices": ["$S \\rightarrow AB$", "$A \\rightarrow B$", "$B \\rightarrow C$", "$B \\rightarrow Bb$", "$C \\rightarrow A$", "$C \\rightarrow c$", "$C \\rightarrow Da$", "$D \\rightarrow A$"]
       },
       "q16":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute the value for $B$ into $A$ for every unit production, but do not add any unit production into the result.<br/> We should Run DFS with $A$ as root.",
-        "question": "To understand this part, $A \\stackrel{*}{\\Rightarrow} B$ means all unit productions where the left hand side is $A$. Select all $A \\stackrel{*}{\\Rightarrow} \\ldots$<br/><br/> We should Run DFS with $A$ as root.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute the value for $B$ into $A$ for every unit production, but do not add any unit production into the result.",
+        "question": "To understand this part, $A \\stackrel{*}{\\Rightarrow} B$ means all unit productions where the left hand side is $A$. Select all $A \\stackrel{*}{\\Rightarrow} \\ldots$<br/><br/>We should Run DFS with $A$ as root.",
         "answer": ["B", "C"],
         "choices": ["S", "A", "B", "C", "D"]
       },
       "q17":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute the value for $B$ into $A$ for every unit production, but do not add any unit production into the result.<br/> We should Run DFS with $A$ as root.",
-        "question": "To understand this part, $A \\stackrel{*}{\\Rightarrow} B$ means all unit productions where the left hand side is $A$. Select all $B \\stackrel{*}{\\Rightarrow} \\ldots$<br/> We should Run DFS with $B$ as root.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute the value for $B$ into $A$ for every unit production, but do not add any unit production into the result.",
+        "question": "To understand this part, $A \\stackrel{*}{\\Rightarrow} B$ means all unit productions where the left hand side is $A$. Select all $B \\stackrel{*}{\\Rightarrow} \\ldots$<br/>We should Run DFS with $B$ as root.",
         "answer": ["A", "C"],
         "choices": ["S", "A", "B", "C", "D"]
       },
       "q18":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute the value for $B$ into $A$ for every unit production, but do not add any unit production into the result.<br/> We should Run DFS with $A$ as root.",
-        "question": "To understand this part, $A \\stackrel{*}{\\Rightarrow} B$ means all unit productions where the left hand side is $A$. Select all $C \\stackrel{*}{\\Rightarrow} \\ldots$<br/> We should Run DFS with $C$ as root.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute the value for $B$ into $A$ for every unit production, but do not add any unit production into the result.",
+        "question": "To understand this part, $A \\stackrel{*}{\\Rightarrow} B$ means all unit productions where the left hand side is $A$. Select all $C \\stackrel{*}{\\Rightarrow} \\ldots$<br/>We should Run DFS with $C$ as root.",
         "answer": ["A", "B"],
         "choices": ["S", "A", "B", "C", "D"]
       },
       "q19":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute the value for $B$ into $A$ for every unit production, but do not add any unit production into the result.<br/> We should Run DFS with $A$ as root.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute the value for $B$ into $A$ for every unit production, but do not add any unit production into the result.",
         "question": "To understand this part, $A \\stackrel{*}{\\Rightarrow} B$ means all unit productions where the left hand side is $A$. Select all $D \\stackrel{*}{\\Rightarrow} \\ldots$<br/> We should Run DFS with $D$ as root.",
         "answer": ["A", "B", "C"],
         "choices": ["S", "A", "B", "C", "D"]
       },
       "q20":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $A \\stackrel{*}{\\Rightarrow} C$, to remove this unit production, we need to substitute the value of $C$ from the new grammar in $A$. Select the production that will be added to the new grammar",
         "answer": ["$A \\rightarrow c$", "$A \\rightarrow Da$"],
         "choices": ["$A \\rightarrow A$", "$A \\rightarrow c$", "$A \\rightarrow Da$"]
       },
       "q21":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $A \\stackrel{*}{\\Rightarrow} B$, to remove this unit production, we need to substitute the value of $B$ from the new grammar in $A$. Select the production that will be added to the new grammar",
         "answer": "$A \\rightarrow Bb$",
         "choices": ["$A \\rightarrow C$, we can not add any unit production to the new grammar", "$A \\rightarrow Bb$"]
       },
       "q22":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $B \\stackrel{*}{\\Rightarrow} A$, to remove this unit production, we need to substitute the value of $A$ from the new grammar in $B$. Select the production that will be added to the new grammar",
         "answer": ["$B \\rightarrow c$", "$B \\rightarrow Da$"],
         "choices": ["$B \\rightarrow Bb$, it is already exist", "$B \\rightarrow c$", "$B \\rightarrow Da$"]
       },
       "q23":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $B \\stackrel{*}{\\Rightarrow} C$, to remove this unit production, we need to substitute the value of $C$ from the new grammar in $B$. Select the production that will be added to the new grammar",
         "answer": "all of the production already exists",
         "choices": ["all of the production already exists", "$B \\rightarrow c$", "$B \\rightarrow Da$"]
       },
       "q24":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $C \\stackrel{*}{\\Rightarrow} B$, to remove this unit production, we need to substitute the value of $B$ from the new grammar in $C$. Select the production that will be added to the new grammar",
         "answer": "$C \\rightarrow Bb$",
         "choices": ["$C \\rightarrow Bb$", "$C \\rightarrow c$, already exist", "$C \\rightarrow Da$, already exist"]
       },
       "q25":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $C \\stackrel{*}{\\Rightarrow} A$, to remove this unit production, we need to substitute the value of $A$ from the new grammar in $C$. Select the production that will be added to the new grammar",
         "answer": "all of the production already exists",
         "choices": ["all of the production already exists", "$C \\rightarrow Bb$", "$C \\rightarrow c$", "$C \\rightarrow Da$"]
       },
       "q26":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $D \\stackrel{*}{\\Rightarrow} C$, to remove this unit production, we need to substitute the value of $C$ from the new grammar in $D$. Select the production that will be added to the new grammar",
         "answer": ["$D \\rightarrow Bb$", "$D \\rightarrow c$", "$D \\rightarrow Da$"],
         "choices": ["$D \\rightarrow Bb$", "$D \\rightarrow c$", "$D \\rightarrow Da$"]
       },
       "q27":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $D \\stackrel{*}{\\Rightarrow} B$, to remove this unit production, we need to substitute the value of $B$ from the new grammar in $D$. Select the production that will be added to the new grammar",
         "answer": "all of the production already exists",
         "choices": ["all of the production already exists", "$D \\rightarrow Bb$", "$D \\rightarrow c$", "$D \\rightarrow Da$"]
       },
       "q28":{
         "type": "select",
-        "description": "To Remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G\\prime = (V\\prime, T\\prime, S, P\\prime)$ by<br/>a)Put all non-unit productions in $P\\prime$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
+        "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> Now, for every uint production we have, we need to substitute the values for the right hand side, but do not add any unit production into the result.",
         "question": "Consider the highlighted unit production $D \\stackrel{*}{\\Rightarrow} A$, to remove this unit production, we need to substitute the value of $A$ from the new grammar in $D$. Select the production that will be added to the new grammar",
         "answer": "all of the production already exists",
         "choices": ["all of the production already exists", "$D \\rightarrow Bb$", "$D \\rightarrow c$", "$D \\rightarrow Da$"]
