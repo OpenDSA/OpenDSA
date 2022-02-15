@@ -4,7 +4,7 @@ $(document).ready(function () {
     const Gap =  -2;
     const Match =  1;
     const Mismatch = -1;
-    var s1="AACG";
+    var s1="ACTG";
     var s2="ACTCG"
   var jsav = new JSAV("Gscore");
   jsav.umsg("Match = 1, Mismatch = -1, Gab = -2");
@@ -65,6 +65,9 @@ $(document).ready(function () {
             matrix2.value(0,2,s1[j-2]);
             matrix2.value(2,0,s2[i-2]);
             matrix2.value(2,2,newval);
+            matrix.value(i-1,j-1);
+            matrix.value(i-1,j);
+            matrix.value(i,j-1);
             matrix2.value(1,1,matrix.value(i-1,j-1));
             matrix2.value(1,2,matrix.value(i-1,j));
             matrix2.value(2,1,matrix.value(i,j-1));

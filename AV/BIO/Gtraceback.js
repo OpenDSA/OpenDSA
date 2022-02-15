@@ -6,7 +6,7 @@ $(document).ready(function () {
     const Gap =  -2;
     const Match =  1;
     const Mismatch = -1;
-    var s1="AACG";
+    var s1="ACTG";
     var s2="ACTCG"
   var jsav = new JSAV("Gtraceback");
   jsav.umsg("Match = 1, Mismatch = -1, Gab = -2");

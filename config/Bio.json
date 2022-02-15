@@ -40,7 +40,7 @@
     "Preface": {
       "Intro": {}
     },
-    "Sequence Alignment": {
+    "DNA Sequence Alignment": {
       "BIO/Manhattan": {},
       "BIO/Dot Matrix": {},
       "BIO/Global Alignment": {},
