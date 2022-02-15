@@ -4,31 +4,27 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
-  //frame 1
-  av.umsg("The idea is to usw closure properties of regular languages, construct a language that should be regular, but for which you have already shown is not regular. This will lead to a contradiction. Then we can conclude that the language in hand is not regular");
+  // Frame 1
+  av.umsg("We now show how to use closure properties of regular languages to prove a language non-regular. This works by converting your language in question into a language which you already know is non-regular. This will lead to a contradiction. Then you can conclude that the language in hand is non-regular");
   av.displayInit();
 
-  //frame2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("recall"));
   av.step();
 
-  //frame3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("recall2"));
   av.step();
 
-  //frame4
-  av.umsg("$\\textbf{Proof outlien:}$ Assume $L$ is regular");
+  // Frame 4
+  av.umsg(Frames.addQuestion("result"));
   av.step();
 
-  //frame5
-  av.umsg(Frames.addQuestion("q5"));
+  // Frame 5
+  av.umsg("<b>Proof outline:</b> Assume $L$ is regular<br/>Apply operations to $L$ that we know are closed for regular languages, and perhaps we include other languages that we know are regular as part of the closed operation. (The goal is to construct $L'$ that you know is non-regular.)<br/>If $L$ were regular, and if we apply closed operations on $L$, then the result must be regular.<br/>However, $L'$ is non-regular. This is a contradiction.</br/>So, our assumption that $L$ is regular must be false. $L$ is non-regular.");
   av.step();
 
-  //frame6
-  av.umsg("$\\textbf{Proof outlien:}$ Assume $L$ is regular<br/>Apply closure properties to $L$ and other regular languages, constructing $L\\prime$ that you know is not regular.<br/>However, $L\\prime$ must be regular (based on the closure properties). This leads to a contradiction. So, $L$ is not regular");
-  av.step();
-
-  av.umsg("Let is see 3 examples about this useful technique. We will start with the language we proved using pumping lemma on example 6 above.")
+  // Frame 6
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
-
 });

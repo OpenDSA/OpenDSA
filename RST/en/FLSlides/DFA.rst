@@ -16,6 +16,9 @@
 Deterministic Finite Acceptors
 ==============================
 
+Deterministic Finite Acceptors
+------------------------------
+
 .. slide:: Introduction: Terminology
 
    | Finite State Machine
@@ -92,6 +95,17 @@ Deterministic Finite Acceptors
       q0 &  &  \\
       q1 &  &  \\
       \end{array}
+
+
+.. slide:: Example
+
+   .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAEvenBinary.html pe
+      :long_name: Accept even binary numbers
+
+
+.. slide:: .
+
+   .
 
 
 .. slide:: Concept: Power of DFAs
@@ -188,12 +202,3 @@ Deterministic Finite Acceptors
    languages that they accept.
    A language is **regular** if and only if
    there exists a DFA :math:`M` such that :math:`L = L(M)`.
-
-
-.. slide:: A Final Example
-
-   Consider the language "accept all strings on :math:`\{0, 1\}` that
-   does not contain the substring 001.
-
-   You should work this out on your own, its a good test of your
-   understanding!

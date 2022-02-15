@@ -5,7 +5,7 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("We have been talking about the idea that a DFA with a cycle has to accept strings that skip the cycle, strings that go through the cycle once, and strings that go through the cycle more times. We call this concept $ \\textbf{pumping}$ the string as we go around the loop. Loops are how we get infinite languages. They are also how we lose count or otherwise lose the ability to distinguish various properties of the string being processed.");
+  av.umsg("We have seen that a DFA with a cycle has to accept strings that skip the cycle, strings that go through the cycle once, and strings that go through the cycle more times. We call this concept <b>pumping</b> the string as we go around the loop. Loops are how we get infinite languages. They are also how we lose count or otherwise lose the ability to distinguish various properties of the string being processed.");
   av.displayInit();
 
   // Frame 2

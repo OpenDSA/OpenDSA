@@ -7,7 +7,7 @@ var av_name = "schematicRepCON";
   av.displayInit();
   av.umsg("The NFA should has a start and a final states.");
   var leftMargin = 200;
-  var topMargin = 50;
+  var topMargin = 0;
   var fa = new av.ds.FA({left: leftMargin, top: topMargin, width: 300, height: 200});
   var startX = 50;
   var lambda = String.fromCharCode(955);

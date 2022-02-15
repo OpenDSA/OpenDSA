@@ -5,36 +5,22 @@
         "type": "select",
         "description": "$\\textbf{Theorem}$ Let $L$ be a CFL that does not contain $\\lambda$. Then $\\exists$ a CFG for $L$ that does not have any useless productions, $\\lambda$-productions, or unit-productions.",
         "question": "How can we prove that?",
-        "answer": ["Given any CFG, we can remove $\\lambda$-productions", "Given any $\\lambda$ free CFG, we can remove Unit-productions", "Given any CFG, we can remove useless-productions"],
-        "choices": ["Given any CFG, we can remove $\\lambda$-productions", "Given any $\\lambda$ free CFG, we can remove Unit-productions", "Given any CFG, we can remove useless-productions"]
+        "answer": ["Given any CFG, we can remove $\\lambda$ productions", "Given any $\\lambda$-free CFG, we can remove unit productions", "Given any CFG, we can remove useless productions"],
+        "choices": ["Given any CFG, we can remove $\\lambda$ productions", "Given any $\\lambda$-free CFG, we can remove unit productions", "Given any CFG, we can remove useless productions"]
       },
       "q3":{
         "type": "select",
         "description": "$\\textbf{Theorem}$ Let $L$ be a CFL that does not contain $\\lambda$. Then $\\exists$ a CFG for $L$ that does not have any useless productions, $\\lambda$-productions, or unit-productions.<br/>Proof<br/>1. Remove $\\lambda$-productions<br/>2. Remove unit productions<br/>3. Remove useless productions",
         "question": "Does the order matter?",
-        "answer": "Yes. We must start with removing $\\lambda$-productions will give more unit and useless productions",
-        "choices": ["Yes. We must start with removing $\\lambda$-productions will give more unit and useless productions", "No"]
+        "answer": "Yes. We must start by removing $\\lambda$ productions, a process that might give more unit and useless productions to remove.",
+        "choices": ["Yes. We must start by removing $\\lambda$ productions, a process that might give more unit and useless productions to remove.", "No"]
       },
       "q4":{
         "type": "select",
         "description": "$\\textbf{Theorem}$ Let $L$ be a CFL that does not contain $\\lambda$. Then $\\exists$ a CFG for $L$ that does not have any useless productions, $\\lambda$-productions, or unit-productions.<br/>Proof<br/>1. Remove $\\lambda$-productions<br/>2. Remove unit productions<br/>3. Remove useless productions",
         "question": "What comes after removing $\\lambda$-productions?",
-        "answer": "We learned above that to remove unit productions from a grammar $G$, then $G$ must be $\\lambda$-free grammar. Also, removing unit productions produce useless productions",
-        "choices": ["We learned above that to remove unit productions from a grammar $G$, then $G$ must be $\\lambda$-free grammar. Also, removing unit productions produce useless productions", "Remove useless productions"]
-      },
-      "q6":{
-        "type": "select",
-        "description": "$\\textbf{Definition:}$ A CFG is in Chomsky Normal Form (CNF) if all productions are of the form<br/>$A \\rightarrow BC \\ \\ or\\ A \\rightarrow a$<br/>where $A, B, C \\in V$ and $a \\in T$",
-        "question": "What we call $A$, $B$, and $C$",
-        "answer": "Variables",
-        "choices": ["Variables", "Terminals"]
-      },
-      "q7":{
-        "type": "select",
-        "description": "$\\textbf{Definition:}$ A CFG is in Chomsky Normal Form (CNF) if all productions are of the form<br/>$A \\rightarrow BC \\ \\ or A \\rightarrow a$<br/>where $A, B, C \\in V$ and $a \\in T$",
-        "question": "What we call $a$",
-        "answer": "Terminals",
-        "choices": ["Variables", "Terminals"]
+        "answer": "We learned that to remove unit productions from a grammar $G$, then $G$ must be a $\\lambda$-free grammar. Also, removing unit productions could produce useless productions. So do this first.",
+        "choices": ["We learned that to remove unit productions from a grammar $G$, then $G$ must be a $\\lambda$-free grammar. Also, removing unit productions could produce useless productions. So do this first.", "Remove useless productions"]
       },
       "q10":{
         "type": "select",
@@ -55,14 +41,14 @@
         "description": "$\\textbf{Theorem:}$ Any CFG $G$ with $\\lambda$ not in L(G) has an equivalent grammar in CNF.<br/>Proof<br/>1. Remove $\\lambda$-productions, unit productions, and useless productions.<br/>2. For every right-hand-side of length >1, replace each terminal $x_i$ by a new variable $C_j$ and add the production $C_j \\rightarrow x_i$.",
         "question": "What should we do for the highlighted production?",
         "answer": "Convert the terminal $c$ to $C_3$ and add a new production $C_3 \\rightarrow c$",
-        "choices": ["Convert the terminal $c$ to $C_3$ and add a new production $C_3 \\rightarrow c$"]
+        "choices": ["Convert the terminal $c$ to $C_3$ and add a new production $C_3 \\rightarrow c$", "Do something else."]
       },
       "q13":{
         "type": "select",
         "description": "$\\textbf{Theorem:}$ Any CFG $G$ with $\\lambda$ not in L(G) has an equivalent grammar in CNF.<br/>Proof<br/>1. Remove $\\lambda$-productions, unit productions, and useless productions.<br/>2. For every right-hand-side of length >1, replace each terminal $x_i$ by a new variable $C_j$ and add the production $C_j \\rightarrow x_i$.<br/>3. Replace every right-hand-side of length >2 by a series of productions, each with right-hand-side of length 2.",
         "question": "What should we do for the highlighted production?",
         "answer": "Reduce the right hand side to be $C\\ D_1$ by adding a new production $D_1 \\rightarrow B\\ C_1 \\ C_2$",
-        "choices": ["Reduce the right hand side to be $C\\ D_1$ by adding a new production $D_1 \\rightarrow B\\ C_1 \\ C_2$"]
+        "choices": ["Reduce the right hand side to be $C\\ D_1$ by adding a new production $D_1 \\rightarrow B\\ C_1 \\ C_2$", "Do something else."]
       },
       "q14":{
         "type": "true/false",
@@ -76,12 +62,12 @@
         "description": "$\\textbf{Theorem:}$ Any CFG $G$ with $\\lambda$ not in L(G) has an equivalent grammar in CNF.<br/>Proof<br/>1. Remove $\\lambda$-productions, unit productions, and useless productions.<br/>2. For every right-hand-side of length >1, replace each terminal $x_i$ by a new variable $C_j$ and add the production $C_j \\rightarrow x_i$.<br/>3. Replace every right-hand-side of length >2 by a series of productions, each with right-hand-side of length 2.",
         "question": "What should we do for the highlighted production?",
         "answer": "Reduce the right hand side to be $B\\ D_2$ by adding a new production $D_2 \\rightarrow C_1 \\ C_2$",
-        "choices": ["Reduce the right hand side to be $B\\ D_2$ by adding a new production $D_2 \\rightarrow C_1 \\ C_2$"]
+        "choices": ["Reduce the right hand side to be $B\\ D_2$ by adding a new production $D_2 \\rightarrow C_1 \\ C_2$", "Do something else."]
       },
       "q16":{
         "type": "select",
         "description": "$\\textbf{Theorem:}$ Any CFG $G$ with $\\lambda$ not in L(G) has an equivalent grammar in CNF.<br/>Proof<br/>1. Remove $\\lambda$-productions, unit productions, and useless productions.<br/>2. For every right-hand-side of length >1, replace each terminal $x_i$ by a new variable $C_j$ and add the production $C_j \\rightarrow x_i$.<br/>3. Replace every right-hand-side of length >2 by a series of productions, each with right-hand-side of length 2.",
-        "question": "Are we done",
+        "question": "Are we done?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       }

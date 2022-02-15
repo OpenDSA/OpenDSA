@@ -20,7 +20,8 @@ System documentation can be found at http://opendsa.readthedocs.io/.
     - The service is ready when you see `opendsa_1 | * Serving Flask app "app.py"`
     - An interrupt signal (Press CTRL + C) or the `docker-compose down` command will stop the containers.
 4. Build any books from within the container:
-    - To make the book defined in `config/Test.json`, you would simply run `make Test`
+    - Enter the running container with `docker-compose exec opendsa bash`
+    - To make the book defined in `config/Test.json`, now use the command `make Test`
 5. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
 
 This command will first pull and build the OpenDSA images before

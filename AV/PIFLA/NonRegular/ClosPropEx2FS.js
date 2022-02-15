@@ -1,39 +1,42 @@
 $(document).ready(function () {
-    "use strict";
-    var av_name = "ClosPropEx2FS";
-    var av = new JSAV(av_name);
-    var Frames = PIFRAMES.init(av_name);
+  "use strict";
+  var av_name = "ClosPropEx2FS";
+  var av = new JSAV(av_name);
+  var Frames = PIFRAMES.init(av_name);
   
-    //frame 1
-    av.umsg("We need to prove that $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is not regular by using the regular languages closure properties.");
-    av.displayInit();
+  // Frame 1
+  av.umsg("Can we prove that $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is non-regular by using regular language closure properties?");
+  av.displayInit();
   
-    //frame2
-    av.umsg(Frames.addQuestion("q2"));
-    av.step();
+  // Frame 2
+  av.umsg(Frames.addQuestion("assume"));
+  av.step();
   
-    //frame3
-    av.umsg(Frames.addQuestion("q3"));
-    av.step();
+  // Frame 3
+  av.umsg(Frames.addQuestion("regex"));
+  av.step();
   
-    //frame4
-    av.umsg(Frames.addQuestion("q4"));
-    av.step();
+  // Frame 4
+  av.umsg(Frames.addQuestion("intersect"));
+  av.step();
   
-    //frame5
-    av.umsg(Frames.addQuestion("q5"));
-    av.step();
+  // Frame 5
+  av.umsg(Frames.addQuestion("homo"));
+  av.step();
   
-    //frame6
-    av.umsg(Frames.addQuestion("q6"));
-    av.step();
+  // Frame 6
+  av.umsg(Frames.addQuestion("homo2"));
+  av.step();
   
-    //frame7
-    av.umsg(Frames.addQuestion("q7"));
-    av.step();
+  // Frame 7
+  av.umsg(Frames.addQuestion("result"));
+  av.step();
   
-    //frame8
-    av.umsg("Assume $L$ is regular<br.> $L_1 = \\{ bb^{*}aa^{*}\\}$<br/>Let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$<br/>Define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$ as $h(a) = b\\quad |\\quad h(b) = a$<br/>$h(L_2) = \\{a^nb^n | n>0 \\}$.<br/>This is a contradiction. So, $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is not regular.")
-    av.recorded();
-  
-  });
+  // Frame 8
+  av.umsg("Assume $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is regular.<br/> Define $L_1 = \\{ bb^{*}aa^{*}\\}$, and let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$.<br/>Define homomorphism $h = \\Sigma \\rightarrow \\Sigma^*$ as $h(a) = b\\quad |\\quad h(b) = a$<br/>$h(L_2) = \\{a^nb^n\\ |\\ n > 0 \\}$.<br/><br/>This is a contradiction. So, $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is not regular.")
+  av.step();
+
+  // Frame 9
+  av.umsg("Congratulations! Frameset completed.");
+  av.recorded();
+});

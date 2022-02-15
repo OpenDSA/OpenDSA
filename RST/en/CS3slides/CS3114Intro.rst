@@ -53,7 +53,7 @@ Introduction
      program" courses (CS 1114, CS 2114) and "content" courses.
    * To do well, you must be able to handle both
       * Programming (we focus on projects with dynamic memory allocation and
-        file processing, and they have signficant design challenges)
+        file processing, and they have significant design challenges)
       * Content, theory and analysis
 
    * The projects test programming proficiencies

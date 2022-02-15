@@ -13,9 +13,9 @@ $(document).ready(function () {
                   [\"C\",\"→\",\"Da\"],\
                   [\"D\",\"→\",\"A\"]]";
   var grammerArray = JSON.parse(grammar);
-  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 150});
+  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 125});
   grammerMatrix.hide();
-  var grammerMatrix2 = new GrammarMatrix( av,null, {style: "table", left: 300, top: 150});
+  var grammerMatrix2 = new GrammarMatrix( av,null, {style: "table", left: 250, top: 125});
   grammerMatrix2.createRow(["", arrow, ""]);
   grammerMatrix2.createRow(["", arrow, ""]);
   grammerMatrix2.createRow(["", arrow, ""]);
@@ -56,13 +56,9 @@ $(document).ready(function () {
   grammerMatrix2.hide();
 
   //frame 1
-  av.umsg("Last section, we talked about the need to remove unit productions to enhance the membership problem algorithm");
+  av.umsg("Next we will consider Unit Productions. These are productions that simply replace one variable with another, such as $A \\Rightarrow B$. When deriving a string, these seem an unnecessary step. Instead of going from $A$ to $B$ and then replacing $B$ with the RHS of one of its rules (such as $B \\Rightarrow bb$), we could simply go there directly with a rule like $A \\Rightarrow bb$. Of couse, we have to replace every production that has $B$ on its LHS with an equivalent production that has $A$ on its LHS.");
   av.displayInit();
   
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
-
   //frame 3
   av.umsg(Frames.addQuestion("q3"));
   av.step();
@@ -83,10 +79,6 @@ $(document).ready(function () {
   av.umsg(Frames.addQuestion("q7"));
   av.step();
 
-  //frame 8
-  av.umsg("To Remove unit-productions:");
-  av.step();
-
   //frame 9
   av.umsg(Frames.addQuestion("q9"));
   av.step();
@@ -98,12 +90,12 @@ $(document).ready(function () {
 
   //frame 11
   av.umsg(Frames.addQuestion("q11"));
-  var VDG = new av.ds.FA({left: 10, top: 400, width: 300});
+  var VDG = new av.ds.FA({left: 10, top: 375, width: 300});
   var S = VDG.addNode({value:"S", left: 0, top: 10});
   var A = VDG.addNode({value:"A", left: 50, top: 10});
   var B = VDG.addNode({value:"B", left:100, top: 10});
-  var C = VDG.addNode({value:"C",left:25, top: 100});
-  var D = VDG.addNode({value:"D", left:75, top: 100});
+  var C = VDG.addNode({value:"C",left:25, top: 70});
+  var D = VDG.addNode({value:"D", left:75, top: 70});
   grammerMatrix.highlight(1);
   av.step();
 
@@ -144,7 +136,7 @@ $(document).ready(function () {
 
   //frame 17
   av.umsg(Frames.addQuestion("q17"));
-  var V = new av.ds.array(["$A \\stackrel{*}{\\Rightarrow} C$","$A \\stackrel{*}{\\Rightarrow} B$", "", "", "","","","",""], {left: 30, top: 550, indexed: true});
+  var V = new av.ds.array(["$A \\stackrel{*}{\\Rightarrow} C$","$A \\stackrel{*}{\\Rightarrow} B$", "", "", "","","","",""], {left: 5, top: 520, indexed: true});
   av.step();
 
   //frame 18

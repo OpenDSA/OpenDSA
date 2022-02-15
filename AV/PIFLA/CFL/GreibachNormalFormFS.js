@@ -13,7 +13,7 @@ $(document).ready(function () {
                   [\"B\",\"→\",\"Ad\"],\
                   [\"B\",\"→\",\"e\"]]";
   var grammerArray = JSON.parse(grammar);
-  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 200});
+  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 165});
   grammerMatrix.createRow(["", arrow, ""]);
   grammerMatrix.createRow(["", arrow, ""]);
   grammerMatrix.createRow(["", arrow, ""]);
@@ -47,10 +47,6 @@ $(document).ready(function () {
 
   //frame 5
   av.umsg(Frames.addQuestion("q5"));
-  av.step();
-
-  //frame 6
-  av.umsg("$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF");
   av.step();
 
   //frame 7
@@ -136,7 +132,7 @@ $(document).ready(function () {
   av.step();
 
   //frame 20
-  av.umsg("$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2.Relabel Variables $A_1, A_2, \\ldots A_n$ß");
+  av.umsg("$\\textbf{Theorem:}$ For every CFG $G$ with $\\lambda$ not in L(G), $\\exists$ a grammar in GNF.<br/>1. Rewrite grammar in CNF.<br/>2.Relabel Variables $A_1, A_2, \\ldots A_n$");
   grammerMatrix.modifyProduction(0,0,"$A_1$");
   //S is A1, A is A2, B is A3
   grammerMatrix.modifyProduction(0,2,"$A_2\\ A_3$");
@@ -220,8 +216,6 @@ $(document).ready(function () {
   av.umsg("The resulting Grammar is in GNF");
 
   //frame 29
-  av.umsg("WHAT YOU SHOULD KNOW: know forms, GNF, CNF, unit production, left recursion, etc. Do not need to memorize rules for transforming, but should understand how to do it.");
+  av.umsg("Done. At this point, you should know the forms CNF and GNF, and how to eliminate $\lamda$ productions, unit productions, useless productions, and left recursion. You do not need to memorize all the rules for transforming, but you should understand how to do it.");
   av.recorded();
-
-
 });

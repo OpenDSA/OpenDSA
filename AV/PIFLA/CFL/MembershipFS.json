@@ -3,10 +3,10 @@
     "en": {
       "q2":{
         "type": "select",
-        "description": "Membership problem is to determine if a string belongs to a language.",
-        "question": "If Java is a set of all Java programs, what a Java program be?",
-        "answer": "a string in the set of Java programs",
-        "choices": ["a string in the set of Java programs", "a set of words", "a set of lines of code"]
+        "description": "The <b>Membership Problem</b> is to determine if a given string belongs to a given language.",
+        "question": "If JAVA is the set of all Java programs, what is a Java program?",
+        "answer": "A string in the set JAVA",
+        "choices": ["A string in the set JAVA", "A set of words", "A set of lines of code"]
       },
       "q3":{
         "type": "true/false",
@@ -17,14 +17,14 @@
       },
       "q5":{
         "type": "select",
-        "description": "We saw above that if we can find a derivation of $w$, then we would know that $w$ is $\\in L(G)$.",
+        "description": "We have seen that if we can find a derivation from $G$ for $w$, then we know that $w$ is $\\in L(G)$.",
         "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. What is $L(G)$?",
-        "answer": "set of even strings with even $a\\prime$s",
-        "choices": ["set of even strings with even $a\\prime$s", "set of strings with one $b$", "$\\{a^nba^n \\mid n \\ge 0\\}$"]
+        "answer": "set of even strings with an even number of $a$'s",
+        "choices": ["set of even strings with an even number of $a$'s", "set of strings with one $b$", "$\\{a^nba^n \\mid n \\ge 0\\}$"]
       },
       "q6":{
         "type": "select",
-        "description": "We saw above that if we can find a derivation of $w$, then we would know that $w$ is $\\in L(G)$.",
+        "description": "We have seen that if we can find a derivation from $G$ for $w$, then we know that $w$ is $\\in L(G)$.",
         "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. Is $abbab \\in L$?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
@@ -32,14 +32,14 @@
       "q8":{
         "type": "select",
         "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.",
-        "question": "This time we need to use the algorithm to see if $abbab \\in L$. Select the $i = 1$ substitutions starting from the start variable. In other words, select all sentential forms that are resulting from making one substitute from $S$",
+        "question": "This time we need to use the algorithm to see if $abbab \\in L$. Select the $i = 1$ substitutions starting from the start variable. In other words, select all sentential forms that are resulting from making one substitution from $S$",
         "answer": ["$S \\Rightarrow SS$", "$S \\Rightarrow aS$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$"],
         "choices": ["$S \\Rightarrow SS$", "$S \\Rightarrow aS$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$", "$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow aSSa$"]
       },
       "q9":{
         "type": "select",
         "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.",
-        "question": "This time we need to use the algorithm to see if $abbab \\in L$. Select the $i = 2$ substitutions starting from the start variable. In other words, select some sentential forms that are resulting from making two substitute from $S$",
+        "question": "This time we need to use the algorithm to see if $abbab \\in L$. Select the $i = 2$ substitutions starting from the start variable. In other words, select some sentential forms that are resulting from making two substitution from $S$",
         "answer": ["$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow aSSa$"],
         "choices": ["$S \\Rightarrow SS$", "$S \\Rightarrow aS$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$", "$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow aSSa$"]
       },
@@ -52,29 +52,30 @@
       },
       "q13":{
         "type": "true/false",
-        "description": "As we see, if the string is in the language, the search algorithm will find it. BUT, What happens if $w$ is not in $L(G)$?<br/> When do we stop the loop in the algorithm and know for sure that $w$ is not going to be derived?",
-        "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. Suppose the following sentential form $S \\Rightarrow SS \\Rightarrow ... \\Rightarrow SSSSSSSSSS \\Rightarrow ...$. The $SSSSSSSSSS$ can be stubstituted to $\\lambda$",
+        "description": "If the string is in the language, the search algorithm will find it. BUT, What happens if $w$ is not in $L(G)$?<br/><br/>When do we stop the loop in the algorithm and know for sure that $w$ is not going to be derived?",
+        "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. Suppose we have the following sentential form $S \\Rightarrow SS \\Rightarrow ... \\Rightarrow SSSSSSSSSS \\Rightarrow ...$. Substitutions can be made on $SSSSSSSSSS$ to derive $\\lambda$",
         "answer": "True",
-        "choices": []
+        "choices": [],
+        "correctFeedback": ["This means that we can enter an infinite loop when trying to derive a string."]
       },
       "q16":{
         "type": "true/false",
         "description": "$\\textbf{Theorem:}$ If CFG $G$ does not contain rules of the form<br/>$A \\rightarrow \\lambda$<br/>$A \\rightarrow B$<br/>where $A,B\\in V$, then we can determine if $w\\in L(G)$ or if $w \\not \\in L(G)$.",
-        "question": "Consider the length of the sentential form, if the grammar follows the theorem, then the length of the sentential form will only increase or stay the same every substitution",
+        "question": "Consider the length of the sentential form. If the grammar follows the theorem, then the length of the sentential form will only increase or stay the same every substitution",
         "answer": "True",
         "choices": []
       },
       "q17":{
         "type": "true/false",
         "description": "$\\textbf{Theorem:}$ If CFG $G$ does not contain rules of the form<br/>$A \\rightarrow \\lambda$<br/>$A \\rightarrow B$<br/>where $A,B\\in V$, then we can determine if $w\\in L(G)$ or if $w \\not \\in L(G)$.",
-        "question": "Consider the length number of terminal symbols in a sentential form, if the grammar follows the theorem, then the length of the sentential form will only increase or stay the same every substitution",
+        "question": "Consider the number of terminal symbols in a sentential form. If the grammar follows the theorem, then the length of the sentential form will only increase or stay the same every substitution",
         "answer": "True",
         "choices": []
       },
       "q18":{
         "type": "select",
-        "description": "Following this theorem, either the length of sentential forms or the number of terminal symbols in a sentential form will increase with each derivation",
-        "question": "If $|w| = n$, how many times the loop in the exhaustive algorithm will take to find if the string $w \\in L$ or not?",
+        "description": "Following this theorem, either the length of the sentential form or the number of terminal symbols in the sentential form will increase with each derivation",
+        "question": "If $|w| = n$, how many times through the loop will the exhaustive algorithm take to find if the string $w \\in L$ or not?",
         "answer": "$\\le 2n$",
         "choices": ["$\\le 2n$", "$\\ge 2n$", "$2n$", "$n^2$"]
       },
@@ -109,7 +110,7 @@
       "q23":{
         "type": "select",
         "description": "$\\textbf{Example}$ Let $L_2 = L_1 - \\{\\lambda\\}$. $L_2 = L(G)$ where $G$ is:<br/>$S \\rightarrow SS\\ |\\ aa\\ |\\ aSa\\ |\\ b$",
-        "question": "How many loop iterations $i$ the exhaustive algorithm need to do to determine that $w \\not \\in L$",
+        "question": "How many loop iterations will the exhaustive algorithm need to do to determine that $w \\not \\in L$",
         "answer": "10",
         "choices": ["5", "10", "12", "8"]
       }

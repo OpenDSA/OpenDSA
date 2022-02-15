@@ -1,0 +1,183 @@
+{
+  "translations": {
+    "en": {
+      "assume": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular.",
+        "question": "What is the first step?",
+        "answer": "Assume $L$ is regular",
+        "choices": ["Assume $L$ is regular", "Assume $L$ is not regular"]
+      },
+      "pumplemma": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular.<br/>Assume $L$ is regular.",
+        "question": "[T|F] Since $L$ is regular, the pumping lemma holds",
+        "answer": "True",
+        "choices": []
+      },
+      "long": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$.",
+        "question": "Based on the Pumping Lemma, what is the main condition for the length of the string $w$?",
+        "answer": "$|w| \\ge m$",
+        "choices": ["$|w| \\ge m$", "$|w| \\le m$", "$|w| = m$"],
+        "correctFeedback": ["The string has to be long, meaning that $|w| \\ge m$, where $m$ is the number of states in a DFA claimed to recognize the language."]
+      },
+      "inL": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
+        "question": "Which of the following is represents one or more strings in $L$?",
+        "answer": "$w = a^mb^m$",
+        "choices": ["$w = a^mb^m$", "$w = a^nb^m$", "$w = a^*b^*$"],
+        "correctFeedback": ["The other two don't necessarily have equal numbers of a's and b's. And, $w = a^mb^m$ meets our requirement that $|w| \\ge m$."]
+      },
+      "x": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w=a^mb^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ into $xyz$. What does $x$ represent?",
+        "answer": "The part of the string that is captured by the NFA before the pump.",
+        "choices": ["The part of the string that is captured by the NFA before the pump.", "The part of the string that is captured by the pump (the cycle).", "The part of the string that is captured by the NFA after the pump."]
+      },
+      "y": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w=a^mb^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ into $xyz$. What does $y$ represent?",
+        "answer": "The part of the string that is captured by the pump (the cycle).",
+        "choices": ["The part of the string that is captured by the NFA before the pump.", "The part of the string that is captured by the pump (the cycle).", "The part of the string that is captured by the NFA after the pump."]
+      },
+      "z": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w=a^mb^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The next step is to decompose the string $w$ into $xyz$. What does $z$ represent?",
+        "answer": "The part of the string that is captured by the NFA after the pump.",
+        "choices": ["The part of the string that is captured by the NFA before the pump.", "The part of the string that is captured by the pump (the cycle).", "The part of the string that is captured by the NFA after the pump."]
+      },
+      "conditions": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose $w=a^mb^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
+        "question": "The Pumping Lemma requires which of these to be true when decomposing $w$ into $xyz$?",
+        "answer": ["$|xy| \\leq m$", "$|y| \\geq 1$", "$xy^iz \\in L$ for all $i \\ge 0$"],
+        "choices": ["$|xy| \\leq m$", "$|y| \\geq 1$", "$xy^iz \\in L$ for all $i \\ge 0$", "$m \\ge w$"]
+      },
+      "xy": {
+        "type": "select",
+        "description":"We chose $w=a^mb^m$. Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$.",
+        "question": "Since $|xy| \\le m$, which of the following are possible choices for the $xy$ part?",
+        "answer": ["$a$", "$a^3$", "$a^{m-1}$", "$a^m$"],
+        "choices": ["$a$", "$a^3$", "$a^{m-1}$", "$a^m$", "$b^m$", "$a^mb^m$"],
+        "correctFeedback": ["Since $w = a^mb^m$, and since $|xy| \\le m$, we have to pick the $xy$ part to be some number of a's. We do have choices about how many a's. And we will have to prove that there is a contradiction no matter which we choose."],
+        "incorrectFeedback": ["Remember that we chose $w = a^mb^m$, and that $|xy|$ must be $\\le m$."]
+      },
+      "zpart": {
+        "type": "select",
+        "description":"We chose $w=a^mb^m$. Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$. Let's say that we also choose $xy = a^m$.",
+        "question": "What must be the value of $z$?",
+        "answer": "$b^m$",
+        "choices": ["$a^m$", "$b^m$", "$a^mb^m$", "$a^nb^m\\ |\\ n < m$"]
+      },
+      "i0": {
+        "type": "select",
+        "description": "We chose $w=a^mb^m$. Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$.<br/>If we now choose $xy = a^m$, then the partion is: $x = a^{m-k}\\quad|\\quad y = a^k\\quad|\\quad z = b^m$ for some value $k < m$.<br/>If $L$ is regular, than it should be true that $xy^iz \\in L$ for all $i \\ge 0$.",
+        "question": "Let us say that $i = 0$. What is the value of $xy^0z$?",
+        "answer": "$a^{m-k}b^m$",
+        "choices": ["$a^{m-k}b^m$", "$a^mb^m$", "$a^{m+k}b^m$", "$a^nb^n$"]
+      },
+      "i0conclude": {
+        "type": "select",
+        "description": "We chose $w=a^mb^m$. Now we need to partition $w$ into $xyz$ such that $|xy| \\leq m$, $|y| \\geq 1$, and $xy^iz \\in L$ for all $i \\ge 0$.<br/>If we now choose $xy = a^m$, then the partion is: $x = a^{m-k}\\quad|\\quad y = a^k\\quad|\\quad z = b^m$ for some value $k < m$.<br/>If $L$ is regular, than it should be true that $xy^iz \\in L$ for all $i \\ge 0$.",
+        "question": "Is $a^{m-k}b^m \\in L$?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "halfam": {
+        "type": "true/false",
+        "description":"Of course, there are different choices for the string $w$ that we might pick. So long as the string is in the language and at least $m$ symbols long, anything string is a legal choice. However, some strings make it easy to prove the language is non-regular, some make it hard, and some make it impossible (which is separate from whether the language itself is non-regular).",
+        "question": "[T|F] $w = a^{m/2}b^{m/2}$ is also a valid choice to use to prove that the language $L = a^nb^n$ is non-regular.",
+        "answer": "True",
+        "choices": [],
+        "correctFeedback": ["$a^{m/2}b^{m/2}$ is both in the language, and at least $m$ symbols long."]
+      },
+      "choices": {
+        "type": "select",
+        "description":"Let $w = a^{m/2}b^{m/2}$. Now we need to show that <b>every</b> partition of $w$ into $xyz$ such that $|xy| \\leq m$ and $|y| \\geq 1$ leads to the situation where $xy^iz \\in L$ is not in the language all $i \\ge 0$",
+        "question": "Since we need $|xy| \\le m$, which of the following is an acceptable value for $xy$ in some partition of the string?",
+        "answer": ["$a$", "$a^{m/4}$", "$a^{m/2}$", "$a^{m/2}b^{m/2}$", "$a^{m/2}b$"],
+        "choices": ["$a$", "$a^{m/4}$", "$a^{m/2}$", "$b^{m/2}$", "$a^{m/2}b^{m/2}$", "$a^{m/2}b$", "$a^{m/4}b$"]
+      },
+      "doall": {
+        "type": "select",
+        "description":"When we choose $w = a^{m/2}b^{m/2}$, we have a lot of valid partitions for the string. And unlike when we chose $w = a^mb^m$, the choices for $xy$ are not all similar, as in just different numbers of a's. We can choose whether to include some b's or not.",
+        "question": "Which one we should use to prove that the language is not regular?",
+        "answer": "We must consider all possible divisions, and show that they all fail to pump.",
+        "choices": ["Just select any one of them, and see if we can complete the proof.", "We must consider all possible divisions, and show that they all fail to pump."],
+        "correctFeedback": "Since we have multiple division for the string $w$, we must prove that all possible divisions will lead to showing that the language is not regular. So, what is the difference in our choice for $w$? In this case, it is a matter of how hard it is to complete the proof."
+      },
+      "validy": {
+        "type": "select",
+        "description":"Now, let us continue the proof with $w = a^{m/2}b^{m/2}$.",
+        "question": "What are valid cases to consider for the $y$ part (the part that gets pumped)?",
+        "answer": ["$y$ can be some a's.", "$y$ can be some b's.", "$y$ can be some a's followed by some b's."],
+        "choices": ["$y$ can be some a's.", "$y$ can be some b's.", "$y$ can be some a's followed by some b's.", "$y$ can be some b's followed by some a's."]
+      },
+      "as": {
+        "type": "select",
+        "description": "Now, let us continue the proof with $w = a^{m/2}b^{m/2}$.<br/>Case 1: $y$ is only a's. This means that $x$ is (maybe) some $a$'s, $y$ is some $a$'s, and $z$ is the rest of the string.",
+        "question": "Which of the following is a valid for this case?",
+        "answer": ["$x=a^{m/2 - k}\\quad |\\quad y=a^k\\quad |\\quad z=b^{m/2}$",
+                   "$x= \\lambda\\quad |\\quad y=a^k\\quad |\\quad z= a^{m/2 - k}b^{m/2}$",
+                   "$x=a^{l}\\quad |\\quad y=a^k\\quad |\\quad z=a^{m/2 - k - l}b^{m/2}$"],
+        "choices": ["$x=a^{m/2 - k}\\quad |\\quad y=a^k\\quad |\\quad z=b^{m/2}$",
+                    "$x= \\lambda\\quad |\\quad y=a^k\\quad |\\quad z= a^{m/2 - k}b^{m/2}$",
+                    "$x=a^{l}\\quad |\\quad y=a^k\\quad |\\quad z=a^{m/2 - k - l}b^{m/2}$"]
+      },
+      "pumpas": {
+        "type": "select",
+        "description": "Now, let us continue the proof with $w = a^{m/2}b^{m/2}$.<br/>Case 1: $y$ is only a's. This means that $x$ is (maybe) some $a$'s, $y$ is some $a$'s, and $z$ is the rest of the string.<br/><br/>Let $x=a^{m/2 - k}\\quad |\\quad y=a^k\\quad |\\quad z=b^{m/2}$.",
+        "question": "Can we pump an arbitrary number of a's in this case?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["No matter how we do the partition so that $xy$ is just a's, we cannot pump any valid choice of $y$. This is similar to the original version of the proof where we chose $w = a^mb^m$. But now we need to handle the other cases."]
+      },
+      "pumpbs": {
+        "type": "select",
+        "description": "Now, let us continue the proof with $w = a^{m/2}b^{m/2}$.<br/>Case 2: $y$ is only b's. This means that $x = a^{m/2}$, $y$ is some $b$'s, and $z$ is the rest of the b's.<br/><br/>Let $x=a^{m/2}\\quad |\\quad y=b^k\\quad |\\quad z = b^{m/2 - k}$.",
+        "question": "Can we pump an arbitrary number of b's in this case?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["No matter how we do the partition so that $y$ is just b's, we cannot pump any valid choice of $y$. Now we have just one more case to consider."]
+      },
+      "pumpab0": {
+        "type": "select",
+        "description": "Now, let us continue the proof with $w = a^{m/2}b^{m/2}$.<br/>Case 3: $y$ is some a's followed by some b's, as follows:<br/>Let $x = a^{m/2 - k}\\quad |\\quad y = a^kb^l\\quad |\\quad z = b^{m/2 - l}$. There are two subcases: $k = l$, and $k \\neq l$.",
+        "question": "If $k = l$, will leaving $y$ out of the string (pumping zero times) yield a string in the language?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Cutting out the same number of a's and b's from the middle of the string leaves balanced a's and b's."]
+      },
+      "pumpab1": {
+        "type": "select",
+        "description": "Now, let us continue the proof with $w = a^{m/2}b^{m/2}$.<br/>Case 3: $y$ is some a's followed by some b's, as follows:<br/>Let $x = a^{m/2 - k}\\quad |\\quad y = a^kb^l\\quad |\\quad z = b^{m/2 - l}$. There are two subcases: $k = l$, and $k \\neq l$.",
+        "question": "If $k = l$, will leaving $y$ in the string (pumping one time) yield a string in the language?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["When we pump once, its just our choice for $w$."]
+      },
+      "pumpabmore": {
+        "type": "select",
+        "description": "Now, let us continue the proof with $w = a^{m/2}b^{m/2}$.<br/>Case 3: $y$ is some a's followed by some b's, as follows:<br/>Let $x = a^{m/2 - k}\\quad |\\quad y = a^kb^l\\quad |\\quad z = b^{m/2 - l}$. There are two subcases: $k = l$, and $k \\neq l$.",
+        "question": "If $k = l$, will pumping more than once yield a string in the language?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["The problem is that we get repeating patterns of alternating a's and b's. The total number of a's and b's still balance, but the language is more restrictive than that."]
+      },
+      "pumpabfinal": {
+        "type": "select",
+        "description": "Now, let us continue the proof with $w = a^{m/2}b^{m/2}$.<br/>Case 3: $y$ is some a's followed by some b's, as follows:<br/>Let $x = a^{m/2 - k}\\quad |\\quad y = a^kb^l\\quad |\\quad z = b^{m/2 - l}$. There are two subcases: $k = l$, and $k \\neq l$.",
+        "question": "If $k \\neq l$, the a's and b's in $y$ do not balance. Can we leave $y$ out of the string?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["If we leave $y$ out of the string, the remaining a's and b's do not balance."]
+      }
+    }
+  }
+}

@@ -209,6 +209,7 @@ The following slideshow shows how to convert an NFA with multiple
 final states to one with a single final state. 
 
 .. inlineav:: schematicRepCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/schematicRepCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicRepCON.js
    :output: show
 
@@ -224,6 +225,7 @@ each connected (in parallel) with :math:`\lambda`
 transitions to both :math:`r` and :math:`s`.
 
 .. inlineav:: schematicORRepCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/schematicORRepCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicORRepCON.js
    :output: show
 
@@ -231,6 +233,7 @@ transitions to both :math:`r` and :math:`s`.
 and connect them with :math:`\lambda` transitions in series.
 
 .. inlineav:: schematicConcatRepCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/schematicConcatRepCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicConcatRepCON.js
    :output: show
 
@@ -239,6 +242,7 @@ and connect them with :math:`\lambda` transitions in series.
 them all.
 
 .. inlineav:: schematicStarRepCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/schematicStarRepCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicStarRepCON.js
    :output: show
 
@@ -250,14 +254,13 @@ them all.
 Here is an NFA that accepts :math:`ab^* + c`
 
 .. inlineav:: ABStarOrCCON dgm
-   :links:   AV/VisFormalLang/Regular/ABStarOrCCON.css
+   :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/ABStarOrCCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/ABStarOrCCON.js
    :output: show
 
 
 Since we have the NFA that accepts :math:`ab^* + c`, we can convert it to a DFA
 then to a minimized DFA.
-
 
 .. inlineav:: RENFAtoDFACON ss
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RENFAtoDFACON.js
@@ -361,7 +364,7 @@ that :math:`L = L(M)`.
 
    .. inlineav:: RegExGTGCON dgm
       :links: AV/VisFormalLang/Regular/RegExGTGCON.css
-      :scripts: AV/VisFormalLang/Regular/RegExGTGCON.js
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RegExGTGCON.js
       :align: center
 
    Add an arrow to the start state. Then, the corresponding regular
@@ -384,7 +387,7 @@ that :math:`L = L(M)`.
 
    .. inlineav:: RegExGTG3sCON dgm
       :links: AV/VisFormalLang/Regular/RegExGTG3sCON.css
-      :scripts: AV/VisFormalLang/Regular/RegExGTG3sCON.js
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RegExGTG3sCON.js
       :align: center
 
    In this case, make the following replacements:
@@ -432,7 +435,7 @@ that :math:`L = L(M)`.
 
    .. inlineav:: RegExConvertCON dgm
       :links: AV/VisFormalLang/Regular/RegExConvertCON.css
-      :scripts: AV/VisFormalLang/Regular/RegExConvertCON.js
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RegExConvertCON.js
       :align: center
 
 You should convince yourself that, in this image, the right side is a
@@ -452,5 +455,5 @@ And vice versa.
 
 .. inlineav:: NFAtoRECON ss
    :links:   AV/VisFormalLang/Regular/NFAtoRECON.css
-   :scripts: AV/VisFormalLang/Regular/NFAtoRECON.js
+   :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/NFAtoRECON.js
    :output: show

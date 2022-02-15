@@ -11,16 +11,13 @@ $(document).ready(function () {
                   [\"B\",\"→\",\"Bbb\"],\
                   [\"B\",\"→\",\"λ\"]]";
   var grammerArray = JSON.parse(grammar);
-  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 200});
+  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 90});
   grammerMatrix.hide();
-  //frame 1
-  av.umsg("Last section, we talked about the need to remove lambda productions to enhance the membership problem algorithm");
+
+  // Frame 1
+  av.umsg("Previously we saw that we need to remove lambda productions to avoid running into an infinite loop when using brute force expansion of the derivation tree if the string is not in the language of the grammar.");
   av.displayInit();
   
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
-
   //frame 3
   av.umsg(Frames.addQuestion("q3"));
   av.step();
@@ -33,15 +30,11 @@ $(document).ready(function () {
   av.umsg(Frames.addQuestion("q5"));
   av.step();
 
-  //frame 6
-  av.umsg("To Remove $\\lambda$-productions");
-  av.step();
-
   //frame 7
   av.umsg(Frames.addQuestion("q7"));
   grammerMatrix.show();
-  var V = new av.ds.array(["",""], {left: 30, top: 400, indexed: true});
-  var ALabel =  av.label("$V_n$",{top:400, left: 10});
+  var V = new av.ds.array(["",""], {left: 30, top: 300, indexed: true});
+  var ALabel =  av.label("$V_n$",{top:305, left: 10});
   av.step();
 
   //frame 8
@@ -58,7 +51,7 @@ $(document).ready(function () {
 
   //frame 10
   av.umsg(Frames.addQuestion("q10"));
-  var grammerMatrix2 = new GrammarMatrix( av,null, {style: "table", left: 150, top: 200});
+  var grammerMatrix2 = new GrammarMatrix( av,null, {style: "table", left: 250, top: 90});
   grammerMatrix2.createRow(["", arrow, ""]);
   grammerMatrix2.createRow(["", arrow, ""]);
   grammerMatrix2.createRow(["", arrow, ""]);
@@ -119,7 +112,7 @@ $(document).ready(function () {
 
   //frame 16
 
-  av.umsg("Done. The resulting grammar has no $lambda$ productions");
+  av.umsg("Done. The resulting grammar has no $\\lambda$ productions");
   grammerMatrix2.modifyProduction(7,0,"$B$");
   grammerMatrix2.modifyProduction(7,2,"$bb$");
   grammerMatrix.unhighlight(3);

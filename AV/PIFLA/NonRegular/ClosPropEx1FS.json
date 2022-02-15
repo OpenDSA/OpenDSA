@@ -1,61 +1,62 @@
 {
   "translations": {
     "en": {
-      "q2": {
+      "assume": {
         "type": "select",
-        "description":"We need to prove that $L = \\{a^3b^nc^{n-3} | n > 3 \\}$ is not regular by using the regular languages closure properties.",
+        "description": "Can we prove that $L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$ is non-regular by using regular language closure properties?",
         "question": "What is the first step?",
         "answer": "Assume $L$ is regular",
-        "choices": ["Assume $L$ is regular", "Assume $L$ is not regular"]
+        "choices": ["Assume $L$ is regular", "Assume $L$ is non-regular"],
+        "correctFeedback": ["We are trying to do a proof by contradiction. So we assume the opposite of what we want to prove, and show that this leads to a contradiction."]
       },
-      "q3": {
+      "homo": {
         "type": "select",
-        "description":"Let us define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$",
+        "description": "$L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$. Our goal now is to find a series of one or more closed operations on $L$ that leads to a known non-regular language.<br/>Let us define homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$ such that:<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>In other words, keep a's as a's, change b's to a's, and change c's to b's.",
         "question": "What is $h(L)$?",
         "answer": ["$a^3a^nb^{n-3} \\mid n > 3$", "$a^{n+3}b^{n-3} \\mid n > 3$"],
         "choices": ["$a^3a^nb^{n-3} \\mid n > 3$", "$a^{n+3}b^{n-3} \\mid n > 3$", "$a^{2n+3}$"]
       },
-      "q4": {
+      "outcome": {
         "type": "select",
-        "description":"Let us define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>$h(L) = \\{a^3a^nb^{n-3} | n > 3 \\} = \\{a^{n+3}b^{n-3} | n > 3\\}$",
-        "question": "Since we supposed that $L$ is regular, then $h(L)$ must be",
+        "description":"$L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$<br/>Homomorphism $h$ is: $\\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>So, $h(L) = \\{a^3a^nb^{n-3}\\ |\\ n > 3 \\} = \\{a^{n+3}b^{n-3}\\ |\\ n > 3\\}$",
+        "question": "Since we assumed that $L$ is regular, and regular languages are closed under homomorphisms, then $h(L)$ must be:",
         "answer": "regular",
-        "choices": ["regular", "not regular"]
+        "choices": ["regular", "non-regular"]
       },
-      "q5": {
+      "finite": {
         "type": "select",
-        "description":"Let us define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>$h(L) = \\{a^3a^nb^{n-3} | n > 3 \\} = \\{a^{n+3}b^{n-3} | n > 3\\}$",
-        "question": "Suppose we have $L_2 = \\{b^6\\}$. Is $L_2$ a regular language",
-        "answer": "Yes, it is finite language",
-        "choices": ["Yes, it is finite language", "No"]
+        "description":"$L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$<br/>Homomorphism $h$ is: $\\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>So, $h(L) = \\{a^3a^nb^{n-3}\\ |\\ n > 3 \\} = \\{a^{n+3}b^{n-3}\\ |\\ n > 3\\}$",
+        "question": "Suppose we have $L_2 = \\{b^6\\}$. Is $L_2$ a regular language?",
+        "answer": "Yes, since it is finite language",
+        "choices": ["Yes, since it is finite language", "No"]
       },
-      "q6": {
+      "b6concat": {
         "type": "true/false",
-        "description":"Let us define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>$h(L) = \\{a^3a^nb^{n-3} | n > 3 \\} = \\{a^{n+3}b^{n-3} | n > 3\\}$<br/>$L\\prime = h(L)\\{b^6\\} = \\{a^{n+3}b^{n+3} | n > 3\\}$",
-        "question": "By closure under concatenation, $L\\prime$ is regular",
+        "description":"$L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$<br/>Homomorphism $h$ is: $\\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>So, $h(L) = \\{a^3a^nb^{n-3}\\ |\\ n > 3 \\} = \\{a^{n+3}b^{n-3}\\ |\\ n > 3\\}$<br/><br/>Now define $L' = h(L)b^6 = \\{a^{n+3}b^{n+3}\\ |\\ n > 3\\}$",
+        "question": "By closure under concatenation, concatenating $h(L)$ and $b^6$ is regular",
         "answer": "True",
         "choices": []
       },
-      "q7": {
+      "smallstring": {
         "type": "select",
-        "description":"Let us define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>$h(L) = \\{a^3a^nb^{n-3} | n > 3 \\} = \\{a^{n+3}b^{n-3} | n > 3\\}$<br/>$L\\prime = h(L)\\{b^6\\} = \\{a^{n+3}b^{n+3} | n > 3\\}$",
-        "question": "Suppose we have $L_3 = \\{ab, aabb, aaabbb, aaaabbbb, aaaaabbbbb, aaaaaabbbbbb\\}$. Is $L_3$ a regular language",
+        "description":"Now, $L' = h(L)b^6 = \\{a^{n+3}b^{n+3}\\ |\\ n > 3\\}$ looks suspiciously like a non-regular language that we are familiar with: $\\{a^nb^n\\ |\\ n > 0\\}$. But not quite. Let's fix that now.",
+        "question": "Suppose we have $L_3 = \\{ab, aabb, aaabbb\\}$. Is $L_3$ a regular language?",
         "answer": "Yes, it is finite language",
         "choices": ["Yes, it is finite language", "No"]
       },
-      "q8": {
+      "union": {
         "type": "true/false",
-        "description":"Let us define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>$h(L) = \\{a^3a^nb^{n-3} | n > 3 \\} = \\{a^{n+3}b^{n-3} | n > 3\\}$<br/>$L\\prime = h(L)\\{b^6\\} = \\{a^{n+3}b^{n+3} | n > 3\\}$<br/>$L_4 = L' \\cup L_3 = \\{a^nb^n | n > 0\\}$",
-        "question": "By closure under union, $L_4$ must be regular",
+        "description":"So we have: $L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$<br/>Homomorphism $h$ is: $\\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>So, $h(L) = \\{a^3a^nb^{n-3}\\ |\\ n > 3 \\} = \\{a^{n+3}b^{n-3}\\ |\\ n > 3\\}$<br/><br/>$L' = h(L)b^6 = \\{a^{n+3}b^{n+3}\\ |\\ n > 3\\}$",
+        "question": "Define $L_4 = L' \\cup \\{ab, aabb, aaabbb \\}$. By closure under union, $L_4$ must be regular.",
         "answer": "True",
         "choices": []
       },
-      "q9": {
+      "result": {
         "type": "select",
-        "description":"Let us define a homomorphism $h: \\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>$h(L) = \\{a^3a^nb^{n-3} | n > 3 \\} = \\{a^{n+3}b^{n-3} | n > 3\\}$<br/>$L\\prime = h(L)\\{b^6\\} = \\{a^{n+3}b^{n+3} | n > 3\\}$<br/>$L_4 = L' \\cup L_3 = \\{a^nb^n | n > 0\\}$",
-        "question": "But, what do we know about $L_4$ for sure",
-        "answer": "We know that $L_4 = \\{a^nb^n | n > 0\\}$ is not regular",
-        "choices": ["We know that $L_4 = \\{a^nb^n | n > 0\\}$ is not regular", "it is regular"]
+        "description":"$L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$<br/>Homomorphism $h$ is: $\\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>So, $h(L) = \\{a^3a^nb^{n-3}\\ |\\ n > 3 \\} = \\{a^{n+3}b^{n-3}\\ |\\ n > 3\\}$<br/><br/>$L' = h(L)b^6 = \\{a^{n+3}b^{n+3}\\ |\\ n > 3\\}$<br/>$L_4 = L' \\cup \\{ab, aabb, aaabbb \\} = \\{a^nb^n\\ |\\ n > 0\\}$",
+        "question": "But, what do we know about $L_4$ for sure?",
+        "answer": "$\\{a^nb^n\\ |\\ n > 0\\}$ is non-regular",
+        "choices": ["$\\{a^nb^n\\ |\\ n > 0\\}$ is non-regular", "$\\{a^nb^n\\ |\\ n > 0\\}$ is regular"]
       }
     }
   }

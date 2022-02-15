@@ -1304,6 +1304,12 @@ if ``basil.isFacing(NORTH)`` is true, then the computer knows the whole
 OR expression will also be true, and so it will not evaluate
 ``basil.seesNet(AHEAD)``, since it is unnecessary.
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/ui_PM-woLsE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Check Your Understanding: Logical Equivalence
 ---------------------------------------------
@@ -1364,12 +1370,25 @@ comes after the `<` or `>`, just like when you say the names of those
 comparisons in English: "less than or equal" has the less than symbol first,
 followed by the equal sign second.
 
+.. raw:: html
 
-Syntax Practice 4
------------------
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/rYX6AQo9YsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
-.. extrtoolembed:: 'Syntax Practice 4'
+
+Syntax Practice 4a: Compound Conditionals
+-----------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 4a: Compound Conditionals'
    :workout_id: 1403
+
+
+Syntax Practice 4b: Conditionals and Relational Operators
+---------------------------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 4b: Conditionals and Relational Operators'
+   :workout_id: 1768
 
 
 Programming Practice 4
