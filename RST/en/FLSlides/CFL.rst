@@ -28,6 +28,8 @@ Context-Free Languages
    |   Expressions: :math:`((a + b) - c)`
    |   Block structures (:math:`\{\}` in Java/C++ and ``begin`` ... ``end`` in Pascal)
 
+   (What memory would you need to recognize each of these langauges?)
+
 
 .. slide:: Context Free Languages
 
@@ -35,6 +37,9 @@ Context-Free Languages
      context-free if all productions are of the form
    |    :math:`A \rightarrow x`
    | where :math:`A \in V` and :math:`x \in (V \cup T)^*`.
+
+   Key point: A grammar is context-free if the LHS of every rule is a
+   single variable.
 
    **Definition:** :math:`L` is a context-free language (CFL) iff
    there exists a context-free grammar (CFG) :math:`G` such that
@@ -54,13 +59,15 @@ Context-Free Languages
 
    **Definition:** A linear grammar has at most one variable on the
    right hand side of any production.
-   Thus, right linear and left linear grammars are also linear grammars. 
+   Thus, right linear and left linear grammars are also linear
+   grammars.
+
+   But many other grammars are linear as well.
 
    | :math:`G = (\{S\}, \{a, b\}, S, P)`
    |   :math:`S \rightarrow aSa\ |\ bSb\ |\ a\ |\ b\ |\ \lambda`
 
-   | Derivation of :math:`ababa`:
-   |   :math:`S \Rightarrow aSa \Rightarrow abSba \Rightarrow ababa`
+   | Derivation of :math:`ababa`: :math:`S \Rightarrow aSa \Rightarrow abSba \Rightarrow ababa`
 
    | :math:`\Sigma = \{a, b\}, L(G) = \{w \in {\Sigma}^{*} | w=w^R\}`,
 
@@ -115,12 +122,10 @@ Context-Free Languages
    |   For rule :math:`A \rightarrow a_1a_2a_3\ldots a_n`, where
       :math:`A \in V, a_i \in (T \cup V \cup \{\lambda\})`,
 
-   .. odsafig:: Images/lt3ptree1.png
-      :width: 300
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree1
+   .. inlineav:: derivIdeaCON dgm
+      :links: AV/VisFormalLang/CFG/derivIdeaCON.css
+      :scripts: AV/VisFormalLang/CFG/derivIdeaCON.js
+      :align: justify
 
 
 .. slide:: Example
@@ -134,12 +139,18 @@ Context-Free Languages
    | But we can get a leftmost or rightmost derivation from looking at
      tree.
 
-   .. odsafig:: Images/lt3ptree2.png
-      :width: 220
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree2
+   .. inlineav:: derivEx1CON dgm
+      :links: AV/VisFormalLang/CFG/derivEx1CON.css
+      :scripts: AV/VisFormalLang/CFG/derivEx1CON.js
+      :align: justify
+
+
+.. slide:: Derivation Example
+
+   .. inlineav:: ParseTree1CON ss
+      :links:   AV/VisFormalLang/CFG/ParseTree1CON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/CFG/ParseTree1CON.js
+      :output: show
 
 
 .. slide:: More on derivations
@@ -162,51 +173,38 @@ Context-Free Languages
    
    A partial derivation tree that has root S:
 
-   .. odsafig:: Images/lt3ptree3.png
-      :width: 200
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree3
+   .. inlineav:: partDeriv1CON dgm
+      :links: AV/VisFormalLang/CFG/partDeriv1CON.css
+      :scripts: AV/VisFormalLang/CFG/partDeriv1CON.js
+      :align: justify
 
    | The yield of this example is :math:`aAacB` (which is a sentential form).
    | A partial derivation tree that does not have root S:
 
-   .. odsafig:: Images/lt3ptree4.png
-      :width: 130
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt3ptree4
+   .. inlineav:: partDeriv2CON dgm
+      :links: AV/VisFormalLang/CFG/partDeriv2CON.css
+      :scripts: AV/VisFormalLang/CFG/partDeriv2CON.js
+      :align: justify
 
 
 .. slide:: Membership problem (1)
 
-   **Membership:** Given CFG :math:`G` and string :math:`w \in \Sigma^*`, 
-   is :math:`w \in L(G)`?
-
-   If we can find a derivation of :math:`w`, then we would know that
-   :math:`w` is in :math:`L(G)`.
+   | **Membership:** Given CFG :math:`G` and string :math:`w \in \Sigma^*`, 
+     is :math:`w \in L(G)`?
+   |    If we can find a derivation of :math:`w`, then we would know that
+        :math:`w` is in :math:`L(G)`.
 
    | **Motivation:**
    |    :math:`G` is the grammar for Java.
    |    :math:`w` is your Java program.
    |    Is :math:`w` syntactically correct?
 
-
-.. slide:: Membership problem (2)
-
-   | Why would anybody want to do this?
-   | :math:`G =` Java, :math:`w =` Java program.
-   | Is :math:`w` a syntactically correct program?
-
-   This is (part of) what a compiler does.
-   You write a program, you compile it, and the compiler finds all your 
-   syntax mistakes.
-
-   (It also "translates" the program into "bytecode" to be
-   executed.
-   We won't talk much about that aspect of compilers in this class.)
+   * This is (part of) what a compiler does.
+     You write a program, you compile it, and the compiler finds all your 
+     syntax mistakes.
+   * (It also "translates" the program into "bytecode" to be
+     executed.
+     We won't talk much about that aspect of compilers in this class.)
 
 
 .. slide:: Example
@@ -270,13 +268,13 @@ Context-Free Languages
            
    **Theorem:** If CFG :math:`G` does not contain rules of the form 
 
-      | :math:`A \rightarrow \lambda`
-      | :math:`A \rightarrow B`
+      | :math:`A \rightarrow \lambda\qquad` [:math:`\lambda` production]
+      | :math:`A \rightarrow B\qquad`  [Unit production]
 
    where :math:`A, B \in V`, then we can determine if
    :math:`w \in L(G)` or if :math:`w \not\in L(G)`.
 
-
+   
 .. slide:: CFG Theorem (2)
 
    **Proof:** Consider
@@ -295,9 +293,9 @@ Context-Free Languages
 
 .. slide:: Example (1)
 
-   Let :math:`L_2 = L_1 - \{\lambda\}`. :math:`L_2 = L(G)` where :math:`G` is:
+   Let :math:`L_2 = L_1 - \{\lambda\}`. :math:`L_2 = L(G)` where :math:`G` is
 
-      :math:`S \rightarrow SS\ |\ aa\ |\ aSa\ |\ b`
+   |   :math:`S \rightarrow SS\ |\ aa\ |\ aSa\ |\ b`
 
    NOTE that this grammar is in the correct form for the theorem. 
 
@@ -337,7 +335,7 @@ Context-Free Languages
 
 .. slide:: Not all grammars considered equal
 
-   Next chapter, we will learn methods for taking a grammar and
+   Later, we will learn methods for taking a grammar and
    transforming it into an equivalent (or almost) equivalent grammar. 
 
    For now, here is another form that will make membership testing easier. 
@@ -348,9 +346,10 @@ Context-Free Languages
    | where :math:`A \in V`, :math:`a \in T`, and :math:`x \in V^*` AND any
      pair :math:`(A, a)` can occur in at most one rule.
 
-   If you use the exhaustive search method to ask if :math:`w \in L(G)`,
-   where :math:`G` is an s-grammar, the number of terminals increases with
-   each step.
+   | If you use the exhaustive search method to ask if :math:`w \in L(G)`,
+     where :math:`G` is an s-grammar, the number of terminals increases with
+     each step.
+   | Q: Why is this not a right-linear grammar? (And so what if it was?)
 
 
 .. slide:: Ambiguity
@@ -438,12 +437,15 @@ Context-Free Languages
 
    There is only one derivation tree for :math:`a+b*a`:
 
-   .. odsafig:: Images/lt4ptree3.png
-      :width: 200
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: lt4ptree3
+   .. inlineav:: ParseTreeForExpCON ss
+      :links:   AV/VisFormalLang/CFG/ParseTreeForExpCON.css
+      :scripts: AV/VisFormalLang/CFG/ParseTreeForExpCON.js
+      :output: show
+
+
+.. slide:: .
+
+   .
 
 
 .. slide:: Rewriting the Grammar (3)

@@ -32,13 +32,19 @@ as using the Pumping Lemma or using operators known to be closed for
 regular language to derive a known non-regular language.
 Exxamples of non-regular languages include:
 
+* :math:`\{a^ncb^n | n > 0\}`
 * expressions: :math:`((a + b) - c)`
 * block structures (:math:`\{\}` in Java/C++ and ``begin`` ... ``end``
   in Pascal)
 * Balanced parentheses
 
-We know that not all languages are not regular, since we've proved
+We know that not all languages are not regular, since we've proved that
 some are not.
+
+(**Something to think about**: If you were to write a program in your
+favorite programming language to recognize any of those languages,
+what is the minimum memory that you need for each?)
+
 Now we will look at a class of languages that is larger than the class
 of regular languages, context-free languages.
 And we will discuss ways to represent them.

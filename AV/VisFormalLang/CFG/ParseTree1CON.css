@@ -1,6 +1,7 @@
 #ParseTree1CON {
-    height: 500px;
+    height: 400px;
   }
-  .jsavcontrols {
-      display: unset !important;
-  }
+
+#ParseTree1CON .jsavoutput.jsavline {
+  height: 30px;
+}
