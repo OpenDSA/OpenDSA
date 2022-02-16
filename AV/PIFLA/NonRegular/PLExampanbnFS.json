@@ -97,7 +97,7 @@
         "choices": [],
         "correctFeedback": ["$a^{m/2}b^{m/2}$ is both in the language, and at least $m$ symbols long."]
       },
-      "choices": {
+      "divchoices": {
         "type": "select",
         "description":"Let $w = a^{m/2}b^{m/2}$. Now we need to show that <b>every</b> partition of $w$ into $xyz$ such that $|xy| \\leq m$ and $|y| \\geq 1$ leads to the situation where $xy^iz \\in L$ is not in the language all $i \\ge 0$",
         "question": "Since we need $|xy| \\le m$, which of the following is an acceptable value for $xy$ in some partition of the string?",

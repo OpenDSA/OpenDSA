@@ -69,7 +69,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 17
-  av.umsg(Frames.addQuestion("choices"));
+  av.umsg(Frames.addQuestion("divchoices"));
   av.step();
 
   // Frame 18
