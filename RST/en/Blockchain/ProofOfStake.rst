@@ -35,6 +35,12 @@ The footer contains data such as a collection of transactions.
 For more information, see
 :ref:`blocks <block> <Blocks>`.
 
+.. odsafig:: Images/BlockDiagram.png
+   :width: 350
+   :align: center
+   :alt: Typical fields found in Blockchain blocks.
+
+
 Why do we need proof of anything?
 ------------------------------
 As you will soon learn, the previously discussed proof of work mechanism,
@@ -61,6 +67,12 @@ solution to complicated hashing algorithms. Proof of stake, rather than utilizin
 and computational resources as a measurement of voting authority, utilizes an underlying token 
 or asset to denote control in the network.
 
+
+.. inlineav:: ProofOfStake ss
+   :long_name: ProofOfStake Slideshow
+   :links: AV/Blockchain/ProofOfStake.css
+   :scripts: AV/Blockchain/ProofOfStake.js
+   :output: show
      
 What is Proof of Stake?
 -----------------------
