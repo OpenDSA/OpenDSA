@@ -27,34 +27,25 @@ but be very dissimilar outside that region A global (N-W) alignment of such sequ
 **Applications:**
 Searching for local similarities in large sequences (e.g., newly sequenced genomes).
 Looking for conserved domains or motifs in two proteins.
+ 
+**The local alignment algorithm consists of 3 steps :**
 
-.. [#] **In Local Alignment :**
+   • Initialisation of the score and the traceback matrices
+   • Calculation of scores and filling in the score and traceback matrices
+   • Inferring the alignment from the traceback matrix
+
+We have two 2D matrices: the **score matrix** and the **traceback matrix**.
+
+Score Matrix
+------------
+
+ **In Local Alignment :**
 
          • Initialize first row and first column to be 0 because all negative value converted to 0
            and we fill the first row and first column according to gap penalty.
 
          • The score of the best local alignment is the largest value
            in the entire array.
- 
-.. [#] **The local alignment algorithm consists of 3 steps :**
-
-   • Initialisation of the score and the traceback matrices
-   • Calculation of scores and filling in the score and traceback matrices
-   • Inferring the alignment from the traceback matrix
-
-
-.. [#] **To find the actual local alignment :**
-
-         • start at an entry with the maximum score
-
-         • traceback as usual
-
-         • stop when we reach an entry with a score of 0
-
-We have two 2D matrices: the **score matrix** and the **traceback matrix**.
-
-Score Matrix
-------------
 
 .. inlineav:: Lscore ss
    :long_name: DNA Sequencing example Slideshow
@@ -65,6 +56,14 @@ Score Matrix
 Traceback
 ---------
 
+ **To find the actual local alignment :**
+
+         • start at an entry with the maximum score
+
+         • traceback as usual
+
+         • stop when we reach an entry with a score of 0
+
 .. inlineav:: Ltraceback ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/Ltraceback.css 
@@ -74,8 +73,6 @@ Traceback
 
 Exercise
 --------
-
-This is a visualization for DNA Sequencing
 
 .. inlineav:: LExercise ss
    :long_name: DNA Sequencing example Slideshow

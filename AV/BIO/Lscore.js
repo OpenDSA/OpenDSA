@@ -102,7 +102,6 @@ $(document).ready(function () {
             matrix2.value(1,2,matrix.value(i-1,j));
             matrix2.value(2,1,matrix.value(i,j-1));
             matrix2.highlight(2,2);
-            jsav.umsg(matrix2+" ",{"preserve": true});
             matrix.value(i,j,newval);
             matrix.highlight(i,j);
             matrix2.highlight(2,2);
