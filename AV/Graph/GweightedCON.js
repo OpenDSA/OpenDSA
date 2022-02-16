@@ -1,8 +1,7 @@
 "use strict";
 $(document).ready(function () {
-  var av_name = "GweightedCON";
-  var interpret = ODSA.UTILS.loadConfig({"av_name": av_name,
-                         "json_path": "/AV/Graph/GraphDefCON.json"}).interpreter;
+  var av_name = "Manhattan";
+ 
   var av = new JSAV(av_name, {"animationMode" : "none"});
 
   // Set up graph

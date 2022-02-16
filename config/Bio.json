@@ -42,12 +42,13 @@
       "BIO/Preface":{}
 
     },
-    "DNA Sequencing": {
-      "BIO/DNASeq": {},
-      "BIO/CH2": {}
-    },
-    "kruskalCON": {
-      "BIO/kruskalCON":{} 
+
+    "Sequence Alignment": {
+      "BIO/Manhattan": {},
+      "BIO/Dot Matrix": {},
+      "BIO/Global Alignment": {},
+      "BIO/Local Alignment": {},
+      "BIO/Suffix Tree": {}
     }
   }
 }

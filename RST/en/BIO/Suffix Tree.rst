@@ -8,13 +8,13 @@
    :satisfies: DNASeq
    :topic: DNASeq
 
+Suffix Tree
+===========
 
-kruskalCON
-==========
-This is a visualization for kruskalCON
+This is a visualization for DNA Sequencing
 
-.. inlineav:: kruskalCON ss
+.. inlineav:: Suffix ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/kruskalCON.css 
-   :scripts: AV/BIO/kruskalCON.js
+   :links: AV/BIO/Suffix.css 
+   :scripts: AV/BIO/Suffix.js
    :output: show
