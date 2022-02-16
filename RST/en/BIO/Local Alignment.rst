@@ -31,7 +31,7 @@ Looking for conserved domains or motifs in two proteins.
 .. [#] **In Local Alignment :**
 
          • Initialize first row and first column to be 0 because all negative value converted to 0
-           and we fill the first row and first column according gap penalty.
+           and we fill the first row and first column according to gap penalty.
 
          • The score of the best local alignment is the largest value
            in the entire array.

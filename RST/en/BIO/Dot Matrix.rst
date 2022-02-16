@@ -17,7 +17,8 @@ In its simplest form,
 as diagonals in the upper left–lower right (northwest–southeast) direction.
 DNA sequence is compared with its reverse-complemented sequence.Parallel diagonals represent the inverted repeats.
 **The dotplot gives a quick pictorial statement of the relationship between two sequences**. 
-Obvious features of similarity stand out. 
+Obvious features of similarity stand out.`
+
 
 .. inlineav:: Dot ss
    :long_name: DNA Sequencing example Slideshow

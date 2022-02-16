@@ -11,10 +11,44 @@
 Manhattan Tourist Problem
 =========================
 
-This is a visualization for DNA Sequencing
+Find The Longest Path In A Rectanglular City Grid Using Greedy Algorithm
+------------------------------------------------------------------------
 
-.. inlineav:: Manhattan ss
+.. inlineav:: Greedy ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/Manhattan.css 
-   :scripts: AV/BIO/Manhattan.js
+   :links: AV/BIO/Greedy.css 
+   :scripts: AV/BIO/Greedy.js
+   :output: show
+
+Find The Longest Path In A Rectanglular City Grid Using Dynamic Programming
+---------------------------------------------------------------------------
+
+.. inlineav:: LongestPath ss
+   :long_name: DNA Sequencing example Slideshow
+   :links: AV/BIO/LongestPath.css 
+   :scripts: AV/BIO/LongestPath.js
+   :output: show
+
+From Manhattan To Alignment Graph
+---------------------------------
+
+
+
+Alignment To Path
+~~~~~~~~~~~~~~~~~
+
+.. inlineav:: DirectedGraph ss
+   :long_name: DNA Sequencing example Slideshow
+   :links: AV/BIO/DirectedGraph.css 
+   :scripts: AV/BIO/DirectedGraph.js
+   :output: show
+
+
+Path To Alignment
+~~~~~~~~~~~~~~~~~
+
+.. inlineav:: AlignmentGraph ss
+   :long_name: DNA Sequencing example Slideshow
+   :links: AV/BIO/AlignmentGraph.css 
+   :scripts: AV/BIO/AlignmentGraph.js
    :output: show

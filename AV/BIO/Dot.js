@@ -26,8 +26,8 @@ $(document).ready(function () {
         {
             if(DotMatrix.value(i,0) == DotMatrix.value(0,j))
             {
-				DotMatrix.value(i,j,"*")
-        DotMatrix.highlight(i,j)
+				DotMatrix.value(i,j,"#")
+        //DotMatrix.highlight(i,j)
 				jsav.step();
             }
         }

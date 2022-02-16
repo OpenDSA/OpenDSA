@@ -1,7 +1,7 @@
 "use strict";
 
 $(document).ready(function () {
-  var jsav = new JSAV("Suffix");
+  var jsav = new JSAV("LongestPath");
   var graph=new jsav.ds.graph({width: 500, height: 500});
   var right;
   var down;
@@ -75,36 +75,49 @@ $(document).ready(function () {
   graph.layout();
   jsav.displayInit();
 
+for (var i=1;i<graph.nodes().length/5;i++)
+{
+  graph.nodes()[i].value(graph.getEdge(graph.nodes()[i-1], graph.nodes()[i]).weight()+graph.nodes()[i-1].value());
+  jsav.step();
 
-  graph.nodes()[0].highlight();
-  var i=0;
-   while(i!=graph.nodes().length-1)
-     {
-         if(i==4||i==9||i==14||i==19){
-             down=graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).weight()+graph.nodes()[i].value();
-             graph.nodes()[i+5].value(down);
-             graph.nodes()[i+5].highlight();
-         }
-         else if(i==20||i==21||i==22||i==23)
-         {
-          right=graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).weight()+graph.nodes()[i].value()
-         }
-          down=graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).weight()+graph.nodes()[i].value();
-          right=graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).weight()+graph.nodes()[i].value()
-      if(down >right)
-      {
-             graph.nodes()[i+5].value(down);
-              graph.nodes()[i+5].highlight();
-        i+=5;
-      }
-      else
-      {
-        graph.nodes()[i+1].value(right);
-              graph.nodes()[i+1].highlight();
-        i++;
-      }
-  
-        jsav.step();
-     }
+}   
+for (var i=5;i<=graph.nodes().length-5;i+=5)
+{
+  graph.nodes()[i].value(graph.getEdge(graph.nodes()[i-5], graph.nodes()[i]).weight()+graph.nodes()[i-5].value());
+  jsav.step();
+
+}
+graph.nodes()[0].highlight();
+
+for (var i=6;i<graph.nodes().length;i++)
+{
+	if(i%5!=0)
+	{
+		down=graph.getEdge(graph.nodes()[i-5], graph.nodes()[i]).weight()+graph.nodes()[i-5].value();
+		right=graph.getEdge(graph.nodes()[i-1], graph.nodes()[i]).weight()+graph.nodes()[i-1].value()
+		if(down>right){
+			graph.nodes()[i].value(down);
+			graph.nodes()[i-5].highlight();
+			index.push(i-5);
+		}
+		else{
+			graph.nodes()[i].value(right);
+			graph.nodes()[i-1].highlight();
+			index.push(i-1);
+		}
+		
+		jsav.step();
+	}
+}  
+graph.nodes()[graph.nodes().length-1].highlight();
+index.push(graph.nodes().length-1);
+/*for(i=0;i<graph.nodes().length;i++)
+{
+	graph.nodes()[i].hide();
+}
+for(i of index)
+{
+   graph.nodes()[i].show();
+}*/
    jsav.recorded();
 });

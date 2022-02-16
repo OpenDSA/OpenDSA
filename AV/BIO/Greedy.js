@@ -1,7 +1,7 @@
 "use strict";
 
 $(document).ready(function () {
-  var jsav = new JSAV("Suffix");
+  var jsav = new JSAV("Greedy");
   var graph=new jsav.ds.graph({width: 500, height: 500});
   var right;
   var down;
@@ -32,7 +32,7 @@ $(document).ready(function () {
   var node24=graph.addNode(" ",{left:300, top:400});
   var node25=graph.addNode(" ",{left:400, top:400});
 
-  graph.addEdge(node1, node2,{weight:4});
+  graph.addEdge(node1, node2,{weight:4}).css("marked");
   graph.addEdge(node2, node3,{weight:5});
   graph.addEdge(node3, node4,{weight:8});
   graph.addEdge(node4, node5,{weight:7});
@@ -76,35 +76,40 @@ $(document).ready(function () {
   jsav.displayInit();
 
 
-  graph.nodes()[0].highlight();
-  var i=0;
-   while(i!=graph.nodes().length-1)
-     {
-         if(i==4||i==9||i==14||i==19){
-             down=graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).weight()+graph.nodes()[i].value();
-             graph.nodes()[i+5].value(down);
-             graph.nodes()[i+5].highlight();
-         }
-         else if(i==20||i==21||i==22||i==23)
-         {
-          right=graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).weight()+graph.nodes()[i].value()
-         }
-          down=graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).weight()+graph.nodes()[i].value();
-          right=graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).weight()+graph.nodes()[i].value()
-      if(down >right)
-      {
-             graph.nodes()[i+5].value(down);
-              graph.nodes()[i+5].highlight();
-        i+=5;
-      }
-      else
-      {
-        graph.nodes()[i+1].value(right);
-              graph.nodes()[i+1].highlight();
-        i++;
-      }
-  
-        jsav.step();
-     }
+graph.nodes()[0].highlight();
+var i=0;
+ while(i!=graph.nodes().length-1)
+   {
+    if(i==4||i==9||i==14||i==19){
+      down=graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).weight()+graph.nodes()[i].value();
+      graph.nodes()[i+5].value(down);
+      graph.nodes()[i+5].highlight();
+      i+=5;
+  }
+  else if(i==20||i==21||i==22||i==23)
+  {
+   right=graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).weight()+graph.nodes()[i].value();
+   graph.nodes()[i+1].value(right);
+   graph.nodes()[i+1].highlight();
+   i+=1;
+  }
+  else{
+    down=graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).weight()+graph.nodes()[i].value();
+		right=graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).weight()+graph.nodes()[i].value();
+    if(down >right)
+    {
+      graph.nodes()[i+5].value(down);
+			graph.nodes()[i+5].highlight();
+      i+=5;
+    }
+    else
+    {
+      graph.nodes()[i+1].value(right);
+			graph.nodes()[i+1].highlight();
+      i++;
+    }
+  }
+    jsav.step();
+   }
    jsav.recorded();
 });
