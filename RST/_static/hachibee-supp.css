@@ -37,3 +37,15 @@ footer{position:absolute;clear:both;bottom:0;width:100%;margin:auto;height:20px;
 footer .show-copyright,footer .last-updated,footer .show-sphinx{display:inline-block;margin:auto;padding-left:15px;line-height:44px}
 footer .theme-info{margin:auto;padding:0 30px;line-height:27px;vertical-align:middle}
 footer li{display:inline-block;list-style:none}
+
+pre {
+    border-color: #0c3762;
+    border-style: dotted;
+    border-width: thin;
+    margin: 0 0 12px 0;
+    padding: 0.8em;
+    background-color: #f0f0f0;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
