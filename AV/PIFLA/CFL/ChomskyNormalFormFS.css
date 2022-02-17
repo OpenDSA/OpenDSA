@@ -1,7 +1,7 @@
 #ChomskyNormalFormFS {
-  height: 800px;
+  height: 580px;
 }
 
-.jsavhorizontalarray .jsavnode {
+#ChomskyNormalFormFS .jsavhorizontalarray .jsavnode {
   min-width: 70px !important;
 }

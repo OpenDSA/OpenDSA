@@ -36,7 +36,7 @@ Project 1 Design
    |   Multiple data structures (hash table class, memory manager class)
    |   "Main" routine, that sets things up
    |   Command syntactic parsing (separate the behavior, NOT the code length)
-   |   Command semantic processig (separate the behavior, NOT the code length)
+   |   Command semantic processing (separate the behavior, NOT the code length)
            
 .. slide:: Project 1 Class Organization (2)
 
@@ -45,7 +45,7 @@ Project 1 Design
    | Good:
    |   Main (Program parameters, initialization) ==>
    |     Parser (Syntactic processing of commands) ==>
-   |       "Database" or "World" (symantic processing of commands) ==> 
+   |       "Database" or "World" (semantic processing of commands) ==> 
    |         Various data structures classes
            
 .. slide:: Scheduling the project

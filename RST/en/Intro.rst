@@ -64,7 +64,7 @@ and other interactive exercises.
 You can get "completion" for doing the various activities.
 When any of the following activities are completed, the interface
 should give you some type of feedback such as showing a green
-checkmark or adding a score in the assocaited LMS gradebook:
+checkmark or adding a score in the associated LMS gradebook:
 going through a slideshow, completing a PIFrameset,
 completing a proficiency exercise, completing a programming exercise,
 completing a question set, or fulfilling the requirements of a

@@ -54,8 +54,8 @@ Pointer Manipulation
 
      Employee empRef;
 
-   * Techically this has no value (though Java will **try** to protect
-     you from using an unitialized variable).
+   * Technically this has no value (though Java will **try** to protect
+     you from using an uninitialized variable).
 
      .. inlineav:: empRefnullCON dgm
         :links: AV/Pointers/empRefnullCON.css

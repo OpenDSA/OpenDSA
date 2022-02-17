@@ -18,13 +18,13 @@ Midterm 2
 
 .. slide:: Structure
 
-   Exam on Canvas. You will need a camera, join on Zoom in the ususal way
+   Exam on Canvas. You will need a camera, join on Zoom in the usual way
    with your camera on.
 
    You may bring one 8 1/2 by 11 inch sheet of paper with anything that
    you want written or typed ON ONE SIDE.
 
-   Format: Short answers, workng out problems, writing short code, T/F.
+   Format: Short answers, working out problems, writing short code, T/F.
 
    About 10-15 questions, with subparts
 

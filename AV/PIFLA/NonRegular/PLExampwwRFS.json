@@ -1,0 +1,76 @@
+{
+  "translations": {
+    "en": {
+      "assume": {
+        "type": "select",
+        "description": "Prove that $L = \\{ww^R : w \\in \\Sigma^*\\}$ is not regular, using the Pumping Lemma.",
+        "question": "What is the first step?",
+        "answer": "Assume $L$ is regular",
+        "choices": ["Assume $L$ is regular", "Assume $L$ is not regular"]
+      },
+      "pumplemma": {
+        "type": "true/false",
+        "description":"Prove that $L = \\{ww^R : w \\in \\Sigma^*\\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular.",
+        "question": "[T|F] Since $L$ is regular, the pumping lemma holds",
+        "answer": "True",
+        "choices": []
+      },
+      "long": {
+        "type": "select",
+        "description":"Prove that $L = \\{a^nb^n\\ |\\ n \\geq 0\\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$.",
+        "question": "Based on the Pumping Lemma, what is the main condition for the length of the string $w$?",
+        "answer": "$|w| \\ge m$",
+        "choices": ["$|w| \\ge m$", "$|w| \\le m$", "$|w| = m$"],
+        "correctFeedback": ["The string has to be long, meaning that $|w| \\ge m$, where $m$ is the number of states in a DFA claimed to recognize the language."]
+      },
+      "as": {
+        "type": "select",
+        "description": "Prove that $L = \\{ww^R : w \\in \\Sigma^*\\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$.",
+        "question": "As we learned previously, picking the right string for $w$ is critical to being able to complete the proof. Let's start with picking something that is easy to reason about: $w = a^{2m}$. Is this a legal string to pick for $w$?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["The string $w = a^{2m}$ is in the language, and it is at least $m$ symbols long. That meets the criteria."]
+      },
+      "aswrong": {
+        "type": "select",
+        "description": "Prove that $L = \\{ww^R : w \\in \\Sigma^*\\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$. Let's choose $a^{2m}$.",
+        "question": "The next step is to show that there is no decomposition of $w$ into $xyz$ that can be pumped. Do you think that this is possible?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Since we chose $w = a^{2m}$, one possible decomposition is $x = \\lambda\\quad |\\quad y = aa\\quad |\\quad z = a^{2m-2}$. This can be pumped any number of times, and the result is always a string in the language. Thus, this choice of $w$ does not yield a successful proof."]
+      },
+      "notdone": {
+        "type": "select",
+        "description": "Picking $w = a^{2m}$ cannot lead to a successful proof by the pumping lemma that the language $L = \\{ww^R : w \\in \\Sigma^*\\}$ is non-regular.",
+        "question": "Does that mean that we should conclude that $L$ is regular?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Just not succeeding in proving the language non-regular doesn't actually tell us anything about the truth of the situation. In this case, we should see if we can find a better string for $w$."]
+      },
+      "newchoice": {
+        "type": "select",
+        "description": "Prove that $L = \\{ww^R : w \\in \\Sigma^*\\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$. This time, let's try $w = a^mb^mb^ma^m$.",
+        "question": "Is this an acceptable string?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["The string $w = a^{2m}$ is in the language, and it is at least $m$ symbols long. That meets the criteria."]
+      },
+      "decompose": {
+        "type": "select",
+        "description": "Prove that $L = \\{ww^R : w \\in \\Sigma^*\\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$. Use $w = a^mb^mb^ma^m$.",
+        "question": "The next step is to decompose the string $w$ into $xyz$ such that $|xy| \\le m$, $|y| \\ge 1$, and $xy^iz$ is not in the language for all values of $i$. What are possible choices for $xy$?",
+        "answer": ["some a's"],
+        "choices": ["some a's", "some b's", "some a's followed by some b's"],
+        "correctFeedback": ["Since the string starts with $m$ a's, there is no way to decompose the string so that $xy$ is anything other than some a's."]
+      },
+      "fail": {
+        "type": "select",
+        "description": "Prove that $L = \\{ww^R : w \\in \\Sigma^*\\}$ is not regular, using the Pumping Lemma.<br/>Assume $L$ is regular, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$. Use $w = a^mb^mb^ma^m$.",
+        "question": "Since we have determined that $xy$ is some a's at the beginning of the string, and $y$ is some of these a's, is there any way that pumping $y$ can yield strings in the language?",
+        "answer": "No",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Adding more a's to the front of the string must unbalance the front vs rear of the string, and so it is no longer in the language. So there is no acceptable decomposition for $w$. Thus we have succeeded in proving the language to be non-regular by the pumping lemma."]
+      }
+    }
+  }
+}

@@ -3,37 +3,32 @@ $(document).ready(function () {
   var av_name = "TransformGrammarsFS";
   var av = new JSAV(av_name,);
   var Frames = PIFRAMES.init(av_name);
-  // Load the config object with interpreter and code created by odsaUtils.js
 
-  //frame 1
-  av.umsg("We use grammars to represent a programming language. Want to know: Is a given string (or program x) valid (syntactically correct)? Same as asking if it is in the language");
+  // Frame 1
+  av.umsg("When we use grammars to represent a programming language, they help us to answer the question: Is a given string a syntactically correct program? This is the same thing as asking if the string is in the language of syntactically correct programs.");
   av.displayInit();
   
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("membership"));
   av.step();
 
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg("We have seen that if we can transform a CFG into an equivalent one with no $\\lambda$-productions and no rules like $A \\rightarrow B$, then we could determine if $w$ is in or not in $L(G)$ within $2|w|$ rounds, each step adding a terminal or increasing the length. This step is critical to making the cost of solving the management problem manageable.<br/><br/>In this module, we will look at lots of methods for transforming grammars to meet this goal.");
   av.step();
 
-  //frame 4
-  av.umsg("To enhance our grammars, we will look at lots of methods for transforming grammars. Some will be forms that are easier to work with, some are easier to use in proofs.");
-  av.step();
-
-  //frame 5
-  av.umsg("What do we mean by tramsforming grammars is to restrict the grammars such that<br/>1)We can process efficiently");
-  av.step();
-
-  //frame 6
+  // Frame 4
   av.umsg("Specifically, we will look at restrictions on the right hand side of the production rules. We want to be able to automatically transform an arbitrary CFG into an equivalent restricted CFG.");
   av.step();
 
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
+  // Frame 5
+  av.umsg(Frames.addQuestion("power"));
   av.step();
 
-  //frame 8
+  // Frame 6
+  av.umsg(Frames.addQuestion("lambda"));
+  av.step();
+
+  // Frame 7
   av.umsg(Frames.addQuestion("q8"));
   av.step();
 
@@ -129,7 +124,7 @@ $(document).ready(function () {
   av.umsg(Frames.addQuestion("q30"));
   av.step();
 
-  av.umsg("In this module we saw how to eliminate left recursion form CFGs");
+  av.umsg("We have now seen how to eliminate left recursion form CFGs.");
   av.recorded();
 
 

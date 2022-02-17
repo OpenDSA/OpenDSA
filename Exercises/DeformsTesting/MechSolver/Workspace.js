@@ -15,6 +15,8 @@ class Workspace
     {
         this.id=workspaceid;
         this.name="wk"+workspaceid;
+
+        // Object references
         this.globalSectionObj = jsavCanvasObj;
         this.globalEquationBank = geb;
         this.globalPointerReference = gpr;
@@ -27,6 +29,7 @@ class Workspace
                                     // multiple instances of the same equation.
 
         this.LIST_OF_SOLUTIONS_IN_WORKSPACE = {};
+        this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE = {};
         this.solutionCounter = 0;
         
         this.lastSolution = null;
@@ -54,6 +57,50 @@ class Workspace
 
         this.createBox();
         // console.log(this);
+    }
+    getWorkspaceSummary()
+    {
+        let workspaceSummary = {
+            id: this.id,
+            name: this.name,
+            equations: {},
+            solutionBoxes: {}
+        };
+
+        for(var i_equation in this.LIST_OF_EQUATIONS_IN_WORKSPACE)
+            workspaceSummary.equations[i_equation] = 
+                this.LIST_OF_EQUATIONS_IN_WORKSPACE[i_equation].getEquationSummary();
+        
+        for(var i_solbox in this.LIST_OF_SOLUTIONS_IN_WORKSPACE)
+        {
+            // console.log(i_solbox, this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_solbox]);
+            workspaceSummary.solutionBoxes[i_solbox] = {
+                value: this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_solbox].value,
+                unit: this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_solbox].unit,
+                variable: this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_solbox].variable,
+                variableDisplay: this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_solbox].variableDisplay,
+                valueSourceParent: this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_solbox].valueSourceParent,
+                valueNegated: this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_solbox].valueNegated // helps to set up connections as associations later on when necessary
+            }
+        }
+
+        for(var i_solbox in this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE)
+        {
+            console.log(i_solbox, this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE[i_solbox]);
+            workspaceSummary.solutionBoxes[i_solbox] = {
+                box_id_current: this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE[i_solbox].box_id_current,
+                value: this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE[i_solbox].value,
+                unit: this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE[i_solbox].unit,
+                variable: i_solbox,
+                variableDisplay: this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE[i_solbox].variableDisplay,
+                valueSourceParent: this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE[i_solbox].valueSourceParent,
+                // valueNegated: this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE[i_solbox].valueNegated
+                // Not valid for now; this is a secondary tracking; if the box is deleted, this doesn't matter as it isn't used.
+                // If present, this can be obtained from summary using box_id_current.
+            }
+        }
+
+        return workspaceSummary;
     }
     createBox()
     {
@@ -2042,12 +2089,29 @@ class Workspace
             solutionSetLog[unknownName]["domain"] = variableSet[unknownName]["solution"]["domain"];
 
             this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter] = currSolution;
-            this.solutionCounter++;
 
+            // Also updating additional key in LIST_OF_SOLUTIONS_IN_WORKSPACE to hold
+            // the solutionbox in the current list of unknowns that it computes
+            
+            this.LIST_OF_SOLUTIONS_ASSOC_IN_WORKSPACE[unknownName] = {
+                box_id_current: this.solutionCounter,   // Stores the ID of the SolutionBox that stores the value for this unknown currently
+                                                        // This may not match to any at all if the box is deleted; in which case this stores historical data
+                value: value,
+                unit: variableSet[unknownName]["solution"]["unit"],
+                unitDisplay: variableSet[unknownName]["solution"]["unitDisp"],
+                variableDisplay: variableSet[unknownName]["solution"]["name"], // The greek/external symbol
+                domain: variableSet[unknownName]["solution"]["domain"],
+                sourceParent: unknownName
+            }
+            
+            // Updating visuals
             this.DIMENSIONS.ELEMENTS["POSITION_Y"]+=
             this.DIMENSIONS.ELEMENTS["HEIGHT"]+this.DIMENSIONS.ELEMENTS["HEIGHT_PAD"];
 
             this.lastSolution = currSolution;
+            
+            // Updating solution counter (Bookkeeping)
+            this.solutionCounter++;
 
             Window.windowManager.shiftDown(null, this.id);
         }

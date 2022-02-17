@@ -148,7 +148,7 @@ Sorting Part 1
       * Selection Sort viewed as an optimization of Bubble Sort: Works
       * Selection Sort avoid self-swaps: Does not work
       * Bubble Sort "i" vs "1": Works
-      * Bubble Sort count comparisions/avoid unnecessary iterations:
+      * Bubble Sort count comparisons/avoid unnecessary iterations:
         Does not work
       * Bubble Sort O(n) best case claim (Wikipedia): Bogus
 

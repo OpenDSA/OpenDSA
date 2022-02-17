@@ -21,7 +21,7 @@ Midterm 1
    You may bring one 8 1/2 by 11 inch sheet of paper with anything that
    you want written or typed ON ONE SIDE.
 
-   Format: Short answers, workng out problems, writing short code, T/F.
+   Format: Short answers, working out problems, writing short code, T/F.
 
    About 10-15 questions, with subparts
    

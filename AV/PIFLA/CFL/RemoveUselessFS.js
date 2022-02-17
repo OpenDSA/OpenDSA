@@ -16,7 +16,7 @@ $(document).ready(function () {
                   [\"E\",\"→\",\"Aa\"],\
                   [\"E\",\"→\",\"b\"]]";
   var grammerArray = JSON.parse(grammar);
-  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 200});
+  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 100});
   grammerMatrix.hide();
   var grammar2 = "[[\"S\",\"→\",\"aB\"],\
                   [\"B\",\"→\",\"Sa\"],\
@@ -26,16 +26,17 @@ $(document).ready(function () {
                   [\"D\",\"→\",\"bCb\"],\
                   [\"E\",\"→\",\"b\"]]";
   var grammerArray2 = JSON.parse(grammar2);
-  var grammerMatrix2 = new GrammarMatrix( av,grammerArray2, {style: "table", left: 10, top: 200});
+  var grammerMatrix2 = new GrammarMatrix( av,grammerArray2, {style: "table", left: 10, top: 190});
   grammerMatrix2.hide();
   var grammar3 = "[[\"S\",\"→\",\"aB\"],\
                   [\"B\",\"→\",\"Sa\"],\
                   [\"B\",\"→\",\"b\"]]";
   var grammerArray3 = JSON.parse(grammar3);
-  var grammerMatrix3 = new GrammarMatrix(av,grammerArray3, {style: "table", left: 10, top: 200});
+  var grammerMatrix3 = new GrammarMatrix(av,grammerArray3, {style: "table", left: 10, top: 100});
   grammerMatrix3.hide();
-  //frame 1
-  av.umsg("Consider this grammar $S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?");
+
+  // Frame 1
+  av.umsg("Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?");
   av.displayInit();
   
   //frame 2
@@ -63,38 +64,26 @@ $(document).ready(function () {
   av.step();
 
   //frame 8
-  av.umsg("As we saw, there are 2 types of useless productions.");
-  av.step();
-
-  //frame 9
   av.umsg(Frames.addQuestion("q9"));
   av.step();
 
-  //frame 10
+  //frame 9
   av.umsg(Frames.addQuestion("q10"));
   av.step();
 
+  //frame 10
+  av.umsg("We will now show an algorithm for removing both types of useless productions. Since we have two types of useless productions, we will use two steps to remove them.");
+  av.step();
+
   //frame 11
-  av.umsg("Removing useless production algorithm<br/>Since we have 2 types of useless productions, we need 2 steps to remove all of them.");
-  av.step();
-
-  //frame 12
-  av.umsg("Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>1. Compute $V_1$= {Variables that can derive strings of terminals}");
-  av.step();
-
-  //frame 13
-  av.umsg("Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>1. Compute $V_1$= {Variables that can derive strings of terminals}<br>$\\quad 1. V_1 = \\emptyset$");
-  av.step();
-
-  //frame 14
   av.umsg(Frames.addQuestion("q14"));
   grammerMatrix.show();
   av.step();
 
-  //frame 15
+  //frame 12
   av.umsg(Frames.addQuestion("q15"));
-  var V = new av.ds.array(["","","","",""], {left: 100, top: 550, indexed: true});
-  var ALabel =  av.label("$V_1$",{top:550, left: 50});
+  var V = new av.ds.array(["","","","","",""], {left: 40, top: 450, indexed: true});
+  var ALabel =  av.label("$V_1$",{top: 455, left: 10});
   av.step();
 
   //frame 16
@@ -124,19 +113,15 @@ $(document).ready(function () {
   grammerMatrix2.show();
   av.step();
 
-  //frame 21
-  av.umsg("Removing useless production algorithm<br/>Let $G=(V,T,S,P)$<br/>2. Remove unreachable productions by using Variable Dependency Graph");
+  //frame 22
+  av.umsg(Frames.addQuestion("q22"));
   V.hide();
   ALabel.hide();
   av.step();
 
-  //frame 22
-  av.umsg(Frames.addQuestion("q22"));
-  av.step();
-
   //frame 23
   av.umsg(Frames.addQuestion("q23"));
-  var VDG = new av.ds.FA({left: 120, top: 200, width: 300});
+  var VDG = new av.ds.FA({left: 120, top: 130, width: 300});
   var S = VDG.addNode({value:"S", left: 0});
   var B = VDG.addNode({value:"B", left: 50});
   var C = VDG.addNode({value:"C", left:100});
@@ -177,18 +162,18 @@ $(document).ready(function () {
   av.step();
 
   //frame 28
-  av.umsg("The resulting grammar is the same grammar but without any useless productions");
+  av.umsg("The resulting Grammar $G'$ has $L(G)=L(G')$, and $G'$ has no useless productions.");
   grammerMatrix2.hide();
   VDG.hide();
   grammerMatrix3.show();
   av.step();
 
   //frame 29
-  av.umsg("Finally, How would you implement removing useless number (2)? How do you know which nodes are accessible from S?");
+  av.umsg("Finally, How would you implement Part 2 of the algorithm to remove useless productions? How do you know which nodes are accessible from S?");
   grammerMatrix3.hide();
   av.step();
 
   //frame 30
-  av.umsg("Finally, How would you implement removing useless number (2)? How do you know which nodes are accessible from S?<br/>The answer is to use the Depth First Search or Breadth First Search graph algorithms");
+  av.umsg("Finally, How would you implement Part 2 of the algorithm to remove useless productions? How do you know which nodes are accessible from S?<br/><br/>The answer is to use a Depth First Search or Breadth First Search graph algorithm.");
   av.recorded();
 });

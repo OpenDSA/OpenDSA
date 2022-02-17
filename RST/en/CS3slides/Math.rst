@@ -44,7 +44,7 @@ Math Background
 
 .. slide:: Estimation Example
 
-   | How many library bookcasese does it take to store books totalling
+   | How many library bookcases does it take to store books totaling
      one million pages?
 
    | Estimate

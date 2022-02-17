@@ -75,12 +75,13 @@
     },    
     "Week 4": {
       "FLSlides/NonRegular": {},
-      "FLSlides/CFL": {}
+      "FLSlides/NRClosure": {}
     },
     "Week 5": {
-      "FLSlides/CFLSimp": {}
+      "FLSlides/CFL": {}
     },
     "Week 7": {
+      "FLSlides/CFLSimp": {},
       "FLSlides/PDA": {},
       "FLSlides/PDACFL": {}
     },
