@@ -10,7 +10,7 @@ $(document).ready(function () {
     var s1="AACG";
     var s2="ACTCG"
   var jsav = new JSAV("Gtraceback");
-  jsav.umsg("Match = 1, Mismatch = -1, Gab = -2");
+  jsav.umsg("Match = 1, Mismatch = -1, Gap = -2");
   var matrix = new jsav.ds.matrix([[,, , , , ,],[, , , , ,, ],[,,,,,,]
     ,[, , , , ,, ],[, , ,, ,, ],[, ,,,,, ],[, , , , ,,]], 
     {style: "table", top: 0, left: 300});
