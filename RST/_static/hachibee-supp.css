@@ -1,0 +1,51 @@
+#site-navigation.single-page { display: none; }
+/*
+body, .heading-style, h1, h2, h3, h4, h5, h6 { font-family: 'Raleway'; }
+
+body { font-size: 17px; }
+h2 { border-bottom: 1px solid #ccc; }
+*/
+.codeWrapper pre { margin-top: 0; }
+
+div.topic {
+    padding: 1em 1em 2px 1em;
+    margin-bottom: 1em;
+}
+p.topic-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+.jsavcontainer { border: 1px solid #ccc; }
+.line-block { display: block; margin-top: 1em; margin-bottom: 1em; }
+.line-block .line-block {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1.5em;
+}
+.prev-next-bottom { display: none; }
+table.docutils col { width: auto; }
+
+.sidebar{z-index:100; position:fixed;}
+.sidebar{margin:60px 20px 0 auto;}
+
+.sidebarwrapper{min-width:auto}
+
+.document{padding-top:20px; width: 75%}
+
+footer{position:absolute;clear:both;bottom:0;width:100%;margin:auto;height:20px;font-size:10px;}
+footer .show-copyright,footer .last-updated,footer .show-sphinx{display:inline-block;margin:auto;padding-left:15px;line-height:44px}
+footer .theme-info{margin:auto;padding:0 30px;line-height:27px;vertical-align:middle}
+footer li{display:inline-block;list-style:none}
+
+pre {
+    border-color: #0c3762;
+    border-style: dotted;
+    border-width: thin;
+    margin: 0 0 12px 0;
+    padding: 0.8em;
+    background-color: #f0f0f0;
+    font-size: 15px;
+    line-height: 1.3;
+}
+

@@ -25,8 +25,8 @@ Suggested Reading
 
 Chapters 5 - 6 Bags from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-Introduction to Stacks Video
-----------------------------
+[11:32] Introduction to Stacks Video
+------------------------------------
 
 .. raw:: html
 
@@ -62,8 +62,8 @@ Checkpoint 1
    :long_name: Quiz Unavailable
 
 
-Stack Memory Example
-~~~~~~~~~~~~~~~~~~~~
+[6:25] Stack Memory Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -83,8 +83,8 @@ Checkpoint 2
 Stacks Array-Based Design
 -------------------------
 
-Array-Based Design Video
-~~~~~~~~~~~~~~~~~~~~~~~~
+[4:57] Array-Based Design Video
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -101,8 +101,8 @@ Checkpoint 3
    :long_name: Quiz Unavailable
 
 
-Array Implementation Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:57] Array Implementation Video
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -124,8 +124,8 @@ TODO: fix URLS.
 Stacks Linked Chain Implementation
 ----------------------------------
 
-Linked Chain Implementation Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:50] Linked Chain Implementation Video
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
