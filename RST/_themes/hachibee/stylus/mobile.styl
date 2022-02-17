@@ -1,0 +1,84 @@
+@charset "utf-8"
+
+
+//@media screen and (max-width: 320px)
+//@media screen and (max-width: 480px)
+@media screen and (max-width: 568px)
+  h1
+    font-size: 3.5em
+    font-size: 3.5rem
+
+  h2
+    font-size: 3.1em
+    font-size: 3.1rem
+
+  [class^="icon-"]:before, [class*=" icon-"]:before
+    font-size: 1.9em
+    font-size: 1.9rem
+
+  ul, ol
+    margin-left: 15px
+
+  li
+    ul, ol
+      margin-left: 10px
+
+  img
+    margin: auto
+    max-width: 280px
+    height: auto
+    image-rendering: optimizeSpeed; // Legal fallback
+    image-rendering: -moz-crisp-edges; // Firefox
+    image-rendering: -o-crisp-edges; // Opera
+    image-rendering: -webkit-optimize-contrast; // Chrome, Safari
+    image-rendering: crisp-edges; // CSS3 Proposed
+  header
+    .right
+      margin-right: 0
+    .left
+      margin-left: 0
+  footer
+    font-size: 1.0em
+    font-size: 1.0rem
+    p
+      margin: auto
+      display: block
+      height: 35px
+      line-height: @height
+      vertical-align: middle
+
+  .breadcrumb
+    max-width: 250px
+    li
+      max-width: 50px
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+
+  .sidebarwrapper
+    h1, h2, h3, h4, h5
+      text-align: center
+    float: none
+    width: 90%
+    // disable relative links in side content
+    .relative
+      display: none
+  .sidebar
+    margin-top: 60px
+
+  .document
+    padding-top: 0
+    width: 90%
+
+  #raise-top
+    width: 35px
+    height: @width
+    line-height: @width
+    bottom: 10px
+    &:before
+      font-size: 2.8em
+      font-size: 2.8rem
+
+  #contents
+    &>ul
+      padding-left: 20px

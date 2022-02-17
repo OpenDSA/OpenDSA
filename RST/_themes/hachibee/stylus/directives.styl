@@ -1,0 +1,64 @@
+@import "colors"
+
+directive-font-style(color=#FEFEFE, shadow-color=#989DD6)
+  font-weight: normal
+  letter-spacing: 0.09em
+  //font-size-em: main-font-size-em + 0.1
+  font-size-em 1.7
+  border-style: none
+  color: color
+  text-shadow: 1px 1px 0px shadow-color
+
+// TipとかNoteとかのベースになるやつ
+.admonition
+  margin: 30px auto
+  padding-bottom: 5px
+  box-shadow(0.1px, 0.15px, 1px, .5px)
+  background-color: light-gray
+  p, ul
+    padding-left: 20px
+    padding-right: 20px
+
+.admonition-title
+  line-bottom()
+  padding-left: 15px
+  directive-font-style()
+  background-color: light-blue  // default color
+
+.attention
+  .admonition-title
+    background-color: orange
+
+.caution
+  .admonition-title
+    background-color: violet
+
+.danger
+  .admonition-title
+    background-color: red
+
+.error
+  .admonition-title
+    background-color: red
+
+.hint
+  .admonition-title
+    background-color: lime-green
+
+.important
+  .admonition-title
+    background-color: magenta
+
+.note
+  .admonition-title
+    background-color: light-blue
+
+.tip
+  .admonition-title
+    background-color: cyan
+
+.warning
+  .admonition-title
+    background-color: red
+
+

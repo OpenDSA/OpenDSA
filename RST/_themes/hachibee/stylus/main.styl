@@ -1,0 +1,466 @@
+@charset "utf-8"
+@import "nib/vendor"
+
+@import "colors"
+@import "widget-decorations"
+
+@import "normalize"
+@import "reset"
+
+header-background()
+  background-color: #F1F1F1
+
+header-position()
+  position: fixed
+  z-index: 10
+  top: 0%
+  margin: auto
+  width: 100%
+  height: main-font-size-px + 20px
+
+footer-background()
+  background-color: rgba(245, 245, 245, 0.7)
+
+footer-position()
+  position: absolute
+  clear: both
+  bottom: 0
+  width: 100%
+  margin: auto
+
+
+font-size-em(font_size, is-important=false)
+  if is-important
+    font-size: unit(font_size, 'px') !important
+    font-size: unit(font_size, 'rem') !important
+  else
+    font-size: unit(font_size, 'px')
+    font-size: unit(font_size, 'rem')
+
+set_rem(prop, font_size)
+  /*
+    px fall back should adjust font-size as follow `html {font-size: 62.5%;}`
+  */
+  {prop}: unit(font_size, 'px')
+  {prop}: unit(font_size, 'rem')
+
+
+main-min-width = 320px  // width of iphone(in portrait mode)
+main-max-width = 1024px
+sidebar-width = 270px
+article-width = 90%
+footer-height = 80px
+// TODO: fix
+main-font-size-px = 16px
+main-font-size-em = 1.6
+//
+padding-from-header = 60px
+
+left-indent = 30px
+
+
+html, body
+  font-family: "Avenir Next","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","Meiryo","メイリオ","ＭＳ ゴシック",sans-serif
+  color: black
+  background-color: base-white
+  //font-weight: lighter
+  height: 100%
+
+html
+  font-size: 62.5%
+
+body
+  font-size-em main-font-size-em
+  // enable font carning and some functions.
+  text-rendering: optimizeLegibility
+  text-align: justify
+  text-justify: distribute
+  -ms-text-justify: distribute
+
+div
+  font-size-em main-font-size-em
+
+div.content
+  width: 100%
+  height: auto
+  min-height: 100%
+  position: relative
+  margin: 0 auto
+
+
+h1, h2, h3, h4, h5
+  font-family: "Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","Meiryo","メイリオ","ＭＳ ゴシック",sans-serif
+  font-weight: lighter
+  text-align: left
+  & a
+    color: inherit
+    &:visited
+      color: inherit
+
+h3, h4, h5
+  margin: 15px auto 8px auto
+  color: green
+  line-bottom(.1, .2)
+
+h1
+  margin: 25px auto 25px auto
+  font-size-em 4.1
+  color: #576970
+  set_rem(letter-spacing, (-0.1))
+  font-weight: normal
+  text-align: left
+h2
+  margin: 25px auto 17px auto
+  font-size-em 3.2
+  color: #0B6486
+  set_rem(letter-spacing, (-0.08))
+  line-bottom()
+  set_rem(line-height, 3.9)
+h3
+  margin: 15px auto 10px auto
+  font-size-em: 2.8
+  set_rem(letter-spacing, (-0.01))
+  set_rem(line-height, 3.5)
+h4
+  font-size-em: 2.5
+h5
+  font-size-em: 2.0
+  color: #0B6486
+
+.toc-backref
+  color: inherit  // disable anchors color used on content backref
+
+ul
+  padding: 0
+  margin: 20px auto 0 15px
+
+ol
+  padding: 0
+  margin: 20px auto 0 15px
+  &.upperalpha
+    list-style-type: upper-alpha
+  &.upperroman
+    list-style-type: upper-roman
+  &.loweralpha
+    list-style-type: lower-alpha
+  &.lowerroman
+    list-style-type: lower-roman
+
+li ul
+  margin: 5px auto 0 15px
+
+li
+  // list内のparagraphのコンテンツがはみ出るのに対応
+  word-wrap: break-word
+  margin: 5px auto
+  p
+    margin-top: 0
+    &.first
+      margin-top: 0.8em
+      margin-bottom: 0.2em
+  dl
+    dt
+      // リストのタイトル部分
+    dd  // リストのぶら下がり部分
+      margin: 0
+
+a
+  color: #009FC7
+  text-decoration: none
+  &:hover
+    color: #427daf
+    text-decoration: underline
+  &:visited
+    color: #BE4A94
+
+em
+  font-weight: bold
+
+cite
+  set_rem(margin-left, 0.2)
+  set_rem(margin-right, 0.2)
+  font-weight: normal
+  background-color: light-gray
+
+// for sourc code highlight
+pre
+  font-family: "Ricty-Discord","Ricty-Discord","Osaka－等幅","Osaka-Mono",monospace,serif
+  padding: 10px 10px 13px 10px
+  margin: 10px 0
+  border-radius(3px)
+
+input[type="text"]
+  border: 1px solid rgba(213, 209, 228, 1)
+  font-weight: lighter;
+  max-width: 90%
+  margin: 5px auto
+
+input[type="submit"]
+  border-radius(3px)
+  box-shadow(.1px, .1px, 2px, .1px)
+
+  display: inline-block
+  color: base-white
+  padding: 6px 10px 2px 10px
+  background-color: #27B9D4
+  font-weight: normal
+  letter-spacing: 0.09em
+  border-style: none
+  text-shadow: 1px 1px 0px #6682CA
+
+// set webfont on :before in ./genericons.style
+// blockquote
+
+/*for Webkit*/
+input::-webkit-input-placeholder
+    color: #C4D7DA
+/*for Firefox*/
+input:-moz-placeholder
+    color: #C4D7DA
+input:placeholder
+    color: #C4D7DA
+
+p.topless
+  padding: 0 auto
+  margin: 0 auto
+
+header
+  header-background()
+  header-position()
+  .right
+    margin-right: 20px
+  .left
+    margin-left: 20px
+  ul
+    padding: 0
+    margin: auto
+  li
+    display: inline-block
+    vertical-align: middle
+
+header.modest
+  transition(opacity, 0.5s, linear, 0)
+  opacity: 0.5
+  &:hover
+    opacity: 1
+
+.breadcrumb
+  li
+    display: inline-block
+    list-style: none
+
+// ---- pre like section -> in rst '`'
+common-property-of-pre()
+  set_rem(padding-left, 0.4)
+  set_rem(padding-right, 0.4)
+  font-weight: normal
+  background-color: light-gray
+  box-shadow(.1px, 0.1px, 0px, .1px darken(@background-color, 40%))
+
+// ``
+cite
+  common-property-of-pre()
+
+// :command:``
+strong.command
+  common-property-of-pre()
+  font-family: "Ricty-Discord","Ricty-Discord","Osaka－等幅","Osaka-Mono",monospace,serif
+
+// ````
+.pre
+  common-property-of-pre()
+  background-color: light-yellow
+
+// :file:``
+tt.file .pre
+  background-color: light-gray
+// ----
+
+.section
+  margin: 25px auto
+
+.documentwrapper
+  background-color: base-white
+  min-width: main-min-width
+  width: 100%
+  height: auto
+  min-height: 100%
+  margin: 0 auto
+
+
+.document
+  overflow: hidden
+  background-color: base-white
+  margin: 0 auto
+  padding-top: padding-from-header
+  padding-bottom: footer-height + 20px
+  min-width: main-min-width
+  width: 60%
+
+
+.sidebarwrapper
+  float: right
+  margin: 0 auto
+  width: 20%
+  min-width: sidebar-width
+  height: 100%
+
+
+.sidebar
+  margin: (padding-from-header * 3) auto 0 auto
+  width: 85%
+  font-size-em main-font-size-em - 0.3
+  .relative
+    margin: 60px auto
+  .topless
+    width: inherit
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+
+ul, ol
+  margin-left: left-indent
+
+nav.localtoc
+  ul
+    margin-left: 0
+  li
+    padding-left: 0
+    list-style: none
+    ul
+      margin-left: 15px
+      li
+        list-style: square
+
+.docutils
+  dt
+    margin-top: 18px
+    font-weight: bold
+  dd
+    margin-left: 30px
+    -webkit-margin-start: 30px
+    -moz-margin-start: 30px
+    p
+      margin: 0.4em auto
+      margin: 0.4rem auto
+
+// field list
+.field
+  th.field-name
+    vertical-align: top
+    border-style: none
+    font-weight: bold
+  td.field-body
+    vertical-align: top
+    border-style: none
+    box-shadow: none
+    padding-left: 10px
+    p
+      margin: 0.4em auto
+      margin: 0.4rem auto
+      &.first
+        set_rem(margin-top, 0.2)
+
+#searchbox
+  margin: 50px auto
+
+
+.body
+  width: article-width
+  margin: auto
+
+
+.headerlink
+  text-decoration: none
+  margin-left: 10px
+  color: #32A1BD
+  font-size-em main-font-size-em - 0.1
+  &:visited
+    color: #32A1BD
+
+
+footer
+  footer-background()
+  footer-position()
+  height: footer-height
+  .show-copyright, .last-updated, .show-sphinx
+    display: inline-block
+    margin: auto
+    padding-left: 15px
+    line-height: footer-height - 36px
+  .theme-info
+    margin: auto
+    padding: 0 30px
+    line-height: 27px
+    vertical-align: middle
+  li
+    display: inline-block
+    list-style: none
+
+
+.left
+  float: left
+
+.right
+  float: right
+
+.clearer
+  clear: both
+
+
+table
+  box-sizing: border-box
+  border-radius(3px)
+
+  margin: 20px 0
+  border: 0px solid rgba(243, 243, 243, 0.15)
+  border-right-color: rgba(189, 236, 255, 0.4)
+  box-shadow(.1px, 0.1px, 0px, 0px rgba(52, 52, 52, 1))
+  caption
+    text-align: center
+    font-size-em main-font-size-em + 0.1
+    line-height: main-font-size-px + 20px
+  thead
+    color: #FFFFFF
+    letter-spacing: 0.25em
+    text-shadow: .5px .9px 0px rgba(45, 134, 204, 1)
+    th
+      border: 2px solid rgba(243, 243, 243, 0.2)
+      background-color: #52B5CE
+      text-align: center
+      font-weight: normal
+      font-size-em: main-font-size-em + 0.1
+      &:first-child
+        border-left: 1px solid #52B5CE
+      &:last-child
+        border-right: 1px solid #52B5CE
+  //tbody
+  tr
+    height: main-font-size-px + 25px
+  td
+    border: 1px solid #DADCE1
+    padding: 0 5px
+  .row-even
+    background-color: light-gray
+  .row-odd
+    background-color: base-white
+
+
+// directive of contents tree
+.contents
+  .topic-title.first
+    color: #0B6486
+    set_rem(font-size, 2.5)
+    set_rem(padding-left, 1.5)
+    set_rem(margin-top, 0.1)
+    set_rem(-webkit-margin-before, 0.1)
+  border-left: ridge 23px #30CDD5
+  padding: 10px 0
+
+
+@import "directives"
+@import "roles"
+
+
+.icon-index:before , .icon-next:before , .icon-previous:before
+  font-size-em 3.6 is-important=true
