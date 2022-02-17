@@ -1,3 +1,4 @@
+{%- if theme_show_relations  %}
 <div class="relative">
     {%- if prev %}
       <h4>{{ _('Previous topic') }}</h4>
@@ -10,3 +11,4 @@
                             title="{{ _('next chapter') }}">{{ next.title }}</a></p>
     {%- endif %}
 </div>
+{%- endif %}

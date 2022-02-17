@@ -27,3 +27,13 @@ p.topic-title {
 table.docutils col { width: auto; }
 
 .sidebar{z-index:100; position:fixed;}
+.sidebar{margin:60px 20px 0 auto;}
+
+.sidebarwrapper{min-width:auto}
+
+.document{padding-top:20px; width: 75%}
+
+footer{position:absolute;clear:both;bottom:0;width:100%;margin:auto;height:20px;font-size:10px;}
+footer .show-copyright,footer .last-updated,footer .show-sphinx{display:inline-block;margin:auto;padding-left:15px;line-height:44px}
+footer .theme-info{margin:auto;padding:0 30px;line-height:27px;vertical-align:middle}
+footer li{display:inline-block;list-style:none}

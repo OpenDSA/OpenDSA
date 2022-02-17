@@ -1,4 +1,4 @@
-{%- if pagename != "search" %}
+{%- if theme_show_search and pagename != "search" %}
 <div id="searchbox" style="display: none">
   <h5>{{ _('Quick search') }}</h5>
     <form class="search" action="{{ pathto('search') }}" method="get">
