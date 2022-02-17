@@ -12,7 +12,7 @@ $(document).ready(function () {
     var s1_alignment="";
     var s2_alignment="";
   var jsav = new JSAV("Ltraceback");
-  jsav.umsg("Match = 1, Mismatch = -1, Gab = -2");
+  jsav.umsg("Match = 1, Mismatch = -1, Gap = -2");
   var matrix = new jsav.ds.matrix([[,, , , , ,],[, , , , ,, ],[,,,,,,]
   ,[, , , , ,, ],[, , ,, ,, ],[, ,,,,, ],[, , , , ,,]], 
   {style: "table", top: 0, left: 300});

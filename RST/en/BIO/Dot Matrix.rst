@@ -8,8 +8,8 @@
    :satisfies: DNASeq
    :topic: DNASeq
 
-Dot Matrix Method
-=================
+Dotplot
+=======
 **The dotplot is a simple picture that gives an overview of the similarities between two sequences**.Less obvious is its close relationship to alignments.
 The dotplot is a table or matrix. The rows correspond to the residues of one sequence and the columns to the residues of the other sequence. 
 In its simplest form,

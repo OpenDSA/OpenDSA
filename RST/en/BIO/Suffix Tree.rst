@@ -11,8 +11,6 @@
 Suffix Tree
 ===========
 
-This is a visualization for DNA Sequencing
-
 .. inlineav:: Suffix ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/Suffix.css 
