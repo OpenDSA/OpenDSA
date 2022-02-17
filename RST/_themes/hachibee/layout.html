@@ -147,17 +147,21 @@
     <body>
     <div class="content">
         {%- block header %}
-            {%- if theme_show_header %}
+
         <header id="top-header">
             <div class="left">
+            {%- if theme_show_header %}
                 {%- block relbar1 %}{{ breadcrumb() }}{% endblock %}
+            {%- endif %}
             </div>
             <div class="right">
+            {%- if theme_show_header %}
                 {{ relbar() }}
+            {%- endif %}
             </div>
             <div class="clearer"></div>
         </header>
-             {%- endif %}
+
         {% endblock %}
 
         <div class="documentwrapper">
