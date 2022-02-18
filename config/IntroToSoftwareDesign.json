@@ -230,6 +230,29 @@
           "points": 9
         }
       }
+    },
+
+    "Pictures and For-each Loops":{
+      "IntroToSoftwareDesign/PicturesAndForEachLoops": {
+        "Syntax Practice 6a: Pixel Loops": {
+          "points": 20
+        },
+        "Syntax Practice 6b: More For-Each Loops": {
+          "points": 20
+        },
+        "Programming Practice 6a": {
+          "points": 20
+        },
+        "Programming Practice 6b": {
+          "points": 20
+        },
+        "Week6Quiz2Summ": {
+          "points": 10
+        },
+        "Week6Quiz3Summ": {
+          "points": 10
+        }
+      }
     }
   }
 }
