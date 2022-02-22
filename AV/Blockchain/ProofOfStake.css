@@ -20,6 +20,12 @@
   line-height: 10px !important;
 }
 
+.jsavautoresize .jsavnode {
+  border-radius: 100px;
+  min-width: 100px;
+  min-height: 100px;
+}
+
   .thinredline {
     stroke: red;
   }
