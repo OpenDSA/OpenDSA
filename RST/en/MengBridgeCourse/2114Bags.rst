@@ -614,7 +614,6 @@ TODO: fix URLS.
      - Requires more space than a same-sized array
    * - Adding an entry to the bag is fast
      - Removing a specified entry requires time to locate the entry
-   * - Removing an unspecified entry is fast
 
 
 Checkpoint 7
