@@ -470,7 +470,6 @@
     },
 
     "The Bag Interface and ArrayBags":{
-
       "MengBridgeCourse/2114Bags": {
         "Checkpoint 1": {
           "points": 0,
@@ -504,7 +503,10 @@
           "points": 0,
           "required": false
         }
-      },
+      }
+    },
+
+    "Efficiency": {
       "MengBridgeCourse/2114Efficiency": {
         "Checkpoint 1": {
           "points": 0,
@@ -518,7 +520,9 @@
           "points": 0,
           "required": false
         }
-      },
+      }
+    },
+    "Stacks": {
       "MengBridgeCourse/2114Stacks": {
         "Checkpoint 1": {
           "points": 0,
@@ -536,7 +540,10 @@
           "points": 0,
           "required": false
         }
-      },
+      }
+    },
+
+    "Linked Chains and Pointers":{
       "MengBridgeCourse/2114LinkedChainPointers": {
         "Checkpoint 1": {
           "points": 0,
@@ -550,8 +557,10 @@
           "points": 0,
           "required": false
         }
-      },
+      }
+    },
 
+    "Computer Science and Ethics":{
       "MengBridgeCourse/2114Ethics": {
         "Checkpoint 1": {
           "points": 0,
@@ -565,22 +574,44 @@
           "points": 0,
           "threshold": 0
         }
-       },
-      "MengBridgeCourse/2114Recursion": { },
-      "MengBridgeCourse/2114SoftwareDesignAndMVC": { },
-      "MengBridgeCourse/2114Queues": { },
-      "MengBridgeCourse/2114Lists": { },
+       }
+    },
 
+
+    "Recursion": {
+      "MengBridgeCourse/2114Recursion": { }
+    },
+
+    "Sofware Design and MVC": {
+      "MengBridgeCourse/2114SoftwareDesignAndMVC": { }
+    },
+
+    "Queues":{
+      "MengBridgeCourse/2114Queues": { }
+    },
+
+    "Lists": {
+      "MengBridgeCourse/2114Lists": { }
+    },
+
+    "Generics 2":{
       "MengBridgeCourse/2114Generics2": {
         "Checkpoint 1": {
           "points": 0,
           "threshold": 0
         }
-       },
+       }
+    },
 
-      "MengBridgeCourse/2114ComparingAndSorting": { },
+    "Comparing and Sorting":{
+      "MengBridgeCourse/2114ComparingAndSorting": { }
+    },
+
+    "Iterators":{
       "MengBridgeCourse/2114Iterators": { }
-
     }
+
+
+
   }
 }
