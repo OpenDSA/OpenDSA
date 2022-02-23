@@ -494,33 +494,6 @@
         }
       },
 
-    "Style Review":{
-      "MengBridgeCourse/2114StyleReview":{}
-    },
-
-    "Objects, Enums, and UML Diagrams":{
-      "MengBridgeCourse/2114ObjectsEnumsAndUML":{
-        "Checkpoint 1": {
-          "points": 0,
-          "threshold": 0
-        }
-      }
-    },
-
-    "Exceptions": {
-        "MengBridgeCourse/2114Exceptions":{
-          "Checkpoint 1": {
-            "points": 0,
-            "threshold": 0
-          },
-          "Checkpoint 2": {
-            "points": 0,
-            "threshold": 0
-          }
-        }
-    },
-
-    "The Bag Interface and ArrayBags":{
       "MengBridgeCourse/2114Bags": {
         "Checkpoint 1": {
           "points": 0,
