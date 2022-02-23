@@ -10,9 +10,7 @@ $(document).ready(function() {
   let leftAdding = 54;
   var blocktop = 17;
 
-  var graph = av.ds.graph({visible: true, left: -10, top: blocktop });
-
-  //TODO: Figure out why there is a slide 0
+  var graph = av.ds.graph({visible: true, left: -10, top: blocktop, height: 300, width: 300});
 
   av.umsg("The white nodes on perimeter of the graph represent thin nodes while the blue interior nodes represent validator nodes. A Validator for the current block has not yet been selected.");
 
@@ -25,15 +23,13 @@ $(document).ready(function() {
 
 
   // Validator Nodes
-  // TODO: Figure out how to change size of nodes
   const val1 = graph.addNode('V1', {"left": "150px", "top":"100px"});
   const val2 = graph.addNode('V2', {"left": "250px", "top":"100px"});
   const val3 = graph.addNode('V3', {"left": "200px", "top":"150px"});
   val1.addClass('bluenode');
   val2.addClass('bluenode');
   val3.addClass('bluenode');
-  
-  av.step()
+  av.displayInit();
 
   // Slide 2
   av.umsg("The Validator for the current block has now been selected as shown in yellow.");
