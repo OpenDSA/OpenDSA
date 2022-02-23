@@ -570,10 +570,16 @@
       "MengBridgeCourse/2114SoftwareDesignAndMVC": { },
       "MengBridgeCourse/2114Queues": { },
       "MengBridgeCourse/2114Lists": { },
-      "MengBridgeCourse/2114Generics2": {},
+
+      "MengBridgeCourse/2114Generics2": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        }
+       },
+
       "MengBridgeCourse/2114ComparingAndSorting": { },
-      "MengBridgeCourse/2114Iterators": { },
-      "MengBridgeCourse/2114SortedLists": { }
+      "MengBridgeCourse/2114Iterators": { }
 
     }
   }
