@@ -22,7 +22,6 @@ Upon completion of this module, students will be able to:
 [2:57] Introduction to Ethics Video
 -----------------------------------
 
-
 .. raw:: html
 
      <center>
@@ -65,7 +64,6 @@ Checkpoint 2
 
 [2:14] The Eight Key Questions (8KQ) Video
 ------------------------------------------
-
 
 .. raw:: html
 
