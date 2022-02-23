@@ -6,7 +6,8 @@
 .. avmetadata::
    :author: Molly Domino
 
-
+Software Design and MVC
+=======================
 
 Objectives
 ----------

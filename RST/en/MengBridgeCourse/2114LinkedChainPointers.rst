@@ -109,9 +109,5 @@ NOTE:
 Above is a temporary workout I put in place that would contain the following exercises
 TODO.  Remove this note and create the actual workout when confirmed.
 
-* https://codeworkout.cs.vt.edu/gym/exercises/681/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/304/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/684/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/682/practice
 
 When fixed this will be called: "Coding Practice: Linked Chains"
