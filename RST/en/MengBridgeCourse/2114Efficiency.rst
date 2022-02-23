@@ -6,8 +6,8 @@
 .. avmetadata::
    :author: Molly Domino
 
-Linked Chains (Pointers)
-========================
+Efficiency
+==========
 
 Objectives
 ----------
