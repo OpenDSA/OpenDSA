@@ -97,6 +97,7 @@
         }
       }
     },
+
     "Getting Started": {
       "MengBridgeCourse/1114GettingStarted": {
         "Week1ReadingQuizSumm": {
@@ -117,6 +118,7 @@
         }
       }
     },
+
     "Inheritance and Polymorphism": {
       "MengBridgeCourse/1114InheritanceAndPolymorphism": {
         "Week2ReadingQuizSumm": {
@@ -149,6 +151,7 @@
         }
       }
     },
+
     "Conditional and Repeating Actions": {
       "MengBridgeCourse/1114ConditionalActions": {
         "Week3ReadingQuizSumm": {
@@ -190,6 +193,7 @@
         }
       }
     },
+
     "Software Testing": {
       "MengBridgeCourse/1114SoftwareTesting": {
         "Week4Quiz4Summ": {
@@ -469,6 +473,32 @@
        }
     },
 
+    "Style Review":{
+      "MengBridgeCourse/2114StyleReview":{}
+    },
+
+    "Objects, Enums, and UML Diagrams":{
+      "MengBridgeCourse/2114ObjectsEnumsAndUML":{
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        }
+      }
+    },
+
+    "Exceptions": {
+        "MengBridgeCourse/2114Exceptions":{
+          "Checkpoint 1": {
+            "points": 0,
+            "threshold": 0
+          },
+          "Checkpoint 2": {
+            "points": 0,
+            "threshold": 0
+          }
+        }
+    },
+
     "The Bag Interface and ArrayBags":{
       "MengBridgeCourse/2114Bags": {
         "Checkpoint 1": {
@@ -522,6 +552,7 @@
         }
       }
     },
+
     "Stacks": {
       "MengBridgeCourse/2114Stacks": {
         "Checkpoint 1": {
@@ -576,7 +607,6 @@
         }
        }
     },
-
 
     "Recursion": {
       "MengBridgeCourse/2114Recursion": { }
