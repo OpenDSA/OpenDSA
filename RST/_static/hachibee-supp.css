@@ -34,7 +34,7 @@ table.docutils col { width: auto; }
 
 .document{padding-top:20px; width: 75%}
 
-header{background-color: #ffffff}
+header{background-color: #ffffff; height: 0px}
 
 footer{position:absolute;clear:both;bottom:0;width:100%;margin:auto;height:20px;font-size:10px;}
 footer .show-copyright,footer .last-updated,footer .show-sphinx{display:inline-block;margin:auto;padding-left:15px;line-height:44px}
