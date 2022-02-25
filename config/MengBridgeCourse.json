@@ -97,6 +97,7 @@
         }
       }
     },
+
     "Getting Started": {
       "MengBridgeCourse/1114GettingStarted": {
         "Week1ReadingQuizSumm": {
@@ -117,6 +118,7 @@
         }
       }
     },
+
     "Inheritance and Polymorphism": {
       "MengBridgeCourse/1114InheritanceAndPolymorphism": {
         "Week2ReadingQuizSumm": {
@@ -149,6 +151,7 @@
         }
       }
     },
+
     "Conditional and Repeating Actions": {
       "MengBridgeCourse/1114ConditionalActions": {
         "Week3ReadingQuizSumm": {
@@ -190,6 +193,7 @@
         }
       }
     },
+
     "Software Testing": {
       "MengBridgeCourse/1114SoftwareTesting": {
         "Week4Quiz4Summ": {
@@ -244,7 +248,7 @@
         }
       }
     },
-    
+
     "Pictures and For-each Loops":{
       "MengBridgeCourse/1114PicturesAndForEachLoops": {
         "Syntax Practice 6": {
@@ -284,7 +288,7 @@
         }
       }
     },
-    
+
     "Grouping Objects Using Lists and Nested For Loops":{
       "MengBridgeCourse/1114GroupingObjectsUsingListsAndNestedForLoops": {
         "Syntax Practice 8": {
@@ -308,7 +312,7 @@
         }
       }
     },
-    
+
     "Lists, Loop Idioms, Generics, and the Null Keyword":{
       "MengBridgeCourse/1114ListAndLoopsDeepDive": {
         "Syntax Practice 9": {
@@ -348,8 +352,8 @@
           "threshold": 10
         }
       }
-    }, 
- 
+    },
+
     "Multi-dimensional Arrays":{
       "MengBridgeCourse/1114MDArrays": {
         "Syntax Practice: 2D Array Basics": {
@@ -380,7 +384,7 @@
           "points": 10
         }
       }
-    },   
+    },
 
     "Input, Output and Variable Scoping":{
       "MengBridgeCourse/1114FileIO": {
@@ -444,7 +448,7 @@
         }
       }
     },
-    
+
     "Static, Main, and Exceptions":{
        "MengBridgeCourse/1114StaticMainAndExceptions":{
           "Week14Quiz1Summ":{
@@ -468,8 +472,27 @@
           }
        }
     },
-    
-    "The Bag Interface and ArrayBags":{
+
+    "Unit 7":{
+      "MengBridgeCourse/2114StyleReview":{},
+
+      "MengBridgeCourse/2114ObjectsEnumsAndUML":{
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
+      "MengBridgeCourse/2114Exceptions":{
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
 
       "MengBridgeCourse/2114Bags": {
         "Checkpoint 1": {
@@ -488,11 +511,26 @@
           "points": 0,
           "threshold": 0
         },
+        "Checkpoint 5": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 6": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 7": {
+          "points": 0,
+          "threshold": 0
+        },
         "Unavailable": {
           "points": 0,
           "required": false
         }
-      },
+      }
+    },
+
+    "Efficiency": {
       "MengBridgeCourse/2114Efficiency": {
         "Checkpoint 1": {
           "points": 0,
@@ -506,7 +544,10 @@
           "points": 0,
           "required": false
         }
-      },
+      }
+    },
+
+    "Stacks": {
       "MengBridgeCourse/2114Stacks": {
         "Checkpoint 1": {
           "points": 0,
@@ -524,7 +565,10 @@
           "points": 0,
           "required": false
         }
-      },
+      }
+    },
+
+    "Linked Chains and Pointers":{
       "MengBridgeCourse/2114LinkedChainPointers": {
         "Checkpoint 1": {
           "points": 0,
@@ -538,18 +582,58 @@
           "points": 0,
           "required": false
         }
-      },
+      }
+    },
 
-      "MengBridgeCourse/2114Ethics": { },
-      "MengBridgeCourse/2114Recursion": { },
-      "MengBridgeCourse/2114SoftwareDesignAndMVC": { },
-      "MengBridgeCourse/2114Queues": { },
-      "MengBridgeCourse/2114Lists": { },
-      "MengBridgeCourse/2114Generics2": { },
-      "MengBridgeCourse/2114ComparingAndSorting": { },
-      "MengBridgeCourse/2114Iterators": { },
-      "MengBridgeCourse/2114SortedLists": { }
+    "Computer Science and Ethics":{
+      "MengBridgeCourse/2114Ethics": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        }
+       }
+    },
 
+    "Recursion": {
+      "MengBridgeCourse/2114Recursion": { }
+    },
+
+    "Sofware Design and MVC": {
+      "MengBridgeCourse/2114SoftwareDesignAndMVC": { }
+    },
+
+    "Queues":{
+      "MengBridgeCourse/2114Queues": { }
+    },
+
+    "Lists": {
+      "MengBridgeCourse/2114Lists": { }
+    },
+
+    "Generics 2":{
+      "MengBridgeCourse/2114Generics2": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        }
+       }
+    },
+
+    "Comparing and Sorting":{
+      "MengBridgeCourse/2114ComparingAndSorting": { }
+    },
+
+    "Iterators":{
+      "MengBridgeCourse/2114Iterators": { }
     }
+
   }
 }
