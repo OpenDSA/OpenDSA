@@ -15,7 +15,9 @@ Object-Oriented Design: Aggregation, Composition, and Delegation
 
 .. raw:: html
 
+   <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/ry7hWZm5oEw?start=698" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 As we build more complex programs,
 we need multiple objects to model problems.
@@ -351,6 +353,12 @@ you can write each piece on its own line, and combine them using ``+``.
 Frequently Used String Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/P9hEmbfdiuc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 Here are some common string methods you might find useful.
 
 .. raw:: html
@@ -512,7 +520,7 @@ write:
 
 
 Check Your Understanding: Strings
-----------------------------------------
+---------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz1Summ.html ka
    :long_name: Strings
@@ -649,6 +657,12 @@ phrase "Blast off!".
 
 Traversing Strings
 ~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/gZ8EeiAHUnA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 You can use a ``for`` loop to loop through the characters of a string.
 The following loop traverses the characters in ``fruit`` and displays them,
@@ -1014,15 +1028,29 @@ Check Your Understanding: Method Overriding
    :long_name: Method Overriding
 
 
-Syntax Practice 7
------------------
+Syntax Practice 7a: For Loops and OO Design
+-------------------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 7'
+.. extrtoolembed:: 'Syntax Practice 7a: For Loops and OO Design'
    :workout_id: 1479
 
 
-Programming Practice 7
-----------------------
+Syntax Practice 7b: toString and Returning Values
+-------------------------------------------------
 
-.. extrtoolembed:: 'Programming Practice 7'
+.. extrtoolembed:: 'Syntax Practice 7b: toString and Returning Values'
+   :workout_id: 1846
+
+
+Programming Practice 7a
+-----------------------
+
+.. extrtoolembed:: 'Programming Practice 7a'
    :workout_id: 1480
+
+
+Programming Practice 7b
+-----------------------
+
+.. extrtoolembed:: 'Programming Practice 7b'
+   :workout_id: 1847

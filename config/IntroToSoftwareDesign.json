@@ -253,6 +253,35 @@
           "points": 10
         }
       }
+    },
+
+    "Aggregation, Strings and More Loops":{
+      "IntroToSoftwareDesign/AggregationStringsandMoreLoops": {
+        "Syntax Practice 7a: for loops and OO design": {
+          "points": 18
+        },
+        "Syntax Practice 7b: toString and Returning Values": {
+          "points": 18
+        },
+        "Programming Practice 7a": {
+          "points": 18
+        },
+        "Programming Practice 7b": {
+          "points": 18
+        },
+        "Week7Quiz1Summ": {
+          "points": 7
+        },
+        "Week7Quiz2Summ": {
+          "points": 7
+        },
+        "Week7Quiz3Summ": {
+          "points": 7
+        },
+        "Week7Quiz4Summ": {
+          "points": 7
+        }
+      }
     }
   }
 }
