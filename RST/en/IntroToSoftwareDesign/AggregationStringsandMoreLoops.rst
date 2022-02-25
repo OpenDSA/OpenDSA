@@ -748,7 +748,7 @@ Check Your Understanding: Counter Controlled Loops
 --------------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week7Quiz2Summ.html ka
-   :long_name: For-Each Loops
+   :long_name: Counter Controlled Loops
 
 
 Tips on Random Numbers
