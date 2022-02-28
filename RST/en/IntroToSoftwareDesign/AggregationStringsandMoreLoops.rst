@@ -174,6 +174,12 @@ not 1. In Java, all sequences of items start at position 0.
 Strings are Immutable
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/Bj9Mx_Lx3q4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 Strings provide methods, ``toUpperCase()`` and ``toLowerCase()``, that convert
 all of the string's letters to the specified upper- or lowercase form.
 These methods are often a source of confusion, because it sounds like they
