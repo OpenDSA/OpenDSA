@@ -15,7 +15,9 @@ Overview
 Languages, Grammars, and Machines
 ---------------------------------
 
-A :term:`language` is simply a collection of strings.
+A :term:`language` is simply a collection of strings
+(specifically, a subset of the strings that can be derived from some
+:term:`alphabet`).
 A fundamental thing to be able to do with a string is to determine
 whether or not it is part of a given language.
 This semester, we are studying various types of machines to see what

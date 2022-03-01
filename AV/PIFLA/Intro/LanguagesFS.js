@@ -7,7 +7,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("A :term:`language` is simply a collection (that is, a set) of strings. A fundamental thing to be able to do with a string is to determine whether or not it is part of a given language. We will give a way to formally define a particular language. But first we need some notation to help express ourselves.");
+  av.umsg("A :term:`language` is simply a collection (that is, a set) of strings. More precisely, a language is a subset of the strings that can be generated from some :term:`alphabet`. A fundamental thing to be able to do with a string is to determine whether or not it is part of a given language. We will give a way to formally define a particular language. But first we need some notation to help express ourselves.");
   av.displayInit();
   // Frame 2
   av.umsg(Frames.addQuestion("alpha"));

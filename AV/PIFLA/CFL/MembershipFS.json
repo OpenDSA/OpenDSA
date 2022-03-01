@@ -18,35 +18,34 @@
       "q5":{
         "type": "select",
         "description": "We have seen that if we can find a derivation from $G$ for $w$, then we know that $w$ is $\\in L(G)$.",
-        "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. What is $L(G)$?",
-        "answer": "set of even strings with an even number of $a$'s",
-        "choices": ["set of even strings with an even number of $a$'s", "set of strings with one $b$", "$\\{a^nba^n \\mid n \\ge 0\\}$"]
+        "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P),$ $\\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. What is $L(G)$?",
+        "answer": "set of strings with an even number of $a$'s",
+        "choices": ["set of strings with an even number of $a$'s", "set of strings with one $b$", "$\\{a^nba^n \\mid n \\ge 0\\}$"]
       },
       "q6":{
         "type": "select",
         "description": "We have seen that if we can find a derivation from $G$ for $w$, then we know that $w$ is $\\in L(G)$.",
-        "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. Is $abbab \\in L$?",
+        "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P),$ $\\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. Is $abbab \\in L$?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       },
       "q8":{
         "type": "select",
-        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.",
-        "question": "This time we need to use the algorithm to see if $abbab \\in L$. Select the $i = 1$ substitutions starting from the start variable. In other words, select all sentential forms that are resulting from making one substitution from $S$",
-        "answer": ["$S \\Rightarrow SS$", "$S \\Rightarrow aS$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$"],
-        "choices": ["$S \\Rightarrow SS$", "$S \\Rightarrow aS$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$", "$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow aSSa$"]
+        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions.<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.",
+        "question": "We will use the algorithm to see if $abbab \\in L$. Select all sentential forms that result from making one substitution from $S$.",
+        "answer": ["$S \\Rightarrow SS$", "$S \\Rightarrow aSa$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$"],
+        "choices": ["$S \\Rightarrow SS$", "$S \\Rightarrow aSa$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$", "$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow aSSa$"]
       },
       "q9":{
         "type": "select",
-        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.",
-        "question": "This time we need to use the algorithm to see if $abbab \\in L$. Select the $i = 2$ substitutions starting from the start variable. In other words, select some sentential forms that are resulting from making two substitution from $S$",
-        "answer": ["$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow aSSa$"],
-        "choices": ["$S \\Rightarrow SS$", "$S \\Rightarrow aS$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$", "$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow aSSa$"]
+        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions.<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.",
+        "question": "We will use the algorithm to see if $abbab \\in L$. Which sentential forms result from making two substitutions from $S$?",              "answer": ["$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow SaSa$"],
+        "choices": ["$S \\Rightarrow SS$", "$S \\Rightarrow aS$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$", "$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow SaSa$", "$S \\Rightarrow SS \\Rightarrow aSaaSa$"]
       },
       "q10":{
         "type": "select",
-        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.<br/>The derivation for $abbab$ is $S \\Rightarrow SS \\Rightarrow aSaS \\Rightarrow aSSaS \\Rightarrow abSaS \\Rightarrow abba \\Rightarrow abbab$",
-        "question": "If this is the correct derivation for the string $abbab$, what is the $i$ value that will lead the algorithm to find the derivation of $abbab$?",
+        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions.<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.<br/>The derivation for $abbab$ is:<br/> $S \\Rightarrow SS \\Rightarrow aSaS \\Rightarrow aSSaS \\Rightarrow abSaS \\Rightarrow abbaS \\Rightarrow abbab$",
+        "question": "How many derivation steps were needed to reach the derivation of $abbab$?",
         "answer": "6",
         "choices": ["4", "5", "6", "7"]
       },

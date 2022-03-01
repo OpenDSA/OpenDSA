@@ -227,21 +227,7 @@
           "points": 2.0
         }
       },
-      "PIFLA/CFGTransformations":{},
-      "PIFLA/CFGTransEx":{
-        "DFAmod3b":{
-          "points": 2.0
-        },
-        "CFGTransEx1":{
-          "points": 2.0
-        },
-        "CFGTransEx2":{
-          "points": 2.0
-        },
-        "ChomskyEx":{
-          "points": 2.0
-        }
-      }
+      "PIFLA/CFGTransformations":{}
     },
     "Appendix": {
       "Glossary": {}
