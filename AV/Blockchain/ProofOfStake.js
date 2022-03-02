@@ -63,6 +63,7 @@ $(document).ready(function() {
   c.hide();
   d.hide();
 
+
   //TODO: Animate V1 moving lower beneath V2 and V3 while the V1 Block sits between them
   // V2          V3
   //    V1 Block
