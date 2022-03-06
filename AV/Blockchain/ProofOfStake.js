@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   var graph = av.ds.graph({visible: true, left: -10, top: blocktop, height: 300, width: 300});
 
-  av.umsg("The white nodes on perimeter of the graph represent thin nodes while the blue interior nodes represent validator nodes. A Validator for the current block has not yet been selected.");
+  av.umsg("The white nodes on perimeter of the graph represent thin nodes while the blue interior nodes represent validator nodes. A Validator for the current block has not yet been selected. You will notice the validator nodes vary in size, this is done in proportion to how much each validator is staking.");
 
   // Thin Nodes
   graph.css({"font-size": "12px"});
@@ -29,30 +29,42 @@ $(document).ready(function() {
   val1.addClass('bluenode');
   val2.addClass('bluenode');
   val3.addClass('bluenode');
+
+  // Blockchain Current State
+  var blockchain = av.ds.list({top: blocktop + 0, left: "550px", nodegap: 10});
+  blockchain.addFirst("Blk 2").addFirst("Blk 1");
+  blockchain.layout({updateTop: false});
+
+
+  // BUG: THIS IS NOT WORKING FOR RESIZING NODES
+  val1.addClass('smallNode');
+  val2.addClass('mediumNode');
+  val3.addClass('largeNode');
+
   av.displayInit();
 
   // Slide 2
   av.umsg("The Validator for the current block has now been selected as shown in yellow.");
-  val1.addClass('yellownode');
+  val3.addClass('yellownode');
   av.step();
 
   // Slide 3
   av.umsg("The selected validator node will now begin to collect transactions that are broadcasted by thin nodes until it has assembled enough to propose a new block.")
-  const av1Edge = graph.addEdge(a, val1).addClass("orangeedge");
-  const bv1Edge = graph.addEdge(b, val1).addClass("orangeedge");
-  const cv1Edge = graph.addEdge(c, val1).addClass("orangeedge");
-  const dv1Edge = graph.addEdge(d, val1).addClass("orangeedge");
+  const av3Edge = graph.addEdge(a, val3).addClass("orangeedge");
+  const bv3Edge = graph.addEdge(b, val3).addClass("orangeedge");
+  const cv3Edge = graph.addEdge(c, val3).addClass("orangeedge");
+  const dv3Edge = graph.addEdge(d, val3).addClass("orangeedge");
 
   av.step();
 
   // Slide 4
   av.umsg("The selected validator node has now assembled enough transactions to propose a new block.");
-  av1Edge.hide();
-  bv1Edge.hide();
-  cv1Edge.hide(); 
-  dv1Edge.hide();
+  av3Edge.hide();
+  bv3Edge.hide();
+  cv3Edge.hide(); 
+  dv3Edge.hide();
   
-  var v1Block = av.ds.list({"left": "175px", "top":"100px", nodegap: 10}).addFirst("V1 Block");
+  var v3Block = av.ds.list({"left": "165px", "top":"185px", nodegap: 10}).addFirst("V3 Block");
 
   av.step();
 
@@ -62,11 +74,10 @@ $(document).ready(function() {
   b.hide();
   c.hide();
   d.hide();
-
-  //TODO: Animate V1 moving lower beneath V2 and V3 while the V1 Block sits between them
-  // V2          V3
-  //    V1 Block
-  //       V1
+  val1.addClass('topLeftSpot')
+  val2.addClass('topRightSpot')
+  val3.addClass('proposalSpot')
+  v3Block.addClass('deadCenterBlock');
 
 
   av.step();
@@ -78,6 +89,12 @@ $(document).ready(function() {
 
   // Slide 7
   av.umsg("A majority of staked currency from non-validator nodes has voted in-favor of this block and thus, the block gets appended.");
+  v3Block.hide();
+  blockchain.hide();
+  
+  var blockchainUpdated = av.ds.list({top: blocktop + 0, left: "550px", nodegap: 10});
+  blockchainUpdated.addFirst("V3 Block").addFirst("Blk 2").addFirst("Blk 1");
+  blockchainUpdated.layout({updateTop: false});
 
   av.recorded();
 });
