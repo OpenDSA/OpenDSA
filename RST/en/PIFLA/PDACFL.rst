@@ -14,6 +14,24 @@ PDAs and Context Free Languages
 PDAs and Context Free Languages
 -------------------------------
 
+Let's recap some important points that we have covered this semester.
+
+#. Regular languages are languages that can be recognized by DFAs or
+   NFAs, or represented by a RegEx or a regular grammar.
+   These are all equivalent and interchangable.
+#. Adding non-determinism to DFAs added no power in terms of the
+   languages that can be recognized.
+#. Context-free languages (CFL) are those languages that can be
+   represented by context-free grammars (CFG).
+#. Regular languages are a subset of context-free languages.
+#. PDAs have stack memory, and this allows them to recognize all
+   regular grammars (just don't use the stack), and some other
+   languages that we have proved to be non-regular.
+#. A PDA can be deterministic (DPDA) or non-deterministic (NPDA).
+
+In this module, we address the relationship between NPDAs and CFLs.
+Spoiler alert: NPDAs recognize CFLs.
+
 .. inlineav:: PDACFLFS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDACFLFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDACFLFS.js

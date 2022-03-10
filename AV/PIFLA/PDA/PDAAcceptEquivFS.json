@@ -3,112 +3,112 @@
     "en": {
       "q2": {
         "type": "select",
-        "description": "As we said before, PDAs have 2 different types of language acceptance.",
+        "description":  "PDAs can support two different types of language acceptance. A natural question is: What is their relationship in terms of the languages that can be recognized?",
         "question": "What are these two models?",
         "answer": ["Final State acceptance", "Empty Stack acceptance"],
         "choices": ["Final State acceptance", "Empty Stack acceptance"]
       },
       "q3": {
         "type": "select",
-        "description": "These two modes are equivalent",
-        "question": "How can we prove that",
-        "answer": ["We need to find a method that convert any empty stack model to final state model", "We need to find a method that convert any final state model to empty stack model"],
-        "choices": ["We need to find a method that convert any empty stack model to final state model", "We need to find a method that convert any final state model to empty stack model"]
+        "description": "<b>Theorem:</b> These two modes of string acceptance are equivalent in terms of the languages that can be recognized.",
+        "question": "How can we prove this?",
+        "answer": ["We need to find a way to convert any PDA using the empty stack acceptance model to an equivalent machine using the final state acceptance model.", "We need to find a way to convert any PDA using the final state acceptance model to an equivalent machine using the empty state acceptance model."],
+        "choices": ["We need to find a way to convert any PDA using the empty stack acceptance model to an equivalent machine using the final state acceptance model.", "We need to find a way to convert any PDA using the final state acceptance model to an equivalent machine using the empty state acceptance model."]
       },
       "q5": {
         "type": "select",
-        "description": "$\\textbf{Theorem:}$ Given NPDA $M$ that accepts by final state, $\\exists$ NPDA $M\\prime$ that accepts by empty stack such that $L(M)=L(M\\prime)$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by final state, there exists NPDA $M'$ that accepts by empty stack such that $L(M) = L(M')$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$.",
         "question": "What is the acceptance model for $M$?",
         "answer": "Final state acceptance",
         "choices": ["Final state acceptance","Empty stack acceptance"]
       },
       "q6": {
         "type": "select",
-        "description": "$\\textbf{Theorem:}$ Given NPDA $M$ that accepts by final state, $\\exists$ NPDA $M\\prime$ that accepts by empty stack such that $L(M)=L(M\\prime)$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M\\prime = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol)<br/>See the figure below",
-        "question": "What is the acceptance model for $M\\prime$?",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by final state, there exists NPDA $M'$ that accepts by empty stack such that $L(M) = L(M')$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$.<br/>Construct $M' = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$. (NOTE: $z'$ is a new symbol that we can distinguish from $z$.)<br/>See the figure below.",
+        "question": "What is the acceptance model for $M'$?",
         "answer": "Empty stack acceptance",
         "choices": ["Final state acceptance","Empty stack acceptance"]
       },
       "q7": {
         "type": "true/false",
-        "description": "$\\textbf{Theorem:}$ Given NPDA $M$ that accepts by final state, $\\exists$ NPDA $M\\prime$ that accepts by empty stack such that $L(M)=L(M\\prime)$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M\\prime = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by final state, there exists NPDA $M'$ that accepts by empty stack such that $L(M) = L(M')$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$.<br/>Construct $M' = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$. (NOTE: $z'$ is a new symbol that we can distinguish from $z$.)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$",
         "question": "$Q' = Q \\cup \\{q_s, q_f\\}$ means that we will add 2 new nodes $q_s$ and $q_f$",
         "answer": "True",
         "choices": []
       },
       "q8": {
         "type": "true/false",
-        "description": "$\\textbf{Theorem:}$ Given NPDA $M$ that accepts by final state, $\\exists$ NPDA $M\\prime$ that accepts by empty stack such that $L(M)=L(M\\prime)$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M\\prime = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
-        "question": "The reason for adding new start stack symbole is that the the original machine will never pop the new stack start symbole $z'$",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by final state, there exists NPDA $M'$ that accepts by empty stack such that $L(M) = L(M')$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$.<br/>Construct $M' = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$. (NOTE: $z'$ is a new symbol that we can distinguish from $z$.)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
+        "question": "The reason for adding a new start stack symbol is that the the original machine will never pop the new stack start symbol $z'$",
         "answer": "True",
         "choices": []
       },
       "q9": {
         "type": "select",
-        "description": "$\\textbf{Theorem:}$ Given NPDA $M$ that accepts by final state, $\\exists$ NPDA $M\\prime$ that accepts by empty stack such that $L(M)=L(M\\prime)$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M\\prime = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
-        "question": "What is $q_s$ defined in $M\\prime$",
-        "answer": "the start state for $M\\prime$",
-        "choices": ["the start state for the original machine", "the start state for $M\\prime$"]
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by final state, there exists NPDA $M'$ that accepts by empty stack such that $L(M) = L(M')$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$.<br/>Construct $M' = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol that we can distinguish from $z$.)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
+        "question": "What role does $q_s$ play within $M'$?",
+        "answer": "It is the start state for $M'$",
+        "choices": ["It is the start state for the original machine", "It is the start state for $M'$"]
       },
       "q10": {
         "type": "select",
-        "description": "$\\textbf{Theorem:}$ Given NPDA $M$ that accepts by final state, $\\exists$ NPDA $M\\prime$ that accepts by empty stack such that $L(M)=L(M\\prime)$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M\\prime = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
-        "question": "What will be the value for $F\\prime$",
-        "answer": "$\\emptyset$ as the new machine will be an empty stack machine",
-        "choices": ["$\\emptyset$ as the new machine will be an empty stack machine", "The same as $F$ for the original machine"]
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by final state, there exists NPDA $M'$ that accepts by empty stack such that $L(M) = L(M')$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$.<br/>Construct $M' = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol that we can distinguish from $z$.)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
+        "question": "What is the value for $F'$?",
+        "answer": "$\\emptyset$ as $M'$ is an empty stack machine",
+        "choices": ["$\\emptyset$ as $M'$ is an empty stack machine", "The same as $F$ for the original machine"]
       },
       "q11": {
         "type": "select",
-        "description": "The idea is simple, since we need to convert a final state machine to an empty stack machine, we need to connect all final states to a new state $q_f$ and the single function for the state $q_f$ is to pop every thing in the stack",
-        "question": "On the left, we keep poping $x$, what is $x$?",
-        "answer": "$x$ is any symbol in ${\\Gamma}$",
-        "choices": ["$x$ is any symbol in ${\\Gamma}^{'}$", "$x$ is any symbol in ${\\Gamma}$"]
+        "description": "The idea is simple: Since we need to convert a final state machine to an empty stack machine, we need to connect all final states to a new state $q_f$ whose job is to pop everything in the stack.",
+        "question": "The transitions to the right of the box keep popping $x$. What is $x$?",
+        "answer": "$x$ is any symbol in $\\Gamma$",
+        "choices": ["$x$ is any symbol in $\\Gamma'$", "$x$ is any symbol in $\\Gamma$"]
       },
       "q13": {
         "type": "select",
-        "description": "Theorem: Given NPDA $M$ that accepts by empty stack, $\\exists$ NPDA $M′$ that accepts by final state<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by empty stack, there exists NPDA $M'$ that accepts by final state.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$",
         "question": "What is the acceptance model for $M$?",
         "answer": "Empty stack acceptance",
-        "choices": ["Final state acceptance","Empty stack acceptance"]
+        "choices": ["Final state acceptance", "Empty stack acceptance"]
       },
       "q14": {
         "type": "select",
-        "description": "Theorem: Given NPDA $M$ that accepts by empty stack, $\\exists$ NPDA $M′$ that accepts by final state<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$<br/>See the figure below",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by empty stack, there exists NPDA $M'$ that accepts by final state.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$<br/>See the figure below",
         "question": "What is the acceptance model for $M'$?",
         "answer": "Final state acceptance",
-        "choices": ["Final state acceptance","Empty stack acceptance"]
+        "choices": ["Final state acceptance", "Empty stack acceptance"]
       },
       "q15": {
         "type": "true/false",
-        "description": "Theorem: Given NPDA $M$ that accepts by empty stack, $\\exists$ NPDA $M′$ that accepts by final state<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$<br/>$Q' = Q \\cup \\{q_s, q_f\\}$",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by empty stack, there exists NPDA $M'$ that accepts by final state.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$<br/>$Q' = Q \\cup \\{q_s, q_f\\}$",
         "question": "$Q' = Q \\cup \\{q_s, q_f\\}$ means that we will add 2 new nodes $q_s$ and $q_f$",
         "answer": "True",
         "choices": []
       },
       "q16": {
         "type": "true/false",
-        "description": "Theorem: Given NPDA $M$ that accepts by empty stack, $\\exists$ NPDA $M′$ that accepts by final state<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$<br/>$Q' = Q \\cup \\{q_s, q_f\\}$$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
-        "question": "The reason for adding new start stack symbole is that the the original machine will never pop the new stack start symbole $z'$",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by empty stack, there exists NPDA $M'$ that accepts by final state.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
+        "question": "The reason to add a new start stack symbol is that the the original machine will never pop the new stack start symbol $z'$.",
         "answer": "True",
         "choices": []
       },
       "q17": {
         "type": "select",
-        "description": "Theorem: Given NPDA $M$ that accepts by empty stack, $\\exists$ NPDA $M′$ that accepts by final state<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$<br/>$Q' = Q \\cup \\{q_s, q_f\\}$$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by empty stack, there exists NPDA $M'$ that accepts by final state.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$. (NOTE: $z'$ is a new symbol.)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$.",
         "question": "What is $q_s$?",
-        "answer": "the start state for $M\\prime$",
-        "choices": ["the start state for the original machine", "the start state for $M\\prime$"]
+        "answer": "The start state for $M'$",
+        "choices": ["The start state for the original machine", "The start state for $M'$"]
       },
       "q18": {
         "type": "select",
-        "description": "$\\textbf{Theorem:}$ Given NPDA $M$ that accepts by final state, $\\exists$ NPDA $M\\prime$ that accepts by empty stack such that $L(M)=L(M\\prime)$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M\\prime = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$<br/>$q_s$ is new start state.",
-        "question": "What will be the value for $F\\prime$",
-        "answer": "The set of new created state $q_f$ only",
-        "choices": ["$\\emptyset$ as the new machine will be an empty stack machine", "The set of new created state $q_f$ only"]
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by empty stack, there exists NPDA $M'$ that accepts by final state.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$. (NOTE: $z'$ is a new symbol.)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$.<br/>$q_s$ is the new start state.",
+        "question": "What is the value for $F'$?",
+        "answer": "The set consisting only of the newly created state $q_f$.",
+        "choices": ["$\\emptyset$ as the new machine will be an empty stack machine", "The set consisting only of the newly created state $q_f$."]
       },
       "q19": {
         "type": "true/false",
-        "description": "$\\textbf{Theorem:}$ Given NPDA $M$ that accepts by final state, $\\exists$ NPDA $M\\prime$ that accepts by empty stack such that $L(M)=L(M\\prime)$.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M\\prime = (Q', \\Sigma, {\\Gamma}^{'}, {\\delta}^{'}, q_s, z', F')$ (NOTE: $z'$ is a new symbol)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$<br/>$q_s$ is new start state.<br/>$F^ = \\{q_f\\}$ The only time the stack will be empty is in $q_f$.<br/>$(q_f, z') \\in \\delta(q, \\lambda, z')$ for all $q \\in Q$",
+        "description": "<b>Theorem:</b> Given NPDA $M$ that accepts by empty stack, there exists NPDA $M'$ that accepts by final state.<br/>Suppose we have $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$<br/>Construct $M' = (Q', \\Sigma, \\Gamma^{'}, \\delta^{'}, q_s, z', F')$. (NOTE: $z'$ is a new symbol.)<br/>$Q' = Q \\cup \\{q_s, q_f\\}$<br/>${\\Gamma}^{'} = \\Gamma \\cup \\{z'\\}$.<br/>$q_s$ is the new start state.<br/>$F' = \\{q_f\\}$. The only time the stack will be empty is in $q_f$.<br/>$(q_f, z') \\in \\delta(q, \\lambda, z')$ for all $q \\in Q$",
         "question": "$(q_f, z') \\in \\delta(q, \\lambda, z')$ for all $q \\in Q$ means that once the machine reaches the new start stack symbol $z^{'}$, the machine now knows that the original machine accepts the string. So the machine will go to the new final state $q_f$ and accept.",
         "answer": "True",
         "choices": []

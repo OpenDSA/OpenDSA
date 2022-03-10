@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   // this code is the starting state of the graph
   graph.css({"font-size": "11px"});
-  const a = graph.addNode('1', { "left": "200px", "bottom":"700px"});
+  const a = graph.addNode('1', { "left": "200px", "top":"700px"});
   const d = graph.addNode('2', {"left": "25px", "top":"150px"});
   const g = graph.addNode('3', {"left": "200px", "top":"300px"});
   const j = graph.addNode('4', {"left": "375px",  "top":"150px"});

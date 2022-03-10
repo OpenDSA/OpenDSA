@@ -4,71 +4,67 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
   
-  //Frame 1
-  av.umsg("PDAs have 2 different types of language acceptance.");
+  // Frame 1
+  av.umsg("A DFA or NFA accepts a string if it is in a final state when it completes processing the string. PDAs have two different definitions for string acceptance: By being in a final state like a DFA or NFA, and by the stack being empty.");
   av.displayInit();
 
-  //Frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
-
-  //Frame 3
+  // Frame 2
   av.umsg(Frames.addQuestion("q3"));
   av.step();
 
-  //Frame 4
+  // Frame 3
   av.umsg(Frames.addQuestion("q4"));
   av.step();
 
-  //Frame 5
+  // Frame 4
   av.umsg(Frames.addQuestion("q5"));
   av.step();
 
-  //Frame 6
+  // Frame 5
   av.umsg(Frames.addQuestion("q6"));
   av.step();
 
-  //Frame 7
+  // Frame 6
   av.umsg(Frames.addQuestion("q7"));
   av.step();
 
-  //Frame 8
+  // Frame 7
   av.umsg(Frames.addQuestion("q8"));
   av.step();
 
-  //Frame 9
+  // Frame 8
   av.umsg(Frames.addQuestion("q9"));
   av.step();
 
-  //Frame 10
+  // Frame 9
   av.umsg(Frames.addQuestion("q10"));
   var url = "../../../AV/OpenFLAP/machines/PDA/PDAExample1.jff";
-  var PDA = new av.ds.PDA({width: 500, height: 200, left:-20, url: url});
+  var PDA = new av.ds.PDA({width: 500, top: 20, height: 200, left: 0, url: url});
   var q0 = PDA.getNodeWithValue("q0");
   var q1 = PDA.getNodeWithValue("q1");
   var q2 = PDA.getNodeWithValue("q2");
   var q3 = PDA.getNodeWithValue("q3");
   av.step();
 
-  //Frame 11
+  // Frame 10
   av.umsg(Frames.addQuestion("q11"));
   av.step();
 
-  //Frame 12
+  // Frame 11
   av.umsg(Frames.addQuestion("q12"));
-  var tape = new av.ds.array(["a", "a", "a", "b","b","b"], {left: 80, top: 300, indexed: false});
-  var tapeLabel = av.label("Input Tape", {left:0, top:305});
+  var tape = new av.ds.array(["a", "a", "a", "b","b","b"], {left: 80, top: 150, indexed: false});
+  var tapeLabel = av.label("Input Tape", {left: 0, top: 155});
   av.step();
 
-  //Frame 13
+  // Frame 12
   av.umsg(Frames.addQuestion("q13"));
-  var stack = new av.ds.array(["", "", "","", "Z"], {left: 400, top: 300, indexed: false, layout: "vertical"});
-  var stackLabel = av.label("PDA Stack", {left:400, top:450});
+  var stack = new av.ds.array(["", "", "","", "Z"], {left: 400, top: 150, indexed: false, layout: "vertical"});
+  var stackLabel = av.label("PDA Stack", {left: 400, top: 300});
   tape.highlight(0);
   q0.highlight();
   av.step();
 
-  //Frame 14
+  // Frame 13
   av.umsg(Frames.addQuestion("q14"));
   av.step();
 
@@ -155,7 +151,7 @@ $(document).ready(function() {
   av.step();
 
   //Frame 29
-  av.umsg(Frames.addQuestion("q28"));
+  av.umsg(Frames.addQuestion("q29"));
   tape.hide();
   q3.unhighlight();
   
@@ -165,7 +161,7 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("q30"));
   q0.highlight();
   q3.removeClass('accepted');
-  var tape2 = new av.ds.array(["a", "b", "a", "b"], {left: 80, top: 300, indexed: false});
+  var tape2 = new av.ds.array(["a", "b", "a", "b"], {left: 80, top: 150, indexed: false});
   tape2.highlight(0);
   stack.show();
   stackLabel.show();
@@ -199,14 +195,9 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("q35"));
   av.step();
 
-  //Frame 36
-  av.umsg("Exactly. The PDA will reject the string.");
-  q3.addClass('rejected');
-  stack.hide();
-  av.step();
-  
   //Frame 37
-  av.umsg("In the next module, we will see the second type of PDA acceptance models.");
+  av.umsg("Congratulations! Frameset completed.");
+  stack.hide();
   PDA.hide();
   stackLabel.hide();
   tape2.hide();

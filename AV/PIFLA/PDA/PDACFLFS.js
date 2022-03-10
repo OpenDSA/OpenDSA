@@ -11,7 +11,7 @@ $(document).ready(function() {
                     [\"A\",\"→\",\"bBBB\"],\
                     [\"B\",\"→\",\"b\"]]";
   var grammerArray = JSON.parse(grammar);
-  var grammarMAtrix = new GrammarMatrix(av, grammerArray, {left: 0, top:150, style: "table"});
+  var grammarMAtrix = new GrammarMatrix(av, grammerArray, {left: 0, top: 130, style: "table"});
   grammarMAtrix.hide();
 
   //Frame 1
@@ -69,7 +69,7 @@ $(document).ready(function() {
 
   //Frame 14
   av.umsg(Frames.addQuestion("q14"));
-  var PDA = new av.ds.PDA({width: 300, height: 300, top: 250, left: 0, emptystring: lambda, editable: true});
+  var PDA = new av.ds.PDA({width: 300, height: 300, top: 200, left: 0, emptystring: lambda, editable: true});
   PDA.enableDragging();
   var q0 = PDA.newNode("q0", {left:20, top: 250});
   var q1 = PDA.newNode("q1", {left:150, top: 250});
@@ -187,10 +187,10 @@ $(document).ready(function() {
 
   //Frame 34
   av.umsg(Frames.addQuestion("q34"));
-  var stack = new av.ds.array(["", "", "","","","Z"], {left: 400, top: 400, indexed: false, layout: "vertical"});
-  var stackLabel = av.label("PDA Stack", {left:400, top:600});
-  var tape = new av.ds.array(["a", "b", "b", "b","b", "b"], {left: 80, top: 350, indexed: false});
-  var tapeLabel = av.label("Input Tape", {left:0, top:355});
+  var stack = new av.ds.array(["", "", "","","","Z"], {left: 400, top: 90, indexed: false, layout: "vertical"});
+  var stackLabel = av.label("PDA Stack", {left:380, top: 280});
+  var tape = new av.ds.array(["a", "b", "b", "b","b", "b"], {left: 80, top: 40, indexed: false});
+  var tapeLabel = av.label("Input Tape", {left:0, top: 40});
   q0.highlight();
   av.step();
 
