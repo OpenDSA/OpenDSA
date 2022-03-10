@@ -66,13 +66,10 @@ Each move either increases or decreases stack contents by a single symbol.
 **Theorem:** If :math:`L = L(M)` for some NPDA :math:`M`,
 then :math:`L` is a CFL.
 
-.. note::
-
-   Want to show that each NPDA represents a CFL, so we 
-   will take a NPDA :math:`M` and convert it to a CFG. 
-
-   It will be an easier construction if we take the NPDA and put all the 
-   transitions in a simpler form. 
+Want to show that each NPDA represents a CFL, so we 
+will take a NPDA :math:`M` and convert it to a CFG. 
+It will be an easier construction if we take the NPDA and put all the 
+transitions in a simpler form. 
 
 **Proof:**
 

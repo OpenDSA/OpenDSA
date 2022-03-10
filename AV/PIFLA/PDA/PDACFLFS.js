@@ -11,16 +11,12 @@ $(document).ready(function() {
                     [\"A\",\"→\",\"bBBB\"],\
                     [\"B\",\"→\",\"b\"]]";
   var grammerArray = JSON.parse(grammar);
-  var grammarMAtrix = new GrammarMatrix(av, grammerArray, {left: 0, top: 130, style: "table"});
+  var grammarMAtrix = new GrammarMatrix(av, grammerArray, {left: 0, top: 135, style: "table"});
   grammarMAtrix.hide();
 
   //Frame 1
-  av.umsg("Now we want to show that NPDA’s and CFG both represent CFL’s. Show that we can take any CFG and construct a NPDA and vice versa.");
+  av.umsg("Now we will examine the relationship between NPDAs and CFLs. We will see that NPDAs can represent the class of CFLs.");
   av.displayInit();
-
-  //Frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
 
   //Frame 3
   av.umsg(Frames.addQuestion("q3"));
@@ -38,14 +34,6 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("q6"));
   av.step();
 
-  //Frame 7
-  av.umsg("Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.");
-  av.step();
-
-  //Frame 8
-  av.umsg("Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.");
-  av.step();
-
   //Frame 9
   av.umsg(Frames.addQuestion("q9"));
   av.step();
@@ -59,7 +47,7 @@ $(document).ready(function() {
   av.step();
 
   //Frame 12
-  av.umsg("Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br>Before going deep into the proof, the idea is that, since every production will be starting with a letter. The LHS will be the value of the top of the stack, the terminal in the RHS will be the input letter, and the Zero or more variables following the terminal will be the stack operation");
+  av.umsg("Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G').$<br/><br/>Before going into the details of the proof, let's seen an overview. The approach takes advantage of the special properties of GNF. Since every production starts with a terminal symbol, the LHS will be the value at the top of the stack, the terminal in the RHS will be the input letter, and the zero or more variables following the terminal in the RHS will be put onto the stack.<br/><br/>That should be pretty easy, and hopefully this gives you an idea of why GNF is useful!");
   av.step();
 
   //Frame 13
@@ -68,23 +56,15 @@ $(document).ready(function() {
   av.step();
 
   //Frame 14
-  av.umsg(Frames.addQuestion("q14"));
+  av.umsg(Frames.addQuestion("q16"));
   var PDA = new av.ds.PDA({width: 300, height: 300, top: 200, left: 0, emptystring: lambda, editable: true});
   PDA.enableDragging();
   var q0 = PDA.newNode("q0", {left:20, top: 250});
   var q1 = PDA.newNode("q1", {left:150, top: 250});
   var qf = PDA.newNode("qf", {left:280, top: 250});
-  av.step();
-
-  //Frame 15
-  av.umsg(Frames.addQuestion("q15"));
   toggleInitial(PDA, q0);
-  PDA.layout();
-  av.step();
-
-  //Frame 16
-  av.umsg(Frames.addQuestion("q16"));
   toggleFinal(PDA, qf);
+  PDA.layout();
   av.step();
 
   //Frame 17
@@ -148,14 +128,14 @@ $(document).ready(function() {
   av.step();
 
   //Frame 25
-  av.umsg("This is the resulting NFA for the CFG.");
+  av.umsg("This is the resulting NPDA for the CFG.");
   PDA.addEdge(q1, qf,{weight: emptystring + ',z:' + 'z'});
   PDA.layout();
 
   av.step();
 
   //Frame 26
-  av.umsg("Let us trace a string that is in $L(G)$ and show that the PDA will accept it. Of course, showing that a string in $L(G)$ is accepted by the PDA, but we need to see how the PDA will accept the string");
+  av.umsg("Let us trace a string that is in $L(G)$ and show that the PDA will accept it.");
   av.step();
 
   //Frame 27
