@@ -4,16 +4,9 @@
       "q2": {
         "type": "select",
         "description": "Why do we care? Because we want to parse efficiently. This means, we want to quickly determine if a given string can be generated from a given grammar. Determinism seems to be a fundamental requirement if we hope to do this.",
-        "question": "Parsing is important as any progrmming language is a CFL?",
+        "question": "Parsing is important as any progrmming language is a CFL.",
         "answer": "True",
         "choices": []
-      },
-      "q3": {
-        "type": "select",
-        "description": "Why do we care? Because we want to parse efficiently. This means, we want to quickly determine if a given string can be generated from a given grammar. Determinism seems to be a fundamental requirement if we hope to do this.",
-        "question": "Since programming languages are Context Free Languages. Programming languages must be?",
-        "answer": "Deterministic CFL",
-        "choices": ["Deterministic CFL", "Nondeterministic CFL"]
       },
       "q10": {
         "type": "select",
@@ -25,28 +18,28 @@
       "q11": {
         "type": "select",
         "description": "$\\textbf{LL(k) Grammars}$<br/>LL means “left-to-right” and “left-most derivation” is constructed. $k$ means that we can look ahead at most $k−1$ characters. Every s-grammar is LL, but so are more grammars.",
-        "question": "Consider this grammar $S \\rightarrow aSb \\mid ab$. IF we see a string starts with $ab$, which production we should use to produce that string",
+        "question": "Consider this grammar $S \\rightarrow aSb \\mid ab$. IF we see a string starts with $ab$, which production should we use to produce that string?",
         "answer": "$S\\rightarrow ab$",
         "choices": ["$S\\rightarrow aSb$", "$S\\rightarrow ab$"]
       },
       "q12": {
         "type": "select",
         "description": "$\\textbf{LL(k) Grammars}$<br/>LL means “left-to-right” and “left-most derivation” is constructed. $k$ means that we can look ahead at most $k−1$ characters. Every s-grammar is LL, but so are more grammars.",
-        "question": "Consider this grammar $S \\rightarrow aSb \\mid ab$. IF we see a string starts with $aa$, which production we should use to produce that string",
+        "question": "Consider this grammar $S \\rightarrow aSb \\mid ab$. IF we see a string starts with $aa$, which production should we use to produce that string?",
         "answer": "$S\\rightarrow aSb$",
         "choices": ["$S\\rightarrow aSb$", "$S\\rightarrow ab$"]
       },
       "q15": {
         "type": "select",
-        "description": "Consider this grammar: $S \rightarrow aSbS \\mid \\lambda$<br/>This grammar is $LL(k)$. Think about one thing, can we know uniquely which production we should use every time by reading only $k$ letters every time or not.",
-        "question": "Suppose we need to derive the string $abab$, which production we will use to get the letter $a$",
+        "description": "Consider this grammar: $S \\rightarrow aSbS \\mid \\lambda$<br/>This grammar is $LL(k)$. Think about one thing, can we know uniquely which production we should use every time by reading only $k$ letters every time or not.",
+        "question": "Suppose we need to derive the string $abab$. Which production should we use to get the letter $a$?",
         "answer": "To read $a$ we must use $S\\rightarrow aSbS$",
         "choices": ["To read $a$ we must use $S\\rightarrow aSbS$","To read $a$ we must use $S\\rightarrow \\lambda$"]
       },
       "q16": {
         "type": "select",
         "description": "Consider this grammar: $S \rightarrow aSbS \\mid \\lambda$<br/>This grammar is $LL(k)$. Think about one thing, can we know uniquely which production we should use every time by reading only $k$ letters every time or not.",
-        "question": "Suppose we need to derive the string $abab$, which production we will use to get the second letter ($b$)",
+        "question": "Suppose we need to derive the string $abab$. Which production shoul we use to get the second letter ($b$)?",
         "answer": "To read $b$ we must use $S\\rightarrow \\lambda$",
         "choices": ["To read $b$ we must use $S\\rightarrow aSbS$","To read $b$ we must use $S\\rightarrow \\lambda$"]
       },

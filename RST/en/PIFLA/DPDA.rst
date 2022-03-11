@@ -42,15 +42,6 @@ Nondeterministic CFL proof
    :output: show
 
 
-Nondeterministic CFL Versus Deterministic CFL
----------------------------------------------
-
-.. inlineav:: NCFLvsDCFLFS ff
-   :links: AV/PIFLA/PDA/NCFLvsDCFLFS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/NCFLvsDCFLFS.js
-   :output: show
-
-
 Grammars for Deterministic Context-free Languages
 -------------------------------------------------
 

@@ -3,59 +3,53 @@
     "en": {
       "q2": {
         "type": "select",
-        "description": "Proof that the language $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is not deterministic PDA.",
+        "description": "Now we want to prove that the language $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is not a deterministic CFL, and therefore no deterministic PDA can recognize it.",
         "question": "Is L CFL?",
         "answer": "Yes",
-        "choices": ["Yes", "No"]
+        "choices": ["Yes", "No"],
+        "correctFeedback":["It is easy to construct PDAs for $\\{a^nb^n: n \\ge 1\\}$ and $\\{a^nb^{2n}: n \\ge 1\\}$. We just need to put them together."]
       },
       "q3": {
         "type": "select",
-        "description": "It is easy to construct a NPDA for $\\{a^nb^n: n \\ge 1\\}$ and a NPDA for $\\{a^nb^{2n}$.",
+        "description": "It is easy to construct PDAs for $\\{a^nb^n: n \\ge 1\\}$ and $\\{a^nb^{2n}: n \\ge 1\\}$. We just need to put them together.",
         "question": "Can we connect both PDAs to one PDA to accept the union?",
-        "answer": "Yes, we can do similar to union 2 NFAs. We need to create a new start state and new final state and connect the PDAs using $\\lambda$ transitions",
-        "choices": ["Yes, we can do similar to union 2 NFAs. We need to create a new start state and new final state and connect the PDAs using $\\lambda$ transitions", "No"]
-      },
-      "q5": {
-        "type": "select",
-        "description": "Now we need to show that $L$ is not a DCFL",
-        "question": "DCFL is for Deterministic Context-Free Language. A language that is accepted by Deterministic Pushdown Automata (DPDA)",
-        "answer": "True",
-        "choices": []
+        "answer": "Yes, similar to unioning two NFAs. We need to create a new start state and new final state and connect the PDAs using $\\lambda$ transitions",
+        "choices": ["Yes, similar to unioning two NFAs. We need to create a new start state and new final state and connect the PDAs using $\\lambda$ transitions", "No"]
       },
       "q6": {
         "type": "select",
-        "description": "Assume that there is a deterministic PDA $M$ such that $L=L(M)$. We will construct a PDA that recognizes a language that is not a CFL and derive a contradiction.",
+        "description": "Now we need to show that $L$ is not a DCFL. Assume that there is a deterministic PDA $M$ such that $L=L(M)$. We will construct a PDA that recognizes a language that is not a CFL and derive a contradiction.",
         "question": "What are the conditions for a PDA to be DPDA?",
         "answer": ["for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$ $\\delta(q, a, b)$ contains at most one element", "for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$ if $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$"],
         "choices": ["for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$ $\\delta(q, a, b)$ contains at most one element", "for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$ if $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$"]
       },
-      "q13": {
+      "Xq4": {
         "type": "select",
-        "description": "Let us study the language $\\{a^nb^nc^n \\mid n>0\\}$.",
-        "question": "Can we use the stack to remember the number of $a$'s?",
-        "answer": "Yes",
-        "choices": ["Yes", "No"]
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL.",
+        "question": "For NFAs and DFAs, which is more powerful?",
+        "answer": "Both have the same power as any DFA is an NFA, and any NFA can be converted to a DFA",
+        "choices": ["Both have the same power as any DFA is an NFA, and any NFA can be converted to a DFA", "DFA", "NFA"]
       },
-      "q14": {
+      "Xq5": {
         "type": "select",
-        "description": "Let us study the language $\\{a^nb^nc^n \\mid n>0\\}$.",
-        "question": "Since we know the number of $a$'s, what will happen to the stack contents while we count $b$'s",
-        "answer": "All letters in the stack will be Poped to be able to recognize the number of $b$",
-        "choices": ["All letters in the stack will be Poped to be able to recognize the number of $b$", "All letters will remain in the stack"]
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL.",
+        "question": "More powerful means accepting more languages.",
+        "answer": "True",
+        "choices": []
       },
-      "q15": {
+      "Xq6": {
         "type": "select",
-        "description": "Let us study the language $\\{a^nb^nc^n \\mid n>0\\}$.",
-        "question": "Since all $a$'s are poped out of the stack, how can we recognize the number of $c$'s to be the same as $a$'s and $b$'s",
-        "answer": "We can not remember anything that is poped out of the stack.",
-        "choices": ["We can not remember anything that is poped out of the stack.", "The PDA should go back to reread the $a\\prime$s again"]
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL",
+        "question": "What about CFL vs. DCFL? Do they have the same power?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
       },
-      "q16": {
+      "Xq7": {
         "type": "select",
-        "description": "Let us study the language $\\{a^nb^nc^n \\mid n>0\\}$.",
-        "question": "This means that the language $\\{a^nb^nc^n \\mid n>0\\}$ is",
-        "answer": "Not CFL as there is no PDA that can recognize it",
-        "choices": ["Not CFL as there is no PDA that can recognize it", "CFL"]
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL.",
+        "question": "Which is more powerful?",
+        "answer": "CFL, as it can accept more languages than DCFL",
+        "choices": ["CFL, as it can accept more languages than DCFL", "DCFL, as it can accept more languages than CFL"]
       }
     }
   }

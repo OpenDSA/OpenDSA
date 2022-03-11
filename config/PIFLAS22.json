@@ -229,6 +229,25 @@
       },
       "PIFLA/CFGTransformations":{}
     },
+    "Pushdown Automata":{
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAaicjbi":{
+          "points": 2.0
+        },
+        "PDAwcwR":{
+          "points": 2.0
+        },
+        "PDA2asperb":{
+          "points": 2.0
+        },
+        "PDAaibjck":{
+          "points": 2.0
+        }
+      },
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {}
+    },
     "Appendix": {
       "Glossary": {}
     }

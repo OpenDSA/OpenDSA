@@ -57,28 +57,8 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Pushdown Automata":{
-      "PIFLA/PDA": {},
-      "PIFLA/PDAExercises":{
-        "PDAaicjbi":{
-          "points": 2.0
-        },
-        "PDAwcwR":{
-          "points": 2.0
-        },
-        "PDA2asperb":{
-          "points": 2.0
-        },
-        "PDAaibjck":{
-          "points": 2.0
-        }
-      },
-      "PIFLA/PDACFL": {},
-      "PIFLA/DPDA": {
-        "NCFLvsDCFLFS": {
-          "points": 1.0
-        }
-      }
+    "Properties of Context-free Languages":{
+      "PIFLA/CFLProp":{}
     },
     "Appendix": {
       "Glossary": {}
