@@ -248,6 +248,9 @@
       "PIFLA/PDACFL": {},
       "PIFLA/DPDA": {}
     },
+    "Properties of Context-free Languages":{
+      "PIFLA/CFLProp":{}
+    },
     "Appendix": {
       "Glossary": {}
     }

@@ -12,8 +12,32 @@
 Properties of Context-Free Languages
 ====================================
 
-Properties of Context-Free Languages
-------------------------------------
+Introduction
+------------
+
+We now have a lot of evidence that there are languages that are not in
+the class of CFLs.
+So, we want ways to be able to tell the difference.
+When we studied regular languages, we developed two tools to help us
+tell if a language is regular or not.
+One was closure properties on regular languages, that could help us
+both to prove in some cases that a language is regular, and could help
+us to prove in other cases that a language is not regular.
+
+In a similar way, there exist closure properties for CFLs, and so we
+can use these properties in appropriate cases both to prove a language
+is a CFL, and also prove that other languages are not CFL.
+
+We used a pumping lemma for regular languages to prove that
+certain languages are not regular (because they could not be pumped).
+Likewise, we will see that there is a pumping lemma for CFLs (though
+it is somewhat different from the pumping lemma for regular
+languages), and that it can be used to prove that certain languages
+are not a CFL.
+
+
+Closure Properties for Context-Free Languages
+---------------------------------------------
 
 .. inlineav:: CFLClosurePropFS ff
    :links: AV/PIFLA/PDA/CFLClosurePropFS.css
@@ -21,8 +45,8 @@ Properties of Context-Free Languages
    :output: show
 
 
-Proving a language is not CFL - Using Pumping Lemma
----------------------------------------------------
+Proving a language is not CFL - Using a Pumping Lemma
+-----------------------------------------------------
 
 .. inlineav:: CFLPumpingLemmaFS ff
    :links: AV/PIFLA/PDA/CFLPumpingLemmaFS.css
