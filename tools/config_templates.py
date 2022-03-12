@@ -30,7 +30,7 @@ rst_header_unicode = '''\
 index_header = '''\
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://opendsa.org for more details.
-.. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2021 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. OpenDSA documentation master file, created by
@@ -44,7 +44,7 @@ index_header = '''\
 
 .. chapnum::
    :start: {0}
-   :prefix: Chapter
+   :prefix: {1}
 
 '''
 
