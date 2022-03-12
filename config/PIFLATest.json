@@ -57,42 +57,8 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Context-Free Grammars and Languages":{
-      "PIFLA/CFG1": {
-        "DerivationTreesFS": {
-          "points": 1.0
-        }
-      },
-      "PIFLA/CFG2": {},
-      "PIFLA/CFGExercises": {
-        "anbmodd":{
-          "points": 2.0
-        },
-        "ambicn":{
-          "points": 2.0
-        },
-        "ambian":{
-          "points": 2.0
-        },
-        "asbsequal":{
-          "points": 2.0
-        }
-      },
-      "PIFLA/CFGTransformations":{},
-      "PIFLA/CFGTransEx":{
-        "DFAmod3b":{
-          "points": 2.0
-        },
-        "CFGTransEx1":{
-          "points": 2.0
-        },
-        "CFGTransEx2":{
-          "points": 2.0
-        },
-        "ChomskyEx":{
-          "points": 2.0
-        }
-      }
+    "Properties of Context-free Languages":{
+      "PIFLA/CFLProp":{}
     },
     "Appendix": {
       "Glossary": {}

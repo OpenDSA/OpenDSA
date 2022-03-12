@@ -3,134 +3,134 @@
     "en": {
       "q2": {
         "type": "select",
-        "description": "We need to sutdy the closure properties of CFLs.",
-        "question": "Closure properties of CFLs means that if we applied an operator on 2 CFL languages, the result must be CFL.",
+        "description": "Similar to regular languages, CFLs are closed under certain properties.",
+        "question": "CFLs being closed under certain properties means that if we applied an operator on CFLs, the result must be a CFL.",
         "answer": "True",
         "choices": []
       },
       "q3": {
         "type": "select",
-        "description": "Given Given 2 CFL $L_1$, and $L_2$.",
-        "question": "What do we know for certain for $L_1$ and $L_2$?",
+        "description": "Similar to regular languages, CFLs are closed under certain properties.",
+        "question": "Given  two CFLs $L_1$ and $L_2$, what do we know for certain about them?",
         "answer": ["Both have CFG", "Both have PDA"],
         "choices": ["Both have CFG", "Both have PDA"]
       },
       "q4": {
         "type": "select",
-        "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The union is also CFL. So CFL are closed under union.",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>We can create a new CFG that adds a new start variable (call it $S_3$) with production rules to invoke the start variables of $G_1$ and $G_2$. So CFLs are closed under union.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the union between $L_1$ and $L_2$. What is $V_3$?",
         "answer": "$V_3 = V_1 \\cup V_2\\cup \\{S_3\\}$",
         "choices": ["$V_3 = V_1$", "$V_3 = V_2$", "$V_3 = V_1 \\cup V_2$", "$V_3 = V_1 \\cup V_2\\cup \\{S_3\\}$"]
       },
       "q5": {
         "type": "select",
-        "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The union is also CFL. So CFL are closed under union.",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>We can create a new CFG that adds a new start variable (call it $S_3$) with production rules to invoke the start variables of $G_1$ and $G_2$. So CFLs are closed under union.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the union between $L_1$ and $L_2$. What is $T_3$?",
         "answer": "$T_3 = T_1 \\cup T_2$",
         "choices": ["$T_3 = T_1$", "$T_3 = T_2$", "$T_3 = T_1 \\cup T_2$"]
       },
       "q6": {
         "type": "select",
-        "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The union is also CFL. So CFL are closed under union.",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>We can create a new CFG that adds a new start variable (call it $S_3$) with production rules to invoke the start variables of $G_1$ and $G_2$. So CFLs are closed under union.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the union between $L_1$ and $L_2$. What is $P_3$?",
         "answer": "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1 | S_2 \\}$",
         "choices": ["$P_3 = P_1$", "$P_3 = P_2$", "$P_3 = P_1 \\cup P_2$", "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1 | S_2 \\}$"]
       },
       "q7": {
         "type": "select",
-        "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The Concatenation is also CFL. So CFL are closed under Concatenation.",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>Similar to union, we can create a new CFG that adds a new start variable (call it $S_3$) with a production rule $S_3 \\rightarrow S_1S_2$. So CFLs are closed under concatenation.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Concatenation between $L_1$ and $L_2$. What is $V_3$?",
         "answer": "$V_3 = V_1 \\cup V_2\\cup \\{S_3\\}$",
         "choices": ["$V_3 = V_1$", "$V_3 = V_2$", "$V_3 = V_1 \\cup V_2$", "$V_3 = V_1 \\cup V_2\\cup \\{S_3\\}$"]
       },
       "q8": {
         "type": "select",
-        "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The Concatenation is also CFL. So CFL are closed under Concatenation.",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>Similar to union, we can create a new CFG that adds a new start variable (call it $S_3$) with a production rule $S_3 \\rightarrow S_1S_2$. So CFLs are closed under concatenation.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Concatenation between $L_1$ and $L_2$. What is $T_3$?",
         "answer": "$T_3 = T_1 \\cup T_2$",
         "choices": ["$T_3 = T_1$", "$T_3 = T_2$", "$T_3 = T_1 \\cup T_2$"]
       },
       "q9": {
         "type": "select",
-        "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The Concatenation is also CFL. So CFL are closed under Concatenation.",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>Similar to union, we can create a new CFG that adds a new start variable (call it $S_3$) with a production rule $S_3 \\rightarrow S_1S_2$. So CFLs are closed under concatenation.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Concatenation between $L_1$ and $L_2$. What is $P_3$?",
         "answer": "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1\\ S_2 \\}$",
         "choices": ["$P_3 = P_1$", "$P_3 = P_2$", "$P_3 = P_1 \\cup P_2$", "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1\\ S_2 \\}$"]
       },
       "q10": {
         "type": "select",
-        "description": "Given Given a CFG $G_1=(V_1,T_1,S_1,P_1)$<br/> The Star-Closure is also CFL. So CFL are closed under Star-Closure.",
+        "description": "Consider CFG $G_1=(V_1,T_1,S_1,P_1)$. We can support Star-Closure by adding a new variable $S_3$ and a new production rule $S_3 \\rightarrow S_1S_3\\ |\\ \\lambda$. So, CFLs are closed under Star-Closure.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Star-Closure of $L_1$. What is $V_3$?",
         "answer": "$V_3 = V_1 \\cup \\{S_3\\}$",
         "choices": ["$V_3 = V_1$", "$V_3 = V_1 \\cup \\{S_3\\}$"]
       },
       "q11": {
         "type": "select",
-        "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The Concatenation is also CFL. So CFL are closed under Concatenation.",
+        "description": "Consider CFG $G_1=(V_1,T_1,S_1,P_1)$. We can support Star-Closure by adding a new variable $S_3$ and a new production rule $S_3 \\rightarrow S_1S_3\\ |\\ \\lambda$. So, CFLs are closed under Star-Closure.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Star-Closure of $L_1$. What is $T_3$?",
         "answer": "$T_3 = T_1$",
         "choices": ["$T_3 = T_1$", "$T_3 = T_1 \\cup \\{*\\}$"]
       },
       "q12": {
         "type": "select",
-        "description": "Given Given 2 CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$<br/> The Concatenation is also CFL. So CFL are closed under Concatenation.",
+        "description": "Consider CFG $G_1=(V_1,T_1,S_1,P_1)$. We can support Star-Closure by adding a new variable $S_3$ and a new production rule $S_3 \\rightarrow S_1S_3\\ |\\ \\lambda$. So, CFLs are closed under Star-Closure.",
         "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Star-Closure of $L_1$. What is $P_3$?",
         "answer": "$P_3 = P_1 \\cup \\{S_3 \\rightarrow S_1\\ S_3 \\mid \\lambda\\}$",
         "choices": ["$P_3 = P_1$", "$P_3 = P_1 \\cup \\{S_3 \\rightarrow S_1\\ S_3\\}$", "$P_3 = P_1 \\cup \\{S_3 \\rightarrow S_1\\ S_3 \\mid \\lambda\\}$"]
       },
       "q14": {
         "type": "select",
-        "description": "$\\textbf{Theorem} CFL's are not closed under intersection and complementation",
-        "question": "In case that we need to prove that something is not true, we can just provide an example that negiate the rule",
+        "description": "<b>Theorem:</b> CFL's are not closed under intersection and complementation.",
+        "question": "To prove that something is not true, we can just provide an example that negates the rule",
         "answer": "True",
         "choices": []
       },
       "q15": {
         "type": "select",
-        "description": "$\\textbf{Theorem} CFL's are not closed under intersection",
-        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and $L_2 = \\{a^nb^mc^m | n,m> 0\\}$. Are $L_1$ and $L_2$ CFL?",
+        "description": "<b>Theorem:</b> CFL's are not closed under intersection.",
+        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and<br/>$L_2 = \\{a^nb^mc^m | n,m> 0\\}$. Are $L_1$ and $L_2$ CFL?",
         "answer": "Yes",
         "choices": ["$L_1$ is not CFL", "$L_2$ is not CFL", "Yes"]
       },
       "q16": {
         "type": "select",
-        "description": "$\\textbf{Theorem} CFL's are not closed under intersection",
-        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and $L_2 = \\{a^nb^mc^m | n,m> 0\\}$. $L_1 \\cap L_2 = \\{a^nb^nc^n | n >0 \\}$, which is not CFL",
+        "description": "<b>Theorem:</b> CFL's are not closed under intersection.",
+        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and<br/>$L_2 = \\{a^nb^mc^m | n,m> 0\\}$. $L_1 \\cap L_2 = \\{a^nb^nc^n | n >0 \\}$, which is not a CFL.",
         "answer": "True",
         "choices": []
       },
       "q17": {
         "type": "select",
-        "description": "$\\textbf{Theorem} CFL's are not closed under intersection",
-        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and $L_2 = \\{a^nb^mc^m | n,m> 0\\}$. $L_1 \\cap L_2 = \\{a^nb^nc^n | n >0 \\}$, which is not CFL. So CFL are not closed under intersection",
+        "description": "<b>Theorem:</b> CFL's are not closed under intersection.",
+        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and<br/>$L_2 = \\{a^nb^mc^m | n,m> 0\\}$. $L_1 \\cap L_2 = \\{a^nb^nc^n | n >0 \\}$, which is not a CFL. So CFLs are not closed under intersection.",
         "answer": "True",
         "choices": []
       },
       "q18": {
         "type": "select",
-        "description": "$\\textbf{Theorem} CFL's are not closed under complementation",
-        "question": "Using Demorgan Law, $L_1 \\cap L_2 = \\overline{\\overline{L_1} \\cup \\overline{L_2}}$, since the equation include the intersection, then the result is not CFL",
+        "description": "<b>Theorem:</b> CFL's are not closed under complementation.",
+        "question": "DeMorgan's Law: $L_1 \\cap L_2 = \\overline{\\overline{L_1} \\cup \\overline{L_2}}$. Since the equation includes the intersection operation, the result is not guaranteed to be a CFL",
         "answer": "True",
         "choices": []
       },
       "q19": {
         "type": "select",
-        "description": "What about the intersection between regular languages and CFLs. This is called $\\textbf{regular intersection}$",
-        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w \\in{\\Sigma}^{*}$ and $w$ has an even number of b’s$}$, $\\Sigma =\\{a,b\\}$. $L_1$ is ",
+        "description": "As a special case, the intersection between a regular language and a CFL is called <b>regular intersection</b>.",
+        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w$ has an even number of b’s$\\}$, $\\Sigma =\\{a,b\\}$. $L_1$ is a:",
         "answer": "CFL",
         "choices": ["CFL", "Regular Language"]
       },
       "q20": {
         "type": "select",
-        "description": "What about the intersection between regular languages and CFLs. This is called $\\textbf{regular intersection}$",
-        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w \\in{\\Sigma}^{*}$ and $w$ has an even number of b’s$}$, $\\Sigma =\\{a,b\\}$. $L_2$ is ",
+        "description": "As a special case, the intersection between a regular language and a CFL is called <b>regular intersection</b>.",
+        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w$ has an even number of b’s$\\}$, $\\Sigma =\\{a,b\\}$. $L_2$ is a:",
         "answer": "Regular Language",
         "choices": ["CFL", "Regular Language"]
       },
       "q21": {
         "type": "select",
-        "description": "What about the intersection between regular languages and CFLs. This is called $\\textbf{regular intersection}$",
-        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w \\in{\\Sigma}^{*}$ and $w$ has an even number of b’s$}$, $\\Sigma =\\{a,b\\}$. $L_1 \\cap L_2 = \\{a^nb^mb^ma^n\\}$ is ",
+        "description": "As a special case, the intersection between a regular language and a CFL is called <b>regular intersection</b>.",
+        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w$ has an even number of b’s$\\}$, $\\Sigma =\\{a,b\\}$. $L_1 \\cap L_2 = \\{a^nb^mb^ma^n\\}$ is a:",
         "answer": "CFL",
         "choices": ["CFL", "Regular Language"]
       }

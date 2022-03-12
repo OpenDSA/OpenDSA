@@ -2690,7 +2690,8 @@ Glossary
       :term:`nodes <node>`.
 
    language
-      A set of strings.
+      A subset of the strings that can be generated from a given
+      :term:`alphabet`.
 
    Las Vegas algorithms
       A form of :term:`randomized algorithm`.

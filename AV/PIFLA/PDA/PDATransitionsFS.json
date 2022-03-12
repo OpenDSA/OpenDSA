@@ -1,87 +1,65 @@
 {
   "translations": {
     "en": {
-      "q2": {
-        "type": "true/false",
-        "description": "In this part, we will study the transition function for Pushdown Automata.",
-        "question": "A PDA has a form of memory",
-        "answer": [
-          "True"
-        ],
-        "choices": []
-      },
-      "q3": {
-        "type": "select",
-        "description": "In this part, we will study the transition function for Pushdown Automata.",
-        "question": "What is the memory type the PDA has?",
-        "answer": "Stack",
-        "choices": [
-          "Stack",
-          "Tape"
-        ]
-      },
       "q5": {
         "type": "true/false",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either",
-        "question": "PDAs always pop the top of the stack in every transition.",
+        "description": "Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.",
+        "question": "This PDA always pops the top of the stack on every transition.",
         "answer": "True",
         "choices":[]
       },
+      "always": {
+        "type": "true/false",
+        "description": "Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.",
+        "question": "All PDA transitions pop the top of the stack.",
+        "answer": "False",
+        "choices":[],
+        "correctFeedback": ["If we write a transition like $(x, \\lambda; z)$, $\\lambda$ in the second position means to ignore the stack. Of course, if $z$ is $\\lambda$, that means not to put anything onto the stack."],
+        "incorrectFeedback": ["We have not actually seen an example of this yet, but we can write transitions that ignore the stack."]
+      },
       "q6": {
         "type": "select",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack",
-        "question": "Does the stack status changed before and after this transition?",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.",
+        "question": "Must the contents of the stack alway change when executing this transition?",
         "answer": "No",
-        "choices":["No", "Yes"]
-      },
-      "q7": {
-        "type": "select",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.",
-        "question": "Does the stack status changed before and after this transition?",
-        "answer": "Yes",
-        "choices":["No", "Yes"]
+        "choices":["No", "Yes"],
+        "correctFeedback":["Sometimes this PDA will fire the transition that will pop 'b' off the stack and then put it back on again."]
       },
       "q8": {
         "type": "select",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.",
-        "question": "What will be the top of the stack?",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.<br/>This means: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.<br/>3. go to $q_3$ and do not push any thing to the stack",
+        "question": "If we execute the second choice, what will be at the top of the stack?",
         "answer": "a",
         "choices":["a", "b"]
       },
       "q9": {
         "type": "select",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.<br/>3. go to $q_3$ and do not push any thing to the stack",
-        "question": "Does the stack status changed before and after this transition?",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.<br/>This means: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.<br/>3. go to $q_3$ and do not push any thing to the stack",
+        "question": "If we execute the third choice, does that change the contents of the stack?",
         "answer": "Yes",
-        "choices":["No", "Yes"]
-      },
-      "q10": {
-        "type": "true/false",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Meaning: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.<br/>3. go to $q_3$ and do not push any thing to the stack",
-        "question": "$\\lambda$ in $\\delta(q_0, a, b) = \\{(q_3, \\lambda)\\}$ means do push anything to the stack",
-        "answer": "True",
-        "choices":[]
+        "choices":["No", "Yes"],
+        "correctFeedback": ["The stack loses whatever is on the top, since nothing is being pushed back when executing this transition."]
       },
       "q11": {
         "type": "select",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Each arc is labeled by a triple $<x, y; z>$",
-        "question": "Looking at the transition function and the graph on the left, what $x$ represent?",
-        "answer": "the input letter",
-        "choices":["the input letter", "the top of the stack", "the string that is pushed onto the stack"]
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$. <br/><br/>Look at the edges in the NPDA graph below. Each edge is labeled by $\\lt x, y; z\\gt$.",
+        "question": "What does $x$ represent?",
+        "answer": "the current input symbol",
+        "choices":["the current input symbol", "the top of the stack", "the symbols that are pushed onto the stack"]
       },
       "q12": {
         "type": "select",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Each arc is labeled by a triple $<x, y; z>$",
-        "question": "Looking at the transition function and the graph on the left, what $y$ represent?",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$. <br/><br/>Look at the edges in the NPDA graph below. Each edge is labeled by $\\lt x, y; z\\gt$.",
+        "question": "What does $y$ represent?",
         "answer": "the top of the stack",
-        "choices":["the input letter", "the top of the stack", "the string that is pushed onto the stack"]
+        "choices":["the current input symbol", "the top of the stack", "the symbols that are pushed onto the stack"]
       },
       "q13": {
         "type": "select",
-        "description": "Let us take a look for PDA transition. Suppose we have $\\delta(q_0, a, b) = \\{(q_1, b),(q_2, ab), (q_3, \\lambda)\\}$<br/>Each arc is labeled by a triple $<x, y; z>$",
-        "question": "Looking at the transition function and the graph on the left, what $z$ represent?",
-        "answer": "the string that is pushed onto the stack",
-        "choices":["the input letter", "the top of the stack", "the string that is pushed onto the stack"]
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$. <br/><br/>Look at the edges in the NPDA graph below. Each edge is labeled by $\\lt x, y; z\\gt$.",
+        "question": "What does $z$ represent?",
+        "answer": "the symbols that are pushed onto the stack",
+        "choices":["the current input symbol", "the top of the stack", "the symbols that are pushed onto the stack"]
       },
       "q15": {
         "type": "true/false",

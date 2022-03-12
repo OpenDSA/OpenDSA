@@ -108,15 +108,16 @@ Simplifying CFGs and Normal Forms
      remaining to reach them.
      Obviously they can go.
 
-   | This example is not as obvious:
+   | This example is not as obvious: (What is wrong with the A production?)
    |   :math:`S \rightarrow aSb \mid \lambda \mid A`
    |   :math:`A \rightarrow aA`
 
    | **Definition**: Variable :math:`A \in V` is said to be *useful* if
      and only if there is at least one :math:`w \in L(G)` such that
-   |   :math:`S \stackrel{*} \Rightarrow xAy \stackrel{*} \Rightarrow w`
+     :math:`S \stackrel{*} \Rightarrow xAy \stackrel{*} \Rightarrow w`
 
-   We want to eliminate both types of useless production.
+   We want to eliminate both types of useless production (ones that
+   can't be reached, and ones that don't terminate).
 
 
 .. slide:: Theorem: (useless productions)
@@ -139,9 +140,8 @@ Simplifying CFGs and Normal Forms
              all :math:`x_i \in (T^* \cup V_1)`, add :math:`A` to :math:`V_1`
    |    3. Take :math:`P_1` as all productions in :math:`P` whose
            symbols are all in :math:`(V_1 \cup T)`
-
-   Then :math:`G_1 = (V_1, T, S, P_1)` has no variables that can't derive
-   strings.
+   | Then :math:`G_1 = (V_1, T, S, P_1)` has no variables that can't
+     derive strings.
 
    NOTE: Now need to get rid of productions we can't use. 
 
@@ -155,7 +155,11 @@ Simplifying CFGs and Normal Forms
    | :math:`D \rightarrow bCb`
    | :math:`E \rightarrow Aa \mid b`
 
-   We process this to eliminate :math:`A`.
+   | We process this to eliminate :math:`A`:
+   |   B, C, and E all have productions with just terminals,
+       so they go into :math:`V_1`.
+   |   Now, D has a production with just symbols that are terminals or
+       variables already in :math:`V_1`, so it goes into :math:`V_1`.
 
 .. slide:: Process (2)
 
@@ -204,12 +208,12 @@ Simplifying CFGs and Normal Forms
 .. slide:: Removing :math:`\lambda` Productions
 
    NOTE: Last time talked about simpler CFG that had no
-   :math:`\lambda`-productions, now we will show how to get rid of them. 
+   :math:`\lambda` productions, now we will show how to get rid of them. 
 
    | **Theorem** (remove :math:`\lambda` productions)
    | Let :math:`G` be a CFG with :math:`\lambda` not in :math:`L(G)`.
    | Then there exists a CFG :math:`G'` having no
-     :math:`\lambda`-productions such that :math:`L(G) = L(G')`. 
+     :math:`\lambda` productions such that :math:`L(G) = L(G')`. 
 
 .. slide:: Process: Removing :math:`\lambda` Productions
 
@@ -225,14 +229,30 @@ Simplifying CFGs and Normal Forms
           :math:`|\mbox{rhs}| \ge 1` into :math:`P'`.
 
 
-.. slide:: Example
+.. slide:: Example: Step 2
 
    | :math:`S \rightarrow Ab`
    | :math:`A \rightarrow BCB \mid Aa`
    | :math:`B \rightarrow b \mid \lambda`
    | :math:`C \rightarrow cC \mid \lambda`
 
-   .. WORK THIS EXAMPLE IN JFLAP?
+   | 2. Repeat until no more additions
+   |    * if :math:`B \rightarrow A_1A_2 \ldots A_m` and :math:`A_i \in V_n`
+          for all :math:`i`, then put :math:`B` in :math:`V_n`
+   |    THUS, :math:`V_n = \{A \mid A\stackrel{*}{\Rightarrow} \lambda \}` 
+
+   | Which variables can derive :math:`\lambda`?
+   |   B and C directly
+   |   A indirectly (because BCB can become :math:`\lambda`)
+
+
+.. slide:: Example: Step 3
+
+   | 3. Construct :math:`G'` with productions :math:`P'` such that
+   |    * If :math:`A \rightarrow x_1x_2\ldots x_m \in P, m \ge 1`, then 
+          put all productions formed when :math:`x_j` is replaced by
+          :math:`\lambda` (for all :math:`x_j \in V_n`) such that
+          :math:`|\mbox{rhs}| \ge 1` into :math:`P'`.
 
    | :math:`G'`:
    |   :math:`S \rightarrow Ab \mid b`
@@ -270,9 +290,9 @@ Simplifying CFGs and Normal Forms
 
    | **Theorem** (Remove unit productions)
    | Let :math:`G = (V, T, S, P)` be a CFG without
-     :math:`\lambda`-productions.
+     :math:`\lambda` productions.
    | Then there exists CFG :math:`G' = (V', T', S, P')` that does not
-     have any unit-productions and :math:`L(G) = L(G')`.
+     have any unit productions and :math:`L(G) = L(G')`.
 
 
 .. slide:: Process
@@ -321,15 +341,15 @@ Simplifying CFGs and Normal Forms
 
    | **Theorem:** Let :math:`L` be a CFL that does not contain :math:`\lambda`.
      Then there exists a CFG for :math:`L` that does not have any
-     useless productions, :math:`\lambda`-productions, or unit-productions.
+     useless productions, :math:`\lambda` productions, or unit productions.
 
    | **Proof:**
-   |   1. Remove :math:`\lambda`-productions
-   |   2. Remove unit-productions
+   |   1. Remove :math:`\lambda` productions
+   |   2. Remove unit productions
    |   3. Remove useless productions
 
    | Order is important.
-     Removing :math:`\lambda`-productions can create unit-productions!
+     Removing :math:`\lambda` productions can create unit productions!
 
    There are additional examples in the book. 
 
@@ -352,7 +372,7 @@ Simplifying CFGs and Normal Forms
    :math:`L(G)` has an equivalent grammar in CNF.
 
    | **Proof:**
-   | 1. Remove :math:`\lambda`-productions, unit productions, and  
+   | 1. Remove :math:`\lambda` productions, unit productions, and  
         useless productions. (We already know how to do this.)
    | 2. For every right-hand-side of length :math:`> 1`,
         replace each terminal :math:`x_i` by a new variable
@@ -394,7 +414,7 @@ Simplifying CFGs and Normal Forms
    | :math:`C_2 \rightarrow d`
    | :math:`C_3 \rightarrow c`
 
-   NOTE: Can get rid of :math:`\lambda`-productions and unit
+   NOTE: Can get rid of :math:`\lambda` productions and unit
    productions first!
 
 
@@ -405,7 +425,7 @@ Simplifying CFGs and Normal Forms
    |   :math:`A \rightarrow ax`
    | where :math:`a \in T` and :math:`x \in V^*`
 
-   This is like an s-grammar (or simple grammar, Linz page 144),
+   This is like an s-grammar (or simple grammar),
    except the s-grammar definition includes a further restriction that
    any pair :math:`(A, a)` can occur at most in one rule. 
 
@@ -413,7 +433,7 @@ Simplifying CFGs and Normal Forms
    choice to match the derivation of a string).
    So it is very restrictive.
 
-   .. Guess that not possible to convert in CFG into an s-grammar??
+   .. Guess that not possible to convert an CFG into an s-grammar??
 
 
 .. slide:: GNF Theorem

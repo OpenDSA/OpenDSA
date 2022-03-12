@@ -9,23 +9,46 @@
    :topic: Pushdown Automaton
 
 
-Pushdown automaton
-==================
+Pushdown Automata
+=================
 
 PDA: Pushdown Automata
 ----------------------
 
-One of defining characteristics of DFAs and NFAs is that they have no
+A significant characteristic of DFAs and NFAs is that they have no
 memory.
-So there is no history or way to store information aside from what
-state they are currently in.
-In this and future chapters, we will study two types of machine with
-memory: The Pushdown Automata (or PDA, so-called because it has a
-stack) and the Turing Machine (that has a somewhat more flexible form
-of memory).
-Not coincidentally, we will find that these machines have more
-capability than do DFAs in terms of the languages that they can
-recognize.
+So there is no history or way to store information aside from the
+state that they are currently in.
+This restricts what languages they can recognize.
+
+Consider what even the addition of the ability to make use of a single
+counter variable can do.
+For example, it is easy to recognize the language of balanced
+parentheses with a counter.
+Simply increment the counter when a left parenthesis is seen,
+and decrement when a right parenthesis is seen.
+If the counter ever goes negative, then reject.
+If it is zero after processing the string then accept, otherwise
+reject.
+Likewise, a counter will allow recognizing the language comprised of
+strings of the form :math:`a^nb^n`.
+
+But another alternative to storing a counter is to use a stack.
+Balanced parentheses can be recognized by pushing left parentheses
+onto the stack, and popping the top of the stack when encountering a
+right parentheses.
+Strings of the form :math:`a^nb^n` can likewise be recognized by
+pushing the initial a's onto the stack, and then popping them off as
+the b's are processed.
+
+In the next few chapters we will study two types of machine with
+memory.
+The Pushdown Automata (PDA) uses a stack for its memory,
+and we will see that this allows it to recognize a wider range of
+languages than can the DFA or NFA.
+The Turing Machine has a more flexible form of memory than does the
+PDA, which will allow it to recognize an even broader range of
+languages.
 
 .. inlineav:: PDAFS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAFS.css
@@ -67,3 +90,12 @@ Equivalence of Acceptance Definitions
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAAcceptEquivFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAAcceptEquivFS.js
    :output: show
+
+
+Something to Think About
+------------------------
+
+The PDA with its stack can easily recognize the language comprised of
+strings of the form :math:`a^nb^n`.
+Can it also recognize the language comprised of
+strings of the form :math:`a^nb^nc^n`?

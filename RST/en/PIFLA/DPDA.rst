@@ -14,6 +14,19 @@ Deterministic Pushdown Automata
 Deterministic Pushdown Automata
 -------------------------------
 
+We know that non-determinism adds no real power to DFAs.
+That is, every NFA has an equivalent DFA.
+
+How about for PDAs?
+We have introduced the concept of non-determinism to PDAs (we call
+these NPDAs), and we have shown that every CFG as an equivalent NPDA,
+and vice versa.
+Thus, NPDAs can recognize all CFL.
+
+But, what about the distinction between deterministic and
+non-deterministic PDAs?
+Does non-determinism add real power to the PDA?
+
 .. inlineav:: DPDAFS ff
    :links: AV/PIFLA/PDA/DPDAFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/DPDAFS.js
@@ -26,15 +39,6 @@ Nondeterministic CFL proof
 .. inlineav:: NCFLProofFS ff
    :links: AV/PIFLA/PDA/NCFLProofFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/NCFLProofFS.js
-   :output: show
-
-
-Nondeterministic CFL Versus Deterministic CFL
----------------------------------------------
-
-.. inlineav:: NCFLvsDCFLFS ff
-   :links: AV/PIFLA/PDA/NCFLvsDCFLFS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/NCFLvsDCFLFS.js
    :output: show
 
 

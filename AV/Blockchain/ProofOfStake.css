@@ -20,10 +20,41 @@
   line-height: 10px !important;
 }
 
-.jsavautoresize .jsavnode {
+.largeSizedNode {
   border-radius: 100px;
-  min-width: 100px;
-  min-height: 100px;
+  min-width: 75px;
+  min-height: px;
+}
+
+.mediumSizedNode {
+  border-radius: 100px;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.smallSizedNode {
+  border-radius: 100px;
+  min-width: 25px;
+  min-height: 25px;
+}
+
+.topLeftSpot {
+  margin-top: -10px;
+  margin-left: -80px;
+}
+
+.topRightSpot {
+  margin-top: -10px;
+  margin-left: 80px;
+}
+
+.proposalSpot {
+  margin-top: 80px;
+}
+
+.deadCenterBlock {
+  margin-left: 25px;
+  margin-top: -10px;
 }
 
   .thinredline {

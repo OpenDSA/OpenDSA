@@ -2,21 +2,21 @@
 	<type>pda</type>
 	<automaton>
 		<state id="0" name="q0">
-			<x>30.0</x>
-			<y>70.0</y>
+			<x>10.0</x>
+			<y>20.0</y>
 			<initial/>
 		</state>
 		<state id="1" name="q1">
-			<x>171.0</x>
-			<y>70</y>
+			<x>141.0</x>
+			<y>20</y>
 		</state>
 		<state id="2" name="q2">
-			<x>336.0</x>
-			<y>70.0</y>
+			<x>296.0</x>
+			<y>20.0</y>
 		</state>
 		<state id="3" name="q3">
-			<x>490.0</x>
-			<y>70.0</y>
+			<x>440.0</x>
+			<y>20.0</y>
 			<final/>
 		</state>
 		<transition>

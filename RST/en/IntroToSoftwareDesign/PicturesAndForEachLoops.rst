@@ -259,7 +259,7 @@ like this:
    
    for (Pixel pix : image.getPixels())
    {
-       pixel.setRed(255);
+       pix.setRed(255);
    }
 
 In English, the code above, would read "for each pixel in the image,
@@ -300,7 +300,7 @@ local variable declaration, similar to others you have written yourself.
 
    for (Pixel pix : image.getPixels())
    {
-       pixel.setRed(255);
+       pix.setRed(255);
    }
 
 Here, we are declaring a variable called ``pixel`` that is of type ``Pixel``.

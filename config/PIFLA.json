@@ -341,11 +341,7 @@
         }
       },
       "PIFLA/PDACFL": {},
-      "PIFLA/DPDA": {
-        "NCFLvsDCFLFS": {
-          "points": 1.0
-        }
-      }
+      "PIFLA/DPDA": {}
     },
     "Properties of Context-free Languages":{
       "PIFLA/CFLProp":{}

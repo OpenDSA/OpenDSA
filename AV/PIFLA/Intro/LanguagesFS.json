@@ -41,7 +41,7 @@
       },
       "examplelang": {
         "type": "select",
-        "description": "A <b>language</b> is simply a collection of strings defined over $\\Sigma$. We normally use the variable $L$ to indicate a language.",
+        "description": "A <b>language</b> is simply a subset of the strings that can be defined over $\\Sigma$. We normally use the variable $L$ to indicate a language.",
         "question": "Which of the following are languages from their respective $\\Sigma$?",
         "answer": [
           "$\\Sigma = \\{0,1,2,3,4,5,6,7,8, 9\\}$, $L = \\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...\\}$",
@@ -56,7 +56,7 @@
       },
       "notset": {
         "type": "multiple",
-        "description": "A <b>language</b> is simply a collection of strings defined over $\\Sigma$. We normally use the variable $L$ to indicate a language.",
+        "description": "A <b>language</b> is simply a subset of the strings that can be defined over $\\Sigma$. We normally use the variable $L$ to indicate a language.",
         "question": "For $\\Sigma$=$\\{a,b,c\\}$, is $L = ab$ a language?",
         "answer": "No",
         "choices": ["Yes", "No"],
@@ -65,7 +65,7 @@
       },
       "isset": {
         "type": "multiple",
-        "description": "A <b>language</b> is simply a collection of strings defined over $\\Sigma$.",
+        "description": "A <b>language</b> is simply a subset of the strings that can be defined over $\\Sigma$.",
         "question": "For $\\Sigma$=$\\{a,b,c\\}$, is $L = \\{ab\\}$ a language?",
         "answer": "Yes",
         "choices": ["Yes", "No"],
@@ -81,7 +81,7 @@
       },
       "empty": {
         "type": "multiple",
-        "description": "A <b>language</b> is simply a collection of strings defined over $\\Sigma$.",
+        "description": "A <b>language</b> is simply a subset of the strings that can be defined over $\\Sigma$.",
         "question": "For $\\Sigma$=$\\{a,b,c\\}$, is $L$ = $\\{\\}$ a language?",
         "answer": "Yes",
         "choices": ["Yes", "No"]

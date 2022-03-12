@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: lti
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: ssh
         uses: fifsky/ssh-action@master

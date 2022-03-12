@@ -227,21 +227,29 @@
           "points": 2.0
         }
       },
-      "PIFLA/CFGTransformations":{},
-      "PIFLA/CFGTransEx":{
-        "DFAmod3b":{
+      "PIFLA/CFGTransformations":{}
+    },
+    "Pushdown Automata":{
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAaicjbi":{
           "points": 2.0
         },
-        "CFGTransEx1":{
+        "PDAwcwR":{
           "points": 2.0
         },
-        "CFGTransEx2":{
+        "PDA2asperb":{
           "points": 2.0
         },
-        "ChomskyEx":{
+        "PDAaibjck":{
           "points": 2.0
         }
-      }
+      },
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {}
+    },
+    "Properties of Context-free Languages":{
+      "PIFLA/CFLProp":{}
     },
     "Appendix": {
       "Glossary": {}

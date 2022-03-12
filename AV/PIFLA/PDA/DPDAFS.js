@@ -5,12 +5,8 @@ $(document).ready(function() {
     var Frames = PIFRAMES.init(av_name);
 
   //Frame 1
-  av.umsg("Since we started this chapter we only talk about Non-deterministic Pushdown Automata (NPDA).");
+  av.umsg("We will now consider the differences between Deterministic and Non-deterministic PDAs.");
   av.displayInit();
-
-  //Frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
 
   //Frame 3
   av.umsg(Frames.addQuestion("q3"));
@@ -29,17 +25,13 @@ $(document).ready(function() {
   av.step();
 
   //Frame 7
-  av.umsg("Definition: $L$ is a deterministic context-free language (DCFL) if and only if there exists a deterministic PDA $M$ such that $L=L(M)$");
-  av.step();
-
-  //Frame 8
-  av.umsg("Let us see some examples for PDAs and determine if each one is deterministic or nondeterministic based on those two conditions.")
+  av.umsg("Definition: $L$ is a deterministic context-free language (DCFL) if and only if there exists a deterministic PDA $M$ such that $L=L(M)$.<br/><br/>Let us see some examples for PDAs and determine if each one is deterministic or nondeterministic based on those two conditions.")
   av.step();
 
   //Frame 9
   av.umsg(Frames.addQuestion("q9"));
   var url = "../../../AV/OpenFLAP/machines/PDA/PDAExample1.jff";
-  var PDA = new av.ds.PDA({width: 500, height: 200, left:-20, url: url});
+  var PDA = new av.ds.PDA({width: 500, height: 200, left: 5, top: 30, url: url});
   av.step();
 
   //Frame 10
@@ -65,31 +57,15 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("q14"));
   av.step();
 
-  //Frame 15
-  av.umsg("$\\textbf{Definition:}$ a language is Deterministic Context Free Language if it is accepted by a Deterministic PDA");
-  PDA2.hide();
-  av.step();
-
   //Frame 16
   av.umsg(Frames.addQuestion("q16"));
+  PDA2.hide();
   PDA.show();
   av.step();
 
   //Frame 17
-  av.umsg("Now, this fact that we have a PDA that is not deterministic certainly $\\textbf{does not prove}$ that $L = \\{ww^R | w\\in{\\Sigma}^{+}\\}, \\Sigma = \\{a, b\\}$ is not a deterministic CFL.");
+  av.umsg("For $L = \\{a^nb^n | n \\ge 0\\}$ we have a DPDA, so it is clearly a deterministic CFL.<br/><br/>In the case of $L = \\{ww^R | w\\in{\\Sigma}^{+}\\}, \\Sigma = \\{a, b\\}$, we showed a non-deterministic PDA. Now, this fact that we have a non-deterministic PDA that recognizes it certainly <b>does not prove</b> that it is not a deterministic CFL.<br/><br/>But, there are CFL’s that are not deterministic. And we will see that this is one of them. This makes intuitive sense. How can we, deterministically, know when to switch from $w$ to $w^R$ when scanning from left to right through the input?");
   PDA.hide();
-  av.step();
-
-  //Frame 18
-  av.umsg("But, there are CFL’s that are not deterministic. And we will see that this is one of them. This makes intuitive sense. How can we, deterministically, know when to switch from $w$ to $w^R$ when scanning from left to right through the input?");
-  av.step();
-
-  //Frame 19
-  av.umsg("Example for Nondeterministic CFL (we call them CFL in general).<br/>$L = \\{a^nb^n|n \\ge 1\\} \\cup \\{a^nb^{2n}| n\\ge 1\\}$ is a CFL and not a DCFL");
-  av.step();
-
-  //Frame 20
-  av.umsg("Example for Nondeterministic CFL (we call them CFL in general).<br/>$L = \\{a^nb^n|n \\ge 1\\} \\cup \\{a^nb^{2n}| n\\ge 1\\}$ is a CFL and not a DCFL<br/>Obviously, both languages are CFL. And obviously, their union is CFL");
   av.step();
 
   //Frame 21
@@ -100,8 +76,8 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("q22"));
   av.step();
 
-  //Frame 23
-  av.umsg("Below is a way to prove that a language is not DCFL.");
+  // Frame
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 
 });
