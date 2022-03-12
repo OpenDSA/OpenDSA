@@ -15,13 +15,13 @@ PDA Exercises
 PDA Exercises
 -------------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/PDA/PDAaicjbi.html pe
-   :long_name: Draw a PDA for aicjbi
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/PDA/PDAwcwR.html pe
+   :long_name: Draw a PDA for wcwR
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/PDA/PDAwcwR.html pe
-   :long_name: Draw a PDA for wcwR
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/PDA/PDAaicjbi.html pe
+   :long_name: Draw a PDA for aicjbi
 
 |
 
