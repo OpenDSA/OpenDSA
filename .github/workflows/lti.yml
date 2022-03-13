@@ -19,4 +19,3 @@ jobs:
           command: |
             cd /home/OpenDSA/LTI_ruby
             git pull
-
