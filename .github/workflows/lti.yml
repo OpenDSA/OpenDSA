@@ -17,6 +17,8 @@ jobs:
           port: ${{ secrets.PORT }}
           args: "-tt -vvv"
           command: |
+            ls
             cd /home/OpenDSA/LTI_Ruby
+            ls
             git pull
 
