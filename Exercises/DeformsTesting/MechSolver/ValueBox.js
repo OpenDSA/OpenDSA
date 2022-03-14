@@ -13,6 +13,7 @@ class ValueBox{
             this.globalPointerReference = Window.globalPointerReference;
             this.element = element;
             this.valueSourceParent = element.dataset.id;
+            this.valueNegated = false; // tracks changes in sign but only for solution boxes, copied to varbox
         }
         else
         {
@@ -21,10 +22,13 @@ class ValueBox{
             this.variable = element.dataset.variable;
             this.valueDisplay = element.dataset.valueDisplay;
             this.unitDisplay = element.dataset.unitDisplay;
+            this.variableDisplay = element.dataset.variableDisplay;
             this.domain = element.dataset.domain;
             this.globalPointerReference = Window.globalPointerReference;
             this.element = null;
             this.valueSourceParent = element.dataset.sourceParent;
+            this.valueNegated = false;
+
             this.createSolutionBox(element, Window.jsavObject);
         }
     }
@@ -107,6 +111,7 @@ class ValueBox{
                 if(this.globalPointerReference.currentClickedObject == this){
                     this.value = -1 * this.value;
                     this.valueDisplay = Window.valueStringRepr(this.value);
+                    this.valueNegated = !this.valueNegated;
                     this.setValueUnit(this.valueDisplay,this.unitDisplay);
                     Window.clearGlobalPointerReference();
 

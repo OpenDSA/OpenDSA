@@ -1,0 +1,62 @@
+@import "colors"
+
+plain-font()
+  font-style: normal
+  font-weight: inherit
+
+emphasis-font()
+  color: green
+  font-weight: bold
+
+
+.guilabel
+  plain-font()
+  &:before
+    emphasis-font()
+    display: inline
+    content: "《"
+    margin-right: 2px
+
+  &:after
+    emphasis-font()
+    display: inline
+    content: "》"
+    margin-left: 2px
+
+
+.menuselection
+  plain-font()
+  &:before
+    emphasis-font()
+    display: inline
+
+  &:after
+    emphasis-font()
+    display: inline
+
+// ここら辺は自作のJSで無理矢理整形してる
+.menu
+  &:before
+    display: inline
+    font-weight: bold
+    content: "["
+    margin-right: 2px
+
+  &:after
+    display: inline
+    font-weight: bold
+    content: "]"
+    margin-left: 2px
+
+.menu-separator
+  &:before
+    color: green
+    display: inline
+    font-size: 2.2rem !important
+
+.menuselection
+  .menu-separator
+    &:last-child
+      &:before
+        display: none
+        content: ""

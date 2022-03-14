@@ -36,15 +36,16 @@ Non-Deterministic Finite Acceptor
    :math:`\delta` for the DFA is some state :math:`q \in Q`, the
    result of :math:`\delta` for the NFA is any subset of :math:`Q`.
 
+   |   Transitions to a null subset is a failed path.
+
+   
    **Non-deterministic** means that it allows choices.
    From a state on input :math:`b`, :math:`\delta` might include
    transitions to more than one state.
 
-   | Other differences:
+   | Another difference:
    |   We allow :math:`\lambda` transitions (a free
        ride to another state).
-   |   We allow transitions to a null subset of states.
-       Consider this as a failed path.
 
 
 .. slide:: NFA Example 1
@@ -58,14 +59,9 @@ Non-Deterministic Finite Acceptor
    | (So, :math:`\delta` is no longer meets the mathematical definition
      of a function!)
 
-   Hopefully this one is easy to understand: We two disjoint paths,
-   effectively giving us the union of two languages:
+   Hopefully this one is easy to understand: Two disjoint paths,
+   effectively giving us union of two languages:
    :math:`L =` << ?? >>.
-
-
-.. slide:: NFA Example 2
-
-   :math:`L = \{(ab)^n \mid n>0\} \cup \{a^nb \mid n>0\}`.
 
 
 .. slide:: NFA Example 2
@@ -81,9 +77,9 @@ Non-Deterministic Finite Acceptor
    | Unfortunately, they are not always so simple to understand!
             
 
-.. slide:: Accepting a String (1)
+.. slide:: Accepting a String
 
-   **Definition:** :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
+   **Definition:** :math:`q_j \in {\delta}^{*}(q_i,w)` if/only if
    there exists some walk from :math:`q_i` to :math:`q_j` labeled
    :math:`w`.
 
@@ -94,20 +90,6 @@ Non-Deterministic Finite Acceptor
    For an NFA :math:`M`,
    :math:`L(M)= \{w \in {\Sigma}^{*} \mid \delta^{*}(q_0,w) \cap F \neq \emptyset \}`.
    << What does this mean? >>
-
-
-.. slide:: Accepting a String (2)
-
-   **Definition:** :math:`q_j \in {\delta}^{*}(q_i,w)` if and only if
-   there exists some walk from :math:`q_i` to :math:`q_j` labeled
-   :math:`w`
-
-   | From previous example:
-   |   :math:`\delta^{*}(q_0, ab) =` << ?? >>.
-   |   :math:`\delta^{*}(q_0, aba) =` << ?? >>.
-
-   For an NFA :math:`M`,
-   :math:`L(M)= \{w \in {\Sigma}^{*} \mid \delta^{*}(q_0,w) \cap F \neq \emptyset \}`.
 
    NFA accepts a string if it completes processing in a final state.
    However for an NFA, the string is accepted if
@@ -152,10 +134,10 @@ Non-Deterministic Finite Acceptor
 
    Here is a bit of intution that might give some insight:
 
-     Nondeterminism gives branches. If we are trying to create a
-     non-determinism simulator in a computer, we can simulate it by
-     alternating between all of the branches, pushing each branch
-     forward by a step. This will eventually terminate.
+   *  Nondeterminism gives branches. If we are trying to create a
+      non-determinism simulator in a computer, we can simulate it by
+      alternating between all of the branches, pushing each branch
+      forward by a step. This will eventually terminate.
 
 
 .. slide:: Key Theorem
@@ -174,11 +156,11 @@ Non-Deterministic Finite Acceptor
      of states? >>
 
      [Right here, this is what I consider the key insight.
-     Given a state in :math:`M_N` and a character,
+     Given a state in :math:`M_N` and a symbol :math:`\in \Sigma`,
      you can get to some subset of the states in :math:`M_N`.
      Consider THAT to be a state in :math:`M_D`.]
 
-   * :math:`F_D = \{Q\in Q_D \mid \exists q_i \in Q` with :math:`q_i \in F_N \}`
+   * :math:`F_D = \{Q\in Q_D \mid \exists\ q_i \in Q` with :math:`q_i \in F_N \}`
      << What does this mean?? >>
 
    * :math:`\delta_D : Q_D \times \Sigma \rightarrow Q_D`
@@ -191,7 +173,7 @@ Non-Deterministic Finite Acceptor
 
    #. Start state is :math:`\{q_0\} \cup \mathrm{closure}(q_0)`
 
-      What does closure(q) mean?
+      What does  :math:`\mathrm{closure}(q)` mean?
 
       The set of states reachable
       from :math:`q` with :math:`\lambda` transitions.
@@ -216,46 +198,11 @@ Non-Deterministic Finite Acceptor
 
 .. slide:: Example: NFA to DFA
 
-   .. inlineav:: NFA2DFAEx2aCON dgm
-      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFAEx2CON.css
-      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFAEx2aCON.js
-      :align: center
-
-
-.. slide:: Example: NFA to DFA Result
-
-   .. odsafig:: Images/NFA2DFA2a.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Another NFA to convert
-
-   |
-
-   .. odsafig:: Images/NFA2DFA2b.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Converted DFA
-
-.. slide:: Step by Step
-
    .. inlineav:: NFA2DFATraceCON ss
       :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/NFA2DFATraceCON.css
       :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/VisFormalLang/FA/NFA2DFATraceCON.js
       :output: show
 
-.. slide:: Lets do an exercise
-
-   .. avembed:: AV/OpenFLAP/examples/nfatodfa.html ss
-      :long_name: draw a DFA for a language example
-
-.. slide:: Harder exercise
-
-   .. avembed:: AV/OpenFLAP/examples/nfatodfa2.html ss
-      :long_name: draw a DFA for a language example
 
 .. slide:: So, why NFA?
 

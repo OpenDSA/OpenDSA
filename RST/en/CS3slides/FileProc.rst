@@ -310,7 +310,7 @@ File Processing and Buffer Pools
    * Be able to avoid reading data when the block contents will be
      replaced.
    * Be able to support multiple users accessing a buffer, and
-     independantly releasing a buffer.
+     independently releasing a buffer.
    * Don’t make an active buffer stale.
 
 
@@ -490,7 +490,7 @@ File Processing and Buffer Pools
 
 .. slide:: Problems with Simple Merge
 
-   * Simple mergesort: Place runs into two files.
+   * Simple Mergesort: Place runs into two files.
       * Merge the first two runs to output file, then next two runs, etc.
 
    * Repeat process until only one run remains.

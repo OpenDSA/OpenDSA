@@ -101,7 +101,7 @@ $(document).ready(function () {
   av.step();
 
   //frame 10
-  av.umsg("Compilers can not decide which parse tree is the correct one. Compilers only work with unambiguous grammars. So, in case we have an ambiguous grammar, we should rewrite the grammar to remove the ambiguity.");
+  av.umsg("Compilers cannot decide which parse tree is the correct one. Compilers only work with unambiguous grammars. So, in case we have an ambiguous grammar, we should rewrite the grammar to remove the ambiguity.");
   av.step();
 
   //frame 11
@@ -146,7 +146,7 @@ $(document).ready(function () {
   av.step();
 
   //fram 21
-  av.umsg("By looking at the grammar $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$, we will notice that there are two different results for the expression $2+4*2$.<br/>The difference came from which operator we evaluated first. In the other parse tree, the addition was deepre than the multiplication, and in this cas, we gave addition higer precedence than multiplication");
+  av.umsg("By looking at the grammar $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$, we will notice that there are two different results for the expression $2+4*2$.<br/>The difference came from which operator we evaluated first. In the other parse tree, the addition was deeper than the multiplication, and in this cas, we gave addition higer precedence than multiplication");
   tr.hide();
   tr2.show();
   av.step();

@@ -276,6 +276,10 @@
         "introPumpingFS": {
           "points": 1.0
         },
+        "PLGame": {
+          "points": 0.0,
+          "required": false
+        },
         "ClosPropFS": {
           "points": 1.0
         },
@@ -284,14 +288,12 @@
         },
         "ClosPropEx2FS": {
           "points": 1.0
-        },
-        "ClosPropEx3FS": {
-          "points": 1.0
         }
       }
     },
     "Context-Free Grammars and Languages":{
-      "PIFLA/ContexFreeLanguages": {},
+      "PIFLA/CFG1": {},
+      "PIFLA/CFG2": {},
       "PIFLA/CFGExercises": {
         "anbmodd":{
           "points": 2.0
@@ -325,25 +327,21 @@
     "Pushdown Automata":{
       "PIFLA/PDA": {},
       "PIFLA/PDAExercises":{
-        "PDAaicjbi":{
-          "points": 2.0
-        },
         "PDAwcwR":{
           "points": 2.0
         },
+        "PDAaicjbi":{
+          "points": 3.0
+        },
         "PDA2asperb":{
-          "points": 2.0
+          "points": 3.0
         },
         "PDAaibjck":{
-          "points": 2.0
+          "points": 3.0
         }
       },
       "PIFLA/PDACFL": {},
-      "PIFLA/DPDA": {
-        "NCFLvsDCFLFS": {
-          "points": 1.0
-        }
-      }
+      "PIFLA/DPDA": {}
     },
     "Properties of Context-free Languages":{
       "PIFLA/CFLProp":{}

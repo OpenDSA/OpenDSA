@@ -15,26 +15,31 @@ Transforming Grammars
 Transforming Grammars
 ---------------------
 
-We use grammars to represent a programming language.
-Want to know: Is a given string (or program :math:`x`) valid
-(syntactically correct)?
-Same as asking if it is in the language (the membership problem).
+Programming language developers often use grammars to represent a
+the syntax for a programming language. 
+Of course, a key question related to implementing a programming
+language (or any other use of a grammer) is this:
+Is a given program syntactically correct?
+This is exactly the same as asking if the string is in the language
+defined by that grammar (the membership problem).
 
-Last time we showed that if we could transform a CFG into
-a CFG with no :math:`\lambda`-productions, and no rules like
-:math:`A \rightarrow B`, then we could determine if :math:`w` is in or
-not in :math:`L(G)` in :math:`2|w|` rounds, each step adding a terminal
-or increasing in length.
-
-This works, but it is not fast, that is, not linear!
+We have seen that if we could transform a CFG into an equivalent CFG
+with no :math:`\lambda`-productions, and no rules like 
+:math:`A \rightarrow B`, then we can determine if string :math:`w` is
+in or not in :math:`L(G)` in :math:`2|w|` derivation rounds,
+where each step adds a terminal or increases the length of then
+sentential form of the current derivation.
+This works, but it is not fast!
+At least it avoids the possibility of getting into an infinite loop.
 
 We will look at lots of methods for transforming grammars.
 Some will be forms that are easier to work with,
 some are easier to use in proofs.
 
-| Key question: Are there ways to transform (restrict) CFGs such that
-|   1) We can process efficiently
-|   2) without restricting the power of CFGs
+| What we seek to answer in this module:
+| Are there ways to transform (restrict) CFGs such that:
+|   1) we can process them efficiently?
+|   2) but without restricting the power of CFGs?
 
 .. inlineav:: TransformGrammarsFS ff
    :links: AV/PIFLA/CFL/TransformGrammarsFS.css

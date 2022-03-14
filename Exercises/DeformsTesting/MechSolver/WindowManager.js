@@ -7,6 +7,7 @@ class WindowManager{
         this.globalJSAVobject = jsavCanvasObj;
         this.canvasDims = dim_obj;
         this.workspace_list = wkspaceList;
+        this.canvasPointer
         
         document.styleSheets[2].rules[0].style.height = 600+"px";
 	}
@@ -16,7 +17,10 @@ class WindowManager{
         var minHeight = 600;
 	    // console.log(window.parent.ODSA.UTILS.logUserAction("inside","WindowManager"))
 	    // console.log(window.parent.document.querySelector("iframe#DeformsSimpleProblemPPRO_iframe").style.height)
-        document.styleSheets[2].rules[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
+        // document.styleSheets[2].rules[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
+
+        // Assuming that there is only one .jsavcanvas for the entire the workarea
+        this.globalJSAVobject.canvas[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
 	    Window.updateExerciseWindowHeight(shiftAmount);
 	}
 

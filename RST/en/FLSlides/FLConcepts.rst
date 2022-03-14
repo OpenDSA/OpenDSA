@@ -98,6 +98,7 @@ Key Concepts
 
    Here, :math:`x \in (V \cup T)^+, y \in (V \cup T)^*`.
 
+
 .. slide:: Example
 
    .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Parens.html pe
@@ -107,6 +108,7 @@ Key Concepts
 
    .
     
+
 .. slide:: Grammar Notation
 
    | :math:`w \Rightarrow z: \qquad w` derives :math:`z`

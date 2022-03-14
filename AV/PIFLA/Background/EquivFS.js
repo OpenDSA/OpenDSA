@@ -26,23 +26,23 @@ $(document).ready(function () {
   av.umsg(Frames.addQuestion("mod"));
   av.step();
   
-  // Frame 20
+  // Frame 6
   av.umsg("A binary relation is called a :term:`partial order` if it is antisymmetric and transitive. If the relation is reflexive, it is called a :term:`non-strict partial order`. If the relation is irreflexive, it is called a :term:`strict partial order`. The set on which the partial order is defined is called a :term:`partially ordered set` or a :term:`poset`. Elements $x$ and $y$ of a set are :term:`comparable` under a given relation $R$ if either $xRy$ or $yRx$. If every pair of distinct elements in a partial order are comparable, then the order is called a :term:`total order` or :term:`linear order`.");
   av.step();
 
-  // Frame 21
+  // Frame 7
   av.umsg(Frames.addQuestion("partorder"));
   av.step();
 
-  // Frame 22
+  // Frame 8
   av.umsg("For the integers, relations $<$ and $\\leq$ define partial orders. Operation $<$ is a total order because, for every pair of integers $x$ and $y$ such that $x \\neq y$, either $x < y$ or $y < x$. Likewise, $\\leq$ is a total order because, for every pair of integers $x$ and $y$ such that $x \\neq y$, either $x \\leq y$ or $y \\leq x$.");
   av.step();
 
-  // Frame 23
+  // Frame 9
   av.umsg("For the powerset of the integers, the subset operator defines a partial order (because it is antisymmetric and transitive). For example, $\\{1, 2\\} \\subseteq \\{1, 2, 3\\}$. However, sets $\\{1, 2\\}$ and $\\{1, 3\\}$ are not comparable by the subset operator, because neither is a subset of the other. Therefore, the subset operator does not define a total order on the powerset of the integers.");
   av.step();
 
-  // Frame 24
+  // Frame 10
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

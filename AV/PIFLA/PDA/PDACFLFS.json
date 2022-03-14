@@ -1,250 +1,231 @@
 {
   "translations": {
     "en": {
-      "q2": {
-        "type": "true/false",
-        "description": "Now we want to show that NPDA’s and CFG both represent CFL’s. Show that we can take any CFG and construct a NPDA and vice versa.",
-        "question": "CFL stands for Context-Free Languages",
-        "answer": "True",
-        "choices": []
-      },
       "q3": {
         "type": "select",
-        "description": "Now we want to show that NPDA’s and CFG both represent CFL’s. Show that we can take any CFG and construct a NPDA and vice versa.",
-        "question": "What is context free language?",
-        "answer": "a languages that has a context free grammar",
-        "choices": ["a languages that has a context free grammar", "a language that has a regular expression", "set of strings"]
+        "description": "Now we will examine the relationship between NPDAs and CFLs. We will see that NPDAs can represent the class of CFLs.",
+        "question": "What is a Context Free Language?",
+        "answer": "A language that can be represented by a context free grammar",
+        "choices": ["A language that can be represented by a context free grammar", "A language that can be represented by a regular expression", "A set of strings"]
       },
       "q4": {
         "type": "select",
-        "description": "Now we want to show that NPDA’s and CFG both represent CFL’s. Show that we can take any CFG and construct a NPDA and vice versa.",
-        "question": "What is CFG?",
-        "answer": "CFG is a grammar that has only one variable in the LHS of each production",
-        "choices": ["CFG is a grammar that has only one variable in the LHS of each production", "CFG is a grammar that has at most one variable on the RHS of each production", "a grammar that has no restrictions on both LHS and RHS of each production"]
+        "description": "Now we will examine the relationship between NPDAs and CFLs. We will see that NPDAs can represent the class of CFLs.",
+        "question": "What is a Context Free Grammar (CFG)?",
+        "answer": "A grammar that has only one variable in the LHS of each production",
+        "choices": ["A grammar that has only one variable in the LHS of each production", "A grammar that has at most one variable on the RHS of each production", "A grammar that has no restrictions on the LHS or  RHS of each production"]
       },
       "q5": {
         "type": "select",
-        "description": "Now we want to show that NPDA’s and CFG both represent CFL’s. Show that we can take any CFG and construct a NPDA and vice versa.",
-        "question": "What is NPDA?",
+        "description": "Now we will examine the relationship between NPDAs and CFLs. We will see that NPDAs can represent the class of CFLs.",
+        "question": "What is a NPDA?",
         "answer": "Non-deterministic Pushdown Automata",
         "choices": ["Non-deterministic Pushdown Automata", "Deterministic Pushdown Automata"]
       },
       "q6": {
         "type": "select",
-        "description": "Now we want to show that NPDA’s and CFG both represent CFL’s. Show that we can take any CFG and construct a NPDA and vice versa.",
-        "question": "What are PDA components?",
-        "answer": ["$Q$ for states", "$\\Sigma$ for the alphabets", "$\\Gamma$ for the stack alphabets", "$\\delta$ for the transition function", "$q_0$ for the start state", "$z$ for the stack start symbol", "$F$ for set of final states"],
-        "choices": ["$Q$ for states", "$\\Sigma$ for the alphabets", "$\\Gamma$ for the stack alphabets", "$\\delta$ for the transition function", "$q_0$ for the start state", "$z$ for the stack start symbol", "$F$ for set of final states"]
+        "description": "Since CFLs are defined to be those languages that can be represented by a CFG, we can prove that NPDAs are equivalent to CFGs in the usual way: Find an algorithm to convert any CFG to an NPDA, and another algorithm to convert any NPDA to a CFG.",
+        "question": "The formal definition for a PDA includes seven components. Which of these are PDA components?",
+        "answer": ["$Q$ for states", "$\\Sigma$ for the input string alphabet", "$\\Gamma$ for the stack alphabet", "$\\delta$ for the transition function", "$q_0$ for the start state", "$z$ for the stack start symbol", "$F$ for set of final states"],
+        "choices": ["$Q$ for states", "$\\Sigma$ for the input string alphabet", "$\\Gamma$ for the stack alphabet", "$\\delta$ for the transition function", "$q_0$ for the start state", "$z$ for the stack start symbol", "$F$ for set of final states"]
       },
       "q9": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$.",
-        "question": "Since $L$ is a CFL, then there must be ... for it",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.",
+        "question": "Since $L$ is a CFL, then there must be a ... for it",
         "answer": "CFG",
         "choices": ["CFG", "NFA", "PDA"]
       },
       "q10": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.",
         "question": "GNF means",
         "answer": "Greibach Normal Form",
         "choices": ["Greibach Normal Form", "Chomskey Normal Form"]
       },
       "q11": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$",
-        "question": "If a grammar $G' = (V,T,S,P)$ is in GNF, then all productions are in the form",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.",
+        "question": "If a grammar $G' = (V,T,S,P)$ is in GNF, then all productions are in the form:",
         "answer": "$A \\rightarrow ax$ where $A \\in V$, $a \\in T$, $x \\in V^*$",
-        "choices": ["$A \\rightarrow BC \\quad A \\rightarrow c$, where $A,B,C \\in V$, and $c \\in T$", "$A \\rightarrow B$ where $A,B \\in V$", "$A \\rightarrow \\lambda$ where $A\\in V$", "$A \\rightarrow ax$ where $A \\in V$, $a \\in T$, $x \\in V^*$"]
+        "choices": ["$A \\rightarrow BC$ or $A \\rightarrow c$, where $A,B,C \\in V$, and $c \\in T$", "$A \\rightarrow B$ where $A,B \\in V$", "$A \\rightarrow \\lambda$ where $A\\in V$", "$A \\rightarrow ax$ where $A \\in V$, $a \\in T$, $x \\in V^*$"]
       },
       "q13": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$",
-        "question": "Consider the CFG on the left, we need to convert it to a PDA. How many states we need for the PDA?",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.",
+        "question": "Consider the CFG on the left (in GNF). We need to convert it to a PDA. How many states we need for the PDA?",
         "answer": "3",
-        "choices": ["2","3","4","5"]
-      },
-      "q14": {
-        "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$",
-        "question": "Which state is the start state?",
-        "answer": "$q_0$",
-        "choices": ["$q_0$", "$q_1$", "$q_f$"]
-      },
-      "q15": {
-        "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$",
-        "question": "Which state is the final state?",
-        "answer": "$q_f$",
-        "choices": ["$q_0$", "$q_1$", "$q_f$"]
+        "choices": ["1", "2", "3", "4", "5", "6", "7"],
+        "correctFeedback": ["We need a state for each variable."]
       },
       "q16": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$",
-        "question": "What are the alphabet set for the PDA?",
-        "answer": "The Grammar terminals",
-        "choices": ["The Grammar terminals", "The Grammar variables", "The Grammar start variable"]
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.",
+        "question": "What is the alphabet set for the PDA?",
+        "answer": ["The grammar terminals"],
+        "choices": ["The grammar terminals", "The grammar variables", "The grammar start variable", "The stack start symbol $z$"]
       },
       "q17": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$",
-        "question": "What are the stack alphabet set for the PDA?",
-        "answer": ["The Grammar variables","the stack start symbol $z$"],
-        "choices": ["The Grammar terminals", "The Grammar variables", "The Grammar start variable", "the stack start symbol $z$"]
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.",
+        "question": "What is the stack alphabet set for the PDA?",
+        "answer": ["The grammar variables", "The stack start symbol $z$"],
+        "choices": ["The grammar terminals", "The grammar variables", "The grammar start variable", "The stack start symbol $z$"]
       },
       "q18": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.<br/>1. $M$ starts by putting $S$ on the stack.",
         "question": "What is the transition from $q_0$ to $q_1$?",
-        "answer": "$\\delta(q_0, \\lambda, z) = (q_1, z)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_0, a, $z$) = (q_1, Sz)$", "$\\delta(q_0, S, $z$) = (q_1, Sz)$"]
+        "answer": "$\\delta(q_0, \\lambda, Z)\\ \\rightarrow (q_1, SZ)$",
+        "choices": ["$\\delta(q_0, \\lambda, Z)\\ \\rightarrow (q_1, SZ)$", "$\\delta(q_0, a, $Z$)\\ \\rightarrow (q_1, SZ)$", "$\\delta(q_0, S, $Z$)\\ \\rightarrow (q_1, SZ)$"],
+        "correctFeedback": ["$\\lambda$ in the second position of the production LHS means that we don't read anything from the tape. We simply start in $q_0$, confirm that the stack is empty ($Z$ is at the top), and put $SZ$ onto the stack."]
       },
       "q19": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.<br/>1. $M$ starts by putting $S$ on the stack.<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$, put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$.<br/>In other words: Pop A from the stack, read “a” from the tape, and push $X_1 X_2 \\ldots X_n$ onto the stack.",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, a, S) = (q_1, SA)$",
-        "choices": ["$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, $S$) = (q_1, SSA)$"]
+        "answer": "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$",
+        "choices": ["$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, $S$) \\rightarrow (q_1, SSA)$"]
       },
       "q20": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.<br/>1. $M$ starts by putting $S$ on the stack.<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$, put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$.<br/>In other words: Pop A from the stack, read “a” from the tape, and push $X_1 X_2 \\ldots X_n$ onto the stack.",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, a, S) = (q_1, AA)$",
-        "choices": ["$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, a, S) = (q_1, AAS)$"]
+        "answer": "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$",
+        "choices": ["$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AAS)$"]
       },
       "q21": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.<br/>1. $M$ starts by putting $S$ on the stack.<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$, put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$.<br/>In other words: Pop A from the stack, read “a” from the tape, and push $X_1 X_2 \\ldots X_n$ onto the stack.",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, b, S) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, S) = (q_1, S)$"]
+        "answer": "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, S)$"]
       },
       "q22": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.<br/>1. $M$ starts by putting $S$ on the stack.<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$, put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$.<br/>In other words: Pop A from the stack, read “a” from the tape, and push $X_1 X_2 \\ldots X_n$ onto the stack.",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, b, A) = (q_1, BBB)$",
-        "choices": ["$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, S) = (q_1, BBB)$"]
+        "answer": "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$",
+        "choices": ["$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, BBB)$"]
       },
       "q23": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)",
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.<br/>1. $M$ starts by putting $S$ on the stack.<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$, put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$.<br/>In other words: Pop A from the stack, read “a” from the tape, and push $X_1 X_2 \\ldots X_n$ onto the stack.",
         "question": "What is the transition for the highlighted production?",
-        "answer": "$\\delta(q_1, b, B) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, b, $B$) = (q_1, B)$"]
+        "answer": "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, $B$) \\rightarrow (q_1, B)$"]
       },
       "q24": {
         "type": "select",
-        "description": "Theorem: For any CFL $L$ not containing $\\lambda$, $\\exists$ a NPDA $M$ such that $L=L(M)$.<br/>To prove that we need to find a method to sketch the NPDA form a CFG.<br/>Given ($\\lambda$ free) CFL $L$, $\\exists$ CFG $G$ such that $L=L(G)$.<br/>$\\exists$ $G\\prime$ in GNF, such that $L(G) = L(G\\prime)$<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where $Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$<br/>1. $M$ starts by putting $S$ on the stack<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$ put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$<br/>In other words: (Pop A from the stack, read “a” from tape, and push $X_1 X_2 \\ldots X_n$ onto the stack)<br/>3. Accept if $S \\stackrel{*}{\\Rightarrow} w \\in \\Sigma^*$ (all variables on the stack are replaced by terminals or λ)",
-        "question": "Once we reach $z$ means that all variables are converted to terminals or $\\lambda$ and poped form the stack. What is the transition from $q_1$ to $q_f$?",
-        "answer": "$\\delta(q_1, \\lambda, z) = (q_f, z)$",
-        "choices": ["$\\delta(q_1, \\lambda, z) = (q_f, z)$", "$\\delta(q_1, \\lambda, S) = (q_f, S)$"]
+        "description": "Theorem: For any CFL $L$ without $\\lambda$, $\\exists$ a NPDA $M$ such that $L = L(M)$.<br/>To prove that we need to find a method to convert the NPDA to a CFG.<br/>Given a ($\\lambda$ free) CFL $L$, there exists a CFG $G$ such that $L=L(G)$.<br/>We also know that there exists $G'$ in GNF, such that $L(G) = L(G')$.<br/>We need to construct NPDA $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F)$, where<br/>$Q = \\{q_0, q_1, q_f\\}, \\Sigma = T, \\Gamma = V \\cup \\{z\\}, F = \\{q_f\\}$.<br/>1. $M$ starts by putting $S$ on the stack.<br/>2. For each production $A \\rightarrow a X_1 X_2 \\ldots X_n$, put $(q_1, X_1 X_2 \\ldots X_n)$ in $\\delta(q_1, a, A)$.<br/>In other words: Pop A from the stack, read “a” from the tape, and push $X_1 X_2 \\ldots X_n$ onto the stack.<br/>3. Accept if $S \\stackrel{*}{\\Rightarrow} w \\in \\Sigma^*$ (all variables on stack are replaced by terminals or λ).",
+        "question": "Once we reach $Z$, it means that all variables are converted to terminals or $\\lambda$ and popped from the stack. What is the transition from $q_1$ to $q_f$?",
+        "answer": "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$",
+        "choices": ["$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$", "$\\delta(q_1, \\lambda, S) \\rightarrow (q_f, S)$"]
       },
       "q27": {
         "type": "select",
-        "description": "Trace $abbbbb$ in the grammar and in the PDA. Let us start by trace that the string is in the grammar.",
-        "question": "Starting from $S$, what is the production we need to use to derive $abbbbb$",
+        "description": "Trace $abbbbb$.",
+        "question": "Starting from $S$, which production do we need to use to derive $abbbbb$?",
         "answer": "1",
         "choices": ["1","2", "3", "4","5"]
       },
       "q28": {
         "type": "select",
-        "description": "Trace $abbbbb$ in the grammar and in the PDA. Let us start by trace that the string is in the grammar.",
-        "question": "Now we have $S \\Rightarrow aSA$, what is the next production we need to use to derive $\\textbf{a}bbbbb$",
+        "description": "Trace $abbbbb$.",
+        "question": "Now we have $S \\Rightarrow aSA$. What is the next production we need to use to derive $\\textbf{a}bbbbb$?",
         "answer": "3",
         "choices": ["1","2", "3", "4","5"]
       },
       "q29": {
         "type": "select",
-        "description": "Trace $abbbbb$ in the grammar and in the PDA. Let us start by trace that the string is in the grammar.",
-        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA$, what is the next production we need to use to derive $\\textbf{ab}bbbb$",
+        "description": "Trace $abbbbb$.",
+        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA$. What is the next production we need to use to derive $\\textbf{ab}bbbb$?",
         "answer": "4",
         "choices": ["1","2", "3", "4","5"]
       },
       "q30": {
         "type": "select",
-        "description": "Trace $abbbbb$ in the grammar and in the PDA. Let us start by trace that the string is in the grammar.",
-        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB$, what is the next production we need to use to derive $\\textbf{abb}bbb$",
+        "description": "Trace $abbbbb$.",
+        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB$. What is the next production we need to use to derive $\\textbf{abb}bbb$?",
         "answer": "5",
         "choices": ["1","2", "3", "4","5"]
       },
       "q31": {
         "type": "select",
-        "description": "Trace $abbbbb$ in the grammar and in the PDA. Let us start by trace that the string is in the grammar.",
-        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB$, what is the next production we need to use to derive $\\textbf{abbb}bb$",
+        "description": "Trace $abbbbb$.",
+        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB$. What is the next production we need to use to derive $\\textbf{abbb}bb$?",
         "answer": "5",
         "choices": ["1","2", "3", "4","5"]
       },
       "q32": {
         "type": "select",
-        "description": "Trace $abbbbb$ in the grammar and in the PDA. Let us start by trace that the string is in the grammar.",
-        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB$, what is the next production we need to use to derive $\\textbf{abbb}bb$",
+        "description": "Trace $abbbbb$.",
+        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB$. What is the next production we need to use to derive $\\textbf{abbb}bb$?",
         "answer": "5",
         "choices": ["1","2", "3", "4","5"]
       },
       "q33": {
         "type": "select",
-        "description": "Trace $abbbbb$ in the grammar and in the PDA. Let us start by trace that the string is in the grammar.",
-        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB$, what is the next production we need to use to derive $\\textbf{abbbb}b$",
+        "description": "Trace $abbbbb$.",
+        "question": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB$. What is the next production we need to use to derive $\\textbf{abbbb}b$?",
         "answer": "5",
         "choices": ["1","2", "3", "4","5"]
       },
       "q34": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
-        "question": "Let us do the same in the PDA, what is the transition we should start with?",
-        "answer": "$\\delta(q_0, \\lambda, z) = (q_1, Sz)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, Sz)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "question": "Let us do the same in the PDA. What transition should we start with?",
+        "answer": "$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, Sz)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, Sz)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$"]
       },
       "q35": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, a, S) = (q_1, SA)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, z)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$"]
       },
       "q36": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, S) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, z)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$"]
       },
       "q37": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, A) = (q_1, BBB)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, z)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$"]
       },
       "q38": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, B) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, z)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$"]
       },
       "q39": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, B) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, z)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$"]
       },
       "q40": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, b, B) = (q_1, \\lambda)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, z)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$"]
       },
       "q41": {
         "type": "select",
         "description": "Now we have $S \\Rightarrow aSA \\Rightarrow abA\\Rightarrow abbBBB \\Rightarrow abbbBB \\Rightarrow abbbbB \\Rightarrow abbbbb$. The sring is derived form the grammar.",
         "question": "What is the next transition?",
-        "answer": "$\\delta(q_1, \\lambda, z) = (q_f, z)$",
-        "choices": ["$\\delta(q_0, \\lambda, z) = (q_1, z)$", "$\\delta(q_1, a, S) = (q_1, SA)$", "$\\delta(q_1, a, S) = (q_1, AA)$", "$\\delta(q_1, b, S) = (q_1, \\lambda)$", "$\\delta(q_1, b, A) = (q_1, BBB)$", "$\\delta(q_1, b, B) = (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) = (q_f, z)$"]
+        "answer": "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$",
+        "choices": ["$\\delta(q_0, \\lambda, z) \\rightarrow (q_1, z)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, SA)$", "$\\delta(q_1, a, S) \\rightarrow (q_1, AA)$", "$\\delta(q_1, b, S) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, b, A) \\rightarrow (q_1, BBB)$", "$\\delta(q_1, b, B) \\rightarrow (q_1, \\lambda)$", "$\\delta(q_1, \\lambda, z) \\rightarrow (q_f, z)$"]
       }
     }
   }

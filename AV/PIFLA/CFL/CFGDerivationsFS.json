@@ -1,117 +1,117 @@
 {
   "translations": {
     "en": {
-      "q4": {
+      "anbn": {
         "type": "multiple",
-        "description": "Suppose we have $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSb | ab$",
-        "question": "What would the language $L(G)$ be?",
+        "description": "Suppose we have $G = (\\{S\\}, \\{a,b\\}, S, P)$ with production rule:<br/>$S \\rightarrow aSb\\ |\\ ab$",
+        "question": "What would the language $L(G)$ for this grammar be?",
         "answer": "$a^nb^n$",
         "choices": ["$a^nb^n$", "$ab^n$","$a^nb$", "$a^*b^*$"]
       },
-      "q5": {
+      "anbnreg": {
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSb | ab$ ",
+        "description": "Suppose we have $G = (\\{S\\}, \\{a,b\\}, S, P)$ with production rule:<br/>$S \\rightarrow aSb\\ |\\ ab$",
         "question": "Is the language $L(G)$ regular?",
         "answer": "No",
         "choices": ["Yes", "No"]
     },
-      "q6": {
+      "grammartype": {
         "type": "select",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSb | ab$ ",
+        "description": "Suppose we have $G = (\\{S\\}, \\{a,b\\}, S, P)$ with production rule:<br/>$S \\rightarrow aSb\\ |\\ ab$",
         "question": "What is the type of the grammar?",
         "answer": ["Context-Free Grammar", "Linear Grammar"],
         "choices": ["Regular Grammar", "Context-Free Grammar", "Linear Grammar"]
       },
-      "q7": {
+      "derivation": {
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSb | ab$ <br> Derivation of $aaabbb$:<br> $S \\Rightarrow aSb \\Rightarrow aaSbb \\Rightarrow aaabbb$",
-        "question": "What do we mean by Derivation of string $aaabbb$?",
-        "answer": "Starting  at the start variable of the grammar and do replacements until we reach the string $aaabbb$.",
-        "choices": ["Starting  at the start variable of the grammar and do replacements until we reach the string $aaabbb$.", "Describing the string $aaabbb$"]
+        "description": "Suppose we have $G = (\\{S\\}, \\{a,b\\}, S, P)$ with production rule:<br/>$S \\rightarrow aSb\\ |\\ ab$<br/><br/>Here is a derivation for $aaabbb$:<br/> $S \\Rightarrow aSb \\Rightarrow aaSbb \\Rightarrow aaabbb$",
+        "question": "What do we mean by the derivation of string $aaabbb$?",
+        "answer": "Begin with the start variable of the grammar and do replacements until we reach the string $aaabbb$.",
+        "choices": ["Begin with the start variable of the grammar and do replacements until we reach the string $aaabbb$.", "Describe the string $aaabbb$"]
       },
-      "q8": {
+      "sentential": {
         "type": "select",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSb | ab$ <br> Derivation of $aaabbb$:<br> $S \\Rightarrow aSb \\Rightarrow aaSbb \\Rightarrow aaabbb$. In every step in the derivation process we get what is called $\\textbf{'Sentential form'}$",
-        "question": "Based on the derivation of the sting $aaabbb$, select all sentential forms?",
+        "description": "Suppose we have $G = (\\{S\\}, \\{a,b\\}, S, P)$ with production rule:<br/>$S \\rightarrow aSb\\ |\\ ab$<br/><br/>Here is a derivation for $aaabbb$:<br/> $S \\Rightarrow aSb \\Rightarrow aaSbb \\Rightarrow aaabbb$<br/><br/>Every step in the derivation process yields what is called a <b>Sentential form</b>.",
+        "question": "Based on the derivation of the sting $aaabbb$, select all sentential forms.",
         "answer": ["$S$", "$aSb$", "$aaSbb$", "$aaabbb$"],
         "choices": ["$S$", "$aSb$", "$aaSbb$", "$aaabbb$"]
       },
       "q9":{
         "type": "multiple",
-        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
-        "question": "What would the langauge $L(G)$ be?",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "question": "What is the langauge $L(G)$ for this grammar?",
         "answer": "$w = w^R$",
         "choices": ["$\\{a, b\\}^*$", "$w = w^R$", "$w = ww^R$", "$w = ww$"]
       },
       "q10":{
         "type": "multiple",
-        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
-        "question": "Is it Regular laguage?",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "question": "Is this a regular language?",
         "answer": "No, we proved that using Pumping Lemma",
         "choices": ["No, we proved that using Pumping Lemma", "Yes"]
       },
       "q11":{
         "type": "select",
-        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
         "question": "What is the type of this grammar?",
         "answer": ["Context-Free Grammar", "Linear Grammar"],
         "choices": ["Regular Grammar", "Context-Free Grammar", "Linear Grammar"]
       },
       "q12":{
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
-        "question": "Does the string $ababa$ is in the $L(G)$",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "question": "Is the string $ababa$ in $L(G)$?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       },
       "q13":{
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
-        "question": "Let us derive the sting $ababa$. Which production we should use first?",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "question": "Let us derive the sting $ababa$. Which production should we use first?",
         "answer": "$S \\rightarrow aSa$",
         "choices": ["$S \\rightarrow aSa$", "$S \\rightarrow bSb$", "$S \\rightarrow a$", "$S \\rightarrow b$", "$S \\rightarrow \\lambda$"]
       },
       "q14":{
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
-        "question": "Good. Substituting $S$ with $aSa$ will give which sentential form?",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "question": "Substituting $S$ with $aSa$ will give which sentential form?",
         "answer": "$aSa$",
         "choices": ["$aSa$", "$aaSaa$","$a$", "$b$", "$abSba$", "$abaSaba$", "$bbSbb$"]
       },
       "q15":{
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
         "question": "Currently we have $S\\Rightarrow aSa$. What is the next production rule we will use to derive the string $ababa$?",
         "answer": "$S \\rightarrow bSb$",
         "choices": ["$S \\rightarrow aSa$", "$S \\rightarrow bSb$", "$S \\rightarrow a$", "$S \\rightarrow b$", "$S \\rightarrow \\lambda$"]
       },
       "q16":{
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
         "question": "Currently we have $S\\Rightarrow aSa \\Rightarrow $. Select the new sentential form that we will get after substituting $S$ with $bSb$",
         "answer": "$abSba$",
         "choices": ["$aSa$", "$aaSaa$","$a$", "$b$", "$abSba$", "$abaSaba$", "$bbSbb$"]
       },
       "q17":{
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$",
         "question": "Currently we have $S\\Rightarrow aSa \\Rightarrow abSba$. What is the next production rule we will use to derive the string $ababa$?",
         "answer": "$S \\rightarrow a$",
         "choices": ["$S \\rightarrow aSa$", "$S \\rightarrow bSb$", "$S \\rightarrow a$", "$S \\rightarrow b$", "$S \\rightarrow \\lambda$"]
       },
       "q18":{
         "type": "multiple",
-        "description": "$G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa | bSb | a | b | \\lambda$ <br>Derivatino of $ababa$ $S \\Rightarrow aSA \\Rightarrow abSba \\Rightarrow ababa$ <br> $\\Sigma = \\{a,b\\}$",
+        "description": "Suppose $G = (\\{S\\}, \\{a,b\\}, S, P)$ <br> $S \\rightarrow aSa\\ |\\ bSb\\ |\\ a\\ |\\ b\\ |\\ \\lambda$ <br> $\\Sigma = \\{a,b\\}$<br/><br/>Derivation of $ababa$:<br/>$S \\Rightarrow aSA \\Rightarrow abSba \\Rightarrow ababa$ <br> $\\Sigma = \\{a,b\\}$",
         "question": "Currently we have $S\\Rightarrow aSa \\Rightarrow abSba \\Rightarrow$. Select the new sentential form that we will get after substituting $S$ with $b$",
         "answer": "$ababa$",
         "choices": ["$aSa$", "$aaSaa$","$a$", "$b$", "$abSba$", "$abaSaba$", "$bbSbb$", "$ababa$"]
       },
       "q20":{
         "type": "multiple",
-        "description": "Let us see this Grammar $G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$",
-        "question": "What is this grammar type?",
+        "description": "Consider the grammar $G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$",
+        "question": "What is the type for this grammar?",
         "answer": "Context-Free Grammar even if it is a Regular Language",
-        "choices": ["Regular Grammar. Because it is a Regular Language", "Context-Free Grammar even if it is a Regular Language", "Linear Grammar"]
+        "choices": ["Regular Grammar because it is a Regular Language", "Context-Free Grammar even if it is a Regular Language", "Linear Grammar"]
       },
       "q21":{
         "type": "multiple",
@@ -123,14 +123,14 @@
       "q22":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$",
-        "question": "Does the string $aacbb \\in L$?",
+        "question": "Is the string $aacbb$ in $L$?",
         "answer": "Yes",
         "choices": ["Yes", "No"]
       },
       "q23":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$",
-        "question": "Let us derive $aacbb$. What is the variable that we start with?",
+        "question": "Let us derive $aacbb$. What variable do we start with?",
         "answer": "$S$",
         "choices": ["$S$", "$A$", "$B$"]
       },
@@ -145,8 +145,9 @@
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$",
         "question": "Since we have a sentential form with multiple variables, which variable should be replaced?",
-        "answer": "We need some order to be able to write an algorithm to perform replacements",
-        "choices": ["A", "B", "We need some order to be able to write an algorithm to perform replacements"]
+        "answer": "We will need some order to be able to write an algorithm to perform replacements.",
+        "choices": ["A", "B", "We will need some order to be able to write an algorithm to perform replacements."],
+        "correctFeedback": ["We have two variables to choose from, so two possible orders to perform replacements."]
       },
       "q27":{
         "type": "multiple",
@@ -158,14 +159,14 @@
       "q28":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable.",
-        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow$. Following the Leftmost derivation order, which production we should use to replace $A$?",
+        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB$. Following the Leftmost derivation order, which production should we use to replace $A$?",
         "answer": "$A \\rightarrow aAa$",
         "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
       },
       "q29":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable.",
-        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow$. What will be the sentential form after we substitute $A$ with $aAa$",
+        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB$. What will be the sentential form after we substitute $A$ with $aAa$",
         "answer": "$aAacB$",
         "choices": ["$AcB$", "$aAacB$", "$aacB$", "$AcBbb$", "$Acbb$", "$aacBbb$", "$aacbb$"]
       },
@@ -179,14 +180,14 @@
       "q31":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable.",
-        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB$. Following the Leftmost derivation order, which production we should use to replace $A$?",
+        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB$. Following the Leftmost derivation order, which production should we use to replace $A$?",
         "answer": "$A \\rightarrow \\lambda$",
         "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
       },
       "q32":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable.",
-        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB$. What will be the sentential form after we substitute $A$ with $\\lambda$",
+        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB$. What will be the sentential form after we substitute $A$ with $\\lambda$?",
         "answer": "$aacB$",
         "choices": ["$AcB$", "$aAacB$", "$aacB$", "$AcBbb$", "$Acbb$", "$aacBbb$", "$aacbb$"]
       },
@@ -200,14 +201,14 @@
       "q34":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable.",
-        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB \\Rightarrow aac\\underline{B}$. Following the Leftmost derivation order, which production we should use to replace $B$?",
+        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB \\Rightarrow aac\\underline{B}$. Following the Leftmost derivation order, which production should we use to replace $B$?",
         "answer": "$B \\rightarrow Bbb$",
         "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
       },
       "q35":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable.",
-        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB \\Rightarrow aac\\underline{B}$. What will be the sentential form after we substitute $B$ with $Bbb$",
+        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB \\Rightarrow aac\\underline{B}$. What will be the sentential form after we substitute $B$ with $Bbb$?",
         "answer": "$aacBbb$",
         "choices": ["$AcB$", "$aAacB$", "$aacB$", "$AcBbb$", "$Acbb$", "$aacBbb$", "$aacbb$"]
       },
@@ -221,14 +222,14 @@
       "q37":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable.",
-        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB \\Rightarrow aac\\underline{B}\\Rightarrow aac\\underline{B}bb$. Following the Leftmost derivation order, which production we should use to replace $B$?",
+        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB \\Rightarrow aac\\underline{B}\\Rightarrow aac\\underline{B}bb$. Following the Leftmost derivation order, which production should we use to replace $B$?",
         "answer": "$B \\rightarrow \\lambda$",
         "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
       },
       "q38":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb | $\\lambda$<br>$\\textbf {Definition}$: Leftmost derivation: in each step of a derivation, replace the leftmost variable.",
-        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB \\Rightarrow aac\\underline{B}$. What will be the sentential form after we substitute $B$ with $\\lambda$",
+        "question": "Currently, we have $S \\Rightarrow \\underline{A}cB \\Rightarrow a\\underline{A}acB \\Rightarrow aac\\underline{B}$. What will be the sentential form after we substitute $B$ with $\\lambda$?",
         "answer": "$aacbb$",
         "choices": ["$AcB$", "$aAacB$", "$aacB$", "$AcBbb$", "$Acbb$", "$aacBbb$", "$aacbb$"]
       },
@@ -242,14 +243,14 @@
       "q41":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable.",
-        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B}$. Following the Rightmost derivation order, which production we should use to replace $B$?",
+        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B}$. Following the Rightmost derivation order, which production should we use to replace $B$?",
         "answer": "$B \\rightarrow Bbb$",
         "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
       },
       "q42":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable.",
-        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow$. What will be the sentential form after we substitute $B$ with $Bbb$",
+        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow$. What will be the sentential form after we substitute $B$ with $Bbb$?",
         "answer": "$AcBbb$",
         "choices": ["$AcB$", "$aAacB$", "$aacB$", "$AcBbb$", "$Acbb$", "$aacBbb$", "$aacbb$"]
       },
@@ -263,14 +264,14 @@
       "q44":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable.",
-        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb$. Following the Rightmost derivation order, which production we should use to replace $B$?",
+        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb$. Following the Rightmost derivation order, which production should we use to replace $B$?",
         "answer": "$B \\rightarrow \\lambda$",
         "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
       },
       "q45":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable.",
-        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow$. What will be the sentential form after we substitute $B$ with $\\lambda$",
+        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow$. What will be the sentential form after we substitute $B$ with $\\lambda$?",
         "answer": "$Acbb$",
         "choices": ["$AcB$", "$aAacB$", "$aacB$", "$AcBbb$", "$Acbb$", "$aacBbb$", "$aacbb$"]
       },
@@ -284,14 +285,14 @@
       "q47":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable.",
-        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow \\underline{A}cbb$. Following the Rightmost derivation order, which production we should use to replace $A$?",
+        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow \\underline{A}cbb$. Following the Rightmost derivation order, which production should we use to replace $A$?",
         "answer": "$A \\rightarrow aAa$",
         "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
       },
       "q48":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable.",
-        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow \\underline{A}cbb$. What will be the sentential form after we substitute $A$ with $aAa$",
+        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow \\underline{A}cbb$. What will be the sentential form after we substitute $A$ with $aAa$?",
         "answer": "$aAacbb$",
         "choices": ["$AcB$", "$aAacB$", "$aacB$", "$AcBbb$", "$aAacbb$", "$aacBbb$", "$aacbb$"]
       },
@@ -305,14 +306,14 @@
       "q50":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb$ | $\\lambda$<br>$\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable.",
-        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow \\underline{A}cbb \\Rightarrow a\\underline{A}acbb$. Following the Rightmost derivation order, which production we should use to replace $A$?",
+        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow \\underline{A}cbb \\Rightarrow a\\underline{A}acbb$. Following the Rightmost derivation order, which production should we use to replace $A$?",
         "answer": "$A \\rightarrow \\lambda$",
         "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
       },
       "q51":{
         "type": "multiple",
         "description": "$G$ =($\\{S,A,B\\}$,$\\{a,b,c\\}$,S,P) <br>$S\\rightarrow AcB$<br> $A\\rightarrow aAa$ | $\\lambda$<br> $B\\rightarrow Bbb | $\\lambda$<br>$\\textbf {Definition}$: Rightmost derivation: in each step of a derivation, replace the rightmost variable.",
-        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow \\underline{A}cbb \\Rightarrow a\\underline{A}acbb$. What will be the sentential form after we substitute $A$ with $\\lambda$",
+        "question": "Currently, we have $S \\Rightarrow Ac\\underline{B} \\Rightarrow Ac\\underline{B}bb\\Rightarrow \\underline{A}cbb \\Rightarrow a\\underline{A}acbb$. What will be the sentential form after we substitute $A$ with $\\lambda$?",
         "answer": "$aacbb$",
         "choices": ["$AcB$", "$aAacB$", "$aacB$", "$AcBbb$", "$Acbb$", "$aacBbb$", "$aacbb$"]
       }

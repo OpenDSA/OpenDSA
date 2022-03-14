@@ -8,17 +8,13 @@ $(document).ready(function () {
   var yoffset = 0;
   var circRadius = 20;
   av = new JSAV(av_name);
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-  $(".avcontainer").on("jsav-message", function() {
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-  });
 
   // Slide 1
-  av.umsg("Suppose that $L_2$ is regular");
+  av.umsg("Our next step is to come up with a more formal proof that $L_2 = \\{a^nb^n | n > 0 \\}$ is nonregular. We are going to do this using a Proof by Contradiction. So of course, the first step is to assume that $L_2$ is regular, and show that this assumption causes a contradition.");
   av.displayInit();
 
   // Slide 2 
-  av.umsg("If $L_2$ is regular then there exists a DFA $M$ that recognizes $L_2$.");
+  av.umsg("If $L_2$ is regular then there exists a DFA $M$ that recognizes $L_2$. Here is an abstract representation for $M$. We don't mean to make any particular assumptions at this point about $M$, merely that it has some states and at least one final state (that we arbitrarily label here as qn).");
   var g = av.ds.graph({directed: true});
   
   var q0 = g.addNode("q0", {left: xoffset, top: yoffset + 100});   
@@ -35,14 +31,14 @@ $(document).ready(function () {
   av.step();
 
   // Slide 3
-  av.umsg("$M$ has a finite number of states, say $k$ states.");
+  av.umsg("All DFAs have a finite number of states. (That is why they are called Deterministic <b>Finite</b> automata!) So, $M$ has a finite number of states. Now, let's consider paths from the start state to the final state. There is some longest path, and let's say that the length of this path is $k$ states for an arbitrary value $k$.");
   var labelK = av.label("$k$", {"top": yoffset + 73, "left": xoffset + 450});
   var arrowK1 = av.g.line(xoffset + 440, yoffset + 100, xoffset + 240, yoffset + 100, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrowK2 = av.g.line(xoffset + 470, yoffset + 100, xoffset + 670, yoffset + 100, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.step();
 
   // Slide 4
-  av.umsg("Consider a long string $a^kb^k \\in L_2$. The key point is that this string has more characters than there are states in the machine.");
+  av.umsg("Consider a long string $a^kb^k \\in L_2$. The key point is that this string has more characters than there are states along the longest path in the machine.");
   var arrValues = ["a", "a", "...", "a", "b", "...", "b", "b"];
   var arr = av.ds.array(arrValues);
   var labelab1 = av.label("$k$", {"left": xoffset + 390, "top": yoffset + 250});
@@ -54,6 +50,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
+  av.umsg("Since there are $k$ states and $k$ a's (followed by $k$ b's), some state $i$ in $M$ must be reached more than once when following the path of $a^k$. That is the only way that we can make $2k$ steps as required to process the string $a^kb^k$.");
   arrow2.hide();
   arrow1.hide();
   arrowK1.hide();
@@ -75,7 +72,6 @@ $(document).ready(function () {
   var arrow9 = av.g.line(580, 130, 626, 130, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow10 = av.g.line(410, 230, 560, 140, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrow11 = av.g.line(380, 230, 463, 148, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  av.umsg("Since there are $k$ states and $k$ a's (followed by some b's), some state $i$ in $M$ must be reached more than once when following the path of $a^k$.");
   av.step();
 
   // Slide 6
@@ -127,10 +123,14 @@ $(document).ready(function () {
   av.step();
 
   // Slide 10
-  av.umsg("This must happen no matter what machine we created that can accept $a^kb^k$. Thus, $L_2$ is not regular.");
+  av.umsg("The same problem occurs if the loop contained some b's along with a's, because then we can generate strings with alternating a's and b's in between. And we can't have a loop with only b's, because there are not enough states to handle the a's in our long string. So <b>any</b> loop causes us a problem.");
   av.step();
 
   // Slide 11
+  av.umsg("This contradiction must happen no matter what machine we created that claims to accept $L_2$. Thus, we have proved that $L_2$ is not regular, by contradiction.");
+  av.step();
+
+  // Slide 12
   av.umsg("This is an example of the Pigeonhole Principle. The Pigeonhole Principle states that, given $n$ pigeonholes and $n+1$ pigeons, when all of the pigeons go into the holes we can be sure that at least one hole contains more than one pigeon.");
   arr2.hide();
   labelaab1.hide();
@@ -188,7 +188,7 @@ $(document).ready(function () {
   g.layout();
   av.step();
 
-  // Slide 12
+  // Slide 13
   av.umsg("In our case, the number of a's are the pigeons, and the states in the DFA are the pigeonholes. We can't distinguish the various possibilities for the number of a's, so we can't verify that they properly match the number of b's.");
   av.recorded(); 
 });

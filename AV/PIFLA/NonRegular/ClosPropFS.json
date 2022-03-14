@@ -1,26 +1,26 @@
 {
   "translations": {
     "en": {
-      "q2": {
+      "recall": {
         "type": "select",
-        "description":"Let us revise the closure properties for regular languages.",
+        "description":"Let us remind ourselves of some closure properties for regular languages.",
         "question": "Suppose that $L$ is a regular laguage. Which of the following is also regular?",
         "answer": ["Complement of L", "Homomorphism of L", "$L^*$"],
         "choices": ["Complement of L", "Homomorphism of L", "$L^*$"]
       },
-      "q3": {
+      "recall2": {
         "type": "select",
-        "description":"Let us revise the closure properties for regular languages.",
+        "description":"Let us remind ourselves of some closure properties for regular languages.",
         "question": "Suppose that $L_1$ and $L_2$ are regular laguages. Which of the following is also regular?",
         "answer": ["$L_1 \\cap L_2$", "$L_1 \\cup L_2$", "$L_1 \\cdot L_2$", "$L_1 - L_2$", "$L_1 / L_2$"],
         "choices": ["$L_1 \\cap L_2$", "$L_1 \\cup L_2$", "$L_1 \\cdot L_2$", "$L_1 - L_2$", "$L_1 / L_2$"]
       },
-      "q5": {
+      "result": {
         "type": "select",
-        "description":"$\\textbf{Proof outlien:}$ Assume $L$ is regular<br/>Apply closure properties to $L$ and other regular languages, constructing $L\\prime$ that you know is not regular.",
-        "question": "But, since we applied a closure property operator on $L$, if $L$ is regular then $L\\prime$ must be",
+        "description":"<b>Proof outline:</b> Assume $L$ is regular<br/>Apply operations to $L$ that we know are closed for regular languages, and perhaps we include other languages that we know are regular as part of the closed operation. (The goal is to construct $L'$ that you know is non-regular.)",
+        "question": "Since we applied a closed operator on $L$, if $L$ is regular then $L'$ must be:",
         "answer": "regular",
-        "choices": ["regular", "not regular"]
+        "choices": ["regular", "non-regular"]
       }
     }
   }

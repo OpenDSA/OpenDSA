@@ -3,56 +3,56 @@
       "en": {
         "q2": {
           "type": "select",
-          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Derivation of $a+b∗a$ is:<br> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E}\\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree is:",
-          "question": "How parse trees are evaluated?",
+          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Derivation of $a+b∗a$ is:<br> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E} \\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E \\Rightarrow$ $a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree is:",
+          "question": "How are parse trees are evaluated?",
           "answer": "Buttom up",
           "choices": ["Top down", "Buttom up"]
         },
         "q3": {
           "type": "select",
-          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Derivation of $a+b∗a$ is:<br> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E}\\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree is:",
+          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Derivation of $a+b∗a$ is:<br> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E} \\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E \\Rightarrow$ $a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree is:",
           "question": "Since Derivation trees of expressions are evaluated bottom up, which operator will be done first?",
           "answer": "multiplication",
           "choices": ["multiplication", "addition"]
         },
         "q4": {
           "type": "select",
-          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Derivation of $a+b∗a$ is:<br> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E}\\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree is:",
+          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Derivation of $a+b∗a$ is:<br> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E} \\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E \\Rightarrow$ $a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree is:",
           "question": "Since Derivation trees of expressions are evaluated bottom up, Let $a = 2, \\quad b= 4$ the value of $a+b*a$ from the tree on the left will be",
           "answer": "10",
           "choices": ["10", "12"]
         },
         "q5": {
           "type": "true/false",
-          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Derivation of $a+b∗a$ is:<br> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E}\\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree is:",
+          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Derivation of $a+b∗a$ is:<br> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E} \\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E \\Rightarrow$ $a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree is:",
           "question": "[T|F]We can find a different derivation tree for the same string $a+b*a$ using the same grammar.",
           "answer": "True",
           "choices": []
         },
         "q6": {
           "type": "true/false",
-          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Another derivation of $a+b∗a$ is:Another derivation of a+b*a is:<br> $E\\Rightarrow \\underline{E}*E\\Rightarrow \\underline{E}+E*E\\Rightarrow \\underline{I}+E*E\\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree will be:",
+          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Another derivation of $a+b∗a$ is:Another derivation of a+b*a is:<br> $E\\Rightarrow \\underline{E}*E\\Rightarrow \\underline{E}+E*E\\Rightarrow \\underline{I}+E*E \\Rightarrow a+\\underline{E}*E\\Rightarrow$ $a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree will be:",
           "question": "[T|F]We can find a different derivation tree for the same string $a+b*a$ using the same grammar.",
           "answer": "True",
           "choices": []
         },
         "q7": {
           "type": "select",
-          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Another derivation of $a+b∗a$ is:Another derivation of a+b*a is:<br> $E\\Rightarrow \\underline{E}*E\\Rightarrow \\underline{E}+E*E\\Rightarrow \\underline{I}+E*E\\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree will be:",
+          "description": "$\\textbf{Example}$. Expression grammar<br> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$ <br> Another derivation of $a+b∗a$ is:Another derivation of a+b*a is:<br> $E\\Rightarrow \\underline{E}*E\\Rightarrow \\underline{E}+E*E\\Rightarrow \\underline{I}+E*E \\Rightarrow a+\\underline{E}*E\\Rightarrow$ $a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br> Corresponding derivation tree will be:",
           "question": "Since Derivation trees of expressions are evaluated bottom up, Let $a = 2, \\quad b= 4$ the value of $a+b*a$ from the tree on the left will be",
           "answer": "12",
           "choices": ["10","12"]
         },
         "q8": {
           "type": "select",
-          "description": "Since the same string can have different derivation trees, the grammar is called ambiguous grammar.",
+          "description": "Since the same string can have different derivation trees, this is called an <b>ambiguous</b> grammar.",
           "question": "Which tree is the correct one?",
           "answer": "both are correct based on the given grammar",
           "choices": ["On the left","On the right", "both are correct based on the given grammar"]
         },
         "q9": {
           "type": "select",
-          "description": "Since the same string can have different derivation trees, the grammar is called ambiguous grammar.",
+          "description": "Since the same string can have different derivation trees, this is called an <b>ambiguous</b> grammar.",
           "question": "Which tree will be used by the compiler?",
           "answer": "Neither, the compiler will issue an error due to the ambiguity",
           "choices": ["On the left","On the right", "Neither, the compiler will issue an error due to the ambiguity"]

@@ -13,13 +13,9 @@ $(document).ready(function() {
   var q4 = PDA.getNodeWithValue("q4");
   PDA.hide();
 
-  //Frame 1
-  av.umsg("As we said before, PDAs have 2 different types of language acceptance.");
+  // Frame 1
+  av.umsg("PDAs, like DFAs and NFAs, can accept a string based on being in a final state once the string has been processed. Unsurprisingly, this is referred to as Final State acceptance, and it holds regardless of the contents of the stack. However, there is a second type of acceptance that PDAs might use: Empty Stack acceptance.");
   av.displayInit();
-
-  //Frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
 
   //Frame 3
   av.umsg(Frames.addQuestion("q3"));
@@ -52,14 +48,14 @@ $(document).ready(function() {
 
   //Frame 10
   av.umsg(Frames.addQuestion("q10"));
-  var tape = new av.ds.array(["a", "a", "b", "c","c","c"], {left: 80, top: 300, indexed: false});
-  var tapeLabel = av.label("Input Tape", {left:0, top:305});
+  var tape = new av.ds.array(["a", "a", "b", "c","c","c"], {left: 80, top: 150, indexed: false});
+  var tapeLabel = av.label("Input Tape", {left:0, top:155});
   av.step();
 
   //Frame 11
   av.umsg(Frames.addQuestion("q11"));
-  var stack = new av.ds.array(["", "", "","", "Z"], {left: 400, top: 300, indexed: false, layout: "vertical"});
-  var stackLabel = av.label("PDA Stack", {left:400, top:450});
+  var stack = new av.ds.array(["", "", "","", "Z"], {left: 400, top: 150, indexed: false, layout: "vertical"});
+  var stackLabel = av.label("PDA Stack", {left: 380, top: 300});
   tape.highlight(0);
   q0.highlight();
   av.step();
@@ -139,6 +135,7 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("q24"));
   q3.unhighlight();
   q4.highlight();
+  stack.value(4, "");
   av.step();
 
   //Frame 25
@@ -153,9 +150,10 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("q26"));
   q0.highlight();
   q4.removeClass('accepted');
-  var tape2 = new av.ds.array(["a", "a", "b", "c"], {left: 80, top: 300, indexed: false});
+  var tape2 = new av.ds.array(["a", "a", "b", "c"], {left: 80, top: 150, indexed: false});
   tapeLabel.show();
   tape2.highlight(0);
+  stack.value(4, "Z");
   stack.show();
   av.step();
 
@@ -214,7 +212,7 @@ $(document).ready(function() {
   av.step();
 
   //Frame 35
-  av.umsg("Exactly. The PDA will reject the string because the stack is not empty.");
+  av.umsg("Congratulations! Frameset completed.");
   q3.unhighlight();
   av.recorded();
 });

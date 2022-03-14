@@ -29,9 +29,7 @@ language is non-regular.
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/introNonRegularFS.js
    :output: show
 
-
-The Concept of Pumping
-----------------------
+|
 
 .. inlineav:: Proof1NonRegularCON ss
    :long_name: Proof 1 Non-Regular Grammar Slideshow
@@ -39,7 +37,42 @@ The Concept of Pumping
    :scripts: AV/VisFormalLang/NonReg/Proof1NonRegularCON.js
    :output: show
 
-|
+We are about to formalize the proof in the slideshow into a tool for
+proving some languages to be nonregular.
+But first, let's explore the relationship of loops in DFAs to regular
+languages a bit more.
+
+First, we know that loops don't always cause a problem.
+In fact, there is a simple relationship between DFAs with or without
+loops, and languages that are infinite or finite.
+That is, a finite language is accepted by a DFA with no loop.
+Its not possible that the language accepted would be finite, since we
+can't control the number of times that the machine goes around the
+loop.
+That is, the machine can accept all strings in the finite language,
+but it has to accept more strings as well.
+Conversely, any infinite language must be accepted by a DFA with one
+or more loops.
+
+Next, consider that we can use a DFA to "count" a finite number of
+things.
+For example, we can make a DFA that never has three consecutive a's,
+or one that has at most three a's in the string.
+So long as we want to count a fixed number (or maximum number) of
+things, we are OK.
+And of course, such a machine can have a loop.
+What **cannot** happen is for the loop to affect the counting process.
+So, the series of states that counts to three a's can include a loop
+to process an arbitrary number of b's, because that will not disrupt
+the count of a's.
+But if the loop includes a's, then we "lose count" of how many a's we
+have seen, because we can't control the number of times through the
+loop (or more precisely, we must accept strings that add characters
+processed an arbitrary number of times through the loop).
+
+
+The Concept of Pumping
+----------------------
 
 .. inlineav:: introPumpingFS ff
    :links: AV/PIFLA/NonRegular/introPumpingFS.css
@@ -56,19 +89,25 @@ The Pumping Lemma
    :scripts: AV/VisFormalLang/NonReg/PumpingLemmaCON.js
    :output: show
 
-**How To Use the Pumping Lemma to prove L is not regular:**
+**How To Use the Pumping Lemma to prove L is not regular: Proof by Contradiction**
 
-   | Proof by Contradiction.
-   | Assume L is regular.
-   | Therefore :math:`L` satisfies the pumping lemma. 
-   | Choose a long string :math:`w \in L`, :math:`|w| \ge m`.
-     The choice of the string is crucial.
+   * Assume L is regular.
+   * Therefore :math:`L` satisfies the pumping lemma. 
+   * Choose a long string :math:`w \in L`, :math:`|w| \ge m`.
+     Remember that :math:`m` relates to the number of states in the
+     machine, with :math:`m` being great enough that it has to trigger
+     at least one loop.
+     Which string we pick is critical.
      We must pick a string that will yield a contradiction.
-   | Show that there is NO division of :math:`w` into :math:`xyz`
-     (we must consider all possible divisions) such that
-     :math:`|xy| \le m`, :math:`|y| \ge 1` and :math:`xy^iz \in L \forall i \ge 0`.
-   | If we show that there is NO possible division, then we have a contradiction!
-   | :math:`\Rightarrow L` is not regular.
+     And we succeed with the proof if we find any such string,
+     even if there exist other stings that don't let us succeed.
+   * Show that, for our string, there is NO division of :math:`w` into
+     :math:`xyz` (we must consider all possible divisions) such that
+     :math:`|xy| \le m`, :math:`|y| \ge 1` and
+     :math:`xy^iz \in L` for all  :math:`i \ge 0`.
+   * If we show that there is NO possible division,
+     then we have a contradiction!
+   * :math:`\Rightarrow L` is not regular.
 
 Unfortunately, the pumping lemma is one-way:
 For (some) languages we can use the pumping lemma to prove that they
@@ -83,44 +122,109 @@ Its just a tool in the toolbox.
 Some Pumping Lemma Examples
 ---------------------------
 
-.. inlineav:: PLExample1FS ff
-   :links: AV/PIFLA/NonRegular/PLExample1FS.css
-   :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExample1FS.js
+.. inlineav:: PLExampanbnFS ff
+   :links: AV/PIFLA/NonRegular/PLExampanbnFS.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExampanbnFS.js
    :output: show
 
 |
 
-.. inlineav:: PLExample2FS ff
-   :links: AV/PIFLA/NonRegular/PLExample2FS.css
-   :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExample2FS.js
+.. inlineav:: PLExampwwRFS ff
+   :links: AV/PIFLA/NonRegular/PLExampwwRFS.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExampwwRFS.js
    :output: show
 
-|
 
-.. inlineav:: PLExample3FS ff
-   :links: AV/PIFLA/NonRegular/PLExample3FS.css
-   :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExample3FS.js
-   :output: show
+.. topic:: Example
 
-|
+   Use the Pumping Lemma to prove that the language
+   :math:`L = \{a^mb^n \mid n+m` is odd :math:`\}` is non-regular.
 
-.. inlineav:: PLExample4FS ff
+   But wait! $L$ is a regular language!
+   For example, it is not hard to create a DFA that maintains states
+   for whether we have seen an even number of symbols so far or an odd
+   number.
+   If the language is indeed regular, you should find it impossible to
+   use the pumping lemma to prove it non-regular.
+   In particular, not all values of :math:`m` should have a value for
+   :math:`w` that can be decomposed into :math:`xyz`
+   such that it is pumpable
+   (that is, :math:`|xy| \le m`, :math:`|y| \ge 1`, and
+   :math:`xy^iz \in L` for all values of :math:`i \ge 0`).
+   The intuition here is that for any suitably long string,
+   we can always find a decomposition that lets us pump the :math:`y`
+   substring.
+
+   Let's start by considering the value :math:`m = 1`.
+   For string :math:`w = abb`, it turns out that the only legitimate
+   decomposition yields :math:`y = a`, which cannot be pumped.
+   But this does **not** mean that the language is non-regular.
+   We can't just pick our favorite value value for :math:`m`,
+   the Pumping Lemma demands that this condition be true for
+   all other legitimate values of :math:`m` as well.
+   
+   In particular, for any value of :math:`m \ge 2`,
+   :math:`w` has to be at least 3 symbols long (since it has to be of
+   odd length to be in the language).
+   And in this case, we can always decompose the string such that
+   :math:`y` has either two a's or two b's.
+   Which means that it can be pumped any number of times (or deleted),
+   and the resulting string is still of odd length,
+   and therefore is in the language.
+
+ 
+.. topic:: Example
+
+   Let's look at some more languages that are easily shown to be
+   non-regular by the Pumping Lemma.
+   In particular, consider these languages:
+
+   * :math:`L = \{a^ncb^n | n > 0\}`
+   * :math:`L = \{a^nb^{n+s}c^s | n,s > 0\}`
+   * :math:`\Sigma = \{a, b\}, L = \{w \in \Sigma^* | n_a(w) >
+     n_b(w)\}`. (Remember that :math:`n_a(w)` means the number of a's
+     in :math:`w`.)
+
+   For each of these languages, we can use the same strategy that we used
+   in the examples of :math:`L = \{a^nb^n\}` and
+   :math:`L = \{ww^R | w \in \Sigma^*\}`.
+   Namely, we pick a string with at least :math:`m` leading a's, and show
+   that since this results in :math:`y` being some number of a's, it
+   cannot be pumped.
+
+.. .. Don't need this
+   .. .. inlineav:: PLExample3FS ff
+      :links: AV/PIFLA/NonRegular/PLExample3FS.css
+      :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExample3FS.js
+      :output: show
+
+.. .. |
+
+.. .. Don't need this
+   .. .. inlineav:: PLExample4FS ff
    :links: AV/PIFLA/NonRegular/PLExample4FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExample4FS.js
    :output: show
 
-|
+.. .. |
 
-.. inlineav:: PLExample5FS ff
+.. .. Don't need this
+   .. .. inlineav:: PLExample5FS ff
    :links: AV/PIFLA/NonRegular/PLExample5FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExample5FS.js
    :output: show
 
-|
+.. .. |
 
-.. inlineav:: PLExample6FS ff
-   :links: AV/PIFLA/NonRegular/PLExample6FS.css
-   :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExample6FS.js
+Now let's look at an example that is not so easy, because we cannot
+use that simple strategy.
+This means that we have to pick a string :math:`w` that will lead to a
+number of cases for the decomposition into :math:`xyz` that we will
+have to get through.
+
+.. inlineav:: PLExampa3bncn3FS ff
+   :links: AV/PIFLA/NonRegular/PLExampa3bncn3FS.css
+   :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExampa3bncn3FS.js
    :output: show
 
 
@@ -171,7 +275,21 @@ we divide proof into steps as follows:
 | ... such that :math:`xy^iz \in L` **for all** :math:`i \ge 0`
   [:math:`=` **WE** pick a value for :math:`i`.]
 
-|
+In the adversary game below, there is a list of languages to chose
+from.
+Some of these are regular, some are non-regular.
+If you think that the language is non-regular, then you should choose
+to let the computer go first.
+This makes the computer pick :math:`m`, and then you pick a string
+:math:`w` that lets you complete the proof, and so you win.
+
+However, if you think that a language is regular, then you should
+choose to go first (that is, you pick the value for :math:`m`, which
+is effectively picking the machine to recognize the language within
+the context of the proof).
+In that case, you want to make moves that stop the proof
+(you will make an effective decomposition for :math:`xyz` for whatever
+string  :math:`w` the computer picks), and so you win.
   
 .. avembed:: AV/VisFormalLang/NonReg/PLGame.html ss
    :long_name: Regular Pumping Lemmma
@@ -180,19 +298,23 @@ we divide proof into steps as follows:
 Using Closure Properties to Prove L is Not Regular
 --------------------------------------------------
 
-Sometimes we cannot prove that a language is not regular by using the
+Sometimes we are unable prove that a language is non-regular by using the
 pumping lemma.
+Maybe we can't find the right string to use initially, or we can't
+figure out an argument for why there is a contradiction.
+Either way, it helps to have other tools to prove languages are non-regular.
 So here is another tool that we might be able to use.
 
 Recall that regular languages are closed under certain operations.
 For example, a regular language that is the union of two known regular
 languages is itself regular.
-Thus, we can use closure properties to prove that a language is
-regular.
+This is an example of using closure properties to prove that a
+language is regular.
 
 In a similar way, we can use closure properties to show that a
-language is **not** regular, if we can use it to derive a language
-that we already know is not regular.
+language is **not** regular.
+The approach is to use certain operations to derive a language
+that we already know is non-regular.
 
 .. inlineav:: ClosPropFS ff
    :links: AV/PIFLA/NonRegular/ClosPropFS.css
@@ -213,9 +335,71 @@ that we already know is not regular.
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/ClosPropEx2FS.js
    :output: show
 
-|
-
-.. inlineav:: ClosPropEx3FS ff
+.. .. We don't need to do yet one more example!
+   .. .. inlineav:: ClosPropEx3FS ff
    :links: AV/PIFLA/NonRegular/ClosPropEx3FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/ClosPropEx3FS.js
    :output: show
+
+            
+Let's do one more quick example.
+Prove that :math:`L_1 = \{a^nb^na^n\ |\ n > 0\}` is non-regular by
+using closure operations.
+
+   * Assume that :math:`L_1` is non-regular, and derive a contradiction.
+   * The goal is to try to construct :math:`\{a^nb^n | n > 0\}` which
+     we know is not regular. 
+   * Note that trying to intersect with :math:`\{a^{*}b^{*} \}` does
+     **not** help us, because the intersection is just the empty set.
+   * Let :math:`L_2 = \{a^{*}\}`. :math:`L_2` is regular, since we are
+     defining this using a regular expression.
+   * Now define
+     :math:`L_3 = L_1 \backslash L_2 = \{a^nb^na^p\ |\ 0 \le p \le n, n > 0\}`.
+     This is using the right quotient operation, which we know is closed
+     for regular languages.
+     In this case, we are just trimming some number of a's from the end
+     of :math:`L_1`.
+     Sometimes we trim **all** of the a's from the end of :math:`L_1`.
+   * By closure under intersection,
+     :math:`L_4 = L_3 \cap \{a^{*}b^{*}\} = \{a^nb^n\ |\ n > 0\}` is
+     regular.
+     Note that we had to do the step with the trimming of letters,
+     because simply intersecting :math:`L_1` with :math:`a^*b^*` does
+     not give us what we want.
+   * We already proved that :math:`L_4` is not regular. Contradiction.
+   * :math:`\Rightarrow L_1` is not regular.
+
+
+Questions to Think About
+------------------------
+
+To review what we now know: There are languages that are regular, and
+there are languages that are nonregular.
+Regular languages can be represented in any of several interchangeable
+ways.
+Some nonregular languages can be proved such using tools like the
+Pumping Lemma, and closure properties.
+
+These facts should lead us to ask some broader questions.
+In particular, is every language either regular or nonregular?
+And if so, can we always **decide**, for every language, whether it is
+regular or nonregular?
+
+Remember what a language is: It is simply a set of strings.
+Most sets of strings are infinite, in that there are many more
+infinite sets of strings than there are finite sets of strings.
+(Is this claim **really** true? Does that actually make sense?
+There are an infinite number of finite sets of strings.)
+An important point is that a language is not just those sets of
+strings that have a description as, for example, a RegEx (of course
+not, since not all languages are regular).
+A language is not even just those sets that can be described in
+English, or a mix of English and math notation.
+
+We will come back to these and similar questions later in the book.
+They relate to issues of Turing decideable vs. Turing acceptable
+languages, P vs. NP, and what questions about languages are
+decideable vs. undecideable.
+By the end of this book, we should have some answers to these
+questions, and a better understanding of our limits to what can be
+known about languages.

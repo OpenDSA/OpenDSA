@@ -225,35 +225,52 @@ requirejs(["./mathjs.js"], function(){});
 
             Window.showBlankPrompt = false;
             var dialogBoxResults = JSAV.utils.dialog( feedBackText+
-                '<br><button id="graphDownload">Download Graph Description of solution</button>'+
-                '<button id="listDownload">Download List Description of solution</button>', 
+                // '<br><button id="graphDownload">Download Graph Description of solution</button>'+
+                // '<button id="listDownload">Download List Description of solution</button>', 
+                '<button id="summaryDownload">Download attempt summary (JSON)</button>',
                 {closeText: "OK"} 
                 );
             // var dialogBoxResults = JSAV.utils.dialog( feedBackText );
             console.log(dialogBoxResults)
-            dialogBoxResults[0].querySelectorAll("button")[2].addEventListener("click", e=>{
+            
+            dialogBoxResults[0].querySelectorAll("button")[1].addEventListener("click", e=>{
                     e.stopPropagation();
                     Window.clearGlobalPointerReference();
                     console.log("Close button clicked")
                 });
             
-            if(ANALYZER_OPTIONS.ENABLE_LIST_DOWNLOAD == true) {
-                // dialogBoxResults[0].innerHTML += '<button id="listDownload">Download List Description of solution</button>';
-                dialogBoxResults[0].querySelector("#listDownload").addEventListener("click", e=>{
+            // DEPRECATED: Move all the graph processing functionality to Python processed through API calls
+            // only generate summaries of JSON data in the front end and show interactive feedback.
+
+            // if(ANALYZER_OPTIONS.ENABLE_LIST_DOWNLOAD == true) {
+            //     // dialogBoxResults[0].innerHTML += '<button id="listDownload">Download List Description of solution</button>';
+            //     dialogBoxResults[0].querySelector("#listDownload").addEventListener("click", e=>{
+            //         e.stopPropagation();
+            //         Window.getListAnswer()
+            //         console.log("List button clicked")
+            //     });
+            // }
+            // if(ANALYZER_OPTIONS.ENABLE_GRAPH_DOWNLOAD == true) {
+            //     // dialogBoxResults[0].innerHTML += '<button id="graphDownload">Download Graph Description of solution</button>';
+            //     dialogBoxResults[0].querySelector("#graphDownload").addEventListener("click", e=>{
+            //         e.stopPropagation();
+            //         dialogBoxResults.close();    // TEMP ONLY
+            //         Window.getGraphAnswer()
+            //         console.log("Graph button clicked")
+            //     });
+            // }
+            
+            dialogBoxResults[0].querySelector("#summaryDownload").addEventListener("click", e=>{
                     e.stopPropagation();
-                    Window.getListAnswer()
-                    console.log("List button clicked")
+                    Window.getAttemptSummaryComplete();
+                    console.log("Downloading full solution attempt")
+
+                    // Down the line, 
+                    // create an API call to the endpoint api/deforms_feedback which returns a JSON string
+                    // with the feedback, and then create a 
+                    // create a view/controller that receives this information
+                    // and prints it to the screen/processes it
                 });
-            }
-            if(ANALYZER_OPTIONS.ENABLE_GRAPH_DOWNLOAD == true) {
-                // dialogBoxResults[0].innerHTML += '<button id="graphDownload">Download Graph Description of solution</button>';
-                dialogBoxResults[0].querySelector("#graphDownload").addEventListener("click", e=>{
-                    e.stopPropagation();
-                    dialogBoxResults.close();    // TEMP ONLY
-                    Window.getGraphAnswer()
-                    console.log("Graph button clicked")
-                });
-            }
             
             return dec;
         }
@@ -320,7 +337,8 @@ requirejs(["./mathjs.js"], function(){});
         Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, Window.wkspacelist);
         Window.exerciseId = exerciseId;
         Window.globalPointerReference = globalPointerReference;
-            
+        Window.globalSolutionBoxes = globalSolutionBoxes;
+        
         // Initialize other variables
         av.displayInit();
         av.recorded();
@@ -375,8 +393,13 @@ requirejs(["./mathjs.js"], function(){});
         var solutionSubmissionBoxes = document.getElementsByClassName("solution-box");
         for (let index=0; index<solutionSubmissionBoxes.length; index++)
         {
-            globalSolutionBoxes[index] = {"solution":null};
+            globalSolutionBoxes[index] = {
+                "solution":null,
+                "type": solutionSubmissionBoxes[index].dataset.inputtype
+            };
             solutionSubmissionBoxes[index].dataset.index = index;
+            solutionSubmissionBoxes[index].dataset.source = '';
+            
             var helpbox = document.createElement("span");
             solutionSubmissionBoxes[index].after(helpbox);
             helpbox.classList.add("helpbutton");
@@ -405,13 +428,15 @@ requirejs(["./mathjs.js"], function(){});
                         {
                             this.innerHTML =
                             Window.valueStringRepr(globalPointerReference.currentClickedObject.value)+" "+
-                                globalPointerReference.currentClickedObject.unitDisplay; 
-                            globalSolutionBoxes[this.dataset.index] = {
-                                "solution": 
-                                Window.valueStringRepr(globalPointerReference.currentClickedObject.value),
-                                "unit":
-                                globalPointerReference.currentClickedObject.unit
-                            };
+                                globalPointerReference.currentClickedObject.unitDisplay;
+
+                            globalSolutionBoxes[this.dataset.index].solution =  
+                                Window.valueStringRepr(globalPointerReference.currentClickedObject.value);
+                            globalSolutionBoxes[this.dataset.index].unit = 
+                                globalPointerReference.currentClickedObject.unit,
+                                // Setting the unknown/assoc name that calculated this answer
+                            globalSolutionBoxes[this.dataset.index].source =
+                                globalPointerReference.currentClickedObject.valueSourceParent
                             //console.log(this.globalPointerReference);
                         }
                         Window.clearGlobalPointerReference();
@@ -458,9 +483,7 @@ requirejs(["./mathjs.js"], function(){});
                                 e.stopPropagation();
                                 // console.log(event.target.parentNode.parentNode)
                                 this.innerHTML = event.target.dataset.choice;
-                                globalSolutionBoxes[this.dataset.index] = {
-                                    "solution": event.target.dataset.choice
-                                }
+                                globalSolutionBoxes[this.dataset.index].solution = event.target.dataset.choice;
                                 choiceBox.close();
                                 Window.clearGlobalPointerReference();
                             })
@@ -471,6 +494,7 @@ requirejs(["./mathjs.js"], function(){});
 
             // Deleting answers/clearing data from solution boxes
             solutionSubmissionBoxes[index].dataset.index = index;
+            
             var delcross = document.createElement("span")
             solutionSubmissionBoxes[index].after(delcross);
             delcross.classList.add("helpbutton");
@@ -481,6 +505,7 @@ requirejs(["./mathjs.js"], function(){});
                 event.stopPropagation();
                 console.log(this);
                 solutionSubmissionBoxes[this.dataset.index].innerHTML = "";
+                solutionSubmissionBoxes[this.dataset.index].dataset.source = '';
                 globalSolutionBoxes[this.dataset.index] = {"solution":null};
             });
         }
@@ -554,6 +579,9 @@ requirejs(["./mathjs.js"], function(){});
         // Body Clicks registered as directive message was included here, now delegated to utils.
         document.body.removeEventListener("click", bodyClickPrompt);
         document.body.addEventListener("click", bodyClickPrompt);
+
+        // Creating first blank workspace for everything
+        Window.wkspacelist.addNewWorkspace();
     }
 
     window.mechSolverCommon = window.mechSolverCommon || mechSolverCommon;

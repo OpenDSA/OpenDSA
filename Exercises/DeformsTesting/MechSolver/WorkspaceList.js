@@ -71,6 +71,32 @@ class WorkspaceList
             // console.log(this.globalJSAVobject);
         });
 
+        // Adding button for downloading entire configuration
+
+        var downloadButtonText = this.globalJSAVobject.label("", 
+        {
+            left: this.DIMENSIONS["UPPER_CORNER_X"]+this.DIMENSIONS["WIDTH"]/2-86, 
+            top: this.DIMENSIONS["UPPER_CORNER_Y"]-12
+        })
+        .addClass("addworkspace");
+        
+        this.downloadButton = document.createElement("input");
+        this.downloadButton.setAttribute("type", "button");
+        this.downloadButton.setAttribute("value", "Download Solution Attempt");
+        downloadButtonText.element[0].appendChild(this.downloadButton);
+        downloadButtonText.element[0].setAttribute("title", "Downloads the current workspace (equations and values computed) and answers submitted");
+        
+        // this.addbutton.element[0].addEventListener('click', e => {
+        this.downloadButton.addEventListener("click", e=> {
+            // e.stopPropagation();
+            e.stopImmediatePropagation();
+            Window.getAttemptSummaryComplete();
+            console.log("Downloading full solution attempt")
+            // console.log(this.globalJSAVobject);
+        });
+
+        // Adding "Help button" for immediate help
+
         var helpButtonText = this.globalJSAVobject.label("", 
         {
             left: this.DIMENSIONS["UPPER_CORNER_X"]+this.DIMENSIONS["WIDTH"]-50,
@@ -93,7 +119,9 @@ class WorkspaceList
         });
         
         // Automatically add a new workspace, by default
-        this.addNewWorkspace();
+        // this.addNewWorkspace(); 
+        // Update: This is commented out since it uses WindowManager.extendCanvas() which has not been defined yet.
+        // This will be called later.
     }
     addNewWorkspace()
     {
@@ -122,7 +150,7 @@ class WorkspaceList
         });
 
 	    // TODO: Clean this up and replace with call to WindowManager functions
-        // Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);
+        Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);
         // console.log(document.styleSheets[2].rules[0].style.height);
         document.styleSheets[2].rules[0].style.height = 
         Math.max(600, (this.DIMENSIONS["HEIGHT"] + this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"] + this.DIMENSIONS["WK_PADDING"])) + "px";

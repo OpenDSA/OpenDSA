@@ -21,27 +21,29 @@ Formal Languages Course Introduction
    What we are doing today:
 
    * Administration stuff and Course mechanics
-   * Course introduction (OpenDSA Chapter 1/Linz Chapter 1)
+   * Course introduction (OpenDSA Sections 1.1 and 1.2)
 
 
 .. slide:: Administration stuff
 
-   * Sign-in sheet (be sure to sign-in on one of them)
    * I do not handle force-adds. Email to csundergrad@cs.vt.edu.
-   * Get a copy of the syllabus
    * Go over Syllabus, Homework policies (at Canvas)
 
 
-.. slide:: Course Mechanics: Instructional Software
+.. slide:: Course Mechanics: Canvas
 
-   * Canvas
+   * Posted homework, homework submission, homework feedback
+   * Post grades
+   * Access to course materials (OpenDSA)
+   * Course calendar, coursenotes, assignments
 
-      * Posted homework, homework submission, homework feedback
-      * Post grades
-      * Access to course materials (OpenDSA, JFLAP, etc.)
 
-   * OpenDSA for some couse notes, visualizations
-   * JFLAP for simulators, to help with doing your homework
+.. slide:: Course Mechanics: OpenDSA
+
+   * Content, visualizations
+   * Simulators (OpenFLAP)
+   * Exercises (one part of homework)
+   * Framesets
 
 
 .. slide:: What you should already know
@@ -63,9 +65,23 @@ Formal Languages Course Introduction
      Be sure you know how to read/do induction proofs.
 
 
+.. slide:: Process
+
+   The work in this course will come in three forms:
+
+   * Weekly homework sets (about 40-45% of the grade)
+
+   * OpenDSA framesets and exercises (about 20-25% of the grade)
+
+   * Two midterms and a final (35% of the grade)
+
+     * Ideally, doing the exercises and homework will be most of the
+       preparation that you need for the exams.
+
+
 .. slide:: What this course is about
 
-   * Try to understand what computers can do.
+   * We will try to understand what computers can do, at a detailed level.
   
      * Hard to reason about an Intel processor with billions of transistors.
      * Don't want to reinvent the wheel when you can use tools like
@@ -142,13 +158,6 @@ Formal Languages Course Introduction
      and a Turing machine?
 
 
-.. slide:: Process
-
-   The primary work in this course will come from the weekly homework
-   sets.
-
-
-
 .. slide:: Language Hierarchy
 
    By the end you will know how everything in this picture applies to how
@@ -203,10 +212,10 @@ Formal Languages Course Introduction
 
 .. slide:: To do by next class
 
-  * Read Chapter 1, and also look at the OpenDSA materials
+  * Read OpenDSA Sections 1.1 and 1.2
+    (and do any associated exercises/framesets) 
 
-  * Look at Homework Assignment 1, find a partner
+  * Look at Homework Assignment 1 (due next Thursday),
+    find a partner if you want to
 
-    * Carefully read the General Homework Instructions page
-
-  * Install JFLAP, make sure that you can run it
+  * Carefully read the General Homework Instructions page

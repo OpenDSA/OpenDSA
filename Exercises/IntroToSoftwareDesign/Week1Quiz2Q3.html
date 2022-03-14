@@ -10,39 +10,34 @@
   <body data-height="880" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="ReadingQuiz2Q3">
+        <div id="Week1Quiz2Q3">
           <p class="question">
-            Consider the following example of a LightBot program written out in text.  Again, in this case we have named our robot "andy".  How many times would andy jump?
-            <pre class="prettyprint">
+            Consider the following example of a LightBot program written out in text.  Again, in this case we have named our robot "andy".  How many times would andy jump?</p>
+<pre class="prettyprint">
+f1:
+  andy.move();
+  andy.turnRight();
+  andy.move();
 
+f2:
+  andy.jump();
+  andy.jump();
+  andy.jump();
 
-              f1:
-                andy.move()
-                andy.turnRight()
-                andy.move()
-
-              f2:
-                andy.jump()
-                andy.jump()
-                andy.jump()
-
-              main:
-                run f1()
-                run f1()
-                andy.jump()
-            </pre>
-
-          </p>
+main:
+  andy.f1();
+  andy.f1();
+  andy.jump();</pre>
 
           <div class="solution">One</div>
           <ul class="choices" >
             <li>Two</li>
-            <li>Three</li>]
+            <li>Three</li>
             <li>Six</li>
 
           </ul>
           <div class="hints">
-            <p>>The f1 method is run twice, but f2 never gets called from the main and thus never runs in this code! </p>
+            <p>>The f1() method is run twice, but f2() never gets called from the main and thus never runs in this code! </p>
           </div>
         </div>
 

@@ -10,7 +10,7 @@ $(document).ready(function () {
                   [\"C\",\"→\",\"Cc\"],\
                   [\"C\",\"→\",\"e\"]]";
   var grammerArray = JSON.parse(grammar);
-  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 150});
+  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 75});
   grammerMatrix.createRow(["", arrow, ""]);
   grammerMatrix.createRow(["", arrow, ""]);
   grammerMatrix.createRow(["", arrow, ""]);
@@ -24,8 +24,9 @@ $(document).ready(function () {
   for(var i = 4; i<8; i++)
     grammerMatrix.hideRow(i);
   grammerMatrix.hide();
-  //frame 1
-  av.umsg("Before we start talking about Chomsky Normal Form, there is a $\\textbf{Theorem}$ that says, Let $L$ be a CFL that does not contain $\\lambda$. Then $\\exists$ a CFG for $L$ that does not have any useless productions, $\\lambda$-productions, or unit-productions.");
+
+  // Frame 1
+  av.umsg("To summarize what we have done so far: We have found algorithms to remove from any CFG the useless productions, $\\lambda$ productions, and unit productions.");
   av.displayInit();
 
   //frame 2
@@ -44,16 +45,8 @@ $(document).ready(function () {
   av.umsg("Exactly, so we must follow the order<br/>1. Remove $\\lambda$-productions<br/>2. Remove unit productions<br/>3. Remove useless productions");
   av.step();
 
-  //frame 6
-  av.umsg(Frames.addQuestion("q6"));
-  av.step();
-
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
-  av.step();
-
   //frame 8
-  av.umsg("$\\textbf{Definition:}$ A CFG is in Chomsky Normal Form (CNF) if all productions are of the form<br/>$A \\rightarrow BC \\ \\ or A \\rightarrow a$<br/>where $A, B, C \\in V$ and $a \\in T$<br/>Why would you want to put a grammar in this form? Because it is easier to work with in proofs.");
+  av.umsg("<b>Definition:</b> A CFG is in <b>Chomsky Normal Form (CNF)</b> if all productions are of the form<br/>$A \\rightarrow BC$ or $A \\rightarrow a$<br/>where $A, B, C \\in V$ and $a \\in T$<br/><br/>Why would you want to put a grammar in this form? Because it is easier to work with in proofs. We won't use this right away, but we will need this later in the semester.");
   av.step();
 
   //frame 9
@@ -124,7 +117,7 @@ $(document).ready(function () {
   av.step();
 
   //frame 17
-  av.umsg("The resulting grammar is in the CNF");
+  av.umsg("The resulting grammar is in the CNF. This was quite easy once the grammar has had its $\\lambda$$ productions, unit productions, and useless productions removed.");
   av.recorded();
   
 });

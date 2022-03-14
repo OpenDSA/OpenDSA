@@ -22,7 +22,7 @@ Math Background
    |    Provide a summary of necessary math background
         (Discrete Math). This is more coverage of this topic than I do
         in CS3114.
-   |    P1 intro: Signficant design discussion
+   |    P1 intro: Significant design discussion
 
    | Relationship to CSOs:
    |    CSO...
@@ -37,9 +37,9 @@ Math Background
    | **Powerset**: All subsets of a set (including the set itself, and the
      empty set): :math:`2^S` if there are :math:`S` elements in the
      set.
-   | **Bag**: Elements are distinishable even with same value, but
+   | **Bag**: Elements are distinguishable even with same value, but
      there is no concept of order.
-   | **Sequence**: Distingishable elements in some order (can have
+   | **Sequence**: Distinguishable elements in some order (can have
      duplicates).
 
 
@@ -95,7 +95,7 @@ Math Background
    | Factorial function
    | A **permutation** of a sequence :math:`\mathbf{S}`
      is simply the members of :math:`\mathbf{S}` arranged in some
-     order. For :math:`|S|` elements, there are :math:`|S|!` permuations.
+     order. For :math:`|S|` elements, there are :math:`|S|!` permutations.
    | **Mod function**: Returns the remainder of an integer division.
      Sometimes written :math:`n \bmod m` in mathematical expressions,
      the syntax in many programming languages is ``n % m``.
@@ -137,7 +137,7 @@ Math Background
 
 .. slide:: Estimation Example
 
-   | How many library bookcasese does it take to store books totalling
+   | How many library bookcases does it take to store books totaling
      one million pages?
 
    | Estimate

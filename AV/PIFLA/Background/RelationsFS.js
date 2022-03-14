@@ -35,7 +35,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 8
-  av.umsg("Here are some standard classifications for relations.<br/>$R$ is :term:`reflexive` if $aRb$ for all $a \\in S$.<br/>$R$ is :term:`irreflexive` if $aRa$ is not true for all $a \\in S$.<br/>$R$ is :term:`symmetric` if whenever $aRb$, then $bRa$ for all $a, b \\in S$.<br/>$R$ is :term:`antisymmetric` if whenever $aRb$ and $bRa$, then $a=b$ for all $a, b \\in S$.<br/>$R$ is :term:`transitive` if whenever $aRb$ and $bRc$, then $aRc$ for all $a, b, c \\in S$.<br/><br/>The following slides will explore the significance to these catagories.");
+  av.umsg("Here are some standard classifications for relations.<br/>$R$ is :term:`reflexive` if $aRa$ for all $a \\in S$.<br/>$R$ is :term:`irreflexive` if $aRa$ is not true for all $a \\in S$.<br/>$R$ is :term:`symmetric` if whenever $aRb$, then $bRa$ for all $a, b \\in S$.<br/>$R$ is :term:`antisymmetric` if whenever $aRb$ and $bRa$, then $a=b$ for all $a, b \\in S$.<br/>$R$ is :term:`transitive` if whenever $aRb$ and $bRc$, then $aRc$ for all $a, b, c \\in S$.<br/><br/>The following slides will explore the significance to these catagories.");
   av.step();
 
   // Frame 9

@@ -2,13 +2,6 @@
 {
   "translations": {
     "en": {
-      "q2":{
-        "type": "select",
-        "description": "$\\textbf {Derivation Trees}$ (also known as 'parse trees'): A derivation tree represents a derivation, but does not show the order in which productions were applied.",
-        "question": "How many ways that we can use to represent string derivations from grammars?",
-        "answer": ["Derivation trees","sentential forms"],
-        "choices": ["Derivation trees","sentential forms"]
-      },
       "q3":{
         "type": "true/false",
         "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$",
@@ -18,22 +11,22 @@
       },
       "q4":{
         "type": "true/false",
-        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The children of a node will be the RHS of the production rule that we need to use to derive the string.",
         "question": "The children for any node can be variables and/or terminals",
         "answer": "True",
         "choices": []
       },
       "q5":{
         "type": "true/false",
-        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.<br>leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$",
-        "question": "The leaves nodes can be variables and/or terminals",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The children of a node will be the RHS of the production rule that we need to use to derive the string.<br>Leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$",
+        "question": "The leaf nodes can be variables and/or terminals",
         "answer": "False",
         "choices": []
       },
       "q6":{
         "type": "true/false",
-        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The clidren of a node will be the RHS of the production rule that we need to use to derive the string.<br>leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$<br>Nonleaf vertices labeled $A$, where $A\\in V$",
-        "question": "The non-leaves nodes will be variables",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to be $S$<br/>The children of a node will be the RHS of the production rule that we need to use to derive the string.<br>Leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$<br>Non-leaf vertices are labeled $A$, where $A\\in V$",
+        "question": "The non-leaf nodes will be variables",
         "answer": "True",
         "choices": []
       },
@@ -61,7 +54,7 @@
       "q11":{
         "type": "select",
         "description": "$\\textbf{Definitions:}$ Partial derivation tree is a subtree of a derivation tree.<br/>If partial derivation tree has root $S$ then it represents a sentential form. Leaves from left to right in a derivation tree form the yield of the tree.",
-        "question": "The tree on the lef is ",
+        "question": "The tree on the left is ",
         "answer": "derivation tree",
         "choices": ["derivation tree", "partial derivation tree"]
       },

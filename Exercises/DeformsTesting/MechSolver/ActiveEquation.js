@@ -4,9 +4,11 @@ class ActiveEquation{
         //console.log(this.name);
         this.equationObjectReference = equation_obj;
         this.selected = false;
-        this.jsavequation = null;
         this.variables = {};
         this.globalPointerReference = globalPointerReference;
+        
+        // members for visuals
+        this.jsavequation = null;
         this.jsavObject = jsavObject;
         this.positionObj = position_obj;
 
@@ -14,6 +16,19 @@ class ActiveEquation{
         this.createVisualEquation(position_obj, jsavObject);
 
         Window.jsavObject.logEvent({type: "deforms-equation-created", desc: this.name});
+    }
+    getEquationSummary()
+    {
+        let equationSummary = {
+            id: this.name,
+            equation_template_id: this.equationObjectReference.id,
+            variables: {}
+        };
+
+        for(var i_var in this.variables)
+            equationSummary.variables[i_var] = this.variables[i_var].getVariableSummary();
+
+        return equationSummary;
     }
     createVisualEquation(position_obj, jsavObject){
         // Adding a tickmark object that indicates which equation is selected
@@ -362,10 +377,6 @@ class ActiveEquation{
                     activeEqObject);
                 Window.box.close();
 
-                // Cleaning up
-                delete Window.box;
-                delete Window.parentObject;
-
                 // Pushing event
                 Window.jsavObject.logEvent({
                     type: "deforms-equation-subscripted", 
@@ -374,6 +385,10 @@ class ActiveEquation{
                         subscript: Window.box[0].querySelector("#subscriptname").value
                     } 
                 });
+
+                // Cleaning up
+                delete Window.box;
+                delete Window.parentObject;
             } 
         );
     }

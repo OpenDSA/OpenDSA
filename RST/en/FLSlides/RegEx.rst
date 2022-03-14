@@ -91,14 +91,21 @@ Regular Languages and Expressions
 
       | ??
 
+      .. .. a(aa)^*(bb)^*
+
    #. :math:`\Sigma=\{a,b\}`, :math:`\{w \in {\Sigma}^{*} \mid w` has no more than
       three :math:`a` 's and must end in :math:`ab\}`:
 
       | ??
 
+      .. .. (b^*ab^*ab^* + b^*ab^*)ab Note we need the or here for the
+         cases of 2 a's and 1 a before the ab.
+
    #. Regular expression for positive and negative integers:
 
       | ??
+
+      .. .. (d* + -d*) for d a digit.
 
 
 .. slide:: Regular Expressions vs. Regular Languages
@@ -107,11 +114,9 @@ Regular Languages and Expressions
      the languages that are recognized by a DFA.
    |    (Which is the same as the languages recognized by an NFA.)
    |    How do regular expressions relate to these?
-   |    How can I just walk in here today and redefine what "regular
-        language" means?
 
    | We can easily see NFAs for :math:`\emptyset`, :math:`\lambda`, and
-     :math:`a \in \Sigma` (see Linz Figure 3.1).
+     :math:`a \in \Sigma`.
    |    But what about the "more interesting" regular expressions?
    |    Can every regular language :math:`r` be described by some
         regular expression? 
@@ -128,34 +133,104 @@ Regular Languages and Expressions
    We aleady know that we can easily do :math:`\emptyset`, 
    :math:`\{\lambda\}`, and :math:`\{a\}` for :math:`a \in \Sigma`.
 
+
+.. slide:: Regular Expression :math:`\rightarrow` NFA (1a)
+
+   Here is an NFA that accepts nothing (:math:`\emptyset`).
+
+   .. inlineav:: phiREtoNFACON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/phiREtoNFACON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/phiREtoNFACON.js
+      :output: show
+
+   Here is an NFA that accepts an empty string (:math:`\lambda`).
+
+   .. inlineav:: lambdaREtoNFACON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/lambdaREtoNFACON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/lambdaREtoNFACON.js
+      :output: show
+
+   Here is an NFA that accepts :math:`a \in \Sigma`.
+
+   .. inlineav:: aREtoNFACON dgm
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/aREtoNFACON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/aREtoNFACON.js
+      :output: show
+
+
+.. slide:: Regular Expression :math:`\rightarrow` NFA (2)
+
    Suppose that :math:`r` and :math:`s` are regular expressions.
    (By induction...)
    That means that there is an NFA for :math:`r` and an NFA for
    :math:`s`.
 
 
-.. slide:: Regular Expression :math:`\rightarrow` NFA (2)
-
       #. :math:`r + s`. Simply add a new start state and a new final
          state, each connected (in parallel) with :math:`\lambda`
-         transitions to both :math:`r` and :math:`s`. [Linz 3.3]
+         transitions to both :math:`r` and :math:`s`.
       #. :math:`r \cdot s`. Add new start state and new final state,
          and connect them with :math:`\lambda` transitions in series.
-         [Linz 3.4]
       #. :math:`r^*`. Add new start and final states, along with
          :math:`\lambda` transitions that allow free movement between
-         them all. [Linz 3.5]
+         them all.
 
       << Question: Why are we using NFAs for this proof?>>
-    
+
+      .. .. Because it is so much easier to assume that there is a
+            single final state that we can control access to. And we
+            know that L(NFA) = L(DFA).
+
+
+.. slide:: Regular Expression :math:`\rightarrow` NFA: Schematic
+
+   .. inlineav:: schematicRepCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/schematicRepCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicRepCON.js
+      :output: show
+
+
+.. slide:: Regular Expression :math:`\rightarrow` NFA: Or
+
+   .. inlineav:: schematicORRepCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/schematicORRepCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicORRepCON.js
+      :output: show
+
+
+.. slide:: .
+
+   .
+
+   
+.. slide:: Regular Expression :math:`\rightarrow` NFA: Concatenation
+
+   .. inlineav:: schematicConcatRepCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/schematicConcatRepCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicConcatRepCON.js
+      :output: show
+
+
+.. slide:: Regular Expression :math:`\rightarrow` NFA: Star
+
+   .. inlineav:: schematicStarRepCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/schematicStarRepCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicStarRepCON.js
+      :output: show
+
 
 .. slide:: Example
 
    :math:`ab^* + c`
 
-   << Do this in JFLAP: R.E -> NFA, then NFA -> DFA,
-      then DFA -> min DFA. >>
+   .. inlineav:: RENFAtoDFACON ss
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RENFAtoDFACON.js
+      :output: show
 
+
+.. slide:: .
+
+   .
 
 .. slide:: NFA :math:`\rightarrow` Regular Expression
 
@@ -179,7 +254,7 @@ Regular Languages and Expressions
 
    A Generalized Transition Graph (GTG) is a transition
    graph whose edges can be labeled with any regular expression.
-   Thus, it "generalizes" the standard transition graph. [See Linz 3.8]
+   Thus, it "generalizes" the standard transition graph.
 
    **Definition:** A complete GTG is a complete graph, meaning that every
    state has a transition to every other state.
@@ -197,12 +272,10 @@ Regular Languages and Expressions
         to :math:`q_j`.
    | 3. If the GTG has only two states, then it has this form:
 
-   .. odsafig:: Images/nfatore1.png
-      :width: 250
+   .. inlineav:: RegExGTGCON dgm
+      :links: AV/VisFormalLang/Regular/RegExGTGCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RegExGTGCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: nfatore1
 
    | Add an arrow to the start state.
    | Then, the corresponding regular expression is:
@@ -216,12 +289,10 @@ Regular Languages and Expressions
 
    If the GTG has three states, then it must have the following form:
 
-   .. odsafig:: Images/nfatore2.png
-      :width: 250
+   .. inlineav:: RegExGTG3sCON dgm
+      :links: AV/VisFormalLang/Regular/RegExGTG3sCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RegExGTG3sCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: nfatore2
 
 
 .. slide:: Proof (3)
@@ -268,12 +339,10 @@ Regular Languages and Expressions
 
 .. slide:: Example
 
-   .. odsafig:: Images/stnfatore2s.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfatore2s
+   .. inlineav:: NFAtoRECON ss
+      :links:   AV/VisFormalLang/Regular/NFAtoRECON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/NFAtoRECON.js
+      :output: show
 
 
 .. slide:: Conclusion

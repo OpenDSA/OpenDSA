@@ -5,7 +5,7 @@ $(document).ready(function() {
   var av = new JSAV(av_name, {animationMode: "none"});
 
   //building tree
-  var tr = av.ds.tree({nodegap: 15});
+  var tr = av.ds.tree({nodegap: 15, top: -30, left: 350});
   var rootA = tr.root("A");
   var firstC = tr.newNode("a");
   var secondC = tr.newNode("A");
