@@ -18,5 +18,5 @@ jobs:
           port: ${{ secrets.STAGING_PORT }}
           args: "-tt"
           command: |
-            cd /home/deploy/opendsa-devstack/opendsa
+            cd /home/deploy/opendsa-devstack/opendsa/
             git pull

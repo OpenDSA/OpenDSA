@@ -17,5 +17,5 @@ jobs:
           port: ${{ secrets.PORT }}
           args: "-tt"
           command: |
-            cd /home/OpenDSA/LTI_ruby
+            cd /home/OpenDSA/LTI_ruby/
             git pull

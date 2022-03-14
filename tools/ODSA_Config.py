@@ -314,7 +314,7 @@ def set_defaults(conf_data):
 
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
-        
+
     if 'narration_enabled' not in conf_data:
         conf_data['narration_enabled'] = True
 
@@ -339,6 +339,9 @@ def set_defaults(conf_data):
 
     if 'sphinx_debug' not in conf_data:
         conf_data['sphinx_debug'] = False
+
+    if 'due_dates' not in conf_data:
+        conf_data['due_dates'] = None
 
     if 'chapter_name' not in conf_data:
         conf_data['chapter_name'] = "Chapter"
