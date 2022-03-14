@@ -272,7 +272,8 @@ requirejs(["./mathjs.js"], function(){});
                     // and prints it to the screen/processes it
                 });
             
-            return dec;
+            if (TRAINING == true) { return false }
+            else return dec;
         }
     };
 
