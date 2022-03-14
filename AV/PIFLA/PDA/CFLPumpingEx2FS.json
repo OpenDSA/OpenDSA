@@ -3,7 +3,7 @@
     "en": {
       "q2": {
         "type": "select",
-        "description": "Prove that $L = \\{a^nb^nc^p : p > n > 0\\}$ is not a CFL",
+        "description": "Prove that $L = \\{a^nb^nc^p : p > n > 0\\}$ is not a CFL.",
         "question": "What is the first step?.",
         "answer": "Assume that $L$ is a CFL",
         "choices": ["Assume that $L$ is a CFL", "Assume that $L$ is not a CFL"]
@@ -49,41 +49,6 @@
         "question": "The next step is to decompose the string $w$ to...?",
         "answer": "$uvxyz$",
         "choices": ["$xyz$", "$uvxyz$"]
-      },
-      "q9": {
-        "type": "select",
-        "description":"Prove that $L = \\{a^nb^nc^p : p > n > 0\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w = a^mb^mc^{m+1}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
-        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $u$ represent?",
-        "answer": "Part of the string that is captured by the PDA before the first pump",
-        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
-      },
-      "q10": {
-        "type": "select",
-        "description":"Prove that $L = \\{a^nb^nc^p : p > n > 0\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w = a^mb^mc^{m+1}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
-        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $v$ represent?",
-        "answer": "part of the string that is captured by the first pump (cycle)",
-        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
-      },
-      "q11": {
-        "type": "select",
-        "description":"Prove that $L = \\{a^nb^nc^p : p > n > 0\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w = a^mb^mc^{m+1}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
-        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $x$ represent?",
-        "answer": "Part of the string that is captured by the PDA before the second pump and after the first pump",
-        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
-      },
-      "q12": {
-        "type": "select",
-        "description":"Prove that $L = \\{a^nb^nc^p : p > n > 0\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w = a^mb^mc^{m+1}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
-        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $y$ represent?",
-        "answer": "part of the string that is captured by the second pump (cycle)",
-        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
-      },
-      "q13": {
-        "type": "select",
-        "description":"Prove that $L = \\{a^nb^nc^p : p > n > 0\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w = a^mb^mc^{m+1}$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
-        "question": "The next step is to decompose the string $w$ to $uvxyz$. What does $z$ represent?",
-        "answer": "Part of the string that is captured by the PDA after the second pump",
-        "choices": ["Part of the string that is captured by the PDA before the first pump", "Part of the string that is captured by the PDA before the second pump and after the first pump", "Part of the string that is captured by the PDA after the second pump", "part of the string that is captured by the first pump (cycle)", "part of the string that is captured by the second pump (cycle)"]
       },
       "q14": {
         "type": "select",

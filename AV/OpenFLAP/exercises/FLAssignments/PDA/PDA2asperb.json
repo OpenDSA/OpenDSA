@@ -5,7 +5,7 @@
     "totalFalseCases": 3,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 15],
-    "description": "Construct the PDA that accepts L($\\{w \\mid w \\in \\{a, b\\}^* \\;\\;and\\;\\; w\\;\\; has\\;\\; twice\\;\\; as\\;\\; many\\;\\; n_a(w)\\;\\;as\\;\\; n_b(w)$) ",
+    "description": "Construct the PDA that accepts strings in $\\{w \\mid w \\in \\{a, b\\}^*\\}$ that have twice as many a's as b's.",
     "testCases": [{
             "": true,
             "ShowTestCase":true

@@ -5,7 +5,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   //Frame 1
-  av.umsg("We need to sutdy the closure properties of CFLs.");
+  av.umsg("Similar to regular languages, CFLs are closed under certain properties.");
   av.displayInit();
 
   //Frame 2
@@ -53,7 +53,7 @@ $(document).ready(function() {
   av.step();
 
   //Frame 13
-  av.umsg("After these proofs we can say that <br/>Theorem CFL’s are closed under union, concatenation, and star-closure.");
+  av.umsg("We now know that CFLs are closed under union, concatenation, and star-closure.");
   av.step();
 
   //Frame 14
@@ -89,15 +89,19 @@ $(document).ready(function() {
   av.step();
 
   //Frame 22
-  av.umsg("$\\textbf{Theorem:}$ CFL’s are closed under regular intersection. If $L_1$ is CFL and $L_2$ is regular, then $L_1 \\cap L_2$ is CFL");
-  //TODO slide show (frame to the regular intersection process)
+  av.umsg("<b>Theorem:</b> CFLs are closed under regular intersection. If $L_1$ is a CFL and $L_2$ is regular, then $L_1 \\cap L_2$ is a CFL.");
+  //TODO Provide the proof for this. See VisFormalLang.
   av.step();
 
   //Frame 23
-  av.umsg("To decide if CFL is empty<br/>Know how to get rid of useless variables and productions, if there is anything left, then CFL is not empty");
+  av.umsg("We can recognize if a given CFL just the empty set from its CFG. Simply get rid of useless variables and productions. If there is anything left, then the CFL is not empty.");
   av.step();
 
   //Frame 24
-  av.umsg("To decide if CFL is infinite<br/>Get rid of useless variables and productions, $\\lambda$-rules, and unit productions. Then if there is a variable that repeats $A \\stackrel{*}{\\Rightarrow} xAy$, then L is infinite");
+  av.umsg("We can also recognize if a if CFL is infinite from its CFG. Get rid of useless variables and productions, $\\lambda$-rules, and unit productions. Then if there is a variable with a production that uses that variable on its RHS, such as $A \\stackrel{*}{\\Rightarrow} xAy$, then L is infinite.");
+  av.step();
+
+  // Frame
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

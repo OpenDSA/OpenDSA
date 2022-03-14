@@ -229,6 +229,28 @@
       },
       "PIFLA/CFGTransformations":{}
     },
+    "Pushdown Automata":{
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAwcwR":{
+          "points": 2.0
+        },
+        "PDAaicjbi":{
+          "points": 3.0
+        },
+        "PDA2asperb":{
+          "points": 3.0
+        },
+        "PDAaibjck":{
+          "points": 3.0
+        }
+      },
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {}
+    },
+    "Properties of Context-free Languages":{
+      "PIFLA/CFLProp":{}
+    },
     "Appendix": {
       "Glossary": {}
     }

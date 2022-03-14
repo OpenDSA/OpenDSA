@@ -32,7 +32,7 @@ def run_command(cmd: str):
     resp['stdout_compressed'] = compress_lines(proc.stdout)
     resp['stderr_compressed'] = compress_lines(proc.stderr)
     return resp
-    
+
 
 @app.route('/api/configure/', methods=['POST'])
 def configure():

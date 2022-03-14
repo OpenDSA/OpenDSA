@@ -17,7 +17,7 @@ __author__ = 'hshahin'
 from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst import Directive
-#from pprint import pp
+from pprint import pp
 import random
 import os, sys
 import urllib.request, urllib.parse, urllib.error

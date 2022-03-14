@@ -5,7 +5,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   //Frame 1
-  av.umsg("Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not a CFL");
+  av.umsg("Prove that $L = \\{a^nb^nc^n: n\\ge 1\\}$ is not a CFL.");
   av.displayInit();
 
   //Frame 2
@@ -123,5 +123,4 @@ $(document).ready(function() {
   //Frame 30
   av.umsg("Thus, there is no breakdown of $w$ into $uvxyz$ such that $|vy| \\ge 1$, $|vxy| \\le m$ and for all $i \\ge 0$, $uv^ixy^iz$ is in $L$. This is a contradiction, thus, L is not a CFL. Done.");
   av.recorded();
-
 });

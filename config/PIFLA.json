@@ -327,25 +327,21 @@
     "Pushdown Automata":{
       "PIFLA/PDA": {},
       "PIFLA/PDAExercises":{
-        "PDAaicjbi":{
-          "points": 2.0
-        },
         "PDAwcwR":{
           "points": 2.0
         },
+        "PDAaicjbi":{
+          "points": 3.0
+        },
         "PDA2asperb":{
-          "points": 2.0
+          "points": 3.0
         },
         "PDAaibjck":{
-          "points": 2.0
+          "points": 3.0
         }
       },
       "PIFLA/PDACFL": {},
-      "PIFLA/DPDA": {
-        "NCFLvsDCFLFS": {
-          "points": 1.0
-        }
-      }
+      "PIFLA/DPDA": {}
     },
     "Properties of Context-free Languages":{
       "PIFLA/CFLProp":{}

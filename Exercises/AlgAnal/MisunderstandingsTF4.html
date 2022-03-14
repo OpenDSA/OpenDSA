@@ -12,7 +12,7 @@
         <div id="MisunderstandingsTF4p">
           <p class="problem">Answer TRUE or FALSE.</p>
           <p class="question">The lower bound for the cost of sequential search
-            is <code>\Omega(1)</code> since this is the running
+            is <code>\Omega(1)</code> because this is the running
             time of the algorithm in the best case.
           </p>
           <div class="solution">False</div>
@@ -23,9 +23,15 @@
           <div class="hints">
             <p>Upper/lower bounds define the growth rate in a particular
               situation (such as worst or best case).</p>
-            <p>So the statement is badly worded.</p>
-            <p>Proper wording: The lower bound for the cost of sequential search in
-              the best case is <code>\Omega(1)</code>.
+            <p>So the statement is badly worded. It is true that
+              the lower bound in all cases is <code>\Omega(1)</code>
+              (it always requires at least one unit of time). But the
+              reason is certainly not <b>because</b> there happens to be a
+              situation where the algorithm is cheap to run.
+              In other situations it is not so cheap.</p>
+            <p>Proper wording: The lower bound for the cost of
+              sequential search in the best case
+              is <code>\Omega(1)</code>.</p>
           </div>
         </div>
       </div>
