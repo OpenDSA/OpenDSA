@@ -10,7 +10,7 @@ PYTHON_LINT = pyLint --disable=C --reports=y
 # Can be overridden by env varis, such as ODSA_ENV='PROD'
 ODSA_ENV ?= DEV
 # Python used for building books:
-PYTHON = python 
+PYTHON = python
 # -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
 # -u flag runs python in unbuffered mode (no output flushes needed)
 
@@ -30,7 +30,7 @@ help: ## This help dialog
 	@echo '   To jump into the container: docker-compose exec opendsa bash'
 	@echo '   Within the container, you can run these make commands:'
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:  make \033[36m<target>\033[0m\nTargets:\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
-	@echo 
+	@echo
 	@echo Comprehensive list of books:   $(ALL_BOOKS)
 	@echo
 
@@ -44,7 +44,7 @@ clean: ## Deletes all Books (!!!) and minified JS and CSS files
 
 webserver: ## Starts the Flask server
 	@echo If using the proxy, OpenDSA URL will be: https://opendsa.localhost.devcom.vt.edu
-	flask run --host 0.0.0.0 --port 8080
+	gunicorn -w 4 -b 0.0.0.0:8080 app:app
 
 .PHONY: alllint jsonlint lint lintExe csslint pylint
 alllint: lint csslint jsonlint pyLint ## Combines several other linting targets
