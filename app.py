@@ -71,4 +71,3 @@ if __name__ == '__main__':
     # print(f"OpenDSA API is starting with Flask {args=}")
     print('If Traefik proxy is working, URL will be: https://opendsa.localhost.devcom.vt.edu')
     app.run(**vars(args))
-    
