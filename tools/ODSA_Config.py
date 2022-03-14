@@ -340,8 +340,8 @@ def set_defaults(conf_data):
     if 'sphinx_debug' not in conf_data:
         conf_data['sphinx_debug'] = False
 
-    if 'due_dates' not in conf_data:
-        conf_data['due_dates'] = None
+    #if 'due_dates' not in conf_data:
+    #    conf_data['due_dates'] = None
 
     if 'chapter_name' not in conf_data:
         conf_data['chapter_name'] = "Chapter"

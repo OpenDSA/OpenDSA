@@ -32,7 +32,7 @@ def run_command(cmd: str):
     resp['stdout_compressed'] = compress_lines(proc.stdout)
     resp['stderr_compressed'] = compress_lines(proc.stderr)
     return resp
-    
+
 
 @app.route('/api/configure/', methods=['POST'])
 def configure():
@@ -71,4 +71,3 @@ if __name__ == '__main__':
     # print(f"OpenDSA API is starting with Flask {args=}")
     print('If Traefik proxy is working, URL will be: https://opendsa.localhost.devcom.vt.edu')
     app.run(**vars(args))
-    
