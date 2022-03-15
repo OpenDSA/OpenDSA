@@ -107,7 +107,7 @@ Pushdown Automata
      then pop :math:`b`, and either 
    |   move to :math:`q_3` and push :math:`b` back onto the stack
    |   move to :math:`q_4` and push :math:`ab` onto stack (:math:`a` on top)
-   |   move to :math:`q_6` (now stack is one character shorter)
+   |   move to :math:`q_6` (now stack is one symbol shorter)
 
    | :math:`z` (the initial stack bottom marker) is priviledged: It
      never comes off, stack is never empty.
@@ -128,7 +128,7 @@ Pushdown Automata
      the current input symbol, :math:`y` is the top of stack symbol
      (it is popped from the stack), :math:`z` is a string that is pushed
      onto the stack.
-   | << **Warning**: What is a character, and what is a string? >>
+   | << **Warning**: What is a symbol, and what is a string? >>
 
 
 .. slide:: Instantaneous Descriptions
