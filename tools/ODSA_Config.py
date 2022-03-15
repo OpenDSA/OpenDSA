@@ -31,7 +31,7 @@ optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_d
 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'desc', 'av_origin',
 'av_root_dir', 'code_lang', 'course_id', 'LMS_url', 'module_map', 'inst_book_id','module_position','inst_exercise_id',
 'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled', 'zeropt_assignments',
-'sphinx_debug', 'html_theme_options', 'html_css_files', 'html_js_files', 'include_tree_view']
+'sphinx_debug', 'html_theme_options', 'html_css_files', 'html_js_files', 'include_tree_view', 'chapter_name']
 
 
 listed_modules = []
@@ -314,7 +314,7 @@ def set_defaults(conf_data):
 
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
-        
+
     if 'narration_enabled' not in conf_data:
         conf_data['narration_enabled'] = True
 
@@ -339,6 +339,12 @@ def set_defaults(conf_data):
 
     if 'sphinx_debug' not in conf_data:
         conf_data['sphinx_debug'] = False
+
+    #if 'due_dates' not in conf_data:
+    #    conf_data['due_dates'] = None
+
+    if 'chapter_name' not in conf_data:
+        conf_data['chapter_name'] = "Chapter"
 
 def group_exercises(conf_data, no_lms):
     """group all exercises of one module in exercises attribute"""

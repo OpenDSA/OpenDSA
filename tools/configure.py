@@ -239,7 +239,7 @@ def generate_index_rst(config, slides=False, standalone_modules=False):
 
     # Generate the index.rst file
     with codecs.open(config.book_src_dir + 'index.rst', 'w+', "utf-8") as index_rst:
-        index_rst.write(config_templates.index_header.format(config.start_chap_num))
+        index_rst.write(config_templates.index_header.format(config.start_chap_num, config.chapter_name))
         if slides:
             # implicit hyperlink from '.. _%(mod_name)s:' creates a critical error when building slides
             config_templates.rst_header = config_templates.rst_header.replace('.. _%(mod_name)s:', '.. removed from slides: .. _%(mod_name)s:')
@@ -406,6 +406,8 @@ def initialize_conf_py_options(config, slides):
         else:
             options['html_css_files'] = ",'" + options['eb2root']+"lib/accessibility.css" + "'"
 
+    # Sets the value to be used to indicate book sections.
+    options['chapnum'] = config.chapter_name
 
     return options
 

@@ -174,12 +174,25 @@ the correct declarations, and warn us of any mistakes we might make in that
 regard. So interfaces give better error checking and better communication
 between programmers.
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/GhslBwrRsnw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Check Your Understanding: Interfaces
 ------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week8Quiz3Summ.html ka
    :long_name: Interfaces
+
+
+Syntax Practice 8a: Strings
+---------------------------
+
+.. extrtoolembed:: 'Syntax Practice 8a: Strings'
+   :workout_id: 1491
 
 
 The List Interface
@@ -283,6 +296,12 @@ time you are declaring a field, variable, parameter, or return type. For
 example, when using ``List`` you should always provide the type so
 that it is clear what kind of items go into the list.
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/K1iu1kXkVoA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 ArrayList
 ---------
@@ -304,7 +323,9 @@ Take a few minutes to watch the following video:
 
 .. raw:: html
 
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/XkJD80HmpdI?start=0&end=1156" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/XkJD80HmpdI?start=0&end=1156" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 In an ``ArrayList``, data are arranged in a linear or sequential
 structure, with one element following another.
@@ -481,11 +502,25 @@ In short, if your code fails and you see an ``IndexOutOfBoundsException``,
 you're trying to access a location in the list that does not exist.
 
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/1nRj4ALuw7A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
 Check Your Understanding: ArrayLists
 ------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week8Quiz1Summ.html ka
    :long_name: ArrayLists
+
+
+Syntax Practice 8b: Lists
+-------------------------
+
+.. extrtoolembed:: 'Syntax Practice 8b: Lists'
+   :workout_id: 1860
 
 
 Nested For Loops
@@ -570,6 +605,12 @@ common pattern, particularly when using two variables to increment across
 a two-dimensional coordinate space, such as the two-dimensional grid of
 pixels in an image.
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/FiywVkhF3D4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Check Your Understanding: Nested For Loops
 ------------------------------------------
@@ -578,18 +619,11 @@ Check Your Understanding: Nested For Loops
    :long_name: Nested For Loops
 
 
-Syntax Practice 8
------------------
+Syntax Practice 8c: Nested Loops
+--------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 8'
+.. extrtoolembed:: 'Syntax Practice 8c: Nested Loops'
    :workout_id: 1491
-
-
-Programming Practice 8
-----------------------
-
-.. extrtoolembed:: 'Programming Practice 8'
-   :workout_id: 1492
 
 
 Check Your Understanding
@@ -597,3 +631,17 @@ Check Your Understanding
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week8ReadingQuizSumm.html ka
    :long_name: Programming Concepts
+
+
+Programming Practice 8a
+-----------------------
+
+.. extrtoolembed:: 'Programming Practice 8a'
+   :workout_id: 1492
+
+
+Programming Practice 8b
+-----------------------
+
+.. extrtoolembed:: 'Programming Practice 8b'
+   :workout_id: 1858

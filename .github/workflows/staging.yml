@@ -1,0 +1,22 @@
+name: staging
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build:
+    name: staging
+    runs-on: self-hosted
+    steps:
+      - name: ssh
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          user: ${{ secrets.STAGING_USERNAME }}
+          key: ${{ secrets.STAGING_KEY }}
+          port: ${{ secrets.STAGING_PORT }}
+          args: "-tt"
+          command: |
+            cd /home/deploy/opendsa-devstack/opendsa/
+            git pull
