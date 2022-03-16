@@ -547,10 +547,7 @@
           "required": false
         }
       },
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
       "MengBridgeCourse/2114Efficiency": {
         "Checkpoint 1": {
           "points": 0,
@@ -615,7 +612,8 @@
           "points": 0,
           "threshold": 0
         }
-      },
+      }
+    },
 
     "Unit 10": {
       "MengBridgeCourse/2114Generics2": {
@@ -654,7 +652,7 @@
           "points": 0,
           "threshold": 0
         }
-      },
+      }
     },
 
     "Unit 11": {
@@ -690,9 +688,7 @@
           "points": 0,
           "threshold": 0
         }
-
-
-    }
+      }
     },
 
     "Unit 12": {
@@ -717,9 +713,8 @@
           "points": 0,
           "threshold": 0
         }
-      },
+      }
     }
   }
 
-  }
 }
