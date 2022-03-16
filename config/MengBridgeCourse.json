@@ -454,17 +454,6 @@
       }
     },
     "Unit 7":{
-      "MengBridgeCourse/2114StyleReview":{
-
-      },
-
-      "MengBridgeCourse/2114ObjectsEnumsAndUML":{
-        "Checkpoint 1": {
-          "points": 0,
-          "threshold": 0
-        }
-      },
-
       "MengBridgeCourse/2114Exceptions":{
         "Checkpoint 1": {
           "points": 0,
@@ -476,7 +465,167 @@
         }
       },
 
-      "MengBridgeCourse/2114Bags": {
+      "MengBridgeCourse/2114ObjectsEnumsAndUML":{
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
+      "MengBridgeCourse/2114Polymorphism2":{
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
+      "MengBridgeCourse/2114StyleReview":{},
+
+      "MengBridgeCourse/2114Bags1": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 4": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
+          "points": 0,
+          "required": false
+        }
+      }
+    },
+
+    "Unit 8": {
+      "MengBridgeCourse/2114LinkedChainPointers": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
+          "points": 0,
+          "required": false
+        }
+      },
+
+      "MengBridgeCourse/2114Bags2": {
+        "Checkpoint 5": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 6": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 7": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
+          "points": 0,
+          "required": false
+        }
+      },
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
+      "MengBridgeCourse/2114Efficiency": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
+          "points": 0,
+          "required": false
+        }
+      },
+
+      "MengBridgeCourse/2114Stacks": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Unavailable": {
+          "points": 0,
+          "required": false
+        }
+      }
+    },
+
+    "Unit 9": {
+      "MengBridgeCourse/2114Recursion": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 4": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
+      "MengBridgeCourse/2114SoftwareDesignAndMVC": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
+    "Unit 10": {
+      "MengBridgeCourse/2114Generics2": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
+      "MengBridgeCourse/2114Queues": {
         "Checkpoint 1": {
           "points": 0,
           "threshold": 0
@@ -504,29 +653,12 @@
         "Checkpoint 7": {
           "points": 0,
           "threshold": 0
-        },
-        "Unavailable": {
-          "points": 0,
-          "required": false
         }
       },
-      "MengBridgeCourse/2114Efficiency": {
-        "Checkpoint 1": {
-          "points": 0,
-          "threshold": 0
-        },
-        "Checkpoint 2": {
-          "points": 0,
-          "threshold": 0
-        },
-        "Unavailable": {
-          "points": 0,
-          "required": false
-        }
-      }
     },
-    "Unit 8": {
-      "MengBridgeCourse/2114Stacks": {
+
+    "Unit 11": {
+      "MengBridgeCourse/2114Lists": {
         "Checkpoint 1": {
           "points": 0,
           "threshold": 0
@@ -539,27 +671,13 @@
           "points": 0,
           "threshold": 0
         },
-        "Unavailable": {
-          "points": 0,
-          "required": false
-        }
-      },
-      "MengBridgeCourse/2114LinkedChainPointers": {
-        "Checkpoint 1": {
+        "Checkpoint 4": {
           "points": 0,
           "threshold": 0
-        },
-        "Checkpoint 2": {
-          "points": 0,
-          "threshold": 0
-        },
-        "Unavailable": {
-          "points": 0,
-          "required": false
         }
       },
 
-      "MengBridgeCourse/2114Ethics": {
+      "MengBridgeCourse/2114Iterators": {
         "Checkpoint 1": {
           "points": 0,
           "threshold": 0
@@ -572,23 +690,36 @@
           "points": 0,
           "threshold": 0
         }
-      }
+
+
+    }
     },
-    "Unit 9": {
-      "MengBridgeCourse/2114Recursion": { },
-      "MengBridgeCourse/2114SoftwareDesignAndMVC": { },
-      "MengBridgeCourse/2114Queues": { },
-      "MengBridgeCourse/2114Lists": { },
-      "MengBridgeCourse/2114Generics2": {
+
+    "Unit 12": {
+      "MengBridgeCourse/2114ComparingAndSorting": {
         "Checkpoint 1": {
           "points": 0,
           "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 4": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 5": {
+          "points": 0,
+          "threshold": 0
         }
-      }
-    },
-    "Unit 10": {
-      "MengBridgeCourse/2114ComparingAndSorting": { },
-      "MengBridgeCourse/2114Iterators": { }
+      },
     }
+  }
+
   }
 }
