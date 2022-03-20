@@ -7,7 +7,7 @@
     "randomStringLength": [0, 15],
     "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
     "hardCodeCasesCounter": 6,
-    "description": "Create a machine that increases the number of a's in the string",
+    "description": "Create a machine that takes as input a string of a's, and increments the number of a's in the string.",
     "testCases": [
       {
         "": "a",
