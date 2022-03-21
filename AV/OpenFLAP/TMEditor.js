@@ -254,6 +254,10 @@ var lambda = String.fromCharCode(955),
 			this.unhighlight();
 		}
 	};
+
+	window.TMsaver = function (dummy) {
+		return g.serializeToXML();
+	}
 	
 	//===============================
 	//editing modes
