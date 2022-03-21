@@ -19,7 +19,7 @@ var lambda = String.fromCharCode(955),
 		type = $('h1').attr('id');
 		if(type == 'tester'){
 			exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
-        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "PDA"});
+        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "TM"});
         	exerController.load();
         
         	var exercise = jsav.flexercise(modelSolution, initializeExercise,
