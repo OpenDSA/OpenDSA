@@ -82,7 +82,7 @@
         "type": "select",
         "description": "To remove unit-productions:<br/>Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw $A$ in a circle, $B$ in a circle, and an arc from $A$ to $B$.<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$",
         "question": "Which productions should be moved to $P'$?",
-        "answer": ["$S \\rightarrow AB$", "$B \\rightarrow Bb$", "$C \\rightarrow c$", "$C \\rightarrow Da$"],
+        "answer": ["$S \\rightarrow AB$", "$C \\rightarrow c$", "$C \\rightarrow Da$"],
         "choices": ["$S \\rightarrow AB$", "$A \\rightarrow B$", "$B \\rightarrow C$", "$B \\rightarrow Bb$", "$C \\rightarrow A$", "$C \\rightarrow c$", "$C \\rightarrow Da$", "$D \\rightarrow A$"]
       },
       "q16":{
