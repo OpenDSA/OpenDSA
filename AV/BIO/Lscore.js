@@ -7,8 +7,7 @@ $(document).ready(function () {
     const Match =  1;
     const Mismatch = -1;
     var s1="AACG";
-    var s2="ACTCG"
-
+    var s2="ACTCG";
   var jsav = new JSAV("Lscore");
   jsav.umsg("Match = 1, Mismatch = -1, Gap = -2");
   var matrix = new jsav.ds.matrix([[,, , , , ,],[, , , , ,, ],[,,,,,,]
@@ -36,7 +35,12 @@ $(document).ready(function () {
 		}
         matrix.value(i,j,x);
           x+=Gap;
-          jsav.umsg(" step 1: initilzation first row with gap penality  ");
+          var previous_xrow=x-Gap;
+          const result_Frow=0;
+        jsav.umsg(" step 1: initilzation first row with gap penality ");
+        jsav.umsg("\n " + "(" + " " + previous_xrow + " " + "+" + " " + "(" + Gap + ")" + " " + ")" + " " + "=" + " " + x ,{"color": "blue","preserve": true});
+        jsav.umsg("\n all negative values becomes zero ,so the result is",{"preserve": true});
+        jsav.umsg("\n " + result_Frow ,{"color": "blue","preserve": true});
          jsav.step();
          
         } 
@@ -50,7 +54,12 @@ $(document).ready(function () {
 		}
         matrix.value(i,j,x);
          x+=Gap;
-         jsav.umsg("step 2:initilzation first coloumn with gap penality");
+         var previous_xcol=x-Gap;
+          const result_Fcol=0;
+        jsav.umsg(" step 1: initilzation first column with gap penality ");
+        jsav.umsg("\n " + "(" + " " + previous_xcol + " " + "+" + " " + "(" + Gap + ")" + " " + ")" + " " + "=" + " " + x ,{"color": "blue","preserve": true});
+        jsav.umsg("\n all negative values becomes zero ,so the result is",{"preserve": true});
+        jsav.umsg("\n " + result_Fcol ,{"color": "blue","preserve": true});
          jsav.step();
         } 
     }
@@ -65,7 +74,7 @@ $(document).ready(function () {
              
                 newval =Math.max(matrix.value(i-1,j) + Gap,  matrix.value(i-1,j-1)+Match,matrix.value(i,j-1) +Gap);
                 c=matrix.value(i-1,j-1)+Match;
-                jsav.umsg("Value from Left = "+a+", Value from Up ="+b+ ", Value from Diagonal="+c);
+                jsav.umsg("step 2: fill the matrix by using dynamic programming ,so Value from Left = "+a+", Value from Up ="+b+ ", Value from Diagonal="+c);
 				        if(newval<0)
 			            	{
 				            	newval=0;
@@ -81,7 +90,7 @@ $(document).ready(function () {
             else{
                   newval =Math.max(matrix.value(i-1,j) + Gap,  matrix.value(i-1,j-1)+Mismatch,matrix.value(i,j-1) +Gap);
                   c=matrix.value(i-1,j-1)+Mismatch;
-                  jsav.umsg("Value from Left = "+a+", Value from Up ="+b+ ", Value from Diagonal="+c);
+                  jsav.umsg("step 2: fill the matrix by using dynamic programming ,so Value from Left = "+a+", Value from Up ="+b+ ", Value from Diagonal="+c);
 			          	if(newval<0)
 				            {
 					             newval=0;

@@ -10,18 +10,35 @@
 
 Dotplot
 =======
-**The dotplot is a simple picture that gives an overview of the similarities between two sequences**.Less obvious is its close relationship to alignments.
-The dotplot is a table or matrix. The rows correspond to the residues of one sequence and the columns to the residues of the other sequence. 
-In its simplest form,
-**the positions in the dotplot are left blank if the residues are different, and filled if they match**. Stretches of similar residues show up
-as diagonals in the upper left–lower right (northwest–southeast) direction.
-DNA sequence is compared with its reverse-complemented sequence.Parallel diagonals represent the inverted repeats.
-**The dotplot gives a quick pictorial statement of the relationship between two sequences**. 
-Obvious features of similarity stand out.`
 
+| Dotplot is a one of the simplest and oldest methods to compare two protein or nucleotide sequences and it's a visual/graphic way of looking at regions of similarity between two sequences.
+
+**How to do this?**
+
+* Two sequences of similar or variable length.
+* Write each letter of one sequence in a row.
+* Write each letter of the other sequence in column. 
+* Start filling boxes where there is a letter for sequence 1 in 2 and for 2 in 1.
+* The positions left blank if the letters are different.
+
+**Advantages:**
+
+* Good for identification of long regions of strong similarity.
+* easy to make and interpret.
+* can be used for any length sequence.
+
+**Disadvantages:**
+
+* graphical representation doesn't give information about mutation.
 
 .. inlineav:: Dot ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/Dot.css 
    :scripts: AV/BIO/Dot.js
+   :output: show
+
+.. inlineav:: Filter ss
+   :long_name: DNA Sequencing example Slideshow
+   :links: AV/BIO/Filter.css 
+   :scripts: AV/BIO/Filter.js
    :output: show

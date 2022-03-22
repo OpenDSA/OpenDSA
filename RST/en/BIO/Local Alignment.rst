@@ -77,6 +77,6 @@ Exercise
 .. inlineav:: LExercise ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/LExercise.css 
-   :scripts: AV/BIO/LExercise.js
+   :scripts: DataStructures/PIFrames.js AV/BIO/LExercise.js
    :output: show
 

@@ -16,3 +16,12 @@ Suffix Tree
    :links: AV/BIO/Suffix.css 
    :scripts: AV/BIO/Suffix.js
    :output: show
+
+Qest
+====
+
+.. inlineav:: Qest ff
+   :long_name: DNA Sequencing example Slideshow
+   :links: AV/BIO/Qest.css 
+   :scripts: DataStructures/PIFrames.js AV/BIO/Qest.js
+   :output: show

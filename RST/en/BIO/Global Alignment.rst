@@ -142,6 +142,6 @@ Exercise
 .. inlineav:: GExercise ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/GExercise.css 
-   :scripts: AV/BIO/GExercise.js
+   :scripts: DataStructures/PIFrames.js AV/BIO/GExercise.js
    :output: show
 
