@@ -40,7 +40,7 @@
     "show_copyright": false
   },
   "html_css_files": ["_static/hachibee-supp.css"],
-  
+
 
   "glob_exer_options": {
     "JXOP-debug": "true"
@@ -142,7 +142,7 @@
         }
       }
     },
-    
+
      "More Conditionals, Software Testing and Variables": {
        "MengBridgeCourse/1114ConditionalActions": {
         "Syntax Practice 3a: If-Then-Else": {
@@ -488,6 +488,21 @@
         }
       },
 
+      "MengBridgeCourse/2114JUNIT":{
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
       "MengBridgeCourse/2114ObjectsEnumsAndUML":{
         "Checkpoint 1": {
           "points": 0,
@@ -736,7 +751,19 @@
           "points": 0,
           "threshold": 0
         }
+      },
+
+      "MengBridgeCourse/2114BinarySearch": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        }
       }
+
     }
   }
 
