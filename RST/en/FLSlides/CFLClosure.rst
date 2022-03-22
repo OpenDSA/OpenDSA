@@ -85,12 +85,6 @@ Closure Properties for CFLs
    If :math:`L_1` is CFL and :math:`L_2` is regular,
    then :math:`L_1 \cap L_2` is CFL.
 
-   | **Proof:** (sketch)  
-   |    This proof is similar to the construction 
-        proof in which we showed regular languages are closed under intersection. 
-   |    We can take a NPDA for :math:`L_1` and a DFA for :math:`L_2` and
-        construct a NPDA for :math:`L_1 \cap L_2`.
-
 
 .. slide:: Some Decision Problems for CFGs
 
