@@ -541,6 +541,16 @@ to add a method, we need to a class of our own to write it in.
    square and then plants a flower.
 
 
+Summarizing: What is Inheritance?
+---------------------------------
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/Zs342ePFvRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
 Syntax Practice 2a: Jeroo Methods
 ---------------------------------
 
@@ -2070,12 +2080,41 @@ Self-Check
 .. avembed:: Exercises/IntroToSoftwareDesign/Week2Quiz4Summ.html ka
    :long_name: Writing Methods
 
+What is Polymorphism?
+---------------------
+
+All jeroos understand the same set of messages--that is, they respond to the
+same method invocations. But now that you've seen how define custom methods,
+it is also possible for a subclass to *redefine* a method to do something more
+or to alter its behavior. It turns out that different jeroos might respond to
+the *same method call* in different ways, depending on which subclass they
+belong to. We use the term *receiver* to refer to the object on which a method
+is called. Each time you call a method, the receiver determines how to respond,
+so the exact behavior depends on how the method is defined in the specific
+subclass used to create the receiver.
+
+**Polymorphism** means that different receivers can respond to the same method
+call in different ways.
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/jhDUxynEQRI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Syntax Practice 2b: Subclass Constructors
 -----------------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 2b: Subclass Constructors'
    :workout_id: 1343
+
+
+Syntax Practice 2c: More Subclass Constructors
+----------------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 2c: More Subclass Constructors'
+   :workout_id: 1753
 
 
 Programming Practice 2
