@@ -465,6 +465,21 @@
         }
       },
 
+      "MengBridgeCourse/2114JUNIT":{
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
       "MengBridgeCourse/2114ObjectsEnumsAndUML":{
         "Checkpoint 1": {
           "points": 0,
