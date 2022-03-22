@@ -728,7 +728,19 @@
           "points": 0,
           "threshold": 0
         }
+      },
+
+      "MengBridgeCourse/2114BinarySearch": {
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
+          "points": 0,
+          "threshold": 0
+        }
       }
+
     }
   }
 
