@@ -524,6 +524,13 @@ This can be useful when we have many items that fulfill the criteria in our
 if statement.
 
 
+Syntax Practice 9a: Loop Idioms
+-------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 9a: Loop Idioms'
+   :workout_id: 1513
+
+
 Generics Revisited
 ------------------
 
@@ -617,6 +624,13 @@ Check Your Understanding: Generics
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz1Summ.html ka
    :long_name: Generics
+
+
+Syntax Practice 9b: Generics
+----------------------------
+
+.. extrtoolembed:: 'Syntax Practice 9b: Generics'
+   :workout_id: 1873
 
 
 The Null Keyword
@@ -765,7 +779,9 @@ Using BlueJ's Debugger
 
 .. raw:: html
 
+   <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/w_iy0jmMmkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Using BlueJ's Code Pad
@@ -773,18 +789,20 @@ Using BlueJ's Code Pad
 
 .. raw:: html
 
+   <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/OXQoxhuriGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
-Syntax Practice 9
------------------
+Programming Practice 9a: Loop Idioms
+------------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 9'
-   :workout_id: 1513
-
-
-Programming Practice 9
-----------------------
-
-.. extrtoolembed:: 'Programming Practice 9'
+.. extrtoolembed:: 'Programming Practice 9a: Loop Idioms'
    :workout_id: 1514
+
+
+Programming Practice 9b: Loops and Generics
+-------------------------------------------
+
+.. extrtoolembed:: 'Programming Practice 9b: Loops and Generics'
+   :workout_id: 1874
