@@ -59,33 +59,21 @@
   "chapters": {
     "Turing Machines":{
       "PIFLA/TuringMachines":{},
-      "PIFLA/TMExercises":{
+      "PIFLA/TMExercisesS22":{
         "addOnea":{ 
           "points": 2.0
         },
-        "eraseABC":{ 
-          "points": 2.0
-        },
-        "keepABC":{ 
-          "points": 2.0
-        },
-        "aNumsPowerOf2":{ 
-          "points": 2.0
-        },
-        "ifaNumsPowerOf2":{ 
+        "swapab": {
           "points": 2.0
         },
         "abcWInWWROut":{ 
-          "points": 2.0
+          "points": 3.0
         },
         "abcNawlargerthanNbw":{ 
-          "points": 2.0
-        },
-        "replaceABAbyACA":{ 
-          "points": 2.0
+          "points": 3.0
         },
         "abPalindromes":{ 
-          "points": 2.0
+          "points": 3.0
         }
       }
     },
