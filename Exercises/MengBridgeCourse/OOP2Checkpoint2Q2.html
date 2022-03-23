@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkpoint 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="OOP2_CP2_Q2">
+        <p class="question">
+          <img src="./OOP2CheckpointImages/CarUML.png" alt="UML Diagram of cars" width="300" height="200">
+          <br>
+          Using the information in the UML diagram above, suppose we execute the following Java statements:
+        </p>
+<pre class="prettyprint">
+Vehicle vehicle = new OilTanker(2500);
+vehicle.move();</pre>
+        <p>which definition of move will be executed?</p>
+
+
+        <div class="solution">The one defined in <tt>OilTanker</tt></div>
+        <ul class="choices">
+        <li>The one defined in <tt>Truck</tt></li>
+        <li>The one defined in <tt>Vehicle</tt></li>
+        <li>The one defined in <tt>PeopleHauler</tt></li>
+
+        </ul>
+        <div class="hints">
+          <!-- Since the actual type of vehicle is OilTanker, and since move is
+          an appropriate method for instances of Vehicle, which is vehicle's
+          declared type, the move method invocation will work, and will be the
+          one defined in OilTanker -->
+        <p><tt>PeopleHauler</tt> is an interface, it does not contain an implementation of <tt>move</tt></p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
