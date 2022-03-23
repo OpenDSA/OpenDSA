@@ -469,18 +469,8 @@
           }
        }
      },
-    "Exceptions and JUnit":{
-      "MengBridgeCourse/2114Exceptions":{
-        "Checkpoint 1": {
-          "points": 0,
-          "threshold": 0
-        },
-        "Checkpoint 2": {
-          "points": 0,
-          "threshold": 0
-        }
-      },
 
+    "Unit 7":{
       "MengBridgeCourse/2114JUNIT":{
         "Checkpoint 1": {
           "points": 0,
@@ -491,6 +481,17 @@
           "threshold": 0
         },
         "Checkpoint 3": {
+          "points": 0,
+          "threshold": 0
+        }
+      },
+
+      "MengBridgeCourse/2114Exceptions":{
+        "Checkpoint 1": {
+          "points": 0,
+          "threshold": 0
+        },
+        "Checkpoint 2": {
           "points": 0,
           "threshold": 0
         }
