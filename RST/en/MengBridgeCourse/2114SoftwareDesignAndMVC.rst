@@ -485,14 +485,29 @@ Considering the above we may identify the following as an initial list of possib
      - Jewelry
      - Watch
      - Toys
+
    * - Rating
      - Review
      - Order
      - Payment
+     -
+     -
+     -
+     -
+     -
+     -
+     -
    * - User
      - Customer
      - Employee
-
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+     -
 
 Note: There may be other options, for example:
 
