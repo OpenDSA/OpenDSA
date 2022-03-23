@@ -321,8 +321,6 @@ You are required to produce a design for an e-commerce solution
 This design must take the form of a UML class diagram.
 High-level requirements have been provided below.
 
-
-
 ABC will use the solution to promote and sell the thousands of products listed
 in ABC’s product catalog.  Though ABC expects to add other products in the near
 future the catalog currently includes books, DVDs, music CDs, apparel, consumer
