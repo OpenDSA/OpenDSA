@@ -10,9 +10,12 @@
 Objects, Enums, and UML Diagrams
 ================================
 
-[19:48] Java Objects and Enum Video
-------------------------------------
+Java Fundamental Objects and Enums
+----------------------------------
 
+
+[19:48] Java Objects and Enum Video
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -21,8 +24,11 @@ Objects, Enums, and UML Diagrams
      </center>
 
 
+Java UML Diagrams
+-----------------
+
 [6:15] Java Object UML Video
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -55,5 +61,5 @@ TODO: fix URLS.
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/OOP1Checkpoint2.html ka
+   :long_name: UML Checkpoint
