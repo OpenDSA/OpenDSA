@@ -430,63 +430,71 @@ Review the listing of nouns and noun phrases and concepts that could be
 extracted from the Case Study - e-Commerce solution (online storefront)
 for ABC Ltd .
 
-Nouns and Noun Phrases
+
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* Products
-* Product Catalog
-* Books
-* DVDs
-* Apparel
-* Consumer Electronics
-* Beauty items
-* Kitchen items
-* Jewelry
-* Watches
-* Toys
-* Customers
-* Ratings
-* Reviews
-* Shopping cart
-* Account
-* Orders
-* User
-* Email address
-* Password
-* Shipping address
-* Billing address
-* Payment details
-* Employee users
+.. list-table:: Nouns and Noun Phrases
+   :header-rows: 0
 
-Concepts
-~~~~~~~~
+   * - Products
+     - Product Catalog
+     - Books
+     - DVDs
+     - Apparel
+     - Consumer Electronics
+     - Beauty items
+     - Kitchen items
+     - Jewelry
+     - Watches
+     - Toys
+     - Customers
+   * - Reviews
+     - Ratings
+     - Shopping cart
+     - Account
+     - Orders
+     - User
+     - Email address
+     - Password
+     - Shipping address
+     - Billing address
+     - Payment details
+     - Employee users
 
-* User Account
-* Shopping cart
-* Checking out
-* Payments, Payment system, Payment Options
-* Order fulfillment
+.. list-table:: Concepts
+   :header-rows: 0
+
+   * - User Account
+     - Shopping cart
+     - Checking out
+     - Payments, Payment system, Payment Options
+     - Order fulfillment
+
 
 Considering the above we may identify the following as an initial list of possible classes.
 
-* Product Catalog
-  * Product
-    * Book
-    * DVD
-    * Apparel
-    * Consumer Electronics
-    * Beauty Item
-    * Kitchen Item
-    * Jewelry
-    * Watch
-    * Toys
-* Rating
-* Review
-* Order
-* Payment
-* User
-  * Customer
-  * Employee
+.. list-table:: Possible Classes
+   :header-rows: 0
+
+   * - Product Catalog
+     - Product
+     - Book
+     - DVD
+     - Apparel
+     - Consumer Electronics
+     - Beauty Item
+     - Kitchen Item
+     - Jewelry
+     - Watch
+     - Toys
+   * - Rating
+     - Review
+     - Order
+     - Payment
+   * - User
+     - Customer
+     - Employee
+
 
 Note: There may be other options, for example:
 
@@ -518,8 +526,6 @@ Additionally
 
 * Customer "Is-a" User
 * Employee "Is-a" User
-
-
 
 Keep in mind that the envisioned software system would need to manage pieces
 of information common to each Product as well as any information and behaviors
@@ -562,27 +568,26 @@ We have restated the Concepts, Verbs and Verb Phrases for the
 Case Study - e-Commerce solution (online storefront) for ABC Ltd, for your
 review.
 
-Concepts
-~~~~~~~~
 
-* Online Store
-* User Account
-* Shopping Cart
-* Checking Out
-* Payments, Payment system, Payment Options
-* Order fulfillment
+.. list-table:: Concepts
+   :header-rows: 0
 
-Verb and Verb Phrases
-~~~~~~~~~~~~~~~~~~~~~
+   * - User Account
+     - Shopping cart
+     - Checking out
+     - Payments, Payment system, Payment Options
+     - Order fulfillment
 
-* Search or Browsers
-* Manage (shopping cart)
-* Add and remove (products)
-* Register (customer account)
-* Place (an order)
-* Submit (reviews)
-* Support (employees)
+.. list-table:: Verb and Verb Phrases
+   :header-rows: 0
 
+   * - Search or Browsers
+     - Manage (shopping cart)
+     - Add and remove (products)
+     - Register (customer account)
+     - Place (an order)
+     - Submit (reviews)
+     - Support (employees)
 
 Review your design with a critical eye, ask yourself,
 "can my design support this concept, process, or action"? If not,
