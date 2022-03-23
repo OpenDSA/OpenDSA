@@ -58,8 +58,8 @@ TODO: fix URLS.
    </a>
 
 
-Checkpoint 1
-~~~~~~~~~~~~
+Checkpoint 2
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/OOP1Checkpoint2.html ka
    :long_name: UML Checkpoint
