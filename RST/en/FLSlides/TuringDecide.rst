@@ -60,9 +60,10 @@ Decideability vs. Acceptability
    | Is every Turing-acceptible language Turing decidable?
    |    This is the Halting Problem.
 
-   | Of course, if the TA language would halt, we write :math:`\fbox{Y}`.
-   | But if the TA lang would not halt on an accept state, it may loop forever, can we always replace it with
-     logic to write :math:`\fbox{N}` instead?
+   | Of course, if the Turing-acceptable language would halt, we write :math:`\fbox{Y}`.
+   | But if the TA language would not halt on an accept state, it may
+     loop forever. Can we always replace it with logic to write
+     :math:`\fbox{N}` instead?
    | Example: Collatz function.
    | Does the following loop terminate for ALL positive integers n?
    |   while (n > 1)
