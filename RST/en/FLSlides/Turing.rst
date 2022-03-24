@@ -157,7 +157,7 @@ Turing Machines
 
    A :term:`halted configuration` occurs when the machine do not find
    a move from the given state using the tape letter (the current configuration).
-   In other words, TM halts if there is no :math:`\Delta` defined. That is why
+   In other words, TM halts if there is no :math:`\delta` defined. That is why
    in this book we always assume that there are no transitions defined
    out of the final state. Therefore, any TM will halt once it entered a
    final state.

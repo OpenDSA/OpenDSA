@@ -63,10 +63,8 @@ Decideability vs. Acceptability
    | Of course, if the TA language would halt, we write :math:`\fbox{Y}`.
    | But if the TA lang would not halt on an accept state, it may loop forever, can we always replace it with
      logic to write :math:`\fbox{N}` instead?
-   |    Example: Collatz function.
-
+   | Example: Collatz function.
    | Does the following loop terminate for ALL positive integers n?
-      while (n > 1)
-        if (even(n))          n = n/2;
-        else          n = 3n + 1;
-
+   |   while (n > 1)
+   |     if (even(n)) n = n/2;
+   |     else n = 3n + 1;

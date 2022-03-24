@@ -64,7 +64,9 @@
     },
     "Week 9": {
       "FLSlides/CFLProp": {},
-      "FLSlides/CFLClosure": {}
+      "FLSlides/CFLClosure": {},
+      "FLSlides/Turing": {},
+      "FLSlides/TuringDecide": {}
     }
   }
 }
