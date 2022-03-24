@@ -124,7 +124,7 @@ Turing Machines
    .. inlineav:: RClearCON ss
       :long_name: Turing Machine RClear
       :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
-      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
+      :scripts: DataStructures/FLA/FA.js AV/Yinwen/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
       :align: center
       :output: show
 
@@ -137,12 +137,15 @@ Turing Machines
       :align: center
 
 
+.. slide:: .
+
+   .
+
+   
 .. slide:: Notation
 
    A :term:`configuration` for a Turing machine looks like this:
-
-   .. math::
-      (q, aaba\#\underline{\#}a)
+   :math:`(q, aaba\#\underline{\#}a)`.
 
    This means that the TM is on state :math:`q`,
    the tape contains :math:`aaba\#\underline{\#}a` and read / write
