@@ -454,7 +454,7 @@ holds the whole answer.
            for (Book book : shelf.getContents())
            {
                // if we find a book by our desired author...
-               if (book.getAuthor.equals(author))
+               if (book.getAuthor().equals(author))
                {
                    // increase counter by 1
                    count++;
