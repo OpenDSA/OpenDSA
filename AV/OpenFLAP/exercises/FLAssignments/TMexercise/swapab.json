@@ -1,0 +1,38 @@
+[
+  {
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "TM",
+    "totalTestCases": 5,
+    "containLetters": ["a", "b"],
+    "randomStringLength": [0, 15],
+    "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
+    "hardCodeCasesCounter": 5,
+    "description": "Create a machine that takes as input a string of a's and b's, and changes a's to b's, and changes b's to a's. So, string abba becomes baab.",
+    "testCases": [
+      {
+        "": "",
+        "ShowTestCase": true
+      },
+      {
+        "a": "b",
+        "ShowTestCase": true
+      },      
+      {
+        "ab": "ba",
+        "ShowTestCase": true
+      },
+      {
+        "bba": "aab",
+        "ShowTestCase": true
+      },
+      {
+        "abbaaba": "baabbab",
+        "ShowTestCase": true
+      }
+    ],
+    "graph": {
+      "nodes": [],
+      "edges": []
+    }
+  }
+]

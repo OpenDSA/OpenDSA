@@ -124,7 +124,7 @@ Turing Machines
    .. inlineav:: RClearCON ss
       :long_name: Turing Machine RClear
       :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
-      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
+      :scripts: DataStructures/FLA/FA.js AV/Yinwen/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
       :align: center
       :output: show
 
@@ -137,12 +137,15 @@ Turing Machines
       :align: center
 
 
+.. slide:: .
+
+   .
+
+   
 .. slide:: Notation
 
    A :term:`configuration` for a Turing machine looks like this:
-
-   .. math::
-      (q, aaba\#\underline{\#}a)
+   :math:`(q, aaba\#\underline{\#}a)`.
 
    This means that the TM is on state :math:`q`,
    the tape contains :math:`aaba\#\underline{\#}a` and read / write
@@ -154,7 +157,7 @@ Turing Machines
 
    A :term:`halted configuration` occurs when the machine do not find
    a move from the given state using the tape letter (the current configuration).
-   In other words, TM halts if there is no :math:`\Delta` defined. That is why
+   In other words, TM halts if there is no :math:`\delta` defined. That is why
    in this book we always assume that there are no transitions defined
    out of the final state. Therefore, any TM will halt once it entered a
    final state.
