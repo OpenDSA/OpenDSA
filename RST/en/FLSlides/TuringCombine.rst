@@ -15,6 +15,33 @@
 Combining Turing Machines
 =========================
 
+.. slide:: Computation
+
+   We can easily demonstate simple computation on unary
+   representation.
+
+   .. inlineav:: TMPlusoneCON ss
+      :long_name: Turing Machine Replace
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMPlusoneCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMPlusoneCON.js
+      :align: center
+      :output: show
+
+
+.. slide:: An Important TM
+
+   .. inlineav:: TManbncnCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TManbncnCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TManbncnCON.js
+      :align: center
+      :output: show
+
+
+.. slide:: .
+
+   .
+
+
 .. slide:: Combining Turing Machines (1)
 
    | **Lemma:** If
@@ -24,16 +51,9 @@ Combining Turing Machines
    | then
    |   :math:`(q_1,\ w_1\underline{a_1}u_1) \vdash^*_M (q_3,\ ww_3\underline{a_3}u_3)`.
 
-   | Insight: Since :math:`(q_2,\ w_2\underline{a_2}u_2) \vdash^*_M (q_3,\ w_3\underline{a_3}u_3)`, 
-     this computation must take place without moving the head left of :math:`w_2`.
-   |    The machine cannot "sense" the left end of the tape.
-   |    And if it had moved left, it would have hung.
-
 
 .. slide:: Combining Turing Machines (2)
 
-   | Thus, the head won't move left of :math:`w_2` even if it is
-     **not** at the left end of the tape.
    | This means that Turing machine computations can be combined into
      larger machines:
    |    :math:`M_2` prepares string as input to :math:`M_1`.
