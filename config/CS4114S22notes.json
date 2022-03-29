@@ -66,6 +66,11 @@
       "FLSlides/CFLProp": {},
       "FLSlides/CFLClosure": {},
       "FLSlides/Turing": {}
+    },
+    "Week 10": {
+      "FLSlides/TuringDecide": {},
+      "FLSlides/TuringCombine": {},
+      "FLSlides/TuringExtend": {}
     }
   }
 }
