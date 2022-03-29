@@ -43,7 +43,6 @@ Checkpoint 1
 Programming Searching
 ---------------------
 
-
 [20:22] Programming Searching Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
