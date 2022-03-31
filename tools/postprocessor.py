@@ -295,11 +295,13 @@ def break_up_sections(path, module_data, config, standalone_modules):
       # Do something with the actual href
 
   # Move header scripts out of header, kill header
+  # Not every theme has a header div
   header_tag = soup.find('div', class_='header')
-  for bit in reversed(header_tag.contents):
-    if bit.name in ('script', 'link'):
-      header_tag.next_sibling.insert_before(bit.extract())
-  header_tag.extract()
+  if header_tag is not None:
+    for bit in reversed(header_tag.contents):
+      if bit.name in ('script', 'link'):
+        header_tag.next_sibling.insert_before(bit.extract())
+      header_tag.extract()
 
   # Remove unnecessary parts of the HTML
   for class_name in ('topnav', 'bottomnav'):
