@@ -47,8 +47,8 @@ TODO: fix URLS.
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/EfficiencyCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
 [14:29] Efficiency of Summation Algorithms Video
@@ -65,8 +65,8 @@ Checkpoint 1
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/EfficiencyCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
 
 [7:18] Efficiency of Bag Methods Video
