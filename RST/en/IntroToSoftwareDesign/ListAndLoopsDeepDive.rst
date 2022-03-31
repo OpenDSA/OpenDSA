@@ -43,7 +43,7 @@ author, and ISBN number.
 
        public String getAuthor()
        {
-           return title;
+           return author;
        }
 
        public int getISBN()
@@ -244,7 +244,7 @@ loop.  Let's look at how we'd write this with a for-each loop:
        boolean result = false;
        for (Book book : this.contents)
        {
-           if(title.equals(book.getTitle()))
+           if (title.equals(book.getTitle()))
            {
                result = true;
            }
@@ -375,7 +375,7 @@ position of the list, and count *backwards*.
 
    public boolean hasTitle(String title)
    {
-       for (int i = this.contents.size(); i >= 0; i--)
+       for (int i = this.contents.size() - 1; i >= 0; i--)
        {
            Book book = shelfContents.get(i);
            if (title.equals(book.getTitle()))
@@ -454,7 +454,7 @@ holds the whole answer.
            for (Book book : shelf.getContents())
            {
                // if we find a book by our desired author...
-               if (book.getAuthor.equals(author))
+               if (book.getAuthor().equals(author))
                {
                    // increase counter by 1
                    count++;

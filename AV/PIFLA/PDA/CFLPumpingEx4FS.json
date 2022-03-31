@@ -87,126 +87,126 @@
       },
       "q19": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only, let $u = a^{t_1}$ and $v = a^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"Let $w=a^mb^mA^m$. We need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only, let $v = a^{t_1}$ and $y = a^{t_2}$ where $0 < t_1 + t_2 \\le m$",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^{m+t_1+t_2}b^mA^m$",
         "choices": ["$a^{m+t_1+t_2}b^mA^m$", "$a^{m+t_1}b^mA^m$", "$a^{m+t_2}b^mA^m$"]
       },
       "q20": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only, let $u = a^{t_1}$ and $v = a^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only, let $v = a^{t_1}$ and $y = a^{t_2}$ where $0 < t_1 + t_2 \\le m$",
         "question": "Is $a^{m+t_1+t_2}b^mA^m$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q21": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s, let $u = a^{t_1}$ and $v = b^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}$ and $y = b^{t_3}$",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^{m+t_1}b^{m + t_3}A^m$",
         "choices": ["$a^{m+t_1}b^{m + t_3}A^m$", "$a^{m+t_1 + t_2}b^{m + t_3}A^m$", "$a^{m}b^{m + t_1 + t_3}A^m$"]
       },
       "q22": {
         "type": "select",
-        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s, let $u = a^{t_1}$ and $v = b^{t_3}$",
+        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}$ and $y = b^{t_3}$",
         "question": "Is $a^{m+t_1}b^{m + t_3}A^m$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q23": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 3:}$ $vxy$ is some $a$'s followed by some $b$'s, let $u = a^{t_1}$ and $v = a^{t_2}b^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 3:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}$ and $y = a^{t_2}b^{t_3}$",
         "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
         "answer": "$a^{m-t_1-t_2}b^{m - t_3}A^m$",
         "choices": ["$a^{m-t_1-t_2}b^{m - t_3}A^m$", "$a^{m-t_1 - t_2}b^{m + t_3}A^m$", "$a^{m}b^{m - t_1 - t_3}A^m$"]
       },
       "q24": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 3:}$ $vxy$ is some $a$'s followed by some $b$'s, let $u = a^{t_1}$ and $v = a^{t_2}b^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 3:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}$ and $y = a^{t_2}b^{t_3}$",
         "question": "Is $a^{m-t_1-t_2}b^{m - t_3}A^m$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q25": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 4:}$ $vxy$ is some $a$'s followed by some $b$'s, let $u = a^{t_1}b^{t_2}$ and $v = b^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 4:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}b^{t_2}$ and $y = b^{t_3}$",
         "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
         "answer": "$a^{m-t_1}b^{m - t_2 - t_3}A^m$",
         "choices": ["$a^{m-t_1}b^{m - t_2 - t_3}A^m$", "$a^{m-t_1 - t_2}b^{m - t_3}A^m$", "$a^{m}b^{m - t_2 - t_3}A^m$"]
       },
       "q26": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 4:}$ $vxy$ is some $a$'s followed by some $b$'s, let $u = a^{t_1}b^{t_2}$ and $v = b^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 4:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}b^{t_2}$ and $y = b^{t_3}$",
         "question": "Is $a^{m-t_1}b^{m - t_2 - t_3}A^m$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q27": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $b$'s only, let $u = b^{t_1}$ and $v = b^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $b$'s only, let $v = b^{t_1}$ and $y = b^{t_2}$ where $0 < t_1 + t_2 \\le m$",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^mb^{m+t_1+t_2}A^m$",
         "choices": ["$a^mb^{m+t_1+t_2}A^m$", "$a^mb^{m+t_2}A^m$", "$a^mb^{m+t_1}A^m$"]
       },
       "q28": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $b$'s only, let $u = b^{t_1}$ and $v = b^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $b$'s only, let $v = b^{t_1}$ and $y = b^{t_2}$ where $0 < t_1 + t_2 \\le m$",
         "question": "Is $a^mb^{m+t_1+t_2}A^m$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q29": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 6:}$ $vxy$ is some $b$'s followed by some $A$'s, let $u = b^{t_1}$ and $v = A^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 6:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}$ and $y = A^{t_3}$",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^mb^{m+t_1}A^{m + t_3}$",
         "choices": ["$a^mb^{m+t_1}A^{m + t_3}$", "$a^mb^{m+t_1 + t_3}A^{m}$", "$a^mb^{m}A^{m + t_1 + t_3}$"]
       },
       "q30": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 6:}$ $vxy$ is some $b$'s followed by some $A$'s, let $u = b^{t_1}$ and $v = A^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 6:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}$ and $y = A^{t_3}$",
         "question": "Is $a^mb^{m+t_1}A^{m + t_3}$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q31": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 7:}$ $vxy$ is some $b$'s followed by some $A$'s, let $u = b^{t_1}$ and $v = b^{t_2}A^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 7:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}$ and $y = b^{t_2}A^{t_3}$",
         "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
         "answer": "$a^mb^{m - t_1 - t_2}A^{m - t_3}$",
         "choices": ["$a^mb^{m - t_1 - t_2}A^{m - t_3}$", "$a^mb^{m+t_1 - t_2}A^{m-t_3}$", "$a^mb^{m}A^{m - t_3}$"]
       },
       "q32": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 7:}$ $vxy$ is some $b$'s followed by some $A$'s, let $u = b^{t_1}$ and $v = b^{t_2}A^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 7:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}$ and $y = b^{t_2}A^{t_3}$",
         "question": "Is $a^mb^{m - t_1 - t_2}A^{m - t_3}$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q33": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 8:}$ $vxy$ is some $b$'s followed by some $A$'s, let $u = b^{t_1}A^{t_2}$ and $v = A^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 8:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}A^{t_2}$ and $y = A^{t_3}$",
         "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
         "answer": "$a^mb^{m - t_1}A^{m t_2 - t_3}$",
         "choices": ["$a^mb^{m - t_1}A^{m t_2 - t_3}$", "$a^mb^{m+ t_1}A^{m -t_2-t_3}$", "$a^mb^{m}A^{m -t_2 - t_3}$"]
       },
       "q34": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 8:}$ $vxy$ is some $b$'s followed by some $A$'s, let $u = b^{t_1}A^{t_2}$ and $v = A^{t_3}$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 8:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}A^{t_2}$ and $y = A^{t_3}$",
         "question": "Is $a^mb^{m - t_1}A^{m t_2 - t_3}$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q35": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 9:}$ $vxy$ is $A$'s only, let $u = A^{t_1}$ and $v = A^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 9:}$ $vxy$ is $A$'s only, let $v = A^{t_1}$ and $y = A^{t_2}$ where $0 < t_1 + t_2 \\le m$",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^mb^mA^{m+t_1+t_2}$",
         "choices": ["$a^mb^mA^{m+t_1+t_2}$", "$a^mb^mA^{m+t_2}$", "$a^mb^mA^{m+t_1}$"]
       },
       "q36": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 9:}$ $vxy$ is $A$'s only, let $u = A^{t_1}$ and $v = A^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 9:}$ $vxy$ is $A$'s only, let $v = A^{t_1}$ and $y = A^{t_2}$ where $0 < t_1 + t_2 \\le m$",
         "question": "Is $a^mb^mA^{m+t_1+t_2}$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]

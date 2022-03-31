@@ -1,0 +1,21 @@
+#DirectedGraph {
+    height: 700px;
+  }
+  
+  #DirectedGraph .jsavline{
+    height: 30px;
+  }
+  
+  #DirectedGraph .jsavedge.markpath {
+    stroke-width: 4;
+    stroke: #f61010;
+  }
+  
+  #DirectedGraph .jsavverticalarray .jsavnode {
+    line-height: 45px !important;
+    min-width: 45px !important;
+    max-width: 45px !important;
+    min-height: 45px !important;
+    max-height: 45px !important;
+  }
+  

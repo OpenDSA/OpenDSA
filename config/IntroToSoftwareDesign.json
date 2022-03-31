@@ -341,6 +341,36 @@
           "points": 9
         }
       }
+    },
+
+    "Arrays":{
+      "IntroToSoftwareDesign/Arrays": {
+        "Syntax Practice 10a": {
+          "points": 12
+        },
+        "Syntax Practice 10b": {
+          "points": 12
+        },
+        "Syntax Practice 10c": {
+          "points": 12
+        },
+        "Programming Practice 10a": {
+          "points": 15
+        },
+        "Programming Practice 10b": {
+          "points": 15
+        },
+        "Week10Quiz1Summ": {
+          "points": 6
+        },
+        "Week10Quiz2Summ": {
+          "points": 6
+        },
+        "Week10ReadingQuizSumm": {
+          "points": 22,
+          "threshold": 11
+        }
+      }
     }
   }
 }

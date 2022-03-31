@@ -53,7 +53,7 @@ Closure Properties for CFLs
           :math:`P_3 = P_1 \cup P_2 \cup \{S_3 \rightarrow S_1S_3|\lambda \}`.
 
 
-.. Slide:: Intersection
+.. slide:: Intersection
 
    | **Theorem:** CFL's are NOT closed under intersection
    |    Let :math:`L_1 = \{a^nb^nc^m | n,m > 0\}` and
@@ -62,7 +62,7 @@ Closure Properties for CFLs
    |    Then :math:`L_1 \cap L_2 = \{a^nb^nc^n | n >0 \}` is not CFL. 
 
 
-.. Slide:: Complementation
+.. slide:: Complementation
 
    | **Theorem:** CFL's are NOT closed under complementation.
    |    Set identity: 
