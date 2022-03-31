@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bags Checkpoint 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="BAGS_CP2_Q1">
+        <p class="question">Which of the following 5 implementations could not
+          be used for contains?</p>
+        <div class="solution">
+          <tt>
+public boolean contains(T anEntry)
+{
+   return !isEmpty();
+}
+          </tt>
+        </div>
+        <ul class="choices">
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  boolean found = false;
+  int i = 0;
+  while ( !found && (i < numberOfEntries))
+  {
+    if (anEntry.equals(contents[i]))
+    {
+      found = true;
+    }
+  i++;
+  }
+  return found;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  return getIndexOf(anEntry) > -1;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  return getFrequencyOf(anEntry) > 0;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  int i = 0;
+  while ((i < numberOfEntries))
+  {
+    if (anEntry.equals(contents[i]))
+    {
+      return true;
+    }
+  i++;
+  }
+  return false;
+}
+</tt>
+        </li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

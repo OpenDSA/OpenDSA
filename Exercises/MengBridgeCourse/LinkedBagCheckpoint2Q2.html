@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Linked Bag Checkpoint 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="LC_CP2_Q2">
+        <p class="question">Which of the following is a correct implementation
+          of <tt>getFrequencyOf</tt>?</p>
+
+        <div class="solution">
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+  int frequency = 0;
+  Node currentNode = firstNode;
+  while ((currentNode != null)) {
+    if (anEntry.equals(currentNode.getData())) {
+      frequency++;
+    } // end if
+
+    currentNode = currentNode.getNext();
+  } // end while
+
+  return frequency;
+} // end getFrequencyOf
+</tt>
+        </div>
+        <ul class="choices">
+        <li>
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+  int frequency = 0;
+
+  while ((currentNode != null)) {
+    Node currentNode = firstNode;
+    if (anEntry.equals(currentNode.getData())) {
+      frequency++;
+    } // end if
+
+    currentNode = currentNode.getNext();
+  } // end while
+
+  return frequency;
+} // end getFrequencyOf
+</tt>
+        </li>
+        <li>
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+
+  Node currentNode = firstNode;
+  while ((currentNode != null)) {
+    if (anEntry.equals(currentNode.getData())) {
+      frequency++;
+    } // end if
+
+    currentNode = currentNode.getNext();
+  } // end while
+
+  return frequency;
+} // end getFrequencyOf
+</tt>
+        </li>
+        <li>
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+  int frequency = 0;
+  Node currentNode = firstNode;
+  while ((currentNode != null)) {
+    if (anEntry.equals(currentNode.getData())) {
+      frequency++;
+    } // end if
+
+    currentNode++;
+  } // end while
+
+  return frequency;
+} // end getFrequencyOf
+</tt>
+        </li>
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

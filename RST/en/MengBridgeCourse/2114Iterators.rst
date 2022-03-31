@@ -120,3 +120,7 @@ Checkpoint 3
    <a href="" download>
    <img src="" alt="IteratorsDesignConsiderations.ppt">
    </a>
+
+
+**Clarification**:  Iterators that are nested class inside the linked structure
+(not subclasses) are more efficient than Iterators that are independent classes.

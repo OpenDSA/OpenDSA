@@ -71,8 +71,8 @@ TODO: fix URLS.
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
 [7:14] ExLinkedBagJunit Video Demonstration
@@ -126,8 +126,8 @@ TODO: fix URLS.
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
 
 [13:44] LinkedBag Removing an Item Video Demonstration
@@ -165,8 +165,8 @@ TODO: fix URLS.
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint3.html ka
+   :long_name: Checkpoint 3
 
 
 Wrapping up Bags
