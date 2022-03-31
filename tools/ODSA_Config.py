@@ -31,7 +31,7 @@ optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_d
 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'desc', 'av_origin',
 'av_root_dir', 'code_lang', 'course_id', 'LMS_url', 'module_map', 'inst_book_id','module_position','inst_exercise_id',
 'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled', 'zeropt_assignments',
-'sphinx_debug', 'html_theme_options', 'html_css_files', 'html_js_files', 'include_tree_view', 'chapter_name']
+'sphinx_debug', 'html_theme_options', 'html_css_files', 'html_js_files', 'include_tree_view', 'chapter_name', 'max_toc_depth']
 
 
 listed_modules = []
@@ -234,7 +234,7 @@ def validate_config_file(config_file_path, conf_data):
     # Ensure the config file doesn't have any unknown fields (catches mis-spelled fields when config file is manually edited)
     for field in conf_data:
         if field not in (required_fields + optional_fields):
-            print_err('ERROR: Unknown field, %s' % field)
+            print_err('ERROR: Unknown field, %s, found in configuration at %s' % (field, config_file_path))
             error_count += 1
 
     validate_chapter(conf_data)
