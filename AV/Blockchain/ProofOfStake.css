@@ -77,6 +77,13 @@
     stroke: green;
     stroke-width: 3;
   }
+
+  .graynode { /* Make a node gray */
+    background-color: gray;
+    color: white;
+    border-color: gray;
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
   
   .greennode { /* Make a node green */
     background-color: green;

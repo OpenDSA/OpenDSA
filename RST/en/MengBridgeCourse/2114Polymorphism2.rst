@@ -10,8 +10,11 @@
 Polymorphism 2
 ==============
 
+Polymorphism Measurable Interface
+---------------------------------
+
 [7:23] The Measurable Interface
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -58,14 +61,17 @@ This link will direct you to the steps to download and import previously written
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint1.html ka
+   :long_name: Checkpoint 1
 
+
+Polymorphism Computer Superclass
+--------------------------------
 
 [12:09] The Computer Superclass
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -86,15 +92,17 @@ TODO: fix URLS.
    </a>
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint2.html ka
+   :long_name: Checkpoint 2
 
 
+Polymorphism Integer Example
+----------------------------
 
 [7:40] Java Polymorphism Integer Example Video
-----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -111,7 +119,7 @@ TODO: fix URLS.
    </a>
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint3.html ka
+   :long_name: Checkpoint 3

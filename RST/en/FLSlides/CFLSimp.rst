@@ -452,7 +452,7 @@ Simplifying CFGs and Normal Forms
    |   :math:`B \rightarrow b`
 
 
-.. Slide:: What You Should Know
+.. slide:: What You Should Know
 
    |    Know what usless productions, unit productions, etc. are
    |    Don't memorize the processes for eliminating them, but

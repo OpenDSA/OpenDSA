@@ -1,0 +1,21 @@
+#AlignmentGraph {
+    height: 700px;
+  }
+  
+  #AlignmentGraph .jsavline{
+    height: 30px;
+  }
+  
+  #AlignmentGraph .jsavedge.markpath {
+    stroke-width: 4;
+    stroke: #f61010;
+  }
+  
+  #AlignmentGraph .jsavverticalarray .jsavnode {
+    line-height: 45px !important;
+    min-width: 45px !important;
+    max-width: 45px !important;
+    min-height: 45px !important;
+    max-height: 45px !important;
+  }
+  

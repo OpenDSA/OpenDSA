@@ -40,12 +40,10 @@ Pushdown Automata
 
    Recall: A DFA :math:`=(Q, \Sigma, \delta, q_0, F)`.
 
-   .. odsafig:: Images/lt6dfa.png
-      :width: 400
+   .. inlineav:: DFAExampleCON dgm
+      :links: AV/VisFormalLang/FA/DFAExampleCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFAExampleCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
 
    In a DFA, the tape is read only, the head moves to the right only.
    DFAs are limited in power.
@@ -60,12 +58,10 @@ Pushdown Automata
         store symbols on stack
    | Adds memory: The machine stores and retrieves data from the stack
 
-   .. odsafig:: Images/lt6pda1.png
-      :width: 370
+   .. inlineav:: PDAExampleCON dgm
+      :links: AV/VisFormalLang/PDA/PDAExampleCON.css
+      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/PDA/PDAExampleCON.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
 
    Old limitations still apply: Tape is read only, head moves only to
    the right
@@ -111,16 +107,15 @@ Pushdown Automata
      then pop :math:`b`, and either 
    |   move to :math:`q_3` and push :math:`b` back onto the stack
    |   move to :math:`q_4` and push :math:`ab` onto stack (:math:`a` on top)
-   |   move to :math:`q_6` (now stack is one character shorter)
+   |   move to :math:`q_6` (now stack is one symbol shorter)
 
-   :math:`z` (the initial stack bottom marker) is priviledged: It
-   never comes off, stack is never empty.
-
+   | :math:`z` (the initial stack bottom marker) is priviledged: It
+     never comes off, stack is never empty.
+   |   (At least in the basic definition)
 
 .. slide:: Example of Transitions (2)
 
-   Transitions can be represented using a transition diagram. 
-   The diagram for the above transitions is:
+   Transitions can be represented using a transition diagram, such as:
 
    .. odsafig:: Images/lt6trans.png
       :width: 300
@@ -129,11 +124,12 @@ Pushdown Automata
       :figwidth: 90%
       :alt: stnfaints
 
-   | Each arc is labeled by a triple :math:`<x, y, z>` where :math:`x` is
-     the current input symbol, :math:`y` is the top of stack symbol which
-     is popped from the stack, and :math:`z` is a string that is pushed
+   | Edge is labeled by a triple :math:`<x, y, z>` where :math:`x` is
+     the current input symbol, :math:`y` is the top of stack symbol
+     (it is popped from the stack), :math:`z` is a string that is pushed
      onto the stack.
-   | << **Warning**: What is a character, and what is a string? >>
+   | << **Warning**: What is a symbol, and what is a string? >>
+
 
 .. slide:: Instantaneous Descriptions
 
@@ -144,7 +140,6 @@ Pushdown Automata
      unread portion of the input string :math:`w`,
      and the current contents of the stack :math:`u`.
    | (Like DFA, there is no history for how we got to this.)
-   | This is a configuration in JFLAP.
 
    | **Description of a Move:**
    | :math:`(q_1, aw, bx) \vdash (q_2, w, yx)`
@@ -154,6 +149,7 @@ Pushdown Automata
    | :math:`(q_1, w_1, x_1) \stackrel{*}{\vdash} (q_2, w_2, x_2)`
      indicates possible configuration change over multiple steps.
    | << "Possible" because this is non-deterministic >>
+
 
 .. slide:: Definition for Language Acceptance
 
@@ -171,27 +167,15 @@ Pushdown Automata
 
    :math:`L = \{a^nb^n | n \ge 0\}, \Sigma = \{a, b\}, \Gamma = \{z,a\}`
 
-   .. odsafig:: Images/lt7pda1.png
-      :width: 400
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
+   .. inlineav:: PDAAnBnTraceCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDAAnBnTraceCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js AV/VisFormalLang/PDA/PDAAnBnTraceCON.js
+      :output: show
 
-   Trace aaabbb 
 
-   .. math::
+.. slide:: .
 
-      \begin{array}{lcccccccc} 
-      &&&&a \\ 
-      &&&a&a &a \\ 
-      & &a&a&a&a &a \\ 
-      \mbox{Stack:} &\underline{z} &\underline{z} &\underline{z} &\underline{z} 
-      &\underline{z} & \underline{z} &\underline{z} &\underline{\ \ \ } \\ 
-      \\ 
-      \mbox{Unread} \\ 
-      \mbox{input:} & aaabbb &aabbb &abbb &bbb & bb & b \\ 
-      \end{array} 
+.
 
 
 .. slide:: Language Acceptance in PDA
@@ -201,46 +185,19 @@ Pushdown Automata
 
    :math:`L(M) = \{w \in \Sigma^* \mid (q_0, w, z) \stackrel{*}{\vdash} (p, \lambda, \lambda)\}`
 
-
+   Notice that stack-empty symbol $z$ has come off.
+   
+   
 .. slide:: Example
    
    :math:`L = \{a^nb^mc^{n+m} \mid n,m > 0\}, \Sigma = \{a, b, c\}, \Gamma =\{0, z\}`
 
    Note: What is the smallest length string that is accepted? 
 
-   .. odsafig:: Images/lt7pda4.png
-      :width: 400
+   .. inlineav:: example_7_1_2 dgm
+      :links: AV/VisFormalLang/PDA/example_7_1_2.css
+      :scripts: AV/VisFormalLang/PDA/example_7_1_2.js
       :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
-
-
-.. slide:: Example
-            
-   :math:`L = \{ww^R | w \in \Sigma^+ \}, \Sigma = \{a, b\}, \Gamma = ?`
-
-   .. odsafig:: Images/lt7pda3.png
-      :width: 400
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: stnfaints
-
-   Trace abbbba 
-
-   .. math::
-      
-      \begin{array}{lcccccccc} 
-      &&&&b \\ 
-      &&&b&b &b \\ 
-      & &a&a&a&a &a \\ 
-      \mbox{Stack:} &\underline{z} &\underline{z} &\underline{z} &\underline{z} 
-      &\underline{z} & \underline{z} &\underline{z} &\underline{\ \ \ } \\ 
-      \\ 
-      \mbox{Unread} \\ 
-      \mbox{input:} & abbbba & bbbba & bbba & bba & ba & a \\ 
-      \end{array} 
 
 
 .. slide:: Example

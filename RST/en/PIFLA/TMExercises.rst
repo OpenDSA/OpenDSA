@@ -16,19 +16,19 @@ Exercise 1
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html pe
-   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
+   :long_name: Turing Machines Exercise
 
 Exercise 2
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html pe
-   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
+   :long_name: Turing Machines Exercise
 
 Exercise 3
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html pe
-   :long_name: Sheet 2 Exercise 1 NFAtoDFA exercise
+   :long_name: Turing Machines Exercise
 
 Exercise 4
 ----------

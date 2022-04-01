@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UML Checkpoint</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="OOP1_CP2_Q1">
+        <p class="question">
+          <img src="./OOP1CheckpointImages/Checkpoint2BirdUML.png" alt="UML Diagram of birds" width="300" height="200">
+          <br>
+          The simplified UML diagram above shows the relationships among
+          Java classes Bird, Crow, and Duck.
+
+          Suppose Bird has a fly(Location place) method, but we want Crows to
+          makeNoise() just before they take off and then behave like other
+          Birds. Assuming Crows have a makeNoise() method, we should
+        </p>
+
+        <div class="solution">Define a fly method in Crow that just consists of <tt>makeNoise()</tt> and <tt>super.fly(place)</tt><br>
+<tt>public void fly(Location place) {
+   this.makeNoise();
+   super.fly(place);
+}</tt></div>
+
+        <ul class="choices">
+        <li>Define a fly method in Crow by copying the fly code from Bird  then adding in <tt>makeNoise()</tt> at the start, i.e.<br>
+<tt>public void fly(Location place) {
+   this.makeNoise();
+ //  [paste the body of Bird's fly method here]
+}/tt></li>
+
+        <li>Define a fly method in Crow  that just consists of <tt>makeNoise()</tt>, i.e.<br>
+<tt>public void fly(Location place) {
+   this.makeNoise();
+}</tt></li>
+
+        <li>Define a fly method in Crow that just consists of <tt>makeNoise()</tt> and <tt>this.fly(place)</tt>, i.e.<br>
+<tt>public void fly(Location place) {
+   this.makeNoise();
+   this.fly(place);
+}</tt></li>
+
+        <li>Define a fly method in Crow that just consists of <tt>makeNoise()</tt> and <tt>Bird.fly(place);</tt> i.e.<br>
+<tt>public void fly(Location place) {
+   this.makeNoise();
+   Bird.fly(place);
+}</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--D is the best: super.fly(place) invokes Bird's fly method, so
+        produces fly behavior like other Birds.  A would also work, but is does
+        not take advantage of inheritance, and would be incorrect if you change
+        the flying behavior of Birds by modifying Bird's fly method.
+
+        B wouldn't involve any flight, C wouldn't terminate, and E assumes a
+        static fly method in Bird (which would be unusual design, so I would
+        have mentioned it).-->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

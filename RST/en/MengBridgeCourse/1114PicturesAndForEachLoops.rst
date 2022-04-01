@@ -22,7 +22,9 @@ by changing pixels:
 
 .. raw:: html
 
+   <div class="align-center" style="margin-top:1em;">
    <iframe src="https://www.youtube-nocookie.com/embed/15aqFQQVBWU" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+   </div>
 
 
 A Pixel Class
@@ -257,7 +259,7 @@ like this:
    
    for (Pixel pix : image.getPixels())
    {
-       pixel.setRed(255);
+       pix.setRed(255);
    }
 
 In English, the code above, would read "for each pixel in the image,
@@ -298,7 +300,7 @@ local variable declaration, similar to others you have written yourself.
 
    for (Pixel pix : image.getPixels())
    {
-       pixel.setRed(255);
+       pix.setRed(255);
    }
 
 Here, we are declaring a variable called ``pixel`` that is of type ``Pixel``.
@@ -468,16 +470,29 @@ Check Your Understanding
    :long_name: Module Review
 
 
-Syntax Practice 6
------------------
+Syntax Practice 6a: Pixel Loops
+-------------------------------
 
-.. extrtoolembed:: 'Syntax Practice 6'
+.. extrtoolembed:: 'Syntax Practice 6a: Pixel Loops'
+   :workout_id: 1827
+
+
+Syntax Practice 6b: More For-Each Loops
+---------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 6b: More For-Each Loops'
    :workout_id: 1459
 
 
-Programming Practice 6
-----------------------
+Programming Practice 6a
+-----------------------
 
-.. extrtoolembed:: 'Programming Practice 6'
+.. extrtoolembed:: 'Programming Practice 6a'
    :workout_id: 1460
 
+
+Programming Practice 6b
+-----------------------
+
+.. extrtoolembed:: 'Programming Practice 6b'
+   :workout_id: 1828

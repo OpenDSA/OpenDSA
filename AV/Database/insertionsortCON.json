@@ -1,0 +1,17 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "Determine Entities and Attributes.",
+      "sc2": "Select primary key for each entity.",
+      "sc3": "Determine Entities and Attributes.",
+      "sc4": "Determine Entities and Attributes.",
+      "sc5": "Determine Entities and Attributes.",
+      "sc6": "Determine Entities and Attributes.",
+      "sc7": "Determine Entities and Attributes.",
+      "sc8": "Determine Entities and Attributes.",
+      "sc9": "Now we are ready to process the record in position 3.",
+      "sc10": "We will compare it to the record in position 2.",
+      "sc11": "Since the record in position 2 is smaller, nothing changes and we are done with the record in position 3."
+    }
+  }
+}

@@ -317,6 +317,13 @@ Check Your Understanding: Arrays
    :long_name: Arrays
 
 
+Syntax Practice 10a
+-------------------
+
+.. extrtoolembed:: 'Syntax Practice 10a'
+   :workout_id: 1525
+
+
 Iterating Over Arrays
 ---------------------
 
@@ -423,6 +430,13 @@ Check Your Understanding: Iterating with Arrays
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week10Quiz2Summ.html ka
    :long_name: Iterating with Arrays
+
+
+Syntax Practice 10b
+-------------------
+
+.. extrtoolembed:: 'Syntax Practice 10b'
+   :workout_id: 1880
 
 
 Initializing Array Contents
@@ -753,22 +767,29 @@ explain arrays and how they might be used in a problem.
    </div>
 
 
-Syntax Practice 10
-------------------
+Syntax Practice 10c
+-------------------
 
-.. extrtoolembed:: 'Syntax Practice 10'
-   :workout_id: 1525
-
-
-Programming Practice 10
------------------------
-
-.. extrtoolembed:: 'Programming Practice 10'
-   :workout_id: 1526
+.. extrtoolembed:: 'Syntax Practice 10c'
+   :workout_id: 1881
 
 
 Check Your Understanding
---------------------------------------------------
+------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week10ReadingQuizSumm.html ka
    :long_name: Arrays Review
+
+
+Programming Practice 10a
+------------------------
+
+.. extrtoolembed:: 'Programming Practice 10a'
+   :workout_id: 1526
+
+
+Programming Practice 10b
+------------------------
+
+.. extrtoolembed:: 'Programming Practice 10b'
+   :workout_id: 1879

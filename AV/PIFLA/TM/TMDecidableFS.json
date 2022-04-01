@@ -3,17 +3,18 @@
     "en": {
       "q2": {
         "type": "select",
-        "description": "Recall that we defined a convention for accepting/rejecting whether an input string is in a specified language",
-        "question":"What makes a string accepted by a TM?",
-        "answer": "If the TM halts in a final state",
-        "choices": ["If the TM halts in a final state", "If the TM finish execituion in a non-final state", "If the TM found an undifined transition"]
+        "description": "Recall that we defined a convention for accepting/rejecting whether an input string is in a specified language.",
+        "question":"When is a string accepted by a TM?",
+        "answer": ["If the TM halts in a final state"],
+        "choices": ["If the TM halts in a final state", "If the TM finishes execution in a non-final state", "If the TM is found an undefined transition"]
       },
       "q3": {
         "type": "select",
-        "description": "Recall that we defined a convention for accepting/rejecting whether an input string is in a specified language",
-        "question":"What makes a string rejected by a TM?",
-        "answer": ["If the TM finish execituion in a non-final state", "If the TM found an undifined transition"],
-        "choices": ["If the TM halts in a final state", "If the TM finish execituion in a non-final state", "If the TM found an undifined transition"]
+        "description": "Recall that we defined a convention for accepting/rejecting whether an input string is in a specified language.",
+        "question":"When is a string rejected by a TM?",
+        "answer": ["If the TM finishes execution in a non-final state", "If the TM is found an undefined transition"],
+        "choices": ["If the TM halts in a final state", "If the TM finishes execution in a non-final state", "If the TM is found an undefined transition"],
+        "correctFeedback": ["The key here is that the machine halts (with separate mechanisms for accept or reject)."]
       },
       "q5": {
         "type": "select",
@@ -24,36 +25,36 @@
       },
       "q7": {
         "type": "select",
-        "description": "We can define another concept: $Turing−acceptable$. We say that machine $M$ accepts a string $w$ if $M$ halts on input $w$. Then, $M$ accepts a language iff $M$ halts on $w$ iff $w \\in L$.",
+        "description": "We can define another concept: <b>Turing−acceptable</b>. We say that machine $M$ accepts a string $w$ if $M$ halts on input $w$. Then, $M$ accepts a language iff $M$ halts on $w$ iff $w \\in L$.",
         "question":"What will happen if the string $w$ is $\\not \\in$ the language?",
-        "answer": "The machine will go in an infinit loop",
-        "choices": ["Similar to turing decidable laguages, the machine will halt with reject status", "The machine will go in an infinit loop"]
+        "answer": "The machine will go into an infinite loop",
+        "choices": ["Similar to turing decidable laguages, the machine will halt with reject status", "The machine will go into an infinite loop"]
       },
       "q9": {
         "type": "select",
         "description": "So, a language is Turing-decidable if it halts on every input, in two different ways so that we can tell if the string is in the language or not. Separately, a language is Turing-acceptable if it halts on strings in the language, and does not halt on strings not in the language.",
-        "question":"The difference between truing decidable and turing acceptable is the machine behavior when the string is $\\not \\in $ the language.",
+        "question":"The difference between Turing-decidable and Turing-acceptable is the machine behavior when the string is $\\not \\in $ the language.",
         "answer": "True",
         "choices": []
       },
       "q11": {
         "type": "select",
-        "description": "Consider this example: Example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$ <br>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q &nbsp; &nbsp; σ &nbsp; &nbsp; δ(q,σ,{R,L,S})</i> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; a &nbsp; &nbsp; (h, a, R)</i> <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; b  &nbsp; &nbsp; (q<sub>0</sub>, b, R)</i> <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; # &nbsp; &nbsp; (q<sub>0</sub>, #, R)</i> <br><br>",
+        "description": "Consider this example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$.<br/>$\\qquad$ --------------------------------<br/>$\\qquad p\\quad q\\quad\\delta(q, \\sigma, {R,L,S})$<br/>$\\qquad$ --------------------------------<br/>$\\qquad q_0\\quad a \\quad (h, a, R)$<br/>$\\qquad q_0\\quad b\\quad (q_0, b, R)$<br/>$\\qquad q_0\\quad \\# \\quad (q_0, \\#, R)$",
         "question":"What will happen if the tape has no $a$'s?",
-        "answer": "The machine will enter a infinit loop",
-        "choices": ["The machine will enter a infinit loop", "The machine will reject the string"]
+        "answer": "The machine will enter a infinite loop",
+        "choices": ["The machine will enter a infinite loop", "The machine will reject the string"]
       },
       "q12": {
         "type": "select",
-        "description": "Consider this example: Example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$ <br>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q &nbsp; &nbsp; σ &nbsp; &nbsp; δ(q,σ,{R,L,S})</i> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; a &nbsp; &nbsp; (h, a, R)</i> <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; b  &nbsp; &nbsp; (q<sub>0</sub>, b, R)</i> <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; # &nbsp; &nbsp; (q<sub>0</sub>, #, R)</i> <br><br>",
+        "description": "Consider this example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$.<br/>$\\qquad$ --------------------------------<br/>$\\qquad p\\quad q\\quad\\delta(q, \\sigma, {R,L,S})$<br/>$\\qquad$ --------------------------------<br/>$\\qquad q_0\\quad a \\quad (h, a, R)$<br/>$\\qquad q_0\\quad b\\quad (q_0, b, R)$<br/>$\\qquad q_0\\quad \\# \\quad (q_0, \\#, R)$",
         "question":"What is the type of this machine?",
         "answer": "Turing Acceptable",
         "choices": ["Turing Decidable", "Turing Acceptable"]
       },
       "q13": {
         "type": "select",
-        "description": "Consider this example: Example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$ <br>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q &nbsp; &nbsp; σ &nbsp; &nbsp; δ(q,σ,{R,L,S})</i> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; a &nbsp; &nbsp; (h, a, R)</i> <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; b  &nbsp; &nbsp; (q<sub>0</sub>, b, R)</i> <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; # &nbsp; &nbsp; (q<sub>0</sub>, #, R)</i> <br><br>",
-        "question": "Which transition that if we removed it the machine will be turing decidable?",
+        "description": "Consider this example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$.<br/>$\\qquad$ --------------------------------<br/>$\\qquad p\\quad q\\quad\\delta(q, \\sigma, {R,L,S})$<br/>$\\qquad$ --------------------------------<br/>$\\qquad q_0\\quad a \\quad (h, a, R)$<br/>$\\qquad q_0\\quad b\\quad (q_0, b, R)$<br/>$\\qquad q_0\\quad \\# \\quad (q_0, \\#, R)$",
+        "question": "Which transition should we remove to make the machine be Turing decidable?",
         "answer": "$\\delta(q_0, \\#) = (q_0, \\#, R)$",
         "choices": ["$\\delta(q_0, a) = (h, a, R)$", "$\\delta(q_0, b) = (q_0, b, R)$", "$\\delta(q_0, \\#) = (q_0, \\#, R)$"]
       }

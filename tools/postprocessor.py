@@ -295,12 +295,20 @@ def break_up_sections(path, module_data, config, standalone_modules):
       # Do something with the actual href
 
   # Move header scripts out of header, kill header
+  # Not every theme has a header div
   header_tag = soup.find('div', class_='header')
-  for bit in reversed(header_tag.contents):
-    if bit.name in ('script', 'link'):
-      header_tag.next_sibling.insert_before(bit.extract())
-  header_tag.extract()
-
+  if header_tag is not None:
+    for aScript in (header_tag.find_all('script')):
+      soup.html.head.append(aScript)
+    header_tag.extract()
+  
+  #for bit in reversed(header_tag.contents):
+  #  print(bit)
+  #  if bit.name in ('script', 'link'):
+  #    header_tag.next_sibling.insert_before(bit.extract())
+  #  header_tag.extract()
+  #  soup.html.head.append(aScript)
+  
   # Remove unnecessary parts of the HTML
   for class_name in ('topnav', 'bottomnav'):
     element = soup.find('div', class_=class_name)
@@ -312,6 +320,8 @@ def break_up_sections(path, module_data, config, standalone_modules):
 
   filename = mod_name + '.html'
   single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
+  
+  print('Outputting ' + single_file_path )
   with open(single_file_path, 'wt', encoding='utf-8') as o:
     o.write(str(soup))
   return None

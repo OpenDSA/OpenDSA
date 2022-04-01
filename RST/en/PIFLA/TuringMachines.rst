@@ -14,15 +14,15 @@ Turing Machines
 
 A General Model of Computation
 ------------------------------
-So far we have seen a few simple machine types, such as DFA, NFA, PDA,
-RegEx.
+
+So far we have seen a few simple machine types, such as DFA, NFA, PDA.
 And we have seen corresponding grammars: Regular grammars,
 context-free grammars, etc.
-There are some differences in the machines.
-DFAs are deterministic.
-NFAs add non-determinism, which simply means that there can be
-multiple choices out of a state for the same input character.
-The PDA adds the concept of a stack for storage.
+We have investigated the concept of non-determinism.
+Nondeterminism does not affect the power of a DFA (the languages that
+are accepted by NFAs are the same as for DFAs).
+But nondeterminism does affect the power of PDAs
+(nondetermistic PDAs recognize more languages than do determistic PDAs).
 
 These machines all have some similarities.
 They all take an input string.
@@ -66,7 +66,45 @@ It is only slightly more complicated than the machines that we have
 seen so far, and only slightly different in its operation.
 But these differences are significant.
 Ultimately, we will see that a Turing Machine can do any computation
+(in its fundamental abilty to convert one string into another)
 that even the most sophisticated modern computer can do.
+
+Another issue is memory.
+DFAs have no memory beyond whatever process took them to their current
+state.
+PDAs have a stack.
+This made a huge difference in the languages that can be accepted:
+DFAs only accept regular languages, while (nondeterministic) PDAs
+accept any CFL.
+
+Consider these three languages:
+
+* :math:`L_1 = \{wcw^R\}` for :math:`w` in :math:`\Sigma^*, \Sigma = \{a, b\}`.
+* :math:`L_2 = \{ww^R\}` for :math:`w` in :math:`\Sigma^*, \Sigma = \{a, b\}`.
+* :math:`L_1 = \{ww\}` for :math:`w` in :math:`\Sigma^*, \Sigma = \{a, b\}`.
+
+The differences seem pretty minor, but the outcomes are quite
+different.
+:math:`L_1` is a deterministic CFL.
+:math:`L_2` is a non-determistic CFL.
+:math:`L_3` is not a CFL at all.
+
+The difference between :math:`L_3` and the others seems to relate to
+the limitiations of the stack.
+As we read the first :math:`w` and load it into the stack, we don't
+have a good way to get to the bottom of the stack to see the first
+letter to compare against the first letter of the second :math:`w`.
+But what if we considered other memory models?
+For example, a queue would solve our problem nicely.
+But then, a queue would not be able to handle :math:`L_2`.
+Two stacks could simulate a queue (do you see how?), and so a machine
+with two stacks can handle both :math:`L_1` and :math:`L_2`.
+Perhaps we should investigate what class of languages a two stack
+machine can handle?
+Perhaps we should consider other memory models?
+
+As it turns out, none of these ideas are as effective as the simple
+memory model that the Turing Machine uses.
 
 
 Turing Machines
@@ -96,8 +134,8 @@ Turing-Decidable vs. Turing-Acceptable Languages
    :output: show
 
 
-Making More Complicated Machines part 1
----------------------------------------
+Making More Complicated Machines
+--------------------------------
 
 Obviously, Turing Machines can take an input and modify it.
 We will see examples of how this leads to powerful computational
@@ -109,9 +147,10 @@ free.
 Which means that this simple Turing Machine is doing something that no
 DFA, NFA, or PDA can do!
 
-.. inlineav:: TMComplicated1FS ff
-   :links: AV/PIFLA/TM/TMComplicated1FS.css
-   :scripts:  lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMComplicated1FS.js
+.. inlineav:: TManbncnCON ss
+   :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TManbncnCON.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TManbncnCON.js
+   :align: center
    :output: show
 
 |
@@ -126,4 +165,13 @@ DFA, NFA, or PDA can do!
 .. inlineav:: TMcopy ss
    :links: AV/Kochan/TMcopy.css
    :scripts: AV/Kochan/TMcopy.js AV/Juwon/FAcopy.js
+   :output: show
+
+
+Turing Machine Extensions
+-------------------------
+
+.. inlineav:: TMExtensionFS ss
+   :links: AV/PIFLA/TM/TMExtensionFS.css
+   :scripts: AV/PIFLA/TM/TMExtensionFS.js
    :output: show

@@ -175,6 +175,37 @@ committees and 34 slots/bundles came up. What is the relationship?]
 Proof of Stake versus Proof of Work
 -----------------------------------
 
+Performance / Reliability
+~~~~~~~~~~~~~~~~~
+
+In both proof-of-stake and proof-of-work systems, there is a need for some physical computation and network interaction to take place.
+No decentralized network can function without physical hardware conforming to a pre-determined protocol. 
+It is important to consider how a decentralized system can maintain uptime and reliability
+without any centralized control over the necessary hardware. Take 
+a traditional software system like Google.com. If Google has a major
+server outage, their services fail to function and users suffer. Google has
+direct control over their servers and can take action to fix the problem or
+avoid it from happening in the first place. With decentralized systems, such as 
+those that utilize both POS and POW, that level of direct control over hardware
+uptime does not exist, so how can reliability and upkeep of the network exist?
+
+In the case of POW, miners are encouraged to propose valid solutions to the current
+block hash based on the promise of a reward for providing the correct solution. 
+This incentivizes all network participants to continue working towards hash solutions
+and thus maintaining upkeep of the network. In the case of POS, there also exists a reward mechanism 
+in place for validator nodes when they are selected by the network to propose a block. 
+Unlike proof-of-work, proof-of-stake relies on the validator node to uphold its obligations to the network
+whenever it is called upon to do so. So what happens when a validator node is selected to propose a block
+but either fails to do so or does so in a way that is not valid? 
+
+This introduces the concept of Slashing where a validator node is punished for not fulfilling its obligations.
+
+.. inlineav:: ProofOfStakeConflict ss
+   :long_name: ProofOfStakeConflict Slideshow
+   :links: AV/Blockchain/ProofOfStake.css
+   :scripts: AV/Blockchain/ProofOfStakeConflict.js
+   :output: show
+
 Security Concerns
 ~~~~~~~~~~~~~~~~~
 
@@ -208,8 +239,6 @@ occured by overwriting block transactions in a fork that the attacker
 controls.
 The fork uses the same coin in another transaction by substituting the
 coin used in the previous transaction in the new transaction.
-
-[This would benefit from a slideshow to explain what is going on.]
 
 51% attacks are difficult to recognize until the attack is executed.
 Detection can occur when duplicate transactions or repeating refunds

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Linked Bag Checkpoint 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="LC_CP2_Q1">
+        <p class="question">Which of the following 4 implementations could
+          not be used for contains?</p>
+
+        <div class="solution">
+<tt>
+public boolean contains(T anEntry) {
+
+  Node currentNode = firstNode;
+
+  while (!anEntry.equals(currentNode.getData())) {
+    currentNode = currentNode.getNext();
+  } // end while
+
+  return true;
+} // end contains
+</tt>
+        </div>
+        <ul class="choices">
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  return getIndexOf(anEntry) > -1;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  return getFrequencyOf(anEntry) > 0;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  boolean found = false;
+  Node currentNode = firstNode;
+
+  while (!found && (currentNode != null)) {
+    if (anEntry.equals(currentNode.getData()))
+       found = true;
+    else
+       currentNode = currentNode.getNext();
+  } // end while
+
+  return found;
+} // end contains
+</tt>
+        </li>
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

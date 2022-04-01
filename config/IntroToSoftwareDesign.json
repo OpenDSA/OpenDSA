@@ -315,6 +315,62 @@
           "threshold": 10
         }
       }
+    },
+
+    "Lists, Loop Idioms, Generics, and the Null Keyword":{
+      "IntroToSoftwareDesign/ListAndLoopsDeepDive": {
+        "Syntax Practice 9a: Loop Idioms": {
+          "points": 20
+        },
+        "Syntax Practice 9b: Generics": {
+          "points": 15
+        },
+        "Programming Practice 9a: Loop Idioms": {
+          "points": 19
+        },
+        "Programming Practice 9b: Loops and Generics": {
+          "points": 19
+        },
+        "Week9Quiz1Summ": {
+          "points": 9
+        },
+        "Week9Quiz2Summ": {
+          "points": 9
+        },
+        "Week9Quiz3Summ": {
+          "points": 9
+        }
+      }
+    },
+
+    "Arrays":{
+      "IntroToSoftwareDesign/Arrays": {
+        "Syntax Practice 10a": {
+          "points": 12
+        },
+        "Syntax Practice 10b": {
+          "points": 12
+        },
+        "Syntax Practice 10c": {
+          "points": 12
+        },
+        "Programming Practice 10a": {
+          "points": 15
+        },
+        "Programming Practice 10b": {
+          "points": 15
+        },
+        "Week10Quiz1Summ": {
+          "points": 6
+        },
+        "Week10Quiz2Summ": {
+          "points": 6
+        },
+        "Week10ReadingQuizSumm": {
+          "points": 22,
+          "threshold": 11
+        }
+      }
     }
   }
 }

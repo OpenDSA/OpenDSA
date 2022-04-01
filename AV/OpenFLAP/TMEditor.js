@@ -19,7 +19,7 @@ var lambda = String.fromCharCode(955),
 		type = $('h1').attr('id');
 		if(type == 'tester'){
 			exerciseLocation = getExerciseLocation();//;oad the exercise name from the Tester/Fixer html file.
-        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "PDA"});
+        	exerController = new ExerciseController(jsav, g, exerciseLocation, "json", {initGraph: initGraph, type: "TM"});
         	exerController.load();
         
         	var exercise = jsav.flexercise(modelSolution, initializeExercise,
@@ -254,6 +254,10 @@ var lambda = String.fromCharCode(955),
 			this.unhighlight();
 		}
 	};
+
+	window.TMsaver = function (dummy) {
+		return g.serializeToXML();
+	}
 	
 	//===============================
 	//editing modes
@@ -764,90 +768,3 @@ jsav.recorded();
 
 }(jQuery));
 
-var Tape = function(str) {
-	"use strict";
-	this.arr = [];
-	this.current = 0;
-	this.currentIndex = 0;
-
-	if (typeof str === 'string') {
-		this.arr = str.split("");
-		this.current = this.arr[0];  // the current symbol
-		this.currentIndex = 0;                // the current position
-	}
-	// else, assume that a Tape object was passed in, and create a copy of it
-	else {
-		this.currentIndex = str.currentIndex;
-		this.arr = str.getArr();
-		this.current = this.arr[this.currentIndex];
-	}
-
-	this.copy = function(value){
-		var newarr = new Array(value.length);
-		for (var i = 0; i < value.length; i++){
-			newarr[i] = value[i];
-		}
-		return newarr;
-	}
-
-	this.toString = function(){
-		return this.arr.toString();
-	}
-
-	this.write = function(value, location){
-		this.arr[location] = value;
-		size++;
-		this.current = location;
-	}
-
-	this.getArr = function(){
-		return this.arr;
-	}
-
-	this.currentValue = function() {
-		return this.arr[this.currentIndex];
-	}
-
-	this.value = function(newValue) {
-		if (typeof newValue === "undefined") {
-			return undefined;
-		}
-		this.arr[this.currentIndex] = newValue;
-		return this.arr[this.currentIndex];
-	}
-
-	this.goRight = function() {
-			this.currentIndex+=1;
-			this.current = this.arr[this.currentIndex];
-			return this.current;
-	}
-
-	this.goLeft = function() {
-			this.currentIndex-=1;
-			this.current = this.arr[this.currentIndex];
-			return this.current;
-	}
-
-	this.removeValue = function(location) {
-		this.arr[location] = null;
-		for (var i = 0; i < arr.length; i++)	{
-			arr[i] = arr[i+1];
-		}
-	}
-
-	// Move the tape and read the symbol
-	this.move = function (str) {
-		if (str === "L") {
-			return this.goLeft();
-		} else if (str === "R") {
-			return this.goRight();
-		} else if (str === "S") {
-			return this.curren;
-		}
-	}
-
-	this.viewTape = function (t, av) {
-		var arr = av.ds.tape(t, 325, 30, "both", this.currentIndex);
-		return arr;
-	};
-};

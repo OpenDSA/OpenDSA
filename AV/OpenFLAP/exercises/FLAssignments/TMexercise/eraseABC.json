@@ -6,7 +6,7 @@
     "randomStringLength": [0, 15],
     "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
     "hardCodeCasesCounter": 5,
-    "description": "Create a machine that erases a string of a's, b's, and c's",
+    "description": "Create a machine that erases a string of a's, b's, and c's.",
     "testCases": [{
             "aaa": "",
             "ShowTestCase":true

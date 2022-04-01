@@ -57,11 +57,13 @@ Pumping Lemma for CFL
    A little more complicated because there can be two "pumped" parts
    (in equal measure of pumped-ness).
 
-
+   Of course, the production is not required to have both $v$ and $y$.
+   
+   
 .. slide:: Pumping Lemma for CFLs
 
    | Let :math:`L` be any infinite CFL.
-   | Then exists a constant :math:`m` (depending only on :math:`L`),
+   | Then there exists a constant :math:`m` (depending only on :math:`L`),
      such that for every string :math:`w \in L`, 
      with :math:`|w| \ge m`, we may partition :math:`w = uvxyz` such that:
    |    :math:`|vxy| \le m`, (limit on size of substring)
@@ -96,7 +98,7 @@ Pumping Lemma for CFL
      :math:`N \stackrel{*}{\Rightarrow} v^iNy^i \stackrel{*}{\Rightarrow} v^ixy^i`.
 
    .. odsafig:: Images/lt8ptree2.png
-      :width: 400
+      :width: 380
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -130,19 +132,19 @@ Pumping Lemma for CFL
      that :math:`|vy|\ge 1`, :math:`|vxy|\le m`, and
      :math:`uv^ixy^iz \in L` for :math:`i = 0, 1, 2, \ldots`.
    |
-   | **Case 1:** Neither :math:`v` nor :math:`y` can contain 2 or more
+   | **Case 1:** Either :math:`v` nor :math:`y` contain 2 or more
      distinct symbols.
-     If :math:`v` contains a's and b's,
-     then :math:`uv^2xy^2z \notin L` since there will be b's
-     before a's.
-   | Thus, :math:`v` and :math:`y` can be only a's,
+     If, for example, :math:`v` contains a's and b's, then
+     :math:`uv^2xy^2z \notin L` since there will be b's before a's.
+     Likewise for :math:`y`.
+   | Thus, :math:`v` and :math:`y` each can be only a's,
      b's, or c's (not mixed). 
 
 
 .. slide:: Proof (2)
 
    | **Case 2:** :math:`v = a^{t_1}`, then :math:`y = a^{t_2}`
-     or :math:`b^{t_3}`, :math:`(|vxy| \le m)`
+     or :math:`b^{t_3}` (since :math:`|vxy| \le m`)
    | If :math:`y = a^{t_2}`,
      then :math:`uv^2xy^2z = a^{m+t_1+t_2}b^mc^m \notin L` since 
      :math:`t_1 + t_2 > 0, n(a) > n(b)` (number of a's is
@@ -194,7 +196,8 @@ Pumping Lemma for CFL
    | If the adversary could pick them with this in mind,
      then the string might be pumpable.
    |    For example, if :math:`v = a^k` and :math:`y = b^kc^k`.
-   | But the length restriction kicks in to prevent that.
+   | But the length restriction kicks in to prevent that
+   |    (too many b's between the a's and c's in :math:`w = a^mb^mc^m`).
 
 
 .. slide:: (Try to) Prove a CFL not a CFL
@@ -205,6 +208,7 @@ Pumping Lemma for CFL
    Pick :math:`w = a^mb^m`.
 
    Adversary picks :math:`v = a^k` and :math:`y = b^k`.
+   (This is pumpable!)
 
    Of course, this does not prove that :math:`L` is context free.
    Just that we failed to disprove this with the pumping lemma (that

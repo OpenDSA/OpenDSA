@@ -3,15 +3,15 @@
     "en": {
       "q2": {
         "type": "select",
-        "description": "A <b>configuration</b> for a Turing machine looks like this: <i>(q, <u>a</u>aba)</i> <br><br> This means that the TM is on state <i>q</i>, the tape contains <i><u>a</u>aba</i> and the read/write head position is on the underlined 'a'. Recall that we assume at the start of processing input for any TM, the read/write head position is on the leftmost non-blank character. <br> <br> Don't forget that the tape is infinite in both directions. So to the left of the leftmost 'a' in this configuration is an infinite number of blank squares, and to the right of the rightmost a is also an infinite number of blank squares.",
+        "description": "A <b>configuration</b> for a Turing machine looks like this: <i>(q, <u>a</u>aba)</i><br/><br/>This means that the TM is in state <i>q</i>, the tape contains <i>aaba</i> and the read/write head position is on the underlined 'a'. Recall that we assume at the start of processing input for any TM, the read/write head position is on the leftmost non-blank character.<br/><br/>Don't forget that the tape is infinite in both directions. So to the left of the leftmost 'a' in this configuration is an infinite number of blank squares, and to the right of the rightmost a is also an infinite number of blank squares.",
         "question":"How many cells exists in a TM tape?",
         "answer": "Infinity",
-        "choices": ["Infinity", "The same as the length of the input string", "The same as the length of the input string + some empry cells"]
+        "choices": ["Infinity", "The same as the length of the input string", "The same as the length of the input string + some empty cells"]
       },
       "q6": {
         "type": "select",
         "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
-        "question":"What is the meanin of this configuration $(q_0, \\underline{a}aaa)$?",
+        "question":"What is the meaning of the configuration $(q_0, \\underline{a}aaa)$?",
         "answer": ["The current state is $q_0$", "The tape has the letters $aaaa$", "The underlined $a$ represents the current read/write head location"],
         "choices": ["The current state is $q_0$", "The tape has the letters $aaaa$", "The underlined $a$ represents the current read/write head location"]
       },
@@ -52,35 +52,35 @@
       },
       "q15": {
         "type": "select",
-        "description": "What is a \"hanging\" configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen.<br/>Consider this machine on strings of a's and b's that scans right until it sees a 'b'.",
+        "description": "What is a <b>hanging</b> configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen.<br/>Consider this machine on strings of a's and b's that scans right until it sees a 'b'.",
         "question":"What will happen if the tape has no $b$?",
-        "answer": "The machine will go to infinite loop",
-        "choices": ["The machine will go to infinite loop", "The machine will halt and reject the string", "The machine will halt and accept the string"]
+        "answer": "The machine will go into an infinite loop",
+        "choices": ["The machine will go into an infinite loop", "The machine will halt and reject the string", "The machine will halt and accept the string"]
       },
       "q16": {
         "type": "select",
-        "description": "What is a \"hanging\" configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen.<br/>Consider this machine on strings of a's and b's that scans right until it sees a 'b'. If it never sees a 'b', then it will never halt. This means that it goes into an infinite loop (or hangs) anytime the input string does not contain a 'b'.",
-        "question":"Since the machine entered an infinity loop, it is in hanging configuration",
+        "description": "What is a \"hanging\" configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen.<br/>Consider this machine on strings of a's and b's that scans right until it sees a 'b'.<br/><br/>If it never sees a 'b', then it will never halt. This means that it goes into an infinite loop (or hangs) anytime the input string does not contain a 'b'.",
+        "question":"Since the machine entered an infinite loop, it is in hanging configuration",
         "answer": "True",
         "choices": []
       },
       "q17": {
         "type": "select",
-        "description": "<i>Turing Acceptors and Turing Transducers</i> <br><br>Turing machines accpets and recjects string based on the language they represent.",
+        "description": "<i>Turing Acceptors and Turing Transducers</i><br/><br/>Turing machines accept and reject strings based on the language they represent.",
         "question":"What are other models we know that can accept/reject strings?",
         "answer": ["NFA", "DFA", "PDA"],
         "choices": ["NFA", "DFA", "PDA"]
       },
       "q18": {
         "type": "select",
-        "description": "<i>Turing Transducers</i> <br><br>Turing machines alos can compute functions from strings to strings. This means that, the machine will start with a string in the tape and after it finishs the execution, the tape will contain the output string",
+        "description": "<i>Turing Transducers</i><br/><br/>Since Turing machines have the ability to write on the tape, then can also compute functions from strings to strings. This means that the machine will start with a string in the tape, and after it finishs the execution, the tape will contain the output string",
         "question":"What are other models we know that can compute functions?",
-        "answer": "None of them can compute functions",
+        "answer": "None of them can compute functions in this sense",
         "choices": ["NFA", "DFA", "PDA", "None of them can compute functions"]
       },
       "q21": {
         "type": "select",
-        "description": "One way to express functions on natural numbers is to represent a number using <i><b>unary notation</i></b>. (Remember, we are not concerned about what is efficient, we are concerned about what is possible.) In this case, we represent the value 0 as an empty string. <br><br> We say that $f:N\\rightarrow N<i> is computed by $M$ if $M$ computes $f': \\{I\\}^* \\rightarrow \\{I\\}^*$ where $f'(I^n) = I^{f(n)}$ for each $n \\in N$.",
+        "description": "When we want to do something with numbers, we are used to using base 10. Sometimes we use hexi-decimal numbers when we want to reason about computer memory, since that is a bit more convenient in that context. In the early days of computing when interfaces were poor and computation was expensive, binary was used a lot. You should be able to image that implementing computation on two binary digits is easier than on 10 decimal digits. However, even that is more complicated than we want right now. One way to express functions on natural numbers is to represent a number using <i><b>unary notation</i></b>. (Remember, we are not concerned about what is efficient, we are concerned about what is possible.) In this case, we represent the value 0 as an empty string.<br/><br/>We say that $f:N \\rightarrow N$ is computed by $M$ if $M$ computes $f': \\{I\\}^* \\rightarrow \\{I\\}^*$ where $f'(I^n) = I^{f(n)}$ for each $n \\in N$.",
         "question":"If $n = 2$, what is the correct unary representationn for $n$?",
         "answer": "11",
         "choices": ["10", "11", "2"]

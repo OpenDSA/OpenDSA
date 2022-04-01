@@ -62,7 +62,7 @@ course easier.
 1. Open the Help menu and select Install New Software....
 
 2. In the **Work with**: field, paste the following URL and press
-Enter: `http://web-cat.org/eclipse <http://web-cat.org/eclipse>`_
+Enter (or press "Add"): `http://web-cat.org/eclipse <http://web-cat.org/eclipse>`_
 
 3. Click the check boxes next to **"Web-CAT Electronic Assignments"**  and
 **"Web-CAT Java Development Extras"**, and click **Next**. Review your

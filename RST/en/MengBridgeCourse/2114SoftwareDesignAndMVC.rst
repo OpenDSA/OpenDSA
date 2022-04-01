@@ -156,33 +156,30 @@ Identifying classes, fields, and methods
 
 The first steps in crafting the design of a software product with a
 UML class diagram is to review the documented requirements with the goal of
-identifying the system's classes, fields, and methods.
+identifying the system's classes, fields, and methods. **The first step is to
+review the software requirements and note all of the nouns, verbs, processes,
+and concepts.""
 
-Fortunately this is not a very difficult task!
-
-All you need to do to get started is to review the software requirements
-and note all of the nouns, verbs, processes, and concepts.
-
-Recall that a class is a blueprint or specification for an object.  They are
-usually entities of interest with attributes (pieces of data/information,
-commonly referred to as fields) and behaviors (methods) that are needed for
-the software to function as intended.
+Recall that a class is a blueprint or specification for an object.
+They are usually entities of interest with attributes
+(pieces of data/information, commonly referred to as fields) and behaviors
+(methods) that are needed for the software to function as intended.
 
 
 Identifying classes and fields
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Classes and fields are derived from the nouns and noun phrases found within
-our software requirements documentation.  Some may also be found by considering
-how our software product will be used, the processes the software is intended
-to support, and the users of the software.
+Classes and fields are derived from the nouns and noun phrases found within our
+software requirements documentation.  Some may also be found by considering how
+our software product will be used, the processes the software is intended to
+support, and the users of the software.
 
 Nouns and noun phrases either refer to the entities (things) of interests to
 the system or to the individual pieces of data/information associated with
 these entities.
 
-As such nouns and noun phrases are good candidates for classes or fields of a
-class.
+As such nouns and noun phrases are good candidates for classes or fields of
+a class.
 
 Distinguishing which nouns are classes and which are fields
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -201,21 +198,13 @@ most likely fields of some class
 Data Structures
 ~~~~~~~~~~~~~~~
 
-Thinking about the class, the entities that it needs to interact with, and its
-fields and what they contain, should help you to identify if a class needs to
-interact with (or manage) a single instance of another class or multiple
-instances of another class.
+Identify if any class needs to interact with (or manage) a one instance of
+another class or many instances of another class.
 
-If multiple instances are required then this may be accommodated within your
-design either through the use of multiple fields or through a single field
-representing a collection of instances of the other class.
-
-Think about the software, its purpose and processes, then determine if it would
-be wise to manage these instances as a collection.
-
-If a collection is needed then the next step would be to evaluate  and choose a
-data structure(s) that provides operations and features appropriate to the needs
-of the envisioned system.
+If many instances are required then consider whether these instances can be
+managed with data structure.  The next step would be to evaluate  and choose
+a data structure(s) that provides operations and features appropriate to the
+needs of the envisioned system.
 
 
 
@@ -229,15 +218,14 @@ is intended to support.
 Verbs and verb phrases suggest the responsibilities of a class, these will help
 you derive the methods.
 
-Remember that each class should conform to a single clear abstraction, a
-single set of related responsibilities.  Further each method should perform or
+Remember that each class should conform to a single clear abstraction, a single
+set of related responsibilities.  Further each method should perform or
 accomplish one task well.
 
-Group the verbs and verb phrases under the class that should be responsible
-for performing those actions or tasks.  Those are likely the methods of that
+Group the verbs and verb phrases under the class that should be responsible for
+performing those actions or tasks.  Those are likely the methods of that
 class.  Remember that a class should typically be responsible for managing
 itself and its fields.
-
 
 
 Access Modifiers and Visibility of classes, fields, and methods
@@ -249,14 +237,13 @@ particular field or invoke a particular method of a given class.
 New developers often forget to specify the access modifiers for classes,
 fields, and methods.
 
-This is a bad habit and something to avoid since omitting an access modifier
-may result in some unexpected behavior, breaking encapsulation and
-potentially allowing outside classes to access fields and methods in
-unintended ways.
+**This is a bad habit and something to avoid since omitting an access modifier
+may result in some unexpected behavior, breaking encapsulation and potentially
+allowing outside classes to access fields and methods in unintended ways.**
 
-You should always specify access modifiers for all classes, fields, and
+**You should always specify access modifiers for all classes, fields, and
 methods, both when depicting the software design and when developing the
-software solution.
+software solution.**
 
 
 .. list-table:: Access Modifiers
@@ -268,7 +255,7 @@ software solution.
      - Outside Package
      - World
      - Notes
-   * - **Not Set** For example some developers would declare a method like ``int print(int n)`` and omit the access modifie
+   * - **Not Set** For example some developers would declare a method like ``int print(int n)`` and omit the access modifier
      - Yes
      - Yes
      - No
@@ -293,18 +280,16 @@ software solution.
      - No
      -
 
-Good design tends to adopt the approach of setting everything as **private**
-except those fields and methods you explicitly wish outside classes to interact
-with.
+Good design tends to adopt the approach of setting everything as private except
+those fields and methods you explicitly wish outside classes to interact with.
 
-As a general rule the fields of your class should be set as **private** and
-grant other levels of access on a **case-by-case basis**.
+As a general rule the fields of your class should be set as private and grant
+other levels of access on a case-by-case basis.
 
-Access to these fields should be provided via corresponding getter and setter methods.
+Access to these fields should be provided via corresponding getter and
+setter methods.
 
-Typically getter and setter methods are **public** methods.
-
-
+Typically getter and setter methods are public methods.
 
 More information is available via the link below
 
@@ -335,8 +320,6 @@ You are required to produce a design for an e-commerce solution
 
 This design must take the form of a UML class diagram.
 High-level requirements have been provided below.
-
-
 
 ABC will use the solution to promote and sell the thousands of products listed
 in ABC’s product catalog.  Though ABC expects to add other products in the near
@@ -371,8 +354,8 @@ superclasses, subclasses, and the relationships among classes.
 Generalization / Inheritance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Recall that there may be “is a” relationships, also referred to as
-Generalization / Inheritance relationships, where a child class (or subclass)
+Recall that there may be "is a" relationships, also referred to as
+Generalization/Inheritance relationships, where a child class (or subclass)
 "inherits" common attributes (fields) and behaviors (methods) from some
 parent class (superclass).
 
@@ -382,48 +365,42 @@ superclasses, is usually a good early step towards a final design.
 Realization
 ~~~~~~~~~~~
 
-Further, there may be Realization relationships, where one class,
-**the interface**, conceptually defines a set of attributes (fields) and
-behaviors (methods) as a contract, with another class agreeing to
-"contract terms" and "realizing" the contract, by implementing the
-attributes (fields) and behaviors (methods) in accordance with the
-contract's requirements.
+There may be Realization relationships, where an **interface** conceptually
+defines a set of attributes (fields) and behaviors (methods).  Then classes
+that implement that interface "realize" it by implementing the attributes
+(fields) and behaviors (methods).
 
-If you are making use of an ADT, you should have one or more realization
-relationships to include in your design.  If not, then you may need to
-revisit your classes and add the appropriate interface(s).
+When making use of a data structure it is likely you should have one or more
+realization relationships to include in your design.  If not, then you may need
+to revisit your classes and add the appropriate interface(s).
 
-Aggregate/Composition
-~~~~~~~~~~~~~~~~~~~~~
+Aggregate / Composition
+~~~~~~~~~~~~~~~~~~~~~~~
 
-There may be “has a” relationships, also referred to as
-Aggregation relationships, that depicts a part-whole or part-of relationship
-between entities (classes).
-
+There may be "has a" relationships, also referred to as Aggregation
+relationships, that depicts a part-whole or part-of relationship between
+entities (classes).
 
 
 Other relationships and design considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Other relationships such as **Association**, **Dependency**,
-**Composition**, and **Multiplicity** may also exist.  The detail required by
-your UML class design document depends greatly on your software development
-context, some require the full use of all appropriate UML annotation, while
-others may require that only the most important design elements  be depicted.
+Other relationship labels such as **Association**, **Dependency**,
+and **Multiplicity** also exist.  The detail required by your UML class design
+document depends greatly on your software development context, some require
+the full use of all appropriate UML annotation, while others may require that
+only the most important design elements be depicted.
 
 When in doubt about the level of detail needed please feel free to ask
 questions and review the UML class designs provided within the examples
 provided throughout the module, labs, and projects.
 
-Note: All of the relationships mentioned above should be depicted where appropriate.
-
-
-
 TODO: fix URLS.
 
-Much of what you need to know for this step has been covered within the
-`LINK <Java OOP (Object Oriented Programming) Module>`_ .  Additionally you may
-download the UML Diagram key via this link
+Much of what you need to know for relationships, hierarchies and reuse has
+been covered within the
+`Java OOP (Object Oriented Programming) Module <JJava OOP (Object Oriented Programming) Module>`_ .
+Additionally you may download the UML Diagram key via this link
 
 TODO: fix URLS.
 
@@ -434,11 +411,12 @@ TODO: fix URLS.
    </a>
 
 TODO: fix URLS.
-We encourage you to review the `LINK <Java OOP (Object Oriented Programming) Module>`_ .
+We encourage you to review the
+`Java OOP (Object Oriented Programming) Module <Java OOP (Object Oriented Programming) Module>`_ .
 and
 
 TODO: fix URLS.
-`LINK <UML Diagram key>`_
+`UML Diagram key <UML Diagram key>`_
 
 Then continue the activity below
 
@@ -446,86 +424,108 @@ Then continue the activity below
 Activity
 --------
 
-Nouns and Noun Phrases
+Review the listing of nouns and noun phrases and concepts that could be
+extracted from the Case Study - e-Commerce solution (online storefront)
+for ABC Ltd .
+
+
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* Products
-* Product Catalog
-* Books
-* DVDs
-* Apparel
-* Consumer Electronics
-* Beauty items
-* Kitchen items
-* Jewelry
-* Watches
-* Toys
-* Customers
-* Ratings
-* Reviews
-* Shopping cart
-* Account
-* Orders
-* User
-* Email address
-* Password
-* Shipping address
-* Billing address
-* Payment details
-* Employee users
+.. list-table:: Nouns and Noun Phrases
+   :header-rows: 0
 
-Concepts
-~~~~~~~~
+   * - Products
+     - Product Catalog
+     - Books
+     - DVDs
+     - Apparel
+     - Consumer Electronics
+     - Beauty items
+     - Kitchen items
+     - Jewelry
+     - Watches
+     - Toys
+     - Customers
+   * - Reviews
+     - Ratings
+     - Shopping cart
+     - Account
+     - Orders
+     - User
+     - Email address
+     - Password
+     - Shipping address
+     - Billing address
+     - Payment details
+     - Employee users
 
-* User Account
-* Shopping cart
-* Checking out
-* Payments, Payment system, Payment Options
-* Order fulfillment
+.. list-table:: Concepts
+   :header-rows: 0
+
+   * - User Account
+     - Shopping cart
+     - Checking out
+     - Payments, Payment system, Payment Options
+     - Order fulfillment
+
 
 Considering the above we may identify the following as an initial list of possible classes.
 
-* Product Catalog
-  * Product
-    * Book
-    * DVD
-    * Apparel
-    * Consumer Electronics
-    * Beauty Item
-    * Kitchen Item
-    * Jewlery
-    * Watch
-    * Toys
-* Rating
-* Review
-* Order
-* Payment
-* User
-* Customer
-* Employee
+.. list-table:: Possible Classes
+   :header-rows: 0
 
-Note: There may be other options,
+   * - Product Catalog
+     - Product
+     - Book
+     - DVD
+     - Apparel
+     - Consumer Electronics
+     - Beauty Item
+     - Kitchen Item
+     - Jewelry
+     - Watch
+     - Toys
 
-For example:
+   * - Rating
+     - Review
+     - Order
+     - Payment
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+   * - User
+     - Customer
+     - Employee
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+     -
+
+Note: There may be other options, for example:
 
 ShoppingCart could be a class or simply a collection of Products
 
-Address could be a class with fields for street, city, country etc. or simply
-a single String.  If Address is a class then the fields billingAddress and
-shippingAddress could then be of type Address.
+Address could be a class with fields for street, city, country etc. or simply a
+single String.  If Address is a class then the fields ``billingAddress`` and
+``shippingAddress`` could then be of type Address.
 
 Superclass and Subclasses
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now that we have our candidate list of classes we can identify superclasses and
-subclasses, recall that we are looking for "Is-a" relationships between pairs
-of classes.
+Now that we have our candidate list of classes we can identify superclasses
+and subclasses, recall that we are looking for "Is-a" relationships between
+pairs of classes.
 
-
-
-Some should hopefully become immediately apparent.
-
-We may recognize possible superclass/subclass pairs when considering Products
+Some should hopefully become immediately apparent. We may recognize possible
+superclass/subclass pairs when considering Products:
 
 Note:
 
@@ -535,85 +535,76 @@ Note:
 
 We have our first superclass and subclass hierarchy!
 
-
-
 Additionally
 
 * Customer "Is-a" User
 * Employee "Is-a" User
 
-
-
-Keep in mind that the envisioned software system would need to manage pieces of
-information common to each Product as well as any information and behaviors
+Keep in mind that the envisioned software system would need to manage pieces
+of information common to each Product as well as any information and behaviors
 unique to each type of Product.
 
 For example price and description would be attributes of interest common to
 all Products, whether Apparel, Book, or DVD.
 
 On the other hand, for a Product like Apparel the system would need to also
-manage unique Apparel-specific attributes like size, material type, and color.
-For a Product like a Book the system would need to manage unique Book-specific
-attributes like ISBN and author.
+manage unique Apparel-specific attributes like size, material type, and
+color.  For a Product like a Book the system would need to manage unique
+Book-specific attributes like ISBN and author.
 
-A good design approach would be to include the attributes and behaviors common
-to all within the respective superclass or parent class, in this case
-Product.  The unique attributes and behaviors will then be included as part of
-each subclass or child class.
+A good design approach would be to include the attributes and behaviors
+common to all within the respective superclass or parent class, in this case
+Product.  The unique attributes and behaviors will then be included as part
+of each subclass or child class. Drawing this out in a diagram helps to
+organize your ideas.
 
 
 Relationships and Data Structures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You may have already identified your Data Structure needs when defining the
-fields for your classes.  Great job!
-
 Further examination of the relationships may help you identify if the design
-requires one or more Data Structures or refine your approach to including
-Data Structures within your design.
+requires one or more Data Structures or refine your approach.
 
 Pay particular attention to Aggregation, Composition, and Multiplicities.
-For example, one class may include multiple instances of another,
-a ProductCatalog for example, would include multiple instances of Product.
+For example, one class may include multiple instances of another, a
+``ProductCatalog`` for example, would include multiple instances of ``Product``.
 Within the design this can be accommodated either through multiple fields or
 through a single field representing a collection of Products.   Upon
 recognizing such a need you would then need to decide on which data
 structure(s) would be most appropriate.
 
+For other relationships think about the Concepts, Verbs and Verb Phrases,
+and the processes the software will support.  Reflecting on these would help
+you refine your design document.
+
+We have restated the Concepts, Verbs and Verb Phrases for the
+Case Study - e-Commerce solution (online storefront) for ABC Ltd, for your
+review.
 
 
-For other relationships think about the Concepts, Verbs and Verb Phrases, and
-the processes the software will support.  Reflecting on these would help you
-refine your design document.
+.. list-table:: Concepts
+   :header-rows: 0
 
-We have restated the Concepts, Verbs and Verb Phrases for the Case
-Study - e-Commerce solution (online storefront) for ABC Ltd, for your review.
+   * - User Account
+     - Shopping cart
+     - Checking out
+     - Payments, Payment system, Payment Options
+     - Order fulfillment
 
-Concepts
-~~~~~~~~
+.. list-table:: Verb and Verb Phrases
+   :header-rows: 0
 
-* Online Store
-* User Account
-* Shopping Cart
-* Checking Out
-* Payments, Payment system, Payment Options
-* Order fulfillment
+   * - Search or Browsers
+     - Manage (shopping cart)
+     - Add and remove (products)
+     - Register (customer account)
+     - Place (an order)
+     - Submit (reviews)
+     - Support (employees)
 
-Verb and Verb Phrases
-~~~~~~~~~~~~~~~~~~~~~
-
-* Search or Browsers
-* Manage (shopping cart)
-* Add and remove (products)
-* Register (customer account)
-* Place (an order)
-* Submit (reviews)
-* Support (employees)
-
-
-Review your design with a critical eye, ask yourself, "can my design support
-this concept, process, or action"? If not, what needs to be changed to refine
-your design?
+Review your design with a critical eye, ask yourself,
+"can my design support this concept, process, or action"? If not,
+what needs to be changed to refine your design?
 
 
 Checkpoint 2
@@ -743,14 +734,15 @@ Design Review: Case Study - e-Commerce solution (online storefront) for ABC Ltd.
 
 Recall from the "Intro to Software Design Video" we discussed a number of
 steps to producing a proper design.  At this point you should review and
-reflect upon your draft design for the e-Commerce solution (online storefront)
-for ABC Ltd. then consider what you have learnt since producing the last
-version.
+reflect upon your draft design for the e-Commerce solution
+(online storefront) for ABC Ltd. then consider what you have learnt since
+producing the last version.
 
-While you review your design you should consider if the e-Commerce solution
-(online storefront) for ABC Ltd.  requires one or more Data Structures to
-manage the data/objects used by the system as well as if the design would
-benefit from the application of Design Patterns like MVC or Observer.
+While you review your design you should consider if the e-Commerce
+solution (online storefront) for ABC Ltd.  requires one or more
+Data Structures to manage the data/objects used by the system as well as if the
+design would benefit from the application of Design Patterns like MVC or
+Observer.
 
 
 Data Structure
@@ -763,20 +755,21 @@ application along with the features and operations of the various
 Data Structures, determining if any specific feature or operation would be
 useful or necessary for the given application.
 
-With respect to the e-Commerce solution (online storefront) for ABC Ltd.
-it should become apparent that the design should, in fact, incorporate at
-least one Data Structure.  The concepts and nouns for ProductCatalog, Payments,
+With respect to the e-Commerce solution (online storefront) for ABC Ltd. it
+should become apparent that the design should, in fact, incorporate at least
+one Data Structure.  The concepts and nouns for ProductCatalog, Payments,
 Orders, Shopping Cart, and UserAccounts all indicate possible groupings or
 collections of Objects that need to be managed by the system.
 
 Consider the various Data Structures, which would you choose for each and why?
 
-For example would it make more sense to use a Bag or a Stack for a ShoppingCart?
-We know that a Shopping Cart should allow for adding and removing of elements
-(Products or Items) without any restrictions regarding which element may be
-added or removed at any given point in time.  A Stack adds restrictions to
-such ShoppingCart operations without adding any significant benefits, as such
-a Stack would NOT be appropriate when compared against a Bag.
+For example would it make more sense to use a Bag or a Stack for a
+ShoppingCart?   We know that a Shopping Cart should allow for adding and
+removing of elements (Products or Items) without any restrictions regarding
+which element may be added or removed at any given point in time.  A Stack
+adds restrictions to such ShoppingCart operations without adding any
+significant benefits, as such a Stack would NOT be appropriate when compared
+against a Bag.
 
 What about for a ProductCatalog, would a Bag, List, Queue, or some other
 Data Structure make the most sense? Again always have a reason for your choices.
@@ -789,13 +782,12 @@ feature for the Product Catalog?  The answer, most likely, is yes.
 
 This would probably be one of the requirements of the system.
 
-If so then you, the designer, should consider which Data Structure supports
-sorting and which do not, this should help narrow down the most appropriate
-options for the implementation of the Product Catalog.
+If so then you, the designer, should consider which Data Structure
+supports sorting and which do not, this should help narrow down the most
+appropriate options for the implementation of the Product Catalog.
 
 Consider each requirement and collection in turn then refine your design to
 include the chosen Data Structure(s) and supporting classes (Interfaces etc.).
-
 
 
 Design Patterns
@@ -812,9 +804,9 @@ concerned with answering the following questions:
 * Should the design make use of the Observer Design Pattern?
 * Should the design make use of both the MVC and Observer Design Patterns?
 
-
-Based on our understanding of MVC and the requirements of the e-Commerce solution
-(online storefront) for ABC Ltd. it is apparent that our proposed system
+Based on our understanding of MVC and the requirements of the e-Commerce
+solution (online storefront) for ABC Ltd. it is apparent that our proposed
+system
 
 * requires a GUI (View)
 * has data and business logic to manage (Model), and
@@ -827,13 +819,13 @@ MVC Design Pattern, it would therefore be a good fit for this design.
 For now we will not delve too deeply into the Observer Pattern, while it
 could be useful in this application it also adds (for this application)
 unnecessary complexity.  We use Observer when we have Objects (Observables)
-with continuously changing states that another Object (the Observer) needs
-to be notified of.
+with continuously changing states that another Object (the Observer) needs to
+be notified of.
 
 With respect to the e-Commerce solution (online storefront) for ABC Ltd. the
 state of most of the Objects are mostly affected when the user directly
-interacts with them.  The Objects do not change state on their own and,
-for now, are not prompted to change state by anything classes other than the
+interacts with them.  The Objects do not change state on their own and, for
+now, are not prompted to change state by anything classes other than the
 View, Controller, or Model.  As such these already work together to updating
 the relevant classes that could be considered as Observers (for example the
 View or GUI classes).

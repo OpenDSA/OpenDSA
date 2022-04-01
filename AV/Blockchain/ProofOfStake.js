@@ -84,11 +84,24 @@ $(document).ready(function() {
 
   // Slide 6
   av.umsg("All non-validator nodes will now vote with their staked currency on the legitimacy and validity of the proposed block by V1.");
-  //TODO: Find a way to animate / visualize a pie chart and/or a multi-color slider progress bar
+  
+  
+  var rect1 = av.g.set();
+  rect1.push(av.g.rect(400, 100 + 50, 50, 200));
+  rect1.css({fill: "gray"});
+  
+  av.label("Block Voting", {before: rect1, left: 325, top: -7}); //TODO: Fix label so that it displays correctly next to the rectangle
   av.step(); 
 
   // Slide 7
   av.umsg("A majority of staked currency from non-validator nodes has voted in-favor of this block and thus, the block gets appended.");
+  
+  var rect2 = av.g.set();
+  rect2.push(av.g.rect(400, 100 + 50, 50, 50));
+  rect2.css({fill: "gray"});
+  rect1.css({fill: "blue"});
+  av.step(); 
+
   v3Block.hide();
   blockchain.hide();
   

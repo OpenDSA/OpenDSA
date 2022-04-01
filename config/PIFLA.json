@@ -376,6 +376,23 @@
         "abPalindromes":{ 
           "points": 2.0
         }
+      },
+      "PIFLA/TMExercisesS22":{
+        "addOnea":{ 
+          "points": 2.0
+        },
+        "swapab": {
+          "points": 2.0
+        },
+        "abcWInWWROut":{ 
+          "points": 3.0
+        },
+        "abcNawlargerthanNbw":{ 
+          "points": 3.0
+        },
+        "abPalindromes":{ 
+          "points": 3.0
+        }
       }
     },
     "Limits to Computing": {

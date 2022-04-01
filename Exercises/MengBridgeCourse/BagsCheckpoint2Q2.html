@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bags Checkpoint 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="BAGS_CP2_Q2">
+        <p class="question">Which of the following 5  implementations could
+          not be used for getFrequency?</p>
+        <div class="solution">
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+  int i = 0;
+  int count = 0;
+  while(anEntry.equals(contents[i]))
+  {
+    i++;
+  	count++;
+  }
+  return numberOfEntries - count;
+}
+</tt></div>
+        <ul class="choices">
+        <li>
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+  int count = 0;
+  for(int i = 0; i < numberOfEntries; i++)
+  {
+    if(anEntry.equals(contents[i]))
+    {
+      count++;
+    }
+  }
+  return count;
+}
+</tt>
+</li>
+
+        <li>
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+  int count = 0;
+  for(int i = numberOfEntries - 1; i >= 0; i--)
+  {
+    if(anEntry.equals(contents[i]))
+    {
+      count++;
+    }
+  }
+  return count;
+}
+</tt>
+</li>
+        <li>
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+  int i = 0;
+  int count = 0;
+  while( i < numberOfEntries)
+  {
+    if(anEntry.equals(contents[i]))
+    {
+      count++;
+    }
+    i++;
+  }
+  return count;
+}
+</tt>
+</li>
+        <li>
+<tt>
+public int getFrequencyOf(T anEntry)
+{
+  int count = 0;
+  for(int i = numberOfEntries - 1; i > -1; i--)
+  {
+    if(anEntry.equals(contents[i]))
+    {
+      count++;
+    }
+  }
+  return count;
+}
+</tt>
+</li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

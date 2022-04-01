@@ -1,0 +1,133 @@
+{
+    "translations": {
+      "en": {
+        "1": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "3",
+          "choices": ["3", "-8", "-7"]
+        },
+        "2": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "-1",
+          "choices": ["-12", "-8", "-1"]
+        },
+        "3": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "-5",
+          "choices": ["-5", "-10", "-12"]
+        },
+        "4": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "-9",
+          "choices": ["-20", "-9", "-14"]
+        },
+        "5": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "-13",
+          "choices": ["-24", "15", "-13"]
+        },
+        "6": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "-17",
+          "choices": ["-13", "-17", "-28"]
+        },
+        "7": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "-21",
+          "choices": ["-21", "-32", "-26"]
+        },
+        "8": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "5",
+          "choices": ["0", "-6", "5"]
+        },
+        "9": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "1",
+          "choices": ["-10", "1", "0"]
+        },
+        "10": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "7",
+          "choices": ["1", "0", "7"]
+        },
+        "11": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "8",
+          "choices": ["5", "8", "-3"]
+        },
+        "12": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "4",
+          "choices": ["4", "-4", "3"]
+        },
+        "13": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "-13",
+          "choices": ["-24", "-18", "-13"]
+        },
+        "14": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "-6",
+          "choices": ["-17", "-6", "-7"]
+        },
+        "15": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "1",
+          "choices": ["1", "-10", "-4"]
+        },
+        "16": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "1",
+          "choices": ["-1", "0", "1"]
+        },
+        "17": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "3",
+          "choices": ["2", "3", "-3"]
+        },
+        "18": {
+          "type": "select",
+          "description": "",
+          "question": "What is the Value of this index?",
+          "answer": "9",
+          "choices": ["9", "-2", "-1"]
+        }
+        } 
+    }
+  }
+  

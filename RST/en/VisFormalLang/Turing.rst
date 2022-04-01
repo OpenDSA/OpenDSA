@@ -687,7 +687,7 @@ Machines.
      :scripts: AV/SeniorAlgAnal/TuringExt3CON.js
      :align: center
 
-* Non-determinismFormalLanguages2
+* Non-determinism
 
   We can simulate non-deterministic behavior in sequence, doing all
   length 1 computations, then length 2, etc., until we reach a halt

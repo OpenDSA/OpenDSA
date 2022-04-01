@@ -15,27 +15,36 @@
 Combining Turing Machines
 =========================
 
-.. slide:: Combining Turing Machines (1)
+.. slide:: Computation
 
-   | **Lemma:** If
-   |    :math:`(q_1,\ w_1\underline{a_1}u_1) \vdash_M^* (q_2,\ ww_2\underline{a_2}u_2)`
-   | for string $w$ and
-   |    :math:`(q_2,\ w_2\underline{a_2}u_2) \vdash^*_M (q_3,\ w_3\underline{a_3}u_3)`,
-   | then
-   |   :math:`(q_1,\ w_1\underline{a_1}u_1) \vdash^*_M (q_3,\ ww_3\underline{a_3}u_3)`.
+   We can easily demonstate simple computation on unary
+   representation.
 
-   | Insight: Since :math:`(q_2,\ w_2\underline{a_2}u_2) \vdash^*_M (q_3,\ w_3\underline{a_3}u_3)`, 
-     this computation must take place without moving the head left of :math:`w_2`.
-   |    The machine cannot "sense" the left end of the tape.
-   |    And if it had moved left, it would have hung.
+   .. inlineav:: TMPlusoneCON ss
+      :long_name: Turing Machine Replace
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMPlusoneCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMPlusoneCON.js
+      :align: center
+      :output: show
 
 
-.. slide:: Combining Turing Machines (2)
+.. slide:: An Important TM
 
-   | Thus, the head won't move left of :math:`w_2` even if it is
-     **not** at the left end of the tape.
-   | This means that Turing machine computations can be combined into
-     larger machines:
+   .. inlineav:: TManbncnCON ss
+      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TManbncnCON.css
+      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TManbncnCON.js
+      :align: center
+      :output: show
+
+
+.. slide:: .
+
+   .
+
+
+.. slide:: Combining Turing Machines
+
+   | Turing machine computations can be combined into larger machines:
    |    :math:`M_2` prepares string as input to :math:`M_1`.
    |    :math:`M_2` passes control to :math:`M_1` with I/O head at end
         of input. 
@@ -83,16 +92,19 @@ Combining Turing Machines
       :scripts: AV/SeniorAlgAnal/Turing3CON.js
       :align: center
 
-   | Shift a string left.
+
+.. slide:: More Machines (2)
+
+   Shift a string left.
 
    .. inlineav:: TuringShiftCON dgm
       :links: AV/SeniorAlgAnal/TuringShiftCON.css
       :scripts: AV/SeniorAlgAnal/TuringShiftCON.js
       :align: center
 
-   .. Notice this subtle point: The last step is "L#", NOT with # a
-      subscript! Meaning, "move left, then write #". NOT "Move left
-      until you see a #".
+   Notice: The last step is "L#", NOT with # a
+   subscript! Meaning, "move left, then write #". NOT "Move left
+   until you see a #".
 
 
 .. slide:: More Machines (3)
