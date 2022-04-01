@@ -275,7 +275,7 @@ TODO: fix URLS.
    <img src="" alt="LinkedListMoreDetails.pptx">
    </a>
 
-asdf
+
 Checkpoint 4
 ~~~~~~~~~~~~
 

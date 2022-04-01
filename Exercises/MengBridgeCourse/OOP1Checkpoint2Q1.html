@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UML Checkpoint</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="OOP1_CP2_Q1">
+        <p class="question">
+          <img src="./OOP1CheckpointImages/Checkpoint2TreeUML.png" alt="UML Diagram of trees" width="300" height="200">
+          <br>
+          Using the information in the UML diagram above, suppose an Oak
+          prepares for winter like a Tree, but it drops its leaves first.
+          What code should replace ??? in the following code?
+</p>
+<pre class="prettyprint">
+public class Oak extends Tree {
+   ...
+   public void prepareForWinter(){
+      this.dropLeaves();
+      ???
+   }
+}
+</pre>
+
+
+
+        <div class="solution"><tt>super.prepareForWinter();</tt></div>
+        <ul class="choices">
+        <li><tt>Tree.prepareForWinter();</tt></li>
+        <li><tt>super.this();</tt></li>
+        <li><tt>this.absorb(new Water());</tt></li>
+        <li><tt>super(this);</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--To make an Oak prepare for winter "like a tree" after dropping
+        its leaves,  you can simply have Oak invoke Tree's prepareForWinter
+        method.  Alternative A would work if prepareForWinter were static,
+        but that is not indicated on this diagram (and would be really odd
+        from a modeling perspective).-->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

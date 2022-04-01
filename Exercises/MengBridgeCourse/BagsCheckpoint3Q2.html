@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bags Checkpoint 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="BAGS_CP3_Q2">
+        <p class="question">Which of the following would not be an alternate
+          way to write remove() method?</p>
+        <div class="solution">
+<tt>
+public T remove()
+{
+  T result = removeEntry(getIndexOf(null));
+  return result;
+}
+</tt>
+        </div>
+        <ul class="choices">
+        <li>
+<tt>
+public T remove()
+{
+  return removeEntry(numberOfEntries-1);
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public T remove()
+{
+  T result = null;
+  if (numberOfEntries > 0)
+  {
+    result = contents[numberOfEntries -1];
+    contents[numberOfEntries - 1] = null;
+    numberOfEntries--;
+  }
+  return result;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public T remove()
+{
+  T result = removeEntry(numberOfEntries-1);
+  return result;
+}
+</tt>
+        </li>
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

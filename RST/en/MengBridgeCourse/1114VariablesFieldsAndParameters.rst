@@ -10,6 +10,13 @@
 Variables, Fields, and Parameters
 =================================
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/rxqBmi8Xwy4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
 Variables
 ---------
 
@@ -145,6 +152,12 @@ The third line changes the value of ``a`` to 3, but it does not change the
 value of ``b``, so they are no longer equal.  ``a`` now has a value of 3,
 while ``b`` has a value of 5.
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/sepAXU0V9jk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Arithmetic Operators
 ~~~~~~~~~~~~~~~~~~~~
@@ -214,6 +227,13 @@ As an alternative, we can calculate a percentage rather than a fraction:
 
 Now, ``fractionOfHour`` is assigned to 98.  Again the result is rounded down,
 but at least now it’s approximately correct.
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/46Ngr6eczpA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 
 A New Type: Double
@@ -755,12 +775,25 @@ important to note that the return type of the method **must** match the type
 of the field.  Thus, because ``length`` is defined as an ``int``, this getter
 method must also have ``int`` as its return type.
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/D3Arfy77Vok" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Check Your Understanding: Fields, Getters and Setters
 -----------------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz3Summ.html ka
    :long_name: Variables
+
+
+Syntax Practice 5a: Fields and Accessors
+----------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 5a: Fields and Accessors'
+   :workout_id: 1798
 
 
 The Return Keyword
@@ -1048,12 +1081,26 @@ What is the value of f(f(3))?
 Java uses this same principle, though with many different types of data,
 things can get a bit more complex.
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/44aqtrh3SLQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
+
 
 Check your Understanding: Typed Methods and Return Statements
 -------------------------------------------------------------
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week5Quiz4Summ.html ka
    :long_name: Variables
+
+
+Syntax Practice 5b: Mutators and Return Statements
+--------------------------------------------------
+
+.. extrtoolembed:: 'Syntax Practice 5b: Mutators and Return Statements'
+   :workout_id: 1426
 
 
 Using Fields in Testing
@@ -1229,16 +1276,16 @@ Whenever you specify a type in front of a name, you are declaring a new
 name in some way.
 
 
-Syntax Practice 5
------------------
+Programming Practice 5a
+-----------------------
 
-.. extrtoolembed:: 'Syntax Practice 5'
-   :workout_id: 1426
-
-
-Programming Practice 5
-----------------------
-
-.. extrtoolembed:: 'Programming Practice 5'
+.. extrtoolembed:: 'Programming Practice 5a'
    :workout_id: 1427
+
+
+Programming Practice 5b
+-----------------------
+
+.. extrtoolembed:: 'Programming Practice 5b'
+   :workout_id: 1799
 

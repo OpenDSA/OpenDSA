@@ -35,8 +35,8 @@ Upon completion of this module, students will be able to:
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
 [11:31] Demo in Visualizer Video
@@ -70,8 +70,8 @@ TODO: fix URLS.
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
 
 [5:14] Contains Animation Video
