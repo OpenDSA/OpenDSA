@@ -25,8 +25,11 @@ Suggested Reading
 
 Chapters 5 - 6 Bags from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
+Introduction to Stacks
+----------------------
+
 [11:32] Introduction to Stacks Video
-------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -56,11 +59,14 @@ TODO: fix URLS.
 This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
+
+StackIntroVideoMemory Example
+-----------------------------
 
 [6:25] Stack Memory Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,10 +80,10 @@ Checkpoint 1
 
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
 
 Stacks Array-Based Design
@@ -95,11 +101,13 @@ Stacks Array-Based Design
 
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint3.html ka
+   :long_name: Checkpoint 3
 
+Stacks Array Implementation
+---------------------------
 
 [5:57] Array Implementation Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
