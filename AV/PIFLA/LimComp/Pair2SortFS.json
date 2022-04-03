@@ -1,29 +1,12 @@
 {
   "translations": {
     "en": {
-
-      "q0": {
-        "type": "multiple",
-        "description":"This module introduces an important concept for understanding the relationships between problems, called reduction. Reduction allows us to solve one problem in terms of another. Equally importantly, when we wish to understand the difficulty of a problem, reduction allows us to make relative statements about upper and lower bounds on the cost of a problem (as opposed to an algorithm or program).",
-        "question":"Is it true that Reduction allows us to solve one problem in terms of another?",
-        "answer": "Yes",
-        "choices": ["Yes", "No"]
-      },
-
       "q01": {
         "type": "multiple",
         "description":"Here we see an example of a Sorting problem instance in which we have initialized an unsorted array and we obtained the sorted array as a result.",
-        "question":"Based on the example given on the left, if the input the Sorting Problem is 87, 34, 65, 98, 23, which of the following is the correct output?",
+        "question":"Based on the example given on the left, if the input to the Sorting Problem is 87, 34, 65, 98, 23, which of the following is the correct output?",
         "answer": "23, 34, 65, 87, 98",
         "choices": ["98, 87, 65, 34, 23", "87, 34, 65, 98, 23", "23, 34, 65, 87, 98"]
-      },
-
-      "q02": {
-        "type": "multiple",
-        "description":"When you buy or write a program to solve one problem, such as sorting, you might be able to use it to help solve a different problem. This is known in software engineering as software reuse. To illustrate this, let us consider another problem.",
-        "question":"Is it true that Software Reuse means the ability of a program to be able to solve a different problem other than what it is created for? ",
-        "answer": "Yes",
-        "choices": ["Yes", "No"]
       },
 
       "q1": {

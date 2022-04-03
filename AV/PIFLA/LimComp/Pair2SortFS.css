@@ -1,6 +1,5 @@
 #Pair2SortFS {
-  height: 700px;
-  width: 1100px
+  height: 600px;
 }
 
 #Pair2SortFS .jsavoutput.jsavline {
@@ -8,7 +7,7 @@
 }
 
 #Pair2SortFS .jsavhorizontalarray .jsavnode {
-  min-width: 30px !important;
-  max-width: 200px !important;
+  min-width: 27px !important;
+  max-width: 30px !important;
 }
 

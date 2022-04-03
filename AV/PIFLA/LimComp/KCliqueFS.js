@@ -24,7 +24,7 @@ $(document).ready(function(){
   //5
   av.umsg("<b>Clique</b><br><br> A Clique is complete graph i.e. a graph where each node is connected to every other nodes by at least one edge. <br><br> Example of a clique:");
   var  g = av.ds.graph({width: 400, height: 450,
-                        layout: "manual", directed: false,top:60,left:200});
+                        layout: "manual", directed: false,top:60,left:50});
   var x=20;
   var y=0;
 
@@ -50,7 +50,7 @@ $(document).ready(function(){
 
   //7
   av.umsg("<b>Clique in a graph</b><br><br>If in a graph G, there exists a complete subgraph of K nodes, G is said to contain a K-Clique. <br><br><br>For example: The following graph contains a 3-clique.");
-  var  g3 = av.ds.graph({width: 400, height: 450,layout: "manual", directed: false,left:220,top:70});
+  var  g3 = av.ds.graph({width: 400, height: 450,layout: "manual", directed: false,left:70,top:70});
   x=0;
   y=0;
   var n1 = g3.addNode("1", {"left": x+50, "top": y+100});
@@ -216,7 +216,7 @@ $(document).ready(function(){
   av.step();
 
   //28
-  av.umsg("We can consider all problems solvable in exponential time or better as an even bigger class of problems because all problems solvable in polynomial time are solvable in exponential time. Thus, we can view the world of exponential-time-or-better problems in terms of Figure 0.3.2.");
+  av.umsg("We can consider all problems solvable in exponential time or better as an even bigger class of problems because all problems solvable in polynomial time are solvable in exponential time. Thus, we can view the world of exponential-time-or-better problems in terms of this figure.");
   var left = 50;
   var a = av.g.ellipse(left + 200, 130+50, 185, 120);
   var b = av.g.ellipse(left + 200, 145+50, 155, 90);
@@ -229,7 +229,6 @@ $(document).ready(function(){
   var n =av.label("TRAVELING SALESMAN", {left: left + 120, top: 100+50});
   var o =av.label("P problems", {left: left + 165, top: 145+50});
   var k =av.label("SORTING", {left: left + 170, top: 165+50});
-  var l =av.label("Figure 0.3.2: Our knowledge regarding the world of problems requiring exponential time or less. Some of these problems are solvable in polynomial time by a non-deterministic computer. Of these, some are known to be NP-complete, and some are known to be solvable in polynomial time on a regular computer.", {left: 0, top: 165+150});
   av.step();
 
 
@@ -247,7 +246,6 @@ $(document).ready(function(){
   o.hide();
   n.hide();
   k.hide();
-  l.hide();
 
 
   //30
