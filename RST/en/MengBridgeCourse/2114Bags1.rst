@@ -317,8 +317,12 @@ Checkpoint 2
 .. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2.html ka
    :long_name: Checkpoint 2
 
+Demo More bag method implementation
+-----------------------------------
+
+
 [5:28] More Bag Method Implementation Video Demonstration
----------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -429,6 +433,8 @@ Checkpoint 4
    :long_name: Checkpoint 4
 
 
+Array resizing description and coding Demo
+------------------------------------------
 
 [14:47] Array Resizing Video Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
