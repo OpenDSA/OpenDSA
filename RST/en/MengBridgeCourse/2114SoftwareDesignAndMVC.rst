@@ -21,8 +21,11 @@ Upon completion of this module, students will be able to:
 * Apply and demonstrate good design practices
 * Produce the design of a software system using a UML class diagram
 
+Introduction to Software design
+-------------------------------
+
 [9:30] Intro to Software Design Video
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -147,8 +150,8 @@ all relevant operations to help people avoid making mistakes
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
 Identifying classes, fields, and methods
@@ -610,8 +613,8 @@ what needs to be changed to refine your design?
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
 
 Intro to Design Patterns and MVC
