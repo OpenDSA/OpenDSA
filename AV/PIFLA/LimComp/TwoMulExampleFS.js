@@ -397,7 +397,7 @@ $(document).ready(function(){
 
   var poly = "M 10, 450 A 50 50 0 1 1 810 450";
   av.g.path(poly, {"stroke-width": 1, stroke: "gray"});
-  av.label("Figure 0.2.3: Input to SORTING: the values 5, -3, 2, 0, 10. When converted to points, they fall on a circle as shown.", {left: 0, top:480});
+  av.label("Input to SORTING: the values 5, -3, 2, 0, 10. When converted to points, they fall on a circle as shown.", {left: 0, top:480});
   av.step();
 
   //frame 35

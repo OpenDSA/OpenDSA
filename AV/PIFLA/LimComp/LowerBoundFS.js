@@ -74,7 +74,7 @@ $(document).ready(function(){
   var tii = av.label("I'",{left: 170, top: 190});
   var ti1 = av.label("SLN'",{left: 170, top: 245});
   var ti2 = av.label("SLN",{left: 170, top: 315});
-  var caption1 = av.label("Figure 0.2.2: The general process for reduction shown as a 'blackbox' diagram." + "<br><br>Figure 0.2.2 shows a graphical representation of the general reduction process, showing the role of the two problems, and the two transformations.",{left: 320, top: 115});
+  var caption1 = av.label("This figure shows a graphical representation of the general reduction process, showing the role of the two problems, and the two transformations.",{left: 320, top: 130});
   av.step();
   r1.hide();
   r2.hide();
@@ -118,33 +118,33 @@ $(document).ready(function(){
 
   //frame 9
   av.umsg("Transformation step to reduce into pairing problem");
-  var l1= av.g.line(245+50,40 + yoffset,245+50,83 + yoffset);
+  var l1= av.g.line(245+30, 40 + yoffset, 245+30, 83 + yoffset);
   l1.show();
   var a00 =av.label("<b>Transformation (Cost=O(n))</b>",{left: 250+50, top: 45 + yoffset});
-  var r9 = av.g.rect(0+50,85 + yoffset,550,45);
+  var r9 = av.g.rect(0+5,85 + yoffset,500,45);
   r9.show();
   av.step();
 
 
   //frame 10
   av.umsg("The Input array and Position array is given as an input to the Pairing problem. The Position array contains a value <i>k</i> at the k<sup>th</sup> index");
-  pair1 = av.ds.array([0,1,2,3,4,5,6,7],  {left: 5+50 , top: 75 + yoffset});
+  pair1 = av.ds.array([0,1,2,3,4,5,6,7],  {left: 5+10 , top: 75 + yoffset});
   for(var i=0;i<8;i++)
     pair1.css(i,{color:"blue","background-color":"WhiteSmoke"});
   var a1 = av.label("Position <br>array",{left: 20+50, top: 25 + yoffset});
-  pair2 = av.ds.array(input,  {left: 295+50, top: 75 + yoffset});
+  pair2 = av.ds.array(input,  {left: 225+50, top: 75 + yoffset});
   for(var i=0;i<8;i++)
     pair2.css(i,{"background-color":"AntiqueWhite"});
-  var a2 = av.label("Input <br>array",{left: 490+50, top: 25 + yoffset});
+  var a2 = av.label("Input<br>array",{left: 400, top: yoffset-20});
   av.step();
 
 
   //frame 11
   av.umsg("The two arrays are fed into the Pairing problem as input");
   var a3 = av.label("<b>Pairing</b>",{left: 250+50, top: 120 + yoffset});
-  var l2= av.g.line(245+50,130 + yoffset,245+50,160 + yoffset);
+  var l2= av.g.line(245+30,130 + yoffset,245+30,160 + yoffset);
   l2.show();
-  var r2 = av.g.rect(105+50,160 + yoffset,280,110);
+  var r2 = av.g.rect(105+30,160 + yoffset,280,110);
   r2.show();
   av.step();
 
@@ -165,8 +165,8 @@ $(document).ready(function(){
   pairs = new Array([23,2],[42,3],[17,1],[93,7],[88,5],[12,0],[57,4],[90,6]);
   var pairing = new Array();
   for(var i=0;i<8;i++){
-    var x2=i*30+140;
-    var x1=pairs[i][1]*30+140;
+    var x2=i*25+140;
+    var x1=pairs[i][1]*25+140;
     pairing[i]=av.g.line([x1+50,197 + yoffset,x2+50,229 + yoffset]);
     pairing[i].show();
   }
@@ -175,7 +175,7 @@ $(document).ready(function(){
 
   //slide 14
   av.umsg("Pairing problem is solved on the two arrays");
-  var l3= av.g.line(245+50,270 + yoffset,245+50,300 + yoffset);
+  var l3= av.g.line(245+30,270 + yoffset,245+30,300 + yoffset);
   l3.show();
   var a4 = av.label("<b>Pairs generated</b>",{left: 250+50, top:260 + yoffset});
   paired = av.ds.array(pairs,{left: 85+50, top: 285 + yoffset});
@@ -187,9 +187,9 @@ $(document).ready(function(){
   //frame 15
   av.umsg("Reverse transformation: "
           +"In each pair, the second number determines the position of the first in Output Array");
-  var l4= av.g.line(245+50,330 + yoffset,245+50,360 + yoffset);
+  var l4= av.g.line(245+30,330 + yoffset,245+30,360 + yoffset);
   l4.show();
-  var a5 = av.label("<b>Reverse Transformation Cost=O(n)</b>",{left: 250+50,top: 320 + yoffset});
+  var a5 = av.label("<b>Reverse Transformation Cost = O(n)</b>",{left: 250+0,top: 320 + yoffset});
   var r1 = av.g.rect(105+50,360 + yoffset,280,80);
   r1.show();
   oparr= av.ds.array([" "," "," "," "," "," "," "," "],  {left: 120+50, top: 360 + yoffset,indexed:true});

@@ -121,7 +121,7 @@ $(document).ready(function(){
   av.step();
 
   //frame 29
-  av.umsg("Figure 0.3.1 illustrates this problem. Five vertices are shown, with edges and associated costs between each pair of edges. (For simplicity Figure 0.3.1 shows an undirected graph, assuming that the cost is the same in both directions, though this need not be the case.) ");
+  av.umsg("This figure illustrates the problem. Five vertices are shown, with edges and associated costs between each pair of edges. (For simplicity we show an undirected graph, assuming that the cost is the same in both directions, though this need not be the case.)");
   var graph = av.ds.graph({width: 300, height: 300, layout: "manual", directed: false});
   var a = graph.addNode("A", {left: 80, top: 80});
   var b = graph.addNode("B", {left: 220, top: 80});
@@ -139,7 +139,6 @@ $(document).ready(function(){
   graph.addEdge(d, e, {weight: "1"});
   graph.addEdge(c, d, {weight: "1"});
   graph.layout();
-  var l1 = av.label("Figure 0.3.1: An illustration of the TRAVELING SALESMAN problem. Five vertices are shown, with edges between each pair of cities. The problem is to visit all of the cities exactly once, returning to the start city, with the least total cost.", {left: 0, top: 400});
   av.step();
 
   //frame 30
@@ -148,7 +147,6 @@ $(document).ready(function(){
 
   //frame 31
   graph.hide();
-  l1.hide();
   av.umsg("We cannot solve this problem in polynomial time with a guess-and-test non-deterministic computer. The problem is that, given a candidate cycle, while we can quickly check that the answer is indeed a cycle of the appropriate form, and while we can quickly calculate the length of the cycle, we have no easy way of knowing if it is in fact the shortest such cycle. <br><br>However, we can solve a variant of this problem cast in the form of a decision problem. A decision problem is simply one whose answer is either YES or NO. The decision problem form of TRAVELING SALESMAN is as follows.");
   av.step();
 

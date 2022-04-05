@@ -3,7 +3,7 @@
     "en": {
       "q1": {
         "type": "multiple",
-        "description":"That alone doesn't have to mean that there is a <b>useful</b> function that cannot be computed. After all, the universe should not be this perverse, should it? Perhaps the very fact that we can easily specify the function that we want to compute implies that there must be an algorithm to compute it.<br><br>Unfortunately, not so. Now we will prove that the Halting Problem cannot be computed by any computer program. The proof is by contradiction.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Figure 0.13.1: An illustration of assigning functions to bins.",
+        "description":"That alone doesn't have to mean that there is a <b>useful</b> function that cannot be computed. After all, the universe should not be this perverse, should it? Perhaps the very fact that we can easily specify the function that we want to compute implies that there must be an algorithm to compute it.<br><br>Unfortunately, not so. Now we will prove that the Halting Problem cannot be computed by any computer program. The proof is by contradiction.",
         "question":"Halting problem cannot be computed by any computer can be proved by contradiction",
         "answer": "True",
         "choices": ["True", "False"]

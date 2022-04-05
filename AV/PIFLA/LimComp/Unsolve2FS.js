@@ -76,12 +76,12 @@ $(document).ready(function(){
 
 
   //frame 2
-  av.umsg("<b>The Halting Problem Is Unsolvable</b><br><br>There might be intellectual appeal to knowing that there exists <b>some</b> function that cannot be computed by a computer program But does it really matter if no program can compute a \"nonsense\" function such as the one shown in Bin 4 of Figure 0.13.1? <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Figure 0.13.1: An illustration of assigning functions to bins.");
+  av.umsg("<b>The Halting Problem Is Unsolvable</b><br><br>There might be intellectual appeal to knowing that there exists <b>some</b> function that cannot be computed by a computer program But does it really matter if no program can compute a \"nonsense\" function such as the one shown in Bin 4 of the figure?");
   av.step();
 
 
   //3
-  av.umsg("That alone doesn't have to mean that there is a <b>useful</b> function that cannot be computed. After all, the universe should not be this perverse, should it? Perhaps the very fact that we can easily specify the function that we want to compute implies that there must be an algorithm to compute it.<br><br>Unfortunately, not so. Now we will prove that the Halting Problem cannot be computed by any computer program. The proof is by contradiction.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Figure 0.13.1: An illustration of assigning functions to bins.");
+  av.umsg("That alone doesn't have to mean that there is a <b>useful</b> function that cannot be computed. After all, the universe should not be this perverse, should it? Perhaps the very fact that we can easily specify the function that we want to compute implies that there must be an algorithm to compute it.<br><br>Unfortunately, not so. Now we will prove that the Halting Problem cannot be computed by any computer program. The proof is by contradiction.");
   av.step();
 
   //4
