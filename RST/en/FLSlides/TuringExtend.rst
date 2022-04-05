@@ -21,7 +21,7 @@ Turing Machine Extensions
    | We might add features to a TM.
    |    If the features let us do something that we could not do
         before, that disproves Turing's Thesis
-   |    If we can simulate the new feture with the standard model,
+   |    If we can simulate the new feature with the standard model,
         this adds support to (but does not prove) the Turing thesis.
    | As usual, we say that two machine types are equivalent if they
    |    Accept the same languages
@@ -30,11 +30,13 @@ Turing Machine Extensions
 
 .. slide:: Extensions (1)
 
-   | 2-way infinite tape (Our model)
-   |    Just bend infinite tape in the middle to get back to one-way
+   | 2-way infinite tape (Our model) vs 1-way infinite tape
+   |    Just bend infinite tape in the middle to get a one-way
         tape, but with two layers.
         Now, expand the language. The new language is ordered pairs of the
         old language, to encode two levels of tape.
+   |    Some presentations of TMs use one-way infinite tape to clarify
+        why you can chain machines.
 
    .. inlineav:: TuringExt1CON dgm
       :links: AV/SeniorAlgAnal/TuringExt1CON.css
@@ -71,9 +73,10 @@ Turing Machine Extensions
 .. slide:: Extensions (4)
 
    | Non-determinism
-   |    Simulate nondeterministic behavior in sequence, doing all length
-        -1 computations, then length -2, etc., until we reach a halt
-        state for one of the non-deteriministic choices.
+   |    Simulate nondeterministic behavior in sequence, doing all
+        computations of length 1, then computations of length 2, etc.,
+        until we reach a halt state for one of the non-deteriministic
+        choices.
    |    Non-determinism gives us speed, not ability.
 
 
@@ -87,10 +90,9 @@ Turing Machine Extensions
    |      (can double space by simulating two tracks by
           augmenting the alphabet)
    | Linear Bounded Automata [LBA]
-   | Linz shows that, for example,
-     :math:`L = \{a^nb^nc^n \mid n \geq 1\}` can be accepted by an
+   | :math:`L = \{a^nb^nc^n \mid n \geq 1\}` can be accepted by an
      LBA.
-   | So, LBA more powerful than pushdown automata.
+   |    So, LBA more powerful than pushdown automata.
    | But turns out to be less powerful than TM (but this is hard to
      prove)
    

@@ -356,6 +356,7 @@ def initialize_conf_py_options(config, slides):
     options['html_js_files'] = ""
     if config.html_js_files:
       options['html_js_files'] = ", '" + "', '".join(config.html_js_files) + "'"
+    options['chapter_name'] = config.chapter_name
     options['odsa_dir'] = config.odsa_dir
     options['book_dir'] = config.book_dir
     options['code_dir'] = config.code_dir

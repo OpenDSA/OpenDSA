@@ -1,7 +1,7 @@
 {
   "title": "Masters of Engineering Bridge Course",
   "desc": "A 12-week self-paced course that serves as a introduction to Java programming and the basic data structures and algorithms in Computer Science",
-  "theme": "hachibee",
+  "theme": "haiku",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "code_lang": {
@@ -36,10 +36,10 @@
     "show_source": false,
     "show_search": false,
     "show_relations": false,
-    "show_header": false,
-    "show_copyright": false
+    "show_copyright": false,
+    "render_sidebar": false
   },
-  "html_css_files": ["_static/hachibee-supp.css"],
+  "html_css_files": ["_static/haiku-supp.css"],
 
 
   "glob_exer_options": {
