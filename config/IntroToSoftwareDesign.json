@@ -408,7 +408,11 @@
     "Variable Scoping, Input, and Output":{
       "IntroToSoftwareDesign/FileIO": {
         "Syntax Practice: Scoping": {
-          "points": 40
+          "points": 37
+        },
+        "MUSICSurvey": {
+          "points": 3,
+          "threshold": 1
         },
         "Week12Quiz1Summ": {
           "points": 20,
