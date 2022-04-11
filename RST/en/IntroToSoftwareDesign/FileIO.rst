@@ -403,7 +403,7 @@ information about this course so that it can be improved. Your input is
 critical because we want to create the best experience possible for students.
 
 `CS 1114 Survey
-<https://virginiatech.qualtrics.com/jfe/form/SV_7P3N8WXOoEOMgu2>`_
+<https://virginiatech.qualtrics.com/jfe/form/SV_06gbOCFIRfYdrgy>`_
 
 Towards the end of the survey you will be asked if you consent for this
 information to be used in a study about perceptions of student learning
