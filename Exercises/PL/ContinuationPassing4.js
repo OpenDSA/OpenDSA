@@ -597,7 +597,7 @@ function (ns) {
 	["[3,3,3,3,3]" , "5",
 	 "{rec [3,3,3,3,3]}{rec [3,3,3,3]}{rec [3,3,3]}{rec [3,3]}{rec [3]}{base}{k(.): hd=3 x=0}{k(.): hd=3 x=1}{k(.): hd=3 x=2}{k(.): hd=3 x=3}{k(.): hd=3 x=4}"]
       ],
-	"if (fp.isEq(fp.hd(list),3)) { return k(fp.add(1,x)); } else { return x; };",      
+	"if (fp.isEq(fp.hd(list),3)) { return k(fp.add(1,x)); } else { return k(x); };",      
     ],
 
     [ "The following function takes in a (flat) list of integers. After " +

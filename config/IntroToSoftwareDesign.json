@@ -371,6 +371,64 @@
           "threshold": 11
         }
       }
+    },
+
+    "Multi-dimensional Arrays":{
+      "IntroToSoftwareDesign/MultiDimensionalArrays": {
+        "Syntax Practice: 2D Array Basics": {
+          "points": 12
+        },
+        "Syntax Practice: Looping Over 2D Arrays": {
+          "points": 6
+        },
+        "Syntax Practice: 3D Arrays": {
+          "points": 3
+        },
+        "Syntax Practice: Modulus": {
+          "points": 9
+        },
+        "Programming Practice: Multi-dimensional Arrays": {
+          "points": 20
+        },
+        "Programming Practice: Mod": {
+          "points": 20
+        },
+        "Week11Quiz1Summ": {
+          "points": 10
+        },
+        "Week11Quiz2Summ": {
+          "points": 10
+        },
+        "Week11Quiz3Summ": {
+          "points": 10
+        }
+      }
+    },
+
+    "Variable Scoping, Input, and Output":{
+      "IntroToSoftwareDesign/FileIO": {
+        "Syntax Practice: Scoping": {
+          "points": 37
+        },
+        "MUSICSurvey": {
+          "points": 3,
+          "threshold": 1
+        },
+        "Week12Quiz1Summ": {
+          "points": 20,
+          "threshold": 5
+        },
+        "Week12Quiz2Summ": {
+          "points": 16,
+          "threshold": 4
+        },
+        "Week12Quiz3Summ": {
+          "points": 12
+        },
+        "Week12Quiz4Summ": {
+          "points": 12
+        }
+      }
     }
   }
 }

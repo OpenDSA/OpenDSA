@@ -7,8 +7,8 @@
    :author: Molly
 
 
-Input, Output and Variable Scoping
-==================================
+Variable Scoping, Input, and Output 
+===================================
 
 Variable Scoping
 ----------------
@@ -370,6 +370,15 @@ is mandatory to alway include ``this.`` as a prefix when referring to the
 field name, because otherwise, all uses of the name would refer to the
 parameter only.
 
+Summarizing Scope Concepts
+--------------------------
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/2nTjUAeD5WE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 Check Your Understanding: Scope
 -------------------------------
@@ -384,6 +393,29 @@ Syntax Practice: Scoping
 
 .. extrtoolembed:: 'Syntax Practice: Scoping'
    :workout_id: 1572
+
+
+Your Opinions on Motivation and Engagement 
+------------------------------------------
+
+Complete the following survey. The purpose of this task is to gather
+information about this course so that it can be improved. Your input is
+critical because we want to create the best experience possible for students.
+
+`CS 1114 Survey
+<https://virginiatech.qualtrics.com/jfe/form/SV_06gbOCFIRfYdrgy>`_
+
+Towards the end of the survey you will be asked if you consent for this
+information to be used in a study about perceptions of student learning
+and engagement.  There is no additional work on your part if you provide
+consent for your responses to be used in the study.  Completing the survey
+should take about 15 minutes.
+
+Please answer below and your participation in the survey will be verified
+for credit.
+
+.. avembed:: Exercises/IntroToSoftwareDesign/MUSICSurvey.html ka
+   :long_name: Survey Completed
 
 
 Java Input and Output
@@ -794,6 +826,12 @@ Web if you know the URL:
    }
    inWebFile.close();
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/N7JAkNSTfAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 A Complete Input Example
 ------------------------
@@ -1011,13 +1049,10 @@ Check Your Understanding: Testing
 
 .. raw:: html
 
-   <footer>
-     <p>Content adapted from:</p>
-     <p><a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
-     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).</p>
-     <p><a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
-     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
-     <p>
-     Adapted by Stephen H. Edwards and Molly Domino.
-     </p>
-   </footer>
+   <footer style="border-top: 1px solid #777;"><div class="footer">
+     Selected content adapted from:<br/>
+     <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+     <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+   </div></footer>
