@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-    :author: Elizabeth Mulvaney and Cliff Shaffer
+    :author: Kyle Papili, Elizabeth Mulvaney and Cliff Shaffer
 
 Proof of Stake
 ==============
@@ -18,10 +18,12 @@ parties come to agreement that this did happen.
 For more information, see
 :ref:`consensus <consensus> <Consensus>`.
 
-Note: A consensus algorithm differs from a consensus mechanism in that an 
-algorithm is an isolated series of instructions that can be executed on a 
-single machine, whereas a mechanism involves multiple nodes in a network 
-operating in a coordinated manner as to accomplish a unified goal.
+Note: A consensus algorithm differs from a consensus mechanism in that a
+consensus algorithm is the series of instructions that are executed on a 
+given node in the network, whereas the mechanism refers to the
+collective action of multiple nodes in a network operating in a
+coordinated manner as to accomplish the goal of reaching consensus on
+what blocks to add to the blockchain.
 
 Block Structure Review
 ----------------------
@@ -43,37 +45,49 @@ For more information, see
 
 Why do we need proof of anything?
 ------------------------------
-As you will soon learn, the previously discussed proof of work mechanism,
-popularized by the Bitcoin protocol, is not the only means of achieving consensus.
-In fact, the Ethereum network is currently amidst a transition to the proof of stake
-mechanism. But why do cryptocurrencies require a consensus algorithm in the first place
-and why must there be a 'burden of proof'?
+
+Previously we presented the Proof of Work mechanism,
+popularized by the Bitcoin protocol.
+This is not the only means of achieving consensus in a distributed
+ledger.
+The Ethereum network is currently in transition to a version of the
+Proof of Stake mechanism.
+But why do cryptocurrencies require a consensus algorithm in the first
+place and why must there be a 'burden of proof'?
 
 The short answer: Economic civil resistance.
-If you have a network consisting of hundreds, thousands, or millions of participating
-nodes, it is necessary to deploy a means through which the network can agree on the order
-in which transactions are processed. At the highest level, it is necessary to have some form
-of voting mechanism that decides who can participate in deciding the order of transactions. 
-How this voting mechanism works is where things get complicated for many crypto protocols.
+If you have a network consisting of hundreds, thousands, or millions
+of participating nodes, it is necessary to deploy a means through
+which the network can agree on the order in which transactions are
+processed.
+At the highest level, it is necessary to have some form of voting
+mechanism that decides who can participate in deciding the order of
+transactions.
+How this voting mechanism works is where things get complicated for
+many crypto protocols.
 
-You cannot simply provide "each person" gets one vote because you need some form of authority
-or mechanism that determines what a "person" is. Otherwise, any individual can spin up hundreds
-of billions of virtual nodes that can act as "people" in the network thus garnering the majority
-of votes and controlling the network.
+One requirement to such a mechanism is that there needs to be some
+process for determining what entities get to vote.
+Otherwise, any individual can spin up hundreds of billions of virtual
+nodes that can act as voters in the network, thus garnering the
+majority of votes and controlling the network.
 
-Proof of ___ mechanisms issue network control authority proportional to each node's control of a designated
-economic resource. In the case of Bitcoin's proof-of-work mechanism, that economic resource is one's ability to compute a valid
-solution to complicated hashing algorithms. Proof of stake, rather than utilizing algorithmic complexity
-and computational resources as a measurement of voting authority, utilizes an underlying token 
-or asset to denote control in the network.
+Proof-based consensus mechanisms issue network control authority
+proportional to each node's control of a designated economic resource.
+In the case of Bitcoin's proof-of-work mechanism, that economic
+resource is one's ability to compute a valid solution to complicated
+hashing algorithms.
+While there is some element of luck to Bitcoin's proof-of-work
+protocol (essentially, miners keep guessing until they are lucky
+enough to guess correctly), it really is a measure of computing power
+as an economic resource (to make as many guesses as possible in a
+given period of time).
+
+Proof of stake, rather than using algorithmic complexity and
+computational resources as a measurement of voting authority, uses
+an underlying token or asset to denote control in the network.
 
 
-.. inlineav:: ProofOfStake ss
-   :long_name: ProofOfStake Slideshow
-   :links: AV/Blockchain/ProofOfStake.css
-   :scripts: AV/Blockchain/ProofOfStake.js
-   :output: show
-     
 What is Proof of Stake?
 -----------------------
 
@@ -95,6 +109,7 @@ Other cryptocurrencies that uses proof of stake as their consensus
 algorithm include Peercoin, Tezos (XZT), Binance coin (BNB), NEO,
 PIVX, Neblio (NEBL), Cardano (ADA), and Stratis (STRAX).
 
+
 How does it work?
 ~~~~~~~~~~~~~~~~~
 
@@ -105,7 +120,7 @@ The number of committee members is decided by how many transactions
 need to be approved at the time.
 For each transaction, there needs to be 32 validators.
 In addtion, there must also be one more validator to propose
-a new block to the blockchain. [WHY? What is the process?]
+a new block to the blockchain.
 The committee is formed, and then must propose the next block
 within a set period of time.
 
@@ -113,9 +128,9 @@ To form a new committee, members are chosen at random from a pool
 of users.
 Individuals who have more coin invested in the cryptocurrency,
 and for a longer period of time, 
-have a higher chance of being chosen for the validation committee. [Is
-this correct? Do different users put up different amounts to bid for
-being on the committee? Or is it a fixed stake to be in the lottery?
+have a higher chance of being chosen for the validation committee.
+[Is this correct? Do different users put up different amounts to bid
+for being on the committee? Or is it a fixed stake to be in the lottery?
 The next sentence seems to indicate that it is fixed.]
 In Ethereum 2.0, users are required to stake 32 ETH to be entered for
 a chance to be a validator in the next committee.
@@ -168,6 +183,12 @@ block and the transactions and the committees. I thought that a
 committee validated a block of transactions. Then this idea of 32
 committees and 34 slots/bundles came up. What is the relationship?]
 
+.. inlineav:: ProofOfStake ss
+   :long_name: ProofOfStake Slideshow
+   :links: AV/Blockchain/ProofOfStake.css
+   :scripts: AV/Blockchain/ProofOfStake.js
+   :output: show
+     
 .. avembed:: Exercises/Blockchain/ProofOfStakeValidatorsSumm.html ka
     :long_name: Proof of Stake Validator
 
