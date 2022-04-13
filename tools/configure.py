@@ -365,7 +365,7 @@ def initialize_conf_py_options(config, slides):
     options['code_lang'] = json.dumps(config.code_lang)
     options['text_lang'] = json.dumps(config.lang)
     if config.sphinx_debug:
-        options['sphinx_options'] = '-E -P'
+        options['sphinx_options'] = '-E -P -vv'
     else:
         options['sphinx_options'] = ''
 
