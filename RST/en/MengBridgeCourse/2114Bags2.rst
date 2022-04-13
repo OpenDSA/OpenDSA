@@ -198,20 +198,8 @@ By this point, you should have achieved each of these objectives. If you have
 questions or concerns about your ability to accomplish each of these, please
 reach out to the instructor of the course.
 
-Unavailable
------------
+Programming Practice: LinkedBags
+--------------------------------
 
-.. extrtoolembed:: 'Unavailable'
-   :workout_id: 1727
-
-
-
-NOTE:
-
-Above is a temporary workout I put in place that would contain the following exercises
-TODO.  Remove this note and create the actual workout when confirmed.
-
-I'm not entirely sure we're going to have a set of linkedBag exercises, so this
-will be where they go if we do end up having them
-
-When fixed this will be called: "Coding Practice: LinkedBags"
+.. extrtoolembed:: 'Programming Practice: LinkedBags'
+   :workout_id: 1911

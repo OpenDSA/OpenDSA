@@ -37,8 +37,8 @@ TODO: fix URLS.
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/BinarySearchCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 Programming Searching
 ---------------------
@@ -55,10 +55,3 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="ProgrammingSearching.ppt">
    </a>
-
-
-Checkpoint 2
-------------
-
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable

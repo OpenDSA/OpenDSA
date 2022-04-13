@@ -166,3 +166,10 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="This PPT contains some tips for testing Stacks">
    </a>
+
+
+Checkpoint 4
+------------
+
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint4.html ka
+   :long_name: Checkpoint 4

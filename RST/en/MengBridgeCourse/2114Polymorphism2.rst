@@ -67,6 +67,12 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
+Programming Practice: Polymorphism 1
+------------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Polymorphism 1'
+   :workout_id: 1907
+
 Polymorphism Computer Superclass
 --------------------------------
 
@@ -123,3 +129,10 @@ Checkpoint 3
 
 .. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint3.html ka
    :long_name: Checkpoint 3
+
+
+Programming Practice: Polymorphism 2
+------------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Polymorphism 2'
+   :workout_id: 1908

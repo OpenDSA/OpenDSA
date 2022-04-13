@@ -43,9 +43,11 @@ TODO: fix URLS.
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
+Introduction to Sorting Video
+-----------------------------
 
 [12:51] Introduction to Sorting Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,9 +65,11 @@ TODO: fix URLS.
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
+Selection Sort Video
+--------------------
 
 [12:36] Selection Sort Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,8 +87,8 @@ TODO: fix URLS.
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint3.html ka
+   :long_name: Checkpoint 3
 
 
 Insertion Sort
@@ -107,8 +111,11 @@ TODO: fix URLS.
 Checkpoint 4
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint4.html ka
+   :long_name: Checkpoint 4
+
+Insertion Sort Array
+--------------------
 
 [16:50] Insertion Sort Linked Chain Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,11 +134,14 @@ TODO: fix URLS.
 Checkpoint 5
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint5.html ka
+   :long_name: Checkpoint 5
+
+Comparators
+-----------
 
 [11:22] Comparators Video
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
