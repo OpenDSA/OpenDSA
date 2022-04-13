@@ -127,8 +127,8 @@ using the Project Menu and selecting "Download Assignment..."
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
 [7:16] Exception Handling with try, catch, and finally video
@@ -549,5 +549,5 @@ TODO: fix URLS.
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint2.html ka
+   :long_name: Checkpoint 2
