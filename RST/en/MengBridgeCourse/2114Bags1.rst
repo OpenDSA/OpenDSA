@@ -212,6 +212,14 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
+
+Programming Practice: ArrayBags
+-------------------------------
+
+.. extrtoolembed:: 'Programming Practice: ArrayBags'
+   :workout_id: 1910
+
+
 Array Implementation of Bags
 ----------------------------
 
@@ -470,23 +478,8 @@ Tradeoffs of using an array implementation for a bag
      - Removing a specified entry requires time to locate the entry
 
 
-Unavailable
------------
+Programming Practice: The Bag Interface
+---------------------------------------
 
-.. extrtoolembed:: 'Unavailable'
-   :workout_id: 1727
-
-
-
-NOTE:
-
-Above is a temporary workout I put in place that would contain the following exercises
-TODO.  Remove this note and create the actual workout when confirmed.
-
-* https://codeworkout.cs.vt.edu/gym/exercises/670/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/790/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/791/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/789/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/816/practice
-
-When fixed this will be called: "Coding Practice: ArrayBags"
+.. extrtoolembed:: 'Programming Practice: The Bag Interface'
+   :workout_id: 1909

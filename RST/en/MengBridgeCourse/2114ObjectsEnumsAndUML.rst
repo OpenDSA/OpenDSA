@@ -58,8 +58,16 @@ TODO: fix URLS.
    </a>
 
 
-Checkpoint 2
+Checkpoint 1
 ------------
 
 .. avembed:: Exercises/MengBridgeCourse/OOP1Checkpoint2.html ka
    :long_name: UML Checkpoint
+
+
+
+Programming Practice: Object Oriented Programming
+-------------------------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Object Oriented Programming'
+   :workout_id: 1906
