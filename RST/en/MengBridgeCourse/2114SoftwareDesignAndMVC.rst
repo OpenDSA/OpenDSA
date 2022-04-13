@@ -609,7 +609,6 @@ Review your design with a critical eye, ask yourself,
 "can my design support this concept, process, or action"? If not,
 what needs to be changed to refine your design?
 
-
 Checkpoint 2
 ~~~~~~~~~~~~
 
