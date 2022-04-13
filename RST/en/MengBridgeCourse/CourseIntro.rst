@@ -65,10 +65,30 @@ complete the course if there is an open-ended deadline. We want you to complete
 the course successfully, and have a time window for completion will help you to
 achieve this success.
 
+Learning Outcomes
+-----------------
+The goal of this course is to prepare students to have the programming background 
+necessary to be successful in the Computer Science Masters of Engineering program. 
+When students complete this course, the should be able to:
+
+* Demonstrate proficiency in the purpose and behavior of basic programming constructs.
+* Design programs to solve computational problems using object-oriented programming processes.
+* Design data structures such as linked lists, stacks, and queues.
+* Employ test-driven development to design and create an effective testing process.
+* Employ an Integrated Development Environment to iteratively develop and test medium-sized programs including interactive applications.
+* Develop reusable, type-safe software components.
+* Solve problems using recursive algorithms such as for implementing a binary tree.
+* Apply basic algorithm analysis to simple algorithms.
+* Work in a small team to analyze, design, and develop a team project.
 
 Course Support
 ---------------
+This course is offered asynchronously, and has been designed to guide you step-by-step 
+through the material. But, sometimes it helps to have someone to ask questions to. You 
+have two avenues for getting assistance in the course. 
 
+* The course has a teaching assistant assigned. This person can help you figure out technical issues, as well as answer questions about the material.
+* You can ask questions using the discussion tool in Canvas. This provides a venue that you and your fellow students can use to collaborate, as well.
 
 Weekly Schedule
 ---------------
