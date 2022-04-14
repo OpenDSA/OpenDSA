@@ -3,6 +3,7 @@
   "desc": "A 12-week self-paced course that serves as a introduction to Java programming and the basic data structures and algorithms in Computer Science",
   "theme": "haiku",
   "build_dir": "Books",
+  "sphinx_debug": false,
   "code_dir": "SourceCode/",
   "code_lang": {
     "Java": {
@@ -470,7 +471,7 @@
        }
      },
 
-    "Unit 7":{
+    "Testing and Exceptions":{
       "MengBridgeCourse/2114JUNIT":{
         "Checkpoint 1": {
           "points": 30
@@ -547,7 +548,7 @@
       }
     },
 
-    "Unit 8": {
+    "Linked Lists, Bags, Stacks, and Efficiency": {
       "MengBridgeCourse/2114LinkedChainPointers": {
         "Checkpoint 1": {
           "points": 50
@@ -604,7 +605,7 @@
       }
     },
 
-    "Unit 9": {
+    "Recursion and Software Design": {
       "MengBridgeCourse/2114Recursion": {
         "Checkpoint 1": {
           "points": 10
@@ -658,7 +659,7 @@
       }
     },
 
-    "Unit 10": {
+    "Queues and Generics": {
       "MengBridgeCourse/2114Generics2": {
         "Checkpoint 1": {
           "points": 60
@@ -707,7 +708,7 @@
       }
     },
 
-    "Unit 11": {
+    "Lists and Iterators": {
       "MengBridgeCourse/2114Lists": {
         "Checkpoint 1": {
           "points": 13
@@ -752,7 +753,7 @@
       }
     },
 
-    "Unit 12": {
+    "Comparing, Sorting and Binary Search": {
       "MengBridgeCourse/2114ComparingAndSorting": {
         "Checkpoint 1": {
           "points": 13
