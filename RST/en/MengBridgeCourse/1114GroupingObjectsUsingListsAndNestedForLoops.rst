@@ -645,3 +645,14 @@ Programming Practice 8b
 
 .. extrtoolembed:: 'Programming Practice 8b'
    :workout_id: 1858
+
+
+.. raw:: html
+
+   <footer style="border-top: 1px solid #777;"><div class="footer">
+     Selected content adapted from:<br/>
+     <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+     <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+   </div></footer>

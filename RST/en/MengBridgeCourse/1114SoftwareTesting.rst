@@ -644,7 +644,7 @@ We can write our first test in the ``FlowerPickerTest`` class like this:
    }
 
 To set up the conditions for the test, we can create an island, create
-the Jeroo, and place it on the island in the spot we have picked. We can
+the jeroo, and place it on the island in the spot we have picked. We can
 place the Jeroo at (1, 2) just in front of the flower closest to the top
 left corner (note that these conditions, and the associated method
 *may be different from your lab assignment, if you have one*, and are
@@ -1403,3 +1403,14 @@ Module Review
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week4ReadingQuizSumm.html ka
    :long_name: Module Review
+
+
+.. raw:: html
+
+   <footer style="border-top: 1px solid #777;"><div class="footer">
+     Selected content adapted from:<br/>
+     <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+     <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+   </div></footer>
