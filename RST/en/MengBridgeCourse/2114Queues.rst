@@ -87,6 +87,12 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
+Programming Practice: Queues 1
+------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Queues 1'
+   :workout_id: 1920
+
 Linked Queues Intro and Enqueue
 -------------------------------
 
@@ -434,3 +440,9 @@ Empty Queue Exception
             super(message);
         } // end constructor
     } // end EmptyQueueException
+
+Programming Practice: Queues 2
+------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Queues 2'
+   :workout_id: 1921

@@ -33,6 +33,7 @@ Introduction to Software design
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_4gfpbvoi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_1zy32v9u" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
+
 TODO: fix URLS.
 
 .. raw:: html
@@ -283,6 +284,7 @@ software solution.**
      - No
      -
 
+
 Good design tends to adopt the approach of setting everything as private except
 those fields and methods you explicitly wish outside classes to interact with.
 
@@ -431,9 +433,6 @@ Review the listing of nouns and noun phrases and concepts that could be
 extracted from the Case Study - e-Commerce solution (online storefront)
 for ABC Ltd .
 
-
-~~~~~~~~~~~~~~~~~~~~~~
-
 .. list-table:: Nouns and Noun Phrases
    :header-rows: 0
 
@@ -461,6 +460,7 @@ for ABC Ltd .
      - Billing address
      - Payment details
      - Employee users
+
 
 .. list-table:: Concepts
    :header-rows: 0
@@ -511,6 +511,7 @@ Considering the above we may identify the following as an initial list of possib
      -
      -
      -
+
 
 Note: There may be other options, for example:
 
@@ -594,6 +595,7 @@ review.
      - Payments, Payment system, Payment Options
      - Order fulfillment
 
+
 .. list-table:: Verb and Verb Phrases
    :header-rows: 0
 
@@ -604,6 +606,7 @@ review.
      - Place (an order)
      - Submit (reviews)
      - Support (employees)
+
 
 Review your design with a critical eye, ask yourself,
 "can my design support this concept, process, or action"? If not,
@@ -812,8 +815,7 @@ system
 
 * requires a GUI (View)
 * has data and business logic to manage (Model), and
-* has processing that needs to be handled, some of which would be in
-response to user interactions (Controller)
+* has processing that needs to be handled, some of which would be in response to user interactions (Controller)
 
 The pattern of our application's needs match what is offered by the
 MVC Design Pattern, it would therefore be a good fit for this design.

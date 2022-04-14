@@ -87,6 +87,12 @@ TODO: fix URLS.
    <img src="" alt="RecursionExamples.pptx">
    </a>
 
+Programming Practice: Recursion 1
+---------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Recursion 1'
+   :workout_id: 1916
+
 Recursion on Arrays
 -------------------
 
@@ -162,6 +168,14 @@ Checkpoint 3
    :long_name: Checkpoint 3
 
 
+
+Programming Practice: Recursion 2
+---------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Recursion 2'
+   :workout_id: 1917
+
+
 Recursion on Linked Chain
 -------------------------
 
@@ -229,3 +243,55 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="RecursionWrapUp.pptx">
    </a>
+
+
+Programming Practice: Recursion 3
+---------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Recursion 3'
+   :workout_id: 1918
+
+
+
+
+
+Forward Flow Tracing Exercises
+------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummFwdFlow.html ka
+   :long_name: Recursion Tracing Exercises Set 1
+
+
+Backward Flow Tracing Exercises
+-------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummbckwrdFlow.html ka
+   :long_name: Recursion Tracing Exercises Set 2
+
+
+Find Error Tracing Exercises
+----------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummFuncErr.html ka
+   :long_name: Recursion Tracing Exercises Set 3
+
+
+Two Recursive Calls Tracing Exercises
+-------------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummTwoRC.html ka
+   :long_name: Recursion Tracing Exercises Set 4
+
+
+How Many Times Tracing Exercises
+--------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummHowmany.html ka
+   :long_name: Recursion Tracing Exercises Set 5
+
+
+Harder Tracing Exercises
+------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummHard.html ka
+   :long_name: Recursion Tracing Exercises Set 6

@@ -173,3 +173,10 @@ Checkpoint 4
 
 .. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint4.html ka
    :long_name: Checkpoint 4
+
+
+Programming Practice: LinkedStacks
+----------------------------------
+
+.. extrtoolembed:: 'Programming Practice: LinkedStacks'
+   :workout_id: 1912

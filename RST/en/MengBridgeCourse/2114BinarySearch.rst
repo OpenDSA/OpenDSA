@@ -34,11 +34,13 @@ TODO: fix URLS.
    <img src="" alt="IntroToSearching.ppt">
    </a>
 
+
 Checkpoint 1
 ------------
 
 .. avembed:: Exercises/MengBridgeCourse/BinarySearchCheckpoint1.html ka
    :long_name: Checkpoint 1
+
 
 Programming Searching
 ---------------------
@@ -55,3 +57,10 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="ProgrammingSearching.ppt">
    </a>
+
+
+Programming Practice: Binary Search
+-----------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Binary Search'
+   :workout_id: 1927

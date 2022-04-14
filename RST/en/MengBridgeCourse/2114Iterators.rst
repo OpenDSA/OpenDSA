@@ -310,3 +310,11 @@ structure or the iterator in order to avoid unintended side effects.
             newCurr = false;
         }
     }
+
+
+
+Programming Practice: Iterators
+-------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Iterators'
+   :workout_id: 1923

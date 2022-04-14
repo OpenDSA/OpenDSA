@@ -137,6 +137,13 @@ Checkpoint 5
 .. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint5.html ka
    :long_name: Checkpoint 5
 
+
+Programming Practice: Insertion Sort
+------------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Insertion Sort'
+   :workout_id: 1925
+
 Comparators
 -----------
 
@@ -167,3 +174,10 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="ComparingExample.zip">
    </a>
+
+
+Programming Practice: Comparators
+---------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Comparators'
+   :workout_id: 1926

@@ -263,6 +263,13 @@ Checkpoint 3
    :long_name: Checkpoint 3
 
 
+
+Programming Practice: Lists 1
+-----------------------------
+
+.. extrtoolembed:: 'Programming Practice: Lists 1'
+   :workout_id: 1922
+
 Considering and Array Implementation of a List
 ----------------------------------------------
 
@@ -314,3 +321,9 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="ArrayListImplementation.pptx">
    </a>
+
+Programming Practice: Lists 2
+-----------------------------
+
+.. extrtoolembed:: 'Programming Practice: Lists 2'
+   :workout_id: 1923

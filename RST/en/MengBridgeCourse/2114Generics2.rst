@@ -142,3 +142,10 @@ Related Resources
 
 * `https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
 * `https://docs.oracle.com/javase/tutorial/java/generics/bounded.html <https://docs.oracle.com/javase/tutorial/java/generics/bounded.html>`_
+
+
+Programming Practice: Generics 1
+--------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Generics 1'
+   :workout_id: 1919
