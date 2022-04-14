@@ -77,8 +77,7 @@ of functional requirements could be:
 
 The system shall allow users to ________
 
-* Search for a product based on specific search criteria
-(for example by name, description, or product identifier)
+* Search for a product based on specific search criteria (for example by name, description, or product identifier)
 * View product details
 * Add a product to the shopping cart
 * Remove a product from the shopping cart
@@ -124,11 +123,8 @@ The system shall ________
 * Function correctly on all browsers and browser versions released after 2018
 * Utilize Responsive Design
 * Complete (and provide results for) user-initiated searches within 2 seconds
-* Be capable of handling 10 million users per hour with no degradation in
-performance/user response times
-* Only accept account passwords that are a minimum of eight (8) characters in
-length and contain - at least one uppercase letter, one special characters,
-and one digit
+* Be capable of handling 10 million users per hour with no degradation in performance/user response times
+* Only accept account passwords that are a minimum of eight (8) characters in length and contain - at least one uppercase letter, one special characters, and one digit
 
 
 With respect to a **Library management system** some examples of non-functional
@@ -136,15 +132,11 @@ requirements could be:
 
 The system shall ________
 
-* Complete (and confirm the success or failure of) user-initiated requests
-within a maximum response time of 4 seconds
-* Support the tracking and management of a minimum of 100,000 library
-books and related library media
+* Complete (and confirm the success or failure of) user-initiated requests within a maximum response time of 4 seconds
+* Support the tracking and management of a minimum of 100,000 library books and related library media
 * Support up to 5000 patron requests per minute
-* Be easy to use by people with basic computer literacy skills (Browsers,
-Web Browsing, Word Processing, Search Engines, etc )
-* Include validation checks, user confirmation prompts, and other prompts for
-all relevant operations to help people avoid making mistakes
+* Be easy to use by people with basic computer literacy skills (Browsers, Web Browsing, Word Processing, Search Engines, etc )
+* Include validation checks, user confirmation prompts, and other prompts for all relevant operations to help people avoid making mistakes
 
 
 
@@ -162,7 +154,7 @@ The first steps in crafting the design of a software product with a
 UML class diagram is to review the documented requirements with the goal of
 identifying the system's classes, fields, and methods. **The first step is to
 review the software requirements and note all of the nouns, verbs, processes,
-and concepts.""
+and concepts.**
 
 Recall that a class is a blueprint or specification for an object.
 They are usually entities of interest with attributes
@@ -192,11 +184,9 @@ Once you have noted all of the nouns you next need to determine which are
 classes and which are fields.  The following rules will help you to distinguish
 classes from fields.
 
-* Nouns and noun phrases which refer to an entity (a thing) with more than one
-attribute of interest are most likely classes
+* Nouns and noun phrases which refer to an entity (a thing) with more than one attribute of interest are most likely classes
 
-* Nouns and noun phrases which refer to a single attribute or data item are
-most likely fields of some class
+* Nouns and noun phrases which refer to a single attribute or data item are most likely fields of some class
 
 
 Data Structures
@@ -306,11 +296,8 @@ Design Activity: Case Study e-Commerce solution (online storefront) for ABC Ltd
 
 Review the Case Study below, then
 
-* Consider the various processes and requirements that the software solution
-must support (examples could include, customer registration, checkout,
-submitting a payment, sending an invoice, fulfilling an order, shipping)
-* Note the nouns and noun phrases, then identify which are classes and which
-fields
+* Consider the various processes and requirements that the software solution must support (examples could include, customer registration, checkout, submitting a payment, sending an invoice, fulfilling an order, shipping)
+* Note the nouns and noun phrases, then identify which are classes and which fields
 * Note the verbs and verb phrases, then identify possible methods for each class
 
 Once you have completed the activity you may click on the "next" button to
@@ -335,8 +322,7 @@ and toys.
 Potential customers must be able to visit the online storefront to:
 
 * Search or browse ABC’s product catalog
-* View product details (including description, price, customer ratings and
-reviews, etc.)
+* View product details (including description, price, customer ratings and reviews, etc.)
 * Manage their shopping cart (add products to cart, remove products, etc.)
 
 In addition, registered customers must be able to login, manage their user
@@ -404,7 +390,7 @@ TODO: fix URLS.
 
 Much of what you need to know for relationships, hierarchies and reuse has
 been covered within the
-`Java OOP (Object Oriented Programming) Module <JJava OOP (Object Oriented Programming) Module>`_ .
+`Java OOP (Object Oriented Programming) Module <Java OOP (Object Oriented Programming) Module>`_ .
 Additionally you may download the UML Diagram key via this link
 
 TODO: fix URLS.
@@ -869,12 +855,9 @@ depicted in the images below.
 Consider the software requirements of the software needed to support the
 Vending Machine, then
 
-* Consider the various processes that the software solution must support and
-note the main processes and some of the main requirements
-* Review your notes, identify the nouns and noun phrases, then consider
-which are classes and which fields
-* Review your notes, identify the verbs and verb phrases, then identify
-possible methods for each class
+* Consider the various processes that the software solution must support and note the main processes and some of the main requirements
+* Review your notes, identify the nouns and noun phrases, then consider which are classes and which fields
+* Review your notes, identify the verbs and verb phrases, then identify possible methods for each class
 
 Once you have completed the activity you may click on the "next" button to
 proceed to the next page in the module.

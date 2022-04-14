@@ -231,7 +231,7 @@ function.  In object-oriented languages, a "unit" is often a single
 class, although sometimes it can be a single method.  Unless otherwise
 specified, from here on out we will interpret "unit" to mean a single
 class in an object-oriented language, **unit under test**
-(**UUT**) to mean the classs we are currently testing or writing
+(**UUT**) to mean the class we are currently testing or writing
 tests for.
 
 Unit testing is usually carried out by the programmer or
@@ -310,7 +310,7 @@ the correct behavior in this case*?
 
 Sometimes, you will find the answer in the assignment description
 (or program specification).  Other times, the desired behavior may be
-up to you, as an internal design choice.  Occasionally, the corrrect
+up to you, as an internal design choice.  Occasionally, the correct
 behavior may be ambiguous, and you will have to ask an instructor or
 TA for clarification.  The net result is that you will end up with a
 better understanding of what is truly required.  In addition, if you
@@ -474,7 +474,7 @@ There are three principal ideas behind TDD:
   one step at a time, writing a few tests and then writing the code
   that implements the corresponding behavior.
 
-  Using **case anaylsis**--that is, breaking a problem down
+  Using **case analysis**--that is, breaking a problem down
   into two or more subproblems, and defining the conditions under
   which one or another of these subproblems applies--is a powerful
   problem-solving tool.  It comes up all the time in computer
@@ -644,7 +644,7 @@ We can write our first test in the ``FlowerPickerTest`` class like this:
    }
 
 To set up the conditions for the test, we can create an island, create
-the jeroo, and place it on the island in the spot we have picked. We can
+the Jeroo, and place it on the island in the spot we have picked. We can
 place the Jeroo at (1, 2) just in front of the flower closest to the top
 left corner (note that these conditions, and the associated method
 *may be different from your lab assignment, if you have one*, and are

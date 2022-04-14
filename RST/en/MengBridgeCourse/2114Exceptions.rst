@@ -63,8 +63,8 @@ Checked Exceptions:
 
    }
 
-* If a Checked Exception is not handled or thrown the compiler will report a
-compilation error when attempting to compile the program in question
+* If a Checked Exception is not handled or thrown the compiler will report a compilation error when attempting to compile the program in question
+
 Examples of Checked Exceptions include: ``ClassNotFoundException``,
 ``FileNotFoundException``, ``IOException``, and ``NoSuchMethodException``
 
@@ -73,13 +73,8 @@ Runtime Exceptions aka Unchecked Exceptions:
 """"""""""""""""""""""""""""""""""""""""""""
 
 * These are exception that are NOT “checked” at compile time
-* Unlike Checked Exceptions any code which may potentially throw a
-Runtime (Unchecked) Exception will compile without a problem, the developer
-must therefore consider the likelihood of such exceptions occurring and prepare
-the program accordingly
-* Examples of Runtime (Unchecked) Exceptions include: ``ArithmeticException``,
-``ArrayIndexOutOfBoundsException``, ``ClassCastException``,
-and ``NullPointerException``
+* Unlike Checked Exceptions any code which may potentially throw a Runtime (Unchecked) Exception will compile without a problem, the developer must therefore consider the likelihood of such exceptions occurring and prepare the program accordingly
+* Examples of Runtime (Unchecked) Exceptions include: ``ArithmeticException``, ``ArrayIndexOutOfBoundsException``, ``ClassCastException``, and ``NullPointerException``
 
 
 Note:
@@ -119,9 +114,7 @@ Before using the above sample project you must
 
 * Complete the configuration steps described in the introductory document
 * Download the CS 2114 Support Projects to your machine
-* When you complete the setup in the introductory document you will be able to
-download the support projects via eclipse using the blue down arrow icon or
-using the Project Menu and selecting "Download Assignment..."
+* When you complete the setup in the introductory document you will be able to download the support projects via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
 
 
 Checkpoint 1
