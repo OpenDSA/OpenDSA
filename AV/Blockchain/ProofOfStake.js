@@ -83,7 +83,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  av.umsg("All non-validator nodes will now vote with their staked currency on the legitimacy and validity of the proposed block by V1.");
+  av.umsg("All non-validator nodes will now vote with their staked currency on the legitimacy and validity of the proposed block by V3.");
   
   
   var rect1 = av.g.set();
