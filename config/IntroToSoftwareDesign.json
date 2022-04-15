@@ -470,6 +470,29 @@
           "points": 9
         }
       }
+    },
+
+    "Static, Main, and Exceptions":{
+       "IntroToSoftwareDesign/StaticMainAndExceptions":{
+          "Week14Quiz1Summ":{
+             "points":10
+          },
+          "Week14Quiz2Summ":{
+             "points":10
+          },
+          "Week14Quiz3Summ":{
+             "points":10
+          },
+          "Week14Quiz4Summ":{
+             "points":10
+          },
+          "Syntax Practice: Try-Catch Blocks":{
+             "points":30
+          },
+          "Syntax Practice: Throwing Exceptions":{
+             "points":30
+          }
+       }
     }
   }
 }
