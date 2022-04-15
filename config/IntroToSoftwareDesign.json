@@ -429,6 +429,47 @@
           "points": 12
         }
       }
+    },
+
+    "Maps and Sets":{
+      "IntroToSoftwareDesign/MapsAndSets": {
+        "Syntax Practice: Making A Set": {
+          "points": 8
+        },
+
+        "Syntax Practice: Adding to a Set": {
+          "points": 9
+        },
+
+        "Syntax Practice: Set Contains": {
+          "points": 9
+        },
+
+        "Syntax Practice: Set Remove": {
+          "points": 9
+        },
+
+        "Week13Quiz1Summ": {
+          "points": 9
+        },
+
+        "Syntax Practice: Making Maps": {
+          "points": 9
+        },
+
+        "Syntax Practice: Adding to Maps": {
+          "points": 9
+        },
+        "Syntax Practice: Map Contains and Remove": {
+          "points": 9
+        },
+        "Programming Practice: Maps": {
+          "points": 20
+        },
+        "Week13Quiz2Summ": {
+          "points": 9
+        }
+      }
     }
   }
 }
