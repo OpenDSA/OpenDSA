@@ -113,6 +113,14 @@ PIVX, Neblio (NEBL), Cardano (ADA), and Stratis (STRAX).
 How does it work?
 ~~~~~~~~~~~~~~~~~
 
+Much like in the traditional Proof-Of-Work mechanism, in the current case of Ethereum, a block typically consists of around 70 transactions. Unlike Proof-Of-Work where miners are competing for the correct solution necessary to append this block to the chain, the Proof-Of-Stake mechanism is more efficient in that it selects a validator who is responsible for proposing a block to the chain.
+
+[Things that need to be covered in order to provide true explanation of committee process (all this is ETH specific info)]
+- Mainnet
+- Beacon chain
+- Sharded chains
+
+
 A new block is proposed for addition to the blockchain by a committee
 of community members selected for the purpose.
 A committee is a group of at least 128 validators.
@@ -238,19 +246,18 @@ For Proof of Work algorithms, it means that someone controls 51%
 or more of the mining cycles.
 For Proof of Stake algorithms, this means that one individual
 (or a group invested in a stake pool as described in 'How does it
-work?') maintains control of 51% of the particular cryptocurrency in
-the market and are currently performing duties in the validation
-process.
-For both algorithms, a 51% attack selects the next block to add to the
-chain, and has the power to drive the consensus algorithm such that
-the community accepts it.
+work?') maintains control of 51% of the total staked tokens in
+the network.
+For both algorithms, a 51% attack enables a signular party to retain control over the next block that will be added to the
+chain.
 If the successful perpetrator of the 51% attack has injected a
-malicious transaction, then it will be accepted by the community.
+malicious transaction, then it will be accepted as the hacker themselves retains sufficient voting power to accept any transactions they desire.
 
 Examples of things that can occur in a 51% attack include preventing
 valid transactions from receiving verification
-(and so being added to the chain).
-If verification of the transaction does not occur in a timely manner,
+(and so being added to the chain). Imagine you send you are trying to sell your ETH on a public exchange like Coinbase to liquidate your assets. If a malicious hacker wishes to prevent liquidation, they can block the blockchain transfer of coins which would in turn prevent you from selling any of your tokens. 
+
+A secondary attack vector is double spending. If verification of the transaction does not occur in a timely manner,
 then an alternative transaction can get onto the blockchain that
 spends those same coins
 (effectively allowing a malicous user to re-spend coins).
@@ -265,7 +272,6 @@ coin used in the previous transaction in the new transaction.
 Detection can occur when duplicate transactions or repeating refunds
 are found for a user with a majority of the coin in the
 cryptocurrency.
-However, how a 51% attack is detected is not publicly known.
 When a 51% attack occurs, a fork appears, where each branch contains a
 transaction that spends the same coin.
 
