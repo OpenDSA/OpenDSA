@@ -142,7 +142,7 @@ To access those pairs, we use the ``get()`` method:
    {
        Map<String, String> noCallMap = new HashMap<String, String>();
 
-       noCallMap.put(Roger M", "090−997−2918");
+       noCallMap.put("Roger M", "090−997−2918");
        noCallMap.put("Jane Q", "999-777-1234");
 
        System.out.print("Jane Q's number is: " + noCallMap.get("Jane Q"));
@@ -188,7 +188,7 @@ since keys must be unique in a map, we really only need a key.
    {
        Map<String, String> noCallMap = new HashMap<String, String>();
 
-       noCallMap.put(Roger M", "090−997−2918");
+       noCallMap.put("Roger M", "090−997−2918");
        noCallMap.put("Jane Q", "999-777-1234");
 
        noCallMap.remove("Jane Q");
@@ -232,7 +232,7 @@ the map, it is commonly used in looping over the entire map:
    {
        Map<String, String> noCallMap = new HashMap<String, String>();
 
-       noCallMap.put(Roger M", "090−997−2918");
+       noCallMap.put("Roger M", "090−997−2918");
        noCallMap.put("Jane Q", "999-777-1234");
 
        for (String name : noCallMap.keySet())
@@ -261,7 +261,7 @@ use ``entrySet()`` to write a more advanced loop that looks like this:
    {
        Map<String, String> noCallMap = new HashMap<String, String>();
 
-       noCallMap.put(Roger M", "090−997−2918");
+       noCallMap.put("Roger M", "090−997−2918");
        noCallMap.put("Jane Q", "999-777-1234");
 
        for (Map.Entry<String, String> pair : noCallMap.entrySet())
