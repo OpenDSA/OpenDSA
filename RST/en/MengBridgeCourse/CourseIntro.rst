@@ -27,10 +27,8 @@ have any significant programming background. Indeed, it has developed to help
 people who are interested in starting on a path towards a programming career
 who are coming from other, not-computing disciplines.
 
-
 Students of Many Experience Levels
 ----------------------------------
-
 
 While this course is designed and intended for beginners, please be aware
 that students from a very wide range of backgrounds take this course, including
@@ -43,7 +41,6 @@ require significantly more programming knowledge. The course staff are happy
 to answer such questions, but please remember that we do not expect students
 in this course to possess that level of knowledge or to perform as if they
 have already learned how to program prior to taking this course.
-
 
 Online, Asynchronous, Self-paced
 --------------------------------
@@ -71,15 +68,14 @@ The goal of this course is to prepare students to have the programming backgroun
 necessary to be successful in the Computer Science Masters of Engineering program. 
 When students complete this course, the should be able to:
 
-* Demonstrate proficiency in the purpose and behavior of basic programming constructs.
+* Demonstrate proficiency in the purpose and behavior of basic programming constructs, including variables, control structures, and methods.
 * Design programs to solve computational problems using object-oriented programming processes.
-* Design data structures such as linked lists, stacks, and queues.
+* Develop reusable, type-safe software components.
 * Employ test-driven development to design and create an effective testing process.
 * Employ an Integrated Development Environment to iteratively develop and test medium-sized programs including interactive applications.
-* Develop reusable, type-safe software components.
-* Solve problems using recursive algorithms such as for implementing a binary tree.
 * Apply basic algorithm analysis to simple algorithms.
-* Work in a small team to analyze, design, and develop a team project.
+* Design data structures such as linked lists, stacks, and queues.
+* Solve problems using recursive algorithms such as for implementing a binary tree.
 
 Course Support
 ---------------
