@@ -474,52 +474,62 @@
     "Testing and Exceptions":{
       "MengBridgeCourse/2114JUNIT":{
         "Checkpoint 1": {
-          "points": 30
+          "points": 30,
+          "threshold": 3
         },
         "Checkpoint 2": {
-          "points": 30
+          "points": 30,
+          "threshold": 3
         },
         "Checkpoint 3": {
-          "points": 40
-
+          "points": 40,
+          "threshold": 4
         }
       },
 
       "MengBridgeCourse/2114Exceptions":{
         "Checkpoint 1": {
-          "points": 33
+          "points": 33,
+          "threshold": 2
 
         },
         "Checkpoint 2": {
-          "points": 67
-
+          "points": 67,
+          "threshold": 4
         }
       },
 
       "MengBridgeCourse/2114ObjectsEnumsAndUML":{
         "Checkpoint 1": {
-          "points": 50
+          "points": 50,
+          "threshold": 2
         },
         "Programming Practice: Object Oriented Programming": {
-          "points": 50
+          "points": 50,
+          "threshold": 2
         }
       },
 
       "MengBridgeCourse/2114Polymorphism2":{
         "Checkpoint 1": {
-          "points": 15
+          "points": 15,
+          "threshold": 2
         },
         "Checkpoint 2": {
-          "points": 15
+          "points": 15,
+          "threshold": 2
         },
         "Checkpoint 3": {
-          "points": 24
+          "points": 24,
+          "threshold": 3
         },
         "Programming Practice: Polymorphism 1": {
-          "points": 15
+          "points": 15,
+          "threshold": 2
         },
         "Programming Practice: Polymorphism 2": {
-          "points": 31
+          "points": 31,
+          "threshold": 4
         }
       },
 
@@ -527,23 +537,30 @@
 
       "MengBridgeCourse/2114Bags1": {
         "Checkpoint 1": {
-          "points": 26
+          "points": 26,
+          "threshold": 3
 
         },
         "Checkpoint 2": {
-          "points": 16
+          "points": 16,
+          "threshold": 2
         },
         "Checkpoint 3": {
-          "points": 16
+          "points": 16,
+          "threshold": 2
         },
         "Checkpoint 4": {
-          "points": 16
+          "points": 16,
+          "threshold": 2
         },
         "Programming Practice: The Bag Interface":{
-          "points": 9
+          "points": 9,
+          "threshold": 1
+
         },
         "Programming Practice: ArrayBags": {
-          "points": 17
+          "points": 17,
+          "threshold": 2
         }
       }
     },
@@ -551,56 +568,65 @@
     "Linked Lists, Bags, Stacks, and Efficiency": {
       "MengBridgeCourse/2114LinkedChainPointers": {
         "Checkpoint 1": {
-          "points": 50
+          "points": 50,
+          "threshold": 2
         },
         "Checkpoint 2": {
-          "points": 50
+          "points": 50,
+          "threshold": 2
         }
       },
 
       "MengBridgeCourse/2114Bags2": {
         "Checkpoint 1": {
-          "points": 40
+          "points": 40,
+          "threshold": 4
         },
         "Checkpoint 2": {
-          "points": 20
+          "points": 20,
+          "threshold": 2
         },
         "Checkpoint 3": {
-          "points": 20
+          "points": 20,
+          "threshold": 2
         },
         "Programming Practice: LinkedBags": {
-          "points": 20
+          "points": 20,
+          "threshold": 2
         }
       },
 
       "MengBridgeCourse/2114Efficiency": {
         "Checkpoint 1": {
-          "points": 50
+          "points": 50,
+          "threshold": 3
         },
         "Checkpoint 2": {
-          "points": 50
+          "points": 50,
+          "threshold": 3
         }
       },
 
       "MengBridgeCourse/2114Stacks": {
         "Checkpoint 1": {
-          "points": 17
-
+          "points": 17,
+          "threshold": 2
         },
         "Checkpoint 2": {
-          "points": 25
-
+          "points": 25,
+          "threshold": 3
         },
         "Checkpoint 3": {
-          "points": 33
-
+          "points": 33,
+          "threshold": 4
         },
         "Checkpoint 4": {
-          "points": 8
-
+          "points": 8,
+          "threshold": 1
         },
         "Programming Practice: LinkedStacks": {
-          "points": 17
+          "points": 17,
+          "threshold": 2
         }
       }
     },
@@ -608,53 +634,68 @@
     "Recursion and Software Design": {
       "MengBridgeCourse/2114Recursion": {
         "Checkpoint 1": {
-          "points": 10
+          "points": 10,
+          "threshold": 5
         },
         "Checkpoint 2": {
-          "points": 10
+          "points": 10,
+          "threshold": 5
         },
         "Checkpoint 3": {
-          "points": 4
+          "points": 4,
+          "threshold": 2
         },
         "Checkpoint 4": {
-          "points": 4
+          "points": 4,
+          "threshold": 2
         },
         "Programming Practice: Recursion 1": {
-          "points": 18
+          "points": 18,
+          "threshold": 8
         },
         "Programming Practice: Recursion 2": {
-          "points": 6
+          "points": 6,
+          "threshold": 3
         },
         "Programming Practice: Recursion 3": {
-          "points": 2
+          "points": 2,
+          "threshold": 1
         },
         "Forward Flow Tracing Exercises":{
-          "points": 14
+          "points": 14,
+          "threshold": 7
         },
         "Backward Flow Tracing Exercises":{
-          "points": 6
+          "points": 6,
+          "threshold": 3
         },
         "Find Error Tracing Exercises":{
-          "points": 6
+          "points": 6,
+          "threshold": 3
         },
         "Two Recursive Calls Tracing Exercises":{
-          "points": 6
+          "points": 6,
+          "threshold": 3
         },
         "How Many Times Tracing Exercises":{
-          "points": 8
+          "points": 8,
+          "threshold": 4
         },
         "Harder Tracing Exercises":{
-          "points": 6
+          "points": 6,
+          "threshold": 3
         }
 
       },
 
       "MengBridgeCourse/2114SoftwareDesignAndMVC": {
         "Checkpoint 1": {
-          "points": 40
+          "points": 40,
+          "threshold": 3
         },
         "Checkpoint 2": {
-          "points": 60
+          "points": 60,
+          "threshold": 5
         }
       }
     },
@@ -662,48 +703,51 @@
     "Queues and Generics": {
       "MengBridgeCourse/2114Generics2": {
         "Checkpoint 1": {
-          "points": 60
-
+          "points": 60,
+          "threshold": 3
         },
         "Programming Practice: Generics 1": {
-          "points": 40
+          "points": 40,
+          "threshold": 2
         }
       },
 
       "MengBridgeCourse/2114Queues": {
         "Checkpoint 1": {
-          "points": 11
-
+          "points": 11,
+          "threshold": 2
         },
         "Checkpoint 2": {
-          "points": 11
-
+          "points": 11,
+          "threshold": 3
         },
         "Checkpoint 3": {
-          "points": 11
-
+          "points": 11,
+          "threshold": 3
         },
         "Checkpoint 4": {
-          "points": 11
-
+          "points": 11,
+          "threshold": 3
         },
         "Checkpoint 5": {
-          "points": 11
-
+          "points": 11,
+          "threshold": 3
         },
         "Checkpoint 6": {
-          "points": 11
-
+          "points": 11,
+          "threshold": 2
         },
         "Checkpoint 7": {
-          "points": 11
-
+          "points": 11,
+          "threshold": 2
         },
         "Programming Practice: Queues 1": {
-          "points": 12
+          "points": 12,
+          "threshold": 3
         },
         "Programming Practice: Queues 2": {
-          "points": 11
+          "points": 11,
+          "threshold": 2
         }
       }
     },
@@ -711,44 +755,48 @@
     "Lists and Iterators": {
       "MengBridgeCourse/2114Lists": {
         "Checkpoint 1": {
-          "points": 13
-
+          "points": 13,
+          "threshold": 2
         },
         "Checkpoint 2": {
-          "points": 13
-
+          "points": 13,
+          "threshold": 2
         },
         "Checkpoint 3": {
-          "points": 13
-
+          "points": 13,
+          "threshold": 2
         },
         "Checkpoint 4": {
-          "points": 13
-
+          "points": 13,
+          "threshold": 2
         },
         "Programming Practice: Lists 1": {
-          "points": 20
+          "points": 20,
+          "threshold": 3
         },
         "Programming Practice: Lists 2": {
-          "points": 28
+          "points": 28,
+          "threshold": 4
         }
       },
 
       "MengBridgeCourse/2114Iterators": {
         "Checkpoint 1": {
-          "points": 36
-
+          "points": 36,
+          "threshold": 5
         },
         "Checkpoint 2": {
-          "points": 14
-
+          "points": 14,
+          "threshold": 2
         },
         "Checkpoint 3": {
-          "points": 36
+          "points": 36,
+          "threshold": 5
 
         },
         "Programming Practice: Iterators": {
-          "points": 14
+          "points": 14,
+          "threshold": 2
         }
       }
     },
@@ -756,38 +804,43 @@
     "Comparing, Sorting and Binary Search": {
       "MengBridgeCourse/2114ComparingAndSorting": {
         "Checkpoint 1": {
-          "points": 13
-
+          "points": 13,
+          "threshold": 2
         },
         "Checkpoint 2": {
-          "points": 13
-
+          "points": 13,
+          "threshold": 2
         },
         "Checkpoint 3": {
-          "points": 13
-
+          "points": 13,
+          "threshold": 2
         },
         "Checkpoint 4": {
-          "points": 13
-
+          "points": 13,
+          "threshold": 2
         },
         "Checkpoint 5": {
-          "points": 13
+          "points": 13,
+          "threshold": 2
         },
         "Programming Practice: Insertion Sort": {
-          "points": 22
+          "points": 22,
+          "threshold": 3
         },
         "Programming Practice: Comparators": {
-          "points": 13
+          "points": 13,
+          "threshold": 2
         }
       },
 
       "MengBridgeCourse/2114BinarySearch": {
         "Checkpoint 1": {
-          "points": 50
+          "points": 50,
+          "threshold": 2
         },
         "Programming Practice: Binary Search": {
-          "points": 50
+          "points": 50,
+          "threshold": 2
         }
       }
 
