@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   var graph = av.ds.graph({visible: true, left: -10, top: blocktop, height: 300, width: 300});
 
-  av.umsg("The white nodes on perimeter of the graph represent thin nodes while the blue interior nodes represent validator nodes. A Validator for the current block has not yet been selected. You will notice the validator nodes vary in size, this is done in proportion to how much each validator is staking.");
+  av.umsg("The white nodes on perimeter of the graph represent 'thin nodes', essentially just users of the Ethereum network. The blue interior nodes represent the set of validator nodes that were selected to be part of the validation committee. A singular validator for the current block has not yet been selected. You will notice the validator nodes vary in size, this is done in proportion to how much each validator is staking. The bigger nodes represent a validator who has staked more tokens.");
 
   // Thin Nodes
   graph.css({"font-size": "12px"});
@@ -44,12 +44,12 @@ $(document).ready(function() {
   av.displayInit();
 
   // Slide 2
-  av.umsg("The Validator for the current block has now been selected as shown in yellow.");
+  av.umsg("The validator for the current block has now been selected as shown in yellow. This validator is responsible for generating and proposing the next block.");
   val3.addClass('yellownode');
   av.step();
 
   // Slide 3
-  av.umsg("The selected validator node will now begin to collect transactions that are broadcasted by thin nodes until it has assembled enough to propose a new block.")
+  av.umsg("The selected validator node will now assemble transactions into a block. These transactions are publicly visible to all nodes on the network.")
   const av3Edge = graph.addEdge(a, val3).addClass("orangeedge");
   const bv3Edge = graph.addEdge(b, val3).addClass("orangeedge");
   const cv3Edge = graph.addEdge(c, val3).addClass("orangeedge");
@@ -69,7 +69,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 5
-  av.umsg("The selected validator node will now begin to broadcast the new block to the network.");
+  av.umsg("The selected validator node will now begin to broadcast the new block to the network so that the validation committee can begin voting.");
   a.hide();
   b.hide();
   c.hide();
@@ -83,7 +83,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  av.umsg("All non-validator nodes will now vote with their staked currency on the legitimacy and validity of the proposed block by V3.");
+  av.umsg("All other committee members nodes will now vote with their staked currency on whether or not to approve the block proposed by V3. It is important to note that the committee members have voting power in proportion to their amount of staked currency.");
   
   
   var rect1 = av.g.set();
@@ -94,7 +94,7 @@ $(document).ready(function() {
   av.step(); 
 
   // Slide 7
-  av.umsg("A majority of staked currency from non-validator nodes has voted in-favor of this block and thus, the block gets appended.");
+  av.umsg("A majority of staked currency from non-validator nodes has voted in-favor of this block and thus, the block will be appended to the chain.");
   
   var rect2 = av.g.set();
   rect2.push(av.g.rect(400, 100 + 50, 50, 50));
