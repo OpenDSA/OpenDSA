@@ -173,7 +173,7 @@ Copy and paste the following two URLs into the panel.
 
   * **Download URL**
 
-    * `https://courses.cs.vt.edu/~cs2114/assignments.xml <https://courses.cs.vt.edu/~cs2114/assignments.xml>`_
+    * `https://courses.cs.vt.edu/cs2114/meng-bridge/assignments.xml <https://courses.cs.vt.edu/cs2114/meng-bridge/assignments.xml>`_
 
   * **Submit URL**
 
@@ -196,7 +196,7 @@ or Command + Shift + F (if using Mac).
 
 Remember to format your code before submitting to Web-CAT.
 
-Download the following XML file by going to the link: `vtcsstylefixed.xml download <https://people.cs.vt.edu/~shaffer/vtcsstylefixed.xml download>`_
+Download the following XML file by going to the link: `vtcsstyle.xml <https://courses.cs.vt.edu/cs2114/meng-bridge/support/vtcsstyle.xml>`_
 
 On Windows, you'll need to Right Click and select **Save As**.  It doesn't matter
 where you save it, but do remember where it is saved
