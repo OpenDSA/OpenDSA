@@ -345,5 +345,5 @@ To install:
 
 This is an image of setting up on Windows
 
-.. odsafig:: Images/FormattingSetupFig3.png.png
+.. odsafig:: Images/FormattingSetupFig3.png
    :align: center
