@@ -82,11 +82,10 @@
 
     "Introduction: About This Course": {
       "MengBridgeCourse/CourseIntro": {
-        "HonorCodeSumm": {
-          "points": 100,
-          "threshold": 10
-        }
+      },
+      "MengBridgeCourse/GettingStarted": {
       }
+      
     },
 
     "Inheritance and Polymorphism": {
@@ -103,7 +102,7 @@
         "Week1Quiz1Summ": {
           "points": 6
         },
-        "Week1Quiz2Summ": {iv
+        "Week1Quiz2Summ": {
           "points": 6
         },
         "Week1ReadingQuizSumm": {
