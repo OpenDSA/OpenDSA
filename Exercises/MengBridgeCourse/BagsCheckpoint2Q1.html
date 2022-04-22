@@ -11,68 +11,13 @@
     <div class="exercise">
       <div class="problems">
         <div id="BAGS_CP2_Q1">
-        <p class="question">Which of the following 5 implementations could not
-          be used for contains?</p>
-        <div class="solution">
-          <tt>
-public boolean contains(T anEntry)
-{
-   return !isEmpty();
-}
-          </tt>
-        </div>
+        <p class="question">Junit testing...</p>
+        <div class="solution">All of these answers are correct</div>
         <ul class="choices">
-        <li>
-<tt>
-public boolean contains(T anEntry)
-{
-  boolean found = false;
-  int i = 0;
-  while ( !found && (i < numberOfEntries))
-  {
-    if (anEntry.equals(contents[i]))
-    {
-      found = true;
-    }
-  i++;
-  }
-  return found;
-}
-</tt>
-        </li>
-        <li>
-<tt>
-public boolean contains(T anEntry)
-{
-  return getIndexOf(anEntry) > -1;
-}
-</tt>
-        </li>
-        <li>
-<tt>
-public boolean contains(T anEntry)
-{
-  return getFrequencyOf(anEntry) > 0;
-}
-</tt>
-        </li>
-        <li>
-<tt>
-public boolean contains(T anEntry)
-{
-  int i = 0;
-  while ((i < numberOfEntries))
-  {
-    if (anEntry.equals(contents[i]))
-    {
-      return true;
-    }
-  i++;
-  }
-  return false;
-}
-</tt>
-        </li>
+        <li>Has a setUp method useful for initializing variables</li>
+        <li>Should be used throughout development</li>
+        <li>Uses assert statements instead of print statements</li>
+        <li>Provides ability to test specific methods</li>
 
         </ul>
         <div class="hints">

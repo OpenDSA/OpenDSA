@@ -10,91 +10,17 @@
   <body data-height="650" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="BAGS_CP2_Q2">
-        <p class="question">Which of the following 5  implementations could
-          not be used for getFrequency?</p>
-        <div class="solution">
-<tt>
-public int getFrequencyOf(T anEntry)
-{
-  int i = 0;
-  int count = 0;
-  while(anEntry.equals(contents[i]))
-  {
-    i++;
-  	count++;
-  }
-  return numberOfEntries - count;
-}
-</tt></div>
+        <div id="BAGS_C23_Q2">
+        <p class="question">In the Fixed Size Array implementation of a Bag,
+          depicted below as ArrayBag1,  what happens when a client tries to
+          add an element to the ArrayBag1 but the underlying array is full?</p>
+            <img src="./BagsCheckpointImages/ExArrayBagsJUnit.png" alt="UML Diagram of Bags" width="300" height="200">
+        <div class="solution">The element does not get added</div>
         <ul class="choices">
-        <li>
-<tt>
-public int getFrequencyOf(T anEntry)
-{
-  int count = 0;
-  for(int i = 0; i < numberOfEntries; i++)
-  {
-    if(anEntry.equals(contents[i]))
-    {
-      count++;
-    }
-  }
-  return count;
-}
-</tt>
-</li>
-
-        <li>
-<tt>
-public int getFrequencyOf(T anEntry)
-{
-  int count = 0;
-  for(int i = numberOfEntries - 1; i >= 0; i--)
-  {
-    if(anEntry.equals(contents[i]))
-    {
-      count++;
-    }
-  }
-  return count;
-}
-</tt>
-</li>
-        <li>
-<tt>
-public int getFrequencyOf(T anEntry)
-{
-  int i = 0;
-  int count = 0;
-  while( i < numberOfEntries)
-  {
-    if(anEntry.equals(contents[i]))
-    {
-      count++;
-    }
-    i++;
-  }
-  return count;
-}
-</tt>
-</li>
-        <li>
-<tt>
-public int getFrequencyOf(T anEntry)
-{
-  int count = 0;
-  for(int i = numberOfEntries - 1; i > -1; i--)
-  {
-    if(anEntry.equals(contents[i]))
-    {
-      count++;
-    }
-  }
-  return count;
-}
-</tt>
-</li>
+        <li>The add method replaces the last element with the new element</li>
+        <li>The add method doubles its size and adds the new element</li>
+        <li>The add method throws an exception</li>
+        <li></li>
 
         </ul>
         <div class="hints">

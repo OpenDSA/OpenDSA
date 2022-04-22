@@ -83,9 +83,18 @@ TODO: fix URLS.
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
+
+Programming Practice: Queues 1
+------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Queues 1'
+   :workout_id: 1920
+
+Linked Queues Intro and Enqueue
+-------------------------------
 
 [11:29] Linked Queue Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -110,9 +119,12 @@ TODO: fix URLS.
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
+
+Linked Queues Removing and More (Dequeue and Other Methods)
+-----------------------------------------------------------
 
 [8:41] Linked Queue Remove Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -137,8 +149,8 @@ TODO: fix URLS.
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint3.html ka
+   :long_name: Checkpoint 3
 
 
 Deques
@@ -154,8 +166,6 @@ Deques
      </center>
 
 
-
-
 TODO: fix URLS.
 
 .. raw:: html
@@ -164,10 +174,14 @@ TODO: fix URLS.
    <img src="" alt="DequeIntro.pptx">
    </a>
 
-asdf
+Checkpoint 4
+~~~~~~~~~~~~
+
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint4.html ka
+   :long_name: Checkpoint 4
 
 Deque Interface
-"""""""""""""""
+~~~~~~~~~~~~~~~
 
 .. code-block:: java
 
@@ -249,6 +263,9 @@ Deque Interface
     } // end DequeInterface
 
 
+Deque Removing and Wrap Up
+--------------------------
+
 [9:02] Deque Removing and Wrap Up Video Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -273,13 +290,13 @@ TODO: fix URLS.
 Checkpoint 5
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
-
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint5.html ka
+   :long_name: Checkpoint 5
 
 
 Array Implementation of Queues
 ------------------------------
+
 
 [15:58] ArrayQueue Intro Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -305,8 +322,13 @@ TODO: fix URLS.
 Checkpoint 6
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint6.html ka
+   :long_name: Checkpoint 6
+
+
+
+ArrayQueue One Unused Location
+------------------------------
 
 [7:11] ArrayQueue One Unused Location Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -332,9 +354,12 @@ TODO: fix URLS.
 Checkpoint 7
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint7.html ka
+   :long_name: Checkpoint 7
 
+
+ArrayQueue Ensure Capacity
+--------------------------
 
 [14:06] ArrayQueue Ensure Capacity Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -355,13 +380,16 @@ TODO: fix URLS.
    <img src="" alt="ArrayQueueEnsureCapacity.ppt">
    </a>
 
-Checkpoint 7
+
+Checkpoint 8
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint8.html ka
+   :long_name: Checkpoint 8
 
 
+ArrayQueue WrapUp
+-----------------
 
 [6:59] ArrayQueue WrapUp Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -412,3 +440,9 @@ Empty Queue Exception
             super(message);
         } // end constructor
     } // end EmptyQueueException
+
+Programming Practice: Queues 2
+------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Queues 2'
+   :workout_id: 1921

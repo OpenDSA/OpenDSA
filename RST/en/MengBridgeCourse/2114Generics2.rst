@@ -19,9 +19,11 @@ Upon completion of this module, students will be able to:
 * Write and use bounded generic methods
 * Become familiar with syntax for wildcards
 
+Generics 2
+----------
 
 [10:53] Generics 2 Video
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -40,7 +42,7 @@ TODO: fix URLS.
 
 
 [17:26] Reflecting on Generics Video
-------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -69,8 +71,8 @@ Related Resources
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
 Sample Declarations of Generic Methods Explained
@@ -140,3 +142,10 @@ Related Resources
 
 * `https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
 * `https://docs.oracle.com/javase/tutorial/java/generics/bounded.html <https://docs.oracle.com/javase/tutorial/java/generics/bounded.html>`_
+
+
+Programming Practice: Generics 1
+--------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Generics 1'
+   :workout_id: 1919

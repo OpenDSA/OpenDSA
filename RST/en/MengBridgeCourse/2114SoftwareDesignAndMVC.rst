@@ -21,14 +21,18 @@ Upon completion of this module, students will be able to:
 * Apply and demonstrate good design practices
 * Produce the design of a software system using a UML class diagram
 
+Introduction to Software design
+-------------------------------
+
 [9:30] Intro to Software Design Video
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
      <center>
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_4gfpbvoi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_1zy32v9u" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
+
 
 TODO: fix URLS.
 
@@ -73,8 +77,7 @@ of functional requirements could be:
 
 The system shall allow users to ________
 
-* Search for a product based on specific search criteria
-(for example by name, description, or product identifier)
+* Search for a product based on specific search criteria (for example by name, description, or product identifier)
 * View product details
 * Add a product to the shopping cart
 * Remove a product from the shopping cart
@@ -120,11 +123,8 @@ The system shall ________
 * Function correctly on all browsers and browser versions released after 2018
 * Utilize Responsive Design
 * Complete (and provide results for) user-initiated searches within 2 seconds
-* Be capable of handling 10 million users per hour with no degradation in
-performance/user response times
-* Only accept account passwords that are a minimum of eight (8) characters in
-length and contain - at least one uppercase letter, one special characters,
-and one digit
+* Be capable of handling 10 million users per hour with no degradation in performance/user response times
+* Only accept account passwords that are a minimum of eight (8) characters in length and contain - at least one uppercase letter, one special characters, and one digit
 
 
 With respect to a **Library management system** some examples of non-functional
@@ -132,23 +132,19 @@ requirements could be:
 
 The system shall ________
 
-* Complete (and confirm the success or failure of) user-initiated requests
-within a maximum response time of 4 seconds
-* Support the tracking and management of a minimum of 100,000 library
-books and related library media
+* Complete (and confirm the success or failure of) user-initiated requests within a maximum response time of 4 seconds
+* Support the tracking and management of a minimum of 100,000 library books and related library media
 * Support up to 5000 patron requests per minute
-* Be easy to use by people with basic computer literacy skills (Browsers,
-Web Browsing, Word Processing, Search Engines, etc )
-* Include validation checks, user confirmation prompts, and other prompts for
-all relevant operations to help people avoid making mistakes
+* Be easy to use by people with basic computer literacy skills (Browsers, Web Browsing, Word Processing, Search Engines, etc )
+* Include validation checks, user confirmation prompts, and other prompts for all relevant operations to help people avoid making mistakes
 
 
 
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
 Identifying classes, fields, and methods
@@ -158,7 +154,7 @@ The first steps in crafting the design of a software product with a
 UML class diagram is to review the documented requirements with the goal of
 identifying the system's classes, fields, and methods. **The first step is to
 review the software requirements and note all of the nouns, verbs, processes,
-and concepts.""
+and concepts.**
 
 Recall that a class is a blueprint or specification for an object.
 They are usually entities of interest with attributes
@@ -188,11 +184,9 @@ Once you have noted all of the nouns you next need to determine which are
 classes and which are fields.  The following rules will help you to distinguish
 classes from fields.
 
-* Nouns and noun phrases which refer to an entity (a thing) with more than one
-attribute of interest are most likely classes
+* Nouns and noun phrases which refer to an entity (a thing) with more than one attribute of interest are most likely classes
 
-* Nouns and noun phrases which refer to a single attribute or data item are
-most likely fields of some class
+* Nouns and noun phrases which refer to a single attribute or data item are most likely fields of some class
 
 
 Data Structures
@@ -280,6 +274,7 @@ software solution.**
      - No
      -
 
+
 Good design tends to adopt the approach of setting everything as private except
 those fields and methods you explicitly wish outside classes to interact with.
 
@@ -301,11 +296,8 @@ Design Activity: Case Study e-Commerce solution (online storefront) for ABC Ltd
 
 Review the Case Study below, then
 
-* Consider the various processes and requirements that the software solution
-must support (examples could include, customer registration, checkout,
-submitting a payment, sending an invoice, fulfilling an order, shipping)
-* Note the nouns and noun phrases, then identify which are classes and which
-fields
+* Consider the various processes and requirements that the software solution must support (examples could include, customer registration, checkout, submitting a payment, sending an invoice, fulfilling an order, shipping)
+* Note the nouns and noun phrases, then identify which are classes and which fields
 * Note the verbs and verb phrases, then identify possible methods for each class
 
 Once you have completed the activity you may click on the "next" button to
@@ -330,8 +322,7 @@ and toys.
 Potential customers must be able to visit the online storefront to:
 
 * Search or browse ABC’s product catalog
-* View product details (including description, price, customer ratings and
-reviews, etc.)
+* View product details (including description, price, customer ratings and reviews, etc.)
 * Manage their shopping cart (add products to cart, remove products, etc.)
 
 In addition, registered customers must be able to login, manage their user
@@ -399,7 +390,7 @@ TODO: fix URLS.
 
 Much of what you need to know for relationships, hierarchies and reuse has
 been covered within the
-`Java OOP (Object Oriented Programming) Module <JJava OOP (Object Oriented Programming) Module>`_ .
+`Java OOP (Object Oriented Programming) Module <Java OOP (Object Oriented Programming) Module>`_ .
 Additionally you may download the UML Diagram key via this link
 
 TODO: fix URLS.
@@ -428,9 +419,6 @@ Review the listing of nouns and noun phrases and concepts that could be
 extracted from the Case Study - e-Commerce solution (online storefront)
 for ABC Ltd .
 
-
-~~~~~~~~~~~~~~~~~~~~~~
-
 .. list-table:: Nouns and Noun Phrases
    :header-rows: 0
 
@@ -458,6 +446,7 @@ for ABC Ltd .
      - Billing address
      - Payment details
      - Employee users
+
 
 .. list-table:: Concepts
    :header-rows: 0
@@ -508,6 +497,7 @@ Considering the above we may identify the following as an initial list of possib
      -
      -
      -
+
 
 Note: There may be other options, for example:
 
@@ -591,6 +581,7 @@ review.
      - Payments, Payment system, Payment Options
      - Order fulfillment
 
+
 .. list-table:: Verb and Verb Phrases
    :header-rows: 0
 
@@ -602,16 +593,16 @@ review.
      - Submit (reviews)
      - Support (employees)
 
+
 Review your design with a critical eye, ask yourself,
 "can my design support this concept, process, or action"? If not,
 what needs to be changed to refine your design?
 
-
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
 
 Intro to Design Patterns and MVC
@@ -810,8 +801,7 @@ system
 
 * requires a GUI (View)
 * has data and business logic to manage (Model), and
-* has processing that needs to be handled, some of which would be in
-response to user interactions (Controller)
+* has processing that needs to be handled, some of which would be in response to user interactions (Controller)
 
 The pattern of our application's needs match what is offered by the
 MVC Design Pattern, it would therefore be a good fit for this design.
@@ -865,12 +855,9 @@ depicted in the images below.
 Consider the software requirements of the software needed to support the
 Vending Machine, then
 
-* Consider the various processes that the software solution must support and
-note the main processes and some of the main requirements
-* Review your notes, identify the nouns and noun phrases, then consider
-which are classes and which fields
-* Review your notes, identify the verbs and verb phrases, then identify
-possible methods for each class
+* Consider the various processes that the software solution must support and note the main processes and some of the main requirements
+* Review your notes, identify the nouns and noun phrases, then consider which are classes and which fields
+* Review your notes, identify the verbs and verb phrases, then identify possible methods for each class
 
 Once you have completed the activity you may click on the "next" button to
 proceed to the next page in the module.
