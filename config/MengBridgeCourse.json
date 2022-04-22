@@ -110,6 +110,8 @@
           "threshold": 10
         }
       },
+      "MengBridgeCourse/1114Unit1_Lab1_Placeholder": {
+      },
       "MengBridgeCourse/1114InheritanceAndPolymorphism": {
         "Syntax Practice 2a: Jeroo Methods": {
           "points": 18
@@ -139,6 +141,8 @@
           "points": 15,
           "threshold": 10
         }
+      },
+      "MengBridgeCourse/1114Unit1_Lab2_Placeholder": {
       }
     },
 
@@ -182,6 +186,8 @@
           "threshold": 12
         }
        },
+       "MengBridgeCourse/1114Unit2_Lab1_Placeholder": {
+       },
       "MengBridgeCourse/1114SoftwareTesting": {
         "Syntax Practice 4a: Compound Conditionals": {
           "points": 15
@@ -208,6 +214,8 @@
           "points": 16,
           "threshold": 10
         }
+       },
+       "MengBridgeCourse/1114Unit2_Lab2_Placeholder": {
        }
      },
 
@@ -238,6 +246,8 @@
               "points": 9
             }
         },
+      "MengBridgeCourse/1114Unit3_Lab1_Placeholder": {
+        },  
       "MengBridgeCourse/1114PicturesAndForEachLoops": {
         "Syntax Practice 6a: Pixel Loops": {
           "points": 20
@@ -257,8 +267,11 @@
         "Week6Quiz3Summ": {
           "points": 10
         }
-      }
+      },
+      "MengBridgeCourse/1114Unit3_Lab2_Placeholder": {
+       }
     },
+    
     "More Lists, Loops, Arrays and Grouping": {
       "MengBridgeCourse/1114AggregationStringsandMoreLoops": {
         "Syntax Practice 7a: For Loops and OO Design": {
@@ -286,6 +299,8 @@
           "points": 7
         }
       },
+      "MengBridgeCourse/1114Unit4_Lab1_Placeholder": {
+       },
       "MengBridgeCourse/1114GroupingObjectsUsingListsAndNestedForLoops": {
         "Syntax Practice 8a: Strings": {
           "points": 12
@@ -315,7 +330,9 @@
           "points": 15,
           "threshold": 10
         }
-      }
+      },
+      "MengBridgeCourse/1114Unit4_Lab2_Placeholder": {
+       }
      },
     "More Loops and Arrays": {
       "MengBridgeCourse/1114ListAndLoopsDeepDive": {
@@ -341,6 +358,8 @@
               "points": 9
             }
         },
+      "MengBridgeCourse/1114Unit5_Lab1_Placeholder": {
+         },
       "MengBridgeCourse/1114Arrays": {
           "Syntax Practice 10": {
             "points": 35
@@ -358,7 +377,10 @@
             "points": 20,
             "threshold": 10
           }
-        }
+        },
+       "MengBridgeCourse/1114Unit5_Lab2_Placeholder": {
+         }
+        
     },
     "Multi-Dimensional Arrays, File I/O and Sets":{
       "MengBridgeCourse/1114MDArrays": {
@@ -390,6 +412,8 @@
             "points": 10
           }
         },
+      "MengBridgeCourse/1114Unit6_Lab1_Placeholder": {
+         },        
       "MengBridgeCourse/1114FileIO": {
           "Syntax Practice: Scoping": {
             "points": 40
@@ -409,6 +433,8 @@
             "points": 12
           }
         },
+        "MengBridgeCourse/1114Unit6_Lab2_Placeholder": {
+         },
       "MengBridgeCourse/1114MapsAndSets": {
           "Syntax Practice: Making A Set": {
             "points": 8
