@@ -27,18 +27,18 @@ installing it again.
 
 1. Open `https://www.eclipse.org/downloads/ <https://www.eclipse.org/downloads/>`_
 
-3. Select the **Eclipse** download from the yellow/orange download button
+2. Select the **Eclipse** download from the yellow/orange download button
 (select the 64bit or 32bit version to correspond to the version of the JDK you
 installed, please be aware: versions may change by semester).
 
-4. Download the distribution and follow installation instructions,
+3. Download the distribution and follow installation instructions,
 selecting **IDE for Java Developers** when prompted.
 
-5. Start Eclipse. ( If you are on a Mac, you need to set
+4. Start Eclipse. ( If you are on a Mac, you need to set
 **System Preferences->Security and Privacy** to allow apps downloaded from
 locations other than the Mac App Store.)
 
-6. The first time you start Eclipse, you'll be asked to specify a location for
+5. The first time you start Eclipse, you'll be asked to specify a location for
 the Eclipse Workspace; this is where Eclipse will keep your programming
 projects. You can either use the default recommendation or place it elsewhere
 on your file system. Check **Use this as the default** and do not ask again so
@@ -57,7 +57,7 @@ checkbox **Remember my Decision** then select **Install**.
    :align: center
 
 
-7. The initial Eclipse startup screen has a Welcome tab with an
+6. The initial Eclipse startup screen has a Welcome tab with an
 Overview, Tutorials, Samples, and a "What's New" section.
 
 
@@ -72,7 +72,7 @@ Feel free to explorethe options and then proceed to the Workbench.
    :align: center
 
 
-8. Once you're at the Workbench, you should consider cleaning it up to start.
+7. Once you're at the Workbench, you should consider cleaning it up to start.
 It is suggested you minimize the Task List and Outline Views on
 of the Eclipse workbench.  You can also close out the welcome tab if you want.
 It may look differently on your screen, but the following image shows the tabs
