@@ -534,7 +534,7 @@
           "threshold": 2
         }
       },
-
+        
       "MengBridgeCourse/2114Polymorphism2":{
         "Checkpoint 1": {
           "points": 15,
@@ -557,7 +557,8 @@
           "threshold": 4
         }
       },
-
+      "MengBridgeCourse/2114Unit7_Lab1_Placeholder": {
+      }, 
       "MengBridgeCourse/2114StyleReview":{},
 
       "MengBridgeCourse/2114Bags1": {
@@ -587,6 +588,10 @@
           "points": 17,
           "threshold": 2
         }
+      },
+      "MengBridgeCourse/2114Unit7_Lab2_Placeholder": {
+      },
+      "MengBridgeCourse/2114Unit7_Lab3_Placeholder": {
       }
     },
 
@@ -620,7 +625,8 @@
           "threshold": 2
         }
       },
-
+      "MengBridgeCourse/2114Unit8_Program1_Placeholder": {
+      },
       "MengBridgeCourse/2114Efficiency": {
         "Checkpoint 1": {
           "points": 50,
@@ -653,6 +659,10 @@
           "points": 17,
           "threshold": 2
         }
+      },
+      "MengBridgeCourse/2114Unit8_Lab1_Placeholder": {
+      },
+      "MengBridgeCourse/2114Unit8_Lab2_Placeholder": {
       }
     },
 
@@ -722,6 +732,8 @@
           "points": 60,
           "threshold": 5
         }
+      },
+      "MengBridgeCourse/2114Unit9_Program1_Placeholder": {
       }
     },
 
@@ -736,7 +748,6 @@
           "threshold": 2
         }
       },
-
       "MengBridgeCourse/2114Queues": {
         "Checkpoint 1": {
           "points": 11,
@@ -774,7 +785,10 @@
           "points": 11,
           "threshold": 2
         }
+      },
+      "MengBridgeCourse/2114Unit10_Lab1_Placeholder": {
       }
+
     },
 
     "Lists and Iterators": {
@@ -804,7 +818,8 @@
           "threshold": 4
         }
       },
-
+      "MengBridgeCourse/2114Unit11_Lab1_Placeholder": {
+      }, 
       "MengBridgeCourse/2114Iterators": {
         "Checkpoint 1": {
           "points": 36,
@@ -823,7 +838,10 @@
           "points": 14,
           "threshold": 2
         }
+      },
+      "MengBridgeCourse/2114Unit11_Lab2_Placeholder": {
       }
+
     },
 
     "Comparing, Sorting and Binary Search": {
@@ -867,8 +885,9 @@
           "points": 50,
           "threshold": 2
         }
+      },
+      "MengBridgeCourse/2114Unit12_Program1_Placeholder": {
       }
-
     }
   }
 
