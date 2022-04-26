@@ -9,11 +9,6 @@
 Getting Started
 ===============
 
-Installing BlueJ
-----------------
-
-Follow the instructions on Canvas to `Install BlueJ <https://canvas.vt.edu/courses/145218/pages/install-bluej>`_.
-
 
 Introducing LightBot
 --------------------
@@ -220,7 +215,7 @@ The LightBot game illustrates several basic programming concepts:
 
 In this course, we are going to focus on
 learning **object-oriented programming** in Java. This section describes
-several general concepts about object-oriented programs that we have seen 
+several general concepts about object-oriented programs that we have seen
 in this first example. As you read subsequent chapters, refer back to this
 chapter to review the meaning of important words and phrases.
 
@@ -233,7 +228,7 @@ to music, writing an essay, or playing a game, whenever we
 a computer we are using one or more computer programs.  Each
 is simply a set of instructions for the computer.
 
-.. note:: 
+.. note::
 
     A computer **program** is a set of instructions for a computer.
 
@@ -872,7 +867,7 @@ Check Your Understanding
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1ReadingQuizSumm.html ka
    :long_name: Programming Concepts
-   
+
 
 .. raw:: html
 
@@ -882,4 +877,4 @@ Check Your Understanding
      licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
      <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
      licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
-   </div></footer>   
+   </div></footer>
