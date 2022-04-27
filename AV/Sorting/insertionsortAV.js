@@ -1,26 +1,24 @@
 /*global alert: true, ODSA, console */
-$(document).ready(function () {
+$(document).ready(function() {
   "use strict";
-  var av, // JSAV library object
-    arr, // JSAV array
-    pseudo; // pseudocode display
+  var av,     // JSAV library object
+      arr,    // JSAV array
+      pseudo; // pseudocode display
 
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig(),
-    interpret = config.interpreter, // get the interpreter
-    code = config.code, // get the code object
-    settings = config.getSettings(); // Settings for the AV
+      interpret = config.interpreter,       // get the interpreter
+      code = config.code,                   // get the code object
+      settings = config.getSettings();      // Settings for the AV
 
   // Placeholder text translation needs to be set explicitly
   $("#arrayValues").attr("placeholder", interpret("av_arrValsPlaceholder"));
 
   // add the layout setting preference
-  var arrayLayout = settings.add("layout", {
-    type: "select",
-    options: { bar: "Bar", array: "Array" },
-    label: "Array layout: ",
-    value: "bar",
-  });
+  var arrayLayout =
+      settings.add("layout",
+                   {type: "select", options: {bar: "Bar", array: "Array"},
+                     label: "Array layout: ", value: "bar"});
 
   // Initialize the arraysize dropdown list
   ODSA.AV.initArraySize(5, 16, 8);
@@ -39,8 +37,7 @@ $(document).ready(function () {
     arr.addClass(1, "processing");
     arr.addClass(1, "whitetext");
     av.step();
-    for (i = 1; i < arr.size(); i++) {
-      // Insert i'th record
+    for (i = 1; i < arr.size(); i++) { // Insert i'th record
       arr.addClass(i, "processing");
       arr.addClass(i, "whitetext");
       av.umsg(interpret("av_c4") + i);
@@ -49,7 +46,7 @@ $(document).ready(function () {
       av.umsg(interpret("av_c5"));
       pseudo.setCurrentLine("inloop");
       av.step();
-      for (j = i; j > 0 && arr.value(j) < arr.value(j - 1); j--) {
+      for (j = i; (j > 0) && (arr.value(j) < arr.value(j - 1)); j--) {
         arr.addClass(j, "processing");
         arr.addClass(j, "whitetext");
         arr.swap(j, j - 1); // swap the two indices
@@ -75,13 +72,10 @@ $(document).ready(function () {
     // If arrValues is null, the user gave us junk which they need to fix
     if (arrValues) {
       ODSA.AV.reset(true);
-      av = new JSAV($(".avcontainer"), { settings: settings });
+      av = new JSAV($(".avcontainer"), {settings: settings});
 
       // Create a new array using the layout the user has selected
-      arr = av.ds.array(arrValues, {
-        indexed: true,
-        layout: arrayLayout.val(),
-      });
+      arr = av.ds.array(arrValues, {indexed: true, layout: arrayLayout.val()});
 
       // Create the pseudocode display object
       pseudo = av.code(code);
@@ -98,7 +92,7 @@ $(document).ready(function () {
   // Connect action callbacks to the HTML entities
   $("#about").click(about);
   $("#run").click(runIt);
-  $("#ssperform").submit(function (evt) {
+  $("#ssperform").submit(function(evt) {
     evt.stopPropagation();
     evt.preventDefault();
     runIt();
