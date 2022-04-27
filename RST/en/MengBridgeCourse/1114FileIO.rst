@@ -7,8 +7,8 @@
    :author: Molly
 
 
-Input, Output and Variable Scoping
-==================================
+Variable Scoping, Input, and Output 
+===================================
 
 Variable Scoping
 ----------------
@@ -369,6 +369,15 @@ the value that will be stored in the field. When using this approach it
 is mandatory to alway include ``this.`` as a prefix when referring to the
 field name, because otherwise, all uses of the name would refer to the
 parameter only.
+
+Summarizing Scope Concepts
+--------------------------
+
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/2nTjUAeD5WE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
 
 
 Check Your Understanding: Scope
@@ -794,6 +803,12 @@ Web if you know the URL:
    }
    inWebFile.close();
 
+.. raw:: html
+
+   <div class="align-center" style="margin-top:1em;">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/N7JAkNSTfAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   </div>
+
 
 A Complete Input Example
 ------------------------
@@ -1011,13 +1026,10 @@ Check Your Understanding: Testing
 
 .. raw:: html
 
-   <footer>
-     <p>Content adapted from:</p>
-     <p><a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
-     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).</p>
-     <p><a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
-     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).</p>
-     <p>
-     Adapted by Stephen H. Edwards and Molly Domino.
-     </p>
-   </footer>
+   <footer style="border-top: 1px solid #777;"><div class="footer">
+     Selected content adapted from:<br/>
+     <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+     <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+   </div></footer>

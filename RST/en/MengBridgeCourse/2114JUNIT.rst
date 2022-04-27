@@ -65,8 +65,8 @@ Project Menu and selecting "Download Assignment..."
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
 Intro to Hokie Class JUnit Testing
@@ -89,8 +89,8 @@ TODO: fix URLS.
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
 Review of Writing JUnit Tests with student.TestCase
 ---------------------------------------------------
@@ -108,5 +108,5 @@ TODO: fix URLS.
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint3.html ka
+   :long_name: Checkpoint 3

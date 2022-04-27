@@ -19,9 +19,12 @@ Upon completion of this module, students will be able to:
 * Consider various design approaches and corresponding efficiency
 * Trace and debug list implementations
 
+List Introduction
+-----------------
+
 
 [13:41] List Introduction Video
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -166,11 +169,12 @@ The List Interface
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
 
-
+LinkedList Add Implementation
+-----------------------------
 
 [10:21] LinkedList Add Implementation Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -195,12 +199,15 @@ TODO: fix URLS.
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
+
+Tracing Add with Debugger
+-------------------------
 
 [13:33] Tracing Add with Debugger Video
----------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -218,8 +225,8 @@ TODO: fix URLS.
    </a>
 
 
-List Implementation Details
----------------------------
+LinkedList Remove
+-----------------
 
 [18:09] LinkedList Remove Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -252,9 +259,19 @@ TODO: fix URLS.
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint3.html ka
+   :long_name: Checkpoint 3
 
+
+
+Programming Practice: Lists 1
+-----------------------------
+
+.. extrtoolembed:: 'Programming Practice: Lists 1'
+   :workout_id: 1922
+
+Considering and Array Implementation of a List
+----------------------------------------------
 
 [10:19] LinkedList Details and Options Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -279,9 +296,12 @@ TODO: fix URLS.
 Checkpoint 4
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint4.html ka
+   :long_name: Checkpoint 4
 
+
+Considering an Array Implementation of a List
+---------------------------------------------
 
 [15:48] Array List Video
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -301,3 +321,9 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="ArrayListImplementation.pptx">
    </a>
+
+Programming Practice: Lists 2
+-----------------------------
+
+.. extrtoolembed:: 'Programming Practice: Lists 2'
+   :workout_id: 1923

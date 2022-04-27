@@ -53,8 +53,8 @@ of the Eclipse workbench.
 Configuring Eclipse
 -------------------
 
-Installing the Webcat Plugin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Installing the Web-CAT Plugin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Now we need to install an additional plug-in to make some common tasks in this
 course easier.

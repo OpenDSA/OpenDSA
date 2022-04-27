@@ -26,8 +26,11 @@ Suggested Reading
 
 Chapter 7 from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
+Introduction to Recursion
+-------------------------
+
 [5:53] Intro to Recursion Video, Part 1 of 2
---------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -39,7 +42,7 @@ Chapter 7 from  `Data Structures and Abstractions with Java, 4th edition  by Fra
 
 
 [12:41] Intro to Recursion Video, Part 2 of 2
----------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -59,12 +62,15 @@ TODO: fix URLS.
 Checkpoint 1
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint1.html ka
+   :long_name: Checkpoint 1
 
+
+More Recursion
+--------------
 
 [12:36] Factorial Examples Video
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -81,8 +87,17 @@ TODO: fix URLS.
    <img src="" alt="RecursionExamples.pptx">
    </a>
 
+Programming Practice: Recursion 1
+---------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Recursion 1'
+   :workout_id: 1916
+
+Recursion on Arrays
+-------------------
+
 [13:30] Display Arrays Video
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Correction to note!**  The code in the second example of this video is
 missing ``{}`` in the if block.  It should be:
@@ -121,12 +136,15 @@ TODO: fix URLS.
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint2.html ka
+   :long_name: Checkpoint 2
 
+
+Recursion on Arrays Middle
+--------------------------
 
 [9:53] Middle Processing Trace Video
-------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -146,12 +164,23 @@ TODO: fix URLS.
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint3.html ka
+   :long_name: Checkpoint 3
 
+
+
+Programming Practice: Recursion 2
+---------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Recursion 2'
+   :workout_id: 1917
+
+
+Recursion on Linked Chain
+-------------------------
 
 [7:41] Linked Chain Recursive Video
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -168,8 +197,11 @@ TODO: fix URLS.
    </a>
 
 
+Tower of Hanoi
+--------------
+
 [11:44] Tower of Hanoi Video
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -188,12 +220,15 @@ TODO: fix URLS.
 Checkpoint 4
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint4.html ka
+   :long_name: Checkpoint 4
 
+
+Recursion Wrap Up
+-----------------
 
 [8:28] Recursion Wrap Up Video
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -208,3 +243,55 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="RecursionWrapUp.pptx">
    </a>
+
+
+Programming Practice: Recursion 3
+---------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Recursion 3'
+   :workout_id: 1918
+
+
+
+
+
+Forward Flow Tracing Exercises
+------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummFwdFlow.html ka
+   :long_name: Recursion Tracing Exercises Set 1
+
+
+Backward Flow Tracing Exercises
+-------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummbckwrdFlow.html ka
+   :long_name: Recursion Tracing Exercises Set 2
+
+
+Find Error Tracing Exercises
+----------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummFuncErr.html ka
+   :long_name: Recursion Tracing Exercises Set 3
+
+
+Two Recursive Calls Tracing Exercises
+-------------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummTwoRC.html ka
+   :long_name: Recursion Tracing Exercises Set 4
+
+
+How Many Times Tracing Exercises
+--------------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummHowmany.html ka
+   :long_name: Recursion Tracing Exercises Set 5
+
+
+Harder Tracing Exercises
+------------------------
+
+.. avembed:: Exercises/RecurTutor/RecTraceSummHard.html ka
+   :long_name: Recursion Tracing Exercises Set 6

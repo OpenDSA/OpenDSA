@@ -25,12 +25,8 @@ Naming
 ~~~~~~
 
 * Names that do not adhere to proper conventions
-* Names that do not adequately capture and communicate the concept they
-represent or the purpose of the class, method, variable, or concept they
-represent
-* Names that are too long or short and not sufficiently descriptive,
-i.e. poor identifiers (for example single~characters, or ambiguous
-abbreviations, initials, acronyms)
+* Names that do not adequately capture and communicate the concept they represent or the purpose of the class, method, variable, or concept they represent
+* Names that are too long or short and not sufficiently descriptive, i.e. poor identifiers (for example single~characters, or ambiguous abbreviations, initials, acronyms)
 
 
 Formatting and Indentation
