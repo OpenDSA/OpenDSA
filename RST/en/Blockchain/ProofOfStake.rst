@@ -240,7 +240,7 @@ Upon discovery of a malicious or ill-configured validator node, the responsible
 validator will be punished by way of slashing. The specific implementation details 
 of slashing vary from chain to chain; however, in essence either all or part of 
 the validators staked assets will be seized and not returned to them as a punishment
-for failing to adhere to the network protocol. 
+for failing to adhere to the network protocol.
 
 .. inlineav:: ProofOfStakeConflict ss
    :long_name: ProofOfStakeConflict Slideshow
@@ -260,8 +260,13 @@ or more of the mining cycles.
 For Proof of Stake algorithms, this means that one individual
 (or a group invested in a stake pool as described in 'How does it
 work?') maintains control of 51% of the total staked tokens in
-the network.
-For both algorithms, a 51% attack enables a signular party to retain control over the next block that will be added to the
+the network. An important distinction is that the user only needs
+to control 51% of the total staked tokens in the network. For example,
+it is estimated that the average PoS token has around 70% of the total
+token supply staked. This implies that a single user can acquire majority
+control over the network by only holding around 35% of the total token supply.
+
+For both algorithms, a this form of attack enables a singular party to retain control over the next block that will be added to the
 chain.
 If the successful perpetrator of the 51% attack has injected a
 malicious transaction, then it will be accepted as the hacker themselves retains sufficient voting power to accept any transactions they desire.
@@ -270,15 +275,9 @@ Examples of things that can occur in a 51% attack include preventing
 valid transactions from receiving verification
 (and so being added to the chain). Imagine you send you are trying to sell your ETH on a public exchange like Coinbase to liquidate your assets. If a malicious hacker wishes to prevent liquidation, they can block the blockchain transfer of coins which would in turn prevent you from selling any of your tokens. 
 
-A secondary attack vector is double spending. If verification of the transaction does not occur in a timely manner,
+A secondary attack vector, and more common, is double spending. If verification of the transaction does not occur in a timely manner,
 then an alternative transaction can get onto the blockchain that
 spends those same coins (effectively allowing a malicous user to re-spend coins).
-Another example of events that can occur during a 51% attack is the
-attacker giving themselves refunds from transactions that have already
-occured by overwriting block transactions in a fork that the attacker
-controls.
-The fork uses the same coin in another transaction by substituting the
-coin used in the previous transaction in the new transaction.
 
 51% attacks are difficult to recognize until the attack is executed.
 Detection can occur when duplicate transactions or repeating refunds
@@ -303,10 +302,46 @@ less coin to stake.
 Please see :ref:`cryptohacking <Hacking Strategies> <Cryptohacking>`
 for more information related to crypto hacking.
 
-[It is not clear from this description how the attack is stopped and
-reversed. It looks like validators can see the fork, and recognize the
-duplicate transactions. But, then what? Why does that change anything?
-Again, a slideshow would help here.]
+.. inlineav:: ProofOfStakeSecurity ss
+   :long_name: ProofOfStakeSecurity Slideshow
+   :links: AV/Blockchain/ProofOfStake.css
+   :scripts: AV/Blockchain/ProofOfStakeSecurity.js
+   :output: show
+
+As shown in the slideshow, the threat of a PoS attack is real. If A
+given party or individual did successfully accumulate sufficient control
+over a currency's staked tokens, they would be able to force add malicious
+blocks to the chain in order to benefit themselves and hurt others. 
+
+The most obvious reason as to why double spending would not take place is because 
+following a successful double spend transaction, all nodes on the network will be 
+able to see and clearly identify this fraudulent transaction. A number of things 
+may take place after this has been identified, but most immediately, the price of
+the token will drop as individuals recognize the system has been compromised.
+
+This drop is actually beneficial for the network as it enables more validators to 
+rapidly come online and displace the majority control that one entity had over
+the network. As soon as the malicious party had majority control of the network,
+new validators would be able to repeal the previously added block and slash the
+staked currency of the malicious validator.
+
+What this means from a practicality standpoint is that any malicious actor engaging
+in a double-spending attack would need to double-spend MORE currency than what they
+can potentially lose from a slashing. In most PoS tokens, it would be feasibly impossible
+to double spend more than the amount of tokens necessary to acquire majority ownership
+over a network as this is usually an incredibly large portion of the coins total
+market cap.
+
+Slashing is just one way that majority validator abuse can be combatted; another means
+the community has to fight abuse is through forking. At anytime, if enough members of the
+community agree that the chain has been compromised and is no longer accurate, they can
+decide to fork the chain at the last known point of legitimacy and start a new chain
+in which the malicious actor has no stake. Common examples of forking include Bitcoin
+and Bitcoin cash wherein there was a divergence in community beliefs regarding what the future
+of the token should look like so 2 separate tokens emerged.
+
+While technically possible, attacking a proof of stake network is made feasibly unobtainable 
+due to the social and logistical implications of what may occur.
 
 
 Energy Concerns
