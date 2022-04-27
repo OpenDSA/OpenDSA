@@ -56,11 +56,11 @@ The most important ``Map`` operations are:
 
 .. code-block:: java
 
-   public boolean put(K key, V val);       // store a given key,value pair
-   public V get(Object key);               // get the value associated with given key
-   public boolean remove(Object key);      // remove key,value pair for given key
-   public boolean containsKey(Object key); // determine whether key exists in Map
-   public Set<K> keySet();                 // return the set of keys
+   public V put(K key, V val);         // store a given key,value pair
+   public V get(K key);                // get the value associated with given key
+   public V remove(K key);             // remove key,value pair for given key
+   public boolean containsKey(K key);  // determine whether key exists in Map
+   public Set<K> keySet();             // return the set of keys
 
 
 Classes that Implement ``Map``
