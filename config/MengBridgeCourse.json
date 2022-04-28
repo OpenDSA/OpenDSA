@@ -83,9 +83,6 @@
     "Introduction: About This Course": {
       "MengBridgeCourse/CourseIntro": {
       },
-      "MengBridgeCourse/GettingStarted": {
-      }
-      
     },
 
     "Inheritance and Polymorphism": {
@@ -247,7 +244,7 @@
             }
         },
       "MengBridgeCourse/1114Unit3_Lab1_Placeholder": {
-        },  
+        },
       "MengBridgeCourse/1114PicturesAndForEachLoops": {
         "Syntax Practice 6a: Pixel Loops": {
           "points": 20
@@ -271,7 +268,7 @@
       "MengBridgeCourse/1114Unit3_Lab2_Placeholder": {
        }
     },
-    
+
     "More Lists, Loops, Arrays and Grouping": {
       "MengBridgeCourse/1114AggregationStringsandMoreLoops": {
         "Syntax Practice 7a: For Loops and OO Design": {
@@ -380,7 +377,7 @@
         },
        "MengBridgeCourse/1114Unit5_Lab2_Placeholder": {
          }
-        
+
     },
     "Multi-Dimensional Arrays, File I/O and Sets":{
       "MengBridgeCourse/1114MDArrays": {
@@ -413,7 +410,7 @@
           }
         },
       "MengBridgeCourse/1114Unit6_Lab1_Placeholder": {
-         },        
+         },
       "MengBridgeCourse/1114FileIO": {
           "Syntax Practice: Scoping": {
             "points": 40
@@ -534,7 +531,7 @@
           "threshold": 2
         }
       },
-        
+
       "MengBridgeCourse/2114Polymorphism2":{
         "Checkpoint 1": {
           "points": 15,
@@ -558,7 +555,7 @@
         }
       },
       "MengBridgeCourse/2114Unit7_Lab1_Placeholder": {
-      }, 
+      },
       "MengBridgeCourse/2114StyleReview":{},
 
       "MengBridgeCourse/2114Bags1": {
@@ -819,7 +816,7 @@
         }
       },
       "MengBridgeCourse/2114Unit11_Lab1_Placeholder": {
-      }, 
+      },
       "MengBridgeCourse/2114Iterators": {
         "Checkpoint 1": {
           "points": 36,
