@@ -472,11 +472,11 @@ go inside a **method**, and every method belongs to an object (or to a
 **class**, a family of objects that all understand the same methods).
 
 The programming environment we will use in this course is called
-**BlueJ**.  We are also using class libraries from
+**Eclipse**.  We are also using class libraries from
 **Greenfoot**, a framework that allows us to work with many
 kinds of micro-worlds.
 
-When you open a project in BlueJ, you will see a diagram of the
+When you open a project in Eclipse, you will see a list of the
 various Java classes you are working on. Here, we can see BlueJ's
 main window looking at a simple Java project for solving LightBot
 Level 3.
