@@ -118,7 +118,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="DownloadLinkHere">
+   <img src="" alt="Link to BagInterface.java">
    </a>
 
 .. code-block:: java
@@ -311,7 +311,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="Download Link Here">
+   <img src="" alt="CS2-ExArrayBagsJUnit.zip">
    </a>
 
 TODO: fix URLS.
@@ -344,7 +344,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <img src="" alt="MoreArrayBagMethods PPT">
    </a>
 
 
@@ -391,7 +391,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <img src="" alt="Part 1 Associated PPT Slides">
    </a>
 
 
@@ -410,7 +410,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <img src="" alt="Part 2 Associated PPT Slides">
    </a>
 
 
@@ -430,7 +430,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <img src="" alt="Part 3 Associated PPT Slides">
    </a>
 
 
@@ -460,7 +460,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <img src="" alt="DoubleArraySlides PPT">
    </a>
 
 
