@@ -44,7 +44,7 @@ TODO: fix URLS.
 
 TODO: fix URLS.
 
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
+In Eclipse, you can download an example of this by going to Project > Download Assignment ...
 
 
 Note:
