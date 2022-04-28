@@ -2,7 +2,7 @@
 // Inseh1234 slideshow
 $(document).ready(function() {
   "use strict";
-  var av_name = "ProofOfStake";
+  var av_name = "ProofOfStakeSecurity";
   var av = new JSAV(av_name);
   
   var topMargin = 50;
@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   var graph = av.ds.graph({visible: true, left: -10, top: blocktop, height: 300, width: 300});
 
-  av.umsg("The white nodes on perimeter of the graph represent 'thin nodes', essentially just users of the Ethereum network. The blue interior nodes represent the set of validator nodes that were selected to be part of the validation committee. A singular validator for the current block has not yet been selected. You will notice the validator nodes vary in size, this is done in proportion to how much each validator is staking. The bigger nodes represent a validator who has staked more tokens.");
+  av.umsg("We will now analyze a security threat to Proof of Stake using the visualization below. The most common security threat is that of double spending.");
 
   // Thin Nodes
   graph.css({"font-size": "12px"});
@@ -44,46 +44,48 @@ $(document).ready(function() {
   av.displayInit();
 
   // Slide 2
-  av.umsg("The validator for the current block has now been selected as shown in yellow. This validator is responsible for generating and proposing the next block.");
-  val3.addClass('yellownode');
+  av.umsg("In this case, V3, shown in red, has successfully accumulated a majority ownership of all staked tokens. V3 can now independently approve blocks without the need for other validators to agree.");
+  val3.removeClass('bluenode');
+  val3.addClass('rednode');
   av.step();
 
   // Slide 3
-  av.umsg("The selected validator node will now assemble transactions into a block. These transactions are publicly visible to all nodes on the network.")
-  const av3Edge = graph.addEdge(a, val3).addClass("orangeedge");
-  const bv3Edge = graph.addEdge(b, val3).addClass("orangeedge");
-  const cv3Edge = graph.addEdge(c, val3).addClass("orangeedge");
-  const dv3Edge = graph.addEdge(d, val3).addClass("orangeedge");
-
-  av.step();
-
-  // Slide 4
-  av.umsg("The selected validator node has now assembled enough transactions to propose a new block.");
-  av3Edge.hide();
-  bv3Edge.hide();
-  cv3Edge.hide(); 
-  dv3Edge.hide();
-  
+  av.umsg("As a majority holder, V3 will soon be selected to propose the next block. It will begin to do so in a normal fashion; however, it will include a malicious transaction within the block.")
+ 
   var v3Block = av.ds.list({"left": "165px", "top":"185px", nodegap: 10}).addFirst("V3 Block");
 
   av.step();
 
+  // Slide 4
+  av.umsg("Lets say that prior to this block, thin node 1 had sent $500 to thin node 2. That transaction was included in the previous block, Blk 2.");
+  const aTobEdge = graph.addEdge(a, b).addClass("orangeedge");
+
+
+  av.step();
+
   // Slide 5
-  av.umsg("The selected validator node will now begin to broadcast the new block to the network so that the validation committee can begin voting.");
+  av.umsg("V3 will now attempt to include a new transaction in the latest block that re-spends, or double spends, the same $500 by sending it from thin node 1 to thin node 4.");
+  const aTodEdge = graph.addEdge(a, d).addClass("orangeedge");
+
+  av.step();
+
+  // Slide 6
+  av.umsg("This transaction would normally be a clear red flag for validators to deny this block from being added to the chain. In fact, validators V1 and V2 will vote against this block.");
   a.hide();
   b.hide();
   c.hide();
   d.hide();
+  aTobEdge.hide();
+  aTodEdge.hide();
   val1.addClass('topLeftSpot')
   val2.addClass('topRightSpot')
   val3.addClass('proposalSpot')
   v3Block.addClass('deadCenterBlock');
 
-
   av.step();
 
-  // Slide 6
-  av.umsg("All other committee members nodes will now vote with their staked currency on whether or not to approve the block proposed by V3. It is important to note that the committee members have voting power in proportion to their amount of staked currency.");
+  // Slide 7
+  av.umsg("Despite V1 and V2 recognizing the illegitimacy of this block, they do not have sufficient staked currency to outweigh the voting power of V3.");
   
   
   var rect1 = av.g.set();
@@ -91,23 +93,24 @@ $(document).ready(function() {
   rect1.css({fill: "gray"});
   
   av.label("Block Voting", {before: rect1, left: 325, top: -7}); //TODO: Fix label so that it displays correctly next to the rectangle
-  av.step(); 
-
-  // Slide 7
-  av.umsg("A majority of staked currency from non-validator nodes has voted in-favor of this block and thus, the block will be appended to the chain.");
   
   var rect2 = av.g.set();
   rect2.push(av.g.rect(400, 100 + 50, 50, 50));
   rect2.css({fill: "gray"});
-  rect1.css({fill: "blue"});
-  av.step(); 
+  rect1.css({fill: "red"});
+  av.step();
 
+  // Slide 8
+  av.umsg("The block will be appended to the chain and V3 will have successfully allowed thin node 1 to double spend its funds.");
   v3Block.hide();
   blockchain.hide();
   
   var blockchainUpdated = av.ds.list({top: blocktop + 0, left: "550px", nodegap: 10});
   blockchainUpdated.addFirst("V3 Block").addFirst("Blk 2").addFirst("Blk 1");
   blockchainUpdated.layout({updateTop: false});
+  
+  av.step();
+  
 
   av.recorded();
 });

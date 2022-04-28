@@ -113,43 +113,38 @@ PIVX, Neblio (NEBL), Cardano (ADA), and Stratis (STRAX).
 How does it work?
 ~~~~~~~~~~~~~~~~~
 
-Much like in the traditional Proof-Of-Work mechanism, in the current case of Ethereum, a block typically consists of around 70 transactions. Unlike Proof-Of-Work where miners are competing for the correct solution necessary to append this block to the chain, the Proof-Of-Stake mechanism is more efficient in that it selects a validator who is responsible for proposing a block to the chain.
+An important distinction for the content discussed in this section of the eTextbook is
+that this serves as a high level, chain agnostic summary of how proof-of-stake works. 
+Specific implementation details of a PoS network will vary greatly on different networks.
 
-[Things that need to be covered in order to provide true explanation of committee process (all this is ETH specific info)]
-- Mainnet
-- Beacon chain
-- Sharded chains
+Much like in the traditional Proof-Of-Work mechanism, in the current case of Ethereum, 
+a block typically consists of around 70 transactions. Unlike Proof-Of-Work where miners 
+are competing for the correct solution necessary to append this block to the chain, the 
+Proof-Of-Stake mechanism is more efficient in that it selects a validator who is responsible 
+for proposing a block to the chain. 
 
+Who are these validators though and how do they get chosen? A validator is any participant in 
+a proof-of-stake network who has staked a sufficient amount of the network tokens. In the 
+case of the Ethereum network, 32 ETH is the minimum amount of staked assets required to deploy
+a validator node. The process by which a validator is selected is a pseudo-random algorithm
+which elects the next chosen validator in proportion to how much currency the given validators
+have staked. What this means in essence is that if one validator has 32 ETH staked while another 
+has 320 ETH staked, over the course of a long period of time, the second validator will be chosen
+10 times more than the first validator on average. 
 
-A new block is proposed for addition to the blockchain by a committee
-of community members selected for the purpose.
-A committee is a group of at least 128 validators.
-The number of committee members is decided by how many transactions
-need to be approved at the time.
-For each transaction, there needs to be 32 validators.
-In addtion, there must also be one more validator to propose
-a new block to the blockchain.
-The committee is formed, and then must propose the next block
-within a set period of time.
+A common vehicle used to improve accessibility of validator nodes is a staking pool. Staking pools 
+are groups of individuals who combine their coin together to increase the chances of the pool being chosen
+as a member in the next committee. While this pool is made up of pooled assets from hundreds of thousands 
+of individuals, the pool itself serves as a singular validator node on the network. Assets can be added to 
+a staking pool at anytime; however, the pool must lock up assets for a set period of time depending on the
+network protocol used. The amount of time your assets are locked up for is referred to as the bonding period.
+Some networks will have a variety of bonding periods available; for example, ETH 2.0 has
+staking protocols that require assets to be locked up for multiple years as well as other staking protocols
+that can have bonding periods as short as 14 days.
 
-To form a new committee, members are chosen at random from a pool
-of users.
-Individuals who have more coin invested in the cryptocurrency,
-and for a longer period of time, 
-have a higher chance of being chosen for the validation committee.
-[Is this correct? Do different users put up different amounts to bid
-for being on the committee? Or is it a fixed stake to be in the lottery?
-The next sentence seems to indicate that it is fixed.]
-In Ethereum 2.0, users are required to stake 32 ETH to be entered for
-a chance to be a validator in the next committee.
-Those who have put up this stake form the population that competes to
-be selected.
-Individuals with less coin to invest might choose to join a staking
-pool.
-Staking pools are groups of individuals who combine
-their coin together to increase the chances of the pool being chosen
-as a member in the next committee. [Increase the chances? Again, isn't
-it a fixed stake to buy a lottery ticket?]
+In the Ethereum implementation, teh validation process involves what is called a
+committee. A committee is a collection of pseudo-randomly chosen validator nodes
+that are all collectively responsible for the proposal of the next block. 
 
 The reason that an individual might stake some coin to compete for a
 place in the next committee (or might join a staking pool) is that
@@ -162,34 +157,36 @@ The process of validators adding a new block to the blockchain occurs
 in three phases:
 proposing the block, voting on the block, and adding transactions to
 the block.
-After being selected for the validation committee, one random
-validator in the committee is chosen to propose a new block.
-The remaining members' job is to vote on the proposed
-block and attest to transactions within the block.
-These remaining members vote to approve the newly proposed
-block. [This phrasing does not make sense. Its not too exciting if all
-they do is vote to approve. ;) I think its more like vote **whether**
-to approve. But then, what do they base the decision on?]
-Once this phase is complete, the remaining members attest to a
-transaction from a previously created block within the chain. [What
-does that mean? Any particular transaction? What is the point to this?]
+As discussed previously, the validator is selected in proportion to how 
+many tokens are staked. After being selected, this validator is
+responsible for proposing a new block. The remaining committee members' 
+job is to vote on the proposed block and attest to transactions within the block.
+It is the committee's responsibility to vote on whether or not  the newly proposed
+block is legitimate and should be included in the chain. 
 
-From there [When does this happen?],
-32 new committees are chosen in slots of time called
-epoches to repeat the steps of proposing blocks and attesting to new
-transactions on the newly proposed block. [Why 32? How are they chosen?]
-There is no set timeframe for an
-epoch but on average, an epoch is around 12 minutes. [What is an
-epoch? One committee's time when it is in charge of defining the next block?]
-After the epochs are completed, the block has two remaining slots
-for transactions before all of the transactions in the block are considered
+What exactly are committee members looking at to see whether a proposed block is valid? There
+are many points of validation necessary to ensure the block is valid and these vary from chain 
+to chain. An obvious criteria for validity is adherence to the format specification of a
+block, much-like packets being sent over an internet connection must adhere to a particular format. 
+An additional check that can be performed is comparing the previous hash of this block to the hash of
+the most recent block on the chain. More advanced block verification processes can exist on different chains; 
+however, these two are the most common high-level validity checks performed.
+
+So long as the committee has voted in majority approval of the proposed block, 
+that block will be appended to the chain. We will cover what happens when 
+a block is rejected later on. 
+
+
+Following the successful appendage of a new block to the chain,
+the process begins to repeat itself. This entire process will repeat
+over a set period of time known as an epoch. Epoch length will vary based 
+on the given network; however, in the case of Ethereum a new block is appended
+roughly every 15 seconds. An important note is that even if a block is approved and appended to the master-chain,
+it can be still be invalidated later on. After an epochs is completed, the added block still 
+has two remaining slots for transactions before all of the transactions in the block are considered
 final and cannot be reversed.
-This means that a block in the blockchain has 
-room for 34 transaction bundles in their history. [What is a
-transaction bundle? I am not understanding the relationship between a
-block and the transactions and the committees. I thought that a
-committee validated a block of transactions. Then this idea of 32
-committees and 34 slots/bundles came up. What is the relationship?]
+
+Let's take a look at the committee approval process visualized in the slideshow below.
 
 .. inlineav:: ProofOfStake ss
    :long_name: ProofOfStake Slideshow
@@ -229,6 +226,22 @@ but either fails to do so or does so in a way that is not valid?
 
 This introduces the concept of Slashing where a validator node is punished for not fulfilling its obligations.
 
+Slashing Explained; Incentivizing Legitimacy
+~~~~~~~~~~~~~~~~~
+Slashing is an important feature of PoS as it incentivizes validator nodes to 
+perform their block proposal duties in accordance with the set rules and 
+regulations of the given chain. 
+
+Proof of Stake retains decentralization by way of the committee voting process,
+these committee members can expose a malicious or ill-configured validator by 
+voting against their proposed block as explained above in the How Does It Work section.
+
+Upon discovery of a malicious or ill-configured validator node, the responsible 
+validator will be punished by way of slashing. The specific implementation details 
+of slashing vary from chain to chain; however, in essence either all or part of 
+the validators staked assets will be seized and not returned to them as a punishment
+for failing to adhere to the network protocol.
+
 .. inlineav:: ProofOfStakeConflict ss
    :long_name: ProofOfStakeConflict Slideshow
    :links: AV/Blockchain/ProofOfStake.css
@@ -247,8 +260,13 @@ or more of the mining cycles.
 For Proof of Stake algorithms, this means that one individual
 (or a group invested in a stake pool as described in 'How does it
 work?') maintains control of 51% of the total staked tokens in
-the network.
-For both algorithms, a 51% attack enables a signular party to retain control over the next block that will be added to the
+the network. An important distinction is that the user only needs
+to control 51% of the total staked tokens in the network. For example,
+it is estimated that the average PoS token has around 70% of the total
+token supply staked. This implies that a single user can acquire majority
+control over the network by only holding around 35% of the total token supply.
+
+For both algorithms, a this form of attack enables a singular party to retain control over the next block that will be added to the
 chain.
 If the successful perpetrator of the 51% attack has injected a
 malicious transaction, then it will be accepted as the hacker themselves retains sufficient voting power to accept any transactions they desire.
@@ -257,16 +275,9 @@ Examples of things that can occur in a 51% attack include preventing
 valid transactions from receiving verification
 (and so being added to the chain). Imagine you send you are trying to sell your ETH on a public exchange like Coinbase to liquidate your assets. If a malicious hacker wishes to prevent liquidation, they can block the blockchain transfer of coins which would in turn prevent you from selling any of your tokens. 
 
-A secondary attack vector is double spending. If verification of the transaction does not occur in a timely manner,
+A secondary attack vector, and more common, is double spending. If verification of the transaction does not occur in a timely manner,
 then an alternative transaction can get onto the blockchain that
-spends those same coins
-(effectively allowing a malicous user to re-spend coins).
-Another example of events that can occur during a 51% attack is the
-attacker giving themselves refunds from transactions that have already
-occured by overwriting block transactions in a fork that the attacker
-controls.
-The fork uses the same coin in another transaction by substituting the
-coin used in the previous transaction in the new transaction.
+spends those same coins (effectively allowing a malicous user to re-spend coins).
 
 51% attacks are difficult to recognize until the attack is executed.
 Detection can occur when duplicate transactions or repeating refunds
@@ -284,27 +295,53 @@ wallets.
 
 In a Proof of Stake system, a 51% attack is discouraged and those who
 participate in such an attack will lose part of their stake or coin as
-a result.
-Upon discovery, not only will the attacker lose their stake by losing all
-of the coin taken in the fraudulent transactions, 
-but the value of the cryptocurrency will go down. 
-When this happens, it prevents the individual with the
-majority from gaining another majority since more people are able to
-afford more coin.
-If more coin is in process, the majority is lost for the hacker.
-In addition, the discovered attacker lost the gas paid for
-the transaction, further reducing their wealth within the
-cryptocurrency system.
+a result (see slashing explained).
 This means that the chances for the attacker gaining a chance at
 validating are reduced in a Proof of Stake algorithm since the have
 less coin to stake.
 Please see :ref:`cryptohacking <Hacking Strategies> <Cryptohacking>`
 for more information related to crypto hacking.
 
-[It is not clear from this description how the attack is stopped and
-reversed. It looks like validators can see the fork, and recognize the
-duplicate transactions. But, then what? Why does that change anything?
-Again, a slideshow would help here.]
+.. inlineav:: ProofOfStakeSecurity ss
+   :long_name: ProofOfStakeSecurity Slideshow
+   :links: AV/Blockchain/ProofOfStake.css
+   :scripts: AV/Blockchain/ProofOfStakeSecurity.js
+   :output: show
+
+As shown in the slideshow, the threat of a PoS attack is real. If A
+given party or individual did successfully accumulate sufficient control
+over a currency's staked tokens, they would be able to force add malicious
+blocks to the chain in order to benefit themselves and hurt others. 
+
+The most obvious reason as to why double spending would not take place is because 
+following a successful double spend transaction, all nodes on the network will be 
+able to see and clearly identify this fraudulent transaction. A number of things 
+may take place after this has been identified, but most immediately, the price of
+the token will drop as individuals recognize the system has been compromised.
+
+This drop is actually beneficial for the network as it enables more validators to 
+rapidly come online and displace the majority control that one entity had over
+the network. As soon as the malicious party had majority control of the network,
+new validators would be able to repeal the previously added block and slash the
+staked currency of the malicious validator.
+
+What this means from a practicality standpoint is that any malicious actor engaging
+in a double-spending attack would need to double-spend MORE currency than what they
+can potentially lose from a slashing. In most PoS tokens, it would be feasibly impossible
+to double spend more than the amount of tokens necessary to acquire majority ownership
+over a network as this is usually an incredibly large portion of the coins total
+market cap.
+
+Slashing is just one way that majority validator abuse can be combatted; another means
+the community has to fight abuse is through forking. At anytime, if enough members of the
+community agree that the chain has been compromised and is no longer accurate, they can
+decide to fork the chain at the last known point of legitimacy and start a new chain
+in which the malicious actor has no stake. Common examples of forking include Bitcoin
+and Bitcoin cash wherein there was a divergence in community beliefs regarding what the future
+of the token should look like so 2 separate tokens emerged.
+
+While technically possible, attacking a proof of stake network is made feasibly unobtainable 
+due to the social and logistical implications of what may occur.
 
 
 Energy Concerns
