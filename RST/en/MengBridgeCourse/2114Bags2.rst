@@ -6,8 +6,8 @@
 .. avmetadata::
    :author: Molly Domino
 
-Introduction to Bags
-====================
+Introduction to Linked Bags
+===========================
 
 Objectives
 ----------
@@ -102,7 +102,7 @@ TODO: fix URLS.
 .. raw:: html
 
    <a href="" download>
-   <img src="" alt="Download Link Here">
+   <img src="" alt="CS2-ExLinkedBagsJUnit.zip">
    </a>
 
 TODO: fix URLS.

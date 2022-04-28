@@ -6,8 +6,8 @@
 .. avmetadata::
    :author: Molly Domino
 
-Introduction to Stacks
-======================
+Stacks
+======
 
 Objectives
 ----------
