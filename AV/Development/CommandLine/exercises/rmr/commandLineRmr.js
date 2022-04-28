@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -27,7 +27,8 @@ $(document).ready(function () {
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    const mammalsDir = getHomeDir().findDeep("mammals");
+    if (mammalsDir && !mammalsDir.find("dogs")) {
       awardCredit();
     }
   };
@@ -36,15 +37,14 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "rm -r [path]",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
-      challengeDescription:
-        "List all files and directories in the current working directory.",
+        "The rm command with the -r flag removes the directory at the location specified by [path].",
+      challengeDescription: 'Remove the "dogs" directory.',
     },
     initialFileSystem,
     initialFileSystem.contents[3],
     handleAwardCredit,
-    "ls"
+    "rm"
   );
 });

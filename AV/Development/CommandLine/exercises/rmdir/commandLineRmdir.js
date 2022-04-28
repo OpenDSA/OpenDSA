@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -22,12 +22,14 @@ $(document).ready(function () {
     child2.insert(new File("beagle.txt"));
     child2.insert(new File("boxer.txt"));
     child2.insert(new File("poodle.txt"));
+    child2.insert(new Directory("houses"));
 
     return top;
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    const animalsDir = getHomeDir().findDeep("dogs");
+    if (animalsDir && !animalsDir.find("houses")) {
       awardCredit();
     }
   };
@@ -36,15 +38,14 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "rmdir [path]",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
-      challengeDescription:
-        "List all files and directories in the current working directory.",
+        "The rmdir command removes an empty directory at the location specified by [path].",
+      challengeDescription: 'Remove the "houses" directory.',
     },
     initialFileSystem,
     initialFileSystem.contents[3],
     handleAwardCredit,
-    "ls"
+    "rmdir"
   );
 });

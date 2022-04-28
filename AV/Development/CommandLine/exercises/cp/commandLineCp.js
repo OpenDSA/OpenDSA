@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -27,7 +27,14 @@ $(document).ready(function () {
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    const animalsDir = getHomeDir();
+    const mammalsDir = getHomeDir().findDeep("mammals");
+    if (
+      animalsDir &&
+      animalsDir.find("monkey.txt") &&
+      mammalsDir &&
+      mammalsDir.find("monkey.txt")
+    ) {
       awardCredit();
     }
   };
@@ -36,15 +43,14 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "cp [src] [dst]",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
-      challengeDescription:
-        "List all files and directories in the current working directory.",
+        "The cp command copies a file or directory from the location specified by [src] to the location specified by [dst].",
+      challengeDescription: 'Copy "monkey.txt" to the "animals" directory.',
     },
     initialFileSystem,
     initialFileSystem.contents[3],
     handleAwardCredit,
-    "ls"
+    "cp"
   );
 });

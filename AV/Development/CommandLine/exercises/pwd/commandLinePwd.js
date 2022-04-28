@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -23,28 +23,27 @@ $(document).ready(function () {
     child2.insert(new File("boxer.txt"));
     child2.insert(new File("poodle.txt"));
 
+    console.log("findDeep", top.findDeep("beagle.txt"));
+
     return top;
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
-      awardCredit();
-    }
+    awardCredit();
   };
 
   const initialFileSystem = createInitialFileSystem();
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "pwd",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
-      challengeDescription:
-        "List all files and directories in the current working directory.",
+        "The pwd command prints the path of the current working directory.",
+      challengeDescription: "Print the path of the current working directory.",
     },
     initialFileSystem,
     initialFileSystem.contents[3],
     handleAwardCredit,
-    "ls"
+    "pwd"
   );
 });

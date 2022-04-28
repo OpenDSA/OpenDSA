@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    if (getCurrDir().name === "mammals") {
       awardCredit();
     }
   };
@@ -36,15 +36,15 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "cd [path]",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
+        "Relative paths can be used with cd to change the current working directory to a parent directory.",
       challengeDescription:
-        "List all files and directories in the current working directory.",
+        'Change the current working directory to "mammals".',
     },
     initialFileSystem,
-    initialFileSystem.contents[3],
+    initialFileSystem.contents[3].contents[3],
     handleAwardCredit,
-    "ls"
+    "cd"
   );
 });

@@ -200,10 +200,16 @@ const handle_mv =
 
 const handle_rm =
   (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
-    if (args.length === 1) {
-      const [srcName, srcPath] = splitPath(args[0]);
+    if (args.length === 1 || args.length === 2) {
+      const [srcName, srcPath] = splitPath(args[args.length - 1]);
       const srcDir = getCurrDir().getChildByPath(srcPath);
       if (srcDir instanceof Directory) {
+        const toRemove = srcDir.find(srcName);
+
+        if (toRemove instanceof Directory && args[0] !== "-r") {
+          return "Cannot remove directory without -r";
+        }
+
         srcDir.remove(srcName);
 
         updateFileStructureVisualization(

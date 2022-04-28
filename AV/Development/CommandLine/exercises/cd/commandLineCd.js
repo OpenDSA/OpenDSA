@@ -32,15 +32,17 @@ $(document).ready(function () {
     }
   };
 
+  const initialFileSystem = createInitialFileSystem();
+
   initializeCommandLineExercise(
     {
-      commandTitle: "cd",
+      commandTitle: "cd [path]",
       commandDescription:
-        "The cd command lists all files and directories in the current working directory.",
-      challengeDescription:
-        "List all files and directories in the current working directory.",
+        "The cd command changes the current working directory to the location specified by [path].",
+      challengeDescription: 'Change the current working directory to "dogs".',
     },
-    createInitialFileSystem(),
+    initialFileSystem,
+    initialFileSystem.contents[3],
     handleAwardCredit,
     "cd"
   );

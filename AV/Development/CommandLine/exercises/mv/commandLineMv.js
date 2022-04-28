@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
     child.insert(new File("bear.txt"));
     const child2 = new Directory("dogs");
     child.insert(child2);
-    child2.insert(new File("beagle.txt"));
+    child.insert(new File("beagle.txt"));
     child2.insert(new File("boxer.txt"));
     child2.insert(new File("poodle.txt"));
 
@@ -27,7 +27,14 @@ $(document).ready(function () {
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    const dogsDir = getHomeDir().findDeep("dogs");
+    const mammalsDir = getHomeDir().findDeep("mammals");
+    if (
+      dogsDir &&
+      dogsDir.find("beagle.txt") &&
+      mammalsDir &&
+      !mammalsDir.find("monkey.txt")
+    ) {
       awardCredit();
     }
   };
@@ -36,15 +43,14 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "mv [src] [dst]",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
-      challengeDescription:
-        "List all files and directories in the current working directory.",
+        "The mv command moves a file or directory from the location specified by [src] to the location specified by [dst].",
+      challengeDescription: 'Move "beagle.txt" to the "dogs" directory.',
     },
     initialFileSystem,
     initialFileSystem.contents[3],
     handleAwardCredit,
-    "ls"
+    "mv"
   );
 });

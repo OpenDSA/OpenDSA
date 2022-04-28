@@ -63,6 +63,14 @@ class File extends FileSystemEntity {
       isDirectory: false,
     };
   }
+
+  findDeep(name) {
+    return name === this.name ? this : null;
+  }
+
+  compareByName(file) {
+    return file.name === this.name;
+  }
 }
 
 class Directory extends FileSystemEntity {
@@ -104,6 +112,30 @@ class Directory extends FileSystemEntity {
     return this.contents.find(
       (fileSystemEntity) => fileSystemEntity.name === name
     );
+  }
+
+  findDeep(name) {
+    const found = this.find(name);
+    const foundDeep = this.contents.reduce(
+      (previousValue, content) =>
+        previousValue ? previousValue : content.findDeep(name),
+      null
+    );
+    return found || foundDeep;
+  }
+
+  compareByName(directory) {
+    if (directory.contents.length !== this.contents.length) {
+      return false;
+    }
+
+    for (let i = 0; i < this.contents.length; i++) {
+      if (!this.contents[i].compareByName(directory.contents[i])) {
+        return false;
+      }
+    }
+
+    return directory.name === this.name;
   }
 
   remove(name) {

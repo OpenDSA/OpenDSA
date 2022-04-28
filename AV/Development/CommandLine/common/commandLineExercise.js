@@ -5,6 +5,7 @@ import { renderFileStructureVisualization } from "./fileStructure.js";
 function initializeCommandLineExercise(
   text,
   initialFileSystem,
+  initialCwd,
   handleAwardCredit,
   awardCreditCommand
 ) {
@@ -14,7 +15,7 @@ function initializeCommandLineExercise(
 
   const homeDir = initialFileSystem;
 
-  let currDir = homeDir.contents[3];
+  let currDir = initialCwd;
 
   let svgData;
 
@@ -43,28 +44,28 @@ function initializeCommandLineExercise(
 
   let resizeCount = 0;
 
-  new ResizeObserver(() => {
-    if (resizeCount === 1) {
-      setTimeout(() => {
-        //this is sloppy but I was having sizing issues
-        const id = "#visualization-container";
-        const visualizationWidth = $(id).width();
-        const visualizationHeight = $(id).height();
-        const d3Data = homeDir.mapToD3();
-        svgData = renderFileStructureVisualization(
-          d3Data,
-          currDir.id,
-          visualizationWidth,
-          visualizationHeight,
-          id
-        );
-      }, 500);
-    }
-    // else if (resizeCount > 1) {
-    //   updateTree();
-    // }
-    resizeCount++;
-  }).observe(document.querySelector("#visualization-container"));
+  // new ResizeObserver(() => {
+  //   if (resizeCount === 1) {
+  setTimeout(() => {
+    const id = "#visualization-container";
+    const visualizationWidth = $(id).width();
+    const visualizationHeight = $(id).height();
+    const d3Data = homeDir.mapToD3();
+    svgData = renderFileStructureVisualization(
+      d3Data,
+      currDir.id,
+      visualizationWidth,
+      visualizationHeight,
+      id
+    );
+    //this is sloppy but I was having sizing issues
+  }, 500);
+  // }
+  // else if (resizeCount > 1) {
+  //   updateTree();
+  // }
+  resizeCount++;
+  // }).observe(document.querySelector("#visualization-container"));
 
   const awardCreditHandler = {};
   awardCreditHandler[awardCreditCommand] = handleAwardCredit(
