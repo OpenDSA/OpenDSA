@@ -82,7 +82,7 @@
 
     "Introduction: About This Course": {
       "MengBridgeCourse/CourseIntro": {
-      },
+      }
     },
 
     "Inheritance and Polymorphism": {
@@ -885,6 +885,20 @@
       },
       "MengBridgeCourse/2114Unit12_Program1_Placeholder": {
       }
+    },
+    
+    "Reference": {
+      "Tutorials/2114_first_lab_setup": {
+      },
+      "Tutorials/2114_junit_tutorial": {
+      },
+      "Tutorials/2114_java_io_tutorial": {
+      },
+      "Tutorials/2114_java_commenting": {
+      },
+      "Tutorials/2114_random_numbers": {
+      }
+      
     }
   }
 

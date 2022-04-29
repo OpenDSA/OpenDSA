@@ -93,21 +93,3 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt="Contains Animation PPT">
    </a>
-
-
-
-Unavailable
------------
-
-.. extrtoolembed:: 'Unavailable'
-   :workout_id: 1727
-
-
-
-NOTE:
-
-Above is a temporary workout I put in place that would contain the following exercises
-TODO.  Remove this note and create the actual workout when confirmed.
-
-
-When fixed this will be called: "Coding Practice: Linked Chains"

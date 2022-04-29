@@ -63,7 +63,7 @@ greater detail in other courses.
 For now a general understanding of these requirements would be sufficient.
 
 Review the descriptions and examples of functional and non-functional
-requirements provided below then click "next" to continue.
+requirements provided below.
 
 Functional Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -300,9 +300,6 @@ Review the Case Study below, then
 * Note the nouns and noun phrases, then identify which are classes and which fields
 * Note the verbs and verb phrases, then identify possible methods for each class
 
-Once you have completed the activity you may click on the "next" button to
-proceed to the next page in the module.
-
 
 Case Study - e-Commerce solution (online storefront) for ABC Ltd
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -391,7 +388,7 @@ TODO: fix URLS.
 Much of what you need to know for relationships, hierarchies and reuse has
 been covered within the
 `Java OOP (Object Oriented Programming) Module <Java OOP (Object Oriented Programming) Module>`_ .
-Additionally you may download the UML Diagram key via this link
+Additionally you may download the UML Diagram key via this link:
 
 TODO: fix URLS.
 
@@ -858,6 +855,3 @@ Vending Machine, then
 * Consider the various processes that the software solution must support and note the main processes and some of the main requirements
 * Review your notes, identify the nouns and noun phrases, then consider which are classes and which fields
 * Review your notes, identify the verbs and verb phrases, then identify possible methods for each class
-
-Once you have completed the activity you may click on the "next" button to
-proceed to the next page in the module.
