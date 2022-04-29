@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -27,7 +27,8 @@ $(document).ready(function () {
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    const mammalsDir = getHomeDir().findDeep("mammals");
+    if (mammalsDir && mammalsDir.find("lion.txt")) {
       awardCredit();
     }
   };
@@ -36,15 +37,15 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "touch [path]",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
+        "The touch command creates a new file with the name and location specified by [path].",
       challengeDescription:
-        "List all files and directories in the current working directory.",
+        'Create a new file named "lion.txt" in the "mammals" directory.',
     },
     initialFileSystem,
     initialFileSystem.contents[3],
     handleAwardCredit,
-    "ls"
+    "touch"
   );
 });

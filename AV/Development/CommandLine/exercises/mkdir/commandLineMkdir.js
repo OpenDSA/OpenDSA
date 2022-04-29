@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -27,7 +27,8 @@ $(document).ready(function () {
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    const mammalsDir = getHomeDir().findDeep("mammals");
+    if (mammalsDir && mammalsDir.find("cats")) {
       awardCredit();
     }
   };
@@ -36,15 +37,15 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "mkdir [path]",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
+        "The mkdir command creates a new directory with the name and location specified by [path].",
       challengeDescription:
-        "List all files and directories in the current working directory.",
+        'Create a new directory named "cats" in the "mammals" directory.',
     },
     initialFileSystem,
     initialFileSystem.contents[3],
     handleAwardCredit,
-    "ls"
+    "mkdir"
   );
 });

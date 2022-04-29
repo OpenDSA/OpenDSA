@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    if (getCurrDir().name === "animals") {
       awardCredit();
     }
   };
@@ -36,15 +36,15 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "cd",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
+        "The cd command changes the current working directory to the root directory when no path is provided.",
       challengeDescription:
-        "List all files and directories in the current working directory.",
+        'Change the current working directory to "animals".',
     },
     initialFileSystem,
-    initialFileSystem.contents[3],
+    initialFileSystem.contents[3].contents[3],
     handleAwardCredit,
-    "ls"
+    "cd"
   );
 });

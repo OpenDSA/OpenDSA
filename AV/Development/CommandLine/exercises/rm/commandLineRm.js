@@ -1,6 +1,6 @@
 import {
-  awardCredit,
   initializeCommandLineExercise,
+  awardCredit,
 } from "../../common/commandLineExercise.js";
 import { File, Directory } from "../../common/fileSystemEntity.js";
 
@@ -10,10 +10,10 @@ $(document).ready(function () {
     const top = new Directory("animals");
 
     top.insert(new File("bird.txt"));
-    top.insert(new File("snake.txt"));
     top.insert(new File("fish.txt"));
     const child = new Directory("mammals");
     top.insert(child);
+    child.insert(new File("snake.txt"));
     child.insert(new File("monkey.txt"));
     child.insert(new File("mouse.txt"));
     child.insert(new File("bear.txt"));
@@ -27,7 +27,8 @@ $(document).ready(function () {
   }
 
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "dogs") {
+    const mammalsDir = getHomeDir().findDeep("mammals");
+    if (mammalsDir && !mammalsDir.find("snake.txt")) {
       awardCredit();
     }
   };
@@ -36,15 +37,14 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "ls",
+      commandTitle: "rm [path]",
       commandDescription:
-        "The ls command lists all files and directories in the current working directory.",
-      challengeDescription:
-        "List all files and directories in the current working directory.",
+        "The rm command removes the file at the location defined by [path].",
+      challengeDescription: 'Remove the "snake.txt" file.',
     },
     initialFileSystem,
-    initialFileSystem.contents[3],
+    initialFileSystem.contents[2],
     handleAwardCredit,
-    "ls"
+    "rm"
   );
 });
