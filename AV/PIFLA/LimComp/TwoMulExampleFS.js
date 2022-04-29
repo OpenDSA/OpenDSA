@@ -90,8 +90,8 @@ $(document).ready(function(){
 
   //frame 18
   av.umsg("We can convert matrix B to a symmetric matrix in a similar manner. If symmetric matrices could be multiplied quickly (in particular, if they could be multiplied together in Θ(n<sup>2</sup>) time), then we could find the result of multiplying two arbitrary n×n matrices in Θ(n<sup>2</sup>) time by taking advantage of the following observation:");
-  var data2 = [[0, "B<sup>T</sup>"],[0,"A<sup>T</sup>B<sup>T</sup>"]];
-  var data3 = [["AB", "0"],["B",0]];
+  var data2 = [[0, "B<sup>T</sup>"],["B", 0]];
+  var data3 = [["AB", "0"],[0, "A<sup>T</sup>B<sup>T</sup>"]];
   var a7= av.ds.matrix(data2,{style:"matrix",left:150,top:50});
   var a8 = av.label("=",{left:260, top: 80});
   var a9= av.ds.matrix(data3,{style:"matrix",left:290,top:50});
