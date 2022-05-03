@@ -813,15 +813,28 @@ vending machine would be similar in form, behavior, and features to the machine
 depicted in the images below.
 
 
-
 .. odsafig:: Images/VendingMachine1.png
    :align: left
+   :width: 270
+   :height: 360
+   :figwidth: 33%
+   :alt: Overall view of an internet-enabled vending machine
 
 .. odsafig:: Images/VendingMachine2.png
    :align: center
+   :width: 270
+   :height: 360
+   :figwidth: 33%
+   :alt: Overall view of the customer interface, showing the keypad for selecting the item, as well as two payment interfaces, one for card swipe or cash, and one for payment with a mobile device.
 
 .. odsafig:: Images/VendingMachine3.png
    :align: right
+   :width: 270
+   :height: 360
+   :figwidth: 33%
+   :alt: Closeup view of the mobile device payment  interface, showing the flavors of payment systems supported (Apple Pay, Android Pay, Samsung Pay), as well as the credit card types supported. 
+
+
 
 
 Consider the software requirements of the software needed to support the
