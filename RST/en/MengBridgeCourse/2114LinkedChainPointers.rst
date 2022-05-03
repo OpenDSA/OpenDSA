@@ -49,14 +49,11 @@ Checkpoint 1
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedChainCode.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.3-LinkedChainCode.pdf" target="_blank">
+   8.1.3-LinkedChainCode.pdf
    </a>
-
 
 TODO: fix URLS.
 
@@ -84,12 +81,8 @@ Checkpoint 2
      </center>
 
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Contains Animation PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.4-LinkedChainContains.pdf" target="_blank">
+   8.1.4-LinkedChainContains.pdf
    </a>

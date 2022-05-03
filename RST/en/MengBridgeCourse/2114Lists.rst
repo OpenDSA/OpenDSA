@@ -33,14 +33,11 @@ List Introduction
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="ListIntro.ppt">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.2.1-ListIntro.pdf" target="_blank">
+   11.1.2.1-ListIntro.pdf
    </a>
-
 
 The List Interface
 ~~~~~~~~~~~~~~~~~~
@@ -186,13 +183,10 @@ LinkedList Add Implementation
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_ie408z9b&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_766d88pa" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedListAdd.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.3.1-LinkedListAdd.pdf" target="_blank">
+   11.1.3.1-LinkedListAdd.pdf
    </a>
 
 
@@ -216,14 +210,11 @@ Tracing Add with Debugger
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="TraceAddDebugger.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.4.1-TraceAddDebugger.pdf" target="_blank">
+   11.1.4.1-TraceAddDebugger.pdf
    </a>
-
 
 LinkedList Remove
 -----------------
@@ -238,12 +229,10 @@ LinkedList Remove
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedListRemove.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.5.1-LinkedListRemove.pdf" target="_blank">
+   11.1.5.1-LinkedListRemove.pdf
    </a>
 
 
@@ -282,14 +271,10 @@ Considering and Array Implementation of a List
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_a1ubm9cw&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedListMoreDetails.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.7.1-LinkedListMoreDetails.pdf" target="_blank">
+   11.1.7.1-LinkedListMoreDetails.pdf
    </a>
 
 
@@ -312,14 +297,10 @@ Considering an Array Implementation of a List
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_wahujuxt&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_gmobb3rs" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="ArrayListImplementation.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.8.1-ArrayListImplementation.pdf" target="_blank">
+   11.1.8.1-ArrayListImplementation.pdf
    </a>
 
 Programming Practice: Lists 2

@@ -34,12 +34,10 @@ Introduction to Software design
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Intro to Software Design.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.2.2.1-IntroToSoftwareDesign.pdf"  target="_blank">
+   9.2.2.1-IntroToSoftwareDesign.pdf
    </a>
 
 Functional and non-functional requirements
@@ -383,31 +381,8 @@ When in doubt about the level of detail needed please feel free to ask
 questions and review the UML class designs provided within the examples
 provided throughout the module, labs, and projects.
 
-TODO: fix URLS.
-
 Much of what you need to know for relationships, hierarchies and reuse has
-been covered within the
-`Java OOP (Object Oriented Programming) Module <Java OOP (Object Oriented Programming) Module>`_ .
-Additionally you may download the UML Diagram key via this link:
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="here">
-   </a>
-
-TODO: fix URLS.
-We encourage you to review the
-`Java OOP (Object Oriented Programming) Module <Java OOP (Object Oriented Programming) Module>`_ .
-and
-
-TODO: fix URLS.
-`UML Diagram key <UML Diagram key>`_
-
-Then continue the activity below
-
+been covered within the :doc:`2114ObjectsEnumsAndUML`. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
 
 Activity
 --------
@@ -416,7 +391,7 @@ Review the listing of nouns and noun phrases and concepts that could be
 extracted from the Case Study - e-Commerce solution (online storefront)
 for ABC Ltd .
 
-.. list-table:: Nouns and Noun Phrases
+.. list-table:: **Nouns and Noun Phrases**
    :header-rows: 0
 
    * - Products
@@ -445,7 +420,7 @@ for ABC Ltd .
      - Employee users
 
 
-.. list-table:: Concepts
+.. list-table:: **Concepts**
    :header-rows: 0
 
    * - User Account
@@ -457,7 +432,7 @@ for ABC Ltd .
 
 Considering the above we may identify the following as an initial list of possible classes.
 
-.. list-table:: Possible Classes
+.. list-table:: **Possible Classes**
    :header-rows: 0
 
    * - Product Catalog
@@ -569,7 +544,7 @@ Case Study - e-Commerce solution (online storefront) for ABC Ltd, for your
 review.
 
 
-.. list-table:: Concepts
+.. list-table:: **Concepts**
    :header-rows: 0
 
    * - User Account
@@ -579,7 +554,7 @@ review.
      - Order fulfillment
 
 
-.. list-table:: Verb and Verb Phrases
+.. list-table:: **Verb and Verb Phrases**
    :header-rows: 0
 
    * - Search or Browsers

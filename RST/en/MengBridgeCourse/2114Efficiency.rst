@@ -36,12 +36,10 @@ Chapter 4 from  `Data Structures and Abstractions with Java, 4th edition  by Fra
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Intro to Efficiency PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.4.2-EfficiencyPart1.pdf" target="_blank">
+   8.4.2-EfficiencyPart1.pdf
    </a>
 
 Checkpoint 1
@@ -78,11 +76,8 @@ Checkpoint 2
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_87khvnlc&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_v34noncz" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Efficiency of Bag Methods PPT ">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.4.4-BagsEfficiency.pdf" target="_blank">
+   8.4.4-BagsEfficiency.pdf
    </a>

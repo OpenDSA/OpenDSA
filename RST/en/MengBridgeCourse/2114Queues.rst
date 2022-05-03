@@ -21,7 +21,7 @@ Upon completion of this module, students will be able to:
 Suggested Reading
 ~~~~~~~~~~~~~~~~~
 
-Chapter 10: Queues, Deques, and Priority Queues & Chapter 11: Queue, Deque, and Priority Queue Implementations from <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_ by Frank M. Carrano and Timothy Henry
+Chapter 10: **Queues, Deques, and Priority Queues**  and  **Chapter 11: Queue, Deque, and Priority Queue Implementations** from `Data Structures and Abstractions with Java <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_ by Frank M. Carrano and Timothy Henry
 
 Queues
 ------
@@ -36,13 +36,12 @@ Queues
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="QueueIntro.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.2.1-QueueIntro.pdf" target="_blank">
+   10.2.2.1-QueueIntro.pdf
    </a>
+   
 
 .. code-block:: java
 
@@ -106,15 +105,11 @@ Linked Queues Intro and Enqueue
      </center>
 
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedQueuesEnqueue.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.4.1-LinkedQueuesEnqueue.pdf" target="_blank">
+   10.2.4.1-LinkedQueuesEnqueue.pdf
    </a>
-
 
 Checkpoint 2
 ~~~~~~~~~~~~
@@ -136,14 +131,10 @@ Linked Queues Removing and More (Dequeue and Other Methods)
      </center>
 
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedQueueRemove.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.5.1-LinkedQueueRemove.pdf" target="_blank">
+   10.2.5.1-LinkedQueueRemove.pdf
    </a>
 
 Checkpoint 3
@@ -166,12 +157,10 @@ Deques
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="DequeIntro.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.6.1-DequeIntro.pdf" target="_blank">
+   10.2.6.1-DequeIntro.pdf
    </a>
 
 Checkpoint 4
@@ -276,16 +265,11 @@ Deque Removing and Wrap Up
      </center>
 
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="DequeRemoveAndWrapUp.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.7.1-DequeRemoveAndWrapUp.pdf" target="_blank">
+   10.2.7.1-DequeRemoveAndWrapUp.pdf
    </a>
-
 
 Checkpoint 5
 ~~~~~~~~~~~~
@@ -308,16 +292,11 @@ Array Implementation of Queues
      </center>
 
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="ArrayQueueIntro.ppt">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.8.1-ArrayQueueIntro.pdf" target="_blank">
+   10.2.8.1-ArrayQueueIntro.pdf
    </a>
-
 
 Checkpoint 6
 ~~~~~~~~~~~~
@@ -340,16 +319,12 @@ ArrayQueue One Unused Location
      </center>
 
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="ArrayQueueRemove.ppt">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.9.1-ArrayQueueRemove.pdf" target="_blank">
+   10.2.9.1-ArrayQueueRemove.pdf
    </a>
-
+   
 
 Checkpoint 7
 ~~~~~~~~~~~~
@@ -370,14 +345,10 @@ ArrayQueue Ensure Capacity
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_xkijc49b&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_fz7mhpc2" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="ArrayQueueEnsureCapacity.ppt">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.10.2-ArrayQueueEnsureCapacity.pdf" target="_blank">
+   10.2.10.2-ArrayQueueEnsureCapacity.pdf
    </a>
 
 
@@ -400,15 +371,12 @@ ArrayQueue WrapUp
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_8ktqd0d5&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_7lenjuii" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="ArrayQueueWrapUp.ppt">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.11.1-ArrayQueueWrapUp.pdf" target="_blank">
+   10.2.11.1-ArrayQueueWrapUp.pdf
    </a>
+   
 
 Empty Queue Exception
 """""""""""""""""""""
