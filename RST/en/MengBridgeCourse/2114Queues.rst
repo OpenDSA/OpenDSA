@@ -41,7 +41,7 @@ Queues
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.2.1-QueueIntro.pdf" target="_blank">
    10.2.2.1-QueueIntro.pdf
    </a>
-   
+
 
 .. code-block:: java
 
@@ -80,7 +80,7 @@ Queues
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -112,7 +112,7 @@ Linked Queues Intro and Enqueue
    </a>
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint2.html ka
    :long_name: Checkpoint 2
@@ -138,7 +138,7 @@ Linked Queues Removing and More (Dequeue and Other Methods)
    </a>
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint3.html ka
    :long_name: Checkpoint 3
@@ -164,7 +164,7 @@ Deques
    </a>
 
 Checkpoint 4
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint4.html ka
    :long_name: Checkpoint 4
@@ -272,7 +272,7 @@ Deque Removing and Wrap Up
    </a>
 
 Checkpoint 5
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint5.html ka
    :long_name: Checkpoint 5
@@ -299,7 +299,7 @@ Array Implementation of Queues
    </a>
 
 Checkpoint 6
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint6.html ka
    :long_name: Checkpoint 6
@@ -324,10 +324,10 @@ ArrayQueue One Unused Location
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.9.1-ArrayQueueRemove.pdf" target="_blank">
    10.2.9.1-ArrayQueueRemove.pdf
    </a>
-   
+
 
 Checkpoint 7
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint7.html ka
    :long_name: Checkpoint 7
@@ -353,7 +353,7 @@ ArrayQueue Ensure Capacity
 
 
 Checkpoint 8
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint8.html ka
    :long_name: Checkpoint 8
@@ -376,7 +376,7 @@ ArrayQueue WrapUp
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.11.1-ArrayQueueWrapUp.pdf" target="_blank">
    10.2.11.1-ArrayQueueWrapUp.pdf
    </a>
-   
+
 
 Empty Queue Exception
 """""""""""""""""""""

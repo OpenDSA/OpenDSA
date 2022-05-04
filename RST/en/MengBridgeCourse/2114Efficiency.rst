@@ -43,7 +43,7 @@ Chapter 4 from  `Data Structures and Abstractions with Java, 4th edition  by Fra
    </a>
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/EfficiencyCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -61,7 +61,7 @@ Checkpoint 1
 
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/EfficiencyCheckpoint2.html ka
    :long_name: Checkpoint 2

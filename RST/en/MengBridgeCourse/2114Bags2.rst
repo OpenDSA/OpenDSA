@@ -67,7 +67,7 @@ LinkedBag add and toArray video
    </a>
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -121,7 +121,7 @@ LinkedBag getFrequencyOf and contains video
    </a>
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint2.html ka
    :long_name: Checkpoint 2
@@ -160,7 +160,7 @@ LinkedBag Removing an item
 
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint3.html ka
    :long_name: Checkpoint 3

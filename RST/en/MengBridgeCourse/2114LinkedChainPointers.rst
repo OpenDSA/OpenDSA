@@ -33,7 +33,7 @@ Upon completion of this module, students will be able to:
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -60,9 +60,9 @@ Checkpoint 1
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/LinkedChain.java" target="_blank">
    Example file LinkedChain.java (right-click to download as .java file)
    </a>
-   
+
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint2.html ka
    :long_name: Checkpoint 2

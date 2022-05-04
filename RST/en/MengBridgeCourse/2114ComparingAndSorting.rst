@@ -41,7 +41,7 @@ Introduction to Ordering, Comparing, and Sorting
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -64,7 +64,7 @@ Introduction to Sorting Video
    </a>
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint2.html ka
    :long_name: Checkpoint 2
@@ -86,7 +86,7 @@ Selection Sort Video
    </a>
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint3.html ka
    :long_name: Checkpoint 3
@@ -110,7 +110,7 @@ Insertion Sort
    </a>
 
 Checkpoint 4
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint4.html ka
    :long_name: Checkpoint 4
@@ -133,7 +133,7 @@ Insertion Sort Array
 
 
 Checkpoint 5
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint5.html ka
    :long_name: Checkpoint 5
@@ -168,7 +168,7 @@ Comparators
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/12.1.8.1-ComparingExample.zip" target="_blank">
    Example files 12.1.8.1-ComparingExample.zip
    </a>
-   
+
 
 Programming Practice: Comparators
 ---------------------------------

@@ -57,7 +57,7 @@ Introduction to Recursion
    </a>
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -128,7 +128,7 @@ missing ``{}`` in the if block.  It should be:
 
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint2.html ka
    :long_name: Checkpoint 2
@@ -154,7 +154,7 @@ Recursion on Arrays Middle
 
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint3.html ka
    :long_name: Checkpoint 3
@@ -206,7 +206,7 @@ Tower of Hanoi
    </a>
 
 Checkpoint 4
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint4.html ka
    :long_name: Checkpoint 4

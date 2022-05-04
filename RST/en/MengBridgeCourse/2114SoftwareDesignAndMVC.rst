@@ -139,7 +139,7 @@ The system shall ________
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -571,7 +571,7 @@ Review your design with a critical eye, ask yourself,
 what needs to be changed to refine your design?
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint2.html ka
    :long_name: Checkpoint 2
@@ -832,7 +832,7 @@ depicted in the images below.
    :width: 270
    :height: 360
    :figwidth: 33%
-   :alt: Closeup view of the mobile device payment  interface, showing the flavors of payment systems supported (Apple Pay, Android Pay, Samsung Pay), as well as the credit card types supported. 
+   :alt: Closeup view of the mobile device payment  interface, showing the flavors of payment systems supported (Apple Pay, Android Pay, Samsung Pay), as well as the credit card types supported.
 
 
 

@@ -118,7 +118,7 @@ Before using the above sample project you must
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -536,7 +536,7 @@ Again, you can review this code here:
   </a>
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint2.html ka
    :long_name: Checkpoint 2

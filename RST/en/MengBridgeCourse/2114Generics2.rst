@@ -65,7 +65,7 @@ Related Resources
 `A tutorial on using wildcards in generics, at https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1.html ka
    :long_name: Checkpoint 1

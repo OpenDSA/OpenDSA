@@ -43,7 +43,7 @@ Introduction to Iterators
    </a>
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -92,7 +92,7 @@ Programming Using Iterators
    </a>
 
 .. raw:: html
-   
+
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/11.3.4.1-IteratorExample.zip" target="_blank">
    Example files 11.3.4.1-IteratorExample.zip
    </a>

@@ -203,7 +203,7 @@ Using Bags
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1.html ka
    :long_name: Checkpoint 1
@@ -315,7 +315,7 @@ This  `link <>`_ will direct you to the steps to `download and import <>`_ previ
 
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2.html ka
    :long_name: Checkpoint 2
@@ -359,7 +359,7 @@ This implementation of the ArrayBag does not impose such a constraint.
    :align: center
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint3.html ka
    :long_name: Checkpoint 3
@@ -417,7 +417,7 @@ Methods that Remove and Design Improvement Lesson and Demo
    </a>
 
 Checkpoint 4
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint4.html ka
    :long_name: Checkpoint 4
