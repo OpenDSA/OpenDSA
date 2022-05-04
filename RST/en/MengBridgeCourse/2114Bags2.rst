@@ -44,7 +44,7 @@ Introduction to Linked Bags
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.3-LinkedBagIntro.pdf" target="_blank">
-   8.2.3-LinkedBagIntro.pdf
+   Video slides 8.2.3-LinkedBagIntro.pdf
    </a>
 
 LinkedBag add and toArray video
@@ -63,7 +63,7 @@ LinkedBag add and toArray video
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.4.1-LinkedBagAddToArray.pdf" target="_blank">
-   8.2.4.1-LinkedBagAddToArray.pdf
+   Video slides 8.2.4.1-LinkedBagAddToArray.pdf
    </a>
 
 Checkpoint 1
@@ -86,17 +86,15 @@ Demo Video ExLinkedBagJunit
      </center>
 
 
-Zipped file example
-~~~~~~~~~~~~~~~~~~~
+Code examples
+~~~~~~~~~~~~~
 
-Download to run and explore on your own in eclipse:
-
-TODO: fix URLS.
+Download to run and explore on your own in Eclipse:
 
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="CS2-ExLinkedBagsJUnit.zip">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/8.5.2.2-LinkedBagsWithJUnitExample.zip" target="_blank">
+   Example files 8.5.2.2-LinkedBagsWithJUnitExample.zip
    </a>
 
 TODO: fix URLS.
@@ -119,7 +117,7 @@ LinkedBag getFrequencyOf and contains video
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.6.1-LinkedFreqContains.pdf" target="_blank">
-   8.2.6.1-LinkedFreqContains.pdf
+   Video slides 8.2.6.1-LinkedFreqContains.pdf
    </a>
 
 Checkpoint 2
@@ -145,7 +143,7 @@ LinkedBag Removing an item
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.7.1-LinkedRemove.pdf" target="_blank">
-   8.2.7.1-LinkedRemove.pdf
+   Video slides 8.2.7.1-LinkedRemove.pdf
    </a>
 
 **Tradeoffs of using a linked chain implementation for a bag**

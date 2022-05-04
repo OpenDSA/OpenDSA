@@ -122,6 +122,8 @@ or Command + Shift + F (if using Mac).
 
 Remember to format your code before submitting to Web-CAT.
 
+Fix URLs
+
 Download the following XML file: `vtcsstylefixed.xml download <vtcsstylefixed.xml download>`_
 
 To install:

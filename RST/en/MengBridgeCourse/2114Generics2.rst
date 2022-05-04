@@ -34,7 +34,7 @@ Generics 2
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.1.2.1-MoreOnGenerics.pdf"  target="_blank">
-   10.1.2.1-MoreOnGenerics.pdf
+   Video slides 10.1.2.1-MoreOnGenerics.pdf
    </a>
 
 
@@ -48,22 +48,21 @@ Generics 2
      </center>
 
 
-Code
-~~~~
-
-
-TODO: fix URLS.
+Code Examples
+~~~~~~~~~~~~~
 
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="CS2-ExGenerics2.zip">
+<a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip" target="_blank">
+   Example files 10.1.2.3-GenericsExample.zip
    </a>
+
+Related Resour
 
 Related Resources
 ~~~~~~~~~~~~~~~~~
 
-`https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
+`A tutorial on using wildcards in generics, at https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
 
 Checkpoint 1
 ~~~~~~~~~~~~
@@ -126,12 +125,10 @@ Bounded Wildcard Examples
 Code
 ~~~~
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="CS2-ExGenerics2.zip">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip" target="_blank">
+   Example files 10.1.2.3-GenericsExample.zip
    </a>
 
 Related Resources

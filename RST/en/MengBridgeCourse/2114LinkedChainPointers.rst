@@ -55,15 +55,12 @@ Checkpoint 1
    8.1.3-LinkedChainCode.pdf
    </a>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Linked Chain Java file">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/LinkedChain.java" target="_blank">
+   Example file LinkedChain.java (right-click to download as .java file)
    </a>
-
-
+   
 Checkpoint 2
 ~~~~~~~~~~~~
 

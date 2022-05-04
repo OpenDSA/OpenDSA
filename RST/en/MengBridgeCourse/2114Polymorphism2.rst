@@ -26,34 +26,21 @@ Polymorphism Measurable Interface
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.4.1.1-JavaOOPPolyMeasurable.pdf" target="_blank">
-   7.4.1.1-JavaOOPPolyMeasurable.pdf
+   Video slides 7.4.1.1-JavaOOPPolyMeasurable.pdf
    </a>
    
-Related Resources
-~~~~~~~~~~~~~~~~~
-
-TODO: fix URLS.
+Code Examples
+~~~~~~~~~~~~~
 
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="CS2-ExMeasurable.zip">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.4.1.2-MeasurableInterfaceExample.zip" target="_blank">
+   Example files 7.4.1.2-MeasurableInterfaceExample.zip
    </a>
 
 TODO: fix URLS.
 
 This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
-
-Note:
-
-CS 2114 support projects may required for the sample project above.
-
-** Remember to complete the configuration steps described in the Pre-Lab for
-Week 1 (Pre Lab 1), then download all of the support projects. You may download
-them via Eclipse using the blue down arrow icon or using the Project Menu and
-selecting "Download Assignment..." **
-
-This link will direct you to the steps to download and import previously written code into the Eclipse environment.
 
 
 Checkpoint 1
@@ -85,7 +72,7 @@ Polymorphism Computer Superclass
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.4.4.1-JavaOOPPolyComputer.pdf" target="_blank">
-   7.4.4.1-JavaOOPPolyComputer.pdf
+   Video slides 7.4.4.1-JavaOOPPolyComputer.pdf
    </a>
 
 Checkpoint 2
@@ -110,7 +97,7 @@ Polymorphism Integer Example
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.6.4.1-JavaOOPPolyInteger.pdf" target="_blank">
-   7.6.4.1-JavaOOPPolyInteger.pdf
+   Video slides 7.6.4.1-JavaOOPPolyInteger.pdf
    </a>
    
 

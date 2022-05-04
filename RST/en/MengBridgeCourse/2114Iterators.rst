@@ -64,7 +64,7 @@ Programming Using the Iterable Interface
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.3.1-Iterable.pdf" target="_blank">
-   11.3.3.1-Iterable.pdf
+   Video Slides 11.3.3.1-Iterable.pdf
    </a>
 
 Checkpoint 2
@@ -88,13 +88,13 @@ Programming Using Iterators
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.4.1-ProgrammingWithIterators.pdf" target="_blank">
-   11.3.4.1-ProgrammingWithIterators.pdf
+   Video Slides 11.3.4.1-ProgrammingWithIterators.pdf
    </a>
 
 .. raw:: html
-
-   <a href="" download>
-   <img src="" alt="IteratorsExample.zip">
+   
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/11.3.4.1-IteratorExample.zip" target="_blank">
+   Example files 11.3.4.1-IteratorExample.zip
    </a>
 
 
@@ -129,12 +129,12 @@ Iterator Design Decisions
 (not subclasses) are more efficient than Iterators that are independent classes.
 
 
-Inner Iterator for CS2-ExLinkedList
------------------------------------
+Inner Iterator for 11.3.4.1-IteratorExample
+-------------------------------------------
 
 As discussed throughout this section there are various design approaches for
 iterators.  Below is one example of how an inner Iterator class could be
-implemented for CS2-ExLinkedList.
+implemented for 11.3.4.1-IteratorExample.
 
 Include a public method to make the iterator object available:
 

@@ -112,13 +112,10 @@ Below you will find example code implementing the BagInterface.
 Take a look at how the implementation (the code) matches with the design document
 (the UML class diagram).
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Link to BagInterface.java">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java" target="_blank">
+   Example file BagInterface.java (right-click to download as .java file)
    </a>
 
 .. code-block:: java
@@ -239,8 +236,8 @@ Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstract
      </center>
 
 
-ExArrayBagJunit Image
-~~~~~~~~~~~~~~~~~~~~~
+ArrayBagsWithJUnitExample Image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's take a look at the evolution of our design specification.
 
@@ -291,8 +288,8 @@ depicted below.
    :align: center
 
 
-[8:17] ExArrayBagJunit Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:17] ArrayBagsWithJUnitExample Video Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -301,17 +298,15 @@ depicted below.
      </center>
 
 
-Zipped File Example
-~~~~~~~~~~~~~~~~~~~
+Code Example
+~~~~~~~~~~~~
 
 Download to run and explore on your own in eclipse:
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="CS2-ExArrayBagsJUnit.zip">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.7.6.5-ArrayBagsWithJUnitExample.java" target="_blank">
+   Example files 7.7.6.5-ArrayBagsWithJUnitExample.zip
    </a>
 
 TODO: fix URLS.
@@ -342,7 +337,7 @@ Demo More bag method implementation
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.7.1-ArrayBagMethods.pdf" target="_blank">
-   7.7.7.1-ArrayBagMethods.pdf
+   Video slides 7.7.7.1-ArrayBagMethods.pdf
    </a>
 
 UML Diagram
@@ -385,7 +380,7 @@ Methods that Remove and Design Improvement Lesson and Demo
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.1-BagsDesignImprovePart1.pdf" target="_blank">
-   7.7.8.1-BagsDesignImprovePart1.pdf
+   Video slides 7.7.8.1-BagsDesignImprovePart1.pdf
    </a>
 
 
@@ -402,7 +397,7 @@ Methods that Remove and Design Improvement Lesson and Demo
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.2-BagsDesignImprovePart2.pdf" target="_blank">
-   7.7.8.2-BagsDesignImprovePart2.pdf
+   Video slides 7.7.8.2-BagsDesignImprovePart2.pdf
    </a>
 
 
@@ -418,7 +413,7 @@ Methods that Remove and Design Improvement Lesson and Demo
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.3-BagsDesignImprovePart3.pdf" target="_blank">
-   7.7.8.3-BagsDesignImprovePart3.pdf
+   Video slides 7.7.8.3-BagsDesignImprovePart3.pdf
    </a>
 
 Checkpoint 4
@@ -444,7 +439,7 @@ Array resizing description and coding Demo
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.9.1-DoubleArray.pdf" target="_blank">
-   7.7.9.1-DoubleArray.pdf
+   Video slides 7.7.9.1-DoubleArray.pdf
    </a>
 
 

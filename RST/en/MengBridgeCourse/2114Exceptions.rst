@@ -36,7 +36,7 @@ Java Interlude 2 Exceptions from  `Data Structures and Abstractions with Java, 4
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.2.2-IntroToExceptions.pdf" target="_blank">
-   7.2.2-IntroToExceptions.pdf
+   Video slides 7.2.2-IntroToExceptions.pdf
    </a>
 
 
@@ -99,6 +99,8 @@ TODO: fix URLS.
    <a href="" download>
    <img src="" alt=" CS2-ExExceptionHandling.zip">
    </a>
+
+TODO: fix URLS.
 
 This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
@@ -527,15 +529,11 @@ exception object is set to null and only updated within the catch block.
 
 Again, you can review this code here:
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt=" CS2-ExExceptionHandlingWithThrow.zip">
-   </a>
-
-
+  <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.2.5.1-ExceptionHandlingWithThrowExample.zip" target="_blank">
+  Example files 17.2.5.1-ExceptionHandlingWithThrowExample.zip
+  </a>
 
 Checkpoint 2
 ~~~~~~~~~~~~

@@ -70,19 +70,15 @@ Checkpoint 5
      </center>
 
 
-Zipped file example
-```````````````````
+Code example
+````````````
 
 Download to run and explore on your own in eclipse:
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="CS2-ExLinkedBagsJUnit.zip">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/8.5.2.2-LinkedBagsWithJUnitExample.zip" target="_blank">
+   Example files 8.5.2.2-LinkedBagsWithJUnitExample.zip
    </a>
 
 [14:00] LinkedBag getFrequencyOf and contains Video Demonstration

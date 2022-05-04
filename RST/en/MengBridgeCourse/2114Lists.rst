@@ -36,7 +36,7 @@ List Introduction
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.2.1-ListIntro.pdf" target="_blank">
-   11.1.2.1-ListIntro.pdf
+   Video Slides 11.1.2.1-ListIntro.pdf
    </a>
 
 The List Interface
@@ -186,7 +186,7 @@ LinkedList Add Implementation
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.3.1-LinkedListAdd.pdf" target="_blank">
-   11.1.3.1-LinkedListAdd.pdf
+   Video Slides 11.1.3.1-LinkedListAdd.pdf
    </a>
 
 
@@ -213,7 +213,7 @@ Tracing Add with Debugger
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.4.1-TraceAddDebugger.pdf" target="_blank">
-   11.1.4.1-TraceAddDebugger.pdf
+   Video Slides 11.1.4.1-TraceAddDebugger.pdf
    </a>
 
 LinkedList Remove
@@ -232,18 +232,14 @@ LinkedList Remove
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.5.1-LinkedListRemove.pdf" target="_blank">
-   11.1.5.1-LinkedListRemove.pdf
+   Video Slides 11.1.5.1-LinkedListRemove.pdf
    </a>
-
-
-TODO: fix URLS.
 
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="CS2-ExLinkedList.zip">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/11.1.5.1-LinkedListExample.zip" target="_blank">
+   Example files 11.1.5.1-LinkedListExample.zip
    </a>
-
 
 Checkpoint 3
 ~~~~~~~~~~~~
