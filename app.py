@@ -33,6 +33,19 @@ def run_command(cmd: str):
     resp['stderr_compressed'] = compress_lines(proc.stderr)
     return resp
 
+def run_script(cmd: str):
+    app.logger.info("API call for command: {cmd}")
+    proc = subprocess.run(cmd.split(), capture_output=True)
+    if proc.returncode:
+        app.logger.error(f"API: command failure: {cmd}")
+        app.logger.error(proc.stderr)
+    else:
+        app.logger.info("API command success, responding via API..")
+    resp = {"ok": True, "disc_diff": proc.stdout}
+    resp['stdout_compressed'] = compress_lines(proc.stdout)
+    resp['stderr_compressed'] = compress_lines(proc.stderr)
+    return resp
+
 
 @app.route('/api/configure/', methods=['POST'])
 def configure():
@@ -59,6 +72,16 @@ def simple2full():
     if request.form['rake'] != 'false':
         cmd += " --expanded --verbose"
     resp = run_command(cmd)
+    return jsonify(resp)
+
+@app.route('/api/irtcurve/', methods=['POST'])
+def irt_curve():
+    if request.method != 'POST':
+        return jsonify({"ok", False})
+    script_path = "tools/irt_curve.py"
+    bookID = request.form['bookID']
+    cmd = f"python3 {script_path} {bookID}"
+    resp = run_script(cmd)
     return jsonify(resp)
 
 
