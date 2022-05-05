@@ -6,23 +6,25 @@
 .. avmetadata::
    :author: Molly Domino
 
-Java Unit Testing
-=================
+Revisit Java Unit Testing
+=========================
 
 Objectives
 ----------
 
 Upon completion of this module, students will be able to:
 
-* Identify the basics of a java class including fields, constructors, methods, parameters, and use of the keyword this
-* Run a java program in eclipse
-* Run junit tests in eclipse, debug code, and tinker with code
-* Write a test class with test methods that use junit assert statements
-* Write junit tests that have complete code coverage
+* Review the basics of a java class including fields, constructors, methods,
+parameters, and use of the keyword this
+* Review debugging code and code coverage
+* Variations for JUnit assert statements
 
 
 Introduction to Hokie Class
 ---------------------------
+
+In this discussion we will be revisiting good testing practices with an example
+class called "Hoakie Class".
 
 [6:07] Introduction to Hokie Class Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,6 +62,67 @@ Checkpoint 1
 
 Intro to Hokie Class JUnit Testing
 ----------------------------------
+
+A Note about Assert Statements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+So far in the course when we want to test that a piece of code acted the way we
+wanted, we'd run a statement like:
+
+.. code-block:: java
+
+   assertThat(<something we want to check>).isEqualTo(<expected value>);
+
+
+This is a more modern style that's intended to be more readable.
+However, there is a different form of syntax you can use to create assertions:
+
+
+.. code-block:: java
+
+   assertEquals(<expected value>, <something we want to check>);
+
+This second kind of assert statement is more commonly used today, but it can be
+tricky to use correctly.  When using ``asserEquals``, it can be easy to put the
+value we want to check first and the expected value second.
+
+For example, say we
+wanted to check that a variable ``x`` was equal to 5.
+
+.. code-block:: java
+
+   int x = 4;
+   assertEquals(x, 5);
+
+Writing like this would be syntactically correct, but potentially confusing because
+the failure message would read "Expected [4] but got [5]".  In reality, we were
+*expecting* 5 but *got* 4.
+
+Videos in the second half of the course will be using this second, more commonly
+used syntax.  You can continue to use either version.  Below, is a table of
+assertions in both styles.
+
+.. list-table:: Assertions
+   :header-rows: 1
+
+   * - Task
+     - Newer Assertion Style
+     - Older Assertion Style
+     - Notes
+   * - Checking that ``x`` is equal to 5
+     - ``assertThat(x).isEqualTo(5);``
+     - ``assertEquals(5, x);``
+     -
+   * - Checking that ``x`` is True
+     - ``assertThat(x).isTrue();
+     - ``assertTrue(x);``
+     - Similarly, ``assertFalse`` will check the opposite
+   * - Checking that ``x`` is ``null``
+     - ``assertThat(x).isNull();``
+     - ``assertNull(x);``
+     - Similarly, ``assertNotNull`` will check the opposite
+
+
 
 [19:37] Hokie Class JUnit Testing Video
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
