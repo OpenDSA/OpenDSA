@@ -54,7 +54,7 @@ In Eclipse, you can download an example of this by going to Project > Download A
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -77,7 +77,7 @@ Intro to Hokie Class JUnit Testing
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 Review of Writing JUnit Tests with student.TestCase
@@ -98,5 +98,5 @@ TODO: fix URLS.
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint3Summ.html ka
    :long_name: Checkpoint 3

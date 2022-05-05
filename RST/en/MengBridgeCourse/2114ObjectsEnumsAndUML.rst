@@ -39,7 +39,7 @@ Java UML Diagrams
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1-JavaOOPUML.pdf" target="_blank">
-   7.3.2.1-JavaOOPUML.pdf
+   Video slides 7.3.2.1-JavaOOPUML.pdf
    </a>
 
 Related Resources
@@ -48,14 +48,14 @@ Related Resources
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf" target="_blank">
-   7.3.2.1.1-UMLDiagramKey.pdf
+   A UML Diagram from the example in the video 7.3.2.1.1-UMLDiagramKey.pdf
    </a>
 
 
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/OOP1Checkpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/OOP1Checkpoint1Summ.html ka
    :long_name: UML Checkpoint
 
 

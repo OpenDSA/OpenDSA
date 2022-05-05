@@ -56,7 +56,7 @@ This  `link <>`_ will direct you to the steps to `download and import <>`_ previ
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -77,7 +77,7 @@ StackIntroVideoMemory Example
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -98,7 +98,7 @@ Stacks Array-Based Design
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 Stacks Array Implementation
@@ -148,7 +148,7 @@ Stacks Linked Chain Implementation
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint4.html ka
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 

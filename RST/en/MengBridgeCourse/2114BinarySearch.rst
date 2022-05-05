@@ -38,7 +38,7 @@ Introduction to Searching
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BinarySearchCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/BinarySearchCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 

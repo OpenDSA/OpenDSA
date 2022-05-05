@@ -65,7 +65,7 @@ Related Resources
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
