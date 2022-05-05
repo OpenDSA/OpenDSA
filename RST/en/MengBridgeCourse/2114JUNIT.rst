@@ -112,15 +112,32 @@ assertions in both styles.
    * - Checking that ``x`` is equal to 5
      - ``assertThat(x).isEqualTo(5);``
      - ``assertEquals(5, x);``
+     - While the new style has a ``.isNotEqualTo()``, there is no ``assertNotEquals()`` in the old style
+   * - Check that a double ``x`` is equal to double ``y``
+     - ``assertThat(x).isEqualTo(y, within(0.01));``
+     - ``assertEquals(y, x, 0.01);``
      -
-   * - Checking that ``x`` is True
-     - ``assertThat(x).isTrue();
+   * - Checking that ``x`` is ``true``
+     - ``assertThat(x).isTrue();``
      - ``assertTrue(x);``
-     - Similarly, ``assertFalse`` will check the opposite
+     -
+   * - Checking that ``x`` is ``false``
+     - ``assertThat(x).isFalse();``
+     - ``assertTrue(x);``
+     -
    * - Checking that ``x`` is ``null``
      - ``assertThat(x).isNull();``
      - ``assertNull(x);``
-     - Similarly, ``assertNotNull`` will check the opposite
+     -
+   * - Checking that ``x`` is *not* ``null``
+     - ``assertThat(x).isNotNull();``
+     - ``assertNotNull(x);``
+     -
+   * - Checking two object variables refer to the same space in memory
+     - ``assertThat(obj1).isSameAs(obj2);``
+     - ``assertSame(obj2, ob1);``
+     -
+
 
 
 

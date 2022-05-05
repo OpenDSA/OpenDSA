@@ -10,6 +10,14 @@
 Objects, Enums, and UML Diagrams
 ================================
 
+Objectives
+----------
+
+* Review Object Oriented Programming
+* Explore Enum Types
+* Explore Switch Statements
+* Interpret UML diagrams
+
 Java Fundamental Objects and Enums
 ----------------------------------
 
@@ -41,6 +49,13 @@ Java UML Diagrams
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1-JavaOOPUML.pdf" target="_blank">
    Video slides 7.3.2.1-JavaOOPUML.pdf
    </a>
+
+.. admonition:: Note
+
+    Creating UML diagrams will not be a requirement for this course.  However,
+    they are a useful thing to know how to create and interpret as they are often
+    used in industry to explain complex systems.
+
 
 Related Resources
 """""""""""""""""

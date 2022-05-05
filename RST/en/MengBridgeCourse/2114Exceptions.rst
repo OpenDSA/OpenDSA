@@ -14,10 +14,10 @@ Objectives
 
 Upon completion of this module, students will be able to:
 
-* Understand the purpose Exceptions and Exception handling
-* Understand and use try-catch-finally blocks to handle exceptions
-* Throw exceptions in a method
-* Implement and test Exception handling code
+* Review the purpose Exceptions and Exception handling
+* Review and use try-catch-finally blocks to handle exceptions
+* Review how to throw exceptions in a method
+* Review how to implement and test Exception handling code
 
 Suggested Reading
 ~~~~~~~~~~~~~~~~~

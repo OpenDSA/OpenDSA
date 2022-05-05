@@ -10,6 +10,15 @@
 More on Polymorphism
 ====================
 
+Objectives
+----------
+
+* Review Java Interfaces and Abstract Classes
+* Review Inheritance and Composition
+* Review Overloading and Overriding
+* Review Reference Variables
+* Apply Typecasting
+
 Polymorphism Measurable Interface
 ---------------------------------
 
@@ -28,7 +37,7 @@ Polymorphism Measurable Interface
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.4.1.1-JavaOOPPolyMeasurable.pdf" target="_blank">
    Video slides 7.4.1.1-JavaOOPPolyMeasurable.pdf
    </a>
-   
+
 Code Examples
 ~~~~~~~~~~~~~
 
@@ -102,7 +111,7 @@ Polymorphism Integer Example
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.6.4.1-JavaOOPPolyInteger.pdf" target="_blank">
    Video slides 7.6.4.1-JavaOOPPolyInteger.pdf
    </a>
-   
+
 
 Checkpoint 3
 ------------
