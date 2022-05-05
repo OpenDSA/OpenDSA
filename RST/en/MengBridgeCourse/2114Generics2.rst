@@ -53,11 +53,9 @@ Code Examples
 
 .. raw:: html
 
-<a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip" target="_blank">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip" target="_blank">
    Example files 10.1.2.3-GenericsExample.zip
    </a>
-
-Related Resour
 
 Related Resources
 ~~~~~~~~~~~~~~~~~
