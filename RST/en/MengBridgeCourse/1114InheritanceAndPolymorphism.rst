@@ -311,12 +311,12 @@ our new class is a *subclass*.  Whenever you use
    **superclass**.
 
 .. note::
-   The terms**derived class**
+   The terms **derived class**
    and **child class** are different
    names for **subclass**.
 
 .. note::
-   The terms**base class**
+   The terms **base class**
    and **parent class** are different
    names for **superclass**.
 

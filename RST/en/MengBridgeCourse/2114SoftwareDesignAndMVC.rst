@@ -141,7 +141,7 @@ The system shall ________
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -573,7 +573,7 @@ what needs to be changed to refine your design?
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 

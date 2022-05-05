@@ -46,7 +46,7 @@ This  `link <>`_ will direct you to the steps to `download and import <>`_ previ
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -78,8 +78,11 @@ Polymorphism Computer Superclass
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint2Summ.html ka
    :long_name: Checkpoint 2
+
+
+
 
 
 Polymorphism Integer Example
@@ -104,7 +107,7 @@ Polymorphism Integer Example
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 

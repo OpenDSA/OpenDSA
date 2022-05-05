@@ -495,34 +495,34 @@
 
     "Testing and Exceptions":{
       "MengBridgeCourse/2114JUNIT":{
-        "Checkpoint 1": {
+        "JunitCheckpoint1Summ": {
           "points": 30,
           "threshold": 3
         },
-        "Checkpoint 2": {
+        "JunitCheckpoint2Summ": {
           "points": 30,
           "threshold": 3
         },
-        "Checkpoint 3": {
+        "JunitCheckpoint3Summ": {
           "points": 40,
           "threshold": 4
         }
       },
 
       "MengBridgeCourse/2114Exceptions":{
-        "Checkpoint 1": {
+        "ExceptionsCheckpoint1Summ": {
           "points": 33,
           "threshold": 2
 
         },
-        "Checkpoint 2": {
+        "ExceptionsCheckpoint2Summ": {
           "points": 67,
           "threshold": 4
         }
       },
 
       "MengBridgeCourse/2114ObjectsEnumsAndUML":{
-        "Checkpoint 1": {
+        "OOP1Checkpoint1Summ": {
           "points": 50,
           "threshold": 2
         },
@@ -533,15 +533,15 @@
       },
 
       "MengBridgeCourse/2114Polymorphism2":{
-        "Checkpoint 1": {
+        "OOP2Checkpoint1Summ": {
           "points": 15,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "OOP2Checkpoint2Summ": {
           "points": 15,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "OOP2Checkpoint3Summ": {
           "points": 24,
           "threshold": 3
         },
@@ -559,20 +559,20 @@
       "MengBridgeCourse/2114StyleReview":{},
 
       "MengBridgeCourse/2114Bags1": {
-        "Checkpoint 1": {
+        "BagsCheckpoint1Summ": {
           "points": 26,
           "threshold": 3
 
         },
-        "Checkpoint 2": {
+        "BagsCheckpoint2Summ": {
           "points": 16,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "BagsCheckpoint3Summ": {
           "points": 16,
           "threshold": 2
         },
-        "Checkpoint 4": {
+        "BagsCheckpoint4Summ": {
           "points": 16,
           "threshold": 2
         },
@@ -594,26 +594,26 @@
 
     "Linked Lists, Bags, Stacks, and Efficiency": {
       "MengBridgeCourse/2114LinkedChainPointers": {
-        "Checkpoint 1": {
+        "LinkedChainCheckpoint1Summ": {
           "points": 50,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "LinkedChainCheckpoint2Summ": {
           "points": 50,
           "threshold": 2
         }
       },
 
       "MengBridgeCourse/2114Bags2": {
-        "Checkpoint 1": {
+        "LinkedBagCheckpoint1Summ": {
           "points": 40,
           "threshold": 4
         },
-        "Checkpoint 2": {
+        "LinkedBagCheckpoint2Summ": {
           "points": 20,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "LinkedBagCheckpoint3Summ": {
           "points": 20,
           "threshold": 2
         },
@@ -625,30 +625,30 @@
       "MengBridgeCourse/2114Unit8_Program1_Placeholder": {
       },
       "MengBridgeCourse/2114Efficiency": {
-        "Checkpoint 1": {
+        "EfficiencyCheckpoint1Summ": {
           "points": 50,
           "threshold": 3
         },
-        "Checkpoint 2": {
+        "EfficiencyCheckpoint2Summ": {
           "points": 50,
           "threshold": 3
         }
       },
 
       "MengBridgeCourse/2114Stacks": {
-        "Checkpoint 1": {
+        "StacksCheckpoint1Summ": {
           "points": 17,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "StacksCheckpoint2Summ": {
           "points": 25,
           "threshold": 3
         },
-        "Checkpoint 3": {
+        "StacksCheckpoint3Summ": {
           "points": 33,
           "threshold": 4
         },
-        "Checkpoint 4": {
+        "StacksCheckpoint4Summ": {
           "points": 8,
           "threshold": 1
         },
@@ -665,19 +665,19 @@
 
     "Recursion and Software Design": {
       "MengBridgeCourse/2114Recursion": {
-        "Checkpoint 1": {
+        "RecursionCheckpoint1Summ": {
           "points": 10,
           "threshold": 5
         },
-        "Checkpoint 2": {
+        "RecursionCheckpoint2Summ": {
           "points": 10,
           "threshold": 5
         },
-        "Checkpoint 3": {
+        "RecursionCheckpoint3Summ": {
           "points": 4,
           "threshold": 2
         },
-        "Checkpoint 4": {
+        "RecursionCheckpoint4Summ": {
           "points": 4,
           "threshold": 2
         },
@@ -721,11 +721,11 @@
       },
 
       "MengBridgeCourse/2114SoftwareDesignAndMVC": {
-        "Checkpoint 1": {
+        "DesignCheckpoint1Summ": {
           "points": 40,
           "threshold": 3
         },
-        "Checkpoint 2": {
+        "DesignCheckpoint2Summ": {
           "points": 60,
           "threshold": 5
         }
@@ -736,7 +736,7 @@
 
     "Queues and Generics": {
       "MengBridgeCourse/2114Generics2": {
-        "Checkpoint 1": {
+        "GenericsCheckpoint1Summ": {
           "points": 60,
           "threshold": 3
         },
@@ -746,31 +746,31 @@
         }
       },
       "MengBridgeCourse/2114Queues": {
-        "Checkpoint 1": {
+        "QueueCheckpoint1Summ": {
           "points": 11,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "QueueCheckpoint2Summ": {
           "points": 11,
           "threshold": 3
         },
-        "Checkpoint 3": {
+        "QueueCheckpoint3Summ": {
           "points": 11,
           "threshold": 3
         },
-        "Checkpoint 4": {
+        "QueueCheckpoint4Summ": {
           "points": 11,
           "threshold": 3
         },
-        "Checkpoint 5": {
+        "QueueCheckpoint5Summ": {
           "points": 11,
           "threshold": 3
         },
-        "Checkpoint 6": {
+        "QueueCheckpoint6Summ": {
           "points": 11,
           "threshold": 2
         },
-        "Checkpoint 7": {
+        "QueueCheckpoint7Summ": {
           "points": 11,
           "threshold": 2
         },
@@ -790,19 +790,19 @@
 
     "Lists and Iterators": {
       "MengBridgeCourse/2114Lists": {
-        "Checkpoint 1": {
+        "ListsCheckpoint1Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "ListsCheckpoint2Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "ListsCheckpoint3Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 4": {
+        "ListsCheckpoint4Summ": {
           "points": 13,
           "threshold": 2
         },
@@ -818,15 +818,15 @@
       "MengBridgeCourse/2114Unit11_Lab1_Placeholder": {
       },
       "MengBridgeCourse/2114Iterators": {
-        "Checkpoint 1": {
+        "IteratorsCheckpoint1Summ": {
           "points": 36,
           "threshold": 5
         },
-        "Checkpoint 2": {
+        "IteratorsCheckpoint2Summ": {
           "points": 14,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "IteratorsCheckpoint3Summ": {
           "points": 36,
           "threshold": 5
 
@@ -843,23 +843,23 @@
 
     "Comparing, Sorting and Binary Search": {
       "MengBridgeCourse/2114ComparingAndSorting": {
-        "Checkpoint 1": {
+        "CompSortCheckpoint1Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "CompSortCheckpoint2Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "CompSortCheckpoint3Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 4": {
+        "CompSortCheckpoint4Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 5": {
+        "CompSortCheckpoint5Summ": {
           "points": 13,
           "threshold": 2
         },
@@ -874,7 +874,7 @@
       },
 
       "MengBridgeCourse/2114BinarySearch": {
-        "Checkpoint 1": {
+        "BinarySearchCheckpoint1Summ": {
           "points": 50,
           "threshold": 2
         },
@@ -898,7 +898,6 @@
       },
       "Tutorials/2114_random_numbers": {
       }
-      
     }
   }
 

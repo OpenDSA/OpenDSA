@@ -205,7 +205,7 @@ Using Bags
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -317,7 +317,7 @@ This  `link <>`_ will direct you to the steps to `download and import <>`_ previ
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 Demo More bag method implementation
@@ -361,7 +361,7 @@ This implementation of the ArrayBag does not impose such a constraint.
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
@@ -419,7 +419,7 @@ Methods that Remove and Design Improvement Lesson and Demo
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint4.html ka
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 
