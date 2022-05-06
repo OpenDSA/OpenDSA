@@ -88,22 +88,19 @@ object was, in fact, instantiated or not.  Simply review the body of code where
 you believe the object was instantiated, then assess and test to confirm that
 that body of code did execute as expected.
 
-Related Resources
+Code Example
 ~~~~~~~~~~~~~~~~~
 
-Download the sample project to run and explore on your own in eclipse:
+.. admonition:: Try It Yourself
+ 
+  TODO: fix URLS
 
-TODO: fix URLS.
+  Download to run and explore on your own in Eclipse:
+  
+  `Example file CS2-ExExceptionHandling.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/CS2-ExExceptionHandling.zip>`_
+   
+  This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
 
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt=" CS2-ExExceptionHandling.zip">
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 Note:
 """""
@@ -535,9 +532,8 @@ exception object is set to null and only updated within the catch block.
   
    `7.2.5.1-ExceptionHandlingWithThrowExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.2.5.1-ExceptionHandlingWithThrowExample.zip>`_
    
-   TODO: fix URLS.
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
    
-   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
 
 Checkpoint 2
 ------------

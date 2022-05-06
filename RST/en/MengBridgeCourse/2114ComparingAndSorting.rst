@@ -173,10 +173,8 @@ Comparators
    
    `12.1.8.1-ComparingExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/12.1.8.1-ComparingExample.zip>`_ 
    
-   TODO: fix URLS.
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
    
-   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
-   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 
 Programming Practice: Comparators

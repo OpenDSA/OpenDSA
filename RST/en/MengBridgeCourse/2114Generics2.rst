@@ -57,10 +57,8 @@ Code Examples
    
    `10.1.2.3-GenericsExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip>`_
    
-   TODO: fix URLS.
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
    
-   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
-   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 Related Resources
 ~~~~~~~~~~~~~~~~~
@@ -133,11 +131,8 @@ Code Example
    
    `10.1.2.3-GenericsExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip>`_
    
-   TODO: fix URLS.
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
    
-   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
-   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
-
 
 Related Resources
 ~~~~~~~~~~~~~~~~~

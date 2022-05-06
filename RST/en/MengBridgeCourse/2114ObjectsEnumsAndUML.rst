@@ -153,12 +153,13 @@ class:
    }
 
 
-TODO: fix URLS.
-https://drive.google.com/drive/u/1/folders/1sIB5kmhTKiQsX0fQE5N2p1D8cuxNExV8
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
-
-
+.. admonition:: Try It Yourself
+   
+   Download to run and explore on your own in Eclipse:
+   
+   `Bank.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/Bank.java>`_ (Right-click to download .java file)
+   
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
 
 Enums
 ~~~~~
