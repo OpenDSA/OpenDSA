@@ -58,12 +58,17 @@ Checkpoint 1
    Video Slides 8.1.3-LinkedChainCode.pdf</img>
    </a>
 
-.. raw:: html
+.. admonition:: Try It Yourself
    
-   <br>
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/LinkedChain.java" target="_blank">
-   Example file LinkedChain.java (right-click to download as .java file)
-   </a>
+   Download to run and explore on your own in Eclipse:
+   
+   `LinkedChain.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/LinkedChain.java>`_ (right-click to download as .java file)
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
+   
 
 Checkpoint 2
 ------------

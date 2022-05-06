@@ -42,16 +42,16 @@ Polymorphism Measurable Interface
 
 Code Examples
 ~~~~~~~~~~~~~
+.. admonition:: Try It Yourself
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.4.1.2-MeasurableInterfaceExample.zip" target="_blank">
-   Example files 7.4.1.2-MeasurableInterfaceExample.zip
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
+   Download to run and explore on your own in Eclipse:
+   
+   `7.4.1.2-MeasurableInterfaceExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.4.1.2-MeasurableInterfaceExample.zip>`_
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 
 Checkpoint 1

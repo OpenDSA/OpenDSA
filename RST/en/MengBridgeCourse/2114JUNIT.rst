@@ -14,11 +14,9 @@ Objectives
 
 Upon completion of this module, students will be able to:
 
-* Review the basics of a java class including fields, constructors, methods,
-parameters, and use of the keyword this
+* Review the basics of a java class including fields, constructors, methods, parameters, and use of the keyword this
 * Review debugging code and code coverage
 * Variations for JUnit assert statements
-
 
 Introduction to Hokie Class
 ---------------------------
@@ -42,17 +40,11 @@ Code Example
 
    Download to run and explore on your own in Eclipse:
 
-   `7.1.2.2-BuggyHokieExercise <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.1.2.2-BuggyHokieExercise.zip>`_
-   
-   Be sure your browser window is tall enough to see the "Instructions" label
-   in the upper right of the game.
-
+   `7.1.2.2-BuggyHokieExercise.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.1.2.2-BuggyHokieExercise.zip>`_
 
    TODO: fix URLS.
    
    In Eclipse, you can download an example of this by going to Project > Download Assignment ...
-
-
 
 
 Checkpoint 1

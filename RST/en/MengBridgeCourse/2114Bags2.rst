@@ -92,18 +92,16 @@ Demo Video ExLinkedBagJunit
 
 Code examples
 ~~~~~~~~~~~~~
+.. admonition:: Try It Yourself
 
-Download to run and explore on your own in Eclipse:
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/8.5.2.2-LinkedBagsWithJUnitExample.zip" target="_blank">
-   Example files 8.5.2.2-LinkedBagsWithJUnitExample.zip
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
+   Download to run and explore on your own in Eclipse:
+   
+   `8.5.2.2-LinkedBagsWithJUnitExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/8.5.2.2-LinkedBagsWithJUnitExample.zip>`_
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 LinkedBag getFrequencyOf and contains video
 -------------------------------------------

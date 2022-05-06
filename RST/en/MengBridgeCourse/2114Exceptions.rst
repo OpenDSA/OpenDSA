@@ -528,13 +528,16 @@ exception object is set to null and only updated within the catch block.
 
    }
 
-Again, you can review this code here:
 
-.. raw:: html
-
-  <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.2.5.1-ExceptionHandlingWithThrowExample.zip" target="_blank">
-  Example files 17.2.5.1-ExceptionHandlingWithThrowExample.zip
-  </a>
+.. admonition:: Try It Yourself
+  
+   Download to run and explore on your own in Eclipse:
+  
+   `7.2.5.1-ExceptionHandlingWithThrowExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.2.5.1-ExceptionHandlingWithThrowExample.zip>`_
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
 
 Checkpoint 2
 ------------

@@ -51,12 +51,16 @@ Generics 2
 
 Code Examples
 ~~~~~~~~~~~~~
+.. admonition:: Try It Yourself
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip" target="_blank">
-   Example files 10.1.2.3-GenericsExample.zip
-   </a>
+   Download to run and explore on your own in Eclipse:
+   
+   `10.1.2.3-GenericsExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip>`_
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 Related Resources
 ~~~~~~~~~~~~~~~~~
@@ -121,14 +125,19 @@ Bounded Wildcard Examples
      </center>
 
 
-Code
-~~~~
+Code Example
+~~~~~~~~~~~~
+.. admonition:: Try It Yourself
 
-.. raw:: html
+   Download to run and explore on your own in Eclipse:
+   
+   `10.1.2.3-GenericsExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip>`_
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/10.1.2.3-GenericsExample.zip" target="_blank">
-   Example files 10.1.2.3-GenericsExample.zip
-   </a>
 
 Related Resources
 ~~~~~~~~~~~~~~~~~

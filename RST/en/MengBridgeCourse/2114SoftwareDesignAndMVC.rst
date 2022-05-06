@@ -684,11 +684,16 @@ application.
    :align: center
 
 
-.. raw:: html
+.. admonition:: Try It Yourself
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/9.2.10-AddressBookMVCExample.zip" target="_blank">
-   Example files 9.2.10-AddressBookMVCExample.zip
-   </a>
+   Download to run and explore on your own in Eclipse:
+   
+   `9.2.10-AddressBookMVCExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/9.2.10-AddressBookMVCExample.zip>`_
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 
 Design Review: Case Study - e-Commerce solution (online storefront) for ABC Ltd.

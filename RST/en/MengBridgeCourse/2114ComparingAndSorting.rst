@@ -167,11 +167,16 @@ Comparators
    Video Slides 12.1.8.1-Comparators.pdf
    </a>
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/12.1.8.1-ComparingExample.zip" target="_blank">
-   Example files 12.1.8.1-ComparingExample.zip
-   </a>
+.. admonition:: Try It Yourself
+   
+   Download to run and explore on your own in Eclipse:
+   
+   `12.1.8.1-ComparingExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/12.1.8.1-ComparingExample.zip>`_ 
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 
 Programming Practice: Comparators

@@ -112,11 +112,17 @@ Below you will find example code implementing the BagInterface.
 Take a look at how the implementation (the code) matches with the design document
 (the UML class diagram).
 
-.. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java" target="_blank">
-   Example file BagInterface.java (right-click to download as .java file)
-   </a>
+.. admonition:: Try It Yourself
+
+   Download to run and explore on your own in Eclipse:
+   
+   `Example file BagInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java>`_ (right-click to download as .java file)
+     
+   TODO: fix URLS.
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+
 
 .. code-block:: java
 
@@ -301,18 +307,19 @@ depicted below.
 Code Example
 ~~~~~~~~~~~~
 
-Download to run and explore on your own in eclipse:
+.. admonition:: Try It Yourself
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.7.6.5-ArrayBagsWithJUnitExample.java" target="_blank">
-   Example files 7.7.6.5-ArrayBagsWithJUnitExample.zip
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
-
+   Download to run and explore on your own in Eclipse:
+   
+   `7.7.6.5-ArrayBagsWithJUnitExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.7.6.5-ArrayBagsWithJUnitExample.zip>`_
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
+   
+   Download to run and explore on your own in eclipse:
+   
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 Checkpoint 2
 ------------

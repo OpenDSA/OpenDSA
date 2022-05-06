@@ -49,24 +49,11 @@ Introduction to Stacks
    Download to run and explore on your own in Eclipse:
    
    `Example file StackInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/StackInterface.java>`_ (right-click to download as .java file)
-   
-   Be sure your browser window is tall enough to see the "Instructions" label
-   in the upper right of the game.
-   
-   
+     
    TODO: fix URLS.
-   
+   This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
    In Eclipse, you can download an example of this by going to Project > Download Assignment ...
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/StackInterface.java" target="_blank">
-   Example file StackInterface.java (right-click to download as .java file)
-   </a>
-   
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 Checkpoint 1
 ------------
