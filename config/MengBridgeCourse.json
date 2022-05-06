@@ -747,39 +747,43 @@
       },
       "MengBridgeCourse/2114Queues": {
         "QueueCheckpoint1Summ": {
-          "points": 11,
+          "points": 10,
           "threshold": 2
         },
         "QueueCheckpoint2Summ": {
-          "points": 11,
+          "points": 10,
           "threshold": 3
         },
         "QueueCheckpoint3Summ": {
-          "points": 11,
+          "points": 10,
           "threshold": 3
         },
         "QueueCheckpoint4Summ": {
-          "points": 11,
+          "points": 10,
           "threshold": 3
         },
         "QueueCheckpoint5Summ": {
-          "points": 11,
+          "points": 10,
           "threshold": 3
         },
         "QueueCheckpoint6Summ": {
-          "points": 11,
+          "points": 10,
           "threshold": 2
         },
         "QueueCheckpoint7Summ": {
-          "points": 11,
+          "points": 10,
+          "threshold": 2
+        },
+        "QueueCheckpoint8Summ": {
+          "points": 10,
           "threshold": 2
         },
         "Programming Practice: Queues 1": {
-          "points": 12,
+          "points": 10,
           "threshold": 3
         },
         "Programming Practice: Queues 2": {
-          "points": 11,
+          "points": 10,
           "threshold": 2
         }
       },
