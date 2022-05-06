@@ -47,7 +47,8 @@ Java UML Diagrams
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1-JavaOOPUML.pdf" target="_blank">
-   Video slides 7.3.2.1-JavaOOPUML.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.3.2.1-JavaOOPUML.pdf</img>
    </a>
 
 .. admonition:: Note

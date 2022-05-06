@@ -35,8 +35,10 @@ Polymorphism Measurable Interface
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.4.1.1-JavaOOPPolyMeasurable.pdf" target="_blank">
-   Video slides 7.4.1.1-JavaOOPPolyMeasurable.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.4.1.1-JavaOOPPolyMeasurable.pdf</img>
    </a>
+
 
 Code Examples
 ~~~~~~~~~~~~~
@@ -81,7 +83,8 @@ Polymorphism Computer Superclass
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.4.4.1-JavaOOPPolyComputer.pdf" target="_blank">
-   Video slides 7.4.4.1-JavaOOPPolyComputer.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.4.4.1-JavaOOPPolyComputer.pdf</img>
    </a>
 
 Checkpoint 2
@@ -109,7 +112,8 @@ Polymorphism Integer Example
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.6.4.1-JavaOOPPolyInteger.pdf" target="_blank">
-   Video slides 7.6.4.1-JavaOOPPolyInteger.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.6.4.1-JavaOOPPolyInteger.pdf</img>
    </a>
 
 

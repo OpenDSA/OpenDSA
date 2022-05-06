@@ -36,9 +36,9 @@ Introduction to Ordering, Comparing, and Sorting
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.2.1-IntroOrderingAndComparing.pdf" target="_blank">
-   12.1.2.1-IntroOrderingAndComparing.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 12.1.2.1-IntroOrderingAndComparing.pdf
    </a>
-
 
 Checkpoint 1
 ------------
@@ -60,7 +60,8 @@ Introduction to Sorting Video
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.3.1-IntroToSorting.pdf" target="_blank">
-   12.1.3.1-IntroToSorting.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 12.1.3.1-IntroToSorting.pdf
    </a>
 
 Checkpoint 2
@@ -82,7 +83,8 @@ Selection Sort Video
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.4.1-SelectionSort.pdf" target="_blank">
-   12.1.4.1-SelectionSort.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 12.1.4.1-SelectionSort.pdf
    </a>
 
 Checkpoint 3
@@ -106,7 +108,8 @@ Insertion Sort
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.5.1-InsertionSortArray.pdf" target="_blank">
-   12.1.5.1-InsertionSortArray.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 12.1.5.1-InsertionSortArray.pdf
    </a>
 
 Checkpoint 4
@@ -128,9 +131,9 @@ Insertion Sort Array
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.6.1-InsertionSortLinked.pdf" target="_blank">
-   12.1.6.1-InsertionSortLinked.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 12.1.6.1-InsertionSortLinked.pdf
    </a>
-
 
 Checkpoint 5
 ------------
@@ -160,6 +163,7 @@ Comparators
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.8.1-Comparators.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
    Video Slides 12.1.8.1-Comparators.pdf
    </a>
 

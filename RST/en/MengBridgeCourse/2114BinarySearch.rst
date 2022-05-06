@@ -31,9 +31,9 @@ Introduction to Searching
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.2.2.1-IntroToSearching.pdf" target="_blank">
-   Video Slides 12.2.2.1-IntroToSearching.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 12.2.2.1-IntroToSearching.pdf</img>
    </a>
-
 
 Checkpoint 1
 ------------
@@ -55,10 +55,10 @@ Programming Searching
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.2.4.1-ProgrammingSearching.pdf" target="_blank">
-   Video Slides 12.2.4.1-ProgrammingSearching.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 12.2.4.1-ProgrammingSearching.pdf</img>
    </a>
-
-
+   
 Programming Practice: Binary Search
 -----------------------------------
 

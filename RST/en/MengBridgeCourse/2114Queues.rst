@@ -39,9 +39,9 @@ Queues
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.2.1-QueueIntro.pdf" target="_blank">
-   10.2.2.1-QueueIntro.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.2.1-QueueIntro.pdf</img>
    </a>
-
 
 .. code-block:: java
 
@@ -108,7 +108,8 @@ Linked Queues Intro and Enqueue
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.4.1-LinkedQueuesEnqueue.pdf" target="_blank">
-   10.2.4.1-LinkedQueuesEnqueue.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.4.1-LinkedQueuesEnqueue.pdf</img>
    </a>
 
 Checkpoint 2
@@ -134,7 +135,8 @@ Linked Queues Removing and More (Dequeue and Other Methods)
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.5.1-LinkedQueueRemove.pdf" target="_blank">
-   10.2.5.1-LinkedQueueRemove.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.5.1-LinkedQueueRemove.pdf</img>
    </a>
 
 Checkpoint 3
@@ -160,7 +162,8 @@ Deques
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.6.1-DequeIntro.pdf" target="_blank">
-   10.2.6.1-DequeIntro.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.6.1-DequeIntro.pdf</img>
    </a>
 
 Checkpoint 4
@@ -268,7 +271,8 @@ Deque Removing and Wrap Up
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.7.1-DequeRemoveAndWrapUp.pdf" target="_blank">
-   10.2.7.1-DequeRemoveAndWrapUp.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.7.1-DequeRemoveAndWrapUp.pdf</img>
    </a>
 
 Checkpoint 5
@@ -295,7 +299,8 @@ Array Implementation of Queues
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.8.1-ArrayQueueIntro.pdf" target="_blank">
-   10.2.8.1-ArrayQueueIntro.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.8.1-ArrayQueueIntro.pdf</img>
    </a>
 
 Checkpoint 6
@@ -322,9 +327,9 @@ ArrayQueue One Unused Location
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.9.1-ArrayQueueRemove.pdf" target="_blank">
-   10.2.9.1-ArrayQueueRemove.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.9.1-ArrayQueueRemove.pdf</img>
    </a>
-
 
 Checkpoint 7
 ------------
@@ -348,7 +353,8 @@ ArrayQueue Ensure Capacity
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.10.2-ArrayQueueEnsureCapacity.pdf" target="_blank">
-   10.2.10.2-ArrayQueueEnsureCapacity.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.10.2-ArrayQueueEnsureCapacity.pdf</img>
    </a>
 
 
@@ -374,7 +380,8 @@ ArrayQueue WrapUp
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.11.1-ArrayQueueWrapUp.pdf" target="_blank">
-   10.2.11.1-ArrayQueueWrapUp.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.2.11.1-ArrayQueueWrapUp.pdf</img>
    </a>
 
 

@@ -40,8 +40,23 @@ Introduction to Stacks
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.2-StacksIntro.pdf" target="_blank">
-   Video slides 8.5.2-StacksIntro.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.5.2-StacksIntro</img>
    </a>
+
+.. admonition:: Try It Yourself
+   
+   Download to run and explore on your own in Eclipse:
+   
+   `Example file StackInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/StackInterface.java>`_ (right-click to download as .java file)
+   
+   Be sure your browser window is tall enough to see the "Instructions" label
+   in the upper right of the game.
+   
+   
+   TODO: fix URLS.
+   
+   In Eclipse, you can download an example of this by going to Project > Download Assignment ...
 
 .. raw:: html
 
@@ -117,8 +132,10 @@ Stacks Array Implementation
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.8.1-StacksArrayImplementation.pdf" target="_blank">
-   Video slides8.5.8.1-StacksArrayImplementation.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.5.8.1-StacksArrayImplementation.pdf</img>
    </a>
+   
 
 Stacks Linked Chain Implementation
 ----------------------------------
@@ -135,14 +152,14 @@ Stacks Linked Chain Implementation
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.9.1-StacksLinkedChainImplementation.pdf"  target="_blank">
-   8.5.9.1-StacksLinkedChainImplementation.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.9.1-StacksLinkedChainImplementation.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.5.9.1-StacksLinkedChainImplementation.pdf</img>
    </a>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.9.1-TestingStacks.pdf"  target="_blank">
-   8.5.9.1-TestingStacks.pdf
+   <br>
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.9.1-TestingStacks.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.5.9.1-TestingStacks.pdf</img>
    </a>
 
 Checkpoint 4

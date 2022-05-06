@@ -36,7 +36,8 @@ Java Interlude 2 Exceptions from  `Data Structures and Abstractions with Java, 4
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.2.2-IntroToExceptions.pdf" target="_blank">
-   Video slides 7.2.2-IntroToExceptions.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.2.2-IntroToExceptions.pdf</img>
    </a>
 
 

@@ -39,6 +39,7 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
+
 [11:31] Demo in Visualizer Video
 --------------------------------
 
@@ -49,14 +50,17 @@ Checkpoint 1
      </center>
 
 
+
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.3-LinkedChainCode.pdf" target="_blank">
-   8.1.3-LinkedChainCode.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.1.3-LinkedChainCode.pdf</img>
    </a>
 
 .. raw:: html
-
+   
+   <br>
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/LinkedChain.java" target="_blank">
    Example file LinkedChain.java (right-click to download as .java file)
    </a>
@@ -66,6 +70,8 @@ Checkpoint 2
 
 .. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
+
+
 
 
 [5:14] Contains Animation Video
@@ -81,5 +87,6 @@ Checkpoint 2
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.4-LinkedChainContains.pdf" target="_blank">
-   8.1.4-LinkedChainContains.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.1.4-LinkedChainContains.pdf</img>
    </a>

@@ -52,8 +52,9 @@ Introduction to Recursion
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.2.2-RecursionIntro.pdf"  target="_blank">
-   9.1.2.2-RecursionIntro.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.2.2-RecursionIntro.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.2.2-RecursionIntro.pdf</img>
    </a>
 
 Checkpoint 1
@@ -78,8 +79,9 @@ More Recursion
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.3.1-RecursionExample.pdf"  target="_blank">
-   9.1.3.1-RecursionExample.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.3.1-RecursionExample.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.3.1-RecursionExample.pdf</img>
    </a>
 
 Programming Practice: Recursion 1
@@ -121,10 +123,10 @@ missing ``{}`` in the if block.  It should be:
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.5.1-DisplayArrays.pdf"  target="_blank">
-   9.1.5.1-DisplayArrays.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.5.1-DisplayArrays.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.5.1-DisplayArrays.pdf</img>
    </a>
-
 
 
 Checkpoint 2
@@ -148,10 +150,10 @@ Recursion on Arrays Middle
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.6.1-DisplayArraysMiddle.pdf"  target="_blank">
-   9.1.6.1-DisplayArraysMiddle.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.6.1-DisplayArraysMiddle.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.6.1-DisplayArraysMiddle.pdf</img>
    </a>
-
 
 Checkpoint 3
 ------------
@@ -182,10 +184,10 @@ Recursion on Linked Chain
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.8.1-DisplayBagsRecursively.pdf"  target="_blank">
-   9.1.8.1-DisplayBagsRecursively.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.8.1-DisplayBagsRecursively.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.8.1-DisplayBagsRecursively.pdf</img>
    </a>
-
 
 Tower of Hanoi
 --------------
@@ -201,8 +203,9 @@ Tower of Hanoi
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.9.1-TowersOfHanoi.pdf"  target="_blank">
-   Video Slides 9.1.9.1-TowersOfHanoi.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.9.1-TowersOfHanoi.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.9.1-TowersOfHanoi.pdf</img>
    </a>
 
 Checkpoint 4
@@ -226,10 +229,10 @@ Recursion Wrap Up
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.10.1-RecursionWrapUp.pdf"  target="_blank">
-   Video Slides 9.1.10.1-RecursionWrapUp.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.10.1-RecursionWrapUp.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.10.1-RecursionWrapUp.pdf</img>
    </a>
-
 
 Programming Practice: Recursion 3
 ---------------------------------

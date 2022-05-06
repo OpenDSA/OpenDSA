@@ -33,8 +33,9 @@ Generics 2
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.1.2.1-MoreOnGenerics.pdf"  target="_blank">
-   Video slides 10.1.2.1-MoreOnGenerics.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.1.2.1-MoreOnGenerics.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 10.1.2.1-MoreOnGenerics.pdf</img>
    </a>
 
 

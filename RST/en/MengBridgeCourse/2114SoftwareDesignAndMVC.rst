@@ -36,9 +36,11 @@ Introduction to Software design
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.2.2.1-IntroToSoftwareDesign.pdf"  target="_blank">
-   9.2.2.1-IntroToSoftwareDesign.pdf
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.2.2.1-IntroToSoftwareDesign.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.2.2.1-IntroToSoftwareDesign.pdf</img>
    </a>
+   
 
 Functional and non-functional requirements
 ------------------------------------------

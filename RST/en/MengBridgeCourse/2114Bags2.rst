@@ -44,8 +44,10 @@ Introduction to Linked Bags
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.3-LinkedBagIntro.pdf" target="_blank">
-   Video slides 8.2.3-LinkedBagIntro.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.3-LinkedBagIntro.pdf</img>
    </a>
+
 
 LinkedBag add and toArray video
 -------------------------------
@@ -63,7 +65,8 @@ LinkedBag add and toArray video
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.4.1-LinkedBagAddToArray.pdf" target="_blank">
-   Video slides 8.2.4.1-LinkedBagAddToArray.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.4.1-LinkedBagAddToArray.pdf</img>
    </a>
 
 Checkpoint 1
@@ -71,6 +74,7 @@ Checkpoint 1
 
 .. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
+
 
 
 Demo Video ExLinkedBagJunit
@@ -117,7 +121,8 @@ LinkedBag getFrequencyOf and contains video
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.6.1-LinkedFreqContains.pdf" target="_blank">
-   Video slides 8.2.6.1-LinkedFreqContains.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.6.1-LinkedFreqContains.pdf</img>
    </a>
 
 Checkpoint 2
@@ -143,7 +148,8 @@ LinkedBag Removing an item
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.7.1-LinkedRemove.pdf" target="_blank">
-   Video slides 8.2.7.1-LinkedRemove.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.7.1-LinkedRemove.pdf</img>
    </a>
 
 **Tradeoffs of using a linked chain implementation for a bag**

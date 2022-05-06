@@ -337,7 +337,8 @@ Demo More bag method implementation
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.7.1-ArrayBagMethods.pdf" target="_blank">
-   Video slides 7.7.7.1-ArrayBagMethods.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.7.1-ArrayBagMethods.pdf</img>
    </a>
 
 UML Diagram
@@ -380,9 +381,9 @@ Methods that Remove and Design Improvement Lesson and Demo
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.1-BagsDesignImprovePart1.pdf" target="_blank">
-   Video slides 7.7.8.1-BagsDesignImprovePart1.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.1-BagsDesignImprovePart1.pdf</img>
    </a>
-
 
 [6:45] Methods that Remove and Design Improvement Video Demonstration, Part 2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -397,9 +398,9 @@ Methods that Remove and Design Improvement Lesson and Demo
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.2-BagsDesignImprovePart2.pdf" target="_blank">
-   Video slides 7.7.8.2-BagsDesignImprovePart2.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.2-BagsDesignImprovePart2.pdf</img>
    </a>
-
 
 [9:03] Methods that Remove and Design Improvement Video Demonstration, Part 3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -413,7 +414,8 @@ Methods that Remove and Design Improvement Lesson and Demo
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.3-BagsDesignImprovePart3.pdf" target="_blank">
-   Video slides 7.7.8.3-BagsDesignImprovePart3.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.3-BagsDesignImprovePart3.pdf</img>
    </a>
 
 Checkpoint 4
@@ -439,9 +441,9 @@ Array resizing description and coding Demo
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.9.1-DoubleArray.pdf" target="_blank">
-   Video slides 7.7.9.1-DoubleArray.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.9.1-DoubleArray.pdf</img>
    </a>
-
 
 Tradeoffs of using an array implementation for a bag
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

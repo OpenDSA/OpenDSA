@@ -39,8 +39,10 @@ Introduction to Iterators
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.2.1-IntroToIterators.pdf" target="_blank">
-   11.3.2.1-IntroToIterators.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.3.2.1-IntroToIterators.pdf</img>
    </a>
+
 
 Checkpoint 1
 ------------
@@ -64,7 +66,8 @@ Programming Using the Iterable Interface
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.3.1-Iterable.pdf" target="_blank">
-   Video Slides 11.3.3.1-Iterable.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.3.3.1-Iterable.pdf</img>
    </a>
 
 Checkpoint 2
@@ -88,13 +91,8 @@ Programming Using Iterators
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.4.1-ProgrammingWithIterators.pdf" target="_blank">
-   Video Slides 11.3.4.1-ProgrammingWithIterators.pdf
-   </a>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/11.3.4.1-IteratorExample.zip" target="_blank">
-   Example files 11.3.4.1-IteratorExample.zip
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.3.4.1-ProgrammingWithIterators.pdf</img>
    </a>
 
 
@@ -122,8 +120,10 @@ Iterator Design Decisions
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.5.1-IteratorsDesignConsiderations.pdf" target="_blank">
-   11.3.5.1-IteratorsDesignConsiderations.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides11.3.5.1-IteratorsDesignConsiderations.pdf</img>
    </a>
+
 
 **Clarification**:  Iterators that are nested class inside the linked structure
 (not subclasses) are more efficient than Iterators that are independent classes.

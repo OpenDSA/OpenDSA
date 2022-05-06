@@ -39,7 +39,7 @@ Chapter 4 from  `Data Structures and Abstractions with Java, 4th edition  by Fra
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.4.2-EfficiencyPart1.pdf" target="_blank">
-   8.4.2-EfficiencyPart1.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">Video Slides 8.4.2-EfficiencyPart1.pdf</img>
    </a>
 
 Checkpoint 1
@@ -79,5 +79,5 @@ Checkpoint 2
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.4.4-BagsEfficiency.pdf" target="_blank">
-   8.4.4-BagsEfficiency.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">Video Slides 8.4.4-BagsEfficiency.pdf</img>
    </a>

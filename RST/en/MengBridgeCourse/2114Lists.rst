@@ -36,7 +36,8 @@ List Introduction
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.2.1-ListIntro.pdf" target="_blank">
-   Video Slides 11.1.2.1-ListIntro.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.1.2.1-ListIntro.pdf</img>
    </a>
 
 The List Interface
@@ -186,7 +187,8 @@ LinkedList Add Implementation
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.3.1-LinkedListAdd.pdf" target="_blank">
-   Video Slides 11.1.3.1-LinkedListAdd.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.1.3.1-LinkedListAdd.pdf</img>
    </a>
 
 
@@ -213,9 +215,10 @@ Tracing Add with Debugger
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.4.1-TraceAddDebugger.pdf" target="_blank">
-   Video Slides 11.1.4.1-TraceAddDebugger.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.1.4.1-TraceAddDebugger.pdf</img>
    </a>
-
+   
 LinkedList Remove
 -----------------
 
@@ -232,7 +235,8 @@ LinkedList Remove
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.5.1-LinkedListRemove.pdf" target="_blank">
-   Video Slides 11.1.5.1-LinkedListRemove.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.1.5.1-LinkedListRemove.pdf</img>
    </a>
 
 .. raw:: html
@@ -270,7 +274,8 @@ Considering and Array Implementation of a List
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.7.1-LinkedListMoreDetails.pdf" target="_blank">
-   11.1.7.1-LinkedListMoreDetails.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.1.7.1-LinkedListMoreDetails.pdf</img>
    </a>
 
 
@@ -296,7 +301,8 @@ Considering an Array Implementation of a List
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.1.8.1-ArrayListImplementation.pdf" target="_blank">
-   11.1.8.1-ArrayListImplementation.pdf
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.1.8.1-ArrayListImplementation.pdf</img>
    </a>
 
 Programming Practice: Lists 2
