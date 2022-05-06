@@ -14,10 +14,10 @@ Objectives
 
 Upon completion of this module, students will be able to:
 
-* Understand the purpose Exceptions and Exception handling
-* Understand and use try-catch-finally blocks to handle exceptions
-* Throw exceptions in a method
-* Implement and test Exception handling code
+* Review the purpose Exceptions and Exception handling
+* Review and use try-catch-finally blocks to handle exceptions
+* Review how to throw exceptions in a method
+* Review how to implement and test Exception handling code
 
 Suggested Reading
 ~~~~~~~~~~~~~~~~~
@@ -33,12 +33,11 @@ Java Interlude 2 Exceptions from  `Data Structures and Abstractions with Java, 4
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_yrzfgb35&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ds0lik92" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Intro to Exceptions.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.2.2-IntroToExceptions.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.2.2-IntroToExceptions.pdf</img>
    </a>
 
 
@@ -89,20 +88,19 @@ object was, in fact, instantiated or not.  Simply review the body of code where
 you believe the object was instantiated, then assess and test to confirm that
 that body of code did execute as expected.
 
-Related Resources
+Code Example
 ~~~~~~~~~~~~~~~~~
 
-Download the sample project to run and explore on your own in eclipse:
+.. admonition:: Try It Yourself
+ 
+  TODO: fix URLS
 
-TODO: fix URLS.
+  Download to run and explore on your own in Eclipse:
+  
+  `Example file CS2-ExExceptionHandling.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/CS2-ExExceptionHandling.zip>`_
+   
+  This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
 
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt=" CS2-ExExceptionHandling.zip">
-   </a>
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 Note:
 """""
@@ -118,9 +116,9 @@ Before using the above sample project you must
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -527,20 +525,18 @@ exception object is set to null and only updated within the catch block.
 
    }
 
-Again, you can review this code here:
 
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt=" CS2-ExExceptionHandlingWithThrow.zip">
-   </a>
-
-
+.. admonition:: Try It Yourself
+  
+   Download to run and explore on your own in Eclipse:
+  
+   `7.2.5.1-ExceptionHandlingWithThrowExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.2.5.1-ExceptionHandlingWithThrowExample.zip>`_
+   
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
+   
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2

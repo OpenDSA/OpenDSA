@@ -37,31 +37,27 @@ Introduction to Stacks
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_2th5gshg&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_arppdfzb" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Stacks Intro PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.2-StacksIntro.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.5.2-StacksIntro</img>
    </a>
 
+.. admonition:: Try It Yourself
+   
+   Download to run and explore on your own in Eclipse:
+   
+   `Example file StackInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/StackInterface.java>`_ (right-click to download as .java file)
+     
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
+   
 
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="StackInterface.java">
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
 
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -82,7 +78,7 @@ StackIntroVideoMemory Example
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -103,7 +99,7 @@ Stacks Array-Based Design
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 Stacks Array Implementation
@@ -119,15 +115,13 @@ Stacks Array Implementation
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_k40xld68&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_00ne9adm" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Stack Array Implementation PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.8.1-StacksArrayImplementation.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.5.8.1-StacksArrayImplementation.pdf</img>
    </a>
-
+   
 
 Stacks Linked Chain Implementation
 ----------------------------------
@@ -142,36 +136,22 @@ Stacks Linked Chain Implementation
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Stack Linked Chain Implementation PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.9.1-StacksLinkedChainImplementation.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.5.9.1-StacksLinkedChainImplementation.pdf</img>
    </a>
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="Tips for Testing Stacks">
+   <br>
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.5.9.1-TestingStacks.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.5.9.1-TestingStacks.pdf</img>
    </a>
-
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="This PPT contains some tips for testing Stacks">
-   </a>
-
 
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint4.html ka
+.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 

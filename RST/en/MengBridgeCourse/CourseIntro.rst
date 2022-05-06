@@ -205,13 +205,11 @@ To install:
 
 * **Mac:**
 
-  * Eclipse->Preferences->Java->Code Style->Formatter->import the above file,
-  then click ok
+  * Eclipse->Preferences->Java->Code Style->Formatter->import the above file, then click ok
 
 * **Windows:**
 
-  * Window->Preferences->Java->Code Style->Formatter->import the above file,
-  then click ok
+  * Window->Preferences->Java->Code Style->Formatter->import the above file, then click ok
 
 
 This is an image of setting up on Windows

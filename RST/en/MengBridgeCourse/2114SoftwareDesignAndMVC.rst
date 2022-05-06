@@ -34,13 +34,13 @@ Introduction to Software design
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Intro to Software Design.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.2.2.1-IntroToSoftwareDesign.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.2.2.1-IntroToSoftwareDesign.pdf</img>
    </a>
+   
 
 Functional and non-functional requirements
 ------------------------------------------
@@ -141,9 +141,9 @@ The system shall ________
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -383,31 +383,8 @@ When in doubt about the level of detail needed please feel free to ask
 questions and review the UML class designs provided within the examples
 provided throughout the module, labs, and projects.
 
-TODO: fix URLS.
-
 Much of what you need to know for relationships, hierarchies and reuse has
-been covered within the
-`Java OOP (Object Oriented Programming) Module <Java OOP (Object Oriented Programming) Module>`_ .
-Additionally you may download the UML Diagram key via this link:
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="here">
-   </a>
-
-TODO: fix URLS.
-We encourage you to review the
-`Java OOP (Object Oriented Programming) Module <Java OOP (Object Oriented Programming) Module>`_ .
-and
-
-TODO: fix URLS.
-`UML Diagram key <UML Diagram key>`_
-
-Then continue the activity below
-
+been covered within the :doc:`2114ObjectsEnumsAndUML`. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
 
 Activity
 --------
@@ -416,7 +393,7 @@ Review the listing of nouns and noun phrases and concepts that could be
 extracted from the Case Study - e-Commerce solution (online storefront)
 for ABC Ltd .
 
-.. list-table:: Nouns and Noun Phrases
+.. list-table:: **Nouns and Noun Phrases**
    :header-rows: 0
 
    * - Products
@@ -445,7 +422,7 @@ for ABC Ltd .
      - Employee users
 
 
-.. list-table:: Concepts
+.. list-table:: **Concepts**
    :header-rows: 0
 
    * - User Account
@@ -457,7 +434,7 @@ for ABC Ltd .
 
 Considering the above we may identify the following as an initial list of possible classes.
 
-.. list-table:: Possible Classes
+.. list-table:: **Possible Classes**
    :header-rows: 0
 
    * - Product Catalog
@@ -569,7 +546,7 @@ Case Study - e-Commerce solution (online storefront) for ABC Ltd, for your
 review.
 
 
-.. list-table:: Concepts
+.. list-table:: **Concepts**
    :header-rows: 0
 
    * - User Account
@@ -579,7 +556,7 @@ review.
      - Order fulfillment
 
 
-.. list-table:: Verb and Verb Phrases
+.. list-table:: **Verb and Verb Phrases**
    :header-rows: 0
 
    * - Search or Browsers
@@ -596,9 +573,9 @@ Review your design with a critical eye, ask yourself,
 what needs to be changed to refine your design?
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -707,14 +684,14 @@ application.
    :align: center
 
 
+.. admonition:: Try It Yourself
 
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="Example: ExMVCAddressBook">
-   </a>
+   Download to run and explore on your own in Eclipse:
+   
+   `9.2.10-AddressBookMVCExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/9.2.10-AddressBookMVCExample.zip>`_
+   
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
+   
 
 
 Design Review: Case Study - e-Commerce solution (online storefront) for ABC Ltd.
@@ -838,15 +815,28 @@ vending machine would be similar in form, behavior, and features to the machine
 depicted in the images below.
 
 
-
 .. odsafig:: Images/VendingMachine1.png
    :align: left
+   :width: 270
+   :height: 360
+   :figwidth: 33%
+   :alt: Overall view of an internet-enabled vending machine
 
 .. odsafig:: Images/VendingMachine2.png
    :align: center
+   :width: 270
+   :height: 360
+   :figwidth: 33%
+   :alt: Overall view of the customer interface, showing the keypad for selecting the item, as well as two payment interfaces, one for card swipe or cash, and one for payment with a mobile device.
 
 .. odsafig:: Images/VendingMachine3.png
    :align: right
+   :width: 270
+   :height: 360
+   :figwidth: 33%
+   :alt: Closeup view of the mobile device payment  interface, showing the flavors of payment systems supported (Apple Pay, Android Pay, Samsung Pay), as well as the credit card types supported.
+
+
 
 
 Consider the software requirements of the software needed to support the

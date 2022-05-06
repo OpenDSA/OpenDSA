@@ -26,7 +26,7 @@ Linked Bags
 Suggested Reading:
 ~~~~~~~~~~~~~~~~~~
 
-Suggested Reading:  Chapter 3 Bag Implementation That Links Data from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
+Suggested Reading:  **Chapter 3: Bag Implementation That Links Data** from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 Introduction to Linked Bags
 ---------------------------
@@ -41,14 +41,13 @@ Introduction to Linked Bags
      </center>
 
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Linked Bag Intro PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.3-LinkedBagIntro.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.3-LinkedBagIntro.pdf</img>
    </a>
+
 
 LinkedBag add and toArray video
 -------------------------------
@@ -63,20 +62,19 @@ LinkedBag add and toArray video
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedBagAddToArray PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.4.1-LinkedBagAddToArray.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.4.1-LinkedBagAddToArray.pdf</img>
    </a>
 
-
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
+
 
 
 Demo Video ExLinkedBagJunit
@@ -92,22 +90,16 @@ Demo Video ExLinkedBagJunit
      </center>
 
 
-Zipped file example
-~~~~~~~~~~~~~~~~~~~
+Code examples
+~~~~~~~~~~~~~
+.. admonition:: Try It Yourself
 
-Download to run and explore on your own in eclipse:
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="CS2-ExLinkedBagsJUnit.zip">
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
+   Download to run and explore on your own in Eclipse:
+   
+   `8.5.2.2-LinkedBagsWithJUnitExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/8.5.2.2-LinkedBagsWithJUnitExample.zip>`_
+   
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
+   
 
 LinkedBag getFrequencyOf and contains video
 -------------------------------------------
@@ -122,19 +114,17 @@ LinkedBag getFrequencyOf and contains video
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedFreqContains PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.6.1-LinkedFreqContains.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.6.1-LinkedFreqContains.pdf</img>
    </a>
 
-
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -151,13 +141,11 @@ LinkedBag Removing an item
      </center>
 
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedRemove PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.7.1-LinkedRemove.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.7.1-LinkedRemove.pdf</img>
    </a>
 
 **Tradeoffs of using a linked chain implementation for a bag**
@@ -174,9 +162,9 @@ TODO: fix URLS.
 
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 

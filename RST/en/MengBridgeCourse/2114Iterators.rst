@@ -36,19 +36,18 @@ Introduction to Iterators
      </center>
 
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="IntroToIterators.ppt">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.2.1-IntroToIterators.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.3.2.1-IntroToIterators.pdf</img>
    </a>
 
-Checkpoint 1
-~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint1.html ka
+Checkpoint 1
+------------
+
+.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -64,20 +63,17 @@ Programming Using the Iterable Interface
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_qzq8us2t&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_dugp2cay" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Iterable.ppt">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.3.1-Iterable.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.3.3.1-Iterable.pdf</img>
    </a>
-
 
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 Programming Using Iterators
@@ -92,18 +88,11 @@ Programming Using Iterators
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_qzq8us2t&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_okzhmkjf" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="ProgrammingWithIterators.ppt">
-   </a>
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="IteratorsExample.zip">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.4.1-ProgrammingWithIterators.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 11.3.4.1-ProgrammingWithIterators.pdf</img>
    </a>
 
 
@@ -111,7 +100,7 @@ TODO: fix URLS.
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 Iterator Design Decisions
@@ -130,8 +119,9 @@ Iterator Design Decisions
 
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="IteratorsDesignConsiderations.ppt">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.5.1-IteratorsDesignConsiderations.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides11.3.5.1-IteratorsDesignConsiderations.pdf</img>
    </a>
 
 
@@ -139,12 +129,12 @@ Iterator Design Decisions
 (not subclasses) are more efficient than Iterators that are independent classes.
 
 
-Inner Iterator for CS2-ExLinkedList
------------------------------------
+Inner Iterator for 11.3.4.1-IteratorExample
+-------------------------------------------
 
 As discussed throughout this section there are various design approaches for
 iterators.  Below is one example of how an inner Iterator class could be
-implemented for CS2-ExLinkedList.
+implemented for 11.3.4.1-IteratorExample.
 
 Include a public method to make the iterator object available:
 

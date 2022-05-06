@@ -7,15 +7,15 @@
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="650" data-width="950">
+  <body data-height="1250" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="LC_CP2_Q1">
         <p class="question">Which of the following 4 implementations could
-          not be used for contains?</p>
+          not be used for <tt>contains</tt>?</p>
 
         <div class="solution">
-<tt>
+<pre class="prettyprint">
 public boolean contains(T anEntry) {
 
   Node currentNode = firstNode;
@@ -26,27 +26,27 @@ public boolean contains(T anEntry) {
 
   return true;
 } // end contains
-</tt>
+</pre>
         </div>
         <ul class="choices">
         <li>
-<tt>
+<pre class="prettyprint">
 public boolean contains(T anEntry)
 {
   return getIndexOf(anEntry) > -1;
 }
-</tt>
+</pre>
         </li>
         <li>
-<tt>
+<pre class="prettyprint">
 public boolean contains(T anEntry)
 {
   return getFrequencyOf(anEntry) > 0;
 }
-</tt>
+</pre>
         </li>
         <li>
-<tt>
+<pre class="prettyprint">
 public boolean contains(T anEntry)
 {
   boolean found = false;
@@ -61,7 +61,7 @@ public boolean contains(T anEntry)
 
   return found;
 } // end contains
-</tt>
+</pre>
         </li>
         </ul>
         <div class="hints">

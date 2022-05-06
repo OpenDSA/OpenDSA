@@ -122,20 +122,22 @@ or Command + Shift + F (if using Mac).
 
 Remember to format your code before submitting to Web-CAT.
 
-Download the following XML file: `vtcsstylefixed.xml download <vtcsstylefixed.xml download>`_
+.. admonition:: Install the formatting file
+ 
+  Download the following XML file: `vtcsstyle.xml download <https://courses.cs.vt.edu/~cs2114/meng-bridge/support/vtcsstyle.xml >`_
 
-To install:
-
-* **Mac:**
-
-  * Eclipse->Preferences->Java->Code Style->Formatter->import the above file,
-  then click ok
-
-* **Windows:**
-
-  * Window->Preferences->Java->Code Style->Formatter->import the above file,
-  then click ok
-  * (Right click and Save-As)
+  To install:
+  
+  * **Mac:**
+  
+    * Eclipse->Preferences->Java->Code Style->Formatter->import the above file,
+    then click ok
+  
+  * **Windows:**
+  
+    * Window->Preferences->Java->Code Style->Formatter->import the above file,
+    then click ok
+    * (Right click and Save-As)
 
 
 Adding CS2 Support Projects

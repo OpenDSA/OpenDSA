@@ -33,10 +33,11 @@ Upon completion of this module, students will be able to:
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
+
 
 
 [11:31] Demo in Visualizer Video
@@ -49,29 +50,30 @@ Checkpoint 1
      </center>
 
 
-TODO: fix URLS.
 
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedChainCode.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.3-LinkedChainCode.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.1.3-LinkedChainCode.pdf</img>
    </a>
 
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="Linked Chain Java file">
-   </a>
-
+.. admonition:: Try It Yourself
+   
+   Download to run and explore on your own in Eclipse:
+   
+   `LinkedChain.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/LinkedChain.java>`_ (right-click to download as .java file)
+   
+   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
+      
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
+
+
 
 
 [5:14] Contains Animation Video
@@ -84,12 +86,9 @@ Checkpoint 2
      </center>
 
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Contains Animation PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.4-LinkedChainContains.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.1.4-LinkedChainContains.pdf</img>
    </a>

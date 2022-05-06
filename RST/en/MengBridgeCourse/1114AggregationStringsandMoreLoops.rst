@@ -50,7 +50,7 @@ control panel, an item stocking system, and an item dispenser, and a change
 dispenser.
 
 In composition, the primary object **contains** or **owns** its pieces.
-Its pieces are usually created using ``new``` inside the constructor.
+Its pieces are usually created using ``new`` inside the constructor.
 They typically are not provided from outside the object.
 We think of the larger object as being *built from* the pieces in some way.
 

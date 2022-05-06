@@ -73,7 +73,7 @@ The ``PrintWriter`` object provides formatting and conversion operations. A ``Pr
 Writing to an Output Stream
 ---------------------------
 
-Three basic methods provided by ``PrintWriter`` `(Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/PrintWriter.html>`_  objects provide virtually all of the output capabilities you will need in this course:
+Three basic methods provided by ``PrintWriter`` `(PrintWriter Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/PrintWriter.html>`_  objects provide virtually all of the output capabilities you will need in this course:
 
 * ``<stream>.print(<value>);`` writes the specified <*value*> to the given <*stream*>. There are actually many versions of this method that support every possible type of <*value*> you might want to print.
 
@@ -133,27 +133,25 @@ At other times, when there is a lot of output to produce, you may want to place 
 
 .. code-block:: java
 
-    public void printResultFile()
-    {
-        PrintWriter out = IOHelper.createPrintWriter("output.txt");
-        printHeader(out);
-        printData(out);
-        out.close();
-    }
-    
-    
-    public void printHeader(PrintWriter outStream)
-    {
-        outStream.println("This is the output for ...");
-        // other output commands go here.
-    }
-    
-    
-    public void printData(PrintWriter outStream)
-    {
-        outStream.print(/* ... */);
-        // more, as needed ...
-    }
+  public void printResultFile()
+  {
+      PrintWriter out = IOHelper.createPrintWriter("output.txt");
+      printHeader(out);
+      printData(out);
+      out.close();
+  }
+  
+   public void printHeader(PrintWriter outStream)
+  {
+      outStream.println("This is the output for ...");
+      // other output commands go here.
+  }
+      
+  public void printData(PrintWriter outStream)
+  {
+      outStream.print(/* ... */);
+      // more, as needed ...
+  }
 
 Output with System.out
 --------------------------
@@ -212,19 +210,19 @@ The ``java.io`` package offers a rich inheritance hierarchy of classes for readi
 Reading from an Input Stream
 ----------------------------
 
-Several methods provided by ``Scanner`` `(Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Scanner.html>`_ objects provide virtually all of the input capabilities you will need in this course:
+Several methods provided by ``Scanner`` `(Scanner Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Scanner.html>`_ objects provide virtually all of the input capabilities you will need in this course:
 
 * ``<scanner>.hasNext();`` Returns ``true`` if this scanner has another token in its input.
 
-* ``<scanner>.next();`` Finds and returns the next complete token (i.e., by default the next whitespace delimited string as a ``String`` object) from this scanner. A ``NoSuchElementException`` `(Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/NoSuchElementException.html>`_ is thrown if no more tokens are available, (i.e., you have reached the end of input).
+* ``<scanner>.next();`` Finds and returns the next complete token (i.e., by default the next whitespace delimited string as a ``String`` object) from this scanner. A ``NoSuchElementException`` `(NSE Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/NoSuchElementException.html>`_ is thrown if no more tokens are available, (i.e., you have reached the end of input).
 
 * ``<scanner>.hasNextLine();`` Returns ``true`` if this scanner has another line in its input.
 
-* ``<scanner>.nextLine();`` Finds and returns the next complete line. A ``NoSuchElementException`` `(Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/NoSuchElementException.html>`_  is thrown if no more tokens are available, (i.e., you have reached the end of input).
+* ``<scanner>.nextLine();`` Finds and returns the next complete line. A ``NoSuchElementException`` is thrown if no more tokens are available, (i.e., you have reached the end of input).
 
 * ``<scanner>.hasNext<PrimitiveType>();`` The <*PrimitiveType*> can be replaced by ``Double``, ``Float``, ``Int``, etc. Returns ``true`` if this scanner has another token in its input and it can be interpreted as a value of the <*PrimitiveType*>.
 
-* ``<scanner>.next<PrimitiveType>();`` The <*PrimitiveType*> can be replaced by Double, Float, Int, etc. The method scans the next token of the input as an <*PrimitiveType*> and returns back the corresponding <*PrimitiveType*> value. It throws a ``InputMismatchException`` `(Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/InputMismatchException.html>`_  exception if the next token does not match the <*PrimitiveType*>, or if the value scanned is out of range. It also throws a ``NoSuchElementException`` `(Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/NoSuchElementException.html>`_ if no more tokens are available.
+* ``<scanner>.next<PrimitiveType>();`` The <*PrimitiveType*> can be replaced by Double, Float, Int, etc. The method scans the next token of the input as an <*PrimitiveType*> and returns back the corresponding <*PrimitiveType*> value. It throws a ``InputMismatchException`` `(IME Documentation) <https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/InputMismatchException.html>`_  exception if the next token does not match the <*PrimitiveType*>, or if the value scanned is out of range. It also throws a ``NoSuchElementException`` if no more tokens are available.
 
 * ``<scanner>.useDelimiter(String pattern);`` by default whitespace (spaces, tabs & new line characters) are used as delimiters for separating the input into tokens to return. This method allows the user to set the delimiter characters to whatever they wish for breaking up the input.
 
