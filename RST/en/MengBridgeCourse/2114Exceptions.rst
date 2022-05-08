@@ -92,27 +92,15 @@ Code Example
 ~~~~~~~~~~~~~~~~~
 
 .. admonition:: Try It Yourself
- 
+
   TODO: fix URLS
 
   Download to run and explore on your own in Eclipse:
-  
+
   `Example file CS2-ExExceptionHandling.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/CS2-ExExceptionHandling.zip>`_
-   
+
   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
 
-
-Note:
-"""""
-
-The sample project above requires one or more of the CS 2114 Support
-Projects (``CS2-Support``, ``CS2DataStructuresLib``, ``CS-GraphWindowLib``).
-
-Before using the above sample project you must
-
-* Complete the configuration steps described in the introductory document
-* Download the CS 2114 Support Projects to your machine
-* When you complete the setup in the introductory document you will be able to download the support projects via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
 
 
 Checkpoint 1
@@ -527,13 +515,13 @@ exception object is set to null and only updated within the catch block.
 
 
 .. admonition:: Try It Yourself
-  
+
    Download to run and explore on your own in Eclipse:
-  
+
    `7.2.5.1-ExceptionHandlingWithThrowExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.2.5.1-ExceptionHandlingWithThrowExample.zip>`_
-   
+
    This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
-   
+
 
 Checkpoint 2
 ------------

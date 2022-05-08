@@ -116,11 +116,11 @@ Take a look at how the implementation (the code) matches with the design documen
 .. admonition:: Try It Yourself
 
    Download to run and explore on your own in Eclipse:
-   
+
    `Example file BagInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java>`_ (right-click to download as .java file)
-     
+
    This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
-   
+
 
 .. code-block:: java
 
@@ -214,13 +214,6 @@ Checkpoint 1
 
 
 
-Programming Practice: ArrayBags
--------------------------------
-
-.. extrtoolembed:: 'Programming Practice: ArrayBags'
-   :workout_id: 1910
-
-
 Array Implementation of Bags
 ----------------------------
 
@@ -308,11 +301,11 @@ Code Example
 .. admonition:: Try It Yourself
 
    Download to run and explore on your own in Eclipse:
-   
+
    `7.7.6.5-ArrayBagsWithJUnitExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.7.6.5-ArrayBagsWithJUnitExample.zip>`_
-   
+
    This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
-   
+
 
 Checkpoint 2
 ------------
@@ -340,6 +333,13 @@ Demo More bag method implementation
    <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
    Video Slides 7.7.7.1-ArrayBagMethods.pdf</img>
    </a>
+
+
+Programming Practice: ArrayBags
+-------------------------------
+
+.. extrtoolembed:: 'Programming Practice: ArrayBags'
+   :workout_id: 1910
 
 UML Diagram
 ~~~~~~~~~~~
