@@ -169,13 +169,9 @@ Comparators
 
 .. admonition:: Try It Yourself
    
-   Download to run and explore on your own in Eclipse:
-   
-   `12.1.8.1-ComparingExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/12.1.8.1-ComparingExample.zip>`_ 
-   
-   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
-   
-
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "12.01-Comparing". 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 Programming Practice: Comparators
 ---------------------------------

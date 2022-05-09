@@ -58,13 +58,13 @@
     },
     "CryptoCurrencies": {
       "Blockchain/BitCoin": {},
-      "Blockchain/Ethereum": {},
-      "Blockchain/EVMandGAS": {},
       "Blockchain/ProofOfStake": {
         "ProofOfStakeValidatorsSumm": {
           "points": 1.0
         }
       },
+      "Blockchain/Ethereum": {},
+      "Blockchain/EVMandGAS": {},
       "Blockchain/Cryptohacking": {
         "HackerTypes": {
           "points": 1.0

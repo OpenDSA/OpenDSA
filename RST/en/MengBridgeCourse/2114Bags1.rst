@@ -115,12 +115,9 @@ Take a look at how the implementation (the code) matches with the design documen
 
 .. admonition:: Try It Yourself
 
-   Download to run and explore on your own in Eclipse:
+   Download `BagInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java>`_ (right-click to download as .java file), and open it in Eclipse.
 
-   `Example file BagInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java>`_ (right-click to download as .java file)
-
-   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
-
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>` if you need to review the instructions for downloading Eclipse projects.
 
 .. code-block:: java
 
@@ -300,11 +297,9 @@ Code Example
 
 .. admonition:: Try It Yourself
 
-   Download to run and explore on your own in Eclipse:
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex7.7.6.5-ArrayBagsWithJUnit".
 
-   `7.7.6.5-ArrayBagsWithJUnitExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/7.7.6.5-ArrayBagsWithJUnitExample.zip>`_
-
-   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 
 Checkpoint 2
