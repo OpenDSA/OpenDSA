@@ -38,8 +38,8 @@ Code Example
 
 .. admonition:: Try It Yourself
 
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex07.01-BuggyHokie". 
-   
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex07.01-BuggyHokie".
+
    Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 Checkpoint 1
@@ -161,10 +161,10 @@ Review of Writing JUnit Tests with student.TestCase
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_zj2voxbz&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_jkkkycol" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-Additional reference for writing Junit Tests:
+Additional reference for writing JUnit Tests:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Writing Junit Tests With Student TestCase <2114_junit_tutorial.html>`_
+`Writing JUnit Tests With Student TestCase <2114_junit_tutorial.html>`_
 
 `A Whirlwind Introduction to JUnit <https://web-cat.org/eclstats/junit-quickstart/>`_
 

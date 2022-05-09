@@ -77,10 +77,10 @@ Checkpoint 1
 
 
 
-Demo Video ExLinkedBagJunit
+Demo Video ExLinkedBagJUnit
 ---------------------------
 
-[7:14] ExLinkedBagJunit Video Demonstration
+[7:14] ExLinkedBagJUnit Video Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
@@ -94,10 +94,10 @@ Code examples
 ~~~~~~~~~~~~~
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex08.05-LinkedBagsWithJUnit" 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex08.05-LinkedBagsWithJUnit"
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-   
+
 
 LinkedBag getFrequencyOf and contains video
 -------------------------------------------
