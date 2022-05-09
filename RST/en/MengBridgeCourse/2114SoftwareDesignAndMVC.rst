@@ -686,14 +686,10 @@ application.
 
 .. admonition:: Try It Yourself
 
-   Download to run and explore on your own in Eclipse:
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex9.2.10-AddressBookMVC" 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
    
-   `9.2.10-AddressBookMVCExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/9.2.10-AddressBookMVCExample.zip>`_
-   
-   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
-   
-
-
 Design Review: Case Study - e-Commerce solution (online storefront) for ABC Ltd.
 --------------------------------------------------------------------------------
 
