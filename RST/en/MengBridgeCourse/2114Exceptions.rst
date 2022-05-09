@@ -260,17 +260,14 @@ that it throws.
 Related Resources
 ~~~~~~~~~~~~~~~~~
 
-Download the sample project to run and explore on your own in eclipse:
 
-TODO: fix URLS.
+.. admonition:: Try It Yourself
 
-.. raw:: html
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex07.02-ExceptionHandling".
 
-   <a href="" download>
-   <img src="" alt=" CS2-ExExceptionHandling.zip">
-   </a>
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
+
 
 Exception Examples - Basic to Complex
 -------------------------------------
