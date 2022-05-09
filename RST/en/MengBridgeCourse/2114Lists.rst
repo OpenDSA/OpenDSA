@@ -241,20 +241,15 @@ LinkedList Remove
 
 .. admonition:: Try It Yourself
    
-   Download to run and explore on your own in Eclipse:
-   
-   `11.1.5.1-LinkedListExample.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/11.1.5.1-LinkedListExample.zip>`_
-   
-   This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
-   
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex11.1.5.1-LinkedList". 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 Checkpoint 3
 ------------
 
 .. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
-
-
 
 Programming Practice: Lists 1
 -----------------------------
