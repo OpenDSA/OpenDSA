@@ -24,8 +24,8 @@ Upon completion of this module, students will be able to:
 Introduction to Software design
 -------------------------------
 
-[9:30] Intro to Software Design Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:30] Intro to Software Design
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -656,7 +656,6 @@ Controller and which the View?
 MVC Example AddressBook
 -----------------------
 
-
 Consider the design of a simple mobile AddressBook application used to manage a
 person's collection of contacts.  Building an application of this nature would
 necessitate writing code responsible for:
@@ -686,7 +685,7 @@ application.
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex09.02-AddressBookMVC" 
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex09.02-AddressBookMVC" 
   
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
    

@@ -26,8 +26,8 @@ Upon completion of this module, students will be able to:
 Introduction to Ordering, Comparing, and Sorting
 ------------------------------------------------
 
-[13:39] Introduction to Sorting and Comparing Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:39] Introduction to Sorting and Comparing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -49,8 +49,8 @@ Checkpoint 1
 Introduction to Sorting Video
 -----------------------------
 
-[12:51] Introduction to Sorting Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:51] Introduction to Sorting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -73,8 +73,8 @@ Checkpoint 2
 Selection Sort Video
 --------------------
 
-[12:36] Selection Sort Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:36] Selection Sort
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -97,8 +97,8 @@ Checkpoint 3
 Insertion Sort
 --------------
 
-[16:17] Insertion Sort Array Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[16:17] Insertion Sort Array
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -121,8 +121,8 @@ Checkpoint 4
 Insertion Sort Array
 --------------------
 
-[16:50] Insertion Sort Linked Chain Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[16:50] Insertion Sort Linked Chain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -151,8 +151,16 @@ Programming Practice: Insertion Sort
 Comparators
 -----------
 
-[11:22] Comparators Video
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Comparator Example Code
+~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Try It Yourself
+   
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex12.01-Comparing". Use this example to follow along with the following video. Feel free to experiment. 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+[11:22] Introduction to Comparators
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -166,12 +174,6 @@ Comparators
    <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
    Video Slides 12.1.8.1-Comparators.pdf
    </a>
-
-.. admonition:: Try It Yourself
-   
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "12.01-Comparing". 
-  
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 Programming Practice: Comparators
 ---------------------------------

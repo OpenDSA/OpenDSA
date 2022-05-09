@@ -23,8 +23,8 @@ List Introduction
 -----------------
 
 
-[13:41] List Introduction Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:41] Introduction to Lists
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -174,8 +174,8 @@ Checkpoint 1
 LinkedList Add Implementation
 -----------------------------
 
-[10:21] LinkedList Add Implementation Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[10:21] LinkedList Add() Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -202,8 +202,8 @@ Checkpoint 2
 Tracing Add with Debugger
 -------------------------
 
-[13:33] Tracing Add with Debugger Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:33] Tracing Add with Debugger
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -222,8 +222,17 @@ Tracing Add with Debugger
 LinkedList Remove
 -----------------
 
-[18:09] LinkedList Remove Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LinkedList Example Code
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Try It Yourself
+   
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex11.01-LinkedList". 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+[18:09] LinkedList Remove
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -239,11 +248,6 @@ LinkedList Remove
    Video Slides 11.1.5.1-LinkedListRemove.pdf</img>
    </a>
 
-.. admonition:: Try It Yourself
-   
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex11.01-LinkedList". 
-  
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 Checkpoint 3
 ------------
@@ -260,8 +264,8 @@ Programming Practice: Lists 1
 Considering and Array Implementation of a List
 ----------------------------------------------
 
-[10:19] LinkedList Details and Options Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[10:19] LinkedList Details and Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -287,8 +291,8 @@ Checkpoint 4
 Considering an Array Implementation of a List
 ---------------------------------------------
 
-[15:48] Array List Video
-~~~~~~~~~~~~~~~~~~~~~~~~
+[15:48] Array List
+~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 

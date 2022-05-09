@@ -40,15 +40,16 @@ Checkpoint 1
 
 
 
-.. admonition:: Follow along with the video
+[11:31] Demo in Visualizer
+--------------------------
+.. admonition:: Try It Yourself
 
    Download `LinkedChain.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/LinkedChain.java>`_ (right-click to download as .java file), and open it in Eclipse.
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.      
 
    Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 
-[11:31] Demo in Visualizer Video
---------------------------------
 
 .. raw:: html
 
@@ -100,18 +101,6 @@ Checkpoint 1
     		private int data;
     		private Node next; // Link to next node
 
-    		private Node(int dataPortion) {
-    			this(dataPortion, null);
-    		} // end constructor
-
-    		private Node(int dataPortion, Node nextNode) {
-    			data = dataPortion;
-    			next = nextNode;
-    		} // end constructor
-    	} // end Node
-   }
-
-
 
 Checkpoint 2
 ------------
@@ -120,10 +109,8 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-
-
-[5:14] Contains Animation Video
--------------------------------
+[5:14] Contains() Animation
+---------------------------
 
 .. raw:: html
 

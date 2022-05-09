@@ -28,8 +28,14 @@ Chapters 5 - 6 Bags from  `Data Structures and Abstractions with Java, 4th editi
 Introduction to Stacks
 ----------------------
 
-[11:32] Introduction to Stacks Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[11:32] Introduction to Stacks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Try It Yourself
+   
+   Download `StackInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/StackInterface.java>`_ (right-click to download as .java file), and open it in Eclipse.
+  
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 .. raw:: html
 
@@ -43,12 +49,6 @@ Introduction to Stacks
    <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
    Video Slides 8.5.2-StacksIntro</img>
    </a>
-
-.. admonition:: Try It Yourself
-      
-   Download `StackInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/StackInterface.java>`_ (right-click to download as .java file), and open it in Eclipse.
-     
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
    
 Checkpoint 1
 ------------
@@ -81,8 +81,8 @@ Checkpoint 2
 Stacks Array-Based Design
 -------------------------
 
-[4:57] Array-Based Design Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4:57] Array-Based Design
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -101,8 +101,8 @@ Checkpoint 3
 Stacks Array Implementation
 ---------------------------
 
-[5:57] Array Implementation Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:57] Array Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -122,8 +122,8 @@ Stacks Array Implementation
 Stacks Linked Chain Implementation
 ----------------------------------
 
-[12:50] Linked Chain Implementation Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:50] Linked Chain Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 

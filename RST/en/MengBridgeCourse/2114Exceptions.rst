@@ -24,8 +24,19 @@ Suggested Reading
 
 Java Interlude 2 Exceptions from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-[9:31] Intro to Exceptions Video
---------------------------------
+Exception Handling Example Code
+-------------------------------
+
+.. admonition:: Try It Yourself
+
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.02-ExceptionHandling". Use this example to follow along with the following video. Feel free to experiment. 
+
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+
+
+[9:31] Intro to Exceptions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -88,24 +99,6 @@ object was, in fact, instantiated or not.  Simply review the body of code where
 you believe the object was instantiated, then assess and test to confirm that
 that body of code did execute as expected.
 
-Code Example
-~~~~~~~~~~~~~~~~~
-
-.. admonition:: Try It Yourself
-
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex07.02-ExceptionHandling".
-
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-Note:
-"""""
-
-  `Example file CS2-ExExceptionHandling.zip <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/CS2-ExExceptionHandling.zip>`_
-
-  This `document <2114_eclipse_examples_setup.html>`_ will direct you to the steps to `download and import <2114_eclipse_examples_setup.html>`_ previously written code into the Eclipse environment.
-
-
-
 Checkpoint 1
 ------------
 
@@ -113,8 +106,8 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-[7:16] Exception Handling with try, catch, and finally video
-------------------------------------------------------------
+[7:16] Exception Handling with try, catch, and finally
+------------------------------------------------------
 
 .. raw:: html
 
@@ -257,23 +250,22 @@ occur if the client code, the callingMethod,  does not include code which
 catches or throws the Exceptions that riskyCodeThatWantsToDefer has declared
 that it throws.
 
-Related Resources
-~~~~~~~~~~~~~~~~~
-
-
-.. admonition:: Try It Yourself
-
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex07.02-ExceptionHandling".
-
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-
 
 Exception Examples - Basic to Complex
 -------------------------------------
 
-[12:05] Basic "try, catch" example Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exception Handling Example Code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Try It Yourself
+
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.02-ExceptionHandling". This package has a project called `ExceptionHandlingWithThrow` , which you can use to work with `try...catch` structures on your own. Feel free to experiment. 
+
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+
+[12:05] Basic "try, catch" example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -293,8 +285,8 @@ Exception Examples - Basic to Complex
      </center>
 
 
-[12:33] Example using "try, catch, and finally" blocks Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:33] Example using "try, catch, and finally" blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -304,28 +296,12 @@ Exception Examples - Basic to Complex
      </center>
 
 
-Related Resources
-~~~~~~~~~~~~~~~~~
-
-Download the sample project to run and explore on your own in eclipse:
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt=" CS2-ExExceptionHandling.zip">
-   </a>
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
-
-
 Implementing and Testing Exceptions
 -----------------------------------
 
 
-** "If you throw exceptions in your methods, then you should catch them in your
-testing" **
+**"If you throw exceptions in your methods, then you should catch them in your
+testing"**
 
 For this course we will **mostly** adopt the exception handling approach that
 uses **try-catch blocks** in combination with the throw statement.
@@ -383,8 +359,6 @@ If, on the other hand, you wished to throw a specific exception, such as a
 All that is required is an understanding of the Constructors available for the
 exception you wish to throw.
 
-
-
 Example
 """""""
 
@@ -433,17 +407,7 @@ two parameters.
    }
 
 
-Review the MyCalculator class using the code above or the link to the code:
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt=" CS2-ExExceptionHandlingWithThrow.zip">
-   </a>
-
-Note how the class uses the statements:
+Review the MyCalculator class using the code example above. Note how the class uses the statements:
 
 ``throw new NumberFormatException();``
 
@@ -512,13 +476,6 @@ exception object is set to null and only updated within the catch block.
        }
 
    }
-
-
-.. admonition:: Try It Yourself
-
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex07.02-ExceptionHandling".
-
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 
 Checkpoint 2

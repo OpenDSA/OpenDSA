@@ -116,8 +116,8 @@ Take a look at how the implementation (the code) matches with the design documen
 .. admonition:: Try It Yourself
 
    Download `BagInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java>`_ (right-click to download as .java file), and open it in Eclipse.
-
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>` if you need to review the instructions for downloading Eclipse projects.
+ 
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 .. code-block:: java
 
@@ -180,8 +180,8 @@ Take a look at how the implementation (the code) matches with the design documen
    } // end BagInterface
 
 
-[7:28] Documentation of Bag Interface Methods Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7:28] Documentation of Bag Interface Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -193,8 +193,8 @@ Take a look at how the implementation (the code) matches with the design documen
 Using Bags
 ----------
 
-[4:34] Using Bags Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4:34] Using Bags 
+~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -211,6 +211,13 @@ Checkpoint 1
 
 
 
+Programming Practice: ArrayBags
+-------------------------------
+
+.. extrtoolembed:: 'Programming Practice: ArrayBags'
+   :workout_id: 1910
+
+
 Array Implementation of Bags
 ----------------------------
 
@@ -220,8 +227,8 @@ Suggested Reading
 Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 
-[9:39] Fixed-Size Array Implementation Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:39] Fixed-Size Array Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -282,8 +289,8 @@ depicted below.
    :align: center
 
 
-[8:17] ArrayBagsWithJUnitExample Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:17] ArrayBagsWithJUnit Example Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -297,8 +304,8 @@ Code Example
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex7.7.6.5-ArrayBagsWithJUnit".
-
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.07-ArrayBagsWithJUnit". 
+  
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 
@@ -312,8 +319,8 @@ Demo More bag method implementation
 -----------------------------------
 
 
-[5:28] More Bag Method Implementation Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:28] More on Bag Method Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -328,13 +335,6 @@ Demo More bag method implementation
    <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
    Video Slides 7.7.7.1-ArrayBagMethods.pdf</img>
    </a>
-
-
-Programming Practice: ArrayBags
--------------------------------
-
-.. extrtoolembed:: 'Programming Practice: ArrayBags'
-   :workout_id: 1910
 
 UML Diagram
 ~~~~~~~~~~~
@@ -364,8 +364,8 @@ Checkpoint 3
 Methods that Remove and Design Improvement Lesson and Demo
 ----------------------------------------------------------
 
-[5:28] Methods that Remove and Design Improvement Video Demonstration, Part 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:28] Methods that Remove and Design Improvement, Part 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -380,8 +380,8 @@ Methods that Remove and Design Improvement Lesson and Demo
    Video Slides 7.7.8.1-BagsDesignImprovePart1.pdf</img>
    </a>
 
-[6:45] Methods that Remove and Design Improvement Video Demonstration, Part 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[6:45] Methods that Remove and Design Improvement, Part 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -397,8 +397,8 @@ Methods that Remove and Design Improvement Lesson and Demo
    Video Slides 7.7.8.2-BagsDesignImprovePart2.pdf</img>
    </a>
 
-[9:03] Methods that Remove and Design Improvement Video Demonstration, Part 3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:03] Methods that Remove and Design Improvement, Part 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -423,8 +423,8 @@ Checkpoint 4
 Array resizing description and coding Demo
 ------------------------------------------
 
-[14:47] Array Resizing Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[14:47] Array Resizing
+~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html

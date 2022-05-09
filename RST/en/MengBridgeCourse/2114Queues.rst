@@ -26,8 +26,8 @@ Chapter 10: **Queues, Deques, and Priority Queues**  and  **Chapter 11: Queue, D
 Queues
 ------
 
-[8:50] Queue Intro Video
-~~~~~~~~~~~~~~~~~~~~~~~~
+[8:50] Intrduction to Queues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -95,8 +95,8 @@ Programming Practice: Queues 1
 Linked Queues Intro and Enqueue
 -------------------------------
 
-[11:29] Linked Queue Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+[11:29] Linked Queue
+~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -122,8 +122,8 @@ Checkpoint 2
 Linked Queues Removing and More (Dequeue and Other Methods)
 -----------------------------------------------------------
 
-[8:41] Linked Queue Remove Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:41] Linked Queue remove()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -149,8 +149,8 @@ Checkpoint 3
 Deques
 ------
 
-[13:51] Deque Intro Video
-~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:51] Introduction to Deque
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -258,8 +258,8 @@ Deque Interface
 Deque Removing and Wrap Up
 --------------------------
 
-[9:02] Deque Removing and Wrap Up Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:02] Deque Removing and Wrap Up
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -286,8 +286,8 @@ Array Implementation of Queues
 ------------------------------
 
 
-[15:58] ArrayQueue Intro Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[15:58] Introduction to ArrayQueue
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -310,12 +310,11 @@ Checkpoint 6
    :long_name: Checkpoint 6
 
 
-
 ArrayQueue One Unused Location
 ------------------------------
 
-[7:11] ArrayQueue One Unused Location Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7:11] ArrayQueue One Unused Location
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -341,8 +340,8 @@ Checkpoint 7
 ArrayQueue Ensure Capacity
 --------------------------
 
-[14:06] ArrayQueue Ensure Capacity Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[14:06] ArrayQueue Ensure Capacity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -368,8 +367,8 @@ Checkpoint 8
 ArrayQueue WrapUp
 -----------------
 
-[6:59] ArrayQueue WrapUp Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[6:59] ArrayQueue WrapUp
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 

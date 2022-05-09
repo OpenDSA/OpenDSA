@@ -29,8 +29,8 @@ Chapter 7 from  `Data Structures and Abstractions with Java, 4th edition  by Fra
 Introduction to Recursion
 -------------------------
 
-[5:53] Intro to Recursion Video, Part 1 of 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:53] Intro to Recursion, Part 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -41,8 +41,8 @@ Introduction to Recursion
 
 
 
-[12:41] Intro to Recursion Video, Part 2 of 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:41] Intro to Recursion, Part 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -67,8 +67,8 @@ Checkpoint 1
 More Recursion
 --------------
 
-[12:36] Factorial Examples Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:36] Factorial Examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -93,25 +93,23 @@ Programming Practice: Recursion 1
 Recursion on Arrays
 -------------------
 
-[13:30] Display Arrays Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:30] Display Arrays
+~~~~~~~~~~~~~~~~~~~~~~
 
-**Correction to note!**  The code in the second example of this video is
-missing ``{}`` in the if block.  It should be:
+.. admonition:: Correction to note!
 
+   The code in the second example in this video is missing  the ``{}`` in the ``if`` block.  It should be:
 
-.. code-block:: java
-
-
-   public static void displayArray2(int[] array, int first, int last)
-   {
-        if (first <= last) {
-            displayArray2(array, first, last - 1);
-            System.out.print(array[last] + " ");
-        }
-
-   }
-
+   .. code-block:: java
+   
+      public static void displayArray2(int[] array, int first, int last)
+      {
+           if (first <= last) {
+               displayArray2(array, first, last - 1);
+               System.out.print(array[last] + " ");
+           }
+   
+      }
 
 
 .. raw:: html
@@ -139,8 +137,8 @@ Checkpoint 2
 Recursion on Arrays Middle
 --------------------------
 
-[9:53] Middle Processing Trace Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:53] Middle Processing Trace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -173,8 +171,8 @@ Programming Practice: Recursion 2
 Recursion on Linked Chain
 -------------------------
 
-[7:41] Linked Chain Recursive Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7:41] Linked Chain Recursion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -192,8 +190,8 @@ Recursion on Linked Chain
 Tower of Hanoi
 --------------
 
-[11:44] Tower of Hanoi Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[11:44] Tower of Hanoi
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -218,8 +216,8 @@ Checkpoint 4
 Recursion Wrap Up
 -----------------
 
-[8:28] Recursion Wrap Up Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:28] Recursion Wrap Up
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 

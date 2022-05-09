@@ -22,6 +22,14 @@ Objectives
 Polymorphism Measurable Interface
 ---------------------------------
 
+Polymorphism Example Code
+~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Try It Yourself
+
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.04-MeasurableInterface". Use this example to follow along with the following video. Feel free to experiment. 
+   
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
 [7:23] The Measurable Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -40,13 +48,6 @@ Polymorphism Measurable Interface
    </a>
 
 
-Code Examples
-~~~~~~~~~~~~~
-.. admonition:: Try It Yourself
-
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex07.04-MeasurableInterface". 
-   
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 Checkpoint 1
 ------------
@@ -94,8 +95,8 @@ Checkpoint 2
 Polymorphism Integer Example
 ----------------------------
 
-[7:40] Java Polymorphism Integer Example Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7:40] Java Polymorphism Integer Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 

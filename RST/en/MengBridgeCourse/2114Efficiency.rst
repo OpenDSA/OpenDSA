@@ -49,8 +49,8 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-[14:29] Efficiency of Summation Algorithms Video
-------------------------------------------------
+[14:29] Efficiency of Summation Algorithms
+------------------------------------------
 
 
 .. raw:: html
@@ -67,8 +67,8 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-[7:18] Efficiency of Bag Methods Video
---------------------------------------
+[7:18] Efficiency of Bag Methods
+--------------------------------
 
 .. raw:: html
 
