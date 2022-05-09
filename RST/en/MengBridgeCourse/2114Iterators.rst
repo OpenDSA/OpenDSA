@@ -26,8 +26,8 @@ Java Interlude 5 Iterators from `Data Structures and Abstractions with Java, 4th
 Introduction to Iterators
 -------------------------
 
-[13:14] Introduction to Iterators Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:14] Introduction to Iterators
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -54,8 +54,8 @@ Checkpoint 1
 Programming Using the Iterable Interface
 ----------------------------------------
 
-[4:36] Programming Using the Iterable Interface Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4:36] Programming Using the Iterable Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -79,8 +79,8 @@ Checkpoint 2
 Programming Using Iterators
 ---------------------------
 
-[18:02] Programming Using Iterators Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[18:02] Programming Using Iterators
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -107,8 +107,8 @@ Iterator Design Decisions
 -------------------------
 
 
-[8:21] Iterator Design Decisions Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:21] Iterator Design Decisions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -125,16 +125,16 @@ Iterator Design Decisions
    </a>
 
 
-**Clarification**:  Iterators that are nested class inside the linked structure
-(not subclasses) are more efficient than Iterators that are independent classes.
+: admonition :: Clarification
+   Iterators that are a nested class inside the linked structure (not subclasses) are more efficient than Iterators that are independent classes.
 
 
-Inner Iterator for 11.3.4.1-IteratorExample
--------------------------------------------
+Inner Iterator for ex11.3-Iterator
+----------------------------------
 
 As discussed throughout this section there are various design approaches for
 iterators.  Below is one example of how an inner Iterator class could be
-implemented for 11.3.4.1-IteratorExample.
+implemented for ex11.3-Iterator.
 
 Include a public method to make the iterator object available:
 

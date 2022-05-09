@@ -19,7 +19,6 @@ Upon completion of this module, students will be able to:
 * Build and populate Bags in Java
 
 
-
 Linked Bags
 -----------
 
@@ -49,11 +48,11 @@ Introduction to Linked Bags
    </a>
 
 
-LinkedBag add and toArray video
--------------------------------
+LinkedBag add and toArray 
+-------------------------- 
 
-[12:45] LinkedBag add and toArray Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:45] LinkedBag add and toArray
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -76,11 +75,19 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
+ExLinkedBagJunit Demonstration
+------------------------------
 
-Demo Video ExLinkedBagJunit
----------------------------
+Code examples
+~~~~~~~~~~~~~
+.. admonition:: Try It Yourself
 
-[7:14] ExLinkedBagJunit Video Demonstration
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex08.05-LinkedBagsWithJUnit". Use this example to follow along with the following video. Feel free to experiment. 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+   
+
+[7:14] ExLinkedBagJUnit  Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
@@ -90,20 +97,16 @@ Demo Video ExLinkedBagJunit
      </center>
 
 
-Code examples
-~~~~~~~~~~~~~
-.. admonition:: Try It Yourself
+LinkedBag getFrequencyOf() and contains()
+-----------------------------------------
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex8.5.2.2-LinkedBagsWithJUnit" 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex08.05-LinkedBagsWithJUnit"
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-   
 
-LinkedBag getFrequencyOf and contains video
--------------------------------------------
 
-[14:00] LinkedBag getFrequencyOf and contains Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[14:00] LinkedBag getFrequencyOf() and contains() Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -129,8 +132,8 @@ Checkpoint 2
 LinkedBag Removing an item
 ---------------------------
 
-[13:44] LinkedBag Removing an Item Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:44] LinkedBag Removing an Item
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 

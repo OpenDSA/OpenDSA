@@ -19,11 +19,20 @@ Upon completion of this module, students will be able to:
 * Write and use bounded generic methods
 * Become familiar with syntax for wildcards
 
-Generics 2
-----------
+More on Generics
+----------------
 
-[10:53] Generics 2 Video
-~~~~~~~~~~~~~~~~~~~~~~~~
+Code Examples
+~~~~~~~~~~~~~
+
+.. admonition:: Try It Yourself
+
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment. 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+ 
+[10:53] Generics 2
+~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -39,8 +48,8 @@ Generics 2
    </a>
 
 
-[17:26] Reflecting on Generics Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[17:26] Reflecting on Generics
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -48,15 +57,6 @@ Generics 2
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_89q1qv87&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_s1anblz0" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-Code Examples
-~~~~~~~~~~~~~
-.. admonition:: Try It Yourself
-
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex10.1.2.3-Generics". 
-  
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
- 
 Related Resources
 ~~~~~~~~~~~~~~~~~
 
@@ -110,8 +110,17 @@ The method parameter list (the object being sorted) is of type ``List<T>``.
 Bounded Wildcard Examples
 -------------------------
 
-[10:43] Bounded Wildcards Example Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Code Example
+~~~~~~~~~~~~
+
+.. admonition:: Try It Yourself
+
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment. 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+[10:43] Bounded Wildcards Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -119,15 +128,6 @@ Bounded Wildcard Examples
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_jazizwb4&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_uctvohf3" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-Code Example
-~~~~~~~~~~~~
-.. admonition:: Try It Yourself
-
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex10.1.2.3-Generics". 
-   
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-    
 
 Related Resources
 ~~~~~~~~~~~~~~~~~

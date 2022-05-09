@@ -21,6 +21,13 @@ Objectives
 Java Tips
 ---------
 
+.. admonition:: Try It Yourself
+
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.03-Bank". 
+   
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+
 For the following discussion, we're going to be referencing the following Bank
 class:
 
@@ -152,12 +159,6 @@ class:
 
    }
 
-
-.. admonition:: Try It Yourself
-   
-   Download `Bank.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/Bank.java>`_ (right-click to download as .java file), and open it in Eclipse.
- 
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 Enums
 ~~~~~
