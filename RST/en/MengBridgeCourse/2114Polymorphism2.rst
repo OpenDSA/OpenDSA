@@ -44,7 +44,7 @@ Code Examples
 ~~~~~~~~~~~~~
 .. admonition:: Try It Yourself
 
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex7.4.1.2-MeasurableInterface". 
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex07.04-MeasurableInterface". 
    
    Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 

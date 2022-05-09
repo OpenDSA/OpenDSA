@@ -53,7 +53,7 @@ Code Examples
 ~~~~~~~~~~~~~
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex10.1.2.3-Generics". 
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex10.01-Generics". 
   
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
  
@@ -124,7 +124,7 @@ Code Example
 ~~~~~~~~~~~~
 .. admonition:: Try It Yourself
 
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex10.1.2.3-Generics". 
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex10.01-Generics". 
    
    Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
     

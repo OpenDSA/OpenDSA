@@ -241,7 +241,7 @@ LinkedList Remove
 
 .. admonition:: Try It Yourself
    
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex11.1.5.1-LinkedList". 
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex11.01-LinkedList". 
   
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 

@@ -686,7 +686,7 @@ application.
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex9.2.10-AddressBookMVC" 
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex09.02-AddressBookMVC" 
   
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
    
