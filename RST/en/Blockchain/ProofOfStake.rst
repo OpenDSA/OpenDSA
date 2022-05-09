@@ -238,6 +238,22 @@ The following slideshow visualizes the committee approval process.
 Proof of Stake versus Proof of Work
 -----------------------------------
 
+Where does the Money Come From?
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In any consensus protocol, there must be some form of incentive 
+for users to participate in the protocol; otherwise, the network
+would not have the support necessary for it to continue operation. 
+Similar to Proof-Of-Work, Proof-Of-Stake rewards validators with 
+newly minted tokens as new blocks are appended to the chain.
+
+The specific reward schema differs greatly from token to token; 
+however, at a high level the process of PoS rewards is identical.
+Both the block proposer and the validators who attest to the validity
+of the proposed block will share some percentage of the newly minted
+tokens. The amount of tokens that are minted with each new block
+depends on the issuance rate of that given protocol.
+
 Performance / Reliability
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -274,7 +290,7 @@ node is punished for not fulfilling its obligations.
 
 
 Slashing: Incentivizing Legitimacy
-~~~~~~~~~~-----------------~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 Slashing is an important feature of Proof of Stake, as it incentivizes
 validator nodes to perform their block proposal duties in accordance
@@ -344,15 +360,6 @@ re-spend coins).
 executed.
 Detection can occur when duplicate transactions or repeating refunds
 are found in between the blockchain and the proposed new block.
-When a 51% attack occurs, a fork appears, where each branch contains a
-transaction that spends the same coin.
-
-In order to catch this, validators must pay attention to
-details of branching for transactions that overwrite previously 
-written transactions within the block.
-On the other hand, users whose transactions 
-are the ones overwritten can report suspicious activity within their
-wallets.
 
 In a Proof of Stake system, a 51% attack is discouraged by slashing.
 Those who participate in such an attack will lose part of their stake
@@ -432,19 +439,12 @@ In the  proof of stake algorithm, computation power is effectively
 replaced by the stake of the user.
 There is no need for high computing power when attesting for new
 blocks, meaning the environmental cost is decreased.
-However, the user is limited to mining the certain percentage 
-of coins they already have. [How so?]
-What prevents the user from owning a majority of the coin in the
-cryptocurrency is the fact that they have to stake a percentage of
-their own coin in exchange for more. [Well, unless they have an
-external source of making funds.]
-Meaning, the miner is limited to forging the certain percentage of
-coins they already have. [How much is that?]
-Because of this limit, there is not a high consumption of energy by
-all users attempting to mine as many coins as possible as in the proof
-of work concept.
-Users forging cryptocurrency using proof of stake also do not need to
-spend for the computers to mine like they would in proof of work.
+Instead of computational resources being used as economic scarcity,
+users' own tokens are used to govern the coin. One notable drawback 
+of this is that in order to participate in mining, a user must own
+some amount of tokens already unlike PoW where a new miner can begin
+accumulating coins simply by allocating some amount of computational power.
+ 
 
 
 Risks of Concentration
