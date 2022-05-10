@@ -187,7 +187,7 @@ def runner(BookID):
 
 # x = main("id_721_latest.csv")
 
-print(x)
+# print(x)
 
 if __name__ == '__main__':
     parser = ArgumentParser()
