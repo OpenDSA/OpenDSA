@@ -691,27 +691,27 @@
           "points": 2,
           "threshold": 1
         },
-        "Forward Flow Tracing Exercises":{
+        "RecTraceSummFwdFlow":{
           "points": 14,
           "threshold": 7
         },
-        "Backward Flow Tracing Exercises":{
+        "RecTraceSummbckwrdFlow":{
           "points": 6,
           "threshold": 3
         },
-        "Find Error Tracing Exercises":{
+        "RecTraceSummFuncErr":{
           "points": 6,
           "threshold": 3
         },
-        "Two Recursive Calls Tracing Exercises":{
+        "RecTraceSummTwoRC":{
           "points": 6,
           "threshold": 3
         },
-        "How Many Times Tracing Exercises":{
+        "RecTraceSummHowmany":{
           "points": 8,
           "threshold": 4
         },
-        "Harder Tracing Exercises":{
+        "RecTraceSummHard":{
           "points": 6,
           "threshold": 3
         }
