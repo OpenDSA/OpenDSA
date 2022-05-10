@@ -60,20 +60,20 @@ A simplified test class example for the Student class:
 
 .. code-block:: java
 
-    public class StudentTest extends student.TestCase
-    {
-        private Student janeDoe;
-    
-        public void setUp()
-        {
-            janeDoe = new Student(“Jane Doe”);
-        }
-    
-        public void testGetName()
-        {
-            assertEquals(“Jane Doe”, janeDoe.getName());
-        }
-    }
+  public class StudentTest extends student.TestCase
+  {
+      private Student janeDoe;
+  
+      public void setUp()
+      {
+          janeDoe = new Student(“Jane Doe”);
+      }
+  
+      public void testGetName()
+      {
+          assertEquals(“Jane Doe”, janeDoe.getName());
+      }
+  }
     
     
 Run a JUnit Test
@@ -330,7 +330,10 @@ We therefore cannot simply perform the following:
         
 Using the assert in this manner would result in a failed test and an ``AssertionFailedError`` (see image below).
 
-.. image:: Images/eclipse_failure_trace.png
+.. odsafig:: Images/eclipse_failure_trace.png
+   :align: center
+   :figwidth: 90%
+ 
 
 nor can we use:
 
@@ -678,6 +681,7 @@ The ``student.TestCase`` provides a helper method called ``contains()`` that you
         "fox",
         "lazy",
         "dog"));
+        
             
 The meaning of ``contains()`` is similar to the meaning of the method ``contains()`` provided by the ``String`` class, but extended to multiple arguments. In addition to the first argument--the string to search--you can provide as many substrings to look for as you like. The ``contains()`` method will return true if and only if every one of the specified substrings is found in the specified order in the string you are searching. The ``contains()`` method does not care what comes between the substrings, so they could be immediately adjacent to each other, or arbitrarily far apart. All it cares about is that every single one is present, and that they are present in the exact order you list them.
 

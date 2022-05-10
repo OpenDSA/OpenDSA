@@ -163,7 +163,7 @@ Review of Writing JUnit Tests with student.TestCase
      </center>
 
 Additional reference for writing JUnit Tests:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `Writing JUnit Tests With Student TestCase <2114_junit_tutorial.html>`_
 

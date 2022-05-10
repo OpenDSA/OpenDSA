@@ -116,14 +116,56 @@ Some methods have return values--that is, they give back information to their ca
        . . .
     }
 
-Generating Your Documentation in BlueJ
---------------------------------------
+Generating Your Documentation
+-----------------------------
 
+Using Eclipse
+~~~~~~~~~~~~~
+
+Javadocs can be created for a project in Eclipse using the *Generate Javadoc* wizard:
+
+1) Select *Generate Javadoc…* from *Project* menu
+
+.. odsafig:: Images/Javadoc_Generation_step_1.png
+ :align: center
+ :figwidth: 90%
+ 
+
+2) Specify location of the ``javadoc`` program on your computer. Typically, it is located under JAVA_HOME’s bin directory. For example, ``C:\Program Files\Java\jdk1.11.0_21\bin\javadoc.exe``, on Windows platform, or ``/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/bin/javadoc`` in MacOS. 
+
+3) Select the project and packages for which you want to generate Javadoc.
+
+4) Narrow down the source files whose Javadocs will be generated (All files are selected by default).
+
+5) Limit what class members which will have Javadocs generated, by choosing the visibility (access modifier). For example: If Public is chosen, then only public methods will have Javadocs generated. If Protected is chosen, then only protected and public methods will have Javadocs generated, and so on.
+
+6) Specify the destination directory where the Javadocs will be put in.
+
+7) Click Next.
+
+.. odsafig:: Images/Javadoc_Generation_step_2.png
+ :align: center
+ :figwidth: 90%
+ 
+8) Select any options required for the Javadoc generation. 
+
+  Here you can specify the document title (1); document structure (2); documenting tags (3); JAR files and projects to which referenced links are generated (4); and stylesheet for the document (5):
+  
+9) Click *Finish*
+
+Your Javadocs will be in the folder you specified in step 6, where you can open them in your browser.
+
+.. adapted from https://www.codejava.net/ides/eclipse/how-to-generate-javadoc-in-eclipse
+
+
+Using BlueJ
+~~~~~~~~~~~
 If you are using BlueJ, you can use the Tools->Project Documentation command to generate full documentation for your own project straight from your source code. It may take a minute, but once complete, a new browser window will open showing all of the generated documentation for your classes. It will be similar to the `Student Library API <http://courses.cs.vt.edu/~cs1114/api/>`_, but for your own code.
 
 Also, when editing a single file, you will notice a drop-down list on the upper right of the edit window. This list gives you two choices: "Implementation", which shows the code you normally edit, and "Interface", which will instead show the generated documentation view for the current class.
 
 Using these two approaches within BlueJ, you can check out how your comments look in the generated documentation.
+
 
 Other Comments in Your Code
 ---------------------------

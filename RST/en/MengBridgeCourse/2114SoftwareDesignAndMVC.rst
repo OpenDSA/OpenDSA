@@ -626,7 +626,11 @@ developers.  Understanding and appropriately using design patterns speeds up
 the development process, help developers avoid common pitfalls, and in general
 helps software developers learn and practice good software design without
 needing to experiences the failures and trial-and-error of those who came
-before us.
+before us. Both the Model-View-Controller and Observer Design patterns are 
+commonly used. Java initially provided the Observer interface and Observable 
+class for this model but they are now deprecated because they are not well 
+suited for handling multiple simultaneous threads of execution. As an introduction 
+we will refer to Observer and Observable but in practice we will use our own classes.
 
 
 [11:00] MVC and Observer Video
