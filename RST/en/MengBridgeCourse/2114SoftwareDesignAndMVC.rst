@@ -40,7 +40,7 @@ Introduction to Software design
    <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
    Video Slides 9.2.2.1-IntroToSoftwareDesign.pdf</img>
    </a>
-   
+
 
 Functional and non-functional requirements
 ------------------------------------------
@@ -626,10 +626,10 @@ developers.  Understanding and appropriately using design patterns speeds up
 the development process, help developers avoid common pitfalls, and in general
 helps software developers learn and practice good software design without
 needing to experiences the failures and trial-and-error of those who came
-before us. Both the Model-View-Controller and Observer Design patterns are 
-commonly used. Java initially provided the Observer interface and Observable 
-class for this model but they are now deprecated because they are not well 
-suited for handling multiple simultaneous threads of execution. As an introduction 
+before us. Both the Model-View-Controller and Observer Design patterns are
+commonly used. Java initially provided the Observer interface and Observable
+class for this model but they are now deprecated because they are not well
+suited for handling multiple simultaneous threads of execution. As an introduction
 we will refer to Observer and Observable but in practice we will use our own classes.
 
 
@@ -642,6 +642,7 @@ we will refer to Observer and Observable but in practice we will use our own cla
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_pws7qjiz&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_5sdnrfdi" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
+Note: Project 3 in this video is a variation of the towers of Hanoi project.
 
 Reflect upon existing designs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -689,10 +690,10 @@ application.
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex09.02-AddressBookMVC" 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex09.02-AddressBookMVC"
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-   
+
 Design Review: Case Study - e-Commerce solution (online storefront) for ABC Ltd.
 --------------------------------------------------------------------------------
 
