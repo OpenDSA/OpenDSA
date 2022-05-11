@@ -644,19 +644,6 @@ we will refer to Observer and Observable but in practice we will use our own cla
 
 Note: Project 3 in this video is a variation of the towers of Hanoi project.
 
-Reflect upon existing designs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Now that we've been introduced to MVC let us take a moment to reflect upon an
-existing design, specifically the design of the game presented within the
-Tower of Hanoi specification.
-
-Does the design of the game incorporate elements of MVC?  Yes definitely!
-
-Now that we agree upon that let's consider, which class(s) would be the
-Controller and which the View?
-
-
 
 MVC Example AddressBook
 -----------------------
