@@ -48,8 +48,8 @@ Introduction to Linked Bags
    </a>
 
 
-LinkedBag add and toArray 
--------------------------- 
+LinkedBag add and toArray
+--------------------------
 
 [12:45] LinkedBag add and toArray
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,10 +82,10 @@ Code examples
 ~~~~~~~~~~~~~
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex08.05-LinkedBagsWithJUnit". Use this example to follow along with the following video. Feel free to experiment. 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex08.05-LinkedBagsWithJUnit". Use this example to follow along with the following video. Feel free to experiment.
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-   
+
 
 [7:14] ExLinkedBagJUnit  Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -182,10 +182,6 @@ Recall that the objectives for this module were to:
 * State key characteristics of Bags in Java
 * Build and populate Bags in Java
 
-
-By this point, you should have achieved each of these objectives. If you have
-questions or concerns about your ability to accomplish each of these, please
-reach out to the instructor of the course.
 
 Programming Practice: LinkedBags
 --------------------------------
