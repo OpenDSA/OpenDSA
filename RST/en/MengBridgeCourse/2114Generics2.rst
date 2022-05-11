@@ -27,10 +27,10 @@ Code Examples
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment. 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
- 
+
 [10:53] Generics 2
 ~~~~~~~~~~~~~~~~~~
 
@@ -61,12 +61,6 @@ Related Resources
 ~~~~~~~~~~~~~~~~~
 
 `A tutorial on using wildcards in generics, at https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
-
-Checkpoint 1
-------------
-
-.. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1Summ.html ka
-   :long_name: Checkpoint 1
 
 
 Sample Declarations of Generic Methods Explained
@@ -107,6 +101,13 @@ parameter ``T`` must implement the interface ``Comparable<T>``.
 The method parameter list (the object being sorted) is of type ``List<T>``.
 
 
+Checkpoint 1
+------------
+
+.. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1Summ.html ka
+   :long_name: Checkpoint 1
+
+
 Bounded Wildcard Examples
 -------------------------
 
@@ -115,8 +116,8 @@ Code Example
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment. 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 [10:43] Bounded Wildcards Example
