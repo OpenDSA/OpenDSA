@@ -649,7 +649,7 @@ Reflect upon existing designs
 
 Now that we've been introduced to MVC let us take a moment to reflect upon an
 existing design, specifically the design of the game presented within the
-Project 3 specification.
+Tower of Hanoi specification.
 
 Does the design of the game incorporate elements of MVC?  Yes definitely!
 
