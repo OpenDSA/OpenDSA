@@ -35,12 +35,14 @@ the icons at the top and drop them on the main method squares left to right.
 
 .. admonition:: Try It Yourself
 
-    Play the first two levels of LightBot to try things out here:
+   Play the first two levels of LightBot to try things out here:
 
-    <a href="https://www.lightbot.lu/" target="_blank">LightBot</a>
+   .. raw:: html
+    
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.lightbot.lu/" target="_blank">LightBot</a>
 
-    Be sure your browser window is tall enough to see the "Instructions" label
-    in the upper right of the game.
+   Be sure your browser window is tall enough to see the "Instructions" label
+   in the upper right of the game.
 
 The LightBot game illustrates several basic programming concepts. The robot
 itself is an **object**, and we can request it to perform specific actions that
