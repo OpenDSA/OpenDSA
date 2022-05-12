@@ -799,15 +799,26 @@ inspiration for your software design.
 
 With respect to other requirements your client has indicated that the physical
 vending machine would be similar in form, behavior, and features to the machine
-depicted in the images below.
+depicted in the images below:
 
-
+.. raw:: html
+    
+  <table width="100%" border="0">
+  <tr>
+  <td style="border: 0px">
+  
 .. odsafig:: Images/VendingMachine1.png
-   :align: left
+   :align: center
    :width: 270
    :height: 360
    :figwidth: 33%
    :alt: Overall view of an internet-enabled vending machine
+
+.. raw:: html
+     
+   </td>
+   <td style="border: 0px">
+
 
 .. odsafig:: Images/VendingMachine2.png
    :align: center
@@ -816,13 +827,22 @@ depicted in the images below.
    :figwidth: 33%
    :alt: Overall view of the customer interface, showing the keypad for selecting the item, as well as two payment interfaces, one for card swipe or cash, and one for payment with a mobile device.
 
+.. raw:: html
+      
+    </td>
+    <td style="border: 0px">
+
 .. odsafig:: Images/VendingMachine3.png
-   :align: right
+   :align: center
    :width: 270
    :height: 360
    :figwidth: 33%
    :alt: Closeup view of the mobile device payment  interface, showing the flavors of payment systems supported (Apple Pay, Android Pay, Samsung Pay), as well as the credit card types supported.
 
+.. raw:: html
+      
+    </td>
+    </table>
 
 
 
