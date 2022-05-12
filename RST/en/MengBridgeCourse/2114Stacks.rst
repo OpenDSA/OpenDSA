@@ -31,12 +31,61 @@ Introduction to Stacks
 [11:32] Introduction to Stacks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. admonition:: Try It Yourself
-   
-   Download `StackInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/StackInterface.java>`_ (right-click to download as .java file), and open it in Eclipse.
-  
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+.. admonition:: The Stack Interface
 
+   .. code-block:: java
+   
+      package stack;
+      
+      /**
+       * An interface for the ADT stack.
+       * 
+       * @author Frank M. Carrano
+       * @author Timothy M. Henry
+       * @author maellis1
+       * @version May 2020 
+       */
+      public interface StackInterface<T> {
+          /**
+           * Adds a new entry to the top of this stack.
+           * 
+           * @param newEntry
+           *            An object to be added to the stack.
+           */
+          public void push(T newEntry);
+      
+          /**
+           * Removes and returns this stack's top entry.
+           * 
+           * @return The object at the top of the stack.
+           * @throws stack.EmptyStackException
+           *             if the stack is empty before the operation.
+           */
+          public T pop();
+      
+          /**
+           * Retrieves this stack's top entry.
+           * 
+           * @return The object at the top of the stack.
+           * @throws stack.EmptyStackException
+           *             if the stack is empty.
+           */
+          public T peek();
+      
+          /**
+           * Detects whether this stack is empty.
+           * 
+           * @return True if the stack is empty.
+           */
+          public boolean isEmpty();
+      
+          /** Removes all entries from this stack. */
+          public void clear();
+      } // end StackInterface
+   
+   Download `StackInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/StackInterface.java>`_ (right-click to download as .java file).
+  
+  
 .. raw:: html
 
      <center>

@@ -21,143 +21,138 @@ Objectives
 Java Tips
 ---------
 
-.. admonition:: Try It Yourself
-
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.03-Bank". 
-   
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-
 For the following discussion, we're going to be referencing the following Bank
 class:
 
-.. code-block:: java
+.. admonition:: The Bank Class
 
-
-   import java.util.Scanner;
-   import java.text.DecimalFormat;
-
-   public class Bank {
-
-      static long accountID;
-      static String accountHolder;
-      static double accountBalance;
-      static String PIN;
-      static final double withdrawalTransactionCharge = 0.50; // $0.50 charge for
-                                                              // each transaction
-      private static DecimalFormat df = new DecimalFormat("#.##");
-
-      public enum Choice{
-          DEPOSIT, WITHDRAW, DISPLAY, EXIT
+   .. code-block:: java
+   
+   
+      import java.util.Scanner;
+      import java.text.DecimalFormat;
+   
+      public class Bank {
+   
+         static long accountID;
+         static String accountHolder;
+         static double accountBalance;
+         static String PIN;
+         static final double withdrawalTransactionCharge = 0.50; // $0.50 charge for
+                                                                 // each transaction
+         private static DecimalFormat df = new DecimalFormat("#.##");
+   
+         public enum Choice{
+             DEPOSIT, WITHDRAW, DISPLAY, EXIT
+         }
+   
+         public Bank() {
+      	   init();
+         }
+   
+         public static void init() {
+             accountHolder = "J. Doe";
+             accountBalance = 500.00;
+             accountID = 555444333;
+             PIN = "1234";
+         }
+   
+   
+         public static void withdraw(double amount) {
+             if ((amount + withdrawalTransactionCharge) < accountBalance) {
+                 accountBalance = accountBalance - amount
+                     - withdrawalTransactionCharge;
+                 System.out.println("withdrawing $" + df.format(amount));
+             }
+             else {
+                 System.out.println(
+                     "low account balance, cannot complete withdrawal transaction");
+             }
+             displayAccountBalance();
+   
+         }
+   
+   
+         public static void deposit(double amount) {
+   
+             accountBalance = accountBalance + amount;
+             System.out.println("depositing $" + df.format(amount));
+             displayAccountBalance();
+   
+         }
+   
+   
+         public static void displayMenu() {
+   
+             StringBuilder buffer = new StringBuilder();
+   
+             buffer.append("*****Welcome to ABC Bank*****");
+             buffer.append("\n");
+             buffer.append("\n");
+             buffer.append("1: Withdraw $20.00");
+             buffer.append("\n");
+             buffer.append("2: Deposit  $20.00");
+             buffer.append("\n");
+             buffer.append("3: Display Balance");
+             buffer.append("\n");
+             buffer.append("\n");
+             buffer.append(
+                 "Please enter your choice of 1, 2, or 3, and press the Enter key");
+             buffer.append("\n");
+             System.out.println(buffer.toString());
+         }
+   
+   
+         public static void displayAccountBalance() {
+   
+             StringBuilder buffer = new StringBuilder();
+   
+             buffer.append("-----Account Details----- ");
+             buffer.append("\n");
+             buffer.append("Account ID: ");
+             buffer.append(accountID);
+             buffer.append("\n");
+             buffer.append("Holder: ");
+             buffer.append(accountHolder);
+             buffer.append("\n");
+             buffer.append("Balance: $");
+             buffer.append(df.format(accountBalance));
+             buffer.append("\n");
+             buffer.append("-------------------------");
+             buffer.append("\n");
+             buffer.append("-------------------------");
+             buffer.append("\n");
+             buffer.append("\n");
+             System.out.println( buffer.toString());
+   
+         }// end of displayAccountDetails Method
+   
+   
+         public static void main(String[] args) {
+             init(); // Initializes this account
+             displayMenu();
+   
+             String response = new Scanner(System.in).nextLine(); // Read user input
+   
+             if (response.equals("1")) {
+                 withdraw(20.00);
+             }
+             else if (response.equals("2")) {
+                 deposit(20.00);
+             }
+             else if (response.equals("3")) {
+                 displayAccountBalance();
+             }
+             else {
+                 System.out.println("You entered an invalid choice.");
+             }
+   
+   
+   
+             System.out.println("Thank you for banking with us, goodbye!");
+         }
+   
       }
-
-      public Bank() {
-      	init();
-      }
-
-      public static void init() {
-          accountHolder = "J. Doe";
-          accountBalance = 500.00;
-          accountID = 555444333;
-          PIN = "1234";
-      }
-
-
-      public static void withdraw(double amount) {
-          if ((amount + withdrawalTransactionCharge) < accountBalance) {
-              accountBalance = accountBalance - amount
-                  - withdrawalTransactionCharge;
-              System.out.println("withdrawing $" + df.format(amount));
-          }
-          else {
-              System.out.println(
-                  "low account balance, cannot complete withdrawal transaction");
-          }
-          displayAccountBalance();
-
-      }
-
-
-      public static void deposit(double amount) {
-
-          accountBalance = accountBalance + amount;
-          System.out.println("depositing $" + df.format(amount));
-          displayAccountBalance();
-
-      }
-
-
-      public static void displayMenu() {
-
-          StringBuilder buffer = new StringBuilder();
-
-          buffer.append("*****Welcome to ABC Bank*****");
-          buffer.append("\n");
-          buffer.append("\n");
-          buffer.append("1: Withdraw $20.00");
-          buffer.append("\n");
-          buffer.append("2: Deposit  $20.00");
-          buffer.append("\n");
-          buffer.append("3: Display Balance");
-          buffer.append("\n");
-          buffer.append("\n");
-          buffer.append(
-              "Please enter your choice of 1, 2, or 3, and press the Enter key");
-          buffer.append("\n");
-          System.out.println(buffer.toString());
-      }
-
-
-      public static void displayAccountBalance() {
-
-          StringBuilder buffer = new StringBuilder();
-
-          buffer.append("-----Account Details----- ");
-          buffer.append("\n");
-          buffer.append("Account ID: ");
-          buffer.append(accountID);
-          buffer.append("\n");
-          buffer.append("Holder: ");
-          buffer.append(accountHolder);
-          buffer.append("\n");
-          buffer.append("Balance: $");
-          buffer.append(df.format(accountBalance));
-          buffer.append("\n");
-          buffer.append("-------------------------");
-          buffer.append("\n");
-          buffer.append("-------------------------");
-          buffer.append("\n");
-          buffer.append("\n");
-          System.out.println( buffer.toString());
-
-      }// end of displayAccountDetails Method
-
-
-      public static void main(String[] args) {
-          init(); // Initializes this account
-          displayMenu();
-
-          String response = new Scanner(System.in).nextLine(); // Read user input
-
-          if (response.equals("1")) {
-              withdraw(20.00);
-          }
-          else if (response.equals("2")) {
-              deposit(20.00);
-          }
-          else if (response.equals("3")) {
-              displayAccountBalance();
-          }
-          else {
-              System.out.println("You entered an invalid choice.");
-          }
-
-
-
-          System.out.println("Thank you for banking with us, goodbye!");
-      }
-
-   }
 
 
 Enums
