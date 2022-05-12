@@ -98,7 +98,9 @@ Integer objects or an array of Double objects
 
 Below is another example Generic method declaration.
 
-``public static <T extends Comparable<T>> void sort(List<T> list)``
+.. code-block:: java
+
+  public static <T extends Comparable<T>> void sort(List<T> list)
 
 The use of ``<T extends Comparable<T>>`` specifies that the generic
 parameter ``T`` must implement the interface ``Comparable<T>``.
