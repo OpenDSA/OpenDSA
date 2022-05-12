@@ -25,6 +25,54 @@ Upon completion of this module, students will be able to:
 [10:51] Intro to Linked Chains of Nodes
 ---------------------------------------
 
+.. admonition:: The LinkedChain Class
+   
+   .. code-block:: java
+
+      package linkedchain;
+      
+      public class LinkedChain {
+      
+         private Node head; // Reference to first node
+         private int numberOfEntries;
+      
+         public static void main(String[] args) {
+      
+            LinkedChain chain = new LinkedChain();
+            chain.add(10);
+            chain.add(-2);
+            chain.add(57);
+         }
+      
+         public LinkedChain() {
+            head = null;
+            numberOfEntries = 0;
+         } // end default constructor
+      
+         public void add(int newEntry) {
+            // Add to beginning of chain:
+            Node newNode = new Node(newEntry);
+            newNode.next = head; // Make new node reference rest of chain
+            head = newNode; // New node is at beginning of chain
+            numberOfEntries++;
+         } // end add
+      
+         private class Node {
+            private int data;
+            private Node next; // Link to next node
+      
+            private Node(int dataPortion) {
+               this(dataPortion, null);
+            } // end constructor
+      
+            private Node(int dataPortion, Node nextNode) {
+               data = dataPortion;
+               next = nextNode;
+            } // end constructor
+         } // end Node
+      }
+
+
 .. raw:: html
 
      <center>
@@ -42,14 +90,6 @@ Checkpoint 1
 
 [11:31] Demo in Visualizer
 --------------------------
-.. admonition:: Try It Yourself
-
-   Download `LinkedChain.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/LinkedChain.java>`_ (right-click to download as .java file), and open it in Eclipse.
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.      
-
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-
 
 .. raw:: html
 
