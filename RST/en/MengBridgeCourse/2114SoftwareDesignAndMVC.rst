@@ -384,7 +384,7 @@ questions and review the UML class designs provided within the examples
 provided throughout the module, labs, and projects.
 
 Much of what you need to know for relationships, hierarchies and reuse has
-been covered within the :doc:`2114ObjectsEnumsAndUML`. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
+been covered within the :doc:`2114Polymorphism2` module. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
 
 Activity
 --------
@@ -587,20 +587,16 @@ Patterns
 
 The idea of leveraging patterns, repeatable best-practice solutions to
 commonly occurring well-explored problems, was first introduced in
-Architecture within the 1977 book  "A pattern language: towns, buildings,
-construction".
+Architecture within the 1977 book  `A Pattern Language: Towns, Buildings,
+Construction <https://arl.human.cornell.edu/linked%20docs/Alexander_A_Pattern_Language.pdf>`_ by Christopher Alexander, Sara Ishikawa, Murray Silverstein, Max Jacobson,
+Ingrid Fiksdahl-King, and Shlomo Angel
 
 Within this book the authors convey the following thoughts about the potential
 benefits of leveraging patterns:
 
-“Each pattern describes a problem which occurs over and over again in our
-environment, and then describes the core of the solution to that problem, in
-such a way that you can use this solution a mil­lion times over, without ever
-doing it the same way twice”
+    “Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a mil­lion times over without ever doing it the same way twice”
 
-A Pattern Language - Towns, Buildings, Construction
-Christopher Alexander, Sara Ishikawa, Murray Silverstein, Max Jacobson,
-Ingrid Fiksdahl-King, Shlomo Angel
+    -*A Pattern Language - Towns, Buildings, Construction*, pg 8 
 
 
 Design Patterns
@@ -626,11 +622,15 @@ developers.  Understanding and appropriately using design patterns speeds up
 the development process, help developers avoid common pitfalls, and in general
 helps software developers learn and practice good software design without
 needing to experiences the failures and trial-and-error of those who came
-before us. Both the Model-View-Controller and Observer Design patterns are
+before us. 
+
+Both the Model-View-Controller and Observer Design patterns are
 commonly used. Java initially provided the Observer interface and Observable
 class for this model but they are now deprecated because they are not well
-suited for handling multiple simultaneous threads of execution. As an introduction
-we will refer to Observer and Observable but in practice we will use our own classes.
+suited for handling multiple simultaneous threads of execution. This page 
+discusses Observer and Observable - while this design pattern stands, these 
+classes are deprecated and in the Tower of Hanoi project we now use our own 
+Model and View classes to take the place of these.
 
 
 [11:00] MVC and Observer Video
