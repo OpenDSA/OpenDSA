@@ -68,7 +68,9 @@ Sample Declarations of Generic Methods Explained
 
 **The format for declaring a Generic method is as follows:**
 
-``methodModifiers <genericParameters> returnType methodName(methodParameters)``
+.. code-block:: java
+
+  methodModifiers <genericParameters> returnType methodName(methodParameters)
 
 Note the use of the generic parameters placed inside the angle brackets.
 
@@ -76,7 +78,9 @@ Note the use of the generic parameters placed inside the angle brackets.
 
 Below is one example of how you may declare a Generic method.
 
-``public static <T> void sort(T[] items, Comparator<? super T> comp)``
+.. code-block:: java
+
+  public static <T> void sort(T[] items, Comparator<? super T> comp)
 
 The T following the static keyword and enclosed within the angle brackets
 represents the generic parameter for the sort method.  The T should also
