@@ -113,71 +113,67 @@ Take a look at how the implementation (the code) matches with the design documen
 (the UML class diagram).
 
 
-.. admonition:: Try It Yourself
+.. admonition:: The Bag Interface
 
-   Download `BagInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java>`_ (right-click to download as .java file), and open it in Eclipse.
- 
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-.. code-block:: java
-
-   package bag;
-   /**
-   An interface that describes the operations of a bag of objects.
-   A bag is an unordered collection of objects of a particular types.
-   Duplicates are allowed.
-   @author Frank M. Carrano
-   @author Timothy M. Henry
-   @author Margaret Ellis
-   @version April 2020
-   */
-   public interface BagInterface<T>
-   {
-   /** Gets the current number of entries in this bag.
-      @return  The integer number of entries currently in the bag. */
-   public int getCurrentSize();
-
-   /** Sees whether this bag is empty.
-      @return  True if the bag is empty, or false if not. */
-   public boolean isEmpty();
-
-   /** Adds a new entry to this bag.
-      @param newEntry  The object to be added as a new entry.
-      @return  True if the addition is successful, or false if not. */
-   public boolean add(T newEntry);
-
-   /** Removes one unspecified entry from this bag, if possible.
-            @return  Either the removed entry, if the removal.
-                was successful, or null. */
-   public T remove();
-
-   /** Removes one occurrence of a given entry from this bag.
-           @param anEntry  The entry to be removed.
-           @return  True if the removal was successful, or false if not. */
-       public boolean remove(T anEntry);
-
-   /** Removes all entries from this bag. */
-   public void clear();
-
-   /** Counts the number of times a given entry appears in this bag.
-      @param anEntry  The entry to be counted.
-            @return  The number of times anEntry appears in the bag. */
-   public int getFrequencyOf(T anEntry);
-
-   /** Tests whether this bag contains a given entry.
-      @param anEntry  The entry to locate.
-      @return  True if the bag contains anEntry, or false if not. */
-   public boolean contains(T anEntry);
-
-   /** Retrieves all entries that are in this bag.
-      @param values  An array of generics to be filled with bag contents, if
-              not large enough will throw ArrayIndexOutOfBoundsException
-      @return  The values array filled with the entries in the bag.
-          Note: If the bag is empty, the array is returned unmodified */
-   public T[] toArray(T[] values);
-
-
-   } // end BagInterface
+    .. code-block:: java
+    
+       package bag;
+       /**
+       An interface that describes the operations of a bag of objects.
+       A bag is an unordered collection of objects of a particular types.
+       Duplicates are allowed.
+       @author Frank M. Carrano
+       @author Timothy M. Henry
+       @author Margaret Ellis
+       @version April 2020
+       */
+       public interface BagInterface<T>
+       {
+       /** Gets the current number of entries in this bag.
+          @return  The integer number of entries currently in the bag. */
+       public int getCurrentSize();
+    
+       /** Sees whether this bag is empty.
+          @return  True if the bag is empty, or false if not. */
+       public boolean isEmpty();
+    
+       /** Adds a new entry to this bag.
+          @param newEntry  The object to be added as a new entry.
+          @return  True if the addition is successful, or false if not. */
+       public boolean add(T newEntry);
+    
+       /** Removes one unspecified entry from this bag, if possible.
+                @return  Either the removed entry, if the removal.
+                    was successful, or null. */
+       public T remove();
+    
+       /** Removes one occurrence of a given entry from this bag.
+               @param anEntry  The entry to be removed.
+               @return  True if the removal was successful, or false if not. */
+           public boolean remove(T anEntry);
+    
+       /** Removes all entries from this bag. */
+       public void clear();
+    
+       /** Counts the number of times a given entry appears in this bag.
+          @param anEntry  The entry to be counted.
+                @return  The number of times anEntry appears in the bag. */
+       public int getFrequencyOf(T anEntry);
+    
+       /** Tests whether this bag contains a given entry.
+          @param anEntry  The entry to locate.
+          @return  True if the bag contains anEntry, or false if not. */
+       public boolean contains(T anEntry);
+    
+       /** Retrieves all entries that are in this bag.
+          @param values  An array of generics to be filled with bag contents, if
+                  not large enough will throw ArrayIndexOutOfBoundsException
+          @return  The values array filled with the entries in the bag.
+              Note: If the bag is empty, the array is returned unmodified */
+       public T[] toArray(T[] values);
+    
+    
+       } // end BagInterface
 
 
 [7:28] Documentation of Bag Interface Methods
