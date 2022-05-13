@@ -27,16 +27,13 @@ installing it again.
 
 .. raw:: html
 
-   &nbsp;&nbsp;&nbsp;1. Open <a href="https://eclipse.org/downloads/" target="_blank">https://eclipse.org/downloads/</a>
+   &nbsp;&nbsp;&nbsp;1. Open <a href="https://www.eclipse.org/downloads/packages/installer" target="_blank">https://www.eclipse.org/downloads/packages/installer</a>
 
 
-2. On the left half of the page, click the "**Download**" button
-   under "Get "**Eclipse IDE 2022-..**" to download the latest
-   version of Eclipse.
+2. Click on the Download link in the box at the top that matches your computer.
 
-3. Download the distribution and follow installation instructions
-   beginning at step 2 at `https://www.eclipse.org/downloads/packages/installer <https://www.eclipse.org/downloads/packages/installer>`_ ,
-   selecting **IDE for Java Developers** when prompted.
+3. After the download is complete, follow the installation instructions
+   beginning at step 2 on this page, selecting **IDE for Java Developers** when prompted.
 
 4. Start Eclipse. ( If you are on a Mac, you need to set
    **System Preferences->Security and Privacy** to allow apps downloaded from
