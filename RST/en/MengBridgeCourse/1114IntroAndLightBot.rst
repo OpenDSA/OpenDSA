@@ -627,18 +627,8 @@ world objects understand called ``add()``, like this:
         // ... more goes here ...
     }
 
-Now it is time to try out your first program!  If you have
-typed these lines into BlueJ's editor, you may notice
-that the ``Level3Solution`` icon in BlueJ's main
-window has changed so that it has diagonal lines across it.  These
-indicate that the source code has been changed--because you typed
-new instructions.  Before the computer can execute our program,
-however, we first need to convert the source code you wrote into a
-form that can be executed by the computer.  Click the "Compile"
-button at the top of the editor window (or the "Compile" button
-on BlueJ's main window).  This will convert the source
-code into a form the computer can execute.  Finally, right-click on
-the `Application` class and select "Run JavaFX Application".
+Now it is time to try out your first program!  You will find instructions
+for running a program just like this in the first lab assignment.
 
 OK, it isn't exciting, but you will see a new LightBot created
 and added to the level at the coordinates you specified.  You can
