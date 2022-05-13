@@ -25,7 +25,10 @@ miss something their first time through.  If you've installed everything but
 can't get any code to run at all, it's good to try uninstalling Eclipse and just
 installing it again.
 
-1. Open `https://eclipse.org/downloads/ <https://eclipse.org/downloads/>`_
+.. raw:: html
+
+   &nbsp;&nbsp;&nbsp;1. Open <a href="https://eclipse.org/downloads/" target="_blank">https://eclipse.org/downloads/</a>
+
 
 2. On the left half of the page, click the "**Download**" button
    under "Get "**Eclipse IDE 2022-..**" to download the latest
