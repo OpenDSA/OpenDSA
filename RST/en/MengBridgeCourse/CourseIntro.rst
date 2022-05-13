@@ -35,7 +35,7 @@ installing it again.
    version of Eclipse.
 
 3. Download the distribution and follow installation instructions
-   beginning at step 2 at `https://www.eclipse.org/downloads/packages/installer <https://www.eclipse.org/downloads/packages/installer>_`,
+   beginning at step 2 at `https://www.eclipse.org/downloads/packages/installer <https://www.eclipse.org/downloads/packages/installer>`_ ,
    selecting **IDE for Java Developers** when prompted.
 
 4. Start Eclipse. ( If you are on a Mac, you need to set
