@@ -103,6 +103,9 @@ course easier.
    button to **"Update my installation to be compatible with the items being
    installed"**.
 
+   If the **Trust** dialog appears, click on **Select All** followed by
+   **Trust Selected**.
+
 4. Check **"I accept the terms of the license agreements"** and then
    click **Finish**.
 
