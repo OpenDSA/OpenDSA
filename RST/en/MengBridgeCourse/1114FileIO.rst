@@ -564,7 +564,7 @@ forget to import ``java.io.*`` in your class):
    }
 
 If called with a specific argument, like ``printResultFile(42);``, the method
-will produce a file called ``output.txt`` in your BlueJ project directory
+will produce a file called ``output.txt`` in your project directory
 containing these lines:
 
 .. code-block:: java
@@ -1346,8 +1346,9 @@ pairs. So ``int x = (1 + 2);`` is legal, but ``int x = 8);`` is not. In the
 latter case, the program cannot be compiled, and the compiler displays an
 error.
 
-In BlueJ, compile-time errors will show up as a red line under
-the offending code before you even press "compile".
+In Eclipse, compile-time errors will show up as a red line under
+the offending code, as well as being listed in the **Problems** tab
+near the bottom of the main window.
 
 Error messages from the compiler usually indicate where in the program the
 error occurred, and sometimes they can tell you exactly what the error is. As

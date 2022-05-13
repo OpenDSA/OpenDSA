@@ -479,18 +479,19 @@ The programming environment we will use in this course is called
 kinds of micro-worlds.
 
 When you open a project in Eclipse, you will see a list of the
-various Java classes you are working on. Here, we can see BlueJ's
+various Java classes you are working on in the **Package Explorer** view on
+the lefthand side. Here, we can see Eclipse's
 main window looking at a simple Java project for solving LightBot
 Level 3.
 
-.. odsafig:: Images/bluej-Level3Solution.png
+.. odsafig:: Images/eclipse-level3.png
    :align: center
 
 You can double-click on any Java class in the project to open it
 in the editor and view its program code. For our micro-world
-assignments, you will also see a class called ``Application``--right-click
-the ``Application`` class and choose **Run JavaFX Application** to execute your
-micro-world application.
+assignments, you will also see a class with a name beginning with ``Run``,
+which we will use to launch and run our programs (full instructions are
+in the first lab assignment).
 
 .. odsafig:: Images/lightbot3.png
    :align: center
@@ -504,15 +505,17 @@ their next action), ``Run`` (cause objects to repeatedly act over and
 over), and control the speed of execution.
 
 Each Java class that you write will have its source code stored
-in a text file.  By double-clicking on the rounded rectangle representing the class
-in BlueJ's project window, you
+in a text file that has *the same name* as the class with a ".java"
+extension. We call these "source files", because they contain the
+Java "source code" defining your classes.
+By double-clicking on a source file name in Eclipse's Package Explorer, you
 can see (and edit) your class source code in an edit window.  If
-you double-click on ``Level3Solution``, you will see its contents:
+you double-click on ``Level3Solution.java``, you will see its contents:
 
-.. odsafig:: Images/Level3Solution.png
+.. odsafig:: Images/eclipse-level3-editor.png
    :align: center
 
-In the editor notice that a method has already been provided
+In the editor notice that a method has already been written
 to hold new code.  This method is called ``myProgram()``,
 and it represents the behavior that will be carried out when you
 press the ``Run`` button at the bottom of your program's window.
@@ -624,18 +627,8 @@ world objects understand called ``add()``, like this:
         // ... more goes here ...
     }
 
-Now it is time to try out your first program!  If you have
-typed these lines into BlueJ's editor, you may notice
-that the ``Level3Solution`` icon in BlueJ's main
-window has changed so that it has diagonal lines across it.  These
-indicate that the source code has been changed--because you typed
-new instructions.  Before the computer can execute our program,
-however, we first need to convert the source code you wrote into a
-form that can be executed by the computer.  Click the "Compile"
-button at the top of the editor window (or the "Compile" button
-on BlueJ's main window).  This will convert the source
-code into a form the computer can execute.  Finally, right-click on
-the `Application` class and select "Run JavaFX Application".
+Now it is time to try out your first program!  You will find instructions
+for running a program just like this in the first lab assignment.
 
 OK, it isn't exciting, but you will see a new LightBot created
 and added to the level at the coordinates you specified.  You can

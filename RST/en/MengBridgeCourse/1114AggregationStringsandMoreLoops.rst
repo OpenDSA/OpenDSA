@@ -247,9 +247,9 @@ some code. We can use what are called print statements:
 
     System.out.print("Hello World");
 
-When this code is run in BlueJ, it produces textual output. BlueJ will pop
-open its *terminal window*, which shows the textual output produced by
-your code. You should see this window pop up to display the text "Hello World"
+When this code is run in Eclipse, it produces textual output. Eclipse shows
+the textual output produced by your code in the **Console** tab near the
+bottom of the main window. You should see this tab display the text "Hello World"
 without the quotation marks.  Notably, you may not get the results you expect
 if you run:
 

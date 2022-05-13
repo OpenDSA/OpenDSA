@@ -320,13 +320,17 @@ our new class is a *subclass*.  Whenever you use
    and **parent class** are different
    names for **superclass**.
 
-In BlueJ, we can create a new subclass from the
-``Island`` class by clicking the "New Class..." button in BlueJ's
-main window.  In the resulting new class dialog, enter the name for your
-new class, select "Island subclass", and click the "OK" button.
-This action will create a new class and an
-associated source file for you, and fill it with the required
-starting content (including  some comments and placeholders).
+In Eclipse, we can create a new subclass from the
+``Island`` class by right-clicking on the project's name in the
+Package Explorer view and selecting the **New -> Class** menu command.
+In the resulting new class dialog, enter the name for your
+new class. To specify the superclass, look for the **Superclass:** field
+and click the **Browse** button to the right of the field. Start typing
+"island" in the search box and select ``Island`` (from ``student.micro.jeroo``). 
+Click the "OK" button to create your new class.
+This action will create a new class in the appropriate
+source file for you, and fill it with some initial content
+(including  some comments and placeholders).
 
 .. note::
    In Java, the source code for a given class is stored in a plain text
@@ -334,8 +338,8 @@ starting content (including  some comments and placeholders).
    added on the end. The file name must be capitalized exactly the same
    way as the class name.
 
-When you create a new subclass in BlueJ, the generated
-class will already have a
+When you create a new subclass in Eclipse, the new
+class will need you to add a
 **constructor**. a constructor is
 a special kind of method that is used only to initialize a brand new
 object.
@@ -345,6 +349,22 @@ object.
    a special kind of method that is used to initialize a brand new
    object.
 
+In any new class you create, you can always start out with a simple
+constructor to give you a place to add information later. For example,
+if you create a new ``MyIsland`` subclass, you can provide a
+minimal constructor this way:
+
+.. code:: java
+
+   // ----------------------------------------------------------
+   /**
+    * Initializes a newly created MyIsland object.
+    */
+   public MyIsland()
+   {
+       super();
+   }
+
 In the constructor for our island subclass, you can define the island's
 dimensions and put any
 actions you would like to perform when the island is created--such
@@ -352,11 +372,15 @@ as populating it with some flowers, or placing water in new
 locations.
 
 We can also say what we wish to happen when the **Run button
-is pressed** by added a ``myProgram()`` method.  You
+is pressed** by adding a ``myProgram()`` method.  You
 can add this to your island subclass:
 
 .. code-block:: java
 
+   // ----------------------------------------------------------
+   /**
+    * Describe what your code does here.
+    */
    public void myProgram()
    {
        Jeroo jessica = new Jeroo(8);
@@ -912,9 +936,9 @@ guide us in this process.
 FIRST BUILD
 """""""""""
 
-To see this solution in action, create a new BlueJ project
-scenario and use the "New Class..." button to
-create a new `Island` subclass with the name of
+To see this solution in action, create a new Eclipse project
+and use the "New -> Class" menu command to
+create a new ``Island`` subclass with the name of
 your choice.  This subclass will hold your new code.
 
 The recommended first build contains three things:
@@ -979,9 +1003,7 @@ The blank lines help show the organization of the logic.
 
 
 By taking a moment to run the work so far, you can confirm whether
-or not this step in the planned algorithm works as expected. Right-click
-on your island subclass in BlueJ's main window and use "new" (the first menu
-entry) to create a new instance.
+or not this step in the planned algorithm works as expected.
 
 
 THIRD BUILD
@@ -1385,8 +1407,8 @@ Example: Turn Around
 
 If we wanted to add a method to cause a Jeroo to turn around, we
 need a class to place it in.  We have to create our own subclass of
-``Jeroo`` to hold our code.  In BlueJ, you can use the "New Class..."
-button to create a new subclass of `Jeroo`
+``Jeroo`` to hold our code.  In Eclipse, you can use the "New -> Class"
+menu command to create a new subclass of ``Jeroo``
 with a name of your own choosing.  In that new subclass, you could add
 a method to turn the jeroo around:
 
@@ -1796,8 +1818,8 @@ Java Code for "Clear Nets and Pick"
 """""""""""""""""""""""""""""""""""
 
 As before, we should develop the code as a series of builds.  To
-start this process, create a new project using BlueJ
-use the "New Class..." button to create a new subclass of `Island` called
+start this process, create a new project and then create a new
+subclass of ``Island`` called
 ``ClearNetsAndPick`` for this example.  Also, create a
 new subclass of ``Jeroo`` called ``ClearingJeroo``
 to hold your Jeroo methods.

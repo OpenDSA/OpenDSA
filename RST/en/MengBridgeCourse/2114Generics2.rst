@@ -87,7 +87,7 @@ represents the generic parameter for the sort method.  The T should also
 appear in the method parameter list.
 
 The second method parameter ``Comparator<? super T> comp`` is our way of
-specifying that comp must be an object that implements the
+specifying that ``comp`` must be an object that implements the
 ``Comparator`` interface for type ``T`` or for a superclass of type ``T``
 
 We use this approach to specify restrictions, for example, you can define a
