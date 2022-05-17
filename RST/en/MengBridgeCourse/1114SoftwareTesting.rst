@@ -593,7 +593,7 @@ areas of flowers already placed on it:
    :align: center
 
 While you can certainly make up your own island for any tests you need
-to write, let's work with this one, which is called ``Lab04Island``.
+to write, let's work with this one, which is called ``Lab0204Island``.
 
 To create your software tests, what do they look like and where do they
 go? We will write our software tests as plain old Java methods, one
@@ -611,9 +611,21 @@ Java class called ``FlowerPickerTest``.
    A common mistake is to place ``Test`` at the front of the name
    instead of the end, so always double-check your test class names.
 
-To create a test class in BlueJ, right-click on the class you want
-to test and choose "Create Test Class" from the menu. BlueJ will create
-a new test class with the correct name for you.
+To create a test class in Eclipse, right-click on the class you want
+to test in the Package Explorer view and choose **New -> JUnit Test Case**
+from the menu.
+
+.. odsafig:: Images/eclipse-new-test-class.png
+   :align: center
+
+Eclipse will automatically name the new class following
+our convention. In the "New JUnit Test Case" dialog, be sure to:
+
+*  Select **New JUnit 3 test** near the top.
+*  Select the appropriate **superclass:**
+  * Use ``student.micro.TestCase`` for jeroo-based projects ("micro-world" projects), or
+  * Use ``student.TestCase`` for non-jeroo projects.
+* Check the box to **Generate comments**.
 
 Since our class is a Jeroo class, be sure to add the following
 import statements at the top. Import statements are how we say we
@@ -625,6 +637,7 @@ can't use them. Add the following at the top:
    import student.micro.jeroo.*;
    import static student.micro.jeroo.CompassDirection.*;
    import static student.micro.jeroo.RelativeDirection.*;
+   import static org.assertj.core.api.Assertions.*;
 
 Each test case that we write will come in the form of a single
 test method. We name our test methods using a name that starts with ``test``,
@@ -655,7 +668,7 @@ just an example to show the process):
    public void testPickFlowers()
    {
        // 1. set up initial conditions
-       Lab04Island island = new Lab04Island();
+       Lab0204Island island = new Lab0204Island();
        FlowerPicker picker = new FlowerPicker();
        island.addObject(picker, 1, 2);
 
@@ -672,7 +685,7 @@ once the Jeroo has been placed on the island is easy:
    public void testPickFlowers()
    {
        // 1. set up initial conditions
-       Lab04Island island = new Lab04Island();
+       Lab0204Island island = new Lab0204Island();
        FlowerPicker picker = new FlowerPicker();
        island.addObject(picker, 1, 2);
 
@@ -729,7 +742,7 @@ We can add these to our test case method:
    public void testPickFlowers()
    {
        // 1. set up initial conditions
-       Lab04Island island = new Lab04Island();
+       Lab0204Island island = new Lab0204Island();
        FlowerPicker picker = new FlowerPicker();
        island.addObject(picker, 1, 2);
 
@@ -743,7 +756,7 @@ We can add these to our test case method:
        assertThat(picker.getHeading()).isEqualTo(EAST);
    }
 
-Now we can actually compile and run our code. Actually, it may fail to
+Now we can actually save and run our code. Actually, it may fail to
 compile, because we haven't even written our ``pickFlowers()`` method
 yet! We can add a method stub for ``pickFlowers()`` to the ``FlowerPicker``
 class so our test will compile:
@@ -756,14 +769,27 @@ class so our test will compile:
    }
 
 Now our test class will compile. By right-clicking on the test class
-after everything is compiled, we can choose "Run All Tests" to execute
-the tests we have so far. BlueJ will execute our tests, showing the following
-result:
+after everything is saved, we can choose **Run As -> JUnit Test** to execute
+the tests we have so far. Eclipse will execute our tests, but just like our
+first run configuration, it will produce an error in the Console view:
 
-.. odsafig:: Images/junit-failure-msg.png
+.. odsafig:: Images/eclipse-unit-test-application-error.png
    :align: center
 
-The test results window will show all the test cases run in the top half, with
+Use the **Run -> Run Configurations...** menu command and find the
+run configuration for your unit test. On its **Arguments** tab, add the
+required VM arguments for jeroo micro-world programs (leave the ``-ea``
+argument there):
+
+    --add-modules javafx.controls,javafx.fxml
+
+After adding the arguments, you can then run the tests without this error.
+Eclipse will show the following result in its Junit view:
+
+.. odsafig:: Images/eclipse-junit-view.png
+   :align: center
+
+The JUnit view will show all the test cases run in the top half, with
 a check mark by each passing test and an "X" in front of each failing test.
 Click on any failing test to see the corresponding message in the bottom
 half of the window. Here, the very first expectation (that the Jeroo will
@@ -788,7 +814,7 @@ Now we can implement ``pickFlowers()`` to pick up a row of flowers (this
 If you run your tests again, this time they work. As the saying goes, "If the
 bar is green, the code is clean."
 
-.. odsafig:: Images/junit-success.png
+.. odsafig:: Images/eclipse-junit-view-success.png
    :align: center
 
 For more complicated methods that handle multiple situations or
