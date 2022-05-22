@@ -12,7 +12,7 @@ Getting Started
 Installing BlueJ
 ----------------
 
-Follow the instructions on Canvas to `Install BlueJ <https://canvas.vt.edu/courses/145218/pages/install-bluej>`_.
+Follow the instructions on your course site on Canvas to **Install BlueJ**.
 
 
 Introducing LightBot
@@ -40,14 +40,16 @@ the icons at the top and drop them on the main method squares left to right.
 
 .. admonition:: Try It Yourself
 
-    Play the first two levels of LightBot to try things out here:
+    Play the first two levels of LightBot to try things out here
+    (opens in a new tab):
 
     .. raw:: html
      
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.lightbot.lu/" target="_blank">LightBot</a>
     
     Be sure your browser window is tall enough to see the "Instructions" label
-    in the upper right of the game.
+    in the upper right of the game. Keep the separate browser tab/window
+    showing the game open so you can refer to it later in this chapter.
 
 The LightBot game illustrates several basic programming concepts. The robot
 itself is an **object**, and we can request it to perform specific actions that
@@ -119,7 +121,10 @@ the later levels.
 
 .. admonition:: Try It Yourself
 
-    Return to the `LightBot game <https://www.lightbot.lu/>`_. Continue to play through
+    Return to the LightBot game--hopefully, still visible in a separate
+    browser tab or window (see the link earlier in this chapter if you
+    closed it).
+    Continue to play through
     Level 7. Once you have completed Level 7, stop. You'll return to finish
     Level 8 in the next exercise.
 
@@ -179,7 +184,10 @@ One solution to this level is:
 
 .. admonition:: Try It Yourself
 
-    Return to the `LightBot game <https://www.lightbot.lu/>`_. Complete Level 7
+    Return to the LightBot game--hopefully, still visible in a separate
+    browser tab or window (see the link earlier in this chapter if you
+    closed it).
+    Complete Level 7
     if you have not already done so. Once you have completed Level 7, think
     carefully about your solution for Level 8. Compose your solution for
     Level 8 but don't run it yet. **Write down your solution for Level 8

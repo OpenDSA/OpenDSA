@@ -622,9 +622,12 @@ Eclipse will automatically name the new class following
 our convention. In the "New JUnit Test Case" dialog, be sure to:
 
 *  Select **New JUnit 3 test** near the top.
-*  Select the appropriate **superclass:**
-  * Use ``student.micro.TestCase`` for jeroo-based projects ("micro-world" projects), or
-  * Use ``student.TestCase`` for non-jeroo projects.
+
+*  Select the appropriate **superclass**:
+
+   * Use ``student.micro.TestCase`` for jeroo-based projects ("micro-world" projects), or
+   * Use ``student.TestCase`` for non-jeroo projects.
+
 * Check the box to **Generate comments**.
 
 Since our class is a Jeroo class, be sure to add the following
