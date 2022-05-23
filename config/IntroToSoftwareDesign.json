@@ -371,6 +371,128 @@
           "threshold": 11
         }
       }
+    },
+
+    "Multi-dimensional Arrays":{
+      "IntroToSoftwareDesign/MultiDimensionalArrays": {
+        "Syntax Practice: 2D Array Basics": {
+          "points": 12
+        },
+        "Syntax Practice: Looping Over 2D Arrays": {
+          "points": 6
+        },
+        "Syntax Practice: 3D Arrays": {
+          "points": 3
+        },
+        "Syntax Practice: Modulus": {
+          "points": 9
+        },
+        "Programming Practice: Multi-dimensional Arrays": {
+          "points": 20
+        },
+        "Programming Practice: Mod": {
+          "points": 20
+        },
+        "Week11Quiz1Summ": {
+          "points": 10
+        },
+        "Week11Quiz2Summ": {
+          "points": 10
+        },
+        "Week11Quiz3Summ": {
+          "points": 10
+        }
+      }
+    },
+
+    "Variable Scoping, Input, and Output":{
+      "IntroToSoftwareDesign/FileIO": {
+        "Syntax Practice: Scoping": {
+          "points": 37
+        },
+        "MUSICSurvey": {
+          "points": 3,
+          "threshold": 1
+        },
+        "Week12Quiz1Summ": {
+          "points": 20,
+          "threshold": 5
+        },
+        "Week12Quiz2Summ": {
+          "points": 16,
+          "threshold": 4
+        },
+        "Week12Quiz3Summ": {
+          "points": 12
+        },
+        "Week12Quiz4Summ": {
+          "points": 12
+        }
+      }
+    },
+
+    "Maps and Sets":{
+      "IntroToSoftwareDesign/MapsAndSets": {
+        "Syntax Practice: Making A Set": {
+          "points": 8
+        },
+
+        "Syntax Practice: Adding to a Set": {
+          "points": 9
+        },
+
+        "Syntax Practice: Set Contains": {
+          "points": 9
+        },
+
+        "Syntax Practice: Set Remove": {
+          "points": 9
+        },
+
+        "Week13Quiz1Summ": {
+          "points": 9
+        },
+
+        "Syntax Practice: Making Maps": {
+          "points": 9
+        },
+
+        "Syntax Practice: Adding to Maps": {
+          "points": 9
+        },
+        "Syntax Practice: Map Contains and Remove": {
+          "points": 9
+        },
+        "Programming Practice: Maps": {
+          "points": 20
+        },
+        "Week13Quiz2Summ": {
+          "points": 9
+        }
+      }
+    },
+
+    "Static, Main, and Exceptions":{
+       "IntroToSoftwareDesign/StaticMainAndExceptions":{
+          "Week14Quiz1Summ":{
+             "points":10
+          },
+          "Week14Quiz2Summ":{
+             "points":10
+          },
+          "Week14Quiz3Summ":{
+             "points":10
+          },
+          "Week14Quiz4Summ":{
+             "points":10
+          },
+          "Syntax Practice: Try-Catch Blocks":{
+             "points":30
+          },
+          "Syntax Practice: Throwing Exceptions":{
+             "points":30
+          }
+       }
     }
   }
 }

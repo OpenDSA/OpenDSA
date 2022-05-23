@@ -113,13 +113,11 @@ Take a look at how the implementation (the code) matches with the design documen
 (the UML class diagram).
 
 
-TODO: fix URLS.
+.. admonition:: Try It Yourself
 
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="DownloadLinkHere">
-   </a>
+   Download `BagInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/BagInterface.java>`_ (right-click to download as .java file), and open it in Eclipse.
+ 
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 .. code-block:: java
 
@@ -182,8 +180,8 @@ TODO: fix URLS.
    } // end BagInterface
 
 
-[7:28] Documentation of Bag Interface Methods Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7:28] Documentation of Bag Interface Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -195,14 +193,29 @@ TODO: fix URLS.
 Using Bags
 ----------
 
-[4:34] Using Bags Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4:34] Using Bags 
+~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
      <center>
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_9d2n6v3x&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_b6a92739" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
+
+
+Checkpoint 1
+------------
+
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1Summ.html ka
+   :long_name: Checkpoint 1
+
+
+
+Programming Practice: ArrayBags
+-------------------------------
+
+.. extrtoolembed:: 'Programming Practice: ArrayBags'
+   :workout_id: 1910
 
 
 Array Implementation of Bags
@@ -214,8 +227,8 @@ Suggested Reading
 Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 
-[9:39] Fixed-Size Array Implementation Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:39] Fixed-Size Array Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -224,8 +237,8 @@ Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstract
      </center>
 
 
-ExArrayBagJunit Image
-~~~~~~~~~~~~~~~~~~~~~
+ArrayBagsWithJUnitExample Image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's take a look at the evolution of our design specification.
 
@@ -276,8 +289,8 @@ depicted below.
    :align: center
 
 
-[8:17] ExArrayBagJunit Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:17] ArrayBagsWithJUnit Example Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -286,32 +299,28 @@ depicted below.
      </center>
 
 
-Zipped File Example
-~~~~~~~~~~~~~~~~~~~
-
-Download to run and explore on your own in eclipse:
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="Download Link Here">
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
-
-
-Checkpoint 1
+Code Example
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1.html ka
-   :long_name: Checkpoint 1
+.. admonition:: Try It Yourself
 
-[5:28] More Bag Method Implementation Video Demonstration
----------------------------------------------------------
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.07-ArrayBagsWithJUnit". 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+
+Checkpoint 2
+------------
+
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2Summ.html ka
+   :long_name: Checkpoint 2
+
+Demo More bag method implementation
+-----------------------------------
+
+
+[5:28] More on Bag Method Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -320,14 +329,12 @@ Checkpoint 1
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.7.1-ArrayBagMethods.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.7.1-ArrayBagMethods.pdf</img>
    </a>
-
 
 UML Diagram
 ~~~~~~~~~~~
@@ -347,18 +354,18 @@ This implementation of the ArrayBag does not impose such a constraint.
 .. odsafig:: Images/2114ArrayBagClassDiagram2.png
    :align: center
 
-Checkpoint 2
-~~~~~~~~~~~~
+Checkpoint 3
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2.html ka
-   :long_name: Checkpoint 2
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint3Summ.html ka
+   :long_name: Checkpoint 3
 
 
 Methods that Remove and Design Improvement Lesson and Demo
 ----------------------------------------------------------
 
-[5:28] Methods that Remove and Design Improvement Video Demonstration, Part 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:28] Methods that Remove and Design Improvement, Part 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -366,18 +373,15 @@ Methods that Remove and Design Improvement Lesson and Demo
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_afd08368&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_k9ercyan" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.1-BagsDesignImprovePart1.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.1-BagsDesignImprovePart1.pdf</img>
    </a>
 
-
-[6:45] Methods that Remove and Design Improvement Video Demonstration, Part 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[6:45] Methods that Remove and Design Improvement, Part 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -386,18 +390,15 @@ TODO: fix URLS.
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.2-BagsDesignImprovePart2.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.2-BagsDesignImprovePart2.pdf</img>
    </a>
 
-
-[9:03] Methods that Remove and Design Improvement Video Demonstration, Part 3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+[9:03] Methods that Remove and Design Improvement, Part 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -405,26 +406,25 @@ TODO: fix URLS.
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_54w07n1k&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_dapwwqt5" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.3-BagsDesignImprovePart3.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.3-BagsDesignImprovePart3.pdf</img>
    </a>
 
+Checkpoint 4
+------------
 
-Checkpoint 3
-~~~~~~~~~~~~
-
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint3.html ka
-   :long_name: Checkpoint 3
-
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint4Summ.html ka
+   :long_name: Checkpoint 4
 
 
-[14:47] Array Resizing Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Array resizing description and coding Demo
+------------------------------------------
+
+[14:47] Array Resizing
+~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -433,15 +433,12 @@ Checkpoint 3
      <iframe id="kaltura_player_1643381413" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player_1643381413&entry_id=1_10v1aoku" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.9.1-DoubleArray.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.9.1-DoubleArray.pdf</img>
    </a>
-
 
 Tradeoffs of using an array implementation for a bag
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -457,23 +454,8 @@ Tradeoffs of using an array implementation for a bag
      - Removing a specified entry requires time to locate the entry
 
 
-Unavailable
------------
+Programming Practice: The Bag Interface
+---------------------------------------
 
-.. extrtoolembed:: 'Unavailable'
-   :workout_id: 1727
-
-
-
-NOTE:
-
-Above is a temporary workout I put in place that would contain the following exercises
-TODO.  Remove this note and create the actual workout when confirmed.
-
-* https://codeworkout.cs.vt.edu/gym/exercises/670/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/790/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/791/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/789/practice
-* https://codeworkout.cs.vt.edu/gym/exercises/816/practice
-
-When fixed this will be called: "Coding Practice: ArrayBags"
+.. extrtoolembed:: 'Programming Practice: The Bag Interface'
+   :workout_id: 1909

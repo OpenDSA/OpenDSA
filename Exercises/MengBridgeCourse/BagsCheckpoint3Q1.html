@@ -11,25 +11,68 @@
     <div class="exercise">
       <div class="problems">
         <div id="BAGS_CP3_Q1">
-        <p class="question">Based on the described approach for BagArray that
-          replaces the removed value with the last value in the array instead
-          of shifting.  What would be the state of the following array after a
-          call to remove("twix")?
-          <img src="./BagsCheckpointImages/Checkpoint4_Q1_STEM_QuestionImage.png" alt="" width="400" height="200">
-            <br>
-            <tt> head = head.next; </tt>
-            <br>
-            A) <img src="./BagsCheckpointImages/Checkpoint4_Q1_Answer4F_Wrong1.png" width="400" height="200"><br>
-            B) <img src="./BagsCheckpointImages/Checkpoint4_Q1_Answer4F_Wrong2.png" width="400" height="200"><br>
-            C) <img src="./BagsCheckpointImages/Checkpoint4_Q1_Answer2T_RightAnswer.png" width="400" height="200"><br>
-            D) <img src="./BagsCheckpointImages/Checkpoint4_Q1_Answer4F_Wrong3.png" width="400" height="200"><br>
-          </p>
-
-        <div class="solution">C</div>
+        <p class="question">Which of the following 5 implementations could not
+          be used for contains?</p>
+        <div class="solution">
+          <tt>
+public boolean contains(T anEntry)
+{
+   return !isEmpty();
+}
+          </tt>
+        </div>
         <ul class="choices">
-        <li>A</li>
-        <li>B</li>
-        <li>D</li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  boolean found = false;
+  int i = 0;
+  while ( !found && (i < numberOfEntries))
+  {
+    if (anEntry.equals(contents[i]))
+    {
+      found = true;
+    }
+  i++;
+  }
+  return found;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  return getIndexOf(anEntry) > -1;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  return getFrequencyOf(anEntry) > 0;
+}
+</tt>
+        </li>
+        <li>
+<tt>
+public boolean contains(T anEntry)
+{
+  int i = 0;
+  while ((i < numberOfEntries))
+  {
+    if (anEntry.equals(contents[i]))
+    {
+      return true;
+    }
+  i++;
+  }
+  return false;
+}
+</tt>
+        </li>
 
         </ul>
         <div class="hints">

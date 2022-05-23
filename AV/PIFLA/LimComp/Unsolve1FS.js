@@ -135,7 +135,7 @@ $(document).ready(function(){
   av.umsg("<br>Next we will try to assign function tables to bins. To do so we must order the functions, but it does not matter what order we choose.");
 
   //frame 27
-  av.umsg("For example, Bin 1 could store the function that always returns 1 regardless of the input value. Bin 2 could store the function that returns its input. <br><br>Bin 3 could store the function that doubles its input and adds 5. Bin 4 could store a function for which we can see no simple relationship between input and output. These four functions as assigned to the first four bins are shown in Figure 0.13.1.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Figure 0.13.1: An illustration of assigning functions to bins.");
+  av.umsg("For example, Bin 1 could store the function that always returns 1 regardless of the input value. Bin 2 could store the function that returns its input. <br><br>Bin 3 could store the function that doubles its input and adds 5. Bin 4 could store a function for which we can see no simple relationship between input and output. These four functions as assigned to the first four bins are shown in the figure.");
 
   for (i = 0; i < 5; i++) {
     clearlist1.push(av.label(String(i + 1), {left: left + 50 + i * 100, top: topSpace + 5}));
@@ -204,9 +204,9 @@ $(document).ready(function(){
 
 
   //frame 30
-  topSpace = 180;
+  topSpace = 80;
   left = 0;
-  av.umsg("Take the output value for input 1 from the function in the first bin. Call this value F<sub>1</sub>(1). Add 1 to it, and assign the result as the output of a new function for input value 1. Regardless of the remaining values assigned to our new function, it must be different from the first function in the table, because the two give different outputs for input 1. <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> Figure 0.13.2: Illustration for the argument that the number of integer functions is uncountable.");
+  av.umsg("Take the output value for input 1 from the function in the first bin. Call this value F<sub>1</sub>(1). Add 1 to it, and assign the result as the output of a new function for input value 1. Regardless of the remaining values assigned to our new function, it must be different from the first function in the table, because the two give different outputs for input 1.");
   for (i = 0; i < 5; i++) {
     clearlist1.push(av.label(String(i + 1), {left: left + 50 + i * 100, top: topSpace + 5}));
     clearlist1.push(av.g.line(left + 5 + i * 100, topSpace + 40, left + 5 + i * 100, topSpace + 300));
@@ -255,32 +255,32 @@ $(document).ready(function(){
   }
 
   //addtion column
-  clearlist1.push(av.g.line(left + 550, topSpace + 40, left + 680, topSpace + 40));
-  clearlist1.push(av.g.line(left + 550, topSpace + 300, left + 680, topSpace + 300));
-  clearlist1.push(av.g.line(left + 550, topSpace + 40, left + 550, topSpace + 300));
-  clearlist1.push(av.g.line(left + 680, topSpace + 40, left + 680, topSpace + 300));
-  clearlist1.push(av.g.line(left + 615, topSpace + 60, left + 615, topSpace + 280));
-  clearlist1.push(av.g.line(left + 570, topSpace + 80, left + 660, topSpace + 80));
-  clearlist1.push(av.label("$x$", {left: left + 585, top: topSpace + 40}));
-  clearlist1.push(av.label("$f_{new}(x)$", {left: left + 620, top: topSpace + 40}));
+  clearlist1.push(av.g.line(left + 500, topSpace + 40, left + 630, topSpace + 40));
+  clearlist1.push(av.g.line(left + 500, topSpace + 300, left + 630, topSpace + 300));
+  clearlist1.push(av.g.line(left + 500, topSpace + 40, left + 500, topSpace + 300));
+  clearlist1.push(av.g.line(left + 630, topSpace + 40, left + 630, topSpace + 300));
+  clearlist1.push(av.g.line(left + 565, topSpace + 60, left + 565, topSpace + 280));
+  clearlist1.push(av.g.line(left + 520, topSpace + 80, left + 610, topSpace + 80));
+  clearlist1.push(av.label("$x$", {left: left + 535, top: topSpace + 40}));
+  clearlist1.push(av.label("$f_{new}(x)$", {left: left + 570, top: topSpace + 40}));
   for (i = 0; i < 6; i++) {
-    tempclear = av.label(String(i + 1), {left: left + 585, top: topSpace + 70 + i * 27});
+    tempclear = av.label(String(i + 1), {left: left + 535, top: topSpace + 70 + i * 27});
     clearlist1.push(tempclear);
   }
-  clearlist1.push(av.label(String(2), {left: left + 635, top: topSpace + 70}));
-  clearlist1.push(av.label(String(3), {left: left + 635, top: topSpace + 70 + 27}));
-  clearlist1.push(av.label(String(12), {left: left + 630, top: topSpace + 70 + 2 * 27}));
-  clearlist1.push(av.label(String(14), {left: left + 630, top: topSpace + 70 + 3 * 27}));
-  clearlist1.push(av.g.circle(left + 589, topSpace + 250, 2, {fill: "black"}));
-  clearlist1.push(av.g.circle(left + 589, topSpace + 260, 2, {fill: "black"}));
-  clearlist1.push(av.g.circle(left + 589, topSpace + 270, 2, {fill: "black"}));
-  clearlist1.push(av.g.circle(left + 640, topSpace + 250, 2, {fill: "black"}));
-  clearlist1.push(av.g.circle(left + 640, topSpace + 260, 2, {fill: "black"}));
-  clearlist1.push(av.g.circle(left + 640, topSpace + 270, 2, {fill: "black"}));
+  clearlist1.push(av.label(String(2), {left: left + 585, top: topSpace + 70}));
+  clearlist1.push(av.label(String(3), {left: left + 585, top: topSpace + 70 + 27}));
+  clearlist1.push(av.label(String(12), {left: left + 580, top: topSpace + 70 + 2 * 27}));
+  clearlist1.push(av.label(String(14), {left: left + 580, top: topSpace + 70 + 3 * 27}));
+  clearlist1.push(av.g.circle(left + 539, topSpace + 250, 2, {fill: "black"}));
+  clearlist1.push(av.g.circle(left + 539, topSpace + 260, 2, {fill: "black"}));
+  clearlist1.push(av.g.circle(left + 539, topSpace + 270, 2, {fill: "black"}));
+  clearlist1.push(av.g.circle(left + 590, topSpace + 250, 2, {fill: "black"}));
+  clearlist1.push(av.g.circle(left + 590, topSpace + 260, 2, {fill: "black"}));
+  clearlist1.push(av.g.circle(left + 590, topSpace + 270, 2, {fill: "black"}));
 
   //arrows
   for (i = 0; i < 5; i++) {
-    tempclear = av.g.polyline([[left + 610, topSpace + 87 + i * 27], [left + 610, topSpace + 97 + i * 27], [left + 625, topSpace + 92 + i * 27]], {fill: "black"});
+    tempclear = av.g.polyline([[left + 560, topSpace + 87 + i * 27], [left + 560, topSpace + 97 + i * 27], [left + 575, topSpace + 92 + i * 27]], {fill: "black"});
     clearlist1.push(tempclear);
   }
   //circles and lines that connected to the arrows
@@ -288,20 +288,20 @@ $(document).ready(function(){
   clearlist1.push(av.g.circle(left + 175, topSpace + 120, 10));
   clearlist1.push(av.g.circle(left + 275, topSpace + 147, 10));
   clearlist1.push(av.g.circle(left + 375, topSpace + 174, 10));
-  clearlist1.push(av.g.circle(left + 475, topSpace + 201, 10));
-  clearlist1.push(av.g.line(left + 85, topSpace + 93, left + 610, topSpace + 93));
-  clearlist1.push(av.g.line(left + 185, topSpace + 120, left + 610, topSpace + 120));
-  clearlist1.push(av.g.line(left + 285, topSpace + 147, left + 610, topSpace + 147));
-  clearlist1.push(av.g.line(left + 385, topSpace + 174, left + 610, topSpace + 174));
-  clearlist1.push(av.g.line(left + 485, topSpace + 201, left + 610, topSpace + 201));
+  clearlist1.push(av.g.circle(left + 450, topSpace + 201, 10));
+  clearlist1.push(av.g.line(left + 85, topSpace + 93, left + 560, topSpace + 93));
+  clearlist1.push(av.g.line(left + 185, topSpace + 120, left + 560, topSpace + 120));
+  clearlist1.push(av.g.line(left + 285, topSpace + 147, left + 560, topSpace + 147));
+  clearlist1.push(av.g.line(left + 385, topSpace + 174, left + 560, topSpace + 174));
+  clearlist1.push(av.g.line(left + 460, topSpace + 201, left + 560, topSpace + 201));
   av.step();
 
 
-  av.umsg("Now take the output value for 2 from the second function in the table (known as F<sub>2</sub>(2)). Add 1 to this value and assign it as the output for 2 in our new function. Thus, our new function must be different from the function of Bin 2, because they will differ at least at the second value. Continue in this manner, assigning F<sub>new</sub>(i) = F<sub>i</sub>(i) + 1 for all values i. Thus, the new function must be different from any function F<sub>i</sub> at least at position i. <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> Figure 0.13.2: Illustration for the argument that the number of integer functions is uncountable.");
+  av.umsg("Now take the output value for 2 from the second function in the table (known as F<sub>2</sub>(2)). Add 1 to this value and assign it as the output for 2 in our new function. Thus, our new function must be different from the function of Bin 2, because they will differ at least at the second value. Continue in this manner, assigning F<sub>new</sub>(i) = F<sub>i</sub>(i) + 1 for all values i. Thus, the new function must be different from any function F<sub>i</sub> at least at position i.");
   av.step();
 
 
-  av.umsg("This procedure for constructing a new function not already in the table is called diagonalization. Because the new function is different from every other function, it must not be in the table. This is true no matter how we try to assign functions to bins, and so the number of integer functions is uncountable. The significance of this is that not all functions can possibly be assigned to programs, so there must be functions with no corresponding program. Figure 0.13.2 illustrates this argument.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> Figure 0.13.2: Illustration for the argument that the number of integer functions is uncountable.");
+  av.umsg("This procedure for constructing a new function not already in the table is called diagonalization. Because the new function is different from every other function, it must not be in the table. This is true no matter how we try to assign functions to bins, and so the number of integer functions is uncountable. The significance of this is that not all functions can possibly be assigned to programs, so there must be functions with no corresponding program. The figure illustrates this argument.");
   av.step();
   //frame 14
   // for (var j = 0; j < clearlist1.length; j++){

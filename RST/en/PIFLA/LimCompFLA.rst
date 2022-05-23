@@ -53,7 +53,7 @@ For example, consider a sorting algorithm that tests every possible
 permutation of its input until it finds the correct permutation that
 provides a sorted list.
 The running time for this algorithm would be unacceptably
-high, because it is proportional to the number of permutations which
+high, because it is proportional to the number of permutations, which
 is :math:`n!` for :math:`n` inputs.
 When solving the 
 :ref:`minimum-cost spanning tree problem <MCST> <MCST>`,
@@ -83,14 +83,14 @@ Then, we will use the concept of reduction to help us understand a
 collection of problems called :term:`NP-Complete`.
 These problems are interesting for many reasons:
 There are a lot of them, they have many practical, real-world
-applications, and we don't know if whether or not there exist
+applications, and we don't know whether or not there exist
 efficient algorithms to solve them.
 Even more strange than this: If even one of them had an efficient
 solution, then **all** of them would have an efficient solution.
 The study of these topics is called
 :term:`computational complexity theory`.
 
-Of course, while having a problem with high running time is bad, it is
+Of course while having a problem with high running time is bad, it is
 even worse to have a problem that cannot be solved at all!
 Such problems
 (which are called

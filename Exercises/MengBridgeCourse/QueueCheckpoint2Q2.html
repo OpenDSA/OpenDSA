@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Queues Checkpoint 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Q_CP2_Q2">
+        <p class="question">After the following statements execute, what item is at the front of the queue?</p>
+<pre class="prettyprint">
+QueueInterface zooDelivery = new LinkedQueue();
+zooDelivery.enqueue(“lion”);
+zooDelivery.enqueue(“tiger”);
+zooDelivery.enqueue(“cheetah”);
+String next = zooDelivery.dequeue();
+next = zooDelivery.dequeue();
+zooDelivery.enqueue(“jaguar”);
+</pre>
+        <div class="solution">"cheetah"</div>
+        <ul class="choices">
+        <li>"jaguar"</li>
+        <li>"tiger"</li>
+        <li>"lion"</li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

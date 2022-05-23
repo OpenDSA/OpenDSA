@@ -50,7 +50,7 @@ control panel, an item stocking system, and an item dispenser, and a change
 dispenser.
 
 In composition, the primary object **contains** or **owns** its pieces.
-Its pieces are usually created using ``new``` inside the constructor.
+Its pieces are usually created using ``new`` inside the constructor.
 They typically are not provided from outside the object.
 We think of the larger object as being *built from* the pieces in some way.
 
@@ -1060,3 +1060,14 @@ Programming Practice 7b
 
 .. extrtoolembed:: 'Programming Practice 7b'
    :workout_id: 1847
+
+
+.. raw:: html
+
+   <footer style="border-top: 1px solid #777;"><div class="footer">
+     Selected content adapted from:<br/>
+     <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+     <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+   </div></footer>

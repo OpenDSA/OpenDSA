@@ -116,10 +116,5 @@ $(document).ready(function(){
   y+=75;
   av.g.rect(x2,y+0,l,w,r,{"fill":"Silver"});
   av.label("<b>Vertex Cover</b>",{top:y-10,left:x2+l/5});
-  av.label("Figure 1: We will use this sequence of reductions for the NP Complete Proof",{top:y+50,left:0});
-  av.step();
-
-
-
   av.recorded();
 });

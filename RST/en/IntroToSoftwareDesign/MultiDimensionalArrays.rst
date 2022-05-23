@@ -420,9 +420,6 @@ modulo arithmetic as well:
    <iframe width="560" height="315" src="https://www.youtube.com/embed/MrTtsX2Wg9Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
 
-
-.. raw:: html
-
    <div class="align-center" style="margin-top:1em;">
    <iframe width="560" height="315" src="https://www.youtube.com/embed/VUZpocjQFWo?start=200&end=259" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
    </div>
@@ -454,3 +451,14 @@ Programming Practice: Mod
 
 .. extrtoolembed:: 'Programming Practice: Mod'
    :workout_id: 1554
+
+
+.. raw:: html
+
+   <footer style="border-top: 1px solid #777;"><div class="footer">
+     Selected content adapted from:<br/>
+     <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+     <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+   </div></footer>
