@@ -3,7 +3,7 @@ services:
   opendsa:
     build:
       context: .
-      dockerfile: Dockerfile.new
+      dockerfile: Dockerfile
     image: opendsa/opendsa:latest
     volumes:
       - .:/opendsa
