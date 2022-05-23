@@ -21,7 +21,7 @@ RUN npm install --global csslint jsonlint eslint uglify-js clean-css-cli
 
 WORKDIR /opendsa
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+COPY requirements-server.txt requirements-server.txt
+RUN pip3 install -r requirements-server.txt
 
 CMD ["make", "help", "webserver"]
