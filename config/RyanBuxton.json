@@ -12,7 +12,8 @@
   },
   "glob_ss_options": {
     "threshold": 1.0,
-    "points": 1.0
+    "points": 1.0,
+    "required": true
   },
   "glob_ff_options": {
     "threshold": 1.0,
