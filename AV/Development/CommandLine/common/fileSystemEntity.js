@@ -17,13 +17,28 @@ class FileSystemEntity {
       curr = curr.parent;
     } while (curr);
 
-    return pathNames.join("/");
+    return pathNames.join("/").substring(1);
+  }
+
+  getRoot() {
+    let curr = this;
+
+    while (curr.parent) {
+      curr = curr.parent;
+    }
+
+    return curr;
   }
 
   getChildByPath(path) {
-    const pathNames = path.split("/");
-
     let currentDir = this;
+
+    if (path.startsWith("/") || path.startsWith("~")) {
+      currentDir = this.getRoot();
+      path = path.substring(1);
+    }
+
+    const pathNames = path.split("/");
 
     pathNames.every((name) => {
       if (name === "" || name === ".") {
@@ -136,6 +151,12 @@ class Directory extends FileSystemEntity {
     }
 
     return directory.name === this.name;
+  }
+
+  compareByNameUnordered(directory) {
+    if (directory.contents.length !== this.contents.length) {
+      return false;
+    }
   }
 
   remove(name) {

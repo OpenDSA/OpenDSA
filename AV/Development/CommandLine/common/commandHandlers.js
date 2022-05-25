@@ -110,27 +110,35 @@ const handle_mkdir =
 
 const handle_touch =
   (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
-    if (args.length === 1) {
-      const [name, path] = splitPath(args[0]);
-      const dir = getCurrDir().getChildByPath(path);
+    if (args.length >= 1) {
+      const results = args.map((arg) => {
+        const [name, path] = splitPath(arg);
+        const dir = getCurrDir().getChildByPath(path);
 
-      if (!dir) {
-        return "Path undefined";
-      } else if (
-        dir.contents.some((fileSystemEntity) => fileSystemEntity.name === name)
-      ) {
-        return "Duplicate";
-      } else {
-        dir.insert(new File(name));
+        if (!dir) {
+          return `Path undefined ${arg}`;
+        } else if (
+          dir.contents.some(
+            (fileSystemEntity) => fileSystemEntity.name === name
+          )
+        ) {
+          return `Duplicate ${arg}`;
+        } else {
+          dir.insert(new File(name));
 
-        updateFileStructureVisualization(
-          getSvgData(),
-          getHomeDir().mapToD3(),
-          -1 * delays.paths.update
-        );
+          return "";
+        }
+      });
 
-        return "";
-      }
+      const filteredResults = results.filter((result) => result !== "");
+
+      updateFileStructureVisualization(
+        getSvgData(),
+        getHomeDir().mapToD3(),
+        -1 * delays.paths.update
+      );
+
+      return filteredResults.join("\n");
     }
   };
 
