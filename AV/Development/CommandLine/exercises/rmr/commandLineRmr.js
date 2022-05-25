@@ -7,7 +7,7 @@ import { File, Directory } from "../../common/fileSystemEntity.js";
 /*global alert: true, ODSA, console */
 $(document).ready(function () {
   function createInitialFileSystem() {
-    const top = new Directory("animals");
+    const top = new Directory("/");
 
     top.insert(new File("bird.txt"));
     top.insert(new File("snake.txt"));
