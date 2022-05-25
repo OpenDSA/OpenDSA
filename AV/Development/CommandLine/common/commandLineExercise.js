@@ -11,6 +11,9 @@ function initializeCommandLineExercise(
 ) {
   // Load the config object with interpreter and code created by odsaUtils.js
   //   const config = ODSA.UTILS.loadConfig();
+  const config = ODSA.UTILS.loadConfig(),
+    interpret = config.interpreter; // get the interpreter
+
   updateText(text);
 
   const homeDir = initialFileSystem;
@@ -89,6 +92,7 @@ function updateText(text) {
 
 function awardCredit() {
   $("#success-message").removeClass("hidden").addClass("visible");
+  ODSA.AV.awardCompletionCredit();
 }
 
 export { initializeCommandLineExercise, awardCredit };
