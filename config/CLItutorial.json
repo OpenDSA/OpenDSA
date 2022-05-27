@@ -21,13 +21,13 @@
   },
   "glob_ss_options": {
     "threshold": 1.0,
-    "points": 0.0,
-    "required": false
+    "points": 1.0,
+    "required": true
   },
   "glob_ff_options": {
     "threshold": 1.0,
-    "points": 0.0,
-    "required": false
+    "points": 1.0,
+    "required": true
   },
   "glob_ka_options": {
     "threshold": 5,
