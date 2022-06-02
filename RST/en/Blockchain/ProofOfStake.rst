@@ -239,19 +239,22 @@ Proof of Stake versus Proof of Work
 -----------------------------------
 
 Where does the Money Come From?
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In any consensus protocol, there must be some form of incentive 
-for users to participate in the protocol; otherwise, the network
-would not have the support necessary for it to continue operation. 
+Any consensus protocol must have some form of incentive 
+for users to participate in the protocol;
+otherwise, there would likely be no way to validate new transactions.
 Similar to Proof-Of-Work, Proof-Of-Stake rewards validators with 
 newly minted tokens as new blocks are appended to the chain.
 
-The specific reward schema differs greatly from token to token; 
-however, at a high level the process of PoS rewards is identical.
+The specific reward schema differs greatly between blockchain
+infrastructures;
+however, at a high level the process used by all Proof-Of-Stake based
+environments to reward validators is identical.
 Both the block proposer and the validators who attest to the validity
 of the proposed block will share some percentage of the newly minted
-tokens. The amount of tokens that are minted with each new block
+tokens.
+The amount of tokens that are minted with each new block
 depends on the issuance rate of that given protocol.
 
 Performance / Reliability
@@ -290,7 +293,7 @@ node is punished for not fulfilling its obligations.
 
 
 Slashing: Incentivizing Legitimacy
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Slashing is an important feature of Proof of Stake, as it incentivizes
 validator nodes to perform their block proposal duties in accordance
@@ -439,12 +442,12 @@ In the  proof of stake algorithm, computation power is effectively
 replaced by the stake of the user.
 There is no need for high computing power when attesting for new
 blocks, meaning the environmental cost is decreased.
-Instead of computational resources being used as economic scarcity,
-users' own tokens are used to govern the coin. One notable drawback 
-of this is that in order to participate in mining, a user must own
-some amount of tokens already unlike PoW where a new miner can begin
-accumulating coins simply by allocating some amount of computational power.
- 
+Instead of computational resources being used as a source of scarcity,
+the users' own tokens are staked.
+One notable drawback of this is that in order to participate in
+the validation process, a user must own some amount of tokens already.
+In PoW, a new miner can begin accumulating coins simply by allocating
+some amount of computational power.
 
 
 Risks of Concentration
