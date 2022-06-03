@@ -86,12 +86,27 @@ class File extends FileSystemEntity {
   compareByName(file) {
     return file.name === this.name;
   }
+
+  compareByNameUnordered(file) {
+    return file instanceof File && file.name === this.name;
+  }
 }
 
 class Directory extends FileSystemEntity {
-  constructor(name) {
-    super(name);
-    this.contents = [];
+  constructor(value) {
+    if (isString(value)) {
+      super(value);
+      this.contents = [];
+    } else {
+      super(value.name);
+      this.contents = value.contents.map((content) => {
+        const inserted = isString(content)
+          ? new File(content)
+          : new Directory(content);
+        inserted.parent = this;
+        return inserted;
+      });
+    }
   }
 
   copy() {
@@ -154,9 +169,31 @@ class Directory extends FileSystemEntity {
   }
 
   compareByNameUnordered(directory) {
-    if (directory.contents.length !== this.contents.length) {
+    if (
+      !(directory instanceof Directory) ||
+      directory.contents.length !== this.contents.length
+    ) {
       return false;
     }
+
+    const contentsCopy = [...directory.contents];
+
+    return (
+      this.contents.every((content) => {
+        const index = contentsCopy.findIndex((contentCopy) =>
+          content.compareByNameUnordered(contentCopy)
+        );
+
+        if (index >= 0) {
+          contentsCopy.splice(index, 1);
+          return true;
+        }
+
+        return false;
+      }) &&
+      contentsCopy.length === 0 &&
+      this.name === directory.name
+    );
   }
 
   remove(name) {
@@ -169,12 +206,30 @@ class Directory extends FileSystemEntity {
       return toRemove;
     }
   }
+
+  followIndexPath(path) {
+    let curr = this;
+
+    path.every((index) => {
+      if (index >= 0 && index < curr.contents.length) {
+        curr = curr.contents[index];
+        return true;
+      }
+      return false;
+    });
+
+    return curr;
+  }
 }
 
 function splitPath(path) {
   let pathNames = path.split("/");
   const lastName = pathNames.splice(-1)[0];
   return [lastName, pathNames.join("/")];
+}
+
+function isString(value) {
+  return typeof value === "string" || value instanceof String;
 }
 
 export { FileSystemEntity, File, Directory, splitPath };

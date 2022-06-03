@@ -37,6 +37,9 @@
     "required": true
   },
   "chapters": {
+    "About": {
+      "Development/About": {}
+    },
     "Command Line": {
       "Development/CommandLine": {}
     },

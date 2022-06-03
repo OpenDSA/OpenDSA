@@ -1,13 +1,37 @@
 import { createCommandsMap } from "./commandHandlers.js";
 import { initializeCommandLine } from "./commandLine.js";
 import { renderFileStructureVisualization } from "./fileStructure.js";
+import { Directory } from "./fileSystemEntity.js";
+
+const DEFAULT_FILE_STRUCTURE = {
+  name: "/",
+  contents: [
+    "bird.txt",
+    "snake.txt",
+    "fish.txt",
+    {
+      name: "mammals",
+      contents: [
+        "monkey.txt",
+        "mouse.txt",
+        "bear.txt",
+        {
+          name: "dogs",
+          contents: ["beagle.txt", "boxer.txt", "poodle.txt"],
+        },
+      ],
+    },
+  ],
+};
+
+const DEFAULT_CWD_INDEX_PATH = [3];
 
 function initializeCommandLineExercise(
   text,
-  initialFileSystem,
-  initialCwd,
   handleAwardCredit,
-  awardCreditCommand
+  awardCreditCommand,
+  initialFileStructure,
+  initialCwdIndexPath
 ) {
   // Load the config object with interpreter and code created by odsaUtils.js
   //   const config = ODSA.UTILS.loadConfig();
@@ -16,9 +40,13 @@ function initializeCommandLineExercise(
 
   updateText(text);
 
-  const homeDir = initialFileSystem;
+  const homeDir = new Directory(
+    initialFileStructure ? initialFileStructure : DEFAULT_FILE_STRUCTURE
+  );
 
-  let currDir = initialCwd;
+  let currDir = homeDir.followIndexPath(
+    initialCwdIndexPath ? initialCwdIndexPath : DEFAULT_CWD_INDEX_PATH
+  );
 
   let svgData;
 
