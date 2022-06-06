@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
+import csv
+import os
 import pandas as pd
 import numpy as np
 from girth import twopl_mml
@@ -10,22 +12,27 @@ warnings.filterwarnings("ignore")
 
 def callToDB(BookID):
     mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="password"
+    host="db",
+    user=os.environ['MYSQL_USER'],
+    passwd=os.environ['MYSQL_PASSWORD']
     )
     cursor = mydb.cursor();
     ##SQL query to extract the data from the database
-    ##query = SELECT * FROM opendsa.odsa_exercise_attempts where inst_book_id = 721 order by user_id, time_done
-
-    #cursor.execute(query);
-    cursor.close()
-    mydb.close()
-    # print(mydb)
+    query = f"SELECT * FROM opendsa.odsa_exercise_attempts where inst_book_id = {BookID} order by user_id, time_done;"
+    # print(query)
+    with open('/tmp/irt_curve.csv', 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        header = ['id','user_id','inst_book_id','inst_section_id','inst_book_section_exercise_id','worth_credit','time_done','time_taken','count_hints','hint_used','points_earned','earned_proficiency','count_attempts','ip_address','question_name','request_type','created_at','updated_at','correct','pe_score','pe_steps_fixed','inst_course_offering_exercise_id','inst_module_section_exercise_id','answer','question_id','finished_frame']
+        csvwriter.writerow(header)
+        cursor.execute(query)
+        for obj in cursor:
+            csvwriter.writerow(obj)
+        cursor.close()
+        mydb.close()
+    return csvfile
 
 def readfile(filename):
-
-    data = pd.read_csv(filename)
+    data = pd.read_csv(filename.name)
 
     ##creating a datafrme of columns
     df = pd.DataFrame(data,columns=['user_id', 'inst_book_section_exercise_id','count_attempts',
@@ -95,7 +102,6 @@ def computeDifficultyLevel(val):
 
     matrix = pd.DataFrame(result)
 
-    #print(matrix)
     return matrix
 
 def pivot_table(val):
@@ -141,7 +147,6 @@ def filter_row(val1, val2):
 
     ##saves in a csv file
     #m.to_csv('filtered_data.csv')
-    #print(m.T)
     return m.T
 
 def compute_irt_parameters(val):
@@ -168,6 +173,7 @@ def compute_irt_parameters(val):
     ##converts to a list array
     list=df.values.tolist()
 
+    print(list)
     return list
 
 
@@ -182,12 +188,11 @@ def runner(BookID):
 
     filtr_row = filter_row(pivot_table(diff_level),diff_level)
     irt_curve = compute_irt_parameters(filtr_row)
-
     return(irt_curve)
 
 # x = main("id_721_latest.csv")
 
-print(x)
+# print(x)
 
 if __name__ == '__main__':
     parser = ArgumentParser()

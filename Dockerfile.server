@@ -1,0 +1,27 @@
+FROM python:3.9
+
+ARG ODSA_ENV="DEV"
+ENV ODSA_ENV=${ODSA_ENV}
+
+ARG FLASK_ENV="development"
+ENV FLASK_ENV=${FLASK_ENV}
+ARG FLASK_APP='app.py'
+ENV FLASK_APP=${FLASK_APP}
+
+ENV PYTHONUNBUFFERED=1
+ENV TZ=America/New_York
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
+RUN apt-get update -qq \
+  && apt-get install -y bash git curl make nodejs npm \
+  && rm -rf /var/apt/lists/*
+
+RUN npm install --global csslint jsonlint eslint uglify-js clean-css-cli
+
+WORKDIR /opendsa
+
+COPY requirements-server.txt requirements-server.txt
+RUN pip3 install -r requirements-server.txt
+
+CMD ["make", "help", "webserver"]
