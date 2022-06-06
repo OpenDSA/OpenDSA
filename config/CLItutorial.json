@@ -26,8 +26,8 @@
   },
   "glob_ff_options": {
     "threshold": 1.0,
-    "points": 1.0,
-    "required": true
+    "points": 0.0,
+    "required": false
   },
   "glob_ka_options": {
     "threshold": 5,
@@ -46,6 +46,9 @@
     "required": true
   },
   "chapters": {
+    "About": {
+      "Development/About": {}
+    },
     "Command Line": {
       "Development/CommandLine": {}
     },

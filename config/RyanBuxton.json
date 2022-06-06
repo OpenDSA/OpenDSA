@@ -2,6 +2,15 @@
   "title": "Command Line and Git",
   "desc": "Learn core command line and git commands through visualizations.",
   "build_dir": "Books",
+  "theme": "haiku",
+  "html_theme_options": {
+    "show_source": false,
+    "show_search": false,
+    "show_relations": false,
+    "show_copyright": false,
+    "render_sidebar": false
+  },
+  "html_css_files": ["_static/haiku-supp.css"],
   "code_dir": "SourceCode/",
   "lang": "en",
   "build_JSAV": false,
