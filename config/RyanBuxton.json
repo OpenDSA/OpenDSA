@@ -41,8 +41,8 @@
     "points": 1.0
   },
   "glob_pe_options": {
-    "threshold": 0.9,
-    "points": 2.0,
+    "threshold": 1.0,
+    "points": 1.0,
     "required": true
   },
   "chapters": {
@@ -51,6 +51,9 @@
     },
     "Command Line": {
       "Development/CommandLine": {}
+    },
+    "Command Line2": {
+      "Development/CommandLine2": {}
     },
     "Git": {
       "Development/Git": {}

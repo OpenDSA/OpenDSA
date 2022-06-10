@@ -38,46 +38,14 @@ Key Terms
 
 pwd
 -----
-.. avembed:: AV/Development/CommandLine/exercises/pwd/commandLinePwd.html ss
+.. avembed:: AV/Development/CommandLine/exercises/pwd/commandLinePwd.html pe
 
 cd
 -----
-.. avembed:: AV/Development/CommandLine/exercises/cd/commandLineCd.html ss
+.. avembed:: AV/Development/CommandLine/exercises/cd/commandLineCd.html pe 
 
-.. avembed:: AV/Development/CommandLine/exercises/cdRoot/commandLineCdRoot.html ss
+.. avembed:: AV/Development/CommandLine/exercises/cdRoot/commandLineCdRoot.html pe
 
-.. avembed:: AV/Development/CommandLine/exercises/cdParent/commandLineCdParent.html ss
 
-ls
------
-.. avembed:: AV/Development/CommandLine/exercises/ls/commandLineLs.html ss  
 
-touch
------
-.. avembed:: AV/Development/CommandLine/exercises/touch/commandLineTouch.html ss  
-  
-mkdir
------
-.. avembed:: AV/Development/CommandLine/exercises/mkdir/commandLineMkdir.html ss  
 
-rm
------
-.. avembed:: AV/Development/CommandLine/exercises/rm/commandLineRm.html ss  
-
-.. avembed:: AV/Development/CommandLine/exercises/rmr/commandLineRmr.html ss  
-
-rmdir
------
-.. avembed:: AV/Development/CommandLine/exercises/rmdir/commandLineRmdir.html ss  
- 
-mv
------
-.. avembed:: AV/Development/CommandLine/exercises/mv/commandLineMv.html ss  
-
-cp
------
-.. avembed:: AV/Development/CommandLine/exercises/cp/commandLineCp.html ss  
-
-Challenge
------
-.. avembed:: AV/Development/CommandLine/exercises/challenge/commandLineChallenge.html ss  
