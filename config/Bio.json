@@ -45,7 +45,19 @@
       "BIO/Dot Matrix": {},
       "BIO/Global Alignment": {},
       "BIO/Local Alignment": {},
-      "BIO/Suffix Tree": {}
+      "BIO/Regular Expressions": {},
+      
+      "PIFLA/RegExExercises":{
+        "RegExbbaeven": {
+          "points": 5.0
+        },
+        "RegExnoaa": {
+          "points": 5.0
+        },
+        "RegExonebbb": {
+          "points": 5.0
+        }
+      }
     }
  
   }
