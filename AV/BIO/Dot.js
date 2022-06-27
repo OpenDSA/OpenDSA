@@ -27,10 +27,34 @@ $(document).ready(function () {
             if(DotMatrix.value(i,0) == DotMatrix.value(0,j))
             {
 				DotMatrix.value(i,j,"#")
-        //DotMatrix.highlight(i,j)
+        
+        
+        
+        
+        
+      //  DotMatrix.highlight(i,j)
 				jsav.step();
             }
         }
+    }
+    var wordsize=2;
+    for(var i=0;i<len2;i++){
+      for(var j=0;j<len1;j++){
+        var countneg=0,countpos=0;
+        if(DotMatrix.value(i,j)=="#"){
+          var ii=i,jj=j;
+      while(DotMatrix.value(i,j=="#")){
+            countpos++;
+            i++;j++;
+      } 
+      while(DotMatrix.value(ii,jj=="#")){
+       
+        ii--;jj--;
+        countneg++;
+           }
+        }
+        if(countneg+countpos<wordsize)
+      }
     }
 	DotMatrix.layout();
 	jsav.recorded();
