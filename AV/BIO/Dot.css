@@ -1,3 +1,7 @@
+div#Dot {
+  margin-top: 60px;
+  width: 1250px;
+}
 ul.div-test {
     width: 500px;
     position: absolute;

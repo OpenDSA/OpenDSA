@@ -43,6 +43,11 @@ Definition and Examples of Regular Expressions
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RegExFS.js
    :output: show
 
+When run, produces the following output::
+
+  'test1' does not equal 'test2'.
+  'test1' is an Object.
+
 **Definition** for Regular Expressions (RE): Given :math:`\Sigma`,
   #. :math:`\lambda`, and :math:`a \in \Sigma` are RE
   #. If :math:`r` and :math:`s` are regular expressions, then
