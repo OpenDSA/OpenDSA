@@ -1,0 +1,28 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Intilization to Price with value 100.",
+        "sc2": "Check if Price is greater than 100 If it ture will print (Price is greater than 100) else will check another condition.",
+        "sc3": "Check if Price is equal to 100 If it ture will print (Price is 100) else will check another condition.",
+        "sc4": "Check if Price is smaller than 100 (not need for another else cause the Price must be smaller , greater or equal)"
+      }
+    },
+    "code": {
+      "java_generic": [{
+        "url": "../../../SourceCode/Python/Bio/while.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "p": 1,
+          "if": 2,
+          "pif": 3,
+          "elif": 4,
+          "pelif":5,
+          "elif2":6,
+          "pelif2":7
+        }
+      }]   
+    }
+  }
+  
