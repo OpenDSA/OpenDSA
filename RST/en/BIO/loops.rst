@@ -7,9 +7,8 @@
    :author: Bio_Batch2
    :satisfies: DNASeq
    :topic: DNASeq
-
-Local Alignment
-===============
+loops
+=====
 
 The concept of 'local alignment' was introduced by **Smith & Waterman**
 A local alignment of 2 sequences is an alignment between parts of the 2 sequences
@@ -36,8 +35,8 @@ Looking for conserved domains or motifs in two proteins.
 
 We have two 2D matrices: the **score matrix** and the **traceback matrix**.
 
-Score Matrix
-------------
+For Loop
+--------
 
  **In Local Alignment :**
 
@@ -47,36 +46,26 @@ Score Matrix
          • The score of the best local alignment is the largest value
            in the entire array.
 
-.. inlineav:: Lscore ss
+.. inlineav:: forloop ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/Lscore.css 
-   :scripts: AV/BIO/Lscore.js
-   :output: show
-
-Traceback
----------
-
- **To find the actual local alignment :**
-
-         • start at an entry with the maximum score
-
-         • traceback as usual
-
-         • stop when we reach an entry with a score of 0
-
-.. inlineav:: Ltraceback ss
-   :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/Ltraceback.css 
-   :scripts: AV/BIO/Ltraceback.js
+   :links: AV/BIO/forloop.css 
+   :scripts: AV/BIO/forloop.js
    :output: show
 
 
-Exercise
---------
+While Loop
+----------
 
-.. inlineav:: LExercise ss
+ **In Local Alignment :**
+
+         • Initialize first row and first column to be 0 because all negative value converted to 0
+           and we fill the first row and first column according to gap penalty.
+
+         • The score of the best local alignment is the largest value
+           in the entire array.
+           
+.. inlineav:: whileloop ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/LExercise.css 
-   :scripts: DataStructures/PIFrames.js AV/BIO/LExercise.js
+   :links: AV/BIO/whileloop.css 
+   :scripts: AV/BIO/whileloop.js
    :output: show
-

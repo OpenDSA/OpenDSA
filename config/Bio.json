@@ -45,6 +45,8 @@
       "BIO/Dot Matrix": {},
       "BIO/Global Alignment": {},
       "BIO/Local Alignment": {},
+      "BIO/if_stat": {},
+      "BIO/loops": {},
       "BIO/Regular Expressions": {},
       
       "PIFLA/RegExExercises":{
