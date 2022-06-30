@@ -10,11 +10,11 @@ $(document).ready(function () {
  
   jsav.umsg(interpret("sc1"));
   var pseudo = jsav.code(code[0]);
-  pseudo.setCurrentLine("p");
-  jsav.g.circle(200, 75, 70, {fill: "rgba(5, 170, 69, 0.232)"});
-  jsav.label("Start",{left:160, top:20});
-  jsav.label("numbers =[1,2,3,4,5]",{left:250, top:-15}).addClass("size");
-  jsav.label("(num) become <br>the first number<br> in numbers",{left:10, top:20}).addClass("size");
+  pseudo.setCurrentLine("list");
+  jsav.g.circle(200, 85, 60, {fill: "rgba(5, 170, 69, 0.232)"});
+  jsav.label("Start",{left:160, top:34});
+  jsav.label("numbers =[1,2,3,4,5]",{left:145, top:-15}).addClass("size");
+  jsav.label("(num) become <br>the first number<br> in numbers",{left:10, top:25}).addClass("size");
 
   jsav.step();
 
@@ -48,10 +48,20 @@ $(document).ready(function () {
   var y= jsav.g.line(475, 180, 475, 240)
   jsav.step();
 
-  jsav.g.circle(200, 503, 70, {fill: "rgba(228, 18, 116, 0.232)"});
-  jsav.label("End",{left:169, top:450});
+  jsav.g.circle(200, 495, 60, {fill: "rgba(228, 18, 116, 0.232)"});
+  jsav.label("End",{left:169, top:444});
   jsav.displayInit();
-
+  jsav.umsg(interpret("sc2"));
+  pseudo.setCurrentLine(0);      // Hack until we get multi-line method
+  pseudo.unhighlight("list");
+  pseudo.setCurrentLine("for");
+  jsav.step();
+  jsav.umsg(interpret("sc3"));
+  pseudo.setCurrentLine(0);      // Hack until we get multi-line method
+  pseudo.unhighlight("for");
+  pseudo.setCurrentLine("print");
+  jsav.step();
+  
   jsav.recorded();
 
 

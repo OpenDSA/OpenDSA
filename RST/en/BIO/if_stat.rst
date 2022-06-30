@@ -8,8 +8,8 @@
    :satisfies: DNASeq
    :topic: DNASeq
 
-if_statplot
-===========
+IF Statement
+============
 
 **Python supports the usual logical conditions from mathematics:**
 
@@ -54,8 +54,9 @@ When run, produces the following output::
 **Nested If**
 
 You can have if statements inside if statements, this is called nested if statements.
-n_if
-----
+
+Nested IF
+---------
   
 .. inlineav:: n_if ss
    :long_name: DNA Sequencing example Slideshow

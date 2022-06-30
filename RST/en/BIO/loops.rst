@@ -7,44 +7,30 @@
    :author: Bio_Batch2
    :satisfies: DNASeq
    :topic: DNASeq
-loops
+
+Loops
 =====
 
-The concept of 'local alignment' was introduced by **Smith & Waterman**
-A local alignment of 2 sequences is an alignment between parts of the 2 sequences
-Two proteins may one share one stretch of high sequence similarity,
-but be very dissimilar outside that region A global (N-W) alignment of such sequences would have: 
-(i) lots of matches in the region of high sequence similarity
-(ii) lots of mismatches & gaps (insertions/deletions) outside the region of similarity It makes sense to find the best local alignment instead 
+**In** computer programming, a **loop** is a sequence of instructions that is continually repeated until a certain condition is reached. **Typically**, a certain process is done, such as getting an item of data and changing it, and then some condition is checked such as whether a counter has reached a prescribed number. If it hasn't, the next instruction in the sequence is an instruction to return to the first instruction in the sequence and repeat the sequence. If the condition has been reached, the next instruction "falls through" to the next sequential instruction or branches outside the loop. A loop is a fundamental programming idea that is commonly used in writing programs.
 
-**Input:** The two sequences may or may not be related.
+* **Definition:** Loops are a programming element that repeat a portion of code a set number of times until the desired process is complete. 
+Repetitive tasks are common in programming, and loops are essential to save time and minimize errors.
 
-**Goal:** see whether a substring in one sequence aligns well with a substring in the other.
+* **Real Life Example:** We talked about ordering the steps correctly to make one PB and J. What if we need to make 500 peanut butter and jelly sandwiches for a school field trip? Instead of having to do the same, monotonous steps over and over again, we would likely prefer to just do it once and have it automatically repeated until 500 sandwiches were made.
 
-**Algorithm:** Smith-Waterman dynamic programming
+* **Why We Use Loops:** Loops make code more manageable and organized. As we learn more about programming and writing complex programs, loops will be an important element to understand and use.
 
-**Applications:**
-Searching for local similarities in large sequences (e.g., newly sequenced genomes).
-Looking for conserved domains or motifs in two proteins.
- 
-**The local alignment algorithm consists of 3 steps :**
+An infinite loop is one that lacks a functioning exit routine . 
 
-   • Initialisation of the score and the traceback matrices
-   • Calculation of scores and filling in the score and traceback matrices
-   • Inferring the alignment from the traceback matrix
-
-We have two 2D matrices: the **score matrix** and the **traceback matrix**.
+The result is that the loop repeats continually until the operating system senses it and terminates the program with an error or until some other event occurs (such as having the program automatically terminate after a certain duration of time).
 
 For Loop
 --------
+A **for** loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
 
- **In Local Alignment :**
+This is less like the for keyword in other programming languages, and works more like an iterator method as found in other object-orientated programming languages.
 
-         • Initialize first row and first column to be 0 because all negative value converted to 0
-           and we fill the first row and first column according to gap penalty.
-
-         • The score of the best local alignment is the largest value
-           in the entire array.
+With the for loop we can execute a set of statements, once for each item in a list, tuple, set etc.
 
 .. inlineav:: forloop ss
    :long_name: DNA Sequencing example Slideshow
@@ -53,17 +39,13 @@ For Loop
    :output: show
 
 
+
+|      • The for loop does not require an indexing variable to set beforehand.
+
 While Loop
 ----------
+     A **while loop** is a control flow statement that allows code to be executed repeatedly based on a given Boolean condition. The while loop can be thought of as a repeating if statement.[1]
 
- **In Local Alignment :**
-
-         • Initialize first row and first column to be 0 because all negative value converted to 0
-           and we fill the first row and first column according to gap penalty.
-
-         • The score of the best local alignment is the largest value
-           in the entire array.
-           
 .. inlineav:: whileloop ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/whileloop.css 

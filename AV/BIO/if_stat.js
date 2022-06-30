@@ -21,7 +21,7 @@ $(document).ready(function () {
   pseudo.unhighlight("a");
   pseudo.unhighlight("b");
   pseudo.setCurrentLine("if");
-  var sq=jsav.g.rect(80, 18, 80,80)
+  var sq=jsav.g.rect(80, 18, 80,80).addClass("pink")
   sq.rotate(45)
   jsav.label("b > a",{left:99, top:32});
 
@@ -29,10 +29,14 @@ $(document).ready(function () {
  var y= jsav.g.line(120, 112, 120, 280)
 
 
- var retrue=jsav.g.rect(350,20,132,70)
+ var retrue=jsav.g.rect(350,20,132,70).addClass("pink");
  jsav.label("True",{left:230, top:20});
 
- var refalse=jsav.g.rect(45,280,155,70) 
+
+retrue.hide();
+ var retrue=jsav.g.rect(350,20,132,70).addClass("green")
+
+ var refalse=jsav.g.rect(45,280,155,70).addClass("red")
  jsav.label("False",{left:140, top:170});
  jsav.step();
  jsav.umsg(interpret("sc3"));
