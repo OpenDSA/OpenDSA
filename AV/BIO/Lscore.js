@@ -7,8 +7,7 @@ $(document).ready(function () {
     const Match =  1;
     const Mismatch = -1;
     var s1="AACG";
-    var s2="ACTCG"
-
+    var s2="ACTCG";
   var jsav = new JSAV("Lscore");
   jsav.umsg("Match = 1, Mismatch = -1, Gap = -2");
   var matrix = new jsav.ds.matrix([[,, , , , ,],[, , , , ,, ],[,,,,,,]

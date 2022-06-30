@@ -1,0 +1,438 @@
+{
+    "translations": {
+      "en": {
+        "1": {
+          "type": "select",
+          "description": "First we will define the DFA's start state. This is Closure(q0), meaning q0 and all other states reachable from q0 by $\\lambda$ transitions.",
+          "question": "What is the Value of this index?",
+          "answer": "0",
+          "choices": ["0", "1", "2"]
+        },
+        "2": {
+          "type": "select",
+          "description": "Next, we pick some transition out of one of the states currently in the DFA. Any such state and transition would be fine, but there is only one to choose right now anyway.",
+          "question": "What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"]
+        },
+        "3":{
+          "type": "multiple",
+          "description": "OK, let's finish up with the DFA's start state transitions. The alphabet includes 'b'. So what should we do when the input starts with 'b'?",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"],
+          "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+        },
+        "4": {
+          "type": "select",
+          "description": "Next we pick a node in the DFA for which we have not completed the transitions. The only one left right now is {q3, q4}.",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"]
+        },
+        "5": {
+          "type": "select",
+          "description": "Note that this created a new node {q4}, because this is a different subset of states than {q3, q4}. Eventually we have to deal with the transitions for this new node. But first, let's wrap up {q3, q4} by determining what to do on 'b'.",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"],
+          "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+        },
+        "6": {
+          "type": "select",
+          "description": "Now we have two nodes in the DFA that need transitions. We could pick either one to do next. Let's work on {q1, q5, q6}.",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"]
+        },
+        "7": {
+          "type": "select",
+          "description": "Now we will finish up node {q1, q5, q6}",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices":["q0", "q1", "q2"],
+          "correctFeedback": "So, no new node gets added to the DFA. And we are now finished with transitions from node {q1, q5, q6}."
+        },
+        "8": {
+          "type": "select",
+          "description": "Now nodes {q3} and {q4} remain to be processed. Let's work on {q3}.",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"],
+          "correctFeedback": "So, no new node gets added to the DFA."
+        },
+        "9": {
+          "type": "select",
+          "description": "Now we will finish up node {q3}",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"],
+          "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+        },
+        "10": {
+          "type": "select",
+          "description": "Now process {q4}",
+          "question":"What is the Value of this index?",
+          "answer":"0",
+          "choices":["q0", "q1", "q2"],
+          "correctFeedback": "But since we already have a node for {q4} in the DFA, we don't need to create it again. Just make a transition to itself."
+        },
+        "11": {
+          "type": "select",
+          "description": "Finish processing {q4}",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"],
+          "correctFeedback": "So add new node {q6} to the DFA."
+        },
+        "12": {
+          "type": "select",
+          "description": "Now process {q1, q5}.",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"],
+          "correctFeedback": "But since we already have a node for {q3} in the DFA, we don't need to create it again. Just make a transition to it on 'a'."
+        },
+        "13": {
+          "type": "select",
+          "description": "Now finish {q1, q5}.",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices": ["q0", "q1", "q2"],
+          "correctFeedback": "So, no new node gets added to the DFA."
+        },
+        "14": {
+          "type": "select",
+          "description": "Currently, only {q6} needs to be processed.",
+          "question":"What is the Value of this index?",
+          "answer": "0",
+          "choices":["q0", "q1", "q2"],
+          "correctFeedback": "So, no new node gets added to the DFA."
+        },
+        "15": {
+          "type": "select",
+          "description": "Now finish {q6}.",
+          "question":"What is the Value of this index?",
+          "answer": "2",
+          "choices": ["q0", "q1", "q2"],
+          "correctFeedback": "So, no new node gets added to the DFA."
+        },
+        "16": {
+            "type": "select",
+            "description": "First we will define the DFA's start state. This is Closure(q0), meaning q0 and all other states reachable from q0 by $\\lambda$ transitions.",
+            "question": "What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "17": {
+            "type": "select",
+            "description": "Next, we pick some transition out of one of the states currently in the DFA. Any such state and transition would be fine, but there is only one to choose right now anyway.",
+            "question": "What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "18":{
+            "type": "multiple",
+            "description": "OK, let's finish up with the DFA's start state transitions. The alphabet includes 'b'. So what should we do when the input starts with 'b'?",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "19": {
+            "type": "select",
+            "description": "Next we pick a node in the DFA for which we have not completed the transitions. The only one left right now is {q3, q4}.",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "20": {
+            "type": "select",
+            "description": "Note that this created a new node {q4}, because this is a different subset of states than {q3, q4}. Eventually we have to deal with the transitions for this new node. But first, let's wrap up {q3, q4} by determining what to do on 'b'.",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+          },
+          "21": {
+            "type": "select",
+            "description": "Now we have two nodes in the DFA that need transitions. We could pick either one to do next. Let's work on {q1, q5, q6}.",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "22": {
+            "type": "select",
+            "description": "Now we will finish up node {q1, q5, q6}",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA. And we are now finished with transitions from node {q1, q5, q6}."
+          },
+          "23": {
+            "type": "select",
+            "description": "Now nodes {q3} and {q4} remain to be processed. Let's work on {q3}.",
+            "question":"What is the Value of this index?",
+            "answer": "4",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "24": {
+            "type": "select",
+            "description": "Now we will finish up node {q3}",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+          },
+          "25": {
+            "type": "select",
+            "description": "Now process {q4}",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "But since we already have a node for {q4} in the DFA, we don't need to create it again. Just make a transition to itself."
+          },
+          "26": {
+            "type": "select",
+            "description": "Finish processing {q4}",
+            "question":"What is the Value of this index?",
+            "answer": "2",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "So add new node {q6} to the DFA."
+          },
+          "27": {
+            "type": "select",
+            "description": "Now process {q1, q5}.",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "But since we already have a node for {q3} in the DFA, we don't need to create it again. Just make a transition to it on 'a'."
+          },
+          "28": {
+            "type": "select",
+            "description": "Now finish {q1, q5}.",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "29": {
+            "type": "select",
+            "description": "Currently, only {q6} needs to be processed.",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices":["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "30": {
+            "type": "select",
+            "description": "Now finish {q6}.",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices":["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "31": {
+            "type": "select",
+            "description": "First we will define the DFA's start state. This is Closure(q0), meaning q0 and all other states reachable from q0 by $\\lambda$ transitions.",
+            "question": "What is the Value of this index?",
+            "answer": "6",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "32": {
+            "type": "select",
+            "description": "Next, we pick some transition out of one of the states currently in the DFA. Any such state and transition would be fine, but there is only one to choose right now anyway.",
+            "question": "What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "33":{
+            "type": "multiple",
+            "description": "OK, let's finish up with the DFA's start state transitions. The alphabet includes 'b'. So what should we do when the input starts with 'b'?",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "34": {
+            "type": "select",
+            "description": "Next we pick a node in the DFA for which we have not completed the transitions. The only one left right now is {q3, q4}.",
+            "question":"What is the Value of this index?",
+            "answer": "4",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "35": {
+            "type": "select",
+            "description": "Note that this created a new node {q4}, because this is a different subset of states than {q3, q4}. Eventually we have to deal with the transitions for this new node. But first, let's wrap up {q3, q4} by determining what to do on 'b'.",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+          },
+          "36": {
+            "type": "select",
+            "description": "Now we have two nodes in the DFA that need transitions. We could pick either one to do next. Let's work on {q1, q5, q6}.",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "37": {
+            "type": "select",
+            "description": "Now we will finish up node {q1, q5, q6}",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA. And we are now finished with transitions from node {q1, q5, q6}."
+          },
+          "38": {
+            "type": "select",
+            "description": "Now nodes {q3} and {q4} remain to be processed. Let's work on {q3}.",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "39": {
+            "type": "select",
+            "description": "Now we will finish up node {q3}",
+            "question":"What is the Value of this index?",
+            "answer": "8",
+            "choices": ["q0", "q1", "q2"],
+            "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+          },
+          "40": {
+            "type": "select",
+            "description": "Now process {q4}",
+            "question":"What is the Value of this index?",
+            "answer": ["2"],
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "But since we already have a node for {q4} in the DFA, we don't need to create it again. Just make a transition to itself."
+          },
+          "41": {
+            "type": "select",
+            "description": "Finish processing {q4}",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices":["q0", "q1", "q2"],
+            "correctFeedback": "So add new node {q6} to the DFA."
+          },
+          "42": {
+            "type": "select",
+            "description": "Now process {q1, q5}.",
+            "question":"What is the Value of this index?",
+            "answer": ["6"],
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "But since we already have a node for {q3} in the DFA, we don't need to create it again. Just make a transition to it on 'a'."
+          },
+          "43": {
+            "type": "select",
+            "description": "Now finish {q1, q5}.",
+            "question":"What is the Value of this index?",
+            "answer": ["2"],
+            "choices":["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "44": {
+            "type": "select",
+            "description": "Currently, only {q6} needs to be processed.",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices":["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "45": {
+            "type": "select",
+            "description": "Now finish {q6}.",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices":["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "46": {
+            "type": "select",
+            "description": "First we will define the DFA's start state. This is Closure(q0), meaning q0 and all other states reachable from q0 by $\\lambda$ transitions.",
+            "question": "What is the Value of this index?",
+            "answer": "2",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "47": {
+            "type": "select",
+            "description": "Next, we pick some transition out of one of the states currently in the DFA. Any such state and transition would be fine, but there is only one to choose right now anyway.",
+            "question": "What is the Value of this index?",
+            "answer": "5",
+            "choices":["q0", "q1", "q2"]
+          },
+          "48":{
+            "type": "multiple",
+            "description": "OK, let's finish up with the DFA's start state transitions. The alphabet includes 'b'. So what should we do when the input starts with 'b'?",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "49": {
+            "type": "select",
+            "description": "Next we pick a node in the DFA for which we have not completed the transitions. The only one left right now is {q3, q4}.",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices": ["q0", "q1", "q2"]
+          },
+          "50": {
+            "type": "select",
+            "description": "Note that this created a new node {q4}, because this is a different subset of states than {q3, q4}. Eventually we have to deal with the transitions for this new node. But first, let's wrap up {q3, q4} by determining what to do on 'b'.",
+            "question":"What is the Value of this index?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"],
+            "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+          },
+          "51": {
+            "type": "select",
+            "description": "Now we have two nodes in the DFA that need transitions. We could pick either one to do next. Let's work on {q1, q5, q6}.",
+            "question":"What is the Value of this index?",
+            "answer": ["4"],
+            "choices": ["q0", "q1", "q2"]
+          },
+          "52": {
+            "type": "select",
+            "description": "Now we will finish up node {q1, q5, q6}",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA. And we are now finished with transitions from node {q1, q5, q6}."
+          },
+          "53": {
+            "type": "select",
+            "description": "Now nodes {q3} and {q4} remain to be processed. Let's work on {q3}.",
+            "question":"What is the Value of this index?",
+            "answer": ["0"],
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "So, no new node gets added to the DFA."
+          },
+          "54": {
+            "type": "select",
+            "description": "Now we will finish up node {q3}",
+            "question":"What is the Value of this index?",
+            "answer": "4",
+            "choices": ["q0", "q1", "q2"],
+            "incorrectFeedback": "Make sure that you don't forget $\\lambda$ transitions."
+          },
+          "55": {
+            "type": "select",
+            "description": "Now process {q4}",
+            "question":"What is the Value of this index?",
+            "answer": "2",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "But since we already have a node for {q4} in the DFA, we don't need to create it again. Just make a transition to itself."
+          },
+        "56": {
+          "type": "select",
+          "description": "All that remains is to pick the set of final states. To do this, look at the list of states (from the NFA) that are listed on the labels for each node in the DFA. If any of them are a final state in the NFA, then make that a final state in the DFA. In other words, since q5 and q6 are final states in the NFA, every node in the DFA that includes q5 <b>or</b> q6 in its node label will become final.",
+          "question":"What is the Value of this index?",
+          "answer":"0",
+          "choices": ["q0", "q1", "q2"]
+        }
+      }
+    }
+  }
+  

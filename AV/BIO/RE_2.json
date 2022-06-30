@@ -1,0 +1,38 @@
+{
+    "translations": {
+      "en": {
+        "one": {
+          "type": "select",
+          "description": "<b>re.search(pattern,string):</b></br>search() method is able to find a pattern from any position of the string but it only returns the first occurrence of the search pattern.",
+          "question":"What is the ouput of this code? <br/><br/>import re <br> result=re.search(r'AT','ATTTCGGGTATA')<br/>print(result.group(0))",
+          "answer": ["AT"
+                    ],
+          "choices": ["ATT","TTA", "AT"]
+        },
+        "two": {
+          "type": "select",
+          "description": "<b>re.findall(pattern,string):</b></br>findall() method helps to get a list of all matching patterns. It has no constraints of searching from start or end. If we will use method findall to search ‘AT’ in given string it will return both occurrence of AT. While searching a string, I would recommend you to use re.findall() always, it can work like re.search() and re.match() both.",
+          "question":"What is the ouput of this code? <br/><br/>import re <br> result=re.findall(r'AT','ATTTCGGGTATA')<br/>print(result.group(0))",
+          "answer": ["[AT,AT]"
+                    ],
+          "choices": ["[AT]", "[AT,AT]", "[TA,TA]", "TAT"]
+        },
+        "three": {
+          "type": "select",
+          "description": "<b>re.split(pattern,string,[maxsplit=0]):</b></br>Method split() has another argument “maxsplit“. It has default value of zero. In this case it does the maximum splits that can be done, but if we give value to maxsplit, it will split the string.",
+          "question":"What is the ouput of this code? <br/><br/>import re <br> result=re.split(r'AT','ATTTCGGGTATA')<br/>print(result.group(0))",
+          "answer": ["[ ' ' , 'TTCGGGT' , 'A' ]"
+                    ],
+          "choices": ["[ 'TT' , 'TTCGGGT' , ' ' ]","[ ' ' , 'TTCGGGT' , 'A' ]"," [ 'TT' , 'TTCCGGT' , 'A' ]"]
+        },
+        "four": {
+          "type": "select",
+          "description": "<b>re.sub(pattern,replace,string):</b></br>Method sub() helps to search a pattern and replace with a new sub string. If the pattern is not found, string is returned unchanged.",
+          "question":"What is the ouput of this code? </br></br>import re </br> result=re.sub(r'ATCGT','GGGG','AAAAATCGTTTTCGGC')</br>print(result.group(0))",
+          "answer": ["AAAAGGGGTTTCGGC"],
+          "choices": ["AAAAGGCGTTTCGGC","AAATCGGGGTTTCGGC", "AAAAGGGGTTTCGGC"]
+        }
+ 
+      }
+    }
+  }

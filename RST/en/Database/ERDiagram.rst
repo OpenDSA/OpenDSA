@@ -16,15 +16,28 @@ Entity types, entity set
 ssssssssssssssssssssssssss
 satisfiess
 satisfiess
-satisfiess
-satisfiess
+Hello world
+
+
+
+
+
 
 Attributes, keys
 -----------------------
 
 Relationship types and structure
 ----------------------------------------
+
+
 Weak Vs. Strong entity
 -------------------------------
 Naming convention and design issues
 -------------------------------------------------
+
+
+.. inlineav:: manyToMany ss
+   :long_name: ManytomanyRelationship Slideshow
+   :links: AV/Database/manyToMany.css
+   :scripts: AV/Database/manyToMany.js
+   :output: show

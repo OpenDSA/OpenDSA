@@ -1,0 +1,24 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Import library of regular expression.",
+        "sc2": "The un cleaning sequence of DNA.",
+        "sc3": "replace any number or newline or tab or space with nothing to clean up the sequence .",
+        "sc4": "The ouput of the regular expression is <b>ATTCGAGGTCCCGATGGCATGATCATCGATTACATGCCAT</b>."
+      }
+    },
+    "code": {
+      "Python": [{
+        "url": "../../../SourceCode/Python/Bio/RE_4.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "import": 1,
+          "DNA_Seq": 2,
+          "regex": 5,
+          "print": 6
+        }
+      }]   
+    }
+  }
