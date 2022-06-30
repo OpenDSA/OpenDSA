@@ -1,0 +1,24 @@
+path {
+  stroke-width: 0.7%;
+  }
+  .ssAV {
+    font-size: 20px;
+  }
+  .jsavcode.jsavcenter {
+    
+    position: relative;
+    left: 200px;
+    border:solid 5px #a19da045;
+  }
+  .jsavlabel  {
+
+    font-size: xx-large;
+    font-weight: bold;
+  }
+  .size{
+    font-size: 15px;
+  }
+  .jsavoutput div {
+    padding-top: 27px;
+    padding-left: 2px;
+  }

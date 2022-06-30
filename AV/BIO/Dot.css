@@ -1,3 +1,11 @@
+.jsavcode.jsavcenter {
+  position: relative;
+  left: 226px;
+}
+
+rect {
+  fill: #80004e45 !important;
+}
 ul.div-test {
     width: 500px;
     position: absolute;

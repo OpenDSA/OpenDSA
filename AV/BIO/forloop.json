@@ -1,0 +1,24 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Intilization array of numbers from 1 to 5.",
+        "sc2": "for that take action depent on the length of array numbers, Every number refer to item in numbers.",
+        "sc3": "Print numbers in array numbers."
+      }
+    },
+    "code": {
+      "java_generic": [{
+        "url": "../../../SourceCode/Python/Bio/for.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "list": 1,
+          "for": 2,
+          "print": 3
+   
+        }
+      }]   
+    }
+  }
+  
