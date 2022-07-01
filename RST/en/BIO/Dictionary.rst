@@ -10,27 +10,29 @@
 
 Dictionary
 ==========
+**Python dictionary** is an unordered collection of items. Each item of a dictionary has a key/value pair.
 
-| Dotplot is a one of the simplest and oldest methods to compare two protein or nucleotide sequences and it's a visual/graphic way of looking at regions of similarity between two sequences.
+Dictionaries are optimized to retrieve values when the key is known.
 
-**How to do this?**
+**Creating Python Dictionary**
 
-* Two sequences of similar or variable length.
-* Write each letter of one sequence in a row.
-* Write each letter of the other sequence in column. 
-* Start filling boxes where there is a letter for sequence 1 in 2 and for 2 in 1.
-* The positions left blank if the letters are different.
+Creating a dictionary is as simple as placing items inside curly braces {} separated by commas.
 
-**Advantages:**
+* An item has a key and a corresponding value that is expressed as a pair (key: value).
 
-* Good for identification of long regions of strong similarity.
-* easy to make and interpret.
-* can be used for any length sequence.
+* While the values can be of any data type and can repeat, keys must be of immutable type (string, number or tuple with immutable elements) and must be unique.
 
-**Disadvantages:**
+**Why do we need dictionaries?**
 
-* graphical representation doesn't give information about mutation.
+As a dictionary, keeps the elements in key-value mapping format and internally uses hashing for it; therefore, we can get a value from the dictionary by its key very quickly. In best cases, its complexity is O(1), whereas, in the worst case, its complexity can be O(n).
 
+If you want to know more about hashing check this article –> What is Hashing and Hash Table?
+
+**Changing and Adding Dictionary elements**
+
+Dictionaries are mutable. We can add new items or change the value of existing items using an assignment operator.
+
+If the key is already present, then the existing value gets updated. In case the key is not present, a new (key: value) pair is added to the dictionary.
 
 .. inlineav:: Dictionary ss
    :long_name: DNA Sequencing example Slideshow

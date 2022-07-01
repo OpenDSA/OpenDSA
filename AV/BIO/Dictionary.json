@@ -1,10 +1,12 @@
 {
     "translations": {
       "en": {
-        "sc1": "Initialzation for a= 200 b= 33.",
-        "sc2": "Check if b is larger than a.",
-        "sc3": "If b is larger than a them if return true so Output will be b is greater than a.",
-        "sc4": "If b is not larger than a them if return false so Output will be b is not greater than a."
+        "sc1": "Initialzation The Dictionary with Key:Value.",
+        "sc2": "Assign Values to x as dict_values(['Ford', 'Mustang', 1964]).",
+        "sc3": "Then Print the values in car Dic, before any change(['Ford', 'Mustang', 1964]).",
+        "sc4": "Now We wil change the model Name from (Mustang) to (Alfa Romeo).",
+        "sc5": "Now We wil change the Year from (1964) to (2020).",
+        "sc6": "Then Print the values in car Dic, After any change dict_values(['Alfa Romeo', 'Mustang', 2020])."
    }
     },
     "code": {
@@ -14,12 +16,16 @@
         "startAfter": "/* *** ODSATag: AListInsert *** */",
         "endBefore": "/* *** ODSAendTag: AListInsert *** */",
         "tags": {
-          "a": 1,
-          "b": 2,
-          "if": 3,
-          "t": 4,
-          "e":5,
-          "f":6
+          "car1": 1 ,
+          "car2": 2,
+          "car3":3,
+          "car4": 4,
+          "car5":5,
+          "keys":6,
+          "print be":7,
+          "brand":8,
+          "year":9,
+          "print af":10
         }
       }]   
     }
