@@ -12,27 +12,10 @@
 Regular Expressions
 ===================
 
-The :term:`Regular Expression` (also known as RegEx or RE) is another
-way to define a language.
-They are used a lot, especially by programmers for defining simple
-search patterns.
-This adds another way to define languages along with the ones that we
-already know: Grammars, DFAs and NFAs.
-Or, we could just describe the language using an English description.
-Why do we need another one?
+Regular Expressions, also known as “regex” or “regexp”, are used to match strings of text such as particular characters, words, or patterns of characters. It means that we can match and extract any string pattern from the text with the help of regular expressions. 
 
-The problem with an English description (or any other language that
-people speak) is that it is too imprecise, and not something that we
-can easily implement.
-Using a DFA or NFA requires typically requires some sort of graphical
-editor, and this takes a bit of time to enter.
-We will see that regular expressions are easy to just type, and they
-tend to be relatively short descriptions for common languages that we
-want to represent.
-Of course, even a relatively small precise specification for a
-language can be hard to come up with (or to understand).
-But at least with a regular expression, it is usually quick and easy
-to type once you have it.
+
+The Python module re provides full support for Perl-like regular expressions in Python. The re module raises the exception re.error if an error occurs while compiling or using a regular expression.
 
 
 Definition and Examples of Regular Expressions
@@ -43,6 +26,9 @@ Definition and Examples of Regular Expressions
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RegExFS.js
    :output: show
 
+<<<<<<< HEAD
+**The usage of regular expressions:** 
+=======
 When run, produces the following output::
 
   'test1' does not equal 'test2'.
@@ -51,46 +37,79 @@ When run, produces the following output::
 **Definition** for Regular Expressions (RE): Given :math:`\Sigma`,
   #. :math:`\lambda`, and :math:`a \in \Sigma` are RE
   #. If :math:`r` and :math:`s` are regular expressions, then
+>>>>>>> 99e8938bc43ea0bf87b3a3576fe4e32c4ec8ae79
 
-      * :math:`r + s` is a RE
-      * :math:`r s` is a RE
-      * :math:`(r)` is a RE
-      * :math:`r^*` is a RE
-  #. :math:`r` is a RE if and only if it can be derived from (1) with
-     a finite number of applications of (2). 
+      * Regular expressions are particularly useful for defining filters.
+      * Regular expressions contain a series of characters that define a pattern of text to be matched—to make a filter more specialized, or general.
+   
 
             
-Converting a Regular Expression to a NFA
-----------------------------------------
+Regular Expression For Bioinformatics
+--------------------------
+**The most common functions of regular expressions are:** 
 
-.. inlineav:: RegEx2NFA1FS ff
-   :links: AV/PIFLA/Regular/RegEx2NFA1FS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFA1FS.js
+      * Search a string (search and match)
+      * Finding a string (findall)
+      * Break string into sub strings (split)
+      * Replace part of a string (sub)
+
+
+.. inlineav:: RE ss
+   :links: AV/BIO/RE.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/BIO/RE.js
    :output: show
 
-**Summary:** We can convert any NFA to an equivalent NFA with a single
-final state. This will be a useful first step.
+**What are the most commonly used operators?**
 
-.. inlineav:: RegEx2NFAorFS ff
-   :links: AV/PIFLA/Regular/RegEx2NFAorFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAorFS.js
+.. odsafig:: Images/RE.PNG
+ :width: 500
+ :align: center
+ :capalign: justify
+ :figwidth: 60%
+
+.. inlineav:: RE_2 ss
+   :links: AV/BIO/RE_2.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/BIO/RE_2.js
    :output: show
+
+**why we use regular expressions in bioinformatics?**
+
+      * Given a DNA sequence, what is the length of the poly-A tail?
+      * Given a gene accession name, extract the part between the third charcter and the underscore
+      * Given a protein sequence, determine if it contains this highly redundant domain motif
+      
+   
+
+.. inlineav:: RE_3 ss
+   :links: AV/BIO/RE_3.css
+   :scripts: AV/BIO/RE_3.js
+   :output: show
+
+**Character sets in regular expressions:**   
+
++------------------+------------------------------------------------------------------------------------------------+
+|   Pattern        |          Matches                                                                               |
++==================+================================================================================================+
+|   [ACTG]         | one DNA base character                                                                         |
++------------------+------------------------------------------------------------------------------------------------+
+|   AT?AA          | AAA or ATAA only                                                                               |
++------------------+------------------------------------------------------------------------------------------------+
+|   A+             | One or more A                                                                                  |
++------------------+------------------------------------------------------------------------------------------------+
+|   [GC]*          | Zero or more GC or CG (in any combination)                                                     |
++------------------+------------------------------------------------------------------------------------------------+
+|   CC[TCAG]{2}GG  | CC, followed by ant two DNA bases, followed by GG                                              |
++------------------+------------------------------------------------------------------------------------------------+
+|   (TA){3,8}      | Between three and eight repetitions of TA                                                      |
++------------------+------------------------------------------------------------------------------------------------+
+
 
 |
 
-.. inlineav:: RegEx2NFAcatFS ff
-   :links: AV/PIFLA/Regular/RegEx2NFAcatFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAcatFS.js
+.. inlineav:: RE_4 ss
+   :links: AV/BIO/RE_4.css
+   :scripts: AV/BIO/RE_4.js
    :output: show
 
-|
-
-.. inlineav:: RegEx2NFAstarFS ff
-   :links: AV/PIFLA/Regular/RegEx2NFAstarFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAstarFS.js
-   :output: show
-
-**Summary:** We can convert any RE to an NFA.
-So, all REs are associated with a regular language.
 
             

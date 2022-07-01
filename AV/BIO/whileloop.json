@@ -1,10 +1,11 @@
 {
     "translations": {
       "en": {
-        "sc1": "Intilization to Price with value 100.",
-        "sc2": "Check if Price is greater than 100 If it ture will print (Price is greater than 100) else will check another condition.",
-        "sc3": "Check if Price is equal to 100 If it ture will print (Price is 100) else will check another condition.",
-        "sc4": "Check if Price is smaller than 100 (not need for another else cause the Price must be smaller , greater or equal)"
+        "sc1": "Intilization array of numbers from 1 to 5 every num has an index i.",
+        "sc2": "Intilization for i as index with 0",
+        "sc3": "While will take action below till the condition is true else will stop",
+        "sc4": "Print num with index i EX. numbers[0], it will print 1.",
+        "sc5": "index i will increase by 1, while condition is true to go to the next number by increas i by 1"
       }
     },
     "code": {
@@ -14,13 +15,12 @@
         "startAfter": "/* *** ODSATag: AListInsert *** */",
         "endBefore": "/* *** ODSAendTag: AListInsert *** */",
         "tags": {
-          "p": 1,
-          "if": 2,
-          "pif": 3,
-          "elif": 4,
-          "pelif":5,
-          "elif2":6,
-          "pelif2":7
+          "num": 1,
+          "i": 2,
+          "while": 3,
+          "print": 4,
+          "i++":5
+      
         }
       }]   
     }

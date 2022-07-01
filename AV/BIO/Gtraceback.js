@@ -1,4 +1,3 @@
-
 "use strict";
 $(document).ready(function () {
     var x=0;
@@ -10,7 +9,7 @@ $(document).ready(function () {
     var s1="AACG";
     var s2="ACTCG"
   var jsav = new JSAV("Gtraceback");
-  jsav.umsg("Match = 1, Mismatch = -1, Gap = -2");
+  var arrow;
   var matrix = new jsav.ds.matrix([[,, , , , ,],[, , , , ,, ],[,,,,,,]
     ,[, , , , ,, ],[, , ,, ,, ],[, ,,,,, ],[, , , , ,,]], 
     {style: "table", top: 0, left: 300});
@@ -67,34 +66,44 @@ $(document).ready(function () {
           matrix2.value(1,2,vertical_score);
           matrix2.value(2,1,horizontal_score);
           matrix2.highlight(2,2)
-      jsav.step();
+          jsav.step();
       while (current_s1_index!=1 && current_s2_index!=1) {
          
   
           if (diagonal_score + Match == current_score)
           {
-              s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
+            jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Match) , Direction = Diagonal ( ↖️ )");
+             arrow=jsav.label("↖️",{left:125, top:98});
+             s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
               s2_alignment = matrix.value(current_s1_index,0) + s2_alignment;
               current_s1_index--;
               current_s2_index--;
+              
           }
         
           else if (vertical_score + Gap == current_score)
           {
-               s1_alignment = "-" + s1_alignment;
+            jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) ,Max value ="+ matrix.value(current_s1_index-1,current_s2_index)+ " ,Direction = up ( ↑ ) ");
+            arrow=jsav.label("↑",{left:125, top:98});
+            s1_alignment = "-" + s1_alignment;
                s2_alignment = matrix.value(current_s1_index,0) + s2_alignment;
                current_s1_index--;
           }
           else if (diagonal_score + Mismatch == current_score)
           {
-              s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
+            jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) ,Max value ="+ matrix.value(current_s1_index-1,current_s2_index-1)+ " ,Direction = Diagonal ( ↖️ ) ");
+            arrow=jsav.label("↖️",{left:125, top:98});
+            s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
               s2_alignment = matrix.value(current_s1_index,0) + s2_alignment;
               current_s1_index--;
               current_s2_index--;
           }
           else
           {
-             s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
+
+jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) Max value ="+ matrix.value(current_s1_index,current_s2_index-1)+ "Direction = left ( ← ) ");
+            arrow=jsav.label("←",{left:125, top:98});
+            s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
              s2_alignment = "-" + s2_alignment;
              current_s2_index--;
           }
@@ -114,6 +123,7 @@ $(document).ready(function () {
           jsav.step();
       }
        matrix2.hide();
+       jsav.umsg("");
        jsav.label("The alignment is");
        jsav.label(s1_alignment);
        jsav.label(s2_alignment);
@@ -121,5 +131,6 @@ $(document).ready(function () {
     matrix2.layout();
     matrix.layout();
     jsav.animInfo();
-	jsav.recorded();
+  jsav.recorded();
 });
+

@@ -1,0 +1,45 @@
+{
+    "translations": {
+      "en": {
+        "Operators": {
+          "type": "select",
+          "description": "The match(string) method returns the first substring that matches a regular expression pattern in an input string.<br/><br/><b>The Output Of Match Method In The Regular Expression :</b><br/> <b><</b>class 're.Match'<b>></b>.",
+          "question":"What is the ouput of this code? <br/><br/>import re <br> result=re.match(r'AT','ATTTCGGGTATA')<br/>print(result)",
+          "answer": ["<_sre.SRE_Match object; span=(0,2), match='AT'>"
+                    ],
+          "choices": ["<_sre.SRE_Match object; span=(0,3), match='AT'>", "<_sre.SRE_Match object; span=(0,1), match='AT'>", "<_sre.SRE_Match object; span=(0,2), match='AT'>", "<_sre.SRE_Match object; span=(1,2), match='AT'>"]
+        },
+        "Concat": {
+          "type": "select",
+          "description": "<b>The Output Of match.group(0) Method In The Regular Expression :</b><br/> <b><<b/>class 'str'<b>></b>",
+          "question":"What is the ouput of this code? <br/><br/>import re <br> result=re.match(r'AT','ATTTCGGGTATA')<br/>print('\nMatching String:',result.group(0))",
+          "answer": ["AT"
+                    ],
+          "choices": ["AT", "ATT", "TA", "TAT"]
+        },
+        "ConcatStr": {
+          "type": "select",
+          "description": "<b>Note That</b></br> The match(string) method must returns the first substring that matches a regular expression pattern",
+          "question":"What is the ouput of this code? <br/><br/>import re <br> result=re.match(r'TT','ATTTCGGGTATA')<br/>print('\nResult:',result)",
+          "answer": ["None"
+                    ],
+          "choices": ["AT","TT","None"]
+        },
+        "star": {
+          "type": "select",
+          "description": "Starting position of the match: is the starting index that match a regular expression",
+          "question":"What is the ouput of this code? </br></br>import re </br> result=re.match(r'AT','ATTTCGGGTATA')</br>print('Starting position of the match:',result.start())",
+          "answer": ["0"],
+          "choices": ["1","0", "2"]
+        },
+        "alla": {
+          "type": "select",
+          "description": "Ending position of the match: is the ending index that match a regular expression plus one , if ending index 3 then the answer will be 3+1=4",
+          "question":"What is the ouput of this code? <br/><br/>import re <br> result=re.match(r'AT','ATTTCGGGTATA')</br>print('Ending position of the match:',result.end())",
+          "answer": ["2"],
+          "choices": ["1","4", "2"]
+        }
+ 
+      }
+    }
+  }

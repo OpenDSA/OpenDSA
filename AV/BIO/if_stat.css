@@ -1,9 +1,16 @@
 path {
-    stroke: rgba(35, 173, 30, 0.877)!important;
+    stroke: rgba(0, 0, 0, 0.877)!important;
   stroke-width: 0.7%;
-  }rect {
-    fill: #80004e45 !important;
   }
+.pink{
+  fill :rgba(195, 66, 235, 0.271)
+}
+.green{
+  fill :rgba(35, 173, 30, 0.232)
+}
+.red{
+  fill :rgba(207, 20, 20, 0.342)
+}
   .jsavcode.jsavcenter {
     
     position: relative;

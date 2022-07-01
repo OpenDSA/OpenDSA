@@ -11,4 +11,7 @@ $(document).ready(function () {
   jsav.recorded();
 
 });
+<<<<<<< HEAD
+=======
 
+>>>>>>> 99e8938bc43ea0bf87b3a3576fe4e32c4ec8ae79
