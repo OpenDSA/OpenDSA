@@ -42,7 +42,7 @@ When run, produces the following output::
 
             
 Regular Expression For Bioinformatics
---------------------------
+-------------------------------------
 **The most common functions of regular expressions are:** 
 
       * Search a string (search and match)
