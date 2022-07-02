@@ -21,11 +21,11 @@ $(document).ready(function () {
    
  
     jsav.label("Car = {brand:'Ford',model:'Mustang',year:'1964'}",{top: 0, left: 20}).addClass("Size");
-    jsav.label("Key",{top: 36, left: 312}).addClass("Size");
-    jsav.label("Value",{top: 36, left: 448}).addClass("Size");
-    var y= jsav.g.line(300, 90, 400, 90,{"arrow-end": "classic-wide-long",opacity: 90, "stroke-width": 1.5});
-    var y= jsav.g.line(300, 120, 400, 120,{"arrow-end": "classic-wide-long",opacity: 90, "stroke-width": 1.5});
-    var y= jsav.g.line(300, 150, 400, 150,{"arrow-end": "classic-wide-long",opacity: 90, "stroke-width": 1.5});
+    jsav.label("Key",{top: 36, left: 220}).addClass("Size");
+    jsav.label("Value",{top: 36, left: 466}).addClass("Size");
+    var y= jsav.g.line(310, 90, 410, 90,{"arrow-end": "classic-wide-long",opacity: 90, "stroke-width": 1.5});
+    var y= jsav.g.line(310, 125, 410, 125,{"arrow-end": "classic-wide-long",opacity: 90, "stroke-width": 1.5});
+    var y= jsav.g.line(310, 159, 410, 159,{"arrow-end": "classic-wide-long",opacity: 90, "stroke-width": 1.5});
 
     jsav.displayInit();
     

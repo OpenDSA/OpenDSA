@@ -1,0 +1,15 @@
+ul.jsavcode.jsavcenter {
+    left: 295px;
+     position: relative;
+    background: #fff;
+      background-clip: border-box;
+    background-clip: padding-box;
+    border: solid 6px transparent;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-image-slice: 100%;
+      border-image-source: none;
+      border-image-width: 1;
+    border-radius: 0.8rem;
+    border-image: linear-gradient(45deg, rgba(10, 100, 7, 0.774), rgba(115, 255, 64, 0.76)) 1;
+  }
