@@ -18,3 +18,15 @@ Tuple
    :links: AV/BIO/Tuple.css 
    :scripts: AV/BIO/Tuple.js
    :output: show
+
+
+Nested_Tuple
+------------
+
+
+
+.. inlineav:: Nested_Tuple ss
+   :long_name: DNA Sequencing example Slideshow
+   :links: AV/BIO/Nested_Tuple.css 
+   :scripts: AV/BIO/Nested_Tuple.js
+   :output: show
