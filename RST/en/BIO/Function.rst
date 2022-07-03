@@ -168,7 +168,7 @@ The global variable with the same name will remain as it was, **global and with 
 **Example:**
 If you use the global keyword, the variable belongs to **the global scope** and a Also, use the global keyword if you want to change a global variable **inside a function**.
 
-::
+The code::
    def myfunc():
      global x
      x = "fantastic"
