@@ -26,13 +26,6 @@ The above BNF grammar tells us that expressions in the lambda calculus come in o
 
   Typically we will use single letters or letters followed by a digit - :math:`x, y, a_1, b, p_2` - to represent variables.
 
-2. A :term:`function abstraction` (the second production). For example   :math:`\lambda x.y`.  Think of this as the "function whose formal   parameter is :math:`x` and whose return value is :math:`y`".   The equivalent in JavaScript would be:
-
-::
-
-  function(x){
-    return y;
-  }
 
 3. An :term:`application` (the third production). For example
 :math:`(y \; z)`.  Think of this as "the application of :math:`y` to

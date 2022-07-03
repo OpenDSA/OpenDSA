@@ -75,11 +75,8 @@ This is a visualization for Calculating Traceback in Local alignment
 
 Exercise
 --------
-
-This is a visualization for DNA Sequencing SSSSSSSSSSSSSSS
-
-.. inlineav:: LExercise ss
+.. inlineav:: LExercise ff
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/LExercise.css 
-   :scripts: AV/BIO/LExercise.js
+   :scripts: DataStructures/PIFrames.js AV/BIO/LExercise.js
    :output: show

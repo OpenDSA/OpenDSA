@@ -8,6 +8,7 @@ $(document).ready(function () {
     var s1="AACG";
     var s2="ACTCG"
   var jsav = new JSAV("Gscore");
+  
   jsav.umsg("Match = 1, Mismatch = -1, Gap = -2");
   var matrix = new jsav.ds.matrix([[,, , , , ,],[, , , , ,, ],[,,,,,,]
     ,[, , , , ,, ],[, , ,, ,, ],[, ,,,,, ],[, , , , ,,]], 
@@ -69,7 +70,6 @@ $(document).ready(function () {
             matrix2.value(1,1,matrix.value(i-1,j-1));
             matrix2.value(1,2,matrix.value(i-1,j));
             matrix2.value(2,1,matrix.value(i,j-1));
-            jsav.umsg(matrix2+" ",{"preserve": true});
             matrix.value(i,j,newval);
             matrix.highlight(i,j);
             matrix2.highlight(2,2);
@@ -78,6 +78,7 @@ $(document).ready(function () {
       }
       jsav.umsg("Score Matrix ="+ matrix.value(s2.length+1,s1.length+1));
       jsav.step();
+    matrix2.layout();
     matrix.layout();
 	jsav.recorded();
 });

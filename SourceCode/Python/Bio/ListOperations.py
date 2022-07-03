@@ -1,0 +1,11 @@
+list=["Ahmed",50,200,"MM",1.5]
+list[4]
+list[0:2]=["Omar",200]
+list
+list[3:5]="osama"
+list
+list2=["ooo",20]
+list.extend(list2)
+list.pop(5)
+list
+list2.clear()

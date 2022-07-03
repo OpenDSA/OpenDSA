@@ -1,0 +1,200 @@
+{
+    "translations": {
+      "en": {
+        "1": {
+            "type": "select",
+            "description": "",
+            "question": "What will be \\n the output of the following Python code?",
+            "answer": "0",
+            "choices": ["q0", "q1", "q2"]
+          },
+          "2": {
+            "type": "select",
+            "description": "",
+            "question": "What will be the output of the following Python code?",
+            "answer": "4 is maximum",
+            "choices": ["3", "4", "4 is maximum","None of the mentioned "]
+          },
+          "3":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "x is 50 Changed local x to 2 x is now 50",
+            "choices": ["x is 50 Changed local x to 2 x is now 2", "x is 50 Changed local x to 2  x is now 50", "x is 50 Changed local x to 2 x is now 100"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "4":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "x is 50 Changed global x to 2 Value of x is 2",
+            "choices": ["x is 50 Changed global x to 2 Value of x is 2", "x is 50 Changed global x to 2  Value of x is 50", "x is 50 Changed global x to 50 Value of x is 50"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "5":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "q1",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "6":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "q1",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "7":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "q1",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "8":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "q1",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "9":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "q1",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          },
+          "10":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "q1",
+            "choices": ["q0", "q1", "q2"],
+            "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+          }
+          
+      }
+    },
+    "code": {
+      "Python": [
+        {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer1.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer2.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer3.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer4.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer5.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer6.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer7.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer8.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer9.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer10.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      }
+    ]
+    }
+  }
+  

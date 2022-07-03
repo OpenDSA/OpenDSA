@@ -43,12 +43,35 @@
 
     },
 
-    "Sequence Alignment": {
+    "DNA Pairwise Sequence Alignment": {
       "BIO/Manhattan": {},
       "BIO/Dot Matrix": {},
       "BIO/Global Alignment": {},
       "BIO/Local Alignment": {},
       "BIO/Suffix Tree": {}
+    },
+
+    "Python For Bioinformatics": {
+      "BIO/Variables": {},
+      "BIO/Data Types": {},
+      "BIO/Conditions": {},
+      "BIO/Loops": {},
+      "BIO/Function": {},
+      "BIO/Exception Handling": {},
+      "BIO/File I-O": {},
+      "BIO/Regular Expression": {},
+      "PIFLA/RegExExercises":{
+        "RegExbbaeven": {
+          "points": 5.0
+        },
+        "RegExnoaa": {
+          "points": 5.0
+        },
+        "RegExonebbb": {
+          "points": 5.0
+        }
+      },
+      "BIO/Biopython": {}
     }
   }
 }

@@ -10,7 +10,7 @@ $(document).ready(function () {
     var s2="ACTCG"
 
   var jsav = new JSAV("Lscore");
-  jsav.umsg("Match = 1, Mismatch = -1, Gab = -2");
+  jsav.umsg("Match = 1, Mismatch = -1, Gap = -2");
   var matrix = new jsav.ds.matrix([[,, , , , ,],[, , , , ,, ],[,,,,,,]
   ,[, , , , ,, ],[, , ,, ,, ],[, ,,,,, ],[, , , , ,,]], 
   {style: "table", top: 0, left: 300});
@@ -75,7 +75,7 @@ $(document).ready(function () {
                        newval=newval;
                        jsav.umsg("\n Max value ="+newval,{"color": "blue","preserve": true});
                      }
-                
+            
                }
       
             else{
@@ -102,7 +102,6 @@ $(document).ready(function () {
             matrix2.value(1,2,matrix.value(i-1,j));
             matrix2.value(2,1,matrix.value(i,j-1));
             matrix2.highlight(2,2);
-            jsav.umsg(matrix2+" ",{"preserve": true});
             matrix.value(i,j,newval);
             matrix.highlight(i,j);
             matrix2.highlight(2,2);
@@ -111,7 +110,6 @@ $(document).ready(function () {
       }
       jsav.umsg("Step 3 Score Matrix ="+ matrix.value(s2.length+1,s1.length+1));
       jsav.step();
-
      matrix2.layout();
      matrix.layout();
     jsav.recorded();

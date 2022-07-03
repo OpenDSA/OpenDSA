@@ -2,10 +2,9 @@
 
 $(document).ready(function () {
   var jsav = new JSAV("Greedy");
-  var graph=new jsav.ds.graph({width: 500, height: 500});
+  var graph=new jsav.ds.graph({width: 500, height: 500,directed: true});
   var right;
   var down;
-  var index=[];
   var node1=graph.addNode(0,{left:0, top:0});
   var node2=graph.addNode(" ",{left:100, top: 0});
   var node3=graph.addNode(" ",{left:200, top: 0});
@@ -32,7 +31,7 @@ $(document).ready(function () {
   var node24=graph.addNode(" ",{left:300, top:400});
   var node25=graph.addNode(" ",{left:400, top:400});
 
-  graph.addEdge(node1, node2,{weight:4}).css("marked");
+  graph.addEdge(node1, node2,{weight:4});
   graph.addEdge(node2, node3,{weight:5});
   graph.addEdge(node3, node4,{weight:8});
   graph.addEdge(node4, node5,{weight:7});
@@ -82,6 +81,7 @@ var i=0;
    {
     if(i==4||i==9||i==14||i==19){
       down=graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).weight()+graph.nodes()[i].value();
+      graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
       graph.nodes()[i+5].value(down);
       graph.nodes()[i+5].highlight();
       i+=5;
@@ -89,6 +89,7 @@ var i=0;
   else if(i==20||i==21||i==22||i==23)
   {
    right=graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).weight()+graph.nodes()[i].value();
+   graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
    graph.nodes()[i+1].value(right);
    graph.nodes()[i+1].highlight();
    i+=1;
@@ -100,12 +101,14 @@ var i=0;
     {
       graph.nodes()[i+5].value(down);
 			graph.nodes()[i+5].highlight();
+      graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
       i+=5;
     }
     else
     {
       graph.nodes()[i+1].value(right);
 			graph.nodes()[i+1].highlight();
+      graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
       i++;
     }
   }

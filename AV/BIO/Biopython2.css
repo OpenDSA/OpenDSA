@@ -1,0 +1,13 @@
+.Rec{
+    color: red;
+    background-color: aqua;
+}
+.jsavcanvas {
+    width: 1750px;;
+    height: 600px;
+}
+.jsavcontainer {
+    border: 0;
+    width: 1200px;
+    height: 600px;
+}
