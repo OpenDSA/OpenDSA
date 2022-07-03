@@ -8,28 +8,25 @@
    :satisfies: DNASeq
    :topic: DNASeq
 
+Tuple
+=====
 
-DNA Sequencing
-==============
-This is a visualization for DNA Sequencing
 
-.. inlineav:: DNASeq ss
+
+.. inlineav:: Tuple ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/DNASeq.css 
-   :scripts: AV/BIO/DNASeq.js
+   :links: AV/BIO/Tuple.css 
+   :scripts: AV/BIO/Tuple.js
    :output: show
 
-asdlkfdsfhflhfkd
 
-Subtitle
---------
-asdasdasajksfjkasf
-asdasdasajksfjkasfasf
-asdlkfdsfhflhfkdasf
-asdlkfdsfhflhfkdasf
+Nested_Tuple
+------------
 
-.. inlineav:: Test ss
+
+
+.. inlineav:: Nested_Tuple ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/Test.css 
-   :scripts: AV/BIO/Test.js
+   :links: AV/BIO/Nested_Tuple.css 
+   :scripts: AV/BIO/Nested_Tuple.js
    :output: show

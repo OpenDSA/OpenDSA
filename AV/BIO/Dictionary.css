@@ -1,0 +1,20 @@
+ul.jsavcode.jsavcenter {
+    position: relative;
+    left: 295px;
+}
+.jsavmatrix .jsavarray {
+        margin: 0 auto;
+        height: 30px;
+        min-height: 32px;
+      }
+      .jsavmatrix .jsavarray li.jsavnode {
+          border-top: inset;
+          
+      }
+      .jsavhorizontalarray .jsavnode {
+        line-height: 18px !important;
+        min-width: 65px !important;
+        max-width: 86px !important;
+        min-height: 30px !important;
+        max-height: 30px !important;
+      }

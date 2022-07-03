@@ -38,9 +38,7 @@
   }, 
   "chapters": {
     "Preface": {
-      "Intro": {},
-      "BIO/Preface":{}
-
+      "Intro": {}
     },
 
     "DNA Pairwise Sequence Alignment": {
@@ -60,6 +58,12 @@
       "BIO/Exception Handling": {},
       "BIO/File I-O": {},
       "BIO/Regular Expression": {},
+      "BIO/if_stat": {},
+      "BIO/loops": {},
+      "BIO/Dictionary": {},
+      "BIO/Tuple": {},
+      "BIO/Regular Expressions": {},
+      
       "PIFLA/RegExExercises":{
         "RegExbbaeven": {
           "points": 5.0
@@ -73,5 +77,6 @@
       },
       "BIO/Biopython": {}
     }
+ 
   }
 }

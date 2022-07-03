@@ -1,0 +1,22 @@
+#manyToMany{
+  height: 400px;
+  }
+  .jsavverticalarray .jsavnode {
+    line-height: 30px !important;
+    min-width: 80px !important;
+    max-width: 300px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+}
+
+.jsavoutput.jsavline {
+  margin-top: -5px;
+  height: 80px;
+  width: 800px;
+}
+.jsavline.element.style {
+  color: red;
+}
+.other{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

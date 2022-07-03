@@ -7,6 +7,7 @@ $(document).ready(function () {
     var s2="ACTCG"
     var jsav = new JSAV("LExercise");
     var Frames = PIFRAMES.init("LExercise");
+    jsav.umsg("Match = 2, Mismatch = -3, Gap = -6");
     var matrix = new jsav.ds.matrix([[,,"A" ,"C" , "T","G" ,"C","T","G"],["","","" ,"" , "","" ,"","",""],["A","","" ,"" , "","" ,"","",""],["C","","" ,"" , "","" ,"","",""]
     ,["T","","" ,"" , "","" ,"","",""],["G","","" ,"" , "","" ,"","",""],["A","","" ,"" , "","" ,"","",""],["C","","" ,"" , "","" ,"","",""]], 
     {style: "table", top: 0, left: 200});

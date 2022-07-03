@@ -6,7 +6,7 @@
           "description": "First we will define the DFA's start state. This is Closure(q0), meaning q0 and all other states reachable from q0 by $\\lambda$ transitions.",
           "question": "What is the Value of this index?",
           "answer": "0",
-          "choices": ["q0", "q1", "q2"]
+          "choices": ["0", "1", "2"]
         },
         "2": {
           "type": "select",

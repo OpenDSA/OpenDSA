@@ -1,0 +1,21 @@
+path {
+    stroke: rgba(0, 0, 0, 0.877)!important;
+  stroke-width: 0.7%;
+  }
+.pink{
+  fill :rgba(195, 66, 235, 0.271)
+}
+.green{
+  fill :rgba(35, 173, 30, 0.232)
+}
+.red{
+  fill :rgba(207, 20, 20, 0.342)
+}
+  .jsavcode.jsavcenter {
+    
+    position: relative;
+    left: 238px;
+    top: 80px;
+    border:solid 5px #a19da045;
+
+  }

@@ -4,31 +4,30 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
-   :satisfies:
-   :requires: Regular Grammar
-   :topic: Regular Grammar exercises
+   :author: Mostafa Mohammed
+   :requires: Regular Expressions
+   :satisfies: 
+   :topic: RegEx exercises
 
-
-More Regular Grammar Exercises
-==============================
+More Regular Expressions Exercises
+==================================
 
 Exercise 1
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramNFA2.html pe
-   :long_name: Regular Grammar: left-linear grammar for NFA
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExaby3.html pe
+   :long_name: Regular Expression construction: a divisible by 3
 
 
 Exercise 2
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramaaabba.html pe
-   :long_name: Regular Grammar: left-linear grammar for aaabsbas
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExcb3.html pe
+   :long_name: Regular Expression construction: c and b total 3
 
-
+               
 Exercise 3
 ----------
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramanbmodd.html pe
-   :long_name: Regular Grammar: regular grammar for anbm odd length
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExabyb.html pe
+   :long_name: Regular Expression construction: mixed a and b

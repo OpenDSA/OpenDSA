@@ -32,16 +32,22 @@ It starts with the first row and go through the rest of the rows in a method of 
 
 **The overall goal of pairwise sequence alignment:**
 
-The pairwise sequence alignment aims to find the best pairing between two sequences. To reach this goal we should move a sequence and reposition it relatively to the other one to get the highest number of similarities or matches between the residues of the two sequences. There are mainly two methods of Sequence Alignment, `global alignment and local alignment`. 
+Is to find the best pairing of two sequences, such that there is maximum correspondence among residues.To achieve
+this goal, one sequence needs to be shifted relative to the other to find the position where maximum matches are 
+found. There are two different alignment strategies that are often used:`global alignment and local alignment`.
 
 **Dynamic Programming for Global Alignment:**
 
-There are some characteristics for global alignment that shall be taken into consideration:
-•	If the two aligned sequences have ‘approximately’ the same length and share some similarity then they are suitable for global alignment. 
-•	The alignment should pass over the entire length of the two sequences not just a part of them.
-•	The global alignment is suitable for aligning two closely related sequences.
-•	Global alignments are usually done for comparing homologous genes like comparing two genes with same function (in human vs. mouse) or comparing two proteins with similar function.
-•	A general global alignment technique is the Needleman–Wunsch algorithm.
+* In global alignment, two sequences to be aligned are assumed to be generally similar over their entire length.
+* Alignment is carried out from beginning to end of both sequences to find the best possible alignment across the entire length between the two sequences.
+* The two sequences to be aligned can be of different lengths. 
+* It must extend from the beginning to the end of both sequences to achieve the highest total score. In other words, the alignment path has to go from the bottom right corner of the matrix to the top left corner. The drawback of focusing on getting a maximum score for the full-length sequence alignment is the risk of missing the best local similarity.
+ 
+* For divergent sequences or sequences with different domain structures, the approach does not produce optimal alignment.
+
+* One of the few web servers dedicated to global pairwise alignment is `GAP`.
+
+* The classical global pairwise alignment algorithm using dynamic programming is the Needleman–Wunsch algorithm. In this algorithm, an optimal alignment is obtained over the entire lengths of the two sequences.
 
 **Global alignment problem:** Find a highest-scoring of two strings as defined by a scoring matrix.
 
@@ -93,6 +99,7 @@ The next step is to find the score value for all elements iteratively resulting 
 
 We have two 2D matrices: the score matrix and the traceback matrix.
 
+
 .. inlineav:: Global ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/Global.css 
@@ -128,6 +135,7 @@ Exercise
 This is a visualization for DNA Sequencing
 
 .. inlineav:: GExercise ff
+.. inlineav:: GExercise ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/GExercise.css 
    :scripts: DataStructures/PIFrames.js AV/BIO/GExercise.js

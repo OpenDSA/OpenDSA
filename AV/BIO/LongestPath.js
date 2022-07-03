@@ -97,15 +97,35 @@ for (var i=6;i<graph.nodes().length;i++)
 		if(down>right){
 			graph.nodes()[i].value(down);
 			graph.nodes()[i-5].highlight();
+<<<<<<< HEAD
+=======
+			index.push(i-5);
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
 		}
 		else{
 			graph.nodes()[i].value(right);
 			graph.nodes()[i-1].highlight();
+<<<<<<< HEAD
+=======
+			index.push(i-1);
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
 		}
 		
 		jsav.step();
 	}
 }  
 graph.nodes()[graph.nodes().length-1].highlight();
+<<<<<<< HEAD
+=======
+index.push(graph.nodes().length-1);
+/*for(i=0;i<graph.nodes().length;i++)
+{
+	graph.nodes()[i].hide();
+}
+for(i of index)
+{
+   graph.nodes()[i].show();
+}*/
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
    jsav.recorded();
 });

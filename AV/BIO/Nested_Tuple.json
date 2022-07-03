@@ -1,0 +1,22 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Create and Initialzation Nested Tuple with elements",
+        "sc2": "Print the element in tuple of index [1][1][0] :  ccc",
+        "sc3": "Print the element in tuple of index [3][1]  :  ii "
+   }
+    },
+    "code": {
+      "Python": [{
+        "url": "../../../SourceCode/Python/Bio/Nested_Tuple.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "t1": 1,
+          "p1": 3,
+          "p2": 4
+        }
+      }]   
+    }
+  }

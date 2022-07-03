@@ -1,4 +1,3 @@
-
 "use strict";
 $(document).ready(function () {
     var x=0;
@@ -73,8 +72,13 @@ $(document).ready(function () {
   
           if (diagonal_score + Match == current_score)
           {
+<<<<<<< HEAD
             jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Match)  Direction = Diagonal ( ↖ )");
              arrow=jsav.label("↖",{left:125, top:98});
+=======
+            jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Match) , Direction = Diagonal ( ↖️ )");
+             arrow=jsav.label("↖️",{left:125, top:98});
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
              s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
               s2_alignment = matrix.value(current_s1_index,0) + s2_alignment;
               current_s1_index--;
@@ -84,7 +88,11 @@ $(document).ready(function () {
         
           else if (vertical_score + Gap == current_score)
           {
+<<<<<<< HEAD
             jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) Max value ="+ matrix.value(current_s1_index-1,current_s2_index)+ "Direction = up ( ↑ )");
+=======
+            jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) ,Max value ="+ matrix.value(current_s1_index-1,current_s2_index)+ " ,Direction = up ( ↑ ) ");
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
             arrow=jsav.label("↑",{left:125, top:98});
             s1_alignment = "-" + s1_alignment;
                s2_alignment = matrix.value(current_s1_index,0) + s2_alignment;
@@ -92,8 +100,13 @@ $(document).ready(function () {
           }
           else if (diagonal_score + Mismatch == current_score)
           {
+<<<<<<< HEAD
             jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) Max value ="+ matrix.value(current_s1_index-1,current_s2_index-1)+ "Direction = Diagonal ( ↖ )");
             arrow=jsav.label("↖",{left:125, top:98});
+=======
+            jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) ,Max value ="+ matrix.value(current_s1_index-1,current_s2_index-1)+ " ,Direction = Diagonal ( ↖️ ) ");
+            arrow=jsav.label("↖️",{left:125, top:98});
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
             s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
               s2_alignment = matrix.value(current_s1_index,0) + s2_alignment;
               current_s1_index--;
@@ -101,7 +114,12 @@ $(document).ready(function () {
           }
           else
           {
+<<<<<<< HEAD
             jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) Max value ="+ matrix.value(current_s1_index,current_s2_index-1)+ "Direction = left ( ← )");
+=======
+
+jsav.umsg(matrix.value(0,current_s2_index)+"="+matrix.value(current_s1_index,0)+ " (Mismatch) Max value ="+ matrix.value(current_s1_index,current_s2_index-1)+ "Direction = left ( ← ) ");
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
             arrow=jsav.label("←",{left:125, top:98});
             s1_alignment = matrix.value(0,current_s2_index) + s1_alignment;
              s2_alignment = "-" + s2_alignment;
@@ -131,5 +149,11 @@ $(document).ready(function () {
     matrix2.layout();
     matrix.layout();
     jsav.animInfo();
+<<<<<<< HEAD
 	jsav.recorded();
 });
+=======
+  jsav.recorded();
+});
+
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412

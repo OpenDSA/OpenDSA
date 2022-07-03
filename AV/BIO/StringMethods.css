@@ -1,3 +1,11 @@
 .jsavcanvas {
-    width: 2000px;
+    width: 1344px;
+}
+ul.jsavcode.jsavcenter {
+    position: relative;
+    top: 60px;
+    left:-25px
+}
+div#StringMethods {
+    height:600px;
 }

@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
   var jsav = new JSAV("Filter");
-  var seq1="GATTCTATCTAACTA";
+  var seq1="GATTCTATCTTTCTA";
   var seq2="GTTCTATTCTAAC";
   var len1 = seq1.length;
   var len2 = seq2.length;
