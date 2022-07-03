@@ -39,7 +39,7 @@ $(document).ready(function () {
 
  /////////////
  var x= jsav.g.line(177, 240, 350, 240);
- var retrue=jsav.g.rect(350,205,132,70).addClass("pink")
+ var retrue=jsav.g.rect(350,205,132,70).addClass("green")
 
   jsav.label("price is 100",{left:377, top:215});
 

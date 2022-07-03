@@ -1,7 +1,7 @@
 {
     "translations": {
       "en": {
-        "sc1": "Inserting an element at the head of an array-based list requires shifting all existing elements in the array by one position toward the tail.",
+        "sc1": "Inserting an element at the head of an array-based list requires shifting all existing elements in the array by one position towards the tail.",
         "sc2": "Here is an array-based list with five elements. We will insert an element with value 23 to position 0.",
         "sc3": "Shift all existing elements one position to the right to make room.",
         "sc4": "Insert 23 into array position 0.",

@@ -1,10 +1,10 @@
 {
     "translations": {
       "en": {
-        "sc1": "Initialzation for a= 200 b= 33.",
+        "sc1": "Initialization for a= 200 b= 33.",
         "sc2": "Check if b is larger than a.",
-        "sc3": "If b is larger than a them if return true so Output will be b is greater than a.",
-        "sc4": "If b is not larger than a them if return false so Output will be b is not greater than a."
+        "sc3": "If b is larger than a then (if) returns true so Output will be b is greater than a.",
+        "sc4": "If b is not larger than a then (if) returns false so Output will be b is not greater than a."
    }
     },
     "code": {

@@ -1,10 +1,10 @@
 {
     "translations": {
       "en": {
-        "sc1": "Intilization to Price with value 100.",
-        "sc2": "Check if Price is greater than 100 If it ture will print (Price is greater than 100) else will check another condition.",
-        "sc3": "Check if Price is equal to 100 If it ture will print (Price is 100) else will check another condition.",
-        "sc4": "Check if Price is smaller than 100 (not need for another else cause the Price must be smaller , greater or equal)"
+        "sc1": "Initializing Price with value 100.",
+        "sc2": "Check if Price is greater than 100 it evaluates true and prints (Price is greater than 100) otherwise it will check another condition.",
+        "sc3": "Check if Price is equal to 100 it evaluates true and prints (Price is 100) otherwise it will check another condition.",
+        "sc4": "Check if Price is smaller than 100 (No need for another else cause the Price must be smaller , greater or equal to 100)"
       }
     },
     "code": {
