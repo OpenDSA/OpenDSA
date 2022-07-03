@@ -41,9 +41,9 @@ You can also have multiple else statements on the same line:
 
 **Example**
 
-One line if else statement, with 3 conditions:
 
-When run, produces the following output::
+
+One line if else statement, with 3 conditions:::
 
    a = 330 
    b = 330

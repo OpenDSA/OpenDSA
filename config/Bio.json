@@ -48,6 +48,7 @@
       "BIO/if_stat": {},
       "BIO/loops": {},
       "BIO/Dictionary": {},
+      "BIO/Tuple": {},
       "BIO/Regular Expressions": {},
       
       "PIFLA/RegExExercises":{

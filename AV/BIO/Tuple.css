@@ -1,0 +1,14 @@
+span.jsavvaluelabel{
+color:red;
+background-color:khaki;
+}
+
+div.jsavlabel.label_one {
+    color:  red;
+    font-size: medium;
+}
+
+.jsavcodeline {
+    position: relative;
+    left: 89%;
+}

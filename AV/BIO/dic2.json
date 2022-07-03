@@ -1,0 +1,39 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Make the frist child dictionary",
+        "sc2": "Make the second child dictionary.",
+        "sc3": "Make the thrid child dictionary.",
+        "sc4": "Now we Make the family which dictionary that contain the last three dictionary"
+   }
+    },
+    "code": {
+      "java_generic": [{
+        "url": "../../../SourceCode/Python/Bio/n_dic.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "ch1": 1,
+          "ch11": 2,
+          "ch111": 3,
+          "ch1111":4,
+          "ch2": 5,
+          "ch21": 6,
+          "ch211": 7,
+          "ch2111":8,
+          "ch3": 9,
+          "ch31": 10,
+          "ch311": 11,
+          "ch3111":12,
+          "ch4": 13,
+          "ch41": 14,
+          "ch411": 15,
+          "ch4111":16,
+          "ch41111":17
+          
+        }
+      }]   
+    }
+  }
+  

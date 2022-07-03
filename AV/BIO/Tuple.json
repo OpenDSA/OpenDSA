@@ -1,0 +1,30 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Initialzation tuple with elements",
+        "sc2": "Print first element in tuple :  a",
+        "sc3": "Print last element in tuple  :  9 ",
+        "sc4": "we make a new tuple and Concatenate the new and old tuples",
+        "sc5": "Print the updated tuple :  ('a', 1, 'e', 7.5, 'i', 'o', 9, 'hard work', 10)",
+        "sc6": "Print tuple slicing from index 0 to index 3 : ('a', 1, 'e')",
+        "sc7": "Print length of updated tuple : 9"
+   }
+    },
+    "code": {
+      "Python": [{
+        "url": "../../../SourceCode/Python/Bio/Tuple.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "t1": 1,
+          "p1": 2,
+          "p2": 3,
+          "t2": 5,
+          "p3":6,
+          "p4":8,
+          "p5":9
+        }
+      }]   
+    }
+  }

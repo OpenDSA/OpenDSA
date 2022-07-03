@@ -26,9 +26,6 @@ Definition and Examples of Regular Expressions
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RegExFS.js
    :output: show
 
-<<<<<<< HEAD
-**The usage of regular expressions:** 
-=======
 When run, produces the following output::
 
   'test1' does not equal 'test2'.
@@ -37,7 +34,7 @@ When run, produces the following output::
 **Definition** for Regular Expressions (RE): Given :math:`\Sigma`,
   #. :math:`\lambda`, and :math:`a \in \Sigma` are RE
   #. If :math:`r` and :math:`s` are regular expressions, then
->>>>>>> 99e8938bc43ea0bf87b3a3576fe4e32c4ec8ae79
+
 
       * Regular expressions are particularly useful for defining filters.
       * Regular expressions contain a series of characters that define a pattern of text to be matched—to make a filter more specialized, or general.
@@ -61,11 +58,7 @@ Regular Expression For Bioinformatics
 
 **What are the most commonly used operators?**
 
-.. odsafig:: Images/RE.PNG
- :width: 500
- :align: center
- :capalign: justify
- :figwidth: 60%
+
 
 .. inlineav:: RE_2 ss
    :links: AV/BIO/RE_2.css
