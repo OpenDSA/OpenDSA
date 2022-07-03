@@ -1,4 +1,4 @@
-list=["Ahmed",50,200,"MM",1.5]
+list=["Abc",50,200,"MM",1.5]
 list[4]
 list[0:2]=["Omar",200]
 list

@@ -427,26 +427,62 @@ This is a visualization for Suffix Tree
 
 Dictionary
 ----------
-A suffix tree is a tree data structure typically used to store a list of strings. It is also referred to as the compressed version of a trie, as, unlike a trie, each unique suffix in the list is compressed together and represented by a single node or branch in a suffix tree.
-There are many ways to construct a suffix tree, but the semantics that is shared by most if not all types of suffix trees are as follows:
-•	Build a generalized suffix tree for T_1 and T_2.
-•	Annotate each internal node in the tree with whether that node has at least one leaf node from each of T_1 and T_2
-•	Run a depth-first search over the tree to find the marked node with the highest string depth.
-Properties of a Suffix Tree
-Each tree edge is labeled by a substring of S
-Each internal node has at least 2 children
-.Each S(i) has its corresponding labeled path from root to a leaf, for 1 <i <n
-There are n leaves
-No edges branching out from the same internal node can start with the same character
+**Python dictionary** is an unordered collection of items. Each item of a dictionary has a key/value pair.
 
-Usage
-The application of suffix trees is diverse and inter-disciplinary in nature.
-In Computational Biology, suffix trees are widely used to identify the repeating structures in a DNA molecule. Similarly, it may be used to find the longest common sub-string or sub-sequence in a DNA sequence. These techniques are vital to the study of evolution and to trace similarities between organisms.
-Moreover, in Forensic Science, it is crucial to make sure that DNA samples are not contaminated. Using suffix trees, analysts can verify if a given DNA sequence is contaminated or not!
+Dictionaries are optimized to retrieve values when the key is known.
+
+**Creating Python Dictionary**
+
+Creating a dictionary is as simple as placing items inside curly braces {} separated by commas.
+
+* An item has a key and a corresponding value that is expressed as a pair (key: value).
+
+* While the values can be of any data type and can repeat, keys must be of immutable type (string, number or tuple with immutable elements) and must be unique.
 
 
+This how we insert value in the Dictionary::
 
-This is a visualization for Suffix Tree
+  "name": "DNA",
+  "sugar": "deoxyribose",
+  "bases": 4
+   }
+  
+  
+**Dictionary Items**
+
+* Dictionary items are ordered, changeable, and does not allow duplicates.
+
+* Dictionary items are presented in key:value pairs, and can be referred to by using the key name.
+This how we insert value in the Dictionary::
+
+  thisdict =	{
+  "name": "DNA",
+  "sugar": "deoxyribose",
+  "bases": 4
+   }
+  print(thisdict["brand"])
+
+
+
+This is the Output::
+
+ Ford
+
+**Dictionary Length**
+
+* To determine how many items a dictionary has, use the len() function:
+This how we get the length of dictionary::
+
+  thisdict =	{
+  "name": "DNA",
+  "sugar": "deoxyribose",
+  "bases": 4
+   }
+  print(len(thisdict))
+
+This is the Output the length of dictionary
+
+The list of the values is a view of the dictionary, meaning that any changes done to the dictionary will be reflected in the values list.
 
 .. inlineav:: Dictionary ss
    :long_name: DNA Sequencing example Slideshow
@@ -454,48 +490,54 @@ This is a visualization for Suffix Tree
    :scripts: AV/BIO/Dictionary.js
    :output: show
 
-Dictionary Operations
-~~~~~~~~~~~~~~~~~~~~~
-A suffix tree is a tree data structure typically used to store a list of strings. It is also referred to as the compressed version of a trie, as, unlike a trie, each unique suffix in the list is compressed together and represented by a single node or branch in a suffix tree.
-There are many ways to construct a suffix tree, but the semantics that is shared by most if not all types of suffix trees are as follows:
-•	Build a generalized suffix tree for T_1 and T_2.
-•	Annotate each internal node in the tree with whether that node has at least one leaf node from each of T_1 and T_2
-•	Run a depth-first search over the tree to find the marked node with the highest string depth.
-Properties of a Suffix Tree
-Each tree edge is labeled by a substring of S
-Each internal node has at least 2 children
-.Each S(i) has its corresponding labeled path from root to a leaf, for 1 <i <n
-There are n leaves
-No edges branching out from the same internal node can start with the same character
+**Why do we need dictionaries?**
 
-Usage
-The application of suffix trees is diverse and inter-disciplinary in nature.
-In Computational Biology, suffix trees are widely used to identify the repeating structures in a DNA molecule. Similarly, it may be used to find the longest common sub-string or sub-sequence in a DNA sequence. These techniques are vital to the study of evolution and to trace similarities between organisms.
-Moreover, in Forensic Science, it is crucial to make sure that DNA samples are not contaminated. Using suffix trees, analysts can verify if a given DNA sequence is contaminated or not!
+As a dictionary, keeps the elements in key-value mapping format and internally uses hashing for it; therefore, we can get a value from the dictionary by its key very quickly. In best cases, its complexity is O(1), whereas, in the worst case, its complexity can be O(n).
 
+If you want to know more about hashing check this article –> What is Hashing and Hash Table?
 
+**Changing and Adding Dictionary elements**
 
-This is a visualization for Suffix Tree
+Dictionaries are mutable. We can add new items or change the value of existing items using an assignment operator.
 
-.. inlineav:: DictionaryOperations ss
+If the key is already present, then the existing value gets updated. In case the key is not present, a new (key: value) pair is added to the dictionary.
+
+**Dictionary Items - Data Types**
+
+The values in dictionary items can be of <b>any data type
+
+This how we use different Data Types::
+
+  thisdict =	{
+  "name": "DNA",
+  "sugar": "deoxyribose",
+  "bases": 4
+  "U base" false
+   }
+**Nested Dictionaries**
+
+A dictionary can contain dictionaries, this is called nested dictionaries.
+
+**Example**
+Create a dictionary that contain three dictionaries:
+
+.. inlineav:: dic2 ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/DictionaryOperations.css 
-   :scripts: AV/BIO/DictionaryOperations.js
+   :links: AV/BIO/dic2.css 
+   :scripts: AV/BIO/dic2.js
    :output: show
+
 
 Tuple
 -----
-* Sets are used to store multiple items in a single variable.
-* Set is one of 4 built-in data types in Python used to store collections of data, the other 3 are List, Tuple, and Dictionary, all with different qualities and usage.
-* A set is a collection which is unordered, unchangeable*, and unindexed.
-* **Note:** Set items are **unchangeable**, but you can **remove items and add new items**
-It is also possible to use **the set() constructor** to make a set.
+* Tuples are used to store multiple items in a single variable.
+* Tuple is one of 4 built-in data types in Python used to store collections of data, the other 3 are List, Set, and Dictionary, all with different qualities and usage.
+* A tuple is a collection which is **ordered and unchangeable.**
+* Tuples are written with **round brackets.**
+**Allow Duplicates**
 ::
-   thisset = set(("apple", "banana", "cherry")) # note the double round-brackets
+   thistuple = ("apple", "banana", "cherry", "apple", "cherry")
 
-
-
-This is a visualization for Suffix Tree
 
 .. inlineav:: Tuple ss
    :long_name: DNA Sequencing example Slideshow
@@ -503,62 +545,15 @@ This is a visualization for Suffix Tree
    :scripts: AV/BIO/Tuple.js
    :output: show
 
-Tuple Operations
-~~~~~~~~~~~~~~~~
-A suffix tree is a tree data structure typically used to store a list of strings. It is also referred to as the compressed version of a trie, as, unlike a trie, each unique suffix in the list is compressed together and represented by a single node or branch in a suffix tree.
-There are many ways to construct a suffix tree, but the semantics that is shared by most if not all types of suffix trees are as follows:
-•	Build a generalized suffix tree for T_1 and T_2.
-•	Annotate each internal node in the tree with whether that node has at least one leaf node from each of T_1 and T_2
-•	Run a depth-first search over the tree to find the marked node with the highest string depth.
-Properties of a Suffix Tree
-Each tree edge is labeled by a substring of S
-Each internal node has at least 2 children
-.Each S(i) has its corresponding labeled path from root to a leaf, for 1 <i <n
-There are n leaves
-No edges branching out from the same internal node can start with the same character
 
-Usage
-The application of suffix trees is diverse and inter-disciplinary in nature.
-In Computational Biology, suffix trees are widely used to identify the repeating structures in a DNA molecule. Similarly, it may be used to find the longest common sub-string or sub-sequence in a DNA sequence. These techniques are vital to the study of evolution and to trace similarities between organisms.
-Moreover, in Forensic Science, it is crucial to make sure that DNA samples are not contaminated. Using suffix trees, analysts can verify if a given DNA sequence is contaminated or not!
+Nested_Tuple
+~~~~~~~~~~~~
+* Each element in the tuple including other tuples can obtained by index
 
-
-
-This is a visualization for Suffix Tree
-
-.. inlineav:: TupleOperations ss
+.. inlineav:: Nested_Tuple ss
    :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/TupleOperations.css 
-   :scripts: AV/BIO/TupleOperations.js
-   :output: show
-
-Nest Tuple
-~~~~~~~~~~
-A suffix tree is a tree data structure typically used to store a list of strings. It is also referred to as the compressed version of a trie, as, unlike a trie, each unique suffix in the list is compressed together and represented by a single node or branch in a suffix tree.
-There are many ways to construct a suffix tree, but the semantics that is shared by most if not all types of suffix trees are as follows:
-•	Build a generalized suffix tree for T_1 and T_2.
-•	Annotate each internal node in the tree with whether that node has at least one leaf node from each of T_1 and T_2
-•	Run a depth-first search over the tree to find the marked node with the highest string depth.
-Properties of a Suffix Tree
-Each tree edge is labeled by a substring of S
-Each internal node has at least 2 children
-.Each S(i) has its corresponding labeled path from root to a leaf, for 1 <i <n
-There are n leaves
-No edges branching out from the same internal node can start with the same character
-
-Usage
-The application of suffix trees is diverse and inter-disciplinary in nature.
-In Computational Biology, suffix trees are widely used to identify the repeating structures in a DNA molecule. Similarly, it may be used to find the longest common sub-string or sub-sequence in a DNA sequence. These techniques are vital to the study of evolution and to trace similarities between organisms.
-Moreover, in Forensic Science, it is crucial to make sure that DNA samples are not contaminated. Using suffix trees, analysts can verify if a given DNA sequence is contaminated or not!
-
-
-
-This is a visualization for Suffix Tree
-
-.. inlineav:: NestTuple ss
-   :long_name: DNA Sequencing example Slideshow
-   :links: AV/BIO/NestTuple.css 
-   :scripts: AV/BIO/NestTuple.js
+   :links: AV/BIO/Nested_Tuple.css 
+   :scripts: AV/BIO/Nested_Tuple.js
    :output: show
 
 Set

@@ -1,6 +1,5 @@
 #dic2 ul.jsavcode.jsavcenter {
     left: 10px;
-    
      position: relative;
     background: #fff;
       background-clip: border-box;
@@ -12,5 +11,6 @@
       border-image-source: none;
       border-image-width: 1;
     border-radius: 0.8rem;
-    border-image: linear-gradient(45deg, rgba(0, 0, 0, 0.774), rgba(255, 255, 255, 0.76)) 1;
+    border-image: linear-gradient(45deg, rgba(10, 100, 7, 0.774), rgba(115, 255, 64, 0.76)) 1;
+  
   }
