@@ -16,7 +16,7 @@ Decision making is required when we want to execute a code only if a certain con
 
 The **if…elif…else** statement is used in Python for decision making.
 
-Python if Statement Syntax
+Python if Statement Syntax:
 ::
    if test expression:
     statement(s)
@@ -34,15 +34,13 @@ Syntax of if...else::
  else:
     Body of else
 
-The **if..else** statement evaluates **test expression** and will execute the body of if only when the test condition is **True**.
+* The **if..else** statement evaluates **test expression** and will execute the body of if only when the test condition is **True**.If the condition is **False**, the body of **else** is executed. Indentation is used to separate the blocks.
 
-If the condition is **False**, the body of **else** is executed. Indentation is used to separate the blocks.
+* In Python, the body of the if statement is indicated by the indentation. 
 
-In Python, the body of the if statement is indicated by the indentation. 
+* The body starts with an indentation and the first unindented line marks the end.
 
-The body starts with an indentation and the first unindented line marks the end.
-
-Python interprets non-zero values as **True**. **None** and **0** are interpreted as False.
+* Python interprets non-zero values as **True**. **None** and **0** are interpreted as False.
 
 **Python supports the usual logical conditions from mathematics:**
 
@@ -62,14 +60,11 @@ Python interprets non-zero values as **True**. **None** and **0** are interprete
    :output: show
 
 
-
 **This technique is known as Ternary Operators, or Conditional Expressions.**
 
 You can also have multiple else statements on the same line:
 
 **Example**
-
-
 
 One line if else statement, with 3 conditions:::
 
@@ -80,7 +75,7 @@ One line if else statement, with 3 conditions:::
 Nested IF
 ---------
   
-We can have a **if...elif...else** statement inside another **if...elif...else**statement. This is called nesting in computer programming.
+We can have a **if...elif...else** statement inside another **if...elif...else** statement. This is called nesting in computer programming.
 
 Any number of these statements can be nested inside one another. Indentation is the only way to figure out the level of nesting. They can get confusing, so they must be avoided unless necessary.
 
@@ -90,4 +85,11 @@ Any number of these statements can be nested inside one another. Indentation is 
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/n_if.css 
    :scripts: AV/BIO/n_if.js
+   :output: show
+
+  **Exercises (IF , IF_Else)**
+
+.. inlineav:: ifEx ff
+   :links: AV/BIO/ifEx.css 
+   :scripts: DataStructures/PIFrames.js AV/BIO/ifEx.js
    :output: show

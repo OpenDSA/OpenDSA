@@ -26,8 +26,8 @@ $(document).ready(function () {
  jsav.umsg(interpret("sc2"));
  pseudo.setCurrentLine(0);      // Hack until we get multi-line method
  pseudo.unhighlight("p");
- pseudo.highlight("if");
- pseudo.highlight("pif");
+ pseudo.setCurrentLine("if");
+ pseudo.setCurrentLine("pif");
  jsav.step();
  
 ///////////////////
@@ -47,8 +47,8 @@ $(document).ready(function () {
  pseudo.setCurrentLine(0);      // Hack until we get multi-line method
  pseudo.unhighlight("if");
  pseudo.unhighlight("pif");
- pseudo.highlight("elif");
- pseudo.highlight("pelif");
+ pseudo.setCurrentLine("elif");
+ pseudo.setCurrentLine("pelif");
  jsav.step();
  var y= jsav.g.line(120, 295, 120, 370)
  var sq=jsav.g.rect(80, 384, 80,80).addClass("pink")
@@ -64,8 +64,8 @@ $(document).ready(function () {
  pseudo.setCurrentLine(0);      // Hack until we get multi-line method
  pseudo.unhighlight("elif");
  pseudo.unhighlight("pelif");
- pseudo.highlight("elif2");
- pseudo.highlight("pelif2");
+ pseudo.setCurrentLine("elif2");
+ pseudo.setCurrentLine("pelif2");
  jsav.step();
   jsav.recorded();
 

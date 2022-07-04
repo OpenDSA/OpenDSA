@@ -42,6 +42,7 @@
     },
 
     "DNA Pairwise Sequence Alignment": {
+      "BIO/intro": {},
       "BIO/Manhattan": {},
       "BIO/Dot Matrix": {},
       "BIO/Global Alignment": {},

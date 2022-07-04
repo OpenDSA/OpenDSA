@@ -1,0 +1,12 @@
+path {
+    stroke: rgba(0, 0, 0, 0.877)!important;
+  stroke-width: 0.5%;
+  }
+  .jsavcode.jsavcenter {
+    
+    position: relative;
+    left: 238px;
+    top: 150px;
+    border:solid 5px #a19da045;
+
+  }
