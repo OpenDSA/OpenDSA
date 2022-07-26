@@ -125,7 +125,7 @@ Iterator Design Decisions
    </a>
 
 
-.. admonition :: Clarification
+.. admonition:: Clarification
    Iterators that are a nested class inside the linked structure (not subclasses) are more efficient than Iterators that are independent classes.
 
 
