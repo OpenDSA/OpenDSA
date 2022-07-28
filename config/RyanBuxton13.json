@@ -46,50 +46,8 @@
     "required": true
   },
   "chapters": {
-    "About": {
-      "CommandLine/About": {}
-    },
-    "Command Line - pwd": {
-      "CommandLine/CommandLinePwd": {}
-    },
-    "Command Line - cd": {
-      "CommandLine/CommandLineCd": {}
-    },
-    "Command Line - cd root": {
-      "CommandLine/CommandLineCdRoot": {}
-    },
-    "Command Line - cd parent": {
-      "CommandLine/CommandLineCdParent": {}
-    },
-    "Command Line - ls": {
-      "CommandLine/CommandLineLs": {}
-    },
-    "Command Line - touch": {
-      "CommandLine/CommandLineTouch": {}
-    },
-    "Command Line - mkdir": {
-      "CommandLine/CommandLineMkdir": {}
-    },
-    "Command Line - rm": {
-      "CommandLine/CommandLineRm": {}
-    },
-    "Command Line - rm -r": {
-      "CommandLine/CommandLineRmr": {}
-    },
-    "Command Line - rmdir": {
-      "CommandLine/CommandLineRmdir": {}
-    },
-    "Command Line - mv": {
-      "CommandLine/CommandLineMv": {}
-    },
-    "Command Line - cp": {
-      "CommandLine/CommandLineCp": {}
-    },
     "Command Line - Challenge": {
       "CommandLine/CommandLineChallenge": {}
-    },
-    "Git": {
-      "Development/Git": {}
     }
   }
 }

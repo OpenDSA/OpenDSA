@@ -82,9 +82,7 @@
     "Command Line - mv": {
       "CommandLine/CommandLineMv": {}
     },
-    "Command Line - cp": {
-      "CommandLine/CommandLineCp": {}
-    },
+
     "Command Line - Challenge": {
       "CommandLine/CommandLineChallenge": {}
     },
