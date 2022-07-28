@@ -14,3 +14,12 @@ Command Line - mv
 mv
 -----
 .. avembed:: AV/Development/CommandLine/exercises/mv/commandLineMv.html pe 
+
+cp
+------
+.. avembed:: AV/Development/CommandLine/exercises/cp/commandLineCp.html pe 
+
+Challenge
+----------
+.. avembed:: AV/Development/CommandLine/exercises/challenge/commandLineChallenge.html pe 
+
