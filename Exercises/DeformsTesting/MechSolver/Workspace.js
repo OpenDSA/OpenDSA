@@ -11,7 +11,7 @@
  //Need to add globalJSAVobject for event logger
 class Workspace
 {
-    constructor(jsavCanvasObj, dim_obj, workspaceid, geb, gpr)
+    constructor(jsavCanvasObj, dim_obj, workspaceid, geb, gpr, bgcolor)
     {
         this.id=workspaceid;
         this.name="wk"+workspaceid;
@@ -50,6 +50,9 @@ class Workspace
             }
         }
         
+        // Stores the background color
+        this.bgcolor = bgcolor;
+
         // Hold references to the individual elements in the box,
         // To delete later when required.
         this.elements = [];
@@ -113,7 +116,7 @@ class Workspace
                 this.DIMENSIONS["WIDTH"],
                 this.DIMENSIONS["HEIGHT"],
                 {
-                    "fill":"white",
+                    "fill":this.bgcolor,
                     "r": 10,
                 }),
             "div": (list => 
@@ -286,52 +289,6 @@ class Workspace
         this.elements[4]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
         this.elements[5]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
         this.elements[6]["div"].style.top = this.DIMENSIONS["POSITION_Y"]-15+"px";
-    }
-    selectWorkspaceColor()
-    {
-        /*colors = {
-            aqua: "#00ffff",
-            azure: "#f0ffff",
-            beige: "#f5f5dc",
-            blue: "#0000ff",
-            cyan: "#00ffff",
-            darkblue: "#00008b",
-            darkcyan: "#008b8b",
-            darkgreen: "#006400",
-            darkkhaki: "#bdb76b",
-            darkmagenta: "#8b008b",
-            darkolivegreen: "#556b2f",
-            darkorange: "#ff8c00",
-            darkorchid: "#9932cc",
-            darkred: "#8b0000",
-            darksalmon: "#e9967a",
-            darkviolet: "#9400d3",
-            fuchsia: "#ff00ff",
-            gold: "#ffd700",
-            indigo: "#4b0082",
-            khaki: "#f0e68c",
-            lightblue: "#add8e6",
-            lightcyan: "#e0ffff",
-            lightgreen: "#90ee90",
-            lightgrey: "#d3d3d3",
-            lightpink: "#ffb6c1",
-            lightyellow: "#ffffe0",
-            lime: "#00ff00",
-            magenta: "#ff00ff",
-            maroon: "#800000",
-            orange: "#ffa500",
-            pink: "#ffc0cb",
-            silver: "#c0c0c0",
-            white: "#ffffff",
-            yellow: "#ffff00"
-        };
-        var result;
-        var count = 0;
-        for (var prop in colors)
-            if (Math.random() < 1/++count)
-                result = prop;
-        return result; TODO*/
-        return "#FBEEE4";
     }
     addNewEquation()
     {
@@ -2056,6 +2013,17 @@ class Workspace
         for(var unknownName in variableSet)
         {
             var value = soln[unknownName];
+
+            // If the variable has been computed already, remove old box for it.
+            for(var i_soln in this.LIST_OF_SOLUTIONS_IN_WORKSPACE)
+            {
+                // update this condition to properly check for unknown names in case of associations set up in different order.
+                // eg: assoc is (x_y, p_q), original solution has x_y, recomputed answer has p_q
+                if(this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_soln].variable == unknownName)
+                    this.LIST_OF_SOLUTIONS_IN_WORKSPACE[i_soln].element.deleteButton
+                    .element[0].dispatchEvent(new Event("click"));
+            }
+            
             // if(variableSet[unknownName].length == 4)
             //     value = soln[unknownName]*variableSet[unknownName]["correction"];
             // else
@@ -2110,6 +2078,20 @@ class Workspace
 
             this.lastSolution = currSolution;
             
+            // Update the corresponding solution boxes though.
+            // Disregard trickle-solving for now; if student chooses to solve in steps,
+            // then changes will be reflected only after they solve for the corresponding step.
+            for(var i_solnboxkey in Window.globalSolutionBoxes)
+            {
+                // update this condition to properly check for unknown names in case of associations set up in different order.
+                // eg: assoc is (x_y, p_q), original solution has x_y, recomputed answer has p_q
+                if(Window.globalSolutionBoxes[i_solnboxkey].source == unknownName)
+                {
+                    this.LIST_OF_SOLUTIONS_IN_WORKSPACE[this.solutionCounter].element.valueDisplay.dispatchEvent(new Event("click"))
+                    document.querySelector(`span.solution-box[data-index = '${i_solnboxkey}']`).dispatchEvent(new Event("click"))
+                }
+            }
+
             // Updating solution counter (Bookkeeping)
             this.solutionCounter++;
 

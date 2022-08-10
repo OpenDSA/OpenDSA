@@ -188,9 +188,12 @@
     font-weight: 400;
     z-index: 1000;
     width: 270px;
-    height: 240px;
+    height: 574px;
     right: -274px;
+    /* right: 0px; */
     top: 152px;
+    /* position: -webkit-sticky;
+    position: sticky; */
    }
 
 .notifelement {

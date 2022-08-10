@@ -16,6 +16,45 @@ class WorkspaceList
         this.globalEquationBank = equationBank;
         this.globalPointerReference = globalPointerReference;
         this.workspaceCounter=1;
+        
+        this.colors = {
+            azure: {colorcode: "#f0ffff", selected: false},
+            aquamarine: {colorcode: "#7FFFD4", selected: false},
+            blanchedalmond: {colorcode: "#FFEBCD", selected: false},
+            beige: {colorcode: "#f5f5dc", selected: false},
+            babyblue: {colorcode: "#6495ED", selected: false},
+            coral: {colorcode: "#FF7F50", selected: false},
+            darksalmon: {colorcode: "#e9967a", selected: false},
+            darkturquoise: {colorcode: "#00CED1", selected: false},
+            greenyellow: {colorcode: "#ADFF2F", selected: false},
+            ivory: {colorcode: "#FFFFF0", selected: false},
+            lavender: {colorcode: "#E6E6FA", selected: false},
+            LavenderBlush: {colorcode: "#FFF0F5", selected: false},
+            LightBlue: {colorcode: "#ADD8E6", selected: false},
+            gold: {colorcode: "#ffd700", selected: false},
+            khaki: {colorcode: "#f0e68c", selected: false},
+            orange: {colorcode: "#ffa500", selected: false},
+            pink: {colorcode: "#ffc0cb", selected: false},
+            silver: {colorcode: "#c0c0c0", selected: false},
+            white: {colorcode: "#ffffff", selected: false},
+            yellow: {colorcode: "#ffff00", selected: false},
+            LightCyan: {colorcode: "E0FFFF", selected: false},
+            LightGoldenRodYellow: {colorcode: "FAFAD2", selected: false},
+            LightGray: {colorcode: "D3D3D3", selected: false},
+            LightGreen: {colorcode: "90EE90", selected: false},
+            LightPink: {colorcode: "FFB6C1", selected: false},
+            LightSalmon: {colorcode: "FFA07A", selected: false},
+            LightSeaGreen: {colorcode: "20B2AA", selected: false},
+            LightSkyBlue: {colorcode: "87CEFA", selected: false},
+            PaleGoldenRod: {colorcode: "EEE8AA", selected: false},
+            PaleGreen: {colorcode: "98FB98", selected: false},
+            PaleTurquoise: {colorcode: "AFEEEE", selected: false},
+            PaleVioletRed: {colorcode: "DB7093", selected: false},
+            PapayaWhip: {colorcode: "FFEFD5", selected: false},
+            PeachPuff: {color: "FFDAB9", selected: false},
+            Plum: {colorcode: "DDA0DD", selected: false},
+        };
+        this.remainingcolors = 0; // To be set on the first call to the function
 
         this.DIMENSIONS = {
             "BASE_NWK_UPPER_CORNER_X": dim_obj["WORKSPACE_LIST"]["X"]+3,
@@ -83,6 +122,7 @@ class WorkspaceList
         this.downloadButton = document.createElement("input");
         this.downloadButton.setAttribute("type", "button");
         this.downloadButton.setAttribute("value", "Download Solution Attempt");
+        this.downloadButton.setAttribute("id", "workspaceSummaryDownload");
         downloadButtonText.element[0].appendChild(this.downloadButton);
         downloadButtonText.element[0].setAttribute("title", "Downloads the current workspace (equations and values computed) and answers submitted");
         
@@ -123,6 +163,34 @@ class WorkspaceList
         // Update: This is commented out since it uses WindowManager.extendCanvas() which has not been defined yet.
         // This will be called later.
     }
+    selectWorkspaceColor()
+    {
+        let result;
+        
+        // Check if any colors are remaining
+        if(this.remainingcolors == 0)
+        {
+            for (let bg in this.colors) this.colors[bg]["selected"] = false;
+            this.remainingcolors = Object.keys(this.colors).length;
+        }
+
+        // Select a random color that hasn't been picked before
+        while(true)
+        {   
+            let bgindex = Math.floor(Math.random() * Object.keys(this.colors).length);
+            let bg = Object.keys(this.colors)[bgindex];
+            if (this.colors[bg]["selected"] == false)
+            {
+                result = bg;
+                break;
+            }
+        }
+        
+        this.colors[result]["selected"] = true;
+        this.remainingcolors--;
+
+        return result;
+    }
     addNewWorkspace()
     {
         // Add the new object
@@ -132,7 +200,8 @@ class WorkspaceList
             this.workspaceCounter,
             this.globalEquationBank,
             this.globalPointerReference,
-            this.workspace_list
+            // this.workspace_list,
+            this.selectWorkspaceColor()
             );        
         this.workspace_list[this.workspaceCounter] = newWkspace;
         this.workspaceCounter++;
