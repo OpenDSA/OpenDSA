@@ -41,13 +41,14 @@ Formatting and Indentation
 
 Documentation and Commenting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Missing/insufficient class description
-Missing/insufficient field comments
-Missing/insufficient method comments
-Missing/incomplete JavaDoc tags
-Missing/incomplete args description
-Wrong/Misleading comments
-Extraneous comments or comments no more descriptive than code
+
+* Missing/insufficient class description
+* Missing/insufficient field comments
+* Missing/insufficient method comments
+* Missing/incomplete JavaDoc tags
+* Missing/incomplete args description
+* Wrong/Misleading comments
+* Extraneous comments or comments no more descriptive than code
 
 
 Other matters of style

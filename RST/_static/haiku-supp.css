@@ -1,4 +1,17 @@
 @charset "utf-8";
+@font-face {
+  font-family: 'Avenir Next';
+  src: url("fonts/AvenirNextLTPro-Regular.otf");
+  }
+@font-face {
+    font-family: 'Hiragino Kaku Gothic Pro';
+    src: url("fonts/hiragino-kaku-gothic-pro-w3.otf");
+    }
+@font-face {
+    font-family: 'Hiragino Kaku Gothic ProN';
+    src: url("fonts/hiragino-kaku-gothic-pron-w3.otf");
+    }
+    
 /* normalize.css v3.0.0 | MIT License | git.io/normalize */
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 body{margin:0}
@@ -48,7 +61,7 @@ a:link {
     text-decoration: none;
     color: #d93900;
 }th,td{vertical-align:middle;border:solid 1px #000;font-weight:normal;text-align:left}
-html,body{font-family:"Avenir Next","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","Meiryo","メイリオ","ＭＳ ゴシック",sans-serif;color:#002b36;background-color:#fefefe;height:100%}
+html,body{font-family:"Avenir Next","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif;color:#002b36;background-color:#fefefe;height:100%}
 html{font-size:62.5%}
 body{font-size:1.6px;font-size:1.6rem;text-rendering:optimizeLegibility;text-align:justify;text-justify:distribute;-ms-text-justify:distribute}
 div{font-size:1.6px;font-size:1.6rem}

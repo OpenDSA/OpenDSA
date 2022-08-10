@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 
   //frame 3
-  av.umsg("<br>Unfortunately, the Halting Problem, as this is called, cannot be solved. There will never be a computer program that can positively determine, for an arbitrary program <i>P</i>, if P will halt for all input. Nor will there even be a computer program that can positively determine if arbitrary program <i>P</i> will halt for a specified input <i>I</i>. ");
+  av.umsg("<br>Unfortunately, the Halting Problem, as this is called, cannot be solved. There will never be a computer program that can positively determine, for an arbitrary program $P$, if $P$ will halt for all input. Nor will there even be a computer program that can positively determine if arbitrary program $P$ will halt for a specified input $I$. ");
   av.step();
 
   //4
@@ -44,20 +44,7 @@ $(document).ready(function(){
 
 
   //frame 6
-  av.umsg("The following is a famous piece of code. The sequence of values that is assigned to <i>n</i> by this code is sometimes called the <i>Collatz sequence</i> for input value <i>n</i>. <br><br>Does this code fragment halt for all values of <i>n</i>? Nobody knows the answer. Every input that has been tried halts. <br><br>But does it always halt? Note that for this code fragment, because we do not know if it halts, we also do not know an upper bound for its running time. As for the lower bound, we can easily show <i>Ω(logn)</i>. <br><br><br><br><b>while</b> (n > 1)<br>&nbsp;&nbsp;<b>if</b> (ODD(n))<br>&nbsp;&nbsp;&nbsp;&nbsp;n = 3 * n + 1;<br>&nbsp;&nbsp;<b>else</b><br>&nbsp;&nbsp;&nbsp;&nbsp;n = n / 2;");
-  av.step();
-
-
-  //frame 7
-  av.umsg("<br><b>Todo</b><br>&nbsp;&nbsp;type:&nbsp; Exercise<br>Need an exercise to study lower bound on Colletz function. ");
-  av.step();
-
-  //frame 8
-  av.umsg("Personally, I have faith that someday some smart person will completely analyze the Collatz function, proving once and for all that the code fragment halts for all values of <i>n</i>. Doing so may well give us techniques that advance our ability to do algorithm analysis in general.<br><br> Unfortunately, proofs from <i>computability</i> —— the branch of computer science that studies what is impossible to do with a computer; compel us to believe that there will always be another bit of program code that we cannot analyze. This comes as a result of the fact that the Halting Problem is unsolvable.");
-  av.step();
-
-  //9
-  av.umsg(Frames.addQuestion("q2"));
+  av.umsg("The following is a famous piece of code. The sequence of values that is assigned to $n$ by this code is sometimes called the <b>Collatz sequence</b> for input value $n$. <br><br>Does this code fragment halt for all values of <i>n</i>? Nobody knows the answer. Every input that has been tried halts. <br><br>But does it always halt? Note that for this code fragment, because we do not know if it halts, we also do not know an upper bound for its running time. As for the lower bound, we can easily show $\\Omega(\\log n)$. <br><br><br><br><b>while</b> (n > 1)<br>&nbsp;&nbsp;<b>if</b> (ODD(n))<br>&nbsp;&nbsp;&nbsp;&nbsp;n = 3 * n + 1;<br>&nbsp;&nbsp;<b>else</b><br>&nbsp;&nbsp;&nbsp;&nbsp;n = n / 2;");
   av.step();
 
   //10

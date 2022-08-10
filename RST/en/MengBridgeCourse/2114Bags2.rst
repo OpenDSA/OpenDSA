@@ -6,8 +6,8 @@
 .. avmetadata::
    :author: Molly Domino
 
-Introduction to Bags
-====================
+Introduction to Linked Bags
+===========================
 
 Objectives
 ----------
@@ -19,14 +19,13 @@ Upon completion of this module, students will be able to:
 * Build and populate Bags in Java
 
 
-
 Linked Bags
 -----------
 
 Suggested Reading:
 ~~~~~~~~~~~~~~~~~~
 
-Suggested Reading:  Chapter 3 Bag Implementation That Links Data from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
+Suggested Reading:  **Chapter 3: Bag Implementation That Links Data** from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 Introduction to Linked Bags
 ---------------------------
@@ -41,20 +40,19 @@ Introduction to Linked Bags
      </center>
 
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Linked Bag Intro PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.3-LinkedBagIntro.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.3-LinkedBagIntro.pdf</img>
    </a>
 
-LinkedBag add and toArray video
--------------------------------
 
-[12:45] LinkedBag add and toArray Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LinkedBag add and toArray
+--------------------------
+
+[12:45] LinkedBag add and toArray
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -63,26 +61,33 @@ LinkedBag add and toArray video
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedBagAddToArray PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.4.1-LinkedBagAddToArray.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.4.1-LinkedBagAddToArray.pdf</img>
    </a>
 
-
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
-Demo Video ExLinkedBagJunit
----------------------------
+ExLinkedBagJunit Demonstration
+------------------------------
 
-[7:14] ExLinkedBagJunit Video Demonstration
+Code examples
+~~~~~~~~~~~~~
+.. admonition:: Try It Yourself
+
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex08.05-LinkedBagsWithJUnit". Use this example to follow along with the following video. Feel free to experiment.
+
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+
+[7:14] ExLinkedBagJUnit  Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
@@ -92,28 +97,17 @@ Demo Video ExLinkedBagJunit
      </center>
 
 
-Zipped file example
-~~~~~~~~~~~~~~~~~~~
+LinkedBag getFrequencyOf() and contains()
+-----------------------------------------
 
-Download to run and explore on your own in eclipse:
+.. admonition:: Try It Yourself
+    In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex08.05-LinkedBagsWithJUnit"
 
-TODO: fix URLS.
+    Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
-.. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Link Here">
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
-
-LinkedBag getFrequencyOf and contains video
--------------------------------------------
-
-[14:00] LinkedBag getFrequencyOf and contains Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[14:00] LinkedBag getFrequencyOf() and contains() Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -122,27 +116,25 @@ LinkedBag getFrequencyOf and contains video
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedFreqContains PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.6.1-LinkedFreqContains.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.6.1-LinkedFreqContains.pdf</img>
    </a>
 
-
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
 LinkedBag Removing an item
 ---------------------------
 
-[13:44] LinkedBag Removing an Item Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:44] LinkedBag Removing an Item
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -151,13 +143,11 @@ LinkedBag Removing an item
      </center>
 
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedRemove PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.2.7.1-LinkedRemove.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.2.7.1-LinkedRemove.pdf</img>
    </a>
 
 **Tradeoffs of using a linked chain implementation for a bag**
@@ -174,9 +164,9 @@ TODO: fix URLS.
 
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
@@ -193,10 +183,6 @@ Recall that the objectives for this module were to:
 * State key characteristics of Bags in Java
 * Build and populate Bags in Java
 
-
-By this point, you should have achieved each of these objectives. If you have
-questions or concerns about your ability to accomplish each of these, please
-reach out to the instructor of the course.
 
 Programming Practice: LinkedBags
 --------------------------------

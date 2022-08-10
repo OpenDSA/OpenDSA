@@ -113,77 +113,71 @@ Take a look at how the implementation (the code) matches with the design documen
 (the UML class diagram).
 
 
-TODO: fix URLS.
+.. admonition:: The Bag Interface
 
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="DownloadLinkHere">
-   </a>
-
-.. code-block:: java
-
-   package bag;
-   /**
-   An interface that describes the operations of a bag of objects.
-   A bag is an unordered collection of objects of a particular types.
-   Duplicates are allowed.
-   @author Frank M. Carrano
-   @author Timothy M. Henry
-   @author Margaret Ellis
-   @version April 2020
-   */
-   public interface BagInterface<T>
-   {
-   /** Gets the current number of entries in this bag.
-      @return  The integer number of entries currently in the bag. */
-   public int getCurrentSize();
-
-   /** Sees whether this bag is empty.
-      @return  True if the bag is empty, or false if not. */
-   public boolean isEmpty();
-
-   /** Adds a new entry to this bag.
-      @param newEntry  The object to be added as a new entry.
-      @return  True if the addition is successful, or false if not. */
-   public boolean add(T newEntry);
-
-   /** Removes one unspecified entry from this bag, if possible.
-            @return  Either the removed entry, if the removal.
-                was successful, or null. */
-   public T remove();
-
-   /** Removes one occurrence of a given entry from this bag.
-           @param anEntry  The entry to be removed.
-           @return  True if the removal was successful, or false if not. */
-       public boolean remove(T anEntry);
-
-   /** Removes all entries from this bag. */
-   public void clear();
-
-   /** Counts the number of times a given entry appears in this bag.
-      @param anEntry  The entry to be counted.
-            @return  The number of times anEntry appears in the bag. */
-   public int getFrequencyOf(T anEntry);
-
-   /** Tests whether this bag contains a given entry.
-      @param anEntry  The entry to locate.
-      @return  True if the bag contains anEntry, or false if not. */
-   public boolean contains(T anEntry);
-
-   /** Retrieves all entries that are in this bag.
-      @param values  An array of generics to be filled with bag contents, if
-              not large enough will throw ArrayIndexOutOfBoundsException
-      @return  The values array filled with the entries in the bag.
-          Note: If the bag is empty, the array is returned unmodified */
-   public T[] toArray(T[] values);
+    .. code-block:: java
+    
+       package bag;
+       /**
+       An interface that describes the operations of a bag of objects.
+       A bag is an unordered collection of objects of a particular types.
+       Duplicates are allowed.
+       @author Frank M. Carrano
+       @author Timothy M. Henry
+       @author Margaret Ellis
+       @version April 2020
+       */
+       public interface BagInterface<T>
+       {
+       /** Gets the current number of entries in this bag.
+          @return  The integer number of entries currently in the bag. */
+       public int getCurrentSize();
+    
+       /** Sees whether this bag is empty.
+          @return  True if the bag is empty, or false if not. */
+       public boolean isEmpty();
+    
+       /** Adds a new entry to this bag.
+          @param newEntry  The object to be added as a new entry.
+          @return  True if the addition is successful, or false if not. */
+       public boolean add(T newEntry);
+    
+       /** Removes one unspecified entry from this bag, if possible.
+                @return  Either the removed entry, if the removal.
+                    was successful, or null. */
+       public T remove();
+    
+       /** Removes one occurrence of a given entry from this bag.
+               @param anEntry  The entry to be removed.
+               @return  True if the removal was successful, or false if not. */
+           public boolean remove(T anEntry);
+    
+       /** Removes all entries from this bag. */
+       public void clear();
+    
+       /** Counts the number of times a given entry appears in this bag.
+          @param anEntry  The entry to be counted.
+                @return  The number of times anEntry appears in the bag. */
+       public int getFrequencyOf(T anEntry);
+    
+       /** Tests whether this bag contains a given entry.
+          @param anEntry  The entry to locate.
+          @return  True if the bag contains anEntry, or false if not. */
+       public boolean contains(T anEntry);
+    
+       /** Retrieves all entries that are in this bag.
+          @param values  An array of generics to be filled with bag contents, if
+                  not large enough will throw ArrayIndexOutOfBoundsException
+          @return  The values array filled with the entries in the bag.
+              Note: If the bag is empty, the array is returned unmodified */
+       public T[] toArray(T[] values);
+    
+    
+       } // end BagInterface
 
 
-   } // end BagInterface
-
-
-[7:28] Documentation of Bag Interface Methods Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7:28] Documentation of Bag Interface Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -195,8 +189,8 @@ TODO: fix URLS.
 Using Bags
 ----------
 
-[4:34] Using Bags Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[4:34] Using Bags 
+~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -206,9 +200,9 @@ Using Bags
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -229,8 +223,8 @@ Suggested Reading
 Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 
-[9:39] Fixed-Size Array Implementation Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:39] Fixed-Size Array Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -239,8 +233,8 @@ Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstract
      </center>
 
 
-ExArrayBagJunit Image
-~~~~~~~~~~~~~~~~~~~~~
+ArrayBagsWithJUnitExample Image
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's take a look at the evolution of our design specification.
 
@@ -291,8 +285,8 @@ depicted below.
    :align: center
 
 
-[8:17] ExArrayBagJunit Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:17] ArrayBagsWithJUnit Example Demonstration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -301,36 +295,28 @@ depicted below.
      </center>
 
 
-Zipped File Example
-~~~~~~~~~~~~~~~~~~~
+Code Example
+~~~~~~~~~~~~
 
-Download to run and explore on your own in eclipse:
+.. admonition:: Try It Yourself
 
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="Download Link Here">
-   </a>
-
-TODO: fix URLS.
-
-This  `link <>`_ will direct you to the steps to `download and import <>`_ previously written code into the Eclipse environment.
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.07-ArrayBagsWithJUnit". 
+  
+  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 Demo More bag method implementation
 -----------------------------------
 
 
-[5:28] More Bag Method Implementation Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:28] More on Bag Method Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -339,14 +325,12 @@ Demo More bag method implementation
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.7.1-ArrayBagMethods.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.7.1-ArrayBagMethods.pdf</img>
    </a>
-
 
 UML Diagram
 ~~~~~~~~~~~
@@ -367,17 +351,17 @@ This implementation of the ArrayBag does not impose such a constraint.
    :align: center
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
 Methods that Remove and Design Improvement Lesson and Demo
 ----------------------------------------------------------
 
-[5:28] Methods that Remove and Design Improvement Video Demonstration, Part 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:28] Methods that Remove and Design Improvement, Part 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -385,18 +369,15 @@ Methods that Remove and Design Improvement Lesson and Demo
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_afd08368&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_k9ercyan" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.1-BagsDesignImprovePart1.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.1-BagsDesignImprovePart1.pdf</img>
    </a>
 
-
-[6:45] Methods that Remove and Design Improvement Video Demonstration, Part 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[6:45] Methods that Remove and Design Improvement, Part 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -405,18 +386,15 @@ TODO: fix URLS.
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.2-BagsDesignImprovePart2.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.2-BagsDesignImprovePart2.pdf</img>
    </a>
 
-
-[9:03] Methods that Remove and Design Improvement Video Demonstration, Part 3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+[9:03] Methods that Remove and Design Improvement, Part 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -424,28 +402,25 @@ TODO: fix URLS.
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_54w07n1k&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_dapwwqt5" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.3-BagsDesignImprovePart3.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.8.3-BagsDesignImprovePart3.pdf</img>
    </a>
 
-
 Checkpoint 4
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint4.html ka
+.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 
 Array resizing description and coding Demo
 ------------------------------------------
 
-[14:47] Array Resizing Video Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[14:47] Array Resizing
+~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -454,15 +429,12 @@ Array resizing description and coding Demo
      <iframe id="kaltura_player_1643381413" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player_1643381413&entry_id=1_10v1aoku" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
      </center>
 
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Download Powerpoint here">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.9.1-DoubleArray.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.7.9.1-DoubleArray.pdf</img>
    </a>
-
 
 Tradeoffs of using an array implementation for a bag
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -25,6 +25,54 @@ Upon completion of this module, students will be able to:
 [10:51] Intro to Linked Chains of Nodes
 ---------------------------------------
 
+.. admonition:: The LinkedChain Class
+   
+   .. code-block:: java
+
+      package linkedchain;
+      
+      public class LinkedChain {
+      
+         private Node head; // Reference to first node
+         private int numberOfEntries;
+      
+         public static void main(String[] args) {
+      
+            LinkedChain chain = new LinkedChain();
+            chain.add(10);
+            chain.add(-2);
+            chain.add(57);
+         }
+      
+         public LinkedChain() {
+            head = null;
+            numberOfEntries = 0;
+         } // end default constructor
+      
+         public void add(int newEntry) {
+            // Add to beginning of chain:
+            Node newNode = new Node(newEntry);
+            newNode.next = head; // Make new node reference rest of chain
+            head = newNode; // New node is at beginning of chain
+            numberOfEntries++;
+         } // end add
+      
+         private class Node {
+            private int data;
+            private Node next; // Link to next node
+      
+            private Node(int dataPortion) {
+               this(dataPortion, null);
+            } // end constructor
+      
+            private Node(int dataPortion, Node nextNode) {
+               data = dataPortion;
+               next = nextNode;
+            } // end constructor
+         } // end Node
+      }
+
+
 .. raw:: html
 
      <center>
@@ -33,14 +81,15 @@ Upon completion of this module, students will be able to:
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
-[11:31] Demo in Visualizer Video
---------------------------------
+
+[11:31] Demo in Visualizer
+--------------------------
 
 .. raw:: html
 
@@ -49,33 +98,24 @@ Checkpoint 1
      </center>
 
 
-TODO: fix URLS.
 
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="LinkedChainCode.pptx">
-   </a>
-
-
-TODO: fix URLS.
-
-.. raw:: html
-
-   <a href="" download>
-   <img src="" alt="Linked Chain Java file">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.3-LinkedChainCode.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.1.3-LinkedChainCode.pdf</img>
    </a>
 
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
-[5:14] Contains Animation Video
--------------------------------
+[5:14] Contains() Animation
+---------------------------
 
 .. raw:: html
 
@@ -84,30 +124,9 @@ Checkpoint 2
      </center>
 
 
-
-
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Contains Animation PPT">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.4-LinkedChainContains.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 8.1.4-LinkedChainContains.pdf</img>
    </a>
-
-
-
-Unavailable
------------
-
-.. extrtoolembed:: 'Unavailable'
-   :workout_id: 1727
-
-
-
-NOTE:
-
-Above is a temporary workout I put in place that would contain the following exercises
-TODO.  Remove this note and create the actual workout when confirmed.
-
-
-When fixed this will be called: "Coding Practice: Linked Chains"
