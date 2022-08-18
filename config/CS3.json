@@ -99,6 +99,7 @@
       "Tutorials/junitstart": {}, 
       "Tutorials/junitbasic": {}, 
       "Tutorials/junitcoverage": {},
+      "Tutorials/mutationtesting": {},
       "Testing/TestIntro": {},
       "Testing/TestCoverage": {
         "TriangleApplet": {
