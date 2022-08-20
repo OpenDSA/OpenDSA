@@ -79,6 +79,13 @@ Window.clearGlobalPointerReference = function() {
         // console.log(Window.eqbank.currentSelectedEquationObject);
         this.globalPointerReference.currentClickedObject.element.classList.remove("selectedvalue")
     }
+    else if(
+        Window.globalPointerReference.currentClickedObjectType == "notif-feedback-pointer"
+    )
+    {
+        // You already clicked on this element to show where an error occurred, time to disable it all.
+        Window.globalPointerReference.currentClickedObject.dispatchEvent(new Event("click"))
+    }
 
     // Last but not the least, this always gets done.
     Window.globalPointerReference.currentClickedObject = null;

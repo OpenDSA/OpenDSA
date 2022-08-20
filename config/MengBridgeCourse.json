@@ -82,10 +82,7 @@
 
     "Introduction: About This Course": {
       "MengBridgeCourse/CourseIntro": {
-      },
-      "MengBridgeCourse/GettingStarted": {
       }
-      
     },
 
     "Inheritance and Polymorphism": {
@@ -247,7 +244,7 @@
             }
         },
       "MengBridgeCourse/1114Unit3_Lab1_Placeholder": {
-        },  
+        },
       "MengBridgeCourse/1114PicturesAndForEachLoops": {
         "Syntax Practice 6a: Pixel Loops": {
           "points": 20
@@ -271,7 +268,7 @@
       "MengBridgeCourse/1114Unit3_Lab2_Placeholder": {
        }
     },
-    
+
     "More Lists, Loops, Arrays and Grouping": {
       "MengBridgeCourse/1114AggregationStringsandMoreLoops": {
         "Syntax Practice 7a: For Loops and OO Design": {
@@ -303,229 +300,227 @@
        },
       "MengBridgeCourse/1114GroupingObjectsUsingListsAndNestedForLoops": {
         "Syntax Practice 8a: Strings": {
-          "points": 12
-        },
-        "Syntax Practice 8b: Lists": {
-          "points": 15
-        },
-        "Syntax Practice 8c: Nested Loops": {
-          "points": 12
-        },
-        "Programming Practice 8a": {
-          "points": 15
-        },
-        "Programming Practice 8b": {
-          "points": 15
-        },
-        "Week8Quiz1Summ": {
-          "points": 5
-        },
-        "Week8Quiz2Summ": {
-          "points": 5
-        },
-        "Week8Quiz3Summ": {
           "points": 6
         },
+        "Syntax Practice 8b: Lists": {
+          "points": 8
+        },
+        "Syntax Practice 8c: Nested Loops": {
+          "points": 6
+        },
+        "Programming Practice 8a": {
+          "points": 7
+        },
+        "Programming Practice 8b": {
+          "points": 8
+        },
+        "Week8Quiz1Summ": {
+          "points": 3
+        },
+        "Week8Quiz2Summ": {
+          "points": 3
+        },
+        "Week8Quiz3Summ": {
+          "points": 3
+        },
         "Week8ReadingQuizSumm": {
-          "points": 15,
+          "points": 10,
           "threshold": 10
+        },
+        "Syntax Practice 9a: Loop Idioms": {
+          "points": 10
+        },
+        "Syntax Practice 9b: Generics": {
+          "points": 7
+        },
+        "Programming Practice 9a: Loop Idioms": {
+          "points": 10
+        },
+        "Programming Practice 9b: Loops and Generics": {
+          "points": 10
+        },
+        "Week9Quiz1Summ": {
+          "points": 3
+        },
+        "Week9Quiz2Summ": {
+          "points": 3
+        },
+        "Week9Quiz3Summ": {
+          "points": 3
         }
       },
       "MengBridgeCourse/1114Unit4_Lab2_Placeholder": {
        }
      },
     "More Loops and Arrays": {
-      "MengBridgeCourse/1114ListAndLoopsDeepDive": {
-            "Syntax Practice 9a: Loop Idioms": {
-              "points": 20
-            },
-            "Syntax Practice 9b: Generics": {
-              "points": 15
-            },
-            "Programming Practice 9a: Loop Idioms": {
-              "points": 19
-            },
-            "Programming Practice 9b: Loops and Generics": {
-              "points": 19
-            },
-            "Week9Quiz1Summ": {
-              "points": 9
-            },
-            "Week9Quiz2Summ": {
-              "points": 9
-            },
-            "Week9Quiz3Summ": {
-              "points": 9
-            }
-        },
-      "MengBridgeCourse/1114Unit5_Lab1_Placeholder": {
-         },
       "MengBridgeCourse/1114Arrays": {
-          "Syntax Practice 10": {
-            "points": 35
-          },
-          "Programming Practice 10": {
-            "points": 35
-          },
-          "Week10Quiz1Summ": {
-            "points": 5
-          },
-          "Week10Quiz2Summ": {
-            "points": 5
-          },
-          "Week10ReadingQuizSumm": {
-            "points": 20,
-            "threshold": 10
-          }
+        "Syntax Practice 10a": {
+          "points": 12
         },
-       "MengBridgeCourse/1114Unit5_Lab2_Placeholder": {
-         }
-        
+        "Syntax Practice 10b": {
+          "points": 12
+        },
+        "Syntax Practice 10c": {
+          "points": 12
+        },
+        "Programming Practice 10a": {
+          "points": 15
+        },
+        "Programming Practice 10b": {
+          "points": 15
+        },
+        "Week10Quiz1Summ": {
+          "points": 6
+        },
+        "Week10Quiz2Summ": {
+          "points": 6
+        },
+        "Week10ReadingQuizSumm": {
+          "points": 22,
+          "threshold": 11
+        }
+      },
+      "MengBridgeCourse/1114Unit5_Lab1_Placeholder": {
+      },
+      "MengBridgeCourse/1114MDArrays": {
+        "Syntax Practice: 2D Array Basics": {
+          "points": 12
+        },
+        "Syntax Practice: Looping Over 2D Arrays": {
+          "points": 6
+        },
+        "Syntax Practice: 3D Arrays": {
+          "points": 3
+        },
+        "Syntax Practice: Modulus": {
+          "points": 9
+        },
+        "Programming Practice: Multi-dimensional Arrays": {
+          "points": 20
+        },
+        "Programming Practice: Mod": {
+          "points": 20
+        },
+        "Week11Quiz1Summ": {
+          "points": 10
+        },
+        "Week11Quiz2Summ": {
+          "points": 10
+        },
+        "Week11Quiz3Summ": {
+          "points": 10
+        }
+      },
+      "MengBridgeCourse/1114Unit5_Lab2_Placeholder": {
+      }
     },
     "Multi-Dimensional Arrays, File I/O and Sets":{
-      "MengBridgeCourse/1114MDArrays": {
-          "Syntax Practice: 2D Array Basics": {
-            "points": 12
-          },
-          "Syntax Practice: Looping Over 2D Arrays": {
-            "points": 6
-          },
-          "Syntax Practice: 3D Arrays": {
-            "points": 3
-          },
-          "Syntax Practice: Modulus": {
-            "points": 9
-          },
-          "Programming Practice: Multi-dimensional Arrays": {
-            "points": 20
-          },
-          "Programming Practice: Mod": {
-            "points": 20
-          },
-          "Week11Quiz1Summ": {
-            "points": 10
-          },
-          "Week11Quiz2Summ": {
-            "points": 10
-          },
-          "Week11Quiz3Summ": {
-            "points": 10
-          }
-        },
-      "MengBridgeCourse/1114Unit6_Lab1_Placeholder": {
-         },        
       "MengBridgeCourse/1114FileIO": {
-          "Syntax Practice: Scoping": {
-            "points": 40
-          },
-          "Week12Quiz1Summ": {
-            "points": 20,
-            "threshold": 5
-          },
-          "Week12Quiz2Summ": {
-            "points": 16,
-            "threshold": 4
-          },
-          "Week12Quiz3Summ": {
-            "points": 12
-          },
-          "Week12Quiz4Summ": {
-            "points": 12
-          }
+        "Syntax Practice: Scoping": {
+          "points": 20
         },
-        "MengBridgeCourse/1114Unit6_Lab2_Placeholder": {
-         },
+        "Week12Quiz1Summ": {
+          "points": 10,
+          "threshold": 5
+        },
+        "Week12Quiz2Summ": {
+          "points": 8,
+          "threshold": 4
+        },
+        "Week12Quiz3Summ": {
+          "points": 6
+        },
+        "Week12Quiz4Summ": {
+          "points": 6
+        },
+        "Week14Quiz1Summ":{
+           "points": 5
+        },
+        "Week14Quiz2Summ":{
+           "points": 5
+        },
+        "Week14Quiz3Summ":{
+           "points": 5
+        },
+        "Week14Quiz4Summ":{
+           "points": 5,
+           "threshold": 3
+        },
+        "Syntax Practice: Try-Catch Blocks":{
+           "points": 15
+        },
+        "Syntax Practice: Throwing Exceptions":{
+           "points": 15
+        }
+      },
+      "MengBridgeCourse/1114Unit6_Lab1_Placeholder": {
+      },
       "MengBridgeCourse/1114MapsAndSets": {
-          "Syntax Practice: Making A Set": {
-            "points": 8
-          },
-
-          "Syntax Practice: Adding to a Set": {
-            "points": 9
-          },
-
-          "Syntax Practice: Set Contains": {
-            "points": 9
-          },
-
-          "Syntax Practice: Set Remove": {
-            "points": 9
-          },
-
-          "Week13Quiz1Summ": {
-            "points": 9
-          },
-
-          "Syntax Practice: Making Maps": {
-            "points": 9
-          },
-
-          "Syntax Practice: Adding to Maps": {
-            "points": 9
-          },
-          "Syntax Practice: Map Contains and Remove": {
-            "points": 9
-          },
-          "Programming Practice: Maps": {
-            "points": 20
-          },
-          "Week13Quiz2Summ": {
-            "points": 9
-          }
+        "Syntax Practice: Making A Set": {
+          "points": 8
         },
-      "MengBridgeCourse/1114StaticMainAndExceptions":{
-          "Week14Quiz1Summ":{
-             "points":10
-          },
-          "Week14Quiz2Summ":{
-             "points":10
-          },
-          "Week14Quiz3Summ":{
-             "points":10
-          },
-          "Week14Quiz4Summ":{
-             "points":10,
-             "threshold":3
-          },
-          "Syntax Practice: Try-Catch Blocks":{
-             "points":30
-          },
-          "Syntax Practice: Throwing Exceptions":{
-             "points":30
-          }
-       }
+        "Syntax Practice: Adding to a Set": {
+          "points": 9
+        },
+        "Syntax Practice: Set Contains": {
+          "points": 9
+        },
+        "Syntax Practice: Set Remove": {
+          "points": 9
+        },
+        "Week13Quiz1Summ": {
+          "points": 9
+        },
+        "Syntax Practice: Making Maps": {
+          "points": 9
+        },
+        "Syntax Practice: Adding to Maps": {
+          "points": 9
+        },
+        "Syntax Practice: Map Contains and Remove": {
+          "points": 9
+        },
+        "Programming Practice: Maps": {
+          "points": 20
+        },
+        "Week13Quiz2Summ": {
+          "points": 9
+        }
+      },
+      "MengBridgeCourse/1114Unit6_Lab2_Placeholder": {
+      }
      },
 
     "Testing and Exceptions":{
       "MengBridgeCourse/2114JUNIT":{
-        "Checkpoint 1": {
+        "JunitCheckpoint1Summ": {
           "points": 30,
           "threshold": 3
         },
-        "Checkpoint 2": {
+        "JunitCheckpoint2Summ": {
           "points": 30,
           "threshold": 3
         },
-        "Checkpoint 3": {
+        "JunitCheckpoint3Summ": {
           "points": 40,
           "threshold": 4
         }
       },
 
       "MengBridgeCourse/2114Exceptions":{
-        "Checkpoint 1": {
+        "ExceptionsCheckpoint1Summ": {
           "points": 33,
           "threshold": 2
 
         },
-        "Checkpoint 2": {
+        "ExceptionsCheckpoint2Summ": {
           "points": 67,
           "threshold": 4
         }
       },
 
       "MengBridgeCourse/2114ObjectsEnumsAndUML":{
-        "Checkpoint 1": {
+        "OOP1Checkpoint1Summ": {
           "points": 50,
           "threshold": 2
         },
@@ -534,17 +529,17 @@
           "threshold": 2
         }
       },
-        
+
       "MengBridgeCourse/2114Polymorphism2":{
-        "Checkpoint 1": {
+        "OOP2Checkpoint1Summ": {
           "points": 15,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "OOP2Checkpoint2Summ": {
           "points": 15,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "OOP2Checkpoint3Summ": {
           "points": 24,
           "threshold": 3
         },
@@ -558,24 +553,24 @@
         }
       },
       "MengBridgeCourse/2114Unit7_Lab1_Placeholder": {
-      }, 
+      },
       "MengBridgeCourse/2114StyleReview":{},
 
       "MengBridgeCourse/2114Bags1": {
-        "Checkpoint 1": {
+        "BagsCheckpoint1Summ": {
           "points": 26,
           "threshold": 3
 
         },
-        "Checkpoint 2": {
+        "BagsCheckpoint2Summ": {
           "points": 16,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "BagsCheckpoint3Summ": {
           "points": 16,
           "threshold": 2
         },
-        "Checkpoint 4": {
+        "BagsCheckpoint4Summ": {
           "points": 16,
           "threshold": 2
         },
@@ -597,26 +592,26 @@
 
     "Linked Lists, Bags, Stacks, and Efficiency": {
       "MengBridgeCourse/2114LinkedChainPointers": {
-        "Checkpoint 1": {
+        "LinkedChainCheckpoint1Summ": {
           "points": 50,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "LinkedChainCheckpoint2Summ": {
           "points": 50,
           "threshold": 2
         }
       },
 
       "MengBridgeCourse/2114Bags2": {
-        "Checkpoint 1": {
+        "LinkedBagCheckpoint1Summ": {
           "points": 40,
           "threshold": 4
         },
-        "Checkpoint 2": {
+        "LinkedBagCheckpoint2Summ": {
           "points": 20,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "LinkedBagCheckpoint3Summ": {
           "points": 20,
           "threshold": 2
         },
@@ -628,30 +623,30 @@
       "MengBridgeCourse/2114Unit8_Program1_Placeholder": {
       },
       "MengBridgeCourse/2114Efficiency": {
-        "Checkpoint 1": {
+        "EfficiencyCheckpoint1Summ": {
           "points": 50,
           "threshold": 3
         },
-        "Checkpoint 2": {
+        "EfficiencyCheckpoint2Summ": {
           "points": 50,
           "threshold": 3
         }
       },
 
       "MengBridgeCourse/2114Stacks": {
-        "Checkpoint 1": {
+        "StacksCheckpoint1Summ": {
           "points": 17,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "StacksCheckpoint2Summ": {
           "points": 25,
           "threshold": 3
         },
-        "Checkpoint 3": {
+        "StacksCheckpoint3Summ": {
           "points": 33,
           "threshold": 4
         },
-        "Checkpoint 4": {
+        "StacksCheckpoint4Summ": {
           "points": 8,
           "threshold": 1
         },
@@ -668,19 +663,19 @@
 
     "Recursion and Software Design": {
       "MengBridgeCourse/2114Recursion": {
-        "Checkpoint 1": {
+        "RecursionCheckpoint1Summ": {
           "points": 10,
           "threshold": 5
         },
-        "Checkpoint 2": {
+        "RecursionCheckpoint2Summ": {
           "points": 10,
           "threshold": 5
         },
-        "Checkpoint 3": {
+        "RecursionCheckpoint3Summ": {
           "points": 4,
           "threshold": 2
         },
-        "Checkpoint 4": {
+        "RecursionCheckpoint4Summ": {
           "points": 4,
           "threshold": 2
         },
@@ -696,27 +691,27 @@
           "points": 2,
           "threshold": 1
         },
-        "Forward Flow Tracing Exercises":{
+        "RecTraceSummFwdFlow":{
           "points": 14,
           "threshold": 7
         },
-        "Backward Flow Tracing Exercises":{
+        "RecTraceSummbckwrdFlow":{
           "points": 6,
           "threshold": 3
         },
-        "Find Error Tracing Exercises":{
+        "RecTraceSummFuncErr":{
           "points": 6,
           "threshold": 3
         },
-        "Two Recursive Calls Tracing Exercises":{
+        "RecTraceSummTwoRC":{
           "points": 6,
           "threshold": 3
         },
-        "How Many Times Tracing Exercises":{
+        "RecTraceSummHowmany":{
           "points": 8,
           "threshold": 4
         },
-        "Harder Tracing Exercises":{
+        "RecTraceSummHard":{
           "points": 6,
           "threshold": 3
         }
@@ -724,11 +719,11 @@
       },
 
       "MengBridgeCourse/2114SoftwareDesignAndMVC": {
-        "Checkpoint 1": {
+        "DesignCheckpoint1Summ": {
           "points": 40,
           "threshold": 3
         },
-        "Checkpoint 2": {
+        "DesignCheckpoint2Summ": {
           "points": 60,
           "threshold": 5
         }
@@ -739,7 +734,7 @@
 
     "Queues and Generics": {
       "MengBridgeCourse/2114Generics2": {
-        "Checkpoint 1": {
+        "GenericsCheckpoint1Summ": {
           "points": 60,
           "threshold": 3
         },
@@ -749,40 +744,44 @@
         }
       },
       "MengBridgeCourse/2114Queues": {
-        "Checkpoint 1": {
-          "points": 11,
+        "QueueCheckpoint1Summ": {
+          "points": 10,
           "threshold": 2
         },
-        "Checkpoint 2": {
-          "points": 11,
+        "QueueCheckpoint2Summ": {
+          "points": 10,
           "threshold": 3
         },
-        "Checkpoint 3": {
-          "points": 11,
+        "QueueCheckpoint3Summ": {
+          "points": 10,
           "threshold": 3
         },
-        "Checkpoint 4": {
-          "points": 11,
+        "QueueCheckpoint4Summ": {
+          "points": 10,
           "threshold": 3
         },
-        "Checkpoint 5": {
-          "points": 11,
+        "QueueCheckpoint5Summ": {
+          "points": 10,
           "threshold": 3
         },
-        "Checkpoint 6": {
-          "points": 11,
+        "QueueCheckpoint6Summ": {
+          "points": 10,
           "threshold": 2
         },
-        "Checkpoint 7": {
-          "points": 11,
+        "QueueCheckpoint7Summ": {
+          "points": 10,
+          "threshold": 2
+        },
+        "QueueCheckpoint8Summ": {
+          "points": 10,
           "threshold": 2
         },
         "Programming Practice: Queues 1": {
-          "points": 12,
+          "points": 10,
           "threshold": 3
         },
         "Programming Practice: Queues 2": {
-          "points": 11,
+          "points": 10,
           "threshold": 2
         }
       },
@@ -793,19 +792,19 @@
 
     "Lists and Iterators": {
       "MengBridgeCourse/2114Lists": {
-        "Checkpoint 1": {
+        "ListsCheckpoint1Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "ListsCheckpoint2Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "ListsCheckpoint3Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 4": {
+        "ListsCheckpoint4Summ": {
           "points": 13,
           "threshold": 2
         },
@@ -819,17 +818,17 @@
         }
       },
       "MengBridgeCourse/2114Unit11_Lab1_Placeholder": {
-      }, 
+      },
       "MengBridgeCourse/2114Iterators": {
-        "Checkpoint 1": {
+        "IteratorsCheckpoint1Summ": {
           "points": 36,
           "threshold": 5
         },
-        "Checkpoint 2": {
+        "IteratorsCheckpoint2Summ": {
           "points": 14,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "IteratorsCheckpoint3Summ": {
           "points": 36,
           "threshold": 5
 
@@ -846,23 +845,23 @@
 
     "Comparing, Sorting and Binary Search": {
       "MengBridgeCourse/2114ComparingAndSorting": {
-        "Checkpoint 1": {
+        "CompSortCheckpoint1Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 2": {
+        "CompSortCheckpoint2Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 3": {
+        "CompSortCheckpoint3Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 4": {
+        "CompSortCheckpoint4Summ": {
           "points": 13,
           "threshold": 2
         },
-        "Checkpoint 5": {
+        "CompSortCheckpoint5Summ": {
           "points": 13,
           "threshold": 2
         },
@@ -877,7 +876,7 @@
       },
 
       "MengBridgeCourse/2114BinarySearch": {
-        "Checkpoint 1": {
+        "BinarySearchCheckpoint1Summ": {
           "points": 50,
           "threshold": 2
         },
@@ -888,6 +887,22 @@
       },
       "MengBridgeCourse/2114Unit12_Program1_Placeholder": {
       }
+    },
+    
+    "Reference": {
+      "Tutorials/2114_first_lab_setup": {
+      },
+      "Tutorials/2114_eclipse_examples_setup": {
+      },
+      "Tutorials/2114_junit_tutorial": {
+      },
+      "Tutorials/2114_java_io_tutorial": {
+      },
+      "Tutorials/2114_java_commenting": {
+      },
+      "Tutorials/2114_random_numbers": {
+      }
+      
     }
   }
 

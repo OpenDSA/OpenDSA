@@ -304,8 +304,13 @@ class EquationBank{
             });
         eqbank_ddl.addEventListener(
             "change", e=> {e.stopPropagation();
-            this.showPage(event.target.value);
-            Window.clearGlobalPointerReference();
+            this.showPage(e.target.value);
+            
+            // Unless you're switching pages to show an equation corresponding
+            // to an error message, don't clear the context;
+            // showing the equation in the palette is still within the current context.
+            if(Window.globalPointerReference.currentClickedObjectType != "notif-feedback-pointer")
+                Window.clearGlobalPointerReference();
             });
 
         this.showPage(this.equation_page_titles[0]);

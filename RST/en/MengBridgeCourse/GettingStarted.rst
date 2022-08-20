@@ -19,15 +19,11 @@ It is recommended that you use the x64 bit version if you have a 64 bit OS.
 
   * If you have or plan to install an older version of Eclipse then you can just get the JDK 8
   * If you plan to get a newer version of eclipse  then get the JDK 11 (this requires more config adjustments per project to maintain compatibility)
-  * To find out if you have a 32 or 64 bit OS, go to `https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/ <https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/>`_
-  for Windows users and `https://support.apple.com/en-us/HT201948 <https://support.apple.com/en-us/HT201948>` for Mac users.
   * **Run the installation once you have downloaded it**
 
 2. Open `https://www.eclipse.org/downloads/ <https://www.eclipse.org/downloads/>`
 
 3. Select the **Eclipse** download from the yellow/orange download button
-(select the 64bit or 32bit version to correspond to the version of the JDK you
-installed, please be aware: versions may change by semester).
 
 4. Download the distribution and follow installation instructions,
 selecting **IDE for Java Developers** when prompted.
@@ -122,20 +118,22 @@ or Command + Shift + F (if using Mac).
 
 Remember to format your code before submitting to Web-CAT.
 
-Download the following XML file: `vtcsstylefixed.xml download <vtcsstylefixed.xml download>`_
+.. admonition:: Install the formatting file
+ 
+  Download the following XML file: `vtcsstyle.xml download <https://courses.cs.vt.edu/~cs2114/meng-bridge/support/vtcsstyle.xml >`_
 
-To install:
-
-* **Mac:**
-
-  * Eclipse->Preferences->Java->Code Style->Formatter->import the above file,
-  then click ok
-
-* **Windows:**
-
-  * Window->Preferences->Java->Code Style->Formatter->import the above file,
-  then click ok
-  * (Right click and Save-As)
+  To install:
+  
+  * **Mac:**
+  
+    * Eclipse->Preferences->Java->Code Style->Formatter->import the above file,
+    then click ok
+  
+  * **Windows:**
+  
+    * Window->Preferences->Java->Code Style->Formatter->import the above file,
+    then click ok
+    * (Right click and Save-As)
 
 
 Adding CS2 Support Projects

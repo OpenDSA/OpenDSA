@@ -42,8 +42,10 @@ the icons at the top and drop them on the main method squares left to right.
 
     Play the first two levels of LightBot to try things out here:
 
-    `LightBot <https://www.lightbot.lu/>`_
-
+    .. raw:: html
+     
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.lightbot.lu/" target="_blank">LightBot</a>
+    
     Be sure your browser window is tall enough to see the "Instructions" label
     in the upper right of the game.
 

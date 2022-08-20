@@ -8,17 +8,9 @@
         "answer": "False",
         "choices": ["True", "False"]
       },
-      "q2": {
-        "type": "multiple",
-        "description":"Personally, I have faith that someday some smart person will completely analyze the Collatz function, proving once and for all that the code fragment halts for all values of <i>n</i>. Doing so may well give us techniques that advance our ability to do algorithm analysis in general.<br><br> Unfortunately, proofs from <i>computability</i> —— the branch of computer science that studies what is impossible to do with a computer; compel us to believe that there will always be another bit of program code that we cannot analyze. This comes as a result of the fact that the Halting Problem is unsolvable.",
-        "question":"Collatz function is unsolvable because there will always be another bit of program code that we cannot analyze",
-        "answer": "True",
-        "choices": ["True", "False"]
-      },
-
       "q3": {
         "type": "multiple",
-        "description":"Personally, I have faith that someday some smart person will completely analyze the Collatz function, proving once and for all that the code fragment halts for all values of <i>n</i>. Doing so may well give us techniques that advance our ability to do algorithm analysis in general.<br><br> Unfortunately, proofs from <i>computability</i> —— the branch of computer science that studies what is impossible to do with a computer; compel us to believe that there will always be another bit of program code that we cannot analyze. This comes as a result of the fact that the Halting Problem is unsolvable.",
+        "description":"Personally, I have faith that someday some smart person will completely analyze the Collatz function, proving once and for all that the code fragment halts for all values of $n$. Doing so may well give us techniques that advance our ability to do algorithm analysis in general.<br><br> Unfortunately, proofs from <i>computability</i>---the branch of computer science that studies what is impossible to do with a computer---compel us to believe that there will always be another bit of program code that we cannot analyze. This comes as a result of the fact that the Halting Problem is unsolvable.",
         "question":"Halting problem is unsolvable",
         "answer": "True",
         "choices": ["True", "False"]

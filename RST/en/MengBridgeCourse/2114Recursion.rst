@@ -29,8 +29,8 @@ Chapter 7 from  `Data Structures and Abstractions with Java, 4th edition  by Fra
 Introduction to Recursion
 -------------------------
 
-[5:53] Intro to Recursion Video, Part 1 of 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[5:53] Intro to Recursion, Part 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -41,8 +41,8 @@ Introduction to Recursion
 
 
 
-[12:41] Intro to Recursion Video, Part 2 of 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:41] Intro to Recursion, Part 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -50,27 +50,25 @@ Introduction to Recursion
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_c7g8ts7i&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_qsnh6770" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="RecursionIntroduction.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.2.2-RecursionIntro.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.2.2-RecursionIntro.pdf</img>
    </a>
 
-
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint1.html ka
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
 More Recursion
 --------------
 
-[12:36] Factorial Examples Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[12:36] Factorial Examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. raw:: html
@@ -79,12 +77,11 @@ More Recursion
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_kvgpxyil&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_yowpwtsi" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="RecursionExamples.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.3.1-RecursionExample.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.3.1-RecursionExample.pdf</img>
    </a>
 
 Programming Practice: Recursion 1
@@ -96,25 +93,23 @@ Programming Practice: Recursion 1
 Recursion on Arrays
 -------------------
 
-[13:30] Display Arrays Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[13:30] Display Arrays
+~~~~~~~~~~~~~~~~~~~~~~
 
-**Correction to note!**  The code in the second example of this video is
-missing ``{}`` in the if block.  It should be:
+.. admonition:: Correction to note!
 
+   The code in the second example in this video is missing  the ``{}`` in the ``if`` block.  It should be:
 
-.. code-block:: java
-
-
-   public static void displayArray2(int[] array, int first, int last)
-   {
-        if (first <= last) {
-            displayArray2(array, first, last - 1);
-            System.out.print(array[last] + " ");
-        }
-
-   }
-
+   .. code-block:: java
+   
+      public static void displayArray2(int[] array, int first, int last)
+      {
+           if (first <= last) {
+               displayArray2(array, first, last - 1);
+               System.out.print(array[last] + " ");
+           }
+   
+      }
 
 
 .. raw:: html
@@ -124,27 +119,26 @@ missing ``{}`` in the if block.  It should be:
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="DisplayArrays.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.5.1-DisplayArrays.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.5.1-DisplayArrays.pdf</img>
    </a>
 
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint2.html ka
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
 Recursion on Arrays Middle
 --------------------------
 
-[9:53] Middle Processing Trace Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[9:53] Middle Processing Trace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -152,19 +146,17 @@ Recursion on Arrays Middle
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_w4ksnyaj&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ljnvkqrl" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="DisplayArraysMiddle.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.6.1-DisplayArraysMiddle.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.6.1-DisplayArraysMiddle.pdf</img>
    </a>
 
-
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint3.html ka
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
@@ -179,8 +171,8 @@ Programming Practice: Recursion 2
 Recursion on Linked Chain
 -------------------------
 
-[7:41] Linked Chain Recursive Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[7:41] Linked Chain Recursion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -188,20 +180,18 @@ Recursion on Linked Chain
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_cqp6egsu&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_58vxnwm4" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="DisplayBagsRecursively.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.8.1-DisplayBagsRecursively.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.8.1-DisplayBagsRecursively.pdf</img>
    </a>
-
 
 Tower of Hanoi
 --------------
 
-[11:44] Tower of Hanoi Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[11:44] Tower of Hanoi
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -209,26 +199,25 @@ Tower of Hanoi
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_i6r2ykc6&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_1d0eyu9y" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="Towers.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.9.1-TowersOfHanoi.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.9.1-TowersOfHanoi.pdf</img>
    </a>
 
 Checkpoint 4
-~~~~~~~~~~~~
+------------
 
-.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint4.html ka
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 
 Recursion Wrap Up
 -----------------
 
-[8:28] Recursion Wrap Up Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:28] Recursion Wrap Up
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -236,23 +225,18 @@ Recursion Wrap Up
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_tqcalmf0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_psze3pa9" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-TODO: fix URLS.
-
 .. raw:: html
 
-   <a href="" download>
-   <img src="" alt="RecursionWrapUp.pptx">
+   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.10.1-RecursionWrapUp.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 9.1.10.1-RecursionWrapUp.pdf</img>
    </a>
-
 
 Programming Practice: Recursion 3
 ---------------------------------
 
 .. extrtoolembed:: 'Programming Practice: Recursion 3'
    :workout_id: 1918
-
-
-
 
 
 Forward Flow Tracing Exercises

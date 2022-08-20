@@ -20,29 +20,30 @@ The instructions here include the user libraries necessary for
 assignments in this course, and programming assignments will not
 compile without these.
 
-Note: this setup involves a lot of steps and it's not uncommon for students to
-miss something in their first time through.  If you've installed everything, but
+Note: this setup involves multiple steps and it's not uncommon for students to
+miss something their first time through.  If you've installed everything but
 can't get any code to run at all, it's good to try uninstalling Eclipse and just
 installing it again.
 
-1. Open `https://www.eclipse.org/downloads/ <https://www.eclipse.org/downloads/>`_
+.. raw:: html
 
-2. Select the **Eclipse** download from the yellow/orange download button
-(select the 64bit or 32bit version to correspond to the version of the JDK you
-installed, please be aware: versions may change by semester).
+   &nbsp;&nbsp;&nbsp;1. Open <a href="https://www.eclipse.org/downloads/packages/installer" target="_blank">https://www.eclipse.org/downloads/packages/installer</a>
 
-3. Download the distribution and follow installation instructions,
-selecting **IDE for Java Developers** when prompted.
+
+2. Click on the Download link in the box at the top that matches your computer.
+
+3. After the download is complete, follow the installation instructions
+   beginning at step 2 on this page, selecting **IDE for Java Developers** when prompted.
 
 4. Start Eclipse. ( If you are on a Mac, you need to set
-**System Preferences->Security and Privacy** to allow apps downloaded from
-locations other than the Mac App Store.)
+   **System Preferences->Security and Privacy** to allow apps downloaded from
+   locations other than the Mac App Store.)
 
 5. The first time you start Eclipse, you'll be asked to specify a location for
-the Eclipse Workspace; this is where Eclipse will keep your programming
-projects. You can either use the default recommendation or place it elsewhere
-on your file system. Check **Use this as the default** and do not ask again so
-that Eclipse will not ask you every time you start it, and click **OK**.
+   the Eclipse Workspace; this is where Eclipse will keep your programming
+   projects. You can either use the default recommendation or place it elsewhere
+   on your file system. Check **Use this as the default** and do not ask again so
+   that Eclipse will not ask you every time you start it, and click **OK**.
 
 
 .. odsafig:: Images/SetupFig1.png
@@ -65,24 +66,10 @@ Overview, Tutorials, Samples, and a "What's New" section.
    :align: center
 
 
-Feel free to explorethe options and then proceed to the Workbench.
+Feel free to explore the options and then close the Welcome tab by clicking
+the "X" control to the right of "Welcome" near the top of the window to
+proceed to the Workbench.
 
-
-.. odsafig:: Images/SetupFig4.png
-   :align: center
-
-
-7. Once you're at the Workbench, you should consider cleaning it up to start.
-It is suggested you minimize the Task List and Outline Views on
-of the Eclipse workbench.  You can also close out the welcome tab if you want.
-It may look differently on your screen, but the following image shows the tabs
-that we recommend you close.
-
-.. odsafig:: Images/SetupFig5.png
-   :align: center
-
-Don't worry if you close something unintentionally!  You can always restore
-these windows by going to **Window** > **Show View**.
 
 Configuring Eclipse
 -------------------
@@ -93,128 +80,106 @@ Installing the Webcat Plugin
 Now we need to install an additional plug-in to make some common tasks in this
 course easier.
 
-1. Open the Help menu and select Install New Software....
-
+1. Open the Help menu and select **Install New Software...**:
 
 .. odsafig:: Images/WebcatSetupFig1.png
    :align: center
 
-
 2. In the **Work with**: field, paste the following URL and press
-Enter (or press "Add"): `http://web-cat.org/eclipse <http://web-cat.org/eclipse>`_
-
+   Enter (or press "Add"): **http://web-cat.org/eclipse**
 
 .. odsafig:: Images/WebcatSetupFig2.png
    :align: center
 
-
 3. Click the check boxes next to **"Web-CAT Electronic Assignments"**  and
-**"Web-CAT Java Development Extras"**, and click **Next**.
-
+   **"Web-CAT Java Development Extras"**, and click **Next**.
 
 .. odsafig:: Images/WebcatSetupFig3.png
    :align: center
 
+   Review your selection and click **Next** again.
 
-Review your selection and click Next again.
+   If the **Install Remediation Page** appears, then select the second radio
+   button to **"Update my installation to be compatible with the items being
+   installed"**.
 
-
-If the **Install Remediation Page** appears, then select the second radio button
-**"Update my installation to be compatible with the items being installed"**.
-
+   If the **Trust** dialog appears, click on **Select All** followed by
+   **Trust Selected**.
 
 4. Check **"I accept the terms of the license agreements"** and then
-click **Finish**.
-
+   click **Finish**.
 
 .. odsafig:: Images/WebcatSetupFig4.png
    :align: center
 
-
-5. Wait while the plug-in is being downloaded and installed; this may take a
-few minutes. You may get a warning about installing unsigned code during the
-installation. Click **OK** (or **"Install anyway"**) to continue the
-installation.
-
+5. Wait while the plug-in is being downloaded and installed. This may take a
+   few minutes. You may get a warning about installing unsigned code during the
+   installation. Click **OK** (or **"Install anyway"**) to continue the
+   installation.
 
 .. odsafig:: Images/WebcatSetupFig5.png
    :align: center
 
-
 6. When the installation is complete, Eclipse will notify you that it should
-be restarted in order for the changes to take effect. Click **Yes** to do so.
+   be restarted in order for the changes to take effect. Click **Yes** to
+   do so.
 
-Formatting support
-~~~~~~~~~~~~~~~~~~
 
-Installing Formatting Support
-"""""""""""""""""""""""""""""
+Plugin Settings
+~~~~~~~~~~~~~~~
 
-Before you can begin working on class assignments, you need to configure a
-couple settings in Eclipse's preferences.
+Now that you have installed the Web-CAT plugin, you can tell it where to find
+and submit assignments.
 
-1. Once Eclipse has restarted, select  **"Window > Preferences..."**
-(or on Mac OS X, **"Eclipse > Preferences..."**) from the menu.
-
+1. Once Eclipse has restarted, select  **Window -> Preferences...**
+   (or on MacOS, **Eclipse -> Preferences...**) from the menu.
 
 .. odsafig:: Images/FormattingSetupFig1.png
    :align: center
 
+2. Select **Configured Assignments** from the left panel.
 
-2. Click **"Configured Assignments"** from the left panel
-
-
-.. odsafig:: Images/FormattingSetupFig2.png
+.. odsafig:: Images/Web-CAT-bridge-plugin-preferences.png
    :align: center
 
-
-Copy and paste the following two URLs into the panel.
-(If the line gets wrapped, make sure you don't accidentally put any spaces in it.)
+3. Copy and paste the following two URLs into the panel.
+   (If the line gets wrapped, make sure you don't accidentally put
+   any spaces in it.)
 
   * **Download URL**
 
-    * `https://courses.cs.vt.edu/cs2114/meng-bridge/assignments.xml <https://courses.cs.vt.edu/cs2114/meng-bridge/assignments.xml>`_
+    * **https://courses.cs.vt.edu/cs2114/meng-bridge/assignments.xml**
 
   * **Submit URL**
 
-    * `https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT <https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT>`_
+    * **https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT&crn=MEng-100613**
 
-3. Click **"Apply and close"** to save your changes and exit the preferences window.
+4. Click the **Apply and Close** button to save your changes and exit the
+   preferences window.
 
 
-Setting up Formatting
-"""""""""""""""""""""
+Customizing Preferences
+~~~~~~~~~~~~~~~~~~~~~~~
 
-One of the formatting guidelines expected throughout this course is to use
-spaces instead of tabs in your code. This makes your code more portable between
-users and environments.
+To tailor Eclipse's settings and code formatting choices for this course,
+download the following preferences file to your computer by right-clicking
+the link and choosing "Save As..." or "Save Link As...":
 
-You will need to download and import this style sheet into Eclipse for
-formatting spaces/tabs, indentation, etc. Once it is imported, you may press
-CTRL + SHIFT + F within Eclipse to format your code (if using Windows)
-or Command + Shift + F (if using Mac).
+`vtpreferences.epf <https://courses.cs.vt.edu/cs2114/meng-bridge/eclipse/vtpreferences.epf>`_
 
-Remember to format your code before submitting to Web-CAT.
-
-Download the following XML file by going to the link: `vtcsstyle.xml <https://courses.cs.vt.edu/cs2114/meng-bridge/support/vtcsstyle.xml>`_
-
-On Windows, you'll need to Right Click and select **Save As**.  It doesn't matter
-where you save it, but do remember where it is saved
+It doesn't matter where you save it, but do remember where it is saved.
 
 To install:
 
-* **Mac:**
+* From Eclipse's menu, choose **File -> Import...**.
 
-  * Eclipse->Preferences->Java->Code Style->Formatter->import the above file,
-  then click ok
+* In the Import dialog, click the arrow in front of **General** and select
+  **Preferences**.
 
-* **Windows:**
+* Click **Next** to move to the next page of the dialog.
 
-  * Window->Preferences->Java->Code Style->Formatter->import the above file,
-  then click ok
+* Click the **Browse** button to the right of the field
+  labeled **From preferences file:**, and find the **vtpreferences.epf** file
+  you downloaded. Then click **Finish** to import these settings.
 
-
-This is an image of setting up on Windows
-
-.. odsafig:: Images/FormattingSetupFig3.png
-   :align: center
+You're all set to begin the assignments!

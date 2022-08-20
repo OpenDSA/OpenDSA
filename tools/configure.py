@@ -346,7 +346,10 @@ def initialize_conf_py_options(config, slides):
     options['title'] = config.title
     options['book_name'] = config.book_name
     options['theme_dir'] = config.theme_dir
-    options['theme'] = config.theme
+    if config.theme == "":
+        options['theme'] = "haiku"
+    else:
+        options['theme'] = config.theme
     options['html_theme_options'] = "'{}'"
     if config.html_theme_options:
       options['html_theme_options'] = "'" + json.dumps(config.html_theme_options).replace("'", "\\'") + "'"

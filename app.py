@@ -61,6 +61,27 @@ def simple2full():
     resp = run_command(cmd)
     return jsonify(resp)
 
+@app.route('/api/irtcurve/', methods=['POST'])
+def irt_curve():
+    if request.method != 'POST':
+        return jsonify({"ok", False})
+    script_path = "tools/irt_curve.py"
+    bookID = request.form['bookID']
+    cmd = f"python3 {script_path} {bookID}"
+    resp = run_command(cmd)
+    return jsonify(resp)
+
+
+@app.route('/api/deformsfeedback/', methods=['POST'])
+def deforms_feedback():
+    if request.method != 'POST':
+        return jsonify({"ok": False})
+    script_path = "tools/deforms_feedback.py"
+    problem_attempt = request.json
+    str_problem_attempt = str(problem_attempt).replace(" ","")
+    cmd = f"python3 {script_path} \"{str_problem_attempt}\""
+    resp = run_command(cmd)
+    return jsonify(resp)
 
 if __name__ == '__main__':
     parser = ArgumentParser()

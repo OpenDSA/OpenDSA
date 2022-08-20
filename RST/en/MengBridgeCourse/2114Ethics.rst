@@ -30,7 +30,7 @@ Upon completion of this module, students will be able to:
 
 
 Checkpoint 1
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
    :long_name: Quiz Unavailable
@@ -56,7 +56,7 @@ TODO: fix URLS.
 
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
    :long_name: Quiz Unavailable
@@ -82,7 +82,7 @@ TODO: fix URLS.
 
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/BlankQuizSumm.html ka
    :long_name: Quiz Unavailable
