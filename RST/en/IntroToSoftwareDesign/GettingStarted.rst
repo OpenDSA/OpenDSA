@@ -42,8 +42,10 @@ the icons at the top and drop them on the main method squares left to right.
 
     Play the first two levels of LightBot to try things out here:
 
-    `LightBot <https://www.lightbot.lu/>`_
-
+    .. raw:: html
+     
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.lightbot.lu/" target="_blank">LightBot</a>
+    
     Be sure your browser window is tall enough to see the "Instructions" label
     in the upper right of the game.
 
@@ -872,3 +874,16 @@ Check Your Understanding
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week1ReadingQuizSumm.html ka
    :long_name: Programming Concepts
+   
+
+.. raw:: html
+
+   <footer style="border-top: 1px solid #777;"><div class="footer">
+     Selected content adapted from:<br/>
+     <a href="https://www.jeroo.org/docs/JerooDocJava.pdf">Introduction to Jeroo</a> by D. Sanders and B. Dorn,
+     used by permission.<br/>
+     <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+     licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+     <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+     licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+   </div></footer>   

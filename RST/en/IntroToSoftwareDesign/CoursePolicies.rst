@@ -42,7 +42,6 @@ have any significant programming background.
 Students of Many Experience Levels
 ----------------------------------
 
-
 While this course is designed and intended for beginners, please be aware
 that students from a very wide range of backgrounds take this course, including
 some students who may have significant amounts of prior programming
@@ -76,15 +75,10 @@ if there is any difference in instructions between in-person vs. online
 sections, it will be clearly described--make sure to follow the instructions
 that apply to your section.
 
-We strongly encourage students with prior programming experience to
-consider the online sections, and encourage those without any prior
-experience to choose in-person sections where possible. Also, due to
-the university's Wellness Principles, including the university's
-vaccination and masking requirements for the current semester, we
-encourage students who are exempt from vaccination or who are unable
-to wear masks to consider the online sections of the course available
-this semester as a safer and more comfortable alternative in those
-extenuating circumstances.
+We strongly encourage students without any prior
+experience to choose in-person sections where possible.
+The online sections are more appropriate for students with significant
+prior programming experience.
 
 
 Weekly Schedule
@@ -204,7 +198,9 @@ programs.
 
 We recommend that students schedule in fixed periods of programming time to
 work on programming assignments each week. The best time may be between the
-end of your lab meeting and the following Monday. Complete as much of your
+end of your lab meeting and the following Monday. Or, even better, plan one
+hour each night, every night, to work on your programming assignments.
+Complete as much of your
 assignment as you are able by each Monday so that you can ask any questions
 you run into on the Canvas discussion area for that assignment or during
 TA office hours. It is not uncommon for students who start late and plan to
@@ -244,7 +240,7 @@ to understand how serious these issues are. You must complete the following
 Canvas modules:
 
 1. Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/CE7YK9>`_
-2. Enroll in and earn the badge for the: `Understanding the Code <https://canvas.vt.edu/enroll/7HR4PF>`_
+2. Attend: `Understanding the Code <https://canvas.vt.edu/enroll/GALMPM>`_ (offered in-person, Graduate Life Center Auditorium from 7:30–8:30 p.m. on August 30, August 31, and September 1, or asynchronously on Canvas September 2-6.)
 
 Remember that there are certain issues you can freely discuss with each
 other in order to learn. In this course, you may freely offer and receive
@@ -255,7 +251,14 @@ verbal assistance with your classmates on the following topics:
 * what errors mean
 * how to interpret assignment instructions
 
-However, you **may not give or receive help from others** while working on
+In addition, during face-to-face lab periods you are welcome to help your
+partner(s) or other students debug or troubleshoot their own code, and are
+free to seek assistance from your partner(s) or other students with your
+own coding issues on the lab assignment. However, this only applies to working
+on the lab assignment during your assigned lab period, not to other work.
+
+However, at all other times and on all other assignments, you **may not give
+or receive help from others** while working on
 your program code or any graded assignments. When writing program code for
 any class assignment, you **must work alone while typing at the keyboard**,
 or while **viewing your source code on the screen**. Yes, that means showing
