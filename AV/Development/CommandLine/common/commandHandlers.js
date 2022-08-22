@@ -270,7 +270,12 @@ function createCommandsMap(getSvgData, getCurrDir, setCurrDir, getHomeDir) {
     git: handle_git,
   };
 
-  const gitCommandsMap = createGitCommandsMap();
+  const gitCommandsMap = createGitCommandsMap(
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir
+  );
 
   Object.keys(commandsMap).forEach((key) => {
     if (key === "git") {

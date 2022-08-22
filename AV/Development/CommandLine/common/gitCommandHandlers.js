@@ -1,3 +1,6 @@
+import { Directory, File } from "./fileSystemEntity.js";
+import { GIT_STATUSES } from "./gitStatuses.js";
+
 const handle_git = (gitCommandsMap) => (args) => {
   if (gitCommandsMap[args[0]]) {
     return gitCommandsMap[args[0]](args.slice(1));
@@ -10,9 +13,20 @@ const handle_clone = () => (args) => {
   return "clone";
 };
 
-const handle_add = () => (args) => {
-  return "add";
-};
+const handle_add =
+  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+    let notFound = [];
+    args.forEach((path) => {
+      const fileSystemEntity = getCurrDir().getChildByPath(path);
+
+      if (fileSystemEntity) {
+        fileSystemEntity.setStatus(GIT_STATUSES.ADDED);
+      } else {
+        notFound.push(path);
+      }
+    });
+    return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
+  };
 
 const handle_commit = () => (args) => {
   return "commit";
@@ -34,11 +48,14 @@ const handle_checkout = () => (args) => {
   return "checkout";
 };
 
-const handle_status = () => (args) => {
-  return "status";
-};
+const handle_status =
+  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+    console.log("homeDir", getHomeDir());
+    console.log("currDir", getCurrDir());
+    return "status";
+  };
 
-function createGitCommandsMap() {
+function createGitCommandsMap(getSvgData, getCurrDir, setCurrDir, getHomeDir) {
   const commandsMap = {
     clone: handle_clone,
     add: handle_add,
@@ -51,7 +68,13 @@ function createGitCommandsMap() {
   };
 
   Object.keys(commandsMap).forEach(
-    (key) => (commandsMap[key] = commandsMap[key]())
+    (key) =>
+      (commandsMap[key] = commandsMap[key](
+        getSvgData,
+        getCurrDir,
+        setCurrDir,
+        getHomeDir
+      ))
   );
 
   return commandsMap;

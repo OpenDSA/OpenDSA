@@ -49,7 +49,7 @@ function initializeCommandLineExercise(
     initialCwdIndexPath ? initialCwdIndexPath : DEFAULT_CWD_INDEX_PATH
   );
 
-  homeDir.setStatusDeep(GIT_STATUSES.UNCHANGED);
+  homeDir.setStatus(GIT_STATUSES.UNCHANGED);
 
   console.log("homedir", homeDir);
 

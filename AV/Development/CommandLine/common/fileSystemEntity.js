@@ -93,6 +93,10 @@ class File extends FileSystemEntity {
   compareByNameUnordered(file) {
     return file instanceof File && file.name === this.name;
   }
+
+  setStatus(status) {
+    this.status = status;
+  }
 }
 
 class Directory extends FileSystemEntity {
@@ -224,13 +228,9 @@ class Directory extends FileSystemEntity {
     return curr;
   }
 
-  setStatusDeep(status) {
+  setStatus(status) {
     this.contents.forEach((content) => {
-      if (content instanceof File) {
-        content.status = status;
-      } else if (content instanceof Directory) {
-        content.setStatusDeep(status);
-      }
+      content.setStatus(status);
     });
   }
 }
