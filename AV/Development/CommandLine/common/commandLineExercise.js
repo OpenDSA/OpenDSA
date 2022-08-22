@@ -2,6 +2,7 @@ import { createCommandsMap } from "./commandHandlers.js";
 import { initializeCommandLine } from "./commandLine.js";
 import { renderFileStructureVisualization } from "./fileStructure.js";
 import { Directory } from "./fileSystemEntity.js";
+import { GIT_STATUSES } from "./gitStatuses.js";
 
 const DEFAULT_FILE_STRUCTURE = {
   name: "/",
@@ -47,6 +48,10 @@ function initializeCommandLineExercise(
   let currDir = homeDir.followIndexPath(
     initialCwdIndexPath ? initialCwdIndexPath : DEFAULT_CWD_INDEX_PATH
   );
+
+  homeDir.setStatusDeep(GIT_STATUSES.UNCHANGED);
+
+  console.log("homedir", homeDir);
 
   let svgData;
 

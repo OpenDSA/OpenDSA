@@ -6,6 +6,7 @@ import {
   updateFileStructureVisualization,
 } from "./fileStructure.js";
 import { Directory, File, splitPath } from "./fileSystemEntity.js";
+import { createGitCommandsMap, handle_git } from "./gitCommandHandlers.js";
 
 const handle_ls =
   (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
@@ -266,17 +267,23 @@ function createCommandsMap(getSvgData, getCurrDir, setCurrDir, getHomeDir) {
     mv: handle_mv,
     rm: handle_rm,
     rmdir: handle_rmdir,
+    git: handle_git,
   };
 
-  Object.keys(commandsMap).forEach(
-    (key) =>
-      (commandsMap[key] = commandsMap[key](
+  const gitCommandsMap = createGitCommandsMap();
+
+  Object.keys(commandsMap).forEach((key) => {
+    if (key === "git") {
+      commandsMap[key] = commandsMap[key](gitCommandsMap);
+    } else {
+      commandsMap[key] = commandsMap[key](
         getSvgData,
         getCurrDir,
         setCurrDir,
         getHomeDir
-      ))
-  );
+      );
+    }
+  });
 
   return commandsMap;
 }

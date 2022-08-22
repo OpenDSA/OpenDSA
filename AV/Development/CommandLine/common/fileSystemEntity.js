@@ -1,3 +1,5 @@
+import { GIT_STATUSES } from "./gitStatuses.js";
+
 let count = 0;
 
 class FileSystemEntity {
@@ -63,6 +65,7 @@ class FileSystemEntity {
 class File extends FileSystemEntity {
   constructor(name) {
     super(name);
+    this.status = GIT_STATUSES.UNTRACKED;
   }
 
   copy() {
@@ -219,6 +222,16 @@ class Directory extends FileSystemEntity {
     });
 
     return curr;
+  }
+
+  setStatusDeep(status) {
+    this.contents.forEach((content) => {
+      if (content instanceof File) {
+        content.status = status;
+      } else if (content instanceof Directory) {
+        content.setStatusDeep(status);
+      }
+    });
   }
 }
 
