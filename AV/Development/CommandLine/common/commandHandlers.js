@@ -7,6 +7,7 @@ import {
 } from "./fileStructure.js";
 import { Directory, File, splitPath } from "./fileSystemEntity.js";
 import { createGitCommandsMap, handle_git } from "./gitCommandHandlers.js";
+import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
 const handle_ls =
   (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
@@ -262,7 +263,8 @@ const handle_vi =
       const path = args[0];
       const file = getCurrDir().getChildByPath(path);
       if (file && file instanceof File) {
-        file.setModified(true);
+        //TODO make conditional
+        file.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
         return "";
       } else {
         return "Invalid path";

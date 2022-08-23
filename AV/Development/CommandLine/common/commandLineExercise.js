@@ -3,6 +3,7 @@ import { initializeCommandLine } from "./commandLine.js";
 import { renderFileStructureVisualization } from "./fileStructure.js";
 import { Directory } from "./fileSystemEntity.js";
 import { Branch, Commit } from "./gitClasses.js";
+import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
 const DEFAULT_FILE_STRUCTURE = {
   name: "/",
@@ -143,8 +144,8 @@ function initializeGitExercise(
   remoteInitialCommit.setMerged(true);
   let remoteCurrBranch = remoteInitialCommit.branches[0];
 
-  localHomeDir.setTracked(true);
-  remoteHomeDir.setTracked(true);
+  localHomeDir.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
+  remoteHomeDir.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
 
   let svgData;
 

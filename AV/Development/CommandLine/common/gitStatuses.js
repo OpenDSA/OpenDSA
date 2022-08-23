@@ -7,4 +7,19 @@ const GIT_STATUSES = Object.freeze({
   UNCHANGED: "unchanged",
 });
 
-export { GIT_STATUSES };
+const FILE_STATE = Object.freeze({
+  NEW: "new file",
+  DELETED: "deleted",
+  MODIFIED: "modified",
+  RENAMED: "renamed",
+  UNCHANGED: "unchanged",
+});
+
+const GIT_STATE = Object.freeze({
+  CHANGED: "changed",
+  ADDED: "added",
+  COMMITTED: "committed",
+  MERGED: "merged",
+});
+
+export { GIT_STATUSES, FILE_STATE, GIT_STATE };

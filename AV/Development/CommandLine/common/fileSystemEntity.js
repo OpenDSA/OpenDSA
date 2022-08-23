@@ -1,3 +1,5 @@
+import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
+
 let count = 0;
 let gitIdCount = 0;
 
@@ -65,12 +67,8 @@ class FileSystemEntity {
 class File extends FileSystemEntity {
   constructor(name) {
     super(name);
-    this.status = {
-      tracked: false,
-      added: false,
-      modified: false,
-      deleted: false,
-    };
+    this.fileState = FILE_STATE.NEW;
+    this.gitState = GIT_STATE.CHANGED;
   }
 
   copy() {
@@ -104,59 +102,46 @@ class File extends FileSystemEntity {
     return file instanceof File && file.name === this.name;
   }
 
-  setStatus(status) {
-    this.status = { ...this.status, ...status };
+  setState(gitState, fileState) {
+    if (gitState) {
+      this.gitState = gitState;
+    }
+    if (fileState) {
+      this.fileState = fileState;
+    }
   }
 
-  isStatus(status) {
-    return Object.keys(status).every((key) => status[key] === this.status[key]);
+  isState(gitStates, fileStates) {
+    return (
+      (!gitStates ||
+        (Array.isArray(gitStates)
+          ? gitStates.includes(this.gitState)
+          : gitStates === this.gitState)) &&
+      (!fileStates ||
+        (Array.isArray(fileStates)
+          ? fileStates.includes(this.fileState)
+          : fileStates === this.fileState))
+    );
   }
 
-  setStatusConditional(oldStatuses, newStatus) {
-    if (oldStatuses.some((status) => this.isStatus(status))) {
-      this.setStatus(newStatus);
+  setStateConditional(oldGitStates, newGitState, oldFileStates, newFileState) {
+    if (this.isState(oldGitStates, oldFileStates)) {
+      this.setState(newGitState, newFileState);
       return true;
     }
     return false;
   }
 
-  setTracked(tracked) {
-    this.status.tracked = tracked;
-  }
-
-  setAdded(added) {
-    this.status.added = added;
-  }
-
-  setModified(modified) {
-    this.status.modified = modified;
-  }
-
-  setDeleted(deleted) {
-    this.status.deleted = deleted;
-  }
-
-  getByStatusHelper(status) {
-    const isSameStatus = Object.keys(status).every(
-      (key) => status[key] === this.status[key]
-    );
+  getByStateHelper(gitStates, fileStates) {
+    const isSameState = this.isState(gitStates, fileStates);
     return {
-      isSameStatus: isSameStatus,
-      sameStatusContent: isSameStatus ? [this] : [],
+      isSameState: isSameState,
+      sameStateContent: isSameState ? [this] : [],
     };
   }
 
-  getStatusString() {
-    if (this.status.tracked) {
-      if (this.status.modified) {
-        return "modified";
-      } else if (this.status.deleted) {
-        return "deleted";
-      }
-      return "not edited <error>";
-    } else {
-      return "new file";
-    }
+  getStateString() {
+    return this.fileState;
   }
 }
 
@@ -303,63 +288,56 @@ class Directory extends FileSystemEntity {
     return curr;
   }
 
-  setTracked(tracked) {
-    this.contents.forEach((content) => {
-      content.setTracked(tracked);
-    });
-  }
-
-  setAdded(added) {
-    this.contents.forEach((content) => {
-      content.setAdded(added);
-    });
-  }
-
-  getByStatusHelper(status) {
-    const contentStatuses = this.contents.map((content) =>
-      content.getByStatusHelper(status)
+  getByStateHelper(gitStates, fileStates) {
+    const contentStates = this.contents.map((content) =>
+      content.getByStateHelper(gitStates, fileStates)
     );
 
-    const isSameStatus = contentStatuses.every(
-      (content) => content.isSameStatus
-    );
+    const isSameState = contentStates.every((content) => content.isSameState);
 
-    if (isSameStatus) {
+    if (isSameState) {
       return {
-        isSameStatus: true,
-        sameStatusContent: this.contents.length > 0 ? [this] : [],
+        isSameState: true,
+        sameStateContent: this.contents.length > 0 ? [this] : [],
       };
     } else {
-      const sameStatusContent = contentStatuses.flatMap(
-        (content) => content.sameStatusContent
+      const sameStateContent = contentStates.flatMap(
+        (content) => content.sameStateContent
       );
-      return { isSameStatus: false, sameStatusContent: sameStatusContent };
+      return { isSameState: false, sameStateContent: sameStateContent };
     }
   }
 
-  getByStatus(status) {
-    return this.getByStatusHelper(status).sameStatusContent;
+  getByState(gitStates, fileStates) {
+    return this.getByStateHelper(gitStates, fileStates).sameStateContent;
   }
 
-  getByStatuses(statuses) {
-    return statuses.flatMap((status) => this.getByStatus(status));
-  }
-
-  getStatusString() {
+  getStateString() {
     //TODO clean up
     if (this.contents.length > 0) {
-      return this.contents[0].getStatusString();
+      return this.contents[0].getStateString();
     }
-    return "statusstringerror";
+    return "statestringerror";
   }
 
   getRelativePaths(files) {
     return files.map((file) => getRelativePath(this, file));
   }
 
-  setStatusConditional(oldStatuses, newStatus) {
+  setState(gitState, fileState) {
     this.contents.forEach((content) => {
-      content.setStatusConditional(oldStatuses, newStatus);
+      content.setState(gitState, fileState);
+    });
+  }
+
+  setStateConditional(oldGitStates, newGitState, oldFileStates, newFileState) {
+    this.contents.forEach((content) => {
+      content.setStateConditional(
+        oldGitStates,
+        newGitState,
+        oldFileStates,
+        newFileState
+      );
     });
   }
 }

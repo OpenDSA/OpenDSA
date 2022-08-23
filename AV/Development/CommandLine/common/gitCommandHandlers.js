@@ -1,9 +1,4 @@
-import {
-  CHANGED_STATUSES,
-  STAGEABLE_STATUSES,
-  STAGED_STATUSES,
-  UNTRACKED_STATUSES,
-} from "./gitStatusesConfig.js";
+import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
 const handle_git = (gitCommandsMap) => (args) => {
   if (gitCommandsMap[args[0]]) {
@@ -24,9 +19,10 @@ const handle_add =
       const fileSystemEntity = getCurrDir().getChildByPath(path);
 
       if (fileSystemEntity) {
-        fileSystemEntity.setStatusConditional(STAGEABLE_STATUSES, {
-          added: true,
-        });
+        fileSystemEntity.setStateConditional(
+          GIT_STATE.CHANGED,
+          GIT_STATE.ADDED
+        );
       } else {
         notFound.push(path);
       }
@@ -49,15 +45,18 @@ const handle_restore =
 
       if (fileSystemEntity) {
         if (isStaged) {
-          fileSystemEntity.setStatusConditional([{ added: true }], {
-            added: false,
-          });
+          fileSystemEntity.setStateConditional(
+            GIT_STATE.ADDED,
+            GIT_STATE.CHANGED
+          );
         } else {
           //TODO restore new files
-          fileSystemEntity.setStatusConditional(CHANGED_STATUSES, {
-            modified: false,
-            deleted: false,
-          });
+          fileSystemEntity.setStateConditional(
+            GIT_STATE.CHANGED,
+            GIT_STATE.MERGED,
+            null,
+            FILE_STATE.UNCHANGED
+          );
         }
       } else {
         notFound.push(path);
@@ -68,14 +67,10 @@ const handle_restore =
 
 const handle_commit =
   (getSvgData, getCurrDir, setCurrDir, getHomeDir, gitMethods) => (args) => {
-    const files = getHomeDir().getByStatuses(STAGED_STATUSES);
+    const files = getHomeDir().getByState(GIT_STATE.ADDED);
     if (files.length > 0) {
       const commit = gitMethods.getLocalCurrBranch().commitChanges(files);
-      getHomeDir().setStatusConditional(STAGED_STATUSES, {
-        added: false,
-        modified: false,
-        deleted: false,
-      });
+      getHomeDir().setStateConditional(GIT_STATE.ADDED, GIT_STATE.COMMITTED);
       return "";
     } else {
       return "nothing to commit";
@@ -106,20 +101,26 @@ const handle_status =
       gitMethods.getLocalCurrBranch().name
     }</p><p>Your branch is up to date with 'origin/main'.</p></div>`;
 
-    const createStatusSection = (title, className, statuses, hideStatuses) => {
-      const files = getHomeDir().getByStatuses(statuses);
+    const createStatusSection = (
+      title,
+      className,
+      gitState,
+      fileStates,
+      hideStates
+    ) => {
+      const files = getHomeDir().getByState(gitState, fileStates);
 
       if (files.length > 0) {
         const relativePaths = getCurrDir().getRelativePaths(files);
-        const fileStatuses = files.map((file) => `${file.getStatusString()}:`);
+        const fileStates = files.map((file) => `${file.getStateString()}:`);
 
-        const fileStatusesHtml = hideStatuses
+        const fileStatesHtml = hideStates
           ? ""
-          : `<div class="git-status-files-statuses"><p>${fileStatuses.join(
+          : `<div class="git-status-files-statuses"><p>${fileStates.join(
               "</p><p>"
             )}</div>`;
 
-        return `<div class="${className}"><p>${title}</p><div class="git-status-files">${fileStatusesHtml}<div class="git-status-files-names"><p>${relativePaths.join(
+        return `<div class="${className}"><p>${title}</p><div class="git-status-files">${fileStatesHtml}<div class="git-status-files-names"><p>${relativePaths.join(
           "</p><p>"
         )}<p></div><p></p></div></div>`;
       }
@@ -129,19 +130,21 @@ const handle_status =
     const stagedInfo = createStatusSection(
       "Changes to be committed:",
       "git-status-staged",
-      STAGED_STATUSES
+      GIT_STATE.ADDED
     );
 
     const notStagedInfo = createStatusSection(
       "Changes not staged for commit:",
       "git-status-not-staged",
-      CHANGED_STATUSES
+      GIT_STATE.CHANGED,
+      [FILE_STATE.MODIFIED, FILE_STATE.DELETED, FILE_STATE.RENAMED]
     );
 
     const untrackedInfo = createStatusSection(
       "Untracked files:",
       "git-status-untracked",
-      UNTRACKED_STATUSES,
+      GIT_STATE.CHANGED,
+      FILE_STATE.NEW,
       true
     );
 
@@ -180,15 +183,5 @@ function createGitCommandsMap(
 
   return commandsMap;
 }
-
-const createHtmlFileList = (title, className, fileNames) =>
-  fileNames.length > 0
-    ? `<div class="${className}"><p>${title}</p><div class="git-status-files"><p>${fileNames.join(
-        "</p><p>"
-      )}</p></div></div>`
-    : "";
-
-const createHtmlFileList2 = (files) =>
-  `<p>${files.map((file) => file.getRe).join("</p><p>")}</p>`;
 
 export { handle_git, createGitCommandsMap };
