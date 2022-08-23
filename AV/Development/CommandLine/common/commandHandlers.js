@@ -256,7 +256,14 @@ const handle_rmdir =
     }
   };
 
-function createCommandsMap(getSvgData, getCurrDir, setCurrDir, getHomeDir) {
+function createCommandsMap(
+  getSvgData,
+  getCurrDir,
+  setCurrDir,
+  getHomeDir,
+  //TODO decouple this later
+  gitMethods
+) {
   const commandsMap = {
     ls: handle_ls,
     pwd: handle_pwd,
@@ -274,7 +281,9 @@ function createCommandsMap(getSvgData, getCurrDir, setCurrDir, getHomeDir) {
     getSvgData,
     getCurrDir,
     setCurrDir,
-    getHomeDir
+    getHomeDir,
+    //TODO decouple this later
+    gitMethods
   );
 
   Object.keys(commandsMap).forEach((key) => {
@@ -285,7 +294,8 @@ function createCommandsMap(getSvgData, getCurrDir, setCurrDir, getHomeDir) {
         getSvgData,
         getCurrDir,
         setCurrDir,
-        getHomeDir
+        getHomeDir,
+        gitMethods
       );
     }
   });

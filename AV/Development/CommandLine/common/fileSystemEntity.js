@@ -1,12 +1,12 @@
-import { GIT_STATUSES } from "./gitStatuses.js";
-
 let count = 0;
+let gitIdCount = 0;
 
 class FileSystemEntity {
   constructor(name) {
     this.name = name;
     this.parent = undefined;
     this.id = ++count;
+    this.gitId = ++gitIdCount;
   }
 
   getPath() {
@@ -65,12 +65,22 @@ class FileSystemEntity {
 class File extends FileSystemEntity {
   constructor(name) {
     super(name);
-    this.status = GIT_STATUSES.UNTRACKED;
+    this.status = {
+      tracked: false,
+      added: false,
+      modified: false,
+      deleted: false,
+    };
   }
 
   copy() {
     const newFile = new File(this.name);
-    newFile.parent = this.parent;
+    return newFile;
+  }
+
+  copyWithGitId() {
+    const newFile = new File(this.name);
+    newFile.gitId = this.gitId;
     return newFile;
   }
 
@@ -94,8 +104,22 @@ class File extends FileSystemEntity {
     return file instanceof File && file.name === this.name;
   }
 
-  setStatus(status) {
-    this.status = status;
+  setTracked(tracked) {
+    this.status.tracked = tracked;
+  }
+
+  setAdded(added) {
+    this.status.added = added;
+  }
+
+  getByStatus(status) {
+    const isSameStatus = Object.keys(status).every(
+      (key) => status[key] === this.status[key]
+    );
+    return {
+      isSameStatus: isSameStatus,
+      sameStatusContent: isSameStatus ? [this] : [],
+    };
   }
 }
 
@@ -118,8 +142,22 @@ class Directory extends FileSystemEntity {
 
   copy() {
     const newDirectory = new Directory(this.name);
-    newDirectory.parent = this.parent;
-    newDirectory.contents = this.contents.map((content) => content.copy());
+    newDirectory.contents = this.contents.map((content) => {
+      const contentCopy = content.copy();
+      contentCopy.parent = newDirectory;
+      return contentCopy;
+    });
+    return newDirectory;
+  }
+
+  copyWithGitId() {
+    const newDirectory = new Directory(this.name);
+    newDirectory.gitId = this.gitId;
+    newDirectory.contents = this.contents.map((content) => {
+      const contentCopy = content.copyWithGitId();
+      contentCopy.parent = newDirectory;
+      return contentCopy;
+    });
     return newDirectory;
   }
 
@@ -228,10 +266,48 @@ class Directory extends FileSystemEntity {
     return curr;
   }
 
-  setStatus(status) {
+  setTracked(tracked) {
     this.contents.forEach((content) => {
-      content.setStatus(status);
+      content.setTracked(tracked);
     });
+  }
+
+  setAdded(added) {
+    this.contents.forEach((content) => {
+      content.setAdded(added);
+    });
+  }
+
+  getByStatus(status) {
+    const contentStatuses = this.contents.map((content) =>
+      content.getByStatus(status)
+    );
+
+    const isSameStatus = contentStatuses.every(
+      (content) => content.isSameStatus
+    );
+
+    if (isSameStatus) {
+      return {
+        isSameStatus: true,
+        sameStatusContent: this.contents.length > 0 ? [this] : [],
+      };
+    } else {
+      const sameStatusContent = contentStatuses.flatMap(
+        (content) => content.sameStatusContent
+      );
+      return { isSameStatus: false, sameStatusContent: sameStatusContent };
+    }
+  }
+
+  /**
+   * Get the paths starting from src of all children with the
+   * given status
+   */
+  getRelativePathsByStatus(status, src) {
+    const files = this.getByStatus(status).sameStatusContent;
+    const filesPaths = files.map((file) => getRelativePath(src, file));
+    return filesPaths;
   }
 }
 
@@ -245,4 +321,56 @@ function isString(value) {
   return typeof value === "string" || value instanceof String;
 }
 
-export { FileSystemEntity, File, Directory, splitPath };
+//bfs
+function getRelativePath(src, dst) {
+  const previousMap = new Map();
+  const visited = new Set();
+  const queue = [];
+  queue.push(src);
+  visited.add(src.id);
+
+  while (queue.length > 0) {
+    const node = queue.shift();
+    if (node.id === dst.id) {
+      return getPathUsingPreviousMap(previousMap, src, dst);
+    }
+
+    let neighbours = [];
+    if (node instanceof Directory) {
+      neighbours.push(...node.contents);
+    }
+    if (node.parent) {
+      neighbours.push(node.parent);
+    }
+
+    neighbours.forEach((neighbour) => {
+      if (!visited.has(neighbour.id)) {
+        previousMap.set(neighbour.id, node);
+        queue.push(neighbour);
+        visited.add(neighbour.id);
+      }
+    });
+  }
+  return null;
+}
+
+const getPathUsingPreviousMap = (previousMap, src, dst) => {
+  if (dst.id === src.id) {
+    return "./";
+  }
+
+  let path = [];
+  let curr = dst;
+
+  do {
+    const prev = previousMap.get(curr.id);
+    path.push(prev.parent?.id === curr.id ? ".." : curr.name);
+    curr = prev;
+  } while (curr.id !== src.id);
+
+  let result = path.reverse().join("/");
+  result += dst instanceof Directory ? "/" : "";
+  return result;
+};
+
+export { FileSystemEntity, File, Directory, splitPath, getRelativePath };
