@@ -6,8 +6,16 @@ class Commit {
     this.children = [];
     this.parent = undefined;
     this.branches = [];
+    this.files = [];
+    this.status = {
+      merged: false,
+    };
     this.id = ++count;
     this.gitId = ++gitIdCount; //used to pair between local and remote
+  }
+
+  setMerged(merged) {
+    this.status.merged = merged;
   }
 
   insertChild() {
@@ -46,16 +54,17 @@ class Commit {
 }
 
 class Branch {
-  constructor(name, commit) {
+  constructor(name) {
     this.name = name;
     this.commit = undefined;
     this.id = ++count;
     this.gitId = ++gitIdCount; //used to pair between local and remote
   }
 
-  commit() {
+  commitChanges(files) {
     this.commit.removeBranch(this);
     const commit = this.commit.insertChild();
+    commit.files = files;
     commit.insertBranch(this);
   }
 

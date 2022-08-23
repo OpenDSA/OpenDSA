@@ -341,6 +341,18 @@ class Directory extends FileSystemEntity {
     return this.getByStatusHelper(status).sameStatusContent;
   }
 
+  getByStatuses(statuses) {
+    return statuses.flatMap((status) => this.getByStatus(status));
+  }
+
+  getStatusString() {
+    //TODO clean up
+    if (this.contents.length > 0) {
+      return this.contents[0].getStatusString();
+    }
+    return "statusstringerror";
+  }
+
   getRelativePaths(files) {
     return files.map((file) => getRelativePath(this, file));
   }

@@ -135,10 +135,12 @@ function initializeGitExercise(
   const remoteHomeDir = localHomeDir.copyWithGitId();
 
   const localInitialCommit = new Commit();
+  localInitialCommit.setMerged(true);
   let localCurrBranch = new Branch("main");
   localInitialCommit.insertBranch(localCurrBranch);
 
   const remoteInitialCommit = localInitialCommit.copy();
+  remoteInitialCommit.setMerged(true);
   let remoteCurrBranch = remoteInitialCommit.branches[0];
 
   localHomeDir.setTracked(true);
