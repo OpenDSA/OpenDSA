@@ -104,6 +104,22 @@ class File extends FileSystemEntity {
     return file instanceof File && file.name === this.name;
   }
 
+  setStatus(status) {
+    this.status = { ...this.status, ...status };
+  }
+
+  isStatus(status) {
+    return Object.keys(status).every((key) => status[key] === this.status[key]);
+  }
+
+  setStatusConditional(oldStatuses, newStatus) {
+    if (oldStatuses.some((status) => this.isStatus(status))) {
+      this.setStatus(newStatus);
+      return true;
+    }
+    return false;
+  }
+
   setTracked(tracked) {
     this.status.tracked = tracked;
   }
@@ -112,7 +128,15 @@ class File extends FileSystemEntity {
     this.status.added = added;
   }
 
-  getByStatus(status) {
+  setModified(modified) {
+    this.status.modified = modified;
+  }
+
+  setDeleted(deleted) {
+    this.status.deleted = deleted;
+  }
+
+  getByStatusHelper(status) {
     const isSameStatus = Object.keys(status).every(
       (key) => status[key] === this.status[key]
     );
@@ -120,6 +144,19 @@ class File extends FileSystemEntity {
       isSameStatus: isSameStatus,
       sameStatusContent: isSameStatus ? [this] : [],
     };
+  }
+
+  getStatusString() {
+    if (this.status.tracked) {
+      if (this.status.modified) {
+        return "modified";
+      } else if (this.status.deleted) {
+        return "deleted";
+      }
+      return "not edited <error>";
+    } else {
+      return "new file";
+    }
   }
 }
 
@@ -278,9 +315,9 @@ class Directory extends FileSystemEntity {
     });
   }
 
-  getByStatus(status) {
+  getByStatusHelper(status) {
     const contentStatuses = this.contents.map((content) =>
-      content.getByStatus(status)
+      content.getByStatusHelper(status)
     );
 
     const isSameStatus = contentStatuses.every(
@@ -300,14 +337,18 @@ class Directory extends FileSystemEntity {
     }
   }
 
-  /**
-   * Get the paths starting from src of all children with the
-   * given status
-   */
-  getRelativePathsByStatus(status, src) {
-    const files = this.getByStatus(status).sameStatusContent;
-    const filesPaths = files.map((file) => getRelativePath(src, file));
-    return filesPaths;
+  getByStatus(status) {
+    return this.getByStatusHelper(status).sameStatusContent;
+  }
+
+  getRelativePaths(files) {
+    return files.map((file) => getRelativePath(this, file));
+  }
+
+  setStatusConditional(oldStatuses, newStatus) {
+    this.contents.forEach((content) => {
+      content.setStatusConditional(oldStatuses, newStatus);
+    });
   }
 }
 
@@ -373,4 +414,4 @@ const getPathUsingPreviousMap = (previousMap, src, dst) => {
   return result;
 };
 
-export { FileSystemEntity, File, Directory, splitPath, getRelativePath };
+export { FileSystemEntity, File, Directory, splitPath };

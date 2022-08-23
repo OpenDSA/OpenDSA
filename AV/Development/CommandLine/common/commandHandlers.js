@@ -256,6 +256,22 @@ const handle_rmdir =
     }
   };
 
+const handle_vi =
+  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+    if (args.length === 1) {
+      const path = args[0];
+      const file = getCurrDir().getChildByPath(path);
+      if (file && file instanceof File) {
+        file.setModified(true);
+        return "";
+      } else {
+        return "Invalid path";
+      }
+    } else {
+      return "Invalid args";
+    }
+  };
+
 function createCommandsMap(
   getSvgData,
   getCurrDir,
@@ -274,6 +290,7 @@ function createCommandsMap(
     mv: handle_mv,
     rm: handle_rm,
     rmdir: handle_rmdir,
+    vi: handle_vi,
     git: handle_git,
   };
 

@@ -115,11 +115,20 @@
 }
 
 .git-status-files {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
   padding-left: 2rem;
 }
 
+.git-status-files-names {
+}
+
+.git-status-files-statuses {
+}
+
 .git-status-staged .git-status-files p {
-  color: green;
+  color: #66ff00;
 }
 
 .git-status-not-staged .git-status-files p {
