@@ -1,6 +1,9 @@
 import { createCommandsMap } from "./commandHandlers.js";
 import { initializeCommandLine } from "./commandLine.js";
-import { renderFileStructureVisualization } from "./fileStructure.js";
+import {
+  renderFileStructureVisualization,
+  renderGitVisualization,
+} from "./fileStructure.js";
 import { Directory } from "./fileSystemEntity.js";
 import { Branch, Commit } from "./gitClasses.js";
 import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
@@ -20,6 +23,25 @@ const DEFAULT_FILE_STRUCTURE = {
         {
           name: "dogs",
           contents: ["beagle.txt", "boxer.txt", "poodle.txt"],
+        },
+      ],
+    },
+  ],
+};
+
+const DEFAULT_GIT_FILE_STRUCTURE = {
+  name: "/",
+  contents: [
+    "README",
+    ".gitignore",
+    {
+      name: "src",
+      contents: [
+        "index.html",
+        "app.js",
+        {
+          name: "config",
+          contents: [],
         },
       ],
     },
@@ -128,13 +150,16 @@ function initializeGitExercise(
 
   updateText(text);
 
-  const localHomeDir = new Directory(DEFAULT_FILE_STRUCTURE);
-  let localCurrDir = localHomeDir.followIndexPath(DEFAULT_CWD_INDEX_PATH);
+  const localHomeDir = new Directory(DEFAULT_GIT_FILE_STRUCTURE);
+  let localCurrDir = localHomeDir.followIndexPath([]);
 
   const remoteHomeDir = localHomeDir.copyWithGitId();
 
   const localInitialCommit = new Commit();
   localInitialCommit.setMerged(true);
+  const child = localInitialCommit.insertChild();
+  child.insertChild();
+  localInitialCommit.insertChild();
   let localCurrBranch = new Branch("main");
   localInitialCommit.insertBranch(localCurrBranch);
 
@@ -217,9 +242,11 @@ function initializeGitExercise(
     const visualizationWidth = $(id).width();
     const visualizationHeight = $(id).height();
     const d3Data = localHomeDir.mapToD3();
-    svgData = renderFileStructureVisualization(
-      d3Data,
-      localCurrDir.id,
+    svgData = renderGitVisualization(
+      getLocalHomeDir(),
+      getRemoteHomeDir(),
+      getLocalInitialCommit(),
+      getRemoteInitialCommit(),
       visualizationWidth,
       visualizationHeight,
       id
