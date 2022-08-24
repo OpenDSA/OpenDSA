@@ -272,7 +272,7 @@ function updateGitVisualization(
 
   const { group, width, height } = svgData;
 
-  const treemap = d3.tree().size([width / 2, height / 2]);
+  const treemap = d3.tree().size([height / 2, width / 2]);
 
   const hierarchyData = d3.hierarchy(localInitialCommit);
 
@@ -302,6 +302,30 @@ function updateGitVisualization(
     0,
     0,
     0.7
+  );
+
+  createCommitTree(
+    group,
+    localInitialCommit,
+    "local-commit",
+    width / 2,
+    height / 2,
+    -45,
+    height / 2,
+    0,
+    15
+  );
+
+  createCommitTree(
+    group,
+    remoteInitialCommit,
+    "remote-commit",
+    width / 2,
+    height / 2,
+    width / 2 + 45,
+    height / 2,
+    0,
+    15
   );
 }
 
@@ -480,6 +504,180 @@ const createFileLinks = (
                     V ${(d.y + d.parent.y) / 2 + yOffset} 
                     H ${d.parent.x + xOffset} 
                     V ${d.parent.y + yOffset}`;
+          })
+          .each(function (d) {
+            d.totalLength = 1000;
+          })
+          .attr("stroke-dasharray", (d) => {
+            return d.totalLength + " " + d.totalLength;
+          })
+          .attr("stroke-dashoffset", 0);
+      },
+      function (exit) {
+        return exit
+          .each(function (d) {
+            d.totalLength = this.getTotalLength();
+          })
+          .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
+          .attr("stroke-dashoffset", 0)
+          .attr("stroke-dashoffset", 0)
+          .transition()
+          .delay(delays.paths.exit + delayOffset)
+          .duration(3000)
+          .attr("stroke-dashoffset", (d) => d.totalLength)
+          .remove();
+      }
+    );
+
+const createCommitTree = (
+  svgGroup,
+  initialCommit,
+  label,
+  width,
+  height,
+  xOffset,
+  yOffset,
+  delayOffset,
+  radius
+) => {
+  const treemap = d3.tree().size([height, width]);
+
+  const hierarchyData = d3.hierarchy(initialCommit);
+
+  const treeData = treemap(hierarchyData);
+
+  createCommitCircles(
+    svgGroup,
+    treeData.descendants(),
+    label,
+    xOffset,
+    yOffset + radius * 2,
+    delayOffset,
+    radius
+  );
+
+  createCommitLinks(
+    svgGroup,
+    treeData.descendants(),
+    label,
+    xOffset,
+    yOffset + radius * 2,
+    delayOffset
+  );
+};
+
+const createCommitCircles = (
+  svgGroup,
+  data,
+  label,
+  xOffset,
+  yOffset,
+  delayOffset,
+  radius
+) =>
+  svgGroup
+    .selectAll(".node-" + label)
+    .data(data, function (d) {
+      return d.data.id;
+    })
+    .join(
+      function (enter) {
+        const nodes = enter
+          .append("g")
+          .attr("class", "node")
+          .attr("transform", function (d) {
+            return "translate(" + (d.y + xOffset) + "," + (d.x + yOffset) + ")";
+          })
+          .style("fill-opacity", 1e-6)
+          .style("stroke-opacity", 1e-6);
+
+        nodes
+          .append("circle")
+          .attr("r", radius)
+          .attr("x", -radius)
+          .attr("y", -radius)
+          .style("fill", (d) => {
+            return d.data.isDirectory
+              ? colors.directory.background
+              : colors.file.background;
+          })
+          .attr("stroke", "black");
+
+        nodes
+          .transition()
+          .duration(durations.nodes.enter)
+          .delay(delays.nodes.enter + delayOffset)
+          .style("fill-opacity", 1)
+          .style("stroke-opacity", 1);
+
+        return nodes;
+      },
+      function (update) {
+        return update
+          .attr("y", 0)
+          .style("fill-opacity", 1)
+          .style("stroke-opacity", 1)
+          .transition()
+          .duration(durations.nodes.update)
+          .delay(delays.nodes.update + delayOffset)
+          .attr("transform", function (d) {
+            return "translate(" + (d.y + xOffset) + "," + (d.x + yOffset) + ")";
+          });
+      },
+      function (exit) {
+        return exit
+          .transition()
+          .duration(durations.nodes.exit)
+          .delay(delays.nodes.exit + delayOffset)
+          .style("fill-opacity", 1e-6)
+          .style("stroke-opacity", 1e-6)
+          .remove();
+      }
+    );
+
+const createCommitLinks = (
+  svgGroup,
+  data,
+  label,
+  xOffset,
+  yOffset,
+  delayOffset
+) =>
+  svgGroup
+    .selectAll(".link-" + label)
+    .data(data.slice(1), function (d) {
+      return d.data.id;
+    })
+    .join(
+      function (enter) {
+        const nodes = enter
+          .append("path")
+          .lower()
+          .attr("class", "link")
+          .attr("d", function (d) {
+            return `M ${d.y + xOffset} , ${d.x + yOffset} 
+                    L ${d.parent.y + xOffset}, ${d.parent.x + yOffset}`;
+          })
+          .each(function (d) {
+            d.totalLength = this.getTotalLength();
+          })
+          .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
+          .attr("stroke-dashoffset", (d) => d.totalLength)
+          .transition()
+          .delay(delays.paths.enter + delayOffset)
+          .duration(durations.paths.enter)
+          .attr("stroke-dashoffset", 0);
+
+        return nodes;
+      },
+      function (update) {
+        return update
+          .transition()
+          .duration(durations.paths.update)
+          .delay(delays.paths.update + delayOffset)
+          .attr("d", function (d) {
+            return `M ${d.y + xOffset} , ${d.x + yOffset} 
+                    L ${d.parent.y + xOffset}, ${d.parent.x + yOffset}`;
           })
           .each(function (d) {
             d.totalLength = 1000;

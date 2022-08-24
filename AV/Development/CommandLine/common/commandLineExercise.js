@@ -157,9 +157,9 @@ function initializeGitExercise(
 
   const localInitialCommit = new Commit();
   localInitialCommit.setMerged(true);
-  const child = localInitialCommit.insertChild();
+  const child = localInitialCommit.insertChild().insertChild();
   child.insertChild();
-  localInitialCommit.insertChild();
+  child.insertChild();
   let localCurrBranch = new Branch("main");
   localInitialCommit.insertBranch(localCurrBranch);
 
