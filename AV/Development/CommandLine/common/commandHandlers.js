@@ -150,18 +150,17 @@ const handle_cp =
       const [srcName, srcPath] = splitPath(args[0]);
       const [dstName, dstPath] = splitPath(args[1]);
 
-      const currDir = getCurrDir();
-
       const srcDir = getCurrDir().getChildByPath(srcPath);
       const dstDir = getCurrDir().getChildByPath(dstPath);
 
       if (srcDir instanceof Directory && dstDir instanceof Directory) {
         const src = srcDir.find(srcName);
         const dst = dstDir.find(dstName);
+
         if (dst instanceof Directory) {
           dst.insert(src.copy());
         } else {
-          dstDir.insert(new File(srcName));
+          dstDir.insert(new File(dstName));
         }
 
         updateFileStructureVisualization(
@@ -181,8 +180,6 @@ const handle_mv =
       const [srcName, srcPath] = splitPath(args[0]);
       const [dstName, dstPath] = splitPath(args[1]);
 
-      const currDir = getCurrDir();
-
       const srcDir = getCurrDir().getChildByPath(srcPath);
       const dstDir = getCurrDir().getChildByPath(dstPath);
 
@@ -192,7 +189,7 @@ const handle_mv =
         if (dst instanceof Directory) {
           dst.insert(src.copy());
         } else {
-          dstDir.insert(new File(srcName));
+          dstDir.insert(new File(dstName));
         }
 
         srcDir.remove(srcName);

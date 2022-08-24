@@ -94,6 +94,10 @@ class File extends FileSystemEntity {
     return name === this.name ? this : null;
   }
 
+  findByGitId(id) {
+    return this.gitId === id ? this : null;
+  }
+
   compareByName(file) {
     return file.name === this.name;
   }
@@ -142,6 +146,10 @@ class File extends FileSystemEntity {
 
   getStateString() {
     return this.fileState;
+  }
+
+  getState() {
+    return { gitState: this.gitState, fileState: this.fileState };
   }
 }
 
@@ -209,6 +217,19 @@ class Directory extends FileSystemEntity {
     return this.contents.find(
       (fileSystemEntity) => fileSystemEntity.name === name
     );
+  }
+
+  findByGitId(id) {
+    if (id === this.gitId) {
+      return this;
+    } else {
+      let curr = null;
+      this.contents.some((content) => {
+        curr = content.findByGitId(id);
+        return Boolean(curr);
+      });
+      return curr;
+    }
   }
 
   findDeep(name) {
@@ -318,6 +339,14 @@ class Directory extends FileSystemEntity {
       return this.contents[0].getStateString();
     }
     return "statestringerror";
+  }
+
+  getState() {
+    //TODO clean up
+    if (this.contents.length > 0) {
+      return this.contents[0].getState();
+    }
+    return null;
   }
 
   getRelativePaths(files) {

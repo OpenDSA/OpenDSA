@@ -1,3 +1,4 @@
+import { Branch, Commit } from "./gitClasses.js";
 import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
 const handle_git = (gitCommandsMap) => (args) => {
@@ -81,15 +82,68 @@ const handle_pull = () => (args) => {
   return "pull";
 };
 
-const handle_push = () => (args) => {
-  return "push";
-};
+const handle_push =
+  (getSvgData, getCurrDir, setCurrDir, getHomeDir, gitMethods) => (args) => {
+    const currBranch = gitMethods.getLocalCurrBranch();
+    const unmergedCommits = currBranch.getUnmergedCommits();
+    const remoteHomeDir = gitMethods.getRemoteHomeDir();
+    const remoteInitialCommit = gitMethods.getRemoteInitialCommit();
+    const remoteCurrBranch = gitMethods.getRemoteCurrBranch();
+    const remoteBranch = remoteInitialCommit.findBranchByGitId(
+      currBranch.gitId
+    );
 
-const handle_branch = () => (args) => {
-  return "branch";
-};
+    if (!remoteBranch) {
+      const newBranch = new Branch(currBranch.name);
+      newBranch.gitId = currBranch.gitId;
+      remoteCurrBranch.commit.insertBranch(newBranch);
+      remoteBranch = newBranch;
+    }
+
+    //remote find curr branch by git id
+    //insert all the commits into that branch
+    unmergedCommits.reverse().forEach((commit) => {
+      commit.files.forEach((file) => {
+        if (file.fileState === FILE_STATE.NEW) {
+          const parent = remoteHomeDir.findByGitId(file.parent.gitId);
+          parent.insert(file.copyWithGitId());
+        }
+        file.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
+      });
+      remoteBranch.commitChanges();
+      remoteBranch.commit.gitId = commit.gitId;
+      commit.merged = true;
+    });
+
+    console.log("local", gitMethods.getLocalInitialCommit());
+    console.log("remote", gitMethods.getRemoteInitialCommit());
+
+    return "";
+  };
+
+const handle_branch =
+  (getSvgData, getCurrDir, setCurrDir, getHomeDir, gitMethods) => (args) => {
+    if (args.length === 1) {
+      const name = args[0];
+      if (gitMethods.getLocalInitialCommit().findBranchByName(name)) {
+        return `${name} already exists`;
+      }
+      const branch = new Branch(name);
+      gitMethods.getLocalCurrBranch().commit.insertBranch(branch);
+    }
+    return "bad args";
+  };
 
 const handle_checkout = () => (args) => {
+  if (args.length === 1) {
+    const name = args[0];
+    const branch = findBranchByName(name);
+    if (branch) {
+      gitMethods.setLocalCurrBranch(branch);
+    } else {
+      return `${name} not found`;
+    }
+  }
   return "checkout";
 };
 

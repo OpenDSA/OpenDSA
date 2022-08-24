@@ -7,15 +7,51 @@ class Commit {
     this.parent = undefined;
     this.branches = [];
     this.files = [];
-    this.status = {
-      merged: false,
-    };
+    this.merged = false;
     this.id = ++count;
     this.gitId = ++gitIdCount; //used to pair between local and remote
   }
 
   setMerged(merged) {
-    this.status.merged = merged;
+    this.merged = merged;
+  }
+
+  findBranchByGitId(id) {
+    let curr = null;
+    this.branches.some((branch) => {
+      curr = branch;
+      return curr.gitId === id;
+    });
+
+    if (curr) {
+      return curr;
+    }
+
+    this.children.some((child) => {
+      curr = child.findBranchByGitId();
+      return Boolean(curr);
+    });
+
+    return curr;
+  }
+
+  findBranchByName(name) {
+    let curr = null;
+    this.branches.some((branch) => {
+      curr = branch;
+      return curr.name === name;
+    });
+
+    if (curr) {
+      return curr;
+    }
+
+    this.children.some((child) => {
+      curr = child.findBranchByName();
+      return Boolean(curr);
+    });
+
+    return curr;
   }
 
   insertChild() {
@@ -72,6 +108,18 @@ class Branch {
     const branch = new Branch(this.name);
     branch.gitId = this.gitId;
     return branch;
+  }
+
+  getUnmergedCommits() {
+    const commits = [];
+    let curr = this.commit;
+
+    while (!curr.merged) {
+      commits.push(curr);
+      curr = curr.parent;
+    }
+
+    return commits;
   }
 }
 

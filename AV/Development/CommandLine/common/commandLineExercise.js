@@ -50,8 +50,6 @@ function initializeCommandLineExercise(
     initialCwdIndexPath ? initialCwdIndexPath : DEFAULT_CWD_INDEX_PATH
   );
 
-  homeDir.setTracked(true);
-
   let svgData;
 
   function getHomeDir() {
