@@ -14,7 +14,15 @@ const handle_clone = () => (args) => {
 };
 
 const handle_add =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     let notFound = [];
     args.forEach((path) => {
       const fileSystemEntity = getCurrDir().getChildByPath(path);
@@ -28,11 +36,21 @@ const handle_add =
         notFound.push(path);
       }
     });
+
+    updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
     return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
   };
 
 const handle_restore =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     let notFound = [];
 
     let isStaged = false;
@@ -67,11 +85,21 @@ const handle_restore =
   };
 
 const handle_commit =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir, gitMethods) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     const files = getHomeDir().getByState(GIT_STATE.ADDED);
     if (files.length > 0) {
       const commit = gitMethods.getLocalCurrBranch().commitChanges(files);
       getHomeDir().setStateConditional(GIT_STATE.ADDED, GIT_STATE.COMMITTED);
+      updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+
       return "";
     } else {
       return "nothing to commit";
@@ -83,7 +111,15 @@ const handle_pull = () => (args) => {
 };
 
 const handle_push =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir, gitMethods) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     const currBranch = gitMethods.getLocalCurrBranch();
     const unmergedCommits = currBranch.getUnmergedCommits();
     const remoteHomeDir = gitMethods.getRemoteHomeDir();
@@ -118,11 +154,20 @@ const handle_push =
     console.log("local", gitMethods.getLocalInitialCommit());
     console.log("remote", gitMethods.getRemoteInitialCommit());
 
+    updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
     return "";
   };
 
 const handle_branch =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir, gitMethods) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length === 1) {
       const name = args[0];
       if (gitMethods.getLocalInitialCommit().findBranchByName(name)) {
@@ -148,7 +193,15 @@ const handle_checkout = () => (args) => {
 };
 
 const handle_status =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir, gitMethods) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     const output = [];
 
     const branchInfo = `<div class="git-status-branch"><p>On branch ${
@@ -210,6 +263,7 @@ function createGitCommandsMap(
   getCurrDir,
   setCurrDir,
   getHomeDir,
+  updateVisualization,
   gitMethods
 ) {
   const commandsMap = {
@@ -231,6 +285,7 @@ function createGitCommandsMap(
         getCurrDir,
         setCurrDir,
         getHomeDir,
+        updateVisualization,
         gitMethods
       ))
   );

@@ -90,6 +90,30 @@
   stroke-width: 2px;
 }
 
+.link-local {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-remote {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-remote-commit {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-local-commit {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
 .git-status {
   display: flex;
   flex-direction: column;

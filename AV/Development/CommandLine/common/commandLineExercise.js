@@ -3,6 +3,8 @@ import { initializeCommandLine } from "./commandLine.js";
 import {
   renderFileStructureVisualization,
   renderGitVisualization,
+  updateFileStructureVisualization,
+  updateGitVisualization,
 } from "./fileStructure.js";
 import { Directory } from "./fileSystemEntity.js";
 import { Branch, Commit } from "./gitClasses.js";
@@ -94,7 +96,8 @@ function initializeCommandLineExercise(
     getSvgData,
     getCurrDir,
     setCurrDir,
-    getHomeDir
+    getHomeDir,
+    updateFileStructureVisualization
   );
 
   let resizeCount = 0;
@@ -105,9 +108,8 @@ function initializeCommandLineExercise(
     const id = "#visualization-container";
     const visualizationWidth = $(id).width();
     const visualizationHeight = $(id).height();
-    const d3Data = homeDir.mapToD3();
     svgData = renderFileStructureVisualization(
-      d3Data,
+      homeDir,
       currDir.id,
       visualizationWidth,
       visualizationHeight,
@@ -221,6 +223,7 @@ function initializeGitExercise(
     getLocalCurrDir,
     setLocalCurrDir,
     getLocalHomeDir,
+    updateGitVisualization,
     //TODO decouple this later
     {
       getRemoteHomeDir,
@@ -244,9 +247,7 @@ function initializeGitExercise(
     const d3Data = localHomeDir.mapToD3();
     svgData = renderGitVisualization(
       getLocalHomeDir(),
-      getRemoteHomeDir(),
-      getLocalInitialCommit(),
-      getRemoteInitialCommit(),
+      { getRemoteHomeDir, getLocalInitialCommit, getRemoteInitialCommit },
       visualizationWidth,
       visualizationHeight,
       id

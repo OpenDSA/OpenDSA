@@ -1,16 +1,18 @@
-import {
-  colorNode,
-  colors,
-  delays,
-  highlightNode,
-  updateFileStructureVisualization,
-} from "./fileStructure.js";
+import { colorNode, colors, delays, highlightNode } from "./fileStructure.js";
 import { Directory, File, splitPath } from "./fileSystemEntity.js";
 import { createGitCommandsMap, handle_git } from "./gitCommandHandlers.js";
 import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
 const handle_ls =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     let output = "";
 
     getCurrDir().contents.forEach((content) => {
@@ -33,7 +35,15 @@ const handle_ls =
   };
 
 const handle_pwd =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     const path = getCurrDir().getPath();
 
     highlightNode(
@@ -47,7 +57,15 @@ const handle_pwd =
   };
 
 const handle_cd =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length === 0) {
       colorNode(
         getSvgData().group,
@@ -86,7 +104,15 @@ const handle_cd =
   };
 
 const handle_mkdir =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length === 1) {
       const [name, path] = splitPath(args[0]);
       const dir = getCurrDir().getChildByPath(path);
@@ -100,18 +126,28 @@ const handle_mkdir =
       } else {
         dir.insert(new Directory(name));
 
-        updateFileStructureVisualization(
+        updateVisualization(
           getSvgData(),
-          getHomeDir().mapToD3(),
-          -1 * delays.paths.update
+          getHomeDir(),
+          -1 * delays.paths.update,
+          gitMethods
         );
+
         return "";
       }
     }
   };
 
 const handle_touch =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length >= 1) {
       const results = args.map((arg) => {
         const [name, path] = splitPath(arg);
@@ -134,10 +170,11 @@ const handle_touch =
 
       const filteredResults = results.filter((result) => result !== "");
 
-      updateFileStructureVisualization(
+      updateVisualization(
         getSvgData(),
-        getHomeDir().mapToD3(),
-        -1 * delays.paths.update
+        getHomeDir(),
+        -1 * delays.paths.update,
+        gitMethods
       );
 
       return filteredResults.join("\n");
@@ -145,7 +182,15 @@ const handle_touch =
   };
 
 const handle_cp =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length === 2) {
       const [srcName, srcPath] = splitPath(args[0]);
       const [dstName, dstPath] = splitPath(args[1]);
@@ -163,10 +208,11 @@ const handle_cp =
           dstDir.insert(new File(dstName));
         }
 
-        updateFileStructureVisualization(
+        updateVisualization(
           getSvgData(),
-          getHomeDir().mapToD3(),
-          -1 * delays.paths.update
+          getHomeDir(),
+          -1 * delays.paths.update,
+          gitMethods
         );
 
         return "";
@@ -175,7 +221,15 @@ const handle_cp =
   };
 
 const handle_mv =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length === 2) {
       const [srcName, srcPath] = splitPath(args[0]);
       const [dstName, dstPath] = splitPath(args[1]);
@@ -194,11 +248,7 @@ const handle_mv =
 
         srcDir.remove(srcName);
 
-        updateFileStructureVisualization(
-          getSvgData(),
-          getHomeDir().mapToD3(),
-          0
-        );
+        updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
 
         return "";
       }
@@ -206,7 +256,15 @@ const handle_mv =
   };
 
 const handle_rm =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length === 1 || args.length === 2) {
       const [srcName, srcPath] = splitPath(args[args.length - 1]);
       const srcDir = getCurrDir().getChildByPath(srcPath);
@@ -219,18 +277,22 @@ const handle_rm =
 
         srcDir.remove(srcName);
 
-        updateFileStructureVisualization(
-          getSvgData(),
-          getHomeDir().mapToD3(),
-          0
-        );
+        updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
       }
       return "";
     }
   };
 
 const handle_rmdir =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length === 1) {
       const [srcName, srcPath] = splitPath(args[0]);
       const srcDir = getCurrDir().getChildByPath(srcPath);
@@ -240,11 +302,7 @@ const handle_rmdir =
           if (src.contents.length === 0) {
             srcDir.remove(srcName);
 
-            updateFileStructureVisualization(
-              getSvgData(),
-              getHomeDir().mapToD3(),
-              0
-            );
+            updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
           } else {
             return "Not empty";
           }
@@ -255,13 +313,22 @@ const handle_rmdir =
   };
 
 const handle_vi =
-  (getSvgData, getCurrDir, setCurrDir, getHomeDir) => (args) => {
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
     if (args.length === 1) {
       const path = args[0];
       const file = getCurrDir().getChildByPath(path);
       if (file && file instanceof File) {
         //TODO make conditional
         file.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
+        updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
         return "";
       } else {
         return "Invalid path";
@@ -277,6 +344,7 @@ function createCommandsMap(
   setCurrDir,
   getHomeDir,
   //TODO decouple this later
+  updateVisualization,
   gitMethods
 ) {
   const commandsMap = {
@@ -298,6 +366,7 @@ function createCommandsMap(
     getCurrDir,
     setCurrDir,
     getHomeDir,
+    updateVisualization,
     //TODO decouple this later
     gitMethods
   );
@@ -311,6 +380,7 @@ function createCommandsMap(
         getCurrDir,
         setCurrDir,
         getHomeDir,
+        updateVisualization,
         gitMethods
       );
     }

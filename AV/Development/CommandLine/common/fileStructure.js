@@ -1,4 +1,5 @@
 import { Directory, File } from "./fileSystemEntity.js";
+import { GIT_STATE } from "./gitStatuses.js";
 
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 
@@ -36,23 +37,9 @@ function renderFileStructureVisualization(data, currDirId, width, height, id) {
   return svgData;
 }
 
-function renderGitVisualization(
-  localHomeDir,
-  remoteHomeDir,
-  localInitialCommit,
-  remoteInitialCommit,
-  width,
-  height,
-  id
-) {
+function renderGitVisualization(localHomeDir, gitMethods, width, height, id) {
   const svgData = renderSVG(width, height, id);
-  updateGitVisualization(
-    svgData,
-    localHomeDir,
-    remoteHomeDir,
-    localInitialCommit,
-    remoteInitialCommit
-  );
+  updateGitVisualization(svgData, localHomeDir, 0, gitMethods);
 
   return svgData;
 }
@@ -106,179 +93,180 @@ function highlightNode(svgGroup, id, color, prevColor, prevText) {
     .style("fill", prevText);
 }
 
-function updateFileStructureVisualization(svgData, data, delayOffset) {
+function updateFileStructureVisualization(svgData, homeDir, delayOffset) {
+  const data = homeDir.mapToD3();
+
   const svgGroup = svgData.group;
 
-  const treemap = d3.tree().size([svgData.width, svgData.height]);
+  createFileTree(
+    svgGroup,
+    homeDir,
+    "",
+    svgData.width,
+    svgData.height,
+    0,
+    0,
+    delayOffset,
+    1
+  );
 
-  const hierarchyData = d3.hierarchy(data);
+  // const treemap = d3.tree().size([svgData.width, svgData.height]);
 
-  const treeData = treemap(hierarchyData);
+  // const hierarchyData = d3.hierarchy(data);
 
-  console.log("descendats", treeData.descendants());
+  // const treeData = treemap(hierarchyData);
 
-  // adds the nodes
-  const nodes = svgGroup
-    .selectAll(".node")
-    .data(treeData.descendants(), function (d) {
-      return d.data.id;
-    })
-    .join(
-      function (enter) {
-        const nodes = enter
-          .append("g")
-          .attr("class", "node")
-          .attr("transform", function (d) {
-            return "translate(" + d.x + "," + d.y + ")";
-          })
-          .style("fill-opacity", 1e-6)
-          .style("stroke-opacity", 1e-6);
+  // // adds the nodes
+  // const nodes = svgGroup
+  //   .selectAll(".node")
+  //   .data(treeData.descendants(), function (d) {
+  //     return d.data.id;
+  //   })
+  //   .join(
+  //     function (enter) {
+  //       const nodes = enter
+  //         .append("g")
+  //         .attr("class", "node")
+  //         .attr("transform", function (d) {
+  //           return "translate(" + d.x + "," + d.y + ")";
+  //         })
+  //         .style("fill-opacity", 1e-6)
+  //         .style("stroke-opacity", 1e-6);
 
-        nodes
-          .append("rect")
-          .attr("width", rectangleDimensions.width)
-          .attr("height", rectangleDimensions.height)
-          .attr("x", -rectangleDimensions.width / 2)
-          .attr("y", -rectangleDimensions.height / 2)
-          .style("fill", (d) => {
-            return d.data.isDirectory
-              ? colors.directory.background
-              : colors.file.background;
-          })
-          .attr("stroke", "black")
-          .attr("rx", 5)
-          .attr("ry", 5);
+  //       nodes
+  //         .append("rect")
+  //         .attr("width", rectangleDimensions.width)
+  //         .attr("height", rectangleDimensions.height)
+  //         .attr("x", -rectangleDimensions.width / 2)
+  //         .attr("y", -rectangleDimensions.height / 2)
+  //         .style("fill", (d) => {
+  //           return d.data.isDirectory
+  //             ? colors.directory.background
+  //             : colors.file.background;
+  //         })
+  //         .attr("stroke", "black")
+  //         .attr("rx", 5)
+  //         .attr("ry", 5);
 
-        nodes
-          .append("text")
-          .attr("dy", ".35em")
-          .attr("font-size", "0.8rem")
-          .style("fill", (d) => {
-            return d.data.isDirectory
-              ? colors.directory.text
-              : colors.file.text;
-          })
-          .style("text-anchor", "middle")
-          .text(function (d) {
-            return d.data.name;
-          });
+  //       nodes
+  //         .append("text")
+  //         .attr("dy", ".35em")
+  //         .attr("font-size", "0.8rem")
+  //         .style("fill", (d) => {
+  //           return d.data.isDirectory
+  //             ? colors.directory.text
+  //             : colors.file.text;
+  //         })
+  //         .style("text-anchor", "middle")
+  //         .text(function (d) {
+  //           return d.data.name;
+  //         });
 
-        nodes
-          .transition()
-          .duration(durations.nodes.enter)
-          .delay(delays.nodes.enter + delayOffset)
-          .style("fill-opacity", 1)
-          .style("stroke-opacity", 1);
+  //       nodes
+  //         .transition()
+  //         .duration(durations.nodes.enter)
+  //         .delay(delays.nodes.enter + delayOffset)
+  //         .style("fill-opacity", 1)
+  //         .style("stroke-opacity", 1);
 
-        return nodes;
-      },
-      function (update) {
-        return update
-          .attr("y", 0)
-          .style("fill-opacity", 1)
-          .style("stroke-opacity", 1)
-          .transition()
-          .duration(durations.nodes.update)
-          .delay(delays.nodes.update + delayOffset)
-          .attr("transform", function (d) {
-            return "translate(" + d.x + "," + d.y + ")";
-          });
-      },
-      function (exit) {
-        return exit
-          .transition()
-          .duration(durations.nodes.exit)
-          .delay(delays.nodes.exit + delayOffset)
-          .style("fill-opacity", 1e-6)
-          .style("stroke-opacity", 1e-6)
-          .remove();
-      }
-    );
+  //       return nodes;
+  //     },
+  //     function (update) {
+  //       return update
+  //         .attr("y", 0)
+  //         .style("fill-opacity", 1)
+  //         .style("stroke-opacity", 1)
+  //         .transition()
+  //         .duration(durations.nodes.update)
+  //         .delay(delays.nodes.update + delayOffset)
+  //         .attr("transform", function (d) {
+  //           return "translate(" + d.x + "," + d.y + ")";
+  //         });
+  //     },
+  //     function (exit) {
+  //       return exit
+  //         .transition()
+  //         .duration(durations.nodes.exit)
+  //         .delay(delays.nodes.exit + delayOffset)
+  //         .style("fill-opacity", 1e-6)
+  //         .style("stroke-opacity", 1e-6)
+  //         .remove();
+  //     }
+  //   );
 
-  // adds the links between the nodes
-  const links = svgGroup
-    .selectAll(".link")
-    .data(treeData.descendants().slice(1), function (d) {
-      return d.data.id;
-    })
-    .join(
-      function (enter) {
-        const nodes = enter
-          .append("path")
-          .lower()
-          .attr("class", "link")
-          .attr("d", function (d) {
-            return `M ${d.x} , ${d.y} 
-                      V ${(d.y + d.parent.y) / 2} 
-                      H ${d.parent.x} 
-                      V ${d.parent.y}`;
-          })
-          .each(function (d) {
-            d.totalLength = this.getTotalLength();
-          })
-          .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
-          .attr("stroke-dashoffset", (d) => d.totalLength)
-          .transition()
-          .delay(delays.paths.enter + delayOffset)
-          .duration(durations.paths.enter)
-          .attr("stroke-dashoffset", 0);
+  // // adds the links between the nodes
+  // const links = svgGroup
+  //   .selectAll(".link")
+  //   .data(treeData.descendants().slice(1), function (d) {
+  //     return d.data.id;
+  //   })
+  //   .join(
+  //     function (enter) {
+  //       const nodes = enter
+  //         .append("path")
+  //         .lower()
+  //         .attr("class", "link")
+  //         .attr("d", function (d) {
+  //           return `M ${d.x} , ${d.y}
+  //                     V ${(d.y + d.parent.y) / 2}
+  //                     H ${d.parent.x}
+  //                     V ${d.parent.y}`;
+  //         })
+  //         .each(function (d) {
+  //           d.totalLength = this.getTotalLength();
+  //         })
+  //         .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
+  //         .attr("stroke-dashoffset", (d) => d.totalLength)
+  //         .transition()
+  //         .delay(delays.paths.enter + delayOffset)
+  //         .duration(durations.paths.enter)
+  //         .attr("stroke-dashoffset", 0);
 
-        return nodes;
-      },
-      function (update) {
-        return update
-          .transition()
-          .duration(durations.paths.update)
-          .delay(delays.paths.update + delayOffset)
-          .attr("d", function (d) {
-            return `M ${d.x} , ${d.y} 
-                    V ${(d.y + d.parent.y) / 2} 
-                    H ${d.parent.x} 
-                    V ${d.parent.y}`;
-          })
-          .each(function (d) {
-            d.totalLength = 1000;
-          })
-          .attr("stroke-dasharray", (d) => {
-            return d.totalLength + " " + d.totalLength;
-          })
-          .attr("stroke-dashoffset", 0);
-      },
-      function (exit) {
-        return exit
-          .each(function (d) {
-            d.totalLength = this.getTotalLength();
-          })
-          .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
-          .attr("stroke-dashoffset", 0)
-          .attr("stroke-dashoffset", 0)
-          .transition()
-          .delay(delays.paths.exit + delayOffset)
-          .duration(3000)
-          .attr("stroke-dashoffset", (d) => d.totalLength)
-          .remove();
-      }
-    );
+  //       return nodes;
+  //     },
+  //     function (update) {
+  //       return update
+  //         .transition()
+  //         .duration(durations.paths.update)
+  //         .delay(delays.paths.update + delayOffset)
+  //         .attr("d", function (d) {
+  //           return `M ${d.x} , ${d.y}
+  //                   V ${(d.y + d.parent.y) / 2}
+  //                   H ${d.parent.x}
+  //                   V ${d.parent.y}`;
+  //         })
+  //         .each(function (d) {
+  //           d.totalLength = 1000;
+  //         })
+  //         .attr("stroke-dasharray", (d) => {
+  //           return d.totalLength + " " + d.totalLength;
+  //         })
+  //         .attr("stroke-dashoffset", 0);
+  //     },
+  //     function (exit) {
+  //       return exit
+  //         .each(function (d) {
+  //           d.totalLength = this.getTotalLength();
+  //         })
+  //         .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
+  //         .attr("stroke-dashoffset", 0)
+  //         .attr("stroke-dashoffset", 0)
+  //         .transition()
+  //         .delay(delays.paths.exit + delayOffset)
+  //         .duration(3000)
+  //         .attr("stroke-dashoffset", (d) => d.totalLength)
+  //         .remove();
+  //     }
+  //   );
 }
 
 function updateGitVisualization(
   svgData,
   localHomeDir,
-  remoteHomeDir,
-  localInitialCommit,
-  remoteInitialCommit
+  delayOffset,
+  gitMethods
 ) {
-  const delayOffset = 0;
-
   const { group, width, height } = svgData;
-
-  const treemap = d3.tree().size([height / 2, width / 2]);
-
-  const hierarchyData = d3.hierarchy(localInitialCommit);
-
-  const treeData = treemap(hierarchyData);
-
-  console.log("treeData", treeData);
 
   createFileTree(
     group,
@@ -288,43 +276,43 @@ function updateGitVisualization(
     height / 2,
     0,
     0,
-    0,
+    delayOffset,
     0.7
   );
 
   createFileTree(
     group,
-    remoteHomeDir,
+    gitMethods.getRemoteHomeDir(),
     "remote",
     width / 2,
     height / 2,
     width / 2,
     0,
-    0,
+    delayOffset,
     0.7
   );
 
   createCommitTree(
     group,
-    localInitialCommit,
+    gitMethods.getLocalInitialCommit(),
     "local-commit",
     width / 2,
     height / 2,
     -45,
     height / 2,
-    0,
+    delayOffset,
     15
   );
 
   createCommitTree(
     group,
-    remoteInitialCommit,
+    gitMethods.getRemoteInitialCommit(),
     "remote-commit",
     width / 2,
     height / 2,
     width / 2 + 45,
     height / 2,
-    0,
+    delayOffset,
     15
   );
 }
@@ -389,7 +377,7 @@ const createFileRectangles = (
       function (enter) {
         const nodes = enter
           .append("g")
-          .attr("class", "node")
+          .attr("class", "node-" + label)
           .attr("transform", function (d) {
             return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
           })
@@ -439,6 +427,11 @@ const createFileRectangles = (
           .attr("y", 0)
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
+          .style("fill", (d) => {
+            return d.data.gitState === GIT_STATE.CHANGED
+              ? "red"
+              : colors.file.background;
+          })
           .transition()
           .duration(durations.nodes.update)
           .delay(delays.nodes.update + delayOffset)
@@ -475,7 +468,7 @@ const createFileLinks = (
         const nodes = enter
           .append("path")
           .lower()
-          .attr("class", "link")
+          .attr("class", "link-" + label)
           .attr("d", function (d) {
             return `M ${d.x + xOffset} , ${d.y + yOffset} 
                       V ${(d.y + d.parent.y) / 2 + yOffset} 
@@ -584,7 +577,7 @@ const createCommitCircles = (
       function (enter) {
         const nodes = enter
           .append("g")
-          .attr("class", "node")
+          .attr("class", "node-" + label)
           .attr("transform", function (d) {
             return "translate(" + (d.y + xOffset) + "," + (d.x + yOffset) + ")";
           })
@@ -653,7 +646,7 @@ const createCommitLinks = (
         const nodes = enter
           .append("path")
           .lower()
-          .attr("class", "link")
+          .attr("class", "link-" + label)
           .attr("d", function (d) {
             return `M ${d.y + xOffset} , ${d.x + yOffset} 
                     L ${d.parent.y + xOffset}, ${d.parent.x + yOffset}`;
@@ -727,6 +720,7 @@ export {
   renderFileStructureVisualization,
   updateFileStructureVisualization,
   renderGitVisualization,
+  updateGitVisualization,
   highlightNode,
   colorNode,
   colors,
