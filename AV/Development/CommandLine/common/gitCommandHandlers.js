@@ -1,3 +1,4 @@
+import { delays } from "./fileStructure.js";
 import { Branch, Commit } from "./gitClasses.js";
 import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
@@ -37,7 +38,12 @@ const handle_add =
       }
     });
 
-    updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+    updateVisualization(
+      getSvgData(),
+      getHomeDir(),
+      -1 * delays.paths.update,
+      gitMethods
+    );
     return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
   };
 
@@ -98,7 +104,12 @@ const handle_commit =
     if (files.length > 0) {
       const commit = gitMethods.getLocalCurrBranch().commitChanges(files);
       getHomeDir().setStateConditional(GIT_STATE.ADDED, GIT_STATE.COMMITTED);
-      updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+      updateVisualization(
+        getSvgData(),
+        getHomeDir(),
+        -1 * delays.paths.update,
+        gitMethods
+      );
 
       return "";
     } else {
@@ -140,9 +151,11 @@ const handle_push =
     //insert all the commits into that branch
     unmergedCommits.reverse().forEach((commit) => {
       commit.files.forEach((file) => {
-        if (file.fileState === FILE_STATE.NEW) {
+        if (file.getState().fileState === FILE_STATE.NEW) {
           const parent = remoteHomeDir.findByGitId(file.parent.gitId);
-          parent.insert(file.copyWithGitId());
+          const newFile = file.copyWithGitId();
+          newFile.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
+          parent.insert(newFile);
         }
         file.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
       });

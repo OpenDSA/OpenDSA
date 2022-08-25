@@ -328,7 +328,12 @@ const handle_vi =
       if (file && file instanceof File) {
         //TODO make conditional
         file.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
-        updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+        updateVisualization(
+          getSvgData(),
+          getHomeDir(),
+          -1 * delays.paths.update,
+          gitMethods
+        );
         return "";
       } else {
         return "Invalid path";

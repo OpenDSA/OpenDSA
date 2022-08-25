@@ -87,6 +87,8 @@ class File extends FileSystemEntity {
       name: this.name,
       id: this.id,
       isDirectory: false,
+      fileState: this.fileState,
+      gitState: this.gitState,
     };
   }
 

@@ -29,6 +29,11 @@ const colors = {
   highlight: { background: "orange", text: "white" },
 };
 
+const gitColors = {
+  [GIT_STATE.ADDED]: { background: "#1fd665" },
+  [GIT_STATE.CHANGED]: { background: "#ff6863" },
+};
+
 function renderFileStructureVisualization(data, currDirId, width, height, id) {
   const svgData = renderSVG(width, height, id);
   updateFileStructureVisualization(svgData, data, -1 * delays.nodes.enter);
@@ -39,7 +44,12 @@ function renderFileStructureVisualization(data, currDirId, width, height, id) {
 
 function renderGitVisualization(localHomeDir, gitMethods, width, height, id) {
   const svgData = renderSVG(width, height, id);
-  updateGitVisualization(svgData, localHomeDir, 0, gitMethods);
+  updateGitVisualization(
+    svgData,
+    localHomeDir,
+    -1 * delays.paths.update,
+    gitMethods
+  );
 
   return svgData;
 }
@@ -391,9 +401,7 @@ const createFileRectangles = (
           .attr("x", -width / 2)
           .attr("y", -height / 2)
           .style("fill", (d) => {
-            return d.data.isDirectory
-              ? colors.directory.background
-              : colors.file.background;
+            return getFileColor(d.data.gitState, d.data.isDirectory);
           })
           .attr("stroke", "black")
           .attr("rx", 5)
@@ -423,21 +431,24 @@ const createFileRectangles = (
         return nodes;
       },
       function (update) {
-        return update
+        console.log("update");
+        const node = update
           .attr("y", 0)
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
-          .style("fill", (d) => {
-            return d.data.gitState === GIT_STATE.CHANGED
-              ? "red"
-              : colors.file.background;
-          })
           .transition()
           .duration(durations.nodes.update)
           .delay(delays.nodes.update + delayOffset)
           .attr("transform", function (d) {
             return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
           });
+
+        node.select("rect").style("fill", (d) => {
+          return getFileColor(d.data.gitState, d.data.isDirectory);
+        });
+        // node.select("text").style("fill", colors.directory.text);
+
+        return node;
       },
       function (exit) {
         return exit
@@ -696,24 +707,13 @@ const createCommitLinks = (
       }
     );
 
-const mapDirToD3 = (dir, x) => {
-  const files = dir.contents
-    .filter((content) => content instanceof File)
-    .map((content, i) => ({
-      x: x,
-      y: i * (rectangleDimensions.height + 4),
-      data: content,
-    }));
-
-  const dirs = dir.contents
-    .filter((content) => content instanceof Directory)
-    .map((content, i) => ({
-      x: x + rectangleDimensions.width + 10,
-      y: i * (rectangleDimensions.height + 4),
-      data: { ...content, isDirectory: true },
-    }));
-
-  return [...files, ...dirs];
+const getFileColor = (gitState, isDirectory) => {
+  const color = gitColors[gitState];
+  return color
+    ? color.background
+    : isDirectory
+    ? colors.directory.background
+    : colors.file.background;
 };
 
 export {
