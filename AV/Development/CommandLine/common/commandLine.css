@@ -84,10 +84,16 @@
   text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
 } */
 
-.link {
+.link- {
   fill: none;
   stroke: #ccc;
   stroke-width: 2px;
+}
+
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 4px;
 }
 
 .link-local {

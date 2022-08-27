@@ -4,6 +4,7 @@ import { GIT_STATE } from "./gitStatuses.js";
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 
 const rectangleDimensions = { width: 76, height: 30 };
+const circleRadius = 15;
 
 const durations = {
   nodes: { enter: 1000, exit: 1000, update: 2000 },
@@ -61,14 +62,14 @@ function renderSVG(width, height, id) {
   const svg = d3
     .select(id)
     .append("svg")
-    .attr("width", svgWidth + margin.left + margin.right)
-    .attr("height", svgHeight + margin.top + margin.bottom);
+    .attr("width", width)
+    .attr("height", height);
 
-  const svgGroup = svg
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  const svgGroup = svg.append("g");
+  // .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+  // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  return { group: svgGroup, width: svgWidth, height: svgHeight };
+  return { group: svgGroup, width: width, height: height };
 }
 
 function selectNode(svgGroup, id) {
@@ -117,7 +118,9 @@ function updateFileStructureVisualization(svgData, homeDir, delayOffset) {
     0,
     0,
     delayOffset,
-    1
+    1,
+    5,
+    5
   );
 
   // const treemap = d3.tree().size([svgData.width, svgData.height]);
@@ -278,6 +281,12 @@ function updateGitVisualization(
 ) {
   const { group, width, height } = svgData;
 
+  createVerticalLine(group, width / 2, height);
+
+  createText(group, "Local", 2, 10, 1);
+
+  createText(group, "Remote", width / 2 + 4, 10, 1);
+
   createFileTree(
     group,
     localHomeDir,
@@ -287,7 +296,9 @@ function updateGitVisualization(
     0,
     0,
     delayOffset,
-    0.7
+    0.7,
+    5,
+    5
   );
 
   createFileTree(
@@ -299,7 +310,9 @@ function updateGitVisualization(
     width / 2,
     0,
     delayOffset,
-    0.7
+    0.7,
+    5,
+    5
   );
 
   createCommitTree(
@@ -308,10 +321,13 @@ function updateGitVisualization(
     "local-commit",
     width / 2,
     height / 2,
-    -45,
+    0,
     height / 2,
     delayOffset,
-    15
+    circleRadius,
+    0.7,
+    5,
+    5
   );
 
   createCommitTree(
@@ -320,10 +336,13 @@ function updateGitVisualization(
     "remote-commit",
     width / 2,
     height / 2,
-    width / 2 + 45,
+    width / 2,
     height / 2,
     delayOffset,
-    15
+    circleRadius,
+    0.7,
+    5,
+    5
   );
 }
 
@@ -333,12 +352,21 @@ const createFileTree = (
   label,
   width,
   height,
-  xOffset,
-  yOffset,
+  x,
+  y,
   delayOffset,
-  fileScale
+  fileScale,
+  paddingX,
+  paddingY
 ) => {
-  const treemap = d3.tree().size([width, height]);
+  const rectangleWidth = rectangleDimensions.width * fileScale;
+  const rectangleHeight = rectangleDimensions.height * fileScale;
+  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
+  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
+  const xOffset = rectangleWidth / 2 + x + paddingX;
+  const yOffset = rectangleHeight / 2 + y + paddingY;
+
+  const treemap = d3.tree().size([adjustedWidth, adjustedHeight]);
 
   const hierarchyData = d3.hierarchy(directory.mapToD3());
 
@@ -352,8 +380,8 @@ const createFileTree = (
     xOffset,
     yOffset,
     delayOffset,
-    rectangleDimensions.width * fileScale,
-    rectangleDimensions.height * fileScale,
+    rectangleWidth,
+    rectangleHeight,
     0.9 * fileScale + "rem"
   );
 
@@ -371,14 +399,16 @@ const createFileRectangles = (
   svgGroup,
   data,
   label,
-  xOffset,
-  yOffset,
+  x,
+  y,
   delayOffset,
   width,
   height,
   fontSize
-) =>
-  svgGroup
+) => {
+  const xOffset = x;
+  const yOffset = y;
+  return svgGroup
     .selectAll(".node-" + label)
     .data(data, function (d) {
       return d.data.id;
@@ -431,7 +461,6 @@ const createFileRectangles = (
         return nodes;
       },
       function (update) {
-        console.log("update");
         const node = update
           .attr("y", 0)
           .style("fill-opacity", 1)
@@ -460,6 +489,7 @@ const createFileRectangles = (
           .remove();
       }
     );
+};
 
 const createFileLinks = (
   svgGroup,
@@ -539,34 +569,82 @@ const createCommitTree = (
   label,
   width,
   height,
-  xOffset,
-  yOffset,
+  x,
+  y,
   delayOffset,
-  radius
+  radius,
+  rectangleScale,
+  paddingX,
+  paddingY
 ) => {
-  const treemap = d3.tree().size([height, width]);
+  const rectangleWidth = rectangleDimensions.width * rectangleScale;
+  const rectangleHeight = rectangleDimensions.height * rectangleScale;
+  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
+  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
+
+  const xOffset = x + rectangleWidth / 2 + paddingX;
+  const yOffset = y + paddingY;
+  //todo figure out height
+  const treemap = d3.tree().size([adjustedHeight, adjustedWidth]);
 
   const hierarchyData = d3.hierarchy(initialCommit);
 
   const treeData = treemap(hierarchyData);
 
+  const descendants = treeData.descendants();
+
+  const currGap =
+    descendants.length > 1 ? descendants[1].y - descendants[0].y : null;
+
+  const desiredGap = 100;
+
+  const useDesiredGap = currGap === null || desiredGap < currGap;
+
+  const data = descendants.map((commit) => ({
+    ...commit,
+    x: useDesiredGap ? commit.depth * desiredGap : commit.y,
+    y: commit.x,
+    parent: commit.parent
+      ? {
+          ...commit.parent,
+          x: useDesiredGap ? commit.parent.depth * desiredGap : commit.parent.y,
+          y: commit.parent.x,
+        }
+      : null,
+  }));
+
   createCommitCircles(
     svgGroup,
-    treeData.descendants(),
+    data,
     label,
     xOffset,
-    yOffset + radius * 2,
+    yOffset,
     delayOffset,
     radius
   );
 
-  createCommitLinks(
+  createCommitLinks(svgGroup, data, label, xOffset, yOffset, delayOffset);
+
+  const branches = data.flatMap((commit) =>
+    commit.data.branches.map((branch, index) => ({
+      ...branch,
+      x: commit.x,
+      y: commit.y,
+      index: index,
+    }))
+  );
+
+  createBranchRectangles(
     svgGroup,
-    treeData.descendants(),
+    branches,
     label,
     xOffset,
-    yOffset + radius * 2,
-    delayOffset
+    yOffset,
+    delayOffset + durations.nodes.update,
+    rectangleWidth,
+    rectangleHeight,
+    "0.7rem",
+    radius
   );
 };
 
@@ -590,7 +668,7 @@ const createCommitCircles = (
           .append("g")
           .attr("class", "node-" + label)
           .attr("transform", function (d) {
-            return "translate(" + (d.y + xOffset) + "," + (d.x + yOffset) + ")";
+            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
           })
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6);
@@ -625,7 +703,7 @@ const createCommitCircles = (
           .duration(durations.nodes.update)
           .delay(delays.nodes.update + delayOffset)
           .attr("transform", function (d) {
-            return "translate(" + (d.y + xOffset) + "," + (d.x + yOffset) + ")";
+            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
           });
       },
       function (exit) {
@@ -637,6 +715,99 @@ const createCommitCircles = (
           .style("stroke-opacity", 1e-6)
           .remove();
       }
+
+      // .selectAll("node-test-" + label)
+      // .data(
+      //   (d) => {
+      //     const branches = d.data.branches.map((branch, index) => ({
+      //       ...branch,
+      //       // x: d.x,
+      //       // y: d.y + 20 * index,
+
+      //       index: index,
+      //     }));
+      //     return branches;
+      //   },
+      //   (d) => {
+      //     return d.id;
+      //   }
+      // )
+      // .join(
+      //   function (enter) {
+      //     console.log("enter branch");
+      //     const nodes = enter
+      //       .append("g")
+      //       .attr("class", "node-test-" + label)
+      //       .attr("transform", function (d) {
+      //         console.log("d bracnh", d);
+      //         return "translate(" + 0 + "," + 0 + ")";
+      //       })
+      //       .style("fill-opacity", 1e-6)
+      //       .style("stroke-opacity", 1e-6);
+
+      //     nodes
+      //       .append("rect")
+      //       .attr("width", 50)
+      //       .attr("height", 20)
+      //       .attr("x", -25)
+      //       .attr("y", radius)
+      //       .style("fill", (d) => {
+      //         return colors.directory.background;
+      //       })
+      //       .attr("stroke", "black")
+      //       .attr("rx", 5)
+      //       .attr("ry", 5);
+
+      //     nodes
+      //       .append("text")
+      //       .attr("y", radius + 10)
+      //       .attr("dy", ".35em")
+      //       .attr("font-size", "0.7rem")
+      //       .style("fill", (d) => {
+      //         return colors.directory.text;
+      //       })
+      //       .style("text-anchor", "middle")
+      //       .text(function (d) {
+      //         return d.name;
+      //       });
+
+      //     nodes
+      //       .transition()
+      //       .duration(durations.nodes.enter)
+      //       .delay(delays.nodes.enter + delayOffset)
+      //       .style("fill-opacity", 1)
+      //       .style("stroke-opacity", 1);
+
+      //     return nodes;
+      //   },
+      //   function (update) {
+      //     const node = update
+      //       .attr("y", 0)
+      //       .style("fill-opacity", 1)
+      //       .style("stroke-opacity", 1)
+      //       .transition()
+      //       .duration(durations.nodes.update)
+      //       .delay(delays.nodes.update + delayOffset)
+      //       .attr("transform", function (d) {
+      //         return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+      //       });
+
+      //     node.select("rect").style("fill", (d) => {
+      //       return getFileColor(d.data.gitState, d.data.isDirectory);
+      //     });
+      //     // node.select("text").style("fill", colors.directory.text);
+
+      //     return node;
+      //   },
+      //   function (exit) {
+      //     return exit
+      //       .transition()
+      //       .duration(durations.nodes.exit)
+      //       .delay(delays.nodes.exit + delayOffset)
+      //       .style("fill-opacity", 1e-6)
+      //       .style("stroke-opacity", 1e-6)
+      //       .remove();
+      //   }
     );
 
 const createCommitLinks = (
@@ -659,8 +830,8 @@ const createCommitLinks = (
           .lower()
           .attr("class", "link-" + label)
           .attr("d", function (d) {
-            return `M ${d.y + xOffset} , ${d.x + yOffset} 
-                    L ${d.parent.y + xOffset}, ${d.parent.x + yOffset}`;
+            return `M ${d.x + xOffset} , ${d.y + yOffset} 
+                    L ${d.parent.x + xOffset}, ${d.parent.y + yOffset}`;
           })
           .each(function (d) {
             d.totalLength = this.getTotalLength();
@@ -680,8 +851,8 @@ const createCommitLinks = (
           .duration(durations.paths.update)
           .delay(delays.paths.update + delayOffset)
           .attr("d", function (d) {
-            return `M ${d.y + xOffset} , ${d.x + yOffset} 
-                    L ${d.parent.y + xOffset}, ${d.parent.x + yOffset}`;
+            return `M ${d.x + xOffset} , ${d.y + yOffset} 
+                    L ${d.parent.x + xOffset}, ${d.parent.y + yOffset}`;
           })
           .each(function (d) {
             d.totalLength = 1000;
@@ -706,6 +877,124 @@ const createCommitLinks = (
           .remove();
       }
     );
+
+const createBranchRectangles = (
+  svgGroup,
+  data,
+  label,
+  xOffset,
+  yOffset,
+  delayOffset,
+  width,
+  height,
+  fontSize,
+  radius
+) =>
+  svgGroup
+    .selectAll(".branch-" + label)
+    .data(data, function (d) {
+      return d.id;
+    })
+    .join(
+      function (enter) {
+        const nodes = enter
+          .append("g")
+          .attr("class", "branch-" + label)
+          .attr("transform", function (d) {
+            return (
+              "translate(" +
+              (d.x + xOffset) +
+              "," +
+              (d.y + yOffset + 2 * radius + d.index * height) +
+              ")"
+            );
+          })
+          .style("fill-opacity", 1e-6)
+          .style("stroke-opacity", 1e-6);
+
+        nodes
+          .append("rect")
+          .attr("width", width)
+          .attr("height", height)
+          .attr("x", -width / 2)
+          .attr("y", -height / 2)
+          .style("fill", (d) => {
+            return colors.directory.background;
+          })
+          .attr("stroke", "black")
+          .attr("rx", 5)
+          .attr("ry", 5);
+
+        nodes
+          .append("text")
+          .attr("dy", ".35em")
+          .attr("font-size", fontSize)
+          .style("fill", (d) => {
+            return colors.directory.text;
+          })
+          .style("text-anchor", "middle")
+          .text(function (d) {
+            return d.name;
+          });
+
+        nodes
+          .transition()
+          .duration(durations.nodes.enter)
+          .delay(delays.nodes.enter + delayOffset)
+          .style("fill-opacity", 1)
+          .style("stroke-opacity", 1);
+
+        return nodes;
+      },
+      function (update) {
+        const node = update
+          .attr("y", 0)
+          .style("fill-opacity", 1)
+          .style("stroke-opacity", 1)
+          .transition()
+          .duration(durations.nodes.update)
+          .delay(delays.nodes.update + delayOffset)
+          .attr("transform", function (d) {
+            return (
+              "translate(" +
+              (d.x + xOffset) +
+              "," +
+              (d.y + yOffset + 2 * radius + d.index * height) +
+              ")"
+            );
+          });
+
+        return node;
+      },
+      function (exit) {
+        return exit
+          .transition()
+          .duration(durations.nodes.exit)
+          .delay(delays.nodes.exit + delayOffset)
+          .style("fill-opacity", 1e-6)
+          .style("stroke-opacity", 1e-6)
+          .remove();
+      }
+    );
+
+const createText = (svgGroup, text, x, y, fontSize) =>
+  svgGroup
+    .append("text")
+    .attr("dy", ".35em")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("font-size", fontSize + "rem")
+    .text(text);
+
+const createVerticalLine = (svgGroup, x, length) =>
+  svgGroup
+    .append("path")
+    .attr("class", "line")
+    .attr("d", function (d) {
+      return `M ${x} , ${0} 
+          V ${x} , ${length}
+          `;
+    });
 
 const getFileColor = (gitState, isDirectory) => {
   const color = gitColors[gitState];
