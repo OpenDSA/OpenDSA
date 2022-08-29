@@ -26,8 +26,46 @@ Chapter 10: **Queues, Deques, and Priority Queues**  and  **Chapter 11: Queue, D
 Queues
 ------
 
-[8:50] Intrduction to Queues
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[8:50] Introduction to Queues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: The Queue Interface
+
+   .. code-block:: java
+   
+      package queue;
+      
+      /**
+         An interface for the ADT queue.
+         @author Frank M. Carrano
+         @author Timothy M. Henry
+         @version 4.0
+      */
+      public interface QueueInterface
+      {
+        /** Adds a new entry to the back of this queue.
+            @param newEntry  An object to be added. */
+        public void enqueue(T newEntry);
+      
+        /** Removes and returns the entry at the front of this queue.
+            @return  The object at the front of the queue.
+            @throws  EmptyQueueException if the queue is empty before the operation. */
+        public T dequeue();
+      
+        /**  Retrieves the entry at the front of this queue.
+            @return  The object at the front of the queue.
+            @throws  EmptyQueueException if the queue is empty. */
+        public T getFront();
+      
+        /** Detects whether this queue is empty.
+            @return  True if the queue is empty, or false otherwise. */
+        public boolean isEmpty();
+      
+        /** Removes all entries from this queue. */
+        public void clear();
+      } // end QueueInterface
+   
+   Download `QueueInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/QueueInterface.java>`_ (right-click to download as .java file).
+
 
 .. raw:: html
 
@@ -42,41 +80,6 @@ Queues
    <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
    Video Slides 10.2.2.1-QueueIntro.pdf</img>
    </a>
-
-.. code-block:: java
-
-    package queue;
-
-    /**
-       An interface for the ADT queue.
-       @author Frank M. Carrano
-       @author Timothy M. Henry
-       @version 4.0
-    */
-    public interface QueueInterface
-    {
-      /** Adds a new entry to the back of this queue.
-          @param newEntry  An object to be added. */
-      public void enqueue(T newEntry);
-
-      /** Removes and returns the entry at the front of this queue.
-          @return  The object at the front of the queue.
-          @throws  EmptyQueueException if the queue is empty before the operation. */
-      public T dequeue();
-
-      /**  Retrieves the entry at the front of this queue.
-          @return  The object at the front of the queue.
-          @throws  EmptyQueueException if the queue is empty. */
-      public T getFront();
-
-      /** Detects whether this queue is empty.
-          @return  True if the queue is empty, or false otherwise. */
-      public boolean isEmpty();
-
-      /** Removes all entries from this queue. */
-      public void clear();
-    } // end QueueInterface
-
 
 
 Checkpoint 1
@@ -175,84 +178,90 @@ Checkpoint 4
 Deque Interface
 ~~~~~~~~~~~~~~~
 
-.. code-block:: java
+.. admonition:: The Deque Interface
 
-    package deque;
+   .. code-block:: java
+   
+       package deque;
+   
+       /**
+        * An interface for the ADT deque.
+        *
+        * @author Frank M. Carrano
+        * @author Timothy M. Henry
+        * @version 4.0
+        * @param  generic type for the deque
+        */
+       public interface DequeInterface
+       {
+           /**
+            * Adds a new entry to the front of this dequeue.
+            *
+            * @param newEntry
+            *            An object to be added.
+            */
+           public void addToFront(T newEntry);
+   
+           /**
+            * Adds a new entry to the back of this dequeue.
+            *
+            * @param newEntry
+            *            An object to be added.
+            */
+           public void addToBack(T newEntry);
+   
+           /**
+            * Removes and returns the front entry of this dequeue.
+            *
+            * @return The object at the front of the dequeue.
+            * @throws EmptyDequeException
+            *             if the dequeue is empty before the operation.
+            */
+           public T removeFront();
+   
+           /**
+            * Removes and returns the back entry of this dequeue.
+            *
+            * @return The object at the back of the dequeue.
+            * @throws EmptyDequeException
+            *             if the dequeue is empty before the operation.
+            */
+           public T removeBack();
+   
+           /**
+            * Retrieves the front entry of this dequeue.
+            *
+            * @return The object at the front of the dequeue.
+            * @throws EmptyDequeException
+            *             if the dequeue is empty before the operation.
+            */
+           public T getFront();
+   
+           /**
+            * Retrieves the back entry of this dequeue.
+            *
+            * @return The object at the back of the dequeue.
+            * @throws EmptyDequeException
+            *             if the dequeue is empty before the operation.
+            */
+           public T getBack();
+   
+           /**
+            * Detects whether this dequeue is empty.
+            *
+            * @return True if the queue is empty, or false otherwise.
+            */
+           public boolean isEmpty();
+   
+           /**
+            * Removes all entries from this dequeue.
+            */
+           public void clear();
+       } // end DequeInterface
+   
+   
+   Download `DequeInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/DequeInterface.java>`_ (right-click to download as .java file).
 
-    /**
-     * An interface for the ADT deque.
-     *
-     * @author Frank M. Carrano
-     * @author Timothy M. Henry
-     * @version 4.0
-     * @param  generic type for the deque
-     */
-    public interface DequeInterface
-    {
-        /**
-         * Adds a new entry to the front of this dequeue.
-         *
-         * @param newEntry
-         *            An object to be added.
-         */
-        public void addToFront(T newEntry);
-
-        /**
-         * Adds a new entry to the back of this dequeue.
-         *
-         * @param newEntry
-         *            An object to be added.
-         */
-        public void addToBack(T newEntry);
-
-        /**
-         * Removes and returns the front entry of this dequeue.
-         *
-         * @return The object at the front of the dequeue.
-         * @throws EmptyDequeException
-         *             if the dequeue is empty before the operation.
-         */
-        public T removeFront();
-
-        /**
-         * Removes and returns the back entry of this dequeue.
-         *
-         * @return The object at the back of the dequeue.
-         * @throws EmptyDequeException
-         *             if the dequeue is empty before the operation.
-         */
-        public T removeBack();
-
-        /**
-         * Retrieves the front entry of this dequeue.
-         *
-         * @return The object at the front of the dequeue.
-         * @throws EmptyDequeException
-         *             if the dequeue is empty before the operation.
-         */
-        public T getFront();
-
-        /**
-         * Retrieves the back entry of this dequeue.
-         *
-         * @return The object at the back of the dequeue.
-         * @throws EmptyDequeException
-         *             if the dequeue is empty before the operation.
-         */
-        public T getBack();
-
-        /**
-         * Detects whether this dequeue is empty.
-         *
-         * @return True if the queue is empty, or false otherwise.
-         */
-        public boolean isEmpty();
-
-        /**
-         * Removes all entries from this dequeue.
-         */
-        public void clear();
-    } // end DequeInterface
 
 
 Deque Removing and Wrap Up

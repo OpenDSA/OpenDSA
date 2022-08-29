@@ -12,11 +12,11 @@ var i = 0;
 var myIFrame = document.getElementById('exerciseLoadIframe'); //stores the iframe in a local variable 
 
 
-for(let j = 0; j < data.length; j ++) { //this for loop goes through and only adds in click events 
-  if(data[j].name == "click") {
-    dataFiltered[j] = data[j];
-  }
-}
+// for(let j = 0; j < data.length; j ++) { //this for loop goes through and only adds in click events 
+//   if(data[j].name == "click") {
+//     // dataFiltered[j] = data[j];
+//   }
+// }
 
 function compare( a, b ) {
   if ( a.action_time < b.action_time ){
@@ -28,7 +28,8 @@ function compare( a, b ) {
   return 0;
 }
 
-dataSorted = dataFiltered.sort( compare ); //this sorts the array so all the click events are now in order of time they were clicked 
+// dataSorted = dataFiltered.sort( compare ); //this sorts the array so all the click events are now in order of time they were clicked 
+dataSorted = data.sort( compare )
 
 
 
@@ -88,13 +89,26 @@ function clickHandler() {
 
 
 function clickHandler() {
-  if(i == data.length) {
+  if(i == dataSorted.length) {
     alert('You have reached the end of the events'); //throws an alert() if they have reached the end of the events to account for error state 
   }
   else {
-    myIFrame.contentDocument.getElementById(data[i]["description"]).click(); //not sure what to put here because the id is within the description 
+    if(dataSorted[i].name != "click" || dataSorted[i].name != "ddl-change" || dataSorted[i].name != "text-entry")
+      return;
+    else var event_description = JSON.parse(dataSorted[i]["description"])
+    if(dataSorted[i].name == "click") {
+      myIFrame.contentDocument.getElementById(event_description["id"]).click(); //not sure what to put here because the id is within the description 
+    }
+    else if(dataSorted[i].name == "ddl-change") {
+      // myIFrame.contentDocument.getElementById().click(); //not sure what to put here because the id is within the description 
+      console.log(dataSorted[i].description)
+    }
+    else if(dataSorted[i].name == "text-entry") {
+      console.log(dataSorted[i].description)
     }
   }
+  i++
+}
 
 function reset() {
   i = 0;

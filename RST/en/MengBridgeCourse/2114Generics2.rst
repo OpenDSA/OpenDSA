@@ -27,10 +27,10 @@ Code Examples
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment. 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
- 
+
 [10:53] Generics 2
 ~~~~~~~~~~~~~~~~~~
 
@@ -62,19 +62,15 @@ Related Resources
 
 `A tutorial on using wildcards in generics, at https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
 
-Checkpoint 1
-------------
-
-.. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1Summ.html ka
-   :long_name: Checkpoint 1
-
 
 Sample Declarations of Generic Methods Explained
 ------------------------------------------------
 
 **The format for declaring a Generic method is as follows:**
 
-``methodModifiers <genericParameters> returnType methodName(methodParameters)``
+.. code-block:: java
+
+  methodModifiers <genericParameters> returnType methodName(methodParameters)
 
 Note the use of the generic parameters placed inside the angle brackets.
 
@@ -82,14 +78,16 @@ Note the use of the generic parameters placed inside the angle brackets.
 
 Below is one example of how you may declare a Generic method.
 
-``public static <T> void sort(T[] items, Comparator<? super T> comp)``
+.. code-block:: java
+
+  public static <T> void sort(T[] items, Comparator<? super T> comp)
 
 The T following the static keyword and enclosed within the angle brackets
 represents the generic parameter for the sort method.  The T should also
 appear in the method parameter list.
 
 The second method parameter ``Comparator<? super T> comp`` is our way of
-specifying that comp must be an object that implements the
+specifying that ``comp`` must be an object that implements the
 ``Comparator`` interface for type ``T`` or for a superclass of type ``T``
 
 We use this approach to specify restrictions, for example, you can define a
@@ -100,11 +98,20 @@ Integer objects or an array of Double objects
 
 Below is another example Generic method declaration.
 
-``public static <T extends Comparable<T>> void sort(List<T> list)``
+.. code-block:: java
+
+  public static <T extends Comparable<T>> void sort(List<T> list)
 
 The use of ``<T extends Comparable<T>>`` specifies that the generic
 parameter ``T`` must implement the interface ``Comparable<T>``.
 The method parameter list (the object being sorted) is of type ``List<T>``.
+
+
+Checkpoint 1
+------------
+
+.. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1Summ.html ka
+   :long_name: Checkpoint 1
 
 
 Bounded Wildcard Examples
@@ -115,8 +122,8 @@ Code Example
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment. 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 [10:43] Bounded Wildcards Example

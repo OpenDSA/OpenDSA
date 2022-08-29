@@ -40,7 +40,7 @@ Introduction to Software design
    <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
    Video Slides 9.2.2.1-IntroToSoftwareDesign.pdf</img>
    </a>
-   
+
 
 Functional and non-functional requirements
 ------------------------------------------
@@ -384,7 +384,7 @@ questions and review the UML class designs provided within the examples
 provided throughout the module, labs, and projects.
 
 Much of what you need to know for relationships, hierarchies and reuse has
-been covered within the :doc:`2114ObjectsEnumsAndUML`. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
+been covered within the :doc:`2114Polymorphism2` module. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
 
 Activity
 --------
@@ -587,20 +587,16 @@ Patterns
 
 The idea of leveraging patterns, repeatable best-practice solutions to
 commonly occurring well-explored problems, was first introduced in
-Architecture within the 1977 book  "A pattern language: towns, buildings,
-construction".
+Architecture within the 1977 book  `A Pattern Language: Towns, Buildings,
+Construction <https://arl.human.cornell.edu/linked%20docs/Alexander_A_Pattern_Language.pdf>`_ by Christopher Alexander, Sara Ishikawa, Murray Silverstein, Max Jacobson,
+Ingrid Fiksdahl-King, and Shlomo Angel
 
 Within this book the authors convey the following thoughts about the potential
 benefits of leveraging patterns:
 
-“Each pattern describes a problem which occurs over and over again in our
-environment, and then describes the core of the solution to that problem, in
-such a way that you can use this solution a mil­lion times over, without ever
-doing it the same way twice”
+    “Each pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem, in such a way that you can use this solution a mil­lion times over without ever doing it the same way twice”
 
-A Pattern Language - Towns, Buildings, Construction
-Christopher Alexander, Sara Ishikawa, Murray Silverstein, Max Jacobson,
-Ingrid Fiksdahl-King, Shlomo Angel
+    -*A Pattern Language - Towns, Buildings, Construction*, pg 8 
 
 
 Design Patterns
@@ -626,11 +622,15 @@ developers.  Understanding and appropriately using design patterns speeds up
 the development process, help developers avoid common pitfalls, and in general
 helps software developers learn and practice good software design without
 needing to experiences the failures and trial-and-error of those who came
-before us. Both the Model-View-Controller and Observer Design patterns are 
-commonly used. Java initially provided the Observer interface and Observable 
-class for this model but they are now deprecated because they are not well 
-suited for handling multiple simultaneous threads of execution. As an introduction 
-we will refer to Observer and Observable but in practice we will use our own classes.
+before us. 
+
+Both the Model-View-Controller and Observer Design patterns are
+commonly used. Java initially provided the Observer interface and Observable
+class for this model but they are now deprecated because they are not well
+suited for handling multiple simultaneous threads of execution. This page 
+discusses Observer and Observable - while this design pattern stands, these 
+classes are deprecated and in the Tower of Hanoi project we now use our own 
+Model and View classes to take the place of these.
 
 
 [11:00] MVC and Observer Video
@@ -642,19 +642,7 @@ we will refer to Observer and Observable but in practice we will use our own cla
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_pws7qjiz&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_5sdnrfdi" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
 
-
-Reflect upon existing designs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Now that we've been introduced to MVC let us take a moment to reflect upon an
-existing design, specifically the design of the game presented within the
-Project 3 specification.
-
-Does the design of the game incorporate elements of MVC?  Yes definitely!
-
-Now that we agree upon that let's consider, which class(s) would be the
-Controller and which the View?
-
+Note: Project 3 in this video is a variation of the towers of Hanoi project.
 
 
 MVC Example AddressBook
@@ -689,10 +677,10 @@ application.
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex09.02-AddressBookMVC" 
-  
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex09.02-AddressBookMVC"
+
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-   
+
 Design Review: Case Study - e-Commerce solution (online storefront) for ABC Ltd.
 --------------------------------------------------------------------------------
 
@@ -811,15 +799,26 @@ inspiration for your software design.
 
 With respect to other requirements your client has indicated that the physical
 vending machine would be similar in form, behavior, and features to the machine
-depicted in the images below.
+depicted in the images below:
 
-
+.. raw:: html
+    
+  <table width="100%" border="0">
+  <tr>
+  <td style="border: 0px">
+  
 .. odsafig:: Images/VendingMachine1.png
-   :align: left
+   :align: center
    :width: 270
    :height: 360
    :figwidth: 33%
    :alt: Overall view of an internet-enabled vending machine
+
+.. raw:: html
+     
+   </td>
+   <td style="border: 0px">
+
 
 .. odsafig:: Images/VendingMachine2.png
    :align: center
@@ -828,13 +827,22 @@ depicted in the images below.
    :figwidth: 33%
    :alt: Overall view of the customer interface, showing the keypad for selecting the item, as well as two payment interfaces, one for card swipe or cash, and one for payment with a mobile device.
 
+.. raw:: html
+      
+    </td>
+    <td style="border: 0px">
+
 .. odsafig:: Images/VendingMachine3.png
-   :align: right
+   :align: center
    :width: 270
    :height: 360
    :figwidth: 33%
    :alt: Closeup view of the mobile device payment  interface, showing the flavors of payment systems supported (Apple Pay, Android Pay, Samsung Pay), as well as the credit card types supported.
 
+.. raw:: html
+      
+    </td>
+    </table>
 
 
 

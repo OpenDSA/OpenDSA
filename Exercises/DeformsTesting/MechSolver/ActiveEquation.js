@@ -104,6 +104,7 @@ class ActiveEquation{
         // console.log(this.equationObjectReference)
         // Creating the visual elements.
         this.visualComponents["text"] = jsavObject.label(
+            // katex.renderToString(this.name.split('_')[2]+": "+this.equationObjectReference["latex"]),
             katex.renderToString(this.equationObjectReference["latex"]),
             {
                 left: position_obj["POSITION_X"]+
@@ -401,6 +402,7 @@ class ActiveEquation{
         // Step 1.
         equationObject.visualComponents["text"].text(
             katex.renderToString(
+                // equationObject.name.split('_')[2]+": "+equationObject.equationObjectReference.latex.replace(new RegExp('_\{[A-Za-z0-9 ]+\}', 'g'),"_{"+subscriptText+"}")
                 equationObject.equationObjectReference.latex.replace(new RegExp('_\{[A-Za-z0-9 ]+\}', 'g'),"_{"+subscriptText+"}")
                 )
             );

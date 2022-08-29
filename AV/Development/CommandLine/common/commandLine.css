@@ -84,8 +84,87 @@
   text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
 } */
 
-.link {
+.link- {
   fill: none;
   stroke: #ccc;
   stroke-width: 2px;
+}
+
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 4px;
+}
+
+.link-local {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-remote {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-remote-commit {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-local-commit {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.git-status {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.git-status p {
+  padding: 0;
+  margin: 0;
+}
+
+.git-status-branch {
+}
+
+.git-status-staged {
+}
+
+.git-status-not-staged {
+}
+
+.git-status-untracked {
+}
+
+.git-status-files {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding-left: 2rem;
+}
+
+.git-status-files-names {
+}
+
+.git-status-files-statuses {
+}
+
+.git-status-staged .git-status-files p {
+  color: #66ff00;
+}
+
+.git-status-not-staged .git-status-files p {
+  color: red;
+}
+
+.git-status-untracked .git-status-files p {
+  color: red;
 }

@@ -19,7 +19,7 @@
 				      E.createNum(2),
 				      E.createNum(3)]);
 	    var allVariables, selectedVar;
-
+	    var bodyIsClosure;
 	    function pickParams(variables) {
 		var n, i, result = [];
 		variables = variables.split("");
@@ -178,9 +178,8 @@
 		var variables = vs.split("");
 		var p1 = [], p2 = [], p1Length, p2Length;
 		var args = ["args"],  args2 = ["args"];
-		var exp, body = SL.absyn.getProgramExp(
-		    SL.absyn.generateRandomSLang1Program(
-			0,2,2,"xyz",""));
+		var exp, body;
+		
 		p1 = pickParams(vs);
 		p2 = pickParams(vs);
 		// make sure all variables appear in p1 union p2
@@ -257,11 +256,15 @@
 			break;
 		    }
 		}
+		bodyIsClosure = false;
+		body = getRndExp(1,1);
+		if (A.isFnExp(body))
+		    bodyIsClosure = true;
 		exp = SL.absyn.createAppExp(
 		    SL.absyn.createFnExp(
 			p1,
 			SL.absyn.createAppExp(
-			    SL.absyn.createFnExp(p2,getRndExp(0,2)),
+			    SL.absyn.createFnExp(p2,body),
 			    args2)),
 		    args);
 		return exp;
@@ -281,6 +284,18 @@
 		try {
 		    // eval just to make sure that the whole exp has a value
 		    SL.evalExp(exp,globalEnv);
+		    if (bodyIsClosure)
+		    {
+			done = false;
+			// skip expressions where the body is a function since,
+			// if a variable happens to be  chosen within the body,
+			// it will not have a value (since the closure is never
+			// evaluated); bug noticed by Choi in Spring 2022
+			//
+			// TO DO: check that the chosen variable is indeed in
+			// the body of this function before considering this
+			// expression invalid
+		    }
 		} catch (e) {
 		    done = false;
 		}
@@ -297,13 +312,10 @@
 	    selectedVar.selected = true;
 	    // eval again to get the value of the selected variable
 	    evalExpEnvironment1(exp,globalEnv);
-	    //console.log(JSON.stringify(allVariables));
 	    this.expression = SL.printExp(exp);
 	    this.underlinedExpression = underlineExp(exp);
 	    this.answer = E.isNum(selectedVar.value) ?
 		(E.getNumValue(selectedVar.value) + "") : "closure";
-				
-	    //console.log(this.answer);
 	},// init function
 
 	validateAnswer: function (studentAnswer) {
