@@ -245,7 +245,7 @@ const handle_mv =
           dstDir.insert(new File(dstName));
         }
 
-        srcDir.remove(srcName);
+        srcDir.remove(src.id);
 
         updateVisualization(
           getSvgData(),
@@ -280,7 +280,7 @@ const handle_rm =
           return "Cannot remove directory without -r";
         }
 
-        srcDir.remove(srcName);
+        srcDir.remove(toRemove.id);
 
         updateVisualization(
           getSvgData(),
@@ -311,7 +311,7 @@ const handle_rmdir =
         const src = srcDir.find(srcName);
         if (src instanceof Directory) {
           if (src.contents.length === 0) {
-            srcDir.remove(srcName);
+            srcDir.remove(src.id);
 
             updateVisualization(
               getSvgData(),
