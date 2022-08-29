@@ -323,7 +323,8 @@ requirejs(["./mathjs.js"], function(){});
                     if (data != "") // So something is being sent back for feedback
                     {
                         var settings = {
-                        "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                        // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                        "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
                         "method": "POST",
                         // "async": false,
                         "timeout": 0,
@@ -666,7 +667,8 @@ requirejs(["./mathjs.js"], function(){});
                 "mode": "init"
             }
             var settings = {
-                "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
                 "async": false,
                 "method": "POST",
                 "timeout": 0,
@@ -738,7 +740,8 @@ requirejs(["./mathjs.js"], function(){});
                         "mode": "init"
                     })
                     var settings = {
-                        "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                        // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                        "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
                         "method": "POST",
                         "timeout": 0,
                         "headers": {
