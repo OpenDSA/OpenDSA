@@ -103,6 +103,10 @@ class File extends FileSystemEntity {
     return this.gitId === id ? this : null;
   }
 
+  findById(id) {
+    return this.id === id ? this : null;
+  }
+
   compareByName(file) {
     return file.name === this.name;
   }
@@ -238,6 +242,18 @@ class Directory extends FileSystemEntity {
     }
   }
 
+  findById(id) {
+    if (id === this.id) {
+      return this;
+    }
+    let curr = null;
+    this.contents.some((content) => {
+      curr = content.findById(id);
+      return Boolean(curr);
+    });
+    return curr;
+  }
+
   findDeep(name) {
     const found = this.find(name);
     const foundDeep = this.contents.reduce(
@@ -290,12 +306,12 @@ class Directory extends FileSystemEntity {
     );
   }
 
-  remove(name) {
-    const toRemove = this.find(name);
+  remove(id) {
+    const toRemove = this.findById(id);
     if (toRemove) {
       toRemove.parent = undefined;
       this.contents = this.contents.filter(
-        (fileSystemEntity) => fileSystemEntity.name !== name
+        (fileSystemEntity) => fileSystemEntity.id !== id
       );
       return toRemove;
     }
