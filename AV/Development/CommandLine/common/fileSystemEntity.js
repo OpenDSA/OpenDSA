@@ -71,6 +71,18 @@ class File extends FileSystemEntity {
     this.gitState = GIT_STATE.CHANGED;
   }
 
+  setDeleted() {
+    this.setState(GIT_STATE.CHANGED, FILE_STATE.DELETED);
+  }
+
+  setNotDeleted() {
+    this.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
+  }
+
+  getIsDeleted() {
+    return this.fileState === FILE_STATE.DELETED;
+  }
+
   copy() {
     const newFile = new File(this.name);
     return newFile;
@@ -177,6 +189,20 @@ class Directory extends FileSystemEntity {
         return inserted;
       });
     }
+    this.isDeleted = false;
+  }
+
+  setDeleted() {
+    this.contents.forEach((content) => content.setDeleted());
+    this.isDeleted = true;
+  }
+
+  setNotDeleted() {
+    this.isDeleted = false;
+  }
+
+  getIsDeleted() {
+    return this.isDeleted;
   }
 
   copy() {
@@ -208,14 +234,31 @@ class Directory extends FileSystemEntity {
       isDirectory: true,
     };
 
-    newEntity.children = this.contents.map((content) => content.mapToD3());
+    newEntity.children = this.contents
+      .filter((content) => !content.getIsDeleted())
+      .map((content) => content.mapToD3());
 
     return newEntity;
   }
 
   insert(fileSystemEntity) {
-    this.contents.push(fileSystemEntity);
-    fileSystemEntity.parent = this;
+    const existingFile = this.find(fileSystemEntity.name);
+    if (existingFile) {
+      if (existingFile.getIsDeleted()) {
+        existingFile.setNotDeleted();
+        this.contents = this.contents.filter(
+          (content) => content.id !== existingFile.id
+        );
+        this.contents.push(existingFile);
+        return existingFile;
+      } else {
+        return null;
+      }
+    } else {
+      this.contents.push(fileSystemEntity);
+      fileSystemEntity.parent = this;
+      return fileSystemEntity;
+    }
   }
 
   find(name) {
@@ -309,10 +352,7 @@ class Directory extends FileSystemEntity {
   remove(id) {
     const toRemove = this.findById(id);
     if (toRemove) {
-      toRemove.parent = undefined;
-      this.contents = this.contents.filter(
-        (fileSystemEntity) => fileSystemEntity.id !== id
-      );
+      toRemove.setDeleted();
       return toRemove;
     }
   }

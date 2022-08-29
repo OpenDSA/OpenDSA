@@ -115,12 +115,10 @@ const handle_mkdir =
 
       if (!dir) {
         return "Path undefined";
-      } else if (
-        dir.contents.some((fileSystemEntity) => fileSystemEntity.name === name)
-      ) {
-        return "Duplicate";
       } else {
-        dir.insert(new Directory(name));
+        if (!dir.insert(new Directory(name))) {
+          return "Duplicate";
+        }
 
         updateVisualization(
           getSvgData(),
@@ -152,14 +150,10 @@ const handle_touch =
 
         if (!dir) {
           return `Path undefined ${arg}`;
-        } else if (
-          dir.contents.some(
-            (fileSystemEntity) => fileSystemEntity.name === name
-          )
-        ) {
-          return `Duplicate ${arg}`;
         } else {
-          dir.insert(new File(name));
+          if (!dir.insert(new File(name))) {
+            return "Duplicate";
+          }
 
           return "";
         }

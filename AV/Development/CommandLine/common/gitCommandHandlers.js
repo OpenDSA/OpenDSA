@@ -104,12 +104,11 @@ const handle_commit =
     const files = [
       ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
       ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.MODIFIED),
+      ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.DELETED),
     ];
     const filesCopy = files.map((file) => file.copyWithGitId());
-    console.log("filescopy", filesCopy);
     if (files.length > 0) {
       const commit = gitMethods.getLocalCurrBranch().commitChanges(filesCopy);
-      console.log(commit, "commit");
       getHomeDir().setStateConditional(GIT_STATE.ADDED, GIT_STATE.COMMITTED);
       updateVisualization(
         getSvgData(),
