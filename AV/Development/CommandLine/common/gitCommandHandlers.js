@@ -42,6 +42,7 @@ const handle_add =
       getSvgData(),
       getHomeDir(),
       -1 * delays.paths.update,
+      null,
       gitMethods
     );
     return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
@@ -100,14 +101,21 @@ const handle_commit =
     gitMethods
   ) =>
   (args) => {
-    const files = getHomeDir().getByState(GIT_STATE.ADDED);
+    const files = [
+      ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
+      ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.MODIFIED),
+    ];
+    const filesCopy = files.map((file) => file.copyWithGitId());
+    console.log("filescopy", filesCopy);
     if (files.length > 0) {
-      const commit = gitMethods.getLocalCurrBranch().commitChanges(files);
+      const commit = gitMethods.getLocalCurrBranch().commitChanges(filesCopy);
+      console.log(commit, "commit");
       getHomeDir().setStateConditional(GIT_STATE.ADDED, GIT_STATE.COMMITTED);
       updateVisualization(
         getSvgData(),
         getHomeDir(),
         -1 * delays.paths.update,
+        null,
         gitMethods
       );
 
@@ -152,12 +160,12 @@ const handle_push =
     unmergedCommits.reverse().forEach((commit) => {
       commit.files.forEach((file) => {
         if (file.getState().fileState === FILE_STATE.NEW) {
-          const parent = remoteHomeDir.findByGitId(file.parent.gitId);
+          const parent = remoteHomeDir.findByGitId(file.parentGitId);
           const newFile = file.copyWithGitId();
           newFile.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
           parent.insert(newFile);
         }
-        file.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
+        // file.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
       });
       remoteBranch.commitChanges();
       remoteBranch.commit.gitId = commit.gitId;
@@ -167,7 +175,7 @@ const handle_push =
     console.log("local", gitMethods.getLocalInitialCommit());
     console.log("remote", gitMethods.getRemoteInitialCommit());
 
-    updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+    updateVisualization(getSvgData(), getHomeDir(), 0, null, gitMethods);
     return "";
   };
 

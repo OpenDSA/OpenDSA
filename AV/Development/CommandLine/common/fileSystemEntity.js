@@ -79,6 +79,9 @@ class File extends FileSystemEntity {
   copyWithGitId() {
     const newFile = new File(this.name);
     newFile.gitId = this.gitId;
+    newFile.parentGitId = this.parent?.gitId;
+    newFile.fileState = this.fileState;
+    newFile.gitState = this.gitState;
     return newFile;
   }
 
@@ -185,6 +188,7 @@ class Directory extends FileSystemEntity {
   copyWithGitId() {
     const newDirectory = new Directory(this.name);
     newDirectory.gitId = this.gitId;
+    newDirectory.parentGitId = this.parent?.gitId;
     newDirectory.contents = this.contents.map((content) => {
       const contentCopy = content.copyWithGitId();
       contentCopy.parent = newDirectory;

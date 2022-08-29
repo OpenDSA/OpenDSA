@@ -9,7 +9,6 @@ $(document).ready(function () {
     name: "/",
     contents: [
       "bird.txt",
-      "snake.txt",
       "fish.txt",
       {
         name: "mammals",
@@ -43,6 +42,7 @@ $(document).ready(function () {
     },
     handleAwardCredit,
     "rm",
-    initialFileStructure
+    initialFileStructure,
+    [2]
   );
 });

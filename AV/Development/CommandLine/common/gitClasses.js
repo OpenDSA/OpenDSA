@@ -102,6 +102,7 @@ class Branch {
     const commit = this.commit.insertChild();
     commit.files = files;
     commit.insertBranch(this);
+    return commit;
   }
 
   copy() {
