@@ -67,33 +67,29 @@ const handle_cd =
   ) =>
   (args) => {
     if (args.length === 0) {
-      colorNode(
-        getSvgData().group,
-        getCurrDir().id,
-        colors.directory.background
-      );
-
       setCurrDir(getHomeDir());
 
-      colorNode(getSvgData().group, getCurrDir().id, colors.current.background);
+      updateVisualization(
+        getSvgData(),
+        getHomeDir(),
+        -1 * delays.paths.update,
+        getCurrDir().id,
+        gitMethods
+      );
 
       return "";
     } else {
       const path = args[0];
       const newDir = getCurrDir().getChildByPath(path);
       if (newDir && newDir instanceof Directory) {
-        colorNode(
-          getSvgData().group,
-          getCurrDir().id,
-          colors.directory.background
-        );
-
         setCurrDir(newDir);
 
-        colorNode(
-          getSvgData().group,
+        updateVisualization(
+          getSvgData(),
+          getHomeDir(),
+          -1 * delays.paths.update,
           getCurrDir().id,
-          colors.current.background
+          gitMethods
         );
 
         return "";
@@ -130,6 +126,7 @@ const handle_mkdir =
           getSvgData(),
           getHomeDir(),
           -1 * delays.paths.update,
+          getCurrDir().id,
           gitMethods
         );
 
@@ -174,6 +171,7 @@ const handle_touch =
         getSvgData(),
         getHomeDir(),
         -1 * delays.paths.update,
+        getCurrDir().id,
         gitMethods
       );
 
@@ -212,6 +210,7 @@ const handle_cp =
           getSvgData(),
           getHomeDir(),
           -1 * delays.paths.update,
+          getCurrDir().id,
           gitMethods
         );
 
@@ -248,7 +247,13 @@ const handle_mv =
 
         srcDir.remove(srcName);
 
-        updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+        updateVisualization(
+          getSvgData(),
+          getHomeDir(),
+          0,
+          getCurrDir().id,
+          gitMethods
+        );
 
         return "";
       }
@@ -277,7 +282,13 @@ const handle_rm =
 
         srcDir.remove(srcName);
 
-        updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+        updateVisualization(
+          getSvgData(),
+          getHomeDir(),
+          0,
+          getCurrDir().id,
+          gitMethods
+        );
       }
       return "";
     }
@@ -302,7 +313,13 @@ const handle_rmdir =
           if (src.contents.length === 0) {
             srcDir.remove(srcName);
 
-            updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+            updateVisualization(
+              getSvgData(),
+              getHomeDir(),
+              0,
+              getCurrDir().id,
+              gitMethods
+            );
           } else {
             return "Not empty";
           }
@@ -332,6 +349,7 @@ const handle_vi =
           getSvgData(),
           getHomeDir(),
           -1 * delays.paths.update,
+          getCurrDir().id,
           gitMethods
         );
         return "";

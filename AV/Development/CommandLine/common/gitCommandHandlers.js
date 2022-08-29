@@ -42,6 +42,7 @@ const handle_add =
       getSvgData(),
       getHomeDir(),
       -1 * delays.paths.update,
+      null,
       gitMethods
     );
     return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
@@ -114,6 +115,7 @@ const handle_commit =
         getSvgData(),
         getHomeDir(),
         -1 * delays.paths.update,
+        null,
         gitMethods
       );
 
@@ -173,7 +175,7 @@ const handle_push =
     console.log("local", gitMethods.getLocalInitialCommit());
     console.log("remote", gitMethods.getRemoteInitialCommit());
 
-    updateVisualization(getSvgData(), getHomeDir(), 0, gitMethods);
+    updateVisualization(getSvgData(), getHomeDir(), 0, null, gitMethods);
     return "";
   };
 

@@ -37,8 +37,13 @@ const gitColors = {
 
 function renderFileStructureVisualization(data, currDirId, width, height, id) {
   const svgData = renderSVG(width, height, id);
-  updateFileStructureVisualization(svgData, data, -1 * delays.nodes.enter);
-  colorNode(svgData.group, currDirId, colors.current.background);
+  updateFileStructureVisualization(
+    svgData,
+    data,
+    -1 * delays.nodes.enter,
+    currDirId
+  );
+  colorNode(svgData.group, currDirId, colors.current.background, "");
 
   return svgData;
 }
@@ -49,6 +54,7 @@ function renderGitVisualization(localHomeDir, gitMethods, width, height, id) {
     svgData,
     localHomeDir,
     -1 * delays.paths.update,
+    null,
     gitMethods
   );
 
@@ -72,14 +78,14 @@ function renderSVG(width, height, id) {
   return { group: svgGroup, width: width, height: height };
 }
 
-function selectNode(svgGroup, id) {
-  return svgGroup.selectAll(".node").filter(function (d) {
+function selectNode(svgGroup, id, label) {
+  return svgGroup.selectAll(".node-" + label).filter(function (d) {
     return d.data.id === id;
   });
 }
 
-function colorNode(svgGroup, id, color) {
-  selectNode(svgGroup, id)
+function colorNode(svgGroup, id, color, label) {
+  selectNode(svgGroup, id, label)
     .select("rect")
     .transition()
     .duration(1000)
@@ -87,7 +93,7 @@ function colorNode(svgGroup, id, color) {
 }
 
 function highlightNode(svgGroup, id, color, prevColor, prevText) {
-  const node = selectNode(svgGroup, id);
+  const node = selectNode(svgGroup, id, "");
   node.select("rect").transition().duration(1000).style("fill", color);
   node.select("text").transition().duration(1000).style("fill", "black");
   node
@@ -104,14 +110,19 @@ function highlightNode(svgGroup, id, color, prevColor, prevText) {
     .style("fill", prevText);
 }
 
-function updateFileStructureVisualization(svgData, homeDir, delayOffset) {
-  const data = homeDir.mapToD3();
-
+function updateFileStructureVisualization(
+  svgData,
+  homeDir,
+  delayOffset,
+  currDirId
+) {
   const svgGroup = svgData.group;
 
   createFileTree(
     svgGroup,
     homeDir,
+    currDirId,
+    false,
     "",
     svgData.width,
     svgData.height,
@@ -122,161 +133,13 @@ function updateFileStructureVisualization(svgData, homeDir, delayOffset) {
     5,
     5
   );
-
-  // const treemap = d3.tree().size([svgData.width, svgData.height]);
-
-  // const hierarchyData = d3.hierarchy(data);
-
-  // const treeData = treemap(hierarchyData);
-
-  // // adds the nodes
-  // const nodes = svgGroup
-  //   .selectAll(".node")
-  //   .data(treeData.descendants(), function (d) {
-  //     return d.data.id;
-  //   })
-  //   .join(
-  //     function (enter) {
-  //       const nodes = enter
-  //         .append("g")
-  //         .attr("class", "node")
-  //         .attr("transform", function (d) {
-  //           return "translate(" + d.x + "," + d.y + ")";
-  //         })
-  //         .style("fill-opacity", 1e-6)
-  //         .style("stroke-opacity", 1e-6);
-
-  //       nodes
-  //         .append("rect")
-  //         .attr("width", rectangleDimensions.width)
-  //         .attr("height", rectangleDimensions.height)
-  //         .attr("x", -rectangleDimensions.width / 2)
-  //         .attr("y", -rectangleDimensions.height / 2)
-  //         .style("fill", (d) => {
-  //           return d.data.isDirectory
-  //             ? colors.directory.background
-  //             : colors.file.background;
-  //         })
-  //         .attr("stroke", "black")
-  //         .attr("rx", 5)
-  //         .attr("ry", 5);
-
-  //       nodes
-  //         .append("text")
-  //         .attr("dy", ".35em")
-  //         .attr("font-size", "0.8rem")
-  //         .style("fill", (d) => {
-  //           return d.data.isDirectory
-  //             ? colors.directory.text
-  //             : colors.file.text;
-  //         })
-  //         .style("text-anchor", "middle")
-  //         .text(function (d) {
-  //           return d.data.name;
-  //         });
-
-  //       nodes
-  //         .transition()
-  //         .duration(durations.nodes.enter)
-  //         .delay(delays.nodes.enter + delayOffset)
-  //         .style("fill-opacity", 1)
-  //         .style("stroke-opacity", 1);
-
-  //       return nodes;
-  //     },
-  //     function (update) {
-  //       return update
-  //         .attr("y", 0)
-  //         .style("fill-opacity", 1)
-  //         .style("stroke-opacity", 1)
-  //         .transition()
-  //         .duration(durations.nodes.update)
-  //         .delay(delays.nodes.update + delayOffset)
-  //         .attr("transform", function (d) {
-  //           return "translate(" + d.x + "," + d.y + ")";
-  //         });
-  //     },
-  //     function (exit) {
-  //       return exit
-  //         .transition()
-  //         .duration(durations.nodes.exit)
-  //         .delay(delays.nodes.exit + delayOffset)
-  //         .style("fill-opacity", 1e-6)
-  //         .style("stroke-opacity", 1e-6)
-  //         .remove();
-  //     }
-  //   );
-
-  // // adds the links between the nodes
-  // const links = svgGroup
-  //   .selectAll(".link")
-  //   .data(treeData.descendants().slice(1), function (d) {
-  //     return d.data.id;
-  //   })
-  //   .join(
-  //     function (enter) {
-  //       const nodes = enter
-  //         .append("path")
-  //         .lower()
-  //         .attr("class", "link")
-  //         .attr("d", function (d) {
-  //           return `M ${d.x} , ${d.y}
-  //                     V ${(d.y + d.parent.y) / 2}
-  //                     H ${d.parent.x}
-  //                     V ${d.parent.y}`;
-  //         })
-  //         .each(function (d) {
-  //           d.totalLength = this.getTotalLength();
-  //         })
-  //         .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
-  //         .attr("stroke-dashoffset", (d) => d.totalLength)
-  //         .transition()
-  //         .delay(delays.paths.enter + delayOffset)
-  //         .duration(durations.paths.enter)
-  //         .attr("stroke-dashoffset", 0);
-
-  //       return nodes;
-  //     },
-  //     function (update) {
-  //       return update
-  //         .transition()
-  //         .duration(durations.paths.update)
-  //         .delay(delays.paths.update + delayOffset)
-  //         .attr("d", function (d) {
-  //           return `M ${d.x} , ${d.y}
-  //                   V ${(d.y + d.parent.y) / 2}
-  //                   H ${d.parent.x}
-  //                   V ${d.parent.y}`;
-  //         })
-  //         .each(function (d) {
-  //           d.totalLength = 1000;
-  //         })
-  //         .attr("stroke-dasharray", (d) => {
-  //           return d.totalLength + " " + d.totalLength;
-  //         })
-  //         .attr("stroke-dashoffset", 0);
-  //     },
-  //     function (exit) {
-  //       return exit
-  //         .each(function (d) {
-  //           d.totalLength = this.getTotalLength();
-  //         })
-  //         .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
-  //         .attr("stroke-dashoffset", 0)
-  //         .attr("stroke-dashoffset", 0)
-  //         .transition()
-  //         .delay(delays.paths.exit + delayOffset)
-  //         .duration(3000)
-  //         .attr("stroke-dashoffset", (d) => d.totalLength)
-  //         .remove();
-  //     }
-  //   );
 }
 
 function updateGitVisualization(
   svgData,
   localHomeDir,
   delayOffset,
+  currDirId,
   gitMethods
 ) {
   const { group, width, height } = svgData;
@@ -290,6 +153,8 @@ function updateGitVisualization(
   createFileTree(
     group,
     localHomeDir,
+    null,
+    true,
     "local",
     width / 2,
     height / 2,
@@ -304,6 +169,8 @@ function updateGitVisualization(
   createFileTree(
     group,
     gitMethods.getRemoteHomeDir(),
+    null,
+    true,
     "remote",
     width / 2,
     height / 2,
@@ -349,6 +216,8 @@ function updateGitVisualization(
 const createFileTree = (
   svgGroup,
   directory,
+  currDirId,
+  colorGit,
   label,
   width,
   height,
@@ -382,7 +251,9 @@ const createFileTree = (
     delayOffset,
     rectangleWidth,
     rectangleHeight,
-    0.9 * fileScale + "rem"
+    0.9 * fileScale + "rem",
+    currDirId,
+    colorGit
   );
 
   const links = createFileLinks(
@@ -404,7 +275,9 @@ const createFileRectangles = (
   delayOffset,
   width,
   height,
-  fontSize
+  fontSize,
+  currDirId,
+  colorGit
 ) => {
   const xOffset = x;
   const yOffset = y;
@@ -431,7 +304,13 @@ const createFileRectangles = (
           .attr("x", -width / 2)
           .attr("y", -height / 2)
           .style("fill", (d) => {
-            return getFileColor(d.data.gitState, d.data.isDirectory);
+            return getFileColor(
+              d.data.id,
+              currDirId,
+              d.data.gitState,
+              d.data.isDirectory,
+              colorGit
+            );
           })
           .attr("stroke", "black")
           .attr("rx", 5)
@@ -473,7 +352,13 @@ const createFileRectangles = (
           });
 
         node.select("rect").style("fill", (d) => {
-          return getFileColor(d.data.gitState, d.data.isDirectory);
+          return getFileColor(
+            d.data.id,
+            currDirId,
+            d.data.gitState,
+            d.data.isDirectory,
+            colorGit
+          );
         });
         // node.select("text").style("fill", colors.directory.text);
 
@@ -996,13 +881,20 @@ const createVerticalLine = (svgGroup, x, length) =>
           `;
     });
 
-const getFileColor = (gitState, isDirectory) => {
-  const color = gitColors[gitState];
-  return color
-    ? color.background
-    : isDirectory
-    ? colors.directory.background
-    : colors.file.background;
+const getFileColor = (id, currDirId, gitState, isDirectory, colorGit) => {
+  if (currDirId === id) {
+    return colors.current.background;
+  }
+  if (isDirectory) {
+    return colors.directory.background;
+  }
+  if (colorGit) {
+    const color = gitColors[gitState];
+    if (color) {
+      return color.background;
+    }
+  }
+  return colors.file.background;
 };
 
 export {
