@@ -32,7 +32,7 @@ services:
       traefik.http.services.opendsa.loadbalancer.server.port: 8081
 
   proxy:
-    profiles: ['feedback']
+    profiles: ['deforms']
     image: dtr.it.vt.edu/devcom/devcom-localhost-proxy:traefik-2.3
     ports:
       - 80:80
