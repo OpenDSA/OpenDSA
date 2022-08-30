@@ -83,6 +83,11 @@ class File extends FileSystemEntity {
     return this.fileState === FILE_STATE.DELETED;
   }
 
+  removeDeleted() {
+    //just the base case
+    return null;
+  }
+
   copy() {
     const newFile = new File(this.name);
     return newFile;
@@ -357,6 +362,15 @@ class Directory extends FileSystemEntity {
     }
   }
 
+  removeByGitId(id) {
+    this.contents = this.contents.filter((content) => content.gitId !== id);
+  }
+
+  removeDeleted() {
+    this.contents = this.contents.filter((content) => !content.getIsDeleted());
+    this.contents.forEach((content) => content.removeDeleted());
+  }
+
   followIndexPath(path) {
     let curr = this;
 
@@ -431,6 +445,8 @@ class Directory extends FileSystemEntity {
       );
     });
   }
+
+  applyCommit(commit) {}
 }
 
 function splitPath(path) {

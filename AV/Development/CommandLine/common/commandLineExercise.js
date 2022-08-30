@@ -38,14 +38,7 @@ const DEFAULT_GIT_FILE_STRUCTURE = {
     ".gitignore",
     {
       name: "src",
-      contents: [
-        "index.html",
-        "app.js",
-        {
-          name: "config",
-          contents: [],
-        },
-      ],
+      contents: ["index.html", "app.js", "config.js"],
     },
   ],
 };
@@ -167,8 +160,8 @@ function initializeGitExercise(
   remoteInitialCommit.setMerged(true);
   let remoteCurrBranch = remoteInitialCommit.branches[0];
 
-  localHomeDir.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
-  remoteHomeDir.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
+  localHomeDir.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
+  remoteHomeDir.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
 
   let svgData;
 
@@ -216,6 +209,16 @@ function initializeGitExercise(
     return svgData;
   }
 
+  const gitMethods = {
+    getRemoteHomeDir,
+    getLocalInitialCommit,
+    getLocalCurrBranch,
+    setLocalCurrBranch,
+    getRemoteInitialCommit,
+    getRemoteCurrBranch,
+    setRemoteCurrBranch,
+  };
+
   const commandsMap = createCommandsMap(
     getSvgData,
     getLocalCurrDir,
@@ -223,15 +226,7 @@ function initializeGitExercise(
     getLocalHomeDir,
     updateGitVisualization,
     //TODO decouple this later
-    {
-      getRemoteHomeDir,
-      getLocalInitialCommit,
-      getLocalCurrBranch,
-      setLocalCurrBranch,
-      getRemoteInitialCommit,
-      getRemoteCurrBranch,
-      setRemoteCurrBranch,
-    }
+    gitMethods
   );
 
   let resizeCount = 0;
@@ -245,7 +240,7 @@ function initializeGitExercise(
     const d3Data = localHomeDir.mapToD3();
     svgData = renderGitVisualization(
       getLocalHomeDir(),
-      { getRemoteHomeDir, getLocalInitialCommit, getRemoteInitialCommit },
+      gitMethods,
       visualizationWidth,
       visualizationHeight,
       id

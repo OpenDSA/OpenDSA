@@ -36,18 +36,16 @@ class Commit {
   }
 
   findBranchByName(name) {
-    let curr = null;
-    this.branches.some((branch) => {
-      curr = branch;
-      return curr.name === name;
-    });
+    const found = this.branches.find((branch) => branch.name === name);
 
-    if (curr) {
-      return curr;
+    if (found) {
+      return found;
     }
 
+    let curr = null;
+
     this.children.some((child) => {
-      curr = child.findBranchByName();
+      curr = child.findBranchByName(name);
       return Boolean(curr);
     });
 

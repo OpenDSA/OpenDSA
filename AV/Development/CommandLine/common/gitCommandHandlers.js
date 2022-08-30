@@ -79,7 +79,7 @@ const handle_restore =
           //TODO restore new files
           fileSystemEntity.setStateConditional(
             GIT_STATE.CHANGED,
-            GIT_STATE.MERGED,
+            GIT_STATE.COMMITTED,
             null,
             FILE_STATE.UNCHANGED
           );
@@ -107,9 +107,15 @@ const handle_commit =
       ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.DELETED),
     ];
     const filesCopy = files.map((file) => file.copyWithGitId());
+    getHomeDir().removeDeleted();
     if (files.length > 0) {
       const commit = gitMethods.getLocalCurrBranch().commitChanges(filesCopy);
-      getHomeDir().setStateConditional(GIT_STATE.ADDED, GIT_STATE.COMMITTED);
+      getHomeDir().setStateConditional(
+        GIT_STATE.ADDED,
+        GIT_STATE.COMMITTED,
+        null,
+        FILE_STATE.UNCHANGED
+      );
       updateVisualization(
         getSvgData(),
         getHomeDir(),
@@ -161,8 +167,11 @@ const handle_push =
         if (file.getState().fileState === FILE_STATE.NEW) {
           const parent = remoteHomeDir.findByGitId(file.parentGitId);
           const newFile = file.copyWithGitId();
-          newFile.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
+          newFile.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
           parent.insert(newFile);
+        } else if (file.getState().fileState === FILE_STATE.DELETED) {
+          const parent = remoteHomeDir.findByGitId(file.parentGitId);
+          parent.removeByGitId(file.gitId);
         }
         // file.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
       });
@@ -195,22 +204,52 @@ const handle_branch =
       }
       const branch = new Branch(name);
       gitMethods.getLocalCurrBranch().commit.insertBranch(branch);
+
+      updateVisualization(
+        getSvgData(),
+        getHomeDir(),
+        -1 * delays.paths.update,
+        null,
+        gitMethods
+      );
+
+      return "";
     }
     return "bad args";
   };
 
-const handle_checkout = () => (args) => {
-  if (args.length === 1) {
-    const name = args[0];
-    const branch = findBranchByName(name);
-    if (branch) {
-      gitMethods.setLocalCurrBranch(branch);
-    } else {
-      return `${name} not found`;
+const handle_checkout =
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
+    if (args.length === 1) {
+      const name = args[0];
+      const branch = gitMethods.getLocalInitialCommit().findBranchByName(name);
+
+      if (branch) {
+        gitMethods.setLocalCurrBranch(branch);
+
+        updateVisualization(
+          getSvgData(),
+          getHomeDir(),
+          -1 * delays.paths.update,
+          null,
+          gitMethods
+        );
+
+        return "";
+      } else {
+        return `${name} not found`;
+      }
     }
-  }
-  return "checkout";
-};
+    return "checkout";
+  };
 
 const handle_status =
   (

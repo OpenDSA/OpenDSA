@@ -185,6 +185,7 @@ function updateGitVisualization(
   createCommitTree(
     group,
     gitMethods.getLocalInitialCommit(),
+    gitMethods.getLocalCurrBranch(),
     "local-commit",
     width / 2,
     height / 2,
@@ -200,6 +201,7 @@ function updateGitVisualization(
   createCommitTree(
     group,
     gitMethods.getRemoteInitialCommit(),
+    gitMethods.getRemoteCurrBranch(),
     "remote-commit",
     width / 2,
     height / 2,
@@ -451,6 +453,7 @@ const createFileLinks = (
 const createCommitTree = (
   svgGroup,
   initialCommit,
+  currBranch,
   label,
   width,
   height,
@@ -498,6 +501,8 @@ const createCommitTree = (
       : null,
   }));
 
+  const headCommitId = currBranch.commit.id;
+
   createCommitCircles(
     svgGroup,
     data,
@@ -505,7 +510,8 @@ const createCommitTree = (
     xOffset,
     yOffset,
     delayOffset,
-    radius
+    radius,
+    headCommitId
   );
 
   createCommitLinks(svgGroup, data, label, xOffset, yOffset, delayOffset);
@@ -529,7 +535,8 @@ const createCommitTree = (
     rectangleWidth,
     rectangleHeight,
     "0.7rem",
-    radius
+    radius,
+    currBranch.id
   );
 };
 
@@ -540,7 +547,8 @@ const createCommitCircles = (
   xOffset,
   yOffset,
   delayOffset,
-  radius
+  radius,
+  headCommitId
 ) =>
   svgGroup
     .selectAll(".node-" + label)
@@ -564,8 +572,9 @@ const createCommitCircles = (
           .attr("x", -radius)
           .attr("y", -radius)
           .style("fill", (d) => {
-            return d.data.isDirectory
-              ? colors.directory.background
+            console.log("headcommitid", headCommitId, d);
+            return d.data.id === headCommitId
+              ? "purple"
               : colors.file.background;
           })
           .attr("stroke", "black");
@@ -589,6 +598,12 @@ const createCommitCircles = (
           .delay(delays.nodes.update + delayOffset)
           .attr("transform", function (d) {
             return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+          })
+          .select("circle")
+          .style("fill", (d) => {
+            return d.data.id === headCommitId
+              ? "purple"
+              : colors.file.background;
           });
       },
       function (exit) {
@@ -773,7 +788,8 @@ const createBranchRectangles = (
   width,
   height,
   fontSize,
-  radius
+  radius,
+  currBranchId
 ) =>
   svgGroup
     .selectAll(".branch-" + label)
@@ -804,7 +820,9 @@ const createBranchRectangles = (
           .attr("x", -width / 2)
           .attr("y", -height / 2)
           .style("fill", (d) => {
-            return colors.directory.background;
+            return d.id === currBranchId
+              ? "purple"
+              : colors.directory.background;
           })
           .attr("stroke", "black")
           .attr("rx", 5)
@@ -848,6 +866,10 @@ const createBranchRectangles = (
               ")"
             );
           });
+
+        node.select("rect").style("fill", (d) => {
+          return d.id === currBranchId ? "purple" : colors.directory.background;
+        });
 
         return node;
       },
