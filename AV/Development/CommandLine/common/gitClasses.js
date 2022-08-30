@@ -7,13 +7,8 @@ class Commit {
     this.parent = undefined;
     this.branches = [];
     this.files = [];
-    this.merged = false;
     this.id = ++count;
     this.gitId = ++gitIdCount; //used to pair between local and remote
-  }
-
-  setMerged(merged) {
-    this.merged = merged;
   }
 
   containsBranchShallow(name) {
@@ -185,18 +180,6 @@ class Branch {
     const branch = new Branch(this.name);
     branch.gitId = this.gitId;
     return branch;
-  }
-
-  getUnmergedCommits() {
-    const commits = [];
-    let curr = this.commit;
-
-    while (!curr.merged) {
-      commits.push(curr);
-      curr = curr.parent;
-    }
-
-    return commits;
   }
 
   getCommitHistory() {

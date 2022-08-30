@@ -165,6 +165,7 @@ const handle_commit =
     }
   };
 
+//cannot handle merge conflicts
 const handle_pull =
   (
     getSvgData,
@@ -175,9 +176,21 @@ const handle_pull =
     gitMethods
   ) =>
   (args) => {
-    const currBranch = gitMethods.getLocalCurrBranch();
-    console.log("history", currBranch.getCommitHistory());
-    return "pull";
+    const localInitialCommit = gitMethods.getLocalInitialCommit();
+    const currRemoteBranch = gitMethods.getRemoteCurrBranch();
+    const commits = currRemoteBranch.getCommitHistory();
+    const lastLocalCommit = localInitialCommit.mergeCommits(commits);
+
+    const localBranch = localInitialCommit.findBranchByGitId(
+      currRemoteBranch.gitId
+    );
+    const localBranchCommit = localBranch.commit;
+    localBranch.switchCommit(lastLocalCommit);
+    getHomeDir().updateToCommit(localBranchCommit, lastLocalCommit);
+
+    updateVisualization(getSvgData(), getHomeDir(), 0, null, gitMethods);
+
+    return "";
   };
 
 const handle_push =
