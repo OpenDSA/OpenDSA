@@ -572,7 +572,6 @@ const createCommitCircles = (
           .attr("x", -radius)
           .attr("y", -radius)
           .style("fill", (d) => {
-            console.log("headcommitid", headCommitId, d);
             return d.data.id === headCommitId
               ? "purple"
               : colors.file.background;

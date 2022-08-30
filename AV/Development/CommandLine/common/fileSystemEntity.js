@@ -446,7 +446,49 @@ class Directory extends FileSystemEntity {
     });
   }
 
-  applyCommit(commit) {}
+  applyCommit(commit) {
+    commit.files.forEach((file) => {
+      let parent = null;
+      switch (file.getState().fileState) {
+        case FILE_STATE.NEW:
+          parent = this.findByGitId(file.parentGitId);
+          const newFile = file.copyWithGitId();
+          newFile.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
+          parent.insert(newFile);
+          break;
+        case FILE_STATE.DELETED:
+          parent = this.findByGitId(file.parentGitId);
+          parent.removeByGitId(file.gitId);
+          break;
+        case FILE_STATE.MODIFIED:
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  undoCommit(commit) {
+    commit.files.forEach((file) => {
+      let parent = null;
+      switch (file.getState().fileState) {
+        case FILE_STATE.NEW:
+          parent = this.findByGitId(file.parentGitId);
+          parent.removeByGitId(file.gitId);
+          break;
+        case FILE_STATE.DELETED:
+          parent = this.findByGitId(file.parentGitId);
+          const newFile = file.copyWithGitId();
+          newFile.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
+          parent.insert(newFile);
+          break;
+        case FILE_STATE.MODIFIED:
+          break;
+        default:
+          break;
+      }
+    });
+  }
 }
 
 function splitPath(path) {

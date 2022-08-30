@@ -130,9 +130,20 @@ const handle_commit =
     }
   };
 
-const handle_pull = () => (args) => {
-  return "pull";
-};
+const handle_pull =
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
+    const currBranch = gitMethods.getLocalCurrBranch();
+    console.log("history", currBranch.getCommitHistory());
+    return "pull";
+  };
 
 const handle_push =
   (
@@ -146,9 +157,6 @@ const handle_push =
   (args) => {
     const currBranch = gitMethods.getLocalCurrBranch();
     const unmergedCommits = currBranch.getUnmergedCommits();
-    const remoteHomeDir = gitMethods.getRemoteHomeDir();
-    const remoteInitialCommit = gitMethods.getRemoteInitialCommit();
-    const remoteCurrBranch = gitMethods.getRemoteCurrBranch();
     const remoteBranch = remoteInitialCommit.findBranchByGitId(
       currBranch.gitId
     );
@@ -160,21 +168,14 @@ const handle_push =
       remoteBranch = newBranch;
     }
 
+    const remoteHomeDir = gitMethods.getRemoteHomeDir();
+    const remoteInitialCommit = gitMethods.getRemoteInitialCommit();
+    const remoteCurrBranch = gitMethods.getRemoteCurrBranch();
+
     //remote find curr branch by git id
     //insert all the commits into that branch
     unmergedCommits.reverse().forEach((commit) => {
-      commit.files.forEach((file) => {
-        if (file.getState().fileState === FILE_STATE.NEW) {
-          const parent = remoteHomeDir.findByGitId(file.parentGitId);
-          const newFile = file.copyWithGitId();
-          newFile.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
-          parent.insert(newFile);
-        } else if (file.getState().fileState === FILE_STATE.DELETED) {
-          const parent = remoteHomeDir.findByGitId(file.parentGitId);
-          parent.removeByGitId(file.gitId);
-        }
-        // file.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
-      });
+      remoteHomeDir.applyCommit(commit);
       remoteBranch.commitChanges();
       remoteBranch.commit.gitId = commit.gitId;
       commit.merged = true;
@@ -233,6 +234,20 @@ const handle_checkout =
       const branch = gitMethods.getLocalInitialCommit().findBranchByName(name);
 
       if (branch) {
+        const src = gitMethods.getLocalCurrBranch().commit;
+        src.getPathToCommit(branch.commit).forEach((value) => {
+          switch (value.action) {
+            case "add":
+              getHomeDir().applyCommit(value.commit);
+              break;
+            case "undo":
+              getHomeDir().undoCommit(value.commit);
+              break;
+            default:
+              break;
+          }
+        });
+
         gitMethods.setLocalCurrBranch(branch);
 
         updateVisualization(

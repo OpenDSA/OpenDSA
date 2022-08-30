@@ -16,19 +16,21 @@ class Commit {
     this.merged = merged;
   }
 
-  findBranchByGitId(id) {
-    let curr = null;
-    this.branches.some((branch) => {
-      curr = branch;
-      return curr.gitId === id;
-    });
+  containsBranchShallow(name) {
+    return this.branches.some((branch) => branch.name === name);
+  }
 
-    if (curr) {
-      return curr;
+  findBranchByGitId(id) {
+    const found = this.branches.find((branch) => branch.gitId === id);
+
+    if (found) {
+      return found;
     }
 
+    let curr = null;
+
     this.children.some((child) => {
-      curr = child.findBranchByGitId();
+      curr = child.findBranchByGitId(id);
       return Boolean(curr);
     });
 
@@ -85,6 +87,36 @@ class Commit {
     commit.gitId = this.gitId;
     return commit;
   }
+
+  getPathToCommit(dst) {
+    const previousMap = new Map();
+    const visited = new Set();
+    const queue = [];
+    queue.push(this);
+    visited.add(this.id);
+
+    while (queue.length > 0) {
+      const commit = queue.shift();
+      if (commit.id === dst.id) {
+        return getPathUsingPreviousMap(previousMap, this, dst);
+      }
+
+      let neighbours = [...commit.children];
+
+      if (commit.parent) {
+        neighbours.push(commit.parent);
+      }
+
+      neighbours.forEach((neighbour) => {
+        if (!visited.has(neighbour.id)) {
+          previousMap.set(neighbour.id, commit);
+          queue.push(neighbour);
+          visited.add(neighbour.id);
+        }
+      });
+    }
+    return null;
+  }
 }
 
 class Branch {
@@ -120,6 +152,43 @@ class Branch {
 
     return commits;
   }
+
+  getCommitHistory() {
+    const commits = [];
+    let curr = this.commit;
+    while (curr) {
+      commits.push(curr);
+      curr = curr.parent;
+    }
+    return commits.reverse();
+  }
 }
+
+const getPathUsingPreviousMap = (previousMap, src, dst) => {
+  if (src.id === dst.id) {
+    return [];
+  }
+
+  let path = [];
+
+  let curr = dst;
+  let foundTurningPoint = false;
+
+  while (curr.id !== src.id) {
+    const next = previousMap.get(curr.id);
+    const nextIsParent = curr.parent?.id === next.id;
+    let action = nextIsParent ? "add" : "undo";
+    if (!nextIsParent && !foundTurningPoint) {
+      foundTurningPoint = true;
+      action = "nothing";
+    }
+    path.push({ commit: curr, action });
+    curr = next;
+  }
+
+  path.push({ commit: curr, action: foundTurningPoint ? "undo" : "nothing" });
+
+  return path.reverse();
+};
 
 export { Branch, Commit };
