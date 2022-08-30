@@ -489,6 +489,21 @@ class Directory extends FileSystemEntity {
       }
     });
   }
+
+  updateToCommit(srcCommit, dstCommit) {
+    srcCommit.getPathToCommit(dstCommit).forEach((value) => {
+      switch (value.action) {
+        case "add":
+          this.applyCommit(value.commit);
+          break;
+        case "undo":
+          this.undoCommit(value.commit);
+          break;
+        default:
+          break;
+      }
+    });
+  }
 }
 
 function splitPath(path) {

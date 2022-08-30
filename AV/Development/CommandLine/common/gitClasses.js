@@ -54,8 +54,40 @@ class Commit {
     return curr;
   }
 
-  insertChild() {
-    const commit = new Commit();
+  findCommitByGitId(id) {
+    if (this.gitId === id) {
+      return this;
+    }
+    let curr = null;
+    this.children.some((child) => {
+      curr = child.findCommitByGitId(id);
+      return Boolean(curr);
+    });
+    return curr;
+  }
+
+  //merge commits without duplicates
+  //return last commit merged
+  mergeCommits(commits) {
+    let curr = this;
+    let prev = null;
+    const index = commits.findIndex((commit) => {
+      prev = curr;
+      curr = curr.findCommitByGitId(commit.gitId);
+      return !curr;
+    });
+
+    commits.slice(index).forEach((commit) => {
+      prev = prev.insertChild(commit);
+    });
+
+    return prev;
+  }
+
+  insertChild(commit) {
+    if (!commit) {
+      commit = new Commit();
+    }
     this.children.push(commit);
     commit.parent = this;
     return commit;
@@ -88,6 +120,13 @@ class Commit {
     return commit;
   }
 
+  copyWithoutChildren() {
+    const commit = new Commit();
+    commit.gitId = this.gitId;
+    commit.files = this.files;
+    commit.parentGitId = this.parent?.gitId;
+    return commit;
+  }
   getPathToCommit(dst) {
     const previousMap = new Map();
     const visited = new Set();
@@ -127,6 +166,13 @@ class Branch {
     this.gitId = ++gitIdCount; //used to pair between local and remote
   }
 
+  switchCommit(commit) {
+    if (this.commit) {
+      this.commit.removeBranch(this);
+    }
+    commit.insertBranch(this);
+  }
+
   commitChanges(files) {
     this.commit.removeBranch(this);
     const commit = this.commit.insertChild();
@@ -160,7 +206,7 @@ class Branch {
       commits.push(curr);
       curr = curr.parent;
     }
-    return commits.reverse();
+    return commits.map((commit) => commit.copyWithoutChildren()).reverse();
   }
 }
 

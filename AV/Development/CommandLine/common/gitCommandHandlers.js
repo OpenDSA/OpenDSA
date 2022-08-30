@@ -10,9 +10,18 @@ const handle_git = (gitCommandsMap) => (args) => {
   }
 };
 
-const handle_clone = () => (args) => {
-  return "clone";
-};
+const handle_clone =
+  (
+    getSvgData,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    gitMethods
+  ) =>
+  (args) => {
+    return "clone";
+  };
 
 const handle_add =
   (
@@ -155,34 +164,24 @@ const handle_push =
     gitMethods
   ) =>
   (args) => {
-    const currBranch = gitMethods.getLocalCurrBranch();
-    const unmergedCommits = currBranch.getUnmergedCommits();
-    const remoteBranch = remoteInitialCommit.findBranchByGitId(
-      currBranch.gitId
-    );
-
-    if (!remoteBranch) {
-      const newBranch = new Branch(currBranch.name);
-      newBranch.gitId = currBranch.gitId;
-      remoteCurrBranch.commit.insertBranch(newBranch);
-      remoteBranch = newBranch;
-    }
-
-    const remoteHomeDir = gitMethods.getRemoteHomeDir();
     const remoteInitialCommit = gitMethods.getRemoteInitialCommit();
-    const remoteCurrBranch = gitMethods.getRemoteCurrBranch();
+    const currBranch = gitMethods.getLocalCurrBranch();
+    const commits = currBranch.getCommitHistory();
+    const lastRemoteCommit = remoteInitialCommit.mergeCommits(commits);
 
-    //remote find curr branch by git id
-    //insert all the commits into that branch
-    unmergedCommits.reverse().forEach((commit) => {
-      remoteHomeDir.applyCommit(commit);
-      remoteBranch.commitChanges();
-      remoteBranch.commit.gitId = commit.gitId;
-      commit.merged = true;
-    });
+    let remoteBranch = remoteInitialCommit.findBranchByGitId(currBranch.gitId);
+    const remoteBranchCommit = remoteBranch?.commit;
+    if (!remoteBranch) {
+      remoteBranch = new Branch(currBranch.name);
+      remoteBranch.gitId = currBranch.gitId;
+    }
+    remoteBranch.switchCommit(lastRemoteCommit);
 
-    console.log("local", gitMethods.getLocalInitialCommit());
-    console.log("remote", gitMethods.getRemoteInitialCommit());
+    if (currBranch.gitId === gitMethods.getRemoteCurrBranch().gitId) {
+      gitMethods
+        .getRemoteHomeDir()
+        .updateToCommit(remoteBranchCommit, lastRemoteCommit);
+    }
 
     updateVisualization(getSvgData(), getHomeDir(), 0, null, gitMethods);
     return "";
@@ -234,19 +233,10 @@ const handle_checkout =
       const branch = gitMethods.getLocalInitialCommit().findBranchByName(name);
 
       if (branch) {
-        const src = gitMethods.getLocalCurrBranch().commit;
-        src.getPathToCommit(branch.commit).forEach((value) => {
-          switch (value.action) {
-            case "add":
-              getHomeDir().applyCommit(value.commit);
-              break;
-            case "undo":
-              getHomeDir().undoCommit(value.commit);
-              break;
-            default:
-              break;
-          }
-        });
+        getHomeDir().updateToCommit(
+          gitMethods.getLocalCurrBranch().commit,
+          branch.commit
+        );
 
         gitMethods.setLocalCurrBranch(branch);
 
