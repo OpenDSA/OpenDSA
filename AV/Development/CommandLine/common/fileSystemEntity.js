@@ -79,6 +79,10 @@ class File extends FileSystemEntity {
     this.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
   }
 
+  setNotDeletedDeep() {
+    this.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
+  }
+
   getIsDeleted() {
     return this.fileState === FILE_STATE.DELETED;
   }
@@ -206,6 +210,11 @@ class Directory extends FileSystemEntity {
     this.isDeleted = false;
   }
 
+  setNotDeletedDeep() {
+    this.contents.forEach((content) => content.setNotDeleted());
+    this.isDeleted = false;
+  }
+
   getIsDeleted() {
     return this.isDeleted;
   }
@@ -273,7 +282,8 @@ class Directory extends FileSystemEntity {
       return this.parent;
     }
     return this.contents.find(
-      (fileSystemEntity) => fileSystemEntity.name === name
+      (fileSystemEntity) =>
+        fileSystemEntity.name === name && !fileSystemEntity.getIsDeleted()
     );
   }
 

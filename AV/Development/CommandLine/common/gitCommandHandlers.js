@@ -111,6 +111,9 @@ const handle_restore =
             GIT_STATE.CHANGED
           );
         } else {
+          fileSystemEntity
+            .getByState(GIT_STATE.CHANGED, FILE_STATE.DELETED)
+            .forEach((entity) => entity.setNotDeletedDeep());
           //TODO restore new files
           fileSystemEntity.setStateConditional(
             GIT_STATE.CHANGED,
@@ -123,6 +126,14 @@ const handle_restore =
         notFound.push(path);
       }
     });
+
+    updateVisualization(
+      getSvgData(),
+      getHomeDir(),
+      -1 * delays.paths.update,
+      null,
+      gitMethods
+    );
     return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
   };
 
