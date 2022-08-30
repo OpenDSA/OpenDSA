@@ -182,21 +182,23 @@ function updateGitVisualization(
     5
   );
 
-  createCommitTree(
-    group,
-    gitMethods.getLocalInitialCommit(),
-    gitMethods.getLocalCurrBranch(),
-    "local-commit",
-    width / 2,
-    height / 2,
-    0,
-    height / 2,
-    delayOffset,
-    circleRadius,
-    0.7,
-    5,
-    5
-  );
+  if (gitMethods.getLocalInitialCommit()) {
+    createCommitTree(
+      group,
+      gitMethods.getLocalInitialCommit(),
+      gitMethods.getLocalCurrBranch(),
+      "local-commit",
+      width / 2,
+      height / 2,
+      0,
+      height / 2,
+      delayOffset,
+      circleRadius,
+      0.7,
+      5,
+      5
+    );
+  }
 
   createCommitTree(
     group,

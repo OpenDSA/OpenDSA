@@ -20,7 +20,33 @@ const handle_clone =
     gitMethods
   ) =>
   (args) => {
-    return "clone";
+    if (
+      getHomeDir().contents.length === 0 &&
+      !gitMethods.getLocalInitialCommit()
+    ) {
+      const remoteHomeDir = gitMethods.getRemoteHomeDir().copyWithGitId();
+      remoteHomeDir.contents.forEach((content) => {
+        getHomeDir().insert(content);
+      });
+      const remoteInitialCommit = gitMethods.getRemoteInitialCommit().copy();
+      const remoteCurrBranch = gitMethods.getRemoteCurrBranch();
+      gitMethods.setLocalInitialCommit(remoteInitialCommit);
+      gitMethods.setLocalCurrBranch(
+        remoteInitialCommit.findBranchByGitId(remoteCurrBranch.gitId)
+      );
+
+      updateVisualization(
+        getSvgData(),
+        getHomeDir(),
+        -1 * delays.paths.update,
+        null,
+        gitMethods
+      );
+
+      return "Cloned";
+    }
+
+    return "Cannot clone unless local is empty";
   };
 
 const handle_add =

@@ -185,6 +185,10 @@ function initializeGitExercise(
     return localInitialCommit;
   }
 
+  function setLocalInitialCommit(commit) {
+    localInitialCommit = commit;
+  }
+
   function getLocalCurrBranch() {
     return localCurrBranch;
   }
@@ -217,6 +221,7 @@ function initializeGitExercise(
     getRemoteInitialCommit,
     getRemoteCurrBranch,
     setRemoteCurrBranch,
+    setLocalInitialCommit,
   };
 
   const commandsMap = createCommandsMap(
