@@ -232,50 +232,37 @@ const createFileTree = (
   paddingX,
   paddingY
 ) => {
-  const rectangleWidth = rectangleDimensions.width * fileScale;
-  const rectangleHeight = rectangleDimensions.height * fileScale;
-  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
-  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
-  const xOffset = rectangleWidth / 2 + x + paddingX;
-  const yOffset = rectangleHeight / 2 + y + paddingY;
-
-  const treemap = d3.tree().size([adjustedWidth, adjustedHeight]);
-
-  const hierarchyData = d3.hierarchy(directory.mapToD3());
-
-  const treeData = treemap(hierarchyData);
+  const data = createFileTreeData(
+    directory,
+    x,
+    y,
+    width,
+    height,
+    paddingX,
+    paddingY,
+    fileScale
+  );
 
   // adds the nodes
   const nodes = createFileRectangles(
     svgGroup,
-    treeData.descendants(),
+    data,
     label,
-    xOffset,
-    yOffset,
     delayOffset,
-    rectangleWidth,
-    rectangleHeight,
+    rectangleDimensions.width * fileScale,
+    rectangleDimensions.height * fileScale,
     0.9 * fileScale + "rem",
     currDirId,
     colorGit
   );
 
-  const links = createFileLinks(
-    svgGroup,
-    treeData.descendants(),
-    label,
-    xOffset,
-    yOffset,
-    delayOffset
-  );
+  const links = createFileLinks(svgGroup, data, label, delayOffset);
 };
 
 const createFileRectangles = (
   svgGroup,
   data,
   label,
-  x,
-  y,
   delayOffset,
   width,
   height,
@@ -283,8 +270,6 @@ const createFileRectangles = (
   currDirId,
   colorGit
 ) => {
-  const xOffset = x;
-  const yOffset = y;
   return svgGroup
     .selectAll(".node-" + label)
     .data(data, function (d) {
@@ -296,7 +281,7 @@ const createFileRectangles = (
           .append("g")
           .attr("class", "node-" + label)
           .attr("transform", function (d) {
-            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+            return "translate(" + d.x + "," + d.y + ")";
           })
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6);
@@ -352,7 +337,7 @@ const createFileRectangles = (
           .duration(durations.nodes.update)
           .delay(delays.nodes.update + delayOffset)
           .attr("transform", function (d) {
-            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+            return "translate(" + d.x + "," + d.y + ")";
           });
 
         node.select("rect").style("fill", (d) => {
@@ -380,14 +365,7 @@ const createFileRectangles = (
     );
 };
 
-const createFileLinks = (
-  svgGroup,
-  data,
-  label,
-  xOffset,
-  yOffset,
-  delayOffset
-) =>
+const createFileLinks = (svgGroup, data, label, delayOffset) =>
   svgGroup
     .selectAll(".link-" + label)
     .data(data.slice(1), function (d) {
@@ -400,10 +378,10 @@ const createFileLinks = (
           .lower()
           .attr("class", "link-" + label)
           .attr("d", function (d) {
-            return `M ${d.x + xOffset} , ${d.y + yOffset} 
-                      V ${(d.y + d.parent.y) / 2 + yOffset} 
-                      H ${d.parent.x + xOffset} 
-                      V ${d.parent.y + yOffset}`;
+            return `M ${d.x} , ${d.y} 
+                      V ${(d.y + d.parent.y) / 2} 
+                      H ${d.parent.x} 
+                      V ${d.parent.y}`;
           })
           .each(function (d) {
             d.totalLength = this.getTotalLength();
@@ -423,10 +401,10 @@ const createFileLinks = (
           .duration(durations.paths.update)
           .delay(delays.paths.update + delayOffset)
           .attr("d", function (d) {
-            return `M ${d.x + xOffset} , ${d.y + yOffset} 
-                    V ${(d.y + d.parent.y) / 2 + yOffset} 
-                    H ${d.parent.x + xOffset} 
-                    V ${d.parent.y + yOffset}`;
+            return `M ${d.x} , ${d.y} 
+                    V ${(d.y + d.parent.y) / 2} 
+                    H ${d.parent.x} 
+                    V ${d.parent.y}`;
           })
           .each(function (d) {
             d.totalLength = 1000;
@@ -788,10 +766,10 @@ const createCommitTreeData = (
   height,
   paddingX,
   paddingY,
-  rectangleScale
+  scale
 ) => {
-  const rectangleWidth = rectangleDimensions.width * rectangleScale;
-  const rectangleHeight = rectangleDimensions.height * rectangleScale;
+  const rectangleWidth = rectangleDimensions.width * scale;
+  const rectangleHeight = rectangleDimensions.height * scale;
   const adjustedWidth = width - rectangleWidth - 2 * paddingX;
   const adjustedHeight = height - rectangleHeight - 2 * paddingY;
 
@@ -825,6 +803,45 @@ const createCommitTreeData = (
               ? commit.parent.depth * desiredGap
               : commit.parent.y) + xOffset,
           y: commit.parent.x + yOffset,
+        }
+      : null,
+  }));
+};
+
+const createFileTreeData = (
+  directory,
+  x,
+  y,
+  width,
+  height,
+  paddingX,
+  paddingY,
+  scale
+) => {
+  const rectangleWidth = rectangleDimensions.width * scale;
+  const rectangleHeight = rectangleDimensions.height * scale;
+  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
+  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
+  const xOffset = rectangleWidth / 2 + x + paddingX;
+  const yOffset = rectangleHeight / 2 + y + paddingY;
+
+  const treemap = d3.tree().size([adjustedWidth, adjustedHeight]);
+
+  const hierarchyData = d3.hierarchy(directory.mapToD3());
+
+  const treeData = treemap(hierarchyData);
+
+  const descendants = treeData.descendants();
+
+  return descendants.map((file) => ({
+    ...file,
+    x: file.x + xOffset,
+    y: file.y + yOffset,
+    parent: file.parent
+      ? {
+          ...file.parent,
+          x: file.parent.x + xOffset,
+          y: file.parent.y + yOffset,
         }
       : null,
   }));
