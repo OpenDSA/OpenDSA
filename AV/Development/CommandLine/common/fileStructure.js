@@ -467,56 +467,22 @@ const createCommitTree = (
   paddingX,
   paddingY
 ) => {
-  const rectangleWidth = rectangleDimensions.width * rectangleScale;
-  const rectangleHeight = rectangleDimensions.height * rectangleScale;
-  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
-  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
-
-  const xOffset = x + rectangleWidth / 2 + paddingX;
-  const yOffset = y + paddingY;
-  //todo figure out height
-  const treemap = d3.tree().size([adjustedHeight, adjustedWidth]);
-
-  const hierarchyData = d3.hierarchy(initialCommit);
-
-  const treeData = treemap(hierarchyData);
-
-  const descendants = treeData.descendants();
-
-  const currGap =
-    descendants.length > 1 ? descendants[1].y - descendants[0].y : null;
-
-  const desiredGap = 100;
-
-  const useDesiredGap = currGap === null || desiredGap < currGap;
-
-  const data = descendants.map((commit) => ({
-    ...commit,
-    x: useDesiredGap ? commit.depth * desiredGap : commit.y,
-    y: commit.x,
-    parent: commit.parent
-      ? {
-          ...commit.parent,
-          x: useDesiredGap ? commit.parent.depth * desiredGap : commit.parent.y,
-          y: commit.parent.x,
-        }
-      : null,
-  }));
+  const data = createCommitTreeData(
+    initialCommit,
+    x,
+    y,
+    width,
+    height,
+    paddingX,
+    paddingY,
+    rectangleScale
+  );
 
   const headCommitId = currBranch.commit.id;
 
-  createCommitCircles(
-    svgGroup,
-    data,
-    label,
-    xOffset,
-    yOffset,
-    delayOffset,
-    radius,
-    headCommitId
-  );
+  createCommitCircles(svgGroup, data, label, delayOffset, radius, headCommitId);
 
-  createCommitLinks(svgGroup, data, label, xOffset, yOffset, delayOffset);
+  createCommitLinks(svgGroup, data, label, delayOffset);
 
   const branches = data.flatMap((commit) =>
     commit.data.branches.map((branch, index) => ({
@@ -531,11 +497,9 @@ const createCommitTree = (
     svgGroup,
     branches,
     label,
-    xOffset,
-    yOffset,
-    delayOffset + durations.nodes.update,
-    rectangleWidth,
-    rectangleHeight,
+    delayOffset,
+    rectangleDimensions.width * rectangleScale,
+    rectangleDimensions.height * rectangleScale,
     "0.7rem",
     radius,
     currBranch.id
@@ -546,8 +510,6 @@ const createCommitCircles = (
   svgGroup,
   data,
   label,
-  xOffset,
-  yOffset,
   delayOffset,
   radius,
   headCommitId
@@ -563,7 +525,7 @@ const createCommitCircles = (
           .append("g")
           .attr("class", "node-" + label)
           .attr("transform", function (d) {
-            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+            return "translate(" + d.x + "," + d.y + ")";
           })
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6);
@@ -598,7 +560,7 @@ const createCommitCircles = (
           .duration(durations.nodes.update)
           .delay(delays.nodes.update + delayOffset)
           .attr("transform", function (d) {
-            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+            return "translate(" + d.x + "," + d.y + ")";
           })
           .select("circle")
           .style("fill", (d) => {
@@ -616,109 +578,9 @@ const createCommitCircles = (
           .style("stroke-opacity", 1e-6)
           .remove();
       }
-
-      // .selectAll("node-test-" + label)
-      // .data(
-      //   (d) => {
-      //     const branches = d.data.branches.map((branch, index) => ({
-      //       ...branch,
-      //       // x: d.x,
-      //       // y: d.y + 20 * index,
-
-      //       index: index,
-      //     }));
-      //     return branches;
-      //   },
-      //   (d) => {
-      //     return d.id;
-      //   }
-      // )
-      // .join(
-      //   function (enter) {
-      //     console.log("enter branch");
-      //     const nodes = enter
-      //       .append("g")
-      //       .attr("class", "node-test-" + label)
-      //       .attr("transform", function (d) {
-      //         console.log("d bracnh", d);
-      //         return "translate(" + 0 + "," + 0 + ")";
-      //       })
-      //       .style("fill-opacity", 1e-6)
-      //       .style("stroke-opacity", 1e-6);
-
-      //     nodes
-      //       .append("rect")
-      //       .attr("width", 50)
-      //       .attr("height", 20)
-      //       .attr("x", -25)
-      //       .attr("y", radius)
-      //       .style("fill", (d) => {
-      //         return colors.directory.background;
-      //       })
-      //       .attr("stroke", "black")
-      //       .attr("rx", 5)
-      //       .attr("ry", 5);
-
-      //     nodes
-      //       .append("text")
-      //       .attr("y", radius + 10)
-      //       .attr("dy", ".35em")
-      //       .attr("font-size", "0.7rem")
-      //       .style("fill", (d) => {
-      //         return colors.directory.text;
-      //       })
-      //       .style("text-anchor", "middle")
-      //       .text(function (d) {
-      //         return d.name;
-      //       });
-
-      //     nodes
-      //       .transition()
-      //       .duration(durations.nodes.enter)
-      //       .delay(delays.nodes.enter + delayOffset)
-      //       .style("fill-opacity", 1)
-      //       .style("stroke-opacity", 1);
-
-      //     return nodes;
-      //   },
-      //   function (update) {
-      //     const node = update
-      //       .attr("y", 0)
-      //       .style("fill-opacity", 1)
-      //       .style("stroke-opacity", 1)
-      //       .transition()
-      //       .duration(durations.nodes.update)
-      //       .delay(delays.nodes.update + delayOffset)
-      //       .attr("transform", function (d) {
-      //         return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
-      //       });
-
-      //     node.select("rect").style("fill", (d) => {
-      //       return getFileColor(d.data.gitState, d.data.isDirectory);
-      //     });
-      //     // node.select("text").style("fill", colors.directory.text);
-
-      //     return node;
-      //   },
-      //   function (exit) {
-      //     return exit
-      //       .transition()
-      //       .duration(durations.nodes.exit)
-      //       .delay(delays.nodes.exit + delayOffset)
-      //       .style("fill-opacity", 1e-6)
-      //       .style("stroke-opacity", 1e-6)
-      //       .remove();
-      //   }
     );
 
-const createCommitLinks = (
-  svgGroup,
-  data,
-  label,
-  xOffset,
-  yOffset,
-  delayOffset
-) =>
+const createCommitLinks = (svgGroup, data, label, delayOffset) =>
   svgGroup
     .selectAll(".link-" + label)
     .data(data.slice(1), function (d) {
@@ -731,8 +593,8 @@ const createCommitLinks = (
           .lower()
           .attr("class", "link-" + label)
           .attr("d", function (d) {
-            return `M ${d.x + xOffset} , ${d.y + yOffset} 
-                    L ${d.parent.x + xOffset}, ${d.parent.y + yOffset}`;
+            return `M ${d.x} , ${d.y} 
+                    L ${d.parent.x}, ${d.parent.y}`;
           })
           .each(function (d) {
             d.totalLength = this.getTotalLength();
@@ -752,8 +614,8 @@ const createCommitLinks = (
           .duration(durations.paths.update)
           .delay(delays.paths.update + delayOffset)
           .attr("d", function (d) {
-            return `M ${d.x + xOffset} , ${d.y + yOffset} 
-                    L ${d.parent.x + xOffset}, ${d.parent.y + yOffset}`;
+            return `M ${d.x} , ${d.y} 
+                    L ${d.parent.x}, ${d.parent.y}`;
           })
           .each(function (d) {
             d.totalLength = 1000;
@@ -783,8 +645,6 @@ const createBranchRectangles = (
   svgGroup,
   data,
   label,
-  xOffset,
-  yOffset,
   delayOffset,
   width,
   height,
@@ -805,9 +665,9 @@ const createBranchRectangles = (
           .attr("transform", function (d) {
             return (
               "translate(" +
-              (d.x + xOffset) +
+              d.x +
               "," +
-              (d.y + yOffset + 2 * radius + d.index * height) +
+              (d.y + 2 * radius + d.index * height) +
               ")"
             );
           })
@@ -861,9 +721,9 @@ const createBranchRectangles = (
           .attr("transform", function (d) {
             return (
               "translate(" +
-              (d.x + xOffset) +
+              d.x +
               "," +
-              (d.y + yOffset + 2 * radius + d.index * height) +
+              (d.y + 2 * radius + d.index * height) +
               ")"
             );
           });
@@ -918,6 +778,56 @@ const getFileColor = (id, currDirId, gitState, isDirectory, colorGit) => {
     }
   }
   return colors.file.background;
+};
+
+const createCommitTreeData = (
+  initialCommit,
+  x,
+  y,
+  width,
+  height,
+  paddingX,
+  paddingY,
+  rectangleScale
+) => {
+  const rectangleWidth = rectangleDimensions.width * rectangleScale;
+  const rectangleHeight = rectangleDimensions.height * rectangleScale;
+  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
+  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
+
+  const xOffset = x + rectangleWidth / 2 + paddingX;
+  const yOffset = y + paddingY;
+  //todo figure out height
+  const treemap = d3.tree().size([adjustedHeight, adjustedWidth]);
+
+  const hierarchyData = d3.hierarchy(initialCommit);
+
+  const treeData = treemap(hierarchyData);
+
+  const descendants = treeData.descendants();
+
+  const currGap =
+    descendants.length > 1 ? descendants[1].y - descendants[0].y : null;
+
+  const desiredGap = 100;
+
+  const useDesiredGap = currGap === null || desiredGap < currGap;
+
+  return descendants.map((commit) => ({
+    ...commit,
+    x: (useDesiredGap ? commit.depth * desiredGap : commit.y) + xOffset,
+    y: commit.x + yOffset,
+    parent: commit.parent
+      ? {
+          ...commit.parent,
+          x:
+            (useDesiredGap
+              ? commit.parent.depth * desiredGap
+              : commit.parent.y) + xOffset,
+          y: commit.parent.x + yOffset,
+        }
+      : null,
+  }));
 };
 
 export {
