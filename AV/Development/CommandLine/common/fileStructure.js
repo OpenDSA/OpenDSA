@@ -4,7 +4,7 @@ import { GIT_STATE } from "./gitStatuses.js";
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 
 const rectangleDimensions = { width: 76, height: 30 };
-const circleRadius = 15;
+const circleRadius = 21;
 
 const durations = {
   nodes: { enter: 1000, exit: 1000, update: 2000 },
@@ -145,64 +145,39 @@ function updateGitVisualization(
 ) {
   const { group, width, height } = svgData;
 
-  const rectangleScale = 0.7;
+  const scale = 0.7;
+  const padding = 5;
 
   const {
     localFileTreeData,
     remoteFileTreeData,
     localCommitTreeData,
     remoteCommitTreeData,
+    localBranchData,
+    remoteBranchData,
   } = createGitVisualizationData(
     localHomeDir,
     gitMethods.getRemoteHomeDir(),
     gitMethods.getLocalInitialCommit(),
     gitMethods.getRemoteInitialCommit(),
+    gitMethods.getLocalCurrBranch(),
+    gitMethods.getRemoteCurrBranch(),
     width,
     height,
-    5,
-    rectangleScale
+    padding,
+    scale
   );
 
-  createFileTree(
-    group,
+  createGitVisualization(
     localFileTreeData,
-    null,
-    true,
-    "local",
-    delayOffset,
-    0.7
-  );
-
-  createFileTree(
-    group,
     remoteFileTreeData,
-    null,
-    true,
-    "remote",
-    delayOffset,
-    0.7
-  );
-
-  if (gitMethods.getLocalInitialCommit()) {
-    createCommitTree(
-      group,
-      localCommitTreeData,
-      gitMethods.getLocalCurrBranch(),
-      "local-commit",
-      delayOffset,
-      circleRadius,
-      0.7
-    );
-  }
-
-  createCommitTree(
-    group,
+    localCommitTreeData,
     remoteCommitTreeData,
-    gitMethods.getRemoteCurrBranch(),
-    "remote-commit",
+    localBranchData,
+    remoteBranchData,
+    group,
     delayOffset,
-    circleRadius,
-    0.7
+    scale
   );
 }
 
@@ -405,48 +380,28 @@ const createFileLinks = (svgGroup, data, label, delayOffset) =>
 const createCommitTree = (
   svgGroup,
   data,
-  currBranch,
+  branches,
   label,
   delayOffset,
-  radius,
-  rectangleScale
+  scale
 ) => {
-  const headCommitId = currBranch.commit.id;
-
-  createCommitCircles(svgGroup, data, label, delayOffset, radius, headCommitId);
+  createCommitCircles(svgGroup, data, label, delayOffset, circleRadius * scale);
 
   createCommitLinks(svgGroup, data, label, delayOffset);
-
-  const branches = data.flatMap((commit) =>
-    commit.data.branches.map((branch, index) => ({
-      ...branch,
-      x: commit.x,
-      y: commit.y,
-      index: index,
-    }))
-  );
 
   createBranchRectangles(
     svgGroup,
     branches,
     label,
     delayOffset,
-    rectangleDimensions.width * rectangleScale,
-    rectangleDimensions.height * rectangleScale,
-    "0.7rem",
-    radius,
-    currBranch.id
+    rectangleDimensions.width * scale,
+    rectangleDimensions.height * scale,
+    scale + "rem",
+    circleRadius * scale
   );
 };
 
-const createCommitCircles = (
-  svgGroup,
-  data,
-  label,
-  delayOffset,
-  radius,
-  headCommitId
-) =>
+const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
   svgGroup
     .selectAll(".node-" + label)
     .data(data, function (d) {
@@ -469,9 +424,7 @@ const createCommitCircles = (
           .attr("x", -radius)
           .attr("y", -radius)
           .style("fill", (d) => {
-            return d.data.id === headCommitId
-              ? "purple"
-              : colors.file.background;
+            return d.isHead ? "purple" : colors.file.background;
           })
           .attr("stroke", "black");
 
@@ -497,9 +450,7 @@ const createCommitCircles = (
           })
           .select("circle")
           .style("fill", (d) => {
-            return d.data.id === headCommitId
-              ? "purple"
-              : colors.file.background;
+            return d.isHead ? "purple" : colors.file.background;
           });
       },
       function (exit) {
@@ -614,9 +565,7 @@ const createBranchRectangles = (
           .attr("x", -width / 2)
           .attr("y", -height / 2)
           .style("fill", (d) => {
-            return d.id === currBranchId
-              ? "purple"
-              : colors.directory.background;
+            return d.isCurrBranch ? "purple" : colors.directory.background;
           })
           .attr("stroke", "black")
           .attr("rx", 5)
@@ -662,7 +611,7 @@ const createBranchRectangles = (
           });
 
         node.select("rect").style("fill", (d) => {
-          return d.id === currBranchId ? "purple" : colors.directory.background;
+          return d.isCurrBranch ? "purple" : colors.directory.background;
         });
 
         return node;
@@ -715,6 +664,7 @@ const getFileColor = (id, currDirId, gitState, isDirectory, colorGit) => {
 
 const createCommitTreeData = (
   initialCommit,
+  currBranch,
   x,
   y,
   width,
@@ -750,6 +700,7 @@ const createCommitTreeData = (
     ...commit,
     x: (useDesiredGap ? commit.depth * desiredGap : commit.y) + xOffset,
     y: commit.x + yOffset,
+    isHead: currBranch.commit.id === commit.data.id,
     parent: commit.parent
       ? {
           ...commit.parent,
@@ -762,6 +713,17 @@ const createCommitTreeData = (
       : null,
   }));
 };
+
+const createBranchData = (commits, currBranchId) =>
+  commits.flatMap((commit) =>
+    commit.data.branches.map((branch, index) => ({
+      ...branch,
+      x: commit.x,
+      y: commit.y,
+      index: index,
+      isCurrBranch: branch.id === currBranchId,
+    }))
+  );
 
 const createFileTreeData = (
   directory,
@@ -807,6 +769,8 @@ const createGitVisualizationData = (
   remoteHomeDir,
   localInitialCommit,
   remoteInitialCommit,
+  localCurrBranch,
+  remoteCurrBranch,
   width,
   height,
   padding,
@@ -836,6 +800,7 @@ const createGitVisualizationData = (
 
   const localCommitTreeData = createCommitTreeData(
     localInitialCommit,
+    localCurrBranch,
     0,
     height / 2,
     width / 2,
@@ -847,6 +812,7 @@ const createGitVisualizationData = (
 
   const remoteCommitTreeData = createCommitTreeData(
     remoteInitialCommit,
+    remoteCurrBranch,
     width / 2,
     height / 2,
     width / 2,
@@ -856,12 +822,74 @@ const createGitVisualizationData = (
     scale
   );
 
+  const localBranchData = createBranchData(
+    localCommitTreeData,
+    localCurrBranch.id
+  );
+
+  const remoteBranchData = createBranchData(
+    remoteCommitTreeData,
+    remoteCurrBranch.id
+  );
+
   return {
     localFileTreeData,
     remoteFileTreeData,
     localCommitTreeData,
     remoteCommitTreeData,
+    localBranchData,
+    remoteBranchData,
   };
+};
+
+const createGitVisualization = (
+  localFileTreeData,
+  remoteFileTreeData,
+  localCommitTreeData,
+  remoteCommitTreeData,
+  localBranchData,
+  remoteBranchData,
+  svgGroup,
+  delayOffset,
+  scale
+) => {
+  createFileTree(
+    svgGroup,
+    localFileTreeData,
+    null,
+    true,
+    "local",
+    delayOffset,
+    scale
+  );
+
+  createFileTree(
+    svgGroup,
+    remoteFileTreeData,
+    null,
+    true,
+    "remote",
+    delayOffset,
+    scale
+  );
+
+  createCommitTree(
+    svgGroup,
+    localCommitTreeData,
+    localBranchData,
+    "local-commit",
+    delayOffset,
+    scale
+  );
+
+  createCommitTree(
+    svgGroup,
+    remoteCommitTreeData,
+    remoteBranchData,
+    "remote-commit",
+    delayOffset,
+    scale
+  );
 };
 
 export {
