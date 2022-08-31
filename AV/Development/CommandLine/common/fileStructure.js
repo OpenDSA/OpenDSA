@@ -58,6 +58,10 @@ function renderGitVisualization(localHomeDir, gitMethods, width, height, id) {
     gitMethods
   );
 
+  createVerticalLine(svgData.group, svgData.width / 2, svgData.height);
+  createText(svgData.group, "Local", 2, 10, 1);
+  createText(svgData.group, "Remote", svgData.width / 2 + 4, 10, 1);
+
   return svgData;
 }
 
@@ -118,21 +122,18 @@ function updateFileStructureVisualization(
 ) {
   const svgGroup = svgData.group;
 
-  createFileTree(
-    svgGroup,
+  const data = createFileTreeData(
     homeDir,
-    currDirId,
-    false,
-    "",
+    0,
+    0,
     svgData.width,
     svgData.height,
-    0,
-    0,
-    delayOffset,
-    1,
     5,
-    5
+    5,
+    1
   );
+
+  createFileTree(svgGroup, data, currDirId, false, "", delayOffset, 1);
 }
 
 function updateGitVisualization(
@@ -144,105 +145,76 @@ function updateGitVisualization(
 ) {
   const { group, width, height } = svgData;
 
-  createVerticalLine(group, width / 2, height);
+  const rectangleScale = 0.7;
 
-  createText(group, "Local", 2, 10, 1);
-
-  createText(group, "Remote", width / 2 + 4, 10, 1);
-
-  createFileTree(
-    group,
+  const {
+    localFileTreeData,
+    remoteFileTreeData,
+    localCommitTreeData,
+    remoteCommitTreeData,
+  } = createGitVisualizationData(
     localHomeDir,
-    null,
-    true,
-    "local",
-    width / 2,
-    height / 2,
-    0,
-    0,
-    delayOffset,
-    0.7,
+    gitMethods.getRemoteHomeDir(),
+    gitMethods.getLocalInitialCommit(),
+    gitMethods.getRemoteInitialCommit(),
+    width,
+    height,
     5,
-    5
+    rectangleScale
   );
 
   createFileTree(
     group,
-    gitMethods.getRemoteHomeDir(),
+    localFileTreeData,
+    null,
+    true,
+    "local",
+    delayOffset,
+    0.7
+  );
+
+  createFileTree(
+    group,
+    remoteFileTreeData,
     null,
     true,
     "remote",
-    width / 2,
-    height / 2,
-    width / 2,
-    0,
     delayOffset,
-    0.7,
-    5,
-    5
+    0.7
   );
 
   if (gitMethods.getLocalInitialCommit()) {
     createCommitTree(
       group,
-      gitMethods.getLocalInitialCommit(),
+      localCommitTreeData,
       gitMethods.getLocalCurrBranch(),
       "local-commit",
-      width / 2,
-      height / 2,
-      0,
-      height / 2,
       delayOffset,
       circleRadius,
-      0.7,
-      5,
-      5
+      0.7
     );
   }
 
   createCommitTree(
     group,
-    gitMethods.getRemoteInitialCommit(),
+    remoteCommitTreeData,
     gitMethods.getRemoteCurrBranch(),
     "remote-commit",
-    width / 2,
-    height / 2,
-    width / 2,
-    height / 2,
     delayOffset,
     circleRadius,
-    0.7,
-    5,
-    5
+    0.7
   );
 }
 
 const createFileTree = (
   svgGroup,
-  directory,
+  data,
   currDirId,
   colorGit,
   label,
-  width,
-  height,
-  x,
-  y,
   delayOffset,
-  fileScale,
-  paddingX,
-  paddingY
+  fileScale
 ) => {
-  const data = createFileTreeData(
-    directory,
-    x,
-    y,
-    width,
-    height,
-    paddingX,
-    paddingY,
-    fileScale
-  );
-
   // adds the nodes
   const nodes = createFileRectangles(
     svgGroup,
@@ -432,30 +404,13 @@ const createFileLinks = (svgGroup, data, label, delayOffset) =>
 
 const createCommitTree = (
   svgGroup,
-  initialCommit,
+  data,
   currBranch,
   label,
-  width,
-  height,
-  x,
-  y,
   delayOffset,
   radius,
-  rectangleScale,
-  paddingX,
-  paddingY
+  rectangleScale
 ) => {
-  const data = createCommitTreeData(
-    initialCommit,
-    x,
-    y,
-    width,
-    height,
-    paddingX,
-    paddingY,
-    rectangleScale
-  );
-
   const headCommitId = currBranch.commit.id;
 
   createCommitCircles(svgGroup, data, label, delayOffset, radius, headCommitId);
@@ -845,6 +800,68 @@ const createFileTreeData = (
         }
       : null,
   }));
+};
+
+const createGitVisualizationData = (
+  localHomeDir,
+  remoteHomeDir,
+  localInitialCommit,
+  remoteInitialCommit,
+  width,
+  height,
+  padding,
+  scale
+) => {
+  const localFileTreeData = createFileTreeData(
+    localHomeDir,
+    0,
+    0,
+    width / 2,
+    height / 2,
+    padding,
+    padding,
+    scale
+  );
+
+  const remoteFileTreeData = createFileTreeData(
+    remoteHomeDir,
+    width / 2,
+    0,
+    width / 2,
+    height / 2,
+    padding,
+    padding,
+    scale
+  );
+
+  const localCommitTreeData = createCommitTreeData(
+    localInitialCommit,
+    0,
+    height / 2,
+    width / 2,
+    height / 2,
+    padding,
+    padding,
+    scale
+  );
+
+  const remoteCommitTreeData = createCommitTreeData(
+    remoteInitialCommit,
+    width / 2,
+    height / 2,
+    width / 2,
+    height / 2,
+    padding,
+    padding,
+    scale
+  );
+
+  return {
+    localFileTreeData,
+    remoteFileTreeData,
+    localCommitTreeData,
+    remoteCommitTreeData,
+  };
 };
 
 export {
