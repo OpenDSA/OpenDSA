@@ -13,12 +13,12 @@ const handle_ls =
     gitMethods
   ) =>
   (args) => {
-    let output = "";
+    let fileNames = [];
 
     getCurrDir().contents.forEach((content) => {
       const contentName =
         content.name + (content instanceof Directory ? "/" : "");
-      output += `<p>${contentName}</p>`;
+      fileNames.push(contentName);
 
       highlightNode(
         getSvgData().group,
@@ -31,7 +31,7 @@ const handle_ls =
       );
     });
 
-    return output;
+    return `<div class="ls-files"><p>${fileNames.join("</p><p>")}</p></div>`;
   };
 
 const handle_pwd =

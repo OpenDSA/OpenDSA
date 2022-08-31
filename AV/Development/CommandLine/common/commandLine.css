@@ -120,6 +120,15 @@
   stroke-width: 2px;
 }
 
+.ls-files {
+  padding-bottom: 1rem;
+}
+
+.ls-files p {
+  padding: 0;
+  margin: 0;
+}
+
 .git-status {
   display: flex;
   flex-direction: column;

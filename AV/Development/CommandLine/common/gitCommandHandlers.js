@@ -147,6 +147,7 @@ const handle_commit =
     gitMethods
   ) =>
   (args) => {
+    //todo make is so you can commit certain files
     const files = [
       ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
       ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.MODIFIED),
