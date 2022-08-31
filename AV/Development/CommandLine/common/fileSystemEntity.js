@@ -174,6 +174,10 @@ class File extends FileSystemEntity {
     };
   }
 
+  getByState(gitStates, fileStates) {
+    return this.isState(gitStates, fileStates) ? [this] : [];
+  }
+
   getStateString() {
     return this.fileState;
   }

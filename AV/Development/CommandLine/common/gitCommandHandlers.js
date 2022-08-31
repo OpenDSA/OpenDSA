@@ -114,11 +114,11 @@ const handle_restore =
           fileSystemEntity
             .getByState(GIT_STATE.CHANGED, FILE_STATE.DELETED)
             .forEach((entity) => entity.setNotDeletedDeep());
-          //TODO restore new files
+
           fileSystemEntity.setStateConditional(
             GIT_STATE.CHANGED,
             GIT_STATE.COMMITTED,
-            null,
+            [FILE_STATE.MODIFIED, FILE_STATE.DELETED],
             FILE_STATE.UNCHANGED
           );
         }
