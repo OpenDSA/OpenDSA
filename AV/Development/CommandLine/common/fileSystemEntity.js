@@ -288,6 +288,12 @@ class Directory extends FileSystemEntity {
     }
   }
 
+  insertAll(fileSystemEntities) {
+    fileSystemEntities.forEach((fileSystemEntity) =>
+      this.insert(fileSystemEntity)
+    );
+  }
+
   find(name) {
     if (name === ".") {
       return this;
