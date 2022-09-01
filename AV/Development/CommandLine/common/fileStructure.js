@@ -1,5 +1,5 @@
 import { Directory, File } from "./fileSystemEntity.js";
-import { GIT_STATE } from "./gitStatuses.js";
+import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 
@@ -141,7 +141,9 @@ function updateGitVisualization(
   localHomeDir,
   delayOffset,
   currDirId,
-  gitMethods
+  gitMethods,
+  commit,
+  push
 ) {
   const { group, width, height } = svgData;
 
@@ -168,6 +170,19 @@ function updateGitVisualization(
     scale
   );
 
+  if (commit) {
+    visualizeCommitCreation(
+      group,
+      commit,
+      localFileTreeData,
+      localCommitTreeData,
+      width,
+      height
+    );
+  }
+
+  if (push) {
+  }
   createGitVisualization(
     localFileTreeData,
     remoteFileTreeData,
@@ -431,7 +446,7 @@ const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
         nodes
           .transition()
           .duration(durations.nodes.enter)
-          .delay(delays.nodes.enter + delayOffset)
+          .delay(delays.nodes.enter + delayOffset + 250)
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1);
 
@@ -891,6 +906,133 @@ const createGitVisualization = (
     scale
   );
 };
+
+function visualizeCommitCreation(
+  svgGroup,
+  commit,
+  fileTreeData,
+  commitTreeData
+) {
+  //create a rectangle for each file
+  //transition from filetreedata location to committreedatalocation
+  const rectangleWidth = 0.7 * rectangleDimensions.width;
+  const rectangleHeight = 0.7 * rectangleDimensions.height;
+
+  const existingCommit = commitTreeData.find(
+    (value) => value.data.gitId === commit.gitId
+  );
+
+  const files = commit.files.flatMap((file) => file.flatten());
+
+  //TODO maybe add animation for deleted
+  const filesData = files
+    .filter((file) => file.fileState !== FILE_STATE.DELETED)
+    .map((file) => {
+      const existingFile = fileTreeData.find(
+        (value) => value.data.gitId === file.gitId
+      );
+      return {
+        ...file,
+        startX: existingFile.x,
+        startY: existingFile.y,
+        endX: existingCommit.x,
+        endY: existingCommit.y,
+        isDirectory: file instanceof Directory,
+      };
+    });
+
+  return svgGroup
+    .selectAll(".test-file")
+    .data(filesData, function (d) {
+      return d.id;
+    })
+    .join(function (enter) {
+      const nodes = enter
+        .append("g")
+        .attr("class", "test-file")
+        .attr("transform", function (d) {
+          return "translate(" + d.startX + "," + d.startY + ")";
+        });
+      // .style("fill-opacity", 1e-6)
+      // .style("stroke-opacity", 1e-6);
+
+      nodes
+        .append("rect")
+        .attr("width", rectangleWidth)
+        .attr("height", rectangleHeight)
+        .attr("x", -rectangleWidth / 2)
+        .attr("y", -rectangleHeight / 2)
+        .style("fill", (d) => {
+          return d.isDirectory
+            ? colors.directory.background
+            : colors.file.background;
+        })
+        .attr("stroke", "black")
+        .attr("rx", 5)
+        .attr("ry", 5);
+
+      nodes
+        .append("text")
+        .attr("dy", ".35em")
+        .attr("font-size", "0.7rem")
+        .style("fill", (d) => {
+          return d.isDirectory ? colors.directory.text : colors.file.text;
+        })
+        .style("text-anchor", "middle")
+        .text(function (d) {
+          return d.name;
+        });
+
+      nodes
+        .transition()
+        .duration(durations.nodes.enter)
+        .delay(0)
+        .attr("transform", function (d) {
+          return "translate(" + d.endX + "," + d.endY + ")";
+        })
+        .transition()
+        .duration(1000)
+        .delay(0)
+        .style("fill-opacity", 1e-6)
+        .style("stroke-opacity", 1e-6);
+      return nodes;
+    });
+  //   function (update) {
+  //     const node = update
+  //       .attr("y", 0)
+  //       .style("fill-opacity", 1)
+  //       .style("stroke-opacity", 1)
+  //       .transition()
+  //       .duration(durations.nodes.update)
+  //       .delay(delays.nodes.update + delayOffset)
+  //       .attr("transform", function (d) {
+  //         return "translate(" + d.x + "," + d.y + ")";
+  //       });
+
+  //     node.select("rect").style("fill", (d) => {
+  //       return getFileColor(
+  //         d.data.id,
+  //         currDirId,
+  //         d.data.gitState,
+  //         d.data.isDirectory,
+  //         colorGit
+  //       );
+  //     });
+  //     // node.select("text").style("fill", colors.directory.text);
+
+  //     return node;
+  //   },
+  //   function (exit) {
+  //     return exit
+  //       .transition()
+  //       .duration(durations.nodes.exit)
+  //       .delay(delays.nodes.exit + delayOffset)
+  //       .style("fill-opacity", 1e-6)
+  //       .style("stroke-opacity", 1e-6)
+  //       .remove();
+  //   }
+  // );
+}
 
 export {
   renderFileStructureVisualization,

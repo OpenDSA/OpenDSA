@@ -15,21 +15,25 @@ const handle_ls =
   (args) => {
     let fileNames = [];
 
-    getCurrDir().contents.forEach((content) => {
-      const contentName =
-        content.name + (content instanceof Directory ? "/" : "");
-      fileNames.push(contentName);
+    getCurrDir()
+      .contents.filter((content) => !content.getIsDeleted())
+      .forEach((content) => {
+        const contentName =
+          content.name + (content instanceof Directory ? "/" : "");
+        fileNames.push(contentName);
 
-      highlightNode(
-        getSvgData().group,
-        content.id,
-        colors.highlight.background,
-        content instanceof Directory
-          ? colors.directory.background
-          : colors.file.background,
-        content instanceof Directory ? colors.directory.text : colors.file.text
-      );
-    });
+        highlightNode(
+          getSvgData().group,
+          content.id,
+          colors.highlight.background,
+          content instanceof Directory
+            ? colors.directory.background
+            : colors.file.background,
+          content instanceof Directory
+            ? colors.directory.text
+            : colors.file.text
+        );
+      });
 
     return `<div class="ls-files"><p>${fileNames.join("</p><p>")}</p></div>`;
   };
@@ -194,7 +198,10 @@ const handle_cp =
         const src = srcDir.find(srcName);
         const dst = dstDir.find(dstName);
 
-        if (dst instanceof Directory) {
+        //temp fix for special case
+        if ((dstName === "~" || dstName === "/") && dstPath === "") {
+          getHomeDir().insert(src.copy());
+        } else if (dst instanceof Directory) {
           dst.insert(src.copy());
         } else {
           dstDir.insert(new File(dstName));
@@ -233,7 +240,11 @@ const handle_mv =
       if (srcDir instanceof Directory && dstDir instanceof Directory) {
         const src = srcDir.find(srcName);
         const dst = dstDir.find(dstName);
-        if (dst instanceof Directory) {
+
+        //temp fix for special case
+        if ((dstName === "~" || dstName === "/") && dstPath === "") {
+          getHomeDir().insert(src.copy());
+        } else if (dst instanceof Directory) {
           dst.insert(src.copy());
         } else {
           dstDir.insert(new File(dstName));

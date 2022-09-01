@@ -110,6 +110,7 @@ class File extends FileSystemEntity {
     return {
       name: this.name,
       id: this.id,
+      gitId: this.gitId,
       isDirectory: false,
       fileState: this.fileState,
       gitState: this.gitState,
@@ -185,6 +186,10 @@ class File extends FileSystemEntity {
   getState() {
     return { gitState: this.gitState, fileState: this.fileState };
   }
+
+  flatten() {
+    return this;
+  }
 }
 
 class Directory extends FileSystemEntity {
@@ -249,6 +254,7 @@ class Directory extends FileSystemEntity {
     const newEntity = {
       name: this.name,
       id: this.id,
+      gitId: this.gitId,
       isDirectory: true,
     };
 
@@ -518,9 +524,16 @@ class Directory extends FileSystemEntity {
       }
     });
   }
+
+  flatten() {
+    return [this, ...this.contents.flatMap((content) => content.flatten())];
+  }
 }
 
 function splitPath(path) {
+  if (path === "/") {
+    return ["/", ""];
+  }
   let pathNames = path.split("/");
   const lastName = pathNames.splice(-1)[0];
   return [lastName, pathNames.join("/")];

@@ -168,7 +168,8 @@ const handle_commit =
         getHomeDir(),
         -1 * delays.paths.update,
         null,
-        gitMethods
+        gitMethods,
+        commit
       );
 
       return "";
