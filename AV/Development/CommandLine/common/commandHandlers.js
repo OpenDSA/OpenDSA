@@ -281,21 +281,25 @@ const handle_rm =
       if (srcDir instanceof Directory) {
         const toRemove = srcDir.find(srcName);
 
-        if (toRemove instanceof Directory && args[0] !== "-r") {
-          return "Cannot remove directory without -r";
+        if (toRemove) {
+          if (toRemove instanceof Directory && args[0] !== "-r") {
+            return "Cannot remove directory without -r";
+          }
+
+          srcDir.remove(toRemove.id);
+
+          updateVisualization(
+            getSvgData(),
+            getHomeDir(),
+            0,
+            getCurrDir().id,
+            gitMethods
+          );
+
+          return "";
         }
-
-        srcDir.remove(toRemove.id);
-
-        updateVisualization(
-          getSvgData(),
-          getHomeDir(),
-          0,
-          getCurrDir().id,
-          gitMethods
-        );
       }
-      return "";
+      return `${args[args.length - 1]} does not exist`;
     }
   };
 
@@ -325,12 +329,13 @@ const handle_rmdir =
               getCurrDir().id,
               gitMethods
             );
+            return "";
           } else {
             return "Not empty";
           }
         }
       }
-      return "";
+      return `${args[0]} not found`;
     }
   };
 

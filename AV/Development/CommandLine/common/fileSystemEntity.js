@@ -57,6 +57,9 @@ class FileSystemEntity {
           (content) => content.name === name
         );
       }
+      if (currentDir && currentDir.getIsDeleted()) {
+        currentDir = null;
+      }
       return Boolean(currentDir);
     });
 
@@ -266,7 +269,7 @@ class Directory extends FileSystemEntity {
   }
 
   insert(fileSystemEntity) {
-    const existingFile = this.find(fileSystemEntity.name);
+    const existingFile = this.findWithDeleted(fileSystemEntity.name);
     if (existingFile) {
       if (existingFile.getIsDeleted()) {
         existingFile.setNotDeleted();
@@ -294,6 +297,17 @@ class Directory extends FileSystemEntity {
     return this.contents.find(
       (fileSystemEntity) =>
         fileSystemEntity.name === name && !fileSystemEntity.getIsDeleted()
+    );
+  }
+
+  findWithDeleted(name) {
+    if (name === ".") {
+      return this;
+    } else if (name === "..") {
+      return this.parent;
+    }
+    return this.contents.find(
+      (fileSystemEntity) => fileSystemEntity.name === name
     );
   }
 
