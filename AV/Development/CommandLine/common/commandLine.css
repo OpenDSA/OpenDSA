@@ -22,6 +22,11 @@
   margin-bottom: 1rem;
 }
 
+#success-message p {
+  font-size: larger;
+  font-weight: bold;
+}
+
 .hidden {
   opacity: 0;
 }
