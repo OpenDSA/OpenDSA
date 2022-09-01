@@ -5,6 +5,7 @@ const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 
 const rectangleDimensions = { width: 76, height: 30 };
 const circleRadius = 21;
+const defaultFontSize = 0.9;
 
 const durations = {
   nodes: { enter: 1000, exit: 1000, update: 2000 },
@@ -239,7 +240,7 @@ const createFileTree = (
     delayOffset,
     rectangleDimensions.width * fileScale,
     rectangleDimensions.height * fileScale,
-    0.9 * fileScale + "rem",
+    defaultFontSize * fileScale + "rem",
     currDirId,
     colorGit
   );
@@ -320,7 +321,6 @@ const createFileRectangles = (
         nodes
           .transition()
           .duration(function (d) {
-            console.log("d", d);
             return durations.nodes.enter;
           })
           .delay(delays.nodes.enter + delayOffset)
@@ -453,7 +453,7 @@ const createCommitTree = (
     delayOffset,
     rectangleDimensions.width * scale,
     rectangleDimensions.height * scale,
-    scale + "rem",
+    defaultFontSize * scale + "rem",
     circleRadius * scale
   );
 };
@@ -1033,7 +1033,7 @@ const showFilesMoving = (svgGroup, files, scale, className) => {
       nodes
         .append("text")
         .attr("dy", ".35em")
-        .attr("font-size", scale + "rem")
+        .attr("font-size", scale * defaultFontSize + "rem")
         .style("fill", (d) => {
           return d.isDirectory ? colors.directory.text : colors.file.text;
         })
@@ -1104,13 +1104,25 @@ const visualizePush = (
       "data.gitId"
     );
 
-    visualizeModifiedFiles(push.commitPath, svgGroup, scale);
+    visualizeModifiedFiles(
+      localFileTreeData,
+      remoteFileTreeData,
+      push.commitPath,
+      svgGroup,
+      scale
+    );
   }
 
   return { remoteFileTreeData, remoteBranchData, remoteCommitTreeData };
 };
 
-const visualizeModifiedFiles = (commitPath, svgGroup, scale) => {
+const visualizeModifiedFiles = (
+  localFileTreeData,
+  remoteFileTreeData,
+  commitPath,
+  svgGroup,
+  scale
+) => {
   const modifiedFiles = commitPath
     .filter((value) => value.action !== "nothing")
     .flatMap((value) => value.commit.files)
@@ -1133,6 +1145,7 @@ const visualizeModifiedFiles = (commitPath, svgGroup, scale) => {
         startY: localFile.y,
         endX: remoteFile.x,
         endY: remoteFile.y,
+        isDirectory: file instanceof Directory,
       };
     });
   showFilesMoving(svgGroup, modifiedFiles, scale, "push-files");

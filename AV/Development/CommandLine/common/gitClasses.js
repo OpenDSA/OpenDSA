@@ -72,6 +72,10 @@ class Commit {
       return !curr;
     });
 
+    if (index === -1) {
+      return curr;
+    }
+
     commits.slice(index).forEach((commit) => {
       prev = prev.insertChild(commit);
     });
