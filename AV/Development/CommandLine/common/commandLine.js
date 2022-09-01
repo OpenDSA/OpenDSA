@@ -1,10 +1,16 @@
 const createClickedDown =
-  (inputId, historyId, commandsMap, awardCreditHandler) => (event) => {
+  (inputId, historyId, commandsMap, awardCreditHandler, disabledCommands) =>
+  (event) => {
     const keycode = event.keyCode ? event.keyCode : event.which;
     if (keycode == "13") {
       const input = $(inputId).val();
       // history.push(input);
-      const output = callCommand(input, commandsMap, awardCreditHandler);
+      const output = callCommand(
+        input,
+        commandsMap,
+        awardCreditHandler,
+        disabledCommands
+      );
 
       $(inputId).val("");
 
@@ -16,7 +22,7 @@ const createClickedDown =
     }
   };
 
-function callCommand(input, commandsMap, awardCreditHandler) {
+function callCommand(input, commandsMap, awardCreditHandler, disabledCommands) {
   const values = input.split(/\s+/);
 
   const command = values[0];
@@ -25,7 +31,7 @@ function callCommand(input, commandsMap, awardCreditHandler) {
     return "";
   }
 
-  if (commandsMap[command]) {
+  if (commandsMap[command] && !disabledCommands.includes(command)) {
     const args = values.slice(1);
     const output = commandsMap[command](args);
 
@@ -43,13 +49,15 @@ function initializeCommandLine(
   inputId,
   historyId,
   commandsMap,
-  awardCreditHandler
+  awardCreditHandler,
+  disabledCommands
 ) {
   const clickedDown = createClickedDown(
     inputId,
     historyId,
     commandsMap,
-    awardCreditHandler
+    awardCreditHandler,
+    disabledCommands ? disabledCommands : []
   );
   $(inputId).keypress(clickedDown);
 }

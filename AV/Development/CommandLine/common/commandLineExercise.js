@@ -127,7 +127,8 @@ function initializeCommandLineExercise(
     "#arrayValues",
     "#history",
     commandsMap,
-    awardCreditHandler
+    awardCreditHandler,
+    ["git", "vi"]
   );
 }
 
