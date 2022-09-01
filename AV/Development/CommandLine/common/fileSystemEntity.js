@@ -511,7 +511,8 @@ class Directory extends FileSystemEntity {
   }
 
   updateToCommit(srcCommit, dstCommit) {
-    srcCommit.getPathToCommit(dstCommit).forEach((value) => {
+    const path = srcCommit.getPathToCommit(dstCommit);
+    path.forEach((value) => {
       switch (value.action) {
         case "add":
           this.applyCommit(value.commit);
@@ -523,6 +524,7 @@ class Directory extends FileSystemEntity {
           break;
       }
     });
+    return path;
   }
 
   flatten() {

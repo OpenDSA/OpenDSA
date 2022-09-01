@@ -169,7 +169,7 @@ const handle_commit =
         -1 * delays.paths.update,
         null,
         gitMethods,
-        commit
+        { commit }
       );
 
       return "";
@@ -229,13 +229,25 @@ const handle_push =
     }
     remoteBranch.switchCommit(lastRemoteCommit);
 
+    let commitPath = null;
     if (currBranch.gitId === gitMethods.getRemoteCurrBranch().gitId) {
-      gitMethods
+      commitPath = gitMethods
         .getRemoteHomeDir()
         .updateToCommit(remoteBranchCommit, lastRemoteCommit);
     }
 
-    updateVisualization(getSvgData(), getHomeDir(), 0, null, gitMethods);
+    updateVisualization(
+      getSvgData(),
+      getHomeDir(),
+      -1 * delays.paths.update,
+      null,
+      gitMethods,
+      {
+        push: {
+          commitPath,
+        },
+      }
+    );
     return "";
   };
 
