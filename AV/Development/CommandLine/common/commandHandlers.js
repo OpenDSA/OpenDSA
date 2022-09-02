@@ -187,6 +187,15 @@ const handle_cp =
     gitMethods
   ) =>
   (args) => {
+    let isRecursive = false;
+    if (args.length === 3) {
+      if (args.includes("-r")) {
+        isRecursive = true;
+        args = args.filter((arg) => arg !== "-r");
+      } else {
+        return "invalid args";
+      }
+    }
     if (args.length === 2) {
       const [srcName, srcPath] = splitPath(args[0]);
       const [dstName, dstPath] = splitPath(args[1]);
@@ -196,6 +205,13 @@ const handle_cp =
 
       if (srcDir instanceof Directory && dstDir instanceof Directory) {
         const src = srcDir.find(srcName);
+        if (!src) {
+          return `${args[0]} not found`;
+        }
+        if (src instanceof Directory && !isRecursive) {
+          return "Cannot copy directory without -r";
+        }
+
         const dst = dstDir.find(dstName);
 
         //temp fix for special case
@@ -204,7 +220,12 @@ const handle_cp =
         } else if (dst instanceof Directory) {
           dst.insert(src.copy());
         } else {
-          dstDir.insert(new File(dstName));
+          if (src instanceof Directory && dst instanceof File) {
+            return "Cannot overwrite file with directory";
+          }
+          const copy = src.copy();
+          copy.name = dstName;
+          dstDir.insert(copy);
         }
 
         updateVisualization(
@@ -239,6 +260,9 @@ const handle_mv =
 
       if (srcDir instanceof Directory && dstDir instanceof Directory) {
         const src = srcDir.find(srcName);
+        if (!src) {
+          return `${args[0]} not found`;
+        }
         const dst = dstDir.find(dstName);
 
         //temp fix for special case
@@ -247,7 +271,12 @@ const handle_mv =
         } else if (dst instanceof Directory) {
           dst.insert(src.copy());
         } else {
-          dstDir.insert(new File(dstName));
+          if (src instanceof Directory && dst instanceof File) {
+            return "Cannot overwrite file with directory";
+          }
+          const copy = src.copy();
+          copy.name = dstName;
+          dstDir.insert(copy);
         }
 
         srcDir.remove(src.id);
@@ -275,14 +304,23 @@ const handle_rm =
     gitMethods
   ) =>
   (args) => {
-    if (args.length === 1 || args.length === 2) {
+    let isRecursive = false;
+    if (args.length === 2) {
+      if (args.includes("-r")) {
+        isRecursive = true;
+        args = args.filter((arg) => arg !== "-r");
+      } else {
+        return "invalid args";
+      }
+    }
+    if (args.length === 1) {
       const [srcName, srcPath] = splitPath(args[args.length - 1]);
       const srcDir = getCurrDir().getChildByPath(srcPath);
       if (srcDir instanceof Directory) {
         const toRemove = srcDir.find(srcName);
 
         if (toRemove) {
-          if (toRemove instanceof Directory && args[0] !== "-r") {
+          if (toRemove instanceof Directory && !isRecursive) {
             return "Cannot remove directory without -r";
           }
 

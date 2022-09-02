@@ -52,6 +52,9 @@
     "Command Line - pwd": {
       "CommandLine/CommandLinePwd": {}
     },
+    "Command Line - ls": {
+      "CommandLine/CommandLineLs": {}
+    },
     "Command Line - cd": {
       "CommandLine/CommandLineCd": {}
     },
@@ -60,9 +63,6 @@
     },
     "Command Line - cd parent": {
       "CommandLine/CommandLineCdParent": {}
-    },
-    "Command Line - ls": {
-      "CommandLine/CommandLineLs": {}
     },
     "Command Line - touch": {
       "CommandLine/CommandLineTouch": {}
