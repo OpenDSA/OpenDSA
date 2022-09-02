@@ -37,7 +37,7 @@ $(document).ready(function () {
     {
       commandTitle: "rm [path]",
       commandDescription:
-        "The rm command removes the file at the location defined by [path].",
+        "The rm command removes the file at the location specified by [path].",
       challengeDescription: 'Remove the "snake.txt" file.',
     },
     handleAwardCredit,

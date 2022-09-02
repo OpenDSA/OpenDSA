@@ -52,9 +52,6 @@
     "Command Line - pwd": {
       "CommandLine/CommandLinePwd": {}
     },
-    "Command Line - ls": {
-      "CommandLine/CommandLineLs": {}
-    },
     "Command Line - cd": {
       "CommandLine/CommandLineCd": {}
     },
@@ -63,6 +60,9 @@
     },
     "Command Line - cd parent": {
       "CommandLine/CommandLineCdParent": {}
+    },
+    "Command Line - ls": {
+      "CommandLine/CommandLineLs": {}
     },
     "Command Line - touch": {
       "CommandLine/CommandLineTouch": {}
@@ -80,10 +80,19 @@
       "CommandLine/CommandLineRmdir": {}
     },
     "Command Line - mv": {
-      "CommandLine/CommandLineMvBug": {}
+      "CommandLine/CommandLineMv": {}
     },
-    "Git": {
-      "Development/Git": {}
+    "Command Line - cp": {
+      "CommandLine/CommandLineCp": {}
+    },
+    "Command Line - Challenge 1": {
+      "CommandLine/CommandLineChallenge1": {}
+    },
+    "Command Line - Challenge 2": {
+      "CommandLine/CommandLineChallenge2": {}
+    },
+    "Command Line - Challenge 3": {
+      "CommandLine/CommandLineChallenge3": {}
     }
   }
 }
