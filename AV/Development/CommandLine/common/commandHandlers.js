@@ -14,6 +14,8 @@ const missingRRemove = (path) =>
   `'${path}' is a directory. Cannot remove directory without -r`;
 const overwriteFileWithDir = `Cannot overwrite file with directory`;
 const notEmpty = (path) => `'${path}' is not empty`;
+const subdirectory = (src, dst) =>
+  `Cannot move '${src}' to subdirectory of itself '${dst}'`;
 
 const createOutputList = (lines) => {
   lines = lines.filter((line) => line !== "");
@@ -530,22 +532,33 @@ const copyHelper = (
       }
     }
 
+    if (shouldRemove && dstData.child === srcData.child) {
+      return "";
+    }
+
     const copy = srcData.child.copy();
+    let inserted = null;
     //temp fix for special case
     if (
       (dstData.childName === "~" || dstData.childName === "/") &&
       dstData.parentPath === ""
     ) {
-      getHomeDir().insert(copy);
+      inserted = getHomeDir().insert(copy);
     } else if (dstData.child instanceof Directory) {
-      dstData.child.insert(copy);
+      inserted = dstData.child.insert(copy);
     } else {
       copy.name = dstData.childName;
-      dstData.parent.insert(copy);
+      inserted = dstData.parent.insert(copy);
     }
 
     if (shouldRemove) {
-      srcData.parent.remove(srcData.child.id);
+      if (srcData.child.findById(copy.id)) {
+        dstData.parent.remove(copy.id);
+        return subdirectory(arg, args.slice(-1)[0]);
+      }
+      if (inserted) {
+        srcData.parent.remove(srcData.child.id);
+      }
     }
 
     return "";
