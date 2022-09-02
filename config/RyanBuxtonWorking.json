@@ -80,7 +80,7 @@
       "CommandLine/CommandLineRmdir": {}
     },
     "Command Line - mv": {
-      "CommandLine/CommandLineMv": {}
+      "CommandLine/CommandLineMvBug": {}
     },
     "Git": {
       "Development/Git": {}
