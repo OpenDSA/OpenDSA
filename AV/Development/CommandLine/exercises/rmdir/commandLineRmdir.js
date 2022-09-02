@@ -47,6 +47,7 @@ $(document).ready(function () {
     },
     handleAwardCredit,
     "rmdir",
-    initialFileStructure
+    initialFileStructure,
+    [3, 3]
   );
 });

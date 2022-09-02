@@ -15,10 +15,12 @@ const missingRRemove = (path) =>
 const overwriteFileWithDir = `Cannot overwrite file with directory`;
 const notEmpty = (path) => `'${path}' is not empty`;
 
-const createOutputList = (lines) =>
-  lines.length > 0
+const createOutputList = (lines) => {
+  lines = lines.filter((line) => line !== "");
+  return lines.length > 0
     ? `<div class="output-list"><p>${lines.join("</p><p>")}</p></div>`
     : "";
+};
 
 const handle_ls =
   (
@@ -158,26 +160,19 @@ const handle_mkdir =
       return notEnoughArgs;
     }
 
-    const results = args
-      .map((arg) => {
-        const [name, path] = splitPath(arg);
-        const dir = getCurrDir().getChildByPath(path);
+    const results = args.map((arg) => {
+      const { parent, childName, error } = followPath(arg, getCurrDir());
 
-        if (!(dir instanceof Directory)) {
-          return invalidPath(arg);
-        }
+      if (error) {
+        return error;
+      }
 
-        if (!name) {
-          return nameRequired(arg);
-        }
+      if (!parent.insert(new Directory(childName))) {
+        return duplicate(arg);
+      }
 
-        if (!dir.insert(new Directory(name))) {
-          return duplicate(arg);
-        }
-
-        return "";
-      })
-      .filter((result) => result !== "");
+      return "";
+    });
 
     updateVisualization(
       getSvgData(),
@@ -204,26 +199,19 @@ const handle_touch =
       return notEnoughArgs;
     }
 
-    const results = args
-      .map((arg) => {
-        const [name, path] = splitPath(arg);
-        const dir = getCurrDir().getChildByPath(path);
+    const results = args.map((arg) => {
+      const { parent, childName, error } = followPath(arg, getCurrDir());
 
-        if (!(dir instanceof Directory)) {
-          return invalidPath(arg);
-        }
+      if (error) {
+        return error;
+      }
 
-        if (!name) {
-          return nameRequired(arg);
-        }
+      if (!parent.insert(new File(childName))) {
+        return duplicate(arg);
+      }
 
-        if (!dir.insert(new File(name))) {
-          return duplicate(arg);
-        }
-
-        return "";
-      })
-      .filter((result) => result !== "");
+      return "";
+    });
 
     updateVisualization(
       getSvgData(),
@@ -246,64 +234,22 @@ const handle_cp =
     gitMethods
   ) =>
   (args) => {
+    const isRecursive = args.includes("-r");
+    if (isRecursive) {
+      args = args.filter((arg) => arg !== "-r");
+    }
+
     if (args.length < 2) {
       return notEnoughArgs;
     }
 
-    if (args.length > 3) {
-      return tooManyArgs;
-    }
-
-    let isRecursive = false;
-    if (args.length === 3) {
-      if (args.includes("-r")) {
-        isRecursive = true;
-        args = args.filter((arg) => arg !== "-r");
-      } else {
-        return tooManyArgs;
-      }
-    }
-
-    const [srcName, srcPath] = splitPath(args[0]);
-    const [dstName, dstPath] = splitPath(args[1]);
-
-    const srcDir = getCurrDir().getChildByPath(srcPath);
-    const dstDir = getCurrDir().getChildByPath(dstPath);
-
-    if (!(srcDir instanceof Directory)) {
-      return invalidPath(args[0]);
-    }
-
-    if (!(dstDir instanceof Directory)) {
-      return invalidPath(args[1]);
-    }
-
-    const src = srcDir.find(srcName);
-    const dst = dstDir.find(dstName);
-
-    if (!src) {
-      return invalidPath(args[0]);
-    }
-
-    if (src instanceof Directory) {
-      if (!isRecursive) {
-        return missingRCopy;
-      }
-      if (dst instanceof File) {
-        return overwriteFileWithDir;
-      }
-    }
-
-    const copy = src.copy();
-    //temp fix for special case
-    if ((dstName === "~" || dstName === "/") && dstPath === "") {
-      getHomeDir().insert(copy);
-    } else if (dst instanceof Directory) {
-      dst.insert(copy);
-    } else {
-      copy.name = dstName;
-      dstDir.insert(copy);
-    }
+    const results = copyHelper(
+      args,
+      getCurrDir,
+      getHomeDir,
+      isRecursive,
+      false
+    );
 
     updateVisualization(
       getSvgData(),
@@ -313,7 +259,7 @@ const handle_cp =
       gitMethods
     );
 
-    return "";
+    return createOutputList(results);
   };
 
 const handle_mv =
@@ -330,47 +276,7 @@ const handle_mv =
       return notEnoughArgs;
     }
 
-    if (args.length > 2) {
-      return tooManyArgs;
-    }
-
-    const [srcName, srcPath] = splitPath(args[0]);
-    const [dstName, dstPath] = splitPath(args[1]);
-
-    const srcDir = getCurrDir().getChildByPath(srcPath);
-    const dstDir = getCurrDir().getChildByPath(dstPath);
-
-    if (!(srcDir instanceof Directory)) {
-      return invalidPath(args[0]);
-    }
-
-    if (!(dstDir instanceof Directory)) {
-      return invalidPath(args[1]);
-    }
-
-    const src = srcDir.find(srcName);
-    const dst = dstDir.find(dstName);
-
-    if (!src) {
-      return invalidPath(args[0]);
-    }
-
-    if (src instanceof Directory && dst instanceof File) {
-      return overwriteFileWithDir;
-    }
-
-    const copy = src.copy();
-    //temp fix for special case
-    if ((dstName === "~" || dstName === "/") && dstPath === "") {
-      getHomeDir().insert(copy);
-    } else if (dst instanceof Directory) {
-      dst.insert(copy);
-    } else {
-      copy.name = dstName;
-      dstDir.insert(copy);
-    }
-
-    srcDir.remove(src.id);
+    const results = copyHelper(args, getCurrDir, getHomeDir, true, true);
 
     updateVisualization(
       getSvgData(),
@@ -380,7 +286,7 @@ const handle_mv =
       gitMethods
     );
 
-    return "";
+    return createOutputList(results);
   };
 
 const handle_rm =
@@ -393,45 +299,34 @@ const handle_rm =
     gitMethods
   ) =>
   (args) => {
+    const isRecursive = args.includes("-r");
+    if (isRecursive) {
+      args = args.filter((arg) => arg !== "-r");
+    }
+
     if (args.length < 1) {
       return notEnoughArgs;
     }
 
-    let isRecursive = false;
+    const results = args.map((arg) => {
+      const { parent, child, error } = followPath(arg, getCurrDir());
 
-    if (args.includes("-r")) {
-      isRecursive = true;
-      args = args.filter((arg) => arg !== "-r");
-    }
+      if (error) {
+        return error;
+      }
 
-    const results = args
-      .map((arg) => {
-        const [name, path] = splitPath(arg);
-        const dir = getCurrDir().getChildByPath(path);
+      if (!child) {
+        return invalidPath(arg);
+      }
 
-        if (!(dir instanceof Directory)) {
-          return invalidPath(arg);
-        }
+      if (child instanceof Directory && !isRecursive) {
+        return missingRRemove(arg);
+      }
 
-        if (!name) {
-          return nameRequired(arg);
-        }
+      parent.remove(child.id);
 
-        const toRemove = dir.find(name);
-
-        if (!toRemove) {
-          return invalidPath(arg);
-        }
-
-        if (toRemove instanceof Directory && !isRecursive) {
-          return missingRRemove(arg);
-        }
-
-        dir.remove(toRemove.id);
-
-        return "";
-      })
-      .filter((result) => result !== "");
+      return "";
+    });
 
     updateVisualization(
       getSvgData(),
@@ -458,38 +353,29 @@ const handle_rmdir =
       return notEnoughArgs;
     }
 
-    const results = args
-      .map((arg) => {
-        const [name, path] = splitPath(arg);
-        const dir = getCurrDir().getChildByPath(path);
+    const results = args.map((arg) => {
+      const { parent, child, error } = followPath(arg, getCurrDir());
 
-        if (!(dir instanceof Directory)) {
-          return invalidPath(arg);
-        }
+      if (error) {
+        return error;
+      }
 
-        if (!name) {
-          return nameRequired(arg);
-        }
+      if (!child) {
+        return invalidPath(arg);
+      }
 
-        const toRemove = dir.find(name);
+      if (!(child instanceof Directory)) {
+        return notADirectory(arg);
+      }
 
-        if (!toRemove) {
-          return invalidPath(arg);
-        }
+      if (child.contents.length > 0) {
+        return notEmpty(arg);
+      }
 
-        if (!(toRemove instanceof Directory)) {
-          return notADirectory(arg);
-        }
+      parent.remove(child.id);
 
-        if (toRemove.contents.length > 0) {
-          return notEmpty(arg);
-        }
-
-        dir.remove(toRemove.id);
-
-        return "";
-      })
-      .filter((result) => result !== "");
+      return "";
+    });
 
     updateVisualization(
       getSvgData(),
@@ -597,17 +483,75 @@ function createCommandsMap(
 //tail
 //ls -a
 
-const followPath = (path, dir) => {
+const followPath = (path, startDir) => {
   const [childName, parentPath] = splitPath(path);
-  const parentDir = dir.getChildByPath(parentPath);
+  const parent = startDir.getChildByPath(parentPath);
 
-  if (!(parentDir instanceof Directory)) {
-    return invalidPath(path);
+  if (!(parent instanceof Directory)) {
+    return {
+      error: invalidPath(path),
+    };
   }
 
-  const child = parentDir.find(childName);
+  const child = parent.find(childName);
 
-  return { child, parentDir, childName };
+  return { child, parent, childName, parentPath };
+};
+
+const copyHelper = (
+  args,
+  getCurrDir,
+  getHomeDir,
+  isRecursive,
+  shouldRemove
+) => {
+  const dstData = followPath(args.slice(-1)[0], getCurrDir());
+  if (dstData.error) {
+    return dstData.error;
+  }
+
+  const results = args.slice(0, -1).map((arg) => {
+    const srcData = followPath(arg, getCurrDir());
+
+    if (srcData.error) {
+      return srcData.error;
+    }
+
+    if (!srcData.child) {
+      return invalidPath(arg);
+    }
+
+    if (srcData.child instanceof Directory) {
+      if (!isRecursive) {
+        return missingRCopy;
+      }
+      if (dstData.child instanceof File) {
+        return overwriteFileWithDir;
+      }
+    }
+
+    const copy = srcData.child.copy();
+    //temp fix for special case
+    if (
+      (dstData.childName === "~" || dstData.childName === "/") &&
+      dstData.parentPath === ""
+    ) {
+      getHomeDir().insert(copy);
+    } else if (dstData.child instanceof Directory) {
+      dstData.child.insert(copy);
+    } else {
+      copy.name = dstData.childName;
+      dstData.parent.insert(copy);
+    }
+
+    if (shouldRemove) {
+      srcData.parent.remove(srcData.child.id);
+    }
+
+    return "";
+  });
+
+  return results;
 };
 
 export { createCommandsMap };

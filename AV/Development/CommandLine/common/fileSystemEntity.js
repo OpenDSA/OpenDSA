@@ -277,6 +277,12 @@ class Directory extends FileSystemEntity {
           (content) => content.id !== existingFile.id
         );
         this.contents.push(existingFile);
+
+        if (fileSystemEntity instanceof Directory) {
+          fileSystemEntity.contents.forEach((file) => {
+            existingFile.insert(file);
+          });
+        }
         return existingFile;
       } else {
         return null;
