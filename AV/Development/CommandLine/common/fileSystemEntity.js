@@ -556,6 +556,9 @@ function splitPath(path) {
   if (path === "/") {
     return ["/", ""];
   }
+  if (path.endsWith("/")) {
+    path = path.slice(0, -1);
+  }
   let pathNames = path.split("/");
   const lastName = pathNames.splice(-1)[0];
   return [lastName, pathNames.join("/")];

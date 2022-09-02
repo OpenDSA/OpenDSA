@@ -125,11 +125,11 @@
   stroke-width: 2px;
 }
 
-.ls-files {
+.output-list {
   padding-bottom: 1rem;
 }
 
-.ls-files p {
+.output-list p {
   padding: 0;
   margin: 0;
 }
