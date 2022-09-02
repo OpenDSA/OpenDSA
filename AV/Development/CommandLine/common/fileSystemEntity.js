@@ -562,6 +562,7 @@ function splitPath(path) {
   if (path === "/") {
     return ["/", ""];
   }
+  //TODO Think of better way to handle this
   if (path.endsWith("/")) {
     path = path.slice(0, -1);
   }

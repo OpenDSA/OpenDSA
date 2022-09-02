@@ -34,7 +34,7 @@ const handle_ls =
     gitMethods
   ) =>
   (args) => {
-    if (args.length > 2) {
+    if (args.length > 1) {
       return tooManyArgs;
     }
 

@@ -85,11 +85,14 @@
     "Command Line - cp": {
       "CommandLine/CommandLineCp": {}
     },
-    "Command Line - Challenge": {
-      "CommandLine/CommandLineChallenge": {}
+    "Command Line - Challenge 1": {
+      "CommandLine/CommandLineChallenge1": {}
     },
-    "Git": {
-      "Development/Git": {}
+    "Command Line - Challenge 2": {
+      "CommandLine/CommandLineChallenge2": {}
+    },
+    "Command Line - Challenge 3": {
+      "CommandLine/CommandLineChallenge3": {}
     }
   }
 }

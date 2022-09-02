@@ -118,10 +118,16 @@ function initializeCommandLineExercise(
   // }).observe(document.querySelector("#visualization-container"));
 
   const awardCreditHandler = {};
-  awardCreditHandler[awardCreditCommand] = handleAwardCredit(
-    getCurrDir,
-    getHomeDir
-  );
+  if (Array.isArray(awardCreditCommand)) {
+    awardCreditCommand.forEach((command) => {
+      awardCreditHandler[command] = handleAwardCredit(getCurrDir, getHomeDir);
+    });
+  } else {
+    awardCreditHandler[awardCreditCommand] = handleAwardCredit(
+      getCurrDir,
+      getHomeDir
+    );
+  }
 
   initializeCommandLine(
     "#arrayValues",
