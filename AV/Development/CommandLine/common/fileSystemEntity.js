@@ -558,19 +558,6 @@ class Directory extends FileSystemEntity {
   }
 }
 
-function splitPath(path) {
-  if (path === "/") {
-    return ["/", ""];
-  }
-  //TODO Think of better way to handle this
-  if (path.endsWith("/")) {
-    path = path.slice(0, -1);
-  }
-  let pathNames = path.split("/");
-  const lastName = pathNames.splice(-1)[0];
-  return [lastName, pathNames.join("/")];
-}
-
 function isString(value) {
   return typeof value === "string" || value instanceof String;
 }
@@ -627,4 +614,4 @@ const getPathUsingPreviousMap = (previousMap, src, dst) => {
   return result;
 };
 
-export { FileSystemEntity, File, Directory, splitPath };
+export { FileSystemEntity, File, Directory };

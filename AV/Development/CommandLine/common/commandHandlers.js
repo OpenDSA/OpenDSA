@@ -1,5 +1,5 @@
 import { colorNode, colors, delays, highlightNode } from "./fileStructure.js";
-import { Directory, File, splitPath } from "./fileSystemEntity.js";
+import { Directory, File } from "./fileSystemEntity.js";
 import { createGitCommandsMap, handle_git } from "./gitCommandHandlers.js";
 import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
@@ -7,7 +7,6 @@ const tooManyArgs = "Too many arguments";
 const notEnoughArgs = "Not enough arguments";
 const invalidPath = (path) => `'${path}' is not a valid path`;
 const notADirectory = (path) => `'${path}' is not a directory`;
-const nameRequired = (path) => `'${path}' does not specify name`;
 const duplicate = (path) => `'${path}' already exists`;
 const missingRCopy = `Cannot copy directory without -r`;
 const missingRRemove = (path) =>
@@ -16,6 +15,7 @@ const overwriteFileWithDir = `Cannot overwrite file with directory`;
 const notEmpty = (path) => `'${path}' is not empty`;
 const subdirectory = (src, dst) =>
   `Cannot move '${src}' to subdirectory of itself '${dst}'`;
+const notAFile = (path) => `${path} is not a file name`;
 
 const createOutputList = (lines) => {
   lines = lines.filter((line) => line !== "");
@@ -202,10 +202,17 @@ const handle_touch =
     }
 
     const results = args.map((arg) => {
-      const { parent, childName, error } = followPath(arg, getCurrDir());
+      const { parent, childName, error, childEndsWithSlash } = followPath(
+        arg,
+        getCurrDir()
+      );
 
       if (error) {
         return error;
+      }
+
+      if (childEndsWithSlash) {
+        return notAFile(arg);
       }
 
       if (!parent.insert(new File(childName))) {
@@ -245,13 +252,7 @@ const handle_cp =
       return notEnoughArgs;
     }
 
-    const results = copyHelper(
-      args,
-      getCurrDir,
-      getHomeDir,
-      isRecursive,
-      false
-    );
+    const result = copyHelper(args, getCurrDir, getHomeDir, isRecursive, false);
 
     updateVisualization(
       getSvgData(),
@@ -261,7 +262,7 @@ const handle_cp =
       gitMethods
     );
 
-    return createOutputList(results);
+    return result;
   };
 
 const handle_mv =
@@ -278,7 +279,7 @@ const handle_mv =
       return notEnoughArgs;
     }
 
-    const results = copyHelper(args, getCurrDir, getHomeDir, true, true);
+    const result = copyHelper(args, getCurrDir, getHomeDir, true, true);
 
     updateVisualization(
       getSvgData(),
@@ -288,7 +289,7 @@ const handle_mv =
       gitMethods
     );
 
-    return createOutputList(results);
+    return result;
   };
 
 const handle_rm =
@@ -486,7 +487,7 @@ function createCommandsMap(
 //ls -a
 
 const followPath = (path, startDir) => {
-  const [childName, parentPath] = splitPath(path);
+  const { childName, parentPath, endsWithSlash } = splitPath(path);
   const parent = startDir.getChildByPath(parentPath);
 
   if (!(parent instanceof Directory)) {
@@ -495,9 +496,33 @@ const followPath = (path, startDir) => {
     };
   }
 
-  const child = parent.find(childName);
+  let child = parent.find(childName);
+  if (endsWithSlash && child instanceof File) {
+    child = null;
+  }
 
-  return { child, parent, childName, parentPath };
+  return {
+    child,
+    parent,
+    childName,
+    parentPath,
+    childEndsWithSlash: endsWithSlash,
+  };
+};
+
+const splitPath = (path) => {
+  if (path === "/") {
+    return { childName: "/", parentPath: "", endsWithSlash: true };
+  }
+
+  let endsWithSlash = path.endsWith("/");
+  if (endsWithSlash) {
+    path = path.slice(0, -1);
+  }
+  let pathNames = path.split("/");
+  const childName = pathNames.splice(-1)[0];
+  const parentPath = pathNames.join("/");
+  return { childName, parentPath, endsWithSlash };
 };
 
 const copyHelper = (
@@ -507,9 +532,19 @@ const copyHelper = (
   isRecursive,
   shouldRemove
 ) => {
-  const dstData = followPath(args.slice(-1)[0], getCurrDir());
+  const dstPath = args.slice(-1)[0];
+  const dstData = followPath(dstPath, getCurrDir());
   if (dstData.error) {
     return dstData.error;
+  }
+
+  if (args.length > 2) {
+    if (!dstData.child) {
+      return invalidPath(dstPath);
+    }
+    if (!(dstData.child instanceof Directory)) {
+      return notADirectory(dstPath);
+    }
   }
 
   const results = args.slice(0, -1).map((arg) => {
@@ -530,6 +565,14 @@ const copyHelper = (
       if (dstData.child instanceof File) {
         return overwriteFileWithDir;
       }
+    }
+
+    if (
+      srcData.child instanceof File &&
+      !dstData.child &&
+      dstData.childEndsWithSlash
+    ) {
+      return invalidPath(dstPath);
     }
 
     if (shouldRemove && dstData.child === srcData.child) {
@@ -564,7 +607,7 @@ const copyHelper = (
     return "";
   });
 
-  return results;
+  return createOutputList(results);
 };
 
 export { createCommandsMap };
