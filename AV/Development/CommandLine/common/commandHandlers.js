@@ -252,13 +252,7 @@ const handle_cp =
       return notEnoughArgs;
     }
 
-    const results = copyHelper(
-      args,
-      getCurrDir,
-      getHomeDir,
-      isRecursive,
-      false
-    );
+    const result = copyHelper(args, getCurrDir, getHomeDir, isRecursive, false);
 
     updateVisualization(
       getSvgData(),
@@ -268,7 +262,7 @@ const handle_cp =
       gitMethods
     );
 
-    return createOutputList(results);
+    return result;
   };
 
 const handle_mv =
@@ -285,7 +279,7 @@ const handle_mv =
       return notEnoughArgs;
     }
 
-    const results = copyHelper(args, getCurrDir, getHomeDir, true, true);
+    const result = copyHelper(args, getCurrDir, getHomeDir, true, true);
 
     updateVisualization(
       getSvgData(),
@@ -295,7 +289,7 @@ const handle_mv =
       gitMethods
     );
 
-    return createOutputList(results);
+    return result;
   };
 
 const handle_rm =
@@ -544,6 +538,15 @@ const copyHelper = (
     return dstData.error;
   }
 
+  if (args.length > 2) {
+    if (!dstData.child) {
+      return invalidPath(dstPath);
+    }
+    if (!(dstData.child instanceof Directory)) {
+      return notADirectory(dstPath);
+    }
+  }
+
   const results = args.slice(0, -1).map((arg) => {
     const srcData = followPath(arg, getCurrDir());
 
@@ -604,7 +607,7 @@ const copyHelper = (
     return "";
   });
 
-  return results;
+  return createOutputList(results);
 };
 
 export { createCommandsMap };
