@@ -512,7 +512,8 @@ const followPath = (path, startDir) => {
 
 const splitPath = (path) => {
   if (path === "/") {
-    return { childName: "/", parentPath: "", endsWithSlash: true };
+    //TODO update endsWithSlash here
+    return { childName: "/", parentPath: "", endsWithSlash: false };
   }
 
   let endsWithSlash = path.endsWith("/");
