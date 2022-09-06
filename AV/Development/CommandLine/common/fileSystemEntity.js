@@ -21,7 +21,7 @@ class FileSystemEntity {
       curr = curr.parent;
     } while (curr);
 
-    return pathNames.join("/").substring(1);
+    return pathNames.join("/").substring(1) || "/";
   }
 
   getRoot() {
@@ -294,6 +294,10 @@ class Directory extends FileSystemEntity {
     }
   }
 
+  getContents() {
+    return this.contents.filter((content) => !content.getIsDeleted());
+  }
+
   insertAll(fileSystemEntities) {
     fileSystemEntities.forEach((fileSystemEntity) =>
       this.insert(fileSystemEntity)
@@ -356,6 +360,25 @@ class Directory extends FileSystemEntity {
       null
     );
     return found || foundDeep;
+  }
+
+  getRestOfName(value) {
+    const files = this.getContents().filter((content) =>
+      content.name.startsWith(value)
+    );
+    console.log("files", files);
+    if (files.length === 0) {
+      return "";
+    }
+    if (files.length === 1) {
+      const result = files[0].name.substring(value.length);
+      if (files[0] instanceof Directory) {
+        return result + "/";
+      } else if (files[0] instanceof File) {
+        return result + " ";
+      }
+    }
+    return "";
   }
 
   compareByName(directory) {

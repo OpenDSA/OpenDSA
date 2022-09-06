@@ -58,11 +58,11 @@
     "Command Line - cd": {
       "CommandLine/CommandLineCd": {}
     },
-    "Command Line - cd root": {
-      "CommandLine/CommandLineCdRoot": {}
-    },
     "Command Line - cd parent": {
       "CommandLine/CommandLineCdParent": {}
+    },
+    "Command Line - cd long": {
+      "CommandLine/CommandLineCdLong": {}
     },
     "Command Line - touch": {
       "CommandLine/CommandLineTouch": {}

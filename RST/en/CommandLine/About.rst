@@ -55,16 +55,43 @@ The following figure shows the updated file structure after executing the previo
    :alt: Command Line After 
 
 
-Exercises
-----------
+Description of Exercises
+--------------------------
 
-This book contains multiple exercises that will help you learn about basic commands. The following figure shows an example of an exercise.
+This book contains multiple exercises that will help you learn about basic commands. The following figure shows an example of an exercise. 
+
+For example:
 
 .. odsafig:: Images/CommandLineExercise.png
-   :width: 100% 
+   :width: 85% 
    :align: center
    :capalign: justify
    :alt: Command Line Exercise 
+
+would be solved:
+
+.. odsafig:: Images/CommandLineExerciseAfter.png
+   :width: 85% 
+   :align: center
+   :capalign: justify
+   :alt: Command Line Exercise 
+
+Also:
+
+.. odsafig:: Images/CommandLineExercise2.png
+   :width: 85% 
+   :align: center
+   :capalign: justify
+   :alt: Command Line Exercise 
+
+would be solved:
+
+.. odsafig:: Images/CommandLineExerciseAfter2.png
+   :width: 85% 
+   :align: center
+   :capalign: justify
+   :alt: Command Line Exercise 
+
 
 In each exercise, we provide a brief introduction and a task for you to complete in a command line environment. You can complete the exercises by executing commands using the mock terminal. As you execute commands, you can reference the corresponding visualizations to understand how the commands affect the file structure. Note that when a command takes an argument, the argument will be indicated with square brackets []. For example, in the above figure, cd [path] indicates that the cd commands expect one argument, which specifies the path. For example, "cd /mammals" and "cd /mammals/dogs" are valid cd commands. 
 
@@ -96,5 +123,15 @@ Key Terms
 **Single Period in Path:** A path can contain "." to represent the current working directory. For example, "./poodle.txt" defines the location of "poodle.txt" if the current working directory contains "poodle.txt".
 
 **Double Periods in Path:** A path can contain ".." to represent the parent directory. For example, ".." defines the location of the parent directory of the current working directory. Furthermore, "../fish.txt" defines the location of "fish.txt" if the parent directory of the current working directory contains "fish.txt".
+
+
+Commands
+---------
+
+**pwd**: Print the path of the current working directory.
+
+**ls**: List all files and directories in the current working directory.
+
+**cd [path]**: Change the current working directory to the location specified by [path].
 
 

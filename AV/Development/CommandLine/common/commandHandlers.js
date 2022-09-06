@@ -93,7 +93,8 @@ const handle_pwd =
       colors.current.background,
       colors.current.text
     );
-    return path || "/";
+
+    return path;
   };
 
 const handle_cd =

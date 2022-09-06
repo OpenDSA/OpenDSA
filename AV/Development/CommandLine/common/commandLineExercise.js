@@ -1,4 +1,5 @@
 import { createCommandsMap } from "./commandHandlers.js";
+import { CommandHistory } from "./commandHistory.js";
 import { initializeCommandLine } from "./commandLine.js";
 import {
   renderFileStructureVisualization,
@@ -85,6 +86,8 @@ function initializeCommandLineExercise(
     return svgData;
   }
 
+  updateCommandLinePrompt(getCurrDir());
+
   const commandsMap = createCommandsMap(
     getSvgData,
     getCurrDir,
@@ -129,12 +132,16 @@ function initializeCommandLineExercise(
     );
   }
 
+  const commandHistory = new CommandHistory();
+
   initializeCommandLine(
     "#arrayValues",
     "#history",
     commandsMap,
     awardCreditHandler,
-    ["git", "vi"]
+    ["git", "vi"],
+    getCurrDir,
+    commandHistory
   );
 }
 
@@ -288,4 +295,16 @@ function awardCredit() {
   ODSA.AV.awardCompletionCredit();
 }
 
-export { initializeCommandLineExercise, initializeGitExercise, awardCredit };
+function updateCommandLinePrompt(currDir) {
+  $("#command-line-prompt").text(createCommandLinePrompt(currDir));
+}
+
+function createCommandLinePrompt(currDir) {
+  return `${currDir.getPath()} $`;
+}
+export {
+  initializeCommandLineExercise,
+  initializeGitExercise,
+  awardCredit,
+  updateCommandLinePrompt,
+};
