@@ -17,7 +17,7 @@ $(document).ready(function () {
       commandDescription:
         "The ls command lists all files and directories in the current working directory if (directory_path) is not provided. Otherwise, the ls command lists all files and directories in the directory at the location specified by (directory_path).",
       challengeDescription:
-        "List all files and directories in the current working directory.",
+        "List all files and directories in any of the directories.",
     },
     handleAwardCredit,
     "ls"

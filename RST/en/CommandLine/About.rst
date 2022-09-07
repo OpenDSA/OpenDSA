@@ -64,7 +64,7 @@ An absolute path specifies the location of a file or directory starting from the
 
 A relative path specifies the location of a file or directory starting from the current working directory. For example in the example above, assuming the current working directory is "mammals", a relative path to the dogs directory is "dogs". Furthermore, a relative path to the file "poodle.txt" is "dogs/poodle.txt".
 
-Paths can contain a single period. "." refers to the current working directory. For example in the example above, assuming the current working directory is "mammals", a relative path to the "dogs" directory is "./dogs".
+Paths can contain a single period. "." refers to the current working directory. For example in the example above, assuming the current working directory is "mammals", a relative path to the "dogs" directory is also "./dogs".
 
 Paths can also contain double periods. ".." refers to the parent directory. For example in the example above, assuming the current working directory is "mammals", a relative path to the root directory is "..". Furthermore, in the example above, a relative path to the file "bird.txt" is "../bird.txt".
 
@@ -76,7 +76,7 @@ In the exercises in this book, (directory_path) refers to a path to a directory,
 Description of Exercises
 --------------------------
 
-This book contains multiple exercises that will help you learn about basic commands. Each exercise contains a brief introduction and a task for you to complete. You can complete the exercises by executing commands using the mock command line. As you execute commands, you can reference the corresponding visualizations to understand how the commands affect the file structure. Note that when a command takes an argument, the argument will be indicated with (parentheses). For example, in the following figure, cd (directory_path) indicates that the cd commands expect one argument, which specifies the path. For example, "cd /mammals" and "cd /mammals/dogs" are valid cd commands. 
+This book contains multiple exercises that will help you learn about basic commands. Each exercise contains a brief introduction and a task for you to complete. You can complete the exercises by executing commands using the mock command line. As you execute commands, you can reference the corresponding visualizations to understand how the commands affect the file structure. Note that when a command takes an argument, the argument will be indicated with (parentheses). For example, in the following figure, cd (directory_path) indicates that the cd commands expect one argument, which specifies the path. For example, "cd mammals" and "cd mammals/dogs" are valid cd commands from the root directory. 
 
 The following figures show examples of exercises.
 
