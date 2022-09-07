@@ -383,7 +383,7 @@ const handle_rmdir =
         return notADirectory(arg);
       }
 
-      if (child.contents.length > 0) {
+      if (child.getContents().length > 0) {
         return notEmpty(arg);
       }
 
