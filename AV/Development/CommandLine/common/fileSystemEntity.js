@@ -34,36 +34,42 @@ class FileSystemEntity {
     return curr;
   }
 
-  getChildByPath(path) {
-    let currentDir = this;
+  getByPathArray(path) {
+    let curr = this;
+    path.every((name) => {
+      curr = curr.find(name);
+      return Boolean(curr);
+    });
+    return curr;
+  }
 
-    if (path.startsWith("/") || path.startsWith("~")) {
-      currentDir = this.getRoot();
-      path = path.substring(1);
+  getDataByPath(path) {
+    const pathInfo = getPathInfo(path);
+
+    let parent = pathInfo.isAbsolute ? this.getRoot() : this;
+    parent = parent.getByPathArray(pathInfo.parentPath);
+
+    let child =
+      pathInfo.isAbsolute && !pathInfo.childName
+        ? parent
+        : parent
+        ? parent.find(pathInfo.childName)
+        : null;
+
+    if (pathInfo.childNameIsDirectory && !(child instanceof Directory)) {
+      child = null;
     }
 
-    const pathNames = path.split("/");
+    return {
+      parent,
+      child,
+      childName: pathInfo.childName,
+      childNameIsDirectory: pathInfo.childNameIsDirectory,
+    };
+  }
 
-    pathNames.every((name) => {
-      if (name === "" || name === ".") {
-        //continue
-        return true;
-      } else if (name === "..") {
-        //go up one
-        // continue;
-        currentDir = currentDir.parent;
-      } else {
-        currentDir = currentDir.contents.find(
-          (content) => content.name === name
-        );
-      }
-      if (currentDir && currentDir.getIsDeleted()) {
-        currentDir = null;
-      }
-      return Boolean(currentDir);
-    });
-
-    return currentDir;
+  getChildByPath(path) {
+    return this.getDataByPath(path).child;
   }
 }
 
@@ -118,6 +124,11 @@ class File extends FileSystemEntity {
       fileState: this.fileState,
       gitState: this.gitState,
     };
+  }
+
+  //Returns null because file can't have children
+  find(name) {
+    return null;
   }
 
   findDeep(name) {
@@ -310,9 +321,8 @@ class Directory extends FileSystemEntity {
     } else if (name === "..") {
       return this.parent;
     }
-    return this.contents.find(
-      (fileSystemEntity) =>
-        fileSystemEntity.name === name && !fileSystemEntity.getIsDeleted()
+    return this.getContents().find(
+      (fileSystemEntity) => fileSystemEntity.name === name
     );
   }
 
@@ -635,6 +645,25 @@ const getPathUsingPreviousMap = (previousMap, src, dst) => {
   let result = path.reverse().join("/");
   result += dst instanceof Directory ? "/" : "";
   return result;
+};
+
+const getPathInfo = (path) => {
+  const childNameIsDirectory = path.endsWith("/");
+  const isAbsolute = path.startsWith("~") || path.startsWith("/");
+  if (isAbsolute) {
+    path = path.slice(1);
+  }
+
+  const pathNames = path.split("/").filter((name) => name !== "");
+  const childName = pathNames.length > 0 ? pathNames.slice(-1)[0] : "";
+  const parentPath = pathNames.slice(0, -1);
+
+  return {
+    childNameIsDirectory,
+    isAbsolute,
+    childName,
+    parentPath,
+  };
 };
 
 export { FileSystemEntity, File, Directory };
