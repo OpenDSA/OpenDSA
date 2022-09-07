@@ -6,46 +6,40 @@ import {
 /*global alert: true, ODSA, console */
 $(document).ready(function () {
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "owls") {
-      awardCredit();
-    }
+    awardCredit();
   };
 
   initializeCommandLineExercise(
     {
-      commandTitle: "cd (directory_path)",
+      commandTitle: "pwd",
       commandDescription:
-        "(directory_path) can be more complex to change the current working directory to a directory that is not a direct parent or descendant.",
-      challengeDescription: 'Change the current working directory to "owls".',
+        "As mentioned in the previous exercise, the pwd command prints the path of the current working directory. Notice how the path is different from the previous exercises.",
+      challengeDescription: "Print the path of the current working directory.",
     },
     handleAwardCredit,
-    "cd",
+    "pwd",
     {
       name: "/",
       contents: [
+        "snake.txt",
         "fish.txt",
         {
           name: "mammals",
           contents: [
+            "mouse.txt",
             "bear.txt",
             {
               name: "dogs",
-              contents: ["boxer.txt", "poodle.txt"],
+              contents: ["beagle.txt", "boxer.txt"],
             },
-          ],
-        },
-        {
-          name: "birds",
-          contents: [
-            "chicken.txt",
             {
-              name: "owls",
-              contents: ["snowy.txt", "horned.txt"],
+              name: "horses",
+              contents: ["cob.txt", "shire.txt"],
             },
           ],
         },
       ],
     },
-    [1]
+    [2, 3]
   );
 });

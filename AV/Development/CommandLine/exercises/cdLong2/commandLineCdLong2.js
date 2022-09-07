@@ -6,7 +6,7 @@ import {
 /*global alert: true, ODSA, console */
 $(document).ready(function () {
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "owls") {
+    if (getCurrDir().name === "carp") {
       awardCredit();
     }
   };
@@ -15,15 +15,15 @@ $(document).ready(function () {
     {
       commandTitle: "cd (directory_path)",
       commandDescription:
-        "(directory_path) can be more complex to change the current working directory to a directory that is not a direct parent or descendant.",
-      challengeDescription: 'Change the current working directory to "owls".',
+        "(directory_path) can contain multiple directories to change the current working directory to a directory that is not a direct parent or descendant.",
+      challengeDescription: 'Change the current working directory to "carp".',
     },
     handleAwardCredit,
     "cd",
     {
       name: "/",
       contents: [
-        "fish.txt",
+        "birds.txt",
         {
           name: "mammals",
           contents: [
@@ -35,12 +35,12 @@ $(document).ready(function () {
           ],
         },
         {
-          name: "birds",
+          name: "fish",
           contents: [
-            "chicken.txt",
+            "tilapia.txt",
             {
-              name: "owls",
-              contents: ["snowy.txt", "horned.txt"],
+              name: "carp",
+              contents: ["bighead.txt", "grass.txt"],
             },
           ],
         },

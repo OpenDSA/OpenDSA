@@ -31,7 +31,7 @@ $(document).ready(function () {
     {
       commandTitle: "Challenge 3",
       commandDescription:
-        "This challenge will require the usage of multiple commands. Tip: Multiple arguments can be passed to rm to remove multiple files at once.",
+        "This challenge will require the usage of multiple commands. Remember, multiple (path) values can be passed to rm to remove multiple files at once.",
       challengeDescription: `Copy the "dogs" directory to the root directory. Then, remove "poodle.txt" and "husky.txt" from the copy. The original "dogs" directory should not be changed.`,
     },
     handleAwardCredit,

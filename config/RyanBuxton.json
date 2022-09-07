@@ -52,6 +52,12 @@
     "Command Line - pwd": {
       "CommandLine/CommandLinePwd": {}
     },
+    "Command Line - pwd 2": {
+      "CommandLine/CommandLinePwd2": {}
+    },
+    "Command Line - pwd 3": {
+      "CommandLine/CommandLinePwd3": {}
+    },
     "Command Line - ls": {
       "CommandLine/CommandLineLs": {}
     },

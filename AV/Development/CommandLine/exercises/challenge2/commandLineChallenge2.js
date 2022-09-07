@@ -27,7 +27,7 @@ $(document).ready(function () {
     {
       commandTitle: "Challenge 2",
       commandDescription:
-        "This challenge will require the usage of multiple commands. Tip: Multiple arguments can be passed to mv to move multiple files at once.",
+        "This challenge will require the usage of multiple commands. Remember, multiple (src_path) values can be passed to mv to move multiple files at once.",
       challengeDescription: `In the "mammals" directory, create a new directory named "cats". Then, move "persian.txt", "bengal.txt", and "sphynx.txt" to the "cats" directory.`,
     },
     handleAwardCredit,

@@ -5,17 +5,16 @@
 
 .. avmetadata::
    :author: Ryan Buxton 
-   :satisfies: Command Line
+   :satisfies: Command Line Cd
    :topic: Tour
 
-Command Line - pwd
+Command Line - cd
 ======================
 
-
-pwd
------
 Use this mock command line environment to solve the challenge.  Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` page for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/pwd/commandLinePwd.html pe
+cd
+-----
+.. avembed:: AV/Development/CommandLine/exercises/cd2/commandLineCd2.html pe 
 
 

@@ -42,9 +42,9 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "mv [src] [dst]",
+      commandTitle: "mv (src_path) (dst_path)",
       commandDescription:
-        "The mv command moves a file or directory from the location specified by [src] to the location specified by [dst].",
+        "The mv command moves a file or directory from the location specified by (src_path) to the file or directory specified by (dst_path).",
       challengeDescription: 'Move "beagle.txt" to the "dogs" directory.',
     },
     handleAwardCredit,

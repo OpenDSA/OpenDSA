@@ -6,21 +6,18 @@ import {
 /*global alert: true, ODSA, console */
 $(document).ready(function () {
   const handleAwardCredit = (getCurrDir, getHomeDir) => () => {
-    if (getCurrDir().name === "mammals") {
-      awardCredit();
-    }
+    awardCredit();
   };
 
   initializeCommandLineExercise(
     {
-      commandTitle: "cd (directory_path)",
+      commandTitle: "pwd",
       commandDescription:
-        "(directory_path) can be a relative path, which could be used to change the current working directory to a parent directory.",
-      challengeDescription:
-        'Change the current working directory to "mammals".',
+        "As mentioned in the previous exercise, the pwd command prints the path of the current working directory. Notice how the path is different from the previous exercise.",
+      challengeDescription: "Print the path of the current working directory.",
     },
     handleAwardCredit,
-    "cd",
+    "pwd",
     null,
     [3, 3]
   );
