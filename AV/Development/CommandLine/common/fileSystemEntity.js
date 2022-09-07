@@ -34,6 +34,19 @@ class FileSystemEntity {
     return curr;
   }
 
+  isDescendantOf(directory) {
+    let curr = this;
+
+    while (curr) {
+      if (curr.id === directory.id) {
+        return true;
+      }
+      curr = curr.parent;
+    }
+
+    return false;
+  }
+
   getByPathArray(path) {
     let curr = this;
     path.every((name) => {

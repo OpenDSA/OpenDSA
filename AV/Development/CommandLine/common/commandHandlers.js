@@ -8,7 +8,8 @@ const notEnoughArgs = "Not enough arguments";
 const invalidPath = (path) => `'${path}' is not a valid path`;
 const notADirectory = (path) => `'${path}' is not a directory`;
 const duplicate = (path) => `'${path}' already exists`;
-const missingRCopy = `Cannot copy directory without -r`;
+const missingRCopy = (path) =>
+  `'${path}' is a directory. Cannot copy directory without -r`;
 const missingRRemove = (path) =>
   `'${path}' is a directory. Cannot remove directory without -r`;
 const overwriteFileWithDir = `Cannot overwrite file with directory`;
@@ -16,6 +17,8 @@ const notEmpty = (path) => `'${path}' is not empty`;
 const subdirectory = (src, dst) =>
   `Cannot move '${src}' to subdirectory of itself '${dst}'`;
 const notAFile = (path) => `${path} is not a file name`;
+const removeDescendant = (path) =>
+  `'${path}' contains the current working directory, so it cannot be removed.`;
 
 const createOutputList = (lines) => {
   lines = lines.filter((line) => line !== "");
@@ -323,8 +326,13 @@ const handle_rm =
         return invalidPath(arg);
       }
 
-      if (child instanceof Directory && !isRecursive) {
-        return missingRRemove(arg);
+      if (child instanceof Directory) {
+        if (!isRecursive) {
+          return missingRRemove(arg);
+        }
+        if (getCurrDir().isDescendantOf(child)) {
+          return removeDescendant(arg);
+        }
       }
 
       parent.remove(child.id);
@@ -523,7 +531,7 @@ const copyHelper = (
 
     if (srcData.child instanceof Directory) {
       if (!isRecursive) {
-        return missingRCopy;
+        return missingRCopy(arg);
       }
       if (dstData.child instanceof File) {
         return overwriteFileWithDir;
