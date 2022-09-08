@@ -386,22 +386,48 @@ class Directory extends FileSystemEntity {
   }
 
   getRestOfName(value) {
-    const files = this.getContents().filter((content) =>
-      content.name.startsWith(value)
-    );
-    console.log("files", files);
+    const data = this.getDataByPath(value);
+
+    if (data.childName === ".." && data.child) {
+      return "/";
+    }
+
+    const dir = data.childNameIsDirectory ? data.child : data.parent;
+    if (!dir) {
+      return "";
+    }
+    const startsWith = data.childNameIsDirectory ? "" : data.childName;
+
+    const files = dir
+      .getContents()
+      .filter((content) => content.name.startsWith(startsWith));
     if (files.length === 0) {
       return "";
     }
     if (files.length === 1) {
-      const result = files[0].name.substring(value.length);
+      const result = files[0].name.substring(startsWith.length);
       if (files[0] instanceof Directory) {
         return result + "/";
       } else if (files[0] instanceof File) {
         return result + " ";
       }
     }
-    return "";
+    let result = files[0].name.substring(startsWith.length);
+    files.slice(1).forEach((file) => {
+      const fileNameArray = [...file.name.substring(startsWith.length)];
+      const resultArray = [...result];
+      let newResult = "";
+      fileNameArray.every((character, index) => {
+        if (character === resultArray[index]) {
+          newResult += character;
+          return true;
+        }
+        return false;
+      });
+      result = newResult;
+    });
+
+    return result;
   }
 
   compareByName(directory) {
