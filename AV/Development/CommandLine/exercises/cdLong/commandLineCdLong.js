@@ -15,7 +15,7 @@ $(document).ready(function () {
     {
       commandTitle: "cd (directory_path)",
       commandDescription:
-        "(directory_path) can be more complex to change the current working directory to a directory that is not a direct parent or descendant.",
+        "(directory_path) can be more complex to change the current working directory to a directory that is not a direct parent or subdirectory.",
       challengeDescription: 'Change the current working directory to "owls".',
     },
     handleAwardCredit,
