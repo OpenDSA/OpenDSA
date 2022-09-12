@@ -46,11 +46,21 @@
     "required": true
   },
   "chapters": {
-    "About": {
+    "About the Command Line": {
       "CommandLine/About": {}
     },
     "Exercises": {
-      "CommandLine/Exercises": {}
+      "CommandLine/Exercises": {
+        "commandLineChallenge1": {
+          "points": 2.0
+        },
+        "commandLineChallenge2": {
+          "points": 2.0
+        },
+        "commandLineChallenge3": {
+          "points": 2.0
+        }
+      }
     }
   }
 }
