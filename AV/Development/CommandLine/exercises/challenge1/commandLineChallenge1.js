@@ -24,7 +24,7 @@ $(document).ready(function () {
     {
       commandTitle: "Challenge 1",
       commandDescription:
-        "This challenge requires the usage of multiple commands. Tip: Multiple arguments can be passed to touch to create multiple files at once.",
+        "This challenge requires the usage of multiple commands. Remember, multiple (file_path) values can be passed to touch to create multiple files at once.",
       challengeDescription: `In the "mammals" directory, create a new directory named "cats" that contains files named "persian.txt", "bengal.txt", and "sphynx.txt".`,
     },
     handleAwardCredit,

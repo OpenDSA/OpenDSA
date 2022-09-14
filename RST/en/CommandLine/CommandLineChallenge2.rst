@@ -11,6 +11,8 @@
 Command Line - Challenge 2 
 ===========================
 
+Use this mock command line environment to solve the challenge.  Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` page for examples, key terms, and command descriptions.
+
 Challenge 2
 ------------
 .. avembed:: AV/Development/CommandLine/exercises/challenge2/commandLineChallenge2.html pe

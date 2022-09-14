@@ -13,9 +13,9 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "cd [path]",
+      commandTitle: "cd (directory_path)",
       commandDescription:
-        "Relative paths can be used with cd to change the current working directory to a parent directory.",
+        "(directory_path) can be a relative path, which could be used to change the current working directory to a parent directory.",
       challengeDescription:
         'Change the current working directory to "mammals".',
     },

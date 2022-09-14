@@ -8,7 +8,8 @@ const notEnoughArgs = "Not enough arguments";
 const invalidPath = (path) => `'${path}' is not a valid path`;
 const notADirectory = (path) => `'${path}' is not a directory`;
 const duplicate = (path) => `'${path}' already exists`;
-const missingRCopy = `Cannot copy directory without -r`;
+const missingRCopy = (path) =>
+  `'${path}' is a directory. Cannot copy directory without -r`;
 const missingRRemove = (path) =>
   `'${path}' is a directory. Cannot remove directory without -r`;
 const overwriteFileWithDir = `Cannot overwrite file with directory`;
@@ -16,6 +17,8 @@ const notEmpty = (path) => `'${path}' is not empty`;
 const subdirectory = (src, dst) =>
   `Cannot move '${src}' to subdirectory of itself '${dst}'`;
 const notAFile = (path) => `${path} is not a file name`;
+const removeDescendant = (path) =>
+  `'${path}' contains the current working directory, so it cannot be removed.`;
 
 const createOutputList = (lines) => {
   lines = lines.filter((line) => line !== "");
@@ -45,27 +48,23 @@ const handle_ls =
       return invalidPath(args[0]);
     }
 
-    const contents = dir instanceof Directory ? dir.contents : [dir];
-    const fileNames = contents
-      .filter((content) => !content.getIsDeleted())
-      .map((content) => {
-        const contentName =
-          content.name + (content instanceof Directory ? "/" : "");
+    const contents = dir instanceof Directory ? dir.getContents() : [dir];
+    const fileNames = contents.map((content) => {
+      const contentName =
+        content.name + (content instanceof Directory ? "/" : "");
 
-        highlightNode(
-          getSvgData().group,
-          content.id,
-          colors.highlight.background,
-          content instanceof Directory
-            ? colors.directory.background
-            : colors.file.background,
-          content instanceof Directory
-            ? colors.directory.text
-            : colors.file.text
-        );
+      highlightNode(
+        getSvgData().group,
+        content.id,
+        colors.highlight.background,
+        content instanceof Directory
+          ? colors.directory.background
+          : colors.file.background,
+        content instanceof Directory ? colors.directory.text : colors.file.text
+      );
 
-        return contentName;
-      });
+      return contentName;
+    });
 
     return createOutputList(fileNames);
   };
@@ -93,7 +92,8 @@ const handle_pwd =
       colors.current.background,
       colors.current.text
     );
-    return path || "/";
+
+    return path;
   };
 
 const handle_cd =
@@ -163,7 +163,10 @@ const handle_mkdir =
     }
 
     const results = args.map((arg) => {
-      const { parent, childName, error } = followPath(arg, getCurrDir());
+      const { parent, childName, error } = getDataByPathErrorWrapper(
+        arg,
+        getCurrDir()
+      );
 
       if (error) {
         return error;
@@ -202,16 +205,14 @@ const handle_touch =
     }
 
     const results = args.map((arg) => {
-      const { parent, childName, error, childEndsWithSlash } = followPath(
-        arg,
-        getCurrDir()
-      );
+      const { parent, childName, error, childNameIsDirectory } =
+        getDataByPathErrorWrapper(arg, getCurrDir());
 
       if (error) {
         return error;
       }
 
-      if (childEndsWithSlash) {
+      if (childNameIsDirectory) {
         return notAFile(arg);
       }
 
@@ -312,7 +313,10 @@ const handle_rm =
     }
 
     const results = args.map((arg) => {
-      const { parent, child, error } = followPath(arg, getCurrDir());
+      const { parent, child, error } = getDataByPathErrorWrapper(
+        arg,
+        getCurrDir()
+      );
 
       if (error) {
         return error;
@@ -322,8 +326,13 @@ const handle_rm =
         return invalidPath(arg);
       }
 
-      if (child instanceof Directory && !isRecursive) {
-        return missingRRemove(arg);
+      if (child instanceof Directory) {
+        if (!isRecursive) {
+          return missingRRemove(arg);
+        }
+        if (getCurrDir().isDescendantOf(child)) {
+          return removeDescendant(arg);
+        }
       }
 
       parent.remove(child.id);
@@ -357,7 +366,10 @@ const handle_rmdir =
     }
 
     const results = args.map((arg) => {
-      const { parent, child, error } = followPath(arg, getCurrDir());
+      const { parent, child, error } = getDataByPathErrorWrapper(
+        arg,
+        getCurrDir()
+      );
 
       if (error) {
         return error;
@@ -371,7 +383,7 @@ const handle_rmdir =
         return notADirectory(arg);
       }
 
-      if (child.contents.length > 0) {
+      if (child.getContents().length > 0) {
         return notEmpty(arg);
       }
 
@@ -405,19 +417,17 @@ const handle_vi =
       return notEnoughArgs;
     }
 
-    const results = args
-      .map((arg) => {
-        const file = getCurrDir().getChildByPath(arg);
+    const results = args.map((arg) => {
+      const file = getCurrDir().getChildByPath(arg);
 
-        if (!(file instanceof File)) {
-          return invalidPath(arg);
-        }
+      if (!(file instanceof File)) {
+        return invalidPath(arg);
+      }
 
-        //TODO make conditional
-        file.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
-        return "";
-      })
-      .filter((result) => result !== "");
+      //TODO make conditional
+      file.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
+      return "";
+    });
 
     updateVisualization(
       getSvgData(),
@@ -486,45 +496,6 @@ function createCommandsMap(
 //tail
 //ls -a
 
-const followPath = (path, startDir) => {
-  const { childName, parentPath, endsWithSlash } = splitPath(path);
-  const parent = startDir.getChildByPath(parentPath);
-
-  if (!(parent instanceof Directory)) {
-    return {
-      error: invalidPath(path),
-    };
-  }
-
-  let child = parent.find(childName);
-  if (endsWithSlash && child instanceof File) {
-    child = null;
-  }
-
-  return {
-    child,
-    parent,
-    childName,
-    parentPath,
-    childEndsWithSlash: endsWithSlash,
-  };
-};
-
-const splitPath = (path) => {
-  if (path === "/") {
-    return { childName: "/", parentPath: "", endsWithSlash: true };
-  }
-
-  let endsWithSlash = path.endsWith("/");
-  if (endsWithSlash) {
-    path = path.slice(0, -1);
-  }
-  let pathNames = path.split("/");
-  const childName = pathNames.splice(-1)[0];
-  const parentPath = pathNames.join("/");
-  return { childName, parentPath, endsWithSlash };
-};
-
 const copyHelper = (
   args,
   getCurrDir,
@@ -533,7 +504,7 @@ const copyHelper = (
   shouldRemove
 ) => {
   const dstPath = args.slice(-1)[0];
-  const dstData = followPath(dstPath, getCurrDir());
+  const dstData = getDataByPathErrorWrapper(dstPath, getCurrDir());
   if (dstData.error) {
     return dstData.error;
   }
@@ -548,7 +519,7 @@ const copyHelper = (
   }
 
   const results = args.slice(0, -1).map((arg) => {
-    const srcData = followPath(arg, getCurrDir());
+    const srcData = getDataByPathErrorWrapper(arg, getCurrDir());
 
     if (srcData.error) {
       return srcData.error;
@@ -560,7 +531,7 @@ const copyHelper = (
 
     if (srcData.child instanceof Directory) {
       if (!isRecursive) {
-        return missingRCopy;
+        return missingRCopy(arg);
       }
       if (dstData.child instanceof File) {
         return overwriteFileWithDir;
@@ -570,7 +541,7 @@ const copyHelper = (
     if (
       srcData.child instanceof File &&
       !dstData.child &&
-      dstData.childEndsWithSlash
+      dstData.childNameIsDirectory
     ) {
       return invalidPath(dstPath);
     }
@@ -581,13 +552,8 @@ const copyHelper = (
 
     const copy = srcData.child.copy();
     let inserted = null;
-    //temp fix for special case
-    if (
-      (dstData.childName === "~" || dstData.childName === "/") &&
-      dstData.parentPath === ""
-    ) {
-      inserted = getHomeDir().insert(copy);
-    } else if (dstData.child instanceof Directory) {
+
+    if (dstData.child instanceof Directory) {
       inserted = dstData.child.insert(copy);
     } else {
       copy.name = dstData.childName;
@@ -608,6 +574,18 @@ const copyHelper = (
   });
 
   return createOutputList(results);
+};
+
+const getDataByPathErrorWrapper = (path, startDir) => {
+  const data = startDir.getDataByPath(path);
+
+  if (!(data.parent instanceof Directory)) {
+    return {
+      error: invalidPath(path),
+    };
+  }
+
+  return data;
 };
 
 export { createCommandsMap };

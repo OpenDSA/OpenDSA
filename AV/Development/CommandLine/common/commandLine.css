@@ -63,8 +63,6 @@
   background-color: black;
   border: 0;
   padding: 0;
-  height: 18px;
-  padding-left: 4px;
 }
 
 #arrayValues:focus {
@@ -78,16 +76,31 @@
   padding: 0;
 }
 
-#start-symbol-and-input {
+/* #start-symbol-and-input {
   display: flex;
   color: white;
   align-items: center;
   height: 18px;
-}
+} */
 
 /* .node--internal text {
   text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
 } */
+.output {
+  padding-bottom: 1rem;
+}
+
+.symbol-and-input {
+  display: flex;
+  gap: 1rem;
+  color: white;
+  align-items: center;
+}
+
+.symbol-and-input p {
+  padding: 0;
+  margin: 0;
+}
 
 .link- {
   fill: none;
@@ -126,7 +139,6 @@
 }
 
 .output-list {
-  padding-bottom: 1rem;
 }
 
 .output-list p {

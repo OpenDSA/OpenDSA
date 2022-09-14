@@ -21,7 +21,7 @@ class FileSystemEntity {
       curr = curr.parent;
     } while (curr);
 
-    return pathNames.join("/").substring(1);
+    return pathNames.join("/").substring(1) || "/";
   }
 
   getRoot() {
@@ -34,36 +34,55 @@ class FileSystemEntity {
     return curr;
   }
 
-  getChildByPath(path) {
-    let currentDir = this;
+  isDescendantOf(directory) {
+    let curr = this;
 
-    if (path.startsWith("/") || path.startsWith("~")) {
-      currentDir = this.getRoot();
-      path = path.substring(1);
+    while (curr) {
+      if (curr.id === directory.id) {
+        return true;
+      }
+      curr = curr.parent;
     }
 
-    const pathNames = path.split("/");
+    return false;
+  }
 
-    pathNames.every((name) => {
-      if (name === "" || name === ".") {
-        //continue
-        return true;
-      } else if (name === "..") {
-        //go up one
-        // continue;
-        currentDir = currentDir.parent;
-      } else {
-        currentDir = currentDir.contents.find(
-          (content) => content.name === name
-        );
-      }
-      if (currentDir && currentDir.getIsDeleted()) {
-        currentDir = null;
-      }
-      return Boolean(currentDir);
+  getByPathArray(path) {
+    let curr = this;
+    path.every((name) => {
+      curr = curr.find(name);
+      return Boolean(curr);
     });
+    return curr;
+  }
 
-    return currentDir;
+  getDataByPath(path) {
+    const pathInfo = getPathInfo(path);
+
+    let parent = pathInfo.isAbsolute ? this.getRoot() : this;
+    parent = parent.getByPathArray(pathInfo.parentPath);
+
+    let child =
+      pathInfo.isAbsolute && !pathInfo.childName
+        ? parent
+        : parent
+        ? parent.find(pathInfo.childName)
+        : null;
+
+    if (pathInfo.childNameIsDirectory && !(child instanceof Directory)) {
+      child = null;
+    }
+
+    return {
+      parent,
+      child,
+      childName: pathInfo.childName,
+      childNameIsDirectory: pathInfo.childNameIsDirectory,
+    };
+  }
+
+  getChildByPath(path) {
+    return this.getDataByPath(path).child;
   }
 }
 
@@ -118,6 +137,11 @@ class File extends FileSystemEntity {
       fileState: this.fileState,
       gitState: this.gitState,
     };
+  }
+
+  //Returns null because file can't have children
+  find(name) {
+    return null;
   }
 
   findDeep(name) {
@@ -294,6 +318,10 @@ class Directory extends FileSystemEntity {
     }
   }
 
+  getContents() {
+    return this.contents.filter((content) => !content.getIsDeleted());
+  }
+
   insertAll(fileSystemEntities) {
     fileSystemEntities.forEach((fileSystemEntity) =>
       this.insert(fileSystemEntity)
@@ -306,9 +334,8 @@ class Directory extends FileSystemEntity {
     } else if (name === "..") {
       return this.parent;
     }
-    return this.contents.find(
-      (fileSystemEntity) =>
-        fileSystemEntity.name === name && !fileSystemEntity.getIsDeleted()
+    return this.getContents().find(
+      (fileSystemEntity) => fileSystemEntity.name === name
     );
   }
 
@@ -356,6 +383,51 @@ class Directory extends FileSystemEntity {
       null
     );
     return found || foundDeep;
+  }
+
+  getRestOfName(value) {
+    const data = this.getDataByPath(value);
+
+    if (data.childName === ".." && data.child) {
+      return "/";
+    }
+
+    const dir = data.childNameIsDirectory ? data.child : data.parent;
+    if (!dir) {
+      return "";
+    }
+    const startsWith = data.childNameIsDirectory ? "" : data.childName;
+
+    const files = dir
+      .getContents()
+      .filter((content) => content.name.startsWith(startsWith));
+    if (files.length === 0) {
+      return "";
+    }
+    if (files.length === 1) {
+      const result = files[0].name.substring(startsWith.length);
+      if (files[0] instanceof Directory) {
+        return result + "/";
+      } else if (files[0] instanceof File) {
+        return result + " ";
+      }
+    }
+    let result = files[0].name.substring(startsWith.length);
+    files.slice(1).forEach((file) => {
+      const fileNameArray = [...file.name.substring(startsWith.length)];
+      const resultArray = [...result];
+      let newResult = "";
+      fileNameArray.every((character, index) => {
+        if (character === resultArray[index]) {
+          newResult += character;
+          return true;
+        }
+        return false;
+      });
+      result = newResult;
+    });
+
+    return result;
   }
 
   compareByName(directory) {
@@ -612,6 +684,25 @@ const getPathUsingPreviousMap = (previousMap, src, dst) => {
   let result = path.reverse().join("/");
   result += dst instanceof Directory ? "/" : "";
   return result;
+};
+
+const getPathInfo = (path) => {
+  const childNameIsDirectory = path.endsWith("/");
+  const isAbsolute = path.startsWith("~") || path.startsWith("/");
+  if (isAbsolute) {
+    path = path.slice(1);
+  }
+
+  const pathNames = path.split("/").filter((name) => name !== "");
+  const childName = pathNames.length > 0 ? pathNames.slice(-1)[0] : "";
+  const parentPath = pathNames.slice(0, -1);
+
+  return {
+    childNameIsDirectory,
+    isAbsolute,
+    childName,
+    parentPath,
+  };
 };
 
 export { FileSystemEntity, File, Directory };

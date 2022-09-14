@@ -14,9 +14,9 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "mkdir [path]",
+      commandTitle: "mkdir (directory_path)",
       commandDescription:
-        "The mkdir command creates a new directory with the name and location specified by [path].",
+        "The mkdir command creates a new directory with the name and location specified by (directory_path). Multiple (directory_path) values can be provided to create multiple directories.",
       challengeDescription:
         'Create a new directory named "cats" in the "mammals" directory.',
     },
