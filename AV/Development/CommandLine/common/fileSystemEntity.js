@@ -238,7 +238,7 @@ class Directory extends FileSystemEntity {
   }
 
   setDeleted() {
-    this.contents.forEach((content) => content.setDeleted());
+    this.getContents().forEach((content) => content.setDeleted());
     this.isDeleted = true;
   }
 
@@ -247,7 +247,7 @@ class Directory extends FileSystemEntity {
   }
 
   setNotDeletedDeep() {
-    this.contents.forEach((content) => content.setNotDeleted());
+    this.getContentsWithDeleted().forEach((content) => content.setNotDeleted());
     this.isDeleted = false;
   }
 
@@ -257,7 +257,7 @@ class Directory extends FileSystemEntity {
 
   copy() {
     const newDirectory = new Directory(this.name);
-    newDirectory.contents = this.contents.map((content) => {
+    newDirectory.contents = this.getContents().map((content) => {
       const contentCopy = content.copy();
       contentCopy.parent = newDirectory;
       return contentCopy;
@@ -269,7 +269,7 @@ class Directory extends FileSystemEntity {
     const newDirectory = new Directory(this.name);
     newDirectory.gitId = this.gitId;
     newDirectory.parentGitId = this.parent?.gitId;
-    newDirectory.contents = this.contents.map((content) => {
+    newDirectory.contents = this.getContents().map((content) => {
       const contentCopy = content.copyWithGitId();
       contentCopy.parent = newDirectory;
       return contentCopy;
@@ -285,32 +285,39 @@ class Directory extends FileSystemEntity {
       isDirectory: true,
     };
 
-    newEntity.children = this.contents
-      .filter((content) => !content.getIsDeleted())
-      .map((content) => content.mapToD3());
+    newEntity.children = this.getContents().map((content) => content.mapToD3());
 
     return newEntity;
   }
 
   insert(fileSystemEntity) {
-    const existingFile = this.findWithDeleted(fileSystemEntity.name);
-    if (existingFile) {
-      if (existingFile.getIsDeleted()) {
-        existingFile.setNotDeleted();
-        this.contents = this.contents.filter(
-          (content) => content.id !== existingFile.id
-        );
-        this.contents.push(existingFile);
+    //potential for both dir and file with that name if one of them is deleted
+    const existingFiles = this.findWithDeleted(fileSystemEntity.name);
 
-        if (fileSystemEntity instanceof Directory) {
-          fileSystemEntity.contents.forEach((file) => {
-            existingFile.insert(file);
-          });
-        }
-        return existingFile;
-      } else {
-        return null;
+    if (existingFiles.find((file) => !file.getIsDeleted())) {
+      //duplicate
+      return null;
+    }
+
+    const existingFile = existingFiles.find((file) =>
+      fileSystemEntity instanceof Directory
+        ? file instanceof Directory
+        : file instanceof File
+    );
+
+    if (existingFile) {
+      existingFile.setNotDeleted();
+      this.contents = this.getContents().filter(
+        (content) => content.id !== existingFile.id
+      );
+      this.contents.push(existingFile);
+
+      if (fileSystemEntity instanceof Directory) {
+        fileSystemEntity.getContents().forEach((file) => {
+          existingFile.insert(file);
+        });
       }
+      return existingFile;
     } else {
       this.contents.push(fileSystemEntity);
       fileSystemEntity.parent = this;
@@ -320,6 +327,10 @@ class Directory extends FileSystemEntity {
 
   getContents() {
     return this.contents.filter((content) => !content.getIsDeleted());
+  }
+
+  getContentsWithDeleted() {
+    return this.contents;
   }
 
   insertAll(fileSystemEntities) {
@@ -345,7 +356,7 @@ class Directory extends FileSystemEntity {
     } else if (name === "..") {
       return this.parent;
     }
-    return this.contents.find(
+    return this.getContentsWithDeleted().filter(
       (fileSystemEntity) => fileSystemEntity.name === name
     );
   }
@@ -355,7 +366,7 @@ class Directory extends FileSystemEntity {
       return this;
     } else {
       let curr = null;
-      this.contents.some((content) => {
+      this.getContentsWithDeleted().some((content) => {
         curr = content.findByGitId(id);
         return Boolean(curr);
       });
@@ -368,7 +379,7 @@ class Directory extends FileSystemEntity {
       return this;
     }
     let curr = null;
-    this.contents.some((content) => {
+    this.getContents().some((content) => {
       curr = content.findById(id);
       return Boolean(curr);
     });
@@ -377,7 +388,7 @@ class Directory extends FileSystemEntity {
 
   findDeep(name) {
     const found = this.find(name);
-    const foundDeep = this.contents.reduce(
+    const foundDeep = this.getContents().reduce(
       (previousValue, content) =>
         previousValue ? previousValue : content.findDeep(name),
       null
@@ -388,7 +399,7 @@ class Directory extends FileSystemEntity {
   getRestOfName(value) {
     const data = this.getDataByPath(value);
 
-    if (data.childName === ".." && data.child) {
+    if (data.childName === ".." && data.child && !value.endsWith("/")) {
       return "/";
     }
 
@@ -431,12 +442,12 @@ class Directory extends FileSystemEntity {
   }
 
   compareByName(directory) {
-    if (directory.contents.length !== this.contents.length) {
+    if (directory.getContents().length !== this.getContents().length) {
       return false;
     }
 
-    for (let i = 0; i < this.contents.length; i++) {
-      if (!this.contents[i].compareByName(directory.contents[i])) {
+    for (let i = 0; i < this.getContents().length; i++) {
+      if (!this.getContents()[i].compareByName(directory.getContents()[i])) {
         return false;
       }
     }
@@ -447,15 +458,15 @@ class Directory extends FileSystemEntity {
   compareByNameUnordered(directory) {
     if (
       !(directory instanceof Directory) ||
-      directory.contents.length !== this.contents.length
+      directory.getContents().length !== this.getContents().length
     ) {
       return false;
     }
 
-    const contentsCopy = [...directory.contents];
+    const contentsCopy = [...directory.getContents()];
 
     return (
-      this.contents.every((content) => {
+      this.getContents().every((content) => {
         const index = contentsCopy.findIndex((contentCopy) =>
           content.compareByNameUnordered(contentCopy)
         );
@@ -481,20 +492,22 @@ class Directory extends FileSystemEntity {
   }
 
   removeByGitId(id) {
-    this.contents = this.contents.filter((content) => content.gitId !== id);
+    this.contents = this.getContentsWithDeleted().filter(
+      (content) => content.gitId !== id
+    );
   }
 
   removeDeleted() {
-    this.contents = this.contents.filter((content) => !content.getIsDeleted());
-    this.contents.forEach((content) => content.removeDeleted());
+    this.contents = this.getContents();
+    this.getContentsWithDeleted().forEach((content) => content.removeDeleted());
   }
 
   followIndexPath(path) {
     let curr = this;
 
     path.every((index) => {
-      if (index >= 0 && index < curr.contents.length) {
-        curr = curr.contents[index];
+      if (index >= 0 && index < curr.getContents().length) {
+        curr = curr.getContents()[index];
         return true;
       }
       return false;
@@ -504,7 +517,7 @@ class Directory extends FileSystemEntity {
   }
 
   getByStateHelper(gitStates, fileStates) {
-    const contentStates = this.contents.map((content) =>
+    const contentStates = this.getContentsWithDeleted().map((content) =>
       content.getByStateHelper(gitStates, fileStates)
     );
 
@@ -513,7 +526,8 @@ class Directory extends FileSystemEntity {
     if (isSameState) {
       return {
         isSameState: true,
-        sameStateContent: this.contents.length > 0 ? [this] : [],
+        sameStateContent:
+          this.getContentsWithDeleted().length > 0 ? [this] : [],
       };
     } else {
       const sameStateContent = contentStates.flatMap(
@@ -529,16 +543,16 @@ class Directory extends FileSystemEntity {
 
   getStateString() {
     //TODO clean up
-    if (this.contents.length > 0) {
-      return this.contents[0].getStateString();
+    if (this.getContentsWithDeleted().length > 0) {
+      return this.getContentsWithDeleted()[0].getStateString();
     }
     return "statestringerror";
   }
 
   getState() {
     //TODO clean up
-    if (this.contents.length > 0) {
-      return this.contents[0].getState();
+    if (this.getContentsWithDeleted().length > 0) {
+      return this.getContentsWithDeleted()[0].getState();
     }
     return null;
   }
@@ -548,13 +562,13 @@ class Directory extends FileSystemEntity {
   }
 
   setState(gitState, fileState) {
-    this.contents.forEach((content) => {
+    this.getContentsWithDeleted().forEach((content) => {
       content.setState(gitState, fileState);
     });
   }
 
   setStateConditional(oldGitStates, newGitState, oldFileStates, newFileState) {
-    this.contents.forEach((content) => {
+    this.getContentsWithDeleted().forEach((content) => {
       content.setStateConditional(
         oldGitStates,
         newGitState,
@@ -626,7 +640,10 @@ class Directory extends FileSystemEntity {
   }
 
   flatten() {
-    return [this, ...this.contents.flatMap((content) => content.flatten())];
+    return [
+      this,
+      ...this.getContentsWithDeleted().flatMap((content) => content.flatten()),
+    ];
   }
 }
 
@@ -650,7 +667,7 @@ function getRelativePath(src, dst) {
 
     let neighbours = [];
     if (node instanceof Directory) {
-      neighbours.push(...node.contents);
+      neighbours.push(...node.getContentsWithDeleted());
     }
     if (node.parent) {
       neighbours.push(node.parent);

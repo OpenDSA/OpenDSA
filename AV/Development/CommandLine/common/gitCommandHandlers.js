@@ -21,11 +21,11 @@ const handle_clone =
   ) =>
   (args) => {
     if (
-      getHomeDir().contents.length === 0 &&
+      getHomeDir().getContents().length === 0 &&
       !gitMethods.getLocalInitialCommit()
     ) {
       const remoteHomeDir = gitMethods.getRemoteHomeDir().copyWithGitId();
-      remoteHomeDir.contents.forEach((content) => {
+      remoteHomeDir.getContents().forEach((content) => {
         getHomeDir().insert(content);
       });
       const remoteInitialCommit = gitMethods.getRemoteInitialCommit().copy();
