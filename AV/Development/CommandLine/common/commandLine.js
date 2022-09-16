@@ -82,8 +82,11 @@ function callCommand(input, commandsMap, awardCreditHandler, disabledCommands) {
   }
 
   if (commandsMap[command] && !disabledCommands.includes(command)) {
-    const args = values.slice(1).filter((arg) => arg !== "");
-    const output = commandsMap[command](args);
+    const args = values
+      .slice(1)
+      .filter((arg) => arg !== "" && !arg.startsWith("-"));
+    const flags = values.slice(1).filter((flag) => flag.startsWith("-"));
+    const output = commandsMap[command](args, flags);
 
     if (awardCreditHandler[command]) {
       awardCreditHandler[command]();

@@ -243,11 +243,8 @@ const handle_cp =
     updateVisualization,
     gitMethods
   ) =>
-  (args) => {
-    const isRecursive = args.includes("-r");
-    if (isRecursive) {
-      args = args.filter((arg) => arg !== "-r");
-    }
+  (args, flags) => {
+    const isRecursive = flags.includes("-r");
 
     if (args.length < 2) {
       return notEnoughArgs;
@@ -302,11 +299,8 @@ const handle_rm =
     updateVisualization,
     gitMethods
   ) =>
-  (args) => {
-    const isRecursive = args.includes("-r");
-    if (isRecursive) {
-      args = args.filter((arg) => arg !== "-r");
-    }
+  (args, flags) => {
+    const isRecursive = flags.includes("-r");
 
     if (args.length < 1) {
       return notEnoughArgs;
