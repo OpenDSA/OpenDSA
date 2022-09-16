@@ -47,9 +47,7 @@
   },
   "chapters": {
     "About the Command Line": {
-      "CommandLine/About": {}
-    },
-    "Exercises": {
+      "CommandLine/About": {},
       "CommandLine/Exercises": {
         "commandLineChallenge1": {
           "points": 2.0
