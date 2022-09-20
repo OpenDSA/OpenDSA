@@ -72,7 +72,13 @@ const createHandleKeyup = (inputId, commandHistory) => (event) => {
   }
 };
 
-function callCommand(input, commandsMap, awardCreditHandler, disabledCommands) {
+function callCommand(
+  input,
+  commandsMap,
+  awardCreditHandler,
+  disabledCommands,
+  disableVisualization
+) {
   const values = input.split(/\s+/);
 
   const command = values[0];
@@ -86,10 +92,10 @@ function callCommand(input, commandsMap, awardCreditHandler, disabledCommands) {
       .slice(1)
       .filter((arg) => arg !== "" && !arg.startsWith("-"));
     const flags = values.slice(1).filter((flag) => flag.startsWith("-"));
-    const output = commandsMap[command](args, flags);
+    const output = commandsMap[command](args, flags, disableVisualization);
 
     if (awardCreditHandler[command]) {
-      awardCreditHandler[command]();
+      awardCreditHandler[command](args);
     }
 
     return output;
@@ -122,4 +128,4 @@ function initializeCommandLine(
   $(inputId).keyup(handleKeyup);
 }
 
-export { initializeCommandLine };
+export { initializeCommandLine, callCommand };

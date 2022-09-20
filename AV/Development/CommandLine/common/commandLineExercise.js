@@ -1,6 +1,6 @@
 import { createCommandsMap } from "./commandHandlers.js";
 import { CommandHistory } from "./commandHistory.js";
-import { initializeCommandLine } from "./commandLine.js";
+import { callCommand, initializeCommandLine } from "./commandLine.js";
 import {
   renderFileStructureVisualization,
   renderGitVisualization,
@@ -150,7 +150,10 @@ function initializeGitExercise(
   handleAwardCredit,
   awardCreditCommand,
   initialFileStructure,
-  initialCwdIndexPath
+  initialCwdIndexPath,
+  initialCommands,
+  initialRemoteCommands,
+  emptyLocal
 ) {
   // Load the config object with interpreter and code created by odsaUtils.js
   //   const config = ODSA.UTILS.loadConfig();
@@ -159,12 +162,14 @@ function initializeGitExercise(
 
   updateText(text);
 
-  const localHomeDir = new Directory(DEFAULT_GIT_FILE_STRUCTURE);
+  let localHomeDir = new Directory(
+    initialFileStructure ? initialFileStructure : DEFAULT_GIT_FILE_STRUCTURE
+  );
   let localCurrDir = localHomeDir.followIndexPath([]);
 
   const remoteHomeDir = localHomeDir.copyWithGitId();
 
-  const localInitialCommit = new Commit();
+  let localInitialCommit = new Commit();
   let localCurrBranch = new Branch("main");
   localInitialCommit.insertBranch(localCurrBranch);
 
@@ -173,6 +178,12 @@ function initializeGitExercise(
 
   localHomeDir.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
   remoteHomeDir.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
+
+  if (emptyLocal) {
+    localHomeDir.contents = [];
+    localCurrBranch = null;
+    localInitialCommit = null;
+  }
 
   let svgData;
 
@@ -245,6 +256,31 @@ function initializeGitExercise(
     gitMethods
   );
 
+  initialCommands.forEach((command) => {
+    callCommand(command, commandsMap, {}, [], true);
+  });
+
+  if (initialRemoteCommands && initialRemoteCommands.length > 0) {
+    const remoteCommandsMap = createCommandsMap(
+      null,
+      () => remoteHomeDir,
+      () => {},
+      getRemoteHomeDir,
+      null,
+      {
+        getLocalInitialCommit: getRemoteInitialCommit,
+        getLocalCurrBranch: getRemoteCurrBranch,
+        setLocalCurrBranch: setRemoteCurrBranch,
+      }
+    );
+
+    initialRemoteCommands.forEach((command) => {
+      callCommand(command, remoteCommandsMap, {}, [], true);
+    });
+  }
+
+  updateCommandLinePrompt(getLocalCurrDir());
+
   let resizeCount = 0;
 
   // new ResizeObserver(() => {
@@ -256,6 +292,7 @@ function initializeGitExercise(
     const d3Data = localHomeDir.mapToD3();
     svgData = renderGitVisualization(
       getLocalHomeDir(),
+      getLocalCurrDir().id,
       gitMethods,
       visualizationWidth,
       visualizationHeight,
@@ -273,14 +310,24 @@ function initializeGitExercise(
   const awardCreditHandler = {};
   awardCreditHandler[awardCreditCommand] = handleAwardCredit(
     getLocalCurrDir,
-    getLocalHomeDir
+    getLocalHomeDir,
+    getLocalInitialCommit,
+    getLocalCurrBranch,
+    getRemoteHomeDir,
+    getRemoteInitialCommit,
+    getRemoteCurrBranch
   );
+
+  const commandHistory = new CommandHistory();
 
   initializeCommandLine(
     "#arrayValues",
     "#history",
     commandsMap,
-    awardCreditHandler
+    awardCreditHandler,
+    [],
+    getLocalCurrDir,
+    commandHistory
   );
 }
 

@@ -49,13 +49,20 @@ function renderFileStructureVisualization(data, currDirId, width, height, id) {
   return svgData;
 }
 
-function renderGitVisualization(localHomeDir, gitMethods, width, height, id) {
+function renderGitVisualization(
+  localHomeDir,
+  currDirId,
+  gitMethods,
+  width,
+  height,
+  id
+) {
   const svgData = renderSVG(width, height, id);
   updateGitVisualization(
     svgData,
     localHomeDir,
     -1 * delays.paths.update,
-    null,
+    currDirId,
     gitMethods
   );
 
@@ -208,6 +215,21 @@ function updateGitVisualization(
           remoteBranchData
         ));
     }
+
+    if (extraVisualizations.pull) {
+      ({ localFileTreeData, localCommitTreeData, localBranchData } =
+        visualizePull(
+          localFileTreeData,
+          remoteFileTreeData,
+          localCommitTreeData,
+          remoteCommitTreeData,
+          localBranchData,
+          remoteBranchData,
+          extraVisualizations.pull,
+          group,
+          0.7
+        ));
+    }
   }
 
   createGitVisualization(
@@ -219,7 +241,8 @@ function updateGitVisualization(
     remoteBranchData,
     group,
     delayOffset,
-    scale
+    scale,
+    currDirId
   );
 }
 
@@ -718,7 +741,7 @@ const createVerticalLine = (svgGroup, x, length) =>
 
 const getFileColor = (id, currDirId, gitState, isDirectory, colorGit) => {
   if (currDirId === id) {
-    return colors.current.background;
+    return colorGit ? "purple" : colors.current.background;
   }
   if (isDirectory) {
     return colors.directory.background;
@@ -871,17 +894,19 @@ const createGitVisualizationData = (
     scale
   );
 
-  const localCommitTreeData = createCommitTreeData(
-    localInitialCommit,
-    localCurrBranch,
-    0,
-    height / 2,
-    width / 2,
-    height / 2,
-    padding,
-    padding,
-    scale
-  );
+  const localCommitTreeData = localInitialCommit
+    ? createCommitTreeData(
+        localInitialCommit,
+        localCurrBranch,
+        0,
+        height / 2,
+        width / 2,
+        height / 2,
+        padding,
+        padding,
+        scale
+      )
+    : null;
 
   const remoteCommitTreeData = createCommitTreeData(
     remoteInitialCommit,
@@ -895,11 +920,9 @@ const createGitVisualizationData = (
     scale
   );
 
-  const localBranchData = createBranchData(
-    localCommitTreeData,
-    localCurrBranch.id,
-    scale
-  );
+  const localBranchData = localCommitTreeData
+    ? createBranchData(localCommitTreeData, localCurrBranch.id, scale)
+    : null;
 
   const remoteBranchData = createBranchData(
     remoteCommitTreeData,
@@ -926,12 +949,13 @@ const createGitVisualization = (
   remoteBranchData,
   svgGroup,
   delayOffset,
-  scale
+  scale,
+  currDirId
 ) => {
   createFileTree(
     svgGroup,
     localFileTreeData,
-    null,
+    currDirId,
     true,
     "local",
     delayOffset,
@@ -948,14 +972,16 @@ const createGitVisualization = (
     scale
   );
 
-  createCommitTree(
-    svgGroup,
-    localCommitTreeData,
-    localBranchData,
-    "local-commit",
-    delayOffset,
-    scale
-  );
+  if (localCommitTreeData) {
+    createCommitTree(
+      svgGroup,
+      localCommitTreeData,
+      localBranchData,
+      "local-commit",
+      delayOffset,
+      scale
+    );
+  }
 
   createCommitTree(
     svgGroup,
@@ -999,7 +1025,7 @@ function visualizeCommit(svgGroup, commit, fileTreeData, commitTreeData) {
   return showFilesMoving(svgGroup, filesData, 0.7, "commit-files");
 }
 
-const showFilesMoving = (svgGroup, files, scale, className) => {
+const showFilesMoving = (svgGroup, files, scale, className, delay) => {
   const rectangleWidth = rectangleDimensions.width * scale;
   const rectangleHeight = rectangleDimensions.height * scale;
   return svgGroup
@@ -1045,7 +1071,7 @@ const showFilesMoving = (svgGroup, files, scale, className) => {
       nodes
         .transition()
         .duration(durations.nodes.enter)
-        .delay(0)
+        .delay(delay ? delay : 0)
         .attr("transform", function (d) {
           return "translate(" + d.endX + "," + d.endY + ")";
         })
@@ -1109,11 +1135,51 @@ const visualizePush = (
       remoteFileTreeData,
       push.commitPath,
       svgGroup,
-      scale
+      scale,
+      delays.nodes.update - 1000
     );
   }
 
   return { remoteFileTreeData, remoteBranchData, remoteCommitTreeData };
+};
+
+const visualizePull = (
+  localFileTreeData,
+  remoteFileTreeData,
+  localCommitTreeData,
+  remoteCommitTreeData,
+  localBranchData,
+  remoteBranchData,
+  pull,
+  svgGroup,
+  scale
+) => {
+  localCommitTreeData = addLocation(
+    remoteCommitTreeData,
+    localCommitTreeData,
+    "data.gitId"
+  );
+
+  localBranchData = addLocation(remoteBranchData, localBranchData, "gitId");
+
+  if (pull.commitPath) {
+    localFileTreeData = addLocation(
+      remoteFileTreeData,
+      localFileTreeData,
+      "data.gitId"
+    );
+
+    visualizeModifiedFiles(
+      remoteFileTreeData,
+      localFileTreeData,
+      pull.commitPath,
+      svgGroup,
+      scale,
+      delays.nodes.update + 1000
+    );
+  }
+
+  return { localFileTreeData, localBranchData, localCommitTreeData };
 };
 
 const visualizeModifiedFiles = (
@@ -1121,7 +1187,8 @@ const visualizeModifiedFiles = (
   remoteFileTreeData,
   commitPath,
   svgGroup,
-  scale
+  scale,
+  delay
 ) => {
   const modifiedFiles = commitPath
     .filter((value) => value.action !== "nothing")
@@ -1148,7 +1215,7 @@ const visualizeModifiedFiles = (
         isDirectory: file instanceof Directory,
       };
     });
-  showFilesMoving(svgGroup, modifiedFiles, scale, "push-files");
+  showFilesMoving(svgGroup, modifiedFiles, scale, "push-files", delay);
 };
 
 const visualizeClone = (

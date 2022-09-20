@@ -46,9 +46,6 @@
     "required": true
   },
   "chapters": {
-    "About": {
-      "CommandLine/About": {}
-    },
     "Git": {
       "CommandLine/CommandLineGit": {}
     }

@@ -2,23 +2,20 @@ import { colorNode, colors, delays, highlightNode } from "./fileStructure.js";
 import { Directory, File } from "./fileSystemEntity.js";
 import { createGitCommandsMap, handle_git } from "./gitCommandHandlers.js";
 import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
-
-const tooManyArgs = "Too many arguments";
-const notEnoughArgs = "Not enough arguments";
-const invalidPath = (path) => `'${path}' is not a valid path`;
-const notADirectory = (path) => `'${path}' is not a directory`;
-const duplicate = (path) => `'${path}' already exists`;
-const missingRCopy = (path) =>
-  `'${path}' is a directory. Cannot copy directory without -r`;
-const missingRRemove = (path) =>
-  `'${path}' is a directory. Cannot remove directory without -r`;
-const overwriteFileWithDir = `Cannot overwrite file with directory`;
-const notEmpty = (path) => `'${path}' is not empty`;
-const subdirectory = (src, dst) =>
-  `Cannot move '${src}' to subdirectory of itself '${dst}'`;
-const notAFile = (path) => `${path} is not a file name`;
-const removeDescendant = (path) =>
-  `'${path}' contains the current working directory, so it cannot be removed.`;
+import {
+  tooManyArgs,
+  notEnoughArgs,
+  invalidPath,
+  notADirectory,
+  duplicate,
+  missingRCopy,
+  missingRRemove,
+  overwriteFileWithDir,
+  notEmpty,
+  subdirectory,
+  notAFile,
+  removeDescendant,
+} from "./errorMessages.js";
 
 const createOutputList = (lines) => {
   lines = lines.filter((line) => line !== "");
@@ -27,412 +24,215 @@ const createOutputList = (lines) => {
     : "";
 };
 
-const handle_ls =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length > 1) {
-      return tooManyArgs;
-    }
+const handle_ls = (getSvgData, getCurrDir) => (args) => {
+  if (args.length > 1) {
+    return tooManyArgs;
+  }
 
-    const dir =
-      args.length === 0 ? getCurrDir() : getCurrDir().getChildByPath(args[0]);
+  const dir =
+    args.length === 0 ? getCurrDir() : getCurrDir().getChildByPath(args[0]);
 
-    if (!dir) {
-      return invalidPath(args[0]);
-    }
+  if (!dir) {
+    return invalidPath(args[0]);
+  }
 
-    const contents = dir instanceof Directory ? dir.getContents() : [dir];
-    const fileNames = contents.map((content) => {
-      const contentName =
-        content.name + (content instanceof Directory ? "/" : "");
-
-      highlightNode(
-        getSvgData().group,
-        content.id,
-        colors.highlight.background,
-        content instanceof Directory
-          ? colors.directory.background
-          : colors.file.background,
-        content instanceof Directory ? colors.directory.text : colors.file.text
-      );
-
-      return contentName;
-    });
-
-    return createOutputList(fileNames);
-  };
-
-const handle_pwd =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length > 0) {
-      return tooManyArgs;
-    }
-
-    const path = getCurrDir().getPath();
+  const contents = dir instanceof Directory ? dir.getContents() : [dir];
+  const fileNames = contents.map((content) => {
+    const contentName =
+      content.name + (content instanceof Directory ? "/" : "");
 
     highlightNode(
       getSvgData().group,
-      getCurrDir().id,
+      content.id,
       colors.highlight.background,
-      colors.current.background,
-      colors.current.text
+      content instanceof Directory
+        ? colors.directory.background
+        : colors.file.background,
+      content instanceof Directory ? colors.directory.text : colors.file.text
     );
 
-    return path;
-  };
+    return contentName;
+  });
 
-const handle_cd =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length > 1) {
-      return tooManyArgs;
-    }
+  return createOutputList(fileNames);
+};
 
-    if (args.length === 0) {
-      setCurrDir(getHomeDir());
+const handle_pwd = (getSvgData, getCurrDir) => (args) => {
+  if (args.length > 0) {
+    return tooManyArgs;
+  }
 
-      updateVisualization(
-        getSvgData(),
-        getHomeDir(),
-        -1 * delays.paths.update,
-        getCurrDir().id,
-        gitMethods
-      );
+  const path = getCurrDir().getPath();
 
-      return "";
-    }
+  highlightNode(
+    getSvgData().group,
+    getCurrDir().id,
+    colors.highlight.background,
+    colors.current.background,
+    colors.current.text
+  );
 
-    const path = args[0];
-    const newDir = getCurrDir().getChildByPath(path);
+  return path;
+};
 
-    if (!newDir) {
-      return invalidPath(args[0]);
-    }
-
-    if (!(newDir instanceof Directory)) {
-      return notADirectory(args[0]);
-    }
-
-    setCurrDir(newDir);
-
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      -1 * delays.paths.update,
-      getCurrDir().id,
-      gitMethods
-    );
+const handle_cd = (args, flags, getCurrDir, setCurrDir) => {
+  if (args.length === 0) {
+    setCurrDir(getCurrDir().getRoot());
 
     return "";
-  };
+  }
 
-const handle_mkdir =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length === 0) {
-      return notEnoughArgs;
-    }
+  const path = args[0];
+  const newDir = getCurrDir().getChildByPath(path);
 
-    const results = args.map((arg) => {
-      const { parent, childName, error } = getDataByPathErrorWrapper(
-        arg,
-        getCurrDir()
-      );
+  if (!newDir) {
+    return invalidPath(args[0]);
+  }
 
-      if (error) {
-        return error;
-      }
+  if (!(newDir instanceof Directory)) {
+    return notADirectory(args[0]);
+  }
 
-      if (!parent.insert(new Directory(childName))) {
-        return duplicate(arg);
-      }
+  setCurrDir(newDir);
 
-      return "";
-    });
+  return "";
+};
 
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      -1 * delays.paths.update,
-      getCurrDir().id,
-      gitMethods
+const handle_mkdir = (args, flags, getCurrDir, setCurrDir) => {
+  const results = args.map((arg) => {
+    const { parent, childName, error } = getDataByPathErrorWrapper(
+      arg,
+      getCurrDir()
     );
 
-    return createOutputList(results);
-  };
-
-const handle_touch =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length === 0) {
-      return notEnoughArgs;
+    if (error) {
+      return error;
     }
 
-    const results = args.map((arg) => {
-      const { parent, childName, error, childNameIsDirectory } =
-        getDataByPathErrorWrapper(arg, getCurrDir());
-
-      if (error) {
-        return error;
-      }
-
-      if (childNameIsDirectory) {
-        return notAFile(arg);
-      }
-
-      if (!parent.insert(new File(childName))) {
-        return duplicate(arg);
-      }
-
-      return "";
-    });
-
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      -1 * delays.paths.update,
-      getCurrDir().id,
-      gitMethods
-    );
-
-    return createOutputList(results);
-  };
-
-const handle_cp =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args, flags) => {
-    const isRecursive = flags.includes("-r");
-
-    if (args.length < 2) {
-      return notEnoughArgs;
+    if (!parent.insert(new Directory(childName))) {
+      return duplicate(arg);
     }
 
-    const result = copyHelper(args, getCurrDir, getHomeDir, isRecursive, false);
+    return "";
+  });
 
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      -1 * delays.paths.update,
-      getCurrDir().id,
-      gitMethods
-    );
+  return results;
+};
 
-    return result;
-  };
+const handle_touch = (args, flags, getCurrDir, setCurrDir) => {
+  const results = args.map((arg) => {
+    const { parent, childName, error, childNameIsDirectory } =
+      getDataByPathErrorWrapper(arg, getCurrDir());
 
-const handle_mv =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length < 2) {
-      return notEnoughArgs;
+    if (error) {
+      return error;
     }
 
-    const result = copyHelper(args, getCurrDir, getHomeDir, true, true);
-
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      0,
-      getCurrDir().id,
-      gitMethods
-    );
-
-    return result;
-  };
-
-const handle_rm =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args, flags) => {
-    const isRecursive = flags.includes("-r");
-
-    if (args.length < 1) {
-      return notEnoughArgs;
+    if (childNameIsDirectory) {
+      return notAFile(arg);
     }
 
-    const results = args.map((arg) => {
-      const { parent, child, error } = getDataByPathErrorWrapper(
-        arg,
-        getCurrDir()
-      );
-
-      if (error) {
-        return error;
-      }
-
-      if (!child) {
-        return invalidPath(arg);
-      }
-
-      if (child instanceof Directory) {
-        if (!isRecursive) {
-          return missingRRemove(arg);
-        }
-        if (getCurrDir().isDescendantOf(child)) {
-          return removeDescendant(arg);
-        }
-      }
-
-      parent.remove(child.id);
-
-      return "";
-    });
-
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      0,
-      getCurrDir().id,
-      gitMethods
-    );
-
-    return createOutputList(results);
-  };
-
-const handle_rmdir =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length < 1) {
-      return notEnoughArgs;
+    if (!parent.insert(new File(childName))) {
+      return duplicate(arg);
     }
 
-    const results = args.map((arg) => {
-      const { parent, child, error } = getDataByPathErrorWrapper(
-        arg,
-        getCurrDir()
-      );
+    return "";
+  });
 
-      if (error) {
-        return error;
-      }
+  return results;
+};
 
-      if (!child) {
-        return invalidPath(arg);
-      }
+const handle_cp = (args, flags, getCurrDir, setCurrDir) => {
+  const isRecursive = flags.includes("-r");
+  const result = copyHelper(args, getCurrDir, isRecursive, false);
+  return result;
+};
 
-      if (!(child instanceof Directory)) {
-        return notADirectory(arg);
-      }
+const handle_mv = (args, flags, getCurrDir, setCurrDir) => {
+  const result = copyHelper(args, getCurrDir, true, true);
+  return result;
+};
 
-      if (child.getContents().length > 0) {
-        return notEmpty(arg);
-      }
+const handle_rm = (args, flags, getCurrDir, setCurrDir) => {
+  const isRecursive = flags.includes("-r");
 
-      parent.remove(child.id);
-
-      return "";
-    });
-
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      0,
-      getCurrDir().id,
-      gitMethods
+  const results = args.map((arg) => {
+    const { parent, child, error } = getDataByPathErrorWrapper(
+      arg,
+      getCurrDir()
     );
 
-    return createOutputList(results);
-  };
-
-const handle_vi =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length < 1) {
-      return notEnoughArgs;
+    if (error) {
+      return error;
     }
 
-    const results = args.map((arg) => {
-      const file = getCurrDir().getChildByPath(arg);
+    if (!child) {
+      return invalidPath(arg);
+    }
 
-      if (!(file instanceof File)) {
-        return invalidPath(arg);
+    if (child instanceof Directory) {
+      if (!isRecursive) {
+        return missingRRemove(arg);
       }
+      if (getCurrDir().isDescendantOf(child)) {
+        return removeDescendant(arg);
+      }
+    }
 
-      //TODO make conditional
-      file.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
-      return "";
-    });
+    parent.remove(child.id);
 
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      -1 * delays.paths.update,
-      getCurrDir().id,
-      gitMethods
+    return "";
+  });
+
+  return results;
+};
+
+const handle_rmdir = (args, flags, getCurrDir, setCurrDir) => {
+  const results = args.map((arg) => {
+    const { parent, child, error } = getDataByPathErrorWrapper(
+      arg,
+      getCurrDir()
     );
 
-    return createOutputList(results);
-  };
+    if (error) {
+      return error;
+    }
+
+    if (!child) {
+      return invalidPath(arg);
+    }
+
+    if (!(child instanceof Directory)) {
+      return notADirectory(arg);
+    }
+
+    if (child.getContents().length > 0) {
+      return notEmpty(arg);
+    }
+
+    parent.remove(child.id);
+
+    return "";
+  });
+
+  return results;
+};
+
+const handle_vi = (args, flags, getCurrDir, setCurrDir) => {
+  const results = args.map((arg) => {
+    const file = getCurrDir().getChildByPath(arg);
+
+    if (!(file instanceof File)) {
+      return invalidPath(arg);
+    }
+
+    //TODO make conditional
+    file.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
+    return "";
+  });
+
+  return results;
+};
 
 function createCommandsMap(
   getSvgData,
@@ -446,37 +246,74 @@ function createCommandsMap(
   const commandsMap = {
     ls: handle_ls,
     pwd: handle_pwd,
-    cd: handle_cd,
-    mkdir: handle_mkdir,
-    touch: handle_touch,
-    cp: handle_cp,
-    mv: handle_mv,
-    rm: handle_rm,
-    rmdir: handle_rmdir,
-    vi: handle_vi,
+    cd: { method: handle_cd, maxArgs: 1, delay: -1 * delays.paths.update },
+    mkdir: {
+      method: handle_mkdir,
+      minArgs: 1,
+      delay: -1 * delays.paths.update,
+    },
+    touch: {
+      method: handle_touch,
+      minArgs: 1,
+      delay: -1 * delays.paths.update,
+    },
+    cp: {
+      method: handle_cp,
+      minArgs: 2,
+      delay: -1 * delays.paths.update,
+    },
+    mv: {
+      method: handle_mv,
+      minArgs: 2,
+      delay: 0,
+    },
+    rm: {
+      method: handle_rm,
+      minArgs: 1,
+      delay: 0,
+    },
+    rmdir: {
+      method: handle_rmdir,
+      minArgs: 1,
+      delay: 0,
+    },
+    vi: {
+      method: handle_vi,
+      minArgs: 1,
+      delay: -1 * delays.paths.update,
+    },
     git: handle_git,
   };
 
-  const gitCommandsMap = createGitCommandsMap(
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    //TODO decouple this later
-    gitMethods
-  );
-
-  Object.keys(commandsMap).forEach((key) => {
-    if (key === "git") {
-      commandsMap[key] = commandsMap[key](gitCommandsMap);
-    } else {
-      commandsMap[key] = commandsMap[key](
+  const gitCommandsMap = gitMethods
+    ? createGitCommandsMap(
         getSvgData,
         getCurrDir,
         setCurrDir,
         getHomeDir,
         updateVisualization,
+        //TODO decouple this later
+        gitMethods
+      )
+    : null;
+
+  Object.keys(commandsMap).forEach((key) => {
+    if (key === "git") {
+      commandsMap[key] = commandsMap[key](gitCommandsMap);
+    } else if (key === "ls" || key === "pwd") {
+      commandsMap[key] = commandsMap[key](getSvgData, getCurrDir);
+    } else {
+      const { method, minArgs, maxArgs, delay } = commandsMap[key];
+      commandsMap[key] = initialize_command_handler(
+        method,
+        minArgs,
+        maxArgs,
+        getCurrDir,
+        setCurrDir,
+        getHomeDir,
+        updateVisualization,
+        delay,
+        getSvgData,
         gitMethods
       );
     }
@@ -490,13 +327,7 @@ function createCommandsMap(
 //tail
 //ls -a
 
-const copyHelper = (
-  args,
-  getCurrDir,
-  getHomeDir,
-  isRecursive,
-  shouldRemove
-) => {
+const copyHelper = (args, getCurrDir, isRecursive, shouldRemove) => {
   const dstPath = args.slice(-1)[0];
   const dstData = getDataByPathErrorWrapper(dstPath, getCurrDir());
   if (dstData.error) {
@@ -581,5 +412,45 @@ const getDataByPathErrorWrapper = (path, startDir) => {
 
   return data;
 };
+
+//used for commands that update the visualization
+const initialize_command_handler =
+  (
+    handle_command,
+    minArgs,
+    maxArgs,
+    getCurrDir,
+    setCurrDir,
+    getHomeDir,
+    updateVisualization,
+    updateVisualizationDelay,
+    getSvgData,
+    gitMethods
+  ) =>
+  (args, flags, disableVisualization) => {
+    if (minArgs && args.length < minArgs) {
+      return notEnoughArgs;
+    }
+    if (maxArgs && args.length > maxArgs) {
+      return tooManyArgs;
+    }
+
+    const result = handle_command(args, flags, getCurrDir, setCurrDir);
+    const resultIsArray = Array.isArray(result);
+    const wasSuccessful =
+      result === "" || (resultIsArray && result.includes(""));
+
+    if (!disableVisualization && wasSuccessful) {
+      updateVisualization(
+        getSvgData(),
+        getHomeDir(),
+        updateVisualizationDelay,
+        getCurrDir().id,
+        gitMethods
+      );
+    }
+
+    return resultIsArray ? createOutputList(result) : result;
+  };
 
 export { createCommandsMap };

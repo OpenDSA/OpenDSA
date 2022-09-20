@@ -1,390 +1,359 @@
+import { notEnoughArgs, tooManyArgs } from "./errorMessages.js";
 import { delays } from "./fileStructure.js";
 import { Branch, Commit } from "./gitClasses.js";
 import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 
-const handle_git = (gitCommandsMap) => (args) => {
+const handle_git = (gitCommandsMap) => (args, flags, disableVisualization) => {
   if (gitCommandsMap[args[0]]) {
-    return gitCommandsMap[args[0]](args.slice(1));
+    return gitCommandsMap[args[0]](args.slice(1), flags, disableVisualization);
   } else {
     return `git ${args[0]} not supported`;
   }
 };
 
-const handle_clone =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (
-      getHomeDir().getContents().length === 0 &&
-      !gitMethods.getLocalInitialCommit()
-    ) {
-      const remoteHomeDir = gitMethods.getRemoteHomeDir().copyWithGitId();
-      remoteHomeDir.getContents().forEach((content) => {
-        getHomeDir().insert(content);
-      });
-      const remoteInitialCommit = gitMethods.getRemoteInitialCommit().copy();
-      const remoteCurrBranch = gitMethods.getRemoteCurrBranch();
-      gitMethods.setLocalInitialCommit(remoteInitialCommit);
-      gitMethods.setLocalCurrBranch(
-        remoteInitialCommit.findBranchByGitId(remoteCurrBranch.gitId)
-      );
+const handle_clone = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  if (
+    getLocalHomeDir().getContents().length === 0 &&
+    !getLocalInitialCommit()
+  ) {
+    const remoteHomeDir = getRemoteHomeDir().copyWithGitId();
+    remoteHomeDir.getContents().forEach((content) => {
+      getLocalHomeDir().insert(content);
+    });
+    const remoteInitialCommit = getRemoteInitialCommit().copy();
+    const remoteCurrBranch = getRemoteCurrBranch();
+    setLocalInitialCommit(remoteInitialCommit);
+    setLocalCurrBranch(
+      remoteInitialCommit.findBranchByGitId(remoteCurrBranch.gitId)
+    );
 
-      updateVisualization(
-        getSvgData(),
-        getHomeDir(),
-        -1 * delays.paths.update,
-        null,
-        gitMethods
-      );
+    return { clone: true };
+  }
 
-      return "Cloned";
+  return "Cannot clone unless local is empty";
+};
+
+const handle_add = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  const notFound = args.filter((path) => {
+    const fileSystemEntity = getLocalCurrDir().getChildByPath(path);
+
+    if (fileSystemEntity) {
+      fileSystemEntity.setStateConditional(GIT_STATE.CHANGED, GIT_STATE.ADDED);
     }
+    return !fileSystemEntity;
+  });
 
-    return "Cannot clone unless local is empty";
-  };
+  return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
+};
 
-const handle_add =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    let notFound = [];
-    args.forEach((path) => {
-      const fileSystemEntity = getCurrDir().getChildByPath(path);
+const handle_restore = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  let isStaged = false;
+  if (args.length > 0 && args[0] === "--staged") {
+    isStaged = true;
+    args = args.slice(1);
+  }
 
-      if (fileSystemEntity) {
+  const notFound = args.filter((path) => {
+    const fileSystemEntity = getLocalCurrDir().getChildByPath(path);
+
+    if (fileSystemEntity) {
+      if (isStaged) {
         fileSystemEntity.setStateConditional(
-          GIT_STATE.CHANGED,
-          GIT_STATE.ADDED
+          GIT_STATE.ADDED,
+          GIT_STATE.CHANGED
         );
       } else {
-        notFound.push(path);
+        fileSystemEntity
+          .getByState(GIT_STATE.CHANGED, FILE_STATE.DELETED)
+          .forEach((entity) => entity.setNotDeletedDeep());
+
+        fileSystemEntity.setStateConditional(
+          GIT_STATE.CHANGED,
+          GIT_STATE.COMMITTED,
+          [FILE_STATE.MODIFIED, FILE_STATE.DELETED],
+          FILE_STATE.UNCHANGED
+        );
       }
-    });
-
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      -1 * delays.paths.update,
-      null,
-      gitMethods
-    );
-    return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
-  };
-
-const handle_restore =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    let notFound = [];
-
-    let isStaged = false;
-    if (args.length > 0 && args[0] === "--staged") {
-      isStaged = true;
-      args = args.slice(1);
     }
 
-    args.forEach((path) => {
-      const fileSystemEntity = getCurrDir().getChildByPath(path);
+    return !fileSystemEntity;
+  });
 
-      if (fileSystemEntity) {
-        if (isStaged) {
-          fileSystemEntity.setStateConditional(
-            GIT_STATE.ADDED,
-            GIT_STATE.CHANGED
-          );
-        } else {
-          fileSystemEntity
-            .getByState(GIT_STATE.CHANGED, FILE_STATE.DELETED)
-            .forEach((entity) => entity.setNotDeletedDeep());
+  return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
+};
 
-          fileSystemEntity.setStateConditional(
-            GIT_STATE.CHANGED,
-            GIT_STATE.COMMITTED,
-            [FILE_STATE.MODIFIED, FILE_STATE.DELETED],
-            FILE_STATE.UNCHANGED
-          );
-        }
-      } else {
-        notFound.push(path);
-      }
-    });
-
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      -1 * delays.paths.update,
+const handle_commit = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  //todo make is so you can commit certain files
+  const files = [
+    ...getLocalHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
+    ...getLocalHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.MODIFIED),
+    ...getLocalHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.DELETED),
+  ];
+  const filesCopy = files.map((file) => file.copyWithGitId());
+  getLocalHomeDir().removeDeleted();
+  if (files.length > 0) {
+    const commit = getLocalCurrBranch().commitChanges(filesCopy);
+    getLocalHomeDir().setStateConditional(
+      GIT_STATE.ADDED,
+      GIT_STATE.COMMITTED,
       null,
-      gitMethods
+      FILE_STATE.UNCHANGED
     );
-    return notFound.length === 0 ? "" : "Not found: " + notFound.join(", ");
-  };
 
-const handle_commit =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    //todo make is so you can commit certain files
-    const files = [
-      ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
-      ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.MODIFIED),
-      ...getHomeDir().getByState(GIT_STATE.ADDED, FILE_STATE.DELETED),
-    ];
-    const filesCopy = files.map((file) => file.copyWithGitId());
-    getHomeDir().removeDeleted();
-    if (files.length > 0) {
-      const commit = gitMethods.getLocalCurrBranch().commitChanges(filesCopy);
-      getHomeDir().setStateConditional(
-        GIT_STATE.ADDED,
-        GIT_STATE.COMMITTED,
-        null,
-        FILE_STATE.UNCHANGED
+    return { commit };
+  } else {
+    return "nothing to commit";
+  }
+};
+
+//cannot handle merge conflicts
+const handle_pull = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  const localInitialCommit = getLocalInitialCommit();
+  const currRemoteBranch = getRemoteCurrBranch();
+  const commits = currRemoteBranch.getCommitHistory();
+  const lastLocalCommit = localInitialCommit.mergeCommits(commits);
+
+  const localBranch = localInitialCommit.findBranchByGitId(
+    currRemoteBranch.gitId
+  );
+  const localBranchCommit = localBranch.commit;
+  localBranch.switchCommit(lastLocalCommit);
+  const commitPath = getLocalHomeDir().updateToCommit(
+    localBranchCommit,
+    lastLocalCommit
+  );
+
+  return { pull: { commitPath } };
+};
+
+const handle_push = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  const remoteInitialCommit = getRemoteInitialCommit();
+  const currBranch = getLocalCurrBranch();
+  const commits = currBranch.getCommitHistory();
+  const lastRemoteCommit = remoteInitialCommit.mergeCommits(commits);
+
+  let remoteBranch = remoteInitialCommit.findBranchByGitId(currBranch.gitId);
+  const remoteBranchCommit = remoteBranch?.commit;
+  if (!remoteBranch) {
+    remoteBranch = new Branch(currBranch.name);
+    remoteBranch.gitId = currBranch.gitId;
+  }
+  remoteBranch.switchCommit(lastRemoteCommit);
+
+  let commitPath = null;
+  if (currBranch.gitId === getRemoteCurrBranch().gitId) {
+    commitPath = getRemoteHomeDir().updateToCommit(
+      remoteBranchCommit,
+      lastRemoteCommit
+    );
+  }
+
+  return {
+    push: {
+      commitPath,
+    },
+  };
+};
+
+const handle_branch = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  if (args.length === 1) {
+    const name = args[0];
+    if (getLocalInitialCommit().findBranchByName(name)) {
+      return `${name} already exists`;
+    }
+    const branch = new Branch(name);
+    getLocalCurrBranch().commit.insertBranch(branch);
+
+    return "";
+  }
+  return "bad args";
+};
+
+const handle_checkout = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  if (args.length === 1) {
+    const name = args[0];
+    const branch = getLocalInitialCommit().findBranchByName(name);
+
+    if (branch) {
+      getLocalHomeDir().updateToCommit(
+        getLocalCurrBranch().commit,
+        branch.commit
       );
-      updateVisualization(
-        getSvgData(),
-        getHomeDir(),
-        -1 * delays.paths.update,
-        null,
-        gitMethods,
-        { commit }
-      );
+
+      setLocalCurrBranch(branch);
 
       return "";
     } else {
-      return "nothing to commit";
+      return `${name} not found`;
     }
-  };
+  }
+  return "checkout";
+};
 
-//cannot handle merge conflicts
-const handle_pull =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    const localInitialCommit = gitMethods.getLocalInitialCommit();
-    const currRemoteBranch = gitMethods.getRemoteCurrBranch();
-    const commits = currRemoteBranch.getCommitHistory();
-    const lastLocalCommit = localInitialCommit.mergeCommits(commits);
+const handle_status = (
+  args,
+  flags,
+  getLocalCurrDir,
+  getLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  const output = [];
 
-    const localBranch = localInitialCommit.findBranchByGitId(
-      currRemoteBranch.gitId
-    );
-    const localBranchCommit = localBranch.commit;
-    localBranch.switchCommit(lastLocalCommit);
-    getHomeDir().updateToCommit(localBranchCommit, lastLocalCommit);
+  const branchInfo = `<div class="git-status-branch"><p>On branch ${
+    getLocalCurrBranch().name
+  }</p><p>Your branch is up to date with 'origin/main'.</p></div>`;
 
-    updateVisualization(getSvgData(), getHomeDir(), 0, null, gitMethods);
+  const createStatusSection = (
+    title,
+    className,
+    gitState,
+    fileStates,
+    hideStates
+  ) => {
+    const files = getLocalHomeDir().getByState(gitState, fileStates);
 
+    if (files.length > 0) {
+      const relativePaths = getLocalCurrDir().getRelativePaths(files);
+      const fileStates = files.map((file) => `${file.getStateString()}:`);
+
+      const fileStatesHtml = hideStates
+        ? ""
+        : `<div class="git-status-files-statuses"><p>${fileStates.join(
+            "</p><p>"
+          )}</div>`;
+
+      return `<div class="${className}"><p>${title}</p><div class="git-status-files">${fileStatesHtml}<div class="git-status-files-names"><p>${relativePaths.join(
+        "</p><p>"
+      )}<p></div><p></p></div></div>`;
+    }
     return "";
   };
 
-const handle_push =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    const remoteInitialCommit = gitMethods.getRemoteInitialCommit();
-    const currBranch = gitMethods.getLocalCurrBranch();
-    const commits = currBranch.getCommitHistory();
-    const lastRemoteCommit = remoteInitialCommit.mergeCommits(commits);
+  const stagedInfo = createStatusSection(
+    "Changes to be committed:",
+    "git-status-staged",
+    GIT_STATE.ADDED
+  );
 
-    let remoteBranch = remoteInitialCommit.findBranchByGitId(currBranch.gitId);
-    const remoteBranchCommit = remoteBranch?.commit;
-    if (!remoteBranch) {
-      remoteBranch = new Branch(currBranch.name);
-      remoteBranch.gitId = currBranch.gitId;
-    }
-    remoteBranch.switchCommit(lastRemoteCommit);
+  const notStagedInfo = createStatusSection(
+    "Changes not staged for commit:",
+    "git-status-not-staged",
+    GIT_STATE.CHANGED,
+    [FILE_STATE.MODIFIED, FILE_STATE.DELETED, FILE_STATE.RENAMED]
+  );
 
-    let commitPath = null;
-    if (currBranch.gitId === gitMethods.getRemoteCurrBranch().gitId) {
-      commitPath = gitMethods
-        .getRemoteHomeDir()
-        .updateToCommit(remoteBranchCommit, lastRemoteCommit);
-    }
+  const untrackedInfo = createStatusSection(
+    "Untracked files:",
+    "git-status-untracked",
+    GIT_STATE.CHANGED,
+    FILE_STATE.NEW,
+    true
+  );
 
-    updateVisualization(
-      getSvgData(),
-      getHomeDir(),
-      -1 * delays.paths.update,
-      null,
-      gitMethods,
-      {
-        push: {
-          commitPath,
-        },
-      }
-    );
-    return "";
-  };
-
-const handle_branch =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length === 1) {
-      const name = args[0];
-      if (gitMethods.getLocalInitialCommit().findBranchByName(name)) {
-        return `${name} already exists`;
-      }
-      const branch = new Branch(name);
-      gitMethods.getLocalCurrBranch().commit.insertBranch(branch);
-
-      updateVisualization(
-        getSvgData(),
-        getHomeDir(),
-        -1 * delays.paths.update,
-        null,
-        gitMethods
-      );
-
-      return "";
-    }
-    return "bad args";
-  };
-
-const handle_checkout =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    if (args.length === 1) {
-      const name = args[0];
-      const branch = gitMethods.getLocalInitialCommit().findBranchByName(name);
-
-      if (branch) {
-        getHomeDir().updateToCommit(
-          gitMethods.getLocalCurrBranch().commit,
-          branch.commit
-        );
-
-        gitMethods.setLocalCurrBranch(branch);
-
-        updateVisualization(
-          getSvgData(),
-          getHomeDir(),
-          -1 * delays.paths.update,
-          null,
-          gitMethods
-        );
-
-        return "";
-      } else {
-        return `${name} not found`;
-      }
-    }
-    return "checkout";
-  };
-
-const handle_status =
-  (
-    getSvgData,
-    getCurrDir,
-    setCurrDir,
-    getHomeDir,
-    updateVisualization,
-    gitMethods
-  ) =>
-  (args) => {
-    const output = [];
-
-    const branchInfo = `<div class="git-status-branch"><p>On branch ${
-      gitMethods.getLocalCurrBranch().name
-    }</p><p>Your branch is up to date with 'origin/main'.</p></div>`;
-
-    const createStatusSection = (
-      title,
-      className,
-      gitState,
-      fileStates,
-      hideStates
-    ) => {
-      const files = getHomeDir().getByState(gitState, fileStates);
-
-      if (files.length > 0) {
-        const relativePaths = getCurrDir().getRelativePaths(files);
-        const fileStates = files.map((file) => `${file.getStateString()}:`);
-
-        const fileStatesHtml = hideStates
-          ? ""
-          : `<div class="git-status-files-statuses"><p>${fileStates.join(
-              "</p><p>"
-            )}</div>`;
-
-        return `<div class="${className}"><p>${title}</p><div class="git-status-files">${fileStatesHtml}<div class="git-status-files-names"><p>${relativePaths.join(
-          "</p><p>"
-        )}<p></div><p></p></div></div>`;
-      }
-      return "";
-    };
-
-    const stagedInfo = createStatusSection(
-      "Changes to be committed:",
-      "git-status-staged",
-      GIT_STATE.ADDED
-    );
-
-    const notStagedInfo = createStatusSection(
-      "Changes not staged for commit:",
-      "git-status-not-staged",
-      GIT_STATE.CHANGED,
-      [FILE_STATE.MODIFIED, FILE_STATE.DELETED, FILE_STATE.RENAMED]
-    );
-
-    const untrackedInfo = createStatusSection(
-      "Untracked files:",
-      "git-status-untracked",
-      GIT_STATE.CHANGED,
-      FILE_STATE.NEW,
-      true
-    );
-
-    return `<div class="git-status">${branchInfo}${stagedInfo}${notStagedInfo}${untrackedInfo}</div>`;
-  };
+  return `<div class="git-status">${branchInfo}${stagedInfo}${notStagedInfo}${untrackedInfo}</div>`;
+};
 
 function createGitCommandsMap(
   getSvgData,
@@ -395,30 +364,96 @@ function createGitCommandsMap(
   gitMethods
 ) {
   const commandsMap = {
-    clone: handle_clone,
-    add: handle_add,
-    commit: handle_commit,
-    pull: handle_pull,
-    push: handle_push,
-    branch: handle_branch,
-    checkout: handle_checkout,
-    status: handle_status,
-    restore: handle_restore,
+    clone: { method: handle_clone, delay: -1 * delays.paths.update },
+    add: { method: handle_add, delay: -1 * delays.paths.update },
+    commit: { method: handle_commit, delay: -1 * delays.paths.update },
+    pull: { method: handle_pull, delay: 0 },
+    push: { method: handle_push, delay: -1 * delays.paths.update },
+    branch: { method: handle_branch, delay: -1 * delays.paths.update },
+    checkout: { method: handle_checkout, delay: -1 * delays.paths.update },
+    restore: { method: handle_restore, delay: -1 * delays.paths.update },
+    status: { method: handle_status, delay: 0 },
   };
 
-  Object.keys(commandsMap).forEach(
-    (key) =>
-      (commandsMap[key] = commandsMap[key](
-        getSvgData,
-        getCurrDir,
-        setCurrDir,
-        getHomeDir,
-        updateVisualization,
-        gitMethods
-      ))
-  );
+  Object.keys(commandsMap).forEach((key) => {
+    const { method, minArgs, maxArgs, delay } = commandsMap[key];
+    commandsMap[key] = initialize_command_handler(
+      method,
+      minArgs,
+      maxArgs,
+      getCurrDir,
+      getHomeDir,
+      gitMethods.getLocalInitialCommit,
+      gitMethods.setLocalInitialCommit,
+      gitMethods.getLocalCurrBranch,
+      gitMethods.setLocalCurrBranch,
+      gitMethods.getRemoteHomeDir,
+      gitMethods.getRemoteInitialCommit,
+      gitMethods.getRemoteCurrBranch,
+      updateVisualization,
+      delay,
+      getSvgData,
+      gitMethods
+    );
+  });
 
   return commandsMap;
 }
+
+//used for commands that update the visualization
+const initialize_command_handler =
+  (
+    handle_command,
+    minArgs,
+    maxArgs,
+    getLocalCurrDir,
+    getLocalHomeDir,
+    getLocalInitialCommit,
+    setLocalInitialCommit,
+    getLocalCurrBranch,
+    setLocalCurrBranch,
+    getRemoteHomeDir,
+    getRemoteInitialCommit,
+    getRemoteCurrBranch,
+    updateVisualization,
+    updateVisualizationDelay,
+    getSvgData,
+    gitMethods
+  ) =>
+  (args, flags, disableVisualization) => {
+    if (minArgs && args.length < minArgs) {
+      return notEnoughArgs;
+    }
+    if (maxArgs && args.length > maxArgs) {
+      return tooManyArgs;
+    }
+
+    const result = handle_command(
+      args,
+      flags,
+      getLocalCurrDir,
+      getLocalHomeDir,
+      getLocalInitialCommit,
+      setLocalInitialCommit,
+      getLocalCurrBranch,
+      setLocalCurrBranch,
+      getRemoteHomeDir,
+      getRemoteInitialCommit,
+      getRemoteCurrBranch
+    );
+
+    if (!disableVisualization) {
+      updateVisualization(
+        getSvgData(),
+        getLocalHomeDir(),
+        updateVisualizationDelay,
+        getLocalCurrDir().id,
+        gitMethods,
+        typeof result === "string" ? null : result
+      );
+    }
+
+    return typeof result === "string" ? result : "";
+  };
 
 export { handle_git, createGitCommandsMap };
