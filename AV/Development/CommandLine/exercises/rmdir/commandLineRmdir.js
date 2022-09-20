@@ -46,7 +46,7 @@ $(document).ready(function () {
       challengeDescription: 'Remove the "houses" directory.',
     },
     handleAwardCredit,
-    "rmdir",
+    ["rmdir", "rm"],
     initialFileStructure,
     [3, 3]
   );
