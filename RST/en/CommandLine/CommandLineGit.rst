@@ -40,6 +40,10 @@ git restore
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitRestore/gitRestore.html pe 
 
+git pull 
+-----------
+.. avembed:: AV/Development/CommandLine/exercises/gitPull/gitPull.html pe 
+
 git branch
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitBranch/gitBranch.html pe 
@@ -47,10 +51,6 @@ git branch
 git checkout
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitCheckout/gitCheckout.html pe 
-
-git pull 
------------
-.. avembed:: AV/Development/CommandLine/exercises/gitPull/gitPull.html pe 
 
 Challenge 1 
 ------------

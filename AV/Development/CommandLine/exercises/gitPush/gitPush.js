@@ -20,14 +20,8 @@ $(document).ready(function () {
       if (args.length > 0 && args[0] === "push") {
         const src = getLocalHomeDir().findDeep("src");
         if (src) {
-          const index = src.find("index.html");
           const app = src.find("app.js");
-          if (
-            index &&
-            app &&
-            index.isState(GIT_STATE.COMMITTED) &&
-            app.isState(GIT_STATE.COMMITTED)
-          ) {
+          if (app && app.isState(GIT_STATE.COMMITTED)) {
             awardCredit();
           }
         }
@@ -40,12 +34,12 @@ $(document).ready(function () {
       commandDescription:
         "The git push command pushes the local changes to remote.",
       challengeDescription:
-        'Push the local changes to remote. Notice local contains a commit that does not exist on remote yet. This commit contains the changes to "index.html" and "app.js"',
+        'Push the local changes to remote. Notice local contains a commit that does not exist on remote yet. This commit contains the newly created file "app.js"',
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    ["cd src", "vi index.html app.js", "git add .", "git commit"]
+    ["cd src", "touch app.js", "git add .", "git commit"]
   );
 });

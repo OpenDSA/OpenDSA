@@ -35,6 +35,6 @@ $(document).ready(function () {
     "git",
     null,
     null,
-    ["cd src", "vi index.html app.js", "git add .", "git commit", "git push"]
+    ["cd src", "touch app.js", "git add .", "git commit", "git push"]
   );
 });

@@ -46,7 +46,7 @@ $(document).ready(function () {
     "git",
     null,
     null,
-    ["cd src"],
-    ["touch new.txt", "vi README", "git add .", "git commit"]
+    ["cd src", "touch app.js", "git add .", "git commit", "git push"],
+    ["touch new.txt", "git add .", "git commit"]
   );
 });

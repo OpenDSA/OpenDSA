@@ -39,12 +39,19 @@ $(document).ready(function () {
       commandTitle: "git restore (path)",
       commandDescription:
         "The git restore command undos the changes made to file or directory at the location specified by (path) to the staging area. Multiple (path) values can be provided to restore multiple files or directories.",
-      challengeDescription: "Restore all the modified files.",
+      challengeDescription: "Restore the change to index.html.",
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    ["cd src", "vi index.html app.js"]
+    [
+      "cd src",
+      "touch app.js",
+      "git add .",
+      "git commit",
+      "git push",
+      "vi index.html",
+    ]
   );
 });

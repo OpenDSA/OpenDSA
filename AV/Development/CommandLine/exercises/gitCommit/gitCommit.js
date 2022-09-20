@@ -20,14 +20,8 @@ $(document).ready(function () {
       if (args.length > 0 && args[0] === "commit") {
         const src = getLocalHomeDir().findDeep("src");
         if (src) {
-          const index = src.find("index.html");
           const app = src.find("app.js");
-          if (
-            index &&
-            app &&
-            index.isState(GIT_STATE.COMMITTED) &&
-            app.isState(GIT_STATE.COMMITTED)
-          ) {
+          if (app && app.isState(GIT_STATE.COMMITTED)) {
             awardCredit();
           }
         }
@@ -46,6 +40,6 @@ $(document).ready(function () {
     "git",
     null,
     null,
-    ["cd src", "vi index.html app.js", "git add ."]
+    ["cd src", "touch app.js", "git add ."]
   );
 });

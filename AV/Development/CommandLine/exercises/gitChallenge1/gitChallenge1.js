@@ -19,7 +19,7 @@ $(document).ready(function () {
     (args) => {
       if (args.length > 0 && args[0] === "push") {
         const src = getRemoteHomeDir().findDeep("src");
-        if (src && src.find("test.js") && !src.find("app.js")) {
+        if (src && src.find("app.js") && !src.find("index.html")) {
           awardCredit();
         }
       }
@@ -31,12 +31,12 @@ $(document).ready(function () {
       commandDescription:
         "This challenge will require the usage of multiple commands.",
       challengeDescription:
-        'Remove "app.js" and create a new file named "test.js" in "src". Then, update remote with these changes.',
+        'Remove "index.html" and create a new file named "app.js" in "src". Then, update remote with these changes.',
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    []
+    ["cd src"]
   );
 });

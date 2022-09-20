@@ -1,6 +1,6 @@
 {
-  "title": "Command Line and Git",
-  "desc": "Learn core command line and git commands through visualizations.",
+  "title": "Git",
+  "desc": "Learn core git commands through visualizations.",
   "build_dir": "Books",
   "theme": "haiku",
   "html_theme_options": {

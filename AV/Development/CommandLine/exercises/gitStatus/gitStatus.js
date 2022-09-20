@@ -28,12 +28,12 @@ $(document).ready(function () {
       commandDescription:
         "The git status command prints the status of the files.",
       challengeDescription:
-        'Run git status. Notice "index.html" and "app.js" have been modified.',
+        'Run git status. Notice "app.js" is a new file and is untracked by Git.',
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    ["cd src", "vi index.html app.js"]
+    ["cd src", "touch app.js"]
   );
 });
