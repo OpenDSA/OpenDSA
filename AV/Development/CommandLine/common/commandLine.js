@@ -88,10 +88,17 @@ function callCommand(
   }
 
   if (commandsMap[command] && !disabledCommands.includes(command)) {
-    const args = values
-      .slice(1)
-      .filter((arg) => arg !== "" && !arg.startsWith("-"));
-    const flags = values.slice(1).filter((flag) => flag.startsWith("-"));
+    const flags = {};
+    let args = values.slice(1).filter((arg) => arg !== "");
+
+    args = args.filter((arg, index) => {
+      if (arg.startsWith("-")) {
+        flags[arg] = index + 1 < args.length ? args[index + 1] : "";
+        return false;
+      }
+      return true;
+    });
+
     const output = commandsMap[command](args, flags, disableVisualization);
 
     if (awardCreditHandler[command]) {

@@ -143,7 +143,7 @@ const handle_touch = (args, flags, getCurrDir, setCurrDir) => {
 };
 
 const handle_cp = (args, flags, getCurrDir, setCurrDir) => {
-  const isRecursive = flags.includes("-r");
+  const isRecursive = "-r" in flags;
   const result = copyHelper(args, getCurrDir, isRecursive, false);
   return result;
 };
@@ -154,7 +154,7 @@ const handle_mv = (args, flags, getCurrDir, setCurrDir) => {
 };
 
 const handle_rm = (args, flags, getCurrDir, setCurrDir) => {
-  const isRecursive = flags.includes("-r");
+  const isRecursive = "-r" in flags;
 
   const results = args.map((arg) => {
     const { parent, child, error } = getDataByPathErrorWrapper(

@@ -29,6 +29,8 @@ const handle_clone = (
     !getLocalInitialCommit()
   ) {
     const remoteHomeDir = getRemoteHomeDir().copyWithGitId();
+    // setLocalHomeDir(remoteHomeDir)
+    // setLocalCurrDir(remoteHomeDir)
     remoteHomeDir.getContents().forEach((content) => {
       getLocalHomeDir().insert(content);
     });
@@ -83,11 +85,7 @@ const handle_restore = (
   getRemoteInitialCommit,
   getRemoteCurrBranch
 ) => {
-  let isStaged = false;
-  if (args.length > 0 && args[0] === "--staged") {
-    isStaged = true;
-    args = args.slice(1);
-  }
+  const isStaged = "--staged" in flags;
 
   const notFound = args.filter((path) => {
     const fileSystemEntity = getLocalCurrDir().getChildByPath(path);
@@ -364,7 +362,12 @@ function createGitCommandsMap(
   gitMethods
 ) {
   const commandsMap = {
-    clone: { method: handle_clone, delay: -1 * delays.paths.update },
+    clone: {
+      method: handle_clone,
+      delay: -1 * delays.paths.update,
+      maxArgs: 1,
+      minArgs: 1,
+    },
     add: { method: handle_add, delay: -1 * delays.paths.update },
     commit: { method: handle_commit, delay: -1 * delays.paths.update },
     pull: { method: handle_pull, delay: 0 },
@@ -421,10 +424,10 @@ const initialize_command_handler =
     gitMethods
   ) =>
   (args, flags, disableVisualization) => {
-    if (minArgs && args.length < minArgs) {
+    if ((minArgs || minArgs === 0) && args.length < minArgs) {
       return notEnoughArgs;
     }
-    if (maxArgs && args.length > maxArgs) {
+    if ((maxArgs || maxArgs === 0) && args.length > maxArgs) {
       return tooManyArgs;
     }
 
