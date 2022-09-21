@@ -13,7 +13,14 @@ const subdirectory = (src, dst) =>
   `Cannot move '${src}' to subdirectory of itself '${dst}'`;
 const notAFile = (path) => `${path} is not a file name`;
 const removeDescendant = (path) =>
-  `'${path}' contains the current working directory, so it cannot be removed.`;
+  `'${path}' contains the current working directory, so it cannot be removed`;
+const noFilesExist = "No files or folders exist";
+
+const invalidGitURL = (url) => `'${url}' cannot be accessed`;
+const alreadyCloned = "Remote has already been cloned";
+
+const commmandNotFound = (command) => `'${command}' not found`;
+const commandDisabled = (command) => `'${command}' is disabled`;
 
 export {
   tooManyArgs,
@@ -28,4 +35,9 @@ export {
   subdirectory,
   notAFile,
   removeDescendant,
+  invalidGitURL,
+  alreadyCloned,
+  commmandNotFound,
+  commandDisabled,
+  noFilesExist,
 };

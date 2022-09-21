@@ -15,6 +15,7 @@ import {
   subdirectory,
   notAFile,
   removeDescendant,
+  noFilesExist,
 } from "./errorMessages.js";
 
 const createOutputList = (lines) => {
@@ -25,6 +26,9 @@ const createOutputList = (lines) => {
 };
 
 const handle_ls = (getSvgData, getCurrDir) => (args) => {
+  if (!getCurrDir()) {
+    return noFilesExist;
+  }
   if (args.length > 1) {
     return tooManyArgs;
   }
@@ -58,6 +62,10 @@ const handle_ls = (getSvgData, getCurrDir) => (args) => {
 };
 
 const handle_pwd = (getSvgData, getCurrDir) => (args) => {
+  if (!getCurrDir()) {
+    return noFilesExist;
+  }
+
   if (args.length > 0) {
     return tooManyArgs;
   }
@@ -428,6 +436,9 @@ const initialize_command_handler =
     gitMethods
   ) =>
   (args, flags, disableVisualization) => {
+    if (!getHomeDir()) {
+      return noFilesExist;
+    }
     if (minArgs && args.length < minArgs) {
       return notEnoughArgs;
     }

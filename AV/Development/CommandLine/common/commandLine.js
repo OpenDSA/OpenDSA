@@ -1,4 +1,5 @@
 import { updateCommandLinePrompt } from "./commandLineExercise.js";
+import { commandDisabled, commmandNotFound } from "./errorMessages.js";
 
 const createHandleKeydown =
   (
@@ -8,7 +9,8 @@ const createHandleKeydown =
     awardCreditHandler,
     disabledCommands,
     getCurrDir,
-    commandHistory
+    commandHistory,
+    disableAllCommandsExcept
   ) =>
   (event) => {
     const keycode = event.keyCode ? event.keyCode : event.which;
@@ -21,7 +23,9 @@ const createHandleKeydown =
         input,
         commandsMap,
         awardCreditHandler,
-        disabledCommands
+        disabledCommands,
+        false,
+        disableAllCommandsExcept
       );
 
       commandHistory.enter();
@@ -77,7 +81,8 @@ function callCommand(
   commandsMap,
   awardCreditHandler,
   disabledCommands,
-  disableVisualization
+  disableVisualization,
+  disableAllCommandsExcept
 ) {
   const values = input.split(/\s+/);
 
@@ -87,29 +92,53 @@ function callCommand(
     return "";
   }
 
-  if (commandsMap[command] && !disabledCommands.includes(command)) {
-    const flags = {};
-    let args = values.slice(1).filter((arg) => arg !== "");
-
-    args = args.filter((arg, index) => {
-      if (arg.startsWith("-")) {
-        flags[arg] = index + 1 < args.length ? args[index + 1] : "";
-        return false;
-      }
-      return true;
-    });
-
-    const output = commandsMap[command](args, flags, disableVisualization);
-
-    if (awardCreditHandler[command]) {
-      awardCreditHandler[command](args);
-    }
-
-    return output;
+  if (!commandsMap[command]) {
+    return commmandNotFound(command);
   }
 
-  return "Command not found";
+  const disabledCommand = findCommand(values, disabledCommands);
+  if (disabledCommand) {
+    return commandDisabled(disabledCommand);
+  }
+
+  if (disableAllCommandsExcept) {
+    const disableAllExcept = findCommand(values, disableAllCommandsExcept);
+    if (!disableAllExcept) {
+      return commandDisabled(input);
+    }
+  }
+
+  const flags = {};
+  let args = values.slice(1).filter((arg) => arg !== "");
+
+  args = args.filter((arg, index) => {
+    if (arg.startsWith("-")) {
+      flags[arg] = index + 1 < args.length ? args[index + 1] : "";
+      return false;
+    }
+    return true;
+  });
+
+  const output = commandsMap[command](args, flags, disableVisualization);
+
+  if (awardCreditHandler[command]) {
+    awardCreditHandler[command](args);
+  }
+
+  return output;
 }
+
+const findCommand = (splitCommand, commands) =>
+  commands.find((command) => {
+    const disabledCommandSplit = command.split(/\s+/);
+    if (disabledCommandSplit.length > splitCommand) {
+      return false;
+    }
+
+    return disabledCommandSplit.every(
+      (part, index) => part === splitCommand[index]
+    );
+  });
 
 function initializeCommandLine(
   inputId,
@@ -118,7 +147,8 @@ function initializeCommandLine(
   awardCreditHandler,
   disabledCommands,
   getCurrDir,
-  commandHistory
+  commandHistory,
+  disableAllCommandsExcept
 ) {
   const handleKeydown = createHandleKeydown(
     inputId,
@@ -127,7 +157,8 @@ function initializeCommandLine(
     awardCreditHandler,
     disabledCommands ? disabledCommands : [],
     getCurrDir,
-    commandHistory
+    commandHistory,
+    disableAllCommandsExcept
   );
   $(inputId).keydown(handleKeydown);
 

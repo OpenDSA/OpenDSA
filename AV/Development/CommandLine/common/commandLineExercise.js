@@ -153,7 +153,8 @@ function initializeGitExercise(
   initialCwdIndexPath,
   initialCommands,
   initialRemoteCommands,
-  emptyLocal
+  emptyLocal,
+  disableAllCommandsExcept
 ) {
   // Load the config object with interpreter and code created by odsaUtils.js
   //   const config = ODSA.UTILS.loadConfig();
@@ -180,7 +181,8 @@ function initializeGitExercise(
   remoteHomeDir.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
 
   if (emptyLocal) {
-    localHomeDir.contents = [];
+    localHomeDir = null;
+    localCurrDir = null;
     localCurrBranch = null;
     localInitialCommit = null;
   }
@@ -189,6 +191,10 @@ function initializeGitExercise(
 
   function getLocalHomeDir() {
     return localHomeDir;
+  }
+
+  function setLocalHomeDir(dir) {
+    localHomeDir = dir;
   }
 
   function getLocalCurrDir() {
@@ -244,6 +250,7 @@ function initializeGitExercise(
     getRemoteCurrBranch,
     setRemoteCurrBranch,
     setLocalInitialCommit,
+    setLocalHomeDir,
   };
 
   const commandsMap = createCommandsMap(
@@ -279,7 +286,7 @@ function initializeGitExercise(
     });
   }
 
-  updateCommandLinePrompt(getLocalCurrDir());
+  updateCommandLinePrompt(localCurrDir);
 
   let resizeCount = 0;
 
@@ -289,10 +296,9 @@ function initializeGitExercise(
     const id = "#visualization-container";
     const visualizationWidth = $(id).width();
     const visualizationHeight = $(id).height();
-    const d3Data = localHomeDir.mapToD3();
     svgData = renderGitVisualization(
       getLocalHomeDir(),
-      getLocalCurrDir().id,
+      getLocalCurrDir()?.id,
       gitMethods,
       visualizationWidth,
       visualizationHeight,
@@ -327,7 +333,8 @@ function initializeGitExercise(
     awardCreditHandler,
     [],
     getLocalCurrDir,
-    commandHistory
+    commandHistory,
+    disableAllCommandsExcept
   );
 }
 
@@ -347,7 +354,7 @@ function updateCommandLinePrompt(currDir) {
 }
 
 function createCommandLinePrompt(currDir) {
-  return `${currDir.getPath()} $`;
+  return `${currDir ? currDir.getPath() : "/"} $`;
 }
 export {
   initializeCommandLineExercise,

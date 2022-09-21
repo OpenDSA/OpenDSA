@@ -1,4 +1,10 @@
-import { notEnoughArgs, tooManyArgs } from "./errorMessages.js";
+import {
+  alreadyCloned,
+  invalidGitURL,
+  noFilesExist,
+  notEnoughArgs,
+  tooManyArgs,
+} from "./errorMessages.js";
 import { delays } from "./fileStructure.js";
 import { Branch, Commit } from "./gitClasses.js";
 import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
@@ -15,7 +21,9 @@ const handle_clone = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -24,34 +32,36 @@ const handle_clone = (
   getRemoteInitialCommit,
   getRemoteCurrBranch
 ) => {
-  if (
-    getLocalHomeDir().getContents().length === 0 &&
-    !getLocalInitialCommit()
-  ) {
-    const remoteHomeDir = getRemoteHomeDir().copyWithGitId();
-    // setLocalHomeDir(remoteHomeDir)
-    // setLocalCurrDir(remoteHomeDir)
-    remoteHomeDir.getContents().forEach((content) => {
-      getLocalHomeDir().insert(content);
-    });
-    const remoteInitialCommit = getRemoteInitialCommit().copy();
-    const remoteCurrBranch = getRemoteCurrBranch();
-    setLocalInitialCommit(remoteInitialCommit);
-    setLocalCurrBranch(
-      remoteInitialCommit.findBranchByGitId(remoteCurrBranch.gitId)
-    );
-
-    return { clone: true };
+  //TODO don't hard code this
+  if (args[0] !== "https://github.com/Sample/Sample.git") {
+    return invalidGitURL(args[0]);
   }
 
-  return "Cannot clone unless local is empty";
+  if (getLocalHomeDir() || getLocalInitialCommit()) {
+    return alreadyCloned;
+  }
+
+  const remoteHomeDir = getRemoteHomeDir().copyWithGitId();
+  setLocalHomeDir(remoteHomeDir);
+  setLocalCurrDir(remoteHomeDir);
+
+  const remoteInitialCommit = getRemoteInitialCommit().copy();
+  const remoteCurrBranch = getRemoteCurrBranch();
+  setLocalInitialCommit(remoteInitialCommit);
+  setLocalCurrBranch(
+    remoteInitialCommit.findBranchByGitId(remoteCurrBranch.gitId)
+  );
+
+  return { clone: true };
 };
 
 const handle_add = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -76,7 +86,9 @@ const handle_restore = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -120,7 +132,9 @@ const handle_commit = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -157,7 +171,9 @@ const handle_pull = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -188,7 +204,9 @@ const handle_push = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -229,7 +247,9 @@ const handle_branch = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -255,7 +275,9 @@ const handle_checkout = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -288,7 +310,9 @@ const handle_status = (
   args,
   flags,
   getLocalCurrDir,
+  setLocalCurrDir,
   getLocalHomeDir,
+  setLocalHomeDir,
   getLocalInitialCommit,
   setLocalInitialCommit,
   getLocalCurrBranch,
@@ -367,6 +391,7 @@ function createGitCommandsMap(
       delay: -1 * delays.paths.update,
       maxArgs: 1,
       minArgs: 1,
+      isClone: true,
     },
     add: { method: handle_add, delay: -1 * delays.paths.update },
     commit: { method: handle_commit, delay: -1 * delays.paths.update },
@@ -375,17 +400,19 @@ function createGitCommandsMap(
     branch: { method: handle_branch, delay: -1 * delays.paths.update },
     checkout: { method: handle_checkout, delay: -1 * delays.paths.update },
     restore: { method: handle_restore, delay: -1 * delays.paths.update },
-    status: { method: handle_status, delay: 0 },
+    status: { method: handle_status, delay: 0, maxArgs: 0 },
   };
 
   Object.keys(commandsMap).forEach((key) => {
-    const { method, minArgs, maxArgs, delay } = commandsMap[key];
+    const { method, minArgs, maxArgs, delay, isClone } = commandsMap[key];
     commandsMap[key] = initialize_command_handler(
       method,
       minArgs,
       maxArgs,
       getCurrDir,
+      setCurrDir,
       getHomeDir,
+      gitMethods.setLocalHomeDir,
       gitMethods.getLocalInitialCommit,
       gitMethods.setLocalInitialCommit,
       gitMethods.getLocalCurrBranch,
@@ -396,7 +423,8 @@ function createGitCommandsMap(
       updateVisualization,
       delay,
       getSvgData,
-      gitMethods
+      gitMethods,
+      isClone
     );
   });
 
@@ -410,7 +438,9 @@ const initialize_command_handler =
     minArgs,
     maxArgs,
     getLocalCurrDir,
+    setLocalCurrDir,
     getLocalHomeDir,
+    setLocalHomeDir,
     getLocalInitialCommit,
     setLocalInitialCommit,
     getLocalCurrBranch,
@@ -421,9 +451,15 @@ const initialize_command_handler =
     updateVisualization,
     updateVisualizationDelay,
     getSvgData,
-    gitMethods
+    gitMethods,
+    isClone
   ) =>
   (args, flags, disableVisualization) => {
+    //TODO think of cleaner way to handle clone
+    if (!getLocalHomeDir() && !isClone) {
+      return noFilesExist;
+    }
+
     if ((minArgs || minArgs === 0) && args.length < minArgs) {
       return notEnoughArgs;
     }
@@ -435,7 +471,9 @@ const initialize_command_handler =
       args,
       flags,
       getLocalCurrDir,
+      setLocalCurrDir,
       getLocalHomeDir,
+      setLocalHomeDir,
       getLocalInitialCommit,
       setLocalInitialCommit,
       getLocalCurrBranch,

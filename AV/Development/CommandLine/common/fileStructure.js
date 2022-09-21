@@ -872,16 +872,18 @@ const createGitVisualizationData = (
   padding,
   scale
 ) => {
-  const localFileTreeData = createFileTreeData(
-    localHomeDir,
-    0,
-    0,
-    width / 2,
-    height / 2,
-    padding,
-    padding,
-    scale
-  );
+  const localFileTreeData = localHomeDir
+    ? createFileTreeData(
+        localHomeDir,
+        0,
+        0,
+        width / 2,
+        height / 2,
+        padding,
+        padding,
+        scale
+      )
+    : null;
 
   const remoteFileTreeData = createFileTreeData(
     remoteHomeDir,
@@ -952,15 +954,17 @@ const createGitVisualization = (
   scale,
   currDirId
 ) => {
-  createFileTree(
-    svgGroup,
-    localFileTreeData,
-    currDirId,
-    true,
-    "local",
-    delayOffset,
-    scale
-  );
+  if (localFileTreeData) {
+    createFileTree(
+      svgGroup,
+      localFileTreeData,
+      currDirId,
+      true,
+      "local",
+      delayOffset,
+      scale
+    );
+  }
 
   createFileTree(
     svgGroup,
