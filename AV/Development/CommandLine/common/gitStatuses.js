@@ -18,8 +18,7 @@ const FILE_STATE = Object.freeze({
 const GIT_STATE = Object.freeze({
   CHANGED: "changed",
   ADDED: "added",
-  COMMITTED: "committed",
-  MERGED: "merged",
+  COMMITTED: "committed", //committed is also the default
 });
 
 export { GIT_STATUSES, FILE_STATE, GIT_STATE };

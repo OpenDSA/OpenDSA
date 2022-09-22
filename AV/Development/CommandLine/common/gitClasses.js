@@ -7,6 +7,7 @@ class Commit {
     this.parent = undefined;
     this.branches = [];
     this.files = [];
+    this.message = "";
     this.id = ++count;
     this.gitId = ++gitIdCount; //used to pair between local and remote
   }
@@ -172,10 +173,11 @@ class Branch {
     commit.insertBranch(this);
   }
 
-  commitChanges(files) {
+  commitChanges(files, message) {
     this.commit.removeBranch(this);
     const commit = this.commit.insertChild();
     commit.files = files;
+    commit.message = message;
     commit.insertBranch(this);
     return commit;
   }

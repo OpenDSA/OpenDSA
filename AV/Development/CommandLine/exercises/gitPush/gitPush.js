@@ -40,6 +40,6 @@ $(document).ready(function () {
     "git",
     null,
     null,
-    ["cd src", "touch app.js", "git add .", "git commit"]
+    ["cd src", "touch app.js", "git add .", 'git commit -m "test"']
   );
 });

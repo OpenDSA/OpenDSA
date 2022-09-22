@@ -37,10 +37,9 @@ $(document).ready(function () {
     null,
     [
       "cd src",
-      "vi index.html app.js",
+      "touch app.js",
       "git add .",
-      "git commit",
-      "git push",
+      'git commit -m "test"',
       "git branch develop",
     ]
   );

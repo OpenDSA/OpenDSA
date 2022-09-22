@@ -56,7 +56,7 @@ class FileSystemEntity {
     return curr;
   }
 
-  getDataByPath(path) {
+  getDataByPath(path, includeDeleted) {
     const pathInfo = getPathInfo(path);
 
     let parent = pathInfo.isAbsolute ? this.getRoot() : this;
@@ -66,7 +66,7 @@ class FileSystemEntity {
       pathInfo.isAbsolute && !pathInfo.childName
         ? parent
         : parent
-        ? parent.find(pathInfo.childName)
+        ? parent.find(pathInfo.childName, includeDeleted)
         : null;
 
     if (pathInfo.childNameIsDirectory && !(child instanceof Directory)) {
@@ -81,8 +81,65 @@ class FileSystemEntity {
     };
   }
 
-  getChildByPath(path) {
-    return this.getDataByPath(path).child;
+  getChildByPath(path, includeDeleted) {
+    return this.getDataByPath(path, includeDeleted).child;
+  }
+
+  getChildByPathWithDeleted(path) {
+    return this.getChildByPath(path, true);
+  }
+
+  getAddedFiles() {
+    return [
+      ...this.getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
+      ...this.getByState(GIT_STATE.ADDED, FILE_STATE.MODIFIED),
+      ...this.getByState(GIT_STATE.ADDED, FILE_STATE.DELETED),
+    ];
+  }
+
+  //does not include untracked
+  getAddedAndChanged() {
+    return [
+      ...this.getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
+      ...this.getByState(
+        [GIT_STATE.ADDED, GIT_STATE.CHANGED],
+        FILE_STATE.MODIFIED
+      ),
+      ...this.getByState(
+        [GIT_STATE.ADDED, GIT_STATE.CHANGED],
+        FILE_STATE.DELETED
+      ),
+    ];
+  }
+
+  setAddedAndChangedToCommitted() {
+    this.setStateConditional(
+      GIT_STATE.ADDED,
+      GIT_STATE.COMMITTED,
+      null,
+      FILE_STATE.UNCHANGED
+    );
+
+    this.setStateConditional(
+      GIT_STATE.CHANGED,
+      GIT_STATE.COMMITTED,
+      [FILE_STATE.MODIFIED, FILE_STATE.DELETED],
+      FILE_STATE.UNCHANGED
+    );
+  }
+
+  setAddedToCommitted() {
+    this.setStateConditional(
+      GIT_STATE.ADDED,
+      GIT_STATE.COMMITTED,
+      null,
+      FILE_STATE.UNCHANGED
+    );
+  }
+
+  isUntracked() {
+    const untracked = this.getByState(GIT_STATE.CHANGED, FILE_STATE.NEW);
+    return untracked.length === 1 && untracked[0] === this;
   }
 }
 
@@ -110,8 +167,13 @@ class File extends FileSystemEntity {
   }
 
   removeDeleted() {
-    //just the base case
-    return null;
+    console.log("this", this);
+    if (this.getIsDeleted()) {
+      this.parent.contents = this.parent.contents.filter(
+        (content) => content !== this
+      );
+      this.parent = null;
+    }
   }
 
   copy() {
@@ -216,6 +278,14 @@ class File extends FileSystemEntity {
 
   flatten() {
     return this;
+  }
+
+  getFilesDeep() {
+    return this;
+  }
+
+  countFiles() {
+    return 1;
   }
 }
 
@@ -325,8 +395,10 @@ class Directory extends FileSystemEntity {
     }
   }
 
-  getContents() {
-    return this.contents.filter((content) => !content.getIsDeleted());
+  getContents(includeDeleted) {
+    return includeDeleted
+      ? this.contents
+      : this.contents.filter((content) => !content.getIsDeleted());
   }
 
   getContentsWithDeleted() {
@@ -339,13 +411,13 @@ class Directory extends FileSystemEntity {
     );
   }
 
-  find(name) {
+  find(name, includeDeleted) {
     if (name === ".") {
       return this;
     } else if (name === "..") {
       return this.parent;
     }
-    return this.getContents().find(
+    return this.getContents(includeDeleted).find(
       (fileSystemEntity) => fileSystemEntity.name === name
     );
   }
@@ -396,8 +468,8 @@ class Directory extends FileSystemEntity {
     return found || foundDeep;
   }
 
-  getRestOfName(value) {
-    const data = this.getDataByPath(value);
+  getRestOfName(value, includeDeleted) {
+    const data = this.getDataByPath(value, includeDeleted);
 
     if (data.childName === ".." && data.child && !value.endsWith("/")) {
       return "/";
@@ -409,9 +481,10 @@ class Directory extends FileSystemEntity {
     }
     const startsWith = data.childNameIsDirectory ? "" : data.childName;
 
-    const files = dir
-      .getContents()
-      .filter((content) => content.name.startsWith(startsWith));
+    const contents = dir.getContents(includeDeleted);
+    const files = contents.filter((content) =>
+      content.name.startsWith(startsWith)
+    );
     if (files.length === 0) {
       return "";
     }
@@ -500,6 +573,13 @@ class Directory extends FileSystemEntity {
   removeDeleted() {
     this.contents = this.getContents();
     this.getContentsWithDeleted().forEach((content) => content.removeDeleted());
+
+    if (this.getIsDeleted()) {
+      this.parent.contents = this.parent.contents.filter(
+        (content) => content !== this
+      );
+      this.parent = null;
+    }
   }
 
   followIndexPath(path) {
@@ -644,6 +724,21 @@ class Directory extends FileSystemEntity {
       this,
       ...this.getContentsWithDeleted().flatMap((content) => content.flatten()),
     ];
+  }
+
+  getFilesDeep() {
+    return [
+      ...this.getContentsWithDeleted().flatMap((content) =>
+        content.getFilesDeep()
+      ),
+    ];
+  }
+
+  countFiles() {
+    return this.getContentsWithDeleted().reduce(
+      (sum, file) => sum + file.countFiles(),
+      0
+    );
   }
 }
 

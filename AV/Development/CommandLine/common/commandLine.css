@@ -158,6 +158,12 @@
   margin: 0;
 }
 
+.git-commit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .git-status-branch {
 }
 

@@ -21,13 +21,7 @@ $(document).ready(function () {
         const src = getLocalHomeDir().findDeep("src");
         if (src) {
           const index = src.find("index.html");
-          const app = src.find("app.js");
-          if (
-            index &&
-            app &&
-            index.isState(GIT_STATE.COMMITTED) &&
-            app.isState(GIT_STATE.COMMITTED)
-          ) {
+          if (index && index.isState(GIT_STATE.COMMITTED)) {
             awardCredit();
           }
         }

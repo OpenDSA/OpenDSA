@@ -22,6 +22,23 @@ const alreadyCloned = "Remote has already been cloned";
 const commmandNotFound = (command) => `'${command}' not found`;
 const commandDisabled = (command) => `'${command}' is disabled`;
 
+const commitRequiresMessage = "Requires a message specified after the -m flag";
+const messageEnclosed = "Message must be enclosed in quotes";
+const messageEmpty = "Message cannot be empty";
+const noChangesToCommit = "No changes committed";
+const filesAndA = "Cannot use -a flag when committing specific files";
+const untracked = (path) => `${path} is not tracked by Git`;
+const branchAlreadyExists = (name) => `'${name}' branch already exists`;
+const branchNotFound = (name) => `'${name}' branch does not exist`;
+const checkoutHandleChanges =
+  "Must commit or undo all changes before switching branches";
+const pullUpToDate = "Nothing to pull. Already up to date";
+const pushUpToDate = "Nothing to push. Everything up to date";
+const localRemoteDivergedPull = "Cannot pull. Local and remote have diverged";
+const localRemoteDivergedPush = "Cannot push. Local and remote have diverged";
+const branchNotRemote = (name) =>
+  `'${name}' is not tracking a remote branch to pull from`;
+
 export {
   tooManyArgs,
   notEnoughArgs,
@@ -40,4 +57,18 @@ export {
   commmandNotFound,
   commandDisabled,
   noFilesExist,
+  commitRequiresMessage,
+  messageEnclosed,
+  messageEmpty,
+  noChangesToCommit,
+  filesAndA,
+  untracked,
+  branchAlreadyExists,
+  branchNotFound,
+  checkoutHandleChanges,
+  pullUpToDate,
+  localRemoteDivergedPull,
+  localRemoteDivergedPush,
+  branchNotRemote,
+  pushUpToDate,
 };

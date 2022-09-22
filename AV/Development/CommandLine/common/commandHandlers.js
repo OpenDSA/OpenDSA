@@ -406,7 +406,7 @@ const copyHelper = (args, getCurrDir, isRecursive, shouldRemove) => {
     return "";
   });
 
-  return createOutputList(results);
+  return results;
 };
 
 const getDataByPathErrorWrapper = (path, startDir) => {
@@ -464,4 +464,4 @@ const initialize_command_handler =
     return resultIsArray ? createOutputList(result) : result;
   };
 
-export { createCommandsMap };
+export { createCommandsMap, createOutputList };
