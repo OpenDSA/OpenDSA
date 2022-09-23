@@ -1,6 +1,7 @@
 import { createOutputList } from "./commandHandlers.js";
 import {
   alreadyCloned,
+  alreadyOnBranch,
   branchAlreadyExists,
   branchNotFound,
   branchNotRemote,
@@ -444,6 +445,73 @@ const handle_checkout = (
   getRemoteInitialCommit,
   getRemoteCurrBranch
 ) => {
+  return changeBranchHelper(
+    args,
+    flags,
+    "-b",
+    getLocalCurrDir,
+    setLocalCurrDir,
+    getLocalHomeDir,
+    setLocalHomeDir,
+    getLocalInitialCommit,
+    setLocalInitialCommit,
+    getLocalCurrBranch,
+    setLocalCurrBranch,
+    getRemoteHomeDir,
+    getRemoteInitialCommit,
+    getRemoteCurrBranch
+  );
+};
+
+const handle_switch = (
+  args,
+  flags,
+  getLocalCurrDir,
+  setLocalCurrDir,
+  getLocalHomeDir,
+  setLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  return changeBranchHelper(
+    args,
+    flags,
+    "-c",
+    getLocalCurrDir,
+    setLocalCurrDir,
+    getLocalHomeDir,
+    setLocalHomeDir,
+    getLocalInitialCommit,
+    setLocalInitialCommit,
+    getLocalCurrBranch,
+    setLocalCurrBranch,
+    getRemoteHomeDir,
+    getRemoteInitialCommit,
+    getRemoteCurrBranch
+  );
+};
+
+const changeBranchHelper = (
+  args,
+  flags,
+  createFlag,
+  getLocalCurrDir,
+  setLocalCurrDir,
+  getLocalHomeDir,
+  setLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
   if (
     getLocalHomeDir().getByState([GIT_STATE.ADDED, GIT_STATE.CHANGED])
       .length !== 0
@@ -452,10 +520,15 @@ const handle_checkout = (
   }
 
   const name = args[0];
+
+  if (name === getLocalCurrBranch().name) {
+    return alreadyOnBranch(name);
+  }
+
   let branch = getLocalInitialCommit().findBranchByName(name);
 
-  if (!branch && !("-b" in flags)) {
-    return branchNotFound;
+  if (!branch && !(createFlag in flags)) {
+    return branchNotFound(name);
   }
 
   if (!branch) {
@@ -703,6 +776,12 @@ function createGitCommandsMap(
     },
     checkout: {
       method: handle_checkout,
+      delay: -1 * delays.paths.update,
+      minArgs: 1,
+      maxArgs: 1,
+    },
+    switch: {
+      method: handle_switch,
       delay: -1 * delays.paths.update,
       minArgs: 1,
       maxArgs: 1,

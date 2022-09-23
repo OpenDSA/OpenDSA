@@ -143,6 +143,10 @@ const findCommand = (splitCommand, commands) =>
     );
   });
 
+const focusInput = (inputId) => {
+  $(inputId).focus();
+};
+
 function initializeCommandLine(
   inputId,
   historyId,
@@ -167,6 +171,8 @@ function initializeCommandLine(
 
   const handleKeyup = createHandleKeyup(inputId, commandHistory);
   $(inputId).keyup(handleKeyup);
+
+  $("#commandline").click(() => focusInput(inputId));
 }
 
 export { initializeCommandLine, callCommand };

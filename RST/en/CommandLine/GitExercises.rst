@@ -8,7 +8,7 @@
    :satisfies: Command Line Git
    :topic: Tour
 
-Git
+Exercises
 ======================
 
 git clone 
@@ -18,11 +18,6 @@ git clone
 git status
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitStatus/gitStatus.html pe 
-
-git status 2
-------------
-.. avembed:: AV/Development/CommandLine/exercises/gitStatus2/gitStatus2.html pe 
-
 
 git add 
 -----------
@@ -43,6 +38,10 @@ git restore
 git pull 
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitPull/gitPull.html pe 
+
+git status 2
+------------
+.. avembed:: AV/Development/CommandLine/exercises/gitStatus2/gitStatus2.html pe 
 
 git branch
 -----------

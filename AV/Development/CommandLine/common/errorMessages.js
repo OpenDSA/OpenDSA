@@ -39,6 +39,8 @@ const localRemoteDivergedPush = "Cannot push. Local and remote have diverged";
 const branchNotRemote = (name) =>
   `'${name}' is not tracking a remote branch to pull from`;
 
+const alreadyOnBranch = (name) => `Already on '${name}' branch`;
+
 export {
   tooManyArgs,
   notEnoughArgs,
@@ -71,4 +73,5 @@ export {
   localRemoteDivergedPush,
   branchNotRemote,
   pushUpToDate,
+  alreadyOnBranch,
 };
