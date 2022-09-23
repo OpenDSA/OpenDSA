@@ -35,22 +35,47 @@ git restore
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitRestore/gitRestore.html pe 
 
+git restore \-\-staged
+------------------------
+.. avembed:: AV/Development/CommandLine/exercises/gitRestoreStaged/gitRestoreStaged.html pe 
+
 git pull 
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitPull/gitPull.html pe 
 
-git status 2
-------------
-.. avembed:: AV/Development/CommandLine/exercises/gitStatus2/gitStatus2.html pe 
+git commit -a 
+--------------
+.. avembed:: AV/Development/CommandLine/exercises/gitCommitA/gitCommitA.html pe 
+
+git commit (path)
+-----------------
+.. avembed:: AV/Development/CommandLine/exercises/gitCommitPath/gitCommitPath.html pe 
 
 git branch
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitBranch/gitBranch.html pe 
 
-git checkout
+git switch 
 -----------
-.. avembed:: AV/Development/CommandLine/exercises/gitCheckout/gitCheckout.html pe 
+.. avembed:: AV/Development/CommandLine/exercises/gitSwitch/gitSwitch.html pe 
+
+git switch -c 
+--------------
+.. avembed:: AV/Development/CommandLine/exercises/gitSwitchC/gitSwitchC.html pe 
+
+git switch diverged branches
+-----------------------------
+.. avembed:: AV/Development/CommandLine/exercises/gitSwitchDiverge/gitSwitchDiverge.html pe 
 
 Challenge 1 
 ------------
 .. avembed:: AV/Development/CommandLine/exercises/gitChallenge1/gitChallenge1.html pe 
+
+Challenge 2 
+------------
+.. avembed:: AV/Development/CommandLine/exercises/gitChallenge2/gitChallenge2.html pe 
+
+Challenge 3 
+------------
+.. avembed:: AV/Development/CommandLine/exercises/gitChallenge3/gitChallenge3.html pe 
+   

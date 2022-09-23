@@ -26,15 +26,15 @@ $(document).ready(function () {
     {
       commandTitle: "git clone (url)",
       commandDescription:
-        "The git clone command clones the remote repository at the location specified by (url) and copies all its contents to the local repository.",
+        "The git clone command clones the remote repository at the location specified by (url) and copies the contents of the remote repository to a new directory on the local machine.",
       challengeDescription:
-        'Clone the remote repository. The url for the repository is "https://github.com/Sample/Sample.git".',
+        'Clone the remote repository. The url for the remote repository is "https://github.com/Sample/Sample.git".',
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    [""],
+    null,
     null,
     true
   );

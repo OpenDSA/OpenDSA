@@ -17,8 +17,8 @@ $(document).ready(function () {
       getRemoteCurrBranch
     ) =>
     (args) => {
-      if (args.length > 0 && args[0] === "branch") {
-        if (getLocalInitialCommit().findBranchByName("develop")) {
+      if (args.length > 0 && args[0] === "push") {
+        if (!getRemoteHomeDir().find("config.js")) {
           awardCredit();
         }
       }
@@ -26,23 +26,18 @@ $(document).ready(function () {
 
   initializeGitExercise(
     {
-      commandTitle: "git branch (branch_name)",
+      commandTitle: "Challenge 3",
       commandDescription:
-        "The git branch command creates a branch with the name specified by (branch_name).",
-      challengeDescription: 'Create a new branch named "develop".',
+        "This challenge will require the usage of multiple commands. Remember, the -a flag can be used with commit to add all files and commit all files at the same time.",
+      challengeDescription:
+        'Clone the remote repository at "https://github.com/Sample/Sample.git". Then, remove "config.js" and update the remote repository with this change.',
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    [
-      "cd src",
-      "rm test.js",
-      "vi index.html",
-      "touch app.js",
-      "git add .",
-      'git commit -m "test"',
-      "git push",
-    ]
+    null,
+    null,
+    true
   );
 });

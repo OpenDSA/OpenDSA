@@ -26,14 +26,14 @@ $(document).ready(function () {
     {
       commandTitle: "git status",
       commandDescription:
-        "The git status command prints the status of the files.",
+        "The git status command prints the status of the local repository including information about the working area, the staging area, commits, and the active branch.",
       challengeDescription:
-        'Run git status. Notice "app.js" is a new file and is untracked by Git.',
+        'Run git status. Notice "index.html" has been modified, "test.js" has been deleted, and "app.js" is a new file and is thus untracked.',
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    ["cd src", "touch app.js"]
+    ["cd src", "rm test.js", "vi index.html", "touch app.js"]
   );
 });

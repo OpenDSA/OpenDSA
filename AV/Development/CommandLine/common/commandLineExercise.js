@@ -39,7 +39,7 @@ const DEFAULT_GIT_FILE_STRUCTURE = {
     ".gitignore",
     {
       name: "src",
-      contents: ["index.html", "config.js"],
+      contents: ["test.js", "index.html", "config.js"],
     },
   ],
 };
@@ -263,9 +263,11 @@ function initializeGitExercise(
     gitMethods
   );
 
-  initialCommands.forEach((command) => {
-    callCommand(command, commandsMap, {}, [], true);
-  });
+  if (initialCommands) {
+    initialCommands.forEach((command) => {
+      callCommand(command, commandsMap, {}, [], true);
+    });
+  }
 
   if (initialRemoteCommands && initialRemoteCommands.length > 0) {
     const remoteCommandsMap = createCommandsMap(

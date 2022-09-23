@@ -2,7 +2,6 @@ import {
   awardCredit,
   initializeGitExercise,
 } from "../../common/commandLineExercise.js";
-import { GIT_STATE } from "../../common/gitStatuses.js";
 
 /*global alert: true, ODSA, console */
 $(document).ready(function () {
@@ -17,19 +16,10 @@ $(document).ready(function () {
       getRemoteCurrBranch
     ) =>
     (args) => {
-      if (args.length > 0 && args[0] === "pull") {
-        const src = getLocalHomeDir().findDeep("src");
-        if (src) {
-          const index = src.find("index.html");
-          const app = src.find("app.js");
-          if (
-            index &&
-            app &&
-            index.isState(GIT_STATE.COMMITTED) &&
-            app.isState(GIT_STATE.COMMITTED)
-          ) {
-            awardCredit();
-          }
+      if (args.length > 0 && args[0] === "status") {
+        const newFile = getLocalHomeDir().find("new.txt");
+        if (newFile) {
+          awardCredit();
         }
       }
     };
@@ -38,9 +28,9 @@ $(document).ready(function () {
     {
       commandTitle: "git pull",
       commandDescription:
-        "The git pull command pulls the remote changes down to local.",
+        "The git pull command pulls new commits to the local branch from the corresponding remote branch. The commit or commits contain the changes to the files that are applied to the local repository.",
       challengeDescription:
-        "Pull the local changes from remote. Notice remote contains a commit that does not exist on local yet.",
+        "Pull the remote changes to the local repository. Then, run git status to check that the local branch is now up to date with the remote branch.",
     },
     handleAwardCredit,
     "git",

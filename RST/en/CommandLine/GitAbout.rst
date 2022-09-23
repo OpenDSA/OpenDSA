@@ -25,7 +25,7 @@ Commands
 
 The following commands are currently supported. Arguments are surrounded by (parentheses). Optional flags are surrounded by [brackets].
 
-**git clone (url)**: Clones the remote repository at the location specified by (url) and copies the contents of the remote repository to a new directory on the local machine.
+**git clone (url)**: Clone the remote repository at the location specified by (url) and copy the contents of the remote repository to a new directory on the local machine.
 
 **git status**: Print the status of the local repository including information about the working area, the staging area, commits, and the active branch.
 
@@ -33,7 +33,7 @@ The following commands are currently supported. Arguments are surrounded by (par
 
 **git restore [\-\-staged] (path)**: Undo the changes made to the file at the location specified by (path). Provide the [\-\-staged] flag to move a file from the staging area to the working area. If (path) specifies a directory, all the changed files in the directory are restored. Provide multiple (path) values separated by space characters to restore multiple files. 
 
-**git commit -m (message) [-a] (path)**: Create a commit containing the changes in the staging area. The -m flag is required and must be followed by a nonempty message. Provide the [-a] flag to create a commit containing the changes in both the staging area and the working area. Provide one or more (path) values to create a commit containing only the changes to the files at the location or locations specified by (path). If (path) specifies a directory, all the changed files in the directory are committed. Untracked files are not included in the commit even if the [-a] flag or the (path) arguments are used.
+**git commit -m (message) [-a] (path)**: Create a commit containing the changes in the staging area. The -m flag is required and must be followed by a nonempty (message). Provide the [-a] flag to create a commit containing the changes in both the staging area and the working area. Provide one or more (path) values to create a commit containing only the changes to the files at the location or locations specified by (path). If (path) specifies a directory, all the changed files in the directory are committed. Untracked files are not included in the commit even if the [-a] flag or the (path) arguments are used.
 
 **git push**: Push new commits from the current branch of the local repository to the corresponding branch of the remote repository. The commit or commits contain the changes to the files that are applied to the remote repository.
 

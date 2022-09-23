@@ -1144,7 +1144,7 @@ const visualizePush = (
       push.commitPath,
       svgGroup,
       scale,
-      delays.nodes.update - 1000
+      delays.nodes.update + 1000
     );
   }
 

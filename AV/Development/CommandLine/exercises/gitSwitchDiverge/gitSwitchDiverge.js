@@ -17,8 +17,8 @@ $(document).ready(function () {
       getRemoteCurrBranch
     ) =>
     (args) => {
-      if (args.length > 0 && args[0] === "branch") {
-        if (getLocalInitialCommit().findBranchByName("develop")) {
+      if ((args.length > 0 && args[0] === "switch") || args[0] === "checkout") {
+        if (getLocalCurrBranch().name === "develop") {
           awardCredit();
         }
       }
@@ -26,10 +26,11 @@ $(document).ready(function () {
 
   initializeGitExercise(
     {
-      commandTitle: "git branch (branch_name)",
+      commandTitle: "git switch (branch_name)",
       commandDescription:
-        "The git branch command creates a branch with the name specified by (branch_name).",
-      challengeDescription: 'Create a new branch named "develop".',
+        "Branches can diverge and store different versions of the file structure.",
+      challengeDescription:
+        'Change the current branch to the "develop" branch. Notice how the file structure is different between the "develop" branch and the "main" branch.',
     },
     handleAwardCredit,
     "git",
@@ -43,6 +44,16 @@ $(document).ready(function () {
       "git add .",
       'git commit -m "test"',
       "git push",
+      "git branch develop",
+      "git switch develop",
+      "rm config.js",
+      "touch dev.txt",
+      "git add .",
+      "git commit -m 'test'",
+      "git switch main",
+      "rm app.js",
+      "git add .",
+      "git commit -m 'test'",
     ]
   );
 });

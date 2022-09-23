@@ -687,21 +687,6 @@ const createBranchUpToDateLine = (localBranch, remoteInitialCommit) => {
   }
 };
 
-const getNumCommitsAhead = (srcCurrBranch, dstCurrBranch) => {
-  let currCommit = srcCurrBranch.commit;
-  let count = 0;
-
-  while (currCommit) {
-    if (dstCurrBranch.commit.gitId === currCommit.gitId) {
-      return count;
-    }
-    count++;
-    currCommit = currCommit.parent;
-  }
-
-  return -1;
-};
-
 const getNumCommitsDifferent = (localBranch, remoteBranch) => {
   const commonParent = getCommonParentCommit(
     localBranch.commit,
@@ -766,7 +751,7 @@ function createGitCommandsMap(
     add: { method: handle_add, delay: -1 * delays.paths.update, minArgs: 1 },
     commit: { method: handle_commit, delay: -1 * delays.paths.update },
     pull: { method: handle_pull, delay: 0, maxArgs: 0 },
-    push: { method: handle_push, delay: -1 * delays.paths.update, maxArgs: 0 },
+    push: { method: handle_push, delay: 0, maxArgs: 0 },
     branch: {
       method: handle_branch,
       delay: -1 * delays.paths.update,

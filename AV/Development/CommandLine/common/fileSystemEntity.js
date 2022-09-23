@@ -167,7 +167,6 @@ class File extends FileSystemEntity {
   }
 
   removeDeleted() {
-    console.log("this", this);
     if (this.getIsDeleted()) {
       this.parent.contents = this.parent.contents.filter(
         (content) => content !== this

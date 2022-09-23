@@ -17,11 +17,11 @@ $(document).ready(function () {
       getRemoteCurrBranch
     ) =>
     (args) => {
-      if (args.length > 0 && args[0] === "push") {
-        const src = getLocalHomeDir().findDeep("src");
+      if (args.length > 0 && args[0] === "status") {
+        const src = getRemoteHomeDir().findDeep("src");
         if (src) {
           const app = src.find("app.js");
-          if (app && app.isState(GIT_STATE.COMMITTED)) {
+          if (app) {
             awardCredit();
           }
         }
@@ -32,14 +32,21 @@ $(document).ready(function () {
     {
       commandTitle: "git push",
       commandDescription:
-        "The git push command pushes the local changes to remote.",
+        "The git push command pushes new commits from the local branch to the corresponding remote branch. The commit or commits contain the changes to the files that are applied to the remote repository.",
       challengeDescription:
-        'Push the local changes to remote. Notice local contains a commit that does not exist on remote yet. This commit contains the newly created file "app.js"',
+        "Push the local changes to the remote repository. Then, run git status to check that the remote branch is now up to date with the local branch.",
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    ["cd src", "touch app.js", "git add .", 'git commit -m "test"']
+    [
+      "cd src",
+      "rm test.js",
+      "vi index.html",
+      "touch app.js",
+      "git add .",
+      'git commit -m "test"',
+    ]
   );
 });

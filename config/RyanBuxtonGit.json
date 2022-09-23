@@ -48,7 +48,17 @@
   "chapters": {
     "About Git": {
       "CommandLine/GitAbout": {},
-      "CommandLine/GitExercises": {}
+      "CommandLine/GitExercises": {
+        "gitChallenge1": {
+          "points": 2.0
+        },
+        "gitChallenge2": {
+          "points": 2.0
+        },
+        "gitChallenge3": {
+          "points": 2.0
+        }
+      }
     }
   }
 }

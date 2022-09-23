@@ -17,11 +17,20 @@ $(document).ready(function () {
       getRemoteCurrBranch
     ) =>
     (args) => {
-      if (args.length > 0 && args[0] === "commit") {
+      if (args.length > 0 && args[0] === "status") {
         const src = getLocalHomeDir().findDeep("src");
         if (src) {
           const app = src.find("app.js");
-          if (app && app.isState(GIT_STATE.COMMITTED)) {
+          const test = src.findWithDeleted("test.js");
+          const index = src.find("index.html");
+          if (
+            app &&
+            app.isState(GIT_STATE.COMMITTED) &&
+            test &&
+            test.length === 0 &&
+            index &&
+            index.isState(GIT_STATE.COMMITTED)
+          ) {
             awardCredit();
           }
         }
@@ -30,16 +39,16 @@ $(document).ready(function () {
 
   initializeGitExercise(
     {
-      commandTitle: "git commit",
+      commandTitle: "git commit -m (message)",
       commandDescription:
-        "The git commit command creates a commit containing all the staged changes.",
+        "The git commit command creates a commit containing the changes in the staging area. The -m flag is required and must be followed by a nonempty (message).",
       challengeDescription:
-        "Create a commit containing all the staged changes.",
+        "Create a commit containing all the changes in the staging area. Then, run git status to check that the local branch is now one commit ahead of the remote branch.",
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    ["cd src", "touch app.js", "git add ."]
+    ["cd src", "rm test.js", "vi index.html", "touch app.js", "git add ."]
   );
 });
