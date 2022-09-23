@@ -315,7 +315,7 @@ const handle_pull = (
 
   const { ahead, behind } = getNumCommitsDifferent(
     getLocalCurrBranch(),
-    getRemoteCurrBranch()
+    remoteBranch
   );
 
   if (behind === 0) {
@@ -335,10 +335,14 @@ const handle_pull = (
   );
   const localBranchCommit = localBranch.commit;
   localBranch.switchCommit(lastLocalCommit);
-  const commitPath = getLocalHomeDir().updateToCommit(
-    localBranchCommit,
-    lastLocalCommit
-  );
+
+  let commitPath = null;
+  if (localBranch.gitId === currRemoteBranch.gitId) {
+    commitPath = getLocalHomeDir().updateToCommit(
+      localBranchCommit,
+      lastLocalCommit
+    );
+  }
 
   return { pull: { commitPath } };
 };
@@ -365,7 +369,7 @@ const handle_push = (
   if (remoteBranch) {
     const { ahead, behind } = getNumCommitsDifferent(
       getLocalCurrBranch(),
-      getRemoteCurrBranch()
+      remoteBranch
     );
 
     if (ahead === 0) {
@@ -648,11 +652,6 @@ const handle_status = (
     FILE_STATE.NEW,
     true,
     false
-  );
-
-  console.log(
-    "diff",
-    getNumCommitsDifferent(getLocalCurrBranch(), getRemoteCurrBranch())
   );
 
   return `<div class="git-status">${branchInfo}${stagedInfo}${notStagedInfo}${untrackedInfo}</div>`;

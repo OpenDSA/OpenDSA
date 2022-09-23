@@ -1096,7 +1096,11 @@ const addLocation = (src, dst, idPath) =>
         followPropertyPath(value, idPath) ===
         followPropertyPath(dstValue, idPath)
     );
-    return { ...dstValue, startX: srcValue.x, startY: srcValue.y };
+    return {
+      ...dstValue,
+      startX: srcValue ? srcValue.x : null,
+      startY: srcValue ? srcValue.y : null,
+    };
   });
 
 const followPropertyPath = (value, path) => {
