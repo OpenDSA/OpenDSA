@@ -288,7 +288,7 @@ function initializeGitExercise(
     });
   }
 
-  updateCommandLinePrompt(localCurrDir);
+  updateCommandLinePrompt(localCurrDir, localCurrBranch);
 
   let resizeCount = 0;
 
@@ -336,7 +336,8 @@ function initializeGitExercise(
     [],
     getLocalCurrDir,
     commandHistory,
-    disableAllCommandsExcept
+    disableAllCommandsExcept,
+    getLocalCurrBranch
   );
 }
 
@@ -351,13 +352,13 @@ function awardCredit() {
   ODSA.AV.awardCompletionCredit();
 }
 
-function updateCommandLinePrompt(currDir) {
-  $("#command-line-prompt").text(createCommandLinePrompt(currDir));
+function updateCommandLinePrompt(currDir, currBranch) {
+  $(".command-line-prompt-path").text(currDir ? currDir.getPath() : "/");
+  $(".command-line-prompt-branch").text(
+    currBranch ? `(${currBranch.name})` : ""
+  );
 }
 
-function createCommandLinePrompt(currDir) {
-  return `${currDir ? currDir.getPath() : "/"} $`;
-}
 export {
   initializeCommandLineExercise,
   initializeGitExercise,

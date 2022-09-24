@@ -10,14 +10,16 @@ const createHandleKeydown =
     disabledCommands,
     getCurrDir,
     commandHistory,
-    disableAllCommandsExcept
+    disableAllCommandsExcept,
+    getCurrBranch
   ) =>
   (event) => {
     const keycode = event.keyCode ? event.keyCode : event.which;
 
     if (keycode == "13") {
       const input = $(inputId).val();
-      const prevPrompt = $("#command-line-prompt").text();
+      const oldCurrDir = getCurrDir();
+      const oldCurrBranch = getCurrBranch ? getCurrBranch() : null;
 
       const output = callCommand(
         input,
@@ -31,9 +33,23 @@ const createHandleKeydown =
       commandHistory.enter();
 
       $(inputId).val("");
-      updateCommandLinePrompt(getCurrDir());
+      updateCommandLinePrompt(
+        getCurrDir(),
+        getCurrBranch ? getCurrBranch() : null
+      );
 
-      const lineValue = `<div class="symbol-and-input"><p>${prevPrompt}</p><p>${input}</p></div>`;
+      const lineValue = `<div class="symbol-and-input">
+          <div class="command-line-prompt-old">
+            <p class="command-line-prompt-path-old">
+              ${oldCurrDir ? oldCurrDir.getPath() : "/"}
+            </p>
+            <p class="command-line-prompt-branch-old">
+              ${oldCurrBranch ? `(${oldCurrBranch.name})` : ""}
+            </p>
+            <p class="command-line-prompt-dollar">$</p>
+          </div>
+          <p>${input}</p>
+        </div>`;
 
       $(historyId).append(`<li>${lineValue}</li>`);
 
@@ -155,7 +171,8 @@ function initializeCommandLine(
   disabledCommands,
   getCurrDir,
   commandHistory,
-  disableAllCommandsExcept
+  disableAllCommandsExcept,
+  getCurrBranch
 ) {
   const handleKeydown = createHandleKeydown(
     inputId,
@@ -165,7 +182,8 @@ function initializeCommandLine(
     disabledCommands ? disabledCommands : [],
     getCurrDir,
     commandHistory,
-    disableAllCommandsExcept
+    disableAllCommandsExcept,
+    getCurrBranch
   );
   $(inputId).keydown(handleKeydown);
 

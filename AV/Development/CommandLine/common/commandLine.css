@@ -200,3 +200,19 @@
 .git-status-untracked .git-status-files p {
   color: red;
 }
+
+.command-line-prompt,
+.command-line-prompt-old {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.command-line-prompt-path,
+.command-line-prompt-path-old {
+  color: yellow;
+}
+
+.command-line-prompt-branch,
+.command-line-prompt-branch-old {
+  color: aqua;
+}
