@@ -141,6 +141,13 @@ class FileSystemEntity {
     const untracked = this.getByState(GIT_STATE.CHANGED, FILE_STATE.NEW);
     return untracked.length === 1 && untracked[0] === this;
   }
+
+  removeSelf() {
+    this.parent.contents = this.parent.contents.filter(
+      (content) => content !== this
+    );
+    this.parent = null;
+  }
 }
 
 class File extends FileSystemEntity {
@@ -151,11 +158,15 @@ class File extends FileSystemEntity {
   }
 
   setDeleted() {
-    this.setState(GIT_STATE.CHANGED, FILE_STATE.DELETED);
+    if (this.isState(null, FILE_STATE.NEW)) {
+      this.removeSelf();
+    } else {
+      this.setState(GIT_STATE.CHANGED, FILE_STATE.DELETED);
+    }
   }
 
   setNotDeleted() {
-    this.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
+    this.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
   }
 
   setNotDeletedDeep() {
@@ -168,10 +179,7 @@ class File extends FileSystemEntity {
 
   removeDeleted() {
     if (this.getIsDeleted()) {
-      this.parent.contents = this.parent.contents.filter(
-        (content) => content !== this
-      );
-      this.parent = null;
+      this.removeSelf();
     }
   }
 
@@ -307,8 +315,12 @@ class Directory extends FileSystemEntity {
   }
 
   setDeleted() {
-    this.getContents().forEach((content) => content.setDeleted());
-    this.isDeleted = true;
+    if (this.isState(null, FILE_STATE.NEW)) {
+      this.removeSelf();
+    } else {
+      this.getContents().forEach((content) => content.setDeleted());
+      this.isDeleted = true;
+    }
   }
 
   setNotDeleted() {
@@ -376,7 +388,7 @@ class Directory extends FileSystemEntity {
 
     if (existingFile) {
       existingFile.setNotDeleted();
-      this.contents = this.getContents().filter(
+      this.contents = this.getContentsWithDeleted().filter(
         (content) => content.id !== existingFile.id
       );
       this.contents.push(existingFile);
@@ -574,10 +586,7 @@ class Directory extends FileSystemEntity {
     this.getContentsWithDeleted().forEach((content) => content.removeDeleted());
 
     if (this.getIsDeleted()) {
-      this.parent.contents = this.parent.contents.filter(
-        (content) => content !== this
-      );
-      this.parent = null;
+      this.removeSelf();
     }
   }
 
@@ -644,6 +653,12 @@ class Directory extends FileSystemEntity {
     this.getContentsWithDeleted().forEach((content) => {
       content.setState(gitState, fileState);
     });
+  }
+
+  isState(gitStates, fileStates) {
+    return this.getContentsWithDeleted().every((content) =>
+      content.isState(gitStates, fileStates)
+    );
   }
 
   setStateConditional(oldGitStates, newGitState, oldFileStates, newFileState) {

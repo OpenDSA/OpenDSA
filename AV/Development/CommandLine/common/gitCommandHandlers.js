@@ -767,6 +767,7 @@ function createGitCommandsMap(
       isClone: true,
     },
     add: { method: handle_add, delay: -1 * delays.paths.update, minArgs: 1 },
+    rm: { method: handle_add, delay: -1 * delays.paths.update, minArgs: 1 },
     commit: { method: handle_commit, delay: -1 * delays.paths.update },
     pull: { method: handle_pull, delay: 0, maxArgs: 0 },
     push: { method: handle_push, delay: 0, maxArgs: 0 },

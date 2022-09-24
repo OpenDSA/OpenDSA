@@ -235,7 +235,12 @@ const handle_vi = (args, flags, getCurrDir, setCurrDir) => {
     }
 
     //TODO make conditional
-    file.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
+    file.setStateConditional(
+      GIT_STATE.COMMITTED,
+      GIT_STATE.CHANGED,
+      null,
+      FILE_STATE.MODIFIED
+    );
     return "";
   });
 
