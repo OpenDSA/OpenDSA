@@ -24,10 +24,11 @@ const commandDisabled = (command) => `'${command}' is disabled`;
 
 const commitRequiresMessage = "Requires a message specified after the -m flag";
 const messageEnclosed = "Message must be enclosed in quotes";
+const quoteNotClosed = "Closing quote is missing";
 const messageEmpty = "Message cannot be empty";
 const noChangesToCommit = "No changes committed";
 const filesAndA = "Cannot use -a flag when committing specific files";
-const untracked = (path) => `${path} is not tracked by Git`;
+const untracked = (path) => `'${path}' is not tracked by Git`;
 const branchAlreadyExists = (name) => `'${name}' branch already exists`;
 const branchNotFound = (name) => `'${name}' branch does not exist`;
 const checkoutHandleChanges =
@@ -74,4 +75,5 @@ export {
   branchNotRemote,
   pushUpToDate,
   alreadyOnBranch,
+  quoteNotClosed,
 };

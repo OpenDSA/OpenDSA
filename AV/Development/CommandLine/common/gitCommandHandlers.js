@@ -19,6 +19,7 @@ import {
   notEnoughArgs,
   pullUpToDate,
   pushUpToDate,
+  quoteNotClosed,
   tooManyArgs,
   untracked,
 } from "./errorMessages.js";
@@ -165,18 +166,31 @@ const handle_commit = (
   if (!message) {
     return commitRequiresMessage;
   }
-  if (
-    !(
-      (message.startsWith('"') && message.endsWith('"')) ||
-      (message.startsWith("'") && message.endsWith("'"))
-    )
-  ) {
-    return messageEnclosed;
+
+  const firstChar = message.charAt(0);
+  const messageStartsWithQuote = firstChar === '"' || firstChar === "'";
+  const messageParts = [];
+  if (messageStartsWithQuote) {
+    const messsageStartIndex = args.indexOf(message);
+    const endsWithFirstChar = args.slice(messsageStartIndex).some((value) => {
+      messageParts.push(value);
+      return value.endsWith(firstChar);
+    });
+
+    if (!endsWithFirstChar) {
+      return quoteNotClosed;
+    }
+    message = messageParts.join(" ");
   }
 
-  args = args.filter((arg) => arg !== message);
+  args = args.filter((arg) =>
+    messageStartsWithQuote ? !messageParts.includes(arg) : arg !== message
+  );
 
-  message = message.slice(1, -1);
+  if (messageStartsWithQuote) {
+    message = message.slice(1, -1);
+  }
+
   if (message === "") {
     return messageEmpty;
   }
@@ -212,8 +226,12 @@ const handle_commit = (
     });
   }
 
+  if (errors.length > 0) {
+    return createOutputList(errors);
+  }
+
   if (files.length === 0) {
-    return createOutputList([...errors, noChangesToCommit]);
+    return noChangesToCommit;
   }
 
   const filesCopy = copyFiles(files);
