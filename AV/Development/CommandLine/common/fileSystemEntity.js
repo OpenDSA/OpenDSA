@@ -129,7 +129,7 @@ class FileSystemEntity {
 
     const pathAndStateValues = startDir.getSortedPathAndStateValues(
       files,
-      false,
+      true,
       false
     );
 
@@ -539,7 +539,7 @@ class Directory extends FileSystemEntity {
     const newDirectory = new Directory(this.name);
     newDirectory.gitId = this.gitId;
     newDirectory.parentGitId = this.parent?.gitId;
-    newDirectory.contents = this.getContents().map((content) => {
+    newDirectory.contents = this.getContentsWithDeleted().map((content) => {
       const contentCopy = content.copyWithGitId();
       contentCopy.parent = newDirectory;
       return contentCopy;
@@ -848,6 +848,18 @@ class Directory extends FileSystemEntity {
   isState(workingStates, stagingStates) {
     return this.getContentsWithDeleted().every((content) =>
       content.isState(workingStates, stagingStates)
+    );
+  }
+
+  isStagingState(stagingStates) {
+    return this.getContentsWithDeleted().every((content) =>
+      content.isStagingState(stagingStates)
+    );
+  }
+
+  isWorkingState(workingStates) {
+    return this.getContentsWithDeleted().every((content) =>
+      content.isWorkingState(workingStates)
     );
   }
 

@@ -1,4 +1,4 @@
-import { createOutputList } from "./commandHandlers.js";
+import { createOutputList, handle_rm } from "./commandHandlers.js";
 import {
   alreadyCloned,
   alreadyOnBranch,
@@ -14,6 +14,7 @@ import {
   localRemoteDivergedPush,
   messageEmpty,
   messageEnclosed,
+  missingRRemove,
   noChangesToCommit,
   noFilesExist,
   notEnoughArgs,
@@ -97,6 +98,37 @@ const handle_add = (
 
     fileSystemEntity.stage();
 
+    return "";
+  });
+
+  return createOutputList(results);
+};
+
+const handle_git_rm = (
+  args,
+  flags,
+  getLocalCurrDir,
+  setLocalCurrDir,
+  getLocalHomeDir,
+  setLocalHomeDir,
+  getLocalInitialCommit,
+  setLocalInitialCommit,
+  getLocalCurrBranch,
+  setLocalCurrBranch,
+  getRemoteHomeDir,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch
+) => {
+  const results = args.map((arg) => {
+    const fileSystemEntity = getLocalCurrDir().getChildByPathWithDeleted(arg);
+
+    const rmResult = handle_rm([arg], flags, getLocalCurrDir);
+
+    if (rmResult.length > 0 && rmResult[0] !== "") {
+      return rmResult[0];
+    }
+
+    fileSystemEntity.stage();
     return "";
   });
 
@@ -256,7 +288,7 @@ const handle_commit = (
 
   const commit = getLocalCurrBranch().commitChanges(files, message);
 
-  const commitOutput = createCommitOutput(commit, pathAndStateValues);
+  const commitOutput = createCommitOutput(commit.files, pathAndStateValues);
 
   const result = `<div class="git-commit">${
     createOutputList(errors) +
@@ -267,10 +299,10 @@ const handle_commit = (
   return { commit, result };
 };
 
-const createCommitOutput = (commit, sortedPathAndStateValues) => {
-  const newCount = countFiles(commit.files, NEW_FILE_STATE.NEW);
-  const modifiedCount = countFiles(commit.files, NEW_FILE_STATE.MODIFIED);
-  const deletedCount = countFiles(commit.files, NEW_FILE_STATE.DELETED);
+const createCommitOutput = (files, sortedPathAndStateValues) => {
+  const newCount = countFiles(files, NEW_FILE_STATE.NEW);
+  const modifiedCount = countFiles(files, NEW_FILE_STATE.MODIFIED);
+  const deletedCount = countFiles(files, NEW_FILE_STATE.DELETED);
 
   const totalCountsLine = createCountLine(
     (newCount || 0) + (modifiedCount || 0) + (deletedCount || 0),
@@ -751,7 +783,7 @@ function createGitCommandsMap(
       isClone: true,
     },
     add: { method: handle_add, delay: -1 * delays.paths.update, minArgs: 1 },
-    rm: { method: handle_add, delay: -1 * delays.paths.update, minArgs: 1 },
+    rm: { method: handle_git_rm, delay: -1 * delays.paths.update, minArgs: 1 },
     commit: { method: handle_commit, delay: -1 * delays.paths.update },
     pull: { method: handle_pull, delay: 0, maxArgs: 0 },
     push: { method: handle_push, delay: 0, maxArgs: 0 },

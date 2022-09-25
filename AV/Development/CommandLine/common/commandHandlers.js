@@ -463,4 +463,4 @@ const initialize_command_handler =
     return resultIsArray ? createOutputList(result) : result;
   };
 
-export { createCommandsMap, createOutputList };
+export { createCommandsMap, createOutputList, handle_rm };
