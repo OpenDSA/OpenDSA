@@ -516,6 +516,18 @@ const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
           .attr("stroke", "black");
 
         nodes
+          .append("text")
+          .attr("dy", ".35em")
+          .attr("font-size", "0.8rem")
+          .style("fill", (d) => {
+            return d.isHead ? "white" : "black";
+          })
+          .style("text-anchor", "middle")
+          .text(function (d) {
+            return d.number;
+          });
+
+        nodes
           .transition()
           .duration(durations.nodes.enter)
           .delay(delays.nodes.enter + delayOffset + 250)
@@ -527,7 +539,7 @@ const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
         return nodes;
       },
       function (update) {
-        return update
+        const node = update
           .attr("y", 0)
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
@@ -536,11 +548,17 @@ const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
           .delay(delays.nodes.update + delayOffset)
           .attr("transform", function (d) {
             return "translate(" + d.x + "," + d.y + ")";
-          })
-          .select("circle")
-          .style("fill", (d) => {
-            return d.isHead ? "purple" : colors.file.background;
           });
+
+        node.select("circle").style("fill", (d) => {
+          return d.isHead ? "purple" : colors.file.background;
+        });
+
+        node.select("text").style("fill", (d) => {
+          return d.isHead ? "white" : "black";
+        });
+
+        return node;
       },
       function (exit) {
         return exit
@@ -902,7 +920,7 @@ const createGitVisualizationData = (
     scale
   );
 
-  const localCommitTreeData = localInitialCommit
+  let localCommitTreeData = localInitialCommit
     ? createCommitTreeData(
         localInitialCommit,
         localCurrBranch,
@@ -916,7 +934,7 @@ const createGitVisualizationData = (
       )
     : null;
 
-  const remoteCommitTreeData = createCommitTreeData(
+  let remoteCommitTreeData = createCommitTreeData(
     remoteInitialCommit,
     remoteCurrBranch,
     width / 2,
@@ -927,6 +945,11 @@ const createGitVisualizationData = (
     padding,
     scale
   );
+
+  ({ localCommitTreeData, remoteCommitTreeData } = updateCommitIds(
+    localCommitTreeData,
+    remoteCommitTreeData
+  ));
 
   const localBranchData = localCommitTreeData
     ? createBranchData(localCommitTreeData, localCurrBranch.id, scale)
@@ -1255,6 +1278,33 @@ const visualizeClone = (
   );
 
   return { localFileTreeData, localBranchData, localCommitTreeData };
+};
+
+const updateCommitIds = (localCommitTreeData, remoteCommitTreeData) => {
+  const localIds = localCommitTreeData
+    ? localCommitTreeData.map((value) => value.data.gitId)
+    : [];
+  const remoteIds = remoteCommitTreeData.map((value) => value.data.gitId);
+
+  const ids = [...new Set([...localIds, ...remoteIds])];
+
+  const idsMap = ids.reduce(
+    (idsMap, id, index) => ({ ...idsMap, [id]: index + 1 }),
+    {}
+  );
+  if (localCommitTreeData) {
+    localCommitTreeData = localCommitTreeData.map((data) => ({
+      ...data,
+      number: idsMap[data.data.gitId],
+    }));
+  }
+
+  remoteCommitTreeData = remoteCommitTreeData.map((data) => ({
+    ...data,
+    number: idsMap[data.data.gitId],
+  }));
+
+  return { localCommitTreeData, remoteCommitTreeData };
 };
 
 export {
