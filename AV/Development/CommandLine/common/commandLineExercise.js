@@ -9,7 +9,7 @@ import {
 } from "./fileStructure.js";
 import { Directory } from "./fileSystemEntity.js";
 import { Branch, Commit } from "./gitClasses.js";
-import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
+import { NEW_FILE_STATE } from "./gitStatuses.js";
 
 const DEFAULT_FILE_STRUCTURE = {
   name: "/",
@@ -177,8 +177,8 @@ function initializeGitExercise(
   const remoteInitialCommit = localInitialCommit.copy();
   let remoteCurrBranch = remoteInitialCommit.branches[0];
 
-  localHomeDir.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
-  remoteHomeDir.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
+  localHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
+  remoteHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
 
   if (emptyLocal) {
     localHomeDir = null;

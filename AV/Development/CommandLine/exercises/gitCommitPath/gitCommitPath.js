@@ -2,7 +2,6 @@ import {
   awardCredit,
   initializeGitExercise,
 } from "../../common/commandLineExercise.js";
-import { GIT_STATE } from "../../common/gitStatuses.js";
 
 /*global alert: true, ODSA, console */
 $(document).ready(function () {
@@ -22,9 +21,9 @@ $(document).ready(function () {
         const gitignore = getLocalHomeDir().find(".gitignore");
         if (
           readme &&
-          readme.isState(GIT_STATE.COMMITTED) &&
+          readme.isUnchanged() &&
           gitignore &&
-          !gitignore.isState(GIT_STATE.COMMITTED)
+          !gitignore.isUnchanged()
         ) {
           const src = getLocalHomeDir().findDeep("src");
           if (src) {
@@ -33,12 +32,12 @@ $(document).ready(function () {
             const index = src.find("index.html");
             if (
               app &&
-              app.isState(GIT_STATE.COMMITTED) &&
+              app.isUnchanged() &&
               test &&
               test.length > 0 &&
-              !test[0].isState(GIT_STATE.COMMITTED) &&
+              !test[0].isUnchanged() &&
               index &&
-              !index.isState(GIT_STATE.COMMITTED)
+              !index.isUnchanged()
             ) {
               awardCredit();
             }

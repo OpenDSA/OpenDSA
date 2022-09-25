@@ -1,5 +1,5 @@
 import { Directory, File } from "./fileSystemEntity.js";
-import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
+import { NEW_FILE_STATE } from "./gitStatuses.js";
 
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 
@@ -29,11 +29,6 @@ const colors = {
   directory: { background: "#0c3762", text: "white" },
   current: { background: "green", text: "white" },
   highlight: { background: "orange", text: "white" },
-};
-
-const gitColors = {
-  [GIT_STATE.ADDED]: { background: "#1fd665" },
-  [GIT_STATE.CHANGED]: { background: "#ff6863" },
 };
 
 function renderFileStructureVisualization(data, currDirId, width, height, id) {
@@ -318,7 +313,8 @@ const createFileRectangles = (
             return getFileColor(
               d.data.id,
               currDirId,
-              d.data.gitState,
+              d.data.isChanged,
+              d.data.isStaged,
               d.data.isDirectory,
               colorGit
             );
@@ -371,7 +367,8 @@ const createFileRectangles = (
           return getFileColor(
             d.data.id,
             currDirId,
-            d.data.gitState,
+            d.data.isChanged,
+            d.data.isStaged,
             d.data.isDirectory,
             colorGit
           );
@@ -739,7 +736,14 @@ const createVerticalLine = (svgGroup, x, length) =>
           `;
     });
 
-const getFileColor = (id, currDirId, gitState, isDirectory, colorGit) => {
+const getFileColor = (
+  id,
+  currDirId,
+  isChanged,
+  isStaged,
+  isDirectory,
+  colorGit
+) => {
   if (currDirId === id) {
     return colorGit ? "purple" : colors.current.background;
   }
@@ -747,9 +751,11 @@ const getFileColor = (id, currDirId, gitState, isDirectory, colorGit) => {
     return colors.directory.background;
   }
   if (colorGit) {
-    const color = gitColors[gitState];
-    if (color) {
-      return color.background;
+    if (isStaged) {
+      return "#1fd665";
+    }
+    if (isChanged) {
+      return "#ff6863";
     }
   }
   return colors.file.background;
@@ -1011,7 +1017,7 @@ function visualizeCommit(svgGroup, commit, fileTreeData, commitTreeData) {
 
   //TODO maybe add animation for deleted
   const filesData = files
-    .filter((file) => file.getState().fileState !== FILE_STATE.DELETED)
+    .filter((file) => !file.isStagingState(NEW_FILE_STATE.DELETED))
     .map((file) => {
       const existingFile = fileTreeData.find(
         (value) => value.data.gitId === file.gitId
@@ -1203,7 +1209,7 @@ const visualizeModifiedFiles = (
     .flatMap((value) => value.commit.files)
     .filter(
       (file) =>
-        file.getState().fileState === FILE_STATE.MODIFIED &&
+        file.isStagingState(NEW_FILE_STATE.MODIFIED) &&
         remoteFileTreeData.find((value) => value.data.gitId === file.gitId)
     )
     .flatMap((file) => file.flatten())

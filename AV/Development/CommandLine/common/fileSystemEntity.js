@@ -1,4 +1,4 @@
-import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
+import { NEW_FILE_STATE } from "./gitStatuses.js";
 
 let count = 0;
 let gitIdCount = 0;
@@ -89,57 +89,63 @@ class FileSystemEntity {
     return this.getChildByPath(path, true);
   }
 
-  getAddedFiles() {
+  getStagingAreaFiles() {
     return [
-      ...this.getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
-      ...this.getByState(GIT_STATE.ADDED, FILE_STATE.MODIFIED),
-      ...this.getByState(GIT_STATE.ADDED, FILE_STATE.DELETED),
+      ...this.getByState(null, NEW_FILE_STATE.NEW),
+      ...this.getByState(null, NEW_FILE_STATE.MODIFIED),
+      ...this.getByState(null, NEW_FILE_STATE.DELETED),
     ];
   }
 
-  //does not include untracked
-  getAddedAndChanged() {
+  getWorkingAreaFiles() {
     return [
-      ...this.getByState(GIT_STATE.ADDED, FILE_STATE.NEW),
-      ...this.getByState(
-        [GIT_STATE.ADDED, GIT_STATE.CHANGED],
-        FILE_STATE.MODIFIED
-      ),
-      ...this.getByState(
-        [GIT_STATE.ADDED, GIT_STATE.CHANGED],
-        FILE_STATE.DELETED
-      ),
+      ...this.getByState(NEW_FILE_STATE.MODIFIED),
+      ...this.getByState(NEW_FILE_STATE.DELETED),
     ];
   }
 
-  setAddedAndChangedToCommitted() {
-    this.setStateConditional(
-      GIT_STATE.ADDED,
-      GIT_STATE.COMMITTED,
-      null,
-      FILE_STATE.UNCHANGED
-    );
-
-    this.setStateConditional(
-      GIT_STATE.CHANGED,
-      GIT_STATE.COMMITTED,
-      [FILE_STATE.MODIFIED, FILE_STATE.DELETED],
-      FILE_STATE.UNCHANGED
-    );
+  getUntrackedFiles() {
+    return this.getByState(NEW_FILE_STATE.NEW);
   }
 
-  setAddedToCommitted() {
-    this.setStateConditional(
-      GIT_STATE.ADDED,
-      GIT_STATE.COMMITTED,
-      null,
-      FILE_STATE.UNCHANGED
-    );
+  // for use when committing with -a or file path
+  getWorkingAndStagingAreaFiles() {
+    return [
+      ...this.getByState(
+        [NEW_FILE_STATE.MODIFIED, NEW_FILE_STATE.UNCHANGED],
+        NEW_FILE_STATE.NEW
+      ),
+      ...this.getByState([NEW_FILE_STATE.UNCHANGED], NEW_FILE_STATE.DELETED),
+      ...this.getByState(null, NEW_FILE_STATE.MODIFIED),
+    ];
   }
 
-  isUntracked() {
-    const untracked = this.getByState(GIT_STATE.CHANGED, FILE_STATE.NEW);
-    return untracked.length === 1 && untracked[0] === this;
+  commit(includeUnstaged, startDir) {
+    if (includeUnstaged) {
+      this.stage(true);
+    }
+
+    const files = this.getStagingAreaFiles();
+
+    const pathAndStateValues = startDir.getSortedPathAndStateValues(
+      files,
+      false,
+      false
+    );
+
+    const toCommit = copyFiles(files);
+
+    this.handleStateOnCommit();
+
+    return { files: toCommit, pathAndStateValues };
+  }
+
+  stage(ignoreUntracked) {
+    this.handleStateOnStage(ignoreUntracked);
+  }
+
+  restore(staged) {
+    this.handleStateOnRestore(staged);
   }
 
   removeSelf() {
@@ -153,34 +159,126 @@ class FileSystemEntity {
 class File extends FileSystemEntity {
   constructor(name) {
     super(name);
-    this.fileState = FILE_STATE.NEW;
-    this.gitState = GIT_STATE.CHANGED;
+    this.workingState = NEW_FILE_STATE.NEW;
+    this.stagingState = NEW_FILE_STATE.UNCHANGED;
   }
 
-  setDeleted() {
-    if (this.isState(null, FILE_STATE.NEW)) {
+  handleStateOnDelete() {
+    if (
+      this.isWorkingState(NEW_FILE_STATE.NEW) &&
+      this.isStagingState(NEW_FILE_STATE.UNCHANGED)
+    ) {
       this.removeSelf();
+    } else if (
+      this.isWorkingState(NEW_FILE_STATE.NEW) &&
+      this.isStagingState(NEW_FILE_STATE.DELETED)
+    ) {
+      this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
     } else {
-      this.setState(GIT_STATE.CHANGED, FILE_STATE.DELETED);
+      this.setWorkingState(NEW_FILE_STATE.DELETED);
     }
   }
 
-  setNotDeleted() {
-    this.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
+  handleStateOnCreate() {
+    if (this.isWorkingState(NEW_FILE_STATE.DELETED)) {
+      this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+    } else {
+      this.setWorkingState(NEW_FILE_STATE.NEW);
+    }
   }
 
-  setNotDeletedDeep() {
-    this.setState(GIT_STATE.CHANGED, FILE_STATE.MODIFIED);
+  handleStateOnModify() {
+    if (this.isWorkingState(NEW_FILE_STATE.UNCHANGED)) {
+      this.setWorkingState(NEW_FILE_STATE.MODIFIED);
+    }
+  }
+
+  modify() {
+    this.handleStateOnModify();
+  }
+
+  handleStateOnStage(ignoreUntracked) {
+    if (ignoreUntracked && this.isWorkingState(NEW_FILE_STATE.NEW)) {
+      return;
+    }
+
+    if (this.isStagingState(NEW_FILE_STATE.NEW)) {
+      if (this.isWorkingState(NEW_FILE_STATE.DELETED)) {
+        this.removeSelf();
+        // this.setStagingState(NEW_FILE_STATE.UNCHANGED);
+      }
+    } else if (this.isStagingState(NEW_FILE_STATE.DELETED)) {
+      if (this.isWorkingState(NEW_FILE_STATE.NEW)) {
+        this.setStagingState(NEW_FILE_STATE.UNCHANGED);
+      }
+    } else if (this.isStagingState(NEW_FILE_STATE.MODIFIED)) {
+      if (this.isWorkingState(NEW_FILE_STATE.DELETED)) {
+        this.setStagingState(NEW_FILE_STATE.DELETED);
+      }
+    } else if (this.isStagingState(NEW_FILE_STATE.UNCHANGED)) {
+      this.setStagingState(this.getWorkingState());
+    }
+    this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+  }
+
+  handleStateOnRestore(staged) {
+    if (staged) {
+      if (
+        (this.isStagingState(NEW_FILE_STATE.DELETED) &&
+          this.isWorkingState(NEW_FILE_STATE.NEW)) ||
+        (this.isStagingState(NEW_FILE_STATE.NEW) &&
+          this.isWorkingState(NEW_FILE_STATE.DELETED))
+      ) {
+        this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+      } else if (
+        this.isStagingState(NEW_FILE_STATE.MODIFIED) &&
+        this.isWorkingState(NEW_FILE_STATE.DELETED)
+      ) {
+        this.setWorkingState(NEW_FILE_STATE.DELETED);
+      } else {
+        this.setWorkingState(this.getStagingState());
+      }
+      this.setStagingState(NEW_FILE_STATE.UNCHANGED);
+    } else {
+      console.log("restore',", this);
+      if (!this.isWorkingState(NEW_FILE_STATE.NEW)) {
+        this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+      }
+    }
+  }
+
+  handleStateOnCommit() {
+    if (
+      this.isStagingState(NEW_FILE_STATE.DELETED) &&
+      this.isWorkingState(NEW_FILE_STATE.UNCHANGED)
+    ) {
+      this.removeSelf();
+    } else {
+      this.setStagingState(NEW_FILE_STATE.UNCHANGED);
+    }
+  }
+
+  canCommit(includeUnstaged) {
+    return (
+      (!includeUnstaged && this.isStaged()) ||
+      (includeUnstaged &&
+        (this.isStaged() ||
+          (this.isChangedInWorkingArea() && !this.isUntracked())) &&
+        !(
+          (this.isWorkingState(NEW_FILE_STATE.DELETED) &&
+            this.isStagingState(NEW_FILE_STATE.NEW)) ||
+          (this.isWorkingState(NEW_FILE_STATE.NEW) &&
+            this.isStagingState(NEW_FILE_STATE.DELETED))
+        ))
+    );
   }
 
   getIsDeleted() {
-    return this.fileState === FILE_STATE.DELETED;
-  }
-
-  removeDeleted() {
-    if (this.getIsDeleted()) {
-      this.removeSelf();
-    }
+    return (
+      this.isWorkingState(NEW_FILE_STATE.DELETED) ||
+      (this.isStagingState(NEW_FILE_STATE.DELETED) &&
+        !this.isWorkingState(NEW_FILE_STATE.NEW))
+    );
   }
 
   copy() {
@@ -192,8 +290,8 @@ class File extends FileSystemEntity {
     const newFile = new File(this.name);
     newFile.gitId = this.gitId;
     newFile.parentGitId = this.parent?.gitId;
-    newFile.fileState = this.fileState;
-    newFile.gitState = this.gitState;
+    newFile.setWorkingState(this.getWorkingState());
+    newFile.setStagingState(this.getStagingState());
     return newFile;
   }
 
@@ -203,8 +301,8 @@ class File extends FileSystemEntity {
       id: this.id,
       gitId: this.gitId,
       isDirectory: false,
-      fileState: this.fileState,
-      gitState: this.gitState,
+      isChanged: this.isChangedInWorkingArea(),
+      isStaged: this.isStaged(),
     };
   }
 
@@ -233,54 +331,111 @@ class File extends FileSystemEntity {
     return file instanceof File && file.name === this.name;
   }
 
-  setState(gitState, fileState) {
-    if (gitState) {
-      this.gitState = gitState;
+  setState(workingState, stagingState) {
+    if (workingState) {
+      this.setWorkingState(workingState);
     }
-    if (fileState) {
-      this.fileState = fileState;
+    if (stagingState) {
+      this.setStagingState(stagingState);
     }
   }
 
-  isState(gitStates, fileStates) {
+  setWorkingState(workingState) {
+    this.workingState = workingState;
+  }
+
+  setStagingState(stagingState) {
+    this.stagingState = stagingState;
+  }
+
+  getWorkingState() {
+    return this.workingState;
+  }
+
+  getStagingState() {
+    return this.stagingState;
+  }
+
+  isState(workingStates, stagingStates) {
     return (
-      (!gitStates ||
-        (Array.isArray(gitStates)
-          ? gitStates.includes(this.gitState)
-          : gitStates === this.gitState)) &&
-      (!fileStates ||
-        (Array.isArray(fileStates)
-          ? fileStates.includes(this.fileState)
-          : fileStates === this.fileState))
+      (!workingStates || this.isWorkingState(workingStates)) &&
+      (!stagingStates || this.isStagingState(stagingStates))
     );
   }
 
-  setStateConditional(oldGitStates, newGitState, oldFileStates, newFileState) {
-    if (this.isState(oldGitStates, oldFileStates)) {
-      this.setState(newGitState, newFileState);
+  isWorkingState(workingStates) {
+    return Array.isArray(workingStates)
+      ? workingStates.includes(this.workingState)
+      : workingStates === this.workingState;
+  }
+
+  isStagingState(stagingStates) {
+    return Array.isArray(stagingStates)
+      ? stagingStates.includes(this.stagingState)
+      : stagingStates === this.stagingState;
+  }
+
+  isStaged() {
+    return this.isStagingState([
+      NEW_FILE_STATE.DELETED,
+      NEW_FILE_STATE.MODIFIED,
+      NEW_FILE_STATE.NEW,
+    ]);
+  }
+
+  isChangedInWorkingArea() {
+    return this.isWorkingState([
+      NEW_FILE_STATE.DELETED,
+      NEW_FILE_STATE.MODIFIED,
+      NEW_FILE_STATE.NEW,
+    ]);
+  }
+
+  isChanged() {
+    return this.isStaged() || this.isChangedInWorkingArea();
+  }
+
+  isUnchanged() {
+    return (
+      this.isWorkingState(NEW_FILE_STATE.UNCHANGED) &&
+      this.isStagingState(NEW_FILE_STATE.UNCHANGED)
+    );
+  }
+
+  isUntracked() {
+    return this.isWorkingState(NEW_FILE_STATE.NEW);
+  }
+
+  setStateConditional(
+    oldWorkingStates,
+    newWorkingState,
+    oldStagingStates,
+    newStagingState
+  ) {
+    if (this.isState(oldWorkingStates, oldStagingStates)) {
+      this.setState(newWorkingState, newStagingState);
       return true;
     }
     return false;
   }
 
-  getByStateHelper(gitStates, fileStates) {
-    const isSameState = this.isState(gitStates, fileStates);
+  getByStateHelper(workingStates, stagingStates) {
+    const isSameState = this.isState(workingStates, stagingStates);
     return {
       isSameState: isSameState,
       sameStateContent: isSameState ? [this] : [],
     };
   }
 
-  getByState(gitStates, fileStates) {
-    return this.isState(gitStates, fileStates) ? [this] : [];
-  }
-
-  getStateString() {
-    return this.fileState;
+  getByState(workingStates, stagingStates) {
+    return this.isState(workingStates, stagingStates) ? [this] : [];
   }
 
   getState() {
-    return { gitState: this.gitState, fileState: this.fileState };
+    return {
+      workingState: this.getWorkingState(),
+      stagingState: this.getStagingState(),
+    };
   }
 
   flatten() {
@@ -314,22 +469,56 @@ class Directory extends FileSystemEntity {
     this.isDeleted = false;
   }
 
-  setDeleted() {
-    if (this.isState(null, FILE_STATE.NEW)) {
-      this.removeSelf();
-    } else {
-      this.getContents().forEach((content) => content.setDeleted());
-      this.isDeleted = true;
+  handleStateOnDelete() {
+    this.getContents().forEach((content) => content.handleStateOnDelete());
+    this.isDeleted = true;
+  }
+
+  handleStateOnCreate() {
+    this.isDeleted = false;
+  }
+
+  handleStateOnModify() {
+    //can't modify dir directly
+    return null;
+  }
+
+  handleStateOnRestore(staged) {
+    this.getContentsWithDeleted().forEach((content) =>
+      content.handleStateOnRestore(staged)
+    );
+
+    if (!staged) {
+      this.isDeleted = false;
     }
   }
 
-  setNotDeleted() {
-    this.isDeleted = false;
+  handleStateOnStage(ignoreUntracked) {
+    this.getContentsWithDeleted().forEach((content) =>
+      content.handleStateOnStage(ignoreUntracked)
+    );
   }
 
-  setNotDeletedDeep() {
-    this.getContentsWithDeleted().forEach((content) => content.setNotDeleted());
-    this.isDeleted = false;
+  handleStateOnCommit() {
+    this.getContentsWithDeleted().forEach((content) => {
+      content.handleStateOnCommit();
+    });
+  }
+
+  canCommit(includeUnstaged) {
+    return this.getContentsWithDeleted().some((content) =>
+      content.canCommit(includeUnstaged)
+    );
+  }
+
+  isUntracked() {
+    return this.getContentsWithDeleted().every((content) =>
+      content.isUntracked()
+    );
+  }
+
+  isChanged() {
+    return this.getContentsWithDeleted().some((content) => content.isChanged());
   }
 
   getIsDeleted() {
@@ -387,7 +576,9 @@ class Directory extends FileSystemEntity {
     );
 
     if (existingFile) {
-      existingFile.setNotDeleted();
+      console.log("before handlestate on create", existingFile);
+      existingFile.handleStateOnCreate();
+      console.log(" afer handlestate on create", existingFile);
       this.contents = this.getContentsWithDeleted().filter(
         (content) => content.id !== existingFile.id
       );
@@ -570,7 +761,7 @@ class Directory extends FileSystemEntity {
   remove(id) {
     const toRemove = this.findById(id);
     if (toRemove) {
-      toRemove.setDeleted();
+      toRemove.handleStateOnDelete();
       return toRemove;
     }
   }
@@ -604,9 +795,9 @@ class Directory extends FileSystemEntity {
     return curr;
   }
 
-  getByStateHelper(gitStates, fileStates) {
+  getByStateHelper(workingStates, stagingStates) {
     const contentStates = this.getContentsWithDeleted().map((content) =>
-      content.getByStateHelper(gitStates, fileStates)
+      content.getByStateHelper(workingStates, stagingStates)
     );
 
     const isSameState = contentStates.every((content) => content.isSameState);
@@ -625,22 +816,21 @@ class Directory extends FileSystemEntity {
     }
   }
 
-  getByState(gitStates, fileStates) {
-    return this.getByStateHelper(gitStates, fileStates).sameStateContent;
+  getByState(workingStates, stagingStates) {
+    return this.getByStateHelper(workingStates, stagingStates).sameStateContent;
   }
 
-  getStateString() {
-    //TODO clean up
+  getWorkingState() {
+    //TODO add check to make sure they all have same state
     if (this.getContentsWithDeleted().length > 0) {
-      return this.getContentsWithDeleted()[0].getStateString();
+      return this.getContentsWithDeleted()[0].getWorkingState();
     }
-    return "statestringerror";
+    return null;
   }
 
-  getState() {
-    //TODO clean up
+  getStagingState() {
     if (this.getContentsWithDeleted().length > 0) {
-      return this.getContentsWithDeleted()[0].getState();
+      return this.getContentsWithDeleted()[0].getStagingState();
     }
     return null;
   }
@@ -649,25 +839,30 @@ class Directory extends FileSystemEntity {
     return files.map((file) => getRelativePath(this, file));
   }
 
-  setState(gitState, fileState) {
+  setState(workingStates, stagingStates) {
     this.getContentsWithDeleted().forEach((content) => {
-      content.setState(gitState, fileState);
+      content.setState(workingStates, stagingStates);
     });
   }
 
-  isState(gitStates, fileStates) {
+  isState(workingStates, stagingStates) {
     return this.getContentsWithDeleted().every((content) =>
-      content.isState(gitStates, fileStates)
+      content.isState(workingStates, stagingStates)
     );
   }
 
-  setStateConditional(oldGitStates, newGitState, oldFileStates, newFileState) {
+  setStateConditional(
+    oldWorkingStates,
+    newWorkingState,
+    oldStagingStates,
+    newStagingState
+  ) {
     this.getContentsWithDeleted().forEach((content) => {
       content.setStateConditional(
-        oldGitStates,
-        newGitState,
-        oldFileStates,
-        newFileState
+        oldWorkingStates,
+        newWorkingState,
+        oldStagingStates,
+        newStagingState
       );
     });
   }
@@ -675,18 +870,18 @@ class Directory extends FileSystemEntity {
   applyCommit(commit) {
     commit.files.forEach((file) => {
       let parent = null;
-      switch (file.getState().fileState) {
-        case FILE_STATE.NEW:
+      switch (file.getStagingState()) {
+        case NEW_FILE_STATE.NEW:
           parent = this.findByGitId(file.parentGitId);
           const newFile = file.copyWithGitId();
-          newFile.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
+          newFile.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
           parent.insert(newFile);
           break;
-        case FILE_STATE.DELETED:
+        case NEW_FILE_STATE.DELETED:
           parent = this.findByGitId(file.parentGitId);
           parent.removeByGitId(file.gitId);
           break;
-        case FILE_STATE.MODIFIED:
+        case NEW_FILE_STATE.MODIFIED:
           break;
         default:
           break;
@@ -697,18 +892,18 @@ class Directory extends FileSystemEntity {
   undoCommit(commit) {
     commit.files.forEach((file) => {
       let parent = null;
-      switch (file.getState().fileState) {
-        case FILE_STATE.NEW:
+      switch (file.getStagingState()) {
+        case NEW_FILE_STATE.NEW:
           parent = this.findByGitId(file.parentGitId);
           parent.removeByGitId(file.gitId);
           break;
-        case FILE_STATE.DELETED:
+        case NEW_FILE_STATE.DELETED:
           parent = this.findByGitId(file.parentGitId);
           const newFile = file.copyWithGitId();
-          newFile.setState(GIT_STATE.COMMITTED, FILE_STATE.UNCHANGED);
+          newFile.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
           parent.insert(newFile);
           break;
-        case FILE_STATE.MODIFIED:
+        case NEW_FILE_STATE.MODIFIED:
           break;
         default:
           break;
@@ -753,6 +948,32 @@ class Directory extends FileSystemEntity {
       (sum, file) => sum + file.countFiles(),
       0
     );
+  }
+
+  getSortedPathAndStateValues(files, flatten, isWorking) {
+    if (flatten) {
+      files = files.flatMap((file) => file.getFilesDeep());
+    }
+
+    const paths = this.getRelativePaths(files);
+    const pathsAndStates = files.map((file, index) => ({
+      path: paths[index],
+      state: `${isWorking ? file.getWorkingState() : file.getStagingState()}:`,
+    }));
+    pathsAndStates.sort((a, b) => {
+      const pathA = a.path;
+      const pathB = b.path;
+
+      if (pathA < pathB) {
+        return -1;
+      }
+      if (pathA > pathB) {
+        return 1;
+      }
+      return 0;
+    });
+
+    return pathsAndStates;
   }
 }
 
@@ -830,5 +1051,7 @@ const getPathInfo = (path) => {
     parentPath,
   };
 };
+
+const copyFiles = (files) => files.map((file) => file.copyWithGitId());
 
 export { FileSystemEntity, File, Directory };

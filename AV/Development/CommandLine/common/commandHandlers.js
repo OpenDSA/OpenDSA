@@ -1,7 +1,6 @@
 import { colorNode, colors, delays, highlightNode } from "./fileStructure.js";
 import { Directory, File } from "./fileSystemEntity.js";
 import { createGitCommandsMap, handle_git } from "./gitCommandHandlers.js";
-import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
 import {
   tooManyArgs,
   notEnoughArgs,
@@ -234,13 +233,8 @@ const handle_vi = (args, flags, getCurrDir, setCurrDir) => {
       return invalidPath(arg);
     }
 
-    //TODO make conditional
-    file.setStateConditional(
-      GIT_STATE.COMMITTED,
-      GIT_STATE.CHANGED,
-      null,
-      FILE_STATE.MODIFIED
-    );
+    file.modify();
+
     return "";
   });
 

@@ -2,7 +2,6 @@ import {
   awardCredit,
   initializeGitExercise,
 } from "../../common/commandLineExercise.js";
-import { FILE_STATE, GIT_STATE } from "../../common/gitStatuses.js";
 
 /*global alert: true, ODSA, console */
 $(document).ready(function () {
@@ -25,12 +24,12 @@ $(document).ready(function () {
           const index = src.find("index.html");
           if (
             app &&
-            app.isState(GIT_STATE.CHANGED) &&
+            app.isChangedInWorkingArea() &&
             test &&
             test.length > 0 &&
-            test[0].isState(GIT_STATE.CHANGED) &&
+            test[0].isChangedInWorkingArea() &&
             index &&
-            index.isState(GIT_STATE.CHANGED)
+            index.isChangedInWorkingArea()
           ) {
             awardCredit();
           }

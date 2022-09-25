@@ -25,7 +25,7 @@ import {
 } from "./errorMessages.js";
 import { delays } from "./fileStructure.js";
 import { Branch, Commit } from "./gitClasses.js";
-import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
+import { NEW_FILE_STATE } from "./gitStatuses.js";
 
 const handle_git = (gitCommandsMap) => (args, flags, disableVisualization) => {
   if (gitCommandsMap[args[0]]) {
@@ -95,7 +95,7 @@ const handle_add = (
       return invalidPath(arg);
     }
 
-    fileSystemEntity.setStateConditional(GIT_STATE.CHANGED, GIT_STATE.ADDED);
+    fileSystemEntity.stage();
 
     return "";
   });
@@ -126,20 +126,7 @@ const handle_restore = (
       return invalidPath(arg);
     }
 
-    if (isStaged) {
-      fileSystemEntity.setStateConditional(GIT_STATE.ADDED, GIT_STATE.CHANGED);
-    } else {
-      fileSystemEntity
-        .getByState(GIT_STATE.CHANGED, FILE_STATE.DELETED)
-        .forEach((entity) => entity.setNotDeletedDeep());
-
-      fileSystemEntity.setStateConditional(
-        GIT_STATE.CHANGED,
-        GIT_STATE.COMMITTED,
-        [FILE_STATE.MODIFIED, FILE_STATE.DELETED],
-        FILE_STATE.UNCHANGED
-      );
-    }
+    fileSystemEntity.restore(isStaged);
 
     return "";
   });
@@ -202,16 +189,16 @@ const handle_commit = (
   }
 
   const errors = [];
-  let files = null;
+  let canCommit = false;
   if (hasAllFlag) {
     // get all changed files except untracked files
-    files = getLocalHomeDir().getAddedAndChanged();
+    canCommit = getLocalHomeDir().canCommit(true);
   } else if (args.length === 0) {
     //commit all staged
-    files = getLocalHomeDir().getAddedFiles();
+    canCommit = getLocalHomeDir().canCommit(false);
   } else {
     // get all changed files based on args except untracked files
-    files = args.flatMap((arg) => {
+    canCommit = args.every((arg) => {
       const fileSystemEntity = getLocalCurrDir().getChildByPathWithDeleted(arg);
       if (!fileSystemEntity) {
         errors.push(invalidPath(arg));
@@ -221,8 +208,7 @@ const handle_commit = (
         errors.push(untracked(arg));
         return [];
       }
-      const foundFiles = fileSystemEntity.getAddedAndChanged();
-      return foundFiles;
+      return fileSystemEntity.canCommit(true);
     });
   }
 
@@ -230,34 +216,47 @@ const handle_commit = (
     return createOutputList(errors);
   }
 
-  if (files.length === 0) {
+  if (!canCommit) {
     return noChangesToCommit;
   }
 
-  const filesCopy = copyFiles(files);
-
-  const sortedPathAndStateValues = getSortedPathAndStateValues(
-    files,
-    getLocalCurrDir(),
-    true
-  );
-
-  files.forEach((file) => {
-    file.removeDeleted();
-  });
+  let files = null;
+  let pathAndStateValues = [];
   if (hasAllFlag) {
-    getLocalHomeDir().setAddedAndChangedToCommitted();
+    ({ files, pathAndStateValues } = getLocalHomeDir().commit(
+      true,
+      getLocalCurrDir()
+    ));
   } else if (args.length === 0) {
-    getLocalHomeDir().setAddedToCommitted();
+    ({ files, pathAndStateValues } = getLocalHomeDir().commit(
+      false,
+      getLocalCurrDir()
+    ));
   } else {
-    files.forEach((file) => {
-      file.setAddedAndChangedToCommitted();
+    files = args.flatMap((arg) => {
+      const fileSystemEntity = getLocalCurrDir().getChildByPathWithDeleted(arg);
+      const commitResult = fileSystemEntity.commit(true, getLocalCurrDir());
+      pathAndStateValues.push(...commitResult.pathAndStateValues);
+      return commitResult.files;
+    });
+
+    pathAndStateValues.sort((a, b) => {
+      const pathA = a.path;
+      const pathB = b.path;
+
+      if (pathA < pathB) {
+        return -1;
+      }
+      if (pathA > pathB) {
+        return 1;
+      }
+      return 0;
     });
   }
 
-  const commit = getLocalCurrBranch().commitChanges(filesCopy, message);
+  const commit = getLocalCurrBranch().commitChanges(files, message);
 
-  const commitOutput = createCommitOutput(commit, sortedPathAndStateValues);
+  const commitOutput = createCommitOutput(commit, pathAndStateValues);
 
   const result = `<div class="git-commit">${
     createOutputList(errors) +
@@ -268,12 +267,10 @@ const handle_commit = (
   return { commit, result };
 };
 
-const copyFiles = (files) => files.map((file) => file.copyWithGitId());
-
 const createCommitOutput = (commit, sortedPathAndStateValues) => {
-  const newCount = countFiles(commit.files, FILE_STATE.NEW);
-  const modifiedCount = countFiles(commit.files, FILE_STATE.MODIFIED);
-  const deletedCount = countFiles(commit.files, FILE_STATE.DELETED);
+  const newCount = countFiles(commit.files, NEW_FILE_STATE.NEW);
+  const modifiedCount = countFiles(commit.files, NEW_FILE_STATE.MODIFIED);
+  const deletedCount = countFiles(commit.files, NEW_FILE_STATE.DELETED);
 
   const totalCountsLine = createCountLine(
     (newCount || 0) + (modifiedCount || 0) + (deletedCount || 0),
@@ -302,9 +299,9 @@ const createCommitOutput = (commit, sortedPathAndStateValues) => {
 const createCountLine = (count, message) =>
   `${count} file${count > 1 ? "s" : ""} ${message}`;
 
-const countFiles = (files, fileState) =>
+const countFiles = (files, stagingState) =>
   files
-    .filter((file) => file.getState().fileState === fileState)
+    .filter((file) => file.isStagingState(stagingState))
     .reduce((sum, file) => sum + file.countFiles(), 0);
 
 //cannot handle merge conflicts
@@ -534,10 +531,7 @@ const changeBranchHelper = (
   getRemoteInitialCommit,
   getRemoteCurrBranch
 ) => {
-  if (
-    getLocalHomeDir().getByState([GIT_STATE.ADDED, GIT_STATE.CHANGED])
-      .length !== 0
-  ) {
+  if (getLocalHomeDir().isChanged()) {
     return checkoutHandleChanges;
   }
 
@@ -607,22 +601,17 @@ const handle_status = (
   const createStatusSection = (
     title,
     className,
-    gitState,
-    fileStates,
+    files,
+    isWorking,
     hideStates,
     flatten
   ) => {
-    let files = getLocalHomeDir().getByState(gitState, fileStates);
-
     if (files.length === 0) {
       return "";
     }
 
-    const sortedPathAndStateValues = getSortedPathAndStateValues(
-      files,
-      getLocalCurrDir(),
-      flatten
-    );
+    const sortedPathAndStateValues =
+      getLocalCurrDir().getSortedPathAndStateValues(files, flatten, isWorking);
 
     const sortedRelativePaths = sortedPathAndStateValues.map(
       (value) => value.path
@@ -643,13 +632,8 @@ const handle_status = (
   const stagedInfo = createStatusSection(
     "Changes to be committed:",
     "git-status-staged",
-    GIT_STATE.ADDED,
-    [
-      FILE_STATE.MODIFIED,
-      FILE_STATE.DELETED,
-      FILE_STATE.NEW,
-      FILE_STATE.RENAMED,
-    ],
+    getLocalHomeDir().getStagingAreaFiles(),
+    false,
     false,
     true
   );
@@ -657,8 +641,8 @@ const handle_status = (
   const notStagedInfo = createStatusSection(
     "Changes not staged for commit:",
     "git-status-not-staged",
-    GIT_STATE.CHANGED,
-    [FILE_STATE.MODIFIED, FILE_STATE.DELETED, FILE_STATE.RENAMED],
+    getLocalHomeDir().getWorkingAreaFiles(),
+    true,
     false,
     true
   );
@@ -666,8 +650,8 @@ const handle_status = (
   const untrackedInfo = createStatusSection(
     "Untracked files:",
     "git-status-untracked",
-    GIT_STATE.CHANGED,
-    FILE_STATE.NEW,
+    getLocalHomeDir().getUntrackedFiles(),
+    true,
     true,
     false
   );
@@ -824,32 +808,6 @@ function createGitCommandsMap(
 
   return commandsMap;
 }
-
-const getSortedPathAndStateValues = (files, startDir, flatten) => {
-  if (flatten) {
-    files = files.flatMap((file) => file.getFilesDeep());
-  }
-
-  const paths = startDir.getRelativePaths(files);
-  const pathsAndStates = files.map((file, index) => ({
-    path: paths[index],
-    state: `${file.getStateString()}:`,
-  }));
-  pathsAndStates.sort((a, b) => {
-    const pathA = a.path;
-    const pathB = b.path;
-
-    if (pathA < pathB) {
-      return -1;
-    }
-    if (pathA > pathB) {
-      return 1;
-    }
-    return 0;
-  });
-
-  return pathsAndStates;
-};
 
 //used for commands that update the visualization
 const initialize_command_handler =

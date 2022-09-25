@@ -2,7 +2,6 @@ import {
   awardCredit,
   initializeGitExercise,
 } from "../../common/commandLineExercise.js";
-import { GIT_STATE } from "../../common/gitStatuses.js";
 
 /*global alert: true, ODSA, console */
 $(document).ready(function () {
