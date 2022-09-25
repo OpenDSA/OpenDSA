@@ -49,9 +49,9 @@ $(document).ready(function () {
     {
       commandTitle: "git commit [-a] -m (message)",
       commandDescription:
-        "The git commit command with the -a flag creates a commit containing the changes in both the staging area and the working area.",
+        "The git commit command with the -a flag adds all files, excluding untracked files, to the staging area before creating the commit.",
       challengeDescription:
-        "Create a commit containing all the changes in both the staging area and the working area. Then, run git status to check that all changes have been committed.",
+        "Create a commit containing all the changes to all the files. Then, run git status to check that all changes have been committed.",
     },
     handleAwardCredit,
     "git",
@@ -59,10 +59,10 @@ $(document).ready(function () {
     null,
     [
       "cd src",
-      "rm test.js",
       "vi index.html",
       "touch app.js",
       "git add .",
+      "git rm config.js",
       "vi ../README ../.gitignore",
     ]
   );

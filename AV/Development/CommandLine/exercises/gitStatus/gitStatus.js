@@ -27,12 +27,12 @@ $(document).ready(function () {
       commandDescription:
         "The git status command prints the status of the local repository including information about the working area, the staging area, commits, and the active branch.",
       challengeDescription:
-        'Run git status. Notice "index.html" has been modified, "test.js" has been deleted, and "app.js" is a new file and is thus untracked.',
+        'Run git status. Notice "index.html" has been modified, and "app.js" is a new file and is thus untracked.',
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    ["cd src", "rm test.js", "vi index.html", "touch app.js"]
+    ["cd src", "vi index.html", "touch app.js"]
   );
 });

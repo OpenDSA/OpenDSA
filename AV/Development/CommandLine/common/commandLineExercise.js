@@ -39,7 +39,7 @@ const DEFAULT_GIT_FILE_STRUCTURE = {
     ".gitignore",
     {
       name: "src",
-      contents: ["test.js", "index.html", "config.js"],
+      contents: ["index.html", "config.js"],
     },
   ],
 };

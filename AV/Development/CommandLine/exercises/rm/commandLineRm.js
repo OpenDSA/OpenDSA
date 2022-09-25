@@ -37,7 +37,7 @@ $(document).ready(function () {
     {
       commandTitle: "rm [-r] (path)",
       commandDescription:
-        "The rm command removes the file or directory at the location specified by (path). Multiple (path) values can be provided to remove multiple files or directories. Include [-r] to remove directories.",
+        "The rm command removes the file or directory at the location specified by (path). Multiple (path) values can be provided to remove multiple files or directories. Include -r to remove directories.",
       challengeDescription: 'Remove the "snake.txt" file.',
     },
     handleAwardCredit,

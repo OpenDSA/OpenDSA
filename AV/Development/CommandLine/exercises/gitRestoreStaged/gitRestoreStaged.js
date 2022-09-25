@@ -19,15 +19,15 @@ $(document).ready(function () {
       if (args.length > 0 && args[0] === "status") {
         const src = getLocalHomeDir().findDeep("src");
         if (src) {
-          const app = src.find("app.js");
-          const test = src.findWithDeleted("test.js");
+          const config = src.find("config.js");
+          const app = src.findWithDeleted("app.js");
           const index = src.find("index.html");
           if (
+            config &&
+            config.isChangedInWorkingArea() &&
             app &&
-            app.isChangedInWorkingArea() &&
-            test &&
-            test.length > 0 &&
-            test[0].isChangedInWorkingArea() &&
+            app.length > 0 &&
+            app[0].isChangedInWorkingArea() &&
             index &&
             index.isChangedInWorkingArea()
           ) {
@@ -49,6 +49,18 @@ $(document).ready(function () {
     "git",
     null,
     null,
-    ["cd src", "rm test.js", "vi index.html", "touch app.js", "git add ."]
+    [
+      "cd src",
+      "vi index.html",
+      "touch app.js",
+      "git add .",
+      "git rm config.js",
+      'git commit -m "test"',
+      "git push",
+      "vi index.html",
+      "rm app.js",
+      "touch config.js",
+      "git add .",
+    ]
   );
 });

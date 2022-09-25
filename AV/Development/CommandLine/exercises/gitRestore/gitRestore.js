@@ -20,8 +20,8 @@ $(document).ready(function () {
         const src = getLocalHomeDir().findDeep("src");
         if (src) {
           const index = src.find("index.html");
-          const test = src.find("test.js");
-          if (index && index.isUnchanged() && test && test.isUnchanged()) {
+          const app = src.find("app.js");
+          if (index && index.isUnchanged() && app && app.isUnchanged()) {
             awardCredit();
           }
         }
@@ -32,7 +32,7 @@ $(document).ready(function () {
     {
       commandTitle: "git restore (path)",
       commandDescription:
-        "The git restore command undos the changes made to the file or directory at the location specified by (path). Multiple (path) values can be provided to restore multiple files or directories.",
+        "The git restore command reverts the changes made to the file or directory at the location specified by (path). Multiple (path) values can be provided to restore multiple files or directories.",
       challengeDescription:
         "Restore all the changed files. Then, run git status to check that the files are no longer changed.",
     },
@@ -40,6 +40,16 @@ $(document).ready(function () {
     "git",
     null,
     null,
-    ["cd src", "rm test.js", "vi index.html"]
+    [
+      "cd src",
+      "vi index.html",
+      "touch app.js",
+      "git add .",
+      "git rm config.js",
+      'git commit -m "test"',
+      "git push",
+      "vi index.html",
+      "rm app.js",
+    ]
   );
 });

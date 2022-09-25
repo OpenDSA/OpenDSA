@@ -17,7 +17,7 @@ $(document).ready(function () {
     ) =>
     (args) => {
       if (args.length > 0 && args[0] === "status") {
-        if (getLocalCurrBranch().name === "develop") {
+        if (getLocalCurrBranch().name === "testing") {
           awardCredit();
         }
       }
@@ -29,7 +29,7 @@ $(document).ready(function () {
       commandDescription:
         "The git switch command with the -c flag creates a new branch with the name specified by (branch_name) if the branch does not exist and then switches to the new branch.",
       challengeDescription:
-        'Create a "develop" branch and change the current branch to the "develop" branch. Then, run git status to check that the "develop" branch is the current branch.',
+        'Create a "testing" branch and change the current branch to the "testing" branch. Then, run git status to check that the "testing" branch is the current branch.',
     },
     handleAwardCredit,
     "git",

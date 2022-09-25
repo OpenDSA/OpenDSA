@@ -23,6 +23,10 @@ git add
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitAdd/gitAdd.html pe 
 
+git rm 
+-----------
+.. avembed:: AV/Development/CommandLine/exercises/gitRm/gitRm.html pe 
+
 git commit
 -----------
 .. avembed:: AV/Development/CommandLine/exercises/gitCommit/gitCommit.html pe 

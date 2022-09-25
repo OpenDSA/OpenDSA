@@ -28,14 +28,14 @@ $(document).ready(function () {
           const src = getLocalHomeDir().findDeep("src");
           if (src) {
             const app = src.find("app.js");
-            const test = src.findWithDeleted("test.js");
+            const config = src.findWithDeleted("config.js");
             const index = src.find("index.html");
             if (
               app &&
               app.isUnchanged() &&
-              test &&
-              test.length > 0 &&
-              !test[0].isUnchanged() &&
+              config &&
+              config.length > 0 &&
+              !config[0].isUnchanged() &&
               index &&
               !index.isUnchanged()
             ) {
@@ -60,10 +60,10 @@ $(document).ready(function () {
     null,
     [
       "cd src",
-      "rm test.js",
       "vi index.html",
       "touch app.js",
       "git add .",
+      "git rm config.js",
       "vi ../README ../.gitignore",
     ]
   );

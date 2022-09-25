@@ -41,10 +41,10 @@ $(document).ready(function () {
     null,
     [
       "cd src",
-      "rm test.js",
       "vi index.html",
       "touch app.js",
       "git add .",
+      "git rm config.js",
       'git commit -m "test"',
     ]
   );
