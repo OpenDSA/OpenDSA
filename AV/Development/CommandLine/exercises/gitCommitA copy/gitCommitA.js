@@ -49,9 +49,9 @@ $(document).ready(function () {
     {
       commandTitle: "git commit [-a] -m (message)",
       commandDescription:
-        "The git commit command with the -a flag creates a commit containing the changes in both the staging area and the working area.",
+        "The git commit command with the -a flag creates a commit containing the changes in both the staging area and the working tree.",
       challengeDescription:
-        "Create a commit containing all the changes in both the staging area and the working area. Then, run git status to check that all changes have been committed.",
+        "Create a commit containing all the changes in both the staging area and the working tree. Then, run git status to check that all changes have been committed.",
     },
     handleAwardCredit,
     "git",

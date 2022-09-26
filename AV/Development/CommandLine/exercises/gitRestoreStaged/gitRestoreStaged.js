@@ -41,7 +41,7 @@ $(document).ready(function () {
     {
       commandTitle: "git restore [--staged] (path)",
       commandDescription:
-        "The git restore command with the --staged flag moves the file or directory at the location specified by (path) from the staging area to the working area.",
+        "The git restore command with the --staged flag moves the file or directory at the location specified by (path) from the staging area to the working tree.",
       challengeDescription:
         "Restore all the staged files. Then, run git status to check that the files are no longer staged.",
     },

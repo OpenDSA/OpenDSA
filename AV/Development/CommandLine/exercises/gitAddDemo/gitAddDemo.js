@@ -17,22 +17,25 @@ $(document).ready(function () {
     ) =>
     (args) => {
       if (args.length > 0 && args[0] === "status") {
-        awardCredit();
+        const readme = getLocalHomeDir().find("README");
+        if (readme && readme.isStaged()) {
+          awardCredit();
+        }
       }
     };
 
   initializeGitExercise(
     {
-      commandTitle: "git status",
+      commandTitle: "git add (path)",
       commandDescription:
-        "The git status command prints the status of the local repository including information about the working tree, the staging area, commits, and the active branch.",
+        "The git add command adds the file or directory at the location specified by (path) to the staging area. Multiple (path) values can be provided to add multiple files or directories.",
       challengeDescription:
-        'Run git status. Notice "index.html" has been modified, and "app.js" is a new file and is thus untracked.',
+        'Add "README" to the staging area. Then, run git status to check that the files have been added to the staging area.',
     },
     handleAwardCredit,
     "git",
     null,
     null,
-    ["cd src", "vi index.html", "touch app.js"]
+    ["vi README"]
   );
 });

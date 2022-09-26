@@ -16,7 +16,7 @@ Introduction
 
 In a computer, a file system is used by the operating system to manage files stored and accessed by users. File systems follow a hierarchical tree structure, in which the root directory sits at the top of the tree. All other directories and files branch from the root directory.
 
-A simple file structure is depicted in the following figure. The light blue rectangles represent files, and the dark blue rectangles represent directories. The command line is a textual user interface that allows the user to execute commands to move throughout the file structure. The **current working directory** is the directory the user is currently located in within the command line. The **green** rectangle represents the current working directory.A **parent directory** is a directory containing the current working directory. A **subdirectory** is a directory residing within the current working directory. A parent directory can contain multiple subdirectories.
+A simple file structure is depicted in the following figure. The light blue rectangles represent files, and the dark blue rectangles represent directories. The command line is a textual user interface that allows the user to execute commands to move throughout the file structure. The **current working directory** is the directory the user is currently located in within the command line. The **green** rectangle represents the current working directory. A **parent directory** is a directory containing the current working directory. A **subdirectory** is a directory residing within the current working directory. A parent directory can contain multiple subdirectories.
 
 Four levels exist in the following file system: 
 
