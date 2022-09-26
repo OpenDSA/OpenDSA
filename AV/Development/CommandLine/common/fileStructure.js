@@ -1,5 +1,10 @@
 import { Directory, File } from "./fileSystemEntity.js";
 import { NEW_FILE_STATE } from "./gitStatuses.js";
+import {
+  getTimings,
+  INITIALIZE_FILE_TREE_OFFSETS,
+  INITIALIZE_OFFSETS,
+} from "./timings.js";
 
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 
@@ -37,7 +42,8 @@ function renderFileStructureVisualization(data, currDirId, width, height, id) {
     svgData,
     data,
     -1 * delays.nodes.enter,
-    currDirId
+    currDirId,
+    INITIALIZE_FILE_TREE_OFFSETS
   );
   colorNode(svgData.group, currDirId, colors.current.background, "");
 
@@ -58,7 +64,9 @@ function renderGitVisualization(
     localHomeDir,
     -1 * delays.paths.update,
     currDirId,
-    gitMethods
+    INITIALIZE_OFFSETS,
+    gitMethods,
+    null
   );
 
   createVerticalLine(svgData.group, svgData.width / 2, svgData.height);
@@ -121,9 +129,11 @@ function updateFileStructureVisualization(
   svgData,
   homeDir,
   delayOffset,
-  currDirId
+  currDirId,
+  offsets
 ) {
   const svgGroup = svgData.group;
+  const timings = getTimings(offsets);
 
   const data = createFileTreeData(
     homeDir,
@@ -136,7 +146,16 @@ function updateFileStructureVisualization(
     1
   );
 
-  createFileTree(svgGroup, data, currDirId, false, "", delayOffset, 1);
+  createFileTree(
+    svgGroup,
+    data,
+    currDirId,
+    false,
+    "",
+    delayOffset,
+    1,
+    timings.local.fileTree
+  );
 }
 
 function updateGitVisualization(
@@ -144,6 +163,7 @@ function updateGitVisualization(
   localHomeDir,
   delayOffset,
   currDirId,
+  offsets,
   gitMethods,
   extraVisualizations
 ) {
@@ -151,6 +171,7 @@ function updateGitVisualization(
 
   const scale = 0.7;
   const padding = 5;
+  const timings = getTimings(offsets);
 
   let {
     localFileTreeData,
@@ -179,8 +200,7 @@ function updateGitVisualization(
         extraVisualizations.commit,
         localFileTreeData,
         localCommitTreeData,
-        width,
-        height
+        timings.commit
       );
     }
 
@@ -195,7 +215,8 @@ function updateGitVisualization(
           remoteBranchData,
           extraVisualizations.push,
           group,
-          0.7
+          0.7,
+          timings.push
         ));
     }
 
@@ -222,7 +243,8 @@ function updateGitVisualization(
           remoteBranchData,
           extraVisualizations.pull,
           group,
-          0.7
+          0.7,
+          timings.pull
         ));
     }
   }
@@ -237,7 +259,8 @@ function updateGitVisualization(
     group,
     delayOffset,
     scale,
-    currDirId
+    currDirId,
+    timings
   );
 }
 
@@ -248,10 +271,10 @@ const createFileTree = (
   colorGit,
   label,
   delayOffset,
-  fileScale
+  fileScale,
+  timings
 ) => {
-  // adds the nodes
-  const nodes = createFileRectangles(
+  createFileRectangles(
     svgGroup,
     data,
     label,
@@ -260,10 +283,11 @@ const createFileTree = (
     rectangleDimensions.height * fileScale,
     defaultFontSize * fileScale + "rem",
     currDirId,
-    colorGit
+    colorGit,
+    timings.fileRectangles
   );
 
-  const links = createFileLinks(svgGroup, data, label, delayOffset);
+  createFileLinks(svgGroup, data, label, delayOffset, timings.fileLinks);
 };
 
 const createFileRectangles = (
@@ -275,7 +299,8 @@ const createFileRectangles = (
   height,
   fontSize,
   currDirId,
-  colorGit
+  colorGit,
+  timings
 ) => {
   return svgGroup
     .selectAll(".node-" + label)
@@ -339,10 +364,8 @@ const createFileRectangles = (
 
         nodes
           .transition()
-          .duration(function (d) {
-            return durations.nodes.enter;
-          })
-          .delay(delays.nodes.enter + delayOffset)
+          .duration(timings.durations.enter)
+          .delay(timings.delays.enter)
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .attr("transform", function (d) {
@@ -357,8 +380,8 @@ const createFileRectangles = (
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .transition()
-          .duration(durations.nodes.update)
-          .delay(delays.nodes.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("transform", function (d) {
             return "translate(" + d.x + "," + d.y + ")";
           });
@@ -380,8 +403,8 @@ const createFileRectangles = (
       function (exit) {
         return exit
           .transition()
-          .duration(durations.nodes.exit)
-          .delay(delays.nodes.exit + delayOffset)
+          .duration(timings.durations.exit)
+          .delay(timings.delays.exit)
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6)
           .remove();
@@ -389,7 +412,7 @@ const createFileRectangles = (
     );
 };
 
-const createFileLinks = (svgGroup, data, label, delayOffset) =>
+const createFileLinks = (svgGroup, data, label, delayOffset, timings) =>
   svgGroup
     .selectAll(".link-" + label)
     .data(data.slice(1), function (d) {
@@ -413,8 +436,8 @@ const createFileLinks = (svgGroup, data, label, delayOffset) =>
           .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
           .attr("stroke-dashoffset", (d) => d.totalLength)
           .transition()
-          .delay(delays.paths.enter + delayOffset)
-          .duration(durations.paths.enter)
+          .delay(timings.delays.enter)
+          .duration(timings.durations.enter)
           .attr("stroke-dashoffset", 0);
 
         return nodes;
@@ -422,8 +445,8 @@ const createFileLinks = (svgGroup, data, label, delayOffset) =>
       function (update) {
         return update
           .transition()
-          .duration(durations.paths.update)
-          .delay(delays.paths.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("d", function (d) {
             return `M ${d.x} , ${d.y} 
                     V ${(d.y + d.parent.y) / 2} 
@@ -447,8 +470,8 @@ const createFileLinks = (svgGroup, data, label, delayOffset) =>
           .attr("stroke-dashoffset", 0)
           .attr("stroke-dashoffset", 0)
           .transition()
-          .delay(delays.paths.exit + delayOffset)
-          .duration(3000)
+          .delay(timings.delays.exit)
+          .duration(timings.durations.exit)
           .attr("stroke-dashoffset", (d) => d.totalLength)
           .remove();
       }
@@ -460,11 +483,19 @@ const createCommitTree = (
   branches,
   label,
   delayOffset,
-  scale
+  scale,
+  timings
 ) => {
-  createCommitCircles(svgGroup, data, label, delayOffset, circleRadius * scale);
+  createCommitCircles(
+    svgGroup,
+    data,
+    label,
+    delayOffset,
+    circleRadius * scale,
+    timings.commitCircles
+  );
 
-  createCommitLinks(svgGroup, data, label, delayOffset);
+  createCommitLinks(svgGroup, data, label, delayOffset, timings.commitLinks);
 
   createBranchRectangles(
     svgGroup,
@@ -474,11 +505,18 @@ const createCommitTree = (
     rectangleDimensions.width * scale,
     rectangleDimensions.height * scale,
     defaultFontSize * scale + "rem",
-    circleRadius * scale
+    timings.branchRectangles
   );
 };
 
-const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
+const createCommitCircles = (
+  svgGroup,
+  data,
+  label,
+  delayOffset,
+  radius,
+  timings
+) =>
   svgGroup
     .selectAll(".node-" + label)
     .data(data, function (d) {
@@ -499,10 +537,10 @@ const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
             );
           })
           .style("fill-opacity", function (d) {
-            return d.startX ? 0 : 1e-6;
+            return d.startX ? 1 : 1e-6;
           })
           .style("stroke-opacity", function (d) {
-            return d.startX ? 0 : 1e-6;
+            return d.startX ? 1 : 1e-6;
           });
 
         nodes
@@ -529,8 +567,8 @@ const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
 
         nodes
           .transition()
-          .duration(durations.nodes.enter)
-          .delay(delays.nodes.enter + delayOffset + 250)
+          .duration(timings.durations.enter)
+          .delay(timings.delays.enter)
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .attr("transform", function (d) {
@@ -544,8 +582,8 @@ const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .transition()
-          .duration(durations.nodes.update)
-          .delay(delays.nodes.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("transform", function (d) {
             return "translate(" + d.x + "," + d.y + ")";
           });
@@ -563,15 +601,15 @@ const createCommitCircles = (svgGroup, data, label, delayOffset, radius) =>
       function (exit) {
         return exit
           .transition()
-          .duration(durations.nodes.exit)
-          .delay(delays.nodes.exit + delayOffset)
+          .duration(timings.durations.exit)
+          .delay(timings.delays.exit)
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6)
           .remove();
       }
     );
 
-const createCommitLinks = (svgGroup, data, label, delayOffset) =>
+const createCommitLinks = (svgGroup, data, label, delayOffset, timings) =>
   svgGroup
     .selectAll(".link-" + label)
     .data(data.slice(1), function (d) {
@@ -593,8 +631,8 @@ const createCommitLinks = (svgGroup, data, label, delayOffset) =>
           .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
           .attr("stroke-dashoffset", (d) => d.totalLength)
           .transition()
-          .delay(delays.paths.enter + delayOffset)
-          .duration(durations.paths.enter)
+          .delay(timings.delays.enter)
+          .duration(timings.durations.enter)
           .attr("stroke-dashoffset", 0);
 
         return nodes;
@@ -602,8 +640,8 @@ const createCommitLinks = (svgGroup, data, label, delayOffset) =>
       function (update) {
         return update
           .transition()
-          .duration(durations.paths.update)
-          .delay(delays.paths.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("d", function (d) {
             return `M ${d.x} , ${d.y} 
                     L ${d.parent.x}, ${d.parent.y}`;
@@ -625,8 +663,8 @@ const createCommitLinks = (svgGroup, data, label, delayOffset) =>
           .attr("stroke-dashoffset", 0)
           .attr("stroke-dashoffset", 0)
           .transition()
-          .delay(delays.paths.exit + delayOffset)
-          .duration(3000)
+          .delay(timings.delays.exit)
+          .duration(timings.durations.exit)
           .attr("stroke-dashoffset", (d) => d.totalLength)
           .remove();
       }
@@ -640,8 +678,7 @@ const createBranchRectangles = (
   width,
   height,
   fontSize,
-  radius,
-  currBranchId
+  timings
 ) =>
   svgGroup
     .selectAll(".branch-" + label)
@@ -696,8 +733,8 @@ const createBranchRectangles = (
 
         nodes
           .transition()
-          .duration(durations.nodes.enter)
-          .delay(delays.nodes.enter + delayOffset)
+          .duration(timings.durations.enter)
+          .delay(timings.delays.enter)
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .attr("transform", function (d) {
@@ -712,8 +749,8 @@ const createBranchRectangles = (
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .transition()
-          .duration(durations.nodes.update)
-          .delay(delays.nodes.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("transform", function (d) {
             return "translate(" + d.x + "," + d.y + ")";
           });
@@ -727,8 +764,8 @@ const createBranchRectangles = (
       function (exit) {
         return exit
           .transition()
-          .duration(durations.nodes.exit)
-          .delay(delays.nodes.exit + delayOffset)
+          .duration(timings.durations.exit)
+          .delay(timings.delays.exit)
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6)
           .remove();
@@ -981,7 +1018,8 @@ const createGitVisualization = (
   svgGroup,
   delayOffset,
   scale,
-  currDirId
+  currDirId,
+  timings
 ) => {
   if (localFileTreeData) {
     createFileTree(
@@ -991,7 +1029,8 @@ const createGitVisualization = (
       true,
       "local",
       delayOffset,
-      scale
+      scale,
+      timings.local.fileTree
     );
   }
 
@@ -1002,7 +1041,8 @@ const createGitVisualization = (
     true,
     "remote",
     delayOffset,
-    scale
+    scale,
+    timings.remote.fileTree
   );
 
   if (localCommitTreeData) {
@@ -1012,7 +1052,8 @@ const createGitVisualization = (
       localBranchData,
       "local-commit",
       delayOffset,
-      scale
+      scale,
+      timings.local.commitTree
     );
   }
 
@@ -1022,11 +1063,18 @@ const createGitVisualization = (
     remoteBranchData,
     "remote-commit",
     delayOffset,
-    scale
+    scale,
+    timings.remote.commitTree
   );
 };
 
-function visualizeCommit(svgGroup, commit, fileTreeData, commitTreeData) {
+function visualizeCommit(
+  svgGroup,
+  commit,
+  fileTreeData,
+  commitTreeData,
+  timings
+) {
   //create a rectangle for each file
   //transition from filetreedata location to committreedatalocation
   const rectangleWidth = 0.7 * rectangleDimensions.width;
@@ -1055,10 +1103,24 @@ function visualizeCommit(svgGroup, commit, fileTreeData, commitTreeData) {
       };
     });
 
-  return showFilesMoving(svgGroup, filesData, 0.7, "commit-files");
+  return showFilesMoving(
+    svgGroup,
+    filesData,
+    0.7,
+    "commit-files",
+    timings,
+    true
+  );
 }
 
-const showFilesMoving = (svgGroup, files, scale, className, delay) => {
+const showFilesMoving = (
+  svgGroup,
+  files,
+  scale,
+  className,
+  timings,
+  fadeOut
+) => {
   const rectangleWidth = rectangleDimensions.width * scale;
   const rectangleHeight = rectangleDimensions.height * scale;
   return svgGroup
@@ -1072,6 +1134,12 @@ const showFilesMoving = (svgGroup, files, scale, className, delay) => {
         .attr("class", className)
         .attr("transform", function (d) {
           return "translate(" + d.startX + "," + d.startY + ")";
+        })
+        .style("fill-opacity", function (d) {
+          return 1e-6;
+        })
+        .style("stroke-opacity", function (d) {
+          return 1e-6;
         });
 
       nodes
@@ -1103,16 +1171,18 @@ const showFilesMoving = (svgGroup, files, scale, className, delay) => {
 
       nodes
         .transition()
-        .duration(durations.nodes.enter)
-        .delay(delay ? delay : 0)
+        .duration(timings.durations.enter)
+        .delay(timings.delays.enter)
+        .style("fill-opacity", 1)
+        .style("stroke-opacity", 1)
+        .transition()
+        .duration(timings.durations.moving)
+        .delay(timings.delays.moving)
         .attr("transform", function (d) {
           return "translate(" + d.endX + "," + d.endY + ")";
         })
-        .transition()
-        .duration(1000)
-        .delay(0)
-        .style("fill-opacity", 1e-6)
-        .style("stroke-opacity", 1e-6)
+        .style("fill-opacity", fadeOut ? 1e-6 : 1)
+        .style("stroke-opacity", fadeOut ? 1e-6 : 1)
         .remove();
       return nodes;
     });
@@ -1150,7 +1220,8 @@ const visualizePush = (
   remoteBranchData,
   push,
   svgGroup,
-  scale
+  scale,
+  timings
 ) => {
   remoteCommitTreeData = addLocation(
     localCommitTreeData,
@@ -1173,7 +1244,8 @@ const visualizePush = (
       push.commitPath,
       svgGroup,
       scale,
-      delays.nodes.update + 1000
+      delays.nodes.update + 1000,
+      timings
     );
   }
 
@@ -1189,7 +1261,8 @@ const visualizePull = (
   remoteBranchData,
   pull,
   svgGroup,
-  scale
+  scale,
+  timings
 ) => {
   localCommitTreeData = addLocation(
     remoteCommitTreeData,
@@ -1212,7 +1285,8 @@ const visualizePull = (
       pull.commitPath,
       svgGroup,
       scale,
-      delays.nodes.update + 1000
+      delays.nodes.update + 1000,
+      timings
     );
   }
 
@@ -1225,7 +1299,8 @@ const visualizeModifiedFiles = (
   commitPath,
   svgGroup,
   scale,
-  delay
+  delay,
+  timings
 ) => {
   const modifiedFiles = commitPath
     .filter((value) => value.action !== "nothing")
@@ -1252,7 +1327,7 @@ const visualizeModifiedFiles = (
         isDirectory: file instanceof Directory,
       };
     });
-  showFilesMoving(svgGroup, modifiedFiles, scale, "push-files", delay);
+  showFilesMoving(svgGroup, modifiedFiles, scale, "push-files", timings);
 };
 
 const visualizeClone = (
@@ -1316,4 +1391,5 @@ export {
   colorNode,
   colors,
   delays,
+  durations,
 };

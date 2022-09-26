@@ -16,6 +16,10 @@ import {
   removeDescendant,
   noFilesExist,
 } from "./errorMessages.js";
+import {
+  BASIC_COMMAND_OFFSETS,
+  BASIC_COMMAND_OFFSETS_NO_EXIT,
+} from "./timings.js";
 
 const createOutputList = (lines) => {
   lines = lines.filter((line) => line !== "");
@@ -253,41 +257,53 @@ function createCommandsMap(
   const commandsMap = {
     ls: handle_ls,
     pwd: handle_pwd,
-    cd: { method: handle_cd, maxArgs: 1, delay: -1 * delays.paths.update },
+    cd: {
+      method: handle_cd,
+      maxArgs: 1,
+      delay: -1 * delays.paths.update,
+      offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
+    },
     mkdir: {
       method: handle_mkdir,
       minArgs: 1,
       delay: -1 * delays.paths.update,
+      offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     touch: {
       method: handle_touch,
       minArgs: 1,
       delay: -1 * delays.paths.update,
+      offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     cp: {
       method: handle_cp,
       minArgs: 2,
       delay: -1 * delays.paths.update,
+      offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     mv: {
       method: handle_mv,
       minArgs: 2,
       delay: 0,
+      offsets: BASIC_COMMAND_OFFSETS,
     },
     rm: {
       method: handle_rm,
       minArgs: 1,
       delay: 0,
+      offsets: BASIC_COMMAND_OFFSETS,
     },
     rmdir: {
       method: handle_rmdir,
       minArgs: 1,
       delay: 0,
+      offsets: BASIC_COMMAND_OFFSETS,
     },
     vi: {
       method: handle_vi,
       minArgs: 1,
       delay: -1 * delays.paths.update,
+      offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     git: handle_git,
   };
@@ -310,7 +326,7 @@ function createCommandsMap(
     } else if (key === "ls" || key === "pwd") {
       commandsMap[key] = commandsMap[key](getSvgData, getCurrDir);
     } else {
-      const { method, minArgs, maxArgs, delay } = commandsMap[key];
+      const { method, minArgs, maxArgs, delay, offsets } = commandsMap[key];
       commandsMap[key] = initialize_command_handler(
         method,
         minArgs,
@@ -321,7 +337,8 @@ function createCommandsMap(
         updateVisualization,
         delay,
         getSvgData,
-        gitMethods
+        gitMethods,
+        offsets
       );
     }
   });
@@ -432,7 +449,8 @@ const initialize_command_handler =
     updateVisualization,
     updateVisualizationDelay,
     getSvgData,
-    gitMethods
+    gitMethods,
+    offsets
   ) =>
   (args, flags, disableVisualization) => {
     if (!getHomeDir()) {
@@ -456,7 +474,9 @@ const initialize_command_handler =
         getHomeDir(),
         updateVisualizationDelay,
         getCurrDir().id,
-        gitMethods
+        offsets,
+        gitMethods,
+        null
       );
     }
 

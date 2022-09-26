@@ -36,7 +36,7 @@ $(document).ready(function () {
     {
       commandTitle: "git rm [-r] (path)",
       commandDescription:
-        "The git rm command removes the file or directory at the location specified by (path) and add the file to the staging area. Multiple (path) values can be provided to remove multiple files or directories.",
+        "The git rm command removes the file or directory at the location specified by (path) and adds the file to the staging area. Multiple (path) values can be provided to remove multiple files or directories.",
       challengeDescription:
         'Remove "config.js" and add it to the staging area. Then, run git status to check that the files have been added to the staging area.',
     },

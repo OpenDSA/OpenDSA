@@ -240,7 +240,6 @@ class File extends FileSystemEntity {
       }
       this.setStagingState(NEW_FILE_STATE.UNCHANGED);
     } else {
-      console.log("restore',", this);
       if (!this.isWorkingState(NEW_FILE_STATE.NEW)) {
         this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
       }
@@ -576,9 +575,7 @@ class Directory extends FileSystemEntity {
     );
 
     if (existingFile) {
-      console.log("before handlestate on create", existingFile);
       existingFile.handleStateOnCreate();
-      console.log(" afer handlestate on create", existingFile);
       this.contents = this.getContentsWithDeleted().filter(
         (content) => content.id !== existingFile.id
       );

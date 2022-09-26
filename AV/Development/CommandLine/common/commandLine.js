@@ -64,11 +64,13 @@ const createHandleKeydown =
       event.preventDefault();
       const inputValue = $(inputId).val();
       const inputValueSplit = inputValue.split(" ");
-      const restOfName = getCurrDir().getRestOfName(
-        inputValueSplit.pop(),
-        inputValueSplit.length > 0 && inputValueSplit[0] === "git"
-      );
-      $(inputId).val(inputValue + restOfName);
+      if (getCurrDir()) {
+        const restOfName = getCurrDir().getRestOfName(
+          inputValueSplit.pop(),
+          inputValueSplit.length > 0 && inputValueSplit[0] === "git"
+        );
+        $(inputId).val(inputValue + restOfName);
+      }
     }
     //up arrow
     if (keycode === 38) {

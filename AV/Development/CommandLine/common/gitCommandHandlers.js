@@ -27,6 +27,17 @@ import {
 import { delays } from "./fileStructure.js";
 import { Branch, Commit } from "./gitClasses.js";
 import { NEW_FILE_STATE } from "./gitStatuses.js";
+import {
+  ADD_OFFSETS,
+  BRANCH_OFFSETS,
+  CLONE_OFFSETS,
+  COMMIT_OFFSETS,
+  GIT_RM_OFFSETS,
+  PULL_OFFSETS,
+  PUSH_OFFSETS,
+  RESTORE_OFFSETS,
+  SWITCH_OFFSETS,
+} from "./timings.js";
 
 const handle_git = (gitCommandsMap) => (args, flags, disableVisualization) => {
   if (gitCommandsMap[args[0]]) {
@@ -781,40 +792,60 @@ function createGitCommandsMap(
       maxArgs: 1,
       minArgs: 1,
       isClone: true,
+      offsets: CLONE_OFFSETS,
     },
-    add: { method: handle_add, delay: -1 * delays.paths.update, minArgs: 1 },
-    rm: { method: handle_git_rm, delay: -1 * delays.paths.update, minArgs: 1 },
-    commit: { method: handle_commit, delay: -1 * delays.paths.update },
-    pull: { method: handle_pull, delay: 0, maxArgs: 0 },
-    push: { method: handle_push, delay: 0, maxArgs: 0 },
+    add: {
+      method: handle_add,
+      delay: -1 * delays.paths.update,
+      minArgs: 1,
+      offsets: ADD_OFFSETS,
+    },
+    rm: {
+      method: handle_git_rm,
+      delay: -1 * delays.paths.update,
+      minArgs: 1,
+      offsets: GIT_RM_OFFSETS,
+    },
+    commit: {
+      method: handle_commit,
+      delay: -1 * delays.paths.update,
+      offsets: COMMIT_OFFSETS,
+    },
+    pull: { method: handle_pull, delay: 0, maxArgs: 0, offsets: PULL_OFFSETS },
+    push: { method: handle_push, delay: 0, maxArgs: 0, offsets: PUSH_OFFSETS },
     branch: {
       method: handle_branch,
       delay: -1 * delays.paths.update,
       minArgs: 1,
       maxArgs: 1,
+      offsets: BRANCH_OFFSETS,
     },
     checkout: {
       method: handle_checkout,
       delay: -1 * delays.paths.update,
       minArgs: 1,
       maxArgs: 1,
+      offsets: SWITCH_OFFSETS,
     },
     switch: {
       method: handle_switch,
       delay: -1 * delays.paths.update,
       minArgs: 1,
       maxArgs: 1,
+      offsets: SWITCH_OFFSETS,
     },
     restore: {
       method: handle_restore,
       delay: -1 * delays.paths.update,
       minArgs: 1,
+      offsets: RESTORE_OFFSETS,
     },
     status: { method: handle_status, delay: 0, maxArgs: 0 },
   };
 
   Object.keys(commandsMap).forEach((key) => {
-    const { method, minArgs, maxArgs, delay, isClone } = commandsMap[key];
+    const { method, minArgs, maxArgs, delay, isClone, offsets } =
+      commandsMap[key];
     commandsMap[key] = initialize_command_handler(
       method,
       minArgs,
@@ -834,7 +865,8 @@ function createGitCommandsMap(
       delay,
       getSvgData,
       gitMethods,
-      isClone
+      isClone,
+      offsets
     );
   });
 
@@ -862,7 +894,8 @@ const initialize_command_handler =
     updateVisualizationDelay,
     getSvgData,
     gitMethods,
-    isClone
+    isClone,
+    offsets
   ) =>
   (args, flags, disableVisualization) => {
     //TODO think of cleaner way to handle clone
@@ -899,6 +932,7 @@ const initialize_command_handler =
         getLocalHomeDir(),
         updateVisualizationDelay,
         getLocalCurrDir().id,
+        offsets ? offsets : {},
         gitMethods,
         typeof result === "string" ? null : result
       );
