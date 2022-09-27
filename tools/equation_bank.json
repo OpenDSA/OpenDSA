@@ -317,7 +317,7 @@
         "name": "momInertiaRadius",
         "latex": "J_{ } = \\pi/2 * ( r_{ } )^4",
         "template": "mominertia = 3.1419/2 * ( radius )^4",
-        "sympy_template": "mominertia = pi/32 * ( radius ) ** 4",
+        "sympy_template": "mominertia = pi/2 * ( radius ) ** 4",
         "variables": {
             "mominertia": "J_{ }",
             "radius": "r_{ }"
@@ -434,8 +434,8 @@
         "group": "Geometry",
         "id": "radiusDiamReln",
         "name": "radiusDiamReln",
-        "latex": "d_{ } = \\frac { r_{ } }{2}",
-        "template": "diameter = 0.5 * radius",
+        "latex": "r_{ } = \\frac { d_{ } }{2}",
+        "template": "radius = 0.5 * diameter",
         "variables": {
             "diameter": "d_{ }",
             "radius": "r_{ }"
