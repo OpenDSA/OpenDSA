@@ -7,28 +7,26 @@ class Commit {
     this.parent = undefined;
     this.branches = [];
     this.files = [];
-    this.merged = false;
+    this.message = "";
     this.id = ++count;
     this.gitId = ++gitIdCount; //used to pair between local and remote
   }
 
-  setMerged(merged) {
-    this.merged = merged;
+  containsBranchShallow(name) {
+    return this.branches.some((branch) => branch.name === name);
   }
 
   findBranchByGitId(id) {
-    let curr = null;
-    this.branches.some((branch) => {
-      curr = branch;
-      return curr.gitId === id;
-    });
+    const found = this.branches.find((branch) => branch.gitId === id);
 
-    if (curr) {
-      return curr;
+    if (found) {
+      return found;
     }
 
+    let curr = null;
+
     this.children.some((child) => {
-      curr = child.findBranchByGitId();
+      curr = child.findBranchByGitId(id);
       return Boolean(curr);
     });
 
@@ -36,26 +34,60 @@ class Commit {
   }
 
   findBranchByName(name) {
-    let curr = null;
-    this.branches.some((branch) => {
-      curr = branch;
-      return curr.name === name;
-    });
+    const found = this.branches.find((branch) => branch.name === name);
 
-    if (curr) {
-      return curr;
+    if (found) {
+      return found;
     }
 
+    let curr = null;
+
     this.children.some((child) => {
-      curr = child.findBranchByName();
+      curr = child.findBranchByName(name);
       return Boolean(curr);
     });
 
     return curr;
   }
 
-  insertChild() {
-    const commit = new Commit();
+  findCommitByGitId(id) {
+    if (this.gitId === id) {
+      return this;
+    }
+    let curr = null;
+    this.children.some((child) => {
+      curr = child.findCommitByGitId(id);
+      return Boolean(curr);
+    });
+    return curr;
+  }
+
+  //merge commits without duplicates
+  //return last commit merged
+  mergeCommits(commits) {
+    let curr = this;
+    let prev = null;
+    const index = commits.findIndex((commit) => {
+      prev = curr;
+      curr = curr.findCommitByGitId(commit.gitId);
+      return !curr;
+    });
+
+    if (index === -1) {
+      return curr;
+    }
+
+    commits.slice(index).forEach((commit) => {
+      prev = prev.insertChild(commit);
+    });
+
+    return prev;
+  }
+
+  insertChild(commit) {
+    if (!commit) {
+      commit = new Commit();
+    }
     this.children.push(commit);
     commit.parent = this;
     return commit;
@@ -87,6 +119,43 @@ class Commit {
     commit.gitId = this.gitId;
     return commit;
   }
+
+  copyWithoutChildren() {
+    const commit = new Commit();
+    commit.gitId = this.gitId;
+    commit.files = this.files;
+    commit.parentGitId = this.parent?.gitId;
+    return commit;
+  }
+  getPathToCommit(dst) {
+    const previousMap = new Map();
+    const visited = new Set();
+    const queue = [];
+    queue.push(this);
+    visited.add(this.id);
+
+    while (queue.length > 0) {
+      const commit = queue.shift();
+      if (commit.id === dst.id) {
+        return getPathUsingPreviousMap(previousMap, this, dst);
+      }
+
+      let neighbours = [...commit.children];
+
+      if (commit.parent) {
+        neighbours.push(commit.parent);
+      }
+
+      neighbours.forEach((neighbour) => {
+        if (!visited.has(neighbour.id)) {
+          previousMap.set(neighbour.id, commit);
+          queue.push(neighbour);
+          visited.add(neighbour.id);
+        }
+      });
+    }
+    return null;
+  }
 }
 
 class Branch {
@@ -97,10 +166,18 @@ class Branch {
     this.gitId = ++gitIdCount; //used to pair between local and remote
   }
 
-  commitChanges(files) {
+  switchCommit(commit) {
+    if (this.commit) {
+      this.commit.removeBranch(this);
+    }
+    commit.insertBranch(this);
+  }
+
+  commitChanges(files, message) {
     this.commit.removeBranch(this);
     const commit = this.commit.insertChild();
     commit.files = files;
+    commit.message = message;
     commit.insertBranch(this);
     return commit;
   }
@@ -111,17 +188,42 @@ class Branch {
     return branch;
   }
 
-  getUnmergedCommits() {
+  getCommitHistory() {
     const commits = [];
     let curr = this.commit;
-
-    while (!curr.merged) {
+    while (curr) {
       commits.push(curr);
       curr = curr.parent;
     }
-
-    return commits;
+    return commits.map((commit) => commit.copyWithoutChildren()).reverse();
   }
 }
+
+const getPathUsingPreviousMap = (previousMap, src, dst) => {
+  if (src.id === dst.id) {
+    return [];
+  }
+
+  let path = [];
+
+  let curr = dst;
+  let foundTurningPoint = false;
+
+  while (curr.id !== src.id) {
+    const next = previousMap.get(curr.id);
+    const nextIsParent = curr.parent?.id === next.id;
+    let action = nextIsParent ? "add" : "undo";
+    if (!nextIsParent && !foundTurningPoint) {
+      foundTurningPoint = true;
+      action = "nothing";
+    }
+    path.push({ commit: curr, action });
+    curr = next;
+  }
+
+  path.push({ commit: curr, action: foundTurningPoint ? "undo" : "nothing" });
+
+  return path.reverse();
+};
 
 export { Branch, Commit };

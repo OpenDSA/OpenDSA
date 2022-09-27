@@ -1,0 +1,280 @@
+{
+    "parameters": {
+        "param1": {
+            "id": "param1",
+            "type": "question_parameter",
+            "valueDisplay": "25mm",
+            "value": "25",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param2": {
+            "id": "param2",
+            "type": "question_parameter",
+            "valueDisplay": "15kW",
+            "value": "15",
+            "unit": "kW",
+            "parent": "question_params"
+        },
+        "param3": {
+            "id": "param3",
+            "type": "question_parameter",
+            "valueDisplay": "3000rev/minute",
+            "value": "3000",
+            "unit": "rev/minute",
+            "parent": "question_params"
+        }
+    },
+    "workspaces": {
+        "1": {
+            "id": 1,
+            "name": "wk1",
+            "equations": {
+                "0": {
+                    "id": "wk1_shearMaxTorque1_1_1",
+                    "equation_template_id": "shearMaxTorque1",
+                    "variables": {
+                        "shearstress": {
+                            "id": "wk1_shearMaxTorque1_1_1_shearstress",
+                            "name": "shearstress",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\tau_{}",
+                                "parentSymbolTemplate": "\\tau_{}",
+                                "parentSymbol": "\\tau_{}"
+                            },
+                            "currentSymbol": "a_a",
+                            "expectedDomain": "pressure",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": null,
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": "wk1_shearMaxTorque1_1_1_shearstress"
+                        },
+                        "mominertia": {
+                            "id": "wk1_shearMaxTorque1_1_1_mominertia",
+                            "name": "mominertia",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "J_{}",
+                                "parentSymbolTemplate": "J_{}",
+                                "parentSymbol": "J_{}"
+                            },
+                            "currentSymbol": "a_b",
+                            "expectedDomain": "length4",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_e",
+                                "varDisplay": "J_{}",
+                                "varDisplayTemplate": "J_{}"
+                            }
+                        },
+                        "torque": {
+                            "id": "wk1_shearMaxTorque1_1_1_torque",
+                            "name": "torque",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "T_{}",
+                                "parentSymbolTemplate": "T_{}",
+                                "parentSymbol": "T_{}"
+                            },
+                            "currentSymbol": "a_c",
+                            "expectedDomain": "torque",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_c",
+                                "varDisplay": "T_{}",
+                                "varDisplayTemplate": "T_{}"
+                            }
+                        },
+                        "diameter": {
+                            "id": "wk1_shearMaxTorque1_1_1_diameter",
+                            "name": "diameter",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "d_{}",
+                                "parentSymbolTemplate": "d_{}",
+                                "parentSymbol": "d_{}"
+                            },
+                            "currentSymbol": "a_d",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param1",
+                            "valueNegated": false,
+                            "value": "25"
+                        }
+                    }
+                },
+                "1": {
+                    "id": "wk1_momInertiaDiameter_2_1",
+                    "equation_template_id": "momInertiaDiameter",
+                    "variables": {
+                        "mominertia": {
+                            "id": "wk1_momInertiaDiameter_2_1_mominertia",
+                            "name": "mominertia",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "J_{}",
+                                "parentSymbolTemplate": "J_{}",
+                                "parentSymbol": "J_{}"
+                            },
+                            "currentSymbol": "a_e",
+                            "expectedDomain": "length4",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_e",
+                                "varDisplay": "J_{}",
+                                "varDisplayTemplate": "J_{}"
+                            }
+                        },
+                        "diameter": {
+                            "id": "wk1_momInertiaDiameter_2_1_diameter",
+                            "name": "diameter",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "d_{}",
+                                "parentSymbolTemplate": "d_{}",
+                                "parentSymbol": "d_{}"
+                            },
+                            "currentSymbol": "a_f",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param1",
+                            "valueNegated": false,
+                            "value": "25"
+                        }
+                    }
+                },
+                "2": {
+                    "id": "wk1_power_3_1",
+                    "equation_template_id": "power",
+                    "variables": {
+                        "power": {
+                            "id": "wk1_power_3_1_power",
+                            "name": "power",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "P_{}",
+                                "parentSymbolTemplate": "P_{}",
+                                "parentSymbol": "P_{}"
+                            },
+                            "currentSymbol": "a_g",
+                            "expectedDomain": "power",
+                            "currentDomain": "power",
+                            "currentUnit": "kW",
+                            "valueType": "number",
+                            "valueSource": "param2",
+                            "valueNegated": false,
+                            "value": "15"
+                        },
+                        "torque": {
+                            "id": "wk1_power_3_1_torque",
+                            "name": "torque",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "T_{}",
+                                "parentSymbolTemplate": "T_{}",
+                                "parentSymbol": "T_{}"
+                            },
+                            "currentSymbol": "a_h",
+                            "expectedDomain": "torque",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_c",
+                                "varDisplay": "T_{}",
+                                "varDisplayTemplate": "T_{}"
+                            }
+                        },
+                        "angularvelocity": {
+                            "id": "wk1_power_3_1_angularvelocity",
+                            "name": "angularvelocity",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\omega_{}",
+                                "parentSymbolTemplate": "\\omega_{}",
+                                "parentSymbol": "\\omega_{}"
+                            },
+                            "currentSymbol": "a_i",
+                            "expectedDomain": "angularvelocity",
+                            "currentDomain": "angularvelocity",
+                            "currentUnit": "rev/minute",
+                            "valueType": "number",
+                            "valueSource": "param3",
+                            "valueNegated": false,
+                            "value": "3000"
+                        }
+                    }
+                }
+            },
+            "solutionBoxes": {
+                "0": {
+                    "value": 15.561411412785333,
+                    "unit": "MPa",
+                    "variable": "a_a",
+                    "variableDisplay": "\\tau_{}",
+                    "valueSourceParent": "a_a",
+                    "valueNegated": false
+                },
+                "1": {
+                    "value": 47.7464829275686,
+                    "unit": "Nm",
+                    "variable": "a_c",
+                    "variableDisplay": "T_{}",
+                    "valueSourceParent": "a_c",
+                    "valueNegated": false
+                },
+                "2": {
+                    "value": 3.835327e-08,
+                    "unit": "m^4",
+                    "variable": "a_e",
+                    "variableDisplay": "J_{}",
+                    "valueSourceParent": "a_e",
+                    "valueNegated": false
+                },
+                "a_a": {
+                    "box_id_current": 0,
+                    "value": 15561411.412785333,
+                    "unit": "Pa",
+                    "variable": "a_a",
+                    "variableDisplay": "\\tau_{}"
+                },
+                "a_c": {
+                    "box_id_current": 1,
+                    "value": 47.7464829275686,
+                    "unit": "Nm",
+                    "variable": "a_c",
+                    "variableDisplay": "T_{}"
+                },
+                "a_e": {
+                    "box_id_current": 2,
+                    "value": 3.835327e-08,
+                    "unit": "m^4",
+                    "variable": "a_e",
+                    "variableDisplay": "J_{}"
+                }
+            }
+        }
+    },
+    "solutions": {
+        "0": {
+            "id": "0",
+            "solution": "15.56",
+            "unit": "MPa",
+            "source": "a_a",
+            "parent": "solution_box",
+            "type": "number"
+        }
+    }
+}

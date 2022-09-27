@@ -12,7 +12,8 @@
 <body data-height="400" data-width="970" data-canvas-height="1000">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("f2020p6PPRO","imperial",1000)</var>
+      <!-- <var id="JSAV">mechSolverCommon.initJSAV("f2020p6PPRO","imperial",1000)</var> -->
+      <var id="JSAV">mechSolverCommon.initJSAV("f2020p6PPRO","SI",1000)</var>
     </div>
 
     <div class="problems">
@@ -20,29 +21,43 @@
         <p class="problem">
           A solid circular shaft of
 
-          <span class="param" id="param" 
+          <!-- <span class="param" id="param1" data-id="param1" 
           data-value="1" 
           data-unit="in" 
           data-value-display="1"
           data-unit-display="in" 
-          data-domain="length">1 inch</span>
+          data-domain="length">1 inch</span> -->
+
+          <span class="param" id="param1" data-id="param1" 
+          data-value="25" 
+          data-unit="mm" 
+          data-value-display="25"
+          data-unit-display="mm" 
+          data-domain="length">25 mm</span>
 
           diameter transmits
 
-          <span class="param" id="param" 
+          <!-- <span class="param" id="param2" data-id="param2" 
           data-value="20" 
           data-unit="hp" 
           data-value-display="20"
           data-unit-display="hp" 
-          data-domain="power">20 horsepower</span>
+          data-domain="power">20 horsepower</span> -->
+          
+          <span class="param" id="param2" data-id="param2" 
+          data-value="15" 
+          data-unit="kW" 
+          data-value-display="15"
+          data-unit-display="kW" 
+          data-domain="power">15 kilowatt</span>
 
-          (1 HP = 33,000 ft lb/min)
+          <!-- (1 HP = 33,000 ft lb/min) -->
 
           at
 
-          <span class="param" id="param" 
+          <span class="param" id="param3" data-id="param3" 
           data-value="3000" 
-          data-unit="rpm" 
+          data-unit="rev/minute" 
           data-value-display="3000"
           data-unit-display="rpm" 
           data-domain="angularvelocity">3000 rpm</span>

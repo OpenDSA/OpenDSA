@@ -1,5 +1,6 @@
 import { createCommandsMap } from "./commandHandlers.js";
-import { initializeCommandLine } from "./commandLine.js";
+import { CommandHistory } from "./commandHistory.js";
+import { callCommand, initializeCommandLine } from "./commandLine.js";
 import {
   renderFileStructureVisualization,
   renderGitVisualization,
@@ -8,7 +9,7 @@ import {
 } from "./fileStructure.js";
 import { Directory } from "./fileSystemEntity.js";
 import { Branch, Commit } from "./gitClasses.js";
-import { FILE_STATE, GIT_STATE } from "./gitStatuses.js";
+import { NEW_FILE_STATE } from "./gitStatuses.js";
 
 const DEFAULT_FILE_STRUCTURE = {
   name: "/",
@@ -38,14 +39,7 @@ const DEFAULT_GIT_FILE_STRUCTURE = {
     ".gitignore",
     {
       name: "src",
-      contents: [
-        "index.html",
-        "app.js",
-        {
-          name: "config",
-          contents: [],
-        },
-      ],
+      contents: ["index.html", "config.js"],
     },
   ],
 };
@@ -92,6 +86,8 @@ function initializeCommandLineExercise(
     return svgData;
   }
 
+  updateCommandLinePrompt(getCurrDir());
+
   const commandsMap = createCommandsMap(
     getSvgData,
     getCurrDir,
@@ -125,16 +121,27 @@ function initializeCommandLineExercise(
   // }).observe(document.querySelector("#visualization-container"));
 
   const awardCreditHandler = {};
-  awardCreditHandler[awardCreditCommand] = handleAwardCredit(
-    getCurrDir,
-    getHomeDir
-  );
+  if (Array.isArray(awardCreditCommand)) {
+    awardCreditCommand.forEach((command) => {
+      awardCreditHandler[command] = handleAwardCredit(getCurrDir, getHomeDir);
+    });
+  } else {
+    awardCreditHandler[awardCreditCommand] = handleAwardCredit(
+      getCurrDir,
+      getHomeDir
+    );
+  }
+
+  const commandHistory = new CommandHistory();
 
   initializeCommandLine(
     "#arrayValues",
     "#history",
     commandsMap,
-    awardCreditHandler
+    awardCreditHandler,
+    ["git", "vi"],
+    getCurrDir,
+    commandHistory
   );
 }
 
@@ -143,7 +150,11 @@ function initializeGitExercise(
   handleAwardCredit,
   awardCreditCommand,
   initialFileStructure,
-  initialCwdIndexPath
+  initialCwdIndexPath,
+  initialCommands,
+  initialRemoteCommands,
+  emptyLocal,
+  disableAllCommandsExcept
 ) {
   // Load the config object with interpreter and code created by odsaUtils.js
   //   const config = ODSA.UTILS.loadConfig();
@@ -152,28 +163,38 @@ function initializeGitExercise(
 
   updateText(text);
 
-  const localHomeDir = new Directory(DEFAULT_GIT_FILE_STRUCTURE);
+  let localHomeDir = new Directory(
+    initialFileStructure ? initialFileStructure : DEFAULT_GIT_FILE_STRUCTURE
+  );
   let localCurrDir = localHomeDir.followIndexPath([]);
 
   const remoteHomeDir = localHomeDir.copyWithGitId();
 
-  const localInitialCommit = new Commit();
-  localInitialCommit.setMerged(true);
-  const child = localInitialCommit;
+  let localInitialCommit = new Commit();
   let localCurrBranch = new Branch("main");
   localInitialCommit.insertBranch(localCurrBranch);
 
   const remoteInitialCommit = localInitialCommit.copy();
-  remoteInitialCommit.setMerged(true);
   let remoteCurrBranch = remoteInitialCommit.branches[0];
 
-  localHomeDir.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
-  remoteHomeDir.setState(GIT_STATE.MERGED, FILE_STATE.UNCHANGED);
+  localHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
+  remoteHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
+
+  if (emptyLocal) {
+    localHomeDir = null;
+    localCurrDir = null;
+    localCurrBranch = null;
+    localInitialCommit = null;
+  }
 
   let svgData;
 
   function getLocalHomeDir() {
     return localHomeDir;
+  }
+
+  function setLocalHomeDir(dir) {
+    localHomeDir = dir;
   }
 
   function getLocalCurrDir() {
@@ -190,6 +211,10 @@ function initializeGitExercise(
 
   function getLocalInitialCommit() {
     return localInitialCommit;
+  }
+
+  function setLocalInitialCommit(commit) {
+    localInitialCommit = commit;
   }
 
   function getLocalCurrBranch() {
@@ -216,6 +241,18 @@ function initializeGitExercise(
     return svgData;
   }
 
+  const gitMethods = {
+    getRemoteHomeDir,
+    getLocalInitialCommit,
+    getLocalCurrBranch,
+    setLocalCurrBranch,
+    getRemoteInitialCommit,
+    getRemoteCurrBranch,
+    setRemoteCurrBranch,
+    setLocalInitialCommit,
+    setLocalHomeDir,
+  };
+
   const commandsMap = createCommandsMap(
     getSvgData,
     getLocalCurrDir,
@@ -223,16 +260,35 @@ function initializeGitExercise(
     getLocalHomeDir,
     updateGitVisualization,
     //TODO decouple this later
-    {
-      getRemoteHomeDir,
-      getLocalInitialCommit,
-      getLocalCurrBranch,
-      setLocalCurrBranch,
-      getRemoteInitialCommit,
-      getRemoteCurrBranch,
-      setRemoteCurrBranch,
-    }
+    gitMethods
   );
+
+  if (initialCommands) {
+    initialCommands.forEach((command) => {
+      callCommand(command, commandsMap, {}, [], true);
+    });
+  }
+
+  if (initialRemoteCommands && initialRemoteCommands.length > 0) {
+    const remoteCommandsMap = createCommandsMap(
+      null,
+      () => remoteHomeDir,
+      () => {},
+      getRemoteHomeDir,
+      null,
+      {
+        getLocalInitialCommit: getRemoteInitialCommit,
+        getLocalCurrBranch: getRemoteCurrBranch,
+        setLocalCurrBranch: setRemoteCurrBranch,
+      }
+    );
+
+    initialRemoteCommands.forEach((command) => {
+      callCommand(command, remoteCommandsMap, {}, [], true);
+    });
+  }
+
+  updateCommandLinePrompt(localCurrDir, localCurrBranch);
 
   let resizeCount = 0;
 
@@ -242,10 +298,10 @@ function initializeGitExercise(
     const id = "#visualization-container";
     const visualizationWidth = $(id).width();
     const visualizationHeight = $(id).height();
-    const d3Data = localHomeDir.mapToD3();
     svgData = renderGitVisualization(
       getLocalHomeDir(),
-      { getRemoteHomeDir, getLocalInitialCommit, getRemoteInitialCommit },
+      getLocalCurrDir()?.id,
+      gitMethods,
       visualizationWidth,
       visualizationHeight,
       id
@@ -262,14 +318,26 @@ function initializeGitExercise(
   const awardCreditHandler = {};
   awardCreditHandler[awardCreditCommand] = handleAwardCredit(
     getLocalCurrDir,
-    getLocalHomeDir
+    getLocalHomeDir,
+    getLocalInitialCommit,
+    getLocalCurrBranch,
+    getRemoteHomeDir,
+    getRemoteInitialCommit,
+    getRemoteCurrBranch
   );
+
+  const commandHistory = new CommandHistory();
 
   initializeCommandLine(
     "#arrayValues",
     "#history",
     commandsMap,
-    awardCreditHandler
+    awardCreditHandler,
+    [],
+    getLocalCurrDir,
+    commandHistory,
+    disableAllCommandsExcept,
+    getLocalCurrBranch
   );
 }
 
@@ -284,4 +352,16 @@ function awardCredit() {
   ODSA.AV.awardCompletionCredit();
 }
 
-export { initializeCommandLineExercise, initializeGitExercise, awardCredit };
+function updateCommandLinePrompt(currDir, currBranch) {
+  $(".command-line-prompt-path").text(currDir ? currDir.getPath() : "/");
+  $(".command-line-prompt-branch").text(
+    currBranch ? `(${currBranch.name})` : ""
+  );
+}
+
+export {
+  initializeCommandLineExercise,
+  initializeGitExercise,
+  awardCredit,
+  updateCommandLinePrompt,
+};

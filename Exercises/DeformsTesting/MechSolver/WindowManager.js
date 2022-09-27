@@ -592,15 +592,20 @@ class WindowManager{
                 currWorkspace2.DIMENSIONS["POSITION_Y"] -= currWkspace.DIMENSIONS["HEIGHT"];
                 currWorkspace2.DIMENSIONS.ELEMENTS["POSITION_Y"] -= currWkspace.DIMENSIONS["HEIGHT"];
                 for(const eq2 in equations) {
-                    var amountShift = parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top,10) - 
-                        heightShift;
+                    // var amountShift = parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top,10) - 
+                    //     heightShift;
 
-                    equations[eq2].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
-                    equations[eq2].visualComponents["delete"]["element"][0].style.top = amountShift + "px";
-                    equations[eq2].visualComponents["help"]["element"][0].style.top = amountShift + "px";
+                    equations[eq2].visualComponents["tickmark"]["element"][0].style.top = 
+                        parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10)   - heightShift + "px";
+                    equations[eq2].visualComponents["delete"]["element"][0].style.top = 
+                        parseInt(equations[eq2].visualComponents["delete"]["element"][0].style.top, 10)     - heightShift + "px";
+                    equations[eq2].visualComponents["help"]["element"][0].style.top = 
+                        parseInt(equations[eq2].visualComponents["help"]["element"][0].style.top, 10)       - heightShift + "px";
 
-                    equations[eq2].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
-                    equations[eq2].jsavequation["element"][0].style.top = amountShift + "px";
+                    equations[eq2].visualComponents["text"]["element"][0].style.top = 
+                        parseInt(equations[eq2].visualComponents["text"]["element"][0].style.top)           - heightShift + "px";
+                    equations[eq2].jsavequation["element"][0].style.top = 
+                        parseInt(equations[eq2].jsavequation["element"][0].style.top, 10)                   - heightShift + "px";
                     // equations[eq2].visualComponents["tickmark"]["element"][0].style.top = 
                     //     parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10) - 
                     //     currWkspaceElementHeight -
@@ -618,16 +623,16 @@ class WindowManager{
                     var currSoln = currWorkspace2.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
 
                     currSoln["element"]["deleteButton"]["element"][0].style.top =
-                        parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top, 10) - 
-                        currWkspace.DIMENSIONS["HEIGHT"] + "px";
+                        parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top, 10) -     heightShift + "px";
+                        // currWkspace.DIMENSIONS["HEIGHT"] + "px";
 
                     currSoln["element"]["helpButton"]["element"][0].style.top =
-                        parseInt(currSoln["element"]["helpButton"]["element"][0].style.top, 10) - 
-                        currWkspace.DIMENSIONS["HEIGHT"] + "px";
+                        parseInt(currSoln["element"]["helpButton"]["element"][0].style.top, 10) -       heightShift + "px";
+                        // currWkspace.DIMENSIONS["HEIGHT"] + "px";
 
                     currSoln["element"]["visualComponent"]["element"][0].style.top = 
-                        parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - 
-                        currWkspace.DIMENSIONS["HEIGHT"] + "px";
+                        parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) -   heightShift + "px";
+                        // currWkspace.DIMENSIONS["HEIGHT"] + "px";
                     
                     // TODO when help button is added
                     // currSoln["element"]["help"]["element"][0].style.top = 

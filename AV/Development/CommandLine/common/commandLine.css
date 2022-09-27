@@ -22,6 +22,11 @@
   margin-bottom: 1rem;
 }
 
+#success-message p {
+  font-size: larger;
+  font-weight: bold;
+}
+
 .hidden {
   opacity: 0;
 }
@@ -58,8 +63,6 @@
   background-color: black;
   border: 0;
   padding: 0;
-  height: 18px;
-  padding-left: 4px;
 }
 
 #arrayValues:focus {
@@ -73,16 +76,31 @@
   padding: 0;
 }
 
-#start-symbol-and-input {
+/* #start-symbol-and-input {
   display: flex;
   color: white;
   align-items: center;
   height: 18px;
-}
+} */
 
 /* .node--internal text {
   text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
 } */
+.output {
+  padding-bottom: 1rem;
+}
+
+.symbol-and-input {
+  display: flex;
+  gap: 1rem;
+  color: white;
+  align-items: center;
+}
+
+.symbol-and-input p {
+  padding: 0;
+  margin: 0;
+}
 
 .link- {
   fill: none;
@@ -120,6 +138,14 @@
   stroke-width: 2px;
 }
 
+.output-list {
+}
+
+.output-list p {
+  padding: 0;
+  margin: 0;
+}
+
 .git-status {
   display: flex;
   flex-direction: column;
@@ -130,6 +156,12 @@
 .git-status p {
   padding: 0;
   margin: 0;
+}
+
+.git-commit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .git-status-branch {
@@ -167,4 +199,20 @@
 
 .git-status-untracked .git-status-files p {
   color: red;
+}
+
+.command-line-prompt,
+.command-line-prompt-old {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.command-line-prompt-path,
+.command-line-prompt-path-old {
+  color: yellow;
+}
+
+.command-line-prompt-branch,
+.command-line-prompt-branch-old {
+  color: aqua;
 }
