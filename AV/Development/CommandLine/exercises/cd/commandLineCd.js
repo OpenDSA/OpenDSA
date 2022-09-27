@@ -13,9 +13,9 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "cd [path]",
+      commandTitle: "cd (directory_path)",
       commandDescription:
-        "The cd command changes the current working directory to the location specified by [path].",
+        "The cd command changes the current working directory to the directory at the location specified by (directory_path).",
       challengeDescription: 'Change the current working directory to "dogs".',
     },
     handleAwardCredit,

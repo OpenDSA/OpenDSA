@@ -151,7 +151,7 @@ Window.UNIT_DB = {
     'angularvelocity': {
         "hertz": {'unit':'Hz', 'unitDisp':'Hz'},
         "rps": {'unit':'rev/s', 'unitDisp':'rev/s'},
-        "rpm": {'unit':'rev/mins', 'unitDisp':'rpm'},
+        "rpm": {'unit':'rev/minute', 'unitDisp':'rpm'},
         "radpersec": {'unit':'Radian/s', 'unitDisp':'rad/s'},
     },
     'angle': {
@@ -269,8 +269,8 @@ Window.defaultDomains = {
         'imperial': Window.UNIT_DB['angle-1']['degree-1']
     },
     'angularvelocity': {
-        'SI': Window.UNIT_DB['angularvelocity']['hertz'],
-        'imperial': Window.UNIT_DB['angularvelocity']['hertz']
+        'SI': Window.UNIT_DB['angularvelocity']['radpersec'],
+        'imperial': Window.UNIT_DB['angularvelocity']['radpersec']
     },
     'strain': {
         'SI': Window.UNIT_DB['strain']['strain'],

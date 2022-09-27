@@ -1,10 +1,16 @@
 import { Directory, File } from "./fileSystemEntity.js";
-import { GIT_STATE } from "./gitStatuses.js";
+import { NEW_FILE_STATE } from "./gitStatuses.js";
+import {
+  getTimings,
+  INITIALIZE_FILE_TREE_OFFSETS,
+  INITIALIZE_OFFSETS,
+} from "./timings.js";
 
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 
 const rectangleDimensions = { width: 76, height: 30 };
-const circleRadius = 15;
+const circleRadius = 21;
+const defaultFontSize = 0.9;
 
 const durations = {
   nodes: { enter: 1000, exit: 1000, update: 2000 },
@@ -30,33 +36,42 @@ const colors = {
   highlight: { background: "orange", text: "white" },
 };
 
-const gitColors = {
-  [GIT_STATE.ADDED]: { background: "#1fd665" },
-  [GIT_STATE.CHANGED]: { background: "#ff6863" },
-};
-
 function renderFileStructureVisualization(data, currDirId, width, height, id) {
   const svgData = renderSVG(width, height, id);
   updateFileStructureVisualization(
     svgData,
     data,
     -1 * delays.nodes.enter,
-    currDirId
+    currDirId,
+    INITIALIZE_FILE_TREE_OFFSETS
   );
   colorNode(svgData.group, currDirId, colors.current.background, "");
 
   return svgData;
 }
 
-function renderGitVisualization(localHomeDir, gitMethods, width, height, id) {
+function renderGitVisualization(
+  localHomeDir,
+  currDirId,
+  gitMethods,
+  width,
+  height,
+  id
+) {
   const svgData = renderSVG(width, height, id);
   updateGitVisualization(
     svgData,
     localHomeDir,
     -1 * delays.paths.update,
-    null,
-    gitMethods
+    currDirId,
+    INITIALIZE_OFFSETS,
+    gitMethods,
+    null
   );
+
+  createVerticalLine(svgData.group, svgData.width / 2, svgData.height);
+  createText(svgData.group, "Local", 2, 10, 1);
+  createText(svgData.group, "Remote", svgData.width / 2 + 4, 10, 1);
 
   return svgData;
 }
@@ -114,24 +129,32 @@ function updateFileStructureVisualization(
   svgData,
   homeDir,
   delayOffset,
-  currDirId
+  currDirId,
+  offsets
 ) {
   const svgGroup = svgData.group;
+  const timings = getTimings(offsets);
+
+  const data = createFileTreeData(
+    homeDir,
+    0,
+    0,
+    svgData.width,
+    svgData.height,
+    5,
+    5,
+    1
+  );
 
   createFileTree(
     svgGroup,
-    homeDir,
+    data,
     currDirId,
     false,
     "",
-    svgData.width,
-    svgData.height,
-    0,
-    0,
     delayOffset,
     1,
-    5,
-    5
+    timings.local.fileTree
   );
 }
 
@@ -140,147 +163,145 @@ function updateGitVisualization(
   localHomeDir,
   delayOffset,
   currDirId,
-  gitMethods
+  offsets,
+  gitMethods,
+  extraVisualizations
 ) {
   const { group, width, height } = svgData;
 
-  createVerticalLine(group, width / 2, height);
+  const scale = 0.7;
+  const padding = 5;
+  const timings = getTimings(offsets);
 
-  createText(group, "Local", 2, 10, 1);
-
-  createText(group, "Remote", width / 2 + 4, 10, 1);
-
-  createFileTree(
-    group,
+  let {
+    localFileTreeData,
+    remoteFileTreeData,
+    localCommitTreeData,
+    remoteCommitTreeData,
+    localBranchData,
+    remoteBranchData,
+  } = createGitVisualizationData(
     localHomeDir,
-    null,
-    true,
-    "local",
-    width / 2,
-    height / 2,
-    0,
-    0,
-    delayOffset,
-    0.7,
-    5,
-    5
-  );
-
-  createFileTree(
-    group,
     gitMethods.getRemoteHomeDir(),
-    null,
-    true,
-    "remote",
-    width / 2,
-    height / 2,
-    width / 2,
-    0,
-    delayOffset,
-    0.7,
-    5,
-    5
-  );
-
-  createCommitTree(
-    group,
     gitMethods.getLocalInitialCommit(),
-    "local-commit",
-    width / 2,
-    height / 2,
-    0,
-    height / 2,
-    delayOffset,
-    circleRadius,
-    0.7,
-    5,
-    5
+    gitMethods.getRemoteInitialCommit(),
+    gitMethods.getLocalCurrBranch(),
+    gitMethods.getRemoteCurrBranch(),
+    width,
+    height,
+    padding,
+    scale
   );
 
-  createCommitTree(
+  if (extraVisualizations) {
+    if (extraVisualizations.commit) {
+      visualizeCommit(
+        group,
+        extraVisualizations.commit,
+        localFileTreeData,
+        localCommitTreeData,
+        timings.commit
+      );
+    }
+
+    if (extraVisualizations.push) {
+      ({ remoteFileTreeData, remoteCommitTreeData, remoteBranchData } =
+        visualizePush(
+          localFileTreeData,
+          remoteFileTreeData,
+          localCommitTreeData,
+          remoteCommitTreeData,
+          localBranchData,
+          remoteBranchData,
+          extraVisualizations.push,
+          group,
+          0.7,
+          timings.push
+        ));
+    }
+
+    if (extraVisualizations.clone) {
+      ({ localFileTreeData, localCommitTreeData, localBranchData } =
+        visualizeClone(
+          localFileTreeData,
+          remoteFileTreeData,
+          localCommitTreeData,
+          remoteCommitTreeData,
+          localBranchData,
+          remoteBranchData
+        ));
+    }
+
+    if (extraVisualizations.pull) {
+      ({ localFileTreeData, localCommitTreeData, localBranchData } =
+        visualizePull(
+          localFileTreeData,
+          remoteFileTreeData,
+          localCommitTreeData,
+          remoteCommitTreeData,
+          localBranchData,
+          remoteBranchData,
+          extraVisualizations.pull,
+          group,
+          0.7,
+          timings.pull
+        ));
+    }
+  }
+
+  createGitVisualization(
+    localFileTreeData,
+    remoteFileTreeData,
+    localCommitTreeData,
+    remoteCommitTreeData,
+    localBranchData,
+    remoteBranchData,
     group,
-    gitMethods.getRemoteInitialCommit(),
-    "remote-commit",
-    width / 2,
-    height / 2,
-    width / 2,
-    height / 2,
     delayOffset,
-    circleRadius,
-    0.7,
-    5,
-    5
+    scale,
+    currDirId,
+    timings
   );
 }
 
 const createFileTree = (
   svgGroup,
-  directory,
+  data,
   currDirId,
   colorGit,
   label,
-  width,
-  height,
-  x,
-  y,
   delayOffset,
   fileScale,
-  paddingX,
-  paddingY
+  timings
 ) => {
-  const rectangleWidth = rectangleDimensions.width * fileScale;
-  const rectangleHeight = rectangleDimensions.height * fileScale;
-  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
-  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
-  const xOffset = rectangleWidth / 2 + x + paddingX;
-  const yOffset = rectangleHeight / 2 + y + paddingY;
-
-  const treemap = d3.tree().size([adjustedWidth, adjustedHeight]);
-
-  const hierarchyData = d3.hierarchy(directory.mapToD3());
-
-  const treeData = treemap(hierarchyData);
-
-  // adds the nodes
-  const nodes = createFileRectangles(
+  createFileRectangles(
     svgGroup,
-    treeData.descendants(),
+    data,
     label,
-    xOffset,
-    yOffset,
     delayOffset,
-    rectangleWidth,
-    rectangleHeight,
-    0.9 * fileScale + "rem",
+    rectangleDimensions.width * fileScale,
+    rectangleDimensions.height * fileScale,
+    defaultFontSize * fileScale + "rem",
     currDirId,
-    colorGit
+    colorGit,
+    timings.fileRectangles
   );
 
-  const links = createFileLinks(
-    svgGroup,
-    treeData.descendants(),
-    label,
-    xOffset,
-    yOffset,
-    delayOffset
-  );
+  createFileLinks(svgGroup, data, label, delayOffset, timings.fileLinks);
 };
 
 const createFileRectangles = (
   svgGroup,
   data,
   label,
-  x,
-  y,
   delayOffset,
   width,
   height,
   fontSize,
   currDirId,
-  colorGit
+  colorGit,
+  timings
 ) => {
-  const xOffset = x;
-  const yOffset = y;
   return svgGroup
     .selectAll(".node-" + label)
     .data(data, function (d) {
@@ -292,10 +313,20 @@ const createFileRectangles = (
           .append("g")
           .attr("class", "node-" + label)
           .attr("transform", function (d) {
-            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+            return (
+              "translate(" +
+              (d.startX ? d.startX : d.x) +
+              "," +
+              (d.startY ? d.startY : d.y) +
+              ")"
+            );
           })
-          .style("fill-opacity", 1e-6)
-          .style("stroke-opacity", 1e-6);
+          .style("fill-opacity", function (d) {
+            return d.startX ? 1 : 1e-6;
+          })
+          .style("stroke-opacity", function (d) {
+            return d.startX ? 1 : 1e-6;
+          });
 
         nodes
           .append("rect")
@@ -307,7 +338,8 @@ const createFileRectangles = (
             return getFileColor(
               d.data.id,
               currDirId,
-              d.data.gitState,
+              d.data.isChanged,
+              d.data.isStaged,
               d.data.isDirectory,
               colorGit
             );
@@ -332,10 +364,13 @@ const createFileRectangles = (
 
         nodes
           .transition()
-          .duration(durations.nodes.enter)
-          .delay(delays.nodes.enter + delayOffset)
+          .duration(timings.durations.enter)
+          .delay(timings.delays.enter)
           .style("fill-opacity", 1)
-          .style("stroke-opacity", 1);
+          .style("stroke-opacity", 1)
+          .attr("transform", function (d) {
+            return "translate(" + d.x + "," + d.y + ")";
+          });
 
         return nodes;
       },
@@ -345,17 +380,18 @@ const createFileRectangles = (
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .transition()
-          .duration(durations.nodes.update)
-          .delay(delays.nodes.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("transform", function (d) {
-            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+            return "translate(" + d.x + "," + d.y + ")";
           });
 
         node.select("rect").style("fill", (d) => {
           return getFileColor(
             d.data.id,
             currDirId,
-            d.data.gitState,
+            d.data.isChanged,
+            d.data.isStaged,
             d.data.isDirectory,
             colorGit
           );
@@ -367,8 +403,8 @@ const createFileRectangles = (
       function (exit) {
         return exit
           .transition()
-          .duration(durations.nodes.exit)
-          .delay(delays.nodes.exit + delayOffset)
+          .duration(timings.durations.exit)
+          .delay(timings.delays.exit)
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6)
           .remove();
@@ -376,14 +412,7 @@ const createFileRectangles = (
     );
 };
 
-const createFileLinks = (
-  svgGroup,
-  data,
-  label,
-  xOffset,
-  yOffset,
-  delayOffset
-) =>
+const createFileLinks = (svgGroup, data, label, delayOffset, timings) =>
   svgGroup
     .selectAll(".link-" + label)
     .data(data.slice(1), function (d) {
@@ -396,10 +425,10 @@ const createFileLinks = (
           .lower()
           .attr("class", "link-" + label)
           .attr("d", function (d) {
-            return `M ${d.x + xOffset} , ${d.y + yOffset} 
-                      V ${(d.y + d.parent.y) / 2 + yOffset} 
-                      H ${d.parent.x + xOffset} 
-                      V ${d.parent.y + yOffset}`;
+            return `M ${d.x} , ${d.y} 
+                      V ${(d.y + d.parent.y) / 2} 
+                      H ${d.parent.x} 
+                      V ${d.parent.y}`;
           })
           .each(function (d) {
             d.totalLength = this.getTotalLength();
@@ -407,8 +436,8 @@ const createFileLinks = (
           .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
           .attr("stroke-dashoffset", (d) => d.totalLength)
           .transition()
-          .delay(delays.paths.enter + delayOffset)
-          .duration(durations.paths.enter)
+          .delay(timings.delays.enter)
+          .duration(timings.durations.enter)
           .attr("stroke-dashoffset", 0);
 
         return nodes;
@@ -416,13 +445,13 @@ const createFileLinks = (
       function (update) {
         return update
           .transition()
-          .duration(durations.paths.update)
-          .delay(delays.paths.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("d", function (d) {
-            return `M ${d.x + xOffset} , ${d.y + yOffset} 
-                    V ${(d.y + d.parent.y) / 2 + yOffset} 
-                    H ${d.parent.x + xOffset} 
-                    V ${d.parent.y + yOffset}`;
+            return `M ${d.x} , ${d.y} 
+                    V ${(d.y + d.parent.y) / 2} 
+                    H ${d.parent.x} 
+                    V ${d.parent.y}`;
           })
           .each(function (d) {
             d.totalLength = 1000;
@@ -441,8 +470,8 @@ const createFileLinks = (
           .attr("stroke-dashoffset", 0)
           .attr("stroke-dashoffset", 0)
           .transition()
-          .delay(delays.paths.exit + delayOffset)
-          .duration(3000)
+          .delay(timings.delays.exit)
+          .duration(timings.durations.exit)
           .attr("stroke-dashoffset", (d) => d.totalLength)
           .remove();
       }
@@ -450,86 +479,33 @@ const createFileLinks = (
 
 const createCommitTree = (
   svgGroup,
-  initialCommit,
+  data,
+  branches,
   label,
-  width,
-  height,
-  x,
-  y,
   delayOffset,
-  radius,
-  rectangleScale,
-  paddingX,
-  paddingY
+  scale,
+  timings
 ) => {
-  const rectangleWidth = rectangleDimensions.width * rectangleScale;
-  const rectangleHeight = rectangleDimensions.height * rectangleScale;
-  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
-  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
-
-  const xOffset = x + rectangleWidth / 2 + paddingX;
-  const yOffset = y + paddingY;
-  //todo figure out height
-  const treemap = d3.tree().size([adjustedHeight, adjustedWidth]);
-
-  const hierarchyData = d3.hierarchy(initialCommit);
-
-  const treeData = treemap(hierarchyData);
-
-  const descendants = treeData.descendants();
-
-  const currGap =
-    descendants.length > 1 ? descendants[1].y - descendants[0].y : null;
-
-  const desiredGap = 100;
-
-  const useDesiredGap = currGap === null || desiredGap < currGap;
-
-  const data = descendants.map((commit) => ({
-    ...commit,
-    x: useDesiredGap ? commit.depth * desiredGap : commit.y,
-    y: commit.x,
-    parent: commit.parent
-      ? {
-          ...commit.parent,
-          x: useDesiredGap ? commit.parent.depth * desiredGap : commit.parent.y,
-          y: commit.parent.x,
-        }
-      : null,
-  }));
-
   createCommitCircles(
     svgGroup,
     data,
     label,
-    xOffset,
-    yOffset,
     delayOffset,
-    radius
+    circleRadius * scale,
+    timings.commitCircles
   );
 
-  createCommitLinks(svgGroup, data, label, xOffset, yOffset, delayOffset);
-
-  const branches = data.flatMap((commit) =>
-    commit.data.branches.map((branch, index) => ({
-      ...branch,
-      x: commit.x,
-      y: commit.y,
-      index: index,
-    }))
-  );
+  createCommitLinks(svgGroup, data, label, delayOffset, timings.commitLinks);
 
   createBranchRectangles(
     svgGroup,
     branches,
     label,
-    xOffset,
-    yOffset,
-    delayOffset + durations.nodes.update,
-    rectangleWidth,
-    rectangleHeight,
-    "0.7rem",
-    radius
+    delayOffset,
+    rectangleDimensions.width * scale,
+    rectangleDimensions.height * scale,
+    defaultFontSize * scale + "rem",
+    timings.branchRectangles
   );
 };
 
@@ -537,10 +513,9 @@ const createCommitCircles = (
   svgGroup,
   data,
   label,
-  xOffset,
-  yOffset,
   delayOffset,
-  radius
+  radius,
+  timings
 ) =>
   svgGroup
     .selectAll(".node-" + label)
@@ -553,10 +528,20 @@ const createCommitCircles = (
           .append("g")
           .attr("class", "node-" + label)
           .attr("transform", function (d) {
-            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+            return (
+              "translate(" +
+              (d.startX ? d.startX : d.x) +
+              "," +
+              (d.startY ? d.startY : d.y) +
+              ")"
+            );
           })
-          .style("fill-opacity", 1e-6)
-          .style("stroke-opacity", 1e-6);
+          .style("fill-opacity", function (d) {
+            return d.startX ? 1 : 1e-6;
+          })
+          .style("stroke-opacity", function (d) {
+            return d.startX ? 1 : 1e-6;
+          });
 
         nodes
           .append("circle")
@@ -564,145 +549,67 @@ const createCommitCircles = (
           .attr("x", -radius)
           .attr("y", -radius)
           .style("fill", (d) => {
-            return d.data.isDirectory
-              ? colors.directory.background
-              : colors.file.background;
+            return d.isHead ? "purple" : colors.file.background;
           })
           .attr("stroke", "black");
 
         nodes
-          .transition()
-          .duration(durations.nodes.enter)
-          .delay(delays.nodes.enter + delayOffset)
-          .style("fill-opacity", 1)
-          .style("stroke-opacity", 1);
+          .append("text")
+          .attr("dy", ".35em")
+          .attr("font-size", "0.8rem")
+          .style("fill", (d) => {
+            return d.isHead ? "white" : "black";
+          })
+          .style("text-anchor", "middle")
+          .text(function (d) {
+            return d.number;
+          });
 
+        nodes
+          .transition()
+          .duration(timings.durations.enter)
+          .delay(timings.delays.enter)
+          .style("fill-opacity", 1)
+          .style("stroke-opacity", 1)
+          .attr("transform", function (d) {
+            return "translate(" + d.x + "," + d.y + ")";
+          });
         return nodes;
       },
       function (update) {
-        return update
+        const node = update
           .attr("y", 0)
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .transition()
-          .duration(durations.nodes.update)
-          .delay(delays.nodes.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("transform", function (d) {
-            return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
+            return "translate(" + d.x + "," + d.y + ")";
           });
+
+        node.select("circle").style("fill", (d) => {
+          return d.isHead ? "purple" : colors.file.background;
+        });
+
+        node.select("text").style("fill", (d) => {
+          return d.isHead ? "white" : "black";
+        });
+
+        return node;
       },
       function (exit) {
         return exit
           .transition()
-          .duration(durations.nodes.exit)
-          .delay(delays.nodes.exit + delayOffset)
+          .duration(timings.durations.exit)
+          .delay(timings.delays.exit)
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6)
           .remove();
       }
-
-      // .selectAll("node-test-" + label)
-      // .data(
-      //   (d) => {
-      //     const branches = d.data.branches.map((branch, index) => ({
-      //       ...branch,
-      //       // x: d.x,
-      //       // y: d.y + 20 * index,
-
-      //       index: index,
-      //     }));
-      //     return branches;
-      //   },
-      //   (d) => {
-      //     return d.id;
-      //   }
-      // )
-      // .join(
-      //   function (enter) {
-      //     console.log("enter branch");
-      //     const nodes = enter
-      //       .append("g")
-      //       .attr("class", "node-test-" + label)
-      //       .attr("transform", function (d) {
-      //         console.log("d bracnh", d);
-      //         return "translate(" + 0 + "," + 0 + ")";
-      //       })
-      //       .style("fill-opacity", 1e-6)
-      //       .style("stroke-opacity", 1e-6);
-
-      //     nodes
-      //       .append("rect")
-      //       .attr("width", 50)
-      //       .attr("height", 20)
-      //       .attr("x", -25)
-      //       .attr("y", radius)
-      //       .style("fill", (d) => {
-      //         return colors.directory.background;
-      //       })
-      //       .attr("stroke", "black")
-      //       .attr("rx", 5)
-      //       .attr("ry", 5);
-
-      //     nodes
-      //       .append("text")
-      //       .attr("y", radius + 10)
-      //       .attr("dy", ".35em")
-      //       .attr("font-size", "0.7rem")
-      //       .style("fill", (d) => {
-      //         return colors.directory.text;
-      //       })
-      //       .style("text-anchor", "middle")
-      //       .text(function (d) {
-      //         return d.name;
-      //       });
-
-      //     nodes
-      //       .transition()
-      //       .duration(durations.nodes.enter)
-      //       .delay(delays.nodes.enter + delayOffset)
-      //       .style("fill-opacity", 1)
-      //       .style("stroke-opacity", 1);
-
-      //     return nodes;
-      //   },
-      //   function (update) {
-      //     const node = update
-      //       .attr("y", 0)
-      //       .style("fill-opacity", 1)
-      //       .style("stroke-opacity", 1)
-      //       .transition()
-      //       .duration(durations.nodes.update)
-      //       .delay(delays.nodes.update + delayOffset)
-      //       .attr("transform", function (d) {
-      //         return "translate(" + (d.x + xOffset) + "," + (d.y + yOffset) + ")";
-      //       });
-
-      //     node.select("rect").style("fill", (d) => {
-      //       return getFileColor(d.data.gitState, d.data.isDirectory);
-      //     });
-      //     // node.select("text").style("fill", colors.directory.text);
-
-      //     return node;
-      //   },
-      //   function (exit) {
-      //     return exit
-      //       .transition()
-      //       .duration(durations.nodes.exit)
-      //       .delay(delays.nodes.exit + delayOffset)
-      //       .style("fill-opacity", 1e-6)
-      //       .style("stroke-opacity", 1e-6)
-      //       .remove();
-      //   }
     );
 
-const createCommitLinks = (
-  svgGroup,
-  data,
-  label,
-  xOffset,
-  yOffset,
-  delayOffset
-) =>
+const createCommitLinks = (svgGroup, data, label, delayOffset, timings) =>
   svgGroup
     .selectAll(".link-" + label)
     .data(data.slice(1), function (d) {
@@ -715,8 +622,8 @@ const createCommitLinks = (
           .lower()
           .attr("class", "link-" + label)
           .attr("d", function (d) {
-            return `M ${d.x + xOffset} , ${d.y + yOffset} 
-                    L ${d.parent.x + xOffset}, ${d.parent.y + yOffset}`;
+            return `M ${d.x} , ${d.y} 
+                    L ${d.parent.x}, ${d.parent.y}`;
           })
           .each(function (d) {
             d.totalLength = this.getTotalLength();
@@ -724,8 +631,8 @@ const createCommitLinks = (
           .attr("stroke-dasharray", (d) => d.totalLength + " " + d.totalLength)
           .attr("stroke-dashoffset", (d) => d.totalLength)
           .transition()
-          .delay(delays.paths.enter + delayOffset)
-          .duration(durations.paths.enter)
+          .delay(timings.delays.enter)
+          .duration(timings.durations.enter)
           .attr("stroke-dashoffset", 0);
 
         return nodes;
@@ -733,11 +640,11 @@ const createCommitLinks = (
       function (update) {
         return update
           .transition()
-          .duration(durations.paths.update)
-          .delay(delays.paths.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("d", function (d) {
-            return `M ${d.x + xOffset} , ${d.y + yOffset} 
-                    L ${d.parent.x + xOffset}, ${d.parent.y + yOffset}`;
+            return `M ${d.x} , ${d.y} 
+                    L ${d.parent.x}, ${d.parent.y}`;
           })
           .each(function (d) {
             d.totalLength = 1000;
@@ -756,8 +663,8 @@ const createCommitLinks = (
           .attr("stroke-dashoffset", 0)
           .attr("stroke-dashoffset", 0)
           .transition()
-          .delay(delays.paths.exit + delayOffset)
-          .duration(3000)
+          .delay(timings.delays.exit)
+          .duration(timings.durations.exit)
           .attr("stroke-dashoffset", (d) => d.totalLength)
           .remove();
       }
@@ -767,13 +674,11 @@ const createBranchRectangles = (
   svgGroup,
   data,
   label,
-  xOffset,
-  yOffset,
   delayOffset,
   width,
   height,
   fontSize,
-  radius
+  timings
 ) =>
   svgGroup
     .selectAll(".branch-" + label)
@@ -788,14 +693,18 @@ const createBranchRectangles = (
           .attr("transform", function (d) {
             return (
               "translate(" +
-              (d.x + xOffset) +
+              (d.startX ? d.startX : d.x) +
               "," +
-              (d.y + yOffset + 2 * radius + d.index * height) +
+              (d.startY ? d.startY : d.y) +
               ")"
             );
           })
-          .style("fill-opacity", 1e-6)
-          .style("stroke-opacity", 1e-6);
+          .style("fill-opacity", function (d) {
+            return d.startX ? 1 : 1e-6;
+          })
+          .style("stroke-opacity", function (d) {
+            return d.startX ? 1 : 1e-6;
+          });
 
         nodes
           .append("rect")
@@ -804,7 +713,7 @@ const createBranchRectangles = (
           .attr("x", -width / 2)
           .attr("y", -height / 2)
           .style("fill", (d) => {
-            return colors.directory.background;
+            return d.isCurrBranch ? "purple" : colors.directory.background;
           })
           .attr("stroke", "black")
           .attr("rx", 5)
@@ -824,10 +733,13 @@ const createBranchRectangles = (
 
         nodes
           .transition()
-          .duration(durations.nodes.enter)
-          .delay(delays.nodes.enter + delayOffset)
+          .duration(timings.durations.enter)
+          .delay(timings.delays.enter)
           .style("fill-opacity", 1)
-          .style("stroke-opacity", 1);
+          .style("stroke-opacity", 1)
+          .attr("transform", function (d) {
+            return "translate(" + d.x + "," + d.y + ")";
+          });
 
         return nodes;
       },
@@ -837,25 +749,23 @@ const createBranchRectangles = (
           .style("fill-opacity", 1)
           .style("stroke-opacity", 1)
           .transition()
-          .duration(durations.nodes.update)
-          .delay(delays.nodes.update + delayOffset)
+          .duration(timings.durations.update)
+          .delay(timings.delays.update)
           .attr("transform", function (d) {
-            return (
-              "translate(" +
-              (d.x + xOffset) +
-              "," +
-              (d.y + yOffset + 2 * radius + d.index * height) +
-              ")"
-            );
+            return "translate(" + d.x + "," + d.y + ")";
           });
+
+        node.select("rect").style("fill", (d) => {
+          return d.isCurrBranch ? "purple" : colors.directory.background;
+        });
 
         return node;
       },
       function (exit) {
         return exit
           .transition()
-          .duration(durations.nodes.exit)
-          .delay(delays.nodes.exit + delayOffset)
+          .duration(timings.durations.exit)
+          .delay(timings.delays.exit)
           .style("fill-opacity", 1e-6)
           .style("stroke-opacity", 1e-6)
           .remove();
@@ -881,20 +791,595 @@ const createVerticalLine = (svgGroup, x, length) =>
           `;
     });
 
-const getFileColor = (id, currDirId, gitState, isDirectory, colorGit) => {
+const getFileColor = (
+  id,
+  currDirId,
+  isChanged,
+  isStaged,
+  isDirectory,
+  colorGit
+) => {
   if (currDirId === id) {
-    return colors.current.background;
+    return colorGit ? "purple" : colors.current.background;
   }
   if (isDirectory) {
     return colors.directory.background;
   }
   if (colorGit) {
-    const color = gitColors[gitState];
-    if (color) {
-      return color.background;
+    if (isStaged) {
+      return "#1fd665";
+    }
+    if (isChanged) {
+      return "#ff6863";
     }
   }
   return colors.file.background;
+};
+
+const createCommitTreeData = (
+  initialCommit,
+  currBranch,
+  x,
+  y,
+  width,
+  height,
+  paddingX,
+  paddingY,
+  scale
+) => {
+  const rectangleWidth = rectangleDimensions.width * scale;
+  const rectangleHeight = rectangleDimensions.height * scale;
+  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
+  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
+
+  const xOffset = x + rectangleWidth / 2 + paddingX;
+  const yOffset = y + paddingY;
+  //todo figure out height
+  const treemap = d3.tree().size([adjustedHeight, adjustedWidth]);
+
+  const hierarchyData = d3.hierarchy(initialCommit);
+
+  const treeData = treemap(hierarchyData);
+
+  const descendants = treeData.descendants();
+
+  const currGap =
+    descendants.length > 1 ? descendants[1].y - descendants[0].y : null;
+
+  const desiredGap = 100;
+
+  const useDesiredGap = currGap === null || desiredGap < currGap;
+
+  return descendants.map((commit) => ({
+    ...commit,
+    x: (useDesiredGap ? commit.depth * desiredGap : commit.y) + xOffset,
+    y: commit.x + yOffset,
+    isHead: currBranch.commit.id === commit.data.id,
+    parent: commit.parent
+      ? {
+          ...commit.parent,
+          x:
+            (useDesiredGap
+              ? commit.parent.depth * desiredGap
+              : commit.parent.y) + xOffset,
+          y: commit.parent.x + yOffset,
+        }
+      : null,
+  }));
+};
+
+const createBranchData = (commits, currBranchId, scale) =>
+  commits.flatMap((commit) =>
+    commit.data.branches.map((branch, index) => ({
+      ...branch,
+      x: commit.x,
+      y:
+        commit.y +
+        2 * circleRadius * scale +
+        index * rectangleDimensions.height * scale,
+      index: index,
+      isCurrBranch: branch.id === currBranchId,
+    }))
+  );
+
+const createFileTreeData = (
+  directory,
+  x,
+  y,
+  width,
+  height,
+  paddingX,
+  paddingY,
+  scale
+) => {
+  const rectangleWidth = rectangleDimensions.width * scale;
+  const rectangleHeight = rectangleDimensions.height * scale;
+  const adjustedWidth = width - rectangleWidth - 2 * paddingX;
+  const adjustedHeight = height - rectangleHeight - 2 * paddingY;
+  const xOffset = rectangleWidth / 2 + x + paddingX;
+  const yOffset = rectangleHeight / 2 + y + paddingY;
+
+  const treemap = d3.tree().size([adjustedWidth, adjustedHeight]);
+
+  const hierarchyData = d3.hierarchy(directory.mapToD3());
+
+  const treeData = treemap(hierarchyData);
+
+  const descendants = treeData.descendants();
+
+  return descendants.map((file) => ({
+    ...file,
+    x: file.x + xOffset,
+    y: file.y + yOffset,
+    parent: file.parent
+      ? {
+          ...file.parent,
+          x: file.parent.x + xOffset,
+          y: file.parent.y + yOffset,
+        }
+      : null,
+  }));
+};
+
+const createGitVisualizationData = (
+  localHomeDir,
+  remoteHomeDir,
+  localInitialCommit,
+  remoteInitialCommit,
+  localCurrBranch,
+  remoteCurrBranch,
+  width,
+  height,
+  padding,
+  scale
+) => {
+  const localFileTreeData = localHomeDir
+    ? createFileTreeData(
+        localHomeDir,
+        0,
+        0,
+        width / 2,
+        height / 2,
+        padding,
+        padding,
+        scale
+      )
+    : null;
+
+  const remoteFileTreeData = createFileTreeData(
+    remoteHomeDir,
+    width / 2,
+    0,
+    width / 2,
+    height / 2,
+    padding,
+    padding,
+    scale
+  );
+
+  let localCommitTreeData = localInitialCommit
+    ? createCommitTreeData(
+        localInitialCommit,
+        localCurrBranch,
+        0,
+        height / 2,
+        width / 2,
+        height / 2,
+        padding,
+        padding,
+        scale
+      )
+    : null;
+
+  let remoteCommitTreeData = createCommitTreeData(
+    remoteInitialCommit,
+    remoteCurrBranch,
+    width / 2,
+    height / 2,
+    width / 2,
+    height / 2,
+    padding,
+    padding,
+    scale
+  );
+
+  ({ localCommitTreeData, remoteCommitTreeData } = updateCommitIds(
+    localCommitTreeData,
+    remoteCommitTreeData
+  ));
+
+  const localBranchData = localCommitTreeData
+    ? createBranchData(localCommitTreeData, localCurrBranch.id, scale)
+    : null;
+
+  const remoteBranchData = createBranchData(
+    remoteCommitTreeData,
+    remoteCurrBranch.id,
+    scale
+  );
+
+  return {
+    localFileTreeData,
+    remoteFileTreeData,
+    localCommitTreeData,
+    remoteCommitTreeData,
+    localBranchData,
+    remoteBranchData,
+  };
+};
+
+const createGitVisualization = (
+  localFileTreeData,
+  remoteFileTreeData,
+  localCommitTreeData,
+  remoteCommitTreeData,
+  localBranchData,
+  remoteBranchData,
+  svgGroup,
+  delayOffset,
+  scale,
+  currDirId,
+  timings
+) => {
+  if (localFileTreeData) {
+    createFileTree(
+      svgGroup,
+      localFileTreeData,
+      currDirId,
+      true,
+      "local",
+      delayOffset,
+      scale,
+      timings.local.fileTree
+    );
+  }
+
+  createFileTree(
+    svgGroup,
+    remoteFileTreeData,
+    null,
+    true,
+    "remote",
+    delayOffset,
+    scale,
+    timings.remote.fileTree
+  );
+
+  if (localCommitTreeData) {
+    createCommitTree(
+      svgGroup,
+      localCommitTreeData,
+      localBranchData,
+      "local-commit",
+      delayOffset,
+      scale,
+      timings.local.commitTree
+    );
+  }
+
+  createCommitTree(
+    svgGroup,
+    remoteCommitTreeData,
+    remoteBranchData,
+    "remote-commit",
+    delayOffset,
+    scale,
+    timings.remote.commitTree
+  );
+};
+
+function visualizeCommit(
+  svgGroup,
+  commit,
+  fileTreeData,
+  commitTreeData,
+  timings
+) {
+  //create a rectangle for each file
+  //transition from filetreedata location to committreedatalocation
+  const rectangleWidth = 0.7 * rectangleDimensions.width;
+  const rectangleHeight = 0.7 * rectangleDimensions.height;
+
+  const existingCommit = commitTreeData.find(
+    (value) => value.data.gitId === commit.gitId
+  );
+
+  const files = commit.files.flatMap((file) => file.flatten());
+
+  //TODO maybe add animation for deleted
+  const filesData = files
+    .filter((file) => !file.isStagingState(NEW_FILE_STATE.DELETED))
+    .map((file) => {
+      const existingFile = fileTreeData.find(
+        (value) => value.data.gitId === file.gitId
+      );
+      return {
+        ...file,
+        startX: existingFile.x,
+        startY: existingFile.y,
+        endX: existingCommit.x,
+        endY: existingCommit.y,
+        isDirectory: file instanceof Directory,
+      };
+    });
+
+  return showFilesMoving(
+    svgGroup,
+    filesData,
+    0.7,
+    "commit-files",
+    timings,
+    true
+  );
+}
+
+const showFilesMoving = (
+  svgGroup,
+  files,
+  scale,
+  className,
+  timings,
+  fadeOut
+) => {
+  const rectangleWidth = rectangleDimensions.width * scale;
+  const rectangleHeight = rectangleDimensions.height * scale;
+  return svgGroup
+    .selectAll("." + className)
+    .data(files, function (d) {
+      return d.id;
+    })
+    .join(function (enter) {
+      const nodes = enter
+        .append("g")
+        .attr("class", className)
+        .attr("transform", function (d) {
+          return "translate(" + d.startX + "," + d.startY + ")";
+        })
+        .style("fill-opacity", function (d) {
+          return 1e-6;
+        })
+        .style("stroke-opacity", function (d) {
+          return 1e-6;
+        });
+
+      nodes
+        .append("rect")
+        .attr("width", rectangleWidth)
+        .attr("height", rectangleHeight)
+        .attr("x", -rectangleWidth / 2)
+        .attr("y", -rectangleHeight / 2)
+        .style("fill", (d) => {
+          return d.isDirectory
+            ? colors.directory.background
+            : colors.file.background;
+        })
+        .attr("stroke", "black")
+        .attr("rx", 5)
+        .attr("ry", 5);
+
+      nodes
+        .append("text")
+        .attr("dy", ".35em")
+        .attr("font-size", scale * defaultFontSize + "rem")
+        .style("fill", (d) => {
+          return d.isDirectory ? colors.directory.text : colors.file.text;
+        })
+        .style("text-anchor", "middle")
+        .text(function (d) {
+          return d.name;
+        });
+
+      nodes
+        .transition()
+        .duration(timings.durations.enter)
+        .delay(timings.delays.enter)
+        .style("fill-opacity", 1)
+        .style("stroke-opacity", 1)
+        .transition()
+        .duration(timings.durations.moving)
+        .delay(timings.delays.moving)
+        .attr("transform", function (d) {
+          return "translate(" + d.endX + "," + d.endY + ")";
+        })
+        .style("fill-opacity", fadeOut ? 1e-6 : 1)
+        .style("stroke-opacity", fadeOut ? 1e-6 : 1)
+        .remove();
+      return nodes;
+    });
+};
+
+const addLocation = (src, dst, idPath) =>
+  dst.map((dstValue) => {
+    const srcValue = src.find(
+      (value) =>
+        followPropertyPath(value, idPath) ===
+        followPropertyPath(dstValue, idPath)
+    );
+    return {
+      ...dstValue,
+      startX: srcValue ? srcValue.x : null,
+      startY: srcValue ? srcValue.y : null,
+    };
+  });
+
+const followPropertyPath = (value, path) => {
+  const pathSplit = path.split(".");
+  let curr = value;
+  pathSplit.forEach((name) => {
+    curr = curr[name];
+  });
+  return curr;
+};
+
+const visualizePush = (
+  localFileTreeData,
+  remoteFileTreeData,
+  localCommitTreeData,
+  remoteCommitTreeData,
+  localBranchData,
+  remoteBranchData,
+  push,
+  svgGroup,
+  scale,
+  timings
+) => {
+  remoteCommitTreeData = addLocation(
+    localCommitTreeData,
+    remoteCommitTreeData,
+    "data.gitId"
+  );
+
+  remoteBranchData = addLocation(localBranchData, remoteBranchData, "gitId");
+
+  if (push.commitPath) {
+    remoteFileTreeData = addLocation(
+      localFileTreeData,
+      remoteFileTreeData,
+      "data.gitId"
+    );
+
+    visualizeModifiedFiles(
+      localFileTreeData,
+      remoteFileTreeData,
+      push.commitPath,
+      svgGroup,
+      scale,
+      delays.nodes.update + 1000,
+      timings
+    );
+  }
+
+  return { remoteFileTreeData, remoteBranchData, remoteCommitTreeData };
+};
+
+const visualizePull = (
+  localFileTreeData,
+  remoteFileTreeData,
+  localCommitTreeData,
+  remoteCommitTreeData,
+  localBranchData,
+  remoteBranchData,
+  pull,
+  svgGroup,
+  scale,
+  timings
+) => {
+  localCommitTreeData = addLocation(
+    remoteCommitTreeData,
+    localCommitTreeData,
+    "data.gitId"
+  );
+
+  localBranchData = addLocation(remoteBranchData, localBranchData, "gitId");
+
+  if (pull.commitPath) {
+    localFileTreeData = addLocation(
+      remoteFileTreeData,
+      localFileTreeData,
+      "data.gitId"
+    );
+
+    visualizeModifiedFiles(
+      remoteFileTreeData,
+      localFileTreeData,
+      pull.commitPath,
+      svgGroup,
+      scale,
+      delays.nodes.update + 1000,
+      timings
+    );
+  }
+
+  return { localFileTreeData, localBranchData, localCommitTreeData };
+};
+
+const visualizeModifiedFiles = (
+  localFileTreeData,
+  remoteFileTreeData,
+  commitPath,
+  svgGroup,
+  scale,
+  delay,
+  timings
+) => {
+  const modifiedFiles = commitPath
+    .filter((value) => value.action !== "nothing")
+    .flatMap((value) => value.commit.files)
+    .filter(
+      (file) =>
+        file.isStagingState(NEW_FILE_STATE.MODIFIED) &&
+        remoteFileTreeData.find((value) => value.data.gitId === file.gitId)
+    )
+    .flatMap((file) => file.flatten())
+    .map((file) => {
+      const localFile = localFileTreeData.find(
+        (value) => value.data.gitId === file.gitId
+      );
+      const remoteFile = remoteFileTreeData.find(
+        (value) => value.data.gitId === file.gitId
+      );
+      return {
+        ...file,
+        startX: localFile.x,
+        startY: localFile.y,
+        endX: remoteFile.x,
+        endY: remoteFile.y,
+        isDirectory: file instanceof Directory,
+      };
+    });
+  showFilesMoving(svgGroup, modifiedFiles, scale, "push-files", timings);
+};
+
+const visualizeClone = (
+  localFileTreeData,
+  remoteFileTreeData,
+  localCommitTreeData,
+  remoteCommitTreeData,
+  localBranchData,
+  remoteBranchData
+) => {
+  localCommitTreeData = addLocation(
+    remoteCommitTreeData,
+    localCommitTreeData,
+    "data.gitId"
+  );
+
+  localBranchData = addLocation(remoteBranchData, localBranchData, "gitId");
+
+  localFileTreeData = addLocation(
+    remoteFileTreeData,
+    localFileTreeData,
+    "data.gitId"
+  );
+
+  return { localFileTreeData, localBranchData, localCommitTreeData };
+};
+
+const updateCommitIds = (localCommitTreeData, remoteCommitTreeData) => {
+  const localIds = localCommitTreeData
+    ? localCommitTreeData.map((value) => value.data.gitId)
+    : [];
+  const remoteIds = remoteCommitTreeData.map((value) => value.data.gitId);
+
+  const ids = [...new Set([...localIds, ...remoteIds])];
+
+  const idsMap = ids.reduce(
+    (idsMap, id, index) => ({ ...idsMap, [id]: index + 1 }),
+    {}
+  );
+  if (localCommitTreeData) {
+    localCommitTreeData = localCommitTreeData.map((data) => ({
+      ...data,
+      number: idsMap[data.data.gitId],
+    }));
+  }
+
+  remoteCommitTreeData = remoteCommitTreeData.map((data) => ({
+    ...data,
+    number: idsMap[data.data.gitId],
+  }));
+
+  return { localCommitTreeData, remoteCommitTreeData };
 };
 
 export {
@@ -906,4 +1391,5 @@ export {
   colorNode,
   colors,
   delays,
+  durations,
 };

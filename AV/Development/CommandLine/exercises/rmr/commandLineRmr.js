@@ -14,9 +14,9 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "rm -r [path]",
+      commandTitle: "rm [-r] (path)",
       commandDescription:
-        "The rm command with the -r flag removes the directory at the location specified by [path].",
+        "The rm command with the -r flag removes the file or directory at the location specified by (path). Multiple (path) values can be provided to remove multiple files or directories.",
       challengeDescription: 'Remove the "dogs" directory.',
     },
     handleAwardCredit,

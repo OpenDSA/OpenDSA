@@ -1,4 +1,3 @@
-from email.mime import message
 import sys, os
 import json
 
@@ -9,6 +8,15 @@ from itertools import combinations
 import networkx as nx
 from networkx.algorithms import isomorphism
 import sympy
+# import unit_parse
+import pint
+
+ureg = pint.UnitRegistry()
+ureg.define('strain = [length]/[length]')
+ureg.define('microstrain = 0.000001 * strain')
+ureg.define('percentstrain = 0.01 * strain')
+ureg.define('rev = revolution')
+ureg.define('Radian = radian')
 
 master_unknown_summary = dict()
 attempt_unknown_summary = dict()
@@ -23,6 +31,24 @@ eqbank = dict()
 # message_text: supposed to store the messages for each individual solution
 # in it's own context - compiled and printed later in compile_messages()
 message_text = dict()
+
+def compare_quantities(m_magn, m_unit, a_magn, a_unit):
+    """
+    Compares two comparable numeric quantities to see if they are within tolerable
+    limits or not (5%). Returns True or False
+    """
+    global ureg
+
+    try:
+        if m_unit == "":
+            solutionComparableValue = m_magn
+        else:
+            # solutionComparableValue = unit_parse.parser(f"{m_magn} {m_unit}").to(a_unit)
+            solutionComparableValue = ureg.Quantity(m_magn, m_unit).to(a_unit)
+
+        return abs((solutionComparableValue.magnitude - a_magn) / a_magn) <= 0.005
+    except pint.DimensionalityError:
+        return False
 
 def get_unknown_summary(solution_json):
     summary_json = {}
@@ -123,6 +149,85 @@ def makeDependencyGraph(solutionObject, eqbank, debug=False):
     # add function call to simplify and substitute? make it an all in one?
     
     return g_dependency
+    g_dependency = nx.Graph()
+        
+    for w_id, wkspace in solutionObject['workspaces'].items():
+        for eq_id, eq in wkspace['equations'].items():
+            # add the equation as a node
+            eq_node_name = f"wk{w_id}_{eq_id}"
+            
+            g_dependency.add_node(
+                eq_node_name, group='equation'
+            )
+            template = eqbank[eq['equation_template_id']]["sympy_template"] \
+            if "sympy_template" in eqbank[eq['equation_template_id']]  \
+            else eqbank[eq['equation_template_id']]['template']
+            
+            for var_id, var in eq['variables'].items():
+                if debug:
+                    print(var_id)
+                if var['valueType'] == 'association':
+                    g_dependency.add_node(var['value']['var'], group='unknown')
+                    if var['valueNegated']:
+                        template = template.replace(var['name'], '-'+var['value']['var'])
+                        g_dependency.add_edge(eq_node_name, var['value']['var'], negated=1)
+                    else:
+                        template = template.replace(var['name'], var['value']['var'])
+                        g_dependency.add_edge(eq_node_name, var['value']['var'], negated=0)
+                    
+                elif var['valueType'] == None:
+                    g_dependency.add_node(var['currentSymbol'], group='unknown')
+                    if var['valueNegated']:
+                        template = template.replace(var['name'], '-'+var['currentSymbol'])
+                        g_dependency.add_edge(eq_node_name, var['currentSymbol'], negated=1)
+                    else:
+                        template = template.replace(var['name'], var['currentSymbol'])
+                        g_dependency.add_edge(eq_node_name, var['currentSymbol'], negated=0)
+                    
+                elif var['valueType'] == 'number':
+                    if len(var['valueSource'].split('_')) > 1:
+                        g_dependency.add_node(var['valueSource'], group='unknown')
+                        if var['valueNegated']:
+                            template = template.replace(var['name'], '-'+var['valueSource'])
+                            g_dependency.add_edge(eq_node_name, var['valueSource'], negated=1)
+                        else:
+                            template = template.replace(var['name'], var['valueSource'])
+                            g_dependency.add_edge(eq_node_name, var['valueSource'], negated=0)
+                    else:
+                        # it is just a number
+                        if var['valueNegated']:
+                            template = template.replace(var['name'], '-'+var['id'])
+                        else:
+                            template = template.replace(var['name'], var['id'])
+            
+            lhs, rhs = template.split("=")
+            g_dependency.nodes[eq_node_name]['template'] = sympy.Eq(sympy.parse_expr(rhs), sympy.parse_expr(lhs))
+            g_dependency.nodes[eq_node_name]['folded'] = []
+    
+    for sol_id, solution in solutionObject['solutions'].items():
+        if solution['source'] == '':
+            if training:
+                pass
+            else:
+                # print(f"Solution {sol_id} was not submitted")
+                if solution['type'] == "choices":
+                    continue
+                else:
+                    message_text[sol_id]["decision"] = [f"Solution {int(sol_id)+1} was not submitted"]
+        elif solution["type"] == "number" or solution["type"] == "integer":  
+            # otherwise no point in connecting this to subgraph
+            if g_dependency.has_node(solution['source']):
+                g_dependency.nodes[solution['source']]['solution_id'] = sol_id
+                # stores the id of the solution box that connects to that unknown
+        
+        # Alternatively, if the source is not found, we have a problem
+        # since ANY solution would have to be computed from a system of equations
+        # to be legitimate. print error to terminal.
+        # TODO: Add this error message
+    
+    # add function call to simplify and substitute? make it an all in one?
+    
+    return g_dependency
 
 def dependencyFolding(g_dep, debug=False):
     # reduces 1-1 dependencies wherever possible to create the minimal set
@@ -141,14 +246,17 @@ def dependencyFolding(g_dep, debug=False):
         #    # for each solution id, add this subgraph, as a single subgraph may answer multiple subparts
         #    solution_subgraphs[soln_id] = g_dep.subgraph(g_sub).copy()
         soln_ids = [g_dep.nodes[n]["solution_id"] for n in g_sub if "solution_id" in g_dep.nodes[n]]
-        if debug:
-            print(soln_ids)
-
         if len(soln_ids) == 1:
             soln_id = soln_ids[0]
-        else:
+        elif len(soln_ids) > 1:
             soln_id = ",".join(soln_ids)
             message_text[soln_id] = {"details":[]}
+        else:
+            # NOTE: First noticed on 9/21/22, with DeformsDemo
+            # when alt solutions were done and equations left unused,
+            # resulted in non-solution conn comps.
+            # later: remove these equations at the time of solution.
+            continue
         solution_subgraphs[soln_id] = g_dep.subgraph(g_sub).copy()
     
     for s_id, g_solution in solution_subgraphs.items():
@@ -258,6 +366,104 @@ def compare_solution_boxes(master_soln, attempt_soln, attempt_soln_summary):
             if attempt_soln["solutions"][soln_id]["solution"] == None:
                 flag=True
             
+            # Replace this entire segment with compare_quantities
+            #elif solution["unit"] == attempt_soln["solutions"][soln_id]["unit"]:
+            #    if float(solution["solution"]) == float(attempt_soln["solutions"][soln_id]["solution"]):
+            #        message_text[soln_id]["decision"]\
+            #            .append(f"Solution {int(soln_id)+1} was correct!")
+            #        soln_target_tag = solution["source"]
+            #    elif abs(float(solution["solution"])) == abs(float(attempt_soln["solutions"][soln_id]["solution"])):
+            #        message_text[soln_id]["decision"]\
+            #            .append(f"Solution {int(soln_id)+1} magnitude/value was correct! Sign was different.")
+            #        soln_target_tag = solution["source"]
+            #    else:
+            #        flag=True
+            
+            elif compare_quantities(
+                float(solution["solution"]),
+                solution["unit"],
+                float(attempt_soln["solutions"][soln_id]["solution"]),
+                attempt_soln["solutions"][soln_id]["unit"]
+            ):
+                message_text[soln_id]["decision"]\
+                    .append(f"Solution {int(soln_id)+1} was correct!")
+                soln_target_tag = solution["source"]
+            
+            elif compare_quantities(
+                abs(float(solution["solution"])),
+                solution["unit"],
+                abs(float(attempt_soln["solutions"][soln_id]["solution"])),
+                attempt_soln["solutions"][soln_id]["unit"]
+            ):
+                message_text[soln_id]["decision"]\
+                    .append(f"Solution {int(soln_id)+1} magnitude/value was correct! Sign was different.")
+                soln_target_tag = solution["source"]
+            
+            else:
+                flag=True
+            
+            if flag:
+                text = f"Solution {int(soln_id)+1} was incorrect! "
+                soln_target_tag = find_alternatives(solution) # which goes through the solution boxes in the solution.
+                if not soln_target_tag:
+                    text+=f"Seems like the correct answer for Solution {int(soln_id)+1} was not computed at all."
+                else:
+                    text+=f"Seems like the right answer for Solution {int(soln_id)+1} was found here:"
+                    for key, solnbox in soln_target_tag.items():
+                        message = solnbox["message"]
+                        sid = solnbox["sid"]
+                        wk = solnbox["wk"]
+                        varDisp = solnbox["box"]["variableDisplay"].replace('{','{{').replace('}','}}')
+                        text+=f"{message} in box no. {sid} in workspace {wk}."
+                        text+=f"Box computed for {varDisp}"
+                        text+=f"which connects to the following equations:"
+                        text+=str(attempt_soln_summary[key])
+                
+                message_text[soln_id]["decision"].append(text)
+    
+    return
+    
+    def find_alternatives(solution):
+        list_of_solns = {}
+        for wk, wkspace in attempt_soln["workspaces"].items():
+            for s_id, solnBox in wkspace["solutionBoxes"].items():
+                if solution["unit"] == solnBox["unit"]:
+                    if float(solution["solution"]) == float(solnBox["value"]):
+                        # Exact match
+                        list_of_solns[solnBox["variable"]] = {
+                            "message": "Exact match found",
+                            "sid": s_id,
+                            "wk": wk,
+                            "box": solnBox
+                        }
+
+                    elif abs(float(solution["solution"])) == abs(float(solnBox["value"])):
+                        # Magnitude match
+                        list_of_solns[solnBox["variable"]] = {
+                            "message": "Magnitude match found",
+                            "sid": s_id,
+                            "wk": wk,
+                            "box": solnBox
+                        }
+                    
+        return list_of_solns
+    
+    for soln_id, solution in master_soln["solutions"].items():
+        message_text[soln_id] = {"decision": [], "details":[]}
+        
+        if solution["type"] != "number":
+            if solution["solution"] == attempt_soln["solutions"][soln_id]["solution"]:
+                message_text[soln_id]["decision"].append(f"Solution {int(soln_id)+1} was correct!")
+            else:
+                message_text[soln_id]["decision"].append(f"Solution {int(soln_id)+1} was incorrect!")
+        else:
+            # convert the units from solution["unit"] and attempt_soln[soln_id]["unit"]
+            soln_target_tag = None
+            flag=False
+            
+            if attempt_soln["solutions"][soln_id]["solution"] == None:
+                flag=True
+            
             elif solution["unit"] == attempt_soln["solutions"][soln_id]["unit"]:
                 if float(solution["solution"]) == float(attempt_soln["solutions"][soln_id]["solution"]):
                     message_text[soln_id]["decision"]\
@@ -303,7 +509,10 @@ def generateExpressionTree(expr, prefix="default", debug=False):
         "Mul": "*",
         "Pow": "^",
         "NegativeOne": "-1",
-        "Symbol": "Symbol"
+        "Symbol": "Symbol",
+        "Integer": "Integer",
+        "Rational": "Rational",
+        "Float": "Float"
     }
     def get_type_from_id(name):
         return name.split('_')[2] # since we now also have a prefix
@@ -331,9 +540,15 @@ def generateExpressionTree(expr, prefix="default", debug=False):
                 g_exp_tree.add_edge(node_id, child_exp_node_id)
                 g_exp_tree.nodes[child_exp_node_id]['pred'] = node_id
         
+        if debug:
+            print(exp_node, exp_node.func, exp_node.args)
+        
         g_exp_tree.nodes[node_id]['label'] = \
         exp_node.name if get_type_from_id(node_id) == "Symbol" else \
         str(exp_node) if get_type_from_id(node_id) == "Integer" else \
+        str(f"{exp_node.as_numer_denom()[0]}/{exp_node.as_numer_denom()[1]}") \
+            if get_type_from_id(node_id) == "Rational" else \
+        str(round(exp_node, 3)) if get_type_from_id(node_id) == "Float" else \
         id_maker[get_type_from_id(node_id)] if get_type_from_id(node_id) in id_maker \
         else get_type_from_id(node_id)
         return node_id
@@ -356,9 +571,15 @@ def dg_node_match(master_node_dict, attempt_node_dict, debug=False):
         attempt_details = attempt_unknown_summary[attempt_node_dict['label']]
         # If they are manually inserted quantities
         if master_details['valueSource'] == "" and attempt_details['valueSource'] == "":
-            return \
-            master_details['value'] == attempt_details['value'] \
-            and master_details['currentUnit'] == attempt_details['currentUnit']
+            #return \
+            #master_details['value'] == attempt_details['value'] \
+            #and master_details['currentUnit'] == attempt_details['currentUnit']
+            return compare_quantities(
+                float(master_details['value']),
+                master_details['currentUnit'],
+                float(attempt_details['value']),
+                attempt_details['currentUnit']
+            )
         
         # TODO put in an analogue for variables, when appropriate
         
@@ -419,145 +640,50 @@ def compare_exp_trees(met, aet, debug=False):
     aet_subg_trees = {
         aet_depth:    {aet_root:aet}
     }
-
-    while True:
-        # There are a bunch of conditions that can make the loop break,
-        # no point in having a exit condition.
-
-        # Store newly found matches in here.
-        # can be modified when either GM.isomorphic() == True
-        # or when leaf node boxes get matched (matching operators means nothing)
+    
+    # depth_level determines where we are looking at any given moment
+    depth_level = max(met_depth, aet_depth)
+    
+    while depth_level > 1:
+        # If trees are reduced to leaves, then we move to the next phase
+        # loop exit condition
+        
+        # Needed because legacy
         new_matches = dict()
-
-        # Step 1: Create lists of subtrees that are 'comparable',
-        # i.e. have the same depth so that if possible, they can be
-        # isomorphic when aligned.
-
-        # The LCV that tells whether something changed or not
-        # If it didn't, we break out
-        change=True
-
-        while change:
-            # The trees are grouped by depth for MET and AET
-            # by depth: mgroup and depth: agroup
-            # For a given depth, if mgroup or agroup is empty
-            # then it means there are no comparable trees (for MET/AET resp.)
-            # So the next higher level tree must be decomposed
-            # i.e. broken into subtrees and put in the buckets.
-
-            # Selecting the keys to actually go over - exclude the level 1 nodes
-            # they will be dealt with in Step 3
-
-            depth_keys = sorted(filter(lambda _:_>1,
-                                set(met_subg_trees.keys()).union(aet_subg_trees.keys())
-                               ), reverse=True)
-
-            # Go over the depth in the opposite order, highest to lowest
-            # Ignore the deepest level first, since that may be moved down.
-            # i.e. if d level is empty, trees in d+1 will be moved down.
-
-            change=False
-            for d in depth_keys:
-                # Check if there are any trees there at that level.
-                # If so, decompose to their children subtrees, compute depth
-                # and add to buckets.
-                # Then, remove the original trees from the original buckets,
-                # and delete the buckets if list becomes empty.
-
-                if d in met_subg_trees \
-                and d not in aet_subg_trees:
-                    """
-                    If met_subg has subtrees of depth d
-                    But aet_subg has not subtrees of depth d
-                    But aet has subtrees of depth d+1 or more.
-                    then move them down
-                    """
-                    change=True
-                    for root,subtree in met_subg_trees[d].items():
-                        met.nodes[root]['visited'] = 1 # not mapped, since this one probs won't map correctly anyway
-
-                        # add the decomposed subtrees
-                        for met_st_nodes in list(nx.connected_components(
-                            met.subgraph([_ for _ in met if not 'visited' in met.nodes[_]])
-                        )):
-                            met_st = met.subgraph(met_st_nodes)
-                            met_st_depth = get_depth_nary_tree(met_st)
-
-                            met_subg_trees\
-                            .setdefault(met_st_depth, dict()) \
-                            .update({find_root(met_st): met_st})
-
-                    # Remove the subtrees at that level and the entry too
-                    met_subg_trees.pop(d)
-                    break
-
-                elif d in aet_subg_trees \
-                and d not in met_subg_trees:
-                    """
-                    If aet_subg has subtrees of depth d
-                    But met_subg has not subtrees of depth d
-                    But met has subtrees of depth d+1 or more.
-                    then move them down
-                    """
-                    change=True
-                    for root,subtree in aet_subg_trees[d].items():
-                        aet.nodes[root]['visited'] = 1 # not mapped, since this one probs won't map correctly anyway
-
-                        # add the decomposed subtrees
-                        for aet_st_nodes in list(nx.connected_components(
-                            aet.subgraph([_ for _ in aet if not 'visited' in aet.nodes[_]])
-                        )):
-                            aet_st = aet.subgraph(aet_st_nodes)
-                            aet_st_depth = get_depth_nary_tree(aet_st)
-
-                            aet_subg_trees\
-                            .setdefault(aet_st_depth, dict()) \
-                            .update({find_root(aet_st): aet_st})
-
-                    # Remove the subtrees at that level and the entry too
-                    aet_subg_trees.pop(d)
-                    break
-
-        # Step 1.1: If the list only has unmatched leaf nodes and nothing else,
-        # break the loop, we have nothing more to report.
-
-        if list(aet_subg_trees.keys()) == [1] \
-        and list(met_subg_trees.keys()) == [1]:
-            # i.e. the only keys in this are depth=1, leaf nodes
-            if debug:
-                print("Only leaves")
-            break
-
-        # Or, if one of the trees is completely empty,
-        # then quit too.
-        elif len(list(aet_subg_trees.keys())) == 0 \
+        
+        # checking for empty trees just in case
+        if len(list(aet_subg_trees.keys())) == 0 \
         or len(list(met_subg_trees.keys())) == 0:
             # i.e. the only keys in this are depth=1, leaf nodes
             if debug:
                 print("One of the trees is empty")
             break
-
-        # Step 2: Compare the individual subtrees to find matches, store them
-        # as before, in previous version of the algorithm
-
-        # Step 2.1: Compare the subtrees that have depth>1
-        # Any unmatched trees are tracked and decomposed before the next iteration.
-
-        for d in sorted(filter(lambda _:_>1,
-                                set(met_subg_trees.keys()).union(aet_subg_trees.keys())
-                               ), reverse=True):
-            current_match = {}
-            for aet_subtree_root, aet_subtree in aet_subg_trees[d].items():
-                for met_subtree_root, met_subtree in met_subg_trees[d].items():
+        
+        if depth_level not in met_subg_trees and depth_level not in aet_subg_trees:
+            # No trees to be found at this level, nothing to be compared, move on
+            break
+        
+        current_match = {}
+        if depth_level in met_subg_trees and depth_level in aet_subg_trees:
+            # If we have non-empty lists of trees at that level,
+            # then that level is comparable.
+            # We try to compare the trees at that level.
+            for aet_subtree_root, aet_subtree in aet_subg_trees[depth_level].items():
+                for met_subtree_root, met_subtree in met_subg_trees[depth_level].items():
                     # Compare if the subtrees are not leaf nodes; i.e. depth>1
                     GM = isomorphism.GraphMatcher(met_subtree, aet_subtree, node_match=dg_node_match)
-
+                    
+                    if debug:
+                        print(met_subtree.nodes())
+                        print(aet_subtree.nodes())
+                        print(GM.mapping)
+                    
                     if GM.is_isomorphic():
                         current_match[aet_subtree_root] = {met_subtree_root: GM.mapping}
                         new_matches[(aet_subtree_root, met_subtree_root)] = GM.mapping
 
-                        #aet_subg_trees[d].pop(aet_subtree_root)
-                        #met_subg_trees[d].pop(met_subtree_root)
+                        #aet_subg_trees[depth_level].pop(aet_subtree_root)
+                        #met_subg_trees[depth_level].pop(met_subtree_root)
 
                         for m_node, a_node in GM.mapping.items():
                             met.nodes[m_node]['visited'] = 1
@@ -577,11 +703,22 @@ def compare_exp_trees(met, aet, debug=False):
             # delete both from *_subg buckets
             for aet_root_match in current_match:
                 for met_root_match in current_match[aet_root_match]:
-                    met_subg_trees[d].pop(met_root_match)
-                aet_subg_trees[d].pop(aet_root_match)
-
-        for d in sorted(filter(lambda _:_>1, met_subg_trees.keys()), reverse=True):
-            for root,subtree in met_subg_trees[d].items():
+                    met_subg_trees[depth_level].pop(met_root_match)
+                aet_subg_trees[depth_level].pop(aet_root_match)
+        
+        # Now, if it's not comparable, then one of the lists at depth_level
+        # must be empty. Check for them and breakdown the non-empty one.
+        
+        #if depth_level in met_subg_trees \
+        #and depth_level not in aet_subg_trees:
+        if depth_level in met_subg_trees:
+            """
+            If met_subg has subtrees of depth d
+            But aet_subg has not subtrees of depth d
+            But aet has subtrees of depth d+1 or more.
+            then move them down
+            """
+            for root,subtree in met_subg_trees[depth_level].items():
                 met.nodes[root]['visited'] = 1 # not mapped, since this one probs won't map correctly anyway
 
                 # add the decomposed subtrees
@@ -596,10 +733,18 @@ def compare_exp_trees(met, aet, debug=False):
                     .update({find_root(met_st): met_st})
 
             # Remove the subtrees at that level and the entry too
-            met_subg_trees.pop(d)
-
-        for d in sorted(filter(lambda _:_>1, aet_subg_trees.keys()), reverse=True):
-            for root,subtree in aet_subg_trees[d].items():
+            met_subg_trees.pop(depth_level)
+            
+        #elif depth_level in aet_subg_trees \
+        #and depth_level not in met_subg_trees:
+        if depth_level in aet_subg_trees:
+            """
+            If aet_subg has subtrees of depth d
+            But met_subg has not subtrees of depth d
+            But met has subtrees of depth d+1 or more.
+            then move them down
+            """
+            for root,subtree in aet_subg_trees[depth_level].items():
                 aet.nodes[root]['visited'] = 1 # not mapped, since this one probs won't map correctly anyway
 
                 # add the decomposed subtrees
@@ -614,12 +759,10 @@ def compare_exp_trees(met, aet, debug=False):
                     .update({find_root(aet_st): aet_st})
 
             # Remove the subtrees at that level and the entry too
-            aet_subg_trees.pop(d)
-
-        if debug:
-            print(aet_subg_trees)
-            print(met_subg_trees)
-            print("Time to repeat")
+            aet_subg_trees.pop(depth_level)
+        
+        # update depth_level to next step
+        depth_level-=1
 
         # Step 2.2: Because we have some subtrees of depth>1 in MET/AET, possible
         # that someone missed an equation or an association, or added extras.
@@ -669,20 +812,21 @@ def compare_exp_trees(met, aet, debug=False):
             and dg_node_match(met.nodes[metl_root],aet.nodes[aetl_root]):
                 # Either we can just classify it as a probabilistic match
                 leaf_matches[aetl] = metl
-                aet.nodes[aetl]['mapped'] = 0.5
                 aet.nodes[aetl]['visited'] = 1
-                met.nodes[metl]['mapped'] = 0.5
                 met.nodes[metl]['visited'] = 1
-
+                
                 leaf_matches[aetl_root] = metl_root
-                aet.nodes[aetl_root]['mapped'] = 0.5
                 aet.nodes[aetl_root]['visited'] = 1
-                met.nodes[metl_root]['mapped'] = 0.5
                 met.nodes[metl_root]['visited'] = 1
-
+                
                 matchings[(aetl,metl)] = True
                 matchings[(aetl_root,metl_root)] = True
-
+                
+                aet.nodes[aetl]['mapped'] = 0.5
+                met.nodes[metl]['mapped'] = 0.5
+                aet.nodes[aetl_root]['mapped'] = 0.5
+                met.nodes[metl_root]['mapped'] = 0.5
+                
                 if debug:
                     # For probabilistic match
                     aet.nodes[aetl]['color'] = 'orange'
@@ -697,6 +841,26 @@ def compare_exp_trees(met, aet, debug=False):
         if aetl in leaf_matches:
             met_leaves.pop(leaf_matches[aetl])
     
+    # Step 4: Matching root nodes that were earlier dismissed 
+    # but have all matching immediate children
+    
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+    # TODO
+            
     return matchings
 
 def tree_report(tree, debug=False):
@@ -845,14 +1009,14 @@ def get_parambox_html(node,exp_tree):
         return '<span class="param" data-type=\"box\" data-item=\"'+\
             str(symbol_label['id'])+\
         '\">'+\
-            str(symbol_label['value']+" "+symbol_label['currentUnit'])+\
+            str(symbol_label['value'])+" "+str(symbol_label['currentUnit'])+\
         '</span>'
     else:
         symbol_label = get_symbol_label_details(exp_tree, node)
         return '<span class="param" data-type=\"box\" data-item=\"'+\
         str(symbol_label['valueSource'])+\
         '\">'+\
-            str(symbol_label['value']+" "+symbol_label['currentUnit'])+\
+            str(symbol_label['value'])+" "+str(symbol_label['currentUnit'])+\
         '</span>'
 
 def get_eqbox_html(node,exp_tree):
@@ -1484,12 +1648,33 @@ if __name__ == '__main__':
         with the exercise that needs to be manually set and accessed/parsed in the UI.
         """
         try:
+            # If the path doesn't exist, it won't load the first time either,
+            # so might as well create an empty JSON object in the file for posterity.
+            if not os.path.exists(config_file["master_solution_path"]):
+                with open(config_file["master_solution_path"], "w") as f_master:
+                    json.dump(
+                        {
+                            "parameters":{},
+                            "workspaces":{},
+                            "solutions":{}
+                        }, f_master, indent=4)
+            
             with open(config_file["master_solution_path"]) as f_master:
                 master_soln_json = json.load(f_master)
+
+                # if the file can be loaded but it is empty
+                # /does not have the essential keys such as 
+                # parameters,workspaces,solutions
                 if "varmap" in master_soln_json:
                     print(json.dumps(master_soln_json["varmap"]),end='')
                 else:
                     print("null",end='')
-
-        except Exception:
-            print("{\"error\":\"Something went wrong.\"}")
+        
+        except json.JSONDecodeError as e:
+            print(e)
+        
+        except FileNotFoundError:
+            print("Master solution file was not found")
+        
+        except Exception as e:
+            print("{\"error\":\"Something went wrong."+e+"\"}")

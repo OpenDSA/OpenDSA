@@ -35,9 +35,9 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "rm [path]",
+      commandTitle: "rm [-r] (path)",
       commandDescription:
-        "The rm command removes the file at the location defined by [path].",
+        "The rm command removes the file or directory at the location specified by (path). Multiple (path) values can be provided to remove multiple files or directories. Include -r to remove directories.",
       challengeDescription: 'Remove the "snake.txt" file.',
     },
     handleAwardCredit,
