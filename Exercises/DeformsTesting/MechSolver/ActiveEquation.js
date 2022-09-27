@@ -66,6 +66,7 @@ class ActiveEquation{
         // Delete button is added to remove the individual equation
         this.visualComponents["delete"] = jsavObject.label(
             "&#x2702",
+            // "&#x1F5D1",
             {
                 left: position_obj["POSITION_X"]+
                 this.visualComponents["tickmark"].element[0].offsetWidth+10,

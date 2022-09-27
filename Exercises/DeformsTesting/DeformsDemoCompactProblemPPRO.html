@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="jsav math MechSolverCommon">
 <head>
-  <title>esm2204 f2020 hw3p3</title>
+  <title>Deforms Demo Problem</title>
 
   <!-- Include custom libraries in here -->
   <script src="./mathjs.js" type="text/javascript"></script>
@@ -19,54 +19,74 @@
 <body data-height="400" data-width="970" data-canvas-height="1200">
   <div class="exercise">
     <div class="vars">
-      <var id="JSAV">mechSolverCommon.initJSAV("esm2204f2020hw3p3PPRO", "SI", 1200)</var>
+      <var id="JSAV">mechSolverCommon.initJSAV("DeformsDemoCompactProblemPPRO", "SI", 1200)</var>
     </div>
 
     <div class="problems">
-      <div id="esm2204f2020hw3p3PPROp">
+      <div id="DeformsDemoCompactProblemPPROp">
         <p class="problem">
-          A solid prismatic rod is 
-          <code><var>"{L_i}"</var></code> = 
-          
-          <span 
-          class="param" id="param1" data-id="param1" 
-          data-value="350" data-unit="mm" 
-          data-value-display="350"
-          data-unit-display="mm" data-domain="length">350 mm</span>
+            A solid cylindrical bar of cross-sectional diameter
+            <span 
+            class="param" id="param1" data-id="param1" 
+            data-value="50" data-unit="mm" 
+            data-value-display="50"
+            data-unit-display="mm" data-domain="length">50 mm</span> 
+            
+            is attached rigidly to the wall at point A and is free on the other end, marked point B.
+            A force F is applied inward towards the wall at B as shown in the figure.
 
-          long and has a circular cross section with a diameter of 
-          d = 
-          
-          <span 
-          class="param" id="param2" data-id="param2" 
-          data-value="40" data-unit="mm" 
-          data-value-display="40"
-          data-unit-display="mm" data-domain="length">40 mm</span>
-          
-          .
-          After the temperature of the unconstrained rod is increased, its final length is measured as 
-          <code><var>"{L_f}"</var></code> = 
-          
-          <span 
-          class="param" id="param3" data-id="param3" 
-          data-value="350.135" data-unit="mm" 
-          data-value-display="350.135"
-          data-unit-display="mm" data-domain="length">350.135 mm</span>
-          .
+            Knowing the bar is made of aluminum 
+            (
+              E=
+              <span class="param" id="param2" data-id="param2" 
+              data-value="70" data-unit="GPa" 
+              data-value-display="70"
+              data-unit-display="GPa" data-domain="pressure">70 GPa
+              </span>,
+              
+              <code><var>"{\\nu}"</var></code>=
+              <span class="param" id="param3" data-id="param3" 
+              data-value="0.3" data-unit=""
+              data-value-display="0.3"
+              data-unit-display="" data-domain="dimensionless">0.3
+              </span>
+            ):
         </p>
 
         <div class="question">
+          <!-- <p class="question">
+            1. What is the force required to compress the bar by 
+            <span 
+            class="param" id="param4" data-id="param4" 
+            data-value="2" data-unit="mm" 
+            data-value-display="2"
+            data-unit-display="mm" data-domain="length">2 mm</span> ?
+
+            <span class="solution-box" data-inputtype="number"></span>
+          </p> -->
+
           <p class="question">
-            1. Determine the change in the rod's diameter after the temperature increase.
-            
+            1. What is the final cross sectional diameter of the bar after being compressed by
+            <span 
+            class="param" id="param4" data-id="param4" 
+            data-value="2" data-unit="mm" 
+            data-value-display="2"
+            data-unit-display="mm" data-domain="length">2 mm</span>
+            ?
             <span class="solution-box" data-inputtype="number"></span>
           </p>
-
+          
+          <div>
+              <img class="figure1" src="./problemfigures/demo-problem.png" alt="Text here">
+                <span class="text-overlay param" style="top: -134px;right: 345px; padding: 6px 12px" 
+                id="param5" data-id="param5" data-value="1" data-unit="m" data-value-display="1"
+                data-unit-display="m" data-domain="length">1 m</span>
+          </div>
           <br>
           <br>
         </div>
         
-        <div id="esm2204f2020hw3p3PPRO" class="jsavcanvas"></div>
+        <div id="DeformsDemoCompactProblemPPRO" class="jsavcanvas"></div>
         
         <div class="solution" data-type="custom">
           <div class="guess"> 
@@ -129,7 +149,6 @@
   
   <!-- Additional script files containing settings and solution files -->
   <script src="DeformsDemoProblemPPROsolution.js"></script>
-  <!-- eliminate this file and update MechSolverCommon to reflect lack of need for this -->
 
 </body>
 
