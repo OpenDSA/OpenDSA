@@ -1,0 +1,6 @@
+#ifEx .jsavcode.jsavcenter {
+    position: relative;
+    left: 7px;
+    top: 18px;
+    border: solid 5px #a19da045;
+  }

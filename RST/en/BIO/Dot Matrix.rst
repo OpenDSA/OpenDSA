@@ -31,14 +31,23 @@ Dotplot
 
 * graphical representation doesn't give information about mutation.
 
+
 .. inlineav:: Dot ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/Dot.css 
    :scripts: AV/BIO/Dot.js
    :output: show
+.. avembed:: AV/BIO/Dot.html ss
+
+
+
+
 
 .. inlineav:: Filter ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/Filter.css 
    :scripts: AV/BIO/Filter.js
    :output: show
+
+
+  

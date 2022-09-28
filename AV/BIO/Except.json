@@ -1,0 +1,66 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Inserting an element at the head of an array-based list requires shifting all existing elements in the array by one position towards the tail.",
+        "sc2": "Here is an array-based list with five elements. We will insert an element with value 23 to position 0.",
+        "sc3": "Shift all existing elements one position to the right to make room.",
+        "sc4": "Insert 23 into array position 0.",
+        "sc5": "Increase the list size by 1.",
+        "sc6": "Thus, the cost to insert into an array-based list in the worst case is $\\Theta(n)$ when there are $n$ items in the list."
+      }
+    },
+    "code": {
+      "Python": [{
+        "url": "../../../SourceCode/Python/Bio/try.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "sig": 2,
+          "for": 4,
+          "forbody": 5,
+          "insert": 6,
+          "incr": 7
+        }
+      },{
+        "url": "../../../SourceCode/Java/Lists/AList.h",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "sig": 2,
+          "for": 4,
+          "forbody": 5,
+          "insert": 6,
+          "incr": 7
+        }
+      }],
+      "java_generic": [{
+        "url": "../../../SourceCode/Java_Generic/Lists/AList.java",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "sig": 2,
+          "for": 4,
+          "forbody": 5,
+          "insert": 6,
+          "incr": 7
+        }
+      }],
+      "c++": [{
+        "url": "../../../SourceCode/C++/Lists/AList.h",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "sig": 2,
+          "for": 4,
+          "forbody": 5,
+          "insert": 6,
+          "incr": 7
+        }
+      }]
+    }
+  }
+  

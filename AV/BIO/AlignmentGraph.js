@@ -7,7 +7,7 @@ $(document).ready(function () {
   var D=jsav.label(" ",{left:0, top:180});
   var s1_show=jsav.label(" ",{left:0, top:60});
   var s2_show=jsav.label(" ",{left:0, top:90});
-  var Directions=["Diagonal","Diagonal","Down","Diagonal","Diagonal"];
+  var Directions=["↘","↘","↓","↘","↘"];
    s1_show.show();
    s2_show.show();
 
@@ -142,7 +142,7 @@ $(document).ready(function () {
   var s2_index=0;
   while(i!=graph.nodes().length-1)
    {
-    if(Directions[j]=="Diagonal")
+    if(Directions[j]=="↘")
     {
    s1_alignment.push(s1[s1_index]);
    s2_alignment.push(s2[s2_index]);
@@ -159,18 +159,18 @@ $(document).ready(function () {
           s1_index++;
           s2_index++;  
     }
-  else if(Directions[j]=="Right")
+  else if(Directions[j]=="→")
   {
     s1_alignment.push("-");
     s2_alignment.push(s2[s2_index]);
     s1_show.text(s1_alignment[j]);
     s2_show.text(s2_alignment[j]);
-    jsav.text("insertion",{left:0, top:120});
+    a.text("insertion",{left:0, top:120});
     s2_index++;  
 
    i+=1;
   }
-  else if(Directions[j]=="Down"){
+  else if(Directions[j]=="↓"){
     s1_alignment.push(s1[s1_index]);
     s2_alignment.push("-");
     s1_show.text(s1_alignment[j]);
@@ -188,6 +188,8 @@ $(document).ready(function () {
    }
 s1_show.text(s1_alignment);
 s2_show.text(s2_alignment);
-
-  jsav.recorded();
+D.text(Directions);
+a.hide();
+jsav.step();
+jsav.recorded();
 });

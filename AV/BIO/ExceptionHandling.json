@@ -1,0 +1,161 @@
+{
+  "translations": {
+    "en": {
+      "1": {
+          "type": "select",
+          "description": "",
+          "question": "What will be the output of the following Python code?",
+          "answer": "1",
+          "choices": ["1", "2", "3","error, there is more than one return statement in a single try-finally block"]
+        },
+        "2": {
+          "type": "select",
+          "description": "",
+          "question": "What will be the output of the following Python code?",
+          "answer": "1 2",
+          "choices": ["1 2", "1", "2","none of the mentioned "]
+        },
+        "3":{
+          "type": "select",
+          "description": "",
+          "question":"What will be the output of the following Python code?",
+          "answer": "File open successfully",
+          "choices": ["File open successfully", "Error", "Input file not found"],
+          "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+        },
+        "4":{
+          "type": "select",
+          "description": "",
+          "question":"What will be the output of the following code if the input entered is 6?",
+          "answer": "Even",
+          "choices": ["Exception", "Error", "Input is not number"],
+          "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+        },
+        "5":{
+          "type": "select",
+          "description": "",
+          "question":"What will be the output of the following Python code?",
+          "answer": "close file after you finish",
+          "choices": ["close file after you finish", "Error", "Input file not found"],
+          "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+        },
+        "6":{
+          "type": "select",
+          "description": "",
+          "question":"What will be the output of the following code if the input entered is 7?",
+          "answer": "Odd",
+          "choices": ["Even", "Exception", "Odd","Input is not number"],
+          "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+        },
+        "7":{
+          "type": "select",
+          "description": "",
+          "question":"What will be the output of the following code if the input entered is A?",
+          "answer": "Input is not number",
+          "choices": ["Even", "Exception", "Odd","Input is not number"],
+          "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+        },
+        "8":{
+          "type": "select",
+          "description": "",
+          "question":"What will be the output of the following code if the input entered is 6,0?",
+          "answer": "Can't divide by zero",
+          "choices": ["done", "Exception", "Error","Can't divide by zero"],
+          "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+        }
+        
+    }
+  },
+  "code": {
+    "Python": [
+      {
+      "url": "../../../SourceCode/Python/Bio/ExceptionExer1.py",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "for": 6,
+        "forbody": 7,
+        "insert": 4,
+        "if": 3 
+      }
+    },
+    {
+      "url": "../../../SourceCode/Python/Bio/ExceptionExer2.py",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "for": 6,
+        "forbody": 7,
+        "insert": 4,
+        "if": 3 
+      }
+    },
+    {
+      "url": "../../../SourceCode/Python/Bio/ExceptionExer3.py",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "for": 6,
+        "forbody": 7,
+        "insert": 4,
+        "if": 3 
+      }
+    },
+    {
+      "url": "../../../SourceCode/Python/Bio/ExceptionExer4.py",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "for": 6,
+        "forbody": 7,
+        "insert": 4,
+        "if": 3 
+      }
+    },
+    {
+      "url": "../../../SourceCode/Python/Bio/ExceptionExer5.py",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "for": 6,
+        "forbody": 7,
+        "insert": 4,
+        "if": 3 
+      }
+    },
+    {
+      "url": "../../../SourceCode/Python/Bio/ExceptionExer6.py",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "for": 6,
+        "forbody": 7,
+        "insert": 4,
+        "if": 3 
+      }
+    },
+    {
+      "url": "../../../SourceCode/Python/Bio/ExceptionExer7.py",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "for": 6,
+        "forbody": 7,
+        "insert": 4,
+        "if": 3 
+      }
+    },
+    {
+      "url": "../../../SourceCode/Python/Bio/ExceptionExer8.py",
+      "lineNumbers": false,
+      "tags": {
+        "sig": 3,
+        "for": 6,
+        "forbody": 7,
+        "insert": 4,
+        "if": 3 
+      }
+    }
+  ]
+  }
+}

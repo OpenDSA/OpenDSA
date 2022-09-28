@@ -1,0 +1,33 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Initializing The Dictionary with Key:Value.",
+        "sc2": "Assign Values to x as dict_values(['Ford', 'Mustang', 1964]).",
+        "sc3": "Then Print the values in car Dic, before any change(['Ford', 'Mustang', 1964]).",
+        "sc4": "Now We will change the model Name from (Mustang) to (Alfa Romeo).",
+        "sc5": "Now We will change the Year from (1964) to (2020).",
+        "sc6": "Then Print the values in car Dic, After change it will be dict_values(['Alfa Romeo', 'Mustang', 2020])."
+   }
+    },
+    "code": {
+      "java_generic": [{
+        "url": "../../../SourceCode/Python/Bio/Dictionary.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "car1": 1 ,
+          "car2": 2,
+          "car3":3,
+          "car4": 4,
+          "car5":5,
+          "keys":6,
+          "print be":7,
+          "brand":8,
+          "year":9,
+          "print af":10
+        }
+      }]   
+    }
+  }
+  

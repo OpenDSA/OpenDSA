@@ -1,0 +1,140 @@
+{
+    "translations": {
+      "en": {
+        "1": {
+            "type": "select",
+            "description": "",
+            "question": "What is the output of the given below program?",
+            "answer": "Know Program",
+            "choices": ["Hello", "Know Program", "Compiled Successfully, No Output.","Error"]
+           
+        },
+          "2": {
+            "type": "select",
+            "description": "",
+            "question": "What is the output of the given below program?",
+            "answer": "Hi<br>Hello",
+            "choices": ["Hi", "Know Program", "Hi<br>Hello","Know Program<br>Hello"]
+          },
+          "3":{
+            "type": "select",
+            "description": "",
+            "question":"Find the output of the given Python program?",
+            "answer": "Hello",
+            "choices": ["Hello", "Know Program", "Compiled Successfully, No Output.","Hi"]
+        },
+          "4":{
+            "type": "select",
+            "description": "",
+            "question":"What is the output of the given below program?",
+            "answer": "Hi<br>Hello",
+            "choices": ["Hi", "Hi<br>Know Program", "Hi<br>Hello","Hello"]
+         },
+          "5":{
+            "type": "select",
+            "description": "",
+            "question":"Find the output of the given Python program?",
+            "answer": "Hello",
+            "choices": ["Hello", "Know Program", "Compiled Successfully, No Output.","Hi"]
+        },
+          "6":{
+            "type": "select",
+            "description": "",
+            "question":" Find the output of the given Python program?",
+            "answer": "Hello",
+            "choices": ["Hello", "Know Program", "Compiled Successfully, No Output.","Error"]
+        },
+          "7":{
+            "type": "select",
+            "description": "",
+            "question":"What is the output of the given below program?",
+            "answer": "Error",
+            "choices": ["Hello", "Know Program", "Compiled Successfully, No Output.","Error"]
+         }
+          
+      }
+    },
+    "code": {
+      "Python": [
+        {
+        "url": "../../../SourceCode/Python/Bio/ifex1.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/ifex2.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/ifex3.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/ifex4.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/ifex5.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/ifex6.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/ifex7.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      }
+      
+    ]
+    }
+}
+  

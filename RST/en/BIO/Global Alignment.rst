@@ -13,26 +13,15 @@ Global Alignment
 
 **Dynamic-programming algorithm:**
 
-A chart implicitly containing all possible alignments can be constructed as a matrix similar to that it is used
-in drawing the dotplot. The residues of one sequence index the rows, the residues from the other sequence index
-the columns. Any path through the matrix from upper left to lower right corresponds to an alignment. 
+Firstly the dynamic programming is a method the tries to get the optimal alignment through finding all possible pairs of characters between to sequences. In another expression, it is used in matching sequences. 
+The dynamic programming algorithm in global alignment is similar to the dotplot in generating the matrix that represents it.
+It is simply a chart that contains all the possible alignments. It is done on two sequences as residues. The residues of one sequence index the rows, the residues from the other sequence index the columns and any sequence of cells in the whole matrix from the upper left to lower right represents an alignment. 
+As said before, the dynamic programming is somehow similar to the dot matrix. Both depend on creating a matrix to find the alignment. But, the dynamic programming converts the dot matrix into a scoring matrix to account the matches and mismatches between the two sequences and that helps to get the alignment more quantitatively. Searching for the highest scores in the matrix, the best alignment can be obtained accurately using the dynamic programming.
 
-* Dynamic programming is a method that determines `optimal alignment` by matching two sequences for all possible pairs of characters between the two sequences.
-* It is fundamentally similar to the dot matrix method in that it also creates a two dimensional alignment grid.However,it finds alignment in a more quantitative way by converting a dot matrix into a scoring matrix toaccount for matches and mismatches between sequences. By searching for the set of highest scores in this matrix,the best alignment can be accurately obtained.
+How dynamic programming works?
+Dynamic programming depends on generating a matrix of two-dimensions with a first row and first column indexing the sequences that need to be aligned in the presence of a scoring matrix instead of a dot matrix as in the dotplot. So how the scores are calculated?
+It starts with the first row and go through the rest of the rows in a method of row by row. The first row of one sequence which is used to scan through the entire length of the other sequence, followed by scanning of the second row. The scanning of the second row depends on the scores that already calculated in the first scan and so on till the values are all calculated and the cells are all filled. We go diagonal right now to get the scores from the upper left to the lower right corner. Once the scores are all calculated then we focus on finding the path of the optimal alignment using the “traceback”. The traceback is a way of finding the optimal path of alignment through going reversal from the lower right-hand corner of the matrix toward the origin of the matrix in the upper left-hand corner. The best matching path is that one with the highest score. The path always goes diagonal with some exceptions going vertically or horizontally at some points when it has to deal with a deletion, insertion or gap for one of the two sequences.
 
-**How dynamic programming works?**
-
-Dynamic programming works by first constructing a two-dimensional matrix whose axes are the two sequences to be compared. The residue matching is according to a particular scoring matrix. The scores are calculated one row at a time. This starts with the first row of one sequence, which is used to scan through the entire length of the other sequence, followed by scanning of the second row. The matching scores are calculated. The scanning of the second row takes into account the scores already obtained in the first round. This process is iterated until values for all the cells are filled. Thus, the scores are accumulated along the diagonal going from the upper left corner to the lower right corner. Once the scores have been accumulated in matrix, the next step is to find the path that represents the optimal alignment. This is done
-`by tracing back through the matrix in reverse order from the lower
-right-hand corner of the matrix toward the origin of the matrix in the upper left-hand corner`.The best matching path is the one that has the maximum total score. If two or more paths reach the same highest score, one is chosen arbitrarily to represent the best alignment. The path can also move horizontally or vertically at a certain point, which corresponds to introduction of a gap or an insertion or deletion for one of the two sequences.
-
-**Dynamic Programming Recurrence for the Alignment Graph:**
-
-| S(i,j):the length of a longest path from (0,0) to (i,j) 
-| S(i,j)= `max` [s(i-1,j)+weight of edge "'vertical" between (i-1,j) and (i,j)
-|             s(i,j-1)+weight of edge "horizontal" between (i,j-1) and (i,j) 
-|             s(i-1,j-1)+weight of edge "'diagonal" between (i-1,j-1) and(i,j) 
-|            ]
 
 .. odsafig:: Images/dynamic.png
    :width: 280
@@ -120,6 +109,8 @@ We have two 2D matrices: the score matrix and the traceback matrix.
 Score Matrix
 ------------
 
+This is a visualization for DNA Sequencing
+
 .. inlineav:: Gscore ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/Gscore.css 
@@ -128,6 +119,8 @@ Score Matrix
 
 Traceback
 ---------
+
+This is a visualization for DNA Sequencing
 
 .. inlineav:: Gtraceback ss
    :long_name: DNA Sequencing example Slideshow
@@ -139,6 +132,9 @@ Traceback
 Exercise
 --------
 
+This is a visualization for DNA Sequencing
+
+.. inlineav:: GExercise ff
 .. inlineav:: GExercise ss
    :long_name: DNA Sequencing example Slideshow
    :links: AV/BIO/GExercise.css 

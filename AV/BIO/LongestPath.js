@@ -2,10 +2,9 @@
 
 $(document).ready(function () {
   var jsav = new JSAV("LongestPath");
-  var graph=new jsav.ds.graph({width: 500, height: 500});
+  var graph=new jsav.ds.graph({width: 500, height: 500,directed: true});
   var right;
   var down;
-  var index=[];
   var node1=graph.addNode(0,{left:0, top:0});
   var node2=graph.addNode(" ",{left:100, top: 0});
   var node3=graph.addNode(" ",{left:200, top: 0});
@@ -98,18 +97,26 @@ for (var i=6;i<graph.nodes().length;i++)
 		if(down>right){
 			graph.nodes()[i].value(down);
 			graph.nodes()[i-5].highlight();
+<<<<<<< HEAD
+=======
 			index.push(i-5);
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
 		}
 		else{
 			graph.nodes()[i].value(right);
 			graph.nodes()[i-1].highlight();
+<<<<<<< HEAD
+=======
 			index.push(i-1);
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
 		}
 		
 		jsav.step();
 	}
 }  
 graph.nodes()[graph.nodes().length-1].highlight();
+<<<<<<< HEAD
+=======
 index.push(graph.nodes().length-1);
 /*for(i=0;i<graph.nodes().length;i++)
 {
@@ -119,5 +126,6 @@ for(i of index)
 {
    graph.nodes()[i].show();
 }*/
+>>>>>>> f465a9eb15d79028f56374e19958b6d645d2b412
    jsav.recorded();
 });

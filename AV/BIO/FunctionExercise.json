@@ -1,0 +1,192 @@
+{
+    "translations": {
+      "en": {
+        "1": {
+            "type": "select",
+            "description": "",
+            "question": "What will be the output of the following Python code?",
+            "answer": "Hello World! <br/> Hello World!",
+            "choices": ["Hello World! <br/> Hello World!", " 'Hello World! <br/> Hello World!'", "Hello <br/> Hello"]
+          },
+          "2": {
+            "type": "select",
+            "description": "",
+            "question": "What will be the output of the following Python code?",
+            "answer": "4 is maximum",
+            "choices": ["3", "4", "4 is maximum","None of the mentioned "]
+          },
+          "3":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "x is 50<br/> Changed local x to 2 <br/> x is now 50",
+            "choices": ["x is 50 <br/> Changed local x to 2<br/>x is now 2", "x is 50<br/> Changed local x to 2 <br/> x is now 50", "x is 50 Changed local <br/> x to 2 x is now 100"]
+          },
+          "4":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "x is 50<br/>Changed global x to 2 <br/>Value of x is 2",
+            "choices": ["x is 50<br/>Changed global x to 2 <br/>Value of x is 2", "x is 50 <br/>Changed global x to 2 <br/>Value of x is 50", "x is 50 <br/>Changed global x to 50 <br/>Value of x is 50"]
+          },
+          "5":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "Hello<br/> WorldWorldWorldWorldWorld",
+            "choices": ["Hello<br/> WorldWorldWorldWorldWorld", "Hello<br/> World 5", "Hello<br/> World,World,World,World,World","Hello<br/> HelloHelloHelloHelloHello"]
+          },
+          "6":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "a is 3 and b is 7 and c is 10<br/> a is 25 and b is 5 and c is 24<br/> a is 100 and b is 5 and c is 50",
+            "choices": ["a is 3 and b is 7 and c is 10<br/> a is 25 and b is 5 and c is 24<br/> a is 100 and b is 5 and c is 50", "a is 7 and b is 3 and c is 10<br/> a is 25 and b is 5 and c is 24<br/> a is 5 and b is 100 and c is 50", "a is 3 and b is 7 and c is 10<br/> a is 5 and b is 25 and c is 24<br/> a is 50 and b is 100 and c is 5","None of the mentioned"]
+          },
+          "7":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "3",
+            "choices": [" 2", "3", "The numbers are equal","None of the mentioned"]
+          },
+          "8":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "27",
+            "choices": ["9", "3", "27","30"]
+          },
+          "9":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "212 <br/>32",
+            "choices": ["212 <br/>32", "314 <br/>24", "567 <br/>98","None of the mentioned"]
+          },
+          "10":{
+            "type": "select",
+            "description": "",
+            "question":"What will be the output of the following Python code?",
+            "answer": "6 <br/>15",
+            "choices": ["6 <br/>100", "6 <br/>15", "123 <br/>12345","None of the mentioned"]
+    }
+          
+      }
+    },
+    "code": {
+      "Python": [
+        {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer1.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer2.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer3.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer4.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer5.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer6.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer7.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer8.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer9.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      },
+      {
+        "url": "../../../SourceCode/Python/Bio/FunctionExer10.py",
+        "lineNumbers": false,
+        "tags": {
+          "sig": 3,
+          "for": 6,
+          "forbody": 7,
+          "insert": 4,
+          "if": 3 
+        }
+      }
+    ]
+    }
+  }
+  

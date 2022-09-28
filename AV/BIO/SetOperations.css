@@ -1,0 +1,10 @@
+.jsavcontainer {
+    width: 1100px;
+}
+
+.jsavcanvas {
+    width: 1140px;
+}
+#SetOperations .jsavedge.markpath {
+    color: #f61010
+  }

@@ -22,6 +22,18 @@
         "insert": 6,
         "incr": 7
       }
+    },{
+      "url": "../../../SourceCode/Java/Lists/AList.h",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: AListInsert *** */",
+      "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+      "tags": {
+        "sig": 2,
+        "for": 4,
+        "forbody": 5,
+        "insert": 6,
+        "incr": 7
+      }
     }],
     "java_generic": [{
       "url": "../../../SourceCode/Java_Generic/Lists/AList.java",

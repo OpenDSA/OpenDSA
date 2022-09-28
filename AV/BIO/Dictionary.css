@@ -1,0 +1,31 @@
+#Dictionary ul.jsavcode.jsavcenter {
+    position: relative;
+    left: 280px;
+    background: #fff;
+      background-clip: border-box;
+    background-clip: padding-box;
+    border: solid 6px transparent;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-image-slice: 100%;
+      border-image-source: none;
+      border-image-width: 1;
+    border-radius: 0.8rem;
+    border-image: linear-gradient(45deg, rgba(0, 0, 0, 0.774), rgba(255, 255, 255, 0.76)) 1;
+}
+.jsavmatrix .jsavarray {
+        margin: 0 auto;
+        height: 30px;
+        min-height: 32px;
+   }
+   .jsavmatrix .jsavarray li.jsavnode {
+          border-top: inset;
+          
+ }
+  .jsavhorizontalarray .jsavnode {
+        line-height: 18px !important;
+        min-width: 65px !important;
+        max-width: 86px !important;
+        min-height: 30px !important;
+        max-height: 30px !important;
+      }

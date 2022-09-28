@@ -1,3 +1,18 @@
+.jsavcode.jsavcenter {
+  position: relative;
+  left: 226px;
+}
+
+rect {
+  fill: #80004e45 !important;
+}
+ul.div-test {
+    width: 500px;
+    position: absolute;
+    left: 530px;
+    top: 350px;
+}
+
 div#Dot {
     margin-top: 60px;
 }
@@ -7,3 +22,70 @@ strong {
     color: #fd6d19;
     font-size: large;
 }
+#container {
+    background-color: white;
+    padding: 5px;
+    overflow: hidden;
+    border: 0px;
+}
+
+
+#alistVarsCON {
+    height: 270px;
+  }
+  
+  #alistVarsCON .jsavoutput.jsavline {
+    height: 50px;
+  }
+  
+  #alistIntroCON {
+    height: 190px;
+  }
+  
+  #alistIntroCON .jsavoutput.jsavline {
+    height: 40px;
+  }
+  
+  #alistInsertCON {
+    height: 320px;
+  }
+  
+  #alistInsertCON .jsavcode {
+    margin-left: 285px;
+    width: 560px;
+  }
+  
+  #alistInsertCON .jsavlabel{
+    margin-bottom: 0;
+  }
+  
+  #alistInsertCON .jsavoutput.jsavline {
+    height: 30px;
+  }
+  
+  #alistAppendCON {
+    height: 270px;
+  }
+  
+  #alistAppendCON .jsavcode {
+    margin-left: 350px;
+    width: 400px;
+  }
+  
+  #alistAppendCON .jsavoutput.jsavline {
+    height: 20px;
+  }
+  
+  #alistRemoveCON {
+    height: 350px;
+  }
+  
+  #alistRemoveCON .jsavcode {
+    margin-left: 285px;
+    width: 500px;
+  }
+  
+  #alistRemoveCON .jsavoutput.jsavline {
+    height: 30px;
+  }
+  

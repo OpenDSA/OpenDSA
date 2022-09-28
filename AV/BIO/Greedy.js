@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
   var jsav = new JSAV("Greedy");
-  var graph=new jsav.ds.graph({width: 500, height: 500});
+  var graph=new jsav.ds.graph({width: 500, height: 500,directed: true});
   var right;
   var down;
   var node1=graph.addNode(0,{left:0, top:0});

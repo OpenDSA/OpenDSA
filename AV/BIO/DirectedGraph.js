@@ -5,8 +5,8 @@ $(document).ready(function () {
   var graph=new jsav.ds.graph({width: 500, height: 700,directed: true});
   var right;
   var down;
-  var s2_alignment="TT-GG";
   var s1_alignment="TACGG";
+  var s2_alignment="TT-GG";
   var index=[];
   var node1=graph.addNode(" ",{left:0, top:0});
   var node2=graph.addNode(" ",{left:100, top: 0});
@@ -126,7 +126,7 @@ $(document).ready(function () {
       graph.getEdge(graph.nodes()[i], graph.nodes()[i+6]).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
       graph.nodes()[i+6].highlight();
       i+=6;
-      jsav.umsg("Diagonal ",{left:0, top:90,"preserve": true});
+      jsav.umsg("↘ ",{left:0, top:90,"preserve": true});
 
   }
   else if(s1_alignment[j]=="-")
@@ -134,24 +134,24 @@ $(document).ready(function () {
    graph.getEdge(graph.nodes()[i], graph.nodes()[i+1]).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
    graph.nodes()[i+1].highlight();
    i+=1;
-   jsav.umsg("right ",{left:0, top:90,"preserve": true});
+   jsav.umsg("→ ",{left:0, top:90,"preserve": true});
 
   }
   else if(s2_alignment[j]=="-"){
     graph.getEdge(graph.nodes()[i], graph.nodes()[i+5]).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
     graph.nodes()[i+5].highlight();
     i+=5;
-    jsav.umsg("Down ",{left:0, top:90,"preserve": true});
+    jsav.umsg("↓ ",{left:0, top:90,"preserve": true});
 
   }
   else{
     graph.getEdge(graph.nodes()[i], graph.nodes()[i+6]).css({"arrow-end": "classic-wide-long"}).addClass("markpath");
     graph.nodes()[i+6].highlight();
     i+=6;
-    jsav.umsg("Diagonal ",{left:0, top:90,"preserve": true});
+    jsav.umsg("↘ ",{left:0, top:90,"preserve": true});
 
   }
-  j++;
+    j++;
     jsav.step();
    }
    graph.nodes()[graph.nodes().length-1].highlight();

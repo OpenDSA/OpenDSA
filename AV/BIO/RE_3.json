@@ -1,0 +1,24 @@
+{
+    "translations": {
+      "en": {
+        "sc1": "Import library of regular expression.",
+        "sc2": "The sequence of DNA.",
+        "sc3": "Reading the pattern from left to right</br><b>ATG:</b>The beginning of string we are searching for </br><b>[ATGC]{3,30}:</b>Any combination of the sequence ATGC ,Length between 3 and 30</br><b>A{5,10}:</b>Any repetition of <b>A</b> ,Length between 5 and 10 .",
+        "sc4": "The output of the regular expression is <b>ATGATTCGGCCCAAAAAA</b>."
+      }
+    },
+    "code": {
+      "Python": [{
+        "url": "../../../SourceCode/Python/Bio/RE_3.py",
+        "lineNumbers": false,
+        "startAfter": "/* *** ODSATag: AListInsert *** */",
+        "endBefore": "/* *** ODSAendTag: AListInsert *** */",
+        "tags": {
+          "import": 1,
+          "DNA_Seq": 2,
+          "regex": 3,
+          "print": 4
+        }
+      }]   
+    }
+  }
