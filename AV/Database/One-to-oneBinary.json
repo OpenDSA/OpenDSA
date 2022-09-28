@@ -1,0 +1,14 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "These are the tables with <span style='color:red;'> Has </span> <span style='color:blue;'>one To one</span> relationship",
+      "sc2": "<span style='color:red;'>Solution 1: Adding</span> <span style='color:blue;'>cap-id</span> the <span style='color:red;'>primary key(PK)</span> of table capital will be added to table country as a <span style='color:red;'>forigen key (FK)</span> to build the <span style='color:blue;'> Has </span> relationship",
+      "sc3": "<span style='color:red;'>Cairo</span> city is the  capital of country <span style='color:blue;'>Egypt</span>",
+      "sc4": "<span style='color:red;'>London</span> city is the  capital of country <span style='color:blue;'>UK</span>",
+      "sc5": "<span style='color:red;'>Washington</span> city is the  capital of country <span style='color:blue;'>USA</span>",
+      "sc6": "Employee <span style='color:red;'>adel</span> with $E-id=2$ works at project <span style='color:red;'>sewage</span> with project id $P-id=C$",
+      "sc7": "Employee <span style='color:red;'>ali</span> with $E-id=1$ works at project <span style='color:red;'>Plumbing</span> with project id $P-id=B$",
+      "sc8": "Employee <span style='color:red;'>khaled</span> with $E-id=3$ works at project <span style='color:red;'> electricity </span>with project id $P-id=A$"
+    }
+  }
+}

@@ -1,10 +1,10 @@
-#manyToMany{
-  height: 450px;
+#CardinalityVsParticipation{
+  height: 650px;
   width: 1100px;
   }
   .jsavverticalarray .jsavnode {
     line-height: 30px !important;
-    min-width: 80px !important;
+    min-width: 50px !important;
     max-width: 300px !important;
     min-height: 30px !important;
     max-height: 30px !important;
@@ -12,7 +12,7 @@
 .jsavmatrix.jsavmatrixtable {
 
 line-height: 30px !important;
-    min-width: 80px !important;
+    min-width: 50px !important;
     max-width: 600px !important;
     min-height: 30px !important;
     max-height: 300px !important;
@@ -30,7 +30,7 @@ line-height: 30px !important;
 }
 .jsavhorizontalarray .jsavnode {
   line-height: 30px !important;
-  min-width: 90px !important;
+  min-width: 50px !important;
   max-width: 100px !important;
   min-height: 30px !important;
   max-height: 30px !important;

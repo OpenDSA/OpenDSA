@@ -11,3 +11,9 @@
 
 Example of database applications
 ===========================================
+
+.. inlineav:: ExampleDatabase ss
+   :long_name: ExampleDatabaseempPro Slideshow
+   :links: AV/Database/ExampleDatabase.css
+   :scripts: AV/Database/ExampleDatabase.js
+   :output: show
