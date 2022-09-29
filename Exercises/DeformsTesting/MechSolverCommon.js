@@ -262,8 +262,9 @@ requirejs(["./mathjs.js"], function(){});
             
             // Regardless of success or failure, 
             // push out the events to the server when the button is clicked
-            if(window.parent.ODSA != undefined)
-	            window.parent.ODSA.UTILS.sendEventData()
+            // Moved to after we hear back from the server
+            // if(window.parent.ODSA != undefined)
+	        //     window.parent.ODSA.UTILS.sendEventData()
             
             /**
              * Creating variable mapper for situations where that is expected.
@@ -355,9 +356,26 @@ requirejs(["./mathjs.js"], function(){});
                         };
                         
                         $.ajax(settings).done(function (response) {
-                        console.log(response);
-                        loadingBox.close();
-                        showErrors(response["stdout_compressed"].split("\n"));
+                            console.log(response);
+                            loadingBox.close();
+                            showErrors(response["stdout_compressed"].split("\n"));
+
+                            // Record submit responses as event
+                            Window.jsavObject.logEvent({
+                                "type": "deforms-submit-answer-response",
+                                "desc": JSON.stringify(
+                                    {
+                                        "master_solution_path": 
+                                            // solution['master_solution_path'],
+                                            `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.json`,
+                                        "response": response
+                                    }
+                                )
+                            })
+                            
+                            // Send back all events on clicking "Check Answer", register events
+                            if(window.parent.ODSA != undefined)
+	                            window.parent.ODSA.UTILS.sendEventData()
                         });
                     }
                 });
