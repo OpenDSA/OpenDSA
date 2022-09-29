@@ -679,9 +679,19 @@ def compare_exp_trees(met, aet, debug=False):
                         print(GM.mapping)
                     
                     if GM.is_isomorphic():
-                        current_match[aet_subtree_root] = {met_subtree_root: GM.mapping}
-                        new_matches[(aet_subtree_root, met_subtree_root)] = GM.mapping
-
+                        if len([ \
+                                a for a in current_match \
+                                if met_subtree_root in current_match[a] \
+                        ]) > 0:
+                            # if the met_sub3_root just matched with
+                            # already matched with another ae3 root in current_match,
+                            # then we skip this turn, find another match.
+                            # ideally there should be one, if not, we've got something to report.
+                            continue
+                        else:
+                            current_match[aet_subtree_root] = {met_subtree_root: GM.mapping}
+                            new_matches[(aet_subtree_root, met_subtree_root)] = GM.mapping
+                        
                         #aet_subg_trees[depth_level].pop(aet_subtree_root)
                         #met_subg_trees[depth_level].pop(met_subtree_root)
 
