@@ -236,7 +236,9 @@ class File extends FileSystemEntity {
       ) {
         this.setWorkingState(NEW_FILE_STATE.DELETED);
       } else {
-        this.setWorkingState(this.getStagingState());
+        if (!this.isStagingState(NEW_FILE_STATE.UNCHANGED)) {
+          this.setWorkingState(this.getStagingState());
+        }
       }
       this.setStagingState(NEW_FILE_STATE.UNCHANGED);
     } else {
