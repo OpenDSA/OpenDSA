@@ -635,7 +635,11 @@ class Variable{
                 parentSymbolTemplate: this.parentSymbolTemplate,
                 parentSymbol: this.parentSymbol
             },
+            // UPDATE: Currently also has wkN only during export,
+            // To correct to store this throughout when solver is changed
+            // TODO: Add wkN
             currentSymbol: this.currentSymbol,
+            // currentSymbol: this.id.split('_')[0]+'_'+this.currentSymbol,
 
             // Units information
             expectedDomain: this.expectedDomain,
@@ -647,7 +651,7 @@ class Variable{
             valueSource: this.valueSource,
             valueNegated: this.valueNegated,
         }
-
+        
         if (variableSummary.valueType == null)
         // Then it's a singleton unknown, include ID only (there is no value, and name is available as is)
             variableSummary.value = this.id;

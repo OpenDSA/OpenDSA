@@ -18,41 +18,40 @@ class WorkspaceList
         this.workspaceCounter=1;
         
         this.colors = {
-            azure: {colorcode: "#f0ffff", selected: false},
-            aquamarine: {colorcode: "#7FFFD4", selected: false},
-            blanchedalmond: {colorcode: "#FFEBCD", selected: false},
-            beige: {colorcode: "#f5f5dc", selected: false},
-            babyblue: {colorcode: "#6495ED", selected: false},
-            coral: {colorcode: "#FF7F50", selected: false},
-            darksalmon: {colorcode: "#e9967a", selected: false},
-            darkturquoise: {colorcode: "#00CED1", selected: false},
-            greenyellow: {colorcode: "#ADFF2F", selected: false},
-            ivory: {colorcode: "#FFFFF0", selected: false},
-            lavender: {colorcode: "#E6E6FA", selected: false},
-            LavenderBlush: {colorcode: "#FFF0F5", selected: false},
-            LightBlue: {colorcode: "#ADD8E6", selected: false},
-            gold: {colorcode: "#ffd700", selected: false},
-            khaki: {colorcode: "#f0e68c", selected: false},
-            orange: {colorcode: "#ffa500", selected: false},
-            pink: {colorcode: "#ffc0cb", selected: false},
-            silver: {colorcode: "#c0c0c0", selected: false},
-            white: {colorcode: "#ffffff", selected: false},
-            yellow: {colorcode: "#ffff00", selected: false},
-            LightCyan: {colorcode: "E0FFFF", selected: false},
-            LightGoldenRodYellow: {colorcode: "FAFAD2", selected: false},
-            LightGray: {colorcode: "D3D3D3", selected: false},
-            LightGreen: {colorcode: "90EE90", selected: false},
-            LightPink: {colorcode: "FFB6C1", selected: false},
-            LightSalmon: {colorcode: "FFA07A", selected: false},
-            LightSeaGreen: {colorcode: "20B2AA", selected: false},
-            LightSkyBlue: {colorcode: "87CEFA", selected: false},
-            PaleGoldenRod: {colorcode: "EEE8AA", selected: false},
-            PaleGreen: {colorcode: "98FB98", selected: false},
-            PaleTurquoise: {colorcode: "AFEEEE", selected: false},
-            PaleVioletRed: {colorcode: "DB7093", selected: false},
-            PapayaWhip: {colorcode: "FFEFD5", selected: false},
-            PeachPuff: {color: "FFDAB9", selected: false},
-            Plum: {colorcode: "DDA0DD", selected: false},
+            azure:                  {colorcode: "#f0ffff", selected: false},
+            aquamarine:             {colorcode: "#7FFFD4", selected: false},
+            blanchedalmond:         {colorcode: "#FFEBCD", selected: false},
+            beige:                  {colorcode: "#f5f5dc", selected: false},
+            babyblue:               {colorcode: "#6495ED", selected: false},
+            coral:                  {colorcode: "#FF7F50", selected: false},
+            // darksalmon:             {colorcode: "#e9967a", selected: false},
+            // darkturquoise:          {colorcode: "#00CED1", selected: false},
+            // greenyellow:            {colorcode: "#ADFF2F", selected: false},
+            ivory:                  {colorcode: "#FFFFF0", selected: false},
+            lavender:               {colorcode: "#E6E6FA", selected: false},
+            LavenderBlush:          {colorcode: "#FFF0F5", selected: false},
+            LightBlue:              {colorcode: "#ADD8E6", selected: false},
+            // gold:                   {colorcode: "#ffd700", selected: false},
+            khaki:                  {colorcode: "#f0e68c", selected: false},
+            // orange:                 {colorcode: "#ffa500", selected: false},
+            // pink:                   {colorcode: "#ffc0cb", selected: false},
+            silver:                 {colorcode: "#c0c0c0", selected: false},
+            white:                  {colorcode: "#ffffff", selected: false},
+            // yellow:                 {colorcode: "#ffff00", selected: false},
+            LightCyan:              {colorcode: "#E0FFFF", selected: false},
+            LightGoldenRodYellow:   {colorcode: "#FAFAD2", selected: false},
+            LightGreen:             {colorcode: "#90EE90", selected: false},
+            LightPink:              {colorcode: "#FFB6C1", selected: false},
+            LightSalmon:            {colorcode: "#FFA07A", selected: false},
+            LightSeaGreen:          {colorcode: "#20B2AA", selected: false},
+            LightSkyBlue:           {colorcode: "#87CEFA", selected: false},
+            PaleGoldenRod:          {colorcode: "#EEE8AA", selected: false},
+            PaleGreen:              {colorcode: "#98FB98", selected: false},
+            PaleTurquoise:          {colorcode: "#AFEEEE", selected: false},
+            PaleVioletRed:          {colorcode: "#DB7093", selected: false},
+            PapayaWhip:             {colorcode: "#FFEFD5", selected: false},
+            PeachPuff:              {colorcode: "#FFDAB9", selected: false},
+            Plum:                   {colorcode: "#DDA0DD", selected: false},
         };
         this.remainingcolors = 0; // To be set on the first call to the function
 
@@ -112,28 +111,30 @@ class WorkspaceList
 
         // Adding button for downloading entire configuration
 
-        var downloadButtonText = this.globalJSAVobject.label("", 
-        {
-            left: this.DIMENSIONS["UPPER_CORNER_X"]+this.DIMENSIONS["WIDTH"]/2-86, 
-            top: this.DIMENSIONS["UPPER_CORNER_Y"]-12
-        })
-        .addClass("addworkspace");
-        
-        this.downloadButton = document.createElement("input");
-        this.downloadButton.setAttribute("type", "button");
-        this.downloadButton.setAttribute("value", "Download Solution Attempt");
-        this.downloadButton.setAttribute("id", "workspaceSummaryDownload");
-        downloadButtonText.element[0].appendChild(this.downloadButton);
-        downloadButtonText.element[0].setAttribute("title", "Downloads the current workspace (equations and values computed) and answers submitted");
-        
-        // this.addbutton.element[0].addEventListener('click', e => {
-        this.downloadButton.addEventListener("click", e=> {
-            // e.stopPropagation();
-            e.stopImmediatePropagation();
-            Window.getAttemptSummaryComplete();
-            console.log("Downloading full solution attempt")
-            // console.log(this.globalJSAVobject);
-        });
+        if(window.parent.ODSA == undefined) {
+            var downloadButtonText = this.globalJSAVobject.label("", 
+            {
+                left: this.DIMENSIONS["UPPER_CORNER_X"]+this.DIMENSIONS["WIDTH"]/2-86, 
+                top: this.DIMENSIONS["UPPER_CORNER_Y"]-12
+            })
+            .addClass("addworkspace");
+            
+            this.downloadButton = document.createElement("input");
+            this.downloadButton.setAttribute("type", "button");
+            this.downloadButton.setAttribute("value", "Download Solution Attempt");
+            this.downloadButton.setAttribute("id", "workspaceSummaryDownload");
+            downloadButtonText.element[0].appendChild(this.downloadButton);
+            downloadButtonText.element[0].setAttribute("title", "Downloads the current workspace (equations and values computed) and answers submitted");
+            
+            // this.addbutton.element[0].addEventListener('click', e => {
+            this.downloadButton.addEventListener("click", e=> {
+                // e.stopPropagation();
+                e.stopImmediatePropagation();
+                Window.getAttemptSummaryComplete();
+                console.log("Downloading full solution attempt")
+                // console.log(this.globalJSAVobject);
+            });
+        }
 
         // Adding "Help button" for immediate help
 

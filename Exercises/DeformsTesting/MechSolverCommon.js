@@ -16,14 +16,14 @@ requirejs(["./mathjs.js"], function(){});
      * to test the system itself.
      * When enabled:
      * i)   it sends the path to the file where to store the solution
-     *      (usually exerciseIDPPROmaster.js) inside "master_solution_path" option.
+     *      (usually exerciseIDPPROmaster.json) inside "master_solution_path" option.
      * ii)  stores the JSON object for the whole solution in the master file
      * iii) if applicable, returns the minimal set of associated variables in 
      *      the system and the unknown names (\\latex_name) they're mapped to
      *      for variable mapping later on.
      * When disabled
      * i)   it sends the stored path to the master solution
-     *      (usually exerciseIDPPROmaster.js) inside "master_solution_path" 
+     *      (usually exerciseIDPPROmaster.json) inside "master_solution_path" 
      *      option to load master solution.
      * ii)  also send the current solution attempt as a JSON object.
      * iii) if applicable, send the mapping of the associated variables/unknowns in attempt 
@@ -198,6 +198,8 @@ requirejs(["./mathjs.js"], function(){});
                     solnResults.decision = false;
                 }
 
+                // DEPRECATED; DUMPING WHOLE WORKSPACE ATTEMPT NOW
+                // BASICALLY SAME AS WHAT IS SENT TO THE SERVER FOR ANALYSIS
                 solnEventText[solnIndex] = {
                     "solution": globalSolutionBoxes[solnIndex].solution+" "+globalSolutionBoxes[solnIndex].unit,
                     "decision": solnResults.decision
@@ -218,9 +220,23 @@ requirejs(["./mathjs.js"], function(){});
 
             // truthResults.push({decision:true, description:{}});
             // pushing event log
+            
+            // DEPRECATED; PUSHING WHOLE WORKSPACE DUMP FOR ANALYSIS
+            // Window.jsavObject.logEvent({
+            //     "type": "deforms-submit-answer-check",
+            //     "desc": JSON.stringify(solnEventText)
+            // })
+
             Window.jsavObject.logEvent({
                 "type": "deforms-submit-answer-check",
-                "desc": JSON.stringify(solnEventText)
+                "desc": JSON.stringify(
+                    {
+                        "master_solution_path": 
+                            // solution['master_solution_path'],
+                            `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.json`,
+                        "attempt": Window.getAttemptSummaryComplete(false)
+                    }
+                )
             })
             
             var dec = true;
@@ -246,8 +262,9 @@ requirejs(["./mathjs.js"], function(){});
             
             // Regardless of success or failure, 
             // push out the events to the server when the button is clicked
-            if(window.parent.ODSA != undefined)
-	            window.parent.ODSA.UTILS.sendEventData()
+            // Moved to after we hear back from the server
+            // if(window.parent.ODSA != undefined)
+	        //     window.parent.ODSA.UTILS.sendEventData()
             
             /**
              * Creating variable mapper for situations where that is expected.
@@ -285,7 +302,7 @@ requirejs(["./mathjs.js"], function(){});
                             "mode": "analyze",
                             "master_solution_path": 
                                 // solution['master_solution_path'],
-                                `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.js`,
+                                `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.json`,
                             "attempt": Window.getAttemptSummaryComplete(false)
                         }
     
@@ -315,7 +332,7 @@ requirejs(["./mathjs.js"], function(){});
                         data = {
                             "mode": "training",
                             "master_solution_path": 
-                                `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.js`,
+                                `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.json`,
                             "master_solution": Window.getAttemptSummaryComplete(false)
                         };
                     }
@@ -323,21 +340,38 @@ requirejs(["./mathjs.js"], function(){});
                     if (data != "") // So something is being sent back for feedback
                     {
                         var settings = {
-                        // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                        "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
-                        "method": "POST",
-                        // "async": false,
-                        "timeout": 0,
-                        "headers": {
-                            "Content-Type": "application/json"
-                        },
-                        "data": JSON.stringify(data, null, 4),
+                            // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                            "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
+                            "method": "POST",
+                            // "async": false,
+                            "timeout": 0,
+                            "headers": {
+                                "Content-Type": "application/json"
+                            },
+                            "data": JSON.stringify(data, null, 4),
                         };
                         
                         $.ajax(settings).done(function (response) {
-                        console.log(response);
-                        loadingBox.close();
-                        showErrors(response["stdout_compressed"].split("\n"));
+                            console.log(response);
+                            loadingBox.close();
+                            showErrors(response["stdout_compressed"].split("\n"));
+
+                            // Record submit responses as event
+                            Window.jsavObject.logEvent({
+                                "type": "deforms-submit-answer-response",
+                                "desc": JSON.stringify(
+                                    {
+                                        "master_solution_path": 
+                                            // solution['master_solution_path'],
+                                            `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.json`,
+                                        "response": response
+                                    }
+                                )
+                            })
+                            
+                            // Send back all events on clicking "Check Answer", register events
+                            if(window.parent.ODSA != undefined)
+	                            window.parent.ODSA.UTILS.sendEventData()
                         });
                     }
                 });
@@ -637,7 +671,7 @@ requirejs(["./mathjs.js"], function(){});
 
                 // TODO: $('.content') can be addressed to change height
             }
-        else Window.updateExerciseWindowHeight = function() {} ;
+        else Window.updateExerciseWindowHeight = function(shiftAmount) {} ;
         Window.eqbank = new EquationBank(av, CANVAS_DIMENSIONS);
         Window.wkspacelist = new WorkspaceList(av, CANVAS_DIMENSIONS, Window.eqbank, globalPointerReference);
         Window.windowManager = new WindowManager(av, CANVAS_DIMENSIONS, Window.wkspacelist);
@@ -663,7 +697,7 @@ requirejs(["./mathjs.js"], function(){});
             // Also done in trainingStatus switching; move to a separate function when possible.
             var data = {
                 "master_solution_path": 
-                    `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.js`,
+                    `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.json`,
                 "mode": "init"
             }
             var settings = {
@@ -736,7 +770,7 @@ requirejs(["./mathjs.js"], function(){});
                     // Or listens for the init event for API call only.
                     var data = JSON.stringify({
                         "master_solution_path": 
-                            `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.js`,
+                            `./Exercises/DeformsTesting/${Window.jsavObject.id()}master.json`,
                         "mode": "init"
                     })
                     var settings = {
