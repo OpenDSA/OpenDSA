@@ -67,6 +67,12 @@ Relational Anatomy
    :scripts: AV/Database/CardinalityVsParticipation.js
    :output: show
 
+.. inlineav:: Participation ss
+   :long_name: ParticipationRepresentation Slideshow
+   :links: AV/Database/Participation.css
+   :scripts: AV/Database/Participation.js
+   :output: show
+
 .. inlineav:: ChenVsCrossFootRelations ss
    :long_name: ChenVsCrossFootRelationsRepresentation Slideshow
    :links: AV/Database/ChenVsCrossFootRelations.css
