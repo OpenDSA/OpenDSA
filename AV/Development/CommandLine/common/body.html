@@ -5,15 +5,18 @@
   </div>
 
   <div id="commandline">
-    <ul id="history"></ul>
-    <div class="symbol-and-input">
-      <div class="command-line-prompt">
-        <p class="command-line-prompt-path"></p>
-        <p class="command-line-prompt-branch"></p>
-        <p class="command-line-prompt-dollar">$</p>
+    <div>
+      <ul id="history"></ul>
+      <div class="symbol-and-input">
+        <div class="command-line-prompt">
+          <p class="command-line-prompt-path"></p>
+          <p class="command-line-prompt-branch"></p>
+          <p class="command-line-prompt-dollar">$</p>
+        </div>
+        <input size="60" name="arrayValues" id="arrayValues" type="text" />
       </div>
-      <input size="60" name="arrayValues" id="arrayValues" type="text" />
     </div>
+    <button id="reset-button">Reset</button>
   </div>
 
   <div class="text" id="challenge">
@@ -21,14 +24,9 @@
       <h2>Task</h2>
       <p id="challenge-description"></p>
     </div>
-    <div>
-      <div id="reset-button-container">
-        <button id="reset-button">RESET</button>
-      </div>
-      <div id="success-message" class="hidden">
-        <!-- <i class="fas fa-check"></i> -->
-        <p>Success!</p>
-      </div>
+    <div id="success-message" class="hidden">
+      <!-- <i class="fas fa-check"></i> -->
+      <p>Success!</p>
     </div>
   </div>
 

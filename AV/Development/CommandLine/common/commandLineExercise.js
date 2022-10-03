@@ -92,8 +92,6 @@ function initializeCommandLineExercise(
     setCurrDir
   );
 
-  updateCommandLinePrompt(getCurrDir());
-
   const commandsMap = createCommandsMap(
     getSvgData,
     getCurrDir,
@@ -143,6 +141,7 @@ function initializeCommandLineExercise(
       currDir,
       RESET_FILE_TREE_OFFSETS
     );
+    emptyHistory();
   };
 
   initializeCommandLine(
@@ -169,11 +168,13 @@ const initializeCommandLineState = (
 
   setHomeDir(homeDir);
 
-  setCurrDir(
-    homeDir.followIndexPath(
-      initialCwdIndexPath ? initialCwdIndexPath : DEFAULT_CWD_INDEX_PATH
-    )
+  const currDir = homeDir.followIndexPath(
+    initialCwdIndexPath ? initialCwdIndexPath : DEFAULT_CWD_INDEX_PATH
   );
+
+  setCurrDir(currDir);
+
+  updateCommandLinePrompt(currDir);
 };
 
 function initializeGitExercise(
@@ -299,10 +300,10 @@ function initializeGitExercise(
     initialRemoteCommands,
     commandsMap,
     getRemoteInitialCommit,
-    getRemoteCurrBranch
+    getRemoteCurrBranch,
+    getLocalCurrDir,
+    getLocalCurrBranch
   );
-
-  updateCommandLinePrompt(localCurrDir, localCurrBranch);
 
   //Fix timing issue for rendering visualization size
   setTimeout(() => {
@@ -347,7 +348,9 @@ function initializeGitExercise(
       initialRemoteCommands,
       commandsMap,
       getRemoteInitialCommit,
-      getRemoteCurrBranch
+      getRemoteCurrBranch,
+      getLocalCurrDir,
+      getLocalCurrBranch
     );
     updateGitVisualization(
       svgData,
@@ -356,6 +359,7 @@ function initializeGitExercise(
       RESET_OFFSETS,
       gitMethods
     );
+    emptyHistory();
   };
 
   initializeCommandLine(
@@ -386,7 +390,9 @@ const initializeGitState = (
   initialRemoteCommands,
   commandsMap,
   getRemoteInitialCommit,
-  getRemoteCurrBranch
+  getRemoteCurrBranch,
+  getLocalCurrDir,
+  getLocalCurrBranch
 ) => {
   const localHomeDir = new Directory(
     initialFileStructure ? initialFileStructure : DEFAULT_GIT_FILE_STRUCTURE
@@ -446,6 +452,8 @@ const initializeGitState = (
       callCommand(command, remoteCommandsMap, {}, [], true);
     });
   }
+
+  updateCommandLinePrompt(getLocalCurrDir(), getLocalCurrBranch());
 };
 
 function updateText(text) {
@@ -457,6 +465,7 @@ function updateText(text) {
 function awardCredit() {
   $("#success-message").removeClass("hidden").addClass("visible");
   ODSA.AV.awardCompletionCredit();
+  removeResetButton();
 }
 
 function updateCommandLinePrompt(currDir, currBranch) {
@@ -464,6 +473,14 @@ function updateCommandLinePrompt(currDir, currBranch) {
   $(".command-line-prompt-branch").text(
     currBranch ? `(${currBranch.name})` : ""
   );
+}
+
+function emptyHistory() {
+  $("#history").empty();
+}
+
+function removeResetButton() {
+  $("#reset-button").remove();
 }
 
 export {

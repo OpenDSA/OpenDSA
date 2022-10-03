@@ -28,14 +28,16 @@
 #reset-button {
   justify-self: end;
   color: white;
-  background-color: darkred;
-  border: 1px solid black;
+  background-color: black;
+  border: 1px solid white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
+  height: min-content;
+  position: fixed;
 }
 
 #reset-button:hover {
-  background-color: #6b0000;
+  background-color: #303030;
 }
 
 #success-message p {
@@ -67,6 +69,9 @@
   height: 43vh;
   padding: 1em;
   overflow: auto;
+  display: grid;
+  grid-template-columns: auto min-content;
+  gap: 1rem;
 }
 
 #visualization-container {
@@ -79,6 +84,7 @@
   background-color: black;
   border: 0;
   padding: 0;
+  width: 100%;
 }
 
 #arrayValues:focus {
