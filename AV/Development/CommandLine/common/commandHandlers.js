@@ -1,4 +1,4 @@
-import { colorNode, colors, delays, highlightNode } from "./fileStructure.js";
+import { colors, highlightNode } from "./fileStructure.js";
 import { Directory, File } from "./fileSystemEntity.js";
 import { createGitCommandsMap, handle_git } from "./gitCommandHandlers.js";
 import {
@@ -260,49 +260,41 @@ function createCommandsMap(
     cd: {
       method: handle_cd,
       maxArgs: 1,
-      delay: -1 * delays.paths.update,
       offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     mkdir: {
       method: handle_mkdir,
       minArgs: 1,
-      delay: -1 * delays.paths.update,
       offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     touch: {
       method: handle_touch,
       minArgs: 1,
-      delay: -1 * delays.paths.update,
       offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     cp: {
       method: handle_cp,
       minArgs: 2,
-      delay: -1 * delays.paths.update,
       offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     mv: {
       method: handle_mv,
       minArgs: 2,
-      delay: 0,
       offsets: BASIC_COMMAND_OFFSETS,
     },
     rm: {
       method: handle_rm,
       minArgs: 1,
-      delay: 0,
       offsets: BASIC_COMMAND_OFFSETS,
     },
     rmdir: {
       method: handle_rmdir,
       minArgs: 1,
-      delay: 0,
       offsets: BASIC_COMMAND_OFFSETS,
     },
     vi: {
       method: handle_vi,
       minArgs: 1,
-      delay: -1 * delays.paths.update,
       offsets: BASIC_COMMAND_OFFSETS_NO_EXIT,
     },
     git: handle_git,
@@ -326,7 +318,7 @@ function createCommandsMap(
     } else if (key === "ls" || key === "pwd") {
       commandsMap[key] = commandsMap[key](getSvgData, getCurrDir);
     } else {
-      const { method, minArgs, maxArgs, delay, offsets } = commandsMap[key];
+      const { method, minArgs, maxArgs, offsets } = commandsMap[key];
       commandsMap[key] = initialize_command_handler(
         method,
         minArgs,
@@ -335,7 +327,6 @@ function createCommandsMap(
         setCurrDir,
         getHomeDir,
         updateVisualization,
-        delay,
         getSvgData,
         gitMethods,
         offsets
@@ -447,7 +438,6 @@ const initialize_command_handler =
     setCurrDir,
     getHomeDir,
     updateVisualization,
-    updateVisualizationDelay,
     getSvgData,
     gitMethods,
     offsets
@@ -472,8 +462,7 @@ const initialize_command_handler =
       updateVisualization(
         getSvgData(),
         getHomeDir(),
-        updateVisualizationDelay,
-        getCurrDir().id,
+        getCurrDir(),
         offsets,
         gitMethods,
         null

@@ -22,6 +22,22 @@
   margin-bottom: 1rem;
 }
 
+#reset-button-container {
+  justify-self: end;
+}
+#reset-button {
+  justify-self: end;
+  color: white;
+  background-color: darkred;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+#reset-button:hover {
+  background-color: #6b0000;
+}
+
 #success-message p {
   font-size: larger;
   font-weight: bold;

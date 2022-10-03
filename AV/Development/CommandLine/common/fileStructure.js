@@ -36,23 +36,21 @@ const colors = {
   highlight: { background: "orange", text: "white" },
 };
 
-function renderFileStructureVisualization(data, currDirId, width, height, id) {
+function renderFileStructureVisualization(homeDir, currDir, width, height, id) {
   const svgData = renderSVG(width, height, id);
   updateFileStructureVisualization(
     svgData,
-    data,
-    -1 * delays.nodes.enter,
-    currDirId,
+    homeDir,
+    currDir,
     INITIALIZE_FILE_TREE_OFFSETS
   );
-  colorNode(svgData.group, currDirId, colors.current.background, "");
 
   return svgData;
 }
 
 function renderGitVisualization(
   localHomeDir,
-  currDirId,
+  localCurrDir,
   gitMethods,
   width,
   height,
@@ -62,8 +60,7 @@ function renderGitVisualization(
   updateGitVisualization(
     svgData,
     localHomeDir,
-    -1 * delays.paths.update,
-    currDirId,
+    localCurrDir,
     INITIALIZE_OFFSETS,
     gitMethods,
     null
@@ -125,13 +122,7 @@ function highlightNode(svgGroup, id, color, prevColor, prevText) {
     .style("fill", prevText);
 }
 
-function updateFileStructureVisualization(
-  svgData,
-  homeDir,
-  delayOffset,
-  currDirId,
-  offsets
-) {
+function updateFileStructureVisualization(svgData, homeDir, currDir, offsets) {
   const svgGroup = svgData.group;
   const timings = getTimings(offsets);
 
@@ -149,10 +140,9 @@ function updateFileStructureVisualization(
   createFileTree(
     svgGroup,
     data,
-    currDirId,
+    currDir?.id,
     false,
     "",
-    delayOffset,
     1,
     timings.local.fileTree
   );
@@ -161,8 +151,7 @@ function updateFileStructureVisualization(
 function updateGitVisualization(
   svgData,
   localHomeDir,
-  delayOffset,
-  currDirId,
+  localCurrDir,
   offsets,
   gitMethods,
   extraVisualizations
@@ -257,9 +246,8 @@ function updateGitVisualization(
     localBranchData,
     remoteBranchData,
     group,
-    delayOffset,
     scale,
-    currDirId,
+    localCurrDir?.id,
     timings
   );
 }
@@ -270,7 +258,6 @@ const createFileTree = (
   currDirId,
   colorGit,
   label,
-  delayOffset,
   fileScale,
   timings
 ) => {
@@ -278,7 +265,6 @@ const createFileTree = (
     svgGroup,
     data,
     label,
-    delayOffset,
     rectangleDimensions.width * fileScale,
     rectangleDimensions.height * fileScale,
     defaultFontSize * fileScale + "rem",
@@ -287,14 +273,13 @@ const createFileTree = (
     timings.fileRectangles
   );
 
-  createFileLinks(svgGroup, data, label, delayOffset, timings.fileLinks);
+  createFileLinks(svgGroup, data, label, timings.fileLinks);
 };
 
 const createFileRectangles = (
   svgGroup,
   data,
   label,
-  delayOffset,
   width,
   height,
   fontSize,
@@ -412,7 +397,7 @@ const createFileRectangles = (
     );
 };
 
-const createFileLinks = (svgGroup, data, label, delayOffset, timings) =>
+const createFileLinks = (svgGroup, data, label, timings) =>
   svgGroup
     .selectAll(".link-" + label)
     .data(data.slice(1), function (d) {
@@ -477,31 +462,21 @@ const createFileLinks = (svgGroup, data, label, delayOffset, timings) =>
       }
     );
 
-const createCommitTree = (
-  svgGroup,
-  data,
-  branches,
-  label,
-  delayOffset,
-  scale,
-  timings
-) => {
+const createCommitTree = (svgGroup, data, branches, label, scale, timings) => {
   createCommitCircles(
     svgGroup,
     data,
     label,
-    delayOffset,
     circleRadius * scale,
     timings.commitCircles
   );
 
-  createCommitLinks(svgGroup, data, label, delayOffset, timings.commitLinks);
+  createCommitLinks(svgGroup, data, label, timings.commitLinks);
 
   createBranchRectangles(
     svgGroup,
     branches,
     label,
-    delayOffset,
     rectangleDimensions.width * scale,
     rectangleDimensions.height * scale,
     defaultFontSize * scale + "rem",
@@ -509,14 +484,7 @@ const createCommitTree = (
   );
 };
 
-const createCommitCircles = (
-  svgGroup,
-  data,
-  label,
-  delayOffset,
-  radius,
-  timings
-) =>
+const createCommitCircles = (svgGroup, data, label, radius, timings) =>
   svgGroup
     .selectAll(".node-" + label)
     .data(data, function (d) {
@@ -609,7 +577,7 @@ const createCommitCircles = (
       }
     );
 
-const createCommitLinks = (svgGroup, data, label, delayOffset, timings) =>
+const createCommitLinks = (svgGroup, data, label, timings) =>
   svgGroup
     .selectAll(".link-" + label)
     .data(data.slice(1), function (d) {
@@ -674,7 +642,6 @@ const createBranchRectangles = (
   svgGroup,
   data,
   label,
-  delayOffset,
   width,
   height,
   fontSize,
@@ -944,7 +911,7 @@ const createGitVisualizationData = (
         padding,
         scale
       )
-    : null;
+    : [];
 
   const remoteFileTreeData = createFileTreeData(
     remoteHomeDir,
@@ -969,7 +936,7 @@ const createGitVisualizationData = (
         padding,
         scale
       )
-    : null;
+    : [];
 
   let remoteCommitTreeData = createCommitTreeData(
     remoteInitialCommit,
@@ -988,9 +955,9 @@ const createGitVisualizationData = (
     remoteCommitTreeData
   ));
 
-  const localBranchData = localCommitTreeData
+  const localBranchData = localInitialCommit
     ? createBranchData(localCommitTreeData, localCurrBranch.id, scale)
-    : null;
+    : [];
 
   const remoteBranchData = createBranchData(
     remoteCommitTreeData,
@@ -1016,23 +983,19 @@ const createGitVisualization = (
   localBranchData,
   remoteBranchData,
   svgGroup,
-  delayOffset,
   scale,
   currDirId,
   timings
 ) => {
-  if (localFileTreeData) {
-    createFileTree(
-      svgGroup,
-      localFileTreeData,
-      currDirId,
-      true,
-      "local",
-      delayOffset,
-      scale,
-      timings.local.fileTree
-    );
-  }
+  createFileTree(
+    svgGroup,
+    localFileTreeData,
+    currDirId,
+    true,
+    "local",
+    scale,
+    timings.local.fileTree
+  );
 
   createFileTree(
     svgGroup,
@@ -1040,29 +1003,24 @@ const createGitVisualization = (
     null,
     true,
     "remote",
-    delayOffset,
     scale,
     timings.remote.fileTree
   );
 
-  if (localCommitTreeData) {
-    createCommitTree(
-      svgGroup,
-      localCommitTreeData,
-      localBranchData,
-      "local-commit",
-      delayOffset,
-      scale,
-      timings.local.commitTree
-    );
-  }
+  createCommitTree(
+    svgGroup,
+    localCommitTreeData,
+    localBranchData,
+    "local-commit",
+    scale,
+    timings.local.commitTree
+  );
 
   createCommitTree(
     svgGroup,
     remoteCommitTreeData,
     remoteBranchData,
     "remote-commit",
-    delayOffset,
     scale,
     timings.remote.commitTree
   );
