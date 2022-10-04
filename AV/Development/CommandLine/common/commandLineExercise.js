@@ -357,6 +357,7 @@ function initializeGitExercise(
       localHomeDir,
       localCurrDir,
       RESET_OFFSETS,
+      null,
       gitMethods
     );
     emptyHistory();

@@ -920,8 +920,8 @@ const initialize_command_handler =
         getLocalHomeDir(),
         getLocalCurrDir(),
         offsets ? offsets : {},
-        gitMethods,
-        typeof result === "string" ? null : result
+        typeof result === "string" ? null : result,
+        gitMethods
       );
     }
 

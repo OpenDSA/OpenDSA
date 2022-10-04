@@ -28,62 +28,61 @@ const createOutputList = (lines) => {
     : "";
 };
 
-const handle_ls = (getSvgData, getCurrDir) => (args) => {
-  if (!getCurrDir()) {
-    return noFilesExist;
-  }
-  if (args.length > 1) {
-    return tooManyArgs;
+const handle_ls = (args, flags, getCurrDir, setCurrDir) => {
+  if (args.length === 0) {
+    return lsHelper(getCurrDir);
   }
 
-  const dir =
-    args.length === 0 ? getCurrDir() : getCurrDir().getChildByPath(args[0]);
-
-  if (!dir) {
-    return invalidPath(args[0]);
+  if (args.length === 1) {
+    return lsHelper(getCurrDir, args[0]);
   }
 
-  const contents = dir instanceof Directory ? dir.getContents() : [dir];
-  const fileNames = contents.map((content) => {
-    const contentName =
-      content.name + (content instanceof Directory ? "/" : "");
+  const errors = [];
+  const results = [];
+  const highlight = args.flatMap((arg) => {
+    const result = lsHelper(getCurrDir, arg, true);
 
-    highlightNode(
-      getSvgData().group,
-      content.id,
-      colors.highlight.background,
-      content instanceof Directory
-        ? colors.directory.background
-        : colors.file.background,
-      content instanceof Directory ? colors.directory.text : colors.file.text
-    );
-
-    return contentName;
+    if (typeof result === "string") {
+      errors.push(result);
+      return [];
+    } else {
+      results.push(result.result);
+      return result.highlight;
+    }
   });
 
-  return createOutputList(fileNames);
+  return {
+    highlight,
+    result: `<div class="ls-output">${[
+      createOutputList(errors),
+      ...results,
+    ].join("")}</div>`,
+  };
 };
 
-const handle_pwd = (getSvgData, getCurrDir) => (args) => {
-  if (!getCurrDir()) {
-    return noFilesExist;
+const lsHelper = (getCurrDir, path, includeTitle) => {
+  const dir = path ? getCurrDir().getChildByPath(path) : getCurrDir();
+
+  if (!dir) {
+    return invalidPath(path);
   }
 
-  if (args.length > 0) {
-    return tooManyArgs;
+  const files = dir instanceof Directory ? dir.getContents() : [dir];
+  let fileNames = files.map((file) => file.getName());
+  if (includeTitle && dir instanceof Directory) {
+    fileNames = [`${dir.name}:`, ...fileNames];
   }
 
+  return {
+    highlight: files,
+    result: createOutputList(fileNames),
+  };
+};
+
+const handle_pwd = (args, flags, getCurrDir, setCurrDir) => {
   const path = getCurrDir().getPath();
 
-  highlightNode(
-    getSvgData().group,
-    getCurrDir().id,
-    colors.highlight.background,
-    colors.current.background,
-    colors.current.text
-  );
-
-  return path;
+  return { result: path, highlight: [getCurrDir()] };
 };
 
 const handle_cd = (args, flags, getCurrDir, setCurrDir) => {
@@ -255,8 +254,8 @@ function createCommandsMap(
   gitMethods
 ) {
   const commandsMap = {
-    ls: handle_ls,
-    pwd: handle_pwd,
+    ls: { method: handle_ls },
+    pwd: { method: handle_pwd, maxArgs: 0 },
     cd: {
       method: handle_cd,
       maxArgs: 1,
@@ -315,8 +314,6 @@ function createCommandsMap(
   Object.keys(commandsMap).forEach((key) => {
     if (key === "git") {
       commandsMap[key] = commandsMap[key](gitCommandsMap);
-    } else if (key === "ls" || key === "pwd") {
-      commandsMap[key] = commandsMap[key](getSvgData, getCurrDir);
     } else {
       const { method, minArgs, maxArgs, offsets } = commandsMap[key];
       commandsMap[key] = initialize_command_handler(
@@ -455,21 +452,26 @@ const initialize_command_handler =
 
     const result = handle_command(args, flags, getCurrDir, setCurrDir);
     const resultIsArray = Array.isArray(result);
-    const wasSuccessful =
-      result === "" || (resultIsArray && result.includes(""));
+    const hasExtraVisualizations = !resultIsArray && typeof result !== "string";
 
-    if (!disableVisualization && wasSuccessful) {
+    if (!disableVisualization) {
       updateVisualization(
         getSvgData(),
         getHomeDir(),
         getCurrDir(),
         offsets,
-        gitMethods,
-        null
+        hasExtraVisualizations ? result : null,
+        gitMethods
       );
     }
 
-    return resultIsArray ? createOutputList(result) : result;
+    return resultIsArray
+      ? createOutputList(result)
+      : hasExtraVisualizations
+      ? result.result
+        ? result.result
+        : ""
+      : result;
   };
 
 export { createCommandsMap, createOutputList, handle_rm };

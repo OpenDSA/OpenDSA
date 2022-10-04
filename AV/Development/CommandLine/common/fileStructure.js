@@ -33,7 +33,7 @@ const colors = {
   file: { background: "#add8e6", text: "black" },
   directory: { background: "#0c3762", text: "white" },
   current: { background: "green", text: "white" },
-  highlight: { background: "orange", text: "white" },
+  highlight: { background: "orange", text: "black" },
 };
 
 function renderFileStructureVisualization(homeDir, currDir, width, height, id) {
@@ -62,8 +62,8 @@ function renderGitVisualization(
     localHomeDir,
     localCurrDir,
     INITIALIZE_OFFSETS,
-    gitMethods,
-    null
+    null,
+    gitMethods
   );
 
   createVerticalLine(svgData.group, svgData.width / 2, svgData.height);
@@ -96,56 +96,73 @@ function selectNode(svgGroup, id, label) {
   });
 }
 
-function colorNode(svgGroup, id, color, label) {
-  selectNode(svgGroup, id, label)
-    .select("rect")
+function highlightNode(svgGroup, id, label) {
+  const node = selectNode(svgGroup, id, label ? label : "");
+  const rect = node.select("rect");
+  const text = node.select("text");
+
+  const rectColor = rect.style("fill");
+  const textColor = text.style("fill");
+
+  rect
     .transition()
     .duration(1000)
-    .style("fill", color);
-}
-
-function highlightNode(svgGroup, id, color, prevColor, prevText) {
-  const node = selectNode(svgGroup, id, "");
-  node.select("rect").transition().duration(1000).style("fill", color);
-  node.select("text").transition().duration(1000).style("fill", "black");
-  node
-    .select("rect")
+    .style("fill", colors.highlight.background)
     .transition()
     .duration(1000)
     .delay(3000)
-    .style("fill", prevColor);
-  node
-    .select("text")
+    .style("fill", rectColor);
+  text
+    .transition()
+    .duration(1000)
+    .style("fill", colors.highlight.text)
     .transition()
     .duration(1000)
     .delay(3000)
-    .style("fill", prevText);
+    .style("fill", textColor);
 }
 
-function updateFileStructureVisualization(svgData, homeDir, currDir, offsets) {
+function highlightFiles(svgGroup, files, label) {
+  files.forEach((file) => {
+    highlightNode(svgGroup, file.id, label);
+  });
+}
+
+function updateFileStructureVisualization(
+  svgData,
+  homeDir,
+  currDir,
+  offsets,
+  extraVisualizations
+) {
   const svgGroup = svgData.group;
-  const timings = getTimings(offsets);
 
-  const data = createFileTreeData(
-    homeDir,
-    0,
-    0,
-    svgData.width,
-    svgData.height,
-    5,
-    5,
-    1
-  );
+  if (extraVisualizations && extraVisualizations.highlight) {
+    highlightFiles(svgGroup, extraVisualizations.highlight);
+  } else {
+    const timings = getTimings(offsets);
 
-  createFileTree(
-    svgGroup,
-    data,
-    currDir?.id,
-    false,
-    "",
-    1,
-    timings.local.fileTree
-  );
+    const data = createFileTreeData(
+      homeDir,
+      0,
+      0,
+      svgData.width,
+      svgData.height,
+      5,
+      5,
+      1
+    );
+
+    createFileTree(
+      svgGroup,
+      data,
+      currDir?.id,
+      false,
+      "",
+      1,
+      timings.local.fileTree
+    );
+  }
 }
 
 function updateGitVisualization(
@@ -153,103 +170,107 @@ function updateGitVisualization(
   localHomeDir,
   localCurrDir,
   offsets,
-  gitMethods,
-  extraVisualizations
+  extraVisualizations,
+  gitMethods
 ) {
   const { group, width, height } = svgData;
 
-  const scale = 0.7;
-  const padding = 5;
-  const timings = getTimings(offsets);
+  if (extraVisualizations && extraVisualizations.highlight) {
+    highlightFiles(group, extraVisualizations.highlight, "local");
+  } else {
+    const scale = 0.7;
+    const padding = 5;
+    const timings = getTimings(offsets);
 
-  let {
-    localFileTreeData,
-    remoteFileTreeData,
-    localCommitTreeData,
-    remoteCommitTreeData,
-    localBranchData,
-    remoteBranchData,
-  } = createGitVisualizationData(
-    localHomeDir,
-    gitMethods.getRemoteHomeDir(),
-    gitMethods.getLocalInitialCommit(),
-    gitMethods.getRemoteInitialCommit(),
-    gitMethods.getLocalCurrBranch(),
-    gitMethods.getRemoteCurrBranch(),
-    width,
-    height,
-    padding,
-    scale
-  );
+    let {
+      localFileTreeData,
+      remoteFileTreeData,
+      localCommitTreeData,
+      remoteCommitTreeData,
+      localBranchData,
+      remoteBranchData,
+    } = createGitVisualizationData(
+      localHomeDir,
+      gitMethods.getRemoteHomeDir(),
+      gitMethods.getLocalInitialCommit(),
+      gitMethods.getRemoteInitialCommit(),
+      gitMethods.getLocalCurrBranch(),
+      gitMethods.getRemoteCurrBranch(),
+      width,
+      height,
+      padding,
+      scale
+    );
 
-  if (extraVisualizations) {
-    if (extraVisualizations.commit) {
-      visualizeCommit(
-        group,
-        extraVisualizations.commit,
-        localFileTreeData,
-        localCommitTreeData,
-        timings.commit
-      );
-    }
-
-    if (extraVisualizations.push) {
-      ({ remoteFileTreeData, remoteCommitTreeData, remoteBranchData } =
-        visualizePush(
-          localFileTreeData,
-          remoteFileTreeData,
-          localCommitTreeData,
-          remoteCommitTreeData,
-          localBranchData,
-          remoteBranchData,
-          extraVisualizations.push,
+    if (extraVisualizations) {
+      if (extraVisualizations.commit) {
+        visualizeCommit(
           group,
-          0.7,
-          timings.push
-        ));
+          extraVisualizations.commit,
+          localFileTreeData,
+          localCommitTreeData,
+          timings.commit
+        );
+      }
+
+      if (extraVisualizations.push) {
+        ({ remoteFileTreeData, remoteCommitTreeData, remoteBranchData } =
+          visualizePush(
+            localFileTreeData,
+            remoteFileTreeData,
+            localCommitTreeData,
+            remoteCommitTreeData,
+            localBranchData,
+            remoteBranchData,
+            extraVisualizations.push,
+            group,
+            0.7,
+            timings.push
+          ));
+      }
+
+      if (extraVisualizations.clone) {
+        ({ localFileTreeData, localCommitTreeData, localBranchData } =
+          visualizeClone(
+            localFileTreeData,
+            remoteFileTreeData,
+            localCommitTreeData,
+            remoteCommitTreeData,
+            localBranchData,
+            remoteBranchData
+          ));
+      }
+
+      if (extraVisualizations.pull) {
+        ({ localFileTreeData, localCommitTreeData, localBranchData } =
+          visualizePull(
+            localFileTreeData,
+            remoteFileTreeData,
+            localCommitTreeData,
+            remoteCommitTreeData,
+            localBranchData,
+            remoteBranchData,
+            extraVisualizations.pull,
+            group,
+            0.7,
+            timings.pull
+          ));
+      }
     }
 
-    if (extraVisualizations.clone) {
-      ({ localFileTreeData, localCommitTreeData, localBranchData } =
-        visualizeClone(
-          localFileTreeData,
-          remoteFileTreeData,
-          localCommitTreeData,
-          remoteCommitTreeData,
-          localBranchData,
-          remoteBranchData
-        ));
-    }
-
-    if (extraVisualizations.pull) {
-      ({ localFileTreeData, localCommitTreeData, localBranchData } =
-        visualizePull(
-          localFileTreeData,
-          remoteFileTreeData,
-          localCommitTreeData,
-          remoteCommitTreeData,
-          localBranchData,
-          remoteBranchData,
-          extraVisualizations.pull,
-          group,
-          0.7,
-          timings.pull
-        ));
-    }
+    createGitVisualization(
+      localFileTreeData,
+      remoteFileTreeData,
+      localCommitTreeData,
+      remoteCommitTreeData,
+      localBranchData,
+      remoteBranchData,
+      group,
+      scale,
+      localCurrDir?.id,
+      timings
+    );
   }
-
-  createGitVisualization(
-    localFileTreeData,
-    remoteFileTreeData,
-    localCommitTreeData,
-    remoteCommitTreeData,
-    localBranchData,
-    remoteBranchData,
-    group,
-    scale,
-    localCurrDir?.id,
-    timings
-  );
 }
 
 const createFileTree = (
@@ -1346,7 +1367,6 @@ export {
   renderGitVisualization,
   updateGitVisualization,
   highlightNode,
-  colorNode,
   colors,
   delays,
   durations,
