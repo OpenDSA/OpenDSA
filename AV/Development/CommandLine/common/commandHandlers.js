@@ -1,4 +1,3 @@
-import { colors, highlightNode } from "./fileStructure.js";
 import { Directory, File } from "./fileSystemEntity.js";
 import { createGitCommandsMap, handle_git } from "./gitCommandHandlers.js";
 import {

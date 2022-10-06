@@ -37,7 +37,9 @@
 }
 
 #reset-button:hover {
-  background-color: #303030;
+  /* background-color: #303030; */
+  background-color: #202020;
+  /* font-weight: bold; */
 }
 
 #success-message p {
