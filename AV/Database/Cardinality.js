@@ -1,7 +1,7 @@
 /*global ODSA */
 $(document).ready(function() {
   "use strict";
-  var av_name = "Participation";
+  var av_name = "Cardinality";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
 
@@ -62,37 +62,31 @@ $(document).ready(function() {
    var ProbEx1Line2 = av.g.line(pX2+230+60, pY2-40,LabelLeft+450+300, pY2-40, {opacity: 100, "stroke-width": 2});
    ProbEx1Line2.hide();
 
-   var ProbEx1Line2Par = av.g.line(pX2+230+55, pY2-35,LabelLeft+450+300, pY2-35, {opacity: 100, "stroke-width": 2});
-   ProbEx1Line2Par.hide();
-   var ProbEx1Line1Par = av.g.line(pX2+230-55, pY2-35,LabelLeft+230, pY2-35, { opacity: 100, "stroke-width": 2});
-   ProbEx1Line1Par.hide();
-   
-
    var ProbEx1Line3 = av.g.line(LabelLeft+500,labelTop+170,LabelLeft+180,  labelTop+110, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line3.hide();
 
-   var ProbEx1Line4 = av.g.line(LabelLeft+400,labelTop+230,LabelLeft+215,  labelTop+120, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+   var ProbEx1Line4 = av.g.line(LabelLeft+400,labelTop+270,LabelLeft+215,  labelTop+120, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line4.hide();
 
-   var ProbEx1Line5 =  av.g.line(LabelLeft+460,labelTop+260,pX-290,pY-275, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+   var ProbEx1Line5 = av.g.line(LabelLeft+480,labelTop+265,LabelLeft+720 ,labelTop+100, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line5.hide();
 
    var ProbEx1Line6 = av.g.line(LabelLeft+480,labelTop+265,LabelLeft+800 ,labelTop+130, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line6.hide();
 
-   var ProbEx1Line7 = av.g.line(LabelLeft+480,labelTop+265,LabelLeft+720 ,labelTop+120, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+   var ProbEx1Line7 = av.g.line(LabelLeft+460,labelTop+260,pX-335,pY-275, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line7.hide();
 
    var ProbEx1Line8 = av.g.line(LabelLeft+310,labelTop+290,LabelLeft+800 ,labelTop+130, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line8.hide();
 
-   var ProbEx1Line9 = av.g.line(LabelLeft+620,labelTop+300,LabelLeft+710 ,labelTop+100, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+   var ProbEx1Line9 = av.g.line(LabelLeft+180,labelTop+255,LabelLeft+710 ,labelTop+100, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line9.hide();
    
-   var ProbEx1Line10 = av.g.line(LabelLeft+620,labelTop+295,pX-290,pY-275, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+   var ProbEx1Line10 = av.g.line(LabelLeft+460,labelTop+260,pX-335,pY-275, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line10.hide();
 
-   var ProbEx1Line11 = av.g.line(LabelLeft+620,labelTop+300,LabelLeft+720 ,labelTop+115, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+   var ProbEx1Line11 = av.g.line(LabelLeft+180,labelTop+255,LabelLeft+720 ,labelTop+110, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line11.hide();
 
    var ProbEx1Line12 = av.g.line(LabelLeft+180,labelTop+260,LabelLeft+160, labelTop+120, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
@@ -107,7 +101,7 @@ $(document).ready(function() {
    var ProbEx1Line15 = av.g.line(LabelLeft+280,labelTop+210,LabelLeft+750 ,labelTop+130, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line15.hide();
 
-   var ProbEx1Line16 = av.g.line(LabelLeft+545,labelTop+300,pX-335,pY-260, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+   var ProbEx1Line16 = av.g.line(LabelLeft+460,labelTop+260,pX-335,pY-275, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line16.hide();
 
    // Slide 1
@@ -127,52 +121,52 @@ $(document).ready(function() {
    av.step();
 
    //slide 4
-   av.umsg(interpret("What is the meaning of<span style='color:blue;'> Participation </span>?").bold().big());
+   av.umsg(interpret("What is the meaning of<span style='color:blue;'> Cardinality </span>?").bold().big());
    lineCard.hide();
    labCardinality.hide();
    linePart.hide();
    labParticipation.hide();
    labConstraint.hide();
-   var labCardDefTitle=av.label("<span style='color:blue;'> Participation </span>", {left:LabelLeft-30, top: labelTop});
+   var labCardDefTitle=av.label("<span style='color:blue;'> Cardinality </span>", {left:LabelLeft, top: labelTop});
    labCardDefTitle.css({"font-weight": "bold", "font-size": 22});
    av.step();
 
    //slide 5
-   var labCardDef1=av.label("It tells us whether the relationship is <span style='color:green;'>important</span> or <span style='color:green;'>not</span> ?", {left:LabelLeft-30, top: labelTop+40});
+   var labCardDef1=av.label("How many <span style='color:green;'>instances</span> of an entity relate to <span style='color:green;'>one instance</span> of another entity.", {left:LabelLeft, top: labelTop+30});
    labCardDef1.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
    //slide 6
-   var labCardDef2=av.label("identifies if all instances of an entity should <span style='color:green;'> participate in the relationship or not</span>.", {left:LabelLeft-30, top: labelTop+80});
+   var labCardDef2=av.label("specify <span style='color:green;'>number of occurances</span> in relationship.", {left:LabelLeft, top: labelTop+60});
    labCardDef2.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
    //slide 7
-   var labCardDef3=av.label("determines <span style='color:green;'> minimum number </span> of times an instance of one entity can be associated with an instance in the related entity.", {left:LabelLeft-30, top: labelTop+120});
+   var labCardDef3=av.label("determines <span style='color:green;'> maximum number </span> of times an instance of one entity relate to instances of another entity.", {left:LabelLeft, top: labelTop+90});
    labCardDef3.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
    //slide 8
-   var labCardType=av.label("<span style='color:blue;'> Participation Types </span>", {left:LabelLeft-30, top: labelTop+200});
+   var labCardType=av.label("<span style='color:blue;'> Cardinality Types </span>", {left:LabelLeft, top: labelTop+150});
    labCardType.css({"font-weight": "bold", "font-size": 22});
    av.step();
 
    //slide 9
-   var labCarType1=av.label("<span style='color:green;'>[Optional]=(Partial participation)</span>", {left:LabelLeft-30, top: labelTop+260});
+   var labCarType1=av.label("<span style='color:green;'>[one-to-one]</span>", {left:LabelLeft, top: labelTop+250});
    labCarType1.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
    //slide 10
-   var labCarType2=av.label("<span style='color:green;'>[Mandatory]=(Total participation)</span>", {left:LabelLeft-30, top: labelTop+360});
+   var labCarType2=av.label("<span style='color:green;'>[one-to-many]</span>", {left:LabelLeft, top: labelTop+350});
    labCarType2.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
    //slide 11
-   //var labCarType3=av.label("<span style='color:green;'>[many-to-many]</span>", {left:LabelLeft, top: labelTop+450});
-   //labCarType3.css({"font-weight": "bold", "font-size": 20});
-   //av.step();
+   var labCarType3=av.label("<span style='color:green;'>[many-to-many]</span>", {left:LabelLeft, top: labelTop+450});
+   labCarType3.css({"font-weight": "bold", "font-size": 20});
+   av.step();
 
-   //slide 11
+   //slide 12
    var Entity1Rect=av.g.rect(LabelLeft+300, labelTop+350, 130, 50, {"stroke-width": 3});
    var Entity1Lab=av.label("<span style='color:blue;'>Entity1</span>", {left:LabelLeft+330, top: labelTop+340});
    Entity1Lab.css({"font-weight": "bold", "font-size": 20});
@@ -187,15 +181,15 @@ $(document).ready(function() {
    {"stroke-width": 3, stroke: "black"});
    var RelLab=av.label("<span style='color:blue;'>R</span>", {left:LabelLeft+585, top: labelTop+335});
    RelLab.css({"font-weight": "bold", "font-size": 20});
-   var ProblemLab=av.label("<span style='color:red;'>In such relation, How to determine participation type</span>", {left:LabelLeft+300, top: labelTop+270});
+   var ProblemLab=av.label("<span style='color:red;'>In such relation, How to determine cardinality type</span>", {left:LabelLeft+300, top: labelTop+270});
    ProblemLab.css({"font-weight": "bold", "font-size": 20});
-   var ProblemQmarkLab=av.label("<span style='color:red;'>??</span>", {left:LabelLeft+800, top: labelTop+230});
+   var ProblemQmarkLab=av.label("<span style='color:red;'>??</span>", {left:LabelLeft+780, top: labelTop+230});
    ProblemQmarkLab.css({"font-weight": "bold", "font-size": 40});
    Entity1Line.show();
    Entity2Line.show();
    av.step();
 
-   //slide 12
+   //slide 13
    ProblemLab.hide();
    ProblemQmarkLab.hide();
    var ProblemSolLab1=av.label("<span style='color:green;'>First,</span> You <span style='color:red;'>shouldn't</span> think about the <span style='color:blue;'>entity</span> itself</span>", {left:LabelLeft+300, top: labelTop+230});
@@ -203,9 +197,7 @@ $(document).ready(function() {
    ProbSol1Line.show();
    av.step();
 
-   //slide 13
-   labCarType1.hide();
-   labCarType2.hide();
+   //slide 14
    ProblemSolLab1.hide();
    Entity1Lab.hide();
    Entity1Rect.hide();
@@ -226,26 +218,26 @@ $(document).ready(function() {
    var MatrixEntity2= av.ds.matrix(theEntity2matrix, {style: "table", top: labelTop+340, left: LabelLeft+750 });
    av.step();
 
-   //slide 14
+   //slide 15
    ProblemSolLab2.hide();
    ProbSol2Line.hide();
    ProbSol3Line.show();
-   var ProblemSolLab3=av.label("<span style='color:green;'>Second,</span> ask yourself <span style='color:red;'>ِِِِAre all instances of entity1 should participate in this relation ?</span> OR <span style='color:red;'>ِِِِwaht is the minimum number of instances in entity2 can be related with each instance in entity1 ?</span>", {left:LabelLeft+300, top: labelTop+230});
+   var ProblemSolLab3=av.label("<span style='color:green;'>Second,</span> ask yourself <span style='color:red;'>what is the maximum number of instances of</span> <span style='color:blue;'>entity2</span> can be related to <span style='color:blue;'>each instance of entity1</span>", {left:LabelLeft+300, top: labelTop+230});
    ProblemSolLab3.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
-   //slide 15
+   //slide 16
    ProblemSolLab3.hide();
    ProbSol3Line.hide();
    ProbSol4Line.show();
-   var ProblemSolLab4=av.label("<span style='color:green;'>Third,</span> ask the same question from the other side of relation <span style='color:red;'>Are all instances of entity2 should participate in this relation ?</span> ", {left:LabelLeft+300, top: labelTop+230});
+   var ProblemSolLab4=av.label("<span style='color:green;'>Third,</span> ask the same question from the other side of relation <span style='color:red;'>what is the maximum number of instances of</span> <span style='color:blue;'>entity1</span> can be related to <span style='color:blue;'>each instance of entity2</span>", {left:LabelLeft+300, top: labelTop+230});
    ProblemSolLab4.css({"font-weight": "bold", "font-size": 20});
    MatrixEntity1._arrays[1].unhighlight();
    MatrixEntity2._arrays[1].highlight();
    av.step();
 
-   //slide 16
-   av.umsg(interpret("How to <span style='color:blue;'>determine participation constraint</span> of a relation?").bold().big());
+   //slide 17
+   av.umsg(interpret("How to <span style='color:blue;'>determine cardinality </span> of a relation?").bold().big());
    labCardDefTitle.hide();
    labCardDef1.hide();
    labCardDef2.hide();
@@ -253,7 +245,7 @@ $(document).ready(function() {
    labCardType.hide();
    labCarType1.hide();
    labCarType2.hide();
-   //labCarType3.hide();
+   labCarType3.hide();
    polygon.hide();
    Entity1Line.hide();
    Entity2Line.hide();
@@ -266,7 +258,7 @@ $(document).ready(function() {
    Entity1LabA.hide();
    Entity2LabA.hide();
    RelLab.hide();
-   var labExample=av.label(" <span style='color:red;'> Ex1: </span> Assume having the below relationship <span style='color:red;'> (Has)</span> between <span style='color:blue;'> Depatment & Employee </span> entities", {left:LabelLeft, top:labelTop });
+   var labExample=av.label(" Assume having the below relationship <span style='color:red;'> (Has)</span> between <span style='color:blue;'> Depatment & Employee </span> entities", {left:LabelLeft, top:labelTop });
    labExample.css({"font-weight": "bold", "font-size": 22});
    var Entity1RectEx1=av.g.rect(LabelLeft+100, labelTop+40+30, 130, 50, {"stroke-width": 3});
    var Entity1LabEx1=av.label("<span style='color:blue;'>Department</span>", {left:LabelLeft+110, top: labelTop+60});
@@ -286,7 +278,7 @@ $(document).ready(function() {
    ProbEx1Line2.show();
    av.step();
 
-   //slide 17
+   //slide 18
    var Ex1CardLab=av.label("<span style='color:red;'>To determine cardinality Type:</span>", {left:LabelLeft, top: labelTop+120});
    Ex1CardLab.css({"font-weight": "bold", "font-size": 20});
    var ProblemSolEx1Lab1=av.label("<span style='color:green;'>First,</span> You <span style='color:red;'>shouldn't</span> think about the <span style='color:blue;'>Department Entity</span> itself</span>", {left:LabelLeft+110, top: labelTop+150});
@@ -294,7 +286,7 @@ $(document).ready(function() {
    ProbEx1Line3.show();
    av.step();
 
-   //slide 18
+   //slide 19
    Ex1CardLab.hide();
    ProblemSolEx1Lab1.hide();
    ProbEx1Line3.hide();
@@ -302,7 +294,7 @@ $(document).ready(function() {
    Entity1LabEx1.hide();
    Entity2RecEx1.hide();
    Entity2LabEx1.hide();
-   var ProblemEx1SolLab2=av.label("<span style='color:bule;'>You <span style='color:red;'>should</span> think about <span style='color:blue;'>each depatment instance (record)</span> inside Department entity</span>",  {left:LabelLeft+110, top: labelTop+210});
+   var ProblemEx1SolLab2=av.label("<span style='color:bule;'>You <span style='color:red;'>should</span> think about <span style='color:blue;'>each depatment instance (record)</span> inside Department entity</span>",  {left:LabelLeft+110, top: labelTop+250});
    ProblemEx1SolLab2.css({"font-weight": "bold", "font-size": 20});
    var Entity1Ex1LabA=av.label("Department", {left:LabelLeft+55, top: labelTop+30});
    Entity1Ex1LabA.css({"font-weight": "bold", "font-size": 18});
@@ -316,109 +308,98 @@ $(document).ready(function() {
    ProbEx1Line4.show();
    av.step();
 
-   // slide 19
+   // slide 20
    ProblemEx1SolLab2.hide();
-   var ProblemEx1SolLab3=av.label("<span style='color:green;'>Second,</span> ask yourself <span style='color:red;'>Can any department instance (e.g. production dep.) in the department entity be empty of employees?</span><span style='color:blue;'>(i.e. have no employees)</span> ",{left:LabelLeft+40, top: labelTop+210});
+   var ProblemEx1SolLab3=av.label("<span style='color:green;'>Second,</span> ask yourself <span style='color:red;'>How many employees can production department have?</span> <span style='color:blue;'> (one or more)</span>",{left:LabelLeft+110, top: labelTop+250});
    ProblemEx1SolLab3.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab3Cont1=av.label("<span style='color:green;'>OR",{left:LabelLeft+480, top: labelTop+250});
+   var ProblemEx1SolLab3Cont1=av.label("<span style='color:green;'>OR",{left:LabelLeft+530, top: labelTop+290});
    ProblemEx1SolLab3Cont1.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab3Cont2=av.label("ask yourself <span style='color:red;'>What is the</span> <span style='color:blue;'>minimum number</span>  <span style='color:red;'>of employees can production department have?</span> <span style='color:blue;'>(Zero or more)</span>",{left:LabelLeft+40, top: labelTop+310});
+   var ProblemEx1SolLab3Cont2=av.label("ask yourself <span style='color:red;'>What is the</span> <span style='color:blue;'>maximum number</span> <span style='color:red;'>of employees can production department have?</span>",{left:LabelLeft+110, top: labelTop+350});
    ProblemEx1SolLab3Cont2.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab4Cont1=av.label("<span style='color:green;'>OR",{left:LabelLeft+480, top: labelTop+370});
-   ProblemEx1SolLab4Cont1.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab5Cont2=av.label("ask yourself <span style='color:red;'>Are</span> <span style='color:blue;'>all instances of depatment entity</span>  <span style='color:red;'>should participate in the relationship and at least have one employee?</span>",{left:LabelLeft+40, top: labelTop+430});
-   ProblemEx1SolLab5Cont2.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 20
-   ProblemEx1SolLab4Cont1.hide();
-   ProblemEx1SolLab5Cont2.hide();
-   ProblemEx1SolLab3.hide();
-   ProblemEx1SolLab3Cont1.hide();
-   ProblemEx1SolLab3Cont2.hide();
-   var ProblemEx1SolLab4=av.label("<span style='color:green;'>IF the answers are:</span> <span style='color:green;'>*YES*</span> any department instance (e.g. production dep.) can be empty of employees <span style='color:blue;'>(i.e. have no employees)</span> ",{left:LabelLeft+40, top: labelTop+210});
-   ProblemEx1SolLab4.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab5=av.label("<span style='color:green;'>And",{left:LabelLeft+480, top: labelTop+250});
-   ProblemEx1SolLab5.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab6=av.label("<span style='color:Green;'>*ZERO*</span> is the <span style='color:red;'>minimum number</span>  <span style='color:red;'>of employees can any department have</span>",{left:LabelLeft+40, top: labelTop+310});
-   ProblemEx1SolLab6.css({"font-weight": "bold", "font-size": 20});
-   ProblemEx1SolLab7=av.label("<span style='color:green;'>And",{left:LabelLeft+480, top: labelTop+370});
-   ProblemEx1SolLab7.css({"font-weight": "bold", "font-size": 20});
-   ProblemEx1SolLab8=av.label("<span style='color:green;'>*NO,*</span> <span style='color:red;'>Not all instances of depatment entity should participate in the (Has) relationship</span>",{left:LabelLeft+40, top: labelTop+430});
-   ProblemEx1SolLab8.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
    //slide 21
-   ProblemEx1SolLab8.hide();
-   ProblemEx1SolLab7.hide();
+   ProblemEx1SolLab3.hide();
+   ProblemEx1SolLab3Cont1.hide();
+   ProblemEx1SolLab3Cont2.hide();
+   var ProblemEx1SolLab4=av.label("<span style='color:green;'>The answer is</span> <span style='color:red;'>*many* </span>",{left:LabelLeft+110, top: labelTop+240});
+   ProblemEx1SolLab4.css({"font-weight": "bold", "font-size": 20});
+   var ProblemEx1SolLab5=av.label("<span style='color:green;'>Because:</span> Because the <span style='color:red;'>production department</span> can have any number of employee one or more",{left:LabelLeft+110, top: labelTop+265});
+   ProblemEx1SolLab5.css({"font-weight": "bold", "font-size": 20});
+   var ProblemEx1SolLab6=av.label("<span style='color:green;'>Note:</span> the same is for all other departments",{left:LabelLeft+110, top: labelTop+290});
+   ProblemEx1SolLab6.css({"font-weight": "bold", "font-size": 20});
+   av.step();
+
+   //slide 22
    ProblemEx1SolLab4.hide();
    ProblemEx1SolLab5.hide();
    ProblemEx1SolLab6.hide();
    ProbEx1Line4.hide();
-   var ProblemEx1SolLab7=av.label("<span style='color:red;'>Then:</span> Patricipation Type of department enitity in relationship (Has) is <span style='color:green;'> [Optional]</span>",{left:LabelLeft+110, top: labelTop+240});
+   var ProblemEx1SolLab7=av.label("<span style='color:green;'>Then</span> you should put the (many) sign<span style='color:red;'> (M)</span> beside employee table",{left:LabelLeft+110, top: labelTop+240});
    ProblemEx1SolLab7.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab8=av.label("<span style='color:red;'>Denoted with:</span> <span style='color:green;'>Single line connecting department entity with relationship (Has) </span> as shown in the diagram here ",{left:LabelLeft+110, top: labelTop+265});
+   var ProblemEx1SolLab8=av.label("<span style='color:green;'>Because:</span> the production department can have <span style='color:red;'>many </span> employees",{left:LabelLeft+110, top: labelTop+265});
    ProblemEx1SolLab8.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab9=av.label("<span style='color:green;'>$[Optional]$</span> $=$ <span style='color:green;'>$Partial$ $participation$ $of$ $department$ $entity$ $instances$ $in$ $relationship$ $(Has)$ </span>",{left:LabelLeft+110, top: labelTop+350});
-   ProblemEx1SolLab9.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx1SolLab10Par=av.label("<span style='color:red;'>Because:</span> some departments may have zero employees so it will not participate in that relationship </span>",{left:LabelLeft+110, top: labelTop+420});
-   ProblemEx1SolLab10Par.css({"font-weight": "bold", "font-size": 24});
+   var ProblemEx1SolLab9=av.label("<span style='color:red;'>M</span>",{left:LabelLeft+710 , top: labelTop+50});
+   ProblemEx1SolLab9.css({"font-weight": "bold", "font-size": 22});
    ProbEx1Line5.show();
    av.step();
 
-   //slide 22
-   ProblemEx1SolLab10Par.hide();
+   //slide 23
    ProblemEx1SolLab7.hide();
    ProblemEx1SolLab8.hide();
-   ProblemEx1SolLab9.hide();
    ProbEx1Line5.hide();
-   var ProblemEx1SolLab10=av.label("<span style='color:green;'>Third,</span> ask yourself <span style='color:red;'>Are all employees should at least work at one department?</span>",{left:LabelLeft+110, top: labelTop+250});
+   var ProblemEx1SolLab10=av.label("<span style='color:green;'>Third,</span> ask yourself <span style='color:red;'>How many departments can employee ali works at? (one or more)</span>",{left:LabelLeft+110, top: labelTop+250});
    ProblemEx1SolLab10.css({"font-weight": "bold", "font-size": 20});
    var ProblemEx1SolLab10Cont=av.label("<span style='color:green;'>OR",{left:LabelLeft+530, top: labelTop+290});
    ProblemEx1SolLab10Cont.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab10Cont2=av.label("ask yourself <span style='color:red;'>What is the </span><span style='color:green;'>minimum number</span> of departments can <span style='color:green;'>each employee</span> <span style='color:red;'>works at it?</span><span style='color:blue;'>(zero or more)</span>",{left:LabelLeft+110, top: labelTop+350});
+   var ProblemEx1SolLab10Cont2=av.label("ask yourself <span style='color:red;'>What is the maximum number of departments can employee ali works at it?</span>",{left:LabelLeft+110, top: labelTop+350});
    ProblemEx1SolLab10Cont2.css({"font-weight": "bold", "font-size": 20});
    MatrixEntity1Ex1._arrays[1].unhighlight();
    MatrixEntity2Ex1._arrays[1].highlight();
    ProbEx1Line6.show();
    av.step();
 
-   //slide 23
+   //slide 24
    ProblemEx1SolLab10.hide();
    ProblemEx1SolLab10Cont.hide();
    ProblemEx1SolLab10Cont2.hide();
-   var ProblemEx1SolLab11=av.label("<span style='color:green;'>IF the answer is</span> <span style='color:red;'>*YES* </span> each employee should at least works at one department (more than zero) <span style='color:blue;'>(i.e. no employee can stay without belonging to a department) </span>",{left:LabelLeft+110, top: labelTop+240});
+   var ProblemEx1SolLab11=av.label("<span style='color:green;'>The answer is</span> <span style='color:red;'>*one* </span>",{left:LabelLeft+110, top: labelTop+240});
    ProblemEx1SolLab11.css({"font-weight": "bold", "font-size": 20});
+   var ProblemEx1SolLab12=av.label("<span style='color:green;'>Because:</span> <span style='color:red;'>employee ali </span> can belongs to (works at) only one department at maximum",{left:LabelLeft+110, top: labelTop+265});
+   ProblemEx1SolLab12.css({"font-weight": "bold", "font-size": 20});
+   var ProblemEx1SolLab13=av.label("<span style='color:green;'>Note:</span> the same is for all other employees, each employee cann't work for more than one depatment",{left:LabelLeft+110, top: labelTop+290});
+   ProblemEx1SolLab13.css({"font-weight": "bold", "font-size": 20});
    ProbEx1Line6.hide();
    ProbEx1Line8.show();
    av.step();
 
-   //slide 24
+   //slide 25
    ProbEx1Line8.hide();
    ProblemEx1SolLab11.hide();
+   ProblemEx1SolLab12.hide();
+   ProblemEx1SolLab13.hide();
    ProbEx1Line6.hide();
-   var ProblemEx1SolLab14=av.label("<span style='color:red;'>Then:</span> Patricipation Type of employee enitity in relationship (Has) is <span style='color:green;'> [Mandatory]</span>",{left:LabelLeft+110, top: labelTop+240});
+   var ProblemEx1SolLab14=av.label("<span style='color:green;'>Then</span> you should put the (one) sign<span style='color:red;'> (1)</span> beside department table",{left:LabelLeft+110, top: labelTop+240});
    ProblemEx1SolLab14.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab15=av.label("<span style='color:red;'>Denoted with:</span> <span style='color:green;'>Double lines connecting employee entity with relationship (Has) </span> as shown in the diagram here ",{left:LabelLeft+110 , top:labelTop+270});
+   var ProblemEx1SolLab15=av.label("<span style='color:red;'>1</span>",{left:pX-335 , top:labelTop+50});
    ProblemEx1SolLab15.css({"font-weight": "bold", "font-size": 22});
-   var ProblemEx1SolLab9Par=av.label("<span style='color:green;'>$[Mandatory]$</span> $=$ <span style='color:green;'>$Total$ $participation$ $of$ $all$ $instances$ $of$ $employee$ $entity$ $in$ $(Has)$ $relationship$  </span>",{left:LabelLeft+110, top: labelTop+350});
-   ProblemEx1SolLab9Par.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx1SolLab11Par=av.label("<span style='color:red;'>Because:</span> each employee should at least works at one department so all employee's entity instances totaly participate in that relationship </span>",{left:LabelLeft+110, top: labelTop+420});
-   ProblemEx1SolLab11Par.css({"font-weight": "bold", "font-size": 24});
    ProbEx1Line7.show();
-   ProbEx1Line2Par.show();
    av.step();
 
-   //slide 25
-   ProblemEx1SolLab9Par.hide();
-   ProblemEx1SolLab11Par.hide();
+   //slide 26
    ProblemEx1SolLab14.hide();
    ProbEx1Line7.hide();
-   ProbEx1Line2Par.hide();
-   var labExample2=av.label("<span style='color:red;'> Ex2:</span> Demonstrating Participation constraint of <span style='color:Red;'>[Marry] relationship</span>", {left:LabelLeft, top:labelTop });
+   var ProblemEx1SolLab16=av.label("<span style='color:Red;'>Finally:</span> It is a<span style='color:red;'> [one-to-many]</span> relationship",{left:LabelLeft+110, top: labelTop+240});
+   ProblemEx1SolLab16.css({"font-weight": "bold", "font-size": 20});
+   av.step();
+
+   //slide 27
+   ProblemEx1SolLab16.hide();
+   var labExample2=av.label("Here is an example to demonstrate <span style='color:red;'> [one-to-one]</span> relationship", {left:LabelLeft, top:labelTop });
    labExample2.css({"font-weight": "bold", "font-size": 22});
    labExample.hide();
    ProblemEx1SolLab15.hide();
+   ProblemEx1SolLab9.hide();
    for(i=0;i<theEntity1matrixEx1.length;i++)
    MatrixEntity1Ex1._arrays[i].hide();
    for(i=0;i<theEntity2matrixEx1.length;i++)
@@ -434,118 +415,111 @@ $(document).ready(function() {
    var Entity2RecEx2=av.g.rect(LabelLeft+450+300, labelTop+40+30, 130, 50, {"stroke-width": 3});
    var Entity2LabEx2=av.label("<span style='color:blue;'>Female</span>", {left:LabelLeft+460+320, top: labelTop+60});
    Entity2LabEx2.css({"font-weight": "bold", "font-size": 20});
+   var ProblemEx1SolLab17=av.label("<span style='color:Red;'>Determining cardinality  </span> of the [Marry] relationship",{left:LabelLeft+110, top: labelTop+170});
+   ProblemEx1SolLab17.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
-   //slide 26
-   var ProblemEx1SolLab17=av.label("<span style='color:Red;'>As</span> ",{left:LabelLeft+110, top: labelTop+170});
-   ProblemEx1SolLab17.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab18=av.label("Some males <span style='color:Red;'>may get married</span> and the other <span style='color:Red;'>not</span> so marriage for males is an <span style='color:green;'>optional relation</span>",{left:LabelLeft+110, top: labelTop+220});
-   ProblemEx1SolLab18.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab19=av.label("(i.e. the  <span style='color:Red;'>minimum number</span> of females the male can marry is <span style='color:Red;'>zero</span>",{left:LabelLeft+110, top: labelTop+270});
+   //slide 28
+   var ProblemEx1SolLab18=av.label("<span style='color:Red;'>AS</span>",{left:LabelLeft+110, top: labelTop+200});
+   ProblemEx1SolLab18.css({"font-weight": "bold", "font-size": 26});
+   var ProblemEx1SolLab19=av.label("every <span style='color:Red;'>male</span> in the male entity can <span style='color:Red;'>at maximum marry only one of the females</span> in the female entity",{left:LabelLeft+110, top: labelTop+250});
    ProblemEx1SolLab19.css({"font-weight": "bold", "font-size": 20});
    ProbEx1Line13.show();
    av.step();
 
-   //slide 27
+   //slide 29
    ProblemEx1SolLab17.hide();
    ProblemEx1SolLab18.hide();
    ProblemEx1SolLab19.hide();
-   var ProblemEx1SolLab19=av.label("<span style='color:green;'>Then</span>",{left:LabelLeft+110, top: labelTop+180});
+   var ProblemEx1SolLab19=av.label("<span style='color:green;'>So</span>",{left:LabelLeft+110, top: labelTop+180});
    ProblemEx1SolLab19.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx1SolLab20=av.label(" Male entity will have <span style='color:green;'>Partial [optional] participation</span> in marry relationship",{left:LabelLeft+110, top: labelTop+230});
+   var ProblemEx1SolLab20=av.label(" A <span style='color:Red;'> [1] sign</span> should be put beside the female entity to denote that <span style='color:Red;'> cardinality ratio</span>",{left:LabelLeft+110, top: labelTop+230});
    ProblemEx1SolLab20.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx2SolLab9=av.label("Denoted in the Chen model here with that:<span style='color:red;'>Single line</span>",{left:LabelLeft+110 , top: labelTop+270});
+   var ProblemEx2SolLab9=av.label("<span style='color:red;'>1</span>",{left:LabelLeft+710 , top: labelTop+50});
    ProblemEx2SolLab9.css({"font-weight": "bold", "font-size": 22});
-   ProbEx1Line10.show();
+   ProbEx1Line9.show();
    ProbEx1Line13.hide();
    av.step();
 
-   //slide 28
-   ProblemEx2SolLab9.hide();
+   //slide 30
    ProblemEx1SolLab19.hide();
    ProblemEx1SolLab20.hide();
-   ProbEx1Line10.hide();
-   var ProblemEx1SolLab21=av.label("<span style='color:green;'>The other side of females</span> is the same case, every female <span style='color:red;'>may or may not</span> get married from a male instance",{left:LabelLeft+110, top: labelTop+180});
-   ProblemEx1SolLab21.css({"font-weight": "bold", "font-size": 22});
-   var ProblemEx1SolLab21Par=av.label("The <span style='color:red;'> minimum number</span> of males any female can get married to equals <span style='color:red;'>ZERO</span>",{left:LabelLeft+110, top: labelTop+260});
-   ProblemEx1SolLab21Par.css({"font-weight": "bold", "font-size": 22});
+   ProbEx1Line9.hide();
+   var ProblemEx1SolLab21=av.label("<span style='color:green;'>The other side of females</span> is the same case, every female can only get married from one male at maximum in the same time",{left:LabelLeft+110, top: labelTop+180});
+   ProblemEx1SolLab21.css({"font-weight": "bold", "font-size": 24});
    ProbEx1Line14.show();
    av.step();
 
-   //slide 29
-   ProblemEx1SolLab21Par.hide();
-   ProblemEx2SolLab9.show();
+   //slide 31
    ProbEx1Line14.hide();
    ProblemEx1SolLab21.hide();
-   var ProblemEx1SolLab22=av.label(" So also female participation is <span style='color:green;'> Partial [Optional]</span>",{left:LabelLeft+110, top: labelTop+230});
+   var ProblemEx1SolLab22=av.label(" A <span style='color:Red;'> [1] sign</span> should be put beside the male entity to denote that relation",{left:LabelLeft+110, top: labelTop+230});
    ProblemEx1SolLab22.css({"font-weight": "bold", "font-size": 20});
-   ProbEx1Line9.show();
+   var ProblemEx1SolLab23=av.label("<span style='color:red;'>1</span>",{left:LabelLeft+240 , top: labelTop+50});
+   ProblemEx1SolLab23.css({"font-weight": "bold", "font-size": 22});
+   ProbEx1Line10.show();
    av.step();
 
-   //slide 30
-   ProblemEx2SolLab9.hide();
+   //slide 32
    ProblemEx1SolLab22.hide();
-   ProbEx1Line9.hide();
+   ProblemEx1SolLab23.hide();
+   ProbEx1Line10.hide();
    RelLabEx2.hide();
    labExample2.hide();
    Entity1LabEx2.hide();
    Entity2LabEx2.hide();
    ProblemEx2SolLab9.hide();
-   var labExample3=av.label("Ex3: Determining participation constraint in <span style='color:red;'> Earn </span> relationship", {left:LabelLeft, top:labelTop });
+   var labExample3=av.label("Example for demonstrating the last cardinality type <span style='color:red;'> [many-to-many]</span> relationship", {left:LabelLeft, top:labelTop });
    labExample3.css({"font-weight": "bold", "font-size": 22});
-   var RelLabEx3=av.label("<span style='color:blue;'>Earn</span>", {left:pX2+245-35, top: pY2-75});
+   var RelLabEx3=av.label("<span style='color:blue;'>Works at</span>", {left:pX2+245-55, top: pY2-75});
    RelLabEx3.css({"font-weight": "bold", "font-size": 20});
    var Entity1LabEx3=av.label("<span style='color:blue;'>employee</span>", {left:LabelLeft+120, top: labelTop+60});
    Entity1LabEx3.css({"font-weight": "bold", "font-size": 20});
-   var Entity2LabEx3=av.label("<span style='color:blue;'>payroll</span>", {left:LabelLeft+460+320, top: labelTop+60});
+   var Entity2LabEx3=av.label("<span style='color:blue;'>project</span>", {left:LabelLeft+460+320, top: labelTop+60});
    Entity2LabEx3.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
-   //slide 31
+   //slide 33
    var ProblemEx1SolLab24=av.label("<span style='color:green;'>AS</span>",{left:LabelLeft+110, top: labelTop+180});
    ProblemEx1SolLab24.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab25=av.label("ALL employees <span style='color:Red;'>must get paid</span> their salaries (i.e. no employee can stay without participating in earn payroll relationship)",{left:LabelLeft+110, top: labelTop+230});
+   var ProblemEx1SolLab25=av.label("every <span style='color:Red;'>employee</span> in the employee entity can work at <span style='color:Red;'>many projects</span> at the  <span style='color:Red;'>same time</span>",{left:LabelLeft+110, top: labelTop+230});
    ProblemEx1SolLab25.css({"font-weight": "bold", "font-size": 20});
    ProbEx1Line12.show();
    av.step();
 
-   // slide 32
+   // slide 34
    ProblemEx1SolLab24.hide();
    ProblemEx1SolLab25.hide();
    var ProblemEx3SolLab1=av.label("<span style='color:green;'>So</span>",{left:LabelLeft+110, top: labelTop+180});
    ProblemEx3SolLab1.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx3SolLab2=av.label(" Employee entity makes a <span style='color:Red;'> [Mandatory] Total</span> Participation relationship",{left:LabelLeft+110, top: labelTop+230});
+   var ProblemEx3SolLab2=av.label(" A <span style='color:Red;'> [M] sign</span> should be put beside the project entity to denote that relation",{left:LabelLeft+110, top: labelTop+230});
    ProblemEx3SolLab2.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx2SolLab9Par=av.label("Denoted in the Chen model here with that:<span style='color:red;'>Double lines</span>",{left:LabelLeft+110 , top: labelTop+270});
-   ProblemEx2SolLab9Par.css({"font-weight": "bold", "font-size": 22});
-   ProbEx1Line16.show();
+   var ProblemEx3SolLab3=av.label("<span style='color:red;'>M</span>",{left:LabelLeft+710 , top: labelTop+50});
+   ProblemEx3SolLab3.css({"font-weight": "bold", "font-size": 22});
+   ProbEx1Line11.show();
    ProbEx1Line12.hide();
-   ProbEx1Line1Par.show();
    av.step();
 
-   //slide 33
-   ProblemEx2SolLab9Par.hide();
+   //slide 35
    ProblemEx3SolLab1.hide();
    ProblemEx3SolLab2.hide();
-   ProbEx1Line16.hide();
-   var ProblemEx3SolLab4=av.label("<span style='color:green;'>Also</span> <span style='color:red;'>each payroll instance</span> in the payroll entity must be devoted for <span style='color:red;'>at least one</span> specific employee",{left:LabelLeft+110, top: labelTop+180});
+   ProblemEx3SolLab3.hide();
+   ProbEx1Line11.hide();
+   var ProblemEx3SolLab4=av.label("<span style='color:green;'>Also</span> <span style='color:red;'>every project</span> in the project entity can has <span style='color:red;'>a lot of employees</span> working at it simultaneously",{left:LabelLeft+110, top: labelTop+180});
    ProblemEx3SolLab4.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx3SolLab4Par=av.label("<span style='color:green;'>(i.e.,)</span> No salary without an employee",{left:LabelLeft+110, top: labelTop+250});
-   ProblemEx3SolLab4Par.css({"font-weight": "bold", "font-size": 24});
    ProbEx1Line15.show();
    av.step();
 
-   //slide 34
-   ProblemEx3SolLab4Par.hide();
-   ProbEx1Line2Par.show();
-   ProblemEx2SolLab9Par.show();
+   //slide 36
    ProblemEx3SolLab4.hide();
    ProbEx1Line15.hide();
    var ProblemEx3SolLab5=av.label("<span style='color:green;'>So</span>",{left:LabelLeft+110, top: labelTop+180});
    ProblemEx3SolLab5.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx3SolLab6=av.label(" Paryoll entity has a <span style='color:Red;'>[Mandatory] total</span> participation in (Earn) relationship ",{left:LabelLeft+110, top: labelTop+230});
+   var ProblemEx3SolLab6=av.label(" A <span style='color:Red;'> [M] sign</span> should be put beside the <span style='color:Red;'> employee entity</span> to denote that cardinality ratio",{left:LabelLeft+110, top: labelTop+230});
    ProblemEx3SolLab6.css({"font-weight": "bold", "font-size": 20});
-   ProbEx1Line11.show();
+   var ProblemEx3SolLab7=av.label("<span style='color:red;'>M</span>",{left:LabelLeft+240 , top: labelTop+50});
+   ProblemEx3SolLab7.css({"font-weight": "bold", "font-size": 22});
+   ProbEx1Line16.show();
    av.recorded();
 
   

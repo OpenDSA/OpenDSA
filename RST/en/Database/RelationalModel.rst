@@ -61,16 +61,28 @@ Relational Anatomy
    :scripts: AV/Database/ChenVsCrossFootDerivedAtt.js
    :output: show
 
-.. inlineav:: CardinalityVsParticipation ss
-   :long_name: CardinalityVsParticipationRepresentation Slideshow
-   :links: AV/Database/CardinalityVsParticipation.css
-   :scripts: AV/Database/CardinalityVsParticipation.js
+.. inlineav:: Cardinality ss
+   :long_name: CardinalityRepresentation Slideshow
+   :links: AV/Database/Cardinality.css
+   :scripts: AV/Database/Cardinality.js
    :output: show
 
 .. inlineav:: Participation ss
    :long_name: ParticipationRepresentation Slideshow
    :links: AV/Database/Participation.css
    :scripts: AV/Database/Participation.js
+   :output: show
+
+.. inlineav:: CardinalityVsParticipation ss
+   :long_name: CardinalityVsParticipationRepresentation Slideshow
+   :links: AV/Database/CardinalityVsParticipation.css
+   :scripts: AV/Database/CardinalityVsParticipation.js
+   :output: show
+
+.. inlineav:: min-maxNotation ss
+   :long_name: min-maxNotationRepresentation Slideshow
+   :links: AV/Database/min-maxNotation.css
+   :scripts: AV/Database/min-maxNotation.js
    :output: show
 
 .. inlineav:: ChenVsCrossFootRelations ss

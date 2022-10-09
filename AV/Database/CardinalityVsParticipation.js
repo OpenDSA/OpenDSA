@@ -22,23 +22,58 @@ $(document).ready(function() {
    var lineCardX2=lineCardPartX1-100;
    var linePartX2=lineCardPartX1+100;
    var lineCardY2=80;
-   var labConstraint=av.label("<span style='color:red;'>Relationship Constraint</span>", {left: midPage, top: labelTop });
+   var labConstraint=av.label("<span style='color:red;'>Cardinality Vs. Participation</span>", {left: midPage, top: labelTop });
    labConstraint.css({"font-weight": "bold", "font-size": 26});
 
    var lineCard = av.g.line(lineCardPartX1, lineCardY1, lineCardX2, lineCardY2, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    lineCard.hide();
    
-   var labCardinality=av.label("<span style='color:blue;'> Cardinality </span>", {left:lineCardX2-100, top: lineCardY2-20 });
-   labCardinality.css({"font-weight": "bold", "font-size": 22});
+   var labCardinality=av.label("<span style='color:blue;'> Hint1: </span>", {left:lineCardX2-400, top: lineCardY2-25 });
+   labCardinality.css({"font-weight": "bold", "font-size": 24});
    labCardinality.hide();
 
    var linePart = av.g.line(lineCardPartX1, lineCardY1, linePartX2, lineCardY2, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    linePart.hide();
 
    colNo=2;
-   var labParticipation=av.label("<span style='color:blue;'> Participation </span>", {left: linePartX2, top: lineCardY2-20});
+   var labParticipation=av.label("There is <span style='color:green;'>no contradiction</span> between Cardinality and Participation constraints", {left:lineCardX2-325, top: lineCardY2-20});
    labParticipation.css({"font-weight": "bold", "font-size": 22});
    labParticipation.hide();
+
+   var labCardinality2=av.label("<span style='color:blue;'> Hint2: </span>", {left:lineCardX2-400, top: lineCardY2-25+50 });
+   labCardinality2.css({"font-weight": "bold", "font-size": 24});
+   labCardinality2.hide();
+
+   var labParticipation2=av.label("Both constraints can be <span style='color:green;'>applied together</span> on the same ER-Diagram <span style='color:green;'>simultaneously</span>", {left: lineCardX2-325, top: lineCardY2-20+50});
+   labParticipation2.css({"font-weight": "bold", "font-size": 22});
+   labParticipation2.hide();
+
+   var labCardinality3=av.label("<span style='color:blue;'> Hint3: </span>", {left:lineCardX2-400, top: lineCardY2-25+50+50 });
+   labCardinality3.css({"font-weight": "bold", "font-size": 24});
+   labCardinality3.hide();
+
+   var labParticipation3=av.label("<span style='color:green;'>Cardinality</span> is searching for <span style='color:green;'>maximum occurrences</span> of relation while <span style='color:green;'>Participation</span> is searching for the <span style='color:green;'>minimum occurrences</span> of relation", {left: lineCardX2-325, top: lineCardY2-20+50+50});
+   labParticipation3.css({"font-weight": "bold", "font-size": 22});
+   labParticipation3.hide();
+
+   var labParticipation4=av.label("<span style='color:green;'>So</span> cardinality and participation can be expreseed using another notation called <span style='color:purple;'>(min-max) notation</span> will be discussed here later", {left: lineCardX2-325, top: lineCardY2-20+50+50+70});
+   labParticipation4.css({"font-weight": "bold", "font-size": 22});
+   labParticipation4.hide();
+
+   var ExampleLab=av.label("<span style='color:red;'>Example:</span>", {left: lineCardX2-400, top: labelTop-5 });
+   ExampleLab.css({"font-weight": "bold", "font-size": 26});
+   ExampleLab.hide();
+
+   var ExampleProbLab=av.label("Assume having a faculty database that consists of two entities one representing faculty doctors and the other representing courses they teach. In which each doctor can teach any number of courses but he may not teach any course, while each course must be teached by only one doctor at most and no course can exist without a doctor to teach it.", {left: lineCardX2-400, top: labelTop +50});
+   ExampleProbLab.css({"font-weight": "bold", "font-size": 22});
+   ExampleProbLab.hide();
+
+   var ExampleProbLabCont=av.label("<span style='color:blue;'>Draw the logical ER-Diagram</span> using the <span style='color:purple;'>chen notation</span> don't forget showing the cardinality and participation constraints. Then substitute these constraints with the corresponding <span style='color:purple;'>(min,max) notation)</span>", {left: lineCardX2-400, top: labelTop +50+165});
+   ExampleProbLabCont.css({"font-weight": "bold", "font-size": 22});
+   ExampleProbLabCont.hide();
+
+   var DocCarLine= av.g.line(LabelLeft+300,labelTop+250, lineCardX2-100,labelTop +160, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+   DocCarLine.hide();
 
    var Entity1Line=av.g.line(pX+10-60, pY,pX+10-60-101,pY, {opacity: 100, "stroke-width": 2});
    Entity1Line.hide();
@@ -61,6 +96,10 @@ $(document).ready(function() {
    ProbEx1Line1.hide();
    var ProbEx1Line2 = av.g.line(pX2+230+60, pY2-40,LabelLeft+450+300, pY2-40, {opacity: 100, "stroke-width": 2});
    ProbEx1Line2.hide();
+
+   var ProbEx1Line2Par = av.g.line(pX2+230+50, pY2-35,LabelLeft+450+300, pY2-35, {opacity: 100, "stroke-width": 2});
+   ProbEx1Line2Par.hide();
+
 
    var ProbEx1Line3 = av.g.line(LabelLeft+500,labelTop+170,LabelLeft+180,  labelTop+110, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line3.hide();
@@ -104,6 +143,8 @@ $(document).ready(function() {
    var ProbEx1Line16 = av.g.line(LabelLeft+460,labelTop+260,pX-335,pY-275, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
    ProbEx1Line16.hide();
 
+  
+
    // Slide 1
    av.umsg("");
    av.displayInit(1);
@@ -111,160 +152,49 @@ $(document).ready(function() {
 
    // Slide 2
    av.umsg("");
-   lineCard.show();
+   //lineCard.show();
    labCardinality.show();
-   av.step();
-
-   //slide 3
-   linePart.show();
    labParticipation.show();
    av.step();
 
+   //slide 3
+   //linePart.show();
+   labCardinality2.show();
+   labParticipation2.show();
+   av.step();
+
    //slide 4
-   av.umsg(interpret("What is the meaning of<span style='color:blue;'> Cardinality </span>?").bold().big());
-   lineCard.hide();
-   labCardinality.hide();
-   linePart.hide();
-   labParticipation.hide();
-   labConstraint.hide();
-   var labCardDefTitle=av.label("<span style='color:blue;'> Cardinality </span>", {left:LabelLeft, top: labelTop});
-   labCardDefTitle.css({"font-weight": "bold", "font-size": 22});
+   labCardinality3.show();
+   labParticipation3.show();
    av.step();
 
    //slide 5
-   var labCardDef1=av.label("How many <span style='color:green;'>instances</span> of an entity relate to <span style='color:green;'>one instance</span> of another entity.", {left:LabelLeft, top: labelTop+30});
-   labCardDef1.css({"font-weight": "bold", "font-size": 20});
+   labParticipation4.show();
    av.step();
 
    //slide 6
-   var labCardDef2=av.label("specify <span style='color:green;'>number of occurances</span> in relationship.", {left:LabelLeft, top: labelTop+60});
-   labCardDef2.css({"font-weight": "bold", "font-size": 20});
+   labCardinality.hide();
+   labCardinality2.hide();
+   labCardinality3.hide();
+   labParticipation.hide();
+   labParticipation2.hide();
+   labParticipation3.hide();
+   labParticipation4.hide();
+   labConstraint.hide();
+   ExampleLab.show();
+   ExampleProbLab.show();
+   ExampleProbLabCont.show();
    av.step();
 
    //slide 7
-   var labCardDef3=av.label("determines <span style='color:green;'> maximum number </span> of times an instance of one entity relate to instances of another entity.", {left:LabelLeft, top: labelTop+90});
-   labCardDef3.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 8
-   var labCardType=av.label("<span style='color:blue;'> Cardinality Types </span>", {left:LabelLeft, top: labelTop+150});
-   labCardType.css({"font-weight": "bold", "font-size": 22});
-   av.step();
-
-   //slide 9
-   var labCarType1=av.label("<span style='color:green;'>[one-to-one]</span>", {left:LabelLeft, top: labelTop+250});
-   labCarType1.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 10
-   var labCarType2=av.label("<span style='color:green;'>[one-to-many]</span>", {left:LabelLeft, top: labelTop+350});
-   labCarType2.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 11
-   var labCarType3=av.label("<span style='color:green;'>[many-to-many]</span>", {left:LabelLeft, top: labelTop+450});
-   labCarType3.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 12
-   var Entity1Rect=av.g.rect(LabelLeft+300, labelTop+350, 130, 50, {"stroke-width": 3});
-   var Entity1Lab=av.label("<span style='color:blue;'>Entity1</span>", {left:LabelLeft+330, top: labelTop+340});
-   Entity1Lab.css({"font-weight": "bold", "font-size": 20});
-   var Entity2Rect=av.g.rect(LabelLeft+750, labelTop+350, 130, 50, {"stroke-width": 3});
-   var Entity2Lab=av.label("<span style='color:blue;'>Entity2</span>", {left:LabelLeft+780, top: labelTop+340});
-   Entity2Lab.css({"font-weight": "bold", "font-size": 20});
-   var polygon = av.g.polyline([[pX+10, pY-30],
-    [pX+10+60, pY],
-    [pX+10, pY+30],
-    [pX+10-60, pY],
-    [pX+10, pY-30]],
-   {"stroke-width": 3, stroke: "black"});
-   var RelLab=av.label("<span style='color:blue;'>R</span>", {left:LabelLeft+585, top: labelTop+335});
-   RelLab.css({"font-weight": "bold", "font-size": 20});
-   var ProblemLab=av.label("<span style='color:red;'>In such relation, How to determine cardinality type</span>", {left:LabelLeft+300, top: labelTop+270});
-   ProblemLab.css({"font-weight": "bold", "font-size": 20});
-   var ProblemQmarkLab=av.label("<span style='color:red;'>??</span>", {left:LabelLeft+780, top: labelTop+230});
-   ProblemQmarkLab.css({"font-weight": "bold", "font-size": 40});
-   Entity1Line.show();
-   Entity2Line.show();
-   av.step();
-
-   //slide 13
-   ProblemLab.hide();
-   ProblemQmarkLab.hide();
-   var ProblemSolLab1=av.label("<span style='color:green;'>First,</span> You <span style='color:red;'>shouldn't</span> think about the <span style='color:blue;'>entity</span> itself</span>", {left:LabelLeft+300, top: labelTop+230});
-   ProblemSolLab1.css({"font-weight": "bold", "font-size": 20});
-   ProbSol1Line.show();
-   av.step();
-
-   //slide 14
-   ProblemSolLab1.hide();
-   Entity1Lab.hide();
-   Entity1Rect.hide();
-   Entity2Lab.hide();
-   Entity2Rect.hide();
-   ProbSol1Line.hide();
-   ProbSol2Line.show();
-   var ProblemSolLab2=av.label("<span style='color:bule;'>You <span style='color:red;'>should</span> think about <span style='color:blue;'>each instance (record)</span> inside that entity (Entity1)</span>", {left:LabelLeft+300, top: labelTop+230});
-   ProblemSolLab2.css({"font-weight": "bold", "font-size": 20});
-   var Entity1LabA=av.label("Entity1", {left:LabelLeft+155, top: labelTop+310});
-   Entity1LabA.css({"font-weight": "bold", "font-size": 20});
-   var theEntity1matrix =[["A1", "A2", "A3"],["", "", ""],["", "", ""],["", "", ""]];
-   var MatrixEntity1= av.ds.matrix(theEntity1matrix, {style: "table", top: labelTop+340, left: LabelLeft+155 });
-   MatrixEntity1._arrays[1].highlight();
-   var Entity2LabA=av.label("Entity2", {left:LabelLeft+750, top: labelTop+310});
-   Entity2LabA.css({"font-weight": "bold", "font-size": 20});
-   var theEntity2matrix =[["A1", "A2"],["", ""],["", ""],["", ""]];
-   var MatrixEntity2= av.ds.matrix(theEntity2matrix, {style: "table", top: labelTop+340, left: LabelLeft+750 });
-   av.step();
-
-   //slide 15
-   ProblemSolLab2.hide();
-   ProbSol2Line.hide();
-   ProbSol3Line.show();
-   var ProblemSolLab3=av.label("<span style='color:green;'>Second,</span> ask yourself <span style='color:red;'>what is the maximum number of instances of</span> <span style='color:blue;'>entity2</span> can be related to <span style='color:blue;'>each instance of entity1</span>", {left:LabelLeft+300, top: labelTop+230});
-   ProblemSolLab3.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 16
-   ProblemSolLab3.hide();
-   ProbSol3Line.hide();
-   ProbSol4Line.show();
-   var ProblemSolLab4=av.label("<span style='color:green;'>Third,</span> ask the same question from the other side of relation <span style='color:red;'>what is the maximum number of instances of</span> <span style='color:blue;'>entity1</span> can be related to <span style='color:blue;'>each instance of entity2</span>", {left:LabelLeft+300, top: labelTop+230});
-   ProblemSolLab4.css({"font-weight": "bold", "font-size": 20});
-   MatrixEntity1._arrays[1].unhighlight();
-   MatrixEntity2._arrays[1].highlight();
-   av.step();
-
-   //slide 17
-   av.umsg(interpret("How to <span style='color:blue;'>determine cardinality </span> of a relation?").bold().big());
-   labCardDefTitle.hide();
-   labCardDef1.hide();
-   labCardDef2.hide();
-   labCardDef3.hide();
-   labCardType.hide();
-   labCarType1.hide();
-   labCarType2.hide();
-   labCarType3.hide();
-   polygon.hide();
-   Entity1Line.hide();
-   Entity2Line.hide();
-   for(i=0;i<theEntity1matrix.length;i++)
-   MatrixEntity1._arrays[i].hide();
-   for(i=0;i<theEntity1matrix.length;i++)
-   MatrixEntity2._arrays[i].hide();
-   ProbSol4Line.hide();
-   ProblemSolLab4.hide();
-   Entity1LabA.hide();
-   Entity2LabA.hide();
-   RelLab.hide();
-   var labExample=av.label(" Assume having the below relationship <span style='color:red;'> (Has)</span> between <span style='color:blue;'> Depatment & Employee </span> entities", {left:LabelLeft, top:labelTop });
-   labExample.css({"font-weight": "bold", "font-size": 22});
+   av.umsg("Here is the doctor/course entities connected via Teach relatioship using Chen notation <br> Try to apply relationship constraints(Cardinality/Participation)".bold().big());
+   ExampleProbLab.hide();
+   ExampleProbLabCont.hide();
    var Entity1RectEx1=av.g.rect(LabelLeft+100, labelTop+40+30, 130, 50, {"stroke-width": 3});
-   var Entity1LabEx1=av.label("<span style='color:blue;'>Department</span>", {left:LabelLeft+110, top: labelTop+60});
+   var Entity1LabEx1=av.label("<span style='color:blue;'>Docotor</span>", {left:LabelLeft+125, top: labelTop+60});
    Entity1LabEx1.css({"font-weight": "bold", "font-size": 20});
    var Entity2RecEx1=av.g.rect(LabelLeft+450+300, labelTop+40+30, 130, 50, {"stroke-width": 3});
-   var Entity2LabEx1=av.label("<span style='color:blue;'>Employee</span>", {left:LabelLeft+460+300, top: labelTop+60});
+   var Entity2LabEx1=av.label("<span style='color:blue;'>Course</span>", {left:LabelLeft+460+320, top: labelTop+60});
    Entity2LabEx1.css({"font-weight": "bold", "font-size": 20});
    var polygonEx1 = av.g.polyline([[pX2+230, pY2-70],
     [pX2+230+60, pY2-40],
@@ -272,585 +202,192 @@ $(document).ready(function() {
     [pX2+230-60, pY2-40],
     [pX2+230, pY2-70]],
    {"stroke-width": 3, stroke: "black"});
-   var RelLabEx1=av.label("<span style='color:blue;'>Has</span>", {left:pX2+245-30, top: pY2-75});
+   var RelLabEx1=av.label("<span style='color:blue;'>Teach</span>", {left:pX2+245-45, top: pY2-75});
    RelLabEx1.css({"font-weight": "bold", "font-size": 20});
    ProbEx1Line1.show();
    ProbEx1Line2.show();
    av.step();
 
-   //slide 18
-   var Ex1CardLab=av.label("<span style='color:red;'>To determine cardinality Type:</span>", {left:LabelLeft, top: labelTop+120});
-   Ex1CardLab.css({"font-weight": "bold", "font-size": 20});
-   var ProblemSolEx1Lab1=av.label("<span style='color:green;'>First,</span> You <span style='color:red;'>shouldn't</span> think about the <span style='color:blue;'>Department Entity</span> itself</span>", {left:LabelLeft+110, top: labelTop+150});
-   ProblemSolEx1Lab1.css({"font-weight": "bold", "font-size": 20});
-   ProbEx1Line3.show();
+   //slide 8
+   var ExampleLabSol=av.label("<span style='color:red;'>To apply cardinality/participation constraint to <span style='color:blue;'>Doctor entity</span> first:</span>", {left: lineCardX2-400, top: labelTop+110 });
+   ExampleLabSol.css({"font-weight": "bold", "font-size": 24});
+   var ExampleLabSolCont=av.label("<span style='color:red;'>Let's check the <span style='color:blue;'>underlined statment</span> in the problem specification</span>", {left: lineCardX2-400, top: labelTop+150 });
+   ExampleLabSolCont.css({"font-weight": "bold", "font-size": 22});
    av.step();
 
-   //slide 19
-   Ex1CardLab.hide();
-   ProblemSolEx1Lab1.hide();
-   ProbEx1Line3.hide();
-   Entity1RectEx1.hide();
-   Entity1LabEx1.hide();
-   Entity2RecEx1.hide();
-   Entity2LabEx1.hide();
-   var ProblemEx1SolLab2=av.label("<span style='color:bule;'>You <span style='color:red;'>should</span> think about <span style='color:blue;'>each depatment instance (record)</span> inside Department entity</span>",  {left:LabelLeft+110, top: labelTop+250});
-   ProblemEx1SolLab2.css({"font-weight": "bold", "font-size": 20});
-   var Entity1Ex1LabA=av.label("Department", {left:LabelLeft+55, top: labelTop+30});
-   Entity1Ex1LabA.css({"font-weight": "bold", "font-size": 18});
-   var theEntity1matrixEx1 =[["DID", "Dname", "D-floor"],["A","production","3rd"],["B","sales","1st"],["C","transport","2nd"]];
-   var MatrixEntity1Ex1= av.ds.matrix(theEntity1matrixEx1, {style: "table", top: labelTop+60, left: LabelLeft-45 });
-   MatrixEntity1Ex1._arrays[1].highlight();
-   var Entity2Ex1LabA=av.label("Employee", {left:LabelLeft+800, top: labelTop+30});
-   Entity2Ex1LabA.css({"font-weight": "bold", "font-size": 18});
-   var theEntity2matrixEx1 =[["EID", "E-name"],["200", "ali"],["201", "mona"],["202","mai"]];
-   var MatrixEntity2Ex1= av.ds.matrix(theEntity2matrixEx1, {style: "table", top: labelTop+60, left: LabelLeft+750 });
-   ProbEx1Line4.show();
+   //slide 9
+   var ExampleProbLabStat=av.label("Assume having a faculty database that consists of two entities one representing faculty doctors and the other representing courses they teach. In which <u>each doctor can teach any number of courses but he may not teach any course,</u> while each course must be teached by only one doctor at most and no course can exist without a doctor to teach it.", {left: lineCardX2-400, top: labelTop +200});
+   ExampleProbLabStat.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
-   // slide 20
-   ProblemEx1SolLab2.hide();
-   var ProblemEx1SolLab3=av.label("<span style='color:green;'>Second,</span> ask yourself <span style='color:red;'>How many employees can production department have? (one or more)</span>",{left:LabelLeft+110, top: labelTop+250});
-   ProblemEx1SolLab3.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab3Cont1=av.label("<span style='color:green;'>OR",{left:LabelLeft+530, top: labelTop+290});
-   ProblemEx1SolLab3Cont1.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab3Cont2=av.label("ask yourself <span style='color:red;'>What is the maximum number of employees can production department have?</span>",{left:LabelLeft+110, top: labelTop+350});
-   ProblemEx1SolLab3Cont2.css({"font-weight": "bold", "font-size": 20});
+   //slide 10
+   ExampleLabSol.hide();
+   ExampleLabSolCont.hide();
+   ExampleProbLabStat.hide();
+   var ExampleLabSolAns=av.label("<span style='color:red;'>This means that: </span>", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabSolAns.css({"font-weight": "bold", "font-size": 22});
+   var ExampleProbLabStatP1=av.label("<u>each doctor can teach <span style='color:blue;'>(any number)</span> of courses</u> but he may not teach any course", {left: lineCardX2-400, top: labelTop +110});
+   ExampleProbLabStatP1.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
-   //slide 21
-   ProblemEx1SolLab3.hide();
-   ProblemEx1SolLab3Cont1.hide();
-   ProblemEx1SolLab3Cont2.hide();
-   var ProblemEx1SolLab4=av.label("<span style='color:green;'>The answer is</span> <span style='color:red;'>*many* </span>",{left:LabelLeft+110, top: labelTop+240});
-   ProblemEx1SolLab4.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab5=av.label("<span style='color:green;'>Because:</span> Because the <span style='color:red;'>production department</span> can have any number of employee one or more",{left:LabelLeft+110, top: labelTop+265});
-   ProblemEx1SolLab5.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab6=av.label("<span style='color:green;'>Note:</span> the same is for all other departments",{left:LabelLeft+110, top: labelTop+290});
-   ProblemEx1SolLab6.css({"font-weight": "bold", "font-size": 20});
+   //slide 11
+   DocCarLine.show();
+   var ExampleLabSolAnsMode=av.label("<span style='color:red;'>This means that:</span> each doctor instance in the doctor entity can teach many courses at the same time <span style='color:blue;'>=</span> (M) courses <span style='color:blue;'>=</span> max. of relation <span style='color:blue;'>=</span> <span style='color:red;'>Doctors cardinality</span>", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabSolAnsMode.css({"font-weight": "bold", "font-size": 22});
    av.step();
 
-   //slide 22
-   ProblemEx1SolLab4.hide();
-   ProblemEx1SolLab5.hide();
-   ProblemEx1SolLab6.hide();
-   ProbEx1Line4.hide();
-   var ProblemEx1SolLab7=av.label("<span style='color:green;'>Then</span> you should put the (many) sign<span style='color:red;'> (M)</span> beside employee table",{left:LabelLeft+110, top: labelTop+240});
-   ProblemEx1SolLab7.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab8=av.label("<span style='color:green;'>Because:</span> the production department can have <span style='color:red;'>many </span> employees",{left:LabelLeft+110, top: labelTop+265});
-   ProblemEx1SolLab8.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab9=av.label("<span style='color:red;'>M</span>",{left:LabelLeft+710 , top: labelTop+50});
-   ProblemEx1SolLab9.css({"font-weight": "bold", "font-size": 22});
-   ProbEx1Line5.show();
-   av.step();
-
-   //slide 23
-   ProblemEx1SolLab7.hide();
-   ProblemEx1SolLab8.hide();
-   ProbEx1Line5.hide();
-   var ProblemEx1SolLab10=av.label("<span style='color:green;'>Third,</span> ask yourself <span style='color:red;'>How many departments can employee ali works at? (one or more)</span>",{left:LabelLeft+110, top: labelTop+250});
-   ProblemEx1SolLab10.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab10Cont=av.label("<span style='color:green;'>OR",{left:LabelLeft+530, top: labelTop+290});
-   ProblemEx1SolLab10Cont.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab10Cont2=av.label("ask yourself <span style='color:red;'>What is the maximum number of departments can employee ali works at it?</span>",{left:LabelLeft+110, top: labelTop+350});
-   ProblemEx1SolLab10Cont2.css({"font-weight": "bold", "font-size": 20});
-   MatrixEntity1Ex1._arrays[1].unhighlight();
-   MatrixEntity2Ex1._arrays[1].highlight();
-   ProbEx1Line6.show();
-   av.step();
-
-   //slide 24
-   ProblemEx1SolLab10.hide();
-   ProblemEx1SolLab10Cont.hide();
-   ProblemEx1SolLab10Cont2.hide();
-   var ProblemEx1SolLab11=av.label("<span style='color:green;'>The answer is</span> <span style='color:red;'>*one* </span>",{left:LabelLeft+110, top: labelTop+240});
-   ProblemEx1SolLab11.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab12=av.label("<span style='color:green;'>Because:</span> <span style='color:red;'>employee ali </span> can belongs to (works at) only one department at maximum",{left:LabelLeft+110, top: labelTop+265});
-   ProblemEx1SolLab12.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab13=av.label("<span style='color:green;'>Note:</span> the same is for all other employees, each employee cann't work for more than one depatment",{left:LabelLeft+110, top: labelTop+290});
-   ProblemEx1SolLab13.css({"font-weight": "bold", "font-size": 20});
-   ProbEx1Line6.hide();
-   ProbEx1Line8.show();
-   av.step();
-
-   //slide 25
-   ProbEx1Line8.hide();
-   ProblemEx1SolLab11.hide();
-   ProblemEx1SolLab12.hide();
-   ProblemEx1SolLab13.hide();
-   ProbEx1Line6.hide();
-   var ProblemEx1SolLab14=av.label("<span style='color:green;'>Then</span> you should put the (one) sign<span style='color:red;'> (1)</span> beside department table",{left:LabelLeft+110, top: labelTop+240});
-   ProblemEx1SolLab14.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab15=av.label("<span style='color:red;'>1</span>",{left:pX-335 , top:labelTop+50});
-   ProblemEx1SolLab15.css({"font-weight": "bold", "font-size": 22});
-   ProbEx1Line7.show();
-   av.step();
-
-   //slide 26
-   ProblemEx1SolLab14.hide();
-   ProbEx1Line7.hide();
-   var ProblemEx1SolLab16=av.label("<span style='color:Red;'>Finally:</span> It is a<span style='color:red;'> [one-to-many]</span> relationship",{left:LabelLeft+110, top: labelTop+240});
-   ProblemEx1SolLab16.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 27
-   ProblemEx1SolLab16.hide();
-   var labExample2=av.label("Here is an example to demonstrate <span style='color:red;'> [one-to-one]</span> relationship", {left:LabelLeft, top:labelTop });
-   labExample2.css({"font-weight": "bold", "font-size": 22});
-   labExample.hide();
-   ProblemEx1SolLab15.hide();
-   ProblemEx1SolLab9.hide();
-   for(i=0;i<theEntity1matrixEx1.length;i++)
-   MatrixEntity1Ex1._arrays[i].hide();
-   for(i=0;i<theEntity2matrixEx1.length;i++)
-   MatrixEntity2Ex1._arrays[i].hide();
-   Entity1Ex1LabA.hide();
-   Entity2Ex1LabA.hide();
-   RelLabEx1.hide();
-   var RelLabEx2=av.label("<span style='color:blue;'>Marry</span>", {left:pX2+245-40, top: pY2-75});
-   RelLabEx2.css({"font-weight": "bold", "font-size": 20});
-   var Entity1RectEx2=av.g.rect(LabelLeft+100, labelTop+40+30, 130, 50, {"stroke-width": 3});
-   var Entity1LabEx2=av.label("<span style='color:blue;'>Male</span>", {left:LabelLeft+140, top: labelTop+60});
-   Entity1LabEx2.css({"font-weight": "bold", "font-size": 20});
-   var Entity2RecEx2=av.g.rect(LabelLeft+450+300, labelTop+40+30, 130, 50, {"stroke-width": 3});
-   var Entity2LabEx2=av.label("<span style='color:blue;'>Female</span>", {left:LabelLeft+460+320, top: labelTop+60});
-   Entity2LabEx2.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab17=av.label("<span style='color:Red;'>Determining cardinality  </span> of the [Marry] relationship",{left:LabelLeft+110, top: labelTop+170});
-   ProblemEx1SolLab17.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 28
-   var ProblemEx1SolLab18=av.label("<span style='color:Red;'>AS</span>",{left:LabelLeft+110, top: labelTop+200});
-   ProblemEx1SolLab18.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab19=av.label("every <span style='color:Red;'>male</span> in the male entity can <span style='color:Red;'>at maximum marry only one of the females</span> in the female entity",{left:LabelLeft+110, top: labelTop+250});
-   ProblemEx1SolLab19.css({"font-weight": "bold", "font-size": 20});
-   ProbEx1Line13.show();
-   av.step();
-
-   //slide 29
-   ProblemEx1SolLab17.hide();
-   ProblemEx1SolLab18.hide();
-   ProblemEx1SolLab19.hide();
-   var ProblemEx1SolLab19=av.label("<span style='color:green;'>So</span>",{left:LabelLeft+110, top: labelTop+180});
-   ProblemEx1SolLab19.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx1SolLab20=av.label(" A <span style='color:Red;'> [1] sign</span> should be put beside the female entity to denote that <span style='color:Red;'> cardinality ratio</span>",{left:LabelLeft+110, top: labelTop+230});
-   ProblemEx1SolLab20.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx2SolLab9=av.label("<span style='color:red;'>1</span>",{left:LabelLeft+710 , top: labelTop+50});
-   ProblemEx2SolLab9.css({"font-weight": "bold", "font-size": 22});
-   ProbEx1Line9.show();
-   ProbEx1Line13.hide();
-   av.step();
-
-   //slide 30
-   ProblemEx1SolLab19.hide();
-   ProblemEx1SolLab20.hide();
-   ProbEx1Line9.hide();
-   var ProblemEx1SolLab21=av.label("<span style='color:green;'>The other side of females</span> is the same case, every female can only get married from one male at maximum in the same time",{left:LabelLeft+110, top: labelTop+180});
-   ProblemEx1SolLab21.css({"font-weight": "bold", "font-size": 24});
-   ProbEx1Line14.show();
-   av.step();
-
-   //slide 31
-   ProbEx1Line14.hide();
-   ProblemEx1SolLab21.hide();
-   var ProblemEx1SolLab22=av.label(" A <span style='color:Red;'> [1] sign</span> should be put beside the male entity to denote that relation",{left:LabelLeft+110, top: labelTop+230});
-   ProblemEx1SolLab22.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx1SolLab23=av.label("<span style='color:red;'>1</span>",{left:LabelLeft+240 , top: labelTop+50});
-   ProblemEx1SolLab23.css({"font-weight": "bold", "font-size": 22});
-   ProbEx1Line10.show();
-   av.step();
-
-   //slide 32
-   ProblemEx1SolLab22.hide();
-   ProblemEx1SolLab23.hide();
-   ProbEx1Line10.hide();
-   RelLabEx2.hide();
-   labExample2.hide();
-   Entity1LabEx2.hide();
-   Entity2LabEx2.hide();
-   ProblemEx2SolLab9.hide();
-   var labExample3=av.label("Example for demonstrating the last cardinality type <span style='color:red;'> [many-to-many]</span> relationship", {left:LabelLeft, top:labelTop });
-   labExample3.css({"font-weight": "bold", "font-size": 22});
-   var RelLabEx3=av.label("<span style='color:blue;'>Works at</span>", {left:pX2+245-55, top: pY2-75});
-   RelLabEx3.css({"font-weight": "bold", "font-size": 20});
-   var Entity1LabEx3=av.label("<span style='color:blue;'>employee</span>", {left:LabelLeft+120, top: labelTop+60});
-   Entity1LabEx3.css({"font-weight": "bold", "font-size": 20});
-   var Entity2LabEx3=av.label("<span style='color:blue;'>project</span>", {left:LabelLeft+460+320, top: labelTop+60});
-   Entity2LabEx3.css({"font-weight": "bold", "font-size": 20});
-   av.step();
-
-   //slide 33
-   var ProblemEx1SolLab24=av.label("<span style='color:green;'>AS</span>",{left:LabelLeft+110, top: labelTop+180});
-   ProblemEx1SolLab24.css({"font-weight": "bold", "font-size": 26});
-   var ProblemEx1SolLab25=av.label("every <span style='color:Red;'>employee</span> in the employee entity can work at <span style='color:Red;'>many projects</span> at the  <span style='color:Red;'>same time</span>",{left:LabelLeft+110, top: labelTop+230});
-   ProblemEx1SolLab25.css({"font-weight": "bold", "font-size": 20});
-   ProbEx1Line12.show();
-   av.step();
-
-   // slide 34
-   ProblemEx1SolLab24.hide();
-   ProblemEx1SolLab25.hide();
-   var ProblemEx3SolLab1=av.label("<span style='color:green;'>So</span>",{left:LabelLeft+110, top: labelTop+180});
-   ProblemEx3SolLab1.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx3SolLab2=av.label(" A <span style='color:Red;'> [M] sign</span> should be put beside the project entity to denote that relation",{left:LabelLeft+110, top: labelTop+230});
-   ProblemEx3SolLab2.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx3SolLab3=av.label("<span style='color:red;'>M</span>",{left:LabelLeft+710 , top: labelTop+50});
-   ProblemEx3SolLab3.css({"font-weight": "bold", "font-size": 22});
-   ProbEx1Line11.show();
-   ProbEx1Line12.hide();
-   av.step();
-
-   //slide 35
-   ProblemEx3SolLab1.hide();
-   ProblemEx3SolLab2.hide();
-   ProblemEx3SolLab3.hide();
-   ProbEx1Line11.hide();
-   var ProblemEx3SolLab4=av.label("<span style='color:green;'>Also</span> <span style='color:red;'>every project</span> in the project entity can has <span style='color:red;'>a lot of employees</span> working at it simultaneously",{left:LabelLeft+110, top: labelTop+180});
-   ProblemEx3SolLab4.css({"font-weight": "bold", "font-size": 24});
-   ProbEx1Line15.show();
-   av.step();
-
-   //slide 36
-   ProblemEx3SolLab4.hide();
-   ProbEx1Line15.hide();
-   var ProblemEx3SolLab5=av.label("<span style='color:green;'>So</span>",{left:LabelLeft+110, top: labelTop+180});
-   ProblemEx3SolLab5.css({"font-weight": "bold", "font-size": 24});
-   var ProblemEx3SolLab6=av.label(" A <span style='color:Red;'> [M] sign</span> should be put beside the <span style='color:Red;'> employee entity</span> to denote that cardinality ratio",{left:LabelLeft+110, top: labelTop+230});
-   ProblemEx3SolLab6.css({"font-weight": "bold", "font-size": 20});
-   var ProblemEx3SolLab7=av.label("<span style='color:red;'>M</span>",{left:LabelLeft+240 , top: labelTop+50});
-   ProblemEx3SolLab7.css({"font-weight": "bold", "font-size": 22});
-   ProbEx1Line16.show();
-   av.recorded();
-
-  
-
-  /*//slide 3
-  av.umsg(interpret("Here is the chen's relation symbol").bold().big());
-  var LabRSym=av.label(interpret("(opt) <span style='color:green;'> one-to-one</span> (man) "), {left: LabelLeft-30, top: pY-50 });
-  LabRSym.css({"font-weight": "bold", "font-size": 20});
-  var polygon = av.g.polyline([[pX+10, pY-30],
-   [pX+10+60, pY],
-   [pX+10, pY+30],
-   [pX+10-60, pY],
-   [pX+10, pY-30]],
-  {"stroke-width": 3, stroke: "black"});
-  var Relchenlab=av.label(interpret("<span style='color:blue;'> R </span>"), {left: pX+10-20, top:pY-35 });
-  Relchenlab.css({"font-weight": "bold", "font-size": 20});
-  otochenLft.movePoints([[0,pX+10-120,pY],[1,pX+10-60, pY]]);
-  otochenRht.movePoints([[0,pX+7+60, pY-2],[1,pX+70+60,pY-2]]);
-  otochenRht2.movePoints([[0,pX+7+60, pY+2],[1,pX+70+60,pY+2]]);
-  otochenLft.show();
-  otochenRht.show();
-  otochenRht2.show();
-  var otolabL=av.label(interpret("<span style='color:blue;'> 1 </span>"), {left: pX+110-20, top:pY-40 });
-  var otolabR=av.label(interpret("<span style='color:blue;'> 1 </span>"), {left: pX+10-20-90, top:pY-40 });
-  av.step();
-
-  //slide 4
-  var RelMinlab=av.label(interpret("<span style='color:blue;'> R </span>"), {left: pX+270-20, top:pY-50 });
-  RelMinlab.css({"font-weight": "bold", "font-size": 20});
-  otoMinLft.movePoints([[0,pX+45+120,pY],[1,pX+80+300, pY]]);
-  var otolabL1=av.label(interpret("<span style='color:blue;'> (0,1) </span>"), {left: pX+47+120, top:pY-40 });
-  var otolabR1=av.label(interpret("<span style='color:blue;'> (1,1) </span>"), {left: pX+30+300, top:pY-40 });
-  otoMinLft.show();
-  av.step();
-
-  //slide 5
-  var RelCrowslab=av.label(interpret("<span style='color:blue;'> R </span>"), {left: pX+345+200-20, top:pY-50 });
-  RelCrowslab.css({"font-weight": "bold", "font-size": 20});
-  otoCrowsLft.movePoints([[0,pX+75+360,pY],[1,pX+75+580, pY]]);
-  CrowsoneLft.movePoints([[0,pX+90+360,pY-10],[1,pX+90+360, pY+10]]);
-  CrowsoneRyt.movePoints([[0,pX+60+580,pY-10],[1,pX+60+580, pY+10]]);
-  CrowsoneLft.show();
-  CrowsoneRyt.show();
-  CrowsoneLft1.movePoints([[0,pX+95+360,pY-10],[1,pX+95+360, pY+10]]);
-  CrowsoneRyt1.movePoints([[0,pX+55+580,pY-10],[1,pX+55+580, pY+10]]);
-  CrowsoneLft1.show();
-  CrowsoneRyt1.show();
-  otoCrowsLft.show();
-  av.recorded();*/
-
-  /*//slide 3
-  av.umsg(interpret("Here is the coresponding crow's foot relation symbol").bold().big());
-  var Relcrowslab=av.label(interpret("<span style='color:red;'> R </span>"), {left: LabelLeft+(NotationHorGaps*colNo)+100, top:pY-50 });
-  Relcrowslab.css({"font-weight": "bold", "font-size": 20});
-  RelLine.show();
-  av.step();
-
-  //slide 4
-  av.umsg(interpret("Here is the coresponding crow's foot relation symbol").bold().big());
-  var LabEnSym=av.label(interpret("<span style='color:green;'> Entity Symbol </span>"), {left: LabelLeft, top: (pY-50)+(NotationVerGaps*rowNo) });
-  LabEnSym.css({"font-weight": "bold", "font-size": 20});
-  var EntityChenRec=av.g.rect(pX-60, (pY-30)+(NotationVerGaps*rowNo), 120, 40, {"stroke-width": 3});
-  var labEnChen=av.label(interpret("<span style='color:blue;'>E-name</span>"), {left: pX-45, top:(pY-45)+(NotationVerGaps*rowNo)});
-  labEnChen.css({"font-weight": "bold", "font-size": 20});
-  av.step();
-
-  //slide 5
-  av.umsg(interpret("Here is the coresponding crow's foot relation symbol").bold().big());
-  colNo=3;
-  var EntityCrowRec=av.g.rect(LabelLeft+(NotationHorGaps*2)+50, (pY-30)+(NotationVerGaps*rowNo), 120, 40, {"stroke-width": 3});
-  var labEnCrows=av.label(interpret("<span style='color:red;'>E-name</span>"), {left: LabelLeft+(NotationHorGaps*2)+65, top:(pY-45)+(NotationVerGaps*rowNo)});
-  labEnCrows.css({"font-weight": "bold", "font-size": 20});
-  av.step();
-
-  //slide 6
-  av.umsg(interpret("Here is the coresponding crow's foot relation symbol").bold().big());
-  rowNo=2;
-  colNo=2;
-  var LabAttSym=av.label(interpret("<span style='color:green;'> Attribute Symbol </span>"), {left: LabelLeft, top: (pY-50)+(NotationVerGaps*rowNo) });
-  LabAttSym.css({"font-weight": "bold", "font-size": 20});
-  var Attellipse =av.g.ellipse(pX,(pY-10)+(NotationVerGaps*rowNo) ,70 ,25, {"stroke-width": 3});
-  var AttChenLab=av.label(interpret("<span style='color:blue;'>Att-1</span>"), {left: pX-30, top:(pY-45)+(NotationVerGaps*rowNo)});
-  AttChenLab.css({"font-weight": "bold", "font-size": 20});
-  av.step();
-
-  //slide 7
-  av.umsg(interpret("Here is the coresponding crow's foot relation symbol").bold().big());
-  colNo=3;
-  var EntityChenRecAtt=av.g.rect(LabelLeft+(NotationHorGaps*2)+50, (pY-50)+(NotationVerGaps*rowNo), 120, 110, {"stroke-width": 3});
-  var EntityChenRecAtt2=av.g.rect(LabelLeft+(NotationHorGaps*2)+50, (pY-50)+(NotationVerGaps*rowNo), 120, 40, {"stroke-width": 3});
-  var AttCrowsLab=av.label(interpret("<span style='color:red;'>Entity</span>"), {left: LabelLeft+(NotationHorGaps*2)+80, top:(pY-65)+(NotationVerGaps*rowNo)});
-  AttCrowsLab.css({"font-weight": "bold", "font-size": 20});
-  var AttCrowsLab1=av.label(interpret("<span style='color:red;'>Att-1</span>"), {left: LabelLeft+(NotationHorGaps*2)+60, top:(pY-30)+(NotationVerGaps*rowNo)});
-  AttCrowsLab1.css({"font-weight": "bold", "font-size": 18});
-  var AttCrowsLab2=av.label(interpret("<span style='color:red;'>Att-2</span>"), {left: LabelLeft+(NotationHorGaps*2)+60, top:(pY-10)+(NotationVerGaps*rowNo)});
-  AttCrowsLab2.css({"font-weight": "bold", "font-size": 18});
-  var AttCrowsLab3=av.label(interpret("<span style='color:red;'>Att-3</span>"), {left: LabelLeft+(NotationHorGaps*2)+60, top:(pY+10)+(NotationVerGaps*rowNo)});
-  AttCrowsLab3.css({"font-weight": "bold", "font-size": 18});
-  av.step();
-
-  //slide 8
-  av.umsg(interpret("Here is the coresponding crow's foot relation symbol").bold().big());
-  rowNo=3;
-  colNo=2;
-  var LabPkSym=av.label(interpret("<span style='color:green;'> Primary Key Symbol </span>"), {left: LabelLeft, top: (pY-50)+(NotationVerGaps*rowNo) });
-  LabPkSym.css({"font-weight": "bold", "font-size": 20});
-  var PKAttellipse =av.g.ellipse(pX,(pY-10)+(NotationVerGaps*rowNo) ,70 ,25, {"stroke-width": 3});
-  var PKAttChenLab=av.label(interpret("<span style='color:blue;'>Attribute</span>"), {left: pX-40, top:(pY-45)+(NotationVerGaps*rowNo)});
-  PKAttChenLab.css({"font-weight": "bold", "font-size": 18});
-  PKAttLine.movePoints([[0,pX-35, (pY)+(NotationVerGaps*rowNo)],[1, pX+50,(pY)+(NotationVerGaps*rowNo)]]);
-  PKAttLine.show();
-  av.step();
-
-  //slide 9
-  av.umsg(interpret("Here is the coresponding crow's foot relation symbol").bold().big());
-  colNo=3;
-  var PkAttCrowRec=av.g.rect(LabelLeft+(NotationHorGaps*2)+50, (pY-50)+(NotationVerGaps*rowNo)+30, 120, 125, {"stroke-width": 3});
-  var PkAttCrowRec2=av.g.rect(LabelLeft+(NotationHorGaps*2)+50, (pY-50)+(NotationVerGaps*rowNo)+30, 120, 30, {"stroke-width": 3});
-  var PkAttCrowRec3=av.g.rect(LabelLeft+(NotationHorGaps*2)+50, (pY-50)+(NotationVerGaps*rowNo)+30+30, 120, 30, {"stroke-width": 3});
-  var AttCrowsLab7=av.label(interpret("<span style='color:red;'>Entity</span>"), {left: LabelLeft+(NotationHorGaps*2)+80, top:(pY-65)+(NotationVerGaps*rowNo)+30});
-  AttCrowsLab7.css({"font-weight": "bold", "font-size": 20});
-  var AttCrowsLab4=av.label(interpret("<span style='color:red;'>Att-1</span>"), {left: LabelLeft+(NotationHorGaps*2)+85, top:(pY-30)+(NotationVerGaps*rowNo)+20});
-  AttCrowsLab4.css({"font-weight": "bold", "font-size": 18});
-  var AttCrowsLab5=av.label(interpret("<span style='color:red;'>Att-2</span>"), {left: LabelLeft+(NotationHorGaps*2)+85, top:(pY-10)+(NotationVerGaps*rowNo)+30});
-  AttCrowsLab5.css({"font-weight": "bold", "font-size": 18});
-  var AttCrowsLab6=av.label(interpret("<span style='color:red;'>Att-3</span>"), {left: LabelLeft+(NotationHorGaps*2)+85, top:(pY+10)+(NotationVerGaps*rowNo)+30});
-  AttCrowsLab6.css({"font-weight": "bold", "font-size": 18});
-  PKLineCrows.movePoints([[0, LabelLeft+(NotationHorGaps*2)+85, (pY-30)+(NotationVerGaps*rowNo)+63], [1, LabelLeft+(NotationHorGaps*2)+140, (pY-30)+(NotationVerGaps*rowNo)+63]]);
-  PKLineTableCrows.movePoints([[0,LabelLeft+(NotationHorGaps*2)+80,(pY-50)+(NotationVerGaps*rowNo)+60],[1,LabelLeft+(NotationHorGaps*2)+80,(pY-50)+(NotationVerGaps*rowNo)+155]]);
-  PKLineCrows.show();
-  PKLineTableCrows.show();
-  var PKcrowsLab=av.label(interpret("<span style='color:red;'>PK</span>"), {left: LabelLeft+(NotationHorGaps*2)+50, top:(pY-30)+(NotationVerGaps*rowNo)+30});
-  PKcrowsLab.css({"font-weight": "bold", "font-size": 14});
-  av.step();
-
-  //slide 10
-  LabRSym.hide();
- Relchenlab.hide();
-  Relcrowslab.hide();
- RelLine.hide();
-  LabEnSym.hide();
-  EntityChenRec.hide();
-  EntityCrowRec.hide();
-  polygon.hide();
- labEnChen.hide();
-  labEnCrows.hide();
-  LabAttSym.hide();
- AttChenLab.hide();
-  AttCrowsLab.hide();
-  AttCrowsLab1.hide();
-  AttCrowsLab2.hide();
-  AttCrowsLab3.hide();
-  AttCrowsLab4.hide();
-  AttCrowsLab5.hide();
-  AttCrowsLab6.hide();
-  AttCrowsLab7.hide();
-  Attellipse.hide();
-  PKAttellipse.hide();
-  LabPkSym.hide();
-  EntityChenRecAtt.hide();
-  EntityChenRecAtt2.hide();
-  PkAttCrowRec.hide();
-  PkAttCrowRec2.hide();
-  PkAttCrowRec3.hide();
-  PKAttChenLab.hide();
-  PKAttLine.hide();
-  PKLineCrows.hide();
-  PKLineTableCrows.hide();
-  PKcrowsLab.hide();
-  labChen.hide();
-  labCrows.hide();
-  var ProblemLab=av.label(interpret("<span style='color:green;'> Assume Having two entities one representing student with his name, id and birthdate while the other representing courses studied by each student, course detailes are code, name and hours, Draw two ER-diagrams for this relation one using chen model and another using crow's foot notation do not forget showing the corresponding physical schema diagram </span>"), {left: LabelLeft-20, top: pY-60 });
-  ProblemLab.css({"font-weight": "bold", "font-size": 20});
-  //av.umsg(interpret("Assume Having two entities one representing student with his name, id and birthdate while the other representing courses studied by each student, course detailes are code, name and hours, Draw two ER-diagrams for this relation one using chen model and another using crow's foot notation o not forget showing the corresponding physical schema diagram").bold().big());
-  av.step();
-
-//slide 11
-ProblemLab.hide();
-colNo=2;
-var LabelLeftChen=LabelLeft;
-var NotationHorGapsChen=NotationHorGaps+280;
-labChen=av.label(interpret("<span style='color:blue;'> Chen Notation </span>"), {left: LabelLeftChen+100, top: labelTop });
-labChen.css({"font-weight": "bold", "font-size": 20});
-
-av.umsg(interpret("Here is the Student entity representation using Chen notation").bold().big());
-var EntityChenRecStu=av.g.rect(LabelLeftChen-70, pY+115 , 120, 40, {"stroke-width": 3});
-   var StudEntLab=av.label(interpret("<span style='color:blue;'> Student </span>"), {left: LabelLeftChen-60, top:pY+100 });
-   StudEntLab.css({"font-weight": "bold", "font-size": 20});
-av.step();
-
-//slide 12
-av.umsg(interpret("Adding attributes name, ID and birthdate to student entity").bold().big());
-var StdId =av.g.ellipse(LabelLeftChen-35,pY ,60 ,25, {"stroke-width": 3});
-   var StdIdLab=av.label(interpret("<span style='color:blue;'> SID </span>"), {left: LabelLeftChen-60, top:pY-30});
-   sidLine.movePoints([[0,LabelLeftChen-30,pY+115],[1,LabelLeftChen-60,pY+25]]);
-   sidLine.show();
-   var StdName =av.g.ellipse(LabelLeftChen+20,pY+60 ,60 ,25, {"stroke-width": 3});
-   var StdNameLab=av.label(interpret("<span style='color:blue;'> Sname </span>"), {left: LabelLeftChen-10, top:pY+30 });
-   snameLine.movePoints([[0,LabelLeftChen+10,pY+115],[1,LabelLeftChen+20,pY+60+25]]);
-   snameLine.show();
-   var StdBdate =av.g.ellipse(LabelLeftChen+120,pY ,60 ,25, {"stroke-width": 3});
-   var StdBdateLab=av.label(interpret("<span style='color:blue;'> B-date </span>"), {left: LabelLeftChen+90, top:pY-30});
-   sbdateLine.movePoints([[0,LabelLeftChen+40,pY+115],[1,LabelLeftChen+120,pY+25]]);
-   sbdateLine.show();
+   //slide 12
+   DocCarLine.hide();
+   DocCarLine.movePoints([[0,LabelLeft+300,labelTop+280],[1,LabelLeft+450+270, pY2-40]]);
+   DocCarLine.show();
+   var ExampleMsign=av.label("<span style='color:red;'>M</span>", {left: LabelLeft+450+260, top:pY2-85 });
+   ExampleMsign.css({"font-weight": "bold", "font-size": 20});
+   ExampleLabSolAns.hide();
+   ExampleLabSolAnsMode.hide();
+   ExampleProbLabStatP1.hide();
+   var ExampleLabSolAnsRep=av.label("<span style='color:red;'>To represent Doctor entity cadinality:</span> put (M) sign beside courses entity", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabSolAnsRep.css({"font-weight": "bold", "font-size": 22});
    av.step();
 
    //slide 13
-   av.umsg(interpret("Here is the corresponding Student entity representation in crow's foot notation").bold().big());
-   labCrows=av.label(interpret("<span style='color:red;'> Crow’s Foot Notation </span>"), {left: LabelLeftChen+NotationHorGapsChen, top:labelTop });
-   labCrows.css({"font-weight": "bold", "font-size": 20});
-   var CrowRecStd1=av.g.rect(LabelLeft+(NotationHorGaps*2)-80, (pY-50)+(NotationVerGaps*rowNo)-220, 120, 125, {"stroke-width": 3});
-  var CrowRecStd2=av.g.rect(LabelLeft+(NotationHorGaps*2)-80, (pY-50)+(NotationVerGaps*rowNo)-220, 120, 30, {"stroke-width": 3});
-  var CrowRecStd3=av.g.rect(LabelLeft+(NotationHorGaps*2)-80, (pY-50)+(NotationVerGaps*rowNo)-220+30, 120, 30, {"stroke-width": 3});
-  var stdCrowlab=av.label(interpret("<span style='color:red;'>Student</span>"), {left: LabelLeft+(NotationHorGaps*2)+65-130, top:(pY-65)+(NotationVerGaps*rowNo)+25-250});
-  stdCrowlab.css({"font-weight": "bold", "font-size": 20});
-  PKLineTableCrows.movePoints([[0,LabelLeft+(NotationHorGaps*2)+80-130,(pY-50)+(NotationVerGaps*rowNo)+60-250],[1,LabelLeft+(NotationHorGaps*2)+80-130,(pY-50)+(NotationVerGaps*rowNo)+155-250]]);
-  PKLineTableCrows.show();
-  av.step();
+   ExampleLabSolAnsRep.hide();
+   var ExampleProbLabStatP2=av.label("each doctor can teach <span style='color:blue;'>(any number)</span> of courses but <u>he may not teach any course</u>", {left: lineCardX2-400, top: labelTop +110});
+   ExampleProbLabStatP2.css({"font-weight": "bold", "font-size": 20});
+   DocCarLine.hide();
+   DocCarLine.movePoints([[0,LabelLeft+250,labelTop+270],[1,lineCardX2+200,labelTop +160]]);
+   DocCarLine.show();
+   var ExampleLabDocPar=av.label("<span style='color:red;'>By looking at the rest of the problem statement: </span>", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabDocPar.css({"font-weight": "bold", "font-size": 22});
+   av.step();
 
-  //slide 14
-  av.umsg(interpret("Then adding attributes to student entity using crow's foot notation").bold().big());
-  var sidCrowLab=av.label(interpret("<span style='color:red;'>SID</span>"), {left: LabelLeft+(NotationHorGaps*2)+85-130, top:(pY-30)+(NotationVerGaps*rowNo)+20-250});
-  sidCrowLab.css({"font-weight": "bold", "font-size": 18});
-  var snameCrowLab=av.label(interpret("<span style='color:red;'>Sname</span>"), {left: LabelLeft+(NotationHorGaps*2)+85-130, top:(pY-10)+(NotationVerGaps*rowNo)+30-250});
-  snameCrowLab.css({"font-weight": "bold", "font-size": 18});
-  var sbdateCrowLab=av.label(interpret("<span style='color:red;'>B-date</span>"), {left: LabelLeft+(NotationHorGaps*2)+85-130, top:(pY+10)+(NotationVerGaps*rowNo)+30-250});
-  sbdateCrowLab.css({"font-weight": "bold", "font-size": 18});
-  av.step();
+   //slide 14
+   ExampleLabDocPar.hide();
+   var ExampleLabDocParCont=av.label("<span style='color:red;'>By looking at the rest of the problem statement:</span> It means that doctor's entity may has some doctors who don't teach any courses", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabDocParCont.css({"font-weight": "bold", "font-size": 22});
+   av.step();
 
-  //slide 15
-  av.umsg(interpret("Now, representing course entity with its attributes using chen notation").bold().big());
-  var EntityChenRecCor=av.g.rect(pX-90, pY-35+150, 120, 40, {"stroke-width": 3});
-   var CorEntLab=av.label(interpret("<span style='color:blue;'> Course </span>"), {left: pX-75, top:pY-50+150 });
-   CorEntLab.css({"font-weight": "bold", "font-size": 20});
-   var CorCode =av.g.ellipse(pX-110,pY-35+50 ,60 ,25, {"stroke-width": 3});
-   var CorCodeLab=av.label(interpret("<span style='color:blue;'> Code </span>"), {left: pX-140, top:pY-35+20 });
-   ccodeLine.movePoints([[0,pX-80,pY-35+150],[1,pX-120,pY-35+50+25 ]]);
-   ccodeLine.show();
-   var CorName =av.g.ellipse(pX-90+60,pY-35+100 ,60 ,25, {"stroke-width": 3});
-   var CorNameLab=av.label(interpret("<span style='color:blue;'> Cname </span>"), {left: pX-90+30, top:pY-35+70 });
-   cnameLine.movePoints([[0,pX-30,pY-35+150],[1,pX-90+60,pY-35+100+25]]);
-   cnameLine.show();
-   var CorHours =av.g.ellipse(pX-70+110,pY-35+50 ,60 ,25, {"stroke-width": 3});
-   var CorHoursLab=av.label(interpret("<span style='color:blue;'> Hours </span>"), {left: pX-70+80, top:pY-35+20 });
-   choursLine.movePoints([[0,pX+10,pY-35+150],[1,pX-70+130,pY-35+50+25]]);
-   choursLine.show();
+   //slide 15
+   var ExampleLabDocParnext=av.label("<span style='color:red;'>(i.e.,):</span> doctor can teach no courses <span style='color:blue;'>=</span> zero courses <span style='color:blue;'>=</span> some doctors may not join teach relationship <span style='color:blue;'>=</span> [optional relation] <span style='color:blue;'>=</span> partial participation <span style='color:blue;'>=</span>  min. of relation <span style='color:blue;'>=</span> <span style='color:red;'>Doctors Participation</span>", {left: lineCardX2-400, top: labelTop+330 });
+   ExampleLabDocParnext.css({"font-weight": "bold", "font-size": 22});
    av.step();
 
    //slide 16
-   av.umsg(interpret("Then, the corresponding representation of course entity with its attributes by crow's foot notation").bold().big());
-   var CrowReccor1=av.g.rect(LabelLeft+(NotationHorGaps*2)+200, (pY-50)+(NotationVerGaps*rowNo)-220, 120, 125, {"stroke-width": 3});
-   var CrowReccor2=av.g.rect(LabelLeft+(NotationHorGaps*2)+200, (pY-50)+(NotationVerGaps*rowNo)-220, 120, 30, {"stroke-width": 3});
-   var CrowReccor3=av.g.rect(LabelLeft+(NotationHorGaps*2)+200, (pY-50)+(NotationVerGaps*rowNo)-220+30, 120, 30, {"stroke-width": 3});
-   var corCrowlab=av.label(interpret("<span style='color:red;'>Course</span>"), {left: LabelLeft+(NotationHorGaps*2)+65-130+280, top:(pY-65)+(NotationVerGaps*rowNo)+25-250});
-   corCrowlab.css({"font-weight": "bold", "font-size": 20});
-   var ccodeCrowLab=av.label(interpret("<span style='color:red;'>Code</span>"), {left: LabelLeft+(NotationHorGaps*2)+85-130+280, top:(pY-30)+(NotationVerGaps*rowNo)+20-250});
-   ccodeCrowLab.css({"font-weight": "bold", "font-size": 18});
-   var cnameCrowLab=av.label(interpret("<span style='color:red;'>Cname</span>"), {left: LabelLeft+(NotationHorGaps*2)+85-130+280, top:(pY-10)+(NotationVerGaps*rowNo)+30-250});
-   cnameCrowLab.css({"font-weight": "bold", "font-size": 18});
-   var choursCrowLab=av.label(interpret("<span style='color:red;'>Hours</span>"), {left: LabelLeft+(NotationHorGaps*2)+85-130+280, top:(pY+10)+(NotationVerGaps*rowNo)+30-250});
-   choursCrowLab.css({"font-weight": "bold", "font-size": 18});
-   
-  PKLinecorsTableCrows.movePoints([[0,LabelLeft+(NotationHorGaps*2)+80-130+280,(pY-50)+(NotationVerGaps*rowNo)+60-250],[1,LabelLeft+(NotationHorGaps*2)+80-130+280,(pY-50)+(NotationVerGaps*rowNo)+155-250]]);
-  
-  PKLinecorsTableCrows.show();
-  av.step();
-
-  //slide 17
-  av.umsg(interpret("Identifying primary keys (underline PK attributes)for entities (as SID for Student & C-cOde for course entities) in Chen notation").bold().big());
-  sidPkLine.movePoints([[0,LabelLeftChen-60,pY+10],[1,LabelLeftChen-18,pY+10]]);
-   sidPkLine.show();
-  ccodePkLine.movePoints([[0,pX-140,pY-35+60],[1,pX-87,pY-35+60]]);
-   ccodePkLine.show(); 
+   DocCarLine.hide();
+   DocCarLine.movePoints([[0,LabelLeft+300,labelTop+280],[1,LabelLeft+270, pY2-40]]);
+   DocCarLine.show();
+   ExampleProbLabStatP2.hide();
+   ExampleLabDocParCont.hide();
+   ExampleLabDocParnext.hide();
+   var ExampleLabSolAnsCar=av.label("<span style='color:red;'>To represent doctor entity optional Participation:</span> use <span style='color:green;'>single line</span> connecting Doctor entity with Teach relationship", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabSolAnsCar.css({"font-weight": "bold", "font-size": 22});
    av.step();
 
-   //slide 18
-   av.umsg(interpret("Identifying primary keys for entities in Crow's foot notation").bold().big());
-   PKLineCrows.movePoints([[0, LabelLeft+(NotationHorGaps*2)+85-130, (pY-30)+(NotationVerGaps*rowNo)+63-250], [1, LabelLeft+(NotationHorGaps*2)+128-130, (pY-30)+(NotationVerGaps*rowNo)+63-250]]);
-  PKLineCrows.show();
-  var PKstdcrowsLab=av.label(interpret("<span style='color:red;'>PK</span>"), {left: LabelLeft+(NotationHorGaps*2)+50-130, top:(pY-30)+(NotationVerGaps*rowNo)+30-250});
-  PKstdcrowsLab.css({"font-weight": "bold", "font-size": 14});
-  PKLinecorsCrows.movePoints([[0, LabelLeft+(NotationHorGaps*2)+85-130+280, (pY-30)+(NotationVerGaps*rowNo)+63-250], [1, LabelLeft+(NotationHorGaps*2)+128-130+300, (pY-30)+(NotationVerGaps*rowNo)+63-250]]);
-  PKLinecorsCrows.show();
-  var PKcorcrowsLab=av.label(interpret("<span style='color:red;'>PK</span>"), {left: LabelLeft+(NotationHorGaps*2)+50-130+280, top:(pY-30)+(NotationVerGaps*rowNo)+30-250});
-  PKcorcrowsLab.css({"font-weight": "bold", "font-size": 14});
-  av.step();
-
-  //slide 19
-  av.umsg(interpret("Register relation in chen notation").bold().big());
-  stdLine.movePoints([[0,LabelLeftChen-70+120,labelTop+80+150],[1,LabelLeftChen+170-60,labelTop+80+150]]);
-   stdLine.show();
-   var polygonRegister = av.g.polyline([[LabelLeftChen+170, labelTop+80-30+150],
-    [LabelLeftChen+170+60, labelTop+80+150],
-    [LabelLeftChen+170, labelTop+80+30+150],
-    [LabelLeftChen+170-60, labelTop+80+150],
-    [LabelLeftChen+170, labelTop+80-30+150]],
-   {"stroke-width": 3, stroke: "black"});
-   CorLine.movePoints([[0,LabelLeftChen+170+60,labelTop+80+150],[1, pX-90,labelTop+80+150]]);
-   CorLine.show();
-   var RelchenReg=av.label(interpret("<span style='color:blue;'> Register </span>"), {left:labelTop+210+30, top:labelTop+45+150 });
-   RelchenReg.css({"font-weight": "bold", "font-size": 20});
+   //slide 17
+   DocCarLine.hide();
+   ExampleLabSolAnsCar.hide();
+   var Note1Lab=av.label("<span style='color:red;'>Important NOTE:</span> ", {left: lineCardX2-400, top: labelTop+180 });
+   Note1Lab.css({"font-weight": "bold", "font-size": 24});
+   var Note1ContentA=av.label("<span style='color:red;'>Doctor entity's Cardinality sign:</span>  <span style='color:green;'>M</span> is placed <span style='color:blue;'>beside course entity (i.e., beside the related entity)</span>", {left: lineCardX2-400, top: labelTop+250 });
+   Note1ContentA.css({"font-weight": "bold", "font-size": 22});
+   var Note1ContentB=av.label("<span style='color:red;'>Doctor entity's Participation sign:</span>  <span style='color:green;'>single line</span> is placed <span style='color:blue;'>beside doctor entity (i.e., beside itself)</span>", {left: lineCardX2-400, top: labelTop+320 });
+   Note1ContentB.css({"font-weight": "bold", "font-size": 22});
+   var Note1ContentC=av.label("(<span style='color:green;'>Cardinality & Participation</span> of the <span style='color:green;'>same entity</span> are placed in <span style='color:red;'>opposite sides</span>)", {left: lineCardX2-300, top: labelTop+390 });
+   Note1ContentC.css({"font-weight": "bold", "font-size": 22});
    av.step();
 
-   //slide 20
-   av.umsg(interpret("Corrsponding Register relation in crow's foot notation").bold().big());
-   RegRelLine.movePoints([[0,LabelLeft+(NotationHorGaps*2)-80+120,(pY-50)+(NotationVerGaps*rowNo)-220+80],[1,LabelLeft+(NotationHorGaps*2)+200,(pY-50)+(NotationVerGaps*rowNo)-220+80]]);
-   RegRelLine.show(); 
-   var regRelLab=av.label(interpret("<span style='color:red;'>Register</span>"), {left: LabelLeft+(NotationHorGaps*2)-80+160, top:(pY-50)+(NotationVerGaps*rowNo)-220+30});
-   regRelLab.css({"font-weight": "bold", "font-size": 18});
+    //slide 18
+    Note1Lab.hide();
+    Note1ContentA.hide();
+    Note1ContentB.hide();
+    Note1ContentC.hide();
+    var ExampleLabSolP2=av.label("<span style='color:red;'>Now applying cardinality/participation constraint to <span style='color:blue;'>Course entity</span>:", {left: lineCardX2-400, top: labelTop+110 });
+    ExampleLabSolP2.css({"font-weight": "bold", "font-size": 24});
+    var ExampleLabSolContP2=av.label("<span style='color:red;'>Let's check the <span style='color:blue;'>underlined statment</span> in the rest of the problem specification</span>", {left: lineCardX2-400, top: labelTop+150 });
+    ExampleLabSolContP2.css({"font-weight": "bold", "font-size": 22});
+    av.step();
+
+    //slide 19
+    var ExampleProbLabStatCont=av.label("Assume having a faculty database that consists of two entities one representing faculty doctors and the other representing courses they teach. In which each doctor can teach any number of courses but he may not teach any course, while <u>each course must be teached by only one doctor at most and no course can exist without a doctor to teach it</u>.", {left: lineCardX2-400, top: labelTop +200});
+    ExampleProbLabStatCont.css({"font-weight": "bold", "font-size": 20});
+    av.step();
+
+    //slide 20
+   ExampleLabSolP2.hide();
+   ExampleLabSolContP2.hide();
+   ExampleProbLabStat.hide();
+   ExampleProbLabStatCont.hide();
+   var ExampleLabSolcorP2=av.label("<span style='color:red;'>This means that: </span>", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabSolcorP2.css({"font-weight": "bold", "font-size": 22});
+   var ExampleProbLabStatP2=av.label("<u>each course must be teached by only <span style='color:blue;'>(one doctor at most)</span></u> and no course can exist without a doctor to teach it", {left: lineCardX2-400, top: labelTop +110});
+   ExampleProbLabStatP2.css({"font-weight": "bold", "font-size": 20});
    av.step();
 
    //slide 21
-   av.umsg(interpret("The physical relational schema diagram corresponding to both Chen & crow's foot notations").bold().big());
-   labCrows=av.label(interpret("<span style='color:green;'> Physical Relational schema </span>"), {left: LabelLeftChen, top:labelTop+300});
-   labCrows.css({"font-weight": "bold", "font-size": 20});
-   var studSchlab=av.label(interpret("Student"), {left: LabelLeftChen, top: labelTop+350 });
-   studSchlab.css({"font-weight": "bold", "font-size": 15});
-   //studSchlab.hide();
-   var studSchema = [["SID","Sname","B-date"]];
-   var studSchemaArr= av.ds.matrix(studSchema, {style: "table", top: labelTop+300+70, left: LabelLeftChen});
-   studSchemaArr._arrays[0].css([0], {"text-decoration": "underline"});
-   //studSchemaArr._arrays[0].hide();
-   
-   var corSchlab=av.label(interpret("Course"), {left: LabelLeftChen, top: labelTop+300+120 });
-   corSchlab.css({"font-weight": "bold", "font-size": 15});
-  // corSchlab.hide();
-   var corSchema = [["C-code","Cname","Hours"]];
-   var corSchemaArr= av.ds.matrix(corSchema, {style: "table", top: labelTop+300+140, left: LabelLeftChen});
-   corSchemaArr._arrays[0].css([0], {"text-decoration": "underline"});
-   //corSchemaArr._arrays[0].hide();
-  av.recorded();*/
+   DocCarLine.movePoints([[0,LabelLeft+400,labelTop+280],[1,LabelLeft+450, pY2+20]]);
+   DocCarLine.show();
+   var ExampleLabSolAnsMode=av.label("<span style='color:red;'>This means that:</span> each specific course instance in the course entity can only has one doctor to teach it (Doctors can not teach the same course), (i.e., each course can has one doctor at maximum) <span style='color:blue;'>=</span> (1) Doctor <span style='color:blue;'>=</span> max. of relation <span style='color:blue;'>=</span> <span style='color:red;'>Course cardinality</span>", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabSolAnsMode.css({"font-weight": "bold", "font-size": 22});
+   av.step();
 
+   //slide 22
+   DocCarLine.hide();
+   DocCarLine.movePoints([[0,LabelLeft+300,labelTop+280],[1,LabelLeft+270, pY2-40]]);
+   DocCarLine.show();
+   var Example1sign=av.label("<span style='color:red;'>1</span>", {left: LabelLeft+260, top:pY2-85 });
+   Example1sign.css({"font-weight": "bold", "font-size": 20});
+   ExampleLabSolcorP2.hide();
+   ExampleLabSolAnsMode.hide();
+   ExampleProbLabStatP2.hide();
+   var ExampleLabSolAnsRepCor=av.label("<span style='color:red;'>To represent Course entity cadinality:</span> put (1) sign beside Doctor entity", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabSolAnsRepCor.css({"font-weight": "bold", "font-size": 22});
+   av.step();
 
+   //slide 23
+   ExampleLabSolAnsRepCor.hide();
+   var ExampleProbLabStatP2cor=av.label("each course must be teached by only one doctor at most and <u> no course can exist without a doctor to teach it </u>", {left: lineCardX2-400, top: labelTop +110});
+   ExampleProbLabStatP2cor.css({"font-weight": "bold", "font-size": 20});
+   DocCarLine.hide();
+   DocCarLine.movePoints([[0,LabelLeft+250,labelTop+270],[1,lineCardX2+220,labelTop +160]]);
+   DocCarLine.show();
+   var ExampleLabDocPar=av.label("<span style='color:red;'>By looking at the rest of the problem statement: </span>", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabDocPar.css({"font-weight": "bold", "font-size": 22});
+   av.step();
+
+   //slide 24
+   ExampleLabDocPar.hide();
+   var ExampleLabCorParCont=av.label("<span style='color:red;'>By looking at the rest of the problem statement:</span> It means that each courses should has at least one doctor to teach it", {left: lineCardX2-400, top: labelTop+250 });
+   ExampleLabCorParCont.css({"font-weight": "bold", "font-size": 22});
+   av.step();
+
+   //slide 25
+   var ExampleLabCorParnext=av.label("<span style='color:red;'>(i.e.,):</span> no courses can be without doctor <span style='color:blue;'>=</span>  at least one doctor needed for each course <span style='color:blue;'>=</span> minimum of relation <span style='color:blue;'>=</span> [mandatory relation] <span style='color:blue;'>=</span> Total participation <span style='color:blue;'>=</span> <span style='color:red;'>Course Participation</span>", {left: lineCardX2-400, top: labelTop+330 });
+   ExampleLabCorParnext.css({"font-weight": "bold", "font-size": 22});
+   av.step();
+
+    //slide 26
+    ProbEx1Line2Par.show();
+    DocCarLine.hide();
+    DocCarLine.movePoints([[0,LabelLeft+600,labelTop+280],[1,LabelLeft+570, pY2-30]]);
+    DocCarLine.show();
+    ExampleLabCorParnext.hide();
+    ExampleProbLabStatP2cor.hide();
+    ExampleLabCorParCont.hide();
+    ExampleLabCorParnext.hide();
+    var ExampleLabSolCorCar=av.label("<span style='color:red;'>To represent course entity mandatory Participation:</span> use <span style='color:green;'>double line</span> connecting course entity with Teach relationship", {left: lineCardX2-400, top: labelTop+250 });
+    ExampleLabSolCorCar.css({"font-weight": "bold", "font-size": 22});
+    av.step();
+
+    //slide 27
+   DocCarLine.hide();
+   ExampleLabCorParnext.hide();
+   ExampleLabSolCorCar.hide();
+   var Note1Lab=av.label("<span style='color:red;'>Important NOTE:</span> ", {left: lineCardX2-400, top: labelTop+180 });
+   Note1Lab.css({"font-weight": "bold", "font-size": 24});
+   var Note1ContentA=av.label("<span style='color:red;'>Course entity's Cardinality sign:</span>  <span style='color:green;'>1</span> is placed <span style='color:blue;'>beside Doctor entity (i.e., beside the related entity)</span>", {left: lineCardX2-400, top: labelTop+250 });
+   Note1ContentA.css({"font-weight": "bold", "font-size": 22});
+   var Note1ContentB=av.label("<span style='color:red;'>Course entity's Participation sign:</span>  <span style='color:green;'>double line</span> is placed <span style='color:blue;'>beside course entity (i.e., beside itself)</span>", {left: lineCardX2-400, top: labelTop+320 });
+   Note1ContentB.css({"font-weight": "bold", "font-size": 22});
+   var Note1ContentC=av.label("(<span style='color:green;'>Cardinality & Participation</span> of the <span style='color:green;'>same entity</span> are placed in <span style='color:red;'>opposite sides</span>)", {left: lineCardX2-300, top: labelTop+390 });
+   Note1ContentC.css({"font-weight": "bold", "font-size": 22});
+   av.recorded();
 });

@@ -23,6 +23,8 @@ Because of the author's belief of the maxim $"a$ $picture$ $worth$ $than$ $thous
 
 by a lot of pictures, tables, visualization, and figures.
 
+The book's author is highly recommending to study the book in the same sequence as presented because some of the concepts and visualizations are prerequisite to other.
+
 Database Basic Definitions
 --------------------------------------
 
