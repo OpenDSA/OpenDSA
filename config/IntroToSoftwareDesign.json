@@ -322,6 +322,10 @@
         "Syntax Practice 9a: Loop Idioms": {
           "points": 20
         },
+        "MUSICSurvey": {
+          "points": 6,
+          "threshold": 1
+        },
         "Syntax Practice 9b: Generics": {
           "points": 15
         },
@@ -332,13 +336,13 @@
           "points": 19
         },
         "Week9Quiz1Summ": {
-          "points": 9
+          "points": 7
         },
         "Week9Quiz2Summ": {
-          "points": 9
+          "points": 7
         },
         "Week9Quiz3Summ": {
-          "points": 9
+          "points": 7
         }
       }
     },
@@ -408,11 +412,7 @@
     "Variable Scoping, Input, and Output":{
       "IntroToSoftwareDesign/FileIO": {
         "Syntax Practice: Scoping": {
-          "points": 37
-        },
-        "MUSICSurvey": {
-          "points": 3,
-          "threshold": 1
+          "points": 40
         },
         "Week12Quiz1Summ": {
           "points": 20,
@@ -475,16 +475,20 @@
     "Static, Main, and Exceptions":{
        "IntroToSoftwareDesign/StaticMainAndExceptions":{
           "Week14Quiz1Summ":{
-             "points":10
+             "points": 8
+          },
+          "MUSICSurvey": {
+            "points": 8,
+            "threshold": 1
           },
           "Week14Quiz2Summ":{
-             "points":10
+             "points": 8
           },
           "Week14Quiz3Summ":{
-             "points":10
+             "points": 8
           },
           "Week14Quiz4Summ":{
-             "points":10
+             "points": 8
           },
           "Syntax Practice: Try-Catch Blocks":{
              "points":30

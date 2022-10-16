@@ -314,6 +314,29 @@ Check Your Understanding: The Static Keyword
    :long_name: The Static Keyword
 
 
+Your Opinions on Motivation and Engagement 
+------------------------------------------
+
+Complete the following survey. The purpose of this task is to gather
+information about this course so that it can be improved. Your input is
+critical because we want to create the best experience possible for students.
+
+`CS 1114 Survey 2
+<https://virginiatech.questionpro.com/t/AUHNlZuUHg>`_
+
+Towards the end of the survey you will be asked if you consent for this
+information to be used in a study about perceptions of student learning
+and engagement.  There is no additional work on your part if you provide
+consent for your responses to be used in the study.  Completing the survey
+should take about 15 minutes.
+
+Please answer below and your participation in the survey will be verified
+for credit.
+
+.. avembed:: Exercises/IntroToSoftwareDesign/MUSICSurvey.html ka
+   :long_name: Survey Completed
+
+
 Errors
 ------
 
