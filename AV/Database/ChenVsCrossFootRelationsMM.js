@@ -1,7 +1,7 @@
 /*global ODSA */
 $(document).ready(function() {
   "use strict";
-  var av_name = "ChenVsCrossFootRelations";
+  var av_name = "ChenVsCrossFootRelationsMM";
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
    var rowNo=1;
    var colNo=1;
 
-   var labCardinality=av.label("Here all <span style='color:blue;'> One-to-One </span> relationship combinations with <span style='color:blue;'> all participation alternatives </span>", {left: LabelLeft+100, top: labelTop });
+   var labCardinality=av.label("Here all <span style='color:blue;'> Many-to-Many </span> relationship combinations with <span style='color:blue;'> all participation alternatives </span>", {left: LabelLeft+100, top: labelTop });
    labCardinality.css({"font-weight": "bold", "font-size": 20});
 
    //var labCardinalitydef=av.label(interpret("<span style='color:blue;'> Cardinality definition </span>"), {left: LabelLeft+NotationHorGaps*colNo, top: labelTop });
@@ -141,8 +141,43 @@ $(document).ready(function() {
    RegRelLine.hide();
    //var EntityCrowsRec=av.g.rect(xPositionBigRectangles, yPositionBig1, lengthBig, widthBig);
 
+   //manyTomanySymbol in each relation in crow's foot notation names mTom: means many to mant R:right L:left number:1,2,3 or 4 refers to the row containing the relation
+   var mTom1Lup=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom1Lup.hide();
+   var mTom1Rup=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom1Rup.hide();
+   var mTom2Lup=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom2Lup.hide();
+   var mTom2Rup=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom2Rup.hide();
+   var mTom3Lup=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom3Lup.hide();
+   var mTom3Rup=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom3Rup.hide();
+   var mTom4Lup=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom4Lup.hide();
+   var mTom4Rup=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom4Rup.hide();
+
+   var mTom1Ldwn=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom1Ldwn.hide();
+   var mTom1Rdwn=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom1Rdwn.hide();
+   var mTom2Ldwn=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom2Ldwn.hide();
+   var mTom2Rdwn=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom2Rdwn.hide();
+   var mTom3Ldwn=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom3Ldwn.hide();
+   var mTom3Rdwn=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom3Rdwn.hide();
+   var mTom4Ldwn=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom4Ldwn.hide();
+   var mTom4Rdwn=av.g.line(0,0,0,0, {opacity: 100, "stroke-width": 2});
+   mTom4Rdwn.hide();
+
    // Slide 1
-   //av.umsg(interpret("sc1").bold().big());
+  // av.umsg(interpret("sc1").bold().big());
    av.displayInit(1);
    av.step();
 
@@ -157,7 +192,7 @@ $(document).ready(function() {
 
   //slide 3
   av.umsg("Here is the chen's relation symbol".bold().big());
-  var LabRSym=av.label(interpret("(opt) <span style='color:green;'> one-to-one</span> (man) "), {left: LabelLeft-30, top: pY-50 });
+  var LabRSym=av.label(interpret("(opt) <span style='color:green;'> many-to-many</span> (man) "), {left: LabelLeft-50, top: pY-50 });
   LabRSym.css({"font-weight": "bold", "font-size": 20});
   var polygon = av.g.polyline([[pX+10, pY-30],
    [pX+10+60, pY],
@@ -173,8 +208,8 @@ $(document).ready(function() {
   otochenLft.show();
   otochenRht.show();
   otochenRht2.show();
-  var otolabL=av.label("<span style='color:blue;'> 1 </span>", {left: pX+110-20, top:pY-40 });
-  var otolabR=av.label("<span style='color:blue;'> 1 </span>", {left: pX+10-20-90, top:pY-40 });
+  var otolabL=av.label("<span style='color:blue;'> M </span>", {left: pX+110-20, top:pY-40 });
+  var otolabR=av.label("<span style='color:blue;'> N </span>", {left: pX+10-20-90, top:pY-40 });
   av.step();
 
   //slide 4
@@ -182,8 +217,8 @@ $(document).ready(function() {
   var RelMinlab=av.label("<span style='color:blue;'> R </span>", {left: pX+270-20, top:pY-50 });
   RelMinlab.css({"font-weight": "bold", "font-size": 20});
   otoMinLft.movePoints([[0,pX+45+120,pY],[1,pX+80+300, pY]]);
-  var otolabL1=av.label("<span style='color:blue;'> (0,1) </span>", {left: pX+47+120, top:pY-40 });
-  var otolabR1=av.label("<span style='color:blue;'> (1,1) </span>", {left: pX+30+300, top:pY-40 });
+  var otolabL1=av.label("<span style='color:blue;'> (0,M) </span>", {left: pX+47+120, top:pY-40 });
+  var otolabR1=av.label("<span style='color:blue;'> (1,M) </span>", {left: pX+30+300, top:pY-40 });
   otoMinLft.show();
   av.step();
 
@@ -192,20 +227,28 @@ $(document).ready(function() {
   var RelCrowslab=av.label("<span style='color:blue;'> R </span>", {left: pX+345+200-20, top:pY-50 });
   RelCrowslab.css({"font-weight": "bold", "font-size": 20});
   otoCrowsLft.movePoints([[0,pX+75+360,pY],[1,pX+75+580, pY]]);
-  CrowsoneLft.movePoints([[0,pX+90+360,pY-10],[1,pX+90+360, pY+10]]);
+  //CrowsoneLft.movePoints([[0,pX+90+360,pY-10],[1,pX+90+360, pY+10]]);
+  mTom1Ldwn.movePoints([[0,pX+90+360,pY],[1,pX+75+360, pY+10]]);
+  mTom1Lup.movePoints([[0,pX+90+360,pY],[1,pX+75+360, pY-10]]);
+  mTom1Ldwn.show();
+  mTom1Lup.show();
   CrowsoneRyt.movePoints([[0,pX+60+580,pY-10],[1,pX+60+580, pY+10]]);
-  CrowsoneLft.show();
+  mTom1Rup.movePoints([[0,pX+60+580,pY],[1,pX+75+580, pY-10]]);
+  mTom1Rdwn.movePoints([[0,pX+60+580,pY],[1,pX+75+580, pY+10]]);
+  mTom1Rup.show();
+  mTom1Rdwn.show();
+  //CrowsoneLft.show();
   CrowsoneRyt.show();
   //CrowsoneLft1.movePoints([[0,pX+95+360,pY-10],[1,pX+95+360, pY+10]]);
-  CrowsoneRyt1.movePoints([[0,pX+55+580,pY-10],[1,pX+55+580, pY+10]]);
+  //CrowsoneRyt1.movePoints([[0,pX+55+580,pY-10],[1,pX+55+580, pY+10]]);
   CrowsoneLft1.show();
-  CrowsoneRyt1.show();
+  //CrowsoneRyt1.show();
   otoCrowsLft.show();
   av.step();
 
   //slide 6
   av.umsg("Here is the chen's relation symbol".bold().big());
-  var LabRSym2=av.label(interpret("(opt) <span style='color:green;'> one-to-one</span> (opt) "), {left: LabelLeft-30, top: pY+60 });
+  var LabRSym2=av.label(interpret("(opt) <span style='color:green;'> many-to-many</span> (opt) "), {left: LabelLeft-50, top: pY+60 });
   LabRSym2.css({"font-weight": "bold", "font-size": 20});
   var polygon2 = av.g.polyline([[pX+10, pY+80],
    [pX+10+60, pY+110],
@@ -221,8 +264,8 @@ $(document).ready(function() {
   otochenLft2.show();
   otochenRht22.show();
  // otochenRht22.show();
-  var otolabL2=av.label("<span style='color:blue;'> 1 </span>", {left: pX+110-20, top:pY+70 });
-  var otolabR2=av.label("<span style='color:blue;'> 1 </span>", {left: pX+10-20-90, top:pY+70 });
+  var otolabL2=av.label("<span style='color:blue;'> M </span>", {left: pX+110-20, top:pY+70 });
+  var otolabR2=av.label("<span style='color:blue;'> N </span>", {left: pX+10-20-90, top:pY+70 });
   av.step();
 
   //slide 7
@@ -230,8 +273,8 @@ $(document).ready(function() {
   var RelMinlab2=av.label("<span style='color:blue;'> R </span>", {left: pX+270-20, top:pY+60 });
   RelMinlab2.css({"font-weight": "bold", "font-size": 20});
   otoMinLft2.movePoints([[0,pX+45+120,pY+110],[1,pX+80+300, pY+110]]);
-  var otolabL12=av.label("<span style='color:blue;'> (0,1) </span>", {left: pX+47+120, top:pY+70 });
-  var otolabR12=av.label("<span style='color:blue;'> (0,1) </span>", {left: pX+30+300, top:pY+70 });
+  var otolabL12=av.label("<span style='color:blue;'> (0,M) </span>", {left: pX+47+120, top:pY+70 });
+  var otolabR12=av.label("<span style='color:blue;'> (0,M) </span>", {left: pX+30+300, top:pY+70 });
   otoMinLft2.show();
   av.step();
 
@@ -240,8 +283,16 @@ $(document).ready(function() {
   var RelCrowslab2=av.label("<span style='color:blue;'> R </span>", {left: pX+345+200-20, top:pY+60 });
   RelCrowslab2.css({"font-weight": "bold", "font-size": 20});
   otoCrowsLft2.movePoints([[0,pX+75+360,pY+110],[1,pX+75+580, pY+110]]);
-  CrowsoneLft2.movePoints([[0,pX+90+360,pY+100],[1,pX+90+360, pY+120]]);
-  CrowsoneRyt2.movePoints([[0,pX+60+580,pY+100],[1,pX+60+580, pY+120]]);
+ // CrowsoneLft2.movePoints([[0,pX+90+360,pY+100],[1,pX+90+360, pY+120]]);
+  mTom2Lup.movePoints([[0,pX+90+360,pY+110],[1,pX+75+360, pY+100]]);
+  mTom2Ldwn.movePoints([[0,pX+90+360,pY+110],[1,pX+75+360, pY+120]]);
+  mTom2Lup.show();
+  mTom2Ldwn.show();
+ // CrowsoneRyt2.movePoints([[0,pX+60+580,pY+100],[1,pX+60+580, pY+120]]);
+  mTom2Rup.movePoints([[0,pX+60+580,pY+110],[1,pX+75+580, pY+100]]);
+  mTom2Rdwn.movePoints([[0,pX+60+580,pY+110],[1,pX+75+580, pY+120]]);
+  mTom2Rup.show();
+  mTom2Rdwn.show();
   CrowsoneLft2.show();
   CrowsoneRyt2.show();
   otoCrowsLft2.show();
@@ -253,7 +304,7 @@ $(document).ready(function() {
 
   //slide 9
   av.umsg("Here is the chen's relation symbol".bold().big());
-  var LabRSym3=av.label(interpret("(man) <span style='color:green;'> one-to-one</span> (man)"), {left: LabelLeft-30, top: pY+170 });
+  var LabRSym3=av.label(interpret("(man) <span style='color:green;'> many-to-many</span> (man)"), {left: LabelLeft-50, top: pY+170 });
   LabRSym3.css({"font-weight": "bold", "font-size": 20});
   var polygon3 = av.g.polyline([[pX+10, pY+190],
    [pX+10+60, pY+220],
@@ -271,8 +322,8 @@ $(document).ready(function() {
   otochenLft32.show();
   otochenRht3.show();
   otochenRht32.show();
-  var otolabL3=av.label("<span style='color:blue;'> 1 </span>", {left: pX+110-20, top:pY+180 });
-  var otolabR3=av.label("<span style='color:blue;'> 1 </span>", {left: pX+10-20-90, top:pY+180 });
+  var otolabL3=av.label("<span style='color:blue;'> M </span>", {left: pX+110-20, top:pY+180 });
+  var otolabR3=av.label("<span style='color:blue;'> N </span>", {left: pX+10-20-90, top:pY+180 });
   av.step();
 
   //slide 10
@@ -280,8 +331,8 @@ $(document).ready(function() {
   var RelMinlab3=av.label("<span style='color:blue;'> R </span>", {left: pX+270-20, top:pY+170 });
   RelMinlab3.css({"font-weight": "bold", "font-size": 20});
   otoMinLft3.movePoints([[0,pX+45+120,pY+220],[1,pX+80+300, pY+220]]);
-  var otolabL13=av.label("<span style='color:blue;'> (1,1) </span>", {left: pX+47+120, top:pY+180 });
-  var otolabR13=av.label("<span style='color:blue;'> (1,1) </span>", {left: pX+30+300, top:pY+180 });
+  var otolabL13=av.label("<span style='color:blue;'> (1,M) </span>", {left: pX+47+120, top:pY+180 });
+  var otolabR13=av.label("<span style='color:blue;'> (1,M) </span>", {left: pX+30+300, top:pY+180 });
   otoMinLft3.show();
   av.step();
 
@@ -292,18 +343,26 @@ $(document).ready(function() {
   otoCrowsLft3.movePoints([[0,pX+75+360,pY+220],[1,pX+75+580, pY+220]]);
   otoCrowsLft3.show();
   CrowsoneLft3.movePoints([[0,pX+90+360,pY+210],[1,pX+90+360, pY+230]]);
+  mTom3Lup.movePoints([[0,pX+90+360,pY+220],[1,pX+75+360, pY+210]]);
+  mTom3Ldwn.movePoints([[0,pX+90+360,pY+220],[1,pX+75+360, pY+230]]);
+  mTom3Lup.show();
+  mTom3Ldwn.show();
   CrowsoneRyt3.movePoints([[0,pX+60+580,pY+210],[1,pX+60+580, pY+230]]);
-  CrowsoneLft31.movePoints([[0,pX+95+360,pY+210],[1,pX+95+360, pY+230]]);
-  CrowsoneRyt31.movePoints([[0,pX+55+580,pY+210],[1,pX+55+580, pY+230]]);
+  mTom3Rup.movePoints([[0,pX+60+580,pY+220],[1,pX+75+580, pY+210]]);
+  mTom3Rdwn.movePoints([[0,pX+60+580,pY+220],[1,pX+75+580, pY+230]]);
+  mTom3Rup.show();
+  mTom3Rdwn.show();
+  //CrowsoneLft31.movePoints([[0,pX+95+360,pY+210],[1,pX+95+360, pY+230]]);
+ // CrowsoneRyt31.movePoints([[0,pX+55+580,pY+210],[1,pX+55+580, pY+230]]);
   CrowsoneLft3.show();
   CrowsoneRyt3.show();
-  CrowsoneLft31.show();
-  CrowsoneRyt31.show();
+ // CrowsoneLft31.show();
+ // CrowsoneRyt31.show();
   av.step();
 
   //slide 12
   av.umsg("Here is the chen's relation symbol".bold().big());
-  var LabRSym4=av.label(interpret("(man) <span style='color:green;'> one-to-one</span> (opt)"), {left: LabelLeft-30, top: pY+280 });
+  var LabRSym4=av.label(interpret("(man) <span style='color:green;'> many-to-many</span> (opt)"), {left: LabelLeft-50, top: pY+280 });
   LabRSym4.css({"font-weight": "bold", "font-size": 20});
   var polygon4 = av.g.polyline([[pX+10, pY+300],
    [pX+10+60, pY+330],
@@ -321,8 +380,8 @@ $(document).ready(function() {
   otochenLft42.show();
   otochenRht4.show();
  // otochenRht42.show();
-  var otolabL4=av.label("<span style='color:blue;'> 1 </span>", {left: pX+110-20, top:pY+290 });
-  var otolabR4=av.label("<span style='color:blue;'> 1 </span>", {left: pX+10-20-90, top:pY+290 });
+  var otolabL4=av.label("<span style='color:blue;'> M </span>", {left: pX+110-20, top:pY+290 });
+  var otolabR4=av.label("<span style='color:blue;'> N </span>", {left: pX+10-20-90, top:pY+290 });
   av.step();
 
   //slide 13
@@ -330,8 +389,8 @@ $(document).ready(function() {
   var RelMinlab4=av.label("<span style='color:blue;'> R </span>", {left: pX+270-20, top:pY+280 });
   RelMinlab4.css({"font-weight": "bold", "font-size": 20});
   otoMinLft4.movePoints([[0,pX+45+120,pY+330],[1,pX+80+300, pY+330]]);
-  var otolabL14=av.label("<span style='color:blue;'> (1,1) </span>", {left: pX+47+120, top:pY+290 });
-  var otolabR14=av.label("<span style='color:blue;'> (0,1) </span>", {left: pX+30+300, top:pY+290 });
+  var otolabL14=av.label("<span style='color:blue;'> (1,M) </span>", {left: pX+47+120, top:pY+290 });
+  var otolabR14=av.label("<span style='color:blue;'> (0,M) </span>", {left: pX+30+300, top:pY+290 });
   otoMinLft4.show();
   av.step();
 
@@ -342,12 +401,20 @@ $(document).ready(function() {
   otoCrowsLft4.movePoints([[0,pX+75+360,pY+330],[1,pX+75+580, pY+330]]);
   otoCrowsLft4.show();
   CrowsoneLft4.movePoints([[0,pX+90+360,pY+320],[1,pX+90+360, pY+340]]);
-  CrowsoneRyt4.movePoints([[0,pX+60+580,pY+320],[1,pX+60+580, pY+340]]);
-  CrowsoneLft41.movePoints([[0,pX+95+360,pY+320],[1,pX+95+360, pY+340]]);
+  mTom4Lup.movePoints([[0,pX+90+360,pY+330],[1,pX+75+360, pY+320]]);
+  mTom4Ldwn.movePoints([[0,pX+90+360,pY+330],[1,pX+75+360, pY+340]]);
+  mTom4Lup.show();
+  mTom4Ldwn.show();
+  //CrowsoneRyt4.movePoints([[0,pX+60+580,pY+320],[1,pX+60+580, pY+340]]);
+  mTom4Rup.movePoints([[0,pX+60+580,pY+330],[1,pX+75+580, pY+320]]);
+  mTom4Rdwn.movePoints([[0,pX+60+580,pY+330],[1,pX+75+580, pY+340]]);
+  mTom4Rup.show();
+  mTom4Rdwn.show();
+  //CrowsoneLft41.movePoints([[0,pX+95+360,pY+320],[1,pX+95+360, pY+340]]);
  // CrowsoneRyt41.movePoints([[0,pX+55+580,pY+320],[1,pX+55+580, pY+340]]);
   CrowsoneLft4.show();
-  CrowsoneRyt4.show();
-  CrowsoneLft41.show();
+  //CrowsoneRyt4.show();
+  //CrowsoneLft41.show();
   //CrowsoneRyt41.show();
   av.recorded();
 

@@ -90,3 +90,21 @@ Relational Anatomy
    :links: AV/Database/ChenVsCrossFootRelations.css
    :scripts: AV/Database/ChenVsCrossFootRelations.js
    :output: show
+
+.. inlineav:: ChenVsCrossFootRelationsMM ss
+   :long_name: ChenVsCrossFootRelationsMMRepresentation Slideshow
+   :links: AV/Database/ChenVsCrossFootRelationsMM.css
+   :scripts: AV/Database/ChenVsCrossFootRelationsMM.js
+   :output: show
+
+.. inlineav:: ChenVsCrossFootRelations1M ss
+   :long_name: ChenVsCrossFootRelations1MRepresentation Slideshow
+   :links: AV/Database/ChenVsCrossFootRelations1M.css
+   :scripts: AV/Database/ChenVsCrossFootRelations1M.js
+   :output: show
+
+.. inlineav:: ChenVsCrossFootRelationsM1 ss
+   :long_name: ChenVsCrossFootRelationsM1Representation Slideshow
+   :links: AV/Database/ChenVsCrossFootRelationsM1.css
+   :scripts: AV/Database/ChenVsCrossFootRelationsM1.js
+   :output: show
