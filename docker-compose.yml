@@ -22,17 +22,19 @@ services:
       dockerfile: Dockerfile.deforms
     image: opendsa/deforms:latest
     volumes:
-      - ./opendsa:/opendsa
+      - .:/opendsa
+    ports:
+      - 8081:8080
     expose:
-      - 8080
+      - 8081
     depends_on:
       - proxy
     labels:
-      traefik.http.routers.opendsa.rule: Host(`deforms.localhost.devcom.vt.edu`)
-      traefik.http.services.opendsa.loadbalancer.server.port: 8081
+      traefik.http.routers.deforms.rule: Host(`deforms.localhost.devcom.vt.edu`)
+      traefik.http.services.deforms.loadbalancer.server.port: 8080
 
   proxy:
-    profiles: ['feedback']
+    profiles: ['deforms']
     image: dtr.it.vt.edu/devcom/devcom-localhost-proxy:traefik-2.3
     ports:
       - 80:80

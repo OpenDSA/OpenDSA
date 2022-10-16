@@ -40,13 +40,14 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "rmdir [path]",
+      commandTitle: "rmdir (directory_path)",
       commandDescription:
-        "The rmdir command removes an empty directory at the location specified by [path].",
+        "The rmdir command removes the directory at the location specified by (directory_path) if the directory is empty. Multiple (directory_path) values can be provided to remove muliple directories.",
       challengeDescription: 'Remove the "houses" directory.',
     },
     handleAwardCredit,
-    "rmdir",
-    initialFileStructure
+    ["rmdir", "rm"],
+    initialFileStructure,
+    [3, 3]
   );
 });

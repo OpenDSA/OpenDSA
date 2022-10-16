@@ -20,9 +20,9 @@ $(document).ready(function () {
 
   initializeCommandLineExercise(
     {
-      commandTitle: "cp [src] [dst]",
+      commandTitle: "cp [-r] (src_path) (dst_path)",
       commandDescription:
-        "The cp command copies a file or directory from the location specified by [src] to the location specified by [dst].",
+        "The cp command copies a file or directory from the location specified by (src_path) to the file or directory specified by (dst_path). Include [-r] to copy directories.",
       challengeDescription: 'Copy "monkey.txt" to the root directory.',
     },
     handleAwardCredit,

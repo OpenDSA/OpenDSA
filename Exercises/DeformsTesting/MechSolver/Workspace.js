@@ -144,7 +144,9 @@ class Workspace
         // Adding the close X button/text
         this.elements[2] = {
             "jsav":
-                this.globalSectionObj.label("&#x2702", 
+                this.globalSectionObj.label(
+                // "&#x1F5D1",
+                "&#x2702", 
                 {
                     left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]-20, 
                     top: this.DIMENSIONS["POSITION_Y"]-15

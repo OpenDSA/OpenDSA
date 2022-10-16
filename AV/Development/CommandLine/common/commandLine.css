@@ -22,6 +22,31 @@
   margin-bottom: 1rem;
 }
 
+#reset-button-container {
+  justify-self: end;
+}
+#reset-button {
+  justify-self: end;
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  height: min-content;
+  position: fixed;
+}
+
+#reset-button:hover {
+  /* background-color: #303030; */
+  background-color: #202020;
+  /* font-weight: bold; */
+}
+
+#success-message p {
+  font-size: larger;
+  font-weight: bold;
+}
+
 .hidden {
   opacity: 0;
 }
@@ -46,6 +71,9 @@
   height: 43vh;
   padding: 1em;
   overflow: auto;
+  display: grid;
+  grid-template-columns: auto min-content;
+  gap: 1rem;
 }
 
 #visualization-container {
@@ -58,8 +86,7 @@
   background-color: black;
   border: 0;
   padding: 0;
-  height: 18px;
-  padding-left: 4px;
+  flex-grow: 1;
 }
 
 #arrayValues:focus {
@@ -73,19 +100,150 @@
   padding: 0;
 }
 
-#start-symbol-and-input {
+/* #start-symbol-and-input {
   display: flex;
   color: white;
   align-items: center;
   height: 18px;
-}
+} */
 
 /* .node--internal text {
   text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
 } */
+.output {
+  padding-bottom: 1rem;
+}
 
-.link {
+.symbol-and-input {
+  display: flex;
+  gap: 1rem;
+  color: white;
+  align-items: center;
+}
+
+.symbol-and-input p {
+  padding: 0;
+  margin: 0;
+}
+
+.link- {
   fill: none;
   stroke: #ccc;
   stroke-width: 2px;
+}
+
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 4px;
+}
+
+.link-local {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-remote {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-remote-commit {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.link-local-commit {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+.output-list {
+}
+
+.output-list p {
+  padding: 0;
+  margin: 0;
+}
+
+.ls-output {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.git-status {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.git-status p {
+  padding: 0;
+  margin: 0;
+}
+
+.git-commit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.git-status-branch {
+}
+
+.git-status-staged {
+}
+
+.git-status-not-staged {
+}
+
+.git-status-untracked {
+}
+
+.git-status-files {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  padding-left: 2rem;
+}
+
+.git-status-files-names {
+}
+
+.git-status-files-statuses {
+}
+
+.git-status-staged .git-status-files p {
+  color: #66ff00;
+}
+
+.git-status-not-staged .git-status-files p {
+  color: red;
+}
+
+.git-status-untracked .git-status-files p {
+  color: red;
+}
+
+.command-line-prompt,
+.command-line-prompt-old {
+  display: flex;
+  gap: 0.25rem;
+  width: max-content;
+}
+
+.command-line-prompt-path,
+.command-line-prompt-path-old {
+  color: yellow;
+}
+
+.command-line-prompt-branch,
+.command-line-prompt-branch-old {
+  color: aqua;
 }
