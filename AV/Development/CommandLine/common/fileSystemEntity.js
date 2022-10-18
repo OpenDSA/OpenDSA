@@ -236,7 +236,9 @@ class File extends FileSystemEntity {
       ) {
         this.setWorkingState(NEW_FILE_STATE.DELETED);
       } else {
-        this.setWorkingState(this.getStagingState());
+        if (!this.isStagingState(NEW_FILE_STATE.UNCHANGED)) {
+          this.setWorkingState(this.getStagingState());
+        }
       }
       this.setStagingState(NEW_FILE_STATE.UNCHANGED);
     } else {
@@ -447,6 +449,10 @@ class File extends FileSystemEntity {
 
   countFiles() {
     return 1;
+  }
+
+  getName() {
+    return this.name;
   }
 }
 
@@ -983,6 +989,10 @@ class Directory extends FileSystemEntity {
     });
 
     return pathsAndStates;
+  }
+
+  getName() {
+    return this.name + "/";
   }
 }
 

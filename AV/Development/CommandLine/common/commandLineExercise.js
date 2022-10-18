@@ -10,6 +10,7 @@ import {
 import { Directory } from "./fileSystemEntity.js";
 import { Branch, Commit } from "./gitClasses.js";
 import { NEW_FILE_STATE } from "./gitStatuses.js";
+import { RESET_FILE_TREE_OFFSETS, RESET_OFFSETS } from "./timings.js";
 
 const DEFAULT_FILE_STRUCTURE = {
   name: "/",
@@ -60,18 +61,16 @@ function initializeCommandLineExercise(
 
   updateText(text);
 
-  const homeDir = new Directory(
-    initialFileStructure ? initialFileStructure : DEFAULT_FILE_STRUCTURE
-  );
-
-  let currDir = homeDir.followIndexPath(
-    initialCwdIndexPath ? initialCwdIndexPath : DEFAULT_CWD_INDEX_PATH
-  );
-
+  let homeDir;
+  let currDir;
   let svgData;
 
   function getHomeDir() {
     return homeDir;
+  }
+
+  function setHomeDir(dir) {
+    homeDir = dir;
   }
 
   function getCurrDir() {
@@ -86,7 +85,12 @@ function initializeCommandLineExercise(
     return svgData;
   }
 
-  updateCommandLinePrompt(getCurrDir());
+  initializeCommandLineState(
+    initialFileStructure,
+    initialCwdIndexPath,
+    setHomeDir,
+    setCurrDir
+  );
 
   const commandsMap = createCommandsMap(
     getSvgData,
@@ -96,29 +100,19 @@ function initializeCommandLineExercise(
     updateFileStructureVisualization
   );
 
-  let resizeCount = 0;
-
-  // new ResizeObserver(() => {
-  //   if (resizeCount === 1) {
+  //delay render because of sizing issues
   setTimeout(() => {
     const id = "#visualization-container";
     const visualizationWidth = $(id).width();
     const visualizationHeight = $(id).height();
     svgData = renderFileStructureVisualization(
       homeDir,
-      currDir.id,
+      currDir,
       visualizationWidth,
       visualizationHeight,
       id
     );
-    //this is sloppy but I was having sizing issues
   }, 500);
-  // }
-  // else if (resizeCount > 1) {
-  //   updateTree();
-  // }
-  resizeCount++;
-  // }).observe(document.querySelector("#visualization-container"));
 
   const awardCreditHandler = {};
   if (Array.isArray(awardCreditCommand)) {
@@ -134,6 +128,22 @@ function initializeCommandLineExercise(
 
   const commandHistory = new CommandHistory();
 
+  const resetState = () => {
+    initializeCommandLineState(
+      initialFileStructure,
+      initialCwdIndexPath,
+      setHomeDir,
+      setCurrDir
+    );
+    updateFileStructureVisualization(
+      svgData,
+      homeDir,
+      currDir,
+      RESET_FILE_TREE_OFFSETS
+    );
+    emptyHistory();
+  };
+
   initializeCommandLine(
     "#arrayValues",
     "#history",
@@ -141,9 +151,31 @@ function initializeCommandLineExercise(
     awardCreditHandler,
     ["git", "vi"],
     getCurrDir,
-    commandHistory
+    commandHistory,
+    resetState
   );
 }
+
+const initializeCommandLineState = (
+  initialFileStructure,
+  initialCwdIndexPath,
+  setHomeDir,
+  setCurrDir
+) => {
+  const homeDir = new Directory(
+    initialFileStructure ? initialFileStructure : DEFAULT_FILE_STRUCTURE
+  );
+
+  setHomeDir(homeDir);
+
+  const currDir = homeDir.followIndexPath(
+    initialCwdIndexPath ? initialCwdIndexPath : DEFAULT_CWD_INDEX_PATH
+  );
+
+  setCurrDir(currDir);
+
+  updateCommandLinePrompt(currDir);
+};
 
 function initializeGitExercise(
   text,
@@ -163,30 +195,13 @@ function initializeGitExercise(
 
   updateText(text);
 
-  let localHomeDir = new Directory(
-    initialFileStructure ? initialFileStructure : DEFAULT_GIT_FILE_STRUCTURE
-  );
-  let localCurrDir = localHomeDir.followIndexPath([]);
-
-  const remoteHomeDir = localHomeDir.copyWithGitId();
-
-  let localInitialCommit = new Commit();
-  let localCurrBranch = new Branch("main");
-  localInitialCommit.insertBranch(localCurrBranch);
-
-  const remoteInitialCommit = localInitialCommit.copy();
-  let remoteCurrBranch = remoteInitialCommit.branches[0];
-
-  localHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
-  remoteHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
-
-  if (emptyLocal) {
-    localHomeDir = null;
-    localCurrDir = null;
-    localCurrBranch = null;
-    localInitialCommit = null;
-  }
-
+  let localHomeDir;
+  let localCurrDir;
+  let remoteHomeDir;
+  let localInitialCommit;
+  let localCurrBranch;
+  let remoteInitialCommit;
+  let remoteCurrBranch;
   let svgData;
 
   function getLocalHomeDir() {
@@ -209,6 +224,10 @@ function initializeGitExercise(
     return remoteHomeDir;
   }
 
+  function setRemoteHomeDir(dir) {
+    remoteHomeDir = dir;
+  }
+
   function getLocalInitialCommit() {
     return localInitialCommit;
   }
@@ -227,6 +246,10 @@ function initializeGitExercise(
 
   function getRemoteInitialCommit() {
     return remoteInitialCommit;
+  }
+
+  function setRemoteInitialCommit(commit) {
+    remoteInitialCommit = commit;
   }
 
   function getRemoteCurrBranch() {
@@ -263,57 +286,39 @@ function initializeGitExercise(
     gitMethods
   );
 
-  if (initialCommands) {
-    initialCommands.forEach((command) => {
-      callCommand(command, commandsMap, {}, [], true);
-    });
-  }
+  initializeGitState(
+    initialFileStructure,
+    setLocalHomeDir,
+    setLocalCurrDir,
+    setRemoteHomeDir,
+    setLocalInitialCommit,
+    setLocalCurrBranch,
+    setRemoteInitialCommit,
+    setRemoteCurrBranch,
+    emptyLocal,
+    initialCommands,
+    initialRemoteCommands,
+    commandsMap,
+    getRemoteInitialCommit,
+    getRemoteCurrBranch,
+    getLocalCurrDir,
+    getLocalCurrBranch
+  );
 
-  if (initialRemoteCommands && initialRemoteCommands.length > 0) {
-    const remoteCommandsMap = createCommandsMap(
-      null,
-      () => remoteHomeDir,
-      () => {},
-      getRemoteHomeDir,
-      null,
-      {
-        getLocalInitialCommit: getRemoteInitialCommit,
-        getLocalCurrBranch: getRemoteCurrBranch,
-        setLocalCurrBranch: setRemoteCurrBranch,
-      }
-    );
-
-    initialRemoteCommands.forEach((command) => {
-      callCommand(command, remoteCommandsMap, {}, [], true);
-    });
-  }
-
-  updateCommandLinePrompt(localCurrDir, localCurrBranch);
-
-  let resizeCount = 0;
-
-  // new ResizeObserver(() => {
-  //   if (resizeCount === 1) {
+  //Fix timing issue for rendering visualization size
   setTimeout(() => {
     const id = "#visualization-container";
     const visualizationWidth = $(id).width();
     const visualizationHeight = $(id).height();
     svgData = renderGitVisualization(
       getLocalHomeDir(),
-      getLocalCurrDir()?.id,
+      getLocalCurrDir(),
       gitMethods,
       visualizationWidth,
       visualizationHeight,
       id
     );
-    //this is sloppy but I was having sizing issues
   }, 500);
-  // }
-  // else if (resizeCount > 1) {
-  //   updateTree();
-  // }
-  resizeCount++;
-  // }).observe(document.querySelector("#visualization-container"));
 
   const awardCreditHandler = {};
   awardCreditHandler[awardCreditCommand] = handleAwardCredit(
@@ -328,6 +333,36 @@ function initializeGitExercise(
 
   const commandHistory = new CommandHistory();
 
+  const resetState = () => {
+    initializeGitState(
+      initialFileStructure,
+      setLocalHomeDir,
+      setLocalCurrDir,
+      setRemoteHomeDir,
+      setLocalInitialCommit,
+      setLocalCurrBranch,
+      setRemoteInitialCommit,
+      setRemoteCurrBranch,
+      emptyLocal,
+      initialCommands,
+      initialRemoteCommands,
+      commandsMap,
+      getRemoteInitialCommit,
+      getRemoteCurrBranch,
+      getLocalCurrDir,
+      getLocalCurrBranch
+    );
+    updateGitVisualization(
+      svgData,
+      localHomeDir,
+      localCurrDir,
+      RESET_OFFSETS,
+      null,
+      gitMethods
+    );
+    emptyHistory();
+  };
+
   initializeCommandLine(
     "#arrayValues",
     "#history",
@@ -336,10 +371,91 @@ function initializeGitExercise(
     [],
     getLocalCurrDir,
     commandHistory,
+    resetState,
     disableAllCommandsExcept,
     getLocalCurrBranch
   );
 }
+
+const initializeGitState = (
+  initialFileStructure,
+  setLocalHomeDir,
+  setLocalCurrDir,
+  setRemoteHomeDir,
+  setLocalInitialCommit,
+  setLocalCurrBranch,
+  setRemoteInitialCommit,
+  setRemoteCurrBranch,
+  emptyLocal,
+  initialCommands,
+  initialRemoteCommands,
+  commandsMap,
+  getRemoteInitialCommit,
+  getRemoteCurrBranch,
+  getLocalCurrDir,
+  getLocalCurrBranch
+) => {
+  const localHomeDir = new Directory(
+    initialFileStructure ? initialFileStructure : DEFAULT_GIT_FILE_STRUCTURE
+  );
+
+  setLocalHomeDir(localHomeDir);
+  setLocalCurrDir(localHomeDir);
+
+  const remoteHomeDir = localHomeDir.copyWithGitId();
+
+  setRemoteHomeDir(remoteHomeDir);
+
+  const localInitialCommit = new Commit();
+  const localCurrBranch = new Branch("main");
+  localInitialCommit.insertBranch(localCurrBranch);
+
+  setLocalInitialCommit(localInitialCommit);
+  setLocalCurrBranch(localCurrBranch);
+
+  const remoteInitialCommit = localInitialCommit.copy();
+  const remoteCurrBranch = remoteInitialCommit.branches[0];
+
+  setRemoteInitialCommit(remoteInitialCommit);
+  setRemoteCurrBranch(remoteCurrBranch);
+
+  localHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
+  remoteHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
+
+  if (emptyLocal) {
+    setLocalHomeDir(null);
+    setLocalCurrDir(null);
+    setLocalCurrBranch(null);
+    setLocalInitialCommit(null);
+  }
+
+  if (initialCommands) {
+    initialCommands.forEach((command) => {
+      callCommand(command, commandsMap, {}, [], true);
+    });
+  }
+
+  if (initialRemoteCommands && initialRemoteCommands.length > 0) {
+    const remoteCommandsMap = createCommandsMap(
+      null,
+      () => remoteHomeDir,
+      () => {},
+      () => remoteHomeDir,
+      null,
+      {
+        getLocalInitialCommit: getRemoteInitialCommit,
+        getLocalCurrBranch: getRemoteCurrBranch,
+        setLocalCurrBranch: setRemoteCurrBranch,
+      }
+    );
+
+    initialRemoteCommands.forEach((command) => {
+      callCommand(command, remoteCommandsMap, {}, [], true);
+    });
+  }
+
+  updateCommandLinePrompt(getLocalCurrDir(), getLocalCurrBranch());
+};
 
 function updateText(text) {
   $("#command-title").text(text.commandTitle);
@@ -350,6 +466,7 @@ function updateText(text) {
 function awardCredit() {
   $("#success-message").removeClass("hidden").addClass("visible");
   ODSA.AV.awardCompletionCredit();
+  removeResetButton();
 }
 
 function updateCommandLinePrompt(currDir, currBranch) {
@@ -357,6 +474,14 @@ function updateCommandLinePrompt(currDir, currBranch) {
   $(".command-line-prompt-branch").text(
     currBranch ? `(${currBranch.name})` : ""
   );
+}
+
+function emptyHistory() {
+  $("#history").empty();
+}
+
+function removeResetButton() {
+  $("#reset-button").remove();
 }
 
 export {

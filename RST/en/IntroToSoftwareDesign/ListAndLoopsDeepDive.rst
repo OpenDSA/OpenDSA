@@ -391,14 +391,6 @@ its way down to index 0. This loop still uses the *early loop exit* technique
 to stop the loop as soon as the desired book is found.
 
 
-Check Your Understanding: Loop Idioms
--------------------------------------
-
-.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz2Summ.html ka
-   :long_name: Loop Idioms
-
-
-
 Accumulating an Answer: Count the Books by an Author
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -524,11 +516,42 @@ This can be useful when we have many items that fulfill the criteria in our
 if statement.
 
 
+Check Your Understanding: Loop Idioms
+-------------------------------------
+
+.. avembed:: Exercises/IntroToSoftwareDesign/Week9Quiz2Summ.html ka
+   :long_name: Loop Idioms
+
+
+
 Syntax Practice 9a: Loop Idioms
 -------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 9a: Loop Idioms'
    :workout_id: 1513
+
+
+Your Opinions on Motivation and Engagement 
+------------------------------------------
+
+Complete the following survey. The purpose of this task is to gather
+information about this course so that it can be improved. Your input is
+critical because we want to create the best experience possible for students.
+
+`CS 1114 Survey 1
+<https://virginiatech.questionpro.com/t/AUHNlZuUGG>`_
+
+Towards the end of the survey you will be asked if you consent for this
+information to be used in a study about perceptions of student learning
+and engagement.  There is no additional work on your part if you provide
+consent for your responses to be used in the study.  Completing the survey
+should take about 15 minutes.
+
+Please answer below and your participation in the survey will be verified
+for credit.
+
+.. avembed:: Exercises/IntroToSoftwareDesign/MUSICSurvey.html ka
+   :long_name: Survey Completed
 
 
 Generics Revisited

@@ -340,19 +340,15 @@ requirejs(["./mathjs.js"], function(){});
                     if (data != "") // So something is being sent back for feedback
                     {
                         var settings = {
-                        // old
-                        // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                        // okay for local
-                        // "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
-                        // changed for opendsax
-                        "url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
-                        "method": "POST",
-                        // "async": false,
-                        "timeout": 0,
-                        "headers": {
-                            "Content-Type": "application/json"
-                        },
-                        "data": JSON.stringify(data, null, 4),
+                            // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                            "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
+                            "method": "POST",
+                            // "async": false,
+                            "timeout": 0,
+                            "headers": {
+                                "Content-Type": "application/json"
+                            },
+                            "data": JSON.stringify(data, null, 4),
                         };
                         
                         $.ajax(settings).done(function (response) {
@@ -706,9 +702,7 @@ requirejs(["./mathjs.js"], function(){});
             }
             var settings = {
                 // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                // "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
-                // changed for opendsax
-                "url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
+                "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                 "async": false,
                 "method": "POST",
                 "timeout": 0,
@@ -781,9 +775,7 @@ requirejs(["./mathjs.js"], function(){});
                     })
                     var settings = {
                         // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                        // "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
-                        // changed for opendsax
-                        "url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
+                        "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                         "method": "POST",
                         "timeout": 0,
                         "headers": {

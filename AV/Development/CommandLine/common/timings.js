@@ -231,6 +231,61 @@ const INITIALIZE_OFFSETS = {
   },
 };
 
+const RESET_OFFSETS = {
+  local: {
+    fileTree: {
+      fileRectangles: {
+        durations: { enter: 1000, exit: 1000 },
+        delays: { enter: 3000, exit: 2000 },
+      },
+      fileLinks: {
+        durations: { enter: 3000, exit: 3000 },
+        delays: { enter: 3000 },
+      },
+    },
+    commitTree: {
+      commitCircles: {
+        durations: { enter: 1000, exit: 1000 },
+        delays: { enter: 3000, exit: 2000 },
+      },
+      commitLinks: {
+        durations: { enter: 3000, exit: 3000 },
+        delays: { enter: 3000 },
+      },
+      branchRectangles: {
+        durations: { enter: 1000, exit: 1000 },
+        delays: { enter: 3000, exit: 2000 },
+      },
+    },
+  },
+  remote: {
+    fileTree: {
+      fileRectangles: {
+        durations: { enter: 1000, exit: 1000 },
+        delays: { enter: 3000, exit: 2000 },
+      },
+      fileLinks: {
+        durations: { enter: 3000, exit: 3000 },
+        delays: { enter: 3000 },
+      },
+    },
+    commitTree: {
+      commitCircles: {
+        durations: { enter: 1000, exit: 1000 },
+        delays: { enter: 3000, exit: 2000 },
+      },
+      commitLinks: {
+        durations: { enter: 3000, exit: 3000 },
+        delays: { enter: 3000 },
+      },
+      branchRectangles: {
+        durations: { enter: 1000, exit: 1000 },
+        delays: { enter: 3000, exit: 2000 },
+      },
+    },
+  },
+};
+
 const INITIALIZE_FILE_TREE_OFFSETS = {
   local: {
     fileTree: {
@@ -239,6 +294,21 @@ const INITIALIZE_FILE_TREE_OFFSETS = {
       },
       fileLinks: {
         durations: { enter: 3000 },
+      },
+    },
+  },
+};
+
+const RESET_FILE_TREE_OFFSETS = {
+  local: {
+    fileTree: {
+      fileRectangles: {
+        durations: { enter: 1000, exit: 1000 },
+        delays: { enter: 3000, exit: 2000 },
+      },
+      fileLinks: {
+        durations: { enter: 3000, exit: 3000 },
+        delays: { enter: 3000 },
       },
     },
   },
@@ -458,4 +528,6 @@ export {
   PULL_OFFSETS,
   BRANCH_OFFSETS,
   SWITCH_OFFSETS,
+  RESET_FILE_TREE_OFFSETS,
+  RESET_OFFSETS,
 };

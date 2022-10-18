@@ -173,6 +173,7 @@ function initializeCommandLine(
   disabledCommands,
   getCurrDir,
   commandHistory,
+  resetHandler,
   disableAllCommandsExcept,
   getCurrBranch
 ) {
@@ -193,6 +194,8 @@ function initializeCommandLine(
   $(inputId).keyup(handleKeyup);
 
   $("#commandline").click(() => focusInput(inputId));
+
+  $("#reset-button").click(resetHandler);
 }
 
 export { initializeCommandLine, callCommand };
