@@ -61,6 +61,7 @@ def simple2full():
     resp = run_command(cmd)
     return jsonify(resp)
 
+
 @app.route('/api/irtcurve/', methods=['POST'])
 def irt_curve():
     if request.method != 'POST':
@@ -72,7 +73,7 @@ def irt_curve():
     return jsonify(resp)
 
 
-@app.route('/api/deformsfeedback/', methods=['POST'])
+@app.route('/deforms/api/deformsfeedback/', methods=['POST'])
 def deforms_feedback():
     if request.method != 'POST':
         return jsonify({"ok": False})
