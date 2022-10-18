@@ -395,29 +395,6 @@ Syntax Practice: Scoping
    :workout_id: 1572
 
 
-Your Opinions on Motivation and Engagement 
-------------------------------------------
-
-Complete the following survey. The purpose of this task is to gather
-information about this course so that it can be improved. Your input is
-critical because we want to create the best experience possible for students.
-
-`CS 1114 Survey
-<https://virginiatech.qualtrics.com/jfe/form/SV_06gbOCFIRfYdrgy>`_
-
-Towards the end of the survey you will be asked if you consent for this
-information to be used in a study about perceptions of student learning
-and engagement.  There is no additional work on your part if you provide
-consent for your responses to be used in the study.  Completing the survey
-should take about 15 minutes.
-
-Please answer below and your participation in the survey will be verified
-for credit.
-
-.. avembed:: Exercises/IntroToSoftwareDesign/MUSICSurvey.html ka
-   :long_name: Survey Completed
-
-
 Java Input and Output
 ---------------------
 

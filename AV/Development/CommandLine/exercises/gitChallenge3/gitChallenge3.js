@@ -17,7 +17,8 @@ $(document).ready(function () {
     ) =>
     (args) => {
       if (args.length > 0 && args[0] === "push") {
-        if (!getRemoteHomeDir().find("config.js")) {
+        const src = getRemoteHomeDir().find("src");
+        if (src && !src.find("config.js")) {
           awardCredit();
         }
       }

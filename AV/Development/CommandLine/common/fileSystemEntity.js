@@ -450,6 +450,10 @@ class File extends FileSystemEntity {
   countFiles() {
     return 1;
   }
+
+  getName() {
+    return this.name;
+  }
 }
 
 class Directory extends FileSystemEntity {
@@ -985,6 +989,10 @@ class Directory extends FileSystemEntity {
     });
 
     return pathsAndStates;
+  }
+
+  getName() {
+    return this.name + "/";
   }
 }
 
