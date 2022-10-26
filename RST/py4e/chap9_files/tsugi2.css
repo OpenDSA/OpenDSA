@@ -1,0 +1,656 @@
+/* http://www.labnol.org/internet/light-youtube-embeds/27941/ */
+
+    .youtube-player {
+        position: relative;
+        padding-bottom: 56.23%;
+        /* Use 75% for 4:3 videos */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: #000;
+        margin: 5px;
+    }
+
+    .youtube-player iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        background: transparent;
+    }
+
+    .youtube-player img {
+        bottom: 0;
+        display: block;
+        left: 0;
+        margin: auto;
+        max-width: 100%;
+        width: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: none;
+        height: auto;
+        cursor: pointer;
+        -webkit-transition: .4s all;
+        -moz-transition: .4s all;
+        transition: .4s all;
+    }
+
+    .youtube-player img:hover {
+        -webkit-filter: brightness(75%);
+    }
+
+    .youtube-player .play {
+        height: 72px;
+        width: 72px;
+        left: 50%;
+        top: 50%;
+        margin-left: -36px;
+        margin-top: -36px;
+        position: absolute;
+        background: url("TxzC70f.png") no-repeat;
+        cursor: pointer;
+    }
+
+.fa-stack[data-count]:after{
+  position:absolute;
+  right:0%;
+  top:1%;
+  content: attr(data-count);
+  font-size:30%;
+  padding:.6em;
+  border-radius:999px;
+  line-height:.75em;
+  color: white;
+  background:rgba(255,0,0,.85);
+  text-align:center;
+  min-width:2em;
+  font-weight:bold;
+}
+
+.tsugi_overlay {
+    opacity:1.0;
+    background-color:#fff;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:100px;
+    left:0px;
+    z-index:1000;
+    text-align: center;
+}
+
+/* Adapted from https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp */
+/* The Overlay (background) */
+.w3schools-overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 2000; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  text-align: center;
+  display: none;
+}
+
+/* Position the content inside the overlay */
+.w3schools-overlay-content {
+  position: relative;
+  background-color: var(--background-color);
+  top: 40px;
+  width: 90%;
+  margin: auto;
+  z-index: 2001; /* Sit on top */
+}
+
+/* Bootstrap theme changes */
+html {
+    font-size: var(--font-size);
+}
+body {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    line-height: 1.93rem;
+    color: var(--text);
+    background-color: var(--background-color);
+}
+a, .btn-link {
+    color: var(--primary);
+}
+a:active,
+a:hover,
+a:focus,
+.btn-link:active,
+.btn-link:hover,
+.btn-link:focus {
+    color: var(--primary);
+    opacity: 0.8;
+}
+a:active,
+a:focus,
+a:hover,
+.btn-link:active,
+.btn-link:focus,
+.btn-link:hover {
+    text-decoration: none;
+}
+.btn {
+    font-weight: 900;
+    font-size: 1.14rem;
+    line-height: 1.93rem;
+}
+.btn-primary {
+    color: var(--secondary);
+    background-color: var(--primary);
+    border-color: var(--primary-border);
+}
+.btn-primary:focus,
+.btn-primary.focus {
+    color: var(--secondary);
+    background-color: var(--primary-darker);
+    border-color: var(--primary-darkest);
+}
+.btn-primary:hover {
+    color: var(--secondary);
+    background-color: var(--primary-darker);
+    border-color: var(--primary-darkest);
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+    color: var(--secondary);
+    background-color: var(--primary-darker);
+    background-image: none;
+    border-color: var(--primary-darkest);
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+    color: var(--secondary);
+    background-color: var(--primary-darker);
+    border-color: var(--primary-darkest);
+}
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus {
+    background-color: var(--primary-darker);
+    border-color: var(--primary-darkest);
+}
+.btn-primary .badge {
+    color: var(--primary-darkest);
+    background-color: var(--secondary);;
+}
+h1, .h1 {
+    font-weight: 900;
+    font-size: 2.64rem;
+    line-height: 4.23rem;
+}
+h2, .h2 {
+    font-weight: 900;
+    font-size: 2.07rem;
+    line-height: 3.43rem;
+}
+h3, .h3 {
+    font-weight: 900;
+    font-size: 1.64rem;
+    line-height: 2.86rem;
+}
+h4, .h4 {
+    font-weight: 900;
+    font-size: 1.29rem;
+    line-height: 1.93rem;
+}
+h5, .h5 {
+    font-weight: 900;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+h1.inline, .h1.inline,
+h2.inline, .h2.inline,
+h3.inline, .h3.inline,
+h4.inline, .h4.inline,
+h5.inline, .h5.inline {
+    font-weight: normal;
+    line-height: 1.5rem;
+    text-decoration: none;
+}
+h1 > small,
+h2 > small,
+h3 > small,
+h4 > small,
+h5 > small {
+    font-weight: 900;
+    color: var(--text-light);
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small,
+.h1 .small,
+.h2 .small,
+.h3 .small,
+.h4 .small,
+.h5 .small,
+.h6 .small {
+    color: var(--text-light);
+}
+h1.small-hdr,
+h2.small-hdr,
+h3.small-hdr,
+h4.small-hdr,
+h5.small-hdr {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+h2.sub-hdr,
+h3.sub-hdr,
+h4.sub-hdr,
+h5.sub-hdr {
+    margin-top: 0;
+}
+h1.hdr-notop-mrgn,
+h2.hdr-notop-mrgn,
+h3.hdr-notop-mrgn,
+h4.hdr-notop-mrgn,
+h5.hdr-notop-mrgn {
+    margin-top: 0;
+}
+label.h1,
+label.h2,
+label.h3,
+label.h4,
+label.h5 {
+    margin-top: 0;
+}
+.navbar {
+    margin-bottom: 0;
+}
+.navbar-header {
+    padding-top: 0.23rem;
+}
+.navbar-inverse {
+    background: var(--primary-menu);
+    border-color: var(--primary-menu);
+}
+.navbar-inverse .navbar-brand {
+    color: var(--secondary-menu);
+}
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+    color: var(--secondary-menu);
+    background-color: transparent;
+}
+.navbar-inverse .navbar-text {
+    color: var(--secondary-menu);
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: var(--secondary-menu);
+}
+.navbar-inverse .navbar-nav > li > p {
+    color: var(--secondary-menu);
+}
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: var(--secondary-menu);
+    background-color: transparent;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    color: var(--secondary-menu);
+    background: var(--primary-menu);
+}
+.navbar-inverse .navbar-nav > .disabled > a,
+.navbar-inverse .navbar-nav > .disabled > a:hover,
+.navbar-inverse .navbar-nav > .disabled > a:focus {
+    color: var(--secondary-menu);
+    background: transparent;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: var(--secondary-menu);
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background: var(--primary-menu);
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background: var(--secondary-menu);
+}
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+    border-color: var(--secondary-menu);
+    background: var(--primary-menu);
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background: var(--primary-menu);
+    border-color: var(--secondary-menu);
+    color: var(--secondary-menu);
+}
+@media (max-width: 767px) {
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+        color: var(--secondary-menu);
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > p {
+        color: var(--secondary-menu);
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: var(--secondary-menu);
+        background: transparent;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: var(--secondary-menu);
+        background: var(--primary-menu);
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: var(--secondary-menu);
+        background: transparent;
+    }
+}
+.navbar-inverse .navbar-link {
+    color: var(--secondary-menu);
+}
+.navbar-inverse .navbar-link:hover {
+    color: var(--secondary-menu);
+}
+.navbar-inverse {
+    border: none;
+    border-radius: 0;
+}
+.navbar-inverse .nav > li {
+    font-size: 1.23rem;
+    margin-top: 0.43rem;
+    margin-bottom: 0.43rem;
+    padding: 0 0.43rem;
+}
+.navbar-inverse .nav > li > a {
+    border-bottom: 2px solid transparent;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0.43rem;
+    margin-left: 1.07rem;
+    margin-right: 1.07rem;
+    margin-bottom: 0.43rem;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+    font-size: 1.64rem;
+    opacity: 1;
+}
+.navbar-inverse .nav > li > a:active,
+.navbar-inverse .nav > li > a:hover,
+.navbar-inverse .nav > li > a:focus {
+    background-color: var(--primary-menu);
+    color: var(--secondary-menu);
+    opacity: 1;
+}
+.navbar-inverse .nav > li > a:hover,
+.navbar-inverse .nav > li > a:focus,
+.navbar-inverse .nav > li.active > a,
+.navbar-inverse .nav > li.active > a:hover,
+.navbar-inverse .nav > li.active > a:focus {
+    border-bottom-color: var(--secondary-menu);
+    opacity: 1;
+}
+.navbar-default {
+    background: var(--secondary-menu);
+    border-color: var(--primary-menu);
+}
+.navbar-default .navbar-brand {
+    color: var(--primary-menu);
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: var(--primary-menu);
+    background-color: transparent;
+}
+.navbar-default .navbar-text {
+    color: var(--primary-menu);
+}
+.navbar-default .navbar-nav > li > a {
+    color: var(--primary-menu);
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: var(--primary-menu);
+    background-color: transparent;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: var(--primary-menu);
+    background: var(--secondary-menu);
+}
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+    color: var(--primary-menu);
+    background: transparent;
+}
+.navbar-default .navbar-toggle {
+    border-color: var(--primary-menu);
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background: var(--secondary-menu);
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background: var(--primary-menu);
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: var(--primary-menu);
+    background: var(--secondary-menu);
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    background: var(--secondary-menu);
+    border-color: var(--primary-menu);
+    color: var(--primary-menu);
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: var(--primary-menu);
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: var(--primary-menu);
+        background: transparent;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: var(--primary-menu);
+        background: var(--secondary-menu);
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: var(--primary-menu);
+        background: transparent;
+    }
+}
+.navbar-default .navbar-link {
+    color: var(--primary-menu);
+}
+.navbar-default .navbar-link:hover {
+    color: var(--primary-menu);
+}
+.navbar-default {
+    border: none;
+    border-radius: 0;
+}
+.navbar-default .nav > li {
+    font-size: 1.23rem;
+    margin-top: 0.43rem;
+    margin-bottom: 0.43rem;
+    padding: 0 0.43rem;
+}
+.navbar-default .nav > li > a {
+    border-bottom: 2px solid transparent;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0.43rem;
+    margin-left: 1.07rem;
+    margin-right: 1.07rem;
+    margin-bottom: 0.43rem;
+}
+.navbar-default .nav > li > p {
+    border-bottom: 2px solid transparent;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0.43rem;
+    margin-left: 1.07rem;
+    margin-right: 1.07rem;
+    margin-bottom: 0.43rem;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    font-size: 1.64rem;
+    opacity: 1;
+}
+.navbar-default .nav > li > a:active,
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li > a:focus {
+    background-color: var(--secondary-menu);
+    color: var(--primary-menu);
+    opacity: 1;
+}
+.navbar-default .nav > li:hover > a,
+.navbar-default .nav > li:focus > a,
+.navbar-default .nav > li.active > a,
+.navbar-default .nav > li.active:hover > a,
+.navbar-default .nav > li.active:focus > a {
+    border-bottom-color: var(--primary-menu);
+    opacity: 1;
+}
+@media (max-width: 767px) {
+    .nav > li:hover > a,
+    .nav > li:focus > a,
+    .nav > li.active > a,
+    .nav > li.active:hover > a,
+    .nav > li.active:focus > a {
+        border-bottom-color: transparent;
+    }
+}
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 0.43rem;
+}
+.navbar-nav > li.dropdown > a img {
+    height: 3.35rem;
+}
+.navbar-default .nav > li.dropdown > a.dropdown-img,
+.navbar-inverse .nav > li.dropdown > a.dropdown-img {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.flx-cntnr {
+    display: flex;
+    position: relative;
+}
+.flx-row {
+    flex-direction: row;
+}
+.flx-nowrap {
+    flex-wrap: nowrap;
+}
+.flx-start {
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.flx-grow-all {
+    flex-grow: 1;
+}
+.flx-grow-1 {
+    flex-grow: 1;
+}
+.flx-grow-2 {
+    flex-grow: 2;
+}
+#flashmessages {
+    position: relative;
+}
+.alert-banner {
+    width: 100%;
+    padding-top: 0.71rem;
+    padding-bottom: 0.57rem;
+    font-size: 1.23rem;
+    line-height: 1.93rem;
+}
+.alert-banner > .container > .close {
+    margin-right: 0.57rem;
+}
+#toolTitle {
+    margin-top: 3.23rem;
+}
+.splash-container {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.splash-content {
+    text-align: center;
+    color: var(--secondary);
+}
+h1.splash-header {
+    color: var(--secondary);
+}
+.splash-container {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.splash-content {
+    text-align: center;
+}
+
+/* https://stackoverflow.com/questions/23001424/how-do-i-get-rid-of-this-blue-halo-around-the-close-dialog-button-with-jqueryui */
+
+.ui-button:focus { outline:none !important }
