@@ -15,14 +15,12 @@ Set Notation
 Introduction to Sets
 --------------------
 
-The concept of a set in the mathematical sense is widely usde in
+The concept of a set in the mathematical sense is widely used in
 computer science.
 The notations and techniques of set theory are commonly used when
 describing and implementing algorithms because the abstractions
 associated with sets often help to clarify and simplify algorithm
 design.
-So, knowing this notation helps you to communicate with other computer
-scientists.
 
 .. inlineav:: SetDefFS ff
    :links: AV/PIFLA/Background/SetDefFS.css

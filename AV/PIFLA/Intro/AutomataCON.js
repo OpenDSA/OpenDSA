@@ -1,4 +1,3 @@
-/*global JSAV, document */
 // Written by Brannon Angers
 
 $(document).ready(function() {

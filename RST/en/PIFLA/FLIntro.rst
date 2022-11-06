@@ -23,9 +23,12 @@ However, it does it in some untraditional ways, as explained below.
 Also, since this might be the only classical CS theory course that you
 take in your curriculum, we throw in at the end a little introduction to
 two other traditional topics in CS theory:
-Complexity theory (also known as NP-completeness, which relates to
-undestanding what is expensive versus not so expensive to compute);
-and Computability (the study of where the limits are in terms of what
+Complexity theory (also known as
+:term:`NP-completeness <NP-Complete>`,
+which relates to undestanding what is expensive versus not so
+expensive to compute);
+and :term:`Computability <computability>`
+(the study of where the limits are in terms of what
 problems are possible for a computer program to solve).
 
 
@@ -110,16 +113,21 @@ tests against your machine to see if its answers match ours.
 What We Will Do
 ---------------
 
-It is really hard to reason about the abilities of a modern Intel or AMD
-processor with billions of transistors.
+It is really hard to reason about the abilities of a modern Intel or
+AMD processor with billions of transistors.
 And you don't want to reinvent the wheel if you can process your
 input with a regex parser or use a tool like YACC to generate a simple
 compiler.
-So, to help understand these problems, and the tools that can solve them,
+In particular, we will be examining the computing powers that are
+required to solve some basic problems related to strings.
+Specifically, the problems typically want to solve are whether a given
+string is in a given language, or whether a given string
+representation can generate a particular string.
+To help understand these problems, and the tools that can solve them,
 Computer Scientists have developed many simple models of computation.
 Each of them can be implemented relatively easily in software.
-But more importantly, they are simple enough to really understand what
-they can (and cannot) do.
+But more importantly, they are simple enough that we can really
+understand what they can (and cannot) do.
 
 This course is about these various models of computation, how
 complicated each one is, and what its limits are.
@@ -131,7 +139,8 @@ to use regex tools to solve the wrong problem
 (not all sets of strings can be represented by a regex).
 Likewise, if you know the limits of the types of grammar supported by
 a given compiler generator like YACC or Bison, then you know whether
-you can use that tool to get your job done, or whether you need to go
+you can use that tool to quickly write an interpreter or compiler for
+a given language, or whether you need to go
 to the much greater effort of "rolling your own" compiler.
 This sort of question comes up often enough in the working life of a
 practicing programmer that you want to know when a tool will solve
@@ -144,7 +153,9 @@ the following.
 
   * Examples: 9998.89  8abab  789342
 
-  This should be easy. Think about how you would solve it with a program.
+  This should be easy.
+  Think about how you would solve it using your
+  favorite programming language.
 
 * Can you do it if your machine had no additional memory other than
   the program itself?
@@ -164,8 +175,10 @@ the following.
 
   Answer: Yes. Here we get into the concept of an "even state" and an
   "odd state".
-  But those can be built into the program, so need not be part of the
-  working memory.
+  But those can be built into the program, and so you don't need use
+  any variables to remember the state.
+  When you run out of output, your current position in the program
+  tells you the answer.
 
 * Can you write a program to determine if a string is a legal
   arithmetic expression?
@@ -208,8 +221,9 @@ the following.
   The alphabet must be finite, say :math:`N` characters.
   How many possible strings are there to check?
   :math:`N^{12}`, some which are valid, some which are not.
-  Your program would be brute force and incredibly
-  huge and be of the form
+  Your program could use brute force and so be incredibly
+  huge.
+  This could be of the form
   "If x is this string, then valid, else if x is this string, then not
   valid, etc."
   But it is **possible** to do.
@@ -224,8 +238,9 @@ the following.
   memory probably seems alien to you in the context of writing
   programs.
   But we are going to see other ways of doing computation (in
-  particular, checking if a given string is in some set of strings or
-  not), and these methods do not use working memory in a way that will
+  particular, checking whether a given string is in some set of
+  strings or not),
+  and these methods do not use working memory in a way that will
   seem quite natural within their context.
 
 * Can you write a program to determine the **value** of a valid
@@ -235,8 +250,9 @@ the following.
 
     * ((34 + 7 ∗ (18/6)))
 
-  This question is different. Instead of asking if the form of an
-  expression is valid, we are asking to evaluate it and solve it
+  This question is different.
+  Instead of asking if the form of an
+  expression is valid, we are asking to verify the format and solve it
   (well, of course that will only successfully happen if the
   expression happens to be valid).
 
@@ -245,7 +261,7 @@ the following.
   expression have the same level of power required to compute the result
   of that expression?
 
-  Answer: No.
+  Answer: No. For now, you can think about this claim on your own.
 
 * Can you write a program to determine if a file is a valid Java program?
 
@@ -280,12 +296,17 @@ the following.
   This is another topic that we will be looking at this semester:
   What functions are **possible** to compute?
 
-* What types of languages can we represent with Regular Expressions,
-  BNF Grammars, and Context Free Grammars?
-  Are these all "the same" in that they deal with the same languages,
+* What types of languages can we represent with
+  :term:`Regular Expressions <regular expression>`,
+  :term:`Regular Grammars <regular grammar>`, and
+  :term:`Context-Free Grammars <context-free grammar>`?
+  Are these "all the same" in that they deal with the same languages,
   or are they different?
 
-* What is the relative "power" of a Push-down Automata, a Finate State
-  Automata, a Non-Deterministic Finite Automata, and a Turing Machine?
+* What is the relative "power" of a
+  :term:`Pushdown Automata <pushdown automata>`,
+  a :term:`Finite State Automata`,
+  a :term:`Non-Deterministic <non-deterministic>` Finite Automata,
+  and a :term:`Turing Machine <Turing machine>`?
   For any pair of these, are there problems that one can solve that
   the other cannot?

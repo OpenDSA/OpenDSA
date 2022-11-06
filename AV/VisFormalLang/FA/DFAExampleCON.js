@@ -11,7 +11,7 @@ $(document).ready(function() {
   var tape = av.ds.tape(strings, xStart, yStart, "right");
   tape.arr.unhighlight(1); // Why is this highlighted at start??
   tape.arr.highlight(2);
-  
+
   av.g.line(xStart + 80, yStart + 95, xStart + 80, yStart + 35,
             {"arrow-end": "classic-wide-long"});
   av.label("tape head", {left: xStart + 5, top: yStart + 25});
