@@ -49,7 +49,6 @@ Practicing Grammars
 .. avembed:: Exercises/FLA/CharacterizeLang1.html ka
    :long_name: Characterizing a Language, Problem 1
 
-
 .. avembed:: Exercises/FLA/CharacterizeLang2.html ka
    :long_name: Characterizing a Language, Problem 2
 
