@@ -83,11 +83,12 @@
       }
     },
     "Mathematical Background": {
-      "PIFLA/SetNotation": {
+      "PIFLA/SetNotationFLAFS": {
         "SetDefFS": {
           "points": 1.0
         }
       },
+      "PIFLA/SetNotation": {},
       "PIFLA/Relations": {
         "SetTFrelation": {
           "threshold": 5
