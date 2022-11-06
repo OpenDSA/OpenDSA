@@ -3,22 +3,23 @@
     "en": {
       "alpha": {
         "type": "select",
-        "description": "Let's start with an :term:`alphabet`. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). Alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols}.",
+        "description": "Let's start with an :term:`alphabet`. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). Alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols.",
         "question": "Which of the following is an alphabet?",
         "answer": ["$\\{a, b, c\\}$", "$\\{0, 1\\}$", "$\\{?, a, x\\}$"],
         "choices": ["$\\{a, b, c\\}$", "$\\{0, 1\\}$", "$A$", "$\\{?, a, x\\}$"],
+        "correctFeedback": ["Any set of symbols is an alphabet."],
         "incorrectFeedback": ["Make sure that you select all of the alphabets, and that everything you select is a set."]
       },
       "char":{
         "type": "multiple",
-        "description": "Let's start with an alphabet. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). Alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols}.",
+        "description": "Let's start with an :term:`alphabet`. We normally represent an alphabet with the symbol $\\Sigma$ (Sigma). Alphabet $\\Sigma$ is just a set of symbols. The symbols we typically use are letters or digits, but an alphabet could include any symbols.",
         "question": "[T/F] $A$ is not an alphabet because it is just a character",
         "answer": "True",
         "choices": ["True", "False"]
       },
       "strings": {
         "type": "select",
-        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course).",
+        "description": "Given some alphabet set $\\Sigma$, a string is any finite sequence of symbols taken from $\\Sigma$.",
         "question": "Suppose we have $\\Sigma$ = $\\{a, b\\}$. Which of the following are valid strings on $\\Sigma$?",
         "answer": ["$babababbaba$", "$a$"],
         "choices": ["$babababbaba$", "$a$", "$\\{aaa, bbb\\}$", "$bacbabcba$"],
@@ -26,14 +27,14 @@
       },
       "stringnotset": {
         "type": "multiple",
-        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course).",
+        "description": "Given some alphabet set $\\Sigma$, a string is any finite sequence of symbols taken from $\\Sigma$.",
         "question": "Suppose we have $\\Sigma = \\{a, b\\}$. Why is $\\{aaa, bbb\\}$ not a valid string?",
         "answer": "Because $\\{aaa, bbb\\}$ is a set, not a string",
         "choices": ["Because it has characters not in the alphabet", "Because $\\{aaa, bbb\\}$ is a set, not a string"]
       },
       "badchar": {
         "type": "multiple",
-        "description": "Given some alphabet set $\\Sigma$, a string is a finite sequence of symbols (taken from $\\Sigma$, of course).",
+        "description": "Given some alphabet set $\\Sigma$, a string is any finite sequence of symbols taken from $\\Sigma$.",
         "question": "Suppose we have $\\Sigma = \\{a, b\\}$. [T/F] $bacbabcba$ is a vaild string in $\\Sigma$",
         "answer": "False",
         "choices": ["True", "False"],
@@ -41,7 +42,7 @@
       },
       "examplelang": {
         "type": "select",
-        "description": "A <b>language</b> is simply a subset of the strings that can be defined over $\\Sigma$. We normally use the variable $L$ to indicate a language.",
+        "description": "A <b>language</b> is simply a subset of the strings that can be defined over $\\Sigma$. We often use the variable $L$ to indicate a language.",
         "question": "Which of the following are languages from their respective $\\Sigma$?",
         "answer": [
           "$\\Sigma = \\{0,1,2,3,4,5,6,7,8, 9\\}$, $L = \\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...\\}$",
@@ -52,11 +53,12 @@
           "$\\Sigma = \\{0,1,2,3,4,5,6,7,8, 9\\}$, $L = \\{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,...\\}$",
           "$\\Sigma = \\{a,b,c\\}$, $L=\\{ab,ac,cabb\\}$",
           "$\\Sigma = \\{0,1,2,3,4,5,6,7,8, 9\\}$, $L = \\{set\\ of\\ all\\ positive\\ even\\ numbers\\}$"
-        ]
+        ],
+        "correctFeedback": ["Notice the different ways that we describe the strings that are in the language."]
       },
       "notset": {
         "type": "multiple",
-        "description": "A <b>language</b> is simply a subset of the strings that can be defined over $\\Sigma$. We normally use the variable $L$ to indicate a language.",
+        "description": "A <b>language</b> is simply a subset of the strings that can be defined over $\\Sigma$. We often use the variable $L$ to indicate a language.",
         "question": "For $\\Sigma$=$\\{a,b,c\\}$, is $L = ab$ a language?",
         "answer": "No",
         "choices": ["Yes", "No"],
@@ -77,7 +79,8 @@
         "description": "For $\\Sigma$={$0, 1, 2, 3, 4, 5, 6, 7, 8, 9\\}$, we can define $L=\\{all\\ even\\ numbers\\}$. This is an example of a <b>descriptive set former</b>.",
         "question": "How many strings are in this language?",
         "answer": "An infinite number",
-        "choices": ["A finite number", "An infinite number"]
+        "choices": ["A finite number", "An infinite number"],
+        "correctFeedback": ["So, we cannot describe this language by writing out all of its strings."]
       },
       "empty": {
         "type": "multiple",
@@ -89,21 +92,21 @@
       "emptysymbol": {
         "type": "multiple",
         "description": "Right, since a language is just a set of strings, the empty set is a perfectly good language.",
-        "question": "Oh, and remember that we have a special symbol for “empty” set. Which is it?",
+        "question": "Oh, and remember that we have a special way to write “empty” set. Which is it?",
         "answer": "$\\{\\}$",
         "choices": ["$\\Sigma$", "$E$", "$\\{\\}$"]
       },
       "stringname": {
         "type": "multiple",
         "description": "A language can have any symbols in its alphabet. But to get our ideas across, we nearly always use languages with simple alphabets of only a few characters. We typically use either digits or else letters near the start of the English alphabet. So, we nearly always use only $a, b, c, d, 0, 1$ in our alphabets. For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the English alphabet: $u, v, w, x, y, z$",
-        "question": "So, when you see $b$ in a sentence, it probably refers to",
+        "question": "So, when we talk about $b$, it probably refers to",
         "answer": "The character ‘$b$’.",
         "choices": ["The character ‘$b$’.", "Some string named $b$."]
       },
       "charname": {
         "type": "multiple",
         "description": "A language can have any symbols in its alphabet. But to get our ideas across, we nearly always use languages with simple alphabets of only a few characters. We typically use either digits or else letters near the start of the English alphabet. So, we nearly always use only $a, b, c, d, 0, 1$ in our alphabets. For string names (that is, some variable that is meant to refer to a string), we usually use letters near the end of the English alphabet: $u, v, w, x, y, z$",
-        "question": "And if you see $w$ in a sentence, it probably refers to ",
+        "question": "And if we talk about $w$, it probably refers to ",
         "answer": "Some string given the name $w$",
         "choices": ["The character ‘$w$’", "Some string given the name $w$"]
       },
@@ -112,11 +115,12 @@
         "description": "We are going to use a few basic string operations a lot. The size of a string is the number of symbols in the string.  We use the operator $|\\ |$ to donate the size of the string.",
         "question": "Let $w=abbc$, $v=ab$, What is $|w|$ + $|v|$",
         "answer": "6",
-        "choices": ["3", "4", "5", "6", "7", "8"]
+        "choices": ["3", "4", "5", "6", "7", "8"],
+        "correctFeedback": ["$|w| = 4$, and $|v| = 2$. So, $4 + 2 = 6$."]
       },
       "concat": {
         "type": "multiple",
-        "description": "Another important operation is string concatenation. The concatenation of two strings $u$, and v is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use $\\circ$ to represent concatenation. Example: Let $w = a_1 a_2 ... a_n$, and $v = b_1 b_2 ... b_m$ Then, $w \\circ v = a_1 a_2 ... a_n b_1 b_2 ... b_m$",
+        "description": "Another important operation is string concatenation. The concatenation of two strings $u$ and $v$ is just the string that contains the symbols of $u$ followed by the symbols of $v$. We use $\\circ$ to represent concatenation. Example: Let $w = a_1 a_2 ... a_n$, and $v = b_1 b_2 ... b_m$ Then, $w \\circ v = a_1 a_2 ... a_n b_1 b_2 ... b_m$",
         "question": "Let $w = abc$ and $v = 012$, What is $w \\circ v$?",
         "answer": "$abc012$",
         "choices": ["$abc012$", "$012abc$", "$012$", "$abc$"]
@@ -139,29 +143,29 @@
       },
       "selfconcat": {
         "type": "select",
-        "description": "Of course, we can also concatenate a string with itself. This happens often enough that its worthwhile to have notation for it. Suppose we have a string $v$.  The notation $v^3$ means concatenate $v$ with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$",
+        "description": "Of course, we can also concatenate a string with itself. We talk about this often enough that its worthwhile to have notation for it. Suppose we have a string $v$.  The notation $v^3$ means concatenate $v$ with itself 3 times. Concatenating a string with itself zero times yields the empty string $\\lambda$.",
         "question": "let $v = ab$, what is $v^3$ ?",
-        "answer": ["$vvv$", "$v∘v∘v$", "$ababab$"],
-        "choices": ["$vvv$", "$v∘v∘v$", "$ababab$"],
+        "answer": ["$vvv$", "$v \\circ v \\circ v$", "$ababab$"],
+        "choices": ["$vvv$", "$v \\circ v \\circ v$", "$ababab$"],
         "incorrectFeedback": ["Check all that apply."]
       },
       "identity": {
         "type": "multiple",
-        "description": "Concatenating string $v$ with $\\lambda$ gives $v$. This means that $\\lambda$ is the concatenation <b>identity</b> operator. For example, $ab$∘$\\lambda$=$\\lambda$∘$ab$=$ab$",
-        "question": "What is $\\lambda∘acb∘\\lambda$?",
+        "description": "Concatenating string $v$ with $\\lambda$ gives $v$. This means that $\\lambda$ is the concatenation <b>identity</b> operator. For example, $ab \\circ \\lambda = \\lambda \\circ ab = ab$",
+        "question": "What is $\\lambda \\circ acb \\circ \\lambda$?",
         "answer": "$acb$",
         "choices": ["$abc$","$acb$", "$bca$", "$bac$", "$cba$"]
       },
       "reverse": {
         "type": "multiple",
-        "description": "Another useful operation is to reverse a string. Reversing a string means to write its symbols in reverse order.",
-        "question": "$w^R$ means to take the reverse of $w$. If $w = abbc$, then what is $w^R$?",
+        "description": "Another useful operation is to reverse a string. Reversing a string means to write its symbols in reverse order. $w^R$ means to take the reverse of $w$.",
+        "question": "If $w = abbc$, then what is $w^R$?",
         "answer": "$cbba$",
         "choices": ["$abbc$", "$bcab$", "$abcb$", "$cbab$","$cbba$"]
       },
       "revlength": {
         "type": "multiple",
-        "description": "Another useful operation is to reverse a string. Reversing a string means to write its symbols in reverse order.",
+        "description": "Another useful operation is to reverse a string. Reversing a string means to write its symbols in reverse order. $w^R$ means to take the reverse of $w$.",
         "question": "let $w=abbc$, and $v=ab$. What is $|vv^Rw|$?",
         "answer": "$8$",
         "choices": ["$8$", "$16$", "$24$", "$32$", "$40$"]
@@ -171,14 +175,16 @@
         "description": "One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. ",
         "question": "For $\\Sigma = {a,b}$, which of the following are strings in $\\Sigma^∗$?",
         "answer": ["$\\lambda$", "$a$", "$b$", "$aa$", "$abbabb$"],
-        "choices": ["$\\lambda$", "$a$", "$b$", "$aa$", "$abbabb$", "$aaabababcc$"]
+        "choices": ["$\\lambda$", "$a$", "$b$", "$aa$", "$abbabb$", "$aaabababcc$"],
+        "incorrectFeedback": ["Check all that apply."]
       },
       "closurex": {
         "type": "select",
-        "description": "One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma^*$ means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. ",
+        "description": "One of the most important operations that we use is the * operator, also called the closure operator. “*” of something means concatenating that something zero or more times. For example, if we have $\\Sigma$ = {a,b}, $\\Sigma$* means the set of strings obtained by concatenating 0 or more symbols from $\\Sigma$. ",
         "question": "Which are examples of $w^*$ where $w = abc$?",
         "answer": ["$\\lambda$", "$abc$", "$abcabc$"],
-        "choices": ["$\\lambda$", "$aabbcc$", "$abc$", "$abcabc$"]
+        "choices": ["$\\lambda$", "$aabbcc$", "$abc$", "$abcabc$"],
+        "incorrectFeedback": ["Check all that apply."]
       },
       "plus": {
         "type": "select",
@@ -192,7 +198,8 @@
           "$aa$",
           "$abbabb$",
           "$aaabababcc$"
-        ]
+        ],
+        "incorrectFeedback": ["Check all that apply."]
       },
       "union": {
         "type": "select",
@@ -200,7 +207,8 @@
         "question": " Let $\\Sigma$={$a$,$b$,$c$}, $L_1$={$ab$,$bc$,$aba$}, and $L_2$={$c$,$bc$,$bcc$}. Which strings are included in $L_1 \\cup L_2$ ?",
         "answer": ["ab" ,"bc","aba","c","bcc"],
         "choices": ["ab", "bc","a", "bca", "aba","c", "bcc","cb"],
-        "correctFeedback": ["$\\cup$ is the symbol for set union."]
+        "correctFeedback": ["$\\cup$ is the symbol for set union."],
+        "incorrectFeedback": ["$\\cup$ is the symbol for set union."]
       },
       "intersect": {
         "type": "multiple",
@@ -208,7 +216,8 @@
         "question": "Let $\\Sigma=\\{a,b,c\\}$, $L_1=\\{ab,bc,aba\\}$, and $L_2=\\{c,bc,bcc\\}$. Which strings are in $L_1 \\cap L_2$ ?",
         "answer": "$bc$",
         "choices": ["$aba$", "$ab$", "$c$","$bc$", "$bcc$"],
-        "correctFeedback": ["$\\cap$ is the symbol for set intersection."]
+        "correctFeedback": ["$\\cap$ is the symbol for set intersection."],
+        "incorrectFeedback": ["$\\cap$ is the symbol for set intersection."]
       },
       "comp": {
         "type": "select",
@@ -227,7 +236,7 @@
       "selfconset": {
         "type": "multiple",
         "description": "Concatenating a set $L$ with itself $n$ times is written $L^n$. So $L^1$ is just $L$. Concatenating a set zero times ($L^0$) will give the set $\\{\\lambda\\}$. To help undestand why this is true, remember that the $L^* = L^+ \\cup \\{\\lambda\\}$",
-        "question": "Let $\\Sigma$={$a$,$b$}, $L$={$ab$,$aba$}, What is $L^0$?",
+        "question": "Let $\\Sigma = \\{a,b\\}$, $L = \\{ab, aba\\}$. What is $L^0$?",
         "answer": ["$\\{\\lambda\\}$"],
         "choices": ["$\\{\\lambda\\}$", "$\\{\\}$", "$\\lambda$"]
       },

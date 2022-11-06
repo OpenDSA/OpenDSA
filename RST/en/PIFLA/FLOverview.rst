@@ -102,16 +102,6 @@ But this table gives you a quick overview.
    \mathrm{(unlimited\ memory)}
    \end{array}
 
-FA - can recognize integers, real numbers, but can’t recognize a valid
-arithmetic expression.
-
-PDA - can recognize a valid arithmetic expression, but can’t compute
-it and give you the answer.
-
-TM - can compute expressions, but you can’t write a program for a
-Turing machine that takes an arbitrary Java program and some input and
-tells you whether that program will halt on that input or not.
-
 
 Application: Compilers
 ----------------------
@@ -171,8 +161,8 @@ PART 3. Creating the parse tree.
 An interpretor walks through the parse tree and immediately executes
 the program (it does not generate code to execute the program).
 A compiler will take the parse tree and create a version of
-the program (that is not so nice for a human to read) that can quickly
-execute the program.
+the program (that is not so nice for a human to read) that the
+runtime environment for the language can quickly execute.
 
 
 Some Mindbending Ideas
@@ -189,7 +179,7 @@ Which leads to some questions like:
 * What type of language (from our hierarchy) is the set of regular
   expressions?
 * What type of language (from our hierarchy) is Java?
-* What type of language is a Context Free Grammar?
+* What type of language is the set of all Context Free Grammars?
 
 Here is some other  interesting "meta" questions and claims.
 
@@ -201,4 +191,5 @@ Is co-:math:`L` always the same type of language (in our hierarchy) as
 Turing machines can do anything
 (at least, anything that any computer can do).
 
-And, how can it be that you can't always tell if a loop will halt?!
+And, how can it be true that you can't always tell if a loop will
+halt?!

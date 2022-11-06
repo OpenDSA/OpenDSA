@@ -90,7 +90,8 @@
       },
       "PIFLA/Relations": {
         "SetTFrelation": {
-          "threshold": 5
+          "threshold": 5,
+          "points": 2.0
         },
         "SetTFequivrel": {
           "threshold": 3
