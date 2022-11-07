@@ -29,9 +29,9 @@ Key Concepts
 
      * Notation: usually we use for exampls: :math:`u, v, w`
 
-   * **Language:** A subset of the strings defined over :math:`\Sigma`
+   * **Language:** A subset of the strings defined over :math:`\Sigma^*`
 
-   So, a language is a sets of strings, in particular, some subset of
+   So, a language is a set of strings, in particular, some subset of
    the powerset of :math:`\Sigma`.
 
 
@@ -61,10 +61,10 @@ Key Concepts
    |   <noun> :math:`\rightarrow` Fritz | ball
    |   <article> :math:`\rightarrow` the | an | a
 
-   Variables vs. Terminals
+   Note: :math:`\rightarrow`, |, Variables vs. Terminals
 
 
-.. slide:: Deriving a sentence
+.. slide:: Deriving a string
 
    A variable in the grammar can be replaced by the right hand side of
    its rule::
@@ -139,6 +139,6 @@ Key Concepts
       :align: center
 
    Numbers in control unit symbolize "states", which are the specific
-   positions on the dial that the arrow may point to.
+   positions on the dial that the arrow can point to.
 
 
