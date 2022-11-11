@@ -14,21 +14,23 @@
   display: grid;
 }
 
+#title-and-exercise-actions {
+  grid-column: 1 / 3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  /* background-color: aliceblue; */
+  align-items: center;
+}
+
 #exercise-actions {
   display: flex;
   gap: 1rem;
-  align-items: center;
-  justify-content: flex-end;
-  background-color: aliceblue;
-  padding: 0.5rem;
 }
 
 #description {
-  display: flex;
-  flex-direction: column;
-  grid-row: 1 / 3;
   padding: 1rem;
-  gap: 1rem;
 }
 
 #challenge {
@@ -112,15 +114,12 @@ p {
 }
 
 .text {
-  /* padding-right: 1rem; */
-  /* padding-left: 1rem; */
   color: #0c3762;
-  margin: 0;
 }
 
 #commandline {
   background-color: black;
-  height: 43vh;
+  height: 40vh;
   padding: 1em;
   overflow: auto;
   display: grid;
