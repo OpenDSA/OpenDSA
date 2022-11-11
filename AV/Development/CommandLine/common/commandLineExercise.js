@@ -464,8 +464,15 @@ function updateText(text) {
 }
 
 function awardCredit() {
-  $("#success-message").removeClass("hidden").addClass("visible");
+  $("#progress-indicator").text("Completed");
+  $("#progress-indicator").removeClass("in-progress").addClass("completed");
   ODSA.AV.awardCompletionCredit();
+  console.log(
+    "chekcmark",
+    $("#prof_check_mark"),
+    "progress",
+    $("#progress-indicator")
+  );
   removeResetButton();
 }
 

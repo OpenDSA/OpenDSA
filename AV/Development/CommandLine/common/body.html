@@ -1,40 +1,40 @@
 <div id="container">
-  <div class="text" id="description">
-    <h2 id="command-title"></h2>
-    <p id="command-description"></p>
-  </div>
+  <div id="inner-container">
+    <div class="text" id="description">
+      <h2 id="command-title"></h2>
+      <p id="command-description"></p>
+    </div>
 
-  <div id="commandline">
-    <div>
-      <ul id="history"></ul>
-      <div class="symbol-and-input">
-        <div class="command-line-prompt">
-          <p class="command-line-prompt-path"></p>
-          <p class="command-line-prompt-branch"></p>
-          <p class="command-line-prompt-dollar">$</p>
+    <div id="exercise-actions">
+      <button id="reset">Reset</button>
+
+      <div id="progress-indicator" class="in-progress">In Progress</div>
+    </div>
+
+    <div id="commandline">
+      <div>
+        <ul id="history"></ul>
+        <div class="symbol-and-input">
+          <div class="command-line-prompt">
+            <p class="command-line-prompt-path"></p>
+            <p class="command-line-prompt-branch"></p>
+            <p class="command-line-prompt-dollar">$</p>
+          </div>
+          <input size="60" name="arrayValues" id="arrayValues" type="text" />
         </div>
-        <input size="60" name="arrayValues" id="arrayValues" type="text" />
       </div>
     </div>
-    <button id="reset-button">Reset</button>
-  </div>
 
-  <div class="text" id="challenge">
-    <div>
+    <div class="text" id="challenge">
       <h2>Task</h2>
       <p id="challenge-description"></p>
     </div>
-    <div id="success-message" class="hidden">
-      <!-- <i class="fas fa-check"></i> -->
-      <p>Success!</p>
+
+    <div id="visualization-container">
+      <div id="visualization"></div>
     </div>
   </div>
-
-  <div id="visualization-container">
-    <div id="visualization"></div>
-  </div>
 </div>
-
 <script src="../../../../../lib/jquery.migrate.min.js"></script>
 <script src="../../../../../lib/jquery.ui.min.js"></script>
 <script src="../../../../../lib/timeme-min.js"></script>
