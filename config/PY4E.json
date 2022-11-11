@@ -9,6 +9,7 @@
   "html_js_files": ["_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"],
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "image_source_dir": "RST/Images/PY4E",
   "sphinx_debug": false,
   "code_lang": {
     "Java_Generic": {
