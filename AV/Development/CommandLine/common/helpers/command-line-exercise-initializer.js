@@ -1,24 +1,107 @@
-import { CommandLineExerciseState } from "./exercise-state.js";
+import {
+  CommandLineExerciseState,
+  GitExerciseState,
+} from "./exercise-state.js";
 import { handleKeydown, handleKeyup } from "./command-line.js";
 import { COMMANDS_MAP } from "./command-handlers.js";
-import { updateFileStructureVisualization } from "./file-structure.js";
+import {
+  updateFileStructureVisualization,
+  updateGitVisualization,
+} from "./file-structure.js";
 import { CommandHistory } from "./command-history.js";
 import {
   INITIALIZE_FILE_TREE_OFFSETS,
+  INITIALIZE_OFFSETS,
   RESET_FILE_TREE_OFFSETS,
+  RESET_OFFSETS,
 } from "./timings.js";
 import {
   createHistoryLineHTMLString,
   createPromptHTMLString,
 } from "./html-string-components.js";
+import { COMBINED_COMMANDS_MAP } from "./git-command-handlers.js";
+import { EXERCISE_TYPES } from "./exercise-types.js";
 
-function initializeCommandLineExercise(
+function initializeExercise(config) {
+  switch (config.type) {
+    case EXERCISE_TYPES.GIT:
+      initializeGitExercise(config);
+      break;
+
+    default:
+      initializeCommandLineExercise(config);
+      break;
+  }
+}
+
+function initializeCommandLineExercise({
   title,
   description,
   task,
   checkCompleted,
   initialFileStructure,
-  initialCwdIndexPath
+  initialCwdIndexPath,
+}) {
+  const state = new CommandLineExerciseState(
+    initialFileStructure,
+    initialCwdIndexPath
+  );
+
+  initializeExerciseHelper(
+    state,
+    updateFileStructureVisualization,
+    COMMANDS_MAP,
+    INITIALIZE_FILE_TREE_OFFSETS,
+    RESET_FILE_TREE_OFFSETS,
+    title,
+    description,
+    task,
+    checkCompleted
+  );
+}
+
+function initializeGitExercise({
+  title,
+  description,
+  task,
+  checkCompleted,
+  initialFileStructure,
+  initialCwdIndexPath,
+  emptyLocal,
+  initialCommands,
+  initialRemoteCommands,
+}) {
+  const state = new GitExerciseState(
+    initialFileStructure,
+    initialCwdIndexPath,
+    emptyLocal,
+    initialCommands,
+    initialRemoteCommands
+  );
+
+  initializeExerciseHelper(
+    state,
+    updateGitVisualization,
+    COMBINED_COMMANDS_MAP,
+    INITIALIZE_OFFSETS,
+    RESET_OFFSETS,
+    title,
+    description,
+    task,
+    checkCompleted
+  );
+}
+
+function initializeExerciseHelper(
+  state,
+  handleUpdateVisualization,
+  commandsMap,
+  initialVisualizationOffsets,
+  resetVisualizationOffsets,
+  title,
+  description,
+  task,
+  handleCheckCompleted
 ) {
   // Load the config object with interpreter and code created by odsaUtils.js
   //   const config = ODSA.UTILS.loadConfig();
@@ -27,16 +110,11 @@ function initializeCommandLineExercise(
 
   updateText(title, description, task);
 
-  const state = new CommandLineExerciseState(
-    initialFileStructure,
-    initialCwdIndexPath
-  );
-
   const commandHistory = new CommandHistory();
   let svgData;
 
   const awardCredit = (args) => {
-    if (checkCompleted(args, state)) {
+    if (handleCheckCompleted(args, state)) {
       $("#progress-indicator").text("Completed");
       $("#progress-indicator").removeClass("in-progress").addClass("completed");
       ODSA.AV.awardCompletionCredit();
@@ -44,12 +122,7 @@ function initializeCommandLineExercise(
   };
 
   const updateVisualization = (offsets, extraVisualizations) =>
-    updateFileStructureVisualization(
-      svgData,
-      state,
-      offsets,
-      extraVisualizations
-    );
+    handleUpdateVisualization(svgData, state, offsets, extraVisualizations);
 
   const handleKeydownWrapper = (event) => {
     handleKeydown(
@@ -57,7 +130,7 @@ function initializeCommandLineExercise(
       getInput(),
       setInput,
       state,
-      COMMANDS_MAP,
+      commandsMap,
       updateVisualization,
       awardCredit,
       addHistory,
@@ -71,7 +144,7 @@ function initializeCommandLineExercise(
 
   const handleReset = () => {
     state.reset();
-    updateVisualization(RESET_FILE_TREE_OFFSETS);
+    updateVisualization(resetVisualizationOffsets);
     clearHistory();
     commandHistory.reset();
     setInput("");
@@ -97,7 +170,7 @@ function initializeCommandLineExercise(
     const group = svg.append("g");
 
     svgData = { width, height, group };
-    updateVisualization(INITIALIZE_FILE_TREE_OFFSETS);
+    updateVisualization(initialVisualizationOffsets);
   }, 500);
 }
 
@@ -126,4 +199,4 @@ const updateText = (title, description, task) => {
   $("#challenge-description").text(task);
 };
 
-export { initializeCommandLineExercise };
+export { initializeExercise };
