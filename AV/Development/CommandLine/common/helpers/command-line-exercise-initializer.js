@@ -80,8 +80,8 @@ function initializeCommandLineExercise(
 
   $("#prompt-and-input").prepend(createPromptHTMLString(state.getPromptData()));
 
-  $("#arrayValues").keydown(handleKeydownWrapper);
-  $("#arrayValues").keyup(handleKeyupWrapper);
+  $("#command-line-value").keydown(handleKeydownWrapper);
+  $("#command-line-value").keyup(handleKeyupWrapper);
   $("#commandline").click(() => focusInput());
   $("#reset").click(handleReset);
 
@@ -101,12 +101,12 @@ function initializeCommandLineExercise(
   }, 500);
 }
 
-const getInput = () => $("#arrayValues").val();
+const getInput = () => $("#command-line-value").val();
 
-const setInput = (input) => $("#arrayValues").val(input);
+const setInput = (input) => $("#command-line-value").val(input);
 
 const focusInput = () => {
-  $("#arrayValues").focus();
+  $("#command-line-value").focus();
 };
 
 const addHistory = (value) => {

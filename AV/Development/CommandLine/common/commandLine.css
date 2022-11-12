@@ -170,7 +170,7 @@ p {
   transition: all 0.7s ease-in-out;
 }
 
-#arrayValues {
+#command-line-value {
   color: white;
   background-color: black;
   border: 0;
@@ -178,7 +178,7 @@ p {
   flex-grow: 1;
 }
 
-#arrayValues:focus {
+#command-line-value:focus {
   outline: 0;
 }
 
