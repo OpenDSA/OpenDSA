@@ -5,7 +5,6 @@ import {
   INITIALIZE_FILE_TREE_OFFSETS,
   INITIALIZE_OFFSETS,
 } from "./timings.js";
-import * as d3 from "d3";
 
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 

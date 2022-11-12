@@ -184,9 +184,6 @@ p {
 
 #history {
   color: white;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 /* #start-symbol-and-input {
@@ -335,4 +332,40 @@ p {
 .command-line-prompt-branch,
 .command-line-prompt-branch-old {
   color: aqua;
+}
+
+.history-line-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0.5rem 0;
+}
+
+.prompt-and-input {
+  display: flex;
+  gap: 1rem;
+}
+
+.output-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.prompt-container {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.path {
+  color: yellow;
+  width: max-content;
+}
+
+.branch {
+  color: aqua;
+}
+
+.ls-output-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

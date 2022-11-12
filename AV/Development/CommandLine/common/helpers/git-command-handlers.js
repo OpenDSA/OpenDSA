@@ -1,5 +1,3 @@
-import GitCommitOutput from "../components/git-commit-output.jsx";
-import GitStatusOutput from "../components/git-status-output.jsx";
 import { COMMANDS_MAP, handle_rm } from "./command-handlers.js";
 import {
   alreadyCloned,
@@ -25,7 +23,7 @@ import {
   quoteNotClosed,
   tooManyArgs,
   untracked,
-} from "./error-messages";
+} from "./error-messages.js";
 import { Branch } from "./git-classes.js";
 import {
   ADD_OFFSETS,
@@ -231,12 +229,13 @@ const handle_commit = (args, flags, state) => {
 
   return {
     commit,
-    result: (
-      <GitCommitOutput
-        files={commit.files}
-        pathAndStateValues={pathAndStateValues}
-      />
-    ),
+    result: "",
+    // (
+    //   <GitCommitOutput
+    //     files={commit.files}
+    //     pathAndStateValues={pathAndStateValues}
+    //   />
+    // ),
   };
 };
 
@@ -390,14 +389,13 @@ const changeBranchHelper = (args, flags, createFlag, state) => {
 const handle_status = (args, flags, state) => {
   const { currDir, homeDir, localCurrBranch, remoteInitialCommit } = state;
 
-  return (
-    <GitStatusOutput
-      localCurrBranch={localCurrBranch}
-      homeDir={homeDir}
-      remoteInitialCommit={remoteInitialCommit}
-      currDir={currDir}
-    />
-  );
+  return "";
+  // <GitStatusOutput
+  //   localCurrBranch={localCurrBranch}
+  //   homeDir={homeDir}
+  //   remoteInitialCommit={remoteInitialCommit}
+  //   currDir={currDir}
+  // />
 };
 
 const GIT_COMMANDS_MAP = {

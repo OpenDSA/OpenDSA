@@ -1,5 +1,3 @@
-import React from "react";
-
 const handleKeydown = (
   event,
   input,
@@ -63,8 +61,7 @@ const handleEnter = (
   );
 
   const isArray = Array.isArray(output);
-  const isObject =
-    !isArray && typeof output !== "string" && !React.isValidElement(output);
+  const isObject = !isArray && typeof output !== "string";
 
   handleAddHistory({
     input,

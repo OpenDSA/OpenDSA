@@ -1,4 +1,4 @@
-import { Directory, File } from "./file-system-entity";
+import { Directory, File } from "./file-system-entity.js";
 import {
   tooManyArgs,
   notEnoughArgs,
@@ -18,9 +18,7 @@ import {
   BASIC_COMMAND_OFFSETS,
   BASIC_COMMAND_OFFSETS_NO_EXIT,
 } from "./timings.js";
-
-import OutputList from "../components/output-list";
-import LsOutput from "../components/ls-output";
+import { getLSHelperOutput, getLSOutput } from "./command-handlers-helpers.js";
 
 const handle_ls = (args, flags, state) => {
   const { currDir } = state;
@@ -49,7 +47,7 @@ const handle_ls = (args, flags, state) => {
 
   return {
     highlight,
-    result: <LsOutput results={[<OutputList lines={errors} />, ...results]} />,
+    result: getLSOutput(errors, results),
   };
 };
 
@@ -68,7 +66,7 @@ const lsHelper = (currDir, path, includeTitle) => {
 
   return {
     highlight: files,
-    result: <OutputList lines={fileNames} />,
+    result: getLSHelperOutput(fileNames),
   };
 };
 

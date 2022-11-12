@@ -4,6 +4,11 @@ class CommandHistory {
     this.index = 0;
   }
 
+  reset() {
+    this.history = [{ old: "", new: "" }];
+    this.index = 0;
+  }
+
   previous() {
     if (this.index !== 0) {
       this.index--;
