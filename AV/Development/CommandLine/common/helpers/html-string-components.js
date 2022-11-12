@@ -1,7 +1,11 @@
 const createPromptHTMLString = (promptData) =>
   `<div class="prompt-container">
       <p class="path">${promptData.path}</p>
-      ${promptData.branchName ? `<p class="branch">(${branchName})</p>` : ""}
+      ${
+        promptData.branchName
+          ? `<p class="branch">(${promptData.branchName})</p>`
+          : ""
+      }
       <p>${promptData.symbol || "$"}</p>
     </div>`;
 

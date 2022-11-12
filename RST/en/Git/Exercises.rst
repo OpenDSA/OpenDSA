@@ -11,105 +11,111 @@
 Exercises
 =========
 
-pwd 1
+git clone
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/pwd/pwd-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/clone/clone-exercise.html pe
 
-pwd 2
+git status
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/pwd-2/pwd-2-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/status/status-exercise.html pe
 
-pwd 3
+git add
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/pwd-3/pwd-3-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/add/add-exercise.html pe
 
-ls
+git rm
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/ls/ls-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/git-rm/git-rm-exercise.html pe
 
-cd 1
+git commit
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/cd/cd-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/commit/commit-exercise.html pe
 
-cd 2
+git push
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/cd-2/cd-2-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/push/push-exercise.html pe
 
-cd 3
+git restore
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/cd-3/cd-3-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/restore/restore-exercise.html pe
 
-touch
+git restore --staged
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/touch/touch-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/restore-staged/restore-staged-exercise.html pe
 
-mkdir
+git pull
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/mkdir/mkdir-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/pull/pull-exercise.html pe
 
-rm
+git commit -a
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/rm/rm-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/commit-a/commit-a-exercise.html pe
 
-rm -r
+git commit (path)
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/rm-r/rm-r-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/commit-path/commit-path-exercise.html pe
 
-rmdir
+git branch
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/rmdir/rmdir-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/branch/branch-exercise.html pe
 
-mv
+git switch
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/mv/mv-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/switch/switch-exercise.html pe
 
-cp
+git switch -c
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/cp/cp-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/switch-c/switch-c-exercise.html pe
+
+git switch diverged branches
+-----------------------------
+Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
+
+.. avembed:: AV/Development/CommandLine/exercises/switch-diverged/switch-diverged-exercise.html pe
 
 Challenge 1
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/challenge-1/challenge-1-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/git-challenge-1/git-challenge-1-exercise.html pe
 
 Challenge 2
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/challenge-2/challenge-2-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/git-challenge-2/git-challenge-2-exercise.html pe
 
 Challenge 3
 -----------------------------
 Use this mock command line environment to solve the challenge. Use the visualization to understand what is happening in the file structure. Refer back to the :ref:`About <About>` section for examples, key terms, and command descriptions.
 
-.. avembed:: AV/Development/CommandLine/exercises/challenge-3/challenge-3-exercise.html pe
+.. avembed:: AV/Development/CommandLine/exercises/git-challenge-3/git-challenge-3-exercise.html pe
 

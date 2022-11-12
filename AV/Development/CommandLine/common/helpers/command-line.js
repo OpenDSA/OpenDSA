@@ -7,7 +7,8 @@ const handleKeydown = (
   handleUpdateVisualization,
   handleAwardCredit,
   handleAddHistory,
-  commandHistory
+  commandHistory,
+  handleAfterEnter
 ) => {
   const keycode = event.keyCode ? event.keyCode : event.which;
 
@@ -23,6 +24,9 @@ const handleKeydown = (
       handleAddHistory,
       commandHistory
     );
+    if (handleAfterEnter) {
+      handleAfterEnter();
+    }
   }
 
   //tab

@@ -1,0 +1,10 @@
+{
+  "translations": {
+    "en": {
+      ".avTitle": "git rm",
+      "av_Authors": "Ryan Buxton",
+      "#about": "About",
+      "#check": "Check"
+    }
+  }
+}
