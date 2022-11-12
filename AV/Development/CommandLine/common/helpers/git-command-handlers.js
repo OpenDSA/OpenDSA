@@ -25,6 +25,8 @@ import {
   untracked,
 } from "./error-messages.js";
 import { Branch } from "./git-classes.js";
+import { getCommitOutput } from "./git-command-handlers-helpers.js";
+import { createStatusOutputHTMLString } from "./html-string-components.js";
 import {
   ADD_OFFSETS,
   BRANCH_OFFSETS,
@@ -229,13 +231,7 @@ const handle_commit = (args, flags, state) => {
 
   return {
     commit,
-    result: "",
-    // (
-    //   <GitCommitOutput
-    //     files={commit.files}
-    //     pathAndStateValues={pathAndStateValues}
-    //   />
-    // ),
+    result: getCommitOutput(commit.files, pathAndStateValues),
   };
 };
 
@@ -389,13 +385,12 @@ const changeBranchHelper = (args, flags, createFlag, state) => {
 const handle_status = (args, flags, state) => {
   const { currDir, homeDir, localCurrBranch, remoteInitialCommit } = state;
 
-  return "";
-  // <GitStatusOutput
-  //   localCurrBranch={localCurrBranch}
-  //   homeDir={homeDir}
-  //   remoteInitialCommit={remoteInitialCommit}
-  //   currDir={currDir}
-  // />
+  return createStatusOutputHTMLString(
+    localCurrBranch,
+    homeDir,
+    remoteInitialCommit,
+    currDir
+  );
 };
 
 const GIT_COMMANDS_MAP = {
