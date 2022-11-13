@@ -30,14 +30,34 @@
 }
 
 #description {
-  padding: 1rem;
+  height: 45vh;
+  overflow: auto;
 }
 
 #challenge {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   gap: 1rem;
+  word-wrap: break-word;
+  min-width: 0;
+  height: 45vh;
+  overflow: auto;
+}
+
+#challenge-description {
+  padding: 0 1rem 1rem 1rem;
+}
+
+#challenge-description-container {
+  max-height: 100%;
+}
+
+#task-title {
+  padding: 0 1rem 0 1rem;
+}
+
+#command-description {
+  padding: 1rem;
 }
 
 #prof_check_mark {
@@ -119,18 +139,21 @@ p {
 
 #commandline {
   background-color: black;
-  height: 40vh;
-  padding: 1em;
+  height: 45vh;
   overflow: auto;
   display: grid;
   grid-template-columns: auto min-content;
   gap: 1rem;
 }
 
+#command-line-inner {
+  padding: 1rem;
+}
+
 #visualization-container {
   /* border-style: solid; */
   background-color: aliceblue;
-  height: 40vh;
+  height: 45vh;
 }
 
 #progress-indicator {
