@@ -7,7 +7,7 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("An :term:`equivalence relation` is an especially important type of relation. Relation $R$ on set $S$ is an equivalence relation if it is <b>reflexive</b>, <b>symmetric</b>, and <b>transitive</b>. An equivalence relation can be viewed as partitioning a set into :term:`equivalence classes`. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$. A :term:`partition` of a set $S$ is a collection of subsets that are :term:`disjoint` from each other (that is, they share no elements) and whose union is $S$. An equivalence relation on $S$ partitions the set into disjoint subsets whose elements are equivalent. The UNION/FIND algorithm efficiently maintains equivalence classes on a set. Two graph algorithms that make use of disjoint sets is :term:`connected component` finding and computing a :term:`minimal-cost spanning tree`.");
+  av.umsg("An :term:`equivalence relation` is an especially important type of relation. Relation $R$ on set $S$ is an equivalence relation if it is <b>reflexive</b>, <b>symmetric</b>, and <b>transitive</b>. An equivalence relation can be viewed as partitioning a set into :term:`equivalence classes`. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$. A :term:`partition` of a set $S$ is a collection of subsets that are :term:`disjoint` from each other (that is, they share no elements) and whose union is $S$. An equivalence relation on $S$ partitions the set into disjoint subsets whose elements are equivalent. The UNION/FIND algorithm efficiently maintains equivalence classes on a set. Two graph algorithms that make use of disjoint sets are :term:`connected component` finding and computing a :term:`minimal-cost spanning tree`.");
   av.displayInit();
 
   // Frame 2
@@ -19,7 +19,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 4
-  av.umsg("For the integers, $=$ is an equivalence relation that partitions each element into a distinct subset. In other words, for any integer $a$, three things are true. (1) $a = a$, (2) if $a = b$ then $b = a$, and (3) if $a = b$ and $b = c$, then $a = c$.<br/><br/>Of course, for distinct integers $a, b,$ and $c$, there are never cases where $ a = b$, $b = a$, or $b = c$. So the requirements for symmetry and transitivity are never violated, and therefore the relation is symmetric and transitive.");
+  av.umsg("For the integers, $=$ is an equivalence relation that partitions each element into a distinct subset. In other words, for any integer $a$, three things are true. (1) $a = a$, (2) if $a = b$ then $b = a$, and (3) if $a = b$ and $b = c$, then $a = c$.<br/><br/>Of course, for distinct integers $a$, $b$, and $c$, there are never cases where $ a = b$, $b = a$, or $b = c$. So the requirements for symmetry and transitivity are never violated, and therefore the relation is symmetric and transitive.");
   av.step();
 
   // Frame 5

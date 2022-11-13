@@ -341,7 +341,7 @@ requirejs(["./mathjs.js"], function(){});
                     {
                         var settings = {
                             // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                            "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
+                            "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                             "method": "POST",
                             // "async": false,
                             "timeout": 0,
@@ -702,7 +702,7 @@ requirejs(["./mathjs.js"], function(){});
             }
             var settings = {
                 // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
+                "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                 "async": false,
                 "method": "POST",
                 "timeout": 0,
@@ -775,7 +775,7 @@ requirejs(["./mathjs.js"], function(){});
                     })
                     var settings = {
                         // "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
-                        "url": "https://deforms.localhost.devcom.vt.edu/api/deformsfeedback/",
+                        "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                         "method": "POST",
                         "timeout": 0,
                         "headers": {

@@ -28,7 +28,6 @@
       "lang": "C++"
     }
   },
-  "lang": "en",
   "build_JSAV": false,
   "suppress_todo": false,
   "assumes": "recursion",

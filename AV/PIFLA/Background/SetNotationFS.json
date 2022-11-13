@@ -13,7 +13,7 @@
       },
       "former": {
         "type": "multiple",
-        "description": "One way to describe a set is to write out all of it's elements. That is a bit hard to do if the set has an infinite number of elements. Here is another way to describe a set, using a :term:`set former`: $\\{x\\ |\\ x\\ \\mbox{is a positive integer}\\}$.",
+        "description": "One way to describe a set is to write out all of it's elements. That is a bit hard to do if the set has an infinite number of elements. Another way to describe a set is to use a :term:`set former` like this: $\\{x\\ |\\ x$ is a positive integer$\\}$.",
         "question": "Choose which best describes this set.",
         "answer": "all positive integers",
         "choices": [

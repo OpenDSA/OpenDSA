@@ -13,14 +13,16 @@
         "description": "An equivalence relation can be used to partition a set into equivalence classes. If two elements $a$ and $b$ are equivalent to each other, we write $a \\equiv b$.",
         "question": "Why is $=$  an equivalence relation?",
         "answer": ["because it is reflective", "because it is symmetric", "because it is transitive"],
-        "choices": ["because it is reflective", "because it is symmetric", "because it is transitive", "because it is antisymmetric", "because it is irreflexive"]
+        "choices": ["because it is reflective", "because it is symmetric", "because it is transitive", "because it is antisymmetric", "because it is irreflexive"],
+        "correctFeedback": ["$=$ also happens to be antisymmetric. But that is irrelevant to whether it is an equivalence relation."]
       },
       "mod": {
         "type": "multiple",
         "description": "For the set of integers, the modulus function defines a binary relation such that two numbers $x$ and $y$ are in the relation if and only if $x \\bmod m = y \\bmod m$",
         "question": "[T/F] For $m = 4$, the pair $\\langle 1, 5\\rangle$ belongs to the modulus relation.",
         "answer": "True",
-        "choices": ["True", "False"]
+        "choices": ["True", "False"],
+        "incorrectFeedback": ["Is $1 \\bmod 4$ different from $5 \\bmod 4$?"]
       },
       "partorder": {
         "type": "select",

@@ -26,11 +26,9 @@ OpenDSA materials are most often presented in the form of a
 Your OpenDSA "textbook" is made up of a series of modules.
 Each module corresponds to roughly one section in a regular textbook,
 or what might get presented in part of a one-hour lecture.
-Your LMS might further break modules into smaller sections, one on
-each page.
-OpenDSA content combines text and images with algorithm visualizations
-for many algorithms, along with lots of interactive assessment
-exercises.
+OpenDSA content typically combines text and images with algorithm
+visualizations for many algorithms, along with lots of interactive
+assessment exercises.
 The goal of the exercises is to let you know if you really understand
 what you have been reading.
 
@@ -78,7 +76,7 @@ Usually an exercise or slideshow will give you visual confirmation
 when you have completed it.
 Your LMS might indicate complete modules in its "table of contents"
 listing of modules.
-More likely, the LMS gradebook will indicate which exercises have been
+The LMS gradebook should indicate which exercises have been
 completed.
 
 **Slideshows:**
@@ -180,6 +178,7 @@ Once you have done this, the LMS might award you (for example) 2
 points of completion credit.
 
 You can always practice an exercise as many times as you like,
+typically with randomized input each time,
 whether you already have completion credit or not.
 
 **Settings Button and Narration Support:**
@@ -190,7 +189,7 @@ The gear icon indicates the settings button, which will let you change
 some of the default settings,
 such as the animation speed (usually used for things like the swap
 steps in the sorting algorithm visualizations), or whether the arrays
-show values or height bars.
+show numeric values or height bars.
 The button with the speaker icon will let you control whether the
 slideshow captions will be narrated or not.
 

@@ -101,7 +101,6 @@ def computeDifficultyLevel(val):
     result = pd.concat([val, data1], axis=1, join='inner')
 
     matrix = pd.DataFrame(result)
-
     return matrix
 
 def pivot_table(val):

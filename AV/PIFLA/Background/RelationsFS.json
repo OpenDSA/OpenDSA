@@ -6,7 +6,8 @@
         "description": "A relation $R$ over set $S$ means a set of :term:`tuples <tuple>` of elements from set $S$. A tuple is just some elements of the set in $\\langle\\rangle$ brakets.",
         "question": "If $S$ is $\\{a, b, c\\}$, which of these are tuples from $S$?",
         "answer": ["$\\langle a, b, c\\rangle$", "$\\langle a, c\\rangle$", "$\\langle a \\rangle$"],
-        "choices": ["$\\langle a, b, c\\rangle$", "$\\langle a, c\\rangle$", "$\\langle a \\rangle$", "$\\{a, c\\}$", "$\\langle a, d\\rangle$"]
+        "choices": ["$\\langle a, b, c\\rangle$", "$\\langle a, c\\rangle$", "$\\langle a \\rangle$", "$\\{a, c\\}$", "$\\langle a, d\\rangle$"],
+        "incorrectFeedback": ["A tuple contains only elements from the set, and is enclosed in $\\langle\\rangle$."]
       },
       "binary": {
         "type": "select",
@@ -26,7 +27,7 @@
       },
       "plus": {
         "type": "select",
-        "description":"The plus ($+$) operator also defines a relation on a set.Let's assume that we are considering plus on integers (another relation is to apply plus to real numbers). Since plus is a binary operator with two integer inputs and an integer output, it is a relation defined by a collection of 3-tuples. A 3-tuple is in the relation if the sum of the first two values is equal to the third. For example, tuple $\\langle 5, 4, 9\\rangle$ is in the relation, and tuple $\\langle 5, 4, 8\\rangle$ is not.",
+        "description":"The plus ($+$) operator also defines a relation on a set. Let's assume that we are considering plus on integers (another relation would apply plus to real numbers). Since plus is a binary operator with two integer inputs and an integer output, it is a relation defined by a collection of 3-tuples. A 3-tuple is in the relation if the sum of the first two values is equal to the third. For example, tuple $\\langle 5, 4, 9\\rangle$ is in the relation, and tuple $\\langle 5, 4, 8\\rangle$ is not.",
         "question": "Which of these tuples is in the relation 'plus' on integers?",
         "answer": ["$\\langle 1, 1, 2\\rangle$", "$\\langle 2, 2, 4\\rangle$"],
         "choices": ["$\\langle 1, 1, 2\\rangle$", "$\\langle 1, 1\\rangle$", "$\\langle 1, 2, 2\\rangle$", "$\\langle 2, 2, 4\\rangle$"]
@@ -78,7 +79,7 @@
         "question": "Which of the following relations are antisymmetric?",
         "answer": ["$>$", "$=$", "$\\leq$"],
         "choices": ["$>$", "$=$", "$\\leq$"],
-        "correctFeedback": ["For $>$, this is vacuously true since there is never a case where $aRa$ is in the relation, nor where $aRb$ and $bRa$ are both in the relation."]
+        "correctFeedback": ["For $>$, this is vacuously true since there is never a case where $aRa$ is in the relation, nor where $aRb$ and $bRa$ are both in the relation. For $\\leq$ and $\\geq$, it is never true that $aRb$ and $bRa$ are both in the relation."]
       },
       "transitive": {
         "type": "select",

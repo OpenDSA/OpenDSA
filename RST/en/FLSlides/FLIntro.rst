@@ -60,7 +60,7 @@ Formal Languages Course Introduction
 
    * Survival Tip:
      A **lot** of this course depends on understanding notation.
-     Don't blow this off, its too hard to pick under stress.
+     Don't blow this off, its too hard to pick up under stress.
      Make effort now by reviewing set notation.
      Be sure you know how to read/do induction proofs.
 
@@ -71,21 +71,24 @@ Formal Languages Course Introduction
 
    * Weekly homework sets (about 40-45% of the grade)
 
-   * OpenDSA framesets and exercises (about 20-25% of the grade)
-
    * Two midterms and a final (35% of the grade)
 
      * Ideally, doing the exercises and homework will be most of the
        preparation that you need for the exams.
 
+   * OpenDSA framesets and exercises (about 20-25% of the grade)
+
+     * "Framesets" use a pedagogy called "Programmed Instruction".
+
 
 .. slide:: What this course is about
 
-   * We will try to understand what computers can do, at a detailed level.
+   * We will try to understand the limits to what computers can do, at
+     a detailed level.
   
      * Hard to reason about an Intel processor with billions of transistors.
      * Don't want to reinvent the wheel when you can use tools like
-       regex parser, Flex, Bison
+       regex parser, Flex, Bison.
      * Computer Scientists have developed many simple models of
        computation, each of which can be implemented relatively easily
        in software.
@@ -108,6 +111,10 @@ Formal Languages Course Introduction
    * Can you tell if a string has an odd number of characters?
 
    * Can you do it if you have no working memory?
+
+     * This issue of working memory might not make sense in the
+       context of a modern computer, but does make sense in the
+       context of simpler computing machines.
 
 .. slide:: Outcomes (2)
 
@@ -164,8 +171,7 @@ Formal Languages Course Introduction
    compilers work, and to how hard a typical language-related problem
    is to solve.
 
-   Note the interplay between classes of languages, classes of grammars,
-   and classes of machines.
+   Note the interplay between languages, grammars, and machines.
 
    .. inlineav:: HierarchyCON dgm
       :links: AV/VisFormalLang/Intro/HierarchyCON.css
@@ -195,7 +201,7 @@ Formal Languages Course Introduction
       \mathrm{(stack)}\\
       \hline
       \mathrm{Turing\ Machine}&       \mathrm{compute\ expression}&  \mathrm{decide\ if\ halts}\\
-      \mathrm{(unlimited)}
+      \mathrm{(unlimited\ memory)}
       \end{array}
 
 
