@@ -128,10 +128,14 @@ function initializeExerciseHelper(
     handleUpdateVisualization(svgData, state, offsets, extraVisualizations);
 
   const handleAfterEnter = () => {
+    updatePrompt();
+    $("#commandline").scrollTop($("#commandline")[0].scrollHeight);
+  };
+
+  const updatePrompt = () => {
     $("#prompt-placeholder")
       .empty()
       .append(createPromptHTMLString(state.getPromptData()));
-    $("#commandline").scrollTop($("#commandline")[0].scrollHeight);
   };
 
   const handleKeydownWrapper = (event) => {
@@ -160,6 +164,7 @@ function initializeExerciseHelper(
     commandHistory.reset();
     setInput("");
     focusInput();
+    updatePrompt();
   };
 
   $("#prompt-placeholder").append(
