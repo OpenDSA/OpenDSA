@@ -64,7 +64,7 @@ const handleEnter = (
     handleAwardCredit
   );
 
-  const isObject = output && typeof output === "object" && output.result;
+  const isObject = output && typeof output === "object";
 
   handleAddHistory({
     input,
