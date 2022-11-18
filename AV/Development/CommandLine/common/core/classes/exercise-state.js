@@ -8,7 +8,7 @@ import {
 import { Directory } from "./file-system-entity.js";
 import { Branch, Commit } from "./git-classes.js";
 import { COMBINED_COMMANDS_MAP } from "../handlers/git-command-handlers.js";
-import { NEW_FILE_STATE } from "../config/file-states.js";
+import { FILE_STATE } from "../config/file-states.js";
 
 class ExerciseState {
   constructor() {
@@ -152,7 +152,7 @@ class GitExerciseState extends ExerciseState {
         ? this.initialFileStructure
         : DEFAULT_GIT_FILE_STRUCTURE
     );
-    newHomeDir.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
+    newHomeDir.setState(FILE_STATE.UNCHANGED, FILE_STATE.UNCHANGED);
 
     const newInitialCommit = new Commit();
     const newCurrBranch = new Branch("main");

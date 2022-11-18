@@ -1,5 +1,5 @@
 import { EXERCISE_TYPES } from "./exercise-types.js";
-import { NEW_FILE_STATE } from "./file-states.js";
+import { FILE_STATE } from "./file-states.js";
 
 const TOUCH = {
   description:
@@ -463,7 +463,7 @@ const GIT_RM = {
         return (
           config &&
           config.length > 0 &&
-          config[0].isStagingState(NEW_FILE_STATE.DELETED)
+          config[0].isStagingState(FILE_STATE.DELETED)
         );
       }
     }

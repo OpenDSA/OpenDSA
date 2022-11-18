@@ -1,4 +1,4 @@
-import { NEW_FILE_STATE } from "../core/config/file-states.js";
+import { FILE_STATE } from "../core/config/file-states.js";
 
 const createPromptHTMLString = (promptData) =>
   `<div class="prompt-container">
@@ -45,9 +45,9 @@ const createLSOutputHTMLString = (errors, results) =>
   </div>`;
 
 const createCommitOutputHTMLString = (files, pathAndStateValues) => {
-  const newCount = countFiles(files, NEW_FILE_STATE.NEW);
-  const modifiedCount = countFiles(files, NEW_FILE_STATE.MODIFIED);
-  const deletedCount = countFiles(files, NEW_FILE_STATE.DELETED);
+  const newCount = countFiles(files, FILE_STATE.NEW);
+  const modifiedCount = countFiles(files, FILE_STATE.MODIFIED);
+  const deletedCount = countFiles(files, FILE_STATE.DELETED);
 
   const totalCountsLine = createCountLine(
     (newCount || 0) + (modifiedCount || 0) + (deletedCount || 0),

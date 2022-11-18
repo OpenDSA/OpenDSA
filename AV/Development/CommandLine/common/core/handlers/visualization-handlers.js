@@ -1,5 +1,5 @@
 import { Directory } from "../classes/file-system-entity.js";
-import { NEW_FILE_STATE } from "../config/file-states.js";
+import { FILE_STATE } from "../config/file-states.js";
 import {
   getTimings,
   INITIALIZE_FILE_TREE_OFFSETS,
@@ -1082,7 +1082,7 @@ function visualizeCommit(
 
   //TODO maybe add animation for deleted
   const filesData = files
-    .filter((file) => !file.isStagingState(NEW_FILE_STATE.DELETED))
+    .filter((file) => !file.isStagingState(FILE_STATE.DELETED))
     .map((file) => {
       const existingFile = fileTreeData.find(
         (value) => value.data.gitId === file.gitId
@@ -1301,7 +1301,7 @@ const visualizeModifiedFiles = (
     .flatMap((value) => value.commit.files)
     .filter(
       (file) =>
-        file.isStagingState(NEW_FILE_STATE.MODIFIED) &&
+        file.isStagingState(FILE_STATE.MODIFIED) &&
         remoteFileTreeData.find((value) => value.data.gitId === file.gitId)
     )
     .flatMap((file) => file.flatten())

@@ -1,4 +1,4 @@
-import { NEW_FILE_STATE } from "../config/file-states.js";
+import { FILE_STATE } from "../config/file-states.js";
 
 let count = 0;
 let gitIdCount = 0;
@@ -91,32 +91,32 @@ class FileSystemEntity {
 
   getStagingAreaFiles() {
     return [
-      ...this.getByState(null, NEW_FILE_STATE.NEW),
-      ...this.getByState(null, NEW_FILE_STATE.MODIFIED),
-      ...this.getByState(null, NEW_FILE_STATE.DELETED),
+      ...this.getByState(null, FILE_STATE.NEW),
+      ...this.getByState(null, FILE_STATE.MODIFIED),
+      ...this.getByState(null, FILE_STATE.DELETED),
     ];
   }
 
   getWorkingAreaFiles() {
     return [
-      ...this.getByState(NEW_FILE_STATE.MODIFIED),
-      ...this.getByState(NEW_FILE_STATE.DELETED),
+      ...this.getByState(FILE_STATE.MODIFIED),
+      ...this.getByState(FILE_STATE.DELETED),
     ];
   }
 
   getUntrackedFiles() {
-    return this.getByState(NEW_FILE_STATE.NEW);
+    return this.getByState(FILE_STATE.NEW);
   }
 
   // for use when committing with -a or file path
   getWorkingAndStagingAreaFiles() {
     return [
       ...this.getByState(
-        [NEW_FILE_STATE.MODIFIED, NEW_FILE_STATE.UNCHANGED],
-        NEW_FILE_STATE.NEW
+        [FILE_STATE.MODIFIED, FILE_STATE.UNCHANGED],
+        FILE_STATE.NEW
       ),
-      ...this.getByState([NEW_FILE_STATE.UNCHANGED], NEW_FILE_STATE.DELETED),
-      ...this.getByState(null, NEW_FILE_STATE.MODIFIED),
+      ...this.getByState([FILE_STATE.UNCHANGED], FILE_STATE.DELETED),
+      ...this.getByState(null, FILE_STATE.MODIFIED),
     ];
   }
 
@@ -159,37 +159,37 @@ class FileSystemEntity {
 class File extends FileSystemEntity {
   constructor(name) {
     super(name);
-    this.workingState = NEW_FILE_STATE.NEW;
-    this.stagingState = NEW_FILE_STATE.UNCHANGED;
+    this.workingState = FILE_STATE.NEW;
+    this.stagingState = FILE_STATE.UNCHANGED;
   }
 
   handleStateOnDelete() {
     if (
-      this.isWorkingState(NEW_FILE_STATE.NEW) &&
-      this.isStagingState(NEW_FILE_STATE.UNCHANGED)
+      this.isWorkingState(FILE_STATE.NEW) &&
+      this.isStagingState(FILE_STATE.UNCHANGED)
     ) {
       this.removeSelf();
     } else if (
-      this.isWorkingState(NEW_FILE_STATE.NEW) &&
-      this.isStagingState(NEW_FILE_STATE.DELETED)
+      this.isWorkingState(FILE_STATE.NEW) &&
+      this.isStagingState(FILE_STATE.DELETED)
     ) {
-      this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+      this.setWorkingState(FILE_STATE.UNCHANGED);
     } else {
-      this.setWorkingState(NEW_FILE_STATE.DELETED);
+      this.setWorkingState(FILE_STATE.DELETED);
     }
   }
 
   handleStateOnCreate() {
-    if (this.isWorkingState(NEW_FILE_STATE.DELETED)) {
-      this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+    if (this.isWorkingState(FILE_STATE.DELETED)) {
+      this.setWorkingState(FILE_STATE.UNCHANGED);
     } else {
-      this.setWorkingState(NEW_FILE_STATE.NEW);
+      this.setWorkingState(FILE_STATE.NEW);
     }
   }
 
   handleStateOnModify() {
-    if (this.isWorkingState(NEW_FILE_STATE.UNCHANGED)) {
-      this.setWorkingState(NEW_FILE_STATE.MODIFIED);
+    if (this.isWorkingState(FILE_STATE.UNCHANGED)) {
+      this.setWorkingState(FILE_STATE.MODIFIED);
     }
   }
 
@@ -198,64 +198,64 @@ class File extends FileSystemEntity {
   }
 
   handleStateOnStage(ignoreUntracked) {
-    if (ignoreUntracked && this.isWorkingState(NEW_FILE_STATE.NEW)) {
+    if (ignoreUntracked && this.isWorkingState(FILE_STATE.NEW)) {
       return;
     }
 
-    if (this.isStagingState(NEW_FILE_STATE.NEW)) {
-      if (this.isWorkingState(NEW_FILE_STATE.DELETED)) {
+    if (this.isStagingState(FILE_STATE.NEW)) {
+      if (this.isWorkingState(FILE_STATE.DELETED)) {
         this.removeSelf();
-        // this.setStagingState(NEW_FILE_STATE.UNCHANGED);
+        // this.setStagingState(FILE_STATE.UNCHANGED);
       }
-    } else if (this.isStagingState(NEW_FILE_STATE.DELETED)) {
-      if (this.isWorkingState(NEW_FILE_STATE.NEW)) {
-        this.setStagingState(NEW_FILE_STATE.UNCHANGED);
+    } else if (this.isStagingState(FILE_STATE.DELETED)) {
+      if (this.isWorkingState(FILE_STATE.NEW)) {
+        this.setStagingState(FILE_STATE.UNCHANGED);
       }
-    } else if (this.isStagingState(NEW_FILE_STATE.MODIFIED)) {
-      if (this.isWorkingState(NEW_FILE_STATE.DELETED)) {
-        this.setStagingState(NEW_FILE_STATE.DELETED);
+    } else if (this.isStagingState(FILE_STATE.MODIFIED)) {
+      if (this.isWorkingState(FILE_STATE.DELETED)) {
+        this.setStagingState(FILE_STATE.DELETED);
       }
-    } else if (this.isStagingState(NEW_FILE_STATE.UNCHANGED)) {
+    } else if (this.isStagingState(FILE_STATE.UNCHANGED)) {
       this.setStagingState(this.getWorkingState());
     }
-    this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+    this.setWorkingState(FILE_STATE.UNCHANGED);
   }
 
   handleStateOnRestore(staged) {
     if (staged) {
       if (
-        (this.isStagingState(NEW_FILE_STATE.DELETED) &&
-          this.isWorkingState(NEW_FILE_STATE.NEW)) ||
-        (this.isStagingState(NEW_FILE_STATE.NEW) &&
-          this.isWorkingState(NEW_FILE_STATE.DELETED))
+        (this.isStagingState(FILE_STATE.DELETED) &&
+          this.isWorkingState(FILE_STATE.NEW)) ||
+        (this.isStagingState(FILE_STATE.NEW) &&
+          this.isWorkingState(FILE_STATE.DELETED))
       ) {
-        this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+        this.setWorkingState(FILE_STATE.UNCHANGED);
       } else if (
-        this.isStagingState(NEW_FILE_STATE.MODIFIED) &&
-        this.isWorkingState(NEW_FILE_STATE.DELETED)
+        this.isStagingState(FILE_STATE.MODIFIED) &&
+        this.isWorkingState(FILE_STATE.DELETED)
       ) {
-        this.setWorkingState(NEW_FILE_STATE.DELETED);
+        this.setWorkingState(FILE_STATE.DELETED);
       } else {
-        if (!this.isStagingState(NEW_FILE_STATE.UNCHANGED)) {
+        if (!this.isStagingState(FILE_STATE.UNCHANGED)) {
           this.setWorkingState(this.getStagingState());
         }
       }
-      this.setStagingState(NEW_FILE_STATE.UNCHANGED);
+      this.setStagingState(FILE_STATE.UNCHANGED);
     } else {
-      if (!this.isWorkingState(NEW_FILE_STATE.NEW)) {
-        this.setWorkingState(NEW_FILE_STATE.UNCHANGED);
+      if (!this.isWorkingState(FILE_STATE.NEW)) {
+        this.setWorkingState(FILE_STATE.UNCHANGED);
       }
     }
   }
 
   handleStateOnCommit() {
     if (
-      this.isStagingState(NEW_FILE_STATE.DELETED) &&
-      this.isWorkingState(NEW_FILE_STATE.UNCHANGED)
+      this.isStagingState(FILE_STATE.DELETED) &&
+      this.isWorkingState(FILE_STATE.UNCHANGED)
     ) {
       this.removeSelf();
     } else {
-      this.setStagingState(NEW_FILE_STATE.UNCHANGED);
+      this.setStagingState(FILE_STATE.UNCHANGED);
     }
   }
 
@@ -266,19 +266,19 @@ class File extends FileSystemEntity {
         (this.isStaged() ||
           (this.isChangedInWorkingArea() && !this.isUntracked())) &&
         !(
-          (this.isWorkingState(NEW_FILE_STATE.DELETED) &&
-            this.isStagingState(NEW_FILE_STATE.NEW)) ||
-          (this.isWorkingState(NEW_FILE_STATE.NEW) &&
-            this.isStagingState(NEW_FILE_STATE.DELETED))
+          (this.isWorkingState(FILE_STATE.DELETED) &&
+            this.isStagingState(FILE_STATE.NEW)) ||
+          (this.isWorkingState(FILE_STATE.NEW) &&
+            this.isStagingState(FILE_STATE.DELETED))
         ))
     );
   }
 
   getIsDeleted() {
     return (
-      this.isWorkingState(NEW_FILE_STATE.DELETED) ||
-      (this.isStagingState(NEW_FILE_STATE.DELETED) &&
-        !this.isWorkingState(NEW_FILE_STATE.NEW))
+      this.isWorkingState(FILE_STATE.DELETED) ||
+      (this.isStagingState(FILE_STATE.DELETED) &&
+        !this.isWorkingState(FILE_STATE.NEW))
     );
   }
 
@@ -378,17 +378,17 @@ class File extends FileSystemEntity {
 
   isStaged() {
     return this.isStagingState([
-      NEW_FILE_STATE.DELETED,
-      NEW_FILE_STATE.MODIFIED,
-      NEW_FILE_STATE.NEW,
+      FILE_STATE.DELETED,
+      FILE_STATE.MODIFIED,
+      FILE_STATE.NEW,
     ]);
   }
 
   isChangedInWorkingArea() {
     return this.isWorkingState([
-      NEW_FILE_STATE.DELETED,
-      NEW_FILE_STATE.MODIFIED,
-      NEW_FILE_STATE.NEW,
+      FILE_STATE.DELETED,
+      FILE_STATE.MODIFIED,
+      FILE_STATE.NEW,
     ]);
   }
 
@@ -398,13 +398,13 @@ class File extends FileSystemEntity {
 
   isUnchanged() {
     return (
-      this.isWorkingState(NEW_FILE_STATE.UNCHANGED) &&
-      this.isStagingState(NEW_FILE_STATE.UNCHANGED)
+      this.isWorkingState(FILE_STATE.UNCHANGED) &&
+      this.isStagingState(FILE_STATE.UNCHANGED)
     );
   }
 
   isUntracked() {
-    return this.isWorkingState(NEW_FILE_STATE.NEW);
+    return this.isWorkingState(FILE_STATE.NEW);
   }
 
   setStateConditional(
@@ -886,17 +886,17 @@ class Directory extends FileSystemEntity {
     commit.files.forEach((file) => {
       let parent = null;
       switch (file.getStagingState()) {
-        case NEW_FILE_STATE.NEW:
+        case FILE_STATE.NEW:
           parent = this.findByGitId(file.parentGitId);
           const newFile = file.copyWithGitId();
-          newFile.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
+          newFile.setState(FILE_STATE.UNCHANGED, FILE_STATE.UNCHANGED);
           parent.insert(newFile);
           break;
-        case NEW_FILE_STATE.DELETED:
+        case FILE_STATE.DELETED:
           parent = this.findByGitId(file.parentGitId);
           parent.removeByGitId(file.gitId);
           break;
-        case NEW_FILE_STATE.MODIFIED:
+        case FILE_STATE.MODIFIED:
           break;
         default:
           break;
@@ -908,17 +908,17 @@ class Directory extends FileSystemEntity {
     commit.files.forEach((file) => {
       let parent = null;
       switch (file.getStagingState()) {
-        case NEW_FILE_STATE.NEW:
+        case FILE_STATE.NEW:
           parent = this.findByGitId(file.parentGitId);
           parent.removeByGitId(file.gitId);
           break;
-        case NEW_FILE_STATE.DELETED:
+        case FILE_STATE.DELETED:
           parent = this.findByGitId(file.parentGitId);
           const newFile = file.copyWithGitId();
-          newFile.setState(NEW_FILE_STATE.UNCHANGED, NEW_FILE_STATE.UNCHANGED);
+          newFile.setState(FILE_STATE.UNCHANGED, FILE_STATE.UNCHANGED);
           parent.insert(newFile);
           break;
-        case NEW_FILE_STATE.MODIFIED:
+        case FILE_STATE.MODIFIED:
           break;
         default:
           break;
