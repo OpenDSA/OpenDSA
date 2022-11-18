@@ -64,8 +64,7 @@ const handleEnter = (
     handleAwardCredit
   );
 
-  const isArray = Array.isArray(output);
-  const isObject = !isArray && typeof output !== "string";
+  const isObject = output && typeof output === "object" && output.result;
 
   handleAddHistory({
     input,
