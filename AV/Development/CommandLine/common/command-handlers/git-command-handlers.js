@@ -13,20 +13,17 @@ import {
   localRemoteDivergedPull,
   localRemoteDivergedPush,
   messageEmpty,
-  messageEnclosed,
-  missingRRemove,
   noChangesToCommit,
-  noFilesExist,
-  notEnoughArgs,
   pullUpToDate,
   pushUpToDate,
   quoteNotClosed,
-  tooManyArgs,
   untracked,
-} from "./error-messages.js";
-import { Branch } from "./git-classes.js";
-import { getCommitOutput } from "./git-command-handlers-helpers.js";
-import { createStatusOutputHTMLString } from "./html-string-components.js";
+} from "../config/error-messages.js";
+import { Branch } from "../classes/git-classes.js";
+import {
+  getCommitOutput,
+  getStatusOutput,
+} from "../command-handlers-helpers/git-command-handlers-helpers.js";
 import {
   ADD_OFFSETS,
   BRANCH_OFFSETS,
@@ -37,7 +34,7 @@ import {
   PUSH_OFFSETS,
   RESTORE_OFFSETS,
   SWITCH_OFFSETS,
-} from "./timings.js";
+} from "../config/timing-offsets.js";
 
 const handle_clone = (args, flags, state) => {
   const {
@@ -385,7 +382,7 @@ const changeBranchHelper = (args, flags, createFlag, state) => {
 const handle_status = (args, flags, state) => {
   const { currDir, homeDir, localCurrBranch, remoteInitialCommit } = state;
 
-  return createStatusOutputHTMLString(
+  return getStatusOutput(
     localCurrBranch,
     homeDir,
     remoteInitialCommit,

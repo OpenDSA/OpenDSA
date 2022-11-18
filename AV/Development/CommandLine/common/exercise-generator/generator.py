@@ -71,6 +71,9 @@ def createExerciseFiles(exerciseConfigName, exerciseFileName, exerciseTitle, pat
 
   
 def createAllExerciseFiles(exerciseNames, path):
+  p = Path(path)
+  p.mkdir(exist_ok=True)
+  
   for exerciseConfigName, exerciseFileName, exerciseTitle in exerciseNames: 
     createExerciseFiles(exerciseConfigName, exerciseFileName, exerciseTitle, path)
 
@@ -97,11 +100,11 @@ def createRSTExerciseSection(exerciseFileName, exerciseTitle):
   return inputString.replace("EXERCISE_NAME", exerciseFileName).replace("EXERCISE_TITLE", exerciseTitle)
 
 
-createAllExerciseFiles(COMMAND_LINE_EXERCISES, "../../../exercises")
-createRST(COMMAND_LINE_EXERCISES, "../../../../../../RST/en/CommandLine/Exercises.rst")
+createAllExerciseFiles(COMMAND_LINE_EXERCISES, "../../exercises")
+createRST(COMMAND_LINE_EXERCISES, "../../../../../RST/en/CommandLine/Exercises.rst")
 
-createAllExerciseFiles(GIT_EXERCISES, "../../../exercises")
-createRST(GIT_EXERCISES, "../../../../../../RST/en/Git/Exercises.rst")
+createAllExerciseFiles(GIT_EXERCISES, "../../exercises")
+createRST(GIT_EXERCISES, "../../../../../RST/en/Git/Exercises.rst")
 
 
 

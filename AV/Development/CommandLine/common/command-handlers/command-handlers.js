@@ -1,7 +1,5 @@
-import { Directory, File } from "./file-system-entity.js";
+import { Directory, File } from "../classes/file-system-entity.js";
 import {
-  tooManyArgs,
-  notEnoughArgs,
   invalidPath,
   notADirectory,
   duplicate,
@@ -12,13 +10,15 @@ import {
   subdirectory,
   notAFile,
   removeDescendant,
-  noFilesExist,
-} from "./error-messages.js";
+} from "../config/error-messages.js";
 import {
   BASIC_COMMAND_OFFSETS,
   BASIC_COMMAND_OFFSETS_NO_EXIT,
-} from "./timings.js";
-import { getLSHelperOutput, getLSOutput } from "./command-handlers-helpers.js";
+} from "../config/timing-offsets.js";
+import {
+  getLSHelperOutput,
+  getLSOutput,
+} from "../command-handlers-helpers/command-handlers-helpers.js";
 
 const handle_ls = (args, flags, state) => {
   const { currDir } = state;

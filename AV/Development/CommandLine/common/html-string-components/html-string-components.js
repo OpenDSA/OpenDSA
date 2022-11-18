@@ -1,4 +1,4 @@
-import { NEW_FILE_STATE } from "./git-statuses.js";
+import { NEW_FILE_STATE } from "../config/file-states.js";
 
 const createPromptHTMLString = (promptData) =>
   `<div class="prompt-container">

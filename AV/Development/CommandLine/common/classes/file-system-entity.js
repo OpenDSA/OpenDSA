@@ -1,4 +1,4 @@
-import { NEW_FILE_STATE } from "./gitStatuses.js";
+import { NEW_FILE_STATE } from "../config/file-states.js";
 
 let count = 0;
 let gitIdCount = 0;

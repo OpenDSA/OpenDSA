@@ -1,7 +1,7 @@
 import {
   createLSOutputHTMLString,
   createOutputListHTMLString,
-} from "./html-string-components.js";
+} from "../html-string-components/html-string-components.js";
 
 const getLSHelperOutput = (fileNames) => createOutputListHTMLString(fileNames);
 

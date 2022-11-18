@@ -1,10 +1,10 @@
-import { Directory, File } from "./file-system-entity.js";
-import { NEW_FILE_STATE } from "./git-statuses.js";
+import { Directory } from "../classes/file-system-entity.js";
+import { NEW_FILE_STATE } from "../config/file-states.js";
 import {
   getTimings,
   INITIALIZE_FILE_TREE_OFFSETS,
   INITIALIZE_OFFSETS,
-} from "./timings.js";
+} from "../config/timing-offsets.js";
 
 const margin = { top: 30, right: 90, bottom: 30, left: 90 };
 

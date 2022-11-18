@@ -1,5 +1,5 @@
 import { EXERCISE_TYPES } from "./exercise-types.js";
-import { NEW_FILE_STATE } from "./git-statuses.js";
+import { NEW_FILE_STATE } from "./file-states.js";
 
 const TOUCH = {
   description:

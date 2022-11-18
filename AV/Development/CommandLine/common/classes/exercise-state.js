@@ -4,11 +4,11 @@ import {
   noFilesExist,
   notEnoughArgs,
   tooManyArgs,
-} from "./error-messages.js";
+} from "../config/error-messages.js";
 import { Directory } from "./file-system-entity.js";
 import { Branch, Commit } from "./git-classes.js";
-import { COMBINED_COMMANDS_MAP } from "./git-command-handlers.js";
-import { NEW_FILE_STATE } from "./git-statuses.js";
+import { COMBINED_COMMANDS_MAP } from "../command-handlers/git-command-handlers.js";
+import { NEW_FILE_STATE } from "../config/file-states.js";
 
 class ExerciseState {
   constructor() {
