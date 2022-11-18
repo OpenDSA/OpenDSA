@@ -1,30 +1,30 @@
 import {
   CommandLineExerciseState,
   GitExerciseState,
-} from "../classes/exercise-state.js";
+} from "../core/classes/exercise-state.js";
 import {
   handleKeydown,
   handleKeyup,
-} from "../command-line-events/command-line-events.js";
-import { COMMANDS_MAP } from "../command-handlers/command-handlers.js";
+} from "../core/handlers/command-line-handlers.js";
+import { COMMANDS_MAP } from "../core/handlers/command-handlers.js";
 import {
   initializeGitVisualization,
   updateFileStructureVisualization,
   updateGitVisualization,
-} from "../visualization-handlers/visualization-handlers.js";
-import { CommandHistory } from "../classes/command-history.js";
+} from "../core/handlers/visualization-handlers.js";
+import { CommandHistory } from "../core/classes/command-history.js";
 import {
   INITIALIZE_FILE_TREE_OFFSETS,
   INITIALIZE_OFFSETS,
   RESET_FILE_TREE_OFFSETS,
   RESET_OFFSETS,
-} from "../config/timing-offsets.js";
+} from "../core/config/timing-offsets.js";
 import {
   createHistoryLineHTMLString,
   createPromptHTMLString,
 } from "../html-string-components/html-string-components.js";
-import { COMBINED_COMMANDS_MAP } from "../command-handlers/git-command-handlers.js";
-import { EXERCISE_TYPES } from "../config/exercise-types.js";
+import { COMBINED_COMMANDS_MAP } from "../core/handlers/git-command-handlers.js";
+import { EXERCISE_TYPES } from "../core/config/exercise-types.js";
 
 function initializeExercise(config) {
   switch (config.type) {
@@ -212,7 +212,6 @@ const addHistory = (value) => {
   $("#history").append(
     createHistoryLineHTMLString(value.input, value.output, value.promptData)
   );
-  console.log("add history", value);
 };
 
 const clearHistory = () => {

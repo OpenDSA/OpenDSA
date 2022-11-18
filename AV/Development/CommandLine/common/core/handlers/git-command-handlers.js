@@ -23,7 +23,7 @@ import { Branch } from "../classes/git-classes.js";
 import {
   getCommitOutput,
   getStatusOutput,
-} from "../command-handlers-helpers/git-command-handlers-helpers.js";
+} from "../../command-handler-helpers/git-command-handlers-helpers.js";
 import {
   ADD_OFFSETS,
   BRANCH_OFFSETS,

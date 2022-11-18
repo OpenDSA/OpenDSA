@@ -18,7 +18,7 @@ import {
 import {
   getLSHelperOutput,
   getLSOutput,
-} from "../command-handlers-helpers/command-handlers-helpers.js";
+} from "../../command-handler-helpers/command-handlers-helpers.js";
 
 const handle_ls = (args, flags, state) => {
   const { currDir } = state;

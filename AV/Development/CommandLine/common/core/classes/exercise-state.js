@@ -7,7 +7,7 @@ import {
 } from "../config/error-messages.js";
 import { Directory } from "./file-system-entity.js";
 import { Branch, Commit } from "./git-classes.js";
-import { COMBINED_COMMANDS_MAP } from "../command-handlers/git-command-handlers.js";
+import { COMBINED_COMMANDS_MAP } from "../handlers/git-command-handlers.js";
 import { NEW_FILE_STATE } from "../config/file-states.js";
 
 class ExerciseState {
