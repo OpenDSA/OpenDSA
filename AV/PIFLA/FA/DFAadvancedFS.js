@@ -27,7 +27,7 @@ $(document).ready(function() {
   // Show a DFA with a trap state
   var urlTrapDFA="../../../AV/OpenFLAP/machines/FA/DFA_withTrapState.jff";
   var trapDFA= new av.ds.FA({center: true, top: 20, url: urlTrapDFA});
-  av.umsg("For any DFA that is missing transitions, we can easily create an equivalent DFA that shows all transitions. A new state called the trap state is added. Any transition not defined in the orignal DFA goes to the trap state. Once in the trap state, all symbols in the alphabet transition back to the trap state. That is, once the trap state is entered, the DFA will never trasition out. Here is the equivalent DFA made complete by adding the trap state and the missing transitions.");
+  av.umsg("For any DFA that is missing transitions, we can easily create an equivalent DFA that shows all transitions. A new state called the trap state is added. Any transition not defined in the orignal DFA goes to the trap state. Once in the trap state, all symbols in the alphabet transition back to the trap state. That is, once the trap state is entered, the DFA will never transition out. Here is the equivalent DFA made complete by adding the trap state and the missing transitions.");
   av.step();
 
   // Frame 5

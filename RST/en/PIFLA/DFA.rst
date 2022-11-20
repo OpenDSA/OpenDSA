@@ -16,7 +16,7 @@ Introduction to the DFA
 -----------------------
 
 We start with the simplest of our machines:
-The :term:`Deterministic Finite Acceptor` (:term:`DFA`).
+the :term:`Deterministic Finite Acceptor` (:term:`DFA`).
 This machine can process an input string (shown on a tape) from left
 to right.
 There is a control unit (with states), which has behavior defined for
@@ -24,7 +24,8 @@ what to do when the machine sees a given symbol on the current square
 of the tape while in a given state.
 But all that the machine can actually "do" is to change state before
 going to the next symbol to the right.
-That is, an acceptor cannot modify the contents of the tape.
+That is, an acceptor cannot modify the contents of the tape, nor
+decide about where the control unit goes.
 
 :term:`Deterministic` in this context has a particular meaning:
 When the DFA is in a given state, there is only one thing that
@@ -34,13 +35,13 @@ that might have some range of options on how to proceed when in a
 given state with a given symbol.
 We'll talk about non-deterministic automata later.
 
-At the end of processing the letters of the string, the DFA can answer
-"yes" or "no".
+At the end of processing the letters of the string, the DFA can
+"accept" or "reject".
 For example, a DFA that tests to see if a string is a valid integer
-should output "yes" if given 6789 as input, and "no" if given 67a89 or
+should accept if given 6789 as input, and reject if given 67a89 or
 67.89 as input.
 A DFA that tests to see if a string is a valid C++ variable name
-should output "yes" if given SUM as input, and "no" if given 1SUM as
+should accept if given SUM as input, and reject if given 1SUM as
 input.
 
 .. inlineav:: DFAExampleCON dgm
@@ -50,6 +51,7 @@ input.
 
    Schematic diagram for a DFA
 
+|
 
 .. inlineav:: DFAintroFS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAintroFS.css
@@ -74,7 +76,7 @@ Some Examples
 -------------
 The algorithm for how a DFA processes a string:
 
-| Start in :term:`start state` with input on tape
+| Start at the leftmost symbol of the string, and the machine is in the :term:`start state`
 | q = current state
 | s = current symbol on tape
 | while (s != blank) do
