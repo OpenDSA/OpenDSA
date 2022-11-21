@@ -3538,7 +3538,7 @@ $(document).ready(function () {
   /////////////////////////////////////////////////////////////////////////
 
   function displayHelp(){
-    alert(document.getElementById('helpInfo').innerHTML);
+    window.open("GrammarHelp.html", "helpwindow");
   }
 
   function isRegularGrammar(){
