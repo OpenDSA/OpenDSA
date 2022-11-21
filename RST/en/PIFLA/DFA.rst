@@ -74,17 +74,19 @@ input.
 
 Some Examples
 -------------
-The algorithm for how a DFA processes a string:
+Here is the algorithm for how a DFA processes a string.
 
-| Start at the leftmost symbol of the string, and the machine is in the :term:`start state`
-| q = current state
-| s = current symbol on tape
-| while (s != blank) do
+| // Start at the leftmost symbol of the string, with the machine in the :term:`start state`
+| State q = start state
+| Char s = leftmost symbol on tape
+| while (s != blank) do {
 |    :math:`q = \delta(q,s)`
-|    s = next symbol to the right on tape
+|    s = next symbol to the right on the tape
+| }
 | if :math:`q \in F`
 |    then accept
 |    else reject
+
 
 Here is a detailed trace on a simple input.
 
@@ -94,7 +96,7 @@ Here is a detailed trace on a simple input.
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/MachineTraceCON.js
    :output: show
 
-Now let's see how this machine accepts / rejects some strings.
+Now let's see how this machine accepts or rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css

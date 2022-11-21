@@ -25,7 +25,7 @@
           "True",
           "False"
         ],
-        "correctFeedback": ["A DFA can not modfiy the tape. It can only look at it or 'read' it."]
+        "correctFeedback": ["A DFA cannot modfiy the tape. It can only look at it or 'read' it."]
       },
       "whichstate": {
         "type": "multiple",

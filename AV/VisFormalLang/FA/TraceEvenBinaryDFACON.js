@@ -4,7 +4,7 @@ $(document).ready(function() {
   var av_name = "TraceEvenBinaryDFACON";
   var av = new JSAV(av_name);
   var url = "../../../AV/OpenFLAP/machines/FA/EvenBinaryDFACON.jff";
-  av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept any even number. You can click on any cell to see the process again starting from the clicked cell");
+  av.umsg("In this slideshow, we will trace the acceptance or rejection of some strings. The given machine can accept any even number (written in binary notation). You can click on any cell to see the process again starting from the clicked cell");
   av.displayInit();
   var binaryDFA = new av.ds.FA({left: 10, url: url});
   var acceptor = new TraverseAcceptor(av, binaryDFA);

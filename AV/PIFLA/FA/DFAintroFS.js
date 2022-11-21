@@ -23,7 +23,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 5
-  av.umsg("Some more things that you need to know about DFAs: There is a particular state that it always starts in, designated as the :term:`start state`. And some states in the machine are labeled as :term:`final states <final state>`. If at the end of processing the string the machine is in a 'final' state, then the machine outputs 'yes', otherwise it outputs 'no'.");
+  av.umsg("Some more things that you need to know about DFAs: There is a particular state that it always starts in, designated as the :term:`start state`. And some states in the machine are labeled as :term:`final states <final state>`. If at the end of processing the string the machine is in a 'final' state, then the machine 'accepts, otherwise it 'rejects'.");
   av.step();
 
   // Frame 6

@@ -2,7 +2,7 @@ var ExerciseController = function (jsav, fa, filePath, dataType, options, check)
 	this.init(jsav, fa, filePath, dataType, options, check);
 };
 $("#rmenu").load("../../../rmenu.html");
-    $("#rmenu").hide();
+$("#rmenu").hide();
 var controllerProto = ExerciseController.prototype;
 var logRecord = new Object();
 var tryC = 0;
