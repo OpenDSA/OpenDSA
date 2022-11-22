@@ -132,19 +132,20 @@ language.
 So a DFA :math:`M` accepts a language :math:`L`, written
 :math:`L(M)`.
 
-But go beyond this.
-Think about all possible DFAs.
-And each DFA accepts a language.
+Let's now think beyond this level, and consider all possible DFAs.
+Each DFA accepts a language.
 So all the DFAs, collectively, can accept some collection of
 languages.
 This is called a :term:`family of languages`.
-Therefore, the DFAs define a family of languages that they accept.
+Therefore, all the DFAs together define a family of languages that
+they accept.
 We will give a name to this particular family:
 A language is :term:`regular <regular language>` if and only if
 there exists a DFA :math:`M` such that :math:`L = L(M)`.
 We will explain later why we used the name "regular" for this family.
+For now, this is merely a definition without any other context.
 
-The important question now is:
+The important question that this leads to is:
 Are there languages that DFAs cannot accept?
 That is, are there languages that are not regular?
 We won't leave you guessing, the answer is yes.
