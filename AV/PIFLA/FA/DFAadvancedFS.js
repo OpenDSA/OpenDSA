@@ -79,7 +79,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 16
-  av.umsg("The formal definition is: $\\overline{L(M)} = \\{w\\in{\\Sigma}^{*}\\mid {\\delta}^{*}(q_0,w)\\not\\in F\\}$. Which makes it easy to see how to build $M'$ from $M$: Just change all final states in $M$ to not be final, and all non-final states in $M$ to be final.");
+  av.umsg("The formal definition is: $\\overline{L(M)} = \\{w\\in{\\Sigma}^{*}\\mid {\\delta}^{*}(q_0,w)\\not\\in F\\}$. Which makes it easy to see how to build $M'$ from $M$: Just change all final states in $M$ to not be final, and all non-final states in $M$ to be final. However, this requires that the machine be complete, because the trap state needs to be changed to be final as well.");
   av.step();
   
   // Frame 17

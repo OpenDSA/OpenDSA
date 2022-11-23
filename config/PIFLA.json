@@ -159,6 +159,11 @@
         },
         "DFAMinEx2": {
           "points": 2.0
+        }
+      },
+      "PIFLA/DFAComplementEx": {
+        "DFANotaabb": {
+          "points": 2.0
         },
         "DFANotevena3b": {
           "points": 2.0
@@ -188,11 +193,6 @@
           "threshold": 0.85
         },
         "NFAex2":{
-          "points": 2.0
-        }
-      },
-      "PIFLA/DFAComplementEx": {
-        "DFANotaabb": {
           "points": 2.0
         }
       },

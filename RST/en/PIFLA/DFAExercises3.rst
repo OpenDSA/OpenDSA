@@ -34,15 +34,3 @@ DFA exercises
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAevenamin3b.html pe
    :long_name: DFA exercise even a min 3 b
-
-DFA Complement Exercise
------------------------
-
-HINT: If DFA :math:`M` accepts language :math:`L`, the we can create a
-machine to accept the complement of :math:`L` by reversing the final
-and non-final states of :math:`M`.
-However, that only works on a complete DFA, meaning that we have to
-take into account the trap state.
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFANotevena3b.html pe
-   :long_name: Construct DFA of language complement
