@@ -18,10 +18,10 @@
       "startb":{
         "type": "multiple",
         "description": "OK, let's finish up with the DFA's start state transitions. The alphabet includes 'b'. So what should we do when the input starts with 'b'?",
-        "question":"In the NFA, is there any transition on 'b' that can be reached from the start state?",
+        "question":"In the NFA, is there any transition on 'b' that can be reached from q0, q1, or q2?",
         "answer": "No",
         "choices": ["Yes", "No"],
-        "correctFeedback": "There is no transition on 'b' in the NFA reachable from the start state, so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
+        "correctFeedback": "There is no transition on 'b' in the NFA reachable from Closure(q0), so the DFA should not have such a transition either. Note that this is a case where the machine shown is incomplete. If the string starts with 'b', we should imagine that the machine follows only one path that goes to a trap state. This is true for both the NFA and the DFA."
       },
       "q3q4a": {
         "type": "select",
@@ -47,7 +47,7 @@
       },
       "q1q5q6b": {
         "type": "select",
-        "description": "Now we will finish up node {q1, q5, q6}",
+        "description": "So we add node {q3}, that we will deal with later. For now we will finish up node {q1, q5, q6}",
         "question":"In the NFA, what states are reachable from q1, q5, or q6 on 'b'?",
         "answer": ["none"],
         "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
@@ -71,7 +71,7 @@
       },
       "q4a": {
         "type": "select",
-        "description": "That finishes {q3}. So, now we process {q4}",
+        "description": "We add new node {q1, q5}. That finishes {q3}. So, now we process {q4}",
         "question":"In the NFA, what states are reachable from q4 on 'a'?",
         "answer": ["q4"],
         "choices": ["q0", "q1", "q2", "q3", "q4", "q5", "q6", "none"],
@@ -121,8 +121,8 @@
         "type": "select",
         "description": "All that remains is to pick the set of final states. To do this, look at the list of states (from the NFA) that are listed on the labels for each node in the DFA. If any of them are a final state in the NFA, then make that a final state in the DFA. In other words, since q5 and q6 are final states in the NFA, every node in the DFA that includes q5 <b>or</b> q6 in its node label will become final.",
         "question":"What are the final states for the DFA?",
-        "answer": ["q5, q1", "q1, q5, q6", "q6"],
-        "choices": ["q0, q1, q2", "q3, q4","q4", "q1, q5, q6", "q3", "q6", "q5, q1", "none"]
+        "answer": ["{q5, q1}", "{q1, q5, q6}", "{q6}"],
+        "choices": ["{q0, q1, q2}", "{q3, q4}","{q4}", "{q1, q5, q6}", "{q3}", "{q6}", "{q5, q1}", "none"]
       }
     }
   }

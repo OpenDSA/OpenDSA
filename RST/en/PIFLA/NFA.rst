@@ -15,10 +15,10 @@ NFA: Non-Deterministic Finite Automata
 Non-Deterministic Finite Automata
 ---------------------------------
 
-Lots of times we have to make decisions.
+We often have to make decisions.
 Sometimes, once we make the decision, we cannot undo it.
 Sometimes, we can go back, change our minds, make the other choice.
-But even then, we still had to spend the time investigating the false
+But even then, we still had to spend time investigating the false
 path.
 
 Imagine that when we came to a decision point, we could clone
@@ -29,8 +29,7 @@ Wouldn't that be a hugely powerful upgrade to our lives?
 That gets into some pretty complicated philosophy in real life.
 But in the world of Finite Automata, the concept of
 :term:`non-determinism <non-deterministic>` turns out to be something
-that we can make 
-quite concrete.
+that we can make quite concrete.
 In this module, we study what it means to make an FA non-deterministic,
 and whether it really even matters in the end.
 
@@ -43,15 +42,10 @@ and whether it really even matters in the end.
 NFA vs. DFA: Which is more powerful?
 ------------------------------------
 
-.. inlineav:: NFAequivFS ff
-   :links:  DataStructures/FLA/FLA.css AV/PIFLA/FA/NFAequivFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/FA/NFAequivFS.js
-   :output: show
-
 Now we are ready for the main event: Proving that every NFA can be
 converted to a DFA, and therefore the two machine types are equally
 powerful.
-We do this using Proof by Construction: We have an algorithm that
+We do this using Proof by Construction: Here is an algorithm that
 converts any NFA to an equivalent DFA.
 
 .. topic:: Theorem and Proof
@@ -66,7 +60,7 @@ converts any NFA to an equivalent DFA.
 
    * :math:`Q_D = 2^{Q_N}` (the powerset of :math:`Q_N`)
 
-   * :math:`F_D = \{Q\in Q_D \mid \exists q_i \in Q\ \mathrm{with}\ q_i \in F_N \}`
+   * :math:`F_D = \{Q\in Q_D \mid \exists\ q_i \in Q\ \mathrm{with}\ q_i \in F_N \}`
      
      Interpretation: A state :math:`q_D` in :math:`M_D` is final if
      **any** of the states from :math:`M_N` in the subset that
@@ -123,16 +117,18 @@ Conclusions
 Adding the non-determinism capability to DFAs does not result in any
 new capability to accept languages.
 The set of languages that can be accepted by a NFA is exactly the same
-set of languages that can be accepted by a DFA.
+as the set of languages that can be accepted by a DFA.
 We proved this constructively:
-Every DFA is automatically an NFA without non-determinism, so DFAs
-obviously cannnot accept languages that NFAs cannot.
+Every DFA is automatically an NFA without non-determinism,
+so DFAs obviously cannnot accept languages that NFAs cannot.
 And any NFA can be converted using an algorithm to a DFA.
 So NFAs cannot accept languages that DFAs cannot.
 
 So, is the NFA a useful concept? Why introduce them at all?
 First, it was not obvious at the start that they add no new power in terms
 of new languages that can be accepted.
+(And sometimes non-determinism makes a functional
+difference in other contexts.)
 So, we had to work through that to convince ourselves that it is true.
 Second, NFAs tend to be "simpler" to understand than the equivalent
 DFA.
