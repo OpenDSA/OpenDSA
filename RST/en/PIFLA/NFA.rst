@@ -123,6 +123,8 @@ Every DFA is automatically an NFA without non-determinism,
 so DFAs obviously cannnot accept languages that NFAs cannot.
 And any NFA can be converted using an algorithm to a DFA.
 So NFAs cannot accept languages that DFAs cannot.
+Since the collection of DFAs can accept exactly the same languages as
+the class of NFAs, we say that these two are :term:`equivalent`.
 
 So, is the NFA a useful concept? Why introduce them at all?
 First, it was not obvious at the start that they add no new power in terms
@@ -138,3 +140,7 @@ Or, try writing the DFA for the language from scratch as a DFA.
 Third, we will introduce some other conversion algorithms over the
 course of the semester that are easier to understand if the target is
 a NFA instead of a DFA.
+And fourth, non-determinism is a useful concept to help simplify other
+concepts that we will cover later.
+A good example will be the study of so-called :term:`NP-Complete`
+problems (where NP stands for nondeterministic polynomial).

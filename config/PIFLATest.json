@@ -75,7 +75,11 @@
         },
         "DFAno3a": {
           "points": 2.0
+        },
+        "DFACOMPno3a": {
+          "points": 2.0
         }
+
       },
       "PIFLA/DFAExercises2": {
         "DFAevena": {
@@ -84,10 +88,13 @@
         "DFAbsurrounda": {
           "points": 2.0
         },
-        "DFAnoba": {
+        "DFAdiv4": {
           "points": 2.0
         },
-        "DFAdiv4": {
+        "DFAevenamin3b": {
+          "points": 2.0
+        },
+        "DFACOMPevenamin3b": {
           "points": 2.0
         }
       },
@@ -101,7 +108,10 @@
         "DFAbotheo": {
           "points": 2.0
         },
-        "DFAevenamin3b": {
+        "DFAnoba": {
+          "points": 2.0
+        },
+        "DFACOMPnoba": {
           "points": 2.0
         }
       },
@@ -113,11 +123,7 @@
           "points": 2.0
         }
       },
-      "PIFLA/NFA": {
-        "NFAequivFS": {
-          "points": 1.0
-        }
-      },
+      "PIFLA/NFA": {},
       "PIFLA/NFAExercises": {
         "NFAtoDFAex1":{
           "points": 2.0,

@@ -12,10 +12,10 @@
 DFA Complement Exercise
 =======================
 
-.. .. Refactor the three DFA exercise sets to add a complement
-   exercise at the end of each one that is complementing one of the
-   ones just done.
-
+.. .. DO NOT USE: These are obsolete. Each of the DFA exercise sets
+   has a complement exercise included that complements one of the
+   machines already in the exercise.
+   
 DFA Complement Exercise 1
 -------------------------
 

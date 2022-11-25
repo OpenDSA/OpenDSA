@@ -1705,6 +1705,17 @@ Glossary
       :math:`\mathbf{S}` if it is :term:`reflexive`,
       :term:`symmetric`, and :term:`transitive`.
 
+   equivalent
+      In the study of formal langauges, two entities are equivalent if
+      they accept the same language. That is, entities :math:`M_1` and
+      :math:`M_2` are equivalent if :math:`L(M_1) = L(M_2)`.
+      Two mechanisms for representing or recognizing languages are
+      equivalent if the collection of languages that each accept are
+      the same.
+      For example, :term:`DFAs <DFA>` and :term:`NFAs <NFA>` are
+      equivalent because every DFA is technically an NFA, and every
+      NFA can be converted into a DFA.
+
    estimation
       As a technical skill, this is the process of generating a rough
       estimate in order to evaluate the feasibility of a proposed
@@ -3346,6 +3357,21 @@ Glossary
       each of the choices in parallel.
       In the parallel view, the nondeterminism was successful if at
       least one of the choices leads to a correct answer.
+
+   Nondeterministic Finite Automata
+   Nondeterministic Finite Acceptor
+   NFA
+      An :term:`automata` or abstract machine that can process an
+      input string (shown on a tape) from left to right.
+      There is a control unit (with :term:`states <state>`),
+      behavior defined for what to do when in a given state and with a
+      given symbol on the current square of the tape.
+      All that we can "do" is change state before going to the next
+      letter to the right.
+      In distinction from a :term:`DFA`, a NFA may have multiple
+      transitions from a given state on the same input symbol, or
+      there can be a transition from a given state on the empty
+      string.
 
    non-deterministic polynomial time algorithm
       :to-term: NP :label: abbreviation

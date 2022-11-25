@@ -4,7 +4,7 @@
   "totalFalseCases": 10,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings with any odd number of a’s.",
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of strings with an odd number of a’s.",
   "testCases": [
     {
       "a": true,
