@@ -15,6 +15,9 @@ More NFA exercises
 NFA to DFA
 ----------
 
+.. .. WARNING: The grader does not work on either of these two
+   NFA->DFA exercises
+
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex1long.html pe
    :long_name: NFAtoDFA exercise 1 long version
 

@@ -79,7 +79,6 @@
         "DFACOMPno3a": {
           "points": 2.0
         }
-
       },
       "PIFLA/DFAExercises2": {
         "DFAevena": {
@@ -126,24 +125,24 @@
       "PIFLA/NFA": {},
       "PIFLA/NFAExercises": {
         "NFAtoDFAex1":{
-          "points": 2.0,
+          "points": 3.0,
           "threshold": 0.85
         },
         "NFAex1":{
-          "points": 2.0
+          "points": 3.0
         }
       },
       "PIFLA/NFAExercises2": {
         "NFAtoDFAex1long":{
-          "points": 2.0,
+          "points": 3.0,
           "threshold": 0.85
         },
         "NFAtoDFAex2":{
-          "points": 2.0,
+          "points": 3.0,
           "threshold": 0.85
         },
         "NFAex2":{
-          "points": 2.0
+          "points": 3.0
         }
       },
       "PIFLA/DFAMinimization": {},

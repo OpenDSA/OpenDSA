@@ -1313,20 +1313,16 @@ var exerciseLocation;
   $('#exportButton').hide();
   $('#clearLabelButton').hide();
   $( "#dialog" ).dialog({ autoOpen: false });
-  $("#help").dialog({autoOpen: false });
-  $("#helpButton").click(function() {
-    $("#help").dialog({
-      dialogClass: "alert",
-      width: 400,
-      height: 300
-    });
-    $("#help").dialog("open");
-  });
+  $("#helpButton").click(displayHelp);
   $(document).keyup(function(e) {
     if (e.keyCode === 27) cancel();   // esc
   });
   $('#download').hide();
 
+  function displayHelp(){
+    window.open("FAHelp.html", "helpwindow");
+  }
+  
   // magic happens here
   onLoadHandler();
 
