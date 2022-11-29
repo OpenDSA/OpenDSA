@@ -1,0 +1,3 @@
+The documentation for OpenDSA is available on https://opendsa.readthedocs.io
+
+The docs are automatically updated when the a commit is made to the master branch of the project. Readthedocs watchs that branch for changes, reads the .readthedocs.yml file at the root of the OpenDSA/OpenDSA project, and then rebuilds the docs using the contents of <OpenDSA>/Doc/source directory. 
