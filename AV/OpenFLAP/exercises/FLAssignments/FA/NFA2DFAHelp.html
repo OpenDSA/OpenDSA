@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>NFA to DFA Exercise Help</title>
+    <link rel="stylesheet" href="../../../../../lib/site.css" type="text/css" />
+  </head>
+
+  <body>
+    <div id="content">
+      <h1>NFA to DFA Exercise Help</h1>
+
+      <p>First you see "Choose a state to expand":
+        Just click one of the nodes in the box on the right.</p>
+
+      <p>That opens a box that says "Expand on what terminal?" There
+        you type in one of the letters (terminals) in the alphabet. That
+        would be a or b.</p>
+
+      <p>Once you type the letter and click "OK", then you can do one
+        of two things: You can click a spot in the box on the right
+        where you want the node. Or you can click on an existing node if
+        you want the transition to go to that. But if you click on an
+        empty spot to create a new node, you next get asked: "Which
+        group of NFA states will that go to on <terminal>?" So, you just
+          type the state names, separated by commas. So, for example, you
+          could type "q0, q1". That will place a node with that
+          label. Note that if you type a list of states that already has a
+          node, it will tell you that it already exists. In which case,
+          just do it over again, clicking on the node this time as the
+          target of the transition.</p>
+
+      <p>If your node list is not correct (the exercise knows what the
+        target node list ought to be for this transition), then it will tell
+        you "State Label is incorrect". In which case, you need to figure
+        out why your list was wrong, and then try again.</p>
+
+      <p>At the end, if you think you did all the expansions, just hit
+        "Grade".</p> 
+
+      <p>This exercise is very forgiving. So long as you eventually
+      reach the correct end it it is supposed to give you credit, no
+      matter how many mistakes you make on the way.</p>
+      
+  </body>
+</html>

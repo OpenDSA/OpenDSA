@@ -29,13 +29,13 @@ $(document).ready(function() {
   av.displayInit();
 
   // Slide 2
-  av.umsg("Step 1: Initially, the tape head is at the leftmost tape cell with character '1', and the current state is q0");
+  av.umsg("Step 1: Initially, the tape head is at the leftmost tape cell (character '1' in this example), and the current state is the start state (q0).");
   node[0].highlight();
   av.step();
 
   // Slide 3
   // Move the tape head objects right 30 units
-  av.umsg("Step 2: The tape head shifts right one cell. The current state remains in q0.");
+  av.umsg("Step 2: Process the symbol 1. The tape head shifts right one cell. The current state remains in q0 (because the arrow from q0 to follow when the machine sees the symbol 1 points to q0).");
   g.translateX(30);
   c1.translateX(30);
   c2.translateX(30);
@@ -43,7 +43,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 4
-  av.umsg("Step 3: The tape head shifts right one cell. The current state changes to q1.");
+  av.umsg("Step 3: Process the symbol 0. The tape head shifts right one cell. The current state changes to q1 (because the arrow from q0 to follow when the machine sees the symbol 0 points to q1).");
   node[0].unhighlight();
   node[1].highlight();
   p4.hide();
@@ -57,10 +57,14 @@ $(document).ready(function() {
   av.step();
 
   // Slide 5
-  av.umsg("Step 4: The tape head shifts right one cell. The current state remains in q1. Since the last character of the string has now been processed, the machine is done with this input. Since the current state is a final state, the string is accepted as being in the language.");
+  av.umsg("Step 4: Process the symbol 0. The tape head shifts right one cell. The current state remains in q1  (because the arrow from q1 to follow when the machine sees the symbol 0 points to q1).");
   g.translateX(30);
   c2.translateX(30);
   c1.translateX(30);
   tape.moveRight();
+  av.step();
+
+  // Slide 6
+  av.umsg("Since the current character is a blank symbol, the last character of the string has now been processed and the machine is done with this input. Since the current state is a final state, the string is accepted as being in the language.");
   av.recorded();
 });

@@ -124,7 +124,7 @@ Turing Machines
    .. inlineav:: RClearCON ss
       :long_name: Turing Machine RClear
       :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
-      :scripts: DataStructures/FLA/FA.js AV/Yinwen/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
+      :scripts: DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
       :align: center
       :output: show
 

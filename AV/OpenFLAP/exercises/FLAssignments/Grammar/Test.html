@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- This is a test of using a URL parameter to define a grammar --
+  -- exercise using a template file. This works, in isolation. The --
+  -- problem is that the exercise does not have a filename. This does --
+  -- not play well with OpenDSA's exercise scoring and configuration --
+  -- mechanism, which depend on filenames. -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Grammar Exercise Template</title>
+    <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css">
+    <link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/grammar.css" type="text/css">
+    <link rel="stylesheet" href="../../../css/help.css" type="text/css" />
+    <link rel="stylesheet" href="../../../css/grammarEditor.css" type="text/css" />
+  </head>
+<body>
+  <div id="container">
+      <img id="check_mark" src="../../../green_check.png" alt="Proficient" style="display: none;float: left; width: 40px;">
+      <h1 id="grammarexercise">Grammar Exercise</h1>
+      <button id="helpbutton"><img src="../../../help.png" /></button>
+      <h2 id="description"></h2>
+      <div id="dialogueoverlay"></div>
+      <div id="dialoguebox">
+        <div>
+          <div id="dialogueboxhead"></div>
+          <div id="dialogueboxbody"></div>
+          <div id="dialogueboxfoot"></div>
+        </div>
+      </div>
+      <p align="center" class="arrayPlace"></p>
+      <button type="button" id="editbutton">Edit Grammar</button>
+      <button type="button" id="addrowbutton">Add Row</button>
+      <button type="button" id="deletebutton">Delete Row</button>
+      <button type="button" class="function" id="identifybutton">Identify Grammar</button>
+      <div id="buttons" align="center">
+        <span id='mode'></span><br>
+        <div id="av">
+          <a class="jsavsettings" href="#">Settings</a>
+          <p align="center" class="jsavexercisecontrols"></p>
+          <p class="jsavscore"></p>
+          <p class="jsavoutput jsavline"></p>
+        </div>
+        <div id="graph" class="jsavcanvas"></div>
+      </div>
+      <p id="percentage"></p>
+      <table id="testResults"></table>
+    </div>
+    <script src="../../../../../lib/jquery.min.js"></script>
+    <script src="../../../../../lib/jquery.migrate.min.js"></script>
+    <script src="../../../../../lib/jquery.ui.min.js"></script>
+    <script src="../../../../../lib/jquery.transit.js"></script>
+    <script src="../../../../../lib/raphael.js"></script>
+    <script src="../../../../../lib/dagre.min.js"></script>
+    <script src="../../../../../lib/JSAV.js"></script>
+    <script src="../../../../../lib/odsaUtils-min.js"></script>
+    <script src="../../../../../lib/odsaAV-min.js"></script>
+    <script src="../../exerController/TestCaseGenerater.js"></script>
+    <script src="../../exerController/grammarHandler.js"></script>
+    <script src="../../../../../DataStructures/FLA/serializableGraph.js"></script>
+    <script src="../../../../../lib/underscore.js"></script>
+    <script src="../../../../../DataStructures/FLA/FA.js"></script>
+    <script src="../../../../../DataStructures/FLA/PDA.js"></script>
+    <script src="../../../../../DataStructures/FLA/Grading.js"></script>
+    <script src="../../../grammarEditor.js"></script>
+    <script src="../../exerController/GrammarExerciseController.js"></script>
+    <script>
+      var params = JSAV.utils.getQueryParameter();
+      if (params.json) {
+        getExerciseLocation = function () {
+          return "./" + params.json + ".json"
+        };
+      }
+      else {
+        console.error("No URL parameter given to load JSON file for exercise");
+      }
+    </script>
+  </body>
+</html>

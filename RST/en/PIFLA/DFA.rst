@@ -16,7 +16,7 @@ Introduction to the DFA
 -----------------------
 
 We start with the simplest of our machines:
-The :term:`Deterministic Finite Acceptor` (:term:`DFA`).
+the :term:`Deterministic Finite Acceptor` (:term:`DFA`).
 This machine can process an input string (shown on a tape) from left
 to right.
 There is a control unit (with states), which has behavior defined for
@@ -24,7 +24,8 @@ what to do when the machine sees a given symbol on the current square
 of the tape while in a given state.
 But all that the machine can actually "do" is to change state before
 going to the next symbol to the right.
-That is, an acceptor cannot modify the contents of the tape.
+That is, an acceptor cannot modify the contents of the tape, nor
+decide about where the control unit goes.
 
 :term:`Deterministic` in this context has a particular meaning:
 When the DFA is in a given state, there is only one thing that
@@ -34,13 +35,13 @@ that might have some range of options on how to proceed when in a
 given state with a given symbol.
 We'll talk about non-deterministic automata later.
 
-At the end of processing the letters of the string, the DFA can answer
-"yes" or "no".
+At the end of processing the letters of the string, the DFA can
+"accept" or "reject".
 For example, a DFA that tests to see if a string is a valid integer
-should output "yes" if given 6789 as input, and "no" if given 67a89 or
+should accept if given 6789 as input, and reject if given 67a89 or
 67.89 as input.
 A DFA that tests to see if a string is a valid C++ variable name
-should output "yes" if given SUM as input, and "no" if given 1SUM as
+should accept if given SUM as input, and reject if given 1SUM as
 input.
 
 .. inlineav:: DFAExampleCON dgm
@@ -50,6 +51,7 @@ input.
 
    Schematic diagram for a DFA
 
+|
 
 .. inlineav:: DFAintroFS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAintroFS.css
@@ -72,17 +74,19 @@ input.
 
 Some Examples
 -------------
-The algorithm for how a DFA processes a string:
+Here is the algorithm for how a DFA processes a string.
 
-| Start in :term:`start state` with input on tape
-| q = current state
-| s = current symbol on tape
-| while (s != blank) do
+| // Start at the leftmost symbol of the string, with the machine in the :term:`start state`
+| State q = start state
+| Char s = leftmost symbol on tape
+| while (s != blank) do {
 |    :math:`q = \delta(q,s)`
-|    s = next symbol to the right on tape
+|    s = next symbol to the right on the tape
+| }
 | if :math:`q \in F`
 |    then accept
 |    else reject
+
 
 Here is a detailed trace on a simple input.
 
@@ -92,7 +96,7 @@ Here is a detailed trace on a simple input.
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/MachineTraceCON.js
    :output: show
 
-Now let's see how this machine accepts / rejects some strings.
+Now let's see how this machine accepts or rejects some strings.
 
 .. inlineav:: TraceEvenBinaryDFACON ss
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
@@ -128,19 +132,20 @@ language.
 So a DFA :math:`M` accepts a language :math:`L`, written
 :math:`L(M)`.
 
-But go beyond this.
-Think about all possible DFAs.
-And each DFA accepts a language.
+Let's now think beyond this level, and consider all possible DFAs.
+Each DFA accepts a language.
 So all the DFAs, collectively, can accept some collection of
 languages.
 This is called a :term:`family of languages`.
-Therefore, the DFAs define a family of languages that they accept.
+Therefore, all the DFAs together define a family of languages that
+they accept.
 We will give a name to this particular family:
 A language is :term:`regular <regular language>` if and only if
 there exists a DFA :math:`M` such that :math:`L = L(M)`.
 We will explain later why we used the name "regular" for this family.
+For now, this is merely a definition without any other context.
 
-The important question now is:
+The important question that this leads to is:
 Are there languages that DFAs cannot accept?
 That is, are there languages that are not regular?
 We won't leave you guessing, the answer is yes.

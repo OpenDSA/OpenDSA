@@ -7,7 +7,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("Here we give a formal definition for Nondeterministic Finite Automata (NFA), and gain some understanding about their limitations.");
+  av.umsg("Here we give a formal definition for Nondeterministic Finite Automata (NFA), and seek to gain some understanding about their limitations.");
   av.displayInit();
 
   // Frame 2
@@ -94,6 +94,19 @@ $(document).ready(function() {
   av.step();
   
   // Frame 21
+  linkNFAlambda.hide();
+  var urlnfa = "../../../AV/OpenFLAP/machines/FA/NFA2DFAexample1.jff";
+  var nfa = new av.ds.FA({center: true, url: urlnfa, left: 0});
+  av.umsg(Frames.addQuestion("nfaex"));
+  av.step();
+
+  // Frame 22
+  var urldfa = "../../../AV/OpenFLAP/machines/FA/NFA2DFAexample2.jff";
+  var dfa = new av.ds.FA({center: true, url: urldfa, left: 250});
+  av.umsg("Hopefully it is not too hard to convince yourself that the DFA on the right accepts the same language as the NFA. Note that the names of the states are chosen to help you to see their relationships to the original NFA. In fact, there was a procedure followed to generate this DFA, which also produced these node labels.");
+  av.step();
+
+  // Frame 23
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

@@ -34,13 +34,13 @@ is no response.
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanbm.html pe
-   :long_name: anbm grammar
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanb2n.html pe
+   :long_name: anb2n grammar
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanb2n.html pe
-   :long_name: anb2n grammar
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanbm.html pe
+   :long_name: anbm grammar
 
 |
 

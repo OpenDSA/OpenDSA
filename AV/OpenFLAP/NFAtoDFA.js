@@ -403,6 +403,12 @@ var nodeClickHandlers = function(e) {
   $("#exportButton").click(exportToFA);
   $("#checkDone").click(checkDone);
   $("#exportButton").hide();
+  $("#helpbutton").click(displayHelp);
+
+  function displayHelp(){
+    window.open("NFA2DFAHelp.html", "helpwindow");
+  }
+
   //this function to save student solution
   	$("#saveButton").click(function () {
 		$('#download').hide();

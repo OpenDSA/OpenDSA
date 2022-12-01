@@ -7,7 +7,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
   
   // Frame 1
-  av.umsg("As you were building your first DFA, perhaps this question occurred to you: What happens if I leave out one of the transitions? What happens if the DFA is in a state and sees a letter that has no transition? That is, what if there is no transition given for this state and this symbol (equivalently, no such edge in the graph)?");
+  av.umsg("As you were building your first DFA, perhaps this question occurred to you: What happens if I leave out one of the transitions? What happens if the DFA is in a state and sees a symbol that has no transition? That is, what if there is no transition given for this state and this symbol (equivalently, no such edge in the graph)?");
   av.displayInit();
           
   // Show a DFA with no Trap State
@@ -26,8 +26,8 @@ $(document).ready(function() {
   noTrapDFA.hide();
   // Show a DFA with a trap state
   var urlTrapDFA="../../../AV/OpenFLAP/machines/FA/DFA_withTrapState.jff";
-  var trapDFA= new av.ds.FA({center: true, top: 20, url: urlTrapDFA});
-  av.umsg("For any DFA that is missing transitions, we can easily create an equivalent DFA that shows all transitions. A new state called the trap state is added. Any transition not defined in the orignal DFA goes to the trap state. Once in the trap state, all symbols in the alphabet transition back to the trap state. That is, once the trap state is entered, the DFA will never trasition out. Here is the equivalent DFA made complete by adding the trap state and the missing transitions.");
+  var trapDFA= new av.ds.FA({center: true, top: 40, url: urlTrapDFA});
+  av.umsg("For any DFA that is missing transitions, we can easily create an equivalent DFA that shows all transitions. A new state called the trap state is added. Any transition not defined in the orignal DFA goes to the trap state. Once in the trap state, all symbols in the alphabet transition back to the trap state. That is, once the trap state is entered, the DFA will never transition out. The trap state is never a final state. Here is the equivalent DFA made complete by adding the trap state and the missing transitions.");
   av.step();
 
   // Frame 5
@@ -79,7 +79,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 16
-  av.umsg("The formal definition is: $\\overline{L(M)} = \\{w\\in{\\Sigma}^{*}\\mid {\\delta}^{*}(q_0,w)\\not\\in F\\}$. Which makes it easy to see how to build $M'$ from $M$: Just change all final states in $M$ to not be final, and all non-final states in $M$ to be final.");
+  av.umsg("The formal definition is: $\\overline{L(M)} = \\{w\\in{\\Sigma}^{*}\\mid {\\delta}^{*}(q_0,w)\\not\\in F\\}$. Which makes it easy to see how to build $M'$ from $M$: Just change all final states in $M$ to not be final, and all non-final states in $M$ to be final. However, this requires that the machine be complete, because the trap state needs to be changed to be final as well.");
   av.step();
   
   // Frame 17
