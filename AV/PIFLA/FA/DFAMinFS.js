@@ -35,24 +35,12 @@ $(document).ready(function() {
   av.step();
 
   // Frame 8
-  av.umsg("All that an acceptor (DFA) cares about is accepting or rejecting strings.")
-  av.step();
-
-  // Frame 9
-  av.umsg(Frames.addQuestion("group"));
-  av.step();
-
-  // Frame 10
-  av.umsg("Once we knew about all instances of similar states, we group them together. The result is a minimized DFA. Distinguishability is an equivalence relation. We are trying to break the set of all states into subsets that are equivances.");
-  av.step();
-
-  // Frame 11
-  av.umsg("Let us see an example to clarify the process. Look at this DFA.");
+  av.umsg("So the basic idea is that when we find instances of indistinguishable states, we should group them together. Taken to completion, the result would be a minimized DFA. Distinguishability is an equivalence relation. We are trying to break the set of all states into disjoint subsets that are equivances. Let us see an example to clarify the process. Look at this DFA.");
   var url = "../../../AV/OpenFLAP/machines/FA/stminDFA1.jff";
   var dfa = new av.ds.FA({top: 0, left: 10, width: 500, height: 150, url: url});
   av.step();
 
-  // Frame 12
+  // Frame 9
   av.umsg(Frames.addQuestion("Aa"));
   var A = dfa.getNodeWithValue("A");
   var F = dfa.getNodeWithValue("F");
@@ -60,32 +48,31 @@ $(document).ready(function() {
   A.highlight();
   av.step();
 
-  // Frame 13
+  // Frame 10
   av.umsg(Frames.addQuestion("Aab"));
   av.step();
 
-  // Frame 14
+  // Frame 11
   A.unhighlight();
   F.highlight();
   av.umsg(Frames.addQuestion("Fa"));
   av.step();
 
-  // Frame 15
+  // Frame 12
   av.umsg(Frames.addQuestion("Fab"));
   av.step();
 
-  // Frame 16
+  // Frame 13
   F.unhighlight();
   D.highlight();
   av.umsg(Frames.addQuestion("conclusion"));
   av.step();
 
-  // Frame 17
+  // Frame 14
   av.umsg(Frames.addQuestion("unknown"));
   av.step();
 
-  // Frame 18
+  // Frame 15
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });
-

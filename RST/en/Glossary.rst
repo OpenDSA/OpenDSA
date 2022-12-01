@@ -1219,6 +1219,16 @@ Glossary
       Correcting a program once we determine that it is not operating
       as we intend. This is in contrast to :term:`testing`.
 
+   decideability
+      In :term:`computabilty` theory, the question of whether a
+      question can be answered.
+      A typical example is whether to instances within a system are
+      equivalent.
+      "Do two computer programs do the same thing?"
+      is a variation of the :term:`halting problem` (and is not
+      decideable).
+      "Do two :term:`DFAs <DFA>` do the same thing?" is decideable.
+
    decision tree
       A theoretical construct for modeling the behavior of algorithms.
       Each point at which the algorithm makes a decision (such as an
