@@ -1,62 +1,62 @@
 [{
   "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
   "exerciseType": "REGEXP",
-  "totalTrueCases": 10,
-  "totalFalseCases": 3,
+  "totalTrueCases": 5,
+  "totalFalseCases": 8,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "description": "Give a regular expression whose language is strings over $\\{a, b\\}$ that contain bba as a substring that starts in an even-numbered position.",
+  "description": "Give a regular expression whose language is strings over $\\{a, b\\}$ that contain aba.",
   "testCases": [
     {
       "": false,
       "ShowTestCase": true
     },
     {
-      "bba": true,
+      "aaaaaaaaaaaa": false,
       "ShowTestCase": true
     },
     {
-      "abababaa": false,
+      "aba": true,
       "ShowTestCase": true
     },
     {
-      "aabba": true,
+      "ababababb": true,
       "ShowTestCase": true
     },
     {
-      "babba": true,
+      "bbbb": false,
       "ShowTestCase": true
     },
     {
-      "bbaabaaa": true,
+      "abb": false,
+      "ShowTestCase":true
+    },
+    {
+      "abababba": true,
       "ShowTestCase": true
     },
     {
-      "bbaabbabab": true,
+      "abbbba": false,
       "ShowTestCase": true
     },
     {
-      "bbabbbb": true,
+      "ababbbbba": true,
       "ShowTestCase": true
     },
     {
-      "bbaaaaa": true,
+      "baaaa": false,
       "ShowTestCase": true
     },
     {
-      "aaabbaaa": false,
+      "abba": false,
       "ShowTestCase": true
     },
     {
-      "bbbbabbab": true,
+      "abbababbaba": true,
       "ShowTestCase": true
     },
     {
-      "aaaabbabbbb": true,
-      "ShowTestCase": true
-    },
-    {
-      "abbabba": true,
+      "abbbab": false,
       "ShowTestCase": true
     }
   ],

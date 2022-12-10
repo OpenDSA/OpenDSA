@@ -16,18 +16,24 @@ Regular Expressions Exercises
 Exercise 1
 ----------
 
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExaba.html pe
+   :long_name: Regular Expression construction: aba
+
+Exercise 2
+----------
+               
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExbbaeven.html pe
    :long_name: Regular Expression construction: bba in even position
 
 
-Exercise 2
+Exercise 3
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExnoaa.html pe
    :long_name: Regular Expression construction: no aa
 
 
-Exercise 3
+Exercise 4
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExonebbb.html pe

@@ -60,6 +60,9 @@
     "Regular Languages": {
       "PIFLA/RegEx":{},
       "PIFLA/RegExExercises":{
+        "RegExaba": {
+          "points": 2.0
+        },
         "RegExbbaeven": {
           "points": 2.0
         },
@@ -71,6 +74,9 @@
         }
       },
       "PIFLA/RegExExercises2":{
+        "RegExevenbinary": {
+          "points": 2.0
+        },
         "RegExaby3": {
           "points": 2.0
         },

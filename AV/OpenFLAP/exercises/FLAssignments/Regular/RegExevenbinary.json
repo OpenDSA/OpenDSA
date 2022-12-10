@@ -1,62 +1,54 @@
 [{
   "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
   "exerciseType": "REGEXP",
-  "totalTrueCases": 10,
-  "totalFalseCases": 3,
-  "containLetters": ["a", "b"],
+  "totalTrueCases": 4,
+  "totalFalseCases": 7,
+  "containLetters": ["0", "1"],
   "randomStringLength": [0, 15],
-  "description": "Give a regular expression whose language is strings over $\\{a, b\\}$ that contain bba as a substring that starts in an even-numbered position.",
+  "description": "Give a regular expression whose language is strings over $\\{0, 1\\}$ that represent even binary numbers with no unnecessary leading 0's.",
   "testCases": [
     {
       "": false,
       "ShowTestCase": true
     },
     {
-      "bba": true,
+      "0": true,
       "ShowTestCase": true
     },
     {
-      "abababaa": false,
+      "10": true,
       "ShowTestCase": true
     },
     {
-      "aabba": true,
+      "1": false,
       "ShowTestCase": true
     },
     {
-      "babba": true,
+      "1011000": true,
       "ShowTestCase": true
     },
     {
-      "bbaabaaa": true,
+      "0011010": false,
+      "ShowTestCase":true
+    },
+    {
+      "1111": false,
       "ShowTestCase": true
     },
     {
-      "bbaabbabab": true,
+      "0111": false,
       "ShowTestCase": true
     },
     {
-      "bbabbbb": true,
+      "00": false,
       "ShowTestCase": true
     },
     {
-      "bbaaaaa": true,
+      "010": false,
       "ShowTestCase": true
     },
     {
-      "aaabbaaa": false,
-      "ShowTestCase": true
-    },
-    {
-      "bbbbabbab": true,
-      "ShowTestCase": true
-    },
-    {
-      "aaaabbabbbb": true,
-      "ShowTestCase": true
-    },
-    {
-      "abbabba": true,
+      "100000": true,
       "ShowTestCase": true
     }
   ],
