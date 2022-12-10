@@ -57,103 +57,77 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Finite Acceptors": {
-      "PIFLA/DFA":{
-        "DFAEvenBinary": {
+    "Regular Languages": {
+      "PIFLA/RegEx":{},
+      "PIFLA/RegExExercises":{
+        "RegExbbaeven": {
+          "points": 2.0
+        },
+        "RegExnoaa": {
+          "points": 2.0
+        },
+        "RegExonebbb": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegExExercises2":{
+        "RegExaby3": {
+          "points": 2.0
+        },
+        "RegExcb2": {
+          "points": 2.0
+        },
+        "RegExabyb": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegExPower":{
+        "RegEx2NFA1FS": {
+          "points": 1.0
+        },
+        "RegEx2NFAorFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAcatFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAstarFS": {
           "points": 1.0
         }
       },
-      "PIFLA/DFAExercises1": {
-        "DFAodda": {
+      "PIFLA/RegularGrammars": {
+        "STAFS": {
           "points": 1.0
-        },
-        "DFAoddaevenb": {
+        }
+      },
+      "PIFLA/RegGrammarShort": {},
+      "PIFLA/RegGramEx1": {
+        "RegGramNFA1": {
           "points": 2.0
         },
-        "DFAodda3b": {
+        "RegGrambbbaaaa": {
           "points": 2.0
         },
-        "DFAno3a": {
-          "points": 2.0
-        },
-        "DFACOMPno3a": {
+        "RegGramaby3": {
           "points": 2.0
         }
       },
-      "PIFLA/DFAExercises2": {
-        "DFAevena": {
-          "points": 1.0
-        },
-        "DFAbsurrounda": {
+      "PIFLA/RegGramEx2": {
+        "RegGramNFA2": {
           "points": 2.0
         },
-        "DFAdiv4": {
+        "RegGramNFA2r": {
           "points": 2.0
         },
-        "DFAevenamin3b": {
+        "RegGramaaabba": {
           "points": 2.0
         },
-        "DFACOMPevenamin3b": {
+        "RegGramanbmodd": {
           "points": 2.0
         }
       },
-      "PIFLA/DFAExercises3": {
-        "DFAevenaoddb": {
-          "points": 2.0
-        },
-        "DFAevenabsoddas": {
-          "points": 2.0
-        },
-        "DFAbotheo": {
-          "points": 2.0
-        },
-        "DFAnoba": {
-          "points": 2.0
-        },
-        "DFACOMPnoba": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/DFAComplementEx": {
-        "DFANotaabb": {
-          "points": 2.0
-        },
-        "DFANotevena3b": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/NFA": {},
-      "PIFLA/NFAExercises": {
-        "NFAtoDFAex1":{
-          "points": 3.0,
-          "threshold": 0.85
-        },
-        "NFAex1":{
-          "points": 3.0
-        }
-      },
-      "PIFLA/NFAExercises2": {
-        "NFAtoDFAex1long":{
-          "points": 3.0,
-          "threshold": 0.85
-        },
-        "NFAtoDFAex2":{
-          "points": 3.0,
-          "threshold": 0.85
-        },
-        "NFAex2":{
-          "points": 3.0
-        }
-      },
-      "PIFLA/DFAMinimization": {},
-      "PIFLA/MinimizationEx": {
-        "DFAMinEx1": {
-          "points": 2.0
-        },
-        "DFAMinEx2": {
-          "points": 2.0
-        }
-      }
+      "PIFLA/RegClosure": {},
+      "VisFormalLang/DFAproperties": {}
     },
     "Appendix": {
       "Glossary": {}

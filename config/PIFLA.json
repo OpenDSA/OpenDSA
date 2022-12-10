@@ -206,20 +206,7 @@
       }
     },
     "Regular Languages": {
-      "PIFLA/RegEx":{
-        "RegEx2NFA1FS": {
-          "points": 1.0
-        },
-        "RegEx2NFAorFS": {
-          "points": 1.0
-        },
-        "RegEx2NFAcatFS": {
-          "points": 1.0
-        },
-        "RegEx2NFAstarFS": {
-          "points": 1.0
-        }
-      },
+      "PIFLA/RegEx":{},
       "PIFLA/RegExExercises":{
         "RegExbbaeven": {
           "points": 2.0
@@ -242,10 +229,21 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegularGrammars": {
-        "REtoFAExampleFS": {
+      "PIFLA/RegExPower":{
+        "RegEx2NFA1FS": {
           "points": 1.0
         },
+        "RegEx2NFAorFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAcatFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAstarFS": {
+          "points": 1.0
+        }
+      },
+      "PIFLA/RegularGrammars": {
         "STAFS": {
           "points": 1.0
         }
