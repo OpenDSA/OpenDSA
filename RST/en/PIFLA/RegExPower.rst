@@ -33,8 +33,8 @@ Thus, any Regular Language can be represented by a Reglar Language.
 The conclusion is then that these are equivalent.
 
 
-Converting a Regular Expression to a NFA
-----------------------------------------
+Every Regular Expression has an Equivalent NFA
+----------------------------------------------
 
 .. inlineav:: RegEx2NFA1FS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RegEx2NFA1FS.css
@@ -99,13 +99,14 @@ that we can convert any RE to an NFA.
 So, all REs accept a regular language.
 
 
-Regular Expression to NFA Conversion Example
---------------------------------------------
+Converting a Regular Expression to a NFA
+----------------------------------------
 
 .. inlineav:: RegEx2NFAExampleFS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RegEx2NFAExampleFS.css
    :scripts:  DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAExampleFS.js
    :output: show
+
 
 Regular Expression to Minimized DFA Example
 -------------------------------------------
