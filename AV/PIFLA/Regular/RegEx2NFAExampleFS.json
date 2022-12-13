@@ -18,10 +18,10 @@
        },
        "breakdown": {
         "type": "multiple",
-         "description":"In the beginning, we have the regular expression $ab^* + c$ on a transition between a start state and a final state",
+         "description":"In the beginning, we have the regular expression $ab^* + c$ on a transition between the start state and a final state",
          "question": "Which operator should we start with?",
          "answer": "the OR operator (the lowest precedence)",
-         "choices": ["the closure operator (the highest precedence)", "the concatenation", "the OR operator (the lowest precedence)"],
+         "choices": ["the star operator (the highest precedence)", "the concatenation", "the OR operator (the lowest precedence)"],
          "correctFeedback": ["We want to go through a process of breaking down the RegEx into smaller parts. We want to begin with an operator that safely lets us break the RegEx into two parts. So we want the one with lowest precedence."],
          "incorrectFeedback": ["We want to go through a process of breaking down the RegEx into smaller parts. We want to begin with an operator that safely lets us break the RegEx into two parts. So we want the one with lowest precedence."]
        },

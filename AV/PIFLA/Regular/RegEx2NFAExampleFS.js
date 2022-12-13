@@ -15,63 +15,51 @@ $(document).ready(function() {
   //separator.show();
   
   // Frame 1
-  av.umsg("From the previous section, we know how to convert one or two NFAs that represent RegExs into a single NFA that implements an associated RegEx operator. In this frameset, we show the process to convert a RegEx into an NFA.");
+  av.umsg("We now know in principle how to combine NFAs that represent RegExs into a single NFA using one of the RegEx builder rules. In this frameset, we show a detailed example of the entire process to convert a RegEx into an NFA.");
   av.displayInit();
 
   // Frame 2
-  av.umsg("But before we follow the steps of converting the RegEx to a NFA, let us think about drawing the NFA directly.");
-  av.step();
-
-  // Frame 3
-  av.umsg("A possible NFA for $ab^*\+\c$ will be:")
+  av.umsg("But before we follow the steps of converting the RegEx to a NFA, let us think about drawing the NFA directly.<br/><br/>A possible NFA for $ab^*\+\c$ will be:")
   var url1 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrC.jff";
   var nfa = new av.ds.FA({left: 0, top: -30, width: 300, url: url1});
   av.step();
 
-  // Frame 4
+  // Frame 3
   av.umsg(frames.addQuestion("nonminDFA"));
   var url2 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrCDFA.jff";
   var dfa = new av.ds.FA({left: 250, top: 20, width: 300, height: 350, url: url2});
   av.step();
 
-  // Frame 5
+  // Frame 4
   av.umsg(frames.addQuestion("group"));
   av.step();
 
-  // Frame 6
-  av.umsg("Correct, the minimized DFA will be the one shown at the bottom.");
+  // Frame 5
+  av.umsg("The minimized DFA is shown at the bottom.");
   var url3 = "../../../AV/VisFormalLang/Regular/Machines/ABStarOrCMinDFA.jff";
   var minDfa = new av.ds.FA({left: 0, top: 170, url: url3});
   av.step();
 
-  // Frame 7
-  av.umsg("Finding the NFA for a RegEx is not trivial for complicated RegEXs. So it might be hard to look at the RegEx and immediately draw the NFA. And then we won't have a DFA, or a minimized DFA. All of this is a bit tedious, even if we are experts at all of the steps. That is why we have tools like OpenFLAP that apply RegEx to NFA to DFA to DFA minimization algorithms to give the NFA or DFA for any RegEx.");
+  // Frame 6
+  av.umsg("Finding the NFA for a RegEx is not trivial for complicated RegEXs. So it might be hard to look at the RegEx and immediately draw the NFA. Even then, we won't have a DFA, and almost certainly not a minimized DFA. All of this is a bit tedious, even if we are experts at all the steps. That is why we have tools like OpenFLAP that apply RegEx to NFA to DFA to minimized DFA algorithms to give the NFA or DFA for any RegEx.");
   nfa.hide();
   dfa.hide();
   minDfa.hide();
   av.step();
 
+  //Frame 7
+  av.umsg("When OpenFLAP automatically converts a RegEx to a NFA, the resulting NFA does not typically look like the 'intuitive' version. This is because the automated process is a little more complicated.<br/><br/>To understand how an algorithm can automatically convert a RegEx to a NFA, a lot of the steps are simply building the machine with the transformations for each operator as shown in the previous section. This means doing things like combining two machines to OR them or to AND them.")
+  av.step();
+
   //Frame 8
-  av.umsg("When OpenFLAP automatically converts a RegEx to a NFA, the resulting NFA does not typically look like the 'intuitive' version. This is because the automated process is a little more complicated.");
-  av.step();
-
-  // Frame 9
-  av.umsg("To understand how an algorithm can automatically convert a RegEx to a NFA, a lot of the steps are simply building the machine with the transformations for each operator as shown in the previous section. This means doing things like combining two machines to OR them or to AND them.")
-  av.step();
-
-  //Frame 10
-  av.umsg("To help us with the conversion process, we will use the concept of a Generalized Transition Graph. $\\textbf{Definition}$: A Generalized Transition Graph (GTG) is a transition graph whose edges can be labeled with any regular expression. Thus, it 'generalizes' the standard transition graph.");
+  av.umsg("To help us with the conversion process, we will use the concept of a Generalized Transition Graph. $\\textbf{Definition}$: A Generalized Transition Graph (GTG) is a transition graph whose edges can be labeled with any regular expression. Thus, it 'generalizes' the standard transition graph that we have been using, where an edge is labeled by one or more individual symbols.<br/><br/>We will next show how to convert the this GTG to an NFA");
   var fourthFA = new av.ds.FA({width: 900, height: 600,left: 10, top:0});
   var factor = 0.6;
-  var q11 = fourthFA.addNode({left: 10, top: 100});
+  var q11 = fourthFA.addNode({left: 20, top: 100});
   var q12 = fourthFA.addNode({left: 310*factor, top: 100});
   toggleInitial(fourthFA, q11);
   toggleFinal(fourthFA, q12);
   fourthFA.addEdge(q11,q12, {weight: "$ab^* + c$"});
-  av.step();
-
-  //Frame 11
-  av.umsg("We will convert the this GTG to an NFA");
   av.step();
 
   //Frame 12
