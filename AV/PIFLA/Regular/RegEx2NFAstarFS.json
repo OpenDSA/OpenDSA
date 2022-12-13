@@ -21,7 +21,7 @@
       "connectstart": {
         "type": "multiple",
         "description": "First we need to create a new start state",
-        "question": "To which state we need to connect the new start state with?",
+        "question": "Which state should we connect the new start state with?",
         "answer": "The start state for $r$",
         "choices": ["The start state for $r$",
                     "The final state for $r$"]

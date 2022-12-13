@@ -3,7 +3,7 @@
     "en": {
       "concat": {
         "type": "select",
-        "description": "",
+        "description": "<b>Part 3.</b> Next, we will define a construction for the NFA that can accept the RE $r \\cdot s$, given that we have NFAs that are equivalent to $r$ and $s$.",
         "question":"What is $L(r \\cdot s)$?",
         "answer": ["All strings that start with first some string from $r$ immediately followed by some string from $s$.",
                    "$\\{w \\mid w \\in L(r) \\cdot L(s)\\}$"],
@@ -12,7 +12,7 @@
       },
       "setup": {
         "type": "multiple",
-        "description": "",
+        "description": "<b>Part 3.</b> Next, we will define a construction for the NFA that can accept the RE $r \\cdot s$, given that we have NFAs that are equivalent to $r$ and $s$.",
         "question":"How many NFA schemas do we need to start with?",
         "answer": "We need two schemas, one for $r$ and the other for $s$",
         "choices": ["We are trying to create one NFA, so just one schema",
@@ -25,7 +25,7 @@
         "answer": "Create a new start state",
         "choices": ["Create a new start state",
                     "Create a new final state",
-                    "Connect the new start state with old stat state(s)",
+                    "Connect the new start state with old start state(s)",
                     "Connect the new final state with old final state(s)"]
       },
       "and": {
@@ -54,7 +54,7 @@
       },
       "connector": {
         "type": "select",
-        "description": "Now, connect the final state for the NFA that represents $r$ with the start state of the NFA that represents $s$ with a $\\lambda$ transition. The reason is that, since the first part already accepted ny the NFA for $r$, the remaining part of the string must be accepted in the NFA for $s$",
+        "description": "Now, connect the final state for the NFA that represents $r$ with the start state of the NFA that represents $s$ with a $\\lambda$ transition. The reason is that, since the first part was already accepted by the NFA for $r$, the remaining part of the string must be accepted by the NFA for $s$.",
         "question": "Why do this?",
         "answer": "This connection makes a string for $s$ follow a string for $r$.",
         "choices": ["This connection makes a string for $s$ follow a string for $r$.", "We don't have anywhere else to go."

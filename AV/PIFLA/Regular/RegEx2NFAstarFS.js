@@ -87,7 +87,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 10
-  av.umsg("Since we need to repeat $r$ as much as we want, we need to be able to go back to the start state using a $\\lambda$ transition. We used $\\lambda$ transitions because we need a free transitions between states.");
+  av.umsg("Since we need to repeat $r$ as much as we want, we need to be able to go back to the start state using a $\\lambda$ transition. We used $\\lambda$ transitions because we need free transitions between states.");
   av.g.path('M '+ 470 + ',' + 115 + ' Q' + 270 + ','
             + -100 + ' ' + 55 + ',' + 115, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 260, top: 0});

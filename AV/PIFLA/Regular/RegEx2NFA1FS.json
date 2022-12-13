@@ -3,14 +3,14 @@
     "en": {
       "nothing": {
         "type": "select",
-        "description": "This NFA accepts nothing. In other words, the language is the empty set ($\\emptyset$).",
-        "question":"This machine accepts nothing because there is no path from the start state to the final state",
+        "description": "This NFA accepts no strings. In other words, the language that it accepts is the empty set ($\\emptyset$).",
+        "question":"This machine accepts no strings because there is no path from the start state to the final state",
         "answer": "True",
         "choices": []
       },
       "lambda": {
         "type": "multiple",
-        "description": "This NFA accepts only the empty string ($\\lambda$).",
+        "description": "We will now consider the various rules for building Regular Expressions, and show that each one can lead to an equivalent NFA. Let's start with the basic rules, which state that $\\lambda$ and any symbols in the alphabet are the base Regular Expressions.<br/><br/>This NFA accepts only the empty string ($\\lambda$).",
         "question":"Can we build a DFA with one state to accept $\\lambda$?",
         "answer": "Yes, a DFA/NFA with one state that is both start and final and has no transitions.",
         "choices": ["Yes, a DFA/NFA with one state that is both start and final and has no transitions.", "No"]
@@ -21,7 +21,7 @@
         "question":"Can we build a DFA with one state to accept $a$?",
         "answer": "No",
         "choices": ["Yes, a DFA/NFA with one state that is both start and final, and a looping transition on $a$.", "No"],
-        "correctFeedback": ["Looping is our only option to get any a's from a one-state machine. But that is not what we want because that accepts more than one a."]
+        "correctFeedback": ["Looping is our only option to get any a's from a one-state machine. But that is not what we want because that accepts strings with more than one a."]
       },
       "onefinalq": {
         "type": "multiple",
@@ -32,21 +32,21 @@
       },
       "onefinala": {
         "type": "multiple",
-        "description": "",
+        "description": "Well, we already know that all NFAs have a single start state. But not all NFAs have a single final state. Below is an abstract representation of an arbitrary NFA. It shows the single start state, along with paths (the red lines) that eventually reach each of its final states.",
         "question":"How?",
         "answer": "By adding a new state that will be the final state for the machine.",
         "choices": ["By adding a new state that will be the final state for the machine.", "By converting the NFA to a DFA"]
       },
       "addfinal": {
         "type": "select",
-        "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
+        "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'.",
         "question": "Then we need to connect all old final states with the new final state with $\\lambda$ transitions",
         "answer": "True",
         "choices": []
       },
       "addedges": {
         "type": "select",
-        "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'",
+        "description": "Consider any NFA, and its various final states. Is there an easy way to convert this to an equivalent NFA with a single final state? The answer is 'yes'.",
         "question":"Then we need to remove the 'final' marker from the old final states",
         "answer": "True",
         "choices": []
