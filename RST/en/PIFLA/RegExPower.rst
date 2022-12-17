@@ -117,7 +117,7 @@ Regular Expression to Minimized DFA Example
    :output: show
 
 
-Converting Regular Languages to Regular Expressions
+Converting NFAs to Regular Expressions
 ---------------------------------------------------
 
 .. inlineav:: ConvertRLREFS ff
@@ -125,18 +125,11 @@ Converting Regular Languages to Regular Expressions
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js AV/PIFLA/Regular/ConvertRLREFS.js
    :output: show
 
-Converting Regular Languages to Regular Expressions Example
------------------------------------------------------------
-
-.. inlineav:: NFAtoRECON ss
-   :links: AV/VisFormalLang/Regular/NFAtoRECON.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/VisFormalLang/Regular/NFAtoRECON.js
-   :output: show
 
 Summary
 -------
 
-We have now demonstrated several things:
+We have now demonstrated the following:
 
 * Any RegEx can be represented by an NFA or a DFA.
 * Any NFA (or DFA) can be represented by a RegEx.

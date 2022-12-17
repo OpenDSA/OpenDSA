@@ -10,5 +10,8 @@ $(document).ready(function() {
   var fatoreController = new FAtoREController(av, nfa, {});
   fatoreController.visualizeConversion({left: 350}, {left: 470, width: 300, height: 250, top:0});
   nfa.layout();
+  av.step();
+
+  av.umsg("In this example, a more practical equivalent Regular Expression is: $(aa^*b)^*(a+\\lambda)$. But it is not simple to come up with this mechanically.");
   av.recorded();
 });

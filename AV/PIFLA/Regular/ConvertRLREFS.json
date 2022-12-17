@@ -3,21 +3,21 @@
       "en": {
         "GTG": {
           "type": "select",
-          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed.",
+          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed. Recall that $\\emptyset$ is the empty set.",
           "question":"What is a GTG?",
           "answer": ["Equivalent to a Complete Transition Graph", "A graph with edges labeled by Regular Expressions"],
           "choices": ["Equivalent to a Complete Transition Graph", "A graph with edges labeled by Regular Expressions"]
         },
         "complete": {
           "type": "multiple",
-          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed.",
-          "question":"How do we convert any GTG to be acomplete GTG?",
-          "answer": "Add all missing edges with $\\emptyset$ labels",
-          "choices": ["Add all missing edges with $\\emptyset$ labels", "Connect all nodes together"]
+          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed. Recall that $\\emptyset$ is the empty set.",
+          "question":"How do we convert any GTG to be a complete GTG?",
+          "answer": "Add all missing edges, and label them with $\\emptyset$",
+          "choices": ["Add all missing edges, and label them with $\\emptyset$", "Connect all nodes together"]
         },
         "emptyset": {
           "type": "select",
-          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed.",
+          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed. Recall that $\\emptyset$ is the empty set.",
           "question":"How is a transition on $\\emptyset$ different from a transition on $\\lambda$?",
           "answer": "A transition on $\\lambda$ is a free transition, while a transition on $\\emptyset$ means there is no symbol that allows that transition.",
           "choices": ["They are the same", "A transition on $\\lambda$ is a free transition, while a transition on $\\emptyset$ means there is no symbol that allows that transition.", "A transition on $\\emptyset$ is a free transition, while a transition on $\\lambda$ means there is no symbol that allows that transition."]
@@ -29,16 +29,23 @@
           "answer": ["L is accepted by a DFA", "L is accepted by a NFA", "L is described by a regular expression"],
           "choices": ["L is accepted by a DFA", "L is accepted by a NFA", "L is described by a regular expression"]
         },
+        "assume": {
+          "type": "select",
+          "description": "$\\textbf {Proof}$:<br>$L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.<br><b>1.</b> Assume $M$ has one final state, and that start state $s \\not\\in F$.<br><b>2.</b> Convert $M$ to a complete GTG (by addidng $\\emptyset$ transitions).",
+          "question":"Can we really make the assumption in Step 1.?",
+          "answer": "Sure. We have already seen how to convert any NFA to have a single final state. If the original NFA has a start state $s$ that is final, then just add a new dummy start state with a $\\lambda$ transition to $s$.",
+          "choices": ["Sure. We have already seen how to convert any NFA to have a single final state. If the original NFA has a start state $s$ that is final, then just add a new dummy start state with a $\\lambda$ transition to $s$.", "No, not really"]
+        },
         "rji": {
           "type": "multiple",
-          "description": "$\\textbf {Proof}$:<br>$L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.<br>$\\textbf {1}$ Assume $M$ has one final state, and that start state $s \\not\\in F$.<br>$\\textbf {2}$ Convert $M$ to a complete GTG.<br>Let $r_{ij}$ stand for the label of the edge from $q_i$ to $q_j$.",
+          "description": "$\\textbf {Proof}$:<br>$L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.<br><b>1.</b> Assume $M$ has one final state, and that start state $s \\not\\in F$.<br><b>2.</b> Convert $M$ to a complete GTG (by addidng $\\emptyset$ transitions).<br>Let $r_{ij}$ stand for the label of the edge from $q_i$ to $q_j$.",
           "question":"What does $r_{ji}$ mean?",
-          "answer": "label for transiton from $q_j$ to $q_i$",
-          "choices": ["label for transiton from $q_i$ to $q_j$", "label for transiton from $q_j$ to $q_i$", "label for transiton from $q_i$ to $q_i$", "label for transiton from $q_j$ to $q_j$"]
+          "answer": "It is the label for the transiton from $q_j$ to $q_i$",
+          "choices": ["It is the label for the transiton from $q_i$ to $q_j$", "It is the label for the transiton from $q_j$ to $q_i$", "It is the label for the transiton from $q_i$ to $q_i$", "It is the label for the transiton from $q_j$ to $q_j$"]
         },
         "rii": {
           "type": "select",
-          "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
+          "description": "Then, the corresponding regular expression is:<br>$r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
           "question":"Now, let's find how this RegEx is derived from the GTG on the left. Think about the first part of the RegEx $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{ii}^*$ means that, when the machine at the start state, it may loop zero or more times to read zero or more repetitions of RegEx $r_{ii}$",
           "answer":"True",
           "choices": []
@@ -46,7 +53,7 @@
         "rij": {
           "type": "select",
           "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
-          "question": "Think about the next part of the RegEx $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{ij}^*$ means the machine will move to state $qj$ by reading RegEx $r_{ij}$",
+          "question": "Think about the next part of the RegEx $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{ij}$ means the machine will move to state $qj$ by reading RegEx $r_{ij}$",
           "answer": "True",
           "choices": []
         },
@@ -60,7 +67,7 @@
         "rjiagain": {
           "type": "select",
           "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
-          "question":"The next part of the RegEx is $r_{ji}^*$, which means that the machine can go back to $qi$ by reading $r_{ji}$",
+          "question":"The next part of the RegEx is $r_{ji}$, which means that the machine can go back to $qi$ by reading $r_{ji}$",
           "answer": "True",
           "choices": []
         },
