@@ -58,6 +58,7 @@ $(document).ready(function() {
   var q11 = fourthFA.addNode({left: 20, top: 100});
   var q12 = fourthFA.addNode({left: 310*factor, top: 100});
   toggleInitial(fourthFA, q11);
+  q11.addInitialMarker();
   toggleFinal(fourthFA, q12);
   fourthFA.addEdge(q11,q12, {weight: "$ab^* + c$"});
   av.step();
