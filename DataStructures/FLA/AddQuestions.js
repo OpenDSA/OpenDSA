@@ -195,13 +195,13 @@ var generateQuestions = function (steps, graph = null, configure, av_name) {
   }
 
   var questionsIndex = 0;
-  var specialQuestionInedx = 0;
+  var specialQuestionIndex = 0;
   var i, j;
   for (i = 0; i < steps.length; i++) {
     for (j = 0; j < steps[i].length; j++){
-      if(questionsIndex === configure["specialQuestionInedx"][specialQuestionInedx]){
-        questions["translations"]["en"][String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)] = configure["specialQuestion"][specialQuestionInedx];
-        specialQuestionInedx++;
+      if(questionsIndex === configure["specialQuestionIndex"][specialQuestionIndex]){
+        questions["translations"]["en"][String(av_name + currentAutoStack[av_name] + "q" + questionsIndex)] = configure["specialQuestion"][specialQuestionIndex];
+        specialQuestionIndex++;
         questionsIndex++;
       }
       else{
@@ -338,7 +338,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
   }
 
   var configureForMinimizeDFA = {
-    "specialQuestionInedx" : [0, 1],
+    "specialQuestionIndex" : [0, 1],
     "specialQuestion" : [
         {
          "type": "multiple",
@@ -883,7 +883,7 @@ var convertToDFAWithQuestions = function (jsav, graph, av_name, opts, visualizab
   }
 
   var configureForDFA = {
-    "specialQuestionInedx" : [0],
+    "specialQuestionIndex" : [0],
     "specialQuestion" : [
         {
           "type": steps[0][0]["node"].split(',').length == 1 ? "multiple" : "select",
@@ -1132,7 +1132,7 @@ var gToFAConverterWithQuestion = function (av_name, converter, nFAoptions, pifra
     }
   }
   var configure = {
-    "specialQuestionInedx" : [0],
+    "specialQuestionIndex" : [0],
     "specialQuestion" : [
         {
          "type": "select",
@@ -1304,7 +1304,7 @@ var convertToGrammarWithQuestions = function (av_name, av, FAtoGrammar, grammarM
     }
   }
   var configure = {
-    "specialQuestionInedx" : [],
+    "specialQuestionIndex" : [],
     "specialQuestion" : [],
     "questionPattern" : generatingFunction
   };
@@ -1495,7 +1495,7 @@ var acceptorVisualizeWithQuestions = function (av_name, av, acceptor, listOfStri
       }
   }
   var configure = {
-    "specialQuestionInedx" : [],
+    "specialQuestionIndex" : [],
     "specialQuestion" : [],
     "questionPattern" : generatingFunction
   };
@@ -1728,7 +1728,7 @@ var visualizeConversionWithQuestions = function (fatoreController, url, av_name,
       }
   }
   var configure = {
-    "specialQuestionInedx" : [0],
+    "specialQuestionIndex" : [0],
     "specialQuestion" : [{
       "type":  strNodes.length == 1 ? "multiple" : "select",
       "question": "",
@@ -1978,7 +1978,7 @@ var displayTreeWithQuestions = function (pt, av, av_name, piframesLocations){
     }
   }
   var configure = {
-    "specialQuestionInedx" : [0],
+    "specialQuestionIndex" : [0],
     "specialQuestion" : [{
       "type": "multiple",
       "question": "",
@@ -2199,7 +2199,7 @@ var onClickTraverseWithQuestions = function(av_name, trav, inputStrings, piframe
     }
   }
   var configure = {
-    "specialQuestionInedx" : [],
+    "specialQuestionIndex" : [],
     "specialQuestion" : [],
     "questionPattern" : generatingFunction
   };
