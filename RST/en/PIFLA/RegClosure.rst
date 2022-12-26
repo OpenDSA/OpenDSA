@@ -122,3 +122,12 @@ way to always be able to prove whether a language is regular or not.
 We simply have tools that sometimes let us prove that the language is
 regular (typically by constructing one of the representations already
 described) or that let us prove the language is not regular.
+
+
+Something to Think About
+------------------------
+
+.. inlineav:: STAFS ff
+   :links: AV/PIFLA/Regular/STAFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/STAFS.js
+   :output: show

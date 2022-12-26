@@ -249,11 +249,7 @@
           "points": 1.0
         }
       },
-      "PIFLA/RegularGrammars": {
-        "STAFS": {
-          "points": 1.0
-        }
-      },
+      "PIFLA/RegularGrammars": {},
       "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
@@ -280,7 +276,11 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegClosure": {},
+      "PIFLA/RegClosure": {
+        "STAFS": {
+          "points": 1.0
+        }
+      },
       "VisFormalLang/DFAproperties": {}
     },
     "Identifying Non-regular Languages":{

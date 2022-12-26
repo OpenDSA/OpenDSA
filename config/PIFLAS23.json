@@ -136,6 +136,54 @@
       },
       "PIFLA/DFAMinimization": {}
     },
+    "Regular Languages": {
+      "PIFLA/RegEx":{},
+      "PIFLA/RegExExercises":{
+        "RegExaba": {
+          "points": 2.0
+        },
+        "RegExbbaeven": {
+          "points": 2.0
+        },
+        "RegExnoaa": {
+          "points": 2.0
+        },
+        "RegExonebbb": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegExPower":{
+        "RegEx2NFA1FS": {
+          "points": 1.0
+        },
+        "RegEx2NFAorFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAcatFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAstarFS": {
+          "points": 1.0
+        }
+      },
+      "PIFLA/RegGrammarShort": {},
+      "PIFLA/RegGramEx1": {
+        "RegGramNFA1": {
+          "points": 2.0
+        },
+        "RegGrambbbaaaa": {
+          "points": 2.0
+        },
+        "RegGramaby3": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegClosure": {
+        "STAFS": {
+          "points": 1.0
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {}
     }
