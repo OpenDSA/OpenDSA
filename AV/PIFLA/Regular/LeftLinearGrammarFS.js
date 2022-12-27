@@ -76,9 +76,9 @@ $(document).ready(function() {
   // Frame 14
   av.umsg(Frames.addQuestion("onefinal"))
   toggleFinal(NFA, NodeS);
-  toggleInitial(NFA, NodeS);
+//  toggleInitial(NFA, NodeS);
   toggleFinal(NFA, NodeF);
-  toggleInitial(NFA, NodeF);
+//  toggleInitial(NFA, NodeF);
   av.step();
   
   // Frame 15

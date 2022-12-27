@@ -14,6 +14,53 @@
           "$\\{a^ncb^m \\mid n\\ge 0, m>0\\}$"
         ]
       },
+      "states": {
+        "type": "select",
+        "description": "We will begin by creating an NFA from the existing right-regular grammar, from which we will (after some conversions) generate the equivalent left-regular grammar. Our NFA will need a state for each variable from the grammar, plus it will need a final state.",
+        "question": "What are the variables of the grammar that we need states for?",
+        "answer": [
+          "S", "B"
+        ],
+        "choices": [
+          "$\\lambda$", "S", "B", "F"
+        ]
+      },
+      "p1": {
+        "type": "multiple",
+        "description": "For each production, we need to draw the appropriate transition.",
+        "question": "What is the appropriate label for the transition that matches the production $S \\rightarrow aS$?",
+        "answer": "a",
+        "choices": [
+          "a", "c", "b", "$\\lambda$"
+        ]
+      },
+      "p2": {
+        "type": "multiple",
+        "description": "For each production, we need to draw the appropriate transition.",
+        "question": "What is the appropriate label for the transition that matches the production $S \\rightarrow cB$?",
+        "answer": "c",
+        "choices": [
+          "a", "c", "b", "$\\lambda$"
+        ]
+      },
+      "p3": {
+        "type": "multiple",
+        "description": "For each production, we need to draw the appropriate transition.",
+        "question": "What is the appropriate label for the transition that matches the production $B \\rightarrow bB$?",
+        "answer": "b",
+        "choices": [
+          "a", "c", "b", "$\\lambda$"
+        ]
+      },
+      "p4": {
+        "type": "multiple",
+        "description": "For each production, we need to draw the appropriate transition.",
+        "question": "What is the appropriate label for the transition that matches the production $B \\rightarrow b$? This one is different, in that it is a transition to the final state.",
+        "answer": "b",
+        "choices": [
+          "a", "c", "b", "$\\lambda$"
+        ]
+      },
       "reverse": {
         "type": "select",
         "description": "The next step in our algorithm is to REVERSE the NFA.",
@@ -88,14 +135,14 @@
           "Convert the NFA with multiple final states to an NFA with one final state. Then make the new final state a start state."
         ]
       },
-      "nfa2rr": {
+      "rrFB": {
         "type": "multiple",
         "description": "We already have seen an algorithm to convert from a NFA to a right-regular grammar. We will use it to convert this NFA to the right-regular grammar for $L^R$.",
-        "question": "What is the production equivelent to the transition $\\delta(S, a) = S$? (Keep in mind that we are making a right-regular grammar.)",
-        "answer": "$S\\rightarrow aS$",
+        "question": "What is the production equivelent to the transition $\\delta(F, b) = B$? (Keep in mind that we are making a right-regular grammar.)",
+        "answer": "$F\\rightarrow bB$",
         "choices": [
-          "$S\\rightarrow aS$",
-          "$S\\rightarrow Sa$"
+          "$F\\rightarrow bB$",
+          "$F\\rightarrow Bb$"
         ]
       },
       "rrBB": {
@@ -118,19 +165,19 @@
           "$B\\rightarrow cS$"
         ]
       },
-      "rrFB": {
+      "rrSS": {
         "type": "multiple",
         "description": "We already have seen an algorithm to convert from a NFA to a right-regular grammar. We will use it to convert this NFA to the right-regular grammar for $L^R$.",
-        "question": "What is the production equivelent to the transition $\\delta(F, b) = B$?",
-        "answer": "$F\\rightarrow bB$",
+        "question": "What is the production equivelent to the transition $\\delta(S, a) = S$?",
+        "answer": "$S\\rightarrow aS$",
         "choices": [
-          "$F\\rightarrow bB$",
-          "$F\\rightarrow Bb$"
+          "$S\\rightarrow aS$",
+          "$S\\rightarrow Sa$"
         ]
       },
       "result": {
         "type": "multiple",
-        "description": "We already have seen an algorithm to convert from a NFA to a right-regular grammar. We will use it to convert this NFA to the right-regular grammar for $L^R$.",
+        "description": "Since S is a final state of this machine, we also add the production $S \\rightarrow \\lambda$.",
         "question": "The resulting grammar is for what language?",
         "answer": "The resulting grammar is the right-regular grammar for the reverse of the original Language",
         "choices": [
@@ -180,7 +227,7 @@
       },
       "resulttype": {
         "type": "multiple",
-        "description": "Done. We reversed all productions",
+        "description": "Done. We reversed all productions. (We don't need to reverse $S \\rightarrow \\lambda$ since there is no variable to reverse on the RHS.)",
         "question": "What is the type of the resulting grammar?",
         "answer": "Left-Regular Grammar",
         "choices": [

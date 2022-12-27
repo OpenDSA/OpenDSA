@@ -78,9 +78,9 @@ Converting NFAs to Regular Grammars
 Converting between Left-linear and Right-linear Grammars
 --------------------------------------------------------
 
-.. inlineav:: LeftLinearGrammarFS ff
-   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/LeftLinearGrammarFS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/Regular/LeftLinearGrammarFS.js
+.. inlineav:: LLGrammarFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/LLGrammarFS.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/Regular/LLGrammarFS.js
    :output: show
 
 
