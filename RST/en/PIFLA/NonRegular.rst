@@ -12,6 +12,14 @@
 Identifying Non-regular Languages
 =================================
 
+Something to Think About
+------------------------
+
+.. inlineav:: STAFS ff
+   :links: AV/PIFLA/Regular/STAFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/STAFS.js
+   :output: show
+
 Identifying Non-regular Languages
 ---------------------------------
 

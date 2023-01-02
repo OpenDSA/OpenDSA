@@ -276,15 +276,14 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegClosure": {
-        "STAFS": {
-          "points": 1.0
-        }
-      },
+      "PIFLA/RegClosure": {},
       "VisFormalLang/DFAproperties": {}
     },
     "Identifying Non-regular Languages":{
       "PIFLA/NonRegular": {
+        "STAFS": {
+          "points": 1.0
+        },
         "introPumpingFS": {
           "points": 1.0
         },

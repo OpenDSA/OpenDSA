@@ -21,13 +21,13 @@
         "question": "How do you know that?",
         "answer": [
           "$L_1 \\cup L_2$ = $r_1 + r_2$ which is a regular expression. So the result is regular",
-          "Since $L_1$ and $L_2$ are regular, then there can exist an NFA for each language. Connecting the start states and final states with new start and final state generates the NFA for the union.",
-          "Since $L_1$ and $L_2$ are regular, then there can exist a Regular Grammar for each language. Creating a new start variable $S\\rightarrow S_1 \\mid S_2$ is the regular grammar for the union"
+          "Since $L_1$ and $L_2$ are regular, then there exists an NFA for each language. Connecting the start states and final states with new start and final state generates the NFA for the union.",
+          "Since $L_1$ and $L_2$ are regular, then there exists a Regular Grammar for each language. Creating a new start variable $S\\rightarrow S_1 \\mid S_2$ is the regular grammar for the union"
         ],
         "choices": [
           "$L_1 \\cup L_2$ = $r_1 + r_2$ which is a regular expression. So the result is regular",
-          "Since $L_1$ and $L_2$ are regular, then there can exist an NFA for each language. Connecting the start states and final states with new start and final state generates the NFA for the union.",
-          "Since $L_1$ and $L_2$ are regular, then there can exist a Regular Grammar for each language. Creating a new start variable $S\\rightarrow S_1 \\mid S_2$ is the regular grammar for the union"
+          "Since $L_1$ and $L_2$ are regular, then there exists an NFA for each language. Connecting the start states and final states with new start and final state generates the NFA for the union.",
+          "Since $L_1$ and $L_2$ are regular, then there exists a Regular Grammar for each language. Creating a new start variable $S\\rightarrow S_1 \\mid S_2$ is the regular grammar for the union"
         ],
         "correctFeedback": ["That is a lot of ways to know something! OK, so regular languages are definitely closed under union."]
       },
@@ -44,12 +44,13 @@
         "question": "How do you know that?",
         "answer": [
           "$L_1 \\cdot L_2$ = $r_1 \\cdot r_2$ which is a regular expression. So the result is regular",
-          "Since $L_1$ and $L_2$ are regular, then there can exist an NFA for each language. Connecting the final state for $L_1$ with the start state for $L_2$ generates the NFA for the concatenation."
+          "Since $L_1$ and $L_2$ are regular, then there exists an NFA for each language. Connecting the final state for $L_1$ with the start state for $L_2$ generates the NFA for the concatenation.",
+          "Since $L_1$ and $L_2$ are regular, then there exists a Regular Grammar for each language. Assume $L_1$ uses $S_1$ as its start symbol and $L_2$ uses $S_2$ as its start symbol. Creating a new start variable $S\\rightarrow S_1 S_2$ is the regular grammar for the concatenation."
         ],
         "choices": [
           "$L_1 \\cdot L_2$ = $r_1 \\cdot r_2$ which is a regular expression. So the result is regular",
-          "Since $L_1$ and $L_2$ are regular, then there can exist an NFA for each language. Connecting the final state for $L_1$ with the start state for $L_2$ generates the NFA for the concatenation.",
-          "Since $L_1$ and $L_2$ are regular, then there can exist a Regular Grammar for each language. Creating a new start variable $S\\rightarrow S_1 S_2$ is the regular grammar for the concatenation."
+          "Since $L_1$ and $L_2$ are regular, then there exists an NFA for each language. Connecting the final state for $L_1$ with the start state for $L_2$ generates the NFA for the concatenation.",
+          "Since $L_1$ and $L_2$ are regular, then there exists a Regular Grammar for each language. Assume $L_1$ uses $S_1$ as its start symbol and $L_2$ uses $S_2$ as its start symbol. Creating a new start variable $S\\rightarrow S_1 S_2$ is the regular grammar for the concatenation."
         ],
         "correctFeedback": ["Regular languages are definitely closed under concatenation."]
       },
@@ -65,18 +66,18 @@
         "description": "Consider regular languages $L_1$ and $L_2$. Since they are regular languages, we know that there exist regular expressions $r_1$ and $r_2$ such that $L_1=L(r_1)$ and $L_2=L(r_2)$ There are also DFAs and NFAs that accepts $L_1$ and $L_2$, and regular grammars that describe them.<br/>Now let's consider the Star-closure ($*$) operator.",
         "question": "How do you know that?",
         "answer": [
-          "$L^*$ = $r^*$ which is a regular expression. So the result is regular"
+          "If $L = r$ for $r$ some regular expression, then $L^*$ = $r^*$ which is also a regular expression.",
+          "Since $L$ is regular, then there exists a Regular Grammar for $L$ with start symbol $S$. Creating a new start variable $S_1\\rightarrow S_1 S\\mid \\lambda$ is the regular grammar for $L^*$."
         ],
         "choices": [
-          "$L^*$ = $r^*$ which is a regular expression. So the result is regular",
-          "Since $L_1$ and $L_2$ are regular, then there can exist a Regular Grammar for $L$. Creating a new start variable $S\\rightarrow S_1 S\\mid \\lambda$ is the regular grammar for $L^*$."
+          "If $L = r$ for $r$ some regular expression, then $L^*$ = $r^*$ which is also a regular expression.",
+          "Since $L$ is regular, then there exists a Regular Grammar for $L$ with start symbol $S$. Creating a new start variable $S_1\\rightarrow S_1 S\\mid \\lambda$ is the regular grammar for $L^*$."
         ],
-        "correctFeedback": ["So, regular languages are also closed under concatenation. No surprise?"],
-        "incorrectFeedback": ["Be careful -- the grammar has to be regular if we want to be sure that the language is regular."]
+        "correctFeedback": ["So, regular languages are also closed under concatenation. No surprise?"]
       },
       "complement": {
         "type": "multiple",
-        "description": "Consider regular languages $L_1$ and $L_2$. Since they are regular languages, we know that there exist regular expressions $r_1$ and $r_2$ such that $L_1=L(r_1)$ and $L_2=L(r_2)$ There are also DFAs and NFAs that accepts $L_1$ and $L_2$, and regular grammars that describe them.<br/>Now let's consider the complement for a language. That is, the complement of $L$ is all strings <b>not</b> in $L$. This is written $\\overline{L}$",
+        "description": "Consider regular languages $L_1$ and $L_2$. Since they are regular languages, we know that there exist regular expressions $r_1$ and $r_2$ such that $L_1=L(r_1)$ and $L_2=L(r_2)$ There are also DFAs and NFAs that accepts $L_1$ and $L_2$, and regular grammars that describe them.<br/>Now let's consider the complement for a language. That is, the complement of $L$ is all strings <b>not</b> in $L$. This is written $\\overline{L}$.",
         "question": "Are regular languages closed under complementation? Think about it.",
         "answer": "Yes. Take the (complete) NFA for $L$, and change all final states to be non-final states, and all non-final states to final states. This will give the complete NFA for the complement of $L$.",
         "choices": ["Yes. Take the (complete) NFA for $L$, and change all final states to be non-final states, and all non-final states to final states. This will give the complete NFA for the complement of $L$.", "No"],
@@ -86,8 +87,8 @@
         "type": "multiple",
         "description": "Consider regular languages $L_1$ and $L_2$. Since they are regular languages, we know that there exist regular expressions $r_1$ and $r_2$ such that $L_1=L(r_1)$ and $L_2=L(r_2)$ There are also DFAs and NFAs that accepts $L_1$ and $L_2$, and regular grammars that describe them.<br/>Now let's consider the reverse operator. That is, the reverse operator takes a string and reverses it.",
         "question": "Are regular languages closed under reversal? Think about it.",
-        "answer": "Yes. Consider the NFA for $L$. Modify it so that it contains a single final state. Now, make this (new) final state be the start state, and the original start state be the final state. Reverse all transitions as well. The result will gives the NFA for the reverse of $L$.",
-        "choices": ["Yes. Consider the NFA for $L$. Modify it so that it contains a single final state. Now, make this (new) final state be the start state, and the original start state be the final state. Reverse all transitions as well. The result will gives the NFA for the reverse of $L$.", "No"],
+        "answer": "Yes. Consider the NFA for $L$. Modify it so that it contains a single final state. Now, make this (new) final state be the start state, and the original start state be the final state. Reverse all transitions as well. The result will give the NFA for the reverse of $L$.",
+        "choices": ["Yes. Consider the NFA for $L$. Modify it so that it contains a single final state. Now, make this (new) final state be the start state, and the original start state be the final state. Reverse all transitions as well. The result will give the NFA for the reverse of $L$.", "No"],
         "correctFeedback": ["So, regular languages are also closed under reverse."]
       },
       "intersect": {
@@ -100,10 +101,10 @@
       },
       "setdiff": {
         "type": "multiple",
-        "description": "For regular languages $L_1$ and $L_2$, set difference between $L_1$ and $L_2$ is written $L_1 \\cap L_2$. The set difference is the strings from $L_1$ that are <b>not</b> in $L_2$. In other words, strings that are in $L_1$ and not in $L_2$.",
+        "description": "For regular languages $L_1$ and $L_2$, set difference between $L_1$ and $L_2$ is written $L_1 - L_2$. The set difference is the strings from $L_1$ that are <b>not</b> in $L_2$. In other words, strings that are in $L_1$ and not in $L_2$.",
         "question": "Are regular languages closed under the set difference operator? Think about it from set operations.",
-        "answer": "We know that $L_1 - L_2 = L_1 \\cap \\overline{L_2}$",
-        "choices": ["We know that $L_1 - L_2 = L_1 \\cap \\overline{L_2}$", "No"]
+        "answer": "From reading the definition for set difference just given, we see that this English description can be rewritten as $L_1 - L_2 = L_1 \\cap \\overline{L_2}$",
+        "choices": ["From reading the definition for set difference just given, we see that this English description can be rewritten as $L_1 - L_2 = L_1 \\cap \\overline{L_2}$", "No"]
       },
       "setdiff2": {
         "type": "multiple",

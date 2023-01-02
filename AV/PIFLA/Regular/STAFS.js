@@ -5,26 +5,47 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
   var goNext = false;
 
-  //frame 1
-  av.umsg("Can you draw a DFA, regular expression or regular grammar for $L = \\{a^nb^n\\mid n> 0\\}$?");
+  // Frame 1
+  av.umsg("Can you draw a DFA or NFA, or write a regular expression or regular grammar for $L = \\{a^nb^n\\mid n> 0\\}$?");
   av.displayInit();
-  //frame 2
-  av.umsg(Frames.addQuestion("q3"));
+
+  // Frame 2
+  av.umsg(Frames.addQuestion("memory"));
   av.step();
-  av.umsg(Frames.addQuestion("q4"));
+
+  // Frame 3
+  av.umsg(Frames.addQuestion("memoryneed"));
   av.step();
-  av.umsg(Frames.addQuestion("q5"));
+
+  // Frame 4
+  av.umsg(Frames.addQuestion("whatmemory"));
   av.step();
-  av.umsg(Frames.addQuestion("q6"));
+
+  // Frame 5
+  av.umsg(Frames.addQuestion("accept"));
   av.step();
-  av.umsg(Frames.addQuestion("q7"));
+
+  // Frame 6
+  av.umsg(Frames.addQuestion("regexrg"));
   av.step();
-  av.umsg(Frames.addQuestion("q8"));
+
+  // Frame 7
+  av.umsg(Frames.addQuestion("noregex"));
   av.step();
-  av.umsg(Frames.addQuestion("q9"));
+
+  // Frame 8
+  av.umsg(Frames.addQuestion("regular"));
   av.step();
-  av.umsg(Frames.addQuestion("q10"));
+
+  // Frame 9
+  av.umsg(Frames.addQuestion("proof"));
   av.step();
-  av.umsg("Exactly, we need to have a new tool that helps us to identify non regular languages. This is the next topic in this course.");
+
+  // Frame 10
+  av.umsg("Exactly. We need to have a new tool that helps us to identify non-regular languages. This is our next topic.");
+  av.step();
+
+  // Frame 11
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

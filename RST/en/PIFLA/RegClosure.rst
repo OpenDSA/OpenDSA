@@ -16,6 +16,15 @@ Closure Properties of Regular Languages
 Closure Concept
 ---------------
 
+A significant question within the domain of Formal Languages is
+whether a given language is regular or not.
+Certainly it is if we can create a DFA or NFA that recognizes it, or
+write a RegEx or regular grammar that represents it.
+But sometimes we might have trouble doing that directly.
+Another tool in the toolbox is to describe the language in terms of
+one or more languages already known regular, that are combined or
+modified by some operation that is known to be closed on the set of
+regular languages.
 In this module, we will prove that a number of operations are closed
 for the set of regular languages.
 
@@ -69,7 +78,7 @@ Homomorphism
    :output: show
 
 
-Some Answerable Questions about Regular Languages
+Some Decideable Questions about Regular Languages
 -------------------------------------------------
 
 .. inlineav:: RLQuestionsCON ss
@@ -93,7 +102,7 @@ This means that key uses of the language
 (like deciding if a given string is in the language)
 can be implemented on a computer.
 So, a fundamental way to prove that a language is regular is to
-implement it using one of these ways:
+implement it using one of these methods:
 
 * Write a DFA that accepts the language.
 * Write a NFA that accepts the language.
@@ -104,7 +113,7 @@ A slightly indirect way to prove that a language is regular is to
 define it in terms of one or more known regular languages 
 that are manipulated by operators known to be closed for
 regular languages.
-Which is why we have spent this entire module defining a useful
+Which is why we have spent some time defining a useful
 collection of such operators.
 
 This begs some questions!
@@ -122,12 +131,3 @@ way to always be able to prove whether a language is regular or not.
 We simply have tools that sometimes let us prove that the language is
 regular (typically by constructing one of the representations already
 described) or that let us prove the language is not regular.
-
-
-Something to Think About
-------------------------
-
-.. inlineav:: STAFS ff
-   :links: AV/PIFLA/Regular/STAFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/STAFS.js
-   :output: show
