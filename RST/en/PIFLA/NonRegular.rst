@@ -12,14 +12,6 @@
 Identifying Non-regular Languages
 =================================
 
-Something to Think About
-------------------------
-
-.. inlineav:: STAFS ff
-   :links: AV/PIFLA/Regular/STAFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/STAFS.js
-   :output: show
-
 Identifying Non-regular Languages
 ---------------------------------
 
@@ -45,22 +37,24 @@ language is non-regular.
    :scripts: AV/VisFormalLang/NonReg/Proof1NonRegularCON.js
    :output: show
 
-We are about to formalize the proof in the slideshow into a tool for
+We are about to formalize the proof in this slideshow into a tool for
 proving some languages to be nonregular.
 But first, let's explore the relationship of loops in DFAs to regular
 languages a bit more.
 
-First, we know that loops don't always cause a problem.
+First, we know that loops don't always cause a language to be
+nonregular.
 In fact, there is a simple relationship between DFAs with or without
 loops, and languages that are infinite or finite.
-That is, a finite language is accepted by a DFA with no loop.
-Its not possible that the language accepted would be finite, since we
-can't control the number of times that the machine goes around the
-loop.
+That is, a finite language is accepted by a DFA with no loop on any
+path to a final state.
+Its not possible that the language accepted by a DFA with such a loop
+would be finite, since we can't control the number of times that the
+machine goes around the loop.
 That is, the machine can accept all strings in the finite language,
 but it has to accept more strings as well.
-Conversely, any infinite language must be accepted by a DFA with one
-or more loops.
+Conversely, any infinite language could only be accepted by a DFA with
+one or more loops.
 
 Next, consider that we can use a DFA to "count" a finite number of
 things.
@@ -68,7 +62,10 @@ For example, we can make a DFA that never has three consecutive a's,
 or one that has at most three a's in the string.
 So long as we want to count a fixed number (or maximum number) of
 things, we are OK.
-And of course, such a machine can have a loop.
+And of course, such a machine can have a loop on a path to a final
+state.
+For example, languages that limit the number of a's might have
+a loop that permits an arbitrary number of b's.
 What **cannot** happen is for the loop to affect the counting process.
 So, the series of states that counts to three a's can include a loop
 to process an arbitrary number of b's, because that will not disrupt
@@ -108,7 +105,8 @@ The Pumping Lemma
      Which string we pick is critical.
      We must pick a string that will yield a contradiction.
      And we succeed with the proof if we find any such string,
-     even if there exist other stings that don't let us succeed.
+     even if there exist other stings that don't let us make the proof
+     work.
    * Show that, for our string, there is NO division of :math:`w` into
      :math:`xyz` (we must consider all possible divisions) such that
      :math:`|xy| \le m`, :math:`|y| \ge 1` and
@@ -122,8 +120,8 @@ For (some) languages we can use the pumping lemma to prove that they
 are **not** regular.
 But we cannot use the pumping lemma to help us prove that a language
 is regular.
-And the pumping lemma is not a universal solution for determining that
-a language is non-regular.
+And the pumping lemma is not a universal solution that let's us always
+determine that a non-regular language is in fact non-regular.
 Its just a tool in the toolbox.
 
 
@@ -149,8 +147,10 @@ Some Pumping Lemma Examples
    :math:`L = \{a^mb^n \mid n+m` is odd :math:`\}` is non-regular.
 
    But wait! $L$ is a regular language!
-   For example, it is not hard to create a DFA that maintains states
-   for whether we have seen an even number of symbols so far or an odd
+   We don't actually need to remember how many a's we have seen,
+   we only need to remember if it is even or odd (two choices).
+   So it is not hard to create a DFA that maintains states
+   for whether we have seen an even number of a's so far or an odd
    number.
    If the language is indeed regular, you should find it impossible to
    use the pumping lemma to prove it non-regular.

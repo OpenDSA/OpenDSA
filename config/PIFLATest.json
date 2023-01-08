@@ -57,83 +57,25 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Regular Languages": {
-      "PIFLA/RegEx":{},
-      "PIFLA/RegExExercises":{
-        "RegExaba": {
-          "points": 2.0
-        },
-        "RegExbbaeven": {
-          "points": 2.0
-        },
-        "RegExnoaa": {
-          "points": 2.0
-        },
-        "RegExonebbb": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegExExercises2":{
-        "RegExevenbinary": {
-          "points": 2.0
-        },
-        "RegExaby3": {
-          "points": 2.0
-        },
-        "RegExcb2": {
-          "points": 2.0
-        },
-        "RegExabyb": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegExPower":{
-        "RegEx2NFA1FS": {
+    "Identifying Non-regular Languages":{
+      "PIFLA/NonRegular": {
+        "introPumpingFS": {
           "points": 1.0
         },
-        "RegEx2NFAorFS": {
+        "PLGame": {
+          "points": 0.0,
+          "required": false
+        },
+        "ClosPropFS": {
           "points": 1.0
         },
-        "RegEx2NFAcatFS": {
+        "ClosPropEx1FS": {
           "points": 1.0
         },
-        "RegEx2NFAstarFS": {
+        "ClosPropEx2FS": {
           "points": 1.0
         }
-      },
-      "PIFLA/RegularGrammars": {
-        "STAFS": {
-          "points": 1.0
-        }
-      },
-      "PIFLA/RegGrammarShort": {},
-      "PIFLA/RegGramEx1": {
-        "RegGramNFA1": {
-          "points": 2.0
-        },
-        "RegGrambbbaaaa": {
-          "points": 2.0
-        },
-        "RegGramaby3": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegGramEx2": {
-        "RegGramNFA2": {
-          "points": 2.0
-        },
-        "RegGramNFA2r": {
-          "points": 2.0
-        },
-        "RegGramaaabba": {
-          "points": 2.0
-        },
-        "RegGramanbmodd": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegClosure": {},
-      "VisFormalLang/DFAproperties": {}
+      }
     },
     "Appendix": {
       "Glossary": {}
