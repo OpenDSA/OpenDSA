@@ -45,7 +45,7 @@
         "question": "Does that mean that we should conclude that $L$ is regular?",
         "answer": "No",
         "choices": ["Yes", "No"],
-        "correctFeedback": ["Just not succeeding in proving the language non-regular doesn't actually tell us anything about the truth of the situation. In this case, we should see if we can find a better string for $w$."]
+        "correctFeedback": ["Not succeeding in proving the language non-regular for some particular string doesn't actually tell us anything about the truth of the situation. In this case, we should see if we can find a better string for $w$."]
       },
       "newchoice": {
         "type": "select",
@@ -53,7 +53,7 @@
         "question": "Is this an acceptable string?",
         "answer": "Yes",
         "choices": ["Yes", "No"],
-        "correctFeedback": ["The string $w = a^{2m}$ is in the language, and it is at least $m$ symbols long. That meets the criteria."]
+        "correctFeedback": ["The string $w = a^mb^mb^ma^m$ is in the language, and it is at least $m$ symbols long. That meets the criteria."]
       },
       "decompose": {
         "type": "select",

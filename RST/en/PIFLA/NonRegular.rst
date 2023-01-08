@@ -167,9 +167,11 @@ Some Pumping Lemma Examples
    For string :math:`w = abb`, it turns out that the only legitimate
    decomposition yields :math:`y = a`, which cannot be pumped.
    But this does **not** mean that the language is non-regular.
-   We can't just pick our favorite value value for :math:`m`,
-   the Pumping Lemma demands that this condition be true for
+   We can't just pick our favorite value value for :math:`m`.
+   The Pumping Lemma demands that this condition be true for
    all other legitimate values of :math:`m` as well.
+   Notice in our successful proof examples, we did not make any
+   assumptions about the value of $m$.
    
    In particular, for any value of :math:`m \ge 2`,
    :math:`w` has to be at least 3 symbols long (since it has to be of
@@ -180,7 +182,15 @@ Some Pumping Lemma Examples
    and the resulting string is still of odd length,
    and therefore is in the language.
 
- 
+   Notice that we were able to give a reasonable argument for why the
+   pumping lemma proof must always fail as a way to explain why the
+   language is regular.
+   This does not mean that we can come up with such an explanation for
+   all regular languages.
+   Once again, we can't use the pumping lemma as a fool-proof way to
+   classify all languages.
+
+   
 .. topic:: Example
 
    Let's look at some more languages that are easily shown to be
@@ -228,7 +238,7 @@ Now let's look at an example that is not so easy, because we cannot
 use that simple strategy.
 This means that we have to pick a string :math:`w` that will lead to a
 number of cases for the decomposition into :math:`xyz` that we will
-have to get through.
+have to get through to complete the proof.
 
 .. inlineav:: PLExampa3bncn3FS ff
    :links: AV/PIFLA/NonRegular/PLExampa3bncn3FS.css
@@ -242,18 +252,27 @@ The Pumping Lemma Adversary Game
 Here is an adversary argument way of looking at this.
 Your goal is to establish a contradiction (to prove the language is
 not regular), while the opponent tries to stop the proof.
+The general idea is that places in the proof that require that any
+value can work are moves made by the opponent.
+Places in the proof where the prover selects a value are moves made by
+the prover.
+
 The moves in the game are:
 
-1. The opponent picks $m$.
+1. The opponent picks $m$. [Remember that the proof has to work for
+   arbitrary $m$.]
 2. We pick string $w$ in $L$ of length equal or greater than $m$.
-   We are free to chose any $w$, so long as $w\\in L$ and $|w|\\ge m$.
+   [Remember that We are free to chose any $w$, so long as $w\\in L$
+   and $|w|\\ge m$.]
 3. The opponent chooses the decomposition $xyz$,
    such that $|xy|\\le m,|y|\\ge1$.
-   The opponent will make the choice that is hardest for us to win the
-   game.
+   [Remember that the proof has to work for any decomposition.
+   So we can count on the opponent making the choice that is hardest
+   for us to win the game.]
 4. We try to pick $i$ so that the pumped string $w_i=xy^iz$ is not in
-   $L$.
-   If we can always do this, we win ($L$ is not regular).
+   $L$. [Remember that $w = xy^iz$ has to be in the language for all
+   values of $i$, so we get to pick one that works.]
+   If we can do this, we win ($L$ is not regular).
 
 As we see, the adversary games are role based game where
 **we** seek to prove the language is non-regular.
@@ -317,7 +336,9 @@ Recall that regular languages are closed under certain operations.
 For example, a regular language that is the union of two known regular
 languages is itself regular.
 This is an example of using closure properties to prove that a
-language is regular.
+language is regular: If :math:`L = L_1 \cup L_2` where we we know
+that :math:`L_1` and :math:`L_2` are regular,
+then :math:`L` must also be regular.
 
 In a similar way, we can use closure properties to show that a
 language is **not** regular.
@@ -386,7 +407,7 @@ there are languages that are nonregular.
 Regular languages can be represented in any of several interchangeable
 ways.
 Some nonregular languages can be proved such using tools like the
-Pumping Lemma, and closure properties.
+Pumping Lemma and closure properties.
 
 These facts should lead us to ask some broader questions.
 In particular, is every language either regular or nonregular?
@@ -404,7 +425,7 @@ not, since not all languages are regular).
 A language is not even just those sets that can be described in
 English, or a mix of English and math notation.
 
-We will come back to these and similar questions later in the book.
+We will come back to these and similar questions later.
 They relate to issues of Turing decideable vs. Turing acceptable
 languages, P vs. NP, and what questions about languages are
 decideable vs. undecideable.

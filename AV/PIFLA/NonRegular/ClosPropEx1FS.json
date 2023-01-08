@@ -32,7 +32,7 @@
       },
       "b6concat": {
         "type": "true/false",
-        "description":"$L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$<br/>Homomorphism $h$ is: $\\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>So, $h(L) = \\{a^3a^nb^{n-3}\\ |\\ n > 3 \\} = \\{a^{n+3}b^{n-3}\\ |\\ n > 3\\}$<br/><br/>Now define $L' = h(L)b^6 = \\{a^{n+3}b^{n+3}\\ |\\ n > 3\\}$",
+        "description":"$L = \\{a^3b^nc^{n-3}\\ |\\ n > 3 \\}$<br/>Homomorphism $h$ is: $\\Sigma \\rightarrow \\Sigma^*$.<br/>$h(a) = a\\quad |\\quad h(b) = a\\quad |\\quad h(c) = b$<br/>So, $h(L) = \\{a^3a^nb^{n-3}\\ |\\ n > 3 \\} = \\{a^{n+3}b^{n-3}\\ |\\ n > 3\\}$<br/><br/>Now define $L' = h(L)b^6 = \\{a^{n+3}b^{n+3}\\ |\\ n > 3\\}$. In other words, $L'$ is the concatenation of $h(L)$ with six $b$'s.",
         "question": "By closure under concatenation, concatenating $h(L)$ and $b^6$ is regular",
         "answer": "True",
         "choices": []
