@@ -127,6 +127,8 @@ $(document).ready(function () {
     m = init();
     fi = null;
     $('.jsavmatrix').addClass("editMode");
+    $('#av .jsavcanvas').addClass("fancy-scrollbar");
+    $('#av .jsavcanvas').css("max-height", "400px");
     exerController.updateExercise(0);
   }
 

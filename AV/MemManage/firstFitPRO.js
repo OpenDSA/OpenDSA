@@ -1,7 +1,6 @@
 //change text-box with generated block sizes to stack -- look at buffer pool for stack impl.
 //bst delete for rendomly generated numbers
 
-
 "use strict";
 /*global alert: true, ODSA */
 (function ($) {
@@ -268,7 +267,7 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
 
     // Process About button: Pop up a message with an Alert
     function about() {
-      //alert("Shellsort Proficiency Exercise\nWritten by Cliff Shaffer and Ville Karavirta\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
+      alert("First-fit Memory Management Proficiency Exercise\nCreated as part of the OpenDSA hypertextbook project\nFor more information, see http://opendsa.org.\nSource and development history available at\nhttps://github.com/OpenDSA/OpenDSA\nCompiled with JSAV library version " + JSAV.version());
     }
 
     // Initialize the exercise
@@ -286,7 +285,6 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
         
         theArray.highlight(index);
         setTimeout(function(){theArray.unhighlight(index)}, 250);
-        exer.gradeableStep();
         //inserts "used" rectangle in memory pool (visualize using up space)
         insertIntoBlock(index);
         
@@ -296,6 +294,7 @@ console.log("Used block sizes: " + used1Size + ", " + used2Size + ", " + used3Si
         if (stack.first()) {
          stack.first().highlight();
         }
+        exer.gradeableStep();
       } else {
         theArray.unhighlight(index);
       }

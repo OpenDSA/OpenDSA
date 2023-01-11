@@ -37,22 +37,24 @@ language is non-regular.
    :scripts: AV/VisFormalLang/NonReg/Proof1NonRegularCON.js
    :output: show
 
-We are about to formalize the proof in the slideshow into a tool for
+We are about to formalize the proof in this slideshow into a tool for
 proving some languages to be nonregular.
 But first, let's explore the relationship of loops in DFAs to regular
 languages a bit more.
 
-First, we know that loops don't always cause a problem.
+First, we know that loops don't always cause a language to be
+nonregular.
 In fact, there is a simple relationship between DFAs with or without
 loops, and languages that are infinite or finite.
-That is, a finite language is accepted by a DFA with no loop.
-Its not possible that the language accepted would be finite, since we
-can't control the number of times that the machine goes around the
-loop.
+That is, a finite language is accepted by a DFA with no loop on any
+path to a final state.
+Its not possible that the language accepted by a DFA with such a loop
+would be finite, since we can't control the number of times that the
+machine goes around the loop.
 That is, the machine can accept all strings in the finite language,
 but it has to accept more strings as well.
-Conversely, any infinite language must be accepted by a DFA with one
-or more loops.
+Conversely, any infinite language could only be accepted by a DFA with
+one or more loops.
 
 Next, consider that we can use a DFA to "count" a finite number of
 things.
@@ -60,7 +62,10 @@ For example, we can make a DFA that never has three consecutive a's,
 or one that has at most three a's in the string.
 So long as we want to count a fixed number (or maximum number) of
 things, we are OK.
-And of course, such a machine can have a loop.
+And of course, such a machine can have a loop on a path to a final
+state.
+For example, languages that limit the number of a's might have
+a loop that permits an arbitrary number of b's.
 What **cannot** happen is for the loop to affect the counting process.
 So, the series of states that counts to three a's can include a loop
 to process an arbitrary number of b's, because that will not disrupt
@@ -100,7 +105,8 @@ The Pumping Lemma
      Which string we pick is critical.
      We must pick a string that will yield a contradiction.
      And we succeed with the proof if we find any such string,
-     even if there exist other stings that don't let us succeed.
+     even if there exist other stings that don't let us make the proof
+     work.
    * Show that, for our string, there is NO division of :math:`w` into
      :math:`xyz` (we must consider all possible divisions) such that
      :math:`|xy| \le m`, :math:`|y| \ge 1` and
@@ -114,8 +120,8 @@ For (some) languages we can use the pumping lemma to prove that they
 are **not** regular.
 But we cannot use the pumping lemma to help us prove that a language
 is regular.
-And the pumping lemma is not a universal solution for determining that
-a language is non-regular.
+And the pumping lemma is not a universal solution that let's us always
+determine that a non-regular language is in fact non-regular.
 Its just a tool in the toolbox.
 
 
@@ -141,8 +147,10 @@ Some Pumping Lemma Examples
    :math:`L = \{a^mb^n \mid n+m` is odd :math:`\}` is non-regular.
 
    But wait! $L$ is a regular language!
-   For example, it is not hard to create a DFA that maintains states
-   for whether we have seen an even number of symbols so far or an odd
+   We don't actually need to remember how many a's we have seen,
+   we only need to remember if it is even or odd (two choices).
+   So it is not hard to create a DFA that maintains states
+   for whether we have seen an even number of a's so far or an odd
    number.
    If the language is indeed regular, you should find it impossible to
    use the pumping lemma to prove it non-regular.
@@ -159,9 +167,11 @@ Some Pumping Lemma Examples
    For string :math:`w = abb`, it turns out that the only legitimate
    decomposition yields :math:`y = a`, which cannot be pumped.
    But this does **not** mean that the language is non-regular.
-   We can't just pick our favorite value value for :math:`m`,
-   the Pumping Lemma demands that this condition be true for
+   We can't just pick our favorite value value for :math:`m`.
+   The Pumping Lemma demands that this condition be true for
    all other legitimate values of :math:`m` as well.
+   Notice in our successful proof examples, we did not make any
+   assumptions about the value of $m$.
    
    In particular, for any value of :math:`m \ge 2`,
    :math:`w` has to be at least 3 symbols long (since it has to be of
@@ -172,7 +182,15 @@ Some Pumping Lemma Examples
    and the resulting string is still of odd length,
    and therefore is in the language.
 
- 
+   Notice that we were able to give a reasonable argument for why the
+   pumping lemma proof must always fail as a way to explain why the
+   language is regular.
+   This does not mean that we can come up with such an explanation for
+   all regular languages.
+   Once again, we can't use the pumping lemma as a fool-proof way to
+   classify all languages.
+
+   
 .. topic:: Example
 
    Let's look at some more languages that are easily shown to be
@@ -220,7 +238,7 @@ Now let's look at an example that is not so easy, because we cannot
 use that simple strategy.
 This means that we have to pick a string :math:`w` that will lead to a
 number of cases for the decomposition into :math:`xyz` that we will
-have to get through.
+have to get through to complete the proof.
 
 .. inlineav:: PLExampa3bncn3FS ff
    :links: AV/PIFLA/NonRegular/PLExampa3bncn3FS.css
@@ -234,18 +252,27 @@ The Pumping Lemma Adversary Game
 Here is an adversary argument way of looking at this.
 Your goal is to establish a contradiction (to prove the language is
 not regular), while the opponent tries to stop the proof.
+The general idea is that places in the proof that require that any
+value can work are moves made by the opponent.
+Places in the proof where the prover selects a value are moves made by
+the prover.
+
 The moves in the game are:
 
-1. The opponent picks $m$.
+1. The opponent picks $m$. [Remember that the proof has to work for
+   arbitrary $m$.]
 2. We pick string $w$ in $L$ of length equal or greater than $m$.
-   We are free to chose any $w$, so long as $w\\in L$ and $|w|\\ge m$.
+   [Remember that We are free to chose any $w$, so long as $w\\in L$
+   and $|w|\\ge m$.]
 3. The opponent chooses the decomposition $xyz$,
    such that $|xy|\\le m,|y|\\ge1$.
-   The opponent will make the choice that is hardest for us to win the
-   game.
+   [Remember that the proof has to work for any decomposition.
+   So we can count on the opponent making the choice that is hardest
+   for us to win the game.]
 4. We try to pick $i$ so that the pumped string $w_i=xy^iz$ is not in
-   $L$.
-   If we can always do this, we win ($L$ is not regular).
+   $L$. [Remember that $w = xy^iz$ has to be in the language for all
+   values of $i$, so we get to pick one that works.]
+   If we can do this, we win ($L$ is not regular).
 
 As we see, the adversary games are role based game where
 **we** seek to prove the language is non-regular.
@@ -309,7 +336,9 @@ Recall that regular languages are closed under certain operations.
 For example, a regular language that is the union of two known regular
 languages is itself regular.
 This is an example of using closure properties to prove that a
-language is regular.
+language is regular: If :math:`L = L_1 \cup L_2` where we we know
+that :math:`L_1` and :math:`L_2` are regular,
+then :math:`L` must also be regular.
 
 In a similar way, we can use closure properties to show that a
 language is **not** regular.
@@ -378,7 +407,7 @@ there are languages that are nonregular.
 Regular languages can be represented in any of several interchangeable
 ways.
 Some nonregular languages can be proved such using tools like the
-Pumping Lemma, and closure properties.
+Pumping Lemma and closure properties.
 
 These facts should lead us to ask some broader questions.
 In particular, is every language either regular or nonregular?
@@ -396,7 +425,7 @@ not, since not all languages are regular).
 A language is not even just those sets that can be described in
 English, or a mix of English and math notation.
 
-We will come back to these and similar questions later in the book.
+We will come back to these and similar questions later.
 They relate to issues of Turing decideable vs. Turing acceptable
 languages, P vs. NP, and what questions about languages are
 decideable vs. undecideable.

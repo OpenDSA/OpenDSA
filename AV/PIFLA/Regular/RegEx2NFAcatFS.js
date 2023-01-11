@@ -71,7 +71,7 @@ $(document).ready(function() {
   rFA.initial._initialMarker.hide();
   av.g.line(40, 215, 135, 85, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   rFA.initial.css({"font-weight": "normal"});
-  av.label(lambda, {left: 70, top: 80});
+  av.label(lambda, {left: 70, top: 110});
   av.step();
 
   // Frame 9
@@ -92,7 +92,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 11
-  av.umsg("Once the string is accepted by the NFA for $s$, this means that this string belongs to the language $L(r \\cdot s)$. The transition symbol is $\\lambda$.");
+  av.umsg("Once the string is accepted by the NFA for $s$, this means that this string belongs to the language $L(r \\cdot s)$. The transition symbol is $\\lambda$. By the way, note that what were previously the final states for $r$ and $s$ have both had their final state status removed.");
   av.g.line(365, 315, 460, 210, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 420, top: 245});
   av.step();

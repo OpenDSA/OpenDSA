@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><structure>
+	<type>fa</type>
+	<automaton>
+		<state id="0" name="q0">
+			<x>77.203125</x>
+			<y>108.78125</y>
+			<initial/>
+		</state>
+		<state id="1" name="q1">
+			<x>386.203125</x>
+			<y>109.78125</y>
+			<final/>
+		</state>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>((aa*b)*(a+aa*b)b)*(aa*b)*(a+aa*b)</read>
+		</transition>
+	</automaton>
+</structure>

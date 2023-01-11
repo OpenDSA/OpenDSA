@@ -1,62 +1,64 @@
 {
     "translations": {
       "en": {
-        "fa1": "../../../AV/VisFormalLang/NFA/AutomataFiles/NFA2DFA2a.jff",
-        "q3": {
+        "memory": {
           "type": "multiple",
-          "description": "Before you start drawing the machine that does not exist. Think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
-          "question": "What type of memory does NFA/DAF have?",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "What type of memory does a DFA/NFA have?",
           "answer": "No memory. It only remembers the current state.",
-          "choices": ["Infinit memory", "No memory. It only remembers the current state.", "Stack"]
+          "choices": ["It has infinite memory", "It has no memory. It only remembers the current state.", "It has a stack"]
         },
-        "q4": {
+        "memoryneed": {
           "type": "multiple",
-          "description": "Before you start drawing the machine that does not exist. Think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
-          "question": "What about the language in hand. Does it requier a memory to recognize it?",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "Does recognizing $L = \\{a^nb^n\\mid n> 0\\}$ require any memory?",
           "answer": "Yes",
           "choices": ["Yes", "No"]
         },
-        "q5": {
+        "whatmemory": {
           "type": "multiple",
-          "description": "Before you start drawing the machine that does not exist. Think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
-          "question": "What is the thing that the machine must remember to recognize it?",
-          "answer": "It must recognize the number of $a$s to be able to find the same number for $b$s.",
-          "choices": ["It must recognize the number of $a$s to be able to find the same number for $b$s.", "Nothing"]
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "What does the machine need to remember?",
+          "answer": "It remember the number $a$'s it saw in order to verify that the number of $b$'s match.",
+          "choices": ["It remember the number $a$'s it saw in order to verify that the number of $b$'s match.", "Nothing"]
         },
-        "q6": {
+        "accept": {
           "type": "multiple",
-          "description": "Before you start drawing the machine that does not exist. Think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
-          "question": "So can we find a DAF or NFA for it?",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "So can we find a DFA or NFA to accept this language?",
           "answer": "No",
-          "choices": ["No", "Maybe"]
+          "choices": ["Yes", "No", "Maybe"]
         },
-        "q7": {
+        "regexrg": {
           "type": "multiple",
-          "description": "Before you start drawing the machine that does not exist. Think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
           "question": "Exactly. What about finding RegEx or Regular Grammar for it?",
           "answer": "No way",
-          "choices": ["No way", "Maybe"]
+          "choices": ["Yes", "No way", "Maybe"]
         },
-        "q8": {
+        "noregex": {
           "type": "multiple",
-          "description": "Before you start drawing the machine that does not exist. Think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
-          "question": "Why?",
-          "answer": "Because NFA, DFA, RegEX, and Regular Grammars are all equivalent. So failing to find NFA means that there is not other tool can recognize the language",
-          "choices": ["Because NFA, DFA, RegEX, and Regular Grammars are all equivalent. So failing to find NFA means that there is not other tool can recognize the language", "Maybe"]
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "Why can't we find a RegEx or Regular Grammar??",
+          "answer": "Because NFA, DFA, RegEx, and Regular Grammars are all equivalent. So if one of these does not exist, then neither do the others.",
+          "choices": ["Because NFA, DFA, RegEx, and Regular Grammars are all equivalent. So if one of these does not exist, then neither do the others.",
+          "Maybe you can."]
         },
-        "q9": {
+        "regular": {
           "type": "multiple",
-          "description": "Before you start drawing the machine that does not exist. Think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
           "question": "So, is it Regular?",
           "answer": "No",
-          "choices": ["No", "Yes"]
+          "choices": ["No", "Yes"],
+          "correctFeedback": ["If a language is regular, it means that there is a DFA and an NFA that accept it, and there is a RegEx and a regular grammar that describes it."]
         },
-        "q10": {
+        "proof": {
           "type": "multiple",
-          "description": "Before you start drawing the machine that does not exist. Think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
           "question": "How can we know that a Language is not regular?",
-          "answer": "We need a tool",
-          "choices": ["We need a tool", "We try to find a DFA, NFA, RegEX, or Regular Grammar and if we faild then it will not be regular"]
+          "answer": "We need a way to prove this that we have not discussed yet.",
+          "choices": ["We need a way to prove this that we have not discussed yet.", "We can try to find a DFA, NFA, RegEX, or Regular Grammar. If we fail, then the language is not regular."],
+          "incorrectFeedback": ["Just because we don't happen to find one of these ways to represent the language does not necessarily mean that none exist."]
         }
       }
     }

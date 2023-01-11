@@ -7,7 +7,7 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("This slideshow presents the definition and some examples for a RegEx.");
+  av.umsg("This slideshow presents the definition and some examples for Regular Expressions.");
   av.displayInit();
 
   // Frame 2
@@ -51,7 +51,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 12
-  av.umsg("Here is the complete definition for regular expressions on some alphabet $\\Sigma$.<br/><br/>1. <b>Base Cases:</b>$\\lambda$ and $a$ $\\in$ $\\Sigma$ are RE.<br/>2. If $r$ and $s$ are RE, then $(r)$, $r + s$, $rs$, and $r^∗$ are RE.<br/>3. $r$ is a RE if and only if it can be derived from (1) with a finite number of applications of (2).");
+  av.umsg("Here is the complete definition for regular expressions on some alphabet $\\Sigma$.<br/><br/>1. <b>Base Cases:</b> $\\lambda$ and $a$ $\\in$ $\\Sigma$ are RE.<br/>2. If $r$ and $s$ are RE, then $(r)$, $r + s$, $rs$, and $r^∗$ are RE.<br/>3. $r$ is a RE if and only if it can be derived from (1) with a finite number of applications of (2).");
   av.step();
 
   // Frame 13
@@ -71,7 +71,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 17
-  av.umsg("<b>Definition:</b> $L(r)$ is the language denoted by regular expression $r$.<br/><b>Base Cases:</b> 1. $\\emptyset$, {$\\lambda$}, and $\\{a\\in \\Sigma\\}$ are each languages denoted by some RE.<br/>2. If $r$ and $s$ are RE, then<br/>$\\ \\ L(r + s) = L(r) \\cup L(s)$<br/>$\\ \\ L(rs) = L(r) \\cdot L(s)$<br/>$\\ \\ L((r)) = L(r)$<br/>$\\ \\ L((r)*) = L((r)^*)$");
+  av.umsg("<b>Definition:</b> $L(r)$ is the language denoted by regular expression $r$.<br/><b>Base Cases:</b> 1. $\\emptyset$, {$\\lambda$}, and $\\{a\\in \\Sigma\\}$ are each languages denoted by some RE.<br/>2. If $r$ and $s$ are RE, then<br/>$\\ \\ L(r + s) = L(r) \\cup L(s)$<br/>$\\ \\ L(rs) = L(r) \\cdot L(s)$<br/>$\\ \\ L((r)) = L(r)$<br/>$\\ \\ L((r^*)) = L(r)^*$");
   av.step();
 
   // Frame 18

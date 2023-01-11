@@ -41,7 +41,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 10
-  av.umsg("OK, now we hope that you have a good understanding of how right quotient works. So now we are ready to tackle what we are here for.<br/><br/>Theorem: If $L_1$ and $L_2$ are regular, then $L_1 \\backslash L_2$ is regular.");
+  av.umsg("OK, we hope at this point you have a good understanding of how right quotient works. So now we are ready to tackle what we are here for.<br/><br/>Theorem: If $L_1$ and $L_2$ are regular, then $L_1 \\backslash L_2$ is regular.");
   av.step();
 
   // Frame 11
@@ -53,7 +53,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 13
-  av.umsg("Let us see an example. Suppose the following DFA for $L_1 = \\{a^nb^m \\mid n\\ge 1,\\ m \\ge 0\\} \\cup \\{ba\\}$. We need to find the DFA for $L_1 \\backslash L_2$ where $L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$. Note that in this machine, $q4$ is the trap state, and does not strictly need to be shown (nor will it help the algorithm).");
+  av.umsg("Let us see an example. Consider the following DFA for $L_1 = \\{a^nb^m \\mid n\\ge 1,\\ m \\ge 0\\} \\cup \\{ba\\}$. We need to find the DFA for $L_1 \\backslash L_2$ where $L_2 = \\{b^m\\ |\\ m \\ge 1 \\}$. Note that in this machine, $q4$ is the trap state, and does not strictly need to be shown (nor will it help the algorithm).");
   var DFA1 = new av.ds.FA({left: 50, height: 500, url: "../../../AV/OpenFLAP/machines/Regular/RightQuotient1.jff"});
   var q0 = DFA1.getNodeWithValue("q0");
   var q1 = DFA1.getNodeWithValue("q1");
@@ -125,7 +125,7 @@ $(document).ready(function () {
   // Frame 26
   q5.highlight();
   toggleFinal(DFA1, q5);
-  av.umsg("The resulting DFA (after we update the final state set as determined by the algorithm) is $M' = L_1 \\backslash L_2$");
+  av.umsg("OK, so we determined that $q_1$ and $q_2$ have walks to a final state in $M$ that is labeled by one or more $b$'s. So they (and only they) should be marked as final in $M' = L_1 \\backslash L_2$.");
   av.step();
 
   // Frame 27
@@ -171,6 +171,12 @@ $(document).ready(function () {
   av.step();
 
   // Frame 34
+  av.umsg("The result is $M' = L_1 \\backslash L_2$.");
+  q33.unhighlight();
+  av.step();
+  
+  // Frame 34
   av.umsg("Congratulations! Frameset completed.");
+  DFA2.hide();
   av.recorded();
-});  
+});

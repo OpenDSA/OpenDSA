@@ -105,7 +105,7 @@ $(document).ready(function () {
         document.getElementById("next").disabled = true;
         var step1 = document.createElement("p");
         step1.id = "step1";
-        step1.appendChild(document.createTextNode("1. Opponent have selected a value for a constant m, displayed below. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
+        step1.appendChild(document.createTextNode("1. The opponent has selected a value for a constant m, displayed below. (m is a positive constant such that any w \u2208 L with |w| \u2265 m)"));
         step1.appendChild(document.createElement("br"));
         stepcounter = 1;
         generateRandom(); //generate random number
@@ -149,7 +149,7 @@ $(document).ready(function () {
         str = getString();
         var step2 = document.createElement("p");
         step2.id = "step2";
-        step2.appendChild(document.createTextNode("2. Opponent has selected w such that |w| >= m. It is displayed below. Please press \"Next Step\" to continue."));
+        step2.appendChild(document.createTextNode("2. The opponent has selected w such that |w| >= m. It is displayed below. Please press \"Next Step\" to continue."));
         var br = document.createElement("br");
         step2.appendChild(br);
         var outstep2 = document.createElement("INPUT"); //the text to display w
@@ -253,13 +253,13 @@ $(document).ready(function () {
         str = str + document.getElementById("input2").value;
         var step3 = document.createElement("p"); //create the paragraph for step 3
         step3.id = "step3";
-        step3.appendChild(document.createTextNode("3. Opponent have decomposed w into the following form based on rules:"));
+        step3.appendChild(document.createTextNode("3. The opponent has decomposed w into the following form based on rules:"));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("|xy|≤m"));
+        step3.appendChild(document.createTextNode("|xy| ≤ m"));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("|y|≥1"));
+        step3.appendChild(document.createTextNode("|y| ≥ 1"));
         step3.appendChild(document.createElement("br"));
-        step3.appendChild(document.createTextNode("xy^iz∈L  for all i≥0"));
+        step3.appendChild(document.createTextNode("xy^iz ∈ L  for all i ≥ 0"));
         step3.appendChild(document.createElement("br"));
         step3.appendChild(document.createTextNode("Please click \"Next Step\" to continue."));
         step3.appendChild(document.createElement("br"));

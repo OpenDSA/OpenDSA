@@ -206,7 +206,36 @@
       }
     },
     "Regular Languages": {
-      "PIFLA/RegEx":{
+      "PIFLA/RegEx":{},
+      "PIFLA/RegExExercises":{
+        "RegExaba": {
+          "points": 2.0
+        },
+        "RegExbbaeven": {
+          "points": 2.0
+        },
+        "RegExnoaa": {
+          "points": 2.0
+        },
+        "RegExonebbb": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegExExercises2":{
+        "RegExevenbinary": {
+          "points": 2.0
+        },
+        "RegExaby3": {
+          "points": 2.0
+        },
+        "RegExcb2": {
+          "points": 2.0
+        },
+        "RegExabyb": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegExPower":{
         "RegEx2NFA1FS": {
           "points": 1.0
         },
@@ -220,36 +249,7 @@
           "points": 1.0
         }
       },
-      "PIFLA/RegExExercises":{
-        "RegExbbaeven": {
-          "points": 2.0
-        },
-        "RegExnoaa": {
-          "points": 2.0
-        },
-        "RegExonebbb": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegExExercises2":{
-        "RegExaby3": {
-          "points": 2.0
-        },
-        "RegExcb2": {
-          "points": 2.0
-        },
-        "RegExabyb": {
-          "points": 2.0
-        }
-      },
-      "PIFLA/RegularGrammars": {
-        "REtoFAExampleFS": {
-          "points": 1.0
-        },
-        "STAFS": {
-          "points": 1.0
-        }
-      },
+      "PIFLA/RegularGrammars": {},
       "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
@@ -281,6 +281,9 @@
     },
     "Identifying Non-regular Languages":{
       "PIFLA/NonRegular": {
+        "STAFS": {
+          "points": 1.0
+        },
         "introPumpingFS": {
           "points": 1.0
         },

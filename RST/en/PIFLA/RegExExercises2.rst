@@ -15,18 +15,25 @@ More Regular Expressions Exercises
 Exercise 1
 ----------
 
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExevenbinary.html pe
+   :long_name: Regular Expression construction: even binary numbers
+
+
+Exercise 2
+----------
+
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExaby3.html pe
    :long_name: Regular Expression construction: a divisible by 3
 
 
-Exercise 2
+Exercise 3
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExcb2.html pe
    :long_name: Regular Expression construction: c and b total 2
 
                
-Exercise 3
+Exercise 4
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegExabyb.html pe
