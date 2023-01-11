@@ -5,9 +5,7 @@
 
 .. avmetadata::
    :author: Rifat Sabbir Mansur
-   :requires: JUnit test writing
-   :satisfies: Junit code coverage
-   :topic: JUnit
+   :topic: Mutation testing
 
 Mutation Coverage In JUnit
 ======================
