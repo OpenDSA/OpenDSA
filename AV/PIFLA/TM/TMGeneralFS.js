@@ -25,7 +25,7 @@ $(document).ready(function () {
 
   // Frame 5
   av.umsg(Frames.addQuestion("q15"));
-  var tempTape = av.ds.tape(["", "", "", "", "", "", "", ""], 50, 70, "both");
+  var tempTape = av.ds.tape(["#", "#", "#", "#", "#", "#", "#", "#"], 50, 70, "both");
   av.step();
 
   // Frame 6
@@ -35,7 +35,7 @@ $(document).ready(function () {
   // Frame 7
   av.umsg("The symbols that can appear on the tape are an important part of the definition for a given Turing machine.</br></br>The alphabet of the machine is these symbols that may appear in the input. In addition to the symbols of the alphabet, there is always the blank symbol.");
   tempTape.hide();
-  var tape2 = av.ds.tape(["", "a", "a", "a", "a", "", "", ""], 50, 90, "both");
+  var tape2 = av.ds.tape(["#", "a", "a", "a", "a", "#", "#", "#"], 50, 90, "both");
   av.step();
 
   // Frame 8

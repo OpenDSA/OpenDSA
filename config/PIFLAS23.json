@@ -101,6 +101,108 @@
       },
       "Background/Proofs": {}
     },
+    "Finite Acceptors": {
+      "PIFLA/DFA":{
+        "DFAEvenBinary": {
+          "points": 1.0
+        }
+      },
+      "PIFLA/DFAExercises2": {
+        "DFAevena": {
+          "points": 1.0
+        },
+        "DFAbsurrounda": {
+          "points": 2.0
+        },
+        "DFAdiv4": {
+          "points": 2.0
+        },
+        "DFAevenamin3b": {
+          "points": 2.0
+        },
+        "DFACOMPevenamin3b": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/NFA": {},
+      "PIFLA/NFAExercises": {
+        "NFAtoDFAex1":{
+          "points": 3.0,
+          "threshold": 0.85
+        },
+        "NFAex1":{
+          "points": 3.0
+        }
+      },
+      "PIFLA/DFAMinimization": {}
+    },
+    "Regular Languages": {
+      "PIFLA/RegEx":{},
+      "PIFLA/RegExExercises":{
+        "RegExaba": {
+          "points": 2.0
+        },
+        "RegExbbaeven": {
+          "points": 2.0
+        },
+        "RegExnoaa": {
+          "points": 2.0
+        },
+        "RegExonebbb": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegExPower":{
+        "RegEx2NFA1FS": {
+          "points": 1.0
+        },
+        "RegEx2NFAorFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAcatFS": {
+          "points": 1.0
+        },
+        "RegEx2NFAstarFS": {
+          "points": 1.0
+        }
+      },
+      "PIFLA/RegGrammarShort": {},
+      "PIFLA/RegGramEx1": {
+        "RegGramNFA1": {
+          "points": 2.0
+        },
+        "RegGrambbbaaaa": {
+          "points": 2.0
+        },
+        "RegGramaby3": {
+          "points": 2.0
+        }
+      },
+      "PIFLA/RegClosure": {}
+    },
+    "Identifying Non-regular Languages":{
+      "PIFLA/NonRegular": {
+        "STAFS": {
+          "points": 1.0
+        },
+        "introPumpingFS": {
+          "points": 1.0
+        },
+        "PLGame": {
+          "points": 0.0,
+          "required": false
+        },
+        "ClosPropFS": {
+          "points": 1.0
+        },
+        "ClosPropEx1FS": {
+          "points": 1.0
+        },
+        "ClosPropEx2FS": {
+          "points": 1.0
+        }
+      }
+    },
     "Appendix": {
       "Glossary": {}
     }

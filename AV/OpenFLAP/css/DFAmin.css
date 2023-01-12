@@ -1,0 +1,41 @@
+#av {
+  text-align: center;
+}
+
+p.jsavoutput.jsavline {
+  height: 25px;
+}
+
+.jsavgraph {
+  display: inline-block;
+}
+
+#reference .jsavedge { 
+  stroke-width: 2;  /*can change to make edges easier to click */
+}
+
+#editable {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  height: 300px;
+  
+  outline: 1px black solid;
+  border: 10px transparent solid;
+  display: inline-block;
+}
+
+.hide {
+  display: none;
+}
+
+.treework {display: none;}
+
+.jsavnode.jsavtreenode {
+  width: auto;
+  height: auto;
+  /* min-width: 0; */
+  max-width: 500px;
+  /* min-height: 0; */
+  max-height: 500px;
+}

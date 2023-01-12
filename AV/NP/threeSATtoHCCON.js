@@ -43,7 +43,7 @@ $(document).ready(function () {
    * PE1: The array holds all the edges connecting the source and target to
    * the rest of the graph.
    *
-   * PE2: The array holds all the interconnecting edges that connects wo
+   * PE2: The array holds all the interconnecting edges that connects two
    * paths P_i and P_j.
    *
    * PE3: The array contains the edges that connect clause-nodes to the
@@ -290,6 +290,7 @@ $(document).ready(function () {
 
   // Slide 12
   jsav.umsg("<br><b>Step 3: Adding source and target nodes</b>");
+  label1.hide();
   y1 = 65;
 
   //add source and target nodes to g and display.
@@ -438,7 +439,7 @@ $(document).ready(function () {
   // Slide 17
   label4 = jsav.label("a. left to right if $C_j$ contains $x_i$" ,
                       {"left":40 , "top":75} );
-  label5 = jsav.label("For example : $C_1$ i.e. ($x_1$ + $x_2$ + $\\overline{x_3}$)"
+  label5 = jsav.label("For example : $C_1 =$ ($x_1$ + $x_2$ + $\\overline{x_3}$)"
                       +" contains $x_1$. So $C_1$ should be connected as:" ,
                       {"left":40 , "top":100} );
   var g2 = jsav.ds.graph({width: 200 ,  height: 100 ,  left: 100 ,  top: y+120 ,
@@ -457,8 +458,8 @@ $(document).ready(function () {
   y1=250;
   label7 = jsav.label("b. right to left if $C_j$ contains $\\overline{x_i}$",
                       {"left":40 , "top":y1} );
-  label8 = jsav.label("For example : $C_2$ i.e. ($\\overline{x_2}$ + $x_3$ + $x_4$) "
-                      +"contains $\\overline{x_2}$. So $\\overline{C_2}$ should be connected"
+  label8 = jsav.label("For example : $C_2 = $ ($\\overline{x_2}$ + $x_3$ + $x_4$) "
+                      +"contains $\\overline{x_2}$. So $C_2$ should be connected"
                       +" as:" , {"left":40 , "top":y1+25} );
   var g3 = jsav.ds.graph({width: 200 ,  height: 100 ,  left: 100 ,  top: y1+45 ,
                           layout: "manual" ,  directed: true});
@@ -544,7 +545,7 @@ $(document).ready(function () {
     }
   }
 
-  clauses[2][5].addClass("zoomlabel");
+  clauses[2][5].removeClass("zoomlabel");
 
   PE3[2][2][0].removeClass("boldedge");
   PE3[2][2][1].removeClass("boldedge");
@@ -593,7 +594,7 @@ $(document).ready(function () {
                     "If $H$ traverses $P_i$ from left to right, assign $x_i = True$<br>"+
                     "If $H$ traverses $P_i$ from right to left, assign $x_i = False$"+
                     "<br><br>"+
-                    "Since H visits each clause node $C_j$, atleast one one $P_i$ was"
+                    "Since H visits each clause node $C_j$, at least one of $P_i$ was"
                     +" traversed in the right direction relative <br>to the node $C_j$"+
                     "<br>"+
                     "<b>The assignment obtained here satisfies the given 3 CNF.</b>"+
@@ -666,13 +667,13 @@ $(document).ready(function () {
   line1.addClass("highlightedge");
   line2.addClass("highlightedge");
 
-  PE1[4].addClass("highlightedge");
   PE1[0].addClass("highlightedge");
   PE1[2].addClass("highlightedge");
+  PE1[4].addClass("highlightedge");
   PE3[0][0][0].addClass("highlightedge");
   PE3[0][0][1].addClass("highlightedge");
 
-  for(var i=2;i<=5;i++)
+  for(var i=2;i<=4;i++)
     PE[0][i][0].addClass("highlightedge");
 
   PE2[0][3].addClass("highlightedge");
@@ -688,16 +689,16 @@ $(document).ready(function () {
 
   PE2[2][3].addClass("highlightedge");
 
-  for(var i=1;i<=4;i++)
+  for(var i=1;i<=5;i++)
     PE[3][i][1].addClass("highlightedge");
 
   PE3[1][1][0].addClass("highlightedge");
   PE3[1][1][1].addClass("highlightedge");
-  PE3[2][2][0].addClass("highlightedge");
-  PE3[2][2][1].addClass("highlightedge");
+  PE3[2][0][0].addClass("highlightedge");
+  PE3[2][0][1].addClass("highlightedge");
   jsav.step();
 
-  // Slide 33
+  // Slide 34
   label1.hide();
   jsav.umsg("<br><b>Assignment for 3-SAT</b><br><br><br>");
   label1=jsav.label("From the Hamiltonian cycle below the assignment is : <br>"
@@ -709,7 +710,7 @@ $(document).ready(function () {
       clauses[i][j].hide();
   jsav.step();
 
-  // Slide 34
+  // Slide 35
   label1.hide();
   jsav.umsg("<br><b>Satisfiability of 3-CNF</b><br><br><br>");
   hideGraph();

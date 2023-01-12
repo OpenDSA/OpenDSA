@@ -99,12 +99,12 @@ td {
 }
 
 #container {
-	width: 800px;
-	height: 800px;
+	width: 810px;
+	height: 810px;
 	overflow-y: auto;
 }
 .jsavcanvas {
-	overflow-x: auto;
+  overflow-x: auto;
 }
 .jsavmatrix {
 	margin-left: 0;

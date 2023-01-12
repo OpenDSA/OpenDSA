@@ -38,7 +38,7 @@ $(document).ready(function() {
   av.displayInit();
 
   // Frame 2
-  av.umsg("Recall that REs have three building operators: OR, concatenate, and star. By showing how any two REs in the form of NFAs can be OR'ed or concatendated, or how an RE can be made to repeat zero or more times, we show how any RE can be converted to an NFA.");
+  av.umsg("Recall that REs have three building operators: OR, concatenate, and star. By showing how any two REs in the form of NFAs can be OR'ed or concatenated, or how an RE can be made to repeat zero or more times, we show how any RE can be converted to an NFA.");
   av.step();
 
   // Frame 3
@@ -55,7 +55,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 6
-  av.umsg("To do this, we use two NFA schemas. One represents the RegEx $r$ and the other NFA represents $s$. We will use these two NFA schemas as building blocks to create the NFA that represents the RegEx $r+s$.");
+  av.umsg(Frames.addQuestion("induction"));
   var sFA = drawSchema(av, "s", 90, 230);
   av.step();
 
@@ -92,7 +92,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 11
-  av.umsg("If a string is accepted by either NFA, this means that this string belongs to the language $L(r+s)$.");
+  av.umsg("If a string is accepted by either NFA, this means that this string belongs to the language $L(r+s)$. Note that we have also removed the final state status from the old final states of $r$ and $s$.");
   av.g.line(375, 90, 465, 215, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 430, top: 120});
   av.g.line(375, 310, 465, 230, {"arrow-end": "classic-wide-long", "stroke-width": 2});

@@ -1,0 +1,60 @@
+[{
+
+  "exerciseType": "DFA",
+  "totalTrueCases": 10,
+  "totalFalseCases": 10,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "description": "Give a DFA that accepts the COMPLEMENT of the language over $\\Sigma = \\{a, b\\}$ of strings that do not have three consecutive a's.",
+  "testCases": [
+    {
+      "bbbbbb": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aa": false,
+      "ShowTestCase":true
+    },
+    {
+      "bbabb": false,
+      "ShowTestCase":true
+    },
+    {
+      "babbabbb": false,
+      "ShowTestCase":true
+    },
+    {
+      "bbbbaabbbaabbaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "bbbbabababbbbbb": false,
+      "ShowTestCase":true
+    },
+    {
+      "baabaaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aabbabababbababbababa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aabbabababbababbabaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaabababbababbabaa": true,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/DFACOMPno3a.jff"
+}]

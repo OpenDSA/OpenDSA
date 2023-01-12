@@ -3,94 +3,92 @@ $(document).ready(function() {
   var av_name = "LeftLinearGrammarFS";
   var av = new JSAV(av_name);
   var arrow = String.fromCharCode(8594); 
- var Frames = PIFRAMES.init(av_name);
+  var Frames = PIFRAMES.init(av_name);
 
-  //frame 1
-  av.umsg("In previous modules, we studied how to convert an NFA to Right Regular Grammar, and how to convert Right Regular Grammars to NFA. In this module we will learn about converting Right Linear Grammars to Left Regular Grammars");
+  // Frame 1
+  av.umsg("Previously, we saw how to convert an NFA to a right-regular grammar (also known as a right-linear grammar), and how to convert a right-regular rrammar to an NFA. We also defined a regular grammar to be either a right-regular or left-regular grammar. But we have never actually shown that right- and left-regular grammars are equivalent. We will now show how to convert a right-reglar grammar to a left-regular grammar.");
   av.displayInit();
-   //frame 2
-  av.umsg(Frames.addQuestion("q2"));
-  av.step();
-   //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+
+  // Frame 2
+  av.umsg(Frames.addQuestion("language"));
   var matrixOptions = {
     left: 10,
     top:0,
     width: 300,
     height: 250
-};
+  };
   var grammer =  "[\
     [\"S\",\"→\",\"aS\"],\
-    [\"S\",\"→\",\"cA\"],\
-    [\"A\",\"→\",\"bA\"],\
-    [\"A\",\"→\",\"b\"]\
+    [\"S\",\"→\",\"cB\"],\
+    [\"B\",\"→\",\"bB\"],\
+    [\"B\",\"→\",\"b\"]\
   ]";
   var GToFAConverter = new GrammarToFAConverter(av,grammer,matrixOptions);
   av.step();
-   //frame 4
-  av.umsg(Frames.addQuestion("q4"));
+
+  // Frames 3-8
   var NFAoptions = {
     top: 200,
     left: 70,
     width: 300,
-    height: 270
+    height: 260
   };
-  av.step();
-   //frame 5
-  var NFA = gToFAConverterWithQuestion(av_name, GToFAConverter, NFAoptions, {top: 10, left: -50}).builtDFA;
+  var NFA = gToFAConverterWithQuestion(av_name, GToFAConverter, NFAoptions,
+                                       {top: 10, left: -50}).builtDFA;
   NFA.enableDragging();
   av.step();
-   //frame 11
-  av.umsg(Frames.addQuestion("q11"));
+
+  // Frame 9
+  av.umsg(Frames.addQuestion("reverse"));
   av.step();
-   //frame 12
+
+  // Frame 10
   var NodeS = NFA.getNodeWithValue('S');
-  var NodeA = NFA.getNodeWithValue('A');
+  var NodeB = NFA.getNodeWithValue('B');
   var NodeF = NFA.getNodeWithValue('F');
   var edgeSS = NFA.getEdge(NodeS, NodeS);
-  var edgeSA = NFA.getEdge(NodeS, NodeA);
-  var edgeAA = NFA.getEdge(NodeA, NodeA);
-  var edgeAF = NFA.getEdge(NodeA, NodeF);
-  av.umsg(Frames.addQuestion("q12"));
+  var edgeSB = NFA.getEdge(NodeS, NodeB);
+  var edgeBB = NFA.getEdge(NodeB, NodeB);
+  var edgeBF = NFA.getEdge(NodeB, NodeF);
+  av.umsg(Frames.addQuestion("loops"));
   av.step();
-   //frame 13
-  av.umsg(Frames.addQuestion("q13"));
-  edgeSA.addClass("testingLambda");
-  edgeSA._label.addClass("testingLambda");
+
+  // Frame 11
+  av.umsg(Frames.addQuestion("SB"));
+  edgeSB.addClass("testingLambda");
+  edgeSB._label.addClass("testingLambda");
   av.step();
-   //frame 14
-  NFA.removeEdge(NodeS, NodeA);
-  var edgeAS = NFA.addEdge(NodeA, NodeS, {weight: 'c'});
-  av.umsg(Frames.addQuestion("q14"));
-  edgeAF.addClass("testingLambda");
-  edgeAF._label.addClass("testingLambda");
+
+  // Frame 12
+  NFA.removeEdge(NodeS, NodeB);
+  var edgeBS = NFA.addEdge(NodeB, NodeS, {weight: 'c'});
+  av.umsg(Frames.addQuestion("BF"));
+  edgeBF.addClass("testingLambda");
+  edgeBF._label.addClass("testingLambda");
   av.step();
-  //frame 15
-  NFA.removeEdge(NodeA, NodeF);
-  var edgeFA = NFA.addEdge(NodeF, NodeA, {weight: 'b'});
-  av.umsg(Frames.addQuestion("q15"));
+
+  // Frame 13
+  NFA.removeEdge(NodeB, NodeF);
+  var edgeFA = NFA.addEdge(NodeF, NodeB, {weight: 'b'});
+  av.umsg(Frames.addQuestion("swapSF"));
   av.step();
   
-  //frame 16
-  av.umsg("Convert the start state to be the final state.")
+  // Frame 14
+  av.umsg(Frames.addQuestion("onefinal"))
   toggleFinal(NFA, NodeS);
-  toggleInitial(NFA, NodeS);
+//  toggleInitial(NFA, NodeS);
+  toggleFinal(NFA, NodeF);
+//  toggleInitial(NFA, NodeF);
   av.step();
   
-  //frame 17
-  av.umsg(Frames.addQuestion("q17"))
-  toggleFinal(NFA, NodeF);
-  toggleInitial(NFA, NodeF);
-  av.step();
-   
-  //frame 18
-  av.umsg("Then resulting NFA (call it $NFA_{rev}$) will represent the reverse of the original Language, $L^R$.");
+  // Frame 15
+  av.umsg("Then resulting NFA (call it $NFA_{rev}$) accepts the reverse of the original Language $L$, so it accepts $L^R$.");
   GToFAConverter.grammerMatrix.hide();
   NFA.layout();
   av.step();
 
-  //frame 19
-  av.umsg(Frames.addQuestion("q19"));
+  // Frame 16
+  av.umsg(Frames.addQuestion("nfa2rr"));
   var grammerMatrix = new GrammarMatrix( av,null, {style: "table", left: 10, top: 0});
   grammerMatrix.createRow(["", arrow, ""]);
   grammerMatrix.createRow(["", arrow, ""]);
@@ -101,71 +99,74 @@ $(document).ready(function() {
   grammerMatrix.productions.push(["", arrow, ""]);
   grammerMatrix.productions.push(["", arrow, ""]);
   grammerMatrix.productions.push(["", arrow, ""]);
-  
   av.step();
-  //frame 20
-  av.umsg(Frames.addQuestion("q20"));
-  av.step();
-  //frame 21
+
+  // Frame 17
   grammerMatrix.modifyProduction(0,0,"$S$");
   grammerMatrix.modifyProduction(0,2,"$aS$")
-  av.umsg(Frames.addQuestion("q21"));
+  av.umsg(Frames.addQuestion("rrBB"));
   av.step();
 
-  //frame 22 
-  grammerMatrix.modifyProduction(1,0,"$A$");
-  grammerMatrix.modifyProduction(1,2,"$bA$")
-  av.umsg(Frames.addQuestion("q22"));
+  // Frame 18
+  grammerMatrix.modifyProduction(1,0,"$B$");
+  grammerMatrix.modifyProduction(1,2,"$bB$")
+  av.umsg(Frames.addQuestion("rrBS"));
   av.step();
   
-  //frame 23
-  grammerMatrix.modifyProduction(2,0,"$A$");
+  // Frame 19
+  grammerMatrix.modifyProduction(2,0,"$B$");
   grammerMatrix.modifyProduction(2,2,"$cS$")
-  av.umsg(Frames.addQuestion("q23"));
-  av.step();
-   
-  //frame 24
-  grammerMatrix.modifyProduction(3,0,"$F$");
-  grammerMatrix.modifyProduction(3,2,"$bA$")
-  av.umsg(Frames.addQuestion("q24"))
-  av.step();
-
-  //frame 25
-  av.umsg("By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.");
+  av.umsg(Frames.addQuestion("rrFB"));
   av.step();
   
-  //frame 26
-  av.umsg(Frames.addQuestion("q26"));
+  // Frame 20
+  grammerMatrix.modifyProduction(3,0,"$F$");
+  grammerMatrix.modifyProduction(3,2,"$bB$")
+  av.umsg(Frames.addQuestion("result"))
+  av.step();
+
+  // Frame 21
+  av.umsg("Reversing each production in a right-regular grammar will give a left-regular grammar for the reverse language. So, doing that here will yield the result that we are looking for: a left-regular grammar for $(L^R)^R = L$.");
+  av.step();
+  
+  // Frame 22
+  av.umsg(Frames.addQuestion("revSS"));
   grammerMatrix.highlight(0);
   av.step();
   
-  //frame 27
-  av.umsg(Frames.addQuestion("q27"));
+  // Frame 23
+  av.umsg(Frames.addQuestion("revBB"));
   grammerMatrix.modifyProduction(0,2,"$Sa$");
   grammerMatrix.unhighlight(0);
   grammerMatrix.highlight(1);
   av.step();
   
-  //frame 28
-  av.umsg(Frames.addQuestion("q28"));
-  grammerMatrix.modifyProduction(1,2,"$Ab$")
+  // Frame 24
+  av.umsg(Frames.addQuestion("revBS"));
+  grammerMatrix.modifyProduction(1,2,"$Bb$")
   grammerMatrix.unhighlight(1);
   grammerMatrix.highlight(2);
   av.step();
   
-  //frame 29
-  av.umsg(Frames.addQuestion("q29"));
+  // Frame 25
+  av.umsg(Frames.addQuestion("revFB"));
   grammerMatrix.modifyProduction(2,2,"$Sc$")
   grammerMatrix.unhighlight(2);
   grammerMatrix.highlight(3);
   av.step();
-  //frame 30
-  av.umsg(Frames.addQuestion("q30"));
-  grammerMatrix.modifyProduction(3,2,"$Ab$")
+
+  // Frame 26
+  av.umsg(Frames.addQuestion("resulttype"));
+  grammerMatrix.modifyProduction(3,2,"$Bb$")
   av.step();
-  //frame 31
-  av.umsg("Exactly. The resulting Grammar is the Left Linear Grammar for the original Right Linear Grammar.")
+  
+  // Frame 27
+  av.umsg("Exactly. The resulting grammar is the left-regular grammar for the original right-linear grammar.")
   grammerMatrix.unhighlight(3);
   GToFAConverter.grammerMatrix.show();
+  av.step();
+  
+  // Frame 28
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

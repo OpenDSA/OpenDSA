@@ -16,7 +16,7 @@
       },
       "manystates": {
         "type": "multiple",
-        "description": "OK, so if we have a NFA, we might want to convert it to a DFA. For one thing, NFAs are relatively expensive to operate, in that we have to simulate them by trying all of the multiple paths that the NFA can take. But remember how the algorithm works to convert a NFA to the equivalent DFA. Can you immagine how big maybe the resulting DFA will be?",
+        "description": "If we have a NFA, we might want to convert it to a DFA. For one thing, NFAs are relatively expensive to operate, in that we have to simulate them by trying all of the multiple paths that the NFA can take. But remember how the algorithm works to convert a NFA to the equivalent DFA. Can you immagine how big maybe the resulting DFA will be?",
         "question": "When we convert a NFA to a DFA, what is the worst case set of states for the converted DFA?",
         "answer": [
           "The powerset of the NFA's set of states, $Q_{DFA} = 2^{Q_{NFA}}.$"
@@ -29,7 +29,7 @@
       }, 
       "power": {
         "type": "multiple",
-        "description": "So, sometimes we might have a DFA with $2^n$ states where the original NFA had only $n$ states. This is probably far more states than we need. If it is possible, we would like to have an algorithm that reduces this large number of states. Of course, when we modify the DFA to have fewer states, the result has to accept the same language. Otherwise, this is not solving our problem.",
+        "description": "So, the DFA could have as many as $2^n$ states where the original NFA had only $n$ states. This is probably far more states than we need. If it is possible, we would like to have an algorithm that reduces this large number of states. Of course, when we modify the DFA to have fewer states, the result has to accept the same language. Otherwise, this is not solving our problem.",
         "question": "[T|F] The minimized DFA will be less powerful than the original DFA.",
         "answer": [
           "False"
@@ -41,7 +41,7 @@
       },  
       "similar": {
         "type": "select",
-        "description": "Sometimes, these huge DFA have many states that are <b>similar</b>. The word similar here means that some states do the same transitions (go to the same target states) when given the same inputs. Combining these states together will minimize the total number of states in the machine without changing its behavior. In general, any two states in a DFA are either distinquishable or indistinquishable. They are indistinguishable if they are equivalent, meaning they effectively have identical behavior.",
+        "description": "Sometimes, these huge DFA have many states that are similar. The word similar here means that some states do the same transitions (go to the same target states) when given the same inputs. Combining these states together will minimize the total number of states in the machine without changing its behavior. In general, any two states in a DFA are either <b>distinquishable</b> or <b>indistinquishable</b>. They are indistinguishable if they are equivalent, meaning they effectively have identical behavior.",
         "question": "What are reasonable words to describe 'distinquishable'?",
         "answer": [
           "Similar",
@@ -56,7 +56,7 @@
       }, 
       "indistinguishable": {
         "type": "multiple",
-        "description": "Definition: Two states $p$ and $q$ are <b>indistinquishable</b> if, for all $w \\in \\Sigma^*$, we have $\\delta^*(q, w) \\in F \\Rightarrow \\delta^*(p, w) \\in F\\\\ \\delta^*(p, w) \\not\\in F \\Rightarrow \\delta^*(q, w) \\not\\in F$.<br/><br/> What does that mean? It means that if we have a group of FINAL states $F$, if states $p$ and $q$ are indistinquishable, then both states will end in the same destination, among set $F$, while consuming any string $w$. In other words, both states act similarly on any string. Both either lead to accept the string or reject it.",
+        "description": "Definition: Two states $p$ and $q$ are <b>indistinquishable</b> if, for all $w \\in \\Sigma^*$, we have $\\delta^*(q, w) \\in F \\Rightarrow \\delta^*(p, w) \\in F\\\\ \\delta^*(p, w) \\not\\in F \\Rightarrow \\delta^*(q, w) \\not\\in F$.<br/><br/>In other words, if states $p$ and $q$ are indistinquishable, then starting in either state for any string $w$ ends in the same result. Both either accept the string or reject it.",
         "question": "This definition tells us that we should check all possible strings against states $p$ and $q$ to decide if they are indistinquishable",
         "answer": [
           "True"
@@ -80,19 +80,6 @@
         ],
         "correctFeedback": ["But again, this is not really possible to implement."]
       },
-      "group": {
-        "type": "select",
-        "description": "The process will be: $\\\\$Select any pair of states $p$ and $q$ then check<br />* If we accept/reject the exact same set set of strings for both states, then there is no difference between them.<br />* So, we can combine them.",
-        "question": "What should we do with similar states?",
-        "answer": [
-          "Group them into a single state",
-          "Combine them to be a single state"
-        ],
-        "choices": [
-          "Group them into a single state",
-          "Combine them to be a single state"
-        ]
-      },       
       "Aa": {
         "type": "multiple",
         "description": "Let us see an example to clarify the process. Look at this DFA.",
@@ -156,20 +143,21 @@
           "Yes",
           "No"
         ],
-        "correctFeedback": ["We already know enough to see that states A and F behave differently (have different outcomes) on at least one string. But you should look at the behavior of $D$ on the strings $a$ and $ab$. At least so far as those two stings go, states $A$ and $D$ are indistinguishable."]
+        "correctFeedback": ["We already know enough to see that states A and F behave differently (have different outcomes) on at least one string, because $\\delta^*(A, ab)$ goes to a final state while $\\delta^*(F, ab)$ goes to a non-final state. But consider the behavior of $D$ on the strings $a$ and $ab$. At least so far as those two stings go, states $A$ and $D$ are indistinguishable because they yield the same outcome (non-final state on $a$, final state on $ab$)."]
       },
       "unknown": {
         "type": "multiple",
-        "description": "So, we know that A must be in a different equivalence subset than F.",
+        "description": "So, we know that A must be in a different equivalence subset from F.",
         "question": "Are A and D equivalent?",
         "answer": [
           "We do not know yet. There is not enough evidence yet to decide."
         ],
         "choices": [
           "We do not know yet. There is not enough evidence yet to decide.",
-          "Yes they are equivalent in both $a$ and $ab$.",
+          "Yes because they are equivalent in both $a$ and $ab$.",
           "No, they are not equivalent."
-        ]
+        ],
+        "correctFeedback": ["We now know based on some initial checking that A and F are not equivalent, while A and D <b>might</b> be equivalent but we don't know yet for sure."]
       }
     }
   }

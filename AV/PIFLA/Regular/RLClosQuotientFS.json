@@ -56,11 +56,11 @@
       },
       "complexex": {
         "type": "multiple",
-        "description": "Here is our last example. Suppose that $L_1 = \\{a^*b^* \\cup b^*a^*\\}$ and that $L_2 = \\{b^n\\ |\\ n$ is even, $n > 0 \\}$.",
+        "description": "Here is our last example. Suppose that $L_1 = \\{a^*b^* \\cup b^*a^*\\}$ and that<br/>$L_2 = \\{b^n\\ |\\ n$ is even, $n > 0 \\}$.",
         "question": "What is $L_1 \\backslash L_2$?",
         "answer": "$\\{a^*b^*\\}$",
         "choices": ["$\\{a^*b^*\\}$","$\\{b^*a^*\\}$", "$\\{b^n\\ |\\ n$ is even, $n > 0 \\}$"],
-        "correctFeedback": ["Make sure that you really understand why before going on."]
+        "correctFeedback": ["You should make sure that you really understand why before going on, or the rest of this will not make any sense to you. Look at the two parts that are union'ed in $L_1$, and consider how the right quotient operator affects each of these."]
       },
       "different": {
         "type": "multiple",
@@ -82,7 +82,8 @@
         "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state.",
         "question": "Should $q_0$ be labeled as a final state?",
         "answer": "No",
-        "choices": ["Yes", "No"]
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Because there is no walk from $q_0$ to a final state that is labeled with one or more $b$'s."]
       },
       "q1": {
         "type": "multiple",
@@ -165,28 +166,30 @@
       "q0again": {
         "type": "multiple",
         "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state. $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$.",
-        "question": "Let $L_0'$ to be the language that represented by the DFA where $q_0$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_0$ should be a final state.)",
+        "question": "Let $L_0'$ to be the language that is represented by the DFA where $q_0$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_0$ should be a final state.)",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
       "q1again": {
         "type": "multiple",
         "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state. $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$.",
-        "question": "Let $L_1'$ to be the language that represented by the DFA where $q_1$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_1$ should be a final state.)",
+        "question": "Let $L_1'$ to be the language that is represented by the DFA where $q_1$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_1$ should be a final state.)",
         "answer": "Yes",
-        "choices": ["No", "Yes"]
+        "choices": ["No", "Yes"],
+        "correctFeedback": ["In this case, it is the string $a$ to $q_2$ (no $b$'s)."]
       },
       "q2again": {
         "type": "multiple",
         "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state. $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$.",
-        "question": "Let $L_2'$ to be the language that represented by the DFA where $q_2$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_2$ should be a final state.)",
+        "question": "Let $L_2'$ to be the language that is represented by the DFA where $q_2$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_2$ should be a final state.)",
         "answer": "Yes",
-        "choices": ["No", "Yes"]
+        "choices": ["No", "Yes"],
+        "correctFeedback": ["Again, it is the string $a$ to $q_2$."]
       },
       "q3again": {
         "type": "multiple",
         "description": "The algorithm is: for each state $q_i$, if there is a walk labeled with strings $\\in L_2$ to a final state in $M$, we mark $q_i$ as final state. $L_1 = \\{a^*baa^*\\}$ and $L_2 = \\{ab^*\\}$.",
-        "question": "Let $L_3'$ to be the language that represented by the DFA where $q_3$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_3$ should be a final state.)",
+        "question": "Let $L_3'$ to be the language that is represented by the DFA where $q_3$ is the start state. Can this machine accept anything in $L_2$? (If so, then $q_3$ should be a final state.)",
         "answer": "No",
         "choices": ["No", "Yes"]
       }

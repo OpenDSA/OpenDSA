@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../../../../../lib/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $("head").load("../../common/html/head.html");
+      });
+    </script>
+  </head>
+
+  <script>
+    $(function () {
+      $("body").load("../../common/html/body.html");
+      $("body").append(
+        `<script type=\"module\" src=\"commit-path-exercise.js\"><\/script>`
+      );
+    });
+  </script>
+
+  <body></body>
+</html>

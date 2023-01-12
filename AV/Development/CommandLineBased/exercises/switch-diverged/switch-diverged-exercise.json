@@ -1,0 +1,10 @@
+{
+  "translations": {
+    "en": {
+      ".avTitle": "git switch diverged branches",
+      "av_Authors": "Ryan Buxton",
+      "#about": "About",
+      "#check": "Check"
+    }
+  }
+}

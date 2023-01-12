@@ -52,10 +52,10 @@ $(document).ready(function() {
            {left: xoffset - 150, top: yoffset + 150});
   av.g.line(xoffset + 50, yoffset + 95, xoffset + 50, yoffset + 165,
             {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  av.label("Pump $1$ time", {left: xoffset + 60, top: yoffset + 110});
+  av.label("Pump $2$ times", {left: xoffset + 60, top: yoffset + 110});
   av.g.line(xoffset + 50, yoffset + 195, xoffset + 50, yoffset + 265,
             {"stroke-width": 2, "arrow-end": "classic-wide-long"});
-  av.label("...Pump $i - 1$ times", {left: xoffset + 60, top: yoffset + 210});
+  av.label("...Pump $i$ times", {left: xoffset + 60, top: yoffset + 210});
   var arrValues2 = ["x", "y", "...", "y", "z"];
   av.ds.array(arrValues2, {left: xoffset, top: yoffset + 250});
   av.label("$xy^iz \\in L$($i \\geq 0$): ",
@@ -68,6 +68,6 @@ $(document).ready(function() {
   av.step();
 
   // Slide 6
-  av.umsg("<b>Meaning:</b> Every sufficiently long string in $L$ (the constant $m$ corresponds to the finite number of states in $M$) can be partitioned into three parts such that the middle part can be pumped. All string resulting from pumping some number of times must be in $L$.");
+  av.umsg("<b>Meaning:</b> Every sufficiently long string in $L$ (the constant $m$ corresponds to the finite number of states in $M$) can be partitioned into three parts such that the middle part can be pumped. All strings resulting from pumping some number of times must be in $L$.");
   av.recorded();
 });

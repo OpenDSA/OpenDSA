@@ -18,10 +18,10 @@
        },
        "breakdown": {
         "type": "multiple",
-         "description":"In the beginning, we have the regular expression $ab^* + c$ on a transition between a start state and a final state",
+         "description":"In the beginning, we have the regular expression $ab^* + c$ on a transition between the start state and a final state",
          "question": "Which operator should we start with?",
          "answer": "the OR operator (the lowest precedence)",
-         "choices": ["the closure operator (the highest precedence)", "the concatenation", "the OR operator (the lowest precedence)"],
+         "choices": ["the star operator (the highest precedence)", "the concatenation", "the OR operator (the lowest precedence)"],
          "correctFeedback": ["We want to go through a process of breaking down the RegEx into smaller parts. We want to begin with an operator that safely lets us break the RegEx into two parts. So we want the one with lowest precedence."],
          "incorrectFeedback": ["We want to go through a process of breaking down the RegEx into smaller parts. We want to begin with an operator that safely lets us break the RegEx into two parts. So we want the one with lowest precedence."]
        },
@@ -43,10 +43,10 @@
        },
        "nextop": {
         "type": "multiple",
-         "description":"To remove the OR operator from the expression $ab^* + c$, we make a start state with 2 $\\lambda$ transitions to machines that will represent $ab^*$, and $c$, and we link those two machines' final states to a new final state with $\\lambda$ transitions. Of course, right now we don't have actual machines for $ab^*$ and $c. So we represent them with GTGs for now.",
+         "description":"To remove the OR operator from the expression $ab^* + c$, we make a start state (q0) with 2 $\\lambda$ transitions, one to a machine that will represent $ab^*$, and another to a machine that will represent $c$. We link those two machines' final states to a new final state (q1) with $\\lambda$ transitions. Of course, right now we don't have actual machines for $ab^*$ and $c$. So we represent them with GTGs for now. Note that q2 is connected to q3 by an edge labelled $ab^*$, and q4 is connected to q5 by an edge labelled $c$.",
          "question": "Which operator should we do next?",
-         "answer": "The concatenation operator",
-         "choices": ["The closure operator (the highest precedence)", "The concatenation operator"]
+         "answer": "The concatenation operator (lower precedence)",
+         "choices": ["The star operator (higher precedence)", "The concatenation operator (lower precedence)"]
        },
        "deconcat": {
         "type": "select",

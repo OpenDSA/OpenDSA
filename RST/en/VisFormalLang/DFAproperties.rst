@@ -13,6 +13,8 @@
 Properties
 ==========
 
+.. .. This is not ready for use in a course!
+
 Introduction
 ------------
 

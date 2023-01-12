@@ -3,7 +3,7 @@
     "en": {
       "noedge": {
         "type": "multiple",
-        "description": "Consider the DFA below. Hopefully it is easy to see that this DFA accepts any string with one or more b followed by an a. It also happens to be an example of an incomplete DFA. This means it does not show every possible transition from every state. For example, it is missing a transition from state $q0$ on symbol a. Not showing that transition helps us to focus on what matters, thus making the machine easier to understand.",
+        "description": "Consider the DFA below. Hopefully it is easy to see that this DFA accepts any string with one or more b followed by an a. It also happens to be an example of an incomplete DFA. This means it does not show every possible transition from every state. For example, it is missing a transition from state q0 on symbol a. Not showing that transition helps us to focus on what matters, thus making the machine easier to understand.",
         "question": "But, what should we do with a string that starts with an a? What interpretation of this situation would make the our descriptions most useful?",
         "answer": "The string is not accepted",
         "choices": [
@@ -15,7 +15,7 @@
       "whichstrings": {
         "type": "select",
         "description": "",
-        "question": "Which of the following strings will be accepted?",
+        "question": "Which of the following strings will be accepted by this machine?",
         "answer": [
           "ba",
           "bba"
@@ -30,8 +30,8 @@
       },
       "complete": {
         "type": "multiple",
-        "description": "A <b>complete</b> DFA has a transition for every alphabet in $\\Sigma$ for all states.",
-        "question": "[T/F] An incomplete DFA can be made complete by adding a trap state.",
+        "description": "A <b>complete</b> DFA has a transition for every symbol in $\\Sigma$ for all states.",
+        "question": "[T/F] Every incomplete DFA can be made complete by adding a trap state and the appropriate transitions.",
         "answer": [
           "True"
         ],
@@ -57,7 +57,7 @@
       },
       "string": {
         "type": "multiple",
-        "description": "What if we want to know which state the DFA will be in if it starts at an arbitrary state with some string of symbolss, and processes them all?",
+        "description": "Now we will build notation to express which state the DFA will be in if it starts at an arbitrary state with some string of symbolss, and processes them all.",
         "question": "If this DFA happens to be in state $q1$, which state will it go to after processing string 101?",
         "answer": [
           "q3"
@@ -67,7 +67,8 @@
           "q1",
           "q2",
           "q3"
-        ]
+        ],
+        "correctFeedback": "It follows the first '1' to q2, then the '0' to stay in q2, and then the last '1' to state q3."
       },
       "deltastar": {
         "type": "multiple",
@@ -93,7 +94,8 @@
           "q1",
           "q2",
           "q3"
-        ]
+        ],
+        "correctFeedback": "It processes each symbol in the string, moving from state to state, until it processes the last symbol."
       },
       "dpractice2": {
         "type": "multiple",
@@ -111,7 +113,7 @@
       },
       "lambda": {
         "type": "multiple",
-        "description": "Remember that $\\lambda$ means the empty string. In other words, no letters to read. If this is the input, the the machine does not change state, it just stays put.",
+        "description": "Remember that $\\lambda$ means the empty string. In other words, no symbols to read. If this is the input, the the machine does not change state, it just stays put.",
         "question": "What is $\\delta^*(q3, \\lambda)$?",
         "answer": [
           "q3"
@@ -121,18 +123,19 @@
           "q1",
           "q2",
           "q3"
-        ]
+        ],
+        "incorrectFeedback": "If $\\lambda$ is the input, the the machine does not change state, it just stays put."
       },
       "empty": {
         "type": "multiple",
         "description": "Let's think a bit more about the implications of empty strings.",
-        "question": "Can any DFA accept the empty string?",
+        "question": "Are there DFAs that can accept the empty string?",
         "answer": "Yes",
         "choices": [
           "Yes",
           "No"
         ],
-        "correctFeedback": "Right, it can. If the start state is $s$, then we know that $\\delta^*(s, \\lambda) = s$. So, a DFA accepts the empty string if and only if the start state is also one of the final states."
+        "correctFeedback": "Yes, some can. If the start state is $s$, then we know that $\\delta^*(s, \\lambda) = s$. So, a DFA accepts the empty string if and only if the start state is also one of the final states."
       },
       "negate": {
         "type": "multiple",
@@ -142,7 +145,8 @@
         "choices": [
           "Yes, it is quite hard.",
           "No, it is not hard at all."
-        ]
+        ],
+        "correctFeedback": "Next we will explain how."
       }
     }
   }

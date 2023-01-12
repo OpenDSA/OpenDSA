@@ -20,7 +20,7 @@ $(document).ready(function() {
   av.umsg(Frames.addQuestion("lambda"));
   phiDFA.hide();
   url = "../../../AV/OpenFLAP/machines/Regular/lambdaRE.jff";
-  var lambdaDFA = new av.ds.FA({url: url});
+  var lambdaDFA = new av.ds.FA({url: url, top: 50});
   av.step();
 
   // Frame 4

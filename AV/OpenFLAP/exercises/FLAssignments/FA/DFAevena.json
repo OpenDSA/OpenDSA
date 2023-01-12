@@ -6,7 +6,7 @@
   "containLetters": ["a"],
   "randomStringLength": [0, 15],
   "expression": "",
-  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a\\}$ of any even number of a’s.",
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a\\}$ of an even number of a’s.",
   "type": "description",
   "testCases": [
     {

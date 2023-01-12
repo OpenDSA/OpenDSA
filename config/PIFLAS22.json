@@ -172,7 +172,11 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegGrammarShort": {},
+      "PIFLA/RegGrammarShort": {
+        "STAFS": {
+          "points": 1.0
+        }
+      },
       "PIFLA/RegGramEx1": {
         "RegGramNFA1": {
           "points": 2.0

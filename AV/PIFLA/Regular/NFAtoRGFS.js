@@ -20,7 +20,8 @@ $(document).ready(function() {
   FA.hide();
 
   // Frame 1
-  av.umsg("Our second step in proving that a regular grammars can represent exactly the set of regular languages is to show that we can convert any NFA to a regular grammar. In particular, we will convert to a right-linear grammar.");   av.displayInit();
+  av.umsg("Our second step in proving that regular grammars represent exactly the set of regular languages is to show that we can convert any NFA to a regular grammar. In particular, we will convert to a right-linear grammar.");
+  av.displayInit();
 
   // Frame 2
   av.umsg(Frames.addQuestion("RRG"));
@@ -40,11 +41,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 6
-  av.umsg("We will convert this NFA to a RRG.");
   grammerMatrix.show();
-  av.step();
-
-  // Frame 7
   av.umsg(Frames.addQuestion("start"));
   av.step();
 

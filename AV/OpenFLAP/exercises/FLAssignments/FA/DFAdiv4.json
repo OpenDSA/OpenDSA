@@ -7,7 +7,7 @@
     "randomStringLength": [0, 15],
     "description": "Give a DFA that accepts the language over $\\Sigma =\\{0, 1\\}$ that represents all binary numbers, without leading 0’s, of natural numbers that are evenly divisible by 4",
     "testCases": [{
-            "0": false,
+            "0": true,
             "ShowTestCase":true
         },
         {

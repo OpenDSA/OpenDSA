@@ -13,6 +13,9 @@
 Regular Grammars
 ================
 
+.. .. The difference between this and RegGrammarShort is that this
+      includes the conversions of RegEx to regular grammars
+   
 Introduction to Regular Grammars
 --------------------------------
 
@@ -76,11 +79,14 @@ Converting NFAs to Regular Grammars
 Converting between Left-linear and Right-linear Grammars
 --------------------------------------------------------
 
-.. inlineav:: LeftLinearGrammarFS ff
-   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/LeftLinearGrammarFS.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/Regular/LeftLinearGrammarFS.js
+.. inlineav:: LLGrammarFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/LLGrammarFS.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/Regular/LLGrammarFS.js
    :output: show
 
+.. .. The following seems like over-kill and boring. So I left it out
+      of the S22 and S23 books. Note that if these are going to be
+      used in future, they need a lot of polish. -- CAS
 
 RegEx and Regular Grammars
 --------------------------
@@ -98,10 +104,14 @@ RegEx and Regular Grammars
    :output: show
 
 
-Something to Think About
-------------------------
+Summary
+-------
 
-.. inlineav:: STAFS ff
-   :links: AV/PIFLA/Regular/STAFS.css
-   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/STAFS.js
-   :output: show
+In this module we introduced regular grammars, defined to be either
+left-regular or right-regular grammars.
+We confirmed that we can convert between left- and right-regular
+grammars are really equivalent (by showing how to convert between
+them).
+We showed that NFAs can be converted to/from regular grammars, which
+means that regular grammars have the same power as our other
+representations for regular languages.

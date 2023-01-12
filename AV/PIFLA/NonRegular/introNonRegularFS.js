@@ -41,26 +41,22 @@ $(document).ready(function () {
   av.step();
 
   // Frame 10
-  av.umsg("Since the number of states in a DFA or NFA is finite, the memory is finite. Further, while a program in a traditional programming language might have one integer (that conceptually at least stores an infinite number of values, even if that is not literally true), a DFA has no similar thing.");
-  av.step();
-
-  // Frame 11
   av.umsg(Frames.addQuestion("noNFA"));
   av.step();
 
-  // Frame 12
+  // Frame 11
   av.umsg(Frames.addQuestion("nonregular"));
   av.step();
 
+  // Frame 12
+  av.umsg("So, $L_2 = \\{a^nb^n | n > 0 \\}$ is nonregular. But Why? An intutive way to determine if a language is not regular is to ask yourself a single question. Does the language require any kind of memory?<br/><br/>If the answer is yes, then the language is not regular. Unfortunately, while that is good intuition, it is not clear that we are right if we claim that a language requires memory to accept all of its strings. Perhaps we just overlooked another approach that would work. We need a more certain process for deciding this.");
+  av.step();
+
   // Frame 13
-  av.umsg("So, $L_2 = \\{a^nb^n | n > 0 \\}$ is nonregular. But Why? An intutive way to determine if a language is not regular is to ask yourself a single question. Does the language require any kind of memory?<br/><br/>If the answer is yes, then the languages is not regular. Unfortunately, while that is good intuition, it is not clear that we are right if we claim that a language requires memory to accept all of its strings. We need a more certain process for deciding this.");
+  av.umsg("This module aims to answer a single question: How can we prove that a language is not regular? We will build some techniques for doing this. Unfortunately, our techniques are not strong enough to always prove a language to be either regular or nonregular. In other words, the question of whether a language is regular is <b>not decideable</b>. But we answer the question for a lot of languages.");
   av.step();
 
   // Frame 14
-  av.umsg("In this chapter we will answer a single question: How can we prove that a language is not regular? We will build some techniques for doing this. Unfortunately, we will find that we can't always prove a language to be either regular or nonregular. But we can for a lot of languages.");
-  av.step();
-
-  // Frame 15
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

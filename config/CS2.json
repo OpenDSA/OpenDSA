@@ -61,8 +61,7 @@
       "partial_credit": true,
       "enable_scrolling": true
     }, 
-    "points": 1.0,
-    "partial_credit": false
+    "points": 1.0
   }, 
   "glob_pe_options": {
     "threshold": 0.9, 

@@ -9,10 +9,8 @@
    :satisfies:
    :topic: DFA exercises
 
-DFA exercises 3
-===============
-
-.. .. A few extras
+DFA exercises
+=============
 
 DFA exercises
 -------------
@@ -23,20 +21,19 @@ DFA exercises
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAevenabsoddas.html pe
-   :long_name: Even number of a's, odd number of b's
+   :long_name: Even number of a's, b's, odd number of a's
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAbotheo.html pe
-   :long_name: DFA exercise both even or odd
+   :long_name: DFA exercise both even or both odd
 
 |
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAevenamin3b.html pe
-   :long_name: DFA exercise even a min 3 b
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAnoba.html pe
+   :long_name: DFA exercise does not end in ba
 
-DFA Complement Exercise
------------------------
+|
 
 HINT: If DFA :math:`M` accepts language :math:`L`, the we can create a
 machine to accept the complement of :math:`L` by reversing the final
@@ -44,5 +41,5 @@ and non-final states of :math:`M`.
 However, that only works on a complete DFA, meaning that we have to
 take into account the trap state.
 
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFANotevena3b.html pe
-   :long_name: Construct DFA of language complement
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFACOMPnoba.html pe
+   :long_name: DFA exercise does not end in ba

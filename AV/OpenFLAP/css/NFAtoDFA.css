@@ -1,6 +1,47 @@
-p {
-	margin: 10px 0;
+#av {
+  text-align: center;
 }
+
+p.jsavoutput.jsavline {
+  height: 10px;
+}
+
+.jsavcanvas {
+  width: 45% !important;
+  height: 445px !important;
+}
+
+.jsavgraph {
+  display: inline-block;
+}
+
+#editable .jsavnode {
+  cursor: pointer;
+}
+
+#editable .jsavedge {
+  cursor: pointer;
+  stroke-width: 2;
+  /*can change to make edges easier to click */
+}
+
+#conversionButton {
+  display: none;
+}
+
+.jsavmodelanswer {
+  text-align: center;
+}
+
+.jsavhorizontalarray .jsavnode {
+  min-width: 200px !important;
+  max-width: 400px !important;
+}
+
+p {
+  margin: 10px 0;
+}
+
 #answer {
-	display: none;
+  display: none;
 }

@@ -13,7 +13,7 @@
       },
       "Operators": {
         "type": "select",
-        "description": "Regular Expressions are defined using three basic operators.<br/><b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together. We often don't actually show the '$\\cdot$'. For example, to concatenate the letters a and b, we could write $a \\cdot b$ or just $ab$.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "description": "Regular Expressions are defined using three basic operators.<br/><b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together. We often don't actually show the '$\\cdot$'. For example, to concatenate the letters a and b, we could write $a \\cdot b$ or just $ab$.<br/>$*$: Star-Closure. Repeat something zero or more times.<br/><br/>As a convenience, we also use parentheses () to control operator precedence and make things clear.",
         "question":"Which strings can be matched by the regular expression $a+ab$?",
         "answer": ["a",
                    "ab"
@@ -22,7 +22,7 @@
       },
       "Concat": {
         "type": "multiple",
-        "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
         "question":"Which strings can be matched with the regular expression $a \\cdot ab$",
         "answer": ["aab"
                   ],
@@ -30,34 +30,34 @@
       },
       "ConcatStr": {
         "type": "select",
-        "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
-        "question":"Suppose we have 2 regular expressions: $x = a$, and $y = ab$. Which of the following equals $xy$",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Suppose we have 2 regular expressions: $x = a$, and $y = ab$. Which of the following equals $xy$?",
         "answer": ["$x\\cdot y$",
-                   "a.ab",
+                   "a$\\cdot$ab",
                    "aab"
                   ],
-        "choices": ["$x\\cdot y$", "a.ab", "aab"],
+        "choices": ["$x\\cdot y$", "a$\\cdot$ab", "aab"],
         "correctFeedback": ["These are all ways of writing the same thing."],
         "incorrectFeedback": ["These are all ways of writing the same thing."]
       },
       "star": {
         "type": "select",
-        "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
-        "question":"Suppose we have RegEx $r = a$, which of the following is the language represented by $L(r^*)$?",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Suppose we have RegEx $r = a$. Which of the following is the language represented by $L(r^*)$?",
         "answer": ["$\\{a^n\\mid n\\ge0\\}$"],
         "choices": ["$\\lambda$","a", "aa", "aaa","aaaaaaaaa", "$\\{a^n\\mid n\\ge0\\}$"],
-        "incorrectFeedback": ["The question asks for ways of describing the language, not for examples of strings in the language."]
+        "incorrectFeedback": ["The question asks for ways of describing the language, not for examples of strings in the language. There can be more than one way to describe a language."]
       },
       "alla": {
         "type": "select",
-        "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
         "question":"Suppose we have RegEx $r = a$. Which of the following stings belong to $L(r^*)$?",
         "answer": ["$\\lambda$","a", "aa", "aaa","aaaaaaaaa"],
         "choices": ["$\\lambda$","a", "aa", "aaa","aaaaaaaaa", "aaaab"]
       },
       "ab": {
         "type": "select",
-        "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
         "question":"Suppose we have two RegEx $r = a$, and $s = b$. Which of the following is $L((r+s)^*)$?",
         "answer": ["$\\{w\\mid w\\in \\{a, b\\}^*\\}$", "any strings of a's and b's"],
         "choices": ["ab", "aba", "baaa","aababababa", "$\\{w\\mid w\\in \\{a, b\\}^*\\}$", "any strings of a's and b's", "strings with at least one a and at least one b"],
@@ -65,27 +65,27 @@
       },
       "abstrings": {
         "type": "select",
-        "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
         "question":"Suppose we have two RegEx $r = a$, and $s = b$. Which of the following strings are matched by the regular expression $(r+s)^*$?",
         "answer": ["ab", "aba", "baaa","aababababa"],
         "choices": ["ab", "aba", "baaa","aababababa"]
       },
       "evena": {
         "type": "select",
-        "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
         "question":"Suppose we have RegEx $r = aa$. Which of the following is equivalent to the expression $r^*$?",
         "answer": ["$(aa)^*$",
-                   "$\\{w\\ \\mid\\ w$ has an even number of a's, $w\\in \\{a\\}^*\\}$",
-                   "any string with even $a$s, where $\\Sigma = \\{a\\}$"],
+                   "$\\{w\\ \\mid\\ w$ has an even number of a's and $w\\in \\{a\\}^*\\}$",
+                   "any string with an even number of a's, where $\\Sigma = \\{a\\}$"],
         "choices": ["$aa^*$",
                     "$(aa)^*$",
-                    "$\\{w\\ \\mid\\ w$ has an even number of a's, $w\\in \\{a\\}^*\\}$",
-                    "$\\{w\\ \\mid\\ w$ has an even number of a's, $w\\in \\{a, b\\}^*\\}$",
-                    "any string with even $a$s, where $\\Sigma = \\{a\\}$"]
+                   "$\\{w\\ \\mid\\ w$ has an even number of a's and $w\\in \\{a\\}^*\\}$",
+                    "$\\{w\\ \\mid\\ w$ has an even number of a's and $w\\in \\{a, b\\}^*\\}$",
+                   "any string with an even number of a's, where $\\Sigma = \\{a\\}$"]
       },
       "onea": {
         "type": "multiple",
-        "description": "<b>Basic Operators:</b><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
         "question": "The RegEx $(a+b)^∗a(a+b)^∗$ defines which language?",
         "answer": "All strings from $\\{a,b\\}^∗$ that contain at least one $a$",
         "choices": ["All strings from $\\{a,b\\}^∗$", "All strings from $\\{a,b\\}^∗$ that contain at least one $a$"]
@@ -161,7 +161,7 @@
         "question": "We don't have a symbol for 'one or more', but which of these gives the effect of 'one or more a'?",
         "answer": "$aa*$",
         "choices": ["$aa*$", "(aa)*", "a+a*"]
-      },
+      },  
       "oddaevenb": {
         "type": "select",
         "description": "Examples",
@@ -186,7 +186,7 @@
       "numbers": {
         "type": "multiple",
         "description": "Examples",
-        "question":"The RegEx $0 + (- + \\lambda)((1+2+\\ldots +9)(0+1+2+\\ldots +9)^{*})$ corresponds to which of the following?",
+        "question":"The RegEx<br/>$0 + (- + \\lambda)((1+2+\\ldots +9)(0+1+2+\\ldots +9)^{*})$ corresponds to which of the following?",
         "answer": "Positive and Negative numbers",
         "choices": ["Positive and Negative numbers", "Positive numbers", "Negative numbers"]
       },
@@ -196,7 +196,7 @@
         "question":"Can every finite set of strings be described by a RE?",
         "answer": "Yes",
         "choices": ["Yes", "No"],
-        "correctFeedback": ["Sure, even if the set has 100,000 strings. The RegEx will be $string_1+string_2+\\ldots+string_{100000}$."]
+        "correctFeedback": ["Even if the set has 100,000 strings. The RegEx in that case could be<br/>$string_1+string_2+\\ldots+string_{100000}$."]
       }
     }
   }
