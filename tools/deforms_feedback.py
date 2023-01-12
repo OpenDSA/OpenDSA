@@ -41,15 +41,16 @@ def compare_quantities(m_magn, m_unit, a_magn, a_unit):
 
     try:
         if m_unit == "":
-            solutionComparableValue = m_magn
+            solutionComparableValue = m_magn;
+            return abs((solutionComparableValue - a_magn) / a_magn) <= 0.005
         else:
             # solutionComparableValue = unit_parse.parser(f"{m_magn} {m_unit}").to(a_unit)
             solutionComparableValue = ureg.Quantity(m_magn, m_unit).to(a_unit)
-
-        return abs((solutionComparableValue.magnitude - a_magn) / a_magn) <= 0.005
+            return abs((solutionComparableValue.magnitude - a_magn) / a_magn) <= 0.005
+        
     except pint.DimensionalityError:
         return False
-
+    
 def get_unknown_summary(solution_json):
     summary_json = {}
     
