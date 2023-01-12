@@ -1,0 +1,343 @@
+{
+    "parameters": {
+        "param": {
+            "id": "param",
+            "type": "question_parameter",
+            "valueDisplay": "2kN",
+            "value": "2",
+            "unit": "kN",
+            "parent": "question_params"
+        },
+        "param1": {
+            "id": "param1",
+            "type": "question_parameter",
+            "valueDisplay": "1cm",
+            "value": "1",
+            "unit": "cm",
+            "parent": "question_params"
+        },
+        "param2": {
+            "id": "param2",
+            "type": "question_parameter",
+            "valueDisplay": "15MPa",
+            "value": "15",
+            "unit": "MPa",
+            "parent": "question_params"
+        }
+    },
+    "workspaces": {
+        "1": {
+            "id": 1,
+            "name": "wk1",
+            "equations": {
+                "0": {
+                    "id": "wk1_dirShearStressAvg_1_1",
+                    "equation_template_id": "dirShearStressAvg",
+                    "variables": {
+                        "shearstress": {
+                            "id": "wk1_dirShearStressAvg_1_1_shearstress",
+                            "name": "shearstress",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\tau_{}",
+                                "parentSymbolTemplate": "\\tau_{}",
+                                "parentSymbol": "\\tau_{}"
+                            },
+                            "currentSymbol": "a_a",
+                            "expectedDomain": "pressure",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_i",
+                                "varDisplay": "\\tau_{allow_{}}",
+                                "varDisplayTemplate": "\\tau_{allow_{}}"
+                            }
+                        },
+                        "area": {
+                            "id": "wk1_dirShearStressAvg_1_1_area",
+                            "name": "area",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "A_{}",
+                                "parentSymbolTemplate": "A_{}",
+                                "parentSymbol": "A_{}"
+                            },
+                            "currentSymbol": "a_b",
+                            "expectedDomain": "length2",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_g",
+                                "varDisplay": "A_{}",
+                                "varDisplayTemplate": "A_{}"
+                            }
+                        },
+                        "shearforce": {
+                            "id": "wk1_dirShearStressAvg_1_1_shearforce",
+                            "name": "shearforce",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "V_{}",
+                                "parentSymbolTemplate": "V_{}",
+                                "parentSymbol": "V_{}"
+                            },
+                            "currentSymbol": "a_c",
+                            "expectedDomain": "force",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_c",
+                                "varDisplay": "V_{}",
+                                "varDisplayTemplate": "V_{}"
+                            }
+                        }
+                    }
+                },
+                "1": {
+                    "id": "wk1_div_2_1",
+                    "equation_template_id": "div",
+                    "variables": {
+                        "cterm": {
+                            "id": "wk1_div_2_1_cterm",
+                            "name": "cterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "c_{}",
+                                "parentSymbolTemplate": "c_{}",
+                                "parentSymbol": "c_{}"
+                            },
+                            "currentSymbol": "a_d",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_c",
+                                "varDisplay": "V_{}",
+                                "varDisplayTemplate": "V_{}"
+                            }
+                        },
+                        "bterm": {
+                            "id": "wk1_div_2_1_bterm",
+                            "name": "bterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "b_{}",
+                                "parentSymbolTemplate": "b_{}",
+                                "parentSymbol": "b_{}"
+                            },
+                            "currentSymbol": "a_e",
+                            "expectedDomain": "free",
+                            "currentDomain": "dimensionless",
+                            "currentUnit": "",
+                            "valueType": "number",
+                            "valueSource": "",
+                            "valueNegated": false,
+                            "value": "2"
+                        },
+                        "aterm": {
+                            "id": "wk1_div_2_1_aterm",
+                            "name": "aterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "a_{}",
+                                "parentSymbolTemplate": "a_{}",
+                                "parentSymbol": "a_{}"
+                            },
+                            "currentSymbol": "a_f",
+                            "expectedDomain": "free",
+                            "currentDomain": "force",
+                            "currentUnit": "kN",
+                            "valueType": "number",
+                            "valueSource": "param",
+                            "valueNegated": false,
+                            "value": "2"
+                        }
+                    }
+                },
+                "2": {
+                    "id": "wk1_areaCircleDiameter_3_1",
+                    "equation_template_id": "areaCircleDiameter",
+                    "variables": {
+                        "area": {
+                            "id": "wk1_areaCircleDiameter_3_1_area",
+                            "name": "area",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "A_{}",
+                                "parentSymbolTemplate": "A_{}",
+                                "parentSymbol": "A_{}"
+                            },
+                            "currentSymbol": "a_g",
+                            "expectedDomain": "length2",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_g",
+                                "varDisplay": "A_{}",
+                                "varDisplayTemplate": "A_{}"
+                            }
+                        },
+                        "diameter": {
+                            "id": "wk1_areaCircleDiameter_3_1_diameter",
+                            "name": "diameter",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "d_{}",
+                                "parentSymbolTemplate": "d_{}",
+                                "parentSymbol": "d_{}"
+                            },
+                            "currentSymbol": "a_h",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "cm",
+                            "valueType": "number",
+                            "valueSource": "param1",
+                            "valueNegated": false,
+                            "value": "1"
+                        }
+                    }
+                },
+                "3": {
+                    "id": "wk1_AllowableStressDefinition1tau_4_1",
+                    "equation_template_id": "AllowableStressDefinition1tau",
+                    "variables": {
+                        "shearstressallowed": {
+                            "id": "wk1_AllowableStressDefinition1tau_4_1_shearstressallowed",
+                            "name": "shearstressallowed",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\tau_{allow_{}}",
+                                "parentSymbolTemplate": "\\tau_{allow_{}}",
+                                "parentSymbol": "\\tau_{allow_{}}"
+                            },
+                            "currentSymbol": "a_i",
+                            "expectedDomain": "pressure",
+                            "currentDomain": null,
+                            "currentUnit": "MPa",
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_i",
+                                "varDisplay": "\\tau_{allow_{}}",
+                                "varDisplayTemplate": "\\tau_{allow_{}}"
+                            }
+                        },
+                        "FS": {
+                            "id": "wk1_AllowableStressDefinition1tau_4_1_FS",
+                            "name": "FS",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "FS_{}",
+                                "parentSymbolTemplate": "FS_{}",
+                                "parentSymbol": "FS_{}"
+                            },
+                            "currentSymbol": "a_j",
+                            "expectedDomain": "dimensionless",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": null,
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": "wk1_AllowableStressDefinition1tau_4_1_FS"
+                        },
+                        "shearstressfailure": {
+                            "id": "wk1_AllowableStressDefinition1tau_4_1_shearstressfailure",
+                            "name": "shearstressfailure",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\tau_{failure_{}}",
+                                "parentSymbolTemplate": "\\tau_{failure_{}}",
+                                "parentSymbol": "\\tau_{failure_{}}"
+                            },
+                            "currentSymbol": "a_k",
+                            "expectedDomain": "pressure",
+                            "currentDomain": "pressure",
+                            "currentUnit": "MPa",
+                            "valueType": "number",
+                            "valueSource": "param2",
+                            "valueNegated": false,
+                            "value": "15"
+                        }
+                    }
+                }
+            },
+            "solutionBoxes": {
+                "0": {
+                    "value": 12731149.941118432,
+                    "unit": "Pa",
+                    "variable": "a_i",
+                    "variableDisplay": "\\tau_{allow_{}}",
+                    "valueSourceParent": "a_i",
+                    "valueNegated": false
+                },
+                "1": {
+                    "value": 1000,
+                    "unit": "N",
+                    "variable": "a_c",
+                    "variableDisplay": "V_{}",
+                    "valueSourceParent": "a_c",
+                    "valueNegated": false
+                },
+                "2": {
+                    "value": 7.85475e-05,
+                    "unit": "m^2",
+                    "variable": "a_g",
+                    "variableDisplay": "A_{}",
+                    "valueSourceParent": "a_g",
+                    "valueNegated": false
+                },
+                "3": {
+                    "value": 1.1782125,
+                    "unit": "",
+                    "variable": "a_j",
+                    "variableDisplay": "FS_{}",
+                    "valueSourceParent": "a_j",
+                    "valueNegated": false
+                },
+                "a_i": {
+                    "box_id_current": 0,
+                    "value": 12731149.941118432,
+                    "unit": "Pa",
+                    "variable": "a_i",
+                    "variableDisplay": "\\tau_{allow_{}}"
+                },
+                "a_c": {
+                    "box_id_current": 1,
+                    "value": 1000,
+                    "unit": "N",
+                    "variable": "a_c",
+                    "variableDisplay": "V_{}"
+                },
+                "a_g": {
+                    "box_id_current": 2,
+                    "value": 7.85475e-05,
+                    "unit": "m^2",
+                    "variable": "a_g",
+                    "variableDisplay": "A_{}"
+                },
+                "a_j": {
+                    "box_id_current": 3,
+                    "value": 1.1782125,
+                    "unit": "",
+                    "variable": "a_j",
+                    "variableDisplay": "FS_{}"
+                }
+            }
+        }
+    },
+    "solutions": {
+        "0": {
+            "id": "0",
+            "solution": "1.178",
+            "unit": "",
+            "source": "a_j",
+            "parent": "solution_box",
+            "type": "number"
+        }
+    }
+}
