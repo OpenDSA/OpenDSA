@@ -182,9 +182,6 @@
     },
     "Identifying Non-regular Languages":{
       "PIFLA/NonRegular": {
-        "STAFS": {
-          "points": 1.0
-        },
         "introPumpingFS": {
           "points": 1.0
         },
