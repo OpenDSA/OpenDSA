@@ -15,39 +15,33 @@ Context-Free Languages
 ----------------------
 
 In previous chapters, we saw that some languages are regular
-languages, which means that we can define a DFA, NFA, regular
-expression, or regular grammar for them.
-We also discussed using closure operators to show that other languages
-are regular if they can be derived from known regular languages using
-operators known to be closed for regular languages.
-Examples of regular languages:
+languages, which means that we can define a DFA, NFA that recognizes
+that language, or we can represent it with a regular
+expression or regular grammar.
+Here are a few examples of regular languages:
 
 * keywords in a programming language
 * names of identifiers
 * integers
-* a finite list of miscillaneous symbols such as = \\ ;
+* a finite list of miscillaneous symbols such as :math:`=`.
 
-Then we discussed ways to prove that a language is non-regular, such
-as using the Pumping Lemma or using operators known to be closed for
-regular language to derive a known non-regular language.
+We also know that some languages are non-regular, and we learned how
+to use tools like the Pumping Lemma to prove a given language is
+non-regular.
 Exxamples of non-regular languages include:
 
-* :math:`\{a^ncb^n | n > 0\}`
-* expressions: :math:`((a + b) - c)`
-* block structures (:math:`\{\}` in Java/C++ and ``begin`` ... ``end``
-  in Pascal)
+* :math:`\{a^ncb^n\ |\ n > 0\}`
+* mathematical expressions like :math:`((a + b) - c)`
+* block structures for programming languages (:math:`\{\}` in Java/C++
+  and ``begin`` ... ``end`` in Pascal)
 * Balanced parentheses
 
-We know that not all languages are not regular, since we've proved that
-some are not.
-
-(**Something to think about**: If you were to write a program in your
-favorite programming language to recognize any of those languages,
-what is the minimum memory that you need for each?)
-
 Now we will look at a class of languages that is larger than the class
-of regular languages, context-free languages.
-And we will discuss ways to represent them.
+of regular languages, called
+:term:`context-free languages <context-free language>`
+or :term:`CFG`.
+Perhaps not surprisingly, a CFL is any language that can be
+represented by a :term:`context-free grammar` or :term:`CFG`.
 
 .. inlineav:: CFLFS ff
    :links: AV/PIFLA/CFL/CFLFS.css
