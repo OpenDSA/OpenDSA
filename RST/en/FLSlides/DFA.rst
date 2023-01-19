@@ -71,10 +71,10 @@ Deterministic Finite Acceptors
       :align: center
 
    | Assign meaning to the states: q0 - odd numbers, q1 - even numbers, 
-   | Note the arrow: Start State
-   | Note the double circle: Accepting State
+   | Note the triangle: Start State
+   | Note the double circle: Final (Accepting) State
 
-   We accept the string if we halt (finish the string) in an accepting
+   We accept the string if we halt (finish the string) in a final
    state.
 
 
@@ -183,7 +183,7 @@ Deterministic Finite Acceptors
       :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFA_withTrapStateCON.js
       :align: center
 
-   | There is nothing "special" about the trap state, they are
+   | There is nothing "special" about a trap state, they are
      just conceptual.
    |   A "trap" state means that once in, all transitions keep us
        there.
