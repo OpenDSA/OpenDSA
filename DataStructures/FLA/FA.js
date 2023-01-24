@@ -4723,7 +4723,7 @@ function getRandomInt(max) {
     this.y_coord = y_coord; //y coordinate of placement
     this.direction = direction; // in which direction tape extends
     this.options = options;
-    this.current = (index == undefined)? 1: index;//the location to highlight
+    this.current = (index == undefined)? -1: index;//the location to highlight
     this.arr = null;
     this.leftPoly = null;
     this.rightPoly = null;

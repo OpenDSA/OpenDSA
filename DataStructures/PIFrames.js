@@ -756,6 +756,7 @@
 
     callInjector(av_name, jsavControl) {
       this.table[av_name].checkIfSlideHasQuestion(jsavControl);
+      MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
     },
 
     //checkpoint jump functions
