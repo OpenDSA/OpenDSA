@@ -3011,7 +3011,7 @@ var lambda = String.fromCharCode(955),
         highlightedNodes[state].unhighlight();
       }
       jsav.step();
-      jsav.umsg("Nest step is to identify the transitions out of the DFA start state. For each letter in the alphabet, consider all states reachable in the NFA from any state in the start state on that letter. This becomes the name of the target state on that transition.");
+      jsav.umsg("Now identify the transitions out of the DFA start state. For each symbol in the alphabet, consider all states reachable in the NFA from any state in the start state on that symbol. Use this list of states as the name of the target state on that transition.");
 
     }
     // Repeatedly get next states and apply lambda closure
@@ -3047,13 +3047,15 @@ var lambda = String.fromCharCode(955),
       if (visualizable) {
         if (temp.length > 0) {
           jsav.step();
-          jsav.umsg("Repeat the process for each new node we find");
+          jsav.umsg("Repeat the process for each state until all DFA states have transitions for each symbol in the alphabet.");
         }
       }
     }
     // add the final markers
-    if (visualizable)
-      jsav.umsg("Determine the final states");
+    if (visualizable) {
+      jsav.umsg("Next, we determine the final states. We mark as final all states in the DFA that include in their name some final state in the NFA.");
+      jsav.step();
+    }
     addFinals(g, graph);
     g.layout();
     if (visualizable) {
