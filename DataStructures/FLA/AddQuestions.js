@@ -589,7 +589,7 @@ var minimizeDFAWithQuestions = function(minimizer, av_name, jsav, referenceGraph
           }
         }
       }
-      studentGraph.disableDragging();
+//      studentGraph.disableDragging();
       minimizer.jsav.umsg("The resulting DFA is finished.");
       return studentGraph;
     };
