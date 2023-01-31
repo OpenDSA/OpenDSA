@@ -93,12 +93,12 @@ Regular Languages and Expressions
 
       .. .. a(aa)^*(bb)^*
 
-   #. :math:`\Sigma=\{a,b\}`, :math:`\{w \in {\Sigma}^{*} \mid w` has no more than
-      three :math:`a` 's and must end in :math:`ab\}`:
+   #. :math:`\Sigma=\{a,b\}`, :math:`\{w \in {\Sigma}^{*} \mid w` has
+      no more than  three :math:`a` 's and must end in :math:`ab\}`:
 
       | ??
 
-      .. .. (b^*ab^*ab^* + b^*ab^*)ab Note we need the or here for the
+      .. .. (b^*ab^*ab^* + b^*ab^*)ab Note we need the "or" here for the
          cases of 2 a's and 1 a before the ab.
 
    #. Regular expression for positive and negative integers:
@@ -149,6 +149,8 @@ Regular Languages and Expressions
       :links: DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/lambdaREtoNFACON.css
       :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/lambdaREtoNFACON.js
       :output: show
+
+.. slide:: Regular Expression :math:`\rightarrow` NFA (1b)
 
    Here is an NFA that accepts :math:`a \in \Sigma`.
 
