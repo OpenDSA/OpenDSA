@@ -37,7 +37,7 @@ Regular Languages and Expressions
        :math:`a`.
 
    | Example2 :
-   |   :math:`(aa)*`
+   |   :math:`(aa)^*`
    |   What language is this?
        Strings of :math:`a` 's with an even number of :math:`a` 's
 
@@ -70,12 +70,13 @@ Regular Languages and Expressions
       |    :math:`L(r + s) = L(r) \cup L(s)`
       |    :math:`L(r s) = L(r) \cdot L(s)`
       |    :math:`L((r)) = L(r)`
-      |    :math:`L((r)^*) = (L(r)^*)`
+      |    :math:`L((r)^*) = (L(r))^*`
 
 
 .. slide:: Precedence Rules
 
-   * :math:`^*` highest
+   * :math:`()` highest
+   * :math:`^*` next highest
    * :math:`\cdot`
    * :math:`+` lowest
 
@@ -94,7 +95,7 @@ Regular Languages and Expressions
       .. .. a(aa)^*(bb)^*
 
    #. :math:`\Sigma=\{a,b\}`, :math:`\{w \in {\Sigma}^{*} \mid w` has
-      no more than  three :math:`a` 's and must end in :math:`ab\}`:
+      no more than three :math:`a` 's and must end in :math:`ab\}`:
 
       | ??
 
@@ -220,19 +221,6 @@ Regular Languages and Expressions
       :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/schematicStarRepCON.js
       :output: show
 
-
-.. slide:: Example
-
-   :math:`ab^* + c`
-
-   .. inlineav:: RENFAtoDFACON ss
-      :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Regular/RENFAtoDFACON.js
-      :output: show
-
-
-.. slide:: .
-
-   .
 
 .. slide:: NFA :math:`\rightarrow` Regular Expression
 
