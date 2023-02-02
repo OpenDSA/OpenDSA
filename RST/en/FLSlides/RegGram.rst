@@ -25,7 +25,7 @@ Regular Grammars
    | :math:`V`: Variables (nonterminals), represented by :math:`A, B, ..., Z`
    | :math:`T`: Terminals, reprsented by :math:`a, b, ..., z, 0, 1, ..., 9`
    | :math:`S`: Start symbol
-   | :math:`P`: Productions (rules)}
+   | :math:`P`: Productions (rules)
 
    :math:`V`, :math:`T`, and :math:`P` are finite sets.
 
@@ -42,7 +42,7 @@ Regular Grammars
 
 .. slide:: Left-linear grammar
 
-   | all productions of form
+   | All productions are of the form:
    |    :math:`A \rightarrow Bx`
    |    :math:`A \rightarrow x`
    | where :math:`A, B \in V, x \in T^*`
@@ -51,8 +51,8 @@ Regular Grammars
 
    Any right-linear or left-linear grammar is defined to be a regular grammar.
 
-   (There is a more restrictive definition in which the length of
-   :math:`x` is :math:`\leq 1`.)
+   (Some books use a more restrictive definition in which the length
+   of :math:`x` is :math:`\leq 1`.)
 
 
 .. slide:: Example 1
@@ -65,7 +65,9 @@ Regular Grammars
 
    << What language is this? >>
 
-   .. :math:`(ab)^*`
+   .. .. :math:`(ab)^*`
+      Of course, the first and third rules are redundant.
+      We could drop either one to get a linear grammar.
       
 .. slide:: Example 1
 
@@ -129,7 +131,7 @@ Regular Grammars
 
 .. slide:: RRG to NFA Example
 
-   <<See 4.3.2>>
+   << See 4.4.2 >>
 
 
 .. slide:: Proof: RR Grammar from DFA
@@ -148,7 +150,7 @@ Regular Grammars
 
 .. slide:: NFA to RRG Example
 
-   <<See 4.3.3>>
+   <<See 4.4.3>>
 
    
 .. slide:: Something to Think About
