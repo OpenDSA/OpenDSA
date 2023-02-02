@@ -41,6 +41,11 @@
       "FLSlides/NFA": {},
       "FLSlides/Minimization": {},
       "FLSlides/Theory": {}
+    },
+    "Week 3": {
+      "FLSlides/RegEx": {},
+      "FLSlides/RegGram": {},
+      "FLSlides/RegClosure": {}
     }
   }
 }
