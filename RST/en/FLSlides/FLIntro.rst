@@ -40,6 +40,8 @@ Formal Languages Course Introduction
 
 .. slide:: Course Mechanics: OpenDSA
 
+   See the "Modules" at Canvas
+
    * Content, visualizations
    * Simulators (OpenFLAP)
    * Exercises (one part of homework)
@@ -148,11 +150,11 @@ Formal Languages Course Introduction
      expression the same level of power required to compute the result
      of that expression?
 
-   * Can you write a program to determine if a file is a valid Java
-     program?
-
 
 .. slide:: Outcomes (4)
+
+   * Can you write a program to determine if a file is a valid Java
+     program?
 
    * Can you write a program to determine if a Java program given as
      input will ever halt?
@@ -182,8 +184,12 @@ Formal Languages Course Introduction
 .. slide:: Models of Computation, Languages, Machines
 
    * "Automata" is just another word for "machine".
+     
+     * We usually represent our machines using graphs (nodes and edges).
+
    * Our general strategy is to look at classes of languages along
      with the "machines" that can process them.
+
    * Your job is to understand the limits on these classes
 
 

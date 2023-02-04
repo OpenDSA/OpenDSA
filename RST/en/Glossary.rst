@@ -1103,10 +1103,12 @@ Glossary
       time.
 
    context-free language
+   CFL
       The set of :term:`languages <language>` that can be defined by
       :term:`context-sensitive grammars <context-sensitive grammar>`.
 
    context-sensitive grammar
+   CFG
       A :term:`grammar` comprised only of productions of the form
       :math:`xAy \rightarrow xvy` where :math:`A` is a
       :term:`non-terminal` and :math:`x` and :math:`y` are each a

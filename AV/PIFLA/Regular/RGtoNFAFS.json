@@ -73,7 +73,7 @@
         "description": "The process is:<br>1. Make a state for each non-terminal.<br>2. Make a transition out of the state for a non-terminal on each associated production rule.",
         "question":"What is the transition for the highlighted rule?",
         "answer": "B will be a final state because it has a $\\lambda$ transition to no Variable",
-        "choices": ["$\\delta(B, \\lambda) = S$", "B will be the final state because it has a $\\lambda$ transition to no Variable"]
+        "choices": ["$\\delta(B, \\lambda) = S$", "B will be a final state because it has a $\\lambda$ transition to no Variable"]
       },
       "multiple": {
         "type": "multiple",

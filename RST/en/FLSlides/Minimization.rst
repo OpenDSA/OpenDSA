@@ -71,7 +71,7 @@ Minimizing the Number of States in a DFA
 
 .. slide:: Example 1 (1)
 
-   <<Look at first slide in frameset of Module 3.6.2.>>
+   <<Look at first slide in frameset of Module 3.5.2.>>
    
    Look at A on a, ab. Look at F on a, ab. Look at D on a, ab.
 
@@ -104,4 +104,4 @@ Minimizing the Number of States in a DFA
 
 .. slide:: Example 1
 
-   <<See Frameset 3.6.2>>
+   <<See Frameset 3.5.2>>

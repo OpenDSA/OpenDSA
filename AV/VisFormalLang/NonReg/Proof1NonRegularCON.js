@@ -31,7 +31,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 3
-  av.umsg("All DFAs have a finite number of states. (That is why they are called Deterministic <b>Finite</b> automata!) So, $M$ has a finite number of states. Now, let's consider paths from the start state to the final state. There is some longest path, and let's say that the length of this path is $k$ states for an arbitrary value $k$.");
+  av.umsg("All DFAs have a finite number of states. (That is why they are called Deterministic <b>Finite</b> Automata!) So, $M$ has a finite number of states. Now, let's consider paths from the start state to the final state. There is some longest path, and let's say that the length of this path is $k$ states for an arbitrary value $k$.");
   var labelK = av.label("$k$", {"top": yoffset + 73, "left": xoffset + 450});
   var arrowK1 = av.g.line(xoffset + 440, yoffset + 100, xoffset + 240, yoffset + 100, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var arrowK2 = av.g.line(xoffset + 470, yoffset + 100, xoffset + 670, yoffset + 100, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
@@ -50,7 +50,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  av.umsg("Since there are $k$ states and $k$ a's (followed by $k$ b's), some state $i$ in $M$ must be reached more than once when following the path of $a^k$. That is the only way that we can make $2k$ steps as required to process the string $a^kb^k$.");
+  av.umsg("Since there are $k$ states and $k$ a's (followed by $k$ b's), some state $i$ in $M$ must be reached more than once when following the path of $a^k$. That is the only way that we can take $2k$ steps as required to process the string $a^kb^k$.");
   arrow2.hide();
   arrow1.hide();
   arrowK1.hide();
@@ -75,7 +75,7 @@ $(document).ready(function () {
   av.step();
 
   // Slide 6
-  av.umsg("In that case, there is a loop with one or more a's (say $t$ a's for some $t \\geq 1$) along the path.");
+  av.umsg("In that case, there is a loop with one or more a's (say $t-1$ states with transitions on a's for some $t \\geq 1$) along the path.");
   var labela = av.label("$t$ a's", {"top": yoffset + 45, "left": xoffset + 480});
   var label3 = av.label("...", {"top": yoffset, "left": xoffset + 485});
   var qi1 = g.addNode(" ", {left: xoffset + 200, top: yoffset});

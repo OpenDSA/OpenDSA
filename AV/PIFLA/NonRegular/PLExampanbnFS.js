@@ -109,7 +109,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 27
-  av.umsg("We have finally covered all of the cases! We have shown that when $w = a^{m/2}b^{m/2}$ that no partition into $xyz$ yields something that is pumpable. Therefore, we can finally conclude (again!) that $a^nb^n$ is not regular. But it was a lot more complicated to do the proof than when we selected $w = a^mb^m$, because of the number of subcases that we had to consider. So, it does matter what string we chose for $w$.");
+  av.umsg("We have finally covered all of the cases! We have shown that when $w = a^{m/2}b^{m/2}$ that no partition into $xyz$ yields something that is pumpable. Therefore, we can finally conclude (again!) that $a^nb^n$ is not regular. But it was a lot more complicated to do the proof than when we selected $w = a^mb^m$, because of the number of subcases that we had to consider. So, it does matter what string we chose for $w$: Sometimes the choice makes the proof easier or harder, and sometimes the choice makes the proof impossible.");
   av.step();
 
   // Frame 28

@@ -29,18 +29,23 @@ $(document).ready(function() {
 
   var av_name = "schematicORRepCON";
   var av = new JSAV(av_name);
-  av.umsg("Lets suppose that we have a reqular expression $r+s$");
+
+  // Slide 1
+  av.umsg("Suppose that we have a reqular expression $r+s$.");
   av.displayInit();
 
+  // Slide 2
   av.umsg("First, suppose that this NFA accepts $r$.");
   var rFA = drawScheme(av, "r", 200, 0);
   av.step();
 
-  av.umsg("Suppose also that this is the NFA that accept $s$");
+  // Slide 3
+  av.umsg("Suppose also that this is the NFA that accepts $s$.");
   var sFA = drawScheme(av, "s", 200, 250);
   av.step();
 
-  av.umsg("The first step now is to create a new start state");
+  // Slide 4
+  av.umsg("The first step now is to create a new start state.");
   var fa = new av.ds.FA({left: 50, top: 0, width: 50, height: 600});
   var newS = fa.addNode({value:"s", left: 10, top: 200});
   toggleInitial(fa, newS);
@@ -50,14 +55,16 @@ $(document).ready(function() {
   rFA.initial.css({"font-weight": "normal"});
   av.step();
 
-  av.umsg("Conncet the new start state with the start state for each NFA using labmda transitions");
+  // Slide 5
+  av.umsg("Conncet the new start state with the start state for each NFA using labmda transitions.");
   av.g.line(90, 235, 255, 325, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 170, top: 275});
   av.g.line(90, 225, 255, 85, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 170, top: 140});
   av.step();
 
-  av.umsg("Then creat a new final state");
+  // Slide 6
+  av.umsg("Then create a new final state.");
   var fa2 = new av.ds.FA({left: 650, top: 0, width: 20, height: 600});
   var newF = fa2.addNode({value:"f", left: 0, top: 200});
   toggleFinal(fa2, newF);
@@ -65,14 +72,16 @@ $(document).ready(function() {
   sFA.getFinals()[0].css({"border-style": "dotted"});
   av.step();
 
-  av.umsg("Connect the old final states to the new final state with lambda transitions");
+  // Slide 7
+  av.umsg("Connect the old final states to the new final state with lambda transitions.");
   av.g.line(485, 330, 655, 235, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 580, top: 160});
   av.g.line(485, 90, 655, 225, {"arrow-end": "classic-wide-long", "stroke-width": 2});
   av.label(lambda, {left: 580, top: 260});
   av.step();
 
-  av.umsg("The resulting NFA accepts $r + s$");
+  // Slide 8
+  av.umsg("The resulting NFA accepts $r + s$.");
   fa.disableDragging();
   fa2.disableDragging();
   av.recorded();

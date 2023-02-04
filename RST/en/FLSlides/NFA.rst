@@ -60,7 +60,7 @@ Non-Deterministic Finite Acceptor
      of a function!)
 
    Hopefully this one is easy to understand: Two disjoint paths,
-   effectively giving us union of two languages:
+   effectively giving us the union of two languages:
    :math:`L =` << ?? >>.
 
 
@@ -80,7 +80,7 @@ Non-Deterministic Finite Acceptor
 .. slide:: Accepting a String
 
    **Definition:** :math:`q_j \in {\delta}^{*}(q_i,w)` if/only if
-   there exists some walk from :math:`q_i` to :math:`q_j` labeled
+   there exists **some** walk from :math:`q_i` to :math:`q_j` labeled
    :math:`w`.
 
    | From previous example:
@@ -107,7 +107,10 @@ Non-Deterministic Finite Acceptor
    
    From a performance point of view, to determine if a string is
    accepted can take a LONG time to try out all possibilities.
-   But, all that we care about right now is existance, not performance.
+   But, all that we care about right now is existance, not
+   performance.
+
+   Hypothesis: Nondeterminism allows us to accept more languages.
 
 
 .. slide:: Which is more powerful?

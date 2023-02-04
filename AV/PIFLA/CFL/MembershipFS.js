@@ -5,105 +5,100 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
   // Load the config object with interpreter and code created by odsaUtils.js
 
-  //frame 1
-  av.umsg("The <b>Membership Problem</b> is to determine if a given string belongs to a given language.")
+  // Frame 1
+  av.umsg("The most important question that we can ask about a grammar is whether a given string can be derived from it. This is know as the  <b>Membership Problem</b>.")
   av.displayInit();
   
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("membership"));
   av.step();
 
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("java"));
   av.step();
 
-  //frame 4
+  // Frame 4
   av.umsg("Formally, the membership problem can be defined as:<br/>Given CFG $G$ and string $w \\in \\Sigma^*$, is $w \\in L(G)$?");
   av.step();
 
 
-  //frame 5
-  av.umsg(Frames.addQuestion("q5"));
+  // Frame 5
+  av.umsg(Frames.addQuestion("evena"));
   av.step();
 
-  //frame 6
-  av.umsg(Frames.addQuestion("q6"));
+  // Frame 6
+  av.umsg(Frames.addQuestion("abbab"));
   av.step();
 
-  //frame 7
-  av.umsg("<b>Exhaustive Search</b> is a brute force algorithm that searches the entire derivation tree in some way to find the proper string. So it is an inefficient way to determine if a string is $\\in L$. Exhaustive Search means to search all ways of expanding from the start symbol.");
+  // Frame 7
+  av.umsg("<b>Exhaustive Search</b> is a brute force algorithm that searches the entire space of possible derivation trees in some way to find the proper derivation for the given string. So it is an inefficient way to determine if a string is $\\in L$. Exhaustive Search means to search all ways of expanding from the start symbol until we either reach the string in question, or determine that it cannot be in the language.");
   av.step();
 
-  //frame 8
-  av.umsg(Frames.addQuestion("q8"));
+  // Frame 8
+  av.umsg(Frames.addQuestion("onestep"));
   av.step();
 
-  //frame 9
-  av.umsg(Frames.addQuestion("q9"));
+  // Frame 9
+  av.umsg(Frames.addQuestion("twostep"));
   av.step();
 
-  //frame 10
-  av.umsg(Frames.addQuestion("q10"));
+  // Frame 10
+  av.umsg(Frames.addQuestion("numstep"));
   av.step();
 
-  //frame 12
-  av.umsg("If the string is in the language, the search algorithm will find it. BUT, What happens if $w$ is not in $L(G)$?<br/><br/>When do we stop the loop in the algorithm and know for sure that $w$ is not going to be derived?");
+  // Frame 11
+  av.umsg("If the string is in the language, the search algorithm will find it. But what happens if $w$ is not in $L(G)$?<br/><br/>When do we stop the loop in the algorithm and know for sure that $w$ is not going to be derived?");
   av.step();
 
-  //frame 13
-  av.umsg(Frames.addQuestion("q13"));
+  // Frame 12
+  av.umsg(Frames.addQuestion("lambda"));
   av.step();
 
-  //frame 15
-  av.umsg("We want to consider special forms of context free grammars such that we can determine when strings are or are not in the language. It turns out to be easy to take a context-free grammar and convert it into a special form that makes it easier to test membership.");
+  // Frame 13
+  av.umsg("To avoid such infinite loops, we want to consider special forms of context free grammars such that we can always determine when strings are or are not in the language. It turns out to be easy to take a context-free grammar and convert it into a special form that makes it easier to test membership.");
   av.step();
 
-  //frame 16
-  av.umsg(Frames.addQuestion("q16"));
+  // Frame 14
+  av.umsg(Frames.addQuestion("length"));
   av.step();
 
-  //frame 17
-  av.umsg(Frames.addQuestion("q17"));
+  // Frame 15
+  av.umsg(Frames.addQuestion("terminals"));
   av.step();
 
-  //frame 18
-  av.umsg(Frames.addQuestion("q18"));
+  // Frame 16
+  av.umsg(Frames.addQuestion("maxstep"));
   av.step();
 
-  //frame 19
-  av.umsg(Frames.addQuestion("q19"));
+  // Frame 17
+  av.umsg(Frames.addQuestion("double"));
   av.step();
 
-  //frame 20
-  av.umsg(Frames.addQuestion("q20"));
+  // Frame 18
+  av.umsg(Frames.addQuestion("goodgram"));
   av.step();
 
-  //frame 21
-  av.umsg(Frames.addQuestion("q21"));
+  // Frame 19
+  av.umsg(Frames.addQuestion("baaba"));
   av.step();
 
-  //frame 22
-  av.umsg(Frames.addQuestion("q22"));
+  // Frame 20
+  av.umsg(Frames.addQuestion("fail"));
   av.step();
 
-  //frame 23
-  av.umsg(Frames.addQuestion("q23"));
+  // Frame 21
+  av.umsg("Soon we will learn methods for taking a grammar and transforming it into an equivalent (or almost equivalent) grammar. We will see that some ways of writing a grammar for a language are better than others, in terms of our ability to write practical algorithms for solving the membership problem. For now, here is another form that will make membership testing easier.");
   av.step();
 
-  //frame 24
-  av.umsg("Soon we will learn methods for taking a grammar and transforming it into an equivalent (or almost equivalent) grammar. We will see that some ways of writing a grammar for a language are better than others, in terms of our ability to write practical algorithms for solving the membership problem. For now, here is another form that will make membership testing easier");
+  // Frame 22
+  av.umsg("Since the problem with the exhaustive search algorithm is the grammar productions, some special grammar forms can lead to $n = |w|$ iterations to determine if a string $w \\in L(G)$ or not.<br/>This special form is called Simple grammar (or s-grammar).");
   av.step();
 
-  //frame 25
-  av.umsg("Since the problem with the exhaustive algorithm is the grammar productions, some special grammar forms can lead to $n = |w|$ iterations to determine if a string $w \\in L(G)$ or not.<br/>This special form is called Simple grammar (or s-grammar).");
+  // Frame 23
+  av.umsg("$\\textbf{Definition:}$ Simple grammar (or s-grammar) has all productions of the form:<br/>$A \\rightarrow ax$<br/>where $A \\in V$, $a \\in T$, and $x \\in V^*$, AND any pair $(A,a)$ can occur in at most one rule.<br/><br/>If you use the exhaustive search method to ask if $w\\in L(G)$ when $G$ is an s-grammar, the number of terminals increases with each step. This limits the number of substition cycles needed to be $|w|$. Note that while this is far better, it is still often a lot of work.");
   av.step();
 
-  //frame 26
-  av.umsg("$\\textbf{Definition:}$ Simple grammar (or s-grammar) has all productions of the form:<br/>$A \\rightarrow ax$<br/>where $A\\in V$, $a\\ in T$, and $x \\in V^*$ AND any pair $(A,a)$ can occur in at most one rule.");
-  av.step();
-
-  //frame 27
-  av.umsg("$\\textbf{Definition:}$ Simple grammar (or s-grammar) has all productions of the form:<br/>$A \\rightarrow ax$<br/>where $A\\in V$, $a\\ in T$, and $x \\in V^*$ AND any pair $(A,a)$ can occur in at most one rule.<br/>If you use the exhaustive search method to ask if $w\\in L(G)$, where $G$ is an s-grammar, the number of terminals increases with each step.");
+  // Frame 24
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
-
 });

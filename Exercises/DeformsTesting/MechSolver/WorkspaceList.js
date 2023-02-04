@@ -35,7 +35,7 @@ class WorkspaceList
             khaki:                  {colorcode: "#f0e68c", selected: false},
             // orange:                 {colorcode: "#ffa500", selected: false},
             // pink:                   {colorcode: "#ffc0cb", selected: false},
-            silver:                 {colorcode: "#c0c0c0", selected: false},
+            // silver:                 {colorcode: "#c0c0c0", selected: false},
             white:                  {colorcode: "#ffffff", selected: false},
             // yellow:                 {colorcode: "#ffff00", selected: false},
             LightCyan:              {colorcode: "#E0FFFF", selected: false},

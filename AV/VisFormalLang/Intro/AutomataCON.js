@@ -8,7 +8,8 @@ $(document).ready(function() {
   var left = 200;
   var ytop = 20;
   var elements = ["a", "a", "b", "b", "a", "b", "", "", "", ""];
-  av.ds.tape(elements, left + 30, ytop, "right");
+  var tape = av.ds.tape(elements, left + 30, ytop, "right");
+  tape.arr.highlight(2);
 
   //Control unit
   av.g.rect(left + 50, ytop + 105, 148, 152, {"stroke-width": 1});

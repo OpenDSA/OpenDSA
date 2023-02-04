@@ -709,7 +709,7 @@ const equations = [
             "height": "area / base",
             "base height": "(area)^0.5",
             "height base": "(area)^0.5",
-            "consistency": "area / base / height",
+            "consistency": "area / ( base ) / ( height )",
         }
     },
     {
@@ -849,7 +849,7 @@ const equations = [
             "bterm": "aterm / cterm",
             "cterm bterm": "(aterm)^0.5",
             "bterm cterm": "(aterm)^0.5",
-            "consistency": "aterm / bterm / cterm",
+            "consistency": "aterm / ( bterm ) / ( cterm )",
         }
     },
     {
@@ -880,7 +880,7 @@ const equations = [
             "bterm": "cterm / aterm",
             "aterm bterm": "(cterm)^0.5",
             "bterm aterm": "(cterm)^0.5",
-            "consistency": "aterm * bterm / cterm",
+            "consistency": "aterm * bterm / ( cterm )",
         }
     },
     // {

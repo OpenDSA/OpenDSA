@@ -321,8 +321,9 @@ Complete the following survey. The purpose of this task is to gather
 information about this course so that it can be improved. Your input is
 critical because we want to create the best experience possible for students.
 
-`CS 1114 Survey 2
-<https://virginiatech.questionpro.com/t/AUHNlZuUHg>`_
+.. raw:: html
+
+    <a href="https://virginiatech.questionpro.com/t/AUHNlZuUGG" target="_blank">CS 1114 Survey 2</a>
 
 Towards the end of the survey you will be asked if you consent for this
 information to be used in a study about perceptions of student learning
