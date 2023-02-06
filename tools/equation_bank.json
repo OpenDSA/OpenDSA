@@ -27,7 +27,7 @@
             "area": "A_{ }"
         },
         "template": "shearstress = shearforce / area",
-                "domains": {
+        "domains": {
             "shearstress": "pressure",
             "shearforce": "force",
             "area": "length2"
@@ -435,7 +435,7 @@
         "id": "radiusDiamReln",
         "name": "radiusDiamReln",
         "latex": "r_{ } = \\frac { d_{ } }{2}",
-        "template": "radius = 0.5 * diameter",
+        "template": "radius = diameter / 2.0",
         "variables": {
             "diameter": "d_{ }",
             "radius": "r_{ }"

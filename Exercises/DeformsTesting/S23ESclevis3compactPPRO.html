@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html data-require="jsav math MechSolverCommon">
 <head>
-  <title>Problem 10</title>
+  <title>The Clevis problem 3</title>
   <script src="./mathjs.js" type="text/javascript"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
@@ -9,66 +9,66 @@
   <style></style>
 </head>
 
-<body data-height="400" data-width="970" data-canvas-height="1100">
+<body data-height="400" data-width="970" data-canvas-height="1300">
   <div class="exercise">
     <div class="vars">
-      <!-- <var id="JSAV">mechSolverCommon.initJSAV("f2020p10PPRO","imperial",1100)</var> -->
-      <var id="JSAV">mechSolverCommon.initJSAV("f2020p10PPRO","SI",1100)</var>
+      <!-- <var id="JSAV">mechSolverCommon.initJSAV("f2020p1PPRO","imperial",1300)</var> -->
+      <var id="JSAV">mechSolverCommon.initJSAV("S23ESclevis3compactPPRO","SI",1300)</var>
     </div>
 
     <div class="problems">
-      <div id="f2020p10PPROp">
+      <div id="S23ESclevis3compactPPROp">
         <p class="problem">
-          A
+        
+          The clevis illustrated carries a load of
 
           <!-- <span class="param" id="param" 
-          data-value="0.5" 
-          data-unit="in" 
+          data-value="5000" 
+          data-unit="lbf" 
+          data-value-display="5000"
+          data-unit-display="lbf" 
+          data-domain="force">5000 lbs</span> -->
+          <span class="param" id="param" data-id="param" 
+          data-value="2" 
+          data-unit="kN" 
+          data-value-display="2"
+          data-unit-display="kN" 
+          data-domain="force">2 kN</span>
+          
+          . The diameter of the pin is
+
+          <!-- <span class="param" id="param" 
+          data-value="0.5" data-unit="in" 
           data-value-display="0.5"
-          data-unit-display="in" 
-          data-domain="length">0.5 in</span> -->
+          data-unit-display="in" data-domain="length">0.5 in</span>  -->
           <span class="param" id="param1" data-id="param1" 
-          data-value="1" 
-          data-unit="cm" 
+          data-value="1" data-unit="cm" 
           data-value-display="1"
-          data-unit-display="cm" 
-          data-domain="length">1 cm</span>
-
-          diameter pin is used in the hinge illustrated. Assume that the ultimate shear strength of the pin is
-
-          <!-- <span class="param" id="param" 
-          data-value="18" 
-          data-unit="ksi" 
-          data-value-display="18"
-          data-unit-display="ksi" 
-          data-domain="pressure">18 ksi</span> -->
-          <span class="param" id="param2" data-id="param2" 
-          data-value="18" 
-          data-unit="kPa" 
-          data-value-display="18"
-          data-unit-display="kPa" 
-          data-domain="pressure">18 kPa</span>
-
-          , and the factor safety is to be
-
-          <span class="param" id="param3" data-id="param3" 
-          data-value="2.5" 
-          data-unit="" 
-          data-value-display="2.5"
-          data-unit-display="" 
-          data-domain="dimensionless">2.5</span>
-
+          data-unit-display="cm" data-domain="length">1 cm</span> 
           .
+          
         </p>
 
         <div class="question">
           <p class="question">
-            what is the maximum force that can be applied?
+            <!-- 3. If the wooden bar has a thickness of -->
+            If the wooden bar has a thickness of
+
+            <!-- <span class="param" id="param" 
+            data-value="2" data-unit="in" 
+            data-value-display="2"
+            data-unit-display="in" data-domain="length">2 in</span>  -->
+            <span class="param" id="param3" data-id="param3" 
+            data-value="4" data-unit="cm" 
+            data-value-display="4"
+            data-unit-display="cm" data-domain="length">4 cm</span> 
+
+            , what is the bearing stress?
             <span class="solution-box" data-inputtype="number"></span>
           </p>
 
           <div>
-              <img class="figure1" src="./problemfigures/ph2-p10.png" style="width: 500px;" alt="description">
+              <img class="figure1" src="./problemfigures/ph2-p1.png" style="width: 500px;" alt="description">
                 <!-- <div class="text-overlay param" style="width: 26px; top: -188px;right: -342px; padding: 2px 7px" 
                 id="param8" data-value="0.25" data-unit="mm" data-value-display="0.25"
                 data-unit-display="mm" data-domain="length">0.25<br>mm</div> -->
@@ -76,7 +76,7 @@
           <br>
         </div>
         
-        <div id="f2020p10PPRO" class="jsavcanvas"></div>
+        <div id="S23ESclevis3compactPPRO" class="jsavcanvas"></div>
         
         <div class="solution" data-type="custom">
           <div class="guess"> 
@@ -133,7 +133,7 @@
   <script src="MechSolver/utils.js"></script>
 
   <!-- Additional script files containing settings and solution files -->
-  <script src="f2020p10PPROsolution.js"></script>
+  <script src="f2020p1PPROsolution.js"></script>
 
 </body>
 

@@ -14,5 +14,6 @@ Deforms
 Deforms exercise
 --------------------------------------
 
-.. avembed:: Exercises/DeformsTesting/f2020p10PPRO.html ka
-   :long_name: Shear problem
+.. avembed:: Exercises/DeformsTesting/S23f2020p5part2PPRO.html ka
+   :long_name: Poisson's ratio problem
+
