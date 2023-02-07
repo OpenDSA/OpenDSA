@@ -28,7 +28,7 @@ Here are a few examples of regular languages:
 We also know that some languages are non-regular, and we learned how
 to use tools like the Pumping Lemma to prove a given language is
 non-regular.
-Exxamples of non-regular languages include:
+Examples of non-regular languages include:
 
 * :math:`\{a^ncb^n\ |\ n > 0\}`
 * mathematical expressions like :math:`((a + b) - c)`

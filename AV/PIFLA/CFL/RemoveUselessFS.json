@@ -1,65 +1,67 @@
 {
   "translations": {
     "en": {
-      "q2":{
+      "reachC":{
         "type": "select",
-        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?",
+        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br/><br/>What can you say about this grammar in terms of the usefulness of its variables?",
         "question": "First think about the variable $C$. Can we reach variable $C$ from $S$ directly or indirectly?",
         "answer": "No",
-        "choices": ["No","Yes"]
+        "choices": ["No", "Yes"]
       },
-      "q3":{
+      "useless":{
         "type": "select",
-        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?",
+        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br/><br/>What can you say about this grammar in terms of the usefulness of its variables?",
         "question": "Is $C$ a useful or useless variable?",
         "answer": "useless",
         "choices": ["useless","useful"]
       },
-      "q4":{
+      "remove":{
         "type": "select",
-        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?",
+        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br/><br/>What can you say about this grammar in terms of the usefulness of its variables?",
         "question": "Should we keep the variable $C$?",
         "answer": "No, because it is useless variable.",
         "choices": ["Yes, it might be useful later.", "No, because it is useless variable."]
       },
-      "q5":{
+      "impossible":{
         "type": "select",
-        "description": "Here is the grammar after removing $C$ and its associated productions:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br/>What can we say about this grammar?",
+        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br/><br/>What can you say about this grammar in terms of the usefulness of its variables?",
         "question": "Can you generate any string from this grammar?",
         "answer": "No",
-        "choices": ["Yes","No"]
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["There is no way to replace all of the variables with terminals, so we can never actually derive a string."],
+        "incorrectFeedback": ["How can we remove all of the variables during a derivation?"]
       },
-      "q6":{
+      "alluseless":{
         "type": "true/false",
-        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br/>What can you say about this grammar?",
+        "description": "Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br/><br/>What can you say about this grammar in terms of the usefulness of its variables?",
         "question": "$A$ , $S$, and $B$ are useless variables since they can’t derive a string of terminals.",
         "answer": "True",
         "choices": []
       },
-      "q7":{
+      "nochange":{
         "type": "true/false",
-        "description": "Theorem: (useless productions) Let $G$ be a CFG. Then there exists $G'$ that does not contain any useless variables or productions such that $L(G) = L(G')$.",
+        "description": "<b>Theorem: (useless productions):</b> Let $G$ be a CFG. Then there exists $G'$ that does not contain any useless variables or productions such that $L(G) = L(G')$.",
         "question": "Removing useless productions will affect the grammar's language.",
         "answer": "False",
         "choices": []
       },
-      "q9":{
+      "unreachable":{
         "type": "select",
         "description": "We have seen two types of useless productions.<br/>1. Productions that are unreachable. These are the productions that we can not reach from the start variable.",
-        "question": "In this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br>Which variable is unreachable?",
+        "question": "Consider the grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br/><br/>Which variable is unreachable?",
         "answer": "C",
         "choices": ["A","S","C","B"]
       },
       "q10":{
         "type": "select",
         "description": "We have seen two types of useless productions.<br/>1. Productions that are unreachable. These are the productions that we can not reach from the start variable.<br/>2. Productions that are nonterminating, meaning that these production will keep looping with the same/other productions without termination (so, no strings will come out of these productions).",
-        "question": "In this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br/>Which variables are nonterminating?",
+        "question": "Consider the grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br/><br/>Which variables are nonterminating?",
         "answer": ["A","S","B"],
         "choices": ["A","S","C","B"]
       },
       "q14":{
         "type": "select",
-        "description": "An algorithm to remove useless productions.<br/>Let $G=(V,T,S,P)$.<br/>1. Compute $V_1 =$ {Variables that can derive strings of terminals}<br/>$\\quad 1.\\ V_1 = \\emptyset$<br/>$\\quad 2.$ Repeat until no more variables are added:<br/>$\\quad\\quad$ For every $A \\in V$ with $A\\rightarrow x_1x_2\\ldots x_n$, $x_i \\in (T^* \\cup V_1)$, add $A$ to $V_1$",
+        "description": "An algorithm to remove useless productions: Let $G=(V,T,S,P)$.<br/>1. Compute $V_1 =$ {Variables that can derive strings of terminals}<br/>$\\quad 1.\\ V_1 = \\emptyset$<br/>$\\quad 2.$ Repeat until no more variables are added:<br/>$\\quad\\quad$ For every $A \\in V$ with $A\\rightarrow x_1x_2\\ldots x_n$, $x_i \\in (T^* \\cup V_1)$, add $A$ to $V_1$",
         "question": "For grammar on the left, what is the initial value for $V_1$?",
         "answer": "$\\emptyset$",
         "choices": ["A","S","C","B","$\\emptyset$","E","D"]

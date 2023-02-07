@@ -4,12 +4,12 @@ $(document).ready(function () {
   var av = new JSAV(av_name,);
   var Frames = PIFRAMES.init(av_name);
 
-  //frame 1
-  av.umsg("$\\textbf {Definition}$: A CFG $G$ is ambiguous if $\\exists$ some $w\\in L(G)$ which has two distinct derivation trees.");
+  // Frame 1
+  av.umsg("$\\textbf {Definition}$: A CFG $G$ is ambiguous if there is any string $w$ in the language $L(G)$ that has two distinct derivation trees.");
   av.displayInit();
 
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("order"));
   var tr = av.ds.tree({nodegap: 15, left: 0, top: 100});
   var root_s_1 = tr.root("E");
   var E_1 = tr.newNode("E");
@@ -40,21 +40,20 @@ $(document).ready(function () {
   tr.layout();
   av.step();
 
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("multfirst"));
   av.step();
 
-  //frame 4
-  av.umsg(Frames.addQuestion("q4"));
+  // Frame 4
+  av.umsg(Frames.addQuestion("eval1"));
   av.step();
 
-  //frame 5
-  av.umsg(Frames.addQuestion("q5"));
+  // Frame 5
+  av.umsg(Frames.addQuestion("different"));
   av.step();
 
-
-  //frame 6
-  av.umsg(Frames.addQuestion("q6"));
+  // Frame 6
+  av.umsg(Frames.addQuestion("addfirst"));
   tr.hide();
   var tr2 = av.ds.tree({nodegap: 15, left: 250, top: 100});
   var root_s = tr2.root("E");
@@ -84,84 +83,59 @@ $(document).ready(function () {
   var r24 = I3.addChild(a1);
   
   tr2.layout();
-
   av.step();
 
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
+  // Frame 7
+  av.umsg(Frames.addQuestion("eval2"));
   av.step();
 
-  //frame 8
-  av.umsg(Frames.addQuestion("q8"));
+  // Frame 8
+  av.umsg(Frames.addQuestion("whichcorrect"));
   tr.show();
   av.step();
 
-  //frame 9
-  av.umsg(Frames.addQuestion("q9"));
+  // Frame 9
+  av.umsg(Frames.addQuestion("ambiguous"));
   av.step();
 
-  //frame 10
-  av.umsg("Compilers cannot decide which parse tree is the correct one. Compilers only work with unambiguous grammars. So, in case we have an ambiguous grammar, we should rewrite the grammar to remove the ambiguity.");
+  // Frame 10
+  av.umsg("Compilers cannot decide which parse tree is the correct one for an ambiguous grammar. Therefore, compilers normally only work with unambiguous grammars. Since in case we have an ambiguous grammar, we should rewrite the grammar to remove the ambiguity.<br/><br/>Unfortunately, there is no algorithm to remove ambiguity. But there are some common techniques that grammar writers can use.");
   av.step();
 
-  //frame 11
-  av.umsg("Unfortunaitly, there is no algorithm to remove ambiguity. But there are some common tricks");
+  // Frame 11
+  av.umsg(Frames.addQuestion("precedence"));
   av.step();
 
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
+  // Frame 12
+  av.umsg(Frames.addQuestion("associativity"));
   av.step();
 
-  //frame 13
-  av.umsg(Frames.addQuestion("q13"));
+  // Frame 13
+  av.umsg(Frames.addQuestion("assoctypes"));
   av.step();
 
-  //frame 14
-  av.umsg(Frames.addQuestion("q14"));
+  // Frame 14
+  av.umsg(Frames.addQuestion("leftassoc"));
   av.step();
 
-  //frame 15
-  av.umsg(Frames.addQuestion("q15"));
+  // Frame 15
+  av.umsg(Frames.addQuestion("rightassoc"));
   av.step();
 
-  //frame 16
-  av.umsg(Frames.addQuestion("q16"));
+  // Frame 16
+  av.umsg("Unfortunately, there is no algorithm to remove ambiguity. But there are some common techniques that grammar writers can use.<br/>Operator precedence<br/>Operator associativity<br/>Rewrite the grammar from scratch");
   av.step();
 
-  //frame 17
-  av.umsg("Unfortunaitly, there is no algorithm to remove ambiguity. But there are some common tricks<br/>Operator precedence<br/>Operator associativity<br/>Rewrite the grammar from scratch");
+  // Frame 17
+  av.umsg("Looking at the grammar $G = (\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)\\qquad P =$<br\>$E \\rightarrow E+E \\ |\\ E*E \\ |\\ (E) \\ |\\ I$<br/> $I\\rightarrow a \\ |\\ b$,<br/>we found that there are two different results for the expression $2+4*2$.<br/><br/>The difference came from which operator we evaluated first. In the first tree we can see that the multiplication operator is deeper, so we must evaluate it before evaluationg the addition operator. This gives multiplication higer precedence than addition.");
   av.step();
 
-  //fram 18
-  av.umsg("By looking at the grammar $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$, we will notice that there are two different results for the expression $2+4*2$.");
+  // Frame 18
+  av.umsg("In the second parse tree, the addition was deeper than the multiplication. This means that we give addition higer precedence than multiplication. If we don't like that outcome, then we should change the grammar to not allow that to happen.");
   av.step();
 
-  //fram 19
-  av.umsg("By looking at the grammar $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$, we will notice that there are two different results for the expression $2+4*2$.<br/>The difference came from which operator we evaluated first.");
-  av.step();
-
-  //fram 20
-  av.umsg("By looking at the grammar $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$, we will notice that there are two different results for the expression $2+4*2$.<br/>The difference came from which operator we evaluated first. The first tree, we can see that the multiplication sign was deeper in the tree. So we must evaluate it before evaluationg the addition, this gives the multiplication higer precedence than addition.");
-  tr.show();
-  av.step();
-
-  //fram 21
-  av.umsg("By looking at the grammar $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P)$,$P$=<br> $E \\rightarrow E+E | E*E | (E) | I$ <br>    $I\\rightarrow a | b$, we will notice that there are two different results for the expression $2+4*2$.<br/>The difference came from which operator we evaluated first. In the other parse tree, the addition was deeper than the multiplication, and in this cas, we gave addition higer precedence than multiplication");
-  tr.hide();
-  tr2.show();
-  av.step();
-
-  //fram 22
-  av.umsg(Frames.addQuestion("q22"));
-  tr2.hide();
-  av.step();
-
-  //fram 23
-  av.umsg(Frames.addQuestion("q23"));
-  av.step();
-
-  //frame 24
-  av.umsg("Rewrite the grammar as an unambiguous grammar. (Specifically, with the meaning that multiplication has higher precedence than addition.) <br> $E\\rightarrow E+T$ | $T$<br>    $T\\rightarrow T∗*$ | $F$<br>  $F\\rightarrow I$ | $(E)$<br>$I\\rightarrow a$ | $b$ <br>There is only one derivation tree for $a+b∗a$:")
+  // Frame 19
+  av.umsg("Now let us try to remove the ambiguity by rewriting the grammar as an unambiguous grammar. Specifically, meaning that multiplication has higher precedence than addition. Consider this grammar.<br/>$E\\rightarrow E+T$ | $T$<br>    $T\\rightarrow T∗*$ | $F$<br>  $F\\rightarrow I$ | $(E)$<br>$I\\rightarrow a$ | $b$")
   tr2.hide();
   tr.hide();
   var tr3 = av.ds.tree({nodegap: 15, left: 250, top: 100});
@@ -201,21 +175,16 @@ $(document).ready(function () {
   tr3.layout();
   av.step();
 
-  //frame 25
-  av.umsg(Frames.addQuestion("q25"));
+  // Frame 20
+  av.umsg(Frames.addQuestion("newgrammar"));
   av.step();
 
-  //frame 26
-  av.umsg("Try to get a derivation tree with the other meaning of $a+b*c$, when * is closer to the root of the tree.<br> $E\\Rightarrow T\\Rightarrow T*F...$ Then the only way to include a '+' before the multiplication is if the addition is enclosed in parenthesis. Thus, there is only one meaning that is accepted.")
-
-  av.step();
-
-  //frame 27
-  av.umsg(Frames.addQuestion("q27"));
+  // Frame 21
+  av.umsg(Frames.addQuestion("unambig"));
   tr3.hide();
   av.step();
 
-  //frame 28
-  av.umsg("Completed");
+  // Frame 22
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

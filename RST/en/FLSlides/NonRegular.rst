@@ -156,15 +156,16 @@ Identifying Non-regular Languages
    part can be "pumped", resulting in strings that must be in :math:`L`. 
 
 
-.. slide:: P.L. Used to Prove *L* Non-regular
+.. slide:: P.L. Proof Template
 
    | Proof by Contradiction.
    | Assume L is regular.
    | Therefore :math:`L` satisfies the pumping lemma. 
-   | Choose a long string :math:`w \in L`, :math:`|w| \ge m`.
+   | **Choose** a long string :math:`w \in L`, :math:`|w| \ge m`.
    |   (The choice of the string is crucial.
-       We must pick a string that will yield a contradiction). 
-   | Show that there is NO division of :math:`w` into :math:`xyz`
+       We must pick a string that will yield a contradiction.
+       Some strings make the proof easier or harder.)
+   | **Show** that there is **no** division of :math:`w` into :math:`xyz`
    |   (must consider all possible divisions) such that
        :math:`|xy| \le m`, :math:`|y| \ge 1` and :math:`xy^iz \in L`
        for all :math:`i \ge 0`.
@@ -172,22 +173,52 @@ Identifying Non-regular Languages
    | :math:`\Rightarrow L` is not regular.
 
 
-.. slide:: Example
+.. slide:: Example Proof
 
    | Prove that :math:`L = \{a^nb^n | n \geq 0\}` is not regular.
    |   Assume :math:`L` is regular, therefore the pumping lemma holds. 
    |   Choose :math:`w = a^mb^m`
        where :math:`m` is the constant in the pumping lemma. 
    |     (Note that :math:`w` must be chosen such that :math:`|w| \ge m`.) 
-   |   Regardless of :math:`m`, we pick :math:`w = a^mb^m`.
-       Therefore, substring :math:`y` must be some number of
-       :math:`a` 's.
-   |   So the partition is
+   |   Now show there is no partition of :math:`w` into :math:`xyz`
+       such that :math:`|xy| \leq m`, :math:`|y| \geq 1`,
+       and :math:`xy^iz \in L` for all :math:`i \geq 0`.
+   |   If :math:`xy` is :math:`a^m`, then
        :math:`x=a^{n-k}\quad |\quad y=a^k\quad |\quad z=b^n`
        where :math:`n \leq m` and :math:`k > 0`.
    |   It should be true that :math:`xy^iz \in L` for all :math:`i\ge 0`.
-   |   But clearly this is not true, no matter what :math:`k > 0` we
-       pick. Contradiction! 
+       But clearly this is not true, no matter what :math:`k > 0` we
+       pick. Contradiction!
+   |   For any other partion with :math:`xy` of length less than
+       :math:`m`, we have a contradiction because in all such cases
+       :math:`y` is some a's, which cannot be pumped.
+
+
+.. slide:: Harder version (1)
+
+   | Prove that :math:`L = \{a^nb^n | n \geq 0\}` is not regular.
+   |   Assume :math:`L` is regular, therefore the pumping lemma holds. 
+   |   Choose :math:`w = a^{m/2}b^{m/2}`
+       where :math:`m` is the constant in the pumping lemma. 
+   |     (Note that :math:`w` must be chosen such that :math:`|w| \ge m`.) 
+   |   Now show there is no partition of :math:`w` into :math:`xyz`
+       such that :math:`|xy| \leq m`, :math:`|y| \geq 1`,
+       and :math:`xy^iz \in L` for all :math:`i \geq 0`.
+
+
+.. slide:: Harder version (2)
+
+   |   In the last version of the proof, all partitions with
+       :math:`|xy| \leq m` required that :math:`y` be all a's.
+   |   This version is harder because the dividing line can be
+       anywhere within :math:`w = a^{m/2}b^{m/2}` (the requirement is
+       just that :math:`|xy| \leq m`). We have to show that none of
+       them work.
+   |   In some partitions, :math:`y` is all a's.
+       In some, it is all b's. In some, it is a's followed by b`s.
+   |   But in every possible partition, :math:`y` cannot be pumped.
+   |   So we still have a contradition, and so the language cannot be
+       regular.
 
 
 .. slide:: Observations
