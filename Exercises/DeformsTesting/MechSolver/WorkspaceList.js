@@ -89,25 +89,28 @@ class WorkspaceList
         
         // Add the buttons for adding workspace
         
-        // this.addbutton = this.globalJSAVobject.label("Add Workspace", 
-        var addbuttonText = this.globalJSAVobject.label("", 
-        {left: this.DIMENSIONS["UPPER_CORNER_X"]+4, top: this.DIMENSIONS["UPPER_CORNER_Y"]-12})
-        .addClass("addworkspace");
+        // TEMPORARILY DISABLED 2023-02-06 FOR IN-CLASS FEEDBACK ENGINE TESTING
+        // POSITIVELY ENABLE THIS AFTERWARDS
+
+        // // this.addbutton = this.globalJSAVobject.label("Add Workspace", 
+        // var addbuttonText = this.globalJSAVobject.label("", 
+        // {left: this.DIMENSIONS["UPPER_CORNER_X"]+4, top: this.DIMENSIONS["UPPER_CORNER_Y"]-12})
+        // .addClass("addworkspace");
         
-        this.addbutton = document.createElement("input");
-        this.addbutton.setAttribute("type", "button");
-        this.addbutton.setAttribute("value", "Add Workspace");
-        addbuttonText.element[0].appendChild(this.addbutton);
-        addbuttonText.element[0].setAttribute("title", "Add a new workspace area to segregate subparts or separate attempts.");
+        // this.addbutton = document.createElement("input");
+        // this.addbutton.setAttribute("type", "button");
+        // this.addbutton.setAttribute("value", "Add Workspace");
+        // addbuttonText.element[0].appendChild(this.addbutton);
+        // addbuttonText.element[0].setAttribute("title", "Add a new workspace area to segregate subparts or separate attempts.");
         
-        // this.addbutton.element[0].addEventListener('click', e => {
-        this.addbutton.addEventListener("click", e=> {
-            // e.stopPropagation();
-            e.stopImmediatePropagation();
-            this.addNewWorkspace();
-            this.globalJSAVobject.logEvent({type: "adding new workspace", desc: `Added workspace ${this.workspaceCounter-1}`});
-            // console.log(this.globalJSAVobject);
-        });
+        // // this.addbutton.element[0].addEventListener('click', e => {
+        // this.addbutton.addEventListener("click", e=> {
+        //     // e.stopPropagation();
+        //     e.stopImmediatePropagation();
+        //     this.addNewWorkspace();
+        //     this.globalJSAVobject.logEvent({type: "adding new workspace", desc: `Added workspace ${this.workspaceCounter-1}`});
+        //     // console.log(this.globalJSAVobject);
+        // });
 
         // Adding button for downloading entire configuration
 
@@ -209,15 +212,19 @@ class WorkspaceList
         
         // Update reference positions
         this.updateShape();
-
+        
+        
+        // TEMPORARILY DISABLED 2023-02-06 FOR IN-CLASS FEEDBACK ENGINE TESTING
+        // POSITIVELY ENABLE THIS AFTERWARDS
+        
         // Associate clickhandler for deletion
-        newWkspace.removebutton.addEventListener('click', e => {
-            e.stopPropagation();
-            var delete_ID = newWkspace.destroyBox();
-            delete this.workspace_list[delete_ID];
-            this.globalJSAVobject.logEvent({type: "deleting workspace", "id": delete_ID});
-            this.updateShape();
-        });
+        // newWkspace.removebutton.addEventListener('click', e => {
+        //     e.stopPropagation();
+        //     var delete_ID = newWkspace.destroyBox();
+        //     delete this.workspace_list[delete_ID];
+        //     this.globalJSAVobject.logEvent({type: "deleting workspace", "id": delete_ID});
+        //     this.updateShape();
+        // });
 
 	    // TODO: Clean this up and replace with call to WindowManager functions
         Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);
