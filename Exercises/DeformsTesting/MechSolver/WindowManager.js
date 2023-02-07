@@ -20,7 +20,11 @@ class WindowManager{
         // document.styleSheets[2].rules[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
 
         // Assuming that there is only one .jsavcanvas for the entire the workarea
-        this.globalJSAVobject.canvas[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
+        // this.globalJSAVobject.canvas[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
+
+        // Updated: 2/6/2023
+        let currHeight = $('.jsavcanvas').css('height')
+        $('.jsavcanvas').css('height', Math.max(parseInt(currHeight)+shiftAmount, 600)+'px' )
 	    Window.updateExerciseWindowHeight(shiftAmount);
 	}
 

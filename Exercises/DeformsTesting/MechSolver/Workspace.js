@@ -146,7 +146,10 @@ class Workspace
             "jsav":
                 this.globalSectionObj.label(
                 // "&#x1F5D1",
-                "&#x2702", 
+                " ",
+                // TEMPORARILY DISABLED 2023-02-06 FOR IN-CLASS FEEDBACK ENGINE TESTING
+                // POSITIVELY ENABLE THIS AFTERWARDS
+                // "&#x2702", 
                 {
                     left: this.DIMENSIONS["POSITION_X"]+this.DIMENSIONS["WIDTH"]-20, 
                     top: this.DIMENSIONS["POSITION_Y"]-15

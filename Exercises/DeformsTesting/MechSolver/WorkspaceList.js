@@ -18,12 +18,12 @@ class WorkspaceList
         this.workspaceCounter=1;
         
         this.colors = {
-            azure:                  {colorcode: "#f0ffff", selected: false},
-            aquamarine:             {colorcode: "#7FFFD4", selected: false},
-            blanchedalmond:         {colorcode: "#FFEBCD", selected: false},
-            beige:                  {colorcode: "#f5f5dc", selected: false},
-            babyblue:               {colorcode: "#6495ED", selected: false},
-            coral:                  {colorcode: "#FF7F50", selected: false},
+            // azure:                  {colorcode: "#f0ffff", selected: false},
+            // aquamarine:             {colorcode: "#7FFFD4", selected: false},
+            // blanchedalmond:         {colorcode: "#FFEBCD", selected: false},
+            // beige:                  {colorcode: "#f5f5dc", selected: false},
+            // babyblue:               {colorcode: "#6495ED", selected: false},
+            // coral:                  {colorcode: "#FF7F50", selected: false},
             // darksalmon:             {colorcode: "#e9967a", selected: false},
             // darkturquoise:          {colorcode: "#00CED1", selected: false},
             // greenyellow:            {colorcode: "#ADFF2F", selected: false},
@@ -38,20 +38,20 @@ class WorkspaceList
             // silver:                 {colorcode: "#c0c0c0", selected: false},
             white:                  {colorcode: "#ffffff", selected: false},
             // yellow:                 {colorcode: "#ffff00", selected: false},
-            LightCyan:              {colorcode: "#E0FFFF", selected: false},
-            LightGoldenRodYellow:   {colorcode: "#FAFAD2", selected: false},
-            LightGreen:             {colorcode: "#90EE90", selected: false},
-            LightPink:              {colorcode: "#FFB6C1", selected: false},
-            LightSalmon:            {colorcode: "#FFA07A", selected: false},
-            LightSeaGreen:          {colorcode: "#20B2AA", selected: false},
-            LightSkyBlue:           {colorcode: "#87CEFA", selected: false},
-            PaleGoldenRod:          {colorcode: "#EEE8AA", selected: false},
-            PaleGreen:              {colorcode: "#98FB98", selected: false},
-            PaleTurquoise:          {colorcode: "#AFEEEE", selected: false},
-            PaleVioletRed:          {colorcode: "#DB7093", selected: false},
-            PapayaWhip:             {colorcode: "#FFEFD5", selected: false},
-            PeachPuff:              {colorcode: "#FFDAB9", selected: false},
-            Plum:                   {colorcode: "#DDA0DD", selected: false},
+            // LightCyan:              {colorcode: "#E0FFFF", selected: false},
+            // LightGoldenRodYellow:   {colorcode: "#FAFAD2", selected: false},
+            // LightGreen:             {colorcode: "#90EE90", selected: false},
+            // LightPink:              {colorcode: "#FFB6C1", selected: false},
+            // LightSalmon:            {colorcode: "#FFA07A", selected: false},
+            // LightSeaGreen:          {colorcode: "#20B2AA", selected: false},
+            // LightSkyBlue:           {colorcode: "#87CEFA", selected: false},
+            // PaleGoldenRod:          {colorcode: "#EEE8AA", selected: false},
+            // PaleGreen:              {colorcode: "#98FB98", selected: false},
+            // PaleTurquoise:          {colorcode: "#AFEEEE", selected: false},
+            // PaleVioletRed:          {colorcode: "#DB7093", selected: false},
+            // PapayaWhip:             {colorcode: "#FFEFD5", selected: false},
+            // PeachPuff:              {colorcode: "#FFDAB9", selected: false},
+            // Plum:                   {colorcode: "#DDA0DD", selected: false},
         };
         this.remainingcolors = 0; // To be set on the first call to the function
 
@@ -89,25 +89,28 @@ class WorkspaceList
         
         // Add the buttons for adding workspace
         
-        // this.addbutton = this.globalJSAVobject.label("Add Workspace", 
-        var addbuttonText = this.globalJSAVobject.label("", 
-        {left: this.DIMENSIONS["UPPER_CORNER_X"]+4, top: this.DIMENSIONS["UPPER_CORNER_Y"]-12})
-        .addClass("addworkspace");
+        // TEMPORARILY DISABLED 2023-02-06 FOR IN-CLASS FEEDBACK ENGINE TESTING
+        // POSITIVELY ENABLE THIS AFTERWARDS
+
+        // // this.addbutton = this.globalJSAVobject.label("Add Workspace", 
+        // var addbuttonText = this.globalJSAVobject.label("", 
+        // {left: this.DIMENSIONS["UPPER_CORNER_X"]+4, top: this.DIMENSIONS["UPPER_CORNER_Y"]-12})
+        // .addClass("addworkspace");
         
-        this.addbutton = document.createElement("input");
-        this.addbutton.setAttribute("type", "button");
-        this.addbutton.setAttribute("value", "Add Workspace");
-        addbuttonText.element[0].appendChild(this.addbutton);
-        addbuttonText.element[0].setAttribute("title", "Add a new workspace area to segregate subparts or separate attempts.");
+        // this.addbutton = document.createElement("input");
+        // this.addbutton.setAttribute("type", "button");
+        // this.addbutton.setAttribute("value", "Add Workspace");
+        // addbuttonText.element[0].appendChild(this.addbutton);
+        // addbuttonText.element[0].setAttribute("title", "Add a new workspace area to segregate subparts or separate attempts.");
         
-        // this.addbutton.element[0].addEventListener('click', e => {
-        this.addbutton.addEventListener("click", e=> {
-            // e.stopPropagation();
-            e.stopImmediatePropagation();
-            this.addNewWorkspace();
-            this.globalJSAVobject.logEvent({type: "adding new workspace", desc: `Added workspace ${this.workspaceCounter-1}`});
-            // console.log(this.globalJSAVobject);
-        });
+        // // this.addbutton.element[0].addEventListener('click', e => {
+        // this.addbutton.addEventListener("click", e=> {
+        //     // e.stopPropagation();
+        //     e.stopImmediatePropagation();
+        //     this.addNewWorkspace();
+        //     this.globalJSAVobject.logEvent({type: "adding new workspace", desc: `Added workspace ${this.workspaceCounter-1}`});
+        //     // console.log(this.globalJSAVobject);
+        // });
 
         // Adding button for downloading entire configuration
 
@@ -209,15 +212,19 @@ class WorkspaceList
         
         // Update reference positions
         this.updateShape();
-
+        
+        
+        // TEMPORARILY DISABLED 2023-02-06 FOR IN-CLASS FEEDBACK ENGINE TESTING
+        // POSITIVELY ENABLE THIS AFTERWARDS
+        
         // Associate clickhandler for deletion
-        newWkspace.removebutton.addEventListener('click', e => {
-            e.stopPropagation();
-            var delete_ID = newWkspace.destroyBox();
-            delete this.workspace_list[delete_ID];
-            this.globalJSAVobject.logEvent({type: "deleting workspace", "id": delete_ID});
-            this.updateShape();
-        });
+        // newWkspace.removebutton.addEventListener('click', e => {
+        //     e.stopPropagation();
+        //     var delete_ID = newWkspace.destroyBox();
+        //     delete this.workspace_list[delete_ID];
+        //     this.globalJSAVobject.logEvent({type: "deleting workspace", "id": delete_ID});
+        //     this.updateShape();
+        // });
 
 	    // TODO: Clean this up and replace with call to WindowManager functions
         Window.windowManager.extendCanvas(this.DIMENSIONS["NEW_WKSPACE"]["HEIGHT"]);

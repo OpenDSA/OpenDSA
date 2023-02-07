@@ -2,7 +2,7 @@ import sys, os
 import json
 
 from argparse import ArgumentParser
-from collections import Counter
+from collections import Counter, defaultdict
 from itertools import combinations
 
 import networkx as nx
@@ -56,6 +56,10 @@ def get_unknown_summary(solution_json):
     
     for wk_id, workspace in solution_json["workspaces"].items():
         for eq_id, equation in workspace["equations"].items():
+            #add mappings to equation numbers
+            summary_json[f"wk{wk_id}_{eq_id}"] = equation['id']
+            summary_json[equation['id']] = f"wk{wk_id}_{eq_id}"
+
             for varname, variable in equation["variables"].items():
                 if variable["valueType"] == "number":
                     summary_json[variable["id"]] = variable
@@ -150,6 +154,8 @@ def makeDependencyGraph(solutionObject, eqbank, debug=False):
     # add function call to simplify and substitute? make it an all in one?
     
     return g_dependency
+
+    """
     g_dependency = nx.Graph()
         
     for w_id, wkspace in solutionObject['workspaces'].items():
@@ -229,6 +235,7 @@ def makeDependencyGraph(solutionObject, eqbank, debug=False):
     # add function call to simplify and substitute? make it an all in one?
     
     return g_dependency
+    """
 
 def dependencyFolding(g_dep, debug=False):
     # reduces 1-1 dependencies wherever possible to create the minimal set
@@ -352,12 +359,14 @@ def compare_solution_boxes(master_soln, attempt_soln, attempt_soln_summary):
         return list_of_solns
     
     for soln_id, solution in master_soln["solutions"].items():
-        message_text[soln_id] = {"decision": [], "details":[]}
+        message_text[soln_id] = {"status": False, "decision": [], "details":[]}
         
         if solution["type"] != "number":
             if solution["solution"] == attempt_soln["solutions"][soln_id]["solution"]:
+                message_text[soln_id]["status"] = True
                 message_text[soln_id]["decision"].append(f"Solution {int(soln_id)+1} was correct!")
             else:
+                message_text[soln_id]["status"] = False
                 message_text[soln_id]["decision"].append(f"Solution {int(soln_id)+1} was incorrect!")
         else:
             # convert the units from solution["unit"] and attempt_soln[soln_id]["unit"]
@@ -386,6 +395,7 @@ def compare_solution_boxes(master_soln, attempt_soln, attempt_soln_summary):
                 float(attempt_soln["solutions"][soln_id]["solution"]),
                 attempt_soln["solutions"][soln_id]["unit"]
             ):
+                message_text[soln_id]["status"] = True
                 message_text[soln_id]["decision"]\
                     .append(f"Solution {int(soln_id)+1} was correct!")
                 soln_target_tag = solution["source"]
@@ -396,6 +406,7 @@ def compare_solution_boxes(master_soln, attempt_soln, attempt_soln_summary):
                 abs(float(attempt_soln["solutions"][soln_id]["solution"])),
                 attempt_soln["solutions"][soln_id]["unit"]
             ):
+                message_text[soln_id]["status"] = False
                 message_text[soln_id]["decision"]\
                     .append(f"Solution {int(soln_id)+1} magnitude/value was correct! Sign was different.")
                 soln_target_tag = solution["source"]
@@ -404,6 +415,7 @@ def compare_solution_boxes(master_soln, attempt_soln, attempt_soln_summary):
                 flag=True
             
             if flag:
+                message_text[soln_id]["status"] = False
                 text = f"Solution {int(soln_id)+1} was incorrect! "
                 soln_target_tag = find_alternatives(solution) # which goes through the solution boxes in the solution.
                 if not soln_target_tag:
@@ -424,6 +436,7 @@ def compare_solution_boxes(master_soln, attempt_soln, attempt_soln_summary):
     
     return
     
+    """
     def find_alternatives(solution):
         list_of_solns = {}
         for wk, wkspace in attempt_soln["workspaces"].items():
@@ -499,6 +512,7 @@ def compare_solution_boxes(master_soln, attempt_soln, attempt_soln_summary):
                 message_text[soln_id]["decision"].append(text)
     
     return
+    """
 
 def generateExpressionTree(expr, prefix="default", debug=False):
     # expr: Sympy expression
@@ -874,12 +888,336 @@ def compare_exp_trees(met, aet, debug=False):
             
     return matchings
 
-def tree_report(tree, debug=False):
+def get_node_height(node, tree, debug=False):
+    """
+    node: node to calculate height for
+    tree: root node of the tree, NetworkX graph
+    
+    returns integer or 0
+    """
+    
+    if nx.number_connected_components(tree) > 1:
+        # don't know which tree to use
+        return -1
+    
+    if not tree.has_node(node):
+        return -1
+    
+    return 1+ nx.shortest_path_length(tree, find_root(tree), node)
+
+def tree_annotator(exp_tree, dep_graph, soln_id, unknown_summary, debug=False):
+    # Create dict of nodes by height, process them accordingly
+    
+    """
+    for each height, process nodes at that level
+    rules:
+    if leaf node (operand or constant), continue
+    if unary operator node (^ with -1, or * with -1, two nodes only, and one is operand)
+        operator's equation is practically the same node as the operator below it.
+            so copy over ID from the leaf node below it
+        exception: if a single equation is used, then this is a substitution.
+        Highly unlikely, but this can be processed.
+        see exception condition
+    else
+        multiple equations are connected by same operator through substitution
+        copy over all the common equation IDs from the LEAF NODES below it ONLY
+        to the operator node.
+    exception
+        there are no leaf nodes at that level.
+        So, all the operator nodes may/will have equation IDs.
+        so the equations are connected purely using substitutions of variables.
+        so this must be processed.
+    
+    For each equation ID at the operator node, one of two things brought the equation to this level.
+    either it was a variable substitution that connected the operators at that level.
+    or it was ... ???
+        Use surrounding information to determine what the substitution was.
+        OR use the equation ID that was moved to the operator node
+        to determine which variable was folded over,
+            and copy over its unique ID and latex representation.
+            this will be used for reporting.
+    """
+    
+    dict_node_depth = defaultdict(list)
+        
+    for node in exp_tree.nodes():
+        dict_node_depth[get_node_height(node, exp_tree)].append(node)
+    
+    l_depth = sorted(dict_node_depth.keys(), reverse=True)
+    # for depth in l_depth[1:]:
+    for depth in l_depth:
+        # Process the nodes as per previous rules.
+        
+        for node in dict_node_depth[depth]:
+            l_children = [
+                child
+                for child in exp_tree[node]
+                if child != exp_tree.nodes[node]['pred']
+            ]
+            
+            if debug:
+                print("Currently at this node:")
+                print(depth, node, l_children)
+                print()
+            
+            # Start the annotation rules
+            if len(l_children) == 0:
+                continue
+            
+            elif len(l_children) == 2 \
+            and exp_tree.nodes[node]['label'] in ['*','^'] \
+            and "NegativeOne" in [ _.split('_')[2] for _ in l_children]:
+                if debug:
+                    print("found a unary operator",node)
+                    print()
+                
+                operand = \
+                    l_children[0] if "NegativeOne" in l_children[1] \
+                    else l_children[1]
+                if not "Symbol" in operand:
+                    continue
+                
+                exp_tree.nodes[node]['equationlist'] = {}
+                exp_tree.nodes[node]['equationlist']\
+                [exp_tree.nodes[operand]['label'][:exp_tree.nodes[operand]['label'].rfind('_')]] \
+                = {
+                    'term' : exp_tree.nodes[operand]['label'],'substituted' : False
+                }
+            
+            else:
+                # it's a standard n-way operator with a bunch of operands
+                # figure out which equation this is in.
+                
+                leafoperand = []
+                operators = []
+                
+                for child in l_children:
+                    
+                    #if debug:
+                    #    print("Nbh of",child,": ",list(nx.neighbors(exp_tree,child)))
+                    #    print("Pred of",child,": ",exp_tree.nodes[child]['pred'])
+                    #    print()
+                        
+                    if len([
+                            _ for _ in nx.neighbors(exp_tree,child) 
+                            if _ != exp_tree.nodes[child]['pred']
+                        ]) > 0 and \
+                    'equationlist' in exp_tree.nodes[child]:
+                        # If there's an equationlist, its an
+                        # operator with leaves, not constants
+                        operators.append(child)
+                    else:
+                        if "Symbol" in child:
+                            leafoperand.append(child)
+                
+                if debug:
+                    print("Leaves:",leafoperand)
+                    print("Operators:",operators)
+                
+                leaf_eq = {}
+                unsub_oper_eq = {}
+                
+                for lopnd in leafoperand:
+                    leaf_eq[
+                        exp_tree.nodes[lopnd]['label'][:exp_tree.nodes[lopnd]['label'].rfind('_')]
+                    ] = None
+                
+                for op in operators:
+                    for eq in exp_tree.nodes[op]['equationlist']:
+                        if exp_tree.nodes[op]['equationlist'][eq]['substituted'] == False:
+                            unsub_oper_eq[eq] = None
+                
+                if debug:
+                    print("Leaf equations and operator equations---")
+                    print(leaf_eq, unsub_oper_eq)
+                    print()
+                
+                #equations_at_level = set(leaf_eq).intersection(set(unsub_oper_eq))
+                #if debug:
+                #    print(equations_at_level)
+                
+                # If nonzero intersection > 1, problem
+                # means multiple equations are substituted into a single equation
+                # and combined accordingly, not sure how prevalent this is
+                # need to investigate
+                #
+                # if len(equations_at_level) > 1:
+                #    pass
+                
+                # If nonzero intersection == 1
+                # and union == 1, move up immediately
+                #if len(set(leaf_eq).intersection(set(unsub_oper_eq))) == 1 \
+                #and len(set(leaf_eq).union(set(unsub_oper_eq))) == 1:
+                if len(set(leaf_eq).union(set(unsub_oper_eq))) == 1:
+                    if debug:
+                        print("Only one equation here, moving on up")
+                        print("Assigning top level equation to this node")
+                        print(node)
+                        print(list(set(leaf_eq).union(set(unsub_oper_eq)))[0])
+                        print()
+                    
+                    exp_tree.nodes[node]['equationlist'] = {}
+                    exp_tree.nodes[node]['equationlist'] \
+                    [list(set(leaf_eq).union(set(unsub_oper_eq)))[0]] = {'substituted' : False}
+                
+                # If zero intersection,
+                # find the top level equation and move it to
+                # the root node, no substitution
+                # and add substitution information for
+                # the child nodes where applicable.
+                elif len(set(leaf_eq).intersection(set(unsub_oper_eq))) == 0:
+                    # union will always be >0, whether there's any overlap is the question
+                    
+                    if debug:
+                        print("Equations at the current level, no overlap---")
+                        print(leaf_eq, unsub_oper_eq)
+                        print()
+                    
+                    eq_ids = list(leaf_eq)
+                    
+                    # NOTE: This ONLY works for 1-1; definitely modify this for n-n subgraph
+                    # Try to find the top level equation from the dependency graph
+
+                    if debug:
+                        print(list(unknown_summary.keys()))
+
+                    solnbox = [ _ for _,s in dep_graph.nodes(data="solution_id") if s==soln_id][0]
+                    equation_levels = {
+                        eq: 
+                        nx.shortest_path_length(
+                            dep_graph, solnbox, eq
+                        )
+                        for eq in 
+                        set([unknown_summary[_] for _ in list(leaf_eq)+list(unsub_oper_eq)])
+                    }
+                    
+                    eq_top_level = min(equation_levels, key=lambda x:equation_levels[x])
+                    
+                    if debug:
+                        print("Distances from solnbox to equations for top level equation")
+                        print(equation_levels)
+                        print("Top level:", eq_top_level, unknown_summary[eq_top_level])
+                    
+                    # Move the top level equation to the root node,
+                    # substitute the other childnodes
+                    # i.e. set substituted=True and term=<x_y csymbol> to be used later
+                    
+                    exp_tree.nodes[node]['equationlist'] = {}
+                    exp_tree.nodes[node]['equationlist']\
+                    [unknown_summary[eq_top_level]] \
+                    = {
+                        'substituted' : False
+                    }
+                    
+                    for eq in unsub_oper_eq:
+                        var = [_ for _ in dep_graph[unknown_summary[eq]]][0]
+                        if dep_graph.degree(var) >= 2 and not 'solution_id' in dep_graph.nodes[var]:
+                            if debug:
+                                print(f"Substitution assoc for {eq} at level is {var}")
+                                print("Symbol is",
+                                    unknown_summary[
+                                        list(unknown_summary[var])[0]]['value']['varDisplay']
+                                )
+                                print()
+                            
+                            # only storing var since that can be used to find the varDisplay when required
+                            for op in operators:
+                                if eq in exp_tree.nodes[op]['equationlist'] and \
+                                exp_tree.nodes[op]['equationlist'][eq]['substituted'] == False:
+                                    exp_tree.nodes[op]['equationlist'][eq]['substituted'] = True
+                                    exp_tree.nodes[op]['equationlist'][eq]['term'] = var
+                
+                else: # check out this condition later
+                    # Multiple equations appeared at that level
+                    # similar stuff as before, but move substitutions to root instead,
+                    # since they are all connected at the same operator
+                    # tentatively, this stands for union>1 and intersection>0
+                    
+                    if debug:
+                        print("Equations at the current level, no overlap---")
+                        print(leaf_eq, unsub_oper_eq)
+                        print("Resolved equations and substitutions go into the root")
+                        print()
+                    
+                    eq_ids = list(leaf_eq)
+                    
+                    # NOTE: This ONLY works for 1-1; definitely modify this for n-n subgraph
+                    # Try to find the top level equation from the dependency graph
+                    solnbox = [ _ for _,s in dep_graph.nodes(data="solution_id") if s==soln_id][0]
+                    equation_levels = {
+                        eq: 
+                        nx.shortest_path_length(
+                            dep_graph, solnbox, eq
+                        )
+                        for eq in 
+                        set([unknown_summary[_] for _ in list(leaf_eq)+list(unsub_oper_eq)])
+                    }
+                    eq_top_level = min(equation_levels, key=lambda x:equation_levels[x])
+                    
+                    if debug:
+                        print("Distances from solnbox to equations for top level equation")
+                        print(equation_levels)
+                        print("Top level:", eq_top_level, unknown_summary[eq_top_level])
+                    
+                    exp_tree.nodes[node]['equationlist'] = {}
+                    exp_tree.nodes[node]['equationlist']\
+                    [unknown_summary[eq_top_level]] \
+                    = {
+                        'substituted' : False
+                    }
+                    
+                    for eq in unsub_oper_eq:
+                        var = [_ for _ in dep_graph[unknown_summary[eq]]][0]
+                        if dep_graph.degree(var) >= 2 and not 'solution_id' in dep_graph.nodes[var]:
+                            if debug:
+                                print(f"Substitution assoc for {eq} at level is {var}")
+                                print("Symbol is",
+                                    unknown_summary[
+                                        list(unknown_summary[var])[0]]['value']['varDisplay']
+                                )
+                                print()
+                            
+                            # Put it in the root operator node
+                            # This is the first time we're visiting this node,
+                            # so they definitely do not have any entries for these equations.
+                            # create the entries and populate them
+                            exp_tree.nodes[node]['equationlist'][eq] = {}
+                            exp_tree.nodes[node]['equationlist'][eq]['substituted'] = True
+                            exp_tree.nodes[node]['equationlist'][eq]['term'] = var
+                    if debug:
+                        print("At root level")
+                        print(exp_tree.nodes[node]['equationlist'])
+    
+    return # nothing is returned, expression tree is modified is all.
+
+def tree_report(tree, unknown_summary, debug=False):
     """
     Takes the AST math tree and turns it into a verbal representation
     by recursively examining the contents
     """
     ##########################################################################
+    def get_equation_html_from_id(equation_id):
+        if list(tree)[0].split('_')[0] == 'a':
+            return '<span class="param" data-type=\"eq\" data-item=\"'+\
+                equation_id+\
+                '\">this equation</span>'
+        else:
+            name_of_eq = equation_id.split('_')[1]
+            page_of_eq = eqbank[name_of_eq]["group"]
+            return \
+            '<span class="param" data-type=\"pallette-eq\" data-page=\"'\
+            +str(page_of_eq)\
+            +'\" data-item=\"'+\
+            str(name_of_eq)+\
+            '\">this equation</span>'
+    
+    def get_assoc_html(var_term):
+        return '<span class="param" data-type=\"var-assoc\" data-item=\"'+\
+            str(var_term)+\
+        '\">'+\
+            str(unknown_summary[list(unknown_summary[var_term])[0]]['value']['varDisplay'])+\
+        '</span>'
+
     def construct_phrase_desc_rec(node, parent):
         l_children = {
             child: len([_ for _ in tree[child] if _ != node])
@@ -887,8 +1225,68 @@ def tree_report(tree, debug=False):
             if child != parent
         }
         if debug:
+            print("In tree_report")
             print(l_children)
         
+        # If the root node has any substitutions, address it accordingly
+        # and only report it as such, no need for breakdowns.
+        if "equationlist" in tree.nodes[node]:
+            current_phrase = []
+            
+            subs_children = {
+                eq: tree.nodes[node]["equationlist"][eq]['term'] \
+                for eq in tree.nodes[node]["equationlist"]
+                if tree.nodes[node]["equationlist"][eq]['substituted'] == True
+            }
+            
+            # if node has * 
+            # and children has -1, include negative
+            # and if node has > 1 subs_children,
+            #    include product of
+            if tree.nodes[node]['label'] == '*':
+                if "NegativeOne" in [
+                    _.split('_')[2] 
+                    for _ in nx.neighbors(tree, node) 
+                    if _ !=tree.nodes[node]['pred']
+                ]:
+                    if parent==None:
+                        # Top level product with a negative sign
+                        current_phrase.append("negative")
+                    elif parent['label'] == '+':
+                        # The parent above node is +, so this must be a negative term
+                        current_phrase.append("subtracted by")
+                if len(subs_children)>1:
+                    current_phrase.append("product of")
+            
+            # if node has + 
+            # and if node has > 1 subs_children,
+            #    include sum of
+            if tree.nodes[node]['label'] == '+'\
+            and len(subs_children)>1:
+                    current_phrase.append("sum of")
+            
+            #if len(subs_children) == 1:
+            #    host_eq = list(subs_children)[0]
+            #    var_term = subs_children[host_eq]
+            #    # only one substituted term, nothing fancy
+            #    current_phrase.append(
+            #        get_assoc_html(var_term)+' from '+get_equation_html_from_id(host_eq)
+            #    )
+            #
+            #elif len(subs_children) > 1:
+            
+            if len(subs_children) > 0:
+                term_list = []
+                for host_eq, var_term in subs_children.items():
+                    term_list.append(
+                        get_assoc_html(var_term)+' from '+get_equation_html_from_id(host_eq)
+                    )    
+                current_phrase.append(",".join(term_list))
+            
+            if debug:
+                print(current_phrase)
+            return " ".join(current_phrase)
+
         # If the node is a leaf node
         if len(l_children) == 0:
             # Substitute this with the 
@@ -1053,7 +1451,7 @@ def get_eqbox_html(node,exp_tree):
                 str(name_of_eq)+\
                 '\">this equation</span>'
 
-def get_error_contexts(exp_tree, debug=False):
+def get_error_contexts(exp_tree, unknown_summary, soln_id, debug=False):
     """
     Gets error messages back from a tree
     """
@@ -1076,7 +1474,7 @@ def get_error_contexts(exp_tree, debug=False):
             if is_symbol(exp_tree, list(context_g)[0]):
                 # it's a var,unknown,param
                 error_object = tree_report(
-                    nx.subgraph(exp_tree, context_g), debug=False
+                    nx.subgraph(exp_tree, context_g), unknown_summary, debug=debug
                 )
                 eq_context = get_eqbox_html(
                     list(context_g)[0],
@@ -1086,14 +1484,24 @@ def get_error_contexts(exp_tree, debug=False):
             else:
                 #it's a constant, get root and process it
                 # Get the subgraph rooted at its predecessor
-                messages.append(
-                    tree_report(
-                        get_rooted_subgraph(
-                            exp_tree,
-                            list(exp_tree[list(context_g)[0]])[0] #root
-                        ), debug=False
+                if message_text[soln_id]['status'] == False:
+                    if debug:
+                        print("It's a constant")
+                    # Breakdown and report errors in constants
+                    # only when something really went wrong
+                    # otherwise don't bother
+                    messages.append(
+                        tree_report(
+                            get_rooted_subgraph(
+                                exp_tree,
+                                list(exp_tree[list(context_g)[0]])[0] #root
+                            ), unknown_summary, debug=debug
+                        )
                     )
-                )
+                else:
+                    if debug:
+                        print("It's a constant but the answer is correct")
+                    continue
         
         elif len(context_g) == 2:
             # it's an edge, same logic basically after you find the leaf node
@@ -1103,7 +1511,7 @@ def get_error_contexts(exp_tree, debug=False):
             
             if is_symbol(exp_tree, node):
                 error_object = tree_report(
-                    nx.subgraph(exp_tree, [node]), debug=False
+                    nx.subgraph(exp_tree, [node]), unknown_summary, debug=debug
                 )
                 eq_context = get_eqbox_html(
                     node,
@@ -1114,7 +1522,7 @@ def get_error_contexts(exp_tree, debug=False):
         else:
             messages.append(
                 tree_report(
-                    nx.subgraph(exp_tree, context_g), debug=False
+                    nx.subgraph(exp_tree, context_g), unknown_summary, debug=debug
                 )
             )
     
@@ -1142,7 +1550,7 @@ def get_rooted_subgraph(tree, root, limited=False):
     
     return nx.subgraph(tree, subgraph_nodelist)
 
-def report_errors(met, aet, control=True):
+def report_errors(met, aet, mus, aus, soln_id, control=True):
     # prints to the console the errors that occurred, and the equations they occurred in.
     # control flag in input determines the types and levels of error to be reported.
     
@@ -1155,11 +1563,11 @@ def report_errors(met, aet, control=True):
     #find_contexts(met)
     
     # Processing for AET and MET messages
-    AET_ERROR_CONTEXTS = get_error_contexts(aet)
+    AET_ERROR_CONTEXTS = get_error_contexts(aet, aus, soln_id)
     # Prefix all of the messages with "Unexpected pattern found: "
 
     # Processing for MET
-    MET_ERRORS_CONTEXTS = get_error_contexts(met)
+    MET_ERRORS_CONTEXTS = get_error_contexts(met, mus, soln_id)
     
     # Prefix all of the messages with "Pattern expected but missing: "
     
@@ -1167,11 +1575,17 @@ def report_errors(met, aet, control=True):
     # based on the expression tree.
     for _ in AET_ERROR_CONTEXTS:
         # print("Unexpected pattern found:",_)
-        messages_list.append("We weren't expecting "+str(_)+" after simplification. Please check again.")
+        if len(_):
+            messages_list.append(
+                "We weren't expecting "+str(_)+" after simplification. Please check again."
+            )
     
     for _ in MET_ERRORS_CONTEXTS:
         # print("Pattern expected but missing:",_)
-        messages_list.append("You were expected to have "+str(_)+" after simplification, but we couldn't find it.")
+        if len(_):
+            messages_list.append(
+                "You were expected to have "+str(_)+" after simplification, but we couldn't find it."
+            )
     return messages_list
 
 def is_symbol(g, node_label):
@@ -1208,6 +1622,7 @@ def compile_messages():
                     print(line)
         else:
             if message_text[soln_id]["details"]:
+                # fix this later
                 print("Errors for solutions "+",".join(
                     sorted(list(map(lambda x: str(int(x)+1),'2,1,0'.split(',')))))
                 )
@@ -1285,8 +1700,28 @@ def run_analysis(master_soln_json, attempt_soln_json, debug=False):
                 prefix= 'm'
             )
             
+            tree_annotator(
+                exp_tree = master_exp_tree,
+                dep_graph = master_dep_graph,
+                soln_id = s_id,
+                unknown_summary = master_unknown_summary,
+                debug=False
+            )
+
+            tree_annotator(
+                exp_tree = attempt_exp_tree,
+                dep_graph = attempt_dep_graph,
+                soln_id = s_id,
+                unknown_summary = attempt_unknown_summary,
+                debug=False
+            )
+
             compare_exp_trees(master_exp_tree, attempt_exp_tree)
-            message_text[s_id]["details"] = report_errors(master_exp_tree, attempt_exp_tree)
+            message_text[s_id]["details"] = report_errors( \
+                        master_exp_tree, attempt_exp_tree, \
+                        master_unknown_summary, attempt_unknown_summary, \
+                        s_id \
+                        )
             
             # print()
         
@@ -1378,7 +1813,11 @@ def run_analysis(master_soln_json, attempt_soln_json, debug=False):
                     # print("Attempt:",alhs-arhs)
                     
                     compare_exp_trees(master_exp_tree, attempt_exp_tree, debug=False)
-                    message_text[s_id]["details"].extend(report_errors(master_exp_tree, attempt_exp_tree))
+                    message_text[s_id]["details"].extend(report_errors( \
+                        master_exp_tree, attempt_exp_tree, \
+                        master_unknown_summary, attempt_unknown_summary, \
+                        s_id \
+                        ))
                 # print()
             
             # print(s_id,"has been checked for\n\n\n")

@@ -712,25 +712,28 @@ const equations = [
             "consistency": "area / ( base ) / ( height )",
         }
     },
-    {
-        group: 'Geometry',
-        id: 'radiusDiamReln',
-        name: 'radiusDiamReln',
-        latex: 'r_{ } = \\frac { d_{ } }{2}',
-        latex_boxes: '\\Box = \\dfrac { \\Box }{2}',
-        template: 'radius = 0.5 * diameter',
-        params: ['radius', 'diameter'],
-        variables: {
-            'diameter': 'd_{ }',
-            'radius': 'r_{ }',
-        },
-        domains: {
-            'diameter': 'length',
-            'radius': 'length',
-        },
-        height: 60,
-        dispheight: 30
-    },
+    // Commented out since was causing issues in Clevis1 and Clevis2 with /2
+    // in numerator and radius in area in denominator. Originally 0.5 *, /2 did not help
+    // Hence, alternative is eliminate and leave with c=a/b in arithmetic, which works
+    // {
+    //     group: 'Geometry',
+    //     id: 'radiusDiamReln',
+    //     name: 'radiusDiamReln',
+    //     latex: 'r_{ } = \\frac { d_{ } }{2}',
+    //     latex_boxes: '\\Box = \\dfrac { \\Box }{2}',
+    //     template: 'radius = diameter / 2.0',
+    //     params: ['radius', 'diameter'],
+    //     variables: {
+    //         'diameter': 'd_{ }',
+    //         'radius': 'r_{ }',
+    //     },
+    //     domains: {
+    //         'diameter': 'length',
+    //         'radius': 'length',
+    //     },
+    //     height: 60,
+    //     dispheight: 30
+    // },
 
     {
         group: 'Arithmetic',
