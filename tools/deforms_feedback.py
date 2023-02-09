@@ -46,7 +46,7 @@ def compare_quantities(m_magn, m_unit, a_magn, a_unit):
         else:
             # solutionComparableValue = unit_parse.parser(f"{m_magn} {m_unit}").to(a_unit)
             solutionComparableValue = ureg.Quantity(m_magn, m_unit).to(a_unit)
-            return abs((solutionComparableValue.magnitude - a_magn) / solutionComparableValue) <= 0.0001 # corrected after DemoProblem error
+            return abs((solutionComparableValue.magnitude - a_magn) / solutionComparableValue.magnitude) <= 0.0001 # corrected after DemoProblem error
         
     except pint.DimensionalityError:
         return False
