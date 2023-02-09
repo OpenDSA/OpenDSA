@@ -5,5 +5,8 @@
 Sample moudle 
 ==============
 
-.. avembed:: AV/Jsparson/example/example.html ss
-   :long_name: Sample Problem
+.. iframe:: AV/Jsparson/example/example.html 
+   :name: resize-iframe
+   :height: 1000px
+   :width: 1000px
+

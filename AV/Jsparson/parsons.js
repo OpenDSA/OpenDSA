@@ -1017,6 +1017,16 @@
      });
    };
 
+   ParsonsWidget.prototype.studentCode = function() {
+        var code = [];
+        var lines = $("#ul-" + this.options.sortableId).children();
+        for (var i = 0; i < lines.length; i++) {
+            //push indent blocks and code
+            code.push(this.getLineById(lines[i].id).code);
+        }
+        return code.join("\n");
+    };
+    
    ParsonsWidget.prototype.getHash = function(searchString) {
      var hash = [],
          ids = $(searchString).sortable('toArray'),

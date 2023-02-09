@@ -2,7 +2,6 @@
 // Written by Thomas Walton, Ivan Wong and Cliff Shaffer
 $(document).ready(function() {
   "use strict";
-
   // Load the config object with interpreter
   var config = ODSA.UTILS.loadConfig(),
       interpret = config.interpreter,       // get the interpreter
@@ -16,16 +15,13 @@ $(document).ready(function() {
   var markCount;
   var nodeCount;
 
-
   function dir() {
     doIt(true);
   }
 
-
   function undir() {
     doIt(false);
   }
-
 
   function doIt(idDirected) {
     ODSA.AV.reset(true);
@@ -49,7 +45,6 @@ $(document).ready(function() {
     av.recorded();
   }
 
-
   // Mark the nodes when visited and highlight it to
   // show it has been marked
   function markIt(node) {
@@ -62,7 +57,6 @@ $(document).ready(function() {
     av.step();
   }
 
-
   function dequeueIt(node) {
     node.addClass("dequeued");
     arr.value(firstElement, "");
@@ -70,7 +64,6 @@ $(document).ready(function() {
     av.umsg("Dequeue " + node.value());
     av.step();
   }
-
 
   function bfs(start) {
     markIt(g.nodes()[0]);
@@ -100,7 +93,6 @@ $(document).ready(function() {
     }
   }
 
-
   // Graph prepartion for initial stage of visualization
   function makeGraph(isDirected) {
     g = av.ds.graph({
@@ -129,12 +121,10 @@ $(document).ready(function() {
     }
   }
 
-
   // Process About button: Pop up a message with an Alert
   function about() {
     alert(ODSA.AV.aboutstring(interpret(".avTitle"), interpret("av_Authors")));
   }
-
 
   // Connect action callbacks to the HTML entities
   $("#about").click(about);
