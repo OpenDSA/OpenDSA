@@ -5,7 +5,7 @@ $(document).ready(function () {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("When we use grammars to represent a programming language, they help us to answer the question: Is a given string a syntactically correct program? This is the same thing as asking if the string is in the language of syntactically correct programs.");
+  av.umsg("Now we start our exploration of useful transformations for CFGs.");
   av.displayInit();
   
   // Frame 2
@@ -13,118 +13,107 @@ $(document).ready(function () {
   av.step();
 
   // Frame 3
-  av.umsg("We have seen that if we can transform a CFG into an equivalent one with no $\\lambda$-productions and no rules like $A \\rightarrow B$, then we could determine if $w$ is in or not in $L(G)$ within $2|w|$ rounds, each step adding a terminal or increasing the length. This step is critical to making the cost of solving the management problem manageable.<br/><br/>In this module, we will look at lots of methods for transforming grammars to meet this goal.");
-  av.step();
-
-  // Frame 4
-  av.umsg("Specifically, we will look at restrictions on the right hand side of the production rules. We want to be able to automatically transform an arbitrary CFG into an equivalent restricted CFG.");
-  av.step();
-
-  // Frame 5
   av.umsg(Frames.addQuestion("power"));
   av.step();
 
-  // Frame 6
+  // Frame 4
   av.umsg(Frames.addQuestion("lambda"));
   av.step();
 
+  // Frame 5
+  av.umsg(Frames.addQuestion("subst"));
+  av.step();
+
+  // Frame 6
+  av.umsg(Frames.addQuestion("replace"));
+  av.step();
+
   // Frame 7
-  av.umsg(Frames.addQuestion("q8"));
+  av.umsg(Frames.addQuestion("whatP"));
   av.step();
 
-  //frame 9
-  av.umsg(Frames.addQuestion("q9"));
+  // Frame 8
+  av.umsg(Frames.addQuestion("notyet"));
   av.step();
 
-  //frame 10
-  av.umsg(Frames.addQuestion("q10"));
+  // Frame 9
+  av.umsg(Frames.addQuestion("replaceB"));
   av.step();
 
-  //frame 11
-  av.umsg(Frames.addQuestion("q11"));
+  // Frame 10
+  av.umsg(Frames.addQuestion("useless"));
   av.step();
 
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
+  // Frame 11
+  av.umsg(Frames.addQuestion("leftrec"));
   av.step();
 
-  //frame 13
-  av.umsg(Frames.addQuestion("q13"));
+  // Frame 12
+  av.umsg("<b>Parsing</b> is the process of solving the membership problem for a given string. In practice, it has the effect of finding a suitable derivation tree for the string. There are many different algorithms for parsing. A top-down parser starts with the start symbol of the grammar and replaces it through a series of productions to derive the string. In general, a good strategy is to find the leftmost terminal as soon as possible. But a left-recursive grammar requires that we first derive the rest of the string.");
   av.step();
 
-  //frame 14
-  av.umsg("A top-down parser (like LL parsing) would want to derive the leftmost terminal as soon as possible. But in the left recursive grammar above, in order to derive a sentential form that has the leftmost terminal, we have to derive a sentential form that has other terminals in it.");
+  // Frame 13
+  av.umsg(Frames.addQuestion("leftterm"));
   av.step();
 
-  //frame 15
-  av.umsg(Frames.addQuestion("q15"));
+  // Frame 14
+  av.umsg(Frames.addQuestion("second"));
   av.step();
 
-  //frame 16
-  av.umsg(Frames.addQuestion("q16"));
+  // Frame 15
+  av.umsg(Frames.addQuestion("problem"));
   av.step();
 
-  //frame 17
-  av.umsg(Frames.addQuestion("q17"));
+  // Frame 16
+  av.umsg("We now show how to eliminate left recursion so that we can derive a sentential form with the leftmost terminal before deriving any other terminals.");
   av.step();
 
-  //frame 18
-  av.umsg("We will eliminate the left recursion so that we can derive a sentential form with the leftmost terminal and no other terminals.");
+  // Frame 17
+  av.umsg(Frames.addQuestion("whichleft"));
   av.step();
 
-  //frame 19
-  av.umsg(Frames.addQuestion("q19"));
+  // Frame 18
+  av.umsg(Frames.addQuestion("nonleft"));
   av.step();
 
-  //frame 20
-  av.umsg(Frames.addQuestion("q20"));
+  // Frame 19
+  av.umsg(Frames.addQuestion("finish"));
   av.step();
 
-  //frame 20
-  av.umsg(Frames.addQuestion("q20"));
+  // Frame 20
+  av.umsg(Frames.addQuestion("transform"));
   av.step();
 
-  //frame 21
-  av.umsg(Frames.addQuestion("q21"));
+  // Frame 21
+  av.umsg(Frames.addQuestion("leftT"));
   av.step();
 
-  //frame 22
-  av.umsg(Frames.addQuestion("q22"));
+  // Frame 22
+  av.umsg(Frames.addQuestion("nonleftT"));
   av.step();
 
-  //frame 23
-  av.umsg(Frames.addQuestion("q23"));
+  // Frame 23
+  av.umsg(Frames.addQuestion("endT"));
   av.step();
 
-  //frame 24
-  av.umsg(Frames.addQuestion("q24"));
+  // Frame 24
+  av.umsg(Frames.addQuestion("newT"));
   av.step();
 
-  //frame 25
-  av.umsg(Frames.addQuestion("q25"));
+  // Frame 25
+  av.umsg(Frames.addQuestion("lastvar"));
   av.step();
 
-  //frame 26
-  av.umsg(Frames.addQuestion("q26"));
+  // Frame 26
+  av.umsg(Frames.addQuestion("better"));
   av.step();
 
-  //frame 27
-  av.umsg(Frames.addQuestion("q27"));
+  // Frame 27
+  av.umsg(Frames.addQuestion("samepower"));
   av.step();
 
-  //frame 28
-  av.umsg("When you get rid of left-recursion, the grammar is in the appropriate form for a top-down parser, but the grammar has more variables and productions.");
-  av.step();
-
-  //frame 29
-  av.umsg(Frames.addQuestion("q29"));
-  av.step();
-
-  //frame 30
-  av.umsg(Frames.addQuestion("q30"));
-  av.step();
-
-  av.umsg("We have now seen how to eliminate left recursion form CFGs.");
+  // Frame 28
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 
 
