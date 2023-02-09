@@ -36,35 +36,35 @@ $(document).ready(function () {
   grammerMatrix3.hide();
 
   // Frame 1
-  av.umsg("Consider this grammar:<br/>$S \\rightarrow aB \\mid bA$<br>$A \\rightarrow aA$<br>$B \\rightarrow Sa$<br>$C \\rightarrow cBc \\mid a$<br> What can you say about this grammar?");
+  av.umsg("Previously we raised the question of what to do when some variables cannot ever lead to a useful derivation. This frameset discusses how to recognize and remove useless productions.");
   av.displayInit();
   
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("reachC"));
   av.step();
 
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("useless"));
   av.step();
 
-  //frame 4
-  av.umsg(Frames.addQuestion("q4"));
+  // Frame 4
+  av.umsg(Frames.addQuestion("remove"));
   av.step();
 
-  //frame 5
-  av.umsg(Frames.addQuestion("q5"));
+  // Frame 5
+  av.umsg(Frames.addQuestion("impossible"));
   av.step();
 
-  //frame 6
-  av.umsg(Frames.addQuestion("q6"));
+  // Frame 6
+  av.umsg(Frames.addQuestion("alluseless"));
   av.step();
 
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
+  // Frame 7
+  av.umsg(Frames.addQuestion("nochange"));
   av.step();
 
-  //frame 8
-  av.umsg(Frames.addQuestion("q9"));
+  // Frame 8
+  av.umsg(Frames.addQuestion("unreachable"));
   av.step();
 
   //frame 9

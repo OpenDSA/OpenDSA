@@ -5,7 +5,7 @@
     "totalFalseCases": 4,
     "containLetters": ["a", "b"],
     "randomStringLength": [0, 10],
-    "description": "Construct a CFG over {a,b} whose language contains precisely the strings with the same number of a’s and b’s.",
+    "description": "Construct a CFG over {a,b} whose language is the strings with the same number of a’s and b’s.",
     "testCases": [{
             "": true,
             "ShowTestCase":true

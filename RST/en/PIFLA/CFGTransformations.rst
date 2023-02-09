@@ -15,7 +15,7 @@ Transforming Grammars
 Transforming Grammars
 ---------------------
 
-Programming language developers often use grammars to represent a
+Programming language developers often use grammars to represent
 the syntax for a programming language. 
 Of course, a key question related to implementing a programming
 language (or any other use of a grammer) is this:
@@ -27,14 +27,17 @@ We have seen that if we could transform a CFG into an equivalent CFG
 with no :math:`\lambda`-productions, and no rules like 
 :math:`A \rightarrow B`, then we can determine if string :math:`w` is
 in or not in :math:`L(G)` in :math:`2|w|` derivation rounds,
-where each step adds a terminal or increases the length of then
+where each step adds a terminal or increases the length of the
 sentential form of the current derivation.
 This works, but it is not fast!
 At least it avoids the possibility of getting into an infinite loop.
 
-We will look at lots of methods for transforming grammars.
-Some will be forms that are easier to work with,
-some are easier to use in proofs.
+We will look at some methods for transforming grammars.
+Sometimes we do this to create a version of the grammar that is easier
+to work with.
+Sometimes we just want to know that we **can** do a transformation to
+a given form because assuming that the grammar is in that form makes
+it easier to use in a proof.
 
 | What we seek to answer in this module:
 | Are there ways to transform (restrict) CFGs such that:
