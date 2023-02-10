@@ -1,0 +1,37 @@
+{
+    "title": "Jsparson",
+    "desc": "Jsparson",
+    "build_dir": "Books",
+    "code_dir": "SourceCode/",
+    "code_lang": {
+      "Python": {
+        "ext": [
+          "py"
+        ],
+        "label": "Python",
+        "lang": "Python"
+      }
+    },
+    "lang": "en",
+    "build_JSAV": false,
+    "suppress_todo": false,
+    "dispModComp": true,
+    "glob_exer_options": {
+      "JXOP-debug": "true"
+    },
+    "glob_ss_options": {
+      "threshold": 1.0,
+      "points": 0.0,
+      "required": false
+    },
+    "chapters": {
+      "Preface": {
+        "Intro": {}
+      },
+      "Jsparson Sample": {
+        "Jsparson/Jsparson": {
+        }
+      }
+    }
+  }
+  
