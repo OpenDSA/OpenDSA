@@ -45,26 +45,30 @@ $(document).ready(function () {
   av.step();
 
   // Frame 11
+  av.umsg(Frames.addQuestion("double"));
+  av.step();
+
+  // Frame 12
   av.umsg(Frames.addQuestion("strings"));
   av.step();
   
-  // Frame 12
+  // Frame 13
   av.umsg(Frames.addQuestion("addstrings"));
   av.step();
 
-  // Frame 13
+  // Frame 14
   av.umsg(Frames.addQuestion("regular"));
   av.step();
   
-  // Frame 14
+  // Frame 15
   av.umsg("Here is something that might seem odd: The set of regular languages is a set of sets of strings! But that is perfectly normal for set theory. A set can be a collection of primative members (like numbers or strings), or it can be a set of sets. (It can even be a mix of sets and primitives, but we don't need to worry about that now.)");
   av.step();
 
-  // Frame 15
+  // Frame 16
   av.umsg("So, for the rest of the module, we will talk about operators with the view that they take in one or more sets of strings (in particular, these sets are the regular languages), and whose result is a set of strings. The main question that we will want to answer is: Is the resulting set of strings also always a regular language, regardless of what regular language(s) are given to the operator?");
   av.step();
 
-  // Frame 16
+  // Frame 17
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

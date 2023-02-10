@@ -62,7 +62,15 @@
         "type": "select",
         "description": "Consider the operator <b>++(x)</b>, which increments $x$ by one.",
         "question": "Suppose $L = \\{x\\ |\\ x$ is a positive even integer$\\}$. What is the result of <b>++(x)</b> for $x \\in L$?",
-        "answer": ["Another positive even integer", "A number $\\in L$"],               "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
+        "answer": ["A number $\\not\\in L$"],
+        "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
+      },
+      "double": {
+        "type": "select",
+        "description": "Consider the operator <b>double(x)</b>, which doubles the value of $x$.",
+        "question": "Suppose $L = \\{x\\ |\\ x$ is a positive even integer$\\}$. What is the result of <b>double(x)</b> for $x \\in L$?",
+        "answer": ["Another positive even integer", "A number $\\in L$"],
+        "choices": ["Another positive even integer", "A number $\\in L$", "A number $\\not\\in L$", "Sometimes a number $\\in L$, and sometimes a number $\\not\\in L$"]
       },
       "strings": {
         "type": "select",
