@@ -184,8 +184,8 @@ Identifying Non-regular Languages
        such that :math:`|xy| \leq m`, :math:`|y| \geq 1`,
        and :math:`xy^iz \in L` for all :math:`i \geq 0`.
    |   If :math:`xy` is :math:`a^m`, then
-       :math:`x=a^{n-k}\quad |\quad y=a^k\quad |\quad z=b^n`
-       where :math:`n \leq m` and :math:`k > 0`.
+       :math:`x=a^{m-k}\quad |\quad y=a^k\quad |\quad z=b^m`
+       where :math:`k > 0`.
    |   It should be true that :math:`xy^iz \in L` for all :math:`i\ge 0`.
        But clearly this is not true, no matter what :math:`k > 0` we
        pick. Contradiction!

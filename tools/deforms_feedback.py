@@ -35,18 +35,18 @@ message_text = dict()
 def compare_quantities(m_magn, m_unit, a_magn, a_unit):
     """
     Compares two comparable numeric quantities to see if they are within tolerable
-    limits or not (5%). Returns True or False
+    limits or not (0.1% of correct answer). Returns True or False
     """
     global ureg
 
     try:
         if m_unit == "":
             solutionComparableValue = m_magn;
-            return abs((solutionComparableValue - a_magn) / a_magn) <= 0.005
+            return abs((solutionComparableValue - a_magn) / solutionComparableValue) <= 0.0001 # corrected after DemoProblem error
         else:
             # solutionComparableValue = unit_parse.parser(f"{m_magn} {m_unit}").to(a_unit)
             solutionComparableValue = ureg.Quantity(m_magn, m_unit).to(a_unit)
-            return abs((solutionComparableValue.magnitude - a_magn) / a_magn) <= 0.005
+            return abs((solutionComparableValue.magnitude - a_magn) / solutionComparableValue.magnitude) <= 0.0001 # corrected after DemoProblem error
         
     except pint.DimensionalityError:
         return False
