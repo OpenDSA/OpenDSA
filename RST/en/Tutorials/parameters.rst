@@ -10,13 +10,13 @@
    :topic:
 
 
-Parsing Command Line Parameters In Your Progam
-==============================================
+Parsing Command Line Parameters In Your Program
+===============================================
 
 Parameters In Programming
 -------------------------
 
-You probably understand the concept of arameters for a function.
+You probably understand the concept of parameters for a function.
 But how does a Program itself have parameters?
 This comes in the Main function that every Java program has.
 Consider this the "launch" function.
