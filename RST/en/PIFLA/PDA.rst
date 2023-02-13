@@ -21,7 +21,7 @@ So there is no history or way to store information aside from the
 state that they are currently in.
 This restricts what languages they can recognize.
 
-Consider what even the addition of the ability to make use of a single
+Consider what adding the ability to make use of just a single
 counter variable can do.
 For example, it is easy to recognize the language of balanced
 parentheses with a counter.
@@ -40,6 +40,8 @@ right parentheses.
 Strings of the form :math:`a^nb^n` can likewise be recognized by
 pushing the initial a's onto the stack, and then popping them off as
 the b's are processed.
+Using a stack gives all of the capabilities of a counter, with a bit
+more flexibility.
 
 In the next few chapters we will study two types of machine with
 memory.

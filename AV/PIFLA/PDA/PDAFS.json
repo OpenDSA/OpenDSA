@@ -1,7 +1,7 @@
 {
   "translations": {
     "en": {
-      "q2": {
+      "remember": {
         "type": "multiple",
         "description": "The PDA gets this name from its new ability to pushdown and store symbols on the stack. This adds a form of additional memory, letting the machine store and retrieve data from the stack.",
         "question": "A PDA now can remember something about previous inputs.",
@@ -13,7 +13,7 @@
           "False"
         ]
       },
-      "q3": {
+      "gamma": {
         "type": "multiple",
         "description": "Gamma ($\\Gamma$) is the stack alphabet, meaning it is all of the symbols that may be stored on the stack.",
         "question": "$\\Gamma$ has to include all symbols from $\\Sigma$",
@@ -24,11 +24,11 @@
           "True",
           "False"
         ],
-        "correctFeedback": ["$\\Gamma$ does not need to be the same as input alphabet. While it often is pretty much the same (aside from the addition of z in $\\Gamma$), the input alphabet can be converted to a different alphabet as part of the processing. For example, $\\Sigma$ = {0,1} but $\\Gamma$ = {a, b, z}."]
+        "correctFeedback": ["$\\Gamma$ does not need to be the same as the input alphabet. While it often is pretty much the same (aside from the addition of the stack symbol $z$ in $\\Gamma$), the input alphabet can be converted to a different alphabet as part of the processing. For example, we might have $\\Sigma = \\{0, 1\\}$ but but choose to use $\\Gamma = \\{a, b, z\\}$."]
       },
-      "q5": {
+      "bottom": {
         "type": "multiple",
-        "description": "'z' is our symbol for tracking when the stack is empty. The PDA can only see the top of the stack, and there is no ADT with a method like 'stackEmpty'. Instead, 'z' is placed on the stack when the PDA is initialized. If 'z' is popped from the stack, this is how the PDA knows that the stack is empty.",
+        "description": "'z' is our symbol for recognizing when the stack is empty. The PDA can only see the current top of the stack, and there is no ADT with a method like 'stackEmpty'. Instead, 'z' is placed on the stack when the PDA is initialized. If 'z' is popped from the stack, this is how the PDA knows that the stack is empty.",
         "question": "The PDA can see the entire stack, thus it automaticly knows how many symbols are in the stack.",
         "answer": [
           "False"
@@ -38,9 +38,9 @@
           "False"
         ]
       },
-      "q6": {
+      "z": {
         "type": "multiple",
-        "description": "'z' is our symbol for tracking when the stack is empty. The PDA can only see the top of the stack, and there is no ADT with a method like 'stackEmpty'. Instead, 'z' is placed on the stack when the PDA is initialized. If 'z' is popped from the stack, this is how the PDA knows that the stack is empty.",
+        "description": "'z' is our symbol for recognizing when the stack is empty. The PDA can only see the current top of the stack, and there is no ADT with a method like 'stackEmpty'. Instead, 'z' is placed on the stack when the PDA is initialized. If 'z' is popped from the stack, this is how the PDA knows that the stack is empty.",
         "question": "z is not an element of $\\Gamma$",
         "answer": [
           "False"
@@ -51,9 +51,9 @@
         ],
         "correctFeedback":["'z' is always part of $\\Gamma$, since the stack is always initialized to contain 'z'."]
       },
-      "q7": {
+      "lambda": {
         "type": "multiple",
-        "description": "Let's focus on the transitions $\\delta : Q \\times (\\Sigma \\cup \\{\\lambda\\}) \\times \\Gamma \\rightarrow Q \\times \\Gamma^*$. The left side is a 3-tuple, and the right side is a 2-tuple.<br/><br/> The left side ($Q, \\Sigma \\cup \\{\\lambda\\}, \\Gamma$) is the condition for the transition to be taken. This is the current state of PDA, the current symbol on the input tape, and the symbol at the top of the stack (which is popped if the transition fires). If any of these do not match, then the transition does not match and can not be taken.",
+        "description": "Let's focus on the transitions $\\delta : Q \\times (\\Sigma \\cup \\{\\lambda\\}) \\times \\Gamma \\rightarrow Q \\times \\Gamma^*$. The left side is a 3-tuple, and the right side is a 2-tuple.<br/><br/> The left side ($Q, \\Sigma \\cup \\{\\lambda\\}, \\Gamma$) is the condition for the transition to be taken. This is the current state of PDA, the current symbol on the input tape, and the symbol at the top of the stack (which is popped if the transition fires). If any of these do not match, then the transition does not match and cannot be taken.",
         "question": "A PDA must read from the input tape.",
         "answer": [
           "False"
@@ -64,28 +64,28 @@
         ],
         "correctFeedback": ["$\\delta$ is $Q \\times (\\Sigma \\cup \\{\\lambda\\}) \\times \\Gamma$. Note that $\\lambda$ has been added as an alternative for the current input symbol. This means that we can opt not to read from the tape on this particular transition."]
       },
-      "q9": {
+      "push": {
         "type": "select",
         "description": "The right side (the result) of the transition is the 2-tuple ($Q, \\Gamma^*$). This is what changes as a result of taking the transition. This will be the new state after the transition, and the symbol(s) to PUSH onto the stack.",
-        "question": "A PDA can push onto the stack:",
+        "question": "A PDA can push any of these onto the stack:",
         "answer": [
-          "$\\lambda$ (nothing)",
-          "one symbol thats $\\in \\Gamma$",
+          "nothing",
+          "one symbol that is $\\in \\Gamma$",
           "any number of symbols $\\in \\Gamma$"
         ],
         "choices": [
-          "$\\lambda$ (nothing)",
+          "nothing",
           "any single symbol",
-          " one symbol thats $\\in \\Sigma$",
-          "one symbol thats $\\in \\Gamma$",
+          "one symbol that is $\\in \\Sigma$",
+          "one symbol that is $\\in \\Gamma$",
           "any number of symbols $\\in \\Gamma$"
         ],
         "correctFeedback":["The stack can receive zero or more symbols from $\\Gamma$."]
       },
-      "q10": {
+      "order": {
         "type": "multiple",
-        "description": "A PDA can push multiple symbols onto the stack in one transition. For example, consider $\\delta$(q0, b, z) $=$ (q1, bz). In this example, we are in state q0, we see the letter 'b' on the tape, and we see nothing (actually, 'z') on the stack. This transition will push symbol 'b' on top of the 'z' (empty stack symbol).",
-        "question": "The symbol furthest to the left when pushing multple letters will be on the top of the stack after the transition is completed.",
+        "description": "A PDA can push multiple symbols onto the stack in one transition. For example, consider $\\delta$(q0, b, z) $=$ (q1, bz). In this example, we are in state q0, we see the letter 'b' on the tape, and we see that the stack is empty (because we see 'z'). This transition will push symbol 'b' on top of the 'z' (empty stack symbol). In other words, the string of symbols pushed onto the stack for the transition are pushed from right to left.",
+        "question": "The symbol furthest to the left when pushing multiple symbols will be on the top of the stack after the transition is completed.",
         "answer": [
           "True"
         ],
@@ -94,9 +94,9 @@
           "False"
         ]
       },
-      "q11": {
+      "replace": {
         "type": "multiple",
-        "description": "A PDA can push multiple symbols onto the stack in one transition. For example, consider $\\delta$(q0, b, z) $=$ (q1, bz). In this example, we are in state q0, we see the letter 'b' on the tape, and we see nothing (actually, 'z') on the stack. This transition will push symbol 'b' on top of the 'z' (empty stack symbol).",
+        "description": "A PDA can push multiple symbols onto the stack in one transition. For example, consider $\\delta$(q0, b, z) $=$ (q1, bz). In this example, we are in state q0, we see the letter 'b' on the tape, and we see that the stack is empty (because we see 'z'). This transition will push symbol 'b' on top of the 'z' (empty stack symbol). In other words, the string of symbols pushed onto the stack for the transition are pushed from right to left.",
         "question": "A PDA must push the popped symbol back to the stack if it wants to keep that symbol on the stack.",
         "answer": [
           "True"
@@ -106,7 +106,7 @@
           "False"
         ]
       },
-      "q12": {
+      "change": {
         "type": "multiple",
         "description": "Similar to DFAs, PDAs can not alter the input tape.",
         "question": "[T/F] A PDA can change the input tape.",

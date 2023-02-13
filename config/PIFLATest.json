@@ -57,39 +57,24 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Context-Free Grammars and Languages":{
-      "PIFLA/CFG1": {},
-      "PIFLA/CFG2": {},
-      "PIFLA/BNF": {},
-      "PIFLA/CFGExercises": {
-        "anbmodd":{
+    "Pushdown Automata":{
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAwcwR":{
           "points": 2.0
         },
-        "ambicn":{
-          "points": 2.0
+        "PDAaicjbi":{
+          "points": 3.0
         },
-        "ambian":{
-          "points": 2.0
+        "PDA2asperb":{
+          "points": 3.0
         },
-        "asbsequal":{
-          "points": 2.0
+        "PDAaibjck":{
+          "points": 3.0
         }
       },
-      "PIFLA/CFGTransformations":{},
-      "PIFLA/CFGTransEx":{
-        "DFAmod3b":{
-          "points": 2.0
-        },
-        "CFGTransEx1":{
-          "points": 2.0
-        },
-        "CFGTransEx2":{
-          "points": 2.0
-        },
-        "ChomskyEx":{
-          "points": 2.0
-        }
-      }
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {}
     },
     "Appendix": {
       "Glossary": {}
