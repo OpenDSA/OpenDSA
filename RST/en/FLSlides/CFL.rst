@@ -80,7 +80,8 @@ Context-Free Languages
    |   :math:`B \rightarrow Bbb\ |\ \lambda`
    | :math:`L(G) = \{a^{2n}cb^{2m} | n, m \ge 0\}`
 
-   | Note this is a context-free language and also a regular language. 
+   | Note this is a context-free language and also a regular language.
+   |   (Even if this doesn't happen to be a regular grammar.)
 
 
 .. slide:: Example (cont)
@@ -90,14 +91,14 @@ Context-Free Languages
                   \Rightarrow aac\underline{B} \Rightarrow aac\underline{B}bb \Rightarrow aacbb`
    |    2. :math:`S \Rightarrow Ac\underline{B} \Rightarrow Ac\underline{B}bb
                  \Rightarrow \underline{A}cbb \Rightarrow a\underline{A}acbb \Rightarrow aacbb`
-   |        Note: Next variable to be replaced is underlined.
-   |        There are more derivations of this.
+   |        (Next variable to be replaced is underlined.)
+   |        There are multiple derivations for this string.
 
    This grammar is **not** a linear grammar, as there is a choice of 
    which variable to replace. 
 
-   To write an algorithm to perform replacements, we need some order. 
-   We will see this when we look at parsing algorithms. 
+   To write an efficient algorithm to perform replacements,
+   we need some order. 
 
 
 .. slide:: Derivations
@@ -202,9 +203,8 @@ Context-Free Languages
    * This is (part of) what a compiler does.
      You write a program, you compile it, and the compiler finds all your 
      syntax mistakes.
-   * (It also "translates" the program into "bytecode" to be
-     executed.
-     We won't talk much about that aspect of compilers in this class.)
+   * (Code generation: It also "translates" the program into "bytecode" to be
+     executed)
 
 
 .. slide:: Example
@@ -256,7 +256,8 @@ Context-Free Languages
      :math:`w` is not going to be derived?
      :math:`S \Rightarrow SS ... \Rightarrow SSSSSSSSSS ... \Rightarrow S` 
 
-   | Hard to determine that :math:`baaba` is not in :math:`L(G)`. 
+   | Hard to determine that :math:`baaba` is not in :math:`L(G)`.
+     Potential infinite loops.
 
    | We want to consider special forms of context free grammars such that 
      we can determine when strings are or are not in the language. 
@@ -380,7 +381,7 @@ Context-Free Languages
    Corresponding derivation tree is:
 
    .. odsafig:: Images/lt4ptree1.png
-      :width: 200
+      :width: 180
       :align: center
       :capalign: justify
       :figwidth: 90%
@@ -401,7 +402,7 @@ Context-Free Languages
    | Corresponding derivation tree is:
 
    .. odsafig:: Images/lt4ptree2.png
-      :width: 180
+      :width: 170
       :align: center
       :capalign: justify
       :figwidth: 90%
