@@ -49,7 +49,13 @@ Store X forth solution
    :scripts: AV/Database/TernaryRelationshipStoreXSol4.js
    :output: show
 
+Store Y first solution
 
+.. inlineav:: TernaryRelationshipStoreYSol1 ss
+   :long_name: TernaryRelationshipStoreYSol1Ex Slideshow
+  :links: AV/Database/TernaryRelationshipStoreYSol1.css
+   :scripts: AV/Database/TernaryRelationshipStoreYSol1.js
+   :output: show
 
 .. inlineav::  oneToMany ss
    :links: AV/Database/oneToMany.css
