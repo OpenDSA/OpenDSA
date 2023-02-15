@@ -1,10 +1,7 @@
 $(document).ready(function () {
     "use strict";
-    var initial = 'def is_true(boolean_value):\n' +
-    '  if boolean_value:\n' +
-    '    return True\n' +
-    '  return False\n' +
-    '  return true #distractor\n'
+    //read exercises from the example json
+    var index = 0;
 
     var parson = new ParsonsWidget({
         'sortableId': 'sortable',
@@ -25,18 +22,23 @@ $(document).ready(function () {
         }
     }
 
-    parson.init(initial);
-    parson.shuffleLines();
-    $("#newInstanceLink").click(function (event) {
-        event.preventDefault();
+    $.getJSON("./example.json", function(data) {
+        var initial = data[String(index)].initial
+        parson.init(initial);
         parson.shuffleLines();
     });
+
+    $("#newInstanceLink").click(function (event) {
+        event.preventDefault()
+        parson.shuffleLines()
+    });
     $("#feedbackLink").click(function (event) {
-        var initData = {};
-        console.log(parson.studentCode());
-        initData.user_code = parson.studentCode();
-        ODSA.AV.logExerciseInit(initData);
-        event.preventDefault();
-        parson.getFeedback();
+        var initData = {}
+        console.log(parson.studentCode())
+        initData.user_code = parson.studentCode()
+        ODSA.AV.logExerciseInit(initData)
+        event.preventDefault()
+        parson.getFeedback()
     });
 });
+

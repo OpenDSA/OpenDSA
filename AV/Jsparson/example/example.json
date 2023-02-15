@@ -1,5 +1,5 @@
 {
-    "ps_hello": {
+    "0": {
         "initial": "print(\"hello\")\nprint(\"world!\")",
         "unittest": "",
         "instructions": "Construct a program that prints out hello and world on separate lines.",
@@ -9,7 +9,7 @@
         "concepts": ["Call", "Str"],
         "order": 1
     },
-    "ps_simple_function": {
+    "1": {
         "initial": "def func():\n\tprint(\"Hello functions!\")\nfunc()",
         "unittest": "",
         "instructions": "Construct a program that prints out Hello functions.",
