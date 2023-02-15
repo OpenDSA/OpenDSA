@@ -87,7 +87,7 @@ Closure Properties of Regular Languages
    **Difference:** :math:`L_1 - L_2`
 
 
-.. slide:: More Closure Properties (2)
+.. slide:: Right Quotient (1)
 
    | **Right quotient:**
      :math:`L_1 \backslash L_2 = \{x \mid xy \in L_1\ \mbox{for some}\ y \in L_2\}`.
@@ -98,17 +98,25 @@ Closure Properties of Regular Languages
    |    :math:`L_1 \backslash L_2 = \{a^*b^*\}`
 
 
+.. slide:: Right Quotient (2)
+           
    **Theorem:** If :math:`L_1` and :math:`L_2` are regular, then
    :math:`L_1 \backslash L_2` is regular.
 
    | **Proof:** (sketch)
-   |   :math:`\exists` DFA :math:`M = (Q, \Sigma, \delta, q_0, F)` such that
-       :math:`L_1 = L(M)`.
-   |   Construct this DFA from the DFAs for :math:`L_1` and :math:`L_2`.
-   |   There is an algorithm for that.
+   |   :math:`\exists` DFA :math:`M1 = (Q, \Sigma, \delta, q_0, F)` such that
+       :math:`L_1 = L(M1)`, and
+       :math:`\exists` DFA :math:`M2 = (Q, \Sigma, \delta, q_0, F)` such that
+       :math:`L_2 = L(M2)`.
+   |   Construct DFA :math:`M'` from M1 and M2.
+       This turns out to be identical to M1, except for altering the
+       set of final states.
+   |   For each state :math:`q_i` of M1, if there is a wal labeled
+       with any string :math:`\in L_2` to a final state in M1,
+       we mark :math:`q_i` as final in :math:`M'`.
 
 
-.. slide:: More Closure Properties (3)
+.. slide:: Homomorphism
 
    **Homomorphism:** Let :math:`\Sigma, \Gamma` be alphabets.
    A homomorphism is a function :math:`h : \Sigma \rightarrow \Gamma^*`

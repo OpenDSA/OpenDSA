@@ -302,6 +302,7 @@
     "Context-Free Grammars and Languages":{
       "PIFLA/CFG1": {},
       "PIFLA/CFG2": {},
+      "PIFLA/BNF": {},
       "PIFLA/CFGExercises": {
         "anbmodd":{
           "points": 2.0

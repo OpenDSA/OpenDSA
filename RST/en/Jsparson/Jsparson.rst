@@ -2,11 +2,15 @@
    :author: Siliang Zhang
    :topic: Jsparson
 
-Sample moudle 
-==============
+Sample Module
+=============
 
-.. iframe:: AV/Jsparson/example/example.html 
-   :name: resize-iframe
-   :height: 1000px
-   :width: 1000px
+Section
+-------
 
+Text 1.
+
+.. avembed:: AV/Jsparson/example/example.html ss
+   :long_name: js-parsons test
+
+Text 2.

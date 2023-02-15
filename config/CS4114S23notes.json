@@ -46,6 +46,13 @@
       "FLSlides/RegEx": {},
       "FLSlides/RegGram": {},
       "FLSlides/RegClosure": {}
+    },
+    "Week 4": {
+      "FLSlides/NonRegular": {},
+      "FLSlides/NRClosure": {}
+    },
+    "Week 5": {
+      "FLSlides/CFL": {}
     }
   }
 }

@@ -185,20 +185,24 @@
           "points": 30
         },
         "Week4Quiz1Summ": {
-          "points": 6
+          "points": 5
         },
         "Week4Quiz2Summ": {
-          "points": 6
+          "points": 5
         },
         "Week4Quiz3Summ": {
-          "points": 6
+          "points": 5
         },
         "Week4Quiz4Summ": {
-          "points": 6
+          "points": 5
         },
         "Week4ReadingQuizSumm": {
-          "points": 16,
+          "points": 15,
           "threshold": 10
+        },
+        "MUSICSurvey": {
+          "points": 5,
+          "threshold": 1
         }
       }
     },
@@ -322,27 +326,23 @@
         "Syntax Practice 9a: Loop Idioms": {
           "points": 20
         },
-        "MUSICSurvey": {
-          "points": 6,
-          "threshold": 1
-        },
         "Syntax Practice 9b: Generics": {
-          "points": 15
+          "points": 16
         },
         "Programming Practice 9a: Loop Idioms": {
-          "points": 19
+          "points": 20
         },
         "Programming Practice 9b: Loops and Generics": {
-          "points": 19
+          "points": 20
         },
         "Week9Quiz1Summ": {
-          "points": 7
+          "points": 8
         },
         "Week9Quiz2Summ": {
-          "points": 7
+          "points": 8
         },
         "Week9Quiz3Summ": {
-          "points": 7
+          "points": 8
         }
       }
     },

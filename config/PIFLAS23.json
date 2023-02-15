@@ -200,6 +200,26 @@
         }
       }
     },
+    "Context-Free Grammars and Languages":{
+      "PIFLA/CFG1": {},
+      "PIFLA/CFG2": {},
+      "PIFLA/BNF": {},
+      "PIFLA/CFGExercises": {
+        "anbmodd":{
+          "points": 2.0
+        },
+        "ambicn":{
+          "points": 2.0
+        },
+        "ambian":{
+          "points": 2.0
+        },
+        "asbsequal":{
+          "points": 2.0
+        }
+      },
+      "PIFLA/CFGTransformations":{}
+    },
     "Appendix": {
       "Glossary": {}
     }

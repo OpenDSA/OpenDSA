@@ -35,18 +35,18 @@ message_text = dict()
 def compare_quantities(m_magn, m_unit, a_magn, a_unit):
     """
     Compares two comparable numeric quantities to see if they are within tolerable
-    limits or not (5%). Returns True or False
+    limits or not (0.1% of correct answer). Returns True or False
     """
     global ureg
 
     try:
         if m_unit == "":
             solutionComparableValue = m_magn;
-            return abs((solutionComparableValue - a_magn) / a_magn) <= 0.005
+            return abs((solutionComparableValue - a_magn) / solutionComparableValue) <= 0.0001 # corrected after DemoProblem error
         else:
             # solutionComparableValue = unit_parse.parser(f"{m_magn} {m_unit}").to(a_unit)
             solutionComparableValue = ureg.Quantity(m_magn, m_unit).to(a_unit)
-            return abs((solutionComparableValue.magnitude - a_magn) / a_magn) <= 0.005
+            return abs((solutionComparableValue.magnitude - a_magn) / solutionComparableValue.magnitude) <= 0.0001 # corrected after DemoProblem error
         
     except pint.DimensionalityError:
         return False
@@ -154,85 +154,88 @@ def makeDependencyGraph(solutionObject, eqbank, debug=False):
     # add function call to simplify and substitute? make it an all in one?
     
     return g_dependency
-    # g_dependency = nx.Graph()
+
+    """
+    g_dependency = nx.Graph()
         
-    # for w_id, wkspace in solutionObject['workspaces'].items():
-    #     for eq_id, eq in wkspace['equations'].items():
-    #         # add the equation as a node
-    #         eq_node_name = f"wk{w_id}_{eq_id}"
+    for w_id, wkspace in solutionObject['workspaces'].items():
+        for eq_id, eq in wkspace['equations'].items():
+            # add the equation as a node
+            eq_node_name = f"wk{w_id}_{eq_id}"
             
-    #         g_dependency.add_node(
-    #             eq_node_name, group='equation'
-    #         )
-    #         template = eqbank[eq['equation_template_id']]["sympy_template"] \
-    #         if "sympy_template" in eqbank[eq['equation_template_id']]  \
-    #         else eqbank[eq['equation_template_id']]['template']
+            g_dependency.add_node(
+                eq_node_name, group='equation'
+            )
+            template = eqbank[eq['equation_template_id']]["sympy_template"] \
+            if "sympy_template" in eqbank[eq['equation_template_id']]  \
+            else eqbank[eq['equation_template_id']]['template']
             
-    #         for var_id, var in eq['variables'].items():
-    #             if debug:
-    #                 print(var_id)
-    #             if var['valueType'] == 'association':
-    #                 g_dependency.add_node(var['value']['var'], group='unknown')
-    #                 if var['valueNegated']:
-    #                     template = template.replace(var['name'], '-'+var['value']['var'])
-    #                     g_dependency.add_edge(eq_node_name, var['value']['var'], negated=1)
-    #                 else:
-    #                     template = template.replace(var['name'], var['value']['var'])
-    #                     g_dependency.add_edge(eq_node_name, var['value']['var'], negated=0)
+            for var_id, var in eq['variables'].items():
+                if debug:
+                    print(var_id)
+                if var['valueType'] == 'association':
+                    g_dependency.add_node(var['value']['var'], group='unknown')
+                    if var['valueNegated']:
+                        template = template.replace(var['name'], '-'+var['value']['var'])
+                        g_dependency.add_edge(eq_node_name, var['value']['var'], negated=1)
+                    else:
+                        template = template.replace(var['name'], var['value']['var'])
+                        g_dependency.add_edge(eq_node_name, var['value']['var'], negated=0)
                     
-    #             elif var['valueType'] == None:
-    #                 g_dependency.add_node(var['currentSymbol'], group='unknown')
-    #                 if var['valueNegated']:
-    #                     template = template.replace(var['name'], '-'+var['currentSymbol'])
-    #                     g_dependency.add_edge(eq_node_name, var['currentSymbol'], negated=1)
-    #                 else:
-    #                     template = template.replace(var['name'], var['currentSymbol'])
-    #                     g_dependency.add_edge(eq_node_name, var['currentSymbol'], negated=0)
+                elif var['valueType'] == None:
+                    g_dependency.add_node(var['currentSymbol'], group='unknown')
+                    if var['valueNegated']:
+                        template = template.replace(var['name'], '-'+var['currentSymbol'])
+                        g_dependency.add_edge(eq_node_name, var['currentSymbol'], negated=1)
+                    else:
+                        template = template.replace(var['name'], var['currentSymbol'])
+                        g_dependency.add_edge(eq_node_name, var['currentSymbol'], negated=0)
                     
-    #             elif var['valueType'] == 'number':
-    #                 if len(var['valueSource'].split('_')) > 1:
-    #                     g_dependency.add_node(var['valueSource'], group='unknown')
-    #                     if var['valueNegated']:
-    #                         template = template.replace(var['name'], '-'+var['valueSource'])
-    #                         g_dependency.add_edge(eq_node_name, var['valueSource'], negated=1)
-    #                     else:
-    #                         template = template.replace(var['name'], var['valueSource'])
-    #                         g_dependency.add_edge(eq_node_name, var['valueSource'], negated=0)
-    #                 else:
-    #                     # it is just a number
-    #                     if var['valueNegated']:
-    #                         template = template.replace(var['name'], '-'+var['id'])
-    #                     else:
-    #                         template = template.replace(var['name'], var['id'])
+                elif var['valueType'] == 'number':
+                    if len(var['valueSource'].split('_')) > 1:
+                        g_dependency.add_node(var['valueSource'], group='unknown')
+                        if var['valueNegated']:
+                            template = template.replace(var['name'], '-'+var['valueSource'])
+                            g_dependency.add_edge(eq_node_name, var['valueSource'], negated=1)
+                        else:
+                            template = template.replace(var['name'], var['valueSource'])
+                            g_dependency.add_edge(eq_node_name, var['valueSource'], negated=0)
+                    else:
+                        # it is just a number
+                        if var['valueNegated']:
+                            template = template.replace(var['name'], '-'+var['id'])
+                        else:
+                            template = template.replace(var['name'], var['id'])
             
-    #         lhs, rhs = template.split("=")
-    #         g_dependency.nodes[eq_node_name]['template'] = sympy.Eq(sympy.parse_expr(rhs), sympy.parse_expr(lhs))
-    #         g_dependency.nodes[eq_node_name]['folded'] = []
+            lhs, rhs = template.split("=")
+            g_dependency.nodes[eq_node_name]['template'] = sympy.Eq(sympy.parse_expr(rhs), sympy.parse_expr(lhs))
+            g_dependency.nodes[eq_node_name]['folded'] = []
     
-    # for sol_id, solution in solutionObject['solutions'].items():
-    #     if solution['source'] == '':
-    #         if training:
-    #             pass
-    #         else:
-    #             # print(f"Solution {sol_id} was not submitted")
-    #             if solution['type'] == "choices":
-    #                 continue
-    #             else:
-    #                 message_text[sol_id]["decision"] = [f"Solution {int(sol_id)+1} was not submitted"]
-    #     elif solution["type"] == "number" or solution["type"] == "integer":  
-    #         # otherwise no point in connecting this to subgraph
-    #         if g_dependency.has_node(solution['source']):
-    #             g_dependency.nodes[solution['source']]['solution_id'] = sol_id
-    #             # stores the id of the solution box that connects to that unknown
+    for sol_id, solution in solutionObject['solutions'].items():
+        if solution['source'] == '':
+            if training:
+                pass
+            else:
+                # print(f"Solution {sol_id} was not submitted")
+                if solution['type'] == "choices":
+                    continue
+                else:
+                    message_text[sol_id]["decision"] = [f"Solution {int(sol_id)+1} was not submitted"]
+        elif solution["type"] == "number" or solution["type"] == "integer":  
+            # otherwise no point in connecting this to subgraph
+            if g_dependency.has_node(solution['source']):
+                g_dependency.nodes[solution['source']]['solution_id'] = sol_id
+                # stores the id of the solution box that connects to that unknown
         
-    #     # Alternatively, if the source is not found, we have a problem
-    #     # since ANY solution would have to be computed from a system of equations
-    #     # to be legitimate. print error to terminal.
-    #     # TODO: Add this error message
+        # Alternatively, if the source is not found, we have a problem
+        # since ANY solution would have to be computed from a system of equations
+        # to be legitimate. print error to terminal.
+        # TODO: Add this error message
     
-    # # add function call to simplify and substitute? make it an all in one?
+    # add function call to simplify and substitute? make it an all in one?
     
-    # return g_dependency
+    return g_dependency
+    """
 
 def dependencyFolding(g_dep, debug=False):
     # reduces 1-1 dependencies wherever possible to create the minimal set
@@ -1050,11 +1053,12 @@ def tree_annotator(exp_tree, dep_graph, soln_id, unknown_summary, debug=False):
                         print("Only one equation here, moving on up")
                         print("Assigning top level equation to this node")
                         print(node)
-                        print(list(leaf_eq)[0])
+                        print(list(set(leaf_eq).union(set(unsub_oper_eq)))[0])
                         print()
                     
                     exp_tree.nodes[node]['equationlist'] = {}
-                    exp_tree.nodes[node]['equationlist'][list(leaf_eq)[0]] = {'substituted' : False}
+                    exp_tree.nodes[node]['equationlist'] \
+                    [list(set(leaf_eq).union(set(unsub_oper_eq)))[0]] = {'substituted' : False}
                 
                 # If zero intersection,
                 # find the top level equation and move it to
@@ -1571,11 +1575,17 @@ def report_errors(met, aet, mus, aus, soln_id, control=True):
     # based on the expression tree.
     for _ in AET_ERROR_CONTEXTS:
         # print("Unexpected pattern found:",_)
-        messages_list.append("We weren't expecting "+str(_)+" after simplification. Please check again.")
+        if len(_):
+            messages_list.append(
+                "We weren't expecting "+str(_)+" after simplification. Please check again."
+            )
     
     for _ in MET_ERRORS_CONTEXTS:
         # print("Pattern expected but missing:",_)
-        messages_list.append("You were expected to have "+str(_)+" after simplification, but we couldn't find it.")
+        if len(_):
+            messages_list.append(
+                "You were expected to have "+str(_)+" after simplification, but we couldn't find it."
+            )
     return messages_list
 
 def is_symbol(g, node_label):
