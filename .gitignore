@@ -40,8 +40,8 @@ lib/khan-exercises/exercises/khan-site.html
 # Ignore Java .class files
 *.class
 
-# Ignore Minified JS and CSS files
-lib/*-min.*
+# # Ignore Minified JS and CSS files
+# lib/*-min.*
 
 # Ignore python packages src folder
 src
