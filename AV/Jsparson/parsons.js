@@ -1121,6 +1121,8 @@
 
      state = logData.output;
 
+     console.log(state)
+     
      jQuery.extend(logData, entry);
      this.user_actions.push(logData);
 

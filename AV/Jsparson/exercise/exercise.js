@@ -1,8 +1,9 @@
 $(document).ready(function () {
     "use strict";
     //read exercises from the example json
-    var index = 0;
-
+    //var index = document.getElementById("index").getAttribute("value");
+    var index = window.location.pathname.split('/').pop().split('.')[0];
+    
     var parson = new ParsonsWidget({
         'sortableId': 'sortable',
         'trashId': 'sortableTrash',
@@ -22,7 +23,7 @@ $(document).ready(function () {
         }
     }
 
-    $.getJSON("./example.json", function(data) {
+    $.getJSON("./exercise.json", function(data) {
         var initial = data[String(index)].initial
         parson.init(initial);
         parson.shuffleLines();
