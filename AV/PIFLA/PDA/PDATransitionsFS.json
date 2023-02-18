@@ -1,10 +1,10 @@
 {
   "translations": {
     "en": {
-      "q5": {
+      "pop": {
         "type": "true/false",
         "description": "Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.",
-        "question": "This PDA always pops the top of the stack on every transition.",
+        "question": "This transition pops the top of the stack on each alternative.",
         "answer": "True",
         "choices":[]
       },

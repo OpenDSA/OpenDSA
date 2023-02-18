@@ -5,11 +5,11 @@ $(document).ready(function() {
   var Frames = PIFRAMES.init(av_name);
 
   // Frame 1
-  av.umsg("Now we further study the transition function for PDAs.<br/><br/>Similar to a NFA, PDAs can have different behaviors on the same input. That is, an NFA can have multiple choices about what to do on the input symbol 'a'. This is the fundamental concept of non-determinism. In a similar way, a PDA can choose between multiple behaviors on a given input condition (current state, current input, and current top of the stack). A PDA that has multiple behaviors on a given input is a Non-deterministic PDA (NPDA).");
+  av.umsg("Next we will look more closely at PDA transitions.<br/><br/>Similar to a NFA, PDAs can have different behaviors on the same input. That is, an NFA can have multiple choices about what to do on the input symbol 'a'. This is the fundamental concept of non-determinism. In a similar way, a PDA can choose between multiple behaviors on a given input condition (current state, current input, and current top of the stack). A PDA that has multiple behaviors on a given input is called a Non-deterministic PDA (NPDA).");
   av.displayInit();
   
   // Frame 2
-  av.umsg(Frames.addQuestion("q5"));
+  av.umsg(Frames.addQuestion("pop"));
   var url = "../../../AV/OpenFLAP/machines/PDA/transitions.jff";
   var PDA = new av.ds.PDA({width: 250, top: 100, url: url});
   var q0 = PDA.getNodeWithValue("q0");
