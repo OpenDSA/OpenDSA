@@ -31,6 +31,6 @@
         "title": "",
         "description": "Printing hello world!",
         "concepts": ["Call", "Str"],
-        "order": 1
+        "order": 3
     }
 }
