@@ -21,51 +21,51 @@ $(document).ready(function() {
   var edge3 = PDA.getEdge(q0,q3);
   av.step();
 
-  // Frame 2a
+  // Frame 3
   av.umsg(Frames.addQuestion("always"));
   av.step();
 
-  // Frame 3
-  av.umsg(Frames.addQuestion("q6"));
-  av.step();
-
   // Frame 4
-  av.umsg(Frames.addQuestion("q8"));
+  av.umsg(Frames.addQuestion("change"));
   av.step();
 
   // Frame 5
-  av.umsg(Frames.addQuestion("q9"));
+  av.umsg(Frames.addQuestion("order"));
   av.step();
 
   // Frame 6
-  av.umsg(Frames.addQuestion("q11"));
+  av.umsg(Frames.addQuestion("nopush"));
   av.step();
 
   // Frame 7
-  av.umsg(Frames.addQuestion("q12"));
+  av.umsg(Frames.addQuestion("x"));
   av.step();
 
   // Frame 8
-  av.umsg(Frames.addQuestion("q13"));
+  av.umsg(Frames.addQuestion("y"));
   av.step();
 
   // Frame 9
-  av.umsg("$\\textbf{Instantaneous Description:}$ To describe the status of a PDA, we use $(q, w, u)$ where $q$ is the current state, $w$ is the remaining portion of the input string, and $u$ is the current contents of the stack.");
+  av.umsg(Frames.addQuestion("z"));
   av.step();
 
   // Frame 10
-  av.umsg(Frames.addQuestion("q15"));
+  av.umsg("<b>Instantaneous Description:</b> To describe the status of a PDA, we use $(q, u, z)$ where $q$ is the current state, $u$ is the remaining portion of the input string, and $z$ is the current contents of the stack.");
   av.step();
 
   // Frame 11
-  av.umsg(Frames.addQuestion("q16"));
+  av.umsg(Frames.addQuestion("move"));
   av.step();
 
   // Frame 12
-  av.umsg(Frames.addQuestion("q17"));
+  av.umsg(Frames.addQuestion("input"));
   av.step();
 
   // Frame 13
+  av.umsg(Frames.addQuestion("stack"));
+  av.step();
+
+  // Frame 14
   av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 
