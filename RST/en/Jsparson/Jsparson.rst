@@ -18,3 +18,9 @@ Text 2.
 
 .. avembed:: AV/Jsparson/exercise/1.html ss
    :long_name: js-parsons test
+
+
+Text 3.
+
+.. avembed:: AV/Jsparson/exercise/2.html ss
+   :long_name: js-parsons test

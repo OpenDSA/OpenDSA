@@ -1,6 +1,7 @@
 {
     "0": {
-        "initial": "print(\"hello\")\nprint(\"world!\")",
+        "initial": ["print(\"hello\")", 
+                    "print(\"world!\")"],
         "unittest": "",
         "instructions": "Construct a program that prints out hello and world on separate lines.",
         "type": "SIMPLE",
@@ -10,7 +11,9 @@
         "order": 1
     },
     "1": {
-        "initial": "def func():\n\tprint(\"Hello functions!\")\nfunc()",
+        "initial": ["def func():",
+                    "\tprint(\"Hello functions!\")",
+                    "func()"],
         "unittest": "",
         "instructions": "Construct a program that prints out Hello functions.",
         "description": "Creating a function that prints hello world",
@@ -18,5 +21,16 @@
         "title": "",
         "concepts": ["Call", "Str", "FunctionDef"],
         "order": 2
+    },
+    "2": {
+        "initial": ["print(\"I love\")",
+                    "print(\"Computer Science!\")"],       
+        "unittest": "",
+        "instructions": "Construct a program that prints out I love and Computer Science on separate lines.",
+        "type": "SIMPLE",
+        "title": "",
+        "description": "Printing hello world!",
+        "concepts": ["Call", "Str"],
+        "order": 1
     }
 }
