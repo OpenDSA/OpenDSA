@@ -42,7 +42,14 @@
       "Database/DB_Demo":{}
 
     },
-    "Relational database design and the ER-Model": {
+    "Main Phases of Relational Database Design":{
+      "Database/RDDVsERD": {},
+      "Database/RDDDefinition": {},
+      "Database/RDDConstraints": {},
+      "Database/RDDBasicOperations": {},
+      "Database/DesignEfficiency": {}
+    },
+    "The ER-Data Model and Mapping to Relational Schema": {
       "Database/RelationalModel": {},
       "Database/DesignProcess": {},
       "Database/ERDiagram": {},

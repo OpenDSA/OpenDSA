@@ -264,9 +264,8 @@ ________________________
 
 .. odsafig:: Images/conceptualuniversitymodel.png
 
-**Logical Data Model:**
-_____________________
-
+**Logical Data Model:** (Implmentational Model)
+_______________________________________
 	Defines HOW the system should be implemented regardless of the DBMS. 
 
 	Has a low-level description of entities that are defined and how they are related to each other and what kind of data is to be stored.
