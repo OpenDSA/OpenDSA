@@ -19,7 +19,7 @@ That is, every NFA has an equivalent DFA.
 
 How about for PDAs?
 We have introduced the concept of non-determinism to PDAs (we call
-these NPDAs), and we have shown that every CFG as an equivalent NPDA,
+these NPDAs), and we have shown that every CFG has an equivalent NPDA,
 and vice versa.
 Thus, NPDAs can recognize all CFL.
 
@@ -33,8 +33,8 @@ Does non-determinism add real power to the PDA?
    :output: show
 
 
-Nondeterministic CFL proof
---------------------------
+Proof there exists a CFL that is not a DCFL
+-------------------------------------------
 
 .. inlineav:: NCFLProofFS ff
    :links: AV/PIFLA/PDA/NCFLProofFS.css

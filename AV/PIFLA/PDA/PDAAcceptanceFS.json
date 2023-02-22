@@ -123,7 +123,7 @@
       "b2machine": {
         "type": "select",
         "description": "$L = \\{a^nb^n\\ |\\ n \\ge 0\\},\\ \\Sigma = \\{a, b\\},\\ \\Gamma = \\{Z, a\\}$.<br/>Let us trace processing the string $aaabbb$.",
-        "question": "Based on the top of the stack and the highlighted input sybmol, what will happen to the machine?",
+        "question": "Based on the top of the stack and the highlighted input symbol, what will happen to the machine?",
         "answer": "Stay at $q_2$",
         "choices": ["Move to $q_0$", "Move to $q_1$", "Move to $q_2$", "Move to $q_3$", "Stay at $q_1$", "Stay at $q_2$"]
       },
