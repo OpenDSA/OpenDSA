@@ -41,7 +41,7 @@ $(document).ready(function() {
   // Frame 9
   av.umsg(Frames.addQuestion("count"));
   PDA.hide();
-  url = "../../../AV/OpenFLAP/machines/PDA/WWrPDA.jff";
+  url = "../../../AV/OpenFLAP/machines/PDA/WwrPDA.jff";
   var PDA2 = new av.ds.PDA({width: 500, height: 200, left:-20, url: url});
   av.step();
 
