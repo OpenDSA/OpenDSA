@@ -16,6 +16,8 @@ Deterministic Pushdown Automata
 
 We know that non-determinism adds no real power to DFAs.
 That is, every NFA has an equivalent DFA.
+Therefore, the set of languages recognized by DFAs is the same as the
+set of languages recognized by NFAs.
 
 How about for PDAs?
 We have introduced the concept of non-determinism to PDAs (we call
