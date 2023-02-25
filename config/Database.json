@@ -49,7 +49,16 @@
       "Database/RDDBasicOperations": {},
       "Database/DesignEfficiency": {}
     },
-    "The ER-Data Model and Mapping to Relational Schema": {
+    "The ER-Data Model and Mapping to Relational Schema":{
+      "Database/ERDDefinition": {},
+      "Database/ERDComponents": {},
+      "Database/ERDMappingToRDD": {},
+      "Database/ERDNotations": {},
+      "Database/ERDRelationships": {},
+      "Database/ERDTernaryExample": {},
+      "Database/ERDExapmle": {}
+    },
+    "The Conceptual ER-Data Model": {
       "Database/RelationalModel": {},
       "Database/DesignProcess": {},
       "Database/ERDiagram": {},

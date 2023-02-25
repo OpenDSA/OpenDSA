@@ -1,32 +1,10 @@
-.. This file is part of the OpenDSA eTextbook project. See
-.. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
-.. distributed under an MIT open source license.
+Binary Vs Ternary Relationships
+============================
 
-.. avmetadata::
-   :author: Noha
-   :requires: ADT; OO Intro; UML
-   :satisfies: ERD
-   :topic: ERD
+General Problem Statement
+_________________________
 
-
-Exercises
-==============================================
-try to insert my first image
-
-.. odsafig:: Images/ErdvsRDDvsTable.png
-
-.. odsafig:: Images/ErdComponents.png
-
-.. odsafig:: Images/ERDRDDMapping.png
-
-.. odsafig:: Images/CompanyERDEXample.png
-
-.. odsafig:: Images/CompanyRDDExample.png
-
-
-Hello this is 1st visualization trial
-
+General problem statement and Store X first solution illustration:
 
 .. inlineav:: TernaryRelationship ss
    :long_name: TernaryRelationshipEx Slideshow
@@ -34,7 +12,10 @@ Hello this is 1st visualization trial
    :scripts: AV/Database/TernaryRelationship.js
    :output: show
 
-Store X second solution
+Ternary Relationship Example (Store X)
+___________________________________
+
+Store X second solution illustration:
 
 .. inlineav:: TernaryRelationshipStoreXSol2 ss
    :long_name: TernaryRelationshipStoreXSol2Ex Slideshow
@@ -42,7 +23,7 @@ Store X second solution
    :scripts: AV/Database/TernaryRelationshipStoreXSol2.js
    :output: show
 
-Store X third solution
+Store X third solution illustration:
 
 .. inlineav:: TernaryRelationshipStoreXSol3 ss
    :long_name: TernaryRelationshipStoreXSol3Ex Slideshow
@@ -50,7 +31,7 @@ Store X third solution
    :scripts: AV/Database/TernaryRelationshipStoreXSol3.js
    :output: show
 
-Store X forth solution
+Store X forth solution illustration:
 
 .. inlineav:: TernaryRelationshipStoreXSol4 ss
    :long_name: TernaryRelationshipStoreXSol4Ex Slideshow
@@ -58,7 +39,10 @@ Store X forth solution
    :scripts: AV/Database/TernaryRelationshipStoreXSol4.js
    :output: show
 
-Store Y first  and second solutions
+Binary Relationship Example (Store Y)
+_____________________________________
+
+Store Y first & second solutions' analysis:
 
 .. inlineav:: TernaryRelationshipStoreYSol1 ss
    :long_name: TernaryRelationshipStoreYSol1Ex Slideshow
@@ -66,30 +50,10 @@ Store Y first  and second solutions
    :scripts: AV/Database/TernaryRelationshipStoreYSol1.js
    :output: show
 
-Store Y Third solution and Forth solutions
+Store Y third & forth solutions' analysis:
 
 .. inlineav:: TernaryRelationshipStoreYSol3 ss
    :long_name: TernaryRelationshipStoreYSol3Ex Slideshow
   :links: AV/Database/TernaryRelationshipStoreYSol3.css
    :scripts: AV/Database/TernaryRelationshipStoreYSol3.js
    :output: show
-
-
-.. inlineav::  oneToMany ss
-   :links: AV/Database/oneToMany.css
-   :scripts: AV/Database/oneToMany.js
-   :output: show
-
-
-Here we see the first few iterations of Insertion Sort.
-
-.. inlineav:: insertionsortCON ss
-   :long_name: Insertion Sort Slideshow
-   :links: AV/Database/insertionsortCON.css
-   :scripts: AV/Database/insertionsortCON.js
-   :output: show
-
-.. inlineav:: LocalHeapaloc dgm
-   :links: AV/Database/LocalHeapaloc.css
-   :scripts: AV/Database/LocalHeapaloc.js
-
