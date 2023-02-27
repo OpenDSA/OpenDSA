@@ -66,11 +66,11 @@ Simplifying CFGs and Normal Forms
    | where :math:`x_i \in (V \cup T)^{*}`,
      :math:`A` and :math:`B` are different variables,
      and :math:`B` has the productions
-   |    :math:`B \rightarrow y_1|y_2|\ldots|y_n`.
+   |    :math:`B \rightarrow y_1 \mid y_2 \mid \ldots \mid y_n`.
    | We can construct :math:`G'` from :math:`G` by deleting 
    |    :math:`A \rightarrow x_1Bx_2`
    | from :math:`P` and adding to it
-   |    :math:`A \rightarrow x_1y_1x_2|x_1y_2x_2|\ldots | x_1y_nx_2`.
+   |    :math:`A \rightarrow x_1y_1x_2 \mid x_1y_2x_2 \mid \ldots \mid x_1y_nx_2`.
 
    | **Substitution Theorem**: :math:`L(G) = L(G')`.
 
@@ -106,7 +106,7 @@ Simplifying CFGs and Normal Forms
 
    | We left in the productions for :math:`B`, but maybe there is no way
      remaining to reach them.
-     Obviously they can go.
+     In that situation, they can go.
 
    | This example is not as obvious: (What is wrong with the A production?)
    |   :math:`S \rightarrow aSb \mid \lambda \mid A`
@@ -188,17 +188,7 @@ Simplifying CFGs and Normal Forms
       :figwidth: 90%
       :alt: uselessgraph
 
-   .. WORK THIS EXAMPLE IN JFLAP?
-
-
-.. slide:: Example (2)
-
-   | :math:`G_1`:
-   |   :math:`S \rightarrow aB`
-   |   :math:`B \rightarrow Sa \mid b`
-   |   :math:`C \rightarrow cBc \mid a`
-
-   Now, do it again.
+.. slide:: Example (3)
 
    | :math:`G'`:
    |   :math:`S \rightarrow aB`
@@ -351,8 +341,6 @@ Simplifying CFGs and Normal Forms
    | Order is important.
      Removing :math:`\lambda` productions can create unit productions!
 
-   There are additional examples in the book. 
-
 
 .. slide:: Chomsky Normal Form (CNF)
 
@@ -389,9 +377,6 @@ Simplifying CFGs and Normal Forms
    | :math:`B \rightarrow b`
    | :math:`C \rightarrow Cc \mid e`
 
-   .. Do THIS IN JFLAP, note JFLAP uses different names for the 
-      additional variables than below.
-
 
    | (after step 1)
    | :math:`S \rightarrow CBC_1C_2`
@@ -414,7 +399,7 @@ Simplifying CFGs and Normal Forms
    | :math:`C_2 \rightarrow d`
    | :math:`C_3 \rightarrow c`
 
-   NOTE: Can get rid of :math:`\lambda` productions and unit
+   NOTE: Should get rid of :math:`\lambda` productions and unit
    productions first!
 
 
@@ -439,7 +424,7 @@ Simplifying CFGs and Normal Forms
 .. slide:: GNF Theorem
 
    | For every CFG :math:`G`, there exists a grammar in GNF.
-   |    See proof in book.
+   |    See proof in modules.
 
    | Example:
    |   :math:`S \rightarrow AB`

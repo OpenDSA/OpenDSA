@@ -79,16 +79,19 @@ transitions in a simpler form.
 
 .. ..
 
-   The remaining material comes form Susan Rodger's notes.
-   Unfortunately, as presented this is mostly gibberish.
-   And even then, it leaves a lot "to the book". So not useful.
+   The remaining material was derived originally from Susan Rodger's
+   notes.
+   Unfortunately, at this point this is mostly gibberish.
+   And even so far as it goes, it leaves a lot "to the book".
+   So not useful.
    What we need at a minimum is to modify the example so that it
    clearly shows something that is easily recognizeable as the
    resulting grammar.
    The example here might be interpretable as a grammar, but
    it causes too much confusion due to the unexplained notation to
    actually work as an example.
-   So for now, we won't even pretend to give the proof.
+   So for now, I have commented this out, and we won't even pretend to
+   give the proof.
    Thus, the brief sketch above replaces all of this for now
    (which makes this module match the course slides).
 

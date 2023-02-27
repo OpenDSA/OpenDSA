@@ -108,7 +108,7 @@
       "PIFLA/MathProof": {}
     },
     "Finite Acceptors": {
-      "PIFLA/DFA":{
+      "PIFLA/DFA": {
         "DFAEvenBinary": {
           "points": 1.0
         }
@@ -174,24 +174,24 @@
       },
       "PIFLA/NFA": {},
       "PIFLA/NFAExercises": {
-        "NFAtoDFAex1":{
+        "NFAtoDFAex1": {
           "points": 3.0,
           "threshold": 0.85
         },
-        "NFAex1":{
+        "NFAex1": {
           "points": 3.0
         }
       },
       "PIFLA/NFAExercises2": {
-        "NFAtoDFAex1long":{
+        "NFAtoDFAex1long": {
           "points": 3.0,
           "threshold": 0.85
         },
-        "NFAtoDFAex2":{
+        "NFAtoDFAex2": {
           "points": 3.0,
           "threshold": 0.85
         },
-        "NFAex2":{
+        "NFAex2": {
           "points": 3.0
         }
       },
@@ -206,8 +206,8 @@
       }
     },
     "Regular Languages": {
-      "PIFLA/RegEx":{},
-      "PIFLA/RegExExercises":{
+      "PIFLA/RegEx": {},
+      "PIFLA/RegExExercises": {
         "RegExaba": {
           "points": 2.0
         },
@@ -221,7 +221,7 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegExExercises2":{
+      "PIFLA/RegExExercises2": {
         "RegExevenbinary": {
           "points": 2.0
         },
@@ -235,7 +235,7 @@
           "points": 2.0
         }
       },
-      "PIFLA/RegExPower":{
+      "PIFLA/RegExPower": {
         "RegEx2NFA1FS": {
           "points": 1.0
         },
@@ -279,7 +279,7 @@
       "PIFLA/RegClosure": {},
       "VisFormalLang/DFAproperties": {}
     },
-    "Identifying Non-regular Languages":{
+    "Identifying Non-regular Languages": {
       "PIFLA/NonRegular": {
         "introPumpingFS": {
           "points": 1.0
@@ -299,107 +299,107 @@
         }
       }
     },
-    "Context-Free Grammars and Languages":{
+    "Context-Free Grammars and Languages": {
       "PIFLA/CFG1": {},
       "PIFLA/CFG2": {},
       "PIFLA/BNF": {},
       "PIFLA/CFGExercises": {
-        "anbmodd":{
+        "anbmodd": {
           "points": 2.0
         },
-        "ambicn":{
+        "ambicn": {
           "points": 2.0
         },
-        "ambian":{
+        "ambian": {
           "points": 2.0
         },
-        "asbsequal":{
+        "asbsequal": {
           "points": 2.0
         }
       },
-      "PIFLA/CFGTransformations":{},
-      "PIFLA/CFGTransEx":{
-        "DFAmod3b":{
+      "PIFLA/CFGTransformations": {},
+      "PIFLA/CFGTransEx": {
+        "DFAmod3b": {
           "points": 2.0
         },
-        "CFGTransEx1":{
+        "CFGTransEx1": {
           "points": 2.0
         },
-        "CFGTransEx2":{
+        "CFGTransEx2": {
           "points": 2.0
         },
-        "ChomskyEx":{
+        "ChomskyEx": {
           "points": 2.0
         }
       }
     },
-    "Pushdown Automata":{
+    "Pushdown Automata": {
       "PIFLA/PDA": {},
-      "PIFLA/PDAExercises":{
-        "PDAwcwR":{
+      "PIFLA/PDAExercises": {
+        "PDAwcwR": {
           "points": 2.0
         },
-        "PDAaicjbi":{
+        "PDAaicjbi": {
           "points": 3.0
         },
-        "PDA2asperb":{
+        "PDA2asperb": {
           "points": 3.0
         },
-        "PDAaibjck":{
+        "PDAaibjck": {
           "points": 3.0
         }
       },
       "PIFLA/PDACFL": {},
       "PIFLA/DPDA": {}
     },
-    "Properties of Context-free Languages":{
-      "PIFLA/CFLProp":{}
+    "Properties of Context-free Languages": {
+      "PIFLA/CFLProp": {}
     },
-    "Turing Machines":{
-      "PIFLA/TuringMachines":{},
-      "PIFLA/TMExercises":{
-        "addOnea":{ 
+    "Turing Machines": {
+      "PIFLA/TuringMachines": {},
+      "PIFLA/TMExercises": {
+        "addOnea": { 
           "points": 2.0
         },
-        "eraseABC":{ 
+        "eraseABC": { 
           "points": 2.0
         },
-        "keepABC":{ 
+        "keepABC": { 
           "points": 2.0
         },
-        "aNumsPowerOf2":{ 
+        "aNumsPowerOf2": { 
           "points": 2.0
         },
-        "ifaNumsPowerOf2":{ 
+        "ifaNumsPowerOf2": { 
           "points": 2.0
         },
-        "abcWInWWROut":{ 
+        "abcWInWWROut": { 
           "points": 2.0
         },
-        "abcNawlargerthanNbw":{ 
+        "abcNawlargerthanNbw": { 
           "points": 2.0
         },
-        "replaceABAbyACA":{ 
+        "replaceABAbyACA": { 
           "points": 2.0
         },
-        "abPalindromes":{ 
+        "abPalindromes": { 
           "points": 2.0
         }
       },
-      "PIFLA/TMExercisesS22":{
-        "addOnea":{ 
+      "PIFLA/TMExercisesS22": {
+        "addOnea": { 
           "points": 2.0
         },
         "swapab": {
           "points": 2.0
         },
-        "abcWInWWROut":{ 
+        "abcWInWWROut": { 
           "points": 3.0
         },
-        "abcNawlargerthanNbw":{ 
+        "abcNawlargerthanNbw": { 
           "points": 3.0
         },
-        "abPalindromes":{ 
+        "abPalindromes": { 
           "points": 3.0
         }
       }
@@ -410,12 +410,12 @@
       "PIFLA/NPComplete": {},
       "PIFLA/Impossible": {}
     },
-    "Parsing":{
-      "VisFormalLang/ParseIntro":{},
-      "VisFormalLang/LLParsing":{},
-      "VisFormalLang/LRParsing":{},
-      "VisFormalLang/CYKParsing":{},
-      "VisFormalLang/Compiler":{}
+    "Parsing": {
+      "VisFormalLang/ParseIntro": {},
+      "VisFormalLang/LLParsing": {},
+      "VisFormalLang/LRParsing": {},
+      "VisFormalLang/CYKParsing": {},
+      "VisFormalLang/Compiler": {}
     },
     "Appendix": {
       "Glossary": {}
