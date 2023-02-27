@@ -2,11 +2,11 @@ ERD Basic Components
 ====================
 There are three basic components of an entity relationship diagram. Similar components will be designated by the same shape. For example, all entities types 
 
-might be enclosed in a rectangle, while all attributes are enclosed in a diamond. 
+might be enclosed in a rectangle, while all attributes are enclosed in ellipse.
 
 1- **Entities,** which are objects or concepts that can have data stored about them. Entities refer to tables used in databases.
 
-2- **Attributes,** which are properties or characteristics of entities. An ERD attribute can be denoted as a primary key, which identifies a unique attribute, or 
+2- **Attributes,** which are properties or characteristics of entities. Some of ERD attributes can be denoted as a primary key, which identifies a unique attribute, or 
 
 a foreign key, which can be assigned to multiple attributes.
 
@@ -25,7 +25,9 @@ All ERD components & their types are shown in the below diagram:
 Entities 
 __________
 
-**Entities** are specific objects or things in the mini-world that are represented in the database. For example the STUDENT Adam, the Database COURSE.
+**Entities** are specific objects or things in the mini-world that are represented in the database. For example the STUDENT "Adam" (Adam is the entity instance & STUDENT is the entity type), the "Database" COURSE.
+
+**There are two types of entities:**
 
 Strong Entity
 ~~~~~~~~~~~~~~
@@ -63,12 +65,12 @@ Weak entities are identified by the combination of: A partial key of the weak en
 
 **For Example,** Assume in a company database each employee's children should be recorded for ensurance. If only their names or their numbers needs to be saved
 
-we can treat it as an **attribute** of EMPLOYEE entity. But if for every child of an employee we want to record his name, age and sex, now it isn't just a simple or even multivalued attribute but it should 
+we can treat child as an **attribute** of EMPLOYEE entity. But if for every child of an employee we want to record his name, age and sex, now it isn't just a simple or even multivalued attribute but it should 
 
 be considered as a CHILD entity having attributes and related to EMPLOYEE entity. 
 
 
-2- The decision to consider entity weak or strong, is dependant on if it has a unique identifier for its instances or it should depend on another strong entity for unique identification.
+2- The decision to consider an entity weak or strong, is dependant on if it has a unique identifier for its instances or it should depend on another strong entity for unique identification.
 
 **For Example,** In previous CHILD entity, we can find two child instances with exactly the same characteristics (Ali, 8 years, Boy) & another (Ali, 8 years, Boy) the only difference
 
@@ -125,13 +127,15 @@ where some components are themselves composite (i.e. nested composite attributes
 An entity may have multiple values for that attribute. For example, Color of a CAR or PreviousDegrees of a STUDENT. Denoted as {Color} or {PreviousDegrees}.
 
 
-**Note: Entities (i.e. entity instances) with the same basic attributes are grouped or typed into an entity type. **For example,** the STUDENT entity type or the PROJECT entity type.
+**Note:**
 
-An attribute of an entity type for which each entity must have a unique value is called a key attribute of the entity type. **For example,** ID of STUDENT
+- Entities (i.e. entity instances) with the same basic attributes are grouped or typed into an entity type. **For example,** the STUDENT entity type or the PROJECT entity type.
 
-A key attribute may be composite. **For example,** VehicleTagNumber is a key of the CAR entity type with components (Number, State).
+- An attribute of an entity type for which each entity must have a unique value is called a key attribute of the entity type. **For example,** ID of STUDENT
 
-An entity type may have more than one key. **For example,** the CAR entity type may have two keys: VehicleIdentificationNumber (popularly called VIN) and
+- A key attribute may be composite. **For example,** VehicleTagNumber is a key of the CAR entity type with components (Number, State).
+
+- An entity type may have more than one key. **For example,** the CAR entity type may have two keys: VehicleIdentificationNumber (popularly called VIN) and
 
 VehicleTagNumber (Number, State), also known as license_plate number.
 
@@ -143,7 +147,7 @@ _____________________
 
 Relationships of the same type are grouped or typed into a relationship type. For example, the Register relationship type in which STUDENTSs and COURSEs participate, or the MANAGES relationship type in which EMPLOYEEs and DEPARTMENTs participate.
 
-**The degree of a relationship type** is the number of participating entity types. Both MANAGES and WORKS_ON are binary relationships.
+**The degree of a relationship type** is the number of participating entity types. Both MANAGES and WORKS_At are binary relationships. (see the below figure)
 
 **Note:** More than one relationship type can exist with the same participating entity types. For example, MANAGES and WORKS_At are distinct relationships between EMPLOYEE and DEPARTMENT, but with different meanings and different relationship instances.
 

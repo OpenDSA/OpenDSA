@@ -7,12 +7,6 @@ _______________________
 Relationship Cardinality
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. inlineav:: MgrOneVsManyRel ss
-   :long_name: MgrOneVsManyRelEx Slideshow
-   :links: AV/Database/MgrOneVsManyRel.css
-   :scripts: AV/Database/MgrOneVsManyRel.js
-   :output: show
-
 .. inlineav:: Cardinality ss
    :long_name: CardinalityRepresentation Slideshow
    :links: AV/Database/Cardinality.css
@@ -134,6 +128,18 @@ Binary Relationship
    :long_name: oneToManyrightFormRepresentation Slideshow
    :links: AV/Database/oneToManyrightForm.css
    :scripts: AV/Database/oneToManyrightForm.js
+   :output: show
+
+Additional Binary relationship example for concept illustration:
+
+You should know that the cardinality of relationship is dependant on the problem specification (application domain requirements). No standered cardinality for for a given relationship type according to specific entities.
+
+The following visualization example shows five different cardinality cases for the same binary relationship type between same entities. (cardinallity differes according to problem statment)
+
+.. inlineav:: MgrOneVsManyRel ss
+   :long_name: MgrOneVsManyRelEx Slideshow
+   :links: AV/Database/MgrOneVsManyRel.css
+   :scripts: AV/Database/MgrOneVsManyRel.js
    :output: show
 
 **Many-To-Many Binary Relationship:**
