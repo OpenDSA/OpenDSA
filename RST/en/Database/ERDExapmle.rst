@@ -14,6 +14,16 @@ Provide a precise and appropriate name for each entity, attribute, and relations
 Remove vague, redundant or unnecessary relationships between entities.
 Never connect a relationship to another relationship.
 
+
+Requirements of the Company (oversimplified for illustrative purposes)
+The company is organized into DEPARTMENTs. Each department has a name, number and an employee who manages the department. We keep track of the start date of the department manager. 
+Each department controls a number of PROJECTs. Each project has a name, number and is located at a single location.
+
+We store each EMPLOYEE’s social security number, address, salary, sex, and birthdate. Each employee works for one department but may work on several projects. We keep track of the number of hours per week that an employee currently works on each project. We also keep track of the direct supervisor of each employee.
+Each employee may have a number of DEPENDENTs. For each dependent, we keep track of their name, sex, birthdate, and relationship to employee.
+
+
+
 .. odsafig:: Images/CompanyERDEXample.png
 
 .. odsafig:: Images/CompanyRDDExample.png
