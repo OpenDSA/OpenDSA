@@ -44,9 +44,7 @@ DELETE tuples
 Actions Taken in Case of Constraints Violation
 ______________________________________
 
-There are several action that can be taken in case of constraints violation to avoid data corruption. Each can choose the appropriate action according to the 
-
-suitability for the application domain.
+There are several action that can be taken in case of constraints violation to avoid data corruption. Each can choose the appropriate action according to the suitability for the application domain.
 
 1- Cancel the operation that causes violation. 
 

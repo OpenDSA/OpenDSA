@@ -15,12 +15,11 @@ DBMS for database creation.
 for the sake of feeling the difference between RDD and ERD models in a simplified way, and merged in a practical way in most of chapter 2 visualizations to 
 help reader imagine how actual transition (mapping steps) done from EDR to RDD.  
 
-This book adopts a reverse idea from the other traditional books which is illustrating later steps in design process first. The goal of this idea is to first clearly 
-illustrate to the database freshers the design process output $(database$ $schema)$ that we want to reach and then how to reach this output in a sequential steps
-$(e.g.$ $ creating$ $conceptual$ $ERD$ $passing$  $by$ $transforming$ $to$ $relational$ $schema)$. Learning by showing design process output first allows 
-the learner to specify his aim later on in actual designing process.
+This book adopts a reverse approach for database design process illustration, which is discussing later steps in design process first. The goal of this approach firstly is to clearly 
+clarify to the database freshers the output of the design process $(database$ $schema)$ that they should reach, then illustrates the sequential steps used to achieve this output
+$(e.g.$ $ creating$ $conceptual$ $ERD$ $then$  $transforming$ $it$  $to$ $relational$ $schema)$. This approach helps the learner to specify his aim later on in the actual design process.
 
-This chapter first defines what is relational data model (RDD), then discusses some basic definitions related to RDD (e.g. relation, relational schema, database 
+This chapter first defines what is relational database diagram (RDD), then discusses some basic definitions related to RDD (e.g. relation, relational schema, database 
 schema, domain and tuple), next it will illustrate relational integrity constraints and their types and finally demonstrates basic operations on relations and how to 
 execute these processes without violating constraints. 
 

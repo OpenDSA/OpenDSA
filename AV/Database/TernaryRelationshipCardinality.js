@@ -40,7 +40,7 @@ $(document).ready(function() {
   //two problem definitions
   var Prob1Label=av.label("<span style='color:blue;'>Problem statment</span>", {left: arrayLeft, top: arrayTop-70 });
   Prob1Label.css({"font-weight": "bold", "font-size": 16});
-  var Prob1Statment=av.label("assume that you should design a hospital database that should keeps track of patients, doctors and patients' medicin in which each .....", {left: arrayLeft+20, top: arrayTop-45 });
+  var Prob1Statment=av.label("assume that you should design a hospital database that should keeps track of patients, doctors and patients' medicine in which each .....", {left: arrayLeft+20, top: arrayTop-45 });
   Prob1Statment.css({"font-weight": "bold", "font-size": 16});
 
   var cx=0;

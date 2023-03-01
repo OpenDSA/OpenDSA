@@ -139,7 +139,7 @@ var ProblemLab=av.label(("<span style='color:green;'> Assume Having Student enti
 av.step();
 
 //slide 7
-av.umsg(("the corresponding physical relational schema diagram. <span style='color:red;'>Note:</span> derived attribute <span style='color:red;'>isn't included</span> in physical schema as its value can be calculated inside the application program so as to save memory (not to waste memory with redundant data) ").bold().big());
+av.umsg(("the corresponding physical relational schema diagram. <span style='color:red;'>Note:</span> derived attribute <span style='color:red;'>isn't included</span> in physical schema as its value can be calculated from Birthdate attribute inside the application program so as to save memory (not to waste memory with redundant data) ").bold().big());
 CompAttCrowsREc.show();
 CompAttCrowsREc2.show();
 ProblemLab.hide();

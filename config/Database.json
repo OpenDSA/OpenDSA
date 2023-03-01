@@ -58,14 +58,15 @@
       "Database/ERDTernaryExample": {},
       "Database/ERDExapmle": {}
     },
-    "The Conceptual ER-Data Model": {
-      "Database/RelationalModel": {},
-      "Database/DesignProcess": {},
-      "Database/ERDiagram": {},
-      "Database/ModelConstraint": {},
-      "Database/DatabaseApplication": {},
-      "Database/Exersice": {},
-      "Database/ReviewQuestions": {}
+    "The Structured Query Language (SQL)": {
+      "Database/SQLIntroduction": {},
+      "Database/SQLSelect": {},
+      "Database/NestedQueries": {},
+      "Database/SQLJoin": {},
+      "Database/AggregateFunctions": {},
+      "Database/SQLUpdate": {},
+      "Database/SQLInsert": {},
+      "Database/SQLDelete": {}
     }
   }
 }

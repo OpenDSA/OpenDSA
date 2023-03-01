@@ -4,7 +4,7 @@ ERD Relationship Types
 
 • A relationship type can have attributes; **for example,** HoursPerWeek of WORKS_ON relationship; its value for each relationship instance describes the number of hours per week that an EMPLOYEE works on a PROJECT. HoursPerWeek attribute is neither describing the employee nor the project, but it describes the relation between them (WORKS_ON).
 
-• Relationships in the E-R diagram play a very vital role as they are the ones with the help of which one can convert any E-R diagram into database related tables. 
+• Relationships in the E-R diagram play a vital role as they help in converting any E-R diagram into database related tables. 
 
 
 Relationship Constraints
@@ -12,7 +12,7 @@ _______________________
 
 • Constraints are used for modeling limitations on the relations between entities.
 
-• There are two types of constraints on the ER-Model (Cardinality ratio & Participation).
+• There are two types of constraints on the ER-Model (**Cardinality ratio** & **Participation**).
 
 Relationship Cardinality
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -42,7 +42,7 @@ Relationship Participation
    :output: show
 
 
-This below visualization shows how to express cardinality and participation constraints using Min-Max notation on the ER-Model.
+The below visualizations show how to express cardinality and participation constraints using Chen, Crow's Foot & Min-Max notation in the ER-Model.
 
 .. inlineav:: min-maxNotation ss
    :long_name: min-maxNotationRepresentation Slideshow
@@ -78,9 +78,9 @@ This below visualization shows how to express cardinality and participation cons
 Relationship Degree
 _____________________
 
-• The degree of a relationship is the number of entity types that participate(associate) in a relationship (i.e.) the number of an entity type that is connected to a relationship is the degree of that relationship.
+• The degree of a relationship is the number of entity types that participate(associate) in a relationship. (i.e. the number of an entity type that is connected to a relationship is the degree of that relationship)
 
-• **we have the following degree of relationships:**
+• **we have the following degrees of relationships:**
 
 	* Unary
 	* Binary
@@ -209,7 +209,7 @@ The following visualization example shows five different cardinality cases for t
 
 **Binary relationship examples conclusions: (Mapping Rules)**
 
-1- Binary1:1, PK of any entity ca be inserted as a FK in the other entity.
+1- Binary1:1, PK of any entity can be inserted as a FK in the other entity.
 
 2- Binary1:M, PK of the entity in the (1) side inserted as a FK in entity table beside (M) side.
 
