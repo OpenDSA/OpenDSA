@@ -1,0 +1,19 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "Flat file representation for employees data and their departments.",
+      "sc2": "<span style='color:red;'>Why flat file design has a lot of problems ??</span>  .",
+      "sc3": "First Problem is  <span style='color:red;'>Redundancy</span>  .",
+      "sc4": "Each department details are reapeated with each emoployee belongs to that department.", 
+      "sc5": "Second Problem is  <span style='color:red;'>File is not physically divided into rows & columns it is just a logical representation</span>  .",
+      "sc6": "Flat files design problems  <span style='color:red;'>(Dis-advantages1)</span>  .",
+      "sc7": "<span style='color:red;'>How to solve flat file design problems??</span> Solution is: applying<span style='color:blue;'> the relational concept</span> which is decomposing (i.e., splitting) the flat table into number of smaller tables $as$ $shown$ $below$ $with$ $the$ $red$ $line$ in which each one represents a different concept or entity type.",
+      "sc8": "Flat files design problems  <span style='color:red;'>(Dis-advantages2)</span>  .",
+      "sc9": "<span style='color:blue;'>Decomposition </span> <span style='color:red;'> solution </span> Here the flat table decomposed into two tables one represents employees and the other represents departments <span style='color:blue;'> NOTICE:$A$ $common$ $attribute$ $should$ $exist$ $between$ $splitted$ $tables$ $to$ $help$ $in$ $joining$ $data$ $between$ $them$ (e.g., Dep-name exists in both tables)</span>.",
+      "sc10": "<span style='color:blue;'>Decomposition </span> is the  <span style='color:red;'> Relational Concept</span> ",
+      "sc11": "Flat File <span style='color:red;'>VS</span> Relational Database.",
+      "sc12": "e.g., If you want to search for <span style='color:red;'>employee Alia</span> ."
+
+    }
+  }
+}

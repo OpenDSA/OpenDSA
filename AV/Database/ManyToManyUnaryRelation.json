@@ -1,0 +1,22 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "This  is an <span style='color:blue;'>Employee entity</span> with <span style='color:red;'>Unary N:M</span> relation<span style='color:red;'>[Supervise]</span>. (i.e. some <span style='color:red;'> employees </span>are <span style='color:red;'> managers </span> and the other are <span style='color:red;'> subordinate employees </span>, <span style='color:blue;'>Each employee</span> can be a manager for <span style='color:red;'> one or more </span>  employee of <span style='color:blue;'> his colleagues</span>,But each <span style='color:blue;'> employee </span> can only have <span style='color:red;'> one </span> <span style='color:blue;'> manager </span>)",
+      "sc2": "Now, How can we physically implement this relationship? <span style='color:blue;'>New column</span> will be added to the <span style='color:blue;'>Employee</span> entity to represent the relationship <span style='color:red;'>[Manage]</span>  relationship",
+      "sc3": "Which is  true using the foreign key<span style='color:red;'>(Emp-id)</span>  for referring to the <span style='color:blue;'>manager-id</span> OR <span style='color:blue;'>subordinate employee</span>?? <span style='color:red;'>Let's try to know</span> ",
+      "sc4":"Assume that E-id(FK) refers to subordinate employee" ,
+      "sc5":"Assume that supervisor employee <span style='color:red;'>ahmed</span>with <span style='color:red;'>E-id=5</span>  supervise employees <span style='color:blue;'>adel</span> with <span style='color:blue;'>E-id=2</span>, <span style='color:blue;'>hazem</span> with <span style='color:blue;'>E-id=8</span> & <span style='color:blue;'>randa</span> with <span style='color:blue;'>E-id=6</span>",
+      "sc6":"Assume that supervisor employee <span style='color:red;'>Hazem</span>with <span style='color:red;'>E-id=8</span>  supervise employees <span style='color:blue;'>mona</span> with <span style='color:blue;'>E-id=3</span>, <span style='color:blue;'>ali</span> with <span style='color:blue;'>E-id=1</span>",
+      "sc7":"Assume that supervisor employee <span style='color:red;'>Layla</span>with <span style='color:red;'>E-id=9</span>  supervise employees <span style='color:blue;'>Randa</span> with <span style='color:blue;'>E-id=6</span>, <span style='color:blue;'>morad</span> with <span style='color:blue;'>E-id=4</span>",
+      "sc8":"Here is the <span style='color:red;'>Problem</span> which one of the subordinate employees' E-ids to put in the <span style='color:red;'>subordinate field</span> denoted with red circle" ,
+      "sc9": "Assume that Employee Ahmed with <span style='color:blue;'>$E-id=5$</span> <span style='color:red;'>Married from</span> Employee mona with <span style='color:red;'>$E-id=3$</span>  How to physically implement this relation using <span style='color:blue;'>Partner</span> forigen Key",
+      "sc10": "Assume that Employee Adel with <span style='color:blue;'>$E-id=2$</span> <span style='color:red;'>Married from</span> Employee Layla with <span style='color:red;'>$E-id=9$</span>  How to physically implement this relation using <span style='color:blue;'>Partner</span> forigen Key",
+      "sc11": "Employee <span style='color:red;'>ahmed</span> with $E-id=$<span style='color:blue;'>$5$</span> works at project <span style='color:red;'>Plumbing</span> with project id $P-id=$<span style='color:blue;'>$B$</span>",
+      "sc12": "Employee <span style='color:red;'>morad</span> with $E-id=4$ works at project <span style='color:red;'>sewage</span> with project id $P-id=C$",
+      "sc13": "Employee <span style='color:red;'>walid</span> with $E-id=6$ works at project <span style='color:red;'>Plumbing</span> with project id $P-id=B$",
+      "sc14": "Employee <span style='color:red;'>adel</span> with $E-id=2$ works at project <span style='color:red;'>sewage</span> with project id $P-id=C$",
+      "sc15": "Employee <span style='color:red;'>ali</span> with $E-id=1$ works at project <span style='color:red;'>Plumbing</span> with project id $P-id=B$",
+      "sc16": "Employee <span style='color:red;'>khaled</span> with $E-id=3$ works at project <span style='color:red;'> electricity </span>with project id $P-id=A$"
+    }
+  }
+}

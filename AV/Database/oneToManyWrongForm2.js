@@ -1,0 +1,479 @@
+/*global ODSA */
+$(document).ready(function() {
+  "use strict";
+  var av_name = "oneToManyWrongForm2";
+  //var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
+  var config = ODSA.UTILS.loadConfig({av_name: av_name}),
+  interpret = config.interpreter,       // get the interpreter
+  code = config.code;                   // get the code object
+  
+  var av = new JSAV(av_name);
+
+  //vertical array min.width=80 in insertionsortCON.css
+
+  var arrayWidth=120;
+  var arrayLeft=10;
+  var arrayGap=200;
+  var arrayTop=20;
+
+  //to facilitate detection of pointers' top of the three matrices
+  // MatrixCellHight i.e the step size is -30 so
+  //the let poiter point to the top of the 4th element in the matrix
+  //4th element = index(3) then pointerTopEqu=(MatrixPointerTopStart+(MatrixCellHight*index))= (-10+(-30*3))=-100;
+  // in case of matrix the index is equals to the number of the array used i.e. index 3=matrix1_array[3]; so below in the top equation
+  // we will use the number of the array of the matrix instead of the index
+  //pointerTopEqu=pointerTop=(MatrixPointerTopStart+(MatrixCellHight*MartixArrayNo))= (-10+(-30*3))=-100;
+  var MatrixPointerTopStart=-10;
+  var MatrixCellHight=-30;
+  var Matrix1ArrayNo;
+  var Matrix2ArrayNo;
+  var Matrix3ArrayNO;
+  var pointerTop=0;
+
+  var Matrix1PonterLeft=65;
+  var Matrix1Ponterright=160;
+  var Matrix2Ponterright=90;
+  var Matrix3PonterLeft=30;
+  var Matrix3Ponterright=140;
+
+  //definning Matrix as a table
+  var themMatrix5 =[["P-id","P-name","P-location","E-id1(FK)","E-id2(FK)","E-id3(FK)"],["A","electricity","minia"," "," "," "],["B","plumbing","sohag"," "," "," "],["C","sewage","cairo"," "," "," "],["D","Natural gas","assiut"," "," "," "]];
+  var matrx5= av.ds.matrix(themMatrix5, {style: "table", top: arrayTop, left: arrayLeft }); 
+ 
+  var themMatrix4 =[["P-id","P-name","P-location","E-id1(FK)","E-id2(FK)"],["A","electricity","minia"," "," "],["B","plumbing","sohag"," "," "],["C","sewage","cairo"," "," "],["D","Natural gas","assiut"," "," "]];
+  var matrx4= av.ds.matrix(themMatrix4, {style: "table", top: arrayTop, left: arrayLeft }); 
+ 
+  var themMatrix3 =[["P-id","P-name","P-location","E-id(FK)"],["A","electricity","minia"," "],["B","plumbing","sohag"," "],["C","sewage","cairo"," "],["D","Natural gas","assiut"," "]];
+  var matrx3= av.ds.matrix(themMatrix3, {style: "table", top: arrayTop, left: arrayLeft });
+
+  var themMatrix2 =[["P-id","P-name","P-location"],["A","electricity","minia"],["B","plumbing","sohag"],["C","sewage","cairo"],["D","Natural gas","assiut"]];
+  var matrx2= av.ds.matrix(themMatrix2, {style: "table", top: arrayTop, left: arrayLeft });
+    
+  arrayLeft+=arrayWidth+arrayGap+140;
+  arrayLeft+=arrayWidth+arrayGap;
+  
+  var themMatrix1 = [["E-id","E-name"," E-salary"],[1,"ali",500],[2,"adel",700],[3,"khaled",1000],[4,"morad",300],[5,"ahmed",500],[6,"walid",600]];
+  var matrx1= av.ds.matrix(themMatrix1, {style: "table", top: arrayTop, left: arrayLeft });
+
+ 
+  // to make first row of attributes names in each table in bold
+  matrx1._arrays[0].css([0,1,2], {"font-weight": "bold", "color": "black"});
+  matrx2._arrays[0].css([0,1,2], {"font-weight": "bold", "color": "black"});
+  matrx3._arrays[0].css([0,1,2], {"font-weight": "bold", "color": "black"});
+  matrx4._arrays[0].css([0,1,2], {"font-weight": "bold", "color": "black"});
+  matrx5._arrays[0].css([0,1,2], {"font-weight": "bold", "color": "black"});
+
+  // to underline primary keys in all tables
+  matrx1._arrays[0].css([0], {"text-decoration": "underline"});
+  matrx2._arrays[0].css([0], {"text-decoration": "underline"});
+  matrx3._arrays[0].css([0], {"text-decoration": "underline"});
+  matrx4._arrays[0].css([0], {"text-decoration": "underline"});
+  matrx5._arrays[0].css([0], {"text-decoration": "underline"});
+
+  // hide all rows of matrix 3 , matrix4 and matrix 5 using the same end of counter "themMatrix3.length" because all of the three
+  // matrice sare of the same length
+  for (var i=0; i < themMatrix3.length; i++)
+  {
+  matrx3._arrays[i].hide();
+  matrx4._arrays[i].hide();
+  matrx5._arrays[i].hide();
+  }
+
+  
+  //Draw relation between project and employee tables in the first slide
+  var mainline2X1=740+50;
+  var mainline2Y1=90;
+  var mainline2X2=290;
+  var mainline2Y2=mainline2Y1; 
+
+  // main that represents the two tables' relations
+  var line2 = av.g.line(mainline2X1,  mainline2Y1, mainline2X2,  mainline2Y2, {opacity: 100, "stroke-width": 2});
+  //cross foot of the tables' relations
+  var line3 = av.g.line( mainline2X1-20,  mainline2Y1,  mainline2X1,  mainline2Y1-10,{opacity: 100, "stroke-width": 2});
+  var line4 = av.g.line( mainline2X1-20,  mainline2Y1, mainline2X1,  mainline2Y1+10, {opacity: 100, "stroke-width": 2}); 
+  //two vertical lines of the tables' relations
+ // var line5 = av.g.line( mainline2X1-40,  mainline2Y1-10, mainline2X1-40,  mainline2Y1+10, {opacity: 100, "stroke-width": 2});
+  var line6= av.g.line( mainline2X1-450,  mainline2Y1-10, mainline2X1-450,  mainline2Y1+10, {opacity: 100, "stroke-width": 2}); 
+  var lab=av.label(interpret("<span style='color:red;'> Works at </span>"), {left: ((mainline2X1-mainline2X2)), top: mainline2Y1- 50 });
+  lab.css({"font-weight": "bold", "font-size": 20});
+
+
+  // array that hold project number that has already worked employee so as when another employee come to work at this project we will search
+  //that array to see if the employee cell isnot empty we will add a new record to the project matrix 
+  //that result in redundancy problem that we want to show
+  
+  var pointer1;
+  var arr_values = [];
+  //var NoEmpProA=0;
+  //var NoEmpProB=0;
+  //var NoEmpProC=0;
+ // var NoEmpProD=0;
+ // var matrix3Flag=0;
+ // var matrix4Flag=0;
+ // var matrix5Flag=0;
+  var arrFullProIndex=0;
+  var redundantProIndex=themMatrix2.length;
+  var empNo=0;
+  var proNo=0;
+  var cx=arrayLeft+48;
+  var cy=arrayTop+(30*((empNo)+1));
+  var cRadius=15;
+  var x1=cx;
+  var y1=arrayTop+(30*((empNo)+1));
+  var x2=350;
+  var y2=arrayTop+(30*((proNo)+1));
+  
+  var circle=av.g.circle(cx,cy ,cRadius , {stroke: "red","stroke-width": 2});
+  circle.hide();
+
+  var Fcircle=av.g.circle(0,0 ,0 , {stroke: "red","stroke-width": 2});
+  Fcircle.hide();
+
+  var line1 = av.g.line(0,0, 0,  0, {"arrow-end": "classic-wide-long", opacity: 100, "stroke-width": 2});
+  line1.hide();
+  av.umsg(interpret("sc1").bold().big());
+
+  // Slide 1
+  av.umsg(interpret("sc1").bold().big());
+  av.displayInit(1);
+
+  //slide 2
+  line2.hide();
+  line3.hide();
+  line4.hide();
+  //line5.hide();
+  line6.hide();
+  lab.hide();
+  av.umsg(interpret("sc2").bold().big());
+  // hide all of the rows of matrix 2 and show all rows of matrix3 knowing that the two rows are of the same length
+  for (var i=0; i < themMatrix2.length; i++)
+  {
+  matrx2._arrays[i].hide();
+  matrx3._arrays[i].show();
+  }
+  //matrix3Flag=1;
+  
+  y1=arrayTop+(30*((empNo)+1));
+  y2=arrayTop+(30*((proNo)+1));
+  cy=arrayTop+(30*((empNo)+1));
+  circle=av.g.circle(cx,cy ,cRadius , {stroke: "red","stroke-width": 2});
+  line1.movePoints([[0, x1, y1], [1, x2, y2]]);
+  line1.show();
+  av.step();
+
+  // Slide 3
+  av.umsg(interpret("sc4").bold().big());
+  circle.hide();
+  line1.hide();
+  empNo=5;
+  proNo=2;
+  //NoEmpProB++;
+  y1=arrayTop+(30*((empNo)+1));
+  y2=arrayTop+(30*((proNo)+1));
+  cy=arrayTop+(30*((empNo)+1));
+  circle=av.g.circle(cx,cy ,cRadius , {stroke: "red","stroke-width": 2});
+  circle.hide();
+  line1.movePoints([[0, x1, y1], [1, x2, y2]]);
+  matrx1._arrays[empNo].highlight(0);
+  matrx1._arrays[empNo].highlight(1);
+  matrx3._arrays[proNo].highlight();
+  arr_values[arrFullProIndex] = proNo;
+  arrFullProIndex++;
+  av.step();
+
+  // Slide 4  
+  av.umsg(interpret("sc4").bold().big());
+  circle.show();
+  line1.movePoints([[0, x1, y1], [1, x2, y2]]);
+  line1.show();
+  matrx3._arrays[proNo].value(3,empNo);
+  matrx4._arrays[proNo].value(3,empNo);
+  matrx5._arrays[proNo].value(3,empNo);
+  av.step();
+  
+  //slide 5
+  av.umsg(interpret("sc5").bold().big());
+  matrx1._arrays[empNo].unhighlight(0);
+  matrx1._arrays[empNo].unhighlight(1);
+  matrx3._arrays[proNo].unhighlight();
+  circle.hide();
+  line1.hide();
+  empNo=4;
+  proNo=3;
+  //NoEmpProC++;
+  if (arr_values.indexOf(proNo) === -1) {
+    arr_values[arrFullProIndex] = proNo;
+    arrFullProIndex++;
+  }
+  
+  else{
+    matrx3._arrays[redundantProIndex].value(0,matrx3._arrays[proNo].value(0));
+    matrx3._arrays[redundantProIndex].value(1,matrx3._arrays[proNo].value(1));
+    matrx3._arrays[redundantProIndex].value(2,matrx3._arrays[proNo].value(2));
+    matrx3._arrays[redundantProIndex].highlight();
+    proNo=redundantProIndex;
+    matrx3._arrays[proNo].show();
+    redundantProIndex++;
+  }
+  matrx1._arrays[empNo].highlight(0);
+  matrx1._arrays[empNo].highlight(1);
+  matrx3._arrays[proNo].highlight();
+
+  y1=arrayTop+(30*((empNo)+1));
+  y2=arrayTop+(30*((proNo)+1));
+  cy=arrayTop+(30*((empNo)+1));
+  circle=av.g.circle(cx,cy ,cRadius , {stroke: "red","stroke-width": 2});
+  circle.hide();
+  line1.movePoints([[0, x1, y1], [1, x2, y2]]);
+  av.step();
+
+  // Slide 6 
+  av.umsg(interpret("sc5").bold().big());
+  circle.show();
+  line1.show();
+  matrx3._arrays[proNo].value(3,4);
+  matrx4._arrays[proNo].value(3,4);
+  matrx5._arrays[proNo].value(3,4);
+  av.step();
+
+  // Slide 7
+  av.umsg(interpret("sc6").bold().big());
+  matrx1._arrays[empNo].unhighlight(0);
+  matrx1._arrays[empNo].unhighlight(1);
+  matrx3._arrays[proNo].unhighlight();
+  circle.hide();
+  line1.hide();
+  proNo=2;
+  empNo=6;
+  matrx1._arrays[empNo].highlight(0);
+  matrx1._arrays[empNo].highlight(1);
+  matrx3._arrays[proNo].highlight();
+  if (arr_values.indexOf(proNo) != -1) {
+    pointer1 = av.pointer("<span style='color:red;'> Warning: </span> Feild is Full with another employee ID", matrx3._arrays[proNo].index(3), {left: 110, top:-30 });
+   }
+  av.step();
+
+  // Slide 8 
+  pointer1.hide();
+  av.umsg(interpret("<span style='color:blue;'> new column added </span> in the projects table to record that <span style='color:blue;'> another </span> employee <span style='color:red;'>"+matrx1._arrays[empNo].value(1)+"</span>  joined <span style='color:blue;'> the same "+matrx3._arrays[proNo].value(1)+ "</span> project").bold().big());
+  //this for loop to hide matrix 3 that contain only one column for employeeID forien key and show matrix 4 instead of it that has two columns for employeeID forien key 
+  //that because one of the project now want to add other employee in it so we should add other column to matrix 3 and this is impossible so we will sustitue it with matrix for 
+  //its copy but with one more column you should know that matrix 3 and matrix 4 have the same number of records because they are eexactly the same
+  for (var i=0; i < themMatrix3.length; i++)
+  {
+  matrx3._arrays[i].hide();
+  matrx4._arrays[i].show();
+  }
+  pointer1 = av.pointer("<span style='color:red;'> new column added</span>", matrx4._arrays[1].index(4), {left: 150, top:60 });
+  //this for loop to //this for loop to unhighlight the new added employeeID forien key columnhighlight the new added employeeID forien key column
+  for(i=0;i<themMatrix4.length;i++)
+  matrx4._arrays[i].highlight(4);
+  y1=arrayTop+(30*((empNo)+1));
+  y2=arrayTop+(30*((proNo)+1));
+  x2+=75;
+  cy=arrayTop+(30*((empNo)+1));
+  circle=av.g.circle(cx,cy ,cRadius , {stroke: "red","stroke-width": 2});
+  circle.hide();
+  line1.movePoints([[0, x1, y1], [1, x2, y2]]);
+  av.step();
+
+ // Slide 9
+ //this for loop to unhighlight the new added employeeID forien key column
+  for(i=0;i<themMatrix4.length;i++)
+  matrx4._arrays[i].unhighlight(4);
+  matrx4._arrays[proNo].highlight();
+  pointer1.hide();
+  av.umsg(interpret("sc6").bold().big());
+  circle.show();
+  line1.show();
+  matrx4._arrays[proNo].value(4,empNo);
+  matrx5._arrays[proNo].value(4,empNo);
+  av.step();
+ 
+
+ // Slide 10
+  av.umsg(interpret("sc7").bold().big());
+  matrx1._arrays[empNo].unhighlight(0);
+  matrx1._arrays[empNo].unhighlight(1);
+  matrx4._arrays[proNo].unhighlight();
+  circle.hide();
+  line1.hide();
+  proNo=3;
+  empNo=2;
+  matrx1._arrays[empNo].highlight(0);
+  matrx1._arrays[empNo].highlight(1);
+  matrx4._arrays[proNo].highlight();
+  pointer1 = av.pointer("<span style='color:red;'> Warning: </span> Feild is Full with another employee ID", matrx4._arrays[proNo].index(3), {left: 120, top:-30 });
+  av.step();
+ 
+//slide 11
+  pointer1.hide();
+  av.umsg(interpret("Now there are two employee slots for each project, <span style='color:red;'> Fortunately </span> <span style='color:blue;'> project C </span> still has one empty slot to save <span style='color:blue;'> $adel's$ $ID=2$ </span>").bold().big());
+  pointer1 = av.pointer("<span style='color:red;'> Empty Feild: </span>For the second employee of project C", matrx4._arrays[proNo].index(4), {left: 10, top:-20 });
+  av.step();
+
+//slide 12
+  pointer1.hide();
+  av.umsg(interpret("Now adel's ID=2 will be saved in the record of project C").bold().big());
+  y1=arrayTop+(30*((empNo)+1));
+  y2=arrayTop+(30*((proNo)+1));
+  cy=arrayTop+(30*((empNo)+1));
+  circle=av.g.circle(cx,cy ,cRadius , {stroke: "red","stroke-width": 2});
+  line1.movePoints([[0, x1, y1], [1, x2, y2]]);
+  line1.show();
+  matrx4._arrays[proNo].value(4,empNo);
+  matrx5._arrays[proNo].value(4,empNo);
+  av.step();
+
+//slide 13
+  av.umsg(interpret("sc8").bold().big());
+  matrx1._arrays[empNo].unhighlight(0);
+  matrx1._arrays[empNo].unhighlight(1);
+  matrx4._arrays[proNo].unhighlight();
+  circle.hide();
+  line1.hide();
+  proNo=2;
+  empNo=1;
+  matrx1._arrays[empNo].highlight(0);
+  matrx1._arrays[empNo].highlight(1);
+  matrx4._arrays[proNo].highlight();
+  pointer1 = av.pointer("<span style='color:red;'> Warning: </span> All employee ID fields are full", matrx4._arrays[proNo].index(4), {left: 110, top:-30 });
+  av.step();
+
+   //slide 14
+   pointer1.hide();
+   av.umsg(interpret("<span style='color:blue;'> New Column Added </span> in the projects table to record that <span style='color:blue;'> another </span> employee <span style='color:red;'>"+matrx1._arrays[empNo].value(1)+"</span>  joined <span style='color:blue;'> the same "+matrx3._arrays[proNo].value(1)+ "</span> project").bold().big());
+   for (var i=0; i < themMatrix4.length; i++)
+   {
+   matrx4._arrays[i].hide();
+   matrx5._arrays[i].show();
+   }
+   pointer1 = av.pointer("<span style='color:red;'> new column added</span>", matrx5._arrays[1].index(5), {left: 150, top:60 });
+  for(i=0;i<themMatrix5.length;i++)
+  matrx5._arrays[i].highlight(5);
+   av.step();
+
+   // Slide 15
+  for(i=0;i<themMatrix5.length;i++)
+  matrx5._arrays[i].unhighlight(5);
+  matrx5._arrays[proNo].highlight();
+  pointer1.hide();
+  av.umsg(interpret("sc8").bold().big());
+  y1=arrayTop+(30*((empNo)+1));
+  y2=arrayTop+(30*((proNo)+1));
+  x2+=90;
+  cy=arrayTop+(30*((empNo)+1));
+  circle=av.g.circle(cx,cy ,cRadius , {stroke: "red","stroke-width": 2});
+  line1.movePoints([[0, x1, y1], [1, x2, y2]]);
+  line1.show();
+  circle.show();
+  matrx5._arrays[proNo].value(5,empNo);
+  av.step();
+
+//slide 16
+  av.umsg(interpret("sc9").bold().big());
+  matrx1._arrays[empNo].unhighlight(0);
+  matrx1._arrays[empNo].unhighlight(1);
+  matrx5._arrays[proNo].unhighlight();
+  circle.hide();
+  line1.hide();
+  proNo=1;
+  empNo=3;
+  matrx1._arrays[empNo].highlight(0);
+  matrx1._arrays[empNo].highlight(1);
+  matrx5._arrays[proNo].highlight();
+  pointer1 = av.pointer("<span style='color:red;'> Congratulations </span> All employee ID fields are empty", matrx5._arrays[proNo].index(3), {left: 120, top:-20 });
+  av.step();
+
+//slide 17
+  pointer1.hide();
+  av.umsg(interpret("sc9").bold().big());
+  //y1 & y2 goes up and down with value 30 in both tables employees and projects according to the employee no or project number the line pointing at it y2 point to project table while y1 points to employees table
+  y1=arrayTop+(30*((empNo)+1)); 
+  y2=arrayTop+(30*((proNo)+1));
+  //this x2 to control end of line pointing at employee slots in projects table so it move to right and left according the empty slot
+  x2=x2-90-75; 
+  cy=arrayTop+(30*((empNo)+1));
+  circle=av.g.circle(cx,cy ,cRadius , {stroke: "red","stroke-width": 2});
+  line1.movePoints([[0, x1, y1], [1, x2, y2]]);
+  line1.show();
+  circle.show();
+  matrx5._arrays[proNo].value(3,empNo);
+  av.step();
+
+//slide 18
+  av.umsg(interpret("Notice a lot of <span style='color:red;'> null </span> values which is <span style='color:red;'> wasting memory </span>").bold().big());
+  matrx1._arrays[empNo].unhighlight(0);
+  matrx1._arrays[empNo].unhighlight(1);
+  matrx5._arrays[proNo].unhighlight();
+  
+
+  matrx5._arrays[1].highlight(4);
+  matrx5._arrays[1].highlight(5);
+  matrx5._arrays[3].highlight(5);
+  matrx5._arrays[4].highlight(3);
+  matrx5._arrays[4].highlight(4);
+  matrx5._arrays[4].highlight(5);
+  line1.hide();
+  circle.hide();
+  //to add null values to matrix 5 
+  matrx5._arrays[1].value(4,"<span style='color:red;'> null </span>");
+  matrx5._arrays[1].value(5,"<span style='color:red;'> null </span>");
+  matrx5._arrays[3].value(5,"<span style='color:red;'> null </span>");
+  matrx5._arrays[4].value(3,"<span style='color:red;'> null </span>");
+  matrx5._arrays[4].value(4,"<span style='color:red;'> null </span>");
+  matrx5._arrays[4].value(5,"<span style='color:red;'> null </span>");
+av.step();
+
+//slide 20
+av.umsg(("").bold().big());
+line2.movePoints([[0,mainline2X1,mainline2Y1],[1,mainline2X2+90+175,mainline2Y2]]);
+line2.show();
+line3.show();
+line4.show();
+line6.movePoints([[0,mainline2X1-400+190, mainline2Y1-10],[1,mainline2X1-400+190, mainline2Y1+10]]);
+line6.show();
+//Fpointer.hide();
+matrx5._arrays[1].unhighlight();
+matrx5._arrays[3].unhighlight();
+matrx5._arrays[4].unhighlight();
+matrx1._arrays[0].highlight(0);
+var Flab1=av.label(("<span style='color:red;'> So: </span>"), {left: 40, top: 240 });
+Flab1.css({"font-weight": "bold", "font-size": 28});
+var Flab2=av.label(("<span style='color:green;'> Using the primary key</span>"), {left: 90, top: 250 });
+Flab2.css({"font-weight": "bold", "font-size": 22});
+av.step();
+
+//slide 21
+Fcircle=av.g.circle(mainline2X1-20,  mainline2Y1 ,20 , {stroke: "red","stroke-width": 2});
+Fcircle.show();
+Flab2=av.label(("<span style='color:green;'> of entity beside the many side</span>"), {left: 330, top: 250 });
+Flab2.css({"font-weight": "bold", "font-size": 22});
+av.step();
+
+//slide 22
+Fcircle.hide();
+matrx1._arrays[0].unhighlight(0);
+matrx3._arrays[0].highlight(3);
+Flab2=av.label(("<span style='color:green;'> as a foreign key</span>"), {left: 650, top: 250 });
+Flab2.css({"font-weight": "bold", "font-size": 22});
+av.step();
+
+//slide 23
+Fcircle=av.g.circle(mainline2X1-400+90+100,  mainline2Y1 ,15 , {stroke: "red","stroke-width": 2});
+Fcircle.show();
+matrx5._arrays[0].highlight(3);
+matrx5._arrays[0].highlight(4);
+matrx5._arrays[0].highlight(5);
+Flab2=av.label(("<span style='color:green;'> of the entity beside the</span>"), {left: 820, top: 250 });
+Flab2.css({"font-weight": "bold", "font-size": 22});
+Flab2=av.label(("<span style='color:green;'> one side</span>"), {left: 40, top: 300 });
+Flab2.css({"font-weight": "bold", "font-size": 22});
+av.step();
+
+//slide 24
+Flab2=av.label(("<span style='color:red;'> isn't a feasible</span> solution "), {left: 140, top: 300 });
+Flab2.css({"font-weight": "bold", "font-size": 22});
+av.recorded();
+
+});
