@@ -39,7 +39,7 @@
   "chapters": {
     "Preface": {
       "Intro": {},
-      "Database/DB_Demo":{}
+      "Database/DBDemo":{}
 
     },
     "Main Phases of Relational Database Design":{

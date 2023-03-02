@@ -10,10 +10,10 @@
 
 
 Introduction to the Database concept
-==============================
+====================================
 
 Guidelines for Using This Book:
----------------------------------------
+-------------------------------
 
 There are many different ways to learn a database course. Here all you need is applying $"READ$ $ONCE$ $VIEW$ $MANY"$ method. This method is the simplist and fastest way to learn database concepts 
 
@@ -26,7 +26,7 @@ by a lot of pictures, tables, visualization, and figures.
 The book's author is highly recommending to study the book in the same sequence as presented because some of the concepts and visualizations are prerequisite to other.
 
 Database Basic Definitions
---------------------------------------
+--------------------------
 
 **DATA:** is a collection of facts and figures that can be processed to produce information (i.e., data ia the row material of information). 
 Each piece of data is a little fact that doesn’t mean much on its own.
@@ -140,15 +140,15 @@ Many of today's most widely used computer systems are database applications. Som
 
 
 Database Types
---------------------------------------
+--------------
 
 **FLAT FILE:**
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~
 
 .. odsafig:: Images/CSVFileExample2.png
 
 **RELATIONAL DATABASE:**
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 In a relational database, all data is held in tables, which are physically made up of rows and columns. Each table in the database must hold information about a specific thing, such as employees, products, or customers.
 
