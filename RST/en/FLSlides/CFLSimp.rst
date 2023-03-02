@@ -82,7 +82,7 @@ Simplifying CFGs and Normal Forms
    |   :math:`B \rightarrow abbA \mid b`
 
    | Substitute to get :math:`\hat{G}`:
-   |   :math:`A \rightarrow a \mid aaA \mid ababbAc \mid abbc`
+   |   :math:`A \rightarrow a \mid aaA \mid ab\color{red}{abbA}c \mid ab\color{red}{b}c`
    |   :math:`B \rightarrow abbA \mid b`
 
    | Then the B productions become useless productions. 
@@ -179,7 +179,7 @@ Simplifying CFGs and Normal Forms
    | :math:`B \rightarrow Sa \mid b`
    | :math:`C \rightarrow cBc \mid a`
    | :math:`D \rightarrow bCb`
-   | :math:`E \rightarrow Aa \mid b`
+   | :math:`E \rightarrow b`
 
    .. odsafig:: Images/uselessgraph.png
       :width: 350
