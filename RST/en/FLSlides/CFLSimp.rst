@@ -165,7 +165,7 @@ Simplifying CFGs and Normal Forms
 
    | II. Draw Variable Dependency Graph
    |    For :math:`A \rightarrow xBy`, draw :math:`A \rightarrow B`.
-   |    Draw :math:`A` in a circle, :math:`B` in a circle, and an arc from
+   |    Make :math:`A` and :math:`B` be nodes with an arc from
         :math:`A` to :math:`B`.
    |    Remove productions for :math:`V` if there is no path from :math:`S` to
         :math:`V` in the dependency graph.
@@ -289,10 +289,11 @@ Simplifying CFGs and Normal Forms
 
    | 1. Find for each :math:`A`, all :math:`B` such that
         :math:`A \stackrel{*}{\Rightarrow} B`
-   |    (Draw a dependency graph howing relationship of Unit
-        productions. Just draw arc for each :math:`A \rightarrow B` rule.
-   |    Draw :math:`A` in a circle, :math:`B` in a circle,
-        and an arc from :math:`A` to :math:`B`.)
+   |    (Draw a dependency graph showing relationship of Unit
+        productions.
+   |    Make a node for each variable.
+        For any rule :math:`A \Rightarrow B`, draw an arc from
+        :math:`A` to :math:`B`.)
    | 2. Construct :math:`G' = (V', T', S, P')` by
    |    (a) Put all non-unit productions in :math:`P'`
    |    (b) For all :math:`A \stackrel{*}{\Rightarrow} B` such that
@@ -378,7 +379,7 @@ Simplifying CFGs and Normal Forms
    | :math:`C \rightarrow Cc \mid e`
 
 
-   | (after step 1)
+   | (after removing :math:`\lambda`, usless, unit productions:)
    | :math:`S \rightarrow CBC_1C_2`
    | :math:`B \rightarrow b`
    | :math:`C \rightarrow CC_3 \mid e`
@@ -398,9 +399,6 @@ Simplifying CFGs and Normal Forms
    | :math:`C_1 \rightarrow c`
    | :math:`C_2 \rightarrow d`
    | :math:`C_3 \rightarrow c`
-
-   NOTE: Should get rid of :math:`\lambda` productions and unit
-   productions first!
 
 
 .. slide:: Greibach Normal Form (GNF)
