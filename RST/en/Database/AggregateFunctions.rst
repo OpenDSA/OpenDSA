@@ -1,5 +1,5 @@
 Aggregate Functions
-====================
+===================
 
 .. inlineav:: AggregateFunctionWrong ss
    :long_name: AggregateFunctionWrongEx Slideshow

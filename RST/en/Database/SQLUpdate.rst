@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: SQL Update Command
+   :topic: SQL Update Command
+
 SQL Update Command
-=======================
+==================
 
 
 .. inlineav:: UpdateQuery ss

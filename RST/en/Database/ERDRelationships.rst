@@ -1,3 +1,8 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: ERD
+   :topic: ERD
+
 ERD Relationship Types
 ======================
 • Relationship Types means: the type of association among entities.
@@ -8,14 +13,14 @@ ERD Relationship Types
 
 
 Relationship Constraints
-_______________________
+________________________
 
 • Constraints are used for modeling limitations on the relations between entities.
 
 • There are two types of constraints on the ER-Model (**Cardinality ratio** & **Participation**).
 
 Relationship Cardinality
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inlineav:: Cardinality ss
    :long_name: CardinalityRepresentation Slideshow
@@ -76,7 +81,7 @@ The below visualizations show how to express cardinality and participation const
 
 
 Relationship Degree
-_____________________
+___________________
 
 • The degree of a relationship is the number of entity types that participate(associate) in a relationship. (i.e. the number of an entity type that is connected to a relationship is the degree of that relationship)
 
@@ -93,7 +98,7 @@ _____________________
 
 
 Unary (Recursive) Relationship (degree 1)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 • In recursive (unary ) relationship both participants are same entity type in different roles.
 
@@ -140,7 +145,7 @@ Unary (Recursive) Relationship (degree 1)
 
 
 Binary Relationship (degree 2)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 • A binary relationship exists when exactly two entity type participates. When such a relationship is present we say that the degree is 2.
 
@@ -219,7 +224,7 @@ The following visualization example shows five different cardinality cases for t
 
 
 Ternary Relationship  (degree 3)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 • A ternary relationship exists when exactly three entity type participates. When such a relationship is present we say that the degree is 3. 
 

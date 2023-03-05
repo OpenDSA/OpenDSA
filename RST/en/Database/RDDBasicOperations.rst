@@ -1,5 +1,11 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: Basic Operations On Relations
+   :topic: Basic Operations On Relations
+
 Basic Operations On Relations
-======================
+=============================
+
 All of these operations are considered modification operations because executing any one
 
 of them changes the database state (i.e. values of data in records).
@@ -7,10 +13,10 @@ of them changes the database state (i.e. values of data in records).
 Integrity constraints **shouldn't be violated**  during the execution of these operations.
 
 Operation Types
-______________
+_______________
 
 INSERT tuples
-~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 Inserting new record (tuple) into a table (relation).
 
@@ -26,14 +32,14 @@ During insertion operation:
 
 
 UPDATE tuples
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 - Is changing values of some attributes of an existing tuple in a relation.
 
 - A lot of care and specific actions should be taken if the attribute to be updated is a PK attribute. (actions will be illustrated later in this section)
 
 DELETE tuples
-~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 - Is removing an existing record (tuple) from table (relation).
 
@@ -42,7 +48,7 @@ DELETE tuples
 - Specific actions should be done if the deleted record contains a primary key that relates it to other table (these actions illustrated in the below visualization.)
 
 Actions Taken in Case of Constraints Violation
-______________________________________
+______________________________________________
 
 There are several action that can be taken in case of constraints violation to avoid data corruption. Each can choose the appropriate action according to the suitability for the application domain.
 

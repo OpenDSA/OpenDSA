@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha Alaa
+   :satisfies: Design Correctness And Efficiency
+   :topic: Design Correctness And Efficiency
+
 Design Correctness And Efficiency
-===============================
+=================================
 
 To develope a database application, there may be a lot of different designs for the same databse according to different designers. The issue  is which design should be choosed among all of the available designs?
 

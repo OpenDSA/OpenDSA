@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: SQL Join Command
+   :topic: SQL Join Command
+
 SQL Join Command
-====================
+================
 
 .. inlineav:: Join ss
    :long_name: JoinEx Slideshow

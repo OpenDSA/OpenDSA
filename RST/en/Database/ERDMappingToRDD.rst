@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: ERD
+   :topic: ERD
+
 ERD Mapping To Relational Data Model
-=================================
+====================================
 
 • As illustrated before database design process passes through three phases first is conceptual modeling (ER diagram), then logical modelling (relational schema) and finally physical modelling (converting relation schema to physical tables).
 
@@ -18,3 +23,4 @@ Simply by breaking down entities, attributes, and relationships into tables (rel
 The below table shows the basic ERD elements and their corresponding relational schema elements.
 
 .. odsafig:: Images/ERDRDDMapping.png
+    

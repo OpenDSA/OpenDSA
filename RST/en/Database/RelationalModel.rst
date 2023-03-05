@@ -5,12 +5,12 @@
 
 .. avmetadata::
    :author: Noha
-   :satisfies: ERD
-   :topic: ERD
+   :satisfies: Big picture of relational data model
+   :topic: Big picture of relational data model
 
 
 Big picture of relational data model
-==============================================
+====================================
 As discussed before **database application** refers to a particular database and the associated programs that implement the database queries and updates.
 For example, a
 Hospital database application that keeps track of patient records and  health status would include
@@ -23,7 +23,7 @@ part of software engineering rather than database design. In many software desig
 methodologies are intertwined since these activities are strongly related.
 
 What is relational database?
----------------------------------
+----------------------------
 ssssssssssssssssssssssssss
 satisfiess
 satisfiess
@@ -31,10 +31,10 @@ satisfiess
 satisfiess
 
 Advantages of using relational database
-------------------------------------------------
+---------------------------------------
 
 Relational Anatomy
-------------------------
+------------------
 
 .. inlineav:: ChenVsCrossFoot ss
    :long_name: ChenVsCrossFootRepresentation Slideshow

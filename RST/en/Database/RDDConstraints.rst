@@ -1,13 +1,18 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: Relational Integrity Constraints
+   :topic: Relational Integrity Constraints
+
 Relational Integrity Constraints
-=======================
+================================
 What Is Meant By Constraints?
-_________________________
+_____________________________
 
 Are conditions that must hold on all valid relation instances. These conditions maintain database correctness by preventing errors and inconsistencies.
 
 
 Advantage of Using Integrity Constraints
-_________________________________
+________________________________________
 
 1- They ensure the **accuracy** of data by preventing invalid data from being entered into the database.
 
@@ -16,7 +21,7 @@ _________________________________
 These advantages lead to a **reliable database design**.
 
 Types of Integrity Constraints
-_________________________
+______________________________
 
 There are four main types of integrity constraints:
 
@@ -32,7 +37,7 @@ This section illustrates each type in details.
 
 
 Key Constraints (Super key, Candidate key, Primary key, Secondary Foreign key, Surrogate key)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1- These are called **uniqueness constraints** since it ensures that every tuple in the relation should be unique.
 
@@ -58,7 +63,7 @@ Examples to explain different key types:
 
 
 Entity Integrity Constraints 
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1- The entity integrity constraint states that: for each relation (i.e. entity in real world, e.g. student entity in faculty database)  primary key value can't be null or can't be repeated. This is because the primary key value is used to identify individual  rows in relation and if the primary key has a null or repeated value, then it can't be used to identify those rows. 
 
@@ -69,7 +74,7 @@ Entity Integrity Constraints
 
 
 Referential Integrity Constraints 
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1- The Referential integrity constraints is specified between two relations/tables (not on single relation as in case of entity integrity constraint) and used to maintain the consistency among the tuples in two relations.
 
@@ -85,7 +90,7 @@ Appropriate specific actions should be taken if any opration tries to violate th
 
 
 Semantic Integrity  Constraints 
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1- Known as **domain constraint** which is the information that is associated with the domains of the attributes or data items. These constraints consist of physical translation of the business rules that apply to the content of the data item. 
 

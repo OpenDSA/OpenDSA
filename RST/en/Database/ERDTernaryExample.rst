@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: Binary Vs Ternary Relationships
+   :topic: Binary Vs Ternary Relationships
+
 Binary Vs Ternary Relationships
-============================
+===============================
 
 **This section is devoted for:**
 

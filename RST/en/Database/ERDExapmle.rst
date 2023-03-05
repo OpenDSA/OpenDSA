@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: ERD
+   :topic: ERD
+
 Comprehensive example
-======================
+=====================
 
 **How to Draw ER Diagrams** ? Follow the below points to know how to go about creating an ER.
 
@@ -53,5 +58,3 @@ Each employee may have a number of children. For each child, we keep track of th
 
 
 .. odsafig:: Images/RDDExampleComments.png
-
-

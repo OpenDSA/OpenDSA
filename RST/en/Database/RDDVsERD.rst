@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: How ERD and RDD are related
+   :topic: How ERD and RDD are related
+
 How ERD and RDD are related?
-==========================
+============================
 
 As discussed in the previous chapter there are many phases in database design process. Different types of data models (i.e. conceptual, logical & physical) should be created in 
 these phases each of which has its own purpose. This and the next chapter are concentrating only on the first two model types, conceptual and logical models. 
@@ -22,12 +27,3 @@ $(e.g.$ $ creating$ $conceptual$ $ERD$ $then$  $transforming$ $it$  $to$ $relati
 This chapter first defines what is relational database diagram (RDD), then discusses some basic definitions related to RDD (e.g. relation, relational schema, database 
 schema, domain and tuple), next it will illustrate relational integrity constraints and their types and finally demonstrates basic operations on relations and how to 
 execute these processes without violating constraints. 
-
-
-
-
-
-
-
-
-

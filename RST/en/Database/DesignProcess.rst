@@ -10,20 +10,20 @@
 
 
 Design Process Overview
-===================
+=======================
 shksjdhkeefhk
 
 Entity relationship diagram  Vs Relational model Vs Instance
-------------------------------------------------------------------------
+------------------------------------------------------------
 
 Entity relationship diagram (ERD)
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Relational model (schema diagram or relational schema)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Instance
-~~~~~~
+~~~~~~~~
 
 .. inlineav:: oneToManyWrongForm1 ss
    :long_name: oneToManyWrongRepresentation1 Slideshow

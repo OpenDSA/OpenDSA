@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: SQL Select Command
+   :topic: SQL Select Command
+
 SQl Select Command
-=======================
+==================
 
 .. inlineav:: Select1 ss
    :long_name: Select1Ex Slideshow

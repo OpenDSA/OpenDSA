@@ -1,3 +1,8 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: SQL Insert Command
+   :topic: SQL Insert Command
+
 SQL Insert Command
 ===================
 

@@ -1,14 +1,19 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: Introduction To SQL
+   :topic: Introduction To SQL
+
 Introduction To SQL
-=====================
+===================
 
 SQL Definition:
-____________________
+_______________
 
 SQL stands for structured query language, is a standard language, that is used to store, manipulate and retrieve data in relational databases.
 
 
 SQL Functions
-___________________
+_____________
 
 1- Accessing and manipulating databases.
 

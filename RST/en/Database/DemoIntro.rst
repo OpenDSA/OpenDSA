@@ -183,10 +183,10 @@ In a relational database, all data is held in tables, which are physically made 
 *Hint: Relational Database Concept solves a lot of problems found in Flat Files design*.
 
 Data Modelling
-----------------------
+--------------
 
 **What is data modeling?**
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                 - The process of creating data models. 
  
@@ -210,7 +210,7 @@ Data Modelling
 	• These models can present data at various levels of abstraction according to the type of model used.
 
 **Types of Data models**
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	There are mainly three different types of data models: **conceptual data models**, **logical data models**, and **physical data models**, and each one has a specific purpose. 
 
@@ -218,7 +218,7 @@ Data Modelling
 
 
 **Conceptual Data Model:**
-____________________________
+__________________________
 
 	This Data Model defines **WHAT** the system contains.
 
@@ -235,7 +235,7 @@ ____________________________
 .. odsafig:: Images/conceptualuniversitymodel.png
 
 **Logical Data Model:** (Implmentational Model)
-____________________________________________
+_______________________________________________
 
 	Defines **HOW** the system should be implemented regardless of the DBMS. 
 
@@ -248,10 +248,10 @@ ____________________________________________
 	This model is typically created by Database designers and Business analysts. 
 
 
-.. odsafig:: Images/logicaluniversitymodel.png
+.. odsafig:: Images/Logicaluniversitymodel.png
 
 **Physical Data Model**
-_____________________
+_______________________
 
 	Describes HOW the system will be implemented and **HOW the data will be stored using a specific DBMS system**. 
 	
@@ -288,7 +288,7 @@ logical data model, we can then create as many physical data models as needed, e
 
 
 Examples on data models used
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Entity Relationship Diagram (ERD)**  
 *( Conceptual data model example)*
@@ -319,7 +319,7 @@ Examples on data models used
 
 
 **Why use Data Models?**
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 **The primary goals of using data model are:**
 
@@ -336,6 +336,4 @@ Examples on data models used
 • Omission of data will lead to creation of faulty reports and produce incorrect results.
 
 • Though the initial creation of data model is labor and time consuming, in the long run, it makes your IT infrastructure upgrade and maintenance faster and cheaper.
-
-
-
+• 

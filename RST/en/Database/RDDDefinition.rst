@@ -1,7 +1,12 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: Relational Data Model
+   :topic: Relational Data Model
+
 Relational Data Model / Relational Database Diagram (RDD)
-============================================
+=========================================================
 Definition:
-_________
+___________
 
 Is a model that represents database in the form of two-dimensional tables with rows and columns of data
 These tables are called **relations**. Its a model based on the concept of sets.
@@ -11,7 +16,7 @@ A database usually contains more that one of these tables (relations).
 **Relational schema:** means the way in which these relaions (tables) are descibed.
 
 Terminology and Basic Concepts realated to RDD:
-_________________________________________
+_______________________________________________
 
  .. odsafig:: Images/RDDTerminology.png
 
@@ -28,15 +33,3 @@ _________________________________________
 .. odsafig:: Images/DatabaseInstance.png
 
 .. odsafig:: Images/DatabaseState.png
-
-
-
-
-
-
-
-
-
-
-
-

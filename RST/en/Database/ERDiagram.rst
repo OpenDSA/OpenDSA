@@ -10,15 +10,15 @@
 
 
 Entity-Relationship diagram and its notation
-================================
+============================================
 
 ER Diagram Notations
-----------------------------
+--------------------
 
 ER Diagram Components
--------------------------------
+---------------------
 Entity types, entity set
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 ssssssssssssssssssssssssss
 satisfiess
 satisfiess
@@ -30,16 +30,16 @@ Hello world Hello
 
 
 Attributes, keys
-~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 
 Relationship types and structure
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Weak Vs. Strong entity
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 Naming convention and design issues
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. inlineav:: manyToMany ss

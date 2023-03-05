@@ -6,12 +6,13 @@
 .. avmetadata::
    :author: Noha
    :requires: ADT; OO Intro; UML
-   :satisfies: ERD
-   :topic: ERD
+   :satisfies: Exercises
+   :topic: Exercises
 
 
 Exercises
-==============================================
+=========
+
 try to insert my first image
 
 .. odsafig:: Images/ErdvsRDDvsTable.png

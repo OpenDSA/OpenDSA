@@ -1,3 +1,8 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: ERD
+   :topic: ERD
+
 ERD Basic Components
 ====================
 
@@ -21,21 +26,21 @@ All ERD components & their types are shown in the below diagram:
 .. odsafig:: Images/ErdComponents.png
 
 Entities 
-__________
+________
 
 **Entities** are specific objects or things in the mini-world that are represented in the database. For example the STUDENT "Adam" (Adam is the **entity instance** & STUDENT is the **entity type**), the "Database" COURSE.
 
 **There are two types of entities:** (Strong Vs. Weak)
 
 Strong Entity
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
 
 **A strong entity** is not dependent on any other entity in the schema. A strong entity will always have a primary key. Strong entities are represented by a single rectangle. The relationship of two strong entities is represented by a single diamond. 
 
 **Example for strong entities:** EMPLOYEE, COURSE and BOOK each can be strong entity as each has its own primary key (ssn (PK) For EMPLOYEE, Code (PK) for COURSE & ISBN for BOOK).
 
 Weak Entity
-~~~~~~~~~~~~~~
+~~~~~~~~~~~
 
 **A weak entity** is dependent on a strong entity to ensure its existence. Unlike a strong entity, a weak entity does not have any primary key. It instead has a partial discriminator key. A weak entity is represented by a double rectangle. The relation between one strong and one weak entity is represented by a double diamond. This relationship is also known as **identifying relationship**.
 
@@ -92,7 +97,7 @@ Hotel entity will have number of instances equals to number of its branches and 
 
 
 Attributes
-_________________
+__________
 
 **Attributes** are properties used to describe an entity. For example an STUDENT entity may have a Name, ID, Address, Sex, BirthDate A specific entity will have a value for each of its attributes. 
 
@@ -101,7 +106,7 @@ _________________
 Each attribute has a value set (or data type) associated with it – e.g. integer, string, subrange, enumerated type, …
 
 Types Of Attributes
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 There are five main attribute types : (**Simple**, **Composite**, **Multivalued**, **Derived**, **Key attribute**) 
 
@@ -133,7 +138,7 @@ An entity may have multiple values for that attribute. For example, Color of a C
 $(All$ $types$ $of$ $key$ $attributes$ $illustrated$ $in$ $detailes$ $earlier$ $in$ $the$ $previous$ $chapter)$
 
 Relationship Types
-_____________________
+__________________
 
 • **A relationship** relates two or more distinct entities with a specific meaning. **For example,** STUDENT "Adam Ahmed" Registers on the "Database" COURSE or EMPLOYEE "Sally" manages the "IT" DEPARTMENT.
 

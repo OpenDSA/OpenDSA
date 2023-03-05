@@ -10,7 +10,7 @@
 
 
 Example of database applications
-===========================================
+================================
 
 .. inlineav:: ExampleDatabase ss
    :long_name: ExampleDatabaseempPro Slideshow

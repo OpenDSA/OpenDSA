@@ -1,5 +1,10 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: SQL Delete Command
+   :topic: SQL Delete Command
+
 SQL Delete Command
-=======================
+==================
 
 .. inlineav:: DeleteQuery ss
    :long_name: DeleteQueryEx Slideshow

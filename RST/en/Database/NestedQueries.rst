@@ -1,3 +1,8 @@
+.. avmetadata::
+   :author: Noha
+   :satisfies: Nested Queries in SQL
+   :topic: Nested Queries in SQL
+
 Nested Queries in SQL
 ======================
 
