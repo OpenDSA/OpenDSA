@@ -99,10 +99,12 @@ Pumping Lemma Example 4
    :output: show
 
 
-Pumping Lemma Example 5
------------------------
+.. Pumping Lemma Example 5
+.. -----------------------
+.. This next example does not add anything new, and is tedious.
+   So just skip it.
 
-.. inlineav:: CFLPumpingEx5FS ff
+.. .. inlineav:: CFLPumpingEx5FS ff
    :links: AV/PIFLA/PDA/CFLPumpingEx5FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/PDA/CFLPumpingEx5FS.js
    :output: show
