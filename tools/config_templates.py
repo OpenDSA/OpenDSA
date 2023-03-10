@@ -325,14 +325,13 @@ html_context = {"script_files": [
                   #'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
                   '%(eb2root)slib/jquery.ui.min.js',
                   '%(eb2root)slib/jquery.transit.js',
-                  '%(eb2root)slib/raphael.js',
+                  'https://d3js.org/d3.v7.min.js',
                   '%(eb2root)slib/JSAV-min.js',
                   '_static/config.js',
                   '%(eb2root)slib/timeme-min.js',
                   '%(eb2root)slib/odsaUtils-min.js',
                   '%(eb2root)slib/odsaMOD-min.js',
-                  'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
-                  'https://d3js.org/d3-selection-multi.v1.min.js',
+                  
                   '%(eb2root)slib/dataStructures.js',
                   '%(eb2root)slib/conceptMap.js'
                 ],
