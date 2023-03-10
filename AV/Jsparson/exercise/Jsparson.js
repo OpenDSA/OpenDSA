@@ -3,6 +3,7 @@ $(document).ready(function () {
     //read exercises from the example json
     //var index = document.getElementById("index").getAttribute("value");
     var index = window.location.pathname.split('/').pop().split('.')[0];
+    //var frames = PIFRAMES.init("Jsparson");
     
     var parson = new ParsonsWidget({
         'sortableId': 'sortable',
@@ -16,14 +17,13 @@ $(document).ready(function () {
         if (fb.errors.length === 0 && noCredit) {
             noCredit = false;
             ODSA.AV.awardCompletionCredit();
-            alert("All correct!");
         } 
         if (fb.errors.length > 0) {
             alert(fb.errors[0]);
         }
     }
 
-    $.getJSON("./exercise.json", function(data) {
+    $.getJSON("./Jsparson.json", function(data) {
         var initial = data[String(index)].initial
         parson.init(initial);
         parson.shuffleLines();
