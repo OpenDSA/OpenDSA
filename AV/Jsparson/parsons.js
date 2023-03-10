@@ -1004,7 +1004,7 @@
 
    ParsonsWidget.prototype.init = function(text) {
   	 // TODO: Error handling, parseCode may return errors in an array in property named errors.
-     var initial_structures = this.parseCode(text.split("\n"), this.options.max_wrong_lines);
+     var initial_structures = this.parseCode(text, this.options.max_wrong_lines);
      this.model_solution = initial_structures.solution;
      this.extra_lines = initial_structures.distractors;
      this.modified_lines = initial_structures.widgetInitial;
@@ -1121,6 +1121,8 @@
 
      state = logData.output;
 
+     console.log(state)
+     
      jQuery.extend(logData, entry);
      this.user_actions.push(logData);
 
