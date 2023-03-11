@@ -357,6 +357,7 @@
     },
     "Turing Machines": {
       "PIFLA/TuringMachines": {},
+      "PIFLA/TuringMachinesAdv": {},
       "PIFLA/TMExercises": {
         "addOnea": { 
           "points": 2.0

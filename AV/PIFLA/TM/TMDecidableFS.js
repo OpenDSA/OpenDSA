@@ -7,60 +7,52 @@ $(document).ready(function () {
   var xStart = 150;
   var yStart = 0;
 
-  //frame 1
-  av.umsg("Recall that we defined a convention for accepting/rejecting whether an input string is in a specified language.");
+  // Frame 1
+  av.umsg("Recall that a Turing machine can accept or reject a string. We also noted that a Turing machine can go into an infinite loop. We will now examine that concept more closely.");
   av.displayInit();
   
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("accept"));
   av.step();
 
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("halts"));
   av.step();
 
-  //frame 5
-  av.umsg(Frames.addQuestion("q5"))
+  // Frame 4
+  av.umsg(Frames.addQuestion("decideable"))
   av.step();
 
-  //frame 6
-  av.umsg("Unfortunately, there is a third possible outcome: The machine might go into an infinite loop.");
+  // Frame 5
+  av.umsg(Frames.addQuestion("acceptable"));
   av.step();
 
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
+  // Frame 6
+  av.umsg(Frames.addQuestion("difference"));
   av.step();
 
-  //frame 8
-  av.umsg("A language is <b><i>Turing−acceptable</i></b> if there is some Turing machine that accepts it. Means, a TM that accepts all strings in the language.")
-  av.step();
-
-  //frame 9
-  av.umsg(Frames.addQuestion("q9"));
-  av.step();
-
-  //frame 10
+  // Frame 7
   av.umsg("It is easy to turn any Turing-decidable machine into a Turing-acceptable machine. If the machine would reject the string, then simply go into an infinite loop by moving right regardless of the value of the symbol seen. But, can every Turing-acceptable machine be converted into a Turing-decidable machine?");
   av.step();
 
-  //frame 11
-  av.umsg(Frames.addQuestion("q11"));
+  // Frame 8
+  av.umsg(Frames.addQuestion("noa"));
   av.step();
   
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
+  // Frame 9
+  av.umsg(Frames.addQuestion("TA"));
   av.step();
 
-  //frame 13
-  av.umsg(Frames.addQuestion("q13"));
+  // Frame 10
+  av.umsg(Frames.addQuestion("remove"));
   av.step();
 
-  //frame 13
+  // Frame 11
   av.umsg("Here is the modified machine: <br>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q &nbsp; &nbsp; σ &nbsp; &nbsp; δ(q,σ,{R,L,S})</i> <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------------------- <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; a &nbsp; &nbsp; (h, a, R)</i> <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i>q<sub>0</sub> &nbsp; b  &nbsp; &nbsp; (q<sub>0</sub>, b, R)</i>");
   av.step();
 
-  //frame 14
-  av.umsg("All that we have done is remove the transition for what to do when a blank symbol is seen. Thus, the machine halts instead of moving to the right.<br/><br/>You might ask: But what if there is an 'a' to the right of the #? Recall that we only care about the machine's behavior when it begins in a legal start configuration.");
+  // Frame 12
+  av.umsg("All that we have done is remove the transition for what to do when a blank symbol is seen. Thus, the machine halts instead of moving to the right.<br/><br/>You might ask: But what if there is an 'a' to the right of the #? Recall that we only care about the machine's behavior when it begins in a legal start configuration. And since # is not in the language alphabet, it cannot be in a properly configured string.");
   av.step();
 
   //frame 15

@@ -57,8 +57,11 @@
     "partial_credit": false
   }, 
   "chapters": {
-    "Properties of Context-free Languages": {
-      "PIFLA/CFLProp": {}
+    "Limits to Computing": {
+      "PIFLA/LimCompFLA": {},
+      "PIFLA/Reduction": {},
+      "PIFLA/NPComplete": {},
+      "PIFLA/Impossible": {}
     },
     "Appendix": {
       "Glossary": {}

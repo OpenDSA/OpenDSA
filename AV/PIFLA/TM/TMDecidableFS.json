@@ -1,57 +1,59 @@
 {
   "translations": {
     "en": {
-      "q2": {
+      "accept": {
         "type": "select",
-        "description": "Recall that we defined a convention for accepting/rejecting whether an input string is in a specified language.",
+        "description": "We defined a convention for accepting/rejecting whether an input string is in a specified language.",
         "question":"When is a string accepted by a TM?",
         "answer": ["If the TM halts in a final state"],
-        "choices": ["If the TM halts in a final state", "If the TM finishes execution in a non-final state", "If the TM is found an undefined transition"]
+        "choices": ["If the TM halts in a final state", "If the TM finishes execution in a non-final state", "If the TM is in a state with an undefined transition"]
       },
-      "q3": {
+      "halts": {
         "type": "select",
         "description": "Recall that we defined a convention for accepting/rejecting whether an input string is in a specified language.",
         "question":"When is a string rejected by a TM?",
-        "answer": ["If the TM finishes execution in a non-final state", "If the TM is found an undefined transition"],
-        "choices": ["If the TM halts in a final state", "If the TM finishes execution in a non-final state", "If the TM is found an undefined transition"],
-        "correctFeedback": ["The key here is that the machine halts (with separate mechanisms for accept or reject)."]
+        "answer": ["If the TM finishes execution in a non-final state", "If the TM is in a state with an undefined transition"],
+        "choices": ["If the TM halts in a final state", "If the TM finishes execution in a non-final state", "If the TM is in a state with an undefined transition"],
+        "correctFeedback": ["The key point here is that the machine halts (with separate mechanisms for accept or reject). `Halts` means that it reaches a state with a given symbol on the tape for which there is no transition."]
       },
-      "q5": {
+      "decideable": {
         "type": "select",
-        "description": "We define a language to be <b><i>Turing-decidable</i></b> if every string results in one of these two outcomes.",
+        "description": "We define a language to be <b>Turing-decidable</b> if every string results in one of these two ways of halting.",
         "question":"A language is Turing-decideable if there exists a Turing machine that can clearly indicate for every string whether that string is in the language or not.",
         "answer": "True",
         "choices": []
       },
-      "q7": {
+      "acceptable": {
         "type": "select",
-        "description": "We can define another concept: <b>Turing−acceptable</b>. We say that machine $M$ accepts a string $w$ if $M$ halts on input $w$. Then, $M$ accepts a language iff $M$ halts on $w$ iff $w \\in L$.",
-        "question":"What will happen if the string $w$ is $\\not \\in$ the language?",
+        "description": "Unfortunately, there is a third possible outcome: The machine might go into an infinite loop.<br/><br/>We can define another concept: <b>Turing−acceptable</b>. We say that machine $M$ accepts a string $w$ if $M$ halts on input $w$. Then, $M$ accepts a language iff $M$ halts on $w$ iff $w \\in L$.",
+        "question":"What will happen if the string $w$ is not in the language?",
         "answer": "The machine will go into an infinite loop",
-        "choices": ["Similar to turing decidable laguages, the machine will halt with reject status", "The machine will go into an infinite loop"]
+        "choices": ["Similar to Turing decidable laguages, the machine will halt with reject status", "The machine will go into an infinite loop"]
       },
-      "q9": {
+      "difference": {
         "type": "select",
-        "description": "So, a language is Turing-decidable if it halts on every input, in two different ways so that we can tell if the string is in the language or not. Separately, a language is Turing-acceptable if it halts on strings in the language, and does not halt on strings not in the language.",
-        "question":"The difference between Turing-decidable and Turing-acceptable is the machine behavior when the string is $\\not \\in $ the language.",
-        "answer": "True",
-        "choices": []
+        "description": "A language is <b><i>Turing−acceptable</i></b> if there is some Turing machine that accepts it. Meaning, a TM that accepts (by halting) for all strings in the language.<br/><br/>So, a language is Turing-decidable if it halts on every input, in two different ways so that we can tell if the string is in the language or not. Separately, a language is Turing-acceptable if it halts on strings in the language, and <b>does not halt</b> on strings not in the language.",
+        "question":"The only difference between Turing-decidable and Turing-acceptable is the machine behavior when the string is not in the language.",
+        "answer": "False",
+        "choices": ["True", "False"],
+        "correctFeedback": ["The difference is that Turing-decideable requires that the machine halt in a final state to accept a string, while Turing-acceptable just needs to halt to accept the string."],
+        "incorrectFeedback": ["Do final states play a role for Turing-acceptability?"]
       },
-      "q11": {
+      "noa": {
         "type": "select",
         "description": "Consider this example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$.<br/>$\\qquad$ --------------------------------<br/>$\\qquad p\\quad q\\quad\\delta(q, \\sigma, {R,L,S})$<br/>$\\qquad$ --------------------------------<br/>$\\qquad q_0\\quad a \\quad (h, a, R)$<br/>$\\qquad q_0\\quad b\\quad (q_0, b, R)$<br/>$\\qquad q_0\\quad \\# \\quad (q_0, \\#, R)$",
         "question":"What will happen if the tape has no $a$'s?",
         "answer": "The machine will enter a infinite loop",
         "choices": ["The machine will enter a infinite loop", "The machine will reject the string"]
       },
-      "q12": {
+      "TA": {
         "type": "select",
         "description": "Consider this example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$.<br/>$\\qquad$ --------------------------------<br/>$\\qquad p\\quad q\\quad\\delta(q, \\sigma, {R,L,S})$<br/>$\\qquad$ --------------------------------<br/>$\\qquad q_0\\quad a \\quad (h, a, R)$<br/>$\\qquad q_0\\quad b\\quad (q_0, b, R)$<br/>$\\qquad q_0\\quad \\# \\quad (q_0, \\#, R)$",
         "question":"What is the type of this machine?",
         "answer": "Turing Acceptable",
         "choices": ["Turing Decidable", "Turing Acceptable"]
       },
-      "q13": {
+      "remove": {
         "type": "select",
         "description": "Consider this example: $\\Sigma_0 = \\{a, b\\}$, $L = \\{w \\in \\Sigma^*_0: w$ contains at least one $a\\}$.<br/>$\\qquad$ --------------------------------<br/>$\\qquad p\\quad q\\quad\\delta(q, \\sigma, {R,L,S})$<br/>$\\qquad$ --------------------------------<br/>$\\qquad q_0\\quad a \\quad (h, a, R)$<br/>$\\qquad q_0\\quad b\\quad (q_0, b, R)$<br/>$\\qquad q_0\\quad \\# \\quad (q_0, \\#, R)$",
         "question": "Which transition should we remove to make the machine be Turing decidable?",

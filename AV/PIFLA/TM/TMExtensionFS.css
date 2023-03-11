@@ -1,3 +1,7 @@
 #TMExtensionFS {
   height: 600px;
 }
+
+#TMExtensionFS .jsavoutput.jsavline {
+  height: 170px;
+}
