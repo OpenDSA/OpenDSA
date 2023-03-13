@@ -238,6 +238,7 @@ $(document).ready(function() {
   mTom1Rup.show();
   mTom1Rdwn.show();
   //CrowsoneLft.show();
+  var CrowsoneCirLft1=av.g.circle(pX+103+360,pY ,7 , {"stroke-width": 2});
   CrowsoneRyt.show();
   //CrowsoneLft1.movePoints([[0,pX+95+360,pY-10],[1,pX+95+360, pY+10]]);
   //CrowsoneRyt1.movePoints([[0,pX+55+580,pY-10],[1,pX+55+580, pY+10]]);
@@ -289,6 +290,8 @@ $(document).ready(function() {
   mTom2Lup.show();
   mTom2Ldwn.show();
  // CrowsoneRyt2.movePoints([[0,pX+60+580,pY+100],[1,pX+60+580, pY+120]]);
+ CrowsoneCirLft1=av.g.circle(pX+103+360,pY+110 ,7 , {"stroke-width": 2});
+ var CrowsoneCirRyt1=av.g.circle(pX+47+580,pY+110 ,7 , {"stroke-width": 2});
   mTom2Rup.movePoints([[0,pX+60+580,pY+110],[1,pX+75+580, pY+100]]);
   mTom2Rdwn.movePoints([[0,pX+60+580,pY+110],[1,pX+75+580, pY+120]]);
   mTom2Rup.show();
@@ -405,6 +408,7 @@ $(document).ready(function() {
   mTom4Ldwn.movePoints([[0,pX+90+360,pY+330],[1,pX+75+360, pY+340]]);
   mTom4Lup.show();
   mTom4Ldwn.show();
+  CrowsoneCirRyt1=av.g.circle(pX+47+580,pY+330 ,7 , {"stroke-width": 2});
   //CrowsoneRyt4.movePoints([[0,pX+60+580,pY+320],[1,pX+60+580, pY+340]]);
   mTom4Rup.movePoints([[0,pX+60+580,pY+330],[1,pX+75+580, pY+320]]);
   mTom4Rdwn.movePoints([[0,pX+60+580,pY+330],[1,pX+75+580, pY+340]]);
