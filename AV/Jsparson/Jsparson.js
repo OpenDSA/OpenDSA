@@ -1,7 +1,5 @@
 $(document).ready(function () {
     "use strict";
-    //read exercises from the example json
-    //var index = document.getElementById("index").getAttribute("value");
     var index = window.location.pathname.split('/').pop().split('.')[0];
     //var frames = PIFRAMES.init("Jsparson");
     
@@ -23,7 +21,7 @@ $(document).ready(function () {
         }
     }
 
-    $.getJSON("./Jsparson.json", function(data) {
+    $.getJSON("../Jsparson.json", function(data) {
         var initial = data[String(index)].initial
         parson.init(initial);
         parson.shuffleLines();
