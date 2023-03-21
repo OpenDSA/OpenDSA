@@ -198,6 +198,7 @@ $(document).ready(function() {
   CrowsoneRyt.show();
   //CrowsoneLft1.movePoints([[0,pX+95+360,pY-10],[1,pX+95+360, pY+10]]);
   CrowsoneRyt1.movePoints([[0,pX+55+580,pY-10],[1,pX+55+580, pY+10]]);
+  var CrowsoneCirLft1=av.g.circle(pX+103+360,pY ,7 , {"stroke-width": 2});
   CrowsoneLft1.show();
   CrowsoneRyt1.show();
   otoCrowsLft.show();
@@ -245,6 +246,8 @@ $(document).ready(function() {
   CrowsoneLft2.show();
   CrowsoneRyt2.show();
   otoCrowsLft2.show();
+  CrowsoneCirLft1=av.g.circle(pX+103+360,pY+110 ,7 , {"stroke-width": 2});
+  var CrowsoneCirRyt1=av.g.circle(pX+47+580,pY+110 ,7 , {"stroke-width": 2});
   //CrowsoneLft1.movePoints([[0,pX+95+360,pY-10],[1,pX+95+360, pY+10]]);
   //CrowsoneRyt1.movePoints([[0,pX+55+580,pY-10],[1,pX+55+580, pY+10]]);
   //CrowsoneLft1.show();
@@ -345,6 +348,7 @@ $(document).ready(function() {
   CrowsoneRyt4.movePoints([[0,pX+60+580,pY+320],[1,pX+60+580, pY+340]]);
   CrowsoneLft41.movePoints([[0,pX+95+360,pY+320],[1,pX+95+360, pY+340]]);
  // CrowsoneRyt41.movePoints([[0,pX+55+580,pY+320],[1,pX+55+580, pY+340]]);
+ CrowsoneCirRyt1=av.g.circle(pX+47+580,pY+330 ,7 , {"stroke-width": 2});
   CrowsoneLft4.show();
   CrowsoneRyt4.show();
   CrowsoneLft41.show();
