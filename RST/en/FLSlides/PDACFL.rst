@@ -65,8 +65,8 @@ Equivalence of NPDA and CFG
 
 .. slide:: Proof Example (2)
 
-   | Construct NPDA :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
-   | :math:`Q = \{q_0, q_1, q_f\}, \Sigma = T, \Gamma = V \cup \{z\}, F = \{q_f\}`
+   | Construct NPDA :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, Z, F)`
+   | :math:`Q = \{q_0, q_1, q_f\}, \Sigma = T, \Gamma = V \cup \{Z\}, F = \{q_f\}`
    |   1. :math:`M` starts by putting :math:`S` on the stack 
    |   2. For each production 
    |         :math:`A \rightarrow a X_1 X_2 \ldots X_n`
@@ -109,7 +109,7 @@ Equivalence of NPDA and CFG
      will take a NPDA :math:`M` and convert it to a CFG. 
    | It will be an easier construction if we take the NPDA and put all the 
      transitions in a simpler form. 
-   | So, there are some side proofs (here and in book) to justify the
+   | So, there are some side proofs needed to justify the
      simplifying assumptions.
 
 
@@ -118,7 +118,7 @@ Equivalence of NPDA and CFG
   | 1. NPDA has a single final state :math:`q_f` that is entered if
     and only if the stack is empty.
   | 2. Can limit the PDA transitions to increase or decrease the stack by
-    one symbol
+    one symbol.
 
    | **Theorem:** Given a NPDA :math:`M`, :math:`\exists`
      a NPDA :math:`M'` such that all transitions have the form

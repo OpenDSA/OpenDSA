@@ -195,7 +195,7 @@ $(document).ready(function() {
   // Frame 34
   av.umsg("So we see that this PDA can properly reject strings.");
   q2.unhighlight();
-  q3.addClass('rejected');
+  q2.addClass('rejected');
   av.step();
 
   // Frame 35
