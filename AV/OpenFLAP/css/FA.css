@@ -76,6 +76,7 @@
 .jsavedgelabel {
 	cursor: pointer;
 	font-size: 1.0em;
+	line-height: 1;
 }
 .jsavarray .jsavindex {
   width: 200px;
