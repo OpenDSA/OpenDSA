@@ -1,6 +1,6 @@
 $(document).ready(function () {
     "use strict";
-    var index = window.location.pathname.split('/').pop().split('.')[0];
+    const index = window.location.pathname.split('/').pop().split('.')[0];
     //var frames = PIFRAMES.init("Jsparson");
     
     var parson = new ParsonsWidget({
@@ -31,6 +31,7 @@ $(document).ready(function () {
         event.preventDefault()
         parson.shuffleLines()
     });
+
     $("#feedbackLink").click(function (event) {
         var initData = {}
         console.log(parson.studentCode())
@@ -38,6 +39,24 @@ $(document).ready(function () {
         ODSA.AV.logExerciseInit(initData)
         event.preventDefault()
         parson.getFeedback()
+    });
+    
+    $('#saveProgressLink').click(function() {
+        const state = parson.getState({index: index})
+        $.ajax({
+            url: '/saveProgress',
+            type: 'POST',
+            async: false,
+            data: JSON.stringify(state),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(data) {
+                console.log(data)
+            }
+        })
     });
 });
 
