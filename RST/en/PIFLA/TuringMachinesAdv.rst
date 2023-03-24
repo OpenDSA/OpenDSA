@@ -89,7 +89,7 @@ This grammar generates the language
 This is probably not an easy thing to recognize, nor an easy thing to
 come up with this grammar in the first place.
 CSG are quite hard to use.
-But try deriving a derivation of a string for yourself.
+But try creating a derivation of a string for yourself.
 You should discover that the variables A and B are being used to
 control generation of the terminals a, b, and c to make sure that they
 stay balanced.
