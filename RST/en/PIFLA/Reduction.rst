@@ -73,34 +73,3 @@ Reduction Examples
    :links: AV/PIFLA/LimComp/TwoMulExampleFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/TwoMulExampleFS.js
    :output: show
-
-
-Bounds Theorems
-~~~~~~~~~~~~~~~
-
-We will use the following notation:
-:math:`\leq_{O(g(n))}` means that a reduction can be done
-with transformations that cost :math:`O(g(n))`.
-
-**Lower Bound Theorem}**: If :math:`P_1 \leq_{O(g(n))} P_2`,
-then there is a lower bound of :math:`\Omega(h(n))` on the time
-complexity of :math:`P_1`, and :math:`g(n) = o(h(n))`,
-then there is a lower bound of :math:`\Omega(h(n))` on
-:math:`P_2`.
-(Notice little-oh, not big-Oh.)
-
-Example:
-SORTING :math:`\leq_{O(n)}` PAIRING, because
-:math:`g(n) = n`, :math:`h(n) = n \log n`, and
-:math:`g(n) = o(h(n))`.
-The Lower Bound Theorem gives us an :math:`\Omega(n \log n)`
-lower bound on PAIRING.
-
-This also goes the other way.
-
-**Upper Bound Theorem**: If :math:`P_2` has time complexity
-:math:`O(h(n))` and :math:`P_1 \leq_{O(g(n))} P_2`, then
-:math:`P_1` has time complexity :math:`O(g(n) + h(n))`.
-
-So, given good transformations, both problems take at least
-:math:`\Omega(P_1)` and at most :math:`O(P_2)`.

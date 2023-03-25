@@ -4,47 +4,89 @@ $(document).ready(function() {
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
-  // Frame 1
-  av.umsg("Prove that $L = \\{a^jb^k: k = j^2\\}$ is not a CFL.");
+  //Frame 1
+  av.umsg("Prove that $L = \\{a^jb^k: k = j^2\\}$ is not a CFL");
   av.displayInit();
 
-  // Frame 2
-  av.umsg(Frames.addQuestion("winL"));
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
   av.step();
 
-  // Frame 3
-  av.umsg(Frames.addQuestion("cases"));
+  //Frame 2
+  av.umsg(Frames.addQuestion("q2"));
   av.step();
 
-  // Frame 4
-  av.umsg(Frames.addQuestion("case1"));
+  //Frame 3
+  av.umsg(Frames.addQuestion("q3"));
   av.step();
 
-  // Frame 5
-  av.umsg(Frames.addQuestion("asnopump"));
+  //Frame 4
+  av.umsg(Frames.addQuestion("q4"));
   av.step();
 
-  // Frame 6
-  av.umsg(Frames.addQuestion("case2"));
+  //Frame 5
+  av.umsg(Frames.addQuestion("q5"));
   av.step();
 
-  // Frame 7
-  av.umsg(Frames.addQuestion("absnopump"));
+  //Frame 6
+  av.umsg(Frames.addQuestion("q6"));
   av.step();
 
-  // Frame 8
-  av.umsg(Frames.addQuestion("case3"));
+  //Frame 7
+  av.umsg(Frames.addQuestion("q7"));
   av.step();
 
-  // Frame 9
-  av.umsg(Frames.addQuestion("csnopump"));
+  //Frame 8
+  av.umsg(Frames.addQuestion("q8"));
   av.step();
 
-  // Frame 10
-  av.umsg("We have now considered all the variations on possible substrings with $|vxy| \\le m$, and found that there is no decomposition of $w$ into $uvxyz$ such that $|vy| \\ge 1$, $|vxy| \\le m$, and for all $i \\ge 0$, $uv^ixy^iz$ is in $L$. This is a contradiction of the Pumping Lemma. Thus, L is not a CFL. Done.");
+  //Frame 14
+  av.umsg(Frames.addQuestion("q14"));
   av.step();
 
-  // Frame 11
-  av.umsg("Congratulations! Frameset completed.");
+  //Frame 15
+  av.umsg(Frames.addQuestion("q15"));
+  av.step();
+
+  //Frame 16
+  av.umsg(Frames.addQuestion("q16"));
+  av.step();
+
+  //Frame 17
+  av.umsg(Frames.addQuestion("q17"));
+  av.step();
+
+  //Frame 18
+  av.umsg(Frames.addQuestion("q18"));
+  av.step();
+
+  //Frame 19
+  av.umsg(Frames.addQuestion("q19"));
+  av.step();
+
+  //Frame 20
+  av.umsg(Frames.addQuestion("q20"));
+  av.step();
+
+  //Frame 21
+  av.umsg(Frames.addQuestion("q21"));
+  av.step();
+
+  //Frame 22
+  av.umsg(Frames.addQuestion("q22"));
+  av.step();
+
+  //Frame 23
+  av.umsg(Frames.addQuestion("q23"));
+  av.step();
+
+  //Frame 24
+  av.umsg(Frames.addQuestion("q24"));
+  av.step();
+
+
+  //Frame 25
+  av.umsg("Thus, there is no breakdown of $w$ into $uvxyz$ such that $|vy| \\ge 1$, $|vxy| \\le m$ and for all $i \\ge 0$, $uv^ixy^iz$ is in $L$. This is a contradiction, thus, $L$ is not a CFL. Done.");
   av.recorded();
+
 });

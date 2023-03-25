@@ -5,17 +5,17 @@
 
 .. avmetadata::
    :author: Noha
-   :satisfies: Relational data model constraint
-   :topic: Relational data model constraint
+   :satisfies: ERD
+   :topic: ERD
 
 
 Relational data model constraint
-================================
+==============================================
 
 
 Entity integrity constraint
----------------------------
+-------------------------------------------
 Referential integrity constraint
---------------------------------
+----------------------------------------
 semantic integrity constraint
------------------------------
+------------------------------------------

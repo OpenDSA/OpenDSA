@@ -97,13 +97,7 @@ Equivalence of Acceptance Definitions
 Something to Think About
 ------------------------
 
-#. The PDA with its stack can easily recognize the language comprised of
-   strings of the form :math:`a^nb^n`.
-   Can it also recognize the language comprised of
-   strings of the form :math:`a^nb^nc^n`?
-#. Can the PDA recognize the language $wcw^R$?
-   That is the language with a string $w$ followed by the symbol $c$
-   followed by the reverse of $w$.
-   Certainly it can, but can it do this deterministically?
-#. Can the PDA recognize the language $ww^R$?
-   Yes, but can it do this deterministically?
+The PDA with its stack can easily recognize the language comprised of
+strings of the form :math:`a^nb^n`.
+Can it also recognize the language comprised of
+strings of the form :math:`a^nb^nc^n`?

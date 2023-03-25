@@ -34,7 +34,7 @@ efficient algorithms.
 In general, our search algorithms strive to be at worst in
 :math:`O(\log n)` to find a record,
 and our sorting algorithms strive to be in :math:`O(n \log n)`.
-You might have come across a few algorithms with higher asymptotic
+You might have come across a few algorithms have higher asymptotic
 complexity.
 Both
 :ref:`Floyd's all-pairs shortest-paths algorithm <Floyd's algorithm> <Floyd>`
@@ -101,4 +101,4 @@ computer program will go into an infinite loop when processing a
 specified input.
 This is known as the :term:`halting problem`.
 To close this chapter, we will do a brief exploration of the theory of
-such problems, which is known as :term:`computability` theory.
+such problems.

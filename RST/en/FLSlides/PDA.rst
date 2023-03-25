@@ -81,14 +81,14 @@ Pushdown Automata
 .. slide:: Non-deterministic PDA (2)
 
    | **Definition:** A nondeterministic PDA (NPDA) is defined by
-     :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, Z, F)`
+     :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
    |   :math:`Q` is a finite set of states
    |   :math:`\Sigma` is the tape (input) alphabet (a finite set)
    |   :math:`\Gamma` is the stack alphabet (a finite set)
        (:math:`\Leftarrow` **new**)
    |   :math:`q_0` is the initial state, :math:`q_0 \in Q`
-   |   :math:`Z` is the start stack symbol 
-       (marks the bottom of the stack), :math:`Z \in \Gamma`
+   |   :math:`z` is the start stack symbol 
+       (marks the bottom of the stack), :math:`z \in \Gamma`
        (:math:`\Leftarrow` **new**)
    |   :math:`F \subseteq Q` is the set of final states.
    |   :math:`\delta : Q \times (\Sigma \cup \{\lambda\}) \times \Gamma \rightarrow`
@@ -109,7 +109,7 @@ Pushdown Automata
    |   move to :math:`q_4` and push :math:`ab` onto stack (:math:`a` on top)
    |   move to :math:`q_6` (now stack is one symbol shorter)
 
-   | :math:`Z` (the initial stack bottom marker) is priviledged: It
+   | :math:`z` (the initial stack bottom marker) is priviledged: It
      never comes off, stack is never empty.
    |   (At least in the basic definition)
 
@@ -124,9 +124,9 @@ Pushdown Automata
       :figwidth: 90%
       :alt: stnfaints
 
-   | Edge is labeled by a triple :math:`<t, u, v>` where :math:`t` is
-     the current input symbol, :math:`u` is the top of stack symbol
-     (it is popped from the stack), :math:`v` is a string that is pushed
+   | Edge is labeled by a triple :math:`<x, y, z>` where :math:`x` is
+     the current input symbol, :math:`y` is the top of stack symbol
+     (it is popped from the stack), :math:`z` is a string that is pushed
      onto the stack.
    | << **Warning**: What is a symbol, and what is a string? >>
 
@@ -153,9 +153,9 @@ Pushdown Automata
 
 .. slide:: Definition for Language Acceptance
 
-   | **Definition:** Let :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, Z, F)`
+   | **Definition:** Let :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
      be a NPDA.
-   |   :math:`L(M) = \{w \in \Sigma^* \mid (q_0, w, Z) \stackrel{*}{\vdash} (p, \lambda, u), p \in F, u \in \Gamma^*\}`.
+   |   :math:`L(M) = \{w \in \Sigma^* \mid (q_0, w, z) \stackrel{*}{\vdash} (p, \lambda, u), p \in F, u \in \Gamma^*\}`.
    | The NPDA accepts all strings that start in :math:`q_0` and end in a
      final state.
 
@@ -165,7 +165,7 @@ Pushdown Automata
 
 .. slide:: Example
 
-   :math:`L = \{a^nb^n | n \ge 0\}, \Sigma = \{a, b\}, \Gamma = \{Z, a\}`
+   :math:`L = \{a^nb^n | n \ge 0\}, \Sigma = \{a, b\}, \Gamma = \{z,a\}`
 
    .. inlineav:: PDAAnBnTraceCON ss
       :links: DataStructures/FLA/FLA.css AV/VisFormalLang/PDA/PDAAnBnTraceCON.css
@@ -183,14 +183,14 @@ Pushdown Automata
    **Another Definition for Language Acceptance:**
    NPDA :math:`M` accepts :math:`L(M)` by empty stack:
 
-   :math:`L(M) = \{w \in \Sigma^* \mid (q_0, w, Z) \stackrel{*}{\vdash} (p, \lambda, \lambda)\}`
+   :math:`L(M) = \{w \in \Sigma^* \mid (q_0, w, z) \stackrel{*}{\vdash} (p, \lambda, \lambda)\}`
 
-   Notice that stack-empty symbol :math:`Z` has come off.
+   Notice that stack-empty symbol $z$ has come off.
    
    
 .. slide:: Example
    
-   :math:`L = \{a^nb^mc^{n+m} \mid n,m > 0\}, \Sigma = \{a, b, c\}, \Gamma =\{0, Z\}`
+   :math:`L = \{a^nb^mc^{n+m} \mid n,m > 0\}, \Sigma = \{a, b, c\}, \Gamma =\{0, z\}`
 
    Note: What is the smallest length string that is accepted? 
 

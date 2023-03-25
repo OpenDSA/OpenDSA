@@ -1,3 +1,13 @@
 #PDATransitionsFS {
   height: 500px;
 }
+
+.yellowedge { /* Make a tree edge to be yellow */
+  stroke: yellow;
+  stroke-width: 3;
+}
+
+.defaultedge { /* Make a tree edge to be black */
+  stroke: black;
+  stroke-width: 3;
+}

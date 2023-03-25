@@ -66,11 +66,11 @@ Simplifying CFGs and Normal Forms
    | where :math:`x_i \in (V \cup T)^{*}`,
      :math:`A` and :math:`B` are different variables,
      and :math:`B` has the productions
-   |    :math:`B \rightarrow y_1 \mid y_2 \mid \ldots \mid y_n`.
+   |    :math:`B \rightarrow y_1|y_2|\ldots|y_n`.
    | We can construct :math:`G'` from :math:`G` by deleting 
    |    :math:`A \rightarrow x_1Bx_2`
    | from :math:`P` and adding to it
-   |    :math:`A \rightarrow x_1y_1x_2 \mid x_1y_2x_2 \mid \ldots \mid x_1y_nx_2`.
+   |    :math:`A \rightarrow x_1y_1x_2|x_1y_2x_2|\ldots | x_1y_nx_2`.
 
    | **Substitution Theorem**: :math:`L(G) = L(G')`.
 
@@ -82,7 +82,7 @@ Simplifying CFGs and Normal Forms
    |   :math:`B \rightarrow abbA \mid b`
 
    | Substitute to get :math:`\hat{G}`:
-   |   :math:`A \rightarrow a \mid aaA \mid ab\color{red}{abbA}c \mid ab\color{red}{b}c`
+   |   :math:`A \rightarrow a \mid aaA \mid ababbAc \mid abbc`
    |   :math:`B \rightarrow abbA \mid b`
 
    | Then the B productions become useless productions. 
@@ -106,7 +106,7 @@ Simplifying CFGs and Normal Forms
 
    | We left in the productions for :math:`B`, but maybe there is no way
      remaining to reach them.
-     In that situation, they can go.
+     Obviously they can go.
 
    | This example is not as obvious: (What is wrong with the A production?)
    |   :math:`S \rightarrow aSb \mid \lambda \mid A`
@@ -165,7 +165,7 @@ Simplifying CFGs and Normal Forms
 
    | II. Draw Variable Dependency Graph
    |    For :math:`A \rightarrow xBy`, draw :math:`A \rightarrow B`.
-   |    Make :math:`A` and :math:`B` be nodes with an arc from
+   |    Draw :math:`A` in a circle, :math:`B` in a circle, and an arc from
         :math:`A` to :math:`B`.
    |    Remove productions for :math:`V` if there is no path from :math:`S` to
         :math:`V` in the dependency graph.
@@ -179,7 +179,7 @@ Simplifying CFGs and Normal Forms
    | :math:`B \rightarrow Sa \mid b`
    | :math:`C \rightarrow cBc \mid a`
    | :math:`D \rightarrow bCb`
-   | :math:`E \rightarrow b`
+   | :math:`E \rightarrow Aa \mid b`
 
    .. odsafig:: Images/uselessgraph.png
       :width: 350
@@ -188,7 +188,17 @@ Simplifying CFGs and Normal Forms
       :figwidth: 90%
       :alt: uselessgraph
 
-.. slide:: Example (3)
+   .. WORK THIS EXAMPLE IN JFLAP?
+
+
+.. slide:: Example (2)
+
+   | :math:`G_1`:
+   |   :math:`S \rightarrow aB`
+   |   :math:`B \rightarrow Sa \mid b`
+   |   :math:`C \rightarrow cBc \mid a`
+
+   Now, do it again.
 
    | :math:`G'`:
    |   :math:`S \rightarrow aB`
@@ -289,11 +299,10 @@ Simplifying CFGs and Normal Forms
 
    | 1. Find for each :math:`A`, all :math:`B` such that
         :math:`A \stackrel{*}{\Rightarrow} B`
-   |    (Draw a dependency graph showing relationship of Unit
-        productions.
-   |    Make a node for each variable.
-        For any rule :math:`A \Rightarrow B`, draw an arc from
-        :math:`A` to :math:`B`.)
+   |    (Draw a dependency graph howing relationship of Unit
+        productions. Just draw arc for each :math:`A \rightarrow B` rule.
+   |    Draw :math:`A` in a circle, :math:`B` in a circle,
+        and an arc from :math:`A` to :math:`B`.)
    | 2. Construct :math:`G' = (V', T', S, P')` by
    |    (a) Put all non-unit productions in :math:`P'`
    |    (b) For all :math:`A \stackrel{*}{\Rightarrow} B` such that
@@ -342,6 +351,8 @@ Simplifying CFGs and Normal Forms
    | Order is important.
      Removing :math:`\lambda` productions can create unit productions!
 
+   There are additional examples in the book. 
+
 
 .. slide:: Chomsky Normal Form (CNF)
 
@@ -378,8 +389,11 @@ Simplifying CFGs and Normal Forms
    | :math:`B \rightarrow b`
    | :math:`C \rightarrow Cc \mid e`
 
+   .. Do THIS IN JFLAP, note JFLAP uses different names for the 
+      additional variables than below.
 
-   | (after removing :math:`\lambda`, usless, unit productions:)
+
+   | (after step 1)
    | :math:`S \rightarrow CBC_1C_2`
    | :math:`B \rightarrow b`
    | :math:`C \rightarrow CC_3 \mid e`
@@ -399,6 +413,9 @@ Simplifying CFGs and Normal Forms
    | :math:`C_1 \rightarrow c`
    | :math:`C_2 \rightarrow d`
    | :math:`C_3 \rightarrow c`
+
+   NOTE: Can get rid of :math:`\lambda` productions and unit
+   productions first!
 
 
 .. slide:: Greibach Normal Form (GNF)
@@ -422,7 +439,7 @@ Simplifying CFGs and Normal Forms
 .. slide:: GNF Theorem
 
    | For every CFG :math:`G`, there exists a grammar in GNF.
-   |    See proof in modules.
+   |    See proof in book.
 
    | Example:
    |   :math:`S \rightarrow AB`

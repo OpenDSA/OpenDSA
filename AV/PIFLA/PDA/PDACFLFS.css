@@ -5,3 +5,11 @@
 .jsavhorizontalarray .jsavnode {
   min-width: 65px !important;
 }
+
+.start {
+  font-style: italic;
+  font-weight: bold;
+}
+.final {
+  border: 3px double;
+}

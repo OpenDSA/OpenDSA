@@ -93,7 +93,9 @@ Grammars for Deterministic Context-free Languages
    | By looking at the next two characters, we always know which rule
      to apply.
    |    If we see :math:`ab`, then apply :math:`S \rightarrow ab`.
+   |      << What gets consumed, what goes on the stack? >>
    |    Otherwise, apply :math:`S \rightarrow aSb`
+   |      << What gets consumed, what goes on the stack? >>
 
 
 .. slide:: LL Example 2 (1)

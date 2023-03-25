@@ -21,68 +21,68 @@ $(document).ready(function () {
   curvy1.hide();
   curvy2.hide();
 
-  // Frame 1
-  av.umsg("While Turing machines might be able to do powerful things, when operating at the individual state level it can get rather difficult and tedious to program them. In fact, it might feel in some ways like writing machine code or assembly language.<br/><br/>The secret to success in modern software development is to build up more powerful tools, especially by packaging behavior together and manipulating the packages through specific interfaces.<br/><br/>We can hope to build up similar capability with Turing Machines.")
+  //frame 1
+  av.umsg("While Turing machines might be able to do powerful things, when operating at the individual state level, it can get rather difficult and tedious to program them. In fact, it might feel in some ways like writing machine code or assembly language.<br/><br/>The secret to success in modern software development is to build up more powerful tools, especially by packaging behavior together and manipulating the packages.<br/><br/>We can hope to build up similar capability with Turing Machines.")
   av.displayInit();
 
-  // Frame 2
-  av.umsg(Frames.addQuestion("lemma"));
+  //frame 3
+  av.umsg(Frames.addQuestion("q3"));
   av.step();
 
-  // Frame 3
-  av.umsg(Frames.addQuestion("yield"));
+  //frame 4
+  av.umsg(Frames.addQuestion("q4"));
   av.step();
 
-  // Frame 4
-  av.umsg(Frames.addQuestion("step1"));
+  //frame 5
+  av.umsg(Frames.addQuestion("q5"));
   av.step();
 
-  // Frame 5
-  av.umsg(Frames.addQuestion("meaning1"));
+  //frame 6
+  av.umsg(Frames.addQuestion("q6"));
   av.step();
 
-  // Frame 6
-  av.umsg(Frames.addQuestion("step2"));
+  //frame 7
+  av.umsg(Frames.addQuestion("q7"));
   av.step();
 
-  // Frame 7
-  av.umsg(Frames.addQuestion("meaning2"));
+  //frame 8
+  av.umsg(Frames.addQuestion("q8"));
   av.step();
 
-  // Frame 8
-  av.umsg(Frames.addQuestion("meaning3"));
+  //frame 9
+  av.umsg(Frames.addQuestion("q9"));
   av.step();
 
-  // Frame 9
-  av.umsg("How do we benifit from observing that?. A Turing machine can do a series of computations on the input string and each computation passes the result to the next computation. This means that Turing machine computations can be combined into larger machines. Suppose we have a Turing Machine $M$ that will call another TM $M_2$:<br/> &bull; $M$ prepares a string as input to $M_2$.<br/>&bull; $M$ passes control to $M_2$ with the I/O head at the end of the input.<br/> &bull; $M$ retrieves control when $M_2$ has completed.<br/><br/>Of course 'passes control' just means to change to the right state.");
+  //frame 10
+  av.umsg("How can we benifit from that?. A Turing machine can do a series of computations on the input string and each computation passes the result to the next computation. This means that Turing machine computations can be combined into larger machines. Suppose we a Turing Machine $M$ that will call another TM $M_2$:<br/> &bull; $M$ prepares a string as input to $M_2$.<br/>&bull; $M$ passes control to $M_2$ with the I/O head at the end of the input.<br/> &bull; $M$ retrieves control when $M_2$ has completed.");
   av.step();
   
-  // Frame 10
+  //frame 12
   av.umsg("Think about any programming language. When we write a program we can write lines of code that do all what we need. However, a programming language also provides us with a number of predefined functions/methods to help us reduce the amount of code that we need to write.");
   av.step();
 
-  // Frame 11
-  av.umsg(Frames.addQuestion("sigma"));
+  //frame 13
+  av.umsg(Frames.addQuestion("q13"));
   av.step();
   
-  // Frame 12
-  av.umsg(Frames.addQuestion("move"));
+  //frame 14
+  av.umsg(Frames.addQuestion("q14"));
   av.step();
 
-  // Frame 13
-  av.umsg(Frames.addQuestion("not"));
+  //frame 15
+  av.umsg(Frames.addQuestion("q15"));
   av.step();
 
-  // Frame 14
-  av.umsg(Frames.addQuestion("multi"));
+  //frame 16
+  av.umsg(Frames.addQuestion("q16"));
   av.step();
 
-  // Frame 15
-  av.umsg("Here are some of the most basic machines and notation that we will use to build more complex machines.<br/>&bull; $|\\Sigma|$ symbol-writing machines (in other words, we need one for each symbol in the input alphabet)): Any given symbol $\\sigma$ has a symbol-writing machine named $\\sigma$.<br/>&bull; Head-moving machines, named $R$, $L$ and $S$, that move the head appropriately.<br/>&bull; Transitions on anything other than (for example) $\\#$ are labeled $\\overline{\\#}$.<br/>&bull; Multiple copies of a machine get a superscript.<br/>&bull; Finally, the start state will be indicated with $>$.")
+  //frame 17
+  av.umsg("Here are some basic machines and notation <br> &bull; Start state indicated with >.")
   av.step();
   
-  // Frame 16
-  av.umsg(Frames.addQuestion("first"));
+  //frame 18
+  av.umsg(Frames.addQuestion("q18"));
   var letter1 = av.label("$>M_1$", {top: yStart + 10, left: xleft + 100});
   var letter2 = av.label("$M_2$", {top: yStart + 10, left: xleft + 200});
   var letter3 = av.label("$M_3$", {top: yStart + 90, left: xleft + 115});
@@ -96,16 +96,15 @@ $(document).ready(function () {
             {"stroke-width": 2, "arrow-end":"classic-wide-long"});
   av.step();
   
-  // Frame 17
-  av.umsg(Frames.addQuestion("a"));
+  //frame 19
+  av.umsg(Frames.addQuestion("q19"));
   av.step();
 
-  // Frame 18
-  av.umsg(Frames.addQuestion("b"));
+  //frame 20
+  av.umsg(Frames.addQuestion("q20"));
   av.step();
 
-  // Frame 19
-  av.umsg(Frames.addQuestion("find"));
+  //frame 21
   letter1.hide();
   letter2.hide();
   letter3.hide();
@@ -113,18 +112,19 @@ $(document).ready(function () {
   letter5.hide();
   arrow1.hide();
   arrow2.hide();
+  av.umsg(Frames.addQuestion("q21"));
   letter1 = av.label("$>R$", {top: 50, left: xleft + 100});
   letter2 = av.label("$\\overline{\\#}$", {top: 0, left: xleft + 115});
   // Curvy line1
   curvy1.show();
+
   av.step();
 
-  // Frame 20
-  av.umsg(Frames.addQuestion("rpound"))
+  //frame 22
+  av.umsg(Frames.addQuestion("q22"))
   av.step();
 
-  // Frame 21
-  av.umsg(Frames.addQuestion("emptyM"));
+  //frame 23
   letter1.hide();
   letter2.hide();
   curvy1.hide();
@@ -136,10 +136,11 @@ $(document).ready(function () {
     {"stroke-width": 2, "arrow-end":"classic-wide-long"});
   curvy2.show();
   // Horizontal line
+  
+  av.umsg(Frames.addQuestion("q23"));
   av.step();
 
-  // Frame 22
-  av.umsg(Frames.addQuestion("lpound"));
+  //frame 24
   arrow2 = av.g.line(260 + xleft, 10 + yStart, 260 + xleft, 100 + yStart,
     {"stroke-width": 3});
 
@@ -149,10 +150,10 @@ $(document).ready(function () {
   // Horizontal arrow
   var arrow3 = av.g.line(340 + xleft, 75 + yStart, 395 + xleft, 75 + yStart,
     {"stroke-width": 2, "arrow-end":"classic-wide-long"});
+  av.umsg(Frames.addQuestion("q24"));
   av.step();
     
-  // Frame 23
-  av.umsg("Copy Machine: Transform # w <u>#</u> into # w # w <u>#</u>.<br><br><br><br><br><br><br><br><br><br/><br/>Shift a string right:<br/><br/><br/><br/><br/><br/><br/><br/>Note the difference between L<sub>#</sub> in the start state of the copy machine (which means move left until seeing the first blank), and L# at the bottom of the shift machine (which means move left and then write a space).");
+  //frame 25
   letter3.hide();
   letter4.hide();
   letter5.hide();
@@ -164,6 +165,7 @@ $(document).ready(function () {
   arrow3.hide();
   
   curvy2.hide();
+  av.umsg("Copy Machine: Transform # w <u>#</u> into # w # w <u>#</u>. Note the difference between L<sub>#</sub> in the start state (which means move left until seeing the first blank), and L<sub>#</sub> at the bottom (which means move left and then write a space). <br><br><br><br><br><br><br><br><br> Shift a string right:");
   // first diagram
   var ytop = 5;
   letter1 = av.label("$R$", {top: 10 + ytop, left: xleft + 120});
@@ -210,8 +212,7 @@ $(document).ready(function () {
                 {"stroke-width": 2, "arrow-end":"classic-wide-long"});
   av.step();
   
-  // Frame 24
-  av.umsg("Congratulations! Frameset completed.");
+  //frame 26
   letter1.hide();
   letter2.hide();
   letter3.hide();
@@ -232,5 +233,6 @@ $(document).ready(function () {
   arrow6.hide();
   arrow7.hide();
   arrow8.hide();
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

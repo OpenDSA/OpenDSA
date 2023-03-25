@@ -132,7 +132,7 @@ Pumping Lemma for CFL
      that :math:`|vy|\ge 1`, :math:`|vxy|\le m`, and
      :math:`uv^ixy^iz \in L` for :math:`i = 0, 1, 2, \ldots`.
    |
-   | **Case 1:** Neither :math:`v` nor :math:`y` may contain 2 or more
+   | **Case 1:** Either :math:`v` nor :math:`y` contain 2 or more
      distinct symbols.
      If, for example, :math:`v` contains a's and b's, then
      :math:`uv^2xy^2z \notin L` since there will be b's before a's.

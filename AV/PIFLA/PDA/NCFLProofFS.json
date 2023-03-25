@@ -1,39 +1,52 @@
 {
   "translations": {
     "en": {
-      "union": {
+      "q2": {
         "type": "select",
-        "description": "It is easy to construct a deterministic PDA for $\\{a^nb^n: n \\ge 1\\}$, and also to construct a deterministic PDA for $\\{a^nb^{2n}: n \\ge 1\\}$.",
-        "question": "Can we connect these two PDAs together into one PDA to accept the language that is their union?",
+        "description": "Now we want to prove that the language $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is not a deterministic CFL, and therefore no deterministic PDA can recognize it.",
+        "question": "Is L CFL?",
         "answer": "Yes",
         "choices": ["Yes", "No"],
-        "correctFeedback": ["Similar to unioning two NFAs, we can union the two PDAs by creating a new start state and a new final state, and connect them to the existing PDAs using $\\lambda$ transitions. Then a string is accepted if and only if at least one PDA accepts."]
+        "correctFeedback":["It is easy to construct PDAs for $\\{a^nb^n: n \\ge 1\\}$ and $\\{a^nb^{2n}: n \\ge 1\\}$. We just need to put them together."]
       },
-      "DPDA": {
+      "q3": {
         "type": "select",
-        "description": "Now we will show that $L$ is not a DCFL. Assume that there is a deterministic PDA $M$ such that $L=L(M)$. We will construct a PDA that recognizes a language that is not a CFL and thus derive a contradiction.",
+        "description": "It is easy to construct PDAs for $\\{a^nb^n: n \\ge 1\\}$ and $\\{a^nb^{2n}: n \\ge 1\\}$. We just need to put them together.",
+        "question": "Can we connect both PDAs to one PDA to accept the union?",
+        "answer": "Yes, similar to unioning two NFAs. We need to create a new start state and new final state and connect the PDAs using $\\lambda$ transitions",
+        "choices": ["Yes, similar to unioning two NFAs. We need to create a new start state and new final state and connect the PDAs using $\\lambda$ transitions", "No"]
+      },
+      "q6": {
+        "type": "select",
+        "description": "Now we need to show that $L$ is not a DCFL. Assume that there is a deterministic PDA $M$ such that $L=L(M)$. We will construct a PDA that recognizes a language that is not a CFL and derive a contradiction.",
         "question": "What are the conditions for a PDA to be DPDA?",
-        "answer": ["$\\delta(q, a, b)$ contains at most one element.", "If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$."],
-        "choices": ["$\\delta(q, a, b)$ contains at most one element.", "If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$."]
+        "answer": ["for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$ $\\delta(q, a, b)$ contains at most one element", "for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$ if $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$"],
+        "choices": ["for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$ $\\delta(q, a, b)$ contains at most one element", "for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$ if $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$"]
       },
-      "NFADFA": {
+      "Xq4": {
         "type": "select",
-        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is a CFL and not aDCFL.",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL.",
         "question": "For NFAs and DFAs, which is more powerful?",
-        "answer": "Both have the same power",
-        "choices": ["Both have the same power", "DFA", "NFA"],
-        "correctFeedback": ["Any DFA is an NFA, and any NFA can be converted to a DFA."]
+        "answer": "Both have the same power as any DFA is an NFA, and any NFA can be converted to a DFA",
+        "choices": ["Both have the same power as any DFA is an NFA, and any NFA can be converted to a DFA", "DFA", "NFA"]
       },
-      "CFLDCFL": {
+      "Xq5": {
         "type": "select",
-        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is a CFL and not aDCFL.",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL.",
+        "question": "More powerful means accepting more languages.",
+        "answer": "True",
+        "choices": []
+      },
+      "Xq6": {
+        "type": "select",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL",
         "question": "What about CFL vs. DCFL? Do they have the same power?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
-      "which": {
+      "Xq7": {
         "type": "select",
-        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is a CFL and not aDCFL.",
+        "description": "We found that a language like $L = \\{a^nb^n: n \\ge 1\\} \\cup \\{a^nb^{2n}: n \\ge 1\\}$ is CFL and not DCFL.",
         "question": "Which is more powerful?",
         "answer": "CFL, as it can accept more languages than DCFL",
         "choices": ["CFL, as it can accept more languages than DCFL", "DCFL, as it can accept more languages than CFL"]

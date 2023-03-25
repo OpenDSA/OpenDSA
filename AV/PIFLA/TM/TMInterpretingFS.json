@@ -1,117 +1,117 @@
 {
   "translations": {
     "en": {
-      "infinity": {
+      "q2": {
         "type": "select",
-        "description": "A <b>configuration</b> for a Turing machine provides enough information to understand its current state of execution on a given string. We use the following notation:$(q, \\underline{a}aba)$<br/><br/>This means that the TM is in state $q$, the tape contains $aaba$, and the read/write head position is on the underlined $a$. Recall that we assume at the start of processing input for any TM, the read/write head position is on the leftmost non-blank character.<br/><br/>Don't forget that the tape is infinite in both directions. So to the left of the leftmost 'a' in this configuration are an infinite number of blank squares, and to the right of the rightmost a is also an infinite number of blank squares.",
+        "description": "A <b>configuration</b> for a Turing machine looks like this: <i>(q, <u>a</u>aba)</i><br/><br/>This means that the TM is in state <i>q</i>, the tape contains <i>aaba</i> and the read/write head position is on the underlined 'a'. Recall that we assume at the start of processing input for any TM, the read/write head position is on the leftmost non-blank character.<br/><br/>Don't forget that the tape is infinite in both directions. So to the left of the leftmost 'a' in this configuration is an infinite number of blank squares, and to the right of the rightmost a is also an infinite number of blank squares.",
         "question":"How many cells exists in a TM tape?",
         "answer": "Infinity",
         "choices": ["Infinity", "The same as the length of the input string", "The same as the length of the input string + some empty cells"]
       },
-      "computation": {
+      "q6": {
         "type": "select",
         "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
         "question":"What is the meaning of the configuration $(q_0, \\underline{a}aaa)$?",
         "answer": ["The current state is $q_0$", "The tape has the letters $aaaa$", "The underlined $a$ represents the current read/write head location"],
-        "choices": ["The current state is $q_0$", "The tape has the letters $aaaa$", "The underlined $a$ represents the current read/write head location", "The string will be accepted"]
+        "choices": ["The current state is $q_0$", "The tape has the letters $aaaa$", "The underlined $a$ represents the current read/write head location"]
       },
-      "a1": {
+      "q7": {
         "type": "select",
         "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
-        "question":"Based on the current configuration<br/>$(q_0, \\underline{a}aaa)$<br/>what is the next configuration?",
-        "answer": "$(q_0, \\#\\underline{a}aa)$",
-        "choices": ["$(q_0, \\#\\#\\underline{a}a)$", "$(q_0, \\#\\#\\#\\#\\underline{a})$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_0, \\#\\underline{a}aa)$", "$(q_0, \\underline{\\#}aaa)$"]
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)$, what is the next configuration?",
+        "answer": "$(q_0, \\underline{\\#}aaa)$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
       },
-      "a2": {
+      "q8": {
         "type": "select",
         "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
-        "question":"Based on the current configuration<br/>$(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\#\\underline{a}aa)$<br/>what is the next configuration?",
-        "answer": "$(q_0, \\#\\#\\underline{a}a)$",
-        "choices": ["$(q_0, \\#\\#\\underline{a}a)$", "$(q_0, \\#\\#\\#\\#\\underline{a})$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_0, \\#\\underline{a}aa)$", "$(q_0, \\underline{\\#}aaa)$"]
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$, what is the next configuration?",
+        "answer": "$(q_0, \\#\\underline{\\#}aa)$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
       },
-      "a3": {
+      "q9": {
         "type": "select",
         "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
-        "question":"Based on the current configuration<br/>$(q_0, \\underline{a}aaa) \\vdash_M(q_0, \\#\\underline{a}aa) \\vdash_M(q_0, \\#\\#\\underline{a}a)$<br/>what is the next configuration?",
-        "answer": "$(q_0, \\#\\#\\#\\underline{a})$",
-        "choices": ["$(q_0, \\#\\#\\underline{a}a)$", "$(q_0, \\#\\#\\#\\underline{a})$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_0, \\#\\underline{a}aa)$", "$(q_0, \\underline{\\#}aaa)$"]
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\underline{\\#}aa)$, what is the next configuration?",
+        "answer": "$(q_0, \\#\\#\\underline{\\#}a)$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
       },
-      "a4": {
+      "q10": {
         "type": "select",
         "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
-        "question":"Based on the current configuration<br/>$(q_0, \\underline{a}aaa) \\vdash_M (q_0, \\#\\underline{a}aa) \\vdash_M (q_0, \\#\\#\\underline{a}a)\\vdash_M$<br/>$\\quad\\quad(q_0, \\#\\#\\#\\underline{a})$<br/>what is the next configuration?",
-        "answer": "$(q_0, \\#\\#\\#\\#\\underline{\\#})$",
-        "choices": ["$(q_0, \\#\\#\\underline{a}a)$", "$(q_0, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\#\\underline{a}aa)$", "$(q_0, \\underline{\\#}aaa)$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$"]
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\underline{\\#}aa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\underline{\\#}a)$, what is the next configuration?",
+        "answer": "$(q_0, \\#\\#\\#\\underline{\\#})$",
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
       },
-      "adone": {
+      "q11": {
         "type": "select",
         "description": "A <b>computation</b> is a sequence of configurations of some length $n \\ge 0$.<br/> Example:<br/>Recall the TM example that erases all a's from the tape.",
-        "question":"Based on the current configuration<br/>$(q_0, \\underline{a}aaa) \\vdash_M (q_0, \\#\\underline{a}aa) \\vdash_M (q_0, \\#\\#\\underline{a}a) \\vdash_M$<br/>$\\quad\\quad(q_0, \\#\\#\\#\\underline{a}) \\vdash_M(q_0, \\#\\#\\#\\#\\underline{\\#})$<br/>what is the next configuration?",
+        "question":"Based on the current configuration $(q_0, \\underline{a}aaa)\\vdash_M(q_0, \\underline{\\#}aaa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\underline{\\#}aa)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\underline{\\#}a)$<br/>$\\quad \\quad \\vdash_M(q_0, \\#\\#\\#\\underline{\\#})$, what is the next configuration?",
         "answer": "$(q_1, \\#\\#\\#\\#\\underline{\\#})$",
-        "choices": ["$(q_0, \\#\\#\\underline{a}a)$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_0, \\#\\underline{a}aa)$", "$(q_0, \\underline{\\#}aaa)$", "The machine halts"]
+        "choices": ["$(q_0, \\#\\underline{\\#}aa)$", "$(q_0, \\#\\#\\underline{\\#}a)$", "$(q_0, \\#\\#\\#\\underline{\\#})$", "$(q_1, \\#\\#\\#\\#\\underline{\\#})$", "$(q_0, \\underline{\\#}aaa)$"]
       },
-      "hang": {
+      "q15": {
         "type": "select",
         "description": "What is a <b>hanging</b> configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen.<br/>Consider this machine on strings of a's and b's that scans right until it sees a 'b'.",
         "question":"What will happen if the tape has no $b$?",
         "answer": "The machine will go into an infinite loop",
-        "choices": ["The machine will go into an infinite loop", "The machine will halt in a non-final state", "The machine will halt in a final state"]
+        "choices": ["The machine will go into an infinite loop", "The machine will halt and reject the string", "The machine will halt and accept the string"]
       },
-      "hang2": {
+      "q16": {
         "type": "select",
-        "description": "What is a <b>hanging</b> configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen.<br/>Consider this machine on strings of a's and b's that scans right until it sees a 'b'.<br/><br/>If it never sees a 'b', then it will never halt. This means that it goes into an infinite loop (or hangs) anytime the input string does not contain a 'b'.",
+        "description": "What is a \"hanging\" configuration? The machine hangs when it goes into an infinite loop. Anytime you provide the mechanism to create loops that only end on a condition, you have also created the conditions that might allow an infinite loop to happen.<br/>Consider this machine on strings of a's and b's that scans right until it sees a 'b'.<br/><br/>If it never sees a 'b', then it will never halt. This means that it goes into an infinite loop (or hangs) anytime the input string does not contain a 'b'.",
         "question":"Since the machine entered an infinite loop, it is in hanging configuration",
         "answer": "True",
         "choices": []
       },
-      "acceptor": {
+      "q17": {
         "type": "select",
         "description": "<i>Turing Acceptors and Turing Transducers</i><br/><br/>Turing machines accept and reject strings based on the language they represent.",
         "question":"What are other models we know that can accept/reject strings?",
         "answer": ["NFA", "DFA", "PDA"],
-        "choices": ["NFA", "DFA", "PDA", "None of them can compute functions in this sense"]
+        "choices": ["NFA", "DFA", "PDA"]
       },
-      "transducer": {
+      "q18": {
         "type": "select",
         "description": "<i>Turing Transducers</i><br/><br/>Since Turing machines have the ability to write on the tape, then can also compute functions from strings to strings. This means that the machine will start with a string in the tape, and after it finishs the execution, the tape will contain the output string",
         "question":"What are other models we know that can compute functions?",
-        "answer": ["None of them can compute functions in this sense"],
-        "choices": ["NFA", "DFA", "PDA", "None of them can compute functions in this sense"]
+        "answer": "None of them can compute functions in this sense",
+        "choices": ["NFA", "DFA", "PDA", "None of them can compute functions"]
       },
-      "unary": {
+      "q21": {
         "type": "select",
-        "description": "When we want to do something with numbers, we are used to using base 10. Sometimes we use hexidecimal (base 16) numbers when we want to reason about computer memory, since that is a bit more convenient in that context. In the early days of computing when interfaces were poor and computation was expensive, binary was used a lot. You should be able to image that implementing computation on binary digits is easier than on decimal digits. However, even that is more complicated than we want right now. One way to express functions on natural numbers is to represent a number using <i><b>unary notation</i></b>. (Remember, we are not concerned right now about what is efficient, we are concerned about what is possible.) In this case, we represent the value 0 as an empty string.<br/><br/>We say that $f:N \\rightarrow N$ is computed by $M$ if $M$ computes $f': \\{I\\}^* \\rightarrow \\{I\\}^*$ where $f'(I^n) = I^{f(n)}$ for each $n \\in N$.",
+        "description": "When we want to do something with numbers, we are used to using base 10. Sometimes we use hexi-decimal numbers when we want to reason about computer memory, since that is a bit more convenient in that context. In the early days of computing when interfaces were poor and computation was expensive, binary was used a lot. You should be able to image that implementing computation on two binary digits is easier than on 10 decimal digits. However, even that is more complicated than we want right now. One way to express functions on natural numbers is to represent a number using <i><b>unary notation</i></b>. (Remember, we are not concerned about what is efficient, we are concerned about what is possible.) In this case, we represent the value 0 as an empty string.<br/><br/>We say that $f:N \\rightarrow N$ is computed by $M$ if $M$ computes $f': \\{I\\}^* \\rightarrow \\{I\\}^*$ where $f'(I^n) = I^{f(n)}$ for each $n \\in N$.",
         "question":"If $n = 2$, what is the correct unary representationn for $n$?",
         "answer": "11",
         "choices": ["10", "11", "2"]
       },
-      "first1": {
+      "q23": {
         "type": "select",
-        "description": "Step 1: Initially, the tape head is scanning the leftmost non-blank tape cell, and the current state is $q_0$.",
+        "description": "Step 1: Initially, the tape head is scanning the leftmost non-blank tape cell, and the current state is $q_0$",
         "question":"What will happen to the machine?",
         "answer": "Leave the cell value as it is and move right",
-        "choices": ["Leave the cell value as it is and move right", "Erase the cell and move right", "Leave the cell value as it is and stay"]
+        "choices": ["Leave the cell value as it is and move right", "write a 1 and move right", "leave the cell content as it is and stay"]
       },
-      "next1": {
+      "q24": {
         "type": "select",
         "description": "Step 2: The tape head shifts right one cell. The previous cell stays as '1' and the current state remains in $q_0$.",
         "question":"What will happen to the machine?",
         "answer": "Leave the cell value as it is and move right",
-        "choices": ["Leave the cell value as it is and move right", "Erase the cell and move right", "Leave the cell value as it is and stay"]
+        "choices": ["Leave the cell value as it is and move right", "write a 1 and move right", "leave the cell content as it is and stay"]
       },
-      "end1": {
+      "q25": {
         "type": "select",
         "description": "Step 3: The tape head shifts right one cell.  The previous cell stays as '1' and the current state remains in $q_0$.",
         "question":"What will happen to the machine?",
-        "answer": "Write a 1 and move right",
-        "choices": ["Leave the cell value as it is and move right", "Erase the cell and move right", "Leave the cell value as it is and stay", "Write a 1 and move right"]
+        "answer": "write a 1 and move right",
+        "choices": ["Leave the cell value as it is and move right", "write a 1 and move right", "leave the cell content as it is and stay"]
       },
-      "finish1": {
+      "q26": {
         "type": "select",
         "description": "Step 4: The tape head shifts right one cell.  The previous cell turns into a '1' and the current state changes to $q_1$.",
         "question":"What will happen to the machine?",
-        "answer": "Leave the cell value as it is and stay",
-        "choices": ["Leave the cell value as it is and move right", "Erase the cell and move right", "Leave the cell value as it is and stay", "Write a 1 and move right"]
+        "answer": "leave the cell content as it is and stay",
+        "choices": ["Leave the cell value as it is and move right", "write a 1 and move right", "leave the cell content as it is and stay"]
       }
     }
   }

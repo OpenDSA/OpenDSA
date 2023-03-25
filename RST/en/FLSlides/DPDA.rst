@@ -45,7 +45,7 @@ Deterministic Pushdown Automata
    |    :math:`\delta(q_1, a, 1) = \{(q_1, 11)\}`,
    |    :math:`\delta(q_1, b, 1) = \{(q_2, \lambda)\}`,
    |    :math:`\delta(q_2, b, 1) = \{(q_2, \lambda)\}`,
-   |    :math:`\delta(q_2, \lambda, Z) = \{(q_3, Z)\}`
+   |    :math:`\delta(q_2, \lambda, Z) = \{(q_3, \lambda)\}`
    | accepts the given language.
    | It satisfies the conditions for being deterministic.
 
