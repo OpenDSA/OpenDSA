@@ -20,7 +20,7 @@ $(document).ready(function () {
         }
     }
 
-    $.getJSON("./Jsparson.json", function(data) {
+    $.getJSON("simple.json", function(data) {
         var initial = data[index].initial
         document.getElementById("description").innerHTML = data[index].description
         document.getElementById("instructions").innerHTML = data[index].instructions

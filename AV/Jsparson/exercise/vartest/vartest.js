@@ -20,7 +20,7 @@ $(document).ready(function () {
         }
     }
 
-    $.getJSON("./vartest.json", function(data) {
+    $.getJSON("vartest.json", function(data) {
         var initial = data[index].initial
         document.getElementById("description").innerHTML = data[index].description
         document.getElementById("instructions").innerHTML = data[index].instructions
