@@ -1,13 +1,12 @@
 $(document).ready(function () {
     "use strict";
-    const index = window.location.pathname.split('/').pop().split('.')[0];
-    //var frames = PIFRAMES.init("Jsparson");
-    
+    var index = window.location.pathname.split('/').pop().split('.')[0];
+    console.log(index)
     var parson = new ParsonsWidget({
-        'sortableId': 'sortable',
-        'trashId': 'sortableTrash',
-        'max_wrong_lines': 1,
-        'feedback_cb': displayErrors
+        "sortableId": "sortable",
+        "trashId": "sortableTrash",
+        "vartests": vartests,
+        "toggleTypeHandlers": {ab: ["<", ">"]}
     });
     var noCredit = true;
 
@@ -21,8 +20,10 @@ $(document).ready(function () {
         }
     }
 
-    $.getJSON("../Jsparson.json", function(data) {
-        var initial = data[String(index)].initial
+    $.getJSON("./vartest.json", function(data) {
+        var initial = data[index].initial
+        document.getElementById("description").innerHTML = data[index].description
+        document.getElementById("instructions").innerHTML = data[index].instructions
         parson.init(initial);
         parson.shuffleLines();
     });
@@ -31,18 +32,18 @@ $(document).ready(function () {
         event.preventDefault()
         parson.shuffleLines()
     });
-
     $("#feedbackLink").click(function (event) {
         var initData = {}
         console.log(parson.studentCode())
         initData.user_code = parson.studentCode()
         ODSA.AV.logExerciseInit(initData)
         event.preventDefault()
-        parson.getFeedback()
+        var fb = parson.getFeedback()
+        displayErrors(fb)
     });
-    
     $('#saveProgressLink').click(function() {
         const state = parson.getState({index: index})
+        console.log(state)
         $.ajax({
             url: '/saveProgress',
             type: 'POST',
