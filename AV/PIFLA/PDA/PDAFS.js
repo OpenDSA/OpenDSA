@@ -58,7 +58,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 4
-  av.umsg("A Pushdown Automata (PDA) is formally defined as $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, z, F).$ <br/> $Q$ is a finite set of states <br/> $\\Sigma$ is the tape (input) alphabet (a finite set)  <br/>  $\\Gamma$ is the stack alphabet (a finite set) <br/>$q_0$ is the initial state, $q0 \\in Q$ <br/> z is the start stack symbol (marks the bottom of the stack), z $\\in \\Gamma$ <br/> $F$⊆$Q$ is the set of final states <br/> $\\delta : Q \\times (\\Sigma \\cup \\{\\lambda\\}) \\times \\Gamma \\rightarrow Q \\times \\Gamma^*$");
+  av.umsg("A Pushdown Automata (PDA) is formally defined as $M = (Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F).$ <br/> $Q$ is a finite set of states <br/> $\\Sigma$ is the tape (input) alphabet (a finite set)  <br/>  $\\Gamma$ is the stack alphabet (a finite set) <br/>$q_0$ is the initial state, $q0 \\in Q$ <br/>$Z$ is the start stack symbol (marks the bottom of the stack), $Z \\in \\Gamma$ <br/> $F$⊆$Q$ is the set of final states <br/> $\\delta : Q \\times (\\Sigma \\cup \\{\\lambda\\}) \\times \\Gamma \\rightarrow Q \\times \\Gamma^*$");
   av.step();
 
   // Frame 5
@@ -70,7 +70,7 @@ $(document).ready(function() {
   av.step();
 
   // Frame 7
-  av.umsg(Frames.addQuestion("z"));
+  av.umsg(Frames.addQuestion("Z"));
   av.step();
 
   // Frame 8

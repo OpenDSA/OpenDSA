@@ -55,6 +55,12 @@ the probability of a collision under those conditions.
 
 Use the calculator to answer the following questions.
 
+#. What is the minimum number of people that need to be in the room in
+   order for there to be at least a 60% chance of two sharing a
+   birthday?
+#. What is the minimum number of items that we need to hash to a table
+   with 1000 slots to have at least a 50% chance of a collision?
+
 .. avembed:: Exercises/Hashing/BirthdayFIB.html ka
    :long_name: Birthday Problem Exercise
 

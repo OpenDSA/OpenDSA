@@ -1222,7 +1222,7 @@ Glossary
       as we intend. This is in contrast to :term:`testing`.
 
    decideability
-      In :term:`computabilty` theory, the question of whether a
+      In :term:`computability` theory, the question of whether a
       question can be answered.
       A typical example is whether to instances within a system are
       equivalent.

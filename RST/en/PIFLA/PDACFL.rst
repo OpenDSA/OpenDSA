@@ -14,23 +14,12 @@ PDAs and Context Free Languages
 PDAs and Context Free Languages
 -------------------------------
 
-Let's recap some important points that we have covered this semester.
-
-#. Regular languages are languages that can be recognized by DFAs or
-   NFAs, or represented by a RegEx or a regular grammar.
-   These are all equivalent and interchangable.
-#. Adding non-determinism to DFAs added no power in terms of the
-   languages that can be recognized.
-#. Context-free languages (CFL) are those languages that can be
-   represented by context-free grammars (CFG).
-#. Regular languages are a subset of context-free languages.
-#. PDAs have stack memory, and this allows them to recognize all
-   regular grammars (just don't use the stack), and some other
-   languages that we have proved to be non-regular.
-#. A PDA can be deterministic (DPDA) or non-deterministic (NPDA).
-
 In this module, we address the relationship between NPDAs and CFLs.
 Spoiler alert: NPDAs recognize CFLs.
+
+
+Convert a CFG to a NPDA
+-----------------------
 
 .. inlineav:: PDACFLFS ff
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDACFLFS.css
@@ -38,10 +27,13 @@ Spoiler alert: NPDAs recognize CFLs.
    :output: show
 
 
+Convert a NPDA to a CFG
+-----------------------
+
 Now we want to show that given an NPDA, we can construct a CFG.
 But first, we will show a result to make the next proof easier.
 
-**Theorem:** Given a NPDA :math:`M`, :math:`\exists`
+**Theorem:** Given a NPDA :math:`M`, there exists
 a NPDA :math:`M'` such that all transitions have the form
 :math:`\delta(q_i, a, A) = \{c_1, c_2, \ldots c_n\}` where 
 
@@ -52,9 +44,13 @@ a NPDA :math:`M'` such that all transitions have the form
    \mbox{or}\ c_i &=& (q_j, BC)\\
    \end{eqnarray*}
 
-Each move either increases or decreases stack contents by a single symbol.
+The consequence of this restriction is that each move either increases
+or decreases the stack contents by a single symbol.
 
 **Proof:** (sketch)
+
+We can achieve our desired restricted form by replacing any transition
+in the PDA that has too many or too few variables as follows.
 
    .. odsafig:: Images/lt7pf4.png
       :width: 400
@@ -69,34 +65,64 @@ then :math:`L` is a CFL.
 Want to show that each NPDA represents a CFL, so we 
 will take a NPDA :math:`M` and convert it to a CFG. 
 It will be an easier construction if we take the NPDA and put all the 
-transitions in a simpler form. 
+transitions in a simpler form.
 
-**Proof:**
+   | **Proof Sketch:**
+   | Given NPDA :math:`M`, first, construct an equivalent NPDA
+     :math:`M'` that meets the simplifying assumptions.
+   | Reverse the process used to generate a PDA from a grammar
+     to simulate the PDA in the grammar
+   |   The content of the stack should be reflected in the variable
+       part of the sentential form
+   |   The processed input is the terminal prefix of the sentential
+       form
+
+.. ..
+
+   The remaining material was derived originally from Susan Rodger's
+   notes.
+   Unfortunately, at this point this is mostly gibberish.
+   And even so far as it goes, it leaves a lot "to the book".
+   So not useful.
+   What we need at a minimum is to modify the example so that it
+   clearly shows something that is easily recognizeable as the
+   resulting grammar.
+   The example here might be interpretable as a grammar, but
+   it causes too much confusion due to the unexplained notation to
+   actually work as an example.
+   So for now, I have commented this out, and we won't even pretend to
+   give the proof.
+   Thus, the brief sketch above replaces all of this for now
+   (which makes this module match the course slides).
+
+   **Proof:**
 
    | Given NPDA :math:`M`, first, construct an equivalent NPDA
      :math:`M'` that will be easier to work with.
      Construct :math:`M'` such that
-   |   1. :math:`M'` accepts if stack is empty
+   |   1. :math:`M'` accepts if stack is empty. (We have already seen
+       how to do this.)
    |   2. Each move increases or decreases stack content by a single
        symbol.
-      (Can only push 2 variables or no variables with each transition.)
+       (Because of the modification that we made to the transitions, we
+       can only push 2 variables or no variables with each transition.)
    | :math:`M' = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`
    | Construct :math:`G = (V,\Sigma, S, P)` where
    | :math:`V = \{(q_icq_j)\ |\ q_i, q_j \in Q, c \in \Gamma \}`
    |    (Some of these variables will be useless.)
-   | :math:`(q_icq_j)` represents "starting at state :math:`q_i` the
-     stack contents are :math:`cw, w \in \Gamma^*`,
+   | :math:`(q_icq_j)` means "starting at state :math:`q_i`, with the
+     stack contents at :math:`cw`, :math:`w \in \Gamma^*`,
      some path is followed to state :math:`q_j` and the 
      contents of the stack are now :math:`w`". 
-   | Goal: \ \ :math:`(q_0zq_f)` \ \ which will be the start symbol in
+   | Goal: \ \ :math:`(q_0Zq_f)` which will be the start symbol in
      the grammar. 
-   | Meaning: We start in state :math:`q_0` with :math:`z` on the
+   | Meaning: We start in state :math:`q_0` with :math:`Z` on the
      stack and process the input tape. 
      Eventually we will reach the final state :math:`q_f` and the
      stack will be empty. (Along the way we may push symbols on the
-     stack, but these symbols will be popped from the stack). 
-   | (NOTE: Machine accepts by empty stack, but it is such that there
-     is only 1 final state in which the machine accepts by final state.)
+     stack, but these symbols will also be popped from the stack). 
+   | The machine accepts by empty stack, but it is designed so that
+     there is only one state in which the machine accepts.
    | To construct the productions in P: 
 
    | 1) Replace 
@@ -160,9 +186,9 @@ transitions in a simpler form.
    | This will create some useless variables, but that's ok. 
    | Must show that the constructed grammar :math:`G` is such that
      :math:`L(G) = L(M')`.
-     That is, :math:`w \in L(G) \mbox{iff}\ w \in L(M)`. (see book) QED. 
+     That is, :math:`w \in L(G)` iff :math:`w \in L(M)`. QED. 
 
-.. topic:: Example
+.. .. topic:: Example
 
    :math:`L(M) = \{aa^*b\}`,
    :math:`M = (Q, \Sigma, \Gamma, \delta, q_0, z, F)`,
@@ -271,4 +297,4 @@ transitions in a simpler form.
 
    | Must show that the constructed grammar :math:`G` is such that
      :math:`L(G) = L(M')`. 
-     That is, :math:`w \in L(G)` iff :math:`w \in L(M)`. (see book) QED. 
+     That is, :math:`w \in L(G)` iff :math:`w \in L(M)`. QED.

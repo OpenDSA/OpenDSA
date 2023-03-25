@@ -33,7 +33,7 @@
 			<to>3</to>
 			<read></read>
 			<pop>Z</pop>
-			<push></push>
+			<push>Z</push>
 		</transition>
 		<transition>
 			<from>0</from>
