@@ -1,220 +1,125 @@
 {
   "translations": {
     "en": {
-      "q2": {
+      "wbar": {
         "type": "select",
-        "description": "Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$, where $\\bar w$ is the string $w$ with each occurence of $a$ replaced by $b$ and each occurence of $b$ replaced by $a$.",
+        "description": "Prove the following langauge is not a CFL: $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\},\\ \\Sigma = \\{a, b\\}$, where $\\bar w$ is the string $w$ with each occurence of $a$ replaced by $b$ and each occurence of $b$ replaced by $a$.",
         "question": "Let $w = baaa$. $\\bar w = $?",
-        "answer": "$abbb$",
+        "answer": ["$abbb$"],
         "choices": ["$baaa$", "$abbb$", "$aaaa$", "$bbbb$"]
       },
-      "q3": {
+      "winL": {
         "type": "select",
-        "description": "Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$, where $\\bar w$ is the string $w$ with each occurence of $a$ replaced by $b$ and each occurence of $b$ replaced by $a$.",
-        "question": "Let $w = baaa$. $w$$\\bar w$$w$ = $?",
-        "answer": "$baaaabbbbaaa$",
-        "choices": ["$baaaabbbbaaa$", "$abbbabbbabbb$", "$aaaaaaaaaaaa$", "$bbbbbbbbbbbb$"]
+        "description":"Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\},\\ \\Sigma = \\{a, b\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a string $w \\in L$ such that $|w| \\ge m$.",
+        "question": "Which of the following is a string $w \\in L$ such that $|w| \\ge m$?",
+        "answer": ["$w = a^mb^ma^m$"],
+        "choices": ["$w = a^mb^ma^m$", "$w = a^ma^ma^m$", "$w = a^ma^mb^m$", "aabbaa", "aaa"]
       },
-      "q4": {
+      "cases": {
         "type": "select",
-        "description": "Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$ is not a CFL",
-        "question": "What is the first step?.",
-        "answer": "Assume that $L$ is a CFL",
-        "choices": ["Assume that $L$ is a CFL", "Assume that $L$ is not a CFL"]
+        "description":"Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\},\\ \\Sigma = \\{a, b\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w = a^mb^ma^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)<br/><br/>The pumping lemma requires that for any CFL, there is a partition $w$ into $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><br/>The condition $|vxy| \\le m$ means that we must consider every possible case for substrings of $w$ with $m$ or fewer symbols.<br/><br/>In order to reduce confusion in the rest of this discussion, we will use A instead of 'a' to represent the last group of a's in $w$. So, we will write this as $w = a^mb^mA^m$.",
+        "question": "For $w = a^mb^mA^m$, what are all the variations of substrings with length $\\le m$?",
+        "answer": ["a's only", "some a's followed by some b's", "b's only", "some b's followed by some A's", "A's only"],
+        "choices": ["a's only", "some a's followed by some b's", "b's only", "some b's followed by some A's", "A's only", "some a's followed by b's followed by A's"],
+        "correctFeedback": ["The case of some a's followed by some b's followed by some A's is impossible, because then the string would have to have length $> m$."]
       },
-      "q5": {
-        "type": "true/false",
-        "description":"Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$ is not CFL.<br/>Assume $L$ is a CFL.",
-        "question": "[T|F] Since $L$ is CFL, the pumping lemma holds",
-        "answer": "True",
-        "choices": []
-      },
-      "q6": {
+      "case1": {
         "type": "select",
-        "description":"Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
-        "question": "Based on the Pumping Lemma, what is the main condition for the length of the string $w$?",
-        "answer": "$|w| \\ge m$",
-        "choices": ["$|w| \\ge m$", "$|w| \\le m$", "$|w| = m$"]
-      },
-      "q7": {
-        "type": "true/false",
-        "description":"Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
-        "question": "Based on the Pumping Lemma, $m$ is the number of states for any PDA that recognize $L$.",
-        "answer": "True",
-        "choices": []
-      },
-      "q8": {
-        "type": "select",
-        "description":"Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
-        "question": "Which of the following is a correct string $\\in L$?",
-        "answer": "$w = a^mb^ma^m$",
-        "choices": ["$w = a^mb^ma^m$", "$w = a^ma^ma^m$", "$w = a^ma^mb^m$"]
-      },
-      "q9": {
-        "type": "select",
-        "description":"Prove that $L = \\{a^nb^nc^n | n \\geq 1\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose a long string $w \\in L$",
-        "question": "What is the length of $a^mb^ma^m$?",
-        "answer": "$3m$",
-        "choices": ["$2m$", "$m$", "$3m$"]
-      },
-      "q10": {
-        "type": "select",
-        "description":"Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
-        "question": "The next step is to decompose the string $w$ to...?",
-        "answer": "$uvxyz$",
-        "choices": ["$xyz$", "$uvxyz$"]
-      },
-      "q16": {
-        "type": "select",
-        "description":"Prove that $L = \\{w{\\bar w}w : w\\in \\Sigma^*\\}, \\Sigma = \\{a, b\\}$ is not CFL.<br/>Assume $L$ is a CFL, therefore the pumping lemma holds.<br/>Choose $w=a^mb^mc^m$ where $m$ is the constant in the pumping lemma. (Note that $w$ must be choosen such that $|w| \\ge m$.)",
-        "question": "Based on the Pumping Lemma, what are the main conditions to successfully decomposing $w$ to $uvxyz$?",
-        "answer": ["$|vxy| \\le m$", "$|vy| \\geq 1$", "$uv^ixy^iz \\in L$ for all $i \\ge 0$"],
-        "choices": ["$|vxy| \\le m$", "$|vy| \\geq 1$", "$uv^ixy^iz \\in L$ for all $i \\ge 0$"]
-      },
-      "q17": {
-        "type": "select",
-        "description":"The first condition that we need to think about is $|vxy| \\le m$. This condition means that we must test every possible $m$ letters substring in $w$. (Note: we will use $a$ to represent the $a$’s in the front of $w$ and $A$ to represent the $a$’s at the end of $w$ when it is not clear.) So, we can consider $w = a^mb^mA^m$ for simplicity",
-        "question": "Think about $w = a^mb^mA^m$, select the distincted substrings with length $\\le m$",
-        "answer": ["substring of $a\\prime$s only", "substring of some $a'$s followed by some $b'$s", "substring of $b'$s only", "substring of some $b'$s followed by some $A'$s", "substring of $A'$s only"],
-        "choices": ["substring of $a\\prime$s only", "substring of some $a'$s followed by some $b'$s", "substring of $b'$s only", "substring of some $b'$s followed by some $A'$s", "substring of $A'$s only", "substring of $a$'s followed by $b$'s followed by $A$'s"]
-      },
-      "q18": {
-        "type": "select",
-        "description":"The first condition that we need to think about is $|vxy| \\le m$. This condition means that we must test every possible $m$ letters substring in $w$",
-        "question": "Think about $w = a^mb^mA^m$, the substring of $a$'s followed by $b$'s followed by $A$'s is not a valid substring for the pumping lemma as the length of that substring is $>m$",
-        "answer": "True",
-        "choices": []
-      },
-      "q19": {
-        "type": "select",
-        "description":"Let $w=a^mb^mA^m$. We need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only, let $v = a^{t_1}$ and $y = a^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 1:</b> $vxy$ is $a$'s only. let $v = a^{t_1}$ and $y = a^t_2$ where $0 < t_1 + t_2 \\le m$.",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^{m+t_1+t_2}b^mA^m$",
         "choices": ["$a^{m+t_1+t_2}b^mA^m$", "$a^{m+t_1}b^mA^m$", "$a^{m+t_2}b^mA^m$"]
       },
-      "q20": {
+      "asnopump": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 1:}$ $vxy$ is $a$'s only, let $v = a^{t_1}$ and $y = a^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 1:</b> $vxy$ is a's only. let $v = a^{t_1}$ and $y = a^t_2$, where $0 < t_1 + t_2 \\le m$.",
         "question": "Is $a^{m+t_1+t_2}b^mA^m$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
-      "q21": {
+      "case2": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}$ and $y = b^{t_3}$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 2:</b> $vxy$ is some a's followed by some b's. Let $v = a^{t_1}$ and $y = b^{t_3}$.",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^{m+t_1}b^{m + t_3}A^m$",
         "choices": ["$a^{m+t_1}b^{m + t_3}A^m$", "$a^{m+t_1 + t_2}b^{m + t_3}A^m$", "$a^{m}b^{m + t_1 + t_3}A^m$"]
       },
-      "q22": {
+      "absnopump": {
         "type": "select",
-        "description":"let $w=a^mb^mc^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 2:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}$ and $y = b^{t_3}$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 2:</b> $vxy$ is some a's followed by some b's. Let $v = a^{t_1}$ and $y = b^{t_3}$.",
         "question": "Is $a^{m+t_1}b^{m + t_3}A^m$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
-      "q23": {
+      "case2a": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 3:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}$ and $y = a^{t_2}b^{t_3}$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 2a:</b> $vxy$ is some a's followed by some b's. This time, let $v = a^{t_1}$ and $y = a^{t_2}b^{t_3}$.",
         "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
         "answer": "$a^{m-t_1-t_2}b^{m - t_3}A^m$",
         "choices": ["$a^{m-t_1-t_2}b^{m - t_3}A^m$", "$a^{m-t_1 - t_2}b^{m + t_3}A^m$", "$a^{m}b^{m - t_1 - t_3}A^m$"]
       },
-      "q24": {
+      "againabsnopump": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 3:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}$ and $y = a^{t_2}b^{t_3}$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 2a:</b> $vxy$ is some a's followed by some b's. This time, let $v = a^{t_1}$ and $y = a^{t_2}b^{t_3}$.",
         "question": "Is $a^{m-t_1-t_2}b^{m - t_3}A^m$ $\\in L$?",
         "answer": "No",
-        "choices": ["No", "Yes"]
+        "choices": ["No", "Yes"],
+        "correctFeedback": ["We can use a similar argument for the subcase where $vxy$ is some a's followed by some b's, let $v = a^{t_1}b^{t_2}$ and $y = b^{t_3}$."]
       },
-      "q25": {
+      "case3": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 4:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}b^{t_2}$ and $y = b^{t_3}$",
-        "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
-        "answer": "$a^{m-t_1}b^{m - t_2 - t_3}A^m$",
-        "choices": ["$a^{m-t_1}b^{m - t_2 - t_3}A^m$", "$a^{m-t_1 - t_2}b^{m - t_3}A^m$", "$a^{m}b^{m - t_2 - t_3}A^m$"]
-      },
-      "q26": {
-        "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 4:}$ $vxy$ is some $a$'s followed by some $b$'s, let $v = a^{t_1}b^{t_2}$ and $y = b^{t_3}$",
-        "question": "Is $a^{m-t_1}b^{m - t_2 - t_3}A^m$ $\\in L$?",
-        "answer": "No",
-        "choices": ["No", "Yes"]
-      },
-      "q27": {
-        "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $b$'s only, let $v = b^{t_1}$ and $y = b^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 3:</b> $vxy$ is b's only.",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^mb^{m+t_1+t_2}A^m$",
         "choices": ["$a^mb^{m+t_1+t_2}A^m$", "$a^mb^{m+t_2}A^m$", "$a^mb^{m+t_1}A^m$"]
       },
-      "q28": {
+      "bsnopump": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 5:}$ $vxy$ is $b$'s only, let $v = b^{t_1}$ and $y = b^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 3:</b> $vxy$ is b's only.",
         "question": "Is $a^mb^{m+t_1+t_2}A^m$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
-      "q29": {
+      "case4": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 6:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}$ and $y = A^{t_3}$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 4:</b> $vxy$ is some b's followed by some A's. Let $v = b^{t_1}$ and $y = A^{t_3}$.",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^mb^{m+t_1}A^{m + t_3}$",
         "choices": ["$a^mb^{m+t_1}A^{m + t_3}$", "$a^mb^{m+t_1 + t_3}A^{m}$", "$a^mb^{m}A^{m + t_1 + t_3}$"]
       },
-      "q30": {
+      "bAsnopump": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 6:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}$ and $y = A^{t_3}$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 4:</b> $vxy$ is some b's followed by some A's. Let $v = b^{t_1}$ and $y = A^{t_3}$.",
         "question": "Is $a^mb^{m+t_1}A^{m + t_3}$ $\\in L$?",
         "answer": "No",
         "choices": ["No", "Yes"]
       },
-      "q31": {
+      "case4a": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 7:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}$ and $y = b^{t_2}A^{t_3}$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 4a:</b> $vxy$ is some b's followed by some A's. This time, let $v = b^{t_1}$ and $y = b^{t_2}A^{t_3}$.",
         "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
         "answer": "$a^mb^{m - t_1 - t_2}A^{m - t_3}$",
         "choices": ["$a^mb^{m - t_1 - t_2}A^{m - t_3}$", "$a^mb^{m+t_1 - t_2}A^{m-t_3}$", "$a^mb^{m}A^{m - t_3}$"]
       },
-      "q32": {
+      "againbAsnopump": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 7:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}$ and $y = b^{t_2}A^{t_3}$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 4a:</b> $vxy$ is some a's followed by some b's. This time, let $v = a^{t_1}$ and $y = a^{t_2}b^{t_3}$.",
         "question": "Is $a^mb^{m - t_1 - t_2}A^{m - t_3}$ $\\in L$?",
         "answer": "No",
-        "choices": ["No", "Yes"]
+        "choices": ["No", "Yes"],
+        "correctFeedback": ["We can use a similar argument for the subcase where $vxy$ is some b's followed by some A's, let $v = b^{t_1}b^{t_2}$ and $y = A^{t_3}$."]
       },
-      "q33": {
+      "case5": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 8:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}A^{t_2}$ and $y = A^{t_3}$",
-        "question": "If $i = 0$ what is the value of $uv^0xy^0z$?",
-        "answer": "$a^mb^{m - t_1}A^{m t_2 - t_3}$",
-        "choices": ["$a^mb^{m - t_1}A^{m t_2 - t_3}$", "$a^mb^{m+ t_1}A^{m -t_2-t_3}$", "$a^mb^{m}A^{m -t_2 - t_3}$"]
-      },
-      "q34": {
-        "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 8:}$ $vxy$ is some $b$'s followed by some $A$'s, let $v = b^{t_1}A^{t_2}$ and $y = A^{t_3}$",
-        "question": "Is $a^mb^{m - t_1}A^{m t_2 - t_3}$ $\\in L$?",
-        "answer": "No",
-        "choices": ["No", "Yes"]
-      },
-      "q35": {
-        "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 9:}$ $vxy$ is $A$'s only, let $v = A^{t_1}$ and $y = A^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 5:</b> $vxy$ is A's only.",
         "question": "If $i = 2$ what is the value of $uv^2xy^2z$?",
         "answer": "$a^mb^mA^{m+t_1+t_2}$",
         "choices": ["$a^mb^mA^{m+t_1+t_2}$", "$a^mb^mA^{m+t_2}$", "$a^mb^mA^{m+t_1}$"]
       },
-      "q36": {
+      "Asnopump": {
         "type": "select",
-        "description":"let $w=a^mb^mA^m$ we need to partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$<br/>$\\textbf{Case 9:}$ $vxy$ is $A$'s only, let $v = A^{t_1}$ and $y = A^{t_2}$ where $0 < t_1 + t_2 \\le m$",
+        "description":"Now we need to consider each of the five cases in turn, and show that none of them permit a decomposition of $w$ that can be pumped.<br/></br>Let $w = a^mb^mA^m$. The pumping lemma requires that for any CFL, there is a partition $w$ to $uvxyz$ such that $|vxy| \\le m$, $|vy| \\geq 1$, $uv^ixy^iz \\in L$ for all $i \\ge 0$.<br/><b>Case 5:</b> $vxy$ is A's only.",
         "question": "Is $a^mb^mA^{m+t_1+t_2}$ $\\in L$?",
-        "answer": "No",
-        "choices": ["No", "Yes"]
-      },      
-      "q37": {
-        "type": "select",
-        "description":"Thus, there is no breakdown of $w$ into $uvxyz$ such that $|vy|\\ge 1$, $|vxy|\\le m$ and for all $i\\ge 0$, $uv^ixy^iz$ is in $L$",
-        "question": "Is L CFL?",
         "answer": "No",
         "choices": ["No", "Yes"]
       }

@@ -16,38 +16,33 @@ $(document).ready(function () {
   av.step();
 
   // Frame 3
-  av.umsg(Frames.addQuestion("q13"));
+  av.umsg(Frames.addQuestion("capability"));
   av.step();
 
   // Frame 4
-  av.umsg(Frames.addQuestion("q14"));
+  av.umsg(Frames.addQuestion("read"));
   av.step();
 
   // Frame 5
-  av.umsg(Frames.addQuestion("q15"));
+  av.umsg(Frames.addQuestion("tape"));
   var tempTape = av.ds.tape(["#", "#", "#", "#", "#", "#", "#", "#"], 50, 70, "both");
   av.step();
 
   // Frame 6
-  av.umsg(Frames.addQuestion("q16"));
+  av.umsg(Frames.addQuestion("squares"));
   av.step();
 
   // Frame 7
-  av.umsg("The symbols that can appear on the tape are an important part of the definition for a given Turing machine.</br></br>The alphabet of the machine is these symbols that may appear in the input. In addition to the symbols of the alphabet, there is always the blank symbol.");
+  av.umsg("The symbols that can appear on the tape are an important part of the definition for a given Turing machine.</br></br>The alphabet of the machine is these symbols that may appear in the input. In addition to the symbols of the alphabet, there is always the blank symbol. Since a blank is hard to seen when we try to talk about input, we don't actually just leave the squares blank. Instead, we use # to represent a blank square on the tape.");
   tempTape.hide();
   var tape2 = av.ds.tape(["#", "a", "a", "a", "a", "#", "#", "#"], 50, 90, "both");
   av.step();
 
   // Frame 8
-  av.umsg("When talking about strings, since a blank is hard to see, we will use # to represent a blank tape square. Note that including # in the alphabet is for convenience only. We want to be able to read our specifications without being confused.");
+  av.umsg(Frames.addQuestion("blank"));
   av.step();
 
   // Frame 9
-  av.umsg(Frames.addQuestion("q20"));
-  av.step();
-
-
-  // Frame 10
   av.umsg("A Turing machine is defined as follows. It has a one-dimensional tape, divided into squares. This tape extends infinitely to the left and to the right.<br/>Each square can store one character.<br/>The machine has a single I/O head that at any instant in time is \"on\" one of the squares.");
   tape2.hide();
   var tape = av.ds.tape(["#", "a", "a", "a", "a", "#", "#", "#"], 50, 90, "both");
@@ -56,20 +51,20 @@ $(document).ready(function () {
   tape.highlightPosition(1);
   av.step();
 
-  // Frame 11
-  av.umsg(Frames.addQuestion("q22"));
+  // Frame 10
+  av.umsg(Frames.addQuestion("control"));
   var url = "../../../AV/OpenFLAP/machines/TM/TMexample1.jff";
   var tm = new av.ds.TM({width: 400, height: 100, left: 50, top: 270, url: url});
   av.step();
 
-  // Frame 12
-  av.umsg(Frames.addQuestion("q23"));
+  // Frame 11
+  av.umsg(Frames.addQuestion("start"));
   var c1 = av.label("q0", {left: 355 + xStart, top: 140 + yStart});
   var c2 = av.label("q1", {left: 355 + xStart, top: 170 + yStart});
   av.step();
 
-  // Frame 13
-  av.umsg(Frames.addQuestion("q24"));
+  // Frame 12
+  av.umsg(Frames.addQuestion("first"));
   var p4 = av.g.line(420 + xStart, 190 + yStart, 390 + xStart, 170 + yStart, {"arrow-end": "classic-wide-long"});
   var g = av.g.set(); // A set to hold the tape head graphical objects
   var node = tm.nodes();
@@ -79,17 +74,26 @@ $(document).ready(function () {
   node[0].highlight();
   av.step();
 
-  // Frame 14
-  av.umsg(Frames.addQuestion("q25"));
+  // Frame 13
+  av.umsg(Frames.addQuestion("erase"));
   av.step();
 
-  // Frame 15
-  av.umsg(Frames.addQuestion("q26"));
+  // Frame 14
+  av.umsg(Frames.addQuestion("move"));
   tape.setCurrentValue("#");
   av.step();
 
+  // Frame 15
+  av.umsg(Frames.addQuestion("a2"));
+  tape.moveRight();
+  g.translateX(30);
+  c1.translateX(30);
+  c2.translateX(30);
+  av.step();
+
   // Frame 16
-  av.umsg(Frames.addQuestion("q27"));
+  av.umsg(Frames.addQuestion("a3"));
+  tape.setCurrentValue("#");
   tape.moveRight();
   g.translateX(30);
   c1.translateX(30);
@@ -97,7 +101,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 17
-  av.umsg(Frames.addQuestion("q28"));
+  av.umsg(Frames.addQuestion("a4"));
   tape.setCurrentValue("#");
   tape.moveRight();
   g.translateX(30);
@@ -106,7 +110,7 @@ $(document).ready(function () {
   av.step();
 
   // Frame 18
-  av.umsg(Frames.addQuestion("q29"));
+  av.umsg(Frames.addQuestion("end"));
   tape.setCurrentValue("#");
   tape.moveRight();
   g.translateX(30);
@@ -115,151 +119,140 @@ $(document).ready(function () {
   av.step();
 
   // Frame 19
-  av.umsg(Frames.addQuestion("q30"));
-  tape.setCurrentValue("#");
-  tape.moveRight();
-  g.translateX(30);
-  c1.translateX(30);
-  c2.translateX(30);
-  av.step();
-
-  // Frame 20
-  av.umsg(Frames.addQuestion("q31"));
+  av.umsg(Frames.addQuestion("newstate"));
   p4.hide();
   var lastArrow = av.g.line(540 + xStart, 190 + yStart, 510 + xStart, 190 + yStart, {"arrow-end": "classic-wide-long"});
   av.step();
 
-  // Frame 21
-  av.umsg("Since $q_1$ is a member of the Final State set $F$, the machine immediately halts.");
+  // Frame 20
+  av.umsg("A Turing Machine will halt whenever it reaches a situation where there is no transition that will allow it to continue (that is, the current state has no transition for the current symbol on the tape). Our convention will be that any state marked as final will have no transitions, and so the machine will always halt immediately upon entering a final state. In this example, since $q_1$ is a member of the Final State set $F$, it has no transitions. Thus, the machine immediately halts.");
   node[0].unhighlight();
   node[1].highlight();
   av.step();
 
-  //frame 34
-  av.umsg(Frames.addQuestion("q34"));
+  // Frame 21
+  av.umsg(Frames.addQuestion("definition"));
   lastArrow.hide();
   g.hide();
   c1.hide();
   c2.hide();
   av.step();
 
-  //frame 35
-  av.umsg(Frames.addQuestion("q35"));
+  // Frame 22
+  av.umsg(Frames.addQuestion("F"));
   av.step();
 
-  //frame 36
-  av.umsg(Frames.addQuestion("q36"));
+  // Frame 23
+  av.umsg(Frames.addQuestion("q1"));
   av.step();
 
-  //frame 37
-  av.umsg(Frames.addQuestion("q37"));
+  // Frame 24
+  av.umsg(Frames.addQuestion("delta"));
   av.step();
 
-  //frame 38
-  av.umsg(Frames.addQuestion("q38"));
+  // Frame 25
+  av.umsg(Frames.addQuestion("partin"));
   av.step();
 
-  //frame 39
-  av.umsg(Frames.addQuestion("q39"));
+  // Frame 26
+  av.umsg(Frames.addQuestion("partout"));
   av.step();
 
-  //frame 40
-  av.umsg(Frames.addQuestion("q40"));
+  // Frame 27
+  av.umsg(Frames.addQuestion("q0"));
   av.step();
 
-  //frame 41
-  av.umsg(Frames.addQuestion("q41"));
+  // Frame 28
+  av.umsg(Frames.addQuestion("sigma"));
   av.step();
 
-  //frame 42
-  av.umsg(Frames.addQuestion("q42"));
+  // Frame 29
+  av.umsg(Frames.addQuestion("sigma2"));
   av.step();
 
-  //frame 43
-  av.umsg(Frames.addQuestion("q43"));
+  // Frame 30
+  av.umsg(Frames.addQuestion("gamma"));
   av.step();
 
-  //frame 44
-  av.umsg(Frames.addQuestion("q44"));
+  // Frame 31
+  av.umsg(Frames.addQuestion("gamma2"));
   av.step();
 
-  //frame 45
-  av.umsg("Turing machines operate as follows: For $q\\in Q$, $a \\in \\Sigma$ and $\\delta(q,a)=(p,b,m)$, when in state $q$ and scanning $a$, enter state $p$, replace $a$ with $b$, and either move the head left or right, or leave it in place ($m$ is $L$, $R$, or $S$, respectively).");
+  // Frame 32
+  av.umsg("Let's summarize what we have learned so far. Turing machines operate as follows: For $q\\in Q$, $a \\in \\Sigma$ and $\\delta(q,a)=(p,b,m)$, when in state $q$ and scanning $a$, enter state $p$, replace $a$ with $b$, and either move the head left or right, or leave it in place ($m$ is $L$, $R$, or $S$, respectively).");
   tm.hide();
   tape.hide();
   av.step();
 
-  //frame 46
-  av.umsg("To do computation, we have to have some conventions about starting and ending the process. The machine stops immediately if (1) it enters any final state, or (2) it is in a state and scans a character for which there is no transition. (Note that there are many ways to define Turing Machines, and some definitions require an explicit reject state. We do not.)");
+  // Frame 33
+  av.umsg("Turing machines are pretty flexible, and leave us with some decisions to make. To do computation, we have to have some conventions about starting and ending the process. (Note that there are many ways to define Turing Machines, with lots of minor variations related to the tape, the halt conditions, and the conventions around acceptance and computation.)<br/><br/>We previously said that the machine halts immediately if (1) it enters any final state, or (2) it is in a state and scans a character for which there is no transition. (Actually, these are the same thing -- we merely agreed to a convention that a final state will have no transitions.)");
   av.step();
 
-  //frame 47
-  av.umsg("However, this specification is missing something important. Regardless of what input you give it on the tape, it will execute something and eventually halt. But how do we know if the machine has determined that the string is in the language or not?");
+  // Frame 34
+  av.umsg("However, we are still missing something important. Regardless of what input you give it on the tape, a machine will execute something. But how do we know if the machine has determined that the string is in the language or not? In a DFA or NFA, the machine started at the first input symbol, and inevitably marched to the end of the string. It then made a decision depending on whether the machine was in a final state or not. The Turing Machine is not as simple.<br/><br/>For computation to make sense, we must adopt some conventions. First, we only care about what happens if the machine starts with the head scanning the first non-blank character.");
   av.step();
 
-  //frame 48
-  av.umsg("However, this specification is missing something important. Regardless of what input you give it on the tape, it will execute something and eventually halt. But how do we know if the machine has determined that the string is in the language or not?<br/><br/>The answer is that we use a convention. First, we only care about what happens when the machine starts with the head scanning the first non-blank character.");
+  // Frame 35
+  av.umsg("However, we are still missing something important. Regardless of what input you give it on the tape, a machine will execute something. But how do we know if the machine has determined that the string is in the language or not? In a DFA or NFA, the machine started at the first input symbol, and inevitably marched to the end of the string. It then made a decision depending on whether the machine was in a final state or not. The Turing Machine is not as simple.<br/><br/>For computation to make sense, we must adopt some conventions. First, we only care about what happens if the machine starts with the head scanning the first non-blank character.<br/>Second, we use the convention that the string is accepted as being in the language if the machine halts in a Final State, and the string is rejected if the machine halts by otherwise following an undefined transition.");
   av.step();
 
-  //frame 49
-  av.umsg("However, this specification is missing something important. Regardless of what input you give it on the tape, it will execute something and eventually halt. But how do we know if the machine has determined that the string is in the language or not?<br/><br/>The answer is that we use a convention. First, we only care about what happens when the machine starts with the head scanning the first non-blank character.<br/>Second, we use the convention that the string is accepted as being in the language if the machine halts in a Final State, and the string is rejected if the machine halts by following an undefined transition.");
+  // Frame 36
+  av.umsg(Frames.addQuestion("reg"));
   av.step();
 
-  //frame 50
-  av.umsg(Frames.addQuestion("q50"));
+  // Frame 37
+  av.umsg(Frames.addQuestion("nochange"));
   av.step();
 
-  //frame 51
-  av.umsg(Frames.addQuestion("q51"));
-  av.step();
-
-  //frame 52
-  av.umsg("Here is the graphical view of the machine.");
+  // Frame 38
+  av.umsg(Frames.addQuestion("abca"));
   var url = "../../../AV/OpenFLAP/machines/TM/TMabc.jff";
-  var graph1 = av.ds.TM({left: 0, top: 140, width: 450, height: 325, url: url});
+  var graph1 = av.ds.TM({left: 0, top: 80, width: 450, height: 325, url: url});
+  var complicatedTape = av.ds.tape(["#", "a", "b", "c", "#", "#", "#"], 100, 50, "both");
   av.step();
 
-  //frame 53
-  av.umsg(Frames.addQuestion("q53"));
-  var complicatedTape = av.ds.tape(["#", "a", "b", "c", "#", "#", "#"], 100, 90, "both");
-  av.step();
-
-  //frame 54
-  av.umsg(Frames.addQuestion("q54"));
+  // Frame 39
+  av.umsg(Frames.addQuestion("abcb"));
   complicatedTape.moveRight();
   av.step();
 
-  //frame 55
-  av.umsg(Frames.addQuestion("q55"));
+  // Frame 40
+  av.umsg(Frames.addQuestion("abcc"));
   complicatedTape.moveRight();
   av.step();
 
-  //frame 56
-  av.umsg(Frames.addQuestion("q56"));
+  // Frame 41
+  av.umsg(Frames.addQuestion("abcend"));
   complicatedTape.moveRight();
   av.step();
 
-  //frame 57
-  av.umsg(Frames.addQuestion("q57"));
+  // Frame 42
+  av.umsg(Frames.addQuestion("abcfinal"));
   av.step();
 
-  //frame 58
-  av.umsg(Frames.addQuestion("q58"));
+  // Frame 43
+  av.umsg(Frames.addQuestion("abaca"));
+  complicatedTape.hide();
+  var complicated2Tape = av.ds.tape(["#", "a", "b", "a", "c", "#", "#"], 100, 50, "both");
   av.step();
 
-  //frame 59
-  av.umsg(Frames.addQuestion("q59"));
+  // Frame 44
+  av.umsg(Frames.addQuestion("abacb"));
+  complicated2Tape.moveRight();
   av.step();
 
-  //frame 60
-  av.umsg(Frames.addQuestion("q60"));
+  // Frame 45
+  av.umsg(Frames.addQuestion("abaca2"));
+  complicated2Tape.moveRight();
   av.step();
 
-  //frame 61
-  av.umsg(Frames.addQuestion("q61"));
+  // Frame 46
+  av.umsg(Frames.addQuestion("fail"));
   av.step();
 
-  //frame 62
+  // Frame 47
   av.umsg("Congratulations! Frameset completed.");
+  complicated2Tape.hide();
+  graph1.hide();
   av.recorded();
 });

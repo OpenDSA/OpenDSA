@@ -5,7 +5,7 @@
   "totalFalseCases": 5,
   "containLetters": ["a", "b"],
   "randomStringLength": [0, 15],
-  "description": "Construct the PDA that accepts L($\\{wcw^R \\mid w \\in \\{a, b\\}^*\\}$)",
+  "description": "Construct the PDA that accepts<br/>L($\\{wcw^R \\mid w \\in \\{a, b\\}^*\\}$)",
   "testCases": [{
     "": false,
     "ShowTestCase":true

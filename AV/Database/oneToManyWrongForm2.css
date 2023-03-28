@@ -1,0 +1,37 @@
+#oneToManyWrongForm2{
+  height: 600px;
+  width: 1100px;
+  }
+  .jsavverticalarray .jsavnode {
+    line-height: 30px !important;
+    min-width: 80px !important;
+    max-width: 300px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+}
+.jsavmatrix.jsavmatrixtable {
+
+line-height: 30px !important;
+    min-width: 80px !important;
+    max-width: 600px !important;
+    min-height: 30px !important;
+    max-height: 300px !important;
+}
+.jsavoutput.jsavline {
+  margin-top: -5px;
+  height: 80px;
+  width: 800px;
+}
+.jsavline.element.style {
+  color: red;
+}
+.other{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.jsavhorizontalarray .jsavnode {
+  line-height: 30px !important;
+  min-width: 90px !important;
+  max-width: 100px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}

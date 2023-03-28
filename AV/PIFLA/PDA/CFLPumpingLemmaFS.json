@@ -1,21 +1,22 @@
 {
   "translations": {
     "en": {
-      "q2": {
+      "CFL": {
         "type": "select",
         "description": "For regular languages, we developed a pumping lemma that can help us prove that a language is not regular. While we can't use the same pumping lemma for CFLs, we will see that there is a similar argument to be made that will lead to a CFL pumping lemma that we can make use of to prove certain languages are not CFL.",
         "question": "How can we determine if a language is CFL?",
         "answer": ["Write CFG", "Build a PDA"],
-        "choices": ["Write CFG", "Build a PDA", "Prove that the language is not Regular"]
+        "choices": ["Write CFG", "Build a PDA", "Prove that the language is not Regular"],
+        "correctFeedback": ["Just because a language is not regular, that does not necessarily mean that it is CFL."]
       },
-      "q3": {
+      "notreg": {
         "type": "select",
         "description": "For regular languages, we developed a pumping lemma that can help us prove that a language is not regular. While we can't use the same pumping lemma for CFLs, we will see that there is a similar argument to be made that will lead to a CFL pumping lemma that we can make use of to prove certain languages are not CFL.",
         "question": "How can we prove that a language is not Regular?",
-        "answer": ["Use the Pumping Lemma proof"],
-        "choices": ["Use the Pumping Lemma proof", "Write a CFG for the language"]
+        "answer": ["Use the Pumping Lemma proof", "Use the right kind of closure property argument"],
+        "choices": ["Use the Pumping Lemma proof", "Write a CFG for the language", "Use the right kind of closure property argument"]
       },
-      "q4": {
+      "anbncj": {
         "type": "select",
         "description": "For regular languages, we developed a pumping lemma that can help us prove that a language is not regular. While we can't use the same pumping lemma for CFLs, we will see that there is a similar argument to be made that will lead to a CFL pumping lemma that we can make use of to prove certain languages are not CFL.",
         "question": "Suppose that we have $L = \\{a^nb^nc^j \\mid 0 < n\\le j\\}$. Is $L$ regular?",
@@ -23,7 +24,7 @@
         "choices": ["Yes", "No"],
         "correctFeedback": ["For intuition, we need memory to keep track of the number of a's that we see when processing the b's. More specifically, we can easily use the regular languages pumping lemma to show that we can't pump the number of a's."]
       },
-      "q4a": {
+      "anbncjcfl": {
         "type": "select",
         "description": "For regular languages, we developed a pumping lemma that can help us prove that a language is not regular. While we can't use the same pumping lemma for CFLs, we will see that there is a similar argument to be made that will lead to a CFL pumping lemma that we can make use of to prove certain languages are not CFL.",
         "question": "Suppose that we have $L = \\{a^nb^nc^j \\mid 0 < n\\le j\\}$. Do you think that $L$ is a CFL?",
@@ -31,7 +32,7 @@
         "choices": ["Yes", "No"],
         "correctFeedback": ["Here is some intuition: There are constraints on three things (a's, b's, and c's). While a stack can be used to enforce the relationship between any two, it is hard to see how it will help with the third."]
       },
-      "q5": {
+      "anbjanbj": {
         "type": "select",
         "description": "For regular languages, we developed a pumping lemma that can help us prove that a language is not regular. While we can't use the same pumping lemma for CFLs, we will see that there is a similar argument to be made that will lead to a CFL pumping lemma that we can make use of to prove certain languages are not CFL.",
         "question": "Suppose that we have<br/>$L = \\{a^nb^ja^nb^j \\mid n>0, j>0\\}$. Is $L$ a CFL?",
@@ -39,57 +40,50 @@
         "choices": ["Yes", "No"],
         "correctFeedback": ["Intuition: After we push a's then b's onto the stack, we need to pop the a's from the buttom of the stack. This is impossible."]
       },
-      "q8": {
+      "notregPL": {
         "type": "select",
         "description": "While our intuition is helpful, it is not a proof. Similar to Regular Languages, to prove that a language is not CFL we can use a Pumping Lemma.",
         "question": "Do you think that the same Pumping Lemma proof for regular languages can be used for CFL?",
         "answer": "No",
         "choices": ["Yes", "No"],
-        "correctFeedback": ["Clearly not, because we used the regular languages pumping lemma to prove some languages are not regular that we know are CFL."]
+        "correctFeedback": ["Remember that we used the regular languages pumping lemma to prove some languages are not regular that we know are CFL."]
       },
-      "q9": {
+      "m": {
         "type": "select",
-        "description": "Let us recall the PL for regular languages. Let $L$ be a regular language, then there is a constant $m$ such that $w \\in L$, $|w|\\ge m$, $w=xyz$ such that<br/>$|xy| \\le m$<br/>$|y| \\ge 1$<br/>for all $i\\ge 0, xy^iz \\in L$",
+        "description": "Recall the pumping lemma for regular languages. Let $L$ be a regular language, then there is a constant $m$ such that $w \\in L$, $|w|\\ge m$, $w=xyz$ such that<br/>$|xy| \\le m$<br/>$|y| \\ge 1$<br/>for all $i\\ge 0, xy^iz \\in L$",
         "question": "$m$ represents some number of states in a proposed NFA that accepts $L$ if it is a Regular Language.",
         "answer": "True",
         "choices": []
       },
-      "q10": {
+      "pumpi": {
         "type": "select",
-        "description": "Let us recall the PL for regular languages. Let $L$ be a regular language, then there is a constant $m$ such that $w \\in L$, $|w|\\ge m$, $w=xyz$ such that<br/>$|xy| \\le m$<br/>$|y| \\ge 1$<br/>for all $i\\ge 0, xy^iz \\in L$",
-        "question": "For all $i\\ge 0, xy^iz \\in L$, means that if $L$ is regular, then $y$ can pumped any number of times and the resulting strings are in $L$",
+        "description": "Let us recall the PL for regular languages. Let $L$ be a regular language, then there is a constant $m$ such that $w \\in L$, $|w|\\ge m$, $w=xyz$ such that<br/>$|xy| \\le m$<br/>$|y| \\ge 1$<br/>for all $i\\ge 0, xy^iz \\in L$.",
+        "question": "For all $i\\ge 0, xy^iz \\in L$, means that if $L$ is regular, then $y$ can pumped any number of times and the resulting strings are in $L$.",
         "answer": "True",
         "choices": []
       },
-      "q11": {
+      "finite": {
         "type": "select",
         "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:",
         "question": "What if $L$ is finite?",
         "answer": "$L$ is regular",
-        "choices": ["$L$ is regular", "$L$ is CFL"]
+        "choices": ["$L$ is regular", "$L$ is a CFL, but might not be regular"],
+        "correctFeedback": ["We already proved that all finite languages are regular."]
       },
-      "q12": {
+      "diffPL": {
         "type": "select",
         "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:",
-        "question": "What is the difference between PL for Regular languages and PL for CFL until now?",
+        "question": "What is the difference between PL for regular languages and PL for CFL until in what we have seen so far?",
         "answer": "In PL for Regular Languages, $w$ is decomposed into $xyz$ but in PL for CFL $w$ is decomposed into $uvxyz$",
         "choices": ["In PL for Regular Languages, $w$ is decomposed into $xyz$ but in PL for CFL $w$ is decomposed into $uvxyz$", "They are the same"]
       },
-      "q14": {
+      "2pump": {
         "type": "select",
-        "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:<br/>$|vxy| \\le m$ , (limit on size of substring)<br/>$|vy| \\ge 1$, ($v$ and $y$ not both empty)<br/>For all $i \\ge 0$, $uv^ixy^iz \\in L$",
-        "question": "For all $i \\ge 0$, $uv^ixy^iz \\in L$ means that in CFLs there should be 2 pumps, for $v$ and $y$.",
-        "answer": "True",
-        "choices": []
-      },
-      "q15": {
-        "type": "select",
-        "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:<br/>$|vxy| \\le m$ , (limit on size of substring)<br/>$|vy| \\ge 1$, ($v$ and $y$ not both empty)<br/>For all $i \\ge 0$, $uv^ixy^iz \\in L$",
-        "question": "Thinking about the stack in PDAs, we always need two loops (pumps) one of them to push letters onto the stack and the other pump to empty the stack.",
+        "description": "$\\textbf{Pumping Lemma for CFL’s}$<br/>Let L be any infinite CFL. Then there is a constant $m$ depending only on $L$, such that for every string $w$ in $L$, with $|w|\\ge m$, we may partition $w=uvxyz$ such that:<br/>$|vxy| \\le m$ , (limit on size of substring)<br/>$|vy| \\ge 1$, ($v$ and $y$ not both empty)<br/>For all $i \\ge 0$, $uv^ixy^iz \\in L$.",
+        "question": "For all $i \\ge 0$, $uv^ixy^iz \\in L$ means that in CFLs there should be 2 equal pumps, one for $v$ and one for $y$.",
         "answer": "True",
         "choices": []
       }
-      
     }
   }
 }

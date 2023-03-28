@@ -15,19 +15,6 @@
 Combining Turing Machines
 =========================
 
-.. slide:: Computation
-
-   We can easily demonstate simple computation on unary
-   representation.
-
-   .. inlineav:: TMPlusoneCON ss
-      :long_name: Turing Machine Replace
-      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMPlusoneCON.css
-      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMPlusoneCON.js
-      :align: center
-      :output: show
-
-
 .. slide:: An Important TM
 
    .. inlineav:: TManbncnCON ss
