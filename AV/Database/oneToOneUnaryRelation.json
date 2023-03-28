@@ -1,0 +1,17 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "This  is an <span style='color:blue;'>Employee entity</span> with <span style='color:red;'>unary 1:1</span> relationship <span style='color:red;'>[Married from]</span> with <span style='color:blue;'>itself</span> </br><span style='color:blue;'>Each employee</span> <span style='color:red;'>can mary one</span>  and only one of <span style='color:blue;'> his colleagues</span>",
+      "sc2": "<span style='color:blue;'>New column</span> will be added to the <span style='color:blue;'>Employee</span> entity to represent the relationship <span style='color:red;'>[Married from]</span>  relationship ",
+      "sc3":"To avoid confusion between the Fks and PKs the FK name (Eid) will be substituted with new name (Partner) Note: 1-Partner field is the same as E-id and should be of the same data type 2-the value of partner field must be one of the existing employees in the coulmn of the PK E-ID" ,
+      "sc4": "Assume that Employee Ahmed with <span style='color:blue;'>$E-id=5$</span> <span style='color:red;'>Married from</span> Employee mona with <span style='color:red;'>$E-id=3$</span>  How to physically implement this relation using <span style='color:blue;'>Partner</span> forigen Key",
+      "sc5": "Assume that Employee Adel with <span style='color:blue;'>$E-id=2$</span> <span style='color:red;'>Married from</span> Employee Layla with <span style='color:red;'>$E-id=9$</span>  How to physically implement this relation using <span style='color:blue;'>Partner</span> forigen Key",
+      "sc6": "Employee <span style='color:red;'>ahmed</span> with $E-id=$<span style='color:blue;'>$5$</span> works at project <span style='color:red;'>Plumbing</span> with project id $P-id=$<span style='color:blue;'>$B$</span>",
+      "sc7": "Employee <span style='color:red;'>morad</span> with $E-id=4$ works at project <span style='color:red;'>sewage</span> with project id $P-id=C$",
+      "sc8": "Employee <span style='color:red;'>walid</span> with $E-id=6$ works at project <span style='color:red;'>Plumbing</span> with project id $P-id=B$",
+      "sc9": "Employee <span style='color:red;'>adel</span> with $E-id=2$ works at project <span style='color:red;'>sewage</span> with project id $P-id=C$",
+      "sc10": "Employee <span style='color:red;'>ali</span> with $E-id=1$ works at project <span style='color:red;'>Plumbing</span> with project id $P-id=B$",
+      "sc11": "Employee <span style='color:red;'>khaled</span> with $E-id=3$ works at project <span style='color:red;'> electricity </span>with project id $P-id=A$"
+    }
+  }
+}
