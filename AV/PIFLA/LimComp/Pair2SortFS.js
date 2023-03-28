@@ -16,8 +16,8 @@ $(document).ready(function(){
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
-  //frame 4
-  av.umsg("Here is a visual explanation of the Sorting Problem. We Have:" + "<br><br><b><u>Input:</u></b>"+"An unsorted array of records: R1, R2, ..., Rn with associated key values: K1, K2, ..., kn");
+  // Frame 1
+  av.umsg("Here is a visual explanation of the Sorting Problem. We Have:<br><br><b><u>Input:</u></b> An unsorted array of records: R1, R2, ..., Rn with associated key values: K1, K2, ..., kn.");
   //left array
   var arr;
   var arr_values = [];
@@ -27,16 +27,16 @@ $(document).ready(function(){
   //rectangle
   var rect = av.g.rect(210, 205, 75, 50);
   arr = av.ds.array(arr_values, {left: 0, top: 200, indexed: true});
-  var line1 = av.g.line(170, 230, 210, 230);
-  var rectLabel = av.label("Sorting" + "<br>Problem",
+  var line1 = av.g.line(169, 230, 208, 230, {"arrow-end": "classic-wide-long"});
+  var rectLabel = av.label("Sorting" + "<br>Algorithm",
                            {top: 195, left: 220});
-  var label1 = av.label("input", {top: 190, left: 172});
+  var label1 = av.label("input", {top: 175, left: 20});
   av.displayInit();
 
-  //frame 5
-  av.umsg("Here is a visual explanation about Sorting Problem. We Have:" + "<br><br><b><u>Input:</u></b>"+"An unsorted array of records: R1, R2, ..., Rn with associated key values: K1, K2, ..., kn" + "<br><br><b><u>Output:</u></b>" + "the permutation Ks1, Ks2, ..., Ksn such that Ks1 <= Ks2 <= ... <= Ksn.");
-  var line2 = av.g.line(285, 230, 335, 230);
-  var label2 =  av.label("output", {top: 190, left: 290});
+  // Frame 2
+  av.umsg("Here is a visual explanation of the Sorting Problem. We Have:<br><br><b><u>Input:</u></b> An unsorted array of records: R1, R2, ..., Rn with associated key values: K1, K2, ..., kn.<br><br><b><u>Output:</u></b> The permutation Ks1, Ks2, ..., Ksn such that Ks1 $\\leq$ Ks2 $\\leq$ ... $\\leq$ Ksn.");
+  var line2 = av.g.line(284, 230, 333, 230, {"arrow-end": "classic-wide-long"});
+  var label2 =  av.label("output", {top: 175, left: 350});
   var arr_values_out = [];
   //right array
   for (var i = 0; i < 6; i++) {
@@ -45,8 +45,8 @@ $(document).ready(function(){
   var arr2 = av.ds.array(arr_values_out, {left: 335, top: 200, indexed: true});
   av.step();
 
-  //frame 7
-  av.umsg(Frames.addQuestion("q01"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("sortoutput"));
   var count = 0;
   while (count < 6) {
     var value = Math.round(Math.random() * 5);
@@ -70,12 +70,12 @@ $(document).ready(function(){
   label2.hide();
   rectLabel.hide();
 
-  //frame 8
+  // Frame 4
   av.umsg("When you buy or write a program to solve one problem, such as sorting, you might be able to use it to help solve a different problem. This is known in software engineering as software reuse. To illustrate this, let us consider another problem.");
   av.step();
 
 
-  //frame 10
+  // Frame 5
   av.umsg("<b>PAIRING</b>"+"<br><br><b>Input: </b>"+"Two sequences of integers <b>X</b> = (x0,x1,...,xn−1) and <b>Y</b> = (y0,y1,...,yn−1)."+"<br><br><b>Output: </b>"+"A pairing of the elements in the two sequences such that the least value in <b>X</b> is paired with the least value in <b>Y</b>, the next least value in <b>X</b> is paired with the next least value in Y and so on.");
   var verRect1 = av.g.rect(30, 150, 40, 250);
   var verRect2 = av.g.rect(230, 150, 40, 250);
@@ -114,7 +114,7 @@ $(document).ready(function(){
   var caption02 = av.label("An illustration of PAIRING. The two lists of numbers are paired up so that the least values from each list make a pair, the next smallest values from each list make a pair, and so on.", {top: 400, left: 0});
   av.step();
 
-  //frame 11
+  // Frame 6
   verRect1.hide();
   verRect2.hide();
   l23.hide();
@@ -150,29 +150,29 @@ $(document).ready(function(){
   arrow72.hide();
   arrow82.hide();
   caption02.hide();
-  av.umsg(Frames.addQuestion("q1"));
+  av.umsg(Frames.addQuestion("reduce"));
   av.step();
 
-  //frame12
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 7
+  av.umsg(Frames.addQuestion("3steps"));
   av.step();
 
-  //frame13
-  var ex = av.label("In terms of asymptotic notation, assuming that we can find one method to convert the inputs to PAIRING into inputs to SORTING fast enough, and a second method to convert the result of SORTING back to the correct result for PAIRING fast enough, then the asymptotic cost of PAIRING cannot be more than the cost of SORTING." + "<br><br>In this case, there is little work to be done to convert from PAIRING to SORTING, or to convert the answer from SORTING back to the answer for PAIRING, so the dominant cost of this solution is performing the sort operation. Thus, an upper bound for PAIRING is in O(nlogn).", {top: 10, left: 0});
-  av.umsg(Frames.addQuestion("q31"));
+  // Frame 8
+  var ex = av.label("In terms of asymptotic notation, assuming that we can find one method to convert the inputs to PAIRING into inputs to SORTING fast enough, and a second method to convert the result of SORTING back to the correct result for PAIRING fast enough, then the asymptotic cost of PAIRING cannot be more than the cost of SORTING." + "<br><br>In this case, there is little work to be done to convert from PAIRING to SORTING, or to convert the answer from SORTING back to the answer for PAIRING, so the dominant cost of this solution is performing the sort operation. Thus, an upper bound for PAIRING is in $O(n \\log n)$.", {top: 10, left: 0});
+  av.umsg(Frames.addQuestion("redcost"));
   av.step();
 
 
-  //frame 14
-  av.umsg(Frames.addQuestion("q32"));
+  // Frame 9
+  av.umsg(Frames.addQuestion("inputsorted"));
   av.step();
 
-  //frame 15
-  av.umsg(Frames.addQuestion("q33"));
+  // Frame 10
+  av.umsg(Frames.addQuestion("onlysorting"));
   av.step();
   ex.hide();
 
-  //frame 16
+  // Frame 11
   //graph rectangle 1
   av.umsg("Pairing of two arrays by reduction to sorting");
   input1 = new Array(23,42,17,93,88,12,57,90);
@@ -187,7 +187,7 @@ $(document).ready(function(){
   av.label("<b>Arrays to be paired</b>",{left: 200, top: yoffset - 37});
   av.step();
 
-  //frame 17
+  // Frame 12
   av.umsg("The arrays are fed as input to the sorting problem directly");
   var r12 = av.g.rect(5, 85 + yoffset, 500, 40);
   iparr1 = av.ds.array(input1,  {left: 7, top: 75 + yoffset});
@@ -200,13 +200,13 @@ $(document).ready(function(){
   av.label("<b>Transformation - Identity function Cost= O(n)</b>",{left: 300, top: 25 + yoffset});
   av.step();
 
-  //frame18
-  av.umsg(Frames.addQuestion("q4"));
+  // Frame 13
+  av.umsg(Frames.addQuestion("Step2"));
   var textlabel = av.label("Reduction is a three-step process. The first step is to convert an instance of PAIRING into two instances of SORTING. The conversion step in this example is not very interesting; it simply takes each sequence and assigns it to an array to be passed to SORTING. The second step is to sort the two arrays (i.e., apply SORTING to each array). The third step is to convert the output of SORTING to the output for PAIRING. This is done by pairing the first elements in the sorted arrays, the second elements, and so on.",{left: 0, top: 130 + yoffset});
   av.step();
   textlabel.hide();
 
-  //frame 19
+  // Frame 14
   var l1= av.g.line(120,125 + yoffset,120,140 + yoffset);
   var l2= av.g.line(390,125 + yoffset,390,140 + yoffset);
   var r2 = av.g.rect(90,140 + yoffset,60,30);
@@ -228,7 +228,7 @@ $(document).ready(function(){
   oparr= av.ds.array([" "," "," "," "," "," "," "," "],  {left: 140, top: 280 + yoffset});
   av.step();
 
-  //frame 21-30
+  // Frames 15-22
   //show pair step by step
   for(var i=0;i<8;i++){
     if(i>0){
@@ -242,22 +242,22 @@ $(document).ready(function(){
     sortarr2.highlight(i);
     oparr.highlight(i);
     av.umsg("Pairing "+sortarr1.value(i)+" with "+sortarr2.value(i));
-    if (i == 2){
-      //frame 18
-      av.umsg(Frames.addQuestion("q5"));
-      av.step();
-      //frame 19
-      av.umsg("");
-    }
+//    if (i == 2){
+//      av.umsg(Frames.addQuestion("q5"));
+//      av.step();
+//      av.umsg("");
+//    }
     av.step()
   }
-  //frame 31
+  // Frame 23
   //result
   av.umsg("The output array gives the pairing" );
   sortarr1.unhighlight(i-1);
   sortarr2.unhighlight(i-1);
   oparr.unhighlight(i-1);
   av.step();
+
+  // Frame 24
   av.umsg("Cost of pairing = O(n) + Cost of sorting");
   var l13 = av.g.line(260, 330 + yoffset, 260, 350 + yoffset);
   l13.show();
@@ -268,6 +268,8 @@ $(document).ready(function(){
     oparr2.css(i,{"background-color":"#CCFF99"});
   av.label("<b>Paired array</b>", {left: 410, top: 340 + yoffset});
   av.step();
-
+  
+  // Frame 25
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });
