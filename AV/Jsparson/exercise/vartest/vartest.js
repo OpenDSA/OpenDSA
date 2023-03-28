@@ -1,29 +1,30 @@
 $(document).ready(function () {
     "use strict";
     var index = window.location.pathname.split('/').pop().split('.')[0];
-    var parson;
+    console.log(index)
+    var parson = new ParsonsWidget({
+        "sortableId": "sortable",
+        "trashId": "sortableTrash",
+        "vartests": vartests,
+        "toggleTypeHandlers": {ab: ["<", ">"]}
+    });
     var noCredit = true;
 
     function displayErrors(fb) {
-        if (fb.success && noCredit) {
+        if (fb.errors.length === 0 && noCredit) {
             noCredit = false;
             ODSA.AV.awardCompletionCredit();
-            alert("Good, you solved the assignment!"); 
         } 
+        if (fb.errors.length > 0) {
+            alert(fb.errors[0]);
+        }
     }
 
     $.getJSON("vartest.json", function(data) {
+        var initial = data[index].initial
         document.getElementById("description").innerHTML = data[index].description
         document.getElementById("instructions").innerHTML = data[index].instructions
-        parson = new ParsonsWidget({
-            "sortableId": "sortable",
-            "trashId": "sortableTrash",
-            "vartests": data[index].vartests,
-            "constructed_lines": '',
-            "python3": true,
-            "toggleTypeHandlers": {ab: ["<", ">"]}
-        });
-        parson.init(data[index].initial);
+        parson.init(initial);
         parson.shuffleLines();
     });
 
@@ -33,12 +34,11 @@ $(document).ready(function () {
     });
     $("#feedbackLink").click(function (event) {
         var initData = {}
+        console.log(parson.studentCode())
         initData.user_code = parson.studentCode()
         ODSA.AV.logExerciseInit(initData)
         event.preventDefault()
         var fb = parson.getFeedback()
-        console.log(fb)
-        $("#unittest").html("<h2>Feedback from testing your program:</h2>" + fb.feedback);
         displayErrors(fb)
     });
     $('#saveProgressLink').click(function() {

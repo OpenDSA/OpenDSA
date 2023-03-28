@@ -120,7 +120,6 @@
     VariableCheckGrader.prototype._python_exec = function (code) {
         var output = "";
         // function for reading python imports with skulpt
-        console.log(124)
         function builtinRead(x) {
             if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
                 throw "File not found: '" + x + "'";
@@ -132,7 +131,6 @@
             output: function (str) { output += str; },
             python3: this.parson.options.python3 || false,
             read: builtinRead
-            
         });
         return { mainmod: Sk.importMainWithBody("<stdin>", false, code), output: output };
     };
@@ -150,8 +148,6 @@
         try {
             execResult = this._python_exec(code);
         } catch (e) {
-            console.log(e)
-
             return { "_output": output, "_error": "" + e };
         }
         mainmod = execResult.mainmod;
@@ -251,7 +247,6 @@
                 expected_value,
                 actual_value;
             if ("_error" in res) {
-                console.log("error: " + res._error)
                 testcaseFeedback += parson.translations.unittest_error(that.stripLinenumberIfNeeded(res._error,
                     testdata.initcode,
                     student_code));
@@ -1167,7 +1162,7 @@
 
         state = logData.output;
 
-        console.log(state + " 1165")
+        console.log(state)
 
         jQuery.extend(logData, entry);
         this.user_actions.push(logData);
