@@ -13,8 +13,10 @@
                     "\tprint(SUM)",    
                     "\ti = i + 1"],
         "type": "VARTEST",
-        "vartests": [{"initcode":"","code":"","message":"Testing printed out content","variables":{"__output":"15\n14\n12\n9\n5\n"}}],
+        "vartests": [{"initcode":"", "code":"", "message":"Testing printed out content", "variables":{"__output":"15\n14\n12\n9\n5\n"}}],
         "concepts": ["Assign","Int","keyword","AugAssign","Gt","Sub","GtE","While","Str","Call"],
         "order": 0
     }
 }
+
+
