@@ -27,7 +27,7 @@ Decideability vs. Acceptability
    :math:`L = \{w \in \Sigma^*_0: |w|\ \mbox{is even}\}`.
 
 
-   :math:`M` erases the marks from right to left, with current parity
+   :math:`M` erases the marks from left to right, with current parity
    encode by state.
    Once the string is finished, mark :math:`\fbox{Y}` or
    :math:`\fbox{N}` as appropriate.
@@ -35,10 +35,12 @@ Decideability vs. Acceptability
 
 .. slide:: Turing-acceptable Languages (1)
 
-   | :math:`M` **accepts** a string :math:`w` if :math:`M` halts on a
-     final state for the input :math:`w`.
-   |    :math:`M` accepts a language iff :math:`M` halts on :math:`w`
-        iff :math:`w \in L`.
+   | Turing-decideable: :math:`M` **accepts** a string :math:`w` if
+     :math:`M` halts on a final state for the input :math:`w`, and
+     rejects a string if it halts on a non-final state.
+           
+   | Alternative: :math:`M` accepts a language iff :math:`M` halts on
+     :math:`w` iff :math:`w \in L`.
    | In other words, the machine does **not** halt if :math:`w` is
      **not** in :math:`L`.
    | A language is **Turing-acceptable** if some Turing machine accepts it.
@@ -48,7 +50,8 @@ Decideability vs. Acceptability
 
    | Every Turing-decidable language is Turing-acceptable.
    |    If we would have printed :math:`\fbox{Y}`, then halt on an accept state.
-   |    If we would have printed :math:`\fbox{N}`, then do not halt on an accept state.
+   |    If we would have printed :math:`\fbox{N}`, then generate an
+   infinite loop.
 
 
 .. slide:: Turing-acceptable Languages (3)
