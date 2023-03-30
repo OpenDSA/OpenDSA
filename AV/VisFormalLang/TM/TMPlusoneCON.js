@@ -33,7 +33,8 @@ $(document).ready(function() {
   // Slide 2
   av.umsg("Step 1: Initially, the tape head is scanning the leftmost non-blank tape cell, and the current state is q0");
   node[0].highlight();
-  tape.highlightCurrent();
+  // CAS: Tape highlighting is broken, should get fixed. Leaving out for now.
+  // tape.highlightCurrent();
   av.step();
 
   // Slide 3

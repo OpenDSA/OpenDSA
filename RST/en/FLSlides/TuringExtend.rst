@@ -20,7 +20,7 @@ Turing Machine Extensions
    | Turing's Thesis claims that TM is as powerful as "any machine"
    | We might add features to a TM.
    |    If the features let us do something that we could not do
-        before, that disproves Turing's Thesis
+        before, that disproves Turing's Thesis.
    |    If we can simulate the new feature with the standard model,
         this adds support to (but does not prove) the Turing thesis.
    | As usual, we say that two machine types are equivalent if they

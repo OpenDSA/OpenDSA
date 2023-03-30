@@ -169,10 +169,10 @@ Turing Machines
      Here are the cofigurations for the input aaaa.
 
 
-   | :math:`(q_0, \underline{a}aaa) \vdash_M\ (q_0, \underline{\#}aaa)`
-   | :math:`\vdash_M\ (q_0, \#\underline{\#}aa)`
-   | :math:`\vdash_M\ (q_0, \#\#\underline{\#}a)`
-   | :math:`\vdash_M\ (q_0, \#\#\#\underline{\#})`
+   | :math:`(q_0, \underline{a}aaa) \vdash_M\ (q_0, \#\underline{a}aa)`
+   | :math:`\vdash_M\ (q_0, \#\#\underline{a}a)`
+   | :math:`\vdash_M\ (q_0, \#\#\#\underline{a})`
+   | :math:`\vdash_M\ (q_0, \#\#\#\#\underline{\#})`
    | :math:`\vdash_M\ (q_1, \#\#\#\#\underline{\#})`
    |    :math:`\ `
 
