@@ -11,13 +11,13 @@ $(document).ready(function () {
         } 
     }
 
-    $.getJSON("vartest.json", function(data) {
+    $.getJSON("unittest.json", function(data) {
         document.getElementById("description").innerHTML = data[index].description
         document.getElementById("instructions").innerHTML = data[index].instructions
         parson = new ParsonsWidget({
             "sortableId": "sortable",
             "trashId": "sortableTrash",
-            "vartests": data[index].vartest,
+            "unittests": data[index].unittest,
             "constructed_lines": '',
             "python3": true,
             "toggleTypeHandlers": {ab: ["<", ">"]}
@@ -37,7 +37,7 @@ $(document).ready(function () {
         ODSA.AV.logExerciseInit(initData)
         event.preventDefault()
         var fb = parson.getFeedback()
-        $("#vartest").html("<h2>Feedback from testing your program:</h2>" + fb.feedback);
+        $("#unittest").html("<h2>Feedback from testing your program:</h2>" + fb.feedback);
         displayErrors(fb)
     });
     $('#saveProgressLink').click(function() {
@@ -59,3 +59,4 @@ $(document).ready(function () {
         })
     });
 });
+
