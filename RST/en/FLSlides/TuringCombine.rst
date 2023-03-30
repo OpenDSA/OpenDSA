@@ -114,11 +114,11 @@ Combining Turing Machines
    |    And we have the beginnings of a more powerful graphical
         language to express our ideas
 
-   **Turing Thesis:** Any computation that can be carried out by
-   mechanical means can be performed by some Turing machine.
-
-   | How would we prove or disprove this?
-   |    What is the technical meaning of the word "thesis"?
+   | **Turing Thesis:** Any computation that can be carried out by
+     mechanical means can be performed by some Turing machine.
+   |    How would we prove or disprove this?
+   |    [Technically, we can't, unless we could really nail down the
+        meaning of "mechanical means"]
 
 
 .. slide:: Formal Concept of Algorithm
