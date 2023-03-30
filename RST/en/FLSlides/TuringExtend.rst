@@ -93,8 +93,8 @@ Turing Machine Extensions
    | :math:`L = \{a^nb^nc^n \mid n \geq 1\}` can be accepted by an
      LBA.
    |    So, LBA more powerful than pushdown automata.
-   | But turns out to be less powerful than TM (but this is hard to
-     prove)
+   | But turns out to be less powerful than TM with unrestricted space
+     (but this is hard to prove)
    
 
 .. slide:: A Universal Turing Machine

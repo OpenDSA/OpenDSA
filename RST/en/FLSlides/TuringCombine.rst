@@ -33,7 +33,7 @@ Combining Turing Machines
 
    | Turing machine computations can be combined into larger machines:
    |    :math:`M_2` prepares string as input to :math:`M_1`.
-   |    :math:`M_2` passes control to :math:`M_1` with I/O head at end
+   |    :math:`M_2` passes control to :math:`M_1` with I/O head at start
         of input. 
    |    :math:`M_2` retrieves control when :math:`M_1` has completed.
 
