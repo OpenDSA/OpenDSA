@@ -5,30 +5,20 @@ $(document).ready(function(){
   var av = new JSAV(av_name);
   var Frames = PIFRAMES.init(av_name);
 
-  //frame 1
-  av.umsg("The requirement that a problem be NP-hard might seem to be impossible, but in fact there are hundreds of such problems, including TRAVELING SALESMAN. Another such problem is called K-CLIQUE.");
+  // Frame 1
+  av.umsg("Recall that a problem is said to be NP-hard if any problem in NP can be reduced to it in polyonomial time.<br/><br/>It might seem impossible that any problem could actually be NP-hard, let alone provably so. But in fact there are hundreds of such problems, including TRAVELING SALESMAN. Another such problem is called K-CLIQUE.");
   av.displayInit();
 
-  //2
-  av.umsg("<b>Problem</b> <br><br>K-CLIQUE <br><br><b>Input: </b>: An arbitrary undirected graph G and an integer k. <br><br><b>Output: </b> YES if there is a complete subgraph of at least k vertices, and NO otherwise.");
+  // Frame 2
+  av.umsg("<b>Problem</b> <br><br>K-CLIQUE <br><br><b>Input: </b>: An arbitrary undirected graph $G$ and an integer $k$.<br/><br/><b>Output: </b> YES if there is a complete subgraph of at least $k$ vertices, and NO otherwise.");
   av.step();
 
-  //3
-  av.umsg("<b>Introduction to the Clique problem</b><br><br>This slideshow introduces and explains the <q>Clique</q> Problem. <br><br>We start with some definitions and background.");
-  av.step();
-
-  //4
-  av.umsg("<b>Clique</b><br><br> A Clique is complete graph i.e. a graph where each node is connected to every other nodes by at least one edge.");
-  av.step();
-
-  //5
-  av.umsg("<b>Clique</b><br><br> A Clique is complete graph i.e. a graph where each node is connected to every other nodes by at least one edge. <br><br> Example of a clique:");
+  // Frame 3
+  av.umsg("A Clique is a complete graph, that is, a graph where each node is connected to every other node by at least one edge.<br/><br/>Here is an example of a clique:");
   var  g = av.ds.graph({width: 400, height: 450,
                         layout: "manual", directed: false,top:60,left:50});
   var x=20;
   var y=0;
-
-
   g.addNode("A", {"left": x+150, "top": y+50});
   g.addNode("B", {"left": x+50, "top": y+100});
   g.addNode("C", {"left": x+250,"top": y+100});
@@ -44,12 +34,8 @@ $(document).ready(function(){
   av.step();
   g.hide();
 
-  //6
-  av.umsg("<b>Clique in a graph</b><br><br>If in a graph G, there exists a complete subgraph of K nodes, G is said to contain a K-Clique.");
-  av.step();
-
-  //7
-  av.umsg("<b>Clique in a graph</b><br><br>If in a graph G, there exists a complete subgraph of K nodes, G is said to contain a K-Clique. <br><br><br>For example: The following graph contains a 3-clique.");
+  // Frame 4
+  av.umsg("<b>Clique in a graph</b><br/><br/>If a graph $G$ contains a complete subgraph of $k$ nodes, $G$ is said to contain a k-Clique.<br/><br/>For example: The following graph contains a 3-clique.");
   var  g3 = av.ds.graph({width: 400, height: 450,layout: "manual", directed: false,left:70,top:70});
   x=0;
   y=0;
@@ -77,18 +63,14 @@ $(document).ready(function(){
   av.step();
   g3.hide();
 
-  //8 
-  av.umsg(Frames.addQuestion("q1"));
+  // Frame 5 
+  av.umsg(Frames.addQuestion("kclique"));
   g.show();
   av.step();
+
+  // Frame 6
+  av.umsg("<b>Clique in a graph</b><br/><br/>The clique with largest number of vertices in a graph G is called the <b>Maximum Clique</b> in G.<br/><br/>For example: The Maximum Clique in this graph is a 4-Clique.");
   g.hide();
-
-  //9
-  av.umsg("<b>Clique in a graph</b><br><br> The clique with largest number of vertices in a graph G is called Maximum Clique in G.");
-  av.step();
-
-  //10
-  av.umsg("<b>Clique in a graph</b><br><br> The clique with largest number of vertices in a graph G is called Maximum Clique in G. <br><br><br> For Example: Maximum Clique in the graph is a 4-Clique.");
   g3.show();
   ne1.addClass("edgehighlight");
   ne4.addClass("edgehighlight");
@@ -97,18 +79,18 @@ $(document).ready(function(){
   av.step();
   g3.hide();
 
-  //11
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 7
+  av.umsg(Frames.addQuestion("max"));
   g.show();
   av.step();
   g.hide();
 
-  //12
-  av.umsg("<b>Clique in a graph</b><br><br>The Clique Problem can be defined as either of the following:<br><br> <b>Given a graph</b> G = (V, E)<b>, find the Maximum Clique in </b>G. <br><br> or <br><br><b>Given a graph</b> G = (V, E), and an number</b> k <b>, does </b>G <b>contain a Clique of size</b> >=k?");
+  // Frame 8
+  av.umsg("<b>Clique in a graph</b><br><br>The CLIQUE Problem can be defined as follows:<br/>Given a graph $G = (V, E)$, find the Maximum Clique in $G$.<br/><br/>Decision form of the CLIQUE problem:<br/>Given a graph $G = (V, E)$, and an number $k$, does $G$ contain a Clique of size $\\geq k$?");
   av.step();
 
-  //13
-  av.umsg("<b>Example of Clique Problem:</b> <br><br>In the graph below does there exitst a clique of size >= 5 ?");
+  // Frame 9
+  av.umsg("<b>Example of Clique Problem:</b> <br><br>In the graph below, does there exist a clique of size $\\geq 5$?");
   var  g1 = av.ds.graph({width: 400, height: 450,
                          layout: "manual", directed: false});
   x=20;
@@ -152,16 +134,16 @@ $(document).ready(function(){
   g1.layout();
   av.step();
 
-  //14
-  av.umsg("<b>Example of Clique Problem:</b> <br><br>In the graph below does there exitst a clique of size >= 5 ? <br><br><b>No</b>");
+  // Frame 10
+  av.umsg("<b>Example of Clique Problem:</b> <br><br>In the graph below, does there exist a clique of size $\\geq 5$?<br/><br/><b>No</b>");
   av.step();
 
-  //15
-  av.umsg("<b>Example of Clique Problem:</b> <br><br>In the graph below does there exitst a clique of size >= 4 ?");
+  // Frame 11
+  av.umsg("<b>Example of Clique Problem:</b> <br><br>In the graph below, does there exist a clique of size $\\geq 4$?");
   av.step();
 
-  //16
-  av.umsg("<b>Example of Clique Problem:</b> <br><br>In the graph below does there exitst a clique of size >= 4 ?<br><br><b>Yes</b>");
+  // Frame 12
+  av.umsg("<b>Example of Clique Problem:</b> <br><br>In the graph below, does there exist a clique of size $\\geq 4$?<br/><br/><b>Yes</b>");
   e1.addClass("edgehighlight");
   e2.addClass("edgehighlight");
   e3.addClass("edgehighlight");
@@ -171,52 +153,36 @@ $(document).ready(function(){
   av.step();
   g1.hide();
 
-  //17
-  av.umsg("Nobody knows whether there is a polynomial time solution for K-CLIQUE, but if such an algorithm is found for K-CLIQUE or for TRAVELING SALESMAN, then that solution can be modified to solve the other, or any other problem in NP, in polynomial time.");
+  // Frame 13
+  av.umsg(Frames.addQuestion("convert"));
   av.step();
 
-  //18
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 14
+  av.umsg(Frames.addQuestion("theory"));
   av.step();
 
-  //19
-  av.umsg("The primary theoretical advantage of knowing that a problem P1 is NP-complete is that it can be used to show that another problem P2 is NP-complete. This is done by finding a polynomial time reduction of P1 to P2. ");
-  av.step();
-
-  //20
-  av.umsg(Frames.addQuestion("q4"));
-  av.step();
-
-  //21
+  // Frame 15
   av.umsg("Because we already know that all problems in NP can be reduced to P1 in polynomial time (by the definition of NP-complete), we now know that all problems can be reduced to P2 as well by the simple algorithm of reducing to P1 and then from there reducing to P2.");
   av.step();
 
-  //22
-  av.umsg("There is a practical advantage to knowing that a problem is NP-complete. It relates to knowing that if a polynomial time solution can be found for any problem that is NP-complete, then a polynomial solution can be found for all such problems. The implication is that, <br><br>1.Because no one has yet found such a solution, it must be difficult or impossible to do; and<br>2.Effort to find a polynomial time solution for one NP-complete problem can be considered to have been expended for all NP-complete problems.");
+  // Frame 16
+  av.umsg(Frames.addQuestion("practical"));
   av.step();
 
-  //23
-  av.umsg(Frames.addQuestion("q5"));
-  av.step();
-
-  //24
+  // Frame 17
   av.umsg("How is NP-completeness of practical significance for typical programmers? Well, if your boss demands that you provide a fast algorithm to solve a problem, they will not be happy if you come back saying that the best you could do was an exponential time algorithm. ");
   av.step();
 
-  //25
+  // Frame 18
   av.umsg("But, if you can prove that the problem is NP-complete, while they still won't be happy, at least they should not be mad at you! By showing that their problem is NP-complete, you are in effect saying that the most brilliant computer scientists for the last 50 years have been trying and failing to find a polynomial time algorithm for their problem.");
   av.step();
 
-  //26
-  av.umsg("Problems that are solvable in polynomial time on a regular computer are said to be in class P. Clearly, all problems in P are solvable in polynomial time on a non-deterministic computer simply by neglecting to use the non-deterministic capability. Some problems in NP are NP-complete.");
+  // Frame 19
+  av.umsg("Problems that are solvable in polynomial time on a regular computer are said to be in class P. Clearly, all problems in P are solvable in polynomial time on a non-deterministic computer simply by neglecting to use the non-deterministic capability. In contrast, some problems in NP are NP-complete.");
   av.step();
 
-  //27
-  av.umsg(Frames.addQuestion("q6"));
-  av.step();
-
-  //28
-  av.umsg("We can consider all problems solvable in exponential time or better as an even bigger class of problems because all problems solvable in polynomial time are solvable in exponential time. Thus, we can view the world of exponential-time-or-better problems in terms of this figure.");
+  // Frame 20
+  av.umsg(Frames.addQuestion("ptime"));
   var left = 50;
   var a = av.g.ellipse(left + 200, 130+50, 185, 120);
   var b = av.g.ellipse(left + 200, 145+50, 155, 90);
@@ -231,10 +197,8 @@ $(document).ready(function(){
   var k =av.label("SORTING", {left: left + 170, top: 165+50});
   av.step();
 
-
-  //29
-  av.umsg(Frames.addQuestion("q7"));
-  av.step();
+  // Frame 21
+  av.umsg(Frames.addQuestion("peqnp"));
   a.hide();
   b.hide();
   c.hide();
@@ -246,19 +210,13 @@ $(document).ready(function(){
   o.hide();
   n.hide();
   k.hide();
-
-
-  //30
-  av.umsg("The most important unanswered question in theoretical computer science is whether <b>P = NP</b>. If they are equal, then there is a polynomial time algorithm for TRAVELING SALESMAN and all related problems.");
   av.step();
 
-  //31
-  av.umsg(Frames.addQuestion("q8"));
-  av.step();
-
-  //
+  // Frame 22
   av.umsg("Because TRAVELING SALESMAN is known to be NP-complete, if a polynomial time algorithm were to be found for this problem, then all problems in NP would also be solvable in polynomial time. <br><br>Conversely, if we were able to prove that TRAVELING SALESMAN has an exponential time lower bound, then we would know that <b>P ≠ NP</b>.");
   av.step();
 
+  // Frame 23
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
 });

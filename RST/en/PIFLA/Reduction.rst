@@ -76,13 +76,13 @@ Reduction Examples
 
 
 Bounds Theorems
-~~~~~~~~~~~~~~~
+---------------
 
 We will use the following notation:
 :math:`\leq_{O(g(n))}` means that a reduction can be done
 with transformations that cost :math:`O(g(n))`.
 
-**Lower Bound Theorem}**: If :math:`P_1 \leq_{O(g(n))} P_2`,
+**Lower Bound Theorem**: If :math:`P_1 \leq_{O(g(n))} P_2`,
 then there is a lower bound of :math:`\Omega(h(n))` on the time
 complexity of :math:`P_1`, and :math:`g(n) = o(h(n))`,
 then there is a lower bound of :math:`\Omega(h(n))` on
