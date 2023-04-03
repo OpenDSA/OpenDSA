@@ -275,6 +275,12 @@
         }
       }
     },
+    "Limits to Computing": {
+      "PIFLA/LimCompFLA": {},
+      "PIFLA/Reduction": {},
+      "PIFLA/NPComplete": {},
+      "PIFLA/Impossible": {}
+    },
     "Appendix": {
       "Glossary": {}
     }
