@@ -22,7 +22,6 @@ $(document).ready(function () {
             "python3": true,
             "toggleTypeHandlers": {ab: ["<", ">"]}
         });
-        console.log(data[index].initial)
         parson.init(data[index].initial);
         parson.shuffleLines();
     });

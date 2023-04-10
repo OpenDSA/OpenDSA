@@ -1381,6 +1381,24 @@
         return permutation;
     };
 
+    ParsonsWidget.prototype.loadProgress = function (sorted, trash, indents) {
+        var idlist1 = []
+        var idlist2 = []
+        for (var i = 0; i < trash.length; i++) {
+            idlist1.push(this.modified_lines[trash[i]].id)
+        }
+        for (var i = 0; i < sorted.length; i++) {
+            idlist2.push(this.modified_lines[sorted[i]].id)
+        }
+        this.createHTMLFromLists(idlist2, idlist1);
+        addToggleableElements(this);
+
+        for (var i = 0; i < sorted.length; i++) {
+            var codelineID = this.modified_lines[sorted[i]].id;
+            $('#' + codelineID).css("margin-left", this.options.x_indent * indents[i]+ "px");
+        }
+    }   
+
 
     ParsonsWidget.prototype.shuffleLines = function () {
         var permutation = (this.options.permutation ? this.options.permutation : this.getRandomPermutation)(this.modified_lines.length);
@@ -1400,6 +1418,7 @@
         var solution = this.hashToIDList(solutionHash);
         var trash = this.hashToIDList(trashHash);
         this.createHTMLFromLists(solution, trash);
+        console.log(1406)
         this.updateIndentsFromHash(solutionHash);
     };
 
@@ -1436,11 +1455,9 @@
             html = this.codeLinesToHTML(solutionIDs, this.options.sortableId);
             $("#" + this.options.sortableId).html(html);
         }
-
         if (window.prettyPrint && (typeof (this.options.prettyPrint) === "undefined" || this.options.prettyPrint)) {
             prettyPrint();
         }
-
         var that = this;
         var sortable = $("#ul-" + this.options.sortableId).sortable(
             {
@@ -1449,6 +1466,7 @@
                     if ($(event.target)[0] != ui.item.parent()[0]) {
                         return;
                     }
+                    console.log(ui)
                     that.updateIndent(ui.position.left - ui.item.parent().position().left,
                         ui.item[0].id);
                     that.updateHTMLIndent(ui.item[0].id);
@@ -1457,9 +1475,11 @@
                 receive: function (event, ui) {
                     var ind = that.updateIndent(ui.position.left - ui.item.parent().position().left,
                         ui.item[0].id);
+                        console.log(ui)
+                    console.log("update 1473")
                     that.updateHTMLIndent(ui.item[0].id);
+                    console.log(ui.item[0].id)
                     that.addLogEntry({ type: "addOutput", target: ui.item[0].id }, true);
-                    console.log("addOutput (1418)")
                 },
                 grid: that.options.can_indent ? [that.options.x_indent, 1] : false
             });
@@ -1471,6 +1491,7 @@
                     start: function () { that.clearFeedback(); },
                     receive: function (event, ui) {
                         that.getLineById(ui.item[0].id).indent = 0;
+                        console.log(1488)
                         that.updateHTMLIndent(ui.item[0].id);
                         that.addLogEntry({ type: "removeOutput", target: ui.item[0].id }, true);
                     },
@@ -1494,8 +1515,6 @@
         }
         this.addLogEntry({ type: 'init', time: new Date(), bindings: bindings });
     };
-
-
     window['ParsonsWidget'] = ParsonsWidget;
 }
     // allows _ and $ to be modified with noconflict without changing the globals

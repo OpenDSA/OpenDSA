@@ -2,8 +2,9 @@
     "s0": {
         "description": "Printing hello world!",
         "instructions": "Construct a program that prints out hello and world on separate lines.",
-        "initial": ["print(\"hello\")", 
-                    "print(\"world!\")"],
+        "initial": ["print(\"I\")", 
+                    "print(\"love\")",
+                    "print(\"Computer Science\")"],
         "unittest": "",
         "type": "SIMPLE",
         "concepts": ["Call", "Str"],
