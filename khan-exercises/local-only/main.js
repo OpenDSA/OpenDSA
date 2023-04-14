@@ -2,6 +2,7 @@ requirejs.config({
   waitSeconds: 200,
   paths: {
     "jquery": "../../khan-exercises/local-only/jquery",
+    "d3": "https://d3js.org/d3.v7.min"
   },
   packages: [{
     name: "codemirror",
@@ -24,13 +25,16 @@ requirejs.config({
 
 requirejs([
   "jquery",
+  "d3",
   "../../khan-exercises/local-only/katex/katex.js",
   "../../khan-exercises/local-only/underscore.js",
   "../../khan-exercises/local-only/jed.js",
   "../../khan-exercises/local-only/localeplanet/icu." + getLang() + ".js",
   "../../khan-exercises/local-only/moment.js"
-], function ($, katex) {
+], function (jquery, d3, katex) {
+  window.d3 = d3;
   window.katex = katex;
+
 
   // These scripts depend on jQuery or underscore, so we wait to load them
   requirejs([
@@ -49,6 +53,8 @@ requirejs([
         requirejs(["../../lib/timeme-min.js"], function () {
           requirejs(["../../lib/odsaKA-min.js"], function () {
             Khan.odsaLoadExercises();
+            // requirejs(["d3"], function (d3) {
+            // });
           });
         });
       });

@@ -2,7 +2,7 @@ define(function(require) {
 
 // Minify Raphael ourselves because IE8 has a problem with the 1.5.2 minified release
 // http://groups.google.com/group/raphaeljs/browse_thread/thread/c34c75ad8d431544
-require("https://d3js.org/d3.v7.min.js");
+require("../third_party/raphael.js");
 var knumber = require("./knumber.js");
 
 $.extend(KhanUtil, {
