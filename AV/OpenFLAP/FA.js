@@ -263,7 +263,63 @@ var exerciseLocation;
     g.updateEdgePositions();
     g.first = null;
     g.selected = null;
+    avoidOverFlow(g);
   };
+  
+  // called by createEdge to avoid overflow of canvas div
+  function avoidOverFlow(g) {
+    if (g === undefined) {
+      return;
+    }
+    let edges = g._alledges;
+    for (let i = 0; i < edges.length; i++) {
+      // calculate the shift value out of parent div
+      let shiftValue =
+        parseFloat(edges[i]._label.element[0].style.top) +
+        getTranslateY(edges[i]._label.element[0]);
+      if (shiftValue < 0) {
+        let targetEdge = edges[i];
+        // In case of transactions with one node
+        if (targetEdge.endnode.element === targetEdge.startnode.element) {
+          let tpoint = targetEdge.endnode.element[0];
+          tpoint.style.transform =
+            "translateY(" + (getTranslateY(tpoint) + -shiftValue) + "px)";
+          //  check if it has initial or not
+          if (tpoint.classList.contains("start")) {
+            let s = targetEdge.endnode._initialMarker.element[0];
+            s.style.transform =
+              "translateY(" + (getTranslateY(s) - shiftValue) + "px)";
+          }
+        } else {
+          // In case of transactions with two nodes
+          let startPoint = targetEdge.startnode.element[0];
+          let endPoint = targetEdge.endnode.element[0];
+          startPoint.style.transform =
+            "translateY(" + (getTranslateY(startPoint) + -shiftValue) + "px)";
+          endPoint.style.transform =
+            "translateY(" + (getTranslateY(endPoint) + -shiftValue) + "px)";
+          if (endPoint.classList.contains("start")) {
+            let s = targetEdge.endnode._initialMarker.element[0];
+            s.style.transform =
+              "translateY(" + (getTranslateY(s) - shiftValue) + "px)";
+          } else if (startPoint.classList.contains("start")) {
+            let s = targetEdge.startnode._initialMarker.element[0];
+            s.style.transform =
+              "translateY(" + (getTranslateY(s) - shiftValue) + "px)";
+          }
+        }
+        // update new positions of all tranzacitons
+        g.updateEdgePositions();
+      }
+    }
+  }
+
+  // called by avoidOverFlow function to get value of transform: translateY of elements
+  function getTranslateY(element) {
+    var style = window.getComputedStyle(element);
+    var matrix = new WebKitCSSMatrix(style.transform);
+    return matrix.m42;
+  }
 
   // Called by the edit edge custom prompt box to save the graph and update the edge upon clicking "Done".
   function updateEdge(edge_label) {

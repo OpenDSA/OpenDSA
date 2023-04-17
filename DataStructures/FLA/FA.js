@@ -444,6 +444,11 @@ var lambda = String.fromCharCode(955),
   // Function to make a state initial.
   automatonproto.makeInitial = function (node, options) {
     node.addClass("start");
+    // ensure that initial will appear
+    if (node.position().left < 10) {
+      node.css("left", "10px");
+      node.automaton.updateEdgePositions();
+    }
     this.initial = node;
     node.addInitialMarker($.extend({ container: this }, this.options));
   };
