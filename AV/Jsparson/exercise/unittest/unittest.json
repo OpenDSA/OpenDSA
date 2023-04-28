@@ -1,6 +1,6 @@
 {
     "u0": {
-        "description": "Reverse the list",
+        "title": "Reverse the list",
         "instructions": "Construct a program which creates a new list that is reverse of list [1, 2, 3, 4, 5].",
         "initial": ["def list_reverse(lst):",
                     "\tnew_list = [0] * len(lst)",

@@ -1,6 +1,6 @@
 {
     "v0": {
-        "description": "Constrcuting a problem with nested loops",
+        "title": "Constrcuting a problem with nested loops",
         "instructions": "Construct a program that first prints out 15, then 14, then 12, then 9 and finally 5 on consecutive lines.",
         "initial": ["MAX = 5",
                     "i = 0",

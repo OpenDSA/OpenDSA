@@ -24,7 +24,7 @@ $(document).ready(function () {
     var sorted = [2, 1]
     $.getJSON("simple.json", function(data) {
         var initial = data[index].initial
-        document.getElementById("description").innerHTML = data[index].description
+        document.getElementById("title").innerHTML = data[index].title
         document.getElementById("instructions").innerHTML = data[index].instructions
         parson.init(initial)
         //parson.loadProgress()

@@ -1,6 +1,6 @@
 {
     "s0": {
-        "description": "Printing hello world!",
+        "title": "Printing hello world!",
         "instructions": "Construct a program that prints out hello and world on separate lines.",
         "initial": ["print(\"I\")", 
                     "print(\"love\")",
@@ -11,7 +11,7 @@
         "order": 0
     },
     "s1": {
-        "description": "Creating a function that prints hello world",
+        "title": "Creating a function that prints hello world",
         "instructions": "Construct a program that prints out Hello functions.",
         "initial": ["def func():",
                     "\tprint(\"Hello functions!\")",
