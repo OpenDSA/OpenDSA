@@ -12,7 +12,7 @@ $(document).ready(function () {
     }
 
     $.getJSON("unittest.json", function(data) {
-        document.getElementById("description").innerHTML = data[index].description
+        document.getElementById("title").innerHTML = data[index].title
         document.getElementById("instructions").innerHTML = data[index].instructions
         parson = new ParsonsWidget({
             "sortableId": "sortable",

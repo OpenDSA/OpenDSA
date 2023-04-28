@@ -1166,9 +1166,7 @@
         }
 
         state = logData.output;
-
-        console.log(state + " 1165")
-
+        
         jQuery.extend(logData, entry);
         this.user_actions.push(logData);
 
@@ -1186,8 +1184,56 @@
         if ($.isFunction(this.options.action_cb)) {
             this.options.action_cb.call(this, logData);
         }
+
+        const trace = this.user_actions.map(obj => {
+            return {
+              input: obj.input,
+              output: obj.output
+            };
+        });
     };
 
+    ParsonsWidget.prototype.parseAction = function(action) {
+        var input = action.input == '-' ? [] : action.input.split('-')
+        var output = action.output == '-' ? [] : action.output.split('-')
+        var indents = []
+        var trash = []
+        var sorted = []
+
+        for (var i = 0; i < output.length; i++) {
+            var tmp = output[i].split("_")
+            sorted.push(tmp[0])
+            indents.push(tmp[1])
+        }
+        for (var i = 0; i < input.length; i++) {
+            var tmp = input[i].split("_")
+            trash.push(tmp[0])
+        }
+        return {"sorted": sorted, "trash": trash, "indents": indents}
+    }
+
+    ParsonsWidget.prototype.parseTrace = function(trace) {
+        var res = []
+        for (var i = 0; i < trace.length; i++) {
+            res.push(this.parseAction(trace[i]))
+        }
+        return res;
+    }
+
+    var ct = -1
+    ParsonsWidget.prototype.prevAction = function(parsedTrace) {
+        if (ct > 0) {
+            var action = parsedTrace[--ct]
+            this.loadProgress(action.sorted, action.trash, action.indents)
+        }
+    }
+
+    ParsonsWidget.prototype.nextAction = function(parsedTrace) {
+        if (ct < parsedTrace.length - 1) {
+            var action = parsedTrace[++ct]
+            this.loadProgress(action.sorted, action.trash, action.indents)
+        }
+    }
     /**
      * Update indentation of a line based on new coordinates
      * leftDiff horizontal difference from (before and after drag) in px
@@ -1418,7 +1464,6 @@
         var solution = this.hashToIDList(solutionHash);
         var trash = this.hashToIDList(trashHash);
         this.createHTMLFromLists(solution, trash);
-        console.log(1406)
         this.updateIndentsFromHash(solutionHash);
     };
 
@@ -1466,7 +1511,6 @@
                     if ($(event.target)[0] != ui.item.parent()[0]) {
                         return;
                     }
-                    console.log(ui)
                     that.updateIndent(ui.position.left - ui.item.parent().position().left,
                         ui.item[0].id);
                     that.updateHTMLIndent(ui.item[0].id);
@@ -1475,10 +1519,7 @@
                 receive: function (event, ui) {
                     var ind = that.updateIndent(ui.position.left - ui.item.parent().position().left,
                         ui.item[0].id);
-                        console.log(ui)
-                    console.log("update 1473")
                     that.updateHTMLIndent(ui.item[0].id);
-                    console.log(ui.item[0].id)
                     that.addLogEntry({ type: "addOutput", target: ui.item[0].id }, true);
                 },
                 grid: that.options.can_indent ? [that.options.x_indent, 1] : false

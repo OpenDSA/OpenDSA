@@ -22,13 +22,36 @@ $(document).ready(function () {
     var indents = [2, 1]
     var trash = [0]
     var sorted = [2, 1]
+    var trace = [{
+        "input": "0_0-2_0",
+        "output": "1_0"
+    },
+    {   
+        "input": "0_0",
+        "output": "2_1-1_0"
+    },
+    {
+        "input": "0_0",
+        "output": "2_2-1_0"
+    },
+    {
+        "input": "0_0",
+        "output": "1_1-2_2"
+    },
+    {
+        "input": "-",
+        "output": "0_1-2_2-1_0"
+    }]
+    var parsedTrace;
+
     $.getJSON("simple.json", function(data) {
         var initial = data[index].initial
-        document.getElementById("description").innerHTML = data[index].description
+        document.getElementById("title").innerHTML = data[index].title
         document.getElementById("instructions").innerHTML = data[index].instructions
         parson.init(initial)
         //parson.loadProgress()
         parson.shuffleLines();
+        parsedTrace = parson.parseTrace(trace)
     });
 
     $("#newInstanceLink").click(function (event) {
@@ -61,5 +84,11 @@ $(document).ready(function () {
         //     }
         // })
     });
+    $("#prev").click(function () {
+        parson.prevAction(parsedTrace)
+    });
+    $("#next").click(function () {
+        parson.nextAction(parsedTrace)
+    })
 });
 
