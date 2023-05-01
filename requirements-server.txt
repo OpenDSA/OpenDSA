@@ -4,7 +4,7 @@ docutils==0.16
 sphinx==4.4.0
 hieroglyph==2.1.0
 pylint==2.5.3
-Flask==2.0.3
+Flask==2.3.2
 Flask-AutoIndex==0.6.6
 gunicorn==20.1.0
 girth==0.8.0
