@@ -19,9 +19,9 @@ $(document).ready(function () {
             alert(fb.errors[0])
         }
     }
-    var indents = [2, 1]
-    var trash = [0]
-    var sorted = [2, 1]
+    // var indents = [2, 1]
+    // var trash = [0]
+    // var sorted = [2, 1]
     var trace = [{
         "input": "0_0-2_0",
         "output": "1_0"
@@ -66,7 +66,7 @@ $(document).ready(function () {
         parson.getFeedback()
     });
     $('#loadProgressLink').click(function() {
-        parson.loadProgress(sorted, trash, indents)
+        // parson.loadProgress(sorted, trash, indents)
         // const state = parson.getState({index: index})
         // console.log(state)
         // $.ajax({
