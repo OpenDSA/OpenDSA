@@ -113,15 +113,19 @@ $(document).ready(function() {
   var mainline2Y2=mainline2Y1; 
 
   // main that represents the two tables' relations
-  var line2 = av.g.line(mainline2X1,  mainline2Y1, mainline2X2,  mainline2Y2, {opacity: 100, "stroke-width": 2});
+  var line2 = av.g.line(mainline2X1,  mainline2Y1, mainline2X2-5,  mainline2Y2, {opacity: 100, "stroke-width": 2});
   //cross foot of the tables' relations
-  var line3 = av.g.line( mainline2X1-20,  mainline2Y1,  mainline2X1,  mainline2Y1-10,{opacity: 100, "stroke-width": 2});
-  var line4 = av.g.line( mainline2X1-20,  mainline2Y1, mainline2X1,  mainline2Y1+10, {opacity: 100, "stroke-width": 2}); 
+  var line3 = av.g.line( mainline2X1-335,  mainline2Y1,  mainline2X1-335-30,  mainline2Y1-10,{opacity: 100, "stroke-width": 2});
+  var line4 = av.g.line( mainline2X1-335,  mainline2Y1, mainline2X1-335-30,  mainline2Y1+10, {opacity: 100, "stroke-width": 2}); 
+
+  //var line3 = av.g.line( mainline2X1-20,  mainline2Y1,  mainline2X1,  mainline2Y1-10,{opacity: 100, "stroke-width": 2});
+  //var line4 = av.g.line( mainline2X1-20,  mainline2Y1, mainline2X1,  mainline2Y1+10, {opacity: 100, "stroke-width": 2}); 
   //two vertical lines of the tables' relations
   //vertical line beside table project
   //var line5 = av.g.line( mainline2X1-20,  mainline2Y1-10, mainline2X1-20,  mainline2Y1+10, {opacity: 100, "stroke-width": 2});
   //vertical line beside table employee
-  var line6= av.g.line( mainline2X1-335,  mainline2Y1-10, mainline2X1-335,  mainline2Y1+10, {opacity: 100, "stroke-width": 2}); 
+  var line6= av.g.line( mainline2X1-20,  mainline2Y1-10, mainline2X1-20,  mainline2Y1+10, {opacity: 100, "stroke-width": 2}); 
+ // var line6= av.g.line( mainline2X1-335,  mainline2Y1-10, mainline2X1-335,  mainline2Y1+10, {opacity: 100, "stroke-width": 2}); 
   var lab=av.label(interpret("<span style='color:red;'> Works at </span>"), {left: ((mainline2X1-mainline2X2)+60), top: mainline2Y1- 50 });
   lab.css({"font-weight": "bold", "font-size": 20});
 
@@ -368,16 +372,20 @@ line1.movePoints([[0, x1, y1], [1, x2, y2]]);
   // is the starting point of the matrix2Copy "the left point of it" as shown in its definition above
   mainline2X1=arrayLeft-arrayGap-30;
   // main that represents the two tables' relations
-  line2.movePoints([[0,mainline2X1 ,mainline2Y1 ], [1,mainline2X2 ,mainline2Y2]]);
+  line2.movePoints([[0,mainline2X1 ,mainline2Y1 ], [1,mainline2X2-8 ,mainline2Y2]]);
+  //line2.movePoints([[0,mainline2X1 ,mainline2Y1 ], [1,mainline2X2 ,mainline2Y2]]);
   line2.show();
   //cross foot of the tables' relations
-  line3.movePoints([[0,mainline2X1-20 ,mainline2Y1 ], [1,mainline2X1 ,mainline2Y1-10]]);
+  line3.movePoints([[0,mainline2X1-arrayGap+80 ,mainline2Y1 ], [1,mainline2X1-arrayGap+63 ,mainline2Y1-10]]);
+  //line3.movePoints([[0,mainline2X1-20 ,mainline2Y1 ], [1,mainline2X1 ,mainline2Y1-10]]);
   line3.show();
-  line4.movePoints([[0,mainline2X1-20 ,mainline2Y1 ], [1,mainline2X1 ,mainline2Y1+10]]);
+  line4.movePoints([[0,mainline2X1-arrayGap+80 ,mainline2Y1 ], [1,mainline2X1-arrayGap+63 ,mainline2Y1+10]]);
+  //line4.movePoints([[0,mainline2X1-20 ,mainline2Y1 ], [1,mainline2X1 ,mainline2Y1+10]]);
   line4.show();
   //two vertical lines of the tables' relations
   //vertical line beside table employee
-  line6.movePoints([[0,mainline2X1-arrayGap+80 ,mainline2Y1-10 ], [1,mainline2X1-arrayGap+80,mainline2Y1+10]]);
+  line6.movePoints([[0,mainline2X1-15 ,mainline2Y1-10 ], [1,mainline2X1-15,mainline2Y1+10]]);
+  //line6.movePoints([[0,mainline2X1-arrayGap+80 ,mainline2Y1-10 ], [1,mainline2X1-arrayGap+80,mainline2Y1+10]]);
   line6.show();
   var lab2=av.label(interpret("<span style='color:red;'> Works at </span>"), {left: ((mainline2X1-mainline2X2)+180), top: mainline2Y1-40 });
   lab2.css({"font-weight": "bold", "font-size": 15});
