@@ -36,6 +36,7 @@ lib/khan-exercises/exercises/khan-site.html
 
 # Ignore compiled Python files
 *pyc
+*.pyc
 
 # Ignore Java .class files
 *.class
@@ -48,6 +49,9 @@ src
 
 # Ignore files used by JetBrains IDE's to store project settings.
 .idea
+
+#Ignore files used by Panic's Nova IDE
+.nova
 
 # Ignore LMS course configuration files
 config/temp/temp*.*
@@ -82,8 +86,7 @@ tasks.todo
 # configuration folder
 .vscode/
 
-# For Mac file system
-.DS_Store
+
 # For symbolic link needed for IDE. Actual file in utils/
 SourceCode/C++/Lists/ErrorRec.h
 SourceCode/Java/Lists/ErrorRec.java
