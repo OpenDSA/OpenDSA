@@ -1,6 +1,6 @@
 {
-  "title": "Masters of Engineering Bridge Course",
-  "desc": "A 12-week self-paced course that serves as a introduction to Java programming and the basic data structures and algorithms in Computer Science",
+  "title": "Software Design and Data Structures",
+  "desc": "A programming-intensive exploration of software design concepts and implementation techniques. It builds on the student's existing knowledge of fundamental object-oriented programming.",
   "theme": "haiku",
   "build_dir": "Books",
   "sphinx_debug": false,
@@ -80,13 +80,226 @@
   },
   "chapters": {
 
-    "Introduction: About This Course": {
-      "MengBridgeCourse/CourseIntro": {
+    "Module 1: Introduction": {
+      "SWDesignAndDataStructs/AdminWelcome": {
+      },
+      "SWDesignAndDataStructs/AdminCourseIntro": {
+      },
+      "SWDesignAndDataStructs/ContentObjectsEnumsAndUML": {
+      },
+      "SWDesignAndDataStructs/ContentJUNITReview": {
+      },
+      "SWDesignAndDataStructs/ContentStyleReview": {
+      },
+      "SWDesignAndDataStructs/Lab2Polymorphism": {
+      },
+      "SWDesignAndDataStructs/RefPythonToJava": {
+      },
+      "SWDesignAndDataStructs/Project1": {
+      },
+      "SWDesignAndDataStructs/AdminAcadIntegrity": {
+      }
+    },
+    
+    "Module 2: Java Review": {
+      "SWDesignAndDataStructs/ContentExceptions": {
+      },
+      "SWDesignAndDataStructs/ContentPolymorphism2": {
+      },
+      "SWDesignAndDataStructs/ContentJavaArrays": {
+      },
+      "SWDesignAndDataStructs/ContentGenerics1": {
+      },
+      "SWDesignAndDataStructs/Lab2PolymorphismPost": {
+      },
+      "SWDesignAndDataStructs/ContentCoursePerceptions": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod2": {
+        },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod2": {
+      }
+    },
+    
+    "Module 3: Bags": {
+      "SWDesignAndDataStructs/Quiz1Info": {
+      },
+      "SWDesignAndDataStructs/ContentBags1": {
+      },
+      "SWDesignAndDataStructs/ContentBags2": {
+      },
+      "SWDesignAndDataStructs/Lab3MovieDatabase": {
+      },
+      "SWDesignAndDataStructs/Lab3MovieDatabasePost": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod3": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod3": {
+      }
+    },
+    
+    "Module 4: Linked Chains, Bags Continued": {
+      "SWDesignAndDataStructs/ContentLinkedChains": {
+      },
+      "SWDesignAndDataStructs/ContentLinkedBags": {
+      },      
+      "SWDesignAndDataStructs/Lab4GroceryBags": {
+      },
+      "SWDesignAndDataStructs/Project2": {
+      },
+      "SWDesignAndDataStructs/Lab4GroceryBagsPost": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod4": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod4": {
+      }
+      
+    },
+
+    "Module 5: Efficiency, Stacks": {
+      "SWDesignAndDataStructs/ContentEfficiency": {
+      },
+      "SWDesignAndDataStructs/ContentStacks": {
+      },
+      "SWDesignAndDataStructs/Lab5IceCreamCone": {
+      },
+      "SWDesignAndDataStructs/Lab5IceCreamConePost": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod5": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod5": {
       }
     },
 
+    "Module 6: Ethics and Design": {
+      "SWDesignAndDataStructs/Quiz2Info": {
+      },
+      "SWDesignAndDataStructs/ContentEthics": {
+      },
+      "SWDesignAndDataStructs/ContentDesignMVC": {
+      },
+      "SWDesignAndDataStructs/Lab6ArrayStack": {
+      },
+      "SWDesignAndDataStructs/Lab6ArrayStackPost": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod6": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod6": {
+      }
+    },
+
+    "Module 7: Recursion": {
+      "SWDesignAndDataStructs/ContentRecursion": {
+      },
+      "SWDesignAndDataStructs/Project3": {
+      },
+      "SWDesignAndDataStructs/ContentMidSemester": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod7": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod7": {
+      }
+    },
+
+    "Module 8: Queues": {
+      "SWDesignAndDataStructs/ContentQueues": {
+      },
+      "SWDesignAndDataStructs/Lab8Carrano": {
+      },
+      "SWDesignAndDataStructs/Lab8CarranoPost": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod8": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod8": {
+      }
+    },
+
+    "Module 9: Lists and Generics": {
+      "SWDesignAndDataStructs/ContentLists": {
+      },
+      "SWDesignAndDataStructs/ContentGenerics2": {
+      },
+      "SWDesignAndDataStructs/Lab9SingleLink": {
+      },
+      "SWDesignAndDataStructs/Project4": {
+      },
+      "SWDesignAndDataStructs/Project4Discussion": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod9": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod9": {
+      }
+    },
+    
+
+    "Module 10: Comparing, Sorting and Iterators": {
+      "SWDesignAndDataStructs/Quiz3Info": {
+      },
+      "SWDesignAndDataStructs/ContentComparingAndSorting": {
+      },
+      "SWDesignAndDataStructs/ContentIterators": {
+      },
+      "SWDesignAndDataStructs/Lab10DoubleLink": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod10": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod10": {
+      }
+    },
+
+    "Module 11: Sorted Lists": {
+      "SWDesignAndDataStructs/ContentSortedLists": {
+      },
+      "SWDesignAndDataStructs/Project5": {
+      },
+      "SWDesignAndDataStructs/KnowledgePracticeMod11": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod11": {
+      }
+    },
+
+    "Module 12: Project ": {
+      "SWDesignAndDataStructs/Project5Milestone": {
+     }
+    },
+    
+    "Module 13:Cloning and Trees ": {
+      "SWDesignAndDataStructs/ContentCloning": {
+      },
+      "SWDesignAndDataStructs/ContentTrees": {
+      },
+      "SWDesignAndDataStructs/Lab13BinaryTrees": {
+      },
+      "SWDesignAndDataStructs/Project5Discussion": {
+      }
+
+    },
+
+    "Module 14: Binary Search ": {
+      "SWDesignAndDataStructs/Quiz4Info": {
+      },
+      "SWDesignAndDataStructs/Project5GroupFeedback": {
+      },
+      "SWDesignAndDataStructs/ContentBinarySearch": {
+      },
+      "SWDesignAndDataStructs/ContentBinarySearchTrees": {
+      },
+      "SWDesignAndDataStructs/Lab14BST": {
+      }
+
+    },
+    
+    "Module 15: Review": {
+      "SWDesignAndDataStructs/FinalExamInfo": {
+      },
+      "SWDesignAndDataStructs/ContentCoursePerceptions2": {
+      }
+      
+    
+    },
+
+    
     "Inheritance and Polymorphism": {
-      "MengBridgeCourse/1114IntroAndLightBot": {
+      "SWDesignAndDataStructs/1114IntroAndLightBot": {
         "Syntax Practice 1a": {
           "points": 20
         },
@@ -107,9 +320,9 @@
           "threshold": 10
         }
       },
-      "MengBridgeCourse/1114Unit1_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit1_Lab1_Placeholder": {
       },
-      "MengBridgeCourse/1114InheritanceAndPolymorphism": {
+      "SWDesignAndDataStructs/1114InheritanceAndPolymorphism": {
         "Syntax Practice 2a: Jeroo Methods": {
           "points": 18
         },
@@ -139,12 +352,11 @@
           "threshold": 10
         }
       },
-      "MengBridgeCourse/1114Unit1_Lab2_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit1_Lab2_Placeholder": {
       }
     },
-
     "Conditionals and Software Testing": {
-      "MengBridgeCourse/1114ConditionalActions": {
+      "SWDesignAndDataStructs/1114ConditionalActions": {
         "Syntax Practice 3a: If-Then-Else": {
           "points": 10
         },
@@ -183,9 +395,9 @@
           "threshold": 12
         }
        },
-       "MengBridgeCourse/1114Unit2_Lab1_Placeholder": {
+       "SWDesignAndDataStructs/1114Unit2_Lab1_Placeholder": {
        },
-      "MengBridgeCourse/1114SoftwareTesting": {
+      "SWDesignAndDataStructs/1114SoftwareTesting": {
         "Syntax Practice 4a: Compound Conditionals": {
           "points": 15
         },
@@ -212,12 +424,11 @@
           "threshold": 10
         }
        },
-       "MengBridgeCourse/1114Unit2_Lab2_Placeholder": {
+       "SWDesignAndDataStructs/1114Unit2_Lab2_Placeholder": {
        }
      },
-
     "Variables and For-each Loops": {
-      "MengBridgeCourse/1114VariablesFieldsAndParameters": {
+      "SWDesignAndDataStructs/1114VariablesFieldsAndParameters": {
            "Syntax Practice 5a: Fields and Accessors": {
               "points": 12
             },
@@ -243,9 +454,9 @@
               "points": 9
             }
         },
-      "MengBridgeCourse/1114Unit3_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit3_Lab1_Placeholder": {
         },
-      "MengBridgeCourse/1114PicturesAndForEachLoops": {
+      "SWDesignAndDataStructs/1114PicturesAndForEachLoops": {
         "Syntax Practice 6a: Pixel Loops": {
           "points": 20
         },
@@ -265,12 +476,11 @@
           "points": 10
         }
       },
-      "MengBridgeCourse/1114Unit3_Lab2_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit3_Lab2_Placeholder": {
        }
     },
-
     "More Lists, Loops, Arrays and Grouping": {
-      "MengBridgeCourse/1114AggregationStringsandMoreLoops": {
+      "SWDesignAndDataStructs/1114AggregationStringsandMoreLoops": {
         "Syntax Practice 7a: For Loops and OO Design": {
           "points": 18
         },
@@ -296,9 +506,9 @@
           "points": 7
         }
       },
-      "MengBridgeCourse/1114Unit4_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit4_Lab1_Placeholder": {
        },
-      "MengBridgeCourse/1114GroupingObjectsUsingListsAndNestedForLoops": {
+      "SWDesignAndDataStructs/1114GroupingObjectsUsingListsAndNestedForLoops": {
         "Syntax Practice 8a: Strings": {
           "points": 6
         },
@@ -349,11 +559,11 @@
           "points": 3
         }
       },
-      "MengBridgeCourse/1114Unit4_Lab2_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit4_Lab2_Placeholder": {
        }
      },
     "More Loops and Arrays": {
-      "MengBridgeCourse/1114Arrays": {
+      "SWDesignAndDataStructs/1114Arrays": {
         "Syntax Practice 10a": {
           "points": 12
         },
@@ -380,9 +590,9 @@
           "threshold": 11
         }
       },
-      "MengBridgeCourse/1114Unit5_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit5_Lab1_Placeholder": {
       },
-      "MengBridgeCourse/1114MDArrays": {
+      "SWDesignAndDataStructs/1114MDArrays": {
         "Syntax Practice: 2D Array Basics": {
           "points": 12
         },
@@ -411,11 +621,11 @@
           "points": 10
         }
       },
-      "MengBridgeCourse/1114Unit5_Lab2_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit5_Lab2_Placeholder": {
       }
     },
     "Multi-Dimensional Arrays, File I/O and Sets":{
-      "MengBridgeCourse/1114FileIO": {
+      "SWDesignAndDataStructs/1114FileIO": {
         "Syntax Practice: Scoping": {
           "points": 20
         },
@@ -453,9 +663,9 @@
            "points": 15
         }
       },
-      "MengBridgeCourse/1114Unit6_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit6_Lab1_Placeholder": {
       },
-      "MengBridgeCourse/1114MapsAndSets": {
+      "SWDesignAndDataStructs/1114MapsAndSets": {
         "Syntax Practice: Making A Set": {
           "points": 8
         },
@@ -487,12 +697,12 @@
           "points": 9
         }
       },
-      "MengBridgeCourse/1114Unit6_Lab2_Placeholder": {
+      "SWDesignAndDataStructs/1114Unit6_Lab2_Placeholder": {
       }
      },
 
     "Testing and Exceptions":{
-      "MengBridgeCourse/2114JUNIT":{
+      "SWDesignAndDataStructs/2114JUNIT":{
         "JunitCheckpoint1Summ": {
           "points": 30,
           "threshold": 3
@@ -507,7 +717,7 @@
         }
       },
 
-      "MengBridgeCourse/2114Exceptions":{
+      "SWDesignAndDataStructs/2114Exceptions":{
         "ExceptionsCheckpoint1Summ": {
           "points": 33,
           "threshold": 2
@@ -519,7 +729,7 @@
         }
       },
 
-      "MengBridgeCourse/2114ObjectsEnumsAndUML":{
+      "SWDesignAndDataStructs/2114ObjectsEnumsAndUML":{
         "OOP1Checkpoint1Summ": {
           "points": 50,
           "threshold": 2
@@ -530,7 +740,7 @@
         }
       },
 
-      "MengBridgeCourse/2114Polymorphism2":{
+      "SWDesignAndDataStructs/2114Polymorphism2":{
         "OOP2Checkpoint1Summ": {
           "points": 15,
           "threshold": 2
@@ -552,11 +762,11 @@
           "threshold": 4
         }
       },
-      "MengBridgeCourse/2114Unit7_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit7_Lab1_Placeholder": {
       },
-      "MengBridgeCourse/2114StyleReview":{},
+      "SWDesignAndDataStructs/2114StyleReview":{},
 
-      "MengBridgeCourse/2114Bags1": {
+      "SWDesignAndDataStructs/2114Bags1": {
         "BagsCheckpoint1Summ": {
           "points": 26,
           "threshold": 3
@@ -584,14 +794,14 @@
           "threshold": 2
         }
       },
-      "MengBridgeCourse/2114Unit7_Lab2_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit7_Lab2_Placeholder": {
       },
-      "MengBridgeCourse/2114Unit7_Lab3_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit7_Lab3_Placeholder": {
       }
     },
 
     "Linked Lists, Bags, Stacks, and Efficiency": {
-      "MengBridgeCourse/2114LinkedChainPointers": {
+      "SWDesignAndDataStructs/2114LinkedChainPointers": {
         "LinkedChainCheckpoint1Summ": {
           "points": 50,
           "threshold": 2
@@ -602,7 +812,7 @@
         }
       },
 
-      "MengBridgeCourse/2114Bags2": {
+      "SWDesignAndDataStructs/2114Bags2": {
         "LinkedBagCheckpoint1Summ": {
           "points": 40,
           "threshold": 4
@@ -620,9 +830,9 @@
           "threshold": 2
         }
       },
-      "MengBridgeCourse/2114Unit8_Program1_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit8_Program1_Placeholder": {
       },
-      "MengBridgeCourse/2114Efficiency": {
+      "SWDesignAndDataStructs/2114Efficiency": {
         "EfficiencyCheckpoint1Summ": {
           "points": 50,
           "threshold": 3
@@ -633,7 +843,7 @@
         }
       },
 
-      "MengBridgeCourse/2114Stacks": {
+      "SWDesignAndDataStructs/2114Stacks": {
         "StacksCheckpoint1Summ": {
           "points": 17,
           "threshold": 2
@@ -655,14 +865,14 @@
           "threshold": 2
         }
       },
-      "MengBridgeCourse/2114Unit8_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit8_Lab1_Placeholder": {
       },
-      "MengBridgeCourse/2114Unit8_Lab2_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit8_Lab2_Placeholder": {
       }
     },
 
     "Recursion and Software Design": {
-      "MengBridgeCourse/2114Recursion": {
+      "SWDesignAndDataStructs/2114Recursion": {
         "RecursionCheckpoint1Summ": {
           "points": 10,
           "threshold": 5
@@ -718,7 +928,7 @@
 
       },
 
-      "MengBridgeCourse/2114SoftwareDesignAndMVC": {
+      "SWDesignAndDataStructs/2114SoftwareDesignAndMVC": {
         "DesignCheckpoint1Summ": {
           "points": 40,
           "threshold": 3
@@ -728,12 +938,12 @@
           "threshold": 5
         }
       },
-      "MengBridgeCourse/2114Unit9_Program1_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit9_Program1_Placeholder": {
       }
     },
 
     "Queues and Generics": {
-      "MengBridgeCourse/2114Generics2": {
+      "SWDesignAndDataStructs/2114Generics2": {
         "GenericsCheckpoint1Summ": {
           "points": 60,
           "threshold": 3
@@ -743,7 +953,7 @@
           "threshold": 2
         }
       },
-      "MengBridgeCourse/2114Queues": {
+      "SWDesignAndDataStructs/2114Queues": {
         "QueueCheckpoint1Summ": {
           "points": 10,
           "threshold": 2
@@ -785,13 +995,13 @@
           "threshold": 2
         }
       },
-      "MengBridgeCourse/2114Unit10_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit10_Lab1_Placeholder": {
       }
 
     },
 
     "Lists and Iterators": {
-      "MengBridgeCourse/2114Lists": {
+      "SWDesignAndDataStructs/2114Lists": {
         "ListsCheckpoint1Summ": {
           "points": 13,
           "threshold": 2
@@ -817,9 +1027,9 @@
           "threshold": 4
         }
       },
-      "MengBridgeCourse/2114Unit11_Lab1_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit11_Lab1_Placeholder": {
       },
-      "MengBridgeCourse/2114Iterators": {
+      "SWDesignAndDataStructs/2114Iterators": {
         "IteratorsCheckpoint1Summ": {
           "points": 36,
           "threshold": 5
@@ -838,13 +1048,13 @@
           "threshold": 2
         }
       },
-      "MengBridgeCourse/2114Unit11_Lab2_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit11_Lab2_Placeholder": {
       }
 
     },
 
     "Comparing, Sorting and Binary Search": {
-      "MengBridgeCourse/2114ComparingAndSorting": {
+      "SWDesignAndDataStructs/2114ComparingAndSorting": {
         "CompSortCheckpoint1Summ": {
           "points": 13,
           "threshold": 2
@@ -875,7 +1085,7 @@
         }
       },
 
-      "MengBridgeCourse/2114BinarySearch": {
+      "SWDesignAndDataStructs/2114BinarySearch": {
         "BinarySearchCheckpoint1Summ": {
           "points": 50,
           "threshold": 2
@@ -885,7 +1095,7 @@
           "threshold": 2
         }
       },
-      "MengBridgeCourse/2114Unit12_Program1_Placeholder": {
+      "SWDesignAndDataStructs/2114Unit12_Program1_Placeholder": {
       }
     },
     

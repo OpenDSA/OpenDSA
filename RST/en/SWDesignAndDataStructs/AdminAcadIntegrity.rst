@@ -7,7 +7,7 @@
    :author: Molly
 
 
-Unit 1 Lab 2 Placeholder
+Placeholder
 =========================
 
 
