@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<!-- This is a test of using a URL parameter to define a grammar --
-  -- exercise using a template file. This works, in isolation. The --
-  -- problem is that the exercise does not have a filename. This does --
-  -- not play well with OpenDSA's exercise scoring and configuration --
-  -- mechanism, which depend on filenames. -->
+<!-- This is a test of using a URL parameter to define a grammar
+  exercise using a template file with all information about the
+  exercise stored in a JSON file. To use: Open Test.html in the
+  browser with a URL parameter "json" to identify the JSON file to
+  use. For example, if you are in this directory and you want to
+  open the exercise defined by Parens.json, type:
+  Test.html?json=Parens -->
+
+<!-- This works, in isolation. The problem is that since the exercise
+  does not have a filename, this does not play well with OpenDSA's
+  exercise scoring and configuration mechanism, which depend on
+  filenames. --> 
 
 <html>
   <head>
