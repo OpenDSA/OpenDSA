@@ -101,6 +101,7 @@
       "Tutorials/junitcoverage": {},
       "Tutorials/mutationtesting": {},
       "Tutorials/mutationtesting_example": {},
+      "Tutorials/mutationtesting_faq": {},
       "Testing/TestIntro": {},
       "Testing/TestCoverage": {
         "TriangleApplet": {
