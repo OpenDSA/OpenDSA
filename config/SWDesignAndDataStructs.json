@@ -32,7 +32,8 @@
   "zeropt_assignments": false,
   "narration_enabled": true,
   "include_tree_view": false,
-  "chapter_name": "Unit",
+  "chapter_name": "Module",
+  "start_chap_num": 1,
   "html_theme_options": {
     "show_source": false,
     "show_search": false,
@@ -80,7 +81,7 @@
   },
   "chapters": {
 
-    "Module 1: Introduction": {
+    "Introduction": {
       "SWDesignAndDataStructs/AdminWelcome": {
       },
       "SWDesignAndDataStructs/AdminCourseIntro": {
@@ -101,7 +102,7 @@
       }
     },
     
-    "Module 2: Java Review": {
+    "Java Review": {
       "SWDesignAndDataStructs/ContentExceptions": {
       },
       "SWDesignAndDataStructs/ContentPolymorphism2": {
@@ -120,7 +121,7 @@
       }
     },
     
-    "Module 3: Bags": {
+    "Bags": {
       "SWDesignAndDataStructs/Quiz1Info": {
       },
       "SWDesignAndDataStructs/ContentBags1": {
@@ -137,7 +138,7 @@
       }
     },
     
-    "Module 4: Linked Chains, Bags Continued": {
+    "Linked Chains, Bags Continued": {
       "SWDesignAndDataStructs/ContentLinkedChains": {
       },
       "SWDesignAndDataStructs/ContentLinkedBags": {
@@ -155,7 +156,7 @@
       
     },
 
-    "Module 5: Efficiency, Stacks": {
+    "Efficiency, Stacks": {
       "SWDesignAndDataStructs/ContentEfficiency": {
       },
       "SWDesignAndDataStructs/ContentStacks": {
@@ -170,7 +171,7 @@
       }
     },
 
-    "Module 6: Ethics and Design": {
+    "Ethics and Design": {
       "SWDesignAndDataStructs/Quiz2Info": {
       },
       "SWDesignAndDataStructs/ContentEthics": {
@@ -187,7 +188,7 @@
       }
     },
 
-    "Module 7: Recursion": {
+    "Recursion": {
       "SWDesignAndDataStructs/ContentRecursion": {
       },
       "SWDesignAndDataStructs/Project3": {
@@ -200,7 +201,7 @@
       }
     },
 
-    "Module 8: Queues": {
+    "Queues": {
       "SWDesignAndDataStructs/ContentQueues": {
       },
       "SWDesignAndDataStructs/Lab8Carrano": {
@@ -213,7 +214,7 @@
       }
     },
 
-    "Module 9: Lists and Generics": {
+    "Lists and Generics": {
       "SWDesignAndDataStructs/ContentLists": {
       },
       "SWDesignAndDataStructs/ContentGenerics2": {
@@ -231,7 +232,7 @@
     },
     
 
-    "Module 10: Comparing, Sorting and Iterators": {
+    "Comparing, Sorting and Iterators": {
       "SWDesignAndDataStructs/Quiz3Info": {
       },
       "SWDesignAndDataStructs/ContentComparingAndSorting": {
@@ -246,7 +247,7 @@
       }
     },
 
-    "Module 11: Sorted Lists": {
+    "Sorted Lists": {
       "SWDesignAndDataStructs/ContentSortedLists": {
       },
       "SWDesignAndDataStructs/Project5": {
@@ -257,12 +258,12 @@
       }
     },
 
-    "Module 12: Project ": {
+    "Project ": {
       "SWDesignAndDataStructs/Project5Milestone": {
      }
     },
     
-    "Module 13:Cloning and Trees ": {
+    "Cloning and Trees ": {
       "SWDesignAndDataStructs/ContentCloning": {
       },
       "SWDesignAndDataStructs/ContentTrees": {
@@ -274,7 +275,7 @@
 
     },
 
-    "Module 14: Binary Search ": {
+    "Binary Search ": {
       "SWDesignAndDataStructs/Quiz4Info": {
       },
       "SWDesignAndDataStructs/Project5GroupFeedback": {
@@ -288,7 +289,7 @@
 
     },
     
-    "Module 15: Review": {
+    "Review": {
       "SWDesignAndDataStructs/FinalExamInfo": {
       },
       "SWDesignAndDataStructs/ContentCoursePerceptions2": {
