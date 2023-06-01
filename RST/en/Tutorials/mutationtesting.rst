@@ -36,7 +36,7 @@ There is no need to install any additional plug-in for mutation testing.
 Just make sure that you have the latest version of the Web-CAT
 Submission Plug-in.
 (You should re-install the Web-CAT Submission Plug-in at the start of
-every semester that use use Web-CAT.)
+every semester that uses Web-CAT.)
 
 Please note: If you have previously installed the Web-CAT Submission
 Plug-in for earlier courses, you must uninstall and re-install the
