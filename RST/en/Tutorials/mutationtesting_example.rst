@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Rifat Sabbir Mansur
+   :author: Rifat Sabbir Mansur and Cliff Shaffer
    :topic: Mutation testing
 
 Mutation Testing Examples
