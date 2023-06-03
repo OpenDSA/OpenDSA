@@ -1,12 +1,12 @@
 SHELL := /bin/bash
-RM = rm --recursive --force
+RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 .DEFAULT_GOAL := help
 JS_LINT = eslint --no-color
 CSS_LINT = csslint --quiet --ignore=ids,adjoining-classes
 # CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
-JSON_LINT = jsonlint --quiet
-PYTHON_LINT = pyLint --disable=C --reports=y
+JSON_LINT = jsonlint --quiet --compact
+PYTHON_LINT = pylint --disable=C --reports=y
 # Can be overridden by env varis, such as ODSA_ENV='PROD'
 ODSA_ENV ?= DEV
 # Python used for building books:
@@ -30,12 +30,12 @@ help: ## This help dialog
 	@echo '   To jump into the container: docker-compose exec opendsa bash'
 	@echo '   Within the container, you can run these make commands:'
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:  make \033[36m<target>\033[0m\nTargets:\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
-	@echo
-	@echo Comprehensive list of books:   $(ALL_BOOKS)
-	@echo
+	@echo '    Comprehensive list of books:'
+	@echo $(BOOKS)
+	@echo '    Comprehensive list of slide-books:'
+	@echo $(SLIDE_BOOKS)
 
-clean: ## Deletes all Books (!!!) and minified JS and CSS files
-	- $(RM) *~
+clean: ## Deletes all Books (!!!), minified JS and CSS files, and temp/backup files
 	- $(RM) Books
 	- $(RM) lib/*-min.*
 	- $(RM) Doc/*~
@@ -44,31 +44,33 @@ clean: ## Deletes all Books (!!!) and minified JS and CSS files
 
 webserver: ## Starts the Flask server
 	@echo If using the proxy, OpenDSA URL will be: https://opendsa.localhost.devcom.vt.edu
-	gunicorn -w 4 -b 0.0.0.0:8080 app:app
+	@echo otherwise, URL might be at https://localhost:8080 or https://127.0.0.1:8080
+	@echo Starting openDSA Flask webserver...
+	gunicorn --workers 4 --bind 0.0.0.0:8080 app:app
 
-.PHONY: alllint jsonlint lint lintExe csslint pylint
-alllint: lint csslint jsonlint pyLint ## Combines several other linting targets
+.PHONY: lintAll lintJSON lintJS lintExer lintCSS lintPy
+lintAll: lintJS lintCSS lintJSON lintPy ## Runs lint commands for JS, CSS, JSON, and Py
 
-csslint: ## Runs CSS linter on files within AV/
+lintCSS: ## Runs CSS linter on many files within AV/
 	@echo 'running csslint'
 	@$(CSS_LINT) AV/Background/*.css
 	@$(CSS_LINT) AV/Design/*.css
 
-TODOcsslint:
+lintCSStodo:
 	@$(CSS_LINT) AV/List/*.css
 	@$(CSS_LINT) AV/Sorting/*.css
 	@$(CSS_LINT) AV/Hashing/*.css
 	@$(CSS_LINT) AV/Searching/*.css
-	#@$(CSS_LINT) AV/*.css
+	# @$(CSS_LINT) AV/*.css
 	@$(CSS_LINT) Doc/*.css
 	@$(CSS_LINT) lib/*.css
 
-lint: lintExe ## Runs JS linter on files in AV/ and Exercises/
+lintJS: lintExer ## Runs JS linter on many files in AV/ and Exercises/
 	@echo 'running eslint'
 	-@$(JS_LINT) AV/Background/*.js
 	-@$(JS_LINT) AV/Design/*.js
 
-TODOlintAV:
+lintAVtodo:
 	@echo 'linting AVs'
 	-@$(JS_LINT) AV/Binary/*.js
 	-@$(JS_LINT) AV/General/*.js
@@ -78,7 +80,7 @@ TODOlintAV:
 	-@$(JS_LINT) AV/Searching/*.js
 	-@$(JS_LINT) AV/Sorting/*.js
 
-lintExe: ## Runs JS linter on files in Exercises/
+lintExer: ## Runs JS linter on many files in Exercises/
 	@echo 'linting KA Exercises'
 	-@$(JS_LINT) Exercises/AlgAnal/*.js
 	-@$(JS_LINT) Exercises/Background/*.js
@@ -93,7 +95,7 @@ lintExe: ## Runs JS linter on files in Exercises/
 	-@$(JS_LINT) Exercises/RecurTutor2/*.js
 	-@$(JS_LINT) Exercises/Sorting/*.js
 
-TODOlintlib:
+lintlibTODO:
 	@echo 'linting libraries'
 	-@$(JS_LINT) lib/odsaUtils.js
 	-@$(JS_LINT) lib/odsaAV.js
@@ -102,15 +104,15 @@ TODOlintlib:
 	-@$(JS_LINT) lib/registerbook.js
 	-@$(JS_LINT) lib/conceptMap.js
 
-jsonlint: ## Runs JSON linter on files in config/ and AV/
-	@$(JSON_LINT) AV/Background/*.json
-	@$(JSON_LINT) AV/Design/*.json
-	@$(JSON_LINT) config/*.json
-	@$(JSON_LINT) config/Old/*.json
+
+JSON_FNAMES := $(wildcard config/*.json config/Old/*.json AV/Design/*.json AV/Background/*.json)
+lintJSON: ## Runs JSON linter on many JSON files in config/ and AV/
+	@echo 'linting JSON files...'
+	@for jsonfn in $(JSON_FNAMES); do $(JSON_LINT) $$jsonfn; done
 
 
-pyLint: ## Runs python linter on files in tools/ and ODSAextensions/
-	$(PYTHON_LINT) tools/*.py RST/ODSAextensions/**/*.py
+lintPy: ## Runs python linter on files in tools/ and ODSAextensions/
+	$(PYTHON_LINT) app.py tools/*.py RST/ODSAextensions/**/*.py
 	# $(PYTHON_LINT) SourceCode/Python/**/*.py # These are python 2!!!
 
 rst2json: ## Runs the rst2json.py utility
@@ -124,9 +126,9 @@ CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
-min: $(JS_MIN_FILES) $(CSS_MIN_FILES)
+min: $(JS_MIN_FILES) $(CSS_MIN_FILES) ## Minifies JS and CSS files
 ifeq ($(strip $(ODSA_ENV)),DEV)
-	@echo 'Completed: FAKE-Minify of many .js and .css files (just copied)'
+	@echo 'Completed: FAKE-Minify of many .js and .css files (just copied, due to ODSA_ENV=DEV)'
 else
 	@echo 'Completed: Minify of many .js and .css files'
 endif
