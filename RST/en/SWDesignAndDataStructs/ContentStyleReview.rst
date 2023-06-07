@@ -10,6 +10,15 @@
 Style and Documentation
 =======================
 
+Shortcuts
+---------
+
+- :doc:`Introduction </ContentStyle>`
+- :doc:`Naming </ContentStyleNaming>`
+- :doc:`Format </ContentStyleFormat>`
+- :doc:`Documentation </ContentStyleComment>`
+- :doc:`Other Issues </ContentStyleOther>`
+- Review <- You are here 
 
 Review Checklist
 ----------------

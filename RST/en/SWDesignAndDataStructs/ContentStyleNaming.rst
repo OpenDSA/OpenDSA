@@ -10,6 +10,17 @@
 Style and Documentation : Naming
 ================================
 
+Shortcuts
+---------
+
+- :doc:`Introduction </ContentStyle>`
+- Naming <- You are here
+- :doc:`Format </ContentStyleFormat>`
+- :doc:`Documentation </ContentStyleComment>`
+- :doc:`Other Issues </ContentStyleOther>`
+- :doc:`Review </ContentStyleReview>`
+
+
 What's in a name
 ----------------
 Names convey quite a bit of information.  Interpreting them in the manner intended by the developer can help speed up software development tasks, while interpreting them in a manner not intended can slow it down.  Poor or inconsistent naming makes it difficult for a developer to read and understand code, often resulting in longer development times, software bugs, integration issues, or system crashes. 

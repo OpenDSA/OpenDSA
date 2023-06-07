@@ -9,7 +9,18 @@
 
 Style and Documentation: Formatting & Indentation
 =================================================
- 
+
+Shortcuts
+---------
+
+- :doc:`Introduction </ContentStyle>`
+- :doc:`Naming </ContentStyleNaming>`
+- Format <- You are here 
+- :doc:`Documentation </ContentStyleComment>`
+- :doc:`Other Issues </ContentStyleOther>`
+- :doc:`Review </ContentStyleReview>`
+
+
 
 .. admonition:: On the importance of formatting
 

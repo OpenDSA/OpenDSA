@@ -7,11 +7,16 @@
    :author: Molly Domino
 
 
-Style and Documentation
-=======================
+Style and Documentation: Introduction
+=====================================
+- Introduction <- You are here
+- :doc:`Naming </ContentStyleNaming>`
+- :doc:`Format </ContentStyleFormat>`
+- :doc:`Documentation </ContentStyleComment>`
+- :doc:`Other Issues </ContentStyleOther>`
+- :doc:`Review </ContentStyleReview>`
 
-Introduction
-~~~~~~~~~~~~
+
 
 Overview & Objectives
 ---------------------

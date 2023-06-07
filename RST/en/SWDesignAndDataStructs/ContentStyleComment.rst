@@ -10,6 +10,17 @@
 Style and Documentation : Documentation
 =======================================
 
+Shortcuts
+---------
+
+- :doc:`Introduction </ContentStyle>`
+- :doc:`Naming </ContentStyleNaming>`
+- :doc:`Format </ContentStyleFormat>`
+- Documentation <- You are here
+- :doc:`Other Issues </ContentStyleOther>`
+- :doc:`Review </ContentStyleReview>`
+
+
 Documentation Overview 
 ----------------------
 
