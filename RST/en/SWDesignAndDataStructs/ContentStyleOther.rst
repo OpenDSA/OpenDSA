@@ -10,11 +10,14 @@
 Style and Documentation: Other style matters
 ============================================
 
-- :doc:`Introduction </ContentStyle>`
+Shortcuts
+---------
+
+- :doc:`Introduction </ContentStyleIntro>`
 - :doc:`Naming </ContentStyleNaming>`
-- Format <- You are here 
-- :doc:`Comment </ContentStyleComment>`
-- :doc:`Naming </ContentStyleOther>`
+- :doc:`Format </ContentStyleFormat>`
+- :doc:`Documentation </ContentStyleComment>`
+- Other Issues <- You are here
 - :doc:`Review </ContentStyleReview>`
 
 

@@ -13,7 +13,7 @@ Style and Documentation : Documentation
 Shortcuts
 ---------
 
-- :doc:`Introduction </ContentStyle>`
+- :doc:`Introduction </ContentStyleIntro>`
 - :doc:`Naming </ContentStyleNaming>`
 - :doc:`Format </ContentStyleFormat>`
 - Documentation <- You are here

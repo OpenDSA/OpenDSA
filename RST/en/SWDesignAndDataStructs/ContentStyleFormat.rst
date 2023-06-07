@@ -13,7 +13,7 @@ Style and Documentation: Formatting & Indentation
 Shortcuts
 ---------
 
-- :doc:`Introduction </ContentStyle>`
+- :doc:`Introduction </ContentStyleIntro>`
 - :doc:`Naming </ContentStyleNaming>`
 - Format <- You are here 
 - :doc:`Documentation </ContentStyleComment>`

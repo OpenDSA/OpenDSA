@@ -13,13 +13,12 @@ Style and Documentation : Naming
 Shortcuts
 ---------
 
-- :doc:`Introduction </ContentStyle>`
+- :doc:`Introduction </ContentStyleIntro>`
 - Naming <- You are here
 - :doc:`Format </ContentStyleFormat>`
 - :doc:`Documentation </ContentStyleComment>`
 - :doc:`Other Issues </ContentStyleOther>`
 - :doc:`Review </ContentStyleReview>`
-
 
 What's in a name
 ----------------
