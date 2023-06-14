@@ -11,49 +11,23 @@ System documentation can be found at http://opendsa.readthedocs.io/.
 
 ## Setup
 
-1. Install [Docker](https://docs.docker.com/get-docker/).  It is the only requirement, and it runs on just about every platform.
-2. Clone this repository
+1. Install [Docker](https://docs.docker.com/get-docker/). 
+2. Install [Git](https://git-scm.com/book/en/v2/fGetting-Started-Installing-Git)
+3. Clone this repository
     - For reading only: `git clone git://github.com/OpenDSA/OpenDSA.git`
     - For read/write: `git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git`
-3. Spin up the service: `docker-compose up` (and leave this running)
-    - The first builds of images takes under 5 minutes.  Running them later takes under 10 seconds.
+4. Start the service: `docker-compose up` (and leave this running)
+    - The first build of images takes under 5 minutes.  Running them later takes under 10 seconds.
     - The service is ready when you see `opendsa_1 | * Serving Flask app "app.py"`
+    - This terminal will not be usable at this point since it is a console for the web server.
     - An interrupt signal (Press CTRL + C) or the `docker-compose down` command will stop the containers.
-4. Build any books from within the container:
-    - Enter the running container with `docker-compose exec opendsa bash`
+5. Build any books from within the container:
+    - In order to interact with OpenDSA, you must access a shell in the running container with `docker-compose exec opendsa bash` in another console in the root of the OpenDSA directory.
+        - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker-compose exec opendsa bash`
     - To make the book defined in `config/Test.json`, now use the command `make Test`
-5. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
+6. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
+7. In order to stop the container, you can use the CTRL + C (sending an interrupt signal).
 
-This command will first pull and build the OpenDSA images before
-instantiating the OpenDSA container.
-This command runs several setup commands in the background to
-initialize the submodules and install the python packages requirements
-of OpenDSA.
-**This will probably take a long time to run the first time.**
-
-Once this command completes, it will fire up a local web server, that
-you can reach at this URL: `http://127.0.0.1:8080/`. This terminal
-will not be useable at this point since it is a console for the web
-server.
-
-In order to interact with OpenDSA, you must get access to a shell
-within the container. To do this, open another console window, go
-to the root of your OpenDSA repository, and issue the following
-command:
-
-    docker-compose exec opendsa bash
-
-which will place you in the correct location within the container to
-run any OpenDSA commands including `Make Test`. Note: If you are on
-Windows using the MINGW64 shell, you might need to use the command:
-
-    winpty docker-compose exec opendsa bash
-
-In order to stop the container you can use CTRL + C (sending an
-interrupt signal).
-
-[Note that this won't work unless you have the proper tools
-installed.]
 ### Toolchain Installation
 
 For more information on OpenDSA's toolchain: [See our documentation here](http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment)
