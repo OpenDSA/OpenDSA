@@ -58,6 +58,11 @@ If you are on Windows, you may run into issues with any `docker exec` commands (
 
 If any of the python packages (or any of the ruby gems) have been upgraded since the last time the container has been run, you will need to run `docker-compose build` before you `docker-compose up`.
 
+If you are using the provided Docker containers and they are out of date:
+1. Remove the currently running containers and images with `docker-compose down`
+2. Pull the updated version of the images with `docker-compose pull`
+3. Start up the server as you normally do with `docker-compose up`
+
 
 ## Directory Structure
 
