@@ -12,6 +12,15 @@
 Turing Machine Exercises
 ========================
 
+Note: In these exercises, a blank space is indicated by a box or just
+a blank in the field. These exercises do not recognize # as the space
+character.
+
+To complete adding an edge, the cursor needs to NOT be in the
+direction field, but instead be in one of the first two fields.
+Then, hit the 'enter' key.
+
+
 Exercise 1
 ----------
 

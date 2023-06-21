@@ -1,0 +1,24 @@
+{
+    "s0": {
+        "title": "Printing I love Computer Science!",
+        "instructions": "Construct a program that prints out I, love and Computer Science on separate lines.",
+        "initial": ["print(\"I\")", 
+                    "print(\"love\")",
+                    "print(\"Computer Science\")"],
+        "unittest": "",
+        "type": "SIMPLE",
+        "concepts": ["Call", "Str"],
+        "order": 0
+    },
+    "s1": {
+        "title": "Creating a function that prints hello world",
+        "instructions": "Construct a program that prints out Hello functions.",
+        "initial": ["def func():",
+                    "\tprint(\"Hello functions!\")",
+                    "func()"],
+        "type": "SIMPLE",
+        "title": "",
+        "concepts": ["Call", "Str", "FunctionDef"],
+        "order": 1
+    }
+}

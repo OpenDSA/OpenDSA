@@ -7,154 +7,156 @@ $(document).ready(function () {
   var arrow = String.fromCharCode(8594);
   var grammar = "[[\"S\",\"→\",\"AB\"],\
                   [\"A\",\"→\",\"B\"],\
+                  [\"B\",\"→\",\"Bb\"],\
                   [\"B\",\"→\",\"C\"],\
                   [\"C\",\"→\",\"A\"],\
                   [\"C\",\"→\",\"c\"],\
                   [\"C\",\"→\",\"Da\"],\
                   [\"D\",\"→\",\"A\"]]";
-  var grammerArray = JSON.parse(grammar);
-  var grammerMatrix = new GrammarMatrix( av,grammerArray, {style: "table", left: 10, top: 125});
-  grammerMatrix.hide();
-  var grammerMatrix2 = new GrammarMatrix( av,null, {style: "table", left: 250, top: 125});
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
-  grammerMatrix2.createRow(["", arrow, ""]);
+  var grammarArray = JSON.parse(grammar);
+  var grammarMatrix = new GrammarMatrix( av,grammarArray, {style: "table", left: 10, top: 45});
+  grammarMatrix.hide();
+  var grammarMatrix2 = new GrammarMatrix( av,null, {style: "table", left: 250, top: 45});
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
+  grammarMatrix2.createRow(["", arrow, ""]);
 
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.productions.push(["", arrow, ""]);
-  grammerMatrix2.modifyProduction(0,0,"$S$");
-  grammerMatrix2.modifyProduction(0,2,"$AB$");
-  grammerMatrix2.modifyProduction(1,0,"$B$");
-  grammerMatrix2.modifyProduction(1,2,"$Bb$");
-  grammerMatrix2.modifyProduction(2,0,"$C$");
-  grammerMatrix2.modifyProduction(2,2,"$c$");
-  grammerMatrix2.modifyProduction(3,0,"$C$");
-  grammerMatrix2.modifyProduction(3,2,"$Da$");
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.productions.push(["", arrow, ""]);
+  grammarMatrix2.modifyProduction(0,0,"$S$");
+  grammarMatrix2.modifyProduction(0,2,"$AB$");
+  grammarMatrix2.modifyProduction(1,0,"$B$");
+  grammarMatrix2.modifyProduction(1,2,"$Bb$");
+  grammarMatrix2.modifyProduction(2,0,"$C$");
+  grammarMatrix2.modifyProduction(2,2,"$c$");
+  grammarMatrix2.modifyProduction(3,0,"$C$");
+  grammarMatrix2.modifyProduction(3,2,"$Da$");
   for(var i = 4; i<14; i++)
-    grammerMatrix2.hideRow(i);
-  grammerMatrix2.hide();
+    grammarMatrix2.hideRow(i);
+  grammarMatrix2.hide();
 
-  //frame 1
-  av.umsg("Next we will consider Unit Productions. These are productions that simply replace one variable with another, such as $A \\Rightarrow B$. When deriving a string, these seem an unnecessary step. Instead of going from $A$ to $B$ and then replacing $B$ with the RHS of one of its rules (such as $B \\Rightarrow bb$), we could simply go there directly with a rule like $A \\Rightarrow bb$. Of couse, we have to replace every production that has $B$ on its LHS with an equivalent production that has $A$ on its LHS.");
+  // Frame 1
+  av.umsg("Next we will consider Unit Productions. These are productions that simply replace one variable with another, such as $A \\Rightarrow B$. When deriving a string, these seem an unnecessary step. Instead of going from $A$ to $B$ and then replacing $B$ with the RHS of one of its rules (such as $B \\Rightarrow bb$), we could simply go there directly with a rule like $A \\Rightarrow bb$. Of couse, this requires that we also replace every other production that has $B$ on its LHS with an equivalent production that has $A$ on its LHS.");
   av.displayInit();
   
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("which"));
   av.step();
 
-  //frame 4
-  av.umsg(Frames.addQuestion("q4"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("subst"));
   av.step();
 
-  //frame 5
-  av.umsg(Frames.addQuestion("q5"));
+  // Frame 4
+  av.umsg(Frames.addQuestion("nounit"));
   av.step();
 
-  //frame 6
-  av.umsg(Frames.addQuestion("q6"));
+  // Frame 5
+  av.umsg(Frames.addQuestion("fail"));
   av.step();
 
-  //frame 7
-  av.umsg(Frames.addQuestion("q7"));
+  // Frame 6
+  av.umsg(Frames.addQuestion("lambda"));
   av.step();
 
-  //frame 9
-  av.umsg(Frames.addQuestion("q9"));
+  // Frame 7
+  av.umsg(Frames.addQuestion("star"));
   av.step();
 
-  //frame 10
-  av.umsg(Frames.addQuestion("q10"));
-  grammerMatrix.show();
+  // Frame 8
+  av.umsg(Frames.addQuestion("graph"));
+  grammarMatrix.show();
   av.step();
 
-  //frame 11
-  av.umsg(Frames.addQuestion("q11"));
-  var VDG = new av.ds.FA({left: 10, top: 375, width: 300});
-  var S = VDG.addNode({value:"S", left: 0, top: 10});
-  var A = VDG.addNode({value:"A", left: 50, top: 10});
-  var B = VDG.addNode({value:"B", left:100, top: 10});
-  var C = VDG.addNode({value:"C",left:25, top: 70});
-  var D = VDG.addNode({value:"D", left:75, top: 70});
-  grammerMatrix.highlight(1);
+  // Frame 9
+  av.umsg(Frames.addQuestion("AB"));
+  var VDG = new av.ds.FA({left: 10, top: 345, width: 300});
+  var S = VDG.addNode({value:"S", left: 0, top: 0});
+  var A = VDG.addNode({value:"A", left: 50, top: 0});
+  var B = VDG.addNode({value:"B", left:100, top: 0});
+  var C = VDG.addNode({value:"C",left:25, top: 60});
+  var D = VDG.addNode({value:"D", left:75, top: 60});
+  grammarMatrix.highlight(1);
   av.step();
 
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
+  // Frame 10
+  av.umsg(Frames.addQuestion("BC"));
   VDG.addEdge(A, B, {weight:" "});
-  grammerMatrix.unhighlight(1);
-  grammerMatrix.highlight(2);
+  grammarMatrix.unhighlight(1);
+  grammarMatrix.highlight(3);
   VDG.layout();
   av.step();
-  //frame 13
-  av.umsg(Frames.addQuestion("q13"));
+
+  // Frame 11
+  av.umsg(Frames.addQuestion("CA"));
   VDG.addEdge(B, C, {weight:" "});
-  grammerMatrix.unhighlight(2);
-  grammerMatrix.highlight(3);
+  grammarMatrix.unhighlight(3);
+  grammarMatrix.highlight(4);
   VDG.layout();
   av.step();
 
-  //frame 14
-  av.umsg(Frames.addQuestion("q14"));
+  // Frame 12
+  av.umsg(Frames.addQuestion("DA"));
   VDG.addEdge(C, A, {weight:" "});
-  grammerMatrix.unhighlight(4);
-  grammerMatrix.highlight(6);
+  grammarMatrix.unhighlight(4);
+  grammarMatrix.highlight(7);
   VDG.layout();
   av.step();
 
-  //frame 15
-  av.umsg(Frames.addQuestion("q15"));
+  // Frame 13
+  av.umsg(Frames.addQuestion("nonunit"));
   VDG.addEdge(D, A, {weight:" "});
-  grammerMatrix.unhighlight(7);
+  grammarMatrix.unhighlight(7);
   VDG.layout();
   av.step();
 
-  //frame 16
-  av.umsg(Frames.addQuestion("q16"));
-  grammerMatrix2.show();
+  // Frame 14
+  av.umsg(Frames.addQuestion("dfsA"));
+  grammarMatrix2.show();
   av.step();
 
-  //frame 17
-  av.umsg(Frames.addQuestion("q17"));
-  var V = new av.ds.array(["$A \\stackrel{*}{\\Rightarrow} C$","$A \\stackrel{*}{\\Rightarrow} B$", "", "", "","","","",""], {left: 5, top: 520, indexed: true});
+  // Frame 15
+  av.umsg(Frames.addQuestion("dfsB"));
+  var V = new av.ds.array(["$A \\stackrel{*}{\\Rightarrow} C$","$A \\stackrel{*}{\\Rightarrow} B$", "", "", "","","","",""], {left: 5, top: 470, indexed: true});
   av.step();
 
-  //frame 18
-  av.umsg(Frames.addQuestion("q18"));
+  // Frame 16
+  av.umsg(Frames.addQuestion("dfsC"));
   V.value(2, "$B \\stackrel{*}{\\Rightarrow} A$");
   V.value(3, "$B \\stackrel{*}{\\Rightarrow} C$");
   V.layout();
   av.step();
 
-  //frame 19
-  av.umsg(Frames.addQuestion("q19"));
+  // Frame 17
+  av.umsg(Frames.addQuestion("dfsD"));
   V.value(4, "$C \\stackrel{*}{\\Rightarrow} B$");
   V.value(5, "$C \\stackrel{*}{\\Rightarrow} A$");
   V.layout();
   av.step();
 
-  //frame 20
-  av.umsg(Frames.addQuestion("q20"));
+  // Frame 18
+  av.umsg(Frames.addQuestion("repAC"));
   V.value(6, "$D \\stackrel{*}{\\Rightarrow} C$");
   V.value(7, "$D \\stackrel{*}{\\Rightarrow} B$");
   V.value(8, "$D \\stackrel{*}{\\Rightarrow} A$");
@@ -162,87 +164,88 @@ $(document).ready(function () {
   V.highlight(0);
   av.step();
 
-  //frame 21
-  av.umsg(Frames.addQuestion("q21"));
+  // Frame 19
+  av.umsg(Frames.addQuestion("repAB"));
   V.unhighlight(0);
   V.highlight(1);
-  grammerMatrix2.showRow(4);
-  grammerMatrix2.showRow(5);
-  grammerMatrix2.modifyProduction(4,0,"$A$");
-  grammerMatrix2.modifyProduction(4,2,"$c$");
-  grammerMatrix2.modifyProduction(5,0,"$A$");
-  grammerMatrix2.modifyProduction(5,2,"$Da$");
+  grammarMatrix2.showRow(4);
+  grammarMatrix2.showRow(5);
+  grammarMatrix2.modifyProduction(4,0,"$A$");
+  grammarMatrix2.modifyProduction(4,2,"$c$");
+  grammarMatrix2.modifyProduction(5,0,"$A$");
+  grammarMatrix2.modifyProduction(5,2,"$Da$");
   av.step();
 
-  //frame 22
-  av.umsg(Frames.addQuestion("q22"));
+  // Frame 20
+  av.umsg(Frames.addQuestion("repBA"));
   V.unhighlight(1);
   V.highlight(2);
-  grammerMatrix2.showRow(6);
-  grammerMatrix2.modifyProduction(6,0,"$A$");
-  grammerMatrix2.modifyProduction(6,2,"$Bb$");
+  grammarMatrix2.showRow(6);
+  grammarMatrix2.modifyProduction(6,0,"$A$");
+  grammarMatrix2.modifyProduction(6,2,"$Bb$");
   av.step();
 
-  //frame 23
-  av.umsg(Frames.addQuestion("q23"));
+  // Frame 21
+  av.umsg(Frames.addQuestion("repBC"));
   V.unhighlight(2);
   V.highlight(3);
-  grammerMatrix2.showRow(7);
-  grammerMatrix2.showRow(8);
-  grammerMatrix2.modifyProduction(7,0,"$B$");
-  grammerMatrix2.modifyProduction(7,2,"$c$");
-  grammerMatrix2.modifyProduction(8,0,"$B$");
-  grammerMatrix2.modifyProduction(8,2,"$Db$");
+  grammarMatrix2.showRow(7);
+  grammarMatrix2.showRow(8);
+  grammarMatrix2.modifyProduction(7,0,"$B$");
+  grammarMatrix2.modifyProduction(7,2,"$c$");
+  grammarMatrix2.modifyProduction(8,0,"$B$");
+  grammarMatrix2.modifyProduction(8,2,"$Db$");
   av.step();
 
-  //frame 24
-  av.umsg(Frames.addQuestion("q24"));
+  // Frame 22
+  av.umsg(Frames.addQuestion("repCB"));
   V.unhighlight(3);
   V.highlight(4);
   av.step();
 
-  //frame 25
-  av.umsg(Frames.addQuestion("q25"));
+  // Frame 23
+  av.umsg(Frames.addQuestion("repCA"));
   V.unhighlight(4);
   V.highlight(5);
-  grammerMatrix2.showRow(9);
-  grammerMatrix2.modifyProduction(9,0,"$C$");
-  grammerMatrix2.modifyProduction(9,2,"$Bb$");
+  grammarMatrix2.showRow(9);
+  grammarMatrix2.modifyProduction(9,0,"$C$");
+  grammarMatrix2.modifyProduction(9,2,"$Bb$");
   av.step();
 
-  //frame 26
-  av.umsg(Frames.addQuestion("q26"));
+  // Frame 24
+  av.umsg(Frames.addQuestion("repDC"));
   V.unhighlight(5);
   V.highlight(6);
   av.step();
 
-  //frame 27
-  av.umsg(Frames.addQuestion("q27"));
+  // Frame 25
+  av.umsg(Frames.addQuestion("repDB"));
   V.unhighlight(6);
   V.highlight(7);
-  grammerMatrix2.showRow(10);
-  grammerMatrix2.showRow(11);
-  grammerMatrix2.showRow(12);
-  grammerMatrix2.modifyProduction(10,0,"$D$");
-  grammerMatrix2.modifyProduction(10,2,"$Bb$");
-  grammerMatrix2.modifyProduction(11,0,"$D$");
-  grammerMatrix2.modifyProduction(11,2,"$c$");
-  grammerMatrix2.modifyProduction(12,0,"$D$");
-  grammerMatrix2.modifyProduction(12,2,"$Da$");
+  grammarMatrix2.showRow(10);
+  grammarMatrix2.showRow(11);
+  grammarMatrix2.showRow(12);
+  grammarMatrix2.modifyProduction(10,0,"$D$");
+  grammarMatrix2.modifyProduction(10,2,"$Bb$");
+  grammarMatrix2.modifyProduction(11,0,"$D$");
+  grammarMatrix2.modifyProduction(11,2,"$c$");
+  grammarMatrix2.modifyProduction(12,0,"$D$");
+  grammarMatrix2.modifyProduction(12,2,"$Da$");
   av.step();
 
-  //frame 28
-  av.umsg(Frames.addQuestion("q28"));
+  // Frame 26
+  av.umsg(Frames.addQuestion("repDA"));
   V.unhighlight(7);
   V.highlight(8);
   av.step();
 
-  //frame 2
-  av.umsg("We correctly removed all unit productions.");
+  // Frame 27
+  av.umsg("We have now correctly removed all unit productions.");
   V.unhighlight(8);
   V.hide();
-  
+  av.step();
+
+  // Frame 28
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
-
-
 });

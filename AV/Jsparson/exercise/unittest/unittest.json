@@ -1,0 +1,22 @@
+{
+    "u0": {
+        "title": "Reverse the list",
+        "instructions": "Construct a program which creates a new list that is reverse of list [1, 2, 3, 4, 5].",
+        "initial": ["def list_reverse(lst):",
+                    "\tnew_list = [0] * len(lst)",
+                    "\ti = 0",
+                    "\tj = len(lst) - 1",
+                    "\twhile i < len(lst):",
+                    "\t\tnew_list[j] = lst[i]",
+                    "\t\ti += 1",
+                    "\t\tj = j - 1",    
+                    "\treturn new_list",
+                    "list1 = [1, 2, 3, 4, 5]", 
+                    "list2 = list_reverse(list1)", 
+                    "print(list2)"],
+        "type": "UNITTEST",
+        "unittest": "import unittestparson\nclass myTests(unittestparson.unittest):\n  def testOne(self):\n    self.assertEqual(list_reverse([1, 2, 3, 4, 5]),[5, 4, 3, 2, 1], \"function <code>list_reverse([1, 2, 3, 4, 5])</code>.\")\n_test_result = myTests().main()\n",
+        "concepts": ["Attribute","Return","Add","List","arg","Call","Index","AugAssign","While","FunctionDef","Assign","Lt","Int"],
+        "order": 0
+    }
+}

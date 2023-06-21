@@ -15,19 +15,6 @@
 Combining Turing Machines
 =========================
 
-.. slide:: Computation
-
-   We can easily demonstate simple computation on unary
-   representation.
-
-   .. inlineav:: TMPlusoneCON ss
-      :long_name: Turing Machine Replace
-      :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMPlusoneCON.css
-      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMPlusoneCON.js
-      :align: center
-      :output: show
-
-
 .. slide:: An Important TM
 
    .. inlineav:: TManbncnCON ss
@@ -46,7 +33,7 @@ Combining Turing Machines
 
    | Turing machine computations can be combined into larger machines:
    |    :math:`M_2` prepares string as input to :math:`M_1`.
-   |    :math:`M_2` passes control to :math:`M_1` with I/O head at end
+   |    :math:`M_2` passes control to :math:`M_1` with I/O head at start
         of input. 
    |    :math:`M_2` retrieves control when :math:`M_1` has completed.
 
@@ -127,11 +114,11 @@ Combining Turing Machines
    |    And we have the beginnings of a more powerful graphical
         language to express our ideas
 
-   **Turing Thesis:** Any computation that can be carried out by
-   mechanical means can be performed by some Turing machine.
-
-   | How would we prove or disprove this?
-   |    What is the technical meaning of the word "thesis"?
+   | **Turing Thesis:** Any computation that can be carried out by
+     mechanical means can be performed by some Turing machine.
+   |    How would we prove or disprove this?
+   |    [Technically, we can't, unless we could really nail down the
+        meaning of "mechanical means"]
 
 
 .. slide:: Formal Concept of Algorithm

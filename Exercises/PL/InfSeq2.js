@@ -109,7 +109,7 @@
       "each occurrence of the number " + randomDigit + " has been replaced " +
       "by " + (randomDigit+1) + ". For example:<br />" +
       "f ( [1,2,3,4,5,6,7,8,9,10, ... ] ) = [" +           
-           [1,2,3,4,5,6,7,8,8,10].map(
+           [1,2,3,4,5,6,7,8,9,10].map(
                function(n) { return n===randomDigit ? randomDigit+1 : n; }) +
            ", ... ]",
       "s",

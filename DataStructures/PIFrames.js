@@ -893,7 +893,8 @@
 
       // umsg section
       $("#" + av_name + " .jsavoutput.jsavline").css({
-        width: "100%"
+        width: "100%",
+        "margin-top": "14px"
       });
 
       // canvas section

@@ -1,12 +1,3 @@
 #NPCCopingFS {
   height: 500px;
 }
-
-#NPCCopingFS .jsavoutput.jsavline {
-  height: 60px;
-}
-
-#NPCCopingFS .jsavhorizontalarray .jsavnode {
-  min-width: 30px !important;
-  max-width: 300px !important;
-}

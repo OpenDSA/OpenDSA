@@ -200,6 +200,87 @@
         }
       }
     },
+    "Context-Free Grammars and Languages":{
+      "PIFLA/CFG1": {},
+      "PIFLA/CFG2": {},
+      "PIFLA/BNF": {},
+      "PIFLA/CFGExercises": {
+        "anbmodd":{
+          "points": 2.0
+        },
+        "ambicn":{
+          "points": 2.0
+        },
+        "ambian":{
+          "points": 2.0
+        },
+        "asbsequal":{
+          "points": 2.0
+        }
+      },
+      "PIFLA/CFGTransformations":{}
+    },
+    "Pushdown Automata":{
+      "PIFLA/PDA": {},
+      "PIFLA/PDAExercises":{
+        "PDAwcwR":{
+          "points": 2.0
+        },
+        "PDAaicjbi":{
+          "points": 3.0
+        },
+        "PDA2asperb":{
+          "points": 3.0
+        },
+        "PDAaibjck":{
+          "points": 3.0
+        }
+      },
+      "PIFLA/PDACFL": {},
+      "PIFLA/DPDA": {}
+    },
+    "Properties of Context-free Languages": {
+      "PIFLA/CFLProp": {}
+    },
+    "Turing Machines": {
+      "PIFLA/TuringMachines": {},
+      "PIFLA/TuringMachinesAdv": {},
+      "PIFLA/TMExercises": {
+        "addOnea": { 
+          "points": 2.0
+        },
+        "eraseABC": { 
+          "points": 2.0
+        },
+        "keepABC": { 
+          "points": 2.0
+        },
+        "aNumsPowerOf2": { 
+          "points": 2.0
+        },
+        "ifaNumsPowerOf2": { 
+          "points": 2.0
+        },
+        "abcWInWWROut": { 
+          "points": 2.0
+        },
+        "abcNawlargerthanNbw": { 
+          "points": 2.0
+        },
+        "replaceABAbyACA": { 
+          "points": 2.0
+        },
+        "abPalindromes": { 
+          "points": 2.0
+        }
+      }
+    },
+    "Limits to Computing": {
+      "PIFLA/LimCompFLA": {},
+      "PIFLA/Reduction": {},
+      "PIFLA/NPComplete": {},
+      "PIFLA/Impossible": {}
+    },
     "Appendix": {
       "Glossary": {}
     }

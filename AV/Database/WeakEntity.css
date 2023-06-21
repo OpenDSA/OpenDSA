@@ -1,0 +1,39 @@
+#WeakEntity {
+  height: 500px;
+  width: 900px;
+}
+
+.jsavarray .jsavindex {
+  height: 20px;
+  min-height: 20px;
+  line-height: 20px
+}
+.jsavoutput.jsavline {
+  height: 60px;
+}
+
+.dashed{
+  stroke-dasharray: 5, 5;
+}
+.jsavmatrix.jsavmatrixtable {
+
+  line-height: 30px !important;
+      min-width: 150px !important;
+      max-width: 600px !important;
+      min-height: 30px !important;
+      max-height: 300px !important;
+  }
+  .jsavverticalarray .jsavnode {
+    line-height: 30px !important;
+    min-width: 150px !important;
+    max-width: 600px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+}
+.jsavhorizontalarray .jsavnode {
+  line-height: 30px !important;
+  min-width: 70px !important;
+  max-width: 150px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+}

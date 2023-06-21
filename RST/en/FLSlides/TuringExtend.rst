@@ -20,7 +20,7 @@ Turing Machine Extensions
    | Turing's Thesis claims that TM is as powerful as "any machine"
    | We might add features to a TM.
    |    If the features let us do something that we could not do
-        before, that disproves Turing's Thesis
+        before, that disproves Turing's Thesis.
    |    If we can simulate the new feature with the standard model,
         this adds support to (but does not prove) the Turing thesis.
    | As usual, we say that two machine types are equivalent if they
@@ -93,8 +93,8 @@ Turing Machine Extensions
    | :math:`L = \{a^nb^nc^n \mid n \geq 1\}` can be accepted by an
      LBA.
    |    So, LBA more powerful than pushdown automata.
-   | But turns out to be less powerful than TM (but this is hard to
-     prove)
+   | But turns out to be less powerful than TM with unrestricted space
+     (but this is hard to prove)
    
 
 .. slide:: A Universal Turing Machine

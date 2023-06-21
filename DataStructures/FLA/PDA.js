@@ -1370,7 +1370,7 @@
       var productions = this.productions;
       var counter = 0;
       var newGrammarMatrix;
-      this.jsav.umsg("We will start by looking for procutions that produce an infinity loop. In other words, productions that will not produce terminal string.");
+      this.jsav.umsg("We will start by looking for productions that produce an infinite loop. In other words, productions that will not produce a terminal string.");
       this.jsav.step();
       while (this.findDerivable(derivers, productions)) {
         counter++;
@@ -1928,7 +1928,9 @@
         showStatesViz()
         jsav.step();
       }
-    
+// CAS: There was a bug/inconsistency with the accept definition. The example showed removing the Z, which should not happen. It should accept on final state. But the code below is causing this reject. So I am hacking out the accept/reject display so that it won't show the wrong thing. This should get fixed.
+      return;  // CAS: Fix the bug and remove this line!
+      
       clearStates()
       var rejected = true;
       for (var k = 0; k < currentStates.length; k++) {

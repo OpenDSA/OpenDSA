@@ -50,6 +50,28 @@
     "Week 4": {
       "FLSlides/NonRegular": {},
       "FLSlides/NRClosure": {}
+    },
+    "Week 5": {
+      "FLSlides/CFL": {}
+    },
+    "Week 7": {
+      "FLSlides/CFLSimp": {}
+    },
+        "Week 9.1": {
+      "FLSlides/PDA": {},
+      "FLSlides/PDACFL": {},
+      "FLSlides/DPDA": {},
+      "FLSlides/DPDAGrammar": {}
+    },
+    "Week 9.2": {
+      "FLSlides/CFLProp": {},
+      "FLSlides/CFLClosure": {}
+    },
+    "Week 10": {
+      "FLSlides/Turing": {},
+      "FLSlides/TuringDecide": {},
+      "FLSlides/TuringCombine": {},
+      "FLSlides/TuringExtend": {}
     }
   }
 }

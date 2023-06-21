@@ -29,42 +29,42 @@ $(document).ready(function () {
   av.umsg("To summarize what we have done so far: We have found algorithms to remove from any CFG the useless productions, $\\lambda$ productions, and unit productions.");
   av.displayInit();
 
-  //frame 2
-  av.umsg(Frames.addQuestion("q2"));
+  // Frame 2
+  av.umsg(Frames.addQuestion("clean"));
   av.step();
 
-  //frame 3
-  av.umsg(Frames.addQuestion("q3"));
+  // Frame 3
+  av.umsg(Frames.addQuestion("order"));
   av.step();
 
-  //frame 4
-  av.umsg(Frames.addQuestion("q4"));
+  // Frame 4
+  av.umsg(Frames.addQuestion("next"));
   av.step();
 
-  //frame 5
+  // Frame 5
   av.umsg("Exactly, so we must follow the order<br/>1. Remove $\\lambda$-productions<br/>2. Remove unit productions<br/>3. Remove useless productions");
   av.step();
 
-  //frame 8
+  // Frame 6
   av.umsg("<b>Definition:</b> A CFG is in <b>Chomsky Normal Form (CNF)</b> if all productions are of the form<br/>$A \\rightarrow BC$ or $A \\rightarrow a$<br/>where $A, B, C \\in V$ and $a \\in T$<br/><br/>Why would you want to put a grammar in this form? Because it is easier to work with in proofs. We won't use this right away, but we will need this later in the semester.");
   av.step();
 
-  //frame 9
+  // Frame 7
   av.umsg("$\\textbf{Theorem:}$ Any CFG $G$ with $\\lambda$ not in L(G) has an equivalent grammar in CNF.");
   av.step();
 
-  //frame 10
-  av.umsg(Frames.addQuestion("q10"));
+  // Frame 8
+  av.umsg(Frames.addQuestion("ready"));
   grammerMatrix.show();
   av.step();
 
-  //frame 11
-  av.umsg(Frames.addQuestion("q11"));
+  // Frame 9
+  av.umsg(Frames.addQuestion("removeterms"));
   grammerMatrix.highlight(0);
   av.step();
 
-  //frame 12
-  av.umsg(Frames.addQuestion("q12"));
+  // Frame 10
+  av.umsg(Frames.addQuestion("Cc"));
   grammerMatrix.unhighlight(0);
   grammerMatrix.highlight(2);
   grammerMatrix.showRow(4);
@@ -77,8 +77,8 @@ $(document).ready(function () {
   grammerMatrix.modifyProduction(0,2,"$C\\ B\\ C_1\\ C_2$");
   av.step();
 
-  //frame 13
-  av.umsg(Frames.addQuestion("q13"));
+  // Frame 11
+  av.umsg(Frames.addQuestion("shortenS"));
   grammerMatrix.unhighlight(2);
   grammerMatrix.modifyProduction(6,0,"$C_3$");
   grammerMatrix.modifyProduction(6,2,"$c$");
@@ -89,8 +89,8 @@ $(document).ready(function () {
   grammerMatrix.highlight(0);
   av.step();
 
-  //frame 14
-  av.umsg(Frames.addQuestion("q14"));
+  // Frame 12
+  av.umsg(Frames.addQuestion("cisdone"));
   grammerMatrix.unhighlight(0);
   grammerMatrix.modifyProduction(0,2,"$C\\ D_1$");
   grammerMatrix.showRow(7);
@@ -99,25 +99,28 @@ $(document).ready(function () {
   grammerMatrix.highlight(2);
   av.step();
 
-  //frame 15
-  av.umsg(Frames.addQuestion("q15"));
+  // Frame 13
+  av.umsg(Frames.addQuestion("D1"));
   grammerMatrix.unhighlight(2);
   grammerMatrix.highlight(7);
   av.step();
 
-  //frame 16
-  av.umsg(Frames.addQuestion("q16"));
+  // Frame 14
+  av.umsg(Frames.addQuestion("arewedone"));
   grammerMatrix.unhighlight(7);
   grammerMatrix.modifyProduction(8,0,"$D_2$");
   grammerMatrix.modifyProduction(8,2,"$C_1\\ C_2$");
   grammerMatrix.showRow(8);
-
   //modify old
   grammerMatrix.modifyProduction(7,2,"$B\\ D_2$");
   av.step();
 
-  //frame 17
-  av.umsg("The resulting grammar is in the CNF. This was quite easy once the grammar has had its $\\lambda$$ productions, unit productions, and useless productions removed.");
+  // Frame 15
+  av.umsg("The resulting grammar is in the CNF. This was quite easy once the grammar has had its $\\lambda$ productions, unit productions, and useless productions removed.");
+  av.step();
+
+  // Frame 16
+  av.umsg("Congratulations! Frameset completed.");
   av.recorded();
   
 });
