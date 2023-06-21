@@ -6,8 +6,8 @@
 .. Title with equal signs as the underline
 .. Make sure the header and underline match length
 
-Title
-=====
+Template/RST Tutorial
+=====================
 
 This is a first level subheading
 --------------------------------
