@@ -8,7 +8,7 @@
    :topic: Mutation testing
 
 Mutation Testing Examples
-======================
+=========================
 
 Types of Mutants
 ---------------------------
@@ -249,7 +249,7 @@ Keep in mind, for multiple conditional expressions, you must test each
 and every one of the expressions. 
 
 Example Code 2: Logical Expression Mutant (Remove Conditionals)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As an example, we want to write a function that takes a number and
 returns TRUE if the number is positive and FALSE if the number is zero
@@ -344,7 +344,7 @@ the previous mutations in the LINES_NOT_TESTED group under the
 Mutations List tab.
 
 Example Code 3: Multiple Mutants in One (EvenOddCheck)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We can have programming statements where we have both arithmetic operation(s) and conditional expression(s).
 In such cases, mutation testing will return mutants for each type and list them under the Mutations List 
@@ -401,7 +401,7 @@ the previous mutations in the LINES_NOT_TESTED group under the
 Mutations List tab.
 
 Example Code 4: Loop Conditions (optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A loop contains a conditional expression that needs testing. 
 However, this is often optional and does not negatively impact mutation coverage. 
