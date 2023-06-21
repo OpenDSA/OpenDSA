@@ -106,7 +106,7 @@ The course team understands that students may, on rare occasions, need to make a
 
 Note that Web-CAT changes may (in most circumstances) take days to complete, students are therefore advised to continue working towards the deadline specified for their existing lab section (unless otherwise advised). 
 
-Checkpoints
+Checkpoint
 -----------
 
 Based upon the content provided so far, please answer these questions to gauge your understanding of the Honor Code, the Course Syllabus, and course logistics.
