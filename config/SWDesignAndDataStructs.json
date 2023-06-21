@@ -82,6 +82,8 @@
   "chapters": {
 
     "Introduction": {
+      "SWDesignAndDataStructs/RSTTemplate": {
+      },
       "SWDesignAndDataStructs/AdminWelcome": {
       },
       "SWDesignAndDataStructs/AdminCourseIntro": {
