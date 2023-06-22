@@ -150,16 +150,19 @@ different answer.
 Second, your tests might not cover some edge cases, or there
 might be issues in the code that mutation testing doesn't reveal.
 
+
 Why do I have bugs in my code despite having 100% Mutation Score?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Again, a high mutation score indicates the effectiveness of your 
+A high mutation score indicates the effectiveness of your 
 tests in capturing the introduced mutations.
-We are only using a particular set of mutation operators, and there 
-are many other mutation operators that test different aspects of your
-code.
-This may leave room for bugs to hide in other parts of your code.
-
+We are only using a particular set of mutation operators.
+While these operators are extremely effective at catching bugs without
+taking an excessive amount of time, they are not perfect.
+Fortunately, even bugs not actually triggered by the mutation tests
+will often be caught by a test suite that is good enough to get 100%
+mutation score for these mutations.
+Still, it is possible for something to get through the net.
 
 For example, let's start with a simple class definition:
 
@@ -180,7 +183,7 @@ For example, let's start with a simple class definition:
 In this case, we have a class `SimpleMath` which takes an `Integer` in 
 the constructor and uses it as a divisor in the `divideByDivisor` method.
 
-Let's also consider a test for this class:
+Now we add a test for this class:
 
 .. code-block:: java
 
@@ -213,16 +216,20 @@ To catch this kind of exception, a good practice would be to add null
 checks in the `SimpleMath` constructor and/or `divideByDivisor` method, 
 and also include corresponding test cases in the test suite.
 
+
 Why do my mutation tests not cover all branches of my code? 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You may have a situation where your mutation tests do not cover all
-branches of your code. 
-In such case, you may want to make sure you are not writing over-constrained 
-code.
+You may have a situation where your unit tests do not cover all
+branches of your code no matter how hard you try.
+Hopefully this will stop you from getting 100% mutation coverage (and
+likewise, you would not get 100% code coverage either).
+In such case, you may want to make sure you are not writing
+over-constrained code.
 
-Consider the situation where you have two points. You want to know which
-quadrant the second point (x2, y2) is in w.r.t. the first point (x1, y1).
+Consider this example of a comparison of two points.
+You want to know which quadrant the second point (x2, y2) is in with
+respect to the first point (x1, y1).
 
 .. code-block:: java
 
@@ -240,22 +247,26 @@ quadrant the second point (x2, y2) is in w.r.t. the first point (x1, y1).
     }
   }
 
-This has the virtue of being quite logical and clear. However, it 
-has some problems.
-It is horribly inefficient, compared to alternatives.
+This has the virtue of being quite logical and clear.
+However, it has some problems.
+For one thing, it is relatively inefficient compared to alternatives,
+requiring many more arithmetic comparison tests.
 But our real concern has to do with testing and mutation coverage.
 
 **Fact:** No series of tests will cover all branches in this code.
 
-Now, consider every possible branch and see what can get triggered. 
-Consider that there have to be at least 8+ branches, and only 4 
-possible inputs.
-You can figure out all the possible branches by trying to hit every 
-branch by brute force, one at a time.
+You can try yourself to verify this by carefully considering the logic
+of the code.
+Can you think of test cases that will trigger each of the eight
+branches?
+Since there are effectively on four possible inputs (the one point can
+only be in one of four positions with respect to the other point),
+you cannot.
 
 Here, we want complete mutation coverage but there are only four 
 logically distinct inputs.
-Therefore, we must come up with code that has only four branches!
+For that to be possible, we must come up with code that has only four
+branches!
 
 For example, our refactored code could look like this:
 
@@ -282,7 +293,10 @@ For example, our refactored code could look like this:
 
 With the refactored code, not only can you test every branch, but 
 this is a lot more efficient. 
-Every branch requires 2 tests.
+Every branch requires two tests.
+(In contrast, the original code needed eight tests if it had to go
+through to the North-East banch.)
 
-This is a good example of how mutation testing can help you to 
-improve the quality and efficiency of your code.
+This is a good example of the other way that mutation testing can help
+you to improve the quality and efficiency of your code, by alerting
+you to over-constrained code blocks.
