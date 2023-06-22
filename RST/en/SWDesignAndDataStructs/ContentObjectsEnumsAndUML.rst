@@ -7,16 +7,45 @@
    :author: Molly Domino
 
 
-Objects, Enums, and UML Diagrams
+Java Fundamentals
 ================================
 
 Objectives
 ----------
 
-* Review Object Oriented Programming
+* write a java class that includes fields, member methods, and invokes imported code
+* develop java code with programming constructs such as if statements, for loops, or while loops
+* trace variables and understand scope
+* distinguish between primitive types and reference types
+* run a java program in eclipse
+* review object Oriented Programming
 * Explore Enum Types
 * Explore Switch Statements
 * Interpret UML diagrams
+
+
+Suggested Reading:  AppendicesB(Java Basics) and C(Classes) from Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry 
+
+Java Basics
+-----------
+
+[5:48] Intro to Java Fundamentals Video
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+     <center>
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/playManifest/entryId/1_2khwqw42/flavorIds/1_k4xczfjs,1_gxsgh793,1_s12lfd84,1_85o2q7go,1_ppeic7ao,1_vpg6d7oe/format/applehttp/protocol/https/a.m3u8?iframeembed=true&playerId=kaltura_player&entry_id=1_phzs60ad&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_nhfcvctj" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+     </center>
+
+.. raw:: html
+
+   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaFundamentalsWelcome.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides 7.3.2.1-JavaOOPUML.pdf</img>
+   </a>
+
+
 
 Java Tips
 ---------
