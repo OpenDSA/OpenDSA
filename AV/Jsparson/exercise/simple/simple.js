@@ -13,7 +13,8 @@ $(document).ready(function () {
     function displayErrors(fb) {
         if (fb.errors.length === 0 && noCredit) {
             noCredit = false
-            ODSA.AV.awardCompletionCredit()
+          ODSA.AV.awardCompletionCredit()
+          console.log("awarded CompletionCredit");
         } 
         if (fb.errors.length > 0) {
             alert(fb.errors[0])
