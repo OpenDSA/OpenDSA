@@ -34,9 +34,11 @@ Java Basics
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/playManifest/entryId/1_2khwqw42/flavorIds/1_k4xczfjs,1_gxsgh793,1_s12lfd84,1_85o2q7go,1_ppeic7ao,1_vpg6d7oe/format/applehttp/protocol/https/a.m3u8?iframeembed=true&playerId=kaltura_player&entry_id=1_phzs60ad&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_nhfcvctj" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+       <center>
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_2khwqw42&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
      </center>
+
+   
 
 .. raw:: html
 
@@ -45,6 +47,25 @@ Java Basics
    Video Slides 7.3.2.1-JavaOOPUML.pdf</img>
    </a>
 
+Some Java Basics To Be Familiar With
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Primitive types, Objects or reference types, wrappers, type casting
+* `Java key words <https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html>`_
+* Assignment statements
+* Expressions, order of operations ++, --
+* Conditionals such as if, if else, nested conditionals and switch
+* Loops such as while and for loops
+* Strings methods
+* Import statements
+* Writing and using own methods, scope
+* Enumerated types
+* Classes, fields, member methods
+
+*Addtional Reference:*
+
+.. raw:: html
+    
+    <a href="https://docs.oracle.com/javase/tutorial/index.html" target="_blank">Oracle Java Tutorial</a>
 
 
 Java Tips
