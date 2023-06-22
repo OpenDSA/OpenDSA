@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fundamentals 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="900" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="SCOPE_Q2">
+        <p class="question">
+          What will be ouput as a result of a call to the calculate method?
+          <pre class="prettyprint">
+            private int sum = 0;
+            private int product = 0;
+            public static final int AMOUNT = 5;
+            
+            public void output(){
+                System.out.println("The sum of the numbers from 1 to " + AMOUNT + " is "
+                                    + sum);
+                System.out.println("The product of the numbers from 1 to " + AMOUNT + 
+                                    " is " + product);
+            
+            }
+            
+            public  void calculate(){
+                int sum = 0;
+                int product = 1;
+            
+                for (int i = 1; i <= AMOUNT; i++){
+                    sum = sum + i;
+                    product = product * i;         
+                }
+            
+                output();
+            }
+          </pre>
+        </p>
+        <div class="solution"><tt>The sum of the numbers from 1 to 5 is 0 The product of the numbers from 1 to 5 is 0</tt></div>
+        <ul class="choices">
+        <li><tt>The sum of the numbers from 1 to 5 is 0 The product of the numbers from 1 to 5 is 120</tt></li>
+        <li><tt>The sum of the numbers from 1 to 5 is 15 The product of the numbers from 1 to 5 is 0</tt></li>
+        <li><tt>The sum of the numbers from 1 to 5 is 15 The product of the numbers from 1 to 5 is 120</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

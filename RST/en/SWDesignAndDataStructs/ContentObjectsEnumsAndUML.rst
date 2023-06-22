@@ -44,7 +44,7 @@ Java Basics
 
    <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaFundamentalsWelcome.pdf" target="_blank">
    <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.3.2.1-JavaOOPUML.pdf</img>
+   Video Slides Java Fundamentals.pdf</img>
    </a>
 
 Some Java Basics To Be Familiar With
@@ -65,11 +65,11 @@ Some Java Basics To Be Familiar With
 
 .. raw:: html
     
-    <a href="https://docs.oracle.com/javase/tutorial/index.html" target="_blank">Oracle Java Tutorial</a>
+<a href="https://docs.oracle.com/javase/tutorial/index.html" target="_blank">Oracle Java Tutorial</a>
 
 
-Java Tips
----------
+Java Methods
+------------
 
 For the following discussion, we're going to be referencing the following Bank
 class:
@@ -204,6 +204,162 @@ class:
    
       }
 
+Java Methods Video
+~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+
+       <center>
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_9mkx6ln7&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+     </center>
+
+
+
+.. admonition:: Correction
+
+    A double can also be thought of as float (not long) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
+
+
+Checkpoint
+----------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/FundamentalsCheckpoint1Summ.html ka
+   :long_name: Checkpoint 1
+
+
+
+Java Variables
+--------------
+
+Java Variables Video
+~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+       <center>
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_wi24ln1w&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+     </center>
+
+
+.. raw:: html
+
+   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaVariables.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides Java Fundamentals.pdf</img>
+   </a>
+
+
+Decimal Formatting
+~~~~~~~~~~~~~~~~~~
+
+The ``java.text.DecimalFormat`` class provides the functionality to format the
+output of real numbers. For example in the example ``Bank.java``, the ``df``
+field is declared:
+
+.. code-block:: java
+
+
+   private static DecimalFormat df = new DecimalFormat("0.00");
+
+So throughout the class the DecimalFormat object can be used to format numbers
+as Strings. For example:
+
+.. code-block:: java
+
+
+   System.out.println("withdrawing $" + df.format(amount));
+
+or
+
+.. code-block:: java
+
+
+   buffer.append(df.format(accountBalance));
+
+Notice that the following formatting can also be used, but it doesn’t append
+leading or trailing zeros:
+
+.. code-block:: java
+
+
+   private static DecimalFormat df = new DecimalFormat("#.##");
+
+For more details about Decimal Format, reference:
+`https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html <https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html>`_.
+
+
+Checkpoint 2
+------------
+.. avembed:: Exercises/SWDesignAndDataStructs/VariablesSumm.html ka
+   :long_name: Checkpoint 2
+
+
+
+Java Control Flow
+-----------------
+
+Java Control Flow Video
+~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+       <center>
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_0ejygvhn&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+     </center>
+
+
+
+.. admonition:: Standalone Java file 
+
+    You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 1) create a new Eclipse project, then 2) create a package within the project called "example" (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 3) download and import the standalone *.java file(s) to the created package.
+
+.. raw:: html
+
+   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/FridgeInventory.java" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Java file FridgeInventory.java</img>
+   </a>
+
+
+
+
+Checkpoint 3
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/ControlFlowSumm.html ka
+   :long_name: Checkpoint 3
+
+
+Java Scope and Equality
+-----------------------
+
+
+Java Scope and Equality
+~~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: html
+
+       <center>
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_x2wjt0tt&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+     </center>
+
+
+
+.. raw:: html
+
+   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaFundamentalsTips.pdf" target="_blank">
+   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   Video Slides Java Fundamentals Tips.pdf</img>
+   </a>
+
+
+
+
+Checkpoint 4
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/ScopeSumm.html ka
+   :long_name: Checkpoint 4
+
+Java Objects and Enum
+---------------------
 
 Enums
 ~~~~~
@@ -324,43 +480,15 @@ and fall through to also print the default message.
 For more details about switch statements, reference:
 `https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html <https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html>`_.
 
-Decimal Formatting
-~~~~~~~~~~~~~~~~~~
+[19:48] Java Objects and Enum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``java.text.DecimalFormat`` class provides the functionality to format the
-output of real numbers. For example in the example ``Bank.java``, the ``df``
-field is declared:
+.. raw:: html
 
-.. code-block:: java
+     <center>
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_b6aiijwb&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_nhfcvctj" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+     </center>
 
-
-   private static DecimalFormat df = new DecimalFormat("0.00");
-
-So throughout the class the DecimalFormat object can be used to format numbers
-as Strings. For example:
-
-.. code-block:: java
-
-
-   System.out.println("withdrawing $" + df.format(amount));
-
-or
-
-.. code-block:: java
-
-
-   buffer.append(df.format(accountBalance));
-
-Notice that the following formatting can also be used, but it doesn’t append
-leading or trailing zeros:
-
-.. code-block:: java
-
-
-   private static DecimalFormat df = new DecimalFormat("#.##");
-
-For more details about Decimal Format, reference:
-`https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html <https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html>`_.
 
 
 Java UML Diagrams

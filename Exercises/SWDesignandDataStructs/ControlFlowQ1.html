@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Control Flow 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="CONTROLFLOW_Q1">
+        <p class="question">What will be the values after this code is executed?
+          <pre class="prettyprint">
+          int num = 3;
+          int counter = 1;
+          boolean condition = true;
+          while(condition){
+              num+= counter++;
+              if(num>10){
+                  condition=false;
+                  num+= ++counter;
+              }
+          }
+        </pre></p>
+        <div class="solution"><tt>counter = 6 num = 19</tt></div>
+        <ul class="choices">
+        <li><tt>counter = 5 num = 16</tt></li>
+        <li><tt>counter = 5 num = 17</tt></li>
+        <li><tt>counter = 6 num = 18</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>This question has no hints </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -89,8 +89,45 @@
       "SWDesignAndDataStructs/AdminCourseIntro": {
       },
       "SWDesignAndDataStructs/ContentObjectsEnumsAndUML": {
+        "FundamentalsCheckpoint1Summ": {
+          "points": 50,
+          "threshold": 2
+        },
+        "VariablesSumm": {
+          "points": 50,
+          "threshold": 2
+        },
+        "ControlFlowSumm": {
+          "points": 50,
+          "threshold": 2
+        },
+        "ScopeSumm": {
+          "points": 50,
+          "threshold": 2
+        }, 
+        "OOP1Checkpoint1Summ": {
+          "points": 50,
+          "threshold": 2
+        },
+        "Programming Practice: Object Oriented Programming": {
+          "points": 50,
+          "threshold": 2
+        }
+      
       },
       "SWDesignAndDataStructs/ContentJUNITReview": {
+        "JunitCheckpoint1Summ": {
+          "points": 30,
+          "threshold": 3
+        },
+        "JunitCheckpoint2Summ": {
+          "points": 30,
+          "threshold": 3
+        },
+        "JunitCheckpoint3Summ": {
+          "points": 40,
+          "threshold": 4
+        }
       },
       "SWDesignAndDataStructs/ContentStyle": {
       },

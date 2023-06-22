@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fundamentals 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="FUNDAMENTALS_Q2">
+        <p class="question">
+          Consider the following:  When foo is executed, what is printed out?
+          <pre class="prettyprint">
+
+            public void foo () {
+              int x = 42;
+              int y = 24;
+              mystery (x, y);
+              System.out.println (x + "  " + y);
+            }
+
+            public void mystery (int var1, int var2) {
+              int temp = var1;
+              var1 = var2;
+              var2 = temp;
+            }
+          </pre>
+        </p>
+        <div class="solution"><tt>42 24</tt></div>
+        <ul class="choices">
+        <li><tt>24 42</tt></li>
+     
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
