@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Molly Domino
 
-Revisit Java Unit Testing
+Java Unit Testing
 =========================
 
 Objectives

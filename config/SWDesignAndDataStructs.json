@@ -105,10 +105,7 @@
           "points": 50,
           "threshold": 2
         }, 
-        "OOP1Checkpoint1Summ": {
-          "points": 50,
-          "threshold": 2
-        },
+     
         "Programming Practice: Object Oriented Programming": {
           "points": 50,
           "threshold": 2
@@ -156,7 +153,7 @@
     "Java Review": {
       "SWDesignAndDataStructs/ContentExceptions": {
       },
-      "SWDesignAndDataStructs/ContentPolymorphism2": {
+      "SWDesignAndDataStructs/ContentPolymorphism": {
       },
       "SWDesignAndDataStructs/ContentJavaArrays": {
       },

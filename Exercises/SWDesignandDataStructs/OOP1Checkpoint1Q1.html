@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OOP Intro 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="OOPINTRO_Q2">
+        <p class="question">What kind of variable is label?
+          <pre class="prettyprint">
+            public class Labeller extends JFrame {
+                   public Labeller () {
+                             JLabel label = new JLabel("Field or Variable");
+                   }
+             
+                   public static void main (String[] args) {
+                            new Labeller();
+                   }
+             }
+        </pre></p>
+        <div class="solution"><tt>local variable, Object Reference</tt></div>
+        <ul class="choices">
+        <li><tt>Instance variable, Object Reference</tt></li>
+        <li><tt>local variable, primitive</tt></li>
+        <li><tt>Instance variable, primitive</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>Variables that are instantiated within a method are local to the function. Primitives are raw values such as ints, booleans and chars. </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
