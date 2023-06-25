@@ -50,7 +50,7 @@ Introduction to Object Oriented Programming
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/OOP1IntroCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/OOP1Checkpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -148,7 +148,7 @@ Java Inheritance: equals(), toString()
 
 
 [14:33] Java OOP: Equals toString Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -168,7 +168,7 @@ Java Inheritance: equals(), toString()
 
 Java OOP Checkpoint 3
 ---------------------
-.. avembed:: Exercises/SWDesignAndDataStructs/OOPE1qualsCheckpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/OOP1Checkpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
