@@ -897,6 +897,10 @@
         this.state_path = [];
         this.states = {};
 
+
+        //Trace pointer 
+        this.curr = -1
+
         var defaults = {
             'incorrectSound': false,
             'x_indent': 50,
@@ -1168,7 +1172,14 @@
         state = logData.output;
         
         jQuery.extend(logData, entry);
+
+        //console.log(this.user_actions.length)
+        if (this.curr != this.user_actions.length - 1) {
+            this.user_actions.splice(this.curr + 1)
+        }
+
         this.user_actions.push(logData);
+        this.curr++;
 
         //Updating the state history
         if (this.state_path.length > 0) {
@@ -1184,14 +1195,16 @@
         if ($.isFunction(this.options.action_cb)) {
             this.options.action_cb.call(this, logData);
         }
+    };
 
-        const trace = this.user_actions.map(obj => {
+    ParsonsWidget.prototype.getTrace = function() {
+        return this.user_actions.map(obj => {
             return {
               input: obj.input,
               output: obj.output
             };
         });
-    };
+    }
 
     ParsonsWidget.prototype.parseAction = function(action) {
         var input = action.input == '-' ? [] : action.input.split('-')
@@ -1221,16 +1234,32 @@
     }
 
     var ct = -1
-    ParsonsWidget.prototype.prevAction = function(parsedTrace) {
+    ParsonsWidget.prototype.prevActionInput = function(parsedTrace) {
         if (ct > 0) {
             var action = parsedTrace[--ct]
             this.loadProgress(action.sorted, action.trash, action.indents)
         }
     }
 
-    ParsonsWidget.prototype.nextAction = function(parsedTrace) {
+    ParsonsWidget.prototype.nextActionInput = function(parsedTrace) {
         if (ct < parsedTrace.length - 1) {
             var action = parsedTrace[++ct]
+            this.loadProgress(action.sorted, action.trash, action.indents)
+        }
+    }
+
+    ParsonsWidget.prototype.prevActionCurr = function() {
+        const trace = this.parseTrace(this.getTrace())
+        if (this.curr > 0) {
+            var action = trace[--this.curr]
+            this.loadProgress(action.sorted, action.trash, action.indents)
+        }
+    }
+
+    ParsonsWidget.prototype.nextActionCurr = function() {
+        const trace = this.parseTrace(this.getTrace())
+        if (this.curr < this.user_actions.length - 1) {
+            var action = trace[++this.curr]
             this.loadProgress(action.sorted, action.trash, action.indents)
         }
     }
