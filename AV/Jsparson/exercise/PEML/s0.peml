@@ -1,0 +1,13 @@
+title: Printing I love Computer Science!
+
+instructions: Construct a program that prints out I, love and Computer Science on separate lines.
+
+initial:----------
+print("I")
+print("love")
+print("Computer Science")
+----------
+
+type: SIMPLE
+
+order: 0

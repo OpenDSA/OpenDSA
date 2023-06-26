@@ -1,0 +1,29 @@
+title: Reverse the list
+
+instructions: Construct a program which creates a new list that is reverse of list [1, 2, 3, 4, 5].
+
+initial:----------
+def list_reverse(lst):
+		new_list = [0] * len(lst)
+		i = 0
+		j = len(lst) - 1
+		while i < len(lst):
+				new_list[j] = lst[i]
+				i += 1
+				j = j - 1
+		return new_list
+list1 = [1, 2, 3, 4, 5]
+list2 = list_reverse(list1)
+print(list2)
+----------
+
+type: UNITEST
+
+unittest:----------
+import unittestparson
+class myTests(unittestparson.unittest):
+	def testOne(self):
+		self.assertEqual(list_reverse([1, 2, 3, 4, 5]),[5, 4, 3, 2, 1], "function <code>list_reverse([1, 2, 3, 4, 5])</code>.")
+_test_result = myTests().main()
+----------
+order: 0

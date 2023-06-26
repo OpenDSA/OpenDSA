@@ -126,6 +126,20 @@ Here is the code to implement the queue-based topological sort:
    :scripts: AV/Graph/topSortQCON.js
    :output: show
 
+The inverse problem of determining whether a proposed node ordering is
+a valid topological sort of the graph can be solved with an algorithm
+nearly identical to the queue-based topological sort algorithm.
+First process the graph to generate the count array with the incoming
+degree of each node.
+Assuming that the proposed ordering has a length of :math:`n`,
+move through the nodes of the proposed ordering in order from
+the beginning.
+For each node :math:`v`, check that it's count is zero.
+Then decrement the count by one for each neighbor reachable by
+:math:`v`.
+If all nodes have a count of zero when they are visited in this order,
+then this is a valid topological sort.
+
 .. TODO::
    :type: Proficiency Exercise
 

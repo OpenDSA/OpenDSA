@@ -1,7 +1,14 @@
 $(document).ready(function () {
     "use strict";
+    // const url = "https://skynet.cs.vt.edu/peml-live/api/parse"
+    // const payload = {"peml": "peml/text", "output_format": "json", "render_to_html": "true"}
+    // $(.btn).click(function(){
+    //     $.post(url, data, function(data, status){
+    //         console.log(data)
+    //     });
+    // })
+
     var index = window.location.pathname.split('/').pop().split('.')[0];
-    
     var parson = new ParsonsWidget({
         'sortableId': 'sortable',
         'trashId': 'sortableTrash',
@@ -20,9 +27,7 @@ $(document).ready(function () {
             alert(fb.errors[0])
         }
     }
-    // var indents = [2, 1]
-    // var trash = [0]
-    // var sorted = [2, 1]
+
     var trace = [{
         "input": "0_0-2_0",
         "output": "1_0"
@@ -85,11 +90,11 @@ $(document).ready(function () {
         //     }
         // })
     });
-    $("#prev").click(function () {
-        parson.prevAction(parsedTrace)
+    $("#prevInput").click(function () {
+        parson.prevActionInput(parsedTrace)
     });
-    $("#next").click(function () {
-        parson.nextAction(parsedTrace)
-    })
+    $("#nextInput").click(function () {
+        parson.nextActionInput(parsedTrace)
+    });
 });
 
