@@ -964,6 +964,7 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
         mod_path = rst_dir_name + '/' + rst_fname
 
 
+      current_module = mod_path
       if verbose:
         print(f"Processing module {mod_path}")
       if not os.path.isfile(x):
