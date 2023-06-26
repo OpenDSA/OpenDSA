@@ -8,7 +8,7 @@
    :topic: Mutation testing
 
 Mutation Testing Examples
-======================
+=========================
 
 Types of Mutants
 ---------------------------
@@ -182,19 +182,9 @@ The following test case will kill both of these mutations:
 		assertEquals(15, SimpleExample.Addition(5, 10));
 	}
 
-If we run the mutation testing again then we get the mutations in the LINES_WITH_GOOD_TESTING group under the Mutations List tab. 
-
-The icons for resolved mutants are changed to "green bugs".
-
-
-.. odsafig:: Images/MutationExample1.2.png
-   :align: center
-   :capalign: center
-   :figwidth: 90%
-   :scale: 50%
-   :alt: Example Code 1: Arithmetic Operation Mutant with test cases
-
-   Example Code 1: Arithmetic Operation Mutant with test cases
+If we run the mutation testing again then we will not get any of 
+the previous mutations in the LINES_NOT_TESTED group under the 
+Mutations List tab.
 
 
 Logical Expression Mutant (Remove Conditionals)
@@ -259,7 +249,7 @@ Keep in mind, for multiple conditional expressions, you must test each
 and every one of the expressions. 
 
 Example Code 2: Logical Expression Mutant (Remove Conditionals)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As an example, we want to write a function that takes a number and
 returns TRUE if the number is positive and FALSE if the number is zero
@@ -349,22 +339,12 @@ In order to fix the mutations, we can write the following test case assertions:
 		assertFalse(SimpleExample.PositiveCheck(-5));
 	}
 
-If we run the mutation testing again then we get the mutations in the LINES_WITH_GOOD_TESTING group under the Mutations List tab. 
-
-The icons for resolved mutants are changed to "green bugs".
-
-
-.. odsafig:: Images/MutationExample2.2.png
-   :align: center
-   :capalign: center
-   :figwidth: 90%
-   :scale: 50%
-   :alt: Example Code 2: Logical Expression Mutant (Remove Conditionals) with test cases
-
-   Example Code 2: Logical Expression Mutant (Remove Conditionals) with test cases
+If we run the mutation testing again then we will not get any of 
+the previous mutations in the LINES_NOT_TESTED group under the 
+Mutations List tab.
 
 Example Code 3: Multiple Mutants in One (EvenOddCheck)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We can have programming statements where we have both arithmetic operation(s) and conditional expression(s).
 In such cases, mutation testing will return mutants for each type and list them under the Mutations List 
@@ -416,21 +396,12 @@ In order to fix the mutations, we can write the following test case assertions:
 		assertFalse(SimpleExample.EvenOddCheck(5));
 	}
 
-If we run the mutation testing again then we get the following mutations under the Mutations List tab.
-
-.. odsafig:: Images/MutationExample3.2.png
-   :align: center
-   :capalign: center
-   :figwidth: 90%
-   :scale: 50%
-   :alt: Example Code 3: Multiple Mutants in One Statement with test cases
-
-   Example Code 3: Multiple Mutants in One Statement with test cases
-
-
+If we run the mutation testing again then we will not get any of 
+the previous mutations in the LINES_NOT_TESTED group under the 
+Mutations List tab.
 
 Example Code 4: Loop Conditions (optional)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A loop contains a conditional expression that needs testing. 
 However, this is often optional and does not negatively impact mutation coverage. 
