@@ -8,10 +8,10 @@
    :topic: Mutation testing
 
 Mutation Coverage In JUnit
-======================
+==========================
 
 Mutation Coverage In JUnit
----------------------------
+--------------------------
 
 Mutation testing (or mutation analysis) can help to design new
 software tests and to evaluate the quality of software test suites.

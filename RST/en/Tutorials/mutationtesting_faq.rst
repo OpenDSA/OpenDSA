@@ -78,7 +78,7 @@ several ways:
 
 
 Does 100% Mutation Score mean 100% Project Correctness?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Mutation Score and Project Correctness are two different metrics.
 Mutation Score is a measure of the effectiveness of your tests,
@@ -152,7 +152,7 @@ might be issues in the code that mutation testing doesn't reveal.
 
 
 Why do I have bugs in my code despite having 100% Mutation Score?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A high mutation score indicates the effectiveness of your 
 tests in capturing the introduced mutations.
@@ -218,7 +218,7 @@ and also include corresponding test cases in the test suite.
 
 
 Why do my mutation tests not cover all branches of my code? 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You may have a situation where your unit tests do not cover all
 branches of your code no matter how hard you try.
