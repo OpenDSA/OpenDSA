@@ -23,7 +23,6 @@ import re
 sys.path.append(os.path.abspath('./source'))
 import conf
 import xml.etree.ElementTree as ET
-from xml.dom.minidom import parse, parseString # Can be removed when embedlocal is gone
 import urllib.request, urllib.parse, urllib.error, urllib.parse
 import json
 
@@ -108,12 +107,12 @@ def getDimensions(exer_path):
 
   return {'err': 'No body tag detected'}
 
-# Prints the given string to standard error
 def print_err(*args, **kwargs):
+  '''Prints the given string to standard error'''
   print(*args, file=sys.stderr, **kwargs)
 
-# Loads translation file
 def loadTable():
+  '''Loads translation file'''
   try:
     table=open(conf.translation_file)
     data = json.load(table)
@@ -124,42 +123,6 @@ def loadTable():
       return dict(list(data['en']['jinja'].items()) + list(data['en']['js'].items()))
   except IOError:
     print('ERROR: No table.json file.')
-
-
-def embedlocal(av_path):
-  embed=[]
-  av_fullname = os.path.basename(av_path)
-  av_name = av_fullname.partition('.')[0]
-
-  xmlfile = conf.av_dir + os.path.dirname(av_path) + '/xml/' + av_name + '.xml'
-
-  avwidth = 0
-  avheight = 0
-  try:
-    dom = parse(xmlfile)
-    #node = dom.documentElement
-    widths = dom.getElementsByTagName("width")
-    for width in widths:
-      nodes = width.childNodes
-      for node in nodes:
-        if node.nodeType == node.TEXT_NODE:
-          avwidth=node.data
-
-    heights = dom.getElementsByTagName("height")
-    for height in heights:
-      nodes = height.childNodes
-      for node in nodes:
-        if node.nodeType == node.TEXT_NODE:
-          avheight=node.data
-    embed.append(av_name)
-    embed.append(os.path.relpath(conf.av_dir,conf.ebook_path) + '/' + av_path)
-    embed.append(avwidth)
-    embed.append(avheight)
-    return embed
-
-  except IOError:
-    print('ERROR: No description file when embedding: ' + xmlfile)
-    sys.exit()
 
 
 def showhide(argument):
@@ -218,16 +181,10 @@ class avembed(Directive):
         self.options['height'] = dimensions['height']
         self.options['width'] = dimensions['width'] 
       else:
-        print_err('WARNING: Unable to parse dimensions of %s' % av_path)
+        print_err(f'WARNING: Unable to parse dimensions of {av_path}')
 
         if 'err' in dimensions:
-          print_err('  %s' % str(dimensions['err']))
-
-        # Use XML files as a backup until data attributes have been implemented for all exercises
-        # TODO: Remove embedlocal and replace this section after XML files have been removed
-        embed = embedlocal(av_path)
-        self.options['width'] = embed[2]
-        self.options['height'] = embed[3]
+          print_err(f"  {dimensions['err']}")
       
       # Temporary support for vertical scrolling in KA exercises
       if 'vscroll' in dimensions:
@@ -237,7 +194,7 @@ class avembed(Directive):
       self.options['av_address'] = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/')
 
     # Append AV path and URL parameters to base av_address
-    self.options['av_address'] += '/%s' % av_path
+    self.options['av_address'] += f'/{av_path}'
 
     if '?' in self.options['av_address']:
       self.options['av_address'] += '&amp;'
@@ -255,19 +212,14 @@ class avembed(Directive):
 
     if 'required' not in self.options:
       self.options['required'] = False
-
     if 'points' not in self.options:
       self.options['points'] = 0
-
     if 'threshold' not in self.options:
       self.options['threshold'] = 1.0
-
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
-
     if 'showhide' not in self.options:
       self.options['showhide'] = 'show'
-
     if 'id' not in self.options:
       self.options['id'] = ''
 
