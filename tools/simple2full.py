@@ -496,23 +496,23 @@ def print_err(*args, **kwargs):
 
 def get_default_ex_option(ex_type, option, learning_tool=None):
   if ex_type in ['ka', 'ff', 'ss', 'pe', 'ae']:
-    glob = 'glob_{0}_options'.format(ex_type)
+    glob = f'glob_{ex_type}_options'
     if ex_type not in default_ex_options:
-      print_err('WARNING: Missing "{0}", using default values instead.'.format(glob))
+      print_err(f'WARNING: Missing {glob}, using default values instead.')
       default_ex_options[ex_type] = _default_ex_options[ex_type]
       if option in default_ex_options[ex_type]:
         return default_ex_options[ex_type][option]
       else:
-        print_err('ERROR: Unknown exercise option "{0}" for exercise type "{1}"'.format(option, ex_type))
+        print_err(f'ERROR: Unknown exercise option "{option}" for exercise type "{ex_type}"')
         sys.exit(1)
     if option in _default_ex_options[ex_type]:
       if option in default_ex_options[ex_type]:
         return default_ex_options[ex_type][option]
       else:
         def_val = _default_ex_options[ex_type][option]
-        print_err('WARNING: "{0}" is missing field "{1}". Using default value "{2}".'.format(glob, option, def_val))
+        print_err(f'WARNING: "{glob}" is missing field "{option}". Using default value "{def_val}".')
     else:
-      print_err('ERROR: Unknown exercise option "{0}" for exercise type "{1}"'.format(option, ex_type))
+      print_err(f'ERROR: Unknown exercise option "{option}" for exercise type "{ex_type}"')
       sys.exit(1)
   elif ex_type == 'extr':
     if 'extr' not in default_ex_options:
@@ -524,7 +524,7 @@ def get_default_ex_option(ex_type, option, learning_tool=None):
         return default_ex_options['extr'][learning_tool][option]
     if option not in default_ex_options['extr']:
       def_val = _default_ex_options['extr'][option]
-      print_err('WARNING: "glob_extr_options" is missing field "{0}". Using default value "{1}".'.format(option, def_val))
+      print_err(f'WARNING: "glob_extr_options" is missing field "{option}". Using default value "{def_val}".')
       default_ex_options['extr'][option] = def_val
       return def_val
     else:
@@ -532,7 +532,7 @@ def get_default_ex_option(ex_type, option, learning_tool=None):
   elif ex_type == 'dgm':
     return _default_ex_options['dgm']
   else:
-    print_err('ERROR: Unknown exercise type "{0}"'.format(ex_type))
+    print_err(f'ERROR: Unknown exercise type "{ex_type}"')
     sys.exit(1)
 
 def extract_mod_config(mod_json):
@@ -907,13 +907,13 @@ def validate_glob_config(conf_data):
   global ex_options, default_ex_options, sect_options, mod_options
 
   for ex_type in ['ka', 'ff', 'ss', 'pe', 'ae']:
-    glob = 'glob_{0}_options'.format(ex_type)
+    glob = f'glob_{ex_type}_options'
     if glob in conf_data:
       default_ex_options[ex_type] = conf_data[glob]
       for field in REQUIRED_EXERCISE_FIELDS:
         if field not in default_ex_options[ex_type]:
           def_val = _default_ex_options[ex_type][field]
-          print_err('WARNING: "{0}" is missing field "{1}". Using default  "{2}".'.format(glob, field, def_val))
+          print_err(f'WARNING: {glob} is missing field {field}. Using default {def_val}.')
           default_ex_options[ex_type][field] = def_val
 
   if 'glob_extr_options' in conf_data:
@@ -965,10 +965,8 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
 
 
       if verbose:
-        print(("Processing module " + mod_path))
         print(f"Processing module {mod_path}")
       if not os.path.isfile(x):
-        print_err("ERROR: '{0}' is not a valid module path".format(mod_path))
         print_err(f"ERROR: invalid module path: {mod_path}")
         sys.exit(1)
 
@@ -987,10 +985,10 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
   if not slides:
     for mod_name, exercises in ex_options.items():
       for exer in exercises:
-        print_err('WARNING: the exercise "{0}" does not exist in module "{1}"'.format(exer, mod_name))
+        print_err(f'WARNING: the exercise {exer} does not exist in module {mod_name}')
     for mod_name, sections in sect_options.items():
       for sect in sections:
-        print_err('WARNING: the section "{0}" does not exist in module "{1}"'.format(sect, mod_name))
+        print_err(f'WARNING: the section {sect} does not exist in module {mod_name}')
   return full_config
 
 if __name__ == '__main__':
