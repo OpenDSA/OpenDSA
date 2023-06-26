@@ -1,5 +1,6 @@
 var GrammarExerciseController = function (jsav, m, filePath, dataType) {
   this.init(jsav, m, filePath, dataType);
+  console.log("GrammarExerciseController init-ed for:" + filePath)
 };
 var exerciseLog = {
   errorsCount: 0,

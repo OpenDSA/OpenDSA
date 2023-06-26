@@ -173,6 +173,7 @@ class avembed(Directive):
   final_argument_whitespace = True
   has_content = True
   option_spec = {
+                 'exer_name': directives.unchanged,
                  'exer_opts': directives.unchanged,
                  'long_name': directives.unchanged,
                  'url_params': directives.unchanged,
@@ -199,7 +200,8 @@ class avembed(Directive):
       url_params.update(urllib.parse.parse_qs(self.options['url_params']))
 
     self.options['content'] = ''
-    self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
+    if 'exer_name' not in self.options:
+      self.options['exer_name'] = os.path.basename(av_path).partition('.')[0]
     self.options['short_name'] = self.options['exer_name']
 
     # Use reasonable defaults

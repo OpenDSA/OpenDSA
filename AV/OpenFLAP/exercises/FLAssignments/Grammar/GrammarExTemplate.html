@@ -1,6 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../../../../../lib/JSAV.css">
+  <link rel="stylesheet" type="text/css" href="../../../../../lib/odsaAV-min.css">
+  <link rel="stylesheet" type="text/css" href="../../../../../lib/odsaStyle-min.css">
+  <link rel="stylesheet" type="text/css" href="../../../css/grammar.css">
+  <link rel="stylesheet" type="text/css" href="../../../css/help.css">
+  <link rel="stylesheet" type="text/css" href="../../../css/grammarEditor.css">
+  <script src="../../../../../lib/jquery.min.js"></script>
+</head>
+
+<body>
+  <script src="../../exerController/TestCaseGenerater.js"></script>
+  <script src="../../exerController/grammarHandler.js"></script>
+  <script src="../../../../../lib/jquery.migrate.min.js"></script>
+  <script src="../../../../../lib/jquery.ui.min.js"></script>
+  <script src="../../../../../lib/jquery.transit.js"></script>
+  <script src="../../../../../lib/raphael.js"></script>
+  <script src="../../../../../lib/dagre.min.js"></script>
+  <script src="../../../../../lib/JSAV.js"></script>
+  <script src="../../../../../lib/odsaUtils-min.js"></script>
+  <script src="../../../../../lib/odsaAV-min.js"></script>
+  <script src="../../../../../DataStructures/FLA/serializableGraph.js"></script>
+  <script src="../../../../../lib/underscore.js"></script>
+  <script src="../../../../../DataStructures/FLA/FA.js"></script>
+  <script src="../../../../../DataStructures/FLA/PDA.js"></script>
+  <script src="../../../../../DataStructures/FLA/Grading.js"></script>
+  <script src="../../../grammarEditor.js"></script>
+  <script src="../../exerController/GrammarExerciseController.js"></script>
+  <script>
+    let url = new URL(window.location.href)
+    let urlParams = new URLSearchParams(url.search)
+    let exerLoc = urlParams.get("exerLoc")
+    console.log("This template says exerLoc is: " + exerLoc)
+    // ^^^^ this stuff is happening!
+    // Add in getExerciseLocation
+
+    getExerciseLocation = function () {
+      if (exerLoc == null) {
+        console.error("BAD PARAMS! no exerLoc in url:\n" + window.location.href)
+        return "????"
+      } else {
+        // console.log("worked for " + window.location.href)
+        return exerLoc
+      }
+    }
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      console.log("Ready complete for template that uses " + exerLoc);
+      // Nothing here seems to work....
+      // $("#load_content").load("GrammarExTemplate.html?exerLoc="+exerLoc);
+      // $("#load_content").load("GrammarExTemplate.html", {"exerLoc":exerLoc}); 
+      // $(function () {
+      //   // const url = new URL(window.location.href)
+      //   // const urlParams = new URLSearchParams(url.search)
+      //   // const id = urlParams.get("id")
+      //   // console.log("id is: " + id)
+      //   // document.getElementsByName
+      //   // console.log("Number of div id='av' seen:")
+      //     // $("#load_content").load("GrammarExTemplate.html"); 
+      // }
+      // )
+      // console.log("ready is done for: " + exerLoc)
+    });
+  </script>
+
+  <div id="load_content">
     <div id="container">
       <img id="check_mark" src="../../../green_check.png" alt="Proficient" style="display: none;float: left; width: 40px;">
-      <h1 id="grammarexercise">Grammar Exercise</h1>
+      <h1 id="grammarexercise">Grammar Exercise Template</h1>
       <button id="helpbutton"><img src="../../../help.png" /></button>
       <h2 id="description"></h2>
       <div id="dialogueoverlay"></div>
@@ -29,20 +99,5 @@
       <p id="percentage"></p>
       <table id="testResults"></table>
     </div>
-    <script src="../../exerController/TestCaseGenerater.js"></script>
-    <script src="../../exerController/grammarHandler.js"></script>
-    <script src="../../../../../lib/jquery.migrate.min.js"></script>
-    <script src="../../../../../lib/jquery.ui.min.js"></script>
-    <script src="../../../../../lib/jquery.transit.js"></script>
-    <script src="../../../../../lib/raphael.js"></script>
-    <script src="../../../../../lib/dagre.min.js"></script>
-    <script src="../../../../../lib/JSAV.js"></script>
-    <script src="../../../../../lib/odsaUtils-min.js"></script>
-    <script src="../../../../../lib/odsaAV-min.js"></script>
-    <script src="../../../../../DataStructures/FLA/serializableGraph.js"></script>
-    <script src="../../../../../lib/underscore.js"></script>
-    <script src="../../../../../DataStructures/FLA/FA.js"></script>
-    <script src="../../../../../DataStructures/FLA/PDA.js"></script>
-    <script src="../../../../../DataStructures/FLA/Grading.js"></script>
-    <script src="../../../grammarEditor.js"></script>
-    <script src="../../exerController/GrammarExerciseController.js"></script>
+  </div>
+</body>

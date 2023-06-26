@@ -40,7 +40,8 @@
   "glob_ss_options": {
     "threshold": 1.0,
     "points": 0.0,
-    "required": false
+    "required": false,
+    "partial_credit": false
   },
   "glob_ff_options": {
     "threshold": 1.0,
@@ -50,7 +51,8 @@
   "glob_ka_options": {
     "threshold": 5,
     "points": 1.0,
-    "required": true
+    "required": true, 
+    "partial_credit": false
   },
   "glob_extr_options": {
     "code-workout": {
@@ -61,21 +63,41 @@
   "glob_pe_options": {
     "threshold": 0.9,
     "points": 2.0,
-    "required": true
+    "required": true, 
+    "partial_credit": false
   },
   "chapters": {
-    "Test Subdirectory": {
-      "Patrick/subdir/TestSubdir": {},
-      "Patrick/testNonSubdir": {}
-    },
+    "Avembed old style.  Recent changes might means breaks": {
+      "PIFLA/IntroGrammarEx": {
+        "GramIntro3str": {
+          "points": 1.0
+        },
+        "GramIntroanb2n": {
+          "points": 333.0
+        },
+        "GramIntroanbm": {
+          "points": 7.0
+        }
+      }
+    }, 
+    "Testing Avembed TEMPLATE": {
+      "PIFLA/IntroGrammarExTp": {
+        "GramIntro3str": {
+          "points": 1.0
+        },
+        "GramIntroanb2n": {
+          "points": 333.0
+        },
+        "GramIntroanbm": {
+          "points": 7.0
+        }
+      }
+    }, 
     "Test inlineav dgm": {
       "Binary/BinaryTreeFullThm": {}
     }, 
     "Test inlineav ss": {
       "Binary/TreeTrie": {}
-    }, 
-    "Test inlineav ff": {
-      "PIExample/CFGTransormations": {}
     },
     "Test codeinclude" :{
       "Binary/BSTDict": {}
@@ -95,16 +117,6 @@
     "Test ShowHideContent": {
       "Test/BasicPointers1t": {}
     },
-    "Design I": {
-      "Design/ADT": {
-        "IntroADTSumm": {
-          "threshold": 4
-        }
-      }, 
-      "Design/IntroOO": {}, 
-      "Design/IntroUML": {}, 
-      "Design/IntroProcess": {}
-    }, 
     "Appendix": {
       "Patrick/CitationTest" : {},
       "Glossary": {},

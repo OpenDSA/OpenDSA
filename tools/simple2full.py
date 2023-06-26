@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-''' Converts a simplified configuration file to a full configuration file
+''' Converts a simplified OpenDSA book configuration file to a full configuration file
 ''' 
 
 import sys, os
@@ -139,10 +139,12 @@ class avembed(Directive):
   optional_arguments = 1
   final_argument_whitespace = True
   option_spec = {
+                  'exer_name': directives.unchanged, # is this needed to pass through? YEPPPPP
                   'long_name': directives.unchanged,
                   'url_params': directives.unchanged
                 }
   has_content = True
+  rst_option_pattern = re.compile(r":(.+?):(.*?)[\n$]", re.MULTILINE)
 
 
   def run(self):
@@ -158,10 +160,13 @@ class avembed(Directive):
     self.options['mod_name'] = current_module_base
     self.options['av_address'] = av_path
 
+    for match in self.rst_option_pattern.finditer(self.block_text):
+      key, value = match.group(1).strip(), match.group(2).strip()
+      self.options[key] = value ## adds all options into avembeds 
+
     if self.options['exer_name'] in ex_options[current_module]:
       for key, value in ex_options[current_module][self.options['exer_name']].items():
         self.options[key] = value
-      #del ex_options[current_module][self.options['exer_name']]
 
     if 'long_name' not in self.options:
       self.options['long_name'] = self.options['exer_name']
@@ -959,14 +964,12 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
         mod_path = rst_dir_name + '/' + rst_fname
 
 
-      current_module = mod_path
-      print("current_module: ", current_module)
       if verbose:
         print(("Processing module " + mod_path))
-      current_module_base = os.path.basename(mod_path)
-      print("current_module_base: ", current_module_base)
+        print(f"Processing module {mod_path}")
       if not os.path.isfile(x):
         print_err("ERROR: '{0}' is not a valid module path".format(mod_path))
+        print_err(f"ERROR: invalid module path: {mod_path}")
         sys.exit(1)
 
       with open(x, 'rt', encoding='utf-8') as rstfile:
@@ -977,7 +980,7 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
                   settings_overrides={'output_encoding': 'utf8',
                   'initial_header_level': 2},
                   writer_name="xml",
-      source_path=mod_path)
+                  source_path=mod_path)
       mod_json = xmltodict.parse(rst_parts['whole'])
       mod_config = extract_mod_config(mod_json)
       full_config['chapters'][chapter][mod_path] = mod_config
@@ -991,7 +994,7 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
   return full_config
 
 if __name__ == '__main__':
-  parser = ArgumentParser()
+  parser = ArgumentParser(description=__doc__)
   expandHelp = "Generates an expanded configuration with extra details"
   parser.add_argument("--expanded", help=expandHelp, action="store_true", default=False)
   verboseHelp = "Prints progress information"
