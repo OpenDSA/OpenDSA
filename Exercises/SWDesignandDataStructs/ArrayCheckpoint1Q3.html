@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array Basics 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="ARRAYBASICS_Q3">
+        <p class="question">Given an array of doubles named values, what does the following code do?
+          <pre class="prettyprint">
+            double total = 0;
+            for(double element :  values)
+            {
+                total = total + element;
+            }
+            double average = 0;
+            if (values.length > 0)
+            {
+                average = total/values.length;
+            }          
+          </pre>
+
+        </p>
+        <div class="solution"><tt>Calculates the sum and average of the values</tt></div>
+        <ul class="choices">
+        <li><tt>Fills the array with squares (0, 1, 4, 9,...)</tt></li>
+        <li><tt>Finds the maximum value</tt></li>
+        <li><tt>Finds the minimum value</tt></li>
+      
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
