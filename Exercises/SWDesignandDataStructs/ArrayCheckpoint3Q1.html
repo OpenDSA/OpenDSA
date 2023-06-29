@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array Changes 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="ARRAYCHANGES_Q1">
+        <p class="question">
+          If pos is 4 and currentSize is 7, trace this code that removes an item: 
+          <pre class="prettyprint">
+            int[] values = {10, 20, 30, 40, 50, 60, 70};
+            for (int i = pos + 1; i < currentSize; i++) {
+                 values[i - 1] = values[i];
+            }    
+        </pre>
+        What is the array after the code executes?   
+        </p>
+        <div class="solution"><tt>{10, 20, 30, 40, 60, 70, 70}</tt></div>
+        <ul class="choices">
+        <li><tt>{10, 20, 30, 50, 60, 70, 70}</tt></li>
+        <li><tt>{10, 20, 30, 40, 50, 60, 70}</tt></li>
+        <li><tt>{10, 20, 30, 40, 70, 60, 50}</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

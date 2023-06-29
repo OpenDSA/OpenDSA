@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Array Basics 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="ARRAYBASICS_Q1">
+        <p class="question">Given the following code:
+          <pre class="prettyprint">
+            for (int i=0; i < values.length; i++) {
+              if (values[i] == searchedValue){
+                found = true; 
+              } else {
+                found = false;
+              }
+            } 
+            if (found) { 
+              System.out.println("found " + searchedValue); 
+            } else { 
+              System.out.println ("not found"); 
+            }      
+        </pre>
+        If the initital values are:
+        <pre class="prettyprint">
+          int[] values = { 3, 6, 10, 12, 100, 200, 250, 500 };
+          int searchedValue = 250;
+          boolean found = false;
+      </pre>
+      What is output?    
+        </p>
+        <div class="solution"><tt>not found</tt></div>
+        <ul class="choices">
+        <li><tt>found 250 </tt></li>
+ 
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
