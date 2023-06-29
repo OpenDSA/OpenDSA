@@ -94,7 +94,10 @@ Interactive: Java Array Removing, Inserting, & Tips
 
 .. admonition:: Follow Along, Practice and Explore
 
-    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 1) create a new Eclipse project, then 2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 3) download and import the standalone *.java file(s) to the created package.
+    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone *.java file(s) to the created package.
     
     The video is 11:19
 
