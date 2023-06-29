@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Queues Checkpoint 5</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Q_CP5_Q1">
+        <p class="question"></p>
+<pre class="prettyprint">
+@Override
+public T removeFront() {
+	T front = getFront();
+
+	firstNode = firstNode.getNext();
+
+	if(firstNode == null) {
+		lastNode = null;
+	} else {
+		firstNode.setPrev(null);
+	}
+
+	return front;
+}
+</pre>
+        <p>What will happen if removeFront() is called on an empty deque?</p>
+        <div class="solution">An EmptyDequeException will be thrown</div>
+        <ul class="choices">
+        <li>Null will be returned</li>
+        <li>An EmptyQueueException will be thrown</li>
+        <li>firstNode.data will be returned</li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
