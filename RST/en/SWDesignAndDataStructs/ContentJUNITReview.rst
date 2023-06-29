@@ -46,7 +46,7 @@ Testing Code Example
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -150,7 +150,7 @@ assertions in both styles.
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 Review of Writing JUnit Tests with student.TestCase
@@ -172,5 +172,5 @@ Additional reference for writing JUnit Tests:
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/JunitCheckpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint3Summ.html ka
    :long_name: Checkpoint 3

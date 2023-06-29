@@ -47,7 +47,7 @@ Introduction to Iterators
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/IteratorsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -73,7 +73,7 @@ Programming Using the Iterable Interface
 Checkpoint 2
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/IteratorsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 Programming Using Iterators
@@ -100,7 +100,7 @@ Programming Using Iterators
 Checkpoint 3
 ~~~~~~~~~~~~
 
-.. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/IteratorsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 Iterator Design Decisions

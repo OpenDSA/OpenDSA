@@ -102,7 +102,7 @@ Introduction to Stacks
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/StacksCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -123,7 +123,7 @@ StackIntroVideoMemory Example
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/StacksCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -144,7 +144,7 @@ Stacks Array-Based Design
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/StacksCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 Stacks Array Implementation
@@ -196,7 +196,7 @@ Stacks Linked Chain Implementation
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/StacksCheckpoint4Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/StacksCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 

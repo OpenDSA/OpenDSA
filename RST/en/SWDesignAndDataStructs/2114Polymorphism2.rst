@@ -52,7 +52,7 @@ Polymorphism Example Code
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/OOP2Checkpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -85,7 +85,7 @@ Polymorphism Computer Superclass
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/OOP2Checkpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -115,7 +115,7 @@ Polymorphism Integer Example
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/OOP2Checkpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/OOP2Checkpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 

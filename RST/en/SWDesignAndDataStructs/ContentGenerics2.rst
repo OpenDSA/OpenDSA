@@ -110,7 +110,7 @@ The method parameter list (the object being sorted) is of type ``List<T>``.
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/GenericsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 

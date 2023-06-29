@@ -171,7 +171,7 @@ The List Interface
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/ListsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -199,7 +199,7 @@ LinkedList Add Implementation
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/ListsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -256,7 +256,7 @@ LinkedList Example Code
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/ListsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 Programming Practice: Lists 1
@@ -288,7 +288,7 @@ Considering and Array Implementation of a List
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/ListsCheckpoint4Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/ListsCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 
