@@ -202,7 +202,7 @@ Using Bags
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -308,7 +308,7 @@ Code Example
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 Demo More bag method implementation
@@ -353,7 +353,7 @@ This implementation of the ArrayBag does not impose such a constraint.
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
@@ -412,7 +412,7 @@ Methods that Remove and Design Improvement Lesson and Demo
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint4Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 

@@ -71,7 +71,7 @@ LinkedBag add and toArray
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/LinkedBagCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -126,7 +126,7 @@ LinkedBag getFrequencyOf() and contains()
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/LinkedBagCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -166,7 +166,7 @@ LinkedBag Removing an item
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/LinkedBagCheckpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/LinkedBagCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 

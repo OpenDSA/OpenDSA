@@ -148,10 +148,8 @@ This code can be reused for any kaltura video, so long as the `entry_id` = is up
 KA Exercises
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/BagsCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint1Summ.html ka
    :long_name: Title for the exercise
-
-   Note that then each individual exercise gets referenced from this html file
 
 
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Queues Checkpoint 5</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Q_CP5_Q2">
+        <p class="question"></p>
+<pre class="prettyprint">
+@Override
+public T removeFront() {
+  T front = getFront();
+
+  firstNode = firstNode.getNext();
+
+  if(firstNode == null) {
+  	lastNode = null;
+  } else {
+  	firstNode.setPrev(null);
+  }
+
+  return front;
+}
+</pre>
+        <p>Which of the following will <strong>NOT</strong> happen if removeFront() is called on a deque with 1 item?</p>
+        <div class="solution">lastNode.prev will be returned</div>
+        <ul class="choices">
+        <li>firstNode and lastNode will become null</li>
+        <li>firstNode.data will be returned</li>
+        <li>lastNode.data will be returned</li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

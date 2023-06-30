@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recursion Checkpoint 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="REC_CP3_Q2">
+          <p class="question">
+            <img src="./RecursionCheckpointImages/Checkpoint3Q2.png" alt="code example"  width="517" height="128">
+            <br>
+            An initial call to <tt>displayArray3</tt> has parameter values
+            of 0 and 20 for <strong>first</strong> and <strong>last</strong>
+            respectively: <tt>displayArray3(myArray, 0, 20)</tt>.
+            <br>
+            Which is the correct sequence of subsequent calls?</p>
+
+
+          <div class="solution"><tt>displayArray3(myArray, 0, 10)  displayArray3(myArray, 0, 5) displayArray3(myArray, 0, 2)</tt></div>
+          <ul class="choices">
+          <li><tt>displayArray3(myArray, 0, 10)  displayArray3(myArray, 11, 20) displayArray3(myArray, 0, 5)</tt></li>
+          <li><tt>displayArray3(myArray, 0, 5)  displayArray3(myArray, 5, 10) displayArray3(myArray, 11, 20)</tt></li>
+          <li><tt>displayArray3(myArray, 11, 20)  displayArray3(myArray, 10, 0) displayArray3(myArray, 10, 5)</tt></li>
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

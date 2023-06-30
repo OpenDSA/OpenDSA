@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recursion Checkpoint 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="REC_CP1_Q4">
+          <p class="question">Given the following code:
+<pre class="prettyprint">
+public static void springFreeze(int temp){
+  if (temp < 32)
+    System.out.println("Frost!");
+  else
+  {
+    System.out.println("temps are dropping…");
+    springFreeze(temp – 4);
+  }
+}
+</pre>
+        <p>How many times will <tt>springFreeze(28)</tt> print out
+        "temps are dropping…"?</p>
+
+        <div class="solution">0</div>
+        <ul class="choices">
+        <li>10</li>
+        <li>4</li>
+        <li>3</li>
+        <li>2</li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

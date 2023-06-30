@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Queues Checkpoint 4</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Q_CP4_Q3">
+        <p class="question">What item is at the front of the deque after these statements are executed?</p>
+<pre class="prettyprint">
+DequeInterface waitingLine = new LinkedDeque();
+waitingLine.addToFront(“Jack”);
+waitingLine.addToBack(“Rudy”);
+waitingLine.addToBack(“Larry”);
+waitingLine.addToFront(“Sam”);
+String name = waitingLine.getFront();
+name = waitingLine.getBack();
+</pre>
+        <div class="solution">Jack</div>
+        <ul class="choices">
+        <li>Adam</li>
+        <li>Rudy</li>
+        <li>Sam</li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -46,7 +46,7 @@ Introduction to Ordering, Comparing, and Sorting
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 Introduction to Sorting Video
@@ -72,7 +72,7 @@ Introduction to Sorting Video
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 Selection Sort Video
@@ -99,7 +99,7 @@ Selection Sort Video
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
@@ -126,7 +126,7 @@ Insertion Sort
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint4Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 Insertion Sort Array
@@ -153,7 +153,7 @@ Insertion Sort Array
 Checkpoint 5
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/CompSortCheckpoint5Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint5Summ.html ka
    :long_name: Checkpoint 5
 
 

@@ -102,7 +102,7 @@ that body of code did execute as expected.
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/ExceptionsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -481,5 +481,5 @@ exception object is set to null and only updated within the catch block.
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint2Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/ExceptionsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Queues Checkpoint 8</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="1150" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Q_CP8_Q2">
+        <p class="question">
+          Given a circular array implementation of a queue in this state:<br>
+
+          <img src="./QueuesCheckpointImages/Checkpoint8Q2.png" alt="" width="355" height="78"><br>
+
+          with queue.length as 7, you are to finish the trace of
+          <tt>ensureCapacity()</tt>.
+
+          What are the values of frontIndex and backIndex after the call is complete?
+        </p>
+
+        <table style="border-collapse: collapse; width: 100%; height: 192px; border: 1px solid black;" border="1">
+    <thead>
+        <tr style="height: 52px;">
+            <td style="width: 16.6667%; height: 52px;">
+                <p>queue</p>
+            </td>
+            <td style="width: 16.6667%; height: 52px;">
+                <p>oldQueue</p>
+            </td>
+            <td style="width: 16.6667%; height: 52px;">
+                <p>oldSize</p>
+            </td>
+            <td style="width: 16.6667%; height: 52px;">newSize</td>
+            <td style="width: 16.6667%; height: 52px;">frontIndex</td>
+            <td style="width: 16.6667%; height: 52px;">backIndex</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="height: 28px;  border: 1px solid black;">
+            <td style="width: 16.6667%; height: 28px;">
+                <p>x,5,7,7,1,3,2</p>
+            </td>
+            <td style="width: 16.6667%; height: 28px;  border: 1px solid black;">
+                <p>x,5,7,7,1,3,2</p>
+            </td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;">7</td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;">14</td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;">1</td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;">6</td>
+        </tr>
+        <tr style="height: 28px;  border: 1px solid black;">
+            <td style="width: 16.6667%; height: 28px;  border: 1px solid black;">
+                <p>x, x, x, x, x, x, x, x, x, x, x, x, x, x</p>
+            </td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+        </tr>
+        <tr style="height: 28px; border: 1px solid black;">
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;">
+                <p>5, x, x, x, x, x, x, x, x, x, x, x, x, x</p>
+            </td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;">2</td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+        </tr>
+        <tr style="height: 28px;">
+            <td style="width: 16.6667%; height: 28px;  border: 1px solid black;">
+                <p>5, 7, x, x, x, x, x, x, x, x, x, x, x, x</p>
+            </td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;">3</td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+        </tr>
+        <tr style="height: 28px;">
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;">....</td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+            <td style="width: 16.6667%; height: 28px; border: 1px solid black;"></td>
+        </tr>
+    </tbody>
+</table>
+
+        <div class="solution">0,5</div>
+        <ul class="choices">
+        <li>1,6</li>
+        <li>1,14</li>
+        <li>0,12</li>
+
+        </ul>
+        <div class="hints">
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
