@@ -63,5 +63,5 @@ Notice for a generic class, such as Pair, javadocs are needed for the generic pa
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/GenericsCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/Generics1Checkpoint1Summ.html ka
    :long_name: Checkpoint 1
