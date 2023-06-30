@@ -85,7 +85,7 @@ Queues
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint1Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -118,7 +118,7 @@ Linked Queues Intro and Enqueue
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint2Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -145,7 +145,7 @@ Linked Queues Removing and More (Dequeue and Other Methods)
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint3Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
@@ -172,7 +172,7 @@ Deques
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint4Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 Deque Interface
@@ -287,7 +287,7 @@ Deque Removing and Wrap Up
 Checkpoint 5
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint5Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint5Summ.html ka
    :long_name: Checkpoint 5
 
 
@@ -315,7 +315,7 @@ Array Implementation of Queues
 Checkpoint 6
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint6Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint6Summ.html ka
    :long_name: Checkpoint 6
 
 
@@ -342,7 +342,7 @@ ArrayQueue One Unused Location
 Checkpoint 7
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint7Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint7Summ.html ka
    :long_name: Checkpoint 7
 
 
@@ -369,7 +369,7 @@ ArrayQueue Ensure Capacity
 Checkpoint 8
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint8Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/QueueCheckpoint8Summ.html ka
    :long_name: Checkpoint 8
 
 

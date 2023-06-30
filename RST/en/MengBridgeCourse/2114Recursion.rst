@@ -60,7 +60,7 @@ Introduction to Recursion
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/RecursionCheckpoint1Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -130,7 +130,7 @@ Recursion on Arrays
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/RecursionCheckpoint2Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
@@ -156,7 +156,7 @@ Recursion on Arrays Middle
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/RecursionCheckpoint3Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 
@@ -209,7 +209,7 @@ Tower of Hanoi
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/RecursionCheckpoint4Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/RecursionCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
 

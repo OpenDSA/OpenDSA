@@ -352,7 +352,7 @@ Related Resources
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/OOP1Checkpoint1Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/OOP1Checkpoint1Summ.html ka
    :long_name: UML Checkpoint
 
 

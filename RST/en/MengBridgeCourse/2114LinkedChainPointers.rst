@@ -83,7 +83,7 @@ Upon completion of this module, students will be able to:
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/LinkedChainCheckpoint1Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
 
@@ -110,7 +110,7 @@ Checkpoint 1
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/LinkedChainCheckpoint2Summ.html ka
+.. avembed:: Exercises/MengBridgeCourse/LinkedChainCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
 
