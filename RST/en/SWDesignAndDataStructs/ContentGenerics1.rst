@@ -19,7 +19,7 @@ Objectives
 * Assess the software engineering benefits of using generic methods
 * Assess the benefits and possible tradeoffs of using generic types vs Object type
 
-Suggested Reading:  Java Interlude 1 Generics from Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry 
+**Suggested Reading:**  *Java Interlude 1 Generics from Data Structures and Abstractions with Java, 4th edition by Frank M. Carrano and Timothy Henry* 
 
 
 Generics Intro
