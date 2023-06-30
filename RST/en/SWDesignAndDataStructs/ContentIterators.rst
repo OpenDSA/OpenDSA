@@ -309,3 +309,116 @@ Programming Practice: Iterators
 
 .. extrtoolembed:: 'Programming Practice: Iterators'
    :workout_id: 1924
+
+
+Scanners Implement Iterator<String>
+-----------------------------------
+
+The java.io package offers a rich inheritance hierarchy of classes for reading from text files. The Scanner class was created to simplify text input and is thus preferred over the other classes. Scanner implements Iterable<String> and provides next() and hasNext() methods in addition to many others.
+
+Several methods provided by Scanner objects provide virtually all of the input capabilities you will need in this course:
+
+* <scanner>.hasNext(); Returns true if this scanner has another token in its input.
+* <scanner>.next(); Finds and returns the next complete token (by default the next whitespace delimited string as a String object like the next line or next tab-seperated word) from this scanner. A NoSuchElementException is thrown if no more tokens are available, (i.e., you have reached the end of input).
+* <scanner>.hasNextLine(); Returns true if this scanner has another line in its input.
+* <scanner>.nextLine(); Finds and returns the next complete line. A NoSuchElementException is thrown if no more tokens are available, (i.e., you have reached the end of input).
+* <scanner>.hasNext<PrimitiveType>(); The <PrimitiveType> can be replaced by double, float, int, etc. Returns true if this scanner has another token in its input and it can be interpreted as a value of the <PrimitiveType>.
+* <scanner>.next<PrimitiveType>(); he <PrimitiveType> can be replaced by double, float, int, etc. The method scans the next token of the input as an <PrimitiveType> and returns back the corresponding <PrimitiveType> value. It throws an InputMismatchException if the next token does not match the <PrimitiveType>, or if the value scanned is out of range. It also throws a NoSuchElementException if no more tokens are available.
+* <scanner>.useDelimiter(String pattern); by default whitespace (spaces, tabs, or new line characters) are used as delimiters for separating the input into tokens to return. This method allows the user to set the delimiter characters to whatever they wish for breaking up the input. Commas are a common other delimiter to use as tables or data is often stored in what are called CSV (comma seperated value) files.
+* <scanner>.close(); closes the scanner to release system resources being used by the scanner.
+
+To use these methods, normally you will process the input by scanning one line at a time and then scanning the line for the desired tokens.
+
+For example:
+
+.. code-block:: java
+
+   Scanner inStream = IOHelper.createScanner("input.txt");
+   // if NOT at the end of the stream, more input is available
+   if (inStream.hasNextLine())
+   {
+      // Get an entire line
+      String thisLine = inStream.nextLine();
+      // Create a scanner to process the line
+      Scanner line = new Scanner(thisLine);
+      // Check for the next whitespace delimited int
+      if (line.hasNextInt())
+      {
+         System.out.println(line.nextInt());
+      }
+   }
+   inStream.close();
+
+Notice how the existence of each input is checked before it is extracted to avoid exceptions.
+
+Also, if you have programmed in another language before, note that characters in Java are encoded using unicode, a 16-bit character code. Programmers in other languages may instead be familiar with ASCII, the American Standard Code for Information Interchange, which is a 7-bit character code. Fortunately, the first 128 codes in unicode are equivalent to the entire ASCII character set . For American users, ASCII values may thus be freely used when reading and writing character-by-character without error, although this approach does not directly extend to programs written for an international audience.
+
+Scanners can also be used to process the tokens in a line of data.  These tokens may be separated by whitespace or other delimiters. For example to process lines of commands with white space delimiters:
+
+set counter 10
+
+add counter 1
+
+display counter
+
+
+.. code-block:: java
+   Scanner inStream = IOHelper.createScanner("input.txt");
+   // if NOT at the end of the stream, more input is available
+   if (inStream.hasNextLine())
+   {
+      // Get an entire line
+      String thisLine = inStream.nextLine();
+      // Create a scanner to process the line
+      Scanner line = new Scanner(thisLine);
+      // Create an array to hold the tokens on the line
+      String[] tokens = new String[MAX];
+      int tokenCount;
+      // Check for the next whitespace delimited int
+      while (line.hasNext() && tokenCount < MAX)
+      {
+         tokens[tokenCount++] = line.next();
+      }
+      processLineOfData(tokens);
+   }
+   inStream.close();
+
+In order to process data that is delimited by characters other than whitespace, the useDelimiter method is needed with a regular expression pattern as a  parameter. For example to process lines of commands with commas as delimiters, such as:
+
+Shepard, G, Gr., 5'9"
+
+Brooks, G, Jr., 5'10" 
+
+Amoore, F, Sr., 6'2"
+
+
+
+
+Here the Scanner needs to be set to use a comma.  Because there can be an undetermined amount of whitespace following a comma, the regular expression ",\\s*" should be used.  This regular expression pattern matches a comma followed by 0 or more white spaces.  Note that ",\\s+" would match a comma followed by 1 or more white spaces.  Note that ", *" would match 0 or more spaces created by the space bar but it would not account for tabs or newlines which can also create white space, so using ",\\s*" is better practice.  More information is available about java regular expressions https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
+
+.. code-block:: java
+
+   Scanner inStream = IOHelper.createScanner("input.txt");
+   // if NOT at the end of the stream, more input is available
+   if (inStream.hasNextLine())
+   {
+      // Get an entire line
+      String thisLine = inStream.nextLine();
+      // Create a scanner to process the line
+      Scanner line = new Scanner(thisLine).useDelimiter(",\\s*");
+      // Create an array to hold the tokens on the line
+      String[] tokens = new String[MAX];
+      int tokenCount;
+      // Check for the next whitespace delimited int
+      while (line.hasNext() && tokenCount < MAX)
+      {
+         tokens[tokenCount++] = line.next();
+      }
+      processLineOfData(tokens);
+   }
+   inStream.close();
+
+
+
+
+
