@@ -363,6 +363,7 @@ display counter
 
 
 .. code-block:: java
+
    Scanner inStream = IOHelper.createScanner("input.txt");
    // if NOT at the end of the stream, more input is available
    if (inStream.hasNextLine())
