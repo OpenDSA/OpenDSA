@@ -184,3 +184,15 @@ Adding a table
    * - Row 2 Column 1
      - Row 2 Column 2
      - Row 2 Column 3
+
+
+Images
+~~~~~~
+
+java file example 
+ .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ArrayBasics.java"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      ArrayBasics.java</img>
+      </a>
