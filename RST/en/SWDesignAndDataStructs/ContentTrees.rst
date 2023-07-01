@@ -51,5 +51,94 @@ Interactive: Intro to Trees Video
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/CloningCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/TreesCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
+
+
+
+Interactive: Binary Trees
+-----------------------------------
+
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/BinaryTrees.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      BinaryTrees.pdf</img>
+      </a>
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s4hf3v2e' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+
+
+Checkpoint 2
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/TreesCheckpoint2Summ.html ka
+   :long_name: Checkpoint 2
+
+
+Interactive: Binary Tree Traversals
+-----------------------------------
+
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/IntroToTraversals.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      IntroToTraversals.pdf</img>
+      </a>
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_oynq3x1d' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+
+
+Checkpoint 3
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/TreesCheckpoint3Summ.html ka
+   :long_name: Checkpoint 3
+
+
+Interactive: Programming Binary Trees
+-------------------------------------
+
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ProgrammingTrees.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      ProgrammingTrees.pdf</a>
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_6a1l5p41' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
