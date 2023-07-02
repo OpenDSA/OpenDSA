@@ -120,7 +120,6 @@ Checkpoint 3
 
 
 
-
 Interactive: Removing From Binary Search Trees
 ------------------------------------------------
 
