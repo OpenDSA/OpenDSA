@@ -84,5 +84,69 @@ Interactive: Programming Binary Search Trees
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
+
+
+Interactive: Adding Binary Search Trees
+------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/AddingToBinarySearchTrees.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+     AddingToBinarySearchTrees.pdf</img>
+      </a>
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_oeoqmpa6' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+
+
+Checkpoint 3
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint3Summ.html ka
+   :long_name: Checkpoint 3
+
+
+
+
+Interactive: Removing From Binary Search Trees
+------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/RemovingFromBinarySearchTrees.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      RemovingFromBinarySearchTrees.pdf</img>
+      </a>
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ijj9r93f' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+
+
+Checkpoint 4
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint1Summ.html ka
+   :long_name: Checkpoint 4
