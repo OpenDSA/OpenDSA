@@ -55,7 +55,6 @@ Checkpoint 1
 Interactive: Java Array Search
 ------------------------------
 
-
 .. admonition:: Follow Along, Practice and Explore
 
     Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
@@ -68,7 +67,6 @@ Interactive: Java Array Search
       <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ArrayLinearSearch.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">ArrayLinearSearch.java</img>
       </a>
-
 
 .. raw:: html
 
@@ -93,8 +91,6 @@ Interactive: Java Array Removing, Inserting, & Tips
         2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
         3) download and import the standalone *.java file(s) to the created package.
     
-    The video is 11:19
-
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ArrayRemove.java"  target="_blank">
