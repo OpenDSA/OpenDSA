@@ -29,26 +29,26 @@ Interactive: Introduction to Sorted Lists
         2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
         3) download and import the standalone *.java file(s) to the created package.
 
-.. raw:: html
+   .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ListInterface.java"  target="_blank">
-   <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-   ListInterface.java</img>
-   </a>
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ListInterface.java"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      ListInterface.java</img>
+      </a>
 
-.. raw:: html
+   .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/SortedListInterface.java"  target="_blank">
-   <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-   SortedListInterface.java</img>
-   </a>
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/SortedListInterface.java"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      SortedListInterface.java</img>
+      </a>
 
-.. raw:: html
+   .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/SortedListsOrderVsSorted.pdf"  target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   SortedListsOrderVsSorted.pdf</img>
-   </a>
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/SortedListsOrderVsSorted.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      SortedListsOrderVsSorted.pdf</img>
+      </a>
 
 
 
@@ -112,5 +112,240 @@ https://docs.oracle.com/javase/7/docs/api/java/util/List.html
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/OOP1Checkpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/SortedListsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
+
+
+
+
+
+
+Implementing a Sorted List ADT
+-------------------------------
+
+In many ways we can conceptually think about the SortedList ADT as a List ADT with modified characteristics and additional “Sort” logic.  Reflecting upon the List ADT implementation would therefore help us consider various approaches to implementing a SortedList ADT.
+
+Additionally List ADT implementations and SortedList ADT implementations tend to be very similar, providing opportunities for code reuse.  
+
+In fact careful consideration and comparison of the intended behaviors of certain List ADT methods and SortedList ADT methods would reveal that a number of them share the same behavior and can therefore be implemented in the exact same way. For example getEntry(givenPosition), getLength(), isEmpty(), and toArray() are but a few of the methods whose implementations are the same for both a List ADT implementation and a SortedList ADT implementation.  
+
+On the other hand, there are List ADT methods that may share the same name as their SortedList ADT counterparts but behave differently.  
+
+The add(newEntry) method is one ListADT method that needs significant modification before it can function as a SortedList ADT add(newEntry) method. While the add(newEntry) method for the List ADT simply added the newEntry into the next available list location the add(newEntry) method for the SortedList ADT must instead locate an appropriate location for the newEntry being added, one that preserves the sorted order.
+
+There are various approaches to implementing a SortedList ADT, a few of the main ones will be discussed in the following section.
+ 
+
+Write it from scratch
+~~~~~~~~~~~~~~~~~~~~~ 
+
+One way of implementing a SortedList ADT is to simply write it from scratch.  We are already familiar with the List ADT implementation and we can draw from that experience to implement the SortedList ADT.  Due to the similarities between the two ADTs we would be able to write most of the methods the same way as for any list. A few specific methods would need to be written differently to ensure that sorted order is preserved, i.e. the list stays in sorted  throughout its life and the execution of its methods.
+
+When choosing to write from scratch we have two further choices.  Similar to implementing a List ADT we can choose to use one of the following:
+
+* use an array implementation
+* use a linked implementation
+ 
+
+Implement using Composition (Wrapper) 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This approach uses a List ADT implementation to support the implementation of the SortedList ADT.  In this implementation approach the Sorted list makes use of an instance of the List ADT (it has-a list, hence the use of the term Composition), this List ADT instance is set up as a field of SortedList, SortedList then acts as client code, calling and managing the use of the list methods in service of SortedList operations.  This will be elaborated upon in further detail later on in the module. 
+
+ 
+
+Implement using Inheritance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This approach also uses a List ADT implementation to support the implementation of the SortedList ADT, this time through an is-a or inheritance relationship.  
+
+Since we can think of a SortedList as a List with modified characteristics and additional “Sort” logic we can therefore conclude that a SortedList is-a List, thus deriving the benefits of inheritance.  The List becomes a parent class, while the SortedList becomes a child of List, inheriting methods from the parent class.  Since some SortedList methods must behave differently when compared against their List ADT counterparts we must override these methods when defining the SortedList class. Specifically we must override any methods that do not serve to preserve sorted order. For example methods like add(int newPosition, T newEntry) and replace(givenPosition,newEntry) offer client code control over the positioning of newEntries, this is not appropriate as this could affect the sorted order of the SortedList.  The add(newEntry) method would also need to be modified.  Further the SortedList would require features not present within the List, requiring us to add these new methods, examples of such include the SortedList ADT methods remove(anEntry) and getPosition(anEntry).
+
+
+
+.. admonition:: Follow Along, Practice and Explore
+
+    Download to run and explore the corresponding project from the video on your own in eclipse. The project CS-GraphWindowLib is required for the sample project above.  It is also used in your course projects. To download the CS-GraphWindowLib you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/CS2-SortedListDemo.zip"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+     CS2-SortedListDemo.zip</img>
+      </a>
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jhdza823' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+Implementing a Sorted List ADT with and Underlying Array
+---------------------------------------------------------
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_unitfyqf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+Implementing a Sorted List ADT with an Underlying Linked Chain
+---------------------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/LinkedImplementationofSortedList.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+     LinkedImplementationofSortedList.pdf</img>
+      </a>
+
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_lm7pijos' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2h8sliry' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+Writing from Scratch Appraoch - Efficiency of the Array-Based and Link-Based implementations
+-------------------------------------------------------------------------------------------
+
+Implementation from Scratch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The worst case-efficiencies of the operations on the ADT List and ADT Sorted List have been provided below for both the Array-Based and Linked implementations.  Review each table, note the similarities and differences, then consider how implementation details could affect the efficiencies of the various methods.
+
+The table below (Figure 16-5 from the course text) depicts the worst-case efficiencies of the operations on the ADT sorted list for two implementations
+
+The worst-case efficiencies of the operations on the ADT sorted list for two implementations
+
+.. odsafig:: Images/Figure16-5ListOpEfficiency.png
+   :align: center
+
+
+
+FIGURE 16-5 from course text: Carrano & Henry. Data Structures & Abstractions with Java
+
+
+The table below (Figure 16-8 from the course text) depicts the worst-case efficiencies of select ADT List operations for two implementations
+
+A table titled ADT List Operation
+
+.. odsafig:: Images/Figure16-8SortedListOpEfficiency.png
+   :align: center
+
+
+FIGURE 16-8 from course text: Carrano & Henry. Data Structures & Abstractions with Java
+
+ 
+
+Reflecting upon Efficiencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Consider, for example, the new SortedList ADT method getPosition(…).  
+
+The getPosition(…) method receives anEntry as a parameter, then searches the entire list to locate the position of anEntry within the list.  In its most basic implementation the getPosition(...) method uses a linear search to locate anEntry within the list, with the content of each position within the list compared against anEntry until either anEntry is found or all positions checked.  
+
+Upon finding anEntry the method returns the integer position of the first or only occurrence of anEntry within the list.  If the search does not find anEntry within the list the method then returns an integer whose value indicates that anEntry was not found within the list.  There are many ways to set this value to indicate anEntry was not found, some developers return an invalid position, for example -1, as a flag to indicate an unsuccessful search.   Others may choose instead to return a value greater than the number of entries in the list, while some favor returning the position where anEntry would occur in the list if present, but as a negative integer.
+
+Not that the current efficiency of that method is O(n) for both an Array-based and Linked implementation. This is to be expected, since the list has n elements, then a linear search of the list for anEntry would naturally require all n elements to be checked.  
+
+However this is not the most efficient option.  The efficiency of this method could be improved by using the fact that the SortedList is in sorted order. Instead of traversing the entire list in search of anEntry the method could stop the search once past where the element should be, if the search encounters an element greater than anEntry before finding anEntry then the method can determine that anEntry is not in the list. The getPosition() method can be further improved by using a binary search instead of a linear search.  
+
+
+
+
+Checkpoint 2
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/SortedListsCheckpoint2Summ.html ka
+   :long_name: Checkpoint 2
+
+
+Implementing Using Composition
+---------------------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ImplementationUsingComposition.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      ImplementationUsingComposition.pdf</img>
+      </a>
+
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nux4c057' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+Efficiency of the Composition Approach
+---------------------------------------------------------------
+
+
+Implementation from Scratch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The worst case-efficiencies of the operations on the ADT List and ADT Sorted List have been provided below for the Composition implementations.  Review each table, note the similarities and differences, then consider how implementation details could affect the efficiencies of the various methods.  Note how the worst-case efficiencies for the Linked SortedList Composition approach depicted in Figure 16-9 is significantly different from the write-from-scratch SortedList approach depicted in Figure 16-5 and Figure 16-8.
+
+The table below (Figure 16-9 from the course text) depicts the worst-case efficiencies of the ADT sorted list operations when implemented using an instance of the ADT list
+
+.. odsafig:: Images/Figure16-9WrapperSortedListOpEfficiency.png
+   :align: center
+
+
+
+FIGURE 16-9 from course text: Carrano & Henry. Data Structures & Abstractions with Java
+
+The table below (Figure 16-5 from the course text) depicts the worst-case efficiencies of the operations on the ADT sorted list for two implementation
+
+.. odsafig:: Images/Figure16-8SortedListOpEfficiency.png
+   :align: center
+
+FIGURE 16-8 from course text: Carrano & Henry. Data Structures & Abstractions with Java
+
+
+.. odsafig:: Images/Figure16-5ListOpEfficiency.png
+   :align: center
+
+FIGURE 16-8 from course text: Carrano & Henry. Data Structures & Abstractions with Java
+
+
+
+Implementing Using Inheritance
+---------------------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ImplementationUsingInheritance.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      ImplementationUsingInheritance.pdf</img>
+      </a>
+
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qc6bdmjj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>

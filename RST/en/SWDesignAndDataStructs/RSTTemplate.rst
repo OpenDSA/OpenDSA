@@ -57,6 +57,34 @@ The `odsafig` directive loads an image. The image should live in the `/RST/Image
    :align: center
 
 
+
+Images in exercises
+~~~~~~~~~~~~~~~~~~~~
+
+java file example 
+ .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ArrayBasics.java"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      ArrayBasics.java</img>
+      </a>
+
+slides
+
+ .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ProgrammingBinarySearchTrees.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      ProgrammingBinarySearchTrees.pdf</img>
+      </a>
+
+Some issues with imgaes in ka - need to troublshoot and describes
+
+images in checkpoint questions go in subdirecotries under Exercises folder
+
+
+
+
 Code
 ----
 
@@ -186,13 +214,33 @@ Adding a table
      - Row 2 Column 3
 
 
-Images
-~~~~~~
 
-java file example 
- .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ArrayBasics.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      ArrayBasics.java</img>
-      </a>
+admonitions for interactivity before Videos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+
+.. admonition:: Follow Along, Practice and Explore
+
+    Download to run and explore the corresponding project from the video on your own in eclipse. The project CS-GraphWindowLib is required for the sample project above.  It is also used in your course projects. To download the CS-GraphWindowLib you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
+
+
+.. admonition:: Follow Along, Practice and Explore
+
+    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone *.java file(s) to the created package.
+
+
+
+in ka questions
+~~~~~~~~~~~~~~~
+<img src="TreesCheckpointImages/BinaryTreeTraversal.png" alt="complete tree with nodes ABCDEFG in level order" width="300" height="200">
+            <br>
+
+
