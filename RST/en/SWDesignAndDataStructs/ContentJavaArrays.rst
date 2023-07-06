@@ -51,6 +51,12 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
+Programming Practice: Java Arrays 1
+------------------------------------
+
+.. extrtoolembed:: 'SWDesignAndDataStructs_Arrays1'
+   :workout_id: 2477
+
 
 Interactive: Java Array Search
 ------------------------------
@@ -116,3 +122,9 @@ Checkpoint 3
 
 .. avembed:: Exercises/SWDesignAndDataStructs/ArrayCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
+
+Programming Practice: Java Arrays 2
+------------------------------------
+
+.. extrtoolembed:: 'SWDataStructsAndDesign_Arrays2'
+   :workout_id: 2478
