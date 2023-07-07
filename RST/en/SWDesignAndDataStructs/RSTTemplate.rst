@@ -189,10 +189,10 @@ KA Exercises
 
 
 
-CodeWorkout Exercises
+CodeWorkout Exercises (add as a workout)
 -------------------------------
 
-.. extrtoolembed:: 'Title for the Exercise'
+.. extrtoolembed:: 'Title for the Workout'
    :workout_id: 1910
 
 
