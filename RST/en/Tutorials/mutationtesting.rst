@@ -67,11 +67,23 @@ image).
 When you execute mutation testing, it will create two additional tabs
 next to your Console output UI.
 
-The first tab lists all the mutations. There are two groups of feedback.
+The first tab, "Mutation List", lists all the mutations. There are two groups of feedback.
 
 Group 1: Lines Not Tested
 
 Group 2: Lines Needing Better Testing
+
+.. odsafig:: Images/mutationlist.png
+   :align: center
+   :capalign: center
+   :figwidth: 90%
+   :scale: 50%
+   :alt: Mutation list
+
+   Mutation List Tab in The Eclipse Project
+
+To expand the feedback, click on the [+] button on the right top corner of the
+Mutation List tab.
 
 Lines Not Tested
 ~~~~~~~~~~~~~~~~
@@ -85,14 +97,14 @@ of code that is not executed.
 The list also displays the package and class that the line of
 the code belongs to.
 
-.. odsafig:: Images/mutationlist.png
+.. odsafig:: Images/mutationlist2.png
    :align: center
    :capalign: center
    :figwidth: 90%
    :scale: 50%
-   :alt: Mutation list
+   :alt: Mutation list (expanded)
 
-   Mutation List For Each Class In The Eclipse Project
+   Mutation List Tab (expanded) in The Eclipse Project
 
 
 Lines Needing Better Testing
@@ -112,16 +124,16 @@ mutation testing so as to minimize the cost while maximizing the
 quality of the test suite assessment.
 We are using two types of mutations for our mutation testing. 
 
-1: Mutations of Logical Conditions.
+1: Mutations of Logical Expression.
 
-2: Mutations of Arithmetic Operations.
+2: Mutations of Arithmetic Operation.
 
-For Logical Conditions, you must write test case assertions to check
+For Logical Expression, you must write test case assertions to check
 the intended behavior for all branches of the logical operator.
 A simple logical condition has two branches, but a more complicated
 one with multiple boolean operators could generate more branches.
 
-For Arithmetic Operations, you must write test case assertions to
+For Arithmetic Operation, you must write test case assertions to
 effectively check if the operation produces expected behavior.
 
 What does it mean when lines need better testing?
