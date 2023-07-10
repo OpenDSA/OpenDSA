@@ -300,3 +300,89 @@ through to the North-East banch.)
 This is a good example of the other way that mutation testing can help
 you to improve the quality and efficiency of your code, by alerting
 you to over-constrained code blocks.
+
+
+How do I localize the bugs in my code? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Localizing bugs in code can be a challenging task, but there are several 
+strategies and techniques you can employ to make the process more manageable.
+For example, you can develop unit tests to systematically check 
+your code's functionality. Creating test cases that reproduce 
+the bug can help you isolate the issue and ensure it is resolved 
+when you fix it. 
+
+**Write unit tests:**
+Begin by writing unit tests that reproduce the bug 
+or trigger the undesired behavior. Design your test cases to cover 
+different scenarios, including edge cases and boundary values. 
+These failing tests will serve as indicators of the presence of the bug.
+
+**Improve existing test suite:**
+While focusing on the bug, consider writing additional unit tests 
+that cover different scenarios and edge cases related to the problematic 
+code segment. These additional tests can help verify the correctness 
+of the bug fix and prevent regressions in the future. Use the mutation 
+testing tool often to evaluate how well your test suite detects 
+artificial faults a.k.a. mutations. 
+
+**Select mutator group:**
+Our Eclipse IDE plugin supports different mutator groups that can be 
+manually configured. Select the mutator group that best suits your case.
+By default, the plugin uses the "VT defaults" mutator group, which includes
+Logical Expression Mutator (Remove Conditionals) and Arithmetic Operator 
+Deletion Mutator (AOD). You can also find other mutator groups in the
+Mutation Test configuration. Navigate to **Run As -> Run Configurations -> 
+Mutation Test -> <your_project> -> Mutators** and select your desired mutator group.
+Keep the following in mind:
+
+* Stronger groups (Stronger defaults/All) will generate more mutants, but 
+  will also take more time to run.
+
+* The "VT defaults" group is a good starting point but stronger groups are 
+  recommended for advanced use cases. 
+
+* The Web-CAT system uses the "VT defaults" group for grading purposes.
+
+For more information on mutator groups, please refer to the official documentation: https://pitest.org/quickstart/mutators/.
+
+.. odsafig:: Images/mutator_groups.png
+   :align: center
+   :capalign: center
+   :figwidth: 90%
+   :scale: 50%
+   :alt: Configuring Mutator Groups
+
+   Configuring Mutator Groups
+
+
+**Run mutation testing:**
+Configure and run the mutation testing tool on your codebase and test suite.
+The tool will generate mutated versions of your code by applying the 
+selected mutators. For each mutation, the tool executes your test suite 
+and checks if the tests pass or fail. If a mutation is not detected by any 
+of your tests, it will show up in the "Mutation List" tab, indicating a 
+potential weakness in your test suite.
+
+**Analyze the results:** 
+Review the results of the mutation testing process. Identify the surviving 
+mutants, as these represent areas of your code where your tests failed to 
+detect the introduced faults. These surviving mutants can indicate potential 
+bugs or areas where your test suite may need improvement.
+
+**Write additional test cases:** 
+Use the surviving mutants as a starting point for writing additional test cases. 
+Analyze the nature of each surviving mutant and create test cases that 
+specifically target the mutated code. By designing tests that cover these 
+specific scenarios, you increase the likelihood of detecting the bugs or 
+issues associated with the surviving mutants.
+
+**Repeat the mutation testing cycle:** 
+After adding new test cases, rerun the mutation testing process. 
+The goal is to ensure that the newly added tests are capable of detecting 
+the previously surviving mutants. If any surviving mutants remain, analyze 
+why your test cases failed to identify them and refine your tests accordingly.
+
+Remember, localizing bug in code is a long iterative process. With good techniques
+(mutation testing) and strategies (writing abundant test cases), you can 
+make the process effective and time-efficient.
