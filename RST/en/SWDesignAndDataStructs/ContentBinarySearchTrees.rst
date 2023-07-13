@@ -110,7 +110,11 @@ Interactive: Adding Binary Search Trees
    </center>
 
 
+Checkpoint 3
+------------
 
+.. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint3Summ.html ka
+   :long_name: Checkpoint 3
 
 
 Interactive: Removing From Binary Search Trees
@@ -140,5 +144,5 @@ Interactive: Removing From Binary Search Trees
 Checkpoint 4
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
