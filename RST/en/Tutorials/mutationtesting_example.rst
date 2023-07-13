@@ -88,14 +88,14 @@ will be mutated to
 .. code-block:: java
    :emphasize-lines: 1
   
-   int a = b;        // second member replaced
+   int a = b;        // replaced with first member
 
 and to
 
 .. code-block:: java
    :emphasize-lines: 1
    
-   int a = c;        // first member replaced
+   int a = c;        // replaced with second member
 
 Here, ``b``is the first member and ``c`` is the second member. 
 
@@ -123,21 +123,7 @@ returns the sum.
 Now if we execute mutation testing it will mutate the code as follows:
 
 
-# Replacing the first member in the arithmetic operation: 
-
-.. code-block:: java
-   :linenos:
-   :emphasize-lines: 4
-
-	public static int Addition(int num1, int num2) {
-		int sum = 0;
-
-		sum = num2;         // --> math operation
-
-		return sum;
-	}
-
-# Replacing the second member in the arithmetic operation: 
+**Replacing the arithmetic operation with first member:**
 
 .. code-block:: java
    :linenos:
@@ -151,12 +137,28 @@ Now if we execute mutation testing it will mutate the code as follows:
 		return sum;
 	}
 
+**Replacing the arithmetic operation with second member:** 
+
+.. code-block:: java
+   :linenos:
+   :emphasize-lines: 4
+
+	public static int Addition(int num1, int num2) {
+		int sum = 0;
+
+		sum = num2;         // --> math operation
+
+		return sum;
+	}
+
 If we have no test cases execute this code, the test process will
 generate the following mutations in the LINES_NOT_TESTED group under
 the Mutations List tab.
 (The icons for unresolve mutants are shown as "red bugs".)
 
-.. odsafig:: Images/MutationExample1.png
+
+
+.. odsafig:: Images/MutationExample1_AOD.png
    :align: center
    :capalign: center
    :figwidth: 90%
@@ -191,12 +193,12 @@ Logical Expression Mutant (Remove Conditionals)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The logical expression mutator (a.k.a. remove conditionals mutator)
-checks if a conditional expression is properly tested by your test
+checks if a logical expression is properly tested by your test
 suite.
-This mutator replaces the conditional expression with either TRUE or
+This mutator replaces the logical expression with either TRUE or
 FALSE and then runs your test suite with the mutant. 
 
-For example replacing conditional expression with TRUE condition: 
+For example replacing logical expression with TRUE condition: 
 
 .. code-block:: java
    :linenos:
@@ -217,7 +219,7 @@ will be mutated to
    // do something
    }
 
-For example replacing conditional expression with FALSE condition: 
+For example replacing logical expression with FALSE condition: 
 
 .. code-block:: java
    :linenos:
@@ -237,15 +239,15 @@ will be mutated to
    // do something
    }
 
-If there is more than one conditional expression then each expression
+If there is more than one logical expression then each expression
 will be mutated in separate runs of the test suite.
-The conditional mutator also mutates the bytecode instructions for
+The logical expression mutator also mutates the bytecode instructions for
 order checks (e.g. <=, >).
 
-If there are more than one conditional expression in the same
+If there are more than one logical expression in the same
 statement, then the generated mutants will be in order of the
-conditional expressions in the statement.
-Keep in mind, for multiple conditional expressions, you must test each
+logical expressions in the statement.
+Keep in mind, for multiple logical expressions, you must test each
 and every one of the expressions. 
 
 Example Code 2: Logical Expression Mutant (Remove Conditionals)
@@ -270,7 +272,7 @@ or negative.
 
 Executing mutation testing will mutate the code as follows.
 
-# Replacing the conditional expression with TRUE: 
+**Replacing the logical expression with TRUE:**
 
 .. code-block:: java
    :linenos:
@@ -285,7 +287,7 @@ Executing mutation testing will mutate the code as follows.
 		}	
 	}
 
-# Replacing the conditional expression with FALSE: 
+**Replacing the logical expression with FALSE:**
 
 .. code-block:: java
    :linenos:
@@ -305,7 +307,7 @@ mutations in the LINES_NOT_TESTED group under the Mutations List tab.
 
 The icons for unresolve mutants are shown as "red bugs".
 
-.. odsafig:: Images/MutationExample2.png
+.. odsafig:: Images/MutationExample2_RC.png
    :align: center
    :capalign: center
    :figwidth: 90%
@@ -346,7 +348,7 @@ Mutations List tab.
 Example Code 3: Multiple Mutants in One (EvenOddCheck)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We can have programming statements where we have both arithmetic operation(s) and conditional expression(s).
+We can have programming statements where we have both arithmetic operation(s) and logical expression(s).
 In such cases, mutation testing will return mutants for each type and list them under the Mutations List 
 tab. 
 
@@ -358,7 +360,7 @@ number is even and FALSE if the number is odd.
    :emphasize-lines: 2
 
 	public static boolean EvenOddCheck(int number) {
-		if (number % 2 == 0) {        // --> true or false (2 cases)
+		if (number % 2 == 0) {        // --> arithmetic operation (2 cases); logical expression (2 cases)
 			return true;               // even number
 		}
 		else {
@@ -368,7 +370,7 @@ number is even and FALSE if the number is odd.
 
 As a result, it will generate the following mutations under the Mutations List tab:
 
-.. odsafig:: Images/MutationExample3.png
+.. odsafig:: Images/MutationExample3_multi_lines.png
    :align: center
    :capalign: center
    :figwidth: 90%
@@ -403,7 +405,7 @@ Mutations List tab.
 Example Code 4: Loop Conditions (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A loop contains a conditional expression that needs testing. 
+A loop contains a logical expression that needs testing. 
 However, this is often optional and does not negatively impact mutation coverage. 
 
 For example: 
@@ -414,15 +416,5 @@ For example:
 
    for (int i = 0; i < 10; i++)
 
-If you don't test the terminating condition of a **for** loop then you can get the mutant with the 
-following feedback in the TIMED_OUT group under the Mutations List tab.
-
-
-.. odsafig:: Images/MutationExample4.png
-   :align: center
-   :capalign: center
-   :figwidth: 90%
-   :scale: 50%
-   :alt: Example Code 4: Loop Conditions
-
-   Example Code 4: Loop Conditions
+Keep in mind, if you don't test the terminating condition of a **for** loop then 
+your code might get stuck in an infinite loop. 
