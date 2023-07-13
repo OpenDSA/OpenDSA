@@ -70,11 +70,9 @@
   },
   "chapters": {
     "Stuff": {
-      "PIFLA/SetNotation": {},
-      "PointersJava/Exercises": {},
-      "NP/NPComplete": {},
       "SeniorAlgAnal/Impossible": {},
-      "SeniorAlgAnal/DynamicProgramming": {}
+      "SeniorAlgAnal/DynamicProgramming": {},
+      "Tutorials/mutationtesting_faq": {}
     },
     "Appendix": {
       "Glossary": {}
