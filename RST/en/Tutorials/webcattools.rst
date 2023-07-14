@@ -98,13 +98,27 @@ This is what the window should look like now:
 * Click ``Next`` again.
 
 * Accept the terms of the license agreement, and click 'Finish'.
- 
+
 The install will start now.
+
 It will only take a few seconds, but it will pause for a moment and
 warn you that you are about to install software with unsigned
-content.
-Click ``OK`` to continue the installation, and restart Eclipse
-when prompted to complete the process. 
+content. Check the box left to the `Unsigned` type.
+
+This is what the warning window should look like:
+
+.. odsafig:: Images/trust_parties.png
+   :width: 750
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: trust_parties
+
+Once you have checked the box, you can now click ``Trust Selected`` 
+option at the bottom right corner of the window.
+ 
+Click ``Trust Selected`` to continue the installation, 
+and restart Eclipse when prompted to complete the process. 
  
 Once you have the plug-in installed, you need to set it up to be able
 to communicate with Web-CAT:
