@@ -38,10 +38,9 @@ For those installing it for the first time, skip to the section on
 Installing the Plug-In. 
  
 Open Eclipse, and in the tool bar at the top of the screen, go to
-``Help --> About Eclipse``. Then click on the button that says
-``Installation Details``.
-After clicking on ``Installation Details``,
-a window something like this should come up: 
+``Help --> About Eclipse IDE``.
+Then click on the button that says ``Installation Details``.
+A window something like this should come up:
 
 .. odsafig:: Images/InstallDetails.png
    :width: 650
@@ -53,7 +52,10 @@ a window something like this should come up:
 Select ``Web-CAT Electronic Submitter`` and click ``Uninstall``.
 Follow the prompts, clicking ``Next`` and ``Finish`` as appropriate,
 and restart Eclipse to complete the process.
- 
+If you don't see a line labeled something like
+``Web-CAT Electronic Submitter`` then you probably do not have the
+Web-CAT plugin installed.
+
 
 Installing the Plug-in
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -70,7 +72,7 @@ The following window will come up:
    :alt: PluginInstall1
 
 In the ``Work With`` text box, paste this link:
-http://web-cat.org/eclstats
+https://web-cat.org/eclstats
  
 * Next, click ``Add``.
   A dialog box will pop up with two text boxes.
@@ -90,22 +92,26 @@ This is what the window should look like now:
    :figwidth: 90%
    :alt: PluginInstall2
 
-* Check the two  boxes next to ``Web-CAT Electronic Assignments
+* Check the boxes next to ``Web-CAT Electronic Assignments
   Feature`` and ``Web-CAT Java Development Extras``, and click ``Next``. 
 
-* It will then tell you about files that it plans to install. Click ``Next`` again.
-
-* Click ``Next`` again.
+* It will then tell you about files that it plans to install.
+  Click ``Next``.
 
 * Accept the terms of the license agreement, and click 'Finish'.
  
 The install will start now.
-It will only take a few seconds, but it will pause for a moment and
-warn you that you are about to install software with unsigned
-content.
-Click ``OK`` to continue the installation, and restart Eclipse
-when prompted to complete the process. 
- 
+This might take some time depending on your internet connection.
+Probably at least once it pause and warn you that you are about to
+install software with unsigned content.
+When it does this, click on the listed item(s) and then
+click the ``Trust Selected`` button to continue the installation.
+Restart Eclipse when prompted to complete the process. 
+
+
+Final Setup
+~~~~~~~~~~~
+
 Once you have the plug-in installed, you need to set it up to be able
 to communicate with Web-CAT:
 
