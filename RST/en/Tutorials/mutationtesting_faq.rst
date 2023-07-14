@@ -220,6 +220,33 @@ To catch this kind of exception, a good practice would be to add null
 checks in the `SimpleMath` constructor and/or `divideByDivisor` method, 
 and also include corresponding test cases in the test suite.
 
+Here is another simple example.
+Start with a Point object class definition.
+
+.. code-block:: java
+
+  public class Point {
+    private int x;
+    private int y;
+
+    Point(int inx, int iny) {
+      x = inx; y = iny;
+    }
+  }
+  
+Now, consider if we create a new Point like this:
+
+.. code-block:: java
+
+  Point mypoint = new Point(myy, myx);
+
+Here, the values for x and y are reversed between the caller and the
+constructor.
+Mutation testing cannot catch this sort of error.
+Note that probably your tests will also show this line as
+"code covered" as well, but you won't fail any test that does not
+explicitly depend on the values for x and y.
+
 
 Why do my mutation tests not cover all branches of my code?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
