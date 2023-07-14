@@ -71,9 +71,10 @@
   "chapters": {
     "Stuff": {
       "SeniorAlgAnal/Impossible": {},
-      "SeniorAlgAnal/DynamicProgramming": {},
+      "SeniorAlgAnal/DynamicProgramming": {}, 
+      "Tutorials/webcattools": {},
       "Tutorials/mutationtesting_faq": {}
-    },
+   },
     "Appendix": {
       "Glossary": {}
     }
