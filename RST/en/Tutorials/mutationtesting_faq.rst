@@ -91,11 +91,11 @@ Now, if you submit your Project 1 solution code for Project 2 – which
 has a different project specification – you will NOT get 100% Project
 Correctness in Project 2 despite having 100% Mutation Score.
 
-* Mutation Testing makes sure your code is doing exactly what **YOU**
-  expect it to do.
+* Mutation Testing attempts to make sure your code is doing exactly
+  what **you** expect it to do.
 
-* Project Correctness makes sure your code is doing exactly what
-  **INSTRUCTORS** expect it to do.
+* Project Correctness at Web-CAT attempts to make sure that your code
+  is doing exactly what **instructors** expect it to do.
 
   
 Why does writing Mutation Tests take so much time?
@@ -107,8 +107,8 @@ their project time debugging.
 How much time you spend debugging depends in part on how well you
 write the code to begin with, and how much effort you put into your
 test suites.
-Mutation testing gives focussed information on where your test suite
-is missing out on testing your code.
+When used correctly, mutation testing gives focussed information on
+where your test suite is missing out on testing your code.
 If that helps you to find bugs, then it is saving you a lot of time.
 
 
@@ -117,23 +117,25 @@ Why should I use Mutation Testing instead of Code Coverage?
 
 Testing is a huge concern for industry, and so there has been a lot of
 research and empirical study on testing methods.
-Code coverage, while simple and cheap to measure, has been shown
-empirically not to be well correlated to actual bugs in code,
-while mutation testing is much better correlated to real bugs.
+Code coverage, while relatively simple to understand and cheap to
+measure, has been shown empirically not to be well correlated to
+actual bugs in code.
+Mutation testing is much better correlated to real bugs.
 
 
 Why are we using this particular set of mutation operators?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Historically, mutation testing has not been used much in academic
-settings because of its expense.
+settings because of its expense in terms of server load on the
+autograder.
 Every mutation requires running the program against the test suite.
 Part of the research in recent years has been about finding minimal
 sets of mutations that are a good tradeoff between identifying bugs
 and the expense of running the testing process.
 While there are many other ways to do things, we think the choice of
-operators used in the Web-CAT plugin represent the most effective
-solution that we know of.
+operators used by Web-CAT represents a good tradeoff between
+effectiveness at finding bugs and runtime cost.
 
 
 Does 100% Mutation Score mean my code is perfect?
@@ -141,18 +143,20 @@ Does 100% Mutation Score mean my code is perfect?
 
 A high mutation score indicates that your tests are effective at
 catching the introduced mutations.
-However, this doesn't necessarily mean that your code is perfect or
-bug-free.
+This probably means that the test suit is doing a pretty good job of
+testing your code.
+However, this doesn't necessarily mean that your code is
+bug free.
 First, you might have a mis-understanding about the project
 requirements that lead to your program giving one answer (which your
-own test agrees with), while the instructor reference tests expect a
+own tests agree with), while the instructor reference tests expect a
 different answer.
 Second, your tests might not cover some edge cases, or there
 might be issues in the code that mutation testing doesn't reveal.
 
 
 Why do I have bugs in my code despite having 100% Mutation Score?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A high mutation score indicates the effectiveness of your 
 tests in capturing the introduced mutations.
@@ -217,8 +221,8 @@ checks in the `SimpleMath` constructor and/or `divideByDivisor` method,
 and also include corresponding test cases in the test suite.
 
 
-Why do my mutation tests not cover all branches of my code? 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Why do my mutation tests not cover all branches of my code?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You may have a situation where your unit tests do not cover all
 branches of your code no matter how hard you try.
@@ -297,12 +301,12 @@ Every branch requires two tests.
 (In contrast, the original code needed eight tests if it had to go
 through to the North-East banch.)
 
-This is a good example of the other way that mutation testing can help
+This is an example of another way that mutation testing can help
 you to improve the quality and efficiency of your code, by alerting
 you to over-constrained code blocks.
 
 
-How do I localize the bugs in my code? 
+How do I localize the bugs in my code?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Localizing bugs in code can be a challenging task, but there are several 
@@ -323,8 +327,7 @@ While focusing on the bug, consider writing additional unit tests
 that cover different scenarios and edge cases related to the problematic 
 code segment. These additional tests can help verify the correctness 
 of the bug fix and prevent regressions in the future. Use the mutation 
-testing tool often to evaluate how well your test suite detects 
-artificial faults a.k.a. mutations. 
+testing tool often to evaluate how well your test suite detects mutations. 
 
 **Select mutator group:**
 Our Eclipse IDE plugin supports different mutator groups that can be 
@@ -340,7 +343,7 @@ Keep the following in mind:
   will also take more time to run.
 
 * The "VT defaults" group is a good starting point but stronger groups are 
-  recommended for advanced use cases. 
+  recommended when trying to track down a difficult bug.
 
 * The Web-CAT system uses the "VT defaults" group for grading purposes.
 
@@ -383,6 +386,8 @@ The goal is to ensure that the newly added tests are capable of detecting
 the previously surviving mutants. If any surviving mutants remain, analyze 
 why your test cases failed to identify them and refine your tests accordingly.
 
-Remember, localizing bug in code is a long iterative process. With good techniques
-(mutation testing) and strategies (writing abundant test cases), you can 
-make the process effective and time-efficient.
+Sometimes bugs are hard to find.
+Localizing the bug in your code can be a long, iterative process.
+With good techniques (including mutation testing) and strategies
+(writing abundant test cases), you can  
+make the process effective and save time.
