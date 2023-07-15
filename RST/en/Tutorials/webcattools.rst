@@ -106,7 +106,8 @@ This might take some time depending on your internet connection.
 Probably at least once it pause and warn you that you are about to
 install software with unsigned content.
 
-You may get a window titled ``Trust Authorities`` that looks like:
+If this is your first time installing the plugin, then You are likely
+to get a window titled ``Trust Authorities`` that looks like:
 
 .. odsafig:: Images/trust_authorities.png
    :width: 750
@@ -118,7 +119,8 @@ You may get a window titled ``Trust Authorities`` that looks like:
 When it does this, select the checkbox next to 'https://web-cat.org/'
 and click the ``Trust Selected`` button. 
 
-You may get another window titled ``Trust Artifacts`` that looks like:
+At some point while downloading the plugin files, you might get
+another window titled ``Trust Artifacts`` that looks like:
 
 .. odsafig:: Images/trust_artifacts.png
    :width: 750
@@ -127,9 +129,10 @@ You may get another window titled ``Trust Artifacts`` that looks like:
    :figwidth: 90%
    :alt: trust_artifacts
 
-When it does this, select the checkboxes as the image shows
-and click the ``Trust Selected`` button. The install will continue.
+If so, check the boxes and click the ``Trust Selected`` button.
+The install will continue. 
 Restart Eclipse when prompted to complete the process. 
+
 
 Final Setup
 ~~~~~~~~~~~
