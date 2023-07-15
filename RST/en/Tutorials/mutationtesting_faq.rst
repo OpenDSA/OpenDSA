@@ -244,7 +244,7 @@ Here, the values for x and y are reversed between the caller and the
 constructor.
 Mutation testing cannot catch this sort of error.
 Note that probably your tests will also show this line as
-"code covered" as well, but you won't fail any test that does not
+"code covered", but you won't fail any test that does not
 explicitly depend on the values for x and y.
 
 
@@ -255,7 +255,7 @@ You may have a situation where your unit tests do not cover all
 branches of your code no matter how hard you try.
 Hopefully this will stop you from getting 100% mutation coverage (and
 likewise, you would not get 100% code coverage either).
-In such case, you may want to make sure you are not writing
+In such cases, you should check whether you are writing
 over-constrained code.
 
 Consider this example of a comparison of two points.
@@ -290,11 +290,11 @@ You can try yourself to verify this by carefully considering the logic
 of the code.
 Can you think of test cases that will trigger each of the eight
 branches?
-Since there are effectively on four possible inputs (the one point can
-only be in one of four positions with respect to the other point),
-you cannot.
+Since there are effectively only four possible inputs
+(the one point can only be in one of four positions with respect to
+the other point), you cannot.
 
-Here, we want complete mutation coverage but there are only four 
+We want complete mutation coverage but there are only four 
 logically distinct inputs.
 For that to be possible, we must come up with code that has only four
 branches!
