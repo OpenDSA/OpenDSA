@@ -174,16 +174,44 @@ Installing student.jar
 
 If you are using Web-CAT, then you probably will want to use the VT
 local support for JUnit tests.
-See |external_link1| for how to download the ``student.jar`` file and
-some practical advice for getting started with JUnit testing.
-At the time of this writing, the prefered version of JUnit to use is
-Junit 4.
+
+First, download the |studentjar| file. 
+
+.. |studentjar| raw:: html
+
+   <a href="http://sourceforge.net/projects/web-cat/files/Student%20Library/4.14/student.jar/download" 
+   target ="_blank">student.jar</a>
+
+Then, in Eclipse, right click on your project, and navigate to
+``Build Path --> Configure Build Path``.
+In the window that comes up, click on the ``Libraries`` tab.
+Select ``Classpath`` and click ``Add External JARs``.
+Navigate to the location where you saved the ``student.jar`` file,
+select it, and click ``Open``.
+The ``student.jar`` file should now be listed in the ``Classpath``
+section as shown below:
+
+.. odsafig:: Images/studentjarClassPath.png
+   :width: 750
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: studentjarClassPath
+
+Now click ``Apply and Close`` to complete the process.
+You should now be able to use the VT local support for JUnit tests.
+
+See |external_link1| for some practical advice on getting started 
+with JUnit testing. At the time of this writing, the prefered version 
+of JUnit to use is Junit 4.
 
 .. |external_link1| raw:: html
 
    <a href="http://web-cat.org/eclstats/junit-quickstart/" target =
    "_blank">here</a>
    
+
+
 
 Installing formatting support
 -----------------------------
