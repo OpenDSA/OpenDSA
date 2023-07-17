@@ -95,7 +95,7 @@ the following two URLs into the panel.
 
   * **Download URL**
 
-    * `https://courses.cs.vt.edu/~cs2114/assignments.xml <https://courses.cs.vt.edu/~cs2114/assignments.xml>`_
+    * `https://courses.cs.vt.edu/cs2114/assignments.xml <https://courses.cs.vt.edu/cs2114/assignments.xml>`_
 
   * **Submit URL**
 
@@ -120,7 +120,7 @@ Remember to format your code before submitting to Web-CAT.
 
 .. admonition:: Install the formatting file
  
-  Download the following XML file: `vtcsstyle.xml download <https://courses.cs.vt.edu/~cs2114/meng-bridge/support/vtcsstyle.xml >`_
+  Download the following XML file: `vtcsstyle.xml download <https://courses.cs.vt.edu/cs2114/meng-bridge/support/vtcsstyle.xml >`_
 
   To install:
   

@@ -27,8 +27,8 @@ Interactive: Cloning Concepts Video
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/CloningConcepts.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/CloningConcepts.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       CloningConcepts.pdf</img>
       </a>
 
@@ -59,8 +59,8 @@ Interactive: Programming Cloning
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ProgrammingClone.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ProgrammingClone.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       ProgrammingClone.pdf</img>
       </a>
 

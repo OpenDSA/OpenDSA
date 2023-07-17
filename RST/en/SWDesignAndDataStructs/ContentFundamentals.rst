@@ -42,8 +42,8 @@ Java Basics
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaFundamentalsWelcome.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaFundamentalsWelcome.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides Java Fundamentals.pdf</img>
    </a>
 
@@ -242,8 +242,8 @@ Java Variables Video
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaVariables.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaVariables.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides Java Fundamentals.pdf</img>
    </a>
 
@@ -313,8 +313,8 @@ Java Control Flow Video
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/FridgeInventory.java" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/FridgeInventory.java" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Java file FridgeInventory.java</img>
    </a>
 
@@ -344,8 +344,8 @@ Java Scope and Equality
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaFundamentalsTips.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaFundamentalsTips.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides Java Fundamentals Tips.pdf</img>
    </a>
 

@@ -64,7 +64,7 @@ Images in exercises
 java file example 
  .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ArrayBasics.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ArrayBasics.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
       ArrayBasics.java</img>
       </a>
@@ -73,8 +73,8 @@ slides
 
  .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ProgrammingBinarySearchTrees.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ProgrammingBinarySearchTrees.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       ProgrammingBinarySearchTrees.pdf</img>
       </a>
 

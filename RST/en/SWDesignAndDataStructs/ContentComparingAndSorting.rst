@@ -37,8 +37,8 @@ Introduction to Ordering, Comparing, and Sorting
 
 .. raw:: html
    <br>
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.2.1-IntroOrderingAndComparing.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.2.1-IntroOrderingAndComparing.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 12.1.2.1-IntroOrderingAndComparing.pdf
    </a>
 
@@ -64,8 +64,8 @@ Introduction to Sorting Video
 .. raw:: html
    
    <br>
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.3.1-IntroToSorting.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.3.1-IntroToSorting.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 12.1.3.1-IntroToSorting.pdf
    </a>
 
@@ -90,8 +90,8 @@ Selection Sort Video
 .. raw:: html
 
    <br>
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.4.1-SelectionSort.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.4.1-SelectionSort.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 12.1.4.1-SelectionSort.pdf
    </a>
 
@@ -126,8 +126,8 @@ Insertion Sort
 .. raw:: html
 
    <br>
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.5.1-InsertionSortArray.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.5.1-InsertionSortArray.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 12.1.5.1-InsertionSortArray.pdf
    </a>
 
@@ -153,8 +153,8 @@ Checkpoint 4
 .. raw:: html
 
    <br>
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.6.1-InsertionSortLinked.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.6.1-InsertionSortLinked.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 12.1.6.1-InsertionSortLinked.pdf
    </a>
 
@@ -199,8 +199,8 @@ Comparator Example Code
 .. raw:: html
 
   <br>
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.8.1-Comparators.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.8.1-Comparators.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 12.1.8.1-Comparators.pdf
    </a>
 

@@ -33,8 +33,8 @@ Interactive: Intro to Trees Video
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/TreeIntro.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/TreeIntro.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       TreeIntro.pdf</img>
       </a>
 
@@ -66,8 +66,8 @@ Interactive: Binary Trees
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/BinaryTrees.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/BinaryTrees.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       BinaryTrees.pdf</img>
       </a>
 
@@ -98,8 +98,8 @@ Interactive: Binary Tree Traversals
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/IntroToTraversals.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/IntroToTraversals.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       IntroToTraversals.pdf</img>
       </a>
 
@@ -130,8 +130,8 @@ Interactive: Programming Binary Trees
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ProgrammingTrees.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ProgrammingTrees.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       ProgrammingTrees.pdf</a>
 
 

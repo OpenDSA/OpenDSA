@@ -21,11 +21,8 @@ Upon completion of this module, students will be able to:
 * Apply and demonstrate good design practices
 * Produce the design of a software system using a UML class diagram
 
-Introduction to Software design
--------------------------------
-
-[9:30] Intro to Software Design
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Introduction to Software Design [9:30] 
+---------------------------------------------------
 
 .. raw:: html
 
@@ -36,9 +33,9 @@ Introduction to Software design
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.2.2.1-IntroToSoftwareDesign.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 9.2.2.1-IntroToSoftwareDesign.pdf</img>
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToSoftwareDesign.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+   Video Slides IntroToSoftwareDesign.pdf</img>
    </a>
 
 
@@ -384,7 +381,7 @@ questions and review the UML class designs provided within the examples
 provided throughout the module, labs, and projects.
 
 Much of what you need to know for relationships, hierarchies and reuse has
-been covered within the :doc:`2114Polymorphism2` module. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
+been covered within the :doc:`ContentPolymorphism` module. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/OOPUMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
 
 Activity
 --------
@@ -633,8 +630,8 @@ classes are deprecated and in the Tower of Hanoi project we now use our own
 Model and View classes to take the place of these.
 
 
-[11:00] MVC and Observer Video
-------------------------------
+Interactive: MVC and Observer Video [11:00] 
+-------------------------------------------
 
 .. raw:: html
 
@@ -642,7 +639,7 @@ Model and View classes to take the place of these.
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pws7qjiz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
      
-Note: Project 3 in this video is a variation of the towers of Hanoi project.
+Note:The project in this video is a variation of the towers of Hanoi project.
 
 
 MVC Example AddressBook

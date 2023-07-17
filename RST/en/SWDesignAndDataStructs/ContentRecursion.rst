@@ -50,8 +50,8 @@ Introduction to Recursion
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.2.2-RecursionIntro.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.2.2-RecursionIntro.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 9.1.2.2-RecursionIntro.pdf</img>
    </a>
 
@@ -77,8 +77,8 @@ More Recursion
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.3.1-RecursionExample.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.3.1-RecursionExample.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 9.1.3.1-RecursionExample.pdf</img>
    </a>
 
@@ -118,8 +118,8 @@ Recursion on Arrays
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.5.1-DisplayArrays.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.5.1-DisplayArrays.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 9.1.5.1-DisplayArrays.pdf</img>
    </a>
 
@@ -145,8 +145,8 @@ Recursion on Arrays Middle
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.6.1-DisplayArraysMiddle.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.6.1-DisplayArraysMiddle.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 9.1.6.1-DisplayArraysMiddle.pdf</img>
    </a>
 
@@ -179,8 +179,8 @@ Recursion on Linked Chain
     
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.8.1-DisplayBagsRecursively.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.8.1-DisplayBagsRecursively.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 9.1.8.1-DisplayBagsRecursively.pdf</img>
    </a>
 
@@ -198,8 +198,8 @@ Tower of Hanoi
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.9.1-TowersOfHanoi.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.9.1-TowersOfHanoi.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 9.1.9.1-TowersOfHanoi.pdf</img>
    </a>
 
@@ -224,8 +224,8 @@ Recursion Wrap Up
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.1.10.1-RecursionWrapUp.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.10.1-RecursionWrapUp.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 9.1.10.1-RecursionWrapUp.pdf</img>
    </a>
 

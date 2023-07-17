@@ -33,22 +33,22 @@ Interactive: Introduction to Sorted Lists
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ListInterface.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ListInterface.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
       ListInterface.java</img>
       </a>
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/SortedListInterface.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/SortedListInterface.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
       SortedListInterface.java</img>
       </a>
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/SortedListsOrderVsSorted.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/SortedListsOrderVsSorted.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       SortedListsOrderVsSorted.pdf</img>
       </a>
 
@@ -171,7 +171,7 @@ Since we can think of a SortedList as a List with modified characteristics and a
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/CS2-SortedListDemo.zip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/CS2-SortedListDemo.zip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
      CS2-SortedListDemo.zip</img>
       </a>
@@ -201,8 +201,8 @@ Implementing a Sorted List ADT with an Underlying Linked Chain
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/LinkedImplementationofSortedList.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/LinkedImplementationofSortedList.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
      LinkedImplementationofSortedList.pdf</img>
       </a>
 
@@ -284,8 +284,8 @@ Implementing Using Composition
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ImplementationUsingComposition.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ImplementationUsingComposition.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       ImplementationUsingComposition.pdf</img>
       </a>
 
@@ -339,8 +339,8 @@ Implementing Using Inheritance
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/ImplementationUsingInheritance.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ImplementationUsingInheritance.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       ImplementationUsingInheritance.pdf</img>
       </a>
 
