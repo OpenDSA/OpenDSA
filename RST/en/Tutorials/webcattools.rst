@@ -99,13 +99,38 @@ This is what the window should look like now:
   Click ``Next``.
 
 * Accept the terms of the license agreement, and click 'Finish'.
- 
+
 The install will start now.
+
 This might take some time depending on your internet connection.
 Probably at least once it pause and warn you that you are about to
 install software with unsigned content.
-When it does this, click on the listed item(s) and then
-click the ``Trust Selected`` button to continue the installation.
+
+If this is your first time installing the plugin, then You are likely
+to get a window titled ``Trust Authorities`` that looks like:
+
+.. odsafig:: Images/trust_authorities.png
+   :width: 750
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: trust_authorities
+
+When it does this, select the checkbox next to 'https://web-cat.org/'
+and click the ``Trust Selected`` button. 
+
+At some point while downloading the plugin files, you might get
+another window titled ``Trust Artifacts`` that looks like:
+
+.. odsafig:: Images/trust_artifacts.png
+   :width: 750
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: trust_artifacts
+
+If so, check the boxes and click the ``Trust Selected`` button.
+The install will continue. 
 Restart Eclipse when prompted to complete the process. 
 
 
@@ -149,16 +174,44 @@ Installing student.jar
 
 If you are using Web-CAT, then you probably will want to use the VT
 local support for JUnit tests.
-See |external_link1| for how to download the ``student.jar`` file and
-some practical advice for getting started with JUnit testing.
-At the time of this writing, the prefered version of JUnit to use is
-Junit 4.
+
+First, download the |studentjar| file. 
+
+.. |studentjar| raw:: html
+
+   <a href="http://sourceforge.net/projects/web-cat/files/Student%20Library/4.14/student.jar/download" 
+   target ="_blank">student.jar</a>
+
+Then, in Eclipse, right click on your project, and navigate to
+``Build Path --> Configure Build Path``.
+In the window that comes up, click on the ``Libraries`` tab.
+Select ``Classpath`` and click ``Add External JARs``.
+Navigate to the location where you saved the ``student.jar`` file,
+select it, and click ``Open``.
+The ``student.jar`` file should now be listed in the ``Classpath``
+section as shown below:
+
+.. odsafig:: Images/studentjarClassPath.png
+   :width: 750
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: studentjarClassPath
+
+Now click ``Apply and Close`` to complete the process.
+You should now be able to use the VT local support for JUnit tests.
+
+See |external_link1| for some practical advice on getting started 
+with JUnit testing. At the time of this writing, the prefered version 
+of JUnit to use is Junit 4.
 
 .. |external_link1| raw:: html
 
    <a href="http://web-cat.org/eclstats/junit-quickstart/" target =
    "_blank">here</a>
    
+
+
 
 Installing formatting support
 -----------------------------
