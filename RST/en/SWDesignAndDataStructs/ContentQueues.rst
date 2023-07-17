@@ -23,13 +23,17 @@ Suggested Reading
 
 Chapter 10: **Queues, Deques, and Priority Queues**  and  **Chapter 11: Queue, Deque, and Priority Queue Implementations** from `Data Structures and Abstractions with Java <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_ by Frank M. Carrano and Timothy Henry
 
-Queues
-------
 
-[8:50] Introduction to Queues
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. admonition:: The Queue Interface
+Interactive: Introduction to Queues
+-----------------------------------
 
+.. admonition:: Follow Along, Practice and Explore
+
+    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone *.java file(s) to the created package.
+        
    .. code-block:: java
    
       package queue;
@@ -64,21 +68,23 @@ Queues
         public void clear();
       } // end QueueInterface
    
-   Download `QueueInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/QueueInterface.java>`_ (right-click to download as .java file).
-
+   .. raw:: html
+   
+     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/QueueInterface.java"  target="_blank">
+     <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+     QueueInterface.java</img>
+     </a>
+     <br>
+     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/QueueIntro.pdf" target="_blank">
+        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        Video Slides: QueueIntro.pdf</img>
+        </a>
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_1km1xhtz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.2.1-QueueIntro.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.2.1-QueueIntro.pdf</img>
-   </a>
 
 
 Checkpoint 1
@@ -94,24 +100,24 @@ Programming Practice: Queues 1
 .. extrtoolembed:: 'Programming Practice: Queues 1'
    :workout_id: 1920
 
-Linked Queues Intro and Enqueue
--------------------------------
+Interactive: Linked Queues Intro and Enqueue
+--------------------------------------------
 
-[11:29] Linked Queue
-~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Follow Along, Practice and Explore
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedQueuesEnqueue.pdf"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      ArrayRemove.java</img>
+      </a>
+
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nf3l8nvv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.4.1-LinkedQueuesEnqueue.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.4.1-LinkedQueuesEnqueue.pdf</img>
-   </a>
 
 Checkpoint 2
 ------------
@@ -120,24 +126,24 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-Linked Queues Removing and More (Dequeue and Other Methods)
------------------------------------------------------------
+Interactive: Linked Queues Removing and More (Dequeue and Other Methods)
+------------------------------------------------------------------------
+   
+.. admonition:: Follow Along, Practice and Explore
 
-[8:41] Linked Queue remove()
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  .. raw:: html
 
+     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedQueueRemove.pdf"  target="_blank">
+     <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+     ArrayRemove.java</img>
+     </a>
+   
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5m4m3con' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.5.1-LinkedQueueRemove.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.5.1-LinkedQueueRemove.pdf</img>
-   </a>
 
 Checkpoint 3
 ------------
@@ -146,11 +152,108 @@ Checkpoint 3
    :long_name: Checkpoint 3
 
 
-Deques
-------
+Interactive: Introduction to Deque
+----------------------------------
 
-[13:51] Introduction to Deque
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Follow Along, Practice and Explore
+
+    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone *.java file(s) to the created package.
+
+  .. code-block:: java
+  
+     package deque;
+  
+     /**
+      * An interface for the ADT deque.
+      *
+      * @author Frank M. Carrano
+      * @author Timothy M. Henry
+      * @version 4.0
+      * @param  generic type for the deque
+      */
+     public interface DequeInterface
+     {
+         /**
+          * Adds a new entry to the front of this dequeue.
+          *
+          * @param newEntry
+          *            An object to be added.
+          */
+         public void addToFront(T newEntry);
+  
+         /**
+          * Adds a new entry to the back of this dequeue.
+          *
+          * @param newEntry
+          *            An object to be added.
+          */
+         public void addToBack(T newEntry);
+  
+         /**
+          * Removes and returns the front entry of this dequeue.
+          *
+          * @return The object at the front of the dequeue.
+          * @throws EmptyDequeException
+          *             if the dequeue is empty before the operation.
+          */
+         public T removeFront();
+  
+         /**
+          * Removes and returns the back entry of this dequeue.
+          *
+          * @return The object at the back of the dequeue.
+          * @throws EmptyDequeException
+          *             if the dequeue is empty before the operation.
+          */
+         public T removeBack();
+  
+         /**
+          * Retrieves the front entry of this dequeue.
+          *
+          * @return The object at the front of the dequeue.
+          * @throws EmptyDequeException
+          *             if the dequeue is empty before the operation.
+          */
+         public T getFront();
+  
+         /**
+          * Retrieves the back entry of this dequeue.
+          *
+          * @return The object at the back of the dequeue.
+          * @throws EmptyDequeException
+          *             if the dequeue is empty before the operation.
+          */
+         public T getBack();
+  
+         /**
+          * Detects whether this dequeue is empty.
+          *
+          * @return True if the queue is empty, or false otherwise.
+          */
+         public boolean isEmpty();
+  
+         /**
+          * Removes all entries from this dequeue.
+          */
+         public void clear();
+     } // end DequeInterface
+
+
+  .. raw:: html
+
+  
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/DequeInterface.java"  target="_blank">
+        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+        DequeInterface.java</img>
+        </a>
+        <br>
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeIntro.pdf"  target="_blank">
+        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+        ArrayRemove.java</img>
+        </a>
 
 .. raw:: html
 
@@ -158,106 +261,11 @@ Deques
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vj6hwbnk' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.6.1-DequeIntro.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.6.1-DequeIntro.pdf</img>
-   </a>
-
 Checkpoint 4
 ------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
-
-Deque Interface
-~~~~~~~~~~~~~~~
-
-.. admonition:: The Deque Interface
-
-   .. code-block:: java
-   
-       package deque;
-   
-       /**
-        * An interface for the ADT deque.
-        *
-        * @author Frank M. Carrano
-        * @author Timothy M. Henry
-        * @version 4.0
-        * @param  generic type for the deque
-        */
-       public interface DequeInterface
-       {
-           /**
-            * Adds a new entry to the front of this dequeue.
-            *
-            * @param newEntry
-            *            An object to be added.
-            */
-           public void addToFront(T newEntry);
-   
-           /**
-            * Adds a new entry to the back of this dequeue.
-            *
-            * @param newEntry
-            *            An object to be added.
-            */
-           public void addToBack(T newEntry);
-   
-           /**
-            * Removes and returns the front entry of this dequeue.
-            *
-            * @return The object at the front of the dequeue.
-            * @throws EmptyDequeException
-            *             if the dequeue is empty before the operation.
-            */
-           public T removeFront();
-   
-           /**
-            * Removes and returns the back entry of this dequeue.
-            *
-            * @return The object at the back of the dequeue.
-            * @throws EmptyDequeException
-            *             if the dequeue is empty before the operation.
-            */
-           public T removeBack();
-   
-           /**
-            * Retrieves the front entry of this dequeue.
-            *
-            * @return The object at the front of the dequeue.
-            * @throws EmptyDequeException
-            *             if the dequeue is empty before the operation.
-            */
-           public T getFront();
-   
-           /**
-            * Retrieves the back entry of this dequeue.
-            *
-            * @return The object at the back of the dequeue.
-            * @throws EmptyDequeException
-            *             if the dequeue is empty before the operation.
-            */
-           public T getBack();
-   
-           /**
-            * Detects whether this dequeue is empty.
-            *
-            * @return True if the queue is empty, or false otherwise.
-            */
-           public boolean isEmpty();
-   
-           /**
-            * Removes all entries from this dequeue.
-            */
-           public void clear();
-       } // end DequeInterface
-   
-   
-   Download `DequeInterface.java <https://courses.cs.vt.edu/~cs2114/meng-bridge/examples/DequeInterface.java>`_ (right-click to download as .java file).
-
 
 
 Deque Removing and Wrap Up
@@ -275,8 +283,8 @@ Deque Removing and Wrap Up
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.7.1-DequeRemoveAndWrapUp.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.7.1-DequeRemoveAndWrapUp.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 10.2.7.1-DequeRemoveAndWrapUp.pdf</img>
    </a>
 
@@ -303,8 +311,8 @@ Array Implementation of Queues
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.8.1-ArrayQueueIntro.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.8.1-ArrayQueueIntro.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 10.2.8.1-ArrayQueueIntro.pdf</img>
    </a>
 
@@ -329,8 +337,8 @@ ArrayQueue One Unused Location
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.9.1-ArrayQueueRemove.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.9.1-ArrayQueueRemove.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 10.2.9.1-ArrayQueueRemove.pdf</img>
    </a>
 
@@ -355,8 +363,8 @@ ArrayQueue Ensure Capacity
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.10.2-ArrayQueueEnsureCapacity.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.10.2-ArrayQueueEnsureCapacity.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 10.2.10.2-ArrayQueueEnsureCapacity.pdf</img>
    </a>
 
@@ -382,8 +390,8 @@ ArrayQueue WrapUp
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.2.11.1-ArrayQueueWrapUp.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.11.1-ArrayQueueWrapUp.pdf" target="_blank">
+   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
    Video Slides 10.2.11.1-ArrayQueueWrapUp.pdf</img>
    </a>
 

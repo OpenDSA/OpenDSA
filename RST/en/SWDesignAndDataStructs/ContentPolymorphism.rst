@@ -8,7 +8,7 @@
 
 
 Polymorphism
-====================
+============
 
 Objectives
 ----------
@@ -26,23 +26,19 @@ Objectives
 
 
 
-Introduction to Object Oriented Programming
+Interactive: Introduction to Object Oriented Programming [9:26]
 -------------------------------------------
-[9:26] Java Objects Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
     
-     <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_td3bp4s0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaOOPObjects.pdf"  target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides Java OOP Objects.pdf</img>
-   </a>
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_td3bp4s0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaOOPObjects.pdf"  target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides Java OOP Objects.pdf</img>
+    </a>
 
 
 
@@ -54,36 +50,24 @@ Checkpoint 1
 
 
 
-Java UML Diagrams
------------------
-
-[6:15] Java Object UML Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Java UML Diagrams [6:15]
+-------------------------------------
 
 .. raw:: html
 
-     <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_phzs60ad' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1-JavaOOPUML.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.3.2.1-JavaOOPUML.pdf</img>
-   </a>
-
-Related Resources
-"""""""""""""""""""
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf" target="_blank">
-   A UML Diagram from the example in the video 7.3.2.1.1-UMLDiagramKey.pdf
-   </a>
-
-
-
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_phzs60ad' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStruct/course-notes/JavaOOPUML.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides 7.3.2.1-JavaOOPUML.pdf</img>
+    </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStruct/course-notes/OOPUMLDiagramKey.pdf" target="_blank">
+    <img src="../html/_static/Images/uml.png" width="32" height="32">
+    UML Diagram from the example in the video</img>
+    </a>
 
 
 Programming Practice: Object Oriented Programming
@@ -93,44 +77,35 @@ Programming Practice: Object Oriented Programming
    :workout_id: 1906
 
 
-Java Inheritance: this, super
------------------------------
-
-Interactive
-~~~~~~~~~~~
+Interactive: Java Inheritance: this, super [11:15]
+--------------------------------------------------
 
 .. admonition:: Follow Along, Practice and Explore
 
-    Download to run and explore the corresponding project from the video on your own in eclipse. The project CS-GraphWindowLib is required for the sample project above.  It is also used in your course projects. To download the CS-GraphWindowLib you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
-
+    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+    1) create a new Eclipse project, then 
+    2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+    3) download and import the standalone *.java file(s) to the created package.
 
    .. raw:: html
+   
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaOOPInheritenceSuperThis.pdf"  target="_blank">
+        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        Video Slides Java OOP Super This.pdf</img>
+        </a>
+        <br>
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/CS2-ExJavaOOP.zip"  target="_blank">
+        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+        CS2 Java OOP Example Eclipse Project</img>
+        </a>
+        
 
-      <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/CS2-ExJavaOOP.zip"  target="_blank">
-      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-       CS2 Java OOP Example Eclipse Project</img>
-      </a>
 
-
-
-[11:15] Java OOP This and Super Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. raw:: html
     
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_25fplq8v' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaOOPInheritenceSuperThis.pdf"  target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides Java OOP Super This.pdf</img>
-   </a>
-
-
-
-
 
 Checkpoint 2
 ------------
@@ -140,27 +115,19 @@ Checkpoint 2
 
 
 
-Java Inheritance: equals(), toString()
---------------------------------------
-
-
-
-[14:33] Java OOP: Equals toString Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Java Inheritance: equals(), toString() [14:33] 
+-----------------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ml9sbz2y' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/SWDesignAndDataStructs/JavaOOPInheritenceEqualsToString.pdf"  target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides Java OOP Equals ToString .pdf</img>
-   </a>
-
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaOOPInheritenceEqualsToString.pdf"  target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides Java OOP Equals ToString .pdf</img>
+    </a>
 
 
 Java OOP Checkpoint 3
@@ -169,33 +136,30 @@ Java OOP Checkpoint 3
    :long_name: Checkpoint 3
 
 
-Polymorphism Measurable Interface
----------------------------------
+Interactive: Polymorphism Measurable Interface [7:23]
+-----------------------------------------------------
 
-Polymorphism Example Code
-~~~~~~~~~~~~~~~~~~~~~~~~~
+.. TODO Code link
 .. admonition:: Try It Yourself
 
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.04-MeasurableInterface". Use this example to follow along with the following video. Feel free to experiment. 
-   
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-[7:23] The Measurable Interface
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+    1) create a new Eclipse project, then 
+    2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+    3) download and import the standalone *.java file(s) to the created package.
+    
+    .. raw:: html
+    
+        <br>
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyMeasurable.pdf" target="_blank">
+        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        Video Slides JavaOOPPolyMeasurable.pdf</img>
+        </a>
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ywzatt7g' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.4.1.1-JavaOOPPolyMeasurable.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.4.1.1-JavaOOPPolyMeasurable.pdf</img>
-   </a>
-
 
 
 Checkpoint 4
@@ -211,25 +175,21 @@ Programming Practice: Polymorphism 1
 .. extrtoolembed:: 'Programming Practice: Polymorphism 1'
    :workout_id: 1907
 
-Polymorphism Computer Superclass
---------------------------------
-
-[12:09] The Computer Superclass
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Interactive: Polymorphism Computer Superclass [12:09]
+-----------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pkxo2beb' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.4.4.1-JavaOOPPolyComputer.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.4.4.1-JavaOOPPolyComputer.pdf</img>
-   </a>
+    
+    <br>
+    
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyComputer.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides JavaOOPPolyComputer.pdf</img>
+    </a>
 
 Checkpoint 5
 ------------
@@ -241,25 +201,21 @@ Checkpoint 5
 
 
 
-Polymorphism Integer Example
-----------------------------
-
-[7:40] Java Polymorphism Integer Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Polymorphism Integer Example [7:40]
+------------------------------------------------
 
 .. raw:: html
     
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=0_33oovpxg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.6.4.1-JavaOOPPolyInteger.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.6.4.1-JavaOOPPolyInteger.pdf</img>
-   </a>
-
+    <br>
+    
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyInteger.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides JavaOOPPolyInteger.pdf</img>
+    </a>
+    
 
 Checkpoint 6
 ------------

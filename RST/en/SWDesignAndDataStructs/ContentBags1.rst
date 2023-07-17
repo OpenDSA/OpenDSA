@@ -30,7 +30,12 @@ Introduction to Bags
 Data structures provide a model for organizing and manipulating a collection of
 data.  They are an example of an Abstract Data Type or ADT.  Previously, if you
 wanted to store an integer value representing, for example, the thermostat
-temperature setting for a room, you would use a statement like ``int temp = 75;``.
+temperature setting for a room, you would use a statement like 
+
+.. code-block:: java
+
+    int temp = 75;
+    
 However, what if you had to store and track the thermostat temperature settings
 for 500 rooms of a commercial building?  It would be tedious to create an int
 variable for each of them.  Conceptually client code can think of grouping the
@@ -176,9 +181,9 @@ Take a look at how the implementation (the code) matches with the design documen
        } // end BagInterface
 
 
-[7:28] Documentation of Bag Interface Methods
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Interactive: Documentation of Bag Interface Methods [7:28]
+----------------------------------------------------------
+.. TODO Slides?
 .. raw:: html
 
     <center>
@@ -186,12 +191,9 @@ Take a look at how the implementation (the code) matches with the design documen
     </center>
 
 
-Using Bags
+Interactive: Using Bags [4:34]
 ----------
-
-[4:34] Using Bags 
-~~~~~~~~~~~~~~~~~
-
+.. TODO Slides?
 .. raw:: html
 
     <center>
@@ -223,9 +225,9 @@ Suggested Reading
 Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 
-[9:39] Fixed-Size Array Implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Interactive: Fixed-Size Array Implementation [9:39]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. TODO Slides?
 .. raw:: html
 
     <center>
@@ -233,8 +235,8 @@ Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstract
     </center>
 
 
-ArrayBagsWithJUnitExample Image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ArrayBagsWithJUnitExample Class Diagram
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's take a look at the evolution of our design specification.
 
@@ -285,8 +287,8 @@ depicted below.
    :align: center
 
 
-[8:17] ArrayBagsWithJUnit Example Demonstration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: ArrayBagsWithJUnit Example Demonstration [8:17]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -296,7 +298,7 @@ depicted below.
 
 Code Example
 ~~~~~~~~~~~~
-
+.. TODO Code?
 .. admonition:: Try It Yourself
 
   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.07-ArrayBagsWithJUnit". 
@@ -314,24 +316,22 @@ Demo More bag method implementation
 -----------------------------------
 
 
-[5:28] More on Bag Method Implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: More on the Bag Method Implementation [5:28] 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nk6yv7gj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayBagMethods.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides 7.7.7.1-ArrayBagMethods.pdf</img>
+    </a>
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.7.1-ArrayBagMethods.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.7.7.1-ArrayBagMethods.pdf</img>
-   </a>
-
-UML Diagram
-~~~~~~~~~~~
+ArrayBag Class UML Diagram
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Below is the UML class diagram for the ArrayBag class described in the video
 above.  Observe how the class diagram differs from the diagram for the
@@ -366,13 +366,11 @@ Methods that Remove and Design Improvement Lesson and Demo
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_afd08368' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.1-BagsDesignImprovePart1.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.7.8.1-BagsDesignImprovePart1.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart1.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides BagsDesignImprovePart1.pdf</img>
+    </a>
 
 [6:45] Methods that Remove and Design Improvement, Part 2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -382,31 +380,25 @@ Methods that Remove and Design Improvement Lesson and Demo
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_x16wqf9x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-    
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.2-BagsDesignImprovePart2.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.7.8.2-BagsDesignImprovePart2.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart2.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides BagsDesignImprovePart2.pdf</img>
+    </a>
 
 [9:03] Methods that Remove and Design Improvement, Part 3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
-
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_54w07n1k' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.3-BagsDesignImprovePart3.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.7.8.3-BagsDesignImprovePart3.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart3.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides BagsDesignImprovePart3.pdf</img>
+    </a>
 
 Checkpoint 4
 ------------
@@ -415,28 +407,22 @@ Checkpoint 4
    :long_name: Checkpoint 4
 
 
-Array resizing description and coding Demo
-------------------------------------------
-
-[14:47] Array Resizing
-~~~~~~~~~~~~~~~~~~~~~~
-
+Interactive: Array resizing description and coding Demo [14:47]
+---------------------------------------------------------------
 
 .. raw:: html
      
-     <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_10v1aoku' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.9.1-DoubleArray.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.7.9.1-DoubleArray.pdf</img>
-   </a>
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_10v1aoku' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/7.7.9.1-DoubleArray.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides 7.7.9.1-DoubleArray.pdf</img>
+    </a>
 
 Tradeoffs of using an array implementation for a bag
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------------------
 
 .. list-table:: Tradeoffs
    :header-rows: 1

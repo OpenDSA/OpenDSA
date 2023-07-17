@@ -14,7 +14,7 @@ Objectives
 
 Upon completion of this module, students will be able to:
 
-* Review the concept of referene variables
+* Review the concept of reference variables
 * Understand the characteristics and use of a Linked Chain of Nodes
 * Implement a Linked Chain and associated methods
 * Iterate though a Linked Chain
@@ -22,13 +22,9 @@ Upon completion of this module, students will be able to:
 * Compare Array-based and Linked Chain implementation
 * Practice linked chain manipulation
 
-Some prose and images on this page originally came from 
-a document written by Nick Parlante of Stanford University, and used
-by permission of the author:
-"`Pointers and Memory
-<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
-by Nick Parlante, Copyright 1998-2000,
-Stanford CS Education Library.
+Acknowledgement
+~~~~~~~~~~~~~~~
+Some prose and images on this page originally came from a document written by Nick Parlante of Stanford University, and used by permission of the author: "`Pointers and Memory <http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_" by Nick Parlante, Copyright 1998-2000, Stanford CS Education Library.
 
 
 Reference Variables
@@ -43,10 +39,12 @@ Two references which both refer to a single object are said to be “sharing”.
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
 
-[10:51] Intro to Linked Chains of Nodes
----------------------------------------
-
+Interactive: Intro to Linked Chains of Nodes [10:51] 
+----------------------------------------------------
+.. TODO Slides?
 .. admonition:: The LinkedChain Class
+   
+   Consider this class when viewing this video on Linked Chains: 
    
    .. code-block:: java
 
@@ -124,21 +122,19 @@ Programming Exercises 1
 
 
 
-[11:31] Demo in Visualizer
---------------------------
+Interactive: Demo in Visualizer [11:31]
+---------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dkk3roib' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.3-LinkedChainCode.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 8.1.3-LinkedChainCode.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedChainCode.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides 8.1.3-LinkedChainCode.pdf</img>
+    </a>
 
 
 Checkpoint 2
@@ -161,22 +157,19 @@ Programming Exercises 2
    :workout_id: 2480
 
 
-[5:14] Contains() Animation
----------------------------
+Contains() method Animation [5:14] 
+----------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q83rf3ey' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-    
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.4-LinkedChainContains.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 8.1.4-LinkedChainContains.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedChainContains.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides 8.1.4-LinkedChainContains.pdf</img>
+    </a>
 
 Checkpoint 3
 ------------
@@ -190,14 +183,3 @@ Pointers Concepts Summary
 .. avembed:: Exercises/CMP/CMpointersSumm.html ka
    :long_name: Concept map pointers exercises
 
-
-
-Credit
-------
-Some prose and images on this page originally came from 
-a document written by Nick Parlante of Stanford University, and used
-by permission of the author:
-"`Pointers and Memory
-<http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_"
-by Nick Parlante, Copyright 1998-2000,
-Stanford CS Education Library.
