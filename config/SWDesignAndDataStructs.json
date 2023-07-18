@@ -59,13 +59,13 @@
   },
   "glob_ka_options": {
     "threshold": 3,
-    "points": 1.0,
+    "points": 5.0,
     "required": true,
     "partial_credit": true
   },
   "glob_extr_options": {
     "code-workout": {
-      "points": 30.0,
+      "points": 20.0,
       "required": true,
       "partial_credit": true,
       "enable_scrolling": true
