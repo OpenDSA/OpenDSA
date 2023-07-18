@@ -8,6 +8,7 @@ $(document).ready(function () {
         if (fb.success && noCredit) {
             noCredit = false;
             ODSA.AV.awardCompletionCredit();
+          console.log("awarded CompletionCredit");
         } 
     }
 

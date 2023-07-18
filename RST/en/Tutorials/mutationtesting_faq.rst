@@ -149,3 +149,140 @@ own test agrees with), while the instructor reference tests expect a
 different answer.
 Second, your tests might not cover some edge cases, or there
 might be issues in the code that mutation testing doesn't reveal.
+
+Why do I have bugs in my code despite having 100% Mutation Score?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Again, a high mutation score indicates the effectiveness of your 
+tests in capturing the introduced mutations.
+We are only using a particular set of mutation operators, and there 
+are many other mutation operators that test different aspects of your
+code.
+This may leave room for bugs to hide in other parts of your code.
+
+
+For example, let's start with a simple class definition:
+
+.. code-block:: java
+  
+  public class SimpleMath{
+  private Integer divisor;
+
+    public SimpleMath(Integer divisor){
+      this.divisor = divisor;
+    }
+
+    public int divideByDivisor(int dividend){
+      return dividend / divisor;
+    }
+  }
+
+In this case, we have a class `SimpleMath` which takes an `Integer` in 
+the constructor and uses it as a divisor in the `divideByDivisor` method.
+
+Let's also consider a test for this class:
+
+.. code-block:: java
+
+  import org.junit.jupiter.api.Test;
+  import static org.junit.jupiter.api.Assertions.assertEquals;
+
+  public class SimpleMathTest {
+      @Test
+      public void testDivideByDivisor() {
+          SimpleMath sm = new SimpleMath(5);
+          assertEquals(10, sm.divideByDivisor(50));
+      }
+  }
+
+This test will pass and the mutation testing can achieve 100% coverage with 
+the applied mutators (for example, changing arithmetic operators, altering 
+return values, etc.). However, there's a situation not covered by the test, 
+which is passing `null` to the `SimpleMath` constructor:
+
+.. code-block:: java
+  :emphasize-lines: 1
+
+  SimpleMath sm = new SimpleMath(null);
+  sm.divideByDivisor(50);  // This will throw a NullPointerException
+
+If this happens in your code, a `NullPointerException` would be thrown, 
+as `divisor` is `null`. The mutation testing won't catch this because 
+it does not include mutators that check for `NullPointerException`. 
+To catch this kind of exception, a good practice would be to add null 
+checks in the `SimpleMath` constructor and/or `divideByDivisor` method, 
+and also include corresponding test cases in the test suite.
+
+Why do my mutation tests not cover all branches of my code? 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You may have a situation where your mutation tests do not cover all
+branches of your code. 
+In such case, you may want to make sure you are not writing over-constrained 
+code.
+
+Consider the situation where you have two points. You want to know which
+quadrant the second point (x2, y2) is in w.r.t. the first point (x1, y1).
+
+.. code-block:: java
+
+  public class Quadrant {
+    public static String getQuadrant(int x1, int y1, int x2, int y2) {
+      if (x2 >= x1 && y2 >= y1) {
+        return "South-East";
+      } else if (x2 < x1 && y2 >= y1) {
+        return "South-West";
+      } else if (x2 < x1 && y2 < y1) {
+        return "North-West";
+      } else if (x2 >= x1 && y2 < y1) {
+        return "North-East";
+      } 
+    }
+  }
+
+This has the virtue of being quite logical and clear. However, it 
+has some problems.
+It is horribly inefficient, compared to alternatives.
+But our real concern has to do with testing and mutation coverage.
+
+**Fact:** No series of tests will cover all branches in this code.
+
+Now, consider every possible branch and see what can get triggered. 
+Consider that there have to be at least 8+ branches, and only 4 
+possible inputs.
+You can figure out all the possible branches by trying to hit every 
+branch by brute force, one at a time.
+
+Here, we want complete mutation coverage but there are only four 
+logically distinct inputs.
+Therefore, we must come up with code that has only four branches!
+
+For example, our refactored code could look like this:
+
+.. code-block:: java
+
+  public class Quadrant {
+    public static String getQuadrant(int x1, int y1, int x2, int y2) {
+      if (x2 >= x1) {
+        if (y2 >= y1) {
+          return "South-East";
+        } else {
+          return "North-East";
+        }
+      } else {
+        if (y2 >= y1) {
+          return "South-West";
+        } else {
+          return "North-West";
+        }
+      }
+    }
+  }
+
+
+With the refactored code, not only can you test every branch, but 
+this is a lot more efficient. 
+Every branch requires 2 tests.
+
+This is a good example of how mutation testing can help you to 
+improve the quality and efficiency of your code.
