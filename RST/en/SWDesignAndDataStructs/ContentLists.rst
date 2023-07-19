@@ -19,33 +19,37 @@ Upon completion of this module, students will be able to:
 * Consider various design approaches and corresponding efficiency
 * Trace and debug list implementations
 
-List Introduction
------------------
-
-
-[13:41] Introduction to Lists
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Introduction to Lists [13:41]
+-----------------------------
 
 .. raw:: html
     
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vyiwnixx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListIntro.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides ListIntro.pdf</img>
+    </a>
 
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.1.2.1-ListIntro.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.1.2.1-ListIntro.pdf</img>
-   </a>
-
-The List Interface
-~~~~~~~~~~~~~~~~~~
 
 .. admonition:: The List Interface
 
-  .. code-block:: java
+  Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
+          1) create a new Eclipse project, then 
+          2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+          3) download and import the standalone \*.java file(s) to the created package.
+          
+ .. raw:: html
+     
+     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ListInterface.java"  target="_blank">
+     <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+     QueueInterface.java</img>
+     </a>
+
+
+ .. code-block:: java
   
       package list;
   
@@ -163,10 +167,6 @@ The List Interface
           public boolean isEmpty();
       } // end ListInterface
 
-    
-  Download `ListInterface.java <https://courses.cs.vt.edu/cs2114/meng-bridge/examples/ListInterface.java>`_ (right-click to download as .java file).
-      
-
 
 Checkpoint 1
 ------------
@@ -175,25 +175,19 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-LinkedList Add Implementation
------------------------------
-
-[10:21] LinkedList Add() Implementation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Interactive: LinkedList Add() Implementation [10:21]
+----------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ie408z9b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.1.3.1-LinkedListAdd.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.1.3.1-LinkedListAdd.pdf</img>
-   </a>
+    </center>    
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListAdd.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides LinkedListAdd.pdf</img>
+    </a>
 
 
 Checkpoint 2
@@ -203,53 +197,40 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-Tracing Add with Debugger
--------------------------
-
-[13:33] Tracing Add with Debugger
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Tracing Add() with Debugger [13:33]
+------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_g1bdzwhy' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.1.4.1-TraceAddDebugger.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.1.4.1-TraceAddDebugger.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TraceAddDebugger.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides TraceAddDebugger.pdf</img>
+    </a>
    
-LinkedList Remove
------------------
+Interactive: LinkedList Remove() [18:09] 
+----------------------------------------
 
-LinkedList Example Code
-~~~~~~~~~~~~~~~~~~~~~~~
-
+.. TODO Code?
 .. admonition:: Try It Yourself
    
   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex11.01-LinkedList". 
   
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
-[18:09] LinkedList Remove
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_m5thdypn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.1.5.1-LinkedListRemove.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.1.5.1-LinkedListRemove.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListRemove.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides LinkedListRemove.pdf</img>
+    </a>
 
 
 Checkpoint 3
@@ -264,24 +245,19 @@ Programming Practice: Lists 1
 .. extrtoolembed:: 'Programming Practice: Lists 1'
    :workout_id: 1922
 
-Considering and Array Implementation of a List
-----------------------------------------------
-
-[10:19] LinkedList Details and Options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: LinkedList Details and Options [10:19]
+---------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_a1ubm9cw' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.1.7.1-LinkedListMoreDetails.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.1.7.1-LinkedListMoreDetails.pdf</img>
-   </a>
+    </center> 
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListMoreDetails.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides LinkedListMoreDetails.pdf</img>
+    </a>
 
 
 Checkpoint 4
@@ -291,25 +267,20 @@ Checkpoint 4
    :long_name: Checkpoint 4
 
 
-Considering an Array Implementation of a List
----------------------------------------------
-
-[15:48] Array List
-~~~~~~~~~~~~~~~~~~
+Interactive: An Array Implementation of a List [15:48]
+------------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_wahujuxt' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides ArrayListImplementation.pdf</img>
+    </a>
     
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.1.8.1-ArrayListImplementation.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.1.8.1-ArrayListImplementation.pdf</img>
-   </a>
-
 Programming Practice: Lists 2
 -----------------------------
 

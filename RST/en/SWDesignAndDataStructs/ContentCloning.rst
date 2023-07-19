@@ -27,7 +27,7 @@ Interactive: Cloning Concepts Video
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/CloningConcepts.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/CloningConcepts.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       CloningConcepts.pdf</img>
       </a>
@@ -38,8 +38,6 @@ Interactive: Cloning Concepts Video
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_yt31ss9x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
-
 
 
 Checkpoint 1
@@ -59,7 +57,7 @@ Interactive: Programming Cloning
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ProgrammingClone.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingClone.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       ProgrammingClone.pdf</img>
       </a>

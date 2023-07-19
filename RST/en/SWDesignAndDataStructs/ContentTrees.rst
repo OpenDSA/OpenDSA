@@ -20,11 +20,14 @@ Objectives
 * Determine the height and number of nodes of a given Tree
 * Implement a Tree ADT as a recursive data structure
 
-**Suggested Reading:**  *Chapter 23 Trees & Chapter 24 Tree Implementations from Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry*
+Suggested Reading
+~~~~~~~~~~~~~~~~~
+
+Chapter 23 Trees & Chapter 24 Tree Implementations from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 
 Interactive: Intro to Trees Video
------------------------------------
+---------------------------------
 
 
 .. admonition:: Follow Along and Engage
@@ -33,7 +36,7 @@ Interactive: Intro to Trees Video
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/TreeIntro.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TreeIntro.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       TreeIntro.pdf</img>
       </a>
@@ -45,9 +48,6 @@ Interactive: Intro to Trees Video
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_lib76vd6' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
-
-
-
 Checkpoint 1
 ------------
 
@@ -55,10 +55,8 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-
 Interactive: Binary Trees
------------------------------------
-
+-------------------------
 
 .. admonition:: Follow Along and Engage
 
@@ -66,7 +64,7 @@ Interactive: Binary Trees
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/BinaryTrees.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BinaryTreesIntro.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       BinaryTrees.pdf</img>
       </a>
@@ -98,7 +96,7 @@ Interactive: Binary Tree Traversals
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/IntroToTraversals.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToTraversals.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       IntroToTraversals.pdf</img>
       </a>
@@ -123,14 +121,13 @@ Checkpoint 3
 Interactive: Programming Binary Trees
 -------------------------------------
 
-
 .. admonition:: Follow Along and Engage
 
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ProgrammingTrees.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingTrees.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       ProgrammingTrees.pdf</a>
 

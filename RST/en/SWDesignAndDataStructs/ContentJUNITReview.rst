@@ -142,9 +142,9 @@ assertions in both styles.
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/7.1.4.1-JavaUnitTesting.pdf" target="_blank">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaUnitTesting.pdf" target="_blank">
    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 7.1.4.1-JavaUnitTesting.pdf
+   Video Slides JavaUnitTesting.pdf
    </a>
 
 Checkpoint 2

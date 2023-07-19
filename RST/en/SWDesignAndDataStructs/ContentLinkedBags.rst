@@ -61,7 +61,7 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 Interactive: ExLinkedBagJUnit  Demonstration [7:14] 
---------------------------------------------------
+---------------------------------------------------
 .. TODO Code link?
 .. admonition:: Try It Yourself
 

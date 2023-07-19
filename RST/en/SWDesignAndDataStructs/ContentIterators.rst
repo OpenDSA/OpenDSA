@@ -23,24 +23,19 @@ Suggested Reading
 
 Java Interlude 5 Iterators from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-Introduction to Iterators
--------------------------
-
-[13:14] Introduction to Iterators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Introduction to Iterators [13:14] 
+---------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8c0mzbfl' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.3.2.1-IntroToIterators.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.3.2.1-IntroToIterators.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToIterators.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides IntroToIterators.pdf</img>
+    </a>
 
 
 Checkpoint 1
@@ -50,78 +45,61 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-Programming Using the Iterable Interface
-----------------------------------------
-
-[4:36] Programming Using the Iterable Interface
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Programming Using the Iterable Interface [4:36]
+-----------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qzq8us2t' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.3.3.1-Iterable.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.3.3.1-Iterable.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/Iterable.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides Iterable.pdf</img>
+    </a>
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/IteratorsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
-Programming Using Iterators
----------------------------
-
-[18:02] Programming Using Iterators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Programming Using Iterators [18:02]
+-----------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qzq8us2t' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-    
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.3.4.1-ProgrammingWithIterators.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 11.3.4.1-ProgrammingWithIterators.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingWithIterators.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides ProgrammingWithIterators.pdf</img>
+    </a>
 
 
 
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/IteratorsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
-Iterator Design Decisions
--------------------------
-
-
-[8:21] Iterator Design Decisions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Iterator Design Decisions [8:21]
+--------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_suuo9vaf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/11.3.5.1-IteratorsDesignConsiderations.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides11.3.5.1-IteratorsDesignConsiderations.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IteratorsDesignConsiderations.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides IteratorsDesignConsiderations.pdf</img>
+    </a>
 
 
 .. admonition:: Clarification
@@ -151,7 +129,7 @@ Include a public method to make the iterator object available:
    }
 
 
-Include an inner Iterator class.  This version does not provide remove
+Include an inner ``Iterator`` class.  This version does not provide remove
 functionality as it is complicated with a singly linked list to keep track of
 the previous nodes in order to remove the current node.
 
@@ -205,7 +183,7 @@ the previous nodes in order to remove the current node.
    }
 
 
-A version of an inner Iterator class which does provide remove functionality.
+A version of an inner ``Iterator`` class which does provide remove functionality.
 It is best to only provide remove functionality through either the data
 structure or the iterator in order to avoid unintended side effects.
 
@@ -313,18 +291,18 @@ Programming Practice: Iterators
 Scanners Implement Iterator<String>
 -----------------------------------
 
-The java.io package offers a rich inheritance hierarchy of classes for reading from text files. The Scanner class was created to simplify text input and is thus preferred over the other classes. Scanner implements Iterable<String> and provides next() and hasNext() methods in addition to many others.
+The ``java.io`` package offers a rich inheritance hierarchy of classes for reading from text files. The Scanner class was created to simplify text input and is thus preferred over the other classes. Scanner implements ``Iterable<String>`` and provides ``next()`` and ``hasNext()`` methods in addition to many others.
 
 Several methods provided by Scanner objects provide virtually all of the input capabilities you will need in this course:
 
-* <scanner>.hasNext(); Returns true if this scanner has another token in its input.
-* <scanner>.next(); Finds and returns the next complete token (by default the next whitespace delimited string as a String object like the next line or next tab-seperated word) from this scanner. A NoSuchElementException is thrown if no more tokens are available, (i.e., you have reached the end of input).
-* <scanner>.hasNextLine(); Returns true if this scanner has another line in its input.
-* <scanner>.nextLine(); Finds and returns the next complete line. A NoSuchElementException is thrown if no more tokens are available, (i.e., you have reached the end of input).
-* <scanner>.hasNext<PrimitiveType>(); The <PrimitiveType> can be replaced by double, float, int, etc. Returns true if this scanner has another token in its input and it can be interpreted as a value of the <PrimitiveType>.
-* <scanner>.next<PrimitiveType>(); he <PrimitiveType> can be replaced by double, float, int, etc. The method scans the next token of the input as an <PrimitiveType> and returns back the corresponding <PrimitiveType> value. It throws an InputMismatchException if the next token does not match the <PrimitiveType>, or if the value scanned is out of range. It also throws a NoSuchElementException if no more tokens are available.
-* <scanner>.useDelimiter(String pattern); by default whitespace (spaces, tabs, or new line characters) are used as delimiters for separating the input into tokens to return. This method allows the user to set the delimiter characters to whatever they wish for breaking up the input. Commas are a common other delimiter to use as tables or data is often stored in what are called CSV (comma seperated value) files.
-* <scanner>.close(); closes the scanner to release system resources being used by the scanner.
+* ``<scanner>.hasNext();`` Returns true if this scanner has another token in its input.
+* ``<scanner>.next();`` Finds and returns the next complete token (by default the next whitespace delimited string as a String object like the next line or next tab-seperated word) from this scanner. A NoSuchElementException is thrown if no more tokens are available, (i.e., you have reached the end of input).
+* ``<scanner>.hasNextLine();`` Returns true if this scanner has another line in its input.
+* ``<scanner>.nextLine(); Finds and returns the next complete line. A ``NoSuchElementException`` is thrown if no more tokens are available, (i.e., you have reached the end of input).
+* ``<scanner>.hasNext<PrimitiveType>();`` The ``<PrimitiveType>`` can be replaced by double, float, int, etc. Returns true if this scanner has another token in its input and it can be interpreted as a value of the <PrimitiveType>.
+* ``<scanner>.next<PrimitiveType>();`` The ``<PrimitiveType>`` can be replaced by ``double``, ``float``, ``int``, etc. The method scans the next token of the input as an ``<PrimitiveType>`` and returns back the corresponding <PrimitiveType> value. It throws an InputMismatchException if the next token does not match the ``<PrimitiveType>``, or if the value scanned is out of range. It also throws a NoSuchElementException if no more tokens are available.
+* ``<scanner>.useDelimiter(String pattern);`` by default whitespace (spaces, tabs, or new line characters) are used as delimiters for separating the input into tokens to return. This method allows the user to set the delimiter characters to whatever they wish for breaking up the input. Commas are a common other delimiter to use as tables or data is often stored in what are called CSV (comma seperated value) files.
+* ``<scanner>.close();`` closes the scanner to release system resources being used by the scanner.
 
 To use these methods, normally you will process the input by scanning one line at a time and then scanning the line for the desired tokens.
 
@@ -354,11 +332,13 @@ Also, if you have programmed in another language before, note that characters in
 
 Scanners can also be used to process the tokens in a line of data.  These tokens may be separated by whitespace or other delimiters. For example to process lines of commands with white space delimiters:
 
-set counter 10
+.. code-block::
 
-add counter 1
-
-display counter
+    set counter 10
+    
+    add counter 1
+    
+    display counter
 
 
 .. code-block:: java
@@ -385,13 +365,13 @@ display counter
 
 In order to process data that is delimited by characters other than whitespace, the useDelimiter method is needed with a regular expression pattern as a  parameter. For example to process lines of commands with commas as delimiters, such as:
 
-Shepard, G, Gr., 5'9"
+.. code-block::
 
-Brooks, G, Jr., 5'10" 
-
-Amoore, F, Sr., 6'2"
-
-
+    Shepard, G, Gr., 5'9"
+    
+    Brooks, G, Jr., 5'10" 
+    
+    Amoore, F, Sr., 6'2"
 
 
 Here the Scanner needs to be set to use a comma.  Because there can be an undetermined amount of whitespace following a comma, the regular expression ",\\s*" should be used.  This regular expression pattern matches a comma followed by 0 or more white spaces.  Note that ",\\s+" would match a comma followed by 1 or more white spaces.  Note that ", *" would match 0 or more spaces created by the space bar but it would not account for tabs or newlines which can also create white space, so using ",\\s*" is better practice.  More information is available about java regular expressions https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html

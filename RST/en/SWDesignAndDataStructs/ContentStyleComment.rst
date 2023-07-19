@@ -234,7 +234,7 @@ The first style is to put the comment inline with the line it refers to:
 
     }
 
-Comments can also start with /* and end with */ and are useful when the comment spans multiple lines:
+Comments can also start with /* and end with \*/ and are useful when the comment spans multiple lines:
 
 .. code-block:: java
 

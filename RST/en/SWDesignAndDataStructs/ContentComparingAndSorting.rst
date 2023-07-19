@@ -23,24 +23,19 @@ Upon completion of this module, students will be able to:
 * Implement, test, and use various sort methods and methods which support comparisons
 * Identify  when to use the Comparable interface vs the Comparator interface
 
-Introduction to Ordering, Comparing, and Sorting
-------------------------------------------------
-
-[13:39] Introduction to Sorting and Comparing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Introduction to Ordering, Comparing, and Sorting [13:39]
+--------------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nhqfykqn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-   <br>
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.2.1-IntroOrderingAndComparing.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 12.1.2.1-IntroOrderingAndComparing.pdf
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroOrderingAndComparing.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides IntroOrderingAndComparing.pdf
+    </a>
 
 Checkpoint 1
 ------------
@@ -48,26 +43,19 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
-Introduction to Sorting Video
------------------------------
-
-[12:51] Introduction to Sorting
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Introduction to Sorting [12:51]
+--------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_px7gfy13' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-
-.. raw:: html
-   
-   <br>
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.3.1-IntroToSorting.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 12.1.3.1-IntroToSorting.pdf
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToSorting.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides IntroToSorting.pdf
+    </a>
 
 Checkpoint 2
 ------------
@@ -75,32 +63,25 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
-Selection Sort Video
---------------------
-
-[12:36] Selection Sort
-~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Selection Sort [12:36]
+-----------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_cs0nki5i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-     
-.. raw:: html
-
-   <br>
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.4.1-SelectionSort.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 12.1.4.1-SelectionSort.pdf
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/SelectionSort.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides SelectionSort.pdf
+    </a>
 
 Checkpoint 3
 ------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
-
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
    :long_name: Selection Sort Proficiency Exercise
@@ -109,27 +90,19 @@ Checkpoint 3
    :long_name: Selection Sort Summary Exercise
 
 
-
-
-Insertion Sort
---------------
-
-[16:17] Insertion Sort Array
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Insertion Sort with an Array [16:17]
+------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_19z2exnz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <br>
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.5.1-InsertionSortArray.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 12.1.5.1-InsertionSortArray.pdf
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/InsertionSortArray.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides InsertionSortArray.pdf
+    </a>
 
 Checkpoint 4
 ------------
@@ -141,8 +114,8 @@ Checkpoint 4
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
    :long_name: Insertion Sort Proficiency Exercise
 
-[16:50] Insertion Sort Linked Chain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Insertion Sort with a Linked Chain [16:50] 
+------------------------------------------
 
 .. raw:: html
     
@@ -153,9 +126,9 @@ Checkpoint 4
 .. raw:: html
 
    <br>
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.6.1-InsertionSortLinked.pdf" target="_blank">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/InsertionSortLinked.pdf" target="_blank">
    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 12.1.6.1-InsertionSortLinked.pdf
+   Video Slides InsertionSortLinked.pdf
    </a>
 
 Checkpoint 5
@@ -175,34 +148,24 @@ Programming Practice: Insertion Sort
    :workout_id: 1925
 
 
+Introduction to Comparators [11:22]
+-----------------------------------
 
-Comparators
------------
-
-Comparator Example Code
-~~~~~~~~~~~~~~~~~~~~~~~
+.. TODO Code link
 .. admonition:: Try It Yourself
    
   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex12.01-Comparing". Use this example to follow along with the following video. Feel free to experiment. 
   
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-[11:22] Introduction to Comparators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pit1l2lg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-  <br>
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.1.8.1-Comparators.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 12.1.8.1-Comparators.pdf
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/Comparators.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides Comparators.pdf
+    </a>
 
 Programming Practice: Comparators
 ---------------------------------

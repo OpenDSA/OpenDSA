@@ -192,7 +192,7 @@ Interactive: Documentation of Bag Interface Methods [7:28]
 
 
 Interactive: Using Bags [4:34]
-----------
+------------------------------
 .. TODO Slides?
 .. raw:: html
 
@@ -317,7 +317,7 @@ Demo More bag method implementation
 
 
 Interactive: More on the Bag Method Implementation [5:28] 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 

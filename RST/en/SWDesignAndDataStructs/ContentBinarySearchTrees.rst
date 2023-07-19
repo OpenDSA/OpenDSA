@@ -8,7 +8,7 @@
 
 
 Binary Search Trees
-=========================
+===================
 
 
 Objectives
@@ -20,8 +20,10 @@ Objectives
 * Add an a new entry to a Binary Search Tree
 * Remove an entry from a Binary Search Tree
 
-**Suggested Reading:**  *Chapter 25 A Binary Search Tree Implementation from Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry* 
+Suggested Reading:
+~~~~~~~~~~~~~~~~~~
 
+Chapter 25 A Binary Search Tree Implementation from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
 
 Interactive: Introduction to Binary Search Trees
@@ -33,7 +35,7 @@ Interactive: Introduction to Binary Search Trees
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/IntroBinarySearchTrees.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroBinarySearchTrees.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       IntroBinarySearchTrees.pdf</img>
       </a>
@@ -46,15 +48,11 @@ Interactive: Introduction to Binary Search Trees
    </center>
 
 
-
-
 Checkpoint 1
 ------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
-
-
 
 
 Interactive: Programming Binary Search Trees
@@ -66,7 +64,7 @@ Interactive: Programming Binary Search Trees
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ProgrammingBinarySearchTrees.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingBinarySearchTrees.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       ProgrammingBinarySearchTrees.pdf</img>
       </a>
@@ -77,8 +75,6 @@ Interactive: Programming Binary Search Trees
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ykrtcb3f' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
-
 
 
 Checkpoint 2
@@ -97,7 +93,7 @@ Interactive: Adding Binary Search Trees
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/AddingToBinarySearchTrees.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/AddingToBinarySearchTrees.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
      AddingToBinarySearchTrees.pdf</img>
       </a>
@@ -118,15 +114,15 @@ Checkpoint 3
 
 
 Interactive: Removing From Binary Search Trees
-------------------------------------------------
-
+----------------------------------------------
+.. TODO file RemovingFromBinarySearchTrees.pdf is missing 
 .. admonition:: Follow Along and Engage
 
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/RemovingFromBinarySearchTrees.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RemovingFromBinarySearchTrees.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       RemovingFromBinarySearchTrees.pdf</img>
       </a>

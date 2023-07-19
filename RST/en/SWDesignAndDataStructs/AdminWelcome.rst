@@ -94,13 +94,13 @@ Within Eclipse you may download these by using the blue down arrow icon or using
 
 Web-CAT and Lab Sections
 ------------------------
-*CS 2114 students must register for both a Lecture and a Lab*.  Registering for a Lab section means that your WebCAT profile will be configured to allow you to electronically submit labs and assignments to that section.   
+* CS 2114 students must register for both a Lecture and a Lab*.  Registering for a Lab section means that your WebCAT profile will be configured to allow you to electronically submit labs and assignments to that section.   
 
 You are to contact instructors immediately if you
 
-*Registered for the course (or a lab) after the first day of classes
-*Switched Lab sections on or after the first day of classes
-*Cannot access Web-CAT (or are registered for the wrong Web-CAT Lab section) during the second week of classes
+* Registered for the course (or a lab) after the first day of classes
+* Switched Lab sections on or after the first day of classes
+* Cannot access Web-CAT (or are registered for the wrong Web-CAT Lab section) during the second week of classes
 
 The course team understands that students may, on rare occasions, need to make adjustments to their schedule during the first couple weeks of the semester.  If a student switches Lab sections (i.e. registers for a different Lab section than they were previously assigned to in Web-CAT) the student MUST contact instructors via this form to reportLinks to an external site. any of the Web-CAT section configuration issues listed above.
 

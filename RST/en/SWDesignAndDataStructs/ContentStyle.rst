@@ -145,15 +145,17 @@ should be changed to:
 
 - The name cannot use keywords/reserved words in Java. See https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html for a complete list of reserved words. For example: when creating an object, the keyword `new` is used. However, the following examples will both cause a syntax error because `new` is a reserved keyword:
 
-.. code-block:: java  
-    
+.. code-block:: java
+
     //Using new as a variable name is a syntax error because new is a reserved word in Java
+    
     int new = 15;
 
     //Using int as a variable name is a syntax error because int is a reserved word in Java
+    
     String int = “15”;
- 
- 
+
+
 .. admonition:: Takeaway
         
         Names can be alphanumeric, and should be meaningful, but can't use Java reserved words. 

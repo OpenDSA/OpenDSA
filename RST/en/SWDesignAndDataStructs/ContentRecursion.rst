@@ -26,12 +26,11 @@ Suggested Reading
 
 Chapter 7 from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-Introduction to Recursion
+Introduction to Recursion 
 -------------------------
 
-[5:53] Intro to Recursion, Part 1
+Intro to Recursion, Part 1 [5:53]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 .. raw:: html
 
@@ -39,7 +38,7 @@ Introduction to Recursion
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_k95fexwx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
-[12:41] Intro to Recursion, Part 2
+Intro to Recursion, Part 2 [12:41]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
@@ -50,9 +49,9 @@ Introduction to Recursion
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.2.2-RecursionIntro.pdf" target="_blank">
+   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RecursionIntro.pdf" target="_blank">
    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 9.1.2.2-RecursionIntro.pdf</img>
+   Video Slides RecursionIntro.pdf</img>
    </a>
 
 Checkpoint 1
@@ -62,25 +61,19 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-More Recursion
---------------
-
-[12:36] Factorial Examples
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Interactive: More Recursion : Factorial Examples [12:36]
+--------------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kvgpxyil' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.3.1-RecursionExample.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 9.1.3.1-RecursionExample.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RecursionExample.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides RecursionExample.pdf</img>
+    </a>
 
 Programming Practice: Recursion 1
 ---------------------------------
@@ -88,11 +81,8 @@ Programming Practice: Recursion 1
 .. extrtoolembed:: 'Programming Practice: Recursion 1'
    :workout_id: 1916
 
-Recursion on Arrays
--------------------
-
-[13:30] Display Arrays
-~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Recursion on Arrays: Display an Array [13:30]
+----------------------------------------------------------
 
 .. admonition:: Correction to note!
 
@@ -115,14 +105,11 @@ Recursion on Arrays
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dgn4f1ws' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.5.1-DisplayArrays.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 9.1.5.1-DisplayArrays.pdf</img>
-   </a>
-
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DisplayArrays.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides DisplayArrays.pdf</img>
+    </a>
 
 Checkpoint 2
 ------------
@@ -131,31 +118,25 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-Recursion on Arrays Middle
---------------------------
-
-[9:53] Middle Processing Trace
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Recursion on Arrays: Display the Middle of an Array [9:53]
+-----------------------------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_w4ksnyaj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.6.1-DisplayArraysMiddle.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 9.1.6.1-DisplayArraysMiddle.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DisplayArraysMiddle.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides DisplayArraysMiddle.pdf</img>
+    </a>
 
 Checkpoint 3
 ------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/RecursionCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
-
 
 
 Programming Practice: Recursion 2
@@ -165,43 +146,34 @@ Programming Practice: Recursion 2
    :workout_id: 1917
 
 
-Recursion on Linked Chain
--------------------------
-
-[7:41] Linked Chain Recursion
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Recursion on Linked Chains [7:41]
+----------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_cqp6egsu' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-    
-.. raw:: html
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DisplayBagsRecursively.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides DisplayBagsRecursively.pdf</img>
+    </a>
 
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.8.1-DisplayBagsRecursively.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 9.1.8.1-DisplayBagsRecursively.pdf</img>
-   </a>
+Interactive: Tower of Hanoi [11:44]
+-----------------------------------
 
-Tower of Hanoi
---------------
-
-[11:44] Tower of Hanoi
-~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_i6r2ykc6' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.9.1-TowersOfHanoi.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 9.1.9.1-TowersOfHanoi.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TowersOfHanoi.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides TowersOfHanoi.pdf</img>
+    </a>
 
 Checkpoint 4
 ------------
@@ -210,24 +182,19 @@ Checkpoint 4
    :long_name: Checkpoint 4
 
 
-Recursion Wrap Up
------------------
-
-[8:28] Recursion Wrap Up
-~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Recursion Wrap Up [8:28]
+-------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_tqcalmf0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/9.1.10.1-RecursionWrapUp.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 9.1.10.1-RecursionWrapUp.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RecursionWrapUp.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides RecursionWrapUp.pdf</img>
+    </a>
 
 Programming Practice: Recursion 3
 ---------------------------------

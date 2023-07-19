@@ -18,11 +18,18 @@ Upon completion of this module, students will be able to:
 * Evaluate efficiency of linear and binary searches
 * Implement linear and binary searches
 
-Introduction to Searching
--------------------------
+Introduction to Searching [10:14] 
+---------------------------------
 
-[10:14] Introduction to Searching
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToSearching.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      IntroToSearching.pdf</a>
 
 .. raw:: html
 
@@ -30,12 +37,6 @@ Introduction to Searching
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s97n1vm4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>     
      
-.. raw:: html
-   
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.2.2.1-IntroToSearching.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 12.2.2.1-IntroToSearching.pdf</img>
-   </a>
 
 Checkpoint 1
 ------------
@@ -44,11 +45,18 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-Programming Searching
----------------------
+Programming Searching [20:22]
+-----------------------------
 
-[20:22] Programming Searching Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingSearching.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      ProgrammingSearching.pdf</a>
 
 .. raw:: html
 
@@ -57,12 +65,6 @@ Programming Searching
     </center>     
 
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/12.2.4.1-ProgrammingSearching.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 12.2.4.1-ProgrammingSearching.pdf</img>
-   </a>
    
 Programming Practice: Binary Search
 -----------------------------------

@@ -30,10 +30,10 @@ Interactive: Exception Handling
 .. TODO: FIX FILE LINK
 .. admonition:: Follow Along, Practice and Explore
 
-    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
         1) create a new Eclipse project, then 
         2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
-        3) download and import the standalone *.java file(s) to the created package.
+        3) download and import the standalone \*.java file(s) to the created package.
 
    .. raw:: html
 
@@ -250,7 +250,7 @@ Exception Handling Example Code
 
 
 Basic ``try``, ``catch`` example [12:05]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -284,7 +284,7 @@ Implementing and Testing Exceptions
 
 For this course we will **mostly** adopt the exception handling approach that uses **try-catch blocks** in combination with the throw statement.
 
-When implementing methods with exception-prone code you are to implement code within your methods which checks for unusual conditions (possible exception events) **BEFORE* allowing the execution of risky code (code which may throw an exception).  You must then implement ``try-catch blocks*`` within test classes to confirm that the correct Exceptions were thrown by the failing code.  Within test classes you must also create the necessary conditions for the exceptions to be thrown.
+When implementing methods with exception-prone code you are to implement code within your methods which checks for unusual conditions (possible exception events) **BEFORE** allowing the execution of risky code (code which may throw an exception).  You must then implement ``try-catch blocks`` within test classes to confirm that the correct Exceptions were thrown by the failing code.  Within test classes you must also create the necessary conditions for the exceptions to be thrown.
 
 Note that these checks could be accomplished through the use of ``try-catch`` blocks or conditional statements (for example the ``if`` statement).
 

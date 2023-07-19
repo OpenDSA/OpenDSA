@@ -29,11 +29,18 @@ Interactive: Introduction to Queues
 
 .. admonition:: Follow Along, Practice and Explore
 
-    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
         1) create a new Eclipse project, then 
         2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
-        3) download and import the standalone *.java file(s) to the created package.
+        3) download and import the standalone \*.java file(s) to the created package.
         
+   .. raw:: html
+   
+       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/QueueInterface.java"  target="_blank">
+       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+       QueueInterface.java</img>
+       </a>
+   
    .. code-block:: java
    
       package queue;
@@ -70,16 +77,11 @@ Interactive: Introduction to Queues
    
    .. raw:: html
    
-     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/QueueInterface.java"  target="_blank">
-     <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-     QueueInterface.java</img>
-     </a>
-     <br>
-     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/QueueIntro.pdf" target="_blank">
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/QueueIntro.pdf" target="_blank">
         <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
         Video Slides: QueueIntro.pdf</img>
         </a>
-
+        
 .. raw:: html
 
     <center>
@@ -100,8 +102,8 @@ Programming Practice: Queues 1
 .. extrtoolembed:: 'Programming Practice: Queues 1'
    :workout_id: 1920
 
-Interactive: Linked Queues Intro and Enqueue
---------------------------------------------
+Interactive: Linked Queues Intro and Enqueue [11:29]
+----------------------------------------------------
 
 .. admonition:: Follow Along, Practice and Explore
 
@@ -126,8 +128,8 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-Interactive: Linked Queues Removing and More (Dequeue and Other Methods)
-------------------------------------------------------------------------
+Interactive: Linked Queues Removing and More (Dequeue and Other Methods) [8:41]
+-------------------------------------------------------------------------------
    
 .. admonition:: Follow Along, Practice and Explore
 
@@ -157,11 +159,23 @@ Interactive: Introduction to Deque
 
 .. admonition:: Follow Along, Practice and Explore
 
-    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone *.java file for this example. To run the standalone *.java file you will need to 
+    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
         1) create a new Eclipse project, then 
         2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
-        3) download and import the standalone *.java file(s) to the created package.
+        3) download and import the standalone \*.java file(s) to the created package.
 
+  .. raw:: html
+        
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/DequeInterface.java"  target="_blank">
+        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+        DequeInterface.java</img>
+        </a>
+        <br>
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeIntro.pdf"  target="_blank">
+        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+        ArrayRemove.java</img>
+        </a>
+        
   .. code-block:: java
   
      package deque;
@@ -242,18 +256,7 @@ Interactive: Introduction to Deque
      } // end DequeInterface
 
 
-  .. raw:: html
-
   
-        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/DequeInterface.java"  target="_blank">
-        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-        DequeInterface.java</img>
-        </a>
-        <br>
-        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeIntro.pdf"  target="_blank">
-        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-        ArrayRemove.java</img>
-        </a>
 
 .. raw:: html
 
@@ -268,25 +271,19 @@ Checkpoint 4
    :long_name: Checkpoint 4
 
 
-Deque Removing and Wrap Up
---------------------------
-
-[9:02] Deque Removing and Wrap Up
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Deque Removing and Wrap Up [9:02]
+----------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_c94y4y06' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.7.1-DequeRemoveAndWrapUp.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.7.1-DequeRemoveAndWrapUp.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeRemoveAndWrapUp.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides DequeRemoveAndWrapUp.pdf</img>
+    </a>
 
 Checkpoint 5
 ------------
@@ -295,26 +292,19 @@ Checkpoint 5
    :long_name: Checkpoint 5
 
 
-Array Implementation of Queues
-------------------------------
-
-
-[15:58] Introduction to ArrayQueue
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: ArrayQueue: Array Implementation of Queues [15:58]
+---------------------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_schlfeex' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.8.1-ArrayQueueIntro.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.8.1-ArrayQueueIntro.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueIntro.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides 10.2.8.1-ArrayQueueIntro.pdf</img>
+    </a>
 
 Checkpoint 6
 ------------
@@ -323,24 +313,20 @@ Checkpoint 6
    :long_name: Checkpoint 6
 
 
-ArrayQueue One Unused Location
-------------------------------
-
-[7:11] ArrayQueue One Unused Location
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: ArrayQueue: One Unused Location [7:11]
+---------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_299igb5h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.9.1-ArrayQueueRemove.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.9.1-ArrayQueueRemove.pdf</img>
-   </a>
+    
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueRemove.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides ArrayQueueRemove.pdf</img>
+    </a>
 
 Checkpoint 7
 ------------
@@ -349,24 +335,19 @@ Checkpoint 7
    :long_name: Checkpoint 7
 
 
-ArrayQueue Ensure Capacity
---------------------------
-
-[14:06] ArrayQueue Ensure Capacity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: ArrayQueue: Ensure Capacity [14:06]
+------------------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xkijc49b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.10.2-ArrayQueueEnsureCapacity.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.10.2-ArrayQueueEnsureCapacity.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueEnsureCapacity.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides ArrayQueueEnsureCapacity.pdf</img>
+    </a>
 
 
 Checkpoint 8
@@ -376,56 +357,50 @@ Checkpoint 8
    :long_name: Checkpoint 8
 
 
-ArrayQueue WrapUp
------------------
-
-[6:59] ArrayQueue WrapUp
-~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: ArrayQueue WrapUp [6:59]
+-------------------------------------
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8ktqd0d5' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/10.2.11.1-ArrayQueueWrapUp.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides 10.2.11.1-ArrayQueueWrapUp.pdf</img>
-   </a>
+    <br>
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueWrapUp.pdf" target="_blank">
+    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+    Video Slides ArrayQueueWrapUp.pdf</img>
+    </a>
 
 
-Empty Queue Exception
-"""""""""""""""""""""
+.. admonition:: Empty Queue Exception
 
-.. code-block:: java
-
-    package queue;
-
-    /**
-    * A class of runtime exceptions thrown by methods to indicate that a queue is
-    * empty.
-    *
-    * @author Frank M. Carrano
-    * @author Timothy M. Henry
-    * @version 4.0
-    */
-
-    public class EmptyQueueException extends RuntimeException {
+    .. code-block:: java
+    
+        package queue;
+    
         /**
-         * serial Version UID
-         */
-        private static final long serialVersionUID = 960025440830878197L;
-
-        public EmptyQueueException() {
-            this(null);
-        } // end default constructor
-
-        public EmptyQueueException(String message) {
-            super(message);
-        } // end constructor
-    } // end EmptyQueueException
+        * A class of runtime exceptions thrown by methods to indicate that a queue is
+        * empty.
+        *
+        * @author Frank M. Carrano
+        * @author Timothy M. Henry
+        * @version 4.0
+        */
+    
+        public class EmptyQueueException extends RuntimeException {
+            /**
+             * serial Version UID
+             */
+            private static final long serialVersionUID = 960025440830878197L;
+    
+            public EmptyQueueException() {
+                this(null);
+            } // end default constructor
+    
+            public EmptyQueueException(String message) {
+                super(message);
+            } // end constructor
+        } // end EmptyQueueException
 
 Programming Practice: Queues 2
 ------------------------------
