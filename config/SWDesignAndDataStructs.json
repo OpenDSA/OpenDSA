@@ -82,8 +82,6 @@
   "chapters": {
 
     "Introduction": {
-      "SWDesignAndDataStructs/RSTTemplate": {
-      },
       "SWDesignAndDataStructs/AdminWelcome": {
       },
       "SWDesignAndDataStructs/AdminCourseIntro": {
@@ -627,8 +625,9 @@
       "Tutorials/2114_java_commenting": {
       },
       "Tutorials/2114_random_numbers": {
+      },
+      "SWDesignAndDataStructs/RSTTemplate": {
       }
-      
     }
   }
 

@@ -7,7 +7,7 @@
    :author: Molly
 
 
-Placeholder
+Programming Practice 6
 =========================
 
 

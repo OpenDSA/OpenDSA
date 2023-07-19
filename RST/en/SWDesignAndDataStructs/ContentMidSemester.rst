@@ -7,7 +7,7 @@
    :author: Molly
 
 
-Placeholder
+Midterm Checkpoint
 =========================
 
 

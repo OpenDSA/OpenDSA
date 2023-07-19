@@ -7,8 +7,8 @@
    :author: Molly
 
 
-Placeholder
-=========================
+Lab 6 Array Stack Post Lab
+==========================
 
 
 Placeholder

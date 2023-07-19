@@ -7,7 +7,7 @@
    :author: Molly
 
 
-Placeholder
+Quiz 3 Info
 =========================
 
 

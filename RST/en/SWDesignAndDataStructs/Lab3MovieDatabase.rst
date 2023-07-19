@@ -7,7 +7,7 @@
    :author: Molly
 
 
-Placeholder
+Lab 3 Movie Database
 =========================
 
 
