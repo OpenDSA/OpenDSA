@@ -112,7 +112,7 @@ header.modest:hover{opacity:1;-ms-filter:none;filter:none}
 .breadcrumb li{display:inline-block;list-style:none}
 cite{padding-left:.4px;padding-left:.4rem;padding-right:.4px;padding-right:.4rem;font-weight:normal;background-color:#f7f7f7;-webkit-box-shadow:.1px .1px 0 .1px #949494;box-shadow:.1px .1px 0 .1px #949494}
 strong.command{padding-left:.4px;padding-left:.4rem;padding-right:.4px;padding-right:.4rem;font-weight:normal;background-color:#f7f7f7;-webkit-box-shadow:.1px .1px 0 .1px #949494;box-shadow:.1px .1px 0 .1px #949494;font-family:"Ricty-Discord","Ricty-Discord","Osaka－等幅","Osaka-Mono",monospace,serif}
-.pre{padding-left:.4px;padding-left:.4rem;padding-right:.4px;padding-right:.4rem;font-weight:normal;background-color:#f7f7f7;-webkit-box-shadow:.1px .1px 0 .1px #949494;box-shadow:.1px .1px 0 .1px #949494;background-color:#fdf6e3}
+.pre{padding-left:.4px;padding-left:.4rem;padding-right:.4px;padding-right:.4rem;font-weight:normal;background-color:rgba(0, 0, 0, 0.1);-webkit-box-shadow:.1px .1px 0 .1px #949494;box-shadow:.1px .1px 0 .1px #949494;}
 tt.file .pre{background-color:#f7f7f7}
 .section{margin:25px auto}
 .documentwrapper{background-color:#fefefe;min-width:320px;width:100%;height:auto;min-height:100%;margin:0 auto}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fundamentals 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="FUNDAMENTALS_Q3">
+        <p class="question">Assume that an object of the following class has just been created:
+          <pre class="prettyprint">
+
+            public class Unknown
+            {
+                private int x;
+
+                public Unknown()
+                {
+                    x = 17;
+                    method1();
+                    method2(5);
+                    method3();
+                    System.out.println(x);      // Line D
+                }
+            
+                public void method1()
+                {
+                    --x;
+                    int x = this.x;
+                    x++;
+                    System.out.println(this.x); // Line A
+                }
+            
+                public void method2(int x)
+                {
+                    x++;
+                    System.out.println(x);      // Line B
+                }
+            
+                public void method3()
+                {
+                    --x;
+                    int x = 2;
+                    x++;
+                    System.out.println(x);      // Line C
+                }
+            }
+          </pre>
+           What output is produced by Line A when an instance of this class is created?
+
+
+        </p>
+        <div class="solution"><tt>16</tt></div>
+        <ul class="choices">
+        <li><tt>2</tt></li>
+        <li><tt>3</tt></li>
+        <li><tt>17</tt></li>
+        <li><tt>18</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

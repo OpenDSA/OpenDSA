@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkpoint 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="OOP2_CP3_Q3">
+        <p class="question">The following code contains two variables:
+          <tt>myObj</tt> and <tt>yourObj</tt>.
+          <br>
+          <tt>myObj</tt> is declared
+          as type <tt>GeneralCase</tt> and assigned an instance of a subclass
+          of <tt>GeneralCase</tt> called <tt>SpecificCase</tt>.
+          <br>
+          <tt>yourObj</tt> is declared as type <tt>SpecificCase</tt>.
+        </p>
+        <br>
+<pre class="prettyprint">
+GeneralCase myObj = new SpecificCase();
+SpecificCase yourObj;
+</pre>
+        <br> 
+        <p>Can <tt>yourObj</tt> can it be assigned to <tt>myObj</tt>
+          using the following statement?</p>
+<pre class="prettyprint">
+yourObj = myObj;
+</pre>
+        <div class="solution">No</div>
+        <ul class="choices">
+        <li>Yes</li>
+
+        </ul>
+        <div class="hints">
+        <!--When you see `new Student()` then a new object has been made.
+        `first_st` and `second_st` are references to new objects while
+        `third_st` currently refers to the same Student object as `second_st`-->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

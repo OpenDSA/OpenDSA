@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Control Flow 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="850" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="CONTROLFLOW_Q2">
+        <p class="question">What will be printed?
+          <pre class="prettyprint">
+            int income = 30;
+            boolean condition1 = true, condition2 = true;
+            if(income < 100)
+                if(income > 10)
+                    if(condition1){
+                        System.out.print("A");
+                        if(income < 20)
+                        System.out.print("B");
+                    }
+                    else
+                        System.out.print("C");
+                if(!condition2){
+                    if(income > 50)
+                        System.out.print("D");
+                }
+                else{
+                   System.out.print("E");
+                }
+          </pre>
+        </p>
+        <div class="solution"><tt>AE</tt></div>
+        <ul class="choices">
+        <li><tt>AC</tt></li>
+        <li><tt>ABC</tt></li>
+        <li><tt>ACE</tt></li>
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
