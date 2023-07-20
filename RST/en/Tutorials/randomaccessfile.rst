@@ -20,8 +20,9 @@ text files. Scanners are great for reading files, but we can take a
 step farther out and conceptualize our data even more abstractly, instead of
 reading in files as strings we can instead read the raw bytes and then write
 those bytes to the file. By doing this we have no limits on the types of data
-we can store. Additionally, RandomAccessFiles, allow reading and writing anywhere
-withing the file, jumping to any legal location within the file itself.
+we can store.
+Additionally, RandomAccessFiles, allow reading and writing anywhere
+within the file, jumping to any legal location within the file itself.
 Before reading this tutorial be sure to check the |external_link|.
 
 .. |external_link| raw:: html
@@ -38,10 +39,10 @@ can be located anywhere within the file.
 anywhere within the file.
 
 3) File Pointer - A number representing the byte position we are at in the file.
-We can manipulate the File Pointer to point anywhere within our file. A
-RandomAccessFile should be trated similar to an array of bytes. It's index will
-start at 0 and it's last position will be one less than the total size of the
-file.
+We can manipulate the File Pointer to point anywhere within our file.
+A RandomAccessFile should be treated similar to an array of bytes.
+It's index will start at 0 and it's last position will be one less
+than the total size of the file.
 
 One very important thing to note about the RandomAccessFile class. It is very
 easy to seek past the end of the file and write to that location (as the RandomAccessFile
