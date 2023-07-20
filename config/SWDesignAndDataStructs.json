@@ -81,6 +81,8 @@
   },
   "chapters": {
 
+    "General Course Information": {
+    },
     "Introduction": {
       "SWDesignAndDataStructs/AdminWelcome": {
       },
@@ -112,18 +114,6 @@
           }
       },
       "SWDesignAndDataStructs/ContentStyle": {
-      },
-      "SWDesignAndDataStructs/ContentStyleIntro": {
-      },
-      "SWDesignAndDataStructs/ContentStyleNaming": {
-      },
-      "SWDesignAndDataStructs/ContentStyleFormat": {
-      },
-      "SWDesignAndDataStructs/ContentStyleComment": {
-      },
-      "SWDesignAndDataStructs/ContentStyleOther": {
-      },
-      "SWDesignAndDataStructs/ContentStyleReview": {
       },
       "SWDesignAndDataStructs/Lab2Polymorphism": {
       },
