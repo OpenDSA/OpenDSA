@@ -294,8 +294,6 @@
     },
 
     "Ethics and Design": {
-      "SWDesignAndDataStructs/Quiz2Info": {
-      },
       "SWDesignAndDataStructs/ContentEthics": {
       },
       "SWDesignAndDataStructs/ContentDesignMVC": {
@@ -319,6 +317,8 @@
     },
 
     "Recursion": {
+      "SWDesignAndDataStructs/Quiz2Info": {
+      },
       "SWDesignAndDataStructs/ContentRecursion": {
           "RecursionCheckpoint1Summ": {
             "points": 10,
@@ -378,6 +378,8 @@
       "SWDesignAndDataStructs/ContentMidSemester": {
       },
       "SWDesignAndDataStructs/KnowledgePracticeMod7": {
+      },
+      "SWDesignAndDataStructs/Quiz2": {
       },
       "SWDesignAndDataStructs/ProgrammingPracticeMod7": {
       }
@@ -540,9 +542,9 @@
       },
       "SWDesignAndDataStructs/Lab10DoubleLink": {
       },
-      "SWDesignAndDataStructs/KnowledgePracticeMod10": {
+      "SWDesignAndDataStructs/Quiz3": {
       },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod10": {
+      "SWDesignAndDataStructs/KnowledgePracticeMod10": {
       }
     },
 
