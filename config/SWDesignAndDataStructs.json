@@ -115,13 +115,14 @@
       },
       "SWDesignAndDataStructs/ContentStyle": {
       },
-      "SWDesignAndDataStructs/Lab2Polymorphism": {
-      },
+      
       "SWDesignAndDataStructs/RefPythonToJava": {
       },
       "SWDesignAndDataStructs/Project1": {
       },
       "SWDesignAndDataStructs/AdminAcadIntegrity": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod1": {
       }
     },
     
@@ -163,12 +164,14 @@
       },
       "SWDesignAndDataStructs/ContentGenerics1": {
       },
+      "SWDesignAndDataStructs/Lab2Polymorphism": {
+      },
       "SWDesignAndDataStructs/Lab2PolymorphismPost": {
       },
       "SWDesignAndDataStructs/ContentCoursePerceptions": {
       },
       "SWDesignAndDataStructs/KnowledgePracticeMod2": {
-        },
+      },
       "SWDesignAndDataStructs/ProgrammingPracticeMod2": {
       }
     },
