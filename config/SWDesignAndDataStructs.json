@@ -32,7 +32,7 @@
   "zeropt_assignments": false,
   "narration_enabled": true,
   "include_tree_view": false,
-  "chapter_name": "Module",
+  "chapter_name": "Week",
   "start_chap_num": 1,
   "html_theme_options": {
     "show_source": false,
@@ -81,6 +81,8 @@
   },
   "chapters": {
 
+    "General Course Information": {
+    },
     "Introduction": {
       "SWDesignAndDataStructs/AdminWelcome": {
       },
@@ -113,25 +115,13 @@
       },
       "SWDesignAndDataStructs/ContentStyle": {
       },
-      "SWDesignAndDataStructs/ContentStyleIntro": {
-      },
-      "SWDesignAndDataStructs/ContentStyleNaming": {
-      },
-      "SWDesignAndDataStructs/ContentStyleFormat": {
-      },
-      "SWDesignAndDataStructs/ContentStyleComment": {
-      },
-      "SWDesignAndDataStructs/ContentStyleOther": {
-      },
-      "SWDesignAndDataStructs/ContentStyleReview": {
-      },
-      "SWDesignAndDataStructs/Lab2Polymorphism": {
-      },
+      
       "SWDesignAndDataStructs/RefPythonToJava": {
       },
-      "SWDesignAndDataStructs/Project1": {
-      },
+      
       "SWDesignAndDataStructs/AdminAcadIntegrity": {
+      },
+      "SWDesignAndDataStructs/ProgrammingPracticeMod1": {
       }
     },
     
@@ -173,12 +163,14 @@
       },
       "SWDesignAndDataStructs/ContentGenerics1": {
       },
+      "SWDesignAndDataStructs/Lab2Polymorphism": {
+      },
       "SWDesignAndDataStructs/Lab2PolymorphismPost": {
       },
       "SWDesignAndDataStructs/ContentCoursePerceptions": {
       },
       "SWDesignAndDataStructs/KnowledgePracticeMod2": {
-        },
+      },
       "SWDesignAndDataStructs/ProgrammingPracticeMod2": {
       }
     },
@@ -217,6 +209,8 @@
       "SWDesignAndDataStructs/Lab3MovieDatabase": {
       },
       "SWDesignAndDataStructs/Lab3MovieDatabasePost": {
+      },
+      "SWDesignAndDataStructs/Project1": {
       },
       "SWDesignAndDataStructs/KnowledgePracticeMod3": {
       },
@@ -260,10 +254,7 @@
       "SWDesignAndDataStructs/Lab4GroceryBagsPost": {
       },
       "SWDesignAndDataStructs/KnowledgePracticeMod4": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod4": {
-      }
-      
+      }    
     },
 
     "Efficiency, Stacks": {
@@ -303,8 +294,6 @@
     },
 
     "Ethics and Design": {
-      "SWDesignAndDataStructs/Quiz2Info": {
-      },
       "SWDesignAndDataStructs/ContentEthics": {
       },
       "SWDesignAndDataStructs/ContentDesignMVC": {
@@ -328,6 +317,8 @@
     },
 
     "Recursion": {
+      "SWDesignAndDataStructs/Quiz2Info": {
+      },
       "SWDesignAndDataStructs/ContentRecursion": {
           "RecursionCheckpoint1Summ": {
             "points": 10,
@@ -387,6 +378,8 @@
       "SWDesignAndDataStructs/ContentMidSemester": {
       },
       "SWDesignAndDataStructs/KnowledgePracticeMod7": {
+      },
+      "SWDesignAndDataStructs/Quiz2": {
       },
       "SWDesignAndDataStructs/ProgrammingPracticeMod7": {
       }
@@ -549,9 +542,9 @@
       },
       "SWDesignAndDataStructs/Lab10DoubleLink": {
       },
-      "SWDesignAndDataStructs/KnowledgePracticeMod10": {
+      "SWDesignAndDataStructs/Quiz3": {
       },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod10": {
+      "SWDesignAndDataStructs/KnowledgePracticeMod10": {
       }
     },
 

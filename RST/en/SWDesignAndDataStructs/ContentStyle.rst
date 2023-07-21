@@ -9,6 +9,15 @@
 
 Style and Documentation: Introduction
 =====================================
+Shortcuts
+---------
+
+- :ref:`introduction`
+- :ref:`ContentStyleNaming`
+- :ref:`ContentStyleFormat`
+- :ref:`ContentStyleDocumentation`
+- :ref:`ContentStyleOther`
+- :ref:`ContentStyleReview`
 
 Overview & Objectives
 ---------------------
@@ -26,6 +35,8 @@ Suggested Reading:
 ---------------------
 
 **Appendices A (Documentation and Programming Style)**  from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <http://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
+
+.. _introduction:
 
 Introduction to Style and Documentation
 ---------------------------------------
@@ -71,7 +82,6 @@ Adhering to style guides and code conventions improves the readability and maint
 
 It is important to note that there is no one set of standards, conventions, and guidelines, rather you are likely to encounter a hierarchy of them. For example the creators of a given programming language will provide documentation to inform standards, conventions. and general use.  The community of developers who utilize the language (or follow the programming paradigm the language adheres to) may adopt and communicate additional standards and conventions.  Furthermore, internally within a given organization, team, or project, there may be other specific standards, conventions, and guidelines, layered on top of others higher up in the hierarchy.
 
- 
 
 .. admonition:: Takeaway
 
@@ -80,11 +90,10 @@ It is important to note that there is no one set of standards, conventions, and 
     - Developers should form the habit of understanding and adopting the standards, conventions, and practices conveyed within the style guides relevant to their software development context  
  
 
-Naming
-~~~~~~
+.. _ContentStyleNaming:
 
-What's in a name
-----------------
+Naming: What's in a name
+------------------------
 Names convey quite a bit of information.  Interpreting them in the manner intended by the developer can help speed up software development tasks, while interpreting them in a manner not intended can slow it down.  Poor or inconsistent naming makes it difficult for a developer to read and understand code, often resulting in longer development times, software bugs, integration issues, or system crashes. 
 
 Recall that you or a colleague will likely need to revisit previously released code sometime in the future.  Where possible you would want to give the developer responsible for these future tasks some assistance in getting acclimated, especially since that person may be you!
@@ -340,6 +349,8 @@ Naming Review [10:18]
 
      <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_5bpln3rv&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_08czwjcb" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
  
+
+.. _ContentStyleFormat:
 
 Formatting & Indentation
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -599,8 +610,424 @@ A statement that span more than one line should be indented so that all addition
         " cubic inches.");
     }
  
-  
+.. _ContentStyleDocumentation:
+
+Software Documentation overview
+-------------------------------
+Software documentation should contain information that helps developers read and understand the program and, where appropriate, provide the developer with sufficient background, context, and the reasoning behind some of the implementation decisions, to help with future maintenance and modification.
+
+Some of this background and context may be detailed within external documentation (documentation found outside of the program listing) or internal documentation (documentation found inside of the program listing).
+
+Comments are used for internal documentation. Comments should give overviews of code and provide additional information that is not readily available within the code itself.  
+
+As a rule you should always strive for "Self-Documenting Code", this is likely to occur when developers:
+
+* Include brief and descriptive comments where appropriate
+* Consistently follow an accepted style guide
+* Ensure programs have a good logical structure
+* Implement code logic in a straightforward and easily understandable manner
  
+
+JavaDoc Comments 
+----------------
+Some general commenting conventions have been established by a tool called **JavaDoc**, which can extract information from your code and use that information to create header comments and API documentation. JavaDoc comments appear right before a class, an interface, or method declaration. They also appear right before the declaration of a visible (public) field.  All visible (i.e. not private) fields require a JavaDoc comment.
+
+They always start with /** and end with \*/.
+
+JavaDoc tags always start with ``@`` and can be included in JavaDoc comments to document any parameters, return type, preconditions, etc. The javadoc tool can generate tags for you based on your code. All tags should include a concise description. For instance, if you have an @param tag, you should describe what that parameter's purpose is.
+
+Unlike other comments, JavaDoc comments (comments that begin with /** are public (externally accessible). Other comments, such as // and /* Comment \*/ are private.
+
+ 
+
+Describing a class
+------------------
+Class comments (javadoc comments) will begin with /** and close with \*/ with the details/purpose of the class in between. Each line within the comment block will start with *. The opening /** and closing \*/ should be vertically aligned. Each * within the comment block should be vertically aligned as well.
+
+Class comments should always include the following:
+
+* a concise description of the class
+* your name and PID using the @author tag
+* the date and/or version using the @version tag.
+
+The class’ comment block should appear before the class declaration and after any import statements.
+
+Class descriptions typically use two tags: `@author` indicates who wrote the file, and `@version` indicates the "version" of this file or project. You can use your full name, or just username, in an `@author` tag. In this course, it is fine to use the date when the file was written as the version information in the `@version` tag.
+
+When using tags like `@author` and `@version`, make sure to put them at the beginning of the line within the doc comment.
+
+Example:
+
+.. code-block:: java
+
+    import java.util.ArrayList;
+    
+    /**
+    * This class represents a student’s information such as GPA,
+    * current number of credit hours achieved, and the courses
+    * that the student is currently enrolled in.
+    *
+    * @author Jane Doe (jdoe)
+    * @version 2015.02.02
+    */
+    
+    public class Student {
+        ...
+    }
+
+Classes that have a generic type parameter should be listed as an `@param` tag in between the class description and the `@author` tag.
+
+Example:
+
+.. code-block:: java
+
+    /**
+    * This is an implementation of the Arraylist data structure using an
+    * array.
+    *
+    * @param <E> The type of object stored in the arraylist.
+    *
+    * @author Jane Doe (jdoe)
+    * @version 2015.02.02
+    */
+    
+    public class ArrayBasedArrayList<E> implements ArrayListInterface<E> {
+        ...
+    }
+
+ 
+
+ 
+
+Documenting public fields/instance variables and static variables
+-----------------------------------------------------------------
+
+.. admonition:: Recall
+
+    The instance variables and static variables of a class are referred to as **fields**
+
+JavaDoc comments for public fields are formatted in a similar way as class comments, though with different content. 
+
+They will begin with /** and close with \*/ with the details/purpose of the field in between. Each line within the comment block will start with *. The opening /** and closing \*/ should be vertically aligned. Each \* within the comment block should be vertically aligned as well.
+
+Field comments should be provided right before the declaration of a visible (public) field and should always include a concise description of the purpose of the field and any special information about its use.
+
+Example:
+
+.. code-block:: java
+
+    /**    
+     * Something about the purpose of the following field SALES_TAX_RATE
+     */
+    
+    public static final int SALES_TAX_RATE = 15;
+    
+
+Documenting a method
+--------------------
+
+Method comments (JavaDoc comments) are formatted the same way as class methods are. The information inside will likely be different. For instance, you will still have to provide a description of what your method does, but you won't have to include @authorand @version tags. However, you will likely need other tags (see below).
+
+Method comments should include the following:
+
+* a concise description of what the method accomplishes
+* use `@param` whenever there are parameters
+* use `@return` whenever something is returned
+* use `@throws` (with a corresponding throws clause in the method signature) when an operation guarantees it will throw an exception under specific conditions
+* use `@precondition` (plus internal assert or conditional statements) only for true conditions (i.e., conditions under which the method must never be called (the behavior of the method has absolutely no guarantees about what happens under such conditions)
+* use `@postcondition` for mutator methods to explain the state change(s) to the object that has resulted from the method execution.
+
+.. admonition:: Note: Never let @throws and @precondition tags overlap.
+
+    Never let `@throws` and `@precondition` tags overlap. Either something is a precondition (no clients should ever, under any circumstances, call the method under the described condition, and internal assert or conditional statements act as development/debugging aids to spot such violations), or there is a guaranteed behavior that will always happen under those circumstances (i.e., there is a well-defined outcome if the method is called under the described condition, which goes in a @throws clause, and is implemented internally with an explicit throws statement).
+
+    By convention runtime / unchecked Exceptions (``NullPointerException``, ``ArrayIndexOutOfBoundsException``, etc) aren't typically placed in the method's throws clause, they are instead included as part of the preconditions and checked Exceptions(FileNotFound, ClassNotFound,...) are placed in a throws clause and documented with an ``@throws``. However, documentation of preconditions (or things that would throw runtime exceptions) is more of a grey area. You only want to document them if they are interesting, for example many methods can fail with a ``NullPointerException`` and we wouldn't document all cases. There are exceptions to this such as ``IndexOutOfBoundsException`` which is a runtime exception so it never appears in a throws clause, but is somewhat frequently documented with a @throws tag in cases where it is the result of a common error case. (e.g., ``java.util.ArrayList.get(int)`` or ``java.lang.String.charAt(int)``). For this course we will provide explicit guidance and expect usage to fall within these guidelines. More information can found: https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html#throwstag Links to an external site.
+ 
+
+You should place a descriptive JavaDoc comment just before each method or constructor you write:
+
+.. code-block:: java
+
+    /**    
+    * This method calculates the student’s current cumulative GPA.
+    *
+    * @return gpa The student’s cumulative GPA.
+    */
+    
+    public double calculateGPA() {
+        ...
+    }
+
+Javadoc Tags
+------------
+
+``@author`` tag
+    It identifies programmer’s name, required of all classes and interfaces.  Review the example projects provided, these should be available in Eclipse via "Project -> Download Assignment...".
+
+``@param`` tag
+    Method parameters should be documented in the method's comment block with an ``@param`` tag. The format is the tag, then the name of the variable you used, and a short description. The parameters should be listed after the method description. If a method has multiple parameters, use the same number of ``@param`` tags as there are parameters. List these tags in order in which parameters appear in method’s header. Be sure to start these tags at the beginning of a comment line, and group all of the tags with the same name together (i.e., all @param tags should be next to each other).
+
+``@return`` tag
+    If a method's return type is not void, use an @return tag to document what the method is returning. The ``@return`` tag should appear after any ``@param`` tags.
+
+``@throws`` tag
+    If a method can throw a checked exception, name by using ``@throws`` tag Example:
+
+    .. code-block:: java
+        
+        /**
+        * Calculates the slope from two points.
+        *
+        * @param x1 The first coordinate's x variable
+        * @param y1 The first coordinate's y variable
+        * @param x2 The second coordinate's x variable
+        * @param y2 The second coordinate's y variable
+        *
+        * @return Returns the calculated slope value
+        * @throws IllegalStateException if x1 < x2
+        */
+        
+        public double findSlope(int x1. int y1, int x2, int y2) {
+            ...        
+        }
+
+Other comments
+--------------
+
+When using internal/private (non-JavaDoc) comments, be sure you are using them effectively. If you need to use a comment to describe the purpose of a variable, consider simply changing the variable's name to better suit its purpose. If you need to use a comment to describe a complex chunk of code, consider re-writing the code to make it easier to understand. Sometimes, no comments are better than redundant comments. Always try to make code more understandable and clear without comments before including any. This is because having comments is just more for your reader to read and it can be annoying to have to read the same thing over and over again.
+
+Single-line comments start with two slashes // and anything to the right is the comment. Single-line comments have two styles. Both of which are acceptable, but it’s best to stick with one in order to be consistent.
+
+.. admonition:: Note
+
+    The examples below are NOT good uses of internal comments. They are simply to show you the proper syntax and placement. Read the paragraph above on using internal comments for an explanation.
+
+The first style is to put the comment inline with the line it refers to:
+
+.. code-block:: java
+    
+    public double tipCalculator(double mealCost) {
+        return mealCost * 1.15; //Final meal cost with 15% tip.    
+    }
+
+    public double tipCalculator(double mealCost) {
+        //Final meal cost with 15% tip.
+        return mealCost * 1.15;
+    }
+
+Comments can also start with /* and end with \*/ and are useful when the comment spans multiple lines:
+
+.. code-block:: java
+
+    /* This comment spans
+    multiple lines. */
+
+ 
+Internal comments are the documentation technique of last resort
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Choose all names carefully so that a naïve reader's first interpretation will always be right. Do not choose names that might mislead someone about what a method is supposed to do, or what information a variable holds. Choosing poor names or convoluted logic structure and then trying to explain it in lengthy comments does little to improve readability. This is doubly true for methods, because half the time a reader will see your method name where it is called, not when they are reading your method itself. If it is not immediately clear what the method should do, that affects the readability of all the code calling this method, no matter how many comments you put in the method itself.
+
+Strive to write code that is clear and understandable on its own, simply by virtue of the names you have chosen and the structure you use. 
+
+If you feel you have to add an internal comment to explain something, ask yourself what needs explaining. If you need to explain what a name refers to or how you intend to use it, consider choosing a better name. If you have to explain a complex series of if statements or some other convoluted structure, ask yourself (or a TA) if there is a better way. Only after considering these alternatives should you add descriptive comments.
+
+Redundant comments are worse than no comments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Consider these comments:
+
+.. code-block:: java
+
+    karel = new VPIRobot(); // Create a new robot
+    
+    x = x + 1; // Add one to x
+    
+    karel.move(); // move forward one step
+
+These are examples of useless comments. Many students add comments to their code just to "make sure everything is documented", or because they believe copious comments are what the instructor is looking for. Comments like this just get in the way of reading the code, however. You should only add comments when they express something that is not already evident from the code itself. Comments are more code that the poor reader has to wade through, so you need to carefully balance their benefits against the cost of having to read them.  
+  
+.. _ContentStyleOther:
+  
+Other style matters
+-------------------
+
+Use of constants and referenced values vs hard coding
+-----------------------------------------------------
+
+There may be times where you may wish to refer to a value directly in your code.
+
+Examples of this may include when drawing shapes on a Graphic User Interface, when iterating through arrays or other data structures using loops, when performing some mathematical or business operation requiring some literal or operand, or when referencing the minimum or maximum limits to some range of values. 
+
+As a general rule you should always consider the trade-off to using such values directly, this is referred to as **hard coding** ( sometimes spelled hard-coding or hardcoding). 
+
+Hard coding is a bad practice because it assumes that these values will remain unchanged throughout the life of the software, thus making the code inflexible, difficult to update and maintain as circumstances and stakeholder needs evolve.
+
+Consider, for example, implementing tax calculations within a shopping/eCommerce application which requires the software to perform these calculations in multiple classes/areas of the application.
+
+If you were to hard code the tax rate for each of the instances where the tax calculation was required then, should the tax rate ever change, say from 0.15 (15%) to 0.17 (17%), then you, or a fellow developer, would need to review the entire body of code to ensure that all references to  0.15 (or 15/100) were updated to reflect the new tax rate.
+
+A preferred approach to hard coding is to use either a *constant value*, a value that does not change, or a value that can be referenced.
+ 
+Constants
+---------
+
+With respect to the example of the tax rate it would be preferable to create a field  constant in the following manner:
+
+.. code-block:: java
+    
+    final double TAX_RATE = 0.15;
+
+    total = subtotal * TAX_RATE 
+
+Then refer to that constant within your calculations.  If the rate were to ever change you would simply adjust the value assigned to the constant.
+
+.. admonition:: Note
+
+    If a constant is to be used within a single class then it should be set to `private`. If it is expected to be used across multiple classes then it may be useful to set it as `public static`.
+
+ 
+Referenced value
+----------------
+
+With respect to the example of iterating through an array, or some other similar task, it would be preferable to reference a value instead of hard coding.
+
+So instead of using the following hard coded approach:
+
+.. code-block:: java
+
+    int [] myArray = new int [4];
+
+    for (int i = 0; i < 4; i++ ) {
+        System.out.println( myArray[ i ]  );
+    }
+
+ 
+
+You should use the more flexible approach depicted below:
+
+.. code-block:: java
+
+    final int MAX = 4;
+
+    int [] myArray = new int [MAX];
+
+    for (int i = 0; i < myArray.length ; i++ ) {
+        System.out.println( myArray[ i ] );
+    }
+
+ 
+
+Alternatively you may use `MAX` within the loop instead of `myArray.length`.
+
+Observe how the use of constants and referenced values make your code more flexible and easier to maintain.  Using `myArray.length` within the loop condition , instead of the value 4, makes our code more flexible as this referenced value always matches the correct length of the array even if it were to change.
+
+When writing code you should always use the most flexible option available.
+
+ 
+
+Access Modifiers and Visibility of classes, fields, and methods
+---------------------------------------------------------------
+Access modifiers allow developers to specify whether other classes can use a particular field or invoke a particular method of a given class. 
+
+New developers often forget to specify the access modifiers for classes, fields, and methods.
+
+This is a bad habit and something to avoid since omitting an access modifier may result in unexpected behavior, breaking encapsulation and potentially allowing outside classes to access fields and methods in unintended ways.
+
+You should *always* specify access modifiers for all classes, fields, and methods, both when depicting the software design and when developing the software solution. 
+
+Good design tends to adopt the approach of setting everything as `private` except those fields and methods you explicitly wish outside classes to interact with. 
+
+.. admonition:: Note
+    
+    As a general rule you should set the fields of your class as `private` and grant other levels of access on a case-by-case basis.  
+
+More information on Access Modifiers and Visibility is available here: https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html 
+
+ 
+
+Testing methods by passing null params
+--------------------------------------
+
+As a general rule when setting up a test case which requires the passing of a null to a method, you should refrain from passing null directly. This is bad practice, and may result in a style deduction when submitted to Web-CAT.
+
+For example the test: 
+
+.. code-block:: java
+
+    assertFalse( someNonNullObject.equals( null ) );
+
+Would return a style error when submitted to Web-CAT.
+
+ 
+
+To avoid this you should instead create another object (be sure to name it appropriately), set it to `null`, then pass that object to the method being tested.  See example below:
+
+.. code-block:: java
+
+       SomeObject nonNullObject = new SomeObject (...);
+
+       SomeObject nullObject = null;
+
+       assertFalse( nonNullObject.equals( nullObject ) );
+
+
+.. _ContentStyleReview:
+
+Review Checklist
+----------------
+While style has been mentioned in assignments and modules so far, this checklist
+should help you keep matters of style in mind when reviewing code before
+submitting.
+
+
+**Generally we should avoid the following:**
+
+
+Naming
+~~~~~~
+
+* Names that do not adhere to proper conventions
+* Names that do not adequately capture and communicate the concept they represent or the purpose of the class, method, variable, or concept they represent
+* Names that are too long or short and not sufficiently descriptive, i.e. poor identifiers (for example single~characters, or ambiguous abbreviations, initials, acronyms)
+
+
+Formatting and Indentation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Inconsistent/missing indentation
+* Insufficient white space
+* Commented-out lines of code
+* Debug statements left within the code
+* Multiple instructions per line or statements that are too long
+
+
+Documentation and Commenting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Missing/insufficient class description
+* Missing/insufficient field comments
+* Missing/insufficient method comments
+* Missing/incomplete JavaDoc tags
+* Missing/incomplete args description
+* Wrong/Misleading comments
+* Extraneous comments or comments no more descriptive than code
+
+
+Other matters of style
+~~~~~~~~~~~~~~~~~~~~~~
+* Using hard-coded values
+* Missing or inappropriate access modifiers
+* Unnecessary or unused fields/variables
+
+Style & Documentation Final Review [8:17]
+-----------------------------------------
+
+.. raw:: html
+
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_5a3easxv&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_b6a92739" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+
+
 Related Resources
 ----------------- 
 
@@ -608,5 +1035,5 @@ Related Resources
 
 - Northeastern University. Style Guide for Web-CAT submissions: http://www.ccs.neu.edu/home/vkp/2510-sp13/web-cat-hints.html 
 - Google. Java Style Guide: https://google.github.io/styleguide/javaguide.html 
+- Javadoc Guide: https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html
 - Sun Microsystems, Inc (known today as Oracle). (1996). Java Code Conventions: https://www.oracle.com/technetwork/java/codeconventions-150003.pdf 
-
