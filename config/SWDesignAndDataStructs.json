@@ -32,7 +32,7 @@
   "zeropt_assignments": false,
   "narration_enabled": true,
   "include_tree_view": false,
-  "chapter_name": "Module",
+  "chapter_name": "Week",
   "start_chap_num": 1,
   "html_theme_options": {
     "show_source": false,
@@ -118,8 +118,7 @@
       
       "SWDesignAndDataStructs/RefPythonToJava": {
       },
-      "SWDesignAndDataStructs/Project1": {
-      },
+      
       "SWDesignAndDataStructs/AdminAcadIntegrity": {
       },
       "SWDesignAndDataStructs/ProgrammingPracticeMod1": {
@@ -211,6 +210,8 @@
       },
       "SWDesignAndDataStructs/Lab3MovieDatabasePost": {
       },
+      "SWDesignAndDataStructs/Project1": {
+      },
       "SWDesignAndDataStructs/KnowledgePracticeMod3": {
       },
       "SWDesignAndDataStructs/ProgrammingPracticeMod3": {
@@ -253,10 +254,7 @@
       "SWDesignAndDataStructs/Lab4GroceryBagsPost": {
       },
       "SWDesignAndDataStructs/KnowledgePracticeMod4": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod4": {
-      }
-      
+      }    
     },
 
     "Efficiency, Stacks": {
