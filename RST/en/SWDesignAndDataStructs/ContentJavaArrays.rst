@@ -54,7 +54,7 @@ Checkpoint 1
 Programming Practice: Java Arrays 1
 ------------------------------------
 
-.. extrtoolembed:: 'SWDesignAndDataStructs_Arrays1'
+.. extrtoolembed:: 'Programming Practice: Java Arrays 1'
    :workout_id: 2477
 
 
