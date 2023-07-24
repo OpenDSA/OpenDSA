@@ -192,8 +192,10 @@ KA Exercises
 CodeWorkout Exercises (add as a workout)
 ----------------------------------------
 
-.. extrtoolembed:: 'Title for the Workout'
-   :workout_id: 1910
+.. code-block::
+    
+    .. extrtoolembed:: 'Title for the Workout'
+        :workout_id: 1910
 
 
 
