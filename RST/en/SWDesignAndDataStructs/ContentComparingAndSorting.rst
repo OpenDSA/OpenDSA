@@ -86,8 +86,7 @@ Checkpoint 3
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
    :long_name: Selection Sort Proficiency Exercise
 
-.. avembed:: Exercises/Sorting/SelsortSumm.html ka
-   :long_name: Selection Sort Summary Exercise
+
 
 
 Insertion Sort with an Array [16:17]
@@ -110,9 +109,9 @@ Checkpoint 4
 .. avembed:: Exercises/SWDesignAndDataStructs/CompSortCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
-
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
    :long_name: Insertion Sort Proficiency Exercise
+
 
 Insertion Sort with a Linked Chain [16:50] 
 ------------------------------------------
@@ -138,8 +137,7 @@ Checkpoint 5
    :long_name: Checkpoint 5
 
 
-.. avembed:: Exercises/Sorting/InssortSumm.html ka
-   :long_name: Insertion Sort Summary Exercise
+
 
 Programming Practice: Insertion Sort
 ------------------------------------
