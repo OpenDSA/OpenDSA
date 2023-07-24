@@ -126,5 +126,5 @@ Checkpoint 3
 Programming Practice: Java Arrays 2
 ------------------------------------
 
-.. extrtoolembed:: 'SWDataStructsAndDesign_Arrays2'
+.. extrtoolembed:: 'Programming Practice: Java Arrays 2'
    :workout_id: 2478
