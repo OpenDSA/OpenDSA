@@ -82,6 +82,8 @@
   "chapters": {
 
     "General Course Information": {
+        "SWDesignAndDataStructs/RSTTemplate": {
+          }
     },
     "Introduction": {
       "SWDesignAndDataStructs/AdminWelcome": {
@@ -160,6 +162,10 @@
           }
       },
       "SWDesignAndDataStructs/ContentJavaArrays": {
+          "Programming Practice: Java Arrays 1": {
+              "points": 31,
+              "threshold": 4
+            }
       },
       "SWDesignAndDataStructs/ContentGenerics1": {
       },
@@ -618,9 +624,8 @@
       "Tutorials/2114_java_commenting": {
       },
       "Tutorials/2114_random_numbers": {
-      },
-      "SWDesignAndDataStructs/RSTTemplate": {
       }
+      
     }
   }
 
