@@ -139,7 +139,6 @@ Java OOP Checkpoint 3
 Interactive: Polymorphism Measurable Interface [7:23]
 -----------------------------------------------------
 
-.. TODO Code link
 .. admonition:: Try It Yourself
 
     Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
@@ -149,6 +148,7 @@ Interactive: Polymorphism Measurable Interface [7:23]
     
     .. raw:: html
     
+        <!-- TODO: Code link? -->
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyMeasurable.pdf" target="_blank">
         <img src="../html/_static/Images/projector-screen.png" width="32" height="32">

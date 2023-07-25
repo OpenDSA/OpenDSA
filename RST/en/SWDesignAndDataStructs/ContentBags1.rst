@@ -183,9 +183,10 @@ Take a look at how the implementation (the code) matches with the design documen
 
 Interactive: Documentation of Bag Interface Methods [7:28]
 ----------------------------------------------------------
-.. TODO Slides?
+
 .. raw:: html
 
+    <!-- TODO: Slides? -->
     <center>
        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kn4272o0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
@@ -193,9 +194,10 @@ Interactive: Documentation of Bag Interface Methods [7:28]
 
 Interactive: Using Bags [4:34]
 ------------------------------
-.. TODO Slides?
+
 .. raw:: html
 
+    <!-- TODO: Slides? -->
     <center>
         <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_9d2n6v3x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
@@ -227,9 +229,10 @@ Chapter 2 Bag Implementation that Uses Arrays from `Data Structures and Abstract
 
 Interactive: Fixed-Size Array Implementation [9:39]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. TODO Slides?
+
 .. raw:: html
 
+    <!-- TODO: Slides? -->
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_e766pflq' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
@@ -298,12 +301,12 @@ Interactive: ArrayBagsWithJUnit Example Demonstration [8:17]
 
 Code Example
 ~~~~~~~~~~~~
-.. TODO Code?
+
 .. admonition:: Try It Yourself
 
   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.07-ArrayBagsWithJUnit". 
   
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+  **TODO** Fix URL to ex07.07-ArrayBagsWithJUnit
 
 
 Checkpoint 2

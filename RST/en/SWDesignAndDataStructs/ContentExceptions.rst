@@ -27,7 +27,7 @@ Java Interlude 2 Exceptions from  `Data Structures and Abstractions with Java, 4
 
 Interactive: Exception Handling
 -------------------------------
-.. TODO: FIX FILE LINK
+
 .. admonition:: Follow Along, Practice and Explore
 
     Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
@@ -36,6 +36,8 @@ Interactive: Exception Handling
         3) download and import the standalone \*.java file(s) to the created package.
 
    .. raw:: html
+
+      <!-- TODO: FIX FILE LINK  -->  
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/Exceptions.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
@@ -241,19 +243,19 @@ Exception Examples - Basic to Complex
 
 Exception Handling Example Code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. TODO: Update link
+
 .. admonition:: Try It Yourself
 
    In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.02-ExceptionHandling". This package has a project called `ExceptionHandlingWithThrow` , which you can use to work with `try...catch` structures on your own. Feel free to experiment. 
-
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+   
+   
 
 
 Basic ``try``, ``catch`` example [12:05]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
-
+    <!-- TODO: Update link above in admonition --> 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s522xzgi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
