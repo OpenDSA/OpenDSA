@@ -2,7 +2,6 @@
 .. http://opendsa.org for more details.
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
-
 .. TODO Verify the last couple sections. 
 
 .. avmetadata::
@@ -79,9 +78,10 @@ Interactive: Introduction to Sorted Lists
 
 Recap UML/code for ListInterface
 --------------------------------
-.. TODO
 
-possibly show the UML image from: https://canvas.vt.edu/courses/165395/pages/introduction-to-sorted-lists?module_item_id=2213510
+
+
+**TODO:** possibly show the UML image from: https://canvas.vt.edu/courses/165395/pages/introduction-to-sorted-lists?module_item_id=2213510
  
 
 List ADT
@@ -156,14 +156,13 @@ This approach also uses a List ADT implementation to support the implementation 
 
 Since we can think of a SortedList as a List with modified characteristics and additional “Sort” logic we can therefore conclude that a SortedList is-a List, thus deriving the benefits of inheritance.  The List becomes a parent class, while the SortedList becomes a child of List, inheriting methods from the parent class.  Since some SortedList methods must behave differently when compared against their List ADT counterparts we must override these methods when defining the SortedList class. Specifically we must override any methods that do not serve to preserve sorted order. For example methods like add(int newPosition, T newEntry) and replace(givenPosition,newEntry) offer client code control over the positioning of newEntries, this is not appropriate as this could affect the sorted order of the SortedList.  The add(newEntry) method would also need to be modified.  Further the SortedList would require features not present within the List, requiring us to add these new methods, examples of such include the SortedList ADT methods remove(anEntry) and getPosition(anEntry).
 
-
-.. TODO link
 .. admonition:: Follow Along, Practice and Explore
 
     Download to run and explore the corresponding project from the video on your own in eclipse. The project CS-GraphWindowLib is required for the sample project above.  It is also used in your course projects. To download the CS-GraphWindowLib you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
 
    .. raw:: html
 
+    <!-- TODO: fix link. -->
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/CS2-SortedListDemo.zip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
      CS2-SortedListDemo.zip</img>
@@ -284,7 +283,8 @@ Implementing Using Composition
 
 Efficiency of the Composition Approach
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-.. TODO content for this?
+
+**TODO** content for this?
 
 Implementation from Scratch
 ---------------------------

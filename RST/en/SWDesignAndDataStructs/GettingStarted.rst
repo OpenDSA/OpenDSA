@@ -147,6 +147,6 @@ described in the Pre-Lab part of Lab 2. You will then be able to download the
 support projects via Eclipse using the blue down arrow icon or using the
 Project Menu and selecting "Download Assignment...".
 
-TODO: Add hyperlink on the word Page to a canvas page.
+**TODO**: Add hyperlink on the word Page to a canvas page.
 
 You may view a demonstration of this process on this page.

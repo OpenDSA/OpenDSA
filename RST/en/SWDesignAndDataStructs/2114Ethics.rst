@@ -46,10 +46,8 @@ Checkpoint 1
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
-
+   <!-- TODO: fix URLS. -->
    <a href="" download>
    <img src="" alt="ACM Code of Ethics.ppt">
    </a>
@@ -72,10 +70,9 @@ Checkpoint 2
      </center>
 
 
-TODO: fix URLS.
-
 .. raw:: html
 
+    <!-- TODO: fix URLS. -->
    <a href="" download>
    <img src="" alt="ACM Code of Ethics.ppt">
    </a>

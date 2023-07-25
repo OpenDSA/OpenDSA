@@ -115,13 +115,14 @@ Checkpoint 3
 
 Interactive: Removing From Binary Search Trees
 ----------------------------------------------
-.. TODO file RemovingFromBinarySearchTrees.pdf is missing 
+
 .. admonition:: Follow Along and Engage
 
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
    .. raw:: html
 
+      <!-- TODO: file RemovingFromBinarySearchTrees.pdf is missing  -->  
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RemovingFromBinarySearchTrees.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       RemovingFromBinarySearchTrees.pdf</img>

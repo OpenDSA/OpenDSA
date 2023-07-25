@@ -41,7 +41,7 @@ Two references which both refer to a single object are said to be “sharing”.
 
 Interactive: Intro to Linked Chains of Nodes [10:51] 
 ----------------------------------------------------
-.. TODO Slides?
+
 .. admonition:: The LinkedChain Class
    
    Consider this class when viewing this video on Linked Chains: 
@@ -93,7 +93,7 @@ Interactive: Intro to Linked Chains of Nodes [10:51]
 
 
 .. raw:: html
-
+    <!-- TODO: SLIDES -->  
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xfyll19n' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>

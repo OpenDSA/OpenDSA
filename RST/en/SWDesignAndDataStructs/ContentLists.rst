@@ -214,7 +214,6 @@ Interactive: Tracing Add() with Debugger [13:33]
 Interactive: LinkedList Remove() [18:09] 
 ----------------------------------------
 
-.. TODO Code?
 .. admonition:: Try It Yourself
    
   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex11.01-LinkedList". 
@@ -223,6 +222,7 @@ Interactive: LinkedList Remove() [18:09]
 
 .. raw:: html
 
+    <!-- TODO: Code link? -->
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_m5thdypn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
