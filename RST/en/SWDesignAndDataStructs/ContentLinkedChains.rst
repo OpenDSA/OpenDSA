@@ -93,6 +93,7 @@ Interactive: Intro to Linked Chains of Nodes [10:51]
 
 
 .. raw:: html
+
     <!-- TODO: SLIDES -->  
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xfyll19n' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
@@ -106,8 +107,8 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-Programming Exercises 1
------------------------------
+SWDataStructsAndDesign_LinkedChains1
+------------------------------------
 
 .. admonition:: Pointer Programming Exercise Tips
 
@@ -116,7 +117,7 @@ Programming Exercises 1
   *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
 
 
-.. extrtoolembed:: 'Linked Chains 1'
+.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains1'
    :workout_id: 2479
 
 
@@ -151,8 +152,9 @@ Programming Exercises 2
   *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
 
 
-.. extrtoolembed:: 'Linked Chains 2'
-   :workout_id: 2480
+.. 
+    extrtoolembed:: 'Linked Chains 2'
+    :workout_id: 2480
 
 
 Contains() method Animation [5:14] 
