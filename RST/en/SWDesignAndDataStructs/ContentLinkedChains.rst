@@ -117,7 +117,7 @@ Programming Exercises 1
 
 
 
-.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains1 3'
+.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains1'
    :workout_id: 2479
 
 
