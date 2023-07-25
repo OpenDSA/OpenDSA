@@ -7,8 +7,6 @@
    :author: Molly
 
 
-
-
 Generics Intro
 ==============   
 
@@ -30,7 +28,7 @@ Suggested Reading
 
 Interactive: Generics Intro Video [9:50]
 ----------------------------------------
-.. TODO Code links
+
 .. admonition:: Follow Along, Practice and Explore
 
     Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
