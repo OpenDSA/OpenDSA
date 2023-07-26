@@ -143,8 +143,8 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-Programming Exercises 2
------------------------------
+SWDataStructsAndDesign_LinkedChains2
+------------------------------------
 .. admonition:: Pointer Programming Exercise Tips
 
   * The Link class does not provide getters or setters, interact with fields directly to access or modify them
@@ -153,7 +153,7 @@ Programming Exercises 2
 
 
 .. 
-    extrtoolembed:: 'Linked Chains 2'
+    extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains2'
     :workout_id: 2480
 
 
