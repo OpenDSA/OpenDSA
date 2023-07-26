@@ -110,15 +110,16 @@ Checkpoint 1
 SWDataStructsAndDesign_LinkedChains1
 ------------------------------------
 
+.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains1'
+   :workout_id: 2479
+
+
 .. admonition:: Pointer Programming Exercise Tips
 
   * The Link class does not provide getters or setters, interact with fields directly to access or modify them
   *  The Link class provides a constructor that receives two parameters, data and next. To instantiate a new Link node with a value of “Hello” and a next field set to null: ``Link myLink =  new Link("Hello", null);``
   *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
 
-
-.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains1'
-   :workout_id: 2479
 
 
 Interactive: Demo in Visualizer [11:31]
@@ -145,6 +146,7 @@ Checkpoint 2
 
 SWDataStructsAndDesign_LinkedChains2
 ------------------------------------
+
 .. admonition:: Pointer Programming Exercise Tips
 
   * The Link class does not provide getters or setters, interact with fields directly to access or modify them
@@ -152,9 +154,8 @@ SWDataStructsAndDesign_LinkedChains2
   *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
 
 
-.. 
-    extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains2'
-    :workout_id: 2480
+.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains2'
+   :workout_id: 2480
 
 
 Contains() method Animation [5:14] 
