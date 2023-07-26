@@ -68,6 +68,7 @@ Interactive: ExLinkedBagJUnit  Demonstration [7:14]
   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex08.05-LinkedBagsWithJUnit". Use this example to follow along with the following video. Feel free to experiment.
 
 .. raw:: html
+
     <!-- TODO: fix URL to ex08.05-LinkedBagsWithJUnit. -->
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_y9dkjp2z' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
