@@ -41,7 +41,7 @@ Interactive: Exception Handling
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/Exceptions.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      ArrayBasics.java</img>
+      Exceptions.java</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToExceptions.pdf" target="_blank">
