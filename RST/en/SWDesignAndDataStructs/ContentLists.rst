@@ -280,6 +280,9 @@ Interactive: An Array Implementation of a List [15:48]
     <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
     Video Slides ArrayListImplementation.pdf</img>
     </a>
+
+
+Note: Documentation in the code refers to variable `length` incorrectly, it should be `numberOfEntries
     
 Programming Practice: Lists 2
 -----------------------------
