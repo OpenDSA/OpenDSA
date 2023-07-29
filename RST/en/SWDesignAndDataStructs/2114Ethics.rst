@@ -32,8 +32,8 @@ Upon completion of this module, students will be able to:
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpointSumm.html ka
+   :long_name: Checkpoint 1
 
 
 [9:32] ACM Code of Ethics Video
@@ -56,8 +56,8 @@ Checkpoint 1
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/BlankQuizSumm.html ka
-   :long_name: Quiz Unavailable
+.. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint2Summ.html ka
+   :long_name: Checkpoint 2
 
 
 [2:14] The Eight Key Questions (8KQ) Video

@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "OpenDSA-DevStack",
+			"path": "../../.."
+		}
+	],
+	"settings": {
+		"esbonio.sphinx.confDir": ""
+	}
+}
