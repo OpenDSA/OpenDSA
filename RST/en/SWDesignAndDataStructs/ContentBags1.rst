@@ -186,7 +186,7 @@ Interactive: Documentation of Bag Interface Methods [7:28]
 
 .. raw:: html
 
-    <!-- TODO: Slides? -->
+
     <center>
        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kn4272o0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
@@ -197,7 +197,7 @@ Interactive: Using Bags [4:34]
 
 .. raw:: html
 
-    <!-- TODO: Slides? -->
+    <!-- TODO: Slides? none for this or previous video but maybe should have shopping cart demo? -->
     <center>
         <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_9d2n6v3x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
@@ -232,7 +232,7 @@ Interactive: Fixed-Size Array Implementation [9:39]
 
 .. raw:: html
 
-    <!-- TODO: Slides? -->
+    <!-- TODO: Slides? no, I think because of text within page @bemdmison would it be more consistent if I revisit that on this page?-->
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_e766pflq' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
@@ -304,9 +304,9 @@ Code Example
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.07-ArrayBagsWithJUnit". 
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "exArrayBagsWithJUnit". 
   
-  **TODO** Fix URL to ex07.07-ArrayBagsWithJUnit
+
 
 
 Checkpoint 2

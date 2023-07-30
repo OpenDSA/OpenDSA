@@ -36,7 +36,7 @@ Interactive: Introduction to Queues
         
    .. raw:: html
    
-       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/QueueInterface.java"  target="_blank">
+       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/QueueInterface.java"  target="_blank">
        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
        QueueInterface.java</img>
        </a>
@@ -111,7 +111,7 @@ Interactive: Linked Queues Intro and Enqueue [11:29]
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedQueuesEnqueue.pdf"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      ArrayRemove.java</img>
+      LinkedQueuesEnqueue.pdf</img>
       </a>
 
 
@@ -137,7 +137,7 @@ Interactive: Linked Queues Removing and More (Dequeue and Other Methods) [8:41]
 
      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedQueueRemove.pdf"  target="_blank">
      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-     ArrayRemove.java</img>
+     LinkedQueueRemove.pdf</img>
      </a>
    
 .. raw:: html
@@ -166,14 +166,14 @@ Interactive: Introduction to Deque
 
   .. raw:: html
         
-        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/DequeInterface.java"  target="_blank">
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/DequeInterface.java"  target="_blank">
         <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
         DequeInterface.java</img>
         </a>
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeIntro.pdf"  target="_blank">
-        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-        ArrayRemove.java</img>
+        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        DequeIntro.pdf</img>
         </a>
         
   .. code-block:: java

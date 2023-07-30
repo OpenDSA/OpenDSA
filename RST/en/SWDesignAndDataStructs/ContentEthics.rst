@@ -28,7 +28,6 @@ Interactive: Introduction to Ethics Video
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
    .. raw:: html
-      <!-- TODO these files aren't in course-notes Margaret needs access -->
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToEthics.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       IntroToEthics.pdf</img>
@@ -61,11 +60,13 @@ Checkpoint 1
      </center>
 
 
+
+
 .. raw:: html
-   <!-- TODO: fix URLS. -->
-   <a href="" download>
-   <img src="" alt="ACM Code of Ethics.ppt">
-   </a>
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ACMCodeOfEthics.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+     ACMCodeOfEthics.pdf</img>
+      </a>
 
 
 Checkpoint 2
@@ -89,11 +90,10 @@ Checkpoint 2
 
 
 .. raw:: html
-
-    <!-- TODO: fix URLS. -->
-   <a href="" download>
-   <img src="" alt="ACM Code of Ethics.ppt">
-   </a>
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TheEightKeyQuestions(8KQ).pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+     TheEightKEyQuestions(8K).pdf</img>
+      </a>
 
 
 Checkpoint 3

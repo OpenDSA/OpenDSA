@@ -41,7 +41,7 @@ Two references which both refer to a single object are said to be “sharing”.
 
 Interactive: Intro to Linked Chains of Nodes [10:51] 
 ----------------------------------------------------
-
+THIS CLASS DOESN'T GO WITH THIS VIDEO **TODO**
 .. admonition:: The LinkedChain Class
    
    Consider this class when viewing this video on Linked Chains: 
@@ -91,10 +91,18 @@ Interactive: Intro to Linked Chains of Nodes [10:51]
          } // end Node
       }
 
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToNodes.ppt"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      IntroToNotes.ppt</a
 
 .. raw:: html
 
-    <!-- TODO: SLIDES -->  
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xfyll19n' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>

@@ -151,11 +151,11 @@ Introduction to Comparators [11:22]
 
 .. admonition:: Try It Yourself
    
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex12.01-Comparing". Use this example to follow along with the following video. Feel free to experiment. 
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "exComparing". Use this example to follow along with the following video. Feel free to experiment. 
   
 .. raw:: html
 
-    <!-- TODO: Code link to ex12.01-Comparing? -->
+
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pit1l2lg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>

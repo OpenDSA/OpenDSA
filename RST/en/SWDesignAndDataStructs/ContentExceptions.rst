@@ -37,11 +37,10 @@ Interactive: Exception Handling
 
    .. raw:: html
 
-      <!-- TODO: FIX FILE LINK  -->  
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/Exceptions.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      ArrayBasics.java</img>
+      Exceptions.java</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToExceptions.pdf" target="_blank">
@@ -246,7 +245,7 @@ Exception Handling Example Code
 
 .. admonition:: Try It Yourself
 
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.02-ExceptionHandling". This package has a project called `ExceptionHandlingWithThrow` , which you can use to work with `try...catch` structures on your own. Feel free to experiment. 
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "exExceptionHandling". This package has a project called `ExceptionHandlingWithThrow` , which you can use to work with `try...catch` structures on your own. Feel free to experiment. 
    
    
 
@@ -256,7 +255,7 @@ Basic ``try``, ``catch`` example [12:05]
 
 .. raw:: html
 
-    <!-- TODO: Update link above in admonition --> 
+ 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s522xzgi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>

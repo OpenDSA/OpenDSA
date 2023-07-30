@@ -65,11 +65,11 @@ Interactive: ExLinkedBagJUnit  Demonstration [7:14]
 
 .. admonition:: Try It Yourself
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex08.05-LinkedBagsWithJUnit". Use this example to follow along with the following video. Feel free to experiment.
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "exLinkedBagsWithJUnit". Use this example to follow along with the following video. Feel free to experiment.
 
 .. raw:: html
 
-    <!-- TODO: fix URL to ex08.05-LinkedBagsWithJUnit. -->
+
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_y9dkjp2z' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
@@ -79,13 +79,13 @@ Interactive: LinkedBag getFrequencyOf() and contains() [14:00]
 
 .. admonition:: Try It Yourself
 
-    In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "ex08.05-LinkedBagsWithJUnit"
+    In Eclipse, use the *Project > Download Assignment...* menu command to download the lab project named "exLinkedBagsWithJUnit"
 
     Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 .. raw:: html
 
-    <!-- TODO: fix URL to ex08.05-LinkedBagsWithJUnit. -->
+
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jaeiozal' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
