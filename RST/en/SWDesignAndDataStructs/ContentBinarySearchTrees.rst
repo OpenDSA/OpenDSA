@@ -123,7 +123,7 @@ Interactive: Removing From Binary Search Trees
 
    .. raw:: html
 
-      <!-- TODO: file RemovingFromBinarySearchTrees.pdf is one level up because Margaret doesn't have permissions -->  
+
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RemovingFromBinarySearchTrees.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       RemovingFromBinarySearchTrees.pdf</img>
