@@ -107,8 +107,8 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-SWDataStructsAndDesign_LinkedChains1
-------------------------------------
+Programming Practice: Linked Chains 1
+-------------------------------------
 
 .. admonition:: Pointer Programming Exercise Tips
 
@@ -116,7 +116,7 @@ SWDataStructsAndDesign_LinkedChains1
   *  The Link class provides a constructor that receives two parameters, data and next. To instantiate a new Link node with a value of “Hello” and a next field set to null: ``Link myLink =  new Link("Hello", null);``
   *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
 
-.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains1'
+.. extrtoolembed:: 'Programming Practice: Linked Chains 1'
    :workout_id: 2479
   
 
@@ -143,8 +143,8 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-SWDataStructsAndDesign_LinkedChains2
-------------------------------------
+Programming Practice: Linked Chains 2
+-------------------------------------
 
 .. admonition:: Pointer Programming Exercise Tips
 
@@ -153,7 +153,7 @@ SWDataStructsAndDesign_LinkedChains2
   *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
 
 
-.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains2'
+.. extrtoolembed:: 'Programming Practice: Linked Chains 2'
    :workout_id: 2480
 
 
