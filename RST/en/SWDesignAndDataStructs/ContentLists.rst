@@ -43,7 +43,7 @@ Introduction to Lists [13:41]
           
  .. raw:: html
      
-     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ListInterface.java"  target="_blank">
+     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
      QueueInterface.java</img>
      </a>
@@ -216,13 +216,13 @@ Interactive: LinkedList Remove() [18:09]
 
 .. admonition:: Try It Yourself
    
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex11.01-LinkedList". 
+  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "exLinkedList". 
   
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 .. raw:: html
 
-    <!-- TODO: Code link? -->
+ 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_m5thdypn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
@@ -280,6 +280,9 @@ Interactive: An Array Implementation of a List [15:48]
     <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
     Video Slides ArrayListImplementation.pdf</img>
     </a>
+
+
+Note: Documentation in the code refers to variable `length` incorrectly, it should be `numberOfEntries
     
 Programming Practice: Lists 2
 -----------------------------

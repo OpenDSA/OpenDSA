@@ -35,7 +35,7 @@ Interactive: Introduction to Object Oriented Programming [9:26]
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_td3bp4s0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
     <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaOOPObjects.pdf"  target="_blank">
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPObjects.pdf"  target="_blank">
     <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
     Video Slides Java OOP Objects.pdf</img>
     </a>
@@ -89,12 +89,12 @@ Interactive: Java Inheritance: this, super [11:15]
 
    .. raw:: html
    
-        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaOOPInheritenceSuperThis.pdf"  target="_blank">
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPInheritenceSuperThis.pdf"  target="_blank">
         <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
         Video Slides Java OOP Super This.pdf</img>
         </a>
         <br>
-        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/CS2-ExJavaOOP.zip"  target="_blank">
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exJavaOOP.zip"  target="_blank">
         <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
         CS2 Java OOP Example Eclipse Project</img>
         </a>
@@ -124,7 +124,7 @@ Interactive: Java Inheritance: equals(), toString() [14:33]
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ml9sbz2y' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
     <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/JavaOOPInheritenceEqualsToString.pdf"  target="_blank">
+    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPInheritenceEqualsToString.pdf"  target="_blank">
     <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
     Video Slides Java OOP Equals ToString .pdf</img>
     </a>
@@ -148,7 +148,7 @@ Interactive: Polymorphism Measurable Interface [7:23]
     
     .. raw:: html
     
-        <!-- TODO: Code link? -->
+        <!-- TODO: Code link? ok there is an exMeasurable.zip, need that listed here?? not sure how syncs with admonition-->
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyMeasurable.pdf" target="_blank">
         <img src="../html/_static/Images/projector-screen.png" width="32" height="32">

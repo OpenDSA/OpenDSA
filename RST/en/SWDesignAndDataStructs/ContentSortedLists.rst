@@ -2,7 +2,7 @@
 .. http://opendsa.org for more details.
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
-.. TODO Verify the last couple sections. 
+.. TODO Verify the last couple sections. Does this mean Margaret needs to look through this page? Or all modules hereafter? or is this for bob
 
 .. avmetadata::
    :author: Molly
@@ -38,17 +38,17 @@ Interactive: Introduction to Sorted Lists
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ListInterface.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
       ListInterface.java</img>
       </a>
       <br>
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/SortedListInterface.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/SortedListInterface.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
       SortedListInterface.java</img>
       </a>
       <br>
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/SortedListsOrderVsSorted.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/coures-notes/SortedListsOrderVsSorted.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       SortedListsOrderVsSorted.pdf</img>
       </a>
@@ -284,7 +284,6 @@ Implementing Using Composition
 Efficiency of the Composition Approach
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**TODO** content for this?
 
 Implementation from Scratch
 ---------------------------

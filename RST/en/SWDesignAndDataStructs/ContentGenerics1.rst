@@ -38,7 +38,7 @@ Interactive: Generics Intro Video [9:50]
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/ExGenerics1.zip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayBasics.java"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
       ArrayBasics.java</img>
       </a>

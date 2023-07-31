@@ -4,12 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly
-
+   :author: Molly Domino
 
 Ethics
-=========================
+======
 
+Objectives
+----------
 
 Upon completion of this module, students will be able to:
 
@@ -18,35 +19,20 @@ Upon completion of this module, students will be able to:
 * Logically defend positions on ethical issues which are informed by the complexities of those situations
 
 
-
-Interactive: Introduction to Ethics Video
+[2:57] Introduction to Ethics Video
 -----------------------------------
-
-
-.. admonition:: Follow Along and Engage
-
-    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
-
-   .. raw:: html
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToEthics.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-      IntroToEthics.pdf</img>
-      </a>
-
 
 .. raw:: html
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_rrxp1e7b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-   </center>
-
-
+     <center>
+     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_rrxp1e7b&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_jzkpcwal" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+     </center>
 
 
 Checkpoint 1
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint1Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpointSumm.html ka
    :long_name: Checkpoint 1
 
 
@@ -60,23 +46,18 @@ Checkpoint 1
      </center>
 
 
-
-
 .. raw:: html
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ACMCodeOfEthics.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-     ACMCodeOfEthics.pdf</img>
-      </a>
+   <!-- TODO: fix URLS. -->
+   <a href="" download>
+   <img src="" alt="ACM Code of Ethics.ppt">
+   </a>
 
 
 Checkpoint 2
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint2ASumm.html ka
-   :long_name: Checkpoint 2A
-
-.. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint2BSumm.html ka
-   :long_name: Checkpoint 2B
+.. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint2Summ.html ka
+   :long_name: Checkpoint 2
 
 
 [2:14] The Eight Key Questions (8KQ) Video
@@ -90,17 +71,18 @@ Checkpoint 2
 
 
 .. raw:: html
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TheEightKeyQuestions(8KQ).pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-     TheEightKEyQuestions(8K).pdf</img>
-      </a>
+
+    <!-- TODO: fix URLS. -->
+   <a href="" download>
+   <img src="" alt="ACM Code of Ethics.ppt">
+   </a>
 
 
 Checkpoint 3
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint3Summ.html ka
-   :long_name: Checkpoint 3
+.. avembed:: Exercises/SWDesignAndDataStructs/BlankQuizSumm.html ka
+   :long_name: Quiz Unavailable
 
 
 

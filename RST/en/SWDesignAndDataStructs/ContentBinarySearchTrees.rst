@@ -47,6 +47,7 @@ Interactive: Introduction to Binary Search Trees
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_37ep8bta' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
+Note: there is an alphebetical error on slide 8, UX Designer and Web Developer should be switched.
 
 Checkpoint 1
 ------------
@@ -122,7 +123,7 @@ Interactive: Removing From Binary Search Trees
 
    .. raw:: html
 
-      <!-- TODO: file RemovingFromBinarySearchTrees.pdf is missing  -->  
+
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RemovingFromBinarySearchTrees.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       RemovingFromBinarySearchTrees.pdf</img>
