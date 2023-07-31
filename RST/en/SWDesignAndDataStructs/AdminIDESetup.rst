@@ -7,8 +7,8 @@
    :author: Molly
 
 
-Getting Your Programming Environment Setup
-==========================================
+Setting Up Your Programming Environment
+=======================================
 
 Downloading and Installing Eclipse
 ----------------------------------
@@ -150,11 +150,11 @@ and submit assignments.
 
   * **Download URL**
 
-    * **https://courses.cs.vt.edu/cs2114/assignments.xml**
+    * ``https://courses.cs.vt.edu/cs2114/assignments.xml``
 
   * **Submit URL**
 
-    * **https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT
+    * ``https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT``
 
 4. Click the **Apply and Close** button to save your changes and exit the
    preferences window.
