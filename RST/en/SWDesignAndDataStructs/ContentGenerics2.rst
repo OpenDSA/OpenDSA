@@ -6,8 +6,8 @@
 .. avmetadata::
    :author: Molly Domino
 
-Generics 2
-==========
+More on Generics
+================
 
 Objectives
 ----------

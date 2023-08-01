@@ -18,29 +18,31 @@ Upon completion of this module, students will be able to:
 * Review debugging code and code coverage
 * Implement variations for JUnit assert statements
 
-Introduction to Hokie Class
----------------------------
+Interactive: Introduction to Hokie Class
+----------------------------------------
 
-In this discussion we will be revisiting good testing practices with an example
-class called "Hokie Class".
+In this discussion we will be revisiting good testing practices with an example class called "Hokie Class".
 
-Testing Code Example
-~~~~~~~~~~~~~~~~~~~~
-
-.. admonition:: Try It Yourself
-
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.01-BuggyHokie". Use this example to follow along with the following video. Feel free to experiment. 
+.. admonition:: Follow Along, Practice and Explore
    
-   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-[6:07] Introduction to Hokie Class
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. raw:: html
-
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_0850nht8&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_57q5cew0" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
+       Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
+           1) create a new Eclipse project, then 
+           2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+           3) download and import the standalone \*.java file(s) to the created package.
+   
+      .. raw:: html
+   
+         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/Hokie.java"  target="_blank">
+         <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+         Hokie.java</img>
+         </a>
+   
+   
+   .. raw:: html
+   
+       <center>
+       <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_0850nht8' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+       </center>
 
 
 Checkpoint 1
@@ -56,36 +58,30 @@ Intro to Hokie Class JUnit Testing
 A Note about Assert Statements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-So far in the course when we want to test that a piece of code acted the way we
-wanted, we'd run a statement like:
+So far in the course when we want to test that a piece of code acted the way we wanted, we'd run a statement like:
 
 .. code-block:: java
 
    assertThat(<something we want to check>).isEqualTo(<expected value>);
 
 
-This is a more modern style that's intended to be more readable.
-However, there is a different form of syntax you can use to create assertions:
+This is a more modern style that's intended to be more readable. However, there is a different form of syntax you can use to create assertions:
 
 
 .. code-block:: java
 
    assertEquals(<expected value>, <something we want to check>);
 
-This second kind of assert statement is more commonly used today, but it can be
-tricky to use correctly.  When using ``asserEquals``, it can be easy to put the
-value we want to check first and the expected value second.
+This second kind of assert statement is more commonly used today, but it can be tricky to use correctly.  When using ``asserEquals``, it can be easy to put the value we want to check first and the expected value second.
 
-For example, say we
-wanted to check that a variable ``x`` was equal to 5.
+For example, say we wanted to check that a variable ``x`` was equal to 5.
 
 .. code-block:: java
 
    int x = 4;
    assertEquals(x, 5);
 
-Writing like this would be syntactically correct, but potentially confusing because
-the failure message would read "Expected [4] but got [5]".  In reality, we were
+Writing like this would be syntactically correct, but potentially confusing because the failure message would read "Expected [4] but got [5]".  In reality, we were
 *expecting* 5 but *got* 4.
 
 Videos in the second half of the course will be using this second, more commonly
@@ -129,23 +125,26 @@ assertions in both styles.
      -
 
 
+Interactive: Hokie Class JUnit Testing
+--------------------------------------
+.. admonition:: Follow Along and Engage
+     
+         Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+     
+        .. raw:: html
+        
+           <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaUnitTesting.pdf"  target="_blank">
+           <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+           JavaUnitTesting.pdf</img>
+           </a>
+     
+     
+     .. raw:: html
+     
+        <center>
+        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_35cpol6i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+        </center>
 
-
-[19:37] Hokie Class JUnit Testing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. raw:: html
-
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_35cpol6i&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_m8r5pgfb" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaUnitTesting.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides JavaUnitTesting.pdf
-   </a>
 
 Checkpoint 2
 ------------
@@ -157,10 +156,11 @@ Review of Writing JUnit Tests with student.TestCase
 ---------------------------------------------------
 
 .. raw:: html
+    
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_zj2voxbz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_zj2voxbz&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_jkkkycol" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
 
 Additional reference for writing JUnit Tests:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

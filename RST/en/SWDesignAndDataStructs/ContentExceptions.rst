@@ -9,6 +9,17 @@
 Exceptions
 ==========
 
+Shortcuts
+---------
+
+- :ref:`ExceptionHandling`
+- :ref:`ExceptionCheckedUnchecked`
+- :ref:`ExceptionTryCatch`
+- :ref:`ExceptionHandleLater`
+- :ref:`ExceptionExamples`
+- :ref:`ExceptionTesting`
+
+
 Objectives
 ----------
 
@@ -24,6 +35,7 @@ Suggested Reading
 
 Java Interlude 2 Exceptions from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
+.. _ExceptionHandling: 
 
 Interactive: Exception Handling
 -------------------------------
@@ -56,6 +68,7 @@ Interactive: Exception Handling
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_yrzfgb35' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
+.. _ExceptionCheckedUnchecked: 
 
 Reflecting on Checked and Runtime(Unchecked) Exceptions
 -------------------------------------------------------
@@ -102,9 +115,10 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/ExceptionsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _ExceptionTryCatch: 
 
-Exception Handling with try, catch, and finally [7:16] 
-------------------------------------------------------
+Interactive: Exception Handling with try, catch, and finally 
+------------------------------------------------------------
 
 .. raw:: html
 
@@ -112,12 +126,10 @@ Exception Handling with try, catch, and finally [7:16]
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_1n6iavk9' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
+.. _ExceptionHandleNow: 
 
-Handling the Exception now
---------------------------
 
-To implement Exception Handling within a body of code you must use the
-**try-catch-finally** block
+To implement Exception Handling within a body of code you must use the **try-catch-finally** block
 
 You may use a single catch block, such as below:
 
@@ -132,9 +144,7 @@ You may use a single catch block, such as below:
    }
 
 
-or multiple **catch** blocks, such as the example below:
-
-When using multiple **catch** blocks *the order of how the Exception handlers are implemented matters*. The code should be ordered with the handler for the most specific Exception defined first, eventually progressing to the definitions for the most general exceptions.
+or multiple **catch** blocks. When using multiple **catch** blocks *the order of how the Exception handlers are implemented matters*. The code should be ordered with the handler for the most specific Exception defined first, eventually progressing to the definitions for the most general exceptions.
 
 For example:
 
@@ -181,10 +191,10 @@ Note that you can also use the optional **finally** block with a **try** but wit
 
    }
 
+.. _ExceptionHandleLater:
 
-
-Handling the Exception later on (postponing or deferring handling of the Exception)
------------------------------------------------------------------------------------
+Handling the Exception Later on with throws
+-------------------------------------------
 
 As mentioned above there are times when it is appropriate to implement code
 that catches Exceptions that occur within it, essentially handling the Exception
@@ -236,32 +246,40 @@ occur if the client code, the callingMethod,  does not include code which
 catches or throws the Exceptions that riskyCodeThatWantsToDefer has declared
 that it throws.
 
+.. _ExceptionExamples: 
 
-Exception Examples - Basic to Complex
--------------------------------------
-
-Exception Handling Example Code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exception Handling Examples - Basic to Complex
+----------------------------------------------
 
 .. admonition:: Try It Yourself
-
-   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "exExceptionHandling". This package has a project called `ExceptionHandlingWithThrow` , which you can use to work with `try...catch` structures on your own. Feel free to experiment. 
+ 
+   TODO: Confirm the correct download file for this
+ 
+   Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
+      1) create a new Eclipse project, then 
+      2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+      3) download and import the standalone \*.java file(s) to the created package.
    
    
+      .. raw:: html
+   
+         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayBasics.java"  target="_blank">
+         <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+         ArrayBasics.java</img>
+         </a>
 
 
-Basic ``try``, ``catch`` example [12:05]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Basic ``try``, ``catch`` example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
- 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s522xzgi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
-Tracing through a ``try``, ``catch`` example with multiple ``catch`` blocks [14:13]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Tracing through a ``try``, ``catch`` example with multiple ``catch`` blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
@@ -269,15 +287,16 @@ Tracing through a ``try``, ``catch`` example with multiple ``catch`` blocks [14:
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dlgt02u2' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
-Example using ``try``, ``catch``, and ``finally`` blocks [12:33]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Interactive: Using ``try``, ``catch``, and ``finally`` blocks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
      <center>
      <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kth4nto9' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
      </center>
+
+.. _ExceptionTesting:
 
 Implementing and Testing Exceptions
 -----------------------------------
