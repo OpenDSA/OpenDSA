@@ -100,7 +100,7 @@ Programming Practice: Object Oriented Programming
 
 .. _IntroInheritance: 
 
-Interactive: Java Inheritance: this, super [11:15]
+Interactive: Java Inheritance: this, super 
 --------------------------------------------------
 
 .. admonition:: Follow Along, Practice and Explore

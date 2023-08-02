@@ -19,37 +19,41 @@ Upon completion of this module, students will be able to:
 * Write and use bounded generic methods
 * Become familiar with syntax for wildcards
 
-More on Generics
-----------------
 
-Code Examples
-~~~~~~~~~~~~~
+Interactive: More on Generics
+-----------------------------
 
-.. admonition:: Try It Yourself
+.. admonition:: Follow Along, Practice and Explore
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
+    **TODO** Verify code link
+    
+    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone \*.java file(s) to the created package.
 
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+   .. raw:: html
 
-[10:53] Generics 2
-~~~~~~~~~~~~~~~~~~
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ex10.01-Generics.java"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      ex10.01-Generics.java</img>
+      </a>
+      <br>
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/MoreOnGenerics.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      MoreOnGenerics.pdf</img>
+      </a>
+
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4kqmn4sv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center> 
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/MoreOnGenerics.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides MoreOnGenerics.pdf</img>
-   </a>
+    </center>
 
 
-[17:26] Reflecting on Generics
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Reflecting on Generics
+-----------------------------------
 
 .. raw:: html
     
@@ -57,11 +61,11 @@ Code Examples
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_89q1qv87' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center> 
     
-
 Related Resources
 ~~~~~~~~~~~~~~~~~
-
+    
 `A tutorial on using wildcards in generics, at https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
+    
 
 
 Sample Declarations of Generic Methods Explained
@@ -115,26 +119,32 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-Bounded Wildcard Examples
--------------------------
+Interactive: Bounded Wildcard Examples
+--------------------------------------
 
-Code Example
-~~~~~~~~~~~~
+.. admonition:: Follow Along, Practice and Explore
 
-.. admonition:: Try It Yourself
+    **TODO** Verify code link
+    
+    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone \*.java file(s) to the created package.
 
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
+   .. raw:: html
 
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ex10.01-Generics.java"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      ex10.01-Generics.java</img>
+      </a>
 
-[10:43] Bounded Wildcards Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jazizwb4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center> 
+    </center>
+    
 
 Related Resources
 ~~~~~~~~~~~~~~~~~

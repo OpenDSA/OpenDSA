@@ -10,6 +10,16 @@
 Ethics
 ======
 
+Shortcuts
+---------
+
+- :ref:`EthicsIntro`
+- :ref:`EthicsACM`
+- :ref:`Ethics8KQ`
+- :ref:`EthicsMoralMach`
+
+Objectives
+----------
 
 Upon completion of this module, students will be able to:
 
@@ -17,11 +27,10 @@ Upon completion of this module, students will be able to:
 * Perform ethical analysis using the ACM Code of Ethics
 * Logically defend positions on ethical issues which are informed by the complexities of those situations
 
-
+.. _EthicsIntro: 
 
 Interactive: Introduction to Ethics Video
 -----------------------------------------
-
 
 .. admonition:: Follow Along and Engage
 
@@ -50,7 +59,7 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
-
+.. _EthicsACM: 
 
 Interactive: The ACM Code of Ethics
 -----------------------------------------
@@ -84,6 +93,7 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint2BSumm.html ka
    :long_name: Checkpoint 2B
 
+.. _Ethics8KQ: 
 
 Interactive: The Eight Key Questions (8KQ) 
 ------------------------------------------
@@ -111,6 +121,7 @@ Checkpoint 3
 .. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
+.. _EthicsMoralMach: 
 
 Explore the Moral Machine
 -------------------------
