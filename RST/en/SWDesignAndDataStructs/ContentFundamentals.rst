@@ -233,8 +233,8 @@ Interactive: Java Methods
     A double can also be thought of as float (not long) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
 
 
-Checkpoint
-----------
+Checkpoint 1
+------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/FundamentalsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
