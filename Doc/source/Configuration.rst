@@ -349,6 +349,13 @@ All are required unless otherwise specified.
 * **start_chap_num** - (optional) Specifies at which number to start
   numbering chapters.
   Defaults to 0 if omitted.
+  
+* **chapter_name** - (optional) A string that will be used as the section name when 
+  building the chapters. Defaults to "Chapter"
+  
+* **html_css_files** - (optional) An array of paths to CSS files to be included
+  in the built book instance. The filepaths should relative to the 
+  ``<opendsa>/RST/_static`` directory 
 
 * **suppress_todo** - (optional) A boolean controlling whether or not
   TODO directives are removed from the RST source files.
