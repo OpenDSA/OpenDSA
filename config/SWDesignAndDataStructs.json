@@ -58,7 +58,7 @@
     "required": false
   },
   "glob_ka_options": {
-    "threshold": 3,
+    "threshold": 2,
     "points": 5.0,
     "required": true,
     "partial_credit": true
