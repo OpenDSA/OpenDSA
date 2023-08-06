@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Generics 4</title>
+    <title>Generics Checkpoint 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
@@ -11,9 +11,9 @@
     <div class="exercise">
       <div class="problems">
         <div id="GENERICS_Q4">
-        <p class="question">Consider the following Java code:
+        <p class="question">Consider the following Java code: </p>
           <pre class="prettyprint">
-            public interface toyCollectionInfo<T> { // 1
+            public interface toyCollectionInfo &lt;T> { // 1
               private T favoriteToy;
               private T[] toys;
                
@@ -21,7 +21,7 @@
               public void setFavorite(T fav); 
            }  
           </pre>
-          The capital letter “T” on line 1 stands for:
+          <p>The capital letter “T” on line 1 stands for:
         </p>
         <div class="solution"><tt>type to  be used for the toys</tt></div>
         <ul class="choices">
