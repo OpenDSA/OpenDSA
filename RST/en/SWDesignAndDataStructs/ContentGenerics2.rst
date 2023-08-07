@@ -25,18 +25,14 @@ Interactive: More on Generics
 
 .. admonition:: Follow Along, Practice and Explore
 
-    **TODO** Verify code link
-    
-    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
-        1) create a new Eclipse project, then 
-        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
-        3) download and import the standalone \*.java file(s) to the created package.
+     Download to run and explore the corresponding project from the video on your own in eclipse. The project CS2-Support is required for the sample project above.  It is also used in your course projects. To download the CS2-Support you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
+
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ex10.01-Generics.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exGenerics.zip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      ex10.01-Generics.java</img>
+      exGenerics.zip</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/MoreOnGenerics.pdf"  target="_blank">
@@ -124,18 +120,14 @@ Interactive: Bounded Wildcard Examples
 
 .. admonition:: Follow Along, Practice and Explore
 
-    **TODO** Verify code link
-    
-    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
-        1) create a new Eclipse project, then 
-        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
-        3) download and import the standalone \*.java file(s) to the created package.
+    Download to run and explore the corresponding project from the video on your own in eclipse. The project CS2-Support is required for the sample project above.  It is also used in your course projects. To download the CS2-Support you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
+
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ex10.01-Generics.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exGenerics.zip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      ex10.01-Generics.java</img>
+      exGenerics.zip</img>
       </a>
 
 

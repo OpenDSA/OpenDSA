@@ -308,18 +308,15 @@ Interactive: ArrayBagsWithJUnit Example Demonstration
 
 .. admonition:: Follow Along, Practice and Explore
 
-    TODO: Verify file link
 
-    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
-        1) create a new Eclipse project, then 
-        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
-        3) download and import the standalone \*.java file(s) to the created package.
+     Download to run and explore the corresponding project from the video on your own in eclipse. The project CS2-Support is required for the sample project.  It is also used in your course projects. To download the CS2-Support you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
+
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exArrayBagsWithJUnit.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exArrayBagsWithJUnit.zip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      exArrayBagsWithJUnit.java</img>
+      exArrayBagsWithJUnit.zip</img>
       </a>
 
 .. raw:: html

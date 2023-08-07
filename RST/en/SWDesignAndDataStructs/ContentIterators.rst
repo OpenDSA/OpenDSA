@@ -143,7 +143,7 @@ Inner Iterator for ex11.3-Iterator
 
 As discussed throughout this section there are various design approaches for
 iterators.  Below is one example of how an inner Iterator class could be
-implemented for ex11.3-Iterator.
+implemented for exIterator.
 
 Include a public method to make the iterator object available:
 
