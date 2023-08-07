@@ -255,7 +255,7 @@ Interactive: LinkedList Remove()
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exLinkedList.zip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/eclipse/exLinkedList.zip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
       exLinkedList.zip</img>
       </a>
