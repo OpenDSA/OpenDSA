@@ -308,7 +308,6 @@ Interactive: ArrayBagsWithJUnit Example Demonstration
 
 .. admonition:: Follow Along, Practice and Explore
 
-    TODO: Verify file link
 
      Download to run and explore the corresponding project from the video on your own in eclipse. The project CS2-Support is required for the sample project.  It is also used in your course projects. To download the CS2-Support you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
 
