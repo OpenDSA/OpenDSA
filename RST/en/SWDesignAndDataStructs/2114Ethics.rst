@@ -47,7 +47,7 @@ Checkpoint 1
 
 
 .. raw:: html
-   <!-- TODO: fix URLS. -->
+   <!-- TODO: fix URLS. I don't think this is used in the bridge-->
    <a href="" download>
    <img src="" alt="ACM Code of Ethics.ppt">
    </a>
