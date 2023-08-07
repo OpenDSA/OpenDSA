@@ -197,14 +197,13 @@ Introduction to Comparators
 -----------------------------------
 .. admonition:: Follow Along, Practice and Explore
 
-    **TODO** Verify file link 
     
     Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file  Download to run and explore the corresponding project from the video on your own in eclipse. The project CS2-Support is required for the sample project.  It is also used in your course projects. To download the CS2-Support you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
 
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exComparingzip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exComparing.zip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
       exComparing.zip</img>
       </a>
