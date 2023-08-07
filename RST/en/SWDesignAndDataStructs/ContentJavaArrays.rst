@@ -10,6 +10,16 @@
 Java Arrays
 ===========
 
+Shortcuts
+---------
+
+- :ref:`JavaArrayBasics`
+- :ref:`JavaArraySearch`
+- :ref:`JavaArrayMethods`
+
+
+
+
 Objectives
 ----------
 
@@ -18,7 +28,7 @@ Objectives
 * Trace and write code to perform a linear search on an array
 * Trace and write code to insert or remove an item anywhere in an array
 
-
+.. _JavaArrayBasics: 
 
 Interactive: Java Array Basics
 ------------------------------
@@ -57,6 +67,7 @@ Programming Practice: Java Arrays 1
 .. extrtoolembed:: 'Programming Practice: Java Arrays 1'
    :workout_id: 2477
 
+.. _JavaArraySearch: 
 
 Interactive: Java Array Search
 ------------------------------
@@ -86,6 +97,7 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/ArrayCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
+.. _JavaArrayMethods: 
 
 Interactive: Java Array Removing, Inserting, & Tips
 ---------------------------------------------------

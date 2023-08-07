@@ -676,7 +676,7 @@ The ``student.TestCase`` provides a helper method called ``contains()`` that you
 .. code-block:: java
 
     assertTrue(contains(
-        systemOut().getHistory(),
+        systemOut().getHistory(),
         "brown",
         "fox",
         "lazy",

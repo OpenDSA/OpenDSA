@@ -18,7 +18,7 @@ Upon completion of this module, students will be able to:
 * Evaluate efficiency of linear and binary searches
 * Implement linear and binary searches
 
-Introduction to Searching [10:14] 
+Introduction to Searching 
 ---------------------------------
 
 .. admonition:: Follow Along and Engage
@@ -45,7 +45,7 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-Programming Searching [20:22]
+Programming Searching
 -----------------------------
 
 .. admonition:: Follow Along and Engage

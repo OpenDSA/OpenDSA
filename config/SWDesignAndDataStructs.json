@@ -58,7 +58,7 @@
     "required": false
   },
   "glob_ka_options": {
-    "threshold": 3,
+    "threshold": 2,
     "points": 5.0,
     "required": true,
     "partial_credit": true
@@ -89,7 +89,7 @@
     "Introduction": {
       "SWDesignAndDataStructs/AdminWelcome": {
       },
-      "SWDesignAndDataStructs/AdminCourseIntro": {
+      "SWDesignAndDataStructs/AdminIDESetup": {
       },
       "SWDesignAndDataStructs/ContentFundamentals": {
           
@@ -181,7 +181,6 @@
       "SWDesignAndDataStructs/ContentEthics": {
       },
       "SWDesignAndDataStructs/ContentDesignMVC": {
-          
       },
       "SWDesignAndDataStructs/Lab6ArrayStack": {
       },
@@ -314,8 +313,6 @@
 
     
     "Reference": {
-      "Tutorials/2114_first_lab_setup": {
-      },
       "Tutorials/2114_eclipse_examples_setup": {
       },
       "Tutorials/2114_junit_tutorial": {

@@ -9,6 +9,17 @@
 Stacks
 ======
 
+Shortcuts
+---------
+
+- :ref:`StacksIntro`
+- :ref:`StacksMemory`
+- :ref:`StacksArrayBased`
+- :ref:`StacksArrayImpl`
+- :ref:`StacksChainImpl`
+
+
+
 Objectives
 ----------
 
@@ -25,7 +36,9 @@ Suggested Reading
 
 Chapters 5 - 6 Bags from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-Interactive: Introduction to Stacks [11:32]
+.. _StacksIntro: 
+
+Interactive: Introduction to Stacks
 -------------------------------------------
 
 .. admonition:: The Stack Interface
@@ -87,17 +100,25 @@ Interactive: Introduction to Stacks [11:32]
       } // end StackInterface
      
   
+.. admonition:: Follow Along and Engage
+      
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+    
+    .. raw:: html
+    
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksIntro.pdf"  target="_blank">
+        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        StacksIntro.pdf</img>
+        </a>
+
+
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2th5gshg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksIntro.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides StacksIntro</img>
-    </a>
-   
+     <center>
+     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2th5gshg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+     </center>
+
+
    
 Checkpoint 1
 ------------
@@ -105,8 +126,9 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/StacksCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _StacksMemory: 
 
-Interactive: Stack Memory Example [6:25]
+Interactive: Stack Memory Example
 ----------------------------------------
 
 .. raw:: html
@@ -122,7 +144,9 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-Stacks Array-Based Design [4:57]
+.. _StacksArrayBased: 
+
+Stacks Array-Based Design
 --------------------------------
 
 .. raw:: html
@@ -137,42 +161,57 @@ Checkpoint 3
 .. avembed:: Exercises/SWDesignAndDataStructs/StacksCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
-Stacks Array Implementation [5:57]
+.. _StacksArrayImpl: 
+
+Stacks Array Implementation
 ----------------------------------
 
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksArrayImplementation.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      StacksArrayImplementation.pdf</img>
+      </a>
+
+
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_k40xld68' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksArrayImplementation.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides StacksArrayImplementation.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_k40xld68' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
    
+.. _StacksChainImpl:   
 
-Stacks Linked Chain Implementation [5:57]
+Stacks Linked Chain Implementation
 -----------------------------------------
 
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksLinkedChainImplementation.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      StacksLinkedChainImplementation.pdf</img>
+      </a>
+      <br>
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TestingStacks.pdf"  target="_blank">
+        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        TestingStacks.pdf</img>
+      </a>
+
+
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_miuoo412' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_miuoo412' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksLinkedChainImplementation.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides StacksLinkedChainImplementation.pdf</img>
-   </a>
-   <br>
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TestingStacks.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides TestingStacks.pdf</img>
-   </a>
 
 Checkpoint 4
 ------------

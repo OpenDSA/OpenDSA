@@ -9,6 +9,15 @@
 Lists
 =====
 
+Shortcuts
+---------
+
+- :ref:`ListIntro`
+- :ref:`ListAdd`
+- :ref:`ListRemove`
+- :ref:`ListOptions`
+- :ref:`ListArray`
+
 Overview & Objectives
 ---------------------
 
@@ -19,19 +28,28 @@ Upon completion of this module, students will be able to:
 * Consider various design approaches and corresponding efficiency
 * Trace and debug list implementations
 
-Introduction to Lists [13:41]
+.. _ListIntro: 
+
+Introduction to Lists
 -----------------------------
 
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListIntro.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      ListIntro.pdf</img>
+      </a>
+
+
 .. raw:: html
-    
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vyiwnixx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListIntro.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides ListIntro.pdf</img>
-    </a>
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vyiwnixx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 
 .. admonition:: The List Interface
@@ -174,21 +192,28 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/ListsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _ListAdd: 
 
-Interactive: LinkedList Add() Implementation [10:21]
+Interactive: LinkedList Add() Implementation
 ----------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListAdd.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      LinkedListAdd.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ie408z9b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>    
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListAdd.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides LinkedListAdd.pdf</img>
-    </a>
-
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ie408z9b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 Checkpoint 2
 ------------
@@ -197,40 +222,59 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-Interactive: Tracing Add() with Debugger [13:33]
+Interactive: Tracing Add() with Debugger
 ------------------------------------------------
 
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TraceAddDebugger.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      TraceAddDebugger.pdf</img>
+      </a>
+
+
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_g1bdzwhy' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TraceAddDebugger.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides TraceAddDebugger.pdf</img>
-    </a>
-   
-Interactive: LinkedList Remove() [18:09] 
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_g1bdzwhy' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+.. _ListRemove:
+
+Interactive: LinkedList Remove()
 ----------------------------------------
 
-.. admonition:: Try It Yourself
-   
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "exLinkedList". 
-  
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+.. admonition:: Follow Along, Practice and Explore
+    
+    **TODO** Verify code link
+    
+    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone \*.java file(s) to the created package.
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exLinkedList.java"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      exLinkedList.java</img>
+      </a>
+      <br>
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListRemove.pdf"  target="_blank">
+        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        LinkedListRemove.pdf</img>
+        </a>
+
 
 .. raw:: html
 
- 
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_m5thdypn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListRemove.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides LinkedListRemove.pdf</img>
-    </a>
 
 
 Checkpoint 3
@@ -245,20 +289,28 @@ Programming Practice: Lists 1
 .. extrtoolembed:: 'Programming Practice: Lists 1'
    :workout_id: 1922
 
-Interactive: LinkedList Details and Options [10:19]
+.. _ListOptions:
+
+Interactive: LinkedList Details and Options
 ---------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListMoreDetails.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      LinkedListMoreDetails.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_a1ubm9cw' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center> 
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListMoreDetails.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides LinkedListMoreDetails.pdf</img>
-    </a>
-
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_a1ubm9cw' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 Checkpoint 4
 ------------
@@ -266,23 +318,32 @@ Checkpoint 4
 .. avembed:: Exercises/SWDesignAndDataStructs/ListsCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
+.. _ListArray:
 
-Interactive: An Array Implementation of a List [15:48]
+Interactive: An Array Implementation of a List
 ------------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      ArrayListImplementation.pdf</img>
+      </a>
+
+      <br>
+      <p><strong>Note:</strong> Documentation in the code refers to variable `length` incorrectly, it should be `numberOfEntries</p>
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_wahujuxt' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides ArrayListImplementation.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_wahujuxt' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 
-Note: Documentation in the code refers to variable `length` incorrectly, it should be `numberOfEntries
     
 Programming Practice: Lists 2
 -----------------------------

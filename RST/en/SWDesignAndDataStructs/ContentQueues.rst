@@ -9,6 +9,16 @@
 Queues
 ======
 
+Shortcuts
+---------
+
+- :ref:`QueueIntro`
+- :ref:`QueueLinked`
+- :ref:`QueueIntroDeque`
+- :ref:`QueueArray`
+
+.. _QueueIntro: 
+
 Objectives
 ----------
 
@@ -102,7 +112,9 @@ Programming Practice: Queues 1
 .. extrtoolembed:: 'Programming Practice: Queues 1'
    :workout_id: 1920
 
-Interactive: Linked Queues Intro and Enqueue [11:29]
+.. _QueueLinked: 
+
+Interactive: Linked Queues Intro and Enqueue
 ----------------------------------------------------
 
 .. admonition:: Follow Along, Practice and Explore
@@ -128,7 +140,7 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-Interactive: Linked Queues Removing and More (Dequeue and Other Methods) [8:41]
+Interactive: Linked Queues Removing and More (Dequeue and Other Methods)
 -------------------------------------------------------------------------------
    
 .. admonition:: Follow Along, Practice and Explore
@@ -153,6 +165,7 @@ Checkpoint 3
 .. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
+.. _QueueIntroDeque: 
 
 Interactive: Introduction to Deque
 ----------------------------------
@@ -271,7 +284,7 @@ Checkpoint 4
    :long_name: Checkpoint 4
 
 
-Interactive: Deque Removing and Wrap Up [9:02]
+Interactive: Deque Removing and Wrap Up
 ----------------------------------------------
 
 .. raw:: html
@@ -291,20 +304,28 @@ Checkpoint 5
 .. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint5Summ.html ka
    :long_name: Checkpoint 5
 
+.. _QueueArray: 
 
-Interactive: ArrayQueue: Array Implementation of Queues [15:58]
+Interactive: ArrayQueue: Array Implementation of Queues
 ---------------------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueIntro.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      ArrayQueueIntro.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_schlfeex' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueIntro.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides 10.2.8.1-ArrayQueueIntro.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_schlfeex' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 Checkpoint 6
 ------------
@@ -313,20 +334,26 @@ Checkpoint 6
    :long_name: Checkpoint 6
 
 
-Interactive: ArrayQueue: One Unused Location [7:11]
+Interactive: ArrayQueue: One Unused Location
 ---------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueRemove.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      ArrayQueueRemove.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_299igb5h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueRemove.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides ArrayQueueRemove.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_299igb5h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 Checkpoint 7
 ------------
@@ -335,19 +362,26 @@ Checkpoint 7
    :long_name: Checkpoint 7
 
 
-Interactive: ArrayQueue: Ensure Capacity [14:06]
+Interactive: ArrayQueue: Ensure Capacity
 ------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueEnsureCapacity.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      ArrayQueueEnsureCapacity.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xkijc49b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueEnsureCapacity.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides ArrayQueueEnsureCapacity.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xkijc49b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 
 Checkpoint 8
@@ -357,19 +391,27 @@ Checkpoint 8
    :long_name: Checkpoint 8
 
 
-Interactive: ArrayQueue WrapUp [6:59]
+Interactive: ArrayQueue WrapUp
 -------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueWrapUp.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      ArrayQueueWrapUp.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8ktqd0d5' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueWrapUp.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides ArrayQueueWrapUp.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8ktqd0d5' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
 
 
 .. admonition:: Empty Queue Exception

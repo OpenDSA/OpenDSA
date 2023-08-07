@@ -9,6 +9,14 @@
 Linked Chains (Pointers)
 ========================
 
+Shortcuts
+---------
+
+- :ref:`PointerReference`
+- :ref:`PointerLinkedNodes`
+- :ref:`PointerVisDemo`
+- :ref:`PointerContains`
+
 Objectives
 ----------
 
@@ -26,23 +34,26 @@ Acknowledgement
 ~~~~~~~~~~~~~~~
 Some prose and images on this page originally came from a document written by Nick Parlante of Stanford University, and used by permission of the author: "`Pointers and Memory <http://cslibrary.stanford.edu/102/PointersAndMemory.pdf>`_" by Nick Parlante, Copyright 1998-2000, Stanford CS Education Library.
 
+.. _PointerReference: 
 
 Reference Variables
 -------------------
 Java uses a restricted version of the pointer concept, which is called a reference. While they mean roughly the same thing, the term “pointer” tends to be used in discussions that are not specific to any particular language or implementation. The word “pointers” connotes the common C/C++ implementation of pointers as addresses or locations in memory. A reference only “points to” an object. This means that programmers are given more limited access with a reference. While this limits what they can do, the Java philosophy is that this is more than made up for by a greater chance of the code working correctly. Java programmers may only assign to a reference and compare two references for equality. Other uses of a reference are done implicitly with no control from the programmer. These restrictions reduce the chance for bugs.
 
 Two references which both refer to a single object are said to be “sharing”. Sometimes we say that each is an alias for the other, because we can refer to the referenced object through either name. That two or more references can cooperatively share a single memory structure is a key advantage of references. Either can modify the object’s value. 
-5.3 from openDSA CS2 book
-
 
 .. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
 
-Interactive: Intro to Linked Chains of Nodes [10:51] 
-----------------------------------------------------
-THIS CLASS DOESN'T GO WITH THIS VIDEO **TODO**
+.. _PointerLinkedNodes: 
+
+Interactive: Intro to Linked Chains of Nodes
+--------------------------------------------
+
 .. admonition:: The LinkedChain Class
+
+   **TODO** : THIS CLASS DOESN'T GO WITH THIS VIDEO 
    
    Consider this class when viewing this video on Linked Chains: 
    
@@ -115,12 +126,8 @@ Checkpoint 1
    :long_name: Checkpoint 1
 
 
-SWDataStructsAndDesign_LinkedChains1
-------------------------------------
-
-.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains1'
-   :workout_id: 2479
-
+Programming Practice: Linked Chains 1
+-------------------------------------
 
 .. admonition:: Pointer Programming Exercise Tips
 
@@ -128,22 +135,31 @@ SWDataStructsAndDesign_LinkedChains1
   *  The Link class provides a constructor that receives two parameters, data and next. To instantiate a new Link node with a value of “Hello” and a next field set to null: ``Link myLink =  new Link("Hello", null);``
   *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
 
+.. extrtoolembed:: 'Programming Practice: Linked Chains 1'
+   :workout_id: 2479
+  
+.. _PointerVisDemo: 
 
+Interactive: Demo in Visualizer
+-------------------------------
 
-Interactive: Demo in Visualizer [11:31]
----------------------------------------
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedChainCode.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      LinkedChainCode.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dkk3roib' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedChainCode.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides 8.1.3-LinkedChainCode.pdf</img>
-    </a>
-
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dkk3roib' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 Checkpoint 2
 ------------
@@ -152,33 +168,42 @@ Checkpoint 2
    :long_name: Checkpoint 2
 
 
-SWDataStructsAndDesign_LinkedChains2
-------------------------------------
+Programming Practice: Linked Chains 2
+-------------------------------------
 
 .. admonition:: Pointer Programming Exercise Tips
 
   * The Link class does not provide getters or setters, interact with fields directly to access or modify them
-  *  The Link class provides a constructor that receives two parameters, data and next. To instantiate a new Link node with a value of “Hello” and a next field set to null: ``Link myLink =  new Link("Hello", null);``
-  *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
+  * The Link class provides a constructor that receives two parameters, data and next. To instantiate a new Link node with a value of “Hello” and a next field set to null: ``Link myLink =  new Link("Hello", null);``
+  * Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
 
 
-.. extrtoolembed:: 'SWDataStructsAndDesign_LinkedChains2'
+.. extrtoolembed:: 'Programming Practice: Linked Chains 2'
    :workout_id: 2480
 
+.. _PointerContains: 
 
-Contains() method Animation [5:14] 
-----------------------------------
+Contains() method Animation
+---------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedChainContains.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      LinkedChainContains.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q83rf3ey' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedChainContains.pdf" target="_blank">
-    <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-    Video Slides 8.1.4-LinkedChainContains.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q83rf3ey' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
 
 Checkpoint 3
 ------------

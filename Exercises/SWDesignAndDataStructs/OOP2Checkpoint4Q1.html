@@ -10,19 +10,37 @@
   <body data-height="650" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="OOP2_CP1_Q1">
-        <p class="question">Select which to use based on the information given:</p>
-        <p>If several classes have the same method signatures but implement <strong>all</strong> the methods differently.</p>
+        <div id="OOP2_CP4_Q1">
+        <p class="question">
+          Consider the following class for a Ninja: </p>
+          <pre class="prettyprint">
+            public class Ninja {
+              private int honor;
+              public Ninja(int h) {
+               this.honor=h;
+              }
+            }
+            </pre>
+            <p>Suppose we instantiate two Ninjas like this:</p>
+            <pre class="prettyprint">
+              Ninja n1=new Ninja(50);
+              Ninja n2=new Ninja(50);
+            </pre>
+            <p>
+              Is the following statement True, False, or It Depends:
 
-        <div class="solution">Interface</div>
+                1 == n2
+            </p>
+        
+
+        <div class="solution">false</div>
         <ul class="choices">
-        <li>Abstract Class</li>
+        <li>true</li>
+        <li>it depends</li>
 
         </ul>
         <div class="hints">
-        <!--When you see `new Student()` then a new object has been made.
-        `first_st` and `second_st` are references to new objects while
-        `third_st` currently refers to the same Student object as `second_st`-->
+
         <p>There are no hints for this question</p>
         </div>
         </div>

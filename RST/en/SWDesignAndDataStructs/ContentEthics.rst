@@ -8,8 +8,18 @@
 
 
 Ethics
-=========================
+======
 
+Shortcuts
+---------
+
+- :ref:`EthicsIntro`
+- :ref:`EthicsACM`
+- :ref:`Ethics8KQ`
+- :ref:`EthicsMoralMach`
+
+Objectives
+----------
 
 Upon completion of this module, students will be able to:
 
@@ -17,17 +27,17 @@ Upon completion of this module, students will be able to:
 * Perform ethical analysis using the ACM Code of Ethics
 * Logically defend positions on ethical issues which are informed by the complexities of those situations
 
-
+.. _EthicsIntro: 
 
 Interactive: Introduction to Ethics Video
------------------------------------
-
+-----------------------------------------
 
 .. admonition:: Follow Along and Engage
 
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
    .. raw:: html
+   
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToEthics.pdf"  target="_blank">
       <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
       IntroToEthics.pdf</img>
@@ -49,25 +59,30 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _EthicsACM: 
 
-[9:32] ACM Code of Ethics Video
--------------------------------
+Interactive: The ACM Code of Ethics
+-----------------------------------------
 
-.. raw:: html
+.. admonition:: Follow Along and Engage
+   
+   Download the slides corresponding to the video. Take notes on them as you watch the video. Consider how you can apply the Code of Ethics to your software development.
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_rrxp1e7b&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_jzkpcwal" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-
-
-
-.. raw:: html
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ACMCodeOfEthics.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+  .. raw:: html
+  
+     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ACMCodeOfEthics.pdf"  target="_blank">
+     <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
      ACMCodeOfEthics.pdf</img>
-      </a>
+     </a>
 
+
+
+.. raw:: html
+    
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4zeji3ij' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
+    
 
 Checkpoint 2
 ------------
@@ -78,31 +93,35 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint2BSumm.html ka
    :long_name: Checkpoint 2B
 
+.. _Ethics8KQ: 
 
-[2:14] The Eight Key Questions (8KQ) Video
+Interactive: The Eight Key Questions (8KQ) 
 ------------------------------------------
 
+.. admonition:: Follow Along and Engage
+   
+   Download the slides corresponding to the video. Take notes on them as you watch the video. Consider how you can apply these questions to your software.
+
+  .. raw:: html
+  
+     <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TheEightKeyQuestions(8KQ).pdf"  target="_blank">
+     <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+     TheEightKeyQuestions(8KQ).pdf</img>
+     </a>
+     
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_y3a8kohy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_b5fpjzrp" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-
-.. raw:: html
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TheEightKeyQuestions(8KQ).pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-     TheEightKEyQuestions(8K).pdf</img>
-      </a>
-
-
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_y3a8kohy' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
+    
 Checkpoint 3
 ------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/EthicsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
-
+.. _EthicsMoralMach: 
 
 Explore the Moral Machine
 -------------------------
@@ -128,7 +147,7 @@ where lives are affected?
 The Moral Machine is a site designed to help us answer this very question.
 
 We invite you to visit this
-`Moral Machine website,  (Links to an external site). <http://moralmachine.mit.edu/>`_
+`Moral Machine website <http://moralmachine.mit.edu/>`_
 View the video on the landing page, then click on the “judge” option at the top
 of the page.  You will be presented with a number of scenarios and questions on
 ethical dilemmas.  This exercise will help you explore ethical dilemmas and

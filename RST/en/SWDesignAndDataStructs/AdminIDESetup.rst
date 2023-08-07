@@ -7,30 +7,36 @@
    :author: Molly
 
 
-Getting Your Programming Environment Setup
-==========================================
+Setting Up Your Programming Environment
+=======================================
 
 Downloading and Installing Eclipse
 ----------------------------------
 
-This course teaches programming using Java. We will use the Eclipse
+This course teaches programming using Java. We will use the  `Eclipse Integrated Development Environment <https://www.eclipse.org/downloads/packages/installer>`_
 integrated development environment (commonly called an IDE)
 for code development in class, including all examples shown.
 The instructions here include the user libraries necessary for
 assignments in this course, and programming assignments will not
 compile without these.
 
-Note: this setup involves multiple steps and it's not uncommon for students to
-miss something their first time through.  If you've installed everything but
-can't get any code to run at all, it's good to try uninstalling Eclipse and just
-installing it again.
+.. admonition:: Note
+   
+   Note: this setup involves multiple steps and it's not uncommon for students to miss something their first time through.  If you've installed everything but can't get any code to run at all, it's good to try uninstalling Eclipse and just installing it again.
 
 .. raw:: html
 
    &nbsp;&nbsp;&nbsp;1. Open <a href="https://www.eclipse.org/downloads/packages/installer" target="_blank">https://www.eclipse.org/downloads/packages/installer</a>
 
-
 2. Click on the Download link in the box at the top that matches your computer.
+
+   .. admonition:: Which version of Eclipse should I download? 32 or 64-bit? x86_64 or AArch64?
+   
+    It is important to download the correct version of Eclipse for you computer's operating system. 
+    
+        * For Windows: `Review this page to figure out if you have 32-bit or 64-bit Windows <https://support.microsoft.com/en-us/windows/which-version-of-windows-operating-system-am-i-running-628bec99-476a-2c13-5296-9dd081cdd808>`_, and then download the x86_64 for 64-bit Windows, or the x86 for 32 bit windows. 
+        
+        * For Mac: `Figure out what processor you have in your Mac <https://www.howtogeek.com/706226/how-to-check-if-your-mac-is-using-an-intel-or-apple-silicon-processor/>`_, and then download the Mac x86_64 version for Intel processors, or AArch64 for the Apple processors.
 
 3. After the download is complete, follow the installation instructions
    beginning at step 2 on this page, selecting **IDE for Java Developers** when prompted.
@@ -39,11 +45,7 @@ installing it again.
    **System Preferences->Security and Privacy** to allow apps downloaded from
    locations other than the Mac App Store.)
 
-5. The first time you start Eclipse, you'll be asked to specify a location for
-   the Eclipse Workspace; this is where Eclipse will keep your programming
-   projects. You can either use the default recommendation or place it elsewhere
-   on your file system. Check **Use this as the default** and do not ask again so
-   that Eclipse will not ask you every time you start it, and click **OK**.
+5. The first time you start Eclipse, you'll be asked to specify a location for the Eclipse Workspace; this is where Eclipse will keep your programming projects. You can either use the default recommendation or place it elsewhere on your file system. Check the **Use this as the default and the do not ask again** option, so Eclipse will not ask you every time you start it, and click **Launch**.
 
 
 .. odsafig:: Images/SetupFig1.png
@@ -139,7 +141,7 @@ and submit assignments.
 
 2. Select **Configured Assignments** from the left panel.
 
-.. odsafig:: Images/Web-CAT-bridge-plugin-preferences.png
+.. odsafig:: Images/Web-CAT-2114-plugin-preferences.png
    :align: center
 
 3. Copy and paste the following two URLs into the panel.
@@ -148,14 +150,39 @@ and submit assignments.
 
   * **Download URL**
 
-    * **https://courses.cs.vt.edu/cs2114/meng-bridge/assignments.xml**
+    * ``https://courses.cs.vt.edu/cs2114/assignments.xml``
 
   * **Submit URL**
 
-    * **https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT&crn=MEng-100613**
+    * ``https://web-cat.cs.vt.edu/Web-CAT/WebObjects/Web-CAT.woa/wa/assignments/eclipse?institution=VT``
 
 4. Click the **Apply and Close** button to save your changes and exit the
    preferences window.
+
+Customizing Formatting and Style Preferences
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One of the formatting guidelines expected throughout this course is to use spaces instead of tabs in your code. This makes your code more portable between users and environments. To make this easier, we provide a code style sheet that you can import into your Eclipse settings. Once installed, you can use these keyboard commands to automatically format your code:
+
+.. raw:: html
+    
+    <ul class="simple">
+    <li>Windows: <kbd>CTRL</kbd> + <kbd>SHIFT</kbd> + <kbd>F</kbd></li> 
+    <li>Mac: <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd></li>
+    </ul>
+
+**Remember to format your code before submitting to Web-CAT.**
+
+
+Right-Click and "Save As..." to download to `download the stylesheet: https://courses.cs.vt.edu/cs2114/vtcseclipsestyle.xml <https://courses.cs.vt.edu/cs2114/vtcseclipsestyle.xml>`_ 
+
+To install:
+
+Mac:
+  Eclipse->Preferences->Java->Code Style->Formatter->import the above file, then click OK
+
+Windows:
+ Window->Preferences->Java->Code Style->Formatter->import the above file, then click OK
 
 
 Customizing Preferences

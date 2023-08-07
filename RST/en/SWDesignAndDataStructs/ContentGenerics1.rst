@@ -10,7 +10,6 @@
 Generics Intro
 ==============   
 
-
 Objectives
 ----------
 
@@ -26,8 +25,8 @@ Suggested Reading
 **Java Interlude 1 Generics** from `Data Structures and Abstractions with Java <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_ by Frank M. Carrano and Timothy Henry
 
 
-Interactive: Generics Intro Video [9:50]
-----------------------------------------
+Interactive: Generics Intro Video
+---------------------------------
 
 .. admonition:: Follow Along, Practice and Explore
 

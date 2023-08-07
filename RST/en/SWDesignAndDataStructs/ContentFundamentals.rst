@@ -10,6 +10,16 @@
 Java Fundamentals
 ================================
 
+Shortcuts
+---------
+
+- :ref:`JavaBasics`
+- :ref:`JavaMethods`
+- :ref:`JavaVariables`
+- :ref:`JavaControlFlow`
+- :ref:`JavaScopeAndEquality`
+- :ref:`JavaObjectsAndEnums`
+
 Objectives
 ----------
 
@@ -24,28 +34,32 @@ Objectives
 * Interpret UML diagrams
 
 
-Suggested Reading:  AppendicesB(Java Basics) and C(Classes) from Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry 
+Suggested Reading:  AppendicesB(Java Basics) and C(Classes) from Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry
 
-Java Basics
------------
+.. _JavaBasics: 
 
-[5:48] Intro to Java Fundamentals Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Java Basics
+-------------------------
 
-.. raw:: html
 
-       <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_2khwqw42&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
+.. admonition:: Follow Along and Engage
 
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
    
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaFundamentalsWelcome.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      JavaFundamentalsWelcome.pdf</img>
+      </a>
+
 
 .. raw:: html
 
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaFundamentalsWelcome.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides Java Fundamentals.pdf</img>
-   </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2khwqw42' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
 
 Some Java Basics To Be Familiar With
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,6 +81,7 @@ Some Java Basics To Be Familiar With
     
     <a href="https://docs.oracle.com/javase/tutorial/index.html" target="_blank">Oracle Java Tutorial</a>
 
+.. _JavaMethods: 
 
 Java Methods
 ------------
@@ -204,48 +219,49 @@ class:
    
       }
 
-Java Methods Video
-~~~~~~~~~~~~~~~~~~
-
-.. raw:: html
-
-       <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_9mkx6ln7&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+Interactive: Java Methods
+~~~~~~~~~~~~~~~~~~~~~~~~~
+      
+ .. raw:: html
+  
+     <center>
+     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_9mkx6ln7' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
      </center>
 
-
-
-.. admonition:: Correction
+.. admonition:: Correction to the video!
 
     A double can also be thought of as float (not long) https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
 
 
-Checkpoint
-----------
+Checkpoint 1
+------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/FundamentalsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _JavaVariables: 
 
 
-Java Variables
---------------
+Interactive: Java Variables
+---------------------------
 
-Java Variables Video
-~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaVariables.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      JavaVariables.pdf</img>
+      </a>
+
+
 .. raw:: html
 
-       <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_wi24ln1w&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/coures-notes/JavaVariables.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides Java Fundamentals.pdf</img>
-   </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_wi24ln1w' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 
 Decimal Formatting
@@ -292,34 +308,32 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/VariablesSumm.html ka
    :long_name: Checkpoint 2
 
+.. _JavaControlFlow: 
+
+Interactive: Java Control Flow
+------------------------------
+
+.. admonition:: Follow Along, Practice and Explore
+
+    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone \*.java file(s) to the created package.
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/FridgeInventory.java"  target="_blank">
+      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      FridgeInventory.java</img>
+      </a>
 
 
-Java Control Flow
------------------
-
-Java Control Flow Video
-~~~~~~~~~~~~~~~~~~~~~~~
 .. raw:: html
 
-       <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_0ejygvhn&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-
-
-.. admonition:: Standalone Java file 
-
-    You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 1) create a new Eclipse project, then 2) create a package within the project called "example" (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 3) download and import the standalone \*.java file(s) to the created package.
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/FridgeInventory.java" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Java file FridgeInventory.java</img>
-   </a>
-
-
-
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_0ejygvhn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
+    
 
 Checkpoint 3
 ------------
@@ -327,29 +341,28 @@ Checkpoint 3
 .. avembed:: Exercises/SWDesignAndDataStructs/ControlFlowSumm.html ka
    :long_name: Checkpoint 3
 
+.. _JavaScopeAndEquality: 
 
-Java Scope and Equality
------------------------
+Interactive: Java Scope and Equality
+------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaFundamentalsTips.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      JavaFundamentalsTips.pdf</img>
+      </a>
 
 
-Java Scope and Equality
-~~~~~~~~~~~~~~~~~~~~~~~
 .. raw:: html
 
-    <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=/1_x2wjt0tt&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[hotspots.plugin]=1&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_6l3oa8sc" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaFundamentalsTips.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides Java Fundamentals Tips.pdf</img>
-   </a>
-
-
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_x2wjt0tt' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 
 Checkpoint 4
@@ -358,11 +371,13 @@ Checkpoint 4
 .. avembed:: Exercises/SWDesignAndDataStructs/ScopeSumm.html ka
    :long_name: Checkpoint 4
 
+.. _JavaObjectsAndEnums: 
+
 Java Objects and Enum
 ---------------------
 
-Enums
-~~~~~
+Java Enums
+~~~~~~~~~~
 
 Enum types provide a type which can be assigned a predefined set of constant
 values.  The use of an enum type provides a bounded set of constant values
@@ -473,20 +488,19 @@ An example switch statement could be:
    }
 
 
-Notice that when today is MONDAY it will fall through to the code for the
-TUESDAY case.  When today is WEDNESDAY it will print "It’s double coupon day"
+Notice that when today is **MONDAY** it will fall through to the code for the
+**TUESDAY** case.  When today is **WEDNESDAY** it will print ``It’s double coupon day``
 and fall through to also print the default message.
 
 For more details about switch statements, reference:
 `https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html <https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html>`_.
 
-[19:48] Java Objects and Enum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Interactive: Java Objects and Enum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_b6aiijwb&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_nhfcvctj" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_b6aiijwb' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>

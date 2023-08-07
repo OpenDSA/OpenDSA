@@ -9,6 +9,19 @@
 Software Design and MVC
 =======================
 
+Shortcuts
+---------
+
+- :ref:`DesignIntro`
+- :ref:`DesignRequirements`
+- :ref:`DesignClasses`
+- :ref:`DesignActivity1`
+- :ref:`DesignRelations`
+- :ref:`DesignActivity2`
+- :ref:`DesignMVC`
+- :ref:`DesignCaseStudies`
+
+
 Objectives
 ----------
 
@@ -21,23 +34,30 @@ Upon completion of this module, students will be able to:
 * Apply and demonstrate good design practices
 * Produce the design of a software system using a UML class diagram
 
-Interactive: Introduction to Software Design [9:30] 
+.. _DesignIntro: 
+
+Interactive: Introduction to Software Design
 ---------------------------------------------------
 
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToSoftwareDesign.pdf"  target="_blank">
+      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      IntroToSoftwareDesign.pdf</img>
+      </a>
+
+
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4gfpbvoi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4gfpbvoi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToSoftwareDesign.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
-   Video Slides IntroToSoftwareDesign.pdf</img>
-   </a>
-
+.. _DesignRequirements: 
 
 Functional and non-functional requirements
 ------------------------------------------
@@ -143,6 +163,7 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/DesignCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _DesignClasses: 
 
 Identifying classes, fields, and methods
 ----------------------------------------
@@ -287,6 +308,7 @@ More information is available via the link below
 
 `https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html <https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html>`_
 
+.. _DesignActivity1: 
 
 Design Activity: Case Study e-Commerce solution (online storefront) for ABC Ltd
 -------------------------------------------------------------------------------
@@ -329,6 +351,7 @@ address, and payment details.
 ABC’s  customer service, order fulfillment, and other employee users must also
 be able to use the system to support business operations.
 
+.. _DesignRelations: 
 
 Identifying relationships, hierarchies, and opportunities for reuse
 -------------------------------------------------------------------
@@ -383,8 +406,11 @@ provided throughout the module, labs, and projects.
 Much of what you need to know for relationships, hierarchies and reuse has
 been covered within the :doc:`ContentPolymorphism` module. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/OOPUMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
 
-Activity
---------
+
+.. _DesignActivity2: 
+
+Design Activity: Determine Relationships between Classes
+--------------------------------------------------------
 
 Review the listing of nouns and noun phrases and concepts that could be
 extracted from the Case Study - e-Commerce solution (online storefront)
@@ -575,6 +601,7 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/DesignCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
+.. _DesignMVC: 
 
 Intro to Design Patterns and MVC
 --------------------------------
@@ -630,7 +657,7 @@ classes are deprecated and in the Tower of Hanoi project we now use our own
 Model and View classes to take the place of these.
 
 
-Interactive: MVC and Observer Video [11:00] 
+Interactive: MVC and Observer Video 
 -------------------------------------------
 
 .. raw:: html
@@ -677,6 +704,10 @@ application.
   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex09.02-AddressBookMVC"
 
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+
+.. _DesignCaseStudies: 
+
 
 Design Review: Case Study - e-Commerce solution (online storefront) for ABC Ltd.
 --------------------------------------------------------------------------------
@@ -783,8 +814,8 @@ Observer (for now, should not).
 
 You should review your current design and amend it to include these updates.
 
-Case Study - Vending Machine
-----------------------------
+Design Review: Case Study - Vending Machine
+--------------------------------------------
 
 You have been hired to produce a high-level software design for a
 Vending Machine application.
