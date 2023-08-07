@@ -317,9 +317,9 @@ Interactive: ArrayBagsWithJUnit Example Demonstration
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exArrayBagsWithJUnit.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exArrayBagsWithJUnit.zip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      exArrayBagsWithJUnit.java</img>
+      exArrayBagsWithJUnit.zip</img>
       </a>
 
 .. raw:: html

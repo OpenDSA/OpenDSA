@@ -206,9 +206,9 @@ Introduction to Comparators
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exComparing.java"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exComparingzip"  target="_blank">
       <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
-      exComparing.java</img>
+      exComparing.zip</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/Comparators.pdf" target="_blank">
