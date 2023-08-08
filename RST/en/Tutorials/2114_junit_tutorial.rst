@@ -60,20 +60,20 @@ A simplified test class example for the Student class:
 
 .. code-block:: java
 
-  public class StudentTest extends student.TestCase
-  {
-      private Student janeDoe;
-  
-      public void setUp()
-      {
-          janeDoe = new Student(“Jane Doe”);
-      }
-  
-      public void testGetName()
-      {
-          assertEquals(“Jane Doe”, janeDoe.getName());
-      }
-  }
+public class StudentTest extends student.TestCase
+{
+    private Student janeDoe;
+
+    public void setUp()
+    {
+        janeDoe = new Student(“Jane Doe”);
+    }
+
+    public void testGetName()
+    {
+        assertEquals(“Jane Doe”, janeDoe.getName());
+    }
+}
     
     
 Run a JUnit Test
@@ -157,26 +157,26 @@ Clarification for edge and average cases- For a list that contains 100 values, y
 
 .. code-block:: java
 
-    if ( score >= 90 )
-    {
-        System.out.println( “Your grade is an A”);
-    }
-    else if ( score >= 80 )
-    {
-        System.out.println( “Your grade is a B”);
-    }
-    else if ( score >= 70 )
-    {
-        System.out.println( “Your grade is a C”);
-    }
-    else if ( score >= 60 )
-    {
-        System.out.println( “Your grade is a D”);
-    }
-    else
-    {
-        System.out.println( “Your grade is an F”);
-    }
+if ( score >= 90 )
+{
+    System.out.println( “Your grade is an A”);
+}
+else if ( score >= 80 )
+{
+    System.out.println( “Your grade is a B”);
+}
+else if ( score >= 70 )
+{
+    System.out.println( “Your grade is a C”);
+}
+else if ( score >= 60 )
+{
+    System.out.println( “Your grade is a D”);
+}
+else
+{
+    System.out.println( “Your grade is an F”);
+}
     
 Your test class would have to test for all 5 of the above possibilities in order to execute every single line of code in the block of if-else statements.
 
