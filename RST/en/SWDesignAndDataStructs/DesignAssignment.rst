@@ -7,8 +7,8 @@
    :author: Molly
 
 
-Project 4 Ethics Discussion
-============================
+Design Assignment
+=========================
 
 
 Placeholder

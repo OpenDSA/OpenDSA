@@ -261,7 +261,7 @@ Exception Handling Examples - Basic to Complex
    
       .. raw:: html
    
-         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exExceptionHandlingWithThrowExample.zip"  target="_blank">
+         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exExceptionHandlingWithThrowExample.zip"  target="_blank">
          <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
          exExceptionHandlingWithThrowExample.zip</img>
          </a>
