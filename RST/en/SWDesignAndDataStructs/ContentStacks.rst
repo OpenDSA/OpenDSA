@@ -46,7 +46,7 @@ Interactive: Introduction to Stacks
     .. raw:: html
     
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/StackInterface.java" target="_blank">
-        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
         StackInterface.java</img></a>
     
    .. code-block:: java
@@ -107,7 +107,7 @@ Interactive: Introduction to Stacks
     .. raw:: html
     
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksIntro.pdf"  target="_blank">
-        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
         StacksIntro.pdf</img>
         </a>
 
@@ -173,7 +173,7 @@ Stacks Array Implementation
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksArrayImplementation.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       StacksArrayImplementation.pdf</img>
       </a>
 
@@ -196,12 +196,12 @@ Stacks Linked Chain Implementation
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/StacksLinkedChainImplementation.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       StacksLinkedChainImplementation.pdf</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TestingStacks.pdf"  target="_blank">
-        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
         TestingStacks.pdf</img>
       </a>
 

@@ -46,7 +46,7 @@ Interactive: Introduction to Object Oriented Programming
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPObjects.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       JavaOOPObjects.pdf</img>
       </a>
 
@@ -75,12 +75,12 @@ Interactive: Java UML Diagrams
       .. raw:: html
       
          <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPUML.pdf"  target="_blank">
-         <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
          JavaOOPUML.pdf</img>
          </a>
          <br>
          <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStruct/course-notes/OOPUMLDiagramKey.pdf" target="_blank">
-         <img src="../html/_static/Images/uml.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/uml.png" width="32" height="32">
          UML Diagram from the example in the video</img>
          </a>
    
@@ -111,12 +111,12 @@ Interactive: Java Inheritance: this, super
    .. raw:: html
    
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPInheritenceSuperThis.pdf"  target="_blank">
-        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
         Video Slides Java OOP Super This.pdf</img>
         </a>
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/eclipse/exJavaOOP.zip"  target="_blank">
-        <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
         CS2 Java OOP Example Eclipse Project</img>
         </a>
         
@@ -144,7 +144,7 @@ Interactive: Java Inheritance: equals(), toString()
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPInheritenceEqualsToString.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       JavaOOPInheritenceEqualsToString.pdf</img>
       </a>
 
@@ -179,7 +179,7 @@ Interactive: Polymorphism Measurable Interface
         <!-- TODO: Code link? ok there is an exMeasurable.zip, need that listed here?? not sure how syncs with admonition-->
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyMeasurable.pdf" target="_blank">
-        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
         Video Slides JavaOOPPolyMeasurable.pdf</img>
         </a>
 
@@ -215,7 +215,7 @@ Interactive: Polymorphism Computer Superclass
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyComputer.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       JavaOOPPolyComputer.pdf</img>
       </a>
 
@@ -244,7 +244,7 @@ Interactive: Polymorphism Integer Example
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyInteger.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       JavaOOPPolyInteger.pdf</img>
       </a>
 

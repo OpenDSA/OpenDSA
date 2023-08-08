@@ -36,7 +36,7 @@ Interactive: Intro to Algorithmic Efficiency
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/EfficiencyPart1.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       EfficiencyPart1.pdf</img>
       </a>
 
@@ -83,7 +83,7 @@ Interactive: Efficiency of Bag Methods
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsEfficiency.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       BagsEfficiency.pdf</img>
       </a>
 

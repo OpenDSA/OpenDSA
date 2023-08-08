@@ -44,7 +44,7 @@ Introduction to Ordering, Comparing, and Sorting
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroOrderingAndComparing.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       IntroOrderingAndComparing.pdf</img>
       </a>
 
@@ -73,7 +73,7 @@ Interactive: Introduction to Sorting
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToSorting.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       IntroToSorting.pdf</img>
       </a>
 
@@ -102,7 +102,7 @@ Interactive: Selection Sort
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/SelectionSort.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       SelectionSort.pdf</img>
       </a>
 
@@ -135,7 +135,7 @@ Insertion Sort with an Array
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/InsertionSortArray.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       InsertionSortArray.pdf</img>
       </a>
 
@@ -167,7 +167,7 @@ Insertion Sort with a Linked Chain
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/InsertionSortLinked.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       InsertionSortLinked.pdf</img>
       </a>
 
@@ -204,12 +204,12 @@ Introduction to Comparators
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/eclipse/exComparing.zip"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exComparing.zip</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/Comparators.pdf" target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       Video Slides Comparators.pdf
       </a>
 

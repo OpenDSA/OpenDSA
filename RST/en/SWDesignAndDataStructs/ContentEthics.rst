@@ -39,7 +39,7 @@ Interactive: Introduction to Ethics Video
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToEthics.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       IntroToEthics.pdf</img>
       </a>
 
@@ -71,7 +71,7 @@ Interactive: The ACM Code of Ethics
   .. raw:: html
   
      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ACMCodeOfEthics.pdf"  target="_blank">
-     <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+     <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
      ACMCodeOfEthics.pdf</img>
      </a>
 
@@ -105,7 +105,7 @@ Interactive: The Eight Key Questions (8KQ)
   .. raw:: html
   
      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TheEightKeyQuestions(8KQ).pdf"  target="_blank">
-     <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+     <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
      TheEightKeyQuestions(8KQ).pdf</img>
      </a>
      

@@ -33,7 +33,7 @@ In this discussion we will be revisiting good testing practices with an example 
       .. raw:: html
    
          <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/Hokie.java"  target="_blank">
-         <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
          Hokie.java</img>
          </a>
    
@@ -134,7 +134,7 @@ Interactive: Hokie Class JUnit Testing
         .. raw:: html
         
            <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaUnitTesting.pdf"  target="_blank">
-           <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+           <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
            JavaUnitTesting.pdf</img>
            </a>
      

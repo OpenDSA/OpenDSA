@@ -49,7 +49,7 @@ Interactive: Java Basics
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaFundamentalsWelcome.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       JavaFundamentalsWelcome.pdf</img>
       </a>
 
@@ -252,7 +252,7 @@ Interactive: Java Variables
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaVariables.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       JavaVariables.pdf</img>
       </a>
 
@@ -323,7 +323,7 @@ Interactive: Java Control Flow
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/FridgeInventory.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       FridgeInventory.java</img>
       </a>
 
@@ -353,7 +353,7 @@ Interactive: Java Scope and Equality
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaFundamentalsTips.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       JavaFundamentalsTips.pdf</img>
       </a>
 
