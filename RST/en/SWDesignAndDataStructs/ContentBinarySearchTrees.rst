@@ -36,7 +36,7 @@ Interactive: Introduction to Binary Search Trees
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroBinarySearchTrees.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       IntroBinarySearchTrees.pdf</img>
       </a>
 
@@ -66,7 +66,7 @@ Interactive: Programming Binary Search Trees
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingBinarySearchTrees.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ProgrammingBinarySearchTrees.pdf</img>
       </a>
 
@@ -95,7 +95,7 @@ Interactive: Adding Binary Search Trees
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/AddingToBinarySearchTrees.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
      AddingToBinarySearchTrees.pdf</img>
       </a>
 
@@ -125,7 +125,7 @@ Interactive: Removing From Binary Search Trees
 
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RemovingFromBinarySearchTrees.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       RemovingFromBinarySearchTrees.pdf</img>
       </a>
 

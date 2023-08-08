@@ -60,7 +60,7 @@ Intro to Recursion, Part 2
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RecursionIntro.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       RecursionIntro.pdf</img>
       </a>
 
@@ -90,7 +90,7 @@ Interactive: More Recursion : Factorial Examples
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RecursionExample.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       RecursionExample.pdf</img>
       </a>
 
@@ -120,7 +120,7 @@ Interactive: Recursion on Arrays: Display an Array
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DisplayArrays.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       DisplayArrays.pdf</img>
       </a>
 
@@ -167,7 +167,7 @@ Interactive: Recursion on Arrays: Display the Middle of an Array
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DisplayArraysMiddle.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       DisplayArraysMiddle.pdf</img>
       </a>
 
@@ -203,7 +203,7 @@ Interactive: Recursion on Linked Chains
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DisplayBagsRecursively.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       DisplayBagsRecursively.pdf</img>
       </a>
 
@@ -224,7 +224,7 @@ Interactive: Tower of Hanoi
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TowersOfHanoi.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       TowersOfHanoi.pdf</img>
       </a>
 
@@ -255,7 +255,7 @@ Interactive: Recursion Wrap Up
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RecursionWrapUp.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       RecursionWrapUp.pdf</img>
       </a>
 

@@ -44,7 +44,7 @@ Interactive: Introduction to Linked Bags
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedBagIntro.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       LinkedBagIntro.pdf</img>
       </a>
 
@@ -68,7 +68,7 @@ Interactive: LinkedBag add() and toArray()
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedBagAddToArray.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       LinkedBagAddToArray.pdf</img>
       </a>
 
@@ -98,7 +98,7 @@ Interactive: ExLinkedBagJUnit  Demonstration
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/eclipse/exLinkedBagsWithJUnit.zip"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exLinkedBagsWithJUnit.zip</img>
       </a>
 
@@ -121,7 +121,7 @@ Interactive: LinkedBag getFrequencyOf() and contains()
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedFreqContains.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       LinkedFreqContains.pdf</img>
       </a>
 
@@ -151,7 +151,7 @@ Interactive: LinkedBag Removing an item
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedRemove.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       LinkedRemove.pdf</img>
       </a>
 

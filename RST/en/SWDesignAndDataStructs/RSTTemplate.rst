@@ -65,7 +65,7 @@ java file example
  .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayBasics.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       ArrayBasics.java</img>
       </a>
 
@@ -74,7 +74,7 @@ slides
  .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingBinarySearchTrees.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ProgrammingBinarySearchTrees.pdf</img>
       </a>
 

@@ -42,7 +42,7 @@ Introduction to Linked Bags
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/8.2.3-LinkedBagIntro.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+   <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
    Video Slides 8.2.3-LinkedBagIntro.pdf</img>
    </a>
 
@@ -62,7 +62,7 @@ LinkedBag add and toArray
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/8.2.4.1-LinkedBagAddToArray.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+   <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
    Video Slides 8.2.4.1-LinkedBagAddToArray.pdf</img>
    </a>
 
@@ -115,7 +115,7 @@ LinkedBag getFrequencyOf() and contains()
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/8.2.6.1-LinkedFreqContains.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+   <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
    Video Slides 8.2.6.1-LinkedFreqContains.pdf</img>
    </a>
 
@@ -141,7 +141,7 @@ LinkedBag Removing an item
 .. raw:: html
 
    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/8.2.7.1-LinkedRemove.pdf" target="_blank">
-   <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+   <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
    Video Slides 8.2.7.1-LinkedRemove.pdf</img>
    </a>
 
