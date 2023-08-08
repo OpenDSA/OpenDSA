@@ -9,15 +9,15 @@
 Queues
 ======
 
-Shortcuts
----------
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`QueueIntro`
+    - :ref:`QueueLinked`
+    - :ref:`QueueIntroDeque`
+    - :ref:`QueueArray`
 
-- :ref:`QueueIntro`
-- :ref:`QueueLinked`
-- :ref:`QueueIntroDeque`
-- :ref:`QueueArray`
-
-.. _QueueIntro: 
 
 Objectives
 ----------
@@ -33,6 +33,7 @@ Suggested Reading
 
 Chapter 10: **Queues, Deques, and Priority Queues**  and  **Chapter 11: Queue, Deque, and Priority Queue Implementations** from `Data Structures and Abstractions with Java <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_ by Frank M. Carrano and Timothy Henry
 
+.. _QueueIntro: 
 
 Interactive: Introduction to Queues
 -----------------------------------

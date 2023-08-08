@@ -10,15 +10,16 @@
 Polymorphism
 ============
 
-Shortcuts
----------
-
-- :ref:`IntroOOP`
-- :ref:`IntroUML`
-- :ref:`IntroInheritance`
-- :ref:`IntroPolyMeasure`
-- :ref:`IntroPolySuper`
-- :ref:`IntroPolyExample`
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`IntroOOP`
+    - :ref:`IntroUML`
+    - :ref:`IntroInheritance`
+    - :ref:`IntroPolyMeasure`
+    - :ref:`IntroPolySuper`
+    - :ref:`IntroPolyExample`
 
 Objectives
 ----------

@@ -10,12 +10,13 @@
 Java Arrays
 ===========
 
-Shortcuts
----------
-
-- :ref:`JavaArrayBasics`
-- :ref:`JavaArraySearch`
-- :ref:`JavaArrayMethods`
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`JavaArrayBasics`
+    - :ref:`JavaArraySearch`
+    - :ref:`JavaArrayMethods`
 
 
 

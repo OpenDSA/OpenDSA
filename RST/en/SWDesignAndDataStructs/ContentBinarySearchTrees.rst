@@ -10,6 +10,17 @@
 Binary Search Trees
 ===================
 
+..
+    Shortcuts
+    ---------
+
+    - :ref:`BSTIntro`
+    - :ref:`BSTProg`
+    - :ref:`BSTAdd`
+    - :ref:`BSTRemove`
+    - :ref:`JavaScopeAndEquality`
+    - :ref:`JavaObjectsAndEnums`
+
 
 Objectives
 ----------
@@ -25,6 +36,7 @@ Suggested Reading:
 
 Chapter 25 A Binary Search Tree Implementation from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
+.. _BSTIntro: 
 
 Interactive: Introduction to Binary Search Trees
 ------------------------------------------------
@@ -55,6 +67,7 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _BSTProg: 
 
 Interactive: Programming Binary Search Trees
 ------------------------------------------------
@@ -84,6 +97,7 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
+.. _BSTAdd: 
 
 Interactive: Adding Binary Search Trees
 ------------------------------------------------
@@ -113,6 +127,7 @@ Checkpoint 3
 .. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
+.. _BSTRemove: 
 
 Interactive: Removing From Binary Search Trees
 ----------------------------------------------
@@ -135,9 +150,6 @@ Interactive: Removing From Binary Search Trees
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ijj9r93f' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
-
-
 
 Checkpoint 4
 ------------
