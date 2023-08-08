@@ -10,14 +10,15 @@
 Recursion
 =========
 
-Shortcuts
----------
-
-- :ref:`RecursionIntro`
-- :ref:`RecursionExample`
-- :ref:`RecursionArray`
-- :ref:`RecursionChain`
-- :ref:`RecursionConclusion`
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`RecursionIntro`
+    - :ref:`RecursionExample`
+    - :ref:`RecursionArray`
+    - :ref:`RecursionChain`
+    - :ref:`RecursionConclusion`
 
 
 Objectives

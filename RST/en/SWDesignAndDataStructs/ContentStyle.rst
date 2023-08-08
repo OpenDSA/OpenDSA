@@ -10,15 +10,16 @@
 Style and Documentation: Introduction
 =====================================
 
-Shortcuts
----------
-
-- :ref:`introduction`
-- :ref:`ContentStyleNaming`
-- :ref:`ContentStyleFormat`
-- :ref:`ContentStyleDocumentation`
-- :ref:`ContentStyleOther`
-- :ref:`ContentStyleReview`
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`introduction`
+    - :ref:`ContentStyleNaming`
+    - :ref:`ContentStyleFormat`
+    - :ref:`ContentStyleDocumentation`
+    - :ref:`ContentStyleOther`
+    - :ref:`ContentStyleReview`
 
 Overview & Objectives
 ---------------------
@@ -157,13 +158,13 @@ should be changed to:
 
 .. code-block:: java
 
-    //Using new as a variable name is a syntax error because new is a reserved word in Java
-    
-    int new = 15;
-    
-    //Using int as a variable name is a syntax error because int is a reserved word in Java
-    
-    String int = “15”;
+//Using new as a variable name is a syntax error because new is a reserved word in Java
+
+int new = 15;
+
+//Using int as a variable name is a syntax error because int is a reserved word in Java
+
+String int = “15”;
 
 
 .. admonition:: Takeaway
@@ -232,13 +233,13 @@ Example(s):
 
 .. code-block:: java  
 
-    calcClassAverage( … )
-    
-    getNumStudents( … )
-    
-    findSum( … )
-    
-    drawLine( ... )
+calcClassAverage( … )
+
+getNumStudents( … )
+
+findSum( … )
+
+drawLine( ... )
 
 Variables
 ---------
