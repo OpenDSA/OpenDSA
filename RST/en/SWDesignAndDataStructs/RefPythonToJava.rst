@@ -10,7 +10,9 @@
 Python to Java Tutorial
 =========================
 
-Overview of Python <-> Java differences from CS2064 provided by John Wenskovitch: Python to Java Comparison
+Students can optionally review the Python <-> Java differences from CS2064 provided by John Wenskovitch: Python to Java Comparison
+
+This is recommmended for students who have a python background but not much java experience.
 
 
 Code blocks 
