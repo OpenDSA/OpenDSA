@@ -30,6 +30,7 @@ Upon completion of this module, students will be able to:
 * Describe the purpose and use of an Iterator
 * Implement Iterators using the Iterator and Iterable Interfaces
 * Design and develop algorithms that use Iterators and Iterator methods
+* Use Scanner for File I/O
 
 Suggested Reading
 ~~~~~~~~~~~~~~~~~
