@@ -9,6 +9,19 @@
 Iterators
 =========
 
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`IteratorIntro`
+    - :ref:`IteratorInterface`
+    - :ref:`IteratorProg`
+    - :ref:`IteratorDesign`
+    - :ref:`IteratorInner`
+    - :ref:`IteratorScanner`
+
+
+
 Objectives
 ----------
 
@@ -23,6 +36,8 @@ Suggested Reading
 
 Java Interlude 5 Iterators from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
+.. _IteratorIntro: 
+
 Introduction to Iterators 
 ---------------------------------
 
@@ -33,7 +48,7 @@ Introduction to Iterators
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToIterators.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       IntroToIterators.pdf</img>
       </a>
 
@@ -52,6 +67,8 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/IteratorsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _IteratorInterface: 
+
 
 Programming Using the Iterable Interface 
 -----------------------------------------------
@@ -63,7 +80,7 @@ Programming Using the Iterable Interface
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/Iterable.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       Iterable.pdf</img>
       </a>
 
@@ -81,6 +98,8 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/IteratorsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
+.. _IteratorProg: 
+
 Programming Using Iterators
 -----------------------------------
 
@@ -91,7 +110,7 @@ Programming Using Iterators
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingWithIterators.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ProgrammingWithIterators.pdf</img>
       </a>
 
@@ -109,6 +128,8 @@ Checkpoint 3
 .. avembed:: Exercises/SWDesignAndDataStructs/IteratorsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
+.. _IteratorDesign: 
+
 Iterator Design Decisions
 --------------------------------
 
@@ -119,7 +140,7 @@ Iterator Design Decisions
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IteratorsDesignConsiderations.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       IteratorsDesignConsiderations.pdf</img>
       </a>
 
@@ -135,6 +156,7 @@ Iterator Design Decisions
 
     Iterators that are a nested class inside the linked structure (not subclasses) are more efficient than Iterators that are independent classes.
 
+.. _IteratorInner: 
 
 Inner Iterator for ex11.3-Iterator
 ----------------------------------
@@ -318,6 +340,7 @@ Programming Practice: Iterators
 .. extrtoolembed:: 'Programming Practice: Iterators'
    :workout_id: 1924
 
+.. _IteratorScanner: 
 
 Scanners Implement Iterator<String>
 -----------------------------------

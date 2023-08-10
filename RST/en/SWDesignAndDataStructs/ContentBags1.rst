@@ -9,15 +9,16 @@
 Bags
 ====
 
-Shortcuts
----------
-
-- :ref:`BagBasics`
-- :ref:`BagUsage`
-- :ref:`BagArrayImp`
-- :ref:`BagArrayMethods`
-- :ref:`BagArrayMethods2`
-- :ref:`BagArrayMethods3`
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`BagBasics`
+    - :ref:`BagUsage`
+    - :ref:`BagArrayImp`
+    - :ref:`BagArrayMethods`
+    - :ref:`BagArrayMethods2`
+    - :ref:`BagArrayMethods3`
 
 Objectives
 ----------
@@ -315,7 +316,7 @@ Interactive: ArrayBagsWithJUnit Example Demonstration
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exArrayBagsWithJUnit.zip"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exArrayBagsWithJUnit.zip</img>
       </a>
 
@@ -347,7 +348,7 @@ Interactive: More on the Bag Method Implementation
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayBagMethods.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ArrayBagMethods.pdf</img>
       </a>
 
@@ -398,7 +399,7 @@ Interactive: Methods that Remove and Design Improvement, Part 1
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart1.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       BagsDesignImprovePart1.pdf</img>
       </a>
 
@@ -419,7 +420,7 @@ Interactive: Methods that Remove and Design Improvement, Part 2
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart2.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       BagsDesignImprovePart2.pdf</img>
       </a>
 
@@ -440,7 +441,7 @@ Interactive: Methods that Remove and Design Improvement, Part 3
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart3.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       BagsDesignImprovePart3.pdf</img>
       </a>
 
@@ -470,7 +471,7 @@ Interactive: Array resizing description and coding Demo
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DoubleArray.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       DoubleArray.pdf</img>
       </a>
 

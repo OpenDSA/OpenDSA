@@ -9,15 +9,16 @@
 Exceptions
 ==========
 
-Shortcuts
----------
-
-- :ref:`ExceptionHandling`
-- :ref:`ExceptionCheckedUnchecked`
-- :ref:`ExceptionTryCatch`
-- :ref:`ExceptionHandleLater`
-- :ref:`ExceptionExamples`
-- :ref:`ExceptionTesting`
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`ExceptionHandling`
+    - :ref:`ExceptionCheckedUnchecked`
+    - :ref:`ExceptionTryCatch`
+    - :ref:`ExceptionHandleLater`
+    - :ref:`ExceptionExamples`
+    - :ref:`ExceptionTesting`
 
 
 Objectives
@@ -51,12 +52,12 @@ Interactive: Exception Handling
 
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/Exceptions.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       Exceptions.java</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToExceptions.pdf" target="_blank">
-         <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
          Video Slides IntroToExceptions.pdf</img>
       </a>
       <br>
@@ -262,7 +263,7 @@ Exception Handling Examples - Basic to Complex
       .. raw:: html
    
          <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exExceptionHandlingWithThrowExample.zip"  target="_blank">
-         <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
          exExceptionHandlingWithThrowExample.zip</img>
          </a>
 

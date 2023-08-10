@@ -9,14 +9,15 @@
 Lists
 =====
 
-Shortcuts
----------
-
-- :ref:`ListIntro`
-- :ref:`ListAdd`
-- :ref:`ListRemove`
-- :ref:`ListOptions`
-- :ref:`ListArray`
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`ListIntro`
+    - :ref:`ListAdd`
+    - :ref:`ListRemove`
+    - :ref:`ListOptions`
+    - :ref:`ListArray`
 
 Overview & Objectives
 ---------------------
@@ -40,7 +41,7 @@ Introduction to Lists
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListIntro.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ListIntro.pdf</img>
       </a>
 
@@ -62,7 +63,7 @@ Introduction to Lists
  .. raw:: html
      
      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
-     <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+     <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
      QueueInterface.java</img>
      </a>
 
@@ -204,7 +205,7 @@ Interactive: LinkedList Add() Implementation
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListAdd.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       LinkedListAdd.pdf</img>
       </a>
 
@@ -232,7 +233,7 @@ Interactive: Tracing Add() with Debugger
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TraceAddDebugger.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       TraceAddDebugger.pdf</img>
       </a>
 
@@ -256,12 +257,12 @@ Interactive: LinkedList Remove()
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/eclipse/exLinkedList.zip"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exLinkedList.zip</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListRemove.pdf"  target="_blank">
-        <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
         LinkedListRemove.pdf</img>
         </a>
 
@@ -297,7 +298,7 @@ Interactive: LinkedList Details and Options
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedListMoreDetails.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       LinkedListMoreDetails.pdf</img>
       </a>
 
@@ -326,7 +327,7 @@ Interactive: An Array Implementation of a List
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ArrayListImplementation.pdf</img>
       </a>
 

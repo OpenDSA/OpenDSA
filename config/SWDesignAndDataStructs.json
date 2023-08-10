@@ -1,330 +1,402 @@
 {
-  "title": "Software Design and Data Structures",
-  "desc": "A programming-intensive exploration of software design concepts and implementation techniques. It builds on the student's existing knowledge of fundamental object-oriented programming.",
-  "theme": "haiku",
-  "build_dir": "Books",
-  "sphinx_debug": false,
-  "code_dir": "SourceCode/",
-  "code_lang": {
-    "Java": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java",
-      "lang": "java"
+    "title": "Software Design and Data Structures",
+    "desc": "A programming-intensive exploration of software design concepts and implementation techniques. It builds on the student's existing knowledge of fundamental object-oriented programming.",
+    "theme": "haiku",
+    "build_dir": "Books",
+    "sphinx_debug": false,
+    "code_dir": "SourceCode/",
+    "code_lang": {
+        "Java": {
+            "ext": [
+                "java"
+            ],
+            "label": "Java",
+            "lang": "java"
+        },
+        "C++": {
+            "ext": [
+                "cpp",
+                "h"
+            ],
+            "label": "C++",
+            "lang": "C++"
+        }
     },
-    "C++": {
-      "ext": [
-        "cpp",
-        "h"
-      ],
-      "label": "C++",
-      "lang": "C++"
+    "tabbed_codeinc": false,
+    "lang": "en",
+    "build_JSAV": false,
+    "build_cmap": false,
+    "suppress_todo": false,
+    "dispModComp": true,
+    "tag": "Java;CS1;CS2",
+    "zeropt_assignments": false,
+    "narration_enabled": true,
+    "include_tree_view": false,
+    "chapter_name": "Week",
+    "start_chap_num": 0,
+    "html_theme_options": {
+        "show_source": false,
+        "show_search": false,
+        "show_relations": false,
+        "show_copyright": false,
+        "render_sidebar": false
+    },
+    "html_css_files": [
+        "_static/haiku-supp.css"
+    ],
+    "glob_exer_options": {
+        "JXOP-debug": "true"
+    },
+    "glob_ss_options": {
+        "threshold": 1.0,
+        "points": 0.0,
+        "required": false
+    },
+    "glob_ff_options": {
+        "threshold": 1.0,
+        "points": 0.0,
+        "required": false
+    },
+    "glob_ka_options": {
+        "threshold": 2,
+        "points": 5.0,
+        "required": true,
+        "partial_credit": true
+    },
+    "glob_extr_options": {
+        "code-workout": {
+            "points": 20.0,
+            "required": true,
+            "partial_credit": true,
+            "enable_scrolling": true
+        },
+        "points": 1.0,
+        "frame_width": 1200,
+        "frame_height": 900
+    },
+    "glob_pe_options": {
+        "threshold": 0.9,
+        "points": 2.0,
+        "required": true
+    },
+    "chapters": {
+        "General Course Information": {
+            "SWDesignAndDataStructs/AdminPlaceholder": {
+                
+            }
+        },
+        "Introduction": {
+            "SWDesignAndDataStructs/AdminWelcome": {
+                
+            },
+            "SWDesignAndDataStructs/AdminIDESetup": {
+                
+            },
+            "SWDesignAndDataStructs/ContentFundamentals": {
+                
+            },
+            "SWDesignAndDataStructs/ContentJUNITReview": {
+                
+            },
+            "SWDesignAndDataStructs/ContentStyle": {
+                
+            },
+            "SWDesignAndDataStructs/RefPythonToJava": {
+                
+            },
+            "SWDesignAndDataStructs/AdminAcadIntegrity": {
+                
+            },
+            "SWDesignAndDataStructs/ProgrammingPracticeMod1": {
+                
+            }
+        },
+        "Java Review": {
+            "SWDesignAndDataStructs/ContentExceptions": {
+                
+            },
+            "SWDesignAndDataStructs/ContentPolymorphism": {
+                
+            },
+            "SWDesignAndDataStructs/ContentJavaArrays": {
+                
+            },
+            "SWDesignAndDataStructs/ContentGenerics1": {
+                
+            },
+            "SWDesignAndDataStructs/Lab2Polymorphism": {
+                
+            },
+            "SWDesignAndDataStructs/Lab2PolymorphismPost": {
+                
+            },
+            "SWDesignAndDataStructs/ContentCoursePerceptions": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod2": {
+                
+            },
+            "SWDesignAndDataStructs/ProgrammingPracticeMod2": {
+                
+            }
+        },
+        "Bags": {
+            
+            "SWDesignAndDataStructs/ContentBags1": {
+                
+            },
+            "SWDesignAndDataStructs/Lab3MovieDatabase": {
+                
+            },
+            "SWDesignAndDataStructs/Lab3MovieDatabasePost": {
+                
+            },
+            "SWDesignAndDataStructs/Project1": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod3": {
+                
+            },
+            "SWDesignAndDataStructs/ProgrammingPracticeMod3": {
+                
+            }
+        },
+        "Linked Chains, Bags Continued": {
+            "SWDesignAndDataStructs/Quiz1Info": {
+                
+            },
+            "SWDesignAndDataStructs/ContentLinkedChains": {
+                
+            },
+            "SWDesignAndDataStructs/ContentLinkedBags": {
+                
+            },
+            "SWDesignAndDataStructs/Lab4GroceryBags": {
+                
+            },
+            "SWDesignAndDataStructs/Project2": {
+                
+            },
+            "SWDesignAndDataStructs/Lab4GroceryBagsPost": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod4": {
+                
+            }
+        },
+        "Efficiency, Stacks": {
+            "SWDesignAndDataStructs/ContentEfficiency": {
+                
+            },
+            "SWDesignAndDataStructs/ContentStacks": {
+                
+            },
+            "SWDesignAndDataStructs/Lab5IceCreamCone": {
+                
+            },
+            "SWDesignAndDataStructs/Lab5IceCreamConePost": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod5": {
+                
+            },
+            "SWDesignAndDataStructs/ProgrammingPracticeMod5": {
+                
+            }
+        },
+        "Ethics and Design": {
+            "SWDesignAndDataStructs/ContentEthics": {
+                
+            },
+            "SWDesignAndDataStructs/ContentDesignMVC": {
+                
+            },
+            "SWDesignAndDataStructs/Lab6ArrayStack": {
+                
+            },
+            "SWDesignAndDataStructs/Lab6ArrayStackPost": {
+                
+            },
+            "SWDesignAndDataStructs/EthicsAssignment": {
+                
+            },
+            "SWDesignAndDataStructs/DesignAssignment": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod6": {
+                
+            },
+            "SWDesignAndDataStructs/ProgrammingPracticeMod6": {
+                
+            }
+        },
+        "Recursion": {
+            "SWDesignAndDataStructs/Project3": {
+                
+            },
+            "SWDesignAndDataStructs/Quiz2Info": {
+                
+            },
+            "SWDesignAndDataStructs/ContentRecursion": {
+                
+            },
+            "SWDesignAndDataStructs/ContentMidSemester": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod7": {
+                
+            },
+            "SWDesignAndDataStructs/Quiz2": {
+                
+            }
+        },
+        "Queues": {
+            "SWDesignAndDataStructs/ContentQueues": {
+                
+            },
+            "SWDesignAndDataStructs/Lab8Carrano": {
+                
+            },
+            "SWDesignAndDataStructs/Lab8CarranoPost": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod8": {
+                
+            },
+            "SWDesignAndDataStructs/ProgrammingPracticeMod8": {
+                
+            }
+        },
+        "Lists and Generics": {
+            "SWDesignAndDataStructs/ContentLists": {
+                
+            },
+            "SWDesignAndDataStructs/ContentGenerics2": {
+                
+            },
+            "SWDesignAndDataStructs/Lab9SingleLink": {
+                
+            },
+            "SWDesignAndDataStructs/Project4": {
+                
+            },
+            "SWDesignAndDataStructs/Project4Discussion": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod9": {
+                
+            },
+            "SWDesignAndDataStructs/ProgrammingPracticeMod9": {
+                
+            }
+        },
+        "Comparing, Sorting and Iterators": {
+            "SWDesignAndDataStructs/Quiz3Info": {
+                
+            },
+            "SWDesignAndDataStructs/ContentComparingAndSorting": {
+                
+            },
+            "SWDesignAndDataStructs/ContentIterators": {
+                
+            },
+            "SWDesignAndDataStructs/Lab10DoubleLink": {
+                
+            },
+            "SWDesignAndDataStructs/Quiz3": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod10": {
+                
+            }
+        },
+        "Sorted Lists": {
+            "SWDesignAndDataStructs/Project4Milestone": {
+                
+            },
+            "SWDesignAndDataStructs/ContentSortedLists": {
+                
+            },
+            "SWDesignAndDataStructs/Project5": {
+                
+            },
+            "SWDesignAndDataStructs/Project5GroupForming": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod11": {
+                
+            }
+        },
+        "Project ": {
+            
+            "SWDesignAndDataStructs/Project5DesignSubmission": {
+                
+            },
+            "SWDesignAndDataStructs/Project5Milestone": {
+                
+            }
+        },
+        "Cloning and Trees ": {
+            "SWDesignAndDataStructs/ContentCloning": {
+                
+            },
+            "SWDesignAndDataStructs/ContentTrees": {
+                
+            },
+            "SWDesignAndDataStructs/Lab13BinaryTrees": {
+                
+            },
+            "SWDesignAndDataStructs/Project5Discussion": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod13": {
+                
+            }
+        },
+        "Binary Search ": {
+            "SWDesignAndDataStructs/Quiz4Info": {
+                
+            },
+            "SWDesignAndDataStructs/Project5GroupFeedback": {
+                
+            },
+            "SWDesignAndDataStructs/ContentBinarySearch": {
+                
+            },
+            "SWDesignAndDataStructs/ContentBinarySearchTrees": {
+                
+            },
+            "SWDesignAndDataStructs/Lab14BST": {
+                
+            },
+            "SWDesignAndDataStructs/KnowledgePracticeMod14": {
+                
+            }
+        },
+        "Review": {
+            "SWDesignAndDataStructs/FinalExamInfo": {
+                
+            },
+            "SWDesignAndDataStructs/ContentCoursePerceptions2": {
+                
+            }
+        },
+        "Reference": {
+            "Tutorials/2114_eclipse_examples_setup": {
+                
+            },
+            "Tutorials/2114_junit_tutorial": {
+                
+            },
+            "Tutorials/2114_java_io_tutorial": {
+                
+            },
+            "Tutorials/2114_java_commenting": {
+                
+            },
+            "Tutorials/2114_random_numbers": {
+                
+            }
+        }
     }
-  },
-  "tabbed_codeinc": false,
-  "lang": "en",
-  "build_JSAV": false,
-  "build_cmap": false,
-  "suppress_todo": false,
-  "dispModComp": true,
-  "tag": "Java;CS1;CS2",
-  "zeropt_assignments": false,
-  "narration_enabled": true,
-  "include_tree_view": false,
-  "chapter_name": "Week",
-  "start_chap_num": 1,
-  "html_theme_options": {
-    "show_source": false,
-    "show_search": false,
-    "show_relations": false,
-    "show_copyright": false,
-    "render_sidebar": false
-  },
-  "html_css_files": ["_static/haiku-supp.css"],
-
-
-  "glob_exer_options": {
-    "JXOP-debug": "true"
-  },
-  "glob_ss_options": {
-    "threshold": 1.0,
-    "points": 0.0,
-    "required": false
-  },
-  "glob_ff_options": {
-    "threshold": 1.0,
-    "points": 0.0,
-    "required": false
-  },
-  "glob_ka_options": {
-    "threshold": 2,
-    "points": 5.0,
-    "required": true,
-    "partial_credit": true
-  },
-  "glob_extr_options": {
-    "code-workout": {
-      "points": 20.0,
-      "required": true,
-      "partial_credit": true,
-      "enable_scrolling": true
-    },
-    "points": 1.0,
-    "frame_width": 1200,
-    "frame_height": 900
-  },
-  "glob_pe_options": {
-    "threshold": 0.9,
-    "points": 2.0,
-    "required": true
-  },
-  "chapters": {
-
-    "General Course Information": {
-        "SWDesignAndDataStructs/AdminPlaceholder": {
-          }
-    },
-    
-    "Introduction": {
-      "SWDesignAndDataStructs/AdminWelcome": {
-      },
-      "SWDesignAndDataStructs/AdminIDESetup": {
-      },
-      "SWDesignAndDataStructs/ContentFundamentals": {
-          
-      },
-      "SWDesignAndDataStructs/ContentJUNITReview": {
-          
-      },
-      "SWDesignAndDataStructs/ContentStyle": {
-      },
-      
-      "SWDesignAndDataStructs/RefPythonToJava": {
-      },
-      
-      "SWDesignAndDataStructs/AdminAcadIntegrity": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod1": {
-      }
-    },
-    
-    "Java Review": {
-      "SWDesignAndDataStructs/ContentExceptions": {
-      },
-      "SWDesignAndDataStructs/ContentPolymorphism": {
-      },
-      "SWDesignAndDataStructs/ContentJavaArrays": {
-      },
-      "SWDesignAndDataStructs/ContentGenerics1": {
-      },
-      "SWDesignAndDataStructs/Lab2Polymorphism": {
-      },
-      "SWDesignAndDataStructs/Lab2PolymorphismPost": {
-      },
-      "SWDesignAndDataStructs/ContentCoursePerceptions": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod2": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod2": {
-      }
-    },
-    
-    "Bags": {
-      "SWDesignAndDataStructs/Quiz1Info": {
-      },
-      "SWDesignAndDataStructs/ContentBags1": {
-      },
-      "SWDesignAndDataStructs/Lab3MovieDatabase": {
-      },
-      "SWDesignAndDataStructs/Lab3MovieDatabasePost": {
-      },
-      "SWDesignAndDataStructs/Project1": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod3": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod3": {
-      }
-    },
-    
-    "Linked Chains, Bags Continued": {
-      "SWDesignAndDataStructs/ContentLinkedChains": {
-      },
-      "SWDesignAndDataStructs/ContentLinkedBags": {
-      },      
-      "SWDesignAndDataStructs/Lab4GroceryBags": {
-      },
-      "SWDesignAndDataStructs/Project2": {
-      },
-      "SWDesignAndDataStructs/Lab4GroceryBagsPost": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod4": {
-      }    
-    },
-
-    "Efficiency, Stacks": {
-      "SWDesignAndDataStructs/ContentEfficiency": {
-      },
-      "SWDesignAndDataStructs/ContentStacks": {
-      },
-      "SWDesignAndDataStructs/Lab5IceCreamCone": {
-      },
-      "SWDesignAndDataStructs/Lab5IceCreamConePost": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod5": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod5": {
-      }
-    },
-
-    "Ethics and Design": {
-      "SWDesignAndDataStructs/ContentEthics": {
-      },
-      "SWDesignAndDataStructs/ContentDesignMVC": {
-      },
-      "SWDesignAndDataStructs/Lab6ArrayStack": {
-      },
-      "SWDesignAndDataStructs/Lab6ArrayStackPost": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod6": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod6": {
-      }
-    },
-
-    "Recursion": {
-      "SWDesignAndDataStructs/Quiz2Info": {
-      },
-      "SWDesignAndDataStructs/ContentRecursion": {
-          
-      },
-      "SWDesignAndDataStructs/Project3": {
-      },
-      "SWDesignAndDataStructs/ContentMidSemester": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod7": {
-      },
-      "SWDesignAndDataStructs/Quiz2": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod7": {
-      }
-    },
-
-    "Queues": {
-      "SWDesignAndDataStructs/ContentQueues": {
-          
-      },
-      "SWDesignAndDataStructs/Lab8Carrano": {
-      },
-      "SWDesignAndDataStructs/Lab8CarranoPost": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod8": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod8": {
-      }
-    },
-
-    "Lists and Generics": {
-      "SWDesignAndDataStructs/ContentLists": {
-          
-      },
-      "SWDesignAndDataStructs/ContentGenerics2": {
-          
-      },
-      "SWDesignAndDataStructs/Lab9SingleLink": {
-      },
-      "SWDesignAndDataStructs/Project4": {
-      },
-      "SWDesignAndDataStructs/Project4Discussion": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod9": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod9": {
-      }
-    },
-    
-
-    "Comparing, Sorting and Iterators": {
-      "SWDesignAndDataStructs/Quiz3Info": {
-      },
-      "SWDesignAndDataStructs/ContentComparingAndSorting": {
-         
-      },
-      "SWDesignAndDataStructs/ContentIterators": {
-          
-      },
-      "SWDesignAndDataStructs/Lab10DoubleLink": {
-      },
-      "SWDesignAndDataStructs/Quiz3": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod10": {
-      }
-    },
-
-    "Sorted Lists": {
-      "SWDesignAndDataStructs/ContentSortedLists": {
-      },
-      "SWDesignAndDataStructs/Project5": {
-      },
-      "SWDesignAndDataStructs/KnowledgePracticeMod11": {
-      },
-      "SWDesignAndDataStructs/ProgrammingPracticeMod11": {
-      }
-    },
-
-    "Project ": {
-      "SWDesignAndDataStructs/Project5Milestone": {
-     }
-    },
-    
-    "Cloning and Trees ": {
-      "SWDesignAndDataStructs/ContentCloning": {
-      },
-      "SWDesignAndDataStructs/ContentTrees": {
-      },
-      "SWDesignAndDataStructs/Lab13BinaryTrees": {
-      },
-      "SWDesignAndDataStructs/Project5Discussion": {
-      }
-
-    },
-
-    "Binary Search ": {
-      "SWDesignAndDataStructs/Quiz4Info": {
-      },
-      "SWDesignAndDataStructs/Project5GroupFeedback": {
-      },
-      "SWDesignAndDataStructs/ContentBinarySearch": {
-          
-      },
-      "SWDesignAndDataStructs/ContentBinarySearchTrees": {
-      },
-      "SWDesignAndDataStructs/Lab14BST": {
-      }
-
-    },
-    
-    "Review": {
-      "SWDesignAndDataStructs/FinalExamInfo": {
-      },
-      "SWDesignAndDataStructs/ContentCoursePerceptions2": {
-      }
-    },
-
-    
-    "Reference": {
-      "Tutorials/2114_eclipse_examples_setup": {
-      },
-      "Tutorials/2114_junit_tutorial": {
-      },
-      "Tutorials/2114_java_io_tutorial": {
-      },
-      "Tutorials/2114_java_commenting": {
-      },
-      "Tutorials/2114_random_numbers": {
-      }
-      
-    }
-  }
-
 }

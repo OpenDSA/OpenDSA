@@ -9,6 +9,15 @@
 More on Generics
 ================
 
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`Generics2Intro`
+    - :ref:`Generics2Reflect`
+    - :ref:`Generics2Explained`
+    - :ref:`Generics2Wildcard`
+
 Objectives
 ----------
 
@@ -19,6 +28,7 @@ Upon completion of this module, students will be able to:
 * Write and use bounded generic methods
 * Become familiar with syntax for wildcards
 
+.. _Generics2Intro: 
 
 Interactive: More on Generics
 -----------------------------
@@ -31,12 +41,12 @@ Interactive: More on Generics
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/eclipse/exGenerics.zip"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exGenerics.zip</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/MoreOnGenerics.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       MoreOnGenerics.pdf</img>
       </a>
 
@@ -47,6 +57,7 @@ Interactive: More on Generics
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4kqmn4sv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
+.. _Generics2Reflect: 
 
 Interactive: Reflecting on Generics
 -----------------------------------
@@ -62,7 +73,7 @@ Related Resources
     
 `A tutorial on using wildcards in generics, at https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
     
-
+.. _Generics2Explained: 
 
 Sample Declarations of Generic Methods Explained
 ------------------------------------------------
@@ -114,6 +125,7 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/Generics2Checkpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _Generics2Wildcard: 
 
 Interactive: Bounded Wildcard Examples
 --------------------------------------
@@ -126,7 +138,7 @@ Interactive: Bounded Wildcard Examples
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exGenerics.zip"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exGenerics.zip</img>
       </a>
 

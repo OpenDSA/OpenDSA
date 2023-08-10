@@ -154,15 +154,15 @@ Logical operators:
 In Python, we were given convenient English versions of logical operators:  ``and``, ``or``, and ``not``.  Java uses symbolic operators for logical operations:  and is &&, or is ||, and not is !.
 
 .. code-block:: java
-    
-    \\ logical AND
-    && 
-    
-    \\ logical OR
-    || \\the pipe character
-    
-    \\ logical NOT
-    !
+
+\\ logical AND
+&& 
+
+\\ logical OR
+|| \\the pipe character
+
+\\ logical NOT
+!
 
 Object comparison:
 ----------------------

@@ -10,12 +10,13 @@
 Java Arrays
 ===========
 
-Shortcuts
----------
-
-- :ref:`JavaArrayBasics`
-- :ref:`JavaArraySearch`
-- :ref:`JavaArrayMethods`
+..
+    Shortcuts
+    ---------
+    
+    - :ref:`JavaArrayBasics`
+    - :ref:`JavaArraySearch`
+    - :ref:`JavaArrayMethods`
 
 
 
@@ -43,7 +44,7 @@ Interactive: Java Array Basics
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayBasics.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       ArrayBasics.java</img>
       </a>
 
@@ -82,7 +83,7 @@ Interactive: Java Array Search
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayLinearSearch.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">ArrayLinearSearch.java</img>
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">ArrayLinearSearch.java</img>
       </a>
 
 .. raw:: html
@@ -112,14 +113,14 @@ Interactive: Java Array Removing, Inserting, & Tips
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayRemove.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       ArrayRemove.java</img>
       </a>
 
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ArrayInsert.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       ArrayInsert.java</img>
       </a>
 

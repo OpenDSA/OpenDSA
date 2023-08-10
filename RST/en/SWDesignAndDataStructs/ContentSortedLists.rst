@@ -10,6 +10,18 @@
 Sorted Lists
 ============
 
+Shortcuts
+---------
+
+- :ref:`SortListIntro`
+- :ref:`SortListUML`
+- :ref:`SortListADT`
+- :ref:`SortListImp`
+- :ref:`SortListImpArray`
+- :ref:`SortListImpChain`
+- :ref:`SortListImpEff`
+
+ 
 Objectives
 ----------
 
@@ -25,6 +37,7 @@ Suggested Reading:
 
 - `Java documentation on Lists <https://docs.oracle.com/javase/7/docs/api/java/util/List.html>`_
 
+.. _SortListIntro:
 
 Interactive: Introduction to Sorted Lists
 -----------------------------------------
@@ -39,17 +52,17 @@ Interactive: Introduction to Sorted Lists
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       ListInterface.java</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/SortedListInterface.java"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       SortedListInterface.java</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/coures-notes/SortedListsOrderVsSorted.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       SortedListsOrderVsSorted.pdf</img>
       </a>
 
@@ -76,6 +89,9 @@ Interactive: Introduction to Sorted Lists
     
     However, there are some applications where maintaining order, or more specifically maintaining *sorted* order, is very important.  It is important to note our deliberate distinction of **Order** vs **Sorted Order**.
 
+
+.. _SortListUML:
+
 Recap UML/code for ListInterface
 --------------------------------
 
@@ -83,6 +99,7 @@ Recap UML/code for ListInterface
 
 **TODO:** possibly show the UML image from: https://canvas.vt.edu/courses/165395/pages/introduction-to-sorted-lists?module_item_id=2213510
  
+.. _SortListADT:
 
 List ADT
 --------
@@ -97,7 +114,7 @@ Lists are not necessarily in Sorted Order.
  
 
 Sorted List ADT
----------------
+~~~~~~~~~~~~~~~
 A Sorted List is therefore a collection of elements or Objects in sorted order, where 
 
 - the ordering of elements is based on something related to the element’s value or the Object’s “state” (When referring to an Object’s state we mean the values of each of its fields)
@@ -114,6 +131,7 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/SortedListsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _SortListImp:
 
 Implementing a Sorted List ADT
 -------------------------------
@@ -164,7 +182,7 @@ Since we can think of a SortedList as a List with modified characteristics and a
 
     <!-- TODO: fix link. -->
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/CS2-SortedListDemo.zip"  target="_blank">
-      <img src="../html/_static/Images/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
      CS2-SortedListDemo.zip</img>
       </a>
 
@@ -175,6 +193,7 @@ Since we can think of a SortedList as a List with modified characteristics and a
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jhdza823' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
+.. _SortListImpArray:
 
 Implementing a Sorted List ADT with and Underlying Array
 ---------------------------------------------------------
@@ -183,6 +202,8 @@ Implementing a Sorted List ADT with and Underlying Array
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_unitfyqf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
+
+.. _SortListImpChain:
 
 Implementing a Sorted List ADT with an Underlying Linked Chain
 ---------------------------------------------------------------
@@ -194,7 +215,7 @@ Implementing a Sorted List ADT with an Underlying Linked Chain
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedImplementationofSortedList.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
      LinkedImplementationofSortedList.pdf</img>
       </a>
 
@@ -211,6 +232,7 @@ Implementing a Sorted List ADT with an Underlying Linked Chain
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2h8sliry' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
+.. _SortListImpEff:
 
 Writing from Scratch Approach - Efficiency of the Array-Based and Link-Based implementations
 --------------------------------------------------------------------------------------------
@@ -270,7 +292,7 @@ Implementing Using Composition
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ImplementationUsingComposition.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ImplementationUsingComposition.pdf</img>
       </a>
 
@@ -325,7 +347,7 @@ Implementing Using Inheritance
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ImplementationUsingInheritance.pdf"  target="_blank">
-      <img src="../html/_static/Images/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ImplementationUsingInheritance.pdf</img>
       </a>
 
