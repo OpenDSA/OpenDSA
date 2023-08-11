@@ -209,4 +209,40 @@ To install:
   labeled **From preferences file:**, and find the **vtpreferences.epf** file
   you downloaded. Then click **Finish** to import these settings.
 
+
+
+
+
+Adding CS2 Support Projects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. admonition:: Follow Along and Engage
+
+    Labs, projects, and sample code make use of one or more of the following CS 2114 Support Projects (CS2-Support, CS2DataStructuresLib, CS-GraphWindowLib). You can download the support projects via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment...". 
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4snkjorp' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+For Future Reference As Needed: 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: Follow Along and Engage
+
+    To use all of our student configurations, it's easiest to use Java 8.  If you need help with this, watch the video below.
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q98qkist' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+
+
 You're all set to begin the assignments!
