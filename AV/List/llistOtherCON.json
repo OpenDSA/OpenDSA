@@ -52,8 +52,8 @@
       "endBefore": "/* *** ODSAendTag: LListPrev *** */",
       "tags": {
         "sig": 2,
-        "while": 6,
-        "curr": 7
+        "while": 8,
+        "curr": 11
       }
     }, {
       "url": "../../../SourceCode/Java_Generic/Lists/LList.java",
@@ -61,7 +61,7 @@
       "endBefore": "/* *** ODSAendTag: LListPos *** */",
       "tags": {
         "sig": 2,
-        "for": 5
+        "for": 7
       }
     }]
   }
