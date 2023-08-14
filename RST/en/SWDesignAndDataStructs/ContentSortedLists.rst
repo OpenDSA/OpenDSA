@@ -61,7 +61,7 @@ Interactive: Introduction to Sorted Lists
       SortedListInterface.java</img>
       </a>
       <br>
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/coures-notes/SortedListsOrderVsSorted.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/SortedListsOrderVsSorted.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       SortedListsOrderVsSorted.pdf</img>
       </a>
