@@ -181,7 +181,7 @@ Since we can think of a SortedList as a List with modified characteristics and a
    .. raw:: html
 
     <!-- TODO: fix link. -->
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/CS2-SortedListDemo.zip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exSortedLists.zip"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
      CS2-SortedListDemo.zip</img>
       </a>
