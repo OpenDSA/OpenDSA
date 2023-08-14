@@ -80,7 +80,7 @@ Interactive: Java UML Diagrams
          JavaOOPUML.pdf</img>
          </a>
          <br>
-         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStruct/course-notes/OOPUMLDiagramKey.pdf" target="_blank">
+         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/OOPUMLDiagramKey.pdf" target="_blank">
          <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/uml.png" width="32" height="32">
          UML Diagram from the example in the video</img>
          </a>
