@@ -102,7 +102,7 @@ You are to contact instructors immediately if you
 * Switched Lab sections on or after the first day of classes
 * Cannot access Web-CAT (or are registered for the wrong Web-CAT Lab section) during the second week of classes
 
-The course team understands that students may, on rare occasions, need to make adjustments to their schedule during the first couple weeks of the semester.  If a student switches Lab sections (i.e. registers for a different Lab section than they were previously assigned to in Web-CAT) the student MUST contact instructors via this form to reportLinks to an external site. any of the Web-CAT section configuration issues listed above.
+The course team understands that students may, on rare occasions, need to make adjustments to their schedule during the first couple weeks of the semester.  If a student switches Lab sections (i.e. registers for a different Lab section than they were previously assigned to in Web-CAT) the student MUST contact instructors. any of the Web-CAT section configuration issues listed above.
 
 Note that Web-CAT changes may (in most circumstances) take days to complete, students are therefore advised to continue working towards the deadline specified for their existing lab section (unless otherwise advised). 
 
