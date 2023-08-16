@@ -208,7 +208,6 @@ return values, etc.). However, there's a situation not covered by the test,
 which is passing `null` to the `SimpleMath` constructor:
 
 .. code-block:: java
-  :emphasize-lines: 1
 
   SimpleMath sm = new SimpleMath(null);
   sm.divideByDivisor(50);  // This will throw a NullPointerException
@@ -419,18 +418,20 @@ With good techniques (including mutation testing) and strategies
 (writing abundant test cases), you can  
 make the process effective and save time.
 
-How do I recover "Mutation List"/"Mutation Summary" tab?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+How do I recover the "Mutation List"/"Mutation Summary" tabs?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are two ways to get the "Mutation List" and "Mutation Summary" tabs back. 
+There are two ways to get the "Mutation List" and "Mutation Summary"
+tabs back if you accidentaly close them.
 
-1. If you cannot find "Mutation List"/"Mutation Summary" tab, simply run mutation testing,
-``Run as --> Mutation Test``. This will regeneate both "Mutation List" and "Mutation Summary"
-tabs.
+1. Simply run mutation testing again: ``Run as --> Mutation Test``.
+   This might regeneate both the "Mutation List" and "Mutation Summary"
+   tabs.
 
-2. Alternately, on the menu bar, navigate to ``Window --> Show View --> Other``. 
-There, under the ``PIT`` option, you should find both "Mutation List" and "Mutation Summary".
-Click ``Open`` to get the tabs back.
+2. On the menu bar, navigate to ``Window --> Show View --> Other``. 
+   There, under the ``PIT`` option, you should find both "Mutation
+   List" and "Mutation Summary".
+   Click on the desired tab and then ``Open``.
 
 .. odsafig:: Images/mutation_panelview.png
    :align: center
