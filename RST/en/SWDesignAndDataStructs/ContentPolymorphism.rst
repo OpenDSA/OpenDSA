@@ -159,7 +159,7 @@ Interactive: Java Inheritance: equals(), toString()
 
 Java OOP Checkpoint 3
 ---------------------
-.. avembed:: Exercises/SWDesignAndDataStructs/OOP1Checkpoint3Summ.html ka
+.. avembed:: Exercises/SWDesignAndDataStructs/OOP2Checkpoint3Summ.html ka
    :long_name: Checkpoint 3
 
 .. _IntroPolyMeasure: 
@@ -256,11 +256,7 @@ Interactive: Polymorphism Integer Example
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=0_33oovpxg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>    
 
-Checkpoint 6
-------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/OOP2Checkpoint6Summ.html ka
-   :long_name: Checkpoint 6
 
 
 Programming Practice: Polymorphism 2
