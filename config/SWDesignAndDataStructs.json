@@ -58,7 +58,7 @@
         "required": false
     },
     "glob_ka_options": {
-        "threshold": 2,
+        "threshold": 3,
         "points": 5.0,
         "required": true,
         "partial_credit": true
@@ -87,16 +87,45 @@
         },
         "Introduction": {
             "SWDesignAndDataStructs/AdminWelcome": {
-                
+                "WelcomeCheckpointSumm": {
+                    "points": 5,
+                    "threshold": 5
+                }
             },
             "SWDesignAndDataStructs/AdminIDESetup": {
                 
             },
             "SWDesignAndDataStructs/ContentFundamentals": {
-                
+                "ControlFlowSumm": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "FundamentalsCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "ScopeSumm": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "VariablesSumm": {
+                    "points": 5,
+                    "threshold": 3
+                }
             },
             "SWDesignAndDataStructs/ContentJUNITReview": {
-                
+                "JunitCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "JunitCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "JunitCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 4
+                }
             },
             "SWDesignAndDataStructs/ContentStyle": {
                 
@@ -113,16 +142,56 @@
         },
         "Java Review": {
             "SWDesignAndDataStructs/ContentExceptions": {
-                
+                "ExceptionsCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "ExceptionsCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 4
+                }
             },
             "SWDesignAndDataStructs/ContentPolymorphism": {
-                
+                "OOP1Checkpoint1Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "OOP1Checkpoint2Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "OOP2Checkpoint3Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "OOP2Checkpoint4Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "OOP2Checkpoint5Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/ContentJavaArrays": {
-                
+                "ArrayCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "ArrayCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 5
+                },
+                "ArrayCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 3
+                }
             },
             "SWDesignAndDataStructs/ContentGenerics1": {
-                
+                "Generics1Checkpoint1Summ": {
+                    "points": 5,
+                    "threshold": 4
+                }
             },
             "SWDesignAndDataStructs/Lab2Polymorphism": {
                 
@@ -141,9 +210,23 @@
             }
         },
         "Bags": {
-            
             "SWDesignAndDataStructs/ContentBags1": {
-                
+                "BagsCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "BagsCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "BagsCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "BagsCheckpoint4Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/Lab3MovieDatabase": {
                 
@@ -166,10 +249,36 @@
                 
             },
             "SWDesignAndDataStructs/ContentLinkedChains": {
-                
+                "PointerEX1PRO": {
+                    "points": 5,
+                    "threshold": 1
+                },
+                "PointerEX2PRO": {
+                    "points": 5,
+                    "threshold": 1
+                },
+                "LinkedChainCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "LinkedChainCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/ContentLinkedBags": {
-                
+                "LinkedBagCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 4
+                },
+                "LinkedBagCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "LinkedBagCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/Lab4GroceryBags": {
                 
@@ -186,10 +295,32 @@
         },
         "Efficiency, Stacks": {
             "SWDesignAndDataStructs/ContentEfficiency": {
-                
+                "EfficiencyCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "EfficiencyCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 3
+                }
             },
             "SWDesignAndDataStructs/ContentStacks": {
-                
+                "StacksCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "StacksCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "StacksCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 4
+                },
+                "StacksCheckpoint4Summ": {
+                    "points": 5,
+                    "threshold": 1
+                }
             },
             "SWDesignAndDataStructs/Lab5IceCreamCone": {
                 
@@ -206,10 +337,32 @@
         },
         "Ethics and Design": {
             "SWDesignAndDataStructs/ContentEthics": {
-                
+                "EthicsCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "EthicsCheckpoint2ASumm": {
+                    "points": 5,
+                    "threshold": 1
+                },
+                "EthicsCheckpoint2BSumm": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "EthicsCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 3
+                }
             },
             "SWDesignAndDataStructs/ContentDesignMVC": {
-                
+                "DesignCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "DesignCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 5
+                }
             },
             "SWDesignAndDataStructs/Lab6ArrayStack": {
                 
@@ -238,7 +391,22 @@
                 
             },
             "SWDesignAndDataStructs/ContentRecursion": {
-                
+                "RecursionCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 5
+                },
+                "RecursionCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 5
+                },
+                "RecursionCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "RecursionCheckpoint4Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/ContentMidSemester": {
                 
@@ -252,7 +420,38 @@
         },
         "Queues": {
             "SWDesignAndDataStructs/ContentQueues": {
-                
+                "QueueCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "QueueCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "QueueCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "QueueCheckpoint4Summ": {
+                    "points": 5,
+                    "threshold": 4
+                },
+                "QueueCheckpoint5Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "QueueCheckpoint6Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "QueueCheckpoint7Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "QueueCheckpoint8Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/Lab8Carrano": {
                 
@@ -269,10 +468,28 @@
         },
         "Lists and Generics": {
             "SWDesignAndDataStructs/ContentLists": {
-                
+                "ListsCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "ListsCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "ListsCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "ListsCheckpoint4Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/ContentGenerics2": {
-                
+                "Generics2Checkpoint1Summ": {
+                    "points": 5,
+                    "threshold": 3
+                }
             },
             "SWDesignAndDataStructs/Lab9SingleLink": {
                 
@@ -295,10 +512,40 @@
                 
             },
             "SWDesignAndDataStructs/ContentComparingAndSorting": {
-                
+                "CompSortCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "CompSortCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "CompSortCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "CompSortCheckpoint4Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "CompSortCheckpoint5Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/ContentIterators": {
-                
+                "IteratorsCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 5
+                },
+                "IteratorsCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "IteratorsCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 5
+                }
             },
             "SWDesignAndDataStructs/Lab10DoubleLink": {
                 
@@ -315,7 +562,14 @@
                 
             },
             "SWDesignAndDataStructs/ContentSortedLists": {
-                
+                "SortedListsCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "SortedListsCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 4
+                }
             },
             "SWDesignAndDataStructs/Project5": {
                 
@@ -328,7 +582,6 @@
             }
         },
         "Project ": {
-            
             "SWDesignAndDataStructs/Project5DesignSubmission": {
                 
             },
@@ -338,10 +591,24 @@
         },
         "Cloning and Trees ": {
             "SWDesignAndDataStructs/ContentCloning": {
-                
+                "CloningCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/ContentTrees": {
-                
+                "TreesCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "TreesCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 3
+                },
+                "TreesCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 3
+                }
             },
             "SWDesignAndDataStructs/Lab13BinaryTrees": {
                 
@@ -361,10 +628,28 @@
                 
             },
             "SWDesignAndDataStructs/ContentBinarySearch": {
-                
+                "BinarySearchCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/ContentBinarySearchTrees": {
-                
+                "BSTCheckpoint1Summ": {
+                    "points": 5,
+                    "threshold": 7
+                },
+                "BSTCheckpoint2Summ": {
+                    "points": 5,
+                    "threshold": 5
+                },
+                "BSTCheckpoint3Summ": {
+                    "points": 5,
+                    "threshold": 2
+                },
+                "BSTCheckpoint4Summ": {
+                    "points": 5,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/Lab14BST": {
                 
