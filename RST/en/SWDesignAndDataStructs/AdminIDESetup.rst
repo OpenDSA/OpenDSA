@@ -230,7 +230,7 @@ Adding CS2 Support Projects
 
 
 For Future Reference As Needed: 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: Follow Along and Engage
 
