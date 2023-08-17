@@ -41,21 +41,14 @@ Java Interlude 2 Exceptions from  `Data Structures and Abstractions with Java, 4
 Interactive: Exception Handling
 -------------------------------
 
-.. admonition:: Follow Along, Practice and Explore
+.. admonition:: Follow Along and Engage
 
-    Download to run and explore the java file (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
-        1) create a new Eclipse project, then 
-        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
-        3) download and import the standalone \*.java file(s) to the created package.
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
 
    .. raw:: html
 
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/Exceptions.java"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
-      Exceptions.java</img>
-      </a>
-      <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToExceptions.pdf" target="_blank">
          <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
          Video Slides IntroToExceptions.pdf</img>
@@ -262,9 +255,9 @@ Exception Handling Examples - Basic to Complex
    
       .. raw:: html
    
-         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exExceptionHandlingWithThrowExample.zip"  target="_blank">
+         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exExceptionHandlingWithThrow.zip"  target="_blank">
          <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
-         exExceptionHandlingWithThrowExample.zip</img>
+         exExceptionHandlingWithThrow.zip</img>
          </a>
 
 
