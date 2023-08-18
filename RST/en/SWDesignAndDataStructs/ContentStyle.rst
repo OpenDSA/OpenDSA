@@ -158,13 +158,13 @@ should be changed to:
 
 .. code-block:: java
 
-//Using new as a variable name is a syntax error because new is a reserved word in Java
+    //Using new as a variable name is a syntax error because new is a reserved word in Java
 
-int new = 15;
+    int new = 15;
 
-//Using int as a variable name is a syntax error because int is a reserved word in Java
+    //Using int as a variable name is a syntax error because int is a reserved word in Java
 
-String int = “15”;
+    String int = “15”;
 
 
 .. admonition:: Takeaway
@@ -233,13 +233,13 @@ Example(s):
 
 .. code-block:: java  
 
-calcClassAverage( … )
+    calcClassAverage( … )
 
-getNumStudents( … )
+    getNumStudents( … )
 
-findSum( … )
+    findSum( … )
 
-drawLine( ... )
+    drawLine( ... )
 
 Variables
 ---------

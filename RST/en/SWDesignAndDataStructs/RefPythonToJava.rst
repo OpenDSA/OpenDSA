@@ -10,9 +10,7 @@
 Python to Java Tutorial
 =========================
 
-Students can optionally review the Python <-> Java differences from CS2064 provided by John Wenskovitch: Python to Java Comparison
-
-This is recommmended for students who have a python background but not much java experience.
+**Students can optionally review the Python <-> Java differences from CS2064 provided by John Wenskovitch. This is recommmended for students who have a python background but not much java experience.**
 
 
 Code blocks 
@@ -157,14 +155,14 @@ In Python, we were given convenient English versions of logical operators:  ``an
 
 .. code-block:: java
 
-\\ logical AND
-&& 
+    \\ logical AND
+    && 
 
-\\ logical OR
-|| \\the pipe character
+    \\ logical OR
+    || \\the pipe character
 
-\\ logical NOT
-!
+    \\ logical NOT
+    !
 
 Object comparison:
 ----------------------

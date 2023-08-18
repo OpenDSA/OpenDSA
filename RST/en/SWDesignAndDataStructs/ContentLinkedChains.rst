@@ -52,7 +52,6 @@ Two references which both refer to a single object are said to be “sharing”.
 Interactive: Intro to Linked Chains of Nodes
 --------------------------------------------
 
-
 .. admonition:: Follow Along and Engage
 
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
