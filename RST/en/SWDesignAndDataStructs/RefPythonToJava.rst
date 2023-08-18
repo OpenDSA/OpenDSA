@@ -155,14 +155,14 @@ In Python, we were given convenient English versions of logical operators:  ``an
 
 .. code-block:: java
 
-\\ logical AND
-&& 
+    \\ logical AND
+    && 
 
-\\ logical OR
-|| \\the pipe character
+    \\ logical OR
+    || \\the pipe character
 
-\\ logical NOT
-!
+    \\ logical NOT
+    !
 
 Object comparison:
 ----------------------

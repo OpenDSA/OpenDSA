@@ -54,7 +54,7 @@ Interactive: Exception Handling
          Video Slides IntroToExceptions.pdf</img>
       </a>
       <br>
-      The video is 9:31 in length
+      
 
 .. raw:: html
 
