@@ -156,6 +156,10 @@
                     "points": 6,
                     "threshold": 3
                 },
+                "Programming Practice: Object Oriented Programming": {
+                  "points": 10,
+                  "threshold": 2
+                },
                 "OOP1Checkpoint2Summ": {
                     "points": 4,
                     "threshold": 2
@@ -168,10 +172,20 @@
                     "points": 4,
                     "threshold": 2
                 },
+                "Programming Practice: Polymorphism 1": {
+                  "points": 10,
+                  "threshold": 2
+                },
                 "OOP2Checkpoint5Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                "Programming Practice: Polymorphism 2": {
+                  "points": 20,
+                  "threshold": 4
                 }
+                
+                
             },
             "SWDesignAndDataStructs/ContentJavaArrays": {
                 "ArrayCheckpoint1Summ": {
@@ -185,6 +199,14 @@
                 "ArrayCheckpoint3Summ": {
                     "points": 6,
                     "threshold": 3
+                },
+                "Programming Practice: Java Arrays 1": {
+                  "points": 15,
+                  "threshold": 3
+                },
+                "Programming Practice: Java Arrays 2": {
+                  "points": 5,
+                  "threshold": 1
                 }
             },
             "SWDesignAndDataStructs/ContentGenerics1": {
@@ -215,6 +237,10 @@
                     "points": 6,
                     "threshold": 3
                 },
+                "Programming Practice: ArrayBags": {
+                  "points": 10,
+                  "threshold": 2
+                },
                 "BagsCheckpoint2Summ": {
                     "points": 4,
                     "threshold": 2
@@ -226,7 +252,12 @@
                 "BagsCheckpoint4Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                "Programming Practice: The Bag Interface": {
+                  "points": 5,
+                  "threshold": 1
                 }
+                
             },
             "SWDesignAndDataStructs/Lab3MovieDatabase": {
                 
@@ -261,10 +292,29 @@
                     "points": 4,
                     "threshold": 2
                 },
+                "Programming Practice: Linked Chains 1": {
+                  "points": 15,
+                  "threshold": 3
+                },
+                 
                 "LinkedChainCheckpoint2Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                
+                "Programming Practice: Linked Chains 2": {
+                  "points": 20,
+                  "threshold": 4
+                },
+                "PointerEX3PRO": {
+                    "points": 2,
+                    "threshold": 1
+                },
+                "CMpointersSumm": {
+                    "points": 2,
+                    "threshold": 1
                 }
+                
             },
             "SWDesignAndDataStructs/ContentLinkedBags": {
                 "LinkedBagCheckpoint1Summ": {
@@ -278,6 +328,10 @@
                 "LinkedBagCheckpoint3Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                "Programming Practice: LinkedBags": {
+                  "points": 10,
+                  "threshold": 2
                 }
             },
             "SWDesignAndDataStructs/Lab4GroceryBags": {
@@ -320,6 +374,10 @@
                 "StacksCheckpoint4Summ": {
                     "points": 2,
                     "threshold": 1
+                },
+                "Programming Practice: LinkedStacks": {
+                  "points": 10,
+                  "threshold": 2
                 }
             },
             "SWDesignAndDataStructs/Lab5IceCreamCone": {
@@ -395,6 +453,12 @@
                     "points": 10,
                     "threshold": 5
                 },
+                
+                "Programming Practice: Recursion 1": {
+                  "points": 40,
+                  "threshold": 8
+                },
+                
                 "RecursionCheckpoint2Summ": {
                     "points": 10,
                     "threshold": 5
@@ -403,9 +467,41 @@
                     "points": 4,
                     "threshold": 2
                 },
+                "Programming Practice: Recursion 2": {
+                  "points": 15,
+                  "threshold": 3
+                },
                 "RecursionCheckpoint4Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                "Programming Practice: Recursion 3": {
+                  "points": 5,
+                  "threshold": 1
+                },
+                "RecTraceSummFwdFlow": {
+                    "points": 2,
+                    "threshold": 1
+                },
+                "RecTraceSummbckwrdFlow": {
+                    "points": 2,
+                    "threshold": 1
+                },
+                "RecTraceSummFuncErr": {
+                    "points": 2,
+                    "threshold": 1
+                },
+                "RecTraceSummTwoRC": {
+                    "points": 2,
+                    "threshold": 1
+                },
+                "RecTraceSummHowmany": {
+                    "points": 2,
+                    "threshold": 1
+                },
+                "RecTraceSummHard": {
+                    "points": 2,
+                    "threshold": 1
                 }
             },
             "SWDesignAndDataStructs/ContentMidSemester": {
@@ -423,6 +519,10 @@
                 "QueueCheckpoint1Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                "Programming Practice: Queues 1": {
+                    "points": 15,
+                    "threshold": 3
                 },
                 "QueueCheckpoint2Summ": {
                     "points": 6,
@@ -450,6 +550,10 @@
                 },
                 "QueueCheckpoint8Summ": {
                     "points": 4,
+                    "threshold": 2
+                },
+                "Programming Practice: Queues 2": {
+                    "points": 10,
                     "threshold": 2
                 }
             },
@@ -480,15 +584,27 @@
                     "points": 4,
                     "threshold": 2
                 },
+                "Programming Practice: Lists 1": {
+                    "points": 15,
+                    "threshold": 3
+                },
                 "ListsCheckpoint4Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                "Programming Practice: Lists 2": {
+                    "points": 20,
+                    "threshold": 4
                 }
             },
             "SWDesignAndDataStructs/ContentGenerics2": {
                 "Generics2Checkpoint1Summ": {
                     "points": 6,
                     "threshold": 3
+                },
+                "Programming Practice: Generics 1": {
+                    "points": 10,
+                    "threshold": 2
                 }
             },
             "SWDesignAndDataStructs/Lab9SingleLink": {
@@ -531,7 +647,16 @@
                 "CompSortCheckpoint5Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                "Programming Practice: Insertion Sort": {
+                    "points": 15,
+                    "threshold": 3
+                },
+                "Programming Practice: Comparators": {
+                    "points": 10,
+                    "threshold": 2
                 }
+                
             },
             "SWDesignAndDataStructs/ContentIterators": {
                 "IteratorsCheckpoint1Summ": {
@@ -545,6 +670,10 @@
                 "IteratorsCheckpoint3Summ": {
                     "points": 10,
                     "threshold": 5
+                },
+                "Programming Practice: Iterators": {
+                    "points": 10,
+                    "threshold": 2
                 }
             },
             "SWDesignAndDataStructs/Lab10DoubleLink": {
@@ -631,7 +760,12 @@
                 "BinarySearchCheckpoint1Summ": {
                     "points": 4,
                     "threshold": 2
+                },
+                "Programming Practice: Binary Search": {
+                    "points": 10,
+                    "threshold": 2
                 }
+                
             },
             "SWDesignAndDataStructs/ContentBinarySearchTrees": {
                 "BSTCheckpoint1Summ": {
