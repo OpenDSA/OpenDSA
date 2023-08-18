@@ -16,7 +16,6 @@ Downloading and Installing Eclipse
 ----------------------------------
 
 This course teaches programming using Java. We will use the  `Eclipse Integrated Development Environment <https://www.eclipse.org/downloads/packages/installer>`_
-integrated development environment (commonly called an IDE)
 for code development in class, including all examples shown.
 The instructions here include the user libraries necessary for
 assignments in this course, and programming assignments will not
@@ -30,7 +29,7 @@ compile without these.
 
    &nbsp;&nbsp;&nbsp;1. Open <a href="https://www.eclipse.org/downloads/packages/installer" target="_blank">https://www.eclipse.org/downloads/packages/installer</a>
 
-2. Click on the Download link in the box at the top that matches your computer.
+1. Click on the Download link in the box at the top that matches your computer.
 
    .. admonition:: Which version of Eclipse should I download? 32 or 64-bit? x86_64 or AArch64?
    
@@ -40,14 +39,14 @@ compile without these.
         
         * For Mac: `Figure out what processor you have in your Mac <https://www.howtogeek.com/706226/how-to-check-if-your-mac-is-using-an-intel-or-apple-silicon-processor/>`_, and then download the Mac x86_64 version for Intel processors, or AArch64 for the Apple processors.
 
-3. After the download is complete, follow the installation instructions
-   beginning at step 2 on this page, selecting **IDE for Java Developers** when prompted.
+2. After the download is complete, follow the installation instructions
+   beginning at step 2 on this page, selecting **IDE for Java Developers** when prompted. You will also need to accept terms and conditions.
 
-4. Start Eclipse. ( If you are on a Mac, you need to set
+3. Start Eclipse. ( If you are on a Mac, you need to set
    **System Preferences->Security and Privacy** to allow apps downloaded from
    locations other than the Mac App Store.)
 
-5. The first time you start Eclipse, you'll be asked to specify a location for the Eclipse Workspace; this is where Eclipse will keep your programming projects. You can either use the default recommendation or place it elsewhere on your file system. Check the **Use this as the default and the do not ask again** option, so Eclipse will not ask you every time you start it, and click **Launch**.
+4. The first time you start Eclipse, you'll be asked to specify a location for the Eclipse Workspace; this is where Eclipse will keep your programming projects. You can either use the default recommendation or place it elsewhere on your file system. Check the **Use this as the default and the do not ask again** option, so Eclipse will not ask you every time you start it, and click **Launch**.
 
 
 .. odsafig:: Images/SetupFig1.png
