@@ -98,7 +98,7 @@ Interactive: ExLinkedBagJUnit  Demonstration
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/eclipse/exLinkedBagsWithJUnit.zip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/examples/eclipse/exLinkedBagsWithJUnit.zip"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exLinkedBagsWithJUnit.zip</img>
       </a>
