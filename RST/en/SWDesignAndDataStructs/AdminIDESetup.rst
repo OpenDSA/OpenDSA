@@ -10,6 +10,8 @@
 Setting Up Your Programming Environment
 =======================================
 
+**Students with synchronous lab sections are encouraged to attend the first week for assistance with this setup process.**
+
 Downloading and Installing Eclipse
 ----------------------------------
 
