@@ -7,19 +7,17 @@
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="850" data-width="950">
+  <body data-height="1050" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="FUNDAMENTALS_Q3">
         <p class="question">Assume that an object of the following class has just been created:
           <pre class="prettyprint">
 
-            public class Unknown
-            {
+            public class Unknown{
                 private int x;
 
-                public Unknown()
-                {
+                public Unknown(){
                     x = 17;
                     method1();
                     method2(5);
@@ -27,22 +25,19 @@
                     System.out.println(x);      // Line D
                 }
             
-                public void method1()
-                {
+                public void method1(){
                     --x;
                     int x = this.x;
                     x++;
                     System.out.println(this.x); // Line A
                 }
             
-                public void method2(int x)
-                {
+                public void method2(int x){
                     x++;
                     System.out.println(x);      // Line B
                 }
             
-                public void method3()
-                {
+                public void method3(){
                     --x;
                     int x = 2;
                     x++;
