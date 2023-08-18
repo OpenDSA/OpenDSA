@@ -52,11 +52,53 @@ Two references which both refer to a single object are said to be “sharing”.
 Interactive: Intro to Linked Chains of Nodes
 --------------------------------------------
 
-.. admonition:: The LinkedChain Class
 
-   **TODO** : THIS CLASS DOESN'T GO WITH THIS VIDEO 
-   
-   Consider this class when viewing this video on Linked Chains: 
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToNodes.pptx"  target="_blank">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      IntroToNodes.pptx</a
+
+.. raw:: html
+
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xfyll19n' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
+
+
+Checkpoint 1
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/LinkedChainCheckpoint1Summ.html ka
+   :long_name: Checkpoint 1
+
+
+Programming Practice: Linked Chains 1
+-------------------------------------
+
+.. admonition:: Pointer Programming Exercise Tips
+
+  * The Link class does not provide getters or setters, interact with fields directly to access or modify them
+  *  The Link class provides a constructor that receives two parameters, data and next. To instantiate a new Link node with a value of “Hello” and a next field set to null: ``Link myLink =  new Link("Hello", null);``
+  *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
+
+.. extrtoolembed:: 'Programming Practice: Linked Chains 1'
+   :workout_id: 2479
+  
+.. _PointerVisDemo: 
+
+Interactive: Demo in Visualizer
+-------------------------------
+
+
+.. admonition:: LinkedChain Class Example
+
+  
+   This code can be pasted into the visualizer from the link in the course slides: 
    
    .. code-block:: java
 
@@ -102,47 +144,6 @@ Interactive: Intro to Linked Chains of Nodes
             } // end constructor
          } // end Node
       }
-
-.. admonition:: Follow Along and Engage
-
-    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
-
-   .. raw:: html
-
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToNodes.ppt"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
-      IntroToNotes.ppt</a
-
-.. raw:: html
-
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xfyll19n' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-
-
-Checkpoint 1
-------------
-
-.. avembed:: Exercises/SWDesignAndDataStructs/LinkedChainCheckpoint1Summ.html ka
-   :long_name: Checkpoint 1
-
-
-Programming Practice: Linked Chains 1
--------------------------------------
-
-.. admonition:: Pointer Programming Exercise Tips
-
-  * The Link class does not provide getters or setters, interact with fields directly to access or modify them
-  *  The Link class provides a constructor that receives two parameters, data and next. To instantiate a new Link node with a value of “Hello” and a next field set to null: ``Link myLink =  new Link("Hello", null);``
-  *  Double quotes indicate that the parameter is a String, single quotes indicate that the parameter is a char or Character. So, ``new Link("A", null);`` is not the same as ``new Link(‘A’, null);``
-
-.. extrtoolembed:: 'Programming Practice: Linked Chains 1'
-   :workout_id: 2479
-  
-.. _PointerVisDemo: 
-
-Interactive: Demo in Visualizer
--------------------------------
 
 .. admonition:: Follow Along and Engage
 

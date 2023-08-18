@@ -92,8 +92,8 @@ assertions in both styles.
    :header-rows: 1
 
    * - Task
-     - Newer Assertion Style
-     - Older Assertion Style
+     - AssertThat Style
+     - Traditional Style
      - Notes
    * - Checking that ``x`` is equal to 5
      - ``assertThat(x).isEqualTo(5);``
