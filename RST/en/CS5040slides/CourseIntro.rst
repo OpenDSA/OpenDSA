@@ -11,7 +11,7 @@
 
 
 ===================
-CS5040 Introduction
+Course Introduction
 ===================
 
 Introduction
@@ -73,19 +73,20 @@ Introduction
 
    * Do you have a ForceAdd issue?
    * Review of Canvas site:
-     * Piazza, OpenDSA (our textbook), Eclipse, Web-CAT
+      * Piazza, OpenDSA (our textbook), Eclipse, Web-CAT
    * Go over Syllabus
 
      
 .. slide:: Course Role in the Curriculum
 
-   * This course represents a transition between "learning to
+   | This course represents a transition between "learning to
      program" courses (CS 1114, CS 2114) and "content" courses.
-   * To do well, you must be able to handle both
-      * Programming (we focus on projects with dynamic memory allocation and
+
+   | To do well, you must be able to handle both
+   |    Programming (we focus on projects with dynamic memory allocation and
         file processing, and they have significant design challenges)
-      * Project management and testing
-      * Content, theory and analysis
+   |    Project management and testing
+   |    Content, theory and analysis
 
    | The projects test programming proficiencies
    | OpenDSA exercises test knowledge of how algorithms work

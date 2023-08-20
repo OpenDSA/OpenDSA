@@ -1,6 +1,6 @@
 {
-  "title": "CS5040 Coursenotes",
-  "desc": "CS5040 2023 Coursenotes",
+  "title": "DSA Coursenotes",
+  "desc": "DSA 2023 Coursenotes",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
@@ -60,7 +60,7 @@
   }, 
   "chapters": {
     "Week 1, Day 1": {
-      "CS5040slides/CS5040Intro": {},
+      "CS5040slides/CourseIntro": {},
       "CS5040slides/Intro": {}
     }
   }
