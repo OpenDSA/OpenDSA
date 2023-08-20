@@ -27,6 +27,15 @@ Project 1 Hashing
      given hash function, and that the key is an integer.
 
      
+.. slide:: Double Hashing
+
+   .. inlineav:: collisionCON8 ss
+      :long_name: Double Hashing Slideshow 3
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON8.js
+      :output: show
+
+
 .. slide:: Primary design issue: Communications
 
    * World/DB class, Hash Table, Memory Manager need appropriate
@@ -42,7 +51,7 @@ Project 1 Hashing
    * Record class and Handle class can hide most implementation details.
 
      
-.. slide:: What is stored in the hash table?                      
+.. slide:: What is stored in the hash table?
 
    * Clearly there has to be a key, and there has to be a value
      (a record?)
