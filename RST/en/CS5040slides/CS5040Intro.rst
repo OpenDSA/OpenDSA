@@ -19,9 +19,6 @@ Introduction
 
 .. TODO::
    
-   | Handouts:
-        There are no actual handouts, since this is a zoom course. So
-        I cannot actually give out the syllabus, or a signup sheet.
    | Lesson Plan for Today:
    |    Virtual signup Sheet: Need some way to know who attended today.
    |    Force Adds: Everyone ought to be able to register online at
@@ -69,42 +66,30 @@ Introduction
 
    What we are doing today:
 
-   * Administration stuff
-   * Course mechanics
+   * Administration/Course mechanics
    * Course introduction (OpenDSA Chapter 1)
 
-.. slide:: Administration stuff
+.. slide:: Administration/Course Mechanics
 
-   * Canvas site
    * Do you have a ForceAdd issue?
-   * Who is here today?
-     
-.. slide:: Course Mechanics
-
+   * Review of Canvas site:
+     * Piazza, OpenDSA (our textbook), Eclipse, Web-CAT
    * Go over Syllabus
-   * Course online support: Canvas, OpenDSA, Web-CAT
 
-.. slide:: Canvas
-
-   We will use Canvas
-
-   * Project specs and supporting documents
-   * Link to Piazza forum
-   * Post scores and grades
-   * Access to OpenDSA (online textbook)
-
-.. slide:: Role in the Curriculum
+     
+.. slide:: Course Role in the Curriculum
 
    * This course represents a transition between "learning to
      program" courses (CS 1114, CS 2114) and "content" courses.
    * To do well, you must be able to handle both
       * Programming (we focus on projects with dynamic memory allocation and
         file processing, and they have significant design challenges)
+      * Project management and testing
       * Content, theory and analysis
 
-   * The projects test programming proficiencies
-   * OpenDSA exercises test knowledge of how algorithms work
-   * Exams test understanding of the theory (analysis)
+   | The projects test programming proficiencies
+   | OpenDSA exercises test knowledge of how algorithms work
+   | Exams test understanding of the theory (analysis)
 
 .. note::
 
@@ -123,14 +108,28 @@ Introduction
 
   * Homework due periodically through the semester
 
-    * Small homework (Chapter 1) due at 11pm this Thursday (in 2 days)
 
 .. slide:: Web-CAT
 
-  * Get the updated plugin
-  * Project submission
+  * Install the latest Eclipse
+  * Get the updated Web-CAT plugin
+  * Project submission from within Eclipse
   * Support for junit testing
-  * Auto-grading: Correctness, style
+  * Test suites evaluated by Mutation Testing
+  * Auto-grading: Correctness, style (human grader for design)
+
+
+.. slide:: Projects
+
+  * The hardest part of this course!
+     * 4 projects, 3-4 week lifecycle, 45% of course grade
+     * Big enough that you need to practice good project management
+       skills (Miletones help you to structure this)
+
+  * Gaining testing proficiency is a key course objective
+     * Junit testing to define test suite
+     * Mutation Testing to evaluate test suite
+
 
 .. slide:: Milestones
 
@@ -144,13 +143,15 @@ Introduction
    * In previous semesters, milestones had the effect of boosting the final
      grade of the middle third of the class by about a full letter grade.
 
-.. slide:: Homework
+
+.. slide:: Homework for Today
 
    * Look at Canvas
    * Look at Piazza site, make sure you are enrolled there
    * Look at Project 1 spec: Will discuss next time
-   * Do Chapter 1 exercises in OpenDSA by 11:00pm Thursday (in 2 days)
+   * Do Chapter 1 exercises in OpenDSA
+
 
 .. slide:: Before you leave today
 
-   * Talk to me if there is a ForceAdd issue
+   * Talk to me if there is a Force Add issue

@@ -100,8 +100,8 @@ Project Management
 
 .. slide:: How to fail at implementing your project:
 
-     | Write the project
-     | Debug the project
+     | Step 1: Write the project
+     | Step 2: Debug the project
 
 
 .. slide:: How to succeed at implementing
@@ -230,7 +230,7 @@ Project Management
 
    | Two approaches:
    |   Divide and Conquer: Bad
-   |   Extreme Programming: Good
+   |   "Extreme" Programming: Good
 
 .. note::
 

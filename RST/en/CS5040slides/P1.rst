@@ -18,15 +18,16 @@ Project 1 Design
 
 .. slide:: Project 1
 
-   | Be aware of due date, milestone dates
+   | Be aware of project due date, milestone due dates
    | Aim to get it done PRIOR to the EARLY BONUS date.
    | You need to write a "scanner" or "parser" to read info from
      command file (text).
    | You need to use command line parameters
-   |   See Tutorials in Chapter 3 of OpenDSA
-   |   For parsing: Use Scanner Class [3.7] or
+   |   See Tutorials in Chapter 2 of OpenDSA
+   |   For parsing: Use Scanner Class [2.7] or
        Pattern/Matcher classes
 
+       
 .. slide:: Project 1 Class Organization (1)
 
    | Q: When do you need separate classes?
@@ -67,6 +68,8 @@ Project 1 Design
    | You are usually banned from using standard Java data structures
      classes
    |   You may **not** use things like ``HashMap``, ``ListArray``, ``Vector``
+   |     Exception: You may use ``ListArray`` to thelp you with
+         processing the keywords in the parser.
    |   You may use standard language features like arrays
    |   You may use string and file manipulation classes/methods that
        make parsing of the command file easy.          
@@ -76,18 +79,18 @@ Project 1 Design
    | Good names matter. REALLY!
    | Every competent software development organization enforces some
      coding style.
-   | Generalize your container classes
-   |   For P1, your hash table should not be more specialized than the
-       fact that it is storing strings.
+   |   Web-CAT enforces a particular coding style.
+   | Generalize your container classes (hash table, memory manager)
    |   For P1, your memory manager should not know anything about the
        rest of the project, it just stored bytes
+   |   See the Seminar class serializer/deserializer
 
-.. slide:: Container Classes
+   
+.. slide:: Container Classes: Hash Table
 
    | The hash table is a container class. A container class is anything
      that stores a collection of arbitrary objects.
-   | Want to support any record type. (Actually, any string is fine)
-   | We will talk about this later in general. For now, just hide
-     details behind some Record class
+   | Want to support any record type. (OK to assume an integer key.)
+   | Hide details behind some Record class
    | Need to deal with concept of comparison. Your record should give
      you back the string as its key.
