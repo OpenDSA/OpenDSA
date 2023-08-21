@@ -59,9 +59,11 @@
     "required": true
   }, 
   "chapters": {
-    "Week 1, Day 1": {
+    "Week 1": {
       "CS5040slides/CourseIntro": {},
-      "CS5040slides/Intro": {}
+      "CS5040slides/Intro": {},
+      "CS5040slides/P1": {},
+      "CS5040slides/Math": {}
     }
   }
 }

@@ -59,13 +59,10 @@
     "required": true
   }, 
   "chapters": {
-    "Week 1, Day 1": {
+    "Week 1": {
       "CS5040slides/CourseIntro": {},
-      "CS5040slides/Intro": {}
-    },
-    "Week 1, Day 2": {
+      "CS5040slides/Intro": {},
       "CS5040slides/P1": {},
-      "CS5040slides/P1Hash": {},
       "CS5040slides/Math": {}
     },
     "Week 2": {
@@ -73,61 +70,46 @@
       "CS5040slides/ProjManage": {},
       "CS5040slides/AlgAnal": {}
     },
-    "Week 3, Day 1": {
-      "CS5040slides/Lists": {}
-    },
-    "Week 3, Day 2": {
-      "CS5040slides/Testing": {},      
+    "Week 3": {
+      "CS5040slides/Lists": {},
+      "CS5040slides/Testing": {},
       "CS5040slides/StackQueue": {}
     },
-    "Week 4, Day 1": {
+    "Week 4": {
       "CS5040slides/Binary": {},
-      "CS5040slides/Coding": {}
-    },
-    "Week 4, Day 2": {
+      "CS5040slides/Coding": {},
       "CS5040slides/BST": {}
     },
-    "Week 5, Day 1": {
+    "Week 5": {
       "CS5040slides/P2": {},
-      "CS5040slides/Binary3": {}
-    },
-    "Week 5, Day 2": {
-      "CS5040slides/Mid1": {},
+      "CS5040slides/Binary3": {},
       "CS5040slides/Heaps": {},
       "CS5040slides/Comparison": {}
     },
-    "Week 6, Day 1": {
-      "CS5040slides/Midterm1": {}
-    },
-    "Week 6, Day 2": {
+    "Week 6": {
+      "CS5040slides/Midterm1": {},
       "CS5040slides/Huffman": {}
     },
-    "Week 7, Day 1": {
+    "Week 7": {
       "CS5040slides/Trie": {},
       "CS5040slides/Overconstrained": {},
-      "CS5040slides/Sorting1": {}
-    },
-    "Week 7, Day 2": {
+      "CS5040slides/Sorting1": {},
       "CS5040slides/Sorting2": {}
     },
-        "Week 8, Day 1": {
-      "CS5040slides/Sorting3": {}
-    },
-    "Week 8, Day 2": {
+    "Week 8": {
+      "CS5040slides/Sorting3": {},
       "CS5040slides/FileProc": {}
     },
-    "Week 9, Day 1": {
-      "CS5040slides/Buffering": {}
-    },
-    "Week 9.2, Week 10.1": {
+    "Week 9": {
+      "CS5040slides/Buffering": {},
       "CS5040slides/Hashing": {}
     },
-    "Week 10.2, Week 11.1": {
+    "Week 10": {
       "CS5040slides/Indexing": {},
-      "CS5040slides/TTTree": {},
-      "CS5040slides/BTree": {}
+      "CS5040slides/TTTree": {}
     },
-    "Week 11.2": {
+    "Week 11": {
+      "CS5040slides/BTree": {},
       "CS5040slides/Mid2": {},
       "CS5040slides/SkipList": {}
     },
