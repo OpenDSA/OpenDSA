@@ -157,8 +157,8 @@ Interactive: Java Inheritance: equals(), toString()
    </center>
 
 
-Java OOP Checkpoint 3
----------------------
+Checkpoint 3
+------------
 .. avembed:: Exercises/SWDesignAndDataStructs/OOP2Checkpoint3Summ.html ka
    :long_name: Checkpoint 3
 
