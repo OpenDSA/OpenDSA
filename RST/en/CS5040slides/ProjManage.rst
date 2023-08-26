@@ -28,6 +28,8 @@ Project Management
    
    * This semester, we will pay a lot of attention to your **process**
       *   We are working on ways to grade process
+      *   (We are nto there yet -- Milestones and metrics for test
+          suites are as close as we have come so far.)
 
 
 .. slide:: Scheduling
@@ -60,14 +62,17 @@ Project Management
       :align: center
       :alt: Programmer time data
 
-   | X axis is % of total time spent by about one week before program
-     due date.
+   | X axis is % of total time that will ever be spent at a point
+     about one week before program due date.
    | Y axis is score.
 
 
 .. slide:: Historical Data 2
 
    | Results were significant:
+   |   For CS3114/5040 projects, those who spend at least half their
+       eventual project time prior to one week before project is due will
+       perform far better on average.
    |   90% of scores below median were students who did less than 50% of the
        project prior to the last week.
    |   Few did poorly who put in > 50% time early
@@ -79,8 +84,14 @@ Project Management
 
    | Correlations:
    |   Strong correlation between early time and high score
+   |      (People who start early tend to do better.)
    |   No correlation between total time spent and score
+   |      (Some people just program faster than others, which is not
+          directly tied to quality. There is more difference in time
+          required by non-novice programmers than in almost anything
+          else that people do!)
    |   No correlation between % early time and total time
+   |      (Starting early does NOT lead to spending more total time.)
 
 
 .. slide:: What is the Mechanism?
@@ -91,6 +102,8 @@ Project Management
    |   But, we have data from students who sometimes spread their
        work over time (and generally doing better) vs. doing work at
        the last minute (and generally doing worse)
+   |   Milestones empirically lift the middle third of the
+       class by a letter grade
    | Why would this matter?
    |   Spreading projects over time allows the “sleep on it”
        heuristic to operate
