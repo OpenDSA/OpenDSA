@@ -135,7 +135,7 @@ Now that you have installed the Web-CAT plugin, you can tell it where to find
 and submit assignments.
 
 1. Once Eclipse has restarted, select  **Window -> Preferences...**
-   (or on MacOS, **Eclipse -> Preferences...**) from the menu.
+   (or on MacOS, **Eclipse -> Settings...**) from the menu.
 
 .. odsafig:: Images/FormattingSetupFig1.png
    :align: center
@@ -180,7 +180,7 @@ Right-Click and "Save As..." to download to `download the stylesheet: https://co
 To install:
 
 Mac:
-  Eclipse->Preferences->Java->Code Style->Formatter->import the above file, then click OK
+  Eclipse->Settings->Java->Code Style->Formatter->import the above file, then click OK
 
 Windows:
  Window->Preferences->Java->Code Style->Formatter->import the above file, then click OK
