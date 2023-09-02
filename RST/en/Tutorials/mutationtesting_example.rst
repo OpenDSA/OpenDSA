@@ -79,13 +79,13 @@ for the arithmetic operation in question.
 For example
 
 .. code-block:: java
-   :emphasize-lines: 1
-   
+    
    int a = b + c;
 
 will be mutated to
 
 .. code-block:: java
+   :linenos:
    :emphasize-lines: 1
   
    int a = b;        // replaced with first member
@@ -93,6 +93,7 @@ will be mutated to
 and to
 
 .. code-block:: java
+   :linenos:
    :emphasize-lines: 1
    
    int a = c;        // replaced with second member

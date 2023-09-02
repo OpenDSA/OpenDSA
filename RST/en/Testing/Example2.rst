@@ -26,3 +26,4 @@ Try to get at least 75% code coverage.
 
 .. avembed:: AV/Testing/Bowling/BowlingApplet.html pe
    :long_name: Bowling Testing Without Code
+   :url_params: code=false
