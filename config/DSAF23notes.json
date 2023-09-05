@@ -69,6 +69,10 @@
       "CS5040slides/MemManage": {},
       "CS5040slides/ProjManage": {},
       "CS5040slides/AlgAnal": {}
+    },
+    "Week 3": {
+      "CS5040slides/Lists": {},
+      "CS5040slides/StackQueue": {}
     }
   }
 }
