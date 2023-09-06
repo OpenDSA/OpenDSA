@@ -129,6 +129,9 @@ Lists
 
 .. slide:: Linked List Position (3)
 
+   We will add list header and list trailer nodes. This eliminates all
+   the special cases.
+
    .. inlineav:: llistInitCON dgm
       :links: AV/List/llistCON.css
       :scripts: AV/List/llist.js AV/List/llistInitCON.js
@@ -142,6 +145,18 @@ Lists
       :align: center
 
 
+.. slide:: Design Principle: Design to Avoid Special Cases
+
+   | Adding list header/trailer nodes add a little space and (simple)
+     code to the list class constructor.
+   | However, adding them avoids dealing with special cases that
+     potentially involve bug-prone code
+   |    Avoids writing code for most special cases when inserting into
+        empty list, at head of list, or at end of list.
+   |    Avoids writing code for most special cases when deleting
+        first, last, or only element in list.
+
+              
 .. slide:: Linked List Class (1)
 
    .. inlineav:: llistVarsCON ss
