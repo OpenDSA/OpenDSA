@@ -49,6 +49,10 @@ Project 2 Design
    |       Bintree Empty Leaf (?) -- A flyweight
    |       Bintree Leaf Nodes: Contain a list of Seminars           
 
+   ? here means that the Empty Leaf Node might be implemented as a
+   separate class, or it might be a special instance of a Leaf Node.
+   What it CANNOT be is a null pointer!
+
    
 .. slide:: Spatial Data Structures
 
