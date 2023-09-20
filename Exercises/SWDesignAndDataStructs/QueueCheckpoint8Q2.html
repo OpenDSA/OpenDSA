@@ -19,7 +19,7 @@
           with <tt>queue.length</tt> as 7, you are to finish the trace of
           <tt>ensureCapacity()</tt>.
 
-          What are the values of <tt>frontIndex</tt> and <tt>backIndex</tt> after the call is complete?
+          What are the values of <tt>frontIndex</tt> and <tt>backIndex</tt> after the call is complete? 
         </p>
 
         <table style="border-collapse: collapse; width: 100%; height: 192px; border: 1px solid black;" border="1">
@@ -35,8 +35,10 @@
                 <strong>oldSize</strong>
             </th>
             <th style="width: 14%;"><strong>newSize</strong></td>
-            <th style="width: 14%;"><strong>frontIndex</strong></td>
-            <th style="width: 14%;"><strong>backIndex</strong></td>
+            <th style="width: 14%;"><strong>j</strong></td>
+            <th style="width: 14%;"><strong>i</strong></td>
+            <th style="width: 14%;"><strong>frontIndex&nbsp;</strong></td>
+            <th style="width: 14%;"><strong>backIndex </strong></td>
         </tr>
     </thead>
     <tbody>
@@ -49,6 +51,8 @@
             </td>
             <td style="text-align: center; border: 1px solid black;">7</td>
             <td style="text-align: center; border: 1px solid black;">14</td>
+            <td style="text-align: center; border: 1px solid black;"></td>
+            <td style="text-align: center; border: 1px solid black;"></td>
             <td style="text-align: center; border: 1px solid black;">1</td>
             <td style="text-align: center; border: 1px solid black;">6</td>
         </tr>
@@ -61,6 +65,8 @@
             <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>
+            <td style="text-align: center; border: 1px solid black;">1</td>
+            <td style="text-align: center; border: 1px solid black;">6</td>
         </tr>
         <tr style="height: 35px; border: 1px solid black;">
             <td style="text-align: center;border: 1px solid black;">
@@ -69,8 +75,10 @@
             <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>
-            <td style="text-align: center; border: 1px solid black;">2</td>
-            <td style="border: 1px solid black;"></td>
+            <td style="text-align: center; border: 1px solid black;">1</td>
+            <td style="text-align: center; border: 1px solid black;">0</td>
+            <td style="text-align: center; border: 1px solid black;">1</td>
+            <td style="text-align: center; border: 1px solid black;">6</td>
         </tr>
         <tr style="height: 35px;">
             <td style="text-align: center; border: 1px solid black;">
@@ -79,11 +87,15 @@
             <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>
-            <td style="text-align: center; border: 1px solid black;">3</td>
-            <td style="border: 1px solid black;"></td>
+            <td style="text-align: center; border: 1px solid black;">2</td>
+            <td style="text-align: center; border: 1px solid black;">1</td>
+            <td style="text-align: center; border: 1px solid black;">1</td>
+            <td style="text-align: center; border: 1px solid black;">6</td>
         </tr>
         <tr style="height: 35px;">
             <td style="text-align: center; border: 1px solid black;">.........</td>
+            <td style="border: 1px solid black;"></td>
+            <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>
             <td style="border: 1px solid black;"></td>

@@ -357,7 +357,7 @@ Interactive: ArrayQueue: One Unused Location
    </center>
 
 Checkpoint 7
-------------
+-------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint7Summ.html ka
    :long_name: Checkpoint 7
