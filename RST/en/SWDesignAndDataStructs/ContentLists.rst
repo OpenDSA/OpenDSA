@@ -70,7 +70,7 @@ Introduction to Lists
      
      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
-     QueueInterface.java</img>
+     ListInterface.java</img>
      </a>
 
 
