@@ -46,7 +46,7 @@ Interactive: More on Generics
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/eclipse/exGenerics.zip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exGenerics.zip"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exGenerics.zip</img>
       </a>
@@ -145,7 +145,7 @@ Interactive: Bounded Wildcard Examples
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/exGenerics.zip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exGenerics.zip"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exGenerics.zip</img>
       </a>
