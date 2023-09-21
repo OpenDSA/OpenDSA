@@ -85,7 +85,7 @@ This means both that it is expensive to store (space), expensive to
 search (time), and expensive to verify its consistency (time again).
 
 Fortunately, a Blockchain application of significant size is likely to
-also attract a signifcant community to it.
+also attract a significant community to it.
 Operating a large, decentralized blockchain requires coordination among
 multiple members of the community.
 These members are sometimes referred to as "nodes" in a network.
@@ -124,5 +124,5 @@ blockchain.
 There can be additional members of the community that play an
 important role in the ecosystem.
 For example, Bitcoin has associated entities known as "block
-explorers" that organize the transactions into a a searchable database
+explorers" that organize the transactions into a searchable database
 to allow efficient lookup of transactions of interest.
