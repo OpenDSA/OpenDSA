@@ -204,7 +204,7 @@ Introduction to Comparators
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/eclipse/exComparing.zip"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exComparing.zip"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
       exComparing.zip</img>
       </a>
