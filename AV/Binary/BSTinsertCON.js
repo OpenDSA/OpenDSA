@@ -7,7 +7,7 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-//  var pseudo = av.code($.extend({top: -50, left: 200}, code[0]));
+//  var pseudo = av.code($.extend({top: 0, left: 200}, code[0]));
   var pseudo = av.code(code[0]);
 
   var bt = av.ds.binarytree({visible: true, nodegap: 15});
@@ -125,6 +125,11 @@ $(document).ready(function() {
   av.step();
 
   // Slide 17
+  av.umsg(interpret("sc17a"));
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 18
   av.umsg(interpret("sc17"));
   newedge = newnode.edgeToParent();
   newnode = newnode.parent();
@@ -134,7 +139,12 @@ $(document).ready(function() {
   pseudo.setCurrentLine("visitright");
   av.step();
 
-  // Slide 18
+  // Slide 19
+  av.umsg(interpret("sc17a"));
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 20
   av.umsg(interpret("sc18"));
   newedge = newnode.edgeToParent();
   newnode = newnode.parent();
@@ -144,7 +154,12 @@ $(document).ready(function() {
   pseudo.setCurrentLine("visitleft");
   av.step();
 
-  // Slide 19
+  // Slide 21
+  av.umsg(interpret("sc17a"));
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 21
   av.umsg(interpret("sc19"));
   rt1.hide();
   var root1 = av.pointer("root", bt.root(), {anchor: "right top", top: -10});

@@ -113,6 +113,11 @@ $(document).ready(function () {
   av.step();
 
   // Slide 16
+  av.umsg("Now return the value of rt (root of the updated subtree).");
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 17
   av.umsg("Unwind the recursion, and set the right pointer of the node with value of 24");
   var temp = rt.left().edgeToRight();
   temp.addClass("rededge");
@@ -121,7 +126,12 @@ $(document).ready(function () {
   pseudo.setCurrentLine("visitright");
   av.step();
 
-  // Slide 17
+  // Slide 18
+  av.umsg("Now return the value of rt (root of the updated subtree).");
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 19
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 37");
   temp1 = rt.edgeToLeft();
   temp1.addClass("rededge");
@@ -130,7 +140,12 @@ $(document).ready(function () {
   pseudo.setCurrentLine("visitleft");
   av.step();
 
-  // Slide 18
+  // Slide 20
+  av.umsg("Now return the value of rt (root of the updated subtree).");
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 21
   av.umsg("Now we return from the initial call to removehelp, setting the root of the tree to the result");
   rt1.arrow.addClass("thinredline");
   // This line should not be needed, but it is here to fix Raphael bug with arrows
@@ -138,7 +153,7 @@ $(document).ready(function () {
   pseudo.setCurrentLine("end");
   av.step();
 
-  // Slide 19
+  // Slide 22
   av.umsg("Now let's try something a little bit harder. We will see what happens when we remove 32. We won't show all of the details of direction tests and the multiple recursive calls this time.");
   pseudo.setCurrentLine("sig");
   pseudo.unhighlight("end");
@@ -151,41 +166,41 @@ $(document).ready(function () {
   bt.layout();
   av.step();
 
-  // Slide 20
+  // Slide 23
   av.umsg("As always, the first thing that we do is check if the root is null. Since it is not, we are going to be recursively descending the tree until we find the value that we are looking for (if it exists).");
   pseudo.setCurrentLine("checknull");
   av.step();
 
-  // Slide 21
+  // Slide 24
   av.umsg("Since 37 is greater than the value we want to delete (32), we go left.");
   pseudo.setCurrentLine("visitleft");
   rt.addClass("processing");
   rt1.target(rt.left());
   av.step();
 
-  // Slide 22
+  // Slide 25
   av.umsg("Since 24 is less than the value we want to delete (32), we go right.");
   pseudo.setCurrentLine("visitright");
   rt.left().addClass("processing");
   rt1.target(rt.left().right(), {anchor: "right top"});
   av.step();
 
-  // Slide 23
+  // Slide 26
   av.umsg("Now we have found the value that we want to delete.");
   pseudo.setCurrentLine("found");
   av.step();
 
-  // Slide 17
+  // Slide 27
   av.umsg("We check, and the left child is not null.");
   pseudo.setCurrentLine("checkleft");
   av.step();
 
-  // Slide 18
+  // Slide 28
   av.umsg("We check and find that the right child is null. So we can just return a pointer to the left child.");
   pseudo.setCurrentLine("checkright");
   av.step();
 
-  // Slide 19
+  // Slide 29
   av.umsg("Unwind the recursion, and set the right pointer of the node with value of 24");
   rt.left().removeClass("processing");
   rt1.target(rt.left(), {anchor: "left top"});
@@ -196,7 +211,12 @@ $(document).ready(function () {
   bt.layout();
   av.step();
 
-  // Slide 18
+  // Slide 30
+  av.umsg("Now return the value of rt (root of the updated subtree).");
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 31
   av.umsg("Unwind the recursion, and set the left pointer of the node with value of 37");
   temp1 = rt.edgeToLeft();
   temp1.addClass("rededge");
@@ -205,7 +225,12 @@ $(document).ready(function () {
   pseudo.setCurrentLine("visitleft");
   av.step();
 
-  // Slide 19
+  // Slide 32
+  av.umsg("Now return the value of rt (root of the updated subtree).");
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 33
   av.umsg("Now we return from the initial call to removehelp, setting the root of the tree to the result");
   rt1.arrow.addClass("thinredline");
   // This line should not be needed, but it is here to fix Raphael bug with arrows
@@ -213,7 +238,7 @@ $(document).ready(function () {
   pseudo.setCurrentLine("end");
   av.step();
 
-  // Slide 20
+  // Slide 34
   av.umsg("Finally, let's see what happens when we delete the root node.");
   pseudo.unhighlight("end");
   pseudo.setCurrentLine("sig");
@@ -227,42 +252,42 @@ $(document).ready(function () {
   bt.layout();
   av.step();
 
-  // Slide 21
+  // Slide 35
   av.umsg("First we find that the root pointer is not null.");
   pseudo.setCurrentLine("checknull");
   av.step();
 
-  // Slide 22
+  // Slide 36
   av.umsg("Then we find that the root value is not less than what we want to delete.");
   pseudo.setCurrentLine("checkless");
   av.step();
 
-  // Slide 23
+  // Slide 37
   av.umsg("Then we find that the root value is not greater than what we want to delete.");
   pseudo.setCurrentLine("checkgreater");
   av.step();
 
-  // Slide 24
+  // Slide 38
   av.umsg("So the root node contains the value that we want to delete.");
   pseudo.setCurrentLine("found");
   av.step();
 
-  // Slide 25
+  // Slide 39
   av.umsg("The left child is not null.");
   pseudo.setCurrentLine("checkleft");
   av.step();
 
-  // Slide 26
+  // Slide 40
   av.umsg("The right child is not null.");
   pseudo.setCurrentLine("checkright");
   av.step();
 
-  // Slide 27
+  // Slide 41
   av.umsg("So now we know that we have the hard case to deal with.");
   pseudo.setCurrentLine("twochildren");
   av.step();
 
-  // Slide 28
+  // Slide 42
   av.umsg("Call getmax to set a temporary variable to point to the node with the greatest value in the left subtree.");
   pseudo.setCurrentLine("getmax");
   var tnode = rt.left().right();
@@ -270,14 +295,14 @@ $(document).ready(function () {
   var rt2 = av.pointer("temp", tnode, {anchor: "right top", top: -10});
   av.step();
 
-  // Slide 29
+  // Slide 43
   av.umsg("Now set the root value to what was returned by getmax.");
   pseudo.setCurrentLine("setelement");
   av.effects.moveValue(tnode, rt);
   rt.addClass("rednode");
   av.step();
 
-  // Slide 30
+  // Slide 44
   av.umsg("Now call deletemax to remove the node with the maximum value in the left subtree. Set the root node's left pointer to point to the resulting subtree.");
   pseudo.setCurrentLine("setleft");
   rt.left().right(rt.left().right().left());
@@ -289,7 +314,12 @@ $(document).ready(function () {
   bt.layout();
   av.step();
 
-  // Slide 31
+  // Slide 45
+  av.umsg("Now return the value of rt (root of the updated subtree).");
+  pseudo.setCurrentLine("returnrt");
+  av.step();
+  
+  // Slide 46
   av.umsg("We are now done deleting the old root node. Removehelp will return a pointer to this tree. The calling function will then set the BST root to point to this new tree.");
   pseudo.setCurrentLine("return");
   rt1.arrow.addClass("thinredline");

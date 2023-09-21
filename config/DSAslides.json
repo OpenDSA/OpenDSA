@@ -82,16 +82,15 @@
     "Week 5": {
       "CS5040slides/P2": {},
       "CS5040slides/Binary3": {},
-      "CS5040slides/Heaps": {},
+      "CS5040slides/Overconstrained": {},
       "CS5040slides/Comparison": {}
     },
     "Week 6": {
-      "CS5040slides/Midterm1": {},
+      "CS5040slides/Heaps": {},
       "CS5040slides/Huffman": {}
     },
     "Week 7": {
       "CS5040slides/Trie": {},
-      "CS5040slides/Overconstrained": {},
       "CS5040slides/Sorting1": {},
       "CS5040slides/Sorting2": {}
     },
