@@ -20,3 +20,4 @@ jobs:
             cd /home/OpenDSA/LTI_ruby/
             make DSAF23slides
             make DSAF23notes
+            make CS3

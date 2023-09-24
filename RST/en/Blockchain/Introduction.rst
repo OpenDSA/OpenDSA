@@ -18,7 +18,7 @@ on the Internet?
 Yes, there is.
 But in our experience, much of it does a poor job of
 either explaining the pieces or putting the pieces together.
-And while there many popular press articles about Blockchain these
+And while there are many popular press articles about Blockchain these
 days, one usually comes away from them not really knowing any more
 than when you started.
 
@@ -28,12 +28,12 @@ Yes, absolutely.
 In particular, we can recommend that you read:
 Arvind Narayanan, Joseph Bonneau, Edward Felten,
 Andrew Miller, and Steven Goldfeder,
-*Bitocoin and Cryptocurrency Technologies*,
+*Bitcoin and Cryptocurrency Technologies*,
 Princeton University Press, 2016.
 You can probably find a free copy if you search the Internet.
 While it is more focussed on the cryptocurrency side of Blockchain
 technologies, it does go through all the basics, and it is relatively
-comprehenisble.
+comprehensive.
 
 But there are reasons why we feel this tutorial is a valueable
 addition to the Blockchain literature.
@@ -76,7 +76,7 @@ The most important thing to know about Blockchain is that
 (Well, except maybe for some of the cryptography parts.
 But you can consider all of the hard parts related to cryptography as
 a black box.
-You only need to understand what the basic cryptograpy services
+You only need to understand what the basic cryptography services
 provide to a Blockchain application, not necessarily the details for
 how the cryptography works internally.)
 The main reason why many people find Blockchain confusing is because
@@ -107,7 +107,7 @@ The one that we will focus on is SHA-256.
 The Secure Hashing Algorithm 256, or SHA-256, has the reputation of
 being one of the most secure ways to protect digital information.
 SHA-256 always will generate a 256 bit quantity
-(which can be viewed as 64 hexidecimal digits)
+(which can be viewed as 64 hexadecimal digits)
 no matter what input you provide.
 Viewed as a number, a 256-bit quantity has more permutations
 than grains of sand on Earth!
@@ -124,7 +124,7 @@ automatically.
 
 Throughout this tutorial, we will use the SHA-256 hash method whenever
 we need to generate a hash value.
-But showing 64 hexidecimal characters in the visualizations is
+But showing 64 hexadecimal characters in the visualizations is
 unwieldy.
 So, we will only show the first 16 characters, like this.
 Try copy-and-pasting whatever you last typed in the widget above (that
