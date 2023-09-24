@@ -75,7 +75,7 @@ Transactions
 ------------
 
 Recall that we previously discussed how most participants in the
-BitCoin ecossytem are Thin Nodes.
+BitCoin ecosytem are Thin Nodes.
 An example is a BitCoin wallet.
 Thin nodes do not keep the entire transaction history for the system.
 Instead, they query a 3rd party for the needed information about a
@@ -179,9 +179,9 @@ Computational cost is directly proportional to energy cost.
 That is, increasing the computation required to mine a block causes
 the power consumed to mine that block to grow in proportion.
 In 2021, Bitcoin mining was responsible for consuming roughly one half
-of one percent of all electricty production in the world.
+of one percent of all electricity production in the world.
 In a world where the effects of climate change are directly related to
-the amount of power consumed, this has a signficant negative impact on
+the amount of power consumed, this has a significant negative impact on
 the world.
 There is no intrinsic reason why any cryptocurrency needs to be
 consuming significant amounts of energy to operate.
@@ -190,7 +190,7 @@ combination of Bitcoin value and the Proof of Work algorithm that
 Bitcoin happens to use.
 This is a major motivation for finding other ways to build a consensus
 algorithm that are less costly.
-Etherium is an example of such a cryptocurrency, built on another
+Ethereum is an example of such a cryptocurrency, built on another
 type of consensus algorithm
 
 **Consequences:**
@@ -220,7 +220,7 @@ The mechanics for doing this go through something called your Bitcoin
 Wallet.
 Among other things, the Bitcoin Wallet holds your private key.
 
-If you lose either the Wallet file, or you password/key that gives you
+If you lose either the Wallet file, or your password/key that gives you
 access to the Wallet,
 then there is no recourse.
 There is no central manager of the blockchain, and so no other entity
@@ -233,5 +233,5 @@ See https://www.npr.org/2020/12/30/951460511/bitcoin-losers-classic
 for an interesting story of people who have lost their
 bitcoins when they lost track of or lost access to their Bitcoin
 Wallet.
-It is estimated that some signficant fraction of all the Bitcoins that
+It is estimated that some significant fraction of all the Bitcoins that
 can ever be mined have been permanently lost in this way.

@@ -51,7 +51,7 @@ Blockchain Tutorial Glossary
       is added to a :term:`blockchain`.
       A consensus algorith typically defines these major parts:
       How the next block is to be proposed, how the transactions on
-      that block are validated, and how the block propogates through
+      that block are validated, and how the block propagates through
       the network to be accepted by the community.
 
    cryptocurrency
@@ -59,7 +59,7 @@ Blockchain Tutorial Glossary
       services to keep it secure. Typically, a :term:`blockchain` is
       used as the basis for a :term:`public ledger` that stores
       :term:`transactions <transaction>` on the currency being maintained.
-      Most typically, a the blockchain is implemented within a
+      Most typically, a blockchain is implemented within a
       :term:`distributed ledger` using a
       :term:`permissionless ledger system` so that there is no central
       authority that controls the cryptocurrency.
@@ -151,16 +151,16 @@ Blockchain Tutorial Glossary
       :term:`nonce` value.
 
    NFT
-   Non-fungable token.
+   Non-fungible token.
       Something that is unique and cannot be duplicated.
       A common form of this is a digital record of ownership,
       typically of a digital object such as an image or data.
       While the digital object can still be copied, the fact of
       ownership embodied in the record of ownership is intended to be
       unique.
-      NFT is in contrast to a fungable token, which is an
+      NFT is in contrast to a fungible token, which is an
       interchangable, non-unique object.
-      In a :term:`cryptocurrency` context, a fungable token is most
+      In a :term:`cryptocurrency` context, a fungible token is most
       often a coin in the cryptocurrency itself.
       
    nonce
@@ -323,7 +323,7 @@ Blockchain Tutorial Glossary
       only the minimal information necessary related to the associated
       cryptocurrency (that is, the account balance and information
       about associated :term:`transactions <transaction>`).
-      If the cryptocurrency is built on a a :term:`distributed ledger`
+      If the cryptocurrency is built on a :term:`distributed ledger`
       with no central authority to manage it, then losing the password
       or key to the ledger makes any resources owned by the account
       permanently inaccessible.
