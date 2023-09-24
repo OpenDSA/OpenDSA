@@ -84,6 +84,10 @@
       "CS5040slides/Binary3": {},
       "CS5040slides/Overconstrained": {},
       "CS5040slides/Comparison": {}
+    },
+    "Week 6": {
+      "CS5040slides/Heaps": {},
+      "CS5040slides/Huffman": {}
     }
   }
 }
