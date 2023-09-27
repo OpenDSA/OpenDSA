@@ -109,7 +109,7 @@ assertions in both styles.
      -
    * - Checking that ``x`` is ``false``
      - ``assertThat(x).isFalse();``
-     - ``assertTrue(x);``
+     - ``assertFalse(x);``
      -
    * - Checking that ``x`` is ``null``
      - ``assertThat(x).isNull();``
