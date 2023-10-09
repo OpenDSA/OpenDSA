@@ -51,10 +51,6 @@ Limits to Sorting
       :tag: Radixsort
 
 
-.. slide:: .
-
-   .
-
 .. slide:: Radix Sort Analysis
 
    .. inlineav:: RadixSortAnalysisCON ss
