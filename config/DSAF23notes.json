@@ -5,18 +5,18 @@
   "code_dir": "SourceCode/",
   "lang": "en",
   "code_lang": {
-    "Java": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java",
-      "lang": "java"
-    },
     "Java_Generic": {
       "ext": [
         "java"
       ],
       "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
       "lang": "java"
     },
     "C++": {
@@ -93,6 +93,14 @@
       "CS5040slides/Trie": {},
       "CS5040slides/Sorting1": {},
       "CS5040slides/Sorting2": {}
+    },
+    "Week 8": {
+      "CS5040slides/Sorting3": {},
+      "CS5040slides/FileProc": {}
+    },
+    "Week 9": {
+      "CS5040slides/P3": {},
+      "CS5040slides/Buffering": {}
     }
   }
 }
