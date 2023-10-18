@@ -139,7 +139,7 @@
 
   // step 11
   av.umsg("Our last number to add is 23.");
-  var split23 = tl.add_value(23, "23", ht3);
+  var split23 = tl.add_value(23, "23", ht4);
   split23.css({"fill": highlight_background_color});
   split59.css({"fill": unhighlight_background_split_color});
   r.left().right().left("23");

@@ -103,21 +103,9 @@
       "Tutorials/mutationtesting_example": {},
       "Tutorials/mutationtesting_faq": {},
       "Testing/TestIntro": {},
-      "Testing/TestCoverage": {
-        "TriangleApplet": {
-          "exer_options": {
-            "code": "true"
-          }
-        }
-      },
+      "Testing/TestCoverage": {},
       "Testing/Example2": {},
-      "Testing/Bowling": {
-        "BowlingApplet": {
-          "exer_options": {
-            "code": "true"
-          }
-        }
-      }
+      "Testing/Bowling": {}
     }, 
     "Mathematical Background": {
       "Background/MathpreIntro": {}, 

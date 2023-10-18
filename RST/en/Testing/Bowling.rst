@@ -22,3 +22,4 @@ Try to get 100% code coverage.
 
 .. avembed:: AV/Testing/Bowling/BowlingApplet.html pe
    :long_name: Bowling Testing With Code
+   :url_params: code=true

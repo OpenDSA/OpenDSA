@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BST Adding an Entry 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="3200" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="BSTADD_Q1">
+        <p class="question">
+          Given: </p>
+          <pre class = "prettyprint">
+            private BinaryNode insert(T data, BinaryNode node) {
+              if (node == null) {
+                  return new BinaryNode(data);
+              }
+              else if (data.compareTo(node.getData()) < 0) {
+                  node.setLeft(insert(data, node.getLeft()));
+              }
+              else if (data.compareTo(node.getData()) > 0) {
+                  node.setRight(insert(data, node.getRight()));
+              }
+              else {//entry exists
+                 if (node.getRight() != null) {
+                        BinaryNode minNode = findMin(node.getRight());
+                        minNode.setLeft(new BinaryNode(data));
+                        
+                    } else {
+                      node.setRight(new BinaryNode(data));
+                    }            
+              }
+              return node;
+          }
+          </pre>
+          <p>
+          and</p>
+          <img src="BSTCheckpointImages/AddtoBSTCheckpoint.jpeg" alt="in order 18, 20, 25, 29, 31, 34, 49, 50, 60, 74, 83, 84, 85, 87, 89, 92, 99" width="700" height="400">
+          <br>
+          <p>
+          What would the following method call result in: </p>
+          <pre class = "prettyprint">
+            insert(55, topNode)
+          </pre>
+          <p>
+            Choices are: 
+            <li><tt> A <br>
+              <img src="BSTCheckpointImages/BSTInsertQ1AnswerCorrect.jpeg" alt="added 55 as left child of 60" width="700" height="400">
+            </tt></li>
+          <li><tt> B <br>
+            <img src="BSTCheckpointImages/BSTInsertQ1AnswerWrong1.jpeg" alt="added 55 as right child of 50" width="700" height="400">
+            </tt></li>
+        <li><tt> C <br>
+          <img src="BSTCheckpointImages/BSTInsertQ1AnswerWrong2.jpeg" alt="made 55 root and 54 right child of 50" width="700" height="400"></tt></li>
+          <li><tt> D<br>
+            <img src="BSTCheckpointImages/BSTInsertQ1AnswerWrong3.jpeg" alt="made 55 root and added 54 as left child of 60" width="700" height="400"></tt></li>
+          </p>
+
+          <div class="solution"><tt>
+                 A
+          </tt></div>
+          <ul class="choices">
+            <li><tt>B</tt></li>
+            <li><tt>C</tt></li>
+            <li><tt>D</tt></li>
+    
+            </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

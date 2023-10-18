@@ -61,13 +61,13 @@ Bitcoin as a cryptocurrency has a major problem.
 It is based on Proof of Work as the heart of its consensus algorithm.
 This has the unfortunate consequence of causing miners to waste a lot
 of electricity simply to add blocks to a blockchain.
-This is unnecesary... at least in theory.
+This is unnecessary... at least in theory.
 The problem is that coming up with a reliable and secure consensus
 algorithm for a public, distributed ledger is quite difficult.
 Bitcoin was such a revolution for both blockchain technology and
 cryptocurrency technology because it was the first proposed solution
 to managing a secure public distributed ledger.
-Finding alternatives to the Proof of Work consensus algoorithm has
+Finding alternatives to the Proof of Work consensus algorithm has
 proved to be difficult.
 
 [What are other motivations for creating Ethereum as compared to

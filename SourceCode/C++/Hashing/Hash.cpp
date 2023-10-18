@@ -9,7 +9,6 @@
    int sascii(String x, int M) {
      char ch[];
      ch = x.toCharArray();
-     int xlength = x.length();
 
      int i, sum;
      for (sum=0, i=0; i < x.length(); i++)

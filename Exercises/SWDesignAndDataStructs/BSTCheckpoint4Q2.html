@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BST Removing an Entry 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="3800" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="BSTREMOVE_Q2">
+        <p class="question">
+          Given:
+          <pre class = "prettyprint">
+            private BinaryNode remove(T data, BinaryNode node) {
+              // This local variable will contain the new root of the subtree,
+              // if the root needs to change.
+              BinaryNode result = node;
+    
+              // If there's no more subtree to examine
+              if (node == null) {
+                  throw new ItemNotFoundException(data.toString());
+              }
+    
+              // if value should be to the left of the root
+              if (data.compareTo(node.getData()) < 0) {
+                  node.setLeft(remove(data, node.getLeft()));
+              }
+              // if value should be to the right of the root
+              else if (data.compareTo(node.getData()) > 0) {
+                  node.setRight(remove(data, node.getRight()));
+              }
+              // If value is on the current node
+              else {
+                  // If there are two children
+                  if (node.getLeft() != null && node.getRight() != null) {
+                      T successorData = elementAt(findMin(node.getRight()));
+                      result = remove(successorData, result);
+                      result.setData(successorData);
+                  }
+                  // If there is only one child on the left
+                  else if (node.getLeft() != null) {
+                      result = node.getLeft();
+                  }
+                  // If a leaf or only one child on the right
+                  else {
+                      result = node.getRight();
+                  }
+              }
+              return result;
+          }
+          </pre>
+          and
+          <img src="BSTCheckpointImages/RemoveFromBST2Checkpoint.jpeg" alt="in order 18, 20, 25, 29, 31, 34, 49, 50, 60, 74, 83, 84, 85, 87, 89, 92, 99" width="700" height="400">
+          <br>
+          What would the following method call result in:
+          <pre class = "prettyprint">
+            remove(74, topNode)
+          </pre>
+     
+          <p>
+            Choices are: 
+            <li><tt> A <br>
+              <img src="BSTCheckpointImages/BSTRemoveQ2AnswerWrong3.jpeg" alt="74 gets removed and 60 becomes left child of 84" width="700" height="400">
+            </tt></li>
+          <li><tt> B <br>
+            <img src="BSTCheckpointImages/BSTRemoveQ2AnswerWrong1.jpeg" alt="74 and 60 get removed" width="700" height="400">
+            </tt></li>
+        <li><tt> C <br>
+          <img src="BSTCheckpointImages/BSTRemoveQ2AnswerCorrect.jpeg" alt="74 gets removed it 60 moves up" width="700" height="400"></tt></li>
+          <li><tt> D<br>
+            <img src="BSTCheckpointImages/BSTRemoveQ2AnswerWrong2.jpeg" alt="84 replaces 74" width="700" height="400"></tt></li>
+          </p>
+
+          <div class="solution"><tt>
+                 C
+          </tt></div>
+          <ul class="choices">
+            <li><tt>B</tt></li>
+            <li><tt>D</tt></li>
+            <li><tt>A</tt></li>
+    
+            </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question. </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

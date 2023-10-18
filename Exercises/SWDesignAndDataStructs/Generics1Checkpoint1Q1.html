@@ -1,0 +1,66 @@
+!DOCTYPE html>
+<html>
+  <head>
+    <title>Generics Checkpoint 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="1250" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="GENERICS_Q1">
+        <p class="question">
+            Given the following code: </p>
+          <pre class="prettyprint">
+            public class MoveData {
+
+                public static <T> void shiftUpArray(T[] dataset)
+                {
+                    for (int i =1; i < dataset.length; i++) {
+                        dataset[i] = dataset[i-1];
+                    }
+                }
+            
+              public static void main(String args[]) {
+              
+              }
+            
+            
+            ...
+            }
+          </pre>
+          <p>Which of the following would not be possible correct code inside the main method of MoveData?
+        </p>
+        <div class="solution"><tt><pre class="prettyprint">
+            int[] scores = {92, 18, 76, 76};
+            shiftUpArray(scores);
+          </pre>  
+        </tt></div>
+        <ul class="choices">
+        <li><tt><pre class="prettyprint">
+            Integer[] bits = {32, 64, 256, 512};
+            shiftUpArray(bits);
+          </pre>  </tt></li>
+        <li><tt><pre class="prettyprint">
+            WritingInstrument[] box = new WritingInstrument[20];
+            box[0] = new Marker();
+            box[1] = new Marker();
+            box[2] = new Pencil();
+            shiftUpArray(box);
+          </pre>  </tt></li>
+        <li><tt><pre class="prettyprint">
+            String[] oceans = {"Pacific", "Indian", "Atlantic", "Arctic"}; 
+            shiftUpArray(oceans);
+          </pre>  </tt></li>
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -29,7 +29,7 @@
         "getmax": 11,
         "setelement": 12,
         "setleft": 13,
-        "return": 16,
+        "returnrt": 16,
         "end": 17
       }
     }],

@@ -18,15 +18,16 @@ Project 1 Design
 
 .. slide:: Project 1
 
-   | Be aware of due date, milestone dates
+   | Be aware of project due date, milestone due dates
    | Aim to get it done PRIOR to the EARLY BONUS date.
    | You need to write a "scanner" or "parser" to read info from
      command file (text).
    | You need to use command line parameters
-   |   See Tutorials in Chapter 3 of OpenDSA
-   |   For parsing: Use Scanner Class [3.7] or
+   |   See Tutorials in Chapter 2 of OpenDSA
+   |   For parsing: Use Scanner Class [2.7] or
        Pattern/Matcher classes
 
+       
 .. slide:: Project 1 Class Organization (1)
 
    | Q: When do you need separate classes?
@@ -67,6 +68,8 @@ Project 1 Design
    | You are usually banned from using standard Java data structures
      classes
    |   You may **not** use things like ``HashMap``, ``ListArray``, ``Vector``
+   |     Exception: You may use ``ListArray`` to thelp you with
+         processing the keywords in the parser.
    |   You may use standard language features like arrays
    |   You may use string and file manipulation classes/methods that
        make parsing of the command file easy.          
@@ -76,18 +79,81 @@ Project 1 Design
    | Good names matter. REALLY!
    | Every competent software development organization enforces some
      coding style.
-   | Generalize your container classes
-   |   For P1, your hash table should not be more specialized than the
-       fact that it is storing strings.
+   |   Web-CAT enforces a particular coding style.
+   | Generalize your container classes (hash table, memory manager)
    |   For P1, your memory manager should not know anything about the
        rest of the project, it just stored bytes
+   |   See the Seminar class serializer/deserializer
 
-.. slide:: Container Classes
+   
+.. slide:: Container Classes: Hash Table
 
    | The hash table is a container class. A container class is anything
      that stores a collection of arbitrary objects.
-   | Want to support any record type. (Actually, any string is fine)
-   | We will talk about this later in general. For now, just hide
-     details behind some Record class
+   | Want to support any record type. (OK to assume an integer key.)
+   | Hide details behind some Record class
    | Need to deal with concept of comparison. Your record should give
      you back the string as its key.
+
+Project 1 Hashing
+-----------------
+
+.. slide:: What you need to know about Hashing
+
+   * Read Module 10.1, Skim 10.3, Read 10.6 carefully, Read 10.7.4
+     Double Hashing, Read 10.9 Deletion
+
+   * Feel free to use code posted as part of OpenDSA modules (Insert, search)
+
+   * You can write Hash Table Class **assuming** that it uses the
+     given hash function, and that the key is an integer.
+
+     
+.. slide:: Double Hashing
+
+   .. inlineav:: collisionCON8 ss
+      :long_name: Double Hashing Slideshow 3
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON8.js
+      :output: show
+
+
+.. slide:: Primary design issue: Communications
+
+   * World/DB class, Hash Table, Memory Manager need appropriate
+     coordination.
+   
+   * World probably initializes memory manager, and calls memory
+     manager to insert/process records. Store resulting Handle in a
+     Record to pass to hash table.
+   
+   * Hash table does not need to know that there is a Memory Manager,
+     or Seminar records.
+   
+   * Record class and Handle class can hide most implementation details.
+
+     
+.. slide:: What is stored in the hash table?
+
+   * Clearly there has to be a key, and there has to be a value
+     (a record?)
+   
+   * The key is an integer (ID value for the Seminar, but the hash
+     table class doesn't know that)
+  
+   * The "value" might be dealt with in different ways.
+      * Definitely NOT the byte array (this is in memory manager)
+      * Maybe the handle for the record? That means that the hash
+        table needs to know about handles.
+
+   * Can hide handles behind a Record class.
+      * What is key? Store integer? Get from Record? Space vs. Time
+        tradeoff, either is reasonable
+
+
+.. slide:: Milestone 2
+
+   * Must pass some number of tests, some mutant coverage (from your
+     JUnit tests), some style points
+
+   * Functionally: Get the hash table working, at least inserts.

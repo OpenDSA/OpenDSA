@@ -121,9 +121,9 @@ Thus, only a relatively small fraction of the edges need be sorted.
 Another special case arises when all of the records being sorted have
 the same key value.
 This represents the best case for Heapsort.
-This is because removing the smallest value requires only constant
+This is because removing the largest value requires only constant
 time, since the value swapped to the top is never pushed down the
-heap.
+heap (since all the key values are equal).
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
    :long_name: Heapsort Summary Exercise

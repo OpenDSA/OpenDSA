@@ -42,3 +42,4 @@ sets of inputs that will get you to even 50% code coverage.
 
 .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
    :long_name: Triangle Testing No Code
+   :url_params: code=false

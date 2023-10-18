@@ -140,17 +140,17 @@ Quadratic Sorts
 
 .. slide:: Code Tuning (1)
 
-   * General strategy: Test to avoid work
-      * Balance test cost, success probability, work saved
+   | General strategy: Test to avoid work
+   |    Balance test cost, success probability, work saved
 
-   * "Optimizations" for quadratic sorts:
-      * Insertion Sort shift vs swaps: Works
-      * Selection Sort viewed as an optimization of Bubble Sort: Works
-      * Selection Sort avoid self-swaps: Does not work
-      * Bubble Sort "i" vs "1": Works
-      * Bubble Sort count comparisons/avoid unnecessary iterations:
+   | "Optimizations" for quadratic sorts:
+   |    Insertion Sort shift vs swaps: Works
+   |    Selection Sort viewed as an optimization of Bubble Sort: Works
+   |    Selection Sort avoid self-swaps: Does not work
+   |    Bubble Sort "i" vs "1": Works
+   |    Bubble Sort count comparisons/avoid unnecessary iterations:
         Does not work
-      * Bubble Sort O(n) best case claim: Bogus
+   |    Bubble Sort O(n) best case claim: Bogus
 
 .. slide:: Exchange Sorting
 

@@ -124,6 +124,19 @@ Math Background
    | :math:`n! = (n-1)! \cdot n\ \mbox{for}\ n>1; \quad 1! = 0! = 1`.
 
 
+.. slide:: Induction Proofs
+
+   | We use these for some proofs (of space requirements or algorithmic
+     cost).
+   |
+   | Hopefully you are familiar with these from a Discrete Math course.
+   |   If not, study the module on this.
+   |
+   | Induction and Recursion are nearly identical.
+   |   The recursive call on a smaller input is exactly the same as
+       assuming the induction hypothesis to be true for :math:`k < n`.
+
+
 .. slide:: Estimation Techniques
 
    | Known as "back of the envelope" or "back of the napkin"

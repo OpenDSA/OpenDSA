@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Junit Checkpoint 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Junit_CP1_Q3">
+        <p class="question">Trace the following method given
+          <tt>graduationYear = 2020</tt> and <tt>currYear = 2020</tt>.
+          What does <tt>nextReunion()</tt> return?</p>
+<pre class="prettyprint">
+public int nextReunion() {
+
+  int yearDiff = currYear - graduationYear;
+
+  if (yearDiff <= 0)
+    return currYear + (5 - yearDiff);
+  else
+    return currYear + (5 - (yearDiff % 5));
+}
+</pre>
+        <div class="solution">2025</div>
+        <ul class="choices">
+        <li>2020</li>
+        <li>2021</li>
+        <li>2026</li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

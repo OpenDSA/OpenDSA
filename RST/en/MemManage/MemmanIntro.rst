@@ -17,7 +17,7 @@ Some applications require the ability to store variable-length records,
 such as a string of arbitrary length.
 One solution is to store in list or queue a bunch of pointers to
 strings, where each pointer is pointing to space of whatever size is
-necessary to old that string.
+necessary to hold that string.
 This is fine for data structures stored in main memory.
 But if the collection of strings is meant to be stored on disk, then
 we might need to worry about how exactly these strings are stored.

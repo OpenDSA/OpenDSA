@@ -9,7 +9,6 @@
    int sascii(String x, int M) {
      char ch[];
      ch = x.toCharArray();
-     int xlength = x.length();
 
      int i, sum;
      for (sum=0, i=0; i < x.length(); i++) {
@@ -52,7 +51,7 @@ int sfold(String s, int M) {
 
 /* *** ODSATag: hashSearch *** */
    // Search for the record with Key K
-   bool hashSearch(Key K, Elem e) {
+   boolean hashSearch(Key K, Elem e) {
      int home;              // Home position for K
      int pos = home = h(K); // Initial position is the home slot
      for (int i = 1;

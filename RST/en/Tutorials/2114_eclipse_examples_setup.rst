@@ -106,7 +106,7 @@ The following steps will guide you through the process of creating a Java projec
       
    Note that the package named at the top of the class **MUST match** the package the file is placed in within the Eclipse project.  Eclipse will indicate an error if package names do not match.  These will be visible via the Problems tab (by default this tab should be visible near the bottom of the screen).
    
-   In these cases Eclipse will advise that `the declared package "<some package name>" does not match the expected package "<some other package name>".  To resolve this error simply rename the packages so that they match.
+   In these cases Eclipse will advise that `the declared package "<some package name>" does not match the expected package "<some other package name>"`.  To resolve this error simply rename the packages so that they match.
 
 
 
