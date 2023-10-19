@@ -85,7 +85,7 @@ directives that we have created.
 Exercises: Our Khan Academy Infrastructure-based exercises. Subdirectories
 divide the content by topic.
 
-JSAV: The JavaScript Algorithm Visualization library (JSAV) is sourced
+JSAV: The JavaScript Algorithm Visualization library. JSAV is sourced
 from https://github.com/vkaravir/JSAV and is updated occasionally.
 More information about JSAV can be found here:
 http://jsav.io/
