@@ -101,6 +101,10 @@
     "Week 9": {
       "CS5040slides/P3": {},
       "CS5040slides/Buffering": {}
+    },
+    "Week 10": {
+      "CS5040slides/Hashing": {},
+      "CS5040slides/Union-Find": {}
     }
   }
 }
