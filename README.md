@@ -20,7 +20,7 @@ System documentation can be found at http://opendsa.readthedocs.io/.
     - The first build of images takes under 5 minutes.  Running them later takes under 10 seconds.
     - The service is ready when you see `opendsa_1 | * Serving Flask app "app.py"`
     - This terminal will not be usable at this point since it is a console for the web server.
-    - An interrupt signal (Press CTRL + C) or the `docker-compose down` command will stop the containers.
+    - You can stop the containers by sending an interrupt signal (Press CTRL + C) or using the `docker-compose down` command.
 5. Build any books from within the container:
     - In order to interact with OpenDSA, you must access a shell in the running container with `docker-compose exec opendsa bash` in another console in the root of the OpenDSA directory.
         - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker-compose exec opendsa bash`
@@ -50,7 +50,7 @@ The result will then be in "Doc/manual".
 
 ## Common Errors
 
-The Docker containers of OpenDSA will likely have a different set of command line tools than your host operating system.  Be sure to run the commands within the right environment.  For example, the `make` commands are only meant to be run within a running container.
+The Docker containers used by OpenDSA may have a different set of command-line tools than your host operating system. Ensure that you run the commands in the correct environment.  For example, the `make` commands are only meant to be run within a running container.
 
 If you are on Windows, you may run into issues with line endings.  If you do, simply open Git Bash and run `$ dos2unix filename` to fix them.  This will most likely happen on a script file.
 
@@ -85,8 +85,8 @@ directives that we have created.
 Exercises: Our Khan Academy Infrastructure-based exercises. Subdirectories
 divide the content by topic.
 
-JSAV: The JavaScript Algorithm Visualization library (JSAV). This is sourced
-from: https://github.com/vkaravir/JSAV and is updated occasionally.
+JSAV: The JavaScript Algorithm Visualization library. JSAV is sourced
+from https://github.com/vkaravir/JSAV and is updated occasionally.
 More information about JSAV can be found here:
 http://jsav.io/
 

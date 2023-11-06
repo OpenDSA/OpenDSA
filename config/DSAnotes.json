@@ -5,18 +5,18 @@
   "code_dir": "SourceCode/",
   "lang": "en",
   "code_lang": {
-    "Java": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java",
-      "lang": "java"
-    },
     "Java_Generic": {
       "ext": [
         "java"
       ],
       "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
       "lang": "java"
     },
     "C++": {
@@ -99,20 +99,26 @@
       "CS5040slides/FileProc": {}
     },
     "Week 9": {
-      "CS5040slides/Buffering": {},
-      "CS5040slides/Hashing": {}
+      "CS5040slides/P3": {},
+      "CS5040slides/Buffering": {}
     },
     "Week 10": {
+      "CS5040slides/Hashing": {},
+      "CS5040slides/Union-Find": {}
+    },
+    "Week 11": {
+      "CS5040slides/Graphs": {}
+    },
+    "Week 12": {
+      "CS5040slides/Mid2": {}
+    },
+    "Week 13": {
       "CS5040slides/Indexing": {},
       "CS5040slides/TTTree": {}
     },
-    "Week 11": {
+    "Week 14": {
       "CS5040slides/BTree": {},
-      "CS5040slides/Mid2": {},
       "CS5040slides/SkipList": {}
-    },
-    "Week 13": {
-      "CS5040slides/Graphs": {}
     }
   }
 }

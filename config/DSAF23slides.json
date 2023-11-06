@@ -93,6 +93,21 @@
       "CS5040slides/Trie": {},
       "CS5040slides/Sorting1": {},
       "CS5040slides/Sorting2": {}
+    },
+    "Week 8": {
+      "CS5040slides/Sorting3": {},
+      "CS5040slides/FileProc": {}
+    },
+    "Week 9": {
+      "CS5040slides/P3": {},
+      "CS5040slides/Buffering": {}
+    },
+    "Week 10": {
+      "CS5040slides/Hashing": {},
+      "CS5040slides/Union-Find": {}
+    },
+    "Week 11": {
+      "CS5040slides/Graphs": {}
     }
   }
 }

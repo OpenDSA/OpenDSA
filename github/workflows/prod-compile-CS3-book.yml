@@ -1,0 +1,21 @@
+name: deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: prod
+    runs-on: self-hosted
+    steps:
+      - name: ssh
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          user: ${{ secrets.PROD_USERNAME }}
+          key: ${{ secrets.PROD_KEY }}
+          port: ${{ secrets.PROD_PORT }}
+          args: "-tt"
+          command: |
+            cd /home/deploy/opendsa-devstack/
+            docker-compose exec opendsa make CS3

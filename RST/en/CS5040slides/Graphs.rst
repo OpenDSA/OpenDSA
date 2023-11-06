@@ -233,8 +233,8 @@ Graphs
    * If there is no such edge, then :math:`w(A, B) = \infty`.
 
 
-   .. inlineav:: DijkstraCON dgm
-      :scripts: AV/Graph/DijkstraCON.js
+   .. inlineav:: DistanceExampCON dgm
+      :scripts: AV/Graph/DistanceExampCON.js
       :align: center
       :output: show
 
