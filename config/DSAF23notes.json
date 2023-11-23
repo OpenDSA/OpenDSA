@@ -106,8 +106,16 @@
       "CS5040slides/Hashing": {},
       "CS5040slides/Union-Find": {}
     },
-    "Week 11": {
+    "Weeks 11/12": {
       "CS5040slides/Graphs": {}
+    },
+    "Week 13": {
+      "CS5040slides/Indexing": {},
+      "CS5040slides/TTTree": {}
+    },
+    "Week 14": {
+      "CS5040slides/BTree": {},
+      "CS5040slides/SkipList": {}
     }
   }
 }

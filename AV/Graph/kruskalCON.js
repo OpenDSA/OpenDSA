@@ -208,6 +208,7 @@ $(document).ready(function () {
     for (i = 0; i < treeNodes.length; i++) {
       treeNodes[i] = tree.root().child(i);
     }
+    root.hide({recursive: false});
   }
 
 

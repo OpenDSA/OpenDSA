@@ -125,8 +125,12 @@
           "points": 5
         },
         "Week2ReadingQuizSumm": {
-          "points": 15,
+          "points": 10,
           "threshold": 10
+        },
+        "EGPSurvey": {
+          "points": 5,
+          "threshold": 1
         }
       }
     },
@@ -185,24 +189,20 @@
           "points": 30
         },
         "Week4Quiz1Summ": {
-          "points": 5
+          "points": 6
         },
         "Week4Quiz2Summ": {
-          "points": 5
+          "points": 6
         },
         "Week4Quiz3Summ": {
-          "points": 5
+          "points": 6
         },
         "Week4Quiz4Summ": {
-          "points": 5
+          "points": 6
         },
         "Week4ReadingQuizSumm": {
-          "points": 15,
+          "points": 16,
           "threshold": 10
-        },
-        "MUSICSurvey": {
-          "points": 5,
-          "threshold": 1
         }
       }
     },
@@ -475,14 +475,14 @@
     "Static, Main, and Exceptions":{
        "IntroToSoftwareDesign/StaticMainAndExceptions":{
           "Week14Quiz1Summ":{
-             "points": 8
+             "points": 7
           },
-          "MUSICSurvey": {
-            "points": 8,
+          "EGPSurvey": {
+            "points": 10,
             "threshold": 1
           },
           "Week14Quiz2Summ":{
-             "points": 8
+             "points": 7
           },
           "Week14Quiz3Summ":{
              "points": 8
