@@ -10,7 +10,7 @@ PYTHON_LINT = pyLint --disable=C --reports=y
 # Can be overridden by env varis, such as ODSA_ENV='PROD'
 ODSA_ENV ?= DEV
 # Python used for building books:
-PYTHON = python
+PYTHON = python3
 # -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
 # -u flag runs python in unbuffered mode (no output flushes needed)
 
