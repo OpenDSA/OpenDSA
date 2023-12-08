@@ -44,7 +44,7 @@ clean: ## Deletes all Books (!!!) and minified JS and CSS files
 
 webserver: ## Starts the Flask server
 	@echo If using the proxy, OpenDSA URL will be: https://opendsa.localhost.devcom.vt.edu
-	gunicorn -w 4 -b 0.0.0.0:8080 app:app
+	gunicorn -w 4 -b 0.0.0.0:8080 -t 180 app:app
 
 .PHONY: alllint jsonlint lint lintExe csslint pylint
 alllint: lint csslint jsonlint pyLint ## Combines several other linting targets
