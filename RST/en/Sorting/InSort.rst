@@ -8,6 +8,7 @@
    :requires:
    :satisfies: sorting introduction
    :topic: Sorting
+   :keyword: Sorting, Brute Force Sorting, Swap Sorting
 
 Chapter Introduction: Sorting
 =============================

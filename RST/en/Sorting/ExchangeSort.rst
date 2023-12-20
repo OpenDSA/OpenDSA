@@ -8,6 +8,7 @@
    :requires: insertion sort; bubble sort; selection sort
    :satisfies: exchange sort
    :topic: Sorting
+   :keyword: Exchange Sort, Brute Force Sorting, Swap Sorting
 
 .. index:: ! exchange sorting
 .. index:: sorting; exchange

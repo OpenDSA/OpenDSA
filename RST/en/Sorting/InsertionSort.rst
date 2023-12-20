@@ -8,6 +8,7 @@
    :requires: sorting terminology; comparison
    :satisfies: insertion sort
    :topic: Sorting
+   :keyword: Incremental Sorting, Simple Sorting
 
 .. index:: ! Insertion Sort
 
