@@ -8,6 +8,7 @@
    :requires: comparison; insertion sort
    :satisfies: shellsort
    :topic: Sorting
+   :keyword: Exchange Sort, Brute Force Sorting, Swap Sorting
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort

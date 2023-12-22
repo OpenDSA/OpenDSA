@@ -12,10 +12,30 @@ rst_header = '''\
 '''
 
 rst_footer = '''\
-.. raw:: html
-
-   <script>ODSA.SETTINGS.MODULE_SECTIONS = %(sections)s;</script>
-'''
+ .. raw:: html
+    <script type="text/javascript">
+     $(function () {
+       var moduleName = "%(module_name)s";
+       var sections = %(sections)s;
+       TimeMe.initialize({
+         idleTimeoutInSeconds: 10
+       });
+       sections.forEach(function (section, i) {
+         TimeMe.trackTimeOnElement(section);
+       });
+       var timeObj = {};
+       setInterval(function () {
+         timeObj[moduleName.substring(0, 5)] = TimeMe.getTimeOnCurrentPageInSeconds().toFixed(2);
+         sections.forEach(function (section, i) {
+           timeObj[i + "-" + section.substring(0, 5)] = TimeMe.getTimeOnElementInSeconds(section).toFixed(2);
+         });
+         for (var sec of sections) {
+         }
+         console.log(JSON.stringify(timeObj))
+       }, 2000);
+     });
+    </script>
+ '''
 
 rst_header_unicode = '''\
 
@@ -323,6 +343,8 @@ html_context = {"script_files": [
                 ],
                 "odsa_scripts": [
                   #'https://code.jquery.com/ui/1.11.4/jquery-ui.min.js',
+                  '%(eb2root)slib/jquery.scrolldepth.js',
+                  '%(eb2root)slib/timeme.js',
                   '%(eb2root)slib/jquery.ui.min.js',
                   '%(eb2root)slib/jquery.transit.js',
                   '%(eb2root)slib/raphael.js',

@@ -8,6 +8,7 @@
    :satisfies: radix sort
    :requires: binsort
    :topic: Sorting
+   :keyword: Non-comparison Sort, Integer Sorting, Stable Sorting, Digit by Digit Sort
 
 .. index:: ! Radix Sort
 
