@@ -10,7 +10,7 @@ PYTHON_LINT = pyLint --disable=C --reports=y
 # Can be overridden by env varis, such as ODSA_ENV='PROD'
 ODSA_ENV ?= DEV
 # Python used for building books:
-PYTHON = python
+PYTHON = python3
 # -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
 # -u flag runs python in unbuffered mode (no output flushes needed)
 
@@ -44,7 +44,7 @@ clean: ## Deletes all Books (!!!) and minified JS and CSS files
 
 webserver: ## Starts the Flask server
 	@echo If using the proxy, OpenDSA URL will be: https://opendsa.localhost.devcom.vt.edu
-	gunicorn -w 4 -b 0.0.0.0:8080 app:app
+	gunicorn -w 4 -b 0.0.0.0:8080 -t 180 app:app
 
 .PHONY: alllint jsonlint lint lintExe csslint pylint
 alllint: lint csslint jsonlint pyLint ## Combines several other linting targets

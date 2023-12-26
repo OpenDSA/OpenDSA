@@ -6,6 +6,7 @@
 .. avmetadata:: 
    :author: Cliff Shaffer, Abhishek Jha, and Angel Velazquez
    :topic: Dynamic Programming
+   :keyword: Dynamic, Recursion, Fibonacci
 
 Dynamic Programming
 ===================
