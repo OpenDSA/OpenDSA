@@ -8,6 +8,7 @@
    :requires: sorting terminology; comparison; insertion sort
    :satisfies: bubble sort
    :topic: Sorting
+   :keyword: Bubble Sort, Comparison Sorting
 
 .. index:: ! Bubble Sort
 

@@ -7,6 +7,7 @@
    :author: Cliff Shaffer
    :requires: mergesort
    :topic: Sorting
+   :keyword: Divide and Conquer, Stable Sorting, Out-of-place Sort, Recursive Sorting
 
 Implementing Mergesort
 ======================

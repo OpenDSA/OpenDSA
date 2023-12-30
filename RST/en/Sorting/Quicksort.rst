@@ -8,6 +8,7 @@
    :requires: sorting terminology; sort code tuning; insertion sort
    :satisfies: quicksort
    :topic: Sorting
+   :keyword: Partitioning Sort, Divide and Conquer, In-place Sorting, Efficient Sorting
 
 .. index:: ! Quicksort
 

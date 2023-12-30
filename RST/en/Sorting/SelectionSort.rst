@@ -8,6 +8,7 @@
    :requires: sorting terminology; comparison; bubble sort
    :satisfies: selection sort
    :topic: Sorting
+   :keyword: Gap Sort, In-place Sorting
 
 .. index:: ! Selection Sort
 

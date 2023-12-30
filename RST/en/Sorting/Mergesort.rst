@@ -8,6 +8,7 @@
    :requires: comparison; sorting terminology
    :satisfies: mergesort
    :topic: Sorting
+   :keyword: Divide and Conquer, Stable Sorting, Out-of-place Sort, Recursive Sorting
 
 .. index:: ! Mergesort
 

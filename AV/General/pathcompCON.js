@@ -126,12 +126,13 @@ $(document).ready(function () {
   // Slide 11
   av.umsg("Union Nodes (H) and (E) <br> Make (F) the root, as size(F) > size(A)");
   f.addChild(a);
-  a.removeClass('highlight');
-  f.removeClass('highlight');
+  parents.value(0, 5);
   tree.layout();
   av.step();
 
   // Slide 12
   av.umsg("<br><b>Final UnionFind Data Structure</b>");
+  a.removeClass('highlight');
+  f.removeClass('highlight');
   av.recorded();
 });

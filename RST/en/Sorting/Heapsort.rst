@@ -8,6 +8,7 @@
    :requires: heap
    :satisfies: heapsort
    :topic: Sorting
+   :keyword: Binary Heap Sorting, In-place Sort, Comparison-based Sort
 
 .. index:: ! Heapsort
 
