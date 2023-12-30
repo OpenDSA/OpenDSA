@@ -196,8 +196,7 @@ Review of Writing JUnit Tests with student.TestCase
    </ol>
    <p>A simplified test class example for the Student class:</p>
    <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>
-   </pre></div>
-   </div>
+ 
    <p>public class StudentTest extends student.TestCase
    {
        private Student janeDoe;</p>
@@ -210,6 +209,7 @@ Review of Writing JUnit Tests with student.TestCase
            assertEquals(“Jane Doe”, janeDoe.getName());
        }
    }</p>
+   </div>  </pre></div>
    </div>
    <div class="section" id="run-a-junit-test">
    <h2>4.<span class="section-number">7.2. </span>Run a JUnit Test<a class="headerlink" href="#run-a-junit-test" title="Permalink to this headline">¶</a></h2>
@@ -281,9 +281,7 @@ Review of Writing JUnit Tests with student.TestCase
    <p>Clarification for edge and average cases- For a list that contains 100 values, you must check for indices -1, 0, 99, 100, and something in between.</p>
    <p><strong>Example</strong>: say we had the following:</p>
    <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>
-   </pre></div>
-   </div>
-   <p>if ( score &gt;= 90 )
+   <p><code>if ( score &gt;= 90 )
    {
        System.out.println( “Your grade is an A”);
    }
@@ -302,7 +300,8 @@ Review of Writing JUnit Tests with student.TestCase
    else
    {
        System.out.println( “Your grade is an F”);
-   }</p>
+   }</code></p></pre></div>
+   </div>
    <p>Your test class would have to test for all 5 of the above possibilities in order to execute every single line of code in the block of if-else statements.</p>
    <p><strong>Sometimes the best way to test your code is to clean your code first!</strong></p>
    <p>Cleaning up your code before you test it can save lots of time. In addition, the way you structure your code may make it easier to test correctly.</p>
@@ -523,7 +522,7 @@ Review of Writing JUnit Tests with student.TestCase
 
 
 Additional reference for writing JUnit Tests:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------
 
 `Writing JUnit Tests With Student TestCase <2114_junit_tutorial.html>`_
 
