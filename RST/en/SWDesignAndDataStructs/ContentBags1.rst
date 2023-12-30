@@ -223,12 +223,6 @@ Checkpoint 1
 
 
 
-Programming Practice: ArrayBags
--------------------------------
-
-.. extrtoolembed:: 'Programming Practice: ArrayBags'
-   :workout_id: 1910
-
 .. _BagArrayImp: 
 
 
@@ -332,6 +326,16 @@ Checkpoint 2
 
 .. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
+
+
+
+
+
+Programming Practice: ArrayBags
+-------------------------------
+
+.. extrtoolembed:: 'Programming Practice: ArrayBags'
+   :workout_id: 1910   
 
 Demo More bag method implementation
 -----------------------------------
