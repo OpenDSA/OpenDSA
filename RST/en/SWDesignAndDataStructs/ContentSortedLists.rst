@@ -14,12 +14,12 @@ Shortcuts
 ---------
 
 - :ref:`SortListIntro`
-- :ref:`SortListUML`
 - :ref:`SortListADT`
+- :ref:`SortListInterface`
 - :ref:`SortListImp`
-- :ref:`SortListImpArray`
-- :ref:`SortListImpChain`
-- :ref:`SortListImpEff`
+- :ref:`SortListImpScratch`
+- :ref:`SortListImpComposition`
+- :ref:`SortListImpInheritance`
 
  
 Objectives
@@ -39,16 +39,29 @@ Suggested Reading:
 
 .. _SortListIntro:
 
+Thinking about Order vs Sorted Order
+-------------------------------------
+    
+Consider the various data structures discussed so far.  Each of these data structures offer a number of characteristics, attributes (fields), and behaviors (operations or methods), and ways of arranging and interacting with stored data. 
+    
+A given data structure may, at times, be found to be appropriate for use in certain applications, usually because it offers features which support the implementation and functioning of that specific application’s requirements.  
+    
+At other times a given Data Structure may be thought to be inappropriate for use in a given application, possibly because it provides features that are unnecessary, restrictive, unhelpful, and not supportive with respect to the requirements and functioning of the software application. 
+    
+We may recall, for example, that ``Bags`` are useful in applications where order doesn't matter, i.e. where the order of the data stored within the structure is of no concern with respect to the needs of the application and the functioning of the system.
+    
+``Bags`` are, by their very nature, unordered.
+    
+However, there are some applications where maintaining order, or more specifically maintaining *sorted* order, is very important.  It is important to note our deliberate distinction of **Order** vs **Sorted Order**.
+
+
+
 Interactive: Introduction to Sorted Lists
------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: Follow Along, Practice and Explore
 
-    Download to run and explore the java files (see below) from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
-        1) create a new Eclipse project, then 
-        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
-        3) download and import the standalone \*.java file(s) to the created package.
-
+    Download to explore the interface files (see below) from the video on your own. Also follow allong with the slides from the video.
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
@@ -75,41 +88,19 @@ Interactive: Introduction to Sorted Lists
     </center>
 
 
-.. admonition:: Thinking about Order vs Sorted Order
-    
-    Consider the various data structures discussed so far.  Each of these data structures offer a number of characteristics, attributes (fields), and behaviors (operations or methods), and ways of arranging and interacting with stored data. 
-    
-    A given data structure may, at times, be found to be appropriate for use in certain applications, usually because it offers features which support the implementation and functioning of that specific application’s requirements.  
-    
-    At other times a given Data Structure may be thought to be inappropriate for use in a given application, possibly because it provides features that are unnecessary, restrictive, unhelpful, and not supportive with respect to the requirements and functioning of the software application. 
-    
-    We may recall, for example, that ``Bags`` are useful in applications where order doesn't matter, i.e. where the order of the data stored within the structure is of no concern with respect to the needs of the application and the functioning of the system.
-    
-    ``Bags`` are, by their very nature, unordered.
-    
-    However, there are some applications where maintaining order, or more specifically maintaining *sorted* order, is very important.  It is important to note our deliberate distinction of **Order** vs **Sorted Order**.
 
-
-.. _SortListUML:
-
-Recap UML/code for ListInterface
---------------------------------
-
-
-
-**TODO:** possibly show the UML image from: https://canvas.vt.edu/courses/165395/pages/introduction-to-sorted-lists?module_item_id=2213510
  
 .. _SortListADT:
 
-List ADT
---------
+List ADTs
+---------
 Lists are considered to be an “ordered collection” of elements or Objects, also known as a sequence of elements.
 
 This means that client code can access elements from a List via their integer index or “position” in the List.  The elements of the List are said to be ordered by this index or “position”.
 
 While the elements of the collection are considered to have a specific order, the ordering of these List elements are NOT based on the element’s value, rather their index.  
 
-Lists are not necessarily in Sorted Order.
+Lists are not necessarily in Sorted Order, for example a list of numbers may be 7,22,-45,89.
 
  
 
@@ -120,9 +111,48 @@ A Sorted List is therefore a collection of elements or Objects in sorted order, 
 - the ordering of elements is based on something related to the element’s value or the Object’s “state” (When referring to an Object’s state we mean the values of each of its fields)
 - each element is of the same type (through inheritance and polymorphism a List could be used to facilitate some combination of comparable types)
 
-An example of a Sorted List could be a List of names, stored as Strings arranged in alphabetical order.  In computing circles we often refer to this as lexicographic or lexical order.
+An example of a Sorted List could be a List of names, stored as Strings arranged in alphabetical order.  In computing we often refer to this as lexicographic or lexical order.
 
 Just like Lists and many other data structures, it would be necessary to implement methods that enable client code to add new elements, remove elements, and track and manage the number of elements in the Sorted List.  As you progress through this module you will explore the similarities and differences between Lists and Sorted Lists and their implementations. 
+
+
+
+
+
+.. _SortListInterface:
+
+Sorted ListInterface
+---------------------
+
+Notice how the SortedListInterface UML only contains one add method and no replace method.
+
+
+.. odsafig:: Images/ListInterface.png
+   :align: center
+   :alt: ListInterface UML. 
+
+.. odsafig:: Images/SortedListInterface.png
+   :align: center
+   :alt: SortedListInterface UML. 
+
+.. admonition:: Follow Along, Practice and Explore
+
+    Download to run and explore the corresponding project from the video on your own in eclipse. The project CS-GraphWindowLib is required for the sample project.  It is also used in your course projects. To download the CS-GraphWindowLib you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
+
+   .. raw:: html
+
+
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exSortedLists.zip"  target="_blank">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+    exSortedLists.zip</img>
+      </a>
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jhdza823' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 
 Checkpoint 1
@@ -131,10 +161,12 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/SortedListsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+
+
 .. _SortListImp:
 
-Implementing a Sorted List ADT
--------------------------------
+Sorted List ADT Implementation Approaches
+-----------------------------------------
 
 In many ways we can conceptually think about the SortedList ADT as a List ADT with modified characteristics and additional “Sort” logic.  Reflecting upon the List ADT implementation would therefore help us consider various approaches to implementing a SortedList ADT.
 
@@ -146,7 +178,7 @@ On the other hand, there are List ADT methods that may share the same name as th
 
 The ``add(newEntry)`` method is one ListADT method that needs significant modification before it can function as a SortedList ADT ``add(newEntry)`` method. While the ``add(newEntry)`` method for the List ADT simply added the newEntry into the next available list location the ``add(newEntry)`` method for the SortedList ADT must instead locate an appropriate location for the newEntry being added, one that preserves the sorted order.
 
-There are various approaches to implementing a SortedList ADT, a few of the main ones will be discussed in the following section.
+There are various design approaches to implementing a SortedList ADT, such as: write it from scratch, use composition, use inheritance.
  
 
 Write it from scratch
@@ -174,39 +206,24 @@ This approach also uses a List ADT implementation to support the implementation 
 
 Since we can think of a SortedList as a List with modified characteristics and additional “Sort” logic we can therefore conclude that a SortedList is-a List, thus deriving the benefits of inheritance.  The List becomes a parent class, while the SortedList becomes a child of List, inheriting methods from the parent class.  Since some SortedList methods must behave differently when compared against their List ADT counterparts we must override these methods when defining the SortedList class. Specifically we must override any methods that do not serve to preserve sorted order. For example methods like add(int newPosition, T newEntry) and replace(givenPosition,newEntry) offer client code control over the positioning of newEntries, this is not appropriate as this could affect the sorted order of the SortedList.  The add(newEntry) method would also need to be modified.  Further the SortedList would require features not present within the List, requiring us to add these new methods, examples of such include the SortedList ADT methods remove(anEntry) and getPosition(anEntry).
 
-.. admonition:: Follow Along, Practice and Explore
-
-    Download to run and explore the corresponding project from the video on your own in eclipse. The project CS-GraphWindowLib is required for the sample project above.  It is also used in your course projects. To download the CS-GraphWindowLib you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
-
-   .. raw:: html
-
-    <!-- TODO: fix link. -->
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exSortedLists.zip"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
-    exSortedLists.zip</img>
-      </a>
 
 
-.. raw:: html
+.. _SortListImpScratch:
 
-   <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jhdza823' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-   </center>
+Implementing a Sorted List ADT from Scratch
+-------------------------------------------
 
-.. _SortListImpArray:
-
-Implementing a Sorted List ADT with and Underlying Array
----------------------------------------------------------
+Implementing a Sorted List ADT with an Underlying Array
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. raw:: html
 
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_unitfyqf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
-.. _SortListImpChain:
 
 Implementing a Sorted List ADT with an Underlying Linked Chain
----------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: Follow Along and Engage
 
@@ -232,38 +249,20 @@ Implementing a Sorted List ADT with an Underlying Linked Chain
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2h8sliry' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
-.. _SortListImpEff:
 
-Writing from Scratch Approach - Efficiency of the Array-Based and Link-Based implementations
---------------------------------------------------------------------------------------------
 
-Implementation from Scratch
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Reflecting upon Efficiencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The worst case-efficiencies of the operations on the ADT List and ADT Sorted List have been provided below for both the Array-Based and Linked implementations.  Review each table, note the similarities and differences, then consider how implementation details could affect the efficiencies of the various methods.
 
 The table below depicts the worst-case efficiencies of the operations on the ADT sorted list for two implementations
-
-
 
 .. odsafig:: Images/Figure16-5ListOpEfficiency.png
    :align: center
    :alt: The worst-case efficiencies of the operations on the sorted list ADT for two implementations. Shows that most operations on an sorted list are Big-O (n), regardless of implementation, while location based are constant time. 
 
    The worst-case efficiencies of the operations on the sorted list ADT for two implementations (credit: FIGURE 16-5 from course text: Carrano & Henry. Data Structures & Abstractions with Java)
-
-
-The table below depicts the worst-case efficiencies of select ADT List operations for two implementations
-
-
-.. odsafig:: Images/Figure16-8SortedListOpEfficiency.png
-   :align: center
-   :alt: The worst-case efficiencies of the operations on the list ADT for two implementations. Shows that most operations on an sorted list are Big-O (n), regardless of implementation, while location based are constant time. 
-   
-   The worst-case efficiencies of the operations on the list ADT for two implementations. (credit FIGURE 16-8 from course text: Carrano & Henry. Data Structures & Abstractions with Java)
-
-Reflecting upon Efficiencies
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Consider, for example, the new SortedList ADT method getPosition(…).  
 
@@ -275,15 +274,10 @@ Not that the current efficiency of that method is $O(n)$ for both an Array-based
 
 However this is not the most efficient option.  The efficiency of this method could be improved by using the fact that the SortedList is in sorted order. Instead of traversing the entire list in search of anEntry the method could stop the search once past where the element should be, if the search encounters an element greater than anEntry before finding anEntry then the method can determine that anEntry is not in the list. The ``getPosition()`` method can be further improved by using a binary search instead of a linear search.  
 
-Checkpoint 2
-------------
+.. _SortListImpComposition:
 
-.. avembed:: Exercises/SWDesignAndDataStructs/SortedListsCheckpoint2Summ.html ka
-   :long_name: Checkpoint 2
-
-
-Implementing Using Composition
-------------------------------
+Implementing a Sorted List ADT Using Composition
+------------------------------------------------
 
 .. admonition:: Follow Along and Engage
 
@@ -307,10 +301,7 @@ Efficiency of the Composition Approach
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Implementation from Scratch
----------------------------
-
-The worst case-efficiencies of the operations on the ADT List and ADT Sorted List have been provided below for the Composition implementations.  Review each table, note the similarities and differences, then consider how implementation details could affect the efficiencies of the various methods.  Note how the worst-case efficiencies for the Linked SortedList Composition approach depicted in Figure 16-9 is significantly different from the write-from-scratch SortedList approach depicted in Figure 16-5 and Figure 16-8.
+The worst case-efficiencies of the operations on the ADT List and ADT Sorted List have been provided below for the Composition implementations.  Review each table, note the similarities and differences, then consider how implementation details could affect the efficiencies of the various methods.  Note how the worst-case efficiencies for the Linked SortedList Composition approach depicted in Figure 16-9 is significantly different from the write-from-scratch SortedList approach depicted in Figure 16-5.
 
 The table below depicts the worst-case efficiencies of the ADT sorted list operations when implemented using an instance of the ADT list
 
@@ -319,26 +310,17 @@ The table below depicts the worst-case efficiencies of the ADT sorted list opera
    
    (credit FIGURE 16-9 from course text: Carrano & Henry. Data Structures & Abstractions with Java)
 
-
-
-
-The table below  depicts the worst-case efficiencies of the operations on the ADT sorted list for two implementation
-
-.. odsafig:: Images/Figure16-8SortedListOpEfficiency.png
-   :align: center
-   
-   (credit FIGURE 16-8 from course text: Carrano & Henry. Data Structures & Abstractions with Java)
-
+The table below depicts the worst-case efficiencies of the ADT sorted list operations when implemented using an array or linked chain as a comparision to the composition implementation.
 
 .. odsafig:: Images/Figure16-5ListOpEfficiency.png
    :align: center
 
-   (credit FIGURE 16-8 from course text: Carrano & Henry. Data Structures & Abstractions with Java)
+   (credit FIGURE 16-5 from course text: Carrano & Henry. Data Structures & Abstractions with Java).
 
+.. _SortListImpInheritance:
 
-
-Implementing Using Inheritance
-------------------------------
+Implementing a Sorted List ADT Using Inheritance
+------------------------------------------------
 
 .. admonition:: Follow Along and Engage
 
@@ -356,3 +338,9 @@ Implementing Using Inheritance
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qc6bdmjj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
+
+Checkpoint 2
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/SortedListsCheckpoint2Summ.html ka
+   :long_name: Checkpoint 2
