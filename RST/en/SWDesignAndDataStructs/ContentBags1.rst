@@ -330,13 +330,6 @@ Checkpoint 2
 
 
 
-
-Programming Practice: ArrayBags
--------------------------------
-
-.. extrtoolembed:: 'Programming Practice: ArrayBags'
-   :workout_id: 1910   
-
 Demo More bag method implementation
 -----------------------------------
 
