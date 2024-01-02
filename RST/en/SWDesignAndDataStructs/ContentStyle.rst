@@ -315,7 +315,7 @@ Naming Summary
 +========================+==================================================================================+======================================+
 | package                | all lowercase                                                                    | util                                 |
 +------------------------+----------------------------------------------------------------------------------+--------------------------------------+
-| class                  | begin with a capital letter then each word must also begin with a capital letter | **ArrayList** .                      |
+| class                  | begin with a capital letter then each word must also begin with a capital letter | **ArrayList**                        |
 +------------------------+----------------------------------------------------------------------------------+--------------------------------------+
 | methods                | follow the lowerCamelCase convention                                             | **myMethodName()**                   |
 +------------------------+----------------------------------------------------------------------------------+--------------------------------------+
@@ -329,21 +329,32 @@ Naming Summary
 
 Code Review
 -----------
-Complete the tasks described below, watch the Naming video, then click "Next" at the bottom of the page to proceed to the next activity.
 
-Writing code that follows proper standards and conventions is a valuable skill that can greatly contribute to your success as a developer and your ability to work well with other developers. 
+.. admonition:: Follow Along, Practice and Explore
 
-Every developer needs to learn how to review and assess their own code, as well as code written by others, to ensure that it meets quality standards and to determine possible areas of improvement.
+    Complete the tasks described below, then watch the Naming video.  Download to run and explore the java file from the video on your own in eclipse. You may download the standalone \*.java file for this example. To run the standalone \*.java file you will need to 
+        1) create a new Eclipse project, then 
+        2) create a package within the project called “example” (the package named at the top of the class MUST match the package the file is placed in within the Eclipse project), and finally 
+        3) download and import the standalone \*.java file(s) to the created package.
+        
+   .. raw:: html
+   
+       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/record.java"  target="_blank">
+       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+       record.java</img>
+       </a>
+
+
+Writing code that follows proper standards and conventions is a valuable skill that can greatly contribute to your success as a developer and your ability to work well with other developers. Every developer needs to learn how to review and assess their own code, as well as code written by others, to ensure that it meets quality standards and to determine possible areas of improvement.
 
 In this activity you will adopt the role of a Jr. developer tasked to review code written by another developer.
 
-- Download the example code record.java Download record.java
+- Review the code in record.java
 - Reflect upon the naming conventions and practices previously discussed
 - Review the code with a critical eye, see if you can identify problem areas with respect to naming and opportunities for improvement
-- View the video to see if your list of problem areas and opportunities, match those found in our  review
+- View the video to see if your list of problem areas and opportunities, match those found in our review
 
-Interactive: Naming Review 
---------------------------
+
 
 .. raw:: html
 
