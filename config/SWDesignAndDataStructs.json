@@ -88,8 +88,8 @@
         "Introduction": {
             "SWDesignAndDataStructs/AdminWelcome": {
                 "WelcomeCheckpointSumm": {
-                    "points": 5,
-                    "threshold": 5
+                    "points": 6,
+                    "threshold": 6
                 }
             },
             "SWDesignAndDataStructs/AdminIDESetup": {
