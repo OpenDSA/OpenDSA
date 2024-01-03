@@ -160,57 +160,67 @@ Review of Writing JUnit Tests with student.TestCase
     <center>
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_zj2voxbz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
-   <div class="section" id="use-junit">
-   <h2>4.<span class="section-number">7.1. </span>Use JUnit<a class="headerlink" href="#use-junit" title="Permalink to this headline">¶</a></h2>
-   <p>To make a JUnit test class in eclipse:</p>
-   <ol class="arabic simple">
-   <li><p>Right-click the class you’re creating a test class for in the Package Explorer</p></li>
-   <li><p>Click: <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">&gt;</span> <span class="pre">Class</span></code> (creating a JUnit Test Case isn’t CS2-Support compliant)</p></li>
-   <li><p>Name the class Test. (i.e. HokieTest, ArrayBagTest)</p></li>
-   <li><p>Click finish (You may want to check the box for ‘generate comments’ if you wish)</p></li>
-   <li><p>Add an import statement: import student.TestCase</p></li>
-   <li><p>Add that your class extends TestCase.</p></li>
-   <li><p>Project Build Path should be configured to have CS2-Support project included (note that CS2-Support needs to be open to appear as an option)</p></li>
-   <li><p>Declare instance variables</p>
-   <ul class="simple">
-   <li><p>Create at least one field of the object of the class you are testing.</p></li>
-   </ul>
-   </li>
-   <li><p>Write setUp method</p></li>
-   </ol>
-   <blockquote>
-   <div><ul class="simple">
-   <li><p>Use the setUp() method to initialize your object(s), it will be run before each test method.</p></li>
-   </ul>
-   </div></blockquote>
-   <ol class="arabic simple" start="10">
-   <li><p>Write test methods for each method in class being tested</p></li>
-   </ol>
-   <blockquote>
-   <div><ul class="simple">
-   <li><p>Create at least one test method for each of the methods in your class. Each method in your test class needs to start with ‘test’ or else it will not run correctly! (i.e. testGetName, testAdd) For a test method, call the corresponding method on the object and use assertion statements to test your code.</p></li>
-   </ul>
-   </div></blockquote>
-   <ol class="arabic simple" start="11">
-   <li><p>Write additional test methods as needed</p></li>
-   </ol>
-   <p>A simplified test class example for the Student class:</p>
-   <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>
- 
-   <p>public class StudentTest extends student.TestCase
+
+
+
+Use JUnit
+~~~~~~~~~
+To make a JUnit test class in eclipse:
+
+#. Right-click the class you’re creating a test class for in the Package Explorer
+
+#. Click: `New > Class` (creating a JUnit Test Case isn’t CS2-Support compliant)
+
+#. Name the class Test. (i.e. HokieTest, ArrayBagTest)
+
+#. Click finish (You may want to check the box for ‘generate comments’ if you wish)
+
+#. Add an import statement: import student.TestCase
+
+#. Add that your class extends TestCase.
+
+#. Project Build Path should be configured to have CS2-Support project included (note that CS2-Support needs to be open to appear as an option)
+
+#. Declare instance variables
+
+   * Create at least one field of the object of the class you are testing.
+
+#. Write setUp method
+
+#. Use the setUp() method to initialize your object(s), it will be run before each test method.
+
+#. Write test methods for each method in class being tested
+
+   * Create at least one test method for each of the methods in your class. Each method in your test class needs to start with ‘test’ or else it will not run correctly! (i.e. testGetName, testAdd) For a test method, call the corresponding method on the object and use assertion statements to test your code.
+
+#. Write additional test methods as needed. A simplified test class example for the Student class:
+
+.. code-block:: java
+
+   public class StudentTest extends student.TestCase
    {
-       private Student janeDoe;</p>
-   <p>    public void setUp()
-       {
-           janeDoe = new Student(“Jane Doe”);
-       }</p>
-   <p>    public void testGetName()
-       {
-           assertEquals(“Jane Doe”, janeDoe.getName());
-       }
-   }</p>
-   </div>  </pre></div>
-   </div>
+      private Student janeDoe;
+
+      public void setUp()
+      {
+         janeDoe = new Student(“Jane Doe”);
+      }
+
+      public void testGetName()
+      {
+         assertEquals(“Jane Doe”, janeDoe.getName());
+      }
+   }
+
+
+
+
+
+
+
+
+.. raw:: html
+  
    <div class="section" id="run-a-junit-test">
    <h2>4.<span class="section-number">7.2. </span>Run a JUnit Test<a class="headerlink" href="#run-a-junit-test" title="Permalink to this headline">¶</a></h2>
    <p>To run a JUnit test class:</p>
