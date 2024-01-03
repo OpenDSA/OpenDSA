@@ -345,6 +345,26 @@ We might decide to un-nest them as well:
    
 Now, it’s easier to see all the conditions that need to be tested.
 
+Simplify Testing
+~~~~~~~~~~~~~~~~
+
+When testing a method with multiple if-else statements, it can usually simplify testing to split each possibility into its own test method.This can be particularly helpful when making sure you’re reaching every condition in a more complex if-else statement block ( a common Web-CAT error ).
+
+Say we are testing a method with the following if-else statement in it:
+
+.. code-block:: java
+
+   if ( A > B)
+   {
+      //do something
+   }
+   else
+   {
+      //do something else
+   }
+
+It might be a good idea to have one test method evaluate this if statement when A > B is true and another test method evaluate the same if statement when A > B is false.
+
 Checkpoint 3
 ~~~~~~~~~~~~
 
