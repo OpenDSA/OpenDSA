@@ -363,20 +363,23 @@ In this activity you will adopt the role of a Jr. developer tasked to review cod
     </center>
     
 
+Checkpoint 1
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/StyleCheckpoint1Summ.html ka
+   :long_name: Checkpoint 1
+
+
 .. _ContentStyleFormat:
 
-Formatting & Indentation
-~~~~~~~~~~~~~~~~~~~~~~~~
- 
+Formatting
+----------
 
 .. admonition:: On the importance of formatting
 
     "It is not merely a matter of aesthetics that programs should be written in a particular style. Rather there is a psychological basis for writing programs in a conventional manner: programmers have strong expectations that other programmers will follow these discourse rules. If the rules are violated, then the utility afforded by the expectations that programmers have built up over time is effectively nullified. The results from the experiments with novice and advanced student programmers and with professional programmers described in this paper provide clear support for these claims."
     
     -- Elliot Soloway and Kate Ehrlich - Empirical studies of programming knowledge (1984)
-
-Formatting
-----------
 
 Proper and consistent formatting improves code readability, making it easier to review, understand, debug, and maintain.  Ideally the formatting and overall layout should clearly convey the  logical structure of the code, thereby helping developers to form mental models of the code, its behavior, and the flow of execution i.e. the order in which programming statements are executed. 
  
@@ -862,8 +865,7 @@ These are examples of useless comments. Many students add comments to their code
   
 .. _ContentStyleOther:
   
-Other style matters
--------------------
+
 
 Use of constants and referenced values vs hard coding
 -----------------------------------------------------
@@ -959,32 +961,6 @@ More information on Access Modifiers and Visibility is available here: https://d
 
  
 
-Testing methods by passing null params
---------------------------------------
-
-As a general rule when setting up a test case which requires the passing of a null to a method, you should refrain from passing null directly. This is bad practice, and may result in a style deduction when submitted to Web-CAT.
-
-For example the test: 
-
-.. code-block:: java
-
-    assertFalse( someNonNullObject.equals( null ) );
-
-Would return a style error when submitted to Web-CAT.
-
- 
-
-To avoid this you should instead create another object (be sure to name it appropriately), set it to `null`, then pass that object to the method being tested.  See example below:
-
-.. code-block:: java
-
-       SomeObject nonNullObject = new SomeObject (...);
-
-       SomeObject nullObject = null;
-
-       assertFalse( nonNullObject.equals( nullObject ) );
-
-
 .. _ContentStyleReview:
 
 Review Checklist
@@ -1029,6 +1005,7 @@ Documentation and Commenting
 
 Other matters of style
 ~~~~~~~~~~~~~~~~~~~~~~
+
 * Using hard-coded values
 * Missing or inappropriate access modifiers
 * Unnecessary or unused fields/variables
@@ -1042,7 +1019,11 @@ Interactive: Style & Documentation Final Review
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5a3easxv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
     
+Checkpoint 2
+------------
 
+.. avembed:: Exercises/SWDesignAndDataStructs/StyleCheckpoint2Summ.html ka
+   :long_name: Checkpoint 2
 
 
 Related Resources
