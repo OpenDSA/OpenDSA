@@ -214,6 +214,134 @@ To make a JUnit test class in eclipse:
 
 
 
+Run a JUnit Test
+~~~~~~~~~~~~~~~~
+To run a JUnit test class:
+
+#. Right-click the test class in the Package Explorer
+
+#. Click: `Run as > JUnit Test` A JUnit window should pop-up and display green if all of your tests are correct and red if one more has failed.
+
+
+Naming Conventions
+~~~~~~~~~~~~~~~~~~
+For classes: Add Test to the end of the class name
+
+* example: HelloWorld is the class; HelloWorldTest is the test class
+
+For methods: start the test method with test
+
+* example: foo is the method; testFoo is the test method
+
+Instance Variables
+~~~~~~~~~~~~~~~~~~
+
+* Use instance variables to hold values for testing
+
+* AKA field variables, member variables
+
+* scope of instance variable is all instance methods so variable can be used in multiple tests
+
+* in the example above, `janeDoe`` is an instance variable
+
+
+setUp Method
+~~~~~~~~~~~~
+
+* The `setUp()` method runs before each test method.
+
+* Use this method to initialize instance variables
+
+* Must be called *setUp* – remember to make that U uppercase!
+
+Code coverage
+~~~~~~~~~~~~~
+
+Write tests that test average cases
+
+* example: In a list, test for adding to the middle
+
+Write tests that test edge cases
+
+* example: In a list, test for adding at the beginning of a list
+
+
+N simple conditions, N+1 branches and tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Assertions in a test method need to make it to every condition of an if-else statement. It isn’t enough that the test reaches the ‘else’ condition. To test an if-else statement properly, the body of each condition must be run during testing.
+
+.. code-block:: java
+
+   if (x == 0 && y ==1) // 2 conditions, 3 checks- TF, FT, TT
+
+   if (x == 0 || y == 1) // 2 conditions, 3 checks- TF, FT, FF
+
+Clarification for edge and average cases- For a list that contains 100 values, you must check for indices -1, 0, 99, 100, and something in between.
+
+Example: say we had the following:
+
+.. code-block:: java
+
+   if ( score >= 90 )
+   {
+      System.out.println( “Your grade is an A”);
+   }
+   else if ( score >= 80 )
+   {
+      System.out.println( “Your grade is a B”);
+   }
+   else if ( score >= 70 )
+   {
+      System.out.println( “Your grade is a C”);
+   }
+   else if ( score >= 60 )
+   {
+      System.out.println( “Your grade is a D”);
+   }
+   else
+   {
+      System.out.println( “Your grade is an F”);
+   }
+
+Your test class would have to test for all 5 of the above possibilities in order to execute every single line of code in the block of if-else statements.
+
+Sometimes the best way to test your code is to clean your code first!
+
+Cleaning up your code before you test it can save lots of time. In addition, the way you structure your code may make it easier to test correctly.
+
+Example: Say we had written the following inside of a method:
+
+.. code-block:: java
+
+   if ( A > B )
+   {
+      if ( C != 0 && ( A > B ))
+      {
+         // do something
+      }
+   }
+We can easily clean up this if statement by noticing that we are evaluating A > B twice when it’s unnecessary. We can re-write it as the following:
+
+.. code-block:: java
+
+   if ( A > B )
+   {
+      if ( C != 0)
+      {
+         // do something
+      }
+   }
+We might decide to un-nest them as well:
+
+.. code-block:: java
+
+   if ( (A > B) && ( C != 0) )
+   {
+      //do something
+   }
+Now, it’s easier to see all the conditions that need to be tested.
+
 
 
 
@@ -221,129 +349,7 @@ To make a JUnit test class in eclipse:
 
 .. raw:: html
   
-   <div class="section" id="run-a-junit-test">
-   <h2>4.<span class="section-number">7.2. </span>Run a JUnit Test<a class="headerlink" href="#run-a-junit-test" title="Permalink to this headline">¶</a></h2>
-   <p>To run a JUnit test class:</p>
-   <ol class="arabic simple">
-   <li><p>Right-click the test class in the Package Explorer</p></li>
-   <li><p>Click: <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">as</span> <span class="pre">&gt;</span> <span class="pre">JUnit</span> <span class="pre">Test</span></code> (Click <code class="docutils literal notranslate"><span class="pre">Android</span> <span class="pre">Junit</span> <span class="pre">Test</span></code> for Android projects).  A JUnit window should pop-up and display green if all of your tests are correct and red if one more has failed.</p></li>
-   </ol>
-   </div>
-   <div class="section" id="naming-conventions">
-   <h2>4.<span class="section-number">7.3. </span>Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this headline">¶</a></h2>
-   <p>For classes: Add <code class="docutils literal notranslate"><span class="pre">Test</span></code> to the end of the class name</p>
-   <blockquote>
-   <div><ul class="simple">
-   <li><p>example: <code class="docutils literal notranslate"><span class="pre">HelloWorld</span></code> is the class; <code class="docutils literal notranslate"><span class="pre">HelloWorldTest</span></code> is the test class</p></li>
-   </ul>
-   </div></blockquote>
-   <p>For methods: start the test method with <code class="docutils literal notranslate"><span class="pre">test</span></code></p>
-   <blockquote>
-   <div><ul class="simple">
-   <li><p>example: <code class="docutils literal notranslate"><span class="pre">foo</span></code> is the method; <code class="docutils literal notranslate"><span class="pre">testFoo</span></code> is the test method</p></li>
-   </ul>
-   </div></blockquote>
-   </div>
-   <div class="section" id="instance-variables">
-   <h24.<span class="section-number">7.4. </span>Instance Variables<a class="headerlink" href="#instance-variables" title="Permalink to this headline">¶</a></h2>
-   <ul class="simple">
-   <li><p>Use instance variables to hold values for testing</p></li>
-   <li><p>AKA field variables, member variables</p></li>
-   <li><p>scope of instance variable is all instance methods so variable can be used in multiple tests</p></li>
-   <li><p>in the example above, <code class="docutils literal notranslate"><span class="pre">janeDoe</span></code> is an instance variable</p></li>
-   </ul>
-   </div>
-   <div class="section" id="setup-method">
-   <h2>4.<span class="section-number">7.5. </span>setUp Method<a class="headerlink" href="#setup-method" title="Permalink to this headline">¶</a></h2>
-   <ul class="simple">
-   <li><p>The <code class="docutils literal notranslate"><span class="pre">setUp()</span></code> method runs before each test method.</p></li>
-   <li><p>Use this method to initialize instance variables</p></li>
-   <li><p><strong>Must be called</strong> <code class="docutils literal notranslate"><span class="pre">setUp</span></code> – remember to make that <strong>U</strong> uppercase!</p></li>
-   </ul>
-   </div>
-   <div class="section" id="teardown-method-optional">
-   <h2>4.<span class="section-number">7.6. </span>tearDown Method (Optional)<a class="headerlink" href="#teardown-method-optional" title="Permalink to this headline">¶</a></h2>
-   <ul class="simple">
-   <li><p>The tearDown() method runs at the end of each test method. It is <em>optional</em> for the test case.</p></li>
-   <li><p>It is used to wrap up work after the test is concluded</p></li>
-   <li><p>Uses: check the layout of a linked list, closing files</p></li>
-   <li><p><strong>Must be called</strong> <code class="docutils literal notranslate"><span class="pre">tearDown</span></code> – remember to make that <strong>D</strong> uppercase!</p></li>
-   </ul>
-   </div>
-   <div class="section" id="code-coverage">
-   <h2>4.<span class="section-number">7.7. </span>Code coverage<a class="headerlink" href="#code-coverage" title="Permalink to this headline">¶</a></h2>
-   <p>Write tests that test average cases</p>
-   <ul class="simple">
-   <li><p>example: In a list, test for adding to the middle</p></li>
-   </ul>
-   <p>Write tests that test edge cases</p>
-   <ul class="simple">
-   <li><p>example: In a list, test for adding at the beginning of a list</p></li>
-   </ul>
-   <div class="section" id="n-simple-conditions-n-1-branches-and-tests">
-   <h3>4.<span class="section-number">7.7.1. </span>N simple conditions, N+1 branches and tests<a class="headerlink" href="#n-simple-conditions-n-1-branches-and-tests" title="Permalink to this headline">¶</a></h3>
-   <p>Assertions in a test method need to make it to every condition of an if-else statement. It isn’t enough that the test reaches the ‘else’ condition. To test an if-else statement properly, the body of each condition must be run during testing.</p>
-   <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2 conditions, 3 checks- TF, FT, TT</span>
-
-   <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2 conditions, 3 checks- TF, FT, FF</span>
-   </pre></div>
-   </div>
-   <p>Clarification for edge and average cases- For a list that contains 100 values, you must check for indices -1, 0, 99, 100, and something in between.</p>
-   <p><strong>Example</strong>: say we had the following:</p>
-   <div class="highlight-java notranslate"><div class="highlight"><pre><span></span>
-   <p><code>if ( score &gt;= 90 )
-   {
-       System.out.println( “Your grade is an A”);
-   }
-   else if ( score &gt;= 80 )
-   {
-       System.out.println( “Your grade is a B”);
-   }
-   else if ( score &gt;= 70 )
-   {
-       System.out.println( “Your grade is a C”);
-   }
-   else if ( score &gt;= 60 )
-   {
-       System.out.println( “Your grade is a D”);
-   }
-   else
-   {
-       System.out.println( “Your grade is an F”);
-   }</code></p></pre></div>
-   </div>
-   <p>Your test class would have to test for all 5 of the above possibilities in order to execute every single line of code in the block of if-else statements.</p>
-   <p><strong>Sometimes the best way to test your code is to clean your code first!</strong></p>
-   <p>Cleaning up your code before you test it can save lots of time. In addition, the way you structure your code may make it easier to test correctly.</p>
-   <p>Example: Say we had written the following inside of a method:</p>
-   <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="p">)</span>
-   <span class="p">{</span>
-   <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="p">))</span>
-   <span class="w">    </span><span class="p">{</span>
-   <span class="w">       </span><span class="c1">// do something</span>
-   <span class="w">    </span><span class="p">}</span>
-   <span class="p">}</span>
-   </pre></div>
-   </div>
-   <p>We can easily clean up this if statement by noticing that we are evaluating A &gt; B twice when it’s unnecessary. We can re-write it as the following:</p>
-   <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="p">)</span>
-   <span class="p">{</span>
-   <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-   <span class="w">    </span><span class="p">{</span>
-   <span class="w">        </span><span class="c1">// do something</span>
-   <span class="w">    </span><span class="p">}</span>
-   <span class="p">}</span>
-   </pre></div>
-   </div>
-   <p>We might decide to un-nest them as well:</p>
-   <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
-   <span class="p">{</span>
-   <span class="w">    </span><span class="c1">//do something</span>
-   <span class="p">}</span>
-   </pre></div>
-   </div>
-   <p>Now, it’s easier to see all the conditions that need to be tested.</p>
-   </div>
+   
    <div class="section" id="keep-junit-test-methods-to-a-small-example">
    <h3>4.<span class="section-number">7.7.2. </span>Keep JUnit test methods to a small example<a class="headerlink" href="#keep-junit-test-methods-to-a-small-example" title="Permalink to this headline">¶</a></h3>
    <p>When testing a method with multiple if-else statements, it can usually simplify testing to split each possibility into its own test method.This can be particularly helpful when making sure you’re reaching every condition in a more complex if-else statement block ( a common Web-CAT error ).</p>
