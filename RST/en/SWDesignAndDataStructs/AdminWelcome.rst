@@ -106,6 +106,8 @@ The course team understands that students may, on rare occasions, need to make a
 
 Note that Web-CAT changes may (in most circumstances) take days to complete, students are therefore advised to continue working towards the deadline specified for their existing lab section (unless otherwise advised). 
 
+Some other courses may hold tests at a time that conflicts with a student's lab section time. *If this is the case,  the student should notify the instructor for the other course immediately.* It is advisable to change lab sections to avoid the conflict. If there is a conflict then the other instructor may offer an alternate time.  Students are not excused from CS2114 lab.
+
 Checkpoint
 -----------
 

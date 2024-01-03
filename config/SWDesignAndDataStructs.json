@@ -88,8 +88,8 @@
         "Introduction": {
             "SWDesignAndDataStructs/AdminWelcome": {
                 "WelcomeCheckpointSumm": {
-                    "points": 5,
-                    "threshold": 5
+                    "points": 6,
+                    "threshold": 6
                 }
             },
             "SWDesignAndDataStructs/AdminIDESetup": {
@@ -123,12 +123,31 @@
                     "threshold": 3
                 },
                 "JunitCheckpoint3Summ": {
+                    "points": 6,
+                    "threshold": 3
+                },
+                "JunitCheckpoint4Summ": {
+                    "points": 2,
+                    "threshold": 1
+                },
+                "JunitCheckpoint5Summ": {
+                    "points": 2,
+                    "threshold": 1
+                },
+                "JunitCheckpoint6Summ": {
                     "points": 8,
                     "threshold": 4
                 }
             },
             "SWDesignAndDataStructs/ContentStyle": {
-                
+                "StyleCheckpoint1Summ": {
+                    "points": 4,
+                    "threshold": 2
+                },
+                "StyleCheckpoint2Summ": {
+                    "points": 4,
+                    "threshold": 2
+                }
             },
             "SWDesignAndDataStructs/RefPythonToJava": {
                 
@@ -668,6 +687,9 @@
                 }
             },
             "SWDesignAndDataStructs/Lab10DoubleLink": {
+                
+            },
+            "SWDesignAndDataStructs/Lab10DoubleLinkPost": {
                 
             },
             "SWDesignAndDataStructs/Quiz3": {

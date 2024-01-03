@@ -6,6 +6,7 @@
 .. avmetadata::
    :author: Molly Domino, Margaret Ellis, Cliff Shaffer, Mohammed Farghally, Mostafa Mohammed
 
+
 Linked Chains (Pointers)
 ========================
 
@@ -60,7 +61,7 @@ Interactive: Intro to Linked Chains of Nodes
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToNodes.pptx"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
-      IntroToNodes.pptx</a
+      IntroToNodes.pptx</a>
 
 .. raw:: html
 

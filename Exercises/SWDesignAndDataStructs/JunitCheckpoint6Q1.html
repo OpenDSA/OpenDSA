@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Junit Checkpoint 3 Q2</title>
+    <title>Junit Checkpoint 6 Q1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
@@ -10,13 +10,17 @@
   <body data-height="650" data-width="950">
     <div class="exercise">
       <div class="problems">
-        <div id="Junit_CP3_Q2">
-        <p class="question">Which set of values is just enough to provide code coverage for the following code: <tt>if (cost < 10 || tax < 2)</tt></p>
+        <div id="Junit_CP6_Q1">
+        <p class="question">Which method is run before each test method?</p>
 
-        <div class="solution">cost: 5 and tax: 6, cost: 15 and tax: 1, cost: 15 and tax: 6</div>
+        <div class="solution"><tt>public void setUp(){}</tt></div>
         <ul class="choices">
-        <li>cost: 5 and tax: 1, cost: 5 and tax: 6, cost: 15 and tax: 1, cost: 15 and tax: 6</li>
-        <li>cost: 5 and tax: 1, cost: 15 and tax: 1, cost: 15 and tax: 6 </li>
+        <li><tt>public void SetUp(){}</tt></li>
+        <li><tt>public void setup(){}</tt></li>
+        <li><tt>public Hokie(){}</tt></li>
+        <li><tt>public void SetUp(){}</tt>, <tt>public void setup(){}</tt>, and <tt>public Hokie(){}</tt> are all correct</li>
+        <li>All of these answers are correct</li>
+
         </ul>
         <div class="hints">
         <!--   -->

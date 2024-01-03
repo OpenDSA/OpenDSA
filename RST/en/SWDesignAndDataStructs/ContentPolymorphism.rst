@@ -93,12 +93,6 @@ Interactive: Java UML Diagrams
       </center>
 
 
-Programming Practice: Object Oriented Programming
--------------------------------------------------
-
-.. extrtoolembed:: 'Programming Practice: Object Oriented Programming'
-   :workout_id: 1906
-
 .. _IntroInheritance: 
 
 Interactive: Java Inheritance: this, super 
@@ -134,6 +128,15 @@ Checkpoint 2
 
 .. avembed:: Exercises/SWDesignAndDataStructs/OOP1Checkpoint2Summ.html ka
    :long_name: Checkpoint 2
+
+
+
+
+Programming Practice: Object Oriented Programming
+-------------------------------------------------
+
+.. extrtoolembed:: 'Programming Practice: Object Oriented Programming'
+   :workout_id: 1906
 
 Interactive: Java Inheritance: equals(), toString()
 ---------------------------------------------------
