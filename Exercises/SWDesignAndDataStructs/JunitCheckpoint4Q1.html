@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Junit Checkpoint 4 Q1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="950" data-width="850">
+    <div class="exercise">
+      <div class="problems">
+        <div id="Junit_CP4_Q1">
+        <p class="question">Which line of code is needed at the beginning of the follow block of code used to test whether remove throws the correct exception: 
+          <pre class="prettyprint">
+              try
+              {
+                collection.remove(item);
+              }
+              catch (Exception exception)
+              {
+                thrown = exception;
+              }
+
+              assertNotNull(thrown);
+
+
+              assertTrue(thrown instanceof NoSuchElementException);
+
+              assertEquals(thrown.getMessage(), "That item is not in the collection.");
+
+            </pre>
+
+
+       </p>
+
+        <div class="solution"><tt>Exception thrown = null;</tt></div>
+        <ul class="choices">
+        <li><tt>Exception thrown;</tt></li>
+        <li><tt>Exception thrown = NoSuchElementException;</tt></li>
+        <li><tt>Exception thrown = That item is not in the collection.";</tt></li>
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

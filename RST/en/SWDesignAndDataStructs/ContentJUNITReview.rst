@@ -72,7 +72,7 @@ This is a more modern style that's intended to be more readable. However, there 
 
    assertEquals(<expected value>, <something we want to check>);
 
-This second kind of assert statement is more commonly used today, but it can be tricky to use correctly.  When using ``asserEquals``, it can be easy to put the value we want to check first and the expected value second.
+This second kind of assert statement is more commonly used today, but it can be tricky to use correctly.  When using ``assertEquals``, it can be easy to put the value we want to check first and the expected value second.
 
 For example, say we wanted to check that a variable ``x`` was equal to 5.
 
@@ -86,7 +86,7 @@ Writing like this would be syntactically correct, but potentially confusing beca
 
 Videos in the second half of the course will be using this second, more commonly
 used syntax.  You can continue to use either version.  Below, is a table of
-assertions in both styles.
+assertions in both styles. Remember both the isEqualto() and assertEquals() methods use the equals method for the object parameters, be sure to understand how the corresponding equals method works for the objects being compared.
 
 .. list-table:: Assertions
    :header-rows: 1
@@ -342,6 +342,12 @@ We might decide to un-nest them as well:
    }
 Now, it’s easier to see all the conditions that need to be tested.
 
+Checkpoint 3
+~~~~~~~~~~~~
+
+.. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint3Summ.html ka
+   :long_name: Checkpoint 3
+
 
 Testing Exceptions
 ~~~~~~~~~~~~~~~~~~
@@ -377,6 +383,12 @@ Example:
    //Check the message of the exception is correct
    assertEquals(thrown.getMessage(), "There are no more elements left to iterate over.");
 
+Checkpoint 4
+~~~~~~~~~~~~
+
+.. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint4Summ.html ka
+   :long_name: Checkpoint 4
+
 Testing toArray() methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -384,7 +396,7 @@ The `toArray()` method returns an Object array containing each element found in 
 
 Testing the `toArray()` method requires that we confirm that the actual array of Objects returned by the method matches an expected array of Objects.
 
-Note that the `assertEquals` and `assertTrue` methods do NOT provide a mechanism to readily comp
+Note that the `assertEquals` and `assertTrue` methods do NOT provide a mechanism to readily compare two arrays because arrays do not have an equals method defined.  We ``CANNOT`` simply perform the following:
 
 .. code-block:: java
 
@@ -394,13 +406,13 @@ Note that the `assertEquals` and `assertTrue` methods do NOT provide a mechanism
 
    assertEquals(expectedArray, actualArray);
 
-Using the assert in this manner would result in a failed test and an AssertionFailedError (see image below).
+Using the assert in this manner would result in a failed test and an **AssertionFailedError** (see image below).
 
 .. odsafig:: Images/eclipse_failure_trace.png
    :align: center
 
 
-nor can we use:
+**nor** can we use:
 
 .. code-block:: java
 
@@ -412,7 +424,11 @@ One approach is to iterate through the elements of each array, comparing each el
 
 Consider using the for loop to help with such a task.
 
+Checkpoint 5
+~~~~~~~~~~~~
 
+.. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint5Summ.html ka
+   :long_name: Checkpoint 5
 
 General JUnit Testing Tips
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -504,8 +520,8 @@ Additional references for writing JUnit Tests:
 
 `A Whirlwind Introduction to JUnit <https://web-cat.org/eclstats/junit-quickstart/>`_
 
-Checkpoint 3
+Checkpoint 6
 ------------
 
-.. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint3Summ.html ka
-   :long_name: Checkpoint 3
+.. avembed:: Exercises/SWDesignAndDataStructs/JunitCheckpoint6Summ.html ka
+   :long_name: Checkpoint 6
