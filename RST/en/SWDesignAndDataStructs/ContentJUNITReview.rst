@@ -321,6 +321,7 @@ Example: Say we had written the following inside of a method:
          // do something
       }
    }
+   
 We can easily clean up this if statement by noticing that we are evaluating A > B twice when it’s unnecessary. We can re-write it as the following:
 
 .. code-block:: java
@@ -332,6 +333,7 @@ We can easily clean up this if statement by noticing that we are evaluating A > 
          // do something
       }
    }
+   
 We might decide to un-nest them as well:
 
 .. code-block:: java
@@ -340,6 +342,7 @@ We might decide to un-nest them as well:
    {
       //do something
    }
+   
 Now, it’s easier to see all the conditions that need to be tested.
 
 Checkpoint 3
@@ -514,7 +517,7 @@ You may find it easier to write one test case that handles the logic inside the 
    
 
 Additional references for writing JUnit Tests:
----------------------------------------------
+----------------------------------------------
 
 `Writing JUnit Tests With Student TestCase <2114_junit_tutorial.html>`_
 
