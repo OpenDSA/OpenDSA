@@ -160,6 +160,19 @@ Bulleted lists start with a * or - in column one. sublists can start with * or -
    - subitem 2
 
 
+Numbered lists
+--------------
+
+Numbered lists start with a #. and can have sublists within them
+
+#. Item 1
+   * subitem 1
+#. Item 2
+#. Item 3
+   - subitem 1
+   - subitem 2
+
+
 [7:28] Videos need to be loaded as an Iframe using raw html
 -----------------------------------------------------------
 
