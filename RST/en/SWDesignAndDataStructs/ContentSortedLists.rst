@@ -62,6 +62,7 @@ Interactive: Introduction to Sorted Lists
 .. admonition:: Follow Along, Practice and Explore
 
     Download to explore the interface files (see below) from the video on your own. Also follow allong with the slides from the video.
+    
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/ListInterface.java"  target="_blank">
