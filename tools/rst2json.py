@@ -139,7 +139,8 @@ class avmetadata(Directive):
                  'topic': directives.unchanged,
                  'requires': directives.unchanged,
                  'satisfies': directives.unchanged,
-                 'prerequisites': directives.unchanged
+                 'prerequisites': directives.unchanged,
+                 'keyword': directives.unchanged #keyword directive added for SPLICE catalog  
                  }
 
   def run(self):
