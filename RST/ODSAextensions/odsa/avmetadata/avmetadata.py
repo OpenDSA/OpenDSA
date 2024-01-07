@@ -46,6 +46,7 @@ class avmetadata(Directive):
                    'topic': directives.unchanged,
                    'requires': directives.unchanged,
                    'satisfies': directives.unchanged,
+                   'keyword': directives.unchanged, #keyword directive added 
                    #'short_name': directives.unchanged,
                    #'exercises': directives.unchanged,    
                    }
@@ -70,7 +71,8 @@ This is some text.
    :author:
    :topic:
    :requires:
-   :satisfies:   
+   :satisfies: 
+   :keyword:  
 
 This is some more text.
 """
