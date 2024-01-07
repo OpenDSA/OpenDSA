@@ -13,6 +13,7 @@ rst_header = '''\
 
 rst_footer = '''\
  .. raw:: html
+ 
     <script type="text/javascript">
      $(function () {
        var moduleName = "%(module_name)s";

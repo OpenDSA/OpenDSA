@@ -376,7 +376,12 @@ class ODSA_RST_Module:
             if os.environ.get('SLIDES', None) == "yes":
                 # implicit hyperlink from '.. _%(mod_name)s:' creates a critical error when building slides
                 config_templates.rst_header = config_templates.rst_header.replace('.. _%(mod_name)s:', '.. LINK REMOVED for slides')
-            mod_data.insert(0, config_templates.rst_header % header_data)
+            # mod_data.insert(0, config_templates.rst_header % header_data)
+            # fixes for "Error: content expected after raw directive" when compiling a book, formats rst header data in book/'compiled-book'/source
+            formatted_header = config_templates.rst_header % header_data
+            formatted_header = formatted_header.replace(".. raw:: html", ".. raw:: html\n\n   ")
+            mod_data.insert(0, formatted_header)
+
 
             avmetadata_found = False
 

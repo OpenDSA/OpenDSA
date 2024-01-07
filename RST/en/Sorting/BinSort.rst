@@ -8,6 +8,7 @@
    :requires: sorting terminology
    :satisfies: binsort
    :topic: Sorting
+   :keyword: Bucket Sort, Sorting, Recursion
 
 .. index:: ! Binsort
 
