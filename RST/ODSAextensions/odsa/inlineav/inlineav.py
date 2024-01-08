@@ -177,6 +177,7 @@ class inlineav(Directive):
                   'threshold': directives.unchanged,
                   'align': directives.unchanged,
                   'id': directives.unchanged,
+                  'keyword': directives.unchanged, #keyword directive added 
                 }
   has_content = True
 
