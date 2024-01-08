@@ -127,8 +127,7 @@ course easier.
    :align: center
 
 6. When the installation is complete, Eclipse will notify you that it should
-   be restarted in order for the changes to take effect. Click **Yes** to
-   do so.
+   be restarted in order for the changes to take effect. Click **Yes** to do so.
 
 
 Plugin Settings
