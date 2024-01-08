@@ -25,11 +25,9 @@ compile without these.
    
    Note: this setup involves multiple steps and it's not uncommon for students to miss something their first time through.  If you've installed everything but can't get any code to run at all, it's good to try uninstalling Eclipse and just installing it again.
 
-.. raw:: html
 
-   &nbsp;&nbsp;&nbsp;1. Open <a href="https://www.eclipse.org/downloads/packages/installer" target="_blank">https://www.eclipse.org/downloads/packages/installer</a>
-
-1. Click on the Download link in the box at the top that matches your computer.
+1. Open  `https://www.eclipse.org/downloads/packages/release/2023-09/r <https://www.eclipse.org/downloads/packages/release/2023-09/r>`_
+2. Click on the Download link in the box at the top that matches your computer.
 
    .. admonition:: Which version of Eclipse should I download? 32 or 64-bit? x86_64 or AArch64?
    
@@ -39,14 +37,16 @@ compile without these.
         
         * For Mac: `Figure out what processor you have in your Mac <https://www.howtogeek.com/706226/how-to-check-if-your-mac-is-using-an-intel-or-apple-silicon-processor/>`_, and then download the Mac x86_64 version for Intel processors, or AArch64 for the Apple processors.
 
-2. After the download is complete, follow the installation instructions
-   beginning at step 2 on this page, selecting **IDE for Java Developers** when prompted. You will also need to accept terms and conditions.
+3. After the download is complete, follow the installation instructions
+   
+   * Select **Eclipse IDE for Java Developers** when prompted.
+   * Install JDK 17.
+   * You may also need confrim trust and accept terms and conditions.
 
-3. Start Eclipse. ( If you are on a Mac, you need to set
+4. Start Eclipse. ( If you are on a Mac, you need to set
    **System Preferences->Security and Privacy** to allow apps downloaded from
    locations other than the Mac App Store.)
-
-4. The first time you start Eclipse, you'll be asked to specify a location for the Eclipse Workspace; this is where Eclipse will keep your programming projects. You can either use the default recommendation or place it elsewhere on your file system. Check the **Use this as the default and the do not ask again** option, so Eclipse will not ask you every time you start it, and click **Launch**.
+5.  The first time you start Eclipse, you'll be asked to specify a location for the Eclipse Workspace; this is where Eclipse will keep your programming projects. You can either use the default recommendation or place it elsewhere on your file system. Check the **Use this as the default and the do not ask again** option, so Eclipse will not ask you every time you start it, and click **Launch**.
 
 
 .. odsafig:: Images/SetupFig1.png
@@ -61,7 +61,7 @@ checkbox **Remember my Decision** then select **Install**.
    :align: center
 
 
-6. The initial Eclipse startup screen has a Welcome tab with an
+1. The initial Eclipse startup screen has a Welcome tab with an
 Overview, Tutorials, Samples, and a "What's New" section.
 
 
@@ -73,6 +73,15 @@ Feel free to explore the options and then close the Welcome tab by clicking
 the "X" control to the right of "Welcome" near the top of the window to
 proceed to the Workbench.
 
+Create a Project and Set Default JDK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create a projec to use for experimenting.
+1. File | New | Java Project 
+2. Name the project "Playground"
+3. Set the execution environment JRE to **1.8**
+
+.. odsafig:: Images/CreatingJavaProject.png
+   :align: center
 
 Configuring Eclipse
 -------------------
@@ -215,8 +224,7 @@ To install:
 
 
 Adding CS2 Support Projects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+---------------------------
 
 .. admonition:: Follow Along and Engage
 
@@ -230,8 +238,8 @@ Adding CS2 Support Projects
    </center>
 
 
-For Future Reference As Needed: 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Setting JDK to 1.8 
+------------------
 
 .. admonition:: Follow Along and Engage
 
