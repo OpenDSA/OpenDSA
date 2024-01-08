@@ -69,6 +69,7 @@ appears before it.
 
 .. avembed:: Exercises/Sorting/FindInversionsPRO.html ka
    :long_name: Inversions Proficiency Exercise
+   :keyword: Exchange Sort, Brute Force Sorting, Swap Sorting
 
 
 Analysis
@@ -79,6 +80,8 @@ Analysis
    :links: AV/Sorting/ExchangeSortCON.css
    :scripts: AV/Sorting/ExchangeSortCON.js
    :output: show
+   :keyword: Exchange Sort, Brute Force Sorting, Swap Sorting
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
    :long_name: Exchange Sorting Summary Exercise
+   :keyword: Exchange Sort, Brute Force Sorting, Swap Sorting
