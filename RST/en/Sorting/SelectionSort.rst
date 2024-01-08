@@ -52,6 +52,7 @@ Consider the example of the following array.
    :links: 
    :scripts: AV/Sorting/selectionsortS1CON.js
    :output: show
+   :keyword: Gap Sort, In-place Sorting
 
 Now we continue with the second pass.
 However, since the largest record is already at the right end,
@@ -62,6 +63,7 @@ we will not need to look at it again.
    :links: 
    :scripts: AV/Sorting/selectionsortS2CON.js
    :output: show
+   :keyword: Gap Sort, In-place Sorting
 
 Selection Sort continues in this way until the entire array is sorted.
 
@@ -69,11 +71,13 @@ The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/selectionsortAV.html ss
    :long_name: Selection Sort Visualization
+   :keyword: Gap Sort, In-place Sorting
 
 Now try for yourself to see if you understand how Selection Sort works.
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
    :long_name: Selection Sort Proficiency Exercise
+   :keyword: Gap Sort, In-place Sorting
 
 
 Selection Sort Analysis
@@ -97,6 +101,7 @@ comparisons and swaps required by Selection Sort.
    :links: AV/Sorting/SelectionSortAnalysisCON.css
    :scripts: AV/Sorting/SelectionSortAnalysisCON.js
    :output: show
+   :keyword: Gap Sort, In-place Sorting
 
 There is another approach to keeping the cost of swapping records low,
 and it can be used by any sorting algorithm even when the records are
@@ -117,9 +122,11 @@ return is a faster swap operation.
    :links: AV/Sorting/ptrSwapCON.css
    :scripts: AV/Sorting/ptrSwapCON.js
    :output: show
+   :keyword: Gap Sort, In-place Sorting
 
 Here are some review questions to check how well you understand
 Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
    :long_name: Selection Sort Summary Exercise
+   :keyword: Gap Sort, In-place Sorting

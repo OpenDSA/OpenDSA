@@ -43,6 +43,7 @@ numbers 0 through :math:`n-1`.
    :links: 
    :scripts: AV/Sorting/binsortS1CON.js
    :output: show
+   :keyword: Bucket Sort, Sorting, Recursion
 
 Here the key value is used to determine the
 position for a record in the final sorted array.
@@ -89,6 +90,7 @@ values fall in the range from 0 to ``MaxKeyValue``.
    :links: 
    :scripts: AV/Sorting/binsortS2CON.js
    :output: show
+   :keyword: Bucket Sort, Sorting, Recursion
 
 The total work required is simply that needed to place each record
 into the appropriate bin and then take all of the records out of the
