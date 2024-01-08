@@ -25,11 +25,12 @@ compile without these.
    
    Note: this setup involves multiple steps and it's not uncommon for students to miss something their first time through.  If you've installed everything but can't get any code to run at all, it's good to try uninstalling Eclipse and just installing it again.
 
-.. raw:: html
 
-   &nbsp;&nbsp;&nbsp;1. Open <a href="https://www.eclipse.org/downloads/packages/installer" target="_blank">https://www.eclipse.org/downloads/packages/installer</a>
+1. Open  `https://www.eclipse.org/downloads/packages/release/2023-09/r <https://www.eclipse.org/downloads/packages/release/2023-09/r>`_
+2. Click on the Download link in the box at the top that matches your computer.
 
-1. Click on the Download link in the box at the top that matches your computer.
+   .. odsafig:: Images/EclipseInstallJan2024.png
+      :align: center
 
    .. admonition:: Which version of Eclipse should I download? 32 or 64-bit? x86_64 or AArch64?
    
@@ -39,14 +40,16 @@ compile without these.
         
         * For Mac: `Figure out what processor you have in your Mac <https://www.howtogeek.com/706226/how-to-check-if-your-mac-is-using-an-intel-or-apple-silicon-processor/>`_, and then download the Mac x86_64 version for Intel processors, or AArch64 for the Apple processors.
 
-2. After the download is complete, follow the installation instructions
-   beginning at step 2 on this page, selecting **IDE for Java Developers** when prompted. You will also need to accept terms and conditions.
+3. After the download is complete, follow the installation instructions
+   
+   * Select **Eclipse IDE for Java Developers** when prompted.
+   * Install JDK 17.
+   * You may also need confrim trust and accept terms and conditions.
 
-3. Start Eclipse. ( If you are on a Mac, you need to set
+4. Start Eclipse. ( If you are on a Mac, you need to set
    **System Preferences->Security and Privacy** to allow apps downloaded from
    locations other than the Mac App Store.)
-
-4. The first time you start Eclipse, you'll be asked to specify a location for the Eclipse Workspace; this is where Eclipse will keep your programming projects. You can either use the default recommendation or place it elsewhere on your file system. Check the **Use this as the default and the do not ask again** option, so Eclipse will not ask you every time you start it, and click **Launch**.
+5.  The first time you start Eclipse, you'll be asked to specify a location for the Eclipse Workspace; this is where Eclipse will keep your programming projects. You can either use the default recommendation or place it elsewhere on your file system. Check the **Use this as the default and the do not ask again** option, so Eclipse will not ask you every time you start it, and click **Launch**.
 
 
 .. odsafig:: Images/SetupFig1.png
@@ -61,7 +64,7 @@ checkbox **Remember my Decision** then select **Install**.
    :align: center
 
 
-6. The initial Eclipse startup screen has a Welcome tab with an
+The initial Eclipse startup screen has a Welcome tab with an
 Overview, Tutorials, Samples, and a "What's New" section.
 
 
@@ -85,20 +88,20 @@ course easier.
 
 1. Open the Help menu and select **Install New Software...**:
 
-.. odsafig:: Images/WebcatSetupFig1.png
-   :align: center
+   .. odsafig:: Images/WebcatSetupFig1.png
+      :align: center
 
 2. In the **Work with**: field, paste the following URL and press
    Enter (or press "Add"): **http://web-cat.org/eclipse**
 
-.. odsafig:: Images/WebcatSetupFig2.png
-   :align: center
+   .. odsafig:: Images/WebcatSetupFig2.png
+       :align: center
 
 3. Click the check boxes next to **"Web-CAT Electronic Assignments"**  and
    **"Web-CAT Java Development Extras"**, and click **Next**.
 
-.. odsafig:: Images/WebcatSetupFig3.png
-   :align: center
+   .. odsafig:: Images/WebcatSetupFig3.png
+    :align: center
 
    Review your selection and click **Next** again.
 
@@ -124,8 +127,7 @@ course easier.
    :align: center
 
 6. When the installation is complete, Eclipse will notify you that it should
-   be restarted in order for the changes to take effect. Click **Yes** to
-   do so.
+   be restarted in order for the changes to take effect. Click **Yes** to do so.
 
 
 Plugin Settings
@@ -215,8 +217,7 @@ To install:
 
 
 Adding CS2 Support Projects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+---------------------------
 
 .. admonition:: Follow Along and Engage
 
@@ -230,8 +231,43 @@ Adding CS2 Support Projects
    </center>
 
 
-For Future Reference As Needed: 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Createing a Project and Setting Default JDK
+-------------------------------------------
+Create a project to use for experimenting.
+
+1. File | New | Java Project
+    
+   .. odsafig:: Images/CreatingJavaProject.png
+      :align: center
+
+2. Name the project "Playground"
+3. Set the execution environment JRE to **1.8**
+4. Create the project (Next-> Finish)
+5. Expand the project, highlight the `src` folder and right click and choose New | Package to create a package named "experimenting"
+6.  Highlight the `experimenting` package and right click and choose New | Class to create a class named "HelloWorld"
+7.  Edit the class
+
+   .. code-block:: java
+
+      package experimenting;
+
+      public class HelloWorld {
+	     public static void main(String[] args) { 
+	        System.out.println("Hello World"); 
+	     }
+      }
+
+
+8. Highlight the `HelloWorld` class in the Package Explorer, right click and Run As... | Java Application
+9. Verify that "Hello World" appears in the console
+
+
+
+
+
+Troubleshooting Setting JDK to 1.8 
+----------------------------------
 
 .. admonition:: Follow Along and Engage
 
@@ -243,7 +279,3 @@ For Future Reference As Needed:
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q98qkist' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
-
-
-You're all set to begin the assignments!
