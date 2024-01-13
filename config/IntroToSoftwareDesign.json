@@ -156,23 +156,27 @@
           "points": 10
         },
         "Week3Quiz1Summ": {
-          "points": 5
+          "points": 4
         },
         "Week3Quiz2Summ": {
-          "points": 5
+          "points": 4
         },
         "Week3Quiz3Summ": {
-          "points": 5
+          "points": 4
         },
         "Week3Quiz4Summ": {
-          "points": 5
+          "points": 4
         },
         "Week3Quiz5Summ": {
-          "points": 5
+          "points": 4
         },
         "Week3ReadingQuizSumm": {
           "points": 15,
           "threshold": 12
+        },
+        "MUSICSurvey": {
+          "points": 5,
+          "threshold": 1
         }
       }
     },
@@ -438,57 +442,61 @@
         },
 
         "Syntax Practice: Adding to a Set": {
-          "points": 9
+          "points": 8
         },
 
         "Syntax Practice: Set Contains": {
-          "points": 9
+          "points": 8
         },
 
         "Syntax Practice: Set Remove": {
-          "points": 9
+          "points": 8
         },
 
         "Week13Quiz1Summ": {
-          "points": 9
+          "points": 8
         },
 
         "Syntax Practice: Making Maps": {
-          "points": 9
+          "points": 8
         },
 
         "Syntax Practice: Adding to Maps": {
-          "points": 9
+          "points": 8
         },
         "Syntax Practice: Map Contains and Remove": {
-          "points": 9
+          "points": 8
         },
         "Programming Practice: Maps": {
           "points": 20
         },
         "Week13Quiz2Summ": {
-          "points": 9
-        }
+          "points": 8
+        },
+          "EGPSurvey": {
+            "points": 8,
+            "threshold": 1
+          }
       }
     },
 
     "Static, Main, and Exceptions":{
        "IntroToSoftwareDesign/StaticMainAndExceptions":{
           "Week14Quiz1Summ":{
-             "points": 7
+             "points": 8
           },
-          "EGPSurvey": {
-            "points": 10,
+          "MUSICSurvey": {
+            "points": 5,
             "threshold": 1
           },
           "Week14Quiz2Summ":{
-             "points": 7
+             "points": 9
           },
           "Week14Quiz3Summ":{
-             "points": 8
+             "points": 9
           },
           "Week14Quiz4Summ":{
-             "points": 8
+             "points": 9
           },
           "Syntax Practice: Try-Catch Blocks":{
              "points":30

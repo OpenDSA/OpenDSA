@@ -314,32 +314,26 @@ Check Your Understanding: The Static Keyword
    :long_name: The Static Keyword
 
 
-Your Opinions on Course Grading Policies 
+Your Opinions on Learning and Engagement
 ----------------------------------------
 
-Please Complete the following survey. The survey includes questions regarding your
-opinions on the grading policies in this course and how you approach learning
-in this course. We will use this information to understand better how you are
-affected by these policies so that we can improve the course.
-
-Towards the end of the survey you will be asked if you consent for your answers
-and course data to be used in a study about grading policies.  There is no
-additional work on your part if you provide consent for your data to
-be used in the study.  Completing the survey should take less than 30 minutes.
-Your course instructor will not know whether you agree to
-participate until after you have completed the course and final
-grades have been turned in. You will earn assignment credit for submitting this
-survey, whether or not you agree to participate in the study or decline to
-answer some or all of the questions.
+Complete the following survey. The purpose of this task is to gather
+information about this course so that it can be improved. Your input is
+critical because we want to create the best experience possible for students.
 
 .. raw:: html
 
-    <a href="https://virginiatech.questionpro.com/t/AYIrDZ0fJU" target="_blank">CS 1114 Grading Policies Survey</a>
+    <a href="https://virginiatech.questionpro.com/t/AUHNlZ03Lw" target="_blank">CS 1114 Engagement Survey 2</a>
 
-Please answer below and your submission of the survey will be verified
+Towards the end of the survey you will be asked if you consent for this
+information to be used in a study about perceptions of student learning
+and engagement, which is optional.  There is no additional work on your
+part if you provide consent for your responses to be used in the study.
+
+Please answer below and your participation in the survey will be verified
 for credit.
 
-.. avembed:: Exercises/IntroToSoftwareDesign/EGPSurvey.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/MUSICSurvey.html ka
    :long_name: Survey Completed
 
 
