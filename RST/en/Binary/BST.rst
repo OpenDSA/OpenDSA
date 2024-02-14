@@ -41,7 +41,7 @@ sorted order from lowest to highest.
 
    Two Binary Search Trees for a collection of values.
    Tree (a) results if values are inserted
-   in the order 37, 24, 42, 7, 2, 40, 42, 32, 120.
+   in the order 37, 24, 42, 7, 2, 42, 40, 32, 120.
    Tree (b) results if the same values are inserted in the
    order 120, 42, 42, 7, 2, 32, 37, 24, 40.
 
