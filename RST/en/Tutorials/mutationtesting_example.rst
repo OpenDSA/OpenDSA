@@ -5,7 +5,11 @@
 
 .. avmetadata::
    :author: Rifat Sabbir Mansur and Cliff Shaffer
-   :topic: Mutation testing
+   :requires: Mutation testing
+   :satisfies: 
+   :topic: Programming Tutorial
+   :keyword: JUnit Testing, Mutation Coverage
+
 
 Mutation Testing Examples
 =========================

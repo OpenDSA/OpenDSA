@@ -5,9 +5,11 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires:
-   :satisfies: Testing Introduction
+   :requires: Testing Introduction
+   :satisfies:
    :topic: Testing
+   :keyword: Testing, Debugging
+
 
 Testing for Code Coverage
 =========================

@@ -5,9 +5,11 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: Testing Introduction
+   :requires: Testing Intro 2
    :satisfies:
    :topic: Testing
+   :keyword: Testing, Debugging
+
 
 Bowling Example
 ===============

@@ -8,6 +8,7 @@
    :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
+   :keyword: Data Structures Introduction
 
 Data Structures and Algorithms
 ==============================
@@ -345,6 +346,7 @@ Introduction Summary Questions
 
 .. avembed:: Exercises/Background/IntroSumm.html ka
    :long_name: Introduction Summary Questions
+   :keyword: Data Structures Introduction
 
 
 Some Software Engineering Topics

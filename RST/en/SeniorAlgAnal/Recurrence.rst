@@ -5,6 +5,11 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires: recurrence
+   :satisfies: recurrence solving
+   :topic: Math Background
+   :keyword: Recurrence Relations
+
 
 Solving Recurrence Relations
 ============================
@@ -317,6 +322,7 @@ and techniques for solving summations can then be used.
    :links: AV//SeniorAlgAnal/ExpandRecurrenceCON.css
    :scripts: AV/SeniorAlgAnal/ExpandRecurrenceCON.js
    :output: show
+   :keyword: Recurrence Relations
 
 .. topic:: Example
 
@@ -399,6 +405,7 @@ Here is a more visual presentation of this same derivation.
    :links: AV/SeniorAlgAnal/DandCRecurrenceCON.css
    :scripts: AV/SeniorAlgAnal/DandCRecurrenceCON.js
    :output: show
+   :keyword: Recurrence Relations
 
 So, we are left with this result:
 

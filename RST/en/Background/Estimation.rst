@@ -5,10 +5,13 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
+   :requires:
    :satisfies: estimation
    :topic: Math Background
+   :keyword: Estimation
 
 .. index:: ! estimation
+
 
 Estimation
 ==========

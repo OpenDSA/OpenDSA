@@ -5,8 +5,11 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :requires:
    :satisfies: summation
    :topic: Math Background
+   :keyword: Summations
+
 
 Summations
 ==========
@@ -64,6 +67,7 @@ comfortable with it.
    :links: AV/Background/SummationOneToNCON.css
    :scripts: AV/Background/SummationOneToNCON.js
    :output: show
+   :keyword: Summations
 
 
 .. inlineav:: SummationTwoPowerICON ss
@@ -71,6 +75,7 @@ comfortable with it.
    :links: AV/Background/SummationTwoPowerICON.css
    :scripts: AV/Background/SummationTwoPowerICON.js
    :output: show
+   :keyword: Summations
 
 Here is a list of useful summations, along with their closed-form solutions.
 

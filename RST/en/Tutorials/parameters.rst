@@ -7,7 +7,8 @@
    :author: Jordan Sablan
    :requires: Commmand line
    :satisfies: Command line parameters
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Command Line Parameters
 
 
 Parsing Command Line Parameters In Your Program

@@ -7,7 +7,8 @@
    :author: Ayaan Karzarouni and Cliff Shaffer
    :requires:
    :satisfies: Web-CAT Plugin
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Web-CAT, Eclipse
 
 Installing the Web-CAT Submission Plug-in for Eclipse
 =====================================================

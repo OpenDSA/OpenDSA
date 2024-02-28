@@ -221,7 +221,7 @@ order 3.
    :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPbuildCON.js
    :output: show
 
-   An example of building a ":math:`2-3^+` tree
+   An example of building a :math:`2-3^+` tree
 
 Next, let's see how to search.
 
@@ -233,11 +233,11 @@ Next, let's see how to search.
    :output: show
    :align: center
 
-   An example of searching a ":math:`2-3^+` tree
+   An example of searching a :math:`2-3^+` tree
 
-Finally, let's see an example of deleting from the ":math:`2-3^+` tree
+Finally, let's see an example of deleting from the :math:`2-3^+` tree
 
-   .. _TTPdelete:
+.. _TTPdelete:
 
 .. inlineav:: TTPdeleteCON ss
    :links: AV/Indexing/BPTree.css AV/Indexing/TTPTreeCON.css
@@ -245,7 +245,7 @@ Finally, let's see an example of deleting from the ":math:`2-3^+` tree
    :output: show
    :align: center
 
-   An example of deleting from a ":math:`2-3^+` tree
+   An example of deleting from a :math:`2-3^+` tree
 
 Now, let's extend these ideas to a :math:`\mathrm{B}^+` tree of higher order.
 
@@ -254,8 +254,8 @@ Once the first record in the range has been found, the rest of the
 records with keys in the range can be accessed by sequential
 processing of the remaining records in the first node, and then
 continuing down the linked list of leaf nodes as far as necessary.
-Figure :num:`Figure #BPexamp` illustrates the :math:`\mathrm{B}^+`
-tree.
+Figure :num:`Figure #BPexamp` 
+illustrates the :math:`\mathrm{B}^+` tree.
 
 .. _BPexamp:
 

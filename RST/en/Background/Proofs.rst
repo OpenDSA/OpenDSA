@@ -5,10 +5,13 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :satisfies: induction proofs
+   :requires:
+   :satisfies: proofs intro; induction proofs
    :topic: Math Background
+   :keyword: Proofs, Induction Proofs, Proof by Contradiction, Deduction
 
 .. index:: !proof
+
 
 Mathematical Proof Techniques
 =============================

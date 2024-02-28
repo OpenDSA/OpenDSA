@@ -7,7 +7,8 @@
    :author: Jordan Sablan
    :requires:
    :satisfies: debugging
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Debugging, Debugging Methods
 
 
 Common Debugging Methods
@@ -60,22 +61,26 @@ For an example of Rubber Duck Debugging read |external_link|.
 Wolf Fence Debugging
 ~~~~~~~~~~~~~~~~~~~~
 
-Imagine there is only one wolf in Alaska. How would you find it? The most
-effective way would be to fence Alaska in half and wait for the wolf to "howl."
-When you know which half has the wolf split it and again wait.
+Imagine there is only one wolf in Alaska.
+How would you find it?
+One way would be to fence Alaska in half and wait for the wolf to "howl".
+When you know which half has the wolf, split that half and again wait.
 Keep repeating until you find the wolf.
-This is the basis of Wolf Fence Debugging. Work to find where the bug occurs,
-eliminating areas repeatedly until the method and then the line of code causing
-the problem has been found. The method is particularly useful when used in
-conjunction with Exceptions as the stack trace can show each line of code called
+
+This is the basis of Wolf Fence Debugging.
+Work to find where the bug occurs, eliminating areas repeatedly until
+the method and then the line of code causing the problem has been
+found.
+The method is particularly useful when used in conjunction with
+Exceptions as the stack trace can show each line of code called
 leading to the actual Exception being thrown.
 
 
 Print Debugging vs Source Debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Choosing between source code debugging and print based debugging can be difficult
-at times.
+Choosing between source code debugging and print based debugging can
+be difficult at times.
 There are advantages and disadvantages to each method.
 Generally, print-based debugging can conveniently give you a small
 amount of targetted information (that is, you know what you want).

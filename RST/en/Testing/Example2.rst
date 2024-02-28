@@ -6,8 +6,10 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :requires: Testing Introduction
-   :satisfies:
+   :satisfies: Testing Intro 2
    :topic: Testing
+   :keyword: Testing, Debugging
+
 
 Another Example
 ===============

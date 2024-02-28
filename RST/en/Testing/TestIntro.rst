@@ -8,6 +8,8 @@
    :requires:
    :satisfies: Testing Introduction
    :topic: Testing
+   :keyword: Testing, Debugging
+
 
 Testing
 =======

@@ -7,7 +7,9 @@
    :author: Jordan Sablan
    :requires: debugging
    :satisfies: Eclipse debugging
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Debugging, Source Level Debugging, Eclipse
+
 
 Debugging In Eclipse
 ====================

@@ -7,7 +7,9 @@
    :author: Jordan Sablan
    :requires:
    :satisfies: JUnit intro
-   :topic: JUnit
+   :topic: Programming Tutorial
+   :keyword: JUnit Testing
+
 
 JUnit Testing And You
 =====================

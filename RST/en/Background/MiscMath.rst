@@ -5,8 +5,11 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
+   :requires:
    :satisfies: factorial; permuation; modulus
    :topic: Math Background
+   :keyword: Factorial, Permuation, Modulus
+
 
 Miscellaneous Notation
 ======================
