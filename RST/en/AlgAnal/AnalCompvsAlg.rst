@@ -8,6 +8,8 @@
    :requires: growth rate
    :satisfies:
    :topic: Algorithm Analysis
+   :topic: Algorithm Analysis, Growth Rate
+
 
 Faster Computer, or Faster Algorithm?
 =====================================
@@ -179,3 +181,4 @@ problem size that can run in a certain time on the new computer.
 
 .. avembed:: Exercises/AlgAnal/FasterCorASumm.html ka
    :long_name: Faster Computer or Faster Algorithm Exercise
+   :topic: Algorithm Analysis, Growth Rate

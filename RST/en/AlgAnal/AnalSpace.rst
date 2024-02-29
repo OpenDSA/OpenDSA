@@ -8,6 +8,8 @@
    :requires: algorithm analysis
    :satisfies: space analysis introduction; overhead; space/time tradeoff
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis, Space Analysis
+
 
 Space Bounds
 ============

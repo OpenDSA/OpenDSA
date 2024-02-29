@@ -8,6 +8,8 @@
    :requires: algorithm analysis; summation; recurrence
    :satisfies: analyzing programs
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis, Analyzing Programs
+
 
 Calculating Program Running Time
 ================================
@@ -236,12 +238,14 @@ Here is a visualization of the binary search method.
    :links: AV/Searching/binarySearchCON.css
    :scripts: AV/Searching/binarySearchCON.js
    :output: show
+   :keyword: Algorithm Analysis, Analyzing Programs, Binary Search
 
 Binary Search Practice Exercise
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: AV/Searching/binarySearchPRO.html pe
    :long_name: Binary Search Proficiency Exercise
+   :keyword: Algorithm Analysis, Analyzing Programs, Binary Search
 
 
 Analyzing Binary Search
@@ -252,6 +256,7 @@ Analyzing Binary Search
    :links: AV/AlgAnal/BsearchDandCRecurCON.css
    :scripts: AV/AlgAnal/BsearchDandCRecurCON.js
    :output: show
+   :keyword: Algorithm Analysis, Analyzing Programs, Binary Search
 
 Function ``binarySearch`` is designed to find the (single) occurrence of
 :math:`K` and return its position. 
@@ -294,4 +299,4 @@ Summary Exercise
 
 .. avembed:: Exercises/AlgAnal/AnalProgramSumm.html ka
    :long_name: Program Code Analysis Exercise
-
+   :keyword: Algorithm Analysis, Analyzing Programs

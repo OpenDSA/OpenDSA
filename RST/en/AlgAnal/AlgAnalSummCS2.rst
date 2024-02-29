@@ -8,6 +8,8 @@
    :requires: algorithm analysis; analyzing programs
    :satisfies: algorithm analysis review
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis
+
 
 Algorithm Analysis Summary Exercises
 ====================================
@@ -17,3 +19,4 @@ Summary Exercise: CS2
 
 .. avembed:: Exercises/AlgAnal/AlgAnalCS2Summ.html ka
    :long_name: Algorithm Analysis Summary Questions
+   :keyword: Algorithm Analysis
