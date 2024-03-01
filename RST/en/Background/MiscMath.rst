@@ -8,7 +8,7 @@
    :requires:
    :satisfies: factorial; permuation; modulus
    :topic: Math Background
-   :keyword: Factorial, Permuation, Modulus
+   :keyword: Factorial; Permuation; Modulus
 
 
 Miscellaneous Notation

@@ -8,7 +8,7 @@
    :requires: Command line parameters
    :satisfies: Eclipse command line parameters
    :topic: Programming Tutorial
-   :keyword: Eclipse, Command Line Parameters
+   :keyword: Eclipse; Command Line Parameters
 
 ========================================
 Using Command Line Parameters in Eclipse

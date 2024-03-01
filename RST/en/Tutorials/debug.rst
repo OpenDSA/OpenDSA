@@ -8,7 +8,7 @@
    :requires: debugging
    :satisfies: Eclipse debugging
    :topic: Programming Tutorial
-   :keyword: Debugging, Source Level Debugging, Eclipse
+   :keyword: Debugging; Source Level Debugging; Eclipse
 
 
 Debugging In Eclipse

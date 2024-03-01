@@ -8,7 +8,7 @@
    :requires: problems; algorithms
    :satisfies: growth rate
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis, Growth Rate
+   :keyword: Algorithm Analysis; Growth Rate
 
 
 Comparing Algorithms
@@ -239,13 +239,13 @@ algorithms are shown.
     :links: AV/AlgAnal/GrowthRatesCON.css
     :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
     :align: center
-   :keyword: Algorithm Analysis, Growth Rate
+   :keyword: Algorithm Analysis; Growth Rate
 
 .. inlineav:: GrowthRatesZoomCON dgm
    :links: AV/AlgAnal/GrowthRatesZoomCON.css
    :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesZoomCON.js
    :align: center
-   :keyword: Algorithm Analysis, Growth Rate
+   :keyword: Algorithm Analysis; Growth Rate
 
    Two views of a graph illustrating the growth rates for
    six equations.
@@ -339,14 +339,14 @@ resources consumed by an algorithm.
 
 .. avembed:: Exercises/AlgAnal/CompareGrowth.html ka
    :long_name: Comparing Growth Rates Exercise
-   :keyword: Algorithm Analysis, Growth Rate
+   :keyword: Algorithm Analysis; Growth Rate
 
 Growth Rates Ordering Exercise
 ------------------------------
 
 .. avembed:: Exercises/AlgAnal/GrowthRatesPRO.html ka
    :long_name: Growth Rates Ordering Exercise
-   :keyword: Algorithm Analysis, Growth Rate
+   :keyword: Algorithm Analysis; Growth Rate
 
 .. todo::
    :type: AV

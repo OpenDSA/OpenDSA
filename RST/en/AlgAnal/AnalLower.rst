@@ -8,8 +8,8 @@
    :satisfies: algorithm analysis lower bound
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
-   :topic: Algorithm Analysis, Asymptotic Algorithm Analysis, Lower
-           Bound, Big Theta, Big Omega
+   :keyword: Algorithm Analysis; Asymptotic Algorithm Analysis; Lower
+           Bound; Big Theta; Big Omega
 
 
 Lower Bounds and :math:`\Theta` Notation
@@ -241,13 +241,13 @@ If the limit goes to some constant other than zero, then
    :links: AV/AlgAnal/LowerBoundCON.css
    :scripts: AV/AlgAnal/LowerBoundCON.js
    :output: show
-   :topic: Algorithm Analysis, Asymptotic Algorithm Analysis, Lower
-           Bound, Big Omega
+   :keyword: Algorithm Analysis; Asymptotic Algorithm Analysis; Lower
+           Bound; Big Theta; Big Omega
 
 Summary Exercise
 ~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
    :long_name: Lower Bounds and Theta Notation Exercise
-   :topic: Algorithm Analysis, Asymptotic Algorithm Analysis, Lower
-           Bound, Big Theta, Big Omega
+   :keyword: Algorithm Analysis; Asymptotic Algorithm Analysis; Lower
+           Bound; Big Theta; Big Omega

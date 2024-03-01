@@ -8,7 +8,7 @@
    :requires: JUnit test writing
    :satisfies: Junit code coverage
    :topic: Programming Tutorial
-   :keyword: JUnit Testing, Code Coverage
+   :keyword: JUnit Testing; Code Coverage
 
 
 Code Coverage In JUnit

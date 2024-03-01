@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :satisfies: math introduction
    :topic: Math Background
+   :keyword: Math Background
+
 
 Chapter Introduction
 ====================

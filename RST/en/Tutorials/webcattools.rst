@@ -8,7 +8,7 @@
    :requires:
    :satisfies: Web-CAT Plugin
    :topic: Programming Tutorial
-   :keyword: Web-CAT, Eclipse
+   :keyword: Web-CAT; Eclipse
 
 Installing the Web-CAT Submission Plug-in for Eclipse
 =====================================================

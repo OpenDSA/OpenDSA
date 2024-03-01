@@ -307,7 +307,7 @@ The interface becomes a form of communication between the two programmers.
 
 .. avembed:: Exercises/CMP/CMdatatypeSumm.html ka
    :long_name: Concept map data types exercises
-   :keyword: Abstract Data Types, Concept Map
+   :keyword: Abstract Data Types; Concept Map
 
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
    :long_name: ADT Summary Questions

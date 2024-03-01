@@ -8,7 +8,7 @@
    :requires: algorithm analysis
    :satisfies: analysis misunderstandings
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis, Algorithm Analysis Misconceptions
+   :keyword: Algorithm Analysis; Algorithm Analysis Misconceptions
 
 
 Common Misunderstandings
@@ -99,8 +99,8 @@ worst, and average cases as the input size grows.
    :links: AV/AlgAnal/MisunderstandingsGraphCON.css
    :scripts: AV/AlgAnal/MisunderstandingsGraphCON.js
    :output: show
-   :keyword: Algorithm Analysis, Algorithm Analysis Misconceptions
+   :keyword: Algorithm Analysis; Algorithm Analysis Misconceptions
 
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
    :long_name: Common Misconceptions Exercise
-   :keyword: Algorithm Analysis, Algorithm Analysis Misconceptions
+   :keyword: Algorithm Analysis; Algorithm Analysis Misconceptions

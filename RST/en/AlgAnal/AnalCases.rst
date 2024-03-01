@@ -8,7 +8,7 @@
    :requires: growth rate
    :satisfies: best and worst case
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis, Best Case, Average Case, Worst Case
+   :keyword: Algorithm Analysis; Best, Average, Worst Cases
 
 
 Best, Worst, and Average Cases
@@ -22,7 +22,7 @@ Best, Worst, and Average Cases
    :links: AV/AlgAnal/AnalCasesCON.css
    :scripts: AV/AlgAnal/AnalCasesSameCON.js
    :output: show
-   :keyword: Algorithm Analysis, Best Case, Average Case, Worst Case
+   :keyword: Algorithm Analysis; Best, Average, Worst Cases
 
 |
 
@@ -31,7 +31,7 @@ Best, Worst, and Average Cases
    :links: AV/AlgAnal/AnalCasesCON.css
    :scripts: AV/AlgAnal/AnalCasesDiffCON.js
    :output: show
-   :keyword: Algorithm Analysis, Best Case, Average Case, Worst Case
+   :keyword: Algorithm Analysis; Best, Average, Worst Cases
 
 When analyzing an algorithm, should we study the best, worst, or
 average case?

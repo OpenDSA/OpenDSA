@@ -8,7 +8,7 @@
    :requires: sorting terminology; comparison
    :satisfies: insertion sort
    :topic: Sorting
-   :keyword: Incremental Sorting, Simple Sorting
+   :keyword: Incremental Sorting; Simple Sorting
 
 .. index:: ! Insertion Sort
 
@@ -62,7 +62,7 @@ Here we see the first few iterations of Insertion Sort.
    :links: 
    :scripts: AV/Sorting/insertionsortCON.js
    :output: show
-   :keyword: Incremental Sorting, Simple Sorting
+   :keyword: Incremental Sorting; Simple Sorting
 
 This continues on with each record in turn.
 Call the current record :math:`x`.
@@ -75,12 +75,12 @@ records to its left in the array must have smaller keys.
 
 .. avembed:: AV/Sorting/insertionsortAV.html ss
    :long_name: Insertion Sort Visualization
-   :keyword: Incremental Sorting, Simple Sorting
+   :keyword: Incremental Sorting; Simple Sorting
 
 
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
    :long_name: Insertion Sort Proficiency Exercise
-   :keyword: Incremental Sorting, Simple Sorting
+   :keyword: Incremental Sorting; Simple Sorting
 
 
 Insertion Sort Analysis

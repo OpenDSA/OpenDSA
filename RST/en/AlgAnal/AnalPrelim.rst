@@ -8,7 +8,7 @@
    :requires:
    :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis, Problem Definition, Algorithm Definition
+   :keyword: Algorithm Analysis; Problem Definition; Algorithm Definition
 
 
 Problems, Algorithms, and Programs
@@ -208,7 +208,7 @@ The following slideshow should help you to visualize the differences.
    :links: AV/AlgAnal/ProblemAlgorithmCON.css
    :scripts: AV/AlgAnal/ProblemAlgorithmCON.js
    :output: show
-   :keyword: Algorithm Analysis, Problem Definition, Algorithm Definition
+   :keyword: Algorithm Analysis; Problem Definition; Algorithm Definition
 
 
 Summary Questions
@@ -216,4 +216,4 @@ Summary Questions
 
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
    :long_name: Problems, Algorithms, Programs Exercise
-   :keyword: Algorithm Analysis, Problem Definition, Algorithm Definition
+   :keyword: Algorithm Analysis; Problem Definition; Algorithm Definition

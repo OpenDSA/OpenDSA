@@ -8,7 +8,7 @@
    :requires:
    :satisfies: debugging
    :topic: Programming Tutorial
-   :keyword: Debugging, Debugging Methods
+   :keyword: Debugging; Debugging Methods
 
 
 Common Debugging Methods

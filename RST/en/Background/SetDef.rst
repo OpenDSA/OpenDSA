@@ -8,7 +8,7 @@
    :requires:
    :satisfies: set notation; relations
    :topic: Math Background
-   :keyword: Set, Relation, Equivalance Relation, Partial Order
+   :keyword: Set; Relation; Equivalance Relation; Partial Order
 
 
 Sets and Relations
@@ -295,7 +295,7 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
 
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
    :long_name: Equivalence Exercise
-   :keyword: Equivalence Relation
+   :keyword: Relation; Equivalence Relation
 
 
 Partial Orders
@@ -338,4 +338,4 @@ then the order is called a :term:`total order` or :term:`linear order`.
 
 .. avembed:: Exercises/Background/SetTFpartialorder.html ka
    :long_name: PartialOrder Exercise
-   :keyword: Partial Order
+   :keyword: Relation; Partial Order
