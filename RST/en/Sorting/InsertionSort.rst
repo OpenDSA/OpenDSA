@@ -8,9 +8,10 @@
    :requires: sorting terminology; comparison
    :satisfies: insertion sort
    :topic: Sorting
-   :keyword: Incremental Sorting; Simple Sorting
+   :keyword: Sorting; Insertion Sort
 
 .. index:: ! Insertion Sort
+
 
 Insertion Sort
 ==============
@@ -62,7 +63,7 @@ Here we see the first few iterations of Insertion Sort.
    :links: 
    :scripts: AV/Sorting/insertionsortCON.js
    :output: show
-   :keyword: Incremental Sorting; Simple Sorting
+   :keyword: Sorting; Insertion Sort
 
 This continues on with each record in turn.
 Call the current record :math:`x`.
@@ -75,12 +76,12 @@ records to its left in the array must have smaller keys.
 
 .. avembed:: AV/Sorting/insertionsortAV.html ss
    :long_name: Insertion Sort Visualization
-   :keyword: Incremental Sorting; Simple Sorting
+   :keyword: Sorting; Insertion Sort
 
 
 .. avembed:: Exercises/Sorting/InssortPRO.html ka
    :long_name: Insertion Sort Proficiency Exercise
-   :keyword: Incremental Sorting; Simple Sorting
+   :keyword: Sorting; Insertion Sort
 
 
 Insertion Sort Analysis
@@ -91,7 +92,7 @@ Insertion Sort Analysis
    :links: AV/Sorting/InsertionSortWorstCaseCON.css
    :scripts: AV/Sorting/InsertionSortWorstCaseCON.js
    :output: show
-   :keyword: Incremental Sorting, Simple Sorting
+   :keyword: Sorting; Insertion Sort
 
 |
 
@@ -100,7 +101,7 @@ Insertion Sort Analysis
    :links: AV/Sorting/InsertionSortBestCaseCON.css
    :scripts: AV/Sorting/InsertionSortBestCaseCON.js
    :output: show
-   :keyword: Incremental Sorting, Simple Sorting
+   :keyword: Sorting; Insertion Sort
 
 |
 
@@ -109,7 +110,7 @@ Insertion Sort Analysis
    :links: AV/Sorting/InsertionSortAverageCaseCON.css
    :scripts: AV/Sorting/InsertionSortAverageCaseCON.js
    :output: show
-   :keyword: Incremental Sorting, Simple Sorting
+   :keyword: Sorting; Insertion Sort
 
 While the best case is significantly faster than the average and worst
 cases, the average and worst cases are usually more reliable
@@ -164,7 +165,7 @@ Actually, it happens a lot.
 
 .. avembed:: Exercises/Sorting/InssortSumm.html ka
    :long_name: Insertion Sort Summary Exercise
-   :keyword: Incremental Sorting, Simple Sorting
+   :keyword: Sorting; Insertion Sort
 
 See |external_link| for a discussion on how the relative costs of
 search and insert can affect what is the best sort algorithm to use.

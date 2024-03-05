@@ -8,8 +8,7 @@
    :requires: binary tree terminology; recursion
    :satisfies: binary tree traversal
    :topic: Binary Trees
-   :keyword: Binary Tree Traversals; Inorder Traversal; Preorder
-             Traversal; Postorder Traversal
+   :keyword: Binary Tree Traversals; Inorder Traversal; Preorder Traversal; Postorder Traversal
 
 
 Binary Tree Traversals

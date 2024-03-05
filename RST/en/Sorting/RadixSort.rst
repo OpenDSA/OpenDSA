@@ -8,9 +8,10 @@
    :satisfies: radix sort
    :requires: binsort
    :topic: Sorting
-   :keyword: Non-comparison Sort, Integer Sorting, Stable Sorting, Digit by Digit Sort
+   :keyword: Sorting; Radix Sort; Non-comparison Sort
 
 .. index:: ! Radix Sort
+
 
 Radix Sort
 ==========
@@ -41,7 +42,7 @@ We can see this process in the following visualization.
 
 .. avembed:: AV/Sorting/radixLinkAV.html ss
    :long_name: Radix Sort Linked Visualization
-   :keyword: Non-comparison Sort, Integer Sorting, Stable Sorting, Digit by Digit Sort
+   :keyword: Sorting; Radix Sort; Non-comparison Sort
 
 In this example, we have :math:`r=10` bins and key values in
 the range 0 to :math:`r^2-1`.
@@ -69,7 +70,7 @@ Here is a practice exercise for placing keys into bins.
 
 .. avembed:: Exercises/Sorting/RadixsortPRO.html ka
    :long_name: Radix Sort Proficiency Exercise
-   :keyword: Non-comparison Sort, Integer Sorting, Stable Sorting, Digit by Digit Sort
+   :keyword: Sorting; Radix Sort; Non-comparison Sort
 
 
 Array-based Radix Sort
@@ -110,7 +111,7 @@ on the :math:`i`'th iteration.
 
 .. avembed:: AV/Sorting/radixArrayAV.html ss
    :long_name: Radix Sort Array Visualization
-   :keyword: Non-comparison Sort, Integer Sorting, Stable Sorting, Digit by Digit Sort
+   :keyword: Sorting; Radix Sort; Non-comparison Sort
 
 
 Radix Sort Analysis
@@ -121,7 +122,7 @@ Radix Sort Analysis
    :links: AV/Sorting/RadixSortAnalysisCON.css
    :scripts: AV/Sorting/RadixSortAnalysisCON.js
    :output: show
-   :keyword: Non-comparison Sort, Integer Sorting, Stable Sorting, Digit by Digit Sort
+   :keyword: Sorting; Radix Sort; Non-comparison Sort
 
 **Is it really a reasonable assumption to treat** :math:`k` **as a
 constant?**
@@ -196,4 +197,4 @@ appropriate for these situations.
 
 .. avembed:: Exercises/Sorting/RadixSortSumm.html ka
    :long_name: Radix Sort Summary Exercise
-   :keyword: Non-comparison Sort, Integer Sorting, Stable Sorting, Digit by Digit Sort
+   :keyword: Sorting; Radix Sort; Non-comparison Sort
