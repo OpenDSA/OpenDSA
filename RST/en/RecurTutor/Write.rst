@@ -8,6 +8,8 @@
    :requires: recursion intro
    :satisfies: recursion writing
    :topic: Recursion
+   :keyword: Recursion
+
 
 Writing a recursive function
 ============================
@@ -34,6 +36,7 @@ Here are the basic four steps that you need to write any recursive function.
    :links: AV/RecurTutor/recurWriteCON.css
    :scripts: AV/RecurTutor/recurWriteStepsCON.js
    :output: show
+   :keyword: Recursion
 
 
 Now le't see some different ways that we could write ``Sum`` recursively.
@@ -43,6 +46,7 @@ Now le't see some different ways that we could write ``Sum`` recursively.
    :links: AV/RecurTutor/recurWriteCON.css
    :scripts: AV/RecurTutor/recurWriteSumCON.js
    :output: show  
+   :keyword: Recursion
 
 
 .. topic:: Example

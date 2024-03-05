@@ -7,6 +7,8 @@
    :author: Sally Hamouda and Cliff Shaffer
    :satisfies: recursion writing
    :topic: Recursion
+   :keyword: Recursion
+
 
 Writing Practice Exercises
 ==========================

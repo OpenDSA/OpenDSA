@@ -8,6 +8,8 @@
    :requires: ADT
    :satisfies: design patterns
    :topic: Design Patterns
+   :keyword: Design Patterns
+
 
 Design Patterns
 ===============
@@ -250,3 +252,4 @@ Summary Questions
 
 .. avembed:: Exercises/Design/DesignPatternSumm.html ka
    :long_name: Design Patterns Summary Exercise
+   :keyword: Design Patterns

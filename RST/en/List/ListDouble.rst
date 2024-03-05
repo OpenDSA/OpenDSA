@@ -8,6 +8,8 @@
    :requires: linked list
    :satisfies: doubly linked list
    :topic: Lists
+   :keyword: Doubly Linked List
+
 
 Doubly Linked Lists
 ===================
@@ -29,6 +31,7 @@ linked list), and a second pointer to the node preceding it.
    :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
    :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistDiagramCON.js
    :align: center
+   :keyword: Doubly Linked List
    
    A doubly linked list.
 
@@ -85,6 +88,7 @@ each node to deal with), they tend to be easier to understand.
    :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
    :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistInsertCON.js
    :output: show   
+   :keyword: Doubly Linked List
 
    
 Append
@@ -95,6 +99,7 @@ Append
    :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
    :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistAppendCON.js
    :output: show  
+   :keyword: Doubly Linked List
    
 
 Remove
@@ -105,6 +110,7 @@ Remove
    :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
    :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistRemoveCON.js
    :output: show
+   :keyword: Doubly Linked List
    
 
 Prev
@@ -115,6 +121,7 @@ Prev
    :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
    :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistPrevCON.js
    :output: show
+   :keyword: Doubly Linked List
    
 The only disadvantage of the doubly linked list as compared to the
 singly linked list is the additional space used.

@@ -8,6 +8,8 @@
    :requires: stack
    :satisfies: implementing recursion
    :topic: Lists
+   :keyword: Implementing Recursion with a Stack
+
 
 Implementing Recursion
 ======================

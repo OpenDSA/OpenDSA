@@ -8,6 +8,8 @@
    :requires: Pointer intro
    :satisfies: Link Nodes
    :topic: Link Nodes
+   :keyword: Pointers; Link Nodes
+
 
 Link Nodes
 ==========
@@ -39,6 +41,7 @@ chains together.
    :links: AV/Pointers/linkNodes1CON.css
    :scripts: AV/Pointers/linkNodes1CON.js
    :output: show
+   :keyword: Pointers; Link Nodes
 
 How do we set up the chain to begin with?
 
@@ -46,8 +49,10 @@ How do we set up the chain to begin with?
    :links: AV/Pointers/linkNodes2CON.css
    :scripts: AV/Pointers/linkNodes2CON.js
    :output: show
+   :keyword: Pointers; Link Nodes
 
 
 Here is an exercise to practice manipulating link nodes.
 
 .. avembed:: Exercises/Pointers/PointerEX3PRO.html ka
+   :keyword: Pointers; Link Nodes

@@ -8,6 +8,8 @@
    :requires: list ADT
    :satisfies: queue; array-based queue
    :topic: Lists
+   :keyword: Queues, Array-based Queues
+
 
 Queues
 ======
@@ -51,6 +53,7 @@ efficient.
    :links: AV/List/aqueueCON.css
    :scripts: AV/List/aqueueFirstCON.js
    :output: show
+   :keyword: Array-based Queues
 
 |
 
@@ -59,6 +62,7 @@ efficient.
    :links: AV/List/aqueueCON.css
    :scripts: AV/List/aqueueDriftCON.js
    :output: show
+   :keyword: Array-based Queues
 
 |
 
@@ -67,6 +71,7 @@ efficient.
    :links: AV/List/aqueueCON.css
    :scripts: AV/List/aqueueBadCON.js
    :output: show
+   :keyword: Array-based Queues
 
 
 The Circular Queue
@@ -77,6 +82,7 @@ The Circular Queue
    :links: AV/List/aqueueCON.css
    :scripts: DataStructures/CircularQueue.js AV/List/aqueueCircularCON.js
    :output: show
+   :keyword: Array-based Queues
 
 |
 
@@ -85,6 +91,7 @@ The Circular Queue
    :links: AV/List/aqueueCON.css
    :scripts: DataStructures/CircularQueue.js AV/List/aqueueEmptyCON.js
    :output: show
+   :keyword: Array-based Queues
 
 If the value of ``front`` is fixed, then :math:`n+1` different
 values for ``rear`` are needed to distinguish among the :math:`n+1`
@@ -123,6 +130,7 @@ Array-based Queue Implementation
    :links: AV/List/aqueueCON.css
    :scripts: AV/List/aqueueVarCON.js
    :output: show
+   :keyword: Array-based Queues
 
 In this implementation, the front of the queue is defined to be toward
 the lower numbered positions in the array (in the counter-clockwise
@@ -134,6 +142,7 @@ Implementation of all member functions is straightforward.
 
 .. avembed:: Exercises/List/AqueueEnqueuePRO.html ka
    :long_name: Array-based Queue Enqueue Exercise
+   :keyword: Array-based Queues
 
 
 Array-based Dequeue Practice
@@ -141,3 +150,4 @@ Array-based Dequeue Practice
 
 .. avembed:: Exercises/List/AqueueDequeuePRO.html ka
    :long_name: Array-based Queue Dequeue Exercise
+   :keyword: Array-based Queues

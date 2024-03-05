@@ -8,6 +8,8 @@
    :satisfies: recursion tracing
    :requires: recursion writing
    :topic: Recursion
+   :keyword: Recursion
+
 
 Tracing Recursive Code
 ======================
@@ -42,6 +44,7 @@ Sometimes people forget about the "unwinding" phase.
    :links: AV/RecurTutor/recurTraceCON.css
    :scripts: AV/RecurTutor/recurTraceWindCON.js
    :output: show 
+   :keyword: Recursion
 
 
 During the winding phase, any parameter passed through the recursive
@@ -57,6 +60,7 @@ during the unwinding phase.
    :links: AV/RecurTutor/recurTraceCON.css
    :scripts: AV/RecurTutor/recurTraceFactCON.js
    :output: show 
+   :keyword: Recursion
 
 The recursive function may have information flow for more than one parameter. For example, a recursive
 function that sums the values in an array recursively may pass the array itself 
@@ -68,6 +72,7 @@ in the unwinding phase.
    :links: AV/RecurTutor/recurTraceCON.css
    :scripts: AV/RecurTutor/recurTraceSumCON.js
    :output: show
+   :keyword: Recursion
 
 
 A Domino Analogy
@@ -78,6 +83,7 @@ A Domino Analogy
    :links: AV/RecurTutor/recurTraceCON.css
    :scripts: AV/RecurTutor/recurTraceDmnCON.js
    :output: show 
+   :keyword: Recursion
 
 This recursive model for the domino effect can be used as a template
 for the solution to all linear recursive functions.
@@ -109,6 +115,7 @@ the disks, the world will end.
    :links: AV/RecurTutor/TOHfigCON.css
    :scripts: AV/RecurTutor/TOHfigCON.js
    :output: show 
+   :keyword: Recursion
 
 The Towers of Hanoi puzzle begins with three poles and :math:`n`
 rings, where all rings start on the leftmost pole (labeled Pole A).
@@ -170,3 +177,4 @@ This next slideshow explains the solution to the Towers of Hanoi problem.
    :links: AV/RecurTutor/recurTraceCON.css
    :scripts: AV/RecurTutor/recurTraceTOHCON.js
    :output: show 
+   :keyword: Recursion

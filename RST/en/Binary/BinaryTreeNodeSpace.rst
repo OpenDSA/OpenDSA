@@ -8,6 +8,8 @@
    :requires: binary tree terminology; overhead; binary tree node implementation
    :satisfies: binary tree space requirements
    :topic: Binary Trees
+   :keyword: Binary Trees; Binary Tree Space Analysis
+
 
 Binary Tree Space Requirements
 ==============================
@@ -130,3 +132,4 @@ best, and are often machine dependent at worst.
 
 .. avembed:: Exercises/Binary/TreeOverheadFIB.html ka
    :long_name: Tree Overhead Exercise
+   :keyword: Binary Trees; Binary Tree Space Analysis

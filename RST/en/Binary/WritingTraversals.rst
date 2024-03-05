@@ -8,6 +8,8 @@
    :requires: binary tree traversal
    :satisfies: mistakes in recursive tree traversal
    :topic: Binary Trees
+   :keyword: Binary Tree Traversals
+
 
 Implementing Tree Traversals
 ============================

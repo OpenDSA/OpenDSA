@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :satisfies: binary tree intro
    :topic: Binary Trees
+   :keyword: Binary Trees
+
 
 Binary Trees Chapter Introduction
 =================================

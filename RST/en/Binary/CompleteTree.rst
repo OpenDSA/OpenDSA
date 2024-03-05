@@ -8,6 +8,7 @@
    :requires: binary tree terminology; binary tree space requirements
    :satisfies: complete tree
    :topic: Binary Trees
+   :keyword: Binary Trees; Complete Binary Trees
 
 
 Array Implementation for Complete Binary Trees
@@ -114,3 +115,4 @@ which must fall in the range 0 to :math:`n-1`.
 
 .. avembed:: Exercises/Binary/CompleteFIB.html ka
    :long_name: Complete Tree Exercise
+   :keyword: Binary Trees; Complete Binary Trees

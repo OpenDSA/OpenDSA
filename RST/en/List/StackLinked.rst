@@ -8,6 +8,8 @@
    :requires: stack ADT
    :satisfies: linked stack
    :topic: Lists
+   :keyword: Linked Stack Implementation
+
 
 Linked Stacks
 =============
@@ -32,6 +34,7 @@ Here is a visual representation for the linked stack.
    :links: AV/List/lstackCON.css
    :scripts: AV/List/llist.js AV/List/lstackDiagramCON.js
    :align: center   
+   :keyword: Linked Stack Implementation
 
 
 Linked Stack Push
@@ -42,9 +45,11 @@ Linked Stack Push
    :links: AV/List/lstackCON.css
    :scripts: AV/List/llist.js AV/List/lstackPushCON.js
    :output: show
+   :keyword: Linked Stack Implementation
    
 .. avembed:: Exercises/List/LstackPushPRO.html ka
    :long_name: Linked Stack Push Exercise
+   :keyword: Linked Stack Implementation
 
 
 Linked Stack Pop
@@ -55,10 +60,11 @@ Linked Stack Pop
    :links: AV/List/lstackCON.css
    :scripts: AV/List/llist.js AV/List/lstackPopCON.js
    :output: show
-   
+   :keyword: Linked Stack Implementation
 
 .. avembed:: Exercises/List/LstackPopPRO.html ka
    :long_name: Linked Stack Pop Exercise
+   :keyword: Linked Stack Implementation
 
    
 Comparison of Array-Based and Linked Stacks
@@ -94,3 +100,4 @@ in the middle of the array will be exhausted quickly.
    :links: AV/List/lstackCON.css
    :scripts: AV/List/llist.js AV/List/lstackTwostackCON.js
    :align: center
+   :keyword: Linked Stack Implementation

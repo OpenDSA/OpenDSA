@@ -8,6 +8,8 @@
    :requires: linked list
    :satisfies: freelist
    :topic: Lists
+   :keyword: Freelists
+
 
 Freelists
 =========
@@ -48,6 +50,7 @@ an application of a :ref:`linked stack <linked stack> <StackLinked>`.
    :links: AV/List/listFreeCON.css
    :scripts: AV/List/llist.js AV/List/listFreeCON.js
    :output: show
+   :keyword: Freelists
 
 Freelists are particularly useful for linked lists that periodically
 grow and then shrink.

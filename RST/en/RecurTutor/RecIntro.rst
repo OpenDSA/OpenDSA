@@ -7,6 +7,8 @@
    :author: Sally Hamouda and Cliff Shaffer
    :satisfies: recursion intro
    :topic: Recursion
+   :keyword: Recursion
+
 
 Introduction
 ============
@@ -91,6 +93,7 @@ the rest to some helper, as in this example.
    :links: AV/RecurTutor/recurIntroCON.css
    :scripts: AV/RecurTutor/recurIntroDelegateCON.js
    :output: show  
+   :keyword: Recursion
 
 Let's look deeper into the details of what your friend does when
 you delegate the work.
@@ -104,6 +107,7 @@ you shouldn't worry about all of these details.)
    :links: AV/RecurTutor/recurIntroCON.css
    :scripts: AV/RecurTutor/recurIntroDetailsCON.js
    :output: show  
+   :keyword: Recursion
 
 In order to understand recursion, you need to be able to do two
 things.

@@ -7,6 +7,7 @@
    :author: Sally Hamouda
    :satisfies: Multiple Binary Trees
    :topic: Multiple Binary Trees
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
 
 
 Multiple Binary Trees

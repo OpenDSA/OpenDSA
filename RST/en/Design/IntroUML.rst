@@ -7,8 +7,10 @@
    :author: Dave Parillo
    :satisfies: UML
    :topic: Introduction
+   :keyword: Unified Modeling Language
 
 .. index:: unified modeling langauage; selecting
+
 
 The Unified Modeling Language
 =============================
@@ -219,7 +221,6 @@ For example, two classes might be related because one or both takes the
 other as a parameter to a method.
 
 .. codeinclude:: Introduction/UMLassociation
-
 
 *Multiplicity*
 

@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Dave Parillo
    :topic: Biography
+   :keyword: Carl Gauss
+
 
 Spotlight: Carl Friedrich Gauss
 ===============================
