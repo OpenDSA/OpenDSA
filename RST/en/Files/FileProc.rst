@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :satisfies: file processing
    :topic: File Processing
+   :keyword: File Processing
+
 
 Chapter Introduction: File Processing
 =====================================

@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Indexing
+   :keyword: Indexing; ISAM
+
 
 ISAM
 ====
@@ -41,6 +43,7 @@ widely used by IBM prior to adoption of the B-tree.
 .. inlineav:: ISAMCON dgm
     :links: AV/Indexing/ISAMCON.css
     :scripts: AV/Indexing/ISAMCON.js
+   :keyword: Indexing; ISAM
 
    Illustration of the ISAM indexing system.
 

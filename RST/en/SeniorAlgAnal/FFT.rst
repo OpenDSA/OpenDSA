@@ -8,6 +8,8 @@
    :requires: transforms
    :satisfies: FFT
    :topic: Algorithms: Fast Fourier Transform
+   :keyword: Fast Fourier Transform
+
 
 The Fast Fourier Transform
 ==========================
@@ -70,6 +72,7 @@ That is,
    :links: AV/SeniorAlgAnal/EvenOddCON.css
    :scripts: AV/SeniorAlgAnal/EvenOddCON.js
    :output: show
+   :keyword: Fast Fourier Transform
 
 The key to fast polynomial multiplication is finding the right points
 to use for evaluation/interpolation to make the process efficient.
@@ -112,10 +115,12 @@ the overall process of evaluating many points at once.
    :links: AV/SeniorAlgAnal/fftCON.css
    :scripts: AV/SeniorAlgAnal/fftCON.js
    :align: center
+   :keyword: Fast Fourier Transform
 
    Examples of the 4th, 5th, and 8th roots of unity.
 
 .. avembed:: Exercises/SeniorAlgAnal/Nth_root.html ka
+   :keyword: Fast Fourier Transform
 
 Now we want to turn these ideas into an actual, detailed algorithm.
 This process will be easier to both understand and implement if we
@@ -141,6 +146,7 @@ Thus, the :math:`A_{z}` array appears as follows.
    :links: 
    :scripts: AV/SeniorAlgAnal/arrayCON.js
    :align: center
+   :keyword: Fast Fourier Transform
 
 Let :math:`a = [a_0, a_1, ..., a_{n-1}]^T` be a vector that stores the
 coefficients for the polynomial being evaluated.
@@ -162,6 +168,7 @@ the subscripting notation easier to read in our descriptions.)
    :links: AV/SeniorAlgAnal/DFTmatrixCON.css
    :scripts: DataStructures/Plot.js AV/SeniorAlgAnal/DFTmatrixCON.js
    :output: show
+   :keyword: Fast Fourier Transform
 
 We still have two problems.
 We need to be able to multiply this matrix and the vector faster
@@ -201,6 +208,7 @@ step fast.
    :links: AV/SeniorAlgAnal/DFTpropCON.css
    :scripts: AV/SeniorAlgAnal/DFTpropCON.js
    :output: show
+   :keyword: Fast Fourier Transform
 
 If you examine the example :math:`A_z` matrix for :math:`n=8`,
 you should see that there are symmetries within the matrix.
@@ -221,6 +229,7 @@ doing evaluation at the :math:`n` th roots of unity.
    :links: AV/SeniorAlgAnal/FFTprocedureCON.css AV/SeniorAlgAnal/FFTprocedureCON.json
    :scripts: lib/complex.js AV/SeniorAlgAnal/FFTprocedureCON.js
    :output: show
+   :keyword: Fast Fourier Transform
 
 .. todo::
    :type: AV
@@ -230,6 +239,7 @@ doing evaluation at the :math:`n` th roots of unity.
    performing fft on the smaller polynomials.
 
 .. avembed:: Exercises/SeniorAlgAnal/FFTAlg.html ka
+   :keyword: Fast Fourier Transform
 
 Thus, the full process for multiplying polynomials
 :math:`A` and :math:`B` using the Fourier transform is as follows.

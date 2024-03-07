@@ -6,6 +6,8 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :topic: File Processing
+   :keyword: File Processing; Random Access File
+
 
 The Programmer's View of Files
 ==============================

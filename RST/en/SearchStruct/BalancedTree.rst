@@ -8,6 +8,8 @@
    :requires: BST
    :satisfies:
    :topic: Balanced Binary Trees
+   :keyword: Search Structures; Balanced Binary Trees
+
 
 .. odsalink:: AV/Indexing/treeIndexingCON.css
 

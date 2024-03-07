@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: File Processing
+   :keyword: File Processing; Disk; Memory
+
 
 Primary versus Secondary Storage
 ================================

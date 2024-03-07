@@ -7,7 +7,9 @@
    :author: Cliff Shaffer
    :requires:
    :satisfies:
-   :topic:
+   :topic: Towers of Hanoi
+   :keyword: Towers of Hanoi
+
 
 Introduction to Analyzing a Problem
 ===================================
@@ -73,6 +75,7 @@ completely independent.
    :links: AV/RecurTutor/TOHfigCON.css
    :scripts: AV/RecurTutor/TOHfigCON.js
    :output: show
+   :keyword: Towers of Hanoi
 
 
 The Model

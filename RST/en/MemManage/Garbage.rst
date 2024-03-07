@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Memory Management
+   :keyword: Memory Management; Garbage Collection
+
 
 Failure Policies and Garbage Collection
 =======================================

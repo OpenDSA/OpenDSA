@@ -8,6 +8,8 @@
    :requires: collision resolution
    :satisfies: hashing
    :topic: Hashing
+   :keyword: Hashing; Hashing Cost Analysis
+
 
 Analysis of Closed Hashing
 ==========================
@@ -153,3 +155,4 @@ keep performance good on the other.
 
 .. avembed:: Exercises/Hashing/HashAnalSumm.html ka
    :long_name: Analysis of Closed Hashing Summary Exercise
+   :keyword: Hashing; Hashing Cost Analysis

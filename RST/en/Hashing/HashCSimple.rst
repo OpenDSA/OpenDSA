@@ -8,8 +8,10 @@
    :requires: open hashing
    :satisfies: collision resolution
    :topic: Hashing
+   :keyword: Hashing; Collision Resolution
 
 .. index:: ! collision resolution
+
 
 Collision Resolution
 ====================
@@ -93,6 +95,7 @@ returns to the home position.
    :links: AV/Hashing/linProbeCON.css
    :scripts: AV/Hashing/linProbeCON1.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 Can you see any reason why this might not be the best approach
 to collision resolution?
@@ -115,6 +118,7 @@ The main problem is illustrated by the next slideshow.
    :links: AV/Hashing/linProbeCON.css
    :scripts: AV/Hashing/linProbeCON2.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 Again, the ideal behavior for a collision resolution mechanism is that
 each empty slot in the table will have equal probability of
@@ -129,3 +133,4 @@ long probe sequences.
 
 .. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
    :long_name: Linear Probing Proficiency Exercise
+   :keyword: Hashing; Collision Resolution

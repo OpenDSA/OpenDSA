@@ -8,6 +8,7 @@
    :requires:
    :satisfies:
    :topic: Lower Bounds
+   :keyword: Lower Bounds Proofs; Adversary Arguments
 
 Adversarial Lower Bounds Proofs
 ===============================
@@ -100,6 +101,7 @@ Let's see how a binomial tree with eight nodes would be constructed.
    :links:  AV/SeniorAlgAnal/BinomialTreeCON.css
    :scripts: AV/SeniorAlgAnal/BinomialTreeCON.js
    :output: show
+   :keyword: Lower Bounds Proofs; Adversary Arguments
 
 The resulting algorithm is simple in principle:
 Build the binomial tree for all :math:`n` elements, and then compare

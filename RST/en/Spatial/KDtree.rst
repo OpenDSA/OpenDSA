@@ -8,6 +8,8 @@
    :requires: Spatial data structures
    :satisfies: KD tree
    :topic: Spatial Data Structures
+   :keyword: Spatial Data Structures, KD Tree
+
 
 KD Trees
 ========
@@ -355,6 +357,7 @@ circle, as illustrated by Figure :num:`Figure #InCirc`.
 Here is a visualization of building a kd-tree.
 
 .. avembed:: AV/Development/kd-treeAV.html ss
+   :keyword: Spatial Data Structures, KD Tree
 
 
 .. TODO::

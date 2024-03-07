@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :satisfies: indexing
    :topic: Indexing
+   :keyword: Indexing
+
 
 Indexing Chapter Introduction
 =============================

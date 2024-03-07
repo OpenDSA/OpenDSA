@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :requires: graph traversal
    :topic: Graphs
+   :keyword: Graphs; Topological Sort
+
 
 Topological Sort
 ================
@@ -34,6 +36,7 @@ meet the prerequisite rules is called a :term:`topological sort`.
    :links:
    :scripts: AV/Graph/topSortCON.js
    :align: center
+   :keyword: Graphs; Topological Sort
 
    An example graph for topological sort. Seven tasks have
    dependencies as shown by the directed graph.
@@ -85,6 +88,7 @@ Here is another example.
    :links: AV/Graph/topSortDFSCON.css
    :scripts: AV/Graph/topSortDFSCON.js
    :output: show
+   :keyword: Graphs; Topological Sort
 
 
 Queue-based Solution
@@ -125,6 +129,7 @@ Here is the code to implement the queue-based topological sort:
    :links: AV/Graph/topSortQCON.css
    :scripts: AV/Graph/topSortQCON.js
    :output: show
+   :keyword: Graphs; Topological Sort
 
 The inverse problem of determining whether a proposed node ordering is
 a valid topological sort of the graph can be solved with an algorithm

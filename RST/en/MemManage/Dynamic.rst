@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Memory Management
+   :keyword: Memory Management; Dynamic Storage Allocation
+
 
 Dynamic Storage Allocation
 ==========================
@@ -28,6 +30,7 @@ a series of memory allocations and deallocations.
    :links: AV/MemManage/dynamicCON.css
    :scripts: AV/MemManage/freeblocklistCON.js
    :align: justify
+   :keyword: Memory Management; Dynamic Storage Allocation
    
    The results from a series of memory allocations and
    deallocations.
@@ -77,6 +80,7 @@ information.
    :links: AV/MemManage/dynamicCON.css
    :scripts: AV/MemManage/fragCON.js
    :align: center
+   :keyword: Memory Management; Dynamic Storage Allocation
 
    An illustration of internal and external fragmentation.
 
