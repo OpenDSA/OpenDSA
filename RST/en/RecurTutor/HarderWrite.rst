@@ -7,6 +7,8 @@
    :author: Sally Hamouda and Cliff Shaffer
    :requires: recursion writing
    :topic: Recursion
+   :keyword: Recursion
+
 
 Writing More Sophisticated Recursive Functions
 ==============================================

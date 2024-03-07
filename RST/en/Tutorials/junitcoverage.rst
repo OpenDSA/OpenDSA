@@ -7,7 +7,9 @@
    :author: Jordan Sablan
    :requires: JUnit test writing
    :satisfies: Junit code coverage
-   :topic: JUnit
+   :topic: Programming Tutorial
+   :keyword: JUnit Testing; Code Coverage
+
 
 Code Coverage In JUnit
 ======================

@@ -76,7 +76,8 @@
   "chapters": {
     "Stuff": {
       "Sorting/Binsort": {},
-      "SeniorAlgAnal/DynamicProgramming": {}
+      "SeniorAlgAnal/DynamicProgramming": {},
+      "Indexing/BTree": {}
    },
     "Appendix": {
       "Glossary": {}

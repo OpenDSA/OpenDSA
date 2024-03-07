@@ -8,6 +8,8 @@
    :requires: algorithm analysis
    :satisfies: analysis multiple parameters
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Algorithm Analysis Multiple Parameters
+
 
 Multiple Parameters
 ===================

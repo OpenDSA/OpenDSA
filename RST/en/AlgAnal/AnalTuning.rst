@@ -8,6 +8,8 @@
    :requires: analyzing programs
    :satisfies: code tuning; empirical analysis
    :topic: Algorithm Analysis
+   :keyword: Code Tuning
+
 
 Code Tuning and Empirical Analysis
 ==================================

@@ -8,6 +8,8 @@
    :requires: binary tree terminology
    :satisfies: binary tree node implementation; expression tree
    :topic: Binary Trees
+   :keyword: Binary Tree Node Implementation
+
 
 Binary Tree Node Implementations
 ================================
@@ -45,6 +47,7 @@ one to its left child and another to its right child.
    :links: AV/Binary/BTCON.css AV/Binary/BTnullpointerCON.css
    :scripts: AV/Binary/BTnullpointerCON.js
    :align: center
+   :keyword: Binary Tree Node Implementation
 
    Illustration of a typical pointer-based binary tree implementation,
    where each node stores two child pointers and a value.
@@ -87,6 +90,7 @@ implementations for internal and leaf nodes.
    :links: AV/Binary/BTCON.css AV/Binary/expressionTreeCON.css
    :scripts: AV/Binary/expressionTreeCON.js
    :align: center
+   :keyword: Binary Tree Node Implementation
 
    An expression tree for :math:`4x(2x + a) - c`.
 
@@ -136,6 +140,7 @@ the node's subclass.
    :links: AV/Binary/BTCON.css
    :scripts: AV/Binary/expressionTraversalCON.js
    :output: show
+   :keyword: Binary Tree Node Implementation
 
 The Expression Tree implementation includes two subclasses derived
 from class ``VarBinNode``, named ``LeafNode`` and

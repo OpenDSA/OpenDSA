@@ -8,11 +8,13 @@
    :requires: ADT
    :satisfies: OO Intro
    :topic: Introduction
+   :keyword: Introduction to Object-Oriented Programming
 
-Introduction to Object Oriented Programming
+
+Introduction to Object-Oriented Programming
 ===========================================
 
-Introduction to Object Oriented Programming
+Introduction to Object-Oriented Programming
 -------------------------------------------
 
 Object-oriented programming (OOP) is a programming paradigm based on the 
@@ -410,3 +412,4 @@ development of very large programs.
 
 .. avembed:: Exercises/CMP/CMoopSumm.html ka
    :long_name: Concept map OOP exercises
+   :keyword: Concept Map; Introduction to Object-Oriented Programming

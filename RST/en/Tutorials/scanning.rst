@@ -7,7 +7,9 @@
    :author: Jordan Sablan
    :requires:
    :satisfies: Text input
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Java Scanner Class
+
 
 =======================================
 Reading Input (from Files or Otherwise)

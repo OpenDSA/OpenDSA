@@ -5,10 +5,13 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :satisfies: induction proofs
+   :requires:
+   :satisfies: proofs intro; induction proofs
    :topic: Math Background
+   :keyword: Proofs; Induction Proofs; Proof by Contradiction; Deduction
 
 .. index:: !proof
+
 
 Mathematical Proof Techniques
 =============================
@@ -439,6 +442,7 @@ induction hypothesis.
    :links: AV/Background/twoColorCON.css
    :scripts: AV/Background/twoColorCON.js
    :align: center
+   :keyword: Proofs; Induction Proofs
 
    A two-coloring for the regions formed by three lines in the plane.
 
@@ -465,6 +469,7 @@ induction hypothesis.
       :links: AV/Background/TwoColoringProofCON.css
       :scripts: AV/Background/TwoColoringProofCON.js
       :output: show
+      :keyword: Proofs; Induction Proofs
 
 Compare the proof in Example :num:`Example #ThmRegion` with that in
 Example :num:`Example #ThmStamps`.

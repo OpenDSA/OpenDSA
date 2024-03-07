@@ -8,6 +8,7 @@
    :requires: relations
    :satisfies: comparison
    :topic: Sorting
+   :keyword: Record Comparison
 
 .. index::
    pair: sorting; record comparison
@@ -165,6 +166,7 @@ Here are some review questions to test your knowledge from this module.
 
 .. avembed:: Exercises/Design/CompareSumm.html ka
    :long_name: Record Comparison Summary Exercise
+   :keyword: Record Comparison
 
 
 .. [#] One example of a situation where it is not possible to write a

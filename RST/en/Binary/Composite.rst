@@ -8,6 +8,8 @@
    :requires: binary tree terminology; design patterns; expression tree
    :satisfies: composite
    :topic: Binary Trees, Design Patterns
+   :keyword: Binary Trees; Design Patterns; Composite Design
+
 
 Composite-based Expression Tree
 ===============================
@@ -39,6 +41,7 @@ children.
 ..    :links: AV/Binary/BTCON.css
       :scripts: AV/Binary/compositeTraversalCON.js
       :output: show
+      :keyword: Binary Trees; Design Patterns; Composite Design
 
 When comparing the composite implementation to
 the :ref:`procedural approach <procedural> <BinaryTreeImpl>`,

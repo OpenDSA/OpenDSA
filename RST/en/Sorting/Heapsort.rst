@@ -8,9 +8,10 @@
    :requires: heap
    :satisfies: heapsort
    :topic: Sorting
-   :keyword: Binary Heap Sorting, In-place Sort, Comparison-based Sort
+   :keyword: Sorting; Heapsort
 
 .. index:: ! Heapsort
+
 
 Heapsort
 ========
@@ -62,7 +63,7 @@ used when sorting data sets too large to fit in main memory.
    :links: 
    :scripts: DataStructures/binaryheap.js AV/Sorting/heapsortCON.js
    :output: show
-   :keyword: Binary Heap Sorting, In-place Sort, Comparison-based Sort
+   :keyword: Sorting; Heapsort
 
 A complete implementation is as follows.
 
@@ -73,7 +74,7 @@ Here is a warmup practice exercise for Heapsort.
 
 .. avembed:: Exercises/Sorting/HeapsortStepPRO.html ka
    :long_name: Heapsort RemoveMax Proficiency Exercise
-   :keyword: Binary Heap Sorting, In-place Sort, Comparison-based Sort
+   :keyword: Sorting; Heapsort
 
 
 Heapsort Proficiency Practice
@@ -84,7 +85,7 @@ Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/heapsortPRO.html pe
    :long_name: Heapsort Proficiency Exercise
-   :keyword: Binary Heap Sorting, In-place Sort, Comparison-based Sort
+   :keyword: Sorting; Heapsort
 
 
 Heapsort Analysis
@@ -97,7 +98,7 @@ This visualization presents the running time analysis of Heap Sort
    :links: AV/Sorting/HeapSortAnalysisCON.css
    :scripts: DataStructures/binaryheap.js AV/Sorting/HeapSortAnalysisCON.js
    :output: show
-   :keyword: Binary Heap Sorting, In-place Sort, Comparison-based Sort
+   :keyword: Sorting; Heapsort
 
 While typically slower than Quicksort by a constant factor
 (because unloading the heap using ``removemax`` is somewhat slower
@@ -132,4 +133,4 @@ heap (since all the key values are equal).
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
    :long_name: Heapsort Summary Exercise
-   :keyword: Binary Heap Sorting, In-place Sort, Comparison-based Sort
+   :keyword: Sorting; Heapsort

@@ -6,8 +6,10 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Sorting
+   :keyword: Sorting; Comparison of Sorting Algorithms
 
 .. index:: ! sorting; empirical comparison
+
 
 An Empirical Comparison of Sorting Algorithms
 =============================================
@@ -132,3 +134,4 @@ compare the sorting algorithms that we learned about in this chapter.
 
 .. avembed:: Exercises/Sorting/SortAlgCompSumm.html ka
    :long_name: Sort Comparison Summary Exercise
+   :keyword: Sorting; Comparison of Sorting Algorithms

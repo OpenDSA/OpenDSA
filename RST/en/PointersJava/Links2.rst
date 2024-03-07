@@ -8,6 +8,8 @@
    :requires: Pointer intro
    :satisfies:
    :topic: Link Nodes
+   :keyword: Pointers; Link Nodes
+
 
 Link Nodes Practice Exercises
 =============================
@@ -27,6 +29,7 @@ chain, without needing to know how many there actually are.
    :links: AV/Pointers/linkNodes3CON.css
    :scripts: AV/Pointers/linkNodes3CON.js
    :output: show
+   :keyword: Pointers; Link Nodes
 
 
 iterateOverList
@@ -43,6 +46,7 @@ One can remove a Link from a chain.
    :links: AV/Pointers/linkNodes4CON.css
    :scripts: AV/Pointers/linkNodes4CON.js
    :output: show
+   :keyword: Pointers; Link Nodes
 
 
 changePointeeNext1
@@ -60,6 +64,7 @@ Finally, we can also insert new Links.
    :links: AV/Pointers/linkNodes5CON.css
    :scripts: AV/Pointers/linkNodes5CON.js
    :output: show
+   :keyword: Pointers; Link Nodes
 
 
 addNodeAtHead

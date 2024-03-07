@@ -8,6 +8,8 @@
    :requires: mistakes in recursive tree traversal
    :satisfies: recursive function information flow
    :topic: Advanced Recursion
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
+
 
 Information Flow in Recursive Functions
 =======================================
@@ -102,6 +104,7 @@ Another common mistake is to not return a value.
    :links: AV/Binary/WriteTrav.css
    :scripts: AV/Binary/BinaryTreeMistakesCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
 
 
 Binary Tree Check Sum Exercise

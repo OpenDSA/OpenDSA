@@ -5,7 +5,11 @@
 
 .. avmetadata::
    :author: Sally Hamouda and Cliff Shaffer
+   :requires:  recursive function information flow
+   :satisfies:
    :topic: Advanced Recursion
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
+
 
 A Hard Information Flow Problem
 ===============================
@@ -31,6 +35,7 @@ children.
    :links: AV/BTRecurTutor/BSTCheckCON.css
    :scripts: AV/BTRecurTutor/BSTCheckCON.js
    :align: justify
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
 
    To be a binary search tree, the left child of the node with value
    40 must have a value between 20 and 40.

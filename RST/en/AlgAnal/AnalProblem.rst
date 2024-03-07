@@ -8,6 +8,8 @@
    :requires: algorithm analysis
    :satisfies: analyzing problems
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Analyzing Problems
+
 
 Analyzing Problems
 ==================
@@ -133,3 +135,4 @@ problem.
 
 .. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
    :long_name: Problem Analysis Exercise
+   :keyword: Algorithm Analysis; Analyzing Problems

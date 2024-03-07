@@ -8,6 +8,8 @@
    :requires: binary tree intro
    :satisfies: binary tree terminology
    :topic: Binary Trees
+   :keyword: Binary Trees
+
 
 Binary Trees
 ============
@@ -57,6 +59,7 @@ any node that has at least one non-empty child.
    :links: AV/Binary/BinExampCON.css
    :scripts: AV/Binary/BinExampCON.js
    :align: justify
+   :keyword: Binary Trees; Binary Tree Terminology
 
    A binary tree.
    Node :math:`A` is the root.
@@ -83,6 +86,7 @@ any node that has at least one non-empty child.
    :links: AV/Binary/BinDiffCON.css
    :scripts: AV/Binary/BinDiffCON.js
    :align: justify
+   :keyword: Binary Trees; Binary Tree Terminology
 
    Two different binary trees.
    (a) A binary tree whose root has a non-empty left child.
@@ -116,6 +120,7 @@ The bottom level has its nodes filled in from the left side.
    :links: AV/Binary/FullCompCON.css
    :scripts: AV/Binary/FullCompCON.js
    :align: center
+   :keyword: Binary Trees; Binary Tree Terminology
 
    Examples of full and complete binary trees.
 
@@ -144,6 +149,7 @@ is an example of a full binary tree.
 
 .. avembed:: Exercises/Binary/DefSumm.html ka
    :long_name: Tree Definition Summary Exercises
+   :keyword: Binary Trees; Binary Tree Terminology
 
 
 Practice Questions
@@ -151,3 +157,4 @@ Practice Questions
 
 .. avembed:: Exercises/Binary/Treeprobs.html ka
    :long_name: Tree/Node Exercises
+   :keyword: Binary Trees; Binary Tree Terminology

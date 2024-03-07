@@ -8,6 +8,8 @@
    :requires: insertion sort; bubble sort; selection sort; code tuning
    :satisfies: sort code tuning
    :topic: Sorting, Code Tuning
+   :keyword: Sorting; O(n^2) Sorts; Code Tuning
+
 
 Optimizing Sort Algorithms with Code Tuning
 ===========================================
@@ -66,6 +68,7 @@ Now, you can test whether you understand how this works.
 
 .. avembed:: AV/Sorting/insertionSortWithoutSwapPRO.html pe
    :long_name: Insertion Sort Without Swap Proficiency Exercise
+   :keyword: Sorting; O(n^2) Sorts; Code Tuning
 
 .. _OptimizeTable:
 

@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :satisfies: information flow in a binary tree
    :topic: Information Flow in a Binary
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
+
 
 Binary Tree Guided Information Flow
 ===================================
@@ -51,6 +53,7 @@ than just a single path, but not all of the nodes.
    :links: 
    :scripts: AV/BTRecurTutor/IneffBinaryTreeRangeCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
    
 
 Binary Search Tree Small Count Exercise

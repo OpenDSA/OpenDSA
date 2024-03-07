@@ -8,8 +8,10 @@
    :requires: analyzing problems; sorting terminology
    :satisfies: sorting lower bound
    :topic: Sorting
+   :topic: Sorting; Sorting Problem Lower Bound
 
 .. index:: ! sorting; lower bounds proof
+
 
 Lower Bounds for Sorting
 ========================
@@ -134,6 +136,7 @@ sorting lower bound proof.
    :links: AV/Sorting/SortingLowerBoundCON.css
    :scripts: AV/Sorting/SortingLowerBoundCON.js
    :output: show
+   :topic: Sorting; Sorting Problem Lower Bound
 
 Any sorting algorithm requiring :math:`\Omega(n \log n)` comparisons
 in the worst case requires :math:`\Omega(n \log n)` running time in
@@ -153,3 +156,4 @@ this proof.
 
 .. avembed:: Exercises/Sorting/SortBoundSumm.html ka
    :long_name: Lower Bounds Summary Exercise
+   :topic: Sorting; Sorting Problem Lower Bound

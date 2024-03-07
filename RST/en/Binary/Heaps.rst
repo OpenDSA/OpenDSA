@@ -8,6 +8,8 @@
    :requires: binary tree terminology; BST; complete tree
    :satisfies: heap; priority queue
    :topic: Heaps
+   :keyword: Heap; Priority Queue
+
 
 Heaps and Priority Queues
 =========================
@@ -143,6 +145,7 @@ the heap.
    :links: 
    :scripts: DataStructures/binaryheap.js AV/Binary/heapinsertCON.js
    :output: show
+   :keyword: Heap
 
 You might expect the heap insertion process to be similar to the
 insert function for a BST, starting at the root and working down
@@ -188,6 +191,7 @@ worst case.
 
 .. avembed:: AV/Binary/heapinsertPRO.html pe
    :long_name: Heap Insert Proficiency Exercise
+   :keyword: Heap
 
 
 Building a Heap
@@ -206,6 +210,7 @@ set of values in an array.
    :links: AV/Binary/HeapBldChoiceCON.css
    :scripts: DataStructures/binaryheap.js AV/Binary/HeapBldChoiceCON.js
    :output: show
+   :keyword: Heap
 
    Two series of exchanges to build a max heap.
    (a) This heap is built by a series of nine exchanges in the order
@@ -230,6 +235,7 @@ This situation is illustrated by this figure:
    :links: AV/Binary/HeapsIndCON.css
    :scripts: AV/Binary/HeapsIndCON.js
    :align: justify
+   :keyword: Heap
 
    Final stage in the heap-building algorithm.
    Both subtrees of node :math:`R` are heaps.
@@ -270,11 +276,13 @@ Here is a visualization of the heap build process.
    :links: 
    :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildCON.js
    :output: show
+   :keyword: Heap
 
 Method ``buildHeap`` implements the building algorithm.
 
 .. avembed:: AV/Binary/heapbuildPRO.html pe
    :long_name: Heap Build Proficiency Exercise
+   :keyword: Heap
 
 What is the cost of ``buildHeap``?
 Clearly it is the sum of the costs for the calls to ``siftdown``.
@@ -309,6 +317,7 @@ BST.
    :links: AV/Binary/heapbuildProofCON.css
    :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildProofCON.js
    :output: show
+   :keyword: Heap
 
 
 Removing from the heap or updating an object's priority
@@ -319,6 +328,7 @@ Removing from the heap or updating an object's priority
    :links: 
    :scripts: DataStructures/binaryheap.js AV/Binary/heapmaxCON.js
    :output: show
+   :keyword: Heap
 
 Because the heap is :math:`\log n` levels deep, the cost of deleting
 the maximum element is :math:`\Theta(\log n)` in the average and worst
@@ -326,6 +336,7 @@ cases.
 
 .. avembed:: AV/Binary/heapremovePRO.html pe
    :long_name: Heap Remove Exercise
+   :keyword: Heap
 
 |
 
@@ -334,6 +345,7 @@ cases.
    :links: 
    :scripts: DataStructures/binaryheap.js AV/Binary/heapremoveCON.js
    :output: show
+   :keyword: Heap
 
 For some applications, objects might get their priority modified.
 One solution in this case is to remove the object and reinsert it.
@@ -382,6 +394,7 @@ and
 
 .. avembed:: Exercises/Binary/HeapSumm.html ka
    :long_name: Heap Question Summary
+   :keyword: Heap; Priority Queue
 
 For a story about Priority Queues and dragons, see |external_link|.
 

@@ -6,7 +6,9 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :requires: ADT; array-based list
-   :topic: Search
+   :topic: List ADT Design
+   :keyword: List ADT Design
+
 
 Alternative List ADT Designs
 ============================

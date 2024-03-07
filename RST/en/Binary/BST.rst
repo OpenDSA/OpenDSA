@@ -8,6 +8,8 @@
    :requires: binary tree terminology; binary tree traversal;
    :satisfies: BST
    :topic: Binary Trees
+   :keyword: Binary Search Tree
+
 
 Binary Search Trees
 ===================
@@ -38,6 +40,7 @@ sorted order from lowest to highest.
    :links: AV/Binary/BSTShapeCON.css
    :scripts: AV/Binary/BSTShapeCON.js
    :align: justify
+   :keyword: Binary Search Tree
 
    Two Binary Search Trees for a collection of values.
    Tree (a) results if values are inserted
@@ -80,9 +83,11 @@ subroutine and is implemented as follows.
    :links: AV/Binary/BSTCON.css
    :scripts: AV/Binary/BSTsearchCON.js
    :output: show
+   :keyword: Binary Search Tree
 
 .. avembed:: AV/Binary/BSTsearchPRO.html pe
    :long_name: BST Search Proficiency Exercise
+   :keyword: Binary Search Tree
 
 
 BST Insert
@@ -95,6 +100,7 @@ Now we look at how to insert a new node into the BST.
    :links: AV/Binary/BSTCON.css
    :scripts: AV/Binary/BSTinsertCON.js
    :output: show
+   :keyword: Binary Search Tree
 
 Note that, except for the last node in the path, ``inserthelp``
 will not actually change the child pointer for any of the nodes that
@@ -130,6 +136,7 @@ This keeps the average cost of a BST operation low.
 
 .. avembed:: AV/Binary/BSTinsertPRO.html pe
    :long_name: BST Insert Proficiency Exercise
+   :keyword: Binary Search Tree
 
 
 BST Remove
@@ -148,6 +155,7 @@ This routine will be used later by the general node removal function.
    :links: AV/Binary/BSTCON.css
    :scripts: AV/Binary/BSTdeletemaxCON.js
    :output: show
+   :keyword: Binary Search Tree
 
 The return value of the ``deletemax`` method is the subtree of
 the current node with the maximum-valued node in the subtree removed.
@@ -195,6 +203,7 @@ then the BST property is maintained.
    :links: AV/Binary/BSTCON.css
    :scripts: AV/Binary/BSTremoveCON.js
    :output: show
+   :keyword: Binary Search Tree
 
 When duplicate node values do not appear in the tree, it makes no
 difference whether the replacement is the greatest value from the
@@ -216,6 +225,7 @@ Tree Property if equal values appear in the left subtree.
 
 .. avembed:: AV/Binary/BSTremovePRO.html pe
    :long_name: BST Remove Proficiency Exercise
+   :keyword: Binary Search Tree
 
 
 BST Analysis
@@ -275,3 +285,4 @@ remain balanced, such as the :ref:`2-3 Tree <2-3 tree> <TwoThreeTree>`.
 
 .. avembed:: Exercises/Binary/BSTSumm.html ka
    :long_name: BST Question Summary
+   :keyword: Binary Search Tree

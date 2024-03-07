@@ -7,7 +7,9 @@
    :author: Jordan Sablan
    :requires: Text input
    :satisfies: Random access file
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Java RandomAccessFile Class
+
 
 Random Access Files In Java
 ===========================

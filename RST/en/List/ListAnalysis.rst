@@ -8,6 +8,8 @@
    :requires: array-based list; linked list
    :satisfies: list implementation analysis; overhead
    :topic: Lists
+   :keyword: List Cost Analysis; Overhead; List Implementation Comparison
+
 
 Comparison of List Implementations
 ==================================
@@ -103,6 +105,7 @@ certain limit.
 
 .. avembed:: Exercises/List/ListOverhead.html ka
    :long_name: Breakeven Point Exercise
+   :keyword: Overhead; List Implementation Comparison
 
 
 Time Comparison
@@ -164,3 +167,4 @@ Practice Questions
 
 .. avembed:: Exercises/List/LLSumm.html ka
    :long_name: Linked List Summary Exercise
+   :keyword: List Cost Analysis; Overhead; List Implementation Comparison

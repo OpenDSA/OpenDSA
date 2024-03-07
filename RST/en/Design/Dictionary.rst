@@ -8,6 +8,8 @@
    :requires: comparison; list ADT
    :satisfies: dictionary
    :topic: Design
+   :keyword: Dictionary
+
 
 The Dictionary ADT
 ==================
@@ -202,3 +204,4 @@ search, and delete in :math:`\Theta(\log n)` time.
 
 .. avembed:: Exercises/Design/DesignDictionarySumm.html ka
    :long_name: Dictionary Summary Exercise
+   :keyword: Dictionary

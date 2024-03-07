@@ -8,6 +8,8 @@
    :requires:
    :satisfies: Testing Introduction
    :topic: Testing
+   :keyword: Testing; Code Coverage
+
 
 Testing
 =======
@@ -43,3 +45,4 @@ sets of inputs that will get you to even 50% code coverage.
 .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
    :long_name: Triangle Testing No Code
    :url_params: code=false
+   :keyword: Testing; Code Coverage
