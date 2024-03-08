@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability
+
 
 Reduction of SAT to 3-SAT
 =========================
@@ -21,5 +23,6 @@ polynomial time.
    :links: AV/NP/SATto3SATCON.css
    :scripts: AV/NP/SATto3SATCON.js
    :output: show
+   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability
 
 This reduction can help in providing an NP Completeness proof for 3-SAT.
