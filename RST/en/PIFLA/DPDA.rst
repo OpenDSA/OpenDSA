@@ -7,6 +7,8 @@
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies: PDA Module
    :topic: Deterministic Pushdown Automata
+   :keyword: Deterministic Pushdown Automata
+
 
 Deterministic Pushdown Automata
 ===============================
@@ -33,6 +35,7 @@ Does non-determinism add real power to the PDA?
    :links: AV/PIFLA/PDA/DPDAFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/DPDAFS.js
    :output: show
+   :keyword: Deterministic Pushdown Automata
 
 
 Proof there exists a CFL that is not a DCFL
@@ -42,6 +45,7 @@ Proof there exists a CFL that is not a DCFL
    :links: AV/PIFLA/PDA/NCFLProofFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/NCFLProofFS.js
    :output: show
+   :keyword: Deterministic Pushdown Automata
 
 
 Grammars for Deterministic Context-free Languages
@@ -51,3 +55,4 @@ Grammars for Deterministic Context-free Languages
    :links: AV/PIFLA/PDA/GrammarsForDCFLFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/GrammarsForDCFLFS.js
    :output: show
+   :keyword: Deterministic Pushdown Automata

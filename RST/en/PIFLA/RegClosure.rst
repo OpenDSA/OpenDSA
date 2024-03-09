@@ -8,6 +8,7 @@
    :satisfies: Closure Properties of Regular Grammars
    :requires: Regular Grammars
    :topic: Regular languages
+   :keyword: Regular Languages; Closure Properties
 
 
 Closure Properties of Regular Languages
@@ -38,6 +39,7 @@ appied to any member of the set, the result is a member of the set.
    :links: AV/PIFLA/Regular/ClosureConceptFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/ClosureConceptFS.js
    :output: show
+   :keyword: Regular Languages; Closure Properties
 
 
 Closure Properties of Regular Languages - Basic Operations
@@ -47,6 +49,7 @@ Closure Properties of Regular Languages - Basic Operations
    :links: AV/PIFLA/Regular/RLClosPropFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RLClosPropFS.js
    :output: show
+   :keyword: Regular Languages; Closure Properties
 
 
 .. .. We don't need this, its covered (briefly) in the previous slideshow
@@ -67,6 +70,7 @@ Right quotient
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RLClosQuotientFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RLClosQuotientFS.js
    :output: show
+   :keyword: Regular Languages; Closure Properties
 
 
 Homomorphism
@@ -76,6 +80,7 @@ Homomorphism
    :links: AV/PIFLA/Regular/RLHomomorphFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RLHomomorphFS.js
    :output: show
+   :keyword: Regular Languages; Closure Properties
 
 
 Some Decideable Questions about Regular Languages
@@ -85,6 +90,7 @@ Some Decideable Questions about Regular Languages
    :links: AV/PIFLA/Regular/RLQuestionsCON.css
    :scripts: AV/PIFLA/Regular/RLQuestionsCON.js
    :output: show
+   :keyword: Regular Languages; Closure Properties
 
 
 Summary: How do we prove that a language is regular?

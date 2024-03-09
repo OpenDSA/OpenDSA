@@ -7,6 +7,7 @@
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies: PDA Module
    :topic: Pushdown Automaton
+   :keyword: Pushdown Automaton
 
 
 Pushdown Automata
@@ -56,6 +57,7 @@ languages.
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAFS.js
    :output: show
+   :keyword: Pushdown Automaton
 
 
 Transitions Types for PDAs
@@ -65,6 +67,7 @@ Transitions Types for PDAs
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDATransitionsFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDATransitionsFS.js
    :output: show
+   :keyword: Pushdown Automaton
 
 
 PDA Acceptace Models - Final State Acceptace
@@ -74,6 +77,7 @@ PDA Acceptace Models - Final State Acceptace
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAAcceptanceFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAAcceptanceFS.js
    :output: show
+   :keyword: Pushdown Automaton
 
 
 PDA Acceptace Models - Empty Stack Acceptace
@@ -83,6 +87,7 @@ PDA Acceptace Models - Empty Stack Acceptace
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAEmptyStackFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAEmptyStackFS.js
    :output: show
+   :keyword: Pushdown Automaton
 
 
 Equivalence of Acceptance Definitions
@@ -92,6 +97,7 @@ Equivalence of Acceptance Definitions
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAAcceptEquivFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAAcceptEquivFS.js
    :output: show
+   :keyword: Pushdown Automaton
 
 
 Something to Think About

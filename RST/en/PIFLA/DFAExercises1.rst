@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: DFA exercises
+   :keyword: Finite Automata; Deterministic Finite Acceptor
+
 
 DFA exercises
 =============
@@ -17,21 +19,25 @@ DFA exercises
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda.html pe
    :long_name: Odd number of a's
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAoddaevenb.html pe
    :long_name: Odd number of a's, even number of b's
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAodda3b.html pe
    :long_name: Odd number of a's, at most 3 b's
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAno3a.html pe
    :long_name: No string with 3 consecutive a's
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
@@ -43,3 +49,4 @@ take into account the trap state.
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFACOMPno3a.html pe
    :long_name: Complement no string with 3 consecutive a's
+   :keyword: Finite Automata; Deterministic Finite Acceptor

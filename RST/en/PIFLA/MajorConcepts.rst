@@ -7,6 +7,7 @@
    :author: Susan Rodger, Mostafa Mohammed, Cliff Shaffer
    :satisfies: FLA Introduction
    :topic: Formal Languages Major Concepts
+   :keyword: Formal Languages and Automata; Grammars
 
 
 Introduction to Formal Languages
@@ -29,6 +30,7 @@ word is used in Formal Languages.
    :links: AV/PIFLA/Intro/LanguagesFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Intro/LanguagesFS.js
    :output: show
+   :keyword: Formal Languages and Automata
 
 
 Grammars
@@ -41,7 +43,7 @@ a grammar, as used in Formal Languages.
    :links: AV/PIFLA/Intro/GrammarIntroFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Intro/GrammarIntroFS.js
    :output: show
-
+   :keyword: Formal Languages and Automata; Grammars
 
 Practicing Grammars
 -------------------
@@ -72,6 +74,7 @@ string is in the langauge or not.
    :links: AV/VisFormalLang/Intro/AutomataCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/Intro/AutomataCON.js
    :align: center
+   :keyword: Formal Languages and Automata
 
    This diagram shows an abstract model of a digital computer.
    It has a tape (to store information), a tape head (to read the
@@ -99,6 +102,7 @@ square, and maybe have a choice of whether to move right or left.
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/AutomataExCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/AutomataExCON.js
    :align: center
+   :keyword: Formal Languages and Automata
 
    This diagram shows an example of an automata in a form that shows
    its control behavior.

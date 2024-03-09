@@ -7,6 +7,7 @@
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies: Regular Expressions
    :topic: Regular Expressions
+   :keyword: Regular Expressions; Regular Languages
 
 
 The Power of Regular Expressions
@@ -40,6 +41,7 @@ Every Regular Expression has an Equivalent NFA
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RegEx2NFA1FS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFA1FS.js
    :output: show
+   :keyword: Regular Expressions; Regular Languages
 
 **Summary:** We have now shown that (1) an RE consisting of
 :math:`\lambda` or of a single symbol from the alphabet can be
@@ -51,6 +53,7 @@ This simplifies the rest of the constructions that we will use.
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RegEx2NFAorFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAorFS.js
    :output: show
+   :keyword: Regular Expressions; Regular Languages
 
 |
 
@@ -58,6 +61,7 @@ This simplifies the rest of the constructions that we will use.
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RegEx2NFAcatFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAcatFS.js
    :output: show
+   :keyword: Regular Expressions; Regular Languages
 
 |
 
@@ -65,6 +69,7 @@ This simplifies the rest of the constructions that we will use.
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RegEx2NFAstarFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAstarFS.js
    :output: show
+   :keyword: Regular Expressions; Regular Languages
 
 Now let's spell out the entire induction proof.
 
@@ -106,6 +111,7 @@ Converting a Regular Expression to a NFA
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RegEx2NFAExampleFS.css
    :scripts:  DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/RegEx2NFAExampleFS.js
    :output: show
+   :keyword: Regular Expressions; Regular Languages
 
 
 Regular Expression to Minimized DFA Example
@@ -115,6 +121,7 @@ Regular Expression to Minimized DFA Example
    :links:   DataStructures/FLA/FLA.css AV/VisFormalLang/Regular/REtoMinimizedDFACON.css
    :scripts: lib/underscore.js lib/paper-core.min.js DataStructures/FLA/FA.js DataStructures/FLA/Discretizer.js DataStructures/FLA/REtoFAController.js AV/VisFormalLang/Regular/REtoMinimizedDFACON.js
    :output: show
+   :keyword: Regular Expressions; Regular Languages
 
 
 Converting NFAs to Regular Expressions
@@ -124,6 +131,7 @@ Converting NFAs to Regular Expressions
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/ConvertRLREFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/PDA.js AV/Obsolete/FL_resources/ParseTree.js AV/PIFLA/Regular/ConvertRLREFS.js
    :output: show
+   :keyword: Regular Expressions; Regular Languages
 
 
 Summary

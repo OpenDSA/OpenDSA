@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: NFA exercises
+   :keyword: Finite Automata; Non-Deterministic Finite Automata
+
 
 More NFA exercises
 ==================
@@ -20,11 +22,13 @@ NFA to DFA
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex1long.html pe
    :long_name: NFAtoDFA exercise 1 long version
+   :keyword: Finite Automata; Non-Deterministic Finite Automata
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAtoDFAex2.html pe
    :long_name: NFAtoDFA exercise 2
+   :keyword: Finite Automata; Non-Deterministic Finite Automata
 
 
 Create NFA
@@ -32,3 +36,4 @@ Create NFA
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/NFAex2.html pe
    :long_name: Create a NFA 2
+   :keyword: Finite Automata; Non-Deterministic Finite Automata

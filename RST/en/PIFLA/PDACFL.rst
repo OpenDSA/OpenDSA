@@ -7,6 +7,8 @@
    :author: Mostafa Mohammed
    :satisfies: PDA Module
    :topic: PDAs and Context Free Languages
+   :keyword: Pushdown Automaton; Context Free Languages
+
 
 PDAs and Context Free Languages
 ===============================
@@ -25,6 +27,7 @@ Convert a CFG to a NPDA
    :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDACFLFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/FLA/GrammarMatrix.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDACFLFS.js
    :output: show
+   :keyword: Pushdown Automaton; Context Free Languages
 
 
 Convert a NPDA to a CFG

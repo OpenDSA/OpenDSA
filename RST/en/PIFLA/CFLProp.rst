@@ -7,6 +7,7 @@
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies: Properties of Context-Free Languages
    :topic: Properties of Context-Free Languages
+   :keyword: Properties of Context-Free Languages
 
 
 Ways to Prove that a Language is not a Context-Free Language
@@ -52,6 +53,7 @@ Closure Properties for Context-Free Languages
    :links: AV/PIFLA/PDA/CFLClosurePropFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/PDA/CFLClosurePropFS.js
    :output: show
+   :keyword: Properties of Context-Free Languages
 
 
 A Pumping Lemma for Context-Free Languages
@@ -61,6 +63,7 @@ A Pumping Lemma for Context-Free Languages
    :links: AV/PIFLA/PDA/CFLPumpingLemmaFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/PDA/CFLPumpingLemmaFS.js
    :output: show
+   :keyword: Properties of Context-Free Languages
 
 | **The Pumping Lemma for Context Free Languages**
 |   Let :math:`L` be any infinite CFL.
@@ -108,6 +111,7 @@ pumping lemma proof.
    :links: AV/PIFLA/PDA/CFLPumpingEx1FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/PDA/CFLPumpingEx1FS.js
    :output: show
+   :keyword: Properties of Context-Free Languages
 
 
 Pumping Lemma Example 2
@@ -117,6 +121,7 @@ Pumping Lemma Example 2
    :links: AV/PIFLA/PDA/CFLPumpingEx2FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/PDA/CFLPumpingEx2FS.js
    :output: show
+   :keyword: Properties of Context-Free Languages
 
 
 Pumping Lemma Example 3
@@ -126,6 +131,7 @@ Pumping Lemma Example 3
    :links: AV/PIFLA/PDA/CFLPumpingEx3FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/PDA/CFLPumpingEx3FS.js
    :output: show
+   :keyword: Properties of Context-Free Languages
 
 
 Pumping Lemma Example 4
@@ -135,6 +141,7 @@ Pumping Lemma Example 4
    :links: AV/PIFLA/PDA/CFLPumpingEx4FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/PDA/CFLPumpingEx4FS.js
    :output: show
+   :keyword: Properties of Context-Free Languages
 
 
 .. Pumping Lemma Example 5
@@ -146,3 +153,4 @@ Pumping Lemma Example 4
    :links: AV/PIFLA/PDA/CFLPumpingEx5FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/PDA/CFLPumpingEx5FS.js
    :output: show
+   :keyword: Properties of Context-Free Languages

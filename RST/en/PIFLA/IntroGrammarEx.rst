@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Introductory Grammars exercises
+   :keyword: Formal Languages and Automata; Grammars
+
 
 Grammar Exercises
 =================
@@ -31,23 +33,28 @@ is no response.
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntro3str.html pe
    :long_name: Three string grammar
+   :keyword: Formal Languages and Automata; Grammars
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanb2n.html pe
    :long_name: anb2n grammar
+   :keyword: Formal Languages and Automata; Grammars
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanbm.html pe
    :long_name: anbm grammar
+   :keyword: Formal Languages and Automata; Grammars
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Parens.html pe
    :long_name: Balanced Parentheses grammar
+   :keyword: Formal Languages and Automata; Grammars
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Palendrome.html pe
    :long_name: Palendrome grammar
+   :keyword: Formal Languages and Automata; Grammars
