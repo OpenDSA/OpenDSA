@@ -185,7 +185,7 @@ and interfaces shows that the class realizes the operations offered by the inter
 In this course, we are primarily concerned with relationships between
 classes.
 Note the addition at the top of the **Person** class: ``<<interface>>``.
-The angle brakets define a *stereotype*.
+The angle brackets define a *stereotype*.
 The stereotype allows UML modelers to extend the vocabulary of a model
 element or to be more specific about the role or purpose of a model
 element.

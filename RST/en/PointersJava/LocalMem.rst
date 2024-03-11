@@ -197,7 +197,7 @@ There are two disadvantages of Locals:
    parameters, they do not provide a means of communication from the
    callee back to the caller.
    This is the flip side of the "independence" advantage |---|
-   its not always and advantage.
+   it's not always an advantage.
    Also, sometimes making copies of a value is undesirable for other
    reasons.
    We will see the solution to this problem in the next module.

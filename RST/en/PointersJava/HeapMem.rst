@@ -146,7 +146,7 @@ explicit request by calling the heap :term:`allocation` operation.
 In Java or C++, this is the ``new`` operator.
 The allocation function reserves a block of memory of the requested
 size in the heap (usually, the size of the object that you want) and
-returns a refernece to it.
+returns a reference to it.
 Suppose a program makes three allocation requests to allocate memory
 to hold three separate GIF images in the heap, each of which takes
 1024 bytes of memory.
