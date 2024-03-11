@@ -61,7 +61,7 @@
 void test(Employee e1) 
 {
   Employee first = new Employee("Alex", 1500); 
-  if (e1.getSalary() > firstEmp.getSalary())
+  if (e1.getSalary() > first.getSalary())
   {
     Employee second = new Employee("John", 2000); 
     first = null; 
