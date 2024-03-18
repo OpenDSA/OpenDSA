@@ -266,4 +266,11 @@ Now you can practice using Dijkstra's algorithm.
 .. TODO::
    :type: Exercise
 
+Here is a pratice question from CodeCheck
+
+.. iframe:: https://horstmann.com/codecheck/examples/dijkstra.html
+   :height: 1050
+   :width: 1050
+   :name: exampleFrame
+
    Summary battery of questions for Dijkstra's algorithm
