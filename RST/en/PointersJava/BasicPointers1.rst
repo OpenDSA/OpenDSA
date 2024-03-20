@@ -8,6 +8,7 @@
    :requires:
    :satisfies: Pointer intro
    :topic: Pointers
+   :keyword: Pointers
 
 
 Basic References Part 1
@@ -68,6 +69,7 @@ Data Types in Java
    :links: AV/Pointers/primativeVsRefCON.css
    :scripts: AV/Pointers/primativeVsRefCON.js
    :output: show
+   :keyword: Pointers
 
 (By the way, there is no commonly used word for the concept of a
 pointee |---| pointee is just the word that we used in these
@@ -131,6 +133,7 @@ line between the corners of the reference variable's box.
    :links: AV/Pointers/empRefnullCON.css
    :scripts: AV/Pointers/empRefnullCON.js
    :align: center
+   :keyword: Pointers
 
 
 changePointeeDataDirect
@@ -179,6 +182,7 @@ It just changes which pointee a reference refers to.
    :links: AV/Pointers/empRefsecondCON.css
    :scripts: AV/Pointers/empRefsecondCON.js
    :align: center
+   :keyword: Pointers
 
 After the assignment, testing for ``(second == empRef)`` would return
 true.

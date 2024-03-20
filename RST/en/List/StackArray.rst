@@ -8,6 +8,8 @@
    :requires: list ADT
    :satisfies: stack ADT; array-based stack; stack
    :topic: Lists
+   :keyword: Array-based Stack Implementation
+
 
 Stacks
 ======
@@ -67,7 +69,7 @@ the array-based stack class.
    :links: AV/List/astackCON.css
    :scripts: AV/List/astackVarCON.js
    :output: show
-   
+   :keyword: Array-based Stack Implementation
 
 The array-based stack implementation is essentially
 a simplified version of the array-based list.
@@ -79,6 +81,7 @@ array should represent the top of the stack.
    :links: AV/List/astackCON.css
    :scripts: AV/List/astackTopCON.js
    :output: show
+   :keyword: Array-based Stack Implementation
    
 |
 
@@ -87,10 +90,11 @@ array should represent the top of the stack.
    :links: AV/List/astackCON.css
    :scripts: AV/List/astackPushCON.js
    :output: show
+   :keyword: Array-based Stack Implementation
 
 .. avembed:: Exercises/List/AstackPushPRO.html ka
    :long_name: Array-based Stack Push Exercise
-
+   :keyword: Array-based Stack Implementation
 
 Pop
 ---
@@ -100,6 +104,8 @@ Pop
    :links: AV/List/astackCON.css
    :scripts: AV/List/astackPopCON.js
    :output: show
+   :keyword: Array-based Stack Implementation
    
 .. avembed:: Exercises/List/AstackPopPRO.html ka
    :long_name: Array-based Stack Pop Exercise
+   :keyword: Array-based Stack Implementation

@@ -8,6 +8,8 @@
    :requires: Deterministic Finite Automata
    :satisfies: Non-deterministic Finite Automata
    :topic: Finite Automata
+   :keyword: Finite Automata; Non-Deterministic Finite Automata
+
 
 NFA: Non-Deterministic Finite Automata
 ======================================
@@ -37,6 +39,7 @@ and whether it really even matters in the end.
    :links:  DataStructures/FLA/FLA.css AV/PIFLA/FA/NFAFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/FA/NFAFS.js
    :output: show
+   :keyword: Finite Automata; Non-Deterministic Finite Automata
 
 
 NFA vs. DFA: Which is more powerful?
@@ -109,6 +112,7 @@ NFA to DFA Conversion Example
    :links: AV/PIFLA/FA/NFA2DFAlargeExFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/FA/NFA2DFAlargeExFS.js
    :output: show
+   :keyword: Finite Automata; Non-Deterministic Finite Automata
 
 
 Conclusions

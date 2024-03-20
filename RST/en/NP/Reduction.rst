@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Reductions
+   :keyword: Reductions
+
 
 Reductions
 ==========
@@ -44,6 +46,7 @@ follows:
    :links: AV/NP/SortingProblemCON.css
    :scripts: AV/NP/SortingProblemCON.js
    :output: show
+   :keyword: Reductions
 
 
 Example: The Pairing Problem
@@ -87,6 +90,7 @@ To illustrate this, let us consider another problem.
    :links: AV/NP/pairToSortCON.css
    :scripts: AV/NP/pairToSortCON.js
    :output: show
+   :keyword: Reductions
 
 Figure :num:`Figure #Pair` illustrates PAIRING.
 One way to solve PAIRING is to use an existing sorting
@@ -240,6 +244,7 @@ the reduction of **SORTING** to **PAIRING**.
    :links: AV/NP/sortToPairCON.css
    :scripts: AV/NP/sortToPairCON.js
    :output: show
+   :keyword: Reductions
 
 It is important to note that the reduction process does not give us
 an algorithm for solving either problem by itself.
@@ -388,6 +393,7 @@ The following slideshow illustrates this reduction process.
    :links: AV/NP/matrixMulCON.css
    :scripts: AV/NP/matrixMulCON.js
    :output: show
+   :keyword: Reductions
 
 .. [#] The transpose operation
        takes position :math:`ij` of the original matrix and places it
@@ -450,6 +456,7 @@ in the array to be sorted with a corresponding point defined as
    :links: AV/SeniorAlgAnal/ReduceSimpPCON.css
    :scripts: AV/SeniorAlgAnal/ReduceSimpPCON.js
    :align: center
+   :keyword: Reductions
 
    Input to SORTING: the values 5, -3, 2, 0, 10.
    When converted to points, they fall on a circle as shown.

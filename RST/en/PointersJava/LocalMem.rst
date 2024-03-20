@@ -8,6 +8,9 @@
    :requires: Pointer intro
    :satisfies: Local memory
    :topic: Pointers
+   :keyword: Pointers; Local Variables
+
+
 
 Local Memory
 ============
@@ -111,6 +114,7 @@ Here is a simple example of the lifetime of local storage.
    :links: AV/Pointers/simpleLifetimeCON.css
    :scripts: AV/Pointers/simpleLifetimeCON.js
    :output: show
+   :keyword: Pointers; Local Variables
 
 Here is a larger example that shows how the simple rule "the locals
 are allocated when their function begins running and are deallocated
@@ -124,6 +128,7 @@ result when the function X() calls the function Y() twice.
    :links: AV/Pointers/T1-T5CON.css
    :scripts: AV/Pointers/T1-T5CON.js
    :output: show
+   :keyword: Pointers; Local Variables
 
 The slideshow showed how the sequence of the locals are allocated and
 deallocated.

@@ -8,6 +8,7 @@
    :requires: Local memory
    :satisfies: Heap Memory
    :topic: Pointers
+   :keyword: Pointers; Heap Memory; Garbage Disposal
 
 
 Heap Memory
@@ -130,6 +131,7 @@ from heap memory by garbage collection:
    :links: AV/Pointers/garbageDisposalCON.css
    :scripts: AV/Pointers/garbageDisposalCON.js
    :output: show
+   :keyword: Pointers; Heap Memory; Garbage Disposal
 
 
 Before seeing the exact details, let's look at a rough example of
@@ -155,6 +157,7 @@ After the three allocation requests, memory might look like.
 .. inlineav:: LocalHeapaloc dgm
    :links: AV/Pointers/LocalHeapaloc.css
    :scripts: AV/Pointers/LocalHeapaloc.js
+   :keyword: Pointers; Heap Memory; Memory Management
 
 Each allocation request reserves a contiguous area of the requested
 size in the heap and returns a reference to that new block to the
@@ -202,6 +205,7 @@ deallocates the second of the three blocks.
 .. inlineav:: LocalHeapdealoc dgm
    :links: AV/Pointers/LocalHeapdealoc.css
    :scripts: AV/Pointers/LocalHeapdealoc.js
+   :keyword: Pointers; Heap Memory; Memory Management
 
 After deallocation, the reference continues to point to the now
 deallocated block.
@@ -273,6 +277,7 @@ A Heap Example
    :links: AV/Pointers/LocalHeapintptr42.css
    :scripts: AV/Pointers/LocalHeapintptr42.js
    :output: show
+   :keyword: Pointers; Heap Memory
 
 
 Arrays

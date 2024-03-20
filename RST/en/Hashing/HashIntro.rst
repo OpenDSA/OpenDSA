@@ -7,8 +7,10 @@
    :author: Cliff Shaffer
    :satisfies: hash intro
    :topic: Hashing
+   :keyword: Hashing
 
 .. index:: ! hashing
+
 
 Introduction
 ============
@@ -86,6 +88,7 @@ To find the record with key value ``k``, look in
    :links: AV/Hashing/hashIntroCON.css
    :scripts: AV/Hashing/hashIntroCON.js
    :output: show
+   :keyword: Hashing
 
 In most applications, there are many more values in the key range
 than there are slots in the hash table.

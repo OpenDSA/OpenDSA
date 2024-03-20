@@ -8,6 +8,8 @@
    :requires: dictionary; BST; linked list; array-based list
    :satisfies: BST Dictionary
    :topic: Binary Trees
+   :keyword: Binary Search Tree; Dictionary
+
 
 Dictionary Implementation Using a BST
 =====================================

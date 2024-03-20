@@ -8,6 +8,8 @@
    :satisfies: binary tree space requirements
    :requires: binary tree terminology; binary tree space requirements; BST; complete tree; heap; Huffman coding tree
    :topic: Binary Trees
+   :keyword: Binary Trees
+
 
 Binary Tree Chapter Summary
 ===========================
@@ -17,3 +19,4 @@ Summary Questions
 
 .. avembed:: Exercises/Binary/BinaryChapSumm.html ka
    :long_name: BinaryChapSumm
+   :keyword: Binary Trees

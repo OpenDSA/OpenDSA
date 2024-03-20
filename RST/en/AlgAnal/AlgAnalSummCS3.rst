@@ -8,6 +8,8 @@
    :requires: algorithm analysis; analyzing programs; analyzing problems; analysis misunderstandings; space analysis introduction
    :satisfies: algorithm analysis review
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis
+
 
 Algorithm Analysis Summary Exercises
 ====================================
@@ -17,5 +19,4 @@ Summary Exercise: CS3
 
 .. avembed:: Exercises/AlgAnal/AlgAnalCS3Summ.html ka
    :long_name: Algorithm Analysis Summary Questions
-
-
+   :keyword: Algorithm Analysis

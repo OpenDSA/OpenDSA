@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Memory Management
+   :keyword: Memory Management; Sequential Fit Memory Allocation
+
 
 Circular First Fit
 ==================
@@ -23,3 +25,4 @@ small blocks that were passed over by previous requests.
 .. avembed:: AV/MemManage/firstFitAV.html ss
    :long_name: Circular First Fit Visualization
    :url_params: fitAlgorithm=2
+   :keyword: Memory Management; Sequential Fit Memory Allocation

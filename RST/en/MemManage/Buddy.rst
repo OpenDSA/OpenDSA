@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Memory Management
+   :keyword: Memory Management; Buddy Method Memory Allocation
+
 
 Other Memory Allocation Methods
 ===============================
@@ -64,6 +66,7 @@ are placed on the appropriate freelists.
    :links: AV/MemManage/buddyCON.css
    :scripts: AV/MemManage/buddyCON.js
    :align: center
+   :keyword: Memory Management; Buddy Method Memory Allocation
 
 In the example above, we see the result of a series of insert and free
 operations on a memory pool of 256 units.
@@ -109,6 +112,7 @@ of the larger size be merged).
 
 .. avembed:: AV/MemManage/BuddyAV.html ss
    :long_name: Buddy Method Visualization
+   :keyword: Memory Management; Buddy Method Memory Allocation
 
 Other Methods
 ~~~~~~~~~~~~~

@@ -8,6 +8,8 @@
    :satisfies: Regular Grammars Exercises
    :requires: Regular Grammars
    :topic: Regular Languages
+   :keyword: Regular Languages; Regular Grammars
+
 
 More Regular Grammar Exercises
 ==============================
@@ -17,18 +19,22 @@ More Regular Grammar Exercises
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramNFA2.html pe
    :long_name: Regular Grammar: left-linear grammar for NFA
+   :keyword: Regular Languages; Regular Grammars
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramNFA2r.html pe
    :long_name: Regular Grammar: right-linear grammar for NFA
+   :keyword: Regular Languages; Regular Grammars
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramaaabba.html pe
    :long_name: Regular Grammar: left-linear grammar for aaabsbas
+   :keyword: Regular Languages; Regular Grammars
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Regular/RegGramanbmodd.html pe
    :long_name: Regular Grammar: regular grammar for anbm odd length
+   :keyword: Regular Languages; Regular Grammars

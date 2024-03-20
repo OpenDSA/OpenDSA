@@ -8,6 +8,8 @@
    :requires: BST; Huffman coding tree
    :satisfies: 
    :topic: Trie
+   :keyword: Trie
+
 
 Trees versus Tries
 ==================
@@ -40,6 +42,7 @@ The following slideshows present this in more detail.
    :links: AV/Development/TreeTrieCON.css
    :scripts: AV/Development/TreeTimelineCON.js
    :output: show
+   :keyword: Trie
 
 |
 
@@ -48,3 +51,4 @@ The following slideshows present this in more detail.
    :links: AV/Development/TreeTrieCON.css
    :scripts: AV/Development/TrieTimelineCON.js
    :output: show
+   :keyword: Trie

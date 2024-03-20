@@ -8,6 +8,8 @@
    :requires:
    :satisfies: FL Introduction
    :topic: Introduction
+   :keyword: Formal Languages and Automata
+
 
 About this Course and this Book
 ===============================

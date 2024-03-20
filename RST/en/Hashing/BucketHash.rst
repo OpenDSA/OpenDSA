@@ -8,6 +8,8 @@
    :requires: open hashing
    :satisfies: bucket hashing
    :topic: Hashing
+   :keyword: Hashing; Bucket Hashing
+
 
 Bucket Hashing
 ==============
@@ -60,11 +62,13 @@ expensive process.
    :links: AV/Hashing/buckethashCON.css
    :scripts: AV/Hashing/buckethashCON1.js
    :output: show
+   :keyword: Hashing; Bucket Hashing
 
 Now you can try it yourself.
 
 .. avembed:: Exercises/Hashing/HashBucketPRO.html ka
    :long_name: Bucket Hashing Proficiency Exercise
+   :keyword: Hashing; Bucket Hashing
 
 
 An Alternate Approach
@@ -85,7 +89,7 @@ in the bucket.
    :links: AV/Hashing/buckethashCON.css
    :scripts: AV/Hashing/buckethashCON2.js
    :output: show
-
+   :keyword: Hashing; Bucket Hashing
 
 Bucket methods are good for implementing hash tables stored on disk,
 because the bucket size can be set to the size of a disk block.
@@ -101,4 +105,4 @@ accesses.
 
 .. avembed:: Exercises/Hashing/HashBucket2PRO.html ka
    :long_name: Alternate Bucket Hashing Proficiency Exercise
-   
+   :keyword: Hashing; Bucket Hashing

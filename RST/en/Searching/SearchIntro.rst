@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Search
+   :keyword: Search
+
 
 Chapter Introduction: Search
 ============================

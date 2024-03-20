@@ -8,6 +8,8 @@
    :requires: FLA Introduction
    :satisfies: Regular Grammars
    :topic: Regular Languages
+   :keyword: Regular Languages; Regular Grammars
+
 
 Regular Grammars
 ================
@@ -29,6 +31,7 @@ Which begs the question: What makes a grammar regular?
    :links: AV/PIFLA/Regular/RegularGrammarFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RegularGrammarFS.js
    :output: show
+   :keyword: Regular Languages; Regular Grammars
 
 |  What we have already done this semester:
 |      Definition: DFA represents regular language
@@ -52,6 +55,7 @@ Converting Regular Grammars to NFAs
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/RGtoNFAFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/GrammarMatrix.js AV/PIFLA/Regular/RGtoNFAFS.js
    :output: show
+   :keyword: Regular Languages; Regular Grammars
 
 .. .. Leave this one out, another example is unnecessary
    .. .. inlineav:: REtoFAExampleFS ff
@@ -67,6 +71,7 @@ Converting NFAs to Regular Grammars
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/NFAtoRGFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/Regular/NFAtoRGFS.js 
    :output: show
+   :keyword: Regular Languages; Regular Grammars
 
 .. .. Leave this one out, another example is unnecessary
    .. .. inlineav:: NFAToReExampleFS ff
@@ -82,6 +87,7 @@ Converting between Left-linear and Right-linear Grammars
    :links: DataStructures/FLA/FLA.css AV/PIFLA/Regular/LLGrammarFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/Regular/LLGrammarFS.js
    :output: show
+   :keyword: Regular Languages; Regular Grammars
 
 
 Summary

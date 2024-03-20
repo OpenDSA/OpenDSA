@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer and Mostafa Mohammed
    :topic: Reductions
+   :keyword: Reductions
+
 
 Reductions
 ==========
@@ -43,6 +45,7 @@ follows:
    :links: AV/PIFLA/LimComp/Pair2SortFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/Pair2SortFS.js
    :output: show
+   :keyword: Reductions
 
 
 Reduction and Finding a Lower Bound
@@ -52,6 +55,7 @@ Reduction and Finding a Lower Bound
    :links: AV/PIFLA/LimComp/LowerBoundFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/LowerBoundFS.js
    :output: show
+   :keyword: Reductions
 
 
 .. _BlackBox:
@@ -73,6 +77,7 @@ Reduction Examples
    :links: AV/PIFLA/LimComp/TwoMulExampleFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/TwoMulExampleFS.js
    :output: show
+   :keyword: Reductions
 
 
 Bounds Theorems

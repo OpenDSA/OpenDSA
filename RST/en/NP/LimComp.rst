@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :satisfies: Limits to Computing
    :topic: Limits to Computing
+   :keyword: Limits to Computing
+
 
 Limits to Computing
 ===================

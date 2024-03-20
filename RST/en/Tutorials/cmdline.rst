@@ -7,7 +7,8 @@
    :author: Jordan Sablan
    :requires:
    :satisfies: Commmand line
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Command Line Interface
 
 Command Line Basics
 ===================

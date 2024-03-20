@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: NP-completeness
+   :keyword: NP-completeness
+
 
 NP-Completeness
 ===============
@@ -172,6 +174,7 @@ The best route for this particular graph would be ABEDCA, with cost 9.
    :links: AV/NP/SalesCON.css
    :scripts: AV/NP/SalesCON.js
    :align: center
+   :keyword: NP-completeness
 
    An illustration of the TRAVELING SALESMAN problem.
    Five vertices are shown, with edges between each pair of cities.
@@ -264,6 +267,7 @@ Another such problem is called K-CLIQUE.
    :links: AV/NP/cliqueCON.css
    :scripts: AV/NP/cliqueCON.js
    :output: show
+   :keyword: NP-completeness
 
 Nobody knows whether there is a polynomial time solution for
 K-CLIQUE, but if such an algorithm is found for K-CLIQUE *or*
@@ -324,6 +328,7 @@ terms of Figure :num:`Figure #Complex`.
    :links: AV/NP/ComplexCON.css
    :scripts: AV/NP/ComplexCON.js
    :align: center
+   :keyword: NP-completeness
 
    Our knowledge regarding the world of problems requiring exponential
    time or less.

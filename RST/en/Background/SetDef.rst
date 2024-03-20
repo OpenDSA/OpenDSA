@@ -5,8 +5,11 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
+   :requires:
    :satisfies: set notation; relations
-   :topic: Sets
+   :topic: Math Background
+   :keyword: Sets; Relations; Equivalance Relation; Partial Order
+
 
 Sets and Relations
 ==================
@@ -221,7 +224,7 @@ it is not reflexive.
 
 .. avembed:: Exercises/Background/SetTFrelation.html ka
    :long_name: Relations Exercise
-
+   :keyword: Relation
 
 Equivalence Relations
 ---------------------
@@ -292,6 +295,7 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
 
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
    :long_name: Equivalence Exercise
+   :keyword: Relation; Equivalence Relation
 
 
 Partial Orders
@@ -334,3 +338,4 @@ then the order is called a :term:`total order` or :term:`linear order`.
 
 .. avembed:: Exercises/Background/SetTFpartialorder.html ka
    :long_name: PartialOrder Exercise
+   :keyword: Relation; Partial Order

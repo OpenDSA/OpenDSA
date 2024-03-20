@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :requires: hashing; linear indexing; B tree
    :topic: Indexing
+   :keyword: Indexing
+
 
 Indexing Summary Exercises
 ==========================
@@ -18,6 +20,7 @@ Here are some review questions.
 
 .. avembed:: Exercises/Indexing/IndexChoice.html ka
    :long_name: Choosing an Index
+   :keyword: Indexing
 
 .. TODO::
    :type: Exercise

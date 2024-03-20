@@ -6,7 +6,8 @@
 .. avmetadata::
    :author: Susan Rodger, Mostafa Mohammed, and Cliff Shaffer
    :satisfies:
-   :topic: Closure Properties of Regular Grammars
+   :topic: Non-regular Languages
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 
 Identifying Non-regular Languages
@@ -28,6 +29,7 @@ language is non-regular.
    :links: AV/PIFLA/NonRegular/introNonRegularFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/introNonRegularFS.js
    :output: show
+   :keyword: Non-regular Languages
 
 |
 
@@ -36,6 +38,7 @@ language is non-regular.
    :links: AV/VisFormalLang/NonReg/Proof1NonRegularCON.css
    :scripts: AV/VisFormalLang/NonReg/Proof1NonRegularCON.js
    :output: show
+   :keyword: Non-regular Languages
 
 We are about to formalize the proof in this slideshow into a tool for
 proving some languages to be nonregular.
@@ -83,6 +86,7 @@ The Concept of Pumping
    :links: AV/PIFLA/NonRegular/introPumpingFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/introPumpingFS.js
    :output: show
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 
 The Pumping Lemma
@@ -93,6 +97,7 @@ The Pumping Lemma
    :links: AV/VisFormalLang/NonReg/PumpingLemmaCON.css
    :scripts: AV/VisFormalLang/NonReg/PumpingLemmaCON.js
    :output: show
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 **How To Use the Pumping Lemma to prove L is not regular: Proof by Contradiction**
 
@@ -132,6 +137,7 @@ Some Pumping Lemma Examples
    :links: AV/PIFLA/NonRegular/PLExampanbnFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExampanbnFS.js
    :output: show
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 |
 
@@ -139,6 +145,7 @@ Some Pumping Lemma Examples
    :links: AV/PIFLA/NonRegular/PLExampwwRFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExampwwRFS.js
    :output: show
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 
 .. topic:: Example
@@ -244,6 +251,7 @@ have to get through to complete the proof.
    :links: AV/PIFLA/NonRegular/PLExampa3bncn3FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/PLExampa3bncn3FS.js
    :output: show
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 
 The Pumping Lemma Adversary Game
@@ -320,6 +328,7 @@ string  :math:`w` the computer picks), and so you win.
   
 .. avembed:: AV/VisFormalLang/NonReg/PLGame.html ss
    :long_name: Regular Pumping Lemmma
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 
 Using Closure Properties to Prove L is Not Regular
@@ -349,6 +358,7 @@ that we already know is non-regular.
    :links: AV/PIFLA/NonRegular/ClosPropFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/ClosPropFS.js
    :output: show
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 |
 
@@ -356,6 +366,7 @@ that we already know is non-regular.
    :links: AV/PIFLA/NonRegular/ClosPropEx1FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/ClosPropEx1FS.js
    :output: show
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 |
 
@@ -363,6 +374,7 @@ that we already know is non-regular.
    :links: AV/PIFLA/NonRegular/ClosPropEx2FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/ClosPropEx2FS.js
    :output: show
+   :keyword: Non-regular Languages; Pumping Lemma Proofs
 
 .. .. We don't need to do yet one more example!
    .. .. inlineav:: ClosPropEx3FS ff

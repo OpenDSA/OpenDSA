@@ -8,6 +8,8 @@
    :requires: general trees
    :satisfies: Union/Find
    :topic: Union/Find
+   :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes
+
 
 Union/Find and the Parent Pointer Implementation
 ================================================
@@ -113,6 +115,7 @@ UNION/FIND array, and methods ``UNION`` and
    :links: AV/General/UFCON.css
    :scripts: AV/General/UFfigCON.js
    :align: fill
+   :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes
 
    The parent pointer array implementation.
    Each node corresponds to a position in the node array,
@@ -156,6 +159,7 @@ For example, consider this graph of ten nodes labeled :math:`A` through
    :links: AV/General/UFCON.css
    :scripts: AV/General/UFconcomCON.js
    :align: left
+   :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes
 
    A graph with two connected components.
    The tree of Figure :num:`Figure #UFfig` shows the corresponding
@@ -258,6 +262,7 @@ weighted union.
    :links: AV/General/UFCON.css
    :scripts: AV/General/ufCON.js
    :output: show
+   :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes
 
 
 Path Compression
@@ -291,6 +296,7 @@ step in the previous example.
    :links: AV/General/UFCON.css
    :scripts: AV/General/pathcompCON.js
    :output: show
+   :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes
 
 Path compression keeps the cost of each FIND operation very
 close to constant.
@@ -330,3 +336,4 @@ covers many aspects of the equivalence class problem.
 
 .. avembed:: AV/General/UnionFindPRO.html pe
    :long_name: Union/Find Proficiency Exercise
+   :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes

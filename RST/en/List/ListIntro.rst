@@ -8,6 +8,8 @@
    :requires: ADT
    :satisfies: list introduction
    :topic: Lists
+   :keyword: Lists
+
 
 Chapter Introduction: Lists
 ===========================

@@ -5,9 +5,11 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires: Testing Introduction
+   :requires: Testing Intro 2
    :satisfies:
    :topic: Testing
+   :keyword: Testing; Code Coverage
+
 
 Bowling Example
 ===============
@@ -23,3 +25,4 @@ Try to get 100% code coverage.
 .. avembed:: AV/Testing/Bowling/BowlingApplet.html pe
    :long_name: Bowling Testing With Code
    :url_params: code=true
+   :keyword: Testing; Code Coverage

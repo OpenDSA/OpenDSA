@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Sally Hamouda and Cliff Shaffer
    :topic: Recursion
+   :keyword: Recursion
+
 
 Code Completion Practice Exercises
 ==================================

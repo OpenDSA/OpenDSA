@@ -8,6 +8,8 @@
    :requires: ADT
    :satisfies: list ADT
    :topic: Lists
+   :keyword: List ADT
+
 
 The List ADT
 ============
@@ -131,6 +133,7 @@ object, sometimes referred to as an :term:`iterator`.
    :links: AV/List/listADTCON.css
    :scripts: AV/List/listADTposCON.js
    :output: show
+   :keyword: List ADT
 
 The ``List`` member functions allow you to build a list with elements
 in any desired order, and to access any desired position in the list.

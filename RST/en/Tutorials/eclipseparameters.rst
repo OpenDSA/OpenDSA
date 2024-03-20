@@ -7,16 +7,18 @@
    :author: Jordan Sablan
    :requires: Command line parameters
    :satisfies: Eclipse command line parameters
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Eclipse; Command Line Parameters
 
-===========================
-Using Parameters in Eclipse
-===========================
+========================================
+Using Command Line Parameters in Eclipse
+========================================
 
-Using Parameters in Eclipse
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using Command Line Parameters in Eclipse
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sometimes your projects developed Eclipse need to use command line parameters.
+Sometimes your projects developed in Eclipse need to test invoking the
+program through command line parameters.
 You can |external_link2| of the material.
 
 .. |external_link2| raw:: html

@@ -8,6 +8,8 @@
    :requires: binary tree terminology; recursion
    :satisfies: binary tree traversal
    :topic: Binary Trees
+   :keyword: Binary Tree Traversals; Inorder Traversal; Preorder Traversal; Postorder Traversal
+
 
 Binary Tree Traversals
 ======================
@@ -41,6 +43,7 @@ This is called a :term:`preorder traversal`.
    :links: AV/Binary/BinExampCON.css
    :scripts: AV/Binary/BinExampCON.js
    :align: center
+   :keyword: Binary Tree Traversals; Preorder Traversal
 
    A binary tree for traversal examples.
 
@@ -60,6 +63,7 @@ This is called a :term:`preorder traversal`.
    :links: AV/Binary/BTCON.css
    :scripts: AV/Binary/preorderCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Preorder Traversal
 
 
 Postorder Traversal
@@ -86,6 +90,7 @@ This is called a :term:`postorder traversal`.
    :links: AV/Binary/BTCON.css
    :scripts: AV/Binary/postorderCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Postorder Traversal
 
 
 Inorder Traversal
@@ -109,6 +114,7 @@ this traversal to print all nodes in ascending order of value.
    :links: AV/Binary/BTCON.css
    :scripts: AV/Binary/inorderCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Inorder Traversal
 
 
 Implementation
@@ -161,6 +167,7 @@ visited, as appropriate.
 
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
    :long_name: Binary Tree Preorder Traversal Exercise
+   :keyword: Binary Tree Traversals; Preorder Traversal
 
 
 Postorder Traversal Practice
@@ -168,6 +175,7 @@ Postorder Traversal Practice
 
 .. avembed:: AV/Binary/btTravPostorderPRO.html pe
    :long_name: Binary Tree Postorder Traversal Exercise
+   :keyword: Binary Tree Traversals; Postorder Traversal
 
 
 Inorder Traversal Practice
@@ -175,6 +183,7 @@ Inorder Traversal Practice
 
 .. avembed:: AV/Binary/btTravInorderPRO.html pe
    :long_name: Binary Tree Inorder Traversal Exercise
+   :keyword: Binary Tree Traversals; Inorder Traversal
 
 
 Summary Questions
@@ -182,3 +191,4 @@ Summary Questions
 
 .. avembed:: Exercises/Binary/TravSumm.html ka
    :long_name: Tree Traversal Summary Questions
+   :keyword: Binary Tree Traversals

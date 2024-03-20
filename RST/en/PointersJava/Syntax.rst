@@ -8,6 +8,7 @@
    :requires: Pointer intro
    :satisfies: Pointer Syntax
    :topic: Pointers
+   :keyword: Pointers
 
 
 Pointers Syntax
@@ -48,6 +49,7 @@ Assigning a pointee to a reference
    :links: AV/Pointers/employeePtr2CON.css
    :scripts: AV/Pointers/employeePtr2CON.js
    :output: show
+   :keyword: Pointers
 
 Dereference the reference
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,6 +84,7 @@ Example Reference Code
    :links: AV/Pointers/examplePointerCodeCON.css
    :scripts: AV/Pointers/examplePointerCodeCON.js
    :output: show
+   :keyword: Pointers
 
 
 changeHeadPointer1
@@ -157,6 +160,7 @@ storing the address of that area of memory.
    :links: AV/Pointers/memoryModelCON.css
    :scripts: AV/Pointers/memoryModelCON.js
    :align: center
+   :keyword: Pointers
 
 In the picture above, we assume that Java decides to place the new
 Employee object starting at memory location 2000.

@@ -7,7 +7,9 @@
    :author: Cliff Shaffer
    :requires:
    :satisfies:
-   :topic:
+   :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Growth Rates
+
 
 Growth Rates Review
 ===================

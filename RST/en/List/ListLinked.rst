@@ -8,6 +8,8 @@
    :requires: list ADT
    :satisfies: linked list
    :topic: Lists
+   :keyword: Linked List
+
 
 Linked Lists
 ============
@@ -33,6 +35,7 @@ box, signifying that there is no link coming out of this box.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistRepCON.js
    :align: center
+   :keyword: Linked List
 
 Because a list node is a distinct object (as opposed to simply a cell
 in an array), it is good practice to make a separate list node class.
@@ -61,6 +64,7 @@ and ``link`` fields.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistBadCON.js
    :output: show
+   :keyword: Linked List
 
 
 Why This Has Problems
@@ -80,6 +84,7 @@ and thus increases the chance of introducing bugs.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistBadDelCON.js
    :output: show
+   :keyword: Linked List
    
 
 A Better Solution
@@ -112,6 +117,7 @@ with header and trailer nodes.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistInitCON.js
    :align: center
+   :keyword: Linked List
 
 Here is what a list with some elements looks like with the header and
 trailer nodes added.
@@ -122,6 +128,7 @@ trailer nodes added.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistHeaderCON.js
    :align: center
+   :keyword: Linked List
 
 Adding the trailer node also solves our problem with deleting the last
 node on the list, as we will see when we take a closer look at the
@@ -144,6 +151,7 @@ named ``LList``.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistVarsCON.js
    :output: show
+   :keyword: Linked List
 
 |
 
@@ -152,6 +160,7 @@ named ``LList``.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistConsCON.js
    :output: show
+   :keyword: Linked List
 
 |
 
@@ -160,6 +169,7 @@ named ``LList``.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistInsertCON.js
    :output: show
+   :keyword: Linked List
    
 
 Here are some special cases for linked list insertion: Inserting at
@@ -170,10 +180,12 @@ the end, and inserting to an empty list.
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistSpecialCON.js
    :output: show
+   :keyword: Linked List
    
 
 .. avembed:: Exercises/List/LlistInsertPRO.html ka
    :long_name: Linked List Insert Exercise
+   :keyword: Linked List
 
 
 Linked List Remove
@@ -184,15 +196,18 @@ Linked List Remove
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistRemoveCON.js
    :output: show
+   :keyword: Linked List
 
 .. avembed:: Exercises/List/LlistRemovePRO.html ka
    :long_name: Linked List Remove Exercise
+   :keyword: Linked List
 
 .. inlineav:: llistOtherCON ss
    :long_name: Linked List Position Slideshow
    :links: AV/List/llistCON.css
    :scripts: AV/List/llist.js AV/List/llistOtherCON.js
    :output: show
+   :keyword: Linked List
    
 Implementations for the remaining operations each require
 :math:`\Theta(1)` time.

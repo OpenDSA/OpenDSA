@@ -8,6 +8,8 @@
    :requires: collision resolution
    :satisfies: hash deletion
    :topic: Hashing
+   :keyword: Hashing; Hash Table Deletion
+
 
 Deletion
 ========
@@ -50,11 +52,13 @@ the first tombstone encountered.
    :links: 
    :scripts: AV/Hashing/hashdelCON.js
    :output: show
+   :keyword: Hashing; Hash Table Deletion
 
 Here is a practice exercise.
 
 .. avembed:: AV/Hashing/HashingDelPRO.html pe
    :long_name: Hash Deletion Proficiency Exercise
+   :keyword: Hashing; Hash Table Deletion
 
 The use of tombstones allows searches to work correctly and allows
 reuse of deleted slots.
@@ -106,6 +110,7 @@ Now here are some practice questions.
 
 .. avembed:: Exercises/Hashing/HashDelSumm.html ka
    :long_name: Hash Deletion Summary Exercise
+   :keyword: Hashing; Hash Table Deletion
 
 Congratulations! You have reached the end of the hashing tutorial.
 In summary, a properly tuned hashing system will return records with

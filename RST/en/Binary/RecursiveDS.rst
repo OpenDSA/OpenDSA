@@ -7,6 +7,8 @@
    :author: Sally Hamouda
    :satisfies: binary tree as a recursive data Structures
    :topic: Binary Tree as a Recursive Data Structures
+   :keyword: Binary Trees; Binary Tree Terminology
+
 
 Binary Tree as a Recursive Data Structure
 =========================================
@@ -32,6 +34,7 @@ other one its right child.
    :links: AV/Binary/RecursiveDSCON.css
    :scripts: AV/Binary/ListRecDSCON.js
    :align: justify
+   :keyword: Binary Trees; Binary Tree Terminology
 
 
 .. _BinRecDS:
@@ -40,6 +43,7 @@ other one its right child.
    :links: AV/Binary/RecursiveDSCON.css
    :scripts: AV/Binary/BinRecDSCON.js
    :align: justify
+   :keyword: Binary Trees; Binary Tree Terminology
    
 The recursive relationships used to define a structure provide a
 natural model for any recursive algorithm on the structure.
@@ -49,3 +53,4 @@ natural model for any recursive algorithm on the structure.
    :links: AV/Binary/RecursiveDSCON.css
    :scripts: AV/Binary/SumBinaryTreeCON.js
    :output: show
+   :keyword: Binary Trees; Binary Tree Terminology

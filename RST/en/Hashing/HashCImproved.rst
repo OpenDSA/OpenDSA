@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :requires: collision resolution
    :topic: Hashing
+   :keyword: Hashing; Collision Resolution
+
 
 Improved Collision Resolution
 =============================
@@ -29,6 +31,7 @@ same probe sequence.
    :links: AV/Hashing/collisionCON.css
    :scripts: AV/Hashing/collisionCON1.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 One quality of a good probe sequence is that it will cycle through
 all slots in the hash table before returning to the home position.
@@ -67,11 +70,13 @@ probe sequence that visits all slots for every key.
    :links: AV/Hashing/collisionCON.css
    :scripts: AV/Hashing/collisionCON2.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 Now you can practice linear probing by different step sizes.
 
 .. avembed:: Exercises/Hashing/HashLinearStepPPRO.html ka
    :long_name: Linear Probing By Steps Proficiency Exercise
+   :keyword: Hashing; Collision Resolution
 
 
 Pseudo-Random Probing
@@ -119,11 +124,13 @@ random permutation of the values from 1 to :math:`M - 1` in slots 1 to
    :links: AV/Hashing/collisionCON.css
    :scripts: AV/Hashing/collisionCON3.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 Here is a practice exercise for pseudo-random probing.
 
 .. avembed:: Exercises/Hashing/HashPseudoRandomPPRO.html ka
    :long_name: Pseudo-Random Probing Proficiency Exercise
+   :keyword: Hashing; Collision Resolution
 
 Pseudo-random probing exhibits another desirable feature in a hash
 function.
@@ -133,6 +140,7 @@ function.
    :links: AV/Hashing/collisionCON.css
    :scripts: AV/Hashing/collisionCON4.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 
 Quadratic Probing
@@ -157,11 +165,13 @@ Then the :math:`i` th value in the probe sequence would be
    :links: AV/Hashing/collisionCON.css
    :scripts: AV/Hashing/collisionCON5.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 Now you can practice quadratic probing.
 
 .. avembed:: Exercises/Hashing/HashQuadraticPPRO.html ka
    :long_name: Quadratic Probing Proficiency Exercise
+   :keyword: Hashing; Collision Resolution
 
 There is one problem with quadratic probing: Its probe sequence
 typically will not visit all slots in the hash table.
@@ -171,7 +181,7 @@ typically will not visit all slots in the hash table.
    :links: AV/Hashing/collisionCON.css
    :scripts: AV/Hashing/collisionCON6.js
    :output: show
-
+   :keyword: Hashing; Collision Resolution
 
 For many hash table sizes, this probe function will cycle through a
 relatively small number of slots.
@@ -259,6 +269,7 @@ We can get that result with this secondary hash function:
    :links: AV/Hashing/collisionCON.css
    :scripts: AV/Hashing/collisionCON7.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 |
 
@@ -267,12 +278,14 @@ We can get that result with this secondary hash function:
    :links: AV/Hashing/collisionCON.css
    :scripts: AV/Hashing/collisionCON8.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 
 Now you can try it.
 
 .. avembed:: Exercises/Hashing/HashDoublePPRO.html ka
    :long_name: Double Hashing Proficiency Exercise
+   :keyword: Hashing; Collision Resolution
 
 .. TODO::
    :type: AV

@@ -6,7 +6,8 @@
 .. avmetadata:: 
    :author: Cliff Shaffer, Abhishek Jha, and Angel Velazquez
    :topic: Dynamic Programming
-   :keyword: Dynamic, Recursion, Fibonacci
+   :keyword: Dynamic Programming; Recursion; Fibonacci Sequence; Knapsack Problem
+
 
 Dynamic Programming
 ===================
@@ -63,6 +64,7 @@ The following slideshow explains the redundancy problem.
    :scripts: /AV/SeniorAlgAnal/FibTreeCON.js
    :align: center
    :output: show
+   :keyword: Dynamic Programming; Recursion; Fibonacci Sequence
 
 Looking at the final tree, we see that there are only seven unique
 subproblems to solve (for Fibonacci values 0 through 6).
@@ -74,6 +76,7 @@ shows the dependencies for the subproblems.
    :scripts: /AV/SeniorAlgAnal/FibGraphCON.js
    :align: center
    :output: show
+   :keyword: Dynamic Programming; Recursion; Fibonacci Sequence
 
 Note that the dependency graph was laid out on in a one dimensional
 table of size seven, corresponding to the unique subproblems invoked
@@ -303,6 +306,7 @@ solutions for all subproblems
       :scripts: /AV/SeniorAlgAnal/KnapTreeCON.js
       :align: center
       :output: show
+      :keyword: Dynamic Programming; Recursion; Knapsack Problem
 
    The dependency graph for this problem instance, laid out in a table of
    size :math:`n × K + 1`, follows:
@@ -312,6 +316,7 @@ solutions for all subproblems
    :scripts: /AV/SeniorAlgAnal/KnapGraphCON.js
    :align: center
    :output: show
+   :keyword: Dynamic Programming; Recursion; Knapsack Problem
 
 As mentioned above, there are two approaches to actually solving the
 problem.
@@ -428,6 +433,7 @@ terms of the cost of getting that answer.
    :scripts: /AV/SeniorAlgAnal/MatMulCON.js
    :align: center
    :output: show
+   :keyword: Dynamic Programming; Recursion; Knapsack Problem
 
 To solve this problem efficiently (of how to group the order of the
 multiplications), we should notice that there are a lot of duplicate

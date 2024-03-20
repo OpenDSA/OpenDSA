@@ -5,9 +5,11 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
-   :requires:
-   :satisfies: Testing Introduction
+   :requires: Testing Introduction
+   :satisfies:
    :topic: Testing
+   :keyword: Testing; Code Coverage
+
 
 Testing for Code Coverage
 =========================
@@ -28,6 +30,7 @@ branch in the nested series of ``if`` statements.
 .. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
    :long_name: Triangle Testing With Code
    :url_params: code=true
+   :keyword: Testing; Code Coverage
 
 So, did you find it easier to get code coverage when you had the code
 in front of you?

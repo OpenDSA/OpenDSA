@@ -8,6 +8,8 @@
    :requires: Limits to Computing
    :satisfies: uncomputable problems
    :topic: Limits to Computing
+   :keyword: Unsolveable Problems
+
 
 Unsolveable Problems
 ====================
@@ -19,6 +21,7 @@ Unsolveable Problems
    :links: AV/PIFLA/LimComp/Unsolve1FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/Unsolve1FS.js
    :output: show
+   :keyword: Unsolveable Problems
 
 
 The Halting Problem is Unsolvable
@@ -28,3 +31,4 @@ The Halting Problem is Unsolvable
    :links: AV/PIFLA/LimComp/Unsolve2FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/Unsolve2FS.js
    :output: show
+   :keyword: Unsolveable Problems

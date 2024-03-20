@@ -7,7 +7,8 @@
    :author: Cliff Shaffer
    :requires: mergesort
    :topic: Sorting
-   :keyword: Divide and Conquer, Stable Sorting, Out-of-place Sort, Recursive Sorting
+   :keyword: Sorting; Mergesort
+
 
 Implementing Mergesort
 ======================
@@ -84,7 +85,7 @@ Here is a visualization for the merge step.
    :links: 
    :scripts: AV/Sorting/mergeImplS1CON.js
    :output: show
-   :keyword: Divide and Conquer, Stable Sorting, Out-of-place Sort, Recursive Sorting
+   :keyword: Sorting; Mergesort
 
 An optimized Mergesort implementation is shown below.
 It reverses the order of the second subarray during the initial copy.
@@ -107,8 +108,8 @@ Here is a visualization for the optimized merge step.
    :links: 
    :scripts: AV/Sorting/mergeImplS2CON.js
    :output: show
-   :keyword: Divide and Conquer, Stable Sorting, Out-of-place Sort, Recursive Sorting
+   :keyword: Sorting; Mergesort
 
 .. avembed:: Exercises/Sorting/MergesortSumm.html ka
    :long_name: Mergesort Summary Exercise
-   :keyword: Divide and Conquer, Stable Sorting, Out-of-place Sort, Recursive Sorting
+   :keyword: Sorting; Mergesort

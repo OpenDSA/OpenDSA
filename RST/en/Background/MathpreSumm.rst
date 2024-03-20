@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :requires: set notation; relations; factorial; permuation; modulus; logarithms; summation; recurrence; induction proofs; estimation
    :topic: Math Background
+   :keyword: Math Background
+
 
 Chapter Summary Questions
 =========================
@@ -18,3 +20,4 @@ Here are some practice questions for the modules in this chapter.
 
 .. avembed:: Exercises/Background/MathBgSumm.html ka
    :long_name: Math Background Summary Questions
+   :keyword: Math Background

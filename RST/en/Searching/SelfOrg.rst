@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Search
+   :keyword: Search; Self-Organizing Lists
+
 
 Self-Organizing Lists
 =====================
@@ -215,9 +217,11 @@ history.
    :links: AV/Searching/selforgCON.css
    :scripts: AV/Searching/selforgCON.js
    :output: show
+   :keyword: Search; Self-Organizing Lists
 
 .. avembed:: Exercises/Searching/SelfOrgCounterPRO.html ka
    :long_name: Self-organizing List Counter Proficiency Exercise
+   :keyword: Search; Self-Organizing Lists
 
 
 Move to Front
@@ -256,9 +260,11 @@ repeated multiple times.
    :links: AV/Searching/selforgCON.css
    :scripts: AV/Searching/selforgCON.js
    :output: show
+   :keyword: Search; Self-Organizing Lists
 
 .. avembed:: Exercises/Searching/SelfOrgM2FPRO.html ka
    :long_name: Self-organizing List Move-to-front Proficiency Exercise
+   :keyword: Search; Self-Organizing Lists
 
 
 Transpose
@@ -294,9 +300,11 @@ forward in the list by some fixed number of steps.
    :links: AV/Searching/selforgCON.css
    :scripts: AV/Searching/selforgCON.js
    :output: show
+   :keyword: Search; Self-Organizing Lists
 
 .. avembed:: Exercises/Searching/SelfOrgTransposePRO.html ka
    :long_name: Self-organizing List Transpose Proficiency Exercise
+   :keyword: Search; Self-Organizing Lists
 
 
 An Example

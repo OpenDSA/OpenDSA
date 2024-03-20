@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Sparse Matrix
+   :keyword: Sparse Matrix
+
 
 The Sparse Matrix
 =================

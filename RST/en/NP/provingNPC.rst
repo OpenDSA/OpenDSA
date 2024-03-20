@@ -6,11 +6,11 @@
 .. avmetadata::
    :author: Cliff Shaffer, Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; NP-completeness Proofs
+
 
 NP-Completeness Proofs
 ======================
-
-
 
 NP-Completeness Proofs
 ----------------------
@@ -130,5 +130,6 @@ The various proofs will link the problems together as shown here:
    :links: 
    :scripts: AV/NP/NPCProofDiagramCON.js
    :align: center
+   :keyword: NP-completeness; NP-completeness Proofs
 
    We will use this sequence of reductions for the NP Complete Proof

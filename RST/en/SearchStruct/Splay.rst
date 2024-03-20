@@ -8,6 +8,8 @@
    :requires: BST
    :satisfies:
    :topic: Splay Trees
+   :keyword: Search Structures; Splay Trees
+
 
 The Splay Tree
 ==============

@@ -6,6 +6,8 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :topic: Randomized Algorithms
+   :keyword: Randomized Algorithms; Probabilistic Algorithms
+
 
 Introduction to Probabilistic Algorithms
 ========================================

@@ -8,6 +8,8 @@
    :requires: BST; Spatial data structures
    :satisfies: Bintree
    :topic: Spatial Data Structures
+   :keyword: Spatial Data Structures, Bintree
+
 
 The Bintree
 ===========
@@ -45,6 +47,7 @@ multidimensional coordinates, such as locations in 2D or 3D space.
    :links: AV/Spatial/bintreeCON.css
    :scripts: AV/Spatial/bintreeCON.js
    :align: justify
+   :keyword: Spatial Data Structures, Bintree
 
    Example of a Bintree.
 
@@ -84,10 +87,12 @@ Here is a visualization of the Bintree, that shows how inserting a
 point and removing a point works.
 
 .. avembed:: AV/Spatial/BintreeAV.html ss
+   :keyword: Spatial Data Structures, Bintree
 
 Below is an interactive visualization of the Bintree for practice.
 
 .. avembed:: AV/Spatial/BintreeInter.html ss
+   :keyword: Spatial Data Structures, Bintree
 
 Assume that we want to print out a list of all records that are within
 a certain distance :math:`d` of a given point :math:`P`.

@@ -8,6 +8,8 @@
    :requires: summation
    :satisfies: recurrence
    :topic: Math Background
+   :keyword: Recurrence Relations
+
 
 Recurrence Relations
 ====================
@@ -74,6 +76,7 @@ definition.
    :links: AV/Background/LinearRecurrencesCON.css
    :scripts: AV/Background/LinearRecurrencesCON.js
    :output: show
+   :keyword: Recurrence Relations
 
 
 A slightly more complicated recurrence is
@@ -89,3 +92,4 @@ Again, we will use expansion to help us find a closed form solution.
    :links: AV/Background/LinearRecurrencesNCON.css
    :scripts: AV/Background/LinearRecurrencesNCON.js
    :output: show
+   :keyword: Recurrence Relations

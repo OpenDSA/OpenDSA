@@ -8,6 +8,8 @@
    :requires: binary tree terminology
    :satisfies: full binary tree theorem
    :topic: Binary Trees
+   :keyword: Full Binary Tree Theorem
+
 
 The Full Binary Tree Theorem
 ============================
@@ -48,6 +50,7 @@ space from its internal nodes.
    :links: AV/Binary/UnaryTreeExampleCON.css
    :scripts: AV/Binary/UnaryTreeExampleCON.js
    :align: center
+   :keyword: Full Binary Tree Theorem
 
    A tree containing many internal nodes and a single leaf.
 

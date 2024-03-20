@@ -7,7 +7,9 @@
    :author: Cliff Shaffer
    :requires:
    :satisfies:
-   :topic:
+   :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Upper and Lower Bounds
+
 
 Bounds Review
 =============
@@ -165,6 +167,7 @@ So it would be wrong to say something like
    :links: AV/SeniorAlgAnal/SimpleCostsCON.css
    :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
    :output: show
+   :keyword: Algorithm Analysis; Upper and Lower Bounds
 
 If we want the :term:`average-case cost <average case>`,
 it is even more complicated.

@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Pointers
+   :keyword: Pointers
+
 
 Pointers Chapter Introduction
 =============================

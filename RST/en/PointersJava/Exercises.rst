@@ -5,6 +5,8 @@
 
 .. avmetadata::
    :author: Mostafa Mohammed
+   :keyword: Pointers
+
 
 Additional Practice Exercises
 =============================

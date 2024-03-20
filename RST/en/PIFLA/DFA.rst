@@ -7,6 +7,7 @@
    :author: Susan Rodger, Cliff Shaffer, Mostafa Mohammed, and John Taylor
    :satisfies: Deterministic Finite Automata
    :topic: Finite Automata
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 
 DFA: Deterministic Finite Acceptor
@@ -48,6 +49,7 @@ input.
    :links: AV/VisFormalLang/FA/DFAExampleCON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFAExampleCON.js
    :align: center
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
    Schematic diagram for a DFA
 
@@ -57,6 +59,7 @@ input.
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAintroFS.css
    :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js AV/PIFLA/FA/DFAintroFS.js 
    :output: show
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 .. topic:: Definition
            
@@ -95,6 +98,7 @@ Here is a detailed trace on a simple input.
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/MachineTraceCON.css 
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/MachineTraceCON.js
    :output: show
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 Now let's see how this machine accepts or rejects some strings.
 
@@ -102,6 +106,7 @@ Now let's see how this machine accepts or rejects some strings.
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/FA/TraceEvenBinaryDFACON.css
    :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/TraceEvenBinaryDFACON.js
    :output: show
+   :keyword: Finite Automata; Deterministic Finite Acceptor
    
 
 Next is an exercise to give you practice in building a machine using
@@ -113,6 +118,7 @@ you will see a lot of in this book!
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAEvenBinary.html pe
    :long_name: Accept even binary numbers
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 
 Advanced Concepts
@@ -122,6 +128,7 @@ Advanced Concepts
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAadvancedFS.css
    :scripts: DataStructures/PIFrames.js DataStructures/FLA/FA.js AV/PIFLA/FA/DFAadvancedFS.js
    :output: show
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 
 Limits to DFAs

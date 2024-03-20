@@ -8,6 +8,8 @@
    :requires: logarithms
    :satisfies: transforms
    :topic: Algorithms: Transforms
+   :keyword: Algorithm Analysis; Transforms
+
 
 The Transformation Concept
 ==========================
@@ -71,6 +73,7 @@ a polynomial of degree :math:`n-1`, expressed as
    :links: AV/SeniorAlgAnal/polynomialCON.css
    :scripts: DataStructures/Plot.js AV/SeniorAlgAnal/polynomialCON.js
    :output: show
+   :keyword: Algorithm Analysis; Transforms
 
 |
 
@@ -88,6 +91,7 @@ Finding the coefficients for the polynomial given the values at
    :links: AV/SeniorAlgAnal/EvalandInterpolationCON.css
    :scripts: DataStructures/Plot.js AV/SeniorAlgAnal/EvalandInterpolationCON.js
    :output: show
+   :keyword: Algorithm Analysis; Transforms
 
 There are many useful engineering problems that involve multiplying
 two large-degree polynomials.
@@ -103,6 +107,7 @@ right values to evaluate and interpolate.
    :links: AV/SeniorAlgAnal/ProductCON.css
    :scripts: AV/SeniorAlgAnal/ProductCON.js
    :output: show
+   :keyword: Algorithm Analysis; Transforms
 
 Now, let's start thinking about ways to speed this up.
 
@@ -111,7 +116,9 @@ Now, let's start thinking about ways to speed this up.
    :links: AV/SeniorAlgAnal/EvaluationCON.css
    :scripts: AV/SeniorAlgAnal/EvaluationCON.js
    :output: show
+   :keyword: Algorithm Analysis; Transforms
 
 |
 
 .. avembed:: Exercises/SeniorAlgAnal/Polynomial_multiplication.html ka
+   :keyword: Algorithm Analysis; Transforms

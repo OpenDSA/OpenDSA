@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Lower Bounds
+   :keyword: Lower Bounds Proofs; Maximium Value
+
 
 Finding the Maximum Value
 =========================
