@@ -217,10 +217,3 @@ Summary Questions
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
    :long_name: Problems, Algorithms, Programs Exercise
    :keyword: Algorithm Analysis; Problem Definition; Algorithm Definition
-
-Here is a parson's question from CodeCheck
-
-.. iframe:: https://horstmann.com/private/js-parsons/examples/turtle-test.html
-   :height: 1050
-   :width: 1050
-   :name: parsonFrame
