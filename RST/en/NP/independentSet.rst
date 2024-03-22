@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; Independent Set Problem
+
 
 The Independent Set Problem
 ===========================
@@ -20,8 +22,10 @@ INDEPENDENT SET PROBLEM.
    :links: AV/NP/independentSetCON.css
    :scripts: AV/NP/independentSetCON.js
    :output: show
+   :keyword: NP-completeness; Independent Set Problem
 
 Try out an instance of the Independent Set problem on your own.
 
 .. avembed:: Exercises/NP/independentSetPRO.html ka
    :long_name: Practice Exercise for Independent Set
+   :keyword: NP-completeness; Independent Set Problem

@@ -8,6 +8,8 @@
    :requires: Non-deterministic Finite Automata
    :satisfies: DFA minimization
    :topic: Finite Automata
+   :keyword: Finite Automata; Deterministic Finite Automata Minimization
+
 
 Minimizing the Number of States in a DFA
 ========================================
@@ -55,6 +57,7 @@ So these Finite Automata do have practical uses.
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAMinFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/FA/DFAMinFS.js
    :output: show
+   :keyword: Finite Automata; Deterministic Finite Automata Minimization
 
 Unfortunately, this is not an algorithm, since we cannot actually test
 on all input strings if the language is infinite.
@@ -92,6 +95,7 @@ minimizing a DFA.
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAMinEx1FS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/FA/DFAMinEx1FS.js
    :output: show
+   :keyword: Finite Automata; Deterministic Finite Automata Minimization
 
 
 Minimization Example 2
@@ -104,6 +108,7 @@ minimizing a DFA for another example.
    :links: DataStructures/FLA/FLA.css AV/PIFLA/FA/DFAMinEx2FS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/PIFrames.js DataStructures/FLA/AddQuestions.js AV/PIFLA/FA/DFAMinEx2FS.js
    :output: show
+   :keyword: Finite Automata; Deterministic Finite Automata Minimization
 
 
 Decideability

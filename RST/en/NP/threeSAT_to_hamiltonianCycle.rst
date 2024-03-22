@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; NP-completeness Proofs; 3-SAT Problem; Hamiltonian Cycle Problem
+
 
 Reduction of 3-SAT to Hamiltonian Cycle
 =======================================
@@ -22,6 +24,7 @@ polynomial time.
    :links: AV/NP/threeSATtoHCCON.css
    :scripts: AV/NP/threeSATtoHCCON.js
    :output: show
+   :keyword: NP-completeness; NP-completeness Proofs; 3-SAT Problem; Hamiltonian Cycle Problem
 
 This reduction can help in providing an NP Completeness proof for 
 the Hamiltonian Cycle problem.

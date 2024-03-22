@@ -6,6 +6,8 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :topic:
+   :keyword: Graphs; All-Pairs Shortest Paths; Floyd's Algorithm
+
 
 All-Pairs Shortest Paths
 ========================
@@ -50,6 +52,7 @@ Figure :num:`Figure #FloydExamp` illustrates the concept of
    :links: AV/Graph/FloydCON.css
    :scripts: AV/Graph/FloydCON.js
    :align: center
+   :keyword: Graphs; All-Pairs Shortest Paths; Floyd's Algorithm
 
    An example of :math:`k`-paths in Floyd's algorithm.
    Path 1, 3 is a 0-path by definition.

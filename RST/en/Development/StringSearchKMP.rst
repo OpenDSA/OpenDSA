@@ -5,6 +5,8 @@
 
 .. avmetadata::
    :author: Tom Naps and Sam Micka
+   :keyword: String Matching; KMP String Match Algorithm
+
 
 KMP String Search Algorithm
 ===========================
@@ -50,6 +52,7 @@ indicates how the KMP algorithm would work with a particular
 .. Slideshow for KMP search algorithm
 
 .. avembed:: AV/Development/StringMatch/KMP_Slideshow.html ss
+   :keyword: String Matching; KMP String Match Algorithm
 
 
 The preceding slideshow has unveiled the following pseudocode
@@ -71,6 +74,7 @@ progress by trying the following exercise.
 .. Exercise in tracing one step of the KMP algorithm
 
 .. avembed:: Exercises/Development/StringMatch/KMP_Exercise.html ka
+   :keyword: String Matching; KMP String Match Algorithm
 
 
 
@@ -105,6 +109,7 @@ indicated in the following slideshow.
 .. Slideshow for creation of alignment array
 
 .. avembed:: AV/Development/StringMatch/KMP_align_array_slideshow.html ss
+   :keyword: String Matching; KMP String Match Algorithm
 
 The preceding slideshow has illustrated the following pseudocode
 for the computation of the :math:`align` array in the KMP algorithm:::
@@ -124,6 +129,7 @@ progress by trying the following exercise.
 
 
 .. avembed:: Exercises/Development/StringMatch/KMP_Alignment_Array_Exercise.html ka
+   :keyword: String Matching; KMP String Match Algorithm
 
 To indicate that you have fully mastered the intricacies of the KMP
 algorithm, you must now succeed in working your way through the
@@ -132,8 +138,10 @@ following three exercises:
 1. Exercise in counting shifts and compares needed by KMP algorithm
 
 .. avembed:: Exercises/Development/StringMatch/KMP_Compares_Shifts_Exercise.html ka
+   :keyword: String Matching; KMP String Match Algorithm
 
 2. Exercise in determining strings with specified number of shifts and compares
 
 .. avembed:: Exercises/Development/StringMatch/KMP_Users_Choice.html ka
+   :keyword: String Matching; KMP String Match Algorithm
 

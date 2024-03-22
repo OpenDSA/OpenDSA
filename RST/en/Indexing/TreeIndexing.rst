@@ -8,6 +8,8 @@
    :requires: comparison; insertion sort
    :satisfies: shellsort
    :topic: Indexing
+   :keyword: Indexing; Tree Indexing
+
 
 Tree-based Indexing
 ===================
@@ -89,6 +91,7 @@ too high.
    :links: AV/Indexing/treeIndexingCON.css
    :scripts: AV/Indexing/pagedBSTCON.js
    :output: show
+   :keyword: Indexing; Tree Indexing
 
 As you can see from this slideshow,
 adopting a rule such as requiring the BST to be complete can cause a
@@ -99,6 +102,7 @@ great deal of rearranging of data within the tree.
    :links: AV/Indexing/treeIndexingCON.css
    :scripts: AV/Indexing/rebalanceBSTCON.js
    :output: show
+   :keyword: Indexing; Tree Indexing
 
 We can solve these problems by selecting another tree structure that
 automatically remains balanced after updates, and which is amenable
@@ -116,3 +120,4 @@ most widely used indexing method today.
 
 .. avembed:: Exercises/Indexing/TreeIndexing.html ka
    :long_name: Tree Indexing Proficiency Exercise
+   :keyword: Indexing; Tree Indexing

@@ -8,6 +8,8 @@
    :requires: FL Introduction
    :satisfies:
    :topic: Introduction
+   :keyword: Formal Languages and Automata; Grammars
+
 
 Overview
 ========
@@ -41,6 +43,7 @@ are to solve.
    :links: AV/PIFLA/Intro/HierarchyCON.css
    :scripts: AV/PIFLA/Intro/HierarchyCON.js
    :align: center
+   :keyword: Formal Languages and Automata; Grammars
 
 You are familiar with programming languages.
 Now we’ll look in finer detail at how programming languages are
@@ -120,6 +123,7 @@ that, you would need to take a compiler course.
    :links: 
    :scripts: AV/PIFLA/Intro/CompileCON.js
    :align: center
+   :keyword: Formal Languages and Automata; Grammars
 
 You might think that understanding how to write a grammar to recognize
 a language (or design the language so that it is indeed possible to
@@ -143,6 +147,7 @@ together in an acceptable way.
 .. inlineav:: CompileStagesCON dgm
    :links: 
    :scripts: AV/PIFLA/Intro/CompileStagesCON.js
+   :keyword: Formal Languages and Automata; Grammars
 
 PART 1: Identifying the tokens in a program.
 Regular languages are the foundation for this.

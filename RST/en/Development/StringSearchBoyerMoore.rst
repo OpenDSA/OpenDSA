@@ -5,6 +5,8 @@
 
 .. avmetadata::
    :author: Tom Naps and Sam Micka
+   :keyword: String Matching; Boyer-Moore String Match Algorithm
+
 
 Boyer-Moore String Search Algorithm
 ===================================
@@ -79,6 +81,7 @@ this "reverse KMP" :math:`align` array have been computed.
 .. Slideshow for Boyer-Moore search algorithm
 
 .. avembed:: AV/Development/StringMatch/Boyer_Moore_Algorithm_Slideshow.html ss
+   :keyword: String Matching; Boyer-Moore String Match Algorithm
 
 Now that you've seen how the Boyer-Moore algorithm works once the
 mismatched character and reverse KMP alignments have been
@@ -88,10 +91,12 @@ the pre-computation of these two alignment tables would be done.
 Slideshow for Boyer-Moore Mismatched Character Table Construction
 
 .. avembed:: AV/Development/StringMatch/Boyer_Moore_MMC_Slideshow.html ss
+   :keyword: String Matching; Boyer-Moore String Match Algorithm
 
 Slideshow for Boyer-Moore "Reverse KMP" Alignment Table Construction
 
 .. avembed:: AV/Development/StringMatch/Boyer_Moore_Align_Table_Slideshow.html ss
+   :keyword: String Matching; Boyer-Moore String Match Algorithm
 
 We've seen from the above slideshows that there are really three algorithms at play in Boyer-Moore:
 
@@ -128,11 +133,14 @@ Boyer-Moore by completing the following four exercises.
 1. Exercise in tracing one step of the Boyer-Moore algorithm
 
 .. avembed:: Exercises/Development/StringMatch/Boyer_Moore_Next_Step_Exercise.html ka
+   :keyword: String Matching; Boyer-Moore String Match Algorithm
 
 2. Exercise in tracing one step of the Boyer-Moore Mismatched Character Table Construction
 
 .. avembed:: Exercises/Development/StringMatch/Boyer_Moore_MMC_Exercise.html ka
+   :keyword: String Matching; Boyer-Moore String Match Algorithm
 
 3. Exercise in tracing one step of the Boyer-Moore Alignment Table Construction
 
 .. avembed:: Exercises/Development/StringMatch/Boyer_Moore_Alignment_Exercise.html ka
+   :keyword: String Matching; Boyer-Moore String Match Algorithm

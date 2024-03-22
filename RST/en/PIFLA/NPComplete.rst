@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer and Mostafa Mohammed
    :topic: NP-completeness
+   :keyword: NP-completeness
+
 
 NP-Completeness
 ===============
@@ -17,6 +19,7 @@ Hard Problems
    :links: AV/PIFLA/LimComp/TravelSalesmanFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/TravelSalesmanFS.js
    :output: show
+   :keyword: NP-completeness
 
 |
 
@@ -24,6 +27,7 @@ Hard Problems
    :links: AV/PIFLA/LimComp/KCliqueFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/KCliqueFS.js
    :output: show
+   :keyword: NP-completeness
 
 
 Proving that a Problem is NP-Complete
@@ -33,6 +37,7 @@ Proving that a Problem is NP-Complete
    :links: AV/PIFLA/LimComp/SATProofFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/SATProofFS.js
    :output: show
+   :keyword: NP-completeness
 
 
 Coping with NP-Complete Problems
@@ -42,3 +47,4 @@ Coping with NP-Complete Problems
    :links: AV/PIFLA/LimComp/NPCCopingFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/LimComp/NPCCopingFS.js
    :output: show
+   :keyword: NP-completeness

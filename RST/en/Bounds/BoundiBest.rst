@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Lower Bounds
+   :keyword: Lower Bounds Proofs; ith Best Element
+
 
 Finding the :math:`i` th Best Element
 =====================================

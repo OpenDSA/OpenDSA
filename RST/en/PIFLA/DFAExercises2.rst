@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: DFA exercises
+   :keyword: Finite Automata; Deterministic Finite Acceptor
+
 
 DFA exercises
 =============
@@ -17,21 +19,25 @@ DFA exercises
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAevena.html pe
    :long_name: DFA exercise even a
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAbsurrounda.html pe
    :long_name: DFA exercise b surrounds a
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAdiv4.html pe
    :long_name: DFA exercise divisible by 4
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAevenamin3b.html pe
    :long_name: DFA exercise even a min 3 b
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
@@ -43,3 +49,4 @@ take into account the trap state.
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFACOMPevenamin3b.html pe
    :long_name: Complement even a min 3 b
+   :keyword: Finite Automata; Deterministic Finite Acceptor

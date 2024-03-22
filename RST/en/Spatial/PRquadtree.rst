@@ -8,6 +8,8 @@
    :requires: Spatial data structures
    :satisfies: PRquadtree
    :topic: Spatial Data Structures
+   :keyword: Spatial Data Structures, PR Quadtree
+
 
 The PR Quadtree
 ===============
@@ -91,12 +93,14 @@ Here is a visualization of the PR quadtree that should help you to
 understand how insert a point or removing a point works.
 
 .. avembed:: AV/Spatial/PRquadtreeAV.html ss
+   :keyword: Spatial Data Structures, PR Quadtree
 
 Note that there is no particular reason why the tree should split when
 there is more than one point in a node.
 This spliting criteria could be anything that the implementor wants.
 
 .. avembed:: AV/Spatial/PRquadtree2ptAV.html ss
+   :keyword: Spatial Data Structures, PR Quadtree
 
 Here is an interactive visualization of the PR quadtree.
 You can build your own example by adding or removing points.
@@ -109,6 +113,7 @@ How would the tree look if it had the same points as the figure in the
 top of the page, but a node was allowed to have two points?
 
 .. avembed:: AV/Spatial/PRquadtreeInter.html ss
+   :keyword: Spatial Data Structures, PR Quadtree
 
 Region search is easily performed with the PR quadtree.
 To locate all points within radius :math:`r` of query

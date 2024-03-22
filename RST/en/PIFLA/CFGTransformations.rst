@@ -6,7 +6,8 @@
 .. avmetadata::
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies:
-   :topic: Context-Free Grammars Transformation
+   :topic: Context-Free Grammar Transformations
+   :keyword: Context-Free Grammar Transformations
 
 
 Transforming Grammars
@@ -48,6 +49,7 @@ it easier to use in a proof.
    :links: AV/PIFLA/CFL/TransformGrammarsFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/CFL/TransformGrammarsFS.js
    :output: show
+   :keyword: Context-Free Grammar Transformations
 
 
 Remove Useless Productions
@@ -57,6 +59,7 @@ Remove Useless Productions
    :links: AV/PIFLA/CFL/RemoveUselessFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/FLA/GrammarMatrix.js DataStructures/PIFrames.js AV/PIFLA/CFL/RemoveUselessFS.js
    :output: show
+   :keyword: Context-Free Grammar Transformations
 
 
 Remove Lambda Productions
@@ -66,6 +69,7 @@ Remove Lambda Productions
    :links: AV/PIFLA/CFL/RemoveLambdaFS.css
    :scripts: DataStructures/FLA/GrammarMatrix.js DataStructures/PIFrames.js AV/PIFLA/CFL/RemoveLambdaFS.js
    :output: show
+   :keyword: Context-Free Grammar Transformations
 
 
 Remove Unit Productions
@@ -75,6 +79,7 @@ Remove Unit Productions
    :links: AV/PIFLA/CFL/RemoveUnitFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/FLA/GrammarMatrix.js DataStructures/PIFrames.js AV/PIFLA/CFL/RemoveUnitFS.js
    :output: show
+   :keyword: Context-Free Grammar Transformations
 
 
 Chomsky Normal Form (CNF)
@@ -84,6 +89,7 @@ Chomsky Normal Form (CNF)
    :links: AV/PIFLA/CFL/ChomskyNormalFormFS.css
    :scripts: DataStructures/FLA/GrammarMatrix.js DataStructures/PIFrames.js AV/PIFLA/CFL/ChomskyNormalFormFS.js
    :output: show
+   :keyword: Context-Free Grammar Transformations
    
 
 Greibach Normal Form (GNF)
@@ -93,3 +99,4 @@ Greibach Normal Form (GNF)
    :links: AV/PIFLA/CFL/GreibachNormalFormFS.css
    :scripts: DataStructures/FLA/GrammarMatrix.js DataStructures/PIFrames.js AV/PIFLA/CFL/GreibachNormalFormFS.js
    :output: show
+   :keyword: Context-Free Grammar Transformations

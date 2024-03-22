@@ -6,6 +6,8 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :topic: Advanced Analysis
+   :keyword: Algorithm Analysis; Summations
+
 
 Summation Techniques
 ====================
@@ -45,6 +47,7 @@ proposed solution is badly wrong.
    :links: AV/Background/SummationOneToNCON.css
    :scripts: AV/Background/SummationOneToNCON.js
    :output: show
+   :keyword: Algorithm Analysis; Summations
 
 Let us now consider some ways that we might hit upon an exact equation
 for the closed form solution to this summation.
@@ -373,3 +376,4 @@ Here is another example.
    :links: AV/SeniorAlgAnal/GeometricSumProofCON.css
    :scripts: AV/SeniorAlgAnal/GeometricSumProofCON.js
    :output: show
+   :keyword: Algorithm Analysis; Summations

@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; Clique Problem
+
 
 The Clique Problem
 ==================
@@ -20,8 +22,10 @@ CLIQUE PROBLEM
    :links: AV/NP/cliqueCON.css
    :scripts: AV/NP/cliqueCON.js
    :output: show
+   :keyword: NP-completeness; Clique Problem
 
 Try out an instance of the Clique problem on your own.
 
 .. avembed:: Exercises/NP/cliquePRO.html ka
    :long_name: Practice Exercise for Clique
+   :keyword: NP-completeness; Clique Problem

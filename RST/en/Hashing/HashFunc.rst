@@ -8,8 +8,10 @@
    :requires: hash intro
    :satisfies: hash function
    :topic: Hashing
+   :keyword: Hashing; Hash Functions
 
 .. index:: ! hashing function
+
 
 Hash Function Principles
 ========================
@@ -52,6 +54,7 @@ the probability of a collision under those conditions.
 
 .. avembed:: AV/Hashing/Birthday.html ss
    :long_name: Birthday Problem Calculator
+   :keyword: Hashing; Hash Functions
 
 Use the calculator to answer the following questions.
 
@@ -63,6 +66,7 @@ Use the calculator to answer the following questions.
 
 .. avembed:: Exercises/Hashing/BirthdayFIB.html ka
    :long_name: Birthday Problem Exercise
+   :keyword: Hashing; Hash Functions
 
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.

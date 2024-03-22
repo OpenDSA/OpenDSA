@@ -8,6 +8,8 @@
    :requires: Turing Machines
    :satisfies: Advanced Turing Machines
    :topic: Turing Machines
+   :keyword: Turing Machines
+
 
 Turing Machines: Advanced Topics
 ================================
@@ -30,6 +32,7 @@ DFA, NFA, or PDA can do!
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TManbncnCON.js
    :align: center
    :output: show
+   :keyword: Turing Machines
 
 |
 
@@ -37,6 +40,7 @@ DFA, NFA, or PDA can do!
    :links: AV/PIFLA/TM/TMComplicated3FS.css
    :scripts:  lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMComplicated3FS.js
    :output: show
+   :keyword: Turing Machines
 
 |
 
@@ -44,6 +48,7 @@ DFA, NFA, or PDA can do!
    :links: AV/Kochan/TMcopy.css
    :scripts: AV/Kochan/TMcopy.js AV/Juwon/FAcopy.js
    :output: show
+   :keyword: Turing Machines
 
 
 Unrestricted and Context Sensitive Grammars
@@ -198,3 +203,4 @@ Turing Machine Extensions
    :links: AV/PIFLA/TM/TMExtensionFS.css
    :scripts: AV/PIFLA/TM/TMExtensionFS.js
    :output: show
+   :keyword: Turing Machines

@@ -8,6 +8,8 @@
    :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
+   :keyword: Algorithm Analysis
+
 
 Data and Algorithm Analysis
 ===========================

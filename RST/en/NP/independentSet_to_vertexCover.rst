@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; NP-completeness Proofs; Independent Set Problem; Vertex Cover Problem
+
 
 Reduction of Independent Set to Vertex Cover
 ============================================
@@ -22,6 +24,7 @@ in polynomial time.
    :links: AV/NP/IStoVCCON.css
    :scripts: AV/NP/IStoVCCON.js
    :output: show
+   :keyword: NP-completeness; NP-completeness Proofs; Independent Set Problem; Vertex Cover Problem
 
 This reduction can help in providing an NP Completeness proof for 
 the Vertex Cover problem.

@@ -6,6 +6,7 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability; Clique Problem
 
 Reduction of 3-SAT to Clique
 ============================
@@ -21,6 +22,7 @@ polynomial time.
    :links: AV/NP/threeSATtoCliqueCON.css
    :scripts: AV/NP/threeSATtoCliqueCON.js
    :output: show
+   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability; Clique Problem
 
 This reduction can help in providing an NP Completeness proof for 
 the Clique problem.

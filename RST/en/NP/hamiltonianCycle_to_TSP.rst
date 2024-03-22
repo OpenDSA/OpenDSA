@@ -6,6 +6,7 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; NP-completeness Proofs; Traveling Salesman Problem; Hamiltonian Cycle Problem
 
 Reduction of Hamiltonian Cycle to Traveling Salesman
 ====================================================
@@ -22,6 +23,7 @@ polynomial time.
    :links: AV/NP/HCtoTSPCON.css
    :scripts: AV/NP/HCtoTSPCON.js
    :output: show
+   :keyword: NP-completeness; NP-completeness Proofs; Traveling Salesman Problem; Hamiltonian Cycle Problem
 
 This reduction can help in providing an NP Completeness proof for 
 the Traveling Salesman problem.

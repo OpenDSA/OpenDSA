@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Turing Machines Exercises
+   :keyword: Turing Machines
+
 
 Turing Machine Exercises
 ========================
@@ -26,51 +28,60 @@ Exercise 1
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/addOnea.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines
 
 Exercise 2
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/eraseABC.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines
 
 Exercise 3
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/keepABC.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines
 
 Exercise 4
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/aNumsPowerOf2.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines
 
 Exercise 5
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/ifaNumsPowerOf2.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines
 
 Exercise 6
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/abcWInWWROut.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines
 
 Exercise 7
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/abcNawlargerthanNbw.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines
 
 Exercise 8
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/replaceABAbyACA.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines
 
 Exercise 9
 ----------
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/TMexercise/abPalindromes.html pe
    :long_name: Turing Machines Exercise
+   :keyword: Turing Machines

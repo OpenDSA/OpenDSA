@@ -6,7 +6,9 @@
 .. avmetadata::
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies:
-   :topic:
+   :topic: Compilers; Backus-Naur Form
+   :keyword: Compilers; Backus-Naur Form
+
 
 Writing Compilers
 =================
@@ -96,6 +98,7 @@ Backus-Naur Form, which is described before the problem.
 
 .. avembed:: Exercises/FLA/CharacterizeLang3.html ka
    :long_name: Characterizing Language 3
+   :keyword: Compilers; Backus-Naur Form
 
 
 Extended BNF
@@ -142,6 +145,7 @@ same one as in part 4 above) and a smaller EBNF grammar.
 
 .. avembed:: Exercises/FLA/ExtendedBNF.html ka
    :long_name: Extended BNF
+   :keyword: Compilers; Backus-Naur Form
 
 
 **More on CFG for C++**

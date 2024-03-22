@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: General Trees
+   :keyword: K-ary Trees; K-ary Tree Implementations
+
 
 K-ary Tree Implementations
 ==========================

@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; Satisfiability
+
 
 Formula Satisfiability
 ======================
@@ -20,3 +22,4 @@ FORMULA SATISFIABILITY PROBLEM (SAT)
    :links: AV//NP/SATCON.css
    :scripts: AV/NP/SATCON.js
    :output: show
+   :keyword: NP-completeness; Satisfiability
