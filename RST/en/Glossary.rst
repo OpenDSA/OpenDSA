@@ -2228,7 +2228,7 @@ Glossary
       In a properly implemented :term:`hash system`, that position in
       the table will have high probability of containing the record
       that matches the key value.
-      Sometimes, the hash function will return an position that does
+      Sometimes, the hash function will return a position that does
       not store the desired key, due to a process called
       :term:`collision`.
       In that case, the desired record is found through a process

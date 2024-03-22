@@ -7,6 +7,8 @@
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies:
    :topic: Context-Free Grammars and Languages
+   :keyword: Context-Free Grammars and Languages
+
 
 Context-Free Grammars Part 2
 ============================
@@ -18,6 +20,7 @@ Ambiguity
    :links: AV/PIFLA/CFL/AmbiguityFS.css
    :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/CFL/AmbiguityFS.js
    :output: show
+   :keyword: Context-Free Grammars and Languages
 
 
 Ambiguous Grammars (1)
@@ -25,6 +28,7 @@ Ambiguous Grammars (1)
 
 .. avembed:: Exercises/FLA/NumParseTrees1.html ka
    :long_name: Number Of Parse Trees, Problem 1
+   :keyword: Context-Free Grammars and Languages
 
 Ambiguous Grammars (2)
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -34,6 +38,7 @@ has in a given grammar.
 
 .. avembed:: Exercises/FLA/NumParseTrees2.html ka
    :long_name: Number Of Parse Trees, Problem 2
+   :keyword: Context-Free Grammars and Languages
 
 Ambiguous Grammars (3)
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -43,6 +48,7 @@ given string has in a given grammar.
 
 .. avembed:: Exercises/FLA/NumParseTrees3.html ka
    :long_name: Number Of Parse Trees, Problem 3
+   :keyword: Context-Free Grammars and Languages
 
 Ambiguous Grammars (4)
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -52,6 +58,7 @@ help you to convince yourself when a grammar is not ambiguous.
 
 .. avembed:: Exercises/FLA/DeterminingAmbiguities.html ka
    :long_name: Determining Ambiguities
+   :keyword: Context-Free Grammars and Languages
 
 
 Precedence Practice
@@ -59,6 +66,7 @@ Precedence Practice
 
 .. avembed:: Exercises/FLA/EvalExp.html ka
    :long_name: Evaluating Expression Based on Grammar
+   :keyword: Context-Free Grammars and Languages
 
 
 Unambiguous grammar parse tree Example
@@ -68,12 +76,14 @@ Unambiguous grammar parse tree Example
    :links:   AV/VisFormalLang/CFG/ParseTreeForExpCON.css
    :scripts: lib/underscore.js DataStructures/FLA/PDA.js AV/VisFormalLang/CFG/ParseTreeForExpCON.js
    :output: show
+   :keyword: Context-Free Grammars and Languages
 
 Associativity
 ~~~~~~~~~~~~~
 
 .. avembed:: Exercises/FLA/Associativity.html ka
    :long_name: Associativity
+   :keyword: Context-Free Grammars and Languages
 
 Precedence and Associativity
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -84,6 +94,7 @@ operators.
 
 .. avembed:: Exercises/FLA/PrecedenceAndAssociativity.html ka
    :long_name: Precedence and associativity
+   :keyword: Context-Free Grammars and Languages
 
 
 Why Context Free?

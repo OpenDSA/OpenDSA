@@ -8,6 +8,8 @@
    :requires: linear indexing; 2-3 tree
    :satisfies: B tree
    :topic: Indexing
+   :keyword: Indexing; B-Trees
+
 
 B-Trees
 =======
@@ -81,6 +83,7 @@ internal nodes have up to four children.
    :links: AV/Indexing/BTreeCON.css
    :scripts: AV/Indexing/BTreeCON.js AV/Indexing/BTreedgmCON.js
    :align: center
+   :keyword: Indexing; B-Trees
 
    A B-tree of order four.
 
@@ -220,6 +223,7 @@ order 3.
    :links: AV/Indexing/BPTree.css AV/Indexing/TTPTreeCON.css
    :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPbuildCON.js
    :output: show
+   :keyword: Indexing; B-Trees
 
    An example of building a :math:`2-3^+` tree
 
@@ -232,6 +236,7 @@ Next, let's see how to search.
    :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPfindCON.js
    :output: show
    :align: center
+   :keyword: Indexing; B-Trees
 
    An example of searching a :math:`2-3^+` tree
 
@@ -244,6 +249,7 @@ Finally, let's see an example of deleting from the :math:`2-3^+` tree
    :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/TTPdeleteCON.js
    :output: show
    :align: center
+   :keyword: Indexing; B-Trees
 
    An example of deleting from a :math:`2-3^+` tree
 
@@ -264,6 +270,7 @@ illustrates the :math:`\mathrm{B}^+` tree.
    :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPfindCON.js
    :output: show
    :align: center
+   :keyword: Indexing; B-Trees
 
    An example of search in a B+ tree of order four.
    Internal nodes must store between two and four children.
@@ -300,6 +307,7 @@ several examples.
    :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
    :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPbuildCON.js
    :output: show
+   :keyword: Indexing; B-Trees
 
    An example of building a B+ tree of order four.
 
@@ -313,6 +321,7 @@ Here is an exercise to see if you get the basic idea of
 
 .. avembed:: AV/Indexing/bPlusTreeInsertPRO.html pe
    :long_name: B+ Tree Proficiency Exercise
+   :keyword: Indexing; B-Trees
 
 To delete record :math:`R` from the :math:`\mathrm{B}^+` tree,
 first locate the leaf :math:`L` that contains :math:`R`.
@@ -327,6 +336,7 @@ This is demonstrated by Figure :num:`Figure #BPdelsimp`.
    :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPdeleteCON.js
    :output: show
    :align: center
+   :keyword: Indexing; B-Trees
 
    An example of deletion in a B+ tree of order four.
 
@@ -393,6 +403,7 @@ with the same records.
    :links: AV/Indexing/BPTree.css AV/Indexing/BPTreeCON.css
    :scripts: AV/Indexing/BPlusTreeNode.js AV/Indexing/BPlusTree.js AV/Indexing/BPbuild5CON.js
    :output: show
+   :keyword: Indexing; B-Trees
 
    An example of building a B+ tree of degree 5
 

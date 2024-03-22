@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Search
+   :keyword: Search; Search in Unsorted Lists; Lower Bounds Proofs
+
 
 Analyzing Search in Unsorted Lists
 ==================================
@@ -188,6 +190,7 @@ the following slideshow.
    :links: AV/SeniorAlgAnal/PosetCON.css
    :scripts: AV/SeniorAlgAnal/PosetCON.js
    :output: show
+   :keyword: Search; Search in Unsorted Lists; Lower Bounds Proofs
 
 .. topic:: Proof 4
 

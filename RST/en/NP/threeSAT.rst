@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; 3-CNF Satisfiabilty
+
 
 3-CNF Satisfiability
 ====================
@@ -20,8 +22,10 @@
    :links: AV/NP/threeSATCON.css
    :scripts: AV/NP/threeSATCON.js
    :output: show
+   :keyword: NP-completeness; 3-CNF Satisfiabilty
 
 Try out an instance of the 3-SAT problem on your own.
 
 .. avembed:: Exercises/NP/threeSATPRO.html ka
    :long_name: Practice Exercise for 3-SAT
+   :keyword: NP-completeness; 3-CNF Satisfiabilty

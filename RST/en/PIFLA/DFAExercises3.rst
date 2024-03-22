@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: DFA exercises
+   :keyword: Finite Automata; Deterministic Finite Acceptor
+
 
 DFA exercises
 =============
@@ -17,21 +19,25 @@ DFA exercises
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAevenaoddb.html pe
    :long_name: Even number of a's, odd number of b's
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAevenabsoddas.html pe
    :long_name: Even number of a's, b's, odd number of a's
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAbotheo.html pe
    :long_name: DFA exercise both even or both odd
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAnoba.html pe
    :long_name: DFA exercise does not end in ba
+   :keyword: Finite Automata; Deterministic Finite Acceptor
 
 |
 
@@ -43,3 +49,4 @@ take into account the trap state.
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFACOMPnoba.html pe
    :long_name: DFA exercise does not end in ba
+   :keyword: Finite Automata; Deterministic Finite Acceptor

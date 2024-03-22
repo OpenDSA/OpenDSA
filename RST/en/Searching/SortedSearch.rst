@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Search
+   :keyword: Search; Search in Sorted Lists; Lower Bounds Proofs
+
 
 Search in Sorted Arrays
 =======================
@@ -122,6 +124,7 @@ implementation.
    :links: AV/Searching/binarySearchCON.css
    :scripts: AV/Searching/binarySearchCON.js
    :output: show
+   :keyword: Search; Search in Sorted Lists; Lower Bounds Proofs
 
 
 Of couse you know that Binary Search is far better than Sequential

@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: NP-completeness
+   :keyword: NP-completeness; Dynamic Programming; Knapsack Problem
+
 
 Coping with NP-Complete Problems
 ================================

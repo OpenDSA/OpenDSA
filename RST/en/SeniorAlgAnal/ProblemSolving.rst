@@ -8,6 +8,8 @@
    :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
+   :keyword: Problem Solving Heuristics
+
 
 An Introduction to Problem Solving
 ==================================

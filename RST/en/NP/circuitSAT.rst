@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; Circuit Satisfiability
+
 
 Circuit Satisfiability
 ======================
@@ -18,6 +20,7 @@ Circuit Satisfiability
    :links: AV/NP/circuitSATCON.css
    :scripts: AV/NP/circuit.js AV/NP/circuitSATCON.js
    :output: show
+   :keyword: NP-completeness; Circuit Satisfiability
 
 In the above problem, given a particular assignment, while we can 
 quickly check whether the assignment satisfies the circuit or not,

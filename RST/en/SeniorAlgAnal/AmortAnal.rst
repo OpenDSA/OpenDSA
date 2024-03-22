@@ -6,6 +6,8 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :topic: Advanced Algorithm Analysis
+   :keyword: Amortized Analysis
+
 
 Amortized Analysis
 ==================

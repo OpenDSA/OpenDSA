@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Turing Machines
+   :keyword: Turing Machines
+
 
 Introduction to Turing Machines
 ===============================
@@ -120,6 +122,7 @@ Turing Machines
    :links: AV/PIFLA/TM/TMGeneralFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMGeneralFS.js
    :output: show
+   :keyword: Turing Machines
 
 
 Interpreting Turing Machines
@@ -136,6 +139,7 @@ Finally, we will present notation for doing real computation on numbers.
    :links: AV/PIFLA/TM/TMInterpretingFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMInterpretingFS.js
    :output: show
+   :keyword: Turing Machines
 
 
 Turing-Decidable vs. Turing-Acceptable Languages
@@ -145,3 +149,4 @@ Turing-Decidable vs. Turing-Acceptable Languages
    :links: AV/PIFLA/TM/TMDecidableFS.css
    :scripts:  lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFrames.js AV/PIFLA/TM/TMDecidableFS.js
    :output: show
+   :keyword: Turing Machines

@@ -5,7 +5,9 @@
 
 .. avmetadata:: 
    :author: Cliff Shaffer
-   :topic:
+   :topic: Prime Number Algorithms
+   :keyword: Prime Number Algorithms
+
 
 Finding Prime Numbers
 =====================

@@ -8,6 +8,7 @@
    :satisfies: relations
    :topic: Relations
    :requires: set notation
+   :keyword: Sets; Relations; Equivalance Relation; Partial Order
 
 
 Relations
@@ -30,10 +31,12 @@ practice exercises.
    :links: AV/PIFLA/Background/RelationsFS.css
    :scripts:  DataStructures/PIFrames.js AV/PIFLA/Background/RelationsFS.js
    :output: show
+   :keyword: Sets; Relations
 
 .. avembed:: Exercises/Background/SetTFrelation.html ka
    :long_name: Relations Exercise
-
+   :keyword: Sets; Relations
+ 
 Equivalence Classes and Partial Orders
 --------------------------------------
 
@@ -41,9 +44,12 @@ Equivalence Classes and Partial Orders
    :links: AV/PIFLA/Background/EquivFS.css
    :scripts:  DataStructures/PIFrames.js AV/PIFLA/Background/EquivFS.js
    :output: show
+   :keyword: Sets; Relations; Equivalence Relation
 
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
    :long_name: Equivalence Exercise
+   :keyword: Sets; Relations; Equivalence Relation
 
 .. avembed:: Exercises/Background/SetTFpartialorder.html ka
    :long_name: PartialOrder Exercise
+   :keyword: Sets; Relations; Partial Order

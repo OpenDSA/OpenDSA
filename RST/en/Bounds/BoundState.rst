@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Lower Bounds
+   :keyword: Lower Bounds Proofs; State Space Lower Bounds
+
 
 State Space Lower Bounds Proofs
 ===============================

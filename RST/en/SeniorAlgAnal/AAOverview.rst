@@ -8,6 +8,8 @@
    :requires:
    :satisfies:
    :topic: Introduction
+   :keyword: Algorithm Analysis
+
 
 Semester Overview
 =================

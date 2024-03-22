@@ -8,6 +8,8 @@
    :requires: BST
    :satisfies:
    :topic: AVL Trees
+   :keyword: Search Structures; AVL Trees
+
 
 The AVL Tree
 ============

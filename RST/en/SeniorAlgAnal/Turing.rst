@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Turing Machines
+   :keyword: Turing Machines
+
 
 Turing Machines
 ===============
@@ -369,6 +371,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/Turing1CON.css
    :scripts: AV/SeniorAlgAnal/Turing1CON.js
    :align: center
+   :keyword: Turing Machines
 
    First do :math:`M_1`, then do :math:`M_2` or :math:`M_3` depending
    on current symbol.
@@ -379,6 +382,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/Turing2CON.css
    :scripts: AV/SeniorAlgAnal/Turing2CON.js
    :align: center
+   :keyword: Turing Machines
 
    (For :math:`\Sigma = \{a, b,c\}`) Move head to the right until a
    blank is found.
@@ -390,6 +394,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/Turing3CON.css
    :scripts: AV/SeniorAlgAnal/Turing3CON.js
    :align: center
+   :keyword: Turing Machines
 
    Two views of a simple machine to find the first blank square to the
    left, and then transition to machine :math:`M`.
@@ -404,6 +409,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/TuringCopyCON.css
    :scripts: AV/SeniorAlgAnal/TuringCopyCON.js
    :align: center
+   :keyword: Turing Machines
 
    Copy Machine: Transform :math:`\#w\underline{\#}` into
    :math:`\#w\#w\underline{\#}`.
@@ -418,6 +424,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/TuringShiftCON.css
    :scripts: AV/SeniorAlgAnal/TuringShiftCON.js
    :align: center
+   :keyword: Turing Machines
 
    Shift a string right.
 
@@ -445,6 +452,7 @@ Machines.
      :links: AV/SeniorAlgAnal/TuringExt1CON.css
      :scripts: AV/SeniorAlgAnal/TuringExt1CON.js
      :align: center
+     :keyword: Turing Machines
 
   This does not give Turing machines new capability.
   To make this clear, we can simulate the behavior of a two-way
@@ -469,6 +477,7 @@ Machines.
      :links: AV/SeniorAlgAnal/TuringExt2CON.css
      :scripts: AV/SeniorAlgAnal/TuringExt2CON.js
      :align: center
+     :keyword: Turing Machines
 
 * Multiple heads on one tape
 
@@ -487,6 +496,7 @@ Machines.
      :links: AV/SeniorAlgAnal/TuringExt3CON.css
      :scripts: AV/SeniorAlgAnal/TuringExt3CON.js
      :align: center
+     :keyword: Turing Machines
 
 * Non-determinism
 

@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :satisfies: graph terminology
    :topic: Graphs
+   :keyword: Graphs; Graph Representations
+
 
 Graphs Chapter Introduction
 ===========================
@@ -90,6 +92,7 @@ A graph whose edges have weights
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GdirundirCON.js
    :output: show
+   :keyword: Graphs; Graph Representations
 
    Some types of graphs.
 
@@ -116,6 +119,7 @@ and its out degree is one.
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GneighborCON.js
    :output: show
+   :keyword: Graphs; Graph Representations
 
 A sequence of vertices :math:`v_1, v_2, ..., v_n`
 forms a :term:`path` of length :math:`n-1` if there exist edges from
@@ -132,6 +136,7 @@ the first and last vertices being the same.
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GpathDefCON.js
    :output: show
+   :keyword: Graphs; Graph Representations
 
 An undirected graph is a :term:`connected graph` if there is at least
 one path from any vertex to any other.
@@ -146,6 +151,7 @@ with three connected components.
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GconcomCON.js
    :output: show
+   :keyword: Graphs; Graph Representations
 
 A graph with relatively few edges is called a :term:`sparse graph`,
 while a graph with many edges is called a :term:`dense graph`.
@@ -164,6 +170,7 @@ all other vertices in the subgraph is called a :term:`clique`.
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GsparseDefCON.js
    :output: show
+   :keyword: Graphs; Graph Representations
 
 A graph without cycles is called an :term:`acyclic graph`.
 Thus, a directed graph without cycles is called a
@@ -173,6 +180,7 @@ Thus, a directed graph without cycles is called a
     :links: AV/Graph/GraphDefCON.css
     :scripts: AV/Graph/GacyclicDefCON.js
     :output: show
+   :keyword: Graphs; Graph Representations
     
 A :term:`free tree` is a connected, undirected graph with no simple
 cycles.
@@ -217,6 +225,7 @@ because this edge comes into Vertex 2 rather than going out.
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GdirRepCON.js
    :output: show
+   :keyword: Graphs; Graph Representations
 
    Representing a directed graph.
 
@@ -237,6 +246,7 @@ entry for both Vertex 3 and Vertex 4.
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GundirRepCON.js
    :output: show
+   :keyword: Graphs; Graph Representations
 
    Representing an undirected graph.
 
@@ -275,6 +285,7 @@ typically an integer.
    :links: AV/Graph/GraphDefCON.css
    :scripts: AV/Graph/GweightedCON.js
    :output: show
+   :keyword: Graphs; Graph Representations
 
 Which graph representation is more space efficient depends on the
 number of edges in the graph.

@@ -8,6 +8,8 @@
    :requires:
    :satisfies: Spatial data structures
    :topic: Spatial Data Structures
+   :keyword: Spatial Data Structures
+
 
 Spatial Data Structures
 =======================

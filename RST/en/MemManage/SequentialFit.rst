@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Memory Management
+   :keyword: Memory Management; Sequential Fit Memory Allocation
+
 
 Sequential-Fit Methods
 ======================
@@ -25,6 +27,7 @@ this figure.
    :links: AV/MemManage/seqFitCON.css
    :scripts: AV/MemManage/seqFitCON.js
    :align: justify
+   :keyword: Memory Management; Sequential Fit Memory Allocation
 
    A doubly linked list of free blocks as seen by the memory manager.
    Shaded areas represent allocated memory.

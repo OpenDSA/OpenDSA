@@ -8,6 +8,7 @@
    :requires:
    :satisfies:
    :topic: Search
+   :keyword: Search; Bit Vectors
 
 Bit Vectors for Representing Sets
 ==================================
@@ -41,6 +42,7 @@ Chapter :chap:`Graphs` is an example of such a set representation.
    :links: AV/Development/BitArrayCON.css
    :scripts: AV/Development/BitArrayCON.js
    :align: center
+   :keyword: Search; Bit Vectors
 
    The bit array for the set of primes in the range 0 to 15.
    The bit at position :math:`i` is set to 1 if and only if :math:`i`

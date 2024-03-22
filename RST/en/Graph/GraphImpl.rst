@@ -8,6 +8,8 @@
    :requires: graph terminology
    :satisfies: graph implementation
    :topic: Graphs
+   :keyword: Graphs; Graph Implementations
+
 
 Graph Implementations
 =====================

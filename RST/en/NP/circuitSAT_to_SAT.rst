@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability
+
 
 Reduction of Circuit SAT to SAT
 ===============================
@@ -21,5 +23,6 @@ problem can be reduced to an instance of SAT problem in polynomial time.
    :links: AV/NP/circuitSATtoSATCON.css
    :scripts: AV/NP/circuit.js AV/NP/circuitSATtoSATCON.js
    :output: show
+   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability
 
 This reduction can help in providing an NP Completeness proof for SAT.

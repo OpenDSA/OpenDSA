@@ -6,6 +6,7 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
+   :keyword: NP-completeness; NP-completeness Proofs; Clique Problem; Independent Set Problem
 
 Reduction of Clique to Independent Set
 ======================================
@@ -22,6 +23,7 @@ in polynomial time.
    :links: AV/NP/cliqueToISCON.css
    :scripts: AV/NP/cliqueToISCON.js
    :output: show
+   :keyword: NP-completeness; NP-completeness Proofs; Clique Problem; Independent Set Problem
 
 This reduction can help in providing an NP Completeness proof for 
 the Independent Set problem.

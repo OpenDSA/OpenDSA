@@ -7,6 +7,7 @@
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies: Regular Expressions
    :topic: Regular Expressions
+   :keyword: Regular Expressions
 
 
 Regular Expressions
@@ -43,6 +44,7 @@ Definition and Examples of Regular Expressions
    :links: AV/PIFLA/Regular/RegExFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/Regular/RegExFS.js
    :output: show
+   :keyword: Regular Expressions
 
 **Definition** for Regular Expressions (RE): Given :math:`\Sigma`,
   #. :math:`\lambda`, and all :math:`a \in \Sigma` are RE

@@ -8,6 +8,7 @@
    :requires:
    :satisfies:
    :topic: Sorting
+   :keyword: Sorting; Optimal Sorting Algorithms
 
 
 Optimal Sorting

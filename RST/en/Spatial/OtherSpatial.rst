@@ -8,6 +8,8 @@
    :requires: Spatial data structures; PRquadtree; KD tree; Bintree
    :satisfies: PRquadtree
    :topic: Spatial Data Structures
+   :keyword: Spatial Data Structures
+
 
 Other Spatial Data Structures
 =============================
