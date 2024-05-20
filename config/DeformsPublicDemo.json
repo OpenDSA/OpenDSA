@@ -65,6 +65,21 @@
   "chapters": {
     "Demo problem": {
       "DeformsTesting/DeformsDemoCompactProblem": {}
+    },
+    "Simple Problems": {
+      "DeformsTesting/deformsf2020p10": {},
+      "DeformsTesting/S23clevispart1": {},
+      "DeformsTesting/S23clevispart2": {},
+      "DeformsTesting/S23clevispart3": {},
+      "DeformsTesting/S23problem5part1": {},
+      "DeformsTesting/S23problem5part2": {},
+      "DeformsTesting/DeformsSimpleCompactProblem": {},
+      "DeformsTesting/S23deformsSimplepart2": {},
+    },
+    "Difficult Problems": {
+      "DeformsTesting/S23difficultpart1": {},
+      "DeformsTesting/S23difficultpart2": {},
+      "DeformsTesting/f2020p8Compact": {}
     }
   }
 }
