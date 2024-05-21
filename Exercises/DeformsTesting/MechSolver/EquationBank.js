@@ -362,7 +362,7 @@ class EquationBank{
                 // eqDict[currentObj["group"]]++;
             }
         }
-        this.equation_pages["Favourites"] = {
+        this.equation_pages["Favorites"] = {
             "pagetitlejsav": null,  // JSAV label for pagename
             "pagejsav": {},       // JSAV for the list; currently av.ds.array type
             "equations": {},          // actual list of equations
@@ -379,20 +379,20 @@ class EquationBank{
     }
     addToFavourites(currentEqnObject)
     {
-        // console.log("Adding to favourites", eqobject.group, eqobject.id);
-        if(currentEqnObject.id in this.equation_pages["Favourites"]["equationsID"]) return; // Do nothing; equation is already there.
+        // console.log("Adding to favorites", eqobject.group, eqobject.id);
+        if(currentEqnObject.id in this.equation_pages["Favorites"]["equationsID"]) return; // Do nothing; equation is already there.
         var jsavEq = Window.jsavObject.label(
             katex.renderToString(currentEqnObject["latex"]),
             {
-                left: this.equation_pages["Favourites"]["visualComponents"]["POSITION_X"],
-                top: this.equation_pages["Favourites"]["visualComponents"]["POSITION_Y"],
+                left: this.equation_pages["Favorites"]["visualComponents"]["POSITION_X"],
+                top: this.equation_pages["Favorites"]["visualComponents"]["POSITION_Y"],
                 visible: false
             }
         ).addClass("selectableEquation");
-        this.equation_pages["Favourites"]["equations"][currentEqnObject["id"]] = currentEqnObject;
-        this.equation_pages["Favourites"]["pagejsav"][currentEqnObject["id"]] = jsavEq;
-        this.equation_pages["Favourites"]["visualComponents"]["POSITION_Y"] += 15 + currentEqnObject["dispheight"];
-        this.equation_pages["Favourites"]["equationsID"][currentEqnObject.id] = "";
+        this.equation_pages["Favorites"]["equations"][currentEqnObject["id"]] = currentEqnObject;
+        this.equation_pages["Favorites"]["pagejsav"][currentEqnObject["id"]] = jsavEq;
+        this.equation_pages["Favorites"]["visualComponents"]["POSITION_Y"] += 15 + currentEqnObject["dispheight"];
+        this.equation_pages["Favorites"]["equationsID"][currentEqnObject.id] = "";
         
         jsavEq.hide();
         jsavEq.element[0].dataset.id = currentEqnObject["id"];
