@@ -1626,7 +1626,7 @@ class Workspace
         {
             // If there's more than one domain for the variable after all the processing,
             // We've got a problem, and cannot resolve it.
-            if(Object.keys(variableSet[v]) > 1)
+            if(Object.keys(variableSet[v]).length > 1)
             {
                 // errorFlag.push({"type":"conflictingDomain", "var": v});
                 errorFlag["error"][v] = {
@@ -1640,7 +1640,7 @@ class Workspace
                     }
                 }
             }
-            if(Object.keys(variableSet[v]) == 0)
+            if(Object.keys(variableSet[v]).length == 0)
             {
                 // errorFlag.push({"type":"unresolvedVar", "var": v});
                 errorFlag["error"][v] = {
