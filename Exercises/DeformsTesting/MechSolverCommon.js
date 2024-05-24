@@ -542,7 +542,7 @@ requirejs(["./mathjs.js"], function(){});
                     /**
                      * Requires: name of palette page (page), name of equation (item)
                      * Selects only the first one, doesn't resolve conflict between
-                     * intended equation and one appearing on Favorites, but assumes FCFS.
+                     * intended equation and one appearing on Favourites, but assumes FCFS.
                      */
                     // Not showing page here, since not necessary. Could be anywhere in any context,
                     // clicking should just un-highlight this.
@@ -593,7 +593,7 @@ requirejs(["./mathjs.js"], function(){});
                     /**
                      * Requires: name of palette page (page), name of equation (item)
                      * Selects only the first one, doesn't resolve conflict between
-                     * intended equation and one appearing on Favorites, but assumes FCFS.
+                     * intended equation and one appearing on Favourites, but assumes FCFS.
                      */
                     let paletteTitle = document.querySelector('#equationPageTitle')
                     paletteTitle.value = event.target.dataset.page
