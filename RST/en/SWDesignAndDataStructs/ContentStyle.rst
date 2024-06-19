@@ -1031,7 +1031,11 @@ Related Resources
 
 *References:*
 
-- Northeastern University. Style Guide for Web-CAT submissions: http://www.ccs.neu.edu/home/vkp/2510-sp13/web-cat-hints.html 
-- Google. Java Style Guide: https://google.github.io/styleguide/javaguide.html 
-- Javadoc Guide: https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html
-- Sun Microsystems, Inc (known today as Oracle). (1996). Java Code Conventions: https://www.oracle.com/technetwork/java/codeconventions-150003.pdf 
+.. raw:: html
+    
+    <ul>
+    <li><a href="http://www.ccs.neu.edu/home/vkp/2510-sp13/web-cat-hints.html  " target="_blank">Northeastern University. Style Guide for Web-CAT submissions </a></li>
+     <li><a href="https://google.github.io/styleguide/javaguide.html   " target="_blank">Google. Java Style Guide </a></li>
+      <li><a href="https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html  " target="_blank">Javadoc Guide </a></li>
+       <li><a href="https://www.oracle.com/technetwork/java/codeconventions-150003.pdf  " target="_blank">Sun Microsystems, Inc (known today as Oracle). (1996). Java Code Conventions </a></li>
+    </ul>
