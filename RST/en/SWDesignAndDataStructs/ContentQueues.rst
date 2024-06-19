@@ -25,8 +25,8 @@ Objectives
 Upon completion of this module, students will be able to:
 
 * Name the function and purpose of basic Java data structures
-* State key characteristics of Bags in Java
-* Build and populate Bags in Java
+* State key characteristics of Queues in Java
+* Build and populate Queues in Java
 
 Suggested Reading
 ~~~~~~~~~~~~~~~~~
