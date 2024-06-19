@@ -658,7 +658,7 @@ Unlike other comments, JavaDoc comments (comments that begin with /** are public
 
 Describing a class
 ------------------
-Class comments (javadoc comments) will begin with /** and close with \*/ with the details/purpose of the class in between. Each line within the comment block will start with *. The opening /** and closing \*/ should be vertically aligned. Each * within the comment block should be vertically aligned as well.
+Class comments (javadoc comments) will begin with /** and close with \*/ with the details/purpose of the class in between. Each line within the comment block will start with \*. The opening /** and closing \*/ should be vertically aligned. Each * within the comment block should be vertically aligned as well.
 
 Class comments should always include the following:
 
