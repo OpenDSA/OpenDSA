@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="650" data-width="950">
+  <body data-height="1250" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="Junit_CP5_Q1">
@@ -21,14 +21,26 @@
        </p>
 
         <div class="solution"> <pre class="prettyprint">
-          for (int i =0; i < expectedArray.length; i++)
-          {
-            assertEquals(expectedArray[i],actualArray[i]);
-          }  </pre></div>
+          if (actualArray.length == expectedArray.length) {
+            for (int i =0; i < expectedArray.length; i++)
+            {
+              assertEquals(expectedArray[i],actualArray[i]);
+            }  
+          }</pre></div>
         <ul class="choices">
         <li><tt>assertTrue( expectedArray.equals( actualArray) );</tt></li>
         <li><tt>assertEquals(expectedArray, actualArray);</tt></li>
         <li><tt>assertEquals(actualArray, expectedArray);</tt></li>
+        <li> <pre class="prettyprint">
+          for (int i =0; i < expectedArray.length; i++)
+          {
+            assertEquals(expectedArray[i],actualArray[i]);
+          }  </pre></li>
+        <li> <pre class="prettyprint">
+          for (int i =0; i < actualArray.length; i++)
+           {
+            assertEquals(expectedArray[i],actualArray[i]);
+          }  </pre></li>
         </ul>
         <div class="hints">
         <!--   -->
