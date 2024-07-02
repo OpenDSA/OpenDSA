@@ -539,9 +539,14 @@ You may find it easier to write one test case that handles the logic inside the 
 Additional references for writing JUnit Tests:
 ----------------------------------------------
 
-`Writing JUnit Tests With Student TestCase <2114_junit_tutorial.html>`_
+.. raw:: html
 
-`A Whirlwind Introduction to JUnit <https://web-cat.org/eclstats/junit-quickstart/>`_
+   <ul>
+  <li> <a href="2114_junit_tutorial.html"  target="_blank">Junit Tutorial With Student TestCase</a></li>
+   <li><a href="https://web-cat.org/eclstats/junit-quickstart/"  target="_blank">A Whirlwind Introduction to JUnit</a></li>
+   </ul>
+
+
 
 Checkpoint 6
 ------------
