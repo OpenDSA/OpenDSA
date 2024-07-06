@@ -75,7 +75,7 @@ Introduction to Lists
 
 
  .. code-block:: java
-   
+
       package list;
 
       /**
@@ -335,13 +335,11 @@ Interactive: An Array Implementation of a List
 
    .. raw:: html
    
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementationWithCode.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
-      ArrayListImplementationWithCode.pdf</img>
+      ArrayListImplementation.pdf</img>
       </a>
 
-      <br>
-      <p><strong>Note:</strong>The ArrList<T> class demoed in the video contains a method getLength() which returns the length of the list stored in the private variable `numberOfEntries`. This number may be different than the length of the array which is the number of slots in the underlying array. The last entry in the list will be in the slot `numberOfEntries` - 1. Documentation and code for the method `public void add(int newPosition, T newEntry)` can be found in the pdf.</p>
 
 .. raw:: html
 
