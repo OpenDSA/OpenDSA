@@ -46,7 +46,7 @@ Introduction to Lists
 
    .. raw:: html
    
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListIntro.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListIntro24.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ListIntro.pdf</img>
       </a>
@@ -55,7 +55,7 @@ Introduction to Lists
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vyiwnixx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_756fc9vh' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
 
@@ -333,9 +333,23 @@ Interactive: An Array Implementation of a List
 
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_w004gjwr' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+Interactive: Efficiency of List Implementations
+------------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Follow along with the code corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
    .. raw:: html
    
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListEfficiency.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ArrayListImplementation.pdf</img>
       </a>
@@ -344,9 +358,8 @@ Interactive: An Array Implementation of a List
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_wahujuxt' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_g5hdfh5e' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
 
     
 Programming Practice: Lists 2
