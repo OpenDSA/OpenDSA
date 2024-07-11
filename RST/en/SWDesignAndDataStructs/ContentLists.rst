@@ -334,6 +334,14 @@ Interactive: An Array Implementation of a List
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
 
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation24.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      ArrayListImplementation24.pdf</img>
+      </a>
+
+
 .. raw:: html
 
    <center>
@@ -355,13 +363,13 @@ Interactive: Efficiency of List Implementations
 
 .. admonition:: Follow Along and Engage
 
-    Follow along with the code corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListEfficiency.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
-      ArrayListImplementation.pdf</img>
+      ListEfficiency.pdf</img>
       </a>
 
 
