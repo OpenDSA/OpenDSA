@@ -338,7 +338,7 @@ Interactive: An Array Implementation of a List
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation24.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
-      ArrayListImplementation24.pdf</img>
+      ArrayListImplementation.pdf</img>
       </a>
 
 
