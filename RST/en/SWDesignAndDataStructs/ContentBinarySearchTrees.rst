@@ -59,7 +59,6 @@ Interactive: Introduction to Binary Search Trees
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_oa8zsd2b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
-Note: there is an alphebetical error on slide 8, UX Designer and Web Developer should be switched.
 
 Checkpoint 1
 ------------
