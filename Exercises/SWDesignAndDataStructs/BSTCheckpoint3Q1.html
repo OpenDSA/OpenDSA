@@ -26,12 +26,15 @@
               }
               else {//entry exists
                  if (node.getRight() != null) {
-                        BinaryNode minNode = findMin(node.getRight());
-                        minNode.setLeft(new BinaryNode(data));
-                        
-                    } else {
+                    BinaryNode<T> minNode = findMin(node.getRight());
+		                if (data.compareTo(minNode.getData())== 0) {//update
+		                    minNode.setRight(new BinaryNode<T>(data));
+		                } else {
+		                    minNode.setLeft(new BinaryNode<T>(data)); 
+		                }      
+                  } else {
                       node.setRight(new BinaryNode(data));
-                    }            
+                  }            
               }
               return node;
           }

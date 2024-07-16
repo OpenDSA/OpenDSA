@@ -232,7 +232,7 @@ Adding CS2 Support Projects
 
 
 
-Createing a Project and Setting Default JDK
+Creating a Project and Setting Default JDK
 -------------------------------------------
 Create a project to use for experimenting.
 

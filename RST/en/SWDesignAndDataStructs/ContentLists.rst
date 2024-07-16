@@ -46,7 +46,7 @@ Introduction to Lists
 
    .. raw:: html
    
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListIntro.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListIntro24.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ListIntro.pdf</img>
       </a>
@@ -55,7 +55,7 @@ Introduction to Lists
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vyiwnixx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_756fc9vh' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
 
@@ -75,122 +75,125 @@ Introduction to Lists
 
 
  .. code-block:: java
-  
+
       package list;
-  
+
       /**
-       * An interface for the ADT list. Entries in a list have positions that begin
-       * with 0
-       *
-       * @author Frank M. Carrano
-       * @author Timothy M. Henry
-       * @author maellis1
-       * @version Aug 2020
-       */
-      public interface ListInterface {
-          /**
-           * Adds a new entry to the end of this list. Entries currently in the list
-           * are unaffected. The list's size is increased by 1.
-           *
-           * @param newEntry
-           *            The object to be added as a new entry.
-           */
-          public void add(T newEntry);
-  
-          /**
-           * Adds a new entry at a specified position within this list. Entries
-           * originally at and above the specified position are at the next higher
-           * position within the list. The list's size is increased by 1.
-           *
-           * @param newPosition
-           *            An integer that specifies the desired position of the new
-           *            entry.
-           * @param newEntry
-           *            The object to be added as a new entry.
-           * @throws IndexOutOfBoundsException
-           *             if either newPosition less than 0 or newPosition greater than
-           *             getLength().
-           */
-          public void add(int newPosition, T newEntry);
-  
-          /**
-           * Removes the entry at a given position from this list. Entries originally
-           * at positions higher than the given position are at the next lower
-           * position within the list, and the list's size is decreased by 1.
-           *
-           * @param givenPosition
-           *            An integer that indicates the position of the entry to be
-           *            removed.
-           * @return A reference to the removed entry.
-           * @throws IndexOutOfBoundsException
-           *             if either givenPosition less than 0 or givenPosition greater
-           *             than or equal to getLength().
-           */
-          public T remove(int givenPosition);
-  
-          /** Removes all entries from this list. */
-          public void clear();
-  
-          /**
-           * Replaces the entry at a given position in this list.
-           *
-           * @param givenPosition
-           *            An integer that indicates the position of the entry to be
-           *            replaced.
-           * @param newEntry
-           *            The object that will replace the entry at the position
-           *            givenPosition.
-           * @return The original entry that was replaced.
-           * @throws IndexOutOfBoundsException
-           *             if either givenPosition less than 0 or givenPosition greater
-           *             than or equal to getLength().
-           */
-          public T replace(int givenPosition, T newEntry);
-  
-          /**
-           * Retrieves the entry at a given position in this list.
-           *
-           * @param givenPosition
-           *            An integer that indicates the position of the desired entry.
-           * @return A reference to the indicated entry.
-           * @throws IndexOutOfBoundsException
-           *             if either givenPosition less than 0 or givenPosition greater
-           *             than getLength().
-           */
-          public T getEntry(int givenPosition);
-  
-          /**
-           * Retrieves all entries that are in this list in the order in which they
-           * occur in the list.
-           *
-           * @return A newly allocated array of all the entries in the list. If the
-           *         list is empty, the returned array is empty.
-           */
-          public Object[] toArray();
-  
-          /**
-           * Sees whether this list contains a given entry.
-           *
-           * @param anEntry
-           *            The object that is the desired entry.
-           * @return True if the list contains anEntry, or false if not.
-           */
-          public boolean contains(T anEntry);
-  
-          /**
-           * Gets the length of this list.
-           *
-           * @return The integer number of entries currently in the list.
-           */
-          public int getLength();
-  
-          /**
-           * Sees whether this list is empty.
-           *
-           * @return True if the list is empty, or false if not.
-           */
-          public boolean isEmpty();
+      * An interface for the ADT list. Entries in a list have positions that begin
+      * with 0
+      * 
+      * @author Frank M. Carrano
+      * @author Timothy M. Henry
+      * @author maellis1
+      * @version July 2024
+      */
+      public interface ListInterface<T> {
+         /**
+         * Adds a new entry to the end of this list. Entries currently in the list
+         * are unaffected. The list's size is increased by 1.
+         * 
+         * @param newEntry
+         *            The object to be added as a new entry.
+         */
+         public void add(T newEntry);
+
+         /**
+         * Adds a new entry at a specified position within this list. Entries
+         * originally at and above the specified position are at the next higher
+         * position within the list. The list's size is increased by 1.
+         * 
+         * @param newPosition
+         *            An integer that specifies the desired position of the new
+         *            entry.
+         * @param newEntry
+         *            The object to be added as a new entry.
+         * @throws IndexOutOfBoundsException
+         *             if either newPosition less than 0 or newPosition greater than
+         *             the size of the list.
+         */
+         public void add(int newPosition, T newEntry);
+
+         /**
+         * Removes the entry at a given position from this list. Entries originally
+         * at positions higher than the given position are at the next lower
+         * position within the list, and the list's size is decreased by 1.
+         * 
+         * @param givenPosition
+         *            An integer that indicates the position of the entry to be
+         *            removed.
+         * @return A reference to the removed entry.
+         * @throws IndexOutOfBoundsException
+         *             if either givenPosition less than 0 or givenPosition greater
+         *             than or equal to the size of the list.
+         */
+         public T remove(int givenPosition);
+
+         /** Removes all entries from this list. */
+         public void clear();
+
+         /**
+         * Replaces the entry at a given position in this list.
+         * 
+         * @param givenPosition
+         *            An integer that indicates the position of the entry to be
+         *            replaced.
+         * @param newEntry
+         *            The object that will replace the entry at the position
+         *            givenPosition.
+         * @return The original entry that was replaced.
+         * @throws IndexOutOfBoundsException
+         *             if either givenPosition less than 0 or givenPosition greater
+         *             than or equal to the size of the list.
+         */
+         public T replace(int givenPosition, T newEntry);
+
+         /**
+         * Retrieves the entry at a given position in this list.
+         * 
+         * @param givenPosition
+         *            An integer that indicates the position of the desired entry.
+         * @return A reference to the indicated entry.
+         * @throws IndexOutOfBoundsException
+         *             if either givenPosition less than 0 or givenPosition greater
+         *             than or equal to the size of the list.
+         */
+         public T getEntry(int givenPositi son);
+
+         /**
+         * Retrieves all entries that are in this list in the order in which they
+         * occur in the list.
+         * 
+         * @return A newly allocated array of all the entries in the list. If the
+         *         list is empty, the returned array is empty.
+         */
+         public Object[] toArray();
+
+         /**
+         * Sees whether this list contains a given entry.
+         * 
+         * @param anEntry
+         *            The object that is the desired entry.
+         * @return True if the list contains anEntry, or false if not.
+         */
+         public boolean contains(T anEntry);
+
+         /**
+         * Gets the length of this list.
+         * 
+         * @return The integer number of entries currently in the list.
+         */
+         public int getLength();
+
+         /**
+         * Sees whether this list is empty.
+         * 
+         * @return True if the list is empty, or false if not.
+         */
+         public boolean isEmpty();
       } // end ListInterface
+
+  
+            
 
 
 Checkpoint 1
@@ -330,22 +333,57 @@ Interactive: An Array Implementation of a List
 
     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
+
    .. raw:: html
    
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation.pdf"  target="_blank">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayListImplementation24.pdf"  target="_blank">
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       ArrayListImplementation.pdf</img>
       </a>
 
-      <br>
-      <p><strong>Note:</strong> Documentation in the code refers to variable `length` incorrectly, it should be `numberOfEntries</p>
 
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_wahujuxt' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_w004gjwr' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
+
+
+
+Checkpoint 5
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/ListsCheckpoint5Summ.html ka
+   :long_name: Checkpoint 5
+
+
+Interactive: Efficiency of List Implementations
+------------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+     Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ListEfficiency.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      ListEfficiency.pdf</img>
+      </a>
+
+
+.. raw:: html
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_g5hdfh5e' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+Checkpoint 6
+------------
+
+.. avembed:: Exercises/SWDesignAndDataStructs/ListsCheckpoint6Summ.html ka
+   :long_name: Checkpoint 6
 
     
 Programming Practice: Lists 2

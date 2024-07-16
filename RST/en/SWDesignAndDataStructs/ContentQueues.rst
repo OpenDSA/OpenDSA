@@ -25,8 +25,8 @@ Objectives
 Upon completion of this module, students will be able to:
 
 * Name the function and purpose of basic Java data structures
-* State key characteristics of Bags in Java
-* Build and populate Bags in Java
+* State key characteristics of Queues in Java
+* Build and populate Queues in Java
 
 Suggested Reading
 ~~~~~~~~~~~~~~~~~
@@ -312,7 +312,7 @@ Interactive: ArrayQueue: Array Implementation of Queues
 
 .. admonition:: Follow Along and Engage
 
-    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+    Download the slides corresponding to the videos. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
    .. raw:: html
    
@@ -325,7 +325,11 @@ Interactive: ArrayQueue: Array Implementation of Queues
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_schlfeex' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_no29pnf8' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_8fs30aor' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
 Checkpoint 6
@@ -381,7 +385,7 @@ Interactive: ArrayQueue: Ensure Capacity
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xkijc49b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_vykguc35' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
 

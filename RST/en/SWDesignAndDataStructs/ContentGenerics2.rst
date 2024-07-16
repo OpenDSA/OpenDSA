@@ -79,7 +79,12 @@ Interactive: Reflecting on Generics
 Related Resources
 ~~~~~~~~~~~~~~~~~
     
-* `https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
+.. raw:: html
+    
+    <ul>
+    <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html " target="_blank">Oracle Wildcards </a></li>
+    </ul>
+    
     
 .. _Generics2Explained: 
 
@@ -161,8 +166,14 @@ Interactive: Bounded Wildcard Examples
 Related Resources
 ~~~~~~~~~~~~~~~~~
 
-* `https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
-* `https://docs.oracle.com/javase/tutorial/java/generics/bounded.html <https://docs.oracle.com/javase/tutorial/java/generics/bounded.html>`_
+
+.. raw:: html
+    
+    <ul>
+    <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html " target="_blank">Oracle Wildcards </a></li>
+     <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/bounded.html  " target="_blank">Oracle Bounded Type Parameters </a></li>
+    </ul>
+
 
 
 Programming Practice: Generics 1
