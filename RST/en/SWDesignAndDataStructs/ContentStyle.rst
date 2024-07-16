@@ -752,6 +752,7 @@ Method comments should include the following:
 * use `@throws` (with a corresponding throws clause in the method signature) when an operation guarantees it will throw an exception under specific conditions
 * use `@precondition` (plus internal assert or conditional statements) only for true conditions (i.e., conditions under which the method must never be called (the behavior of the method has absolutely no guarantees about what happens under such conditions)
 * use `@postcondition` for mutator methods to explain the state change(s) to the object that has resulted from the method execution.
+* use `@inheritDoc` for method javadocs that can be inhertied from a superclass or interface
 
 .. admonition:: Note: Never let @throws and @precondition tags overlap.
 
