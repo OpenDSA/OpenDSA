@@ -1,6 +1,7 @@
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://opendsa.org for more details.
-.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
+
+   .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. avmetadata::
@@ -92,7 +93,6 @@ the tree structure.
 
 .. avembed:: Exercises/General/SequentialTreePRO.html ka
    :long_name: First Sequential Representation Exercise
-   :keyword: General Trees; Sequential Tree Representations
    :keyword: General Trees; Sequential Tree Representations
 
 

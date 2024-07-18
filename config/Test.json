@@ -77,7 +77,8 @@
     "Stuff": {
       "Sorting/Binsort": {},
       "SeniorAlgAnal/DynamicProgramming": {},
-      "Indexing/BTree": {}
+      "Indexing/BTree": {},
+      "General/SequentialRep": {}
    },
     "Appendix": {
       "Glossary": {}
