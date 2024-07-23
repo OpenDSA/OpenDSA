@@ -22,7 +22,7 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN npm install --global csslint jsonlint eslint uglify-js clean-css-cli
+RUN npm install --global csslint jsonlint globals @eslint/js @eslint/eslintrc uglify-js clean-css-cli
 
 WORKDIR /opendsa
 
