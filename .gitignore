@@ -98,3 +98,12 @@ venv
 # For OpenDSA-Devstack to manage docker build order
 devstackPlaceholder.md
 opendsa
+
+# For eslint
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

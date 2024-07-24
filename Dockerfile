@@ -1,4 +1,4 @@
-FROM node:20-alpine AS node
+FROM node:22-alpine AS node
 FROM python:3.9-alpine3.13
 
 ARG ODSA_ENV="DEV"
@@ -22,9 +22,14 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN npm install --global csslint jsonlint globals @eslint/js @eslint/eslintrc uglify-js clean-css-cli
-
 WORKDIR /opendsa
+
+
+RUN npm install -g corepack
+COPY .yarn /.yarn
+COPY .yarnrc.yml ./
+COPY package.json yarn.lock ./
+RUN yarn install
 
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
