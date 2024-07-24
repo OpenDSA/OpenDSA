@@ -26,7 +26,6 @@ WORKDIR /opendsa
 
 
 RUN npm install -g corepack
-COPY .yarn /.yarn
 COPY .yarnrc.yml ./
 COPY package.json yarn.lock ./
 RUN yarn install
