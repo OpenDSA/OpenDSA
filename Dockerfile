@@ -1,5 +1,5 @@
-FROM node:22-alpine AS node
-FROM python:3.9-alpine3.13
+FROM node:22-alpine3.20 AS node
+FROM python:3.9-alpine3.20
 
 ARG ODSA_ENV="DEV"
 ENV ODSA_ENV=${ODSA_ENV}
@@ -23,7 +23,6 @@ COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
 WORKDIR /opendsa
-
 
 RUN npm install -g corepack
 COPY .yarnrc.yml ./
