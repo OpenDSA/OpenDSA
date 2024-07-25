@@ -81,12 +81,9 @@ For example, say we wanted to check that a variable ``x`` was equal to 5.
    int x = 4;
    assertEquals(x, 5);
 
-Writing like this would be syntactically correct, but potentially confusing because the failure message would read "Expected [4] but got [5]".  In reality, we were
-*expecting* 5 but *got* 4.
+Writing like this would be syntactically correct, but potentially confusing because the failure message would read "Expected [4] but got [5]".  In reality, we were *expecting* 5 but *got* 4.
 
-Videos in the second half of the course will be using this second, more commonly
-used syntax.  You can continue to use either version.  Below, is a table of
-assertions in both styles. Remember both the isEqualto() and assertEquals() methods use the equals method for the object parameters, be sure to understand how the corresponding equals method works for the objects being compared.
+Videos in the second half of the course will be using this second, more commonly used syntax.  You can continue to use either version.  Below, is a table of assertions in both styles. Remember both the isEqualto() and assertEquals() methods use the equals method for the object parameters, be sure to understand how the corresponding equals method works for the objects being compared.
 
 .. list-table:: Assertions
    :header-rows: 1
