@@ -7,7 +7,6 @@
    :author: Cliff Shaffer
    :requires: analyzing problems; sorting terminology
    :satisfies: sorting lower bound
-   :topic: Sorting
    :topic: Sorting; Sorting Problem Lower Bound
 
 .. index:: ! sorting; lower bounds proof
