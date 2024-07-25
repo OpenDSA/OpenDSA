@@ -88,31 +88,16 @@ SPHINXOPTS    = %(sphinx_options)s
 # -vv and -vvv are options for verbose build output
 # -P is for starting pdb exactly when and where exception occurs
 HTMLDIR       = %(rel_book_output_path)s
-MINIMIZE      = uglifyjs
 TAGS = %(tag)s
 .PHONY: clean html
 
-all: html min
+all: html
 
 clean:
 	-rm -rf ./$(HTMLDIR)*
 	-rm source/ToDo.rst
 
 cleanbuild: clean html
-
-min: min-underscore min-doctools min-searchtools
-
-min-underscore:
-	@echo 'Minimizing $(HTMLDIR)_static/underscore.js'
-	@$(MINIMIZE) $(HTMLDIR)_static/underscore.js > $(HTMLDIR)_static/underscore.js
-
-min-doctools:
-	@echo 'Minimizing $(HTMLDIR)_static/doctools.js'
-	@$(MINIMIZE) $(HTMLDIR)_static/doctools.js > $(HTMLDIR)_static/doctools.js
-
-min-searchtools:
-	@echo 'Minimizing $(HTMLDIR)_static/searchtools.js'
-	@$(MINIMIZE) $(HTMLDIR)_static/searchtools.js > $(HTMLDIR)_static/searchtools.js
 
 html:
 	$(SPHINXBUILD) $(TAGS) $(SPHINXOPTS) -b html source $(HTMLDIR)

@@ -2,11 +2,11 @@ SHELL := /bin/bash
 RM = rm --recursive --force
 CONFIG_SCRIPT = tools/configure.py
 .DEFAULT_GOAL := help
-JS_LINT = eslint --no-color
-CSS_LINT = csslint --quiet --ignore=ids,adjoining-classes
+JS_LINT = yarn eslint --no-color
+CSS_LINT = yarn csslint --quiet --ignore=ids,adjoining-classes
 # CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
-JSON_LINT = jsonlint --quiet
-PYTHON_LINT = pyLint --disable=C --reports=y
+JSON_LINT = yarn jsonlint --quiet
+PYTHON_LINT = pylint --disable=C --reports=y
 # Can be overridden by env varis, such as ODSA_ENV='PROD'
 ODSA_ENV ?= DEV
 # Python used for building books:
@@ -14,8 +14,8 @@ PYTHON = python3
 # -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
 # -u flag runs python in unbuffered mode (no output flushes needed)
 
-JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
-CSS_MINIFY = cleancss
+JS_MINIFY = yarn uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
+CSS_MINIFY = yarn cleancss
 ifeq ($(strip $(ODSA_ENV)),DEV)
 	# fake-minify for easier debugging in DEV setups...
 	JS_MINIFY = cat

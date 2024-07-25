@@ -537,7 +537,6 @@ def configure(config_file_path, options):
         job.append('slides')
     else:
         job.append("html")
-        job.append("min")
 
     # if make is visible to shutil, then no need to use shell
     ''' TODO: Test if shell_needed is always false, which would make some of the below code useless
