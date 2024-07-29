@@ -7,14 +7,14 @@
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="650" data-width="950">
+  <body data-height="1850" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="BAGS_CP3_Q2">
         <p class="question">Which of the following 5  implementations could
           not be used for getFrequency?</p>
         <div class="solution">
-<tt>
+<tt> <pre class="prettyprint">
 public int getFrequencyOf(T anEntry)
 {
   int i = 0;
@@ -22,14 +22,14 @@ public int getFrequencyOf(T anEntry)
   while(anEntry.equals(contents[i]))
   {
     i++;
-  	count++;
+    count++;
   }
   return numberOfEntries - count;
-}
+}</pre>
 </tt></div>
         <ul class="choices">
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public int getFrequencyOf(T anEntry)
 {
   int count = 0;
@@ -41,12 +41,12 @@ public int getFrequencyOf(T anEntry)
     }
   }
   return count;
-}
+}</pre>
 </tt>
 </li>
 
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public int getFrequencyOf(T anEntry)
 {
   int count = 0;
@@ -58,11 +58,11 @@ public int getFrequencyOf(T anEntry)
     }
   }
   return count;
-}
+}</pre>
 </tt>
 </li>
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public int getFrequencyOf(T anEntry)
 {
   int i = 0;
@@ -76,11 +76,11 @@ public int getFrequencyOf(T anEntry)
     i++;
   }
   return count;
-}
+}</pre>
 </tt>
 </li>
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public int getFrequencyOf(T anEntry)
 {
   int count = 0;
@@ -92,7 +92,7 @@ public int getFrequencyOf(T anEntry)
     }
   }
   return count;
-}
+}</pre>
 </tt>
 </li>
 
