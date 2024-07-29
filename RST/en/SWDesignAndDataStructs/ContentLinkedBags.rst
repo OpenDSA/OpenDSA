@@ -9,7 +9,6 @@
 Linked Bags
 ===========
 
-..
 Shortcuts
 ---------
 

@@ -9,7 +9,6 @@
 Iterators
 =========
 
-..
 Shortcuts
 ---------
 

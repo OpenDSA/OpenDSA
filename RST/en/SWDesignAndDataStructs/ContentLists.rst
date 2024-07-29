@@ -9,7 +9,6 @@
 Lists
 =====
 
-..
 Shortcuts
 ---------
 

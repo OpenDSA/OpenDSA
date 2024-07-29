@@ -9,7 +9,6 @@
 More on Generics
 ================
 
-..
 Shortcuts
 ---------
 

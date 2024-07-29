@@ -9,7 +9,6 @@
 Stacks
 ======
 
-..
 Shortcuts
 ---------
 
@@ -18,7 +17,6 @@ Shortcuts
 - :ref:`StacksArrayBased`
 - :ref:`StacksArrayImpl`
 - :ref:`StacksChainImpl`
-
 
 Objectives
 ----------

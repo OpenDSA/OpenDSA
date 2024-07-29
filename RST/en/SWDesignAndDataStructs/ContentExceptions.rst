@@ -9,7 +9,6 @@
 Exceptions
 ==========
 
-..
 Shortcuts
 ---------
 

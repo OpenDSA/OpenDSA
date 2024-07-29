@@ -10,7 +10,6 @@
 Recursion
 =========
 
-..
 Shortcuts
 ---------
 

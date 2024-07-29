@@ -9,7 +9,6 @@
 Bags
 ====
 
-..
 Shortcuts
 ---------
 

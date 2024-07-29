@@ -9,7 +9,6 @@
 Software Design and MVC
 =======================
 
-..
 Shortcuts
 ---------
 

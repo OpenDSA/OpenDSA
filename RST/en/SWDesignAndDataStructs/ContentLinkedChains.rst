@@ -9,7 +9,7 @@
 
 Linked Chains (Pointers)
 ========================
-..
+
 Shortcuts
 ---------
 

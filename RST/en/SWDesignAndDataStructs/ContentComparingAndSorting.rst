@@ -9,7 +9,6 @@
 Comparing and Sorting
 =====================
 
-..
 Shortcuts
 ---------
 

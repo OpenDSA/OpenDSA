@@ -9,7 +9,6 @@
 Queues
 ======
 
-..
 Shortcuts
 ---------
 
