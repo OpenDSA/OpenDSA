@@ -10,17 +10,17 @@ Software Design and MVC
 =======================
 
 ..
-    Shortcuts
-    ---------
-    
-    - :ref:`DesignIntro`
-    - :ref:`DesignRequirements`
-    - :ref:`DesignClasses`
-    - :ref:`DesignActivity1`
-    - :ref:`DesignRelations`
-    - :ref:`DesignActivity2`
-    - :ref:`DesignMVC`
-    - :ref:`DesignCaseStudies`
+Shortcuts
+---------
+
+- :ref:`DesignIntro`
+- :ref:`DesignRequirements`
+- :ref:`DesignClasses`
+- :ref:`DesignActivity1`
+- :ref:`DesignRelations`
+- :ref:`DesignActivity2`
+- :ref:`DesignMVC`
+- :ref:`DesignCaseStudies`
 
 
 Objectives
@@ -50,7 +50,6 @@ Interactive: Introduction to Software Design
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       IntroToSoftwareDesign.pdf</img>
       </a>
-
 
 .. raw:: html
 

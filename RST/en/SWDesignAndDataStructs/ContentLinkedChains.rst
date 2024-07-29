@@ -9,15 +9,14 @@
 
 Linked Chains (Pointers)
 ========================
-
 ..
-    Shortcuts
-    ---------
-    
-    - :ref:`PointerReference`
-    - :ref:`PointerLinkedNodes`
-    - :ref:`PointerVisDemo`
-    - :ref:`PointerContains`
+Shortcuts
+---------
+
+- :ref:`PointerReference`
+- :ref:`PointerLinkedNodes`
+- :ref:`PointerVisDemo`
+- :ref:`PointerContains`
 
 Objectives
 ----------
@@ -156,7 +155,6 @@ Interactive: Demo in Visualizer
       LinkedChainCode.pdf</img>
       </a>
 
-
 .. raw:: html
 
    <center>
@@ -198,7 +196,6 @@ Contains() method Animation
       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
       LinkedChainContains.pdf</img>
       </a>
-
 
 .. raw:: html
 

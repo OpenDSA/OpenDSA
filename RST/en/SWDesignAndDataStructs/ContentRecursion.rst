@@ -11,15 +11,14 @@ Recursion
 =========
 
 ..
-    Shortcuts
-    ---------
-    
-    - :ref:`RecursionIntro`
-    - :ref:`RecursionExample`
-    - :ref:`RecursionArray`
-    - :ref:`RecursionChain`
-    - :ref:`RecursionConclusion`
+Shortcuts
+---------
 
+- :ref:`RecursionIntro`
+- :ref:`RecursionExample`
+- :ref:`RecursionArray`
+- :ref:`RecursionChain`
+- :ref:`RecursionConclusion`
 
 Objectives
 ----------
@@ -65,13 +64,11 @@ Intro to Recursion, Part 2
       RecursionIntro.pdf</img>
       </a>
 
-
 .. raw:: html
 
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_c7g8ts7i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
 
 Checkpoint 1
 ------------
@@ -95,13 +92,11 @@ Interactive: More Recursion : Factorial Examples
       RecursionExample.pdf</img>
       </a>
 
-
 .. raw:: html
 
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kvgpxyil' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
 
 Programming Practice: Recursion 1
 ---------------------------------
@@ -149,14 +144,11 @@ Interactive: Recursion on Arrays: Display an Array
          <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dgn4f1ws' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
          </center>
       
-
-
 Checkpoint 2
 ------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/RecursionCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
-
 
 Interactive: Recursion on Arrays: Display the Middle of an Array
 -----------------------------------------------------------------------
@@ -184,7 +176,6 @@ Checkpoint 3
 
 .. avembed:: Exercises/SWDesignAndDataStructs/RecursionCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
-
 
 Programming Practice: Recursion 2
 ---------------------------------
@@ -236,13 +227,11 @@ Interactive: Tower of Hanoi
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_i6r2ykc6' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
 
-
 Checkpoint 4
 ------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/RecursionCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
-
 
 .. _RecursionConclusion: 
 

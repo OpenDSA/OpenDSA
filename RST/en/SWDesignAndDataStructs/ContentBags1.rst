@@ -10,15 +10,15 @@ Bags
 ====
 
 ..
-    Shortcuts
-    ---------
-    
-    - :ref:`BagBasics`
-    - :ref:`BagUsage`
-    - :ref:`BagArrayImp`
-    - :ref:`BagArrayMethods`
-    - :ref:`BagArrayMethods2`
-    - :ref:`BagArrayMethods3`
+Shortcuts
+---------
+
+- :ref:`BagBasics`
+- :ref:`BagUsage`
+- :ref:`BagArrayImp`
+- :ref:`BagArrayMethods`
+- :ref:`BagArrayMethods2`
+- :ref:`BagArrayMethods3`
 
 Objectives
 ----------
@@ -221,10 +221,7 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
-
-
 .. _BagArrayImp: 
-
 
 Array Implementation of Bags
 ----------------------------
@@ -297,12 +294,10 @@ depicted below.
 .. odsafig:: Images/2114ArrayBagClassDiagram.png
    :align: center
 
-
 Interactive: ArrayBagsWithJUnit Example Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: Follow Along, Practice and Explore
-
 
      Download to run and explore the corresponding project from the video on your own in eclipse. The project CS2-Support is required for the sample project.  It is also used in your course projects. To download the CS2-Support you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
 
@@ -320,20 +315,16 @@ Interactive: ArrayBagsWithJUnit Example Demonstration
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_42v9vnzf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
 
-
 Checkpoint 2
 ------------
 
 .. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
-
-
+.. _BagArrayMethods: 
 
 Demo More bag method implementation
 -----------------------------------
-
-.. _BagArrayMethods: 
 
 Interactive: More on the Bag Method Implementation 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -349,13 +340,11 @@ Interactive: More on the Bag Method Implementation
       ArrayBagMethods.pdf</img>
       </a>
 
-
 .. raw:: html
 
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nk6yv7gj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
 
 ArrayBag Class UML Diagram
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
