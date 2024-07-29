@@ -9,6 +9,17 @@
 More on Exceptions
 ==================
 
+Shortcuts
+---------
+
+- :ref:`ExceptionHandling`
+- :ref:`ExceptionCheckedUnchecked`
+- :ref:`ExceptionTryCatch`
+- :ref:`ExceptionHandleLater`
+- :ref:`ExceptionExamples`
+- :ref:`ExceptionTesting`
+
+
 Objectives
 ----------
 
@@ -24,39 +35,43 @@ Suggested Reading
 
 Java Interlude 2 Exceptions from  `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-Exception Handling Example Code
--------------------------------
+.. _ExceptionHandling: 
 
-.. admonition:: Try It Yourself
+Interactive: Exception Handling [9:31]
+--------------------------------------
+
+.. admonition:: Follow Along and Engage
 
    In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.02-ExceptionHandling". Use this example to follow along with the following video. Feel free to experiment. 
 
    Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
+   Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
 
-[9:31] Intro to Exceptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+   .. raw:: html
+   
+
+      <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.2.2-IntroToExceptions.pdf" target="_blank">
+      <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+      Video Slides 7.2.2-IntroToExceptions.pdf</img>
+      </a>
+      <br>
+      
 
 .. raw:: html
-
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_yrzfgb35&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ds0lik92" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.2.2-IntroToExceptions.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.2.2-IntroToExceptions.pdf</img>
-   </a>
-
+  
+   <center>
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_yrzfgb35' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+       
+.. _ExceptionCheckedUnchecked: 
 
 Reflecting on Checked and Runtime(Unchecked) Exceptions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------------------
 
 Checked Exceptions:
-"""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~
 
 * These are exception that are “checked” at compile-time
 * Checked Exceptions **MUST** be either
@@ -80,24 +95,16 @@ Examples of Checked Exceptions include: ``ClassNotFoundException``,
 
 
 Runtime Exceptions aka Unchecked Exceptions:
-""""""""""""""""""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * These are exception that are NOT “checked” at compile time
 * Unlike Checked Exceptions any code which may potentially throw a Runtime (Unchecked) Exception will compile without a problem, the developer must therefore consider the likelihood of such exceptions occurring and prepare the program accordingly
 * Examples of Runtime (Unchecked) Exceptions include: ``ArithmeticException``, ``ArrayIndexOutOfBoundsException``, ``ClassCastException``, and ``NullPointerException``
 
 
-Note:
-"""""
+.. admonition:: Note:
 
-Many students encounter ``NullPointerExceptions`` throughout the various projects
-and labs.  Always remember that these occur when your code tries to access an
-object that is null.  Remember as well that an object may be null if the object
-was declared but never instantiated OR became null at some point throughout its
-life.  One easy way to troubleshoot such exceptions is to determine if the
-object was, in fact, instantiated or not.  Simply review the body of code where
-you believe the object was instantiated, then assess and test to confirm that
-that body of code did execute as expected.
+    Many students encounter ``NullPointerExceptions`` throughout the various projects and labs.  Always remember that these occur when your code tries to access an object that is null.  Remember as well that an object may be null if the object was declared but never instantiated OR became null at some point throughout its life.  One easy way to troubleshoot such exceptions is to determine if the object was, in fact, instantiated or not.  Simply review the body of code where you believe the object was instantiated, then assess and test to confirm that that body of code did execute as expected.
 
 Checkpoint 1
 ------------
@@ -105,43 +112,36 @@ Checkpoint 1
 .. avembed:: Exercises/MengBridgeCourse/ExceptionsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _ExceptionTryCatch: 
 
-[7:16] Exception Handling with try, catch, and finally
-------------------------------------------------------
+Interactive: Exception Handling with try, catch, and finally [7:16] 
+-------------------------------------------------------------------
 
 .. raw:: html
 
      <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_1n6iavk9&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_c40uizwh" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_1n6iavk9' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
      </center>
 
-Handling the Exception now - Summary
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _ExceptionHandleNow: 
 
-To implement Exception Handling within a body of code you must use the
-**try-catch-finally** block
+
+To implement Exception Handling within a body of code you must use the **try-catch-finally** block
 
 You may use a single catch block, such as below:
 
 .. code-block:: java
 
-   try{
+   try {
 
    }
 
-   catch(ExceptionType eName){
+   catch(ExceptionType eName) {
 
    }
 
 
-or multiple **catch** blocks, such as the example below:
-
-When using multiple **catch** blocks the order of how the Exception handlers
-are implemented matters.
-
-The code should be ordered with the handler for the most specific
-Exception defined first, eventually progressing to the definitions for the
-most general exceptions.
+or multiple **catch** blocks. When using multiple **catch** blocks *the order of how the Exception handlers are implemented matters*. The code should be ordered with the handler for the most specific Exception defined first, eventually progressing to the definitions for the most general exceptions.
 
 For example:
 
@@ -149,11 +149,9 @@ For example:
 
    try{
 
-
    }
 
    catch(NumberFormatException nfe){
-
 
    }
 
@@ -171,17 +169,14 @@ We may also use the *optional* **finally** block.  For example:
 
    catch(Exception e){
 
-
    }
 
    finally{
 
-
    }
 
 
-Note that you can also use the optional **finally** block with a
-**try** but without a **catch**, such as below
+Note that you can also use the optional **finally** block with a **try** but without a **catch**, such as below
 
 .. code-block:: java
 
@@ -193,10 +188,10 @@ Note that you can also use the optional **finally** block with a
 
    }
 
+.. _ExceptionHandleLater:
 
-
-Handling the Exception later on (postponing or deferring handling of the Exception)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Handling the Exception Later on with throws
+-------------------------------------------
 
 As mentioned above there are times when it is appropriate to implement code
 that catches Exceptions that occur within it, essentially handling the Exception
@@ -224,8 +219,6 @@ provide a comma-separated list of all the exceptions thrown by that method
 
    }
 
-
-
 The **throws** clause declares the exceptions that may occur during the program
 execution, essentially informing calling/client code that it needs to prepare
 itself to handle such occurrences, **either by implementing a try-catch itself
@@ -239,90 +232,73 @@ notified that it should expect either a ``IOException``,
 
 .. code-block:: java
 
-   public  void callingMethod() {
+    public void callingMethod() {
 
         riskyCodeThatWantsToDefer();
 
     }
 
-The compilation error message (Unhandled exception type SomeException) will
+The compilation error message (``Unhandled exception type <SomeExceptionName>``) will
 occur if the client code, the callingMethod,  does not include code which
 catches or throws the Exceptions that riskyCodeThatWantsToDefer has declared
 that it throws.
 
+.. _ExceptionExamples: 
 
-Exception Examples - Basic to Complex
--------------------------------------
-
-Exception Handling Example Code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Exception Handling Examples - Basic to Complex 
+----------------------------------------------
 
 .. admonition:: Try It Yourself
 
+ 
    In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex07.02-ExceptionHandling". This package has a project called `ExceptionHandlingWithThrow` , which you can use to work with `try...catch` structures on your own. Feel free to experiment. 
 
    Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
-
-[12:05] Basic "try, catch" example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Interactive: Basic ``try``, ``catch`` example [12:05]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_s522xzgi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_2xe43kkx" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s522xzgi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
 
-
-[14:13] Tracing through a "try, catch" example with multiple catch blocks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Tracing through a ``try``, ``catch`` example with multiple ``catch`` blocks [14:13]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_dlgt02u2&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_j9ghg9rv" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dlgt02u2' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    </center>
 
-
-[12:33] Example using "try, catch, and finally" blocks
+Example using "try, catch, and finally" blocks [12:33]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 .. raw:: html
 
      <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_kth4nto9&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_tdj1pv6h" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kth4nto9' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
      </center>
 
+.. _ExceptionTesting:
 
 Implementing and Testing Exceptions
 -----------------------------------
 
+**"If you throw exceptions in your methods, then you should catch them in your testing"**
 
-**"If you throw exceptions in your methods, then you should catch them in your
-testing"**
+For this course we will **mostly** adopt the exception handling approach that uses **try-catch blocks** in combination with the throw statement.
 
-For this course we will **mostly** adopt the exception handling approach that
-uses **try-catch blocks** in combination with the throw statement.
+When implementing methods with exception-prone code you are to implement code within your methods which checks for unusual conditions (possible exception events) **BEFORE** allowing the execution of risky code (code which may throw an exception).  You must then implement ``try-catch blocks`` within test classes to confirm that the correct Exceptions were thrown by the failing code.  Within test classes you must also create the necessary conditions for the exceptions to be thrown.
 
-When implementing methods with exception-prone code you are to implement
-code within your methods which checks for unusual conditions
-(possible exception events) **BEFORE* allowing the execution of risky code
-(code which may throw an exception).  You must then implement
-**try-catch blocks** within test classes to confirm that the correct
-Exceptions were thrown by the failing code.  Within test classes you must also
-create the necessary conditions for the exceptions to be thrown.
-
-Note that these checks could be accomplished through the use of
-**try-catch blocks** or conditional statements
-(for example the **if statement**).
+Note that these checks could be accomplished through the use of ``try-catch`` blocks or conditional statements (for example the ``if`` statement).
 
 Your code should function as follows:
 
-If the checks pass then code execution should proceed normally,
-allowing the exception-prone code to execute
-If the checks fail then the method should **throw an Exception** intentionally
+* If the checks pass then code execution should proceed normally, allowing the exception-prone code to execute
+* If the checks fail then the method should **throw an Exception** intentionally
 
 
 Throwing an Exception
@@ -343,10 +319,11 @@ instance of a **throwable** object.
 For example if you wished to throw just a general exception you could use the
 following statement:
 
-``throw new Exception();``
+.. code-block:: java
 
-If, on the other hand, you wished to throw a specific exception, such as a
-``NumberFormatException``, you could use the following statement:
+    throw new Exception();
+
+If, on the other hand, you wished to throw a specific exception, such as a ``NumberFormatException``, you could use the following statement:
 
 .. code-block:: java
 
@@ -356,11 +333,10 @@ If, on the other hand, you wished to throw a specific exception, such as a
 
    throw new NumberFormatException( "this is some message" );
 
-All that is required is an understanding of the Constructors available for the
-exception you wish to throw.
+All that is required is an understanding of the Constructors available for the exception you wish to throw.
 
-Example
-"""""""
+Examples
+""""""""
 
 The following ``MyCalculator`` class provides client code with access to the
 methods ``sum()`` and ``div()``.  Both ``add()`` and ``div()`` each accept two
@@ -409,11 +385,15 @@ two parameters.
 
 Review the MyCalculator class using the code example above. Note how the class uses the statements:
 
-``throw new NumberFormatException();``
+.. code-block:: java
+
+    throw new NumberFormatException();
 
 And
 
-``throw new ArithmeticException();``
+.. code-block:: java
+
+    throw new ArithmeticException();
 
 To intentionally throw each Exception when appropriate.
 

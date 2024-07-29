@@ -155,8 +155,8 @@ class:
       }
 
 
-Enums
-~~~~~
+Java Enums
+~~~~~~~~~~
 
 Enum types provide a type which can be assigned a predefined set of constant
 values.  The use of an enum type provides a bounded set of constant values
@@ -267,8 +267,8 @@ An example switch statement could be:
    }
 
 
-Notice that when today is MONDAY it will fall through to the code for the
-TUESDAY case.  When today is WEDNESDAY it will print "It’s double coupon day"
+Notice that when today is **MONDAY** it will fall through to the code for the
+**TUESDAY** case.  When today is **WEDNESDAY** it will print ``It’s double coupon day``
 and fall through to also print the default message.
 
 For more details about switch statements, reference:
@@ -313,40 +313,36 @@ For more details about Decimal Format, reference:
 `https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html <https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html>`_.
 
 
-Java UML Diagrams
------------------
+Java UML Diagrams [6:50]
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-[6:15] Java Object UML Video
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1-JavaOOPUML.pdf" target="_blank">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         Video Slides 7.3.2.1-JavaOOPUML.pdf</img>
+         </a><br>
+         <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf" target="_blank">
+            A UML Diagram from the example in the video 7.3.2.4-UMLDiagramKey.pdf
+            </a>
+
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_phzs60ad&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_nhfcvctj" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_phzs60ad' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1-JavaOOPUML.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 7.3.2.1-JavaOOPUML.pdf</img>
-   </a>
 
 .. admonition:: Note
 
     Creating UML diagrams will not be a requirement for this course.  However,
     they are a useful thing to know how to create and interpret as they are often
     used in industry to explain complex systems.
-
-
-Related Resources
-"""""""""""""""""
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf" target="_blank">
-   A UML Diagram from the example in the video 7.3.2.1.1-UMLDiagramKey.pdf
-   </a>
 
 
 Checkpoint 1

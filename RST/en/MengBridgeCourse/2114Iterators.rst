@@ -9,6 +9,16 @@
 Iterators
 =========
 
+Shortcuts
+---------
+
+- :ref:`IteratorIntro`
+- :ref:`IteratorInterface`
+- :ref:`IteratorProg`
+- :ref:`IteratorDesign`
+- :ref:`IteratorInner`
+
+
 Objectives
 ----------
 
@@ -23,26 +33,28 @@ Suggested Reading
 
 Java Interlude 5 Iterators from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-Introduction to Iterators
--------------------------
+.. _IteratorIntro: 
 
-[13:14] Introduction to Iterators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Introduction to Iterators [13:14]
+---------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.2.1-IntroToIterators.pdf" target="_blank">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         Video Slides 11.3.2.1-IntroToIterators.pdf</img>
+         </a>
+
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_8c0mzbfl&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_izr3ua3s" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.2.1-IntroToIterators.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 11.3.2.1-IntroToIterators.pdf</img>
-   </a>
-
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8c0mzbfl' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
 
 Checkpoint 1
 ------------
@@ -50,85 +62,93 @@ Checkpoint 1
 .. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _IteratorInterface: 
+   
+   
+Programming Using the Iterable Interface [4:36]
+-----------------------------------------------
 
-Programming Using the Iterable Interface
-----------------------------------------
+.. admonition:: Follow Along and Engage
 
-[4:36] Programming Using the Iterable Interface
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+  .. raw:: html
+  
+     <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.3.1-Iterable.pdf" target="_blank">
+        <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+        Video Slides 11.3.3.1-Iterable.pdf</img>
+        </a>
+
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_qzq8us2t&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_dugp2cay" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.3.1-Iterable.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 11.3.3.1-Iterable.pdf</img>
-   </a>
+  <center>
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_eqvj3pre' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+  </center>
 
 Checkpoint 2
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
-Programming Using Iterators
----------------------------
+.. _IteratorProg: 
+   
+Programming Using Iterators [18:02]
+-----------------------------------
 
-[18:02] Programming Using Iterators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. admonition:: Follow Along and Engage
+
+   Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+  .. raw:: html
+  
+     <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.4.1-ProgrammingWithIterators.pdf" target="_blank">
+        <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+        Video Slides 11.3.4.1-ProgrammingWithIterators.pdf</img>
+        </a>
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_qzq8us2t&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_okzhmkjf" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.4.1-ProgrammingWithIterators.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 11.3.4.1-ProgrammingWithIterators.pdf</img>
-   </a>
-
-
-
+  <center>
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qzq8us2t' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+  </center>
+  
 Checkpoint 3
-~~~~~~~~~~~~
+------------
 
 .. avembed:: Exercises/MengBridgeCourse/IteratorsCheckpoint3Summ.html ka
    :long_name: Checkpoint 3
 
-Iterator Design Decisions
--------------------------
+.. _IteratorDesign: 
+   
+Iterator Design Decisions [8:21]
+--------------------------------
 
+.. admonition:: Follow Along and Engage
 
-[8:21] Iterator Design Decisions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+  .. raw:: html
+  
+     <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.5.1-IteratorsDesignConsiderations.pdf" target="_blank">
+        <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+        Video Slides 11.3.5.1-IteratorsDesignConsiderations.pdf</img>
+        </a>
+
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_suuo9vaf&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_jl4taizn" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/11.3.5.1-IteratorsDesignConsiderations.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides11.3.5.1-IteratorsDesignConsiderations.pdf</img>
-   </a>
+  <center>
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_suuo9vaf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+  </center>
 
 
 .. admonition:: Clarification
 
-    Iterators that are a nested class inside the linked structure (not subclasses) are more efficient than Iterators that are independent classes.
+   Iterators that are a nested class inside the linked structure (not subclasses) are more efficient than Iterators that are independent classes.
 
+.. _IteratorInner: 
 
 Inner Iterator for ex11.3-Iterator
 ----------------------------------
@@ -301,8 +321,6 @@ structure or the iterator in order to avoid unintended side effects.
             newCurr = false;
         }
     }
-
-
 
 Programming Practice: Iterators
 -------------------------------
