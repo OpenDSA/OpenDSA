@@ -10,18 +10,6 @@
 Binary Search Trees
 ===================
 
-..
-    Shortcuts
-    ---------
-
-    - :ref:`BSTIntro`
-    - :ref:`BSTProg`
-    - :ref:`BSTAdd`
-    - :ref:`BSTRemove`
-    - :ref:`JavaScopeAndEquality`
-    - :ref:`JavaObjectsAndEnums`
-
-
 Objectives
 ----------
 * Distinguish a Binary Tree from a Binary Search Tree (BST)

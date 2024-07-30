@@ -9,16 +9,6 @@
 Iterators
 =========
 
-Shortcuts
----------
-
-- :ref:`IteratorIntro`
-- :ref:`IteratorInterface`
-- :ref:`IteratorProg`
-- :ref:`IteratorDesign`
-- :ref:`IteratorInner`
-- :ref:`IteratorScanner`
-
 Objectives
 ----------
 

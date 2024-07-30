@@ -9,15 +9,6 @@
 Queues
 ======
 
-Shortcuts
----------
-
-- :ref:`QueueIntro`
-- :ref:`QueueLinked`
-- :ref:`QueueIntroDeque`
-- :ref:`QueueArray`
-
-
 Objectives
 ----------
 

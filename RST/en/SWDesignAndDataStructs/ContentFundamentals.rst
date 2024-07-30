@@ -10,17 +10,6 @@
 Java Fundamentals
 ================================
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`JavaBasics`
-    - :ref:`JavaMethods`
-    - :ref:`JavaVariables`
-    - :ref:`JavaControlFlow`
-    - :ref:`JavaScopeAndEquality`
-    - :ref:`JavaObjectsAndEnums`
-
 Objectives
 ----------
 

@@ -10,17 +10,6 @@
 Style and Documentation: Introduction
 =====================================
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`introduction`
-    - :ref:`ContentStyleNaming`
-    - :ref:`ContentStyleFormat`
-    - :ref:`ContentStyleDocumentation`
-    - :ref:`ContentStyleOther`
-    - :ref:`ContentStyleReview`
-
 Overview & Objectives
 ---------------------
 *Upon completion of this module, students will be able to:*

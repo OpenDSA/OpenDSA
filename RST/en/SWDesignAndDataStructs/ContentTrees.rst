@@ -10,17 +10,6 @@
 Trees
 =========================
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`TreeIntro`
-    - :ref:`TreeBinTree`
-    - :ref:`TreeTraverse`
-    - :ref:`TreeProg`
-
-
-
 Objectives
 ----------------------
 

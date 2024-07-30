@@ -10,15 +10,6 @@
 Ethics
 ======
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`EthicsIntro`
-    - :ref:`EthicsACM`
-    - :ref:`Ethics8KQ`
-    - :ref:`EthicsMoralMach`
-
 Objectives
 ----------
 

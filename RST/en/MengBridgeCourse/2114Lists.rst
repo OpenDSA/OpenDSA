@@ -9,15 +9,6 @@
 Lists
 =====
 
-Shortcuts
----------
-
-- :ref:`ListIntro`
-- :ref:`ListAdd`
-- :ref:`ListRemove`
-- :ref:`ListOptions`
-- :ref:`ListArray`
-
 Overview & Objectives
 ---------------------
 
