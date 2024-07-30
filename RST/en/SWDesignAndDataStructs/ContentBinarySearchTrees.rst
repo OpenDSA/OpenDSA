@@ -24,7 +24,10 @@ Suggested Reading:
 
 Chapter 25 A Binary Search Tree Implementation from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-.. _BSTIntro: 
+.. raw:: html
+
+    <a name="BSTIntro">
+
 
 Interactive: Introduction to Binary Search Trees
 ------------------------------------------------
@@ -54,7 +57,9 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
-.. _BSTProg: 
+.. raw:: html
+   
+   <a name="BSTProg">
 
 Interactive: Programming Binary Search Trees
 ------------------------------------------------
