@@ -14,14 +14,13 @@ Binary Search Trees
 
     <ul class="simple">
     <li><a href="#BSTIntro">Interactive: Introduction to Binary Search Trees</a></li>
-    <li><a href="#BSTProg">Interactive: Introduction to Binary Search Trees</a></li>
+    <li><a href="#BSTProg">Interactive: Programming Binary Search Trees</a></li>
     </ul>
 ..
     Shortcuts
     ---------
 
-    - :ref:`BSTIntro`
-    - :ref:`BSTProg`
+    
     - :ref:`BSTAdd`
     - :ref:`BSTRemove`
     - :ref:`JavaScopeAndEquality`
