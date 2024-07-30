@@ -9,14 +9,13 @@
 Queues
 ======
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`QueueIntro`
-    - :ref:`QueueLinked`
-    - :ref:`QueueIntroDeque`
-    - :ref:`QueueArray`
+Shortcuts
+---------
+
+- :ref:`QueueIntro`
+- :ref:`QueueLinked`
+- :ref:`QueueIntroDeque`
+- :ref:`QueueArray`
 
 
 Objectives
@@ -284,20 +283,24 @@ Checkpoint 4
 .. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
-
 Interactive: Deque Removing and Wrap Up
-----------------------------------------------
+-------------------------------------------------------------------------------
+  
+.. admonition:: Follow Along, Practice and Explore
 
+    .. raw:: html
+
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeRemoveAndWrapUp.pdf" target="_blank">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+        Video Slides DequeRemoveAndWrapUp.pdf</img>
+        </a>
+  
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_c94y4y06' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeRemoveAndWrapUp.pdf" target="_blank">
-    <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
-    Video Slides DequeRemoveAndWrapUp.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_c94y4y06' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   </center>
+
 
 Checkpoint 5
 ------------
@@ -327,7 +330,8 @@ Interactive: ArrayQueue: Array Implementation of Queues
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_no29pnf8' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
+   <br>
+   <br>
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/44175021?iframeembed=true&entry_id=1_8fs30aor' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>

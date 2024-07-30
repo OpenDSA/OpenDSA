@@ -29,7 +29,7 @@ Objectives
 * trace variables and understand scope
 * distinguish between primitive types and reference types
 * run a java program in eclipse
-* review object Oriented Programming
+* Review Object Oriented Programming
 * Explore Enum Types
 * Explore Switch Statements
 * Interpret UML diagrams

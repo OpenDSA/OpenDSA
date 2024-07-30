@@ -9,14 +9,13 @@
 More on Generics
 ================
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`Generics2Intro`
-    - :ref:`Generics2Reflect`
-    - :ref:`Generics2Explained`
-    - :ref:`Generics2Wildcard`
+Shortcuts
+---------
+
+- :ref:`Generics2Intro`
+- :ref:`Generics2Reflect`
+- :ref:`Generics2Explained`
+- :ref:`Generics2Wildcard`
 
 Objectives
 ----------
@@ -32,7 +31,6 @@ Suggested Reading:
 ~~~~~~~~~~~~~~~~~~
 
 **Java Interlude 8 Generics Once Again** from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
-
 
 .. _Generics2Intro: 
 
@@ -74,8 +72,6 @@ Interactive: Reflecting on Generics
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_89q1qv87' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center> 
     
-
-
 Related Resources
 ~~~~~~~~~~~~~~~~~
     
@@ -84,7 +80,6 @@ Related Resources
     <ul>
     <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html " target="_blank">Oracle Wildcards </a></li>
     </ul>
-    
     
 .. _Generics2Explained: 
 
@@ -162,10 +157,8 @@ Interactive: Bounded Wildcard Examples
     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jazizwb4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
     </center>
     
-
 Related Resources
 ~~~~~~~~~~~~~~~~~
-
 
 .. raw:: html
     

@@ -9,16 +9,15 @@
 Exceptions
 ==========
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`ExceptionHandling`
-    - :ref:`ExceptionCheckedUnchecked`
-    - :ref:`ExceptionTryCatch`
-    - :ref:`ExceptionHandleLater`
-    - :ref:`ExceptionExamples`
-    - :ref:`ExceptionTesting`
+Shortcuts
+---------
+
+- :ref:`ExceptionHandling`
+- :ref:`ExceptionCheckedUnchecked`
+- :ref:`ExceptionTryCatch`
+- :ref:`ExceptionHandleLater`
+- :ref:`ExceptionExamples`
+- :ref:`ExceptionTesting`
 
 
 Objectives

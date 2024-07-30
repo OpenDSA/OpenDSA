@@ -9,15 +9,14 @@
 Linked Bags
 ===========
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`LinkedBagIntro`
-    - :ref:`LinkedBagAdd`
-    - :ref:`LinkedBagTest`
-    - :ref:`LinkedBagContains`
-    - :ref:`LinkedBagRemove`
+Shortcuts
+---------
+
+- :ref:`LinkedBagIntro`
+- :ref:`LinkedBagAdd`
+- :ref:`LinkedBagTest`
+- :ref:`LinkedBagContains`
+- :ref:`LinkedBagRemove`
 
 Objectives
 ----------
@@ -88,7 +87,7 @@ Checkpoint 1
 
 .. _LinkedBagTest: 
 
-Interactive: ExLinkedBagJUnit  Demonstration
+Interactive: ExLinkedBagJUnit Demonstration
 ---------------------------------------------------
 
 .. admonition:: Follow Along, Practice and Explore

@@ -9,17 +9,14 @@
 Stacks
 ======
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`StacksIntro`
-    - :ref:`StacksMemory`
-    - :ref:`StacksArrayBased`
-    - :ref:`StacksArrayImpl`
-    - :ref:`StacksChainImpl`
+Shortcuts
+---------
 
-
+- :ref:`StacksIntro`
+- :ref:`StacksMemory`
+- :ref:`StacksArrayBased`
+- :ref:`StacksArrayImpl`
+- :ref:`StacksChainImpl`
 
 Objectives
 ----------
@@ -119,8 +116,6 @@ Interactive: Introduction to Stacks
      <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_2th5gshg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
      </center>
 
-
-   
 Checkpoint 1
 ------------
 
@@ -212,7 +207,6 @@ Stacks Linked Chain Implementation
    <center>
    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_miuoo412' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
    </center>
-
 
 Checkpoint 4
 ------------
