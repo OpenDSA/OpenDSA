@@ -11,6 +11,8 @@ Lists
 
 Shortcuts
 ---------
+.. raw:: html
+    <a name="ListIntro">
 
 - :ref:`ListIntro`
 - :ref:`ListAdd`
@@ -33,8 +35,8 @@ Suggested Reading:
 
 **Chapters 12 - 14: Lists, A List Implementation That Uses an Array, A List Implementation That Links Data** from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-
-.. _ListIntro: 
+.. raw:: html
+    <a name="ListIntro">
 
 Introduction to Lists [13:41]
 -----------------------------
