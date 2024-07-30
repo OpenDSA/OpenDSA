@@ -9,14 +9,6 @@
 More on Generics
 ================
 
-Shortcuts
----------
-
-- :ref:`Generics2Intro`
-- :ref:`Generics2Reflect`
-- :ref:`Generics2Explained`
-- :ref:`Generics2Wildcard`
-
 Objectives
 ----------
 

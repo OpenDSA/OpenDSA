@@ -10,23 +10,6 @@
 Binary Search Trees
 ===================
 
-.. raw:: html
-
-    <ul class="simple">
-    <li><a href="#BSTIntro">Interactive: Introduction to Binary Search Trees</a></li>
-    <li><a href="#BSTProg">Interactive: Programming Binary Search Trees</a></li>
-    </ul>
-..
-    Shortcuts
-    ---------
-
-    
-    - :ref:`BSTAdd`
-    - :ref:`BSTRemove`
-    - :ref:`JavaScopeAndEquality`
-    - :ref:`JavaObjectsAndEnums`
-
-
 Objectives
 ----------
 * Distinguish a Binary Tree from a Binary Search Tree (BST)

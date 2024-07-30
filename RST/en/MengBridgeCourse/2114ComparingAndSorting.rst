@@ -9,15 +9,6 @@
 Comparing and Sorting
 =====================
 
-Shortcuts
----------
-
-- :ref:`SortOrderIntro`
-- :ref:`SortIntro`
-- :ref:`SortSelect`
-- :ref:`SortInsert`
-- :ref:`SortCompareIntro`
-
 Objectives
 ----------
 

@@ -10,14 +10,6 @@
 Linked Chains (Pointers)
 ========================
 
-Shortcuts
----------
-
-- :ref:`PointerReference`
-- :ref:`PointerLinkedNodes`
-- :ref:`PointerVisDemo`
-- :ref:`PointerContains`
-
 Objectives
 ----------
 

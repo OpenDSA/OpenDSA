@@ -9,19 +9,6 @@
 Software Design and MVC
 =======================
 
-Shortcuts
----------
-
-- :ref:`DesignIntro`
-- :ref:`DesignRequirements`
-- :ref:`DesignClasses`
-- :ref:`DesignActivity1`
-- :ref:`DesignRelations`
-- :ref:`DesignActivity2`
-- :ref:`DesignMVC`
-- :ref:`DesignCaseStudies`
-
-
 Objectives
 ----------
 

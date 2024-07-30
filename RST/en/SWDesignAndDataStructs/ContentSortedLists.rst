@@ -10,18 +10,6 @@
 Sorted Lists
 ============
 
-Shortcuts
----------
-
-- :ref:`SortListIntro`
-- :ref:`SortListADT`
-- :ref:`SortListInterface`
-- :ref:`SortListImp`
-- :ref:`SortListImpScratch`
-- :ref:`SortListImpComposition`
-- :ref:`SortListImpInheritance`
-
- 
 Objectives
 ----------
 

@@ -9,16 +9,6 @@
 Bags
 ====
 
-Shortcuts
----------
-
-- :ref:`BagBasics`
-- :ref:`BagUsage`
-- :ref:`BagArrayImp`
-- :ref:`BagArrayMethods`
-- :ref:`BagArrayMethods2`
-- :ref:`BagArrayMethods3`
-
 Objectives
 ----------
 

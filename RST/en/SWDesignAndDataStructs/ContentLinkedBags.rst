@@ -9,15 +9,6 @@
 Linked Bags
 ===========
 
-Shortcuts
----------
-
-- :ref:`LinkedBagIntro`
-- :ref:`LinkedBagAdd`
-- :ref:`LinkedBagTest`
-- :ref:`LinkedBagContains`
-- :ref:`LinkedBagRemove`
-
 Objectives
 ----------
 

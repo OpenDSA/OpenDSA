@@ -9,16 +9,6 @@
 Stacks
 ======
 
-Shortcuts
----------
-
-- :ref:`StacksIntro`
-- :ref:`StacksMemory`
-- :ref:`StacksArrayBased`
-- :ref:`StacksArrayImpl`
-- :ref:`StacksChainImpl`
-
-
 Objectives
 ----------
 
