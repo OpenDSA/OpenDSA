@@ -11,6 +11,7 @@ Binary Search Trees
 ===================
 
 .. raw:: html
+
     <ul class="simple">
     <li><a href="#BSTIntro">Interactive: Introduction to Binary Search Trees</a></li>
     <li><a href="#BSTProg">Interactive: Introduction to Binary Search Trees</a></li>
