@@ -11,9 +11,10 @@ Binary Search Trees
 ===================
 
 .. raw:: html
-    
-    <a href="#BSTIntro">Interactive: Introduction to Binary Search Trees</a>
-
+    <ul class="simple">
+    <li><a href="#BSTIntro">Interactive: Introduction to Binary Search Trees</a></li>
+    <li><a href="#BSTProg">Interactive: Introduction to Binary Search Trees</a></li>
+    </ul>
 ..
     Shortcuts
     ---------
@@ -73,7 +74,9 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
-.. _BSTProg: 
+.. raw:: html
+   
+   <a name="BSTProg">
 
 Interactive: Programming Binary Search Trees
 ------------------------------------------------
