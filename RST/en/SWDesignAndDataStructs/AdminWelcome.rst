@@ -55,14 +55,14 @@ Remember students are expected to conduct themselves in an ethical, professional
 
 We have provided a number of avenues for help, continue reading to learn more about the awesome support available to you.
 
-***Course Forum*** 
+**COURSE FORUM**
 
 You are expected to monitor the class forum on piazza for ongoing information and tips.  Learn early how to search piazza and monitor instructor posts. You should also use piazza when seeking assistance or offering help, however remember that you are NOT to post code on a public Piazza post. Posting code on public Piazza posts opens you up to Honor Code issues. Piazza should NOT be used to vent or to explore disagreements.
 
 Remember that one goal of this course is to help you develop the skills to be an effective developer, a self-directed problem-solver capable of independent work. Before posting a new question on piazza you should first explore the error/problem you are attempting to resolve then try to find the answer.  You should search piazza, Java documentation and course material. Whichever avenue you choose be sure that your use of piazza, or any other resource,  always adheres to the requirements of the VT Honor Code.
 
 
-***Office Hours***
+**OFFICE HOURS**
 
 We hold office hours at various times throughout the week, be sure to check our office hours page for the schedule of days and times.
 
@@ -92,7 +92,7 @@ Within Eclipse you may download these by using the blue down arrow icon or using
 
 Web-CAT and Lab Sections
 ------------------------
-* CS 2114 students should be registered for both a lecture section and a lab section.  
+CS 2114 students should be registered for both a lecture section and a lab section.  
 
 You are to contact instructors immediately if you
 
