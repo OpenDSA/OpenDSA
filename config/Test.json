@@ -75,9 +75,8 @@
   },
   "chapters": {
     "Stuff": {
-      "Sorting/Binsort": {},
-      "SeniorAlgAnal/DynamicProgramming": {},
-      "Indexing/BTree": {},
+      "NP/threeSAT_to_hamiltonianCycle": {},
+      "NP/threeSAT_to_hamiltonianCycleNEW": {},
       "General/SequentialRep": {}
    },
     "Appendix": {
