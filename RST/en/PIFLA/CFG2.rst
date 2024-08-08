@@ -7,7 +7,7 @@
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies:
    :topic: Context-Free Grammars and Languages
-   :keyword: Context-Free Grammars and Languages
+   :keyword: Context-Free Grammar; Context-Free Language
 
 
 Context-Free Grammars Part 2

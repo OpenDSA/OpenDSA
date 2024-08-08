@@ -8,7 +8,7 @@
    :requires: ADT; OO Intro; UML
    :satisfies: Software development process
    :topic: Introduction
-   :keyword: Software Development
+   :keyword: Software Design
 
 
 Software Development Processes

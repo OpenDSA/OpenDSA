@@ -8,7 +8,7 @@
    :requires: insertion sort; bubble sort; selection sort
    :satisfies: exchange sort
    :topic: Sorting
-   :keyword: Sorting; Exchange Sorting; O(n^2) Sorts
+   :keyword: Sorting; Exchange Sorting; N-squared Sorts
 
 .. index:: ! exchange sorting
 .. index:: sorting; exchange

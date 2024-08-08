@@ -8,7 +8,7 @@
    :requires: ADT
    :satisfies: OO Intro
    :topic: Introduction
-   :keyword: Introduction to Object-Oriented Programming
+   :keyword: Object-Oriented Programming
 
 
 Introduction to Object-Oriented Programming

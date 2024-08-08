@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
-   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability
+   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability Problem
 
 
 Reduction of SAT to 3-SAT

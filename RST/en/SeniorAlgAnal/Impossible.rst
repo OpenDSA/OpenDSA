@@ -8,7 +8,7 @@
    :requires: Limits to Computing
    :satisfies: uncomputable problems
    :topic: Limits to Computing
-   :keyword: Unsolveable Problems
+   :keyword: Unsolvable Problems
 
 
 Unsolveable Problems

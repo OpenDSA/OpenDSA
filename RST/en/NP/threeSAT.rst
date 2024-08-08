@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
-   :keyword: NP-completeness; 3-CNF Satisfiabilty
+   :keyword: NP-completeness; 3-SAT Problem
 
 
 3-CNF Satisfiability

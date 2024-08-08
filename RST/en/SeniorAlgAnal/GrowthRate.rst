@@ -8,7 +8,7 @@
    :requires:
    :satisfies:
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis; Growth Rates
+   :keyword: Algorithm Analysis; Growth Rate
 
 
 Growth Rates Review

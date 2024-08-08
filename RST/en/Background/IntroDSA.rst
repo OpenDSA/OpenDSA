@@ -8,7 +8,7 @@
    :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
-   :keyword: Data Structures Introduction
+   :keyword: Data Structures
 
 Data Structures and Algorithms
 ==============================

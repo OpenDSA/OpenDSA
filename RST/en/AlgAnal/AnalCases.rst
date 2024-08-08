@@ -8,7 +8,7 @@
    :requires: growth rate
    :satisfies: best and worst case
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis; Best, Average, Worst Cases
+   :keyword: Algorithm Analysis; Best, Average, Worst Case
 
 
 Best, Worst, and Average Cases

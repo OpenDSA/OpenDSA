@@ -8,7 +8,7 @@
    :requires: Mutation testing
    :satisfies: 
    :topic: Programming Tutorial
-   :keyword: JUnit Testing; Mutation Coverage
+   :keyword: JUnit Testing; Mutation Testing
 
 
 Mutation Coverage: FAQ

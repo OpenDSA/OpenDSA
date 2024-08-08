@@ -8,7 +8,7 @@
    :requires: Pointer intro
    :satisfies: Local memory
    :topic: Pointers
-   :keyword: Pointers; Local Variables
+   :keyword: Pointers; Local Variable
 
 
 

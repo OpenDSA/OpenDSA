@@ -8,7 +8,7 @@
    :satisfies: relations
    :topic: Relations
    :requires: set notation
-   :keyword: Sets; Relations; Equivalance Relation; Partial Order
+   :keyword: Sets; Relations; Equivalence Relation; Partial Order
 
 
 Relations
