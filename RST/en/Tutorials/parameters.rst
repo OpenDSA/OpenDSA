@@ -8,7 +8,7 @@
    :requires: Commmand line
    :satisfies: Command line parameters
    :topic: Programming Tutorial
-   :keyword: Command Line Parameters
+   :keyword: Command Line Interface
 
 
 Parsing Command Line Parameters In Your Program

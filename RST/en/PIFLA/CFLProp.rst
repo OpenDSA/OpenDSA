@@ -7,7 +7,7 @@
    :author: Mostafa Mohammed and Cliff Shaffer
    :satisfies: Properties of Context-Free Languages
    :topic: Properties of Context-Free Languages
-   :keyword: Properties of Context-Free Languages
+   :keyword: Context-Free Language
 
 
 Ways to Prove that a Language is not a Context-Free Language

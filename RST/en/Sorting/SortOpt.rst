@@ -8,7 +8,7 @@
    :requires: insertion sort; bubble sort; selection sort; code tuning
    :satisfies: sort code tuning
    :topic: Sorting, Code Tuning
-   :keyword: Sorting; O(n^2) Sorts; Code Tuning
+   :keyword: Sorting; N-squared Sorts; Code Tuning
 
 
 Optimizing Sort Algorithms with Code Tuning

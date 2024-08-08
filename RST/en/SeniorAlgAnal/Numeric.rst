@@ -6,7 +6,7 @@
 .. avmetadata:: 
    :author: Cliff Shaffer
    :topic: Number Problems
-   :keyword: Lower Bounds; Number Problems
+   :keyword: Lower Bound; Number Problems
 
 
 Number Problems

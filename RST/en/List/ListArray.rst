@@ -8,7 +8,7 @@
    :requires: list ADT
    :satisfies: array-based list
    :topic: Lists
-   :keyword: Array-based List
+   :keyword: Array-based List Implementation
 
 
 Array-Based List Implementation

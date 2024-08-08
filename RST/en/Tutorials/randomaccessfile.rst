@@ -8,7 +8,7 @@
    :requires: Text input
    :satisfies: Random access file
    :topic: Programming Tutorial
-   :keyword: Java RandomAccessFile Class
+   :keyword: Random Access File
 
 
 Random Access Files In Java

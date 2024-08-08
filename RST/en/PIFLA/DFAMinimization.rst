@@ -8,7 +8,7 @@
    :requires: Non-deterministic Finite Automata
    :satisfies: DFA minimization
    :topic: Finite Automata
-   :keyword: Finite Automata; Deterministic Finite Automata Minimization
+   :keyword: Finite Automata; DFA Minimization
 
 
 Minimizing the Number of States in a DFA

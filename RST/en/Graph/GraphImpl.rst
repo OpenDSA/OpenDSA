@@ -8,7 +8,7 @@
    :requires: graph terminology
    :satisfies: graph implementation
    :topic: Graphs
-   :keyword: Graphs; Graph Implementations
+   :keyword: Graphs; Graph Representations
 
 
 Graph Implementations

@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
-   :keyword: NP-completeness; Circuit Satisfiability
+   :keyword: NP-completeness; Circuit Satisfiability Problem
 
 
 Circuit Satisfiability

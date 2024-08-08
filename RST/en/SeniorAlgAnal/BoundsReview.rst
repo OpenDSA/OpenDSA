@@ -8,7 +8,7 @@
    :requires:
    :satisfies:
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis; Upper and Lower Bounds
+   :keyword: Algorithm Analysis; Upper Bound; Lower Bound
 
 
 Bounds Review
