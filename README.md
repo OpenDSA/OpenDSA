@@ -22,11 +22,13 @@ System documentation can be found at http://opendsa.readthedocs.io/.
     - This terminal will not be usable at this point since it is a console for the web server.
     - You can stop the containers by sending an interrupt signal (Press CTRL + C) or using the `docker-compose down` command.
 5. Build any books from within the container:
-    - In order to interact with OpenDSA, you must access a shell in the running container with `docker-compose exec opendsa bash` in another console in the root of the OpenDSA directory.
+    1. In order to interact with OpenDSA, you must access a shell in the running container with `docker-compose exec opendsa bash` in another console in the root of the OpenDSA directory.
         - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker-compose exec opendsa bash`
-    - To make the book defined in `config/Test.json`, now use the command `make Test`
+    2. To make the book defined in `config/Test.json`, now use the command `make Test`
+    3. To make the COMSC-205 book, use the command `make f24_comsc_205`
 6. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
 7. In order to stop the container, you can use the CTRL + C (sending an interrupt signal).
+
 
 ### Toolchain Installation
 
