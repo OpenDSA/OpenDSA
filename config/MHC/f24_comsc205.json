@@ -1,0 +1,441 @@
+{
+  "title": "MHC F24 COMSC 205: Data Structures",
+  "desc": "MHC F24 COMSC 205: Data Structures",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "theme": "",
+  "html_theme_options": null,
+  "html_js_files": null,
+  "html_css_files": null,
+  "code_lang": {
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Python": {
+      "ext": [
+        "py"
+      ],
+      "label": "Python",
+      "lang": "python"
+    }
+  },
+  "build_JSAV": false,
+  "build_cmap": true,
+  "suppress_todo": true,
+  "dispModComp": true,
+  "zeropt_assignments": false,
+  "include_tree_view": false,
+  "tabbed_codeinc": true,
+  "narration_enabled": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "glob_ss_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_ka_options": {
+    "threshold": 5,
+    "points": 1,
+    "required": true,
+    "partial_credit": false
+  },
+  "glob_pe_options": {
+    "required": true,
+    "points": 2,
+    "threshold": 0.9
+  },
+  "glob_ff_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2,
+      "required": true,
+      "partial_credit": true,
+      "enable_scrolling": true
+    },
+    "points": 1,
+    "code-workout-jhavepop": {
+      "points": 1
+    },
+    "mastery-grid-java-animations": {
+      "points": 1
+    },
+    "mastery-grid-jsparsons-python": {
+      "points": 1
+    },
+    "mastery-grid-python-animations": {
+      "points": 1
+    }
+  },
+  "start_chap_num": 0,
+  "chapter_name" : "Lecture",
+  "chapters": {
+    "Welcome!": {},
+    "Intro to Java I: Hello World!": {},
+    "Intro to Java II: Loops and Arrays": {
+      "IntroToSoftwareDesign/ConditionalActions": {},
+      "IntroToSoftwareDesign/Arrays": {},
+      "IntroToSoftwareDesign/FileIO": {}
+    },
+    "Intro to Java III: Classes": {
+      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {},
+      "IntroToSoftwareDesign/AggregationStringsandMoreLoops": {},
+      "IntroToSoftwareDesign/ListAndLoopsDeepDive": {},
+      "IntroToSoftwareDesign/StaticMainAndExceptions": {}
+    },
+    "Object Oriented Programming I: Interfaces and Inheritance": {
+      "Design/IntroOO": {},
+      "Design/IntroProcess": {}
+    },
+    "Object Oriented Programming II: Abstract Classes": {
+      "Design/ADT": {
+        "IntroADTSumm": {
+          "threshold": 4
+        }
+      }
+    },
+    "Algorithm Analysis and Inputs": {
+      "Background/IntroDSA": {},
+      "AlgAnal/AnalPrelim": {
+        "AnalPrelimSumm": {
+          "threshold": 4
+        }
+      },
+      "AlgAnal/AnalIntro": {
+        "CompareGrowth": {
+          "points": 2,
+          "threshold": 3
+        },
+        "GrowthRatesPRO": {
+          "threshold": 3
+        }
+      },
+      "AlgAnal/AnalAsymptotic": {
+        "UpperBoundsSumm": {
+          "threshold": 4
+        }
+      },
+      "AlgAnal/AnalProgram": {
+        "binarySearchPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          },
+          "points": 1,
+          "threshold": 1
+        }
+      },
+      "Tutorials/scanning": {},
+      "AlgAnal/AlgAnalSummCS2": {}
+    },
+    "List Interface and Array based Lists": {
+      "List/ListADT": {
+        "List ADT Programming Exercise": {
+          "points": 1
+        }
+      },
+      "List/ListArray": {
+        "AlistRemovePRO": {
+          "threshold": 4
+        },
+        "AlistInsertPRO": {
+          "threshold": 3
+        },
+        "ALSumm": {
+          "threshold": 3
+        }
+      }
+    },
+    "Linked Lists I: Pointers": {
+      "PointersJava/PointerIntro": {},
+      "PointersJava/BasicPointers1": {},
+      "PointersJava/BasicPointers2": {
+        "PointerEX2PRO": {
+          "threshold": 1
+        },
+        "PointerEX1PRO": {
+          "threshold": 1
+        }
+      },
+      "PointersJava/Syntax": {},
+      "PointersJava/LocalMem": {},
+      "PointersJava/Links1": {
+        "PointerEX3PRO": {
+          "threshold": 1
+        }
+      },
+      "PointersJava/Links2": {},
+      "PointersJava/PointersCM": {},
+      "PointersJava/Exercises": {},
+      "PointersJava/LinkedChains": {},
+      "List/ListIntro": {},
+      "List/ListLinked": {
+        "LlistRemovePRO": {
+          "points": 2
+        }
+      },
+      "List/ListElement": {
+        "ListSumm": {
+          "threshold": 3
+        }
+      }
+    },
+    "Linked Lists II: Doubly Linked": {
+      "List/ListDouble": {},
+      "List/ListAnalysis": {
+        "ListOverhead": {
+          "threshold": 3
+        },
+        "LLSumm": {
+          "points": 2,
+          "threshold": 6
+        }
+      },
+      "List/ListSumm": {
+        "ListChapterSumm": {
+          "points": 2,
+          "threshold": 10
+        },
+        "ListdsSumm": {
+          "points": 2
+        }
+      }
+    },
+    "Program Design and Debugging I": {
+      "Tutorials/debugmethods": {},
+      "Tutorials/2114_java_commenting": {}
+    },
+    "Program Design and Debugging II: Testing Principles": {
+      "IntroToSoftwareDesign/SoftwareTesting": {}
+    },
+    "Stacks": {
+      "List/StackArray": {},
+      "List/StackLinked": {}
+    },
+    "Queues": {
+      "List/Queue": {},
+      "List/QueueLinked": {}
+    },
+    "Recursion I and Binary Search": {
+      "Searching/SearchIntro": {},
+      "Searching/BinarySearch": {},
+      "RecurTutor/RecIntro": {},
+      "RecurTutor/Write": {},
+      "RecurTutor/Trace": {},
+      "RecurTutor/TracingEx": {
+        "RecTraceSummbckwrdFlow": {
+          "threshold": 1
+        },
+        "RecTraceSummFuncErr": {
+          "threshold": 1
+        },
+        "RecTraceSummFwdFlow": {
+          "threshold": 1
+        },
+        "RecTraceSummHard": {
+          "threshold": 1
+        },
+        "RecTraceSummHowmany": {
+          "threshold": 1
+        },
+        "RecTraceSummTwoRC": {
+          "threshold": 1
+        }
+      }
+    },
+    "Recursion II: Recursive Data Structures and Backtracking": {
+      "RecurTutor/CodeCompletionEx": {
+        "Recursion Programming Exercise: Add odd values": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Count Characters": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Cummulative Sum": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: GCD": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Largest": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Multiply": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Sum Of the Digits": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: log": {
+          "points": 1
+        }
+      },
+      "RecurTutor/HarderWrite": {},
+      "RecurTutor/WritingEx": {
+        "Recursion Programming Exercise: Cannonballs": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Check Palindrome": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Pascal Triangle": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Subset Sum": {
+          "points": 1
+        }
+      },
+      "RecurTutor/HarderCodeCompletionEx": {
+        "Recursion Programming Exercise: Decimal to Binary": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Is Reverse": {
+          "points": 1
+        },
+        "Recursion Programming Exercise: Minimum of array": {
+          "points": 1
+        }
+      },
+      "RecurTutor/RecSummaryEx": {}
+    },
+    "Binary Trees": {
+      "Binary/BinaryTreeIntro": {},
+      "Binary/BinaryTree": {
+        "DefSumm": {
+          "points": 2,
+          "threshold": 8
+        },
+        "Treeprobs": {
+          "threshold": 4
+        }
+      },
+      "Binary/BinaryTreeNodeSpace": {},
+      "Binary/BinaryTreeImpl": {},
+      "Binary/RecursiveDS": {},
+      "Binary/BinaryTreeTraversal": {
+        "btTravPreorderPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          },
+          "points": 1
+        },
+        "btTravInorderPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          },
+          "points": 1
+        },
+        "btTravPostorderPRO": {
+          "exer_options": {
+            "JXOP-code": "none"
+          },
+          "points": 1
+        },
+        "TravSumm": {
+          "threshold": 3
+        }
+      },
+      "Binary/WritingTraversals": {},
+      "Binary/BinaryChapSumm": {}
+    },
+    "Binary Search Trees": {
+      "Binary/BST": {
+        "BSTSumm": {
+          "threshold": 2
+        },
+        "BSTinsertPRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          },
+          "points": 1
+        },
+        "BSTremovePRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          }
+        },
+        "BSTsearchPRO": {
+          "exer_options": {
+            "JXOP-code": "none",
+            "JXOP-feedback": "continuous",
+            "JXOP-fixmode": "undo"
+          },
+          "points": 1
+        }
+      },
+      "Binary/BSTDict": {}
+    },
+    "Heaps and Priority Queues": {
+      "Binary/Heaps": {},
+      "Binary/CompleteTree": {}
+    },
+    "Maps, Sets, and Hashing": {
+      "IntroToSoftwareDesign/MapsAndSets": {},
+      "Hashing/HashIntro": {},
+      "Hashing/HashFunc": {},
+      "Hashing/OpenHash": {},
+      "Hashing/HashCSimple": {},
+      "Hashing/HashDel": {}
+    },
+    "Sorting I": {
+      "Sorting/InSort": {},
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      },
+      "Design/Comparison": {},
+      "Sorting/InsertionSort": {},
+      "Sorting/BubbleSort": {
+        "BubsortPRO": {
+          "points": 2,
+          "threshold": 3
+        }
+      },
+      "Sorting/SelectionSort": {
+        "SelsortPRO": {
+          "points": 2
+        }
+      }
+    },
+    "Sorting II": {
+      "Sorting/SortingEmpirical": {},
+      "Sorting/Heapsort": {},
+      "Sorting/Mergesort": {},
+      "Sorting/MergesortImpl": {},
+      "Sorting/ExchangeSort": {},
+      "Sorting/Quicksort": {},
+      "Sorting/QuicksortVid": {}
+    },
+    "Graphs I": {
+      "Graph/GraphIntro": {},
+      "Graph/GraphImpl": {}
+    },
+    "Graphs II": {
+      "Graph/GraphTraversal": {},
+      "Graph/GraphTopsort": {},
+      "Graph/GraphCM": {}
+    },
+    "References": {
+      "Tutorials/cmdline": {},
+      "Tutorials/parameters": {},
+      "Background/Logarithms": {}
+    },
+    "Appendix": {
+      "Glossary": {}
+    }
+  }
+}

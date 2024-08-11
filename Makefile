@@ -1,5 +1,6 @@
 SHELL := /bin/bash
-RM = rm --recursive --force
+#RM = rm --recursive --force
+RM = rm -r
 CONFIG_SCRIPT = tools/configure.py
 .DEFAULT_GOAL := help
 JS_LINT = yarn eslint --no-color
@@ -179,3 +180,6 @@ CS5040MasterN: min
 
 CS3SS18notes: min
 	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
+
+f24_comsc205: min
+	$(PYTHON) $(CONFIG_SCRIPT) config/MHC/f24_comsc205.json -b f24_comsc205 --no-lms

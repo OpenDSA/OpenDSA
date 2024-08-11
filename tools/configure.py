@@ -142,7 +142,7 @@ def process_section(config, section, index_rst, depth, current_section_numbers=[
             else:
                 index_rst.write(".. toctree::\n")
             index_rst.write("   :numbered:\n")
-            index_rst.write("   :maxdepth: 3\n\n")
+            index_rst.write("   :maxdepth: 1\n\n")
             process_section(config, section[
                             subsect], index_rst, depth + 1, current_section_numbers, subsect_name, standalone_modules)
 
@@ -249,7 +249,8 @@ def generate_index_rst(config, slides=False, standalone_modules=False):
         process_section(config, config.chapters, index_rst, 0, standalone_modules=standalone_modules)
 
         index_rst.write(".. toctree::\n")
-        index_rst.write("   :maxdepth: 3\n\n")
+        index_rst.write("   :numbered:\n")
+        index_rst.write("   :maxdepth: 2\n\n")
 
         # Process the Gradebook and Registerbook as well
         # if not slides:
