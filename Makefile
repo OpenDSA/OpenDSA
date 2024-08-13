@@ -181,5 +181,5 @@ CS5040MasterN: min
 CS3SS18notes: min
 	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
 
-f24_comsc205: min
+comsc205: min
 	$(PYTHON) $(CONFIG_SCRIPT) config/MHC/f24_comsc205.json -b f24_comsc205 --no-lms

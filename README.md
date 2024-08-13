@@ -1,3 +1,74 @@
+# OpenDSA Fork for MHC COMSC 205: Data Structures
+
+## Setup (Tony's experience)
+
+1. Install [Docker](https://docs.docker.com/get-docker/). 
+2. Install [Git](https://git-scm.com/book/en/v2/fGetting-Started-Installing-Git)
+3. Clone this repository
+4. Start the service: `docker-compose up` (and leave this running)
+    - [Tony note]: I had to run `docker compose up` with no dash on my machine (WSL on Windows)
+    - The first build of images takes under 5 minutes.  Running them later takes under 10 seconds.
+    - The service is ready when you see `opendsa_1 | * Serving Flask app "app.py"`
+    - This terminal will not be usable at this point since it is a console for the web server.
+    - You can stop the containers by sending an interrupt signal (Press CTRL + C) or using the `docker-compose down` command.
+5. Build the Data Structures book
+    1. Open a new shell in the root of the repository.
+    2. Run `docker-compose exec opendsa bash` to enter the running container from Step 4
+        - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker-compose exec opendsa bash`
+    3. To make the COMSC-205 book, use the command `make comsc205`
+6. See the created book at: https://opendsa.localhost.devcom.vt.edu/Books/
+7. In order to stop the container, you can use the CTRL + C (sending an interrupt signal).
+
+## Repository Structure
+
+Below are the relevant files for our particular build of the Data Structures book.
+
+```
+├── config                      <- Stores different book configurations
+│   └── MHC 
+│       └── f24_comsc205.json   <- Our book configuration for F24
+├── RST                         <- Stores source for textbook content
+│   └── en                      
+│       └── ...                 <- Directories correspond to chapter titles specified in the book configuration
+└── Makefile                    <- See the bottom for our build rule for `make comsc205`
+```
+
+
+## Modifying the Book Configuration
+
+We can modify the book configuration by editing the `f24_comsc205.json` file, under
+the `chapters` object. The top level key is the chapter name of our choosing, while
+the values within a particular chapter map to a particular module section in `RST/en`.
+For example, the following json creates a chapter called "Intro to Java II: Loops and Arrays" which contains the module located at `RST/en/IntroToSoftwareDesign/ConditionalActions.rst`:
+
+```json
+"chapters": {
+    "Intro to Java II: Loops and Arrays": {
+        "IntroToSoftwareDesign/ConditionalActions": {},
+    }
+}
+```
+
+We can preview the material at the following links:
+- CS1 Java intro
+    - compiled online textbook: https://opendsa.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/
+    - local configuration: `config/IntroToSoftwareDesign.json`
+- Data Structures reference
+    - compiled online textbook: https://opendsa.cs.vt.edu/OpenDSA/Books/Everything/html/
+    - local configuration: `config/Everything.json`
+
+OpenDSA also provides a GUI to update the book: https://opendsa.cs.vt.edu/configurations/book
+(**Note:** I am currently having issues loading configurations, emailing with the OpenDSA team for a solution)
+
+1. Upload a book config, such as our `f24_comsc205.json` under `Load Existing Configuration -> Select Configuration File` (may take a while to load)
+2. Scroll to the bottom to see tree structure of `Book Content`
+3. Drag and drop modules to add them, right click to rename/remove.
+4. Download the updated configuration via the `Download Configuration` button at the bottom of the page.
+
+---
+
+Below is the original repo's README.
+
 # OpenDSA (Development Channel)
 
 This is the development repository for the OpenDSA project.
@@ -25,7 +96,6 @@ System documentation can be found at http://opendsa.readthedocs.io/.
     1. In order to interact with OpenDSA, you must access a shell in the running container with `docker-compose exec opendsa bash` in another console in the root of the OpenDSA directory.
         - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker-compose exec opendsa bash`
     2. To make the book defined in `config/Test.json`, now use the command `make Test`
-    3. To make the COMSC-205 book, use the command `make f24_comsc_205`
 6. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
 7. In order to stop the container, you can use the CTRL + C (sending an interrupt signal).
 
