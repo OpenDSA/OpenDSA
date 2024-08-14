@@ -52,7 +52,9 @@ def update_index_html(dest_dir, sectnum):
     #inject css rule to remove haiku's orange bullets
     if '</head>' in line:
       index_html[line_num] = line.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')
-    elif 'class="section"' in line:
+    # previous hard-coded line looks for an html tag that is no longer present
+    #elif 'class="section"' in line:
+    elif '<section id=' in line:
       sectnum += 1
     elif 'RegisterBook' in line:
       #remove registerbook page from TOC
