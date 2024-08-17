@@ -23,8 +23,8 @@ to the Hamiltonian Path problem.
  
 .. inlineav:: threeSATtoHCCON ss
    :long_name: 3-SAT to HC Reduction
-   :links: AV/NP/threeSATtoHCCONnew.css
-   :scripts: AV/NP/threeSATtoHCCONnew.js
+   :links: AV/NP/threeSATtoHCCONold.css
+   :scripts: AV/NP/threeSATtoHCCONold.js
    :output: show
    :keyword: NP-completeness; NP-completeness Proofs; 3-SAT Problem; Hamiltonian Cycle Problem
 

@@ -75,8 +75,8 @@
   },
   "chapters": {
     "Stuff": {
+      "NP/threeSAT_to_hamiltonianCycleOLD": {},
       "NP/threeSAT_to_hamiltonianCycle": {},
-      "NP/threeSAT_to_hamiltonianCycleNEW": {},
       "General/SequentialRep": {}
    },
     "Appendix": {
