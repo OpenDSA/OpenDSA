@@ -2,7 +2,7 @@
 
 ## Setup (Tony's experience)
 
-1. Install [Docker](https://docs.docker.com/get-docker/). 
+1. Install [Docker](https://docs.docker.com/get-docker/)
 2. Install [Git](https://git-scm.com/book/en/v2/fGetting-Started-Installing-Git)
 3. Clone this repository
 4. Start the service: `docker-compose up` (and leave this running)
