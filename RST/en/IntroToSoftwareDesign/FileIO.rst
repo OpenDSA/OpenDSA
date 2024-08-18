@@ -204,65 +204,67 @@ In the code above, there is a field called ``color`` with class-level
 scope, *and* a local variable called ``color`` that only exists within
 the ``setColor()`` method.
 
-Even though these variables have the same name and type, they are different.
-Changing one will not change the other.  Another common example of this can be
-seen when testing.  Let's look at a hypothetical test file for our ``Cat`` class.
+Even though these variables have the same name and type, they are different. Changing one will not change the other.  
 
-.. code-block:: java
+.. TL: Comment out CatTest example.
+.. Another common example of this can be
+.. seen when testing.  Let's look at a hypothetical test file for our ``Cat`` class.
 
-    public class CatTest
-        extends TestCase
-    {
-        private Cat testCat;
+.. .. code-block:: java
 
-        public void setUp()
-        {
-            Cat testCat = new Cat();
-        }
+..     public class CatTest
+..         extends TestCase
+..     {
+..         private Cat testCat;
 
-        public void test1()
-        {
-            testCat.setColor("White");
-        }
-    }
+..         public void setUp()
+..         {
+..             Cat testCat = new Cat();
+..         }
 
-This is the same issue as we saw in the previous example.
-There is a class-level ``Cat`` object declared as a field (``private Cat testCat;``).
-But, instead of initializing the field inside ``setUp()``, we also
-have a local variable being declared, also called ``testCat``.  This means
-the field ``testCat`` will not be initialized, since the object created inside
-``setUp()`` is being used to initialize the local variable inside that method,
-which will cease to exist when the method ends.  When
-we refer to the ``testCat`` variable in ``test1()``, we refer to the field,
-which was never initialized and will therefore contain ``null``.  Thus, this
-test will produce a ``NullPointerException``.
+..         public void test1()
+..         {
+..             testCat.setColor("White");
+..         }
+..     }
 
-Fortunately, the problem is easily fixed.  Once a variable has been declared,
-we only need to refer to it by the variable's name.
+.. This is the same issue as we saw in the previous example.
+.. There is a class-level ``Cat`` object declared as a field (``private Cat testCat;``).
+.. But, instead of initializing the field inside ``setUp()``, we also
+.. have a local variable being declared, also called ``testCat``.  This means
+.. the field ``testCat`` will not be initialized, since the object created inside
+.. ``setUp()`` is being used to initialize the local variable inside that method,
+.. which will cease to exist when the method ends.  When
+.. we refer to the ``testCat`` variable in ``test1()``, we refer to the field,
+.. which was never initialized and will therefore contain ``null``.  Thus, this
+.. test will produce a ``NullPointerException``.
 
-.. code-block:: java
+.. Fortunately, the problem is easily fixed.  Once a variable has been declared,
+.. we only need to refer to it by the variable's name.
 
-    public class CatTest
-        extends TestCase
-    {
-        private Cat testCat;
+.. .. code-block:: java
 
-        public void setUp()
-        {
-            testCat = new Cat();
-        }
+..     public class CatTest
+..         extends TestCase
+..     {
+..         private Cat testCat;
 
-        public void test1()
-        {
-            testCat.setColor("White"); // this won't work!
-        }
-    }
+..         public void setUp()
+..         {
+..             testCat = new Cat();
+..         }
 
-This code would run without error. The field ``testCat`` is still declared
-outside any method, giving it a class-level scope.  But this time, it is
-initialized in our ``setUp()`` method correctly, and ``setUp()``
-runs before every test.  This means that in ``test1()``, ``testCat`` would
-refer to a ``Cat`` object, not the value ``null``.
+..         public void test1()
+..         {
+..             testCat.setColor("White"); // this won't work!
+..         }
+..     }
+
+.. This code would run without error. The field ``testCat`` is still declared
+.. outside any method, giving it a class-level scope.  But this time, it is
+.. initialized in our ``setUp()`` method correctly, and ``setUp()``
+.. runs before every test.  This means that in ``test1()``, ``testCat`` would
+.. refer to a ``Cat`` object, not the value ``null``.
 
 
 A Note on Naming
@@ -310,14 +312,23 @@ look at what is happening here by adding a few print statements:
             System.out.println(this.color);
             System.out.println(color);
         }
+
+        public static void main(String[] args) {
+            Cat cat = new Cat();
+            cat.setColor("Green");
+        }
     }
 
 In this example, whenever we make a new ``Cat`` object, the value of the
-field ``color`` is set to "Black" at first.  When we run ``setColor("Green")``
-we see an interesting result in our print statements:
+field ``color`` is set to "Black" at first.  When we run the main method with ``setColor("Green")`` we see an interesting result in our print statements:
 
-.. odsafig:: Images/ScopeCatOutput.png
-   :align: center
+::
+    
+    $ javac Cat.java 
+    $ java Cat 
+    Black
+    Green
+
 
 The first thing to be printed out is ``this.color``.  Which we see is "Black".
 The value of the field was not changed to "Green"! This means that when we write
