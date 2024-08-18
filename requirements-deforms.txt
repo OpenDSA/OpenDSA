@@ -12,3 +12,6 @@ networkx==2.5
 sympy==1.9
 pint==0.19.1
 unit_parse==0.1.5
+runestone>=4.0.0
+psycopg2-binary
+SQLAlchemy>=1.0.8

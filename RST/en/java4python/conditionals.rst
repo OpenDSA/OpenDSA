@@ -64,8 +64,9 @@ Java does not have an elif pattern like Python. In Java you can get the
 functionality of an elif statement by nesting if and else. Here is a
 simple example in both Python and Java.
 
-.. activecode:: pyelif
-    :language: python
+.. .. activecode:: pyelif
+..     :language: python
+.. code-block:: python
 
     grade = int(input('enter a grade'))
     if grade < 60:
@@ -81,9 +82,10 @@ simple example in both Python and Java.
 
 In Java we have a couple of ways to write this
 
-.. activecode:: javaelif
-   :language: java
-   :sourcefile: ElseIf.java
+.. .. activecode:: javaelif
+..    :language: java
+..    :sourcefile: ElseIf.java
+.. code-block:: java
 
    public class ElseIf {
        public static void main(String args[]) {
@@ -114,9 +116,10 @@ Java rule that a single statement does not need to be enclosed in curly
 braces. Since the if is the only statement used in each else we can get
 away with the following.
 
-.. activecode:: javaelif2
-   :language: java
-   :sourcefile: ElseIf.java
+.. .. activecode:: javaelif2
+..    :language: java
+..    :sourcefile: ElseIf.java
+.. code-block:: java
 
    public class ElseIf {
        public static void main(String args[]) {
@@ -140,9 +143,10 @@ Java also supports a ``switch`` statement that acts something like the
 elif statement of Python under certain conditions. To write the grade
 program using a switch statement we would use the following:
 
-.. activecode:: javaswitch
-   :language: java
-   :sourcefile: SwitchUp.java
+.. .. activecode:: javaswitch
+..    :language: java
+..    :sourcefile: SwitchUp.java
+.. code-block:: java
 
    public class SwitchUp {
        public static void main(String args[]) {

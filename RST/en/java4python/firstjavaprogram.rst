@@ -26,10 +26,12 @@ Now lets look at the same program written in Java:
 .. highlight:: java
    :linenothreshold: 4
 
-.. activecode:: hellojava
+.. 
+    activecode:: hellojava
     :language: java
     :sourcefile: Hello.java
-
+.. code-block:: java
+    
     public class Hello {
 
         public static void main(String[] args) {

@@ -8,3 +8,6 @@ Flask==2.0.3
 Werkzeug>=2.2,<3.0
 Flask-AutoIndex==0.6.6
 gunicorn==20.1.0
+runestone>=4.0.0
+psycopg2-binary
+SQLAlchemy>=1.0.8

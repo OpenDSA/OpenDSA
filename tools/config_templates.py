@@ -136,6 +136,7 @@ conf = '''\
 
 import sys, os
 import json
+from runestone import runestone_extensions, runestone_static_dirs
 
 #checking if we are building a book or class notes (slides)
 on_slides = os.environ.get('SLIDES', None) == "yes"
@@ -152,7 +153,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig'] + runestone_extensions()
 
 ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe']
 
@@ -300,7 +301,7 @@ html_logo =  "_static/OpenDSALogoT64.png"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static'] + runestone_static_dirs()
 
 # Manipulates the lists of scripts that jQuery automatically loads
 # The Sphinx-generated search page is dependent on certain files being loaded in the head element whereas
@@ -315,7 +316,9 @@ html_static_path = ['_static']
 # to properly link to Privacy.html
 # The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 
-html_context = {"script_files": [
+html_context = {
+                "course_id": "%(book_name)s",
+                "script_files": [
                   #'https://code.jquery.com/jquery-2.1.4.min.js',
                   '%(eb2root)slib/jquery.min.js',
                   '%(eb2root)slib/jquery.migrate.min.js',

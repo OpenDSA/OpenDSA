@@ -1,5 +1,5 @@
 FROM node:22-alpine3.20 AS node
-FROM python:3.9-alpine3.20
+FROM python:3.10-alpine3.20
 
 ARG ODSA_ENV="DEV"
 ENV ODSA_ENV=${ODSA_ENV}

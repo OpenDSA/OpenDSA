@@ -12,3 +12,6 @@ girth==0.8.0
 numpy==1.22.3
 pandas==1.4.2
 mysql-connector-python==8.0.29
+runestone>=4.0.0
+psycopg2-binary
+SQLAlchemy>=1.0.8

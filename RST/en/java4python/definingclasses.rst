@@ -25,9 +25,11 @@ language. The requirements for this new data type are as follows:
 Here is a mostly complete implementation of a Fraction class in Python
 that we will refer to throughout this section:
 
-.. activecode:: fraction
-   :language: python
+.. .. activecode:: fraction
+..    :language: python
 
+.. code-block:: python
+    
    class Fraction:
        def __init__(self, num, den):
            """
@@ -293,9 +295,10 @@ practice.
 Our full ``Fraction`` class to this point would look like the following. You
 should compile and run the program to see what happens.
 
-.. activecode:: fraction1
-    :language: java
-    :sourcefile: Fraction.java
+.. .. activecode:: fraction1
+..     :language: java
+..     :sourcefile: Fraction.java
+.. code-block:: java
 
     public class Fraction {
 
@@ -596,8 +599,9 @@ do this with a global counter variable that is an ugly solution. The
 right way to do it is to use a static variable. In Python we could do
 this as follows:
 
-.. activecode:: pystudent
-    :language: python
+.. .. activecode:: pystudent
+..     :language: python
+.. code-block:: python
 
     class Student:
         numStudents = 0
@@ -617,9 +621,10 @@ this as follows:
 
 In Java we would write this same example using a static declaration.
 
-.. activecode:: studentclass
-    :language: java
-    :sourcefile: Student.java
+.. .. activecode:: studentclass
+..     :language: java
+..     :sourcefile: Student.java
+.. code-block:: java
 
     public class Student {
         public static Integer numStudents = 0;
@@ -676,9 +681,10 @@ Full Implementation of the Fraction Class
 
 Here is a final version of the ``Fraction`` class in Java, which includes all the features we discussed:
 
-.. activecode:: fullfraction
-    :language: java
-    :sourcefile: Fraction.java
+.. .. activecode:: fullfraction
+..     :language: java
+..     :sourcefile: Fraction.java
+.. code-block:: java
 
     import java.util.ArrayList;
     import java.util.Collections;

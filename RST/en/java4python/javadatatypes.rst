@@ -36,8 +36,11 @@ Let's look at a simple Python function which converts a Fahrenheit
 temperature to Celsius.
 If this program were run on the command-line, you would enter the temperature when prompted -- the Javascript pop-up for input is only an artifact of the digital textbook.
 
-.. activecode:: tcpython
+.. 
+    activecode:: tcpython
     :language: python
+
+.. code-block:: python
 
     def main():
         fahr = int(input("Enter the temperature in F: "))
@@ -48,10 +51,11 @@ If this program were run on the command-line, you would enter the temperature wh
 
 Next, lets look at the Java equivalent. If this program were run on the command-line, you would enter the temperature when prompted -- the "Input for Program" text box is only an artifact of the digital textbook.
 
-.. activecode:: convert1
-    :language: java
-    :sourcefile: TempConv.java
-    :stdin: 212
+.. .. activecode:: convert1
+..     :language: java
+..     :sourcefile: TempConv.java
+..     :stdin: 212
+.. code-block:: java
 
     import java.util.Scanner;
 
@@ -262,8 +266,11 @@ Next, let's look at a program which reads numbers from a file and produces a his
 The data file we will use has one number between 0 and 9 on each line of the file.
 Here is a simple Python program that creates and prints a histogram.
 
-.. activecode:: histopy
+.. 
+    activecode:: histopy
     :language: python
+
+.. code-block:: python
 
     def main():
         count = [0]*10
@@ -320,10 +327,12 @@ but is easy when you understand the syntax:
 
 Here is the Java code needed to write the exact same program:
 
-.. activecode:: histojava
-    :language: java
-    :sourcefile: Histo.java
-    :datafile: test.dat
+.. .. activecode:: histojava
+..     :language: java
+..     :sourcefile: Histo.java
+..     :datafile: test.dat
+
+.. code-block:: java
 
     import java.util.Scanner;
     import java.util.ArrayList;
@@ -491,10 +500,11 @@ of something called arrays. In fact you have already seen one example of
 an array declared in the ‘Hello World’ program. Lets rewrite this
 program to use primitive arrays rather than array lists.
 
-.. activecode:: primarrays
-    :language: java
-    :sourcefile: HistoArray.java
-    :datafile: test.dat
+.. .. activecode:: primarrays
+..     :language: java
+..     :sourcefile: HistoArray.java
+..     :datafile: test.dat
+.. code-block:: java
 
     import java.util.Scanner;
     import java.io.File;
@@ -549,9 +559,11 @@ Lets stay with a simple frequency counting example, only this time we
 will count the frequency of words in a document. A simple Python program
 for this job could look like this:
 
-.. activecode:: pywordcount
-   :language: python
+.. .. activecode:: pywordcount
+..    :language: python
 
+.. code-block:: python
+    
    def main():
        data = open('alice30.txt')
        wordList = data.read().split()
@@ -587,10 +599,12 @@ for this job could look like this:
 Notice that the structure of the program is very similar to the numeric
 histogram program.
 
-.. activecode:: dictjava
-    :language: java
-    :sourcefile: HistoMap.java
-    :datafile: alice30.txt
+.. .. activecode:: dictjava
+..     :language: java
+..     :sourcefile: HistoMap.java
+..     :datafile: alice30.txt
+
+.. code-block:: java
 
     import java.util.Scanner;
     import java.util.ArrayList;
@@ -633,4 +647,5 @@ histogram program.
         }
     }
 
-Improve the program above to remove the punctuation.
+
+**Try it out yourself**: Improve the program above to remove the punctuation.
