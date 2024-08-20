@@ -1414,8 +1414,16 @@ define(function(require) {
     hints = hints.tmpl().children().get();
 
     // Hook out for exercise test runner
-    if (localMode && parent !== window && typeof parent.jQuery !== "undefined") {
-      parent.jQuery(parent.document).trigger("problemLoaded", [makeProblem, answerData.solution]);
+    try {
+      if (localMode && parent !== window && typeof parent.jQuery !== "undefined") {
+          parent.jQuery(parent.document).trigger("problemLoaded", [makeProblem, answerData.solution]);
+      }
+    } catch (e) {
+        if (e instanceof DOMException) {
+            console.warn("KA exercise running externally:");
+        } else {
+            throw e; // Re-throw if it's not a DOMException issue
+        }
     }
 
     $("#hint").val($._("I'd like a hint"));
