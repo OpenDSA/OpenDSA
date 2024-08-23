@@ -121,19 +121,20 @@ part of the Fraction class definition is as follows:
     }
 
 Notice that we have declared the numerator and denominator to be
-private. This means that the compiler will generate an error if another
-method tries to write code like the following:
+private. This means that the compiler will generate an error if a
+method in another class includes code like the following:
 
 ::
 
     Fraction f = new Fraction(1,2);
     Integer y = f.numerator * 10;
 
-Direct access to instance variables is not allowed. Therefore if we
+Direct access to private instance variables from another class is not allowed.
+Therefore if we
 legitimately want to be able to access information such as the numerator
-or denominator for a particular fraction we must have getter methods.
-It is very common programming practice to provide getter and setter
-methods for instance variables in Java.
+or denominator for a particular fraction we must have getter methods.  If we
+want to be able to modify an instance variable from another class, we need
+to provide a setter method.
 
 ::
 
@@ -161,7 +162,8 @@ thing to consider is the constructor. In Java, constructors have the
 same name as the class and are declared public. They are declared
 without a return type. So any method that is named the same as the
 class and has no return type is a constructor. Our constructor will take
-two parameters: the numerator and the denominator.
+two parameters: the numerator and the denominator for the fraction we are
+constructing.
 
 ::
 
@@ -212,8 +214,8 @@ Let's begin by implementing addition in Java:
     }
 
 First you will notice that the ``add`` method is declared as
-``public Fraction`` The ``public`` part means that any other method may
-call the ``add`` method. The ``Fraction`` part means that ``add`` will
+``public Fraction``. The ``public`` part means that methods from other classes 
+can call the ``add`` method. The ``Fraction`` part means that ``add`` will
 return a fraction as its result.
 
 Second, you will notice that the method makes use of the ``this`` variable. In this method, ``this`` is not necessary, because there is no ambiguity about the ``numerator`` and ``denominator`` variables. So this version of the code is equivalent: 
@@ -236,9 +238,10 @@ divisor method, ``gcd``, is used to find a common divisor to simplify the
 numerator and denominator in the result.
 
 Finally on line 6 a new ``Fraction`` is returned as the result of the
-computation. The value that is returned by the return statement must
-match the value that is specified as part of the declaration. So, in
-this case the return value on line 8 must match the declared value on
+computation. The type of the value that is returned by the return statement must
+match the type that is specified as part of the declaration. So, in
+this case the value returned on line 8 must be a ``Fraction`` since that is
+the return type specified on
 line 1.
 
 Method Signatures and Overloading
@@ -255,7 +258,7 @@ In Java we can do runtime type checking, but the compiler will not allow
 us to pass an Integer to the ``add`` method since the parameter has been
 declared to be a Fraction. The way that we solve this problem is by
 writing another ``add`` method with a different set of parameters. In
-Java this practice is legal and common we call this practice
+Java this practice is legal and common.  We call this practice
 **method overloading**.
 
 This idea of method overloading raises a very important difference between
@@ -536,7 +539,7 @@ layer to the class hierarchy it would also complicate things
 dramatically, because not only are ``Numbers`` comparable, but ``Strings`` are
 also ``Comparable`` as would many other types. For example, we might have a
 ``Student`` class and we want to be able to sort students by their GPA.
-But ``Student`` might already extends the class ``Person`` for which there would be no natural comparison method.
+But ``Student`` might already extend the class ``Person`` for which there would be no natural comparison method.
 
 Java’s answer to this problem is the ``Interface`` mechanism. Interfaces
 are like a combination of "inheritance" and "contracts" all rolled into one.
@@ -627,7 +630,7 @@ In Java we would write this same example using a static declaration.
 .. code-block:: java
 
     public class Student {
-        public static Integer numStudents = 0;
+        private static Integer numStudents = 0;
 
         private int id;
         private String name;
@@ -648,7 +651,7 @@ In Java we would write this same example using a static declaration.
     }
 
 
-In this example notice that we create a static member variable by using
+In this example notice that we create a static variable by using
 the ``static`` modifier on the variable declaration. Once a variable has
 been declared ``static`` in Java it can be accessed from inside the class
 without prefixing the name of the class as we had to do in Python.
@@ -658,7 +661,7 @@ Static Methods
 
 We have already discussed the most common static method of all,
 ``main``. However in our ``Fraction`` class we also implemented a method to
-calculate the greatest common divisor for two fractions (``gdc``). There
+calculate the greatest common divisor for two fractions (``gcd``). There
 is no reason for this method to be a member method since it takes two
 ``Integer`` values as its parameters. Therefore we declare the method to
 be a static method of the class. Furthermore, since we are only going to
