@@ -217,6 +217,85 @@ the user libraries necessary for assignments in this course,
 and lab or programming assignments will not compile without these.
 
 
+Free Passes Instead of Traditional Late Policy
+----------------------------------------------
+
+In this course, assignments do not remain open past the due date for you
+to submit "late". That also means there are no late penalties. Instead, we
+are using a different approach to handle situations where you are unable to
+complete specific assignments by the due date.
+
+Learning from mistakes is an important part of mastering any skill, especially
+for novices. To enable this, you are allowed (and encouraged!) to revise and
+resubmit your work on all assignments to demonstrate improved mastery, even
+after you receive a grade on the work. For all reading assignments, labs,
+and program assignments, you will receive electronic feedback as you work so
+that you can revise and resubmit your work as many times as needed before the
+due date. In addition, each student will begin the semester with *6 free passes*
+that can be used to resubmit revised work after the due date. You can also
+use a free pass to submit work late if you are not finished by the due date.
+
+Free passes are used according to the following constraints:
+
+* All work is due on the date specified for the assignment here on Canvas, and
+  no late work will be accepted without the use of a free pass.
+* Free passes can be used on any reading assignment, lab assignment, program
+  assignment, or quiz.
+* Students may use a maximum of one free pass per week (one assignment per week).
+* Assignments are not eligible to be resubmitted using a free pass until
+  feedback has been released.
+* Past assignments will be available for free pass redemption on weekly
+  cycles. Assignments will by available for 3 weekly cycles after feedback
+  has been released, and resubmission attempts for assignments can only be
+  made during those 3 weeks (except for quizzes, which are available for
+  one resubmission in 1 weekly cycle). No resubmission is available after
+  the last day of class meetings at the end of the semester.
+* Employing a free pass allows you to "re-open" a reading, lab, or
+  programming assignment to make repeated submissions and receive
+  automated feedback for an additional 24 hours on the day you pick within
+  the weekly resubmission cycle. For quizzes, a free pass allows a student
+  to re-take the quiz at a designated time on the Friday in that weekly
+  resubmission cycle.
+* If you use all your free passes but find you need another one, you may
+  use the free pass form to explain your situation and request an additional
+  free pass.
+
+Free passes work like this: Each week, specific assignments will be available
+for that week's resubmission cycle, which will take place on Friday, Saturday,
+and Sunday. Assignments are available for three cycles after feedback is
+returned, while quizzes are available for only one cycle.
+
+If you wish to use a free pass, an online form will be available on Canvas
+each week starting on Monday where you can indicate which assignment you wish
+to re-open, and which day (Friday or Saturday or Sunday) during that cycle
+you wish to re-open the assignment on. Just fill out the form between
+Monday-Thursday. You can use a free pass for any reason you want, and you
+do not need to explain why you are using a free pass--they are yours to use
+when you need to based on your own situation, so feel free to employ them
+whenever you need them. Once you've filled out the form, just work on the
+assignment and resubmit your work (as many times as needed) during the day you
+selected.
+
+Quizzes are slightly different than other assignments, since they are in-class
+activities. For all three Monday/Wednesday lectures, students in those sections
+will go to their regular classroom at their regular meeting time on Friday to
+use their free pass on the quiz available that week. For students who go to
+Tuesday/Thursday lectures, you will select one of the three Mon/Wed lecture
+meeting times to attend on Friday. Remember that quizzes will only be open
+for one resubmission cycle, so quizzes can only be re-taken (or taken late)
+one time.
+
+Since there are a limited number of weeks in the term, it is important that
+you stay on top of your work as much as possible. Our resubmission policy
+is designed such that you should only be using free passes rarely instead
+of regularly. It is imperative for you to complete as much of each assignment,
+preferably all of it, by its due date where possible. This will allow you to
+receive feedback before resubmitting.
+
+At the end of the semester, if you still have any unused free passes, they
+will each count for 1 point of extra credit in calculating your grade.
+
+
 Cheating and The Honor Code
 ---------------------------
 

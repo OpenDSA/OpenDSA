@@ -647,8 +647,8 @@ Programming Practice 8b
    :workout_id: 1858
 
 
-Your Opinions on TAs, Learning, and Engagement
-----------------------------------------------
+Your Opinions on TAs and Office Hours
+-------------------------------------
 
 Please complete the survey at the link provided below. The purpose of this
 survey is to provide feedback to the TAs in this course so that they can
@@ -656,7 +656,7 @@ build on their strengths and improve their weaknesses.
  
 .. raw:: html
 
-    <a href="https://virginiatech.questionpro.com/t/AUHNlZ3naM" target="_blank">CS 1114 Engagement Survey 2</a>
+    <a href="https://virginiatech.questionpro.com/t/AUHNlZ3naM" target="_blank">CS 1114 TA Survey</a>
  
 Please answer below and your participation in the survey will be verified
 for credit.

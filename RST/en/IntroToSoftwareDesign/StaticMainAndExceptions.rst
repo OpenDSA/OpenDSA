@@ -314,8 +314,8 @@ Check Your Understanding: The Static Keyword
    :long_name: The Static Keyword
 
 
-Your Opinions on TAs, Learning, and Engagement
-----------------------------------------------
+Your Opinions on Learning and Engagement
+----------------------------------------
 
 Please complete the survey at the link provided below. The survey results
 will be used to improve this course, and your input is critical because
