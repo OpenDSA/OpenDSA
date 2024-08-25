@@ -62,25 +62,6 @@ is normal or what course staff expect of the bulk of students in this course
 who do not already know how to program.
 
 
-Online and Face-to-face Sections
---------------------------------
-
-This course includes a mix of both online lecture and lab sections
-as well as in-person (face-to-face) lecture and lab sections. All
-sections share the same syllabus, course content, and assignments.
-However, be aware that the course website on Canvas and the course
-discussion areas involve students from all sections, so you will likely
-see questions or information for both groups. In specific assignments,
-if there is any difference in instructions between in-person vs. online
-sections, it will be clearly described--make sure to follow the instructions
-that apply to your section.
-
-We strongly encourage students without any prior
-experience to choose in-person sections where possible.
-The online sections are more appropriate for students with significant
-prior programming experience.
-
-
 Weekly Schedule
 ---------------
 
@@ -109,8 +90,8 @@ activities:
 * Sunday: Reading Activity due, to prepare for the week's lectures
 * Monday: Lab Assignment for the week posted, get started early
 * Monday or Tuesday: Lecture meeting
-* Tuesday: Program Assignment due, posted the previous week
-* Tuesday: New Program Assignment posted, due next week
+* Wednesday: Program Assignment due, posted the previous week
+* Wednesday: New Program Assignment posted, due next week
 * Wednesday or Thursday: Lecture meeting
 * During one lecture meeting: In-Class Quiz approximately every other week
 * Thursday/Friday/Monday/Tuesday/Wednesday: Lab assignment due in your scheduled lab meeting
@@ -122,7 +103,7 @@ Reading Activities
 Each week begins with a Reading Activity due Sunday night. This activity
 includes embedded exercises to check your understanding and to allow
 you to practice what you are learning. All exercises in a given activity
-must be successfully answered to receive an "Excellent" grade for that
+must be successfully answered to receive the maximum grade for that
 activity. The course uses a "flipped classroom" model, so do not expect
 the reading material to be duplicated in a traditional lecture style in
 class--it is your responsibility to read the material and exercises so
@@ -142,6 +123,17 @@ labs early allows you to try your hand at starting out the lab on your own.
 We encourage you to start the lab and get a far a you can before you go to
 lab.
 
+Remember to be prompt to your lab meeting. Each week you will have a
+different lab partner to work with. You must arrive on time so that you
+and your partner can start together. If you are more than 15 minutes late
+to lab, your partner will have been assigned to someone else and you will
+no longer be eligible to work with them, or to receive credit for the lab
+assignment during your lab period.  Instead, you will need to complete
+the work on your own and use a Free Pass to submit it afterward. Also,
+remember that you and your lab partner are working together, so you may
+not leave the lab period until both you and your partner are finished
+with all the work including the post-lab quiz, or the lab period ends.
+
 Note that lab meetings will not start until *Thursday* the first week. The
 first lab sections to work on a given lab assignment will be on Thursdays,
 with the same lab assignment being completed by following lab sections on
@@ -151,9 +143,9 @@ the lab is due. This also means lab meetings will continue through the last
 *Wednesday* of classes.
 
 You will not be able to submit your lab for a grade or any feedback until
-the start of your lab period. You can submit your lab as many times a you
+the start of your lab period. You can submit your lab as many times as you
 want within the deadline, and make corrections based on the feedback you
-receive.  You will also have TAs present for your lab period to answer
+received.  You will also have TAs present for your lab period to answer
 any questions you have or to help you resolve any errors you are running
 into. However, please be aware that your TAs expect you to be prepared and
 to do the work. If you have not read the instructions or figured out how to
@@ -161,40 +153,43 @@ get started before coming to your lab period, do not expect them to hold
 your hand. They are a resource to help steer when you run into problems,
 but they are a shared resource used by all the students in your section
 rather than a personal trainer. If you are completely unprepared, expect
-that you will be unable to finish lab on time and will have to work yourself
-after lab to complete the assignment on your own time.
+that you will be unable to finish lab on time and will have to work on your
+own after lab to complete the assignment on your own time, using a Free Pass
+to turn it in late.
 
 You may also find that some students in the course who have prior programming
 experience are able to complete lab assignments on their own before arriving
-to their lab meeting. That is ok, but is not the expectation for students who
-have no prior experience. Remember that labs are intended as practice activities
-to reinforce the concepts you are learning, and it is natural and expected that
-you may regularly run into situations where you wish to ask TAs for clarification
-or assistance on something you have not seen before. That is what your lab
-period is for, and why every lab period is staffed with TAs to answer your
-questions, so do make use of them during that time as you learn.
+to their lab meeting, and from time to time, you may have one of them as
+your lab partner. However, be aware that it *is not our expectation that
+students can complete lab assignments ahead of time*. While some students
+with prior programming experience may be able to do this, for those of you
+who are new to programming, the expectation is that you will need to go to
+your lab meeting, work with your partner, and ask the TAs any questions you
+run into in order to complete the lab assignment. Remember that labs are
+intended as practice activities to reinforce the concepts you are learning,
+and it is natural and expected that you may regularly run into situations
+where you wish to ask TAs for clarification or assistance on something you
+have not seen before. That is what your lab period is for, and why every lab
+period is staffed with TAs to answer your questions, so do make use of them
+during that time as you learn.
 
 
 Programming Assignments
 -----------------------
 
-Programming assignments will be given almost every week, posted on Tuesdays
-and due the following Tuesday night. Programming assignments typically come
-in pairs: one week, your programming assignment will be to work on a brand
-new problem setting up your solution and making sure you have a solid
-starting point. The next week, your programming assignment will be to fill
-in the remainder of that starting point to flesh it out into a full solution.
-
-This semester, we will cover a total of 12 programming assignments, arranged in
-6 pairs. Each odd-numbered assignment will start a completely new problem
-with setting up your solution, and each even-numbered assignment will involve
-building the corresponding solution to a working final product.
-This means that the work necessary for the first assignment in each
-pair is an integral element of your solution for the second assignment of the
-pair the following week. So even if you fail to turn in the first part, you
-will still need to make up the work in order to successfully complete the
-second half. Please keep this in mind when planning how to approach the
-programs.
+Programming assignments will be given every other week, posted on Wednesdays
+and due Wednesday night two weeks later. Each programming assignment includes
+two stages, and the expectation is that you will complete and start turning
+in your first stage by one week after the assignment is posted, and finish
+the second stage by the due date a week after that. The purpose of these stages
+is to encourage students to start their work early enough that they will be
+sure to understand the details of the assignment and have time to go to
+office hours to ask any questions they have, particularly when they run
+into unexpected difficulties. Stage 1 of the assignment will get you started
+on setting up your solution, ensuring all of the names and features are
+correctly arranged, and making sure you have a solid starting point. The
+next week, Stage 2 will be to fill in the remainder of that starting point
+to flesh it out into a full solution.
 
 We recommend that students schedule in fixed periods of programming time to
 work on programming assignments each week. The best time may be between the
@@ -218,7 +213,7 @@ for code development in class, including all examples shown in lecture.
 See the "Install BlueJ" link on the course home page for installation
 instructions--please be sure to download and install directly from Canvas
 instead of going to the ``bluej.org`` website. The version on Canvas includes
-the necessary user libraries necessary for assignments in this course,
+the user libraries necessary for assignments in this course,
 and lab or programming assignments will not compile without these.
 
 
@@ -234,15 +229,14 @@ Cheating and The Honor Code
     Virginia Tech students are expected to uphold and to encourage other students to abide by the Honor Code. A primary responsibility of Virginia Tech students is to refrain from any form of violation of the Honor Code. 
 
 Honor code violations are unfortunately common in early computer science
-courses, and the Office of Academic Integrity has seen a significant
-rise in violations during the past year. It is important for all students
+courses, and the Office of Undergraduate Academic Integrity has seen a
+significant rise in violations recently. It is important for all students
 to understand how serious these issues are. You must complete the following
-Canvas modules:
+Canvas module:
 
-1. Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/CE7YK9>`_
-2. Attend: `Understanding the Code <https://canvas.vt.edu/enroll/GALMPM>`_ (offered in-person, Graduate Life Center Auditorium from 7:30–8:30 p.m. on August 30, August 31, and September 1, or asynchronously on Canvas September 2-6.)
+* Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/CE7YK9>`_
 
-Remember that there are certain issues you can freely discuss with each
+Remember that there are some topics you can freely discuss with each
 other in order to learn. In this course, you may freely offer and receive
 verbal assistance with your classmates on the following topics:
 

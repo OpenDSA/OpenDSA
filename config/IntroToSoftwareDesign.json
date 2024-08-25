@@ -310,17 +310,21 @@
           "points": 15
         },
         "Week8Quiz1Summ": {
-          "points": 5
+          "points": 4
         },
         "Week8Quiz2Summ": {
-          "points": 5
+          "points": 4
         },
         "Week8Quiz3Summ": {
-          "points": 6
+          "points": 4
         },
         "Week8ReadingQuizSumm": {
           "points": 15,
           "threshold": 10
+        },
+        "MUSICSurvey": {
+            "points": 4,
+            "threshold": 1
         }
       }
     },
