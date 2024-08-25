@@ -415,14 +415,14 @@ things that are risky, and gracefully recover from an error if one
 occurs. The following example shows the general structure of a try/catch
 block.
 
-::
+.. code-block:: java
 
     try {
-       Put some risky code in here, like opening a file
+       // Put some risky code in here, like opening a file
     }
     catch (Exception e) {
-       If an error happens in the try block an exception is thrown.
-       We will catch that exception here!
+       // If an error happens in the try block an exception is thrown.
+       // We will catch that exception here!
     }
 
 Notice that in line 16 we are catching an ``IOException``. In fact, we

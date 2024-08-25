@@ -163,7 +163,7 @@
       </div>
       <div class="topnav">
         <p>
-          {%- if sourcename %}
+          <!-- {%- if sourcename %}
             <a style="float:left;color:blue;" href="{{ pathto('../source/' + sourcename.replace('.txt', '.rst'), true)|e }}"
               target="_blank" rel="nofollow">{{ _('Show Source') }} | </a>&#160;&#160;
           {%- endif %}
@@ -172,7 +172,7 @@
             &#160;&#160;
           {%- else %}
             <a class="abt" style="float:left;color:blue;" href="#" rel="nofollow">| {{ about }}</a>&#160;&#160;
-          {%- endif %}
+          {%- endif %} -->
 
           {{ nav() }}
         </p>
@@ -180,6 +180,7 @@
        {{ linktags }}
       <div class="content">
 
+      <!--
       {%- if pagename=="index" -%}
       <div class="sidebar" style="border-style:none;background-color:transparent">
           {%- block sidebarsearch %}
@@ -196,7 +197,7 @@
           {%- endblock %}
         </div>
       {%- endif -%}
-
+      -->
 
         {#{%- if display_toc %}
         <div id="toc">
@@ -207,8 +208,12 @@
         {% block body %}{% endblock %}
       </div>
       <div class="bottomnav">
-      <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">{{ contact }} |</a><a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/Privacy.html' }}" target="_blank">| {{ privacy }} |</a> <a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/license.html' }}" target="_blank">| {{ license }}</a></span>&#160;&#160;
+      <!-- <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">{{ contact }} |</a><a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/Privacy.html' }}" target="_blank">| {{ privacy }} |</a> <a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/license.html' }}" target="_blank">| {{ license }}</a></span>&#160;&#160; -->
+      <p>
+        <span class="email_div" style="display:inline;">
+          <a style="float:left;color:blue;text-align: center;" rel="nofollow" href="{{ odsa_root_path + 'lib/license.html' }}" target="_blank">&#160;&#160;{{ license }}</a>
+        </span>&#160;&#160; 
       {{ btm_nav() }}</p>
       </div>
-      <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/>
+      <!-- <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt="nsf"/> -->
 {% endblock %}
