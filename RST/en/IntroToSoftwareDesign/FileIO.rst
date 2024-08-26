@@ -7,15 +7,17 @@
    :author: Molly
 
 
-Variable Scoping, Input, and Output 
-===================================
+.. Variable Scoping, Input, and Output 
+.. ===================================
+
+More on Input and Output 
+========================
+
 
 Variable Scoping
 ----------------
 
-Now that you have experience with fields, parameters, and variables in a
-variety of situations, it is time to learn more about exactly where a
-user-defined name can be accessed. The *scope* of a user-defined name is the region of
+This section discusses exactly where a user-defined name can be accessed. The *scope* of a user-defined name is the region of
 source code where the name is visible and can be used.
 
 
@@ -73,7 +75,7 @@ very beginning of the body of a method.   Once the flow of execution leaves a
 method, its parameters and other local variables cease to exist. The scope
 of local variables is referred to as **local scope**.
 
-.. note:: Local Variables
+**Local Variables**
 
     Local variables, that is, parameters and variables declared in the body of
     a method, have **local scope** which extends from the point at which they
@@ -81,7 +83,7 @@ of local variables is referred to as **local scope**.
     particular, the scope of a parameter is the entire body of the method in
     which it is declared.
 
-It would be a syntax error to refer to a method’s parameters or other local
+It would be a syntax error to refer to a method's parameters or other local
 variables from outside the method.
 
 

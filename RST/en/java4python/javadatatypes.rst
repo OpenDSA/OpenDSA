@@ -34,13 +34,14 @@ version of all the numeric data types and let the compiler do its thing.
 
 Let's look at a simple Python function which converts a Fahrenheit
 temperature to Celsius.
-If this program were run on the command-line, you would enter the temperature when prompted -- the Javascript pop-up for input is only an artifact of the digital textbook.
+If this program were run on the command-line, you would enter the temperature when prompted.
 
 .. 
     activecode:: tcpython
     :language: python
 
 .. code-block:: python
+    :linenos:
 
     def main():
         fahr = int(input("Enter the temperature in F: "))
@@ -56,6 +57,7 @@ Next, lets look at the Java equivalent. If this program were run on the command-
 ..     :sourcefile: TempConv.java
 ..     :stdin: 212
 .. code-block:: java
+    :linenos:
 
     import java.util.Scanner;
 
@@ -271,6 +273,7 @@ Here is a simple Python program that creates and prints a histogram.
     :language: python
 
 .. code-block:: python
+    :linenos:
 
     def main():
         count = [0]*10
@@ -333,6 +336,7 @@ Here is the Java code needed to write the exact same program:
 ..     :datafile: test.dat
 
 .. code-block:: java
+    :linenos:
 
     import java.util.Scanner;
     import java.util.ArrayList;
@@ -416,6 +420,7 @@ occurs. The following example shows the general structure of a try/catch
 block.
 
 .. code-block:: java
+    :linenos:
 
     try {
        // Put some risky code in here, like opening a file
@@ -500,11 +505,16 @@ of something called arrays. In fact you have already seen one example of
 an array declared in the ‘Hello World’ program. Lets rewrite this
 program to use primitive arrays rather than array lists.
 
+.. note::
+    This section moves a little quickly through arrays. In the course we will be practicing more with arrays in the assignments before moving on to 
+    ``ArrayLists``.
+
 .. .. activecode:: primarrays
 ..     :language: java
 ..     :sourcefile: HistoArray.java
 ..     :datafile: test.dat
 .. code-block:: java
+    :linenos:
 
     import java.util.Scanner;
     import java.io.File;
@@ -555,6 +565,12 @@ provides two different implementations of a map, one is called the
 the ``TreeMap`` uses a balanced binary tree behind the scenes, and the
 ``HashMap`` uses a hash table.
 
+.. note::
+    We will cover the details of maps, binary trees, and hash tables later in the 
+    semester, so you don't have to worry about the details of them right now --
+    just know that Java Maps are similar to the functionality of Python 
+    dictionaries.
+
 Lets stay with a simple frequency counting example, only this time we
 will count the frequency of words in a document. A simple Python program
 for this job could look like this:
@@ -563,7 +579,8 @@ for this job could look like this:
 ..    :language: python
 
 .. code-block:: python
-    
+    :linenos:
+
    def main():
        data = open('alice30.txt')
        wordList = data.read().split()
@@ -595,6 +612,9 @@ for this job could look like this:
    say.)
 
 
+.. note::
+    If you want to try out this program yourself, copy the above text into a file
+    called ``alice30.txt`` and save it to same folder as the program.
 
 Notice that the structure of the program is very similar to the numeric
 histogram program.
@@ -605,6 +625,7 @@ histogram program.
 ..     :datafile: alice30.txt
 
 .. code-block:: java
+    :linenos:
 
     import java.util.Scanner;
     import java.util.ArrayList;

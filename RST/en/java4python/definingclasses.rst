@@ -355,6 +355,10 @@ should compile and run the program to see what happens.
 
     }
 
+.. note::
+    The following sections give a brief overview of key object-oriented
+    programming concepts: **inheritance**, **abstract classes**, and **interfaces**. We will cover them in greater detail in the upcoming classes.
+
 Inheritance
 -----------
 

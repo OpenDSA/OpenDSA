@@ -183,3 +183,7 @@ CS3SS18notes: min
 
 comsc205: min
 	$(PYTHON) $(CONFIG_SCRIPT) config/MHC/f24_comsc205.json -b f24_comsc205 --no-lms
+
+
+comsc205-public: min
+	$(PYTHON) $(CONFIG_SCRIPT) config/MHC/comsc205_public.json -b f24_comsc205 --no-lms

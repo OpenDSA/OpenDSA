@@ -81,26 +81,23 @@
   "chapter_name" : "Lecture",
   "chapters": {
     "Welcome!": {
-      "java4python/preface": {}
+      "MHC/courseResources": {}
     },
     "Intro to Java I: Hello World!": {
       "java4python/introduction" : {},
       "java4python/whylearnjava" : {},
-      "java4python/firstjavaprogram" : {},
-      "java4python/javadatatypes" : {}
+      "java4python/firstjavaprogram" : {}
     },
     "Intro to Java II: Loops and Conditionals": {
+      "java4python/javadatatypes" : {},
       "java4python/conditionals": {},
-      "java4python/loopsanditeration": {},
-      "IntroToSoftwareDesign/FileIO": {}
+      "java4python/loopsanditeration": {}
     },
     "Intro to Java III: Classes": {
       "java4python/definingclasses": {},
       "java4python/namingconventions": {},
       "java4python/commonmistakes": {},
-      "java4python/moredocumentation": {},
-      "IntroToSoftwareDesign/ListAndLoopsDeepDive": {},
-      "IntroToSoftwareDesign/StaticMainAndExceptions": {}
+      "java4python/moredocumentation": {}
     },
     "Object Oriented Programming I: Interfaces and Inheritance": {
       "Design/IntroOO": {},

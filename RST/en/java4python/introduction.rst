@@ -30,5 +30,6 @@ features of Java that are both unique and powerful.
 
     -  Generic Programming
 
-Please note that this book is a work in progress. I will continue to
-update and post new versions.
+.. note::
+    We'll (the instructors) add comments and tips throughout that will help connect the readings
+    to class!

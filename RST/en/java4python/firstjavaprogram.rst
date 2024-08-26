@@ -49,6 +49,10 @@ are some elements of Java that will fade into the background as you
 become used to seeing them. One thing that will help you is to learn a
 little bit about Java :ref:`Naming Conventions`.
 
+.. note::
+    We suggest for the readings that you copy-pasting the code into your own
+    code editor so you can try them out yourself!
+
 The first question you probably have about this little program is “How
 do I run it?” Running a Java program is not as simple as running a
 Python program. The first thing you need to do with a Java program is
