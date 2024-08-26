@@ -64,10 +64,9 @@
       "CS5040slides/Intro": {},
       "CS5040slides/P1": {},
       "CS5040slides/ProjManage": {},
-      "CS5040slides/Coding": {},
-      "CS5040slides/Math": {}
     },
     "Week 2": {
+      "CS5040slides/Math": {},
       "CS5040slides/AlgAnal": {},
       "CS5040slides/Lists": {},
       "CS5040slides/StackQueue": {}
@@ -81,6 +80,7 @@
       "CS5040slides/Heaps": {},
       "CS5040slides/Huffman": {},
       "CS5040slides/Trie": {},
+      "CS5040slides/Coding": {},
       "CS5040slides/P2": {}
     },
     "Week 5": {
