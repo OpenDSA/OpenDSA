@@ -20,16 +20,6 @@ common to most programming languages:
 Once we have the basics of Java behind us we will move on to look at the
 features of Java that are both unique and powerful.
 
-    -  Classes
-
-    -  Interfaces
-
-    -  Collections
-
-    -  Graphical User Interface Programming
-
-    -  Generic Programming
-
 .. note::
     We'll (the instructors) add comments and tips throughout that will help connect the readings
     to class!
