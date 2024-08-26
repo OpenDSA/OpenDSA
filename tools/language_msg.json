@@ -1,7 +1,7 @@
 {
   "en": {
     "jinja": {
-      "register": "Register",
+      "register": "",
       "login": "Login",
       "logout": "Logout",
       "about": "About",

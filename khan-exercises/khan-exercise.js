@@ -962,9 +962,27 @@ define(function(require) {
    * exercise.
    */
   function shouldSkipProblem() {
+    console.log("calling shouldSkipProblem...")
+    // var pastHashes = (cached && cached["history"]) || [];
+    // var varsHash = $.tmpl.getVarsHash();
+    
+    // //TL test:
+    // if (_.contains(pastHashes, varsHash)) {
+    //   console.log("skipping problem!")
+    //   return true;
+    // }
+
     // We don't need to skip duplicate problems in test mode, which allows
     // us to use the LocalStore localStorage abstraction from shared-package
     if (typeof LocalStore === "undefined") {
+      // We're hitting this in the local build
+      console.log("hitting typeof LocalStore === undefined...")
+      // console.log("current exercise: " + currentExerciseId)
+      // pastHashes.push(varsHash)
+      
+      // console.log(Khan.exercises)
+      // console.log(varsHash)
+      // console.log(pastHashes)
       return false;
     }
 
@@ -976,6 +994,7 @@ define(function(require) {
       // Getting here means the user refreshed the page or returned to
       // this exercise after being away. So, we don't need to and
       // shouldn't skip this problem.
+      console.log("hitting lastProblemNum === problemNum...")
       return false;
     }
 
