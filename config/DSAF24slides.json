@@ -66,7 +66,6 @@
       "CS5040slides/ProjManage": {},
       "CS5040slides/Coding": {},
       "CS5040slides/Math": {}
-      
     },
     "Week 2": {
       "CS5040slides/AlgAnal": {},
@@ -82,8 +81,7 @@
       "CS5040slides/Heaps": {},
       "CS5040slides/Huffman": {},
       "CS5040slides/Trie": {},
-      "CS5040slides/P2": {},
-      
+      "CS5040slides/P2": {}
     },
     "Week 5": {
       "CS5040slides/Sorting1": {},
@@ -92,8 +90,7 @@
     },
     "Week 6": {
       "CS5040slides/Sorting2": {},
-      "CS5040slides/Sorting3": {},
-      
+      "CS5040slides/Sorting3": {}
     },
     "Week 7": {
       "CS5040slides/FileProc": {}
@@ -103,7 +100,7 @@
       "CS5040slides/Buffering": {}
     },
     "Week 9": {
-      "CS5040slides/Hashing": {},
+      "CS5040slides/Hashing": {}
     },
     "Week 10": {
       "CS5040slides/MemManage": {}
