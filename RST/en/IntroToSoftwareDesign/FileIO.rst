@@ -386,7 +386,9 @@ Summarizing Scope Concepts
 .. note::
     The readings for this semester sometimes have interactive widgets for you to practice
     concepts. These exercises are optional and are not graded, but we encourage you
-    to try them out!
+    to try them out. 
+    
+    If anything is confusing or if you have questions about the exercises, we encourage you to post to Ed!
 
 Check Your Understanding: Scope
 -------------------------------
