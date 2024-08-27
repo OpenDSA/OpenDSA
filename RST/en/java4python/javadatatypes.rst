@@ -302,7 +302,7 @@ Test running the program. It will read this data:
 
 Lets review what is happening in this little program. First, we create a list
 and initialize the first 10 positions in the list to be
-0. Next we open the data file called ‘test.dat’. Third, we have a loop
+0. Next we open the data file called ``test.dat``. Third, we have a loop
 that reads each line of the file. As we read each line we convert it to
 an integer and increment the counter at the position in the list
 indicated by the number on the line we just read. Finally we iterate
@@ -327,6 +327,9 @@ but is easy when you understand the syntax:
 - ``for (Type variable : collection) { code }``
 
   - The ``code`` will be executed once for each element in the ``collection``. Each execution, ``variable`` will be assigned to the next element of ``collection``. Known as the "for-each" loop. This form is useful for iterating over members of a collection, similar to how you might use ``for a in array`` in Python.
+
+.. note::
+    For the first lectures as we get used to Java, we'll focus on the ``while`` loop and standard ``for`` loop. We'll touch on the for-each loop more later in the semester.
 
 Here is the Java code needed to write the exact same program:
 
@@ -577,23 +580,22 @@ for this job could look like this:
 
 .. .. activecode:: pywordcount
 ..    :language: python
-
 .. code-block:: python
     :linenos:
 
-   def main():
-       data = open('alice30.txt')
-       wordList = data.read().split()
-       count = {}
-       for w in wordList:
-           w = w.lower()
-           count[w] = count.get(w,0) + 1
+    def main():
+        data = open('alice30.txt')
+        wordList = data.read().split()
+        count = {}
+        for w in wordList:
+            w = w.lower()
+            count[w] = count.get(w,0) + 1
 
-       keyList = sorted(count.keys())
-       for k in keyList:
-           print("%-20s occurred %4d times" % (k, count[k]))
+        keyList = sorted(count.keys())
+        for k in keyList:
+            print("%-20s occurred %4d times" % (k, count[k]))
 
-   main()
+    main()
 
 
 .. datafile:: alice30.txt
@@ -667,6 +669,3 @@ histogram program.
             }
         }
     }
-
-
-**Try it out yourself**: Improve the program above to remove the punctuation.
