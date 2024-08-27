@@ -15,7 +15,7 @@
     1. Open a new shell in the root of the repository.
     2. Run `docker-compose exec opendsa bash` to enter the running container from Step 4
         - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker-compose exec opendsa bash`
-    3. To make the COMSC-205 book, use the command `make comsc205`
+    3. To make the COMSC-205 book, use the commands `make comsc205-dev` for the development (unreviewed) version and `make comsc205-public` for the public (reviewed) version.
 6. See the created book at: https://opendsa.localhost.devcom.vt.edu/Books/
 7. In order to stop the container, you can use the CTRL + C (sending an interrupt signal).
 
@@ -26,17 +26,18 @@ Below are the relevant files for our particular build of the Data Structures boo
 ```
 ├── config                      <- Stores different book configurations
 │   └── MHC 
-│       └── f24_comsc205.json   <- Our book configuration for F24
+│       ├── comsc205_dev.json   <- Our book configurations for F24
+|       └── comsc205_public.json
 ├── RST                         <- Stores source for textbook content
 │   └── en                      
 │       └── ...                 <- Directories correspond to chapter titles specified in the book configuration
-└── Makefile                    <- See the bottom for our build rule for `make comsc205`
+└── Makefile                    <- See the bottom for our build rules
 ```
 
 
 ## Modifying the Book Configuration
 
-We can modify the book configuration by editing the `f24_comsc205.json` file, under
+We can modify the book configuration by editing the `comsc205_dev.json` or `comsc205_public.json` files, under
 the `chapters` object. The top level key is the chapter name of our choosing, while
 the values within a particular chapter map to a particular module section in `RST/en`.
 For example, the following json creates a chapter called "Intro to Java II: Loops and Arrays" which contains the module located at `RST/en/IntroToSoftwareDesign/ConditionalActions.rst`:
