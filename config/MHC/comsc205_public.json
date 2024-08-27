@@ -1,0 +1,104 @@
+{
+  "title": "MHC F24 COMSC 205: Data Structures",
+  "desc": "MHC F24 COMSC 205: Data Structures",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "theme": "",
+  "html_theme_options": null,
+  "html_js_files": null,
+  "html_css_files": null,
+  "code_lang": {
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Python": {
+      "ext": [
+        "py"
+      ],
+      "label": "Python",
+      "lang": "python"
+    }
+  },
+  "build_JSAV": false,
+  "build_cmap": true,
+  "suppress_todo": true,
+  "dispModComp": true,
+  "zeropt_assignments": false,
+  "include_tree_view": false,
+  "tabbed_codeinc": true,
+  "narration_enabled": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "glob_ss_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_ka_options": {
+    "threshold": 5,
+    "points": 1,
+    "required": true,
+    "partial_credit": false
+  },
+  "glob_pe_options": {
+    "required": true,
+    "points": 2,
+    "threshold": 0.9
+  },
+  "glob_ff_options": {
+    "required": false,
+    "points": 0,
+    "threshold": 1
+  },
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2,
+      "required": true,
+      "partial_credit": true,
+      "enable_scrolling": true
+    },
+    "points": 1,
+    "code-workout-jhavepop": {
+      "points": 1
+    },
+    "mastery-grid-java-animations": {
+      "points": 1
+    },
+    "mastery-grid-jsparsons-python": {
+      "points": 1
+    },
+    "mastery-grid-python-animations": {
+      "points": 1
+    }
+  },
+  "start_chap_num": 0,
+  "chapter_name" : "Lecture",
+  "chapters": {
+    "Welcome!": {
+      "MHC/courseResources": {}
+    },
+    "Intro to Java I: Hello World!": {
+      "java4python/introduction" : {},
+      "java4python/whylearnjava" : {},
+      "java4python/firstjavaprogram" : {}
+    },
+    "Intro to Java II: Loops and Conditionals": {
+      "java4python/javadatatypes" : {},
+      "java4python/conditionals": {},
+      "java4python/loopsanditeration": {}
+    },
+    "Intro to Java III: Classes": {
+      "java4python/definingclasses": {},
+      "java4python/namingconventions": {},
+      "java4python/commonmistakes": {},
+      "java4python/moredocumentation": {},
+      "IntroToSoftwareDesign/FileIO": {}
+    }
+  }
+}

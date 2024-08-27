@@ -136,6 +136,7 @@ conf = '''\
 
 import sys, os
 import json
+from runestone import runestone_extensions, runestone_static_dirs
 
 #checking if we are building a book or class notes (slides)
 on_slides = os.environ.get('SLIDES', None) == "yes"
@@ -152,7 +153,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig'] + runestone_extensions()
 
 ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe']
 
@@ -185,7 +186,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenDSA'
-copyright = u'2011-2023 by OpenDSA Project Contributors and distributed under an MIT license'
+copyright = u'2011-2024 by OpenDSA Project Contributors and distributed under an MIT license'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -300,7 +301,7 @@ html_logo =  "_static/OpenDSALogoT64.png"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static'] + runestone_static_dirs()
 
 # Manipulates the lists of scripts that jQuery automatically loads
 # The Sphinx-generated search page is dependent on certain files being loaded in the head element whereas
@@ -315,7 +316,9 @@ html_static_path = ['_static']
 # to properly link to Privacy.html
 # The code that appends these scripts can be found in RST/_themes/haiku/layout.html and basic/layout.html
 
-html_context = {"script_files": [
+html_context = {
+                "course_id": "%(book_name)s",
+                "script_files": [
                   #'https://code.jquery.com/jquery-2.1.4.min.js',
                   '%(eb2root)slib/jquery.min.js',
                   '%(eb2root)slib/jquery.migrate.min.js',
@@ -384,13 +387,13 @@ html_last_updated_fmt = '%%b %%d, %%Y'
 #html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
+html_show_sourcelink = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-#html_show_sphinx = True
+html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-#html_show_copyright = True
+html_show_copyright = False
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the

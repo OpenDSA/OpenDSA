@@ -80,22 +80,29 @@
   "start_chap_num": 0,
   "chapter_name" : "Lecture",
   "chapters": {
-    "Welcome!": {},
-    "Intro to Java I: Hello World!": {},
-    "Intro to Java II: Loops and Arrays": {
-      "IntroToSoftwareDesign/ConditionalActions": {},
-      "IntroToSoftwareDesign/Arrays": {},
-      "IntroToSoftwareDesign/FileIO": {}
+    "Welcome!": {
+      "MHC/courseResources": {}
+    },
+    "Intro to Java I: Hello World!": {
+      "java4python/introduction" : {},
+      "java4python/whylearnjava" : {},
+      "java4python/firstjavaprogram" : {}
+    },
+    "Intro to Java II: Loops and Conditionals": {
+      "java4python/javadatatypes" : {},
+      "java4python/conditionals": {},
+      "java4python/loopsanditeration": {}
     },
     "Intro to Java III: Classes": {
-      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {},
-      "IntroToSoftwareDesign/AggregationStringsandMoreLoops": {},
-      "IntroToSoftwareDesign/ListAndLoopsDeepDive": {},
-      "IntroToSoftwareDesign/StaticMainAndExceptions": {}
+      "java4python/definingclasses": {},
+      "java4python/namingconventions": {},
+      "java4python/commonmistakes": {},
+      "java4python/moredocumentation": {},
+      "IntroToSoftwareDesign/FileIO": {}
     },
     "Object Oriented Programming I: Interfaces and Inheritance": {
       "Design/IntroOO": {},
-      "Design/IntroProcess": {}
+      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {}
     },
     "Object Oriented Programming II: Abstract Classes": {
       "Design/ADT": {
