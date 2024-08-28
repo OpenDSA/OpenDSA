@@ -262,8 +262,8 @@ def generate_index_rst(config, slides=False, standalone_modules=False):
             index_rst.write("   ToDo\n")
 
         index_rst.write("\n")
-        index_rst.write("* :ref:`genindex`\n")
-        index_rst.write("* :ref:`search`\n")
+        #index_rst.write("* :ref:`genindex`\n")
+        #index_rst.write("* :ref:`search`\n")
 
 
 def generate_todo_rst(config, slides=False):
