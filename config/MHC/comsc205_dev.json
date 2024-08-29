@@ -98,7 +98,8 @@
       "java4python/namingconventions": {},
       "java4python/commonmistakes": {},
       "java4python/moredocumentation": {},
-      "IntroToSoftwareDesign/FileIO": {}
+      "MHC/scoping": {},
+      "MHC/fileIO": {}
     },
     "Object Oriented Programming I: Interfaces and Inheritance": {
       "Design/IntroOO": {},

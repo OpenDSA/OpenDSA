@@ -6,10 +6,6 @@
 .. avmetadata::
    :author: Molly
 
-
-.. Variable Scoping, Input, and Output 
-.. ===================================
-
 Variable Scoping
 ========================
 

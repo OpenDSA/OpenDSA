@@ -1,8 +1,6 @@
 Course Resources
 ================
 
-**NOTE: this page is under construction.**
-
 Welcome to COMSC-205: Data Structures! Below are links to resources for the course:
 
 * `Syllabus <https://comsc205.github.io>`_
