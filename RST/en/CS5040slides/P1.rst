@@ -60,7 +60,7 @@ Project 1 Design
    |   2. World Database class next.
    |   3. Hash table, implemented with direct access to strings in memory
           (hidden behind record interface)
-   |   4. Memory manager last!
+   |   4. Graph last!
          
 
 .. slide:: General Project Info              
@@ -68,8 +68,6 @@ Project 1 Design
    | You are usually banned from using standard Java data structures
      classes
    |   You may **not** use things like ``HashMap``, ``ListArray``, ``Vector``
-   |     Exception: You may use ``ListArray`` to thelp you with
-         processing the keywords in the parser.
    |   You may use standard language features like arrays
    |   You may use string and file manipulation classes/methods that
        make parsing of the command file easy.          
@@ -81,9 +79,8 @@ Project 1 Design
      coding style.
    |   Web-CAT enforces a particular coding style.
    | Generalize your container classes (hash table, memory manager)
-   |   For P1, your memory manager should not know anything about the
-       rest of the project, it just stored bytes
-   |   See the Seminar class serializer/deserializer
+   |   For P1, your Graph should not know anything about the
+       rest of the project, it just stores some kind of record
 
    
 .. slide:: Container Classes: Hash Table
@@ -92,8 +89,6 @@ Project 1 Design
      that stores a collection of arbitrary objects.
    | Want to support any record type. (OK to assume an integer key.)
    | Hide details behind some Record class
-   | Need to deal with concept of comparison. Your record should give
-     you back the string as its key.
 
 Project 1 Hashing
 -----------------
@@ -108,47 +103,100 @@ Project 1 Hashing
    * You can write Hash Table Class **assuming** that it uses the
      given hash function, and that the key is an integer.
 
-     
-.. slide:: Double Hashing
 
-   .. inlineav:: collisionCON8 ss
-      :long_name: Double Hashing Slideshow 3
+.. slide:: String Folding
+
+   .. codeinclude:: Hashing/Hash
+      :tag: sfold
+
+   .. avembed:: AV/Hashing/StringSfold.html pe
+
+
+.. slide:: Quadratic Probing
+
+   .. inlineav:: collisionCON5 ss
+      :long_name: Quadratic Probing Slideshow
       :links: AV/Hashing/collisionCON.css
-      :scripts: AV/Hashing/collisionCON8.js
+      :scripts: AV/Hashing/collisionCON5.js
+      :output: show
+
+   .. inlineav:: collisionCON6 ss
+      :long_name: Quadratic Probing Problem
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON6.js
       :output: show
 
 
 .. slide:: Primary design issue: Communications
 
-   * World/DB class, Hash Table, Memory Manager need appropriate
+   * World/DB/Controller class, Hash Table, Graph need appropriate
      coordination.
    
-   * World probably initializes memory manager, and calls memory
-     manager to insert/process records. Store resulting Handle in a
-     Record to pass to hash table.
+   * World probably initializes Graph and Hash Tables, and calls controller
+     to insert/process records. Store the Node in a Record in the Hash Table
    
-   * Hash table does not need to know that there is a Memory Manager,
-     or Seminar records.
-   
-   * Record class and Handle class can hide most implementation details.
+   * Hash table does not need to know that there is a Graph.
 
      
 .. slide:: What is stored in the hash table?
 
    * Clearly there has to be a key, and there has to be a value
-     (a record?)
+     (a node?)
    
-   * The key is an integer (ID value for the Seminar, but the hash
-     table class doesn't know that)
-  
-   * The "value" might be dealt with in different ways.
-      * Definitely NOT the byte array (this is in memory manager)
-      * Maybe the handle for the record? That means that the hash
-        table needs to know about handles.
+   * The key is an string (the artist or song name)
 
-   * Can hide handles behind a Record class.
-      * What is key? Store integer? Get from Record? Space vs. Time
-        tradeoff, either is reasonable
+   * The value is probably some kind of Node object 
+
+
+Project 1 Graphs
+----------------
+
+.. slide:: Undirected Graph Representation
+
+   .. inlineav:: GundirRepCON dgm
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GundirRepCON.js
+      :output: show
+
+
+.. slide:: Connected Components
+
+   .. inlineav:: GconcomCON dgm
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GconcomCON.js
+      :output: show
+
+   * The maximum connected subgraphs of an undirected graph are called
+     connected components.
+
+
+.. slide:: Approach
+
+   Each object initially is a separate node in its own tree.
+
+   When two objects are "equivalent", then add them to the same tree.
+
+   Key question: **Given two nodes, are they in the same tree?**
+
+
+.. slide:: Union/FIND
+
+   .. codeinclude:: General/ParPtrTree1
+      :tag: UF1, UF2
+
+
+.. slide:: Algorithm Visualization
+
+   .. inlineav:: ufCON ss
+      :long_name: Union/Find Example
+      :links: AV/General/UFCON.css
+      :scripts: AV/General/ufCON.js
+      :output: show
+
+
+.. slide:: .
+
+   .
 
 
 .. slide:: Milestone 2
