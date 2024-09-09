@@ -17,6 +17,9 @@ def redirect_to_rendered_index(book):
     '''Quickly access a book instead of browsing to the exact file'''
     return redirect(f"/Books/{book}/html/index.html", code=302)
 
+@app.route('/.git')
+def git_dir():
+    return redirect('/Books/', code=302)
 
 ################################## API calls ###############################
 
