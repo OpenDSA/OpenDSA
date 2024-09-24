@@ -1,6 +1,7 @@
 import java.util.NoSuchElementException;
 
 /* *** ODSATag: ListADT *** */
+/* *** ODSATag: ListADT1 *** */
 // List class ADT. Generalize the element type using Java Generics.
 public interface List<E> { // List class ADT
   // Remove all contents from the list, so it is once again empty
@@ -16,7 +17,9 @@ public interface List<E> { // List class ADT
 
   // Remove and return the current element
   public E remove() throws NoSuchElementException;
+/* *** ODSAendTag: ListADT1 *** */
 
+/* *** ODSATag: ListADT2 *** */
   // Set the current position to the start of the list
   public void moveToStart();
 
@@ -31,7 +34,9 @@ public interface List<E> { // List class ADT
 
   // Return the number of elements in the list
   public int length();
+/* *** ODSAendTag: ListADT2 *** */
 
+/* *** ODSATag: ListADT3 *** */
   // Return the position of the current element
   public int currPos();
 
@@ -47,4 +52,5 @@ public interface List<E> { // List class ADT
   // Tell if the list is empty or not
   public boolean isEmpty();
 }
+/* *** ODSAendTag: ListADT3 *** */
 /* *** ODSAendTag: ListADT *** */

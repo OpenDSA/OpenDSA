@@ -17,7 +17,6 @@ def redirect_to_rendered_index(book):
     '''Quickly access a book instead of browsing to the exact file'''
     return redirect(f"/Books/{book}/html/index.html", code=302)
 
-
 ################################## API calls ###############################
 
 def run_command(cmd: str):

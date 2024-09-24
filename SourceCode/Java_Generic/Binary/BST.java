@@ -1,4 +1,5 @@
 /* *** ODSATag: BST *** */
+/* *** ODSATag: BSTa *** */
 // Binary Search Tree implementation
 class BST<E extends Comparable<E>> {
   private BSTNode<E> root; // Root of the BST
@@ -17,7 +18,9 @@ class BST<E extends Comparable<E>> {
     root = inserthelp(root, e);
     nodecount++;
   }
+/* *** ODSAendTag: BSTa *** */
 
+/* *** ODSATag: BSTb *** */
   // Remove a record from the tree
   // key: The key value of record to remove
   // Returns the record removed, null if there is none.
@@ -36,6 +39,7 @@ class BST<E extends Comparable<E>> {
 
   // Return the number of records in the dictionary
   public int size() { return nodecount; }
+/* *** ODSAendTag: BSTb *** */
 /* *** ODSAendTag: BST *** */
 
   // Return a record that matches the key value

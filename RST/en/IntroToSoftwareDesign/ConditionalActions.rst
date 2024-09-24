@@ -106,7 +106,7 @@ For Jeroos, the sensor methods are the basic building blocks for creating condit
      - 	Is there a net in the indicated direction? [``seesNet(HERE)`` is meaningless]
      - ``dean.seesJeroo(RIGHT)``
    * - ``seesWater(relativeDirection)``
-     - 	Is there water in the indicated direction? [``seesWater(AHEAD)`` is meaningless]
+     - 	Is there water in the indicated direction? [``seesWater(HERE)`` is meaningless]
      - ``dean.seesWater(AHEAD)``
 
 
