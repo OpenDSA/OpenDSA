@@ -35,14 +35,14 @@ Introduction to Ordering, Comparing, and Sorting [13:39]
    
       <br>
          <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.2.1-IntroOrderingAndComparing.pdf" target="_blank">
-         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
          Video Slides 12.1.2.1-IntroOrderingAndComparing.pdf
          </a>
 
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nhqfykqn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nhqfykqn' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Ordering, Comparing, and Sorting"></iframe> 
    </center>
 
 Checkpoint 1
@@ -63,14 +63,14 @@ Interactive: Introduction to Sorting [12:51]
    .. raw:: html
   
     <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.3.1-IntroToSorting.pdf" target="_blank">
-       <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+       <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
        Video Slides 12.1.3.1-IntroToSorting.pdf
        </a>
 
 .. raw:: html
 
   <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_px7gfy13' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_px7gfy13' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Sorting"></iframe> 
   </center>
 
 Checkpoint 2
@@ -91,14 +91,14 @@ Interactive: Selection Sort [12:36]
   .. raw:: html
   
         <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.4.1-SelectionSort.pdf" target="_blank">
-        <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
         Video Slides 12.1.4.1-SelectionSort.pdf
         </a>
 
 .. raw:: html
 
   <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_cs0nki5i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_cs0nki5i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Selection Sort"></iframe> 
   </center>
 
 Checkpoint 3
@@ -110,7 +110,7 @@ Checkpoint 3
 .. _SortInsert:
     
 Insertion Sort with an Array
-------------------------------------
+-----------------------------------------
 
 .. admonition:: Follow Along and Engage
 
@@ -119,14 +119,14 @@ Insertion Sort with an Array
   .. raw:: html
   
      <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.5.1-InsertionSortArray.pdf" target="_blank">
-        <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
         Video Slides 12.1.5.1-InsertionSortArray.pdf
         </a>
 
 .. raw:: html
 
   <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_19z2exnz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_19z2exnz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Insertion Sort with an Array"></iframe> 
   </center>
 
 Checkpoint 4
@@ -145,14 +145,14 @@ Insertion Sort with a Linked Chain [16:50]
   .. raw:: html
   
     <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.6.1-InsertionSortLinked.pdf" target="_blank">
-     <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+     <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
      Video Slides 12.1.6.1-InsertionSortLinked.pdf
      </a>
      
 .. raw:: html
 
   <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qc2qxx6h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qc2qxx6h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Insertion Sort with a Linked Chain"></iframe> 
   </center>
 
 Checkpoint 5
@@ -182,7 +182,7 @@ Introduction to Comparators [11:22]
       
         <br>
          <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/12.1.8.1-Comparators.pdf" target="_blank">
-         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
          Video Slides 12.1.8.1-Comparators.pdf
          </a>
       
@@ -190,7 +190,7 @@ Introduction to Comparators [11:22]
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pit1l2lg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pit1l2lg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Comparators"></iframe> 
     </center>
 
 Programming Practice: Comparators

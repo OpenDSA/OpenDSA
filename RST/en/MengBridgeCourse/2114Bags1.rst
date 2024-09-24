@@ -188,7 +188,7 @@ Interactive: Documentation of Bag Interface Methods [7:28]
 .. raw:: html
 
      <center>
-       <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kn4272o0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+       <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kn4272o0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Documentation of Bag Interface Methods"></iframe> 
      </center>
 
 .. _BagUsage: 
@@ -199,7 +199,7 @@ Interactive: Using Bags [4:34]
 .. raw:: html
 
      <center>
-        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_9d2n6v3x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_9d2n6v3x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Using Bags"></iframe> 
      </center>
 
 
@@ -234,7 +234,7 @@ Interactive: Fixed-Size Array Implementation
 .. raw:: html
 
      <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_e766pflq' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_e766pflq' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Fixed-Size Array Implementation"></iframe> 
      </center>
 
 
@@ -301,7 +301,7 @@ Interactive: ArrayBagsWithJUnit Example Demonstration [8:17]
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_42v9vnzf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_42v9vnzf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayBagsWithJUnit Example"></iframe> 
    </center>
 
 Checkpoint 2
@@ -325,14 +325,14 @@ Interactive: More on the Bag Method Implementation [5:28]
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.7.1-ArrayBagMethods.pdf" target="_blank">
-         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
          Video Slides 7.7.7.1-ArrayBagMethods.pdf</img>
          </a>
          
 .. raw:: html
 
      <center>
-        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nk6yv7gj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nk6yv7gj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="More on the Bag Method Implementation"></iframe> 
         </center>
 
 ArrayBag Class UML Diagram
@@ -374,7 +374,7 @@ Interactive: Methods that Remove and Design Improvement, Part 1 [5:28]
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.1-BagsDesignImprovePart1.pdf" target="_blank">
-         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
          Video Slides 7.7.8.1-BagsDesignImprovePart1.pdf</img>
          </a>
 
@@ -382,7 +382,7 @@ Interactive: Methods that Remove and Design Improvement, Part 1 [5:28]
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_afd08368' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_afd08368' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Methods that Remove and Design Improvement, Part 1"></iframe> 
    </center>
    
 Interactive: Methods that Remove and Design Improvement, Part 2 [6:45]
@@ -395,7 +395,7 @@ Interactive: Methods that Remove and Design Improvement, Part 2 [6:45]
       .. raw:: html
       
          <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.2-BagsDesignImprovePart2.pdf" target="_blank">
-            <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+            <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
             Video Slides 7.7.8.2-BagsDesignImprovePart2.pdf</img>
             </a>
    
@@ -403,7 +403,7 @@ Interactive: Methods that Remove and Design Improvement, Part 2 [6:45]
    .. raw:: html
    
       <center>
-      <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_x16wqf9x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+      <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_x16wqf9x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Methods that Remove and Design Improvement, Part 2"></iframe> 
       </center>
 
 
@@ -416,7 +416,7 @@ Interactive: Methods that Remove and Design Improvement, Part 3 [9:03] ~~~~~~~~~
          .. raw:: html
          
             <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.8.3-BagsDesignImprovePart3.pdf" target="_blank">
-               <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+               <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
                Video Slides 7.7.8.3-BagsDesignImprovePart3.pdf</img>
                </a>
 
@@ -424,7 +424,7 @@ Interactive: Methods that Remove and Design Improvement, Part 3 [9:03] ~~~~~~~~~
       .. raw:: html
       
          <center>
-         <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_54w07n1k' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+         <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_54w07n1k' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Methods that Remove and Design Improvement, Part 3"></iframe> 
          </center>
          
 
@@ -446,7 +446,7 @@ Interactive: Array resizing description and coding Demo [14:47]
       .. raw:: html
       
          <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DoubleArray.pdf"  target="_blank">
-         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
          DoubleArray.pdf</img>
          </a>
    
@@ -454,7 +454,7 @@ Interactive: Array resizing description and coding Demo [14:47]
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.7.9.1-DoubleArray.pdf" target="_blank">
-         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
          Video Slides 7.7.9.1-DoubleArray.pdf</img>
          </a>
 

@@ -392,7 +392,7 @@ Not sure where this is from.
 .. raw:: html
      
       <center>
-      <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+      <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title=""></iframe>
       </center>
       
 |
