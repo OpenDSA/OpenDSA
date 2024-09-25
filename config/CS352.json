@@ -256,6 +256,7 @@
           "threshold": 1.0
         }
       }, 
+      "RecurTutor/RecSummaryEx": {},
       "Sorting/InSort": {}, 
       "Sorting/SortNotation": {
         "SortIntroSumm": {

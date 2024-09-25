@@ -9,11 +9,11 @@
    :satisfies: recursion
    :topic: Recursion
 
-Summary Exercises
-=================
+Recursion Summary Exercises
+===========================
 
-Summary Questions
------------------
+Recursion Summary Questions
+---------------------------
 
 .. avembed:: Exercises/RecurTutor/RecChapterSumm.html ka
    :long_name: Recursion Summary Exercise
