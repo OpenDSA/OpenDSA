@@ -29,7 +29,7 @@ Intro to Nodes Video
 .. raw:: html
 
     <center>
-    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_xfyll19n&flashvars[streamerType]=auto" width="560" height="560" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_xfyll19n&flashvars[streamerType]=auto" width="560" height="560" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Intro to Nodes"></iframe>
     </center>
 
 
@@ -52,7 +52,7 @@ Watch the video, view the associated slides, download and manipulate the associa
 .. raw:: html
 
     <center>
-    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_dkk3roib&flashvars[streamerType]=auto" width="560" height="560" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_dkk3roib&flashvars[streamerType]=auto" width="560" height="560" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Demo in Visualizer"></iframe>
     </center>
 
 
@@ -80,7 +80,7 @@ Watch the video, view the associated slides, download and manipulate the associa
 .. raw:: html
 
     <center>
-    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_q83rf3ey&flashvars[streamerType]=auto" width="560" height="560" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_q83rf3ey&flashvars[streamerType]=auto" width="560" height="560" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Contains Animation"></iframe>
     </center>
 
 
