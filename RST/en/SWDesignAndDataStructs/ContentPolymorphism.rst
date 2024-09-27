@@ -99,13 +99,10 @@ Interactive: Java Inheritance: this, super
         Video Slides Java OOP Super This.pdf</img>
         </a>
         <br>
-<<<<<<< HEAD
-        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exJavaOOP.zip"  target="_blank">
-        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
-=======
+
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs.examples/eclipse/exJavaOOP.zip"  target="_blank">
         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
->>>>>>> f92bd598bd5ff058b61d5da4ffd44b8b9f11fa7e
+
        exJavaOOP.zip</img>
         </a>
         
