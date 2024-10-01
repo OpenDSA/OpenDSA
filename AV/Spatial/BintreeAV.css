@@ -13,15 +13,13 @@
 }
 
 .jsavcanvas { 
-width: 900px;
-height: 350px;
+height: 375px;
 } /* set the height of the container */
 
 
 #container {
   /* Change the size of the container */
-  width: 900px;
-  height: 550px;
+  height: 575px;
 }
 
 /* Change the size of the tree nodes */
@@ -32,3 +30,4 @@ height: 350px;
   min-height: 15px;
   max-height: 15px;
 }
+
