@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-RM = rm --recursive --force
+RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 .DEFAULT_GOAL := help
 JS_LINT = yarn eslint --no-color
