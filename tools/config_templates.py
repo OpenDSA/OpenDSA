@@ -101,12 +101,12 @@ cleanbuild: clean html
 
 html:
 	$(SPHINXBUILD) $(TAGS) $(SPHINXOPTS) -b html source $(HTMLDIR)
-	rm html/_static/jquery.js
+	# rm html/_static/jquery.js
 	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
-	rm *.json
+	# rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
-	rm Makefile
+	# rm Makefile
 
 slides:
 	@SLIDES=yes \
@@ -154,7 +154,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig']
 
-ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe']
+ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'multitocnumbering']
 
 customsDir = '%(odsa_dir)sRST/ODSAextensions/odsa/'
 for c in ourCustoms:
