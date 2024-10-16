@@ -82,7 +82,7 @@ Interactive: Intro to Linked Chains of Nodes [10:51]
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xfyll19n' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xfyll19n' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Intro to Linked Chains of Nodes"></iframe> 
     </center>
 
 
@@ -104,14 +104,14 @@ Interactive: Demo in Visualizer [11:31]
       .. raw:: html
       
          <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.3-LinkedChainCode.pdf" target="_blank">
-         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
          Video Slides 8.1.3-LinkedChainCode.pdf</img>
          </a>
    
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dkk3roib' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dkk3roib' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Demo in Visualizer"></iframe> 
     </center>
 
 Checkpoint 2
@@ -132,13 +132,13 @@ Contains() method Animation [5:14]
       .. raw:: html
       
          <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/8.1.4-LinkedChainContains.pdf" target="_blank">
-            <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+            <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
             Video Slides 8.1.4-LinkedChainContains.pdf</img>
             </a>
    
 .. raw:: html
 
   <center>
-  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q83rf3ey' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+  <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q83rf3ey' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Contains method Animation"></iframe> 
   </center>
    

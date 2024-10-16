@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-RM = rm --recursive --force
+RM = rm -rf
 CONFIG_SCRIPT = tools/configure.py
 .DEFAULT_GOAL := help
 JS_LINT = yarn eslint --no-color
@@ -13,6 +13,9 @@ ODSA_ENV ?= DEV
 PYTHON = python3
 # -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
 # -u flag runs python in unbuffered mode (no output flushes needed)
+CONFIG_SCRIPT_OPTS = --no-lms
+# Options for building books using the CONFIG_SCRIPT. 
+# Usually just '--no-lms' but can also use --verbose or others
 
 JS_MINIFY = yarn uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
 CSS_MINIFY = yarn cleancss
@@ -156,26 +159,26 @@ BOOK_NAME: ## creates a book based off of config/BOOK_NAME.json
 
 # A Static-Pattern Rule for making Books
 $(BOOKS): % : config/%.json min
-	$(PYTHON) $(CONFIG_SCRIPT) $< --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) $< $(CONFIG_SCRIPT_OPTS)
 	@echo "Created an eBook in Books/: $@"
 
 $(SLIDE_BOOKS) : % : config/%.json min
-	$(PYTHON) $(CONFIG_SCRIPT) --slides $< --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) --slides $< $(CONFIG_SCRIPT_OPTS)
 	@echo "Created an Slide-eBook in Books/: $@"
 
 
-# Target eBooks with unique recipies below:::
+# Target eBooks with unique recipes below:::
 CS3notes: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes $(CONFIG_SCRIPT_OPTS)
 
 CS3F18notes: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3F18slides.json -b CS3F18notes $(CONFIG_SCRIPT_OPTS)
 
 CS5040notes: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes $(CONFIG_SCRIPT_OPTS)
 
 CS5040MasterN: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN $(CONFIG_SCRIPT_OPTS)
 
 CS3SS18notes: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes $(CONFIG_SCRIPT_OPTS)

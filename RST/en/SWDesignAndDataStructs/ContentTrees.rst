@@ -37,7 +37,7 @@ Interactive: Introduction to Trees
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/TreeIntro.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       TreeIntro.pdf</img>
       </a>
 
@@ -45,7 +45,7 @@ Interactive: Introduction to Trees
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_lib76vd6' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_lib76vd6' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Trees"></iframe> 
    </center>
 
 Checkpoint 1
@@ -66,7 +66,7 @@ Interactive: Binary Trees
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BinaryTreesIntro.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       BinaryTrees.pdf</img>
       </a>
 
@@ -74,7 +74,7 @@ Interactive: Binary Trees
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s4hf3v2e' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_s4hf3v2e' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Binary Trees"></iframe> 
    </center>
 
 
@@ -99,7 +99,7 @@ Interactive: Binary Tree Traversals
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToTraversals.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       IntroToTraversals.pdf</img>
       </a>
 
@@ -107,7 +107,7 @@ Interactive: Binary Tree Traversals
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_oynq3x1d' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_oynq3x1d' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Binary Tree Traversals"></iframe> 
    </center>
 
 
@@ -131,14 +131,14 @@ Interactive: Programming Binary Trees
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingTrees.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       ProgrammingTrees.pdf</a>
 
 
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_6a1l5p41' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_6a1l5p41' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Programming Binary Trees"></iframe> 
    </center>
 
 

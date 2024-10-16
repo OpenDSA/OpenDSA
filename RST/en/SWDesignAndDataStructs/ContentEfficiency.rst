@@ -36,7 +36,7 @@ Interactive: Intro to Algorithmic Efficiency
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/EfficiencyPart1.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       EfficiencyPart1.pdf</img>
       </a>
 
@@ -44,7 +44,7 @@ Interactive: Intro to Algorithmic Efficiency
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vnmd5r1v' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vnmd5r1v' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Intro to Algorithmic Efficiency"></iframe> 
    </center>
 
 
@@ -62,7 +62,7 @@ Interactive: Efficiency of Summation Algorithms
 .. raw:: html
 
      <center>
-     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_aqcczmyk' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+     <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_aqcczmyk' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Efficiency of Summation Algorithms"></iframe> 
      </center>
      
 
@@ -83,7 +83,7 @@ Interactive: Efficiency of Bag Methods
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsEfficiency.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       BagsEfficiency.pdf</img>
       </a>
 
@@ -91,6 +91,6 @@ Interactive: Efficiency of Bag Methods
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_87khvnlc' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_87khvnlc' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Efficiency of Bag Methods"></iframe> 
    </center>
 

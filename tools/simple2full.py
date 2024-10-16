@@ -954,19 +954,17 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
       rst_dir_name = x.split(os.sep)[-2]
       rst_fname = os.path.basename(x).partition('.')[0]
       if rst_dir_name == conf_data['lang']:
-        mod_path = rst_fname
+        module_path = rst_fname
       else:
-        mod_path = rst_dir_name + '/' + rst_fname
+        module_path = rst_dir_name + '/' + rst_fname
 
-
-      current_module = mod_path
-      print("current_module: ", current_module)
       if verbose:
-        print(("Processing module " + mod_path))
-      current_module_base = os.path.basename(mod_path)
-      print("current_module_base: ", current_module_base)
+        print(("Processing module " + module_path))
+      current_module = module_path
+      current_module_base = os.path.basename(module_path)
+
       if not os.path.isfile(x):
-        print_err("ERROR: '{0}' is not a valid module path".format(mod_path))
+        print_err("ERROR: '{0}' is not a valid module path".format(module_path))
         sys.exit(1)
 
       with open(x, 'rt', encoding='utf-8') as rstfile:
@@ -977,10 +975,10 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
                   settings_overrides={'output_encoding': 'utf8',
                   'initial_header_level': 2},
                   writer_name="xml",
-      source_path=mod_path)
+      source_path=module_path)
       mod_json = xmltodict.parse(rst_parts['whole'])
       mod_config = extract_mod_config(mod_json)
-      full_config['chapters'][chapter][mod_path] = mod_config
+      full_config['chapters'][chapter][module_path] = mod_config
   if not slides:
     for mod_name, exercises in ex_options.items():
       for exer in exercises:

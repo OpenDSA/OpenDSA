@@ -33,14 +33,14 @@ Interactive: Introduction to Software Design [9:30]
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.2.2.1-IntroToSoftwareDesign.pdf" target="_blank">
-         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
          Video Slides 9.2.2.1-IntroToSoftwareDesign.pdf</img>
          </a>
 
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4gfpbvoi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4gfpbvoi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Software Design"></iframe> 
    </center>
 
 .. _DesignRequirements: 
@@ -649,7 +649,7 @@ Interactive: MVC and Observer Video [11:00]
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pws7qjiz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pws7qjiz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="MVC and Observer Video"></iframe> 
     </center>
      
 Note: Project 3 in this video is a variation of the towers of Hanoi project.

@@ -463,7 +463,7 @@ config_js_template = '''\
 
 # Add the index.html file that redirects to the build/html directory
 index_html_template = '''\
-<html>
+<html lang="en">
 <head>
   <script>
     window.location.replace(window.location.href.replace(/\\/(index.html)?$/, '/%s'));
