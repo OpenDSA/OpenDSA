@@ -32,7 +32,7 @@ get it done.
 For easier problems, you will "see" an answer fairly quickly 
 once you actively engage, and the issue then is to work through to
 completion.
-For most problems, the ones matter most, you won't "see" an answer
+For harder problems, the ones matter most, you won't "see" an answer
 right away.
 For these problems, you will have to use various strategies to come up
 with a potential solution for even getting started.
@@ -51,21 +51,21 @@ Yet, these same students might dismiss math and analytical computer
 science problems due to a historical lack of success.
 If you have this problem, then to be successful in life you will
 need to find ways to get over what is obviously a mental block.
-You need to learn to transfer successful problem-solving strategies
-from one part of your life to other parts.
+You need to learn to transfer problem-solving strategies that you have
+found to be successful in one part of your life to the other parts.
 
 Levine uses examples of trying to repair a clothes dryer or a wobbly
 table.
 How to solve the problem might not be immediately obvious.
 The first step is to take the effort to look at the problem.
-In this example, it starts by opening the back of the dryer, or
+In these examples, it starts by opening the back of the dryer, or
 looking under the table.
-This initial investigation can often lead to a solution.
+This **initial investigation** can often lead to a solution.
 It is a matter of adopting the mental attitude of being willing to
 take the risk and the effort.
 Then it is a matter of working with the problem for awhile to see what
-can be done. At that point, a possible solution path might open
-up.
+can be done.
+At that point, a possible solution path might open up.
 But nothing can be solved unless you are willing to take the time and
 make the effort.
 All of the heuristics for solving problems start with that.
@@ -102,10 +102,12 @@ ineffective problem solvers.
 Investigation and Argument
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Problem solving has two parts [Zei07]: the investigation and the
-argument.
-Students are too used to seeing only the argument in their textbooks
-and lectures.
+Problem solving has two parts [Zei07]: the **investigation** and the
+**argument**.
+Students too often are only presented with the argument in their
+textbooks and lectures.
+This means that they don't get enough examples of the investigation
+part.
 Unfortunately, to be successful in school (and in life after school),
 one needs to be good at both, and to understand the differences
 between these two phases of the process.
@@ -122,6 +124,9 @@ contradiction, and induction.
 
 Heuristics for Problem Solving "In the Small"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section presents a collection of widely recognized *heuristics*
+for how to go about solving a hard problem.
 
 **Write it down**
 After motivation and mental attitude, the most important limitation on
@@ -141,12 +146,12 @@ representation).
 **Look for special features**
 Examples include cryptogram addition problems.
 You might recognize that something on one end must be a 1,
-in other circumstances one of the numbers must be a zero.
+in other circumstances one of the numbers must be a 0.
 Consider the following cryptogram puzzle where you must replace the
 letters with numbers to make a legal addition problem.
 In this case, we should recognize two special features:
 (1) The leading digit of the answer must be a one, and
-(2) One of the right most digits must be a zero.
+(2) One of the right-most digits must be a zero.
 Recognizing these special features puts us well on the way to solving
 the full problem.
 
@@ -180,6 +185,7 @@ solution from looking at the penultimate step.
 Be careful about being lead into a blind alley.
 Using an inappropriate problem-solving strategy might blind you to the
 solution.
+If you get stuck, try a different approach.
 
 **Get your hands dirty**
 Sometimes you need to just "play around" with the problem to get some
@@ -236,7 +242,7 @@ Blockbusting and brainstorming techniques can generate a
 list of possible solutions to study.
 
 **Decide the Course of Action**
-There are a number of standard techniques for select from a given
+There are a number of standard techniques for selecting from among a given
 list of potential actions
 (e.g., situation analysis, Pareto analysis, K.T. Problem analysis,
 decision analysis).
@@ -261,7 +267,8 @@ The listener plays an active role, being responsible for keeping the
 problem solver on track and requiring the problem solver to vocalize
 their process.
 The listener is actively checking for errors by the problem solver.
-See the handout for more details on this.
+See the article "How Pair Programming Really Works" for more details
+on this.
 
 
 Errors in Reasoning
@@ -271,7 +278,7 @@ Again from Whimbey & Lochhead [WL99] comes a description of how people
 go wrong in problem solving.
 Specifically related to homework and tests, typical problems stem from
 failing to read the problem carefully.
-Thus, students will often fail to use all relevant facts, or plain
+Doing so will often cause one to fail to use all relevant facts, or plain
 mis-interpret the problem.
 Other typical mistakes come from failing to be systematic, or worse
 yet being just plain careless.

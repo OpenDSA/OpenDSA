@@ -63,15 +63,18 @@ Process
 
 The primary work in this course will come from the weekly homework
 sets.
-They will typically consist of three problems.
+They will typically consist of two or three problems.
 You should expect that a lot of them will be fairly hard.
 
-The intention of the course design is that you will work with a
-partner on the homework.
+The homeworks are designed assuming that you will work with a
+partner to complete the homework (but it is not required that you do
+work with a partner).
 Understanding this course content is hard.
 Figuring out the problem solutions is intended to be hard.
 This works best if you can bounce ideas off of someone else, and
 actively work together toward a final solution.
-If nothing else, being a skeptical reviewer is a key contribution.
+If nothing else, being a skeptical reviewer of your partner's proposed
+solution is a key contribution, especially if you (correctly) point
+out errors, or verify that the answer makes sense.
 Recognizing that an answer is no good, or incomplete, is crucial to
 succeeding in this class.
