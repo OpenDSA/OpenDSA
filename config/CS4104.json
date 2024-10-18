@@ -72,18 +72,19 @@
     },
     "Analyzing Problems: The Basics": {
       "SeniorAlgAnal/TOH": {},
+      "Background/Proofs": {},
       "SeniorAlgAnal/BoundsReview": {},
       "SeniorAlgAnal/GrowthRate": {},
       "Background/Summations": {},
       "SeniorAlgAnal/AdvSumm": {},
       "Background/RecurrenceIntro": {},
-      "SeniorAlgAnal/Recurrence": {},
-      "Background/Proofs": {}
+      "SeniorAlgAnal/Recurrence": {}
     },
     "Searching": {
       "Searching/SearchIntro": {},
       "Searching/UnsortedSearch": {},
-      "Searching/SortedSearch": {}
+      "Searching/SortedSearch": {},
+      "SearchStruct/SkipList": {}
     },
     "Lower Bounds": {
       "Sorting/SortingLowerBound": {},
@@ -101,8 +102,7 @@
     "Probabilistic Algorithms": {
       "SeniorAlgAnal/Probabilistic": {},
       "SeniorAlgAnal/Primes": {},
-      "SeniorAlgAnal/RandomNums": {},
-      "SearchStruct/SkipList": {}
+      "SeniorAlgAnal/RandomNums": {}
     },
     "Miscellaneous": {
       "SeniorAlgAnal/DynamicProgramming": {},
