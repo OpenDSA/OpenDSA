@@ -31,7 +31,7 @@ it is natural for programmers to want
 to optimize their sorting code to run faster.
 Of course all quadratic sorts (Insertion Sort, Bubble Sort and
 Selection Sort) are relatively slow.
-Each has (as the name "quadratic suggests)
+Each has (as the name "quadratic" suggests)
 :math:`\Theta(n^2)` worst case running time.
 The best way to speed them up is to find a better sorting algorithm.
 Nonetheless, there have been many suggestions given over the years

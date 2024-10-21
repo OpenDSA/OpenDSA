@@ -162,12 +162,9 @@ static Boolean sorttest(int[] B) {
 
 /* *** ODSATag: Bubblesort *** */
 static <T extends Comparable<T>> void bubblesort(T[] A) {
-  for (int i=0; i<A.length-1; i++) { // Insert i'th record
-    for (int j=1; j<A.length-i; j++) {
-      if (A[j-1].compareTo(A[j]) > 0) {
+  for (int i=0; i<A.length-1; i++) // Insert i'th record
+    for (int j=1; j<A.length-i; j++)
+      if (A[j-1].compareTo(A[j]) > 0)
         swap(A, j-1, j);
-      }
-    }
-  }
 }
 /* *** ODSAendTag: Bubblesort *** */

@@ -65,11 +65,9 @@ static Boolean sorttest(int[] B) {
 static <T extends Comparable<T>> void selsort(T[] A) {
   for (int i=0; i<A.length-1; i++) {       // Select i'th biggest record
     int bigindex = 0;                      // Current biggest index
-    for (int j=1; j<A.length-i; j++) {      // Find the max value
-      if (A[j].compareTo(A[bigindex]) > 0) {// Found something bigger
+    for (int j=1; j<A.length-i; j++)       // Find the max value
+      if (A[j].compareTo(A[bigindex]) > 0) // Found something bigger
         bigindex = j;                      // Remember bigger index
-      }
-    }
     swap(A, bigindex, A.length-i-1);       // Put it into place
   }
 }

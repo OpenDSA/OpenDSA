@@ -6,7 +6,7 @@ public class Swap {
     A[j] = temp;
   }
 
-  // Swap for int arrays
+  // Swap for arrays of objects
   public static void swap(Object[] A, int i, int j) {
     Object temp = A[i];
     A[i] = A[j];

@@ -1,7 +1,7 @@
 static void sorttime(int[] B) {
   int i;
-  int[] A = new int[B.length];
-  Integer[] Aint = new Integer[B.length];
+  Integer[] A = new Integer[B.length];
+  int[] Aint = new int[B.length];
   int totaltime, runs;
   int numruns = 20;
 
@@ -21,11 +21,11 @@ totaltime += (time2-time1);
 
 totaltime = 0;
 for (runs=0; runs<numruns; runs++) {
-  for(i=0; i<B.length; i++) A[i] = B[i];
+  for(i=0; i<B.length; i++) Aint[i] = B[i];
   time1 = millis();
-  selsortcheck(A);
+  selsortcheck(Aint);
   time2 = millis();
-  checkorder(A);
+  checkorder(Aint);
 totaltime += (time2-time1);
 }
   println("Standard Selection Sort: Size " + testsize + ", Time: " + totaltime);
@@ -46,11 +46,11 @@ static void selsortcheck(int[] A) {
 @SuppressWarnings("unchecked") // Generic array allocation
 static Boolean sorttest(int[] B) {
   int i;
-  Integer[] A = new Integer[B.length];
+  int[] Aint = new int[B.length];
   for (i=0; i<B.length; i++)
-    A[i] = new Integer(B[i]);
-  selsort(A);
-  if (!checkorder(A)) return false;
+    Aint[i] = B[i];
+  selsort(Aint);
+  if (!checkorder(Aint)) return false;
 
   //  KVPair[] AKV = (KVPair[])new Object[B.length];
   //  for (i=0; i<B.length; i++)
@@ -61,13 +61,13 @@ static Boolean sorttest(int[] B) {
 }
 
 /* *** ODSATag: Selectionsort *** */
-static <T extends Comparable<T>> void selsort(T[] A) {
+static void selsort(int[] A) {
   for (int i=0; i<A.length-1; i++) {       // Select i'th biggest record
     int bigindex = 0;                      // Current biggest index
-    for (int j=1; j<A.length-i; j++)       // Find the max value
-      if (A[j].compareTo(A[bigindex]) > 0) // Found something bigger  
+    for (int j=1; j < A.length-i; j++)     // Find the max value
+      if (A[j] > A[bigindex])              // Found something bigger  
         bigindex = j;                      // Remember bigger index
-    Swap.swap(A, bigindex, A.length-i-1);  // Put it into place
+    swap(A, bigindex, A.length-i-1);       // Put it into place
   }
 }
 /* *** ODSAendTag: Selectionsort *** */
