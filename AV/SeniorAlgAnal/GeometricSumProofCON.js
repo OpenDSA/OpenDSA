@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg("Proof of sum of a geometric series:");
-  av.umsg("<br> Assume that $a \\neq 1$, and let the sum of the first $n + 1$ items a geometric series equal to $s$, which means:", {"preserve": true});
+  av.umsg("<br> Assume that $a \\neq 1$, and let the sum of the first $n + 1$ items be a geometric series equal to $s$, which means:", {"preserve": true});
   av.umsg("<br> $s = 1 + a + a^2 + ... + a^n$", {"preserve": true});
   av.displayInit();
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 3
-  av.umsg("Subtract the second equation from the first equation, there are only two elements left, which is $1$ and $a^{n + 1}$");
+  av.umsg("After subtracting the second equation from the first equation, there are only two elements left: $1$ and $a^{n + 1}$");
   av.umsg("<br> $s = 1 + a + a^2 + ... + a^n$", {"preserve": true});
   av.umsg("<br> $as = a + a^2 + a^3 + ... + a^{n + 1}$", {"preserve": true});
   av.umsg("<br> $s - as = 1 - a^{n + 1}$", {"preserve": true});

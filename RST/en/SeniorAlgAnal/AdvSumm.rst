@@ -259,11 +259,12 @@ pattern in terms of :math:`f(n) - g(n)` or :math:`f(n)/g(n)`.
 
    This is called a geometric series.
    Our goal is to find some function :math:`g(n)` such
-   that the difference between :math:`f(n)` and :math:`g(n)` one from
-   the other leaves us with an easily manipulated equation.
-   Because the difference between consecutive terms of the summation
-   is a factor of :math:`r`, we can shift terms if we multiply the
-   entire expression by :math:`r`:
+   that the difference between :math:`f(n)` and :math:`g(n)`
+   leaves us with an easily manipulated equation.
+   For example, we might observe that the difference between
+   consecutive terms of the summation is a factor of :math:`r`,
+   so we can shift terms if we multiply the entire expression by
+   :math:`r`:
 
    .. math:: 
 

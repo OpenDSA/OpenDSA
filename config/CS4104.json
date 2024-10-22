@@ -81,7 +81,7 @@
       "SeniorAlgAnal/Recurrence": {}
     },
     "Searching": {
-      "Searching/SearchIntro": {},
+      "SeniorAlgAnal/SearchIntro": {},
       "Searching/UnsortedSearch": {},
       "Searching/SortedSearch": {},
       "SearchStruct/SkipList": {}

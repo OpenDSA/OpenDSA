@@ -27,7 +27,7 @@ $(document).ready(function() {
   graph = av.ds.graph({left: leftAlign, top: topAlign, width: 550, layout: "manual", directed: false});
   var n = graph.addNode("n", {left: leftAlign, top: topAlign});
   var nMinusOne = graph.addNode("n-1", {left: leftAlign + nodeWidth + nodeGap, top: topAlign});
-  var oneTwo = graph.addEdge(n, nMinusOne, {weight: "<b>1 +</b>"});
+  var oneTwo = graph.addEdge(n, nMinusOne, {weight: "<b>&nbsp;1 +&nbsp;</b>"});
   n.highlight();
   oneTwo.addClass("subProblemEdge");
   nMinusOne.addClass("subProblemNode");
@@ -38,7 +38,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc3.1"));
   av.umsg(interpret("sc3.2"), {preserve: true});
   var nMinusTwo = graph.addNode("n-2", {left: leftAlign + 2 * nodeGap + 2 * nodeWidth, top: topAlign});
-  var twoThree = graph.addEdge(nMinusOne, nMinusTwo, {weight: "<b>1 +</b>"});
+  var twoThree = graph.addEdge(nMinusOne, nMinusTwo, {weight: "<b>&nbsp;1 +&nbsp;</b>"});
   n.unhighlight();
   nMinusOne.removeClass("subProblemNode");
   nMinusOne.highlight();
@@ -52,7 +52,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc4.1"));
   av.umsg(interpret("sc4.2"), {preserve: true});
   var nMinusThree = graph.addNode("n-3", {left: leftAlign + 3 * nodeGap + 3 * nodeWidth, top: topAlign});
-  var threeFour = graph.addEdge(nMinusTwo, nMinusThree, {weight: "<b>1 +</b>"});
+  var threeFour = graph.addEdge(nMinusTwo, nMinusThree, {weight: "<b>&nbsp;1 +&nbsp;</b>"});
   nMinusOne.unhighlight();
   nMinusTwo.highlight();
   twoThree.removeClass("subProblemEdge");
@@ -65,7 +65,7 @@ $(document).ready(function() {
   av.umsg(interpret("sc5.1"));
   av.umsg(interpret("sc5.2"), {preserve: true});
   var nMinusFour = graph.addNode("n-4", {left: leftAlign + 4 * nodeGap + 4 * nodeWidth, top: topAlign});
-  var fourFive = graph.addEdge(nMinusThree, nMinusFour, {weight: "<b>1 +</b>"});
+  var fourFive = graph.addEdge(nMinusThree, nMinusFour, {weight: "<b>&nbsp;1 +&nbsp;</b>"});
   nMinusTwo.unhighlight();
   nMinusTwo.removeClass("subProblemNode");
   nMinusThree.highlight();

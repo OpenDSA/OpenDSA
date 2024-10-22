@@ -3741,6 +3741,16 @@ Glossary
       :term:`design pattern`.
       Related to the :term:`bintree`.
 
+   Practicality Window
+      The range of values for problem input size :math:`n` that a
+      real user of an algorithm will give to that algorithm.
+      If two algorithms have different growth rates, by definition one
+      grows faster than the other, meaning that beyond a certain value
+      of  :math:`n`, the one is always faster.
+      But if that value of :math:`n` is outside the practical limit
+      that any real user is likely to use, then the asymptotically
+      faster algorithm is practically faster.
+
    prefix property
       Given a collection of strings, the collection has the prefix
       property if no string in the collection is a prefix for another
