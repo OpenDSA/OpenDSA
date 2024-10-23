@@ -180,7 +180,7 @@ and the sum of the first :math:`i` levels is :math:`2^{i+1}-1`).
 Starting at 1, we can double only :math:`\log n` times to reach a
 value of :math:`n`.
 To be precise, the height of a heap with :math:`n` nodes is
-:math:`\lceil \log n + 1 \rceil`.
+:math:`\lfloor \log n \rfloor`.
 
 Each call to ``insert`` takes :math:`\Theta(\log n)` time in the
 worst case, because the value being inserted can move at most the
