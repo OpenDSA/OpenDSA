@@ -30,7 +30,7 @@ $(document).ready(function() {
   gr.removeNode(e);
   e = gr.addNode("E", {left: xoffset + 150, top: yoffset + 80});
   gr.addEdge(e, c);
-  av.umsg("Next, we decide to compare C with E, and we happen to find that C has a value less than E. Represent this with a line from C to E, with C above E. Note that while we still know that C is less than D, we don't know anything about how D and E compare to each other. Now there are 5 separate partial orders.");
+  av.umsg("Next, we decide to compare C with E, and we happen to find that C has a value less than E. Represent this with a line from C to E, with C above E. Note that while we still know that C is less than both D and E, we don't know anything about how D and E compare to each other. Now there are 5 separate partial orders.");
   gr.layout();
   av.step();
 

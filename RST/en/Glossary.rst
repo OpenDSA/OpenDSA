@@ -3741,7 +3741,7 @@ Glossary
       :term:`design pattern`.
       Related to the :term:`bintree`.
 
-   Practicality Window
+   practicality window
       The range of values for problem input size :math:`n` that a
       real user of an algorithm will give to that algorithm.
       If two algorithms have different growth rates, by definition one
@@ -3988,6 +3988,18 @@ Glossary
       This extends the set of languages that can be recognize to the
       :term:`context-free languages <context-free language>`.
 
+   quadratic binary search
+   QBS
+      A variation on :term:`dictionary search` or
+      :term:`interpolation search` for sorted lists.
+      QBS will first calculate a position in the list to check based
+      on the key value being searched for.
+      If this is not the correct value, then the algorithm will make
+      jumps of some size in the correct direction until it has bounded
+      the range where the record can be.
+      It then repeats the process by recomputing a position and making
+      smaller jumps.
+   
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
       is the input size and :math:`c` is a constant.

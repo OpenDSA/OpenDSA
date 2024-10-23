@@ -20,7 +20,12 @@ Analyzing Search in Unsorted Lists
 You already know the simplest form of search:
 the sequential search algorithm.
 Sequential search on an unsorted list requires :math:`\Theta(n)` time
-in the worst case.
+in the worst, average, and best cases.
+That would seem to be all there is to say about searching an unsorted
+list.
+But there are things to consider, like how our model should treat the
+case where the item is not on the list at all, and how to make a proof
+that is actually correct for the "obvious" lower bound.
 
 How many comparisons does linear search do on average?
 A major consideration is whether :math:`K` is in list **L** at
@@ -42,9 +47,9 @@ where :math:`\mathbf{P}(x)` is the probability of event
 :math:`x`.
 
 Let :math:`p_i` be the probability that :math:`K` is in position
-:math:`i` of **L** (indexed from 0 to :math:`n-1`.
-For any position :math:`i` in the list, we must look at :math:`i+1`
-records to reach it.
+:math:`i` of **L** (indexed from 0 to :math:`n-1`).
+For any position :math:`i` in the list, standard sequential search
+will look at :math:`i+1` records.
 So we say that the cost when :math:`K` is in position :math:`i` is
 :math:`i+1`.
 When :math:`K` is not in **L**, sequential search will require
@@ -67,7 +72,7 @@ are equal (except :math:`p_n`)?
    &=& p_n n + \frac{1 - p_n}{n}\frac{n(n+1)}{2}\\
    &=& \frac{n + 1 + p_n(n-1)}{2}
 
-Depending on the value of :math:`p_n`,
+Depending on the value of :math:`p_n` (which can range from 0 to 1),
 :math:`\frac{n+1}{2} \leq \mathbf{T}(n) \leq n`.
 
 
@@ -114,8 +119,10 @@ Here is our first attempt at proving the theorem.
    Such an input is legal in our model, so the algorithm is
    incorrect.
 
-Is this proof correct? Hopefully it is reasonably obvious to you that
-not all algorithms must search through the list in a specific order,
+Is this proof correct?
+While true for the "standard" left-to-right linear search algorithm,
+hopefully it is reasonably obvious to you that not all algorithms must
+search through the list in that specific order,
 so not all algorithms have to look at position **L** [:math:`n`] last.
 
 OK, so we can try to dress up the proof by making the process a bit more
@@ -141,7 +148,8 @@ For example, it is not necessary that all algorithms search the list
 from left to right.
 It is not even necessary that all algorithms search the same
 :math:`n-1` positions first each time through the list.
-Perhaps it picks them at random.
+Perhaps it picks them using a random permutation of the positions from 0
+to :math:`n-1`.
 
 Again, we can try to dress up the proof as follows.
 
@@ -149,14 +157,14 @@ Again, we can try to dress up the proof as follows.
 
    On any given run of the algorithm,
    if :math:`n-1` elements are compared against :math:`K`, then
-   *some* element position (call it position :math:`i`) gets skipped.
+   *some* element position (call it position :math:`i`) was not compared.
    It is possible that :math:`K` is in position :math:`i` at that
    time, and will not be found.
    Therefore, :math:`n` comparisons are required.
 
-Unfortunately, there is another error that needs to be fixed.
+Unfortunately, there is another error in the proof that needs to be fixed.
 It is not true that all algorithms for solving the problem must work
-by comparing elements of **L** against :math:`K`.
+by comparing elements of **L** directly against :math:`K`.
 An algorithm might make useful progress by comparing elements of
 **L** against each other.
 For example, if we compare two elements of **L**, then compare the

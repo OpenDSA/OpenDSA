@@ -1,7 +1,7 @@
 {
   "translations" :{
     "en": {
-      "sc1": "The input is a sorted array, and in this example we will search for the record with key value 45. We will put a marker above 45 as a reminder that this is what we will be searching for.",
+      "sc1": "The input is a sorted array, and in this example we will search for the record with key value 45. We will put a marker above 45 as a reminder that this is what we are searching for.",
       "sc2": "We begin searching by considering the entire array, since we don't know where the value is that we are looking for. We indicate this fact by setting the left and right bounds to the ends of the array, at positions 0 and 15, respectively.",
       "sc3": "First step is to compute the position in the middle of the current subarray. We add the position of the left bound to the position of the right bound and divide by 2, giving us position 7. Look at the value in position 7, which is 41.",
       "sc4": "Since 41 is less then 45, we know that no values to the left of position 7 will have value 45. So we keep the right bound as it was, and move the left bound to position 8.",

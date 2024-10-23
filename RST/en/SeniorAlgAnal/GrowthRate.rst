@@ -194,7 +194,7 @@ at the expense of a constant factor of 10, then the new algorithm
 :math:`n` is so big as to never be used in any real situation.
 
 This leads to the concept of the
-:term:`Practicality Window`.
+:term:`practicality window`.
 In general, (1) we have limited time to solve a problem,
 and (2) input can only get so big before the computer chokes
 (or at least, users are only interested in running problems of a
