@@ -21,7 +21,7 @@ Lower Bounds for Sorting
 By now you have seen many analyses for algorithms.
 These analyses generally define the upper and lower bounds for
 algorithms in their worst and average cases.
-For many of the algorithms presented so far, analysis has been easy.
+For most algorithm that you know, analysis has been easy.
 This module considers a more difficult task: An analysis for
 the cost of a *problem* as opposed to an *algorithm*.
 The upper bound for a problem can be defined as the asymptotic cost of
@@ -93,7 +93,7 @@ so it is possible to take approaches to sorting that do not involve
 direct key comparisons.
 Of course, Radix Sort in the end does not provide a more efficient
 sorting algorithm than comparison-based sorting.
-Thus, empirical evidence suggests that comparison-based sorting is a
+Thus, empirical experience suggests that comparison-based sorting is a
 good approach.
 
 (Actually, the truth is stronger than this statement implies.
@@ -114,9 +114,8 @@ shown to be the factorial of :math:`n`.
 Finally, the minimum depth of a tree with :math:`n!` leaves is shown
 to be in :math:`\Omega(n \log n)`.
 
-Before presenting the proof of an :math:`\Omega(n \log n)` lower bound
-for sorting, we first must define the concept of a
-:term:`decision tree`.
+This proof of an :math:`\Omega(n \log n)` lower bound
+for sorting relies on the concept of a :term:`decision tree`.
 A decision tree is a binary tree that can model the processing for any
 algorithm that makes binary decisions.
 Each (binary) decision is represented by a branch in the tree.

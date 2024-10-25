@@ -87,6 +87,7 @@
       "SearchStruct/SkipList": {}
     },
     "Lower Bounds": {
+      "Sorting/ExchangeSort": {},
       "Sorting/SortingLowerBound": {},
       "Bounds/BoundMax": {},
       "Background/SetDef": {},
