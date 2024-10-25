@@ -1,21 +1,18 @@
 SHELL := /bin/bash
 RM = rm -rf
-CONFIG_SCRIPT = tools/configure.py
 .DEFAULT_GOAL := help
+ODSA_ENV ?= DEV
+# ^ Default env variable, is overridden if already defined, such as ODSA_ENV='PROD'
+PYTHON = python3
+# ^ Python used for building books:  (can add options like -bb, -u, -Werror ...)
+CONFIG_SCRIPT = tools/configure.py
+CONFIG_SCRIPT_OPTS = --no-lms
+# ^ Starting script for building books.  See --help for option descriptions
+PYTHON_LINT = pylint --disable=C --reports=y
 JS_LINT = yarn eslint --no-color
 CSS_LINT = yarn csslint --quiet --ignore=ids,adjoining-classes
 # CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
 JSON_LINT = yarn jsonlint --quiet
-PYTHON_LINT = pylint --disable=C --reports=y
-# Can be overridden by env varis, such as ODSA_ENV='PROD'
-ODSA_ENV ?= DEV
-# Python used for building books:
-PYTHON = python3
-# -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
-# -u flag runs python in unbuffered mode (no output flushes needed)
-CONFIG_SCRIPT_OPTS = --no-lms
-# Options for building books using the CONFIG_SCRIPT. 
-# Usually just '--no-lms' but can also use --verbose or others
 
 JS_MINIFY = yarn uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
 CSS_MINIFY = yarn cleancss
