@@ -101,12 +101,12 @@ cleanbuild: clean html
 
 html:
 	$(SPHINXBUILD) $(TAGS) $(SPHINXOPTS) -b html source $(HTMLDIR)
-	# rm html/_static/jquery.js
+	rm html/_static/jquery.js
 	cp "%(odsa_dir)slib/conceptMap.html" $(HTMLDIR)
-	# rm *.json
+	rm *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
-	# rm Makefile
+	rm Makefile
 
 slides:
 	@SLIDES=yes \
