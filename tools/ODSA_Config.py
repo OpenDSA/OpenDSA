@@ -297,7 +297,7 @@ def set_defaults(conf_data):
         print_err('WARNING: tabbed_codeinc must be a boolean')
 
     if 'start_chap_num' not in conf_data:
-        conf_data['start_chap_num'] = 0  # 1
+        conf_data['start_chap_num'] = 0 # should be 1? affects other numberings though, such as figures...
 
     if 'suppress_todo' not in conf_data:
         conf_data['suppress_todo'] = False

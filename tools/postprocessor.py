@@ -24,7 +24,7 @@ def parse_index_rst(source_dir):
     index_rst = index_rst_file.readlines()
 
   directive = False
-  sectnum = 0
+  startSectNum = 0
   prefix = ''
 
   for line in index_rst:
@@ -33,18 +33,19 @@ def parse_index_rst(source_dir):
     elif ':prefix:' in line:
       prefix = re.split('prefix:', line, re.IGNORECASE)[1].strip()
     elif ':start:' in line:
-      sectnum = int(re.split('start:', line, re.IGNORECASE)[1]) - 1
+      startSectNum = int(re.split('start:', line, re.IGNORECASE)[1])
 
   if not directive:
     print('Error: No .. sectnum:: or .. chapnum:: directive in index.rst. Please include the directive and try again.')
     sys.exit(1)
 
-  return (sectnum, prefix)
+  return (startSectNum, prefix)
 
 
 # Updates the index.html page
-def update_index_html(dest_dir, sectnum):
+def update_index_html(dest_dir, startSectNum):
   # Process index.html separately from the modules files
+  sectNum = startSectNum - 1 # off by one when actually numbering
   with open(dest_dir + 'index.html', 'rt', encoding='utf-8') as index_html_file:
     index_html = index_html_file.readlines()
 
@@ -52,8 +53,8 @@ def update_index_html(dest_dir, sectnum):
     #inject css rule to remove haiku's orange bullets
     if '</head>' in line:
       index_html[line_num] = line.replace('</head>','<style>\nul li {\n\tbackground: none;\n\tlist-style-type: none;\n}\n</style>\n</head>')
-    elif 'class="section"' in line:
-      sectnum += 1
+    elif 'class="sectnum"' in line:
+      sectNum += 1 # the start of a new sub-TOC for chapter/section
     elif 'RegisterBook' in line:
       #remove registerbook page from TOC
       index_html[line_num] = ''
@@ -63,7 +64,7 @@ def update_index_html(dest_dir, sectnum):
         index_html[line_num-1] = ''
     elif 'class="toctree-l' in line and 'Gradebook' not in line and 'TODO List' not in line:
       title = re.split('>', re.split('</a>', line, re.IGNORECASE)[0], re.IGNORECASE)[-1]
-      new_title = '%s.' % sectnum + title
+      new_title = '%s.' % sectNum + title
       index_html[line_num] = line.replace(title, new_title)
 
   # Write the modified contents back to index.html
