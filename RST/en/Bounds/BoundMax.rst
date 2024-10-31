@@ -130,3 +130,16 @@ Is this a narrow spread or a wide spread?
 Compared to the mean value, this spread is pretty wide, meaning
 that the number of assignments varies widely from run to run of the
 program.
+
+.. todo::
+   :type: Visualization
+
+   This could use some actual numbers and maybe a visualization to
+   get across the amount of spread.
+
+
+Acknowledgement
+---------------
+
+This page borrows heavily from  presentation in Section 3.2 of
+*Compared to What?* by Gregory J.E. Rawlins.

@@ -47,6 +47,17 @@ following:
 What we will do
 ~~~~~~~~~~~~~~~
 
+During this course, we will talk about problems and algorithms that
+are probably new to you.
+But that is not really the focus for the course.
+A lot of the time we will be working to understand new techniques for
+analyzing algorithms and problems.
+So we get a lot of cases where we see an "obvious" algorithm, and work
+hard to prove that it is "best".
+Many of the problems and algorithms picked to study are choosen
+deliberately to expose new ways to do analysis.
+
+
 Major topics/goals for this course include:
 
 * Getting a good understanding of upper and (especially) lower bounds

@@ -533,6 +533,12 @@ Glossary
       This approach tends to make the hash function dependent on the
       distribution of the high-order bits of the keys.
 
+   binomial tree
+      A binomial tree of height :math:`m` has :math:`2^m` nodes.
+      Either it is a single node (if :math:`m=0`), or else it is
+      two binomial trees of height :math:`m-1`, with one tree's root
+      becoming a child of the other.
+
    bintree
       :to-term: flyweight :label: uses
 
