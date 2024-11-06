@@ -452,12 +452,13 @@ Glossary
       describing the :term:`upper bound` for an :term:`algorithm` or
       :term:`problem`.
 
-   binary insert sort
+   binary insertion sort
       A variation on :term:`insertion sort` where the position of the
       value being inserted is located by binary search, and then put
       into place. In normal usage this is not an improvement on
       standard insertion sort because of the expense of moving many
-      items in the :term:`array`. But it is directly useful if the cost of
+      items in the :term:`array`.
+      But it is practically useful if the cost of
       comparison is high compared to that of moving an element, or
       is theoretically useful if we only care to count the cost of
       comparisons.
@@ -3128,7 +3129,7 @@ Glossary
       to the memory manager to reserve a block of memory and store
       some bytes there.
 
-   merge insert sort
+   merge insertion sort
       A synonym for the :term:`Ford and Johnson sort`.
 
    message

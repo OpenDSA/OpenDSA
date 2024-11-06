@@ -36,16 +36,85 @@ solved efficiently with dynamic programming.
 Computing Fibonacci Numbers
 ---------------------------
 
-Consider the recursive function for computing the :math:`n`'th
-Fibonacci number.
+The Fibonacci sequence is typically defined as follows:
+
+.. math::
+
+   f(n) = f(n-1) + f(n-2)\ \mbox{for}\ n \geq 2;
+   \quad f(0) = f(1) = 1.
+
+Here is the "natural" recursive implementation for computing the
+:math:`n`'th Fibonacci number.
 
 .. codeinclude:: Misc/Fibonnaci 
    :tag: FibR
 
-The cost of this recursive algorithm (in terms of function calls) is
-the size of the :math:`n`'th Fibonacci number itself, which is
-exponential on :math:`n` (approximately :math:`1.62^n` ).
-Why is this so expensive?
+How much does this cost to run?
+Well, the cost to commute the :math:`n` th number looks surprisingly
+like the size of that number.
+Because the cost would be computed by exactly the same recurrence
+relation!
+So, what is that growth rate?
+
+Let's start by looking at a bunch of small values.
+Then we might be able to use divide-and-guess with by comparing
+:math:`f(n-1)` with :math:`f(n)`.
+
+.. math::
+   
+   \begin{array}{c|llllllll}
+   n&1&2&3&4&5&6&7&8\\
+   \hline
+   f(n)&1&2&3&5&8&13&21&28\\
+   f(n)/f(n-1)&1&2&1.5&1.666&1.6&1.625&1.615&1.619
+   \end{array}
+
+Following this out, it appears to settle to a ratio of 1.618.
+Assuming :math:`f(n)/f(n-1)` really tends to a fixed value :math:`x`,
+let's verify what :math:`x` must be.
+
+.. math::
+
+   \frac{f(n)}{f(n-2)} = \frac{f(n-1)}{f(n-2)} + \frac{f(n-2)}{f(n-2)}
+   \rightarrow x+1
+
+For large :math:`n`,
+
+.. math::
+
+   \frac{f(n)}{f(n-2)} = \frac{f(n)}{f(n-1)}\frac{f(n-1)}{f(n-2)}
+   \rightarrow x^2
+   
+We get this by muliplying and rearranging:
+
+.. math::
+
+   \frac{f(n)}{f(n-2)}\frac{f(n-1)}{f(n-1)}
+
+As :math:`n` gets big, the two ratios go to :math:`x`.
+So, if :math:`x` exists, then :math:`x^2 - x - 1 \rightarrow 0`.
+Using the quadratic equation, the only solution greater than one is
+
+.. math::
+   
+   x = \frac{1 + \sqrt{5}}{2} \approx 1.618.
+
+Therefore, the growth rate is exponential.
+:math:`f(n) \approx (1.618)^n`.
+
+.. math::
+
+   \begin{array}{c|lllllll}
+   n&1&2&3&4&5&6&7\\
+   \hline
+   f(n)&1&2&3&5&8&13&21\\
+   1.62^n&1.62&2.62&4.24&6.9&11.09&17.94&29.03
+   \end{array}
+
+Note that the value is always in the right range, even if the scale is
+off a bit.
+
+Why is ``fibr`` so expensive?
 Primarily because two recursive calls are made by the
 function, and the work that they do is largely redundant.
 That is, each of the two calls is recomputing most of the series, as
@@ -57,7 +126,7 @@ reduced.
 The approach that we will use can also improve any algorithm that
 spends most of its time recomputing common subproblems.
 
-The following slideshow explains the redundancy problem.
+The following slideshow details the redundancy problem.
 
 .. inlineav:: FibTreeCON ss
    :links:   /AV/SeniorAlgAnal/FibTreeCON.css
@@ -108,11 +177,12 @@ However, subsequent occurrences of such a call do
 not produce additional calls because they just read the contents of
 its corresponding cell.
 
-.. TODO::
-   :type: Figure
-
-   Put the figure here that was specified in the original document
-   (top of the 3rd page), showing the recursion tree.
+.. inlineav:: FibrtTreeCON dgm
+   :links:   /AV/SeniorAlgAnal/FibrtTreeCON.css
+   :scripts: /AV/SeniorAlgAnal/FibrtTreeCON.js
+   :align: center
+   :output: show
+   :keyword: Dynamic Programming; Recursion; Fibonacci Sequence
 
 A second technique is called :term:`tabulation`.
 The dependency graph must be analyzed to infer an alternative
@@ -130,7 +200,7 @@ original recursive form to the dynamic programming form.
 An additional optimization can be made.
 Of course, we didn't actually need to use a table storing all of the
 values, since future computations do not need access to all prior
-subproblems.
+subproblems (we can see this in the dependency graph).
 Instead, we could build the value by working from 0 and 1 up to
 :math:`n` rather than backwards from :math:`n` down to 0 and 1.
 Going up from the bottom we only need to store the previous two values
@@ -140,7 +210,7 @@ of the function, as is done by our iterative version.
    :tag: FibI
 
 Recomputing of subproblems comes up in many algorithms.
-It is not so common that we can store only a few prior results as we
+It is not common that we can store only a few prior results as we
 did for ``fibi``.
 Thus, there are many times where storing a complete table of
 subresults will be useful.
@@ -155,7 +225,7 @@ in a table.
 However, it comes originally from the field of dynamic control
 systems, which got its start before what we think of as computer
 programming.
-The act of storing precomputed values in a table for later reuse is
+The act of storing precomputed values in a table for later reuse was
 referred to as "programming" in that field.
 Dynamic programming algorithms are usually implemented with the
 tabulation technique described above.
@@ -178,7 +248,7 @@ programming.
 There are many other versions for the problem.
 Some versions ask for the greatest amount that will fit, others
 introduce values to the items along with size.
-We will look at a fairly easy to understand variation.
+We will look at a fairly easy-to-understand variation.
 
 Assume that we have a knapsack with a certain amount of space that we
 will define using integer value :math:`K`.
@@ -308,8 +378,8 @@ solutions for all subproblems
       :output: show
       :keyword: Dynamic Programming; Recursion; Knapsack Problem
 
-   The dependency graph for this problem instance, laid out in a table of
-   size :math:`n × K + 1`, follows:
+      The dependency graph for this problem instance, laid out in a table of
+      size :math:`n × K + 1`, follows:
 
 .. inlineav:: KnapGraphCON dgm
    :links:   /AV/SeniorAlgAnal/KnapGraphCON.css
@@ -363,10 +433,10 @@ cost of the algorithm is :math:`\Theta(nK)`.
       \end{array}
 
    | Key:
-   |   -:  No solution for :math:`P(i, k)`.
-   |   O: Solution(s) for :math:`P(i, k)` with :math:`i` omitted.
-   |   I: Solution(s) for :math:`P(i, k)` with :math:`i` included.
-   |   I/O: Solutions for :math:`P(i, k)` with :math:`i` included AND omitted.
+   |   -:  No solution exists for :math:`P(i, k)`.
+   |   O: Solution(s) exist for :math:`P(i, k)` with :math:`i` omitted.
+   |   I: Solution(s) exist for :math:`P(i, k)` with :math:`i` included.
+   |   I/O: Solutions exist for :math:`P(i, k)` with :math:`i` included AND omitted.
 
    For example, :math:`P(2, 9)` stores value I/O.
    It contains O because :math:`P(1, 9)` has a solution (so, this item
@@ -402,10 +472,13 @@ It turns out to make a big difference in which order we do the
 computation.
 
 First, let's recall the basics.
-If we have two matrices (on of :math:`r` rows and
+If we have two matrices (one of :math:`r` rows and
 :math:`s` columns, and the other of :math:`s` rows and :math:`t`
 columns), then the result will be a matrix of
 :math:`r` rows and :math:`t` columns.
+(Don't forget that we can only multiply two matrices if the number of
+columns in the first matrix is equal to the number of rows in the
+second.)
 What we really care about is that the cost of the matrix
 multiplication is dominated by the number of terms that have to be
 multipled together.
@@ -416,15 +489,20 @@ time is dominated by the multiplications).
 The other thing to realize is this: Of course it matters whether we
 multiply :math:`A \times B` or :math:`B \times A`.
 But let's assume that we already have determined the order that they go
-in (that it should be :math:`A \times B` 
-But we still have choices to make if there are many matrices to
-multiply together
+in (that it should be :math:`A \times B`).
+And for all of our multiplications, we assume that the rows and
+columns match up appropriately so that the multiplications are
+possible.
+Given all that, we still have choices to make if there are many
+matrices to multiply together.
 The thing that we need to consider is this:
 If we want to multiply three matrices, and we know the order, we still
 have a choice of how to group them.
-In other words, we can multiply three matrices as either
-:math:`A(BC)` or :math:`(AB)C`, and the answer will be the same in the
-end.
+Say they are named :math:`A`, :math:`B`, and and :math:`C`, and that
+the order of multiplications will be :math:`A \times B \times C`.
+But we can accomplish this either by doing
+:math:`A \times (B \times C)` or by doing :math:`(A \times B) \times C`,
+and the answer will be the same in the end.
 However, as we see below, it can matter a lot which way we do this in
 terms of the cost of getting that answer.
 
@@ -444,8 +522,7 @@ For instance, we repeatedly need to decide the best order to multiply
 ABC.
 And to solve that, we repeatedly compute AB's cost, and BC's cost.
 One way to speed this up is simply to remember the answers whenever we
-compute them.
-This is called memoization.
+compute them (use memoization).
 Whenever we ask the question again, we simply use the stored result.
 This implies that we have a good way to remember where to store them,
 that is, how to organize the subproblems to easily check if the

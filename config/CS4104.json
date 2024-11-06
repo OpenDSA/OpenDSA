@@ -93,23 +93,13 @@
       "Background/SetDef": {},
       "Bounds/BoundAdversary": {},
       "Bounds/BoundState": {},
-      "Bounds/BoundiBest": {}
+      "Bounds/BoundiBest": {},
+      "Bounds/SortingOptimal": {},
+      "SeniorAlgAnal/AmortAnal": {}
     },
-    "Number Problems": {
-      "SeniorAlgAnal/Numeric": {},
-      "SeniorAlgAnal/Transform": {},
-      "SeniorAlgAnal/FFT": {}
-    },
-    "Probabilistic Algorithms": {
-      "SeniorAlgAnal/Probabilistic": {},
-      "SeniorAlgAnal/Primes": {},
-      "SeniorAlgAnal/RandomNums": {}
-    },
-    "Miscellaneous": {
+    "Dynamic Programming": {
       "SeniorAlgAnal/DynamicProgramming": {},
-      "Graph/Floyd": {},
-      "SeniorAlgAnal/AmortAnal": {},
-      "Bounds/SortingOptimal": {}
+      "Graph/Floyd": {}
     },
     "Limits to Computing": {
       "NP/LimComp": {},
@@ -158,6 +148,15 @@
       "NP/NPCoping": {},
       "SeniorAlgAnal/Impossible": {},
       "SeniorAlgAnal/Turing": {}
+    },
+    "Number Problems": {
+      "SeniorAlgAnal/Numeric": {},
+      "SeniorAlgAnal/Matrix": {},
+      "SeniorAlgAnal/Probabilistic": {},
+      "SeniorAlgAnal/Primes": {},
+      "SeniorAlgAnal/RandomNums": {},
+      "SeniorAlgAnal/Transform": {},
+      "SeniorAlgAnal/FFT": {}
     },
     "Appendix": {
       "Glossary": {},

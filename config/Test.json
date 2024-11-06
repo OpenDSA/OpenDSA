@@ -69,9 +69,11 @@
   },
   "chapters": {
     "Stuff": {
-      "Searching/UnsortedSearch": {},
-      "Searching/SortedSearch": {},
-      "SearchStruct/SkipList": {}
+      "Design/ADT": {},
+      "SeniorAlgAnal/DynamicProgramming": {},
+      "Graph/Floyd": {},
+      "SeniorAlgAnal/AmortAnal": {},
+      "Bounds/SortingOptimal": {}
     }, 
     "Appendix": {
       "Glossary": {}
