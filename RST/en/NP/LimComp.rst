@@ -40,8 +40,8 @@ For example, consider a sorting algorithm that tests every possible
 permutation of its input until it finds the correct permutation that
 provides a sorted list.
 The running time for this algorithm would be unacceptably
-high, because it is proportional to the number of permutations which
-is :math:`n!` for :math:`n` inputs.
+high, because it is proportional to the number of permutations
+(which is :math:`n!` for :math:`n` inputs).
 When solving the 
 :ref:`minimum-cost spanning tree problem <MCST> <MCST>`,
 if we were to
@@ -63,11 +63,13 @@ Hanoi problem to run in less than :math:`\Omega(2^n)` time, because
 that many moves must be printed out.
 
 Besides those problems whose solutions *must* take a long time
-to run, there are also many problems for which we simply do not know if
+to run (perhaps because the solution itself is so big),
+there are also many problems for which we simply do not know if
 there are efficient algorithms or not.
 The best algorithms that we know for such problems are very slow, but
 perhaps there are better ones waiting to be discovered.
-Of course, while having a problem with high running time is bad, it is
+
+While having a problem with high running time is bad, it is
 even worse to have a problem that cannot be solved at all!
 Such problems
 (which are called

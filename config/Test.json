@@ -69,11 +69,7 @@
   },
   "chapters": {
     "Stuff": {
-      "Design/ADT": {},
-      "SeniorAlgAnal/DynamicProgramming": {},
-      "Graph/Floyd": {},
-      "SeniorAlgAnal/AmortAnal": {},
-      "Bounds/SortingOptimal": {}
+      "NP/Reduction": {}
     }, 
     "Appendix": {
       "Glossary": {}
