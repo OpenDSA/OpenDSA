@@ -113,6 +113,7 @@
           "threshold": 1.0
         }
       },
+      "NP/SAT_to_threeSAT": {},
       "NP/clique": {
         "cliquePRO": {
           "threshold": 1.0
@@ -139,7 +140,6 @@
         }
       },
       "NP/circuitSAT_to_SAT": {},
-      "NP/SAT_to_threeSAT": {},
       "NP/threeSAT_to_clique": {},
       "NP/independentSet_to_vertexCover": {},
       "NP/threeSAT_to_hamiltonianCycle": {},

@@ -15,8 +15,6 @@ The Hamiltonian Cycle Problem
 Hamiltonian Cycle
 -----------------
 
-HAMILTONIAN CYCLE PROBLEM.
-
 .. inlineav:: hamiltonianCycleCON ss
    :long_name: Hamiltonian Cycle
    :links: AV/NP/hamiltonianCycleCON.css

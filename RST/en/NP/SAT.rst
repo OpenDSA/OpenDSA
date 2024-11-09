@@ -15,8 +15,6 @@ Formula Satisfiability
 Formula Satisfiability
 ----------------------
 
-FORMULA SATISFIABILITY PROBLEM (SAT) 
-
 .. inlineav:: SATCON ss
    :long_name: Formula Satisfiability
    :links: AV//NP/SATCON.css

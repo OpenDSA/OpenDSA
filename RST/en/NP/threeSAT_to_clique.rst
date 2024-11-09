@@ -14,9 +14,9 @@ Reduction of 3-SAT to Clique
 Reduction of 3-SAT to Clique
 ----------------------------
 
-The following slideshow shows that an instance of 3-CNF Satisfiability 
-problem can be reduced to an instance of Clique problem in 
-polynomial time.
+The following slideshow shows that an input instance to the **3-SAT**
+problem can be reduced to an equivalent input instance to the
+**CLIQUE** problem in polynomial time.
  
 .. inlineav:: threeSATtoCliqueCON ss
    :links: AV/NP/threeSATtoCliqueCON.css

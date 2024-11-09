@@ -430,11 +430,11 @@ then there is a lower bound of :math:`\Omega(h(n))` on
 smaller than the other.)
 
 Example:
-SORTING :math:`\leq_{O(n)}` PAIRING, because
+**SORTING** :math:`\leq_{O(n)}` **PAIRING**, because
 :math:`g(n) = n`, :math:`h(n) = n \log n`, and
 :math:`g(n) = o(h(n))`.
 The Lower Bound Theorem gives us an :math:`\Omega(n \log n)`
-lower bound on PAIRING.
+lower bound on **PAIRING**.
 
 This also goes the other way.
 
@@ -449,16 +449,16 @@ So, given good transformations, both problems take at least
 The Cost of Making a Simple Polygon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SIMPLE POLYGON: Given a set of :math:`n` points in the plane,
+**SIMPLE POLYGON**: Given a set of :math:`n` points in the plane,
 find a simple polygon with those points as vertices.
 (Here, "simple" means that no lines cross.)
-We will show that SORTING :math:`\leq_{O(n)}` SIMPLE POLYGON.
+We will show that **SORTING** :math:`\leq_{O(n)}` **SIMPLE POLYGON**.
 
-We start with an instance of SORTING: :math:`\{x_1, x_2, \cdots, x_n\}`.
+We start with an instance of **SORTING**: :math:`\{x_1, x_2, \cdots, x_n\}`.
 In linear time, find :math:`M = \max|x_i|`.
 Let :math:`C` be a circle centered at the origin, of radius :math:`M`.
 
-We will generate an instance of SIMPLE POLYGON by replacing each value
+We will generate an instance of **SIMPLE POLYGON** by replacing each value
 in the array to be sorted with a corresponding point defined as
 
 .. math::
@@ -480,5 +480,5 @@ the circle in sort order.
 This is because
 the only simple polygon having all of its points on :math:`C` as
 vertices is the convex one.
-Therefore, by the Lower Bound Theorem, SIMPLE POLYGON is in
+Therefore, by the Lower Bound Theorem, **SIMPLE POLYGON** is in
 :math:`\Omega(n \log n)`.

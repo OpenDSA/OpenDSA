@@ -12,10 +12,8 @@
 3-CNF Satisfiability
 ====================
 
-3-CNF Satisfiability
---------------------
-
-3-CNF SATISFIABILITY PROBLEM (3-SAT)
+3-CNF Satisfiability (3-SAT)
+----------------------------
 
 .. inlineav:: threeSATCON ss
    :long_name: 3-Satisfiability

@@ -15,8 +15,6 @@ The Clique Problem
 The Clique Problem
 ------------------
 
-CLIQUE PROBLEM  
-
 .. inlineav:: cliqueCON ss
    :long_name: Clique
    :links: AV/NP/cliqueCON.css

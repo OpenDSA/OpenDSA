@@ -2185,15 +2185,14 @@ Glossary
       Testing "proper" inputs or uses of a program.
 
    hard algorithm
-      "Hard" is traditionally defined in relation to running time, and
-      a "hard" algorithm is defined to be an algorithm with exponential
-      running time.
+      "Hard" in CS theory is traditionally defined in relation to
+      running time, and a "hard" algorithm is defined to be an
+      algorithm with exponential running time.
 
    hard problem
-      "Hard" is traditionally defined in relation to running time, and
-      a "hard" problem is defined to be one whose best known algorithm
-      requires exponential running time.
-
+      "Hard" in CS theory is traditionally defined in relation to
+      running time, and a "hard" problem is defined to be one whose
+      best known algorithm requires exponential running time.
 
    harmonic series
       The sum of reciprocals from 1 to :math:`n` is called the

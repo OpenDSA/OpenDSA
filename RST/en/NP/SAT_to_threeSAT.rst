@@ -15,9 +15,9 @@ Reduction of SAT to 3-SAT
 Reduction of SAT to 3-SAT
 -------------------------
 
-The following slideshow shows that an instance of Formula Satisfiability 
-problem can be reduced to an instance of 3 CNF Satisfiability problem in 
-polynomial time.
+The following slideshow shows that any general instance of the
+Formula Satisfiability (**SAT**) problem can be reduced to an instance of 3 CNF
+Satisfiability (**3-SAT**) problem in polynomial time.
  
 .. inlineav:: SATto3SATCON ss
    :links: AV/NP/SATto3SATCON.css

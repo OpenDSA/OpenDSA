@@ -13,25 +13,24 @@ $(document).ready(function () {
     MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
 
   var av = new JSAV(av_name);
-
-
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
+
   // Slide 1
   var y = 0;
   av.umsg("<br><b>Reduction of 3-SAT to Clique problem </b>");
   var nl1=av.label("This slideshow presents how to reduce"+
-                   " a 3-SAT problem to a Clique problem in polynomial time",{top:0});
+                   " a 3-SAT problem instance to an equivalent CLIQUE problem instance in polynomial time.",{top:0});
   av.displayInit();
   av.step();
 
   // Slide 2
   nl1.hide();
   av.umsg("<br><b>3-SAT and Clique problem");
-  nl1=av.label("Given a boolean formula in 3 CNF, <b>3-SAT</b> problem"+
-               " is to find whether the formula is satisfiable <br><br><br>For a given"+
+  nl1=av.label("Given a boolean formula in 3 CNF, the <b>3-SAT</b> problem"+
+               " is to find whether the formula is satisfiable.<br><br>For a given"+
                " graph $G = ( V , E )$ and integer $k$, the "
-               +"Clique problem is to find whether $G$ contains a clique of size "
-               +"$>= k$.", {top:-10});
+               +"CLIQUE problem is to find whether $G$ contains a clique of size " 
+               +"$\\geq k$.", {top:-10});
   av.step();
 
   // Slide 3
@@ -211,9 +210,9 @@ $(document).ready(function () {
   nl1.hide();
   av.umsg("<br><b>Insights about the graph</b>");
   nl1=av.label("1. If two nodes in the graph are connected, the corresponding literals "
-               +"can be simultaneously be assigned $True$. <br>(This is true since there is no edge between nodes"
-               +" corresponding to literals of type $x$ and $\\overline{x}$)."+
-               "<br><br><br>2. If two literals, not from the same clause can be assigned $True$ "
+               +"can simultaneously be assigned $True$.<br>(This is true since there is no edge between nodes"
+               +" corresponding to literals of type $x$ and $\\overline{x}$.)"+
+               "<br><br><br>2. If two literals not from the same clause can be assigned $True$ "
                +"simultaneously, the nodes corresponding to these literals in the graph are connected."
                +"<br><br><br>3. Construction of the graph can be performed in polynomial time"
                ,{top:-10});
@@ -232,7 +231,7 @@ $(document).ready(function () {
                +" the same cluster are connected to each other, hence they can never be a part of "
                +"the same clique.)<br>All nodes in a clique are connected, hence all corresponding "
                +"literals can be assigned $True$ simultaneously."
-               +"<br> Each literal belong to exactly one of the $k$-clauses. Hence <b> $\\Phi$ is satisfiable</b>",
+               +"<br> Each literal belongs to exactly one of the $k$-clauses. Hence <b> $\\Phi$ is satisfiable.</b>",
                {top:60});
   av.step();
   
@@ -241,7 +240,7 @@ $(document).ready(function () {
                    +"Select from each clause a literal that is $True$ in A to construct a set S. $||S|| = k$."
                    +"Since no two literals in S are from the same clause and all of them are simultaneously $True$, all"
                    +" the corresponding nodes in the graph are connected to each other, forming a k-clique."
-                   +"Hence <b> the graph has a $k$-clique",{top:200});
+                   +" Hence, <b>the graph has a $k$-clique.</b>",{top:200});
   av.step();
 
   // Slide 17
@@ -258,14 +257,14 @@ $(document).ready(function () {
 
   // Slide 18
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
-  nl1=av.label("The corresponding assignment: $x_2 = True , x_3 = True , x_4 = True$",{top:-10});
+  nl1=av.label("The corresponding assignment: $x_2 = True , x_3 = True , x_4 = True$.",{top:-10});
   av.step();
 
   // Slide 19
   g1.hide();
   nl1.hide();
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
-  nl1=av.label("$\\Phi$ is $True$ for the corresponding assignment: $x_2 = True , x_3= True , x_4 = True$",{top:50});
+  nl1 = av.label("$\\Phi$ is $True$ for the corresponding assignment: $x_2 = True , x_3= True , x_4 = True$.",{top:50});
   label1.show();
   label2.removeClass("labelcolor1").show();
   label3.removeClass("labelcolor2").show();
