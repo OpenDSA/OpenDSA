@@ -20,12 +20,13 @@ Unsolveable Problems
 Introduction
 ~~~~~~~~~~~~
 
-Even the best programmer sometimes writes a program that goes into an
+Even good programmers sometimes write a program that goes into an
 infinite loop.
-Of course, when you run a program that has not stopped, you do not
-know for sure if it is just a slow program or a program in an infinite
-loop.
-After "enough time", you shut it down.
+Of course, when you are running a program that has not stopped, you do
+not know for sure if it is just a slow program or a program in an
+infinite loop.
+After "enough time", you shut it down (or it stops working for some
+other reason).
 Wouldn't it be great if your compiler could look at your program and
 tell you before you run it that it will get into an infinite loop?
 To be more specific, given a program and a particular input, it would
@@ -74,8 +75,8 @@ that the code fragment halts for all values of :math:`n`.
 Doing so may well give us techniques that advance our ability to do
 algorithm analysis in general.
 Unfortunately, proofs from :term:`computability` |---| the branch of
-computer science that studies what is impossible to do with a computer
-&mdash; compel us to believe that there will always be another
+computer science that studies what is impossible to do with a computer |---|
+compel us to believe that there will always be another
 bit of program code that we cannot analyze.
 This comes as a result of the fact that the Halting Problem is
 unsolvable.
@@ -101,11 +102,11 @@ integer", imagine that there is an infinite row of bins, labeled 1,
 2, 3, and so on.
 Take a set and start placing members of the set into bins, with at
 most one member per bin.
-If we can find a way to assign all of the set members to bins, then the
-set is countable.
+If we can find a way to assign each of the set members to its own bin,
+then the set is countable.
 For example, consider the set of positive even integers 2, 4, and so
 on.
-We can assign an integer :math:`i` to bin :math:`i/2`
+We can assign a positive even integer :math:`i` to bin :math:`i/2`
 (or, if we don't mind skipping some bins, then we can assign even
 number :math:`i` to bin :math:`i`).
 Thus, the set of even integers is countable.
@@ -127,8 +128,9 @@ In general, assign positive integer value :math:`i` to positive
 integer
 value :math:`2i`, and assign negative integer value :math:`-i` to
 positive integer value :math:`2i+1`.
-We will never run out of positive integers to assign, and we know
-exactly which positive integer every integer is assigned to.
+We will never run out of positive integers (bins) to assign to,
+and we know exactly which positive integer (bin) every integer is
+assigned to.
 Because every integer gets an assignment, the set of integers is
 countably infinite.
 
@@ -161,13 +163,14 @@ Because all programs are assigned to some bin, the set of all programs
 is countable.
 Naturally most of the strings in the bins are not legal programs, but
 this is irrelevant.
-All that matters is that the strings that **do**, correspond to
+All that matters is that the strings that **do** correspond to
 programs are also in the bins.
 
 Now we consider the number of possible functions.
 To keep things simple, assume that all functions take a single
 positive integer as input and yield a single positive integer as
 output.
+As we are about to see, there are more than enough just of these.
 We will call such functions :term:`integer functions <integer function>`.
 A function is simply a mapping from input values to output values.
 Of course, not all computer programs literally take integers as input
@@ -268,16 +271,16 @@ The Halting Problem Is Unsolvable
 
 There might be intellectual appeal to knowing
 that there exists **some** function that cannot be computed by a
-computer program
-But does it really matter if no program can compute a
+computer program.
+But does it really matter whether no program can compute a
 "nonsense" function such as the one shown in Bin 4 of
 Figure :num:`Figure #FuncAssign`?
 That alone doesn't have to mean that there is a **useful** function
 that cannot be computed.
 After all, the universe should not be this perverse, should it?
-Perhaps the very fact that we can easily specify the function that we
-want to compute implies that there must be an algorithm to compute
-it.
+Perhaps the very fact that we can easily provide a precise
+definition for the function that we want to compute implies that there
+must be an algorithm to compute it.
 
 Unfortunately, not so.
 Now we will prove that the Halting Problem cannot be computed by any
@@ -357,7 +360,7 @@ problem that is already known to be unsolvable.
 
 .. topic:: Example
 
-   Consider the following variation on the Halting Problem.
+   Consider this variation on the Halting Problem:
    Given a computer program, will it halt when its input is the
    empty string?
    That is, will it halt when it is given no input?

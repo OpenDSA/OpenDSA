@@ -147,7 +147,8 @@
       "NP/hamiltonianCycle_to_TSP": {},
       "NP/NPCoping": {},
       "SeniorAlgAnal/Impossible": {},
-      "SeniorAlgAnal/Turing": {}
+      "SeniorAlgAnal/TuringMachines": {},
+      "SeniorAlgAnal/TuringMachinesAdv": {}
     },
     "Number Problems": {
       "SeniorAlgAnal/Numeric": {},
