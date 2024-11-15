@@ -79,6 +79,9 @@
       "SeniorAlgAnal/DynamicProgramming": {},
       "Indexing/BTree": {}
    },
+   "Graphs": {
+    "development/splice_codecheck": {}
+  },
     "Appendix": {
       "Glossary": {}
     }
