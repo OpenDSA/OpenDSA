@@ -18,7 +18,7 @@ The Fast Fourier Transform
 --------------------------
 
 In this module we continue the discussion on how to speed up the
-multiplication of larg polyonmials.
+multiplication of large polynomials.
 Recall that we can get the result of multiplying two polynomials by
 the process of evaluating both at a sufficient number of points,
 doing pair-wise multiplication on the evaluation values, and then
@@ -222,21 +222,12 @@ It is a recursive function that decomposes the matrix
 multiplications, taking advantage of the symmetries made available by
 doing evaluation at the :math:`n` th roots of unity.
 
-
-
 .. inlineav:: FFTprocedureCON ss
    :long_name: fft slideshow 6 FFT procedure
    :links: AV/SeniorAlgAnal/FFTprocedureCON.css AV/SeniorAlgAnal/FFTprocedureCON.json
    :scripts: lib/complex.js AV/SeniorAlgAnal/FFTprocedureCON.js
    :output: show
    :keyword: Fast Fourier Transform
-
-.. todo::
-   :type: AV
-
-   Practice fft algorithm. Maybe only practice the final for loop since
-   the rest of the algorithm is recursivly dividing the polynomial and 
-   performing fft on the smaller polynomials.
 
 .. avembed:: Exercises/SeniorAlgAnal/FFTAlg.html ka
    :keyword: Fast Fourier Transform

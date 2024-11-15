@@ -2,7 +2,10 @@
   height: 680px;
 }
 
-
 .jsavarray .jsavindex {
   max-width: 60px !important;
+}
+
+#FFTprocedureCON .jsavoutput.jsavline {
+  height: 30px;
 }

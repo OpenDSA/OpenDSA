@@ -171,12 +171,17 @@ bound.
            6\lceil \frac{n}{5} \rceil + n - 1\\
    &\leq&r(\frac{n}{5} + 1) + r(\frac{7n-5}{10} + 1) + 6(\frac{n}{5} + 1) + n - 1\\
    &\leq&(\frac{r}{5} + \frac{7r}{10} + \frac{11}{5})n + \frac{3r}{2} + 5\\
-   &\leq&\frac{9r + 22}{10}n + \frac{3r + 10}{2}.
+   &\leq&\frac{9r + 22}{10}n + \frac{3r + 10}{2} \leq rn.
    \end{eqnarray*}
 
-This is true for :math:`r \geq 23` and :math:`n \geq 380`.
+We might need to hunt around a bit to find values for :math:`r` and
+:math:`n` that make this equation work.
+For example, if we try :math:`r = 1` then we get
+:math:`3.1 n + 7.5 \leq n` which clearly does not work.
+But if we use :math:`r = 23` we get :math:`22.9n + 39.5 \leq 23n`,
+which is true for :math:`n \geq 395`.
 This provides a base case that allows us to use induction to prove
-that :math:`\forall n \geq 380, \mathbf{T}(n) \leq 23n`.
+that :math:`\forall n \geq 395, \mathbf{T}(n) \leq 23n`.
 
 While we have now proved that the median (or :math:`i` th element) can
 be done in linear time, in reality this algorithm is not practical

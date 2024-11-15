@@ -360,8 +360,8 @@ $(document).ready(function () {
   jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $\\overline{x_1}$ from Clause 2. Since this is negated, we reverse the direction of the edges.");
   clauseEdges[0][4].removeClass("boldedge");  
   clauseEdges[0][5].removeClass("boldedge");  
-  clauseEdges[1][0] = g.addEdge(nodes[0][3], clause2).addClass("clauseedge").addClass("boldedge");
-  clauseEdges[1][1] = g.addEdge(clause2, nodes[0][2]).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][0] = g.addEdge(nodes[0][6], clause2).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][1] = g.addEdge(clause2, nodes[0][5]).addClass("clauseedge").addClass("boldedge");
   g.layout();
   jsav.step();
 
@@ -369,8 +369,8 @@ $(document).ready(function () {
   jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $x_2$ from Clause 2.");
   clauseEdges[1][0].removeClass("boldedge");  
   clauseEdges[1][1].removeClass("boldedge");  
-  clauseEdges[1][2] = g.addEdge(nodes[1][2], clause2).addClass("clauseedge").addClass("boldedge");
-  clauseEdges[1][3] = g.addEdge(clause2, nodes[1][3]).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][2] = g.addEdge(nodes[1][5], clause2).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][3] = g.addEdge(clause2, nodes[1][6]).addClass("clauseedge").addClass("boldedge");
   g.layout();
   jsav.step();
 
@@ -378,8 +378,8 @@ $(document).ready(function () {
   jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $x_3$ from Clause 2.");
   clauseEdges[1][2].removeClass("boldedge");  
   clauseEdges[1][3].removeClass("boldedge");  
-  clauseEdges[1][4] = g.addEdge(nodes[2][2], clause2).addClass("clauseedge").addClass("boldedge");
-  clauseEdges[1][5] = g.addEdge(clause2, nodes[2][3]).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][4] = g.addEdge(nodes[2][5], clause2).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][5] = g.addEdge(clause2, nodes[2][6]).addClass("clauseedge").addClass("boldedge");
   g.layout();
   jsav.step();
 
@@ -464,11 +464,11 @@ $(document).ready(function () {
   ex1outl.addClass("highlightedge");
   edges[1][0].addClass("highlightedge");
   edges[1][1].addClass("highlightedge");
-  clauseEdges[1][2].addClass("highlightedge");
-  clauseEdges[1][3].addClass("highlightedge");
+  edges[1][2].addClass("highlightedge");
   edges[1][3].addClass("highlightedge");
   edges[1][4].addClass("highlightedge");
-  edges[1][5].addClass("highlightedge");
+  clauseEdges[1][2].addClass("highlightedge");
+  clauseEdges[1][3].addClass("highlightedge");
   edges[1][6].addClass("highlightedge");
   edges[1][7].addClass("highlightedge");
   ex2inr.addClass("highlightedge");

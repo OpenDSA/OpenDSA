@@ -137,7 +137,7 @@ between the cost of the
 :ref:`move-to-front <move-to-front> <SelfOrg>` self-organizing list
 heuristic and the cost for the optimal static ordering of the list.
 
-For a series of search operations, the minimum cost for a
+For a series of search operations, the minimum cost for
 an unchanging list results when the list is sorted by
 frequency of access to its records.
 This is the optimal ordering for the records if we never allow the
@@ -185,7 +185,7 @@ frequently accessed record, and so on.
    when :math:`S_{AB}` is applied to the optimal static
    ordering for the list.
    To see this, assume that :math:`S_{AB}` contains
-   :math:`i` :math:`A` s and :math:`j` :math:`B` s,
+   :math:`i` :math:`A`'s and :math:`j` :math:`B`'s,
    with :math:`i \leq j`.
    Under the optimal static ordering, :math:`i` unsuccessful
    comparisons are required because :math:`B` must appear before

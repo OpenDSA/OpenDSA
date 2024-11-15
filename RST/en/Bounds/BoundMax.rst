@@ -114,7 +114,7 @@ More exactly, :math:`{\cal H}_n` is close to :math:`\log_e n`.
 How "reliable" is this average?
 That is, how much will a given run of the program deviate from the
 mean cost?
-According to Cebysev's Inequality, an observation will fall
+According to Chebysev's Inequality, an observation will fall
 within two standard deviations of the mean at least 75% of the time.
 For ``Largest``, the variance is
 
@@ -130,12 +130,15 @@ Is this a narrow spread or a wide spread?
 Compared to the mean value, this spread is pretty wide, meaning
 that the number of assignments varies widely from run to run of the
 program.
+Here are a few values:
 
-.. todo::
-   :type: Visualization
-
-   This could use some actual numbers and maybe a visualization to
-   get across the amount of spread.
+* For :math:`n = 100`, 75% of the values fall in the range
+  :math:`4.605 \pm 4.30`
+  (so 25% are even further from the mean)
+* For :math:`n = 1000`, 75% of the values fall in the range
+  :math:`6.908 \pm 5.26`.
+* For :math:`n = 1,000,000`, 75% of the values fall in the range
+  :math:`13.816 \pm 7.43`.
 
 
 Acknowledgement

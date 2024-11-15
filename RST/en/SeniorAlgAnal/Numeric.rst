@@ -22,13 +22,13 @@ This module presents a variety of algorithms related to mathematical
 computations on numbers.
 Examples are activities like multiplying two numbers or raising a
 number to a given power.
-In particular, we are concerned with situations where built-in integer
+In particular, we discuss situations where built-in integer
 or floating-point operations cannot be used because the values being
 operated on are too large.
-Similar concerns arise for operations on polynomials or matrices.
+Similar analysis applies to operations on polynomials or matrices.
 
 Since we cannot rely on the hardware to process the inputs in a single
-constant-time operation, we are concerned with how to most effectively
+constant-time operation, want to know how to most effectively
 implement the operation to minimize the time cost.
 This begs a question as to how we should apply our normal measures of
 asymptotic cost in terms of growth rates on input size.
@@ -63,7 +63,7 @@ such operations.
 * There is only one instance of value $n$.
 * There are :math:`2^k` instances of length :math:`k` or less.
 * The size (length) of value :math:`n` is :math:`\log n`.
-* The cost of a particular algorithm can decrease when :math:`n`
+* The cost of a particular algorithm might decrease when :math:`n`
   increases in value (say when going from a value of :math:`2^k-1`
   to :math:`2^k` to :math:`2^k+1`),
   but generally increases when :math:`n` increases in length.
@@ -91,7 +91,7 @@ This leads to the following recursive algorithm::
      total = half * half;
      if (odd(exp)) then total = total * base;
      return total;
-   }      
+   }
 
 Function `Power` has recurrence relation
 
