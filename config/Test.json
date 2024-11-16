@@ -69,13 +69,8 @@
   },
   "chapters": {
     "Stuff": {
-      "SeniorAlgAnal/Numeric": {},
-      "SeniorAlgAnal/Matrix": {},
-      "SeniorAlgAnal/Probabilistic": {},
-      "SeniorAlgAnal/Primes": {},
-      "SeniorAlgAnal/RandomNums": {},
-      "SeniorAlgAnal/Transform": {},
-      "SeniorAlgAnal/FFT": {}
+      "Bounds/SortingOptimal": {},
+      "SeniorAlgAnal/AmortAnal": {}
     },
     "Appendix": {
       "Glossary": {}

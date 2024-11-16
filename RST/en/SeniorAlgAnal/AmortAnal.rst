@@ -136,6 +136,8 @@ Our final example uses amortized analysis to prove a relationship
 between the cost of the
 :ref:`move-to-front <move-to-front> <SelfOrg>` self-organizing list
 heuristic and the cost for the optimal static ordering of the list.
+For this discussion, we **assume that all searches are successful**
+(that is, all searches are for records that are contained in the list).
 
 For a series of search operations, the minimum cost for
 an unchanging list results when the list is sorted by

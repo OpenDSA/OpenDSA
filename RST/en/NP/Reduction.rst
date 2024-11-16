@@ -73,17 +73,18 @@ To illustrate this, let us consider another problem.
 
 .. _Pair:
 
-.. odsafig:: Images/Pairing.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of PAIRING
+.. inlineav:: pairingCON dgm
+   :long_name: Pairing problem illustration
+   :links: AV/NP/pairingCON.css
+   :scripts: AV/NP/pairingCON.js
+   :output: show
+   :keyword: Reductions
 
    An illustration of **PAIRING**.
    The two lists of numbers are paired up so that the least values
    from each list make a pair, the next smallest values from each list
    make a pair, and so on.
+
 
 Figure :num:`Figure #Pair` illustrates **PAIRING**.
 One way to solve **PAIRING** is to use an existing sorting
@@ -235,18 +236,16 @@ We can define reduction more formally as a three-step process:
 
 .. _BlackBox:
 
-.. odsafig:: Images/BlackBox.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: General blackbox reduction
+.. inlineav:: blackBoxCON dgm
+   :long_name: General blackbox reduction diagram
+   :links: AV/NP/blackBoxCON.css
+   :scripts: AV/NP/blackBoxCON.js
+   :output: show
+   :keyword: Reductions
 
-   The general process for reduction shown as a "blackbox" diagram.
+   A graphical representation of the general reduction process,
+   showing the role of the two problems, and the two transformations.
 
-Figure :num:`Figure #BlackBox` shows a graphical representation of the
-general reduction process, showing the role of the two problems, and
-the two transformations.
 Next is a slideshow that shows the steps for 
 the reduction of **SORTING** to **PAIRING**.
 
