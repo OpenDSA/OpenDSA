@@ -177,7 +177,7 @@ refer to positions in a ``List``.
 So when checking to see if a pair is stored in a map, or to remove the pair
 from the map, it is natural to use the key as the identifier. Maps provide
 a ``remove()`` method where you specify a key, and the pair with that key
-will be removed from the map. Maps also provide a ``contains()`` method that
+will be removed from the map. Maps also provide a ``containsKey()`` method that
 takes a key value and returns a boolean result indicating whether a pair
 with the corresponding key is present in the map. For both of these operations,
 since keys must be unique in a map, we really only need a key.
@@ -192,7 +192,7 @@ since keys must be unique in a map, we really only need a key.
        noCallMap.put("Jane Q", "999-777-1234");
 
        noCallMap.remove("Jane Q");
-       System.out.print(noCallMap.contains("Jane Q"));
+       System.out.println(noCallMap.containsKey("Jane Q"));
    }
 
 Here, we add "Jane Q" and her phone number to the Map, remove it, then the value ``false``
