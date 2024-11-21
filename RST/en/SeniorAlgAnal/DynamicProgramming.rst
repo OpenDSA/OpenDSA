@@ -530,7 +530,18 @@ problem has already been solved.
 
 So, how do we organize the subproblems when there are :math:`n`
 matrices to multiply, labeled 1 to :math:`n`?
-One way is to use a table of size :math:`n \times n`.
+The following dependency graph can help us to see the algorithm.
+To be better able to see the relationships, we will look at the
+dependency graph just for multiplying ABCD, not ABCDE.
+
+.. inlineav:: MatMulDependCON dgm
+   :links:   /AV/SeniorAlgAnal/MatMulDependCON.css
+   :scripts: /AV/SeniorAlgAnal/MatMulDependCON.js
+   :align: center
+   :output: show
+   :keyword: Dynamic Programming; Recursion; Knapsack Problem
+
+From this, we see that we can use a table of size :math:`n \times n`.
 In this table, the entry at :math:`[i, j]` is the cost for the best
 solution of multiplying matrices :math:`i` to :math:`j`.
 So, the upper left corner (entry :math:`[1, n]`) is the full solution.

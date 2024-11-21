@@ -74,40 +74,12 @@ It is least efficient when we have :math:`2^i` elements in the list.
 So, we can do a bit better if we arrange our insertions to avoid
 inserting an element into a list of size :math:`2^i` if possible.
 
-Figure :num:`Figure #BinInsert` illustrates a different organization
-for the comparisons that we might do.
-First we compare the first and second element, and the third and
-fourth elements.
-The two winners are then compared, yielding a binomial tree.
-We can view this as a (sorted) chain of three elements, with element
-:math:`A` hanging off from the root.
-If we then insert element :math:`B` into the sorted chain of three
-elements, we will end up with one of the two posets shown on the right
-side of Figure :num:`Figure #BinInsert`, at a cost of 2 comparisons.
-We can then merge :math:`A` into the chain, for a cost of two
-comparisons (because we already know that it is smaller then either one
-or two elements, we are actually merging it into a list of two or
-three elements).
-Thus, the total number of comparisons needed to sort the five elements
-is at most seven instead of eight.
-
-.. _BinInsert:
-
-.. odsafig:: Images/BinInsert.png
-   :width: 300
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Organizing comparisons for sorting five elements
-
-   Organizing comparisons for sorting five elements.
-   First we order two pairs of elements, and then compare the two
-   winners to form a binomial tree of four elements.
-   The original loser to the root is labeled :math:`A`, and the
-   remaining three elements form a sorted chain.
-   We then insert element :math:`B` into the sorted chain.
-   Finally, we put :math:`A` into the resulting chain
-   to yield a final sorted list.
+.. inlineav:: binaryinsertsortCON ss
+   :long_name: Binary Insertion Sort Slideshow
+   :links: AV/bounds/binaryinsertsortCON.css
+   :scripts: AV/bounds/binaryinsertsortCON.js
+   :output: show
+   :keyword: Sorting; Optimal Sorting; Binary Insertion Sort
 
 If we have ten elements to sort, we can first make five pairs of
 elements (using five compares) and then sort the five winners
@@ -133,34 +105,13 @@ additional comparison.
 This sort is called :term:`merge insertion sort`, and also known as the
 :term:`Ford and Johnson sort`.
 
-For ten elements, given the poset shown in
-Figure :num:`Figure #BinMerge10` we 
-fold in the last four elements (labeled 1 to 4) in the order Element 3,
-Element 4, Element 1, and finally Element 2.
-Element 3 will be inserted into a list of size three, costing two
-comparisons.
-Depending on where Element 3 then ends up in the list, Element 4 will
-now be inserted into a list of size 2 or 3, costing two comparisons in
-either case.
-Depending on where Elements 3 and 4 are in the list, Element 1 will
-now be inserted into a list of size 5, 6, or 7, all of which requires
-three comparisons to place in sort order.
-Finally, Element 2 will be inserted into a list of size 5, 6, or 7.
-
-.. _BinMerge10:
-
-.. odsafig:: Images/BinMerge10.png
-   :width: 50
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Merge insertion sort for ten elements
-
-   Merge insertion sort for ten elements.
-   First five pairs of elements are compared.
-   The five winners are then sorted.
-   This leaves the elements labeled 1-4 to be sorted into the chain made
-   by the remaining six elements.
+.. inlineav:: mergeinsertsortCON ss
+   :long_name: Merge Insertion Sort Slideshow
+   :links: AV/bounds/mergeinsertsortCON.css
+   :scripts: AV/bounds/mergeinsertsortCON.js
+   :output: show
+   :keyword: Sorting; Optimal Sorting; Merge Insertion Sort; Ford and
+             Johnson Sort
 
 Merge insertion sort is pretty good for minimizing the number of
 comparisons, but is it optimal?
