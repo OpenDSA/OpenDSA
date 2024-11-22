@@ -113,9 +113,15 @@ $(document).ready(function() {
   av.g.line(xoffset + 127 + 2 * bx, yoffset + 85 + by, xoffset + 127 + 2 * bx, yoffset + 103 + by, {"arrow-end": "classic-wide-long"});
   av.g.line(xoffset + 127 + 2 * bx, yoffset + 85 + 2 * by, xoffset + 127 + 2 * bx, yoffset + 103 + 2 * by, {"arrow-end": "classic-wide-long"});
 
-  av.g.path("M 450 50 A 100 40 0 0 1 280 50",{"arrow-end": "classic-wide-long"});
-
+  av.g.path("M 450 50 A 100 25 0 0 0 285 45",{"arrow-end": "classic-wide-long"});
+  av.g.path("M 450 50 A 100 50 0 0 0 335 44",{"arrow-end": "classic-wide-long"});
+  av.g.path("M 380 50 A 100 50 0 0 0 265 44",{"arrow-end": "classic-wide-long"});
+  av.g.path("M 450 110 A 100 50 0 0 0 335 104",{"arrow-end": "classic-wide-long"});
   
+  av.g.path("M 450 85 A 100 75 90 0 0 450 222",{"arrow-end": "classic-wide-long"});
+  av.g.path("M 450 85 A 100 250 90 0 0 450 162",{"arrow-end": "classic-wide-long"});
+  av.g.path("M 450 145 A 100 250 90 0 0 450 222",{"arrow-end": "classic-wide-long"});
+  av.g.path("M 380 85 A 100 250 90 0 0 380 162",{"arrow-end": "classic-wide-long"});
 
   av.displayInit();
   av.recorded();
