@@ -69,8 +69,8 @@
   },
   "chapters": {
     "Stuff": {
-      "Bounds/SortingOptimal": {},
-      "SeniorAlgAnal/DynamicProgramming": {}
+      "SeniorAlgAnal/TuringMachines": {},
+      "SeniorAlgAnal/TuringMachinesAdv": {}
     },
     "Appendix": {
       "Glossary": {}

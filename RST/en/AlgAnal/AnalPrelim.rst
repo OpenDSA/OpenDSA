@@ -117,8 +117,8 @@ of the following properties.
    In other words, it must compute the desired function, converting
    each input to the correct output.
    Note that every algorithm implements some function,
-   because every algorithm maps every input to some output (even if
-   that output is a program crash).
+   because every algorithm maps every input to some output
+   (even if that output is a program crash).
    At issue here is whether a given algorithm implements the 
    *intended* function.
 

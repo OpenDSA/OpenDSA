@@ -37,7 +37,7 @@ DFA, NFA, or PDA can do!
 |
 
 .. inlineav:: TMComplicated3FS ff
-   :links: AV/PIFLA/TM/TMComplicated3FS.css
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/TM/TMComplicated3FS.css
    :scripts:  lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFramesOFF.js AV/PIFLA/TM/TMComplicated3FS.js
    :output: show
    :keyword: Turing Machines
@@ -45,7 +45,7 @@ DFA, NFA, or PDA can do!
 |
 
 .. inlineav:: TMcopy ss
-   :links: AV/Kochan/TMcopy.css
+   :links: DataStructures/FLA/FLA.css AV/Kochan/TMcopy.css
    :scripts: AV/Kochan/TMcopy.js AV/Juwon/FAcopy.js
    :output: show
    :keyword: Turing Machines
@@ -200,7 +200,7 @@ Turing Machine Extensions
 -------------------------
 
 .. inlineav:: TMExtensionFS ss
-   :links: AV/PIFLA/TM/TMExtensionFS.css
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/TM/TMExtensionFS.css
    :scripts: AV/PIFLA/TM/TMExtensionFS.js
    :output: show
    :keyword: Turing Machines

@@ -38,14 +38,16 @@ We will discuss a particular one, called a :term:`Turing machine`.
 
 If you take a Formal Languages course, you will learn about a number
 of simple state machine types, like deterministic and
-non-deterministic finite automata, and push-down automata.
+non-deterministic finite automata, and :term:`pushdown automata` (PDA).
 These machines all have some similarities.
 They all take an input string.
 They all march across the string from left to right, one character at
 each step.
 They stop when they reach the end of the string and then make a
 simple decision: If the machine is in a final state, then it accepts
-the string, and otherwise it rejects the string.
+the string (as being in the language of strings accepted by the
+machine),
+and otherwise it rejects the string.
 In other words, they are :term:`acceptors <acceptor>` for some language.
 All that they can do is determine if a string is a member of the
 language (of course that is a pretty useful ability),
@@ -89,12 +91,13 @@ Ultimately, we will see that a Turing Machine can do any computation
 that even the most sophisticated modern computer can do.
 
 The first difference is memory.
-DFAs (and NFAs) have no memory beyond whatever process took them to
+Simple Deterministic (DFA) and Non-Deterministic (NFA) State Machines
+have no memory beyond whatever process took them to
 their current state.
-PDAs have a stack.
-This made a huge difference in the languages that can be accepted:
-DFAs only accept regular languages, while (nondeterministic) PDAs
-accept any CFL.
+PDA have a stack.
+This makes a huge difference in the languages that can be accepted:
+DFAs only accept what is called a :term:`regular language`, while
+(nondeterministic) PDAs accept any :term:`context-free language`.
 
 Consider these three languages:
 
@@ -104,12 +107,12 @@ Consider these three languages:
 
 The differences seem pretty minor, but the outcomes are quite
 different.
-:math:`L_1` is a deterministic CFL.
-:math:`L_2` is a non-determistic CFL.
-:math:`L_3` is not a CFL at all.
+:math:`L_1` is a deterministic context-free language.
+:math:`L_2` is a non-determistic context-free language.
+:math:`L_3` is not a context-free language at all.
 
 The difference between :math:`L_3` and the others seems to relate to
-the limitiations of the stack.
+the limitiations of using a stack as memory.
 As we read the first :math:`w` and load it into the stack, we don't
 have a good way to get to the bottom of the stack to see the first
 letter to compare it against the first letter of the second :math:`w`.
@@ -130,7 +133,7 @@ Turing Machines
 ---------------
 
 .. inlineav:: TMGeneralFS ff
-   :links: AV/PIFLA/TM/TMGeneralFS.css
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/TM/TMGeneralFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFramesOFF.js AV/PIFLA/TM/TMGeneralFS.js
    :output: show
    :keyword: Turing Machines
@@ -147,7 +150,7 @@ and computing for Turing machines.
 Finally, we will present notation for doing real computation on numbers.
 
 .. inlineav:: TMInterpretingFS ff
-   :links: AV/PIFLA/TM/TMInterpretingFS.css
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/TM/TMInterpretingFS.css
    :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFramesOFF.js AV/PIFLA/TM/TMInterpretingFS.js
    :output: show
    :keyword: Turing Machines
@@ -157,7 +160,7 @@ Turing-Decidable vs. Turing-Acceptable Languages
 ------------------------------------------------
 
 .. inlineav:: TMDecidableFS ff
-   :links: AV/PIFLA/TM/TMDecidableFS.css
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/TM/TMDecidableFS.css
    :scripts:  lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/TuringMachine.js DataStructures/PIFramesOFF.js AV/PIFLA/TM/TMDecidableFS.js
    :output: show
    :keyword: Turing Machines
