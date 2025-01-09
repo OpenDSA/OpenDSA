@@ -16,14 +16,14 @@ System documentation can be found at http://opendsa.readthedocs.io/.
 3. Clone this repository
     - For reading only: `git clone git://github.com/OpenDSA/OpenDSA.git`
     - For read/write: `git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git`
-4. Start the service: `docker-compose up` (and leave this running)
+4. Start the service: `docker compose up` (and leave this running)
     - The first build of images takes under 5 minutes.  Running them later takes under 10 seconds.
     - The service is ready when you see `opendsa_1 | * Serving Flask app "app.py"`
     - This terminal will not be usable at this point since it is a console for the web server.
-    - You can stop the containers by sending an interrupt signal (Press CTRL + C) or using the `docker-compose down` command.
+    - You can stop the containers by sending an interrupt signal (Press CTRL + C) or using the `docker compose down` command.
 5. Build any books from within the container:
-    - In order to interact with OpenDSA, you must access a shell in the running container with `docker-compose exec opendsa bash` in another console in the root of the OpenDSA directory.
-        - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker-compose exec opendsa bash`
+    - In order to interact with OpenDSA, you must access a shell in the running container with `docker compose exec opendsa bash` in another console in the root of the OpenDSA directory.
+        - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker compose exec opendsa bash`
     - To make the book defined in `config/Test.json`, now use the command `make Test`
 6. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
 7. In order to stop the container, you can use the CTRL + C (sending an interrupt signal).
@@ -56,12 +56,12 @@ If you are on Windows, you may run into issues with line endings.  If you do, si
 
 If you are on Windows, you may run into issues with any `docker exec` commands (such as `make ssh`).  To solve them, you may have to start any such command with `winpty`.
 
-If any of the python packages (or any of the ruby gems) have been upgraded since the last time the container has been run, you will need to run `docker-compose build` before you `docker-compose up`.
+If any of the python packages (or any of the ruby gems) have been upgraded since the last time the container has been run, you will need to run `docker compose build` before you `docker compose up`.
 
 If you are using the provided Docker containers and they are out of date:
-1. Remove the currently running containers and images with `docker-compose down`
-2. Pull the updated version of the images with `docker-compose pull`
-3. Start up the server as you normally do with `docker-compose up`
+1. Remove the currently running containers and images with `docker compose down`
+2. Pull the updated version of the images with `docker compose pull`
+3. Start up the server as you normally do with `docker compose up`
 
 
 ## Directory Structure
