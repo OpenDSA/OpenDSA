@@ -11,7 +11,20 @@
     font-family: 'Hiragino Kaku Gothic ProN';
     src: url("fonts/hiragino-kaku-gothic-pron-w3.otf");
     }
-    
+@font-face {
+    font-family: 'LatoWeb';
+    src: url('fonts/Lato-Regular.eot'); 
+    src: url('fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */
+         url('fonts/Lato-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+    }
+@font-face {
+    font-family: JetbrainsMono';
+    src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
+    }
+
 /* normalize.css v3.0.0 | MIT License | git.io/normalize */
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 body{margin:0}
@@ -36,7 +49,7 @@ svg:not(:root){overflow:hidden}
 figure{margin:1em 40px}
 hr{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;height:0}
 pre{overflow:auto}
-code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}
+code,kbd,pre,samp{font-family:"JetbrainsMono",monospace,monospace;font-size:1em}
 button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
 button{overflow:visible}
 button,select{text-transform:none}
@@ -61,12 +74,12 @@ a:link {
     text-decoration: none;
     color: #d93900;
 }th,td{vertical-align:middle;border:solid 1px #000;font-weight:normal;text-align:left}
-html,body{font-family:"Avenir Next","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro",sans-serif;color:#002b36;background-color:#fefefe;height:100%}
+html,body{font-family:"LatoWeb",sans-serif;color:#002b36;background-color:#fefefe;height:100%}
 html{font-size:62.5%}
 body{font-size:1.6px;font-size:1.6rem;text-rendering:optimizeLegibility;text-align:justify;text-justify:distribute;-ms-text-justify:distribute}
 div{font-size:1.6px;font-size:1.6rem}
 div.content{height:auto;min-height:100%;position:relative}
-h1,h2,h3,h4,h5{font-family:"Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","Meiryo","メイリオ","ＭＳ ゴシック",sans-serif;font-weight:lighter;text-align:left;}
+h1,h2,h3,h4,h5{font-family:"LatoWeb",sans-serif;font-weight:lighter;text-align:left;}
 h1 a,h2 a,h3 a,h4 a,h5 a{color:inherit;}
 h1 a:visited,h2 a:visited,h3 a:visited,h4 a:visited,h5 a:visited{color:inherit}
 h3,h4,h5{margin:15px auto 8px auto;color:#0b691e;border-bottom:1px solid rgba(0,0,0,0.1);-webkit-box-shadow:0 1px 0 rgba(255,255,255,0.2);box-shadow:0 1px 0 rgba(255,255,255,0.2)}
@@ -95,7 +108,7 @@ a:hover{color:#427daf;text-decoration:underline}
 a:visited{color:#be4a94}
 em{font-weight:bold}
 cite{margin-left:.2px;margin-left:.2rem;margin-right:.2px;margin-right:.2rem;font-weight:normal;background-color:#f7f7f7}
-pre{font-family:"Ricty-Discord","Ricty-Discord","Osaka－等幅","Osaka-Mono",monospace,serif;padding:10px 10px 13px 10px;margin:10px 0;-webkit-border-radius:3px;border-radius:3px}
+pre{font-family:"JetbrainsMono",monospace,serif;padding:10px 10px 13px 10px;margin:10px 0;-webkit-border-radius:3px;border-radius:3px}
 input[type="text"]{border:1px solid #d5d1e4;font-weight:lighter;max-width:90%;margin:5px auto}
 input[type="submit"]{-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:.1px .1px 2px .1px;box-shadow:.1px .1px 2px .1px;display:inline-block;color:#fefefe;padding:6px 10px 2px 10px;background-color:#27b9d4;font-weight:normal;letter-spacing:.09em;border-style:none;text-shadow:1px 1px 0 #6682ca}
 input::-webkit-input-placeholder{color:#c4d7da}
@@ -111,7 +124,7 @@ header.modest{-webkit-transition:opacity 0.5s linear 0;-moz-transition:opacity 0
 header.modest:hover{opacity:1;-ms-filter:none;filter:none}
 .breadcrumb li{display:inline-block;list-style:none}
 cite{padding-left:.4px;padding-left:.4rem;padding-right:.4px;padding-right:.4rem;font-weight:normal;background-color:#f7f7f7;-webkit-box-shadow:.1px .1px 0 .1px #949494;box-shadow:.1px .1px 0 .1px #949494}
-strong.command{padding-left:.4px;padding-left:.4rem;padding-right:.4px;padding-right:.4rem;font-weight:normal;background-color:#f7f7f7;-webkit-box-shadow:.1px .1px 0 .1px #949494;box-shadow:.1px .1px 0 .1px #949494;font-family:"Ricty-Discord","Ricty-Discord","Osaka－等幅","Osaka-Mono",monospace,serif}
+strong.command{padding-left:.4px;padding-left:.4rem;padding-right:.4px;padding-right:.4rem;font-weight:normal;background-color:#f7f7f7;-webkit-box-shadow:.1px .1px 0 .1px #949494;box-shadow:.1px .1px 0 .1px #949494;font-family:"Ricty-Discord","Ricty-Discord","Osaka－等幅","Osaka-Mono",monospace}
 .pre{padding-left:.4px;padding-left:.4rem;padding-right:.4px;padding-right:.4rem;font-weight:normal;background-color:rgba(0, 0, 0, 0.1);-webkit-box-shadow:.1px .1px 0 .1px #949494;box-shadow:.1px .1px 0 .1px #949494;}
 tt.file .pre{background-color:#f7f7f7}
 .section{margin:25px auto}
