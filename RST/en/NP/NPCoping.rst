@@ -203,7 +203,7 @@ This is similar to the :ref:`best fit <best fit> <BestFit>` heuristic
 for :ref:`memory management <dynamic memory allocation> <Dynamic>`.
 This heuristic doesn't merely tend to give better performance than
 simple first fit.
-The decreasing first fit heuristic can be proven to require no more
+The decreasing first fit heuristic has been proven to require no more
 than 11/9 the optimal number of bins.
 Thus, we have a guarantee on how much inefficiency can result when
 using the heuristic (about 22%).
@@ -220,3 +220,10 @@ problem with certainty, it is nearly as good.
 Once we realize that a problem is NP-complete, then we know that our
 next step must either be to redefine the problem to make it easier, or
 else use one of the "coping" strategies discussed in this section.
+
+
+Acknowledgement
+---------------
+
+This page is heavily influenced by the presentation in Section 11.5 of
+*Introduction to Algorithms* by Udi Manber.

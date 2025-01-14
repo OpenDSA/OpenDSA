@@ -100,8 +100,7 @@ $(document).ready(function () {
   av.step();  
 
   // Slide 7
-  nl3 = av.label("<br><br><br>A <b>Conjunctive normal form (CNF)</b> is a conjunction (AND) of clauses.<br><br>For example: &nbsp&nbsp&nbsp $\\overline{x_1} . (x_1 + x_2).(x_3 + x_4 + \\overline{x_5}$" +
-                 "<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $(x_1 + x_3) .\\overline{x_3} + x_2 + \\overline{x_5}) . (x_1 + x_2 + \\overline{x_3}) . (x_3 + x_4 + \\overline{x_2}) . (\\overline{x_4} + \\overline{x_1} + \\overline{x_5}) . (x_1 + x_3 + x_5)$<br><br>We will use CNF exclusively from now on.", {left: 0, top: 120}); 
+  nl3 = av.label("<br><br><br>A <b>Conjunctive normal form (CNF)</b> is a conjunction (AND) of clauses.<br><br>For example: &nbsp&nbsp&nbsp $\\overline{x_1} . (x_1 + x_2).(x_3 + x_4 + \\overline{x_5}) . (x_1 + x_3) . (\\overline{x_3} + x_2 + \\overline{x_5}) . (x_1 + x_2 + \\overline{x_3}) . (x_3 + x_4 + \\overline{x_2}) . (\\overline{x_4} + \\overline{x_1} + \\overline{x_5}) . (x_1 + x_3 + x_5)$<br><br>We will use CNF exclusively from now on.", {left: 0, top: 120}); 
   av.step();
 
   // Slide 8

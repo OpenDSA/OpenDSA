@@ -56,7 +56,7 @@ $(document).ready(function () {
   av.step();
 
   //frame 15
-  av.umsg("Again we can ask: Is every Turing-acceptable language Turing decidable? In other words, whenever the Turing-acceptable machine would hang, can we always replace it with logic to trigger a non-existant transition instead? This is known as the <b><i>Halting Problem</i></b>. <br><br> It turns out that we can prove that there are always languages that cannot be converted from Turing-acceptable to Turing-decidable. In other words, we can <b>prove</b> that the Halting Problem is unsolveable. We will do exactly that later in the semester.");
+  av.umsg("Again we can ask: Is every Turing-acceptable language Turing decidable? In other words, whenever the Turing-acceptable machine would hang, can we always replace it with logic to trigger a non-existant transition instead? This is known as the <b><i>Halting Problem</i></b>. <br><br> It turns out that we can prove that there are always languages that cannot be converted from Turing-acceptable to Turing-decidable. In other words, we can <b>prove</b> that the Halting Problem is unsolveable.");
   av.step();
 
   // Frame
