@@ -69,8 +69,7 @@
   },
   "chapters": {
     "Stuff": {
-      "SeniorAlgAnal/TuringMachines": {},
-      "SeniorAlgAnal/TuringMachinesAdv": {}
+      "NP/NPCoping": {}
     },
     "Appendix": {
       "Glossary": {}

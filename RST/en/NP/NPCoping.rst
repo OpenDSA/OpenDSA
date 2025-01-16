@@ -107,6 +107,21 @@ solution quickly.
 In others, we end up visiting a large portion of the :math:`2^n`
 possible solutions.
 
+.. inlineav:: backtrackingCON dgm
+   :links: AV/NP/backtrackingCON.css
+   :scripts: AV/NP/backtrackingCON.js
+   :align: center
+   :keyword: NP-completeness; Backtracking; Branch and Bounds
+
+   An example of using backtracking in the Traveling Salesman
+   problem graph of Figure 6.3.1. The crossed-out nodes (and their
+   descendents) are immediately rejected because they do not form a
+   legal path through the graph. The numbers at the bottom show the
+   total distance traversed along that path. Branch-and-Bounds can be
+   used to further reject further consideration of paths that are
+   longer than the shortest path already found.
+
+
 :term:`Banch-and-Bounds <branch-and-bounds algorithm>` is an extension
 of backtracking that applies to
 :term:`optimization problems <optimization problem>` such as
