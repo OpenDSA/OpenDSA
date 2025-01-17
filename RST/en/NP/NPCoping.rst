@@ -116,10 +116,15 @@ possible solutions.
    An example of using backtracking in the Traveling Salesman
    problem graph of Figure 6.3.1. The crossed-out nodes (and their
    descendents) are immediately rejected because they do not form a
-   legal path through the graph. The numbers at the bottom show the
-   total distance traversed along that path. Branch-and-Bounds can be
-   used to further reject further consideration of paths that are
-   longer than the shortest path already found.
+   legal path through the graph. Numbers on edges show the cost to
+   traverse that edge. The first complete path found is A-B-C-D-E-A,
+   for a cost of 16.
+   Branch-and-Bounds can be used to further reject further
+   consideration of paths that are longer than the shortest path
+   already found.
+   For example, the path A-B-C-E has cost 18, so there is no need to
+   consider it (or its descendents) further since we already found a
+   path with cost 16.
 
 
 :term:`Banch-and-Bounds <branch-and-bounds algorithm>` is an extension
