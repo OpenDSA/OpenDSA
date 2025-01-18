@@ -16,7 +16,7 @@ $(document).ready(function() {
   graph.addEdge(b, c, {weight: "6"});
   graph.addEdge(b, d, {weight: "1"});
   graph.addEdge(b, e, {weight: "2"});
-  graph.addEdge(c, e, {weight: "4"});
+  graph.addEdge(c, e, {weight: "10"});
   graph.addEdge(d, e, {weight: "1"});
   graph.addEdge(c, d, {weight: "1"});
   graph.layout();
