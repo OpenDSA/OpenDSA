@@ -114,11 +114,12 @@ possible solutions.
    :keyword: NP-completeness; Backtracking; Branch and Bounds
 
    An example of using backtracking in the Traveling Salesman
-   problem graph of Figure 6.3.1. The crossed-out nodes (and their
-   descendents) are immediately rejected because they do not form a
-   legal path through the graph. Numbers on edges show the cost to
-   traverse that edge. The first complete path found is A-B-C-D-E-A,
-   for a cost of 16.
+   problem.
+   The crossed-out nodes (and their descendents) are immediately
+   rejected because they do not form a legal path through the
+   graph.
+   Numbers on edges show the cost to traverse that edge.
+   The first complete path found is A-B-C-D-E-A, for a cost of 16.
    Branch-and-Bounds can be used to further reject further
    consideration of paths that are longer than the shortest path
    already found.
