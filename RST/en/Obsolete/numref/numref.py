@@ -122,4 +122,3 @@ roles.register_canonical_role('numref', numref_role)
 if __name__ == '__main__':
 
     roles.register_canonical_role('numref', numref_role)
-
