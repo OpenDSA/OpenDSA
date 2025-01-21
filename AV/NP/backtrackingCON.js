@@ -8,7 +8,7 @@ $(document).ready(function() {
   var backLeft = 20;
   var backTop = 0;
 
-  var tree = av.ds.tree({nodegap: 45, left:backLeft, top: backTop});
+  var tree = av.ds.tree({nodegap: 45, left: backLeft, top: backTop});
   tree.root('A');
   var rt = tree.root();
   var nd;
@@ -59,6 +59,11 @@ $(document).ready(function() {
   
   nd = tree.newNode('E');
   curr.addChild(nd);
+  curr = nd;
+  nd = tree.newNode('E');
+  curr.addChild(nd);
+  nd.hide();
+  
 /*  curr = nd;
   nd = tree.newNode('A');
   curr.addChild(nd);
@@ -72,12 +77,15 @@ $(document).ready(function() {
   curr.addChild(nd); */
   tree.layout();
 
-  av.g.line(18, 90, 53, 125, {"stroke": "red"});
-  av.g.line(18, 125, 53, 90, {"stroke": "red"});
-  av.g.line(18, 168, 53, 203, {"stroke": "red"});
-  av.g.line(18, 203, 53, 168, {"stroke": "red"});
-  av.g.line(95, 168, 130, 203, {"stroke": "red"});
-  av.g.line(95, 203, 130, 168, {"stroke": "red"});
+  av.g.line(120, 35, 300, 70).addClass("dashed");
+  av.g.line(160, 115, 325, 140).addClass("dashed");
+
+  av.g.line(50, 90, 85, 125, {"stroke": "red"});
+  av.g.line(50, 125, 85, 90, {"stroke": "red"});
+  av.g.line(50, 168, 85, 203, {"stroke": "red"});
+  av.g.line(50, 203, 85, 168, {"stroke": "red"});
+  av.g.line(127, 168, 162, 203, {"stroke": "red"});
+  av.g.line(127, 203, 162, 168, {"stroke": "red"});
   av.g.line(172, 245, 207, 280, {"stroke": "red"});
   av.g.line(172, 280, 207, 245, {"stroke": "red"});
   av.g.line(95, 245, 130, 280, {"stroke": "red"});
@@ -109,16 +117,35 @@ $(document).ready(function() {
   av.g.line(557, 397, 592, 432, {"stroke": "red"});
   av.g.line(557, 432, 592, 397, {"stroke": "red"});
 
-  av.label("2", {left: "105px", top: "40px"});
-  av.label("6", {left: "160px", top: "115px"});
-  av.label("1", {left: "245px", top: "205px"});
-  av.label("10", {left: "250px", top: "180px"});
-  av.label("1", {left: "375px", top: "280px"});
-  /* av.label("1", {left: "700px", top: "275px"}); */
+  av.label("2", {left: "132px", top: "45px"});
+  av.label("6", {left: "192px", top: "120px"});
+  av.label("1", {left: "252px", top: "200px"});
+  av.label("10", {left: "350px", top: "185px"});
+  av.label("1", {left: "355px", top: "270px"});
   av.label("3", {left: "325px", top: "348px"});
   av.label("16", {left: "258px", top: "418px"});
-  av.label("18", {left: "335px", top: "264px"}).css({color: "red"});
+  av.label("18", {left: "490px", top: "264px"}).css({color: "red"});
   
+  // Copied from SalesCON.js
+  var graph = av.ds.graph({left: 515, width: 300, height: 300, layout: "manual", directed: false});
+  var a = graph.addNode("A", {left: 80, top: 0});
+  var b = graph.addNode("B", {left: 220, top: 0});
+  var c = graph.addNode("C", {left: 280, top: 130});
+  var d = graph.addNode("D", {left: 150, top: 210});
+  var e = graph.addNode("E", {left: 20, top: 130});
+  graph.addEdge(a, b, {weight: "2"});
+  graph.addEdge(a, c, {weight: "3"});
+  graph.addEdge(a, d, {weight: "8"});
+  graph.addEdge(a, e, {weight: "3"});
+  graph.addEdge(b, c, {weight: "6"});
+  graph.addEdge(b, d, {weight: "1"});
+  graph.addEdge(b, e, {weight: "2"});
+  graph.addEdge(c, e, {weight: "10"});
+  graph.addEdge(d, e, {weight: "1"});
+  graph.addEdge(c, d, {weight: "1"});
+  graph.layout();
+
+
   av.displayInit();
   av.recorded();
 });
