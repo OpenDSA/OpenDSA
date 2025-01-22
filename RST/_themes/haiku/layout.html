@@ -155,10 +155,6 @@
       </div>
       <div class="topnav">
         <p>
-          {%- if sourcename %}
-            <a style="float:left;color:blue;" href="{{ pathto('../source/' + sourcename.replace('.txt', '.rst'), true)|e }}"
-              target="_blank" rel="nofollow">{{ _('Show Source') }} | </a>&#160;&#160;
-          {%- endif %}
 
           {%- if pagename=="ToDo" or pagename =="search" -%}
             &#160;&#160;
@@ -171,25 +167,6 @@
       </div>
        {{ linktags }}
       <div class="content">
-
-      {%- if pagename=="index" -%}
-      <div class="sidebar" style="border-style:none;background-color:transparent">
-          {%- block sidebarsearch %}
-          <h3 style="margin-top:0em;">{{ _('Search') }} {{ the_book }}</h3>
-          <form class="search" action="{{ pathto('search') }}" method="get">
-            <input type="text" />
-            <input type="submit" value="{{ _('Go') }}" />
-            <input type="hidden" value="yes" />
-            <input type="hidden" value="default" />
-          </form>
-          <p class="searchtip" style="font-size: 60%">
-            {{ _('Enter search terms or a module, class or function name.') }}
-          </p>
-          {%- endblock %}
-        </div>
-      {%- endif -%}
-
-
         {#{%- if display_toc %}
         <div id="toc">
           <h3>{{ tofc|safe }}</h3>
