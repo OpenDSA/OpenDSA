@@ -161,7 +161,7 @@
         {%- endif %}
         {%- endblock %}
       </div>
-      <div class="topnav">
+      <div class="topnav" >
         <p>
           {%- if sourcename %}
             <a style="float:left;color:blue;" href="{{ pathto('../source/' + sourcename.replace('.txt', '.rst'), true)|e }}"
@@ -178,7 +178,7 @@
         </p>
       </div>
        {{ linktags }}
-      <div class="content">
+      <div class="content" role="main">
 
       {%- if pagename=="index" -%}
       <div class="sidebar" style="border-style:none;background-color:transparent">
