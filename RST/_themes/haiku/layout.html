@@ -136,14 +136,7 @@
         {{ scripts() }}
         {{ login() }}
         {{ registration() }}
-        {%- if theme_full_logo != "false" %}
-        <a href="{{ pathto('index') }}">
-          <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt=""/>
-        </a>
-        {%- else %}
-        {%- if logo -%}
-          <img class="leftlogo" src="{{ pathto('_static/' + logo, 1) }}" alt=""/>
-        {%- endif -%}
+          <img class="leftlogo" src="{{ pathto('_static/OpenDSALogoT64.png', 1) }}" alt="OpenDSA Logo"/>
         <div class="title-wrapper">
           <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
             <div class="title-content">
@@ -158,7 +151,6 @@
           </div>
         </div>
 
-        {%- endif %}
         {%- endblock %}
       </div>
       <div class="topnav">
