@@ -136,14 +136,7 @@
         {{ scripts() }}
         {{ login() }}
         {{ registration() }}
-        {%- if theme_full_logo != "false" %}
-        <a href="{{ pathto('index') }}">
-          <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt=""/>
-        </a>
-        {%- else %}
-        {%- if logo -%}
-          <img class="leftlogo" src="{{ pathto('_static/' + logo, 1) }}" alt=""/>
-        {%- endif -%}
+          <img class="leftlogo" src="{{ pathto('_static/OpenDSALogoT64.png', 1) }}" alt="OpenDSA Logo"/>
         <div class="title-wrapper">
           <div class="title-inbetween" style="display: table-cell; vertical-align: middle;">
             <div class="title-content">
@@ -158,15 +151,10 @@
           </div>
         </div>
 
-        {%- endif %}
         {%- endblock %}
       </div>
       <div class="topnav">
         <p>
-          {%- if sourcename %}
-            <a style="float:left;color:blue;" href="{{ pathto('../source/' + sourcename.replace('.txt', '.rst'), true)|e }}"
-              target="_blank" rel="nofollow">{{ _('Show Source') }} | </a>&#160;&#160;
-          {%- endif %}
 
           {%- if pagename=="ToDo" or pagename =="search" -%}
             &#160;&#160;
@@ -179,25 +167,6 @@
       </div>
        {{ linktags }}
       <div class="content">
-
-      {%- if pagename=="index" -%}
-      <div class="sidebar" style="border-style:none;background-color:transparent">
-          {%- block sidebarsearch %}
-          <h3 style="margin-top:0em;">{{ _('Search') }} {{ the_book }}</h3>
-          <form class="search" action="{{ pathto('search') }}" method="get">
-            <input type="text" />
-            <input type="submit" value="{{ _('Go') }}" />
-            <input type="hidden" value="yes" />
-            <input type="hidden" value="default" />
-          </form>
-          <p class="searchtip" style="font-size: 60%">
-            {{ _('Enter search terms or a module, class or function name.') }}
-          </p>
-          {%- endblock %}
-        </div>
-      {%- endif -%}
-
-
         {#{%- if display_toc %}
         <div id="toc">
           <h3>{{ tofc|safe }}</h3>
