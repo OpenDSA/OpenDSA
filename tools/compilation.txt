@@ -1,0 +1,2 @@
+python ./configure.py ../tools/alex.json -b output.json
+add --standalone-modules

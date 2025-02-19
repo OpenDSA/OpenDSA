@@ -1,0 +1,65 @@
+{								{
+  "title": "Senior Algorithms",					  "title": "Senior Algorithms",
+  "desc": "Senior Algorithms",					  "desc": "Senior Algorithms",
+  "build_dir": "Books",						  "build_dir": "Books",
+  "code_dir": "SourceCode/",					  "code_dir": "SourceCode/",
+  "code_lang": {						  "code_lang": {
+    "Java": {							    "Java": {
+      "ext": [							      "ext": [
+        "java"							        "java"
+      ],							      ],
+      "label": "Java",						      "label": "Java",
+      "lang": "java"						      "lang": "java"
+    },								    },
+    "Pseudo": {							    "Pseudo": {
+      "ext": [							      "ext": [
+        "txt"							        "txt"
+      ],							      ],
+      "label": "Pseudo",					      "label": "Pseudo",
+      "lang": "pseudo"						      "lang": "pseudo"
+    }								    }
+  },								  },
+  "lang": "en",							  "lang": "en",
+  "build_JSAV": false,						  "build_JSAV": false,
+  "suppress_todo": true,					  "suppress_todo": true,
+  "assumes": "analyzing problems; sorting terminology; logari	  "assumes": "analyzing problems; sorting terminology; logari
+  "dispModComp": true,						  "dispModComp": true,
+  "glob_exer_options": {					  "glob_exer_options": {
+    "JXOP-debug": "true"					    "JXOP-debug": "true"
+  },								  },
+  "chapters": {							  "chapters": {
+    "Preface": {						    "Preface": {
+      "Intro": {						      "Intro": {
+        "long_name": "How to Use this System",			        "long_name": "How to Use this System",
+        "sections": {}						        "sections": {}
+      }								      }
+    },								    },
+    "Introduction": {						    "Introduction": {
+      "Development/splice_codecheck": {				      "Development/splice_codecheck": {
+        "long_name": "Shortest-Paths Problems",			        "long_name": "Shortest-Paths Problems",
+        "sections": {						        "sections": {
+          "Shortest-Paths Problems": {}			      |	          "Shortest-Paths Problems": {
+							      >	            "exampleFrame": {
+							      >	              "long_name": "exampleFrame",
+							      >	              "url": "https://horstmann.com/codecheck/example
+							      >	              "height": "1050",
+							      >	              "width": "1050",
+							      >	              "type": "iframe",
+							      >	              "mod_name": "splice_codecheck"
+							      >	            }
+							      >	          }
+        }							        }
+      }								      }
+    },								    },
+    "Appendix": {						    "Appendix": {
+      "Glossary": {						      "Glossary": {
+        "long_name": "Glossary",				        "long_name": "Glossary",
+        "sections": {}						        "sections": {}
+      },							      },
+      "Bibliography": {						      "Bibliography": {
+        "long_name": "Bibliography",				        "long_name": "Bibliography",
+        "sections": {}						        "sections": {}
+      }								      }
+    }								    }
+  }								  }
+}								}
