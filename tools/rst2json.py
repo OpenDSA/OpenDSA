@@ -345,6 +345,60 @@ class odsafig(Directive):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
 
 
+#\\\\\\\\\\\\\\\\\\\\Changes\\\\\\\\\\\\\\\\\\\\
+class iframe(Directive):
+  requiredArguments = 1
+  optionalArguments = 0
+  finalArgumentWhitespace = True
+  option_spec = {
+    'height': directives.unchanged,
+    'width': directives.unchanged,
+    'src': directives.unchanged,
+    'long_name': directives.unchanged
+  }
+  has_content = True
+
+  def run(self):
+    iframeURL = self.arguments[0]
+    iframeName = self.get('name', '')
+    iframeLongName = self.get('long_name', '')
+
+    iframeData = {
+      'url': iframeURL,
+      'name': iframeName,
+      'long_name': iframeLongName
+    }
+    return [nodes.raw('', json.dumps(iframeData), format='json')]
+#returns list of iframes in given rst file
+def get_iframe_data(rst):
+  #regex pattern for iframe directives
+  iframe_pattern = re.compile(r'\.\. iframe::(.*?)\n\s+:height:.*?\n\s+:width:.*?\n\s+:name:(.*?)\n\s+:long_name:(.*?)\n', re.DOTALL)
+  matches = iframe_pattern.findall(rst)
+  iframes = []
+  counter = 0
+  #if matched, add them to the iframes list
+  for match in matches:
+    iframeData = {
+      'url': match[0],
+      'name': match[1],
+      'long_name': match[2]
+    }
+    iframes[counter] = iframeData
+    counter += 1
+  return iframes
+
+def rstToJson(rst, filepath):
+  #read rst file and get iframes
+  with open(filepath, 'r') as file:
+    iframes = get_iframe_data(file.read())
+    json = {
+      'iframes': iframes
+    }
+    return json
+
+
+#\\\\\\\\\\\\\\\\\\\\Changes\\\\\\\\\\\\\\\\\\\\
+
 def print_err(*args, **kwargs):
   '''
   '''
