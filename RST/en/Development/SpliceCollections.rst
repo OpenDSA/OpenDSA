@@ -9,31 +9,23 @@
    :satisfies: 
    :topic: Data Structures
 
-Fundamental Data Structures and Algorithms
-==========================================
+SPLICE iframe Protocol Demonstration
+====================================
 
-Introduction to Data Structures
--------------------------------
+The SPLICE iframe Protocol makes it easy for eTextbooks to include
+exercises from third-party providers.
+On this page, we see exercises that come from several different
+sources.
+For more information, see:
+https://cssplice.org/slcp/index.html.
 
-Data structures are the foundation of efficient programming and algorithm design.
-They determine how data is organized, accessed, and manipulated.
-In this section, we will explore key data structures such as **Lists, 2D Arrays, Linked lists and Graphs** and their applications in search and retrieval.
-
+OpenDSA Exercises
+-----------------
 
 **Insert Practice Exercise**
 
-Understanding how to efficiently insert elements in an array-based list is crucial for building dynamic data structures.
-
 .. avembed:: Exercises/List/AlistInsertPRO.html ka
    :long_name: Array-based List Insert Exercise
-   :keyword: Array-based List
-
-**Remove Practice Exercise**
-
-Removing elements from an array-based list requires shifting elements to maintain order.
-
-.. avembed:: Exercises/List/AlistRemovePRO.html ka
-   :long_name: Array-based List Remove Exercise
    :keyword: Array-based List
 
 **Binary Search Proficiency Exercise**
@@ -55,30 +47,20 @@ This exercise reinforces understanding of **Dijkstra's shortest path algorithm**
 
 
 
-Other Practice Exercises
--------------------------------
-
-
-Solving problems is a great way to reinforce knowledge.
-Below are interactive exercises from some third party learning systems that test your understanding of **arrays, search, and graph-based algorithms**.
-
-
 CodeCheck Exercises
--------------------------------
+-------------------
 
-**2D Array Operations**
-
-Understanding multi-dimensional arrays is essential for data manipulation.
+An example of a coding exercise in CodeCheck
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. iframe:: https://codecheck.io/files/horstmann/codecheck-python-2DArraysNoLoops-8
    :height: 300
    :width: 1050
    :name: codecheck-2DArraysNoLoops-8
 
-**Dijkstra’s Algorithm in Pathfinding**
 
-Graph algorithms such as **Dijkstra’s Algorithm** help in solving shortest path problems in weighted graphs.
-This interactive tool demonstrates how Dijkstra’s algorithm computes the shortest path.
+An example of a proficiency exercise in CodeCheck
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
 
 .. iframe:: https://horstmann.com/codecheck/examples/dijkstra.html
    :height: 1050
@@ -87,11 +69,9 @@ This interactive tool demonstrates how Dijkstra’s algorithm computes the short
 
 
 Acos Server Exercise
--------------------------------
+--------------------
 
-**Combination of Algorithmic Techniques**
-
-Understanding how different algorithms work together can improve problem-solving skills. Here is a parson's problem exercise
+A Parsons problem implementation.
 
 .. iframe:: https://acos.cs.vt.edu/html/combo/combo-python/combo_avg
    :height: 500
@@ -100,12 +80,9 @@ Understanding how different algorithms work together can improve problem-solving
 
 
 Codeworkout Exercise
--------------------------------
+--------------------
 
-**Linked List Insertion**
-
-Linked lists are fundamental dynamic data structures.
-This exercise tests your ability to insert elements into a linked list efficiently.
+A programming practice exercise from Code Workout.
 
 .. iframe:: https://codeworkoutdev.cs.vt.edu/gym/exercises/394/practice
    :name: codeworkout-LinkedListInsertion

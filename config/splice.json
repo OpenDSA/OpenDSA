@@ -68,22 +68,7 @@
     },
     "chapters": {
       "Fundamentals": {
-        "development/SpliceCollections": {}
-      },
-      "Sorting": {
-        "Sorting/Binsort": {}
-      },
-      "Algorithm Analysis": {
-        "SeniorAlgAnal/DynamicProgramming": {}
-      },
-      "Indexing": {
-        "Indexing/BTree": {}
-      },
-      "Graphs": {
-        "development/splice_codecheck": {}
-      },
-      "Appendix": {
-        "Glossary": {}
+        "Development/SpliceCollections": {}
       }
     }
   }
