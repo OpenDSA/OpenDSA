@@ -78,6 +78,13 @@ A Parsons problem implementation.
    :width: 1050
    :name: acos-combo_avg
 
+A PCEX activity example.
+
+.. iframe:: https://acos.cs.vt.edu/html/acos-pcex/acos-pcex-examples/arithmetic_bmi_calculator__664e4db591363872f0ba3841
+   :height: 700
+   :width: 1050
+   :name: acos-pcex-arithmetic_bmi_calculator
+
 
 Codeworkout Exercise
 --------------------
