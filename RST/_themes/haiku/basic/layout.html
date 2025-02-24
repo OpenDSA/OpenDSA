@@ -6,12 +6,14 @@
 
     :copyright: Copyright 2007-2011 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
-
-    February 2025: removed theme tag variables to work with Sphinx versions > 7.0.
 #}
 {%- block doctype -%}
 <!DOCTYPE html>
 {%- endblock %}
+
+
+
+
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) %}
@@ -50,11 +52,9 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
           {%- block sidebarlogo %}
-          {%- if logo %}
             <p class="logo"><a href="{{ pathto(master_doc) }}">
-              <img class="logo" src="{{ pathto('_static/OpenDSALogoT64.png', 1) }}" alt="OpenDSA Logo"/>
+              <img class="logo" src="{{ pathto('_static/OpenDSALogoT64.png', 1) }}" alt=""/>
             </a></p>
-          {%- endif %}
           {%- endblock %}
           {%- if sidebars != None %}
             {#- new style sidebar: explicitly include/exclude templates #}
@@ -88,8 +88,6 @@
       HAS_SOURCE:  {{ has_source|lower }}
     };
   </script>
-  {%- endmacro %}
-
 
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -104,13 +102,21 @@
     });
   </script>
 
+  {%- if pagename=="search" -%}
+    {%- for scriptfile in script_files %}
+      <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {%- endfor %}
 
     {%- for scriptfile in search_scripts %}
       <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
     {%- endfor %}
+  {%- endif %}
+{%- endmacro %}
 
 {%- macro css() %}
-    <link rel="stylesheet" href="{{ pathto('_static/haiku.css', 1) }}" type="text/css" />
+    {% for cssFile in styles %}
+      <link rel="stylesheet" href="{{ pathto('_static/' + cssFile, 1) }}" type="text/css" />
+    {% endfor %}
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     {%- for cssfile in css_files %}
     <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
@@ -130,6 +136,7 @@
       <label>
         <span>{{ summary }}*:</span>
         <input type="text" id="b_title" placeholder="{{ summary }}" />
+
       </label>
 
       <label class="os">
@@ -192,7 +199,7 @@
     <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
     {%- endif %}
     {%- endif %}
-{%- block linktags %} 
+{%- block linktags %}
     {%- if hasdoc('about') %}
     <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
     {%- endif %}

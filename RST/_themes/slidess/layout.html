@@ -6,8 +6,6 @@
 
     :copyright: Copyright 2007-2011 by the Sphinx team, see AUTHORS.
     :license: BSD, see LICENSE for details.
-
-    February 2025: removed theme tag variables to work with Sphinx versions > 7.0.
 #}
 {%- block doctype -%}
 <!DOCTYPE html>
@@ -53,7 +51,12 @@
 {%- macro css() %}
     <link rel="stylesheet" href="{{ pathto('_static/basic.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/styles.css', 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/slides.css', 1) }}" type="text/css" />
+    {% for cssFile in styles %}
+    <link rel="stylesheet" href="{{ pathto('_static/' + cssFile, 1) }}" type="text/css" />
+    {% endfor %}
+    {% if theme_custom_css %}
+    <link rel="stylesheet" href="{{ pathto('_static/' + theme_custom_css, 1) }}" type="text/css" />
+    {% endif %}
 
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     {%- for cssfile in css_files %}
