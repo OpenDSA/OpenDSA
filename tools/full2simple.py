@@ -215,7 +215,6 @@ def gen_simple_config(conf_data):
           module[section_name] = section
       
       del module['sections']
-  # \\\\\\\\\\\\\\\\\\\\\\\\Changes\\\\\\\\\\\\\\\\\\\\
   if 'iframes' in conf_data:
     simple_conf['iframes'] = conf_data['iframes']
 

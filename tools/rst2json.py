@@ -345,7 +345,6 @@ class odsafig(Directive):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
 
 
-#\\\\\\\\\\\\\\\\\\\\Changes\\\\\\\\\\\\\\\\\\\\
 class iframe(Directive):
   requiredArguments = 1
   optionalArguments = 0
@@ -397,7 +396,6 @@ def rstToJson(rst, filepath):
     return json
 
 
-#\\\\\\\\\\\\\\\\\\\\Changes\\\\\\\\\\\\\\\\\\\\
 
 def print_err(*args, **kwargs):
   '''

@@ -132,7 +132,6 @@ inlineav_element = '''\
 
 odsalink_element = '''<odsalink>%(odsalink)s</odsalink>'''
 odsascript_element = '''<odsascript>%(odsascript)s</odsascript>'''
-#CHANGES
 #adding a format similar to above for iframes
 iframe_element = '''\
 <iframe
@@ -144,7 +143,6 @@ iframe_element = '''\
     mod_name="%(mod_name)s">
 </iframe>
 '''
-#CHANGES
 
 class avembed(Directive):
   required_arguments = 2
@@ -460,7 +458,6 @@ class odsafig(Directive):
   def run(self):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
 
-#CHANGES
 class iframe(Directive):
   '''
   '''
@@ -491,7 +488,6 @@ class iframe(Directive):
 
     res = iframe_element % (self.options)
     return [nodes.raw('', res, format='xml')]
-#CHANGES
 
 class showhidecontent(Directive):
   '''
@@ -694,7 +690,6 @@ def extract_exs_config(exs_json):
               exs_config['extertool'][key] = value
           del ex_options[current_module][ex_obj['@resource_name']]
 
-#CHANGES
       if isinstance(x, dict) and 'iframe' in list(x.keys()):
         ex_obj = x['iframe']
         exer_name = ex_obj['@name']
@@ -711,7 +706,6 @@ def extract_exs_config(exs_json):
               exs_config[exer_name][key] = value
           del ex_options[current_module][exer_name]
 
-#CHANGES
       if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "ss":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
@@ -796,7 +790,6 @@ def extract_exs_config(exs_json):
               exs_config['extertool'][key] = value
           del ex_options[current_module][ex_obj['@resource_name']]
 
-#CHANGES
     if 'iframe' in list(exs_json.keys()):
       ex_obj = exs_json['iframe']
       exer_name = ex_obj['@name']
@@ -813,7 +806,6 @@ def extract_exs_config(exs_json):
         for key, value in ex_options[current_module][exer_name].items():
           exs_config[exer_name][key] = value
         del ex_options[current_module][exer_name]
-#CHANGES
     if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "ss":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
@@ -1053,11 +1045,9 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
       for sect in sections:
         print_err('WARNING: the section "{0}" does not exist in module "{1}"'.format(sect, mod_name))
 
-  #\\\\\\CHANGES\\\\\
     simple_config = read_conf_file(config_file_path)
     if 'iframes' in simple_config:
       full_config['iframes'] = simple_config['iframes']
-  #\\\\\\CHANGES\\\\\
 
   return full_config
 
