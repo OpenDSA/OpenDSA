@@ -87,24 +87,25 @@ def decide_defaults(conf_data, ex_types):
 
   for modules in conf_data['chapters'].values():
     for module in modules.values():
-      for section, children in module['sections'].iteritems():
-        if 'learning_tool' in children:
-          freqs = option_freqs['extr']
-          lt = children['learning_tool']
-          pts = children['points']
-          if pts in freqs['points']:
-              freqs['points'][pts] += 1
-          else:
-            freqs['points'][pts] = 1
-          
-          if lt in freqs:
-            if pts in freqs[lt]['points']:
-              freqs[lt]['points'][pts] += 1
+      if 'sections' in module:
+        for section, children in module['sections'].iteritems():
+          if 'learning_tool' in children:
+            freqs = option_freqs['extr']
+            lt = children['learning_tool']
+            pts = children['points']
+            if pts in freqs['points']:
+                freqs['points'][pts] += 1
             else:
+              freqs['points'][pts] = 1
+            
+            if lt in freqs:
+              if pts in freqs[lt]['points']:
+                freqs[lt]['points'][pts] += 1
+              else:
+                freqs[lt]['points'][pts] = 1
+            else:
+              freqs[lt] = {'points': {}}
               freqs[lt]['points'][pts] = 1
-          else:
-            freqs[lt] = {'points': {}}
-            freqs[lt]['points'][pts] = 1
         else:
           for exer_name, options in children.iteritems():
             if exer_name not in ex_types:
@@ -215,8 +216,8 @@ def gen_simple_config(conf_data):
           module[section_name] = section
       
       del module['sections']
-  if 'iframes' in conf_data:
-    simple_conf['iframes'] = conf_data['iframes']
+  if 'splicetoolembed' in conf_data:
+    simple_conf['splicetoolembed'] = conf_data['splicetoolembed']
 
 
 
