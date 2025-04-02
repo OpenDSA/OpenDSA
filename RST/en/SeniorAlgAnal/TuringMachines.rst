@@ -38,7 +38,8 @@ We will discuss a particular one, called a :term:`Turing machine`.
 
 If you take a Formal Languages course, you will learn about a number
 of simple state machine types, like deterministic and
-non-deterministic finite automata, and :term:`pushdown automata` (PDA).
+non-deterministic :term:`finite automata <Finite Automata>`,
+and :term:`pushdown automata` (PDA).
 These machines all have some similarities.
 They all take an input string.
 They all march across the string from left to right, one character at
@@ -92,10 +93,10 @@ that even the most sophisticated modern computer can do.
 
 The first difference is memory.
 Simple Deterministic (DFA) and Non-Deterministic (NFA) State Machines
-have no memory beyond whatever process took them to
-their current state.
-PDA have a stack.
-This makes a huge difference in the languages that can be accepted:
+have no memory beyond knowing their current state,
+and so are not affected by the history that got them to that state.
+In contrast, PDAs have a stack.
+This makes a huge difference in what languages can be accepted:
 DFAs only accept what is called a :term:`regular language`, while
 (nondeterministic) PDAs accept any :term:`context-free language`.
 

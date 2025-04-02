@@ -107,6 +107,27 @@ solution quickly.
 In others, we end up visiting a large portion of the :math:`2^n`
 possible solutions.
 
+.. inlineav:: backtrackingCON dgm
+   :links: AV/NP/backtrackingCON.css
+   :scripts: AV/NP/backtrackingCON.js
+   :align: center
+   :keyword: NP-completeness; Backtracking; Branch and Bounds
+
+   An example of using backtracking in the Traveling Salesman
+   problem.
+   The crossed-out nodes (and their descendents) are immediately
+   rejected because they do not form a legal path through the
+   graph.
+   Numbers on edges show the cost to traverse that edge.
+   The first complete path found is A-B-C-D-E-A, for a cost of 16.
+   Branch-and-Bounds can be used to further reject further
+   consideration of paths that are longer than the shortest path
+   already found.
+   For example, the path A-B-C-E has cost 18, so there is no need to
+   consider it (or its descendents) further since we already found a
+   path with cost 16.
+
+
 :term:`Banch-and-Bounds <branch-and-bounds algorithm>` is an extension
 of backtracking that applies to
 :term:`optimization problems <optimization problem>` such as
@@ -203,7 +224,7 @@ This is similar to the :ref:`best fit <best fit> <BestFit>` heuristic
 for :ref:`memory management <dynamic memory allocation> <Dynamic>`.
 This heuristic doesn't merely tend to give better performance than
 simple first fit.
-The decreasing first fit heuristic can be proven to require no more
+The decreasing first fit heuristic has been proven to require no more
 than 11/9 the optimal number of bins.
 Thus, we have a guarantee on how much inefficiency can result when
 using the heuristic (about 22%).
@@ -220,3 +241,10 @@ problem with certainty, it is nearly as good.
 Once we realize that a problem is NP-complete, then we know that our
 next step must either be to redefine the problem to make it easier, or
 else use one of the "coping" strategies discussed in this section.
+
+
+Acknowledgement
+---------------
+
+This page is heavily influenced by the presentation in Section 11.5 of
+*Introduction to Algorithms* by Udi Manber.

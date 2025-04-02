@@ -17,7 +17,7 @@ Formula Satisfiability
 
 .. inlineav:: SATCON ss
    :long_name: Formula Satisfiability
-   :links: AV//NP/SATCON.css
+   :links: AV/NP/SATCON.css
    :scripts: AV/NP/SATCON.js
    :output: show
    :keyword: NP-completeness; Satisfiability

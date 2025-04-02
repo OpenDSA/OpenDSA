@@ -18,7 +18,7 @@ $(document).ready(function () {
   // Slide 1
   av.umsg("<br><b>Reduction of an input instance to CLIQUE to an equivalent instance of INDEPENDENT SET.</b>");
   var nl1=av.label("This slideshow presents how to reduce"+
-                   "an input instance to CLIQUE to an equivalent input instance to INDEPNDENT SET in polynomial time",{top:0});
+                   "an input instance to CLIQUE to an equivalent input instance to INDEPENDENT SET in polynomial time",{top:0});
   av.displayInit();
   av.step();
 
@@ -35,12 +35,12 @@ $(document).ready(function () {
   // Slide 3
   nl1.hide();
   av.umsg("<br><b>Reduction of CLIQUE to INDEPENDENT SET</b>");
-  nl1=av.label("To reduce a CLIQUE input instance to an INDEPENDENT SET input sintance for a given "
-               +"graph $G = (V , E)$, construct a complimentary graph $G' = (V' , E'"
-               +")$ such that <br><br>1. $V = V'$ , that is the compliment graph will have the same "
-               +"vertices as the original graph.<br><br>2. $E'$ is the compliment of $E$ that is"+
+  nl1=av.label("To reduce a CLIQUE input instance to an INDEPENDENT SET input instance for a given "
+               +"graph $G = (V , E)$, construct a complementary graph $G' = (V' , E'"
+               +")$ such that <br><br>1. $V = V'$ , that is the complement graph will have the same "
+               +"vertices as the original graph.<br><br>2. $E'$ is the complement of $E$ that is"+
                " $G'$ has all the edges that is <b>not</b> present in $G$.<br><br>"
-               +"Construction of the complimentary graph can be done in "
+               +"Construction of the complementary graph can be done in "
                +"polynomial time.", {top:-10});
   av.step();
 
