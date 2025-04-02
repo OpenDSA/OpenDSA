@@ -51,7 +51,7 @@ rst_header_unicode = '''\
 index_header = '''\
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://opendsa.org for more details.
-.. Copyright (c) 2011-2023 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2011-2025 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. OpenDSA documentation master file, created by
@@ -230,7 +230,7 @@ exclude_patterns = []
 highlight_language = 'guess' #'%(code_lang)s'
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx' #'sphinx'
+pygments_style = 'xcode' #'sphinx'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
