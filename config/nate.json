@@ -1,12 +1,6 @@
 {
   "title": "Test",
   "desc": "Test",
-  "html_theme_options": {
-    "use_download_button": false,
-    "single_page": true
-  },
-  "html_css_files": ["_static/renku-book.css"],
-  "html_js_files": ["_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"],
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "sphinx_debug": false,
@@ -79,11 +73,12 @@
       "SeniorAlgAnal/DynamicProgramming": {},
       "Indexing/BTree": {}
    },
-   "Graphs": {
-    "development/splice_codecheck": {}
-  },
+    "Introduction": {
+      "Development/splice_codecheck": {}
+    },
     "Appendix": {
-      "Glossary": {}
+      "Glossary": {},
+      "Bibliography": {}
     }
   }
 }
