@@ -1,0 +1,531 @@
+[
+    {
+        "group": "Basic definitions",
+        "id": "axialMemberAvgNormalStress",
+        "name": "Average normal stress in an axial member",
+        "latex": "\\sigma_{ } = \\frac {F_{ }} {A_{ }}",
+        "template": "normalstress = normalforce / area",
+        "variables": {
+            "normalstress": "\\sigma_{ }",
+            "normalforce": "F_{ }",
+            "area": "A_{ }"
+        },
+        "domains": {
+            "normalstress": "pressure",
+            "normalforce": "force",
+            "area": "length2"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "dirShearStressAvg",
+        "name": "Average direct shear stress",
+        "latex": "\\tau_{ } = \\frac {V_{ }} {A_{ }}",
+        "variables": {
+            "shearstress": "\\tau_{ }",
+            "shearforce": "V_{ }",
+            "area": "A_{ }"
+        },
+        "template": "shearstress = shearforce / area",
+                "domains": {
+            "shearstress": "pressure",
+            "shearforce": "force",
+            "area": "length2"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "axialMemberNormalStrainAvgLongdelta",
+        "name": "Average normal strain on an axial member, Longitudinal",
+        "latex": "\\epsilon_{long_{ }} = \\frac {\\delta_{ }} {L_{ }}",
+        "template": "normallongstrain = deform / length",
+        "variables": {
+            "normallongstrain": "\\epsilon_{long_{ }}",
+            "deform": "\\delta_{ }",
+            "length": "L_{ }"
+        },
+        "domains": {
+            "normallongstrain": "strain",
+            "deform": "length",
+            "length": "length"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "axialMemberNormalStrainAvgLatDiameter",
+        "name": "Average normal strain on an axial member, Lateral",
+        "latex": "\\epsilon_{lat_{ }} = \\frac {\\Delta l_{ }} {l_{ }}",
+        "template": "normallatstrain = changeLength / length",
+        "variables": {
+            "normallatstrain": "\\epsilon_{lat_{ }}",
+            "changeLength": "\\Delta l_{ }",
+            "length": "l_{ }"
+        },
+        "domains": {
+            "normallatstrain": "strain",
+            "changeLength": "length",
+            "length": "length"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "tempChangeNormalStrainAvg",
+        "name": "Average normal strain caused by temperature change",
+        "latex": "\\epsilon_{T_{ }} = \\alpha_{ } \\cdot \\Delta T_{ }",
+        "template": "normalstrain = thermalcoeff * tempchange",
+        "variables": {
+            "normalstrain": "\\epsilon_{T_{ }}",
+            "thermalcoeff": "\\alpha_{ }",
+            "tempchange": "\\Delta T_{ }"
+        },
+        "domains": {
+            "normalstrain": "strain",
+            "thermalcoeff": "temperature-1",
+            "tempchange": "temperature"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "HookesLaw1Dsigma",
+        "name": "Hookes Law, one dimensional for stress",
+        "latex": "\\sigma_{ } = E_{ } \\cdot \\epsilon_{ }",
+        "template": "normalstress = coeffEnstress * normalstrain",
+        "variables": {
+            "normalstress": "\\sigma_{ }",
+            "coeffEnstress": "E_{ }",
+            "normalstrain": "\\epsilon_{ }"
+        },
+        "domains": {
+            "normalstress": "pressure",
+            "coeffEnstress": "pressure",
+            "normalstrain": "strain"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "HookesLaw1Dtau",
+        "name": "Hookes Law, one dimensional for quantity",
+        "latex": "\\tau{ } = G_{ } \\cdot \\gamma_{ }",
+        "template": "shearstress = coeffGshstress * shearstrain",
+        "variables": {
+            "shearstress": "\\tau_{ }",
+            "coeffGshstress": "G_{ }",
+            "shearstrain": "\\gamma_{ }"
+        },
+        "domains": {
+            "shearstress": "pressure",
+            "coeffGshstress": "pressure",
+            "shearstrain": "strain"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "PoissonsRatio",
+        "name": "Poisson\"s Ratio",
+        "latex": "\\nu_{ } = - \\frac {\\epsilon_{lat_{ }}} {\\epsilon_{long_{ }}}",
+        "template": "poissonratio = - latstrain / longstrain",
+        "variables": {
+            "poissonratio": "\\nu_{ }",
+            "latstrain": "\\epsilon_{lat_{ }}",
+            "longstrain": "\\epsilon_{long_{ }}"
+        },
+        "domains": {
+            "poissonratio": "dimensionless",
+            "latstrain": "strain",
+            "longstrain": "strain"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "EGnuRelation",
+        "name": "Relation between E, G, and nu",
+        "latex": "G_{ } = \\frac {E_{ }} {2\\cdot(1+\\nu_{ })}",
+        "template": "coeffGshstress = coeffEnstress / (2*(1+ poissonratio ))",
+        "variables": {
+            "coeffGshstress": "G_{ }",
+            "coeffEnstress": "E_{ }",
+            "poissonratio": "\\nu_{ }"
+        },
+        "domains": {
+            "coeffGshstress": "pressure",
+            "coeffEnstress": "pressure",
+            "poissonratio": "dimensionless"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "AllowableStressDefinition1sigma",
+        "name": "Definition of allowable stress",
+        "latex": "\\sigma_{allow_{ }} = \\frac {\\sigma_{failure_{ }}} {FS_{ }}",
+        "template": "normalstressallowed = normalstressfailure / FS",
+        "variables": {
+            "normalstressallowed": "\\sigma_{allow_{ }}",
+            "normalstressfailure": "\\sigma_{failure_{ }}",
+            "FS": "FS_{ }"
+        },
+        "domains": {
+            "normalstressallowed": "pressure",
+            "normalstressfailure": "pressure",
+            "FS": "dimensionless"
+        }
+    },
+    {
+        "group": "Basic definitions",
+        "id": "AllowableStressDefinition1tau",
+        "name": "Definition of allowable stress",
+        "latex": "\\tau_{allow_{ }} = \\frac {\\tau_{failure_{ }}} {FS_{ }}",
+        "template": "shearstressallowed = shearstressfailure / FS",
+        "variables": {
+            "shearstressallowed": "\\tau_{allow_{ }}",
+            "shearstressfailure": "\\tau_{failure_{ }}",
+            "FS": "FS_{ }"
+        },
+        "domains": {
+            "shearstressallowed": "pressure",
+            "shearstressfailure": "pressure",
+            "FS": "dimensionless"
+        }
+    },
+    {
+        "group": "Axial",
+        "id": "axialStress",
+        "name": "Stress in an axial",
+        "latex": "\\delta_{T_{ }} = \\alpha_{ } \\cdot \\Delta T_{ } \\cdot L_{ }",
+        "template": "deform = thermalcoeff * tempchange * length",
+        "variables": {
+            "deform":"\\delta_{T_{ }}",
+            "thermalcoeff":"\\alpha_{ }",
+            "tempchange":"\\Delta T_{ }",
+            "length":"L_{ }"
+        },
+        "domains": {
+            "deform":"length",
+            "thermalcoeff":"temperature-1",
+            "tempchange":"temperature",
+            "length":"length"
+        }
+    },
+    {
+        "group": "Axial",
+        "id": "deformationAxialMember",
+        "name": "Deformation in Axial Member with F L A E",
+        "template": "deform = ( force * length ) / ( area * coeffEnstress )",
+        "latex": "\\delta_{ } = \\frac {F_{ } \\cdot L_{ }} {A_{ } \\cdot E_{ }}",
+        "variables": {
+            "deform": "\\delta_{ }",
+            "force": "F_{ }",
+            "area": "A_{ }",
+            "coeffEnstress": "E_{ }",
+            "length": "L_{ }"
+        },
+        "domains": {
+            "deform": "length",
+            "force": "force",
+            "area": "length2",
+            "coeffEnstress": "pressure",
+            "length": "length"
+        }
+    },
+    {
+        "group": "Axial",
+        "id": "deformationAxialMemberStressLE",
+        "name": "Deformation in Axial Member with sigma L E",
+        "latex": "\\delta_{ } = \\sigma_{ } \\frac {L_{ }} {E_{ }}",
+        "template": "deform = normalstress * length / coeffEnstress",
+        "variables": {
+            "deform": "\\delta_{ }",
+            "normalstress": "\\sigma_{ }",
+            "coeffEnstress": "E_{ }",
+            "length": "L_{ }"
+        },
+        "domains": {
+            "deform": "length",
+            "normalstress": "pressure",
+            "coeffEnstress": "pressure",
+            "length": "length"
+        }
+    },
+    {
+        "group": "Axial",
+        "id": "combinedDeformEquation",
+        "name": "Force temperature deformation relationship",
+        "latex": "\\delta_{ } = \\frac {F_{ } \\cdot L_{ }} {A_{ } \\cdot E_{ }}+ \\alpha_{ } \\cdot \\Delta T_{ } \\cdot L_{ }",
+        "template": "deform = ( force * length1 ) / ( area * coeffEnstress ) + thermalcoeff * tempchange * length2",
+        "sympy_variables": ["deform","force","length","area","coeffEnstress","thermalcoeff","tempchange"],
+        "variables": {
+            "deform": "\\delta_{ }",
+            "coeffEnstress": "E_{ }",
+            "length1": "L_{ }",
+            "force": "F_{ }",
+            "area": "A_{ }",
+            "thermalcoeff":"\\alpha_{ }",
+            "tempchange":"\\Delta T_{ }",
+            "length2":"L_{ }"
+        },
+        "domains": {
+            "deform": "length",
+            "force": "force",
+            "area": "length2",
+            "coeffEnstress": "pressure",
+            "length1": "length",
+            "length2": "length",
+            "tempchange": "temperature",
+            "thermalcoeff": "temperature-1"
+        }
+    },
+    {
+        "group": "Torsion",
+        "id": "shearMaxTorque1",
+        "name": "shearMaxTorque1",
+        "latex": "\\tau_{ } = \\frac {T_{ } \\cdot d_{ }} {2 \\cdot J_{ }}",
+        "template": "shearstress = ( torque * diameter ) / (2* mominertia )",
+        "variables": {
+            "shearstress": "\\tau_{ }",
+            "torque": "T_{ }",
+            "diameter": "d_{ }",
+            "mominertia": "J_{ }"
+        },
+        "domains": {
+            "shearstress": "pressure",
+            "torque": "torque",
+            "diameter": "length",
+            "mominertia": "length4"
+        }
+    },
+    {
+        "group": "Torsion",
+        "id": "shearMaxTorque2",
+        "name": "shearMaxTorque2",
+        "latex": "\\tau_{ } = \\frac {T_{ } \\cdot c_{ }} {J_{ }}",
+        "template": "shearstress = ( torque * radius ) / ( mominertia )",
+        "variables": {
+            "shearstress": "\\tau_{ }",
+            "torque": "T_{ }",
+            "radius": "c_{ }",
+            "mominertia": "J_{ }"
+        },
+        "domains": {
+            "shearstress": "pressure",
+            "torque": "torque",
+            "radius": "length",
+            "mominertia": "length4"
+        }
+    },
+    {
+        "group": "Torsion",
+        "id": "momInertiaRadius",
+        "name": "momInertiaRadius",
+        "latex": "J_{ } = \\pi/2 * ( r_{ } )^4",
+        "template": "mominertia = 3.1419/2 * ( radius )^4",
+        "sympy_template": "mominertia = pi/2 * ( radius ) ** 4",
+        "variables": {
+            "mominertia": "J_{ }",
+            "radius": "r_{ }"
+        },
+        "domains": {
+            "mominertia": "length4",
+            "radius": "length"
+        }
+    },
+    {
+        "group": "Torsion",
+        "id": "momInertiaDiameter",
+        "name": "momInertiaDiameter",
+        "latex": "J_{ } = \\pi/32 * ( d_{ } )^4",
+        "template": "mominertia = 3.1419/32 * ( diameter )^4",
+        "sympy_template": "mominertia = pi/32 * ( diameter ) ** 4",
+        "variables": {
+            "mominertia": "J_{ }",
+            "diameter": "d_{ }"
+        },
+        "domains": {
+            "mominertia": "length4",
+            "diameter": "length"
+        }
+    },
+    {
+        "group": "Torsion",
+        "id": "angletwist",
+        "name": "angletwist",
+        "latex": "\\phi_{ } = \\frac { T_{ } L_{ } } { J_{ } G_{ } }",
+        "template": "angletwist = ( torque * length ) / ( mominertia * coeffGshstress )",
+        "variables": {
+            "angletwist": "\\phi_{ }",
+            "mominertia": "J_{ }",
+            "coeffGshstress": "G_{ }",
+            "torque": "T_{ }",
+            "length": "L_{ }"
+        },
+        "domains": {
+            "angletwist": "angle",
+            "mominertia": "length4",
+            "coeffGshstress": "pressure",
+            "torque": "torque",
+            "length": "length"
+        }
+    },
+    {
+        "group": "Torsion",
+        "id": "power",
+        "name": "power",
+        "latex": "P_{ } = T_{ } \\cdot \\omega_{ }",
+        "template": "power = torque * angularvelocity",
+        "variables": {
+            "power": "P_{ }",
+            "torque": "T_{ }",
+            "angularvelocity": "\\omega_{ }"
+        },
+        "domains": {
+            "power": "power",
+            "torque": "torque",
+            "angularvelocity": "angularvelocity"
+        }
+    },
+    {
+        "group": "Geometry",
+        "id": "areaCircleRadius",
+        "name": "areaCircleRadius",
+        "latex": "A_{ } = \\pi { r_{ } }^2",
+        "template": "area = 3.1419 * ( radius )^2",
+        "sympy_template": "area = pi * ( radius ) ** 2",
+        "variables": {
+            "area": "A_{ }",
+            "radius": "r_{ }"
+        },
+        "domains": {
+            "area": "length2",
+            "radius": "length"
+        }
+    },
+    {
+        "group": "Geometry",
+        "id": "areaCircleDiameter",
+        "name": "areaCircleDiameter",
+        "latex": "A_{ } = \\frac {\\pi { d_{ } }^2 } {4}",
+        "template": "area = 3.1419/4 * ( diameter )^2",
+        "sympy_template": "area = pi/4 * ( diameter ) ** 2",
+        "variables": {
+            "area": "A_{ }",
+            "diameter": "d_{ }"
+        },
+        "domains": {
+            "area": "length2",
+            "diameter": "length"
+        }
+    },
+    {
+        "group": "Geometry",
+        "id": "areaTriangle",
+        "name": "areaTriangle",
+        "latex": "A_{ } = \\frac {1}{2} b_{ } h_{ }",
+        "template": "area = 0.5 * base * height",
+        "variables": {
+            "area": "A_{ }",
+            "height": "h_{ }",
+            "base": "b_{ }"
+        },
+        "domains": {
+            "area": "length2",
+            "base": "length",
+            "height": "length"
+        }
+    },
+    {
+        "group": "Geometry",
+        "id": "radiusDiamReln",
+        "name": "radiusDiamReln",
+        "latex": "r_{ } = \\frac { d_{ } }{2}",
+        "template": "radius = diameter / 2",
+        "variables": {
+            "diameter": "d_{ }",
+            "radius": "r_{ }"
+        },
+        "domains": {
+            "diameter": "length",
+            "radius": "length"
+        }
+    },
+    {
+        "group": "Arithmetic",
+        "id": "equal",
+        "name": "Equality",
+        "latex": "a_{ }=b_{ }",
+        "template": "aterm = bterm",
+        "variables": {
+            "bterm": "b_{ }",
+            "aterm": "a_{ }"
+        },
+        "domains": {
+            "bterm": "free",
+            "aterm": "free"
+        }
+    },
+    {
+        "group": "Arithmetic",
+        "id": "add2",
+        "name": "Addition of 2 terms",
+        "latex": "s_{ }=a_{ }+b_{ }",
+        "template": "sterm = aterm + bterm",
+        "variables": {
+            "sterm": "s_{ }",
+            "bterm": "b_{ }",
+            "aterm": "a_{ }"
+        },
+        "domains": {
+            "sterm": "free",
+            "bterm": "free",
+            "aterm": "free"
+        }
+    },
+    {
+        "group": "Arithmetic",
+        "id": "sub",
+        "name": "Subtraction",
+        "latex": "c_{ }=a_{ }-b_{ }",
+        "template": "cterm = aterm - bterm",
+        "variables": {
+            "cterm": "c_{ }",
+            "bterm": "b_{ }",
+            "aterm": "a_{ }"
+        },
+        "domains": {
+            "cterm": "free",
+            "bterm": "free",
+            "aterm": "free"
+        }
+    },
+    {
+        "group": "Arithmetic",
+        "id": "div",
+        "name": "Division",
+        "latex": "c_{ }=\\frac{a_{ }}{b_{ }}",
+        "template": "cterm = aterm / bterm",
+        "variables": {
+            "cterm": "c_{ }",
+            "bterm": "b_{ }",
+            "aterm": "a_{ }"
+        },
+        "domains": {
+            "cterm": "free",
+            "bterm": "free",
+            "aterm": "free"
+        }
+    },
+    {
+        "group": "Arithmetic",
+        "id": "mult",
+        "name": "Multiplication",
+        "latex": "c_{ }=a_{ } \\times b_{ }",
+        "template": "cterm = aterm * bterm",
+        "variables": {
+            "cterm": "c_{ }",
+            "bterm": "b_{ }",
+            "aterm": "a_{ }"
+        },
+        "domains": {
+            "cterm": "free",
+            "bterm": "free",
+            "aterm": "free"
+        }
+    }
+]

@@ -76,10 +76,10 @@ def irt_curve():
 def deforms_feedback():
     if request.method != 'POST':
         return jsonify({"ok": False})
-    script_path = "tools/deforms_feedback.py"
+    script_path = "tools/tafe"
     problem_attempt = request.json
     str_problem_attempt = str(problem_attempt).replace(" ","")
-    cmd = f"python3 {script_path} \"{str_problem_attempt}\""
+    cmd = f"python3 {script_path} -j \"{str_problem_attempt}\""
     resp = run_command(cmd)
     return jsonify(resp)
 
