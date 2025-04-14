@@ -39,7 +39,8 @@
     },
     "Week 2": {
       "FLSlides/NFA": {},
-      "FLSlides/Minimization": {}
+      "FLSlides/Minimization": {},
+      "FLSlides/Theory": {}
     },
     "Week 3": {
       "FLSlides/RegEx": {},
@@ -48,31 +49,29 @@
     },
     "Week 4": {
       "FLSlides/NonRegular": {},
-      "FLSlides/CFL": {}
+      "FLSlides/NRClosure": {}
     },
     "Week 5": {
-      "FLSlides/CFLSimp": {}
+      "FLSlides/CFL": {}
     },
     "Week 7": {
-      "FLSlides/PDA": {},
-      "FLSlides/PDACFL": {}
+      "FLSlides/CFLSimp": {}
     },
-    "Week 8": {
+    "Week 9.1": {
+      "FLSlides/PDA": {},
+      "FLSlides/PDACFL": {},
       "FLSlides/DPDA": {},
-      "FLSlides/DPDAGrammar": {},
+      "FLSlides/DPDAGrammar": {}
+    },
+    "Week 9.2": {
       "FLSlides/CFLProp": {},
       "FLSlides/CFLClosure": {}
     },
-    "Week 9": {
+    "Week 10": {
       "FLSlides/Turing": {},
       "FLSlides/TuringDecide": {},
-      "FLSlides/TuringCombine": {}
-    },
-    "Week 10": {
+      "FLSlides/TuringCombine": {},
       "FLSlides/TuringExtend": {}
-    },
-    "Week 14": {
-      "FLSlides/ParseIntro": {}
     }
   }
 }
