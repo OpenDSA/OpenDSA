@@ -67,8 +67,8 @@
       "partial_credit": false
     },
     "chapters": {
-      "Modules": {
-        "Development/NpCompletenessProofs": {}
+      "Exercises": {
+        "development/NpCompletenessProofs": {}
       }
     }
   }
