@@ -1,4 +1,13 @@
 // Written by Yujie Chen, Summer 2019
+// Title: Sorting Terminology and Notation Slideshow
+// Author: Yujie Chen
+// Institution: Virginia Tech
+// Features: Slideshow
+// Keyword: Sorting notation
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow introducing the sorting problem. */
+
 /*global ODSA */
 $(document).ready(function() {
   "use strict";

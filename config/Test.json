@@ -69,6 +69,13 @@
   },
   "chapters": {
     "Stuff": {
+      "Sorting/InSort": {}, 
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      }, 
+      "Sorting/InsertionSort": {}, 
       "Searching/SortedSearch": {}
     },
     "Appendix": {

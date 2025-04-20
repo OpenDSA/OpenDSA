@@ -4,11 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Insertion Sort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology; comparison
    :satisfies: insertion sort
    :topic: Sorting
    :keyword: Sorting; Insertion Sort
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Presentation of Insertion Sort including visualizations, code, and self-test questions and exercises
+
 
 .. index:: ! Insertion Sort
 

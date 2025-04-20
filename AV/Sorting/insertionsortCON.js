@@ -1,4 +1,13 @@
 /*global ODSA */
+// Title: Insertion Sort Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Slideshow; Algorithm Visualization
+// Keyword: Insertion Sort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a simple visualization of Insertion Sort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "insertionsortCON";
