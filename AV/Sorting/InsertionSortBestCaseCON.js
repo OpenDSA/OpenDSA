@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Insertion Sort Best Case
+
+// Title: Insertion Sort Best Case Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Slideshow; Code Visualization; Analysis Explanation
+// Keyword: Insertion Sort; Best Case
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing an analysis of Insertion Sort's best-case behavior and cost. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "InsertionSortBestCaseCON";
