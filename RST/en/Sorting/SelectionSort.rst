@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Selection Sort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology; comparison; bubble sort
    :satisfies: selection sort
    :topic: Sorting
    :keyword: Sorting; Selection Sort
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Presentation of Selection Sort including visualizations, code, and self-test questions and exercises
 
 .. index:: ! Selection Sort
 
@@ -49,7 +54,7 @@ Here is an implementation for Selection Sort.
 Consider the example of the following array.
 
 .. inlineav:: selectionsortS1CON ss
-   :long_name: Selection Sort Slideshow 1
+   :long_name: Selection Sort First Pass
    :links: 
    :scripts: AV/Sorting/selectionsortS1CON.js
    :output: show
@@ -60,7 +65,7 @@ However, since the largest record is already at the right end,
 we will not need to look at it again.
 
 .. inlineav:: selectionsortS2CON ss
-   :long_name: Selection Sort Slideshow 2
+   :long_name: Selection Sort Second Pass
    :links: 
    :scripts: AV/Sorting/selectionsortS2CON.js
    :output: show

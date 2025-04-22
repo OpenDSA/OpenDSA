@@ -63,7 +63,7 @@ Here is an implementation.
 |
 
 .. inlineav:: bubblesortS1CON ss
-   :long_name: Bubble Sort Slideshow 1
+   :long_name: Bubble Sort First Pass
    :links: 
    :scripts: AV/Sorting/bubblesortS1CON.js
    :output: show
@@ -74,7 +74,7 @@ record has "bubbled" to the very right, we will not need to look at
 it again.
 
 .. inlineav:: bubblesortS2CON ss
-   :long_name: Bubble Sort Slideshow 2
+   :long_name: Bubble Sort Second Pass
    :links: 
    :scripts: AV/Sorting/bubblesortS2CON.js
    :output: show

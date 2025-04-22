@@ -1,5 +1,5 @@
 /*global ODSA */
-// Title: Bubble Sort Intro Slideshow
+// Title: Bubble Sort First Pass Slideshow
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Slideshow; Algorithm Visualization

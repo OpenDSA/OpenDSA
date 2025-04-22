@@ -1,6 +1,15 @@
 /*global JSAV, document */
 // Written by Liling Yuan
 
+// Title: Selection Sort Pointer Swap Slideshow
+// Author: Liling Yuan
+// Institution: Virginia Tech
+// Features: Slideshow
+// Keyword: Bubble Sort; Worst Case; Average Case; Best Case
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing that Selection Sort can be sped up for large records with swapping to records. */
+ 
 $(document).ready(function() {
   "use strict";
   var av_name = "ptrSwapCON";

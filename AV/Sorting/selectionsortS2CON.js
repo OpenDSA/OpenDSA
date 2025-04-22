@@ -1,4 +1,13 @@
 /*global ODSA */
+// Title: Selection Sort Second Pass Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Slideshow; Algorithm Visualization
+// Keyword: Selection Sort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a simple visualization of the second pass for Selection Sort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "selectionsortS2CON";
