@@ -353,7 +353,8 @@ class splicetoolembed(Directive):
     'height': directives.unchanged,
     'width': directives.unchanged,
     'src': directives.unchanged,
-    'long_name': directives.unchanged
+    'long_name': directives.unchanged,
+    'name': directives.unchanged
   }
   has_content = True
 

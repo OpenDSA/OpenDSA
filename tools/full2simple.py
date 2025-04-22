@@ -205,6 +205,11 @@ def gen_simple_config(conf_data):
             if exercise['points'] == defaults[ex_type]['points']:
               del exercise['points']
 
+            splicetoolembed_fields = ['splicetoolembed', 'url', 'height', 'width', 'name']
+            for field in splicetoolembed_fields:
+              if field in exercise:
+                pass
+
             if len(exercise) == 0:
               del section[ex_name]
             else:

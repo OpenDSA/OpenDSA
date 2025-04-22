@@ -114,7 +114,7 @@ def validate_exercise(exer_name, exercise):
         error_count += 1
 
     required_fields = []
-    optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'external_url'
+    optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'external_url',
                         'inst_book_id','module_position','inst_exercise_id',
                         'inst_chapter_id','options','inst_module_id','id', 'total_points',
                         'type', 'links', 'scripts', 'av_address', 'mod_name', 'splicetoolembed',
@@ -142,7 +142,8 @@ def validate_module(mod_name, module, conf_data):
     optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises',
                         'lms_module_item_id', 'lms_section_item_id','inst_book_id','module_position','inst_exercise_id',
                         'inst_chapter_id','options','inst_module_id','id', 'total_points', 'lms_assignment_id',
-                        'git_hash', 'zeropt_assignments', 'due_dates']
+                        'git_hash', 'zeropt_assignments', 'due_dates', 'splicetoolembed',
+                       'url', 'height', 'width', 'name']
 
     # Get module name
     get_mod_name(mod_name)
