@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Bubble Sort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology; comparison; insertion sort
    :satisfies: bubble sort
    :topic: Sorting
    :keyword: Sorting; Bubble Sort
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Presentation of Bubble Sort including visualizations, code, and self-test questions and exercises
 
 .. index:: ! Bubble Sort
 
