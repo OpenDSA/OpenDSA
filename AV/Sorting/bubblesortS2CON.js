@@ -2,7 +2,7 @@
 // Title: Bubble Sort 2nd Pass Slideshow
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Slideshow; Algorithm Visualization
+// Features: Algorithm Visualization
 // Keyword: Bubble Sort
 // Natural Language: en
 // Programming Language: N/A

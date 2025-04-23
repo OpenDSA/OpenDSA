@@ -2,11 +2,11 @@
 // Title: Insertion Sort Slideshow
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Slideshow; Algorithm Visualization
+// Features: Algorithm Visualization
 // Keyword: Insertion Sort
 // Natural Language: en
 // Programming Language: N/A
-/* Description: Slideshow showing a simple visualization of Insertion Sort. */
+/* Description: Slideshow showing a visualization for the first pass of Insertion Sort. */
 
 $(document).ready(function() {
   "use strict";

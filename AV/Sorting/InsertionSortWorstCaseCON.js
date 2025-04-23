@@ -5,7 +5,7 @@
 // Title: Insertion Sort Worst Case Slideshow
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Slideshow; Code Visualization; Analysis Explanation
+// Features: Code Visualization; Algorithm Analysis Demonstration
 // Keyword: Insertion Sort; Worst Case
 // Natural Language: en
 // Programming Language: N/A

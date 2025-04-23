@@ -2,7 +2,7 @@
 // Title: Selection Sort First Pass Slideshow
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Slideshow; Algorithm Visualization
+// Features: Algorithm Visualization
 // Keyword: Selection Sort
 // Natural Language: en
 // Programming Language: N/A

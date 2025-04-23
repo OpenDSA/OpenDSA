@@ -2,7 +2,7 @@
 // Title: Sorting Terminology and Notation Slideshow
 // Author: Yujie Chen
 // Institution: Virginia Tech
-// Features: Slideshow
+// Features: Demonstration
 // Keyword: Sorting notation
 // Natural Language: en
 // Programming Language: N/A
@@ -15,6 +15,10 @@ $(document).ready(function() {
   // Load the config object with interpreter and code created by odsaUtils.js
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
+  MathJax.Hub.Config({tex2jax: {inlineMath: [["$", "$"], ["\\(", "\\)"]]}});
+  $(".avcontainer").on("jsav-message", function() {
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  });
   var leftAlign = 150;
   var topAlign = 5;
 

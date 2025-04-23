@@ -12,8 +12,8 @@
    :topic: Sorting
    :keyword: Sorting; Selection Sort
    :naturallanguage: en
-   :programminglanguage: Java; CPP
-   :description: Presentation of Selection Sort including visualizations, code, and self-test questions and exercises
+   :programminglanguage: N/A
+   :description:  Presentation of Selection Sort including visualizations, code, and self-test questions and exercises.
 
 .. index:: ! Selection Sort
 
@@ -109,22 +109,13 @@ comparisons and swaps required by Selection Sort.
    :output: show
    :keyword: Sorting; Selection Sort
 
-There is another approach to keeping the cost of swapping records low,
-and it can be used by any sorting algorithm even when the records are
-large.
-This is to have each element of the array store a pointer to a record
-rather than store the record itself.
-In this implementation, a swap operation need only exchange the
-pointer values.
-The large records do not need to move.
-This technique is illustrated by the following visualization.
-Additional space is needed to store the pointers, but the
-return is a faster swap operation.
+Pointer Swapping
+----------------
 
 .. _PointerSwap:
 
 .. inlineav:: ptrSwapCON ss
-   :long_name: Selection Sort Pointer Swap
+   :long_name: Pointer Swap Optimization Slideshow
    :links: AV/Sorting/ptrSwapCON.css
    :scripts: AV/Sorting/ptrSwapCON.js
    :output: show
