@@ -92,16 +92,13 @@
       "IntroToSoftwareDesign/StaticMainAndExceptions":{}
     },
     "Introduction for Data Structures and Algorithms Courses": {
-      "Background/IntroDSA": {
-        "Some Software Engineering Topics": {},
-        "Design/ADT": {},
-        "IntroADTSumm": {}
-      }
+      "Background/IntroDSA": {}
     },
     "Object Oriented Programming": {
       "Design/IntroOO": {},
       "Design/IntroUML": {}, 
-      "Design/IntroProcess": {}
+      "Design/IntroProcess": {},
+      "Design/ADT": {}
     },
     "Programming Tutorials": {
       "Tutorials/cmdline": {}, 

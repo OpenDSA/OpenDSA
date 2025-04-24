@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Writing JUnit Tests
    :author: Jordan Sablan
+   :institution: Virginia Tech
    :requires: JUnit intro
    :satisfies: JUnit test writing
    :topic: Programming Tutorial
    :keyword: JUnit Testing
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Describes how to write JUnit tests.
 
 
 Writing JUnit Tests
