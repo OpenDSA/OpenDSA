@@ -115,10 +115,10 @@
       "Tutorials/mutationtesting": {},
       "Tutorials/mutationtesting_example": {},
       "Tutorials/mutationtesting_faq": {},
-      "Testing/TestIntro": {},
-      "Testing/TestCoverage": {},
-      "Testing/Example2": {},
-      "Testing/Bowling": {}
+      "Testing/TriangleIntro": {},
+      "Testing/TriangleCoverage": {},
+      "Testing/BowlingIntro": {},
+      "Testing/BowlingCoverage": {}
     }, 
     "Introduction to Pointers in Java": {
       "PointersJava/BasicPointers1": {},

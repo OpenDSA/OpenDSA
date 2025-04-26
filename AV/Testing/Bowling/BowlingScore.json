@@ -1,7 +1,7 @@
 {
   "translations" : {
     "en": {
-      ".avTitle": "Bowling App",
+      ".avTitle": "Bowling Scorer Testing",
       "#throwRoll": "Throw Roll",
       "#reset": "Reset",
       "#inputInfo": "Enter Pins Hit with Roll: ",
