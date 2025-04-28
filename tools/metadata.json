@@ -1,0 +1,310 @@
+[
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuicksortPivotPRO",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuicksortPivotPRO",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [],
+    "exercise_name": "QuicksortPivotPRO.html"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#quicksortCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#quicksortCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "quicksortCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuicksortPartitPRO",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuicksortPartitPRO",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [],
+    "exercise_name": "QuicksortPartitPRO.html"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuickSortPartitionAnalysisCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuickSortPartitionAnalysisCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "QuickSortPartitionAnalysisCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#quicksortAV",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#quicksortAV",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "Here is a visualization of the entire Quicksort process.",
+    "author": "Daniel Breakiron",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "Quicksort Visualization"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#quicksortPRO",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#quicksortPRO",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Daniel Breakiron",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "Quicksort Proficiency Exercise"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuickSortWorstCaseCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuickSortWorstCaseCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "QuickSortWorstCaseCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuickSortBestCaseCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuickSortBestCaseCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "QuickSortBestCaseCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuickSortAverageCaseCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuickSortAverageCaseCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "QuickSortAverageCaseCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuicksortSumm",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/Quicksort.html#QuicksortSumm",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [],
+    "exercise_name": "QuicksortSumm.html"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuicksortPivotPRO",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuicksortPivotPRO",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [],
+    "exercise_name": "QuicksortPivotPRO.html"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#quicksortCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#quicksortCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "quicksortCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuicksortPartitPRO",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuicksortPartitPRO",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [],
+    "exercise_name": "QuicksortPartitPRO.html"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuickSortPartitionAnalysisCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuickSortPartitionAnalysisCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "QuickSortPartitionAnalysisCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#quicksortAV",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#quicksortAV",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "Here is a visualization of the entire Quicksort process.",
+    "author": "Daniel Breakiron",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "Quicksort Visualization"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#quicksortPRO",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#quicksortPRO",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Daniel Breakiron",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "Quicksort Proficiency Exercise"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuickSortWorstCaseCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuickSortWorstCaseCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "QuickSortWorstCaseCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuickSortBestCaseCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuickSortBestCaseCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "QuickSortBestCaseCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuickSortAverageCaseCON",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuickSortAverageCaseCON",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "inlineav",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "No description available.",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [
+      "sorting"
+    ],
+    "exercise_name": "QuickSortAverageCaseCON.js"
+  },
+  {
+    "catalog_type": "SLCItemCatalog",
+    "platform_name": "OpenDSA",
+    "url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuicksortSumm",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/ODSA/Books/Sorting/QuicksortVid.html#QuicksortSumm",
+    "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+    "exercise_type": "avembed",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+    "description": "",
+    "author": "Cliff Shaffer",
+    "institution": "Virginia Tech",
+    "keywords": [],
+    "exercise_name": "QuicksortSumm.html"
+  }
+]
