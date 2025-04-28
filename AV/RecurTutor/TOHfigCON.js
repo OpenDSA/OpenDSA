@@ -1,3 +1,4 @@
+/*global ODSA */
 // Written by Cliff Shaffer
 $(document).ready(function() {
   "use strict";

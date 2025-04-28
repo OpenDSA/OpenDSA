@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Chapter Introduction: Sorting
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: sorting introduction
-   :topic: Sorting
    :keyword: Sorting
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to a chapter on sorting.
 
 
 Chapter Introduction: Sorting

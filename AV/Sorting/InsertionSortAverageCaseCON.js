@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Insertion Sort Average Case
+
+// Title: Insertion Sort Average Case Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Algorithm Analysis Demonstration
+// Keyword: Insertion Sort; Average Case
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing an analysis of Insertion Sort's average-case behavior and cost. */
+
+
 $(document).ready(function() {
   "use strict";
   var av_name = "InsertionSortAverageCaseCON";
