@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Common Debugging Methods
    :author: Jordan Sablan
+   :institution: Virginia Tech
    :requires:
    :satisfies: debugging
    :topic: Programming Tutorial
    :keyword: Debugging; Debugging Methods
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Brief introduction to standard approaches to debugging.
 
 
 Common Debugging Methods

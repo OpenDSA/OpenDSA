@@ -4,13 +4,18 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Using Command Line Parameters in Eclipse
    :author: Jordan Sablan
+   :institution: Virginia Tech
    :requires: Command line parameters
    :satisfies: Eclipse command line parameters
    :topic: Programming Tutorial
    :keyword: Eclipse; Command Line Parameters
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Describes how to set up passing command line parameters to a program in the Eclipse IDE.
 
-========================================
+
 Using Command Line Parameters in Eclipse
 ========================================
 

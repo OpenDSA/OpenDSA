@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Testing for Code Coverage
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Testing Introduction
    :satisfies:
    :topic: Testing
    :keyword: Testing; Code Coverage
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses testing for code coverage, and presents a testing interactive problem to get complete code coverage on a triangle classifier function.
 
 
 Testing for Code Coverage
@@ -27,7 +32,7 @@ Try it this time with code visible.
 Try to reach 100% code coverage by giving inputs that take you to each
 branch in the nested series of ``if`` statements.
 
-.. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
+.. avembed:: AV/Testing/Triangle/TriangleClassifier.html pe
    :long_name: Triangle Testing With Code
    :url_params: code=true
    :keyword: Testing; Code Coverage

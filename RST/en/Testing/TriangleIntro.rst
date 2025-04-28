@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Testing vs. Debugging
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: Testing Introduction
    :topic: Testing
    :keyword: Testing; Code Coverage
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses the distinction between testing and debugging, and introduces a testing interactive problem to get test coverage of a triangle classifier function.
 
 
 Testing
@@ -42,7 +47,7 @@ is supposed to classify these sidelengths into a type of triangle.
 You will probably find this quite challenging to come up with various
 sets of inputs that will get you to even 50% code coverage.
 
-.. avembed:: AV/Testing/Triangle/TriangleApplet.html pe
+.. avembed:: AV/Testing/Triangle/TriangleClassifier.html pe
    :long_name: Triangle Testing No Code
    :url_params: code=false
    :keyword: Testing; Code Coverage

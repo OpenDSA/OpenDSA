@@ -4,18 +4,23 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Bowling Test Coverage Example
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Testing Introduction
    :satisfies: Testing Intro 2
    :topic: Testing
    :keyword: Testing; Code Coverage
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses testing for code coverage, and presents a testing interactive problem to get complete code coverage on a bowling game score function.
 
 
-Another Example
-===============
+Bowling Test Coverage Example
+=============================
 
-Another Example
----------------
+Bowling Test Coverage Example
+-----------------------------
 
 Here is another example to let you practice testing.
 This is testing a bowling game.
@@ -26,7 +31,7 @@ Knocking down all 10 points on two rolls is a spare.
 
 Try to get at least 75% code coverage.
 
-.. avembed:: AV/Testing/Bowling/BowlingApplet.html pe
+.. avembed:: AV/Testing/Bowling/BowlingScore.html pe
    :long_name: Bowling Testing Without Code
    :url_params: code=false
    :keyword: Testing; Code Coverage
