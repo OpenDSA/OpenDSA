@@ -12,12 +12,12 @@ def setup(app):
 
 splicetoolembed_HTML = '''\
   <div style="text-align: center;">
-  <splicetoolembed id="%(name)s"
+  <iframe id="%(name)s"
       src="%(splicetoolembed_src)s"
       width="%(width)s" height="%(height)s"
       frameborder="1" marginwidth="0" marginheight="0"
     scrolling="no">
-  </splicetoolembed>
+  </iframe>
   </div>
 '''
 
