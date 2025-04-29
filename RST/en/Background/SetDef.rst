@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Sets and Relations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: set notation; relations
    :topic: Math Background
    :keyword: Sets; Relations; Equivalance Relation; Partial Order
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review of background set and relations materials (as typically taught in a Discrete Math course) needed for a Data Structures and Algorithms course.
 
 
 Sets and Relations
