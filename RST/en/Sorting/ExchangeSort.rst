@@ -4,15 +4,11 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: The Cost of Exchange Sorting
    :author: Cliff Shaffer
    :requires: insertion sort; bubble sort; selection sort
    :satisfies: exchange sort
    :topic: Sorting
    :keyword: Sorting; Exchange Sorting; N-squared Sorts
-   :naturallanguage: en
-   :programminglanguage: Java; CPP
-   :description: Lower bounds analysis for any sorting algorithm that works by swapping adjacent records.
 
 .. index:: ! exchange sorting
 .. index:: sorting; exchange
@@ -87,7 +83,7 @@ Analysis
    :links: AV/Sorting/ExchangeSortCON.css
    :scripts: AV/Sorting/ExchangeSortCON.js
    :output: show
-   :keyword: Sorting; Exchange Sorting; N-squared Sorts
+   :keyword: Sorting; Exchange Sorting; O(n^2) Sorts
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
    :long_name: Exchange Sorting Summary Exercise

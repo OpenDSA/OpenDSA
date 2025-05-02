@@ -1,13 +1,4 @@
 /*global ODSA */
-// Title: Bubble Sort First Pass Slideshow
-// Author: Cliff Shaffer
-// Institution: Virginia Tech
-// Features: Algorithm Visualization
-// Keyword: Bubble Sort
-// Natural Language: en
-// Programming Language: N/A
-/* Description: Slideshow showing a simple visualization of the first pass for Bubble Sort. */
-
 $(document).ready(function() {
   "use strict";
   var av_name = "bubblesortS1CON";

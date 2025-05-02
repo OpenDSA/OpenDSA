@@ -50,12 +50,11 @@ Our most  significant example of a lower bounds argument that you have
 probably ever seen is the
 :ref:`sorting lower bound proof <sorting lower bound> <SortingLowerBound>`,
 which shows that the problem of sorting has a lower bound of
-:math:`\Omega(n \log n)` in the :term:`worst case`.
+:math:`O(n \log n)` in the :term:`worst case`.
 
-The lower bound for the problem refers to the amount of work that any
-algorithm **must** do.
-It is the tightest (highest) lower bound that we can prove
-**for all possible algorithms** that solve the problem.
+The lower bound for the problem is the tightest (highest) lower bound
+that we can prove **for all possible algorithms** that solve the
+problem. [#]_
 This can be a difficult bar, given that we cannot possibly know all
 algorithms for any problem, because there are theoretically an
 infinite number.

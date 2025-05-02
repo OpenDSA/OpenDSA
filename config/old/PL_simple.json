@@ -1,0 +1,72 @@
+{
+  "title": "Programming Languages",
+  "desc": "Programming Languages",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": [
+      "Intro"
+    ],
+    "Grammars": [
+      "PL/Grammars1",
+      "PL/Grammars2",
+      "PL/Grammars3",
+      "PL/Grammars4",
+      "PL/Grammars5"
+    ],
+    "Functional Programming": [
+      "PL/FP1",
+      "PL/FP2",
+      "PL/FP3",
+      "PL/FP4",
+      "PL/FP5",
+      "PL/FP6",
+      "PL/FP7",
+      "PL/FP8",
+      "PL/FP9"
+    ],
+    "Lambda Calculus": [
+      "PL/Syntax",
+      "PL/Semantics",
+      "PL/FreeBoundVariables",
+      "PL/AlphaConversion",
+      "PL/Substitution",
+      "PL/BetaReduction",
+      "PL/ReductionStrategies",
+      "PL/ChurchNumerals",
+      "PL/RecursiveFunctions"
+    ],
+    "Interpreting the Functional Language SLang 1": [
+      "PL/SLang1",
+      "PL/Environment",
+      "PL/SLang1Interpreter",
+      "PL/SLang1InterpreterModifications",
+      "PL/SLang1InterpreterReview",
+      "PL/SLang1withLetExpressions"
+    ],
+    "Interpreting the Imperative Language SLang 2": [
+      "PL/SLang2",
+      "PL/SLang2TTK",
+      "PL/SLang2ParameterPassing",
+      "PL/LazyLists"
+    ],
+    "Interpreting the Object-Oriented Language SLang 3": [
+      "PL/SLang3reviewOfOOP",
+      "PL/SLang3concreteSyntax",
+      "PL/SLang3abstractSyntax",
+      "PL/SLang3objects",
+      "PL/SLang3interpreter"
+    ],
+    "Appendix": [
+      "Glossary",
+      "Bibliography"
+    ]
+  }
+}

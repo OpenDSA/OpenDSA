@@ -1,0 +1,98 @@
+{
+  "title": "Senior Algorithms",
+  "desc": "Senior Algorithms",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": true,
+  "assumes": "analyzing problems; sorting terminology; logarithms",
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": [
+      "Intro"
+    ],
+    "Introduction": [
+      "SeniorAlgAnal/AAIntro",
+      "SeniorAlgAnal/ProblemSolving",
+      "SeniorAlgAnal/AAOverview"
+    ],
+    "Analyzing Problems: The Basics": [
+      "SeniorAlgAnal/TOH",
+      "SeniorAlgAnal/BoundsReview",
+      "SeniorAlgAnal/GrowthRate",
+      "Background/Summations",
+      "SeniorAlgAnal/AdvSumm",
+      "Background/RecurrenceIntro",
+      "SeniorAlgAnal/Recurrence",
+      "Background/Proofs"
+    ],
+    "Searching": [
+      "Searching/SearchIntro",
+      "Searching/UnsortedSearch",
+      "Searching/SortedSearch"
+    ],
+    "Lower Bounds": [
+      "Sorting/SortingLowerBound",
+      "Bounds/BoundMax",
+      "Background/SetDef",
+      "Bounds/BoundAdversary",
+      "Bounds/BoundState",
+      "Bounds/BoundiBest"
+    ],
+    "Number Problems": [
+      "SeniorAlgAnal/Numeric",
+      "SeniorAlgAnal/FFT"
+    ],
+    "Probabilistic Algorithms": [
+      "SeniorAlgAnal/Probabilistic",
+      "SeniorAlgAnal/Primes",
+      "SeniorAlgAnal/RandomNums",
+      "SearchStruct/SkipList"
+    ],
+    "Miscellaneous": [
+      "SeniorAlgAnal/DynamicProgramming",
+      "Graph/Floyd",
+      "SeniorAlgAnal/AmortAnal",
+      "Bounds/SortingOptimal"
+    ],
+    "Limits to Computing": [
+      "NP/LimComp",
+      "NP/Reduction",
+      "NP/NPComplete",
+      "NP/provingNPC",
+      "NP/circuitSAT",
+      "NP/SAT",
+      "NP/threeSAT",
+      "NP/clique",
+      "NP/independentSet",
+      "NP/vertexCover",
+      "NP/hamiltonianCycle",
+      "NP/TSP",
+      "NP/circuitSAT_to_SAT",
+      "NP/SAT_to_threeSAT",
+      "NP/threeSAT_to_clique",
+      "NP/independentSet_to_vertexCover",
+      "NP/threeSAT_to_hamiltonianCycle",
+      "NP/NPCoping",
+      "SeniorAlgAnal/Impossible",
+      "SeniorAlgAnal/Turing"
+    ],
+    "Appendix": [
+      "Glossary",
+      "Bibliography"
+    ]
+  }
+}

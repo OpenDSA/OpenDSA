@@ -4,16 +4,11 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Installing the Web-CAT Submission Plug-in for Eclipse
-   :author: Ayaan Karzarouni; Cliff Shaffer
-   :institution: Virginia Tech
+   :author: Ayaan Karzarouni and Cliff Shaffer
    :requires:
    :satisfies: Web-CAT Plugin
    :topic: Programming Tutorial
    :keyword: Web-CAT; Eclipse
-   :naturallanguage: en
-   :programminglanguage: N/A
-   :description: Describes how to install the Web-CAT submission plugin in the Eclipse IDE.
 
 Installing the Web-CAT Submission Plug-in for Eclipse
 =====================================================

@@ -14,8 +14,8 @@
 Introduction to Analyzing a Problem
 ===================================
 
-Introduction
-------------
+Towers of Hanoi
+---------------
 
 How do I know if I have a good algorithm to solve a problem?
 If my algorithm runs in :math:`\Theta(n \log n)` time, is that good?
@@ -24,17 +24,6 @@ But it would be terrible if I were searching the array for the largest
 element.
 The value of an algorithm must be determined in relation to the
 inherent complexity of the problem at hand.
-
-Any algorithm is said to be :term:`optimal <optimal algorithm>`
-if its cost (for a given class of inputs, such as best, average, or
-worst case) is within a constant factor of the lower bound to solve
-that problem.
-For example, we will prove that linear search is optimal on an
-unsorted array for all classes of inputs.
-You should already understand that Mergesort is optimal for sorting in
-the average and worst cases, Quicksort is optimal for sorting in the
-average case, and Insertion Sort is optimal for sorting in the
-best case.
 
 This module presents our first example of the end-to-end process for
 analyzing a problem.
@@ -45,9 +34,6 @@ algorithm and the problem to see if the algorithm is efficient or
 not.
 We will also solve a simple recurrence as part of the process, which
 is pretty typical when analyzing recursive algorthms.
-
-Towers of Hanoi
----------------
 
 The problem that we start with is one that you hopefully are
 already familiar with: Towers of Hanoi.
@@ -446,15 +432,6 @@ can prove?
 Is our lower bound weak, and the true lower bound for the problem is
 greater?
 Or is our algorithm simply not the best?
-
-Notice the similarity to :math:`\Theta` notation.
-We say that :math:`f(n) = \Theta(g(n))` when
-:math:`f(n) \in \Omega(g(n))` and :math:`f(n) \in O(g(n))`.
-In other words, if the upper and lower bounds of the cost function
-meet, within a constant factor, then we "truly understand" the
-cost function.
-Likewise, when the upper and lower bounds of the problem's cost meet,
-then we say that we "understand" the cost of that problem.
 
 Now we know precisely what we are aiming for when designing an
 algorithm:

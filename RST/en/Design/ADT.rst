@@ -4,18 +4,12 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Abstract Data Types
    :author: Cliff Shaffer
-   :institution: Virginia Tech
    :requires:
    :satisfies: ADT; metaphor
    :topic: Abstract Data Types
    :keyword: Abstract Data Types
-   :naturallanguage: en
-   :programminglanguage: N/A
-   :description: Introduction to the concept of an Abstract Data Type
-
-
+           
 Abstract Data Types
 ===================
 
@@ -316,5 +310,5 @@ The interface becomes a form of communication between the two programmers.
    :keyword: Abstract Data Types; Concept Map
 
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
-   :long_name: ADT Review Questions
+   :long_name: ADT Summary Questions
    :keyword: Abstract Data Types

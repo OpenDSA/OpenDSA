@@ -3466,16 +3466,6 @@ Glossary
       present a standard interface to these to other software
       components.
 
-   optimal algorithm
-      Any algorithm is said to be optimal if its cost (for a given
-      class of inputs, such as best, average, or worst case) is within
-      a constant factor of the lower bound to solve that problem.
-      For example, linear search is optimal on an unsorted array for
-      all classes of inputs. Mergesort is optimal for sorting in the
-      average and worst cases, Quicksort is optimal for sorting in the
-      average case, and Insertion Sort is optimal for sorting in the
-      best case.
-
    optimal static ordering
       A theoretical construct defining the best static (non-changing)
       order in which to place a collection of records so as to

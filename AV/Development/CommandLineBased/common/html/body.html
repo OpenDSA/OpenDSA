@@ -1,0 +1,59 @@
+<div id="container">
+  <div id="inner-container">
+    <div id="title-and-exercise-actions">
+      <h2 id="command-title" class="text"></h2>
+      <div id="exercise-actions">
+        <button id="reset">Reset</button>
+        <div id="progress-indicator" class="in-progress">In Progress</div>
+      </div>
+    </div>
+
+    <div id="description">
+      <p id="command-description" class="text"></p>
+    </div>
+
+    <div id="commandline">
+      <div id="command-line-inner">
+        <div id="history"></div>
+        <div id="prompt-and-input" class="symbol-and-input">
+          <div id="prompt-placeholder"></div>
+          <input
+            size="60"
+            name="command-line-value"
+            id="command-line-value"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="text" id="challenge">
+      <h2 id="task-title">Task</h2>
+      <div id="challenge-description-container">
+        <p id="challenge-description"></p>
+      </div>
+    </div>
+
+    <div id="visualization-container">
+      <div id="visualization"></div>
+    </div>
+  </div>
+</div>
+<script src="../../../../../lib/jquery.migrate.min.js"></script>
+<script src="../../../../../lib/jquery.ui.min.js"></script>
+<script src="../../../../../lib/timeme-min.js"></script>
+<script src="../../../../../lib/jquery.transit.js"></script>
+<script src="../../../../../lib/raphael.js"></script>
+<script src="../../../../../lib/JSAV-min.js"></script>
+<script src="../../../../../lib/odsaUtils-min.js"></script>
+<script src="../../../../../lib/odsaAV-min.js"></script>
+
+<!-- <script type="module" src="commandLineAV.js"></script> -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    /> -->

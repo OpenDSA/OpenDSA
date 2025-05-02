@@ -1,16 +1,6 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Selection Sort Analysis
-
-// Title: Selection Sort Analysis Slideshow
-// Author: Mohammed Farghally; Cliff Shaffer
-// Institution: Virginia Tech
-// Features: Algorithm Analysis Demonstration
-// Keyword: Selection Sort; Worst Case; Average Case; Best Case
-// Natural Language: en
-// Programming Language: N/A
-/* Description: Slideshow showing an analysis of Selection Sort's cost analysis. */
- 
 $(document).ready(function() {
   "use strict";
   var av_name = "SelectionSortAnalysisCON";

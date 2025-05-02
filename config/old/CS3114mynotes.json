@@ -1,0 +1,182 @@
+{
+  "title": "CS3 Data Structures & Algorithms",
+  "desc": "CS3 Data Structures & Algorithms",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {},
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "chapters": {
+    "Weeks 1-3": {
+      "Slides/Day1": {
+        "long_name": "Introduction",
+        "sections" : {
+          "ADTCON": {}
+        }
+      },
+      "Slides/ProjManage": {
+        "long_name": "Project Management",
+        "sections" : {}
+      },
+      "Slides/SkipList": {
+        "long_name": "SkipLists",
+        "sections" : {
+        }
+      },
+      "Slides/AlgAnal": {
+        "long_name": "Algorithm Analysis",
+        "sections" : {
+          "ProblemAlgorithmCON": {
+            "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      },
+      "Slides/Coding": {
+        "long_name": "Clean Code",
+        "sections" : {}
+      },
+      "Slides/Lists": {
+        "long_name": "Lists",
+        "sections" : {}
+      },
+      "Slides/Lists2": {
+        "long_name": "Lists",
+        "sections" : {}
+      }
+    },
+    "Weeks 4-5": {
+      "Slides/Binary": {
+        "long_name": "Binary Trees Part 1",
+        "sections" : {}
+      },
+      "Slides/Binary2": {
+        "long_name": "Binary Trees Part 2",
+        "sections" : {}
+      },
+      "Slides/Binary3": {
+        "long_name": "Binary Trees Part 3",
+        "sections" : {}
+      },
+      "Slides/Heaps": {
+        "long_name": "Heaps and Priority Queues",
+        "sections": {
+          "heapinsertCON": {
+            "long_name": "Heap insert Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapbuildCON": {
+            "long_name": "Heapbuild Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapbuildProofCON": {
+            "long_name": "Heap build analysis proof Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "BuildHeapVisualProof": {
+            "long_name": "Buildheap Visual Proof",
+            "required": false,
+            "points": 0,
+            "showhide": "none",
+            "threshold": 1.0
+          },
+          "heapmaxCON": {
+            "long_name": "Remove Max Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          },
+          "heapremoveCON": {
+            "long_name": "Remove Any Slideshow",
+            "required": false,
+            "points": 0.0,
+            "threshold": 1.0
+          }
+        }
+      }
+    },
+    "Week 6-7": {
+      "Slides/Sorting1": {
+        "long_name": "Sorting, Part 1",
+        "sections" : {}
+      },
+      "Slides/Sorting2": {
+        "long_name": "Sorting, Part 2",
+        "sections" : {}
+      }
+    },
+    "Week 8-9": {
+      "Slides/FileProc": {
+        "long_name": "File Processing and Buffer Pools",
+        "sections" : {}
+      }
+    },
+    "Week 10-11": {
+      "Slides/Hashing": {
+        "long_name": "Hashing",
+        "sections" : {}
+      },
+      "Slides/MemManage": {
+        "long_name": "Memory Management",
+        "sections" : {}
+      },
+      "Slides/Interruptions": {
+        "long_name": "Memory cues and resumption strategies",
+        "sections" : {}
+      }
+    },
+    "Week 12-14": {
+      "Slides/Indexing": {
+        "long_name": "Indexing",
+        "sections" : {}
+      },
+      "Slides/Graphs": {
+        "long_name": "Graphs",
+        "sections" : {}
+      }
+    }
+  }
+}

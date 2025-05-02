@@ -1,15 +1,5 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
-
-// Title: An example of solving a simple linear recurrence relation (+ 1)
-// Author: Mohammed Farghally; Cliff Shaffer
-// Institution: Virginia Tech
-// Features: Demonstration
-// Keyword: Summations
-// Natural Language: en
-// Programming Language: N/A
-/* Description: Slideshow showing how to calculate the closed form for a simple linear recurrence T(n) = T(n-1) + 1. */
-
 // Linear Recurrences
 $(document).ready(function() {
   "use strict";

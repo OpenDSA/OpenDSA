@@ -4,16 +4,11 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Introduction to Object-Oriented Programming
    :author: Dave Parillo
-   :institution: San Diego Mesa College
    :requires: ADT
    :satisfies: OO Intro
    :topic: Introduction
    :keyword: Object-Oriented Programming
-   :naturallanguage: en
-   :programminglanguage: N/A
-   :description: Introduction to object-oriented programming topics.
 
 
 Introduction to Object-Oriented Programming

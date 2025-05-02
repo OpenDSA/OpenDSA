@@ -92,9 +92,7 @@
 
 {%- macro css() %}
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-    {% for cssFile in styles %}
-      <link rel="stylesheet" href="{{ pathto('_static/' + cssFile, 1) }}" type="text/css" />
-    {% endfor %}
+    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/genericons.css', 1) }}" type="text/css" />
     {%- for cssfile in css_files %}
       {%- if not cssfile == 'modile.css' -%}
@@ -147,7 +145,7 @@
         {%- block extrahead %} {% endblock %}
     </head>
     <body>
-    <div class="content" role="main">
+    <div class="content">
         {%- block header %}
 
         <header id="top-header">
@@ -213,3 +211,4 @@
     <script type="text/javascript" src="{{ pathto('_static/main.js', 1) }}" async></script>
     </body>
 </html>
+

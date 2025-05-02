@@ -1,16 +1,6 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Bubble Sort Analysis
-
-// Title: Bubble Sort Analysis Slideshow
-// Author: Mohammed Farghally; Cliff Shaffer
-// Institution: Virginia Tech
-// Features: Algorithm Analysis Demonstration
-// Keyword: Bubble Sort; Worst Case; Average Case; Best Case
-// Natural Language: en
-// Programming Language: N/A
-/* Description: Slideshow showing an analysis of Bubble Sort's cost analysis. */
- 
 $(document).ready(function() {
   "use strict";
   var av_name = "BubbleSortAnalysisCON";

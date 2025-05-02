@@ -4,21 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Introduction to Git
    :author: Ryan Buxton 
-   :institution: Virginia Tech
    :satisfies: About
    :topic: Tour
-   :keyword: Git; Version Control
-   :naturallanguage: en
-   :programminglanguage: N/A
-   :description: Introduction to the Git version control system.
 
 Git
-===
+=======================================
 
 Introduction
-------------
+-----------------------------------------
 
 Git is a popular version control system used throughout academia and industry that enables users to track changes to their files and collaborate with others.
 
@@ -36,7 +30,7 @@ Git can be very confusing at first, so do not be discouraged if that explanation
 
 
 Description of Exercises
-------------------------
+--------------------------
 
 This book contains multiple exercises that will help you learn about Git commands. Each exercise contains a brief introduction and a task for you to complete. You can complete the exercises by executing commands using the mock command line. As you execute commands, you can reference the corresponding visualizations to understand how the commands affect the file structure and the Git state. Note that when a command takes an argument, the argument will be indicated with (parentheses). For example, in the following figure, git add (path) indicates that the git add command expects at least one argument, which specifies the path. For example, "git add README" is a valid git add command from the root directory. 
 
@@ -62,7 +56,7 @@ would be solved:
 Be sure to review the following Key Terms and Commands and reference them as you complete the exercises.
 
 Key Terms
----------
+----------
 
 The following image is an example of the format of the visualizations used in the exercises. The visualization highlights many key parts of Git as explained below.
 
@@ -92,7 +86,7 @@ The following image is an example of the format of the visualizations used in th
 
 
 Commands
---------
+---------
 
 The following commands are currently supported. Arguments are surrounded by (parentheses). Optional flags are surrounded by [brackets].
 

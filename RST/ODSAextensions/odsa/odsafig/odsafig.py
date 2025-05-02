@@ -96,3 +96,4 @@ class odsafig(Figure):
             if len(node) > 1:
                 figure_node += nodes.legend('', *node[1:])
         return [figure_node]
+

@@ -4,22 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Introduction to the Command Line
    :author: Ryan Buxton 
-   :institution: Virginia Tech
    :satisfies: About
    :topic: Tour
-   :keyword: Command Line; File System; Path
-   :naturallanguage: en
-   :programminglanguage: N/A
-   :description: Introduction to the command line, navigating directories in a file system, and manipulating pathnames.
 
-      
 Command Line
-============
+=======================================
 
 Introduction
-------------
+-----------------------------------------
 
 In a computer, a file system is used by the operating system to manage files stored and accessed by users. File systems follow a hierarchical tree structure, in which the root directory sits at the top of the tree. All other directories and files branch from the root directory.
 
@@ -63,7 +56,7 @@ The following figure shows the updated file structure after executing the previo
 
 
 Paths
------
+------
 
 In a file system, a path defines the location of a file or directory. A path is a list of directory names separated by "/" characters. The directory names specify which directories must be traversed to reach a certain file or directory. Paths can be absolute or relative. 
 
@@ -81,7 +74,7 @@ In the exercises in this book, (directory_path) refers to a path to a directory,
 
 
 Description of Exercises
-------------------------
+--------------------------
 
 This book contains multiple exercises that will help you learn about basic commands. Each exercise contains a brief introduction and a task for you to complete. You can complete the exercises by executing commands using the mock command line. As you execute commands, you can reference the corresponding visualizations to understand how the commands affect the file structure. Note that when a command takes an argument, the argument will be indicated with (parentheses). For example, in the following figure, cd (directory_path) indicates that the cd command expects one argument, which specifies the path. For example, "cd mammals" and "cd mammals/dogs" are valid cd commands from the root directory. 
 
@@ -126,7 +119,7 @@ Be sure to review the following Key Terms and Commands and reference them as you
 
 
 Key Terms
----------
+----------
 
 **File:** A file stores data. Light blue rectangles represent files.
 
@@ -152,7 +145,7 @@ Key Terms
 
 
 Commands
---------
+---------
 
 The following commands are currently supported. Arguments are surrounded by (parentheses). Optional flags are surrounded by [brackets].
 

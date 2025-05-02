@@ -114,6 +114,7 @@ Place on the queue any neighbor whose count becomes zero.
 If the queue becomes empty without printing all of the vertices, then
 the graph contains a cycle (i.e., there is no possible ordering
 for the tasks that does not violate some prerequisite).
+The printed order for the vertices of the graph in
 Applying the queue version of topological sort to the graph of
 Figure :num:`Figure #TopSort` produces J1, J2, J3, J6, J4, J5, J7.
 Here is an implementation for the algorithm.

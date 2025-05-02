@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html data-require="math MDTest_question1">
+  <head>
+    <title>Checkpoint Question 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="vars">
+        <var id="arrSize">Khan.randRange(4, 11)</var>
+	<var id="lastIndex">arrSize - 1</var>
+        <var id="arrValues">md_test_exercise.initArr(arrSize)</var>
+        <var id="theAnswer">md_test_exercise.maxValue()</var>
+        <var id="option0">md_test_exercise.option[0]</var>
+        <var id="option1">md_test_exercise.option[1]</var>
+        <var id="option2">md_test_exercise.option[2]</var>
+      </div>
+      <div class="problems">
+        <div id="MDTest_question1p">
+          <p class="question"> Which method in the ArrayBag class is overloaded? </p>
+          <div class="solution"> <var>theAnswer</var></div>
+        	  <ul class="choices">
+        	    <li><var>option0</var></li>
+        	    <li><var>option1</var></li>
+        	    <li><var>option2</var></li>
+        	  </ul>
+          <div class="hints">
+            <p>hint 1 would go here <var>lastIndex</var> </p>
+            <p>hint 2 would go here</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

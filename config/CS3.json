@@ -102,10 +102,10 @@
       "Tutorials/mutationtesting": {},
       "Tutorials/mutationtesting_example": {},
       "Tutorials/mutationtesting_faq": {},
-      "Testing/TriangleIntro": {},
-      "Testing/TriangleCoverage": {},
-      "Testing/BowlingIntro": {},
-      "Testing/BowlingCoverage": {}
+      "Testing/TestIntro": {},
+      "Testing/TestCoverage": {},
+      "Testing/Example2": {},
+      "Testing/Bowling": {}
     }, 
     "Mathematical Background": {
       "Background/MathpreIntro": {}, 

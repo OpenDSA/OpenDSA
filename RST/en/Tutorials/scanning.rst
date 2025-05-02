@@ -4,20 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Using the Java Scanner Class
    :author: Jordan Sablan
-   :institution: Virginia Tech
    :requires:
    :satisfies: Text input
    :topic: Programming Tutorial
    :keyword: Java Scanner Class
-   :naturallanguage: en
-   :programminglanguage: Java
-   :description: Describes how to use the Java Scanner class to read text input, such as from a data file. Includes a complete example.
 
 
-Using the Java Scanner Class
-============================
+=======================================
+Reading Input (from Files or Otherwise)
+=======================================
 
 The Scanner Class
 -----------------

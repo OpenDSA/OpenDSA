@@ -1,0 +1,31 @@
+{
+  "translations" : {
+    "en": {
+      ".avTitle": "Bowling App",
+      "#throwRoll": "Throw Roll",
+      "#reset": "Reset",
+      "#inputInfo": "Enter Pins Hit with Roll: ",
+      "#performanceDetails": "Your Performance Details:",
+      "#performanceSummary": "Your Performace Summary:",
+      "#codeCoverage": "Code Coverage:",
+      "#codeCoveragePercentage": "0%",
+      "#testsrun": "Number of balls thrown: 0",
+      "#testHistory": "Your Test Case History:",
+      "#frame": "Frame",
+      "#frame1": "1",
+      "#frame2": "2",
+      "#frame3": "3",
+      "#frame4": "4",
+      "#frame5": "5",
+      "#frame6": "6",
+      "#frame7": "7",
+      "#frame8": "8",
+      "#frame9": "9",
+      "#frame10": "10",
+      "#scores": "Score",
+      "#rolls": "Rolls",
+      "#score": "0",
+      "av_c1": "Congratuations! You reached the credit threshold for this exercise."
+    }
+  }
+}

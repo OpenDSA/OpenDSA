@@ -4,16 +4,11 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Code Coverage In JUnit
    :author: Jordan Sablan
-   :institution: Virginia Tech
    :requires: JUnit test writing
    :satisfies: Junit code coverage
    :topic: Programming Tutorial
    :keyword: JUnit Testing; Code Coverage
-   :naturallanguage: en
-   :programminglanguage: Java
-   :description: Describes the concept of code coverage and how to use it to help guide JUnit test writing.
 
 
 Code Coverage In JUnit

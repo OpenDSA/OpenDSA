@@ -1,15 +1,5 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
-
-// Title: Two Coloring Proof Slideshow
-// Author: Mohammed Farghally; Cliff Shaffer
-// Institution: Virginia Tech
-// Features: Demonstration
-// Keyword: Summations
-// Natural Language: en
-// Programming Language: N/A
-/* Description: Slideshow demonstrating a proof that the regions formed by lines in a plane can be two-colored. */
-
 // Two Coloring Proof
 $(document).ready(function() {
   "use strict";

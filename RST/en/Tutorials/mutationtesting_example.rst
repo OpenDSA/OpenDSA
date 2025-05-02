@@ -4,16 +4,11 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Mutation Testing Examples
-   :author: Rifat Sabbir Mansur; Cliff Shaffer
-   :institution: Virginia Tech
+   :author: Rifat Sabbir Mansur and Cliff Shaffer
    :requires: Mutation testing
    :satisfies: 
    :topic: Programming Tutorial
    :keyword: JUnit Testing; Mutation Testing
-   :naturallanguage: en
-   :programminglanguage: Java
-   :description: Provides many examples of tests to improve mutation coverage.
 
 
 Mutation Testing Examples

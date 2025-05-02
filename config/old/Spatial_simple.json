@@ -1,0 +1,58 @@
+{
+  "title": "Spatial Data Structures",
+  "desc": "Spatial Data Structures",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {},
+  "chapters": {
+    "Advanced Data Structures": [
+      "SearchStruct/SkipList",
+      "Spatial/Spatial",
+      "Spatial/PRquadtree",
+      "Spatial/KDtree",
+      "Spatial/Bintree",
+      "Spatial/OtherSpatial"
+    ],
+    "Appendix": [
+      "Glossary",
+      "Bibliography"
+    ]
+  }
+}

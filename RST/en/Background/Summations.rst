@@ -4,20 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Summations Introduction
    :author: Cliff Shaffer
-   :institution: Virginia Tech
    :requires:
    :satisfies: summation
    :topic: Math Background
    :keyword: Summations
-   :naturallanguage: en
-   :programminglanguage: N/A
-   :description: Review of basic material on solving summations needed as background for a Data Structures and Algorithms course.
 
 
-Summations Introduction
-=======================
+Summations
+==========
 
 Summations
 ----------
@@ -68,11 +63,11 @@ Since this appears so often, it will help you later if you can get
 comfortable with it.
 
 .. inlineav:: SummationOneToNCON ss
-   :long_name: Summation of the first N integers visualization
+   :long_name: Summation of the first N Integers visualization
    :links: AV/Background/SummationOneToNCON.css
    :scripts: AV/Background/SummationOneToNCON.js
    :output: show
-   :keyword: Summation
+   :keyword: Summations
 
 
 .. inlineav:: SummationTwoPowerICON ss
@@ -80,7 +75,7 @@ comfortable with it.
    :links: AV/Background/SummationTwoPowerICON.css
    :scripts: AV/Background/SummationTwoPowerICON.js
    :output: show
-   :keyword: Summation
+   :keyword: Summations
 
 Here is a list of useful summations, along with their closed-form solutions.
 

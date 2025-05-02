@@ -1,15 +1,5 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
-
-// Title: Summation of the first N powers of two visualization
-// Author: Mohammed Farghally; Cliff Shaffer
-// Institution: Virginia Tech
-// Features: Demonstration
-// Keyword: Summations
-// Natural Language: en
-// Programming Language: N/A
-/* Description: Slideshow showing how to calculate the closed form for the summation of the first N powers of two. */
-
 // Summation of 2^i
 $(document).ready(function() {
   "use strict";

@@ -1,0 +1,149 @@
+{
+  "title": "CSci 2101 Data Structures",
+  "desc": "CSci 2101 Data Structures",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": true,
+  "assumes": "ADT; relations",
+  "dispModComp": true,
+  "tag": "CS2",
+  "chapters": {
+    "Preface": [
+      "Intro"
+    ],
+    "Introduction": [
+      "Background/IntroDSA",
+      "Design/ADT"
+    ],
+    "Object-Oriented Programming": [
+      "Design/IntroOO",
+      "Design/IntroUML",
+      "Design/IntroProcess"
+    ],
+    "List Interface & Array-based Lists": [
+      "List/ListADT",
+      "List/ListArray"
+    ],
+    "Algorithm Analysis": [
+      "AlgAnal/AnalPrelim",
+      "AlgAnal/AnalIntro",
+      "AlgAnal/AnalCases",
+      "AlgAnal/AnalCompvsAlg",
+      "AlgAnal/AnalAsymptotic",
+      "AlgAnal/AnalProgram",
+      "AlgAnal/AlgAnalSumm"
+    ],
+    "Stacks": [
+      "List/StackArray",
+      "List/StackLinked"
+    ],
+    "Recursion": [
+      "RecurTutor/RecIntro",
+      "RecurTutor/Write",
+      "RecurTutor/CodeCompletionEx",
+      "RecurTutor/HarderWrite",
+      "RecurTutor/HarderCodeCompletionEx",
+      "RecurTutor/WritingEx",
+      "RecurTutor/Trace",
+      "RecurTutor/TracingEx",
+      "RecurTutor/RecSummaryEx"
+    ],
+    "Sorting": [
+      "Sorting/InSort",
+      "Sorting/SortNotation",
+      "Design/Comparison",
+      "Sorting/InsertionSort",
+      "Sorting/BubbleSort",
+      "Sorting/SelectionSort"
+    ],
+    "Queues": [
+      "List/Queue",
+      "List/QueueLinked"
+    ],
+    "Linked Lists": [
+      "List/ListLinked",
+      "List/ListAnalysis",
+      "List/ListDouble",
+      "List/ListElement",
+      "List/Freelist",
+      "List/ListSumm"
+    ],
+    "Binary Trees": [
+      "Binary/BinaryTreeIntro",
+      "Binary/BinaryTree",
+      "Binary/BinaryTreeTraversal",
+      "Binary/BST",
+      "Binary/CompleteTree",
+      "Binary/Heaps"
+    ],
+    "Hashing": [
+      "Hashing/HashIntro",
+      "Hashing/HashFunc",
+      "Hashing/HashFuncExamp",
+      "Hashing/OpenHash",
+      "Hashing/BucketHash",
+      "Hashing/HashCSimple",
+      "Hashing/HashCImproved",
+      "Hashing/HashAnal",
+      "Hashing/HashDel",
+      "Hashing/HashSumm"
+    ],
+    "Indexing": [
+      "Indexing/IndexIntro",
+      "Indexing/LinearIndexing",
+      "Indexing/ISAM",
+      "Indexing/TreeIndexing",
+      "Indexing/TwoThreeTree",
+      "Indexing/BTree",
+      "Indexing/IndexingSumm"
+    ],
+    "Graphs": [
+      "Graph/GraphIntro",
+      "Graph/GraphImpl",
+      "Graph/GraphTraversal",
+      "Graph/GraphTopsort",
+      "Graph/GraphShortest",
+      "Graph/MCST",
+      "Graph/Kruskal",
+      "Graph/Floyd"
+    ],
+    "Appendix": [
+      "Glossary",
+      "Bibliography"
+    ]
+  }
+}

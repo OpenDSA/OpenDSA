@@ -353,25 +353,6 @@ algorithm.
 Thus, any algorithm on a sorted array requires at least
 :math:`\Omega(\log n)` comparisons in the worst case.
 
-.. inlineav:: SearchingLowerBoundCON dgm
-   :long_name: Sorted Search Lower Bound Diagram
-   :links: AV/Searching/SearchingLowerBoundCON.css
-   :scripts: AV/Searching/SearchingLowerBoundCON.js
-   :output: show
-   :keyword: Search; Sorted Search; Sorted Search Lower Bound
-
-   Decision trees for Binary Search on a problem size of 8 and a
-   problem size of 7.
-   In internal nodes, the top line shows the bounds of the subarray
-   and the bottom line shows the middle index in that subarray.
-   In leaf nodes, the value is the position in the array being
-   checked.
-   Edges are labeled to indicate when the branch is followed whether
-   the value of the search key is less than the value in the middle
-   cell of the subarray or greater.
-   The depth of the deepest node for any decision tree on an input of
-   size :math:`n` is :math:`\lfloor \log n \rfloor + 1`.
-   
 We can modify this proof to find the average cost lower bound.
 Again, we model algorithms using decision trees.
 Except now we are interested not in the depth of the deepest node (the

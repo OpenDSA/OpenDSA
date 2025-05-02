@@ -4,16 +4,11 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Introdution to JUnit Testing
    :author: Jordan Sablan
-   :institution: Virginia Tech
    :requires:
    :satisfies: JUnit intro
    :topic: Programming Tutorial
    :keyword: JUnit Testing
-   :naturallanguage: en
-   :programminglanguage: Java
-   :description: Introduction to JUnit testing.
 
 
 JUnit Testing And You

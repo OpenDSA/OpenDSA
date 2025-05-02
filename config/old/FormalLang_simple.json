@@ -1,0 +1,52 @@
+{
+  "title": "Formal Languages",
+  "desc": "Formal Languages",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "assumes": "recursion",
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": ["Intro"],
+    "Introduction": ["FormalLang/FLIntro", "FormalLang/FLOverview"],
+    "Mathematical Background": ["Background/SetDef", "Background/Proofs"],
+    "Limits to Computing": ["SeniorAlgAnal/Impossible", "SeniorAlgAnal/Turing"],
+    "Appendix": ["Glossary", "Bibliography"]
+  }
+}

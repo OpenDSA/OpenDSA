@@ -1,0 +1,334 @@
+{
+  "title": "All Data Structures and Algorithm Modules",
+  "desc": "All Data Structures and Algorithm Modules",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": [
+      "Intro",
+      "Status"
+    ],
+    "Introduction": [
+      "Background/IntroDSA"
+    ],
+
+    "Biographies": [
+      "Biography/CarlGauss",
+      "Biography/FrancisBacon"
+    ],
+    "Programming Tutorials": [
+      "Tutorials/cmdline",
+      "Tutorials/parameters",
+      "Tutorials/eclipseparameters",
+      "Tutorials/webcattools",
+      "Tutorials/debugmethods",
+      "Tutorials/debug",
+      "Tutorials/scanning",
+      "Tutorials/randomaccessfile",
+      "Tutorials/junitstart",
+      "Tutorials/junitbasic",
+      "Tutorials/junitcoverage"
+    ],
+    "Design I": [
+      "Design/ADT",
+      "Design/IntroOO",
+      "Design/IntroUML",
+      "Design/IntroProcess"
+    ],
+    "Pointers": [
+      "PointersJava/PointerIntro",
+      "PointersJava/BasicPointers",
+      "PointersJava/LocalMem",
+      "PointersJava/HeapMem",
+      "PointersJava/Links"
+    ],
+    "Mathematical Background": [
+      "Background/MathpreIntro",
+      "Background/SetDef",
+      "Background/MiscMath",
+      "Background/Logarithms",
+      "Background/Summations",
+      "Background/RecurrenceIntro",
+      "Background/Proofs",
+      "Background/Estimation",
+      "Background/MathpreSumm"
+    ],
+    "Searching I": [
+      "Searching/BinarySearch"
+    ],
+
+    "Algorithm Analysis": [
+      "AlgAnal/AnalChap",
+      "AlgAnal/AnalPrelim",
+      "AlgAnal/AnalIntro",
+      "AlgAnal/AnalCases",
+      "AlgAnal/AnalCompvsAlg",
+      "AlgAnal/AnalAsymptotic",
+      "AlgAnal/AnalLower",
+      "AlgAnal/AnalProgram",
+      "AlgAnal/AnalProblem",
+      "AlgAnal/AnalMisunderstanding",
+      "AlgAnal/AnalMultiple",
+      "AlgAnal/AnalSpace",
+      "AlgAnal/AnalTuning",
+      "AlgAnal/AlgAnalSummCS2",
+      "AlgAnal/AlgAnalSummCS3"
+    ],
+    "Linear Structures": [
+      "List/ListIntro",
+      "List/ListADT",
+      "List/ListArray",
+      "List/ListLinked",
+      "List/ListAnalysis",
+      "List/ListDouble",
+      "List/ListElement",
+      "List/StackArray",
+      "List/StackLinked",
+      "List/Freelist",
+      "List/StackRecur",
+      "List/Queue",
+      "List/QueueLinked",
+      "List/ListSumm"
+    ],
+    "Recursion": [
+      "RecurTutor/RecIntro",
+      "RecurTutor/Write",
+      "RecurTutor/CodeCompletionEx",
+      "RecurTutor/HarderWrite",
+      "RecurTutor/HarderCodeCompletionEx",
+      "RecurTutor/WritingEx",
+      "RecurTutor/Trace",
+      "RecurTutor/TracingEx",
+      "RecurTutor/RecSummaryEx"
+    ],
+    "Design II": [
+      "Design/DesignPatterns",
+      "Design/DesignAltList",
+      "Design/Comparison",
+      "Design/Dictionary"
+    ],
+    "Binary Trees": [
+      "Binary/BinaryTreeIntro",
+      "Binary/BinaryTree",
+      "Binary/RecursiveDS",
+      "Binary/BinaryTreeFullThm",
+      "Binary/BinaryTreeTraversal",
+      "Binary/WritingTraversals",
+      "BTRecurTutor/BinaryTreeInfFlw",
+      "Binary/BinaryTreeImpl",
+      "Binary/Composite",
+      "Binary/BinaryTreeNodeSpace",
+      "Binary/BST",
+      "Binary/BSTDict",
+      "BTRecurTutor/BinaryTreeGuidedInfFlw",
+      "BTRecurTutor/MultipleBinaryTrees",
+      "BTRecurTutor/BSTCheck",
+      "Binary/CompleteTree",
+      "Binary/Heaps",
+      "Binary/Huffman",
+      "Binary/TreeTrie",
+      "Binary/HuffProof",
+      "Binary/BinaryChapSumm"
+    ],
+    "Sorting": [
+      "Sorting/InSort",
+      "Sorting/SortNotation",
+      "Sorting/InsertionSort",
+      "Sorting/BubbleSort",
+      "Sorting/SelectionSort",
+      "Sorting/ExchangeSort",
+      "Sorting/SortOpt",
+      "Sorting/Shellsort",
+      "Sorting/Mergesort",
+      "Sorting/MergesortImpl",
+      "Sorting/Quicksort",
+      "Sorting/Heapsort",
+      "Sorting/BinSort",
+      "Sorting/RadixSort",
+      "Sorting/SortingEmpirical",
+      "Sorting/SortingLowerBound",
+      "Sorting/SortSumm"
+    ],
+    "File Processing": [
+      "Files/FileProc",
+      "Files/Secondary",
+      "Files/Diskdrive",
+      "Files/BuffPool",
+      "Files/FileProg",
+      "Files/ExternalSort"
+    ],
+    "Hashing": [
+      "Hashing/HashIntro",
+      "Hashing/HashFunc",
+      "Hashing/HashFuncExamp",
+      "Hashing/OpenHash",
+      "Hashing/BucketHash",
+      "Hashing/HashCSimple",
+      "Hashing/HashCImproved",
+      "Hashing/HashAnal",
+      "Hashing/HashDel",
+      "Hashing/HashSumm"
+    ],
+    "Memory Management": [
+      "MemManage/MemmanIntro",
+      "MemManage/Dynamic",
+      "MemManage/SequentialFit",
+      "MemManage/FirstFit",
+      "MemManage/CircularFit",
+      "MemManage/BestFit",
+      "MemManage/WorstFit",
+      "MemManage/MMPerformance",
+      "MemManage/Buddy",
+      "MemManage/Garbage"
+    ],
+    "Indexing": [
+      "Indexing/IndexIntro",
+      "Indexing/LinearIndexing",
+      "Indexing/ISAM",
+      "Indexing/TreeIndexing",
+      "Indexing/TwoThreeTree",
+      "Indexing/BTree",
+      "Indexing/IndexingSumm"
+    ],
+    "General Trees": [
+      "General/GenTreeIntro",
+      "General/UnionFind",
+      "General/SequentialRep"
+    ],
+    "Graphs": [
+      "Graph/GraphIntro",
+      "Graph/GraphImpl",
+      "Graph/GraphTraversal",
+      "Graph/GraphTopsort",
+      "Graph/GraphShortest",
+      "Graph/MCST",
+      "Graph/Kruskal",
+      "Graph/Floyd"
+    ],
+    "Spatial Data Structures": [
+      "Spatial/Spatial",
+      "Spatial/PRquadtree",
+      "Spatial/KDtree",
+      "Spatial/Bintree",
+      "Spatial/OtherSpatial"
+    ],
+    "Senior Algorithms Course": [
+      "SeniorAlgAnal/AAIntro",
+      "SeniorAlgAnal/ProblemSolving",
+      "SeniorAlgAnal/AAOverview",
+      "SeniorAlgAnal/TOH",
+      "SeniorAlgAnal/BoundsReview",
+      "SeniorAlgAnal/GrowthRate",
+      "SeniorAlgAnal/AdvSumm",
+      "SeniorAlgAnal/Recurrence"
+    ],
+    "Searching": [
+      "Searching/SearchIntro",
+      "Searching/UnsortedSearch",
+      "Searching/SortedSearch",
+      "Development/SelfOrg",
+      "Development/SetSearch",
+      "Development/PerfectHash"
+    ],
+    "Lower Bounds": [
+      "Bounds/BoundMax",
+      "Bounds/BoundAdversary",
+      "Bounds/BoundState",
+      "Bounds/BoundiBest",
+      "Bounds/SortingOptimal"
+    ],
+    "Number Problems": [
+      "SeniorAlgAnal/Numeric",
+      "SeniorAlgAnal/FFT"
+    ],
+    "Probabilistic Algorithms": [
+      "SeniorAlgAnal/Probabilistic",
+      "SeniorAlgAnal/Primes",
+      "SeniorAlgAnal/RandomNums",
+      "SearchStruct/SkipList"
+    ],
+    "Search Structures": [
+      "SearchStruct/BalancedTree",
+      "SearchStruct/AVL",
+      "SearchStruct/Splay",
+      "SearchStruct/RedBlack"
+    ],
+    "Miscellaneous": [
+      "SeniorAlgAnal/DynamicProgramming",
+      "SeniorAlgAnal/AmortAnal",
+      "Development/Knapsack",
+      "Development/EditDistance",
+      "Development/StringSearchKMP",
+      "Development/StringSearchBoyerMoore",
+      "Development/StringSearchRabinKarp",
+      "Development/GenTreeImplement",
+      "Development/Kary"
+    ],
+    "Limits to Computing": [
+      "NP/LimComp",
+      "NP/Reduction",
+      "NP/NPComplete",
+      "NP/circuitSAT",
+      "NP/SAT",
+      "NP/threeSAT",
+      "NP/clique",
+      "NP/independentSet",
+      "NP/vertexCover",
+      "NP/hamiltonianCycle",
+      "NP/TSP",
+      "NP/provingNPC",
+      "NP/circuitSAT_to_SAT",
+      "NP/SAT_to_threeSAT",
+      "NP/threeSAT_to_clique",
+      "NP/clique_to_independentSet",
+      "NP/independentSet_to_vertexCover",
+      "NP/threeSAT_to_hamiltonianCycle",
+      "NP/hamiltonianCycle_to_TSP",
+      "NP/NPCoping",
+      "SeniorAlgAnal/Impossible",
+      "SeniorAlgAnal/Turing"
+    ],
+    "Appendix": [
+      "Glossary",
+      "Bibliography"
+    ]
+  }
+}

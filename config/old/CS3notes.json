@@ -1,0 +1,661 @@
+{
+  "title": "CS3114 Fall Coursenotes",
+  "desc": "CS3114 Fall Coursenotes",
+  "chapters": {
+    "CS3114 Course Notes": {
+      "SlidesCanvas/Day1": {
+        "long_name": "Week 1: Introduction",
+        "sections": {
+          "Introduction": {
+            "ADTCON": {}
+          }
+        }
+      },
+      "SlidesCanvas/ProjManage": {
+        "long_name": "Week 1: Project Management",
+        "sections": {}
+      },
+      "SlidesCanvas/SkipList": {
+        "long_name": "Week 1: SkipLists",
+        "sections": {}
+      },
+      "SlidesCanvas/AlgAnal": {
+        "long_name": "Week 2: Algorithm Analysis",
+        "sections": {
+          "Algorithm Analysis": {
+            "ProblemAlgorithmCON": {
+              "long_name": "Problem, Algorithm, and Program definitions Slideshow",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Coding": {
+        "long_name": "Week 2: Clean Code",
+        "sections": {}
+      },
+      "SlidesCanvas/Lists": {
+        "long_name": "Week 3: Lists",
+        "sections": {
+          "Lists": {
+            "alistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistBadCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistBadDelCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistInitCON": {},
+            "llistHeaderCON": {},
+            "llistVarsCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistConsCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistRemoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "llistOtherCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Lists2": {
+        "long_name": "Week 3: Lists2",
+        "sections": {
+          "Lists2": {
+            "listFreeCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "dlistDiagramCON": {},
+            "dlistInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "dlistRemoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueFirstCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueDriftCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueBadCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueCircularCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "aqueueEmptyCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Binary": {
+        "long_name": "Week 4: Binary Trees Part 1",
+        "sections": {
+          "Binary Trees Part 1": {
+            "BinExampCON": {},
+            "ListRecDSCON": {},
+            "BinRecDSCON": {},
+            "preorderCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BinaryTreeMistakesCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "FullCompCON": {}
+          }
+        }
+      },
+      "SlidesCanvas/Binary2": {
+        "long_name": "Week 4: Binary Trees Part 2",
+        "sections": {
+          "Binary Trees Part 2": {
+            "BSTsearchCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTinsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTdeletemaxCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BSTremoveCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Binary3": {
+        "long_name": "Week 5: Binary Trees Part 3",
+        "sections": {
+          "Binary Trees Part 3": {
+            "expressionTraversalCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Heaps": {
+        "long_name": "Week 5: Heaps",
+        "sections": {
+          "Heaps": {
+            "TreeTimelineCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "TrieTimelineCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapinsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapbuildCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapbuildProofCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapmaxCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Sorting": {
+        "long_name": "Week 6-7: Sorting",
+        "sections": {
+          "Sorting": {
+            "insertionsortCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "InsertionSortWorstCaseCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "InsertionSortBestCaseCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "InsertionSortAverageCaseCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "bubblesortS1CON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "bubblesortS2CON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "BubbleSortAnalysisCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "selectionsortS1CON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "selectionsortS2CON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "SelectionSortAnalysisCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "ExchangeSortCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "quicksortCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "QuickSortPartitionAnalysisCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "QuickSortWorstCaseCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "QuickSortBestCaseCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "QuickSortAverageCaseCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "heapsortCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "HeapSortAnalysisCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "binsortS1CON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "RadixSortAnalysisCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "SortingLowerBoundCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/FileProc": {
+        "long_name": "Week 8-9: File Processing and Buffer Pools",
+        "sections": {
+          "File Processing and Buffer Pools": {
+            "buffintroCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "LRUCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "LRUwriteCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "extMergeSortCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "extMergeSortExampCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "extSortOverCON": {},
+            "extRSCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "extSortSnowCON": {},
+            "extMultiMergeCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Hashing": {
+        "long_name": "Week 10-11: Hashing",
+        "sections": {
+          "Hashing": {
+            "hashIntroCON1": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "hashFuncExCON1": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "hashFuncExCON2": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "openhashCON": {},
+            "buckethashCON1": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "buckethashCON2": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "linProbeCON1": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "linProbeCON2": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "collisionCON1": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "collisionCON2": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "collisionCON3": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "collisionCON4": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "collisionCON5": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "collisionCON6": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "collisionCON7": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "collisionCON8": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "hashdelCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Indexing": {
+        "long_name": "Week 12-13: Indexing",
+        "sections": {
+          "Indexing": {
+            "varindexCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "linindexCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "pagedBSTCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "rebalanceBSTCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "twoThreedgmCON": {},
+            "simpleInsertCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "promoteCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "splitCON": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "SlidesCanvas/Graphs": {
+        "long_name": "Week 12-13: Graphs",
+        "sections": {
+          "Graphs": {
+            "GdirundirCON": {},
+            "GneighborCON": {},
+            "GpathDefCON": {},
+            "GconcomCON": {},
+            "GdirRepCON": {},
+            "GundirRepCON": {},
+            "topsortCON": {},
+            "dijkstraCON": {},
+            "MCSTCON": {},
+            "graphDFS": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "graphBFS": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "topSort": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "qTopSort": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "DijkstraAV": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "PrimAV": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "KruskalUFAV": {
+              "long_name": "",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+
+          }
+        }
+      }
+    }
+  }
+}

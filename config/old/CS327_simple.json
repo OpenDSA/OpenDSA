@@ -1,0 +1,87 @@
+{
+  "title": "CS327 Discrete Structures II",
+  "desc": "CS327 Discrete Structures II",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "Processing": {
+      "ext": [
+        "pde"
+      ],
+      "label": "Processing",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Preface": [
+      "Intro"
+    ],
+    "Graphs": [
+      "Graph/GraphIntro",
+      "Graph/GraphImpl",
+      "Graph/GraphTraversal",
+      "Graph/GraphTopsort",
+      "Graph/GraphShortest",
+      "Graph/MCST",
+      "Graph/Kruskal",
+      "Graph/Floyd"
+    ],
+    "Limits to Computing": [
+      "NP/LimComp",
+      "NP/Reduction",
+      "NP/NPComplete",
+      "NP/circuitSAT",
+      "NP/SAT",
+      "NP/threeSAT",
+      "NP/clique",
+      "NP/independentSet",
+      "NP/vertexCover",
+      "NP/hamiltonianCycle",
+      "NP/TSP",
+      "NP/provingNPC",
+      "NP/circuitSAT_to_SAT",
+      "NP/SAT_to_threeSAT",
+      "NP/threeSAT_to_clique",
+      "NP/clique_to_independentSet",
+      "NP/independentSet_to_vertexCover",
+      "NP/threeSAT_to_hamiltonianCycle",
+      "NP/hamiltonianCycle_to_TSP",
+      "NP/NPCoping",
+      "SeniorAlgAnal/Impossible",
+      "SeniorAlgAnal/Turing"
+    ],
+    "Appendix": [
+      "Glossary",
+      "Bibliography"
+    ]
+  }
+}

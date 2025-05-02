@@ -163,7 +163,7 @@ Strassen's algorithm would only be practical to use if the matrices
 where extremely large.
 
 There are other arrangements that can further reduce the exponent.
-The current "fastest" algorithm (in an asymptotic sense) is
+The current ``fastest'' algorithm (in an asymptotic sense) is
 :math:`\Theta(n^{2.376})`.
 But it is even more impractical than Strassen's algorithm due to the
 overhead of a large number of additions.

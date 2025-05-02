@@ -1,0 +1,35 @@
+{
+  "title": "Introduction to Pointers for Java",
+  "desc": "Introduction to Pointers for Java",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    }
+  },
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "chapters": {
+    "Introduction to Pointers in Java": [
+      "PointersJava/PointerIntro",
+      "PointersJava/BasicPointers",
+      "PointersJava/LocalMem",
+      "PointersJava/HeapMem",
+      "PointersJava/Links"
+    ],
+    "Appendix": [
+      "Glossary",
+      "Bibliography"
+    ]
+  }
+}

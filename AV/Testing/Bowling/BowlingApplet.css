@@ -1,0 +1,78 @@
+#container {
+  height: 600px;
+  width: 570px;
+  margin-right: 400px;
+}
+
+#inputInfo {
+	font-family: Times New Roman;
+	margin-right: 10px;
+	margin-top: 15px;
+}
+
+#performanceDetails {
+	display: inline;
+	font-family: Times New Roman;
+}
+
+#bar{
+	float: right;
+	margin-right: 25px;
+	width: 330px;
+}
+
+#codeCoverageBar{
+	width: 0%;
+}
+
+#performanceSummary {
+	font-family: Times New Roman;
+}
+
+#testsrun {
+	display: inline;
+	margin-left: 20px;
+}
+
+#scoreTable {
+	float: left; 
+	margin-left: 25px;
+	border: 1px solid black;
+}
+
+.rollInput {
+	width: 50px;
+	margin-left: 20px
+}
+
+#testHistory {
+	font-family: Times New Roman;
+}
+
+.jsavscroll {
+ 	width: 500px;
+ 	height: 100px;
+}
+
+#throwRoll {
+	margin-left: 20px;
+}
+
+#reset {
+	margin-left: 225px;
+}
+
+.codeBlock {
+	width: 325px;
+	height: 400px;
+	float: left;
+	margin-left: -0.1px;
+	margin-right: 40px;
+}
+
+.thd {
+	border: 1px solid black;
+	text-align: center;
+	width: 35px;
+	padding: 2px;
+}
