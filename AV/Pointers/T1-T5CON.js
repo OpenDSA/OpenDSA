@@ -1,3 +1,12 @@
+// Title: Allocation and Deallocation of Local Variables
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization
+// Keyword: Pointers; Pointer; Reference; Object
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating the details of local variable allocation and deallocation. */
+
 //variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";

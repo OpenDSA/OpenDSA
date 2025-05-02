@@ -143,6 +143,7 @@
       "Background/MathpreSumm": {}
     }, 
     "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {},
       "AlgAnal/AnalPrelim": {},
       "AlgAnal/AnalIntro": {},
       "AlgAnal/AnalCases": {},

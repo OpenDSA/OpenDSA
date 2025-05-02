@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Link Nodes Exercises
    :author: Cliff Shaffer, Mohammed Mostafa, and Margaret Ellis
+   :institution: Virginia Tech
    :requires: Pointer intro
    :satisfies:
    :topic: Link Nodes
    :keyword: Pointers; Link Nodes
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Coding exercises for practicing manipulating linked lists.
 
 
 Link Nodes Practice Exercises

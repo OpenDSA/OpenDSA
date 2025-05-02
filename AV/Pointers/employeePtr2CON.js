@@ -1,5 +1,15 @@
 /*global JSAV, document */
 // Written by Sushma Mandava and Cliff Shaffer
+
+// Title: Java Data TYpes
+// Author: Sushma Mandava; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization
+// Keyword: Pointers; Pointer; Reference; Object
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating assigning a reference to an object. */
+ 
 //variable xPosition controls the horizonatl position of the visualization
 $(document).ready(function() {
   "use strict";

@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer, Mohammed Mostafa, and Margaret Ellis
+   :title: Link Nodes
+   :author: Cliff Shaffer; Mohammed Mostafa; Margaret Ellis
+   :institution: Virginia Tech
    :requires: Pointer intro
    :satisfies: Link Nodes
    :topic: Link Nodes
    :keyword: Pointers; Link Nodes
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: An introduction to link nodes.
 
 
 Link Nodes
