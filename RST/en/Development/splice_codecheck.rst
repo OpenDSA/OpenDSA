@@ -32,7 +32,7 @@ along a path involving one or more intermediate vertices.
 
 Here is a pratice question from CodeCheck
 
-.. iframe:: https://horstmann.com/codecheck/examples/dijkstra.html
+.. splicetoolembed:: https://horstmann.com/codecheck/examples/dijkstra.html
    :height: 1050
    :width: 1050
    :name: exampleFrame

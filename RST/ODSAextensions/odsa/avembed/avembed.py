@@ -33,7 +33,7 @@ def setup(app):
 # Must use the exercise name as the ID of the container (required for
 # client-side framework processing and as an anchor for hyperlinking
 # directly to the exercise)
-# The div with ID '[exer_name]_iframe' is a placeholder that is replaced after the page finishes loading
+# The div with ID '[exer_name]_splicetoolembed' is a placeholder that is replaced after the page finishes loading
 CONTAINER_HTML= '''\
 <div
     id="%(exer_name)s"
@@ -54,7 +54,7 @@ CONTAINER_HTML= '''\
     data-exer-id="%(id)s">
   %(content)s
   <div class="center">
-    <div id="%(exer_name)s_iframe"></div>
+    <div id="%(exer_name)s_splicetoolembed"></div>
   </div>
 </div>
 '''
@@ -63,7 +63,7 @@ BUTTON_HTML = '''\
 <input type="button"
   id="%(exer_name)s_showhide_btn"
   class="showHideLink"
-  data-target="%(exer_name)s_iframe"
+  data-target="%(exer_name)s_splicetoolembed"
   value="%(show_hide_text)s %(long_name)s"/>
 <span id="%(exer_name)s_shb_error_msg" class="shb_msg">
   <img src="_static/Images/warning.png" class="shb_warning_icon" />

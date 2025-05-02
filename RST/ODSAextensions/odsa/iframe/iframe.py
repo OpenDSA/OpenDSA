@@ -33,53 +33,25 @@ class iframe(Directive):
                   'absolute_url': directives.flag,
                   }
 
-# Original iframe run method for setting iframe
-  # def run(self):
-  #   iframe_src = self.arguments[0]
-
-  #   if 'height' not in self.options:
-  #     self.options['height'] = 650
-
-  #   if 'width' not in self.options:
-  #     self.options['width'] = 950
-
-  #   if 'name' not in self.options:
-  #     self.options['name'] = os.path.basename(iframe_src).partition('.')[0]
-
-  #   if 'absolute_url' in self.options:
-  #     self.options['iframe_src'] = iframe_src
-  #   else:
-  #     self.options['iframe_src'] = os.path.relpath(conf.exercises_dir, conf.ebook_path) + \
-  #                                             '/%s' % iframe_src 
-
-  #   res = IFRAME_HTML % (self.options)
-  #   return [nodes.raw('', res, format='html')]
-  
-  # modified iframe run method for calling iframe origin instead of a path
   def run(self):
     iframe_src = self.arguments[0]
 
-    # Initially assume the iframe_src is relative
-    resolved_iframe_src = os.path.relpath(conf.exercises_dir, conf.ebook_path) + '/%s' % iframe_src
-
-    # Check if the URL is absolute. If it is, use it directly without any modification.
-    if iframe_src.startswith('http://') or iframe_src.startswith('https://'):
-        resolved_iframe_src = iframe_src
-
-    # Set the resolved iframe source
-    self.options['iframe_src'] = resolved_iframe_src
-
-    # Setting default options if not provided in the RST file
     if 'height' not in self.options:
-        self.options['height'] = 650
+      self.options['height'] = 650
 
     if 'width' not in self.options:
-        self.options['width'] = 950
+      self.options['width'] = 950
 
     if 'name' not in self.options:
-        self.options['name'] = os.path.basename(iframe_src).partition('.')[0]
+      self.options['name'] = os.path.basename(iframe_src).partition('.')[0]
 
-    res = IFRAME_HTML % self.options
+    if 'absolute_url' in self.options:
+      self.options['iframe_src'] = iframe_src
+    else:
+      self.options['iframe_src'] = os.path.relpath(conf.exercises_dir, conf.ebook_path) + \
+                                              '/%s' % iframe_src 
+
+    res = IFRAME_HTML % (self.options)
     return [nodes.raw('', res, format='html')]
 
 
