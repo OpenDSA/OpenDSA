@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Unified Modeling Language
    :author: Dave Parillo
+   :institution: San Diego Mesa College
+   :requires:
    :satisfies: UML
    :topic: Introduction
    :keyword: Unified Modeling Language
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the Unified Modeling Language.
 
 .. index:: unified modeling langauage; selecting
 

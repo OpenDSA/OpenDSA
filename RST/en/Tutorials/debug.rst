@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Debugging In Eclipse
    :author: Jordan Sablan
+   :institution: Virginia Tech
    :requires: debugging
    :satisfies: Eclipse debugging
    :topic: Programming Tutorial
    :keyword: Debugging; Source Level Debugging; Eclipse
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduction to using the Eclipse source-level debugger.
 
 
 Debugging In Eclipse

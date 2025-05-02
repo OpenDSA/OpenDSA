@@ -1,0 +1,10 @@
+#SearchingLowerBoundCON {
+  height: 270px;
+}
+
+#SearchingLowerBoundCON .jsavtree .jsavnode {
+  min-width: 45px;
+  max-width: 45px;
+  min-height: 45px;
+  max-height: 45px;
+}
