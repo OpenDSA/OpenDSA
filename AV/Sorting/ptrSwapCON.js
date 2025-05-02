@@ -1,6 +1,15 @@
 /*global JSAV, document */
-// Written by Liling Yuan
+// Written by Liling Yuan and Cliff Shaffer
 
+// Title: Pointer Swap Optimization Slideshow
+// Author: Liling Yuan; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: 
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing that Selection Sort can be sped up for large records with swapping to records. */
+ 
 $(document).ready(function() {
   "use strict";
   var av_name = "ptrSwapCON";
@@ -9,6 +18,14 @@ $(document).ready(function() {
   var ytop = 1;
 
   // Slide 1
+  av.umsg(interpret("intro"));
+  av.displayInit();
+
+  // Slide 2
+  av.umsg(interpret("lang"));
+  av.step();
+
+  // Slide 3
   av.umsg(interpret("sc1"));
   for (var pos = ytop; pos < 115; pos += 30) {
     av.g.rect(360, pos, 30, 30);
@@ -26,17 +43,21 @@ $(document).ready(function() {
   var label5 = av.label("Key = 5", {left: 435, top: ytop + 20});
   av.label("Key = 23", {left: 435, top: ytop + 50});
   av.label("Key = 10", {left: 435, top: ytop + 80});
-  av.displayInit();
-
-  // Slide 2
+  av.step();
+  
+  // Slide 4
   av.umsg(interpret("sc2"));
   var swap1 = av.g.path("M 505 16 A 10 10 0 1 1 505 46",
                         {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   var swap2 = av.g.path("M 505 46 A 10 10 0 1 0 505 16",
                         {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.step();
+  
+  // Slide 5
+  av.umsg(interpret("recswap"));
+  av.step();
 
-  // Slide 3
+  // Slide 6
   av.umsg(interpret("sc3"));
   arrow5.hide();
   arrow42.hide();
@@ -44,8 +65,8 @@ $(document).ready(function() {
   var arrow42b = av.g.line(375, ytop + 45, 425, ytop + 15, {"stroke-width": 2, "arrow-end": "classic-wide-long"});
   av.step();
 
-  // Slide 4
-  av.umsg(interpret("sc3"));
+  // Slide 7
+  av.umsg(interpret("sc4"));
   swap1.hide();
   swap2.hide();
   label42.hide();

@@ -41,12 +41,16 @@ class avmetadata(Directive):
     optional_arguments = 3 
     final_argument_whitespace = True
     has_content = True
-    option_spec = {'author':directives.unchanged,
-                   #'title': directives.unchanged,
+    option_spec = {'title': directives.unchanged,
+                   'author':directives.unchanged,
+                   'institution':directives.unchanged,
                    'topic': directives.unchanged,
                    'requires': directives.unchanged,
                    'satisfies': directives.unchanged,
-                   'keyword': directives.unchanged, #keyword directive added 
+                   'keyword': directives.unchanged,
+                   'naturallanguage': directives.unchanged,
+                   'programminglanguage': directives.unchanged,
+                   'description': directives.unchanged,
                    #'short_name': directives.unchanged,
                    #'exercises': directives.unchanged,    
                    }

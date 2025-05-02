@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Random Access Files In Java
    :author: Jordan Sablan
+   :institution: Virginia Tech
    :requires: Text input
    :satisfies: Random access file
    :topic: Programming Tutorial
    :keyword: Random Access File
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Describes how to use the Java RandomAccessFile class.
 
 
 Random Access Files In Java

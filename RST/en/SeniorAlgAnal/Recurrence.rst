@@ -202,7 +202,9 @@ work.
    We can again take advantage of logarithms.
    Obviously :math:`n! \leq n^n`, so we know that :math:`\log n!` is
    :math:`O(n \log n)`. 
-   But what about a lower bound for the factorial function?
+   But if we want to prove that :math:`\log n! = \Theta(n \log n)`,
+   then we must show that :math:`\log n!` is also in
+   :math:`\Omega(n \log n)`.
    Consider the following.
 
    .. math::
