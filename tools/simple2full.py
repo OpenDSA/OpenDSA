@@ -472,7 +472,6 @@ class splicetoolembed(Directive):
                   'height': directives.unchanged,
                   'width': directives.unchanged,
                   'name': directives.unchanged,
-                  'long_name': directives.unchanged,
                   'absolute_url': directives.flag,
                   }
   

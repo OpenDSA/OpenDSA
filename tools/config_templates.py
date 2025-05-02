@@ -51,7 +51,7 @@ rst_header_unicode = '''\
 index_header = '''\
 .. This file is part of the OpenDSA eTextbook project. See
 .. http://opendsa.org for more details.
-.. Copyright (c) 2011-2023 by the OpenDSA Project Contributors, and
+.. Copyright (c) 2011-2025 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
 .. OpenDSA documentation master file, created by
@@ -200,7 +200,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenDSA'
-copyright = u'2011-2023 by OpenDSA Project Contributors and distributed under an MIT license'
+copyright = u'2011-2025 by OpenDSA Project Contributors and distributed under an MIT license'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

@@ -38,7 +38,7 @@ $(document).ready(function() {
   av.umsg("Now, we observe that there are three ways to multiply the matrices BCDE, namely: B(CDE), (BC)(DE), and (BCD)E." +
       " Also, (BC)(DE) can be calculated without further division." +
       " BC results in a $2\\times2$ matrix , while DE results in a $2\\times3$ matrix." +
-      " Thus, the total number of operations to compute (BC)(DE) are $(2) (4) (2) + (2) (5) (3) + (2) (2) (3) = 58$ ");
+      " Thus, the total number of operations to compute (BC)(DE) are $(2) (4) (2) + (2) (5) (3) + (2) (2) (3) = 58$.");
   multree.root().child(0).addChild("B(CDE)");
   val = "B(CDE)" + "<br>" + "?" ;
   multree.root().child(0).child(0).value(val);
@@ -117,7 +117,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 9
-  av.umsg("Then, we find the most efficient way to compute ABC");
+  av.umsg("Then, we find the most efficient way to compute ABC.");
   multree.root().child(2).addChild("A(BC)");
   val = "A(BC)" + "<br>" + "28" ;
   multree.root().child(2).child(0).value(val);
