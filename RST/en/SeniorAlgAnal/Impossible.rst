@@ -11,10 +11,10 @@
    :keyword: Unsolvable Problems
 
 
-Unsolveable Problems
+Unsolvable Problems
 ====================
 
-Unsolveable Problems
+Unsolvable Problems
 --------------------
 
 Introduction
@@ -216,7 +216,7 @@ Figure :num:`Figure #FuncAssign`.
    :links: AV/SeniorAlgAnal/FuncBinCON.css
    :scripts: AV/SeniorAlgAnal/FuncBinCON.js
    :align: center
-   :keyword: Unsolveable Problems
+   :keyword: Unsolvable Problems
 
    An illustration of assigning functions to bins.
 
@@ -261,7 +261,7 @@ Figure :num:`Figure #Diag` illustrates this argument.
    :links: AV/SeniorAlgAnal/FuncDiagCON.css
    :scripts: AV/SeniorAlgAnal/FuncDiagCON.js
    :align: center
-   :keyword: Unsolveable Problems
+   :keyword: Unsolvable Problems
 
    Illustration for the argument that the number of integer functions
    is uncountable.

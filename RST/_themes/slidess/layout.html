@@ -51,7 +51,9 @@
 {%- macro css() %}
     <link rel="stylesheet" href="{{ pathto('_static/basic.css', 1) }}" type="text/css" />
     <link rel="stylesheet" href="{{ pathto('_static/styles.css', 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+    {% for cssFile in styles %}
+    <link rel="stylesheet" href="{{ pathto('_static/' + cssFile, 1) }}" type="text/css" />
+    {% endfor %}
     {% if theme_custom_css %}
     <link rel="stylesheet" href="{{ pathto('_static/' + theme_custom_css, 1) }}" type="text/css" />
     {% endif %}

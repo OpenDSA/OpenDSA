@@ -1,5 +1,15 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
+
+// Title: Summation of the first N integers visualization
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Summations
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing how to calculate the closed form for the summation of the first N integers. */
+
 // Summation for 1 to N
 $(document).ready(function() {
   "use strict";

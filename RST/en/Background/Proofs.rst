@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Mathematical Proof Techniques
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: proofs intro; induction proofs
    :topic: Math Background
    :keyword: Proofs; Induction Proofs; Proof by Contradiction; Deduction
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review of basic proof techniques (normally taught in a Discrete Math course) needed as background for a Data Structures and Algorithms course.
 
 .. index:: !proof
 
