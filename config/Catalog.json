@@ -92,16 +92,13 @@
       "IntroToSoftwareDesign/StaticMainAndExceptions":{}
     },
     "Introduction for Data Structures and Algorithms Courses": {
-      "Background/IntroDSA": {
-        "Some Software Engineering Topics": {},
-        "Design/ADT": {},
-        "IntroADTSumm": {}
-      }
+      "Background/IntroDSA": {}
     },
     "Object Oriented Programming": {
       "Design/IntroOO": {},
       "Design/IntroUML": {}, 
-      "Design/IntroProcess": {}
+      "Design/IntroProcess": {},
+      "Design/ADT": {}
     },
     "Programming Tutorials": {
       "Tutorials/cmdline": {}, 
@@ -118,10 +115,10 @@
       "Tutorials/mutationtesting": {},
       "Tutorials/mutationtesting_example": {},
       "Tutorials/mutationtesting_faq": {},
-      "Testing/TestIntro": {},
-      "Testing/TestCoverage": {},
-      "Testing/Example2": {},
-      "Testing/Bowling": {}
+      "Testing/TriangleIntro": {},
+      "Testing/TriangleCoverage": {},
+      "Testing/BowlingIntro": {},
+      "Testing/BowlingCoverage": {}
     }, 
     "Introduction to Pointers in Java": {
       "PointersJava/BasicPointers1": {},
@@ -136,7 +133,6 @@
       "PointersJava/LinkedChains": {}
     }, 
     "Mathematical Background": {
-      "Background/MathpreIntro": {}, 
       "Background/SetDef": {},
       "Background/MiscMath": {}, 
       "Background/Logarithms": {},
@@ -147,6 +143,7 @@
       "Background/MathpreSumm": {}
     }, 
     "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {},
       "AlgAnal/AnalPrelim": {},
       "AlgAnal/AnalIntro": {},
       "AlgAnal/AnalCases": {},

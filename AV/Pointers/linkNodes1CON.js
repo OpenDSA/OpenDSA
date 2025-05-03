@@ -1,3 +1,12 @@
+// Title: Link Nodes
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Algorithm Visualization
+// Keyword: Link Nodes
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow introducing the concept of Link Nodes. */
+
 //variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";

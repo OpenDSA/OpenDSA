@@ -4,15 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: An Introduction to Recurrent Relations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: summation
    :satisfies: recurrence
    :topic: Math Background
    :keyword: Recurrence Relations
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review of basic material on solving recurrence relations needed as background for a Data Structures and Algorithms course.
 
-
-Recurrence Relations
-====================
+An Introduction to Recurrence Relations
+=======================================
 
 Recurrence Relations
 --------------------

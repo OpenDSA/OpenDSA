@@ -15,7 +15,6 @@
    :programminglanguage: Java; CPP
    :description: Presentation of Insertion Sort including visualizations, code, and self-test questions and exercises
 
-
 .. index:: ! Insertion Sort
 
 

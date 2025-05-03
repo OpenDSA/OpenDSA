@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Rifat Sabbir Mansur and Cliff Shaffer
+   :title: Mutation Coverage: FAQ
+   :author: Rifat Sabbir Mansur; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Mutation testing
    :satisfies: 
    :topic: Programming Tutorial
    :keyword: JUnit Testing; Mutation Testing
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Answers many questions about using mutation testing to improve test suites
 
 
 Mutation Coverage: FAQ

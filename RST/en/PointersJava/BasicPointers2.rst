@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava
-   :requires:
+   :title: Basic References Part 2
+   :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed; Sushma Mandava
+   :institution: Stanford University; Virginia Tech
+   :requires: Pointer intro
    :satisfies:
    :topic: Pointers
-   :keyword: Pointers
+   :keyword: Pointers; References
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: An introduction to using references in Java, Part 2.
 
 
 Basic References Part 2

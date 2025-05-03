@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava
+   :title: Pointes Syntax
+   :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed; Sushma Mandava
+   :institution: Stanford University; Virginia Tech
    :requires: Pointer intro
    :satisfies: Pointer Syntax
    :topic: Pointers
    :keyword: Pointers
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: An introduction pointer syntax in Java.
 
 
 Pointers Syntax

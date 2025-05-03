@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Software Development Processes
    :author: Dave Parillo
+   :institution: San Diego Mesa College
    :requires: ADT; OO Intro; UML
    :satisfies: Software development process
    :topic: Introduction
    :keyword: Software Design
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the software development process
 
 
 Software Development Processes
