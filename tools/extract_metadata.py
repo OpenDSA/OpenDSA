@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import os
 import sys
 import json
@@ -9,9 +7,7 @@ from ODSA_Config import ODSA_Config
 
 def load_config(config_path, output_dir=None):
     conf_data = simple2full.generate_full_config(
-        config_path,
-        slides=False,
-        verbose=True
+        config_path, slides=False, verbose=True
     )
     config = ODSA_Config(
         config_file_path=config_path,
@@ -43,6 +39,7 @@ def collect_rst_paths(config):
 def extract_visualization_references(rst_files):
     visualizations = []
     for mod_name, rst_path in rst_files:
+        print(f"Parsing RST file: {rst_path}")
         try:
             with open(rst_path, encoding='utf-8') as f:
                 lines = f.readlines()
@@ -64,6 +61,7 @@ def extract_visualization_references(rst_files):
                                 "source": js_file,
                                 "line": i + 1
                             })
+
                 embed_match = re.match(r"\.\. +avembed:: +(\S+)", line)
                 if embed_match:
                     vis_type = "avembed"
@@ -74,6 +72,7 @@ def extract_visualization_references(rst_files):
                         "source": html_file,
                         "line": i + 1
                     })
+
         except Exception as e:
             print(f" Error reading {rst_path}: {e}")
     print(f"\n Extracted {len(visualizations)} visualizations (inlineav + avembed)\n")
@@ -83,45 +82,50 @@ def parse_metadata_block(filepath):
     if not os.path.isfile(filepath):
         return None
 
-    base, ext = os.path.splitext(filepath)
-    json_path = base + ".json"
-    if os.path.isfile(json_path):
-        try:
-            with open(json_path, encoding='utf-8') as f:
-                content = json.load(f)
-            en_section = content.get("translations", {}).get("en", {})
-            metadata = {
-                "Exercise name": en_section.get(".avTitle", os.path.basename(filepath)),
-                "Author": [author.strip() for author in en_section.get("av_Authors", "Cliff Shaffer").split(";")],
-                "Keywords": ["sorting"],  
-                "Description": en_section.get("av_c18", "No description available."),
-                "Institution": "Virginia Tech"
-            }
-            return metadata
-        except Exception as e:
-            print(f" Failed to parse metadata JSON from {json_path}: {e}")
-            return None
-
     metadata = {}
     try:
         with open(filepath, encoding='utf-8') as f:
             content = f.read()
-        block_match = re.search(r"===\s*\n(.*?)\n===+", content, re.DOTALL)
-        if not block_match:
-            return None
-        block = block_match.group(1)
-        lines = block.strip().split('\n')
+
+        
+        comment_blocks = []
+
+       
+        comment_blocks += re.findall(r"<!--(.*?)-->", content, re.DOTALL)
+
+       
+        comment_blocks += re.findall(r"/\*(.*?)\*/", content, re.DOTALL)
+
+        
+        lines = content.splitlines()
+        line_comment_block = []
         for line in lines:
-            line = line.strip().lstrip('*/#- ')
-            if ':' in line:
-                key, value = line.split(':', 1)
-                key = key.strip()
-                value = value.strip()
-                if key.lower() in ['author', 'keywords']:
-                    metadata[key] = [x.strip() for x in value.split(';') if x.strip()]
-                else:
-                    metadata[key] = value
-        return metadata
+            striped = line.strip()
+            if striped.startswith("//"):
+                line_comment_block.append(striped[2:].strip())
+            elif striped == "":
+                continue
+            else:
+                break  
+        if line_comment_block:
+            comment_blocks.append("\n".join(line_comment_block))
+
+       
+        for block in comment_blocks:
+            for line in block.strip().split("\n"):
+                if ':' in line:
+                    key, value = line.split(':', 1)
+                    key = key.strip().capitalize()
+                    value = value.strip()
+                    if not key:
+                        continue
+                    if key.lower() in ['author', 'keywords']:
+                        metadata[key] = [x.strip() for x in re.split(r';|,|and', value) if x.strip()]
+                    else:
+                        metadata[key] = value
+
+        return metadata if metadata else None
+
     except Exception as e:
         print(f" Failed to parse metadata from {filepath}: {e}")
         return None
@@ -130,7 +134,7 @@ def parse_metadata_block(filepath):
 def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu"):
     source = vis['source']
     exercise_name = metadata.get("Exercise name", os.path.basename(source))
-    author = metadata.get("Author", ["Cliff Shaffer"])
+    author = metadata.get("Author", [])
     description = metadata.get("Description", "")
     keywords = metadata.get("Keywords", [])
     short_name = os.path.splitext(os.path.basename(source))[0]
@@ -144,9 +148,9 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
         "iframe_url": embed_url,
         "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
         "exercise_type": vis["type"],
-        "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)",
+        "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
         "description": description,
-        "author": "; ".join(author),
+        "author": author,
         "institution": metadata.get("Institution", "Virginia Tech"),
         "keywords": keywords,
         "exercise_name": exercise_name,
@@ -171,10 +175,32 @@ if __name__ == "__main__":
     visualizations = extract_visualization_references(rst_files)
 
     final_metadata = []
+    missing_metadata_report = []
+
     for vis in visualizations:
         file_path = os.path.join(config.odsa_dir, vis['source'])
+        print(f"Parsing source file: {file_path}")
         metadata = parse_metadata_block(file_path) or {}
+        missing_fields = []
+        required_fields = ["Exercise name", "Author", "Description", "Keywords", "Institution"]
+        for field in required_fields:
+            if not metadata.get(field):
+                missing_fields.append(field)
+
+        if missing_fields:
+            missing_metadata_report.append({
+                "source_file": vis["source"],
+                "missing_fields": missing_fields
+            })
+
         entry = build_splice_entry(vis, metadata)
         final_metadata.append(entry)
 
     save_metadata_to_json(final_metadata)
+
+    try:
+        with open("missing_metadata.json", "w", encoding="utf-8") as f:
+            json.dump(missing_metadata_report, f, indent=2, ensure_ascii=False)
+        print(f"Missing metadata report saved to missing_metadata.json")
+    except Exception as e:
+        print(f"Failed to save missing metadata report: {e}")

@@ -1,0 +1,202 @@
+[
+  {
+    "source_file": "AV/Pointers/primativeVsRefCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/empRefnullCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/empRefsecondCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "Exercises/Pointers/PointerEX1PRO.html",
+    "missing_fields": [
+      "Exercise name"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/shallowdeepCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/shallowdeepExampleCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "Exercises/Pointers/PointerEX2PRO.html",
+    "missing_fields": [
+      "Exercise name"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/empRefnullCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/badPointerPowCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/employeePtr2CON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/examplePointerCodeCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/memoryModelCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/simpleLifetimeCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Keywords"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/T1-T5CON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Keywords"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/garbageDisposalCON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/LocalHeapaloc.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/LocalHeapdealoc.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/LocalHeapintptr42.js",
+    "missing_fields": [
+      "Exercise name",
+      "Author",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/linkNodes1CON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Keywords"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/linkNodes2CON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Keywords"
+    ]
+  },
+  {
+    "source_file": "Exercises/Pointers/PointerEX3PRO.html",
+    "missing_fields": [
+      "Exercise name"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/linkNodes3CON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Keywords"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/linkNodes4CON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Keywords"
+    ]
+  },
+  {
+    "source_file": "AV/Pointers/linkNodes5CON.js",
+    "missing_fields": [
+      "Exercise name",
+      "Keywords"
+    ]
+  }
+]
