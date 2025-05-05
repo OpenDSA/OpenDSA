@@ -1,4 +1,14 @@
 // Written by Abhishek Jha and Cliff Shaffer, Fall 2020
+
+// Title: Call Structure to Solve the Knapsack Problem
+// Author: Abishek Jha; Cliff Shaffer; Angel Velazquez
+// Institution: Virginia Tech; Universidad Rey Juan Carlos
+// Features: Algorithm Visualization
+// Keyword: Dynamic Programming; Knapsack Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the tree structure for calls by a solution to the Knapsack problem. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "KnapTreeCON";

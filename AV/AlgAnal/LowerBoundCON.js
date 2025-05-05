@@ -1,5 +1,15 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
+
+// Title: Lower Bounds Misconceptions
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Problem; Algorithm; Program
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating lower bounds analysis and discussing various associated misconceptions. */
+
 // Lower Bounds definition
 $(document).ready(function() {
   "use strict";

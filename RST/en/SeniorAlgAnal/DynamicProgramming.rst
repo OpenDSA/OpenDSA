@@ -3,10 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: Cliff Shaffer, Abhishek Jha, and Angel Velazquez
+.. avmetadata::
+   :title: Dynamic Programming
+   :author: Cliff Shaffer; Abhishek Jha; Angel Velazquez
+   :institution: Virginia Tech; Universidad Rey Juan Carlos
    :topic: Dynamic Programming
    :keyword: Dynamic Programming; Recursion; Fibonacci Sequence; Knapsack Problem
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Introduction to dynamic programming.
 
 
 Dynamic Programming

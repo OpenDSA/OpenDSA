@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Chapter Introduction: Algorithm Analysis
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: algorithm analysis chapter introduction
    :topic: Algorithm Analysis
    :keyword: Algorithm Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to a chapter on algorithm analysis.
 
 
 Chapter Introduction

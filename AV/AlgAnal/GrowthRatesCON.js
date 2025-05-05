@@ -96,6 +96,8 @@ $(document).ready(function() {
   av.label("$n!$", {left: 155, top: 35});
   av.displayInit();
   av.recorded();
+  // Invoke MathJax to get equations to display correctly
+  MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
 
 
   // Below are the functions for the various curves

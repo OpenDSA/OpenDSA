@@ -1,5 +1,15 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
+
+// Title: Problem, Algorithm, and Program definitions
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Problem; Algorithm; Program
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating the differences between problems, algorithms, and programs. */
+
 // Problem, Algorithm, and program definitions
 $(document).ready(function() {
   "use strict";
