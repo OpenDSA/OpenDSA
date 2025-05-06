@@ -1,3 +1,12 @@
+// Title: Multiway Merge Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: File Processing; External Sorting; Mergesort; Multiway Merge
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating multiway merge in an external sorting algorithm. */
+
 $(document).ready(function () {
   "use strict";
   var input1 = [5, 10, 15];

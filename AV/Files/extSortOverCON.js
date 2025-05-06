@@ -1,3 +1,12 @@
+// Title: Replacement Selection Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: File Processing; External Sorting; Replacement Selection
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating the replacement selection algorithm. */
+
 $(document).ready(function () {
   "use strict";
   var av = new JSAV("extSortOverCON", {"animationMode": "none"});

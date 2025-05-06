@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Optimizing Sort Algorithms with Code Tuning
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: insertion sort; bubble sort; selection sort; code tuning
    :satisfies: sort code tuning
    :topic: Sorting, Code Tuning
    :keyword: Sorting; N-squared Sorts; Code Tuning
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Variations on n-squared sorts to demonstrate code tuning principles.
 
 
 Optimizing Sort Algorithms with Code Tuning
@@ -67,8 +72,8 @@ Here is an implementation for Insertion Sort using this optimization.
 Now, you can test whether you understand how this works.
 
 .. avembed:: AV/Sorting/insertionSortWithoutSwapPRO.html pe
-   :long_name: Insertion Sort Without Swap Proficiency Exercise
-   :keyword: Sorting; O(n^2) Sorts; Code Tuning
+   :long_name: Insertion Sort Optimized with Shifting Proficiency Exercise
+   :keyword: Insertion Sort; O(n^2) Sorts; Code Tuning
 
 .. _OptimizeTable:
 
