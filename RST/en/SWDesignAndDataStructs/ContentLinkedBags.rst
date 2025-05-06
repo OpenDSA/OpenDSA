@@ -9,16 +9,6 @@
 Linked Bags
 ===========
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`LinkedBagIntro`
-    - :ref:`LinkedBagAdd`
-    - :ref:`LinkedBagTest`
-    - :ref:`LinkedBagContains`
-    - :ref:`LinkedBagRemove`
-
 Objectives
 ----------
 
@@ -45,7 +35,7 @@ Interactive: Introduction to Linked Bags
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedBagIntro.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       LinkedBagIntro.pdf</img>
       </a>
 
@@ -53,7 +43,7 @@ Interactive: Introduction to Linked Bags
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dh0z9agx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_dh0z9agx' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Linked Bags"></iframe> 
    </center>
 
 
@@ -69,7 +59,7 @@ Interactive: LinkedBag add() and toArray()
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedBagAddToArray.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       LinkedBagAddToArray.pdf</img>
       </a>
 
@@ -77,7 +67,7 @@ Interactive: LinkedBag add() and toArray()
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_7kh033i4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_7kh033i4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedBag add method and toArray method"></iframe> 
    </center>
 
 Checkpoint 1
@@ -88,7 +78,7 @@ Checkpoint 1
 
 .. _LinkedBagTest: 
 
-Interactive: ExLinkedBagJUnit  Demonstration
+Interactive: ExLinkedBagJUnit Demonstration
 ---------------------------------------------------
 
 .. admonition:: Follow Along, Practice and Explore
@@ -99,7 +89,7 @@ Interactive: ExLinkedBagJUnit  Demonstration
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/examples/eclipse/exLinkedBagsWithJUnit.zip"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       exLinkedBagsWithJUnit.zip</img>
       </a>
 
@@ -107,7 +97,7 @@ Interactive: ExLinkedBagJUnit  Demonstration
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_y9dkjp2z' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_y9dkjp2z' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ExLinkedBagJUnit Demonstration"></iframe> 
     </center>
 
 .. _LinkedBagContains: 
@@ -122,7 +112,7 @@ Interactive: LinkedBag getFrequencyOf() and contains()
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedFreqContains.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       LinkedFreqContains.pdf</img>
       </a>
 
@@ -130,7 +120,7 @@ Interactive: LinkedBag getFrequencyOf() and contains()
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jaeiozal' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jaeiozal' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedBag getFrequencyOf method and contains method"></iframe> 
    </center>
 
 
@@ -152,7 +142,7 @@ Interactive: LinkedBag Removing an item
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedRemove.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       LinkedRemove.pdf</img>
       </a>
 
@@ -160,7 +150,7 @@ Interactive: LinkedBag Removing an item
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kps8b356' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kps8b356' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="LinkedBag Removing an item"></iframe> 
    </center>
 
 

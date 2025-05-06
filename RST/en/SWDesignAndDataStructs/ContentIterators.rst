@@ -9,19 +9,6 @@
 Iterators
 =========
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`IteratorIntro`
-    - :ref:`IteratorInterface`
-    - :ref:`IteratorProg`
-    - :ref:`IteratorDesign`
-    - :ref:`IteratorInner`
-    - :ref:`IteratorScanner`
-
-
-
 Objectives
 ----------
 
@@ -49,7 +36,7 @@ Introduction to Iterators
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroToIterators.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       IntroToIterators.pdf</img>
       </a>
 
@@ -57,10 +44,8 @@ Introduction to Iterators
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8c0mzbfl' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8c0mzbfl' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Iterators"></iframe> 
    </center>
-
-
 
 Checkpoint 1
 ------------
@@ -81,7 +66,7 @@ Programming Using the Iterable Interface
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/Iterable.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       Iterable.pdf</img>
       </a>
 
@@ -89,9 +74,8 @@ Programming Using the Iterable Interface
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_eqvj3pre' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_eqvj3pre' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Programming Using the Iterable Interface "></iframe> 
    </center>
-
 
 Checkpoint 2
 ------------
@@ -111,17 +95,15 @@ Programming Using Iterators
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingWithIterators.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       ProgrammingWithIterators.pdf</img>
       </a>
-
 
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qzq8us2t' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_qzq8us2t' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Programming Using Iterators"></iframe> 
    </center>
-
 
 Checkpoint 3
 ------------
@@ -141,7 +123,7 @@ Iterator Design Decisions
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IteratorsDesignConsiderations.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       IteratorsDesignConsiderations.pdf</img>
       </a>
 
@@ -149,7 +131,7 @@ Iterator Design Decisions
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_suuo9vaf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_suuo9vaf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Iterator Design Decisions"></iframe> 
    </center>
 
 
@@ -332,8 +314,6 @@ structure or the iterator in order to avoid unintended side effects.
             newCurr = false;
         }
     }
-
-
 
 Programming Practice: Iterators
 -------------------------------

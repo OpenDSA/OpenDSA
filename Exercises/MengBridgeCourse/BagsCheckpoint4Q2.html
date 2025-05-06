@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Bags Checkpoint 4</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="650" data-width="950">
+  <body data-height="1250" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="BAGS_CP3_Q2">
@@ -15,24 +15,25 @@
           way to write remove() method?</p>
         <div class="solution">
 <tt>
+  <pre class="prettyprint">
 public T remove()
 {
   T result = removeEntry(getIndexOf(null));
   return result;
-}
-</tt>
+} </pre>
+</tt> 
         </div>
         <ul class="choices">
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public T remove()
 {
   return removeEntry(numberOfEntries-1);
-}
+}</pre>
 </tt>
         </li>
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public T remove()
 {
   T result = null;
@@ -43,16 +44,16 @@ public T remove()
     numberOfEntries--;
   }
   return result;
-}
+}</pre>
 </tt>
         </li>
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public T remove()
 {
   T result = removeEntry(numberOfEntries-1);
   return result;
-}
+}</pre>
 </tt>
         </li>
         </ul>

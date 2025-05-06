@@ -262,5 +262,5 @@ Your exercise might generate a console error that looks like::
    khan-exercise.js:359 TypeError: Cannot read property 'id' of undefined(…)
 
 This is a common problem. Nearly always, it means that either you
-forgot to include ``jsav`` in the ``data-require`` field of the ``<html>``
+forgot to include ``jsav`` in the ``data-require`` field of the ``<html lang="en">``
 tag, or else you got the names wrong somewhere for the divs.

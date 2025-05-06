@@ -3,7 +3,7 @@
     "en": {
       "capability": {
         "type": "select",
-        "description": "$\\textbf{State machines}$ are simple to understand. There are a number of different state machines, with a range of capabilities. We will now define a particular one, called a <b>Turing machine}</b>. As we define \"capability\", the key is ability, not efficiency.",
+        "description": "<b>State machines</b> are simple to understand. There are a number of different state machines, with a range of capabilities. We will now define a particular one, called a <b>Turing machine</b>. As we define \"capability\", the key is ability, not efficiency.",
         "question":"Which of the following relate to the ability of the machine (rather than its efficiency)?",
         "answer": ["evaluating an expression", "accepting/rejecting a string"],
         "choices": ["evaluating an expression", "accepting/rejecting a string", "perform operations fast", "consume small amount of memory as possible"]

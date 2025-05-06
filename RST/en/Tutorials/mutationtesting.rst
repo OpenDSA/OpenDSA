@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Rifat Sabbir Mansur and Cliff Shaffer
+   :title: Mutation Coverage In JUnit
+   :author: Rifat Sabbir Mansur; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: JUnit test writing
    :satisfies: Mutation testing
    :topic: Programming Tutorial
-   :keyword: JUnit Testing; Mutation Coverage
+   :keyword: JUnit Testing; Mutation Testing
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the concept of mutation testing and how to use it in the Eclipse IDE.
 
 
 Mutation Coverage In JUnit

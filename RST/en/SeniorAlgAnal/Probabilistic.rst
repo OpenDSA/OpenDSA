@@ -18,12 +18,13 @@ Probabilistic Algorithms
 We now consider how introducing randomness into our
 algorithms might speed things up, although perhaps at the expense of
 accuracy.
-But often we can reduce the possibility for error to be as low as we
-like, while still speeding up the algorithm.
-
-The :ref:`lower bound for maximum finding <maximum lower bound> <LowerBound>`
-in an unsorted list is :math:`\Omega(n)`.
-This is the least time needed to be certain that we have found the
+But often we can reduce either the probability or the amount of error
+to be as low as we like, while still speeding up the algorithm.
+Maximum finding is a good example of the flexibility that we might be
+willing to adopt.
+The lower bound for maximum finding in an unsorted list is
+:math:`\Omega(n)`.
+This is the least time needed to be **certain** that we have found the
 maximum value.
 But what if we are willing to relax our requirement for certainty?
 The first question is: What do we mean by this?
@@ -38,9 +39,9 @@ maximum is :math:`Y`.
   This is known as an exact or :term:`deterministic algorithm` to
   solve the problem.
 
-* We could relax this and require only that :math:`X` 's rank is
-  "close to" :math:`Y` 's rank (perhaps within a fixed distance or
-  percentage).
+* We could relax this and require only that :math:`X` 's rank (within
+  the list if it were ordered) is "close to" :math:`Y` 's rank
+  (perhaps within a fixed distance or percentage).
   This is known as an :term:`approximation algorithm`.
 
 * We could require that :math:`X` is "usually" :math:`Y`.
@@ -112,5 +113,5 @@ If we pick enough numbers, then the chance of picking a small
 number is less than the chance of the power failing during the
 computation.
 Picking 100 numbers means that we can fail only one time in
-:math:`10^{100}` which is less than the chance any plausible
+:math:`2^{100}` which is less than the chance any plausible
 disaster that you can imagine will disrupt the process.

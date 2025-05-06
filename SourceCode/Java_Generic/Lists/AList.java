@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /* *** ODSATag: AList *** */
@@ -11,6 +12,7 @@ class AList<E> implements List<E> {
   private int curr;                       // Position of current element
 /* *** ODSAendTag: AListVars *** */
 
+/* *** ODSATag: Constructors *** */
   // Constructors
   // Create a new list object with maximum size "size"
   @SuppressWarnings("unchecked") // Generic array allocation
@@ -22,7 +24,8 @@ class AList<E> implements List<E> {
   // Create a list with the default capacity
   AList() {
     this(DEFAULT_SIZE);                   // Just call the other constructor
-  }          
+  }
+/* *** ODSAendTag: Constructors *** */      
 
   public void clear() {                    // Reinitialize the list
     listSize = curr = 0;               // Simply reinitialize values

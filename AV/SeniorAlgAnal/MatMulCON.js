@@ -1,4 +1,14 @@
 // Written by Abhishek Jha Fall 2020
+
+// Title: Call Structure for the Chained Matrix Multiplication Problem
+// Author: Abishek Jha; Cliff Shaffer; Angel Velazquez
+// Institution: Virginia Tech; Universidad Rey Juan Carlos
+// Features: Algorithm Visualization
+// Keyword: Dynamic Programming; Chained Matrix Multplication Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the tree structure for calls by a solution to the chained matrix multiplication problem. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "MatMulCON";
@@ -87,14 +97,12 @@ $(document).ready(function() {
 
 
   // Slide 6
-  av.umsg("Then, we have to compute the most efficient way to multiply the triplet CDE." +
-      " But, we have encountered this sub-problem previously! " );
+  av.umsg("Then, we have to compute the most efficient way to multiply the triplet CDE. But, we encountered this sub-problem previously! " );
   multree.layout();
   av.step();
 
   // Slide 7
-  av.umsg("Yet, we recalculate the number of operations for C(DE) as $(2)(5)(3)+(4)(2)(3) = 54$" +
-      " and (CD)E as $(4)(2)(5)+(4) (5) (3) = 100$." );
+  av.umsg("Yet, we recalculate the number of operations for C(DE) as $(2)(5)(3)+(4)(2)(3) = 54$ and (CD)E as $(4)(2)(5)+(4) (5) (3) = 100$." );
 
   multree.root().child(1).addChild("C(DE)");
   val = "C(DE)" + "<br>" + "54" ;
@@ -109,7 +117,7 @@ $(document).ready(function() {
 
 
   // Slide 8
-    av.umsg("Additionally, an alternative way to group ABCDE is (ABC)(DE).");
+  av.umsg("Additionally, an alternative way to group ABCDE is (ABC)(DE).");
   multree.root().addChild("(ABC)(DE)");
   val = "(ABC)(DE)" + "<br>" + "?" ;
   multree.root().child(2).value(val);

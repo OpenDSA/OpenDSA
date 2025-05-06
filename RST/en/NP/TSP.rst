@@ -15,8 +15,6 @@ The Traveling Salesman Problem
 Traveling Salesman
 ------------------
 
-TRAVELING SALESMAN PROBLEM (TSP)
-
 .. inlineav:: TSPCON ss
    :long_name: Traveling Salesman
    :links: AV/NP/TSPCON.css

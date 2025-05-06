@@ -1,0 +1,14 @@
+{
+  "name": "opendsa",
+  "packageManager": "yarn@4.3.1",
+  "dependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.7.0",
+    "clean-css-cli": "^5.6.3",
+    "csslint": "^1.0.5",
+    "eslint": "^9.7.0",
+    "globals": "^15.8.0",
+    "jsonlint": "^1.6.3",
+    "uglify-js": "^3.19.0"
+  }
+}

@@ -1,6 +1,6 @@
 {
-  "title": "CS3 Coursenotes",
-  "desc": "CS3 Coursenotes",
+  "title": "CS3114-specific Coursenotes",
+  "desc": "CS3114-specific Coursenotes",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",

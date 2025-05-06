@@ -352,7 +352,7 @@ as populating it with some flowers, or placing water in new
 locations.
 
 We can also say what we wish to happen when the **Run button
-is pressed** by added a ``myProgram()`` method.  You
+is pressed** by adding a ``myProgram()`` method.  You
 can add this to your island subclass:
 
 .. code-block:: java
@@ -406,7 +406,7 @@ answer some or all of the questions.
 
 .. raw:: html
 
-    <a href="https://virginiatech.questionpro.com/t/AYIrDZ1HgI" target="_blank">CS 1114 Grading Policies Survey 1</a>
+    <a href="https://virginiatech.questionpro.com/t/AYIrDZ5G9X" target="_blank">CS 1114 Grading Policies Survey 1</a>
 
 Please answer below and your submission of the survey will be verified
 for credit.
@@ -2158,3 +2158,13 @@ Check Your Understanding
 
 .. avembed:: Exercises/IntroToSoftwareDesign/Week2ReadingQuizSumm.html ka
    :long_name: Programming Concepts
+
+.. raw:: html
+   
+      <footer style="border-top: 1px solid #777;"><div class="footer">
+        Selected content adapted from:<br/>
+        <a href="http://www.cs.trincoll.edu/~ram/jjj/">Java Java Java, Object-Oriented Problem Solving 3rd edition</a> by R. Morelli and R. Walde,
+        licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).<br/>
+        <a href="https://greenteapress.com/wp/think-java-2e/">Think Java: How to Think Like a Computer Scientist</a> version 6.1.3 by Allen B. Downey and Chris Mayfield,
+        licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+      </div></footer>

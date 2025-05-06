@@ -8,7 +8,7 @@
    :requires: list ADT
    :satisfies: queue; array-based queue
    :topic: Lists
-   :keyword: Queues, Array-based Queues
+   :keyword: Queues; Array-based Queue Implementation
 
 
 Queues

@@ -603,6 +603,14 @@
                     "points": 4,
                     "threshold": 2
                 },
+                "ListsCheckpoint5Summ": {
+                    "points": 4,
+                    "threshold": 2
+                },
+                "ListsCheckpoint6Summ": {
+                    "points": 4,
+                    "threshold": 2
+                },
                 "Programming Practice: Lists 2": {
                     "points": 20,
                     "threshold": 4

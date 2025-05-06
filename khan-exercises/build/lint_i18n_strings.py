@@ -1825,7 +1825,7 @@ def get_page_html(html_tree):
     html_string = re.sub(r'data-if=(["\'])(.*?)\1',
                          _clean_data_if, html_string)
 
-    # Add in endlines around the <html> and </html> nodes
+    # Add in endlines around the <html lang="en"> and </html> nodes
     html_string = re.sub(r'\s*(<\/?html[^>]*>)\s*', r'\n\1\n', html_string)
 
     return html_string

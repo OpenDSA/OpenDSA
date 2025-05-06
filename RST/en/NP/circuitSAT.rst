@@ -6,7 +6,7 @@
 .. avmetadata::
    :author: Nabanita Maji
    :topic: NP-completeness
-   :keyword: NP-completeness; Circuit Satisfiability
+   :keyword: NP-completeness; Circuit Satisfiability Problem
 
 
 Circuit Satisfiability
@@ -22,7 +22,7 @@ Circuit Satisfiability
    :output: show
    :keyword: NP-completeness; Circuit Satisfiability
 
-In the above problem, given a particular assignment, while we can 
-quickly check whether the assignment satisfies the circuit or not,
-we have no easy way of knowing whether it has any satisfying 
-assignment.
+While it is easy to check whether a given truth assignment satisfies a
+given circuit,
+we have no easy way of knowing whether an arbitrary cirucit has some
+satisfying assignment.

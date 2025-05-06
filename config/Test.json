@@ -1,28 +1,22 @@
 {
   "title": "Test",
   "desc": "Test",
-  "html_theme_options": {
-    "use_download_button": false,
-    "single_page": true
-  },
-  "html_css_files": ["_static/renku-book.css"],
-  "html_js_files": ["_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"],
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "sphinx_debug": false,
   "code_lang": {
-    "Java_Generic": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java (Generic)",
-      "lang": "java"
-    },
     "Java": {
       "ext": [
         "java"
       ],
       "label": "Java",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
       "lang": "java"
     },
     "C++": {
@@ -75,13 +69,16 @@
   },
   "chapters": {
     "Stuff": {
-      "Sorting/Binsort": {},
-      "SeniorAlgAnal/DynamicProgramming": {},
-      "Indexing/BTree": {}
-   },
-   "Graphs": {
-    "development/splice_codecheck": {}
-  },
+      "Sorting/InSort": {}, 
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      }, 
+      "Sorting/InsertionSort": {}, 
+      "Searching/SortedSearch": {}
+    },
+>>>>>>> master
     "Appendix": {
       "Glossary": {}
     }

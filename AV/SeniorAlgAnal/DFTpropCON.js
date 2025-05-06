@@ -22,7 +22,7 @@ $(document).ready(function() {
   // Slide 2
   var color1 = "#ffffb3";
   var color2 = "#cecdca";
-  av.umsg("We have: $z^0=1$. (Please note: For each matrix value that gets changed, the math won't display quite right until the following slide.)"); 
+  av.umsg("We have: $z^0=1$."); 
   for (i = 0; i < 8; i++) {
     for (j = 0; j < 8; j++) {
       if (i === 0 || j === 0) {
@@ -89,8 +89,7 @@ $(document).ready(function() {
   mat.css(7, 4, {"background-color": color1});
   av.step();
 
-
-  // Slide 6
+  // Slide 5
   mat.css(1, 4, {"background-color": color2});
   mat.css(2, 2, {"background-color": color2});
   mat.css(4, 1, {"background-color": color2});
@@ -107,8 +106,8 @@ $(document).ready(function() {
     " from the elements already placed in the matrix.");
   av.step();
 
-  // Slide 7
-  av.umsg("We can compute: $z^1=\\sqrt i$. Thus, we have: $z^9=z^{25}=z^{49}=\\sqrt i$ and $z^5=z^{21}=-\\sqrt i$");
+  // Slide 6
+  av.umsg("We can compute: $z^1=\\sqrt i$. Thus, we have: $z^9=z^{25}=z^{49}=\\sqrt i$ and $z^5=z^{21}=-\\sqrt i$.");
   mat.value(1, 1, "$\\sqrt i$");
   mat.value(3, 3, "$\\sqrt i$");
   mat.value(5, 5, "$\\sqrt i$");
@@ -127,8 +126,8 @@ $(document).ready(function() {
   mat.css(7, 3, {"background-color": color1});
   av.step();
 
-  // Slide 9
-  av.umsg("When we compute $z^2=i$, we also get: $z^{10}=z^{18}=z^{42}=i$ and $z^6=z^{14}=z^{30}=-i$");
+  // Slide 7
+  av.umsg("When we compute $z^2=i$, we also get: $z^{10}=z^{18}=z^{42}=i$ and $z^6=z^{14}=z^{30}=-i$.");
   mat.css(1, 1, {"background-color": color2});
   mat.css(3, 3, {"background-color": color2});
   mat.css(5, 5, {"background-color": color2});
@@ -171,10 +170,9 @@ $(document).ready(function() {
   mat.css(7, 2, {"background-color": color1});
   av.step();
 
-
-  // Slide 11
+  // Slide 8
   av.umsg("Finally, we have: $z^3=z^{35}=i\\sqrt i$" +
-    " and $z^7=z^{15}=-i\\sqrt i$");
+    " and $z^7=z^{15}=-i\\sqrt i$.");
   mat.css(1, 2, {"background-color": color2});
   mat.css(2, 1, {"background-color": color2});
   mat.css(2, 5, {"background-color": color2});
@@ -210,7 +208,7 @@ $(document).ready(function() {
   mat.css(7, 1, {"background-color": color1});
   av.step();
 
-  // Slide 12
+  // Slide 9
   av.umsg("Using these properties, we only need to compute 4 values: $z^0$, $z^1$, $z^2$, and $z^3$, to completely fill the matrix.");
   mat.css(1, 3, {"background-color": color2});
   mat.css(3, 1, {"background-color": color2});

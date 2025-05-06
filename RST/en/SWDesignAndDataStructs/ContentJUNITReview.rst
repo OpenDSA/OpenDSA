@@ -33,7 +33,7 @@ In this discussion we will be revisiting good testing practices with an example 
       .. raw:: html
    
          <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/Hokie.java"  target="_blank">
-         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
          Hokie.java</img>
          </a>
    
@@ -41,7 +41,7 @@ In this discussion we will be revisiting good testing practices with an example 
    .. raw:: html
    
        <center>
-       <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_0850nht8' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+       <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_0850nht8' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Hokie Class"></iframe> 
        </center>
 
 
@@ -81,12 +81,9 @@ For example, say we wanted to check that a variable ``x`` was equal to 5.
    int x = 4;
    assertEquals(x, 5);
 
-Writing like this would be syntactically correct, but potentially confusing because the failure message would read "Expected [4] but got [5]".  In reality, we were
-*expecting* 5 but *got* 4.
+Writing like this would be syntactically correct, but potentially confusing because the failure message would read "Expected [4] but got [5]".  In reality, we were *expecting* 5 but *got* 4.
 
-Videos in the second half of the course will be using this second, more commonly
-used syntax.  You can continue to use either version.  Below, is a table of
-assertions in both styles. Remember both the isEqualto() and assertEquals() methods use the equals method for the object parameters, be sure to understand how the corresponding equals method works for the objects being compared.
+Videos in the second half of the course will be using this second, more commonly used syntax.  You can continue to use either version.  Below, is a table of assertions in both styles. Remember both the isEqualto() and assertEquals() methods use the equals method for the object parameters, be sure to understand how the corresponding equals method works for the objects being compared.
 
 .. list-table:: Assertions
    :header-rows: 1
@@ -134,7 +131,7 @@ Interactive: Hokie Class JUnit Testing
         .. raw:: html
         
            <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaUnitTesting.pdf"  target="_blank">
-           <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+           <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
            JavaUnitTesting.pdf</img>
            </a>
      
@@ -142,7 +139,7 @@ Interactive: Hokie Class JUnit Testing
      .. raw:: html
      
         <center>
-        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_35cpol6i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_35cpol6i' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Hokie Class JUnit Testing"></iframe> 
         </center>
 
 
@@ -158,7 +155,7 @@ Review of Writing JUnit Tests with student.TestCase
 .. raw:: html
     
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_zj2voxbz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_zj2voxbz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Review of Writing JUnit Tests with student.TestCase"></iframe> 
     </center>
 
 
@@ -539,9 +536,14 @@ You may find it easier to write one test case that handles the logic inside the 
 Additional references for writing JUnit Tests:
 ----------------------------------------------
 
-`Writing JUnit Tests With Student TestCase <2114_junit_tutorial.html>`_
+.. raw:: html
 
-`A Whirlwind Introduction to JUnit <https://web-cat.org/eclstats/junit-quickstart/>`_
+   <ul>
+  <li> <a href="2114_junit_tutorial.html"  target="_blank">Junit Tutorial With Student TestCase</a></li>
+   <li><a href="https://web-cat.org/eclstats/junit-quickstart/"  target="_blank">A Whirlwind Introduction to JUnit</a></li>
+   </ul>
+
+
 
 Checkpoint 6
 ------------

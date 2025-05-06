@@ -15,33 +15,30 @@ $(document).ready(function () {
   var av = new JSAV(av_name);
   
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
-  //slide2
   var y = 0;
 
+  // Slide 1
   av.umsg("<br><b>Introduction to the Independent Set Problem </b>");
   var nl1=av.label("This slideshow introduces and explains the \""+
                    "Independent Set\" Problem.</b> <br><br><br> We start with some "+
                    "definitions  and background.",{top:0});
-
-
   av.displayInit();
-
   av.step();
 
+  // Slide 2
   av.umsg("<br><b>Independent Set</b>"); 
   nl1.hide();
   nl1=av.label("An Independent Set of a graph is a set of vertices such "+
-               "that no two of them are connected <br>i.e. there exists no edge between any two "+
+               "that no two of them are connected.<br>That is, there exists no edge between any two "+
                "vertices of an Independent Set.",{top:-10}); 
-
   av.step();
 
+  // Slide 3
   var nl2=av.label("The largest possible Independent Set of a graph is called "+
                    "the \"Maximum Independent Set\".",{top:50}); 
-
   av.step();
   
-
+  // Slide 4
   var  g = av.ds.graph({width: 400, height: 450,layout: "manual", directed: false,left:200,top:100});
   var x=70;
   y=0;
@@ -52,7 +49,6 @@ $(document).ready(function () {
   var c5 = g.addNode("5", {"left": x+35, "top": y+120});
   var c6 = g.addNode("6", {"left": x+160, "top": y+120});
   var c7 = g.addNode("7", {"left": x+35, "top": y+200});
-  
   
   var e1 = g.addEdge(c1, c2);
   var e2 = g.addEdge(c1, c4);
@@ -78,26 +74,24 @@ $(document).ready(function () {
   c7.addClass("nodecolor6");
   e5.addClass("edgecolor6");
   e8.addClass("edgecolor6");
-
   g.layout();
   g.show(); 
 
-  av.step();
   label1 = av.label("The colored vertices in this graph form an independent set."
                     ,{left:500,top: 150}); 
-  label2 = av.label("The Independent set is {$1, 3, 5, 7$}",{left:500,top: 200}); 
-
+  label2 = av.label("The Independent set is {$1, 3, 5, 7$}.", {left: 500, top: 200});
   av.step();
+
+  // Slide 5
   y=0;
   g.hide(); 
   nl1.hide();
   nl2.hide();
   label1.hide();
   label2.hide();
-  av.umsg("<br><b>Example of Independent Set in graph </b>");
-  nl1=av.label("The following graph contains an Independent Set of size $3$."+
-               " (i.e. {$2,4,5$})",{top:0}); 
-  
+  av.umsg("<br><b>Example of an Independent Set in a graph</b>");
+  nl1=av.label("The following graph contains an Independent Set of size $3$" +
+               " (i.e. {$2,4,5$}).",{top:0}); 
   x=0;
   y=0;
 
@@ -107,7 +101,6 @@ $(document).ready(function () {
   var cb3 = g2.addNode("3", {"left": x+250,"top": y+250});
   var cb4 = g2.addNode("4", {"left": x+250, "top": y+50});
   var cb5 = g2.addNode("5", {"left": x+150, "top": y+150});
-  
   
   var eb1 = g2.addEdge(cb1, cb2);
   var eb2 = g2.addEdge(cb2, cb3);
@@ -130,17 +123,16 @@ $(document).ready(function () {
 
   g2.layout();
   g2.show();
-
   av.step();
 
-
-  av.umsg("<br><b>Example of Independent Set in graph </b>");
+  // Slide 6
+  av.umsg("<br><b>Example of an Independent Set in a graph</b>");
   g2.hide();
 
   y=0;
   nl1.hide(); 
   nl1=av.label("The following graph contains an Independent Set"
-               +" of size $5$. ( i.e. {$2,3,4,6,10$} ) ",{top:-10}); 
+               +" of size $5$ (i.e. {$2,3,4,6,10$}).",{top:-10}); 
 
   x=70;
   y=-10;
@@ -156,7 +148,6 @@ $(document).ready(function () {
   var ca8 = g1.addNode("8", {"left": x+300, "top": y+20});
   var ca9 = g1.addNode("9", {"left": x-45, "top": y+240});
   var ca10 = g1.addNode("10", {"left": x+300, "top": y+200});
-  
   
   var ea1 = g1.addEdge(ca1, ca6);
   var ea2 = g1.addEdge(ca1, ca4);
@@ -174,7 +165,6 @@ $(document).ready(function () {
   var ea14 = g1.addEdge(ca8, ca10);
   var ea3 = g1.addEdge(ca5, ca4);
 
-
   ca6.addClass("nodecolor1");
   ea1.addClass("edgecolor1");
   ea11.addClass("edgecolor1");
@@ -184,54 +174,42 @@ $(document).ready(function () {
   ea4.addClass("edgecolor2");
   ea13.addClass("edgecolor2");
 
-
   ca4.addClass("nodecolor3");
   ea2.addClass("edgecolor3");
   ea9.addClass("edgecolor3");
   ea6.addClass("edgecolor3");
   ea3.addClass("edgecolor3");
 
-
-
   ca3.addClass("nodecolor4");
   ea7.addClass("edgecolor4");
   ea8.addClass("edgecolor4");
   ea5.addClass("edgecolor4");
 
-
-
   ca10.addClass("nodecolor5");
   ea10.addClass("edgecolor5");
   ea14.addClass("edgecolor5");
 
-
   g1.layout();
   g1.show();
-
-
-  //slide 5 
   av.step();
+
+  // Slide 7
   nl1.hide();
   g1.hide();
-  av.umsg("<br><b>The Independent Set Problem </b>");
+  av.umsg("<br><b>The Independent Set Problem</b>");
   nl1=av.label("The Independent Set Problem can be defined as either "
                +"of the following: <br><br><br><b>Given a graph $G = (V , E)$, find "
-               +"the Maximum Independent Set in $G$.</b><br><br><br>Or<br><br><br><b>"
+               +"the Maximum Independent Set in $G$.</b>(Opimization form)<br><br>Or<br><br><b>"
                +"Given a graph $G = (V , E)$, and a number $k$, does $G$ contain an "
-               +"Independent Set of size >= $k$ ?</b>",{top:0});
-
-
-  //silde 6 
+               +"Independent Set of size >= $k$?</b> (Decision form)",{top:0});
   av.step();
+
+  // Slide 8
   nl1.hide();
   y=0;
-
-
   label1.hide();
-
   av.umsg("<br><b>Example of Independent Set Problem: </b>");  
-
-  nl1=av.label("Does the graph below have an independent set of size >=$9$ ?",{top:-10}); 
+  nl1=av.label("Does the graph below have an independent set of size >=$9$?",{top:-10}); 
   x=70;
   y=20;
 
@@ -247,7 +225,6 @@ $(document).ready(function () {
   var cc9 = g4.addNode("9", {"left": x-45, "top": y+250});
   var cc10 = g4.addNode("10", {"left": x+245, "top": y+250});
   var cc11 = g4.addNode("11", {"left": x-70, "top": y+180});
-  
   
   var ec1 = g4.addEdge(cc1, cc6);
   var ec2 = g4.addEdge(cc1, cc4);
@@ -269,34 +246,27 @@ $(document).ready(function () {
   var ec22 = g4.addEdge(cc11, cc7);
   var ec8 = g4.addEdge(cc10, cc8);
 
-
   g4.layout();
   g4.show();
-
-  //slide 7 
   av.step();
 
+  // Slide 9
   y=0;
-
   nl2=av.label("<b>No</b>",{top:40}); 
-
-  av.step(); 
+  av.step();
+  
+  // Slide 10
   nl1.hide();
   nl2.hide();
 
   av.umsg("<br><b>Example of Independent Set Problem: </b>");  
 
   nl1=av.label("Does the graph below have an independent set of size >=$7$ ?",{top:-10}); 
-
-  //slide 9
-
   av.step();
 
+  // Slide 11
   y=0;
-
   nl2=av.label("<b>Yes</b>",{top:40}); 
-
-
   cc4.addClass("nodecolor7");
   ec2.addClass("edgecolor7");
   ec16.addClass("edgecolor7");
@@ -306,17 +276,14 @@ $(document).ready(function () {
   ec17.addClass("edgecolor2");
   ec21.addClass("edgecolor2");
 
-
   cc5.addClass("nodecolor4");
   ec3.addClass("edgecolor4");
   ec6.addClass("edgecolor4");
   ec10.addClass("edgecolor4");
 
-
   cc8.addClass("nodecolor8");
   ec20.addClass("edgecolor8");
   ec8.addClass("edgecolor8");
-
 
   cc6.addClass("nodecolor9");
   ec1.addClass("edgecolor9");

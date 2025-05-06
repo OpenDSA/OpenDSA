@@ -9,17 +9,6 @@
 Bags
 ====
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`BagBasics`
-    - :ref:`BagUsage`
-    - :ref:`BagArrayImp`
-    - :ref:`BagArrayMethods`
-    - :ref:`BagArrayMethods2`
-    - :ref:`BagArrayMethods3`
-
 Objectives
 ----------
 
@@ -199,7 +188,7 @@ Interactive: Documentation of Bag Interface Methods
 .. raw:: html
 
     <center>
-       <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kn4272o0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+       <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_kn4272o0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Documentation of Bag Interface Methods"></iframe> 
     </center>
 
 .. _BagUsage: 
@@ -211,7 +200,7 @@ Interactive: Using Bags
 
     <!-- TODO: Slides? none for this or previous video but maybe should have shopping cart demo? -->
     <center>
-        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_9d2n6v3x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+        <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_9d2n6v3x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Using Bags"></iframe> 
     </center>
 
 
@@ -221,10 +210,7 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
-
-
 .. _BagArrayImp: 
-
 
 Array Implementation of Bags
 ----------------------------
@@ -242,7 +228,7 @@ Interactive: Fixed-Size Array Implementation
 
     <!-- TODO: Slides? no, I think because of text within page @bemdmison would it be more consistent if I revisit that on this page?-->
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_e766pflq' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_e766pflq' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Array Implementation of Bags"></iframe> 
     </center>
 
 
@@ -297,12 +283,10 @@ depicted below.
 .. odsafig:: Images/2114ArrayBagClassDiagram.png
    :align: center
 
-
 Interactive: ArrayBagsWithJUnit Example Demonstration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. admonition:: Follow Along, Practice and Explore
-
 
      Download to run and explore the corresponding project from the video on your own in eclipse. The project CS2-Support is required for the sample project.  It is also used in your course projects. To download the CS2-Support you must first complete the configuration steps for your first lab. You will then be able to download it via eclipse using the blue down arrow icon or using the Project Menu and selecting "Download Assignment..."
 
@@ -310,16 +294,15 @@ Interactive: ArrayBagsWithJUnit Example Demonstration
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exArrayBagsWithJUnit.zip"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       exArrayBagsWithJUnit.zip</img>
       </a>
 
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_42v9vnzf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_42v9vnzf' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayBagsWithJUnit Example Demonstration"></iframe> 
     </center>
-
 
 Checkpoint 2
 ------------
@@ -327,13 +310,10 @@ Checkpoint 2
 .. avembed:: Exercises/SWDesignAndDataStructs/BagsCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
-
-
+.. _BagArrayMethods: 
 
 Demo More bag method implementation
 -----------------------------------
-
-.. _BagArrayMethods: 
 
 Interactive: More on the Bag Method Implementation 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -345,17 +325,15 @@ Interactive: More on the Bag Method Implementation
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayBagMethods.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       ArrayBagMethods.pdf</img>
       </a>
-
 
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nk6yv7gj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nk6yv7gj' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="More on the Bag Method Implementation "></iframe> 
    </center>
-
 
 ArrayBag Class UML Diagram
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -396,7 +374,7 @@ Interactive: Methods that Remove and Design Improvement, Part 1
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart1.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       BagsDesignImprovePart1.pdf</img>
       </a>
 
@@ -404,7 +382,7 @@ Interactive: Methods that Remove and Design Improvement, Part 1
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_afd08368' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_afd08368' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Methods that Remove and Design Improvement, Part 1"></iframe> 
    </center>
 
 Interactive: Methods that Remove and Design Improvement, Part 2
@@ -417,7 +395,7 @@ Interactive: Methods that Remove and Design Improvement, Part 2
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart2.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       BagsDesignImprovePart2.pdf</img>
       </a>
 
@@ -425,7 +403,7 @@ Interactive: Methods that Remove and Design Improvement, Part 2
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_x16wqf9x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_x16wqf9x' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Methods that Remove and Design Improvement, Part 2"></iframe> 
    </center>
 
 Interactive: Methods that Remove and Design Improvement, Part 3
@@ -438,7 +416,7 @@ Interactive: Methods that Remove and Design Improvement, Part 3
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/BagsDesignImprovePart3.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       BagsDesignImprovePart3.pdf</img>
       </a>
 
@@ -446,7 +424,7 @@ Interactive: Methods that Remove and Design Improvement, Part 3
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_54w07n1k' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_54w07n1k' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Methods that Remove and Design Improvement, Part 3"></iframe> 
    </center>
 
 
@@ -468,7 +446,7 @@ Interactive: Array resizing description and coding Demo
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DoubleArray.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       DoubleArray.pdf</img>
       </a>
 
@@ -476,7 +454,7 @@ Interactive: Array resizing description and coding Demo
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_10v1aoku' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_10v1aoku' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Array resizing description and coding Demo"></iframe> 
    </center>
 
 

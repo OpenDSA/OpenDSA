@@ -15,8 +15,6 @@ The Independent Set Problem
 Independent Set
 ---------------
 
-INDEPENDENT SET PROBLEM.
-
 .. inlineav:: independentSetCON ss
    :long_name: Independent Set
    :links: AV/NP/independentSetCON.css

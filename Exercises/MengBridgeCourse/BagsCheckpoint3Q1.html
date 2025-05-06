@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Bags Checkpoint 3</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -7,23 +7,23 @@
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="650" data-width="950">
+  <body data-height="1850" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="BAGS_CP3_Q1">
         <p class="question">Which of the following 5 implementations could not
           be used for contains?</p>
         <div class="solution">
-          <tt>
+          <tt><pre class="prettyprint">
 public boolean contains(T anEntry)
 {
    return !isEmpty();
-}
+}</pre>
           </tt>
         </div>
         <ul class="choices">
         <li>
-<tt>
+        <tt><pre class="prettyprint">
 public boolean contains(T anEntry)
 {
   boolean found = false;
@@ -34,43 +34,43 @@ public boolean contains(T anEntry)
     {
       found = true;
     }
-  i++;
+    i++;
   }
   return found;
-}
+}</pre>
 </tt>
         </li>
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public boolean contains(T anEntry)
 {
   return getIndexOf(anEntry) > -1;
-}
+}</pre>
 </tt>
         </li>
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public boolean contains(T anEntry)
 {
   return getFrequencyOf(anEntry) > 0;
-}
+}</pre>
 </tt>
         </li>
         <li>
-<tt>
+<tt><pre class="prettyprint">
 public boolean contains(T anEntry)
 {
   int i = 0;
-  while ((i < numberOfEntries))
+  while (i < numberOfEntries)
   {
     if (anEntry.equals(contents[i]))
     {
       return true;
     }
-  i++;
+    i++;
   }
   return false;
-}
+}</pre>
 </tt>
         </li>
 

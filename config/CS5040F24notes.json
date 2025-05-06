@@ -1,0 +1,125 @@
+{
+  "title": "DSA Coursenotes",
+  "desc": "DSA 2024 Coursenotes",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "code_lang": {
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
+      "lang": "java"
+    },
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "build_JSAV": false,
+  "suppress_todo": true,
+  "glob_exer_options": {},
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
+  "chapters": {
+    "Week 1": {
+      "CS5040slides/CourseIntro": {},
+      "CS5040slides/Intro": {},
+      "CS5040slides/P1": {},
+      "CS5040slides/ProjManage": {}
+    },
+    "Week 2": {
+      "CS5040slides/Math": {},
+      "CS5040slides/AlgAnal": {},
+      "CS5040slides/Lists": {},
+      "CS5040slides/StackQueue": {}
+    },
+    "Week 3": {
+      "CS5040slides/Binary": {},
+      "CS5040slides/BST": {},
+      "CS5040slides/BinTree": {},
+      "CS5040slides/Binary3": {}
+    },
+    "Week 4": {
+      "CS5040slides/Heaps": {},
+      "CS5040slides/Huffman": {},
+      "CS5040slides/Trie": {},
+      "CS5040slides/Coding": {},
+      "CS5040slides/P2": {}
+    },
+    "Week 5": {
+      "CS5040slides/Sorting1": {},
+      "CS5040slides/Overconstrained": {},
+      "CS5040slides/Comparison": {}
+    },
+    "Week 6": {
+      "CS5040slides/Sorting2": {},
+      "CS5040slides/Sorting3": {}
+    },
+    "Week 7": {
+      "CS5040slides/FileProc": {}
+    },
+    "Week 8": {
+      "CS5040slides/P3": {},
+      "CS5040slides/Buffering": {}
+    },
+    "Week 9": {
+      "CS5040slides/Hashing": {}
+    },
+    "Week 10": {
+      "CS5040slides/MemManage": {}
+    },
+    "Weeks 11": {
+      "CS5040slides/P4": {},
+      "CS5040slides/Indexing": {}
+    },
+    "Weeks 12": {
+      "CS5040slides/TTTree": {},
+      "CS5040slides/BTree": {}
+    },
+    "Week 13": {
+      "CS5040slides/Graphs": {},
+      "CS5040slides/Union-Find": {}
+    },
+    "Week 14": {
+      "CS5040slides/SkipList": {}
+    }
+  }
+}

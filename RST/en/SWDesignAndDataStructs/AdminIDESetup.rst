@@ -26,10 +26,10 @@ compile without these.
    Note: this setup involves multiple steps and it's not uncommon for students to miss something their first time through.  If you've installed everything but can't get any code to run at all, it's good to try uninstalling Eclipse and just installing it again.
 
 
-1. Open  `https://www.eclipse.org/downloads/packages/release/2023-09/r <https://www.eclipse.org/downloads/packages/release/2023-09/r>`_
-2. Click on the Download link in the box at the top that matches your computer.
+1. Download **2023-09 Eclipse IDE for Java Developers** from  `https://www.eclipse.org/downloads/packages/release/2023-09/r <https://www.eclipse.org/downloads/packages/release/2023-09/r>`_
+2. Be sure to use the link below the installer to get the correct version.
 
-   .. odsafig:: Images/EclipseInstallJan2024.png
+   .. odsafig:: Images/EclipseInstallJan2025.png
       :align: center
 
    .. admonition:: Which version of Eclipse should I download? 32 or 64-bit? x86_64 or AArch64?
@@ -39,6 +39,16 @@ compile without these.
         * For Windows: `Review this page to figure out if you have 32-bit or 64-bit Windows <https://support.microsoft.com/en-us/windows/which-version-of-windows-operating-system-am-i-running-628bec99-476a-2c13-5296-9dd081cdd808>`_, and then download the x86_64 for 64-bit Windows, or the x86 for 32 bit windows. 
         
         * For Mac: `Figure out what processor you have in your Mac <https://www.howtogeek.com/706226/how-to-check-if-your-mac-is-using-an-intel-or-apple-silicon-processor/>`_, and then download the Mac x86_64 version for Intel processors, or AArch64 for the Apple processors.
+
+    .. admonition:: How to extract the installation zip file in Windows
+    
+      step 1 Extract the zipped file (likely it will extract to your downloads folder) 
+            a. For Window’s, you can specify where to extract - extract it to your user name folder. The example below is Professor Hillman’s example.
+            b. If you did part (a) above, skips steps 2 and 3
+      step 2 Find the eclipse folder (after extraction - very likely in your downloads folder) 
+      step 3 Move the eclipse folder to your user name folder (this is where the installer would put your folder)
+      step 4
+
 
 3. After the download is complete, follow the installation instructions
    
@@ -227,12 +237,12 @@ Adding CS2 Support Projects
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4snkjorp' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4snkjorp' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Adding CS2 Support Projects"></iframe> 
    </center>
 
 
 
-Createing a Project and Setting Default JDK
+Creating a Project and Setting Default JDK
 -------------------------------------------
 Create a project to use for experimenting.
 
@@ -277,5 +287,5 @@ Troubleshooting Setting JDK to 1.8
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q98qkist' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_q98qkist' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Troubleshooting Setting JDK to 1.8 "></iframe> 
    </center>

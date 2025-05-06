@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Pointers Concept Map
    :author: Ehsan Elgendi
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Concept Maps
+   :keyword: Pointers
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Concept map of pointer concepts.
 
 Pointers Concepts Summary
 =========================

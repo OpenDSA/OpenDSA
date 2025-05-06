@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer and David Parillo
+   :title: Data Structures and Algorithms Introduction
+   :author: Cliff Shaffer; David Parillo
+   :institution: Virginia Tech; San Diego Mesa College
    :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
-   :keyword: Data Structures Introduction
+   :keyword: Data Structures
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to a course on Data Structures with Software Engineering topics.
 
 Data Structures and Algorithms
 ==============================
@@ -345,7 +350,7 @@ Introduction Summary Questions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/Background/IntroSumm.html ka
-   :long_name: Introduction Summary Questions
+   :long_name: Introduction Review Questions
    :keyword: Data Structures Introduction
 
 

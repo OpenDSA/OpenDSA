@@ -441,11 +441,12 @@ def configure(config_file_path, options):
 
     slides = options.slides
     no_lms = options.no_lms
+    isVerbose = options.verbose
     standalone_modules = options.standalone_modules
     conf_data = None
 
     if no_lms or slides:
-        conf_data = simple2full.generate_full_config(config_file_path, slides)
+        conf_data = simple2full.generate_full_config(config_file_path, slides, verbose=isVerbose)
 
     print(("Configuring OpenDSA, using " + config_file_path))
 
@@ -537,7 +538,6 @@ def configure(config_file_path, options):
         job.append('slides')
     else:
         job.append("html")
-        job.append("min")
 
     # if make is visible to shutil, then no need to use shell
     ''' TODO: Test if shell_needed is always false, which would make some of the below code useless
@@ -577,7 +577,7 @@ def configure(config_file_path, options):
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
-    parser = ArgumentParser(description="Generate an eBook using a config file.")
+    parser = ArgumentParser(description="Generate an OpenDSA eBook using a config file.")
     parser.add_argument("config_file_path", help="A JSON file that selects the content and layout of the eBook")
     parser.add_argument("-s", "--slides", help="Causes configure.py to create slides", action="store_true", default=False)
     parser.add_argument("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", action="store_true", default=False)
@@ -585,6 +585,7 @@ if __name__ == "__main__":
     parser.add_argument("--local", help="Causes the compiled book to work in local mode, which means no communication with the server", action="store_true", default=True)
     parser.add_argument("--no-lms", help="Compile book without changing internal links required by LMS", action="store_true", default=False)
     parser.add_argument("--standalone-modules", help="Compile all modules such that each module has no links to other modules.",action="store_true", default=False)
+    parser.add_argument("--verbose", help="Shows more output during building",action="store_true", default=False)
     args = parser.parse_args()
 
     if args.slides:

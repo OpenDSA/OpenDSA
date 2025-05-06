@@ -21,26 +21,29 @@ Upon completion of this module, students will be able to:
 * Apply and demonstrate good design practices
 * Produce the design of a software system using a UML class diagram
 
-Introduction to Software design
--------------------------------
+.. _DesignIntro: 
 
-[9:30] Intro to Software Design
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interactive: Introduction to Software Design [9:30]
+---------------------------------------------------
+
+.. admonition:: Follow Along and Engage
+
+    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+
+   .. raw:: html
+   
+      <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.2.2.1-IntroToSoftwareDesign.pdf" target="_blank">
+         <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
+         Video Slides 9.2.2.1-IntroToSoftwareDesign.pdf</img>
+         </a>
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_4gfpbvoi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_1zy32v9u" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4gfpbvoi' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Software Design"></iframe> 
+   </center>
 
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/9.2.2.1-IntroToSoftwareDesign.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 9.2.2.1-IntroToSoftwareDesign.pdf</img>
-   </a>
-
+.. _DesignRequirements: 
 
 Functional and non-functional requirements
 ------------------------------------------
@@ -146,6 +149,7 @@ Checkpoint 1
 .. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _DesignClasses: 
 
 Identifying classes, fields, and methods
 ----------------------------------------
@@ -290,6 +294,7 @@ More information is available via the link below
 
 `https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html <https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html>`_
 
+.. _DesignActivity1: 
 
 Design Activity: Case Study e-Commerce solution (online storefront) for ABC Ltd
 -------------------------------------------------------------------------------
@@ -332,6 +337,7 @@ address, and payment details.
 ABC’s  customer service, order fulfillment, and other employee users must also
 be able to use the system to support business operations.
 
+.. _DesignRelations: 
 
 Identifying relationships, hierarchies, and opportunities for reuse
 -------------------------------------------------------------------
@@ -386,8 +392,11 @@ provided throughout the module, labs, and projects.
 Much of what you need to know for relationships, hierarchies and reuse has
 been covered within the :doc:`2114Polymorphism2` module. Additionally you may download the `UML Diagram key <https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/7.3.2.1.1-UMLDiagramKey.pdf>`_ to navigate the UML diagrams. You should review these, and then continue the activity below.
 
-Activity
---------
+
+.. _DesignActivity2: 
+
+Design Activity: Determine Relationships between Classes
+--------------------------------------------------------
 
 Review the listing of nouns and noun phrases and concepts that could be
 extracted from the Case Study - e-Commerce solution (online storefront)
@@ -578,6 +587,7 @@ Checkpoint 2
 .. avembed:: Exercises/MengBridgeCourse/DesignCheckpoint2Summ.html ka
    :long_name: Checkpoint 2
 
+.. _DesignMVC: 
 
 Intro to Design Patterns and MVC
 --------------------------------
@@ -633,17 +643,16 @@ classes are deprecated and in the Tower of Hanoi project we now use our own
 Model and View classes to take the place of these.
 
 
-[11:00] MVC and Observer Video
-------------------------------
+Interactive: MVC and Observer Video [11:00]
+-------------------------------------------
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_pws7qjiz&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_5sdnrfdi" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pws7qjiz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="MVC and Observer Video"></iframe> 
+    </center>
+     
 Note: Project 3 in this video is a variation of the towers of Hanoi project.
-
 
 MVC Example AddressBook
 -----------------------
@@ -680,6 +689,8 @@ application.
   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex09.02-AddressBookMVC"
 
   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+
+.. _DesignCaseStudies: 
 
 Design Review: Case Study - e-Commerce solution (online storefront) for ABC Ltd.
 --------------------------------------------------------------------------------
@@ -786,8 +797,8 @@ Observer (for now, should not).
 
 You should review your current design and amend it to include these updates.
 
-Case Study - Vending Machine
-----------------------------
+Design Review: Case Study - Vending Machine
+--------------------------------------------
 
 You have been hired to produce a high-level software design for a
 Vending Machine application.

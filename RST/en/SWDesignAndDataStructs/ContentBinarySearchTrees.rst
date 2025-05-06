@@ -10,18 +10,6 @@
 Binary Search Trees
 ===================
 
-..
-    Shortcuts
-    ---------
-
-    - :ref:`BSTIntro`
-    - :ref:`BSTProg`
-    - :ref:`BSTAdd`
-    - :ref:`BSTRemove`
-    - :ref:`JavaScopeAndEquality`
-    - :ref:`JavaObjectsAndEnums`
-
-
 Objectives
 ----------
 * Distinguish a Binary Tree from a Binary Search Tree (BST)
@@ -36,7 +24,10 @@ Suggested Reading:
 
 Chapter 25 A Binary Search Tree Implementation from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-.. _BSTIntro: 
+.. raw:: html
+
+    <a name="BSTIntro">
+
 
 Interactive: Introduction to Binary Search Trees
 ------------------------------------------------
@@ -47,8 +38,8 @@ Interactive: Introduction to Binary Search Trees
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroBinarySearchTrees.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/IntroBinarySearchTrees24.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       IntroBinarySearchTrees.pdf</img>
       </a>
 
@@ -56,10 +47,9 @@ Interactive: Introduction to Binary Search Trees
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_37ep8bta' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_oa8zsd2b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Binary Search Trees"></iframe> 
    </center>
 
-Note: there is an alphebetical error on slide 8, UX Designer and Web Developer should be switched.
 
 Checkpoint 1
 ------------
@@ -67,7 +57,9 @@ Checkpoint 1
 .. avembed:: Exercises/SWDesignAndDataStructs/BSTCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
-.. _BSTProg: 
+.. raw:: html
+   
+   <a name="BSTProg">
 
 Interactive: Programming Binary Search Trees
 ------------------------------------------------
@@ -79,7 +71,7 @@ Interactive: Programming Binary Search Trees
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ProgrammingBinarySearchTrees.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       ProgrammingBinarySearchTrees.pdf</img>
       </a>
 
@@ -87,7 +79,7 @@ Interactive: Programming Binary Search Trees
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ykrtcb3f' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ykrtcb3f' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Programming Binary Search Trees"></iframe> 
    </center>
 
 
@@ -108,8 +100,8 @@ Interactive: Adding Binary Search Trees
 
    .. raw:: html
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/AddingToBinarySearchTrees.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/AddingToBinarySearchTrees24.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
      AddingToBinarySearchTrees.pdf</img>
       </a>
 
@@ -117,7 +109,7 @@ Interactive: Adding Binary Search Trees
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_oeoqmpa6' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_y1v3inw7' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Adding Binary Search Trees"></iframe> 
    </center>
 
 
@@ -139,8 +131,8 @@ Interactive: Removing From Binary Search Trees
    .. raw:: html
 
 
-      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RemovingFromBinarySearchTrees.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/RemovingFromBinarySearchTrees24.pdf"  target="_blank">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       RemovingFromBinarySearchTrees.pdf</img>
       </a>
 
@@ -148,7 +140,7 @@ Interactive: Removing From Binary Search Trees
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ijj9r93f' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ljk55fcq' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Removing From Binary Search Trees"></iframe> 
    </center>
 
 Checkpoint 4

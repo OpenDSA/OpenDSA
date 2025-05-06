@@ -520,7 +520,7 @@ Syntax Practice 8b: Lists
 -------------------------
 
 .. extrtoolembed:: 'Syntax Practice 8b: Lists'
-   :workout_id: 1860
+   :workout_id: 1859
 
 
 Nested For Loops
@@ -623,7 +623,7 @@ Syntax Practice 8c: Nested Loops
 --------------------------------
 
 .. extrtoolembed:: 'Syntax Practice 8c: Nested Loops'
-   :workout_id: 1491
+   :workout_id: 1860
 
 
 Check Your Understanding

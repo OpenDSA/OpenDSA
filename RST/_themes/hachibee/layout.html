@@ -55,7 +55,7 @@
             {%- block sidebarlogo %}
                 {%- if logo %}
                     <p class="logo"><a href="{{ pathto(master_doc) }}">
-                    <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+                    <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt=""/>
                     </a></p>
                 {%- else %}
                     <h3><a href="{{ pathto(master_doc) }}">{{ _('Top') }}</a></h3>
@@ -92,7 +92,9 @@
 
 {%- macro css() %}
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
-    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+    {% for cssFile in styles %}
+      <link rel="stylesheet" href="{{ pathto('_static/' + cssFile, 1) }}" type="text/css" />
+    {% endfor %}
     <link rel="stylesheet" href="{{ pathto('_static/genericons.css', 1) }}" type="text/css" />
     {%- for cssfile in css_files %}
       {%- if not cssfile == 'modile.css' -%}
@@ -145,7 +147,7 @@
         {%- block extrahead %} {% endblock %}
     </head>
     <body>
-    <div class="content">
+    <div class="content" role="main">
         {%- block header %}
 
         <header id="top-header">
@@ -211,4 +213,3 @@
     <script type="text/javascript" src="{{ pathto('_static/main.js', 1) }}" async></script>
     </body>
 </html>
-

@@ -10,17 +10,6 @@
 Style and Documentation: Introduction
 =====================================
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`introduction`
-    - :ref:`ContentStyleNaming`
-    - :ref:`ContentStyleFormat`
-    - :ref:`ContentStyleDocumentation`
-    - :ref:`ContentStyleOther`
-    - :ref:`ContentStyleReview`
-
 Overview & Objectives
 ---------------------
 *Upon completion of this module, students will be able to:*
@@ -340,7 +329,7 @@ Code Review
    .. raw:: html
    
        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/record.java"  target="_blank">
-       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
        record.java</img>
        </a>
 
@@ -359,7 +348,7 @@ In this activity you will adopt the role of a Jr. developer tasked to review cod
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5bpln3rv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5bpln3rv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Code Review"></iframe> 
     </center>
     
 
@@ -658,7 +647,7 @@ Unlike other comments, JavaDoc comments (comments that begin with /** are public
 
 Describing a class
 ------------------
-Class comments (javadoc comments) will begin with /** and close with \*/ with the details/purpose of the class in between. Each line within the comment block will start with *. The opening /** and closing \*/ should be vertically aligned. Each * within the comment block should be vertically aligned as well.
+Class comments (javadoc comments) will begin with /** and close with \*/ with the details/purpose of the class in between. Each line within the comment block will start with \*. The opening /** and closing \*/ should be vertically aligned. Each * within the comment block should be vertically aligned as well.
 
 Class comments should always include the following:
 
@@ -752,6 +741,7 @@ Method comments should include the following:
 * use `@throws` (with a corresponding throws clause in the method signature) when an operation guarantees it will throw an exception under specific conditions
 * use `@precondition` (plus internal assert or conditional statements) only for true conditions (i.e., conditions under which the method must never be called (the behavior of the method has absolutely no guarantees about what happens under such conditions)
 * use `@postcondition` for mutator methods to explain the state change(s) to the object that has resulted from the method execution.
+* use `@inheritDoc` for method javadocs that can be inhertied from a superclass or interface
 
 .. admonition:: Note: Never let @throws and @precondition tags overlap.
 
@@ -1016,7 +1006,7 @@ Interactive: Style & Documentation Final Review
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5a3easxv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5a3easxv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Style & Documentation Final Review"></iframe> 
     </center>
     
 Checkpoint 2
@@ -1031,7 +1021,11 @@ Related Resources
 
 *References:*
 
-- Northeastern University. Style Guide for Web-CAT submissions: http://www.ccs.neu.edu/home/vkp/2510-sp13/web-cat-hints.html 
-- Google. Java Style Guide: https://google.github.io/styleguide/javaguide.html 
-- Javadoc Guide: https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html
-- Sun Microsystems, Inc (known today as Oracle). (1996). Java Code Conventions: https://www.oracle.com/technetwork/java/codeconventions-150003.pdf 
+.. raw:: html
+    
+    <ul>
+    <li><a href="http://www.ccs.neu.edu/home/vkp/2510-sp13/web-cat-hints.html  " target="_blank">Northeastern University. Style Guide for Web-CAT submissions </a></li>
+     <li><a href="https://google.github.io/styleguide/javaguide.html   " target="_blank">Google. Java Style Guide </a></li>
+      <li><a href="https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html  " target="_blank">Javadoc Guide </a></li>
+       <li><a href="https://www.oracle.com/technetwork/java/codeconventions-150003.pdf  " target="_blank">Sun Microsystems, Inc (known today as Oracle). (1996). Java Code Conventions </a></li>
+    </ul>

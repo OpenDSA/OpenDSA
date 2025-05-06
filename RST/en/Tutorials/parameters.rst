@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Parsing Command Line Parameters In Your Program
    :author: Jordan Sablan
    :requires: Commmand line
    :satisfies: Command line parameters
    :topic: Programming Tutorial
    :keyword: Command Line Parameters
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduction to parsing command line parameters in a Java program.
 
 
 Parsing Command Line Parameters In Your Program

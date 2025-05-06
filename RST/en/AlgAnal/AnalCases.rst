@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Best, Worst, and Average Cases
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: growth rate
    :satisfies: best and worst case
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis; Best, Average, Worst Cases
-
+   :keyword: Algorithm Analysis; Best, Average, Worst Case
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to best, worst, and average case analysis.
 
 Best, Worst, and Average Cases
 ==============================

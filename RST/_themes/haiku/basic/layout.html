@@ -10,6 +10,10 @@
 {%- block doctype -%}
 <!DOCTYPE html>
 {%- endblock %}
+
+
+
+
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and (sidebars != []) %}
@@ -23,7 +27,7 @@
 {%- endif %}
 
 {%- macro relbar() %}
-    <div class="related">
+    <div class="related" aria-label="related">
       <h3>{{ _('Navigation') }}</h3>
       <ul>
         {%- for rellink in rellinks %}
@@ -48,11 +52,9 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
           {%- block sidebarlogo %}
-          {%- if logo %}
             <p class="logo"><a href="{{ pathto(master_doc) }}">
-              <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+              <img class="logo" src="{{ pathto('_static/OpenDSALogoT64.png', 1) }}" alt=""/>
             </a></p>
-          {%- endif %}
           {%- endblock %}
           {%- if sidebars != None %}
             {#- new style sidebar: explicitly include/exclude templates #}
@@ -67,15 +69,9 @@
             {%- block sidebarrel %}
             {%- include "relations.html" %}
             {%- endblock %}
-            {%- block sidebarsourcelink %}
-            {%- include "sourcelink.html" %}
-            {%- endblock %}
             {%- if customsidebar %}
             {%- include customsidebar %}
             {%- endif %}
-            {%- block sidebarsearch %}
-            {%- include "searchbox.html" %}
-            {%- endblock %}
           {%- endif %}
         </div>
       </div>
@@ -118,7 +114,9 @@
 {%- endmacro %}
 
 {%- macro css() %}
-    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+    {% for cssFile in styles %}
+      <link rel="stylesheet" href="{{ pathto('_static/' + cssFile, 1) }}" type="text/css" />
+    {% endfor %}
     <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
     {%- for cssfile in css_files %}
     <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
@@ -138,6 +136,7 @@
       <label>
         <span>{{ summary }}*:</span>
         <input type="text" id="b_title" placeholder="{{ summary }}" />
+
       </label>
 
       <label class="os">
@@ -207,9 +206,6 @@
     {%- if hasdoc('genindex') %}
     <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
     {%- endif %}
-    {%- if hasdoc('search') %}
-    <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
-    {%- endif %}
     {%- if hasdoc('copyright') %}
     <link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}" />
     {%- endif %}
@@ -239,7 +235,7 @@
 {%- block content %}
   {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
 
-    <div class="document">
+    <div class="document" role="main">
   {%- block document %}
       <div class="documentwrapper">
       {%- if render_sidebar %}

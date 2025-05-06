@@ -1,7 +1,7 @@
 {
   "translations" :{
     "en": {
-      "sc1": "We will use expansion to guess the closed form solution for the recurrence $\\mathbf{T}(n) = \\mathbf{T}(n-1) + 1\\ \\mbox{for}\\ n > 1; \\mathbf{T}(0) = \\mathbf{T}(1) = 0$.",
+      "sc1": "We will use expansion to guess the closed form solution for the recurrence $\\mathbf{T}(n) = \\mathbf{T}(n-1) + 1$ for $n > 1$; $\\mathbf{T}(0) = \\mathbf{T}(1) = 0$.",
       "sc2.1": "When we expand the recurrence for a problem of size $n$, we replace the problem of size $n$ with $1$ unit of work plus a subproblem of size $n-1$:",
       "sc2.2": " $\\mathbf{T}(n) = 1 + \\mathbf{T}(n-1)$",
       "sc3.1": "We replace a problem of size $n-1$ with $1$ unit of work plus a subproblem of size $n-2$",

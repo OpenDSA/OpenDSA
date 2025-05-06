@@ -1,21 +1,21 @@
 SHELL := /bin/bash
-RM = rm --recursive --force
-CONFIG_SCRIPT = tools/configure.py
+RM = rm -rf
 .DEFAULT_GOAL := help
-JS_LINT = eslint --no-color
-CSS_LINT = csslint --quiet --ignore=ids,adjoining-classes
-# CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
-JSON_LINT = jsonlint --quiet
-PYTHON_LINT = pyLint --disable=C --reports=y
-# Can be overridden by env varis, such as ODSA_ENV='PROD'
 ODSA_ENV ?= DEV
-# Python used for building books:
+# ^ Default env variable, is overridden if already defined, such as ODSA_ENV='PROD'
 PYTHON = python3
-# -bb flag issues errors when str is compared to bytes; -Werror flag makes all warnings into errors
-# -u flag runs python in unbuffered mode (no output flushes needed)
+# ^ Python used for building books:  (can add options like -bb, -u, -Werror ...)
+CONFIG_SCRIPT = tools/configure.py
+CONFIG_SCRIPT_OPTS = --no-lms
+# ^ Starting script for building books.  See --help for option descriptions
+PYTHON_LINT = pylint --disable=C --reports=y
+JS_LINT = yarn eslint --no-color
+CSS_LINT = yarn csslint --quiet --ignore=ids,adjoining-classes
+# CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
+JSON_LINT = yarn jsonlint --quiet
 
-JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
-CSS_MINIFY = cleancss
+JS_MINIFY = yarn uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
+CSS_MINIFY = yarn cleancss
 ifeq ($(strip $(ODSA_ENV)),DEV)
 	# fake-minify for easier debugging in DEV setups...
 	JS_MINIFY = cat
@@ -156,26 +156,26 @@ BOOK_NAME: ## creates a book based off of config/BOOK_NAME.json
 
 # A Static-Pattern Rule for making Books
 $(BOOKS): % : config/%.json min
-	$(PYTHON) $(CONFIG_SCRIPT) $< --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) $< $(CONFIG_SCRIPT_OPTS)
 	@echo "Created an eBook in Books/: $@"
 
 $(SLIDE_BOOKS) : % : config/%.json min
-	$(PYTHON) $(CONFIG_SCRIPT) --slides $< --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) --slides $< $(CONFIG_SCRIPT_OPTS)
 	@echo "Created an Slide-eBook in Books/: $@"
 
 
-# Target eBooks with unique recipies below:::
+# Target eBooks with unique recipes below:::
 CS3notes: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes $(CONFIG_SCRIPT_OPTS)
 
 CS3F18notes: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3F18slides.json -b CS3F18notes $(CONFIG_SCRIPT_OPTS)
 
 CS5040notes: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes $(CONFIG_SCRIPT_OPTS)
 
 CS5040MasterN: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN $(CONFIG_SCRIPT_OPTS)
 
 CS3SS18notes: min
-	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes $(CONFIG_SCRIPT_OPTS)

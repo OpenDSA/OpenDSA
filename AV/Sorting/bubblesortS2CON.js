@@ -1,4 +1,13 @@
 /*global ODSA */
+// Title: Bubble Sort 2nd Pass Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Bubble Sort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a simple visualization of the second pass for Bubble Sort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "bubblesortS2CON";

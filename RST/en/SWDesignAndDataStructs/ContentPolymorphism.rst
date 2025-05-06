@@ -10,17 +10,6 @@
 Polymorphism
 ============
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`IntroOOP`
-    - :ref:`IntroUML`
-    - :ref:`IntroInheritance`
-    - :ref:`IntroPolyMeasure`
-    - :ref:`IntroPolySuper`
-    - :ref:`IntroPolyExample`
-
 Objectives
 ----------
 
@@ -47,7 +36,7 @@ Interactive: Introduction to Object Oriented Programming
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPObjects.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       JavaOOPObjects.pdf</img>
       </a>
 
@@ -55,7 +44,7 @@ Interactive: Introduction to Object Oriented Programming
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_td3bp4s0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_td3bp4s0' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Object Oriented Programming"></iframe> 
    </center>
 
 Checkpoint 1
@@ -76,7 +65,7 @@ Interactive: Java UML Diagrams
       .. raw:: html
       
          <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPUML.pdf"  target="_blank">
-         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+         <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
          JavaOOPUML.pdf</img>
          </a>
          <br>
@@ -89,7 +78,7 @@ Interactive: Java UML Diagrams
    .. raw:: html
    
       <center>
-      <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_phzs60ad' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+      <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_phzs60ad' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java UML Diagrams"></iframe> 
       </center>
 
 
@@ -106,12 +95,12 @@ Interactive: Java Inheritance: this, super
    .. raw:: html
    
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPInheritanceSuperThis.pdf"  target="_blank">
-        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
         Video Slides Java OOP Super This.pdf</img>
         </a>
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs.examples/eclipse/exJavaOOP.zip"  target="_blank">
-        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
        exJavaOOP.zip</img>
         </a>
         
@@ -120,7 +109,7 @@ Interactive: Java Inheritance: this, super
 .. raw:: html
     
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_25fplq8v' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_25fplq8v' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java Inheritance: this, super "></iframe> 
     </center>
 
 Checkpoint 2
@@ -148,7 +137,7 @@ Interactive: Java Inheritance: equals(), toString()
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPInheritanceEqualsToString.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       JavaOOPInheritenceEqualsToString.pdf</img>
       </a>
 
@@ -156,7 +145,7 @@ Interactive: Java Inheritance: equals(), toString()
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ml9sbz2y' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ml9sbz2y' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Java Inheritance: equals method, toString method"></iframe> 
    </center>
 
 
@@ -183,14 +172,14 @@ Interactive: Polymorphism Measurable Interface
         <!-- TODO: Code link? ok there is an exMeasurable.zip, need that listed here?? not sure how syncs with admonition-->
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyMeasurable.pdf" target="_blank">
-        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
         Video Slides JavaOOPPolyMeasurable.pdf</img>
         </a>
 
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ywzatt7g' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_ywzatt7g' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Polymorphism Measurable Interface"></iframe> 
     </center>
 
 
@@ -219,7 +208,7 @@ Interactive: Polymorphism Computer Superclass
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyComputer.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       JavaOOPPolyComputer.pdf</img>
       </a>
 
@@ -227,7 +216,7 @@ Interactive: Polymorphism Computer Superclass
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pkxo2beb' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_pkxo2beb' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Polymorphism Computer Superclass"></iframe> 
    </center>
 
 Checkpoint 5
@@ -248,7 +237,7 @@ Interactive: Polymorphism Integer Example
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/JavaOOPPolyInteger.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       JavaOOPPolyInteger.pdf</img>
       </a>
 
@@ -256,7 +245,7 @@ Interactive: Polymorphism Integer Example
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=0_33oovpxg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=0_33oovpxg' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Polymorphism Integer Example"></iframe> 
    </center>    
 
 

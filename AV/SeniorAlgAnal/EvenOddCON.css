@@ -1,3 +1,7 @@
 #EvenOddCON {
-  height: 410px;
+  height: 390px;
+}
+
+#EvenOddCON .jsavoutput.jsavline {
+  height: 30px;
 }

@@ -9,15 +9,6 @@
 More on Generics
 ================
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`Generics2Intro`
-    - :ref:`Generics2Reflect`
-    - :ref:`Generics2Explained`
-    - :ref:`Generics2Wildcard`
-
 Objectives
 ----------
 
@@ -33,7 +24,6 @@ Suggested Reading:
 
 **Java Interlude 8 Generics Once Again** from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
 
-
 .. _Generics2Intro: 
 
 Interactive: More on Generics
@@ -47,12 +37,12 @@ Interactive: More on Generics
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exGenerics.zip"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       exGenerics.zip</img>
       </a>
       <br>
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/MoreOnGenerics.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       MoreOnGenerics.pdf</img>
       </a>
 
@@ -60,7 +50,7 @@ Interactive: More on Generics
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4kqmn4sv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4kqmn4sv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="More on Generics"></iframe> 
     </center>
 
 .. _Generics2Reflect: 
@@ -71,15 +61,17 @@ Interactive: Reflecting on Generics
 .. raw:: html
     
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_89q1qv87' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_89q1qv87' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Reflecting on Generics"></iframe> 
     </center> 
     
-
-
 Related Resources
 ~~~~~~~~~~~~~~~~~
     
-* `https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
+.. raw:: html
+    
+    <ul>
+    <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html " target="_blank">Oracle Wildcards </a></li>
+    </ul>
     
 .. _Generics2Explained: 
 
@@ -146,7 +138,7 @@ Interactive: Bounded Wildcard Examples
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/eclipse/exGenerics.zip"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       exGenerics.zip</img>
       </a>
 
@@ -154,15 +146,19 @@ Interactive: Bounded Wildcard Examples
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jazizwb4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jazizwb4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Bounded Wildcard Examples"></iframe> 
     </center>
     
-
 Related Resources
 ~~~~~~~~~~~~~~~~~
 
-* `https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
-* `https://docs.oracle.com/javase/tutorial/java/generics/bounded.html <https://docs.oracle.com/javase/tutorial/java/generics/bounded.html>`_
+.. raw:: html
+    
+    <ul>
+    <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html " target="_blank">Oracle Wildcards </a></li>
+     <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/bounded.html  " target="_blank">Oracle Bounded Type Parameters </a></li>
+    </ul>
+
 
 
 Programming Practice: Generics 1

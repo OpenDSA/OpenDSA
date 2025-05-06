@@ -13,30 +13,35 @@ $(document).ready(function () {
     MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
 
   var av = new JSAV(av_name);
-
-
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
-  //slide2
+
+  // Slide 1
   var y = 0;
   av.umsg("<br><b>Reduction of 3-SAT to Clique problem </b>");
   var nl1=av.label("This slideshow presents how to reduce"+
-                   " a 3-SAT problem to a Clique problem in polynomial time",{top:0});
+                   " a 3-SAT problem instance to an equivalent CLIQUE problem instance in polynomial time.",{top:0});
   av.displayInit();
   av.step();
+
+  // Slide 2
   nl1.hide();
   av.umsg("<br><b>3-SAT and Clique problem");
-  nl1=av.label("Given a boolean formula in 3 CNF, <b>3-SAT</b> problem"+
-               " is to find whether the formula is satisfiable <br><br><br>For a given"+
+  nl1=av.label("Given a boolean formula in 3 CNF, the <b>3-SAT</b> problem"+
+               " is to find whether the formula is satisfiable.<br><br>For a given"+
                " graph $G = ( V , E )$ and integer $k$, the "
-               +"Clique problem is to find whether $G$ contains a clique of size "
-               +"$>= k$.", {top:-10});
+               +"CLIQUE problem is to find whether $G$ contains a clique of size " 
+               +"$\\geq k$.", {top:-10});
   av.step();
+
+  // Slide 3
   nl1.hide();
   av.umsg("<br><b>Reduction of 3-SAT to Clique</b>");
 
   nl1=av.label("A formula $\\Phi$ of $k$ three-literal clauses can be reduced to a "
                +"$k$-Clique problem in the following way:",{top:-10});
   av.step();
+
+  // Slide 4
   var nl2=av.label("Construct a graph G of $k$ clusters with a maximum of $3$ "
                    +"nodes in each cluster.<br><br>Each cluster corresponds to a clause in $\\Phi$."
                    +"<br><br>Each node in a cluster is labeled with a literal from the clause."
@@ -44,8 +49,9 @@ $(document).ready(function () {
                    +"except for pairs of the form $(x, \\overline{x}$)"
                    +"<br><br><br>No edge is put between any pair of nodes in the same cluster."
                    ,{top:40});
-
   av.step();
+
+  // Slide 5
   nl1.hide();
   nl2.hide();
 
@@ -89,8 +95,9 @@ $(document).ready(function () {
 
   g1.layout();
 
-  //slide 15
   av.step();
+
+  // Slide 6
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
   nl1.hide();
   nl1=av.label("Connecting the nodes in the graph",{top:-10});
@@ -105,11 +112,9 @@ $(document).ready(function () {
   var ec1=g1.addEdge(x11,x23);
   ec1.addClass("edgefocus");
   g1.layout();
-
-
-  //slide 16
   av.step();
 
+  // Slide 7
   e1.removeClass("edgefocus");
   e2.removeClass("edgefocus");
   ec3.removeClass("edgefocus");
@@ -127,10 +132,9 @@ $(document).ready(function () {
   var e5=g1.addEdge(x12,x23);
   e5.addClass("edgefocus");
   g1.layout();
-
-  //slide 17
   av.step();
 
+  // Slide 8
   e1.removeClass("edgefocus");
   e2.removeClass("edgefocus");
   e3.removeClass("edgefocus");
@@ -148,11 +152,9 @@ $(document).ready(function () {
   e5=g1.addEdge(x13,x23);
   e5.addClass("edgefocus");
   g1.layout();
-
-
-  //slide 18
   av.step();
 
+  // Slide 9
   e1.removeClass("edgefocus");
   e2.removeClass("edgefocus");
   e3.removeClass("edgefocus");
@@ -166,10 +168,9 @@ $(document).ready(function () {
   e3=g1.addEdge(x21,x33);
   e3.addClass("edgefocus");
   g1.layout();
-
-  //slide 19
   av.step();
 
+  // Slide 10
   e1.removeClass("edgefocus");
   e2.removeClass("edgefocus");
   e3.removeClass("edgefocus");
@@ -179,10 +180,9 @@ $(document).ready(function () {
   e3=g1.addEdge(x22,x33);
   e3.addClass("edgefocus");
   g1.layout();
-
-  //slide 20
   av.step();
 
+  // Slide 11
   e2.removeClass("edgefocus");
   e3.removeClass("edgefocus");
 
@@ -191,17 +191,15 @@ $(document).ready(function () {
   var ec2=g1.addEdge(x23,x33);
   ec2.addClass("edgefocus");
   g1.layout();
-
-  //slide 21
   av.step();
 
+  // Slide 12
   e2.removeClass("edgefocus");
   ec2.removeClass("edgefocus");
   g1.layout();
-
-
-  //slide 22
   av.step();
+
+  // Slide 13
   g1.hide();
   label1.hide();
   label2.hide();
@@ -212,35 +210,40 @@ $(document).ready(function () {
   nl1.hide();
   av.umsg("<br><b>Insights about the graph</b>");
   nl1=av.label("1. If two nodes in the graph are connected, the corresponding literals "
-               +"can be simultaneously be assigned $True$. <br>(This is true since there is no edge between nodes"
-               +" corresponding to literals of type $x$ and $\\overline{x}$)."+
-               "<br><br><br>2. If two literals, not from the same clause can be assigned $True$ "
+               +"can simultaneously be assigned $True$.<br>(This is true since there is no edge between nodes"
+               +" corresponding to literals of type $x$ and $\\overline{x}$.)"+
+               "<br><br><br>2. If two literals not from the same clause can be assigned $True$ "
                +"simultaneously, the nodes corresponding to these literals in the graph are connected."
                +"<br><br><br>3. Construction of the graph can be performed in polynomial time"
                ,{top:-10});
-
   av.step();
 
+  // Slide 14
   av.umsg("<br><b>3-SAT to k-Clique Reduction</b>");
   nl1.hide();
   nl2.hide();
   nl1=av.label("$G$ has a $k$-clique if and only if $\\Phi$ is satisfiable.</b>",{top:0});
   av.step();
+
+  // Slide 15
   nl2=av.label("1. <b>If the graph $G$ has a $k$-clique,</b> the"
                +" clique has exacty one node from each cluster. <br>(This is because no two nodes from"
                +" the same cluster are connected to each other, hence they can never be a part of "
                +"the same clique.)<br>All nodes in a clique are connected, hence all corresponding "
                +"literals can be assigned $True$ simultaneously."
-               +"<br> Each literal belong to exactly one of the $k$-clauses. Hence <b> $\\Phi$ is satisfiable</b>",
+               +"<br> Each literal belongs to exactly one of the $k$-clauses. Hence <b> $\\Phi$ is satisfiable.</b>",
                {top:60});
   av.step();
+  
+  // Slide 16
   var nl3=av.label("<b>2. If $\\Phi$ is satisfiable,</b> let A be a satisfying assignment. "
                    +"Select from each clause a literal that is $True$ in A to construct a set S. $||S|| = k$."
-                   +"Since no two literals in A are from the same clause and all of them are simultaneously $True$, all"
+                   +"Since no two literals in S are from the same clause and all of them are simultaneously $True$, all"
                    +" the corresponding nodes in the graph are connected to each other, forming a k-clique."
-                   +"Hence <b> the graph has a $k$-clique",{top:200});
-
+                   +" Hence, <b>the graph has a $k$-clique.</b>",{top:200});
   av.step();
+
+  // Slide 17
   nl1.hide();
   nl2.hide();
   nl3.hide();
@@ -250,16 +253,18 @@ $(document).ready(function () {
   ec1.addClass("edgehighlight");
   ec2.addClass("edgehighlight");
   ec3.addClass("edgehighlight");
-
   av.step();
+
+  // Slide 18
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
-  nl1=av.label("The corresponding assignment: $x_2 = True , x_3 = True , x_4 = True$",{top:-10});
-
+  nl1=av.label("The corresponding assignment: $x_2 = True , x_3 = True , x_4 = True$.",{top:-10});
   av.step();
+
+  // Slide 19
   g1.hide();
   nl1.hide();
   av.umsg("<br><b>Example of 3-SAT to k-Clique Reduction</b>");
-  nl1=av.label("$\\Phi$ is $True$ for the corresponding assignment: $x_2 = True , x_3= True , x_4 = True$",{top:50});
+  nl1 = av.label("$\\Phi$ is $True$ for the corresponding assignment: $x_2 = True , x_3= True , x_4 = True$.",{top:50});
   label1.show();
   label2.removeClass("labelcolor1").show();
   label3.removeClass("labelcolor2").show();

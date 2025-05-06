@@ -6,8 +6,8 @@
 .. avmetadata::
    :author: Molly Domino
 
-Generics 2
-==========
+More on Generics
+================
 
 Objectives
 ----------
@@ -19,49 +19,57 @@ Upon completion of this module, students will be able to:
 * Write and use bounded generic methods
 * Become familiar with syntax for wildcards
 
-More on Generics
-----------------
-
-Code Examples
-~~~~~~~~~~~~~
-
-.. admonition:: Try It Yourself
-
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
-
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-[10:53] Generics 2
+Suggested Reading:
 ~~~~~~~~~~~~~~~~~~
 
+**Java Interlude 8 Generics Once Again** from `Data Structures and Abstractions with Java, 4th edition  by Frank M. Carrano and Timothy Henry <https://www.amazon.com/Data-Structures-Abstractions-Java-4th/dp/0133744051/ref=sr_1_1?ie=UTF8&qid=1433699101&sr=8-1&keywords=Data+Structures+and+Abstractions+with+Java>`_
+
+.. _Generics2Intro: 
+
+Interactive: More on Generics [10:53]
+-------------------------------------
+
+.. admonition:: Follow Along, Practice and Explore
+
+    In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
+
+    Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
+     
+    .. raw:: html     
+        
+        <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.1.2.1-MoreOnGenerics.pdf" target="_blank">
+           <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" alt="" width="32" height="32">
+           Video Slides 10.1.2.1-MoreOnGenerics.pdf</img>
+           </a>
+
+
+.. raw:: html
+
+    <center>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_4kqmn4sv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="More on Generics"></iframe> 
+    </center>
+
+.. _Generics2Reflect: 
+
+Reflecting on Generics [17:26] 
+------------------------------
+
 .. raw:: html
 
      <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_4kqmn4sv&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_76xs1s8b" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
-.. raw:: html
-
-   <a href="https://courses.cs.vt.edu/~cs2114/meng-bridge/course-notes/10.1.2.1-MoreOnGenerics.pdf" target="_blank">
-   <img src="https://courses.cs.vt.edu/~cs2114/meng-bridge/images/projector-screen.png" width="32" height="32">
-   Video Slides 10.1.2.1-MoreOnGenerics.pdf</img>
-   </a>
-
-
-[17:26] Reflecting on Generics
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. raw:: html
-
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_89q1qv87&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_s1anblz0" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_89q1qv87' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Reflecting on Generics"></iframe> 
      </center>
 
 Related Resources
 ~~~~~~~~~~~~~~~~~
 
-`A tutorial on using wildcards in generics, at https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
+.. raw:: html
 
+    <ul>
+    <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html " target="_blank">Oracle Wildcards </a></li>
+    </ul>
+
+.. _Generics2Explained: 
 
 Sample Declarations of Generic Methods Explained
 ------------------------------------------------
@@ -113,34 +121,33 @@ Checkpoint 1
 .. avembed:: Exercises/MengBridgeCourse/GenericsCheckpoint1Summ.html ka
    :long_name: Checkpoint 1
 
+.. _Generics2Wildcard: 
+   
+Interactive: Bounded Wildcard Examples
+--------------------------------------
 
-Bounded Wildcard Examples
--------------------------
+.. admonition:: Follow Along, Practice and Explore
 
-Code Example
-~~~~~~~~~~~~
-
-.. admonition:: Try It Yourself
-
-  In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
-
-  Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
-
-[10:43] Bounded Wildcards Example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   In Eclipse, use the *Project > Download Assignment...* menu command to download the exercise project named "ex10.01-Generics". Use this example to follow along with the following video. Feel free to experiment.
+   
+   Refer to `01.02: Lab: LightBot for Beginners <https://profdev-lms.tlos.vt.edu/courses/2832/assignments/10634>`_ if you need to review the instructions for downloading Eclipse projects.
 
 .. raw:: html
 
-     <center>
-     <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950791/partner_id/2375811?iframeembed=true&playerId=kaltura_player&entry_id=1_jazizwb4&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_uctvohf3" width="560" height="630" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Kaltura Player"></iframe>
-     </center>
-
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_jazizwb4' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Bounded Wildcard Examples"></iframe> 
+   </center>
 
 Related Resources
 ~~~~~~~~~~~~~~~~~
 
-* `https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html <https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html>`_
-* `https://docs.oracle.com/javase/tutorial/java/generics/bounded.html <https://docs.oracle.com/javase/tutorial/java/generics/bounded.html>`_
+.. raw:: html
+    
+    <ul>
+    <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/wildcards.html " target="_blank">Oracle Wildcards </a></li>
+     <li><a href="https://docs.oracle.com/javase/tutorial/java/generics/bounded.html  " target="_blank">Oracle Bounded Type Parameters </a></li>
+    </ul>
+
 
 
 Programming Practice: Generics 1

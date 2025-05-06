@@ -1,5 +1,15 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
+
+// Title: Binary Search Algorithm
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration; Algorithm Analysis Visualization
+// Keyword: Binary Search; Algorithm Analysis; Recurrence Relation
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating Binary Search worst case analysis through analysis of its recurrence relation. */
+
 // Linear Recurrences
 $(document).ready(function() {
   "use strict";
@@ -7,6 +17,8 @@ $(document).ready(function() {
   // Load the config object with interpreter and code created by odsaUtils.js
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter;       // get the interpreter
+  // Invoke MathJax to get equations to display correctly
+  MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
 
   var av;
   var graph;

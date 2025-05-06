@@ -39,7 +39,8 @@ The skip list is easier to implement than known balanced tree
 structures.
 The skip list is not guaranteed to provide good performance
 (where good performance is defined as
-:math:`\Theta(\log n)` search, insertion, and deletion time), but it
+:math:`\Theta(\log n)` search, insertion, and deletion time in the
+worst case), but it
 will provide good performance with extremely high probability
 (unlike the BST which has a good chance of performing poorly).
 As such it represents a good compromise between difficulty of
@@ -111,7 +112,7 @@ appropriate at all of its levels.
 Here is an implementation for inserting a new
 value into the skip list followed by
 a visualization of the process.
-Note that we build an ``update`` array as we progress through the skip
+Notice that we build an ``update`` array as we progress through the skip
 list, so that we can update the pointers for the nodes that will
 precede the one being inserted.
 

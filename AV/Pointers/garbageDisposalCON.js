@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Sushma Mandava and Cliff Shaffer
 // garbage collector
+
+// Title: Garbage Disposal
+// Author: Sushma Mandava; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Algorithm Visualization
+// Keyword: Garbage; Heap Memory
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow introducing the concept of garbage collection. */
+
 //variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";

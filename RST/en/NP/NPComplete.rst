@@ -111,19 +111,21 @@ The Theory of NP-Completeness
 
 Imagine a magical computer that works by guessing the correct
 solution from among all of the possible solutions to a problem.
-Another way to look at this is to imagine a super parallel computer
-that could test all possible solutions simultaneously.
+If magic does not appeal to you, then imagine a super parallel
+computer that could test all possible solutions simultaneously (no
+matter how many there are).
 Certainly this magical (or highly parallel) computer can do anything a
 normal computer can do.
 It might also solve some problems more quickly than a normal computer
-can.
+can (where "more quickly" means something more than speeding
+things up by a constant or even a polynomial factor).
 Consider some problem where, given a guess for a solution, checking
 the solution to see if it is correct can be done in polynomial time.
 Even if the number of possible solutions is exponential,
 any given guess can be checked in polynomial time (equivalently, all
 possible solutions are checked simultaneously in polynomial time),
 and thus the problem can be solved in polynomial time by our
-hypothetical magical computer.
+hypothetical magical (or highly parallel) computer.
 Another view of this concept is this: If you cannot get the answer
 to a problem in polynomial time by guessing the right answer and then
 checking it, then you cannot do it in polynomial time in any other way.
@@ -146,16 +148,19 @@ print out :math:`O(2^n)` moves for :math:`n` disks.
 A non-deterministic machine cannot "guess" and print the correct
 answer in less time.
 
-On the other hand, consider the TRAVELING SALESMAN problem.
+On the other hand, consider the **TRAVELING SALESMAN** problem.
 
 .. topic:: Problem
 
-   TRAVELING SALESMAN (1)
+   **TRAVELING SALESMAN** (1)
 
    **Input:** A complete, directed graph :math:`G` with
    positive distances assigned to each edge in the graph.
 
    **Output:** The shortest simple cycle that includes every vertex.
+
+This version is sometimes called an :term:`optimization problem`
+because we are trying to find the minimum (or optimal) solution.
 
 Figure :num:`Figure #Sales` illustrates this problem.
 Five vertices are shown, with edges and associated costs between each
@@ -176,7 +181,7 @@ The best route for this particular graph would be ABEDCA, with cost 9.
    :align: center
    :keyword: NP-completeness
 
-   An illustration of the TRAVELING SALESMAN problem.
+   An example of the **TRAVELING SALESMAN** problem.
    Five vertices are shown, with edges between each pair of cities.
    The problem is to visit all of the cities exactly once,
    returning to the start city, with the least total cost.
@@ -191,11 +196,11 @@ such cycle.
 However, we can solve a variant of this problem cast in the form
 of a :term:`decision problem`.
 A decision problem is simply one whose answer is either YES or NO.
-The decision problem form of TRAVELING SALESMAN is as follows.
+The decision problem form of **TRAVELING SALESMAN** is as follows.
 
 .. topic:: Problem
 
-   TRAVELING SALESMAN (2)
+   **TRAVELING SALESMAN** (2)
 
    **Input:** A complete, directed graph :math:`G` with
    positive distances assigned to each edge in the graph, and an
@@ -222,9 +227,9 @@ Unfortunately, there are :math:`2^{|{\mathrm E}|}` subsets to check,
 so this algorithm cannot be converted to a polynomial time algorithm
 on a regular computer.
 Nor does anybody in the world know of any other polynomial time
-algorithm to solve TRAVELING SALESMAN on a regular computer, despite
+algorithm to solve **TRAVELING SALESMAN** on a regular computer, despite
 the fact that the problem has been studied extensively by many
-computer scientists for many years.
+computer scientists for decades.
 
 It turns out that there is a large collection of
 problems with this property:
@@ -239,8 +244,8 @@ in polynomial time on a regular computer, then by a series of
 reductions, every other problem that is in NP can also be
 solved in polynomial time on a regular computer!
 
-Define a problem to be :term:`NP-hard` if *any* problem in NP
-can be reduced to :math:`X` in polynomial time.
+Define a problem :math:`X` to be :term:`NP-hard` if *any* problem in
+NP can be reduced to :math:`X` in polynomial time.
 Thus, :math:`X` is *as hard as* any problem in NP.
 A problem :math:`X` is defined to be NP-complete if
 
@@ -249,12 +254,12 @@ A problem :math:`X` is defined to be NP-complete if
 
 The requirement that a problem be NP-hard might seem to be impossible,
 but in fact there are hundreds of such problems,
-including TRAVELING SALESMAN. 
-Another such problem is called K-CLIQUE.
+including **TRAVELING SALESMAN**. 
+Another such problem is called **K-CLIQUE**.
 
 .. topic:: Problem
 
-   K-CLIQUE
+   **K-CLIQUE**
 
    **Input:** An arbitrary undirected graph :math:`G` and an
    integer :math:`k`.
@@ -270,8 +275,8 @@ Another such problem is called K-CLIQUE.
    :keyword: NP-completeness
 
 Nobody knows whether there is a polynomial time solution for
-K-CLIQUE, but if such an algorithm is found for K-CLIQUE *or*
-for TRAVELING SALESMAN, then that solution can be modified to solve
+**K-CLIQUE**, but if such an algorithm is found for **K-CLIQUE** *or*
+for **TRAVELING SALESMAN**, then that solution can be modified to solve
 the other, or any other problem in NP, in polynomial time.
 
 The primary theoretical advantage of knowing that a problem P1 is
@@ -306,7 +311,7 @@ best you could do was an exponential time algorithm.
 But, if you can prove that the problem is NP-complete, while they
 still won't be happy, at least they should not be mad at you!
 By showing that their problem is NP-complete, you are in effect saying
-that the most brilliant computer scientists for the last 50 years
+that the most brilliant computer scientists for more than 50 years
 have been trying and failing to find a polynomial time algorithm for
 their problem.
 
@@ -340,11 +345,12 @@ terms of Figure :num:`Figure #Complex`.
 The most important unanswered question in theoretical computer
 science is whether :math:`P = NP`.
 If they are equal, then there is a polynomial time
-algorithm for TRAVELING SALESMAN and all related problems.
-Because TRAVELING SALESMAN is known to be NP-complete, if a
+algorithm for **TRAVELING SALESMAN** and all related problems.
+Because **TRAVELING SALESMAN** is known to be NP-complete, if a
 polynomial time algorithm were to be found for this problem, then
 *all* problems in NP would also be solvable in polynomial
 time.
-Conversely, if we were able to prove that TRAVELING SALESMAN has an
+Conversely, if we were able to prove that **TRAVELING SALESMAN** has an
 exponential time lower bound, then we would know that
-:math:`P \neq NP`.
+:math:`P \neq NP`, and that no NP-complete problem can be
+solved in polynomial time.

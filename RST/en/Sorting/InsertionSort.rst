@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Insertion Sort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology; comparison
    :satisfies: insertion sort
    :topic: Sorting
    :keyword: Sorting; Insertion Sort
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Presentation of Insertion Sort including visualizations, code, and self-test questions and exercises
 
 .. index:: ! Insertion Sort
 
@@ -53,8 +58,9 @@ Nearly always we want to sort more complex records that each have a
 :term:`key` value.
 In such cases we must :ref:`have a way <comparable> <Comparison>` to
 associate a key value with a record.
-The sorting algorithms will simply assume that the records are
-:term:`comparable`.)
+The Java version of the code snippet above uses an ``int`` array,
+while the Java (Generic) version shows a version using an Object that
+supports the :term:`Comparable <comparable>` interface.)
 
 Here we see the first few iterations of Insertion Sort.
 

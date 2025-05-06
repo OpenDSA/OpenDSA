@@ -16,10 +16,18 @@ Finding the :math:`i` th Best Element
 
 We now tackle the problem of finding the :math:`i` th best element in
 a list.
+Is this easier or harder than finding the max and second biggest?
+Is this easier or harder than finding the max and the min?
+On the one hand, it is only one element.
+On the other hand, it seems like it could be a "harder" element to
+locate.
+
 One solution is to sort the list and simply look
 in the :math:`i` th position.
 However, this process provides considerably more information than we
 need to solve the problem.
+So intuitively, it seems to be less efficient than what is might be
+possible.
 The minimum amount of information that we actually need to know can be
 visualized as shown in Figure :num:`Figure #MedPoset`.
 That is, all we need to know is the :math:`i-1` items less than our
@@ -56,6 +64,7 @@ Recall that Quicksort works by selecting a pivot value, partitioning
 the array into those elements less than the pivot and those greater
 than the pivot, and moving the pivot to its proper location in the
 array.
+Partitioning the array costs :math:`O(n)` comparisons.
 If the pivot is in position :math:`i`, then we are done.
 If not, we can solve the subproblem recursively by only considering
 one of the sublists.
@@ -76,7 +85,7 @@ cost.
 
 Finding the average cost requires us to use a recurrence with full
 history, similar to the one we used to model the cost of Quicksort.
-If we do this, we will find that :math:`\mathbf{T}n` is in
+If we do this, we will find that :math:`\mathbf{T}(n)` is in
 :math:`O(n)` in the average case.
 
 Is it possible to modify our algorithm to get worst-case linear time?
@@ -143,7 +152,7 @@ The :math:`\mathbf{T}(\lceil n/5 \rceil)` term comes from computing
 the median of the medians-of-fives,
 the :math:`6\lceil n/5 \rceil` term comes from the cost to calculate
 the median-of-fives (exactly six comparisons for each group of five
-element),
+elements is needed),
 and the :math:`\mathbf{T}(\lceil (7n - 5)/10\rceil)` term comes from
 the recursive call of the remaining (up to) 70% of the elements that
 might be left.
@@ -162,16 +171,29 @@ bound.
            6\lceil \frac{n}{5} \rceil + n - 1\\
    &\leq&r(\frac{n}{5} + 1) + r(\frac{7n-5}{10} + 1) + 6(\frac{n}{5} + 1) + n - 1\\
    &\leq&(\frac{r}{5} + \frac{7r}{10} + \frac{11}{5})n + \frac{3r}{2} + 5\\
-   &\leq&\frac{9r + 22}{10}n + \frac{3r + 10}{2}.
+   &\leq&\frac{9r + 22}{10}n + \frac{3r + 10}{2} \leq rn.
    \end{eqnarray*}
 
-This is true for :math:`r \geq 23` and :math:`n \geq 380`.
+We might need to hunt around a bit to find values for :math:`r` and
+:math:`n` that make this equation work.
+For example, if we try :math:`r = 1` then we get
+:math:`3.1 n + 7.5 \leq n` which clearly does not work.
+But if we use :math:`r = 23` we get :math:`22.9n + 39.5 \leq 23n`,
+which is true for :math:`n \geq 395`.
 This provides a base case that allows us to use induction to prove
-that :math:`\forall n \geq 380, \mathbf{T}(n) \leq 23n`.
+that :math:`\forall n \geq 395, \mathbf{T}(n) \leq 23n`.
 
-In reality, this algorithm is not practical
+While we have now proved that the median (or :math:`i` th element) can
+be done in linear time, in reality this algorithm is not practical
 because its constant factor costs are so high.
 So much work is being done to guarantee linear time performance that
 it is more efficient on average to rely on chance to select the pivot,
 perhaps by picking it at random or picking the middle value out of the
 current subarray.
+
+
+Acknowledgement
+---------------
+
+This page borrows heavily from  presentation in Section 3.5 of
+*Compared to What?* by Gregory J.E. Rawlins.

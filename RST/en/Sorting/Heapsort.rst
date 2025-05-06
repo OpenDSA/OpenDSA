@@ -130,6 +130,9 @@ This represents the best case for Heapsort.
 This is because removing the largest value requires only constant
 time, since the value swapped to the top is never pushed down the
 heap (since all the key values are equal).
+This would be repeated to remove the :math:`n` elements from
+the heap each in constant time, for a total best-case time of
+:math:`\Theta(n)`.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
    :long_name: Heapsort Summary Exercise

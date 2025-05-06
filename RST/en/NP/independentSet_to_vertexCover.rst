@@ -15,8 +15,8 @@ Reduction of Independent Set to Vertex Cover
 Independent Set to Vertex Cover
 -------------------------------
 
-The following slideshow shows that an instance of Independent Set
-problem can be reduced to an instance of Vertex Cover problem 
+The following slideshow shows that an input instance to **INDEPENDENT SET**
+can be reduced to an equivalent input instance to **VERTEX COVER**
 in polynomial time.
  
 .. inlineav:: IStoVCCON ss

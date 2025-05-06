@@ -18,20 +18,22 @@ Turing Machines
 A General Model of Computation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We would like to define a general model of computation that is as
-simple as possible.
+In this module we seek to define a general model of computation that
+is as simple as possible.
 The reason is that we want to be able to understand the limits of what
 is possible in computing, but that is rather hard to do with a
 complicated definition for a "computer" is.
 But then, we need to be confident that whatever model we do pick, that
 it actually represents all of the fundamental capabilities of a
 "computer".
+Specifically, we want a model that is capable of computing any funtion
+that our "regular" computers can compute.
 
 "State machines" are simple to understand.
 There are a number of different state machines, with a range of
 capabilities.
 We will discuss a particular one, called a :term:`Turing machine`.
-As we define "capability", the key is *ability*, not *efficiency*.
+As we discuss "capability", the key is *ability*, not *efficiency*.
 
 The necessary capabilites for any such "machine" are these:
 
@@ -56,7 +58,7 @@ current state, and can then do one of the following:
 * Change the current symbol.
 * Move the I/O head one square to either the left or the right.
 
-By convention, the machine ceases to perate if the head moves off the
+By convention, the machine ceases to operate if the head moves off the
 left end of the tape, or if the control unit sends the machine into a
 specially designated :term:`halt state`.
 

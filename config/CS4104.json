@@ -30,28 +30,36 @@
   "glob_ss_options": {
     "threshold": 1.0, 
     "points": 0.0, 
-    "required": false
+    "required": false,
+    "partial_credit": false
   }, 
   "glob_ff_options": {
     "threshold": 1.0, 
     "points": 0.0, 
-    "required": false
+    "required": false,
+    "partial_credit": false
   },
   "glob_ka_options": {
     "threshold": 5, 
     "points": 1.0, 
-    "required": true
+    "required": true,
+    "partial_credit": false
   }, 
   "glob_extr_options": {
     "code-workout": {
-      "points": 2.0
+      "points": 2.0,
+      "required": true,
+      "partial_credit": true,
+      "enable_scrolling": true
     }, 
-    "points": 1.0
+    "points": 1.0,
+    "partial_credit": false
   }, 
   "glob_pe_options": {
     "threshold": 0.9, 
     "points": 2.0, 
-    "required": true
+    "required": true,
+    "partial_credit": false
   }, 
   "chapters": {
     "Preface": {
@@ -60,47 +68,39 @@
     "Introduction": {
       "SeniorAlgAnal/AAIntro": {},
       "SeniorAlgAnal/ProblemSolving": {},
+      "AlgAnal/AnalPrelim": {},
       "SeniorAlgAnal/AAOverview": {}
     },
     "Analyzing Problems: The Basics": {
       "SeniorAlgAnal/TOH": {},
+      "Background/Proofs": {},
       "SeniorAlgAnal/BoundsReview": {},
       "SeniorAlgAnal/GrowthRate": {},
       "Background/Summations": {},
       "SeniorAlgAnal/AdvSumm": {},
       "Background/RecurrenceIntro": {},
-      "SeniorAlgAnal/Recurrence": {},
-      "Background/Proofs": {}
+      "SeniorAlgAnal/Recurrence": {}
     },
     "Searching": {
-      "Searching/SearchIntro": {},
+      "SeniorAlgAnal/SearchIntro": {},
       "Searching/UnsortedSearch": {},
-      "Searching/SortedSearch": {}
+      "Searching/SortedSearch": {},
+      "SearchStruct/SkipList": {}
     },
     "Lower Bounds": {
+      "Sorting/ExchangeSort": {},
       "Sorting/SortingLowerBound": {},
       "Bounds/BoundMax": {},
       "Background/SetDef": {},
       "Bounds/BoundAdversary": {},
       "Bounds/BoundState": {},
-      "Bounds/BoundiBest": {}
+      "Bounds/BoundiBest": {},
+      "Bounds/SortingOptimal": {},
+      "SeniorAlgAnal/AmortAnal": {}
     },
-    "Number Problems": {
-      "SeniorAlgAnal/Numeric": {},
-      "SeniorAlgAnal/Transform": {},
-      "SeniorAlgAnal/FFT": {}
-    },
-    "Probabilistic Algorithms": {
-      "SeniorAlgAnal/Probabilistic": {},
-      "SeniorAlgAnal/Primes": {},
-      "SeniorAlgAnal/RandomNums": {},
-      "SearchStruct/SkipList": {}
-    },
-    "Miscellaneous": {
+    "Dynamic Programming": {
       "SeniorAlgAnal/DynamicProgramming": {},
-      "Graph/Floyd": {},
-      "SeniorAlgAnal/AmortAnal": {},
-      "Bounds/SortingOptimal": {}
+      "Graph/Floyd": {}
     },
     "Limits to Computing": {
       "NP/LimComp": {},
@@ -114,6 +114,7 @@
           "threshold": 1.0
         }
       },
+      "NP/SAT_to_threeSAT": {},
       "NP/clique": {
         "cliquePRO": {
           "threshold": 1.0
@@ -140,7 +141,6 @@
         }
       },
       "NP/circuitSAT_to_SAT": {},
-      "NP/SAT_to_threeSAT": {},
       "NP/threeSAT_to_clique": {},
       "NP/independentSet_to_vertexCover": {},
       "NP/threeSAT_to_hamiltonianCycle": {},
@@ -148,7 +148,17 @@
       "NP/hamiltonianCycle_to_TSP": {},
       "NP/NPCoping": {},
       "SeniorAlgAnal/Impossible": {},
-      "SeniorAlgAnal/Turing": {}
+      "SeniorAlgAnal/TuringMachines": {},
+      "SeniorAlgAnal/TuringMachinesAdv": {}
+    },
+    "Number Problems": {
+      "SeniorAlgAnal/Numeric": {},
+      "SeniorAlgAnal/Matrix": {},
+      "SeniorAlgAnal/Probabilistic": {},
+      "SeniorAlgAnal/Primes": {},
+      "SeniorAlgAnal/RandomNums": {},
+      "SeniorAlgAnal/Transform": {},
+      "SeniorAlgAnal/FFT": {}
     },
     "Appendix": {
       "Glossary": {},

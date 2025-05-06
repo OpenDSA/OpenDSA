@@ -7,7 +7,7 @@
    :author: Cliff Shaffer, Eunoh Cho
    :satisfies: set notation
    :topic: Sets
-   :keyword: Sets; Relations; Equivalance Relation; Partial Order
+   :keyword: Sets; Relations; Equivalence Relation; Partial Order
 
 
 Set Notation

@@ -1,6 +1,7 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Problem, Algorithm, and program definitions
+
 $(document).ready(function () {
   "use strict";
   var av_name = "SortingProblemCON";
@@ -22,7 +23,7 @@ $(document).ready(function () {
   av.umsg(interpret("sc2"));
   var rect = av.g.rect(leftAlign + 350, topAlign - 25, rectWidth, rectHeight);
   var labelProblem = av.label(interpret("lab1"),
-                              {top: topAlign - 20, left: leftAlign + 360}).addClass("codeLabel");
+                              {top: topAlign, left: leftAlign + 380}).addClass("codeLabel");
   for (var i = 0; i < 6; i++) {
     arr_values.push("K" + (i + 1));
   }

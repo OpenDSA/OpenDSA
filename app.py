@@ -17,10 +17,6 @@ def redirect_to_rendered_index(book):
     '''Quickly access a book instead of browsing to the exact file'''
     return redirect(f"/Books/{book}/html/index.html", code=302)
 
-@app.route('/.git')
-def git_dir():
-    return redirect('/Books/', code=302)
-
 ################################## API calls ###############################
 
 def run_command(cmd: str):
@@ -80,10 +76,10 @@ def irt_curve():
 def deforms_feedback():
     if request.method != 'POST':
         return jsonify({"ok": False})
-    script_path = "tools/deforms_feedback.py"
+    script_path = "tools/tafe"
     problem_attempt = request.json
     str_problem_attempt = str(problem_attempt).replace(" ","")
-    cmd = f"python3 {script_path} \"{str_problem_attempt}\""
+    cmd = f"python3 {script_path} -j \"{str_problem_attempt}\""
     resp = run_command(cmd)
     return jsonify(resp)
 

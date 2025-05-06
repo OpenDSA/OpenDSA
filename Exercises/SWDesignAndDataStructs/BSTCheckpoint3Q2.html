@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>BST Adding an Entry 2</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="3200" data-width="950">
+  <body data-height="3400" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="BSTADD_Q2">
@@ -25,14 +25,17 @@
                   node.setRight(insert(data, node.getRight()));
               }
               else {//entry exists
-                 if (node.getRight() != null) {
-                        BinaryNode minNode = findMin(node.getRight());
-                        minNode.setLeft(new BinaryNode(data));
-                        
-                    } else {
-                      node.setRight(new BinaryNode(data));
-                    }            
-              }
+                if (node.getRight() != null) {
+                   BinaryNode<T> minNode = findMin(node.getRight());
+                   if (data.compareTo(minNode.getData())== 0) {//update
+                       minNode.setRight(new BinaryNode<T>(data));
+                   } else {
+                       minNode.setLeft(new BinaryNode<T>(data)); 
+                   }      
+                 } else {
+                     node.setRight(new BinaryNode(data));
+                 }            
+             }
               return node;
           }
           </pre> <p>

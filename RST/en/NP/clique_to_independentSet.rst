@@ -14,8 +14,8 @@ Reduction of Clique to Independent Set
 Clique to Independent Set
 -------------------------
 
-The following slideshow shows that an instance of Clique
-problem can be reduced to an instance of Independent Set problem 
+The following slideshow shows that an instance of **CLIQUE**
+can be reduced to an equivalent instance of **INDEPENDENT SET**
 in polynomial time.
  
 .. inlineav:: cliqueToISCON ss

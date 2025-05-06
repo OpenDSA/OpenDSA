@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Linked Chain Checkpoint 1</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -7,21 +7,36 @@
     <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
   </head>
 
-  <body data-height="1000" data-width="950">
+  <body data-height="1450" data-width="950">
     <div class="exercise">
       <div class="problems">
         <div id="LC_CP1_Q2">
-          <p class="question">Given the linked chain below, which is the
-            resulting linked chain after the execution of: <tt>head = head.next;</tt>
+          <p class="question"><p>Given the linked chain below: </p>
+            <img src="./LinkedChainCheckpointImages/Q2QuestionImage.png" width="400" height="140" alt="3 nodes with 2,4,16 in them"> 
+           
+            <p>which is the
+            resulting linked chain after the execution of: <tt></p>
+            <pre class="pretty print">
+            Node newNode = new Node();
+            newNode.data = 8;
+            curr = head;
+            while (curr.next.data < 8) {
+              curr = curr.next;
+            }
+            newNode.next = curr.next;
+            curr.next = newNode;
+              
+          </pre>
+            </tt> <p>
 
-            <img src="./LinkedChainCheckpointImages/Q2QuestionImage.png" alt="" width="350" height="142">
+
               <br>
               <br>
-              A) <img src="./LinkedChainCheckpointImages/Q2Wrong1Image.png" width="325" height="123"><br>
-              B) <img src="./LinkedChainCheckpointImages/Q2Wrong2Image.png" width="338" height="105"><br>
-              C) <img src="./LinkedChainCheckpointImages/Q2Wrong3Image.png" width="333" height="99"><br>
-              D) <img src="./LinkedChainCheckpointImages/Q2CorrectImage.png" width="277" height="82"><br>
-            </p>
+              A) <img src="./LinkedChainCheckpointImages/Q2Wrong1Image.png" width="400" height="140" alt="3 nodes with 2,4,8 and head pointing to the node storing 8"><br>
+              B) <img src="./LinkedChainCheckpointImages/Q2Wrong2Image.png" width="400" height="140"alt="4 nodes with 5,27,13, 81 and head pointing to the node storing 81"><br>
+              C) <img src="./LinkedChainCheckpointImages/Q2Wrong3Image.png" width="400" height="140" alt="3 nodes with 2,4,8 and head pointing to the node storing 2">><br>
+              D) <img src="./LinkedChainCheckpointImages/Q2CorrectImage.png" width="400" height="140" alt="4 nodes with 2,4,8, 16 and head pointing to the node storing 2"><br>
+            </p></p>
         <div class="solution">D</div>
         <ul class="choices">
         <li>A</li>

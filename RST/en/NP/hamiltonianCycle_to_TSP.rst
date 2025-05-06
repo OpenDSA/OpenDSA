@@ -14,9 +14,8 @@ Reduction of Hamiltonian Cycle to Traveling Salesman
 Hamiltonian Cycle to Traveling Salesman
 ---------------------------------------
 
-The following slideshow shows that an instance of Hamiltonian Cycle 
-problem can be reduced to an instance of Traveling Salesman problem in 
-polynomial time.
+The following slideshow shows that an instance of HAMILTONIAN CYCLE
+can be reduced to an equivalent instance of TSP in polynomial time.
  
 .. inlineav:: HCtoTSPCON ss
    :long_name: HC to TSP Reduction

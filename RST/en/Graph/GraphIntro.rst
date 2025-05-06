@@ -180,7 +180,7 @@ Thus, a directed graph without cycles is called a
     :links: AV/Graph/GraphDefCON.css
     :scripts: AV/Graph/GacyclicDefCON.js
     :output: show
-   :keyword: Graphs; Graph Representations
+    :keyword: Graphs; Graph Representations
     
 A :term:`free tree` is a connected, undirected graph with no simple
 cycles.

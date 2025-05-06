@@ -1,7 +1,15 @@
+// Title: Call Structure for the Fibonacci Sequence Problem
+// Author: Abishek Jha; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Dynamic Programming; Fibonacci Sequence
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the tree structure for calls by a recursive implementation of the Fibonacci sequence calculation. */
+ 
 $(document).ready(function() {
   "use strict";
-  var av_name = "FibTreeCON";
-  var av = new JSAV(av_name);
+  var av = new JSAV("FibTreeCON");
   var fib = [1,1,2,3,5,8,13]
   var val;
   var fibtree = av.ds.tree({nodegap: 20});

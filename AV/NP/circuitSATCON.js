@@ -18,46 +18,39 @@ $(document).ready(function () {
   var x,y,r,label1,label2,label3; 
   var gatelabel = new Array(7);
 
-  
+  // Slide 1
   av.umsg("<br><b>Introduction to Circuit Satisfiability </b> ");
   var nl1= av.label("This slideshow introduces"+
                     " and explains the \"Circuit Satisfiability\" Problem."
                     +"</b> <br><br><br> We start with some definitions  and background.",{top:0,left:0});
-
-
   av.displayInit(); 
-
   av.step();
+
+  // Slide 2
   nl1.hide();
   av.umsg("<br><b> Background </b>");
   nl1=av.label("A boolean value is a value drawn from the set {T, F}, <br>where $F$ represents"
-               +" FALSE and $T$ represents TRUE",{top:-10,left:0}); 
-
+               +" FALSE and $T$ represents TRUE.",{top:-10,left:0}); 
   
   var nl2=av.label("A boolean combinational element is any circuit "+
                    "element that has a constant number of boolean inputs <br>and outputs and "+
                    "that performs a well-defined function.",{top:60,left:0}); 
   av.step(); 
+
+  // Slide 3
   nl1.hide();
   nl2.hide();
-
-
   var nl3=av.label("The boolean combinational elements used in Circuit"+
                    " Satisfiability Problem are known as <b>Logic Gates<b/>.",{top:-10,left:0});
 
   var nl4=av.label("The Logic Gates used for Circuit Satisfibiality "+
-                   "problem are <b>AND</b> (represented by symbol '$.$'),<br> <b>OR</b> (represented "+
-                   "by symbol '$+$') and <b>NOT</b> (represented by a bar '$\\overline{\\ \\ \\ }$').",{top:30,left:0});
-
+                   "problem are <b>AND</b> (represented by the symbol '$.$'),<br> <b>OR</b> (represented "+
+                   "by the symbol '$+$'), and <b>NOT</b> (represented by a bar '$\\overline{\\ \\ \\ }$' over some variable).",{top:30,left:0});
 
   nl1=av.label("<b>The Truth Table for Logic Gates</b>",{top:90});
-
   var board = newCircuit();
-
   x=150, y=150, r=25;
-
   var notgate = board.addGate(av,"not",x,y+20,r);
-
 
   label1 = av.label("The NOT gate",{left:x-50,top:y+50}); 
   var data1 = [["$x$","$\\overline{x}$ "],
@@ -81,11 +74,8 @@ $(document).ready(function () {
   for(var i=0;i<3;i++)
     table2.addClass(0,i,"headerrow");
 
-
   var andgate = board.addGate(av,"and",x,y+20,r);
-
   x+=225;
-
   label3 = av.label("The OR gate",{left:x-50,top:y+50}); 
   var data3 = [[" $x$ "," $y$"," $x$+$y$ "],
                [" T "," T "," T "],
@@ -96,11 +86,10 @@ $(document).ready(function () {
 
   for(var i=0;i<3;i++)
     table3.addClass(0,i,"headerrow");
-
   var orgate = board.addGate(av,"or",x,y+20,r);
-
   av.step(); 
 
+  // Slide 4
   label1.hide(); label2.hide(); label3.hide(); 
   table1.hide();table2.hide(); table3.hide(); 
   board.clearGate(orgate); board.clearGate(notgate);board.clearGate(andgate); 
@@ -117,18 +106,19 @@ $(document).ready(function () {
                "input of another, thereby providing the output <br>value of the first element as "
                +"an input value of the second.",{top:70,left:0}); 
   
-  nl3=av.label("If a wire is not connected to as input to any element"+
+  nl3=av.label("If a wire is not connected as input to any element"+
                ", it is called the <b>circuit output</b>. <br><br>For defining a circuit "+
-               "satisfiability problem, the number of circuit outputs is limited to <b>1</b>"
-               +"<br><br> The next slide shows an example circuit.",
+               "satisfiability problem, the number of circuit outputs is limited to <b>1</b>.",
                {top:150,left:0}); 
 
   av.step(); 
+
+  // Slide 5
   nl1.hide();
   nl2.hide();
   nl3.hide();
 
-  av.umsg("<br><b>Example Circuit</b>"); 
+  av.umsg("<br><b>Example Circuit</b>");
   x = 100; y = 30; r = 25;
 
   var x1pos = [x-50,y-0.4*r]; 
@@ -166,7 +156,6 @@ $(document).ready(function () {
   x+=100; 
   var gate7=board.addGate(av,"and",x,y+75,r); 
   gatelabel[6] = av.label("G",{left:x-7,top:y+50});
-
 
   //connect gates
   board.inputToGate(av,"x1",x1pos,gate2,0,[]);
@@ -214,13 +203,13 @@ $(document).ready(function () {
   endpt = gate7.endpoints[0].slice(0);
 
   board.connectGates(av,gate5,gate7,0,[[endpt[0],startpt[1]]]); 
-  
-
   av.step(); 
+
+  // Slide 6
   av.umsg("<br><b>Numbering the inputs and outputs<b>"); 
   nl1 = av.label("We number the input and output wires to be able to refer to them"
                  +" in the later slides.",{top:250});
-  var numlabels =new Array(10);
+  var numlabels = new Array(10);
 
   numlabels[0] = av.label("1",{left:75,top:y-45}).addClass("numlabel");
   numlabels[1] = av.label("2",{left:100,top:y-25}).addClass("numlabel"); 
@@ -232,14 +221,17 @@ $(document).ready(function () {
   numlabels[7] = av.label("8",{left:385,top:y+2}).addClass("numlabel"); 
   numlabels[8] = av.label("9",{left:385,top:y+75}).addClass("numlabel"); 
   numlabels[9] = av.label("10",{left:490,top:y+50}).addClass("numlabel");
-
   av.step();
+
+  // Slide 7
   nl1.hide();
   av.umsg("<br><b>Tabular representation of the circuit</b>"); 
   nl1=av.label("We also present an alternate representation of the circuit"+
                " in <br>tabular form which will be used to explain propagation of signals.",{top:200});
-  var cdata = [[" ","$A^{\\overline{\\ \\ \\ \\ }}$","$B+$",
-                "$C^{\\overline{\\ \\ \\ \\ }}$","$D\\ .$","$E+$","$F+$","$G\\ .$"], 
+//  var cdata = [[" ","$A^{\\overline{\\ \\ \\ \\ }}$","$B+$",
+//                "$C^{\\overline{\\ \\ \\ \\ }}$","$D\\ .$","$E+$","$F+$","$G\\ .$"], 
+  var cdata = [[" ","$\\overline{A}$","$B+$",
+                "$\\overline{C}$","$D\\ .$","$E+$","$F+$","$G\\ .$"], 
                ["1"," "," "," "," "," "," "," "],
                ["2"," "," "," "," "," "," "," "], 
                ["3"," "," "," "," "," "," "," "], 
@@ -254,11 +246,12 @@ $(document).ready(function () {
 
   for(var i=0;i<8;i++)
     ctable.addClass(0,i,"headerrow");
-
   av.step(); 
+
+  // Slide 8
   nl1.hide();
   label1= av.label("The table has a row for each input wire"
-                   +" and a column for each gate",{left:10,top:230});  
+                   +" and a column for each gate.",{left:10,top:230});  
   label2= av.label("Each item in the column header contains the name <br>and the "
                    +"type of the gate. <br><br>For example '$A^{\\overline{\\ \\ \\ \\ }}$' indicates "+
                    "that <br>the gate labelled as 'A' "+
@@ -266,23 +259,24 @@ $(document).ready(function () {
 
   av.step();
 
+  // Slide 9
   label1.hide(); label2.hide();
 
-  label1= av.label("We now show how to populate the table starting with  Gate A ",{left:10,top:230});  
+  label1= av.label("We now show how to populate the table starting with  Gate A.",{left:10,top:230});  
   label2= av.label("As input signal 3 passes through Gate A, wire 4 carries "
                    +"the output. <br>Hence the cell under input wire 3 and gate A is "
-                   +"assigned the value 4",{left:10,top:260});  
+                   +"assigned the value 4.",{left:10,top:260});  
 
   gate1.addClass("gatefocus");
   ctable.addClass(0,1,"cellfocus");
   ctable.addClass(3,0,"cellfocus");
   ctable.addClass(3,1,"cellfill"); 
   ctable.value(3,1,"4");
-
   av.step();
 
+  // Slide 10
   label1.hide(); label2.hide();
-  label1= av.label("Populating the table for Gate B",{left:10,top:250});  
+  label1= av.label("Populating the table for Gate B.",{left:10,top:250});  
 
   gate1.removeClass("gatefocus");
   ctable.removeClass(0,1,"cellfocus");
@@ -297,11 +291,11 @@ $(document).ready(function () {
   ctable.addClass(2,2,"cellfill"); 
   ctable.value(1,2,"5");
   ctable.value(2,2,"5");
-
   av.step();
 
+  // Slide 11
   label1.hide(); 
-  label1= av.label("Populating the table for Gate C",{left:10,top:250});  
+  label1= av.label("Populating the table for Gate C.",{left:10,top:250});  
 
   gate2.removeClass("gatefocus");
   ctable.removeClass(0,2,"cellfocus");
@@ -315,17 +309,16 @@ $(document).ready(function () {
   ctable.addClass(4,0,"cellfocus");
   ctable.addClass(4,3,"cellfill");
   ctable.value(4,3,"6");
-
   av.step();
 
+  // Slide 12
   label1.hide(); 
-  label1= av.label("Populating the table for Gate D",{left:10,top:250});  
+  label1= av.label("Populating the table for Gate D.",{left:10,top:250});  
 
   gate3.removeClass("gatefocus");
   ctable.removeClass(0,3,"cellfocus");
   ctable.removeClass(4,0,"cellfocus");
   ctable.removeClass(4,3,"cellfill");
-
 
   gate4.addClass("gatefocus");
   ctable.addClass(0,4,"cellfocus");
@@ -338,11 +331,11 @@ $(document).ready(function () {
   ctable.value(1,4,"7");
   ctable.value(2,4,"7");
   ctable.value(4,4,"7");
-
   av.step();
 
+  // Slide 13
   label1.hide(); 
-  label1= av.label("Populating the table for Gate E",{left:10,top:250});  
+  label1= av.label("Populating the table for Gate E.",{left:10,top:250});  
 
   gate4.removeClass("gatefocus");
   ctable.removeClass(0,4,"cellfocus");
@@ -361,11 +354,11 @@ $(document).ready(function () {
   ctable.addClass(6,5,"cellfill");
   ctable.value(5,5,"8");
   ctable.value(6,5,"8");
-  
   av.step();
 
+  // Slide 14
   label1.hide();
-  label1= av.label("Populating the table for Gate F",{left:10,top:250});  
+  label1= av.label("Populating the table for Gate F.",{left:10,top:250});  
   
   gate5.removeClass("gatefocus");
   ctable.removeClass(0,5,"cellfocus");
@@ -382,11 +375,11 @@ $(document).ready(function () {
   ctable.addClass(7,6,"cellfill");
   ctable.value(6,6,"9");
   ctable.value(7,6,"9");
-  
   av.step();
 
+  // Slide 15
   label1.hide(); 
-  label1= av.label("Populating the table for Gate G",{left:10,top:250});  
+  label1= av.label("Populating the table for Gate G.",{left:10,top:250});  
   
   gate6.removeClass("gatefocus");
   ctable.removeClass(0,6,"cellfocus");
@@ -403,9 +396,9 @@ $(document).ready(function () {
   ctable.addClass(9,7,"cellfill");
   ctable.value(8,7,"10");
   ctable.value(9,7,"10");
-
   av.step();
   
+  // Slide 16
   label1.hide();
   gate7.removeClass("gatefocus");
   ctable.removeClass(0,7,"cellfocus");
@@ -413,19 +406,21 @@ $(document).ready(function () {
   ctable.removeClass(9,0,"cellfocus");
   ctable.removeClass(8,7,"cellfill");
   ctable.removeClass(9,7,"cellfill");
-  nl1 = av.label("This is the complete tabular representation of the circuit"
+  nl1 = av.label("This is the complete tabular representation of the circuit."
                  ,{top:250}); 
   av.step();
   
+  // Slide 17
   nl1.hide();
   av.umsg("<br><b>Propagation of signals</b>");
   nl1 = av.label("We show the propagation of signals by assuming a particular"+
-                 " <br>assignment of input signals to the circuit"
+                 " <br>assignment of input signals to the circuit."
                  ,{top:220}); 
-  label1= av.label("Let the assignment be { $x1 = T , x2 = F , x3 = F $ } "
+  label1= av.label("Let the assignment be { $x1 = T , x2 = F , x3 = F $ }."
                    ,{left:10,top:270});  
-
   av.step();
+
+  // Slide 18
   nl1.hide();
   xlabel1.addClass("labeltrue");
   xlabel2.addClass("labelfalse");
@@ -447,9 +442,9 @@ $(document).ready(function () {
   ctable.addClass(1,0,"celltrue");
   ctable.addClass(2,0,"cellfalse");
   ctable.addClass(3,0,"celltrue");
-  
   av.step();
 
+  // Slide 19
   label1.hide();
   label1= av.label("As signal x3 passes through Gate A, wire 4 gets value $F$."
                    ,{left:10,top:250});
@@ -460,10 +455,11 @@ $(document).ready(function () {
   board.assignIP(gate3,0,0);
   board.assignIP(gate4,1,0);
   board.assignBP(bp3,0);
-
   av.step(); 
+
+  // Slide 20
   label1.hide();
-  label1= av.label("As signals x1 and x2 pass through Gate B, wire 5 gets"+
+  label1= av.label("As signals x1 and x2 pass through Gate B, wire 5 gets "+
                    "value $T$.",{left:10,top:250});
   gate1.removeClass("gatefocus");
   gate2.addClass("gatefocus");
@@ -472,8 +468,9 @@ $(document).ready(function () {
   ctable.addClass(5,0,"celltrue");
   board.assignOP(gate2,1); 
   board.assignIP(gate5,0,1);
-
   av.step();
+
+  // Slide 21
   label1.hide();
   label1= av.label("As signal 4 passes through Gate C, wire 6 gets value $T$."
                    ,{left:10,top:250});
@@ -486,6 +483,8 @@ $(document).ready(function () {
   board.assignIP(gate6,0,1);
   board.assignBP(bp4,1);
   av.step();
+
+  // Slide 22
   label1.hide();
   label1= av.label("As signals x1, x2 and 4 passes through Gate D, wire 7"+
                    " gets value $F$.",{left:10,top:250});
@@ -497,8 +496,9 @@ $(document).ready(function () {
   ctable.addClass(7,0,"cellfalse");
   board.assignOP(gate4,0);
   board.assignIP(gate6,2,0);
-
   av.step();
+
+  // Slide 23
   label1.hide();
   label1= av.label("As signals 5 and 6 pass through Gate E, wire 8 gets "
                    +"value $T$.",{left:10,top:250});
@@ -509,8 +509,9 @@ $(document).ready(function () {
   ctable.addClass(8,0,"celltrue");
   board.assignOP(gate5,1);
   board.assignIP(gate7,0,1);
-
   av.step();
+
+  // Slide 24
   label1.hide();
   label1= av.label("As signals 6 and 7 pass through Gate F, wire 9 gets"
                    +" value $T$.",{left:10,top:250});
@@ -521,8 +522,9 @@ $(document).ready(function () {
   ctable.addClass(9,0,"celltrue");
   board.assignOP(gate6,1);
   board.assignIP(gate7,2,1);
-
   av.step();
+
+  // Slide 25
   label1.hide();
   label1= av.label("As signals 8 and 9 pass through Gate G, wire 10 gets "
                    +"value $T$.",{left:10,top:250});
@@ -531,14 +533,16 @@ $(document).ready(function () {
   ctable.addClass(8,7,"celltrue");
   ctable.addClass(9,7,"celltrue");
   board.assignOP(gate7,1);
-
   av.step();
+
+  // Slide 26
   label1.hide();
   label1= av.label("The above circuit yields a value $T$ for the assignment<br>"
-                   +"{ $x1 = T, x2 = F, x3 = T $}",{left:10,top:250});
+                   +"{ $x1 = T, x2 = F, x3 = T $}.",{left:10,top:250});
   gate7.removeClass("gatefocus");
-
   av.step();
+
+  // Slide 27
   board.hide();
   xlabel1.hide();
   xlabel2.hide();
@@ -547,34 +551,36 @@ $(document).ready(function () {
     numlabels[i].hide();
   for(var i=0;i<gatelabel.length;i++)
     gatelabel[i].hide();
-  
   ctable.hide();
   label1.hide();
-
   av.umsg("<br><b>Satisfiability of a Circuit</b>");
   nl1=av.label("The set of boolean input values for a boolean "
-               +"combinatorial circuit is called <b>Truth Assignment</b>",
+               +"combinatorial circuit is called a <b>Truth Assignment</b>.",
                {left:0,top:0}); 
-
   av.step();
+
+  // Slide 28
   nl2=av.label("If a truth assignment causes the output of a circuit"
-               +" to be True, it is called a <b>satisfying assigment</b>",
+               +" to be True, it is called a <b>satisfying assigment</b>.",
                {left:0,top:50}); 
-
   av.step();
+
+  // Slide 29
   nl3=av.label("A one-output boolean combinational circuit is "+
-               "<b>satisfiable</b> if it has a satisfying assignment"
+               "<b>satisfiable</b> if it has a satisfying assignment."
                ,{left:0,top:100}); 
-
   av.step();
+
+  // Slide 30
   nl1.hide();
   nl2.hide();
   nl3.hide();
   av.umsg("<br><b>The Circuit Satisfiability Problem</b>");
   nl1=av.label("Given a boolean combinatorial circuit composed of "+
-               "AND , OR and NOT gates , is the Circuit Satisfiable ? ",{top:-10,left:0});
+               "AND , OR and NOT gates , is the circuit satisfiable? ",{top:-10,left:0});
   av.step();
 
+  // Slide 31
   nl1.hide();
   av.umsg("<br><b>Example of Circuit Satisfiability</b>");
   board.show();
@@ -585,10 +591,10 @@ $(document).ready(function () {
     gatelabel[i].show();
 
   label1= av.label("This circuit is <b>satisfied</b> for the assignment "+
-                   "{ $x1 = T, x2 = F, x3 = T$ }",{left:10,top:250});  
-  
+                   "{$x1 = T, x2 = F, x3 = T$}.",{left:10,top:250});  
   av.step();
   
+  // Slide 32
   av.umsg("<br><b>Example of Circuit Satisfiability</b>");
   xlabel1.removeClass("labeltrue");
   xlabel2.removeClass("labelfalse");

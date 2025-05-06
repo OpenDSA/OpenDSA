@@ -56,5 +56,7 @@ $(document).ready(function() {
     av.g.circle(left + 75 + i * 100, topSpace + 260, 2, {fill: "black"});
     av.g.circle(left + 75 + i * 100, topSpace + 270, 2, {fill: "black"});
   }
+  // Invoke MathJax to get equations to display correctly
+  MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
   av.displayInit();
 });

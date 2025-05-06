@@ -106,7 +106,7 @@ For Jeroos, the sensor methods are the basic building blocks for creating condit
      - 	Is there a net in the indicated direction? [``seesNet(HERE)`` is meaningless]
      - ``dean.seesJeroo(RIGHT)``
    * - ``seesWater(relativeDirection)``
-     - 	Is there water in the indicated direction? [``seesWater(AHEAD)`` is meaningless]
+     - 	Is there water in the indicated direction? [``seesWater(HERE)`` is meaningless]
      - ``dean.seesWater(AHEAD)``
 
 
@@ -476,19 +476,21 @@ Syntax Practice 3d: Compound Conditions
 Your Opinions on Learning and Engagement
 ----------------------------------------
 
-Complete the following survey. The purpose of this task is to gather
-information about this course so that it can be improved. Your input is
-critical because we want to create the best experience possible for students.
-
+Please complete the survey at the link provided below. The survey results
+will be used to improve this course, and your input is critical because we
+want to create the best experience possible for students. Because it will
+take you about 10 to 15 minutes to complete, you will receive credit for
+completing it.
+ 
+Near the end of the survey you will be asked if you consent for this
+information to be used in a study about perceptions of student learning
+and engagement, which is optional. There is no additional work on your
+part if you provide consent for your responses to be used in the study.
+ 
 .. raw:: html
 
-    <a href="https://virginiatech.questionpro.com/t/AUHNlZ03Lw" target="_blank">CS 1114 Engagement Survey 1</a>
-
-Towards the end of the survey you will be asked if you consent for this
-information to be used in a study about perceptions of student learning
-and engagement, which is optional.  There is no additional work on your
-part if you provide consent for your responses to be used in the study.
-
+    <a href="https://virginiatech.questionpro.com/t/AUHNlZ5Dux" target="_blank">CS 1114 Engagement Survey 1</a>
+ 
 Please answer below and your participation in the survey will be verified
 for credit.
 

@@ -489,11 +489,11 @@ NOTES
     within the ODSA directory.
     Example, if ``odsa_path`` is defined to be ``..\..\..``, then
 
-    ``.. odsalink:: JSAV/css/JSAV.css``
+    ``.. odsalink:: lib/JSAV.css``
 
     will produce
 
-    ``<link href="../../../JSAV/css/JSAV.css" rel="stylesheet" type="text/css" />``
+    ``<link href="../../../lib/JSAV.css" rel="stylesheet" type="text/css" />``
 
     in the HTML output file.
 
@@ -527,11 +527,11 @@ NOTES
     within the ODSA directory.
     Example, if ``odsa_path`` is defined to be ``..\..\..``, then
 
-    ``.. odsascript:: JSAV/build/JSAV-min.js``
+    ``.. odsascript:: lib/JSAV-min.js``
 
     will produce
 
-    ``<script type="text/javascript" src="../../../JSAV/build/JSAV-min.js"></script>``
+    ``<script type="text/javascript" src="../../../lib/JSAV-min.js"></script>``
 
     in the HTML output file.
 

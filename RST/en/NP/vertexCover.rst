@@ -15,8 +15,6 @@ The Vertex Cover Problem
 Vertex Cover
 ------------
 
-THE VERTEX COVER PROBLEM.
-
 .. inlineav:: vertexCoverCON ss
    :long_name: Vertex Cover
    :links: AV/NP/vertexCoverCON.css

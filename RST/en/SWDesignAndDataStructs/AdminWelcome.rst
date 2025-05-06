@@ -51,24 +51,22 @@ Getting Help
 ----------------------
 If you need assistance then you may use the Piazza course forum (accessible via the course menu on the left) or visit us during our office hours. Programming help is NOT provided through email. Students must use the course web forums and office hours for programming help.
 
-Remember Students are expected to conduct themselves in an ethical, professional manner, consistent with the Virginia Tech Honor Code. Links to an external site. All work should be done on an individual basis and should not be accomplished with any help other than the course instructor, the course TAs, and ACM or UPE tutors.  Check out the Ethics section of the syllabus for more specifics.
+Remember students are expected to conduct themselves in an ethical, professional manner, consistent with the Virginia Tech Honor Code. All work should be done on an individual basis and should not be accomplished with any help other than the course instructor or the course TAs.  Check out the Ethics section of the syllabus for more specifics.
 
 We have provided a number of avenues for help, continue reading to learn more about the awesome support available to you.
 
- 
-**Course Forum** 
+**COURSE FORUM**
 
-You are expected to monitor the class forum on Piazza for ongoing information and tips.  Learn early how to search piazza and monitor instructor posts. You should also use Piazza when seeking assistance or offering help, however remember that you are NOT to post code on a public Piazza post. Posting code on public Piazza posts opens you up to Honor Code issues. Piazza should NOT be used to vent or to explore disagreements.
+You are expected to monitor the class forum on piazza for ongoing information and tips.  Learn early how to search piazza and monitor instructor posts. You should also use piazza when seeking assistance or offering help, however remember that you are NOT to post code on a public Piazza post. Posting code on public Piazza posts opens you up to Honor Code issues. Piazza should NOT be used to vent or to explore disagreements.
 
-Remember that one goal of this course is to help you develop the skills to be an effective developer, a self-directed problem-solver capable of independent work. Before posting a new question on Piazza you should first explore the error/problem you are attempting to resolve then try to find the answer.  You should search Piazza, Java documentation, Course material, the web, or some Java or Eclipse manual or help resource. Whichever avenue you choose be sure that your use of Piazza, or any other resource,  always adheres to the requirements of the VT Honor Code.
+Remember that one goal of this course is to help you develop the skills to be an effective developer, a self-directed problem-solver capable of independent work. Before posting a new question on piazza you should first explore the error/problem you are attempting to resolve then try to find the answer.  You should search piazza, Java documentation and course material. Whichever avenue you choose be sure that your use of piazza, or any other resource,  always adheres to the requirements of the VT Honor Code.
 
- 
 
-**Office Hours**
+**OFFICE HOURS**
 
 We hold office hours at various times throughout the week, be sure to check our office hours page for the schedule of days and times.
 
-You may visit during office hours for assistance with Projects and Labs, or even to ask questions about course topics.   We encourage you to start labs, assignments, and projects as early as possible so that you can make the best use of these support options throughout the entire week. 
+You may visit during office hours for assistance with projects and labs, or even to ask questions about course topics.   We encourage you to start labs, assignments, and projects as early as possible so that you can make the best use of these support options throughout the entire week. 
 
 Remember that we can only spend a few minutes with you during each visit.
 
@@ -78,13 +76,13 @@ Having specific questions about a project, bug, concept, or topic of interest wi
 
 Support Projects
 ----------------------
-Throughout the course you will be using a number of CS 2114 support projects, namely  CS2-Support, CS2DataStructuresLib, CS-GraphWindowLib.
+Throughout the course you will be using a number of CS 2114 support projects, namely  CS2-Support, CS2DataStructuresLib, CS2GraphWindowLib.
 
 These projects provide students with a number of necessary features and facilities which will be of use to you throughout your development and testing.
 
 These projects are required for many of the sample projects to function as intended. 
 
-They are also required for Labs and course projects, students will not be able to complete Lab and project tasks unless these projects have been downloaded to your development environment and are open and available for use.
+They are also required for labs and course projects, students will not be able to complete lab and project tasks unless these projects have been downloaded to your development environment and are open and available for use.
 
 To download these projects you must first complete the Eclipse configuration steps described in the Pre-Lab part of Lab 2.  There will be links to the lab pages from the Course Schedule.
 
@@ -94,13 +92,13 @@ Within Eclipse you may download these by using the blue down arrow icon or using
 
 Web-CAT and Lab Sections
 ------------------------
-* CS 2114 students must register for both a Lecture and a Lab*.  Registering for a Lab section means that your WebCAT profile will be configured to allow you to electronically submit labs and assignments to that section.   
+CS 2114 students should be registered for both a lecture section and a lab section.  
 
 You are to contact instructors immediately if you
 
 * Registered for the course (or a lab) after the first day of classes
-* Switched Lab sections on or after the first day of classes
-* Cannot access Web-CAT (or are registered for the wrong Web-CAT Lab section) during the second week of classes
+* Switched lab sections on or after the first day of classes
+* Cannot access Web-CAT (or are registered for the wrong Web-CAT lab section) during the second week of classes
 
 The course team understands that students may, on rare occasions, need to make adjustments to their schedule during the first couple weeks of the semester.  If a student switches Lab sections (i.e. registers for a different Lab section than they were previously assigned to in Web-CAT) the student MUST contact instructors. any of the Web-CAT section configuration issues listed above.
 

@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Algorithm Analysis for Space Bounds
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: algorithm analysis
    :satisfies: space analysis introduction; overhead; space/time tradeoff
    :topic: Algorithm Analysis
    :keyword: Algorithm Analysis; Space Analysis
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces analyzing space bounds and constrasts this to analyzing time bounds.
 
 Space Bounds
 ============

@@ -867,7 +867,7 @@ define(function(require) {
       var promises = [];
 
       // Load all base modules, and if this is local mode, any specified
-      // in the data-require on <html>
+      // in the data-require on <html lang="en">
       var mods = Khan.getBaseModules();
       if (localMode) {
         var modString = document.documentElement.getAttribute(

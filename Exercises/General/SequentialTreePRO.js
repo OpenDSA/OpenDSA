@@ -14,7 +14,7 @@
       var bt = av.ds.binarytree({center: true, visible: true, nodegap: 35});
       var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
       bt.root(letters.charAt(0));
-      //generate random tree with between 4-7nodes
+      // Generate a random tree with 4 to 7 nodes
       var numNodes = Math.floor(Math.random() * (7 - 4)) + 4;
       var i = 1;
       while (i <= numNodes) {

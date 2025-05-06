@@ -14,27 +14,28 @@ $(document).ready(function () {
     MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
 
   var av = new JSAV(av_name);
-
-
   var y = 0;
+
+  // Slide 1
   av.umsg("<br><b>Introduction to Hamiltonian Cycle Problem </b>");
   var nl1=av.label("This slideshow introduces"+
                    " and explains the \"Hamiltonian Cycle\" Problem."
                    +"</b> <br><br><br> We start with some definitions  and background.",{top:0});
 
   av.displayInit();
-
   av.step();
+
+  // Slide 2
   nl1.hide();
   av.umsg("<br><b>Hamiltonian Cycle</b>");
 
   nl1=av.label("Hamiltonian Cycle is a graph cycle in an undirected or a"
                +"directed graph that passes through each vertex exactly once.", {top:-10});
-
   av.step();
 
+  // Slide 3
   var nl2=av.label("For example - The edges marked in red in the graph below forms"
-                   +" a Hamiltonian Cycle",{top:40});
+                   +" a Hamiltonian Cycle.", {top: 40});
 
   var  g = av.ds.graph({width: 400,  height: 450, layout: "manual",  directed:
                         false,left:200,top:100});
@@ -59,7 +60,6 @@ $(document).ready(function () {
   var e36 = g.addEdge(c3,  c6);
   var e56 = g.addEdge(c5,  c6);
 
-
   e25.addClass("edgehighlight1");
   e21.addClass("edgehighlight1");
   e13.addClass("edgehighlight1");
@@ -67,13 +67,11 @@ $(document).ready(function () {
   e46.addClass("edgehighlight1");
   e45.addClass("edgehighlight1");
 
-
   g.layout();
   g.show();
-
   av.step();
 
-  //silde 2
+  // Slide 4
   nl1.hide();
   nl2.hide();
   g.hide();
@@ -81,15 +79,15 @@ $(document).ready(function () {
   nl1=av.label("<b>Given a graph $G = (V,E)$, does the graph "
                +"contain a Hamiltonian Cycle? </b><br><br>",
                {top:5});
-
-  //silde 3
   av.step();
+
+  // Slide 5
   y=0;
   nl1.hide();
 
   av.umsg("<br><b>Example of Hamiltonian Cycle Problem </b>");
 
-  nl1=av.label("Does the graph below contain a Hamiltonian Cycle ?"
+  nl1=av.label("Does the graph below contain a Hamiltonian Cycle?"
                , {top:-10});
 
   var  g1 = av.ds.graph({width: 500,  height: 400, layout: "manual",  directed:
@@ -112,9 +110,7 @@ $(document).ready(function () {
   g1.addNode("8", {"width":"40px", "height":"40px", "min-widh":"40px",
                    "min-height":"40px", "background-color":"LightSyBlue", "left":250, "top":0});
 
-
   var nodes=g1.nodes();
-
   var cycleEdges = new Array(8);
   for(i=0;i<8;i++)
     cycleEdges[i]=g1.addEdge(nodes[i], nodes[(i+1)%8]).css({"stroke-width":"1.5px"});
@@ -130,14 +126,17 @@ $(document).ready(function () {
   g1.addEdge(nodes[1], nodes[3]).css({"stroke-width":"1.5px"});;
   g1.layout();
   g1.show();
-  //slide 4
   av.step();
+
+  // Slide 6
   var label1=av.label("<b>Yes</b>",{left:10,top:40});
   for(i=0;i<8;i++)
     cycleEdges[i].addClass("edgehighlight2");;
   g1.layout();
   g1.show();
   av.step();
+
+  // Slide 7
   nl1.hide();
   y=0;
   label1.hide();
@@ -159,10 +158,11 @@ $(document).ready(function () {
 
   g1.layout();
   av.umsg("<b><br>Example of Hamiltonian Cycle Problem</b>");
-  nl1=av.label("Does the graph below contain a Hamiltonian Cycle ?"
+  nl1=av.label("Does the graph below contain a Hamiltonian Cycle?"
                , {top:-10});
-
   av.step();
+
+  // Slide 8
   label1=av.label("<b>No</b>",{left:10,top:40});
   av.recorded();
 });

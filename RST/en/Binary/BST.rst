@@ -127,7 +127,7 @@ potentially increasing the depth of the tree.
 Figure :num:`Figure #BSTShape` illustrates two BSTs for a collection
 of values.
 It is possible for the BST containing :math:`n` nodes to be a chain of
-nodes with height :math:`n`.
+nodes with height :math:`\Theta(n)`.
 This would happen if, for example, all elements were inserted in
 sorted order.
 In general, it is preferable for a BST to be as shallow as
@@ -245,7 +245,7 @@ If a binary tree is balanced, then the height for a tree of :math:`n`
 nodes is approximately :math:`\log n`.
 However, if the tree is completely unbalanced, for example in the
 shape of a linked list, then the height for a tree with :math:`n`
-nodes can be as great as :math:`n`.
+nodes can be as great as :math:`n-1`.
 Thus, a balanced BST will in the average case have operations costing
 :math:`\Theta(\log n)`, while a badly unbalanced BST can have
 operations in the worst case costing :math:`\Theta(n)`.
@@ -257,7 +257,7 @@ enough for this purpose), then each insertion will cost on average
 :math:`\Theta(\log n)`, for a total cost of
 :math:`\Theta(n \log n)`.
 However, if the records are inserted in order of increasing value,
-then the resulting tree will be a chain of height :math:`n`.
+then the resulting tree will be a chain of height :math:`n-1`.
 The cost of insertion in this case will be
 :math:`\sum_{i=1}^{n} i = \Theta(n^2)`.
 

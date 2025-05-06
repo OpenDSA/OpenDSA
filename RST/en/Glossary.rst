@@ -452,12 +452,13 @@ Glossary
       describing the :term:`upper bound` for an :term:`algorithm` or
       :term:`problem`.
 
-   binary insert sort
+   binary insertion sort
       A variation on :term:`insertion sort` where the position of the
       value being inserted is located by binary search, and then put
       into place. In normal usage this is not an improvement on
       standard insertion sort because of the expense of moving many
-      items in the :term:`array`. But it is directly useful if the cost of
+      items in the :term:`array`.
+      But it is practically useful if the cost of
       comparison is high compared to that of moving an element, or
       is theoretically useful if we only care to count the cost of
       comparisons.
@@ -532,6 +533,12 @@ Glossary
       on.
       This approach tends to make the hash function dependent on the
       distribution of the high-order bits of the keys.
+
+   binomial tree
+      A binomial tree of height :math:`m` has :math:`2^m` nodes.
+      Either it is a single node (if :math:`m=0`), or else it is
+      two binomial trees of height :math:`m-1`, with one tree's root
+      becoming a child of the other.
 
    bintree
       :to-term: flyweight :label: uses
@@ -2178,15 +2185,14 @@ Glossary
       Testing "proper" inputs or uses of a program.
 
    hard algorithm
-      "Hard" is traditionally defined in relation to running time, and
-      a "hard" algorithm is defined to be an algorithm with exponential
-      running time.
+      "Hard" in CS theory is traditionally defined in relation to
+      running time, and a "hard" algorithm is defined to be an
+      algorithm with exponential running time.
 
    hard problem
-      "Hard" is traditionally defined in relation to running time, and
-      a "hard" problem is defined to be one whose best known algorithm
-      requires exponential running time.
-
+      "Hard" in CS theory is traditionally defined in relation to
+      running time, and a "hard" problem is defined to be one whose
+      best known algorithm requires exponential running time.
 
    harmonic series
       The sum of reciprocals from 1 to :math:`n` is called the
@@ -3122,7 +3128,7 @@ Glossary
       to the memory manager to reserve a block of memory and store
       some bytes there.
 
-   merge insert sort
+   merge insertion sort
       A synonym for the :term:`Ford and Johnson sort`.
 
    message
@@ -3460,6 +3466,16 @@ Glossary
       present a standard interface to these to other software
       components.
 
+   optimal algorithm
+      Any algorithm is said to be optimal if its cost (for a given
+      class of inputs, such as best, average, or worst case) is within
+      a constant factor of the lower bound to solve that problem.
+      For example, linear search is optimal on an unsorted array for
+      all classes of inputs. Mergesort is optimal for sorting in the
+      average and worst cases, Quicksort is optimal for sorting in the
+      average case, and Insertion Sort is optimal for sorting in the
+      best case.
+
    optimal static ordering
       A theoretical construct defining the best static (non-changing)
       order in which to place a collection of records so as to
@@ -3741,6 +3757,16 @@ Glossary
       :term:`design pattern`.
       Related to the :term:`bintree`.
 
+   practicality window
+      The range of values for problem input size :math:`n` that a
+      real user of an algorithm will give to that algorithm.
+      If two algorithms have different growth rates, by definition one
+      grows faster than the other, meaning that beyond a certain value
+      of  :math:`n`, the one is always faster.
+      But if that value of :math:`n` is outside the practical limit
+      that any real user is likely to use, then the asymptotically
+      faster algorithm is practically faster.
+
    prefix property
       Given a collection of strings, the collection has the prefix
       property if no string in the collection is a prefix for another
@@ -3978,6 +4004,18 @@ Glossary
       This extends the set of languages that can be recognize to the
       :term:`context-free languages <context-free language>`.
 
+   quadratic binary search
+   QBS
+      A variation on :term:`dictionary search` or
+      :term:`interpolation search` for sorted lists.
+      QBS will first calculate a position in the list to check based
+      on the key value being searched for.
+      If this is not the correct value, then the algorithm will make
+      jumps of some size in the correct direction until it has bounded
+      the range where the record can be.
+      It then repeats the process by recomputing a position and making
+      smaller jumps.
+   
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
       is the input size and :math:`c` is a constant.

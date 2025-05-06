@@ -8,13 +8,15 @@ static void sorttime(int[] B) {
   println("Doing timings on the basis of " + numruns + " runs");
 
 totaltime = 0;
-for (runs=0; runs<numruns; runs++) {
-  for (i=0; i<B.length; i++)
+  for (runs=0; runs<numruns; runs++) {
+    for (i=0; i<B.length; i++) {
     A[i] = new Integer(B[i]);
+    Aint[i] = B[i];
+  }
   time1 = millis();
-  inssort(A);
+  inssort(Aint);
   time2 = millis();
-  checkorder(A);
+  checkorder(Aint);
 totaltime += (time2-time1);
 }
   println("Standard Insertion Sort: Size " + testsize + ", Time: " + totaltime);
@@ -96,7 +98,7 @@ static Boolean sorttest(int[] B) {
   Integer[] A = new Integer[B.length];
   for (i=0; i<B.length; i++)
     A[i] = new Integer(B[i]);
-  inssort(A);
+  inssortgen(A);
   if (!checkorder(A)) return false;
 
   //  KVPair[] AKV = (KVPair[])new Object[B.length];
@@ -108,9 +110,15 @@ static Boolean sorttest(int[] B) {
 }
 
 /* *** ODSATag: Insertionsort *** */
-static <T extends Comparable<T>> void inssort(T[] A) {
+static void inssort(int[] A) {
+  for (int i=1; i<A.length; i++) // Insert i'th record
+    for (int j=i; (j>0) && (A[j] < A[j-1]); j--)
+      swap(A, j, j-1);
+}
+/* *** ODSAendTag: Insertionsort *** */
+
+static <T extends Comparable<T>> void inssortgen(T[] A) {
   for (int i=1; i<A.length; i++) // Insert i'th record
     for (int j=i; (j>0) && (A[j].compareTo(A[j-1]) < 0); j--)
       Swap.swap(A, j, j-1);
 }
-/* *** ODSAendTag: Insertionsort *** */

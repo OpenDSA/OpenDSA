@@ -9,24 +9,14 @@
 Queues
 ======
 
-..
-    Shortcuts
-    ---------
-    
-    - :ref:`QueueIntro`
-    - :ref:`QueueLinked`
-    - :ref:`QueueIntroDeque`
-    - :ref:`QueueArray`
-
-
 Objectives
 ----------
 
 Upon completion of this module, students will be able to:
 
 * Name the function and purpose of basic Java data structures
-* State key characteristics of Bags in Java
-* Build and populate Bags in Java
+* State key characteristics of Queues in Java
+* Build and populate Queues in Java
 
 Suggested Reading
 ~~~~~~~~~~~~~~~~~
@@ -48,7 +38,7 @@ Interactive: Introduction to Queues
    .. raw:: html
    
        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/QueueInterface.java"  target="_blank">
-       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+       <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
        QueueInterface.java</img>
        </a>
    
@@ -89,14 +79,14 @@ Interactive: Introduction to Queues
    .. raw:: html
    
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/QueueIntro.pdf" target="_blank">
-        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
         Video Slides: QueueIntro.pdf</img>
         </a>
         
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_1km1xhtz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_1km1xhtz' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Queues"></iframe> 
     </center>
 
 
@@ -123,7 +113,7 @@ Interactive: Linked Queues Intro and Enqueue
    .. raw:: html
 
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedQueuesEnqueue.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
       LinkedQueuesEnqueue.pdf</img>
       </a>
 
@@ -131,7 +121,7 @@ Interactive: Linked Queues Intro and Enqueue
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nf3l8nvv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_nf3l8nvv' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Linked Queues Intro and Enqueue"></iframe> 
     </center>
 
 Checkpoint 2
@@ -149,14 +139,14 @@ Interactive: Linked Queues Removing and More (Dequeue and Other Methods)
   .. raw:: html
 
      <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/LinkedQueueRemove.pdf"  target="_blank">
-     <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+     <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
      LinkedQueueRemove.pdf</img>
      </a>
    
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5m4m3con' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_5m4m3con' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Linked Queues Removing and More"></iframe> 
     </center>
 
 
@@ -181,12 +171,12 @@ Interactive: Introduction to Deque
   .. raw:: html
         
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/examples/DequeInterface.java"  target="_blank">
-        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/icons8-java60.png" alt=""  width="32" height="32">
         DequeInterface.java</img>
         </a>
         <br>
         <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeIntro.pdf"  target="_blank">
-        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
         DequeIntro.pdf</img>
         </a>
         
@@ -195,7 +185,7 @@ Interactive: Introduction to Deque
      package deque;
   
      /**
-      * An interface for the ADT deque.
+      * An interface for the ADT dequeue.
       *
       * @author Frank M. Carrano
       * @author Timothy M. Henry
@@ -275,7 +265,7 @@ Interactive: Introduction to Deque
 .. raw:: html
 
     <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vj6hwbnk' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vj6hwbnk' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Introduction to Deque"></iframe> 
     </center>
 
 Checkpoint 4
@@ -284,20 +274,24 @@ Checkpoint 4
 .. avembed:: Exercises/SWDesignAndDataStructs/QueueCheckpoint4Summ.html ka
    :long_name: Checkpoint 4
 
-
 Interactive: Deque Removing and Wrap Up
-----------------------------------------------
+-------------------------------------------------------------------------------
+  
+.. admonition:: Follow Along, Practice and Explore
 
+    .. raw:: html
+
+        <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeRemoveAndWrapUp.pdf" target="_blank">
+        <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
+        Video Slides DequeRemoveAndWrapUp.pdf</img>
+        </a>
+  
 .. raw:: html
 
-    <center>
-    <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_c94y4y06' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
-    </center>
-    <br>
-    <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/DequeRemoveAndWrapUp.pdf" target="_blank">
-    <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
-    Video Slides DequeRemoveAndWrapUp.pdf</img>
-    </a>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_c94y4y06' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" Deque Removing and Wrap Up></iframe> 
+   </center>
+
 
 Checkpoint 5
 ------------
@@ -312,12 +306,12 @@ Interactive: ArrayQueue: Array Implementation of Queues
 
 .. admonition:: Follow Along and Engage
 
-    Download the slides corresponding to the video. Take notes on them as you watch the video, practice drawing diagrams yourself!
+    Download the slides corresponding to the videos. Take notes on them as you watch the video, practice drawing diagrams yourself!
 
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueIntro.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       ArrayQueueIntro.pdf</img>
       </a>
 
@@ -325,7 +319,12 @@ Interactive: ArrayQueue: Array Implementation of Queues
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_schlfeex' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_no29pnf8' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayQueue"></iframe> 
+   </center>
+   <br>
+   <br>
+   <center>
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8fs30aor' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Array Implementation of Queues"></iframe> 
    </center>
 
 Checkpoint 6
@@ -345,7 +344,7 @@ Interactive: ArrayQueue: One Unused Location
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueRemove.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       ArrayQueueRemove.pdf</img>
       </a>
 
@@ -353,7 +352,7 @@ Interactive: ArrayQueue: One Unused Location
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_299igb5h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_299igb5h' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayQueue: One Unused Location"></iframe> 
    </center>
 
 Checkpoint 7
@@ -373,7 +372,7 @@ Interactive: ArrayQueue: Ensure Capacity
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueEnsureCapacity.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       ArrayQueueEnsureCapacity.pdf</img>
       </a>
 
@@ -381,7 +380,7 @@ Interactive: ArrayQueue: Ensure Capacity
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_xkijc49b' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_vykguc35' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayQueue: Ensure Capacity"></iframe> 
    </center>
 
 
@@ -402,7 +401,7 @@ Interactive: ArrayQueue WrapUp
    .. raw:: html
    
       <a href="https://courses.cs.vt.edu/cs2114/SWDesignAndDataStructs/course-notes/ArrayQueueWrapUp.pdf"  target="_blank">
-      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" width="32" height="32">
+      <img src="https://courses.cs.vt.edu/cs2114/opendsa/icons/projector-screen.png" alt="" width="32" height="32">
       ArrayQueueWrapUp.pdf</img>
       </a>
 
@@ -410,7 +409,7 @@ Interactive: ArrayQueue WrapUp
 .. raw:: html
 
    <center>
-   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8ktqd0d5' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe> 
+   <iframe type="text/javascript" src='https://cdnapisec.kaltura.com/p/2375811/embedPlaykitJs/uiconf_id/52883092?iframeembed=true&entry_id=1_8ktqd0d5' style="width: 960px; height: 395px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="ArrayQueue WrapUp"></iframe> 
    </center>
 
 
