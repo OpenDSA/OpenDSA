@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: The Dictionary ADT
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: comparison; list ADT
    :satisfies: dictionary
    :topic: Design
    :keyword: Dictionary
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Presents the concept of a dictionary illustrated by an ADT and examples of use.
 
 
 The Dictionary ADT
