@@ -156,7 +156,7 @@ def parse_rst_metadata_block(rst_files):
 def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu"):
     source = vis['source']
     short_name = os.path.splitext(os.path.basename(source))[0]
-    embed_url = f"{host_url}/ODSA/Books/{vis['module']}.html#{short_name}"
+    embed_url = f"{host_url}/OpenDSA/Books/{vis['module']}.html#{short_name}"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
     return {
         "catalog_type": "SLCItemCatalog",
@@ -174,7 +174,7 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     }
 
 def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.vt.edu"):
-    embed_url = f"{host_url}/ODSA/Books/{mod_name}.html"
+    embed_url = f"{host_url}/OpenDSA/Books/{mod_name}.html"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={mod_name}&custom_ex_settings=%7B%7D"
     return {
         "catalog_type": "SLCItemCatalog",
