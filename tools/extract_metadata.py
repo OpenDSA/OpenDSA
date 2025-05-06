@@ -115,15 +115,20 @@ def parse_metadata_block(filepath):
             for line in block.strip().split("\n"):
                 if ':' in line:
                     key, value = line.split(':', 1)
-                    key = key.strip().capitalize()
+                    key = key.strip().lower()
                     value = value.strip()
                     if not key:
                         continue
-                    if key.lower() in ['author', 'keywords']:
-                        metadata[key] = [x.strip() for x in re.split(r';|,|and', value) if x.strip()]
-                    else:
-                        metadata[key] = value
-
+                    if key in ['author', 'authors']:
+                        metadata["Author"] = [x.strip() for x in re.split(r';|,|and', value) if x.strip()]
+                    elif key in ['keyword', 'keywords']:
+                        metadata["Keywords"] = [x.strip() for x in re.split(r';|,|and', value) if x.strip()]
+                    elif key == 'description':
+                        metadata["Description"] = value
+                    elif key == 'title':
+                        metadata["Exercise name"] = value
+                    elif key == 'institution':
+                        metadata["Institution"] = value
         return metadata if metadata else None
 
     except Exception as e:
@@ -140,13 +145,14 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     short_name = os.path.splitext(os.path.basename(source))[0]
 
     embed_url = f"{host_url}/ODSA/Books/{vis['module']}.html#{short_name}"
+    lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
 
     return {
         "catalog_type": "SLCItemCatalog",
         "platform_name": "OpenDSA",
         "url": embed_url,
         "iframe_url": embed_url,
-        "lti_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas",
+        "lti_instructions_url": lti_url,
         "exercise_type": vis["type"],
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
         "description": description,

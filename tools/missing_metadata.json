@@ -29,12 +29,6 @@
     ]
   },
   {
-    "source_file": "Exercises/Pointers/PointerEX1PRO.html",
-    "missing_fields": [
-      "Exercise name"
-    ]
-  },
-  {
     "source_file": "AV/Pointers/shallowdeepCON.js",
     "missing_fields": [
       "Exercise name",
@@ -51,12 +45,6 @@
       "Author",
       "Keywords",
       "Institution"
-    ]
-  },
-  {
-    "source_file": "Exercises/Pointers/PointerEX2PRO.html",
-    "missing_fields": [
-      "Exercise name"
     ]
   },
   {
@@ -107,20 +95,6 @@
     ]
   },
   {
-    "source_file": "AV/Pointers/simpleLifetimeCON.js",
-    "missing_fields": [
-      "Exercise name",
-      "Keywords"
-    ]
-  },
-  {
-    "source_file": "AV/Pointers/T1-T5CON.js",
-    "missing_fields": [
-      "Exercise name",
-      "Keywords"
-    ]
-  },
-  {
     "source_file": "AV/Pointers/garbageDisposalCON.js",
     "missing_fields": [
       "Exercise name",
@@ -156,47 +130,6 @@
       "Author",
       "Keywords",
       "Institution"
-    ]
-  },
-  {
-    "source_file": "AV/Pointers/linkNodes1CON.js",
-    "missing_fields": [
-      "Exercise name",
-      "Keywords"
-    ]
-  },
-  {
-    "source_file": "AV/Pointers/linkNodes2CON.js",
-    "missing_fields": [
-      "Exercise name",
-      "Keywords"
-    ]
-  },
-  {
-    "source_file": "Exercises/Pointers/PointerEX3PRO.html",
-    "missing_fields": [
-      "Exercise name"
-    ]
-  },
-  {
-    "source_file": "AV/Pointers/linkNodes3CON.js",
-    "missing_fields": [
-      "Exercise name",
-      "Keywords"
-    ]
-  },
-  {
-    "source_file": "AV/Pointers/linkNodes4CON.js",
-    "missing_fields": [
-      "Exercise name",
-      "Keywords"
-    ]
-  },
-  {
-    "source_file": "AV/Pointers/linkNodes5CON.js",
-    "missing_fields": [
-      "Exercise name",
-      "Keywords"
     ]
   }
 ]
