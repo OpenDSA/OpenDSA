@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Problems, Algorithms, and Programs
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
    :keyword: Algorithm Analysis; Problem Definition; Algorithm Definition
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to the concepts of problems vs. algorithms vs. programs.
 
 
 Problems, Algorithms, and Programs

@@ -11,7 +11,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "primativeVsRefCON.js"
+    "exercise_name": "primativeVsRefCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -25,7 +25,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "empRefnullCON.js"
+    "exercise_name": "empRefnullCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -39,7 +39,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "empRefsecondCON.js"
+    "exercise_name": "empRefsecondCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -73,7 +73,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "shallowdeepCON.js"
+    "exercise_name": "shallowdeepCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -87,7 +87,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "shallowdeepExampleCON.js"
+    "exercise_name": "shallowdeepExampleCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -121,7 +121,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "empRefnullCON.js"
+    "exercise_name": "empRefnullCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -135,7 +135,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "badPointerPowCON.js"
+    "exercise_name": "badPointerPowCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -149,7 +149,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "employeePtr2CON.js"
+    "exercise_name": "employeePtr2CON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -163,7 +163,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "examplePointerCodeCON.js"
+    "exercise_name": "examplePointerCodeCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -177,7 +177,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "memoryModelCON.js"
+    "exercise_name": "memoryModelCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -235,7 +235,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "garbageDisposalCON.js"
+    "exercise_name": "garbageDisposalCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -249,7 +249,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "LocalHeapaloc.js"
+    "exercise_name": "LocalHeapaloc"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -263,7 +263,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "LocalHeapdealoc.js"
+    "exercise_name": "LocalHeapdealoc"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -277,7 +277,7 @@
     "author": [],
     "institution": "Virginia Tech",
     "keywords": [],
-    "exercise_name": "LocalHeapintptr42.js"
+    "exercise_name": "LocalHeapintptr42"
   },
   {
     "catalog_type": "SLCItemCatalog",

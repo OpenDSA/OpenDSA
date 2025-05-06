@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Design Patterns
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: ADT
    :satisfies: design patterns
    :topic: Design Patterns
    :keyword: Design Patterns
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Brief introduction to the concept of design patterns and some commonly used related to Data Structures and Algorithms courses: Flyweight, Visitor, Composite, and Strategy.
 
 
 Design Patterns

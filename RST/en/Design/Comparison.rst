@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Comparing Records
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: relations
    :satisfies: comparison
    :topic: Sorting
-   :keyword: Record Comparison
+   :keyword: Record Comparison; Comparator
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Discusses design decisions related to comparing records, including the concept of a comparator.
 
 .. index::
    pair: sorting; record comparison

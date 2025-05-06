@@ -156,6 +156,7 @@
       "AlgAnal/AnalMultiple": {}, 
       "AlgAnal/AnalSpace": {}, 
       "AlgAnal/AnalTuning": {}, 
+      "AlgAnal/AlgAnalSummCS2": {}
       "AlgAnal/AlgAnalSummCS3": {}
     },
     "Recursion": {

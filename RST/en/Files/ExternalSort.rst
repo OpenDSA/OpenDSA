@@ -3,11 +3,16 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: External Sorting
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: file processing; disk drives
    :topic: External Sorting
-   :keyword: File Processing; External Sorting
+   :keyword: File Processing; External Sorting; Runs
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to external sorting, intitial run production using replacement selection, and multi-way merge.
 
 
 External Sorting

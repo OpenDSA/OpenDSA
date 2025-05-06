@@ -1,6 +1,16 @@
 /*global ODSA */
-"use strict";
 // Written by Pavel Hovhannisyan and Cliff Shaffer
+
+// Title: Binary Search Algorithm
+// Author: Pavel Hovhannisyan; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration; Algorithm Visualization; Program Visualization
+// Keyword: Binary Search; Algorithm Analysis
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating Binary Search and presenting its analysis. */
+
+"use strict";
 $(document).ready(function () {
   var av_name = "binarySearchCON";
   // Load the config object with interpreter and code created by odsaUtils.js

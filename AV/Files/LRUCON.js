@@ -1,3 +1,12 @@
+// Title: LRU Introduction Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Buffer Pool; Least Recently Used
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating the Least Recently Used replacement heuristic. */
+
 /*global ODSA */
 "use strict";
 $(document).ready(function () {

@@ -1,0 +1,34 @@
+[
+  {
+    "rst_file": "PointerIntro.rst",
+    "missing_fields": [
+      "Exercise name",
+      "Description",
+      "Institution"
+    ]
+  },
+  {
+    "rst_file": "HeapMem.rst",
+    "missing_fields": [
+      "Institution"
+    ]
+  },
+  {
+    "rst_file": "Glossary.rst",
+    "missing_fields": [
+      "Exercise name",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  },
+  {
+    "rst_file": "Bibliography.rst",
+    "missing_fields": [
+      "Exercise name",
+      "Description",
+      "Keywords",
+      "Institution"
+    ]
+  }
+]

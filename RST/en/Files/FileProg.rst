@@ -3,10 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: The Programmer's View of Files
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: File Processing
    :keyword: File Processing; Random Access File
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: How programmers view and manipulate files through the RandomAcessFile class.
 
 
 The Programmer's View of Files

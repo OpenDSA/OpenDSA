@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Calculating Program Running Time
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: algorithm analysis; summation; recurrence
    :satisfies: analyzing programs
    :topic: Algorithm Analysis
    :keyword: Algorithm Analysis; Analyzing Programs
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to calculating the asymptotic running time of a program.
 
 
 Calculating Program Running Time

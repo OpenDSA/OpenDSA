@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Buffer Pools
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: disk drives
    :satisfies: buffer pool
    :topic: File Processing  
    :keyword: File Processing; Buffer Pool
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concept and implementation of buffer pools.
 
 
 Buffer Pools

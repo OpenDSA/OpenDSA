@@ -1,5 +1,15 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
+
+// Title: Misunderstanding Examples: Graph Visualization
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Problem; Algorithm; Program
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating various growth rate behaviors. */
+
 // Common Misunderstandings example graph
 $(document).ready(function() {
   "use strict";

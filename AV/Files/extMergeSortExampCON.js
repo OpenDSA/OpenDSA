@@ -1,3 +1,12 @@
+// Title: Mergesort Modified for External Sorting
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: File Processing; External Sorting; Mergesort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating simple modifications to Mergesort to make a better external sorting algorithm. */
+
 $(document).ready(function () {
   "use strict";
   var av = new JSAV("extMergeSortExampCON");
