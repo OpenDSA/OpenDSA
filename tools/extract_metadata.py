@@ -99,10 +99,12 @@ def parse_metadata_block(filepath):
                         metadata["Author"] = [x.strip() for x in re.split(r';|,|and', value)]
                     elif key in ['keyword', 'keywords']:
                         metadata["Keywords"] = [x.strip() for x in re.split(r';|,|and', value)]
+                    elif key in ['feature', 'features']:
+                        metadata["Features"] = [x.strip() for x in re.split(r';|,|and', value)]
                     elif key == 'description':
                         metadata["Description"] = value
                     elif key == 'title':
-                        metadata["Exercise name"] = value
+                        metadata["Title"] = value
                     elif key == 'institution':
                         metadata["Institution"] = value
         return metadata if metadata else None
@@ -135,14 +137,16 @@ def parse_rst_metadata_block(rst_files):
                         metadata["Author"] = [x.strip() for x in re.split(r';|,|and', value)]
                     elif key in ['keyword', 'keywords']:
                         metadata["Keywords"] = [x.strip() for x in re.split(r';|,|and', value)]
+                    elif key in ['feature', 'features']:
+                        metadata["Features"] = [x.strip() for x in re.split(r';|,|and', value)]
                     elif key == 'description':
                         metadata["Description"] = value
                     elif key == 'title':
-                        metadata["Exercise name"] = value
+                        metadata["Title"] = value
                     elif key == 'institution':
                         metadata["Institution"] = value
         missing = []
-        for field in ["Exercise name", "Author", "Description", "Keywords", "Institution"]:
+        for field in ["Title", "Author", "Description", "Keywords", "Institution", "Features"]:
             if field not in metadata:
                 missing.append(field)
         if missing:
@@ -164,13 +168,13 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
         "url": embed_url,
         "iframe_url": embed_url,
         "lti_instructions_url": lti_url,
-        "exercise_type": vis["type"],
+        "features": metadata.get("Features", []),
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
         "description": metadata.get("Description", ""),
         "author": metadata.get("Author", []),
-        "institution": metadata.get("Institution", "Virginia Tech"),
+        "institution": metadata.get("Institution"),
         "keywords": metadata.get("Keywords", []),
-        "exercise_name": metadata.get("Exercise name", short_name)
+        "title": metadata.get("Title", short_name)
     }
 
 def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.vt.edu"):
@@ -182,13 +186,13 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
         "url": embed_url,
         "iframe_url": embed_url,
         "lti_instructions_url": lti_url,
-        "exercise_type": "inlineav",
+        "features": metadata.get("Features", []),
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
         "description": metadata.get("Description", ""),
         "author": metadata.get("Author", []),
-        "institution": metadata.get("Institution", "Virginia Tech"),
+        "institution": metadata.get("Institution"),
         "keywords": metadata.get("Keywords", []),
-        "exercise_name": metadata.get("Exercise name", mod_name)
+        "title": metadata.get("Title", mod_name)
     }
 
 def save_json(data, filename):
@@ -215,7 +219,7 @@ if __name__ == "__main__":
     for vis in visualizations:
         file_path = os.path.join(config.odsa_dir, vis['source'])
         metadata = parse_metadata_block(file_path) or {}
-        missing = [field for field in ["Exercise name", "Author", "Description", "Keywords", "Institution"] if not metadata.get(field)]
+        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Institution", "Features"] if not metadata.get(field)]
         if missing:
             slc_missing.append({"source_file": vis["source"], "missing_fields": missing})
         entry = build_splice_entry(vis, metadata)

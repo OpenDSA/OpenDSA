@@ -2,33 +2,79 @@
   {
     "rst_file": "PointerIntro.rst",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Description",
-      "Institution"
+      "Institution",
+      "Features"
+    ]
+  },
+  {
+    "rst_file": "BasicPointers1.rst",
+    "missing_fields": [
+      "Features"
+    ]
+  },
+  {
+    "rst_file": "BasicPointers2.rst",
+    "missing_fields": [
+      "Features"
+    ]
+  },
+  {
+    "rst_file": "Syntax.rst",
+    "missing_fields": [
+      "Features"
+    ]
+  },
+  {
+    "rst_file": "LocalMem.rst",
+    "missing_fields": [
+      "Features"
     ]
   },
   {
     "rst_file": "HeapMem.rst",
     "missing_fields": [
-      "Institution"
+      "Institution",
+      "Features"
+    ]
+  },
+  {
+    "rst_file": "Links1.rst",
+    "missing_fields": [
+      "Features"
+    ]
+  },
+  {
+    "rst_file": "Links2.rst",
+    "missing_fields": [
+      "Features"
+    ]
+  },
+  {
+    "rst_file": "Exercises.rst",
+    "missing_fields": [
+      "Features"
     ]
   },
   {
     "rst_file": "Glossary.rst",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "rst_file": "Bibliography.rst",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   }
 ]

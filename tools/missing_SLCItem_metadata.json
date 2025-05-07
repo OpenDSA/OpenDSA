@@ -2,134 +2,148 @@
   {
     "source_file": "AV/Pointers/primativeVsRefCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/empRefnullCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/empRefsecondCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/shallowdeepCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/shallowdeepExampleCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/empRefnullCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/badPointerPowCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/employeePtr2CON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/examplePointerCodeCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/memoryModelCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/garbageDisposalCON.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/LocalHeapaloc.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/LocalHeapdealoc.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Description",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   },
   {
     "source_file": "AV/Pointers/LocalHeapintptr42.js",
     "missing_fields": [
-      "Exercise name",
+      "Title",
       "Author",
       "Keywords",
-      "Institution"
+      "Institution",
+      "Features"
     ]
   }
 ]

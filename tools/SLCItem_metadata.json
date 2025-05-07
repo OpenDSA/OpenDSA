@@ -5,13 +5,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#primativeVsRefCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#primativeVsRefCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=primativeVsRefCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow showing primitive data types in Java and the concept of object and reference.",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "primativeVsRefCON"
+    "title": "primativeVsRefCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -19,13 +19,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#empRefnullCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#empRefnullCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=empRefnullCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "empRefnullCON"
+    "title": "empRefnullCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -33,13 +33,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#empRefsecondCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#empRefsecondCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=empRefsecondCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "empRefsecondCON"
+    "title": "empRefsecondCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -47,7 +47,9 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#PointerEX1PRO",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#PointerEX1PRO",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointerEX1PRO&custom_ex_settings=%7B%7D",
-    "exercise_type": "avembed",
+    "features": [
+      "Algorithm Tracing Exercise"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Pointer assignment proficiency exercise. Users click on objects to show how pointers should be updated.",
     "author": [
@@ -59,7 +61,7 @@
       "Pointer",
       "Object"
     ],
-    "exercise_name": "Practicing Pointers 1"
+    "title": "Practicing Pointers 1"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -67,13 +69,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#shallowdeepCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#shallowdeepCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=shallowdeepCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "shallowdeepCON"
+    "title": "shallowdeepCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -81,13 +83,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#shallowdeepExampleCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#shallowdeepExampleCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=shallowdeepExampleCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow demonstrating the distinction between shallow and deep copy.",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "shallowdeepExampleCON"
+    "title": "shallowdeepExampleCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -95,7 +97,9 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#PointerEX2PRO",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#PointerEX2PRO",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointerEX2PRO&custom_ex_settings=%7B%7D",
-    "exercise_type": "avembed",
+    "features": [
+      "Algorithm Tracing Exercise"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Pointer assignment proficiency exercise. Users click on objects to show how pointers should be updated.",
     "author": [
@@ -107,7 +111,7 @@
       "Pointer",
       "Object"
     ],
-    "exercise_name": "Practicing Pointers 2"
+    "title": "Practicing Pointers 2"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -115,13 +119,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#empRefnullCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#empRefnullCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=empRefnullCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "empRefnullCON"
+    "title": "empRefnullCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -129,13 +133,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#badPointerPowCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#badPointerPowCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=badPointerPowCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow demonstrating the consequence of dereferencing a null pointer.",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "badPointerPowCON"
+    "title": "badPointerPowCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -143,13 +147,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#employeePtr2CON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#employeePtr2CON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=employeePtr2CON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow demonstrating assigning a reference to an object.",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "employeePtr2CON"
+    "title": "employeePtr2CON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -157,13 +161,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#examplePointerCodeCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#examplePointerCodeCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=examplePointerCodeCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow demonstrating changing the reference to an object.",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "examplePointerCodeCON"
+    "title": "examplePointerCodeCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -171,13 +175,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#memoryModelCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#memoryModelCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=memoryModelCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "memoryModelCON"
+    "title": "memoryModelCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -185,7 +189,9 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html#simpleLifetimeCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html#simpleLifetimeCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=simpleLifetimeCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [
+      "Code Visualization"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow demonstrating the lifetime of local storage.",
     "author": [
@@ -199,7 +205,7 @@
       "Reference",
       "Object"
     ],
-    "exercise_name": "Lifetime of Local Variables"
+    "title": "Lifetime of Local Variables"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -207,7 +213,9 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html#T1-T5CON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html#T1-T5CON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=T1-T5CON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [
+      "Code Visualization"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow demonstrating the details of local variable allocation and deallocation.",
     "author": [
@@ -221,7 +229,7 @@
       "Reference",
       "Object"
     ],
-    "exercise_name": "Allocation and Deallocation of Local Variables"
+    "title": "Allocation and Deallocation of Local Variables"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -229,13 +237,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#garbageDisposalCON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#garbageDisposalCON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=garbageDisposalCON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow introducing the concept of garbage collection.",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "garbageDisposalCON"
+    "title": "garbageDisposalCON"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -243,13 +251,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapaloc",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapaloc",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=LocalHeapaloc&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "LocalHeapaloc"
+    "title": "LocalHeapaloc"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -257,13 +265,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapdealoc",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapdealoc",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=LocalHeapdealoc&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "LocalHeapdealoc"
+    "title": "LocalHeapdealoc"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -271,13 +279,13 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapintptr42",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapintptr42",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=LocalHeapintptr42&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow demonstrating the memory allocation and deallocation.",
     "author": [],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "LocalHeapintptr42"
+    "title": "LocalHeapintptr42"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -285,7 +293,10 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#linkNodes1CON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#linkNodes1CON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes1CON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [
+      "Code Visualization",
+      "Algorithm Visualization"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow introducing the concept of Link Nodes.",
     "author": [
@@ -296,7 +307,7 @@
     "keywords": [
       "Link Nodes"
     ],
-    "exercise_name": "Link Nodes"
+    "title": "Link Nodes"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -304,7 +315,10 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#linkNodes2CON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#linkNodes2CON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes2CON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [
+      "Code Visualization",
+      "Algorithm Visualization"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow introducing the concept of chaining link nodes to form a linked list.",
     "author": [
@@ -316,7 +330,7 @@
       "Link Nodes",
       "Linked List"
     ],
-    "exercise_name": "Creating a Chain of Links"
+    "title": "Creating a Chain of Links"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -324,7 +338,9 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#PointerEX3PRO",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#PointerEX3PRO",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointerEX3PRO&custom_ex_settings=%7B%7D",
-    "exercise_type": "avembed",
+    "features": [
+      "Algorithm Tracing Exercise"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Pointer assignment proficiency exercise. Users click on objects to show how pointers link nodes together into a linked list.",
     "author": [
@@ -336,7 +352,7 @@
       "Pointer",
       "Object"
     ],
-    "exercise_name": "Practicing Pointers: Links"
+    "title": "Practicing Pointers: Links"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -344,7 +360,10 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes3CON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes3CON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes3CON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [
+      "Code Visualization",
+      "Algorithm Visualization"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow introducing the concept of iterating through a linked list.",
     "author": [
@@ -356,7 +375,7 @@
       "Link Nodes",
       "Iteration"
     ],
-    "exercise_name": "Link Nodes: Iteration"
+    "title": "Link Nodes: Iteration"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -364,7 +383,10 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes4CON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes4CON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes4CON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [
+      "Code Visualization",
+      "Algorithm Visualization"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow introducing the concept of deleting from a linked list.",
     "author": [
@@ -376,7 +398,7 @@
       "Link Nodes",
       "Iteration"
     ],
-    "exercise_name": "Link Nodes: Delete"
+    "title": "Link Nodes: Delete"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -384,7 +406,10 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes5CON",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes5CON",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes5CON&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [
+      "Code Visualization",
+      "Algorithm Visualization"
+    ],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Slideshow introducing the concept of inserting a new node into a linked list.",
     "author": [
@@ -396,6 +421,6 @@
       "Link Nodes",
       "Iteration"
     ],
-    "exercise_name": "Link Nodes: Insertion"
+    "title": "Link Nodes: Insertion"
   }
 ]

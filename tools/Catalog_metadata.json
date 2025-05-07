@@ -5,17 +5,17 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/PointerIntro.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/PointerIntro.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/PointerIntro&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [
       "Cliff Shaffer"
     ],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [
       "Pointers"
     ],
-    "exercise_name": "PointersJava/PointerIntro"
+    "title": "PointersJava/PointerIntro"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -23,7 +23,7 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/BasicPointers1&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "An introduction to using references in Java, Part 1.",
     "author": [
@@ -39,7 +39,7 @@
       "Pointers",
       "References"
     ],
-    "exercise_name": "Basic References Part 1"
+    "title": "Basic References Part 1"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -47,7 +47,7 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/BasicPointers2&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "An introduction to using references in Java, Part 2.",
     "author": [
@@ -63,7 +63,7 @@
       "Pointers",
       "References"
     ],
-    "exercise_name": "Basic References Part 2"
+    "title": "Basic References Part 2"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -71,7 +71,7 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/Syntax&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "An introduction pointer syntax in Java.",
     "author": [
@@ -86,7 +86,7 @@
     "keywords": [
       "Pointers"
     ],
-    "exercise_name": "Pointes Syntax"
+    "title": "Pointes Syntax"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -94,7 +94,7 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/LocalMem&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Introduces the concept of local memory and local variables.",
     "author": [
@@ -108,7 +108,7 @@
       "Pointer",
       "Local Variable"
     ],
-    "exercise_name": "Local Memory"
+    "title": "Local Memory"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -116,7 +116,7 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/HeapMem&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Introduces the concept of heap memory and global variables.",
     "author": [
@@ -125,13 +125,13 @@
       "Sally Hamouda",
       "Mostafa Mohammed"
     ],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [
       "Pointers",
       "Heap Memory",
       "Garbage Disposal"
     ],
-    "exercise_name": "Heap Memory"
+    "title": "Heap Memory"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -139,7 +139,7 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/Links1&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "An introduction to link nodes.",
     "author": [
@@ -152,7 +152,7 @@
       "Pointers",
       "Link Nodes"
     ],
-    "exercise_name": "Link Nodes"
+    "title": "Link Nodes"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -160,7 +160,7 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/Links2&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "Coding exercises for practicing manipulating linked lists.",
     "author": [
@@ -174,7 +174,7 @@
       "Pointers",
       "Link Nodes"
     ],
-    "exercise_name": "Link Nodes Exercises"
+    "title": "Link Nodes Exercises"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -182,7 +182,7 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Exercises.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Exercises.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointersJava/Exercises&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "A collection of practice programming exercises about pointers.",
     "author": [
@@ -192,7 +192,7 @@
     "keywords": [
       "Pointers"
     ],
-    "exercise_name": "Pointers Programming Exercises"
+    "title": "Pointers Programming Exercises"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -200,15 +200,15 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/Glossary.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/Glossary.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=Glossary&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [
       "OpenDSA Contributors"
     ],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "Glossary"
+    "title": "Glossary"
   },
   {
     "catalog_type": "SLCItemCatalog",
@@ -216,14 +216,14 @@
     "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/Bibliography.html",
     "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/Bibliography.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=Bibliography&custom_ex_settings=%7B%7D",
-    "exercise_type": "inlineav",
+    "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
     "description": "",
     "author": [
       "OpenDSA Contributors"
     ],
-    "institution": "Virginia Tech",
+    "institution": null,
     "keywords": [],
-    "exercise_name": "Bibliography"
+    "title": "Bibliography"
   }
 ]
