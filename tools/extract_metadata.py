@@ -165,8 +165,8 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     return {
         "catalog_type": "SLCItemCatalog",
         "platform_name": "OpenDSA",
-        "url": embed_url,
-        "iframe_url": embed_url,
+        "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+        "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
         "lti_instructions_url": lti_url,
         "features": metadata.get("Features", []),
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -183,8 +183,8 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
     return {
         "catalog_type": "SLCItemCatalog",
         "platform_name": "OpenDSA",
-        "url": embed_url,
-        "iframe_url": embed_url,
+        "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/Catalog/html/index.html",
+        "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/Catalog/html/index.html",
         "lti_instructions_url": lti_url,
         "features": metadata.get("Features", []),
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",

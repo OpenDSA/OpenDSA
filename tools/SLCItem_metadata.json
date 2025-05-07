@@ -2,8 +2,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#primativeVsRefCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#primativeVsRefCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=primativeVsRefCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -16,8 +16,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#empRefnullCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#empRefnullCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=empRefnullCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -30,8 +30,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#empRefsecondCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers1.html#empRefsecondCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=empRefsecondCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -44,8 +44,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#PointerEX1PRO",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#PointerEX1PRO",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointerEX1PRO&custom_ex_settings=%7B%7D",
     "features": [
       "Algorithm Tracing Exercise"
@@ -66,8 +66,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#shallowdeepCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#shallowdeepCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=shallowdeepCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -80,8 +80,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#shallowdeepExampleCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#shallowdeepExampleCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=shallowdeepExampleCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -94,8 +94,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#PointerEX2PRO",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#PointerEX2PRO",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointerEX2PRO&custom_ex_settings=%7B%7D",
     "features": [
       "Algorithm Tracing Exercise"
@@ -116,8 +116,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#empRefnullCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#empRefnullCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=empRefnullCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -130,8 +130,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#badPointerPowCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/BasicPointers2.html#badPointerPowCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=badPointerPowCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -144,8 +144,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#employeePtr2CON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#employeePtr2CON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=employeePtr2CON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -158,8 +158,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#examplePointerCodeCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#examplePointerCodeCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=examplePointerCodeCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -172,8 +172,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#memoryModelCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Syntax.html#memoryModelCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=memoryModelCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -186,8 +186,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html#simpleLifetimeCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html#simpleLifetimeCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=simpleLifetimeCON&custom_ex_settings=%7B%7D",
     "features": [
       "Code Visualization"
@@ -210,8 +210,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html#T1-T5CON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/LocalMem.html#T1-T5CON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=T1-T5CON&custom_ex_settings=%7B%7D",
     "features": [
       "Code Visualization"
@@ -234,8 +234,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#garbageDisposalCON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#garbageDisposalCON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=garbageDisposalCON&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -248,8 +248,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapaloc",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapaloc",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=LocalHeapaloc&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -262,8 +262,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapdealoc",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapdealoc",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=LocalHeapdealoc&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -276,8 +276,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapintptr42",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/HeapMem.html#LocalHeapintptr42",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=LocalHeapintptr42&custom_ex_settings=%7B%7D",
     "features": [],
     "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -290,8 +290,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#linkNodes1CON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#linkNodes1CON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes1CON&custom_ex_settings=%7B%7D",
     "features": [
       "Code Visualization",
@@ -312,8 +312,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#linkNodes2CON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#linkNodes2CON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes2CON&custom_ex_settings=%7B%7D",
     "features": [
       "Code Visualization",
@@ -335,8 +335,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#PointerEX3PRO",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links1.html#PointerEX3PRO",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=PointerEX3PRO&custom_ex_settings=%7B%7D",
     "features": [
       "Algorithm Tracing Exercise"
@@ -357,8 +357,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes3CON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes3CON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes3CON&custom_ex_settings=%7B%7D",
     "features": [
       "Code Visualization",
@@ -380,8 +380,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes4CON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes4CON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes4CON&custom_ex_settings=%7B%7D",
     "features": [
       "Code Visualization",
@@ -403,8 +403,8 @@
   {
     "catalog_type": "SLCItemCatalog",
     "platform_name": "OpenDSA",
-    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes5CON",
-    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/PointersJava/Links2.html#linkNodes5CON",
+    "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+    "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
     "lti_instructions_url": "https://opendsa-server.cs.vt.edu/lti/launch?custom_ex_short_name=linkNodes5CON&custom_ex_settings=%7B%7D",
     "features": [
       "Code Visualization",
