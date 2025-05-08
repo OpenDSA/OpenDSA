@@ -1,4 +1,14 @@
 // Written by Abhishek Jha Fall 2020
+
+// Title: Call Structure for the Chained Matrix Multiplication Problem
+// Author: Abishek Jha; Cliff Shaffer; Angel Velazquez
+// Institution: Virginia Tech; Universidad Rey Juan Carlos
+// Features: Algorithm Visualization
+// Keyword: Dynamic Programming; Chained Matrix Multplication Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the tree structure for calls by a solution to the chained matrix multiplication problem. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "MatMulCON";

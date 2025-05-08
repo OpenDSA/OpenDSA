@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Code Tuning and Empirical Analysis
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: analyzing programs
    :satisfies: code tuning; empirical analysis
    :topic: Algorithm Analysis
    :keyword: Code Tuning
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concepts of code tuning and empirical performance analysis for a computer program.
 
 
 Code Tuning and Empirical Analysis

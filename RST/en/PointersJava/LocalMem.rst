@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda and Mostafa Mohammed
+   :title: Local Memory
+   :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed
+   :institution: Stanford University; Virginia Tech
    :requires: Pointer intro
    :satisfies: Local memory
    :topic: Pointers
-   :keyword: Pointers; Local Variable
-
+   :keyword: Pointer; Local Variable
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the concept of local memory and local variables.
 
 
 Local Memory

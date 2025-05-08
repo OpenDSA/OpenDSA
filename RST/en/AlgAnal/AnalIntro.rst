@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Comparing Algorithms
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: problems; algorithms
    :satisfies: growth rate
    :topic: Algorithm Analysis
    :keyword: Algorithm Analysis; Growth Rate
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to how algorithms are compared, including the concept of growth rates.
 
 
 Comparing Algorithms

@@ -1,3 +1,12 @@
+// Title: Link Nodes: Insertion
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Algorithm Visualization
+// Keyword: Link Nodes; Iteration
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow introducing the concept of inserting a new node into a linked list. */
+
 //variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";

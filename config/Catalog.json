@@ -133,7 +133,6 @@
       "PointersJava/LinkedChains": {}
     }, 
     "Mathematical Background": {
-      "Background/MathpreIntro": {}, 
       "Background/SetDef": {},
       "Background/MiscMath": {}, 
       "Background/Logarithms": {},
@@ -144,6 +143,7 @@
       "Background/MathpreSumm": {}
     }, 
     "Algorithm Analysis": {
+      "AlgAnal/AnalChap": {},
       "AlgAnal/AnalPrelim": {},
       "AlgAnal/AnalIntro": {},
       "AlgAnal/AnalCases": {},
@@ -156,6 +156,7 @@
       "AlgAnal/AnalMultiple": {}, 
       "AlgAnal/AnalSpace": {}, 
       "AlgAnal/AnalTuning": {}, 
+      "AlgAnal/AlgAnalSummCS2": {}
       "AlgAnal/AlgAnalSummCS3": {}
     },
     "Recursion": {

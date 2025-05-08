@@ -1,9 +1,9 @@
 {
   "translations" :{
     "en": {
-      ".exerciseTitle": "Insertion Sort",
+      ".exerciseTitle": "Optimized Insertion Sort",
       ".instructLabel": "Instructions:",
-      ".instructions": "Use Insertion Sort to sort the table given below in ascending order. Click on an item to select it and copy its value to another position by clicking on the new position.",
+      ".instructions": "Use Insertion Sort optimized with shifting to sort the table given below in ascending order. Click on an item to select it and copy its value to another position by clicking on the new position.",
       "av_array_label": "Table to be sorted",
       "av_temp_label": "temp variable",
       "av_ms_copy": "Copy {arr_at_i} from the array into the temp variable.",

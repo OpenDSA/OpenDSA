@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Algorithm Analysis Summary Exercises
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: algorithm analysis; analyzing programs
    :satisfies: algorithm analysis review
    :topic: Algorithm Analysis
    :keyword: Algorithm Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Chapter summary exercises for algorithm analysis. Suitable for a CS2 course.
 
 
 Algorithm Analysis Summary Exercises

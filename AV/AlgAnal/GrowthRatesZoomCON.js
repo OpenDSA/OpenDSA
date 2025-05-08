@@ -85,6 +85,8 @@ $(document).ready(function() {
   av.label("Input size n", {left: p1[2] - 350, top: p1[3] + 250});
   av.displayInit();
   av.recorded();
+  // Invoke MathJax to get equations to display correctly
+  MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
 
 
   // Below are the functions for the various curves
