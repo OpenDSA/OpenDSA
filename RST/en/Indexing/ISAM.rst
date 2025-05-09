@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: ISAM
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Indexing
    :keyword: Indexing; ISAM
-
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the (now obsolete) ISAM indexing system as a precursor to introducing B-trees.
 
 ISAM
 ====

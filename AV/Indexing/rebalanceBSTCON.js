@@ -1,4 +1,13 @@
 /*global ODSA */
+// Title: Paged BST with Page Rebalancing For Use on Disk Slideshow
+// Author: Elmer Landaverde; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-based Index; Indexing
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the use of paging with a BST-based index. Reorganizing the nodes to be on optimal disk pages reduces the search time. */
+
 $(document).ready(function () {
   "use strict";
   /**

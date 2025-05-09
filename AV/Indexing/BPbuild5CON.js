@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Liling Yuan and Cliff Shaffer
 // Building a B+ Tree of order 5
+
+// Title: Building a  B+ Tree of Degree 5
+// Author: Liling Yuan; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-based Index; Indexing; B+ Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a series of insert operations in a B+ Tree of degree 5. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "BPbuild5CON";

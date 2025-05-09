@@ -1,8 +1,18 @@
 /**
  * Creates a slide show that demonstrates how a node can be split in a 2-3 tree.
  *
- * Container ID: splitCON
+ * Original author unknown
  */
+
+// Title: Split on Insertion into a 2-3 tree.
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-based Index; Indexing; 2-3 Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing how node split on insertion is handled by a 2-3 tree. */
+
 $(document).ready(function() {
   "use strict";
   var jsav = new JSAV("splitCON");

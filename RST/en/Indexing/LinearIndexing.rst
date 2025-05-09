@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Linear Indexing
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: indexing
    :satisfies: linear indexing
    :topic: Indexing
    :keyword: Indexing; Linear Indexing
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the concept of a linear indexing, which is simply a sorted list of keys with associated references to the associated record on disk.
 
 
 Linear Indexing
