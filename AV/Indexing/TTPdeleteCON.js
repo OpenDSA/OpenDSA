@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Cliff Shaffer
 // Search in a 2-3+ Tree
+
+// Title: Deletion from a 2-3+ Tree
+// Author: Cliff Shaffer; Liling Yuan
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-based Index; Indexing; 2-3+ Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a series of delete operations in a 2-3+ tree. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "TTPdeleteCON";

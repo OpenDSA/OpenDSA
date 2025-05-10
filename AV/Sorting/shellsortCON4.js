@@ -1,3 +1,12 @@
+// Title: Shellsort Second Pass Sublist Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Shellsort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a visualization for the sublists that would be sorted in the second pass of Shellsort. */
+
 $(document).ready(function() {
   "use strict";
   var theArray2 = [13, 30, 12, 54, 55, 11, 78, 14, 20, 79, 44, 98];

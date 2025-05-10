@@ -1,3 +1,12 @@
+// Title: LRU Replacement with Write Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Buffer Pool; Least Recently Used; Dirty Bit
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating optimizing the Least Recently Used replacement heuristic by use of a dirty bit to minimize unnecessary writes. */
+
 /*global ODSA */
 "use strict";
 $(document).ready(function () {

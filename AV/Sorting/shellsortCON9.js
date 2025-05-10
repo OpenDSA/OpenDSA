@@ -1,3 +1,12 @@
+// Title: Shellsort Final Pass Details Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Shellsort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the details of what records would be compared and swapped in the final "cleanup" pass of Shellsort. */
+
 /*global doSweep */
 $(document).ready(function() {
   "use strict";

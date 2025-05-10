@@ -1,3 +1,12 @@
+// Title: Buffer Pool Introduction Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Buffer Pool
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing an introduction to buffer pools. */
+
 /*global ODSA */
 $(document).ready(function () {
   "use strict";

@@ -4,10 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Disk Drives
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: disk drives
    :topic: File Processing
    :keyword: File Processing; Disk Drive
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to how computer disk drives work and their performance characteristics.
 
 
 Disk Drives

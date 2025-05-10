@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Shellsort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: comparison; insertion sort
    :satisfies: shellsort
    :topic: Sorting
    :keyword: Sorting; Shellsort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Shellsort including visualizations, code, and self-test questions and exercises
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
