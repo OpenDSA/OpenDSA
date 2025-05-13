@@ -55,10 +55,10 @@ src
 
 #Ignore metadata and missing metadata files
 
-tools/Catalog_metadata.json
-tools/missing_catalog_metadata.json
-tools/missing_SLCItem_metadata.json
-tools/SLCItem_metadata.json
+Metadata/Catalog_metadata.json
+Metadata/missing_catalog_metadata.json
+Metadata/missing_SLCItem_metadata.json
+Metadata/SLCItem_metadata.json
 
 # Ignore LMS course configuration files
 config/temp/temp*.*
