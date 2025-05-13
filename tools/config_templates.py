@@ -154,7 +154,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinxcontrib.jquery']
 
-ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'numref', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
+ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
 
 customsDir = '%(odsa_dir)sRST/ODSAextensions/odsa/'
 for c in ourCustoms:
