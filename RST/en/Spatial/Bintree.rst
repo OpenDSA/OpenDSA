@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Bintree
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: BST; Spatial data structures
    :satisfies: Bintree
    :topic: Spatial Data Structures
    :keyword: Spatial Data Structures, Bintree
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the Bintree data structure.
 
 
 The Bintree

@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: KD Trees
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Spatial data structures
    :satisfies: KD tree
    :topic: Spatial Data Structures
    :keyword: Spatial Data Structures, KD Tree
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the KD Tree data structure.
 
 KD Trees
 ========

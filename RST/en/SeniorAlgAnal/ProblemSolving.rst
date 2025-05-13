@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: An Introduction to Problem Solving
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
    :keyword: Problem Solving Heuristics
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Brief introduction to traditional problem-solving heuristics.
 
 An Introduction to Problem Solving
 ==================================
