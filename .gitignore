@@ -53,6 +53,13 @@ src
 #Ignore files used by Panic's Nova IDE
 .nova
 
+#Ignore metadata and missing metadata files
+
+Metadata/Catalog_metadata.json
+Metadata/missing_catalog_metadata.json
+Metadata/missing_SLCItem_metadata.json
+Metadata/SLCItem_metadata.json
+
 # Ignore LMS course configuration files
 config/temp/temp*.*
 config/*_generated.json
