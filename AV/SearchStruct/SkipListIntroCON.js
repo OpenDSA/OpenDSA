@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Skip List Introduction Slideshow
+// Author: Souleymane Dia; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Skip List
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing an idealized version of the Skip List as an introduction to the concepts. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "SkipListIntroCON";

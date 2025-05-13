@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The PR Quadtree
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Spatial data structures
    :satisfies: PRquadtree
    :topic: Spatial Data Structures
    :keyword: Spatial Data Structures, PR Quadtree
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the PR Quadtree data structure.
 
 
 The PR Quadtree

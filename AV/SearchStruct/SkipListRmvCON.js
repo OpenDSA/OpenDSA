@@ -1,4 +1,15 @@
 /*global ODSA */
+
+// Title: Skip List Delete Slideshow
+// Author: Souleymane Dia; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Skip List; Randomized Algorithm
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing examples of deletion from a Skip List. */
+
+
 $(document).ready(function() {
     "use strict";
     var av_name = "SkipListRmvCON";
