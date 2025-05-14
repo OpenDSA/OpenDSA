@@ -4,14 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Proving that a Language is not Context-Free
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: Properties of Context-Free Languages
    :topic: Properties of Context-Free Languages
    :keyword: Context-Free Language
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents ways that a language can be shown to not be a context-free language. This includes using closure properties for CFL, and the pumping lemma for CFL.
 
 
-Ways to Prove that a Language is not a Context-Free Language
-============================================================
+Proving that a Language is not Context-Free
+===========================================
 
 Introduction
 ------------

@@ -297,6 +297,7 @@
       "Spatial/OtherSpatial": {}
     },
     "Algorithms Introduction": {
+      "SeniorAlgAnal/AAIntro": {},
       "SeniorAlgAnal/ProblemSolving": {},
       "SeniorAlgAnal/AAOverview": {}
     },
