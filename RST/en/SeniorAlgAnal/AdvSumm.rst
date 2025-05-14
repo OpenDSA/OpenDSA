@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
+   :title: Summation Techniques
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Advanced Analysis
    :keyword: Algorithm Analysis; Summations
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents an intermediate-level survey of techniques for finding closed-form solutions for summations, appropriate for a senior-level algorithms course.
 
 Summation Techniques
 ====================

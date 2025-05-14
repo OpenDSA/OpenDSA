@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Search in Sorted Arrays
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Search
-   :keyword: Search; Search in Sorted Lists; Lower Bounds Proofs
-
+   :keyword: Search; Search in Sorted Lists; Lower Bounds Proof; Binary Search; Interpolation Search; Quadratic Binary Search
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents algorithms for search in sorted arrays, including binary search, interpolation search, and quadratic binary search, along with a lower bounds proof of the problem.
 
 Search in Sorted Arrays
 =======================
