@@ -96,23 +96,23 @@ def parse_metadata_block(filepath):
                     key = key.strip().lower()
                     value = value.strip()
                     if key in ['author', 'authors']:
-                        metadata["Author"] = [x.strip() for x in re.split(r';|,|and', value)]
+                        metadata["Author"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key in ['keyword', 'keywords']:
-                        metadata["Keywords"] = [x.strip() for x in re.split(r';|,|and', value)]
+                        metadata["Keywords"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key in ['feature', 'features']:
-                        metadata["Features"] = [x.strip() for x in re.split(r';|,|and', value)]
+                        metadata["Features"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'description':
                         metadata["Description"] = value
                     elif key == 'title':
                         metadata["Title"] = value
                     elif key == 'institution':
-                        metadata["Institution"] = value
+                        metadata["Institution"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
         return metadata if metadata else None
     except Exception as e:
         print(f"Failed to parse metadata from {filepath}: {e}")
         return None
 
-def parse_rst_metadata_block(rst_files):
+def parse_rst_metadata_block(rst_files, config):
     parsed = []
     missing_report = []
     for mod_name, rst_path in rst_files:
@@ -125,37 +125,35 @@ def parse_rst_metadata_block(rst_files):
             if stripped.startswith(".. avmetadata::"):
                 inside_block = True
                 continue
-            if inside_block:
-                if not stripped.startswith(":"):
-                    break
+            if inside_block and stripped.startswith(":"):
                 match = re.match(r":(\w+):\s*(.*)", stripped)
                 if match:
                     key, value = match.groups()
                     key = key.strip().lower()
                     value = value.strip()
                     if key in ['author', 'authors']:
-                        metadata["Author"] = [x.strip() for x in re.split(r';|,|and', value)]
+                         metadata["Author"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key in ['keyword', 'keywords']:
-                        metadata["Keywords"] = [x.strip() for x in re.split(r';|,|and', value)]
-                    elif key in ['feature', 'features']:
-                        metadata["Features"] = [x.strip() for x in re.split(r';|,|and', value)]
+                         metadata["Keywords"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'description':
                         metadata["Description"] = value
                     elif key == 'title':
                         metadata["Title"] = value
                     elif key == 'institution':
-                        metadata["Institution"] = value
-        missing = []
-        for field in ["Title", "Author", "Description", "Keywords", "Institution", "Features"]:
-            if field not in metadata:
-                missing.append(field)
+                        metadata["Institution"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
+            elif inside_block:
+                break
+        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Institution"] if field not in metadata]
         if missing:
+            relative_rst_path = os.path.relpath(rst_path, config.odsa_dir).replace("\\", "/")
             missing_report.append({
                 "rst_file": os.path.basename(rst_path),
+                "rst_path": relative_rst_path,
                 "missing_fields": missing
             })
         parsed.append((mod_name, metadata))
     return parsed, missing_report
+
 
 def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu"):
     source = vis['source']
@@ -172,7 +170,7 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
         "description": metadata.get("Description", ""),
         "author": metadata.get("Author", []),
-        "institution": metadata.get("Institution"),
+        "institution": metadata.get("Institution", []),
         "keywords": metadata.get("Keywords", []),
         "title": metadata.get("Title", short_name)
     }
@@ -228,7 +226,7 @@ if __name__ == "__main__":
     save_json(slc_metadata, "SLCItem_metadata.json")
     save_json(slc_missing, "missing_SLCItem_metadata.json")
 
-    catalog_metadata, catalog_missing = parse_rst_metadata_block(rst_files)
+    catalog_metadata, catalog_missing = parse_rst_metadata_block(rst_files, config)
     catalog_entries = [build_catalog_entry(mod, meta) for mod, meta in catalog_metadata]
     save_json(catalog_entries, "Catalog_metadata.json")
     save_json(catalog_missing, "missing_catalog_metadata.json")
