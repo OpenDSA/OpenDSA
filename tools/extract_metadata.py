@@ -158,15 +158,20 @@ def parse_rst_metadata_block(rst_files, config):
 def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu"):
     source = vis['source']
     short_name = os.path.splitext(os.path.basename(source))[0]
-    embed_url = f"{host_url}/OpenDSA/Books/{vis['module']}.html#{short_name}"
+
+    if vis['type'] == "inlineav":
+        embed_url = f"{host_url}/embed/{short_name}"
+    elif vis['type'] == "avembed":
+        embed_url = f"{host_url}/{source}"
+
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
+
     return {
         "catalog_type": "SLCItemCatalog",
         "platform_name": "OpenDSA",
-        "url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
-        "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/AV/Graph/BFSAV.html",
+        "url": host_url,
+        "iframe_url": embed_url,
         "lti_instructions_url": lti_url,
-        "features": metadata.get("Features", []),
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
         "description": metadata.get("Description", ""),
         "author": metadata.get("Author", []),
@@ -176,22 +181,24 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     }
 
 def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.vt.edu"):
-    embed_url = f"{host_url}/OpenDSA/Books/{mod_name}.html"
+    rst_basename = os.path.basename(mod_name)
+    html_file = f"{rst_basename}.html"
+    embed_url = f"{host_url}/OpenDSA/Books/Catalog/html/{html_file}"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={mod_name}&custom_ex_settings=%7B%7D"
     return {
         "catalog_type": "SLCItemCatalog",
         "platform_name": "OpenDSA",
-        "url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/Catalog/html/index.html",
-        "iframe_url": "https://opendsa-server.cs.vt.edu/OpenDSA/Books/Catalog/html/index.html",
+        "url": host_url,
+        "iframe_url": embed_url,
         "lti_instructions_url": lti_url,
-        "features": metadata.get("Features", []),
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
         "description": metadata.get("Description", ""),
         "author": metadata.get("Author", []),
-        "institution": metadata.get("Institution"),
+        "institution": metadata.get("Institution", []),
         "keywords": metadata.get("Keywords", []),
-        "title": metadata.get("Title", mod_name)
+        "title": metadata.get("Title", rst_basename)
     }
+
 
 def save_json(data, filename):
     try:
