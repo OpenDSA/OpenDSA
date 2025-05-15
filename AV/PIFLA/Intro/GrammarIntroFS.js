@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 /* Written by Mostafa Mohammed and Cliff Shaffer */
+
+// Title: Introduction to the Concept of a Grammar
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Grammar
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction slideshow introducing the concept of a grammar. */
+ 
 $(document).ready(function() {
   "use strict";
   var av_name = "GrammarIntroFS";

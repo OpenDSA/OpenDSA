@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed, Cliff Shaffer
+   :title: Introductory Grammar Exercises
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Introductory Grammars exercises
    :keyword: Formal Languages and Automata; Grammars
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: A collection of exercises for a student to construct a grammar for a given language.
 
 
 Grammar Exercises
