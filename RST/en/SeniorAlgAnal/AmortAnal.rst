@@ -3,11 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Amortized Analysis
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Advanced Algorithm Analysis
    :keyword: Amortized Analysis
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of amortized analysis and presents some examples.
 
 Amortized Analysis
 ==================

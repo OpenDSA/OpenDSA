@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: State Space Lower Bounds Proofs
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Lower Bounds
    :keyword: Lower Bounds Proofs; State Space Lower Bounds
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of a state space for use in finding the lower bound for a problem. Uses the problem of finding the min and max values in an unsorted list together as an example.
 
 State Space Lower Bounds Proofs
 ===============================

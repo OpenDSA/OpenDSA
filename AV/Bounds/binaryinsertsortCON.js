@@ -1,5 +1,15 @@
 /*global JSAV, document */
 // Written by Cliff Shaffer
+
+// Title: Binary Insertion Sort Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Binary Insertion Sort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow introducing the concept of using binary search to find the insert location of the next record during Insertion Sort. Used to introduce the Ford and Johnson sort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "binaryinsertsortCON";
