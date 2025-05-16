@@ -3,13 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: Sally Hamouda and Cliff Shaffer
+.. avmetadata::
+   :title: Tracing Recursive Code
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: recursion tracing
    :requires: recursion writing
    :topic: Recursion
    :keyword: Recursion
-
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation on how to trace recursive code, with visualizations.
 
 Tracing Recursive Code
 ======================

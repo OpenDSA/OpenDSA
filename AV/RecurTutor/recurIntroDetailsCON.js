@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Sally Hamouda and Cliff Shaffer
 // Recursive multiplication visualization with Sally's point of view
+
+// Title: Recursion Introduction Slideshow: Details of Recursion
+// Author: Sally Hamouda; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Demonstration
+// Keyword: Recusion
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating the concept of recusion showing the detials of recursive multiplication. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "recurIntroDetailsCON";

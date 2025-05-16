@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Sally Hamouda and Cliff Shaffer
 // Visualization for Towers of Hanoi
+
+// Title: Tracing Recursive Code: Towers of Hanoi
+// Author: Sally Hamouda; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Demonstration
+// Keyword: Recusion; Towers of Hanoi
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating code tracing the Towers of Hanoi problem. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "recurTraceTOHCON";

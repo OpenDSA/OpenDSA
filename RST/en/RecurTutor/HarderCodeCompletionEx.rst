@@ -3,14 +3,19 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Intermediate Recursion Code Completion Exercises
    :author: Sally Hamouda and Cliff Shaffer
+   :institution: Virginia Tech
    :requires: recursion writing
    :topic: Recursion
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Several simple recursion programming exercises.
 
 
-Harder Code Completion Practice Exercises
-===========================================
+Intermediate Recursion Code Completion Exercises
+================================================
 
 Recursion Programming Exercise: Minimum of array
 ------------------------------------------------

@@ -1,4 +1,14 @@
 //Visualization of the basic principle of Domino Effect
+
+// Title: Tracing Recursive Code: Domino Effect
+// Author: Sally Hamouda; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Demonstration
+// Keyword: Recusion
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating code tracing, using a domino metaphor. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "recurTraceDmnCON";

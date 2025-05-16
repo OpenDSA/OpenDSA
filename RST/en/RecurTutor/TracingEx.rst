@@ -3,15 +3,19 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Recursion Code Tracing Practice Exercises
    :author: Sally Hamouda and Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: recursion tracing
    :topic: Recursion
    :keyword: Recursion
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Several tracing exercises for recursion.
 
-
-Tracing Practice Exercises
-===========================
+Recursion Code Tracing Practice Exercises
+=========================================
 
 Forward Flow Tracing Exercises
 ------------------------------
