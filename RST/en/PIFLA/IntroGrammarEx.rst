@@ -15,7 +15,6 @@
    :programminglanguage: N/A
    :description: A collection of exercises for a student to construct a grammar for a given language.
 
-
 Grammar Exercises
 =================
 

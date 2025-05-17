@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Introduction to the Pumping Lemma
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Proof Visualization
+// Keyword: Pumping Lemma; Non-Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Introduction to the Pumping Lemma for regular languages. Includes a visualization for how this works. */
+
 "use strict";
 $(document).ready(function () {
   var av_name = "Proof1NonRegularCON";

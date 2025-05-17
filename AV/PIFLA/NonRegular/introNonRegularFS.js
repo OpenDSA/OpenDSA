@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Introduction to the Concept of a Non-Regular Language
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Non-Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction slideshow introducing the concept of a non-regular language and ideas for how to recognize one. */
+ 
 $(document).ready(function () {
   "use strict";
   var av_name = "introNonRegularFS";
