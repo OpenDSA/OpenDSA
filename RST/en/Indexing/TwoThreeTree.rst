@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: 2-3 Trees
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: 2-3 tree
    :topic: Indexing
    :keyword: Indexing; 2-3 Trees
-
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents the 2-3 Tree Data Structure.
 
 2-3 Trees
 =========

@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Liling Yuan and Cliff Shaffer
 // Search in a B+ Tree of order 4
+
+// Title: Search in a B+ Tree of Degree 4
+// Author: Cliff Shaffer; Liling Yuan
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-based Index; Indexing; B+ Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a series of search operations in a B+ Tree of degree 4. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "BPfindCON";

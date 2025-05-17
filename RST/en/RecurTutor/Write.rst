@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda and Cliff Shaffer
+   :title: Writing a Recursive Function
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: recursion intro
    :satisfies: recursion writing
    :topic: Recursion
    :keyword: Recursion
-
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduction to writing simple recursive functions.
 
 Writing a recursive function
 ============================

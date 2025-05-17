@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Sally Hamouda and Cliff Shaffer
+   :title: Simple Recursion Programming Exercises
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Recursion
    :keyword: Recursion
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Several intermediate recursion programming exercises.
 
 
 Code Completion Practice Exercises

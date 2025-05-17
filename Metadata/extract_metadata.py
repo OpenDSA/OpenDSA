@@ -4,10 +4,15 @@ import os
 import sys
 import json
 import re
+
+tools_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tools'))
+sys.path.append(tools_dir)
+
 import simple2full
 from ODSA_Config import ODSA_Config
 
 def load_config(config_path, output_dir=None):
+    config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'config', config_path))
     conf_data = simple2full.generate_full_config(config_path, slides=False, verbose=True)
     config = ODSA_Config(
         config_file_path=config_path,

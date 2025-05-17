@@ -3,12 +3,16 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: Sally Hamouda and Cliff Shaffer
+.. avmetadata::
+   :title: Writing More Sophisticated Recursive Functions
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: recursion writing
    :topic: Recursion
    :keyword: Recursion
-
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Several examples of more sophisticated recursive functions.
 
 Writing More Sophisticated Recursive Functions
 ==============================================

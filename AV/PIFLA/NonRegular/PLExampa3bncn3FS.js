@@ -1,3 +1,12 @@
+// Title: Pumping Lemma Example: Harder Proof
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction; Proof Demonstration
+// Keyword: Non-Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction slideshow showing the harder pumping lemma proof where there are multiple cases to consider. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "PLExampa3bncn3FS";

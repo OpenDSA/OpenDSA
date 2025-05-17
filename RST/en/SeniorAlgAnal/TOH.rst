@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Introduction to Analyzing a Problem
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Towers of Hanoi
-   :keyword: Towers of Hanoi
+   :keyword: Towers of Hanoi; Algorithm Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a methodology for analyzing a problem's upper and lower bounds to determine whether a proposed algorithm is an efficient solution or not.
 
 
 Introduction to Analyzing a Problem

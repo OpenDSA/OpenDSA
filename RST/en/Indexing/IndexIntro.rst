@@ -4,10 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Indexing Chapter Introduction
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: indexing
    :topic: Indexing
    :keyword: Indexing
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the concept of indexing, in particular in the context of handling large datasets stored on disk.
 
 
 Indexing Chapter Introduction

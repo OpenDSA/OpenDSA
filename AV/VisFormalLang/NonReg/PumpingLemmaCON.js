@@ -1,4 +1,14 @@
 /*global ODSA, MathJax */
+
+// Title: Pumping Lemma Slideshow
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Proof Visualization
+// Keyword: Pumping Lemma; Non-Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Simple demonstration of a Pumping Lemma proof to show that a language is not regular. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "PumpingLemmaCON";

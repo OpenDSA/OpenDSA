@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Chapter Introduction: Search
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Search
    :keyword: Search
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents an introduction for a chaper on search algorithms for a senior-level algorithms course.
 
 Chapter Introduction: Search
 ============================

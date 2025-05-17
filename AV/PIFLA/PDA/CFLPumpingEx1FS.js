@@ -1,3 +1,12 @@
+// Title: Context-Free Language Pumping Lemma Example 1
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Context-Free Language; Pumping Lemma
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction slideshow giving an example for using a pumping lemma to prove a language is not Context-Free: a^n b^n c^n. */
+ 
 $(document).ready(function() {
   "use strict";
   var av_name = "CFLPumpingEx1FS";

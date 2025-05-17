@@ -1,5 +1,15 @@
 /*global JSAV, document */
 // Written by Cliff Shaffer
+
+// Title: Merge Insertion Sort Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Merge Insertion Sort; Ford and Johnson Sort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow sketching the Merge Insertion Sort, or Ford and Johnson sort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "mergeinsertsortCON";

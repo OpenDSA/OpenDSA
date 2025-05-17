@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :title: Formal Languages Course Introduction
+   :author: Susan Rodger; Cliff Shaffer
+   :institution: Duke University; Virginia Tech
    :requires:
    :satisfies: FL Introduction
    :topic: Introduction
    :keyword: Formal Languages and Automata
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introductory module for a course on formal languages and automata.
 
 
 About this Course and this Book

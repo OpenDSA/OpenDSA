@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Spatial Data Structures
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: Spatial data structures
    :topic: Spatial Data Structures
    :keyword: Spatial Data Structures
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concepts of spatial data structures.
 
 
 Spatial Data Structures

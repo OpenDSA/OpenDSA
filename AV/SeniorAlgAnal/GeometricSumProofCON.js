@@ -1,3 +1,12 @@
+// Title: Summation of the first N integers visualization
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Summations
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing how to calculate the closed form for the geometric series. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "GeometricSumProofCON";

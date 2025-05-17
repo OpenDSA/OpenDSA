@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Adversarial Lower Bounds Proofs
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Lower Bounds
    :keyword: Lower Bounds Proofs; Adversary Arguments
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of an adversary argument for finding the lower bound for a problem. Uses the problem of finding the two largest values in an unsorted list as an example.
 
 Adversarial Lower Bounds Proofs
 ===============================

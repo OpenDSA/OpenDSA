@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Other Spatial Data Structures
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Spatial data structures; PRquadtree; KD tree; Bintree
    :satisfies: PRquadtree
    :topic: Spatial Data Structures
    :keyword: Spatial Data Structures
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the Point Quadtree data structure and related concepts.
 
 Other Spatial Data Structures
 =============================

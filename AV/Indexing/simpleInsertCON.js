@@ -1,8 +1,18 @@
 /**
  * Creates a slide show that demonstrates a simple insertion to a 2-3 tree.
  *
- * Container ID: simpleInsertCON
+ * Original author unknown
  */
+
+// Title: Simple Insertion into a 2-3 tree.
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-based Index; Indexing; 2-3 Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing simple insertion into a 2-3 tree. */
+
 $(document).ready(function() {
   "use strict";
   var jsav = new JSAV("simpleInsertCON");

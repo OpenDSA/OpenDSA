@@ -127,6 +127,33 @@ for :math:`I'` in problem :math:`X` (call it :math:`SLN'`) to
 :math:`SLN` such that :math:`SLN` is the solution for :math:`I` in
 problem :math:`A`.
 
+**Terminology**: Showing that a problem is NP-complete fundamentally
+involves a reduction from a known NP-complete problem to the problem
+in question.
+Of course getting it backwards would merely mean that a known hard
+problem is being used to solve a problem that might or might not be
+hard.
+Note the terminology sometimes gets used in either order.
+Some people say that we reduce **FROM** the known NP-complete problem
+**TO** the problem in question.
+Other say that we reduce **TO** the problem in question **FROM** the
+known NP-complete problem.
+These sentences both mean the same thing, but alternate phrasing
+sometimes can be confusing.
+
+.. inlineav:: blackBoxNPCON dgm
+   :long_name: General blackbox reduction diagram for NP-Completeness Proofs
+   :links: AV/NP/blackBoxNPCON.css
+   :scripts: AV/NP/blackBoxNPCON.js
+   :output: show
+   :keyword: Reductions; NP-Completeness Proof
+
+   A graphical representation of the general reduction process,
+   modified for NP-completeness proofs. Note the role of the two
+   problems: We want to show that problem X is NP-complete.
+   To do so, we reduce **TO** problem X **FROM** known NP-complete
+   problem A.
+
 The following modules show a number of known NP-complete problems, and
 also some proofs that they are NP-complete.
 The various proofs will link the problems together as shown here:

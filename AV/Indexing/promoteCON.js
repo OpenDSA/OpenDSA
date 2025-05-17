@@ -1,8 +1,18 @@
 /**
  * Creates a slide show that demonstrates how a key can be promoted in a 2-3 tree.
  *
- * Container ID: promoteCON
+ * Original author unknown
  */
+
+// Title: Promote Key on Insertion into a 2-3 tree.
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-based Index; Indexing; 2-3 Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing how keys can be promoted on insertion into a 2-3 tree. */
+
 $(document).ready(function() {
   "use strict";
   var jsav = new JSAV("promoteCON");

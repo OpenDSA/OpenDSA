@@ -1,4 +1,14 @@
 // Written by Yuhui Lyu and Cliff Shaffer
+
+// Title: Using Posets for a Lower Bounds Proof
+// Author: Yuhui Lyu; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Summations
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the use of posets in a proof of the lower bound for search in an unsorted list. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "PosetCON";

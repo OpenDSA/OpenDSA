@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger, Mostafa Mohammed, and Cliff Shaffer
+   :title: Identifying Non-regular Languages
+   :author: Susan Rodger; Mostafa Mohammed; and Cliff Shaffer
    :satisfies:
    :topic: Non-regular Languages
    :keyword: Non-regular Languages; Pumping Lemma Proofs
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discussion of techniques for recognizing that a language is non-regular. Introduces the Pumping Lemma and shows many examples of how to use it to prove a language is non-regular.
 
 
 Identifying Non-regular Languages
@@ -358,7 +362,7 @@ that we already know is non-regular.
    :links: AV/PIFLA/NonRegular/ClosPropFS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/ClosPropFS.js
    :output: show
-   :keyword: Non-regular Languages; Pumping Lemma Proofs
+   :keyword: Non-regular Languages; Closure Properties
 
 |
 
@@ -366,7 +370,7 @@ that we already know is non-regular.
    :links: AV/PIFLA/NonRegular/ClosPropEx1FS.css
    :scripts: DataStructures/PIFrames.js AV/PIFLA/NonRegular/ClosPropEx1FS.js
    :output: show
-   :keyword: Non-regular Languages; Pumping Lemma Proofs
+   :keyword: Non-regular Languages; Closure Properties
 
 |
 

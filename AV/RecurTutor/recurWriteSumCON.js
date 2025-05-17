@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Sally Hamouda and Cliff Shaffer
 // Four versions for writing sum recursively
+
+// Title: Writing a Recursive Function: Variations
+// Author: Sally Hamouda; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Demonstration
+// Keyword: Recusion
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow showing multiple examples of how to write a recursive function to do summation. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "recurWriteSumCON";
