@@ -69,12 +69,6 @@
     "partial_credit": false
   },
   "chapters": {
-    "Command Line and Git": {
-      "CommandLine/About": {},
-      "CommandLine/Exercises": {},
-      "Git/AboutGit": {},
-      "Git/ExercisesGit": {}
-    },
     "Introduction to Software Design": {
       "IntroToSoftwareDesign/GettingStarted": {},
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {},
@@ -90,6 +84,12 @@
       "IntroToSoftwareDesign/FileIO": {},
       "IntroToSoftwareDesign/MapsAndSets": {},
       "IntroToSoftwareDesign/StaticMainAndExceptions":{}
+    },
+    "Command Line and Git": {
+      "CommandLine/About": {},
+      "CommandLine/Exercises": {},
+      "Git/AboutGit": {},
+      "Git/ExercisesGit": {}
     },
     "Introduction for Data Structures and Algorithms Courses": {
       "Background/IntroDSA": {}
@@ -133,6 +133,7 @@
       "PointersJava/LinkedChains": {}
     },
     "Mathematical Background": {
+      "Background/MathpreIntro": {}, 
       "Background/SetDef": {},
       "Background/MiscMath": {},
       "Background/Logarithms": {},
@@ -171,6 +172,7 @@
       "RecurTutor/RecSummaryEx": {}
     },
     "Linear Structures": {
+      "List/ListIntro": {}, 
       "List/ListADT": {},
       "List/ListArray": {},
       "List/ListLinked": {},
@@ -192,6 +194,7 @@
       "Design/Dictionary": {}
     },
     "Binary Trees": {
+      "Binary/BinaryTreeIntro": {}, 
       "Binary/BinaryTree": {},
       "Binary/RecursiveDS": {},
       "Binary/BinaryTreeFullThm": {},
@@ -408,7 +411,6 @@
     },
     "Mathematical Background": {
       "PIFLA/SetNotationFLAFS": {},
-      "PIFLA/SetNotation": {},
       "PIFLA/Relations": {},
       "PIFLA/MathProof": {}
     },
