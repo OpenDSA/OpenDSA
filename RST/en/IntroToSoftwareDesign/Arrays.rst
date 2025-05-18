@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Arrays
    :author: Molly Domino
-
+   :institution: Virginia Tech
+   :keyword: Arrays
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: CS1-level presentation on arrays.
 
 Arrays
 ======

@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Parsing Command Line Parameters In Your Program
    :author: Jordan Sablan
+   :institution: Virginia Tech
    :requires: Commmand line
    :satisfies: Command line parameters
    :topic: Programming Tutorial

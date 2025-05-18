@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Heap Memory
    :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed
+   :institution: Stanford University; Virginia Tech
    :requires: Local memory
    :satisfies: Heap Memory
    :topic: Pointers
