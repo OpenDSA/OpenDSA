@@ -334,28 +334,4 @@ then click ``okay``.
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: Eclipse Formatter
 
-
-Checkstyle
-~~~~~~~~~~
-
-Download this file: |checkstyle| (Right click and Save-As).
-Then install it into Eclipse, as described below.
-
-.. |checkstyle| raw:: html
-
-   <a href="http://people.cs.vt.edu/~shaffer/vtcscheckstyle.xml" target =
-   "_blank">vtcscheckstyle.xml</a>
-
-
-PMD
-~~~
-
-Download this file: |pmd| (Right click and Save-As).
-Then install it into Eclipse, as described below.
-
-.. |pmd| raw:: html
-
-   <a href="http://people.cs.vt.edu/~shaffer/vtcspmd.xml" target =
-   "_blank">vtcspmd.xml</a>
