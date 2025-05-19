@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :title: Installing the Web-CAT Submission Plug-in for Eclipse
-   :author: Ayaan Karzarouni; Cliff Shaffer
+   :author: Ayaan Kazerouni; Cliff Shaffer
    :institution: Virginia Tech
    :requires:
    :satisfies: Web-CAT Plugin
@@ -26,23 +26,89 @@ plug-in for Eclipse.
 These instructions assume that you are running Eclipse versions
 Oxygen or Photon.
 
-**Note:** This might be a good time to also update Eclipse. 
-If you are running a version earlier than Oxygen, then you should
-install the latest version directly.
+If you have not installed Eclipse yet, or are running a version
+earlier than Oxygen, you can download the most recent version of
+the Eclipse IDE for Java Developers for your platform/architecture
+from https://www.eclipse.org/downloads/packages/.
+
+.. odsafig:: Images/InstallVersion.png
+   :width: 650
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: InstallVersion
+
 If you are running Oxygen or Photon already, then you can check for
 updates at ``Help --> Check for Updates``.
+
+**Note:** Eclipse requires JRE 21 or later to install, but we will
+**NOT** be using JRE 21 for projects.
+
+
+Installing Java 11
+------------------
+
+Downloading the JDK
+~~~~~~~~~~~~~~~~~~~
+
+Download the Java 11-LTS JDK from
+https://adoptium.net/temurin/releases/?version=11&os=any&arch=any&package=jdk.
+We recommend downloading the .msi if you are on Windows or the .pkg
+if you are on Mac. Once you have downloaded the installer, run it
+to install Java 11 on your system. Make note of the path Java 11 is
+installed to, as you will need it later.
+
+.. odsafig:: Images/javalocation.png
+   :width: 650
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: javalocation
+
+Configuring the Eclipse JRE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once you have installed Java 11, you will need to configure Eclipse
+to use Java 11 as the default JRE. To do this, open Eclipse and
+navigate to ``Window --> Preferences``. In the window that comes up,
+in the column on the left, click on ``Java --> Installed JREs``.
+You should see a window like this:
+
+.. odsafig:: Images/InstalledJREs.png
+   :width: 650
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: InstalledJREs
+
+Click on the ``Add`` button. In the window that comes up, select
+``Standard VM`` and click ``Next``. In the next window, click on
+``Directory`` and navigate to the location where you installed
+Java 11. Select the folder that contains the JDK (it should be
+something like ``OpenJDK 11.0.26`` or ``Temurin-11``) and click
+``OK``. You should now see the JDK listed in the Installed JREs
+window. Select it and click ``OK`` to close the Preferences
+window. You should now be able to create and run Java projects
+using Java 11.
+
+You will then be taken back to the Preferences window where you
+should see the JDK you just added in the list of installed JREs.
+Select the JDK you just added and click on the ``Default`` button.
+This will set the JDK you just added as the default JRE for
+Eclipse. Hit ``Apply and Close`` to close the Preferences window.
+
 
 Installing the Plug-in
 ----------------------
 
-Un-Installing an Old Plug-in
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. Un-Installing an Old Plug-in
+.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you already have an earlier version of the Web-CAT plug-in
 installed, you will first need to uninstall it.
 For those installing it for the first time, skip to the section on
-Installing the Plug-In. 
- 
+Installing the Plug-In.
+
 Open Eclipse, and in the tool bar at the top of the screen, go to
 ``Help --> About Eclipse IDE``.
 Then click on the button that says ``Installation Details``.
@@ -79,7 +145,7 @@ The following window will come up:
 
 In the ``Work With`` text box, paste this link:
 https://web-cat.org/eclstats
- 
+
 * Next, click ``Add``.
   A dialog box will pop up with two text boxes.
 
@@ -88,7 +154,7 @@ https://web-cat.org/eclstats
   ``Name``.
 
 * Once that's done, click ``Add``.
- 
+
 This is what the window should look like now:
 
 .. odsafig:: Images/PluginInstall2.png
@@ -99,7 +165,7 @@ This is what the window should look like now:
    :alt: PluginInstall2
 
 * Check the boxes next to ``Web-CAT Electronic Assignments
-  Feature`` and ``Web-CAT Java Development Extras``, and click ``Next``. 
+  Feature`` and ``Web-CAT Java Development Extras``, and click ``Next``.
 
 * It will then tell you about files that it plans to install.
   Click ``Next``.
@@ -123,7 +189,7 @@ to get a window titled ``Trust Authorities`` that looks like:
    :alt: trust_authorities
 
 When it does this, select the checkbox next to 'https://web-cat.org/'
-and click the ``Trust Selected`` button. 
+and click the ``Trust Selected`` button.
 
 At some point while downloading the plugin files, you might get
 another window titled ``Trust Artifacts`` that looks like:
@@ -136,8 +202,8 @@ another window titled ``Trust Artifacts`` that looks like:
    :alt: trust_artifacts
 
 If so, check the boxes and click the ``Trust Selected`` button.
-The install will continue. 
-Restart Eclipse when prompted to complete the process. 
+The install will continue.
+Restart Eclipse when prompted to complete the process.
 
 
 Final Setup
@@ -170,7 +236,9 @@ Put in the following information:
 * You can leave Outgoing SMTP Mail Server blank.
 
 * In the ``Download URL`` field, enter:
-  http://web-cat.cs.vt.edu/Web-CAT/assignments.xml
+  https://courses.cs.vt.edu/cs3114/Summer25/assignments.xml
+.. TODO: This URL changes with each semester and is VT specific.
+..   http://web-cat.cs.vt.edu/Web-CAT/assignments.xml
 
 * Click on ``Apply and Close`` to complete the process.
 
@@ -181,11 +249,11 @@ Installing student.jar
 If you are using Web-CAT, then you probably will want to use the VT
 local support for JUnit tests.
 
-First, download the |studentjar| file. 
+First, download the |studentjar| file.
 
 .. |studentjar| raw:: html
 
-   <a href="http://sourceforge.net/projects/web-cat/files/Student%20Library/4.14/student.jar/download" 
+   <a href="http://sourceforge.net/projects/web-cat/files/Student%20Library/4.14/student.jar/download"
    target ="_blank">student.jar</a>
 
 Then, in Eclipse, right click on your project, and navigate to
@@ -207,15 +275,23 @@ section as shown below:
 Now click ``Apply and Close`` to complete the process.
 You should now be able to use the VT local support for JUnit tests.
 
-See |external_link1| for some practical advice on getting started 
-with JUnit testing. At the time of this writing, the prefered version 
+**Note:** While you install the student.jar file, you may also want to
+check that your project is set to use Java 11. To do this, while you are
+in the ``Java Build Path`` window, under ``Libraries``, and make sure
+that the JRE System Library is set to Java 11. If it is not, you can
+click on the ``JRE System Library`` and click ``Edit``. In the window
+that comes up, select ``Alternate JRE`` and select the JDK you
+installed earlier. Click ``Finish`` to complete the process.
+
+See |external_link1| for some practical advice on getting started
+with JUnit testing. At the time of this writing, the prefered version
 of JUnit to use is Junit 4.
 
 .. |external_link1| raw:: html
 
    <a href="http://web-cat.org/eclstats/junit-quickstart/" target =
    "_blank">here</a>
-   
+
 
 
 
@@ -224,6 +300,12 @@ Installing formatting support
 
 You might want to make sure that your Eclipse style checker is as
 close as possible to the style guide that Web-CAT is enforcing.
+To do this, you can install three configuration files for tools
+that are used by Web-CAT.
+
+Eclipse Formatter
+~~~~~~~~~~~~~~~~~
+
 Download this file: |stylefile| (Right click and Save-As).
 Then install it into Eclipse, as described below.
 
@@ -232,7 +314,7 @@ Then install it into Eclipse, as described below.
    <a href="http://people.cs.vt.edu/~shaffer/vtcsstylefixed.xml" target =
    "_blank">vtcsstylefixed.xml</a>
 
-Once it is installed, press CTRL-SHIFT-F (Windows) or COMMAND-SHIFT-F (Mac) within Eclipse to format your code. 
+Once it is installed, press CTRL-SHIFT-F (Windows) or COMMAND-SHIFT-F (Mac) within Eclipse to format your code.
 
 
 To install:
@@ -252,4 +334,4 @@ then click ``okay``.
    :align: center
    :capalign: justify
    :figwidth: 90%
-   :alt: Eclipse Formatter
+
