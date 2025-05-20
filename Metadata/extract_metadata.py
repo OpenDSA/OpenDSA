@@ -4,6 +4,7 @@ import os
 import sys
 import json
 import re
+from collections import defaultdict
 
 tools_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'tools'))
 sys.path.append(tools_dir)
@@ -22,6 +23,9 @@ def load_config(config_path, output_dir=None):
     )
     return config
 
+def contains_nocatalog_directive(content):
+    return ":nocatalog:" in content or "//:nocatalog:" in content or "<!--:nocatalog:-->" in content
+
 def collect_rst_paths(config):
     rst_root = os.path.join(config.odsa_dir, 'RST', config.lang)
     rst_files = []
@@ -32,6 +36,10 @@ def collect_rst_paths(config):
         for mod_name in modules:
             rst_path = os.path.join(rst_root, f"{mod_name}.rst")
             if os.path.isfile(rst_path):
+                with open(rst_path, encoding='utf-8') as f:
+                    content = f.read()
+                    if contains_nocatalog_directive(content):
+                        continue
                 rst_files.append((mod_name, rst_path))
     return rst_files
 
@@ -79,6 +87,9 @@ def parse_metadata_block(filepath):
     try:
         with open(filepath, encoding='utf-8') as f:
             content = f.read()
+        if contains_nocatalog_directive(content):
+            return None
+
         comment_blocks = []
         comment_blocks += re.findall(r"<!--(.*?)-->", content, re.DOTALL)
         comment_blocks += re.findall(r"/\*(.*?)\*/", content, re.DOTALL)
@@ -104,8 +115,6 @@ def parse_metadata_block(filepath):
                         metadata["Author"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key in ['keyword', 'keywords']:
                         metadata["Keywords"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
-                    elif key in ['feature', 'features']:
-                        metadata["Features"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'description':
                         metadata["Description"] = value
                     elif key == 'title':
@@ -123,7 +132,10 @@ def parse_rst_metadata_block(rst_files, config):
     for mod_name, rst_path in rst_files:
         metadata = {}
         with open(rst_path, encoding='utf-8') as f:
-            lines = f.readlines()
+            content = f.read()
+        if contains_nocatalog_directive(content):
+            continue
+        lines = content.splitlines()
         inside_block = False
         for line in lines:
             stripped = line.strip()
@@ -159,18 +171,14 @@ def parse_rst_metadata_block(rst_files, config):
         parsed.append((mod_name, metadata))
     return parsed, missing_report
 
-
 def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu"):
     source = vis['source']
     short_name = os.path.splitext(os.path.basename(source))[0]
-
     if vis['type'] == "inlineav":
         embed_url = f"{host_url}/embed/{short_name}"
     elif vis['type'] == "avembed":
         embed_url = f"{host_url}/{source}"
-
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
-
     return {
         "catalog_type": "SLCItemCatalog",
         "platform_name": "OpenDSA",
@@ -186,8 +194,7 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     }
 
 def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.vt.edu"):
-    rst_basename = os.path.basename(mod_name)
-    html_file = f"{rst_basename}.html"
+    html_file = f"{os.path.basename(mod_name)}.html"
     embed_url = f"{host_url}/OpenDSA/Books/Catalog/html/{html_file}"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={mod_name}&custom_ex_settings=%7B%7D"
     return {
@@ -201,8 +208,40 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
         "author": metadata.get("Author", []),
         "institution": metadata.get("Institution", []),
         "keywords": metadata.get("Keywords", []),
-        "title": metadata.get("Title", rst_basename)
+        "title": metadata.get("Title", os.path.basename(mod_name))
     }
+def collect_summary_fields(slc_file, catalog_file, summary_file):
+    def extract_unique(data, key):
+        values = set()
+        for entry in data:
+            val = entry.get(key, [])
+            if isinstance(val, str):
+                values.add(val)
+            elif isinstance(val, list):
+                values.update(val)
+        return sorted(values)
+
+    try:
+        with open(slc_file, encoding="utf-8") as f:
+            slc_data = json.load(f)
+        with open(catalog_file, encoding="utf-8") as f:
+            catalog_data = json.load(f)
+
+        combined = slc_data + catalog_data
+        summary = {
+            "Author": extract_unique(combined, "author"),
+            "Institution": extract_unique(combined, "institution"),
+            "Keywords": extract_unique(combined, "keywords"),
+            "Naturallanguage": extract_unique(combined, "naturallanguage"),
+            "Programminglanguage": extract_unique(combined, "programminglanguage"),
+        }
+
+        with open(summary_file, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=2, ensure_ascii=False)
+        print(f"Saved summary to {summary_file}")
+
+    except Exception as e:
+        print(f"Failed to create summary: {e}")
 
 
 def save_json(data, filename):
@@ -229,7 +268,9 @@ if __name__ == "__main__":
     for vis in visualizations:
         file_path = os.path.join(config.odsa_dir, vis['source'])
         metadata = parse_metadata_block(file_path) or {}
-        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Institution", "Features"] if not metadata.get(field)]
+        if metadata is None:
+            continue
+        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Institution"] if not metadata.get(field)]
         if missing:
             slc_missing.append({"source_file": vis["source"], "missing_fields": missing})
         entry = build_splice_entry(vis, metadata)
@@ -241,4 +282,9 @@ if __name__ == "__main__":
     catalog_metadata, catalog_missing = parse_rst_metadata_block(rst_files, config)
     catalog_entries = [build_catalog_entry(mod, meta) for mod, meta in catalog_metadata]
     save_json(catalog_entries, "Catalog_metadata.json")
+    
+
     save_json(catalog_missing, "missing_catalog_metadata.json")
+
+    collect_summary_fields("SLCItem_metadata.json", "Catalog_metadata.json", "summary_metadata.json")
+
