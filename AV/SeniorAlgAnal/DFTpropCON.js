@@ -1,8 +1,19 @@
 // Written by Irena Shaffer
+
+// Title: Symmetries of the FFT Matrix
+// Author: Irena Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Polynomial Multiplication; Fast Fourier Transform
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Demonstration of the symmetries found within the nth powers of unity matrix for the FFT. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "DFTpropCON";
   var av = new JSAV(av_name);
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 
   // Slide 1
   av.umsg("We can speed up the matrix-vector multiplication using some nice" +

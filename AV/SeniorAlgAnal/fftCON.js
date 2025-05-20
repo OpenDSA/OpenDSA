@@ -4,6 +4,7 @@
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("fftCON", {animationMode: "none"});
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 
   var y = 135;
   var x1 = 155;

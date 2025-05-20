@@ -1,8 +1,19 @@
 // Written by Irena Shaffer and Alexandru Cioaca
+
+// Title: Polynomial Product
+// Author: Irena Shaffer; Alexandru Cioaca
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Polynomial Multiplication
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visualization of the process for muliplying to polynomials. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "ProductCON";
   var av = new JSAV(av_name);
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 
   var color1 = "#cc709b";
   var color2 = "#b2a432";

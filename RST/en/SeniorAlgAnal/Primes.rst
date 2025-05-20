@@ -3,11 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Finding Prime Numbers
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Prime Number Algorithms
    :keyword: Prime Number Algorithms
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Brief introduction to algorithms to determine if a number is prime, for a senior-level algorithms course.
 
 Finding Prime Numbers
 =====================
