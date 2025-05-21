@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :title: Installing the Web-CAT Submission Plug-in for Eclipse
-   :author: Ayaan Kazerouni; Cliff Shaffer
+   :author: Ayaan Kazerouni; Alex Hicks; Cliff Shaffer
    :institution: Virginia Tech
    :requires:
    :satisfies: Web-CAT Plugin
@@ -23,13 +23,14 @@ Introduction
 
 Here are instructions for how to install the Web-CAT submission
 plug-in for Eclipse.
-These instructions assume that you are running Eclipse versions
-Oxygen or Photon.
-
+These instructions were written for Eclipse version 25-3.
 If you have not installed Eclipse yet, or are running a version
-earlier than Oxygen, you can download the most recent version of
+earlier than this, you can download the most recent version of
 the Eclipse IDE for Java Developers for your platform/architecture
 from https://www.eclipse.org/downloads/packages/.
+You will need to chose a package (you can chose the installer, and
+then Eclipse IDE for Java Developers) and an architecture
+(most people want x860-64).
 
 .. odsafig:: Images/InstallVersion.png
    :width: 650
@@ -38,8 +39,8 @@ from https://www.eclipse.org/downloads/packages/.
    :figwidth: 90%
    :alt: InstallVersion
 
-If you are running Oxygen or Photon already, then you can check for
-updates at ``Help --> Check for Updates``.
+If you are running a reasonably up-to-date version already,
+then you can check for updates at ``Help --> Check for Updates``.
 
 **Note:** Eclipse requires JRE 21 or later to install, but we will
 **NOT** be using JRE 21 for projects.
