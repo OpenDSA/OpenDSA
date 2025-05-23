@@ -210,39 +210,62 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
         "keywords": metadata.get("Keywords", []),
         "title": metadata.get("Title", os.path.basename(mod_name))
     }
-def collect_summary_fields(slc_file, catalog_file, summary_file):
-    def extract_unique(data, key):
-        values = set()
-        for entry in data:
-            val = entry.get(key, [])
-            if isinstance(val, str):
-                values.add(val)
-            elif isinstance(val, list):
-                values.update(val)
-        return sorted(values)
+def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, config):
+    summary = {
+        "Author": set(),
+        "Institution": set(),
+        "Keywords": set(),
+        "Naturallanguage": set(),
+        "Programminglanguage": set()
+    }
+    def update_summary(field, values):
+        if isinstance(values, list):
+         summary[field].update(v.strip() for v in values if v.strip())
+        elif isinstance(values, str) and values.strip():
+            summary[field].add(values.strip())
 
-    try:
-        with open(slc_file, encoding="utf-8") as f:
-            slc_data = json.load(f)
-        with open(catalog_file, encoding="utf-8") as f:
-            catalog_data = json.load(f)
+    for entry in slc_entries:
+        update_summary("Author", entry.get("author", []))
+        update_summary("Institution", entry.get("institution", []))
+        update_summary("Keywords", entry.get("keywords", []))
+        update_summary("Naturallanguage", entry.get("naturallanguage", ""))
+        update_summary("Programminglanguage", entry.get("programminglanguage", ""))
 
-        combined = slc_data + catalog_data
-        summary = {
-            "Author": extract_unique(combined, "author"),
-            "Institution": extract_unique(combined, "institution"),
-            "Keywords": extract_unique(combined, "keywords"),
-            "Naturallanguage": extract_unique(combined, "naturallanguage"),
-            "Programminglanguage": extract_unique(combined, "programminglanguage"),
-        }
+    for _, meta in rst_entries:
+        update_summary("Author", meta.get("Author", []))
+        update_summary("Institution", meta.get("Institution", []))
+        update_summary("Keywords", meta.get("Keywords", []))
+        update_summary("Naturallanguage", meta.get("Naturallanguage", ""))
+        update_summary("Programminglanguage", meta.get("Programminglanguage", ""))
 
-        with open(summary_file, "w", encoding="utf-8") as f:
-            json.dump(summary, f, indent=2, ensure_ascii=False)
-        print(f"Saved summary to {summary_file}")
+    for _, rst_path in rst_files:
+        with open(rst_path, encoding="utf-8") as f:
+            content = f.read()
+        if contains_nocatalog_directive(content):
+            continue
+        lines = content.splitlines()
+        inside_block = False
+        for line in lines:
+            stripped = line.strip()
+            if stripped.startswith(".. avmetadata::"):
+                inside_block = True
+                continue
+            if inside_block and stripped.startswith(":"):
+                match = re.match(r":(\w+):\s*(.*)", stripped)
+                if match:
+                    key, value = match.groups()
+                    key = key.strip().lower()
+                    value = value.strip()
+                    if key == 'naturallanguage':
+                        update_summary("Naturallanguage", value)
+                    elif key == 'programminglanguage':
+                        update_summary("Programminglanguage", value)
+            elif inside_block:
+                break
 
-    except Exception as e:
-        print(f"Failed to create summary: {e}")
-
+    with open("summary_metadata.json", "w", encoding="utf-8") as f:
+        json.dump({k: sorted(v) for k, v in summary.items()}, f, indent=2, ensure_ascii=False)
+    print("Saved summary to summary_metadata.json")
 
 def save_json(data, filename):
     try:
@@ -285,6 +308,6 @@ if __name__ == "__main__":
     
 
     save_json(catalog_missing, "missing_catalog_metadata.json")
+    collect_summary_from_existing_parsing(slc_metadata, catalog_metadata, rst_files, config)
 
-    collect_summary_fields("SLCItem_metadata.json", "Catalog_metadata.json", "summary_metadata.json")
 
