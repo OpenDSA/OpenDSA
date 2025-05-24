@@ -26,6 +26,43 @@ def load_config(config_path, output_dir=None):
 def contains_nocatalog_directive(content):
     return ":nocatalog:" in content or "//:nocatalog:" in content or "<!--:nocatalog:-->" in content
 
+
+def detect_duplicate_fields(entries, id_key):
+    seen_titles = defaultdict(list)
+    seen_descriptions = defaultdict(list)
+    duplicates = []
+
+    for entry in entries:
+        title = entry.get("title", "").strip().lower()
+        desc = entry.get("description", "").strip().lower()
+        identifier = entry.get(id_key, "unknown")
+
+        if title:
+            seen_titles[title].append(identifier)
+        if desc:
+            seen_descriptions[desc].append(identifier)
+
+    for value, locations in seen_titles.items():
+        if len(locations) > 1:
+            for loc in locations:
+                duplicates.append({
+                    "issue": "Duplicate Title",
+                    "duplicate_value": value,
+                    "duplicate_in": locations,
+                    
+                })
+
+    for value, locations in seen_descriptions.items():
+        if len(locations) > 1:
+            for loc in locations:
+                duplicates.append({
+                    "issue": "Duplicate Description",
+                    "duplicate_value": value,
+                    "duplicate_in": locations,
+                })
+
+    return duplicates
+
 def collect_rst_paths(config):
     rst_root = os.path.join(config.odsa_dir, 'RST', config.lang)
     rst_files = []
@@ -275,6 +312,9 @@ def save_json(data, filename):
     except Exception as e:
         print(f"Failed to save {filename}: {e}")
 
+
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python extract_metadata.py <path-to-config.json>")
@@ -300,14 +340,18 @@ if __name__ == "__main__":
         slc_metadata.append(entry)
 
     save_json(slc_metadata, "SLCItem_metadata.json")
+    slc_duplicates = detect_duplicate_fields(slc_metadata, "iframe_url")
+    slc_missing.extend(slc_duplicates)
     save_json(slc_missing, "missing_SLCItem_metadata.json")
 
     catalog_metadata, catalog_missing = parse_rst_metadata_block(rst_files, config)
     catalog_entries = [build_catalog_entry(mod, meta) for mod, meta in catalog_metadata]
     save_json(catalog_entries, "Catalog_metadata.json")
-    
-
+    catalog_duplicates = detect_duplicate_fields(catalog_entries, "iframe_url")
+    catalog_missing.extend(catalog_duplicates)
     save_json(catalog_missing, "missing_catalog_metadata.json")
+    
     collect_summary_from_existing_parsing(slc_metadata, catalog_metadata, rst_files, config)
+
 
 
