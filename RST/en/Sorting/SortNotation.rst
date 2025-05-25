@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :requires: sorting introduction
    :satisfies: sorting terminology
-   :keyword: sorting; key; search key
+   :keyword: Sorting; Key; Search Key
    :naturallanguage: en
    :programminglanguage: N/A
    :topic: Sorting

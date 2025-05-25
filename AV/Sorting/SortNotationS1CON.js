@@ -4,7 +4,7 @@
 // Author: Yujie Chen
 // Institution: Virginia Tech
 // Features: Demonstration
-// Keyword: Sorting notation
+// Keyword: Sorting Notation
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow introducing the sorting problem. */
