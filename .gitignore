@@ -59,6 +59,7 @@ Metadata/Catalog_metadata.json
 Metadata/missing_catalog_metadata.json
 Metadata/missing_SLCItem_metadata.json
 Metadata/SLCItem_metadata.json
+Metadata/summary_metadata.json
 
 # Ignore LMS course configuration files
 config/temp/temp*.*
