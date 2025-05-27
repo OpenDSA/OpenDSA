@@ -82,6 +82,11 @@ You should see a window like this:
    :figwidth: 90%
    :alt: InstalledJREs
 
+If the newly installed JRE is already listed, you can select it and
+set it as the default JRE by clicking on the ``Default`` button.
+Hit ``Apply and Close`` to close the Preferences window.
+
+If the JRE is not listed, you will need to add it manually.
 Click on the ``Add`` button. In the window that comes up, select
 ``Standard VM`` and click ``Next``. In the next window, click on
 ``Directory`` and navigate to the location where you installed
@@ -202,7 +207,7 @@ another window titled ``Trust Artifacts`` that looks like:
    :figwidth: 90%
    :alt: trust_artifacts
 
-If so, check the boxes and click the ``Trust Selected`` button.
+If so, click ``Select All`` and click the ``Trust Selected`` button.
 The install will continue.
 Restart Eclipse when prompted to complete the process.
 
@@ -294,8 +299,6 @@ of JUnit to use is Junit 4.
    "_blank">here</a>
 
 
-
-
 Installing formatting support
 -----------------------------
 
@@ -312,11 +315,10 @@ Then install it into Eclipse, as described below.
 
 .. |stylefile| raw:: html
 
-   <a href="http://people.cs.vt.edu/~shaffer/vtcsstylefixed.xml" target =
+   <a href="https://courses.cs.vt.edu/cs3114/vtcsstylefixed.xml" target =
    "_blank">vtcsstylefixed.xml</a>
 
 Once it is installed, press CTRL-SHIFT-F (Windows) or COMMAND-SHIFT-F (Mac) within Eclipse to format your code.
-
 
 To install:
 
@@ -336,3 +338,44 @@ then click ``okay``.
    :capalign: justify
    :figwidth: 90%
 
+Checkstyle Formatter
+~~~~~~~~~~~~~~~~~~~~
+
+Download this file: |checkstylefile| (Right click and Save-As).
+Then install it into Eclipse, as described below.
+
+.. |checkstylefile| raw:: html
+
+   <a href="https://courses.cs.vt.edu/cs3114/checkstyle.xml" target =
+   "_blank">checkstyle.xml</a>
+
+Once it is installed, right click on a file, or on the default package to
+check your entire project, and select
+``Checkstyle --> Check Code with Checkstyle``.
+If necessary, you can also right click on a file, or on the default package, to
+clear the checkstyle errors, and select
+``Checkstyle --> Clear Checkstyle Errors``.
+
+To install:
+
+Mac:
+
+``Eclipse->Preferences->Checkstyle`` and click ``New``
+and then ``External Configuration File`` and name it
+``Web-CAT``, then click ``Browse...`` and select the above file
+then click ``OK``. In the list, select the ``Web-CAT`` configuration
+and click ``Set as Default``. Finally, click ``Apply and Close``.
+
+Windows:
+
+``Window->Preferences->Checkstyle``  and click ``New``
+and then ``External Configuration File`` and name it
+``Web-CAT``, then click ``Browse...`` and select the above file
+then click ``OK``. In the list, select the ``Web-CAT`` configuration
+and click ``Set as Default``. Finally, click ``Apply and Close``.
+
+.. odsafig:: Images/CheckstyleFormatter.png
+   :width: 650
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
