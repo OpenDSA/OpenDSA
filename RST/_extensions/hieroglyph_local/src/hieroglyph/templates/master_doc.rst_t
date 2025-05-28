@@ -1,0 +1,13 @@
+.. {{ project }} slides file, created by
+   hieroglyph-quickstart on {{ now }}.
+
+
+{{ project }}
+{{ project_underline }}
+
+Contents:
+
+.. toctree::
+   :maxdepth: {{ mastertocmaxdepth }}
+
+{{ mastertoctree }}

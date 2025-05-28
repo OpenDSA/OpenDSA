@@ -142,7 +142,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('%(odsa_dir)sRST/_extensions/hieroglyph_local/src')) # Point to src for hieroglyph package
 
 # -- General configuration -----------------------------------------------------
 
@@ -169,7 +169,7 @@ slides_lib = '%(slides_lib)s'
 
 #only import hieroglyph when building course notes
 if slides_lib == 'hieroglyph':
-  extensions.append('hieroglyph')
+  extensions.append('hieroglyph') # Use 'hieroglyph' as extension name, found in .../src/
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -237,7 +237,7 @@ pygments_style = 'xcode' #'sphinx'
 
 # -- Options for HTML Slide output ---------------------------------------------------
 sys.path.append('%(theme_dir)s')
-slide_theme_path = ['%(theme_dir)s']
+slide_theme_path = ['%(theme_dir)s', os.path.abspath('%(odsa_dir)sRST/_extensions/hieroglyph_local/src/hieroglyph/themes')]
 
 # Themes that are defined by hieroglyph; using them breaks some custom ODSA content
 # slide_theme = 'single-level' # basic theme
