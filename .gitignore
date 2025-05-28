@@ -47,6 +47,9 @@ lib/*-min.*
 # Ignore python packages src folder
 src
 
+# exception for the hieroglyph patch
+!RST/_extensions/hieroglyph_local/src/
+
 # Ignore files used by JetBrains IDE's to store project settings.
 .idea
 

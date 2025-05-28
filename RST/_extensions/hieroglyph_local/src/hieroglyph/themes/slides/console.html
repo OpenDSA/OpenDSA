@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{%- block htmltitle %}
+<title>Presenter Console{{ titlesuffix }}</title>
+{%- endblock %}
+
+{% block template_js %}
+    <script type="text/javascript" src="{{ pathto('_static/console.js', 1) }}"></script>
+{% endblock %}
+
+{% block template_css %}
+    <link rel="stylesheet" href="{{ pathto('_static/console.css', 1) }}" type="text/css" />
+{% endblock %}
+
+{% block header %}
+    <section id="controls">
+      <a href="" id="prev">prev</a>
+      <span id="cur_slide_num"></span> / <span id="num_slides"></span>
+      <a href="" id="next">next</a>
+    </section>
+{% endblock %}
+
+{%- block slide_container_class %}table{%- endblock %}
+
+{%- block presenter_notes %}<div class="presenter_notes" id="presenter_notes">notes go here</div>{% endblock %}

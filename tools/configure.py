@@ -514,15 +514,15 @@ def configure(config_file_path, options):
         json.dump(module_chap_map, page_chapter_file)
 
     # Initialize options for conf.py
-    options = initialize_conf_py_options(config, slides)
+    conf_py_options = initialize_conf_py_options(config, slides)
 
     # Create a Makefile in the output directory
-    with open(config.book_dir + 'Makefile', 'w') as makefile:
-        makefile.writelines(config_templates.makefile_template % options)
+    with codecs.open(config.book_dir + 'Makefile', 'w') as makefile:
+        makefile.writelines(config_templates.makefile_template % conf_py_options)
 
     # Create conf.py file in output source directory
     with codecs.open(config.book_src_dir + 'conf.py', 'w', "utf-8") as conf_py:
-        conf_py.writelines(config_templates.conf % options)
+        conf_py.writelines(config_templates.conf % conf_py_options)
 
     # Copy only the images used by the book from RST/Images/ to the book
     # source directory

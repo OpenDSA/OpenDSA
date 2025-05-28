@@ -1,0 +1,14 @@
+
+<article class="{% if classes %}{{ ' '.join(classes) }} {% endif %}slide level-{{ level }}"{% if id %} id="{{ id }}"{% endif %}>
+
+<h{{ level }}>{{ title }}</h{{ level }}>
+
+{{ content }}
+
+{% if config.slide_numbers %}
+<div class="slide-no">{{ slide_number }}</div>
+{% endif %}
+{% if config.slide_footer %}
+<div class="slide-footer">{{ config.slide_footer }}</div>
+{% endif %}
+</article>

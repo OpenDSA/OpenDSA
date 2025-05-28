@@ -1,0 +1,401 @@
+@import url(fonts/stylesheet.css);
+
+/*
+  Google HTML5 slides template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+*/
+
+article.slide {
+  font-size: 15px;
+
+  display: block;
+
+  overflow: hidden;
+
+  width: 450px;
+  height: 350px;
+
+  padding: 20px 30px;
+
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  background-color: white;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  border: 1px solid rgba(0, 0, 0, .3);
+
+  transition: transform .3s ease-out;
+  -o-transition: -o-transform .3s ease-out;
+  -moz-transition: -moz-transform .3s ease-out;
+  -webkit-transition: -webkit-transform .3s ease-out;
+}
+
+/* Slides */
+
+article.slide b {
+  font-weight: 600;
+}
+
+article.slide .blue {
+  color: rgb(0, 102, 204);
+}
+article.slide .yellow {
+  color: rgb(255, 211, 25);
+}
+article.slide .green {
+  color: rgb(0, 138, 53);
+}
+article.slide .red {
+  color: rgb(255, 0, 0);
+}
+article.slide .black {
+  color: black;
+}
+article.slide .white {
+  color: white;
+}
+
+article.slide a {
+  color: rgb(0, 102, 204);
+}
+article.slide a:visited {
+  color: rgba(0, 102, 204, .75);
+}
+article.slide a:hover {
+  color: black;
+}
+
+article.slide p {
+  margin: 0;
+  padding: 0;
+
+  margin-top: 20px;
+}
+article.slide p:first-child {
+  margin-top: 0;
+}
+
+article.slide h1,
+article.slide h2,
+article.slide h3 {
+  background-color: white;
+  border: none;
+}
+
+article.slide h1 {
+  font-size: 2em;
+  line-height: 1em;
+
+  padding: 0;
+  margin: 0;
+  margin-top: 200px;
+  padding-right: 40px;
+
+  font-weight: 600;
+
+  letter-spacing: -3px;
+
+  color: rgb(51, 51, 51);
+}
+
+article.slide h2 {
+  font-size: 1.5em;
+  line-height: 1em;
+
+  position: absolute;
+  bottom: 150px;
+
+  padding: 0;
+  margin: 0;
+  padding-right: 40px;
+
+  font-weight: 600;
+
+  letter-spacing: -2px;
+
+  color: rgb(51, 51, 51);
+}
+
+article.slide h3 {
+  font-size: 1em;
+  line-height: 1.2em;
+
+  padding: 0;
+  margin: 0;
+  padding-right: 40px;
+
+  font-weight: 600;
+
+  letter-spacing: -1px;
+
+  color: rgb(51, 51, 51);
+}
+
+article.fill h3 {
+  background: rgba(255, 255, 255, .75);
+  padding-top: .2em;
+  padding-bottom: .3em;
+  margin-top: -.2em;
+  margin-left: -60px;
+  padding-left: 60px;
+  margin-right: -60px;
+  padding-right: 60px;
+}
+
+article.slide ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  margin-top: 40px;
+
+  margin-left: .75em;
+}
+article.slide ul ul {
+  margin-top: .5em;
+}
+article.slide li {
+  padding: 0;
+  margin: 0;
+
+  margin-bottom: .5em;
+}
+
+article.slide ul li::before {
+  content: '·';
+
+  width: .75em;
+  margin-left: -.75em;
+
+  position: absolute;
+}
+
+article.slide pre {
+  font-family: 'Droid Sans Mono', 'Courier New', monospace;
+
+  font-size: 0.66em;
+  line-height: 1.4em;
+  padding: 5px 10px;
+
+  letter-spacing: -1px;
+
+  color: black;
+  background: rgb(240, 240, 240);
+  border: 1px solid rgb(224, 224, 224);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, .1);
+
+  overflow: hidden;
+}
+
+article.slide code {
+  font-size: 95%;
+  font-family: 'Droid Sans Mono', 'Courier New', monospace;
+
+  color: black;
+}
+
+article.slide iframe {
+  width: 100%;
+
+  height: 620px;
+
+  background: white;
+  border: 1px solid rgb(192, 192, 192);
+  margin: -1px;
+  /*box-shadow: inset 0 2px 6px rgba(0, 0, 0, .1);*/
+}
+
+article.slide h3 + iframe {
+  margin-top: 40px;
+  height: 540px;
+}
+
+article.fill iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+  margin: 0;
+
+  border-radius: 10px;
+  -o-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+
+  z-index: -1;
+}
+
+article.fill img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 100%;
+  min-height: 100%;
+
+  border-radius: 5px;
+  -o-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  z-index: -1;
+}
+article.slide img.centered {
+  margin: 0 auto;
+  display: block;
+}
+
+article.slide table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+article.slide th {
+  font-weight: 600;
+  text-align: left;
+}
+article.slide td,
+article.slide th {
+  border: 1px solid rgb(224, 224, 224);
+  padding: 5px 10px;
+  vertical-align: top;
+}
+
+article.slide .source {
+  position: absolute;
+  left: 60px;
+  top: 644px;
+  padding-right: 175px;
+
+  font-size: 0.5em;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+
+article.slide q {
+  display: block;
+  font-size: 2em;
+  line-height: 72px;
+
+  margin-left: 20px;
+
+  margin-top: 100px;
+  margin-right: 150px;
+}
+article.slide q::before {
+  content: '“';
+
+  position: absolute;
+  display: inline-block;
+  margin-left: -2.1em;
+  width: 2em;
+  text-align: right;
+
+  font-size: 3em;
+  color: rgb(192, 192, 192);
+}
+article.slide q::after {
+  content: '”';
+
+  position: absolute;
+  margin-left: .1em;
+
+  font-size: 3em;
+  color: rgb(192, 192, 192);
+}
+article.slide div.author {
+  text-align: right;
+  font-size: 1.33em;
+
+  margin-top: 20px;
+  margin-right: 150px;
+}
+article.slide div.author::before {
+  content: '—';
+}
+
+/* Size variants */
+
+article.smaller p,
+article.smaller ul {
+  font-size: 0.66em;
+  line-height: 1.2em;
+  letter-spacing: 0;
+}
+article.smaller table {
+  font-size: 0.66em;
+  line-height: 1.2em;
+  letter-spacing: 0;
+}
+article.smaller pre {
+  font-size: 0.5em;
+  line-height: 1.33em;
+  letter-spacing: 0;
+}
+article.smaller q {
+  font-size: 1.33em;
+  line-height: 1.2em;
+}
+article.smaller q::before,
+article.smaller q::after {
+  font-size: 2em;
+}
+
+/* Builds */
+
+.build > * {
+  transition: opacity 0.5s ease-in-out 0.2s;
+  -o-transition: opacity 0.5s ease-in-out 0.2s;
+  -moz-transition: opacity 0.5s ease-in-out 0.2s;
+  -webkit-transition: opacity 0.5s ease-in-out 0.2s;
+}
+
+.to-build {
+  opacity: 0;
+}
+
+/* Pretty print */
+
+.prettyprint .str, /* string content */
+.prettyprint .atv { /* a markup attribute value */
+  color: rgb(0, 138, 53);
+}
+.prettyprint .kwd, /* a keyword */
+.prettyprint .tag { /* a markup tag name */
+  color: rgb(0, 102, 204);
+}
+.prettyprint .com { /* a comment */
+  color: rgb(127, 127, 127);
+  font-style: italic;
+}
+.prettyprint .lit { /* a literal value */
+  color: rgb(127, 0, 0);
+}
+.prettyprint .pun, /* punctuation, lisp open bracket, lisp close bracket */
+.prettyprint .opn,
+.prettyprint .clo {
+  color: rgb(127, 127, 127);
+}
+.prettyprint .typ, /* a type name */
+.prettyprint .atn, /* a markup attribute name */
+.prettyprint .dec,
+.prettyprint .var { /* a declaration; a variable name */
+  color: rgb(127, 0, 127);
+}
