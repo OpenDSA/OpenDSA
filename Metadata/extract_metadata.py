@@ -156,6 +156,8 @@ def parse_metadata_block(filepath):
                         metadata["Description"] = value
                     elif key == 'title':
                         metadata["Title"] = value
+                    elif key in ['features', 'features']:
+                        metadata["Features"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'institution':
                         metadata["Institution"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
         return metadata if metadata else None
@@ -193,11 +195,13 @@ def parse_rst_metadata_block(rst_files, config):
                         metadata["Description"] = value
                     elif key == 'title':
                         metadata["Title"] = value
+                    elif key in ['features', 'features']:
+                        metadata["Features"] = [x.strip() for x in re.split(r';|,|\band\b', value)] 
                     elif key == 'institution':
                         metadata["Institution"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
             elif inside_block:
                 break
-        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Institution"] if field not in metadata]
+        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Features", "Institution"] if field not in metadata]
         if missing:
             relative_rst_path = os.path.relpath(rst_path, config.odsa_dir).replace("\\", "/")
             missing_report.append({
@@ -227,6 +231,7 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
         "author": metadata.get("Author", []),
         "institution": metadata.get("Institution", []),
         "keywords": metadata.get("Keywords", []),
+        "features": metadata.get("Features", []),
         "title": metadata.get("Title", short_name)
     }
 
@@ -245,6 +250,7 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
         "author": metadata.get("Author", []),
         "institution": metadata.get("Institution", []),
         "keywords": metadata.get("Keywords", []),
+        "features": metadata.get("Features", []),
         "title": metadata.get("Title", os.path.basename(mod_name))
     }
 def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, config):
@@ -252,6 +258,7 @@ def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, c
         "Author": set(),
         "Institution": set(),
         "Keywords": set(),
+        "Features": set(),
         "Naturallanguage": set(),
         "Programminglanguage": set()
     }
@@ -265,15 +272,17 @@ def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, c
         update_summary("Author", entry.get("author", []))
         update_summary("Institution", entry.get("institution", []))
         update_summary("Keywords", entry.get("keywords", []))
+        update_summary("Features", entry.get("features", []))
         update_summary("Naturallanguage", entry.get("naturallanguage", ""))
-        update_summary("Programminglanguage", entry.get("programminglanguage", ""))
+        update_summary("Programminglanguage", entry.get("programminglanguage", []))
 
     for _, meta in rst_entries:
         update_summary("Author", meta.get("Author", []))
         update_summary("Institution", meta.get("Institution", []))
         update_summary("Keywords", meta.get("Keywords", []))
+        update_summary("Features", meta.get("Features", []))
         update_summary("Naturallanguage", meta.get("Naturallanguage", ""))
-        update_summary("Programminglanguage", meta.get("Programminglanguage", ""))
+        update_summary("Programminglanguage", meta.get("Programminglanguage", []))
 
     for _, rst_path in rst_files:
         with open(rst_path, encoding="utf-8") as f:
@@ -296,7 +305,8 @@ def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, c
                     if key == 'naturallanguage':
                         update_summary("Naturallanguage", value)
                     elif key == 'programminglanguage':
-                        update_summary("Programminglanguage", value)
+                        update_summary("Programminglanguage", [x.strip() for x in re.split(r';|,|\band\b', value)])
+
             elif inside_block:
                 break
 
@@ -333,7 +343,7 @@ if __name__ == "__main__":
         metadata = parse_metadata_block(file_path) or {}
         if metadata is None:
             continue
-        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Institution"] if not metadata.get(field)]
+        missing = [field for field in ["Title", "Author", "Description", "Keywords","Features", "Institution"] if not metadata.get(field)]
         if missing:
             slc_missing.append({"source_file": vis["source"], "missing_fields": missing})
         entry = build_splice_entry(vis, metadata)
