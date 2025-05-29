@@ -360,7 +360,7 @@ circle, as illustrated by Figure :num:`Figure #InCirc`.
 
 Here is a visualization of building a kd-tree.
 
-.. avembed:: AV/Development/kd-treeAV.html ss
+.. avembed:: AV/Spatial/kd-treeAV.html ss
    :keyword: Spatial Data Structures, KD Tree
 
 

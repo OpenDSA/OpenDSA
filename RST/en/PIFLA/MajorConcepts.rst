@@ -4,10 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger, Mostafa Mohammed, Cliff Shaffer
+   :title: Major Concepts for Formal Languages and Automata
+   :author: Susan Rodger; Mostafa Mohammed; Cliff Shaffer
+   :institution: Duke University; Virginia Tech
    :satisfies: FLA Introduction
    :topic: Formal Languages Major Concepts
    :keyword: Formal Languages and Automata; Grammars
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the major concepts covered in a course on formal languages and automata.
 
 
 Introduction to Formal Languages

@@ -4,12 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer, Irena Shaffer
+   :author: Cliff Shaffer; Irena Shaffer
    :requires: transforms
    :satisfies: FFT
    :topic: Algorithms: Fast Fourier Transform
-   :keyword: Fast Fourier Transform
-
+   :keyword: Fast Fourier Transform; Polynomial Multiplication
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the implementation for the Fast Fourier Transform as a way to speed up polnomial multiplication through a transformation to fast evaluation and interpolation.
 
 The Fast Fourier Transform
 ==========================

@@ -1,5 +1,16 @@
 /*global ODSA,MathJax */
 // Written by Yuhui Lyu and Cliff Shaffer
+
+// Title: Master Theorem for Recurrence Relations
+// Author: Yuhui Lyu; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Recurrence Relation; Master Theorem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing how to calculate the closed form for a divide-and-conquer recurrence using the Master Theorem. */
+
+
 $(document).ready(function() {
   "use strict";
   var av_name = "DandCRecurrenceCON";

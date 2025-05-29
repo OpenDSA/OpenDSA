@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Optimal Sorting
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Sorting
-   :keyword: Sorting; Optimal Sorting Algorithms
-
+   :keyword: Sorting; Optimal Sorting Algorithms; Ford and Johnson Sort; Binary Insert Sort; Merge Insertion Sort
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces concepts related to theoretically optimal sorting algorithms. Sketeches the Ford and Johnson Sorting algorithm.
 
 Optimal Sorting
 ===============
@@ -76,8 +80,8 @@ inserting an element into a list of size :math:`2^i` if possible.
 
 .. inlineav:: binaryinsertsortCON ss
    :long_name: Binary Insertion Sort Slideshow
-   :links: AV/bounds/binaryinsertsortCON.css
-   :scripts: AV/bounds/binaryinsertsortCON.js
+   :links: AV/Bounds/binaryinsertsortCON.css
+   :scripts: AV/Bounds/binaryinsertsortCON.js
    :output: show
    :keyword: Sorting; Optimal Sorting; Binary Insertion Sort
 
@@ -107,8 +111,8 @@ This sort is called :term:`merge insertion sort`, and also known as the
 
 .. inlineav:: mergeinsertsortCON ss
    :long_name: Merge Insertion Sort Slideshow
-   :links: AV/bounds/mergeinsertsortCON.css
-   :scripts: AV/bounds/mergeinsertsortCON.js
+   :links: AV/Bounds/mergeinsertsortCON.css
+   :scripts: AV/Bounds/mergeinsertsortCON.js
    :output: show
    :keyword: Sorting; Optimal Sorting; Merge Insertion Sort; Ford and
              Johnson Sort

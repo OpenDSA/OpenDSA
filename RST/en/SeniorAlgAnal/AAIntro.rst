@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Data and Algorithm Analysis
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: DSA Introduction
    :topic: Introduction
    :keyword: Algorithm Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introductory module for a course on algorithm analysis.
 
 
 Data and Algorithm Analysis

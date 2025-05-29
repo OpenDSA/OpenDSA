@@ -1,3 +1,12 @@
+// Title: Pumping Lemma Example: a^n b^n
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction; Proof Demonstration
+// Keyword: Non-Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction slideshow showing the pumping lemma proof that the language a^n b^n is not regular. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "PLExampanbnFS";

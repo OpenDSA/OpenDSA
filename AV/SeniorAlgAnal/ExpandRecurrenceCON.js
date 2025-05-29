@@ -1,6 +1,16 @@
 /*global ODSA,MathJax */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Expanding a Divide and Conquer Recurrence
+
+// Title: Expanding a Divide and Conquer Recurrence
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Recurrence Relation
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing how to calculate the closed form for a divide-and-conquer recurrence using the expansion technique. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "ExpandRecurrenceCON";

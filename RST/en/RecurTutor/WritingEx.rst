@@ -4,10 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda and Cliff Shaffer
+   :title: More Intermediate Recursion Programming Exercises
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: recursion writing
    :topic: Recursion
    :keyword: Recursion
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Several intermediate recursion programming exercises.
 
 
 Writing Practice Exercises

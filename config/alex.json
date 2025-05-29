@@ -60,6 +60,27 @@
     "Introduction": {
       "Development/splice_codecheck": {}
     },
+    "Programming Tutorials": {
+      "Tutorials/cmdline": {}, 
+      "Tutorials/parameters": {}, 
+      "Tutorials/eclipseparameters": {}, 
+      "Tutorials/webcattools": {}, 
+      "Tutorials/debugmethods": {}, 
+      "Tutorials/debug": {}, 
+      "Tutorials/scanning": {}, 
+      "Tutorials/randomaccessfile": {}, 
+      "Tutorials/junitstart": {}, 
+      "Tutorials/junitbasic": {}, 
+      "Tutorials/junitcoverage": {},
+      "Tutorials/mutationtesting": {},
+      "Tutorials/mutationtesting_example": {},
+      "Tutorials/mutationtesting_faq": {},
+      "Tutorials/testvalidation": {},
+      "Testing/TestIntro": {},
+      "Testing/TestCoverage": {},
+      "Testing/Example2": {},
+      "Testing/Bowling": {}
+    },
     "Appendix": {
       "Glossary": {},
       "Bibliography": {}

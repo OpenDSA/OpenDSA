@@ -3,15 +3,19 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: Sally Hamouda and Cliff Shaffer
+.. avmetadata::
+   :title: Introduction to Recursion
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: recursion intro
    :topic: Recursion
    :keyword: Recursion
+   :naturallanguage: en
+   :programminglanguage: Java; CPP
+   :description: Introduction to the basic ideas of recursion.
 
-
-Introduction
-============
+Introduction to Recursion
+=========================
 
 Introduction
 ------------

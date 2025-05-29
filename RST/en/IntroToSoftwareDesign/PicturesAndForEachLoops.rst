@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly
-
+   :title: Pictures and For-each Loops
+   :author: Molly Domino
+   :institution: Virginia Tech
+   :keyword: For-each Loops; Image Representation
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: First semester programming course introduction to image representations and for-each loops.
 
 Pictures and For-each Loops
 ===========================

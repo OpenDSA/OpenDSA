@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :nocatalog:
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: ADT
    :satisfies: list introduction
    :topic: Lists
    :keyword: Lists
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introductory module for a chapter on lists for a Data Structures and Algorithms course.
 
 
 Chapter Introduction: Lists

@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Finding the i'th Best Element
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Lower Bounds
-   :keyword: Lower Bounds Proofs; ith Best Element
-
+   :keyword: Lower Bounds Proofs; ith Best Element; Median Finding; Quicksort
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Lower bounds anaysis for finding the i'th largest element. Includes a discussion of a linear-time median-finding algorithm based on Quicksort.
 
 Finding the :math:`i` th Best Element
 =====================================

@@ -47,6 +47,9 @@ lib/*-min.*
 # Ignore python packages src folder
 src
 
+# exception for the hieroglyph patch
+!RST/_extensions/hieroglyph_local/src/
+
 # Ignore files used by JetBrains IDE's to store project settings.
 .idea
 
@@ -59,6 +62,7 @@ Metadata/Catalog_metadata.json
 Metadata/missing_catalog_metadata.json
 Metadata/missing_SLCItem_metadata.json
 Metadata/SLCItem_metadata.json
+Metadata/summary_metadata.json
 
 # Ignore LMS course configuration files
 config/temp/temp*.*

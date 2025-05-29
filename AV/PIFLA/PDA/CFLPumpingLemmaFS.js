@@ -1,3 +1,12 @@
+// Title: Pumping Lemma for Context-Free Languages
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Context-Free Language; Pumping Lemma
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction slideshow introducing a pumping lemma for Context-Free Languages. */
+ 
 $(document).ready(function() {
   "use strict";
   var av_name = "CFLPumpingLemmaFS";

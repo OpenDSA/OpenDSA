@@ -1,3 +1,12 @@
+// Title: Introduction to the Concept of the Pumping Lemma
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Non-Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction slideshow introducing the concept of a the pumping lemma for regular languages. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "introPumpingFS";

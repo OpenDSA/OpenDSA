@@ -1,0 +1,16 @@
+================
+ Document Title
+================
+
+Slide Title
+===========
+
+A
+
+.. nextslide::
+
+B
+
+.. nextslide::
+
+C

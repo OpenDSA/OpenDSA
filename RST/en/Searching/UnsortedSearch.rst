@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Analyzing Search in Unsorted Lists
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Search
    :keyword: Search; Search in Unsorted Lists; Lower Bounds Proofs
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents an lower-bounds analysis for the problem of searching an unsorted list.
 
 Analyzing Search in Unsorted Lists
 ==================================

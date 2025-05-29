@@ -1,10 +1,21 @@
 /*global Plot */
 // Written by Irena Shaffer and Alexandru Cioaca
+
+// Title: Evaluation and Interpolation
+// Author: Irena Shaffer; Alexandru Cioaca
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Polynomial Multiplication; Evaluation; Interpolation
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the relationships of evaluation and interpolation of a polynomial. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "EvalandInterpolationCON";
 
   var av = new JSAV(av_name);
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 
   // Slide 1
   av.umsg("We start by drawing the curve for a polynomial, and we put it on a grid to help us see what is happening.");

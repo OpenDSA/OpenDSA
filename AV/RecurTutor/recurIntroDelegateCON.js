@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Sally Hamouda and Cliff Shaffer
 // Recursive multiplication with delegation
+
+// Title: Basics of Writing a Recursive Function
+// Author: Sally Hamouda; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Visualization; Algorithm Visualization
+// Keyword: Recusion; Delegation
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating the concept of recusion as delegation of a task. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "recurIntroDelegateCON";

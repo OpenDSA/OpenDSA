@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Bounds Review
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Algorithm Analysis
    :keyword: Algorithm Analysis; Upper Bound; Lower Bound
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a brief review of upper and lower bounds analysis appropriate for a senior-level algorithms course.
 
 
 Bounds Review

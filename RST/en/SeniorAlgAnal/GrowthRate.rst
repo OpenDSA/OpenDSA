@@ -5,10 +5,15 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :title: Growth Rates Review
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Algorithm Analysis
    :keyword: Algorithm Analysis; Growth Rate
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a brief review of growth rates appropriate for a senior-level algorithms course.
 
 
 Growth Rates Review

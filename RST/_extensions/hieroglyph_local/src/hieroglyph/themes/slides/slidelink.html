@@ -1,0 +1,17 @@
+{#
+    slides/slidelink.html
+    ~~~~~~~~~~~~~~~~~~~~~
+
+    Sphinx sidebar template: "show slides" link.
+
+    :copyright: Copyright 2012 by Nathan Yergler
+
+    :license: BSD, see LICENSE for details.
+#}
+{%- if show_slidelink and slide_path %}
+  <h3>{{ _('Slides') }}</h3>
+  <ul class="this-page-menu">
+    <li><a href="{{ pathto(slide_path, true)|e }}"
+           rel="nofollow">{{ _('View as slides') }}</a></li>
+  </ul>
+{%- endif %}

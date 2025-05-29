@@ -1,9 +1,21 @@
 /*global Plot */
 // Written by Irena Shaffer and Alexandru Cioaca
+
+// Title: Polynomial Multiplication Introduction Slideshow
+// Author: Irena Shaffer; Alexandru Cioaca
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Polynomial Multiplication
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing how the terms of a polynomial affect its geometric shape. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "polynomialCON";
   var av = new JSAV(av_name);
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+
   var width = 350, height = 140;
   var xStart = 250;
   var yEnd = 20;

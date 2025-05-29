@@ -1,5 +1,15 @@
 /*global JSAV, document */
 // Written by Yuhui Lyu and Cliff Shaffer
+
+// Title: Constructing a Binomial Tree
+// Author: Yuhui Lyu; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Binomial Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a small example of building a binomial tree. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "BinomialTreeCON";

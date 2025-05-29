@@ -3,11 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Random Numbers
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Randomized Algorithms
-   :keyword: Randomized Algorithms; Probabilistic Algorithms
-
+   :keyword: Random Number Generator; Linear Conguential Method
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Brief introduction to the implementation of Linear Congruential random number generators
 
 Random Numbers
 ==============

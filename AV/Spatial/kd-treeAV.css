@@ -18,8 +18,11 @@ path {
   pointer-events: visible;
 }
 
-.jsavnode {
-  line-height : 22px;
-  height :50px;
-  width :50px;
+.jsavnode.jsavtreenode {
+  line-height : 15px;
+  max-width: 50px;
+  max-height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  font-size: 14px;
 }

@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Finding the Maximum Value
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Lower Bounds
    :keyword: Lower Bounds Proofs; Maximium Value
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of finding the lower bound for a problem using the Finding the Maximium problem as an example.
 
 Finding the Maximum Value
 =========================

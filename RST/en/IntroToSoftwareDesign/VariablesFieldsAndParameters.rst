@@ -4,8 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly
-
+   :title: Variables, Fields, and Parameters
+   :author: Molly Domino
+   :institution: Virginia Tech
+   :keyword: Variables; Parameters
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: First semester programming course introduction to
+                 variables, fields, and parameters.
 
 Variables, Fields, and Parameters
 =================================

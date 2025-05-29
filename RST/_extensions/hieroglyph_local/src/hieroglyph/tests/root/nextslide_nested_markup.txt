@@ -1,0 +1,18 @@
+================
+ Document Title
+================
+
+*Slide* Title
+=============
+
+A
+
+.. nextslide::
+   :increment:
+
+B
+
+.. nextslide::
+   :increment:
+
+C

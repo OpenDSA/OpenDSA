@@ -766,6 +766,6 @@ def compare_structural_symbolic(
         thread_reduced_match_score=0.0
         thread_reduced_match_clusters={}
 
-        
+        # restarting
         
         return thread_reduced_match_score, thread_reduced_match_clusters
