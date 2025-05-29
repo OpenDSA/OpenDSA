@@ -32,7 +32,6 @@ rst_footer = '''\
          });
          for (var sec of sections) {
          }
-         console.log(JSON.stringify(timeObj))
        }, 2000);
      });
     </script>
