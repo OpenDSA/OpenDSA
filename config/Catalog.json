@@ -463,13 +463,6 @@
       "PIFLA/TuringMachinesAdv": {},
       "PIFLA/TMExercises": {},
       "PIFLA/TMExercisesS22": {}
-    },
-    "Parsing": {
-      "VisFormalLang/ParseIntro": {},
-      "VisFormalLang/LLParsing": {},
-      "VisFormalLang/LRParsing": {},
-      "VisFormalLang/CYKParsing": {},
-      "VisFormalLang/Compiler": {}
     }
   }
 }

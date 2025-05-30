@@ -5,10 +5,14 @@
 
 .. avmetadata::
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: ADT
    :satisfies: list ADT
    :topic: Lists
    :keyword: List ADT
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents an ADT for the list class used in this chapter.
 
 
 The List ADT

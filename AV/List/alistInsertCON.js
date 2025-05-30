@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Array-Based list insertion
+
+// Title: Array-based List Insertion Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Array-based List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow demonstrating array-based list insertion. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "alistInsertCON";
