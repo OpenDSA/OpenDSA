@@ -887,26 +887,5 @@
       "N/A"
     ],
     "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents a basic introduction to Turing Machines. Includes discussion of various models of Turing Machines, and their relationship to other state machines. Includes interactive exercises for creating Turing Machines."
-  },
-  {
-    "title": "Parsing"
-    "author": [
-      "Susan Rodger",
-      "Cliff Shaffer"
-    ],
-    "institution": [
-      "Duke University",
-      "Virginia Tech"
-    ],
-    "keywords": [
-      "Parsing"
-    ],
-    "NaturalLanguage": [
-      "en"
-    ],
-    "Programming Language": [
-      "N/A"
-    ],
-    "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents a basic introduction to parsing algorithms."
-  },
+  }
 ]
