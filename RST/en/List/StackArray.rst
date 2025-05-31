@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Implementing an Array-Based Stack
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: list ADT
    :satisfies: stack ADT; array-based stack; stack
    :topic: Lists
-   :keyword: Array-based Stack Implementation
+   :keyword: Array-based Stack
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces stacks and an implementation for array-based stacks.
 
 
 Stacks

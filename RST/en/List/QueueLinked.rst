@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
+   :title: Implementing the Linked Queue
    :author: Cliff Shaffer
    :requires: queue
    :satisfies: linked queue
    :topic: Lists
    :keyword: Linked Queues
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents an implementation for linked queues.
 
 
 Linked Queues

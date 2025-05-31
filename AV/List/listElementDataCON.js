@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // List data storage
+
+// Title: List Element Data Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: List Element Implementation
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow discussing the tradeoffs for storing element values in link nodes vs. references to element values. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "listElementDataCON";

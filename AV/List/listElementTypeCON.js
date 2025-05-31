@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Homogeneous vs. non-homgeneous lists.
+
+// Title: List Element Type Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: List Element Implementation
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow illustrating the choice between storing non-homogeneous data types in list nodes and limiting to a homogenous data type. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "listElementTypeCON";

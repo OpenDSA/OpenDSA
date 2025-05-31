@@ -4,6 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: A List ADT
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :requires: ADT
@@ -15,11 +16,12 @@
    :description: Presents an ADT for the list class used in this chapter.
 
 
-The List ADT
-============
+A List ADT
+==========
 
-The List ADT
-------------
+
+A List ADT
+----------
 
 We all have an intuitive understanding of what we mean by a "list".
 We want to turn this intuitive understanding into a concrete data

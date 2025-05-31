@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Bad representation version for linked list
+
+// Title: Bad Linked List Representation Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow demonstrating a bad representation for the current node in a linked list. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "llistBadCON";

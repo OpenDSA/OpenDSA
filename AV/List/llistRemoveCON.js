@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Linked list deletion
+
+// Title: Linked List Remove Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow demonstrating removing from a linked list. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "llistRemoveCON";

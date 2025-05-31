@@ -4,6 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Lists and the Array-Based List Implementation
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :requires: list ADT
