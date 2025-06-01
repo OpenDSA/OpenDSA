@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Improved Collision Resolution
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: collision resolution
    :topic: Hashing
    :keyword: Hashing; Collision Resolution
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presentation of better approaches to collision resolution.
 
 Improved Collision Resolution
 =============================
@@ -303,7 +307,7 @@ Now you can try it.
        hash table size, and (2) we are using a hash table of size
        :math:`M = 2^m`, which means that taking the mod of size
        :math:`M` is using the bottom :math:`m` bits of the key value.
-       OK, since :math:`\textbf{h}_2` is multiplying something by 2 and
+       Since :math:`\textbf{h}_2` is multiplying something by 2 and
        adding 1, we guarentee that it is an odd number.
        Now, :math:`((X \mod (M/2)) * 2) + 1` must be in the range 1
        and :math:`M-1` (if you need to, play around with this on paper
@@ -318,7 +322,7 @@ Now you can try it.
        good thing if we used the bottom :math:`m` bits to decide on
        the first hash function value!
        In other words, we really do not want the value of the step
-       sized used by the linear probing to be fixed to the slot in the
+       size used by the linear probing to be fixed to the slot in the
        hash table that we chose.
        So we are using the next :math:`m` bits of the key value
        instead.

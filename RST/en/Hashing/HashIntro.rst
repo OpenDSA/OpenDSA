@@ -4,16 +4,20 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Introduction to Hashing
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: hash intro
    :topic: Hashing
    :keyword: Hashing
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concept of hashing, using a naive hash function.
 
 .. index:: ! hashing
 
-
-Introduction
-============
+Introduction to Hashing
+=======================
 
 Introduction
 ------------

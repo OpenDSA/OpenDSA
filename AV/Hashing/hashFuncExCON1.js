@@ -1,3 +1,12 @@
+// Title: The mod Hash Function
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Hash Function
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the basic mod function as a hash function. */
+
 $(document).ready(function () {
   "use strict";
   var empty = [];
