@@ -10,6 +10,11 @@ To run the `extract_metadata.py` script for parsing the metadata for **Catalog**
 
 **`python extract_metadata.py <config filename>.json`**
 
-### ✅ Example:
+###  Example:
 ```bash
 python extract_metadata.py Catalog.json
+ 
+ ## expand_chapter_metdata.py
+ This script will generate the complete metadata for the chapter
+ To tun this script-
+ python expand_chapter_metadata.py

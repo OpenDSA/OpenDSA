@@ -46,7 +46,7 @@
     ],
     "institution": [
       "San Diego Mesa College"
-    }
+    ],
     "keywords": [
       "Object-Oriented Programming"
     ],
@@ -68,7 +68,7 @@
     ],
     "institution": [
       "Virginia Tech"
-    }
+    ],
     "keywords": [
       "Command Line Interface",
       "Unit Testing",
@@ -231,7 +231,7 @@
       "Node",
       "Binary Search Tree",
       "Composite Design Pattern",
-      "Huffman Coding Tree"
+      "Huffman Coding Tree",
       "Trie",
       "Complete Binary Tree",
       "Full Binary Tree",
@@ -405,7 +405,7 @@
       "Minimal-Cost Spanning Tree",
       "Kruskal's Algorithm",
       "Prim's Algorithm",
-      "Dijkstra's Shortest Paths Algorithm"
+      "Dijkstra's Shortest Paths Algorithm",
       "Floyd's All-Pairs Shortest Paths Algorithm",
       "Dynamic Programming"
     ],
@@ -496,7 +496,7 @@
       "Interpolation Search",
       "Quadratic Binary Search",
       "Skip List",
-      "Randomized Algorithm",
+      "Randomized Algorithm"
     ],
     "NaturalLanguage": [
       "en"
@@ -797,7 +797,7 @@
     ],
     "keywords": [
       "Regular Language",
-      "Pumping Lemma"
+      "Pumping Lemma",
       "Closure Property"
     ],
     "NaturalLanguage": [
