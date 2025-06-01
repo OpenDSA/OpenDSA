@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Quick Sort Partition Analysis
+
+// Title: Quicksort Partition Analysis Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Quicksort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a visual proof for the cost of the partition step for Quicksort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "QuickSortPartitionAnalysisCON";

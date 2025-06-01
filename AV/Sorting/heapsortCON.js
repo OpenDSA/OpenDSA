@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Heapsort Visualization Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Heapsort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a visualization of the Heapsort algorithm. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "heapsortCON";

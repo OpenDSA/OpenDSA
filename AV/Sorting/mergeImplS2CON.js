@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Mergsort Implementation Slideshow: Optimized Final Pass
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Mergesort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the details of implementing Mergesort using an array. This is the second of a two-part series, showing an optimized version of the final merge step. */
+
 $(document).ready(function() {
   "use strict";
 

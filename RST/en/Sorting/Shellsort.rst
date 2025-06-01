@@ -13,7 +13,7 @@
    :keyword: Sorting; Shellsort
    :naturallanguage: en
    :programminglanguage: Java
-   :description: Presentation of Shellsort including visualizations, code, and self-test questions and exercises
+   :description: Presentation of Shellsort including visualizations, code, and self-test questions and exercises.
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort

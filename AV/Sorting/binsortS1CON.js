@@ -1,4 +1,14 @@
 /*global ODSA, JSAV, document */
+
+// Title: Binsort Slideshow: Sorting a Permutation
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Binsort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the details of sorting a permutation of the n values from 0 to n-1. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "binsortS1CON";

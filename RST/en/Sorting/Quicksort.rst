@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Quicksort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology; sort code tuning; insertion sort
    :satisfies: quicksort
    :topic: Sorting
-   :keyword: Sorting; Quicksort
+   :keyword: Quicksort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Quicksort, including visualizations and practice exercises.
 
 .. index:: ! Quicksort
 
