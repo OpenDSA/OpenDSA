@@ -1,4 +1,15 @@
 /*global ODSA, HUFF */
+
+// Title: Huffman Coding Tree Slideshow: Setting Codes
+// Author: Laura Avakian; Maoyuan Sun; Rich Episcopo; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Huffman Coding Tree
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing the Huffman Coding Tree code setting step. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "huffmanCodesCON";

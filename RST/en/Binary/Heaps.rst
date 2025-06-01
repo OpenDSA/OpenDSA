@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Heaps and Priority Queues
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree terminology; BST; complete tree
    :satisfies: heap; priority queue
    :topic: Heaps
    :keyword: Heap; Priority Queue
-
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of heaps, and their use to implement priority queues.
 
 Heaps and Priority Queues
 =========================

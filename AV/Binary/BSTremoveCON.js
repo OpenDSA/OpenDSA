@@ -1,7 +1,18 @@
 /*global ODSA */
-"use strict";
 // Remove slideshow
+
+// Title: BST Remove Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Binary Search Tree
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing recursive remove value in a BST. */
+
 $(document).ready(function () {
+  "use strict";
   var av_name = "BSTremoveCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter

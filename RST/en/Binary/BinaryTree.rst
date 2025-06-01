@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binary Trees Definitions and Properties
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree intro
    :satisfies: binary tree terminology
    :topic: Binary Trees
-   :keyword: Binary Trees
+   :keyword: Binary Tree
+   :naturallanguage: en
+   :programminglanguage: N/T
+   :description: Presents definitions and properties for binary trees.
 
 
 Binary Trees

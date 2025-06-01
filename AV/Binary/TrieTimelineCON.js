@@ -1,4 +1,15 @@
 // Timeline visulization showing how a trie (NOT tree) splits space.
+
+// Title: Trie Timeline Slideshow
+// Author: Rich Episcopo
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Trie
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow showing the concept of marking a timeline for the values stored in a Trie decomposition version of a BST. */
+
 (function ($) {
 
   var av = new JSAV("TrieTimelineCON");

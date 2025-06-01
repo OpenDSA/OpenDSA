@@ -3,13 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Trees versus Tries
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: BST; Huffman coding tree
    :satisfies: 
    :topic: Trie
    :keyword: Trie
-
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the Trie concept, and uses the example of a Trie version of a BST to show the diffence from a normal BST.
 
 Trees versus Tries
 ==================
@@ -39,8 +43,8 @@ The following slideshows present this in more detail.
 
 .. inlineav:: TreeTimelineCON ss
    :long_name: Tree timeline Slideshow
-   :links: AV/Development/TreeTrieCON.css
-   :scripts: AV/Development/TreeTimelineCON.js
+   :links: AV/Binary/TreeTrieCON.css
+   :scripts: AV/Binary/TreeTimelineCON.js
    :output: show
    :keyword: Trie
 
@@ -48,7 +52,7 @@ The following slideshows present this in more detail.
 
 .. inlineav:: TrieTimelineCON ss
    :long_name: Trie timeline Slideshow
-   :links: AV/Development/TreeTrieCON.css
-   :scripts: AV/Development/TrieTimelineCON.js
+   :links: AV/Binary/TreeTrieCON.css
+   :scripts: AV/Binary/TrieTimelineCON.js
    :output: show
    :keyword: Trie

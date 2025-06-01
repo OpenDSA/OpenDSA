@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binary Search Trees
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree terminology; binary tree traversal;
    :satisfies: BST
    :topic: Binary Trees
    :keyword: Binary Search Tree
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Binary Search Trees. Includes several visualizations and practice exercises.
 
 
 Binary Search Trees

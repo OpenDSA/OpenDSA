@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Multiple Binary Trees
    :author: Sally Hamouda
+   :institution: Virginia Tech
    :satisfies: Multiple Binary Trees
    :topic: Multiple Binary Trees
    :keyword: Binary Tree Traversals; Recursive Tree Functions
-
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Contains practice programming exercises that use multiple binary trees.
 
 Multiple Binary Trees
 =====================
