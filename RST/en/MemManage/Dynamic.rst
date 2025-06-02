@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Dynamic Storage Allocation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
    :keyword: Memory Management; Dynamic Storage Allocation
-
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses dynamic storage allocation and associated memory managers. Presents this as a bit array with allocated and unallocated blocks of various sizes.
+                 
 Dynamic Storage Allocation
 ==========================
 

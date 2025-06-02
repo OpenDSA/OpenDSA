@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Thomas Walton and Cliff Shaffer
 // Hard-coded example version of BFS demo
+
+// Title: Breadth-first graph traversal slideshow
+// Author: Thomas Walton; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Breadth-First Search
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the breadth-first search algorithm for traversing a graph. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "BFSCON";

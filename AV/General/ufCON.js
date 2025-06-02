@@ -1,8 +1,18 @@
 /*global ODSA */
-"use strict";
 // Written by Mohammed Farghally and Cliff Shaffer
 // Union/Find example
+
+// Title: Union/Find Examaple Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Trace Visualization
+// Keyword: Union/Find Algorithm; Disjoint Sets
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating processing of a series of union operations on a collection of disjoint sets. Shows the parent pointer representation used to maintain the set information. */
+
 $(document).ready(function () {
+  "use strict";
   var av_name = "ufCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter

@@ -4,12 +4,18 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Worst Fit Memory Manager
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
+   :keyword: Memory Management; Sequential Fit Memory Allocation
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the worst fit sequential memory management scheme.
 
 
-Worst Fit
-=========
+Worst Fit Memory Manager
+========================
 
 Worst Fit
 ---------

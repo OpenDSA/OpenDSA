@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Chapter Introduction: Memory Management
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
    :keyword: Memory Management
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to a chapter on  memory management. Presents a simple ADT as a basis for discussion.
 
 Chapter Introduction: Memory Management
 =======================================

@@ -1,7 +1,17 @@
 /*global ODSA */
-"use strict";
 // General tree construction from a sequential representation
+
+// Title: General Tree Serialization Slideshow
+// Author: Kevin Ellis
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Serialization; Binary Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow how to reconstruct a general tree from a serialized representation of its node values. */
+
 $(document).ready(function () {
+  "use strict";
   var av_name = "SequentialGenTreeCON";
   var av = new JSAV(av_name);
   var temp1;

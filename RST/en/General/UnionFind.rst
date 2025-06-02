@@ -3,13 +3,16 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Union/Find and the Parent Pointer Implementation
    :author: Cliff Shaffer
    :requires: general trees
    :satisfies: Union/Find
    :topic: Union/Find
    :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes
-
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses the union/find algorithm for identifying and managing disjoint sets.
 
 Union/Find and the Parent Pointer Implementation
 ================================================

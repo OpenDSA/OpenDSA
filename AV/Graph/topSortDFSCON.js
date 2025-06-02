@@ -1,6 +1,15 @@
 "use strict";
 /*global alert: true, ODSA */
 
+// Title: Depth-First Topological Sort Slideshow
+// Author: Ivan Wong; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Topological Sort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the depth-first topological sort algorithm. */
+
 $(document).ready(function () {
   var jsav = new JSAV("topSortDFSCON");
   var g;

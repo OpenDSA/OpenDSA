@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Graph Traversals
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: graph implementation
    :satisfies: graph traversal
    :topic: Graphs
-   :keyword: Graphs; Graph Traversals
+   :keyword: Graph Traversals
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents standard graph traversals: Depth-first search and breadth-first search. Includes visualizations and algorithm proficiency practice exercises.
 
 
 Graph Traversals

@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Circular First Fit
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
    :keyword: Memory Management; Sequential Fit Memory Allocation
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the circular first fit sequential memory management scheme.
 
 Circular First Fit
 ==================
