@@ -1,3 +1,12 @@
+// Title: Pushdown Automata Empty Stack Acceptance Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Pushdown Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset discussing Pushdown Automata and the empty stack acceptance model. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "PDAEmptyStackFS";

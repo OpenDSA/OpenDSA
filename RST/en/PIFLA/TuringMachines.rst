@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Introduction to Turing Machines
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Turing Machines
    :keyword: Turing Machines
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to Turing machines.
 
 Introduction to Turing Machines
 ===============================

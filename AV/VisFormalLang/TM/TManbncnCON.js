@@ -1,6 +1,16 @@
 // Written by Jeffrey Peng, Mostafa Mohammed, and Cliff Shaffer, Fall 2019
 // TODO: The Traversor code needs to be moved to the TM library,
 // and the TM editor needs to use the same Traversor code.
+
+// Title: Visualizaiton of the Turing Machine that accepts a^n b^n c^n
+// Author: Jeffrey Peng; Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Turing Machines
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Detailed trace on some examples for a Turing machine that accepts the langugage a^n b^n c^n. */
+
 $(document).ready(function() {
   "use strict";
 

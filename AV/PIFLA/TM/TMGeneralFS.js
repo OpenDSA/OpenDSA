@@ -1,3 +1,12 @@
+// Title: Turing Machines Introduction Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow introducing the concept of a Turing machine and its formal definition. */
+
 $(document).ready(function () {
   "use strict";
 

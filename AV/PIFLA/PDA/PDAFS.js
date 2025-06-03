@@ -1,4 +1,14 @@
 /*global PIFRAMES */
+
+// Title: Pushdown Automata Introduction Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Pushdown Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset introducing Pushdown Automata and their formal definition. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "PDAFS";

@@ -1,3 +1,12 @@
+// Title: Turing Machine Extensions Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Turing Machine
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow presenting various potential extensions to Turing machines, such as two-dimensional tapes, multiple heads, and non-determinism. Includes proofs that these extensions do not add fundamental capability to a Turing machine. */
+
 $(document).ready(function () {
   "use strict";
 

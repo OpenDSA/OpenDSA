@@ -1,3 +1,12 @@
+// Title: Pushdown Automata Acceptance Models Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Pushdown Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset discussing Pushdown Automata acceptance models. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "PDAAcceptanceFS";
