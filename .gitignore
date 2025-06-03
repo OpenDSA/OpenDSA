@@ -62,6 +62,10 @@ Metadata/SLCItem_metadata.json
 Metadata/summary_metadata.json
 Metadata/ExpandedChapter_metadata.json
 
+#Ignore chapter config files
+
+config/ChapterConfigs
+
 # Ignore LMS course configuration files
 config/temp/temp*.*
 config/*_generated.json
