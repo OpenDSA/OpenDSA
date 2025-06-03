@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA*/
+
+// Title: Introduction to the CNF Satisfiability Problem
+// Author: Nabinita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Satisfiability Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the CNF satisfiability problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "SATCON";

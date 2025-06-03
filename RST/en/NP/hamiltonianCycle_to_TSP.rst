@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Reduction of Hamiltonian Cycle to Traveling Salesman
    :author: Nabanita Maji
+   :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; NP-completeness Proofs; Traveling Salesman Problem; Hamiltonian Cycle Problem
+   :keyword: NP-completeness Proofs; Traveling Salesman Problem; Hamiltonian Cycle Problem
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a reduction of an instance of the Hamiltonian Cycle problem to an instance of the Traveling Salesman problem.
 
 Reduction of Hamiltonian Cycle to Traveling Salesman
 ====================================================

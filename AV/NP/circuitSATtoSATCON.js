@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Reduction of Circuit SAT to SAT Slideshow
+// Author: Nabinita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction; Satisfiability Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating a reduction from an instance of the Circuit Satisfiability problem to an instance of the CNF Satisfiability problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "circuitSATtoSATCON";

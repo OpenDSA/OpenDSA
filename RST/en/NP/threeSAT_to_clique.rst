@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Reduction of 3-SAT to Clique
    :author: Nabanita Maji
+   :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability; Clique Problem
+   :keyword: NP-completeness Proofs; Satisfiability; Clique Problem
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a reduction of an instance of the 3-Satisfiability problem to an instance of the Clique problem.
 
 Reduction of 3-SAT to Clique
 ============================

@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Traveling Salesman Problem
    :author: Nabanita Maji
+   :institution: Virginia Tech
    :topic: NP-completeness
    :keyword: NP-completeness; Traveling Salesman Problem
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the Traveling Salesman problem. Includes a practice exercise where the user must find the shortest cycle for a given graph.
 
 The Traveling Salesman Problem
 ==============================

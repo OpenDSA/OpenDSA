@@ -1,5 +1,15 @@
 // Written by Nabanita Maji and Cliff Shaffer, March 2015.
 /*global ODSA */
+
+// Title: Symmetric Matrix Multiplication Reduction
+// Author: Nabinita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a reduction of Matrix Multiply to Symmetric Matrix Multiply. This demonstrates that the lower bound for Symmetric Matrix Multiply is the same as the lower bound for (general) Matrix Multiply. */
+
 $(document).ready(function() {
   "use strict";
 

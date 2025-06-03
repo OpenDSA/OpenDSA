@@ -1,6 +1,16 @@
 // Written by Nabanita Maji and Cliff Shaffer, March 2015.
 // Heavily revised and updated by Cliff Shaffer, November 2024.
 /*global ODSA */
+
+// Title: Reduction of Sorting to Pairing
+// Author: Nabinita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a reduction of Sorting to Pairing. This demonstrates that the lower bound for Pairing is the same as the lower bound for Sorting. */
+
 $(document).ready(function() {
   "use strict";
   var input;

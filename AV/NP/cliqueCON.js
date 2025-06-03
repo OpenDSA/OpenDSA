@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Introduction to the Clique Problem
+// Author: Nabinita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Clique Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the Clique problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "cliqueCON";

@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Introduction to the Hamiltonian Cycle Problem
+// Author: Nabinita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Hamiltonian Cycle Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the Hamiltonian cycle problem. */
+
 $(document).ready(function () {
   "use strict";
 
