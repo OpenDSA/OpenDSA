@@ -4,12 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
+   :title: Minimizing the Number of States in a DFA
+   :author: Susan Rodger; Cliff Shaffer; Mostafa Mohammed
    :requires: Non-deterministic Finite Automata
    :satisfies: DFA minimization
    :topic: Finite Automata
    :keyword: Finite Automata; DFA Minimization
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presentation of the algorithm to minimize the number of states in a DFA.
 
 Minimizing the Number of States in a DFA
 ========================================

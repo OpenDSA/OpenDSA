@@ -4,14 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger, Cliff Shaffer, Mostafa Mohammed, and John Taylor
+   :title: DFA: Deterministic Finite Acceptors
+   :author: Susan Rodger; Cliff Shaffer; Mostafa Mohammed; John Taylor
+   :institution: Duke University; Virginia Tech
    :satisfies: Deterministic Finite Automata
    :topic: Finite Automata
    :keyword: Finite Automata; Deterministic Finite Acceptor
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to Deterministic Finite Acceptors
 
 
-DFA: Deterministic Finite Acceptor
-==================================
+DFA: Deterministic Finite Acceptors
+===================================
 
 Introduction to the DFA
 -----------------------

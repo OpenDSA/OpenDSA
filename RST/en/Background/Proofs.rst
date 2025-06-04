@@ -461,7 +461,8 @@ induction hypothesis.
 .. topic:: Example
 
    Define a :term:`two-coloring` for a
-   set of regions as a way of assigning one of two colors to each region
+   set of regions in the 2D plane as a way of assigning one of two
+   colors to each region 
    such that no two regions sharing a side have the same color.
    For example, a chessboard is two-colored.
    Figure :num:`Figure #TwoColor` shows a two-coloring for the plane

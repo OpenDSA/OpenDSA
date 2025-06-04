@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 // Written by Mostafa Mohammed and Cliff Shaffer
+
+// Title: Programmed Instruction: DFA Minimization
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting the algorithm to minimize the number of states in a DFA. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "DFAMinFS";

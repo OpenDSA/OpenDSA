@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 // Written by Mostafa Mohammed and Cliff Shaffer
+
+// Title: Programmed Instruction: DFA Advanced Concepts
+// Author: John Taylor; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset covering more advanced DFA concepts. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "DFAadvancedFS";

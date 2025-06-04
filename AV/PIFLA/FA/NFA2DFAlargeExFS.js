@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 // Initial draft by John Taylor, Rewritten by Cliff Shaffer, November 2020
+
+// Title: Programmed Instruction: NFA to DFA Conversion
+// Author: John Taylor; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset with an example for converting an NFA to an equivalent DFA. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "NFA2DFAlargeExFS";
