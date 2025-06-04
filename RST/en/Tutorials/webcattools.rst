@@ -103,6 +103,23 @@ Select the JDK you just added and click on the ``Default`` button.
 This will set the JDK you just added as the default JRE for
 Eclipse. Hit ``Apply and Close`` to close the Preferences window.
 
+Setting the Compiler Compliance Level
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once you have set the default JRE, you will need to set the default
+compiler compliance level to Java 11. To do this, in the Preferences
+window, click on ``Java --> Compiler`` and the first line will be
+``Compiler compliance level``. Set this to ``11``. You should see
+a window like this:
+
+.. odsafig:: Images/CompilerCompliance.png
+   :width: 650
+   :align: center
+   :capalign: justify
+   :figwidth: 90%
+   :alt: CompilerCompliance
+
+Click on ``Apply and Close`` to close the Preferences window.
 
 Installing the Plug-in
 ----------------------
