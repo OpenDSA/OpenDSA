@@ -18,3 +18,7 @@ python extract_metadata.py Catalog.json
  This script will generate the complete metadata for the chapter
  To tun this script-
  python expand_chapter_metadata.py
+
+## split_chapter_config.py
+This script will generate the config file for each chapters
+python split_chapter_metadata.py
