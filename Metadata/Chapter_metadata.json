@@ -1,0 +1,891 @@
+[
+  {
+    "title": "Introduction to Software Design",
+    "author": [
+      "Molly Domino",
+      "Steve Edwards"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Software Design"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "A complete semester book for an introductory Computer Science programming couse using an objects-first approach."
+  },
+  {
+    "title": "Command Line and Git",
+    "author": [
+      "Ryan Buxton"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Command Line",
+      "Git"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Brief introductions to using Unix-like commands and Git. Includes interactive exercises on these topics."
+  },
+  {
+    "title": "Object-Oriented Programming",
+    "author": [
+      "Dave Parillo"
+    ],
+    "institution": [
+      "San Diego Mesa College"
+    ],
+    "keywords": [
+      "Object-Oriented Programming"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Brief introductions to some topics related to object-oriented programming suitable for a second or third programming course. Introduces the concept of OO design, UML, ADTs, and the software development process."
+  },
+  {
+    "title": "Programming Tutorials",
+    "author": [
+      "Jordan Sablan",
+      "Cliff Shaffer",
+      "Rifat Sabbir Mansur",
+      "Alex Hicks"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Command Line Interface",
+      "Unit Testing",
+      "Mutation Testing",
+      "Debugging"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Brief introductions to many practical programming topics, including the basics of command line parameters, using Eclipse and other programming tools, methods of debugging, scanners of reading input data, basic file processing, JUnit testing, mutation testing, and code coverage."
+  },
+  {
+    "title": "Introduction to Pointers in Java",
+    "author": [
+      "Nick Parlante",
+      "Cliff Shaffer",
+      "Sally Hamouda",
+      "Mostafa Mohammed",
+      "Sushma Mandava"
+    ],
+    "institution": [
+      "Virginia Tech",
+      "Stanford University"
+    ],
+    "keywords": [
+      "Pointers",
+      "References",
+      "Local Memory",
+      "Heap"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "A complete introduction to pointers for a first or second semester programming course. Introduces the concept of a pointer, objects and their references, local memory, heap memory, and the call stack model for local variables."
+  },
+  {
+    "title": "Mathematical Background for a Data Structures Course",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Set",
+      "Logarithm",
+      "Summation",
+      "Recurrence Relation",
+      "Induction Proof"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Brief review of mathematical background topics appropriate for a junior-level course in Data Structures and Algorithms. Includes basic set theory and relations, logarithms, summations, recurrences, and proof methods."
+  },
+  {
+    "title": "Algorithm Analysis",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Algorithm Analysis",
+      "Asymptotic Algorithm Analysis",
+      "Growth Rate",
+      "Upper Bound",
+      "Lower Bound"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation of standard asymptotic algorithm analysis topics for a junior-level Data Structures and Algorithms course. Introduces growth rates; best, average, and worst case analysis; upper and lower bounds for an algorithm or a problem, and basic misunderstandings that student often encounter related to algorithm analysis."
+  },
+  {
+    "title": "Recursion",
+    "author": [
+      "Sally Hamouda",
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Recursion"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Basic introduction to recursion suitable for a first or second semester programming course."
+  },
+  {
+    "title": "Linear Structures",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "List",
+      "Stack",
+      "Queue"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Presentation on basic linear structures appropriate for a second semester programming course or a course on Data Structures and Algorithms. Presents both array-based and linked representations for lists, stacks, and queues"
+  },
+  {
+    "title": "Topics on Program Design",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Design Patterns",
+      "Comparison",
+      "Dictionary"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Presents some program design issues relevant to a Data Structures and Algorithms course, including a brief introduction to Design Patterns, the concept of comparison and comparators, and the Dictionary concept."
+  },
+  {
+    "title": "Binary Trees",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Binary Tree",
+      "Node",
+      "Binary Search Tree",
+      "Composite Design Pattern",
+      "Huffman Coding Tree",
+      "Trie",
+      "Complete Binary Tree",
+      "Full Binary Tree",
+      "Preorder Traversal",
+      "Postorder Traversal",
+      "Inorder Traversal"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Chapter on Binary Trees suitable for a Junior-level Data Structures and Algorithms course. Includes significant discussion of implementation choices related to various binary trees; space requirements proofs; morphology concepts such as complete binary trees, full binary trees, and tries; Binary Search Trees; Huffman Coding Trees, recursive traversals of binary trees."
+  },
+  {
+    "title": "Sorting",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Sorting",
+      "Insertion Sort",
+      "Selection Sort",
+      "Bubble Sort",
+      "Exchange Sort",
+      "Shellsort",
+      "Mergesort",
+      "Quicksort",
+      "Heapsort",
+      "Binsort",
+      "Radix Sort",
+      "Sorting Lower Bounds"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Chapter on Sorting suitable for a Junior-level Data Structures and Algorithms course. Includes most standard sorting algorithms and a presentation of the sorting lower bounds proof."
+  },
+  {
+    "title": "File Processing",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Disk Drive",
+      "Memory Hierarchy",
+      "Buffer Pool",
+      "File Processing",
+      "External Sorting"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Introduction to the basics of File Processing. Includes a model of disk drives, memory hierarchy, buffer pools, Java's RandomAccessFile class, and external sorting algorithms."
+  },
+  {
+    "title": "Hashing",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Hashing",
+      "Collision Resolution",
+      "Hash Function"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Presentation of hashing suitable for a junior-level course on Data Structures and Algorithms. Discusses what makes for good and bad hash functions, and presents several collision resolution methods."
+  },
+  {
+    "title": "Memory Management",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Memory Manager",
+      "Best Fit",
+      "Worst Fit",
+      "First Fit",
+      "Buddy Method",
+      "Garbage Collection"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Presentation of memory management concepts and implementation suitable for a junior-level course on Data Structures and Algorithms. Discusses linear fit models (best, worst, first), the buddy method, and garbage collection algorithms."
+  },
+  {
+    "title": "Indexing",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Linear Indexing",
+      "2-3 Tree",
+      "B-Tree",
+      "B+-Tree",
+      "ISAM",
+      "Indexing"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation of the concept of accessing records in a disk-based file with a smaller in-memory index. Presents the basic concepts of a simple linear index, ISAM, a 2-3 Tree, and major variations on the B-tree."
+  },
+  {
+    "title": "General Trees",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "General Trees",
+      "Union/Find"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation of the concept of general tree (one with no particular number of children for a given node), various representations. Presents the Union/FIND algorithm for disjoint sets."
+  },
+  {
+    "title": "Graphs",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Graph",
+      "Graph Representation",
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Minimal-Cost Spanning Tree",
+      "Kruskal's Algorithm",
+      "Prim's Algorithm",
+      "Dijkstra's Shortest Paths Algorithm",
+      "Floyd's All-Pairs Shortest Paths Algorithm",
+      "Dynamic Programming"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "Java"
+    ],
+    "description": "Presentation of the graph representations and basic graph algorithms appropriate for a junior-level course in Data Structures and Algorithms. Presents basic graph terminology, standard graph representations, shortest-paths algorithms, standard graph traversals, minimal-cost spanning tree algorithms, and Floyd's all-pairs shortest paths algorithm."
+  },
+  {
+    "title": "Spatial Data Structures",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Spatial Data Structure",
+      "PR Quadtree",
+      "kd-Tree",
+      "Bintree",
+      "Point Quadtree"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation of the concept of a spatial data structure, and a sampling of standard tree structures for storing point data. Includes the PR Quadtree, the kd-tree, the bintree, and the Point Quadtree."
+  },
+  {
+    "title": "Introduction to a Course on Algorithm",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Algorithm Analysis",
+      "Lower Bounds"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Introductory chapter for a senior-level course on algorithm analysis."
+  },
+  {
+    "title": "Analyzing Problems: The Basics",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Algorithm Analysis",
+      "Lower Bounds"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Introduction at the senior level to analyzing problems. The key idea is to find an algorithm that matches the problem lower bound."
+  },
+  {
+    "title": "Searching",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Algorithm Analysis",
+      "Lower Bounds",
+      "Sequential Search",
+      "Binary Search",
+      "Interpolation Search",
+      "Quadratic Binary Search",
+      "Skip List",
+      "Randomized Algorithm"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presents lower bounds proofs for various standard searching problems, such as search in an unsorted list and search in a sorted list. Presents the Skip List as an exemplar of a randomized algorithm."
+  },
+  {
+    "title": "Lower Bounds",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Lower Bounds Proofs",
+      "Finding the Min and the Max",
+      "Finding the Two Largest Values",
+      "Finding the ith Largest Value",
+      "State Space Lower Bounds Proof",
+      "Adversary Argument",
+      "Amortized Analysis"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presents various techniques for proving lower bounds. The focus is on various search algorithms including finding the min and max values, finding the two largest values, finding the ith largest value (including median finding). Provids an introduction to amortized analysis."
+  },
+  {
+    "title": "Dynamic Programming",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Dynamic Programming",
+      "Chained Matrix Multiplication",
+      "Knapsack Problem"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presents an introduction to dynamic programming. Examples include computing factorials, the exact knapsack problem, and chained matrix multiplication"
+  },
+  {
+    "title": "Limits to Computing",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Reduction",
+      "NP Completeness Theory",
+      "Non-Computable Problems",
+      "Halting Problem",
+      "Diagonalization Proof"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presents an introduction to various limits to computing at a level appropriate for a senior-level course in algorithm analysis. Begins with a presentation of the process of reducing one algorithm to another. Then presents the basics of NP-completeness theory and many examples of NP-complete problems. Finishes with a presentation of non-computable problems such as the Halting Problem."
+  },
+  {
+    "title": "Number Problems",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Matrix Multiplication",
+      "Strassen's Algorithm",
+      "Prime Numbers",
+      "Random Number Generator",
+      "Transformation",
+      "Fast Fourier Transform"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presents a collection of numeric problems at a level suitable for a senior-level course in algorithm analysis. Includes greatest common divisor, finding prime numbers, random number generators, matrix multiplication, transformations, polynomial multiplication, and the fast Fourier transform."
+  },
+  {
+    "title": "Grammars",
+    "author": [
+      "David Furcy",
+      "Tom Naps"
+    ],
+    "institution": [
+      "University of Wisconsin, Oshkosh"
+    ],
+    "keywords": [
+      "Grammar",
+      "Parser"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation suitable for a senior-level course on programming languages of grammars and parsers."
+  },
+  {
+    "title": "Functional Programming",
+    "author": [
+      "David Furcy",
+      "Tom Naps"
+    ],
+    "institution": [
+      "University of Wisconsin, Oshkosh"
+    ],
+    "keywords": [
+      "Functional Programming"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation suitable for a senior-level course on programming languages of functional programming and associated programming language features."
+  },
+  {
+    "title": "Lambda Calculus",
+    "author": [
+      "David Furcy",
+      "Tom Naps"
+    ],
+    "institution": [
+      "University of Wisconsin, Oshkosh"
+    ],
+    "keywords": [
+      "Lambda Calculus"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation suitable for a senior-level course on programming languages of the Lambda Calculus."
+  },
+  {
+    "title": "Interpreting the Functional Language SLang",
+    "author": [
+      "David Furcy",
+      "Tom Naps"
+    ],
+    "institution": [
+      "University of Wisconsin, Oshkosh"
+    ],
+    "keywords": [
+      "Interpreter"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation suitable for a senior-level course on programming languages of an interpreter for a demonstration langauge called SLang."
+  },
+  {
+    "title": "Variations on Parameter Passing",
+    "author": [
+      "David Furcy",
+      "Tom Naps"
+    ],
+    "institution": [
+      "University of Wisconsin, Oshkosh"
+    ],
+    "keywords": [
+      "Parameter Passing",
+      "Call by Value",
+      "Call by Name",
+      "Call by Reference"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation suitable for a senior-level course on programming languages of various approaches that are use by programming languages to do parameter passing."
+  },
+  {
+    "title": "Type Systems",
+    "author": [
+      "David Furcy",
+      "Tom Naps"
+    ],
+    "institution": [
+      "University of Wisconsin, Oshkosh"
+    ],
+    "keywords": [
+      "Types"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Presentation suitable for a senior-level course on programming languages of type systems."
+  },
+  {
+    "title": "Formal Languages Course Introduction",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Formal Languages",
+      "Grammars",
+      "Language Hierarchy",
+      "Finite Automata"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "Introductory chapter for a senior-level course on Formal Languages and Automata. Introduces many of the basic concepts covered in a FLA course."
+  },
+  {
+    "title": "Finite Acceptors",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Deterministic Finite Acceptor",
+      "Nondeterministic Finite Acceptor"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents basic finite automata. Topics include DFAs, NFAs, and state minimization in a DFA. Includes practice exercises for building example state machines."
+  },
+  {
+    "title": "Regular Languages",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Regular Language",
+      "Regular Expression",
+      "Regular Grammar",
+      "Closure Property"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents topics related to regular languages. Includes regular grammars, regular expressions, and the relationship between these and DFAs."
+  },
+  {
+    "title": "Identifying Non-Regular Languages",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Regular Language",
+      "Pumping Lemma",
+      "Closure Property"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents topics related to distinguishing regular from non-regular languages. Disucsses the Pumping Lemma for regular languages"
+  },
+  {
+    "title": "Context-Free Grammars and Languages",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Context-Free Language",
+      "Context-Free Grammar",
+      "Chomsky Normal Form",
+      "Greibach Normal Form"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents topics related to context-free grammars and langauges. Includes discussion of standardized transformations."
+  },
+  {
+    "title": "Pushdown Automata",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Pushdown Automata"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents topics Pushdown Automata. Includes discussion of the relationship between deterministic and nondeterministic PDAs, and the relationship to Context-Free Grammars."
+  },
+  {
+    "title": "Properties of Context-Free Languages",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Context-Free Languages",
+      "Pumping Lemma"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents strategies for determining whether a language is context free or not. Includes discussion of the Pumping Lemma for context-free languages."
+  },
+  {
+    "title": "Turing Machines",
+    "author": [
+      "Cliff Shaffer"
+    ],
+    "institution": [
+      "Virginia Tech"
+    ],
+    "keywords": [
+      "Turing Machine"
+    ],
+    "NaturalLanguage": [
+      "en"
+    ],
+    "Programming Language": [
+      "N/A"
+    ],
+    "description": "At a level suitable for a senior-level course on Formal Languages and Automata, presents a basic introduction to Turing Machines. Includes discussion of various models of Turing Machines, and their relationship to other state machines. Includes interactive exercises for creating Turing Machines."
+  }
+]
