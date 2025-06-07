@@ -637,7 +637,7 @@ def dag_compare_new(report_master: ReportContext, report_attempt: ReportContext,
                     )
             )
             subgroup_details[subgroup]['pairs'][pair]\
-                ['metadata']['matched_label_equations'] = matched_clusters_scores_dict
+                ['metadata']['matched_reduced_equations'] = matched_clusters_scores_dict
 
             # this needs to be right at the end, adding up all scores
             subgroup_details[subgroup]['pairs'][pair]['score'] = \
@@ -733,6 +733,13 @@ def compare_label(
                     # NOTE: This must be bookkept
                     score = sum([_ for k,_ in dict_variable_check.items()]) \
                         / (len(dict_variable_check))
+                    
+                    # see algorithm in paper for justification
+                    # these are the generic equations that even with slight modifications can make
+                    # direct comparison impossible/inexact, so we defer these to a later time.
+                    if report_master.get_equation_name(m_equation) in ["add2","sub","mult","div"] \
+                        and score < 1.0:
+                        break
 
                     thread_label_match_score += score
                     thread_label_match_pairs[(m_equation, a_equation)] = score
@@ -767,5 +774,7 @@ def compare_structural_symbolic(
         thread_reduced_match_clusters={}
 
         # restarting
+
+        print(m_thread, a_thread)
         
         return thread_reduced_match_score, thread_reduced_match_clusters
