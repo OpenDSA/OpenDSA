@@ -430,11 +430,9 @@
       "PIFLA/RegExExercises2": {},
       "PIFLA/RegExPower": {},
       "PIFLA/RegularGrammars": {},
-      "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {},
       "PIFLA/RegGramEx2": {},
-      "PIFLA/RegClosure": {},
-      "VisFormalLang/DFAproperties": {}
+      "PIFLA/RegClosure": {}
     },
     "Identifying Non-regular Languages": {
       "PIFLA/NonRegular": {}

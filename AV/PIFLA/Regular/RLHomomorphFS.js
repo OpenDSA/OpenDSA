@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Closure Properties for Regular Languages: Homomorphism
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Language; Closure Property
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting the concept of homomorphism, and a proof that this operator is closed for regular languages. */
+
 $(document).ready(function () {
     "use strict";
     var av_name = "RLHomomorphFS";

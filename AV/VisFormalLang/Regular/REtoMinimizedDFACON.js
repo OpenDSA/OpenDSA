@@ -1,3 +1,12 @@
+// Title: Regular Expression to Minimized DFA Example
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Regular Expression; Non-Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visualization presenting examples of converting a Regular Expression to an equivalend NFA. */
+
 $(document).ready(function() {
   "use strict";
 

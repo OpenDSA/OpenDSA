@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Converting Regular Grammars to NFAs Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Grammar; Regular Language; Non-Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting a conversion from a regular grammar to an equivalent NFA. */
+
 $(document).ready(function(){
   "use strict";
   var av_name = "RGtoNFAFS";

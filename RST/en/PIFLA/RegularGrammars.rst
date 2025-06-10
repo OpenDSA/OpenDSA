@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
+   :title: Regular Grammars
+   :author: Susan Rodger; Cliff Shaffer; Mostafa Mohammed
+   :institution: Duke University; Virginia Tech
    :requires: FLA Introduction
    :satisfies: Regular Grammars
    :topic: Regular Languages
-
+   :keyword: Regular Language; Regular Grammar
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces regular grammars and their properties.
 
 Regular Grammars
 ================

@@ -4,12 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger, Cliff Shaffer, and Mostafa Mohammed
+   :title: Regular Grammars: Short Version
+   :author: Susan Rodger; Cliff Shaffer; Mostafa Mohammed
    :requires: FLA Introduction
    :satisfies: Regular Grammars
    :topic: Regular Languages
-   :keyword: Regular Languages; Regular Grammars
-
+   :keyword: Regular Language; Regular Grammar
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces regular grammars and their properties. Leaves out the conversion of RegEx to Regular Grammars.
 
 Regular Grammars
 ================

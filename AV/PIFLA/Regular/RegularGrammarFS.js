@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 /* Written by ?? and Cliff Shaffer */
+
+// Title: Regular Grammars Introduction Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Grammar; Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting an introduction to regular grammars, their definitions and properties. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "RegularGrammarFS";

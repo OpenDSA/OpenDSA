@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Compilers and Backus-Naur Form
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies:
    :topic: Compilers; Backus-Naur Form
    :keyword: Compilers; Backus-Naur Form
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Brief introduction to the use of Backus-Naur Form for a CFG as used by compilers.
 
 Writing Compilers
 =================

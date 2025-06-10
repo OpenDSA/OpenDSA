@@ -1,3 +1,12 @@
+// Title: Unambiguous CFG Parse Tree Example
+// Author: Mostafa Mohammed
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Context-Free Language; Parse Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visualization for the parse tree generated for a mathematical expression from a non-ambiguouse CFG. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "ParseTreeForExpCON";

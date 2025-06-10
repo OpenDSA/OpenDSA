@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Decideable Questions about Regular Languages
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset reviews the concept of decideablilty and presenting some key questions that are decideable for regular languages. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "RLQuestionsCON";

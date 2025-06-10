@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Context-Free Grammar Transformation Introduction Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Context-Free Grammar
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset discussing reasons for transforming Context-Free Grammars to simpler versions. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "TransformGrammarsFS";
