@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Union/Find and the Parent Pointer Implementation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: general trees
    :satisfies: Union/Find
    :topic: Union/Find

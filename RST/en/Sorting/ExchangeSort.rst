@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: The Cost of Exchange Sorting
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: insertion sort; bubble sort; selection sort
    :satisfies: exchange sort
    :topic: Sorting

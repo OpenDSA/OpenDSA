@@ -6,6 +6,7 @@
 .. avmetadata::
    :author: Cliff Shaffer; Irena Shaffer
    :requires: transforms
+   :institution: Virginia Tech
    :satisfies: FFT
    :topic: Algorithms: Fast Fourier Transform
    :keyword: Fast Fourier Transform; Polynomial Multiplication

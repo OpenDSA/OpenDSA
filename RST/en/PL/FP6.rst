@@ -10,7 +10,7 @@
    :keyword: Functional Programming
    :naturallanguage: en
    :programminglanguage: N/A
-   :description: Discusses scope, closures, higher-order functions, static vs. dynamic binding.
+   :description: Discusses map, curry, and compose operations.
 
 Procedural Abstraction: Map, Curry, and Compose
 ===============================================

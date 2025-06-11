@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Binary Tree Chapter Summary
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies:
    :requires: binary tree terminology; binary tree space requirements; BST; complete tree; heap; Huffman coding tree
    :topic: Binary Trees

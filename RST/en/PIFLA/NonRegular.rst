@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Identifying Non-regular Languages
    :author: Susan Rodger; Mostafa Mohammed; and Cliff Shaffer
+   :institution: Duke University; Virginia Tech
    :satisfies:
    :topic: Non-regular Languages
    :keyword: Non-regular Languages; Pumping Lemma Proofs

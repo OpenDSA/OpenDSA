@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Relations Review with Programmed Instruction Framesets
    :author: Cliff Shaffer; Eunoh Cho; Mostafa Mohammed
+   :institution: Virginia Tech
    :satisfies: relations
    :topic: Relations
    :requires: set notation

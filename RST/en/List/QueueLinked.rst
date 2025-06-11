@@ -6,6 +6,7 @@
 .. avmetadata:: 
    :title: Implementing the Linked Queue
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: queue
    :satisfies: linked queue
    :topic: Lists

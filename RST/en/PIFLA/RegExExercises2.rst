@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Regular Expression Writing Exercises 2
    :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Regular Expressions
    :satisfies: 
    :topic: RegEx exercises

@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Composite-based Expression Tree
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree terminology; design patterns; expression tree
    :satisfies: composite
    :topic: Binary Trees, Design Patterns

@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Mathematical Proof Techniques with Programmed Instruction Framesets
    :author: Eunoh Cho; Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: Proof Techniques
    :topic: Mathematical Proof Techniques
