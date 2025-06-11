@@ -87,22 +87,31 @@ def extract_visualization_references(rst_files):
             with open(rst_path, encoding='utf-8') as f:
                 lines = f.readlines()
             for i, line in enumerate(lines):
-                inline_match = re.match(r"\.\. +inlineav:: +(\S+)", line)
+                inline_match = re.match(r"\.\. +inlineav:: +(.+)", line)
                 if inline_match:
                     vis_type = "inlineav"
-                    vis_id = inline_match.group(1)
+                    full_directive = inline_match.group(1)
+                    tokens = full_directive.strip().split()
+                    vis_id = tokens[0]
+                    tags = tokens[1:]
+
+                    if 'dgm' in tags:
+                        continue  
+
                     scripts_line = next((l for l in lines[i+1:i+5] if ":scripts:" in l), None)
+                    js_file = None
                     if scripts_line:
                         scripts = scripts_line.split(":scripts:")[-1].strip().split()
                         js_file = scripts[-1] if scripts else None
-                        if js_file:
-                            visualizations.append({
-                                "module": mod_name,
-                                "type": vis_type,
-                                "id": vis_id,
-                                "source": js_file,
-                                "line": i + 1
-                            })
+                    if js_file:
+                        visualizations.append({
+                            "module": mod_name,
+                            "type": vis_type,
+                            "id": vis_id,
+                            "source": js_file,
+                            "line": i + 1
+                        })
+
                 embed_match = re.match(r"\.\. +avembed:: +(\S+)", line)
                 if embed_match:
                     vis_type = "avembed"
@@ -203,13 +212,11 @@ def parse_rst_metadata_block(rst_files, config):
                         metadata["Description"] = value
                     elif key == 'title':
                         metadata["Title"] = value
-                    elif key in ['features', 'features']:
-                        metadata["Features"] = [x.strip() for x in re.split(r';|,|\band\b', value)] 
                     elif key == 'institution':
                         metadata["Institution"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
             elif inside_block:
                 break
-        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Features", "Institution", "Programminglanguage"] if field not in metadata]
+        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Institution", "Programminglanguage"] if field not in metadata]
         if missing:
             relative_rst_path = os.path.relpath(rst_path, config.odsa_dir).replace("\\", "/")
             missing_report.append({
@@ -261,7 +268,6 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
         "author": metadata.get("Author", []),
         "institution": metadata.get("Institution", []),
         "keywords": metadata.get("Keywords", []),
-        "features": metadata.get("Features", []),
         "title": metadata.get("Title", os.path.basename(mod_name)),
         "programminglanguage": metadata.get("Programminglanguage", []),
         "naturallanguage": metadata.get("Naturallanguage", [])
@@ -293,7 +299,6 @@ def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, c
         update_summary("Author", meta.get("Author", []))
         update_summary("Institution", meta.get("Institution", []))
         update_summary("Keywords", meta.get("Keywords", []))
-        update_summary("Features", meta.get("Features", []))
         update_summary("Naturallanguage", meta.get("Naturallanguage", ""))
         update_summary("Programminglanguage", meta.get("Programminglanguage", []))
 
@@ -352,7 +357,7 @@ if __name__ == "__main__":
         metadata = parse_metadata_block(file_path) or {}
         if metadata is None:
             continue
-        missing = [field for field in ["Title", "Author", "Description", "Keywords","Features",  "Institution", "Programminglanguage", "Naturallanguage"] if not metadata.get(field)]
+        missing = [field for field in ["Title", "Author", "Description", "Keywords","Features",  "Institution", "Programming Language", "Natural Language"] if not metadata.get(field)]
         if missing:
             slc_missing.append({"source_file": vis["source"], "missing_fields": missing})
         entry = build_splice_entry(vis, metadata)
