@@ -4,13 +4,18 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy, Tom Naps and Taylor Rydahl
+   :title: Semantics of the Lambda Calculus
+   :author: David Furcy; Tom Naps; Taylor Rydahl
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses semantics of the lambda calculus.
 
 .. _semantics-of-the-lambda-calculus:
 
-=================================
- Semantics of the Lambda Calculus
-=================================
+Semantics of the Lambda Calculus
+================================
 
 Semantics of the Lambda Calculus
 --------------------------------

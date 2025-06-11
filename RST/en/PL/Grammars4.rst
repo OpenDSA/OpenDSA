@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: David Furcy and Tom Naps
+.. avmetadata::
+   :title: Parser Generators
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Parser Generator
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses parser generators.
 
-=====================================
 Parser Generators
-=====================================
+=================
 .. (M 2/8/16)
 
 Jison

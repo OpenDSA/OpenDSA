@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
-
+   :title: Lazy Lists
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Parameter Passing; Lazy List
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses implementations for lazy list parameters.
 
 Lazy Lists
 ==========

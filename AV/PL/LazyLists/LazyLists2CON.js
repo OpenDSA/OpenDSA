@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Lazy Lists
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Parameter Passing; Lazy List
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow illustrating the lazy list from operation. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "LazyLists2CON";

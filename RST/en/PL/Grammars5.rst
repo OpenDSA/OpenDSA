@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Using Parser Generators to Interpret a Language
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Parser Generator
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses how parser generators interpret a language.
 
-===================================================================
 Using Parser Generators to Interpret a Language
-===================================================================
+===============================================
 
 
 Annotating Jison Grammars

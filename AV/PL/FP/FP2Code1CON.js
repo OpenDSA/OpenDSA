@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Functional Programming List Processing: Summation
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization; Code Trace Visualization
+// Keyword: Functional Programming
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing basic list processing in a functional programming language: Summation of list values. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "FP2Code1CON";

@@ -10,8 +10,7 @@
    :keyword: Variables; Parameters
    :naturallanguage: en
    :programminglanguage: Java
-   :description: First semester programming course introduction to
-                 variables, fields, and parameters.
+   :description: First semester programming course introduction to variables, fields, and parameters.
 
 Variables, Fields, and Parameters
 =================================

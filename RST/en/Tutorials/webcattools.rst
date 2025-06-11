@@ -260,6 +260,7 @@ Put in the following information:
 
 * In the ``Download URL`` field, enter:
   https://courses.cs.vt.edu/cs3114/Summer25/assignments.xml
+
 .. TODO: This URL changes with each semester and is VT specific.
 ..   http://web-cat.cs.vt.edu/Web-CAT/assignments.xml
 
