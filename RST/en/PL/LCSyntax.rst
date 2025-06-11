@@ -19,8 +19,8 @@
 
 .. _syntax-of-LC:
 
- Syntax of the Lambda Calculus
-==============================
+Syntax of the Lambda Calculus
+=============================
 
 Lambda Calculus
 ---------------

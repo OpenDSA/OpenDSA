@@ -87,7 +87,7 @@
     },
     "Command Line and Git": {
       "CommandLine/About": {},
-      "CommandLine/Exercises": {},
+      "CommandLine/Exercisescmd": {},
       "Git/AboutGit": {},
       "Git/ExercisesGit": {}
     },
@@ -129,7 +129,7 @@
       "PointersJava/Links1": {},
       "PointersJava/Links2": {},
       "PointersJava/PointersCM": {},
-      "PointersJava/Exercises": {},
+      "PointersJava/ExercisesPtr": {},
       "PointersJava/LinkedChains": {}
     },
     "Mathematical Background": {
@@ -378,8 +378,8 @@
       "PL/FP9": {}
     },
     "Lambda Calculus": {
-      "PL/Syntax": {},
-      "PL/Semantics": {},
+      "PL/LCSyntax": {},
+      "PL/LCSemantics": {},
       "PL/FreeBoundVariables": {},
       "PL/AlphaConversion": {},
       "PL/Substitution": {},
