@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: NFA Exercises 1
    :author: Mostafa Mohammed and Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: NFA exercises

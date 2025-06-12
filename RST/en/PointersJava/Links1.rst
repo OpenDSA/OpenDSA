@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :title: Link Nodes
-   :author: Cliff Shaffer; Mohammed Mostafa; Margaret Ellis
+   :author: Cliff Shaffer; Mostafa Mohammed; Margaret Ellis
    :institution: Virginia Tech
    :requires: Pointer intro
    :satisfies: Link Nodes

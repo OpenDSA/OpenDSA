@@ -4,6 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Fast Fourier Transform
    :author: Cliff Shaffer; Irena Shaffer
    :requires: transforms
    :institution: Virginia Tech

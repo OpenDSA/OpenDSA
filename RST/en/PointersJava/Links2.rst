@@ -5,7 +5,7 @@
 
 .. avmetadata::
    :title: Link Nodes Exercises
-   :author: Cliff Shaffer, Mohammed Mostafa, and Margaret Ellis
+   :author: Cliff Shaffer, Mostafa Mohammed, and Margaret Ellis
    :institution: Virginia Tech
    :requires: Pointer intro
    :satisfies:

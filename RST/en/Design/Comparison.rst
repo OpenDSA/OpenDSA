@@ -12,7 +12,7 @@
    :topic: Sorting
    :keyword: Record Comparison; Comparator
    :naturallanguage: en
-   :programminglanguage: Java; CPP
+   :programminglanguage: Java; C++
    :description: Discusses design decisions related to comparing records, including the concept of a comparator.
 
 .. index::

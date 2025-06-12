@@ -11,7 +11,7 @@
    :topic: Binary Tree as a Recursive Data Structures
    :keyword: Binary Trees; Binary Tree Terminology
    :naturallanguage: en
-   :programminglanguage: N/T
+   :programminglanguage: N/A
    :description: Presents the representation of a binary tree through recursion.
 
 

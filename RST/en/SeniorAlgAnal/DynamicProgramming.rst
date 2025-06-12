@@ -10,7 +10,7 @@
    :topic: Dynamic Programming
    :keyword: Dynamic Programming; Recursion; Fibonacci Sequence; Knapsack Problem
    :naturallanguage: en
-   :programminglanguage: Java; CPP
+   :programminglanguage: Java
    :description: Introduction to dynamic programming.
 
 

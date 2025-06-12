@@ -2,7 +2,7 @@
 /*global ODSA */
 
 // Title: Reduction of Circuit SAT to SAT Slideshow
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Reduction; Satisfiability Problem

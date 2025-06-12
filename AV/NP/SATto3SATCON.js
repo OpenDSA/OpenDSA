@@ -2,7 +2,7 @@
 /*global ODSA */
 
 // Title: Proof that 3-SAT is NP-Complete Slideshow
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Proof Demonstration
 // Keyword: Clique Problem
