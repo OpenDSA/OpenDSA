@@ -44,7 +44,7 @@ def detect_duplicate_fields(entries, id_key):
 
     for value, locations in seen_titles.items():
         if len(locations) > 1:
-            for loc in locations:
+            
                 duplicates.append({
                     "issue": "Duplicate Title",
                     "duplicate_value": value,
@@ -54,7 +54,7 @@ def detect_duplicate_fields(entries, id_key):
 
     for value, locations in seen_descriptions.items():
         if len(locations) > 1:
-            for loc in locations:
+            
                 duplicates.append({
                     "issue": "Duplicate Description",
                     "duplicate_value": value,
@@ -141,14 +141,11 @@ def parse_metadata_block(filepath):
         comment_blocks += re.findall(r"/\*(.*?)\*/", content, re.DOTALL)
         lines = content.splitlines()
         line_comment_block = []
-        for line in lines:
+        for line in content.splitlines():
             striped = line.strip()
             if striped.startswith("//"):
                 line_comment_block.append(striped[2:].strip())
-            elif striped == "":
-                continue
-            else:
-                break
+           
         if line_comment_block:
             comment_blocks.append("\n".join(line_comment_block))
         for block in comment_blocks:
@@ -364,14 +361,18 @@ if __name__ == "__main__":
         slc_metadata.append(entry)
 
     save_json(slc_metadata, "SLCItem_metadata.json")
-    slc_duplicates = detect_duplicate_fields(slc_metadata, "iframe_url")
+    for vis, entry in zip(visualizations, slc_metadata):
+        entry["source_file"] = os.path.join(config.odsa_dir, vis["source"]).replace("\\", "/")
+    slc_duplicates = detect_duplicate_fields(slc_metadata, "source_file")
     slc_missing.extend(slc_duplicates)
     save_json(slc_missing, "missing_SLCItem_metadata.json")
 
     catalog_metadata, catalog_missing = parse_rst_metadata_block(rst_files, config)
     catalog_entries = [build_catalog_entry(mod, meta) for mod, meta in catalog_metadata]
     save_json(catalog_entries, "Catalog_metadata.json")
-    catalog_duplicates = detect_duplicate_fields(catalog_entries, "iframe_url")
+    for (mod_name, meta), entry in zip(catalog_metadata, catalog_entries):
+        entry["rst_path"] = os.path.join(config.odsa_dir, "RST", config.lang, f"{mod_name}.rst").replace("\\", "/")
+    catalog_duplicates = detect_duplicate_fields(catalog_entries, "rst_path")
     catalog_missing.extend(catalog_duplicates)
     save_json(catalog_missing, "missing_catalog_metadata.json")
     
