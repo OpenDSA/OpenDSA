@@ -28,38 +28,36 @@ def contains_nocatalog_directive(content):
 
 
 def detect_duplicate_fields(entries, id_key):
-    seen_titles = defaultdict(list)
-    seen_descriptions = defaultdict(list)
+    seen_titles = defaultdict(set)
+    seen_descriptions = defaultdict(set)
     duplicates = []
 
     for entry in entries:
         title = entry.get("title", "").strip().lower()
         desc = entry.get("description", "").strip().lower()
-        identifier = entry.get(id_key, "unknown")
-
+        identifier = entry.get(id_key)
+        if not identifier:
+            continue
         if title:
-            seen_titles[title].append(identifier)
+            seen_titles[title].add(identifier)
         if desc:
-            seen_descriptions[desc].append(identifier)
+            seen_descriptions[desc].add(identifier)
 
     for value, locations in seen_titles.items():
         if len(locations) > 1:
-            
-                duplicates.append({
-                    "issue": "Duplicate Title",
-                    "duplicate_value": value,
-                    "duplicate_in": locations,
-                    
-                })
+            duplicates.append({
+                "issue": "Duplicate Title",
+                "duplicate_value": value,
+                "duplicate_in": sorted(locations),
+            })
 
     for value, locations in seen_descriptions.items():
         if len(locations) > 1:
-            
-                duplicates.append({
-                    "issue": "Duplicate Description",
-                    "duplicate_value": value,
-                    "duplicate_in": locations,
-                })
+            duplicates.append({
+                "issue": "Duplicate Description",
+                "duplicate_value": value,
+                "duplicate_in": sorted(locations),
+            })
 
     return duplicates
 
@@ -129,27 +127,24 @@ def extract_visualization_references(rst_files):
 def parse_metadata_block(filepath):
     if not os.path.isfile(filepath):
         return None
+
     metadata = {}
     try:
         with open(filepath, encoding='utf-8') as f:
             content = f.read()
         if contains_nocatalog_directive(content):
             return None
-
         comment_blocks = []
         comment_blocks += re.findall(r"<!--(.*?)-->", content, re.DOTALL)
         comment_blocks += re.findall(r"/\*(.*?)\*/", content, re.DOTALL)
-        lines = content.splitlines()
-        line_comment_block = []
-        for line in content.splitlines():
-            striped = line.strip()
-            if striped.startswith("//"):
-                line_comment_block.append(striped[2:].strip())
-           
-        if line_comment_block:
-            comment_blocks.append("\n".join(line_comment_block))
+
+        slashed_lines = re.findall(r"^\s*//.*?:.*", content, re.MULTILINE)
+        if slashed_lines:
+            cleaned_lines = [line.strip()[2:].strip() for line in slashed_lines]
+            comment_blocks.append("\n".join(cleaned_lines))
         for block in comment_blocks:
-            for line in block.strip().split("\n"):
+            lines = block.strip().splitlines()
+            for line in lines:
                 if ':' in line:
                     key, value = line.split(':', 1)
                     key = key.strip().lower()
@@ -160,13 +155,13 @@ def parse_metadata_block(filepath):
                         metadata["Keywords"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'description':
                         metadata["Description"] = value
-                    elif key in ['programming language', 'programming language']:
-                        metadata["Programming Language"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
-                    elif key in ['natural language', 'natural language']:
-                        metadata["Natural Language"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'title':
                         metadata["Title"] = value
-                    elif key in ['features', 'features']:
+                    elif key in ['programming language']:
+                        metadata["Programming Language"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
+                    elif key in ['natural language']:
+                        metadata["Natural Language"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
+                    elif key == 'features':
                         metadata["Features"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'institution':
                         metadata["Institution"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
@@ -174,6 +169,7 @@ def parse_metadata_block(filepath):
     except Exception as e:
         print(f"Failed to parse metadata from {filepath}: {e}")
         return None
+
 
 def parse_rst_metadata_block(rst_files, config):
     parsed = []
