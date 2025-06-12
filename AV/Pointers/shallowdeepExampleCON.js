@@ -1,7 +1,7 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 
-// Title: Java Data TYpes
+// Title: Shallow vs Deep Copy
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Visualization
