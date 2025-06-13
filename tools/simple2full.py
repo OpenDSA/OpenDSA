@@ -132,8 +132,7 @@ inlineav_element = '''\
 
 odsalink_element = '''<odsalink>%(odsalink)s</odsalink>'''
 odsascript_element = '''<odsascript>%(odsascript)s</odsascript>'''
-#CHANGES
-#adding a format similar to above for splicetoolembed 
+
 splicetoolembed_element = '''\
 <splicetoolembed
     url="%(url)s"
@@ -144,7 +143,6 @@ splicetoolembed_element = '''\
     mod_name="%(mod_name)s">
 </splicetoolembed>
 '''
-#CHANGES
 
 class avembed(Directive):
   required_arguments = 2
@@ -460,7 +458,25 @@ class odsafig(Directive):
   def run(self):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
 
-#CHANGES
+
+class iframe(Directive):
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 4
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {
+                  'height': directives.unchanged,
+                  'width': directives.unchanged,
+                  'name': directives.unchanged,
+                  'absolute_url': directives.flag,
+                  }
+  
+  def run(self):
+    return [nodes.raw('', '<iframe>null</iframe>', format='xml')]
+
+
 class splicetoolembed(Directive):
   '''
   '''
@@ -490,7 +506,7 @@ class splicetoolembed(Directive):
 
     res = splicetoolembed_element % (self.options)
     return [nodes.raw('', res, format='xml')]
-#CHANGES
+
 
 class showhidecontent(Directive):
   '''
@@ -693,7 +709,6 @@ def extract_exs_config(exs_json):
               exs_config['extertool'][key] = value
           del ex_options[current_module][ex_obj['@resource_name']]
 
-#CHANGES
       if isinstance(x, dict) and 'splicetoolembed' in list(x.keys()):
         ex_obj = x['splicetoolembed']
         exer_name = ex_obj['@name']
@@ -710,7 +725,6 @@ def extract_exs_config(exs_json):
               exs_config[exer_name][key] = value
           del ex_options[current_module][exer_name]
 
-#CHANGES
       if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "ss":
         ex_obj = x['inlineav']
         exer_name = ex_obj['@exer_name']
@@ -795,7 +809,6 @@ def extract_exs_config(exs_json):
               exs_config['extertool'][key] = value
           del ex_options[current_module][ex_obj['@resource_name']]
 
-#CHANGES
     if 'splicetoolembed' in list(exs_json.keys()):
       ex_obj = exs_json['splicetoolembed']
       exer_name = ex_obj['@name']
@@ -812,7 +825,7 @@ def extract_exs_config(exs_json):
         for key, value in ex_options[current_module][exer_name].items():
           exs_config[exer_name][key] = value
         del ex_options[current_module][exer_name]
-#CHANGES
+
     if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "ss":
       ex_obj = exs_json['inlineav']
       exer_name = ex_obj['@exer_name']
@@ -877,6 +890,7 @@ def register():
   directives.register_directive('odsafig',odsafig)
   directives.register_directive('slide', slide)
   directives.register_directive('slideconf', slideconf)
+  directives.register_directive('iframe', iframe)
   directives.register_directive('splicetoolembed', splicetoolembed)
   directives.register_directive('showhidecontent', showhidecontent)
 
@@ -1050,11 +1064,9 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
       for sect in sections:
         print_err('WARNING: the section "{0}" does not exist in module "{1}"'.format(sect, mod_name))
 
-  #\\\\\\CHANGES\\\\\
     simple_config = read_conf_file(config_file_path)
     if 'splicetoolembeds' in simple_config:
       full_config['splicetoolembeds'] = simple_config['splicetoolembeds']
-  #\\\\\\CHANGES\\\\\
 
   return full_config
 
