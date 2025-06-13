@@ -102,6 +102,7 @@ def extract_visualization_references(rst_files):
                         scripts = scripts_line.split(":scripts:")[-1].strip().split()
                         js_file = scripts[-1] if scripts else None
                     if js_file:
+                        js_file = js_file.lstrip('/\\')
                         visualizations.append({
                             "module": mod_name,
                             "type": vis_type,
