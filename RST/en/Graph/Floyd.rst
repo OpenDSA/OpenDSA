@@ -3,11 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: All-Pairs Shortest Paths
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic:
-   :keyword: Graphs; All-Pairs Shortest Paths; Floyd's Algorithm
-
+   :keyword: Graphs; All-Pairs Shortest Paths; Floyd's Algorithm; Dynamic Programming
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the all-pairs shortest paths problem, and various approaches to solving it. Presents Floyd's dynamic programming algorithm for computing the all-pairs sortest paths matrix.
 
 All-Pairs Shortest Paths
 ========================
@@ -37,17 +41,21 @@ Another solution that limits processing time to
 :math:`\Theta(|\mathbf{V}|^3)`
 regardless of the number of edges is known as Floyd's algorithm.
 It is an example of dynamic programming.
-The chief problem with solving this problem is organizing the search
-process so that we do not repeatedly solve the same subproblems.
+The chief bottleneck when solving this problem is organizing the
+search process so that we do not repeatedly solve the same
+sub-problems.
+This is exactly the inefficiency that dynamic programming is meant to
+solve, the only issue here is how to organize the necessary
+information to recognize when a sub-problem has already been solved.
 We will do this organization through the use of the :math:`k`-path.
 Define a :term:`k-path` from vertex :math:`v` to vertex
 :math:`u` to be any path whose intermediate vertices (aside from
 :math:`v` and :math:`u`) all have indices less than :math:`k`.
 A 0-path is defined to be a direct edge from :math:`v` to :math:`u`.
-Figure :num:`Figure #FloydExamp` illustrates the concept of
-:math:`k`-paths.
+The following figure illustrates the concept of :math:`k`-paths.
 
 .. _FloydExamp:
+
 .. inlineav:: FloydCON dgm
    :links: AV/Graph/FloydCON.css
    :scripts: AV/Graph/FloydCON.js

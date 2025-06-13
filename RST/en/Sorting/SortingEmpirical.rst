@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: An Empirical Comparison of Sorting Algorithms
+   :institution: Virginia Tech
    :author: Cliff Shaffer
    :topic: Sorting
-   :keyword: Sorting; Comparison of Sorting Algorithms
+   :keyword: Sorting; Empirical Comparison
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An empirical runtime comparison of many sorting algorithms, including optimized versions.
 
 .. index:: ! sorting; empirical comparison
 

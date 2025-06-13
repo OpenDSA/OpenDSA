@@ -4,14 +4,18 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binsort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology
    :satisfies: binsort
    :topic: Sorting
-   :keyword: Sorting; Binsort; Bucket Sort
+   :keyword: Binsort; Bucket Sort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Binsort, including visualizations.
 
 .. index:: ! Binsort
-
 
 Binsort
 =======

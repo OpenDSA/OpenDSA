@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Pushdown Automata
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: PDA Module
    :topic: Pushdown Automaton
    :keyword: Pushdown Automaton
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to Pushdown Automata, including visualizations and Programmed Instruction presentations.
 
 Pushdown Automata
 =================

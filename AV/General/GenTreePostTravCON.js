@@ -1,3 +1,12 @@
+// Title: General Tree Postorder Traversal Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: General Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing postorder traveral of a general tree, and demonstrates the general tree ADT. */
+
 /*global ODSA */
 "use strict";
 // Post-order traversal slideshow

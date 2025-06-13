@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Environment-based Model of Evaluation
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the environment-based model of evaluation for language SLang1.
 
 Environment-based Model of Evaluation
 =====================================
@@ -150,4 +156,3 @@ problem correctly three times in a row.
 
 .. avembed:: Exercises/PL/Environment3.html ka
    :long_name: Denoted Values in SLang 1
-

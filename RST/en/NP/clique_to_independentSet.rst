@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Reduction of Clique to Independent Set
    :author: Nabanita Maji
+   :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; NP-completeness Proofs; Clique Problem; Independent Set Problem
+   :keyword: NP-completeness Proofs; Clique Problem; Independent Set Problem
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a reduction of an instance of the Clique problem to an instance of the Independent Set problem.
 
 Reduction of Clique to Independent Set
 ======================================

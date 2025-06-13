@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Astack push method
+
+// Title: Array-Based Stack Push Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Array-Based Stack
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow discussing the implementation for the push operation in an array-based stack. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "astackPushCON";

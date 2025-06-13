@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy, Tom Naps and Taylor Rydahl
+   :title: The Substitution-Based Model of Evaluation
+   :author: David Furcy; Tom Naps; Taylor Rydahl
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the substitution-based model of evaluation in the lambda calculus.
 
 .. odsalink::  AV/PL/main.css
 
-==========================================
 The Substitution-Based Model of Evaluation
 ==========================================
 

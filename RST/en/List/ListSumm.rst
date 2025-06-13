@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: List Chapter Summary Practice Questions
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: list summary
    :requires: array-based list; linked list; array-based stack; linked stack; array-based queue; linked queue;
    :topic: Linear structures
-   :keyword: Lists; Stacks; Queues
+   :keyword: List; Stack; Queue
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a large collection of practice questions related to lists, stacks, and queues.
 
 
 Linear Structure Summary Exercises

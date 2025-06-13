@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Introduction to the Vertex Cover Problem
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Vertex Cover Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the vertex cover problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "vertexCoverCON";

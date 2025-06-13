@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy, Tom Naps and Taylor Rydahl
+   :title: Free and Bound Variables
+   :author: David Furcy; Tom Naps; Taylor Rydahl
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses free and bound variables in the lambda calculus.
 
 .. _free-and-bound-variables:
 
-========================
 Free and Bound Variables
 ========================
 

@@ -1,3 +1,12 @@
+// Title: Proof not all CFL are Deterministic
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Pushdown Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset with a proof that there exists a CFL that is not a deterministic CFL. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "NCFLProofFS";

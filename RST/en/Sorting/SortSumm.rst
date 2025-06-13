@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Sorting Summary Exercises
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: exchange sort; shellsort; heapsort; mergesort; quicksort; radix sort; sorting lower bound
    :topic: Sorting
    :keyword: Sorting
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Self-practice questions for the Sorting chapter.
 
 Sorting Summary Exercises
 =========================

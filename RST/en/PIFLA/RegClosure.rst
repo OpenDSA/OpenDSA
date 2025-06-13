@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger, Mostafa Mohammed and Cliff Shaffer
+   :title: Closure Properties of Regular Grammars
+   :author: Susan Rodger; Mostafa Mohammed; Cliff Shaffer
+   :institution: Duke University; Virginia Tech
+   :requires:
    :satisfies: Closure Properties of Regular Grammars
-   :requires: Regular Grammars
-   :topic: Regular languages
-   :keyword: Regular Languages; Closure Properties
-
+   :topic: Finite Automata
+   :keyword: Regular Language; Closure Properties
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a number of closure properties for regular languages.
 
 Closure Properties of Regular Languages
 =======================================

@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 /* Written by Mostafa Mohammed and Cliff Shaffer */
+
+// Title: Regular Expressions Equivalent to NFA: Part 4: Star
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Expression; Non-Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting Part 4 of 4 parts of a proof of equivalence of Regular Expressions and NFAs. Kleene Star of a Regular Expression. */
+
 $(document).ready(function() {
   "use strict";
 

@@ -1,3 +1,11 @@
+// Title: Programmed Instruction: Induction Proof Examples
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Proof by Induction
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset examples of induction proofs. */
 
 $(document).ready(function() {
     "use strict";

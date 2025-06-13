@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Deterministic Pushdown Automata
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: PDA Module
    :topic: Deterministic Pushdown Automata
    :keyword: Deterministic Pushdown Automata
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Explores the relationship between deterministic and non-deterministic PDAs.
 
 Deterministic Pushdown Automata
 ===============================

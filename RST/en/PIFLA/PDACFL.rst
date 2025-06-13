@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: PDAs and Context Free Languages
    :author: Mostafa Mohammed
+   :institution: Virginia Tech
    :satisfies: PDA Module
    :topic: PDAs and Context Free Languages
    :keyword: Pushdown Automaton; Context Free Languages
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Explores the relationship between PDAs and Context Free Languages.
 
 PDAs and Context Free Languages
 ===============================

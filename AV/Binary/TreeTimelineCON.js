@@ -2,6 +2,17 @@
  * This is the AV for the timeline visulization for showing how a tree (NOT trie)
  * splits space. 
  */
+
+// Title: Tree Timeline Slideshow
+// Author: Rich Episcopo
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Trie
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow showing the concept of marking a timeline for the values stored in a BST. This will be contrasted with using a Trie decomposition. */
+
 (function ($) {
   var av = new JSAV("TreeTimelineCON");
   var t = av.ds.binarytree({nodegap: 25});

@@ -1,3 +1,12 @@
+// Title: Programmed Instruction: Induction Proof For Two Coloring
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Proof by Induction
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset examples of induction proof for two-coloring the 2D plane. */
+
   $(document).ready(function () {
   "use strict";
   var av_name = "InductRegionsFS";

@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer
 /*global ODSA*/
+
+// Title: Introduction to the Circuit Satisfiability Problem
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Circuit Satisfiability Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the circuit satisfiability problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "circuitSATCON";

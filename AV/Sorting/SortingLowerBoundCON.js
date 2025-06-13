@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Sorting Lower Bound
+
+// Title: Sorting Lower Bound Analysis Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Sorting Problem Lower Bound
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a visual proof for the lower bound of the general sorting problem. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "SortingLowerBoundCON";

@@ -87,7 +87,7 @@
     },
     "Command Line and Git": {
       "CommandLine/About": {},
-      "CommandLine/Exercises": {},
+      "CommandLine/Exercisescmd": {},
       "Git/AboutGit": {},
       "Git/ExercisesGit": {}
     },
@@ -129,7 +129,7 @@
       "PointersJava/Links1": {},
       "PointersJava/Links2": {},
       "PointersJava/PointersCM": {},
-      "PointersJava/Exercises": {},
+      "PointersJava/ExercisesPtr": {},
       "PointersJava/LinkedChains": {}
     },
     "Mathematical Background": {
@@ -378,8 +378,8 @@
       "PL/FP9": {}
     },
     "Lambda Calculus": {
-      "PL/Syntax": {},
-      "PL/Semantics": {},
+      "PL/LCSyntax": {},
+      "PL/LCSemantics": {},
       "PL/FreeBoundVariables": {},
       "PL/AlphaConversion": {},
       "PL/Substitution": {},
@@ -419,10 +419,8 @@
       "PIFLA/DFAExercises1": {},
       "PIFLA/DFAExercises2": {},
       "PIFLA/DFAExercises3": {},
-      "PIFLA/DFAComplementEx": {},
       "PIFLA/NFA": {},
       "PIFLA/NFAExercises": {},
-      "PIFLA/NFAExercises2": {},
       "PIFLA/DFAMinimization": {},
       "PIFLA/MinimizationEx": {}
     },
@@ -432,11 +430,9 @@
       "PIFLA/RegExExercises2": {},
       "PIFLA/RegExPower": {},
       "PIFLA/RegularGrammars": {},
-      "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {},
       "PIFLA/RegGramEx2": {},
-      "PIFLA/RegClosure": {},
-      "VisFormalLang/DFAproperties": {}
+      "PIFLA/RegClosure": {}
     },
     "Identifying Non-regular Languages": {
       "PIFLA/NonRegular": {}
@@ -461,15 +457,7 @@
     "Turing Machines": {
       "PIFLA/TuringMachines": {},
       "PIFLA/TuringMachinesAdv": {},
-      "PIFLA/TMExercises": {},
-      "PIFLA/TMExercisesS22": {}
-    },
-    "Parsing": {
-      "VisFormalLang/ParseIntro": {},
-      "VisFormalLang/LLParsing": {},
-      "VisFormalLang/LRParsing": {},
-      "VisFormalLang/CYKParsing": {},
-      "VisFormalLang/Compiler": {}
+      "PIFLA/TMExercises": {}
     }
   }
 }

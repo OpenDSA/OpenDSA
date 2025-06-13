@@ -2,6 +2,15 @@
 // Written by Mohammed Farghally and Cliff Shaffer
 // Problem, Algorithm, and program definitions
 
+// Title: Problem Notation Slideshow
+// Author: Mohammad Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the basic notation for defining a problem, with the example being sorting. */
+ 
 $(document).ready(function () {
   "use strict";
   var av_name = "SortingProblemCON";

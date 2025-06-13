@@ -1,6 +1,15 @@
 "use strict";
 /*global alert: true, ODSA */
 
+// Title: Queue-Based Topological Sort Slideshow
+// Author: Ivan Wong; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Topological Sort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the queue-based topological sort algorithm. */
+
 $(document).ready(function() {
   var jsav = new JSAV("topSortQCON");
   var g;

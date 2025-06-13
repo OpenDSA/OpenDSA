@@ -1,8 +1,18 @@
 /*global ODSA */
-"use strict";
 // Written by Mohammed Farghally and Cliff Shaffer
 // Union/Find with path compression
+
+// Title: Union/Find with Path Compression Examaple Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Trace Visualization
+// Keyword: Union/Find Algorithm; Disjoint Sets
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the path compression optimization for Union/Find. Shows the parent pointer representation used to maintain the set information. */
+
 $(document).ready(function () {
+  "use strict";
   var av_name = "pathcompCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
     interpret = config.interpreter;       // get the interpreter

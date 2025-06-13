@@ -1,5 +1,16 @@
 /*global ODSA */
 // Heap remove max slideshow
+
+// Title: Heap Max Remove Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Heap
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing heap update when removing the max value from a maxheap. */
+
 $(document).ready(function() {
   "use strict";
   var sortArray2 = [88, 85, 83, 72, 73, 42, 57, 6, 48, 60];

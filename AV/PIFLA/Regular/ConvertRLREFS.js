@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: NFA Conversion to Regular Expression Example
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Expression; Non-Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting an example of converting a NFA to an equivalent Regular Expression. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "ConvertRLREFS";

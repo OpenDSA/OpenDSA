@@ -1,3 +1,12 @@
+// Title: Introduction to Hashing Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Hashing
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the simplest of hashing approaches: Just put a key into that array position. */
+
 $(document).ready(function() {
 "use strict";
 

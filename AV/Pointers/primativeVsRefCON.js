@@ -3,7 +3,7 @@
 // Based on earlier material written by Sushma Mandava and Milen John
 // variable xPosition controls the horizonatl position of the visualization
 
-// Title: Java Data TYpes
+// Title: Java Data Types
 // Author: Cliff Shaffer; Sushma Mandava; Milen John
 // Institution: Virginia Tech
 // Features: Demonstration

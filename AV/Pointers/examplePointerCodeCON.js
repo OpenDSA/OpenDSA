@@ -1,7 +1,7 @@
 /*global ODSA */
 // Written by Sushma Mandava and Cliff SHaffer
 
-// Title: Java Data TYpes
+// Title: Changing the Reference to an Object
 // Author: Sushma Mandava; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Visualization

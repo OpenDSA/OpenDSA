@@ -2,7 +2,7 @@
   "translations" :{
     "en": {
       ".avTitle": "Prim's Algorithm Proficiency Exercise",
-      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      "av_Authors": "Mohammed Faghally, Kasper Hellström",
       ".instructLabel": "Instructions:",
       ".instructions": "Reproduce the behavior of Prim's Algorithm for the given graph below. Click on the appropriate <strong>edges</strong> to add them to the MST. Start with Node A. In case of similar weights add nodes alphabetically.",
       "av_ms_mst": "Complete minimum spanning tree",
@@ -15,7 +15,7 @@
     },
     "fi": {
       ".avTitle": "Primin algoritmi",
-      "av_Authors": "Mohammed Fawzi, Kasper Hellström",
+      "av_Authors": "Mohammed Faghally, Kasper Hellström",
       ".instructLabel": "Ohjeet:",
       ".instructions": "Lisää särmät pienimpään virityspuuhun Primin algoritmin antamassa järjestyksessä. Aloita läpikäynti solmusta A. Klikkaa <strong>särmiä</strong> lisätäksesi ne virityspuuhun. Solmun naapurit käydään läpi aakkosjärjestyksessä.",
       "av_ms_mst": "Verkon pienin virityspuu",

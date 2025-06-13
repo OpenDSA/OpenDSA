@@ -1,3 +1,12 @@
+// Title: Bucket Hashing Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Bucket Hashing
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the basic hash method of hashing to any free position within a computed bucket. */
+
 $(document).ready(function () {
   "use strict";
   // Convenience function for setting another type of highlight

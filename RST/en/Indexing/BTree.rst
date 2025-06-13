@@ -265,8 +265,7 @@ Once the first record in the range has been found, the rest of the
 records with keys in the range can be accessed by sequential
 processing of the remaining records in the first node, and then
 continuing down the linked list of leaf nodes as far as necessary.
-Figure :num:`Figure #BPexamp` 
-illustrates the :math:`\mathrm{B}^+` tree.
+The following illustrates the :math:`\mathrm{B}^+` tree.
 
 .. _BPexamp:
 
@@ -303,7 +302,7 @@ the root and causing the :math:`\mathrm{B}^+` tree to gain a new
 level.
 :math:`\mathrm{B}^+` tree insertion keeps all leaf nodes at equal
 depth.
-Figure :num:`Figure #BPins` illustrates the insertion process through
+The following illustrates the insertion process through
 several examples.
 
 .. _BPins:
@@ -332,7 +331,7 @@ To delete record :math:`R` from the :math:`\mathrm{B}^+` tree,
 first locate the leaf :math:`L` that contains :math:`R`.
 If :math:`L` is more than half full, then we need only remove :math:`R`,
 leaving :math:`L` still at least half full.
-This is demonstrated by Figure :num:`Figure #BPdelsimp`.
+This is demonstrated by the following figure.
 
 .. _BPdelsimp:
 

@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Heap Sort Analysis
+
+// Title: Heapsort Analysis Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Heapsort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a visual proof for the cost of Heapsort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "HeapSortAnalysisCON";

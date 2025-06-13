@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Functional Programming Recursion: Summing Elements in a Tree
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization; Code Trace Visualization
+// Keyword: Functional Programming
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing list-of-list (tree) processing in a functional programming language: sum all values. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "FP3Code1CON";

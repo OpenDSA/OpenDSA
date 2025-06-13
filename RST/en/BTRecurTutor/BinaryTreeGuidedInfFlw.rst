@@ -4,10 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer
+   :title: Binary Tree Guided Information Flow
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: information flow in a binary tree
    :topic: Information Flow in a Binary
-   :keyword: Binary Tree Traversals; Recursive Tree Functions
+   :keyword: Binary Tree Traversals
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses information flow in recursive functions. The particular example is implementing range queries in a BST.
 
 
 Binary Tree Guided Information Flow

@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 /* Written by ?? and Cliff Shaffer */
+
+// Title: Regular Expressions Introduction Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Expression
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset introducing Regular Expressions their formal definition. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "RegExFS";

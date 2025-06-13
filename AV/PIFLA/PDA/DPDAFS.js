@@ -1,3 +1,12 @@
+// Title: Pushdown Automata and Context Free Languages
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Pushdown Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset discussing the differences between deterministic and non-deterministic PDAs. */
+
 $(document).ready(function() {
   "use strict";
     var av_name = "DPDAFS";

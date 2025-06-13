@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Eunoh Cho, Mostafa Mohammed, Cliff Shaffer
+   :title: Mathematical Proof Techniques with Programmed Instruction Framesets
+   :author: Eunoh Cho; Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: Proof Techniques
    :topic: Mathematical Proof Techniques
-
+   :keyword: Proofs; Induction Proofs; Proof by Contradiction; Deduction
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review materials on proof techniques appropriate for a course in Data Structures and Algorithms or Formal Languages. Uses Programmed Instruction Framesets. 
 
 Mathematical Proof Techniques
 =============================

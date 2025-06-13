@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Full Binary Tree Theorem
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree terminology
    :satisfies: full binary tree theorem
    :topic: Binary Trees
    :keyword: Full Binary Tree Theorem
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the full binary tree theorem that the number of leaf nodes in a full binary tree is one more than the number of internal nodes.
 
 
 The Full Binary Tree Theorem

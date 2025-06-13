@@ -4,10 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer, Eunoh Cho
+   :title: Set Notation Review with Programmed Instruction Framesets
+   :author: Cliff Shaffer; Eunoh Cho
+   :institution: Virginia Tech
    :satisfies: set notation
    :topic: Sets
-
+   :keyword: Sets; Relations
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review materials on set notation appropriate for a course in Data Structures and Algorithms or Formal Languages. Uses Programmed Instruction Framesets. 
 
 Set Notation
 ============

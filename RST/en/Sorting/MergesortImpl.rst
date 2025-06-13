@@ -4,10 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Implementing Mergesort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: mergesort
    :topic: Sorting
-   :keyword: Sorting; Mergesort
+   :keyword: Mergesort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Mergesort array-based implementation. While Mergesort is conceptually simple, and fairly simple to implement with linked lists, it is more complex to do an array-based implementation.
 
 
 Implementing Mergesort

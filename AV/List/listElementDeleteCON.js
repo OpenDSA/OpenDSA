@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Deleting lists
+
+// Title: List Element Deletion Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: List Element Implementation
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow discussing the design choices on what to do when a list element is deleted. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "listElementDeleteCON";

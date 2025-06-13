@@ -4,15 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Unsolvable Problems
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Limits to Computing
    :satisfies: uncomputable problems
    :topic: Limits to Computing
    :keyword: Unsolvable Problems
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concept of unsolveable problems. Presents diagonalization proofs, and a direct proof of the unsolvability of the Halting Problem. Then discusses using reductions to prove other problems are unsolveable.
 
 Unsolvable Problems
-====================
+===================
 
 Unsolvable Problems
 --------------------

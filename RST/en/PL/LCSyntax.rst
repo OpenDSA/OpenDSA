@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy, Tom Naps and Taylor Rydahl
+   :title: Syntax of the Lambda Calculus
+   :author: David Furcy; Tom Naps; Taylor Rydahl
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses syntax of the lambda calculus
 
 .. odsalink::  AV/PL/AV/parseTree.css
 .. odsalink::  AV/PL/main.css
@@ -13,9 +19,8 @@
 
 .. _syntax-of-LC:
 
-===============================
- Syntax of the Lambda Calculus
-===============================
+Syntax of the Lambda Calculus
+=============================
 
 Lambda Calculus
 ---------------

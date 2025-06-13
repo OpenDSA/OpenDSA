@@ -48,7 +48,7 @@
   "chapters": {
     "About the Command Line": {
       "CommandLine/About": {},
-      "CommandLine/Exercises": {
+      "CommandLine/Exercisescmd": {
         "challenge-1-exercise": {
           "points": 2.0
         },

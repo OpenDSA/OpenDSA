@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Context-Free Grammar Transformation: Remove Lambda Productions Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Context-Free Grammar
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset discussing removing lambda productions from Context-Free Grammars. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "RemoveLambdaFS";

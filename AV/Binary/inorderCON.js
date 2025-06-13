@@ -1,5 +1,16 @@
 /*global ODSA */
-// Remove slideshow
+// Inorder traversal in detail
+
+// Title: Inorder Traversal Shown in Detail
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Inorder Traversal
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting a detailed visualization of inorder traversal of a binary tree and how the recursion works. */
+
 $(document).ready(function() {
   "use strict";
 

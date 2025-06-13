@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Context-Free Language Introduction Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Context-Free Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset introducing Context-Free Languages and their formal definition. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "CFLFS";

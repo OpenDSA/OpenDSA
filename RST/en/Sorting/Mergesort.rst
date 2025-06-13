@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Mergesort Concepts
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: comparison; sorting terminology
    :satisfies: mergesort
    :topic: Sorting
-   :keyword: Sorting; Mergesort
+   :keyword: Mergesort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Mergesort including visualizations, code, and self-test questions and exercises.
 
 .. index:: ! Mergesort
 

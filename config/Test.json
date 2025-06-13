@@ -68,7 +68,8 @@
     "partial_credit": false
   },
   "chapters": {
-    "Stuff": {
+      "Stuff": {
+      "Background/MathpreIntro": {}, 
       "Sorting/InSort": {}, 
       "Sorting/SortNotation": {
         "SortIntroSumm": {
@@ -77,10 +78,7 @@
       }, 
       "Sorting/InsertionSort": {}, 
       "Searching/SortedSearch": {}
-    },
->>>>>>> master
-    "Appendix": {
-      "Glossary": {}
+      },
     }
   }
 }

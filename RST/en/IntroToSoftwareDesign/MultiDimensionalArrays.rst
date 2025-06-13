@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Arrays
+   :title: Multi-dimensional Arrays
    :author: Molly Domino
    :institution: Virginia Tech
    :keyword: Multi-dimensional Arrays

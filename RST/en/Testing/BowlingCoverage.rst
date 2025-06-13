@@ -13,7 +13,7 @@
    :keyword: Testing; Code Coverage
    :naturallanguage: en
    :programminglanguage: Java
-   :description: Discusses testing for code coverage, and presents a testing interactive problem to get complete code coverage on a bowling game score function.
+   :description: Discusses testing for code coverage, and presents a testing interactive problem to get complete code coverage on a bowling game score function. This version shows the code.
 
 
 Bowling Example: Testing to Code

@@ -4,7 +4,7 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Conditional and Repeating Actions
+   :title: Software Testing
    :author: Steve Edwards
    :institution: Virginia Tech
    :keyword: Software Testing; Methods; Unit Testing

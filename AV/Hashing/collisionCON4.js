@@ -1,3 +1,12 @@
+// Title: Pseudo-Random Probing Effectiveness Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating why pseudo-random probing helps with collision resolution. */
+
 $(document).ready(function () {
   "use strict";
 

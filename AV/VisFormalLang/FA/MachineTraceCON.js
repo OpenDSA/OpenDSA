@@ -1,5 +1,15 @@
 // Even Numbers Acceptor: Trace
 // Jeffrey Peng, Fall 2019
+
+// Title: DFA Example Trace: How a DFA Traces
+// Author: Jeffrey Peng
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Trace Visualization
+// Keyword: Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visualization of how a DFA would process an input string. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "MachineTraceCON";

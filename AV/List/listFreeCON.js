@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Freelist example
+
+// Title: Freelist Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Linked List
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow presenting the concept of using a freelist instead of a system memory manager. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "listFreeCON";

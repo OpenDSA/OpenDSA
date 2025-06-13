@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Reduction of Circuit SAT to SAT
    :author: Nabanita Maji
+   :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; NP-completeness Proofs; Satisfiability
-
+   :keyword: NP-completeness Proofs; Satisfiability
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a reduction of an instance of the Circuit Satisfiability problem to an instance of the (general) CNF Satisfiability problem.
 
 Reduction of Circuit SAT to SAT
 ===============================

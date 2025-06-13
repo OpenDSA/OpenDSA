@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 // Initial draft by John Taylor, Rewritten by Cliff Shaffer, November 2020
+
+// Title: Programmed Instruction: Non-Deterministic Finite Automata
+// Author: John Taylor; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset introducing the concept of non-determinism and the NFA. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "NFAFS";

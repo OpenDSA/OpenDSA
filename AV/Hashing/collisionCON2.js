@@ -1,3 +1,12 @@
+// Title: Improved Linear Probing With Steps Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing how the table size and step size affects linear probing with steps collision resolution. */
+
 $(document).ready(function () {
   "use strict";
 // Convenience function for setting another type of highlight

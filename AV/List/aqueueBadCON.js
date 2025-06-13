@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // A problem that queue runs out of space..
+
+// Title: Array-Based Queue Design Problem Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Array-Based Queue
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow presenting the problem that elements in an array-based queue will eventually run out of space. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "aqueueBadCON";

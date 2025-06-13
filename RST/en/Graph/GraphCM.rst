@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Graph Concepts Summary
    :author: Ehsan Elgendi
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Concept Maps
+   :keyword: Graph
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a concept map and practice questions for graph topics.
 
 Graph Concepts Summary
 ======================

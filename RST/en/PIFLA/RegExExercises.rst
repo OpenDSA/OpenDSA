@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Regular Expression Writing Exercises
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies:
    :requires: Regular Expressions
    :topic: RegEx exercises
-   :keyword: Regular Expressions
-
+   :keyword: Regular Expression
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: A collection of exercises to write the regular expression for a given language.
 
 Regular Expressions Exercises
 =============================

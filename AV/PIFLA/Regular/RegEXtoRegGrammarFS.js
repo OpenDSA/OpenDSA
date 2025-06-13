@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Converting a RegEx to a Right Regular Grammar Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Grammar; Regular Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting a conversion from a regular expression to a right regular grammar. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "RegEXtoRegGrammarFS";

@@ -1,6 +1,17 @@
 /*global ODSA, arrowAround */
 // Written by Jun Yang and Cliff Shaffer
 // Dlist Remove method
+
+// Title: Doubly Linked List Remove Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Doubly Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting removing from a doubly linked list. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "dlistRemoveCON";

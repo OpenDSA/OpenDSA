@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Functional Programming: Variable Hoisting
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization; Code Trace Visualization
+// Keyword: Functional Programming
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing variable hoisting in a functional programming language. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "FP5Code2CON";

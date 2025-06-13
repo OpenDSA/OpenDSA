@@ -1,3 +1,12 @@
+// Title: The Binning Hash Function
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Hash Function
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing basic binning (using high-order digits) as a hash function. */
+
 $(document).ready(function () {
   "use strict";
   var empty = [];

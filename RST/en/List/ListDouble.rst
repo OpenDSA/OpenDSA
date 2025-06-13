@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Doubly Linked Lists
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: linked list
    :satisfies: doubly linked list
    :topic: Lists
    :keyword: Doubly Linked List
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents an implementation for a doubly linked list.
 
 
 Doubly Linked Lists

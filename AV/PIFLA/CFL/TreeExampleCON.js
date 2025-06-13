@@ -1,3 +1,12 @@
+// Title: Context-Free Language Derivation Trees Example
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Context-Free Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visualization of a derviation tree from a given context-free grammar. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "TreeExampleCON";

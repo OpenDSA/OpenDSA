@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Context-Free Language Derivation Trees Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Context-Free Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset discussing derivation trees for Context-Free Grammars. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "DerivationTreesFS";

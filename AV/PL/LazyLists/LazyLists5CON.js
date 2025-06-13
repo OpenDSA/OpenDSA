@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Lazy Lists Drop Operation
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Parameter Passing; Lazy List
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow illustrating the drop operation for a lazy list. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "LazyLists5CON"; // Illustrate and develop the is.map function

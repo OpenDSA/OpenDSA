@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer, Eunoh Cho, Mostafa Mohammed
+   :title: Relations Review with Programmed Instruction Framesets
+   :author: Cliff Shaffer; Eunoh Cho; Mostafa Mohammed
+   :institution: Virginia Tech
    :satisfies: relations
    :topic: Relations
    :requires: set notation
    :keyword: Sets; Relations; Equivalence Relation; Partial Order
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review materials on relations appropriate for a course in Data Structures and Algorithms or Formal Languages. Uses Programmed Instruction Framesets. 
 
 Relations
 =========

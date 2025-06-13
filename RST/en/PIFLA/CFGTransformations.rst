@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Transforming Grammars
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies:
    :topic: Context-Free Grammar Transformations
-   :keyword: Context-Free Grammar Transformations
-
+   :keyword: Context-Free Grammar
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Rules for transforming CFGs to simplify them.
 
 Transforming Grammars
 =====================
