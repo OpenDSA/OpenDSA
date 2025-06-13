@@ -1,7 +1,7 @@
 // Title: Turing Machine to Copy a String
 // Author: Ko Chan; Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Trace Visualization
+// Features: Algorithm Visualization; Code Tracing Visualization
 // Keyword: Turing Machines
 // Natural Language: en
 // Programming Language: N/A

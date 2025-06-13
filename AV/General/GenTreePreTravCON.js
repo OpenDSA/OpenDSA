@@ -1,7 +1,7 @@
 // Title: General Tree Preorder Traversal Slideshow
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Trace Visualization
+// Features: Algorithm Visualization; Code Tracing Visualization
 // Keyword: General Tree
 // Natural Language: en
 // Programming Language: N/A

@@ -3,7 +3,7 @@
 // Title: Functional Programming: Split and Join
 // Author: David Furcy; Tom Naps
 // Institution: UW-Oshkosh
-// Features: Algorithm Visualization; Code Trace Visualization
+// Features: Algorithm Visualization; Code Tracing Visualization
 // Keyword: Functional Programming
 // Natural Language: en
 // Programming Language: N/A

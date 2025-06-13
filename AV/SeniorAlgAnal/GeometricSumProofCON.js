@@ -1,4 +1,4 @@
-// Title: Summation of the first N integers visualization
+// Title: Geometric Summation Proof
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration

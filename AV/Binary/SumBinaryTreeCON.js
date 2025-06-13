@@ -1,6 +1,6 @@
 // Written by Sally Hamouda and Cliff Shaffer
 
-// Title: Array-Based Stack Push Slideshow
+// Title: Recursive Operations in a Binary Tree
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
