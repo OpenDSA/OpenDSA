@@ -1,6 +1,6 @@
 /*global ODSA */
 
-// Title: Functional Programming: Functional Composition
+// Title: Functional Programming Visualization: Functional Composition
 // Author: David Furcy; Tom Naps
 // Institution: UW-Oshkosh
 // Features: Algorithm Visualization; Code Tracing Visualization

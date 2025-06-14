@@ -1,6 +1,6 @@
 /*global ODSA */
 
-// Title: Functional Programming: Mapping Pattern
+// Title: Functional Programming Visualization: Mapping Pattern
 // Author: David Furcy; Tom Naps
 // Institution: UW-Oshkosh
 // Features: Algorithm Visualization; Code Tracing Visualization
