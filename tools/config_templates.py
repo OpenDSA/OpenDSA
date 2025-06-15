@@ -341,7 +341,8 @@ html_context = {"script_files": [
                   'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
                   'https://d3js.org/d3-selection-multi.v1.min.js',
                   '%(eb2root)slib/dataStructures.js',
-                  '%(eb2root)slib/conceptMap.js'
+                  '%(eb2root)slib/conceptMap.js',
+                  '%(eb2root)slib/splice-iframe.js',
                 ],
                 "css_files": [
                   '%(eb2root)slib/normalize.css',
