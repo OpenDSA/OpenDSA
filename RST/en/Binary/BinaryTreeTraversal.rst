@@ -10,7 +10,7 @@
    :requires: binary tree terminology; recursion
    :satisfies: binary tree traversal
    :topic: Binary Trees
-   :keyword: Binary Tree Traversals; Inorder Traversal; Preorder Traversal; Postorder Traversal
+   :keyword: Inorder Traversal; Preorder Traversal; Postorder Traversal
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presents the standard binary tree traversals. Also discusses the pros and cons of various ways to implement these traversals recursively.

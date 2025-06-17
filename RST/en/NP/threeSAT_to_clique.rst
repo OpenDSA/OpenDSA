@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness Proofs; Satisfiability; Clique Problem
+   :keyword: NP-completeness Proofs; Satisfiability Problem; Clique Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a reduction of an instance of the 3-Satisfiability problem to an instance of the Clique problem.

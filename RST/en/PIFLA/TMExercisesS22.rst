@@ -8,7 +8,7 @@
    :requires:
    :satisfies:
    :topic: Turing Machines Exercises
-   :keyword: Turing Machines
+   :keyword: Turing Machine
 
 
 Turing Machine Exercises

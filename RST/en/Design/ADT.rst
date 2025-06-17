@@ -10,7 +10,7 @@
    :requires:
    :satisfies: ADT; metaphor
    :topic: Abstract Data Types
-   :keyword: Abstract Data Types
+   :keyword: Abstract Data Type
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to the concept of an Abstract Data Type

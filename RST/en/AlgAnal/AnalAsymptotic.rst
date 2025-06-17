@@ -10,7 +10,7 @@
    :satisfies: algorithm analysis
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis; Asymptotic Algorithm Analysis; Upper Bound; Big O
+   :keyword: Algorithm Analysis; Upper Bound; Big O
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces upper bounds analysis.

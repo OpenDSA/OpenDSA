@@ -10,7 +10,7 @@
    :requires: list ADT
    :satisfies: array-based list
    :topic: Lists
-   :keyword: Array-based List Implementation
+   :keyword: Array-Based List
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presents an implementation for lists stored in arrays.

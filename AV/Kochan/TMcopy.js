@@ -2,7 +2,7 @@
 // Author: Ko Chan; Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization; Code Tracing Visualization
-// Keyword: Turing Machines
+// Keyword: Turing Machine
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow presenting the execution of a Turing machine that copies a string. */

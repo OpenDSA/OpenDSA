@@ -10,7 +10,7 @@
    :requires:
    :satisfies: Web-CAT Plugin
    :topic: Programming Tutorial
-   :keyword: Web-CAT; Eclipse
+   :keyword: Web-CAT; Eclipse IDE
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Describes how to install the Web-CAT submission plugin in the Eclipse IDE.

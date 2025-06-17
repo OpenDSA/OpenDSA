@@ -10,7 +10,7 @@
    :requires: array-based list; linked list
    :satisfies: list implementation analysis; overhead
    :topic: Lists
-   :keyword: List Cost Analysis; Overhead; List Implementation Comparison; Linked List; Array-based List
+   :keyword: List Cost Analysis; Overhead; List Implementation Comparison; Linked List; Array-Based List
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a comparision of the space and time costs for linked vs. array-based lists.

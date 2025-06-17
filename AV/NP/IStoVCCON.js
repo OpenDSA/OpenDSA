@@ -5,7 +5,7 @@
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
-// Keyword: Reduction; Independent Set Problem; Vertex Cover problem
+// Keyword: Reduction; Independent Set Problem; Vertex Cover Problem
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow demonstrating a reduction from an instance of the Independent Set problem to an instance of the Vertex Cover problem. */

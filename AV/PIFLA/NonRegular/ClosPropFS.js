@@ -2,7 +2,7 @@
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Programmed Instruction; Proof Demonstration
-// Keyword: Non-Regular Language; Closure Properties
+// Keyword: Non-Regular Language; Closure Property
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Programmed Instruction slideshow introducing the concept of using closure properties to prove a language non-regular. */

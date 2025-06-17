@@ -10,7 +10,7 @@
    :requires: FL Introduction
    :satisfies:
    :topic: Introduction
-   :keyword: Formal Languages and Automata; Grammars
+   :keyword: Formal Language; Grammar; Automata
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Course overview for a course on formal languages and automata.

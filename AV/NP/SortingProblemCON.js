@@ -3,7 +3,7 @@
 // Problem, Algorithm, and program definitions
 
 // Title: Problem Notation Slideshow
-// Author: Mohammad Farghally; Cliff Shaffer
+// Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Reduction

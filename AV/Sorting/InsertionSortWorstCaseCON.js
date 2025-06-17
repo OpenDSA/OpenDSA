@@ -3,7 +3,7 @@
 // Insertion Sort Worst Case
 
 // Title: Insertion Sort Worst Case Analysis
-// Author: Mohammad Farghally; Cliff Shaffer
+// Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Visualization; Algorithm Analysis Demonstration
 // Keyword: Insertion Sort; Worst Case

@@ -10,7 +10,7 @@
    :requires: Turing Machines
    :satisfies: Advanced Turing Machines
    :topic: Turing Machines
-   :keyword: Turing Machines
+   :keyword: Turing Machine
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents more advanced topics related to Turing machines such as the composition of machines and the computational equivalence of Turing machine extensisons.

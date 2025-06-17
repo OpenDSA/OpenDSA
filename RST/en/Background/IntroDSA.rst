@@ -5,8 +5,8 @@
 
 .. avmetadata::
    :title: Data Structures and Algorithms Introduction
-   :author: Cliff Shaffer; David Parillo
-   :institution: Virginia Tech; San Diego Mesa College
+   :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: DSA Introduction
    :topic: Introduction

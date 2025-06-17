@@ -10,7 +10,7 @@
    :requires: list ADT
    :satisfies: queue; array-based queue
    :topic: Lists
-   :keyword: Array-based Queue
+   :keyword: Array-Based Queue
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presents an implementation for array-based queues.
