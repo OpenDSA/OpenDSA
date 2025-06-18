@@ -6,7 +6,7 @@
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Visualization; Demonstration
-// Keyword: Recusion; Towers of Hanoi
+// Keyword: Recursion; Towers of Hanoi
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating code tracing the Towers of Hanoi problem. */

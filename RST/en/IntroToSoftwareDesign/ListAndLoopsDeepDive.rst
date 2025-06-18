@@ -7,7 +7,7 @@
    :title: Lists, Loop Idioms, Generics, and the Null Keyword
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: Lists; Loops; Generics
+   :keyword: List; Loop; Generics
    :naturallanguage: en
    :programminglanguage: Java
    :description: CS1-level more advanced presentation on loops and introduction to generics.

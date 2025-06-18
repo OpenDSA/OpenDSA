@@ -10,7 +10,7 @@
    :requires: graph traversal
    :satisfies: graph shortest path
    :topic: Graphs
-   :keyword: Shortest Path
+   :keyword: Shortest Path Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces the concept of shortest paths problems, and presents Dijkstra's algorithm for single-source shortest paths.

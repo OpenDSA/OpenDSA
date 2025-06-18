@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-Completeness Proofs; Satisfiability Problem
+   :keyword: NP-Completeness Proof; Satisfiability Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a proof that 3-CNF Satisfiability is NP-Complete, by a reduction from Satisfiability.

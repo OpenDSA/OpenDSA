@@ -10,7 +10,7 @@
    :requires: Pointer intro
    :satisfies:
    :topic: Link Nodes
-   :keyword: Pointers; Link Nodes
+   :keyword: Pointer; Link Node
    :naturallanguage: en
    :programminglanguage: Java
    :description: Coding exercises for practicing manipulating linked lists.

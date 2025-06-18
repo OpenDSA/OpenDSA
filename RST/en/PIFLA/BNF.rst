@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies:
    :topic: Compilers; Backus-Naur Form
-   :keyword: Compilers; Backus-Naur Form
+   :keyword: Compiler; Backus-Naur Form
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Brief introduction to the use of Backus-Naur Form for a CFG as used by compilers.

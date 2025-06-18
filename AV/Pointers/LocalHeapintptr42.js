@@ -5,7 +5,7 @@
 // Author: Sushma Mandava
 // Institution: Virginia Tech
 // Features: Code Visualization
-// Keyword: Pointers; Pointer; Reference; Object
+// Keyword: Memory Allocation
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating the memory allocation and deallocation. */

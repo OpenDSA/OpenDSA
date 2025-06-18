@@ -5,7 +5,7 @@
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Visualization
-// Keyword: Pointers; Reference; Object
+// Keyword: Pointer; Reference; Object
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating the distinction between shallow and deep copy. */

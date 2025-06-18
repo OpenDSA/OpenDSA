@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic: Randomized Algorithms
-   :keyword: Random Number Generator; Linear Conguential Method
+   :keyword: Random Number Generator
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Brief introduction to the implementation of Linear Congruential random number generators

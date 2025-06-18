@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic: File Processing
-   :keyword: File Processing; Disk; Memory
+   :keyword: File Processing; Disk Drive; Memory
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to the concept of computer memory performance hierarchy.

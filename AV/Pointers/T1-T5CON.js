@@ -2,7 +2,7 @@
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Visualization
-// Keyword: Pointers; Pointer; Reference; Object
+// Keyword: Pointer; Reference; Object
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating the details of local variable allocation and deallocation. */

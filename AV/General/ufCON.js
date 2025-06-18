@@ -6,7 +6,7 @@
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization; Code Tracing Visualization
-// Keyword: Union/Find Algorithm; Disjoint Sets
+// Keyword: Union/Find Algorithm; Disjoint Set
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow demonstrating processing of a series of union operations on a collection of disjoint sets. Shows the parent pointer representation used to maintain the set information. */

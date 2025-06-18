@@ -8,7 +8,7 @@
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Tree-Based Index; 2-3 Tree
+// Keyword: Tree-Based Indexing; 2-3 Tree
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow showing how node split on insertion is handled by a 2-3 tree. */

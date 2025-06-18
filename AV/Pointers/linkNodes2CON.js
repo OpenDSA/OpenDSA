@@ -2,7 +2,7 @@
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Visualization; Algorithm Visualization
-// Keyword: Link Nodes; Linked List
+// Keyword: Link Node; Linked List
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow introducing the concept of chaining link nodes to form a linked list. */

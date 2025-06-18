@@ -10,7 +10,7 @@
    :requires:
    :satisfies: Proof Techniques
    :topic: Mathematical Proof Techniques
-   :keyword: Proofs; Induction Proofs; Proof by Contradiction; Deduction
+   :keyword: Proof; Induction Proof; Proof by Contradiction; Deductive Proof
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Review materials on proof techniques appropriate for a course in Data Structures and Algorithms or Formal Languages. Uses Programmed Instruction Framesets. 

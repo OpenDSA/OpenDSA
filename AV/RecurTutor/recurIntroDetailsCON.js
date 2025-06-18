@@ -6,7 +6,7 @@
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Visualization; Demonstration
-// Keyword: Recusion
+// Keyword: Recursion
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating the concept of recusion showing the detials of recursive multiplication. */

@@ -10,11 +10,10 @@
    :requires: Pointer intro
    :satisfies: Pointer Syntax
    :topic: Pointers
-   :keyword: Pointers
+   :keyword: Pointer
    :naturallanguage: en
    :programminglanguage: Java
-   :description: An introduction pointer syntax in Java.
-
+   :description: An introduction to pointer syntax in Java.
 
 Pointers Syntax
 ===============

@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic:
-   :keyword: Shortest Path; Floyd's Algorithm; Dynamic Programming
+   :keyword: Shortest Path Problem; Floyd's Algorithm; Dynamic Programming
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces the all-pairs shortest paths problem, and various approaches to solving it. Presents Floyd's dynamic programming algorithm for computing the all-pairs sortest paths matrix.

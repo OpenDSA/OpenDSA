@@ -7,11 +7,10 @@
    :title: Pointers Programming Exercises
    :author: Mostafa Mohammed
    :institution: Virginia Tech
-   :keyword: Pointers
+   :keyword: Pointer
    :naturallanguage: en
    :programminglanguage: Java
    :description: A collection of practice programming exercises about pointers.
-
 
 Additional Practice Exercises
 =============================

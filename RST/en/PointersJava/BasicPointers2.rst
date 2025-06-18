@@ -10,7 +10,7 @@
    :requires: Pointer intro
    :satisfies:
    :topic: Pointers
-   :keyword: Pointers; References
+   :keyword: Pointer; Reference
    :naturallanguage: en
    :programminglanguage: Java
    :description: An introduction to using references in Java, Part 2.
