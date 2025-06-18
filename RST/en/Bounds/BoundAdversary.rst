@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: Lower Bounds
-   :keyword: Lower Bounds Proof; Adversary Argument
+   :keyword: Lower Bound Proof; Adversary Argument
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces the concept of an adversary argument for finding the lower bound for a problem. Uses the problem of finding the two largest values in an unsorted list as an example.

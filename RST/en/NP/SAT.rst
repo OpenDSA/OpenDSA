@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; Satisfiability
+   :keyword: NP-Completeness; Satisfiability Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Visual introduction to the Formula Satisfiability (standard SAT) problem.

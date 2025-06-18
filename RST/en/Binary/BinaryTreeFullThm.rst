@@ -10,7 +10,7 @@
    :requires: binary tree terminology
    :satisfies: full binary tree theorem
    :topic: Binary Trees
-   :keyword: Full Binary Tree Theorem
+   :keyword: Full Binary Tree
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the full binary tree theorem that the number of leaf nodes in a full binary tree is one more than the number of internal nodes.

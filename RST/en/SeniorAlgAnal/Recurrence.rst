@@ -10,7 +10,7 @@
    :requires: recurrence
    :satisfies: recurrence solving
    :topic: Math Background
-   :keyword: Algorithm Analysis; Recurrence Relations
+   :keyword: Algorithm Analysis; Recurrence Relation
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents an intermediate-level survey of techniques for finding closed-form solutions for recurrence relations, appropriate for a senior-level algorithms course.

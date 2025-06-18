@@ -7,7 +7,7 @@
    :title: Software Testing
    :author: Steve Edwards
    :institution: Virginia Tech
-   :keyword: Software Testing; Methods; Unit Testing
+   :keyword: Software Testing; Method; Unit Testing
    :naturallanguage: en
    :programminglanguage: Java
    :description: First semester programming course introduction to software testing.

@@ -7,7 +7,7 @@
    :title: Variables, Fields, and Parameters
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: Variables; Parameters
+   :keyword: Variable; Parameter
    :naturallanguage: en
    :programminglanguage: Java
    :description: First semester programming course introduction to variables, fields, and parameters.

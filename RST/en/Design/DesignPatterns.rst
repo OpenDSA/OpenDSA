@@ -10,7 +10,7 @@
    :requires: ADT
    :satisfies: design patterns
    :topic: Design Patterns
-   :keyword: Design Patterns
+   :keyword: Design Pattern
    :naturallanguage: en
    :programminglanguage: Java; C++
    :description: Brief introduction to the concept of design patterns and some commonly used related to Data Structures and Algorithms courses: Flyweight, Visitor, Composite, and Strategy.

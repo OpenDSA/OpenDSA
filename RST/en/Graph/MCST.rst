@@ -10,7 +10,7 @@
    :satisfies: Prim's algorithm; MCST
    :requires: graph shortest path
    :topic: Graphs
-   :keyword: Graphs; Minimal-Cost Spanning Trees
+   :keyword: Graph; Minimal-Cost Spanning Tree
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces the concept of minimal-cost spanning trees, and presents Prim's algorithm for constructing them.

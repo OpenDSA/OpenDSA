@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness Proofs; Independent Set Problem; Vertex Cover Problem
+   :keyword: NP-Completeness Proof; Independent Set Problem; Vertex Cover Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a reduction of an instance of the Independent Set problem to an instance of the Vertex Cover problem.

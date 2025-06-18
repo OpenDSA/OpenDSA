@@ -9,7 +9,7 @@
    :institution: Duke University; Virginia Tech
    :satisfies: FLA Introduction
    :topic: Formal Languages Major Concepts
-   :keyword: Formal Languages and Automata; Grammars
+   :keyword: Formal Language; Automata; Grammar
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to the major concepts covered in a course on formal languages and automata.
