@@ -10,7 +10,7 @@
    :requires: Spatial data structures; PRquadtree; KD tree; Bintree
    :satisfies: PRquadtree
    :topic: Spatial Data Structures
-   :keyword: Spatial Data Structures
+   :keyword: Spatial Data Structure
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to the Point Quadtree data structure and related concepts.

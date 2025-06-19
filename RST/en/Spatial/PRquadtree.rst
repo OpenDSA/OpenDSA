@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :requires: Spatial data structures
    :satisfies: PRquadtree
-   :topic: Spatial Data Structures
+   :topic: Spatial Data Structure
    :keyword: Spatial Data Structures, PR Quadtree
    :naturallanguage: en
    :programminglanguage: N/A
