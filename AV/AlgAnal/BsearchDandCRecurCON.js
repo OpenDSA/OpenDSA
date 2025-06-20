@@ -1,7 +1,7 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 
-// Title: Binary Search Algorithm Worst Case Analysis Visualization
+// Title: Binary Search Algorithm Worst Case Analysis Recurrence Visualization
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Analysis Demonstration

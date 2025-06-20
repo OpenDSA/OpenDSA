@@ -4,7 +4,7 @@
 // Title: Assigning a Reference to an Object
 // Author: Sushma Mandava; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization
+// Features: Code Tracing Visualization
 // Keyword: Pointer; Reference; Object
 // Natural Language: en
 // Programming Language: Java

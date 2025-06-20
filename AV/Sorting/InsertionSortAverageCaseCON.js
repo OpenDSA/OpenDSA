@@ -5,7 +5,7 @@
 // Title: Insertion Sort Average Case Slideshow
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Algorithm Analysis Demonstration
+// Features: Code Tracing Visualization; Algorithm Analysis Demonstration
 // Keyword: Insertion Sort; Average Case
 // Natural Language: en
 // Programming Language: N/A

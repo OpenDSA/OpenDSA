@@ -1,7 +1,7 @@
 // Title: Link Nodes: Iteration
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Algorithm Visualization
+// Features: Code Tracing Visualization; Algorithm Visualization
 // Keyword: Link Node; Iteration
 // Natural Language: en
 // Programming Language: Java

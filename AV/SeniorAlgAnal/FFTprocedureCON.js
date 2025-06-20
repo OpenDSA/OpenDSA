@@ -4,7 +4,7 @@
 // Title: The Fast Fourier Transform
 // Author: Irena Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Algorithm Visualization
+// Features: Code Tracing Visualization; Algorithm Visualization
 // Keyword: Polynomial Multiplication; Fast Fourier Transform
 // Natural Language: en
 // Programming Language: N/A

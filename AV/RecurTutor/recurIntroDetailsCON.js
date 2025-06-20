@@ -5,7 +5,7 @@
 // Title: Recursion Introduction Slideshow: Details of Recursion
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Demonstration
+// Features: Algorithm Visualization
 // Keyword: Recursion
 // Natural Language: en
 // Programming Language: Java

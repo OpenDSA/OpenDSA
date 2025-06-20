@@ -1,7 +1,7 @@
 // Title: Closure Properties to Show a Language Non-Regular: Example 2
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Programmed Instruction; Proof Demonstration
+// Features: Programmed Instruction; Proof Visualization
 // Keyword: Non-Regular Language; Closure Property
 // Natural Language: en
 // Programming Language: N/A
