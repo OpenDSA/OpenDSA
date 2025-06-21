@@ -4,7 +4,7 @@
 // Title: Shallow vs Deep Copy
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization
+// Features: Code Tracing Visualization
 // Keyword: Pointer; Reference; Object
 // Natural Language: en
 // Programming Language: Java

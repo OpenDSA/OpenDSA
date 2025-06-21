@@ -3,7 +3,7 @@
 // Title: Tracing Recursive Code: Domino Effect
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Demonstration
+// Features: Code Tracing Visualization
 // Keyword: Recursion
 // Natural Language: en
 // Programming Language: Java

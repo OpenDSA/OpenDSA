@@ -1,7 +1,7 @@
 // Title: Creating a Chain of Links
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Algorithm Visualization
+// Features: Code Tracing Visualization; Algorithm Visualization
 // Keyword: Link Node; Linked List
 // Natural Language: en
 // Programming Language: Java

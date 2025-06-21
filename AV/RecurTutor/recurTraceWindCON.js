@@ -5,7 +5,7 @@
 // Title: Tracing Recursive Code: Winding and Unwinding
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Demonstration
+// Features: Code Tracing Visualization
 // Keyword: Recursion
 // Natural Language: en
 // Programming Language: Java

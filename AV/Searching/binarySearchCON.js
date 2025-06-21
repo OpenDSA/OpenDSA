@@ -4,7 +4,7 @@
 // Title: Binary Search Algorithm
 // Author: Pavel Hovhannisyan; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Demonstration; Algorithm Visualization; Program Visualization
+// Features: Algorithm Visualization; Code Tracing Visualization
 // Keyword: Binary Search; Algorithm Analysis
 // Natural Language: en
 // Programming Language: N/A
