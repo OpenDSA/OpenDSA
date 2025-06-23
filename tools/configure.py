@@ -394,7 +394,7 @@ def initialize_conf_py_options(config, slides):
     # files are generated) and the root ODSA directory
     options['eb2root'] = config.rel_build_to_odsa_path
     options['rel_book_output_path'] = config.rel_book_output_path
-    options['slides_lib'] = 'hieroglyph' if slides else ''
+    options['slides_lib'] = 'revealjs' if slides else ''
     options['local_mode'] = str(config.local_mode).title()
 
     # makes sure the ebook uses the same python exec as this script

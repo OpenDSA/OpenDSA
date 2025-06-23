@@ -141,10 +141,10 @@ html:
 
 slides:
 	@SLIDES=yes \
-	$(SPHINXBUILD) $(SPHINXOPTS) -b slides source $(HTMLDIR)
-	rm html/_static/jquery.js
+	$(SPHINXBUILD) $(SPHINXOPTS) -b revealjs source $(HTMLDIR)
+	rm -f html/_static/jquery.js
 	cp "%(odsa_dir)slib/styles.css" html/_static/ # Overwrites
-	rm *.json
+	rm -f *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
 '''
@@ -173,7 +173,6 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('%(odsa_dir)sRST/_extensions/hieroglyph_local/src')) # Point to src for hieroglyph package
 
 # -- General configuration -----------------------------------------------------
 
@@ -198,9 +197,9 @@ extensions.append('numfig')
 
 slides_lib = '%(slides_lib)s'
 
-#only import hieroglyph when building course notes
-if slides_lib == 'hieroglyph':
-  extensions.append('hieroglyph') # Use 'hieroglyph' as extension name, found in .../src/
+# only import sphinx-revealjs when building course notes
+if slides_lib == 'revealjs':
+  extensions.append('sphinx_revealjs')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -266,28 +265,24 @@ pygments_style = 'xcode' #'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
-# -- Options for HTML Slide output ---------------------------------------------------
+# -- Options for RevealJS Slide output ---------------------------------------------------
 sys.path.append('%(theme_dir)s')
-slide_theme_path = ['%(theme_dir)s', os.path.abspath('%(odsa_dir)sRST/_extensions/hieroglyph_local/src/hieroglyph/themes')]
 
-# Themes that are defined by hieroglyph; using them breaks some custom ODSA content
-# slide_theme = 'single-level' # basic theme
-# slide_theme = 'slides' # default theme
-# slide_theme = 'slides2' # animated theme
-
-# Custom themes, made for ODSA content:
-slide_theme = 'slidess' # working, default theme for all slides
-# The 'haiku' theme is not for slides
-
-#slide_theme_options = {'custom_css':'custom.css'}
-
-slide_link_html_to_slides = not on_slides
-slide_link_html_sections_to_slides = not on_slides
-#slide_relative_path = "./slides/"
-
-slide_link_to_html = True
-slide_html_relative_path = "../"
-
+if slides_lib == 'revealjs':
+    revealjs_theme = 'white'
+    revealjs_static_path = ['_static']
+    revealjs_css_files = []
+    revealjs_script_files = []
+    revealjs_js_files = revealjs_script_files
+    revealjs_script_plugins = []
+    revealjs_script_conf = """{
+        controls: true,
+        progress: true,
+        slideNumber: true,
+        transition: 'none',
+        hash: true
+    }"""
+    
 
 # -- Options for HTML output ---------------------------------------------------
 #The fully-qualified name of a HTML Translator, that is used to translate document
