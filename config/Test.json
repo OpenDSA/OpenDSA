@@ -78,6 +78,7 @@
       }, 
       "Sorting/InsertionSort": {}, 
       "Searching/SortedSearch": {}
+      },
     }
   }
 }

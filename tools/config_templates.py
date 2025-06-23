@@ -33,6 +33,38 @@ rst_footer = '''\
          for (var sec of sections) {
          }
        }, 2000);
+       
+       // Initialize scroll depth tracking
+       if (typeof $.scrollDepth === 'function') {
+         $.scrollDepth({
+           minHeight: 0,
+           elements: sections,
+           percentage: true,
+           userTiming: true,
+           pixelDepth: true,
+           nonInteraction: true,
+           eventHandler: function(data) {
+             // Check if ODSA.UTILS exists before calling
+             if (typeof ODSA !== 'undefined' && ODSA.UTILS && typeof ODSA.UTILS.logUserAction === 'function') {
+               ODSA.UTILS.logUserAction(
+                 'scroll', 
+                 {
+                   percentage: data.eventLabel, 
+                   pixelDepth: data.pixelDepth,
+                   timing: data.eventTiming,
+                   element: data.eventAction || null
+                 },
+                 null,
+                 null
+               );
+             } else {
+               console.warn('ODSA.UTILS.logUserAction not available for scroll logging');
+             }
+           }
+         });
+       } else {
+         console.warn('jQuery scrollDepth plugin not loaded - scroll tracking disabled');
+       }
      });
     </script>
  '''
@@ -153,7 +185,7 @@ sys.path.insert(0, os.path.abspath('%(odsa_dir)sRST/_extensions/hieroglyph_local
 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinxcontrib.jquery']
 
-ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe']
+ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
 
 customsDir = '%(odsa_dir)sRST/ODSAextensions/odsa/'
 for c in ourCustoms:
@@ -341,7 +373,8 @@ html_context = {"script_files": [
                   'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
                   'https://d3js.org/d3-selection-multi.v1.min.js',
                   '%(eb2root)slib/dataStructures.js',
-                  '%(eb2root)slib/conceptMap.js'
+                  '%(eb2root)slib/conceptMap.js',
+                  '%(eb2root)slib/splice-iframe.js',
                 ],
                 "css_files": [
                   '%(eb2root)slib/normalize.css',
