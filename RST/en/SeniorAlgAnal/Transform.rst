@@ -10,7 +10,7 @@
    :requires: logarithms
    :satisfies: transforms
    :topic: Algorithms: Transforms
-   :keyword: Transforms; Polynomial Multiplication Algorithm
+   :keyword: Transform; Polynomial Multiplication
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces the concept of a transform. Examples include the slide rule as a transformation for integer multiplication, and polynomial multiplication.

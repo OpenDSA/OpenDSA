@@ -10,7 +10,7 @@
    :satisfies: relations
    :topic: Relations
    :requires: set notation
-   :keyword: Sets; Relations; Equivalence Relation; Partial Order
+   :keyword: Set; Relation; Equivalence Class; Partial Order
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Review materials on relations appropriate for a course in Data Structures and Algorithms or Formal Languages. Uses Programmed Instruction Framesets. 

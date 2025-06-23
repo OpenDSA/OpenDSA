@@ -10,7 +10,7 @@
    :requires: list ADT
    :satisfies: stack ADT; array-based stack; stack
    :topic: Lists
-   :keyword: Array-based Stack
+   :keyword: Array-Based Stack
    :naturallanguage: en
    :programminglanguage: Java
    :description: Introduces stacks and an implementation for array-based stacks.

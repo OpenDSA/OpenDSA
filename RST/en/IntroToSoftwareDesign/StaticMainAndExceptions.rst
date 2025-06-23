@@ -7,7 +7,7 @@
    :title: Static, Main, and Exceptions
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: Static; Exceptions
+   :keyword: Static; Exception
    :naturallanguage: en
    :programminglanguage: Java
    :description: CS1-level introduction to the static keyword, main method, and exception handling.

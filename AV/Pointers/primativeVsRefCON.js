@@ -7,7 +7,7 @@
 // Author: Cliff Shaffer; Sushma Mandava; Milen John
 // Institution: Virginia Tech
 // Features: Demonstration
-// Keyword: Pointers; Reference; Data Types; Object
+// Keyword: Pointer; Reference; Data Type; Object
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow showing primitive data types in Java and the concept of object and reference. */

@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: Pushdown Automata Exercises
-   :keyword: Pushdown Automaton
+   :keyword: Pushdown Automata
    :naturallanguage: en
    :programminglanguage: N/A
    :description: A collection of construction exercises for Pushdown Automata.

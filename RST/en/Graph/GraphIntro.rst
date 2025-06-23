@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: graph terminology
    :topic: Graphs
-   :keyword: Graph Representations
+   :keyword: Graph Representation
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introductory module for a chapter on graphs suitable for a junior-level data structures course. Presents basic terminology, and the adjacency matrix and adjacency list representations.

@@ -10,7 +10,7 @@
    :requires: graph terminology
    :satisfies: graph implementation
    :topic: Graphs
-   :keyword: Graph Representations
+   :keyword: Graph Representation
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents an ADT for graphs along with sample implementations for both Adjacency List and Adjacency Matrix representations.

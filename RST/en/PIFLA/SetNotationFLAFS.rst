@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: set notation
    :topic: Sets
-   :keyword: Sets; Relations
+   :keyword: Set; Relation
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Review materials on set notation appropriate for a course in Data Structures and Algorithms or Formal Languages. Uses Programmed Instruction Framesets. 

@@ -7,7 +7,7 @@
    :title: Aggregation, Strings and More Loops
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: Aggregation; Composition; Strings; Loops
+   :keyword: Aggregation; Composition; String; Loop
    :naturallanguage: en
    :programminglanguage: Java
    :description: First semester programming course introduction to aggregation, strings, and more advanced loop control statements.

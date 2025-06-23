@@ -6,7 +6,7 @@
 // Author: Cliff Shaffer; Sushma Mandava; Aditya Tikhe; Milen John
 // Institution: Virginia Tech
 // Features: Demonstration
-// Keyword: Pointers; Reference; Object
+// Keyword: Pointer; Reference; Object
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating the consequence of dereferencing a null pointer. */

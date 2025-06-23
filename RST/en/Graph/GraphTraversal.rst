@@ -10,7 +10,7 @@
    :requires: graph implementation
    :satisfies: graph traversal
    :topic: Graphs
-   :keyword: Graph Traversals
+   :keyword: Graph Traversal
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents standard graph traversals: Depth-first search and breadth-first search. Includes visualizations and algorithm proficiency practice exercises.

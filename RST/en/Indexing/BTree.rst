@@ -10,7 +10,7 @@
    :requires: linear indexing; 2-3 tree
    :satisfies: B tree
    :topic: Indexing
-   :keyword: Indexing; B-Trees
+   :keyword: Indexing; B-Tree
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presents the B-Tree Data Structure.

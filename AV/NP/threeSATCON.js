@@ -5,7 +5,7 @@
 // Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
-// Keyword: 3-Satisfiability Problem
+// Keyword: Satisfiability Problem
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow demonstrating the 3-CNF satisfiability problem. */

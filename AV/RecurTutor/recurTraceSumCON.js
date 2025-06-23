@@ -4,8 +4,8 @@
 // Title: Tracing Recursive Code: Summation
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Demonstration
-// Keyword: Recusion
+// Features: Code Tracing Visualization
+// Keyword: Recursion
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating code tracing, using a simple summation function as an example. */

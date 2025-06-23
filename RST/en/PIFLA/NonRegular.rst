@@ -9,7 +9,7 @@
    :institution: Duke University; Virginia Tech
    :satisfies:
    :topic: Non-regular Languages
-   :keyword: Non-regular Languages; Pumping Lemma Proofs
+   :keyword: Non-Regular Language; Pumping Lemma Proof
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Discussion of techniques for recognizing that a language is non-regular. Introduces the Pumping Lemma and shows many examples of how to use it to prove a language is non-regular.

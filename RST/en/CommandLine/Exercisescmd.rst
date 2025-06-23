@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: About
    :topic: Tour
-   :keyword: Command Line; File System; Path
+   :keyword: Command Line; File System
    :naturallanguage: en
    :programminglanguage: N/A
    :description: A collection of interactive exercises for building command line proficency.

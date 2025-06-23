@@ -1,7 +1,7 @@
 /*global ODSA */
 // Written by Sally Hamouda and Cliff Shaffer
 
-// Title: Preorder Traversal Shown in Detail
+// Title: Typical Mistakes During Tree Traversal
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Tracing Visualization

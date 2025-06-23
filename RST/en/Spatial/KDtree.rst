@@ -10,7 +10,7 @@
    :requires: Spatial data structures
    :satisfies: KD tree
    :topic: Spatial Data Structures
-   :keyword: Spatial Data Structures, KD Tree
+   :keyword: Spatial Data Structure, KD Tree
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to the KD Tree data structure.

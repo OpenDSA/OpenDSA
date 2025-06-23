@@ -10,7 +10,7 @@
    :requires:
    :satisfies: debugging
    :topic: Programming Tutorial
-   :keyword: Debugging; Debugging Methods
+   :keyword: Debugging
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Brief introduction to standard approaches to debugging.

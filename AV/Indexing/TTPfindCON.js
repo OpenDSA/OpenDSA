@@ -6,7 +6,7 @@
 // Author: Cliff Shaffer; Liling Yuan
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Tree-based Index; Indexing; 2-3+ Tree
+// Keyword: Tree-Based Indexing; 2-3 Tree
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow showing a series of search operations in a 2-3+ tree. */

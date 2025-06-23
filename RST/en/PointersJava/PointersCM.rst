@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: Concept Maps
-   :keyword: Pointers
+   :keyword: Pointer
    :naturallanguage: en
    :programminglanguage: Java
    :description: Concept map of pointer concepts.

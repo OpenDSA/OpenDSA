@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :requires: file processing; disk drives
    :topic: External Sorting
-   :keyword: File Processing; External Sorting; Runs
+   :keyword: File Processing; External Sorting
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to external sorting, intitial run production using replacement selection, and multi-way merge.

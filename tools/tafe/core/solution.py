@@ -269,7 +269,7 @@ class Solution:
             }
         return self.solution_subgroups
 
-    def show_solution_subgroups(self, width = 8, debug=False):
+    def show_solution_subgroups(self, width = 11, debug=False):
         """diagnostic function only, used to create images of
         everything in the solution subgroups for this solution.
         Creates multiple images, as required.
@@ -293,10 +293,9 @@ class Solution:
             fig = plt.figure(figsize=(
                 width, 8.8+(height_unit-2)*3
                 ))
-
-            ax1_g_dep_unfolded = fig.add_axes([0, 0.7, 1, 0.3])
-            ax2_g_dep_unfolded = fig.add_axes([0, 0.4, 1, 0.3])
-            ax3_g_dep_dag = fig.add_axes([0, 0, 1, 0.4])
+            ax1_g_dep_unfolded = fig.add_axes((0, 0.7, 1, 0.3))
+            ax2_g_dep_unfolded = fig.add_axes((0, 0.4, 1, 0.3))
+            ax3_g_dep_dag = fig.add_axes((0, 0, 1, 0.4))
 
             if debug:
                 print("Unfolded graph")
@@ -340,7 +339,11 @@ class Solution:
         # 4. the equation and symbol to be displayed is in the 'label' field.
         
         # just create a copy of the graph with the least amount of info needed to display it
-        depG = Graph()
+        # depG = Graph()
+        depG = DiGraph()    # temporarily changed because of 
+                            # issues on drawing on new machine after crash, 
+                            # to revert after resolving issue; 
+                            # ignore if using on server and not for generating diagrams
 
         for node in G:
             depG.add_node(node)
@@ -395,7 +398,7 @@ class Solution:
 
         #then, add the edges as they were in the original
         depG.add_edges_from(G.edges.data())
-
+        
         labels = {node:depG.nodes[node]['label'] for node in depG.nodes()}
         edge_labels = {(x,y):"$\\times -1$" if G[x][y]['negated'] == 1 else "" for (x,y) in depG.edges()}
 
@@ -460,7 +463,7 @@ class Solution:
         
         # possibly add directed arrows for direction of substituting variables? How to determine this?
         draw_networkx_edges(depG, pos = bip_layout, ax=axes)
-        draw_networkx_edge_labels(G, pos = bip_layout, edge_labels=edge_labels, ax=axes, horizontalalignment="center")
+        draw_networkx_edge_labels(depG, pos = bip_layout, edge_labels=edge_labels, ax=axes, horizontalalignment="center")
     
     def draw_dag(self, G: DiGraph, axes, use_latex=True, debug=False):
         dag = DiGraph()

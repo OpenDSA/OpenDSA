@@ -10,7 +10,7 @@
    :requires: binary tree terminology; overhead; binary tree node implementation
    :satisfies: binary tree space requirements
    :topic: Binary Trees
-   :keyword: Binary Trees; Binary Tree Space Analysis; Full Binary Tree Theorem
+   :keyword: Binary Tree; Binary Tree Space Analysis; Full Binary Tree
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Discusses how to calculate the space requirements for a binary tree, depending on its node implementation.

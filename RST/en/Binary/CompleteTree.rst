@@ -10,7 +10,7 @@
    :requires: binary tree terminology; binary tree space requirements
    :satisfies: complete tree
    :topic: Binary Trees
-   :keyword: Binary Trees; Complete Binary Trees
+   :keyword: Complete Binary Tree
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Discusses how to implement a complete binary tree using an array. A preparatory module for introducing heaps.

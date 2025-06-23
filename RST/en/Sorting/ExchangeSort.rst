@@ -10,7 +10,7 @@
    :requires: insertion sort; bubble sort; selection sort
    :satisfies: exchange sort
    :topic: Sorting
-   :keyword: Sorting; Exchange Sorting; N-squared Sorts
+   :keyword: Exchange Sort; N-squared Sorts
    :naturallanguage: en
    :programminglanguage: Java; C++
    :description: Lower bounds analysis for any sorting algorithm that works by swapping adjacent records.

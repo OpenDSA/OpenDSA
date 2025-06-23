@@ -7,7 +7,7 @@
    :title: Conditional and Repeating Actions
    :author: Molly Domino; Steve Edwards
    :institution: Virginia Tech
-   :keyword: Conditional Statements; While Loops
+   :keyword: Conditional Statement; While Loop
    :naturallanguage: en
    :programminglanguage: Java
    :description: First semester programming course introduction to conditional statements and while loops.

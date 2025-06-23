@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness Proofs; Traveling Salesman Problem; Hamiltonian Cycle Problem
+   :keyword: NP-Completeness Proof; Traveling Salesman Problem; Hamiltonian Cycle Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a reduction of an instance of the Hamiltonian Cycle problem to an instance of the Traveling Salesman problem.

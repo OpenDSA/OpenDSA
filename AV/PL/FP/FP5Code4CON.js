@@ -1,9 +1,9 @@
 /*global ODSA */
 
-// Title: Functional Programming: Static vs Dynamic Binding
+// Title: Functional Programming Visualization: Static vs Dynamic Binding
 // Author: David Furcy; Tom Naps
 // Institution: UW-Oshkosh
-// Features: Algorithm Visualization; Code Trace Visualization
+// Features: Algorithm Visualization; Code Tracing Visualization
 // Keyword: Functional Programming
 // Natural Language: en
 // Programming Language: N/A

@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: PDA Module
    :topic: PDAs and Context Free Languages
-   :keyword: Pushdown Automaton; Context Free Languages
+   :keyword: Pushdown Automata; Context-Free Language
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Explores the relationship between PDAs and Context Free Languages.

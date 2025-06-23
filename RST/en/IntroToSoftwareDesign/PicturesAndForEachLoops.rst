@@ -7,7 +7,7 @@
    :title: Pictures and For-each Loops
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: For-each Loops; Image Representation
+   :keyword: For-Each Loop; Image Representation
    :naturallanguage: en
    :programminglanguage: Java
    :description: First semester programming course introduction to image representations and for-each loops.

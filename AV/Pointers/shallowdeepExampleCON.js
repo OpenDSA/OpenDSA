@@ -4,8 +4,8 @@
 // Title: Shallow vs Deep Copy
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization
-// Keyword: Pointers; Reference; Object
+// Features: Code Tracing Visualization
+// Keyword: Pointer; Reference; Object
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating the distinction between shallow and deep copy. */

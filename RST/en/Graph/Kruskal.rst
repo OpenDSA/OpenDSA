@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :requires: MCST; Union/Find
    :topic: Graphs
-   :keyword: Minimal-Cost Spanning Trees; Union/Find Algorithm
+   :keyword: Minimal-Cost Spanning Tree; Union/Find Algorithm
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents Kruskal's minimal-cost spanning tree algorithm.

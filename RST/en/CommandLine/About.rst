@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: About
    :topic: Tour
-   :keyword: Command Line; File System; Path
+   :keyword: Command Line; File System
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to the command line, navigating directories in a file system, and manipulating pathnames.

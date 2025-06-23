@@ -10,7 +10,7 @@
    :requires:
    :satisfies: Closure Properties of Regular Grammars
    :topic: Finite Automata
-   :keyword: Regular Language; Closure Properties
+   :keyword: Regular Language; Closure Property
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a number of closure properties for regular languages.

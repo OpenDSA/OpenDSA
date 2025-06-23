@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: Lower Bounds
-   :keyword: Lower Bounds Proofs; State Space Lower Bounds
+   :keyword: Lower Bound Proof; State Space Lower Bound
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces the concept of a state space for use in finding the lower bound for a problem. Uses the problem of finding the min and max values in an unsorted list together as an example.

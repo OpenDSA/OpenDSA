@@ -6,7 +6,7 @@
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
-// Keyword: Array-based List
+// Keyword: Array-Based List
 // Natural Language: en
 // Programming Language: Java
 

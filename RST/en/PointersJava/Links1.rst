@@ -10,7 +10,7 @@
    :requires: Pointer intro
    :satisfies: Link Nodes
    :topic: Link Nodes
-   :keyword: Pointers; Link Nodes
+   :keyword: Pointer; Link Node
    :naturallanguage: en
    :programminglanguage: Java
    :description: An introduction to link nodes.

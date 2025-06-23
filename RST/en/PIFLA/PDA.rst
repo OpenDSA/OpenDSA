@@ -8,8 +8,8 @@
    :author: Mostafa Mohammed; Cliff Shaffer
    :institution: Virginia Tech
    :satisfies: PDA Module
-   :topic: Pushdown Automaton
-   :keyword: Pushdown Automaton
+   :topic: Pushdown Automata
+   :keyword: Pushdown Automata
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to Pushdown Automata, including visualizations and Programmed Instruction presentations.

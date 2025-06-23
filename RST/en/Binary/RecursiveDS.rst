@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: binary tree as a recursive data Structures
    :topic: Binary Tree as a Recursive Data Structures
-   :keyword: Binary Trees; Binary Tree Terminology
+   :keyword: Binary Tree Terminology
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the representation of a binary tree through recursion.

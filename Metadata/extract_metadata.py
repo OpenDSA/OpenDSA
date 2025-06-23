@@ -102,6 +102,7 @@ def extract_visualization_references(rst_files):
                         scripts = scripts_line.split(":scripts:")[-1].strip().split()
                         js_file = scripts[-1] if scripts else None
                     if js_file:
+                        js_file = js_file.lstrip('/\\')
                         visualizations.append({
                             "module": mod_name,
                             "type": vis_type,
@@ -226,7 +227,7 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     if vis['type'] == "inlineav":
         embed_url = f"{host_url}/embed/{short_name}"
     elif vis['type'] == "avembed":
-        embed_url = f"{host_url}/{source}"
+        embed_url = f"{host_url}/OpenDSA/{source}"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
     return {
         "catalog_type": "SLCItem",

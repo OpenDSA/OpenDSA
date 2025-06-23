@@ -8,7 +8,7 @@
 // Author: Elmer Landaverde; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Tree-based Index; Indexing
+// Keyword: Tree-Based Indexing
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow showing the use of paging with a BST-based index. Updating the BST to require it to remain a complete tree is expensive. */
