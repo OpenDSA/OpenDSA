@@ -33,6 +33,38 @@ rst_footer = '''\
          for (var sec of sections) {
          }
        }, 2000);
+       
+       // Initialize scroll depth tracking
+       if (typeof $.scrollDepth === 'function') {
+         $.scrollDepth({
+           minHeight: 0,
+           elements: sections,
+           percentage: true,
+           userTiming: true,
+           pixelDepth: true,
+           nonInteraction: true,
+           eventHandler: function(data) {
+             // Check if ODSA.UTILS exists before calling
+             if (typeof ODSA !== 'undefined' && ODSA.UTILS && typeof ODSA.UTILS.logUserAction === 'function') {
+               ODSA.UTILS.logUserAction(
+                 'scroll', 
+                 {
+                   percentage: data.eventLabel, 
+                   pixelDepth: data.pixelDepth,
+                   timing: data.eventTiming,
+                   element: data.eventAction || null
+                 },
+                 null,
+                 null
+               );
+             } else {
+               console.warn('ODSA.UTILS.logUserAction not available for scroll logging');
+             }
+           }
+         });
+       } else {
+         console.warn('jQuery scrollDepth plugin not loaded - scroll tracking disabled');
+       }
      });
     </script>
  '''
