@@ -53,7 +53,7 @@ CodeCheck Exercises
 An example of a coding exercise in CodeCheck
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. iframe:: https://codecheck.io/files/horstmann/codecheck-python-2DArraysNoLoops-8
+.. splicetoolembed:: https://codecheck.io/files/horstmann/codecheck-python-2DArraysNoLoops-8
    :height: 300
    :width: 1050
    :name: codecheck-2DArraysNoLoops-8
@@ -62,7 +62,7 @@ An example of a coding exercise in CodeCheck
 An example of a proficiency exercise in CodeCheck
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          
 
-.. iframe:: https://horstmann.com/codecheck/examples/dijkstra.html
+.. splicetoolembed:: https://horstmann.com/codecheck/examples/dijkstra.html
    :height: 1050
    :width: 1050
    :name: codecheck-dijkstra.html
@@ -73,7 +73,7 @@ Acos Server Exercise
 
 A Parsons problem implementation.
 
-.. iframe:: https://acos.cs.vt.edu/html/combo/combo-python/combo_avg
+.. splicetoolembed:: https://acos.cs.vt.edu/html/combo/combo-python/combo_avg
    :height: 500
    :width: 1050
    :name: acos-combo_avg
@@ -91,6 +91,6 @@ Codeworkout Exercise
 
 A programming practice exercise from Code Workout.
 
-.. iframe:: https://codeworkoutdev.cs.vt.edu/gym/exercises/394/practice
+.. splicetoolembed:: https://codeworkoutdev.cs.vt.edu/gym/exercises/394/practice
    :name: codeworkout-LinkedListInsertion
 

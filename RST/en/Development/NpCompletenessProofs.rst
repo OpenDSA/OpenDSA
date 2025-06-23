@@ -16,12 +16,12 @@ Reduction
 ----------
 
 
-.. iframe:: https://acos.cs.vt.edu/parsons/exercise/pb-reduction.rst?prompt=true
+.. splicetoolembed:: https://acos.cs.vt.edu/parsons/exercise/pif/pb-reduction.peml
    :height: 600
    :width: 1050
    :name: pb-reduction
 
-.. iframe:: https://acos.cs.vt.edu/parsons/exercise/pb-sort2pair.rst?prompt=true
+.. splicetoolembed:: https://acos.cs.vt.edu/parsons/exercise/pif/pb-sort2pair.peml
    :height: 800
    :width: 1050
    :name: pb-sort2pair
@@ -30,7 +30,7 @@ Reduction
 General NP Completeness Proof Process
 ----------------------------------------
 
-.. iframe:: https://acos.cs.vt.edu/parsons/exercise/pb-nptemplate-DAG.rst?prompt=true
+.. splicetoolembed:: https://acos.cs.vt.edu/parsons/exercise/pif/pb-nptemplate-DAG.peml
    :height: 700
    :width: 1050
    :name: pb-nptemplate-DAG
@@ -38,7 +38,7 @@ General NP Completeness Proof Process
  Independent Set
  -------------------------------
 
-.. iframe:: https://acos.cs.vt.edu/parsons/exercise/pb-Clique2IS-DAG.rst?prompt=true
+.. splicetoolembed:: https://acos.cs.vt.edu/parsons/exercise/pif/pb-Clique2IS-DAG.peml
    :height: 1150
    :width: 1050
    :name: pb-Clique2IS-DAG
