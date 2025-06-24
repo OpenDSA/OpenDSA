@@ -338,7 +338,8 @@ requirejs(["./mathjs.js"], function(){});
                     if (data != "") // So something is being sent back for feedback
                     {
                         var settings = {
-                             "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                            //"url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                            "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
                             // "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                             //"url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
                             "method": "POST",
@@ -700,7 +701,8 @@ requirejs(["./mathjs.js"], function(){});
                 "mode": "init"
             }
             var settings = {
-                 "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                //"url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
                 // "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                 //"url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
                 "async": false,
@@ -774,7 +776,8 @@ requirejs(["./mathjs.js"], function(){});
                         "mode": "init"
                     })
                     var settings = {
-                        "url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                        //"url": "https://opendsa.localhost.devcom.vt.edu/api/deformsfeedback/",
+                        "url": "https://deforms.localhost.devcom.vt.edu/deforms/api/deformsfeedback/",
                         // "url": "https://opendsa-server.cs.vt.edu/deforms/api/deformsfeedback/",
                         //"url": "https://opendsax.cs.vt.edu/deforms/api/deformsfeedback/",
                         "method": "POST",
