@@ -387,6 +387,10 @@ if on_slides:
    html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');
    html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');
 
+# Always add ODSA scripts for slides
+if on_slides:
+  html_context['script_files'] += html_context['odsa_scripts']
+# Also add for non-haiku themes  
 if '%(theme)s' != 'haiku':
   html_context['script_files'] += html_context['odsa_scripts']
 

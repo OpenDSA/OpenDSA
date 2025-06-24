@@ -36,17 +36,59 @@ class av_ff(Element):pass
 
 
 def visit_av_dgm_html(self, node):
+  # reveal.js migration fix
+  self.body.append('''<div style="position: relative; min-height: 300px; margin: 40px 0;">
+<style>
+.divdgm .jsavlabel {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  line-height: 1.2 !important;
+  font-size: 14px !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+}
+.divdgm svg text {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+.divdgm .jsavcanvas {
+  font-size: 14px !important;
+  line-height: normal !important;
+}
+</style>''')
   self.body.append(self.starttag(node, 'div', CLASS='divdgm'))
 
 def depart_av_dgm_html(self, node):
+  # close divs for the reveal fix
   self.body.append('</div>\n')
+  self.body.append('</div>\n') 
 
 def visit_av_ss_html(self, node):
+  # same fix as above, but for slideshows
+  self.body.append('''<div style="position: relative; min-height: 400px; margin: 40px 0;">
+<style>
+.ssAV .jsavlabel, .ssAV .jsavvalue {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  line-height: 1.2 !important;
+  font-size: 14px !important;
+  text-align: left !important;
+}
+.ssAV .jsavarray {
+  font-size: 14px !important;
+}
+.ssAV .jsavcode {
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+</style>''')
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
 
 def depart_av_ss_html(self, node):
+  # close divs for the reveal fix
   self.body.append('</div>\n')
+  self.body.append('</div>\n') 
 
 def visit_av_anchor_html(self, node):
   self.body.append(self.starttag(node, 'div', CLASS=''))
@@ -56,12 +98,27 @@ def depart_av_anchor_html(self, node):
 
 
 def visit_av_ff_html(self, node):
+  # same fix as above, but for frames
+  self.body.append('''<div style="position: relative; min-height: 400px; margin: 40px 0;">
+<style>
+.ffAV .jsavlabel, .ffAV .jsavvalue {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  line-height: 1.2 !important;
+  font-size: 14px !important;
+  text-align: left !important;
+}
+.ffAV .jsavarray {
+  font-size: 14px !important;
+}
+</style>''')
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
 
 def depart_av_ff_html(self, node):
+  # close divs for the reveal fix
   self.body.append('</div>\n')
-
+  self.body.append('</div>\n')  
 
 
 def doctree_read(app, doctree):
@@ -100,13 +157,17 @@ def doctree_read(app, doctree):
 def setup(app):
   app.connect('doctree-read', doctree_read)
   app.add_node(av_dgm,html=(visit_av_dgm_html, depart_av_dgm_html), 
-      slides=(visit_av_dgm_html, depart_av_dgm_html))
+      slides=(visit_av_dgm_html, depart_av_dgm_html),
+      revealjs=(visit_av_dgm_html, depart_av_dgm_html))
   app.add_node(av_anchor,html=(visit_av_anchor_html, depart_av_anchor_html), 
-      slides=(visit_av_anchor_html, depart_av_anchor_html))
+      slides=(visit_av_anchor_html, depart_av_anchor_html),
+      revealjs=(visit_av_anchor_html, depart_av_anchor_html))
   app.add_node(av_ss,html=(visit_av_ss_html, depart_av_ss_html), 
-      slides=(visit_av_ss_html, depart_av_ss_html))
+      slides=(visit_av_ss_html, depart_av_ss_html),
+      revealjs=(visit_av_ss_html, depart_av_ss_html))
   app.add_node(av_ff,html=(visit_av_ff_html, depart_av_ff_html), 
-      slides=(visit_av_ff_html, depart_av_ff_html))
+      slides=(visit_av_ff_html, depart_av_ff_html),
+      revealjs=(visit_av_ff_html, depart_av_ff_html))
 
   app.add_directive('inlineav',inlineav)
 
