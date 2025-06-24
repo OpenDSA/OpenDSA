@@ -2,6 +2,17 @@
   letter-spacing: 0px;
   text-shadow: none;
 }
+
+/* fix for sphinx-reveal.js slides */
+.reveal .divdgm {
+  position: relative;
+  margin: 40px 0;
+  min-height: 300px;
+}
+.reveal .jsavlabel {
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
 .divdgm .jsavlabel{
   font-size: 13px;
   font-family: san-serif;
