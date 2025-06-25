@@ -2,9 +2,11 @@ import os
 import re
 from pathlib import Path
 
-rst_root = Path(r"E:\Open\OpenDSA\RST\en")
-av_root = Path(r"E:\OpenDSA\AV")
-output_dir = Path(r"E:\Open\OpenDSA\Metadata\inlineav")
+script_dir = Path(__file__).resolve().parent
+project_root = script_dir.parent
+rst_root = project_root / "RST" / "en"
+av_root = project_root / "AV"
+output_dir = script_dir / "inlineav"
 output_dir.mkdir(parents=True, exist_ok=True)
 
 def fallback_title(av_name):
