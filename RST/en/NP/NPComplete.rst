@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-Completeness
+   :keyword: NP-Complete
    :naturallanguage: en
    :programminglanguage: N/A
    :description: An initial introduction to the concept of NP-completeness, including definitions for NP, NP-hard, and NP-complete. Introduces some example problems, including Traveling Salesman and Clique.

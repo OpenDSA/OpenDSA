@@ -7,7 +7,7 @@
    :title: Type Inference in Programming languages
    :author: David Furcy; Tom Naps
    :institution: UW-Oshkosh
-   :keyword: Types
+   :keyword: Type
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Discusses the concept of type inference in programming languages.

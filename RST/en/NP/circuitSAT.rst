@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-Completeness; Circuit Satisfiability Problem
+   :keyword: NP-Complete; Circuit Satisfiability Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Visual introduction to the Circuit Satisfiability problem.

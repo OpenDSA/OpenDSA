@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-Completeness; Traveling Salesman Problem
+   :keyword: NP-Complete; Traveling Salesman Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the Traveling Salesman problem. Includes a practice exercise where the user must find the shortest cycle for a given graph.
