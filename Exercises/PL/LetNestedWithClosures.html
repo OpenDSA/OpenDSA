@@ -1,11 +1,40 @@
+<!--
+Title: Nested Lets with Closures
+Author: David Furcy; Tom Naps
+Institution: UW-Oshkosh
+Features: Code Tracing Exercise
+Keyword: Functional Programming
+Natural Language: en
+Programming Language: N/A
+--> 
+
+<!--
+Description: A collection of self-practice questions related to nested Let expressions with closures in the functional programming language SLang1.
+-->
+
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils LetNestedWithClosures" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>Nested Lets with Closures</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version1.07/scripts/absyn",
+            "../../AV/PL/interpreters/version1.07/scripts/env",
+            "../../AV/PL/interpreters/version1.07/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version1.07/scripts/interpreter",
+              "../../DataStructures/PLutils",
+              "LetNestedWithClosures"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -14,11 +43,12 @@
 	<div class="vars">
 		<var id="init">LetNestedWithClosures.init()</var>
 		<var id="expression">LetNestedWithClosures.expression</var>
+		<var id="hint4">LetNestedWithClosures.hint4</var>		
 	</div>
 
       <div class="problems">
         <div class="LetNestedWithClosuresp">
-          <p class="question">Consider the following SLang 1 expression:</p> 
+          <p class="question">Consider the following SLang 1 expression:</p>
 <pre class="string">
 <var>expression</var>
 </pre>
@@ -26,7 +56,7 @@
 	    the SLang 1 interpreter when this expression is evaluated
 	    in a global environment in which
 	    <span class="string">x</span>, <span class="string">y</span>, and
-	    <span class="string">z</span> are bound to the values 
+	    <span class="string">z</span> are bound to the values
 	    <span class="string">1</span>, <span class="string">2</span>, and
 	    <span class="string">3</span>, respectively?
 	  </p>
@@ -40,13 +70,14 @@
 	      return LetNestedWithClosures.validateAnswer(guess);
             </div>
 	  </div>
-	  
+
 	  <div class="hints">
 	    <p>Recall that SLang 1 uses static binding.</p>
 	    <p>Remember that the overall expression is evaluated in a
 	    global environment that is not empty.</p>
 	    <p>You may need pencil and paper to solve this problem.</p>
-	  </div>	 
+	    <p>The correct answer is: <var>hint4</var></p>
+	  </div>
         </div>
       </div>
     </div>

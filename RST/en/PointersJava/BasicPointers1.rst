@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava
+   :title: Basic References Part 1
+   :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed; Sushma Mandava
+   :institution: Stanford University; Virginia Tech
    :requires:
    :satisfies: Pointer intro
    :topic: Pointers
+   :keyword: Pointer; Reference
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: An introduction to using references in Java, Part 1.
 
 
 Basic References Part 1
@@ -68,6 +74,7 @@ Data Types in Java
    :links: AV/Pointers/primativeVsRefCON.css
    :scripts: AV/Pointers/primativeVsRefCON.js
    :output: show
+   :keyword: Pointers
 
 (By the way, there is no commonly used word for the concept of a
 pointee |---| pointee is just the word that we used in these
@@ -131,12 +138,14 @@ line between the corners of the reference variable's box.
    :links: AV/Pointers/empRefnullCON.css
    :scripts: AV/Pointers/empRefnullCON.js
    :align: center
+   :keyword: Pointers
 
 
 changePointeeDataDirect
 -----------------------
 
 .. extrtoolembed:: 'changePointeeDataDirect'
+   :workout_id: 419
 
 
 
@@ -178,6 +187,7 @@ It just changes which pointee a reference refers to.
    :links: AV/Pointers/empRefsecondCON.css
    :scripts: AV/Pointers/empRefsecondCON.js
    :align: center
+   :keyword: Pointers
 
 After the assignment, testing for ``(second == empRef)`` would return
 true.
@@ -197,4 +207,4 @@ circularList1
 -------------
 
 .. extrtoolembed:: 'circularList1'
-
+   :workout_id: 421

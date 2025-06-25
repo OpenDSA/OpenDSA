@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Comparing Records
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: relations
    :satisfies: comparison
    :topic: Sorting
+   :keyword: Record Comparison; Comparator
+   :naturallanguage: en
+   :programminglanguage: Java; C++
+   :description: Discusses design decisions related to comparing records, including the concept of a comparator.
 
 .. index::
    pair: sorting; record comparison
@@ -165,6 +171,7 @@ Here are some review questions to test your knowledge from this module.
 
 .. avembed:: Exercises/Design/CompareSumm.html ka
    :long_name: Record Comparison Summary Exercise
+   :keyword: Record Comparison
 
 
 .. [#] One example of a situation where it is not possible to write a

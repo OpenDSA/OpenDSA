@@ -38,19 +38,19 @@ function insertString(str1, str2, pos) {
     origString.slice(indexPosition));
 }
 
-function falseCases(rule) {
-  var res;
-  var tempStr;
-  do {
-    tempStr = stringGenerate();
-    res = travGram(rule, tempStr, 0);
-  } while (res);
-  return tempStr;
-}
+// function falseCases(rule) {
+//   var res;
+//   var tempStr;
+//   do {
+//     tempStr = stringGenerate();
+//     res = travGram(rule, tempStr, 0);
+//   } while (res);
+//   return tempStr;
+// }
 
-function travGram(rule, tempStr, pos) {
-  var keyPackage = findSameKey(rule, key);
-}
+// function travGram(rule, tempStr, pos) {
+//   var keyPackage = findSameKey(rule, key);
+// }
 
 function grammarTrav(rule, key) {
   var operation = Math.floor(Math.random() * rule.length * 3 + 1);

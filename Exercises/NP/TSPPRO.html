@@ -1,13 +1,25 @@
 <!--
+Title: Traveling Saleseman Proficency Exercise
+Author: Nabanita Maji; Cliff Shaffer
+Institution: Virginia Tech
+Features: Demonstration Exercise
+Keyword: Traveling Salesman Problem
+Natural Language: en
+Programming Language: N/A
+--> 
+
+<!--
+Description: User must determine the shortest complete cycle in a given graph.
 -->
 
 <!DOCTYPE html>
-<html data-require="jsav math ../../AV/Development/graphUtils TSPPRO">
+<html data-require="jsav math ../../AV/Development/graphUtils TSPPRO" lang="en">
 <head data-height="750" data-width="950>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Traveling Salesman Problem</title>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
+  <script src="../../lib/splice-iframe.js"></script> 
   <link rel="stylesheet" href="NP.css" />
 </head>
 <body data-height="750" data-width="950">
@@ -15,7 +27,8 @@
 <div class="exercise">
 
   <div class="vars">
-    <var id="nnodes">Khan.randRange(5, 6)</var>
+<!--    <var id="nnodes">Khan.randRange(5, 6)</var> -->
+    <var id="nnodes">5</var>
     <var id="JSAV">TSP_KA.initJSAV(nnodes)</var>
   </div>
 

@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Merging Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Mergesort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the details of merging two sorted runs in Mergesort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "mergesortCON";

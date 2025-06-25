@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Church Numerals and Booleans
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses church numerals and booleans in the lambda calculus.
 
 .. odsalink::  AV/PL/AV/church_string.css
 

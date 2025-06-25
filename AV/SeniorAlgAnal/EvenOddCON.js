@@ -1,8 +1,19 @@
 // Written by Irena Shaffer
+
+// Title: Even and Odd Polynomials Slideshow
+// Author: Irena Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Polynomial Multiplication
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Demonstration of the symmetries between even powers versus odd powers for polynomial evaluation of a value and its negation. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "EvenOddCON";
   var av = new JSAV(av_name);
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 
   // Slide 1
   av.umsg("When evaluating the pair of values c and -c, we get:");

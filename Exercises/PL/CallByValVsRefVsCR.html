@@ -1,11 +1,40 @@
+<!--
+Title: Parameter Passing by Value vs Reference Exercise vs Copy-Restore
+Author: David Furcy; Tom Naps
+Institution: UW-Oshkosh
+Features: Code Tracing Exercise
+Keyword: Parameter Passing
+Natural Language: en
+Programming Language: N/A
+--> 
+
+<!--
+Description: A collection of self-practice questions to compare parameter passing by value vs passing by reference vs copy-restore in language SLang2.
+-->
+
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version2.00/scripts/absyn ../../AV/PL/interpreters/version2.00/scripts/env ../../AV/PL/interpreters/version2.00/scripts/grammar ../../AV/PL/interpreters/version2.00/scripts/interpreter PLutils CallByValVsRefVsCR" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>Value vs. Reference vs. Copy Restore</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version2.00/scripts/absyn",
+            "../../AV/PL/interpreters/version2.00/scripts/env",
+            "../../AV/PL/interpreters/version2.00/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version2.00/scripts/interpreter",
+              "../../DataStructures/PLutils",
+              "CallByValVsRefVsCR"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -14,30 +43,33 @@
 	<div class="vars">
 		<var id="init">CallByValVsRefVsCR.init()</var>
 		<var id="expression">CallByValVsRefVsCR.expression</var>
+		<var id="answerByval">CallByValVsRefVsCR.byvalOutput</var>
+		<var id="answerByref">CallByValVsRefVsCR.byrefOutput</var>
+		<var id="answerBycpr">CallByValVsRefVsCR.bycprOutput</var>
 	</div>
 
       <div class="problems">
         <div class="CallByValVsRefVsCRp">
-          <p class="question">Consider the following program written in generic pseudocode:</p> 
+          <p class="question">Consider the following program written in generic pseudocode:</p>
 <pre class="string">
 <var>expression</var>
 </pre>
           <p class="question">What is the output printed to the
 	    console when this program is executed using call-by-value,
-	    call-by-reference, and call-by-copy-restore? The answer 
+	    call-by-reference, and call-by-copy-restore? The answer
 	    has three components, each of which is a list of
 	    integers to be entered below.</p>
 
 	  <table class="answerRP22part2">
-	    <tr><td>Output for call-by-value:</td> 
+	    <tr><td>Output for call-by-value:</td>
 	      <td><textarea rows="1" cols="40" style="resize:none"
 			    id="byvalAnswer"></textarea></td>
 	    </tr>
-	    <tr><td>Output for call-by-reference:</td> 
+	    <tr><td>Output for call-by-reference:</td>
 	      <td><textarea rows="1" cols="40" style="resize:none"
 			    id="byrefAnswer"></textarea></td>
 	    </tr>
-	    <tr><td>Output for call-by-copy-restore:</td> 
+	    <tr><td>Output for call-by-copy-restore:</td>
 	      <td><textarea rows="1" cols="40" style="resize:none"
 			    id="bycprAnswer"></textarea></td>
 	    </tr>
@@ -51,7 +83,7 @@
 	      return CallByValVsRefVsCR.validateAnswer(guess);
             </div>
 	  </div>
-	  
+
 	  <div class="hints">
 	    <p>Since this program is not a SLang program, each value
 	    that is output to the console is an integer, <em>not</em>
@@ -61,8 +93,15 @@
 	    <p>It may be  helpful to trace the execution of this program
 	      on paper with the graphical representation of the memory
 	      that we used in class.</p>
-
-	  </div>	 
+	    <p>The correct answer is:</br>
+	      Output for call-by-value:
+	      <var>CallByValVsRefVsCR.byvalOutput</var></br>
+	      Output for call-by-reference:
+	       <var>CallByValVsRefVsCR.byrefOutput</var></br>
+	      Output for call-by-copy-restore: 	      
+	       <var>CallByValVsRefVsCR.bycprOutput</var></br>
+	    </p>
+	  </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,569 @@
+{
+    "parameters": {
+        "param1": {
+            "id": "param1",
+            "type": "question_parameter",
+            "valueDisplay": "100Nm",
+            "value": "100",
+            "unit": "Nm",
+            "parent": "question_params"
+        },
+        "param2": {
+            "id": "param2",
+            "type": "question_parameter",
+            "valueDisplay": "20mm",
+            "value": "20",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param3": {
+            "id": "param3",
+            "type": "question_parameter",
+            "valueDisplay": "75GPa",
+            "value": "75",
+            "unit": "GPa",
+            "parent": "question_params"
+        },
+        "param5": {
+            "id": "param5",
+            "type": "question_parameter",
+            "valueDisplay": "60mm",
+            "value": "60",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param6": {
+            "id": "param6",
+            "type": "question_parameter",
+            "valueDisplay": "180mm",
+            "value": "180",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param7": {
+            "id": "param7",
+            "type": "question_parameter",
+            "valueDisplay": "300mm",
+            "value": "300",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param8": {
+            "id": "param8",
+            "type": "question_parameter",
+            "valueDisplay": "500mm",
+            "value": "500",
+            "unit": "mm",
+            "parent": "question_params"
+        }
+    },
+    "workspaces": {
+        "1": {
+            "id": 1,
+            "name": "wk1",
+            "equations": {
+                "0": {
+                    "id": "wk1_div_1_1",
+                    "equation_template_id": "div",
+                    "variables": {
+                        "cterm": {
+                            "id": "wk1_div_1_1_cterm",
+                            "name": "cterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "c_{}",
+                                "parentSymbolTemplate": "c_{}",
+                                "parentSymbol": "c_{}"
+                            },
+                            "currentSymbol": "a_a",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_a",
+                                "varDisplay": "c_{}",
+                                "varDisplayTemplate": "c_{}"
+                            }
+                        },
+                        "bterm": {
+                            "id": "wk1_div_1_1_bterm",
+                            "name": "bterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "b_{}",
+                                "parentSymbolTemplate": "b_{}",
+                                "parentSymbol": "b_{}"
+                            },
+                            "currentSymbol": "a_b",
+                            "expectedDomain": "free",
+                            "currentDomain": "torque",
+                            "currentUnit": "Nm",
+                            "valueType": "number",
+                            "valueSource": "param1",
+                            "valueNegated": false,
+                            "value": "100"
+                        },
+                        "aterm": {
+                            "id": "wk1_div_1_1_aterm",
+                            "name": "aterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "a_{}",
+                                "parentSymbolTemplate": "a_{}",
+                                "parentSymbol": "a_{}"
+                            },
+                            "currentSymbol": "a_c",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_j",
+                                "varDisplay": "T_{}",
+                                "varDisplayTemplate": "T_{}"
+                            }
+                        }
+                    }
+                },
+                "1": {
+                    "id": "wk1_div_2_2",
+                    "equation_template_id": "div",
+                    "variables": {
+                        "cterm": {
+                            "id": "wk1_div_2_2_cterm",
+                            "name": "cterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "c_{}",
+                                "parentSymbolTemplate": "c_{2}",
+                                "parentSymbol": "c_{2}"
+                            },
+                            "currentSymbol": "a_d",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_a",
+                                "varDisplay": "c_{}",
+                                "varDisplayTemplate": "c_{}"
+                            }
+                        },
+                        "bterm": {
+                            "id": "wk1_div_2_2_bterm",
+                            "name": "bterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "b_{}",
+                                "parentSymbolTemplate": "b_{2}",
+                                "parentSymbol": "b_{2}"
+                            },
+                            "currentSymbol": "a_e",
+                            "expectedDomain": "free",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param5",
+                            "valueNegated": false,
+                            "value": "60"
+                        },
+                        "aterm": {
+                            "id": "wk1_div_2_2_aterm",
+                            "name": "aterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "a_{}",
+                                "parentSymbolTemplate": "a_{2}",
+                                "parentSymbol": "a_{2}"
+                            },
+                            "currentSymbol": "a_f",
+                            "expectedDomain": "free",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param6",
+                            "valueNegated": false,
+                            "value": "180"
+                        }
+                    }
+                },
+                "2": {
+                    "id": "wk1_angletwist_3_1",
+                    "equation_template_id": "angletwist",
+                    "variables": {
+                        "angletwist": {
+                            "id": "wk1_angletwist_3_1_angletwist",
+                            "name": "angletwist",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\phi_{}",
+                                "parentSymbolTemplate": "\\phi_{}",
+                                "parentSymbol": "\\phi_{}"
+                            },
+                            "currentSymbol": "a_g",
+                            "expectedDomain": "angle",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_g",
+                                "varDisplay": "\\phi_{}",
+                                "varDisplayTemplate": "\\phi_{}"
+                            }
+                        },
+                        "mominertia": {
+                            "id": "wk1_angletwist_3_1_mominertia",
+                            "name": "mominertia",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "J_{}",
+                                "parentSymbolTemplate": "J_{}",
+                                "parentSymbol": "J_{}"
+                            },
+                            "currentSymbol": "a_h",
+                            "expectedDomain": "length4",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_h",
+                                "varDisplay": "J_{}",
+                                "varDisplayTemplate": "J_{}"
+                            }
+                        },
+                        "coeffGshstress": {
+                            "id": "wk1_angletwist_3_1_coeffGshstress",
+                            "name": "coeffGshstress",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "G_{}",
+                                "parentSymbolTemplate": "G_{}",
+                                "parentSymbol": "G_{}"
+                            },
+                            "currentSymbol": "a_i",
+                            "expectedDomain": "pressure",
+                            "currentDomain": "pressure",
+                            "currentUnit": "GPa",
+                            "valueType": "number",
+                            "valueSource": "param3",
+                            "valueNegated": false,
+                            "value": "75"
+                        },
+                        "torque": {
+                            "id": "wk1_angletwist_3_1_torque",
+                            "name": "torque",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "T_{}",
+                                "parentSymbolTemplate": "T_{}",
+                                "parentSymbol": "T_{}"
+                            },
+                            "currentSymbol": "a_j",
+                            "expectedDomain": "torque",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_j",
+                                "varDisplay": "T_{}",
+                                "varDisplayTemplate": "T_{}"
+                            }
+                        },
+                        "length": {
+                            "id": "wk1_angletwist_3_1_length",
+                            "name": "length",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "L_{}",
+                                "parentSymbolTemplate": "L_{}",
+                                "parentSymbol": "L_{}"
+                            },
+                            "currentSymbol": "a_k",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param7",
+                            "valueNegated": false,
+                            "value": "300"
+                        }
+                    }
+                },
+                "3": {
+                    "id": "wk1_momInertiaDiameter_4_1",
+                    "equation_template_id": "momInertiaDiameter",
+                    "variables": {
+                        "mominertia": {
+                            "id": "wk1_momInertiaDiameter_4_1_mominertia",
+                            "name": "mominertia",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "J_{}",
+                                "parentSymbolTemplate": "J_{}",
+                                "parentSymbol": "J_{}"
+                            },
+                            "currentSymbol": "a_l",
+                            "expectedDomain": "length4",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_h",
+                                "varDisplay": "J_{}",
+                                "varDisplayTemplate": "J_{}"
+                            }
+                        },
+                        "diameter": {
+                            "id": "wk1_momInertiaDiameter_4_1_diameter",
+                            "name": "diameter",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "d_{}",
+                                "parentSymbolTemplate": "d_{}",
+                                "parentSymbol": "d_{}"
+                            },
+                            "currentSymbol": "a_m",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param2",
+                            "valueNegated": false,
+                            "value": "20"
+                        }
+                    }
+                },
+                "4": {
+                    "id": "wk1_div_5_3",
+                    "equation_template_id": "div",
+                    "variables": {
+                        "cterm": {
+                            "id": "wk1_div_5_3_cterm",
+                            "name": "cterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "c_{}",
+                                "parentSymbolTemplate": "c_{3}",
+                                "parentSymbol": "c_{3}"
+                            },
+                            "currentSymbol": "a_n",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_n",
+                                "varDisplay": "c_{3}",
+                                "varDisplayTemplate": "c_{3}"
+                            }
+                        },
+                        "bterm": {
+                            "id": "wk1_div_5_3_bterm",
+                            "name": "bterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "b_{}",
+                                "parentSymbolTemplate": "b_{3}",
+                                "parentSymbol": "b_{3}"
+                            },
+                            "currentSymbol": "a_o",
+                            "expectedDomain": "free",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param5",
+                            "valueNegated": false,
+                            "value": "60"
+                        },
+                        "aterm": {
+                            "id": "wk1_div_5_3_aterm",
+                            "name": "aterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "a_{}",
+                                "parentSymbolTemplate": "a_{3}",
+                                "parentSymbol": "a_{3}"
+                            },
+                            "currentSymbol": "a_p",
+                            "expectedDomain": "free",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param6",
+                            "valueNegated": false,
+                            "value": "180"
+                        }
+                    }
+                },
+                "5": {
+                    "id": "wk1_div_6_4",
+                    "equation_template_id": "div",
+                    "variables": {
+                        "cterm": {
+                            "id": "wk1_div_6_4_cterm",
+                            "name": "cterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "c_{}",
+                                "parentSymbolTemplate": "c_{4}",
+                                "parentSymbol": "c_{4}"
+                            },
+                            "currentSymbol": "a_q",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_n",
+                                "varDisplay": "c_{3}",
+                                "varDisplayTemplate": "c_{3}"
+                            }
+                        },
+                        "bterm": {
+                            "id": "wk1_div_6_4_bterm",
+                            "name": "bterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "b_{}",
+                                "parentSymbolTemplate": "b_{4}",
+                                "parentSymbol": "b_{4}"
+                            },
+                            "currentSymbol": "a_r",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_g",
+                                "varDisplay": "\\phi_{}",
+                                "varDisplayTemplate": "\\phi_{}"
+                            }
+                        },
+                        "aterm": {
+                            "id": "wk1_div_6_4_aterm",
+                            "name": "aterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "a_{}",
+                                "parentSymbolTemplate": "a_{4}",
+                                "parentSymbol": "a_{4}"
+                            },
+                            "currentSymbol": "a_s",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": null,
+                            "valueSource": null,
+                            "valueNegated": true,
+                            "value": "wk1_div_6_4_aterm"
+                        }
+                    }
+                }
+            },
+            "solutionBoxes": {
+                "0": {
+                    "value": 3,
+                    "unit": "",
+                    "variable": "a_a",
+                    "variableDisplay": "c_{}",
+                    "valueSourceParent": "a_a",
+                    "valueNegated": false
+                },
+                "1": {
+                    "value": 300,
+                    "unit": "Nm",
+                    "variable": "a_j",
+                    "variableDisplay": "T_{}",
+                    "valueSourceParent": "a_j",
+                    "valueNegated": false
+                },
+                "2": {
+                    "value": 0.07638689964671,
+                    "unit": "Radian",
+                    "variable": "a_g",
+                    "variableDisplay": "\\phi_{}",
+                    "valueSourceParent": "a_g",
+                    "valueNegated": false
+                },
+                "3": {
+                    "value": 1.57095e-08,
+                    "unit": "m^4",
+                    "variable": "a_h",
+                    "variableDisplay": "J_{}",
+                    "valueSourceParent": "a_h",
+                    "valueNegated": false
+                },
+                "4": {
+                    "value": 3,
+                    "unit": "",
+                    "variable": "a_n",
+                    "variableDisplay": "c_{3}",
+                    "valueSourceParent": "a_n",
+                    "valueNegated": false
+                },
+                "5": {
+                    "value": -0.22916069894012997,
+                    "unit": "Radian",
+                    "variable": "a_s",
+                    "variableDisplay": "a_{4}",
+                    "valueSourceParent": "a_s",
+                    "valueNegated": false
+                },
+                "a_a": {
+                    "box_id_current": 0,
+                    "value": 3,
+                    "unit": "",
+                    "variable": "a_a",
+                    "variableDisplay": "c_{}"
+                },
+                "a_j": {
+                    "box_id_current": 1,
+                    "value": 300,
+                    "unit": "Nm",
+                    "variable": "a_j",
+                    "variableDisplay": "T_{}"
+                },
+                "a_g": {
+                    "box_id_current": 2,
+                    "value": 0.07638689964671,
+                    "unit": "Radian",
+                    "variable": "a_g",
+                    "variableDisplay": "\\phi_{}"
+                },
+                "a_h": {
+                    "box_id_current": 3,
+                    "value": 1.57095e-08,
+                    "unit": "m^4",
+                    "variable": "a_h",
+                    "variableDisplay": "J_{}"
+                },
+                "a_n": {
+                    "box_id_current": 4,
+                    "value": 3,
+                    "unit": "",
+                    "variable": "a_n",
+                    "variableDisplay": "c_{3}"
+                },
+                "a_s": {
+                    "box_id_current": 5,
+                    "value": -0.22916069894012997,
+                    "unit": "Radian",
+                    "variable": "a_s",
+                    "variableDisplay": "a_{4}"
+                }
+            }
+        }
+    },
+    "solutions": {
+        "0": {
+            "id": "0",
+            "solution": "-0.2292",
+            "unit": "Radian",
+            "source": "a_s",
+            "parent": "solution_box",
+            "type": "number"
+        }
+    }
+}

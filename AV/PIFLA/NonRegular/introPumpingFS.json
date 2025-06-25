@@ -1,0 +1,55 @@
+{
+  "translations": {
+    "en": {
+      "finite": {
+        "type": "select",
+        "description": "Consider an arbitrary DFA.",
+        "question": "If there is no cycle, the language accepted must be:",
+        "answer": "Finite",
+        "choices": ["Finite", "Infinite"]
+      },
+      "infinite": {
+        "type": "select",
+        "description": "Consider an arbitrary DFA.",
+        "question": "If there is one or more cycle (on a path to any final state), the language accepted must be",
+        "answer": "Infinite",
+        "choices": ["Finite", "Infinite"]
+      },
+      "cycle": {
+        "type": "select",
+        "description":"To help explain the pumping concept, suppose that there is an exactly one cycle in the DFA, and it is on a path to a final state.",
+        "question": "What can happened to that cycle?",
+        "answer": ["The cycle might be skipped", "The cycle might be executed once", "The cycle might be executed more than once"],
+        "choices": ["The cycle might be skipped", "The cycle might be executed once", "The cycle might be executed more than once"]
+      },
+      "once": {
+        "type": "select",
+        "description": "Let us call the part captured by the DFA before the cycle $w_1$, the part contained in the cycle we will call $v$, and the part captured after the cycle we will call $w_2$.",
+        "question": "What is the form for a string accepted by this DFA when the cycle is executed exactly once?",
+        "answer": "$w = w_1vw_2$",
+        "choices": ["$w = w_1vw_2$", "$w = w_1w_2$", "$w = w_1v^2w_2$", "$w = w_1v^*w_2$"]
+      },
+      "none": {
+        "type": "select",
+        "description": "Let us call the part captured by the DFA before the cycle $w_1$, the part contained in the cycle we will call $v$, and the part captured after the cycle we will call $w_2$.",
+        "question": "What is the form for a string accepted by this DFA when the cycle is skipped?",
+        "answer": "$w = w_1w_2$",
+        "choices": ["$w = w_1vw_2$", "$w = w_1w_2$", "$w = w_1v^2w_2$", "$w = w_1v^*w_2$"]
+      },
+      "twice": {
+        "type": "select",
+        "description": "Let us call the part captured by the DFA before the cycle $w_1$, the part contained in the cycle we will call $v$, and the part captured after the cycle we will call $w_2$.",
+        "question": "What is the form for a string accepted by this DFA when the cycle is executed twice?",
+        "answer": "$w = w_1v^2w_2$",
+        "choices": ["$w = w_1vw_2$", "$w = w_1w_2$", "$w = w_1v^2w_2$", "$w = w_1v^*w_2$"]
+      },
+      "many": {
+        "type": "select",
+        "description": "Let us call the part captured by the DFA before the cycle $w_1$, the part contained in the cycle we will call $v$, and the part captured after the cycle we will call $w_2$.",
+        "question": "In general, the DFA accepts all strings in the form:",
+        "answer": "$w = w_1v^*w_2$",
+        "choices": ["$w = w_1vw_2$", "$w = w_1w_2$", "$w = w_1v^2w_2$", "$w = w_1v^*w_2$"]
+      }
+    }
+  }
+}

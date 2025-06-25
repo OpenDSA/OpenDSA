@@ -73,8 +73,9 @@ static void inssortshift(int[] A) {
   for (int i=1; i<A.length; i++) { // Insert i'th record
     int j;
     int temp = A[i];
-    for (j=i; (j>0) && (temp < A[j-1]); j--)
+    for (j=i; (j>0) && (temp < A[j-1]); j--) {
       A[j] = A[j-1];
+    }
     A[j] = temp;
   }
 }
@@ -84,20 +85,22 @@ static void inssortshift(int[] A) {
 // function call
 static void inssort2(int[] A) {
   int temp;
-  for (int i=1; i<A.length; i++) // Insert i'th record
+  for (int i=1; i<A.length; i++) { // Insert i'th record
     for (int j=i; (j>0) && (A[j] < A[j-1]); j--) {
       temp = A[j]; A[j] = A[j-1]; A[j-1] = temp;
     }
+  }
 }
 
 @SuppressWarnings("unchecked") // Generic array allocation
 static Boolean sorttest(int[] B) {
   int i;
   Integer[] A = new Integer[B.length];
-  for (i=0; i<B.length; i++)
+  for (i=0; i<B.length; i++) {
     A[i] = new Integer(B[i]);
+  }
   inssort(A);
-  if (!checkorder(A)) return false;
+  if (!checkorder(A)) { return false; };
 
   //  KVPair[] AKV = (KVPair[])new Object[B.length];
   //  for (i=0; i<B.length; i++)

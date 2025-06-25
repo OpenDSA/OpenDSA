@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Reduction of Clique to Independent Set Slideshow
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction; Clique Problem; Independent Set Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating a reduction from an instance of the Clique problem to an instance of the Independent Set problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "cliqueToISCON";
@@ -13,41 +23,38 @@ $(document).ready(function () {
     MathJax.Hub.Queue(["Typeset" , MathJax.Hub]); });
 
   var av = new JSAV(av_name);
-
-  //slide 1
-
   var i, j;
 
-  av.umsg("<br><b>Reduction of Clique Problem to Independent Set Problem </b>");
+  // Slide 1
+  av.umsg("<br><b>Reduction of an input instance to CLIQUE to an equivalent instance of INDEPENDENT SET.</b>");
   var nl1=av.label("This slideshow presents how to reduce"+
-                   " a Clique problem to an Independent Set problem in polynomial time",{top:0});
+                   "an input instance to CLIQUE to an equivalent input instance to INDEPENDENT SET in polynomial time",{top:0});
   av.displayInit();
   av.step();
-  av.umsg("<br><b>Clique  and Independent Set problems</b>");
+
+  // Slide 2
+  av.umsg("<br><b>CLIQUE and INDEPENDENT SET problems</b>");
   nl1.hide();
   var nl1=av.label("For a given graph $G = ( V , E )$ and integer $k$, the "
-                   +"Clique problem is to find whether $G$ contains a clique of size "
-                   +"$>= k$.<br><br>For a given graph $G' = ( V' , E' )$ and integer $k'$, the "
-                   +"Independent Set problem is to find whether $G'$ contains an Independent Set "
-                   +"of size $>= k'$.", {top:-10});
-
+                   + "CLIQUE problem is to find whether $G$ contains a clique of size "
+                   + "$\\geq k$.<br><br>For a given graph $G' = (V' , E')$ and integer $k'$, the "
+                   + "INDEPENDENT SET problem is to find whether $G'$ contains an Independent Set "
+                   +"of size $\\geq k'$.", {top: -10});
   av.step();
 
-  //slide 2
-
+  // Slide 3
   nl1.hide();
-  av.umsg("<br><b>Reduction of Clique to Independent Set</b>");
-  nl1=av.label("To reduce a Clique Problem to an Independent Set problem for a given "
-               +"graph $G = ( V , E )$, construct a complimentary graph $G' = ( V' , E' "
-               +")$ such that <br><br>1. $V = V'$ , that is the compliment graph will have the same "
-               +"vertices as the original graph<br><br>2.  $E'$ is the compliment of $E$ that is"+
-               " $G'$ has all the edges that is <b>not</b> present in $G$<br><br>"
-               +"Note:  Construction of the complimentary graph can be done in "
-               +"polynomial time", {top:-10});
-
+  av.umsg("<br><b>Reduction of CLIQUE to INDEPENDENT SET</b>");
+  nl1=av.label("To reduce a CLIQUE input instance to an INDEPENDENT SET input instance for a given "
+               +"graph $G = (V , E)$, construct a complementary graph $G' = (V' , E'"
+               +")$ such that <br><br>1. $V = V'$ , that is the complement graph will have the same "
+               +"vertices as the original graph.<br><br>2. $E'$ is the complement of $E$ that is"+
+               " $G'$ has all the edges that is <b>not</b> present in $G$.<br><br>"
+               +"Construction of the complementary graph can be done in "
+               +"polynomial time.", {top:-10});
   av.step();
 
-  //slide 3
+  // Slide 4
   nl1.hide();
   av.umsg("<br><b>Example graph</b>");
   // We need a graph G and its complement G'.
@@ -105,130 +112,106 @@ $(document).ready(function () {
       isEdges.push(edges[i]);
   g.layout();
   g.show();
-
-
   av.step();
 
-  //slide 4
-
+  // Slide 5
   //fade away G and display G'
   av.umsg("<br><b>The Complement graph</b>");
   for(j=0;j<cliqueEdges.length;j++)
     cliqueEdges[j].addClass("bluredge");
   for(i=0;i<isEdges.length;i++)
     isEdges[i].show();
-
   av.step();
 
+  // Slide 6
   //display G'
   for(j=0;j<cliqueEdges.length;j++)
     cliqueEdges[j].hide();
-
   av.step();
 
-  //slide 6
-
-  av.umsg("<br><b>Clique problem reduced to Independent Set</b><br><br><br>");
+  // Slide 7
+  av.umsg("<br><b>CLIQUE reduced to INDEPENDENT SET</b><br><br><br>");
   g.hide();
-  nl1=av.label("1. <b>If there is an independent set of size k in the complement "
-               +"graph $G'$</b>, it implies no two vertices<br> share an edge in $G'$ which further "
-               +"implies all of those vertices share an edge with all others in $G$ forming <br>a "
-               +"clique. that is <b>there exists a clique of size k in $G$</b><br><br>",
+  nl1=av.label("1. <b>If there is an independent set of size $k$ in the complement "
+               + "graph $G'$</b>, it implies no two vertices<br> share an edge in $G'$, which further "
+               + "implies all of those vertices share an edge with all others in $G$ forming <br>a "
+               + "clique. That is, <b>there exists a clique of size $k$ in $G$.</b><br><br>",
                {top:0});
-
   av.step();
 
-  //slide 7
-
+  // Slide 8
   var nl2=av.label("2. <b>If there is a clique of size $k$ in the graph $G$</b>, it implies "
-                   +"all vertices share an edge with all others in <br>$G$ which further implies no two of "
-                   +"these vertices share an edge in $G'$ forming an Independent Set. that is <br><b>there "
-                   +"exists an independent set of size k in $G'$</b>", {top:120});
-
+                   +"all vertices share an edge with all others in $G$,<br>which further implies no two of "
+                   +"these vertices share an edge in $G'$ (thus forming an Independent Set. That is, <br><b>there "
+                   +"exists an independent set of size $k$ in $G'$.</b>", {top:120});
   av.step();
 
-  //slide 8
-
-  av.umsg("<br><b>Does G' below have an independent set of size 8? "
+  // Slide 9
+  av.umsg("<br><b>Does $G'$ have an independent set of size 8?"
           +"</b><br><br><br>");
   nl1.hide();
   nl2.hide();
   g.show();
-
   av.step();
 
-  //slide 9
-
+  // Slide 10
   nl1=av.label("<b>NO</b>", {top:-10});
   av.step();
 
-  //slide 10
-
+  // Slide 11
   //fade away G' and display G.
   nl1.hide();
-  av.umsg("<br><b>Does G below have a clique of size 8? </b><br><br><br>");
+  av.umsg("<br><b>Does G have a clique of size 8?</b><br><br><br>");
   for(j=0;j<cliqueEdges.length;j++)
     cliqueEdges[j].removeClass("bluredge").show();
   for(i=0;i<isEdges.length;i++)
     isEdges[i].addClass("bluredge").show();
-
   av.step();
 
-  //slide 11
-
+  // Slide 12
   //display G
-
   for(i=0;i<isEdges.length;i++)
     isEdges[i].hide();
   nl1=av.label("<b>NO</b>", {top:-10});
-
   av.step();
 
-  //slide 12
+  // Slide 13
   nl1.hide();
   //display G'
-  av.umsg("<br><b>Does G' below have an independent set of size 5? "
+  av.umsg("<br><b>Does $G'$ have an independent set of size 5?"
           +"</b><br><br><br>");
   for(j=0;j<cliqueEdges.length;j++)
     cliqueEdges[j].hide();
   for(i=0;i<isEdges.length;i++)
     isEdges[i].removeClass("bluredge").show();
-
   av.step();
 
-  //slide 13
-
+  // Slide 14
   nl1=av.label("<b>YES</b>", {top:-10});
-
   //highlight the nodes of the Independent set in G'
-
   var sol = new Array(2, 3, 5, 6, 7);
   for(i=0;i<5;i++)
     nodes[sol[i]].addClass("highlightnode");
   av.step();
   nl1.hide();
-  //slide 14
 
+  // Slide 15
   // superimpose the nodes of Independent Set on G.
   av.umsg("<br><b>The independent set of G' on G </b>");
   for(j=0;j<cliqueEdges.length;j++)
     cliqueEdges[j].addClass("bluredge").show();
   av.step();
 
-  //slide 15
-
+  // Slide 16
   // superimpose the nodes of Independent Set on G.
   for(i=0;i<isEdges.length;i++)
     isEdges[i].addClass("bluredge");
   for(j=0;j<cliqueEdges.length;j++)
     cliqueEdges[j].removeClass("bluredge");
-
   av.step();
 
-  //slide 16
-
+  // Slide 17
   //highlight the edges of the clique to show its pesence in G.
-
   for(i=0;i<edges.length;i++)
     edges[i].addClass("semibluredge");
   for(i=0;i<isEdges.length;i++)
@@ -236,7 +219,6 @@ $(document).ready(function () {
   for(i=0;i<5;i++)
     for(j=i+1;j<5;j++)
       g.getEdge(nodes[(sol[i])], nodes[(sol[j])]).addClass("highlightedge");
-  av.umsg("<br><b>It forms a clique of size 5 in G</b>");
-
+  av.umsg("<br><b>It forms a clique of size 5 in $G$</b>");
   av.recorded();
 });

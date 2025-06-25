@@ -1,0 +1,164 @@
+{
+  "translations": {
+    "en": {
+      "why": {
+        "type": "multiple",
+        "description": "First, why would we need to minimize the number of states? Remember that we might build an NFA when it is easier for us to design an acceptor for some language. And later in this book, we will present other conversion algorithms that make an NFA.",
+        "question": "[T|F] An NFA is more powerful than a DFA. That is why we use NFAs.",
+        "answer": [
+          "False"
+        ],
+        "choices": [
+          "False",
+          "True"
+        ],
+        "correctFeedback": ["The family of all NFAs can accept exactly the same languages as the family of all DFAs."]
+      },
+      "manystates": {
+        "type": "multiple",
+        "description": "If we have a NFA, we might want to convert it to a DFA. For one thing, NFAs are relatively expensive to operate, in that we have to simulate them by trying all of the multiple paths that the NFA can take. But remember how the algorithm works to convert a NFA to the equivalent DFA. Can you immagine how big maybe the resulting DFA will be?",
+        "question": "When we convert a NFA to a DFA, what is the worst case set of states for the converted DFA?",
+        "answer": [
+          "The powerset of the NFA's set of states, $Q_{DFA} = 2^{Q_{NFA}}.$"
+        ],
+        "choices": [
+          "The powerset of the NFA's set of states, $Q_{DFA} = 2^{Q_{NFA}}.$",
+          "The NFA's set of states, $Q_{DFA} = Q_{NFA}.$"
+        ],
+        "correctFeedback": ["Another way to say this: If the NFA has $n$ states, then the DFA could possibly have as many as $2^n$ states."]
+      }, 
+      "power": {
+        "type": "multiple",
+        "description": "So, the DFA could have as many as $2^n$ states where the original NFA had only $n$ states. This is probably far more states than we need. If it is possible, we would like to have an algorithm that reduces this large number of states. Of course, when we modify the DFA to have fewer states, the result has to accept the same language. Otherwise, this is not solving our problem.",
+        "question": "[T|F] The minimized DFA will be less powerful than the original DFA.",
+        "answer": [
+          "False"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ]
+      },  
+      "similar": {
+        "type": "select",
+        "description": "Sometimes, these huge DFA have many states that are similar. The word similar here means that some states do the same transitions (go to the same target states) when given the same inputs. Combining these states together will minimize the total number of states in the machine without changing its behavior. In general, any two states in a DFA are either <b>distinquishable</b> or <b>indistinquishable</b>. They are indistinguishable if they are equivalent, meaning they effectively have identical behavior.",
+        "question": "What are reasonable words to describe 'distinquishable'?",
+        "answer": [
+          "Similar",
+          "Equivalent",
+          "Identical behavior"
+        ],
+        "choices": [
+          "Similar",
+          "Equivalent",
+          "Identical behavior"
+        ]
+      }, 
+      "indistinguishable": {
+        "type": "multiple",
+        "description": "Definition: Two states $p$ and $q$ are <b>indistinquishable</b> if, for all $w \\in \\Sigma^*$, we have $\\delta^*(q, w) \\in F \\Rightarrow \\delta^*(p, w) \\in F\\\\ \\delta^*(p, w) \\not\\in F \\Rightarrow \\delta^*(q, w) \\not\\in F$.<br/><br/>In other words, if states $p$ and $q$ are indistinquishable, then starting in either state for any string $w$ ends in the same result. Both either accept the string or reject it.",
+        "question": "This definition tells us that we should check all possible strings against states $p$ and $q$ to decide if they are indistinquishable",
+        "answer": [
+          "True"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ],
+        "correctFeedback": ["But is this really possible to implement? Hold that thought, we will come back to it."]
+      },
+      "distinguishable": {
+        "type": "multiple",
+        "description": "What about distinquishable states?<br/>Definition: Two states $p$ and $q$ are <b>distinquishable</b> if $\\exists \\ w \\in \\Sigma^*$ such that $\\delta^*(q, w)\\in F \\Rightarrow \\delta^*(p, w) \\not\\in F$ OR $\\delta^*(q, w) \\not\\in F \\Rightarrow \\delta^*(p, w) \\in F$.<br/><br/>This means that there exists a string $w$ that makes the two states lead to different outcomes. One of them leads to accepting the string (a final state), and the other leads to a non-final state. So these states have different behaviors on at least one string.",
+        "question": "This definition tells us that we should check all possible strings against states $p$ and $q$ until we either check them all, or find one that leads to different outcomes.",
+        "answer": [
+          "True"
+        ],
+        "choices": [
+          "True",
+          "False"
+        ],
+        "correctFeedback": ["But again, this is not really possible to implement."]
+      },
+      "Aa": {
+        "type": "multiple",
+        "description": "Let us see an example to clarify the process. Look at this DFA.",
+        "question": "What is $\\delta^*(A, a)$?",
+        "answer": [
+          "non-final state"
+        ],
+        "choices": [
+          "non-final state",
+          "final state"
+        ],
+        "correctFeedback": ["From state $A$, processing the string $a$ takes the machine to non-final state $B$."]
+      },
+      "Aab": {
+        "type": "multiple",
+        "description": "Let us see an example to clarify the process. Look at this DFA.",
+        "question": "What about $\\delta^*(A, ab)$?",
+        "answer": [
+          "final state"
+        ],
+        "choices": [
+          "non-final state",
+          "final state"
+        ],
+        "correctFeedback": ["From state $A$, processing the string $ab$ takes the machine to final state $C$."]
+      },
+      "Fa": {
+        "type": "multiple",
+        "description": "Let us see an example to clarify the process. Look at this DFA.",
+        "question": "What is $\\delta^*(F, a)$?",
+        "answer": [
+          "non-final state"
+        ],
+        "choices": [
+          "non-final state",
+          "final state"
+        ],
+        "correctFeedback": ["From state $F$, processing the string $a$ takes the machine to non-final state $F$."]
+      },
+      "Fab": {
+        "type": "multiple",
+        "description": "Let us see an example to clarify the process. Look at this DFA.",
+        "question": "What is $\\delta^*(F, ab)$?",
+        "answer": [
+          "non-final state"
+        ],
+        "choices": [
+          "non-final state",
+          "final state"
+        ],
+        "correctFeedback": ["From state $F$, processing the string $ab$ takes the machine to non-final state $D$."]
+      },
+      "conclusion": {
+        "type": "multiple",
+        "description": "Let us see an example to clarify the process. Look at this DFA.",
+        "question": "Are states A and F indistinquishable?",
+        "answer": [
+          "No"
+        ],
+        "choices": [
+          "Yes",
+          "No"
+        ],
+        "correctFeedback": ["We already know enough to see that states A and F behave differently (have different outcomes) on at least one string, because $\\delta^*(A, ab)$ goes to a final state while $\\delta^*(F, ab)$ goes to a non-final state. But consider the behavior of $D$ on the strings $a$ and $ab$. At least so far as those two stings go, states $A$ and $D$ are indistinguishable because they yield the same outcome (non-final state on $a$, final state on $ab$)."]
+      },
+      "unknown": {
+        "type": "multiple",
+        "description": "So, we know that A must be in a different equivalence subset from F.",
+        "question": "Are A and D equivalent?",
+        "answer": [
+          "We do not know yet. There is not enough evidence yet to decide."
+        ],
+        "choices": [
+          "We do not know yet. There is not enough evidence yet to decide.",
+          "Yes because they are equivalent in both $a$ and $ab$.",
+          "No, they are not equivalent."
+        ],
+        "correctFeedback": ["We now know based on some initial checking that A and F are not equivalent, while A and D <b>might</b> be equivalent but we don't know yet for sure."]
+      }
+    }
+  }
+}

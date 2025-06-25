@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Analyzing Problems
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: algorithm analysis
    :satisfies: analyzing problems
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Analyzing Problems
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to analyzing problems in terms of their upper bound (best algorithm known) and lower bound (best algorithm possible).
+
 
 Analyzing Problems
 ==================
@@ -133,3 +140,4 @@ problem.
 
 .. avembed:: Exercises/AlgAnal/AnalProblemSumm.html ka
    :long_name: Problem Analysis Exercise
+   :keyword: Algorithm Analysis; Analyzing Problems

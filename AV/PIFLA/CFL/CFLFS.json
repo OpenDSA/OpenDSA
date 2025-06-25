@@ -1,0 +1,84 @@
+{
+  "translations": {
+    "en": {
+      "CFGDefV": {
+        "type": "multiple",
+        "description": "$\\textbf {Definition}$: A grammar $G=(V,T,S,P)$ is context-free if all productions are of the form <br> $A \\rightarrow x$<br> where $A \\in V$ and $x \\in (V∪T)^∗$.<br>(T includes $\\lambda$.)",
+        "question": "What is V?",
+        "answer": "Set of Variables",
+        "choices": ["Set of Variables", "Set of Terminals", "Start Variable", "Set of Production rules"]
+      },
+      "CFGDefT": {
+        "type": "multiple",
+        "description": "$\\textbf {Definition}$: A grammar $G=(V,T,S,P)$ is context-free if all productions are of the form <br> $A \\rightarrow x$<br> where $A \\in V$ and $x \\in (V∪T)^∗$.<br>(T includes $\\lambda$.)",
+        "question": "What is T?",
+        "answer": "Set of Terminals",
+        "choices": ["Set of Variables", "Set of Terminals", "Start Variable", "Set of Production rules"]
+      },
+      "CFGDefS": {
+        "type": "multiple",
+        "description": "$\\textbf {Definition}$: A grammar $G=(V,T,S,P)$ is context-free if all productions are of the form <br> $A \\rightarrow x$<br> where $A \\in V$ and $x \\in (V∪T)^∗$.<br>(T includes $\\lambda$.)",
+        "question": "What is S?",
+        "answer": "Start Variable",
+        "choices": ["Set of Variables", "Set of Terminals", "Start Variable", "Set of Production rules"]
+      },
+      "CFGDefP": {
+        "type": "multiple",
+        "description": "$\\textbf {Definition}$: A grammar $G=(V,T,S,P)$ is context-free if all productions are of the form <br> $A \\rightarrow x$<br> where $A \\in V$ and $x \\in (V∪T)^∗$.<br>(T includes $\\lambda$.)",
+        "question": "What is P?",
+        "answer": "Set of Production rules",
+        "choices": ["Set of Variables", "Set of Terminals", "Start Variable", "Set of Production rules"]
+      },
+      "RHS": {
+        "type": "multiple",
+        "description": "$\\textbf {Definition}$: A grammar $G=(V,T,S,P)$ is context-free if all productions are of the form <br> $A \\rightarrow x$<br> where $A \\in V$ and $x \\in (V∪T)^∗$.<br>(T includes $\\lambda$.)",
+        "question": "When we say $A \\rightarrow x$, what are the possible values of $x$?",
+        "answer": "Any combination of Variables and Terminals",
+        "choices": ["One Variable only", "One Terminal", "Zero or more Variables only","Zero or more Terminals only","Any combination of Variables and Terminals","Any combination of zero or more Terminals and at most one Variable"]
+      },
+      "lambda": {
+        "type": "multiple",
+        "description": "$\\textbf {Definition}$: A grammar $G=(V,T,S,P)$ is context-free if all productions are of the form <br> $A \\rightarrow x$<br> where $A \\in V$ and $x \\in (V∪T)^∗$.<br>(T includes $\\lambda$.)",
+        "question": "When we say $A \\rightarrow x$, can $x$ be $\\lambda$?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "LHS": {
+        "type": "multiple",
+        "description": "$\\textbf {Definition}$: A grammar $G=(V,T,S,P)$ is context-free if all productions are of the form <br> $A \\rightarrow x$<br> where $A \\in V$ and $x \\in (V∪T)^∗$.<br>(T includes $\\lambda$.)",
+        "question": "When we say $A \\rightarrow x$, what are the possible values of $A$?",
+        "answer": "One Variable only",
+        "choices": ["One Variable only", "One Terminal", "Zero or more Variables only","Zero or more Terminals only","Any combination of Variables and Terminals"]
+      },
+      "CFL": {
+        "type": "select",
+        "description": "$\\textbf {Definition}$: L is a context-free language (CFL) iff $\\exists$ a context-free grammar (CFG) $G$ such that $L=L(G)$.",
+        "question": "What are consequences of this definition?",
+        "answer": ["All grammars we used so far are Context-Free Grammars", "All Regular Grammars are also Context-Free Grammars", "All languages that we have used in examples so far are Context-Free Languages"],
+        "choices": ["All grammars we used so far are Context-Free Grammars", "All Regular Grammars are also Context-Free Grammars", "All languages that we have used in examples so far are Context-Free Languages"]
+      },
+      "linear": {
+        "type": "select",
+        "description": "$\\textbf {Definition}$: A linear grammar has at most one variable on the right hand side of any production. Thus, right linear and left linear grammars are also linear grammars.",
+        "question": "What makes a grammar Linear?",
+        "answer": ["It has at most a single Variable on the RHS", "The grammar is either right linear or left linear"],
+                   "choices": ["It has at most a single Variable on the RHS", "It has only one variable in every production rule LHS", "It has a single production rule", "The grammar is either right linear or left linear"]
+      },
+      "linearCFG": {
+        "type": "multiple",
+        "description": "$\\textbf {Definition}$: A linear grammar has at most one variable on the right hand side of any production. Thus, right linear and left linear grammars are also linear grammars.",
+        "question": "[T|F] Linear Grammars are also Context Free Grammars",
+        "answer": "True. Linear Grammars also have a single Variable in the LHS of every production rule",
+        "choices": ["True. Linear Grammars also have a single Variable in the LHS of every production rule", "False, they are different types of grammars"]
+      },
+      "typeright": {
+        "type": "select",
+        "description": "$\\textbf {Definition}$: A linear grammar has at most one variable on the right hand side of any production. Thus, right linear and left linear grammars are also linear grammars.",
+        "question": "Given a grammar G, what types of grammar can it be if all of its productions have zero variables or a single variable at the right end of its RHS?",
+        "answer": ["Right Linear Grammar", "Right Regular Grammar", "Context-Free Grammar"],
+        "choices": ["Right Linear Grammar", "Right Regular Grammar", "Left Linear Grammar", "Left Regular Grammar", "Context-Free Grammar"]
+      }
+    }
+  }
+}
+

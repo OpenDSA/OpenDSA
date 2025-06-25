@@ -37,7 +37,7 @@ const equations = [
         },
         domains: {
             'shearstress': 'pressure',
-            'shearforce': 'length3',
+            'shearforce': 'force',
             'area': 'length2'
         },
         height: 60,
@@ -158,16 +158,16 @@ const equations = [
         latex: '\\sigma_{ } = E_{ } \\cdot \\epsilon_{ }',
         latex_boxes: '\\Box = \\Box \\cdot \\Box',
         params_latex: ['\\sigma_{ }', 'E_{ }', '\\epsilon_{ }'],
-        template: 'normalstress = normalstresscoeff * normalstrain',
-        params: ['normalstress', 'normalstresscoeff', 'normalstrain'],
+        template: 'normalstress = coeffEnstress * normalstrain',
+        params: ['normalstress', 'coeffEnstress', 'normalstrain'],
         variables: {
             'normalstress': '\\sigma_{ }',
-            'normalstresscoeff': 'E_{ }',
+            'coeffEnstress': 'E_{ }',
             'normalstrain': '\\epsilon_{ }'
         },
         domains: {
             'normalstress': 'pressure',
-            'normalstresscoeff': 'pressure',
+            'coeffEnstress': 'pressure',
             'normalstrain': 'strain'
         },
         height: 42,
@@ -180,16 +180,16 @@ const equations = [
         latex: '\\tau{ } = G_{ } \\cdot \\gamma_{ }',
         latex_boxes: '\\Box = \\Box \\cdot \\Box',
         params_latex: ['\\tau_{ }', 'G_{ }', '\\gamma_{ }'],
-        template: 'shearstress = shearstresscoeff * shearstrain',
-        params: ['shearstress', 'shearstresscoeff', 'shearstrain'],
+        template: 'shearstress = coeffGshstress * shearstrain',
+        params: ['shearstress', 'coeffGshstress', 'shearstrain'],
         variables: {
             'shearstress': '\\tau_{ }',
-            'shearstresscoeff': 'G_{ }',
+            'coeffGshstress': 'G_{ }',
             'shearstrain': '\\gamma_{ }'
         },
         domains: {
             'shearstress': 'pressure',
-            'shearstresscoeff': 'pressure',
+            'coeffGshstress': 'pressure',
             'shearstrain': 'strain'
         },
         height: 42,
@@ -202,7 +202,7 @@ const equations = [
         latex: '\\nu_{ } = - \\frac {\\epsilon_{lat_{ }}} {\\epsilon_{long_{ }}}',
         latex_boxes: '\\Box = - \\dfrac \\Box \\Box',
         params_latex: ['\\nu_{ }', '\\epsilon_{lat_{ }}', '\\epsilon_{long_{ }}'],
-        template: 'poissonratio = - latstrain * longstrain',
+        template: 'poissonratio = - latstrain / longstrain',
         params: ['poissonratio', 'longstrain', 'latstrain'],
         variables: {
             'poissonratio': '\\nu_{ }',
@@ -224,16 +224,16 @@ const equations = [
         latex: 'G_{ } = \\frac {E_{ }} {2\\cdot(1+\\nu_{ })}',
         latex_boxes: '\\Box = \\dfrac {\\Box} {2\\cdot(1+\\Box)}',
         params_latex: ['G_{ }', 'E_{ }', '\\nu_{ }'],
-        template: 'shearstresscoeff = normalstresscoeff / (2*(1+ poissonratio ))',
-        params: ['shearstresscoeff', 'poissonratio', 'normalstresscoeff'],
+        template: 'coeffGshstress = coeffEnstress / (2*(1+ poissonratio ))',
+        params: ['coeffGshstress', 'poissonratio', 'coeffEnstress'],
         variables: {
-            'shearstresscoeff': 'G_{ }',
-            'normalstresscoeff': 'E_{ }',
+            'coeffGshstress': 'G_{ }',
+            'coeffEnstress': 'E_{ }',
             'poissonratio': '\\nu_{ }'
         },
         domains: {
-            'shearstresscoeff': 'pressure',
-            'normalstresscoeff': 'pressure',
+            'coeffGshstress': 'pressure',
+            'coeffEnstress': 'pressure',
             'poissonratio': 'dimensionless'
         },
         height: 60,
@@ -357,20 +357,20 @@ const equations = [
         latex: '\\delta_{ } = \\frac {F_{ } \\cdot L_{ }} {A_{ } \\cdot E_{ }}',
         latex_boxes: '\\Box= \\dfrac {\\Box \\cdot \\Box} {\\Box \\cdot \\Box}',
         params_latex: ['\\delta_{ }','F_{ }', 'L_{ }', 'A_{ }', 'E_{ }'],
-        template: 'deform = ( force * length ) / ( area * normalstresscoeff )',
-        params: ['deform', 'area', 'normalstresscoeff', 'force', 'length'],
+        template: 'deform = ( force * length ) / ( area * coeffEnstress )',
+        params: ['deform', 'area', 'coeffEnstress', 'force', 'length'],
         variables: {
             'deform': '\\delta_{ }',
             'force': 'F_{ }',
             'area': 'A_{ }',
-            'normalstresscoeff': 'E_{ }',
+            'coeffEnstress': 'E_{ }',
             'length': 'L_{ }',
         },
         domains: {
             'deform': 'length',
             'force': 'force',
-            'area': 'area',
-            'normalstresscoeff': 'pressure',
+            'area': 'length2',
+            'coeffEnstress': 'pressure',
             'length': 'length'
         },
         height: 60,
@@ -378,23 +378,23 @@ const equations = [
     },
     {
         group: 'Axial',
-        id: "Relating deformation to stress L and E",
-        name: 'Intermediate stress equation',
+        id: 'deformationAxialMemberStressLE',
+        name: 'Deformation in Axial Member with sigma L E',
         latex: '\\delta_{ } = \\sigma_{ } \\frac {L_{ }} {E_{ }}',
         latex_boxes: '\\Box=\\Box \\dfrac \\Box \\Box',
         params_latex: ['\\delta_{ }','\\sigma_{ }', 'L_{ }', 'E_{ }'],
-        template: 'deform = normalstress * length / normalstresscoeff',
-        params: ['deform', 'normalstress', 'normalstresscoeff', 'length'],
+        template: 'deform = normalstress * length / coeffEnstress',
+        params: ['deform', 'normalstress', 'coeffEnstress', 'length'],
         variables: {
             'deform': '\\delta_{ }',
             'normalstress': '\\sigma_{ }',
-            'normalstresscoeff': 'E_{ }',
+            'coeffEnstress': 'E_{ }',
             'length': 'L_{ }'
         },
         domains: {
             'deform': 'length',
             'normalstress': 'pressure',
-            'normalstresscoeff': 'pressure',
+            'coeffEnstress': 'pressure',
             'length': 'length'
         },
         height: 60,
@@ -410,13 +410,13 @@ const equations = [
             '+ \\Box \\cdot \\Box \\cdot \\Box',
         params_latex: ['\\delta_{ }','F_{ }', 'L_{ }', 'A_{ }', 'E_{ }',
             '\\alpha_{ }', '\\Delta T_{ }', 'L_{ }'],
-        template: 'deform = ( force * length1 ) / ( area * normalstresscoeff ) + '+
+        template: 'deform = ( force * length1 ) / ( area * coeffEnstress ) + '+
             'thermalcoeff * tempchange * length2',
-        params: ['deform', 'area', 'normalstresscoeff', 'force', 'length1', 
+        params: ['deform', 'area', 'coeffEnstress', 'force', 'length1', 
             'thermalcoeff', 'tempchange', 'length2'],
         variables: {
             'deform': '\\delta_{ }',
-            'normalstresscoeff': 'E_{ }',
+            'coeffEnstress': 'E_{ }',
             'length1': 'L_{ }',
             'force': 'F_{ }',
             'area': 'A_{ }',
@@ -428,7 +428,7 @@ const equations = [
             'deform': 'length',
             'force': 'force',
             'area': 'length2',
-            'normalstresscoeff': 'pressure',
+            'coeffEnstress': 'pressure',
             'length1': 'length',
             'length2': 'length',
             'tempchange': 'temperature',
@@ -501,7 +501,13 @@ const equations = [
             'radius': 'length'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "mominertia": "radius ^ 4",
+            "radius": "mominertia ^ (1/4)",
+            "consistency": "mominertia  / ( radius ^ 4)",
+        }
     },
     {
         group: 'Torsion',
@@ -520,7 +526,13 @@ const equations = [
             'diameter': 'length'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "mominertia": "diameter ^ 4",
+            "diameter": "mominertia ^ (1/4)",
+            "consistency": "mominertia / ( diameter ^ 4 )",
+        }
     },
     // {
     //     group: 'Torsion',
@@ -540,19 +552,19 @@ const equations = [
         name: 'angletwist',
         latex: '\\phi_{ } = \\frac { T_{ } L_{ } } { J_{ } G_{ } }',
         latex_boxes: '\\Box = \\dfrac { \\Box \\Box } { \\Box \\Box }',
-        template: 'angletwist = ( torque * length ) / ( mominertia * shearstresscoeff )',
-        params: ['angletwist', 'mominertia', 'shearstresscoeff', 'torque', 'length'],
+        template: 'angletwist = ( torque * length ) / ( mominertia * coeffGshstress )',
+        params: ['angletwist', 'mominertia', 'coeffGshstress', 'torque', 'length'],
         variables: {
             'angletwist': '\\phi_{ }',
             'mominertia': 'J_{ }',
-            'shearstresscoeff': 'G_{ }',
+            'coeffGshstress': 'G_{ }',
             'torque': 'T_{ }',
             'length': 'L_{ }'
         },
         domains: {
             'angletwist': 'angle',
             'mominertia': 'length4',
-            'shearstresscoeff': 'pressure',
+            'coeffGshstress': 'pressure',
             'torque': 'torque',
             'length': 'length'
         },
@@ -637,7 +649,13 @@ const equations = [
             'radius': 'length'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "area": "radius ^ 2",
+            "radius": "area ^ 0.5",
+            "consistency": "area / ( radius ^ 2 )",
+        }
     },
     {
         group: 'Geometry',
@@ -656,7 +674,13 @@ const equations = [
             'diameter': 'length'
         },
         height: 60,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "area": "diameter ^ 2",
+            "diameter": "area ^ 0.5",
+            "consistency": "area / ( diameter ^ 2 )",
+        }
     },
     {
         group: 'Geometry',
@@ -677,27 +701,39 @@ const equations = [
             'height': 'length'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "area": "base * height",
+            "base": "area / height",
+            "height": "area / base",
+            "base height": "(area)^0.5",
+            "height base": "(area)^0.5",
+            "consistency": "area / ( base ) / ( height )",
+        }
     },
-    {
-        group: 'Geometry',
-        id: 'radiusDiamReln',
-        name: 'radiusDiamReln',
-        latex: 'd_{ } = \\frac { r_{ } }{2}',
-        latex_boxes: '\\Box = \\dfrac { \\Box }{2}',
-        template: 'diameter = 0.5 * radius',
-        params: ['diameter', 'radius'],
-        variables: {
-            'diameter': 'd_{ }',
-            'radius': 'r_{ }',
-        },
-        domains: {
-            'diameter': 'length',
-            'radius': 'length',
-        },
-        height: 60,
-        dispheight: 30
-    },
+    // Commented out since was causing issues in Clevis1 and Clevis2 with /2
+    // in numerator and radius in area in denominator. Originally 0.5 *, /2 did not help
+    // Hence, alternative is eliminate and leave with c=a/b in arithmetic, which works
+    // {
+    //     group: 'Geometry',
+    //     id: 'radiusDiamReln',
+    //     name: 'radiusDiamReln',
+    //     latex: 'r_{ } = \\frac { d_{ } }{2}',
+    //     latex_boxes: '\\Box = \\dfrac { \\Box }{2}',
+    //     template: 'radius = diameter / 2.0',
+    //     params: ['radius', 'diameter'],
+    //     variables: {
+    //         'diameter': 'd_{ }',
+    //         'radius': 'r_{ }',
+    //     },
+    //     domains: {
+    //         'diameter': 'length',
+    //         'radius': 'length',
+    //     },
+    //     height: 60,
+    //     dispheight: 30
+    // },
 
     {
         group: 'Arithmetic',
@@ -717,7 +753,8 @@ const equations = [
             'aterm': 'free'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "any"
     },
     {
         group: 'Arithmetic',
@@ -739,7 +776,8 @@ const equations = [
             'aterm': 'free'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "any"
     },
     // {
     //     group: 'Arithmetic',
@@ -783,7 +821,8 @@ const equations = [
             'aterm': 'free'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "any"
     },
     {
         group: 'Arithmetic',
@@ -805,7 +844,16 @@ const equations = [
             'aterm': 'free'
         },
         height: 60,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "cterm": "aterm / bterm",
+            "aterm": "bterm * cterm",
+            "bterm": "aterm / cterm",
+            "cterm bterm": "(aterm)^0.5",
+            "bterm cterm": "(aterm)^0.5",
+            "consistency": "aterm / ( bterm ) / ( cterm )",
+        }
     },
     {
         group: 'Arithmetic',
@@ -827,7 +875,16 @@ const equations = [
             'aterm': 'free'
         },
         height: 42,
-        dispheight: 30
+        dispheight: 30,
+        resolve: "all",
+        subjectForm: {
+            "cterm": "aterm * bterm",
+            "aterm": "cterm / bterm",
+            "bterm": "cterm / aterm",
+            "aterm bterm": "(cterm)^0.5",
+            "bterm aterm": "(cterm)^0.5",
+            "consistency": "aterm * bterm / ( cterm )",
+        }
     },
     // {
     //     group: 'Arithmetic',

@@ -76,6 +76,7 @@
 .jsavedgelabel {
 	cursor: pointer;
 	font-size: 1.0em;
+	line-height: 1;
 }
 .jsavarray .jsavindex {
   width: 200px;
@@ -110,8 +111,3 @@
     border: 1px solid black;
     background-color: white;
 }
-
-/*.createExercise {
-	position: absolute;
-  top: 700px;
-}*/

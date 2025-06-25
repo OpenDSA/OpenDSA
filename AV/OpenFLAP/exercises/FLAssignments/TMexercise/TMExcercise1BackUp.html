@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <title>TM Editor</title>
     <script>
@@ -11,14 +11,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="FAEditor">
 	<meta name="author" content="Nabil Saad">
-    <link rel="stylesheet" href="../../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
     <link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../../OpenFLAP/css/customPrompt.css" type="text/css" />
     <link rel="stylesheet" href="../../../../../DataStructures/FLA/FLA.css" type="text/css" />
     <link rel="stylesheet" href="../../../../OpenFLAP/css/tester.css" type="text/css" />
 	<link rel="stylesheet" href="../../../../OpenFLAP/css/TMEditor.css" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../../../../lib/jquery.min.js"></script>
+<script src="../../../../../lib/jquery.migrate.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- add icon_button library -->
@@ -34,6 +35,7 @@
 
   <body>
     <div id="container">
+      <img id="check_mark" src="../../../green_check.png" alt="Proficient" style="display: none;float: left; width: 40px;">
         <h1 id="tester">Turing Machine Exercise</h1>
         <h2 id="question">Give a Turing Machine that matches the description: L(<span id="expression"></span>)</h2>
         <h2 id="description"></h2>
@@ -48,8 +50,6 @@
         </div>
 
         <p align="center" class="arrayPlace"></p>      
-        <p id="percentage"></p>
-        <table id="testResults"></table>
         <div id='download'></div>
         <div id="rmenu"></div>
         <div id="av">
@@ -67,14 +67,16 @@
           </div>
           <p class="jsavscore"></p>
           <p class="jsavoutput jsavline"></p>
-        </div>
-        
-      <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-      <script src="../../../../../JSAV/lib/jquery.transit.js"></script>
-      <script src="../../../../../JSAV/lib/raphael.js"></script>
-      <script src="../../../../../JSAV/lib/dagre.min.js"></script>
-      <script src="../../../../../JSAV/build/JSAV.js"></script>
+        <p id="percentage"></p>
+      <table id="testResults"></table>
+      </div>
+      <script src="../../../../../lib/jquery.min.js"></script>
+<script src="../../../../../lib/jquery.migrate.min.js"></script>
+      <script src="../../../../../lib/jquery.ui.min.js"></script>
+      <script src="../../../../../lib/jquery.transit.js"></script>
+      <script src="../../../../../lib/raphael.js"></script>
+      <script src="../../../../../lib/dagre.min.js"></script>
+      <script src="../../../../../lib/JSAV.js"></script>
       <script src="../../../../../lib/odsaUtils-min.js"></script>
       <script src="../../../../../lib/odsaAV-min.js"></script>
       <script src="../../../../../DataStructures/FLA/serializableGraph.js"></script>
@@ -85,7 +87,7 @@
       <script src="../../../../../DataStructures/FLA/TuringMachine.js"></script>
       <script src="../../exerController/ExerciseController.js"></script>
       <script src="../../../../../DataStructures/FLA/Grading.js"></script>
-      <script src="../../../../Development/formal_language/TMEditor.js"></script>
+      <script src="../../../../OpenFLAP/TMEditor.js"></script>
       
       
     </div>

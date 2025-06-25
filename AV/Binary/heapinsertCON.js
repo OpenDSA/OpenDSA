@@ -1,5 +1,16 @@
 /*global ODSA */
 // Insert slideshow
+
+// Title: Heap Insert Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Heap
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing insert into a heap. */
+
 $(document).ready(function() {
   "use strict";
   var sortArray = [88, 85, 83, 72, 73, 42, 57, 6, 48, 60, ""];

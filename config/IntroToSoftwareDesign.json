@@ -1,0 +1,510 @@
+{
+  "title": "Intro To Software Design",
+  "desc": "An objects first approach to introductory programming and design in Java.",
+  "theme": "haiku",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "code_lang": {
+    "Java": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java",
+      "lang": "java"
+    },
+    "C++": {
+      "ext": [
+        "cpp",
+        "h"
+      ],
+      "label": "C++",
+      "lang": "C++"
+    }
+  },
+  "tabbed_codeinc": false,
+  "lang": "en",
+  "build_JSAV": false,
+  "build_cmap": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "tag": "Java;CS1",
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "glob_ss_options": {
+    "threshold": 1.0,
+    "points": 0.0,
+    "required": false
+  },
+  "glob_ff_options": {
+    "threshold": 1.0,
+    "points": 0.0,
+    "required": false
+  },
+  "glob_ka_options": {
+    "threshold": 3,
+    "points": 1.0,
+    "required": true,
+    "partial_credit": true
+  },
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 30.0,
+      "required": true,
+      "partial_credit": true,
+      "enable_scrolling": true
+    },
+    "points": 1.0,
+    "frame_width": 1000,
+    "frame_height": 900    
+  },
+  "glob_pe_options": {
+    "threshold": 0.9,
+    "points": 2.0,
+    "required": true
+  },
+  "chapters": {
+
+    "Course Policies":{
+      "IntroToSoftwareDesign/CoursePolicies": {
+        "HonorCodeSumm": {
+          "points": 100,
+          "threshold": 10
+        }
+      }
+    },
+
+    "Getting Started":{
+      "IntroToSoftwareDesign/GettingStarted": {
+        "Syntax Practice 1a": {
+          "points": 20
+        },
+        "Syntax Practice 1b": {
+          "points": 20
+        },
+        "Programming Practice 1": {
+          "points": 30
+        },
+        "Week1Quiz1Summ": {
+          "points": 6
+        },
+        "Week1Quiz2Summ": {
+          "points": 6
+        },
+        "Week1ReadingQuizSumm": {
+          "points": 18,
+          "threshold": 10
+        }
+      }
+    },
+
+    "Inheritance and Polymorphism":{
+      "IntroToSoftwareDesign/InheritanceAndPolymorphism": {
+        "Syntax Practice 2a: Jeroo Methods": {
+          "points": 18
+        },
+        "Syntax Practice 2b: Subclass Constructors": {
+          "points": 15
+        },
+        "Syntax Practice 2c: More Subclass Constructors": {
+          "points": 12
+        },
+        "Programming Practice 2": {
+          "points": 20
+        },
+        "Week2Quiz1Summ": {
+          "points": 5
+        },
+        "Week2Quiz2Summ": {
+          "points": 5
+        },
+        "Week2Quiz3Summ": {
+          "points": 5
+        },
+        "Week2Quiz4Summ": {
+          "points": 5
+        },
+        "Week2ReadingQuizSumm": {
+          "points": 10,
+          "threshold": 10
+        },
+        "EGPSurvey": {
+          "points": 5,
+          "threshold": 1
+        }
+      }
+    },
+
+    "Conditional and Repeating Actions": {
+      "IntroToSoftwareDesign/ConditionalActions": {
+        "Syntax Practice 3a: If-Then-Else": {
+          "points": 10
+        },
+        "Syntax Practice 3b: If-Then": {
+          "points": 10
+        },
+        "Syntax Practice 3c: Multi-way If": {
+          "points": 10
+        },
+        "Syntax Practice 3d: Compound Conditions": {
+          "points": 10
+        },
+        "Syntax Practice 3e: While Loops": {
+          "points": 10
+        },
+        "Programming Practice 3": {
+          "points": 10
+        },
+        "Week3Quiz1Summ": {
+          "points": 4
+        },
+        "Week3Quiz2Summ": {
+          "points": 4
+        },
+        "Week3Quiz3Summ": {
+          "points": 4
+        },
+        "Week3Quiz4Summ": {
+          "points": 4
+        },
+        "Week3Quiz5Summ": {
+          "points": 4
+        },
+        "Week3ReadingQuizSumm": {
+          "points": 15,
+          "threshold": 12
+        },
+        "MUSICSurvey": {
+          "points": 5,
+          "threshold": 1
+        }
+      }
+    },
+
+    "Software Testing":{
+      "IntroToSoftwareDesign/SoftwareTesting": {
+        "Syntax Practice 4a: Compound Conditionals": {
+          "points": 15
+        },
+        "Syntax Practice 4b: Conditionals and Relational Operators": {
+          "points": 15
+        },
+        "Programming Practice 4": {
+          "points": 30
+        },
+        "Week4Quiz1Summ": {
+          "points": 6
+        },
+        "Week4Quiz2Summ": {
+          "points": 6
+        },
+        "Week4Quiz3Summ": {
+          "points": 6
+        },
+        "Week4Quiz4Summ": {
+          "points": 6
+        },
+        "Week4ReadingQuizSumm": {
+          "points": 16,
+          "threshold": 10
+        }
+      }
+    },
+
+    "Variables, Fields, and Parameters":{
+      "IntroToSoftwareDesign/VariablesFieldsAndParameters": {
+        "Syntax Practice 5a: Fields and Accessors": {
+          "points": 12
+        },
+        "Syntax Practice 5b: Mutators and Return Statements": {
+          "points": 20
+        },
+        "Programming Practice 5a": {
+          "points": 16
+        },
+        "Programming Practice 5b": {
+          "points": 16
+        },
+        "Week5Quiz1Summ": {
+          "points": 9
+        },
+        "Week5Quiz2Summ": {
+          "points": 9
+        },
+        "Week5Quiz3Summ": {
+          "points": 9
+        },
+        "Week5Quiz4Summ": {
+          "points": 9
+        }
+      }
+    },
+
+    "Pictures and For-each Loops":{
+      "IntroToSoftwareDesign/PicturesAndForEachLoops": {
+        "Syntax Practice 6a: Pixel Loops": {
+          "points": 20
+        },
+        "Syntax Practice 6b: More For-Each Loops": {
+          "points": 20
+        },
+        "Programming Practice 6a": {
+          "points": 20
+        },
+        "Programming Practice 6b": {
+          "points": 20
+        },
+        "Week6Quiz2Summ": {
+          "points": 10
+        },
+        "Week6Quiz3Summ": {
+          "points": 10
+        }
+      }
+    },
+
+    "Aggregation, Strings and More Loops":{
+      "IntroToSoftwareDesign/AggregationStringsandMoreLoops": {
+        "Syntax Practice 7a: For Loops and OO Design": {
+          "points": 18
+        },
+        "Syntax Practice 7b: toString and Returning Values": {
+          "points": 18
+        },
+        "Programming Practice 7a": {
+          "points": 18
+        },
+        "Programming Practice 7b": {
+          "points": 18
+        },
+        "Week7Quiz1Summ": {
+          "points": 7
+        },
+        "Week7Quiz2Summ": {
+          "points": 7
+        },
+        "Week7Quiz3Summ": {
+          "points": 7
+        },
+        "Week7Quiz4Summ": {
+          "points": 7
+        }
+      }
+    },
+
+    "Grouping Objects Using Lists and Nested For Loops":{
+      "IntroToSoftwareDesign/GroupingObjectsUsingListsAndNestedForLoops": {
+        "Syntax Practice 8a: Strings": {
+          "points": 12
+        },
+        "Syntax Practice 8b: Lists": {
+          "points": 15
+        },
+        "Syntax Practice 8c: Nested Loops": {
+          "points": 12
+        },
+        "Programming Practice 8a": {
+          "points": 15
+        },
+        "Programming Practice 8b": {
+          "points": 15
+        },
+        "Week8Quiz1Summ": {
+          "points": 5
+        },
+        "Week8Quiz2Summ": {
+          "points": 5
+        },
+        "Week8Quiz3Summ": {
+          "points": 6
+        },
+        "Week8ReadingQuizSumm": {
+          "points": 15,
+          "threshold": 10
+        }
+      }
+    },
+
+    "Lists, Loop Idioms, Generics, and the Null Keyword":{
+      "IntroToSoftwareDesign/ListAndLoopsDeepDive": {
+        "Syntax Practice 9a: Loop Idioms": {
+          "points": 20
+        },
+        "Syntax Practice 9b: Generics": {
+          "points": 16
+        },
+        "Programming Practice 9a: Loop Idioms": {
+          "points": 20
+        },
+        "Programming Practice 9b: Loops and Generics": {
+          "points": 20
+        },
+        "Week9Quiz1Summ": {
+          "points": 8
+        },
+        "Week9Quiz2Summ": {
+          "points": 8
+        },
+        "Week9Quiz3Summ": {
+          "points": 8
+        }
+      }
+    },
+
+    "Arrays":{
+      "IntroToSoftwareDesign/Arrays": {
+        "Syntax Practice 10a": {
+          "points": 12
+        },
+        "Syntax Practice 10b": {
+          "points": 12
+        },
+        "Syntax Practice 10c": {
+          "points": 12
+        },
+        "Programming Practice 10a": {
+          "points": 15
+        },
+        "Programming Practice 10b": {
+          "points": 15
+        },
+        "Week10Quiz1Summ": {
+          "points": 6
+        },
+        "Week10Quiz2Summ": {
+          "points": 6
+        },
+        "Week10ReadingQuizSumm": {
+          "points": 22,
+          "threshold": 11
+        }
+      }
+    },
+
+    "Multi-dimensional Arrays":{
+      "IntroToSoftwareDesign/MultiDimensionalArrays": {
+        "Syntax Practice: 2D Array Basics": {
+          "points": 12
+        },
+        "Syntax Practice: Looping Over 2D Arrays": {
+          "points": 6
+        },
+        "Syntax Practice: 3D Arrays": {
+          "points": 3
+        },
+        "Syntax Practice: Modulus": {
+          "points": 9
+        },
+        "Programming Practice: Multi-dimensional Arrays": {
+          "points": 20
+        },
+        "Programming Practice: Mod": {
+          "points": 20
+        },
+        "Week11Quiz1Summ": {
+          "points": 10
+        },
+        "Week11Quiz2Summ": {
+          "points": 10
+        },
+        "Week11Quiz3Summ": {
+          "points": 10
+        }
+      }
+    },
+
+    "Variable Scoping, Input, and Output":{
+      "IntroToSoftwareDesign/FileIO": {
+        "Syntax Practice: Scoping": {
+          "points": 40
+        },
+        "Week12Quiz1Summ": {
+          "points": 20,
+          "threshold": 5
+        },
+        "Week12Quiz2Summ": {
+          "points": 16,
+          "threshold": 4
+        },
+        "Week12Quiz3Summ": {
+          "points": 12
+        },
+        "Week12Quiz4Summ": {
+          "points": 12
+        }
+      }
+    },
+
+    "Maps and Sets":{
+      "IntroToSoftwareDesign/MapsAndSets": {
+        "Syntax Practice: Making A Set": {
+          "points": 8
+        },
+
+        "Syntax Practice: Adding to a Set": {
+          "points": 8
+        },
+
+        "Syntax Practice: Set Contains": {
+          "points": 8
+        },
+
+        "Syntax Practice: Set Remove": {
+          "points": 8
+        },
+
+        "Week13Quiz1Summ": {
+          "points": 8
+        },
+
+        "Syntax Practice: Making Maps": {
+          "points": 8
+        },
+
+        "Syntax Practice: Adding to Maps": {
+          "points": 8
+        },
+        "Syntax Practice: Map Contains and Remove": {
+          "points": 8
+        },
+        "Programming Practice: Maps": {
+          "points": 20
+        },
+        "Week13Quiz2Summ": {
+          "points": 8
+        },
+          "EGPSurvey": {
+            "points": 8,
+            "threshold": 1
+          }
+      }
+    },
+
+    "Static, Main, and Exceptions":{
+       "IntroToSoftwareDesign/StaticMainAndExceptions":{
+          "Week14Quiz1Summ":{
+             "points": 8
+          },
+          "MUSICSurvey": {
+            "points": 5,
+            "threshold": 1
+          },
+          "Week14Quiz2Summ":{
+             "points": 9
+          },
+          "Week14Quiz3Summ":{
+             "points": 9
+          },
+          "Week14Quiz4Summ":{
+             "points": 9
+          },
+          "Syntax Practice: Try-Catch Blocks":{
+             "points":30
+          },
+          "Syntax Practice: Throwing Exceptions":{
+             "points":30
+          }
+       }
+    }
+  }
+}

@@ -41,7 +41,7 @@ import simple2full
 
 from collections.abc import Iterable
 from argparse import ArgumentParser
-from config_templates import *
+import config_templates
 from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
 from postprocessor import update_TOC, update_TermDef, make_lti
@@ -95,7 +95,7 @@ def read_conf_file(config_file_path):
         print_err("INFO: course will be created for the first time")
         return False
 
-    # Try to read the configurat    ion file data as JSON
+    # Try to read the configuration file data as JSON
     try:
         with open(config_file_path) as config:
             # Force python to maintain original order of JSON objects (or else the chapters and modules will appear out of order)
@@ -171,7 +171,7 @@ def process_module(config, index_rst, mod_path, mod_attrib={'exercises': {}}, de
     global module_chap_map
     global num_ref_map
     global cmap_map
-
+    
     # Parse the name of the module from mod_path and remove the file extension
     # if it exists
     mod_name = os.path.splitext(os.path.basename(mod_path))[0]
@@ -235,12 +235,15 @@ def generate_index_rst(config, slides=False, standalone_modules=False):
     header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
     header_data['mod_options'] = ''
     header_data['build_cmap'] = str(config.build_cmap).lower()
-    header_data['unicode_directive'] = rst_header_unicode if not slides else ''
+    header_data['unicode_directive'] = config_templates.rst_header_unicode if not slides else ''
 
     # Generate the index.rst file
     with codecs.open(config.book_src_dir + 'index.rst', 'w+', "utf-8") as index_rst:
-        index_rst.write(index_header.format(config.start_chap_num))
-        index_rst.write(rst_header % header_data)
+        index_rst.write(config_templates.index_header.format(config.start_chap_num, config.chapter_name))
+        if slides:
+            # implicit hyperlink from '.. _%(mod_name)s:' creates a critical error when building slides
+            config_templates.rst_header = config_templates.rst_header.replace('.. _%(mod_name)s:', '.. removed from slides: .. _%(mod_name)s:')
+        index_rst.write(config_templates.rst_header % header_data)
 
         # Process all the chapter and module information
         process_section(config, config.chapters, index_rst, 0, standalone_modules=standalone_modules)
@@ -278,10 +281,13 @@ def generate_todo_rst(config, slides=False):
         header_data['mod_date'] = str(datetime.datetime.now()).split('.')[0]
         header_data['mod_options'] = ''
         header_data['build_cmap'] = str(config.build_cmap).lower()
-        header_data[
-            'unicode_directive'] = rst_header_unicode if not slides else ''
-        todo_file.write(rst_header % header_data)
-        todo_file.write(todo_rst_template)
+        header_data['unicode_directive'] = config_templates.rst_header_unicode if not slides else ''
+        if slides:
+            # implicit hyperlink from '.. _%(mod_name)s:' creates a critical error when building slides
+            config_templates.rst_header = config_templates.rst_header.replace('.. _%(mod_name)s:', '.. removed from slides: .. _%(mod_name)s:')
+            
+        todo_file.write(config_templates.rst_header % header_data)
+        todo_file.write(config_templates.todo_rst_template)
 
         current_type = ''
 
@@ -325,13 +331,13 @@ def initialize_output_directory(config):
     # Create source/_static/config.js in the output directory
     # Used to set global settings for the client-side framework
     with open(config.book_src_dir + '_static/config.js', 'w') as config_js:
-        config_js.writelines(config_js_template % config)
+        config_js.writelines(config_templates.config_js_template % config)
 
     # Create an index.html page in the book directory that redirects the user
     # to the book_output_dir
     with open(config.book_dir + 'index.html', 'w') as index_html:
         index_html.writelines(
-            index_html_template % config.rel_book_output_path)
+            config_templates.index_html_template % config.rel_book_output_path)
 
 
 def initialize_conf_py_options(config, slides):
@@ -340,7 +346,20 @@ def initialize_conf_py_options(config, slides):
     options['title'] = config.title
     options['book_name'] = config.book_name
     options['theme_dir'] = config.theme_dir
-    options['theme'] = config.theme
+    if config.theme == "":
+        options['theme'] = "haiku"
+    else:
+        options['theme'] = config.theme
+    options['html_theme_options'] = "'{}'"
+    if config.html_theme_options:
+      options['html_theme_options'] = "'" + json.dumps(config.html_theme_options).replace("'", "\\'") + "'"
+    options['html_css_files'] = ""
+    if config.html_css_files:
+      options['html_css_files'] = ", '" + "', '".join(config.html_css_files) + "'"
+    options['html_js_files'] = ""
+    if config.html_js_files:
+      options['html_js_files'] = ", '" + "', '".join(config.html_js_files) + "'"
+    options['chapter_name'] = config.chapter_name
     options['odsa_dir'] = config.odsa_dir
     options['book_dir'] = config.book_dir
     options['code_dir'] = config.code_dir
@@ -348,7 +367,10 @@ def initialize_conf_py_options(config, slides):
     options['tabbed_code'] = config.tabbed_codeinc
     options['code_lang'] = json.dumps(config.code_lang)
     options['text_lang'] = json.dumps(config.lang)
-
+    if config.sphinx_debug:
+        options['sphinx_options'] = '-E -P -vv'
+    else:
+        options['sphinx_options'] = ''
 
     #Adding multiple tags support
     if config.tag:
@@ -372,11 +394,24 @@ def initialize_conf_py_options(config, slides):
     # files are generated) and the root ODSA directory
     options['eb2root'] = config.rel_build_to_odsa_path
     options['rel_book_output_path'] = config.rel_book_output_path
-    options['slides_lib'] = 'hieroglyph' if slides else ''
+    options['slides_lib'] = 'revealjs' if slides else ''
     options['local_mode'] = str(config.local_mode).title()
 
-    # makes sure the ebook uses the same python exec as this script 
+    # makes sure the ebook uses the same python exec as this script
     options['python_executable'] = sys.executable
+
+    if config.include_tree_view:
+        if options['html_js_files'] != "":
+            options['html_js_files'] = options['html_js_files'] + ", '" + options['eb2root']+"lib/accessibility.js" + "'"
+        else:
+            options['html_js_files'] = ",'" + options['eb2root'] + "lib/accessibility.js" + "'"
+        if options['html_css_files'] != "":
+            options['html_css_files'] = options['html_css_files'] + ", '" + options['eb2root']+"lib/accessibility.css" + "'"
+        else:
+            options['html_css_files'] = ",'" + options['eb2root']+"lib/accessibility.css" + "'"
+
+    # Sets the value to be used to indicate book sections.
+    options['chapnum'] = config.chapter_name
 
     return options
 
@@ -406,11 +441,12 @@ def configure(config_file_path, options):
 
     slides = options.slides
     no_lms = options.no_lms
+    isVerbose = options.verbose
     standalone_modules = options.standalone_modules
     conf_data = None
 
     if no_lms or slides:
-        conf_data = simple2full.generate_full_config(config_file_path, slides)
+        conf_data = simple2full.generate_full_config(config_file_path, slides, verbose=isVerbose)
 
     print(("Configuring OpenDSA, using " + config_file_path))
 
@@ -424,7 +460,7 @@ def configure(config_file_path, options):
     if os.path.isdir(html_dir):
         print ("Clearing HTML directory")
         shutil.rmtree(html_dir, ignore_errors=True)
-        # ignore_errors needed to delete files marked readonly or busy 
+        # ignore_errors needed to delete files marked readonly or busy
 
     # Add the list of topics the book assumes students know to the list of
     # fulfilled prereqs
@@ -478,15 +514,15 @@ def configure(config_file_path, options):
         json.dump(module_chap_map, page_chapter_file)
 
     # Initialize options for conf.py
-    options = initialize_conf_py_options(config, slides)
+    conf_py_options = initialize_conf_py_options(config, slides)
 
     # Create a Makefile in the output directory
-    with open(config.book_dir + 'Makefile', 'w') as makefile:
-        makefile.writelines(makefile_template % options)
+    with codecs.open(config.book_dir + 'Makefile', 'w') as makefile:
+        makefile.writelines(config_templates.makefile_template % conf_py_options)
 
     # Create conf.py file in output source directory
     with codecs.open(config.book_src_dir + 'conf.py', 'w', "utf-8") as conf_py:
-        conf_py.writelines(conf % options)
+        conf_py.writelines(config_templates.conf % conf_py_options)
 
     # Copy only the images used by the book from RST/Images/ to the book
     # source directory
@@ -502,9 +538,11 @@ def configure(config_file_path, options):
         job.append('slides')
     else:
         job.append("html")
-        job.append("min")
 
     # if make is visible to shutil, then no need to use shell
+    ''' TODO: Test if shell_needed is always false, which would make some of the below code useless
+    With the odsa docker update, we could safely assume 'make' to be usable and visible to shutil  
+    '''
     shell_needed = shutil.which('make') is None
     if shell_needed:
         print("WARNING: 'make' command is not visible from python... Doing leap of faith...")
@@ -515,11 +553,11 @@ def configure(config_file_path, options):
         print_err("Creating eBook failed.  See above error")
         exit(1)
     print("$$$ Subprocess Complete: " + " ".join(job), flush=True)
-    
+
     ''' TODO: Keep looking for encoding errors.
-    These are because python 2.7 implicitly converted string encodings.  
-    python2.7 encodes strings IMplicitly, python3 does this EXplicitly instead. 
-    ''' 
+    These are because python 2.7 implicitly converted string encodings.
+    python2.7 encodes strings IMplicitly, python3 does this EXplicitly instead.
+    '''
 
     # Calls the postprocessor to update chapter, section, and module numbers,
     # and glossary terms definition
@@ -539,7 +577,7 @@ def configure(config_file_path, options):
 
 # Code to execute when run as a standalone program
 if __name__ == "__main__":
-    parser = ArgumentParser(description="Generate an eBook using a config file.")
+    parser = ArgumentParser(description="Generate an OpenDSA eBook using a config file.")
     parser.add_argument("config_file_path", help="A JSON file that selects the content and layout of the eBook")
     parser.add_argument("-s", "--slides", help="Causes configure.py to create slides", action="store_true", default=False)
     parser.add_argument("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", action="store_true", default=False)
@@ -547,6 +585,7 @@ if __name__ == "__main__":
     parser.add_argument("--local", help="Causes the compiled book to work in local mode, which means no communication with the server", action="store_true", default=True)
     parser.add_argument("--no-lms", help="Compile book without changing internal links required by LMS", action="store_true", default=False)
     parser.add_argument("--standalone-modules", help="Compile all modules such that each module has no links to other modules.",action="store_true", default=False)
+    parser.add_argument("--verbose", help="Shows more output during building",action="store_true", default=False)
     args = parser.parse_args()
 
     if args.slides:

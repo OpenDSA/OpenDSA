@@ -1,0 +1,22 @@
+@charset "utf-8";
+@media screen and (max-width: 568px){h1{font-size:3.5em;font-size:3.5rem}
+h2{font-size:3.1em;font-size:3.1rem}
+[class^="icon-"]:before,[class*=" icon-"]:before{font-size:1.9em;font-size:1.9rem}
+ul,ol{margin-left:15px}
+li ul,li ol{margin-left:10px}
+img{margin:auto;max-width:280px;height:auto;image-rendering:optimizeSpeed;image-rendering:-moz-crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges}
+header .right{margin-right:0}
+header .left{margin-left:0}
+footer{font-size:1em;font-size:1rem;}
+footer p{margin:auto;display:block;height:35px;line-height:35px;vertical-align:middle}
+.breadcrumb{max-width:250px;}
+.breadcrumb li{max-width:50px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebarwrapper{float:none;width:90%;}
+.sidebarwrapper h1,.sidebarwrapper h2,.sidebarwrapper h3,.sidebarwrapper h4,.sidebarwrapper h5{text-align:center}
+.sidebarwrapper .relative{display:none}
+.sidebar{margin-top:60px}
+.document{padding-top:0;width:90%}
+#raise-top{width:35px;height:35px;line-height:35px;bottom:10px;}
+#raise-top:before{font-size:2.8em;font-size:2.8rem}
+#contents>ul{padding-left:20px}
+}

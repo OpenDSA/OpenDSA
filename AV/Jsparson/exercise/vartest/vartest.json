@@ -1,0 +1,22 @@
+{
+    "v0": {
+        "title": "Constrcuting a problem with nested loops",
+        "instructions": "Construct a program that first prints out 15, then 14, then 12, then 9 and finally 5 on consecutive lines.",
+        "initial": ["MAX = 5",
+                    "i = 0",
+                    "while i < MAX:",
+                    "\tSUM = 0",
+                    "\tj = MAX",    
+                    "\twhile j > i:",        
+                    "\t\tSUM = SUM + j",
+                    "\t\tj = j - 1",   
+                    "\tprint(SUM)",    
+                    "\ti = i + 1"],
+        "type": "VARTEST",
+        "vartest": [{"initcode":"", "code":"", "message":"Testing printed out content", "variables":{"__output":"15\n14\n12\n9\n5\n"}}],
+        "concepts": ["Assign","Int","keyword","AugAssign","Gt","Sub","GtE","While","Str","Call"],
+        "order": 0
+    }
+}
+
+

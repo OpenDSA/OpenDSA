@@ -1,0 +1,193 @@
+{
+  "translations": {
+    "en": {
+      "language": {
+        "type": "select",
+        "description": "We will show how to convert the following right-regular grammr to a left-regular grammar.",
+        "question": "What is L(G)?",
+        "answer": [
+          "$a^*cbb^*$",
+          "$\\{a^ncb^m \\mid n\\ge 0, m>0\\}$"
+        ],
+        "choices": [
+          "$a^*cbb^*$",
+          "$\\{a^ncb^m \\mid n\\ge 0, m>0\\}$"
+        ]
+      },
+      "reverse": {
+        "type": "select",
+        "description": "The next step in our algorithm is to REVERSE the NFA.",
+        "question": "How can we reverse an NFA?",
+        "answer": [
+          "This means that we need to filp all transitions",
+          "Swap the start and final states"
+        ],
+        "choices": [
+          "This means that we need to filp all transitions",
+          "Swap the start and final states"
+        ]
+      },
+      "loops": {
+        "type": "select",
+        "description": "Lest us start by reversing the transitions.",
+        "question": "What is the result of reversing the transitions $\\delta(S, a) = S$, and $\\delta(B, b) = B$?",
+        "answer": [
+          "The edge that represent $\\delta(S, a) = S$ will not change as it is a loop.",
+          "The edge that represent $\\delta(B, b) = B$ will not change as it is a loop."
+        ],
+        "choices": [
+          "The edge that represent $\\delta(S, a) = S$ will not change as it is a loop.",
+          "The edge that represent $\\delta(B, b) = B$ will not change as it is a loop."
+        ]
+      },
+      "SB": {
+        "type": "multiple",
+        "description": "Lest us start by reversing the transitions.",
+        "question": "What is the result of reversing the transition $\\delta(S, c) = B$?",
+        "answer": "$\\delta(B, c) = S$",
+        "choices": [
+          "$\\delta(S, a) = S$",
+          "$\\delta(B, b) = B$",
+          "$\\delta(B, c) = S$",
+          "$\\delta(S, c) = B$",
+          "$\\delta(B, b) = F$",
+          "$\\delta(F, b) = B$"
+        ]
+      },
+      "BF": {
+        "type": "multiple",
+        "description": "Lest us start by reversing the transitions.",
+        "question": "What is the result of reversing the transition $\\delta(B, b) = F$?",
+        "answer": "$\\delta(F, b) = B$",
+        "choices": [
+          "$\\delta(S, a) = S$",
+          "$\\delta(B, b) = B$",
+          "$\\delta(B, c) = S$",
+          "$\\delta(S, c) = B$",
+          "$\\delta(B, b) = F$",
+          "$\\delta(F, b) = B$"
+        ]
+      },
+      "swapSF": {
+        "type": "multiple",
+        "description": "All edges are reversed.",
+        "question": "What is the next step?",
+        "answer": "Swap the start and Final states",
+        "choices": [
+          "Done, the NFA is reversed.",
+          "Swap the start and Final states"
+        ]
+      },
+      "onefinal": {
+        "type": "multiple",
+        "description": "Convert the original final state to be the initital state, and the original initial state to be final.",
+        "question": "In case that the NFA has multiple final states. How can we convert them to a start state?",
+        "answer": "Convert the NFA with multiple final states to an NFA with one final state. Then make the new final state a start state.",
+        "choices": [
+          "Convert every final state to a start state",
+          "Convert the NFA with multiple final states to an NFA with one final state. Then make the new final state a start state."
+        ]
+      },
+      "nfa2rr": {
+        "type": "multiple",
+        "description": "We already have seen an algorithm to convert from a NFA to a right-regular grammar. We will use it to convert this NFA to the right-regular grammar for $L^R$.",
+        "question": "What is the production equivelent to the transition $\\delta(S, a) = S$? (Keep in mind that we are making a right-regular grammar.)",
+        "answer": "$S\\rightarrow aS$",
+        "choices": [
+          "$S\\rightarrow aS$",
+          "$S\\rightarrow Sa$"
+        ]
+      },
+      "rrBB": {
+        "type": "multiple",
+        "description": "We already have seen an algorithm to convert from a NFA to a right-regular grammar. We will use it to convert this NFA to the right-regular grammar for $L^R$.",
+        "question": "What is the production equivelent to the transition $\\delta(B, b) = B$?",
+        "answer": "$B\\rightarrow bB$",
+        "choices": [
+          "$B\\rightarrow bB$",
+          "$B\\rightarrow Bb$"
+        ]
+      },
+      "rrBS": {
+        "type": "multiple",
+        "description": "We already have seen an algorithm to convert from a NFA to a right-regular grammar. We will use it to convert this NFA to the right-regular grammar for $L^R$.",
+        "question": "What is the production equivelent to the transition $\\delta(B, c) = S$?",
+        "answer": "$B\\rightarrow cS$",
+        "choices": [
+          "$B\\rightarrow Sc$",
+          "$B\\rightarrow cS$"
+        ]
+      },
+      "rrFB": {
+        "type": "multiple",
+        "description": "We already have seen an algorithm to convert from a NFA to a right-regular grammar. We will use it to convert this NFA to the right-regular grammar for $L^R$.",
+        "question": "What is the production equivelent to the transition $\\delta(F, b) = B$?",
+        "answer": "$F\\rightarrow bB$",
+        "choices": [
+          "$F\\rightarrow bB$",
+          "$F\\rightarrow Bb$"
+        ]
+      },
+      "result": {
+        "type": "multiple",
+        "description": "We already have seen an algorithm to convert from a NFA to a right-regular grammar. We will use it to convert this NFA to the right-regular grammar for $L^R$.",
+        "question": "The resulting grammar is for what language?",
+        "answer": "The resulting grammar is the right-regular grammar for the reverse of the original Language",
+        "choices": [
+          "The resulting grammar is the right-regular grammar for the original Language",
+          "The resulting grammar is the right-regular grammar for the reverse of the original Language"
+        ]
+      },
+      "revSS": {
+        "type": "multiple",
+        "description": "Reversing each production in a right-regular grammar will give a left-regular grammar for the reverse language. So, doing that here will yield the result that we are looking for: a left-regular grammar for $(L^R)^R = L$.",
+        "question": "What is the result of reversing $S\\rightarrow aS$?",
+        "answer": "$S\\rightarrow Sa$",
+        "choices": [
+          "$S\\rightarrow aS$",
+          "$S\\rightarrow Sa$"
+        ]
+      },
+      "revBB": {
+        "type": "multiple",
+        "description": "By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.",
+        "question": "What is the result of reversing $B\\rightarrow bB$?",
+        "answer": "$B\\rightarrow Bb$",
+        "choices": [
+          "$B\\rightarrow bB$",
+          "$B\\rightarrow Bb$"
+        ]
+      },
+      "revBS": {
+        "type": "multiple",
+        "description": "By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.",
+        "question": "What is the result of reversing $B\\rightarrow cS$?",
+        "answer": "$B\\rightarrow Sc$",
+        "choices": [
+          "$B\\rightarrow Sc$",
+          "$B\\rightarrow cS$"
+        ]
+      },
+      "revFB": {
+        "type": "multiple",
+        "description": "By reversing each production in the resulting Right Linear grammar, we will get the the Left Linear grammar for the reverse of $L^R$. So, we have the Left Linear grammar for $(L^R)^R = L$.",
+        "question": "What is the result of reversing $F\\rightarrow bB$?",
+        "answer": "$F\\rightarrow Bb$",
+        "choices": [
+          "$F\\rightarrow bB$",
+          "$F\\rightarrow Bb$"
+        ]
+      },
+      "resulttype": {
+        "type": "multiple",
+        "description": "Done. We reversed all productions",
+        "question": "What is the type of the resulting grammar?",
+        "answer": "Left-Regular Grammar",
+        "choices": [
+          "Right-Regular Grammar",
+          "Left-Regular Grammar"
+        ]
+      }
+    }
+  }
+}

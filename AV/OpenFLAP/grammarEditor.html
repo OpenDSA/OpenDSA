@@ -18,12 +18,12 @@
 <body>
   <div id="container">
     <h1 id="editor">Grammar Editor</h1>
-    <button id="helpbutton"><img src="./help.png"/></button>
+    <button id="helpbutton"><img src="./help.png" alt="Help" /></button>
     <div id="help" title="Help" style="display:none">
       <div id="helpInfo">
         Help:
-        To delete, click on "Delete" and click on the row you want to delete.
-        To add, click on "Add Row" and click on any row to add a new row.
+        To delete, click on "Delete" and click on the row you want to delete. Only one row can be deleted at a time!
+        To add, click on "Add Row" and a new empty row will show up at the bottom.
       </div>
     </div>
 		<div align="left">
@@ -34,7 +34,7 @@
 		<p class="multiple" id="exerciseLinks"></p>
     <div id="buttons" align="center">
       <span id='mode'></span><br>
-      <button type="button" id="editbutton">Edit</button>
+<!--      <button type="button" id="editbutton">Edit</button>-->
       <button type="button" id="addrowbutton">Add Row</button>
       <button type="button" id="deletebutton">Delete</button>
       <!-- <button type="button" class="function" id="bfpbutton">Brute Force Parse</button> -->
@@ -73,8 +73,10 @@
     </div>
   </div>
 
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	<script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery.migrate.min.js"></script>
+	<script src="../../lib/jquery.ui.min.js"></script>
+<script src="../../lib/timeme-min.js"></script>
 	<script src="../../lib/jquery.transit.js"></script>
 	<script src="../../lib/raphael.js"></script>
 	<script src="../../lib/dagre.min.js"></script>

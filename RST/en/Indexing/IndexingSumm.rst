@@ -4,9 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Indexing Chapter Summary Exercise
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: hashing; linear indexing; B tree
    :topic: Indexing
+   :keyword: Indexing
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: End-of-chapter questions on indexing.
+
 
 Indexing Summary Exercises
 ==========================
@@ -18,6 +25,7 @@ Here are some review questions.
 
 .. avembed:: Exercises/Indexing/IndexChoice.html ka
    :long_name: Choosing an Index
+   :keyword: Indexing
 
 .. TODO::
    :type: Exercise

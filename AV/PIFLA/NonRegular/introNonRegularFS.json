@@ -1,0 +1,80 @@
+{
+  "translations": {
+    "en": {
+      "approaches": {
+        "type": "select",
+        "description":"How do we prove that a language is regular? We have a number of approaches in our toolbox.",
+        "question": "Which of the following can we use?",
+        "answer": ["Build a DFA.", "Build a NFA.", "Write a regular expression.", "Write a regular grammar.", "Start with known regular languages and apply operations known to be closed for regular languages."],
+        "choices": ["Build a DFA.", "Build a NFA.", "Write a regular expression.", "Write a regular grammar.", "Start with known regular languages and apply operations known to be closed for regular languages.", "Write a context-free grammar"]
+      },
+      "finite": {
+        "type": "select",
+        "description": "Given so many tools for creating a regular language, are there languages that are not regular? What do you think?",
+        "question":"Let’s start with some basic questions. First, if a language $L$ is finite, is $L$ regular?",
+        "answer": "Yes! All finite languages are regular.",
+        "choices": ["Yes! All finite languages are regular.", "No"],
+        "correctFeedback": ["But why? Because, for example, we can create a regular expression that lists a finite set of strings no matter how big. So it must be regular."]
+      },
+      "infinite": {
+        "type": "select",
+        "description": "Given so many tools for creating a regular language, are there languages that are not regular? What do you think?",
+        "question":"If a language $L$ is infinite, is $L$ regular?",
+        "answer": "Maybe",
+        "choices": ["Yes! All infinite languages are regular.", "No", "Maybe"]
+      },
+      "anbminfinite": {
+        "type": "select",
+        "description": "An infinite language might be regular or might not be regular.",
+        "question": "For example, consider $L_1 = \\{a^nb^m\\ |\\ n > 0, m > 0 \\}$. Is it an infinite language?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "anbmregex": {
+        "type": "select",
+        "description":"An infinite language might be regular or might not be regular.",
+        "question": "$L_1 = \\{a^nb^m\\ |\\ n > 0, m > 0 \\}$. Is it regular?",
+        "answer": "Yes. For example, this language is described by the RegEx $aa^*bb^*$",
+        "choices": ["Yes. For example, this language is described by the RegEx $aa^*bb^*$", "No, there is no RegEx for this language."]
+      },
+      "anbninfinite": {
+        "type": "select",
+        "description":"An infinite language might be regular or might not be regular.",
+        "question": "$L_2 = \\{a^nb^n\\ |\\ n > 0 \\}$. Is it an infinite language?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "anbnmemory": {
+        "type": "select",
+        "description":"An infinite language might be regular or might not be regular.",
+        "question": "$L_2 = \\{a^nb^n\\ |\\ n > 0 \\}$. Do we need memory to help with deciding whether to accept a string in this language?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["This is not obvious. There are languages where it seems like an acceptor would help to have memory, but we don't <b>need</b> it. But for $L_2 = \\{a^nb^n\\ |\\ n > 0 \\}$, there doesn't seem to be any way around the fact that we have to remember how many a's we see to decide if it matches the number of b's."]
+      },
+      "dfamemory": {
+        "type": "select",
+        "description":"An infinite language might be regular or might not be regular.",
+        "question": "What memory does a DFA or NFA have?",
+        "answer": "They only remember the current state",
+        "choices": ["They have infinite memory", "They only remember the current state"]
+      },
+      "noNFA": {
+        "type": "true/false",
+        "description": "Since the number of states in a DFA or NFA is finite, the number of unique situations that can be represented is finite. Further, while a program in a traditional programming language might have an integer variable that (conceptually at least) stores an infinite number of values, a DFA has no similar thing.",
+        "question": "[T|F] This means that we cannot use an NFA to accept $L_2 = \\{a^nb^n\\ |\\ n > 0 \\}$.",
+        "answer": "True",
+        "choices": [],
+        "correctFeedback": ["We could make an NFA that could check for strings up to any specific fixed length, by adding enough states to 'count' the number of a's, and then check that the b's match. But we could not go beyond that fixed limit."]
+      },
+      "nonregular": {
+        "type": "select",
+        "description":"An infinite language might be regular or might not be regular.",
+        "question": "Is $L_2 = \\{a^nb^n | n > 0 \\}$ regular?",
+        "answer": "It seems not.",
+        "choices": ["Yes", "It seems not."],
+        "correctFeedback": ["A language that is not regular is called nonregular."]
+      }
+    }
+  }
+}

@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Introduction to the Clique Problem
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Clique Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the Clique problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "cliqueCON";
@@ -17,27 +27,26 @@ $(document).ready(function () {
   var label1, label2 , label3, label4, label5, label6,label7,label8,label9;
   var y = 0;
   
+  // Slide 1
   av.umsg("<br><b>Introduction to the Clique problem </b>"); 
   var nl1=av.label("This slideshow introduces and explains the \"Clique\"  Problem."
                    +"</b> <br><br><br> We start with some definitions  and background.",{top:0});
-
-
   av.displayInit();
-
   av.step();
+
+  // Slide 2
   nl1.hide();
   av.umsg("<br><b>Clique </b>");
   nl1=av.label("A Clique is complete graph i.e. a graph where each node"+
-               " is connected to every other nodes by atleast one edge.",{top:-10}); 
-
+               " is connected to every other node by at least one edge.",{top:-10}); 
   av.step();
-  var nl2=av.label("Example of a clique :",{top:60});
 
+  // Slide 3
+  var nl2=av.label("Example of a clique:",{top:60});
   var  g = av.ds.graph({width: 400, height: 450,
                         layout: "manual", directed: false,top:60,left:200});
   var x=20;
   y=0;
-
 
   g.addNode("A", {"left": x+150, "top": y+50});
   g.addNode("B", {"left": x+50, "top": y+100});
@@ -52,20 +61,21 @@ $(document).ready(function () {
       g.addEdge(gnodes[i],gnodes[j]);
 
   g.layout();
-
-
   av.step();
+
+  // Slide 4
   nl1.hide();
   nl2.hide();
   av.umsg("<br><b>Clique in a graph </b>");
   g.hide();
   y=0; 
-  nl1=av.label("If in a graph $G$, there exists a complete subgraph of "+
-               "$k$ nodes, $G$ is said to contain a $k$-clique  ",{top:-10}); 
-
+  nl1=av.label("If in a graph $G$ there exists a complete subgraph of "+
+               "$k$ nodes, $G$ is said to contain a $k$-clique.",{top:-10}); 
   av.step();
-  label1 = av.label("For example: The following graph contains a "+
-                    "$3$-clique",{top:40,left:0}); 
+
+  // Slide 5
+  label1 = av.label("For example, the following graph contains a "+
+                    "$3$-clique. (Actually, there is more than one.)",{top:40,left:0}); 
 
   var  g3 = av.ds.graph({width: 400, height: 450,layout: "manual", directed: false,left:220,top:70});
   x=0;
@@ -89,54 +99,50 @@ $(document).ready(function () {
   ne7.addClass("edgehighlight");
   ne6.addClass("edgehighlight");
   ne2.addClass("edgehighlight");
-
   g3.layout();
   g3.show();
   av.step();
+
+  // Slide 6
   nl1.hide();
   label1.hide();
   g3.hide();
 
-
-  nl1=av.label("The clique with largest number of vertices in a graph $G$"
-               +" is called Maximum Clique in $G$",{top:-10}); 
+  nl1=av.label("Any clique with the largest number of vertices in a graph $G$"
+               +" is called a Maximum Clique in $G$.",{top:-10}); 
   av.step();
-  label1 = av.label("For example: Maximum Clique in the "+
-                    "graph is a $4$-clique",{top:40,left:0}); 
+
+  // Slide 7
+  label1 = av.label("For example, the Maximum Clique in this "+
+                    "graph is a $4$-clique.",{top:40,left:0}); 
   g3.show();
   ne1.addClass("edgehighlight");
   ne4.addClass("edgehighlight");
   ne5.addClass("edgehighlight");
-
-
   g3.layout();
-
-
   av.step();
+
+  // Slide 8
   nl1.hide();
   g3.hide();
   label1.hide();
-  av.umsg("<br><b>The Clique Problem </b>");
-  nl1=av.label("The Clique Problem can be defined as either "
-               +"of the following: <br><br><br><b>Given a graph $G = (V , E)$,"+
-               " find the Maximum Clique in $G$.</b><br><br><br>Or<br><br><br><b>"+
-               "Given a graph $G = (V , E)$, and an number  $k$, does $G$ contain a"+
-               " Clique of size >= $k$ ?</b> ",{top:0});
-
+  av.umsg("<br><b>The Clique Problem</b>");
+  nl1=av.label("The Clique Problem can be defined as either of the following:"
+               + "<br><br><b>Given a graph $G = (V , E)$, find the Maximum Clique in $G$.</b> This is the optimization form of the problem."
+               + "<br><br>Or<br><br>"
+               + "<b>Given a graph $G = (V, E)$, and a number $k$, does $G$ contain a Clique of size $\\geq k$ ?</b> This is the decision form of the problem.", {top: -10});
   av.step();
+
+  // Slide 9
   nl1.hide();
   var  g1 = av.ds.graph({width: 400, height: 450,
                          layout: "manual", directed: false});
-
   label1.hide();
-
-  av.umsg("<br><b>Example of Clique Problem: </b>");  
-
-  nl1=av.label("In the graph below does there exist a clique of size >=$5$ ?"
-               ,{top:-10}); 
-  
+  av.umsg("<br><b>An example of the Clique Problem:</b>");  
+  nl1=av.label("In the graph below does there exist a clique of size $\\geq 5$?"
+               ,{top:-10});
   x=20;
-  y = 320;
+  y = 300;
   var c7 = g1.addNode("a", {"left":x , "top":y });
   var c4 = g1.addNode("b", {"left":x+150 , "top":y+20 });
   var c5 = g1.addNode("c", {"left":x+300, "top":y });
@@ -174,17 +180,18 @@ $(document).ready(function () {
   g1.addEdge(c7, c10);
   g1.addEdge(c9, c10);
   g1.layout();
-  
   av.step();
 
+  // Slide 10
   label1 = av.label("<b>No</b>",{top:20}).css({"text-align": "center"}); 
-
   av.step();
+
+  // Slide 11
   nl1.hide();
   
   av.umsg("<br><b>Example of Clique Problem: </b>");  
 
-  nl1=av.label("In the graph below does there exist a clique of size >= $4$ ?"
+  nl1=av.label("In the graph below does there exist a clique of size $\\geq 4$?"
                ,{top:-10}); 
   label1.hide();    
   av.step(); 

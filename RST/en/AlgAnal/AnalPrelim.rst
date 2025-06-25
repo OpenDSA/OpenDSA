@@ -4,9 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Problems, Algorithms, and Programs
    :author: Cliff Shaffer
+   :institution: Virginia Tech
+   :requires:
    :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Problem; Algorithm
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to the concepts of problems vs. algorithms vs. programs.
+
 
 Problems, Algorithms, and Programs
 ==================================
@@ -114,8 +122,8 @@ of the following properties.
    In other words, it must compute the desired function, converting
    each input to the correct output.
    Note that every algorithm implements some function,
-   because every algorithm maps every input to some output (even if
-   that output is a program crash).
+   because every algorithm maps every input to some output
+   (even if that output is a program crash).
    At issue here is whether a given algorithm implements the 
    *intended* function.
 
@@ -205,6 +213,7 @@ The following slideshow should help you to visualize the differences.
    :links: AV/AlgAnal/ProblemAlgorithmCON.css
    :scripts: AV/AlgAnal/ProblemAlgorithmCON.js
    :output: show
+   :keyword: Algorithm Analysis; Problem Definition; Algorithm Definition
 
 
 Summary Questions
@@ -212,3 +221,4 @@ Summary Questions
 
 .. avembed:: Exercises/AlgAnal/AnalPrelimSumm.html ka 
    :long_name: Problems, Algorithms, Programs Exercise
+   :keyword: Algorithm Analysis; Problem Definition; Algorithm Definition

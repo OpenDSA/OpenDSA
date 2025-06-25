@@ -3,9 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Random Numbers
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Randomized Algorithms
+   :keyword: Random Number
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Brief introduction to the implementation of Linear Congruential random number generators
 
 Random Numbers
 ==============
@@ -21,7 +27,7 @@ they work, and to even be able to construct your own in case you don't
 trust the one provided.
 This is easy to do.
 
-First, let us consider what a random sequence.
+First, let us consider what a random sequence is.
 From the following list, which appears to be a sequence of "random"
 numbers?
 
@@ -31,12 +37,14 @@ numbers?
 * 2, 7, 1, 8, 2, 8, 1, 8, 2, ...
 
 In fact, all three happen to be the beginning of a some sequence in
-which one could continue the pattern to generate more values (in case
+which one could continue the pattern to generate more values. (In case
 you do not recognize it, the third one is the initial digits of the
-irrational constant :math:`e`).
+irrational constant :math:`e`.
+Which makes it every bit as deterministic as the other two sequences
+appear to be.)
 Viewed as a series of digits, ideally every possible sequence has
 equal probability of being generated (even the three sequences
-above).
+above, which don't appear to be "random").
 In fact, definitions of randomness generally have features such as:
 
 * One cannot predict the next item better than by guessing.
@@ -62,6 +70,10 @@ Then, we can compute successive terms as follows.
    r(i) = (r(i-1)\times b) \bmod t
 
 where :math:`b` and :math:`t` are constants.
+For many purposes, this gives a completely satisfactory series of
+random numbers.
+It even has the feature (which often is considered a benefit for
+testing purposes) of being repeatable by using the same seed.
 
 By definition of the :math:`\bmod` function, all generated numbers
 must be in the range 0 to :math:`t-1`.
@@ -86,13 +98,11 @@ To see why, consider the following example.
 
    .. math::
 
-      r(i) = 6r(i-1) \bmod 13 =
-      \quad ..., 1, 6, 10, 8, 9, 2, 12, 7, 3, 5, 4, 11, 1, ...\\
-
-      r(i) = 7r(i-1) \bmod 13 =
-      \quad ..., 1, 7, 10, 5, 9, 11, 12, 6, 3, 8, 4, 2, 1, ...\\
-
       \begin{eqnarray}
+      r(i) = 6r(i-1) \bmod 13 &=&
+      \quad ..., 1, 6, 10, 8, 9, 2, 12, 7, 3, 5, 4, 11, 1, ...\\
+      r(i) = 7r(i-1) \bmod 13 &=&
+      \quad ..., 1, 7, 10, 5, 9, 11, 12, 6, 3, 8, 4, 2, 1, ...\\
       r(i) = 5r(i-1) \bmod 13 &=& ..., 1, 5, 12, 8, 1, ...\\
       && ..., 2, 10, 11, 3, 2, ...\\
       && ..., 4, 7, 9, 6, 4, ...\\

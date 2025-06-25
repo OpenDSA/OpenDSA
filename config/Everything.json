@@ -37,28 +37,33 @@
   "glob_ss_options": {
     "threshold": 1.0, 
     "points": 0.0, 
-    "required": false
+    "required": false,
+    "partial_credit": false
   }, 
   "glob_ff_options": {
     "threshold": 1.0, 
     "points": 0.0, 
-    "required": false
+    "required": false,
+    "partial_credit": false
   },
   "glob_ka_options": {
     "threshold": 5, 
     "points": 1.0, 
-    "required": true
+    "required": false,
+    "partial_credit": false
   }, 
   "glob_extr_options": {
     "code-workout": {
       "points": 2.0
     }, 
-    "points": 1.0
+    "points": 1.0,
+    "partial_credit": false
   }, 
   "glob_pe_options": {
     "threshold": 0.9, 
     "points": 2.0, 
-    "required": true
+    "required": false,
+    "partial_credit": false
   }, 
   "chapters": {
     "Preface": {
@@ -88,22 +93,13 @@
       "Tutorials/junitstart": {}, 
       "Tutorials/junitbasic": {}, 
       "Tutorials/junitcoverage": {},
-      "Testing/TestIntro": {},
-      "Testing/TestCoverage": {
-        "TriangleApplet": {
-          "exer_options": {
-            "code": "true"
-          }
-        }
-      },
-      "Testing/Example2": {},
-      "Testing/Bowling": {
-        "BowlingApplet": {
-          "exer_options": {
-            "code": "true"
-          }
-        }
-      }
+      "Tutorials/mutationtesting": {},
+      "Tutorials/mutationtesting_example": {},
+      "Tutorials/mutationtesting_faq": {},
+      "Testing/TriangleIntro": {},
+      "Testing/TriangleCoverage": {},
+      "Testing/BowlingIntro": {},
+      "Testing/BowlingCoverage": {}
     }, 
     "Design I": {
       "Design/ADT": {
@@ -135,7 +131,7 @@
         }
       },
       "PointersJava/Links2": {},
-      "PointersJava/Exercises": {}
+      "PointersJava/ExercisesPtr": {}
     }, 
     "Mathematical Background": {
       "Background/MathpreIntro": {}, 
@@ -297,7 +293,7 @@
         "Recursion Programming Exercise: Cummulative Sum": {
           "points": 1.0
         }, 
-        "Recursion Programming Exercise: Add odd positions": {
+        "Recursion Programming Exercise: Add odd values": {
           "points": 1.0
         }, 
         "Recursion Programming Exercise: Sum Of the Digits": {

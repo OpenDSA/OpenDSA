@@ -75,22 +75,10 @@
       "Tutorials/scanning": {}, 
       "Tutorials/randomaccessfile": {}, 
       "Tutorials/junitstart": {},
-      "Testing/TestIntro": {},
-      "Testing/TestCoverage": {
-        "TriangleApplet": {
-          "exer_options": {
-            "code": "true"
-          }
-        }
-      },
-      "Testing/Example2": {},
-      "Testing/Bowling": {
-        "BowlingApplet": {
-          "exer_options": {
-            "code": "true"
-          }
-        }
-      }
+      "Testing/TriangleIntro": {},
+      "Testing/TriangleCoverage": {},
+      "Testing/BowlingIntro": {},
+      "Testing/BowlingCoverage": {}
     }, 
     "Introduction to Pointers in Java": {
       "PointersJava/PointerIntro": {}, 
@@ -110,7 +98,7 @@
           "threshold": 1
         }
       },
-      "PointersJava/Exercises": {}
+      "PointersJava/ExercisesPtr": {}
     }, 
     "Object Oriented Programming": {
       "Design/IntroOO": {},
@@ -224,7 +212,7 @@
         "Recursion Programming Exercise: Cummulative Sum": {
           "points": 1.0
         }, 
-        "Recursion Programming Exercise: Add odd positions": {
+        "Recursion Programming Exercise: Add odd values": {
           "points": 1.0
         }, 
         "Recursion Programming Exercise: Sum Of the Digits": {

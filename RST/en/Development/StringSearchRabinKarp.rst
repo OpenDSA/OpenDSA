@@ -5,6 +5,7 @@
 
 .. avmetadata::
    :author: Tom Naps and Sam Micka
+   :keyword: String Matching; Rabin-Karp String Match Algorithm
 
 Rabin-Karp String Search Algorithm [Draft]
 ===========================================
@@ -39,12 +40,14 @@ condition.
 Slideshow for Horner's Method algorithm for computing Rabin-Karp "magic number" for a string
 
 .. avembed:: AV/Development/StringMatch/Rabin_Karp_Horner_Slideshow.html ss
+   :keyword: String Matching; Rabin-Karp String Match Algorithm
 
 To check your understanding of this "magic number" computation try the
 following exercise in using Horner's Method to compute a string's
 "magic number" in a simple case
 
 .. avembed:: Exercises/Development/StringMatch/Rabin_Karp_Horners_Exercise.html ka
+   :keyword: String Matching; Rabin-Karp String Match Algorithm
 
 Because Horner's Method cannot truly compute a magic number that is
 unique for every string, the Rabin-Karp algorithm must allow for two
@@ -54,12 +57,14 @@ has found a match only to be disappointed.  Watch Rabin-Karp in action
 in the following slideshow.
 
 .. avembed:: AV/Development/StringMatch/Rabin_Karp_Algorithm_Slideshow.html ss
+   :keyword: String Matching; Rabin-Karp String Match Algorithm
 
 Finally try this exercise in tracing one step of the Rabin-Karp
 algorithm using the modified Horner's algorithm to compute the "magic
 number" of a string.
 
 .. avembed:: Exercises/Development/StringMatch/Rabin_Karp_Next_Step.html ka
+   :keyword: String Matching; Rabin-Karp String Match Algorithm
 
 
 

@@ -1,5 +1,15 @@
 /* global document, console, $, JSAV */
 
+// Title: Ambiguous Parse Tree Example for a Math Expression
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Parse Tree
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing how generation of a parse tree from a grammar might be ambiguous. */
+
 $(document).ready(function () {
 "use strict";
 

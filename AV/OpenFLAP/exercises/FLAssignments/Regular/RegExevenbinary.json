@@ -1,0 +1,60 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
+  "exerciseType": "REGEXP",
+  "totalTrueCases": 4,
+  "totalFalseCases": 7,
+  "containLetters": ["0", "1"],
+  "randomStringLength": [0, 15],
+  "description": "Give a regular expression whose language is strings over $\\{0, 1\\}$ that represent even binary numbers with no unnecessary leading 0's.",
+  "testCases": [
+    {
+      "": false,
+      "ShowTestCase": true
+    },
+    {
+      "0": true,
+      "ShowTestCase": true
+    },
+    {
+      "10": true,
+      "ShowTestCase": true
+    },
+    {
+      "1": false,
+      "ShowTestCase": true
+    },
+    {
+      "1011000": true,
+      "ShowTestCase": true
+    },
+    {
+      "0011010": false,
+      "ShowTestCase":true
+    },
+    {
+      "1111": false,
+      "ShowTestCase": true
+    },
+    {
+      "0111": false,
+      "ShowTestCase": true
+    },
+    {
+      "00": false,
+      "ShowTestCase": true
+    },
+    {
+      "010": false,
+      "ShowTestCase": true
+    },
+    {
+      "100000": true,
+      "ShowTestCase": true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": ""
+}]

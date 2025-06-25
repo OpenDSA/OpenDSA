@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BST Adding an Entry 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="3400" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="BSTADD_Q2">
+        <p class="question">
+          <p>Given:</p>
+          <pre class = "prettyprint">
+            private BinaryNode insert(T data, BinaryNode node) {
+              if (node == null) {
+                  return new BinaryNode(data);
+              }
+              else if (data.compareTo(node.getData()) < 0) {
+                  node.setLeft(insert(data, node.getLeft()));
+              }
+              else if (data.compareTo(node.getData()) > 0) {
+                  node.setRight(insert(data, node.getRight()));
+              }
+              else {//entry exists
+                if (node.getRight() != null) {
+                   BinaryNode<T> minNode = findMin(node.getRight());
+                   if (data.compareTo(minNode.getData())== 0) {//update
+                       minNode.setRight(new BinaryNode<T>(data));
+                   } else {
+                       minNode.setLeft(new BinaryNode<T>(data)); 
+                   }      
+                 } else {
+                     node.setRight(new BinaryNode(data));
+                 }            
+             }
+              return node;
+          }
+          </pre> <p>
+          and</p>
+          <img src="./BSTCheckpointImages/AddtoBSTCheckpoint.jpeg" alt="in order 18, 20, 25, 29, 31, 34, 49, 50, 60, 74, 83, 84, 85, 87, 89, 92, 99" width="700" height="400">
+          <br><p>
+          What would the following method call result in:</p>
+          <pre class = "prettyprint">
+            insert(54, topNode)
+          </pre>
+          <p>
+            Choices are:
+            <li><tt> A <br><img src="./BSTCheckpointImages/BSTInsertQ2AnswerWrong1.jpeg" alt="" width="700" height="400"></tt></li>
+            <li><tt> B <br><img src="./BSTCheckpointImages/BSTInsertQ2AnswerCorrect.jpeg" alt="" width="700" height="400"></tt></li>            
+            <li><tt> C <br><img src="./BSTCheckpointImages/BSTInsertQ2AnswerWrong2.jpeg" alt="" width="700" height="400"></tt></li>
+            <li><tt>D <br><img src="./BSTCheckpointImages/BSTInsertQ2AnswerWrong3.jpeg" alt="" width="700" height="400"></tt></li>
+
+
+          </p>
+     
+        <div class="solution"><tt>
+         B
+        </tt></div>
+        <ul class="choices">
+          <li><tt>A</tt></li>
+            <li><tt>C</tt></li>
+            <li><tt>D</tt></li>
+    <!--    
+      -->  
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question. </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -21,27 +21,31 @@ Formal Languages Course Introduction
    What we are doing today:
 
    * Administration stuff and Course mechanics
-   * Course introduction (OpenDSA Chapter 1/Linz Chapter 1)
+   * Course introduction (OpenDSA Sections 1.1 and 1.2)
 
 
 .. slide:: Administration stuff
 
-   * Sign-in sheet (be sure to sign-in on one of them)
    * I do not handle force-adds. Email to csundergrad@cs.vt.edu.
-   * Get a copy of the syllabus
    * Go over Syllabus, Homework policies (at Canvas)
 
 
-.. slide:: Course Mechanics: Instructional Software
+.. slide:: Course Mechanics: Canvas
 
-   * Canvas
+   * Posted homework, homework submission, homework feedback
+   * Post grades
+   * Access to course materials (OpenDSA)
+   * Course calendar, coursenotes, assignments
 
-      * Posted homework, homework submission, homework feedback
-      * Post grades
-      * Access to course materials (OpenDSA, JFLAP, etc.)
 
-   * OpenDSA for some couse notes, visualizations
-   * JFLAP for simulators, to help with doing your homework
+.. slide:: Course Mechanics: OpenDSA
+
+   See the "Modules" at Canvas
+
+   * Content, visualizations
+   * Simulators (OpenFLAP)
+   * Exercises (one part of homework)
+   * Framesets
 
 
 .. slide:: What you should already know
@@ -58,18 +62,35 @@ Formal Languages Course Introduction
 
    * Survival Tip:
      A **lot** of this course depends on understanding notation.
-     Don't blow this off, its too hard to pick under stress.
+     Don't blow this off, its too hard to pick up under stress.
      Make effort now by reviewing set notation.
      Be sure you know how to read/do induction proofs.
 
 
+.. slide:: Process
+
+   The work in this course will come in three forms:
+
+   * Weekly homework sets (about 40-45% of the grade)
+
+   * Two midterms and a final (35% of the grade)
+
+     * Ideally, doing the exercises and homework will be most of the
+       preparation that you need for the exams.
+
+   * OpenDSA framesets and exercises (about 20-25% of the grade)
+
+     * "Framesets" use a pedagogy called "Programmed Instruction".
+
+
 .. slide:: What this course is about
 
-   * Try to understand what computers can do.
+   * We will try to understand the limits to what computers can do, at
+     a detailed level.
   
      * Hard to reason about an Intel processor with billions of transistors.
      * Don't want to reinvent the wheel when you can use tools like
-       regex parser, Flex, Bison
+       regex parser, Flex, Bison.
      * Computer Scientists have developed many simple models of
        computation, each of which can be implemented relatively easily
        in software.
@@ -92,6 +113,10 @@ Formal Languages Course Introduction
    * Can you tell if a string has an odd number of characters?
 
    * Can you do it if you have no working memory?
+
+     * This issue of working memory might not make sense in the
+       context of a modern computer, but does make sense in the
+       context of simpler computing machines.
 
 .. slide:: Outcomes (2)
 
@@ -125,11 +150,11 @@ Formal Languages Course Introduction
      expression the same level of power required to compute the result
      of that expression?
 
-   * Can you write a program to determine if a file is a valid Java
-     program?
-
 
 .. slide:: Outcomes (4)
+
+   * Can you write a program to determine if a file is a valid Java
+     program?
 
    * Can you write a program to determine if a Java program given as
      input will ever halt?
@@ -142,21 +167,13 @@ Formal Languages Course Introduction
      and a Turing machine?
 
 
-.. slide:: Process
-
-   The primary work in this course will come from the weekly homework
-   sets.
-
-
-
 .. slide:: Language Hierarchy
 
    By the end you will know how everything in this picture applies to how
    compilers work, and to how hard a typical language-related problem
    is to solve.
 
-   Note the interplay between classes of languages, classes of grammars,
-   and classes of machines.
+   Note the interplay between languages, grammars, and machines.
 
    .. inlineav:: HierarchyCON dgm
       :links: AV/VisFormalLang/Intro/HierarchyCON.css
@@ -167,8 +184,12 @@ Formal Languages Course Introduction
 .. slide:: Models of Computation, Languages, Machines
 
    * "Automata" is just another word for "machine".
+     
+     * We usually represent our machines using graphs (nodes and edges).
+
    * Our general strategy is to look at classes of languages along
      with the "machines" that can process them.
+
    * Your job is to understand the limits on these classes
 
 
@@ -186,7 +207,7 @@ Formal Languages Course Introduction
       \mathrm{(stack)}\\
       \hline
       \mathrm{Turing\ Machine}&       \mathrm{compute\ expression}&  \mathrm{decide\ if\ halts}\\
-      \mathrm{(unlimited)}
+      \mathrm{(unlimited\ memory)}
       \end{array}
 
 
@@ -203,10 +224,10 @@ Formal Languages Course Introduction
 
 .. slide:: To do by next class
 
-  * Read Chapter 1, and also look at the OpenDSA materials
+  * Read OpenDSA Sections 1.1 and 1.2
+    (and do any associated exercises/framesets) 
 
-  * Look at Homework Assignment 1, find a partner
+  * Look at Homework Assignment 1 (due next Thursday),
+    find a partner if you want to
 
-    * Carefully read the General Homework Instructions page
-
-  * Install JFLAP, make sure that you can run it
+  * Carefully read the General Homework Instructions page

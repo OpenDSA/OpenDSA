@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Algorithm Analysis with Multiple Parameters
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: algorithm analysis
    :satisfies: analysis multiple parameters
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of performing asymptotic algorithm analysis using multiple input size parameters.
+
 
 Multiple Parameters
 ===================

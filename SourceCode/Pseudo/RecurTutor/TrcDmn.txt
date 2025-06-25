@@ -1,4 +1,4 @@
-Domino(n){
+Domino(n) {
   If(n == 1) 
     TipOver(1) //manually tip the domino over.
   else{

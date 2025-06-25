@@ -4,13 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: An Introduction to Recurrent Relations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: summation
    :satisfies: recurrence
    :topic: Math Background
+   :keyword: Recurrence Relations
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review of basic material on solving recurrence relations needed as background for a Data Structures and Algorithms course.
 
-Recurrence Relations
-====================
+An Introduction to Recurrence Relations
+=======================================
 
 Recurrence Relations
 --------------------
@@ -74,6 +80,7 @@ definition.
    :links: AV/Background/LinearRecurrencesCON.css
    :scripts: AV/Background/LinearRecurrencesCON.js
    :output: show
+   :keyword: Recurrence Relations
 
 
 A slightly more complicated recurrence is
@@ -89,3 +96,4 @@ Again, we will use expansion to help us find a closed form solution.
    :links: AV/Background/LinearRecurrencesNCON.css
    :scripts: AV/Background/LinearRecurrencesNCON.js
    :output: show
+   :keyword: Recurrence Relations

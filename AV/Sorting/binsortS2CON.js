@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Binsort Slideshow: Generalized Version
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Binsort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the details of binsort for an arbitrary key range. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "binsortS2CON";

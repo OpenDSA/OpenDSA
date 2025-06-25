@@ -1,0 +1,64 @@
+{
+  "title": "Command Line",
+  "desc": "Learn core command line and git commands through visualizations.",
+  "build_dir": "Books",
+  "theme": "haiku",
+  "html_theme_options": {
+    "show_source": false,
+    "show_search": false,
+    "show_relations": false,
+    "show_copyright": false,
+    "render_sidebar": false
+  },
+  "html_css_files": ["_static/haiku-supp.css"],
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "glob_ss_options": {
+    "threshold": 1.0,
+    "points": 1.0,
+    "required": true
+  },
+  "glob_ff_options": {
+    "threshold": 1.0,
+    "points": 0.0,
+    "required": false
+  },
+  "glob_ka_options": {
+    "threshold": 5,
+    "points": 1.0,
+    "required": true
+  },
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    },
+    "points": 1.0
+  },
+  "glob_pe_options": {
+    "threshold": 1.0,
+    "points": 1.0,
+    "required": true
+  },
+  "chapters": {
+    "About the Command Line": {
+      "CommandLine/About": {},
+      "CommandLine/Exercises": {
+        "challenge-1-exercise": {
+          "points": 2.0
+        },
+        "challenge-2-exercise": {
+          "points": 2.0
+        },
+        "challenge-3-exercise": {
+          "points": 2.0
+        }
+      }
+    }
+  }
+}

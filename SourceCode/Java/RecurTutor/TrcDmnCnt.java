@@ -1,4 +1,4 @@
-NumOfDig(n){ 
+NumOfDig(n) { 
   if(0≤n≤9) 
     result = 1
   else{

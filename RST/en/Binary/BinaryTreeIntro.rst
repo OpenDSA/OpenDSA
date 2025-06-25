@@ -4,9 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :nocatalog:
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: binary tree intro
    :topic: Binary Trees
+   :keyword: Binary Trees
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introductory module for a chapter on binary trees for a Data Structures and Algorithms course.
+
 
 Binary Trees Chapter Introduction
 =================================

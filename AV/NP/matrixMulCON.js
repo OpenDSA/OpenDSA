@@ -1,5 +1,15 @@
-//Written by Nabanita Maji and Cliff Shaffer, March 2015
+// Written by Nabanita Maji and Cliff Shaffer, March 2015.
 /*global ODSA */
+
+// Title: Symmetric Matrix Multiplication Reduction
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a reduction of Matrix Multiply to Symmetric Matrix Multiply. This demonstrates that the lower bound for Symmetric Matrix Multiply is the same as the lower bound for (general) Matrix Multiply. */
+
 $(document).ready(function() {
   "use strict";
 
@@ -62,7 +72,7 @@ $(document).ready(function() {
   var jsav = new JSAV(av_name);
 
   // Slide 1
-  jsav.umsg("The following two matrices need to be multiplied.");
+  jsav.umsg("The following two matrices will be multiplied.");
   x = 0; y = 0;
   mat1data=[[2,3],[6,7],[4,9]];
   mat2data=[[1,10,5],[12,8,11]];
@@ -92,11 +102,11 @@ $(document).ready(function() {
   l21.show();
   var l22 = jsav.g.line(350,170,350,200, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
   l22.show();
-  var r2 = jsav.g.rect(0,150,200,20);
-  jsav.label("Transformation (Cost:O(mn))",{left:5,top:135});
+  var r2 = jsav.g.rect(0,150,205,20);
+  jsav.label("Transformation (Cost: $O(mn)$)",{left:5,top:135});
   r2.show();
-  var r3 = jsav.g.rect(250,150,200,20);
-  jsav.label("Transformation (Cost:O(mn))",{left:255,top:135});
+  var r3 = jsav.g.rect(250,150,205,20);
+  jsav.label("Transformation (Cost: $O(mn)$)",{left:255,top:135});
   r3.show();
   var mat1Transformed = transform(mat1data,3,2,0); 
   var mat1TransDisp = new jsav.ds.matrix(mat1Transformed,{style:"matrix",left:x+10,top:y+200});
@@ -138,8 +148,8 @@ $(document).ready(function() {
       productDisp.css(i,j,{"background-color":"#CCFF99"});
   var r32 = jsav.g.rect(560,220,95,100);
   r31.show();
-  var r4 = jsav.g.rect(550,150,200,20);
-  jsav.label("Reverse Transform (O(mn))",{left:555,top:135});
+  var r4 = jsav.g.rect(550,150,205,20);
+  jsav.label("Transformation (Cost: $O(mn)$)",{left:555,top:135});
   r4.show();
   var l31 = jsav.g.line(640,150,640,120, {"stroke-width": 3, "arrow-end": "classic-wide-long"});
   l31.show();
@@ -148,7 +158,7 @@ $(document).ready(function() {
   jsav.step();
 
   // Slide 5
-  jsav.umsg("Total cost = O(mn) + cost of symmetric multiply.");
+  jsav.umsg("The total cost is $O(mn) \\ +$ the cost of symmetric multiply.");
   var verifyprod = multiply(mat1data,mat2data,3,3,2); 
   var verifyprodDisp = new jsav.ds.matrix(verifyprod,{style:"matrix",left:x+600,top:y+0});
   for(var i=0;i<3;i++)

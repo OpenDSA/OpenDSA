@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava
-   :requires:
+   :title: Basic References Part 2
+   :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed; Sushma Mandava
+   :institution: Stanford University; Virginia Tech
+   :requires: Pointer intro
    :satisfies:
    :topic: Pointers
+   :keyword: Pointer; Reference
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: An introduction to using references in Java, Part 2.
 
 
 Basic References Part 2
@@ -30,6 +36,7 @@ Later we will see how sharing can be used to provide efficient
 communication between parts of a program.
 
 .. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
+   :keyword: Pointers
 
 
 Shallow and Deep Copying
@@ -70,6 +77,7 @@ their own.
    :links: AV/Pointers/shallowdeepCON.css
    :scripts: AV/Pointers/shallowdeepCON.js
    :align: center
+   :keyword: Pointers
 
 |
 
@@ -78,8 +86,10 @@ their own.
    :links: AV/Pointers/shallowdeepExampleCON.css
    :scripts: AV/Pointers/shallowdeepExampleCON.js
    :output: show
+   :keyword: Pointers
 
 .. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
+   :keyword: Pointers
 
 
 Shallow and Deep Comparing
@@ -152,6 +162,7 @@ line between the corners of the reference variable's box.
    :links: AV/Pointers/empRefnullCON.css
    :scripts: AV/Pointers/empRefnullCON.js
    :align: center
+   :keyword: Pointers
 
 Bad references are common.
 In fact,  **every reference starts out with a bad value**.
@@ -216,6 +227,7 @@ visualization of how memory would react if this code were executed.
    :links: AV/Pointers/badPointerPowCON.css
    :scripts: AV/Pointers/badPointerPowCON.js
    :output: show
+   :keyword: Pointers
 
 Why Are Bad Reference Bugs So Common?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

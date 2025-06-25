@@ -4,12 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Selection Sort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology; comparison; bubble sort
    :satisfies: selection sort
    :topic: Sorting
+   :keyword: Sorting; Selection Sort
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description:  Presentation of Selection Sort including visualizations, code, and self-test questions and exercises.
 
 .. index:: ! Selection Sort
+
 
 Selection Sort
 ==============
@@ -47,20 +54,22 @@ Here is an implementation for Selection Sort.
 Consider the example of the following array.
 
 .. inlineav:: selectionsortS1CON ss
-   :long_name: Selection Sort Slideshow 1
+   :long_name: Selection Sort First Pass
    :links: 
    :scripts: AV/Sorting/selectionsortS1CON.js
    :output: show
+   :keyword: Sorting; Selection Sort
 
 Now we continue with the second pass.
 However, since the largest record is already at the right end,
 we will not need to look at it again.
 
 .. inlineav:: selectionsortS2CON ss
-   :long_name: Selection Sort Slideshow 2
+   :long_name: Selection Sort Second Pass
    :links: 
    :scripts: AV/Sorting/selectionsortS2CON.js
    :output: show
+   :keyword: Sorting; Selection Sort
 
 Selection Sort continues in this way until the entire array is sorted.
 
@@ -68,11 +77,13 @@ The following visualization puts it all together.
 
 .. avembed:: AV/Sorting/selectionsortAV.html ss
    :long_name: Selection Sort Visualization
+   :keyword: Sorting; Selection Sort
 
 Now try for yourself to see if you understand how Selection Sort works.
 
 .. avembed:: Exercises/Sorting/SelsortPRO.html ka
    :long_name: Selection Sort Proficiency Exercise
+   :keyword: Sorting; Selection Sort
 
 
 Selection Sort Analysis
@@ -96,29 +107,23 @@ comparisons and swaps required by Selection Sort.
    :links: AV/Sorting/SelectionSortAnalysisCON.css
    :scripts: AV/Sorting/SelectionSortAnalysisCON.js
    :output: show
+   :keyword: Sorting; Selection Sort
 
-There is another approach to keeping the cost of swapping records low,
-and it can be used by any sorting algorithm even when the records are
-large.
-This is to have each element of the array store a pointer to a record
-rather than store the record itself.
-In this implementation, a swap operation need only exchange the
-pointer values.
-The large records do not need to move.
-This technique is illustrated by the following visualization.
-Additional space is needed to store the pointers, but the
-return is a faster swap operation.
+Pointer Swapping
+----------------
 
 .. _PointerSwap:
 
 .. inlineav:: ptrSwapCON ss
-   :long_name: Selection Sort Pointer Swap
+   :long_name: Pointer Swap Optimization Slideshow
    :links: AV/Sorting/ptrSwapCON.css
    :scripts: AV/Sorting/ptrSwapCON.js
    :output: show
+   :keyword: Sorting; Selection Sort
 
 Here are some review questions to check how well you understand
 Selection Sort.
 
 .. avembed:: Exercises/Sorting/SelsortSumm.html ka
    :long_name: Selection Sort Summary Exercise
+   :keyword: Sorting; Selection Sort

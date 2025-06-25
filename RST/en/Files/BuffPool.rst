@@ -3,11 +3,18 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Buffer Pools
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: disk drives
    :satisfies: buffer pool
    :topic: File Processing  
+   :keyword: File Processing; Buffer Pool
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concept and implementation of buffer pools.
+
 
 Buffer Pools
 ============
@@ -116,6 +123,7 @@ than requiring new information to be read from disk.
    :links: AV/Files/buffpoolCON.css 
    :scripts: AV/Files/buffintroCON.js
    :output: show
+   :keyword: File Processing; Buffer Pool
 
 
 Replacement Strategies
@@ -192,6 +200,7 @@ suggests a special-purpose buffer management scheme.
    :links: AV/Files/buffpoolCON.css 
    :scripts: AV/Files/LRUCON.js
    :output: show
+   :keyword: File Processing; Buffer Pool
 
 
 The Dirty Bit
@@ -224,6 +233,7 @@ written to disk if and only if the dirty bit has been turned on.
    :links: AV/Files/buffpoolCON.css 
    :scripts: AV/Files/LRUwriteCON.js
    :output: show
+   :keyword: File Processing; Buffer Pool
 
 Modern operating systems support :term:`virtual memory`.
 Virtual memory is a technique that allows the programmer to write
@@ -244,6 +254,7 @@ pool replacement strategies.
 
 .. avembed:: AV/Files/BufferPoolAV.html ss
    :long_name: Buffer Pool Visualization
+   :keyword: File Processing; Buffer Pool
 
 .. The following exercise needs to be completed, so that this can be
 .. added back in.
@@ -251,6 +262,7 @@ pool replacement strategies.
 .. Here is an exercise to help you practice.
 
 .. .. avembed:: AV/Files/bufferpoolPRO.html pe
+..   :keyword: File Processing; Buffer Pool
 
 
 Implementing Buffer Pools

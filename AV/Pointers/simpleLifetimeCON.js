@@ -1,3 +1,12 @@
+// Title: Lifetime of Local Variables
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Pointer; Reference; Object
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating the lifetime of local storage. */
+
 //variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";

@@ -1,0 +1,43 @@
+[{
+  "exerciseType": "DFA",
+  "totalTrueCases": 5,
+  "totalFalseCases": 5,
+  "containLetters": ["a", "b"],
+  "randomStringLength": [0, 15],
+  "description": "Give a DFA that accepts the COMPLEMENT of the language over $\\Sigma = \\{a, b\\}$ of strings with any even number of a’s and at least three b’s.",
+  "testCases": [
+    {
+      "bbb": false,
+      "ShowTestCase": true
+    },
+    {
+      "bbab": true,
+      "ShowTestCase":true
+    },
+    {
+      "babb": true,
+      "ShowTestCase":true
+    },
+    {
+      "babab": false,
+      "ShowTestCase":true
+    },
+    {
+      "aabbb": false,
+      "ShowTestCase":true
+    },
+    {
+      "aabbbaab": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaaaaaaaabbb": true,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/DFACOMPevenamin3b.jff"
+}]

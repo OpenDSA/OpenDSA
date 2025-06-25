@@ -1,3 +1,12 @@
+// Title: Motivation for External Sorting Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: File Processing; External Sorting
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating standard Mergesort does not make for an optimal external sorting algorithm. */
+
 $(document).ready(function () {
   "use strict";
 
@@ -21,12 +30,11 @@ var setYellow = function (index, arr) {
   arr.css(index, {"background-color": "#FFFF00" });
 };
 
-
   av.umsg("Our approach to external sorting is derived from the Mergesort algorithm. The simplest form of external Mergesort performs a series of sequential passes over the records, merging larger and larger sublists on each pass.");
   var inputlabel1 = av.label("Input", {left: 90, top: 0});
   var outputlabel1 = av.label("Output", {left: 435, top: 0});
-  var inputlabel2 = av.label("Runs of length 1", {left: 50, top: 195});
-  var outputlabel2 = av.label("Runs of length 2", {left: 400, top: 195});
+  var inputlabel2 = av.label("Runs of length 1", {left: 55, top: 195});
+  var outputlabel2 = av.label("Runs of length 2", {left: 405, top: 195});
 
   var inputline1 = av.g.line(81, 43, 81, 79, {"stroke-width": "2"});
   var inputline2 = av.g.line(111, 43, 111, 79, {"stroke-width": "2"});

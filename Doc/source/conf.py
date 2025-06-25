@@ -42,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenDSA'
-copyright = u'2012-2015 by OpenDSA Project Contributors'
+copyright = u'2012-2022 by OpenDSA Project Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -90,8 +90,10 @@ pygments_style = 'sphinx'
 
 # -- Options for HTML output ---------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
+# The theme to use for all OpenDSA HTML pages. 
+# The value set here must explicitly match the name for the theme's folder, and a theme.conf file must be available in the folder.
+# Note: when using configuration files, you should manually change the theme in the corresponding .json file.
+    # e.g. if wanting to build a CS3 book with Haichibee theme, change the "theme" variable in config/CS3.json
 html_theme = 'haiku'
 
 # Theme options are theme-specific and customize the look and feel of a theme

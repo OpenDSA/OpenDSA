@@ -4,8 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Reductions
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Reductions
+   :keyword: Reduction
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of a reduction. Demonstrates the two-sided relationship between two problems: One side relates upper bounds, the other relates lower bounds. Presents a visual representation for the reduction process. This is important prepatory material for later introducing NP-completeness theory.
 
 Reductions
 ==========
@@ -23,12 +29,12 @@ upper and lower bounds on the cost of a problem (as opposed to an
 algorithm or program).
 
 Because the concept of a problem is discussed extensively in this
-chapter, we want notation to simplify problem descriptions.
+chapter, we want notation to clarify problem descriptions.
 Throughout this chapter, a problem will be defined in terms of a
 mapping between inputs and outputs, and the name of the problem will
 be given in all capital letters.
-Thus, a complete definition of the sorting problem could appear as
-follows:
+Thus, a complete definition of the sorting problem could appear in our
+notation as follows:
 
 .. topic:: SORTING
 
@@ -44,6 +50,7 @@ follows:
    :links: AV/NP/SortingProblemCON.css
    :scripts: AV/NP/SortingProblemCON.js
    :output: show
+   :keyword: Reductions
 
 
 Example: The Pairing Problem
@@ -70,31 +77,35 @@ To illustrate this, let us consider another problem.
 
 .. _Pair:
 
-.. odsafig:: Images/Pairing.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: Illustration of PAIRING
+.. inlineav:: pairingCON dgm
+   :long_name: Pairing problem illustration
+   :links: AV/NP/pairingCON.css
+   :scripts: AV/NP/pairingCON.js
+   :output: show
+   :keyword: Reductions
 
-   An illustration of PAIRING.
+   An illustration of **PAIRING**.
    The two lists of numbers are paired up so that the least values
    from each list make a pair, the next smallest values from each list
    make a pair, and so on.
+
+
+Figure :num:`Figure #Pair` illustrates **PAIRING**.
+One way to solve **PAIRING** is to use an existing sorting
+program to sort each of the two sequences, and then pair off
+items based on their position in sorted order.
+Technically we say that in this solution, **PAIRING** is
+:term:`reduced <reduction>` to **SORTING**, because **SORTING** is used to
+solve **PAIRING**.
+The next slideshow shows this process in detail, so that you can see
+the necessary steps in any reduction.
 
 .. inlineav:: pairToSortCON ss
    :long_name: Pair to Sorting Reduction Slideshow
    :links: AV/NP/pairToSortCON.css
    :scripts: AV/NP/pairToSortCON.js
    :output: show
-
-Figure :num:`Figure #Pair` illustrates PAIRING.
-One way to solve PAIRING is to use an existing sorting
-program to sort each of the two sequences, and then pair off
-items based on their position in sorted order.
-Technically we say that in this solution, **PAIRING** is
-:term:`reduced <reduction>` to SORTING, because **SORTING** is used to
-solve PAIRING.
+   :keyword: Reductions
 
 Notice that reduction is a three-step process.
 The first step is to convert an instance of
@@ -115,13 +126,17 @@ In terms of asymptotic notation, assuming that we can find one method
 to convert the inputs to **PAIRING** into inputs to **SORTING**
 "fast enough", and a second method to convert the result of
 **SORTING** back to the correct result for **PAIRING** "fast enough",
-then the asymptotic cost of PAIRING cannot be more than the cost of
+then the asymptotic cost of **PAIRING** cannot be more than the cost of
 **SORTING**.
 In this case, there is little work to be done to convert from
 **PAIRING** to **SORTING**, or to convert the answer from **SORTING**
 back to the answer for **PAIRING**, so the dominant cost of this
 solution is performing the sort operation.
 Thus, an upper bound for **PAIRING** is in :math:`O(n \log n)`.
+
+
+Reduction and Finding a Lower Bound
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is important to note that the pairing problem does **not**
 require that elements of the two sequences be sorted.
@@ -133,16 +148,15 @@ Certainly if we use sorting to solve **PAIRING**,
 the algorithms will require :math:`\Omega(n \log n)` time.
 But, another approach might conceivably be faster.
 
-
-Reduction and Finding a Lower Bound
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 There is another use of reductions aside from applying an old
 algorithm to solve a new problem (and thereby establishing an upper
 bound for the new problem).
 That is to prove a lower bound on the cost of a new problem by showing 
 that it could be used as a solution for an old problem with a known
 lower bound.
+This can be a hard concept to wrap your head around.
+But it is absolutely critical for understanding NP-Completeness later
+on.
 
 Assume we can go the other way and convert **SORTING** to **PAIRING**
 "fast enough".
@@ -154,12 +168,13 @@ in :math:`\Omega(n \log n)`.
 In other words, the best possible algorithm for sorting requires at
 least :math:`n \log n` time.
 
-Assume that PAIRING could be done in :math:`O(n)` time.
+Assume that **PAIRING** could be done in :math:`O(n)` time.
 Then, one way to create a sorting algorithm would be to convert
 **SORTING** into **PAIRING**, run the algorithm for **PAIRING**,
 and finally convert the answer back to the answer for **SORTING**.
-Provided that we can convert SORTING to/from PAIRING "fast enough",
-this process would yield an :math:`O(n)` algorithm for sorting!
+Provided that we can convert **SORTING** to/from **PAIRING**
+"fast enough", this process would yield an :math:`O(n)` algorithm for
+sorting!
 Because this contradicts what we know about the lower bound for
 **SORTING**, and the only flaw in the reasoning is the initial
 assumption that **PAIRING** can be done in :math:`O(n)` time, we can
@@ -172,7 +187,7 @@ expensive as **SORTING** and so must itself have a lower bound in
 To complete this proof regarding the lower bound for **PAIRING**, we
 need now to find a way to reduce **SORTING** to **PAIRING**.
 This is easily done.
-Take an instance of SORTING (i.e., an array :math:`A` of :math:`n`
+Take an instance of **SORTING** (i.e., an array :math:`A` of :math:`n`
 elements).
 A second array :math:`B` is generated that simply stores :math:`i` in
 position :math:`i` for :math:`0 \leq i < n`.
@@ -194,6 +209,11 @@ for **PAIRING**.
 
 The Reduction Template
 ~~~~~~~~~~~~~~~~~~~~~~
+
+Before showing the example in detail for the reduction of **SORTING**
+to **PAIRING**, let's step back for a moment and make sure that we
+understand the general process defining it in terms of the Reduction
+Template.
 
 Consider any two problems for which a suitable reduction from one to
 the other can be found.
@@ -220,18 +240,16 @@ We can define reduction more formally as a three-step process:
 
 .. _BlackBox:
 
-.. odsafig:: Images/BlackBox.png
-   :width: 200
-   :align: center
-   :capalign: justify
-   :figwidth: 90%
-   :alt: General blackbox reduction
+.. inlineav:: blackBoxCON dgm
+   :long_name: General blackbox reduction diagram
+   :links: AV/NP/blackBoxCON.css
+   :scripts: AV/NP/blackBoxCON.js
+   :output: show
+   :keyword: Reductions
 
-   The general process for reduction shown as a "blackbox" diagram.
+   A graphical representation of the general reduction process,
+   showing the role of the two problems, and the two transformations.
 
-Figure :num:`Figure #BlackBox` shows a graphical representation of the
-general reduction process, showing the role of the two problems, and
-the two transformations.
 Next is a slideshow that shows the steps for 
 the reduction of **SORTING** to **PAIRING**.
 
@@ -240,6 +258,7 @@ the reduction of **SORTING** to **PAIRING**.
    :links: AV/NP/sortToPairCON.css
    :scripts: AV/NP/sortToPairCON.js
    :output: show
+   :keyword: Reductions
 
 It is important to note that the reduction process does not give us
 an algorithm for solving either problem by itself.
@@ -253,6 +272,9 @@ the upper bound of the first problem is at most the upper bound of
 the second.
 Conversely, the lower bound of the second problem is at least the
 lower bound of the first.
+None of this involves knowing the actual solution to either problem.
+This is especially helpful since we often use reductions to prove that
+something cannot exist (or at least, cannot run fast).
 
 
 Two Multiplication Examples
@@ -298,7 +320,7 @@ This is because
 
 .. math::
 
-   (X + Y)^2 - (X - Y)^2 = X^2 + 2XY + Y^2 - (X^2 - 2XY + Y^2) = 4XY
+   (X + Y)^2 - (X - Y)^2 = X^2 + 2XY + Y^2 - (X^2 - 2XY + Y^2) = 4XY.
 
 Note that the division by 4 can be done in linear time (simply convert
 to binary, shift right by two digits, and convert back).
@@ -346,7 +368,11 @@ arbitrary matrix :math:`A` as follows:
 
 Here 0 stands for an :math:`n \times n` matrix composed of zero
 values, :math:`A` is the original matrix, and :math:`A^{\rm T}` stands
-for the transpose of matrix :math:`A`. [#]_
+for the transpose of matrix :math:`A`.
+(The transpose operation takes position :math:`ij` of the original
+matrix and places it in position :math:`ji` of the transpose matrix.
+This can easily be done in :math:`n^2` time for an
+:math:`n \times n` matrix.)
 
 Note that the resulting matrix is now symmetric.
 We can convert matrix :math:`B` to a symmetric matrix in a similar
@@ -388,18 +414,13 @@ The following slideshow illustrates this reduction process.
    :links: AV/NP/matrixMulCON.css
    :scripts: AV/NP/matrixMulCON.js
    :output: show
-
-.. [#] The transpose operation
-       takes position :math:`ij` of the original matrix and places it
-       in position :math:`ji` of the transpose matrix.
-       This can easily be done in :math:`n^2` time for an
-       :math:`n \times n` matrix.
+   :keyword: Reductions
 
 
 Bounds Theorems
 ~~~~~~~~~~~~~~~
 
-We will use the following notation:
+The notation
 :math:`\leq_{O(g(n))}` means that a reduction can be done
 with transformations that cost :math:`O(g(n))`.
 
@@ -408,14 +429,15 @@ then there is a lower bound of :math:`\Omega(h(n))` on the time
 complexity of :math:`P_1`, and :math:`g(n) = o(h(n))`,
 then there is a lower bound of :math:`\Omega(h(n))` on
 :math:`P_2`.
-(Notice little-oh, not big-Oh.)
+(Notice little-oh, not big-Oh. Meaning that the one thing is really
+smaller than the other.)
 
 Example:
-SORTING :math:`\leq_{O(n)}` PAIRING, because
+**SORTING** :math:`\leq_{O(n)}` **PAIRING**, because
 :math:`g(n) = n`, :math:`h(n) = n \log n`, and
 :math:`g(n) = o(h(n))`.
 The Lower Bound Theorem gives us an :math:`\Omega(n \log n)`
-lower bound on PAIRING.
+lower bound on **PAIRING**.
 
 This also goes the other way.
 
@@ -430,16 +452,16 @@ So, given good transformations, both problems take at least
 The Cost of Making a Simple Polygon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SIMPLE POLYGON: Given a set of :math:`n` points in the plane,
+**SIMPLE POLYGON**: Given a set of :math:`n` points in the plane,
 find a simple polygon with those points as vertices.
 (Here, "simple" means that no lines cross.)
-We will show that SORTING :math:`\leq_{O(n)}` SIMPLE POLYGON.
+We will show that **SORTING** :math:`\leq_{O(n)}` **SIMPLE POLYGON**.
 
-We start with an instance of SORTING: :math:`\{x_1, x_2, \cdots, x_n\}`.
+We start with an instance of **SORTING**: :math:`\{x_1, x_2, \cdots, x_n\}`.
 In linear time, find :math:`M = \max|x_i|`.
 Let :math:`C` be a circle centered at the origin, of radius :math:`M`.
 
-We will generate an instance of SIMPLE POLYGON by replacing each value
+We will generate an instance of **SIMPLE POLYGON** by replacing each value
 in the array to be sorted with a corresponding point defined as
 
 .. math::
@@ -450,6 +472,7 @@ in the array to be sorted with a corresponding point defined as
    :links: AV/SeniorAlgAnal/ReduceSimpPCON.css
    :scripts: AV/SeniorAlgAnal/ReduceSimpPCON.js
    :align: center
+   :keyword: Reductions
 
    Input to SORTING: the values 5, -3, 2, 0, 10.
    When converted to points, they fall on a circle as shown.
@@ -460,5 +483,5 @@ the circle in sort order.
 This is because
 the only simple polygon having all of its points on :math:`C` as
 vertices is the convex one.
-Therefore, by the Lower Bound Theorem, SIMPLE POLYGON is in
+Therefore, by the Lower Bound Theorem, **SIMPLE POLYGON** is in
 :math:`\Omega(n \log n)`.

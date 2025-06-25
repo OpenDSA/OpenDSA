@@ -2,8 +2,9 @@ $(document).ready(function() {
   "use strict";
   var av_name = "derivEx1CON";
   var av = new JSAV(av_name, {animationMode: "none"});
+
   // Setup the tree
-  var bt = av.ds.tree({nodegap: 15});
+  var bt = av.ds.tree({nodegap: 15, top: -35, left: 280});
   bt.root("S");
   var rt = bt.root();
   var lt = bt.newNode("A");
@@ -25,4 +26,3 @@ $(document).ready(function() {
   av.displayInit();
   av.recorded();
 });
-

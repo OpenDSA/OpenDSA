@@ -1,0 +1,31 @@
+[{
+  "exerciseType": "DFA",
+  "totalTrueCases": 4,
+  "totalFalseCases": 5,
+  "containLetters": ["1", "0"],
+  "randomStringLength": [0, 15],
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{0, 1\\}$ of strings that represent even binary numbers.",
+  "testCases": [
+    {
+      "0": true,
+      "ShowTestCase": true
+    },
+    {
+      "1": false,
+      "ShowTestCase": true
+    },
+    {
+      "010": true,
+      "ShowTestCase": true
+    },
+    {
+      "011": false,
+      "ShowTestCase": true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/EvenBinaryDFACON.jff"
+}]

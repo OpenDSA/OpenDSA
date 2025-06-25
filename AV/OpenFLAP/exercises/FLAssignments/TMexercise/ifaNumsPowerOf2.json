@@ -1,0 +1,36 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
+  "exerciseType": "TM",
+  "totalTestCases": 5,
+  "containLetters": ["a"],
+  "randomStringLength": [0, 15],
+  "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
+  "hardCodeCasesCounter": 5,
+  "description": "Give a Turing Machine that decides if all strings that has a number of a’s that is a power of two or not $L = \\{a^{2^n}\\mid n>0\\},  \\Sigma = \\{a\\}$. In other words, it implements the language in Turing Decidable form.",
+  "testCases": [{
+      "λ": "N",
+      "ShowTestCase":true
+    },
+    {
+      "a": "N",
+      "ShowTestCase":true
+    },
+    {
+      "aa": "Y",
+      "ShowTestCase":true
+    },
+    {
+      "aaa": "N",
+      "ShowTestCase":true
+    },
+    {
+      "aaaa": "Y",
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": ""
+}]

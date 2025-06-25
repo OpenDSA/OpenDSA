@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Dave Parillo
    :topic: Biography
+   :keyword: Francis Bacon
+
 
 Spotlight: Francis Bacon
 ========================

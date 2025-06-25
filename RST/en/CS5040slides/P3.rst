@@ -1,0 +1,78 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://algoviz.org/OpenDSA for more details.
+.. Copyright (c) 2012-2013 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+
+.. slideconf::
+   :autoslides: False
+
+================
+Project 3 Design
+================
+
+Project 3 Design
+----------------
+
+.. slide:: Project 3 Design
+
+   | Implement Quicksort
+   |    On disk as a big virtual memory
+   |    The disk file is mediated by a buffer pool for better
+        performance
+   |       The goal is to minimize disk I/O   
+   | Small project: No parser, no world controller, just a main, a
+     sort, and a buffer pool
+
+
+.. slide:: Disk File
+
+   | You will use RandomAccessFile to access the disk file
+   |    This gives the needed basic functionality (read/write/seek)
+   |    This is "unbuffered" (we provide our own buffering via the
+        buffer pool)
+
+
+.. slide:: Records: Binary Data
+
+   | Records to sort are 4-byte quantities
+   |    2 byte key and 2 byte data field
+   |    Don't grab the wrong bytes, or get them out of order!
+   | Most of the time you simply copy clumps of 4 bytes (swap)
+   | When you need to get the key out:
+   |    Best approach is to wrap the 4-byte quantity in a ByteBuffer
+   |    Use getShort() to pull out the key value
+   | "ASCII" vs. "Binary" files
+   |    The only difference is that the "ASCII" files have keys and
+        values selected so that they happen to print nicely
+   |    One side effect is that there are lots of duplicate keys in
+        "ASCII" files
+
+
+.. slide:: Performance
+
+   | Most tests have a time limit.
+   | Most of those can easily be met if your buffer pool is
+     implemented correctly.
+   |    Only read if the corresponding block is not in memory
+   |    Only write when the block is flushed (not every time block is
+        altered)
+   | One or two tests require something more. Two approaches
+   |    Improve the algorithm implementation (see OpenDSA)
+   |    Code tune: Look especially at wasted creation/destruction of
+        temporary byte arrays
+
+        
+.. slide:: Project Staging
+
+   #. Download starter kit. Submit to Web-CAT. Look at the test case
+      info.
+   #. Make the Quicksort work with a stubbed buffer pool that is
+      simply holding the array in memory. Replace Quicksort [] with
+      method calls. Make sure that you read keys and swap records
+      correctly.
+   #. Start adding buffer pool functionality until that works
+      completely and efficiently.
+   #. Do final optimizations to pass tests.

@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Data menbers of AStack
+
+// Title: Array-Based Stack Data Members Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Array-Based Stack
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting the data members for an array-based stack implementation. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "astackVarCON";

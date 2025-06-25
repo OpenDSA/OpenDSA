@@ -9,11 +9,11 @@
    int sascii(String x, int M) {
      char ch[];
      ch = x.toCharArray();
-     int xlength = x.length();
 
      int i, sum;
-     for (sum=0, i=0; i < x.length(); i++)
+     for (sum=0, i=0; i < x.length(); i++) {
        sum += ch[i];
+     }
      return sum % M;
    }
 /* *** ODSAendTag: sascii *** */
@@ -39,11 +39,11 @@ int sfold(String s, int M) {
      int home;                     // Home position for e
      int pos = home = h(k);        // Init probe sequence
      for (int i=1; EMPTYKEY != (HT[pos]).key(); i++) {
-       pos = (home + p(k, i)) % M; // probe
        if (k == HT[pos].key()) {
          println("Duplicates not allowed");
          return;
        }
+       pos = (home + p(k, i)) % M; // probe
      }
      HT[pos] = e;
    }
@@ -51,17 +51,18 @@ int sfold(String s, int M) {
 
 /* *** ODSATag: hashSearch *** */
    // Search for the record with Key K
-   bool hashSearch(Key K, Elem e) {
+   boolean hashSearch(Key K, Elem e) {
      int home;              // Home position for K
      int pos = home = h(K); // Initial position is the home slot
      for (int i = 1;
           (K != (HT[pos]).key()) && (EMPTYKEY != (HT[pos]).key());
-          i++)
+          i++) {
        pos = (home + p(K, i)) % M; // Next on probe sequence
+          }
      if (K == (HT[pos]).key()) {   // Found it
        e = HT[pos];
        return true;
      }
-     else return false;            // K not in hash table
+     else { return false; }            // K not in hash table
    }
 /* *** ODSAendTag: hashSearch *** */

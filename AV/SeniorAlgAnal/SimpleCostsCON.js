@@ -133,4 +133,6 @@ $(document).ready(function() {
 
   av.displayInit();
   av.recorded();
+  // Invoke MathJax to get equations to display correctly
+  MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
 });

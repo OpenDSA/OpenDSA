@@ -91,5 +91,7 @@ $(document).ready(function() {
   av.g.line(left + 285, topSpace + 147, left + 610, topSpace + 147);
   av.g.line(left + 385, topSpace + 174, left + 610, topSpace + 174);
   av.g.line(left + 485, topSpace + 201, left + 610, topSpace + 201);
+  // Invoke MathJax to get equations to display correctly
+  MathJax.Hub.Queue(["Typeset" , MathJax.Hub]);
   av.displayInit();
 });

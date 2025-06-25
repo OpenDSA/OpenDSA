@@ -6,7 +6,7 @@ class BSTNode implements BinNode {
   private BSTNode right;         // Pointer to right child
 
   // Constructors
-  BSTNode() {left = right = null; }
+  BSTNode() { left = right = null; }
   BSTNode(Comparable val) { left = right = null; element = val; }
   BSTNode(Comparable val, BSTNode l, BSTNode r)
     { left = l; right = r; element = val; }

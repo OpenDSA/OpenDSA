@@ -12,6 +12,8 @@ class ValueBox{
             this.domain = element.dataset.domain;
             this.globalPointerReference = Window.globalPointerReference;
             this.element = element;
+            this.valueSourceParent = element.dataset.id;
+            this.valueNegated = false; // tracks changes in sign but only for solution boxes, copied to varbox
         }
         else
         {
@@ -20,9 +22,13 @@ class ValueBox{
             this.variable = element.dataset.variable;
             this.valueDisplay = element.dataset.valueDisplay;
             this.unitDisplay = element.dataset.unitDisplay;
+            this.variableDisplay = element.dataset.variableDisplay;
             this.domain = element.dataset.domain;
             this.globalPointerReference = Window.globalPointerReference;
             this.element = null;
+            this.valueSourceParent = element.dataset.sourceParent;
+            this.valueNegated = false;
+
             this.createSolutionBox(element, Window.jsavObject);
         }
     }
@@ -31,6 +37,7 @@ class ValueBox{
         // Create the JSAV label object with variable = value notation
         // element contains the location for the JSAV label
         // AND the value, unit, etc. things
+        
         this.element = {};
 
         // Delete buttons
@@ -104,8 +111,18 @@ class ValueBox{
                 if(this.globalPointerReference.currentClickedObject == this){
                     this.value = -1 * this.value;
                     this.valueDisplay = Window.valueStringRepr(this.value);
+                    this.valueNegated = !this.valueNegated;
                     this.setValueUnit(this.valueDisplay,this.unitDisplay);
                     Window.clearGlobalPointerReference();
+
+                    Window.jsavObject.logEvent({
+                        type: "deforms-solutionbox-negated", 
+                        desc: {
+                            name: this.variable,
+                            value: this.value,
+                            unit: this.unit
+                        } 
+                    });
                 }
                 else {
                     this.globalPointerReference.currentClickedObject = this;
@@ -113,6 +130,15 @@ class ValueBox{
                     this.globalPointerReference.currentClickedObjectDescription = "solved-value";
                     this.globalPointerReference.currentClickedObject.element.visualComponent.element[0].classList.add("selectedvalue");
                     Window.showBlankPrompt = false;
+
+                    // Window.jsavObject.logEvent({
+                    //     type: "deforms-solutionbox-selected", 
+                    //     desc: {
+                    //         name: this.variable,
+                    //         value: this.value,
+                    //         unit: this.unit
+                    //     } 
+                    // });
                 }
             }
         )

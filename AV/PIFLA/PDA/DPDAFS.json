@@ -1,0 +1,104 @@
+{
+  "translations": {
+    "en": {
+      "differences": {
+        "type": "select",
+        "description": "Let's try to determine if there is a difference between Deterministic and Non-deterministic PDAs in terms of what languages they can recognize.",
+        "question": "Going back to basic DFAs and NFAs, what are the differences between a DFA and a NFA?",
+        "answer": ["DFAs have at most one transition for every (state, alphabet) pair, while NFAs can have multiple transitions for a pair", "NFAs have lambda transitions"],
+        "choices": ["DFAs have at most one transition for every (state, alphabet) pair, while NFAs can have multiple transitions for a pair", "NFAs have lambda transitions", "DFAs have a trap state", "NFAs can have more than one final state"],
+        "incorrectFeedback": ["A given statement might be true, but not be a difference between NFAs and DFAs."]
+      },
+      "tuples": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$...",
+        "question": "'For every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$' means 'for every tuple (state, input letter, stack symbol)'.",
+        "answer": "True",
+        "choices": []
+      },
+      "onlyone": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$:<br/>1. $\\delta(q, a, b)$ contains at most one element.",
+        "question": "Is that similar to the DFA condition?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+"correctFeedback": ["Except that in DFAs we only think about the (state, alphabet) pair and in DPDAs we need to also consider the top of the stack."]
+      },
+      "lambda": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$:<br/>1. $\\delta(q, a, b)$ contains at most one element.<br/>2. If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$.",
+        "question": "Is Part 2 similar to a NFA $\\lambda$ transition?",
+        "answer": "No",
+        "choices": ["No", "Yes"],
+        "correctFeedback": ["In PDAs a transition with $\\lambda$ in the second position of the tuple will pop the top of the stack, so it is not a free transition"]
+      },
+      "firstcond": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$:<br/>1. $\\delta(q, a, b)$ contains at most one element.<br/>2. If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$.<br/><br/>Example: Consider the PDA for $L = \\{a^nb^n | n \\ge 0\\}$.",
+        "question": "Does this PDA satisty the first condition?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["For every letter and stack top combination, there is at most one transition"]
+      },
+      "secondcond": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$:<br/>1. $\\delta(q, a, b)$ contains at most one element.<br/>2. If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$.<br/><br/>Example: Consider the PDA for $L = \\{a^nb^n | n \\ge 0\\}$.",
+        "question": "Does the PDA satisty the second condition?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["For $\\lambda$ as the sring input, for any given stack top value there is no other transition from that state."]
+      },
+      "count": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$:<br/>1. $\\delta(q, a, b)$ contains at most one element.<br/>2. If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$.<br/><br/>Second Example: Consider the PDA for $L = \\{ww^R | w\\in{\\Sigma}^{+}\\}, \\Sigma = \\{a, b\\}$.",
+        "question": "Look at the transitions carefully. On state $q_1$, how many transitions are there for $\\delta(q_1, a, a)$?",
+        "answer": "2",
+        "choices": ["2", "1", "0"]
+      },
+      "bb": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$:<br/>1. $\\delta(q, a, b)$ contains at most one element.<br/>2. If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$.<br/><br/>Second Example: Consider the PDA for $L = \\{ww^R | w\\in{\\Sigma}^{+}\\}, \\Sigma = \\{a, b\\}$.",
+        "question": "Look at the transitions carefully. On state $q_1$, how many transitions are there for $\\delta(q_1, b, b)$?",
+        "answer": "2",
+        "choices": ["2", "1", "0"]
+      },
+      "firstcond2": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$:<br/>1. $\\delta(q, a, b)$ contains at most one element.<br/>2. If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$.<br/><br/>Second Example: Consider the PDA for $L = \\{ww^R | w\\in{\\Sigma}^{+}\\}, \\Sigma = \\{a, b\\}$.",
+        "question": "Does the PDA satisty the first condition?",
+        "answer": "No",
+        "choices": ["Yes, for every letter and top of the stack combination, there is at most one transition", "No"]
+      },
+      "non": {
+        "type": "select",
+        "description": "<b>Definition:</b> A PDA $M=(Q, \\Sigma, \\Gamma, \\delta, q_0, Z, F)$ is deterministic if for every $q \\in Q$, $a \\in \\Sigma \\cup \\{\\lambda\\}$, $b \\in \\Gamma$:<br/>1. $\\delta(q, a, b)$ contains at most one element.<br/>2. If $\\delta(q, \\lambda, b)$ is not empty, then $\\delta(q, c, b)$ must be empty for every $c \\in \\Sigma$.<br/><br/>Second Example: Consider the PDA for $L = \\{ww^R | w\\in{\\Sigma}^{+}\\}, \\Sigma = \\{a, b\\}$.",
+        "question": "So, is the PDA deterministic?",
+        "answer": "No. Condition 1 is violated so the PDA is nondeterministic",
+        "choices": ["Yes", "No. Condition 1 is violated so the PDA is nondeterministic", "Not sure yet, we need to check the secod condition"]
+      },
+      "DCFL": {
+        "type": "select",
+        "description": "<b>Definition:</b> A language is a Deterministic Context Free Language if it is accepted by a Deterministic PDA.",
+        "question": "Is $L = \\{a^nb^n | n \\ge 0\\}$ a DCFL?",
+        "answer": "Yes, it has a DPDA that accepts it.",
+        "choices": ["Yes, it has a DPDA that accepts it.", "No, we don't know a DPDA that accepts it."],
+        "correctFeedback": ["By the way, it is irrelevant whether we <b>know</b> that there is a DPDA that accepts it. What matters is whether such a DPDA <b>exists</b>. Of course, if we don't know a DPDA for the language, then maybe we don't know if the langauge is DCFL."]
+      },
+      "union": {
+        "type": "select",
+        "description": "Consider the language <br/>$L = \\{a^nb^n|n \\ge 1\\} \\cup \\{a^nb^{2n}| n\\ge 1\\}$.<br/></br/>Obviously, both languages being union'ed are CFLs. And obviously, their union is a CFL<br/><br/>But imagine how the 'obvious' PDA works: The start state transitions to the “correct” machine to recognize a sting in either language.",
+        "question": "Suppose the PDA reads some number $n$ of a's. What is the correct number of b's to accept the string?",
+        "answer": "The PDA must read either $n$ b's or $2n$ b's",
+        "choices": ["The PDA must read another $n$ b's", "The PDA must read another $2n$ b's", "The PDA must read either $n$ b's or $2n$ b's"]
+      },
+      "notboth": {
+        "type": "select",
+        "description": "Consider the language <br/>$L = \\{a^nb^n|n \\ge 1\\} \\cup \\{a^nb^{2n}| n\\ge 1\\}$.<br/></br/>Obviously, both languages being union'ed are CFLs. And obviously, their union is a CFL<br/><br/>But imagine how the 'obvious' PDA works: The start state transitions to the “correct” machine to recognize a sting in either language.",
+        "question": "The PDA cannot test for both $b^n$ and $b^{2n}$ deterministically.",
+        "answer": "True",
+        "choices": [],
+        "correctFeedback": ["Well, that makes intuitive sense. But it is not a proof. Soon we will consider how to prove that this language is not deterministic."]
+      }
+    }
+  }
+}

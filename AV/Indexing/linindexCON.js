@@ -1,4 +1,13 @@
 /*global ODSA */
+// Title: Two-level linear index Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Analysis Demonstration
+// Keyword: Linear Indexing
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a two-level linear index for variable length records stored on disk. */
+
 $(document).ready(function () {
   "use strict";
   var theArray = [1,2003,5894,10528];
@@ -18,20 +27,20 @@ $(document).ready(function () {
   var left = 140;
 
   // Slide 1
-  av.umsg("Here is the Second Level Index Array which stores the first key value in the disk block of the index file");
+  av.umsg("Here is the Second Level Index Array which stores the first key value in the disk block of the index file.");
   av.displayInit();
   
   // Slide 2
-  av.umsg("Let's search for the entry with key 3000");
+  av.umsg("Let's search for the entry with key 3000.");
   av.step();
   
   // Slide 3
   setYellow(1);
-  av.umsg("The second disk block contains the greatest value less than or equal to the search key");
+  av.umsg("The second disk block contains the greatest value less than or equal to the search key.");
   av.step();
   
   // Slide 4
-  av.umsg("Here is a representation of the disk blocks in the Linear Index file");
+  av.umsg("Here is a representation of the disk blocks in the Linear Index file.");
   var rect5 = av.g.rect(left + 0, itemheight, 143, itemheight - 50).css({"fill": "white"});
   var rect6 = av.g.rect(left + 143, itemheight, 143, itemheight - 50).css({"fill": "white"});
   var rect7 = av.g.rect(left + 286, itemheight, 143, itemheight - 50).css({"fill": "white"});
@@ -49,7 +58,7 @@ $(document).ready(function () {
   av.step();
   
   // Slide 5
-  av.umsg("The search is directed to the proper block in the index file, which is read into memory");
+  av.umsg("The search is directed to the proper block in the index file, which is read into memory.");
   var rect6 = av.g.rect(left + 143, 75, 143, 25).css({"fill": "#FFFF00"});
   av.step();
   
@@ -61,44 +70,44 @@ $(document).ready(function () {
   var x4FragArrow = av.g.line(left + 145,  100,  left + 60, 141, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
   var z5FragArrow = av.g.line(left + 282,  100, left + 510, 141, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
   
-  av.umsg("Here is the array expansion of the selected block within the index file");
+  av.umsg("Here is the array expansion of the selected block within the index file.");
   av.step();
 
   // Slide 7
-  av.umsg("Now we perform a binary search to look for the record in the array expansion");
+  av.umsg("Now we perform a binary search to look for the record in the array expansion.");
   av.step();
   
   // Slide 8
-  av.umsg("We now choose the median value, which is the value at index 5");
+  av.umsg("We now choose the median value, which is the value at index 5.");
   setLight(5);
   av.step();
 
   // Slide 9
   x4FragArrow.hide();
   z5FragArrow.hide();
-  av.umsg("Since the record 3000 is less than the median value we split the array and look in the lower half");
+  av.umsg("Since the record 3000 is less than the median value we split the array and look in the lower half.");
   arr3.css(5, {"background-color": "white"});
   av.step();
 
   // Slide 10
-  av.umsg("The element at Index 2 is the new median value");
+  av.umsg("The element at Index 2 is the new median value.");
   arr3.css(2, {"background-color": "#ddf"});
   av.step();
 
   // Slide 11
-  av.umsg("Since 3000 is greater than the median value we look at the two values at index 3 and 4");
+  av.umsg("Since 3000 is greater than the median value we look at the two values at index 3 and 4.");
   arr3.css(2, {"background-color": "white"});
   arr3.css(3, {"background-color": "#ddf"});
   arr3.css(4, {"background-color": "#ddf"});
   av.step();
 
   // Slide 12
-  av.umsg("The record that we are looking for is at index 4");
+  av.umsg("The record that we are looking for is at index 4.");
   arr3.css(3, {"background-color": "white"});
   arr3.css(4, {"background-color": "#FFFF00"});
   av.step();
 
   // Slide 13
-  av.umsg("A binary search produces a pointer to the actual record in the database");
+  av.umsg("A binary search produces a pointer to the actual record in the database.");
   av.recorded();
 });

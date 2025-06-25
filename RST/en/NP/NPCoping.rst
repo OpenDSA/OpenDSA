@@ -4,8 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Coping with NP-Complete Problems
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: NP-completeness
+   :keyword: NP-Completeness; Dynamic Programming; Knapsack Problem
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents strategies for dealing with problems that must be solved even if they are are known to be NP-Complete.
 
 Coping with NP-Complete Problems
 ================================
@@ -14,6 +20,10 @@ Finding that your problem is NP-complete might not mean
 that you can just forget about it.
 Traveling salesmen need to find reasonable sales routes regardless of
 the complexity of the problem.
+Boxes need to be packed and shiped.
+Networks need to get built.
+(In fact, problems encounted by the US telephone system originally
+inspired the development of NP-Completeness theory in the first place.)
 What do you do when faced with an NP-complete problem that you must
 solve?
 
@@ -23,9 +33,9 @@ For some problems, this is not acceptable.
 For example, TRAVELING SALESMAN grows so quickly that it cannot be
 run on modern computers for problem sizes much over 30 cities, which
 is not an unreasonable problem size for real-life situations.
-However, some other problems in NP, while requiring exponential
-time, still grow slowly enough that they allow solutions for
-problems of a useful size.
+However, some other problems in NP, while technically requiring
+exponential time, still grow slowly enough that they allow solutions
+for problems of a useful size.
 
 Consider the
 :ref:`Knapsack problem <knapsack problem> <DynamicProgramming>`.
@@ -40,10 +50,10 @@ Not when we consider the relationship between :math:`n` and
 How big is :math:`K`?
 Input size is typically :math:`O(n \lg K)` because the item sizes are
 smaller than :math:`K`.
-Thus, :math:`\Theta(nK)` is exponential on input size.
+Thus, :math:`\Theta(nK)` is actually exponential on the input size.
 
-This dynamic programming algorithm is tractable if the numbers are
-"reasonable".
+Our dynamic programming algorithm for the Knapsack problem is
+tractable if the sizes used are "reasonable".
 That is, we can successfully find solutions to the problem when
 :math:`nK` is in the thousands.
 Such an algorithm is called a
@@ -55,25 +65,19 @@ A second approach to handling NP-complete problems is to solve a
 special instance of the problem that is not so hard.
 For example, many problems on graphs are NP-complete, but the same
 problem on certain restricted types of graphs is not as difficult.
-For example, while the VERTEX COVER
-and K-CLIQUE problems are
+For example, while the VERTEX COVER and K-CLIQUE problems are
 NP-complete in general, there are polynomial time
 solutions for bipartite graphs (i.e., graphs whose vertices can be
 separated into two subsets such that no pair of vertices within one
 of the subsets has an edge between them).
 2-SATISFIABILITY (where every clause in a Boolean expression has at
-most two literals) has a polynomial time
-solution.
+most two literals) has a polynomial time solution.
 Several geometric problems require only polynomial time in two
 dimensions, but are \NP-complete in three dimensions or more.
-KNAPSACK is considered to run in polynomial time if the numbers
-(and :math:`K`) are "small".
-Small here means that they are polynomial on :math:`n`,
-the number of items.
 
-In general, if we want to guarantee that we get the correct answer for
-an NP-complete problem, we potentially need to examine all of the 
-(exponential number of) possible solutions.
+In general, if we want to guarantee that we get the correct (or
+optimal) answer for an NP-complete problem, we potentially need to
+examine all of the (exponential number of) possible solutions.
 However, with some organization, we might be able to either examine
 them quickly, or avoid examining a great many of the possible answers
 in some cases.
@@ -107,6 +111,27 @@ solution quickly.
 In others, we end up visiting a large portion of the :math:`2^n`
 possible solutions.
 
+.. inlineav:: backtrackingCON dgm
+   :links: AV/NP/backtrackingCON.css
+   :scripts: AV/NP/backtrackingCON.js
+   :align: center
+   :keyword: NP-completeness; Backtracking; Branch and Bounds
+
+   An example of using backtracking in the Traveling Salesman
+   problem.
+   The crossed-out nodes (and their descendents) are immediately
+   rejected because they do not form a legal path through the
+   graph.
+   Numbers on edges show the cost to traverse that edge.
+   The first complete path found is A-B-C-D-E-A, for a cost of 16.
+   Branch-and-Bounds can be used to further reject further
+   consideration of paths that are longer than the shortest path
+   already found.
+   For example, the path A-B-C-E has cost 18, so there is no need to
+   consider it (or its descendents) further since we already found a
+   path with cost 16.
+
+
 :term:`Banch-and-Bounds <branch-and-bounds algorithm>` is an extension
 of backtracking that applies to
 :term:`optimization problems <optimization problem>` such as
@@ -137,7 +162,9 @@ city and then always proceed to the next unvisited city that is
 closest.
 This rarely gives the shortest path, but the solution might be good
 enough.
-There are many other heuristics for TRAVELING SALESMAN that do a
+One way that it might be good enough is that it might be a good start
+for running a branch-and-bounds algorithm.
+There are also many other heuristics for TRAVELING SALESMAN that do a
 better job.
 
 Some approximation algorithms have guaranteed performance,
@@ -162,9 +189,9 @@ A better example of a guaranteed bound on a solution comes
 from simple heuristics to solve the BIN PACKING
 problem.
 
-.. topic: BIN PACKING
+.. topic:: BIN PACKING
 
-   **Input:** Numbers \(x_1, x_2, ..., x_n\) between 0 and
+   **Input:** Numbers :math:`x_1, x_2, ..., x_n` between 0 and
    1, and an unlimited supply of bins of size 1
    (no bin can hold numbers whose sum exceeds 1).
 
@@ -185,11 +212,11 @@ numbers, because every bin (except perhaps one) must be at least half
 full.
 However, this "first fit" heuristic can give us a result that is
 much worse than optimal.
-Consider the following collection of numbers: 6 of
-:math:`1/7 + \epsilon`, 6 of :math:`1/3 + \epsilon`,
-and 6 of :math:`1/2 + \epsilon`, where
+Consider the following collection of numbers: six of
+:math:`1/7 + \epsilon`, six of :math:`1/3 + \epsilon`,
+and six of :math:`1/2 + \epsilon`, where
 :math:`\epsilon` is a small, positive number.
-Properly organized, this requires 6 bins.
+Properly organized, this requires only six bins.
 But if done wrongly, we might end up putting the numbers into 10 bins.
 
 A better heuristic is to use decreasing first fit.
@@ -199,13 +226,12 @@ Then when deciding where to put the next item, we place it in the
 fullest bin that can hold it.
 This is similar to the :ref:`best fit <best fit> <BestFit>` heuristic
 for :ref:`memory management <dynamic memory allocation> <Dynamic>`.
-The significant thing about this heuristic is not just that it tends
-to give better performance than simple first fit.
-This decreasing first fit heuristic 
-can be proven to require no more than 11/9 the optimal number
-of bins.
+This heuristic doesn't merely tend to give better performance than
+simple first fit.
+The decreasing first fit heuristic has been proven to require no more
+than 11/9 the optimal number of bins.
 Thus, we have a guarantee on how much inefficiency can result when
-using the heuristic.
+using the heuristic (about 22%).
 
 The theory of NP-completeness gives a technique for separating
 tractable from (probably) intractable problems.
@@ -219,3 +245,10 @@ problem with certainty, it is nearly as good.
 Once we realize that a problem is NP-complete, then we know that our
 next step must either be to redefine the problem to make it easier, or
 else use one of the "coping" strategies discussed in this section.
+
+
+Acknowledgement
+---------------
+
+This page is heavily influenced by the presentation in Section 11.5 of
+*Introduction to Algorithms* by Udi Manber.

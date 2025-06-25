@@ -1,0 +1,16 @@
+#TMmulti .jsavcanvas {
+    height: 650px;
+}
+
+#TMmulti .final {
+    border: 5px double;
+}
+
+#red {
+    color: red;
+}
+
+
+#TMmulti .jsavoutput.jsavline {
+    height: 200px;
+}

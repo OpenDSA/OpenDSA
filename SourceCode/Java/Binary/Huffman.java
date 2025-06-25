@@ -67,9 +67,9 @@ class HuffTree implements Comparable {
     { return root.weight(); }
   int compareTo(Object t) {
     HuffTree that = (HuffTree)t;
-    if (root.weight() < that.weight()) return -1;
-    else if (root.weight() == that.weight()) return 0;
-    else return 1;
+    if (root.weight() < that.weight()) { return -1; }
+    else if (root.weight() == that.weight()) { return 0; }
+    else { return 1; }
   }
 }
 /* *** ODSAendTag: HuffmanTree *** */

@@ -1,0 +1,187 @@
+{
+  "translations": {
+    "en": {
+      "which":{
+        "type": "select",
+        "description": "Unit productions are productions of the form where a variable is replaced by another variable.",
+        "question": "Which of the following is a unit production?",
+        "answer": "$A \\rightarrow B$",
+        "choices": ["$A \\rightarrow aA$", "$A \\rightarrow B$", "$A \\rightarrow \\lambda$"]
+      },
+      "subst":{
+        "type": "select",
+        "description": "In the begining of this section, we talked about the <b>Substitution Theorem</b>.",
+        "question": "Suppose we have this grammar <br/>$A\\rightarrow B$<br/>$B\\rightarrow a \\mid ab$<br/>What is the result of substituting the rules for $B$ into $A$?",
+        "answer": "$A \\rightarrow a \\mid ab$",
+        "choices": ["$A \\rightarrow a$", "$A \\rightarrow ab$", "$A \\rightarrow a \\mid ab$"]
+      },
+      "nounit":{
+        "type": "select",
+        "description": "In the begining of this section, we talked about the <b>Substitution Theorem</b>.",
+        "question": "Did that substitution remove the unit production?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "fail":{
+        "type": "select",
+        "description": "But what if we have:<br/>$A\\rightarrow B$<br/>$B\\rightarrow C$<br/>$C \\rightarrow A$<br/><br/>Using simple substitutions throughout will lead to<br/>$A \\rightarrow C$<br/>$B \\rightarrow A$<br/>$C\\rightarrow B$",
+        "question": "Did that substitution removed the unit productions?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "lambda":{
+        "type": "select",
+        "description": "$\\textbf{Theorem}$ (Remove unit productions):<br/>Let $G = (V,T,S,P)$ be a CFG without $\\lambda$-productions. Then there exists a CFG $G' = (V',T',S,P')$ that does not have any unit-productions such that $L(G) = L(G')$.",
+        "question": "What if the grammar has $\\lambda$-productions?",
+        "answer": "We must remove $\\lambda$-productions first before removing unit productions",
+        "choices": ["We must remove $\\lambda$-productions first before removing unit productions", "In this case, unit productions cannot be removed"]
+      },
+      "star":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>1. Find for each variable $A$ all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>In other words, find all unit productions for variable $A$ either directly or indirectly. Indirectly means unit productions that are reachable from A.",
+        "question": "Suppose we have $A\\rightarrow B$ and $B \\rightarrow C$. This means that $A \\stackrel{*}{\\Rightarrow} $?",
+        "answer": ["B", "C"],
+        "choices": ["B", "C"]
+      },
+      "graph":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>1. Find for each variable $A$ all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing the relationships between the variables that have unit productions.",
+        "question": "For the grammar on the left, how many nodes do we need for the dependency graph?",
+        "answer": "5",
+        "choices": ["4", "5", "6"],
+        "correctFeedback": ["We need a node in the dependency graph for each variable in the grammar."]
+      },
+      "AB":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>1. Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw an arc from $A$ to $B$.",
+        "question": "What edge should we add for the highlighted production?",
+        "answer": "A to B",
+        "choices": ["D to A", "A to B", "B to C", "C to A"]
+      },
+      "BC":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>1. Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw an arc from $A$ to $B$.",
+        "question": "What edge should we add for the highlighted production?",
+        "answer": "B to C",
+        "choices": ["D to A", "A to B", "B to C", "C to A"]
+      },
+      "CA":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>1. Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw an arc from $A$ to $B$.",
+        "question": "What edge should we add for the highlighted production?",
+        "answer": "C to A",
+        "choices": ["D to A", "A to B", "B to C", "C to A"]
+      },
+      "DA":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>1. Find for each variable $A$, all $B$ such that $A \\stackrel{*}{\\Rightarrow} B$.<br/>To find all unit productions, we need to draw a dependency graph showing relationship of Unit productions.<br/>For each $A\\rightarrow B$ draw an arc from $A$ to $B$.",
+        "question": "What edge should we add for the highlighted production?",
+        "answer": "D to A",
+        "choices": ["D to A", "A to B", "B to C", "C to A"]
+      },
+      "nonunit":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.",
+        "question": "Which productions should be moved to $P'$?",
+        "answer": ["$S \\rightarrow AB$", "$B \\rightarrow Bb$", "$C \\rightarrow c$", "$C \\rightarrow Da$"],
+        "choices": ["$S \\rightarrow AB$", "$A \\rightarrow B$", "$B \\rightarrow C$", "$B \\rightarrow Bb$", "$C \\rightarrow A$", "$C \\rightarrow c$", "$C \\rightarrow Da$", "$D \\rightarrow A$"],
+        "incorrectFeedback": ["Select all of the productions from the grammar on the left that are not unit productions."]
+      },
+      "dfsA":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "To understand this part, $A \\stackrel{*}{\\Rightarrow} B$ means all unit productions where the left hand side is $A$. Select all $A \\stackrel{*}{\\Rightarrow} \\ldots$ means that we should Run DFS with $A$ as root.<br/></br>When we run the DFS with A as the root, what variables do we reach?",
+        "answer": ["B", "C"],
+        "choices": ["S", "A", "B", "C", "D"],
+        "incorrectFeedback": ["We do not include A, because DFS is smart enough not to include a cycle."]
+      },
+      "dfsB":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "When we run the DFS with B as the root, what variables do we reach?",
+        "answer": ["A", "C"],
+        "choices": ["S", "A", "B", "C", "D"],
+        "incorrectFeedback": ["We do not include B, because DFS is smart enough not to include a cycle."]
+      },
+      "dfsC":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "When we run the DFS with C as the root, what variables do we reach?",
+        "answer": ["A", "B"],
+        "choices": ["S", "A", "B", "C", "D"],
+        "incorrectFeedback": ["We do not include C, because DFS is smart enough not to include a cycle."]
+      },
+      "dfsD":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "When we run the DFS with D as the root, what variables do we reach?",
+        "answer": ["A", "B", "C"],
+        "choices": ["S", "A", "B", "C", "D"]
+      },
+      "repAC":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $A \\stackrel{*}{\\Rightarrow} C$. To remove this production, we need to substitute the RHS value(s) of $C$ as productions in the new grammar for $A$. Select the production(s) that will be added to the new grammar",
+        "answer": ["$A \\rightarrow c$", "$A \\rightarrow Da$"],
+        "choices": ["$A \\rightarrow A$", "$A \\rightarrow c$", "$A \\rightarrow Da$"]
+      },
+      "repAB":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $A \\stackrel{*}{\\Rightarrow} B$. To remove this production, we need to substitute the RHS value(s) of $B$ as productions in the new grammar for $A$. Select the production(s) that will be added to the new grammar",
+        "answer": "$A \\rightarrow Bb$",
+        "choices": ["$A \\rightarrow B$", "$A \\rightarrow Bb$"]
+      },
+      "repBA":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $B \\stackrel{*}{\\Rightarrow} A$. To remove this production, we need to substitute the RHS value(s) of $A$ as productions in the new grammar for $B$. Select the production(s) that will be added to the new grammar",
+        "answer": ["$B \\rightarrow c$", "$B \\rightarrow Da$"],
+        "choices": ["$B \\rightarrow Bb$", "$B \\rightarrow c$", "$B \\rightarrow Da$"],
+        "incorrectFeedback": ["Don't include unit productions, and don't include productions that are already in the new grammar."]
+      },
+      "repBC":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $B \\stackrel{*}{\\Rightarrow} C$. To remove this production, we need to substitute the RHS value(s) of $C$ as productions in the new grammar for $B$. Select the production(s) that will be added to the new grammar",
+        "answer": ["All of the productions are aready added"],
+        "choices": ["All of the productions are aready added", "$B \\rightarrow c$", "$B \\rightarrow Da$"]
+      },
+      "repCB":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $C \\stackrel{*}{\\Rightarrow} B$. To remove this production, we need to substitute the RHS value(s) of $B$ as productions in the new grammar for $C$. Select the production(s) that will be added to the new grammar",
+        "answer": "$C \\rightarrow Bb$",
+        "choices": ["$C \\rightarrow Bb$", "$C \\rightarrow c$", "$C \\rightarrow Da$", "All of the productions are aready added"]
+      },
+      "repCA":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $C \\stackrel{*}{\\Rightarrow} A$. To remove this production, we need to substitute the RHS value(s) of $A$ as productions in the new grammar for $C$. Select the production(s) that will be added to the new grammar",
+        "answer": ["All of the productions are aready added"],
+        "choices": ["All of the productions are aready added", "$C \\rightarrow Bb$", "$C \\rightarrow c$", "$C \\rightarrow Da$"]
+      },
+      "repDC":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $D \\stackrel{*}{\\Rightarrow} C$. To remove this production, we need to substitute the RHS value(s) of $C$ as productions in the new grammar for $D$. Select the production(s) that will be added to the new grammar",
+        "answer": ["$D \\rightarrow Bb$", "$D \\rightarrow c$", "$D \\rightarrow Da$"],
+        "choices": ["$D \\rightarrow Bb$", "$D \\rightarrow c$", "$D \\rightarrow Da$", "All of the productions are aready added"]
+      },
+      "repDB":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $D \\stackrel{*}{\\Rightarrow} B$. To remove this production, we need to substitute the RHS value(s) of $B$ as productions in the new grammar for $D$. Select the production(s) that will be added to the new grammar",
+        "answer": ["All of the productions are aready added"],
+        "choices": ["All of the productions are aready added", "$D \\rightarrow Bb$", "$D \\rightarrow c$", "$D \\rightarrow Da$"]
+      },
+      "repDA":{
+        "type": "select",
+        "description": "To remove unit-productions:<br/>2. Construct $G' = (V', T', S, P')$ by<br/>a)Put all non-unit productions in $P'$.<br/>b) For all $A \\stackrel{*}{\\Rightarrow} B$ such that $B \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$ put $A \\rightarrow y_1 \\mid y_2 \\mid \\ldots y_n \\in P'$<br/> In other words, substitute each RHS value for $B$ into $A$, whenever this itself is not a unit production.",
+        "question": "Consider the highlighted unit production $D \\stackrel{*}{\\Rightarrow} A$. To remove this production, we need to substitute the RHS value(s) of $A$ as productions in the new grammar for $D$. Select the production(s) that will be added to the new grammar",
+        "answer": ["All of the productions are aready added"],
+        "choices": ["All of the productions are aready added", "$D \\rightarrow Bb$", "$D \\rightarrow c$", "$D \\rightarrow Da$"]
+      }
+    }
+  }
+}

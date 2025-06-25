@@ -1,5 +1,16 @@
 /*global ODSA */
 // Written by Sally Hamouda and Cliff Shaffer
+
+// Title: Typical Mistakes During Tree Traversal
+// Author: Sally Hamouda; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Preorder Traversal
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow demonstrating some typical mistakes when writing recursive binary tree traversals. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "BinaryTreeMistakesCON";

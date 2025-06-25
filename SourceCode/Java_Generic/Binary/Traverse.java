@@ -3,7 +3,7 @@ static boolean SUCCESS = true;
 // Visit nodes via inorder traversal
 /* *** ODSATag: inorder *** */
 static <E> void inorder(BinNode<E> rt) {
-  if (rt == null) return;
+  if (rt == null) { return; }
   inorder(rt.left());
   visit(rt);
   inorder(rt.right());
@@ -13,7 +13,7 @@ static <E> void inorder(BinNode<E> rt) {
 // Visit nodes via postorder traversal
 /* *** ODSATag: postorder *** */
 static <E> void postorder(BinNode<E> rt) {
-  if (rt == null) return;
+  if (rt == null) { return; }
   postorder(rt.left());
   postorder(rt.right());
   visit(rt);
@@ -25,7 +25,7 @@ static <E> void postorder(BinNode<E> rt) {
 static <E> void preorder(BinNode<E> rt) {
   preorder(rt.left());
   preorder(rt.right());
-  if (rt == null) return;
+  if (rt == null) { return; }
   visit(rt);
 }
 /* *** ODSAendTag: preorder *** */
@@ -36,7 +36,7 @@ static <E> void visit(BinNode<E> rt) {
 
 /* *** ODSATag: count *** */
 static <E> int count(BinNode<E> rt) {
-  if (rt == null) return 0;  // Nothing to count
+  if (rt == null) { return 0; }  // Nothing to count
   return 1 + count(rt.left()) + count(rt.right());
 }
 /* *** ODSAendTag: count *** */

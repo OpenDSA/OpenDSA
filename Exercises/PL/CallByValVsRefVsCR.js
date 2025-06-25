@@ -507,7 +507,7 @@
 		    SL.ppm = "bycpr";
 		    value3 = evalExpCallByValVsRefVsCR(exp,globalEnv);
 		    this.bycprOutput = 
-			SL.output.match(/-?\d+/g).join(" ");	    
+			SL.output.match(/-?\d+/g).join(" ");
 		} catch (e) {
 		    //console.log("My exception: ",e);
 		}
@@ -527,7 +527,6 @@
 		    break;
 		}
 
-
 		if (iterations>500) {
 		    // not needed locally but might be needed on Canvas
 		    // when the files do not load appropriately???
@@ -535,11 +534,7 @@
 			      "Please, reload the page."];
 		    break;
 		}
-	    }
-	    	   
-	    //console.log(this.byvalOutput);
-	    //console.log(this.byrefOutput);
-	    //console.log(this.bycprOutput);
+	    }	    	 
 	},// init function
 
 	validateAnswer: function (guess) {

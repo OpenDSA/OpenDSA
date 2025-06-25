@@ -1,0 +1,203 @@
+{
+  "translations": {
+    "en": {
+      "Start": {
+        "type": "select",
+        "description": "Regular expressions (RE) are defined recursively with base symbols and operators to combine things know to be RE. To start us off, the empty string and any letter in the alphabet for our language are themselves regular expressions.",
+        "question":"Which of these are base case RE for the language with $\\Sigma = \\{a, b\\}$?",
+        "answer": ["a",
+                   "b",
+                   "$\\lambda$"
+                  ],
+        "choices": ["a", "ab", "c", "b", "baa", "$\\lambda$"]
+      },
+      "Operators": {
+        "type": "select",
+        "description": "Regular Expressions are defined using three basic operators.<br/><b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together. We often don't actually show the '$\\cdot$'. For example, to concatenate the letters a and b, we could write $a \\cdot b$ or just $ab$.<br/>$*$: Star-Closure. Repeat something zero or more times.<br/><br/>As a convenience, we also use parentheses () to control operator precedence and make things clear.",
+        "question":"Which strings can be matched by the regular expression $a+ab$?",
+        "answer": ["a",
+                   "ab"
+                  ],
+        "choices": ["a", "aba", "ab", "baa"]
+      },
+      "Concat": {
+        "type": "multiple",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Which strings can be matched with the regular expression $a \\cdot ab$",
+        "answer": ["aab"
+                  ],
+        "choices": ["a", "ab", "aab", "baa"]
+      },
+      "ConcatStr": {
+        "type": "select",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Suppose we have 2 regular expressions: $x = a$, and $y = ab$. Which of the following equals $xy$?",
+        "answer": ["$x\\cdot y$",
+                   "a$\\cdot$ab",
+                   "aab"
+                  ],
+        "choices": ["$x\\cdot y$", "a$\\cdot$ab", "aab"],
+        "correctFeedback": ["These are all ways of writing the same thing."],
+        "incorrectFeedback": ["These are all ways of writing the same thing."]
+      },
+      "star": {
+        "type": "select",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Suppose we have RegEx $r = a$. Which of the following is the language represented by $L(r^*)$?",
+        "answer": ["$\\{a^n\\mid n\\ge0\\}$"],
+        "choices": ["$\\lambda$","a", "aa", "aaa","aaaaaaaaa", "$\\{a^n\\mid n\\ge0\\}$"],
+        "incorrectFeedback": ["The question asks for ways of describing the language, not for examples of strings in the language. There can be more than one way to describe a language."]
+      },
+      "alla": {
+        "type": "select",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Suppose we have RegEx $r = a$. Which of the following stings belong to $L(r^*)$?",
+        "answer": ["$\\lambda$","a", "aa", "aaa","aaaaaaaaa"],
+        "choices": ["$\\lambda$","a", "aa", "aaa","aaaaaaaaa", "aaaab"]
+      },
+      "ab": {
+        "type": "select",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Suppose we have two RegEx $r = a$, and $s = b$. Which of the following is $L((r+s)^*)$?",
+        "answer": ["$\\{w\\mid w\\in \\{a, b\\}^*\\}$", "any strings of a's and b's"],
+        "choices": ["ab", "aba", "baaa","aababababa", "$\\{w\\mid w\\in \\{a, b\\}^*\\}$", "any strings of a's and b's", "strings with at least one a and at least one b"],
+        "incorrectFeedback": ["The question asks for ways of describing the language, not for examples of strings in the language."]
+      },
+      "abstrings": {
+        "type": "select",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Suppose we have two RegEx $r = a$, and $s = b$. Which of the following strings are matched by the regular expression $(r+s)^*$?",
+        "answer": ["ab", "aba", "baaa","aababababa"],
+        "choices": ["ab", "aba", "baaa","aababababa"]
+      },
+      "evena": {
+        "type": "select",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question":"Suppose we have RegEx $r = aa$. Which of the following is equivalent to the expression $r^*$?",
+        "answer": ["$(aa)^*$",
+                   "$\\{w\\ \\mid\\ w$ has an even number of a's and $w\\in \\{a\\}^*\\}$",
+                   "any string with an even number of a's, where $\\Sigma = \\{a\\}$"],
+        "choices": ["$aa^*$",
+                    "$(aa)^*$",
+                   "$\\{w\\ \\mid\\ w$ has an even number of a's and $w\\in \\{a\\}^*\\}$",
+                    "$\\{w\\ \\mid\\ w$ has an even number of a's and $w\\in \\{a, b\\}^*\\}$",
+                   "any string with an even number of a's, where $\\Sigma = \\{a\\}$"]
+      },
+      "onea": {
+        "type": "multiple",
+        "description": "<b>Basic Operators:</b> (in reverse order of precedence)<br/><br/>$+$: The union operator. This operator is equivalent to the Boolean 'OR' operator.<br/>$\\cdot$: The Concatenation operator. This operator is used to concate strings together.<br/>$*$: Star-Closure. Repeat something zero or more times.",
+        "question": "The RegEx $(a+b)^∗a(a+b)^∗$ defines which language?",
+        "answer": "All strings from $\\{a,b\\}^∗$ that contain at least one $a$",
+        "choices": ["All strings from $\\{a,b\\}^∗$", "All strings from $\\{a,b\\}^∗$ that contain at least one $a$"]
+      },
+      "regexstrings": {
+        "type": "multiple",
+        "description": "Definition: Given $\\Sigma$<br/>1. $\\lambda$ and $a \\in \\Sigma$ are RE.<br/>2. If $r$ and $s$ are RE, then $(r)$, $r + s$, $rs$, and $r^∗$ are RE.<br/>3. $r$ is a RE if and only if it can be derived from (1) with a finite number of applications of (2).",
+        "question": "[T/F] The regular expressions for some alphabet $\\Sigma$ forms a language.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "buildregex": {
+        "type": "select",
+        "description": "Definition: Given $\\Sigma$<br/>1. $\\lambda$ and $a \\in \\Sigma$ are RE.<br/>2. If $r$ and $s$ are RE, then $(r)$, $r + s$, $rs$, and $r^∗$ are RE.<br/>3. $r$ is a RE if and only if it can be derived from (1) with a finite number of applications of (2).",
+        "question":"Suppose $\\Sigma = \\{a, b, c\\}$, which of the following are valid regular expressions?",
+        "answer": ["$a+\\lambda$", "$a + b$", "$b+c$", "$a+b+c$", "$abc$", "$ac$", "$(a)$", "$b^*$"],
+        "choices": ["$a+\\lambda$", "$a + b$", "$b+c$", "$a+b+c$", "$abc$", "$ac$", "$(a)$", "$b^*$"]
+      },
+      "moreex": {
+        "type": "select",
+        "question":"Suppose $\\Sigma = \\{a, b, c\\}$, which of the following are valid regular expressions?",
+        "description": "Definition: Given $\\Sigma$<br/>1. $\\lambda$ and $a \\in \\Sigma$ are RE.<br/>2. If $r$ and $s$ are RE, then $(r)$, $r + s$, $rs$, and $r^∗$ are RE.<br/>3. $r$ is a RE if and only if it can be derived from (1) with a finite number of applications of (2).",
+        "answer": ["$(\\lambda + a)^*bb(c)$", "$ab^*c$", "$b(ba)c^*$"],
+        "choices": ["$(\\lambda + a)^*bb(c)$", "$ab^*c$", "$b(ba)c^*$"]
+      },
+      "empty": {
+        "type": "select",
+        "description": "Note that $\\emptyset$ $=$ $\\{\\}$ (the empty set), while $\\{\\lambda\\}$ means the set containing just the empty string.",
+        "question":"Select all true statements.",
+        "answer": ["$\\emptyset = \\{\\}$",
+                    "$L(\\lambda) = \\{\\lambda\\}$",
+                   "$\\lambda$ is the empty string",
+                   "$\\emptyset$ means no strings at all"],
+        "choices": ["$\\emptyset = \\{\\}$",
+                    "$L(\\lambda) = \\{\\lambda\\}$",
+                    "$L(\\lambda) = \\{\\}$",
+                    "$\\emptyset = \\lambda$",
+                    "$\\lambda$ is the empty string",
+                    "$\\emptyset$ means no strings at all"],
+        "incorrectFeedback": ["$L(\\lambda)$ is a tricky one. This is the set of strings that just contains $\\lambda$ (the empty string)."]
+      },
+      "abcstar": {
+        "type": "select",
+        "description": "",
+        "question":"Which of the following is equivalent to $L(a+b+c^*)$?",
+        "answer": ["$L(a+b)\\cup L(c^*)$",
+                   "$L(a)\\cup L(b)\\cup L(c^*)$",
+                   "$\\{a\\}\\cup L(b)\\cup L(c^*)$",
+                   "$\\{a\\}\\cup\\{b\\}\\cup L(c^*)$",
+                   "$\\{a,b\\}\\cup L(c^*)$",
+                   "$\\{a,b\\}\\cup\\{\\lambda, c, cc, ccc, ...)$",
+                   "$\\{\\lambda, a, b, c, cc, ccc, ...)$"],
+        "choices": ["$L(a+b)\\cup L(c^*)$",
+                    "$L(a)\\cup L(b)\\cup L(c^*)$",
+                    "$\\{a\\}\\cup L(b)\\cup L(c^*)$",
+                    "$\\{a\\}\\cup\\{b\\}\\cup L(c^*)$",
+                    "$\\{a,b\\}\\cup L(c^*)$",
+                    "$\\{a,b\\}\\cup\\{\\lambda, c, cc, ccc, ...)$",
+                    "$\\{\\lambda, a, b, c, cc, ccc, ...)$",
+                    "$\\{a, b, c, cc, ccc, ...)$"],
+        "incorrectFeedback": ["Be sure that you consider whether $\\lambda$ is in the language properly."]
+      },
+      "precedence": {
+        "type": "select",
+        "description": "While you can always use () to control the order of operations, the default is to use the following Precedence Rules:<br/>(): highest<br/>$∗$<br/>$\\cdot$ <br/>$+$: lowest",
+        "question": "Which are equivalent to $ab^∗+c$?",
+        "answer": ["$(a(b)^∗)+c$"],
+        "choices": ["$(ab)^*+c$", "$a^*b+c$","$(a(b)^∗)+c$", "$a(b^*+c)$"]
+      },
+      "plus": {
+        "type": "multiple",
+        "description": "Note that the plus sign is used here to mean 'OR'. In the language introduction, we showed notation where plus is used in a way similar to *, like $a^+$, to mean 'one or more'. We don't use it that way here because that would be rather confusing.",
+        "question": "We don't have a symbol for 'one or more', but which of these gives the effect of 'one or more a'?",
+        "answer": "$aa*$",
+        "choices": ["$aa*$", "(aa)*", "a+a*"]
+      },  
+      "oddaevenb": {
+        "type": "select",
+        "description": "Examples",
+        "question":"What is the RegEx for $L = \\{w \\in {\\Sigma}^{*} \\mid w$ has an odd number of $a$‘s followed by an even number of $b$‘s}, where $\\Sigma = \\{a,b\\}$" ,
+        "answer": ["$(aa)^*a(bb)^*$", "$a(aa)^*(bb)^*$"],
+        "choices": ["$(aa)^*a(bb)^*$", "$a(aa)^*(bb)^*$", "$aaa^*bb^*$", "$(aaa)^*(bb)^*$", "$(aaa)^*bb^*$"]
+      },
+      "hasempty": {
+        "type": "multiple",
+        "description": "Examples",
+        "question":"Consider $L = \\{w \\in {\\Sigma}^{*} \\mid w$ has an odd number of $a$‘s followed by an even number of $b$‘s}. Does $L$ include the empty string?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      },
+      "has3as": {
+        "type": "select",
+        "description": "Examples",
+        "question":"Which of the following is the RegEx for $L = \\{w \\in {\\Sigma}^{*} \\mid w$ has no more than three $a$'s and must end in $ab$}, where $\\Sigma = \\{a,b\\}$?",
+        "answer": ["$b^{*}(ab^{*} + ab^{*}ab^{*} + \\lambda)ab$", "$(b^{*}ab^{*} + b^{*}ab^{*}ab^{*} + b^{*})ab$", "$b^{*}ab^{*}ab + b^{*}ab^{*}ab^{*}ab + b^{*}ab$"],
+        "choices": ["$(a+aa+\\lambda)ab$","$(a+aa+aaa+\\lambda)ab$","$b^{*}(ab^{*} + ab^{*}ab^{*} + \\lambda)ab$", "$b^{*}(ab^{*} + ab^{*}ab^{*}+ ab^{*}ab^{*}ab^{*} + \\lambda)ab$", "$(b^{*}ab^{*} + b^{*}ab^{*}ab^{*} + b^{*})ab$", "$b^{*}ab^{*}ab + b^{*}ab^{*}ab^{*}ab + b^{*}ab$"]
+      },
+      "numbers": {
+        "type": "multiple",
+        "description": "Examples",
+        "question":"The RegEx<br/>$0 + (- + \\lambda)((1+2+\\ldots +9)(0+1+2+\\ldots +9)^{*})$ corresponds to which of the following?",
+        "answer": "Positive and Negative numbers",
+        "choices": ["Positive and Negative numbers", "Positive numbers", "Negative numbers"]
+      },
+      "finite": {
+        "description": "Examples",
+        "type": "multiple",
+        "question":"Can every finite set of strings be described by a RE?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Even if the set has 100,000 strings. The RegEx in that case could be<br/>$string_1+string_2+\\ldots+string_{100000}$."]
+      }
+    }
+  }
+}

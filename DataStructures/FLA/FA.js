@@ -88,8 +88,8 @@ var lambda = String.fromCharCode(955),
       t.hideRMenu();
     });
 
-    $("#rmenu").load("rmenu.html");
-    $("#rmenu").hide();
+    //$("#rmenu").load("../../AV/OpenFLAP/rmenu.html");
+    //$("#rmenu").hide();
 
     /**************** Add ability to run multiple inputs ***************************/
     // Bind opening of modal to a button
@@ -444,6 +444,11 @@ var lambda = String.fromCharCode(955),
   // Function to make a state initial.
   automatonproto.makeInitial = function (node, options) {
     node.addClass("start");
+    // ensure that initial will appear
+    if (node.position().left < 10) {
+      node.css("left", "10px");
+      node.automaton.updateEdgePositions();
+    }
     this.initial = node;
     node.addInitialMarker($.extend({ container: this }, this.options));
   };
@@ -730,7 +735,1106 @@ var lambda = String.fromCharCode(955),
     }
     return ret;
   };
+  //Layout algorithms
+  /*
+  * GEM layout algorithm
+  */
+  automatonproto.gemLayoutAlg = function (isovertices) {
+    if (isovertices == null) {
+      isovertices = new Set();
+    }
+    var Tmax = 256.0;
+    var Tmin = 3.0;
+    var OPTIMAL_EDGE_LENGTH = 100.0;
+    var GRAVITATIONAL_CONSTANT = 1.0 / 16.0;
+    var vArray = this.nodes();
+    var Rmax = 120 * (vArray.length - isovertices.size);
+    var Tglobal = Tmin + 1.0;
+    // Determine an optimal edge length. With isovertices, we
+    // want optimal length to be about average of existing edges
+    // that will remain unchanged due to isovertex status.
+    var optimalEdgeLength = OPTIMAL_EDGE_LENGTH;
+    if (isovertices.size > 0) {
+      var iso = Array.from(isovertices);
+      var count = 0;
+      var lengths = 0.0;
+      for (var i = 0; i < iso.length; i++) {
+        for (var j = i + 1; j < iso.length; j++) {
+          if (!(this.hasEdge(iso[i], iso[j]) || this.hasEdge(iso[j], iso[i]))) {
+            continue;
+          } 
+          var leftSquare = Math.pow(iso[i].element.position().left - iso[j].element.position().left, 2);
+          var topSquare = Math.pow(iso[i].element.position().top - iso[j].element.position().top, 2);
+          var distance = Math.sqrt(leftSquare + topSquare);
+          lengths += distance;
+          count++;
+        }
+      }
+      if (count > 0) {
+        optimalEdgeLength = lengths / count;
+      }
+    }
+    // The barycenter of the graph.
+    var c = [0.0, 0.0];
 
+    // Initialize the record for each vertex.
+    var records = new Map();
+    for (var i = 0; i < vArray.length; i++) {
+      var temperature = Tmin;
+      var skew = 0.0;
+      var r = [[0, 0], [0.0, 0.0], temperature, skew];
+      r[0] = [vArray[i].element.position().left, vArray[i].element.position().top];
+      // The barycenter will be updated.
+      c[0] += r[0][0];
+      c[1] += r[0][1];
+      records.set(vArray[i], r);
+    }
+
+    // Iterate until done.
+    var vertices = [];
+    for (var i = 0; i < Rmax && Tglobal > Tmin; i++) {
+      if (vertices.length == 0) {
+        vertices = this.nodes();
+        if (vertices.length == 0) {
+          return;
+        }
+      }
+
+      // Choose a vertex V to update.
+      var index = Math.floor(Math.random() * vertices.length);
+      var vertex = vertices[index];
+      vertices.splice(index, 1);
+      var record = records.get(vertex);
+      var point = [vertex.element.position().left, vertex.element.position().top];
+
+      // Compute the impulse of V.
+      var Theta = this.degree(this.nodes(), vertex);
+      Theta *= 1.0 + Theta / 2.0;
+      var p = [(c[0] / this.nodeCount() - point[0]) * GRAVITATIONAL_CONSTANT * Theta, (c[1] / this.nodeCount() - point[1]) * GRAVITATIONAL_CONSTANT * Theta]; // Attraction to BC.
+      // Random disturbance.
+      p[0] += Math.random() * 10.0 - 5.0;
+      p[1] += Math.random() * 10.0 - 5.0;
+
+      // Forces exerted by other nodes.
+      for (var j = 0; j < vArray.length; j++) {
+        if (vArray[j] == vertex) {
+          continue;
+        }
+        var otherPoint = [vArray[j].element.position().left, vArray[j].element.position().top];
+        var delta = [point[0] - otherPoint[0], point[1] - otherPoint[1]];
+        var D2 = delta[0] * delta[0] + delta[1] * delta[1];
+        var O2 = optimalEdgeLength * optimalEdgeLength;
+        if (delta[0] != 0.0 || delta[1] != 0.0) {
+          for (var k = 0; k < 2; k++) {
+            p[k] += delta[k] * O2 / D2;
+          }
+        }
+        if (!(this.hasEdge(vertex, vArray[j]) || this.hasEdge(vArray[j], vertex))) {
+          continue;
+        }
+        for (var k = 0; k < 2; k++) {
+          p[k] -= delta[k] * D2 / (O2 * Theta);
+        }
+      }
+      // Adjust the position and temperature.
+      if (p[0] != 0.0 || p[1] != 0.0) {
+        var absp = Math.sqrt(Math.abs(p[0] * p[0] + p[1] * p[1]));
+        for (var j = 0; j < 2; j++) {
+          p[j] *= record[2] / absp;
+        }
+        // update the position!
+        vertex.moveTo(point[0] + p[0], point[1] + p[1]);
+        // update the barycenter
+        c[0] += p[0];
+        c[1] += p[1];
+      }
+    }
+    //Finally, shift all points onto the screen.
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+  };
+  /*
+  * This algorithm assigns all vertices to random points in the graph, while applying a
+  * little effort taken to minimize edge intersections.
+  */
+  automatonproto.randomLayoutAlg = function (options) {
+    var vertices = this.nodes();
+    if (vertices.length == 0) {
+      return;
+    }
+    //Then, generate random points and assign the vertices to a
+    var points = [];
+    //VertexChain to minimize a few edge collisions
+    var chain = [];
+    this.assignPointsAndVertices(chain, points, vertices);
+    //Then minimize vertex overlap.
+    this.lessenVertexOverlap(points, vertices);
+    //Next, find a more optimal point order with which to match the points to the vertices.
+    points = this.findCorrectPointOrder(points);
+
+    //Finally, move all vertices to their corresponding points.  Wrap up the algorithm by 
+    //making sure all points are on the screen.
+    for (var i = 0; i<points.length; i++) {
+      chain[i].moveTo(points[i][0], points[i][1]);
+    }
+
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+
+  };
+  /**
+  * This method shifts the random points away from each other, if needed, in order to minimize
+  * vertex overlap.
+  */
+  automatonproto.findCorrectPointOrder = function(points) {
+    var notProcessedPoints, newPointOrder;
+    var current, anchor, minPoint;
+    var currentTheta, minTheta, anchorTheta;
+
+    anchor = [0, 0];
+    anchorTheta = 0;
+    newPointOrder = [];
+    notProcessedPoints = [];
+    for (var i = 0; i < points.length; i++) {
+      notProcessedPoints.push(points[i]);
+    }
+
+    //Find the angle of all points relative to the last point placed and "anchorTheta".  Then place
+    //the point with the minimum angle.  "anchorTheta" will slowly rotate around a circle counterclockwise.
+    while (notProcessedPoints.length > 0) {
+      minPoint = notProcessedPoints[0];
+      minTheta = 2*Math.PI + 1;
+      for (var j = 0; j < notProcessedPoints.length; j++) {
+        current = notProcessedPoints[j];
+
+        if (current[1] != anchor[1]) {
+          currentTheta = Math.atan((current[0] - anchor[0]) / (current[1] - anchor[1]));
+        }
+        else if (current[0] > anchor[0]) {
+          currentTheta = Math.PI / 2;
+        }
+        else {
+          currentTheta = Math.PI / (-2);
+        }
+        /* atan -> -pi/2...pi/2.  Adding 4pi to the currentTheta, subtracting the anchorTheta, and taking
+        * the remainder when dividing by pi works for all four quadrants the angle could be in.
+        * The object is to find the smallest absolute polar theta of the current point from the anchor
+        * which is greater than, or next in a counterclockwise traversal, from the anchorTheta.
+        */
+        currentTheta = (currentTheta + 4*Math.PI - anchorTheta) % (Math.PI);
+        if (currentTheta < minTheta) {
+          minTheta = currentTheta;
+          minPoint = current;
+        }
+      }
+      anchor = minPoint;
+      anchorTheta = (anchorTheta + minTheta) % (2*Math.PI);
+      notProcessedPoints.splice(notProcessedPoints.indexOf(minPoint), 1);
+      newPointOrder.push(minPoint);
+    }
+    points = newPointOrder;
+    return points;
+  };
+  /**
+  * This method creates random points and assigns all movable vertices to the VertexChain
+  */
+  automatonproto.assignPointsAndVertices = function(chain, points, vertices) {
+    var x, y;
+    var random = Math.random();
+    for (var i = 0; i < vertices.length; i++) {
+      x = Math.random() * (900 - 30 * 2);
+      y = Math.random() * (900 - 30 * 2);
+      //x = random * (30 - 60);
+      //y = random * (30 - 60);
+      points.push([x, y]);
+      this.addVertex(chain, vertices[i]);
+    }
+  };
+  /**
+  * This method shifts the random points away from each other, if needed, in order to minimize
+  * vertex overlap.
+  */
+  automatonproto.lessenVertexOverlap = function(points, vertices) {
+    var point;
+    //First, sort the vertices by their x and y values
+    var xOrder = [];
+    var yOrder = [];
+
+    for (var i = 0; i < points.length; i++) {
+      xOrder.push(points[i]);
+      yOrder.push(points[i]);
+    }
+    xOrder.sort(function(a, b) {
+      var ax = a[0];
+      var bx = b[0];
+      return bx - ax;
+    });
+    yOrder.sort(function(a, b) {
+      var ax = a[0];
+      var bx = b[0];
+      return bx - ax;
+    });
+    //Then, shift over any points that need to be shifted over
+    var xBuffer, yBuffer, xDiff, yDiff;
+    xBuffer = 30 + 30;
+    yBuffer = 30 + 30;
+    for (var i = 0; i<vertices.length - 1; i++) {
+      xDiff = (xOrder[i][0] - xOrder[i+1][0]);
+      yDiff = (xOrder[i][1] - xOrder[i+1][1]);
+      if (xDiff < xBuffer && yDiff < yBuffer) {
+        for (var j = i; j>=0; j--) {
+          point = xOrder[j];
+          point[0] = point[0] + xBuffer - xDiff;
+          point[1] = point[1];
+        }
+      }
+      xDiff = yOrder[i][0] - yOrder[i+1][0];
+      yDiff = yOrder[i][1] - yOrder[i+1][1];
+      if (xDiff < xBuffer && yDiff < yBuffer) {
+        for (var j = i; j>=0; j--) {
+          point = yOrder[j];
+          point[0] = point[0];
+          point[1] = point[1] + yBuffer - yDiff;
+        }
+      }
+    }
+
+  };
+  /*
+  * Two Circle layout algorithm
+  */
+  automatonproto.twoCircleLayoutAlg = function(options) {
+    //First, initialize classwide variables.
+    var innerCircle = [];
+    var outerCircle = [];
+    var vertices = this.nodes();
+    if (vertices.length == 0) {
+      return;
+    }
+    
+    //Put in the inner circle all vertices with degree >= 3 and all those pointing to two members of the inner circle.
+    this.assignToCircles(vertices, innerCircle, outerCircle);
+
+    //console.log(innerCircle.length);
+    //console.log(outerCircle.length);
+    //Create inner circle chain and place it in graph
+    var innerCircleChain = [];
+    for (var i = 0; i < innerCircle.length; i++) {
+      this.addVertex(innerCircleChain, innerCircle[i]);
+    }
+    var radius = this.layoutInCircle(innerCircleChain, 0, Math.PI, 2*Math.PI);
+    innerCircle = innerCircleChain;
+
+    //Create outer circle chains and place them in the graph.
+    if (outerCircle.length > 0) {
+      var lengthOfChain = innerCircle.length;
+      var outerCircleChains = this.createOuterCircleChains(innerCircle, outerCircle, lengthOfChain);
+      this.shuffleOuterChains(outerCircleChains, lengthOfChain);
+
+      var span, division;
+      division = (2*Math.PI / lengthOfChain);
+      span = division * 4/5;
+      for (var i = 0; i < lengthOfChain; i++) {
+        this.layoutInCircle(outerCircleChains[i], radius, division*i, span);
+      }
+    }
+
+    //Finally, adjust the points so that they can be presented on the screen.
+    for (var i=0; i<vertices.length; i++) {
+      var r = vertices[i].element.position().left;      
+      var theta = vertices[i].element.position().top;
+      vertices[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+    }
+
+    this.shiftOntoScreen(900, 30, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+  };
+
+  /**
+  * Shuffles the order of vertices in the outer circle <code>CircleChains</code> in order to minimize overlapping
+  * transitions between vertices in two different <code>CircleChains</code>.  If a vertex from one <code>CircleChain
+  * </code> has an edge to another vertex in an adjacent <code>CircleChain</code>, the two vertices will be moved to 
+  * their <code>CircleChain's</code> common border, and whatever other vertices to which the two vertices are linked 
+  * will be adjusted accordingly. 
+  */
+  automatonproto.shuffleOuterChains = function(outerCircleChains, lengthOfChain) {
+    var currentChain;
+    var nextChain;
+    for (var i = 0; i < lengthOfChain; i++) {
+      currentChain = outerCircleChains[i];
+      if (i < lengthOfChain - 1) {
+        nextChain = outerCircleChains[i+1];
+      }
+      else {
+        nextChain = outerCircleChains[0];
+      }
+      this.alignTwoChains(currentChain, nextChain);
+    }
+  };
+
+  /**
+  * Divides the vertices that are in the outer circle into <code>VertexChains</code>, which correspond to an inner circle
+  * vertex.  Outer circle vertices are assigned to a specific <code>VertexChain</code> according to the following priorities. 
+  * <br><br> 1. Whether they link to an inner circle vertex <br> 2.  Whether they link to an existing outer circle item <br>
+  * 3.  If they link to two outer circle items in different <code>VertexChains</code> or have a degree = 0, they are
+  * assigned to the smaller of the two <code>VertexChains</code> or the smallest existing <code>VertexChain</code>, 
+  * respectively.
+  */
+  automatonproto.createOuterCircleChains = function(innerCircle, outerCircle, lengthOfChain) {
+    var outerCircleChains = [];
+    //var lengthOfChain = innerCircle.length;
+    for (var m = 0; m < lengthOfChain; m++) {
+      outerCircleChains[m] = [];
+    }
+    var chainIndex = [];
+    var lengthOfIndex = outerCircle.length;
+
+    for (var i = 0; i < outerCircle.length; i++) {
+      chainIndex[i] = -1;
+      for (var j = 0; j < innerCircle.length; j++) {
+        if (this.hasEdge(outerCircle[i], innerCircle[j]) || this.hasEdge(innerCircle[j], outerCircle[i])) {
+          this.addVertex(outerCircleChains[j], outerCircle[i]);
+          chainIndex[i] = j;
+        }
+      }
+    }
+
+    //Next, if a vertex is linked to an outercircle item, add it; if to items in two different chains, add
+    //it to the one with the minimum size.
+    var match1, match2, min;
+    var addedToChain = false;
+    do {
+      addedToChain = false;
+      for (var i = 0; i < outerCircle.length; i++) {
+        if (chainIndex[i] == -1) {
+          match1 = -1; 
+          match2 = -1;
+          for (var j = 0; j < lengthOfChain; j++) {
+            if (this.isEdgeToChainMember(outerCircleChains[j], outerCircle[i]) && chainIndex[i] == -1) {
+              if (match1 == -1) {
+                match1 = j;
+              }
+              else {
+                match2 = j;
+              }
+            }
+          }
+
+          if (match1 > -1 && match2 == -1) {
+            this.addVertex(outerCircleChains[match1], outerCircle[i]);
+            chainIndex[i] = match1;
+            addedToChain = true;
+          }
+          else if (match1 > -1 && match2 > -1) {
+            if (outerCircleChains[match1].length < outerCircleChains[match2].length) {
+              min = match1;
+            }
+            else {
+              min = match2;
+            }
+            chainIndex[i] = min;
+            addedToChain = true;
+          }
+        }
+      }
+    } while (addedToChain);
+
+    //If no vertex can be added, find the chain with minimum length, and then add all unplaceded vertices to it.
+    min = 0;
+    for (var i = 0; i < lengthOfChain; i++) {
+      if (outerCircleChains[min].length > outerCircleChains[i].length) {
+        min = i;
+      }
+    }
+    for (var i = 0; i < outerCircle.length; i++) {
+      if (chainIndex[i] == -1) {
+        this.addVertex(outerCircleChains[min], outerCircle[i]);
+      }
+    }
+    return outerCircleChains;
+  };
+
+  /**
+  * Divides the vertices by placing them either in the inner circle or outer circle.  All inner circle vertices will have 
+  * a degree greater than 2 or will be adjacent to two other inner circle vertices.  The rest of the vertices are placed
+  * in the outer circles. 
+  */
+  automatonproto.assignToCircles = function (vertices, innerCircle, outerCircle) {
+    for (var i = 0; i < vertices.length; i++) {
+      
+      if (this.degree(vertices, vertices[i]) > 2) {
+        innerCircle.push(vertices[i]);
+      }
+      else {
+        outerCircle.push(vertices[i]);
+      }
+    }
+    if (innerCircle.length == 0) {
+      innerCircle = outerCircle;
+      outerCircle = [];
+      return;
+    }
+
+    var innerCircleInsertion;
+    var count;
+    do {
+      innerCircleInsertion = false;
+      for (var i = 0; i < outerCircle.length; i++) {
+        count = 0;
+        for (var j = 0; j < innerCircle.length; j++) {
+          if (this.hasEdge(outerCircle[i], innerCircle[j]) || this.hasEdge(innerCircle[j], outerCircle[i])) {
+            count++;
+          }
+        }
+        if (count >= 2) {
+          innerCircle.push(outerCircle[i]);
+          outerCircle.splice(i, 1);
+          innerCircleInsertion = true;
+        }
+      }
+    } while (innerCircleInsertion);
+  };
+  //Find the degree of a given node
+  automatonproto.degree = function(vertices, node) {
+    var degree = 0;
+    for (var q = 0; q < vertices.length; q++) {
+      if (vertices[q].edgeTo(node) || node.edgeTo(vertices[q])) {
+        degree++;
+      }
+      /*
+      if (node.edgeTo(vertices[q])) {
+        degree++;
+      }*/
+    }
+    return degree;
+  };
+  ////////////////////////////////////////////////////////////////////////////////
+  /*
+  *
+  */
+  automatonproto.treeLayoutAlg = function(hierarchical) {
+    var vertices = this.nodes();
+    if (this.nodeCount() == 0) {
+      return;
+    }
+
+    if (hierarchical) {
+      //make sure the right kind of graph is present for
+      //hierarchical graphs.
+      vertices.sort(function(a, b) {
+        var degreea = 0;
+        var degreeb = 0;
+        
+        for (var q = 0; q < vertices.length; q++) {
+          if (vertices[q].edgeTo(a)/* && vertices[q] != a*/) {
+            degreea++;
+          }
+          if (vertices[q].edgeTo(b)/* && vertices[q] != b*/) {
+            degreeb++;
+          }
+        }
+        return degreea - degreeb;
+        //return a.neighbors().length - b.neighbors().length;
+      });
+    }
+    else {
+      vertices.sort(function(a, b) {
+        var degreea = 0;
+        var degreeb = 0;
+        for (var q = 0; q < vertices.length; q++) {
+          if (vertices[q].edgeTo(a) || a.edgeTo(vertices[q])) {
+            degreea++;
+          }
+          
+          if (vertices[q].edgeTo(b) || b.edgeTo(vertices[q])) {
+            degreeb++;
+          }
+          
+        }
+        return degreeb - degreea;
+      });
+    }
+    var notPlaced = [];
+    for (var m=0; m<vertices.length; m++) {
+      notPlaced.push(vertices[m]);
+    }
+    //var notPlaced = vertices;
+    var firstLevel = [[], null];
+    var counter;
+    while (notPlaced.length > 0) {
+      firstLevel[0].push(notPlaced[0]);
+      notPlaced.splice(0, 1);
+      counter = firstLevel;
+      while (counter != null && notPlaced.length > 0) {
+        this.processChildren(notPlaced, counter, hierarchical);
+        counter = counter[1];
+      }
+    }
+    this.treelayoutHelper(firstLevel, 0);
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+
+
+  };
+  automatonproto.treelayoutHelper = function(level, height) {
+    var currentX = -1.0 * level[0].length * (30 + 30) / 2;
+    for (var v = 0; v < level[0].length; v++) {
+      level[0][v].moveTo(currentX, height);
+      currentX = currentX + 30 + 30;
+    }
+    if (level[1] != null) {
+      this.treelayoutHelper(level[1], height + 60);
+    }
+  };
+
+  /*
+  * This method checks the list of vertices that haven't been placed in a level to determine if any
+  * vertices in this level have any non-placed vertices as children.  All children found are placed in
+  * the next level down the hierarchy.
+  */
+  automatonproto.processChildren = function(notPlaced, level, hierarchy) {
+    var chain;
+    var lastChain = null;
+
+    for (var i = 0; i < level[0].length; i++) {
+      chain = [];
+      for (var j = notPlaced.length - 1; j >= 0; j--) {
+        if ((this.hasEdge(level[0][i], notPlaced[j]) || (this.hasEdge(notPlaced[j], level[0][i]) && !hierarchy)) && level[0][i] != notPlaced[j]) {
+          this.addVertex(chain, notPlaced[j]);
+          //chain = thisChain.slice();
+          notPlaced.splice(j, 1);
+        }
+      }
+      /* Then, align this VertexChain to the last chain generated in the level to minimize overlaps.        
+       * If there are vertices in the last chain, add the vertices in the last chain generated to the next, 
+       * level, since the last chain is done with alignment.  Define the next level if necessary.  After
+       * this, set the current chain to be the last chain.
+       */
+      if (lastChain != null) {
+        this.alignTwoChains(lastChain, chain);
+        if (lastChain.length > 0) {
+          if (level[1] == null) {
+            level[1] = [[], null];
+          }
+          for (var m = 0; m < lastChain.length; m++) {
+            level[1][0].push(lastChain[m]);
+          }
+        }
+      }
+      lastChain = chain;
+      
+
+
+    }
+    //Finally, add the last chain generated to the graph.
+    if (lastChain != null && lastChain.length > 0) {
+      if (level[1] == null) {
+        level[1] = [[], null];
+      }
+      for (var b = 0; b < lastChain.length; b++) {
+        level[1][0].push(lastChain[b]);
+      }
+      
+
+    }
+
+    //return nextLevel;
+  };
+
+  /*
+  * If there is an edge between a vertex in <code>first</code> and a vertex in <code>last</code>, then the two
+  * vertices are moved in their respective chains to their common border, with subchains in tow behind them.  This
+  * only happens for the first matching pair, and other matching pairs have no effect.  The vertex in 
+  * <code>first</code> will be moved to the end of vertices in its <code>VertexChain</code>, and the vertex in 
+  * <code>last</code> will be moved to the beginning of vertices in its <code>VertexChain</code>.
+  */
+  automatonproto.alignTwoChains = function(firstChain, nextChain) {
+    var fstart, fend, nstart, nend;
+    for (var j = 0; j < firstChain.length; j++) {
+      for (var k = 0; k < nextChain.length; k++) {
+        if (this.getDegreeInChain(firstChain, firstChain[j]) < 2 
+          && this.getDegreeInChain(nextChain, nextChain[k]) < 2
+          && (this.hasEdge(firstChain[j], nextChain[k]) || this.hasEdge(nextChain[k], firstChain[j]))) {
+          fstart=j;   
+          fend=j;   
+          nstart=k;   
+          nend=k;
+          while (fstart > 0 && (this.hasEdge(firstChain[fstart], firstChain[fstart - 1]) || this.hasEdge(firstChain[fstart - 1], firstChain[fstart]))) {
+            fstart--;
+          }
+          while (fend < firstChain.length - 1 && (this.hasEdge(firstChain[fend], firstChain[fend + 1]) || this.hasEdge(firstChain[fend + 1], firstChain[fend]))) {
+            fend++;
+          }
+          while (nstart > 0 && (this.hasEdge(nextChain[nstart], nextChain[nstart - 1]) || this.hasEdge(nextChain[nstart - 1], nextChain[nstart]))) {
+            nstart--;
+          }
+          while (nend < nextChain.length - 1 && (this.hasEdge(nextChain[nend], nextChain[nend + 1]) || this.hasEdge(nextChain[nend + 1], nextChain[nend]))) {
+            nend++;
+          }
+          this.orientSubChain(firstChain, firstChain.length - 1, fstart + fend - j, fstart, fend, true);
+          this.orientSubChain(nextChain, 0, nstart+nend-k, nstart, nend, false);
+          return;
+        }
+      }
+    }
+  }
+  /*
+  * 
+  */
+  automatonproto.orientSubChain = function(chain, destIndex, matchingIndex, start, end, shuffleDirection) {
+    var toMove = [];
+    for (var l = 0; l < end-start+1; l++) {
+      toMove.push(0);
+    }
+    var dest, chainSize;
+    chainSize = chain.length;
+    if (destIndex > 0 && destIndex >= start) {
+      dest = destIndex + start - end - 1;
+    }
+    else {
+      dest = destIndex;
+    }
+    for (var i = start; i <= end; i++) {
+      //toMove.splice(i-start, 1, chain[i]);
+      toMove[i-start] = chain[i];
+    }
+    for (var j = 0; j < toMove.length; j++) {
+      //if (toMove[j] != 0) {
+      chain.splice(chain.indexOf(toMove[j]), 1);
+      //}
+    }
+    for (var k = 0; k < toMove.length; k++) {
+      if (shuffleDirection) {
+
+        if (destIndex == chainSize || dest == chain.length) {
+          if (matchingIndex == start/* && toMove[toMove.length-1-k] != 0*/) {
+            chain.push(toMove[toMove.length-1-k]);
+          }
+          else {
+            if (toMove[k] != 0) {
+             chain.push(toMove[k]);
+            }
+          }
+        }
+        else if (matchingIndex == start) {
+          chain.splice(dest+1, 0, toMove[toMove.length-1-k]);
+        }
+        else {
+          //if (toMove[k] != 0) {
+          chain.splice(dest+1, 0, toMove[k]);
+          //}
+        }
+      }
+      else if (matchingIndex == start) {
+        //if (toMove[k] != 0) {
+        chain.splice(dest, 0, toMove[k]);
+        //}
+        
+      }
+      else {
+        //if (toMove[toMove.length-1-k] != 0) {
+        chain.splice(dest, 0, toMove[toMove.length-1-k]);
+        //}
+      }
+    }
+    return chain;
+  };
+
+  /*
+  * Vertex Chain functions
+  */
+  automatonproto.addVertex = function(chain, vertex) {
+    var destIndex, subChainBound;
+    if (chain == null) {
+      chain = [];
+    }
+    for (var i=0; i<chain.length; i++) {
+      if (this.hasEdge(vertex, chain[i]) || this.hasEdge(chain[i], vertex)) {
+        //If there is an open node to the right of the vertex, then it is inserted there.
+        if (i == chain.length - 1 || !(this.hasEdge(chain[i], chain[i+1]) || this.hasEdge(chain[i+1], chain[i]))) {
+          destIndex = i + 1;
+        }
+        //Otherwise, then the node is inserted to the left.
+        else {
+          destIndex = i;
+        }
+        chain.splice(destIndex, 0, vertex);
+        //Now check to see if there is at least one more node in the chain that this links to.  That node,
+         //if it has a degree <= 2 (inc. the newly added node), can be put on the opposite side of this.
+        for (var j=i+2; j<chain.length; j++) {
+          if ((this.hasEdge(vertex, chain[j]) || this.hasEdge(chain[j], vertex)) && this.getDegreeInChain(chain, chain[j]) <= 2) {
+            if (j<chain.length - 1 && (this.hasEdge(chain[j], chain[j+1]) || this.hasEdge(chain[j+1], chain[j]))) {
+              chain = this.orientSubChain(chain, destIndex, j, j, chain.length-1, (destIndex==i+1));
+            }
+            else {
+              subChainBound = j;
+              while (subChainBound > i+2 && (this.hasEdge(chain[subChainBound-1], chain[subChainBound]) || this.hasEdge(chain[subChainBound], chain[subChainBound-1]))) {
+                subChainBound--;
+              }
+              this.orientSubChain(chain, destIndex, j, subChainBound, j, (destIndex==i+1));
+            }
+            return;
+          }
+        }
+        return;
+      }
+    }
+    //Added at end if there are no adjacencies.
+    chain.push(vertex);
+  };
+
+  /*
+  * Get the degree of give vertex in a given chain.
+  */
+  automatonproto.getDegreeInChain = function(chain, vertex) {
+    var count = 0;
+    for (var i = 0; i < chain.length; i++) {
+      if ((this.hasEdge(vertex, chain[i]) || this.hasEdge(chain[i], vertex)) && vertex != chain[i]) {
+        count++;
+      }
+    }
+    return count;
+  };
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+  /*
+  * Spiral layout algorithms
+  */
+  automatonproto.spiralLayoutAlg = function(options) {
+    var vertices = this.nodes();
+    if (this.nodeCount() == 0) {
+      return;
+    }
+    /*
+    vertices.sort(function(a, b) {
+      return b.neighbors().length - a.neighbors().length;
+    });
+    */
+    var chain = [];
+    vertices.sort(function(a, b) {
+      var degreea = 0;
+      var degreeb = 0;
+      for (var q = 0; q < vertices.length; q++) {
+        if (vertices[q].edgeTo(a)) {
+          degreea++;
+        }
+        if (a.edgeTo(vertices[q])) {
+          degreea++;
+        }
+        if (vertices[q].edgeTo(b)) {
+          degreeb++;
+        }
+        if (b.edgeTo(vertices[q])) {
+          degreeb++;
+        }
+      }
+      return degreeb - degreea;
+    });
+    for (var j = 0; j < vertices.length; j++) {
+      this.addVertex(chain, vertices[j]);
+    }
+    var r = 0;
+    var theta = 0;
+    var posShift = (Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2))) + 30;
+    for (var i=0; i<this.nodeCount(); i++) {
+      r = Math.sqrt(Math.pow(r, 2) + Math.pow(posShift, 2));      
+      theta = theta + Math.asin(posShift / r);
+      chain[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+      //vertices[i].moveTo(r, theta);
+    }
+    
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+
+  };
+  automatonproto.findDegree = function(node) {
+    var vertices = this.nodes();
+    var degree = 0;
+    for (var q= 0; q < this.nodeCount(); q++) {
+      if (this.hasEdge(vertices[q], node)) {
+        degree++;
+      }
+    }
+    if (this.hasEdge(node, node)) {
+      degree++;
+    }
+    return degree;
+  }
+  automatonproto.shiftOntoScreen = function(size, buffer, scaleOnlyOverflow) {
+    if (size == 0) {
+      return;
+    }
+    var vertices = this.nodes();
+    var currentX, currentY, minX, minY, maxX, maxY, heightRatio, widthRatio;
+    //First, find the extreme values of x & y
+    minX=100000;   minY=100000;   
+    maxX=0;   maxY=0;
+    for (var j=0; j<vertices.length; j++) {
+      currentX = vertices[j].element.position().left;
+      currentY = vertices[j].element.position().top; 
+      if (currentX < minX)
+        minX = currentX;
+      if (currentX > maxX)
+        maxX = currentX;
+      if (currentY < minY)
+        minY = currentY;      
+      if (currentY > maxY)
+        maxY = currentY;
+    }
+    //Then, set all points so that their coordinates range from (0...maxX-minX, 0...maxY-minY)
+    for (var k=0; k<vertices.length; k++) {
+      vertices[k].moveTo(vertices[k].element.position().left - minX, vertices[k].element.position().top - minY);        
+    }
+    
+    //Calculate whether the points go off the defined screen minus buffer space, and adjust
+    widthRatio = (maxX - minX) / (size - 2 * buffer);
+    heightRatio = (maxY - minY) / (size - 2 * buffer);        
+    if (widthRatio > 1.0 || !scaleOnlyOverflow) {
+      for (var m=0; m<vertices.length; m++) {
+        vertices[m].moveTo(vertices[m].element.position().left / widthRatio, vertices[m].element.position().top);   
+      }
+    }
+    if (heightRatio > 1.0 || !scaleOnlyOverflow) {
+      for (var n=0; n<vertices.length; n++) {
+
+        vertices[n].moveTo(vertices[n].element.position().left, vertices[n].element.position().top / heightRatio);
+
+      }
+    }
+    
+    //Finally, shift the points right and down the respective buffer values
+    for (var x=0; x<vertices.length; x++) {
+      vertices[x].moveTo(vertices[x].element.position().left + buffer, vertices[x].element.position().top + buffer);
+    }
+  };
+  /*
+  *Circle Layout Algorithm
+  */
+  automatonproto.circleLayoutAlg = function (options) {
+    var vertices = this.nodes();
+    if (vertices.length == 0) {
+      return;
+    }
+    var boxes = [];
+    for (var i=0; i < vertices.length; i++) {
+      var addTo = this.addToExistingBox(boxes, vertices[i]);
+      if (!addTo) {
+        //[chain, right, down, upperleft, size]
+        var box = [[], null, null, [0, 0], [0, 0]];
+        var vertexDim = 30;
+        var vertexBuffer = 30;
+        this.addVertex(box[0], vertices[i]);
+        boxes.push(box);
+      }
+    }
+    for (var m = boxes.length - 1; m > 0; m--) {
+      this.mergeIfPossible(boxes, boxes[m], m);
+    }
+    
+    for (var i = 0; i<boxes.length; i++) {
+      this.layoutInCircleAndPack(boxes, boxes[i]);
+    }
+    this.shiftOntoScreen(400, 20, true);
+    var nodes = this.nodes();
+    // Update the position of the state label for each node
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      next.stateLabelPositionUpdate();
+    }
+    var edges = this.edges();
+    var edge;
+    while (edges.hasNext()) {
+      edge = edges.next();
+      edge.layout();
+    }
+  };
+  
+  /**
+   * Tries to merge two boxes, and will do so if one vertex in the given
+   * box has an edge with any boxes in the list of boxes.
+   *
+   */
+  automatonproto.mergeIfPossible = function(boxes, current, max) {
+    var toSearch = [[], null, null, [0, 0], [0, 0]];
+    for (var n = max-1; n >= 0; n--) {
+      toSearch = boxes[n];
+      for (var k = 0; k<current[0].length; k++) {
+        if (this.isEdgeToChainMember(toSearch[0], current[0][k])) {
+          this.merge(toSearch[0], current[0]);
+          boxes.splice(boxes.indexOf(current), 1);
+          return;
+        }
+      }
+    }
+  };
+  /**
+   * Moves all vertices in the box given into this box.
+   * 
+   */
+   automatonproto.merge = function(chain, box) {
+    for (var i = 0; i<box.length; i++) {
+      this.addVertex(chain, box[i]);
+    }
+   }
+  /**
+   * Adds the given vertex to a box if it has an edge to one of them.
+   * 
+   * return Whether the given vertex was added.
+   */
+  automatonproto.addToExistingBox = function(boxes, vertex) {
+    for (var j = 0; j < boxes.length; j++) {
+      if (this.isEdgeToChainMember(boxes[j][0], vertex)) {
+        this.addVertex(boxes[j][0], vertex);
+        return true;
+      }
+    }
+    return false;
+  };
+  /**
+   * Returns whether the given vertex has an edge to a <code>VertexChain</code> member.
+   *  
+   */
+  automatonproto.isEdgeToChainMember = function(chain, vertex) {
+    if (this.getDegreeInChain(chain, vertex) > 0) {
+      return true;
+    }
+    return false;
+  };
+  //Layout in circle 
+  automatonproto.layoutInCircle = function(vertices, r, midTheta, span) {
+    var diagonalLength = Math.sqrt(Math.pow(30, 2) + Math.pow(30, 2)) + 30;
+
+    if (vertices.length == 0) {
+      return;
+    }
+    if (vertices.length == 1) {
+      if (r == 0) {
+        vertices[0].moveTo(0, 0);
+      }
+      else {
+        vertices[0].moveTo(r + diagonalLength, midTheta);
+      }
+      return diagonalLength;
+    }
+    //var radius = diagonalLength / thetaDivision;
+    var startTheta;
+    var thetaDivision;
+    var divisions;
+    startTheta = midTheta - span / 2;
+    if (2 * Math.PI - span < .0001) {
+      divisions = vertices.length;
+    }
+    else {
+      divisions = vertices.length - 1;
+    }
+    thetaDivision = span / divisions;
+    var radius = diagonalLength / thetaDivision;
+    if (radius < r + diagonalLength) {
+      radius = r + diagonalLength;
+    }
+
+    for (var i=0; i<vertices.length; i++) {
+      vertices[i].moveTo(radius, startTheta + thetaDivision * i)
+    }
+    return radius;
+  };
+
+  automatonproto.layoutInCircleAndPack = function (boxes, box) {
+    var vertices = box[0];
+    var radius = this.layoutInCircle(vertices, 0, Math.PI, 2*Math.PI);
+    for (var i=0; i<this.nodeCount(); i++) {
+      var r = vertices[i].element.position().left;      
+      var theta = vertices[i].element.position().top;
+      vertices[i].moveTo(Math.cos(theta) * r, Math.sin(theta) * r);
+    }
+    box[4] = [2 * (radius + 30) + 30, 2 * (radius + 30) + 30];
+    if (boxes.indexOf(box) != 0) {
+      this.setUpperLeft(boxes, box, boxes[0]);
+      for (var j = 0; j < box.length; j++) {
+        box[j].moveTo(upperLeftArray[j][0] + vertices[j].element.position().left, upperLeftArray[j][1] + vertices[j].element.position().top);
+      }
+    }
+  };
+  /**
+   * Sets the value of the point representing this box's upper-left corner.  This is calculated
+   * by traversing the linked list the boxes form and attempting to find an open space.  If
+   * the height of this box is less than or equal to the parameter box, then this box's upperLeft 
+   * point will be in the first available point to the right of the parameter box, with the same
+   * height.  If not, the point will be below and perhaps to the right of the parameter box.   
+   * 
+   * @param current the current box in the traversal of the linked list.
+   */
+  automatonproto.setUpperLeft = function(boxes, thisBox, current) {
+    if (thisBox[4][1] <= current[4][1]) {
+      thisBox[3] = [thisBox[3][0] + current[4][0], thisBox[3][1]];
+      while (current[1] != null) {
+        current = current[1];
+        thisBox[3] = [thisBox[3][0] + current[4][0], thisBox[3][1]];
+      }
+      current[1] = thisBox;
+      return;
+    }
+    var upperLeft = [upperLeftArray[currIndex][0], upperLeftArray[currIndex][1] + 30];
+    thisBox[3] = [thisBox[3][0], thisBox[3][1] + current[4][1]];
+    if (current[2] == null) {
+      current[2] = thisBox;
+    }
+    else {
+      this.setUpperLeft(boxes, thisBox, current[2]);
+    }
+  };
   // function to hide the right click menu
   // called when mouse clicks on anywhere on the page except the menu
   automatonproto.hideRMenu = function () {
@@ -1766,6 +2870,104 @@ var lambda = String.fromCharCode(955),
       }*/
   };
 
+  var union = function(graph, Starts, Ends){
+    var start = graph.addNode();
+    var nodes = graph.nodes();
+    graph.makeInitial(start);
+    for (i in Starts){
+      graph.addEdge(start, Starts[i], {weight: lambda});
+    }
+    var end = graph.addNode();
+    graph.makeFinal(end);
+    for (i in Ends){
+      graph.addEdge(Ends[i], end, {weight: lambda});
+    }
+    graph.layout();
+  }
+
+  /*
+    Combine two NFAs. 
+  */
+  var combine = function(jsav, newOne, other, opts) {
+    var lambda = String.fromCharCode(955)
+    g = jsav.ds.FA($.extend({ layout: 'automatic' }, opts));
+    var otherStates = other.nodes();
+    var newOneStates = newOne.nodes();
+    var newOneStart = 0;
+    var otherStart = newOneStates.length;
+    var newOneFinals = [];
+    var otehrFinals = [];
+    var starts = [];
+    var ends = [];
+    //var otherToNew = {};
+    for(i = 0; i < newOneStates.length; i++){
+      s = newOneStates[i];
+      var s1 = g.addNode();
+      if (s.hasClass('final')){
+        //s1.addClass('final');
+        ends.push(s1);
+        newOneFinals.push(s1);
+      }
+      if (s.hasClass('start')){
+        starts.push(s1);
+        newOneStart = i;
+      }
+    }
+    for(i = 0; i < otherStates.length; i++){
+      s = otherStates[i];
+      var s1 = g.addNode();
+      if (s.hasClass('final')){
+        ends.push(s1);
+        otehrFinals.push(s1);
+      }
+      if (s.hasClass('start')){
+        starts.push(s1);
+        otherStart += i;
+      }
+    }
+
+    otherEdges = other.edges();
+    newOneEdges = newOne.edges();
+    newNodes = g.nodes();
+
+    for(i = 0; i < newOneEdges.length; i++){
+      e1 = newOneEdges[i];
+      fromInd = newOneStates.indexOf(e1.start());
+      toInd = newOneStates.indexOf(e1.end());
+      label = e1.label();
+      weight = e1.weight();
+      g.addEdge(newNodes[fromInd], newNodes[toInd], { weight: weight});
+    }
+
+    for(i = 0; i < otherEdges.length; i++){
+      e = otherEdges[i];
+      fromInd = otherStates.indexOf(e.start());
+      toInd = otherStates.indexOf(e.end());
+      label = e.label();
+      weight = e.weight();
+      g.addEdge(newNodes[fromInd+newOneStates.length], newNodes[toInd+newOneStates.length], { weight: weight});
+    }
+    g.layout();
+
+    var result = {'graph': g, 'start': starts, 'end': ends}
+    return result;
+  };
+
+  /*
+    Take the complement of a NFA
+  */
+  var complement = function(jsav, graph, opts) {
+    var nodes = graph.nodes();
+
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      toggleFinal(graph, next);    
+    }
+    
+    graph.layout();
+    return graph;
+  };
+
+
   /*
     NFA to DFA conversion
     Note: g.transitionFunction takes a single node and returns an array of node values
@@ -1814,7 +3016,7 @@ var lambda = String.fromCharCode(955),
         highlightedNodes[state].unhighlight();
       }
       jsav.step();
-      jsav.umsg("Nest step is to identify the transitions out of the DFA start state. For each letter in the alphabet, consider all states reachable in the NFA from any state in the start state on that letter. This becomes the name of the target state on that transition.");
+      jsav.umsg("Now identify the transitions out of the DFA start state. For each symbol in the alphabet, consider all states reachable in the NFA from any state in the start state on that symbol. Use this list of states as the name of the target state on that transition.");
 
     }
     // Repeatedly get next states and apply lambda closure
@@ -1850,13 +3052,15 @@ var lambda = String.fromCharCode(955),
       if (visualizable) {
         if (temp.length > 0) {
           jsav.step();
-          jsav.umsg("Repeat the process for each new node we find");
+          jsav.umsg("Repeat the process for each state until all DFA states have transitions for each symbol in the alphabet.");
         }
       }
     }
     // add the final markers
-    if (visualizable)
-      jsav.umsg("Determine the final states");
+    if (visualizable) {
+      jsav.umsg("Next, we determine the final states. We mark as final all states in the DFA that include in their name some final state in the NFA.");
+      jsav.step();
+    }
     addFinals(g, graph);
     g.layout();
     if (visualizable) {
@@ -1887,6 +3091,7 @@ var lambda = String.fromCharCode(955),
       }
     }
   };
+
   /*
     Function to apply lambda closure.
     Takes in an array of values (state names), returns an array of values
@@ -1922,23 +3127,6 @@ var lambda = String.fromCharCode(955),
       }
     }
   };
-
-
-
-  // Function to add final markers to the resulting DFA
-  var addFinals = function (g1, g2) {
-    var nodes = g1.nodes();
-    for (var next = nodes.next(); next; next = nodes.next()) {
-      var values = next.value().split(',');
-      for (var i = 0; i < values.length; i++) {
-        if (g2.getNodeWithValue(values[i]).hasClass('final')) {
-          next.addClass('final');
-          break;
-        }
-      }
-    }
-  };
-
 
   var visualizeConvertToDFA = function (jsav, graph, opts) {
     // jsav.label("Converted:");
@@ -2021,12 +3209,582 @@ var lambda = String.fromCharCode(955),
     return g;
   };
 
+  //helper function to get a node with its value in the graph
+  var getNodeWithValue = function (graph, value) {
+    var nodes = graph.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()) {
+      if (node.value() === value) {
+        return node;
+      }
+    }
+  };
+
+
+  //Complete the DFA by adding missing edges from each nodes to a new node. 
+  var completeDFA = function(jsav, graph){
+
+    graph.options = $.extend({layout: 'automatic'}, graph.options);
+    nodes = graph.nodes();
+    edges = graph.edges();
+    alp = graph.alphabet;
+    alphabet = [];
+    missing = {};
+    hasMissing = false;
+    for (const key in alp) {
+      alphabet.push(key);
+    }
+    for (var next = nodes.next(); next; next = nodes.next()) {
+      var edgesFromNext = next.container._edges[next.container._nodes.indexOf(next)];
+      if (edgesFromNext.length != alphabet.length){
+        if (edgesFromNext.length == 0){
+          missing[next.container._nodes.indexOf(next)] = [];
+          for (i in alphabet){
+            missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
+          }
+        }
+        else {
+          for (edge in edgesFromNext){
+            var weights = edgesFromNext[edge]._weight.split('<br>');
+            if (weights.length != alphabet.length){
+              hasMissing =true;
+              missing[next.container._nodes.indexOf(next)] = [];
+              for (i in alphabet){
+                if (weights.indexOf(alphabet[i]) == -1){
+                  missing[next.container._nodes.indexOf(next)].push(alphabet[i]);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    if (hasMissing){
+      var newNode = graph.addNode();
+      var newLabel = alphabet.toString().replace(',', '<br>');
+      graph.addEdge(newNode, newNode, {weight: newLabel});
+      for (i in missing){
+        var label = missing[i].toString().replace(',', '<br>');
+        graph.addEdge(nodes[i], newNode, {weight: label});
+      }
+    }
+    graph.layout();
+    return graph;
+  };
+
+  /*
+    Find the intersection between two DFAs by DeMorgan's Law
+  */
+  FiniteAutomaton.intersect = function(jsav,first, second,opts){
+    figure1 = FiniteAutomaton.complement(jsav, first, opts);
+    figure2 = FiniteAutomaton.complement(jsav, second, opts);
+    jsav.umsg("Take complement of the two machines");
+    jsav.step();
+
+    figure1.hide();
+    figure2.hide();
+    var combinedResult = FiniteAutomaton.combine(jsav, figure1, figure2, {left: 10, top:0, height: 450, width: 750});
+    var combined = combinedResult['graph'];
+    jsav.umsg("combine the two machines in one window");
+    jsav.step();
+
+    FiniteAutomaton.union(combined, combinedResult['start'], combinedResult['end']);
+    jsav.umsg("take union of the two machines");
+    jsav.step();
+
+    combined.hide();
+    var dfa = FiniteAutomaton.convertNFAtoDFA(jsav, combined, {top: 0, left: 10, width: 500, height: 150});
+    jsav.umsg("Convert the NFA machine to DFA")
+    jsav.step();
+
+    var mytree = new jsav.ds.tree({width: 400, height: 340, editable: true, left: 550, top: 0});
+    mytree.hide();
+    dfa.hide();
+    var minm = new Minimizer();
+    var minized = minm.minimizeDFA(jsav, dfa, mytree, {left: 10, top:0, height: 450, width: 750}, false);
+    jsav.umsg("Then, minimize the DFA");
+    jsav.step();
+
+
+    minized = FiniteAutomaton.complement(jsav, minized, {left: 10, top:0, height: 450, width: 750});
+    minized.layout();
+    jsav.umsg("Finaly, take the complement of the minimized DFA so we will get the intersection");
+
+    return minized;
+
+  };
+
+  
+
+  /*
+    Get edge outgoing edge from the node
+  */
+  FiniteAutomaton.edgeFrom = function(node){
+    return  node.container._edges[node.container._nodes.indexOf(node)];
+  };
+
+  /*
+    Get the alphabet of a graph.
+  */
+  var findAlphabet = function(graph){
+    var alp =  graph.alphabet;
+    var alphabet = [];
+    for (const key in alp) {
+      alphabet.push(key);
+    }
+    alphabet.sort();
+    return alphabet;
+  };
+
+  /*
+    Get the relation matrix of a graph. 
+    The first row of the matrix should be the alphabets 
+    Then, the rest rows will be the from node, and the end nodes 
+    connected to the from node by an edge with the according letter
+    in the alphabet in the first row. 
+  */
+  var matrixFromRelation = function(figure, matrix, alphabet){
+    var table = [];
+    var row1 = [];
+    row1.push(' ');
+    for (var row in matrix){
+      var tableRow = [];
+      tableRow.push(figure.nodes()[row].options['value']);
+      for (var a in alphabet){
+        if (row == 0){
+          row1.push(alphabet[a]);
+        }
+        var ind = matrix[row][alphabet[a]];
+        //console.log(ind);
+        var aNode = figure.nodes()[ind].options['value'];
+        tableRow.push(aNode);
+      }
+      if (row == 0){
+        table.push(row1);
+      }
+      table.push(tableRow);
+    }
+    return table;
+  }
+
+  /*
+    Change the node names of a graph
+    Example: One graph can have nodes {q1, q2, q3}. 
+            Call FiniteAutomaton.changeNodeName(graph, "p"), 
+            The nodes will be changed to {p1, p2, p3};
+  */
+  FiniteAutomaton.changeNodeName = function(figure, name){
+    for (i in figure._nodes) {
+      figure._nodes[i].value(name + i);
+      figure._nodes[i].options['value'] = name + i;
+    }
+  }
+
+
+  /*
+    Generate an empty matrix with. 
+    Example: If alphabet is {"q1", "q2", "q3"}, and rowNum is 2
+            The result empty matrix should look like: 
+            ----------------
+            |  | a | b | c |
+            ----------------
+            |  |   |   |   |
+            ----------------
+            |  |   |   |   |
+            ----------------
+            |  |   |   |   |
+            ----------------
+  */
+  var emptyMatrix = function(alphabet, rowNum){
+    var table = [];
+    var row1 = [];
+    row1.push(' ');
+    for (var row = 0;row<rowNum;row+=1){
+      var tableRow = [];
+      tableRow.push('');
+      for (var a in alphabet){
+        if (row == 0){
+          row1.push(alphabet[a]);
+        }
+        var aNode = '';
+        tableRow.push(aNode);
+      }
+      if (row == 0){
+        table.push(row1);
+      }
+      table.push(tableRow);
+    }
+    return table;
+  }
+
+  /*
+    Get the intersection of two NFAs with transition tables
+  */
+  FiniteAutomaton.intersectionFromTable = function(av, figure1, figure2){
+    var matrix1 = findTable(av, figure1);
+    var matrix2 = findTable(av, figure2);
+    var alphabet = findAlphabet(figure1);
+
+    var table1 = matrixFromRelation(figure1, matrix1, alphabet);
+    var table2 = matrixFromRelation(figure2, matrix2, alphabet);
+    
+
+    var table1g = av.ds.matrix(table1, { left: 600, style: "table" });
+    var table2g = av.ds.matrix(table2, { left: 600, top: 200, style:"table"});
+
+
+    av.step();
+    
+    var rowNum = figure1.nodes().length * figure2.nodes().length;
+    var table = emptyMatrix(alphabet, rowNum);
+    
+    var intersectionTable = av.ds.matrix(table, { left: 800, style:"table" });
+    var inter = new av.ds.FA({left: 0, top:20, height: 500, width: 500, layout: 'automatic'});
+
+    intersectFromTable(av, inter, figure1, figure2, matrix1, matrix2,table1g, table2g, alphabet, intersectionTable);
+    var matrix = findTable(av, inter);
+    
+    inter.layout();
+    return inter;
+  };
+
+  /*
+    Get intersection from the intersection table
+    Arguement table1, table2 are the table find by FiniteAutomaton.findTable().
+    table1g and table2g are the jsav.ds.matrix generated with the matrix found by
+    FiniteAutomaton.matrixFromRelation(). 
+    The intersectionTable should be an empty table to 
+  */
+  var intersectFromTable = function(av, graph, graph1, graph2, table1, table2,tabl1g, tabl2g, alphabet, intersectionTable){
+    var nodes = [];
+    var toNodes = [];
+    //var unitsize = graph.
+    let counter = 0;
+    var tableNum = 0;
+    graph.hide();
+    for (var i in table1){
+
+      //var leftNodeName = getNodeWithValue(graph1, )
+      var leftNodeName = graph1.nodes()[i].options['value'];
+      //console.log(leftNodeName.options['value']);
+      for (var j in table2){
+        var rightNodeName = graph2.nodes()[j].options['value'];
+        //nodes.push('(' + leftNodeName + ',' + rightNodeName + ')');
+        var fromNodeName = '(' + leftNodeName + ',' + rightNodeName + ')';
+        tableNum+=1;
+        intersectionTable._arrays[tableNum].value(0, fromNodeName);
+        var added = graph.addNode({ value: fromNodeName });
+        if (table1[i]['initial'] && table2[j]['initial']){
+          graph.makeInitial(added);
+        }
+
+        if (table1[i]['final'] && table2[j]['final']){
+          graph.makeFinal(added);
+        }
+        nodes[counter] = fromNodeName;
+        toNodes[counter] = {};
+
+        counter += 1;
+      }
+    }
+    
+    tableNum = 0;
+    counter = 0;
+    graph1.hide();
+    graph2.hide();
+
+    graph.layout();
+    graph.show();
+    av.step();
+    for (var i in table1){
+
+      intersectionTable._arrays[tableNum+1].highlight(0);
+      tabl1g._arrays[Number(i)+1].highlight(0);
+      var leftNodeName = graph1.nodes()[i].options['value'];
+      for (var j in table2){
+        tabl2g._arrays[Number(j)+1].highlight(0);
+        var rightNodeName = graph2.nodes()[j].options['value'];
+        var fromNodeName = '(' + leftNodeName + ',' + rightNodeName + ')';
+        tableNum+=1;
+        intersectionTable._arrays[tableNum].highlight(0);
+        nodes[counter] = fromNodeName;
+        toNodes[counter] = {};
+
+        for (var k in alphabet){
+          tabl1g._arrays[0].highlight(Number(k)+1);
+          tabl2g._arrays[0].highlight(Number(k)+1);
+          tabl1g._arrays[Number(i)+1].highlight(Number(k)+1);
+          tabl2g._arrays[Number(j)+1].highlight(Number(k)+1);
+          var toLeftNodeInd = table1[i][alphabet[k]];
+          var toRightNodeInd = table2[j][alphabet[k]];
+          var toLeftNodeName = graph1.nodes()[toLeftNodeInd].options['value'];
+          var toRightNodeName = graph2.nodes()[toRightNodeInd].options['value'];
+          graph1.nodes()[toLeftNodeInd].highlight();
+          graph2.nodes()[toRightNodeInd].highlight();
+          var toNodeName = '(' + toLeftNodeName + ',' + toRightNodeName + ')';
+          intersectionTable._arrays[tableNum].value(Number(k)+1, toNodeName);
+
+
+          var edgeweight = alphabet[k];
+          var fromNode = getNodeWithValue(graph, fromNodeName);
+          var toNode = getNodeWithValue(graph, toNodeName);
+          fromNode.highlight();
+          toNode.highlight();
+          graph.addEdge(fromNode, toNode, { weight: edgeweight });
+          graph.layout();
+          av.step();
+          fromNode.unhighlight();
+          toNode.unhighlight();
+          graph1.nodes()[toLeftNodeInd].unhighlight();
+          graph2.nodes()[toRightNodeInd].unhighlight();
+          tabl1g._arrays[Number(i)+1].unhighlight(Number(k)+1);
+          tabl2g._arrays[Number(j)+1].unhighlight(Number(k)+1);
+          tabl1g._arrays[0].unhighlight(Number(k)+1);
+          tabl2g._arrays[0].unhighlight(Number(k)+1);
+          toNodes[counter][alphabet[k]] = toNodeName;
+        }
+
+        counter += 1;
+        intersectionTable._arrays[tableNum].unhighlight(0);
+        tabl2g._arrays[Number(j)+1].unhighlight(0);
+      }
+     tabl1g._arrays[Number(i)+1].unhighlight(0);
+    }
+
+    graph.layout();
+  };
+
+
+  /*
+    findTable returns a table containing information for each node. 
+    Each element in the array should record the outcoming edge with
+    the number of its corresponding endnode; it should also record
+    whether the node is a initial node or a final node. 
+    For example: {a:2, b:2, initial: false, final: false}
+  */
+  var findTable = function(jsav, graph){
+    var table = [];
+    var alp =  graph.alphabet;
+    var alphabet = [];
+    for (const key in alp) {
+      alphabet.push(key);
+    }
+    alphabet.sort();
+
+    var nodes = graph.nodes();
+    for (var node = nodes.next(); node; node = nodes.next()){
+      var edgesFromNode = node.container._edges[node.container._nodes.indexOf(node)];
+      var startNodeValue = node.options["value"];
+      var index = node.container._nodes.indexOf(node);
+      
+      table[index] = {};
+
+      for (edge in edgesFromNode){
+        var oneEdge = edgesFromNode[edge];
+        var endNode = oneEdge.endnode;
+        var label = oneEdge._weight;
+        var labels = label.split("<br>");
+        for(i in labels){
+          var endNodeValue = endNode.options["value"];
+          table[index][labels[i]] = endNode.container._nodes.indexOf(endNode);
+        }
+        table[index]['initial'] = false;
+        table[index]['final'] = false;
+
+      }
+    }
+    var initial = graph.initial;
+    var initialInd = initial.container._nodes.indexOf(initial);
+    table[initialInd]['initial'] = true;
+
+    var finals = graph.getFinals();
+    for (find in finals){
+      var finalInd = finals[find].container._nodes.indexOf(finals[find]);
+      table[finalInd]['final'] = true;
+    }
+    return table;
+  };
+
+
+  /*
+    Visualize the right quotient algorithm between 2 NFAs.
+  */
+  FiniteAutomaton.rightQuotient = function(jsav, graph1, graph2, option){
+    var nodes = graph1.nodes();
+    var nodes2 = graph2.nodes();
+    var initial2 = graph2.initial;
+    var last;
+    for (var next = nodes.next();next;next=nodes.next()){
+      var edges2 = initial2.getOutgoing();
+      var edges1 =next.getOutgoing();
+      if (last!=null){
+        last.unhighlight();
+      }
+      next.highlight();
+      last = next;
+      jsav.step();
+      
+      var found = false;
+      for (var i = 0, j = 0; i < edges1.length && j < edges2.length; ){
+        var edge1 = edges1[i];
+        var edge2 = edges2[j];
+        var end1 = edge1.endnode;
+        var end2 = edge2.endnode;
+        end1.highlight();
+        end2.highlight();
+        jsav.step();
+        end1.unhighlight();
+        end2.unhighlight();
+
+        var weights = edge1._weight.split('<br>');
+
+
+        if (weights.includes(edge2._weight)){
+
+          if (edge1.endnode.hasClass('final') && edge2.endnode.hasClass('final')){
+            found = true;
+            break;
+
+          }
+          else {
+            if (edge1.endnode == edge1.startnode && edge2.endnode == edge2.startnode){
+              if (edge1.endnode.hasClass('final'))
+                j++;
+              else if (edge2.endnode.hasClass('final'))
+                i++;
+              else
+                break;
+            }
+            else if (edge1.endnode == edge1.startnode){
+              i++;
+              if (!edge2.endnode.hasClass('final')){
+                edges2 = edge2.endnode.getOutgoing();
+                j = 0;
+              }
+
+            }
+            else if (edge2.endnode == edge2.startnode){
+              j++;
+              if (!edge1.endnode.hasClass('final')){
+                edges1 = edge1.endnode.getOutgoing();
+                i = 0;
+              }
+            }
+            else{
+              edges1 = edge1.endnode.getOutgoing();
+              edges2 = edge2.endnode.getOutgoing();
+              i = 0;
+              j = 0;
+            }
+          }
+        }
+        else {
+          i++;
+        }
+      }
+      if (found){
+        graph1.makeFinal(next);
+      }
+      else{
+        next.removeClass('final');
+      }
+    }
+  }
+
+  var quotient = function(jsav, graph1, graph2, option){
+    var controller = new window.FAtoREController(jsav, graph1);
+    var finalLeft = graph1.getFinals()[0];
+    var finalRight = graph2.getFinals()[0];
+    var edgesCheckedLeft = [];
+    var edgesCheckedRight = [];
+    var end = finalLeft;
+    while(finalRight != graph2.initial && finalLeft != graph1.initial){
+      var edgesLeft = finalLeft.getIncoming();
+      var edgesRight = finalRight.getIncoming();
+      var keepGoing = false;
+      //console.log(finalRight);
+      var found = false;
+      for (var edgeRight in edgesRight){
+        if (found){
+          break;
+        }
+        var edge2 = edgesRight[edgeRight];
+        for (var edgeLeft in edgesLeft){
+          var edge1 = edgesLeft[edgeLeft];
+          if (edge1._weight == edge2._weight){
+
+            finalRight.highlight();
+            finalLeft.highlight();
+            var lastRight = finalRight;
+            var lastLeft = finalLeft;
+            
+            edgesCheckedLeft.push(edge1);
+            
+
+            edgesCheckedRight.push(edge2);
+            
+            finalLeft =  edge1.startnode;
+            finalRight = edge2.startnode;
+            finalRight.highlight();
+            finalLeft.highlight();
+            jsav.step();
+            edge1.hide();
+            jsav.step();
+            lastRight.unhighlight();
+            lastLeft.unhighlight();
+            found = true;
+
+            lastLeft.hide();
+            for (var hiddenLeft in edgesLeft){
+              if (edgesLeft[hiddenLeft].isVisible()){
+                lastLeft.show();
+              }
+            }
+            break;
+          }
+        }
+      }
+    }
+    jsav.step();
+    graph1.hide();
+    graph2.hide();
+    var figure = new jsav.ds.FA(option);
+    var edges = graph1.edges();
+    for (var next = edges.next(); next; next = edges.next()) {
+      if (!edgesCheckedLeft.includes(next)){
+        var start = next.startnode;
+        var end = next.endnode;
+        var finalFrom = figure.getNodeWithValue(start.options.value);
+        
+        if (!finalFrom){
+          finalFrom = figure.addNode({value: start.options.value});
+        }
+        var finalTo = figure.getNodeWithValue(end.options.value);
+        if (!finalTo){
+          finalTo = figure.addNode({value: end.options.value});
+        }
+        figure.addEdge(finalFrom, finalTo, {weight: next.weight()} );
+      }
+    }
+    figure.makeInitial(figure.nodes()[0]);
+    figure.makeFinal(figure.nodes()[figure.nodes().length-1]);
+    figure.layout();
+    return figure;
+  };
+
+
+
   /**
    * MAke publicly available methods
    */
   FiniteAutomaton.convertNFAtoDFA = convertToDFA;
   window.FADepthFirstSearch = dfs;
   window.lambdaClosure = lambdaClosure;
+
+  FiniteAutomaton.complement = complement;
+  FiniteAutomaton.combine = combine
+  FiniteAutomaton.completeDFA = completeDFA;
+  FiniteAutomaton.union = union;
 }(jQuery));
 /*
 ****************************************************************************
@@ -2355,6 +4113,7 @@ var lambda = String.fromCharCode(955),
     var currentStates = [this.FA.initial];
     currentStates = addLambdaClosure(this.FA, currentStates);
     var nextStates = currentStates;
+    this.jsav.step();
 
     // Create an array of characters in the input string.
     var textArray = [];
@@ -2387,7 +4146,7 @@ var lambda = String.fromCharCode(955),
       // Prepare for the next iteration of the loop. Update the current character in the JSAV array and add a step to the slideshow.
       currentStates = nextStates;
       //arr.css(i, {"background-color": "yellow"});
-      this.jsav.umsg("Read a lettter and follow its transition out of the current state.");
+      this.jsav.umsg("Read a letter and follow its transition out of the current state.");
       this.matrix.css(matrixRow, i, { "background-color": "yellow" });
       this.jsav.step();
     }
@@ -2437,7 +4196,6 @@ var lambda = String.fromCharCode(955),
     this.matrix = this.jsav.ds.matrix(listOfStrings, { style: "table", top: arrayOptions.top, left: arrayOptions.left });
     for (var i = 0; i < listOfStrings.length; i++) {
       this.jsav.umsg("The " + special[i + 1] + " string is " + listOfStrings[i].join(''));
-      this.jsav.step();
       this.resetFA();
       this.run(listOfStrings[i], i);
     }
@@ -2896,27 +4654,29 @@ function getRandomInt(max) {
   controllerProto.visualizeConversion = function (transitionOptions = {}, finaGraphOptions = {}) {
     this.visualize = true;
     this.jsav.step();
-    this.jsav.umsg("We need to complete all the missing tansitions for this Machine");
+    this.jsav.umsg("We start by completing all missing tansitions for this Machine by adding transistions on $\\emptyset$.");
     this.completeTransitions();
     var nodes = getAllNonStartNorFinalStates(this.fa);
     for (var i = 0; i < nodes.length; i++) {
       this.jsav.step();
-      this.jsav.umsg("We should collapse the node " + nodes[i].value());
+      this.jsav.umsg("We will collapse the node " + nodes[i].value() + ".");
       localStorage.trans = 'false';
       nodes[i].highlight();
       this.fa.selected = nodes[i];
       this.collapseState(nodes[i], transitionOptions);
       this.jsav.step();
-      this.jsav.umsg("You can click on each table row to heighlight the affected transitions.");
+      this.jsav.umsg("You can click on each table row to highlight the affected transitions.");
       nodes[i].unhighlight();
       this.jsav.step();
-      this.jsav.umsg("Removing the node " + nodes[i].value() + " will create an new but equivalent graph");
+      this.jsav.umsg("Changing the labels while removing the node " + nodes[i].value() + " will create a new but equivalent machine.");
       this.finalizeRE();
     }
     this.jsav.step();
-    this.jsav.umsg("After removing all nodes that are not fianl and not start, the resulting Regular Exepression is");
+    this.jsav.umsg("After removing all nodes that are not final and not start, the resulting Regular Exepression is:");
     this.transitions.hide();
     drawTheFinalGraph(this.jsav, finaGraphOptions, this.generateExpression());
+    this.jsav.step();
+    this.jsav.umsg("The result might not be an intuitive regular expression corresponding to the original machine, but it is a legitimate regular expression. Which demonstrates that the conversion can be made.");
   }
 
   function getAllNonStartNorFinalStates(graph) {
@@ -2970,7 +4730,7 @@ function getRandomInt(max) {
     this.y_coord = y_coord; //y coordinate of placement
     this.direction = direction; // in which direction tape extends
     this.options = options;
-    this.current = (index == undefined)? 1: index;//the location to highlight
+    this.current = (index == undefined)? -1: index;//the location to highlight
     this.arr = null;
     this.leftPoly = null;
     this.rightPoly = null;
@@ -3173,20 +4933,23 @@ function getRandomInt(max) {
 
   var minimizer = Minimizer.prototype;
   window.Minimizer = Minimizer;
-  minimizer.minimizeDFA = function (jsav, referenceGraph, tree, newGraphDimensions) {
-    this.init(jsav, referenceGraph, tree);
+  minimizer.minimizeDFA = function (jsav, referenceGraph, tree, newGraphDimensions, visual = true) {
+    this.init(jsav, referenceGraph, tree, visual);
     var listOfVisitedLeaves = [];
     var listOfLeaves = this.getLeaves(this.tree.root());
     var leaf;
     var moreToSplit = true;
-    this.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
+    if (this.visualize)
+      this.jsav.umsg("Now we will test the terminals against the states in that subset to see if they all go to the same subset. Split them up when they do not go to the same place.")
     while (moreToSplit) {
       moreToSplit = null;
       for (var i = 0; i < listOfLeaves.length; i++) {
         listOfVisitedLeaves = listOfVisitedLeaves.concat(listOfLeaves);
-        this.jsav.step();
-        this.unhighlightAllTreeNodes(this.tree);
-        this.unhighlightAll(this.referenceGraph);
+        if (this.visualize){
+          this.jsav.step();
+          this.unhighlightAllTreeNodes(this.tree);
+          this.unhighlightAll(this.referenceGraph);
+        }
         leaf = listOfLeaves[i];
         var leafTreeNode = getTreeNode(leaf, this.tree.root());
         leafTreeNode.highlight();
@@ -3198,14 +4961,16 @@ function getRandomInt(max) {
       }
       listOfLeaves = _.difference(this.getLeaves(this.tree.root()), listOfVisitedLeaves);
     }
-    this.jsav.step();
-    this.unhighlightAllTreeNodes(this.tree);
-    this.unhighlightAll(this.referenceGraph);
-    this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
-    this.jsav.step();
+    if (this.visualize){
+      this.jsav.step();
+      this.unhighlightAllTreeNodes(this.tree);
+      this.unhighlightAll(this.referenceGraph);
+      this.jsav.umsg("Since we do not have any more splits, the resulting tree represents the nodes in the minimized DFA.");
+      this.jsav.step();
+    }
     return this.done(newGraphDimensions);
   }
-  minimizer.init = function (jsav, referenceGraph, tree) {
+  minimizer.init = function (jsav, referenceGraph, tree, visual = true) {
     this.selectedNode = null;
     this.jsav = jsav;
     this.referenceGraph = referenceGraph;
@@ -3215,24 +4980,28 @@ function getRandomInt(max) {
     this.nonfinals = [];
     this.reachable = [];
     this.minimizedEdges = {};
+    this.visualize = visual;
 
     this.addTrapState();
     var val = this.getReachable();
     this.initTree(val);
-    this.jsav.umsg("Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.")
-    this.jsav.step();
-    this.jsav.umsg("These are the nonfinal states.")
-    highlightAllNodes(this.nonfinals, this.referenceGraph);
-    getTreeNode(this.nonfinals.sort().join(), this.tree.root()).highlight();
-    this.jsav.step();
-    this.unhighlightAllTreeNodes(this.tree);
-    this.unhighlightAll(this.referenceGraph);
-    this.jsav.umsg("These are the final states.")
-    highlightAllNodes(this.finals, this.referenceGraph);
-    getTreeNode(this.finals.sort().join(), this.tree.root()).highlight();
-    this.jsav.step();
-    this.unhighlightAllTreeNodes(this.tree);
-    this.unhighlightAll(this.referenceGraph);
+
+    if (this.visualize){
+      this.jsav.umsg("Initially, the tree will consist of 2 nodes. A node for nonfinal states, and another state for final states.")
+      this.jsav.step();
+      this.jsav.umsg("These are the nonfinal states.")
+      highlightAllNodes(this.nonfinals, this.referenceGraph);
+      getTreeNode(this.nonfinals.sort().join(), this.tree.root()).highlight();
+      this.jsav.step();
+      this.unhighlightAllTreeNodes(this.tree);
+      this.unhighlightAll(this.referenceGraph);
+      this.jsav.umsg("These are the final states.")
+      highlightAllNodes(this.finals, this.referenceGraph);
+      getTreeNode(this.finals.sort().join(), this.tree.root()).highlight();
+      this.jsav.step();
+      this.unhighlightAllTreeNodes(this.tree);
+      this.unhighlightAll(this.referenceGraph);
+    }
   }
 
   // minimizing DFA needs a complete FA, so this function adds trap states
@@ -3368,11 +5137,13 @@ function getRandomInt(max) {
       if (!_.find(leaves, function (v) { return _.difference(nArr, v.split(',')).length === 0 })) {
         break;
       } else if (k === this.alphabet.length - 1) {
-        //this.selectedNode.unhighlight();
-        this.unhighlightAll(this.referenceGraph);
-        //this.selectedNode = null;
-        this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
-        highlightAllNodes(treeNode.split(','), this.referenceGraph);
+        if (this.visualize){
+          //this.selectedNode.unhighlight();
+          this.unhighlightAll(this.referenceGraph);
+          //this.selectedNode = null;
+          this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will not be divided.");
+          highlightAllNodes(treeNode.split(','), this.referenceGraph);
+        }
         return false;
       }
     }
@@ -3402,12 +5173,14 @@ function getRandomInt(max) {
         nodeListAsString += "Node " + nVal;
       }
     }
-    nodeListAsString = listOFNodesToString(nodeListAsString);
-    nodeListAsString += " by using the transition label " + letter;
-    this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will be divided into " + nodeListAsString + ".");
-    highlightAllNodes(treeNode.split(','), this.referenceGraph);
-    //this.unhighlightAll(this.referenceGraph);
-    this.tree.layout();
+    if(this.visualize){
+      nodeListAsString = listOFNodesToString(nodeListAsString);
+      nodeListAsString += " by using the transition label " + letter;
+      this.jsav.umsg("Node " + latixifyNodeName(treeNode) + " will be divided into " + nodeListAsString + ".");
+      highlightAllNodes(treeNode.split(','), this.referenceGraph);
+      //this.unhighlightAll(this.referenceGraph);
+      this.tree.layout();
+    }
     return true;
   };
   minimizer.done = function (newGraphDimensions) {
@@ -3483,9 +5256,11 @@ function getRandomInt(max) {
         next.weight().split("<br>"));
     }
     graph.layout();
-    this.jsav.step();
-    //graph.click(nodeClickHandlers);
-    this.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
+    if (this.visualize){
+      this.jsav.step();
+      //graph.click(nodeClickHandlers);
+      this.jsav.umsg("Finish the DFA by finding the transisitons between nodes.");
+    }
     studentGraph = graph;
     return this.complete(graph);
   };

@@ -1,10 +1,25 @@
+<!--
+Title: 3-Satisfiability Proficency Exercise
+Author: Nabanita Maji; Cliff Shaffer
+Institution: Virginia Tech
+Features: Demonstration Exercise
+Keyword: Satisfiability Problem
+Natural Language: en
+Programming Language: N/A
+--> 
+
+<!--
+Description: User must determine whether a given 3-CNF expression has a satisfying truth assignment or not.
+-->
+
 <!DOCTYPE html>
-<html data-require="jsav math ../../AV/Development/graphUtils threeSATPRO">
+<html data-require="jsav math ../../AV/Development/graphUtils threeSATPRO" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>3-sat problem.</title>
   <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
   <script src="../../khan-exercises/local-only/main.js"></script>
+  <script src="../../lib/splice-iframe.js"></script> 
   <style type="text/css">
     .jsavcanvas
     {
@@ -26,7 +41,8 @@
       <p class="problem">Your task in this exercise is to find out an assignment of the boolean variables that makes the expression true or declare that  no such assignment exists.</p>
       <div class="question">
         <p>Assign the variables appropriately to satisfy the expression. </p>
-        <p>Click on the variable once to assign it true , twice to assign it false and thrice to reset.</p> 
+        <p>Click on the variable once to assign it true, twice to
+        assign it false, and three times to reset.</p> 
         <input id="reset" type="button" value="Reset" />	
         <form action="">
            <input type="checkbox" id="noSol" value="noSol">Not Satisfiable</input>

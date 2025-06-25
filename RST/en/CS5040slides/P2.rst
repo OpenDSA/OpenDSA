@@ -18,65 +18,99 @@ Project 2 Design
 
 .. slide:: Project 2 Design (1)
 
-   | Conceptually simpler than Project 1
-   |    "All" that you need to do is implement the quadtree.
-   |    The only other data structure is the list of rectangles stored
-        in a leaf node.
-   |    Probably a bit harder to implement than Project 1 (delete is
-        pretty hard). Good news: P3/P4 should be easier for you than
-        P1 and P2!
+   | Two Tree Implementation
+   |    Each tree serves as an index (a search structure for a given key)
+   |       Four BSTs (sharing one generalized implementation)
+   |       A Bintree for searching by location
+   |    When you insert a seminar, every tree has a reference to the
+        same copy of the seminar object
+   |    This is important: When you need to find the right record to
+        delete in a tree that has duplicate key values (cost, keyword,
+        date, location), you can trust pointer equals!
 
+   
 .. slide:: Project 2 Design (2)
            
    | Good class design: Keep separate classes for:
    |    Project main
    |    Syntactic parser
    |    Semantic command processing
-   |    Quadtree (this is a class hierarchy)
-   |    Rectangle
-   |    Rectangle list
-   |    (I have 10 class files plus JUnit test files)
-           
+   |    BST (recommend using generics)
 
+   
+.. slide:: Project 2 Design (2)
+           
+   | Good class design: Keep separate classes for:
+   |    Bintree
+   |    Bintree node class structure
+   |       Bintree Node Interface
+   |       Bintree Internal Node
+   |       Bintree Leaf Node
+   |       Bintree Empty Leaf (?) -- A flyweight
+   |       Bintree Leaf Nodes: Contain a list of Seminars           
+
+   ? here means that the Empty Leaf Node might be implemented as a
+   separate class, or it might be a special instance of a Leaf Node.
+   What it CANNOT be is a null pointer!
+
+   
 .. slide:: Spatial Data Structures
 
    | Fundamental idea: Need to treat X and Y dimensions as co-equal.
    |    This requires different thinking from 1-dimensional key
         structures like BST or Hash Table
-   | Support spatial queries: Regionsearch, intersections
+   | Support spatial queries: Records within radius of search point
 
 
-.. slide:: Rectangle Quadtree
+.. slide:: Bintree (1)
 
-   | Many quadtree variants and similar spatial data structures
+   | Many variants and similar spatial data structures
    |   PR quadtrees, k-d trees, and bintrees are common for storing
        point data
-   | But any 2D data can be stored in a quadtree (or 3D data in
-     octree)
    | Decomposition rule: The rule that decides when to split the
      tree
-   |    Our rule: Up to 3 rectangles
-   |    BUT: Splitting is useless if the rectangles all overlap
-   |    So we don't split when they all overlap
+   |    Our rule: Only one point in a leaf
+   |    BUT: Splitting is useless if the points are the same!
+   |    So we don't split when they are the same.
+   |       Keep on a list
+
+
+.. slide:: Bintree (2)
+
+   .. inlineav:: bintreeCON dgm
+      :links: AV/Spatial/bintreeCON.css
+      :scripts: AV/Spatial/bintreeCON.js
+      :align: justify
+
+
+.. slide:: Bintree Visualization
+
+   .. avembed:: AV/Spatial/BintreeAV.html ss
+
+
+.. slide:: Ineractive Bintree
+   
+   .. avembed:: AV/Spatial/BintreeInter.html ss
+
 
 .. slide:: Implementation
 
-  | The world is 1024 units on each side (0..1023)
+  | Example: The world is 1024 units on each side (0..1023)
   |    I define the origin as the upper left corner of the world square
-  |    The initial world is an empty box
+  |    The initial world is an empty box (1024 x 1024)
   
   | Different types of nodes:
-  |   Internal (has 4 children)
-  |   Leaf with rectangles
+  |   Internal has 2 children (no data value)
+  |   Leaf with Seminar list (no children)
   |   Leaf that is empty
 
   
 .. slide:: Tree/Node Implementation (1)
 
   | Class hierarchy
-  |   Base node type: Could be an interface
-  |   Internal nodes have 4 child pointers (no rectangles)
-  |   Leaf nodes have no child pointers, store rectangles
+  |   Base node type: An interface
+  |   Internal nodes have 2 child pointers (no data)
+  |   Leaf nodes have no child pointers, store Seminars (unless empty)
 
   | How to implement empty nodes? There are a lot of them.
   |    Definitely NOT as a null pointer!!
@@ -94,4 +128,43 @@ Project 2 Design
   | NO use of parent pointers!
 
   | Composite design is natural here
-           
+
+
+.. slide:: Design Patterns (1)
+
+   * Design patterns capture reusable pieces of design wisdom.
+
+   * Goals:
+      * Quickly communicate design wisdom to new designers
+      * Give a shared vocabulary to designers
+
+
+.. slide:: Design Patterns (2)
+
+   | Three design patterns for Project 2:
+   |    Composite (will talk about in next section)
+   |    Flyweight
+   |       Everytime you need to point to an empty leaf, point to the
+           same empty leaf. 
+   |          By not using a null pointer, you can call operations
+              on the object.
+   |          But you don't pay any space for it!!
+   |       Of course, this means that it cannot have state
+   |          But your empty leaf node should not need state!
+   |          No storing the position/size. No storing parent
+              pointers!
+
+
+.. slide:: Design Patterns (3)
+
+   | Singleton
+   |    There can be only one Flyweight object.
+   |       So need a way to control this -- create it when you need
+           it, but never again.
+   |       There are a few standard ways to do this. You can google
+           for information.
+   |       The simplest approach is to:
+   |          Turn off the constructor (make it private)
+   |          Make clients go through getInstance() instead
+   |          Keep a static member which is the copy of the
+              flyweight that you create only one time.

@@ -1,0 +1,279 @@
+{
+  "translations": {
+    "en": {
+      "q1": {
+        "type": "select",
+        "description": "Let's first guess what the following turing machine does.<br> Suppose w represents the input string and the current tape is #w#, answer the question on the right.",
+        "question": "Select one of the following statements that best describe this turing machine.",
+        "answer": [
+          "A copy machine that transforms #w# into #w#w#."
+        ],
+        "choices": [
+          "A shift machine that can shift a string to the LEFT of its original tape.",
+          "A copy machine that transforms #w# into #ww#.",
+          "A copy machine that transforms #w# into #w#w#.",
+          "A copy machine that transforms #w# into ww."
+        ]
+      },
+      "q3": {
+        "type": "select",
+        "description": "Before we start, let's take a look at the below turing machine and answer the question on the right.",
+        "question": "Which machine is the initial machine of this copy machine.",
+        "answer": [
+          "$>L_{\\#}$"
+        ],
+        "choices": [
+          "$R$",
+          "$>L_{\\#}$",
+          "$R\\#$",
+          "$L^{2}_{\\#}$"
+        ]
+      },
+      "q4": {
+        "type": "select",
+        "description": "You are correct! Do you know what the <font color='red'>$>L_{\\#}$</font> machine does?",
+        "question": "What does the <font color='red'>$>L_{\\#}$</font> machine do?",
+        "answer": [
+          "<font color='red'>$>L_{\\#}$</font> means going to the closest empty cell on the left, from the head."
+        ],
+        "choices": [
+          "<font color='red'>$>L_{\\#}$</font> means going to one cell on the left, and then change the cell to #.",
+          "<font color='red'>$>L_{\\#}$</font> means going back to the previous machine of the turing machine.",
+          "<font color='red'>$>L_{\\#}$</font> means going to the closest empty cell on the left, from the head."
+        ]
+      },
+      "q5": {
+        "type": "true/false",
+        "description": "Your classmate Alan says that the initial machine <font color='red'>$>L_{\\#}$</font> means we need to go to the closest space (denoted by #) on the left, from the head.",
+        "question": "Is that a true statement?",
+        "answer": [
+          "True"
+        ],
+        "choices": [
+        ]
+      },
+      "q6": {
+        "type": "select",
+        "description": "Excellent! We start from the <font color='red'>$>L_{\\#}$</font>. $L_{\\#}$ means going to the closest space (denoted by #) on the left, from the head. ",
+        "question": "We will then move to the next machine $R$ by following the arrow direction. <br> What does the next machine $R$ mean?",
+        "answer": [
+          "$R$ means moving from the current tape cell to the right tape cell."
+        ],
+        "choices": [
+          "$R$ means moving from the current tape cell to the right tape cell.",
+          "$R$ means moving from the current tape cell to the next # cell on the right."
+        ]
+      },
+      "q7": {
+        "type": "select",
+        "description": "Well Done! <font color='red'>$R$</font> means moving from the current tape cell to the right tape cell.<br>Now we can see that <font color='red'>$R$</font> is followed by two arrows pointing to either right or down.<br>Answer the questions on the right to determine which arrow direction you should follow.",
+        "question": "Is the current tape cell a space or empty(i.e. #)? Then, which arrow direction should you follow? (Select all the correct answers.)",
+        "answer": [
+          "No, it is not a space($\\overline{\\#}$).",
+          "Follow the arrow pointing right."
+        ],
+        "choices": [
+          "Yes, it is a space(#).",
+          "No, it is not a space($\\overline{\\#}$).",
+          "Follow the arrow pointing right.",
+          "Follow the arrow pointing down."
+        ]
+      },
+      "q8": {
+        "type": "select",
+        "description": "[Explanation to the questions on the previous slide.] <br> Is the current tape cell a space (i.e. #)? <br> No, the current tape cell is an 'a', so we follow the <font color='red'>$\\overline{\\#}$</font> direction to go to the <font color='red'>#</font> machine.",
+        "question": "Now, we are at the <font color='red'>#</font> machine. <br> What will the <font color='red'>#</font> machine do to the tape?",
+        "answer": [
+          "erase the highlighted 'a' by making the tape cell empty (denoted by #)."
+        ],
+        "choices": [
+          "erase the highlighted 'a' by making the tape cell empty (denoted by #).",
+          "change the current position to the next empty cell (denoted by #) on the RIGHT.",
+          "change the current position to the next empty cell (denoted by #) on the LEFT."
+        ]
+      },
+      "q9": {
+        "type": "select",
+        "description": "Well Done! The # machine just replaced 'a' with '#'. <br> We are now at the <font color='red'>$R^{2}_{\\#}$</font> machine.",
+        "question": "What will the <font color='red'>$R^{2}_{\\#}$</font> machine do to the tape?",
+        "answer": [
+          "<font color='red'>$R^{2}_{\\#}$</font>: change the current position to the second space(#) on the right."
+        ],
+        "choices": [
+          "<font color='red'>$R^{2}_{\\#}$</font>: change the current position to the second space(#) on the right.",
+          "<font color='red'>$R^{2}_{\\#}$</font>: change the current position to the second cell on the right and then write '#' to the tape cell.",
+          "<font color='red'>$R^{2}_{\\#}$</font>: change the current position to the next cell on the right and then write two '#' to the cell."
+        ]
+      },
+      "q10": {
+        "type": "select",
+        "description": "Now we are at the Sigma(<font color='red'>$\\sigma$</font>) machine. <br> Your classmate Nikola says that <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
+        "question": "Is Nikola's statement correct? If yes, what value should the machine write to the current tape cell?",
+        "answer": [
+          "a",
+          "Yes, Nikola's statement is correct."
+        ],
+        "choices": [
+          "a",
+          "b",
+          "#",
+          "Yes, Nikola's statement is correct.",
+          "No, Nikola's statement is incorrect."
+        ]
+      },
+      "q11": {
+        "type": "select",
+        "description": "Awesome! The machine just wrote 'a' to the cell. <br> Now, <font color='red'>$L^{2}_{\\#}$</font> looks very similar to $R^{2}_{\\#}$. <font color='red'>$L^{2}_{\\#}$</font> means changing the current tape position to the second space(#) on the LEFT. <br> Notice how the <font color='red'>$L^{2}_{\\#}$</font> machine unhighlighted the previous positions and then highlighted the current position.",
+        "question": "We will enter the next Sigma($\\sigma$) machine. What value will the next $\\sigma$ machine write to the current tape cell?",
+        "answer": [
+          "a"
+        ],
+        "choices": [
+          "a",
+          "b",
+          "#"
+        ]
+      },
+      "q12": {
+        "type": "select",
+        "description": "Excellent! Sigma($\\sigma$): Write the letter we just read to the current tape cell. <br> We just read 'a', so we needed to write 'a' to the cell.",
+        "question": "We will go back to the $R$ machine following the attached arrow. <br> (Fill in the blank) Suppose that the currently highlighted cell is at position 1, the $R$ machine will change the highlighted position to position _",
+        "answer": [
+          "2"
+        ],
+        "choices": [
+          "1",
+          "0",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "q13": {
+        "type": "select",
+        "description": "Awesome! <font color='red'>$R$</font> just changed the highlighted position from 1 to 2. <br>Now we can see that <font color='red'>$R$</font> is followed by two arrows pointing to either right or down.<br>Answer the questions on the right to determine which arrow direction you should follow.",
+        "question": "Is the current tape cell a space or empty(i.e. #)? Then, which arrow direction should you follow? (Select all the correct answers.)",
+        "answer": [
+          "No, it is not a space($\\overline{\\#}$).",
+          "Follow the arrow pointing right."
+        ],
+        "choices": [
+          "Yes, it is a space(#).",
+          "No, it is not a space($\\overline{\\#}$).",
+          "Follow the arrow pointing right.",
+          "Follow the arrow pointing down."
+        ]
+      },
+      "q14": {
+        "type": "select",
+        "description": "[Explanation to the questions on the previous slide.] <br> Is the current tape cell a space (i.e. #)? <br> No, the current tape cell is an 'b', so we follow the <font color='red'>$\\overline{\\#}$</font> direction to go to the <font color='red'>#</font> machine.",
+        "question": "Now, we are at the <font color='red'>#</font> machine. <br> What will the <font color='red'>#</font> machine do to the tape?",
+        "answer": [
+          "erase the highlighted 'b' by making the tape cell empty (denoted by #)."
+        ],
+        "choices": [
+          "erase the highlighted 'b' by making the tape cell empty (denoted by #).",
+          "change the current position to the next empty cell (denoted by #) on the RIGHT.",
+          "change the current position to the next empty cell (denoted by #) on the LEFT."
+        ]
+      },
+      "q15": {
+        "type": "select",
+        "description": "Well Done! The # machine just replaced 'b' with '#'. <br> We are now at the <font color='red'>$R^{2}_{\\#}$</font> machine.",
+        "question": "Suppose the highlighted cell is currently at position 2, after performing the <font color='red'>$R^{2}_{\\#}$</font> machine, at which position will the next highlighted cell be?",
+        "answer": [
+          "5"
+        ],
+        "choices": [
+          "4",
+          "5",
+          "6",
+          "7",
+          "3"
+        ]
+      },
+      "q16": {
+        "type": "select",
+        "description": "Now we are at the Sigma(<font color='red'>$\\sigma$</font>) machine. <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
+        "question": "What value should you write to the current tape cell?",
+        "answer": [
+          "b"
+        ],
+        "choices": [
+          "a",
+          "b",
+          "#"
+        ]
+      },
+      "q17": {
+        "type": "select",
+        "description": "<font color='red'>$L^{2}_{\\#}$</font>: Go to the second space(#) on the left.",
+        "question": "Suppose the currently highlighted cell is at position 5, the next highlighted cell will be at position _",
+        "answer": [
+          "2"
+        ],
+        "choices": [
+          "2",
+          "3",
+          "4",
+          "1"
+        ]
+      },
+      "q18": {
+        "type": "select",
+        "description": "Now we are at the Sigma(<font color='red'>$\\sigma$</font>) machine. <font color='red'>$\\sigma$</font> means writing the letter we just read to the current tape cell.",
+        "question": "What value should you write to the current tape cell?",
+        "answer": [
+          "b"
+        ],
+        "choices": [
+          "a",
+          "b",
+          "#"
+        ]
+      },
+      "q19": {
+        "type": "select",
+        "description": "Excellent! Sigma($\\sigma$): Write the letter we just read to the current tape cell. <br> We just read 'b', so we needed to write 'b' to the cell.",
+        "question": "We go back to the $R$ machine following the attached arrow. <br> (Fill in the blank) Suppose that the currently highlighted cell is at position 2, the $R$ machine will change the highlighted position to position _",
+        "answer": [
+          "3"
+        ],
+        "choices": [
+          "3",
+          "4",
+          "5",
+          "2"
+        ]
+      },
+      "q20": {
+        "type": "select",
+        "description": "<font color='red'>$R$</font> is followed by two different arrows. Answer the questions to determine which arrow direction you should follow.",
+        "question": "Is the current tape cell a space or empty(i.e. #)? Then, which arrow direction should you follow? (Select all the correct answers.)",
+        "answer": [
+          "Yes, it is a space(#).",
+          "Follow the arrow pointing down."
+        ],
+        "choices": [
+          "Yes, it is a space(#).",
+          "No, it is not a space($\\overline{\\#}$).",
+          "Follow the arrow pointing right.",
+          "Follow the arrow pointing down."
+        ]
+      },
+      "q21": {
+        "type": "select",
+        "description": "Is the current tape cell a space (i.e. #)?<br>Yes, the current tape cell is #, so we follow the # direction to go to the <font color='red'>$R\\#$</font> machine. <br>",
+        "question": "Now, what does the <font color='red'>$R_{\\#}$</font> mean?",
+        "answer": [
+          "<font color='red'>$R_{\\#}$</font> means going to the closest empty cell on the right."
+        ],
+        "choices": [
+          "<font color='red'>$R_{\\#}$</font> means going to one cell on the right, and then change the cell to #.",
+          "<font color='red'>$R_{\\#}$</font> means going back to the previous machine of the turing machine.",
+          "<font color='red'>$R_{\\#}$</font> means going to the closest empty cell on the right."
+        ]
+      }
+    }
+  }
+}

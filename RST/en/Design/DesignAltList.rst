@@ -4,9 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Alternative List ADT Designs
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: ADT; array-based list
-   :topic: Search
+   :topic: List ADT Design
+   :keyword: List; Abstract Data Type
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents a list ADT that supports iterators.
+
 
 Alternative List ADT Designs
 ============================

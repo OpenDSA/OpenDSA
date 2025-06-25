@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Turing Machines
+   :keyword: Turing Machines
+
 
 Turing Machines
 ===============
@@ -16,20 +18,22 @@ Turing Machines
 A General Model of Computation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We would like to define a general model of computation that is as
-simple as possible.
+In this module we seek to define a general model of computation that
+is as simple as possible.
 The reason is that we want to be able to understand the limits of what
 is possible in computing, but that is rather hard to do with a
 complicated definition for a "computer" is.
 But then, we need to be confident that whatever model we do pick, that
 it actually represents all of the fundamental capabilities of a
 "computer".
+Specifically, we want a model that is capable of computing any funtion
+that our "regular" computers can compute.
 
 "State machines" are simple to understand.
 There are a number of different state machines, with a range of
 capabilities.
 We will discuss a particular one, called a :term:`Turing machine`.
-As we define "capability", the key is *ability*, not *efficiency*.
+As we discuss "capability", the key is *ability*, not *efficiency*.
 
 The necessary capabilites for any such "machine" are these:
 
@@ -54,7 +58,7 @@ current state, and can then do one of the following:
 * Change the current symbol.
 * Move the I/O head one square to either the left or the right.
 
-By convention, the machine ceases to perate if the head moves off the
+By convention, the machine ceases to operate if the head moves off the
 left end of the tape, or if the control unit sends the machine into a
 specially designated :term:`halt state`.
 
@@ -369,6 +373,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/Turing1CON.css
    :scripts: AV/SeniorAlgAnal/Turing1CON.js
    :align: center
+   :keyword: Turing Machines
 
    First do :math:`M_1`, then do :math:`M_2` or :math:`M_3` depending
    on current symbol.
@@ -379,6 +384,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/Turing2CON.css
    :scripts: AV/SeniorAlgAnal/Turing2CON.js
    :align: center
+   :keyword: Turing Machines
 
    (For :math:`\Sigma = \{a, b,c\}`) Move head to the right until a
    blank is found.
@@ -390,6 +396,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/Turing3CON.css
    :scripts: AV/SeniorAlgAnal/Turing3CON.js
    :align: center
+   :keyword: Turing Machines
 
    Two views of a simple machine to find the first blank square to the
    left, and then transition to machine :math:`M`.
@@ -404,6 +411,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/TuringCopyCON.css
    :scripts: AV/SeniorAlgAnal/TuringCopyCON.js
    :align: center
+   :keyword: Turing Machines
 
    Copy Machine: Transform :math:`\#w\underline{\#}` into
    :math:`\#w\#w\underline{\#}`.
@@ -418,6 +426,7 @@ Here are some basic machines and notation
    :links: AV/SeniorAlgAnal/TuringShiftCON.css
    :scripts: AV/SeniorAlgAnal/TuringShiftCON.js
    :align: center
+   :keyword: Turing Machines
 
    Shift a string right.
 
@@ -445,6 +454,7 @@ Machines.
      :links: AV/SeniorAlgAnal/TuringExt1CON.css
      :scripts: AV/SeniorAlgAnal/TuringExt1CON.js
      :align: center
+     :keyword: Turing Machines
 
   This does not give Turing machines new capability.
   To make this clear, we can simulate the behavior of a two-way
@@ -469,6 +479,7 @@ Machines.
      :links: AV/SeniorAlgAnal/TuringExt2CON.css
      :scripts: AV/SeniorAlgAnal/TuringExt2CON.js
      :align: center
+     :keyword: Turing Machines
 
 * Multiple heads on one tape
 
@@ -487,6 +498,7 @@ Machines.
      :links: AV/SeniorAlgAnal/TuringExt3CON.css
      :scripts: AV/SeniorAlgAnal/TuringExt3CON.js
      :align: center
+     :keyword: Turing Machines
 
 * Non-determinism
 

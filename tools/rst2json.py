@@ -139,7 +139,8 @@ class avmetadata(Directive):
                  'topic': directives.unchanged,
                  'requires': directives.unchanged,
                  'satisfies': directives.unchanged,
-                 'prerequisites': directives.unchanged
+                 'prerequisites': directives.unchanged,
+                 'keyword': directives.unchanged #keyword directive added for SPLICE catalog  
                  }
 
   def run(self):
@@ -342,6 +343,59 @@ class odsafig(Directive):
 
   def run(self):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
+
+
+class splicetoolembed(Directive):
+  requiredArguments = 1
+  optionalArguments = 0
+  finalArgumentWhitespace = True
+  option_spec = {
+    'height': directives.unchanged,
+    'width': directives.unchanged,
+    'src': directives.unchanged,
+    'long_name': directives.unchanged,
+    'name': directives.unchanged
+  }
+  has_content = True
+
+  def run(self):
+    splicetoolembedURL = self.arguments[0]
+    splicetoolembedName = self.get('name', '')
+    splicetoolembedLongName = self.get('long_name', '')
+
+    splicetoolembedData = {
+      'url': splicetoolembedURL,
+      'name': splicetoolembedName,
+      'long_name': splicetoolembedLongName
+    }
+    return [nodes.raw('', json.dumps(splicetoolembedData), format='json')]
+#returns list of splicetoolembeds in given rst file
+def get_splicetoolembed_data(rst):
+  #regex pattern for splicetoolembed directives
+  splicetoolembed_pattern = re.compile(r'\.\. splicetoolembed::(.*?)\n\s+:height:.*?\n\s+:width:.*?\n\s+:name:(.*?)\n\s+:long_name:(.*?)\n', re.DOTALL)
+  matches = splicetoolembed_pattern.findall(rst)
+  splicetoolembeds = []
+  counter = 0
+  #if matched, add them to the splicetoolembeds list
+  for match in matches:
+    splicetoolembedData = {
+      'url': match[0],
+      'name': match[1],
+      'long_name': match[2]
+    }
+    splicetoolembeds[counter] = splicetoolembedData
+    counter += 1
+  return splicetoolembeds
+
+def rstToJson(rst, filepath):
+  #read rst file and get splicetoolembeds
+  with open(filepath, 'r') as file:
+    splicetoolembeds = get_splicetoolembed_data(file.read())
+    json = {
+      'splicetoolembeds': splicetoolembeds
+    }
+    return json
+
 
 
 def print_err(*args, **kwargs):

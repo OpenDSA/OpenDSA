@@ -24,7 +24,7 @@ public class ParPtrTree {
   public void UNION(int a, int b) {
     int root1 = FIND(a);     // Find root of node a
     int root2 = FIND(b);     // Find root of node b
-    if (root1 != root2)          // Merge with weighted union
+    if (root1 != root2) {          // Merge with weighted union
       if (weights[root2] > weights[root1]) {
         array[root1] = root2;
         weights[root2] += weights[root1];
@@ -32,6 +32,7 @@ public class ParPtrTree {
         array[root2] = root1;
         weights[root1] += weights[root2];
       }
+    }
   }
   /* *** ODSAendTag: UnionFind *** */
 

@@ -1,9 +1,18 @@
-/**
- * Creates a diagram to demonstrate how a binary search tree might be laid out on disk.
- *
- * Container ID: pagedBSTCON
- */
 /*global ODSA */
+/**
+ * Creates a diagram to demonstrate how a binary search tree might be
+ * laid out on disk. 
+ */
+
+// Title: Paged BST Slideshow
+// Author: Elmer Landaverde; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-Based Indexing
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the use of paging with a BST-based index. Updating the BST to require it to remain a complete tree is expensive. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "pagedBSTCON";

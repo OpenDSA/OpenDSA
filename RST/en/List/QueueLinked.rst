@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
+   :title: Implementing the Linked Queue
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: queue
    :satisfies: linked queue
    :topic: Lists
+   :keyword: Linked Queue
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents an implementation for linked queues.
+
 
 Linked Queues
 =============
@@ -29,6 +36,7 @@ Here is the linked queue class declaration.
    :links: AV/List/lqueueCON.css
    :scripts: AV/List/llist.js AV/List/lqueueIntroCON.js
    :output: show    
+   :keyword: Linked Queues
    
 |
 
@@ -37,9 +45,11 @@ Here is the linked queue class declaration.
    :links: AV/List/lqueueCON.css
    :scripts: AV/List/llist.js AV/List/lqueueEnqueueCON.js
    :output: show   
+   :keyword: Linked Queues
    
 .. avembed:: Exercises/List/LqueueEnqueuePRO.html ka
    :long_name: Linked Queue Enqueue Exercise
+   :keyword: Linked Queues
 
 
 Linked Dequeue
@@ -50,9 +60,11 @@ Linked Dequeue
    :links: AV/List/lqueueCON.css
    :scripts: AV/List/llist.js AV/List/lqueueDequeueCON.js
    :output: show 
+   :keyword: Linked Queues
    
 .. avembed:: Exercises/List/LqueueDequeuePRO.html ka
    :long_name: Linked Queue Dequeue Exercise
+   :keyword: Linked Queues
 
 
 Comparison of Array-Based and Linked Queues
@@ -71,3 +83,4 @@ Stack and Queue Summary Questions
 
 .. avembed:: Exercises/List/StackQSumm.html ka
    :long_name: Stack/Queue Summary Exercise
+   :keyword: Stacks; Queues

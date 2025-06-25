@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Bounds Review
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
-   :topic:
+   :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Upper Bound; Lower Bound
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a brief review of upper and lower bounds analysis appropriate for a senior-level algorithms course.
+
 
 Bounds Review
 =============
@@ -16,10 +23,12 @@ Bounds Review
 -------------
 
 We define the :term:`upper bound <problem upper bound>` for a problem
+(in some situation: worst, average, or best case)
 to be the upper bound of the best algorithm we know for that
-problem, and the
+problem (in that situation!), and the
 :term:`lower bound <problem lower bound>` to be the tightest lower
-bound that we can prove over all algorithms for that problem.
+bound that we can prove over all algorithms for that problem
+(in that situation!).
 While we usually can recognize the upper bound for a given algorithm,
 finding the tightest lower bound for all possible algorithms is often
 difficult, especially if that lower bound is more than the
@@ -42,18 +51,20 @@ However, this approach does not help us when we cannot find a suitable
 "similar problem".
 One thing that we will focus on is discovering and proving lower bounds
 from first principles.
-Our most  significant example of a lower bounds argument so far is the
+Our most  significant example of a lower bounds argument that you have
+probably ever seen is the
 :ref:`sorting lower bound proof <sorting lower bound> <SortingLowerBound>`,
 which shows that the problem of sorting has a lower bound of
-:math:`O(n \log n)` in the :term:`worst case`.
+:math:`\Omega(n \log n)` in the :term:`worst case`.
 
-The lower bound for the problem is the tightest (highest) lower bound
-that we can prove **for all possible algorithms** that solve the
-problem. [#]_
+The lower bound for the problem refers to the amount of work that any
+algorithm **must** do.
+It is the tightest (highest) lower bound that we can prove
+**for all possible algorithms** that solve the problem.
 This can be a difficult bar, given that we cannot possibly know all
 algorithms for any problem, because there are theoretically an
 infinite number.
-However, we can often recognize a simple lower bound based on the
+However, we can often start with a simple lower bound based on the
 amount of input that must be examined.
 For example, we can argue that the lower bound for any algorithm to
 find the maximum-valued element in an unsorted list must be
@@ -68,7 +79,10 @@ we know that we indeed have a "good" algorithm for solving the
 problem.
 It is possible that someone can develop an implementation that is a
 "little" faster than an existing one, by a constant factor.
-But we know that its not possible to develop one that is
+For example, depending on exactly how the algorithm is written there
+might be one more or less comparison made.
+But because the upper bound of the algorithm meets the lower bound of
+the problem, we know that its not possible to develop an algorithm that is
 asymptotically better.
 
 We must be careful about how we interpret this last statement,
@@ -93,18 +107,19 @@ For example, there are a number of ways to think about the input to
 the problem of finding the maximum value in an array of :math:`n`
 records.
 We could consider an array of :math:`n` arbitrary values,
-in which there are an infinite number of inputs of size :math:`n`.
+in which there are (theoretically) an infinite number of inputs of
+size :math:`n`.
 It might be hard for us to understand the analysis of some problem if
 we cannot even enumerate all of the possible inputs.
 So we might prefer a simpler model that we believe will not change the
 underlying behavor.
 For example, we could assume that the input is some permutation of the
 values from 1 to :math:`n`.
-While we probably do not want to restrict our find algorithm to such
-input, if all we care about for analysis purposes is the position of
-the biggest value within the array, then a permutation of the values
-from 1 to :math:`n` might make it easier for us to think through all
-of the possibilities.
+While we probably do not want to restrict our maximum finding
+algorithm to such input, if all we care about for analysis purposes is
+the position of the biggest value within the array, then a permutation
+of the values from 1 to :math:`n` might make it easier for us to think
+through all of the possibilities.
 
 Another complicating factor that might or might not arise is that
 different inputs of a given size might have different costs.
@@ -122,7 +137,8 @@ inputs.
 To make things even worse, the cost to solve the problem for a
 given input depends on the algorithm that we use!
 For example, which input of size :math:`n` is the worst is different
-for the algorithm that moves sequentially through the array from the
+for the algorithm to find the position of the record with value :math:`X`
+that moves sequentially through the array from the 
 start to the end, as opposed to the algorithm that moves sequentially
 through the array from the end to the start.
 
@@ -143,7 +159,8 @@ We will use the following notation at varous times this semester.
 of size :math:`n`.
 :math:`I` is an input in :math:`I_n`.
 :math:`f_\mathcal{A}` is a function that expresses the resource cost
-of algorithm :math:`\mathcal{A}`.
+of algorithm :math:`\mathcal{A}`, with :math:`f_\mathcal{A}(I)` being
+the cost using this algorithm for input :math:`I`.
 Using this notation, we can define the worst and best case costs as:
 
 .. math::
@@ -154,7 +171,7 @@ Using this notation, we can define the worst and best case costs as:
    \mbox{best cost}(\mathcal{A}) = \min_{I \in I_n}
    f_{\mathcal{A}}(I).
 
-This point that we are considering all of the inputs of size :math:`n`
+The fact that we are considering all of the inputs of size :math:`n`
 is crucial.
 In other words, we don't pick the :math:`n` for which the best
 (or worst) case occurs.
@@ -165,6 +182,7 @@ So it would be wrong to say something like
    :links: AV/SeniorAlgAnal/SimpleCostsCON.css
    :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
    :output: show
+   :keyword: Algorithm Analysis; Upper and Lower Bounds
 
 If we want the :term:`average-case cost <average case>`,
 it is even more complicated.
@@ -279,11 +297,3 @@ frequencies are for each of these synthetic input groups.
 Perhaps it is reasonable to say that each position in the array has
 equal probability of holding the first occurrance of :math:`X`.
 Or perhaps it is not.
-
-.. [#] Throughout this discussion, it should be
-       understood that any mention of bounds must specify what class
-       of inputs are being considered.
-       Do we mean the bound for the worst case input?
-       The average cost over all inputs?
-       Regardless of which class of inputs we
-       consider, all of the issues raised apply equally.

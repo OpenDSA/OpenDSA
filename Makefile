@@ -1,82 +1,55 @@
 SHELL := /bin/bash
-RM = rm --recursive --force
-CONFIG_SCRIPT = tools/configure.py
-.DEFAULT_GOAL := alllint
-JS_LINT = eslint --no-color
-CSS_LINT = csslint --quiet --ignore=ids,adjoining-classes
-# CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
-JSON_LINT = jsonlint --quiet
-PYTHON_LINT = pyLint --disable=C --reports=y
-# Can be overridden by env varis, such as ODSA_ENV='PROD' or PYTHON="python3.8"
+RM = rm -rf
+.DEFAULT_GOAL := help
 ODSA_ENV ?= DEV
-PYTHON ?= python
-VENVDIR = .pyVenv
-ACTIVATE = source $(VENVDIR)/bin/activate 
-VENV_PYTHON = $(VENVDIR)/bin/python
-PYTHON_FLAGS = -bb 
-# PYTHON_FLAGS += -Werror 
+# ^ Default env variable, is overridden if already defined, such as ODSA_ENV='PROD'
+PYTHON = python3
+# ^ Python used for building books:  (can add options like -bb, -u, -Werror ...)
+CONFIG_SCRIPT = tools/configure.py
+CONFIG_SCRIPT_OPTS = --no-lms
+# ^ Starting script for building books.  See --help for option descriptions
+PYTHON_LINT = pylint --disable=C --reports=y
+JS_LINT = yarn eslint --no-color
+CSS_LINT = yarn csslint --quiet --ignore=ids,adjoining-classes
+# CSSOLDLINTFLAGS = --quiet --errors=empty-rules,import,errors --warnings=duplicate-background-images,compatible-vendor-prefixes,display-property-grouping,fallback-colors,duplicate-properties,shorthand,gradients,font-sizes,floats,overqualified-elements,import,regex-selectors,rules-count,unqualified-attributes,vendor-prefix,zero-units
+JSON_LINT = yarn jsonlint --quiet
 
-
-# Changes for installs on native Windows:
-ifeq ($(OS),Windows_NT) 
-	SHELL = bash.exe
-	ACTIVATE = . $(VENVDIR)/Scripts/activate
-	VENV_PYTHON = $(VENVDIR)/Scripts/python
-endif
-
-JS_MINIFY = uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' -- 
-CSS_MINIFY = cleancss
+JS_MINIFY = yarn uglifyjs --comments '/^!|@preserve|@license|@cc_on/i' --
+CSS_MINIFY = yarn cleancss
 ifeq ($(strip $(ODSA_ENV)),DEV)
 	# fake-minify for easier debugging in DEV setups...
-	JS_MINIFY = cat 
+	JS_MINIFY = cat
 	CSS_MINIFY = cat
 endif
 
+.PHONY: help clean min webserver
 
-# For the python virtual environment:
-.PHONY: venv clean-venv pyVenvCheck 
-pyVenvCheck: venv
-	$(PYTHON) tools/pyVenvCheck.py
-venv: $(VENVDIR)/.pipMarker
-$(VENVDIR)/.pipMarker: $(VENVDIR)/.venvMarker requirements.txt
-	$(ACTIVATE) && pip install --requirement requirements.txt
-	touch $@
-$(VENVDIR)/.venvMarker: 
-	@echo "Using env variable: PYTHON=$(PYTHON)"
-	@echo -n 'Making new $(VENVDIR) using: ' && $(PYTHON) --version
-	$(PYTHON) -m venv $(VENVDIR)
-	$(ACTIVATE) && python -m pip install --upgrade setuptools pip
-	touch $@
-clean-venv:
-	- $(RM) $(VENVDIR)
-	@ echo "Note: Use 'deactivate' if $(VENVDIR) is still activated"
+help: ## This help dialog
+	@echo '   Welcome to the OpenDSA help-via-Makefile'
+	@echo '   To start the OpenDSA container and webserver: docker-compose up'
+	@echo '   To jump into the container: docker-compose exec opendsa bash'
+	@echo '   Within the container, you can run these make commands:'
+	@awk 'BEGIN {FS = ":.*##"; printf "Usage:  make \033[36m<target>\033[0m\nTargets:\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
+	@echo
+	@echo Comprehensive list of books:   $(ALL_BOOKS)
+	@echo
 
-.PHONY: clean min pull Webserver 
-
-Webserver:
-	@-echo -n "System is: " & uname -s
-	@echo "Using env variable: PYTHON=$(PYTHON)"
-	exec $(PYTHON) server.py
-
-pull:
-	git pull
-	git submodule init
-	git submodule update
-	make --silent min
-
-clean:
+clean: ## Deletes all Books (!!!) and minified JS and CSS files
 	- $(RM) *~
 	- $(RM) Books
-	@# Remove minified JS and CSS files
 	- $(RM) lib/*-min.*
 	- $(RM) Doc/*~
 	- $(RM) Scripts/*~
 	- $(RM) config/*~
 
-.PHONY: alllint jsonlint lint lintExe csslint pylint
-alllint: lint csslint jsonlint pyLint
+webserver: ## Starts the Flask server
+	@echo If using the proxy, OpenDSA URL will be: https://opendsa.localhost.devcom.vt.edu
+	gunicorn -w 4 -b 0.0.0.0:8080 -t 180 app:app
 
-csslint:
+.PHONY: alllint jsonlint lint lintExe csslint pylint
+alllint: lint csslint jsonlint pyLint ## Combines several other linting targets
+
+csslint: ## Runs CSS linter on files within AV/
 	@echo 'running csslint'
 	@$(CSS_LINT) AV/Background/*.css
 	@$(CSS_LINT) AV/Design/*.css
@@ -90,7 +63,7 @@ TODOcsslint:
 	@$(CSS_LINT) Doc/*.css
 	@$(CSS_LINT) lib/*.css
 
-lint: lintExe
+lint: lintExe ## Runs JS linter on files in AV/ and Exercises/
 	@echo 'running eslint'
 	-@$(JS_LINT) AV/Background/*.js
 	-@$(JS_LINT) AV/Design/*.js
@@ -105,7 +78,7 @@ TODOlintAV:
 	-@$(JS_LINT) AV/Searching/*.js
 	-@$(JS_LINT) AV/Sorting/*.js
 
-lintExe:
+lintExe: ## Runs JS linter on files in Exercises/
 	@echo 'linting KA Exercises'
 	-@$(JS_LINT) Exercises/AlgAnal/*.js
 	-@$(JS_LINT) Exercises/Background/*.js
@@ -129,29 +102,29 @@ TODOlintlib:
 	-@$(JS_LINT) lib/registerbook.js
 	-@$(JS_LINT) lib/conceptMap.js
 
-jsonlint:
+jsonlint: ## Runs JSON linter on files in config/ and AV/
 	@$(JSON_LINT) AV/Background/*.json
 	@$(JSON_LINT) AV/Design/*.json
 	@$(JSON_LINT) config/*.json
 	@$(JSON_LINT) config/Old/*.json
 
 
-pyLint:
-	$(PYTHON_LINT) server.py tools/*.py RST/ODSAextensions/**/*.py 
+pyLint: ## Runs python linter on files in tools/ and ODSAextensions/
+	$(PYTHON_LINT) tools/*.py RST/ODSAextensions/**/*.py
 	# $(PYTHON_LINT) SourceCode/Python/**/*.py # These are python 2!!!
 
-rst2json: pyVenvCheck
-	python tools/rst2json.py
+rst2json: ## Runs the rst2json.py utility
+	$(PYTHON) tools/rst2json.py
 
-JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV
+JS_FNAMES = odsaUtils odsaAV odsaKA odsaMOD gradebook registerbook JSAV timeme
 JS_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname).js)
 JS_MIN_FILES = $(foreach fname, $(JS_FNAMES), lib/$(fname)-min.js)
 
-CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook  
+CSS_FNAMES = site odsaMOD odsaStyle odsaAV odsaKA gradebook
 CSS_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname).css)
 CSS_MIN_FILES = $(foreach fname, $(CSS_FNAMES), lib/$(fname)-min.css)
 
-min: $(JS_MIN_FILES) $(CSS_MIN_FILES) 
+min: $(JS_MIN_FILES) $(CSS_MIN_FILES)
 ifeq ($(strip $(ODSA_ENV)),DEV)
 	@echo 'Completed: FAKE-Minify of many .js and .css files (just copied)'
 else
@@ -178,30 +151,31 @@ BOOKS = $(filter-out $(SLIDE_BOOKS),$(ALL_BOOKS))
 
 allbooks: Everything CS2 CS3 PL CS3slides CS3notes CS4104 VisFormalLang
 
+BOOK_NAME: ## creates a book based off of config/BOOK_NAME.json
+	@echo This is just a fake book name, go try a real one
+
 # A Static-Pattern Rule for making Books
-# TODO: can remove -bb option once all py3 str encoding in odsa is debugged 
-$(BOOKS): % : config/%.json min pyVenvCheck
-	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) $< --no-lms
+$(BOOKS): % : config/%.json min
+	$(PYTHON) $(CONFIG_SCRIPT) $< $(CONFIG_SCRIPT_OPTS)
 	@echo "Created an eBook in Books/: $@"
 
-$(SLIDE_BOOKS) : % : config/%.json min pyVenvCheck
-	python $(PYTHON_FLAGS) $(CONFIG_SCRIPT) --slides $< --no-lms
+$(SLIDE_BOOKS) : % : config/%.json min
+	$(PYTHON) $(CONFIG_SCRIPT) --slides $< $(CONFIG_SCRIPT_OPTS)
 	@echo "Created an Slide-eBook in Books/: $@"
 
 
-# Target eBooks with unique recipies below:::
-CS3notes: min pyVenvCheck
-	python $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes --no-lms
+# Target eBooks with unique recipes below:::
+CS3notes: min
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3slides.json -b CS3notes $(CONFIG_SCRIPT_OPTS)
 
-CS3F18notes: min pyVenvCheck
-	python $(CONFIG_SCRIPT) config/CS3F18slides.json --no-lms -b CS3F18notes --no-lms
+CS3F18notes: min
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3F18slides.json -b CS3F18notes $(CONFIG_SCRIPT_OPTS)
 
-CS5040notes: min pyVenvCheck
-	python $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes --no-lms
+CS5040notes: min
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040slides.json -b CS5040notes $(CONFIG_SCRIPT_OPTS)
 
-CS5040MasterN: min pyVenvCheck
-	python $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN --no-lms
+CS5040MasterN: min
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS5040Master.json -b CS5040MasterN $(CONFIG_SCRIPT_OPTS)
 
-CS3SS18notes: min pyVenvCheck
-	python $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes --no-lms
-
+CS3SS18notes: min
+	$(PYTHON) $(CONFIG_SCRIPT) config/CS3SS18slides.json -b CS3SS18notes $(CONFIG_SCRIPT_OPTS)

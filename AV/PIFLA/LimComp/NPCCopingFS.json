@@ -1,0 +1,57 @@
+{
+  "translations": {
+    "en": {
+      "pseudo": {
+        "type": "multiple",
+        "description": "This dynamic programming algorithm is tractable if the numbers are <q>reasonable</q>. That is, we can successfully find solutions to the problem when <b>nK</b> is in the thousands.<br/><br/>Such an algorithm is called a pseudo-polynomial time algorithm. This is different from TRAVELING SALESMAN which cannot possibly be solved when $n = 100$ given current algorithms.",
+      "question":"A pseudo-polynomial time algorithm is one that is technically exponential, but it can still successfully find a solution to problems of <q>reasonable</q> size quickly enough.",
+        "answer":  "True",
+        "choices": ["True", "False"]
+      },
+      "cope": {
+        "type": "select",
+        "description": "A second approach to handling NP-complete problems is to solve a special instance of the problem that is not so hard. For example, many problems on graphs are NP-complete, but the same problem on certain restricted types of graphs is not as difficult.",
+        "question":"Which of the following are reasonable approaches to try as ways to cope with NP-complete problems?",
+        "answer":  ["Run only small instances of the problem", "Solve a special instance of the problem that is not so hard"],
+        "choices": ["Run only small instances of the problem", "Solve a special instance of the problem that is not so hard", "Wait for others to prove $P=NP$"]
+      },
+      "guarantee": {
+        "type": "multiple",
+        "description": "In general, if we want to <b>guarantee</b> that we get the correct answer for an NP-complete problem, we potentially need to examine all of the (exponential number of) possible solutions.<br/><br/>However, with some organization, we might be able to either examine them quickly, or we might be able to quickly rule out a great many of the possible answers in some cases.<br/><br/>For example, <b>dynamic programming</b> attempts to organize the processing of all the subproblems to a problem so the sub-problems are never solved more than once.",
+      "question":"For some NP-complete problems, we can always avoid looking at some of the solutions.",
+      "answer": "False",
+      "choices": ["True", "False"],
+      "correctFeedback": ["If we can always avoid looking at some of the solutions, then it is probably not NP-complete."]
+      },
+      "backtrack": {
+        "type": "multiple",
+        "description": "If we need to do a brute-force search of the entire <i>solution space</i>, we can use <b>backtracking</b> to visit all of the possible solutions organized in a <b>solution tree</b>.<br/><br/>For example, SATISFIABILITY has $2^n$ possible ways to assign truth values to the $n$ variables contained in the Boolean expression being satisfied.",
+        "question": "Backtracking can be used to optimize a brute-force search of the entire solution space since it can visit all of the possible solutions organized in a solution tree.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "branch": {
+        "type": "multiple",
+        "description": "<b>Banch-and-Bounds</b> is an extension of backtracking that applies to <b>optimization problems</b> such as TRAVELING SALESMAN where we are trying to find the shortest tour through the cities. We traverse the solution tree as with backtracking.",
+        "question": "Banch-and-Bounds is a way to organize the backtracking process.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "approx": {
+        "type": "select",
+        "description": "Some approximation algorithms have guaranteed performance, such that the answer will be within a certain percentage of the best possible answer.",
+        "question": "Which of the following is correct about approximation algorithms",
+        "answer": ["Some approximation algorithms have guaranteed performance", "An approximation algorithm is a coping strategy that finds an approximate solution to the problem", "A heuristic is an approximation algorithm"],
+        "choices": ["Some approximation algorithms have guaranteed performance", "An approximation algorithm is a coping strategy that finds an approximate solution to the problem", "A heuristic is an approximation algorithm", "An approximation algorithm is a coping strategy that finds a guaranteed correct solution to the problem"]
+      },
+      "heuristic": {
+        "type": "select",
+        "description": "This is similar to the <b>best fit</b> heuristic for <b>memory management</b>. The significant thing about this heuristic is not just that it tends to give better performance than simple first fit.<br/><br/>This decreasing first fit heuristic can be proven to require no more than 11/9 the optimal number of bins. Thus, we have a guarantee on how much inefficiency can result when using the heuristic.",
+        "question":"Which of the following is correct about heuristics and bin packing?",
+        "answer": ["A heuristic does not always give the best answer", "The decreasing first fit heuristic tends to give better performance than simple first fit", "First fit is a heuristic approach"],
+        "choices": ["A heuristic does not always give the best answer", "The decreasing first fit heuristic tends to give better performance than simple first fit", "First fit is a heuristic approach"]
+      }
+    }
+  }
+}
+

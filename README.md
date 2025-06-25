@@ -7,35 +7,35 @@ Data Structures and Algorithms courses, that deeply integrates textbook-quality
 content with algorithm visualizations and interactive, automatically assessed
 exercises.
 
-## Documentation
-
 System documentation can be found at http://opendsa.readthedocs.io/.
-
 
 ## Setup
 
-To check out a read-only copy of this repository:
+1. Install [Docker](https://docs.docker.com/get-docker/). 
+2. Install [Git](https://git-scm.com/book/en/v2/fGetting-Started-Installing-Git)
+3. Clone this repository
+    - For reading only: `git clone git://github.com/OpenDSA/OpenDSA.git`
+    - For read/write: `git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git`
+4. Start the service: `docker compose up` (and leave this running)
+    - The first build of images takes under 5 minutes.  Running them later takes under 10 seconds.
+    - The service is ready when you see `opendsa_1 | * Serving Flask app "app.py"`
+    - This terminal will not be usable at this point since it is a console for the web server.
+    - You can stop the containers by sending an interrupt signal (Press CTRL + C) or using the `docker compose down` command.
+5. Build any books from within the container:
+    - In order to interact with OpenDSA, you must access a shell in the running container with `docker compose exec opendsa bash` in another console in the root of the OpenDSA directory.
+        - Note: If you are on Windows using the MINGW64 shell, you might need to use the command: `winpty docker compose exec opendsa bash`
+    - To make the book defined in `config/Test.json`, now use the command `make Test`
+6. See your created book at: https://opendsa.localhost.devcom.vt.edu/Books/
+7. In order to stop the container, you can use the CTRL + C (sending an interrupt signal).
 
-    git clone git://github.com/OpenDSA/OpenDSA.git OpenDSA
+### Toolchain Installation
 
-To check out a read-write copy of this repository (requires permission to commit
-to the repo):
-
-    git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git OpenDSA
-
-Once you have cloned this repository, you will need to install the OpenDSA stack using Docker.
-Do the following:
-
-    docker-compose up
-
-[Note that this won't work unless you have the proper tools
-installed.
-See: http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment
+For more information on OpenDSA's toolchain: [See our documentation here](http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment)
 
 OpenDSA makes use of the JSAV data structures visualization
 library. Nearly all developers and users can make do with the version
 of JSAV distributed with OpenDSA. If you really need the most
-up-to-date version of JSAV, you can find it at 
+up-to-date version of JSAV, you can find it at
 https://github.com/vkaravir/JSAV
 
 The source files for the OpenDSA documentation can be found in the
@@ -46,6 +46,22 @@ readthedocs.io.
 You can also re-compile the documentation by going to the "Doc"
 directory and typing "make".
 The result will then be in "Doc/manual".
+
+
+## Common Errors
+
+The Docker containers used by OpenDSA may have a different set of command-line tools than your host operating system. Ensure that you run the commands in the correct environment.  For example, the `make` commands are only meant to be run within a running container.
+
+If you are on Windows, you may run into issues with line endings.  If you do, simply open Git Bash and run `$ dos2unix filename` to fix them.  This will most likely happen on a script file.
+
+If you are on Windows, you may run into issues with any `docker exec` commands (such as `make ssh`).  To solve them, you may have to start any such command with `winpty`.
+
+If any of the python packages (or any of the ruby gems) have been upgraded since the last time the container has been run, you will need to run `docker compose build` before you `docker compose up`.
+
+If you are using the provided Docker containers and they are out of date:
+1. Remove the currently running containers and images with `docker compose down`
+2. Pull the updated version of the images with `docker compose pull`
+3. Start up the server as you normally do with `docker compose up`
 
 
 ## Directory Structure
@@ -69,12 +85,8 @@ directives that we have created.
 Exercises: Our Khan Academy Infrastructure-based exercises. Subdirectories
 divide the content by topic.
 
-JSAV: The JavaScript Algorithm Visualization library (JSAV). This is a submodule
-for the OpenDSA repository, linked to: https://github.com/vkaravir/JSAV. Thus,
-when you check out OpenDSA, you must get the JSAV submodule by either running
-the command "make pull" or by doing the following:
-  git submodule init
-  git submodule update
+JSAV: The JavaScript Algorithm Visualization library. JSAV is sourced
+from https://github.com/vkaravir/JSAV and is updated occasionally.
 More information about JSAV can be found here:
 http://jsav.io/
 
@@ -104,7 +116,7 @@ Python, and JavaScript. In this way, instructors would be able to generate
 versions of tutorials that support any or all of these three languages.
 
 **Storyboard: Materials related to "storyboarding" designs for tutorials. This
-concept never gained much traction, and this might be removed at some point.
+concept never gained much traction, and this might be removed at some point.**
 
 WebServer: A command for invoking a simple python-based web server that will
 enable you to run the Khan Academy exercises if your machine is not running a

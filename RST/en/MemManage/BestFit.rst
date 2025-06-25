@@ -4,11 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Best Fit Memory Manager
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
+   :keyword: Sequential Fit Memory Manager
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the best fit sequential memory management scheme.
 
-Best Fit
-========
+Best Fit Memory Manager
+=======================
 
 Best Fit
 --------
@@ -34,3 +40,4 @@ service an occasional large request.
 .. avembed:: AV/MemManage/firstFitAV.html ss
    :long_name: Best Fit Visualization
    :url_params: fitAlgorithm=3
+   :keyword: Memory Management; Sequential Fit Memory Allocation

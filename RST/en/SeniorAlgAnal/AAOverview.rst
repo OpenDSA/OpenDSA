@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Algorithms Course Semester Overview
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Introduction
+   :keyword: Algorithm Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Semester overview for a senior-level course on algorithm and data analysis.
+
 
 Semester Overview
 =================
@@ -48,7 +55,7 @@ Review any of this material as necessary before continuing.
 Our problems must be well-defined enough to be solved on computers.
 (Actually, to solve a problem we need more than just a clear
 definition. By the end of the semester, we will discuss problems that
-are not computable (i.e., cannot be solved) even though their
+are not computable---that is, cannot be solved---even though their
 definition is clear.)
 
 A :term:`problem` is a :term:`function`
@@ -68,12 +75,12 @@ Approximation and Probabilistic algorithms.)
 Our goal is to solve problems with as little computational effort per
 instance as possible.
 We are most often interested in solutions to "large" instances
-of the problem (asymptotic Analysis).
+of the problem (:term:`asymptotic analysis`).
 Occasionally we are concerned with small instances.
 Then, constants matter.
 
 Ultimately, we want to solve a :term:`problem` by using an efficient
-:term:`programs <program>`.
+:term:`program`.
 But it is not a good idea to start by writing programs and then
 comparing them.
 We don't want to spend a lot of time writing worthless programs.
@@ -115,7 +122,7 @@ Qualities for this yardstick are:
 
 The fundamental driver for algorithm analysis is the behavior (growth
 rate) of a the algorithm as the problem size grows.
-Just to complicate things: Algorithms can behave very different on
+Just to complicate things: Algorithms can behave differently on
 different inputs of a given size.
 The concepts of best, average, and worst cases come in here.
 To have a meaningful discussion about the behavior of an algorithm, we
@@ -125,31 +132,20 @@ grows.
 
 To model the growth rate of an algorithm, we need:
 
-   * A measure for problem size.
+   * A measure for problem input size.
    * A measure for solution effort.
       * We use a count of the :term:`basic operations <basic operation>`
         as a measure of solution effort.
 
-To get a measurement, either for the problem size or the solution
+To get a measurement, either for the problem input size or the solution
 effort, we have to have a :term:`cost model`.
+Like any model, it might or might not be a **good** model.
 Here is a simple example.
 Assume that our problem is how to square a value.
 We will accept as our input size the value that we want to square.
-(Later on, we will actually come to realize that this is actually a
+(Later on, we will come to realize that this is actually a
 lousy way to model input size for a numeric problem, but it will do
 for now.)
-
-Here is an example of a model for a cost measure.
-Like any model, it might or might not be a **good** model.
-Look back at the list of qualities for a good model, and think about
-whether this example has those qualities or not as you read through
-it.
-
-Our problem is to calculate the square of a number.
-
-We will model the input size as simply the value of the number.
-(Later we will come to realize that this is a lousy model for the
-input size of a numeric problem. But its good enough for now.)
 
 To model the cost of the solution, we will assume that
 asigning to a variable takes fixed time.
@@ -186,13 +182,16 @@ you might want to say that the number of assignments is
 This makes a difference of :math:`n+1` vs :math:`2n+1`.
 Does it matter?
 Not so much.
-We didn't know the exact amount of time for an operation
-to begin with, so the factor of 2 doesn't seem to mean much.
-What is important is that the growth rates of these two are the same.
+We didn’t know the exact amount of time for an operation to begin
+with, so the factor of 2 doesn’t seem to mean much.
+What is important is that the growth rates of these two are the same,
+regardless of the relative cost of addition and assignment.
 In fact, this is the key consideration.
 Perhaps we are concerned about whether an assignment is the same in
 real runtime cost as a multiplication, which might be different from
 an addition.
+(Multiplication having a different cost from addition is actually a
+reasonable assumption in some circumstances.)
 Maybe incrementing a loop variable costs something different from
 doing an ordinary assignment.
 But really none of this matters when compared against the fundamental
@@ -288,3 +287,9 @@ options:
    * Tighten the bounds (if they were not already tight).
    * Change the model.
    * Change the problem.
+
+Acknowledgement
+---------------
+
+This page is heavily influenced by the presentation in the introdction
+to Chapter 1 in *Compared to What?* by Gregory J.E. Rawlins.

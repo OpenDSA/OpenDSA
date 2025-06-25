@@ -1,0 +1,52 @@
+{
+  "translations": {
+    "en": {
+      "schema": {
+        "type": "multiple",
+        "description": "Lets suppose that we have a reqular expression $r^*$",
+        "question":"How many NFA schemas do we need?",
+        "answer": "Only one",
+        "choices": ["Only one", "We need 2 NFAs", " Zero or more NFAs"]
+      },
+      "start": {
+        "type": "multiple",
+        "description": "Suppose that this NFA accepts $r$.",
+        "question":"What should we do first?",
+        "answer": "Create a new start state",
+        "choices": ["Create a new start state",
+                    "Create a new final state",
+                    "Connect the new start state with old start state(s)",
+                    "Connect the new final state with old final state(s)"]
+      },
+      "connectstart": {
+        "type": "multiple",
+        "description": "First we need to create a new start state",
+        "question": "Which state should we connect the new start state with?",
+        "answer": "The start state for $r$",
+        "choices": ["The start state for $r$",
+                    "The final state for $r$"]
+      },
+      "final": {
+        "type": "multiple",
+        "description": "Then create a new final state.",
+        "question":"Which state should be connected to the new final state?",
+        "answer": "The final state for NFA $r$",
+        "choices": ["The final state for NFA $r$", "The start state for NFA $r$"]
+      },
+      "zero": {
+        "type": "multiple",
+        "description": "$r^*$ means that you can repeat the same regular expression zero or more times.",
+        "question":"What should we do to deal with the zero case?",
+        "answer": "Connect the new start state to the new final state",
+        "choices": ["Connect the new start state to the new final state", "Connect the new final state to the new start state"]
+      },
+      "more": {
+        "type": "multiple",
+        "description": "Repeating $r$ zero times means that you can go from the start state to the final state using a $\\lambda$ transition.",
+        "question":"What should we do next to handle the 'one or more' part?",
+        "answer": "Connect the new final state to the new start state",
+        "choices": ["Connect the new start state to the new final state", "Connect the new final state to the new start state"]
+      }
+    }
+  }
+}

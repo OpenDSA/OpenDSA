@@ -4,8 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Sequential-Fit Methods
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
+   :keyword: Sequential Fit Memory Manager
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of sequential fit methods for memory managers, where memory is an alternating series of allocated and unallocated blocks.
 
 Sequential-Fit Methods
 ======================
@@ -25,6 +31,7 @@ this figure.
    :links: AV/MemManage/seqFitCON.css
    :scripts: AV/MemManage/seqFitCON.js
    :align: justify
+   :keyword: Memory Management; Sequential Fit Memory Allocation
 
    A doubly linked list of free blocks as seen by the memory manager.
    Shaded areas represent allocated memory.

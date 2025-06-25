@@ -13,6 +13,11 @@ How to Use this System
 **Welcome to OpenDSA!**
 OpenDSA is an open source project whose goal is to provide online
 course materials for a wide range of Computer Science courses.
+The project includes both infrastructure and content for producing
+customizeable eTextbooks.
+OpenDSA's strengths are support for creating visualizations and
+interactive exercises, along with LTI support for integrating 3rd
+party content.
 
 **Learning Management Systems and OpenDSA Book Instances**
 OpenDSA materials are most often presented in the form of a
@@ -21,12 +26,10 @@ OpenDSA materials are most often presented in the form of a
 Your OpenDSA "textbook" is made up of a series of modules.
 Each module corresponds to roughly one section in a regular textbook,
 or what might get presented in part of a one-hour lecture.
-Your LMS might further break modules into smaller sections, one on
-each page.
-OpenDSA content combines text and images with algorithm visualizations
-for all of the algorithms, along with lots of interactive assessment
-exercises.
-The goal of the exercisees is to let you know if you really understand
+OpenDSA content typically combines text and images with algorithm
+visualizations for many algorithms, along with lots of interactive
+assessment exercises.
+The goal of the exercises is to let you know if you really understand
 what you have been reading.
 
 **Registration and Accounts:**
@@ -43,8 +46,8 @@ An OpenDSA module contains a number of interactive components
 intended to help you learn the material, in addition to regular text
 and graphics.
 Most modules include short slideshows that help explain steps of an
-algorithm.
-OpenDSA also includes full Algorithm Visualizations that go through a
+algorithm or other content presented in slideshow form.
+OpenDSA also includes full algorithm visualizations that go through a
 complete example of the algorithm (these will usually let you set the
 input data if you like).
 There are many "proficiency exercises" where you show the steps 
@@ -59,8 +62,9 @@ and other interactive exercises.
 You can get "completion" for doing the various activities.
 When any of the following activities are completed, the interface
 should give you some type of feedback such as showing a green
-checkmark or shading an associated line in the LMS gradebook:
-going through a slideshow, completing a proficiency exercise,
+checkmark or adding a score in the associated LMS gradebook:
+going through a slideshow, completing a PIFrameset,
+completing a proficiency exercise, completing a programming exercise,
 completing a question set, or fulfilling the requirements of a
 calculator or other exercise.
 Depending on how your book is configured, completing an activity might
@@ -72,7 +76,7 @@ Usually an exercise or slideshow will give you visual confirmation
 when you have completed it.
 Your LMS might indicate complete modules in its "table of contents"
 listing of modules.
-More likely, the LMS gradebook will indicate which exercises have been
+The LMS gradebook should indicate which exercises have been
 completed.
 
 **Slideshows:**
@@ -85,11 +89,20 @@ A green checkmark should show up on the right when you complete it.
 Depending on how your book instance is configured, completing a
 slideshow might give you points or it might not.
 
+**Programmed Instruction Framesets:**
+One form of slideshow used in certain OpenDSA textbooks are the
+Programmed Instruction framesets (PIFrames).
+PIFrames include many small, generally simple questions scattered
+throughout the slideset, that you are required to answer before you
+can continue to the next slide.
+On slides with a question, the forward ">" button will be greyed out
+until you successfully answer the question.
+
 **Algorithm Visualizations:**
-Slideshows demonstrate a part of an algorithm on a fixed input.
-The Algorithm Visualizations let you run the whole algorithm,
+Slideshows often demonstrate a part of an algorithm on a fixed input.
+Algorithm Visualizations let you run the whole algorithm,
 typically on input that you can choose.
-The Algorithm visualizations will have some parameters that you can
+The algorithm visualizations will have some parameters that you can
 set (such as number of elements in an input array,
 and the values of the array elements).
 The "Run" button will start (or restart) the Algorithm Visualization.
@@ -101,14 +114,14 @@ Many visualizations have a "Help" button to give detailed information
 about that particular visualization.
 
 **Question Sets:**
-Most modules finish with a collection of multiple
+Many modules finish with a collection of multiple
 choice, True/False, or type-a-number questions.
 To get credit for a question set, you will have to
-answer some number of the questions correctly (the exact number
-required can be different for each question set).
+answer some number of the questions correctly
+(the exact number required can be different for each question set).
 Once you have credit, the interface should indicate this.
 You can still get more questions at that point if you would like more
-practice.
+practice, and you should not be penalized in any way for doing so.
 Above the question on the right-hand side is a counter to indicate
 your current number of questions correct out of the total number
 needed to complete the exercise.
@@ -127,7 +140,7 @@ again (or at least not with the same inputs).
 But if you answer it incorrectly (and then clear it with the correct
 answer), it might appear again.
 
-The questions will have "hints" that you can use to help you
+Many questions will have "hints" that you can use to help you
 figure out the answer.
 If you take a hint, you will not get credit for that question toward
 completing the exercise.
@@ -136,14 +149,14 @@ However, you will not lose a point on that question, either.
 **Interactive Questions:**
 Some of the question are interactive, in that that you will click on
 an array, tree node, or other visual element to answer the question.
-They work the same way as the multiple choice questions,
+They work the same way as the question sets,
 in that there is a required number that you must get right to complete
 the exercise successfully.
 
 **Proficiency Exercises:**
 Proficiency exercises are graded on a point system.
 Each (logical) step that you do correctly in the proficiency exercise
-gives you a point.
+gives you a point within the exercise.
 You need to get a set fraction of the total possible points to
 complete the exercise (typically 90% of the possible points).
 Generally, if you make a mistake on a proficiency exercise, it will
@@ -155,16 +168,18 @@ steps.
 Once you get completion credit for a proficiency exercise, the LMS
 interface should give some indication of this.
 
-Note that the "points" as counted by the proficiency exercise is
+Note that the "points" as counted by the proficiency exercise are
 different from the credit assigned by the LMS for completion of the
 exercise.
 For example, to complete the proficiency exercise for a particular
 sorting algorithm, you might need to complete 18 of 20 steps in the
-exercise correctly.
+exercise correctly (that is, 90% of the 20 exercise steps).
 Once you have done this, the LMS might award you (for example) 2
 points of completion credit.
-You can always practice an exercise as many times as you like, whether
-you already have completion credit or not.
+
+You can always practice an exercise as many times as you like,
+typically with randomized input each time,
+whether you already have completion credit or not.
 
 **Settings Button and Narration Support:**
 The visualizations, slideshows, and proficiency exercises usually have
@@ -174,7 +189,7 @@ The gear icon indicates the settings button, which will let you change
 some of the default settings,
 such as the animation speed (usually used for things like the swap
 steps in the sorting algorithm visualizations), or whether the arrays
-show values or height bars.
+show numeric values or height bars.
 The button with the speaker icon will let you control whether the
 slideshow captions will be narrated or not.
 
@@ -188,3 +203,4 @@ With that, you can set zoom to "hover" or "click".
 From then on, hovering or clicking (if you had selected one) on any
 equation will make it larger.
 This can really help with reading some of the equations.
+You can try it here: :math:`e=mc^2`.

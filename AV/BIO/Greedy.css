@@ -1,0 +1,21 @@
+#Greedy {
+    height: 700px;
+  }
+  
+  #Greedy .jsavline{
+    height: 30px;
+  }
+  
+  #Greedy .jsavedge.markpath {
+    stroke-width: 4;
+    stroke: #f61010;
+  }
+  
+  #Greedy .jsavverticalarray .jsavnode {
+    line-height: 45px !important;
+    min-width: 45px !important;
+    max-width: 45px !important;
+    min-height: 45px !important;
+    max-height: 45px !important;
+  }
+  

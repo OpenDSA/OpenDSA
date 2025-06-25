@@ -1,0 +1,40 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
+  "exerciseType": "TM",
+  "totalTestCases": 6,
+  "containLetters": ["a","b","c"],
+  "randomStringLength": [0, 15],
+  "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
+  "hardCodeCasesCounter": 6,
+  "description": "Write a turing machine that accepts the language:$L_1 = \\{w \\in \\{a, b, c\\}^* | n_a(w) > n_b(w), n_a(w) > n_c(w)\\}.$",
+  "testCases": [{
+      "aaaaaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "acacaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "bbaaba": false,
+      "ShowTestCase":true
+    },
+    {
+      "acacaaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "babaaba": true,
+      "ShowTestCase":true
+    },
+    {
+      "abcbaaa": true,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": ""
+}]

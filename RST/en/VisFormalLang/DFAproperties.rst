@@ -4,14 +4,29 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :title: Two Closure Properties for Regular Languages
+   :author: Susan Rodger; Cliff Shaffer
+   :institution: Duke University; Virginia Tech
    :requires: Deterministic Finite Automata
    :satisfies:
    :topic: Finite Automata
+   :keyword: Regular Language; Closure Properties
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents two unusual closure properties for Regular Languages: Replacing one a with b, and truncate preceeding b's.
 
 
 Properties
 ==========
+
+.. .. This is not ready for use in a course!
+
+Introduction
+------------
+
+Here are two more (slightly odd) properties that are closed for
+regular languages.
+
 
 Properties and Proving: Problem 1
 ---------------------------------

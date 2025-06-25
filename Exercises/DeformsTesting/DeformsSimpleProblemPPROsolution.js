@@ -19,7 +19,8 @@ const solution = {
         },
         solution : -33.25,
         unit: "MPa",
-    }
+    },
+    master_solution_path: "./Exercises/DeformsTesting/dsimple_a_c1.json"
 }
 // Find a way to specify sets of equations being solved at any stage,
 // and the values that are assigned to variables in them at that time.

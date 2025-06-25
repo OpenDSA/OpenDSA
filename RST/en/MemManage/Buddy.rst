@@ -4,11 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Buddy Method and Other Memory Allocation Methods
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
+   :keyword: Buddy Method Memory Manager
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the buddy method of memory allocation. Briefly discusses other approaches to memory management not previously discussed in the chapter.
 
-Other Memory Allocation Methods
-===============================
+Buddy Method and Other Memory Allocation Methods
+================================================
 
 Other Memory Allocation Methods
 -------------------------------
@@ -64,6 +70,7 @@ are placed on the appropriate freelists.
    :links: AV/MemManage/buddyCON.css
    :scripts: AV/MemManage/buddyCON.js
    :align: center
+   :keyword: Memory Management; Buddy Method Memory Allocation
 
 In the example above, we see the result of a series of insert and free
 operations on a memory pool of 256 units.
@@ -109,6 +116,7 @@ of the larger size be merged).
 
 .. avembed:: AV/MemManage/BuddyAV.html ss
    :long_name: Buddy Method Visualization
+   :keyword: Memory Management; Buddy Method Memory Allocation
 
 Other Methods
 ~~~~~~~~~~~~~

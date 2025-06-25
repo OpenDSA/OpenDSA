@@ -1,0 +1,15 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "These are the tables with <span style='color:red;'>works at</span> <span style='color:blue;'>one To many</span> relationship",
+      "sc2": "<span style='color:blue;'>E-id</span> the <span style='color:red;'>primary key(PK)</span> of table employee will be added to table project as a <span style='color:red;'>forigen key (FK)</span> to build the <span style='color:blue;'>works at </span> relationship",
+      "sc3": "<span style='color:red;'>Solution 1</span> Adding new record for each employee newly join a specific project",
+      "sc4": "Employee <span style='color:red;'>ahmed</span> with $E-id=$<span style='color:blue;'>$5$</span> works at project <span style='color:red;'>Plumbing</span> with project id $P-id=$<span style='color:blue;'>$B$</span>",
+      "sc5": "Employee <span style='color:red;'>morad</span> with $E-id=4$ works at project <span style='color:red;'>sewage</span> with project id $P-id=C$",
+      "sc6": "Employee <span style='color:red;'>walid</span> with $E-id=6$ works at project <span style='color:red;'>Plumbing</span> with project id $P-id=B$",
+      "sc7": "Employee <span style='color:red;'>adel</span> with $E-id=2$ works at project <span style='color:red;'>sewage</span> with project id $P-id=C$",
+      "sc8": "Employee <span style='color:red;'>ali</span> with $E-id=1$ works at project <span style='color:red;'>Plumbing</span> with project id $P-id=B$",
+      "sc9": "Employee <span style='color:red;'>khaled</span> with $E-id=3$ works at project <span style='color:red;'> electricity </span>with project id $P-id=A$"
+    }
+  }
+}

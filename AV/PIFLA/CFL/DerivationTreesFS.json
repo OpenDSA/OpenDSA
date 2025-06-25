@@ -1,0 +1,77 @@
+
+{
+  "translations": {
+    "en": {
+      "start":{
+        "type": "true/false",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to $S$.",
+        "question": "We always start deriving a string from the grammar's start variable",
+        "answer": "True",
+        "choices": []
+      },
+      "children":{
+        "type": "true/false",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to $S$.<br/>The children of a node will be the RHS of the production rule that we use to derive the string.",
+        "question": "The children for any node can be variables and/or terminals",
+        "answer": "True",
+        "choices": []
+      },
+      "leaf":{
+        "type": "true/false",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to $S$.<br/>The children of a node will be the RHS of the production rule that we need to use to derive the string.<br>Leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$",
+        "question": "The leaf nodes can be variables and/or terminals",
+        "answer": "False",
+        "choices": []
+      },
+      "nonleaf":{
+        "type": "true/false",
+        "description": "A derivation tree for $G=(V,T,S,P)$ is built by setting the root node label to $S$<br/>The children of a node will be the RHS of the production rule that we need to use to derive the string.<br>Leaves are labeled $x$, where $x\\in T\\cup \\{\\lambda \\}$<br>Non-leaf vertices are labeled $A$, where $A\\in V$",
+        "question": "The non-leaf nodes will be variables",
+        "answer": "True",
+        "choices": []
+      },
+      "partial":{
+        "type": "select",
+        "description": "<b>Definition:</b> A <b>partial derivation tree</b> is a subtree of a derivation tree.",
+        "question": "The tree on the left is",
+        "answer": "a partial derivation tree",
+        "choices": ["a derivation tree", "a partial derivation tree"]
+      },
+      "partialder":{
+        "type": "select",
+        "description": "<b>Definition:</b> A <b>partial derivation tree</b> is a subtree of a derivation tree.<br/>If a partial derivation tree has root $S$ then it represents a sentential form.",
+        "question": "What is the sentential form equivalent to the partial derivation tree on the left?",
+        "answer": "$S\\rightarrow AcB \\rightarrow aAacB$",
+        "choices": ["$S\\rightarrow AcB$", "$S\\rightarrow aAacB$", "$S\\rightarrow AcB \\rightarrow aAacB$"]
+      },
+      "yield":{
+        "type": "select",
+        "description": "<b>Definition:</b> A <b>partial derivation tree</b> is a subtree of a derivation tree.<br/>If a partial derivation tree has root $S$ then it represents a sentential form.<br/>A listing of the leaves from left to right in a derivation tree generates the <b>yield</b> of the tree.",
+        "question": "What is the yield for the partial derivation tree on the left?",
+        "answer": "aAacB",
+        "choices": ["aAacB", "AcBaAa", "cbaAa"]
+      },
+      "fullorpart":{
+        "type": "select",
+        "description": "<b>Definition:</b> A <b>partial derivation tree</b> is a subtree of a derivation tree.<br/>If a partial derivation tree has root $S$ then it represents a sentential form.<br/>A listing of the leaves from left to right in a derivation tree generates the <b>yield</b> of the tree.",
+        "question": "The tree on the left is",
+        "answer": "a derivation tree",
+        "choices": ["a derivation tree", "a partial derivation tree"]
+      },
+      "lastyield":{
+        "type": "select",
+        "description": "<b>Definition:</b> A <b>partial derivation tree</b> is a subtree of a derivation tree.<br/>If a partial derivation tree has root $S$ then it represents a sentential form.<br/>A listing of the leaves from left to right in a derivation tree generates the <b>yield</b> of the tree.",
+        "question": "What is the yield for the derivation tree on the left?",
+        "answer": "aac",
+        "choices": ["aac", "caa", "cbaa"]
+      },
+      "inlang":{
+        "type": "true/false",
+        "description": "<b>Definition:</b> A <b>partial derivation tree</b> is a subtree of a derivation tree.<br/>If a partial derivation tree has root $S$ then it represents a sentential form.<br/>A listing of the leaves from left to right in a derivation tree generates the <b>yield</b> of the tree.<br/>If $w$ is the yield of a derivation tree, then it must be that $w\\in L(G)$.",
+        "question": "Since the string $aac$ is the yield of the tree, then $aac \\in L(G)$",
+        "answer": "True",
+        "choices": []
+      }
+    }
+  }
+}

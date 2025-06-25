@@ -36,6 +36,7 @@ lib/khan-exercises/exercises/khan-site.html
 
 # Ignore compiled Python files
 *pyc
+*.pyc
 
 # Ignore Java .class files
 *.class
@@ -46,8 +47,27 @@ lib/*-min.*
 # Ignore python packages src folder
 src
 
+# exception for the hieroglyph patch
+!RST/_extensions/hieroglyph_local/src/
+
 # Ignore files used by JetBrains IDE's to store project settings.
 .idea
+
+#Ignore files used by Panic's Nova IDE
+.nova
+
+#Ignore metadata and missing metadata files
+
+Metadata/Catalog_metadata.json
+Metadata/missing_catalog_metadata.json
+Metadata/missing_SLCItem_metadata.json
+Metadata/SLCItem_metadata.json
+Metadata/summary_metadata.json
+Metadata/ExpandedChapter_metadata.json
+
+#Ignore chapter config files
+
+config/ChapterConfigs
 
 # Ignore LMS course configuration files
 config/temp/temp*.*
@@ -82,11 +102,24 @@ tasks.todo
 # configuration folder
 .vscode/
 
-# For Mac file system
-.DS_Store
+
 # For symbolic link needed for IDE. Actual file in utils/
 SourceCode/C++/Lists/ErrorRec.h
 SourceCode/Java/Lists/ErrorRec.java
 # created when testing in IDE
 success
 ListTest_error.log
+venv
+
+# For OpenDSA-Devstack to manage docker build order
+devstackPlaceholder.md
+opendsa
+
+# For eslint
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

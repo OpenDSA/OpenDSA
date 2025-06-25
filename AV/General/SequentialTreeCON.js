@@ -1,6 +1,16 @@
 /*global ODSA */
 "use strict";
 // Sequential Tree serialization visualization slideshow
+
+// Title: Binary Tree Serialization Slideshow
+// Author: Kevin Ellis
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Serialization; Binary Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow how to reconstruct a binary tree from a serialized representation of its node values. */
+
 $(document).ready(function () {
   var av_name = "SequentialTreeCON";
   var av = new JSAV(av_name);

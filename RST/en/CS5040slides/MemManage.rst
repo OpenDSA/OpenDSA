@@ -84,6 +84,7 @@ Memory Management
 
       * Might be done to make memory management easier
       * Example: Sectors and clusters on disk
+      * Example: Buddy Method
 
    * **External fragmentation:** Free blocks too small to be useful.
 

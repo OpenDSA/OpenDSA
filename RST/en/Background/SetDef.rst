@@ -3,10 +3,18 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Sets and Relations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
+   :requires:
    :satisfies: set notation; relations
-   :topic: Sets
+   :topic: Math Background
+   :keyword: Sets; Relations; Equivalance Relation; Partial Order
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review of background set and relations materials (as typically taught in a Discrete Math course) needed for a Data Structures and Algorithms course.
+
 
 Sets and Relations
 ==================
@@ -221,7 +229,7 @@ it is not reflexive.
 
 .. avembed:: Exercises/Background/SetTFrelation.html ka
    :long_name: Relations Exercise
-
+   :keyword: Relation
 
 Equivalence Relations
 ---------------------
@@ -292,6 +300,7 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
 
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
    :long_name: Equivalence Exercise
+   :keyword: Relation; Equivalence Relation
 
 
 Partial Orders
@@ -334,3 +343,4 @@ then the order is called a :term:`total order` or :term:`linear order`.
 
 .. avembed:: Exercises/Background/SetTFpartialorder.html ka
    :long_name: PartialOrder Exercise
+   :keyword: Relation; Partial Order

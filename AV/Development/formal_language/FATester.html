@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <title>FA Tester</title>
     <script>
@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="FAEditor">
     <meta name="author" content="Bill Yu">
-    <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
     <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
     <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
@@ -54,7 +54,7 @@
       <!--<button id="saveButton">Save</button>-->
       <button id="showResult">Show Results</button>
       <input type="file" id="loadFile">
-      
+
       <div style="display:inline;">
         <div style="float: right;" id="menu_options">
           <button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>
@@ -64,7 +64,7 @@
           <button id="undoButton" class="icon_btn"><i class="fa fa-undo"></i></button>
           <button id="redoButton" class="icon_btn"><i class="fa fa-undo fa-rotate-180 fa-flip-horizontal"></i></button>
         </div>
-        
+
         <div style="float: left;">
           <table class="headerTable" style="font-size: 12px; border-style: hidden;">
             <tr>
@@ -81,7 +81,7 @@
                   </ul>
                 </div>
                 <button class="functionality" id="begin">Input</button>
-                
+
                 <div class="dropdown" style="height: 20px !important;">
                   <button type="button" data-toggle="dropdown">Test
                     <span class="caret"></span></button>
@@ -105,14 +105,14 @@
                     <li><a href="#" class="functionality" id="toGrammarButton" title="convert to Right Linear Grammar">Convert to RLG</a></li>
                     <li><a href="#" class="functionality" id="toREButton" title="convert to Regular Expression">Convert To RE</a></li>
                   </ul>
-                </div> 
+                </div>
                 <button class="createExercise" id="finish">Finish</button>
               </td>
             </tr>
           </table>
         </div>
       </div>
-      
+
       <p id="percentage"></p>
       <table id="testResults"></table>
       <div id='download'></div>
@@ -125,10 +125,11 @@
       </div>
       <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 			<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-			<script src="../../../JSAV/lib/jquery.transit.js"></script>
-			<script src="../../../JSAV/lib/raphael.js"></script>
-			<script src="../../../JSAV/lib/dagre.min.js"></script>
-			<script src="../../../JSAV/build/JSAV.js"></script>
+<script src="../../lib/timeme-min.js"></script>
+			<script src="../../../lib/jquery.transit.js"></script>
+			<script src="../../../lib/raphael.js"></script>
+			<script src="../../../lib/dagre.min.js"></script>
+			<script src="../../../lib/JSAV.js"></script>
 			<script src="../../../lib/odsaUtils-min.js"></script>
 			<script src="../../../lib/odsaAV-min.js"></script>
 			<script src="../../../lib/underscore.js"></script>

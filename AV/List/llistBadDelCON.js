@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // The reason why there is a problem with naive representation of linked list
+
+// Title: Linked List Deletion Problem Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow demonstrating why a naive representation for the current node in a linked list leads to problems on deletion. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "llistBadDelCON";

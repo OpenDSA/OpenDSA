@@ -4,14 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
-
+   :title: Defining SLang 2
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the imperative language SLang2.
 
 Defining SLang 2
 ================
 
 SLang 2: An Imperative Language
---------------------------------
+-------------------------------
 
 We will now add to our simple language features  that lie outside the
 realm of pure functional programming.

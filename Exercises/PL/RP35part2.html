@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html data-require="math PLutils ../../AV/PL/interpreters/version3.01/scripts/absyn ../../AV/PL/interpreters/version3.01/scripts/env ../../AV/PL/interpreters/version3.01/scripts/grammar ../../AV/PL/interpreters/version3.01/scripts/interpreter RP35part2" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>RP 35 part 2</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version3.01/scripts/absyn",
+            "../../AV/PL/interpreters/version3.01/scripts/env",
+            "../../AV/PL/interpreters/version3.01/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version3.01/scripts/interpreter",
+              "RP35part2"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -44,13 +58,13 @@
 	    <span class="string">main</span>'s, is an array of one or
 	    more expressions or statements.</p>
 	    <p>Be aware that, in SLang 3, the name given to the two types
-	    of primitive applications are 
+	    of primitive applications are
 	      <span class="string">Prim1AppExp</span> and
 	      <span class="string">Prim2AppExp</span>.</p>
 	    <p>While extra white space characters do not matter in
 	    the correct answer, correctness does depend on proper letter
 	    case for each and every string in the AST.</p>
-	  </div>	 
+	  </div>
         </div>
       </div>
     </div>

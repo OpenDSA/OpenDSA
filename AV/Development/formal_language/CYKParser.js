@@ -37,7 +37,7 @@ $(document).ready(function () {
       jsavArry.css({"min-height": "0px"});
       jsavArry.css({"height": "30px"})
       cykParse();
-    }MCB, room 122
+    }
   };
 
   function cykParse() {
@@ -60,7 +60,7 @@ $(document).ready(function () {
     //   }
     // }
 
-    //table will be the one with the correct answer, while userTable will be used for user to input, 
+    //table will be the one with the correct answer, while userTable will be used for user to input,
     table = new Array(inputLength);
     userTable = new Array(inputLength);
     for (var s = 0; s < inputLength; s++) {
@@ -133,7 +133,7 @@ $(document).ready(function () {
       arry.css({"width": tableWidth}); //the width is currently hardcoded to ensure left align, need to change in the future
     }
   };
-  
+
   //Set the values of the parse table accourding to the argument, instead of creating a new matrix
   function setCYKParseTable(table) {
     for(var r = 0; r < table.length; r++){
@@ -381,7 +381,7 @@ $(document).ready(function () {
       jsavParseTable.unhighlight(prevRow2, oldcol+counter);
     }
   };
-  
+
 
 /////////////////////////////////////////////
 // Derivation stuff
@@ -443,7 +443,7 @@ $(document).ready(function () {
   }
 
 
-  //Build the derivation tree in preorder traversal (root, left, right) 
+  //Build the derivation tree in preorder traversal (root, left, right)
   function getDerivationHelper(nonterminal, currentRow, currentCol, currentNode) {
     //base case, currentRow is 0, meaning it includes terminal
     if(currentRow === 0){
@@ -459,7 +459,7 @@ $(document).ready(function () {
       // find the productions with the nonterminal we want
       if(productions[i][0][0] == nonterminal){
         for(var r = 0; r < currentRow; r++){
-          if(table[r][currentCol].includes(productions[i][2][0]) 
+          if(table[r][currentCol].includes(productions[i][2][0])
             && table[currentRow-r-1][currentCol+r+1].includes(productions[i][2][1])) {
             //root
             currentNode.value = nonterminal;
@@ -502,3 +502,76 @@ $(document).ready(function () {
 
 
 });
+
+/*
+* grammar: the grammar used to check acceptance
+* obtained form grammarEditor_no_interactable_transform.js by calling:
+* _.map(_.filter(arr, function(x) { return x[0]}), function(x) {return x.slice();});
+* or use the "productions" variable of the CYKParser.js
+* inputString: the string used to check whether the grammar accept it
+* return: true if the string is accepted by the grammar or false if bot
+*/
+function CYKGrammarAcceptanceCheck(grammar, inputString) {
+  var variables = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var startSymbol,
+      productions = grammar,
+      finalrow, //depending on the table, this value could either be inputString.length-1, or 0 (if the table is flipped upside down)
+      table, //table with the answer
+      userTable; //has the same value as jsavParseTable, but just for backend use
+
+  startSymbol = productions[0][0];
+
+  if (productions.length === 0) {
+    alert('No grammar.');
+    return;
+  }
+  var inputLength = inputString.length;
+  finalrow = inputLength - 1;
+
+  //table will be the one with the correct answer, while userTable will be used for user to input,
+  table = new Array(inputLength);
+  userTable = new Array(inputLength);
+  for (var s = 0; s < inputLength; s++) {
+    table[s] = new Array(inputLength-s);
+    userTable[s] = new Array(inputLength-s);
+    for(var i = 0; i < inputLength-s; i++){
+      table[s][i] = new Array();
+      userTable[s][i] = new Array();
+    }
+  }
+
+  var unitProductions = _.filter(productions, function(x) {
+    return x[2].length === 1 && variables.indexOf(x[2]) === -1;
+  });
+  //the first row, unit productions
+  for (var s = 0; s < inputLength; s++) {
+    unitProductions.forEach(function(production) {
+      if (production[2] === inputString.charAt(s)){
+        table[0][s].push(production[0]);
+      }
+    });
+  }
+  var otherProductions = _.filter(productions, function(x) {
+    return x[2].length === 2;
+  });
+  for (var l = 2; l <= inputString.length; l++) { //l is length of the span
+    for (var s = 0; s <= inputString.length - l; s++) {  //s is the start of the span
+      var e = s + l - 1; //e is the end of the span
+      for (var p = s; p <= e - 1; p++) { //p is where the partition is
+        otherProductions.forEach(function(production) {
+          // other productions are in the form of A -> BC
+          var A = production[0];
+          var B = production[2].charAt(0);
+          var C = production[2].charAt(1);
+          if (table[p-s][s].includes(B) && table[l-p+s-2][p+1].includes(C)) {
+            if (!table[l-1][s].includes(A)){
+              table[l-1][s].push(A);
+            }
+          }
+        });
+      }
+    }
+  }
+
+  return table[finalrow][0].includes(startSymbol);
+}

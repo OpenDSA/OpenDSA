@@ -1,0 +1,66 @@
+{
+    "translations": {
+      "en": {
+        "memory": {
+          "type": "multiple",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "What type of memory does a DFA/NFA have?",
+          "answer": "No memory. It only remembers the current state.",
+          "choices": ["It has infinite memory", "It has no memory. It only remembers the current state.", "It has a stack"]
+        },
+        "memoryneed": {
+          "type": "multiple",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "Does recognizing $L = \\{a^nb^n\\mid n> 0\\}$ require any memory?",
+          "answer": "Yes",
+          "choices": ["Yes", "No"]
+        },
+        "whatmemory": {
+          "type": "multiple",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "What does the machine need to remember?",
+          "answer": "It remember the number $a$'s it saw in order to verify that the number of $b$'s match.",
+          "choices": ["It remember the number $a$'s it saw in order to verify that the number of $b$'s match.", "Nothing"]
+        },
+        "accept": {
+          "type": "multiple",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "So can we find a DFA or NFA to accept this language?",
+          "answer": "No",
+          "choices": ["Yes", "No", "Maybe"]
+        },
+        "regexrg": {
+          "type": "multiple",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "Exactly. What about finding RegEx or Regular Grammar for it?",
+          "answer": "No way",
+          "choices": ["Yes", "No way", "Maybe"]
+        },
+        "noregex": {
+          "type": "multiple",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "Why can't we find a RegEx or Regular Grammar??",
+          "answer": "Because NFA, DFA, RegEx, and Regular Grammars are all equivalent. So if one of these does not exist, then neither do the others.",
+          "choices": ["Because NFA, DFA, RegEx, and Regular Grammars are all equivalent. So if one of these does not exist, then neither do the others.",
+          "Maybe you can."]
+        },
+        "regular": {
+          "type": "multiple",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "So, is it Regular?",
+          "answer": "No",
+          "choices": ["No", "Yes"],
+          "correctFeedback": ["If a language is regular, it means that there is a DFA and an NFA that accept it, and there is a RegEx and a regular grammar that describes it."]
+        },
+        "proof": {
+          "type": "multiple",
+          "description": "Before you spend too much time trying to do that, think about the language $L = \\{a^nb^n\\mid n> 0\\}$ for a moment.",
+          "question": "How can we know that a Language is not regular?",
+          "answer": "We need a way to prove this that we have not discussed yet.",
+          "choices": ["We need a way to prove this that we have not discussed yet.", "We can try to find a DFA, NFA, RegEX, or Regular Grammar. If we fail, then the language is not regular."],
+          "incorrectFeedback": ["Just because we don't happen to find one of these ways to represent the language does not necessarily mean that none exist."]
+        }
+      }
+    }
+  }
+  

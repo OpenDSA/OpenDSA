@@ -4,13 +4,20 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Cost of Exchange Sorting
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: insertion sort; bubble sort; selection sort
    :satisfies: exchange sort
    :topic: Sorting
+   :keyword: Exchange Sort; N-squared Sorts
+   :naturallanguage: en
+   :programminglanguage: Java; C++
+   :description: Lower bounds analysis for any sorting algorithm that works by swapping adjacent records.
 
 .. index:: ! exchange sorting
 .. index:: sorting; exchange
+
 
 The Cost of Exchange Sorting
 ============================
@@ -48,26 +55,29 @@ The running time for each of these sorts is
    \textrm{Worst Case}&\Theta(n^2)&\Theta(n^2)&\Theta(n)\\
    \end{array}
 
-The remaining sorting algorithms presented in this tutorial are
+Most "good" sorting algorithms have average case running times that are
 significantly better than these three under typical conditions.
-But before continuing on, it is instructive to investigate what makes
+But before studying those, it is instructive to investigate what makes
 these three sorts so slow.
-The crucial bottleneck is that only *adjacent* records are compared.
-Thus, comparisons and moves (for Insertion and Bubble Sort) are by
-single steps.
+The crucial bottleneck is that only *adjacent* records are compared
+and swapped.
+This means that moves (for Insertion and Bubble Sort) are by single
+steps.
 Swapping adjacent records is called an :term:`exchange`.
 Thus, these sorts are sometimes referred to as an
 :term:`exchange sort`.
 The cost of any exchange sort can be at best the total number of
-steps that the records in the array must move to reach their
+comparisons that the records in the array must make, which turns out
+to have a lot to do with how far they are from their
 "correct" location.
-Recall that this is at least the number of
-inversions for the record, where an :index:`inversion` occurs when a
+The total number of comparisons required is at least the number of
+inversions for the record, where an :term:`inversion` occurs when a
 record with key value greater than the current record's key value
 appears before it.
 
 .. avembed:: Exercises/Sorting/FindInversionsPRO.html ka
    :long_name: Inversions Proficiency Exercise
+   :keyword: Sorting; Exchange Sorting; O(n^2) Sorts
 
 
 Analysis
@@ -78,6 +88,8 @@ Analysis
    :links: AV/Sorting/ExchangeSortCON.css
    :scripts: AV/Sorting/ExchangeSortCON.js
    :output: show
+   :keyword: Sorting; Exchange Sorting; N-squared Sorts
 
 .. avembed:: Exercises/Sorting/ExchangeSumm.html ka
    :long_name: Exchange Sorting Summary Exercise
+   :keyword: Sorting; Exchange Sorting; O(n^2) Sorts

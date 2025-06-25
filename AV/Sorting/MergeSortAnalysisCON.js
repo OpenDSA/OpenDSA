@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Merge Sort Analysis
+
+// Title: Mergesort Analysis Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Mergesort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a visual analysis of Mergesort best, average, and worst case performance. */
+
 $(document).ready(function() {
   "use strict";
 

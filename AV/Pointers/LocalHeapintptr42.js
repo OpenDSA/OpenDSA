@@ -1,5 +1,15 @@
 /*global JSAV, document */
 // Written by Sushma Mandava
+
+// Title: A Heap Example
+// Author: Sushma Mandava
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Memory Allocation
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating the memory allocation and deallocation. */
+
 //variable xPositionLocalRectangles controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";

@@ -216,7 +216,7 @@ static int[] int1000000SlightlyDis = new int[TESTSIZE];
 
 
 
-public static void main(String[]args){
+public static void main(String[]args) {
 
 	sorttime(args[0],args[1]); // This function is defined inside the specific
                     // sorting code
@@ -273,7 +273,7 @@ static void permuteDouble(double[] A, int startpos, int length) {
 }                                            // position in the range 0 to i-1.
 
 
-static void fewDuplicates(int[] A, int startpos, int length){
+static void fewDuplicates(int[] A, int startpos, int length) {
 	int randomValue, randomValue2;
 	for(int i=0; i<(length*0.1); i++)
 	{
@@ -289,7 +289,7 @@ static void fewDuplicates(int[] A, int startpos, int length){
 		
 }
 
-static void fewDuplicatesDouble(double[] A, int startpos, int length){
+static void fewDuplicatesDouble(double[] A, int startpos, int length) {
 	int randomValue, randomValue2;
 	for(int i=0; i<(length*0.1); i++)
 	{
@@ -306,7 +306,7 @@ static void fewDuplicatesDouble(double[] A, int startpos, int length){
 	
 }
 
-static void fewDuplicatesInteger(Integer[] A, int startpos, int length){
+static void fewDuplicatesInteger(Integer[] A, int startpos, int length) {
 	int randomValue, randomValue2;
 	for(int i=0; i<(length*0.1); i++)
 	{
@@ -323,12 +323,12 @@ static void fewDuplicatesInteger(Integer[] A, int startpos, int length){
 	
 }
 
-static void someDuplicates(int[] A,int startpos, int length){
+static void someDuplicates(int[] A,int startpos, int length) {
 	int randomValue, randomValue2;
-	for(int i=0;i<(length*0.2); i++){
+	for(int i=0;i<(length*0.2); i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}
@@ -336,12 +336,12 @@ static void someDuplicates(int[] A,int startpos, int length){
 	}
 }
 
-static void someDuplicatesInteger(Integer[] A,int startpos, int length){
+static void someDuplicatesInteger(Integer[] A,int startpos, int length) {
 	int randomValue, randomValue2;
-	for(int i=0;i<(length*0.2); i++){
+	for(int i=0;i<(length*0.2); i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}
@@ -349,12 +349,12 @@ static void someDuplicatesInteger(Integer[] A,int startpos, int length){
 	}
 }
 
-static void someDuplicatesDouble(double[] A,int startpos, int length){
+static void someDuplicatesDouble(double[] A,int startpos, int length) {
 	int randomValue, randomValue2;
-	for(int i=0;i<(length*0.2); i++){
+	for(int i=0;i<(length*0.2); i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}
@@ -362,12 +362,12 @@ static void someDuplicatesDouble(double[] A,int startpos, int length){
 	}
 }
 
-static void manyDuplicates(int[] A,int startpos, int length){
+static void manyDuplicates(int[] A,int startpos, int length) {
 	int randomValue, randomValue2;
-	for(int i=0;i<(length*0.5); i++){
+	for(int i=0;i<(length*0.5); i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}
@@ -375,12 +375,12 @@ static void manyDuplicates(int[] A,int startpos, int length){
 	}
 }
 
-static void manyDuplicatesInteger(Integer[] A,int startpos, int length){
+static void manyDuplicatesInteger(Integer[] A,int startpos, int length) {
 	int randomValue, randomValue2;
-	for(int i=0;i<(length*0.5); i++){
+	for(int i=0;i<(length*0.5); i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}
@@ -388,12 +388,12 @@ static void manyDuplicatesInteger(Integer[] A,int startpos, int length){
 	}
 }
 
-static void manyDuplicatesDouble(double[] A,int startpos, int length){
+static void manyDuplicatesDouble(double[] A,int startpos, int length) {
 	int randomValue, randomValue2;
-	for(int i=0;i<(length*0.5); i++){
+	for(int i=0;i<(length*0.5); i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}
@@ -401,12 +401,12 @@ static void manyDuplicatesDouble(double[] A,int startpos, int length){
 	}
 }
 
-static void slightlyDisordered(int[] A,int startpos, int length){
+static void slightlyDisordered(int[] A,int startpos, int length) {
 	int temp,randomValue,randomValue2;
-	for(int i=0;i<(length*0.1);i++){
+	for(int i=0;i<(length*0.1);i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}	
@@ -416,12 +416,12 @@ static void slightlyDisordered(int[] A,int startpos, int length){
 	}
 }
 
-static void slightlyDisorderedInteger(Integer[] A,int startpos, int length){
+static void slightlyDisorderedInteger(Integer[] A,int startpos, int length) {
 	int temp,randomValue,randomValue2;
-	for(int i=0;i<(length*0.1);i++){
+	for(int i=0;i<(length*0.1);i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}	
@@ -431,13 +431,13 @@ static void slightlyDisorderedInteger(Integer[] A,int startpos, int length){
 	}
 }
 
-static void slightlyDisorderedDouble(double[] A,int startpos, int length){
+static void slightlyDisorderedDouble(double[] A,int startpos, int length) {
 	int randomValue,randomValue2;
 	double temp;
-	for(int i=0;i<(length*0.1);i++){
+	for(int i=0;i<(length*0.1);i++) {
 		randomValue=random(length + startpos);
 		randomValue2=random(length + startpos);
-		while(randomValue==randomValue2 || A[randomValue]!=randomValue){
+		while(randomValue==randomValue2 || A[randomValue]!=randomValue) {
 			randomValue=random(length + startpos);
 			randomValue2=random(length + startpos);
 		}	
@@ -463,7 +463,7 @@ static void setupDouble() {
   numtests = TESTSIZE/10;
  for (i=0; i<numtests; i++) {
     startpos = 10 * i;
-    for (j=0; j<10; j++){
+    for (j=0; j<10; j++) {
       dsize10[startpos + j] = startpos + j;
       dsize10Asc[startpos + j] = startpos + j; //ascending order size of 10
       dsize10Des[startpos + j] = startpos + 10-j-1;
@@ -484,7 +484,7 @@ static void setupDouble() {
   numtests = TESTSIZE/100;
  for (i=0; i<numtests; i++) {
     startpos = 100 * i;
-    for (j=0; j<100; j++){
+    for (j=0; j<100; j++) {
       dsize100[startpos + j] = startpos + j;
       dsize100Asc[startpos + j] = startpos + j; //ascending order size of 100
       dsize100Des[startpos + j] = startpos + 100-j-1;
@@ -505,7 +505,7 @@ static void setupDouble() {
   numtests = TESTSIZE/1000;
  for (i=0; i<numtests; i++) {
     startpos = 1000 * i;
-    for (j=0; j<1000; j++){
+    for (j=0; j<1000; j++) {
       dsize1000[startpos + j] = startpos + j;
       dsize1000Asc[startpos + j] = startpos + j; //ascending order size of 1000
       dsize1000Des[startpos + j] = startpos + 1000-j-1;
@@ -526,7 +526,7 @@ static void setupDouble() {
   numtests = TESTSIZE/10000;
  for (i=0; i<numtests; i++) {
     startpos = 10000 * i;
-    for (j=0; j<10000; j++){
+    for (j=0; j<10000; j++) {
       dsize10000[startpos + j] = startpos + j;
       dsize10000Asc[startpos + j] = startpos + j; //ascending order size of 10000
       dsize10000Des[startpos + j] = startpos + 10000-j-1;
@@ -546,7 +546,7 @@ static void setupDouble() {
 numtests = TESTSIZE/100000;
  for (i=0; i<numtests; i++) {
     startpos = 100000 * i;
-    for (j=0; j<100000; j++){
+    for (j=0; j<100000; j++) {
       dsize100000[startpos + j] = startpos + j;
       dsize100000Asc[startpos + j] = startpos + j; //ascending order size of 100000
       dsize100000Des[startpos + j] = startpos + 100000-j-1;
@@ -566,7 +566,7 @@ numtests = TESTSIZE/100000;
 numtests = TESTSIZE/1000000;
  for (i=0; i<numtests; i++) {
     startpos = 1000000 * i;
-    for (j=0; j<1000000; j++){
+    for (j=0; j<1000000; j++) {
       dsize1000000[startpos + j] = startpos + j;
       dsize1000000Asc[startpos + j] = startpos + j; //ascending order size of 1000000
       dsize1000000Des[startpos + j] = startpos + 1000000-j-1;
@@ -600,7 +600,7 @@ static void setupInteger() {
   numtests = TESTSIZE/10;
  for (i=0; i<numtests; i++) {
     startpos = 10 * i;
-    for (j=0; j<10; j++){
+    for (j=0; j<10; j++) {
       size10[startpos + j] = startpos + j;
       size10Asc[startpos + j] = startpos + j; //ascending order size of 10
       size10Des[startpos + j] = startpos + 10-j-1;
@@ -630,7 +630,7 @@ static void setupInteger() {
   numtests = TESTSIZE/100;
  for (i=0; i<numtests; i++) {
     startpos = 100 * i;
-    for (j=0; j<100; j++){
+    for (j=0; j<100; j++) {
       size100[startpos + j] = startpos + j;
       size100Asc[startpos + j] = startpos + j; //ascending order size of 100
       size100Des[startpos + j] = startpos + 100-j-1;
@@ -660,7 +660,7 @@ static void setupInteger() {
   numtests = TESTSIZE/1000;
  for (i=0; i<numtests; i++) {
     startpos = 1000 * i;
-    for (j=0; j<1000; j++){
+    for (j=0; j<1000; j++) {
       size1000[startpos + j] = startpos + j;
       size1000Asc[startpos + j] = startpos + j; //ascending order size of 1000
       size1000Des[startpos + j] = startpos + 1000-j-1;
@@ -690,7 +690,7 @@ static void setupInteger() {
   numtests = TESTSIZE/10000;
  for (i=0; i<numtests; i++) {
     startpos = 10000 * i;
-    for (j=0; j<10000; j++){
+    for (j=0; j<10000; j++) {
       size10000[startpos + j] = startpos + j;
       size10000Asc[startpos + j] = startpos + j; //ascending order size of 10000
       size10000Des[startpos + j] = startpos + 10000-j-1;
@@ -712,7 +712,7 @@ static void setupInteger() {
   numtests = TESTSIZE/100000;
  for (i=0; i<numtests; i++) {
     startpos = 100000 * i;
-    for (j=0; j<100000; j++){
+    for (j=0; j<100000; j++) {
       size100000[startpos + j] = startpos + j;
       size100000Asc[startpos + j] = startpos + j; //ascending order size of 100000
       size100000Des[startpos + j] = startpos + 100000-j-1;
@@ -733,7 +733,7 @@ static void setupInteger() {
   numtests = TESTSIZE/1000000;
  for (i=0; i<numtests; i++) {
     startpos = 1000000 * i;
-    for (j=0; j<1000000; j++){
+    for (j=0; j<1000000; j++) {
       size1000000[startpos + j] = startpos + j;
       size1000000Asc[startpos + j] = startpos + j; //ascending order size of 1000000
       size1000000Des[startpos + j] = startpos + 1000000-j-1;
@@ -761,7 +761,7 @@ static void setupint() {
   numtests = TESTSIZE/10;
   for (i=0; i<numtests; i++) {
     startpos = 10 * i;
-    for (j=0; j<10; j++){
+    for (j=0; j<10; j++) {
       int10[startpos + j] = startpos + j;
       int10Asc[startpos+j] = startpos + j;
       int10Des[startpos+j] = startpos + 10-j-1;
@@ -784,7 +784,7 @@ static void setupint() {
   numtests = TESTSIZE/100;
   for (i=0; i<numtests; i++) {
     startpos = 100 * i;
-    for (j=0; j<100; j++){
+    for (j=0; j<100; j++) {
       int100[startpos + j] = startpos + j;
       int100Asc[startpos+j] = startpos + j;
       int100Des[startpos+j] = startpos + 100-j-1;
@@ -808,7 +808,7 @@ static void setupint() {
   numtests = TESTSIZE/1000;
   for (i=0; i<numtests; i++) {
     startpos = 1000 * i;
-    for (j=0; j<1000; j++){
+    for (j=0; j<1000; j++) {
       int1000[startpos + j] = startpos + j;
       int1000Asc[startpos+j] = startpos + j;
       int1000Des[startpos+j] = startpos + 1000-j-1;
@@ -831,7 +831,7 @@ static void setupint() {
   numtests = TESTSIZE/10000;
   for (i=0; i<numtests; i++) {
     startpos = 10000 * i;
-    for (j=0; j<10000; j++){
+    for (j=0; j<10000; j++) {
       int10000[startpos + j] = startpos + j;
       int10000Asc[startpos+j] = startpos + j;
       int10000Des[startpos+j] = startpos + 10000-j-1;
@@ -854,7 +854,7 @@ static void setupint() {
   numtests = TESTSIZE/100000;
   for (i=0; i<numtests; i++) {
     startpos = 100000 * i;
-    for (j=0; j<100000; j++){
+    for (j=0; j<100000; j++) {
       int100000[startpos + j] = startpos + j;
       int100000Asc[startpos+j] = startpos + j;
       int100000Des[startpos+j] = startpos + 100000-j-1;
@@ -877,7 +877,7 @@ static void setupint() {
   numtests = TESTSIZE/1000000;
   for (i=0; i<numtests; i++) {
     startpos = 1000000 * i;
-    for (j=0; j<1000000; j++){
+    for (j=0; j<1000000; j++) {
       int1000000[startpos + j] = startpos + j;
       int1000000Asc[startpos+j] = startpos + j;
       int1000000Des[startpos+j] = startpos + 1000000-j-1;
@@ -1132,18 +1132,18 @@ static void testsortDouble(String methodName, int testsize, double[] A, int leng
       totaltime = 0;
       time1 = millis();
       for (i = 0; i < testsize; i += length) {
-        Object[] arguments = {A, i, length};
+        Object[] arguments = { A, i, length };
         method.invoke(s, arguments);
       }
       time2 = millis();
-      if(numruns == 4){
+      if(numruns == 4) {
      	 totaltime = time2 - time1;
     	 System.out.println(totaltime);
       }
     }
 
   }
-  catch(Exception ex){
+  catch(Exception ex) {
     ex.printStackTrace();
   }
 }
@@ -1171,17 +1171,17 @@ static void testsortInteger(String methodName, int testsize, Integer[] A, int le
       totaltime = 0;
       time1 = millis();
       for (i = 0; i < testsize; i += length) {
-        Object[] arguments = {A, i, length};
+        Object[] arguments = { A, i, length };
         method.invoke(s, arguments);
       }
       time2 = millis();
-      if(numruns == 4){
+      if(numruns == 4) {
      	 totaltime = time2 - time1;
     	 System.out.println(totaltime);
       }
     }
   }
-  catch(Exception ex){
+  catch(Exception ex) {
     ex.printStackTrace();
   }
 }
@@ -1207,17 +1207,17 @@ static void testsortint(String methodName, int testsize, int[] A, int length, St
       totaltime = 0;
       time1 = millis();
       for (i = 0; i < testsize; i += length) {
-        Object[] arguments = {A, i, length};
+        Object[] arguments = { A, i, length };
         method.invoke(s, arguments);
       }
       time2 = millis();
-      if(numruns == 4){
+      if(numruns == 4) {
      	 totaltime = time2 - time1;
     	 System.out.println(totaltime);
       }
     }
   }
-  catch(Exception ex){
+  catch(Exception ex) {
     ex.printStackTrace();
   }
 }

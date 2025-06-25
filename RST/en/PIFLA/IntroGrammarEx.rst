@@ -4,29 +4,61 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed, Cliff Shaffer
+   :title: Introductory Grammar Exercises
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Introductory Grammars exercises
+   :keyword: Formal Language; Automata; Grammar
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: A collection of exercises for a student to construct a grammar for a given language.
 
 Grammar Exercises
 =================
 
-Exercise 1
-----------
+Grammar Exercises
+-----------------
+
+Note: For these exercises, non-terminals are assumed to be single capital
+letters, and the start symbol is whatever non-terminal (a single capital
+letter) is on the left side of the first rule.
+There can be only one production per rule, so you may not have a rule
+like :math:`S \rightarrow a | b`.
+Instead, you need to use a separate row for each production,
+like :math:`S \rightarrow a` and :math:`S \rightarrow b`.
+If you want a production to go to :math:`\lambda`, then click in the
+box, leave it empty, and click outside the box.
+
+Occasionally, it can take the autograder a little while to run for an
+exercise, so give it some time (up to a minute) if it seems like there
+is no response.
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntro3str.html pe
    :long_name: Three string grammar
+   :keyword: Formal Languages and Automata; Grammars
 
-Exercise 2
-----------
-
-.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanbm.html pe
-   :long_name: anbm grammar
-
-Exercise 3
-----------
+|
 
 .. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanb2n.html pe
    :long_name: anb2n grammar
+   :keyword: Formal Languages and Automata; Grammars
 
+|
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/GramIntroanbm.html pe
+   :long_name: anbm grammar
+   :keyword: Formal Languages and Automata; Grammars
+
+|
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Parens.html pe
+   :long_name: Balanced Parentheses grammar
+   :keyword: Formal Languages and Automata; Grammars
+
+|
+
+.. avembed:: AV/OpenFLAP/exercises/FLAssignments/Grammar/Palendrome.html pe
+   :long_name: Palendrome grammar
+   :keyword: Formal Languages and Automata; Grammars

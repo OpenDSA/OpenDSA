@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html data-require="codemirror math">
+<html data-require="codemirror math" lang="en">
   <head>
     <title> Recursion Tracing Exercise: Base case order</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
     <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script src="../../lib/splice-iframe.js"></script> 
   </head>
 
   <body  data-height="750" data-width="950">
@@ -28,10 +29,10 @@ void superWriteVertical(int number) {
 }</textarea><br/>
             What values of number are directly handled by the base case?
           </p>
-          <div class="solution">number <code>< 10</code></div>
+          <div class="solution">number <code>\geq 0</code> and number <code>< 10</code></div>
           <ul class="choices" >
             <li>number <code>< 0</code></li>
-            <li>number <code>\geq 0</code> and number <code>< 10</code></li>
+            <li>number <code>< 10</code></li>
             <li><var>number <code>> 10</code></li>
           </ul>
           <div class="hints">

@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Optimizing Sort Algorithms with Code Tuning
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: insertion sort; bubble sort; selection sort; code tuning
    :satisfies: sort code tuning
    :topic: Sorting, Code Tuning
+   :keyword: Sorting; N-squared Sorts; Code Tuning
+   :naturallanguage: en
+   :programminglanguage: Java; C++
+   :description: Variations on n-squared sorts to demonstrate code tuning principles.
+
 
 Optimizing Sort Algorithms with Code Tuning
 ===========================================
@@ -29,7 +36,7 @@ it is natural for programmers to want
 to optimize their sorting code to run faster.
 Of course all quadratic sorts (Insertion Sort, Bubble Sort and
 Selection Sort) are relatively slow.
-Each has (as the name "quadratic suggests)
+Each has (as the name "quadratic" suggests)
 :math:`\Theta(n^2)` worst case running time.
 The best way to speed them up is to find a better sorting algorithm.
 Nonetheless, there have been many suggestions given over the years
@@ -65,7 +72,8 @@ Here is an implementation for Insertion Sort using this optimization.
 Now, you can test whether you understand how this works.
 
 .. avembed:: AV/Sorting/insertionSortWithoutSwapPRO.html pe
-   :long_name: Insertion Sort Without Swap Proficiency Exercise
+   :long_name: Insertion Sort Optimized with Shifting Proficiency Exercise
+   :keyword: Insertion Sort; O(n^2) Sorts; Code Tuning
 
 .. _OptimizeTable:
 

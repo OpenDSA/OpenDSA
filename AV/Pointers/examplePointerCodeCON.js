@@ -1,5 +1,15 @@
 /*global ODSA */
 // Written by Sushma Mandava and Cliff SHaffer
+
+// Title: Changing the Reference to an Object
+// Author: Sushma Mandava; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Pointer; Reference; Object
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating changing the reference to an object. */
+
 //variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";

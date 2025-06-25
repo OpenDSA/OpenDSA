@@ -7,6 +7,8 @@
    :author: Cliff Shaffer
    :satisfies: binary search
    :topic: Searching
+   :keyword: Search; Binary Search
+
 
 Searching in an Array
 =====================
@@ -87,6 +89,7 @@ Here is an illustration of the binary search method.
    :links: AV/Searching/binarySearchCON.css
    :scripts: AV/Searching/binarySearchCON.js
    :output: show
+   :keyword: Search; Binary Search
 
 With the right math techniques, it is not too hard to show that the
 cost of binary search on an array of :math:`n` values is at most
@@ -99,6 +102,7 @@ times before we reach 1. [#]_
 
 .. avembed:: AV/Searching/binarySearchPRO.html pe
    :long_name: Binary Search Proficiency Exercise
+   :keyword: Search; Binary Search
 
 .. [#] It seems to be really "obvious" that sequential search is the
        best that you can do on an unsorted array. 

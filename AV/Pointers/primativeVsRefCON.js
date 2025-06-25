@@ -2,6 +2,16 @@
 // Written by Cliff Shaffer
 // Based on earlier material written by Sushma Mandava and Milen John
 // variable xPosition controls the horizonatl position of the visualization
+
+// Title: Java Data Types
+// Author: Cliff Shaffer; Sushma Mandava; Milen John
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Pointer; Reference; Data Type; Object
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow showing primitive data types in Java and the concept of object and reference. */
+ 
 $(document).ready(function() {
   "use strict";
   var av_name = "primativeVsRefCON";

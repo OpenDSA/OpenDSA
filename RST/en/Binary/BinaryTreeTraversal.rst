@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binary Tree Traversals
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree terminology; recursion
    :satisfies: binary tree traversal
    :topic: Binary Trees
+   :keyword: Inorder Traversal; Preorder Traversal; Postorder Traversal
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents the standard binary tree traversals. Also discusses the pros and cons of various ways to implement these traversals recursively.
+
 
 Binary Tree Traversals
 ======================
@@ -41,6 +48,7 @@ This is called a :term:`preorder traversal`.
    :links: AV/Binary/BinExampCON.css
    :scripts: AV/Binary/BinExampCON.js
    :align: center
+   :keyword: Binary Tree Traversals; Preorder Traversal
 
    A binary tree for traversal examples.
 
@@ -60,6 +68,7 @@ This is called a :term:`preorder traversal`.
    :links: AV/Binary/BTCON.css
    :scripts: AV/Binary/preorderCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Preorder Traversal
 
 
 Postorder Traversal
@@ -86,6 +95,7 @@ This is called a :term:`postorder traversal`.
    :links: AV/Binary/BTCON.css
    :scripts: AV/Binary/postorderCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Postorder Traversal
 
 
 Inorder Traversal
@@ -109,6 +119,7 @@ this traversal to print all nodes in ascending order of value.
    :links: AV/Binary/BTCON.css
    :scripts: AV/Binary/inorderCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Inorder Traversal
 
 
 Implementation
@@ -161,6 +172,7 @@ visited, as appropriate.
 
 .. avembed:: AV/Binary/btTravPreorderPRO.html pe
    :long_name: Binary Tree Preorder Traversal Exercise
+   :keyword: Binary Tree Traversals; Preorder Traversal
 
 
 Postorder Traversal Practice
@@ -168,6 +180,7 @@ Postorder Traversal Practice
 
 .. avembed:: AV/Binary/btTravPostorderPRO.html pe
    :long_name: Binary Tree Postorder Traversal Exercise
+   :keyword: Binary Tree Traversals; Postorder Traversal
 
 
 Inorder Traversal Practice
@@ -175,6 +188,7 @@ Inorder Traversal Practice
 
 .. avembed:: AV/Binary/btTravInorderPRO.html pe
    :long_name: Binary Tree Inorder Traversal Exercise
+   :keyword: Binary Tree Traversals; Inorder Traversal
 
 
 Summary Questions
@@ -182,3 +196,4 @@ Summary Questions
 
 .. avembed:: Exercises/Binary/TravSumm.html ka
    :long_name: Tree Traversal Summary Questions
+   :keyword: Binary Tree Traversals

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Generics Checkpoint 1</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="650" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="GENERICS_Q4">
+        <p class="question">Consider the following Java code: </p>
+          <pre class="prettyprint">
+            public interface toyCollectionInfo &lt;T> { // 1
+              private T favoriteToy;
+              private T[] toys;
+               
+              public T getFavorite();
+              public void setFavorite(T fav); 
+           }  
+          </pre>
+          <p>The capital letter “T” on line 1 stands for:
+        </p>
+        <div class="solution"><tt>type to  be used for the toys</tt></div>
+        <ul class="choices">
+        <li><tt>a temporary value</tt></li>
+        <li><tt>a template for all the method parameters</tt></li>
+        <li><tt>none of these</tt></li>
+      
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

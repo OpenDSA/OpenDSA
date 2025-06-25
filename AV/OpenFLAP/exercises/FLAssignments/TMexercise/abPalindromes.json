@@ -1,0 +1,36 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
+  "exerciseType": "TM",
+  "totalTestCases": 5,
+  "containLetters": ["a","b"],
+  "randomStringLength": [0, 15],
+  "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
+  "hardCodeCasesCounter": 5,
+  "description": "Write a (Turing decidable) program for a Turing machine to recognize the language of all palindromes over a, b.",
+  "testCases": [{
+      "aaa": "Y",
+      "ShowTestCase":true
+    },
+    {
+      "aba": "Y",
+      "ShowTestCase":true
+    },
+    {
+      "aaab": "N",
+      "ShowTestCase":true
+    },
+    {
+      "aababaa": "Y",
+      "ShowTestCase":true
+    },
+    {
+      "bbabb": "Y",
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": ""
+}]

@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer, Irena Shaffer
+   :title: The Transformation Concept
+   :author: Cliff Shaffer; Irena Shaffer
+   :institution: Virginia Tech
    :requires: logarithms
    :satisfies: transforms
    :topic: Algorithms: Transforms
+   :keyword: Transform; Polynomial Multiplication
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of a transform. Examples include the slide rule as a transformation for integer multiplication, and polynomial multiplication.
 
 The Transformation Concept
 ==========================
@@ -19,7 +25,7 @@ Multiplying two large numbers is considerably more difficult than
 adding them.
 Recall your grade-school algorithms for adding and multiplying big
 numbers.
-Adding two :math:`n` -digit numbers is done by simply moving from
+Adding two :math:`n`-digit numbers is done by simply moving from
 right to left through both numbers, for a total of :math:`O(n)` work.
 But the cost to multiply two :math:`n`-digit numbers directly is
 :math:`O(n^2)` since you essentially need to multiply each digit of
@@ -49,7 +55,7 @@ nature.
 
 This process for doing multiplication quickly is an example of using a
 :term:`transformation` to speed up a problem.
-We have transformed the input values by taking their logarithm, and
+We have transformed the input values by taking their logarithm,
 then did a cheap operation (addition) on the transformed values, and
 then reversed the transformation (with an anti-log) to get the true
 answer to the original problem.
@@ -71,10 +77,11 @@ a polynomial of degree :math:`n-1`, expressed as
    :links: AV/SeniorAlgAnal/polynomialCON.css
    :scripts: DataStructures/Plot.js AV/SeniorAlgAnal/polynomialCON.js
    :output: show
+   :keyword: Algorithm Analysis; Transforms
 
 |
 
-Alternatively, an :math:`n-1` -degree polynomial can be uniquely
+Alternatively, an :math:`n-1`-degree polynomial can be uniquely
 represented by a list of its values at :math:`n` distinct points.
 Finding the value for a polynomial at a given point is called
 :term:`evaluation`.
@@ -88,6 +95,7 @@ Finding the coefficients for the polynomial given the values at
    :links: AV/SeniorAlgAnal/EvalandInterpolationCON.css
    :scripts: DataStructures/Plot.js AV/SeniorAlgAnal/EvalandInterpolationCON.js
    :output: show
+   :keyword: Algorithm Analysis; Transforms
 
 There are many useful engineering problems that involve multiplying
 two large-degree polynomials.
@@ -103,6 +111,7 @@ right values to evaluate and interpolate.
    :links: AV/SeniorAlgAnal/ProductCON.css
    :scripts: AV/SeniorAlgAnal/ProductCON.js
    :output: show
+   :keyword: Algorithm Analysis; Transforms
 
 Now, let's start thinking about ways to speed this up.
 
@@ -111,7 +120,9 @@ Now, let's start thinking about ways to speed this up.
    :links: AV/SeniorAlgAnal/EvaluationCON.css
    :scripts: AV/SeniorAlgAnal/EvaluationCON.js
    :output: show
+   :keyword: Algorithm Analysis; Transforms
 
 |
 
 .. avembed:: Exercises/SeniorAlgAnal/Polynomial_multiplication.html ka
+   :keyword: Algorithm Analysis; Transforms

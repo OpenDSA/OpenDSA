@@ -17,7 +17,17 @@ $(document).ready(function () {
     }
 
     //generate a random key, with value between the min and max of the array
-    key = Math.ceil(5 * (initialArray[0] + initialArray[arraySize - 1]) / 7);
+    // Old computation:
+    // key = Math.ceil(5 * (initialArray[0] + initialArray[arraySize - 1]) / 7);
+    // We want a better-than-random chance of the search key being in the array.
+    // And we want it equally likely to be anywhere in the key range
+    if (JSAV.utils.rand.random() > .6) { // Pick something at random
+      // This isn't *quite* the key range, but close.
+      key = Math.floor(JSAV.utils.rand.random() * 100);
+    }
+    else { // Pick the element in a random position in the array
+      key = initialArray[Math.floor(JSAV.utils.rand.random() * arraySize)];
+    }
     // log the key
     ODSA.AV.logExerciseInit([key]);
 
@@ -136,7 +146,7 @@ $(document).ready(function () {
   // Set click handlers
   $("#about").click(about);
 
-  var arraySize = 20,
+  var arraySize = 17 + Math.floor(JSAV.utils.rand.random() * 5),
       key,
       initialArray = [],
       array,

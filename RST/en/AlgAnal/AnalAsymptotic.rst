@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Asymptotic Analysis and Upper Bounds
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: algorithm analysis
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Upper Bound; Big O
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces upper bounds analysis.
+
 
 Asymptotic Analysis and Upper Bounds
 ====================================
@@ -18,14 +25,16 @@ Asymptotic Analysis and Upper Bounds
 .. _RunTimeGraph2:
 
 .. inlineav:: GrowthRatesCON dgm
-    :links: AV/AlgAnal/GrowthRatesCON.css
-    :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
-    :align: center
+   :links: AV/AlgAnal/GrowthRatesCON.css
+   :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
+   :align: center
+   :keyword: Algorithm Analysis; Growth Rate
 
 .. inlineav:: GrowthRatesZoomCON dgm
    :links: AV/AlgAnal/GrowthRatesZoomCON.css
    :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesZoomCON.js
    :align: center
+   :keyword: Algorithm Analysis; Growth Rate
 
    Two views of a graph illustrating the growth rates for
    six equations.
@@ -310,6 +319,7 @@ Summary
    :links: AV/AlgAnal/UpperBoundCON.css
    :scripts: AV/AlgAnal/UpperBoundCON.js
    :output: show
+   :keyword: Algorithm Analysis; Upper Bound
 
 |
 
@@ -317,9 +327,11 @@ Summary
    :links: AV/SeniorAlgAnal/SimpleCostsCON.css
    :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
    :output: show
+   :keyword: Algorithm Analysis; Upper Bound
 
 Practice Questions
 ~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/UpperBoundsSumm.html ka
    :long_name: Asymptotic Analysis and Upper Bounds Exercise
+   :keyword: Algorithm Analysis; Upper Bound

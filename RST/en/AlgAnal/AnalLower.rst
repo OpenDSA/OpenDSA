@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Lower Bounds and Theta Notation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: algorithm analysis lower bound
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Lower Bound; Big Theta; Big Omega
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: An introduction to lower bounds analysis, Omega, and Theta notation.
+
 
 Lower Bounds and :math:`\Theta` Notation
 ========================================
@@ -238,9 +245,13 @@ If the limit goes to some constant other than zero, then
    :links: AV/AlgAnal/LowerBoundCON.css
    :scripts: AV/AlgAnal/LowerBoundCON.js
    :output: show
+   :keyword: Algorithm Analysis; Asymptotic Algorithm Analysis; Lower
+           Bound; Big Theta; Big Omega
 
 Summary Exercise
 ~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/AlgAnal/LowerThetaSumm.html ka
    :long_name: Lower Bounds and Theta Notation Exercise
+   :keyword: Algorithm Analysis; Asymptotic Algorithm Analysis; Lower
+           Bound; Big Theta; Big Omega

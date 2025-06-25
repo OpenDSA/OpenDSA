@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fundamentals 3</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="900" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="SCOPE_Q3">
+        <p class="question">What is the scope error in the mystery method?</p>
+          <pre class="prettyprint">
+
+              public static void main(String[] args)
+              {
+                  int target = 4;
+                  target = mystery(target + 1);
+                  System.out.println(sum);
+              }
+              
+              public static int mystery(int target)
+              {
+                  int sum = 0;
+                  for (int i = 0; i < target; target++)
+                  {
+                      int target = i + 1;
+                      sum = sum + target;
+                  }
+                  return sum;
+               }
+          </pre>
+ 
+        <div class="solution"><tt>there are two local variables named target that overlap</tt></div>
+        <ul class="choices">
+        <li><tt>sum is used inside the for loop</tt></li>
+        <li><tt>the loop could repeat infinitely</tt></li>
+        <li><tt>both i and sum are initialized to 0</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

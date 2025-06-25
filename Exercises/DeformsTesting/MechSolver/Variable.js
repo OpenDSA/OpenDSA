@@ -26,8 +26,9 @@ class Variable{
         // which can then be used
         this.value = null;
         this.valueNegated = false;
-        this.valueRepr = null;
-        this.valueType = null;
+        this.valueRepr = null;  // Stores the string representation of the numeric quantity in the box
+        this.valueType = null;  // null | "number" | "association"
+        this.valueSource = null; // Stores where the value came from, i.e. the body param(/param[0-9]+/)/gen soln(unknownName)/created by user(" ")
         
         this.element = element;
         this.globalPointerReference = globalPointerReference;
@@ -51,6 +52,11 @@ class Variable{
         //         // TODO: INSERT DELETION logEvent here.
         //     }
         // )
+
+        // set an id for this.element, to be accessed from anywhere for visuals
+        this.element.setAttribute("id",this.id);
+        this.element.dataset.csymbol = this.currentSymbol;
+
         this.element.addEventListener(
             "click", e => {
                 e.stopPropagation();
@@ -106,6 +112,7 @@ class Variable{
                                     // Render the new symbol.
                                     this.grayOut();
                                 }
+                                Window.jsavObject.logEvent({type: "deforms-variable-empty-negate", desc: this.id})
 
                                 Window.clearGlobalPointerReference();
                                 // this.globalPointerReference.currentClickedObject = null;
@@ -227,11 +234,15 @@ class Variable{
                                                     valueDisplay: null,
                                                     domain: domain,
                                                     unit: Window.UNIT_DB[domain][unit]['unit'],
-                                                    unitDisplay: Window.UNIT_DB[domain][unit]['unitDisp']
+                                                    unitDisplay: Window.UNIT_DB[domain][unit]['unitDisp'],
+                                                    id: ""
                                                 }
                                             },
                                             null, null
                                         );
+                                        // We pretend that the newly created value was like a question param (avoiding jsav positioning),
+                                        // with a null source, hence use id for sourceParent
+
                                         this.globalPointerReference.currentClickedObjectType = "value-box";
                                         // this.changeVarName(
                                         //     Window.box[0].querySelector("#value").value,
@@ -242,6 +253,10 @@ class Variable{
                                         Window.box.close();
                                         this.adjustParentEquationVisuals();
                                         delete Window.box;
+
+                                        Window.jsavObject.logEvent({
+                                            type: "deforms-variable-enter-value", desc: this.id
+                                        })
                                     }
                                 );
                             }
@@ -249,6 +264,7 @@ class Variable{
                     }
                     else if(this.globalPointerReference.currentClickedObject == this) // Clicked on the same thing
                     {
+                        // DEPRECATED: FUNCTIONALITY MOVED TO CONTEXT MENU
                         // negate and clear context
                         // this.valueNegated = !this.valueNegated;
                         // if(this.valueNegated) {
@@ -340,6 +356,8 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
                                 this.adjustParentEquationVisuals();
+
+                                Window.jsavObject.logEvent({type: "deforms-variable-value-negate", desc: this.id})
                             }
                         );
                         element[0].childNodes[0].childNodes[1].addEventListener(
@@ -483,6 +501,8 @@ class Variable{
                                 // this.globalPointerReference.currentClickedObjectDescription = null;
                                 element.close();
                                 this.adjustParentEquationVisuals();
+
+                                Window.jsavObject.logEvent({type: "deforms-variable-assoc-separate-negate", desc: this.id})
                             }
                         );
                         element[0].childNodes[0].childNodes[1].addEventListener(
@@ -601,7 +621,58 @@ class Variable{
             }
         )
     }
+    getVariableSummary()
+    {
+        /**
+         * Add summary of variable's contents
+         */
+        let variableSummary = {
+            // Identifying information
+            id: this.id,
+            name: this.name,
+            symbol_context: {
+                parentSymbolTemplateZero: this.parentSymbolTemplateZero,
+                parentSymbolTemplate: this.parentSymbolTemplate,
+                parentSymbol: this.parentSymbol
+            },
+            // UPDATE: Currently also has wkN only during export,
+            // To correct to store this throughout when solver is changed
+            // TODO: Add wkN
+            currentSymbol: this.currentSymbol,
+            // currentSymbol: this.id.split('_')[0]+'_'+this.currentSymbol,
 
+            // Units information
+            expectedDomain: this.expectedDomain,
+            currentDomain: this.currentDomain,
+            currentUnit: this.currentUnit,
+
+            // Value information (stores quantities and association details)
+            valueType: this.valueType,
+            valueSource: this.valueSource,
+            valueNegated: this.valueNegated,
+        }
+        
+        if (variableSummary.valueType == null)
+        // Then it's a singleton unknown, include ID only (there is no value, and name is available as is)
+            variableSummary.value = this.id;
+            // Remainder of information about symbols and display etc. is stored in symbol_context
+        
+        else if (variableSummary.valueType == 'association')
+        // For an association, we only need the unique variable name connecting these associations,
+        // for reference see the createSolvableRepresentation()
+        {
+            variableSummary.value = {
+                var: this.value.var,            //  Stores the internal symbol for the assoc
+                varDisplay: this.value.varDisplay,    //  Stores how this symbol is represented
+                varDisplayTemplate: this.value.varDisplayTemplate // Stores how this symbol looks
+            }
+        }
+        else if (variableSummary.valueType == "number")
+        // Just a number, everything is already stored
+            variableSummary.value = this.value;
+
+        return variableSummary;
+    }
     adjustParentEquationVisuals()
     {
         // var shiftChain = Window.windowManager.shiftRight(equationObject);
@@ -661,16 +732,23 @@ class Variable{
         if(this.globalPointerReference.currentClickedObjectType == "value-box") {
             this.currentDomain = this.globalPointerReference.currentClickedObject.domain;
             this.currentUnit = this.globalPointerReference.currentClickedObject.unit;
+            this.valueSource = this.globalPointerReference.currentClickedObject.valueSourceParent;
         }
         else {
+            // currently this is for when a number is copied in, in which case the valueSource 
+            // already exists and needs to be simply copied over
             this.currentDomain = this.globalPointerReference.currentClickedObject.currentDomain;
             this.currentUnit = this.globalPointerReference.currentClickedObject.currentUnit;
+            this.valueSource = this.globalPointerReference.currentClickedObject.valueSource;
         }
         // this.valueRepr = Window.valueTruncate(this.value);
         this.valueRepr = Window.valueStringRepr(this.value);
         this.element.setAttribute("data-domain", this.currentDomain);
         this.valueType = "number";
-        this.valueNegated = false;
+        this.valueNegated = this.globalPointerReference.currentClickedObject.valueNegated;
+        // copies sign status over as reference to where it came from 
+        // eg: if solnBox, then is it original or changed from that; 
+        // in case of paramN being copied over (otherwise false), was it ever changed or is it the same.
         
         if(this.globalPointerReference.currentClickedObjectType == "value-box") {
             this.setValueUnit(
@@ -695,6 +773,11 @@ class Variable{
         // clickHandler for unit changes()
         this.unitChangeHandler = e => this.changeUnits(e, this);
         this.unitDisplay.addEventListener("click", this.unitChangeHandler);
+
+        // pushing event
+        Window.jsavObject.logEvent({type: "deforms-variable-add-value", desc: {
+            name: this.id, value: this.value, unit: this.currentUnit
+        }});
     }
     setValueUnit(value, unit)
     {
@@ -727,6 +810,7 @@ class Variable{
         this.value = null;
         this.valueType = null;
         this.valueNegated = false;
+        this.valueSource = null;
 
         this.unitDisplay.removeEventListener("click", this.unitChangeHandler);
         this.valueDisplay.dataset.status = "empty";
@@ -734,6 +818,8 @@ class Variable{
 
         Window.windowManager.shiftActiveEqUp(this.id);
 
+        // pushing event
+        Window.jsavObject.logEvent({type: "deforms-variable-remove-value", desc: this.id});
     }
     grayOut()
     {
@@ -770,6 +856,11 @@ class Variable{
         }
         this.parentSymbol = this.parentSymbolTemplate;
         this.grayOut();
+
+        // pushing event
+        Window.jsavObject.logEvent({type: "deforms-variable-change-name", desc: {
+            name: this.id, newName: this.parentSymbol
+        }});
     }
     getParentEquationId()
     {

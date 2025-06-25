@@ -4,15 +4,22 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Introduction to Object-Oriented Programming
    :author: Dave Parillo
+   :institution: San Diego Mesa College
    :requires: ADT
    :satisfies: OO Intro
    :topic: Introduction
+   :keyword: Object-Oriented Programming
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to object-oriented programming topics.
 
-Introduction to Object Oriented Programming
+
+Introduction to Object-Oriented Programming
 ===========================================
 
-Introduction to Object Oriented Programming
+Introduction to Object-Oriented Programming
 -------------------------------------------
 
 Object-oriented programming (OOP) is a programming paradigm based on the 
@@ -410,3 +417,4 @@ development of very large programs.
 
 .. avembed:: Exercises/CMP/CMoopSumm.html ka
    :long_name: Concept map OOP exercises
+   :keyword: Concept Map; Introduction to Object-Oriented Programming

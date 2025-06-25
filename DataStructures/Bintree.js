@@ -55,6 +55,12 @@ JSAV.ext.ds.bintree = function(options) {
 			left: 50
 		}, options);
 	  }
+	    // CAS
+	    this.options = $.extend({
+		top: 40,
+		left: 50
+	    }, options);
+
 	  this.qdt = jsav.ds.binarytree(this.options);
 	  this.qdt.root("");
 	  this.qdt.root().addClass('bintreeemptyleaf');
@@ -145,7 +151,7 @@ JSAV.ext.ds.bintree = function(options) {
 	      pointer.show();
 	      this.qdt.layout();
 	      this.jsav.step();
-	      this.jsav.umsg("After spliting, now we need re-insert points.");
+	      this.jsav.umsg("After splitting, we need re-insert points.");
 	      pointer.hide();
 	    }
 	    return this.split(rt, point, x, y, w, h);
@@ -153,7 +159,7 @@ JSAV.ext.ds.bintree = function(options) {
 	  // will not split now print jsav
 	  if (noClick) { // jsav output active
 	    this.jsav.step();
-	    this.jsav.umsg("Pointer reach leaf node and we can insert now.");
+	    this.jsav.umsg("Pointer has reached leaf node and we can insert now.");
 	    (pointer === undefined) ? pointer = this.jsav.pointer("curr quad", rt): pointer.hide();
 	    pointer.show();
 	    this.qdt.layout();
@@ -228,7 +234,7 @@ JSAV.ext.ds.bintree = function(options) {
 	  } else {
 	    if (noClick) {
 	      this.jsav.step();
-	      this.jsav.umsg("Pointer reach leaf node-remove.");
+	      this.jsav.umsg("Pointer has reached leaf and we can remove now.");
 	      pointer = this.jsav.pointer("curr quad", rt); //);
 	      pointer.show();
 	      this.jsav.step();
@@ -239,7 +245,7 @@ JSAV.ext.ds.bintree = function(options) {
 	  }
 	  if (noClick) {
 	    this.jsav.step();
-	    this.jsav.umsg("Pointer reach leaf node-remove.");
+	    this.jsav.umsg("Pointer has reached leaf and we can remove now.");
 	    pointer = this.jsav.pointer("curr quad", rt); //);
 	    pointer.show();
 	    this.jsav.step();
@@ -454,7 +460,7 @@ JSAV.ext.ds.bintree = function(options) {
 	      } else if (arr.length <= numPoint) { // number of point allowed can feet and we need to merge
 	        if (noClick) {
 	          this.jsav.step();
-	          this.jsav.umsg("After removeing " + point.getName() + ", leaf belonging to this internal do not have enought point to remain splitted so we must merge.");
+	          this.jsav.umsg("After removing " + point.getName() + ", leaves belonging to this internal node do not have enought points so we must merge.");
 	          pointer.show();
 	          this.jsav.step();
 	          this.jsav.umsg("This is the current state of the tree after merging.");

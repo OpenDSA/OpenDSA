@@ -1,8 +1,19 @@
 // Written by Irena Shaffer
+
+// Title: Discrete Fourier Transform Matrix
+// Author: Irena Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Polynomial Multiplication; Fast Fourier Transform
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Demonstration of multiplying by the FFT symmetry matrix for the 8th power of unity. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "DFTmatrixCON";
   var av = new JSAV(av_name);
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
   var ytop = 0;
 
   // Slide 1

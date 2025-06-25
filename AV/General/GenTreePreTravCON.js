@@ -1,7 +1,16 @@
+// Title: General Tree Preorder Traversal Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: General Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing preorder traveral of a general tree, and demonstrates the general tree ADT. */
+
 /*global ODSA */
-"use strict";
 // Pre-order traversal slideshow
 $(document).ready(function () {
+  "use strict";
   var av_name = "GenTreePreTravCON";
   var config = ODSA.UTILS.loadConfig({"av_name": av_name}),
       interpret = config.interpreter,       // get the interpreter

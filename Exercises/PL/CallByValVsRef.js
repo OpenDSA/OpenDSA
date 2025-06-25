@@ -345,7 +345,7 @@
 		else if (A.isVarExp(exp)) {
 		    return E.lookup(envir,A.getVarExpId(exp));
 		} else if (A.isPrintExp(exp)) {
-		    SL.output += JSON.stringify(
+		    SL.output +=  JSON.stringify(
 			evalExpCallByValVsRef( A.getPrintExpExp(exp), envir ));
 		} else if (A.isPrint2Exp(exp)) {
 		    SL.output += A.getPrint2ExpString(exp) +
@@ -416,7 +416,7 @@
 		    this.answer = SL.output.match(/-?\d+/g).join(" ");
 		    break;
 		}
-		if (iterations>500) {
+		if (iterations > 500) {
 		    // not needed locally but might be needed on Canvas
 		    // when the files do not load appropriately???
 		    expStr = ["Something went wrong...",
@@ -426,8 +426,8 @@
 	    }
 
 	    this.expression = expStr.join("<br />");
-	    
-	    //console.log(this.answer);
+	    this.hint3 =  "</br><span style=\"font-family: 'Courier New'\">"
+		+ SL.output.match(/-?\d+/g).join("</br>") + "</span>";
 	},// init function
 
 	validateAnswer: function (guess) {

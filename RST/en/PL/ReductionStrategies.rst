@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Reduction Strategies
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses reduction strategies in the lambda calculus.
 
 
 Reduction Strategies
@@ -26,8 +32,8 @@ can be defined simply in terms of substitution:
 :math:`(\lambda p.b \; a) \equiv subst(a,p,b)` 
 
 But there is an additional consideration involved: :math:`a` and :math:`b` in the preceding :math:`\beta`-redex
-can each contain
-:math:`\beta`-redexes themselves. We then need to recursively reduce them,
+may themselves contain
+:math:`\beta`-redexes. We then need to recursively reduce them,
 which raises the following questions:
 
 #.  Which redex should we reduce first, the top-level redex, or a nested
@@ -119,8 +125,6 @@ are ready to tackle the practice problems that follow.
 
 .. avembed:: AV/PL/LCPractice.html ss
 
-
-      
       
 Beta-Reduction Order (1)
 ------------------------

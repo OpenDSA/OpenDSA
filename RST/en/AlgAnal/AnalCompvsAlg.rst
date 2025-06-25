@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Faster Computer, or Faster Algorithm?
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: growth rate
    :satisfies:
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Growth Rate
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Compares the results of increasing processor speed vs. improving asymptotic complexity of an algorithm.
+
 
 Faster Computer, or Faster Algorithm?
 =====================================
@@ -179,3 +186,4 @@ problem size that can run in a certain time on the new computer.
 
 .. avembed:: Exercises/AlgAnal/FasterCorASumm.html ka
    :long_name: Faster Computer or Faster Algorithm Exercise
+   :keyword: Algorithm Analysis; Growth Rate

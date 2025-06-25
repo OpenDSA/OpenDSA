@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Functional Programming: Continuation Passing
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Functional Programming
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow illustrating continuation passing in a functional programming language. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "FP9Code1CON";
@@ -72,7 +82,7 @@ $(document).ready(function() {
     av.umsg('To start the CPS version of our product function, we call on a helper function called cps_product.  Note from line 2 that cps_product takes a second parameter beyond the list ns.   We call the second parameter, here denoted by k, the continuation.  It is a function and in the top-level call made to cps_product, we "initialize" k to the identity function.   Hence at this level, the closure of cps_product contains a variable k that is the identity function.  As we progress, you will see why that choice was made.');
 
     var cloid = av.g.rect(closure_x+30, closure_y+90, closure_w - 60, closure_h - 120).show();
-    console.log(typeof cloid);
+    //console.log(typeof cloid);
     labid.show();
     labcps_cont.show();
     pseudo1.highlight("topcall");

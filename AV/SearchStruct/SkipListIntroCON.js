@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Skip List Introduction Slideshow
+// Author: Souleymane Dia; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Skip List
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing an idealized version of the Skip List as an introduction to the concepts. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "SkipListIntroCON";
@@ -7,7 +17,7 @@ $(document).ready(function() {
   var jsav = new JSAV(av_name);
 
   // Slide 1
-  jsav.umsg("Here we will illustrate the skip list concept. A skip list can be viewed as a sorted linked list with some extra pointers. We start with a simple linked list whose nodes are ordered by key value. To search this list requires that we move down the list one node at a time, visiting O(n) nodes in the average case.");
+  jsav.umsg("Here we illustrate the skip list concept. A skip list can be viewed as a sorted linked list with some extra pointers. We start with a simple linked list whose nodes are ordered by key value. To search this list requires that we move down the list one node at a time, visiting O(n) nodes in the average case.");
   var ll = new SkipList(jsav);
   isStepShown(false);
   var a = new KVPair(5, "A");

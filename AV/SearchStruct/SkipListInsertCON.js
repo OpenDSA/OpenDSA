@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Skip List Insert Slideshow
+// Author: Souleymane Dia; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Skip List; Randomized Algorithm
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing examples of insertion into a Skip List. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "SkipListInsertCON";
@@ -7,7 +17,7 @@ $(document).ready(function() {
 var jsav = new JSAV(av_name, {left: 250});
 
   // Slide 1
-  jsav.umsg("Now we will illustrate skip list insertion. The skip list is initialized with a header node of level 0, whose forward pointer is set to null. The top item shows the value associated with the skip list node. The head node is special so has the value \"Hd\".");
+  jsav.umsg("Now we illustrate skip list insertion. The skip list is initialized with a header node of level 0, whose forward pointer is set to null. The top item shows the value associated with the skip list node. The head node is special so, has the value \"Hd\".");
   var ll = new SkipList(jsav);
   jsav.displayInit();
 

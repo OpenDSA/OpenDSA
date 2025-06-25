@@ -22,7 +22,7 @@ Math Background
    |    Provide a summary of necessary math background
         (Discrete Math). This is more coverage of this topic than I do
         in CS3114.
-   |    P1 intro: Signficant design discussion
+   |    P1 intro: Significant design discussion
 
    | Relationship to CSOs:
    |    CSO...
@@ -37,9 +37,9 @@ Math Background
    | **Powerset**: All subsets of a set (including the set itself, and the
      empty set): :math:`2^S` if there are :math:`S` elements in the
      set.
-   | **Bag**: Elements are distinishable even with same value, but
+   | **Bag**: Elements are distinguishable even with same value, but
      there is no concept of order.
-   | **Sequence**: Distingishable elements in some order (can have
+   | **Sequence**: Distinguishable elements in some order (can have
      duplicates).
 
 
@@ -95,7 +95,7 @@ Math Background
    | Factorial function
    | A **permutation** of a sequence :math:`\mathbf{S}`
      is simply the members of :math:`\mathbf{S}` arranged in some
-     order. For :math:`|S|` elements, there are :math:`|S|!` permuations.
+     order. For :math:`|S|` elements, there are :math:`|S|!` permutations.
    | **Mod function**: Returns the remainder of an integer division.
      Sometimes written :math:`n \bmod m` in mathematical expressions,
      the syntax in many programming languages is ``n % m``.
@@ -116,18 +116,25 @@ Math Background
 .. slide:: Summations and Recurrences
    
    .. math::
-      \sum_{i = 1}^{n} i &=& \frac{n (n+1)}{2}.
-
-   .. math::
-      \sum_{i = 1}^{n} \frac{1}{2^i} &=& 1 - \frac{1}{2^n},
-
-   .. math::
-      \sum_{i = 0}^{n} 2^i &=& 2^{n+1} - 1.
+      \Huge \sum_{i = 1}^{n} i =& \Huge \frac{n (n+1)}{2} \\
+      \Huge \sum_{i = 1}^{n} \frac{1}{2^i} =& \Huge 1 - \frac{1}{2^n} \\
+      \Huge \sum_{i = 0}^{n} 2^i =& \Huge 2^{n+1} - 1
 
    | Factorial: 
+   | :math:`n! = (n-1)! \cdot n\ \mbox{for}\ n>1; \quad 1! = 0! = 1`.
 
-     .. math::
-        n! = (n-1)! \cdot n\ \mbox{for}\ n>1; \quad 1! = 0! = 1.
+
+.. slide:: Induction Proofs
+
+   | We use these for some proofs (of space requirements or algorithmic
+     cost).
+   |
+   | Hopefully you are familiar with these from a Discrete Math course.
+   |   If not, study the module on this.
+   |
+   | Induction and Recursion are nearly identical.
+   |   The recursive call on a smaller input is exactly the same as
+       assuming the induction hypothesis to be true for :math:`k < n`.
 
 
 .. slide:: Estimation Techniques
@@ -143,7 +150,7 @@ Math Background
 
 .. slide:: Estimation Example
 
-   | How many library bookcasese does it take to store books totalling
+   | How many library bookcases does it take to store books totaling
      one million pages?
 
    | Estimate

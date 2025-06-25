@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Heapsort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: heap
    :satisfies: heapsort
    :topic: Sorting
+   :keyword: Heapsort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Heapsort, including visualizations and practice exercises.
 
 .. index:: ! Heapsort
 
@@ -61,6 +67,7 @@ used when sorting data sets too large to fit in main memory.
    :links: 
    :scripts: DataStructures/binaryheap.js AV/Sorting/heapsortCON.js
    :output: show
+   :keyword: Sorting; Heapsort
 
 A complete implementation is as follows.
 
@@ -71,6 +78,7 @@ Here is a warmup practice exercise for Heapsort.
 
 .. avembed:: Exercises/Sorting/HeapsortStepPRO.html ka
    :long_name: Heapsort RemoveMax Proficiency Exercise
+   :keyword: Sorting; Heapsort
 
 
 Heapsort Proficiency Practice
@@ -81,6 +89,7 @@ Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/heapsortPRO.html pe
    :long_name: Heapsort Proficiency Exercise
+   :keyword: Sorting; Heapsort
 
 
 Heapsort Analysis
@@ -93,6 +102,7 @@ This visualization presents the running time analysis of Heap Sort
    :links: AV/Sorting/HeapSortAnalysisCON.css
    :scripts: DataStructures/binaryheap.js AV/Sorting/HeapSortAnalysisCON.js
    :output: show
+   :keyword: Sorting; Heapsort
 
 While typically slower than Quicksort by a constant factor
 (because unloading the heap using ``removemax`` is somewhat slower
@@ -121,9 +131,13 @@ Thus, only a relatively small fraction of the edges need be sorted.
 Another special case arises when all of the records being sorted have
 the same key value.
 This represents the best case for Heapsort.
-This is because removing the smallest value requires only constant
+This is because removing the largest value requires only constant
 time, since the value swapped to the top is never pushed down the
-heap.
+heap (since all the key values are equal).
+This would be repeated to remove the :math:`n` elements from
+the heap each in constant time, for a total best-case time of
+:math:`\Theta(n)`.
 
 .. avembed:: Exercises/Sorting/HeapsortSumm.html ka
    :long_name: Heapsort Summary Exercise
+   :keyword: Sorting; Heapsort

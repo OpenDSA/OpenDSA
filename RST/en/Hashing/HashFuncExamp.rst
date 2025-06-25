@@ -4,9 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Sample Hash Functions
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: hash function
    :topic: Hashing
+   :keyword: Hash Function
+   :naturallanguage: en
+   :programminglanguage: Java; C++
+   :description: Introduction to a sampling of hash functions, and why some are better than others.
+
 
 Sample Hash Functions
 =====================
@@ -30,6 +37,7 @@ Here "%" is the symbol for the mod function.
    :links: 
    :scripts: AV/Hashing/hashFuncExCON1.js
    :output: show
+   :keyword: Hashing; Hash Functions
 
 Recall that the values 0 to 15 can be represented with four bits
 (i.e., 0000 to 1111).
@@ -74,6 +82,7 @@ on the first letter in the string.
    :links: 
    :scripts: AV/Hashing/hashFuncExCON2.js
    :output: show
+   :keyword: Hashing; Hash Functions
 
 In general with binning we store the record with key value :math:`i`
 at array position :math:`i/X` for some value :math:`X`
@@ -182,6 +191,7 @@ Start with '4567' as an example.
 
 .. avembed:: AV/Hashing/MidSquare.html pe
    :long_name: Mid-Square Calculator
+   :keyword: Hashing; Hash Functions
 
 
 A Simple Hash Function for Strings
@@ -230,6 +240,7 @@ Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSimple.html pe
    :long_name: Simple String Folding Calculator
+   :keyword: Hashing; Hash Functions
 
 
 String Folding
@@ -260,6 +271,7 @@ Now you can try it out with this calculator.
 
 .. avembed:: AV/Hashing/StringSfold.html pe
    :long_name: Improved String Folding Calculator
+   :keyword: Hashing; Hash Functions
 
 For any sufficiently long string, the sum for the integer
 quantities will typically cause a 32-bit integer to overflow
@@ -288,6 +300,7 @@ functions.
 
 .. avembed:: Exercises/Hashing/HashFuncFIBSumm.html ka
    :long_name: Hash Function Pick Slot Summary
+   :keyword: Hashing; Hash Functions
 
 
 Hash Function Review Questions
@@ -297,3 +310,4 @@ Here are some review questions.
 
 .. avembed:: Exercises/Hashing/HashFuncSumm.html ka
    :long_name: Hash Function Summary Exercise
+   :keyword: Hashing; Hash Functions

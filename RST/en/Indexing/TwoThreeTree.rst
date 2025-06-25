@@ -4,9 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: 2-3 Trees
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: 2-3 tree
    :topic: Indexing
+   :keyword: Indexing; 2-3 Tree
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents the 2-3 Tree Data Structure.
 
 2-3 Trees
 =========
@@ -47,6 +53,7 @@ Here is an example 2-3 tree.
    :links: AV/Indexing/twoThreeTreeCON.css
    :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/twoThreedgmCON.js
    :align: center
+   :keyword: Indexing; 2-3 Trees
 
    An example of a 2-3 tree.
 
@@ -114,6 +121,7 @@ illustrated in the following visualization.
    :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/simpleInsertCON.js
    :output: show
    :align: justify
+   :keyword: Indexing; 2-3 Trees
 
 If we insert the new record into a leaf node :math:`L` that already
 contains two records, then more space must be created.
@@ -142,6 +150,7 @@ Here is an example of a a simple promotion.
    :links: AV/Indexing/twoThreeTreeCON.css
    :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/promoteCON.js
    :output: show
+   :keyword: Indexing; 2-3 Trees
 
 Here is an illustration for what happens when promotions
 require the root to split, adding a new level to the tree.
@@ -154,6 +163,7 @@ Note that all leaf nodes continue to have equal depth.
    :links: AV/Indexing/twoThreeTreeCON.css
    :scripts: AV/Indexing/twoThreeTreeCON.js AV/Indexing/splitCON.js
    :output: show
+   :keyword: Indexing; 2-3 Trees
 
 Here is an implementation for the insertion process.
 

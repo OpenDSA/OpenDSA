@@ -15,7 +15,7 @@
 }
 
 #BSTinsertCON .jsavoutput.jsavline {
-  height: 30px;
+  height: 60px;
 }
 
 #BSTinsertCON .jsavtree { 
@@ -27,7 +27,7 @@
 }
 
 #BSTdeletemaxCON .jsavoutput.jsavline {
-  height: 30px;
+  height: 40px;
 }
 
 #BSTdeletemaxCON .jsavcode{
@@ -39,7 +39,7 @@
 }
 
 #BSTremoveCON .jsavoutput.jsavline {
-  height: 30px;
+  height: 40px;
 }
 
 #BSTremoveCON .jsavtree { 

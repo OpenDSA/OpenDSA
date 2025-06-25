@@ -1,5 +1,5 @@
 // Fraction class
-class Fraction 
+class Fraction {
   int numerator, denominator;
 
   // Fraction constructor

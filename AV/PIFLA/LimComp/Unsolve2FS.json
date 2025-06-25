@@ -1,0 +1,36 @@
+{
+  "translations": {
+    "en": {
+      "unsolveable": {
+        "type": "multiple",
+        "description":"Now that we have proved that the Halting Problem is unsolvable, we can use reduction arguments to prove that other problems are also unsolvable. The strategy is to assume the existence of a computer program that solves the problem in question and use that program to solve another problem that is already known to be unsolvable.",
+        "question":"Other problems can be proved to be unsolvable by using reduction arguments once the halting problem is known to be unsolvable.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "reduction": {
+        "type": "multiple",
+        "description": "Now that we have proved that the Halting Problem is unsolvable, we can use reduction arguments to prove that other problems are also unsolvable. The strategy is to assume the existence of a computer program that solves the problem in question and use that program to solve another problem that is already known to be unsolvable.",
+        "question": "A problem can be proved to be unsolvable by assuming the existence of a computer program that solves the program in question and use that program to solve another problem that is known to be unsolvable.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "special": {
+        "type": "multiple",
+        "description": "This does not mean that a computer program cannot be written that works on special cases, possibly even on most programs that we would be interested in checking. For example, some C compilers will check if the control expression for a while loop is a constant expression that evaluates to <i>FALSE</i>. If it is, the compiler will issue a warning that the while loop code will never be executed. ",
+        "question": "The halting problem is unsolvable because a computer program cannot be written that works on special cases.",
+        "answer":  "False",
+        "choices": ["True", "False"]
+      },
+      "line": {
+        "type": "multiple",
+        "description": "Programmers find this special case useful enough to make it worth including in the compiler. However, it is not possible to write a computer program that can check for all input programs whether a specified line of code will be executed when the program is given some specified input.",
+        "question": "Is it possible to write a computer program to check for all input programs whether a specified line of code will be executed when a program is given some specified input?",
+        "answer": "No",
+        "choices": ["Yes", "No"]
+      }
+
+    }
+  }
+}
+

@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binsort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology
    :satisfies: binsort
    :topic: Sorting
+   :keyword: Binsort; Bucket Sort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Binsort, including visualizations.
 
 .. index:: ! Binsort
 
@@ -42,6 +48,7 @@ numbers 0 through :math:`n-1`.
    :links: 
    :scripts: AV/Sorting/binsortS1CON.js
    :output: show
+   :keyword: Sorting; Binsort; Bucket Sort
 
 Here the key value is used to determine the
 position for a record in the final sorted array.
@@ -88,6 +95,7 @@ values fall in the range from 0 to ``MaxKeyValue``.
    :links: 
    :scripts: AV/Sorting/binsortS2CON.js
    :output: show
+   :keyword: Sorting; Binsort; Bucket Sort
 
 The total work required is simply that needed to place each record
 into the appropriate bin and then take all of the records out of the

@@ -19,7 +19,7 @@ Introduction
 
 .. slide:: Course Introduction
 
-   Goals of this Course
+   Content Goals for this Course
 
    * Reinforce the concept that costs and benefits exist for every data
      structure.
@@ -29,10 +29,14 @@ Introduction
       * These techniques also allow you to judge the merits of new data
         structures that you or others might invent.
 
+
 .. slide:: Costs and Benefits
 
    * Each data structure has costs and benefits.
-      * Rarely is one data structure better than another in all situations.
+      * Rarely is one data structure better than another in all
+        situations.
+      * We talk about a lot of data structures and algorithms that
+        have stood the test of time.
    * Any data structure requires:
       * space for each data item it stores,
       * time to perform each basic operation,
@@ -40,7 +44,8 @@ Introduction
    * Only after a careful analysis of problem characteristics can we
      know the best data structure for a task.
 
-.. slide:: Data Structure
+     
+.. slide:: Data Structure: Definition
 
    * A data structure is the physical implementation of an ADT.
       * Each operation associated with the ADT is implemented by one
@@ -50,19 +55,21 @@ Introduction
    * File structure: an organization for data on peripheral storage, such
      as a disk drive.
 
+     
 .. slide:: Logical vs. Physical Form
 
    * Data items have both a logical and a physical form.
 
-   * Logical form: definition of the data item within an ADT.
+   * Logical form: definition of the data item as an ADT.
 
-     * Ex: Integers in mathematical sense: +, -
+     * Ex: Integers in mathematical sense: operators +, -
 
    * Physical form: implementation of the data item within a data
      structure.
 
      * Ex: 32/64 bit integers, overflow.
 
+       
 .. slide:: Logical vs. Physical Form (2)
 
    .. inlineav:: ADTCON dgm

@@ -1,0 +1,140 @@
+{
+  "translations": {
+    "en": {
+      "closed": {
+        "type": "select",
+        "description": "Similar to regular languages, CFLs are closed under certain properties.",
+        "question": "CFLs being closed under certain properties means that if we applied an operator on CFLs, the result must be a CFL.",
+        "answer": "True",
+        "choices": []
+      },
+      "PDACFG": {
+        "type": "select",
+        "description": "Similar to regular languages, CFLs are closed under certain properties.",
+        "question": "Given  two CFLs $L_1$ and $L_2$, what do we know for certain about them?",
+        "answer": ["Both have a CFG", "Both have a PDA"],
+        "choices": ["Both have a CFG", "Both have a PDA"]
+      },
+      "unionVar": {
+        "type": "select",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>We can create a new CFG that adds a new start variable (call it $S_3$) with production rules to invoke the start variables of $G_1$ and $G_2$. So CFLs are closed under union.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the union between $L_1$ and $L_2$. What is $V_3$?",
+        "answer": "$V_3 = V_1 \\cup V_2\\cup \\{S_3\\}$",
+        "choices": ["$V_3 = V_1$", "$V_3 = V_2$", "$V_3 = V_1 \\cup V_2$", "$V_3 = V_1 \\cup V_2\\cup \\{S_3\\}$"]
+      },
+      "unionTerm": {
+        "type": "select",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>We can create a new CFG that adds a new start variable (call it $S_3$) with production rules to invoke the start variables of $G_1$ and $G_2$. So CFLs are closed under union.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the union between $L_1$ and $L_2$. What is $T_3$?",
+        "answer": "$T_3 = T_1 \\cup T_2$",
+        "choices": ["$T_3 = T_1$", "$T_3 = T_2$", "$T_3 = T_1 \\cup T_2$", "$T_3 = T_1 \\cup T_2\\cup \\{S_3\\}$"]
+      },
+      "unionProd": {
+        "type": "select",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>We can create a new CFG that adds a new start variable (call it $S_3$) with production rules to invoke the start variables of $G_1$ and $G_2$. So CFLs are closed under union.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the union between $L_1$ and $L_2$. What is $P_3$?",
+        "answer": "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1 | S_2 \\}$",
+        "choices": ["$P_3 = P_1$", "$P_3 = P_2$", "$P_3 = P_1 \\cup P_2$", "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1 | S_2 \\}$"]
+      },
+      "concatVar": {
+        "type": "select",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>Similar to how we proved that union is closed, we know that CFLs are closed under concatenation because we can create a new CFG that adds a new start variable (call it $S_3$) with a production rule $S_3 \\rightarrow S_1S_2$.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the concatenation between $L_1$ and $L_2$. What is $V_3$?",
+        "answer": "$V_3 = V_1 \\cup V_2\\cup \\{S_3\\}$",
+        "choices": ["$V_3 = V_1$", "$V_3 = V_2$", "$V_3 = V_1 \\cup V_2$", "$V_3 = V_1 \\cup V_2\\cup \\{S_3\\}$"]
+      },
+      "concatTerm": {
+        "type": "select",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>Similar to how we proved that union is closed, we know that CFLs are closed under concatenation because we can create a new CFG that adds a new start variable (call it $S_3$) with a production rule $S_3 \\rightarrow S_1S_2$.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the concatenation between $L_1$ and $L_2$. What is $T_3$?",
+        "answer": "$T_3 = T_1 \\cup T_2$",
+        "choices": ["$T_3 = T_1$", "$T_3 = T_2$", "$T_3 = T_1 \\cup T_2$", "$T_3 = T_1 \\cup T_2\\cup \\{S_3\\}$"]
+      },
+      "concatProd": {
+        "type": "select",
+        "description": "Consider two CFG $G_1=(V_1,T_1,S_1,P_1)$ and $G_2=(V_2,T_2,S_2,P_2)$.<br/>Similar to how we proved that union is closed, we know that CFLs are closed under concatenation because we can create a new CFG that adds a new start variable (call it $S_3$) with a production rule $S_3 \\rightarrow S_1S_2$.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the concatenation between $L_1$ and $L_2$. What is $P_3$?",
+        "answer": "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1\\ S_2 \\}$",
+        "choices": ["$P_3 = P_1$", "$P_3 = P_2$", "$P_3 = P_1 \\cup P_2$", "$P_3 = P_1 \\cup P_2 \\cup \\{S_3 \\rightarrow S_1\\ S_2 \\}$"]
+      },
+      "starVar": {
+        "type": "select",
+        "description": "Consider CFG $G_1=(V_1,T_1,S_1,P_1)$. We can see that the star operator is closed for CFLs because we can modify the grammar to add a new variable $S_3$ and a new production rule $S_3 \\rightarrow S_1S_3\\ |\\ \\lambda$.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Star-Closure of $L_1$. What is $V_3$?",
+        "answer": "$V_3 = V_1 \\cup \\{S_3\\}$",
+        "choices": ["$V_3 = V_1$", "$V_3 = V_1 \\cup \\{S_3\\}$"]
+      },
+      "starTerm": {
+        "type": "select",
+        "description": "Consider CFG $G_1=(V_1,T_1,S_1,P_1)$. We can see that the star operator is closed for CFLs because we can modify the grammar to add a new variable $S_3$ and a new production rule $S_3 \\rightarrow S_1S_3\\ |\\ \\lambda$.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Star-Closure of $L_1$. What is $T_3$?",
+        "answer": "$T_3 = T_1$",
+        "choices": ["$T_3 = T_1$", "$T_3 = T_1 \\cup \\{*\\}$"]
+      },
+      "starProd": {
+        "type": "select",
+        "description": "Consider CFG $G_1=(V_1,T_1,S_1,P_1)$. We can see that the star operator is closed for CFLs because we can modify the grammar to add a new variable $S_3$ and a new production rule $S_3 \\rightarrow S_1S_3\\ |\\ \\lambda$.",
+        "question": "Suppose that $G_3 = (V_3,T_3,S_3,P_3)$ is the grammar for the Star-Closure of $L_1$. What is $P_3$?",
+        "answer": "$P_3 = P_1 \\cup \\{S_3 \\rightarrow S_1\\ S_3 \\mid \\lambda\\}$",
+        "choices": ["$P_3 = P_1$", "$P_3 = P_1 \\cup \\{S_3 \\rightarrow S_1\\ S_3\\}$", "$P_3 = P_1 \\cup \\{S_3 \\rightarrow S_1\\ S_3 \\mid \\lambda\\}$"]
+      },
+      "counter": {
+        "type": "select",
+        "description": "<b>Theorem:</b> CFL's are not closed under intersection and complementation.",
+        "question": "To prove that something is not true, we can just provide an example that negates the rule",
+        "answer": "True",
+        "choices": []
+      },
+      "twoCFL": {
+        "type": "select",
+        "description": "<b>Theorem:</b> CFL's are not closed under intersection.",
+        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and<br/>$L_2 = \\{a^nb^mc^m | n,m> 0\\}$. Are $L_1$ and $L_2$ CFL?",
+        "answer": "Yes",
+        "choices": ["$L_1$ is not CFL", "$L_2$ is not CFL", "Yes"]
+      },
+      "anbncn": {
+        "type": "select",
+        "description": "<b>Theorem:</b> CFL's are not closed under intersection.",
+        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and<br/>$L_2 = \\{a^nb^mc^m | n,m> 0\\}$. $L_1 \\cap L_2 = \\{a^nb^nc^n | n >0 \\}$.",
+        "answer": "True",
+        "choices": [],
+        "correctFeedback": ["We have not yet proved that $\\{a^nb^nc^n | n >0 \\}$ is not CFL. But for now, you can safely accept that this is the case."]
+      },
+      "intersect": {
+        "type": "select",
+        "description": "<b>Theorem:</b> CFL's are not closed under intersection.",
+        "question": "Let $L_1 = \\{a^nb^nc^m | n,m > 0\\}$ and<br/>$L_2 = \\{a^nb^mc^m | n,m> 0\\}$. $L_1 \\cap L_2 = \\{a^nb^nc^n | n >0 \\}$, which is not a CFL. So CFLs are not closed under intersection.",
+        "answer": "True",
+        "choices": []
+      },
+      "comp": {
+        "type": "select",
+        "description": "<b>Theorem:</b> CFL's are not closed under complementation.<br/><br/>DeMorgan's Law: $L_1 \\cap L_2 = \\overline{\\overline{L_1} \\cup \\overline{L_2}}$.<br/>This equation defines intersection (now known <b>not</b> to be closed for CFLs), union (known to be closed for CFLs), and negation.",
+        "question": "Union is closed for CFLs, and DeMorgan's law shows how to build intersection from union and negation. Therefore if negation were closed for CFLs, then the consequence would be that intersection must be closed for CFLs as well. We know that intersection is not closed for CFLs. The only conclusion is that negation is also not closed for CFLs.",
+        "answer": "True",
+        "choices": []
+      },
+      "reginter1": {
+        "type": "select",
+        "description": "As a special case, the intersection between a regular language and a CFL is called <b>regular intersection</b>.",
+        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w$ has an even number of b’s$\\}$, $\\Sigma =\\{a,b\\}$. $L_1$ is a:",
+        "answer": "CFL",
+        "choices": ["CFL", "Regular Language"]
+      },
+      "reginter2": {
+        "type": "select",
+        "description": "As a special case, the intersection between a regular language and a CFL is called <b>regular intersection</b>.",
+        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w$ has an even number of b’s$\\}$, $\\Sigma =\\{a,b\\}$. $L_2$ is a:",
+        "answer": "Regular Language",
+        "choices": ["CFL", "Regular Language"]
+      },
+      "reginter3": {
+        "type": "select",
+        "description": "As a special case, the intersection between a regular language and a CFL is called <b>regular intersection</b>.",
+        "question": "Suppose that $L_1 = \\{a^nb^ma^n | m> 0, n>0 \\}$, and $L_2 = \\{w | w$ has an even number of b’s$\\}$, $\\Sigma =\\{a,b\\}$. $L_1 \\cap L_2 = \\{a^nb^mb^ma^n\\}$ is a:",
+        "answer": "CFL",
+        "choices": ["CFL", "Regular Language"]
+      }
+    }
+  }
+}

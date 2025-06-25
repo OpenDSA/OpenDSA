@@ -3,10 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: External Sorting
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: file processing; disk drives
    :topic: External Sorting
+   :keyword: File Processing; External Sorting
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to external sorting, intitial run production using replacement selection, and multi-way merge.
+
 
 External Sorting
 ================
@@ -227,6 +234,7 @@ Here is a sketch of the algorithm.
    :links: AV/Files/extsortCON.css
    :scripts: DataStructures/binaryheap.js AV/Files/extMergeSortCON.js
    :output: show
+   :keyword: File Processing; External Sorting
 
 #. Split the original file into two equal-sized
    :term:`run files <run file>`.
@@ -286,6 +294,7 @@ sorted run.
    :links: AV/Files/extsortCON.css
    :scripts: DataStructures/binaryheap.js AV/Files/extMergeSortExampCON.js
    :output: show
+   :keyword: File Processing; External Sorting
 
 We can extend this concept to improve performance even
 further.
@@ -362,6 +371,7 @@ This process is illustrated by Figure :num:`Figure #RSOver`.
    :links: AV/Files/extsortCON.css
    :scripts: DataStructures/binaryheap.js AV/Files/extSortOverCON.js
    :align: justify
+   :keyword: File Processing; External Sorting
 
    Overview of replacement selection.
    Input records are processed sequentially.
@@ -426,6 +436,7 @@ by replacement selection.
    :links: AV/Files/extsortCON.css
    :scripts: DataStructures/binaryheap.js AV/Files/extRSCON.js
    :output: show
+   :keyword: File Processing; External Sorting
 
 It should be clear that the minimum length of a run will be :math:`M`
 records if the size of the heap is :math:`M`, because at least those
@@ -469,6 +480,7 @@ revolution (leaving :math:`S` snow behind).
    :links: AV/Files/extsortCON.css
    :scripts: DataStructures/binaryheap.js AV/Files/extSortSnowCON.js
    :align: justify
+   :keyword: File Processing; External Sorting
 
    The snowplow analogy showing the action during one
    revolution of the snowplow.
@@ -499,6 +511,7 @@ change the length of the run.
 
 .. avembed:: AV/Files/extRSPRO.html pe
    :long_name: Replacement Selection Proficiency Exercise
+   :keyword: File Processing; External Sorting
 
 
 Multiway Merging
@@ -543,6 +556,7 @@ The following slideshow illustrates a multiway merge.
    :links: AV/Files/extsortCON.css
    :scripts: DataStructures/binaryheap.js AV/Files/extMultiMergeCON.js
    :output: show
+   :keyword: File Processing; External Sorting
 
 Conceptually, multiway merge assumes that each run is stored in a
 separate file.
@@ -562,6 +576,7 @@ processing is on a single disk drive), no time is lost by doing so.
 
 .. avembed:: AV/Files/extMultiMergePRO.html pe
    :long_name: Multi-way Merge Proficiency Exercise
+   :keyword: File Processing; External Sorting
 
 Multiway merging can greatly reduce the number of passes required.
 If there is room in memory to store one block for each run, then all

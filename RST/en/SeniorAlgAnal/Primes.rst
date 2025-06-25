@@ -3,16 +3,22 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Finding Prime Numbers
    :author: Cliff Shaffer
-   :topic:
+   :institution: Virginia Tech
+   :topic: Prime Number Algorithms
+   :keyword: Prime Number Algorithms
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Brief introduction to algorithms to determine if a number is prime, for a senior-level algorithms course.
 
 Finding Prime Numbers
 =====================
 
 How do we tell if a number is prime?
-One approach is the prime sieve: Test all prime up to
-:math:`\lfloor\sqrt{n}\rfloor`.
+One approach is the prime sieve:
+Test all primes up to :math:`\lfloor\sqrt{n}\rfloor`.
 This requires up to :math:`\lfloor\sqrt{n}\rfloor -1` divisions.
 
 How does the cost of this algorithm compare to the input size?
@@ -28,18 +34,18 @@ What if :math:`n` were represented in trinary?
 Then it would be easy to check for divisions by 3.
 
 In general, is there a polynomial time algorithm?
-We don't know of one (and that fact is important to modern
+We don't know of one (and this is important to modern
 cryptography, which relies on the "fact" that factoring large numbers
-takes a lot of time.
-But what if we are willing to settle for a
-probabilistic algorithm?
+takes a lot of time).
+But what if we are willing to settle for a probabilistic algorithm?
 
 Here are some useful theorems from Number Theory:
 
 * **Prime Number Theorem**: The number of primes less than :math:`n` is
   (approximately) :math:`\frac{n}{\ln n}`.
 
-* The average distance between primes is :math:`\ln n`.
+* The average distance between primes less than :math:`n` is
+  :math:`\ln n`.
 
 * **Prime Factors Distribution Theorem**: For large :math:`n`,
   on average, :math:`n` has about :math:`\ln \ln n` different prime
@@ -65,13 +71,13 @@ decide if a value :math:`n` is prime.
 
 #. Always say that Prime(:math:`n`) is FALSE.
    This simple algorithm "usually" works.
-   It only fails :math:`1/log n` times on average!
+   It only fails :math:`1/\log n` times on average!
 
 #. If you don't like the notion that for the actual primes values this
    always fails, than an alternative is to say, with probability
    :math:`1/\ln n`, that Prime(:math:`n`) is TRUE.
-   Even though it is is not sometimes right and sometimes wrong,
-   of course this no better than the previous algorithm.
+   Even though it is sometimes right and sometimes wrong,
+   of course this is no better than the previous algorithm.
 
 #. Pick a number :math:`m` between 2 and :math:`\sqrt{n}`.
    Say :math:`n` is prime if and only if :math:`m` does not divide

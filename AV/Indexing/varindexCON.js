@@ -1,4 +1,13 @@
 /*global ODSA */
+// Title: Simple linear index Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Analysis Demonstration
+// Keyword: Linear Indexing; File Processing
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a simple linear index for variable length records stored on disk. */
+
 $(document).ready(function () {
   "use strict";
   var jsav = new JSAV("varindexCON");
@@ -22,19 +31,19 @@ $(document).ready(function () {
   var fragLabel5 = jsav.label("42", {left: left + 352, top: itemheight - 15});
   
   // Slide 1
-  jsav.umsg("Here is an array of variable length database records");
+  jsav.umsg("Here is an array of variable length database records, perhaps stored on disk. The numbers shown are the keys, and these are not in any particular order.");
   jsav.displayInit();
   
   // Slide 2
   var theArray = [];
   theArray.length = 10;
   var arr = jsav.ds.array(theArray);
-  jsav.umsg("This is the Linear Index array");
+  jsav.umsg("This is the Linear Index array. This could be in memory or on disk, but its elements are all of the same length.");
   jsav.step();
   
   // Slide 3
   jsav.effects.copyValue(fragLabel1, arr, 0);
-  jsav.umsg("Every block in the variable length array has a corresponding key in the Linear Index Array");
+  jsav.umsg("Every record in the variable length array has a corresponding key in the Linear Index Array.");
   jsav.step();
   
   // Slide 4
@@ -57,7 +66,7 @@ $(document).ready(function () {
   arr.swap(0,6);
   arr.swap(4,8);
   arr.swap(2,4);
-  jsav.umsg("Here is the Linear Index Array with all keys in sorted order");
+  jsav.umsg("Here is the Linear Index Array with all keys in sorted order.");
   jsav.step();
   
   // Slide 9
@@ -65,7 +74,7 @@ $(document).ready(function () {
   var yFragArrow = jsav.g.line(left + 150,  45,  left + 325, 45, {'stroke-width' : 1});
   var zFragArrow = jsav.g.line(left + 325,  45,  left + 325, 70, {'arrow-end': 'classic-wide-long','stroke-width' : 1});
   setYellow(1);
-  jsav.umsg("Every key has a pointer to the beginning of the corresponding record in the database file");
+  jsav.umsg("Every key has a pointer to the beginning of the corresponding record in the database file.");
   jsav.step();
   
   // Slide 10
@@ -97,6 +106,6 @@ $(document).ready(function () {
   jsav.step();
   
   // Slide 14
-  jsav.umsg("Each record in the index file is of fixed length and contains a pointer to the beginning of the corresponding record in the database file");
+  jsav.umsg("Each record in the index file is of fixed length and contains a pointer to the beginning of the corresponding record in the database file.");
   jsav.recorded();
 });

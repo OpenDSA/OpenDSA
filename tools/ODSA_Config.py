@@ -30,7 +30,8 @@ optional_fields = ['assumes', 'av_origin', 'av_root_dir', 'build_cmap', 'build_d
 'exercise_origin', 'exercises_root_dir', 'glob_mod_options', 'glob_exer_options', 'lang','req_full_ss', 'start_chap_num',
 'suppress_todo', 'tabbed_codeinc', 'theme', 'theme_dir', 'dispModComp', 'tag', 'local_mode', 'title', 'desc', 'av_origin',
 'av_root_dir', 'code_lang', 'course_id', 'LMS_url', 'module_map', 'inst_book_id','module_position','inst_exercise_id',
-'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled', 'zeropt_assignments' ]
+'inst_chapter_id','options','inst_module_id','id', 'total_points', 'last_compiled', 'narration_enabled', 'zeropt_assignments',
+'sphinx_debug', 'html_theme_options', 'html_css_files', 'html_js_files', 'include_tree_view', 'chapter_name', 'max_toc_depth']
 
 
 listed_modules = []
@@ -113,10 +114,11 @@ def validate_exercise(exer_name, exercise):
         error_count += 1
 
     required_fields = []
-    optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'external_url'
+    optional_fields = ['exer_options', 'long_name', 'points', 'remove', 'required', 'showhide', 'threshold', 'external_url',
                         'inst_book_id','module_position','inst_exercise_id',
                         'inst_chapter_id','options','inst_module_id','id', 'total_points',
-                        'type', 'links', 'scripts', 'av_address', 'mod_name']
+                        'type', 'links', 'scripts', 'av_address', 'mod_name', 'splicetoolembed',
+                       'url', 'height', 'width', 'name']
 
     # Ensure required fields are present
     for field in required_fields:
@@ -140,7 +142,8 @@ def validate_module(mod_name, module, conf_data):
     optional_fields = ['codeinclude', 'dispModComp', 'long_name', 'mod_options', 'sections', 'exercises',
                         'lms_module_item_id', 'lms_section_item_id','inst_book_id','module_position','inst_exercise_id',
                         'inst_chapter_id','options','inst_module_id','id', 'total_points', 'lms_assignment_id',
-                        'git_hash', 'zeropt_assignments']
+                        'git_hash', 'zeropt_assignments', 'due_dates', 'splicetoolembed',
+                       'url', 'height', 'width', 'name']
 
     # Get module name
     get_mod_name(mod_name)
@@ -233,7 +236,7 @@ def validate_config_file(config_file_path, conf_data):
     # Ensure the config file doesn't have any unknown fields (catches mis-spelled fields when config file is manually edited)
     for field in conf_data:
         if field not in (required_fields + optional_fields):
-            print_err('ERROR: Unknown field, %s' % field)
+            print_err('ERROR: Unknown field, %s, found in configuration at %s' % (field, config_file_path))
             error_count += 1
 
     validate_chapter(conf_data)
@@ -296,10 +299,13 @@ def set_defaults(conf_data):
         print_err('WARNING: tabbed_codeinc must be a boolean')
 
     if 'start_chap_num' not in conf_data:
-        conf_data['start_chap_num'] = 0  # 1
+        conf_data['start_chap_num'] = 0 # should be 1? affects other numberings though, such as figures...
 
     if 'suppress_todo' not in conf_data:
         conf_data['suppress_todo'] = False
+
+    if 'include_tree_view' not in conf_data:
+        conf_data['include_tree_view'] = False
 
     # Require slideshows to be fully completed for credit by default
     if 'req_full_ss' not in conf_data:
@@ -310,7 +316,7 @@ def set_defaults(conf_data):
 
     if 'theme_dir' not in conf_data:
         conf_data['theme_dir'] = '%sRST/_themes' % odsa_dir
-        
+
     if 'narration_enabled' not in conf_data:
         conf_data['narration_enabled'] = True
 
@@ -332,6 +338,15 @@ def set_defaults(conf_data):
 
     if 'zeropt_assignments' not in conf_data:
         conf_data['zeropt_assignments'] = False
+
+    if 'sphinx_debug' not in conf_data:
+        conf_data['sphinx_debug'] = False
+
+    #if 'due_dates' not in conf_data:
+    #    conf_data['due_dates'] = None
+
+    if 'chapter_name' not in conf_data:
+        conf_data['chapter_name'] = "Chapter"
 
 def group_exercises(conf_data, no_lms):
     """group all exercises of one module in exercises attribute"""
@@ -362,12 +377,21 @@ def group_exercises(conf_data, no_lms):
                               conf_data['chapters'][chapter][module]['exercises'][attr] = exercise_obj
                     if 'learning_tool' in list(section_obj.keys()):
                         exercise_obj = {}
-                        exercise_obj['long_name'] = section
+                        if 'long_name' in section_obj:
+                          exercise_obj['long_name'] = section_obj['long_name']
+                        else:
+                          exercise_obj['long_name'] = section
+                        if 'enable_scrolling' in section_obj:
+                          exercise_obj['enable_scrolling'] = section_obj['enable_scrolling']
+                        if 'frame_width' in section_obj:
+                          exercise_obj['frame_width'] = section_obj['frame_width']
+                        if 'frame_height' in section_obj:
+                          exercise_obj['frame_height'] = section_obj['frame_height']
                         exercise_obj['learning_tool'] = section_obj['learning_tool']
                         if 'launch_url' in section_obj:
                             exercise_obj['launch_url'] = section_obj['launch_url']
                             exercise_obj['id'] = section_obj['id']
-                        conf_data['chapters'][chapter][module]['exercises'][section] = exercise_obj
+                        conf_data['chapters'][chapter][module]['exercises'][exercise_obj['long_name']] = exercise_obj
 
 def get_translated_text(lang_):
     """ Loads appropriate text from language_msg.json file based on book language  """

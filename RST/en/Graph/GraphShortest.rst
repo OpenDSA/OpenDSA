@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Shortest-Paths Problems
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: graph traversal
    :satisfies: graph shortest path
    :topic: Graphs
+   :keyword: Shortest Path Problem
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of shortest paths problems, and presents Dijkstra's algorithm for single-source shortest paths.
 
 Shortest-Paths Problems
 =======================
@@ -62,6 +68,7 @@ We assume that all weights are positive.
    :links:
    :scripts: AV/Graph/DistanceExampCON.js
    :align: center
+   :keyword: Graphs; Shortest-Paths Problems
 
    Example graph for shortest-path definitions.
 
@@ -161,6 +168,7 @@ At the end, array ``D`` will contain the shortest distance values.
    :links: AV/Graph/DijkstraCON.css
    :scripts: AV/Graph/DijkstraCON.js
    :output: show
+   :keyword: Graphs; Shortest-Paths Problems; Dijkstra's Algorithm
 
 .. TODO::
    :type: AV
@@ -262,6 +270,7 @@ Now you can practice using Dijkstra's algorithm.
 
 .. avembed:: AV/Graph/DijkstraPE.html pe
    :long_name: Dijkstra's Algorithm Proficiency Exercise
+   :keyword: Graphs; Shortest-Paths Problems; Dijkstra's Algorithm
 
 .. TODO::
    :type: Exercise

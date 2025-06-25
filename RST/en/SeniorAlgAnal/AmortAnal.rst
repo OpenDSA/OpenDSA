@@ -3,9 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Amortized Analysis
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Advanced Algorithm Analysis
+   :keyword: Amortized Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of amortized analysis and presents some examples.
 
 Amortized Analysis
 ==================
@@ -17,8 +23,8 @@ situation where the worst-case cost for :math:`n` operations is less
 than :math:`n` times the worst-case cost of any one operation.
 Rather than focusing on the individual cost of each operation
 independently and summing them, amortized analysis looks at the
-cost of the entire series and "charges" each individual operation
-with a share of the total cost.
+cost of the entire series and "charges" (amortizes) each individual
+operation with a share of the total cost.
 
 We can apply the technique of amortized analysis in the case of
 a series of sequential searches in an unsorted array.
@@ -134,9 +140,11 @@ Our final example uses amortized analysis to prove a relationship
 between the cost of the
 :ref:`move-to-front <move-to-front> <SelfOrg>` self-organizing list
 heuristic and the cost for the optimal static ordering of the list.
+For this discussion, we **assume that all searches are successful**
+(that is, all searches are for records that are contained in the list).
 
-Recall that, for a series of search operations, the minimum cost for a
-static list results when the list is sorted by
+For a series of search operations, the minimum cost for
+an unchanging list results when the list is sorted by
 frequency of access to its records.
 This is the optimal ordering for the records if we never allow the
 positions of records to change, because the most-frequently accessed
@@ -183,7 +191,7 @@ frequently accessed record, and so on.
    when :math:`S_{AB}` is applied to the optimal static
    ordering for the list.
    To see this, assume that :math:`S_{AB}` contains
-   :math:`i` :math:`A` s and :math:`j` :math:`B` s,
+   :math:`i` :math:`A`'s and :math:`j` :math:`B`'s,
    with :math:`i \leq j`.
    Under the optimal static ordering, :math:`i` unsuccessful
    comparisons are required because :math:`B` must appear before

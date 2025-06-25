@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binary Search Trees
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree terminology; binary tree traversal;
    :satisfies: BST
    :topic: Binary Trees
+   :keyword: Binary Search Tree
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Binary Search Trees. Includes several visualizations and practice exercises.
+
 
 Binary Search Trees
 ===================
@@ -38,10 +45,11 @@ sorted order from lowest to highest.
    :links: AV/Binary/BSTShapeCON.css
    :scripts: AV/Binary/BSTShapeCON.js
    :align: justify
+   :keyword: Binary Search Tree
 
    Two Binary Search Trees for a collection of values.
    Tree (a) results if values are inserted
-   in the order 37, 24, 42, 7, 2, 40, 42, 32, 120.
+   in the order 37, 24, 42, 7, 2, 42, 40, 32, 120.
    Tree (b) results if the same values are inserted in the
    order 120, 42, 42, 7, 2, 32, 37, 24, 40.
 
@@ -80,9 +88,11 @@ subroutine and is implemented as follows.
    :links: AV/Binary/BSTCON.css
    :scripts: AV/Binary/BSTsearchCON.js
    :output: show
+   :keyword: Binary Search Tree
 
 .. avembed:: AV/Binary/BSTsearchPRO.html pe
    :long_name: BST Search Proficiency Exercise
+   :keyword: Binary Search Tree
 
 
 BST Insert
@@ -95,6 +105,7 @@ Now we look at how to insert a new node into the BST.
    :links: AV/Binary/BSTCON.css
    :scripts: AV/Binary/BSTinsertCON.js
    :output: show
+   :keyword: Binary Search Tree
 
 Note that, except for the last node in the path, ``inserthelp``
 will not actually change the child pointer for any of the nodes that
@@ -121,7 +132,7 @@ potentially increasing the depth of the tree.
 Figure :num:`Figure #BSTShape` illustrates two BSTs for a collection
 of values.
 It is possible for the BST containing :math:`n` nodes to be a chain of
-nodes with height :math:`n`.
+nodes with height :math:`\Theta(n)`.
 This would happen if, for example, all elements were inserted in
 sorted order.
 In general, it is preferable for a BST to be as shallow as
@@ -130,6 +141,7 @@ This keeps the average cost of a BST operation low.
 
 .. avembed:: AV/Binary/BSTinsertPRO.html pe
    :long_name: BST Insert Proficiency Exercise
+   :keyword: Binary Search Tree
 
 
 BST Remove
@@ -148,6 +160,7 @@ This routine will be used later by the general node removal function.
    :links: AV/Binary/BSTCON.css
    :scripts: AV/Binary/BSTdeletemaxCON.js
    :output: show
+   :keyword: Binary Search Tree
 
 The return value of the ``deletemax`` method is the subtree of
 the current node with the maximum-valued node in the subtree removed.
@@ -195,6 +208,7 @@ then the BST property is maintained.
    :links: AV/Binary/BSTCON.css
    :scripts: AV/Binary/BSTremoveCON.js
    :output: show
+   :keyword: Binary Search Tree
 
 When duplicate node values do not appear in the tree, it makes no
 difference whether the replacement is the greatest value from the
@@ -216,6 +230,7 @@ Tree Property if equal values appear in the left subtree.
 
 .. avembed:: AV/Binary/BSTremovePRO.html pe
    :long_name: BST Remove Proficiency Exercise
+   :keyword: Binary Search Tree
 
 
 BST Analysis
@@ -235,7 +250,7 @@ If a binary tree is balanced, then the height for a tree of :math:`n`
 nodes is approximately :math:`\log n`.
 However, if the tree is completely unbalanced, for example in the
 shape of a linked list, then the height for a tree with :math:`n`
-nodes can be as great as :math:`n`.
+nodes can be as great as :math:`n-1`.
 Thus, a balanced BST will in the average case have operations costing
 :math:`\Theta(\log n)`, while a badly unbalanced BST can have
 operations in the worst case costing :math:`\Theta(n)`.
@@ -247,7 +262,7 @@ enough for this purpose), then each insertion will cost on average
 :math:`\Theta(\log n)`, for a total cost of
 :math:`\Theta(n \log n)`.
 However, if the records are inserted in order of increasing value,
-then the resulting tree will be a chain of height :math:`n`.
+then the resulting tree will be a chain of height :math:`n-1`.
 The cost of insertion in this case will be
 :math:`\sum_{i=1}^{n} i = \Theta(n^2)`.
 
@@ -275,3 +290,4 @@ remain balanced, such as the :ref:`2-3 Tree <2-3 tree> <TwoThreeTree>`.
 
 .. avembed:: Exercises/Binary/BSTSumm.html ka
    :long_name: BST Question Summary
+   :keyword: Binary Search Tree

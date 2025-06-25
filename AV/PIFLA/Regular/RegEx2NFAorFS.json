@@ -1,0 +1,61 @@
+{
+  "translations": {
+    "en": {
+      "blackbox": {
+        "type": "multiple",
+        "description": "Remember that we have an abstract NFA scheme that represents any NFA converted to have a single final state. The red lines out of $s$ represent arbitrary paths that lead to nodes that would be final states in the original machine, but which are modified to link to a single final state $f$ through $\\lambda$ transitions.",
+        "question":"Do we need to know the internal details for this NFA?",
+        "answer": "No, we can think of it as a black box represents an arbitrary NFA.",
+        "choices": ["Yes",
+                    "No, we can think of it as a black box represents an arbitrary NFA."]
+      },
+      "ORLang": {
+        "type": "select",
+        "description": "Now, we need to find the NFA that can accept the RegEx $r + s$.",
+        "question":"What is $L(r+s)$?",
+        "answer": ["Language of all strings in the Language represented by the RegEx $r$ OR in the Language represented by the RegEx $s$", "$\\{w \\mid w \\in L(r) \\cup L(s)\\}$"],
+        "choices": ["Language of all strings in the Language represented by the RegEx $r$ OR in the Language represented by the RegEx $s$", "$\\{w \\mid w \\in L(r) \\cup L(s)\\}$"]
+      },
+      "induction": {
+        "type": "select",
+        "description": "To do this, we use two NFA schemas. One represents the RegEx $r$ and the other NFA represents $s$. We will use these two NFA schemas as building blocks to create the NFA that represents the RegEx $r+s$.",
+        "question": "For the purpose of this proof that RegEx $r+s$ can be converted to a NFA, we are simply assuming that the two Regular Expressions $r$ and $s$ can be represented by NFAs. Is this a reasonable assumption?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["We are essentially doing an induction proof where the induction hypothesis is that the sub-expressions that are being operated on (by the OR operator in this case) are Regular Expressions."]
+      },
+      "start": {
+        "type": "select",
+        "description": "The first step now is to create a new start state",
+        "question": "Which states do we need to connect the new start state with?",
+        "answer": ["The start state for $s$",
+                   "The start state for $r$"],
+        "choices": ["The start state for $s$",
+                    "The start state for $r$"]
+      },
+      "whylambda": {
+        "type": "select",
+        "description": "Connect the new start state with the start state for each NFA using labmda transitions. This means that any string in $L(r+s)$ will start in either the NFA for $r$ or the NFA for $s$.",
+        "question":"Why do we used $\\lambda$ transitions?",
+        "answer": ["We need a free transition to the old start states", "This allows the resulting NFA from accepting the string in the NFA for $r$ OR the NFA for $s$"],
+        "choices": ["We need a free transition to the old start states", "This allows the resulting NFA from accepting the string in the NFA for $r$ OR the NFA for $s$"]
+      },
+      "singlefinal": {
+        "type": "multiple",
+        "description": "Now the NFA will try to find if the given string will be accepted by the NFA for $r$ OR the NFA for $s$.",
+        "question":"What is next?",
+        "answer": "We said before that we need the resulting NFA to have a single final state.",
+        "choices": ["We are done.", "We said before that we need the resulting NFA to have a single final state."]
+      },
+      "final": {
+        "type": "select",
+        "description": "We add a new final state",
+        "question":"Which state should be connected to the new final state?",
+        "answer": ["The final state for NFA $s$",
+                   "The final state for NFA $r$"],
+        "choices": ["The final state for NFA $s$",
+                    "The final state for NFA $r$"]
+      }
+    }
+  }
+}

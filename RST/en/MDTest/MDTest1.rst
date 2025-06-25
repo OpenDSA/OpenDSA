@@ -68,7 +68,7 @@ Dr. Shaffer's video style
 .. raw:: html
 
      <center>
-     <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+     <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Dr. Shaffer's video style"></iframe>
      </center>
 
 
@@ -78,7 +78,7 @@ Changing uniconf_id but not entry_id
 .. raw:: html
 
     <center>
-    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950392/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950392/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_ioniqhja&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Changing uniconf_id but not entry_id"></iframe>
     </center>
 
 
@@ -88,7 +88,7 @@ Changing entry_id but not uiconf_id
 .. raw:: html
 
      <center>
-     <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_2khwqw42&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+     <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41951101/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_2khwqw42&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Changing entry_id but not uiconf_id"></iframe>
      </center>
 
 
@@ -98,7 +98,7 @@ Changing BOTH entry_id and uiconf_id
 .. raw:: html
 
     <center>
-    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950392/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_2khwqw42&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+    <iframe src="https://cdnapisec.kaltura.com/p/2375811/sp/237581100/embedIframeJs/uiconf_id/41950392/partner_id/2375811?iframeembed=true&playerId=kplayer&entry_id=1_2khwqw42&flashvars[streamerType]=auto" width="900" height="800" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Changing BOTH entry_id and uiconf_id"></iframe>
     </center>
 
 
@@ -116,8 +116,4 @@ KA style question
 
 Practicing making a multiple choice question to mimic a Khan Academy question
 
-.. avembed:: Exercises/MDTest/MDTest_question1.html ka
-
-.. avembed:: Exercises/MDTest/MDTest_question2.html ka
-
-.. avembed:: Exercises/MDTest/MDTest_question3.html ka
+.. avembed:: Exercises/IntroToSoftwareDesign/Dynamic_quiz.html ka

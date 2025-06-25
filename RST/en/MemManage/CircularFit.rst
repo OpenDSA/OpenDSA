@@ -4,8 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Circular First Fit
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
+   :keyword: Sequential Fit Memory Manager
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the circular first fit sequential memory management scheme.
 
 Circular First Fit
 ==================
@@ -23,3 +29,4 @@ small blocks that were passed over by previous requests.
 .. avembed:: AV/MemManage/firstFitAV.html ss
    :long_name: Circular First Fit Visualization
    :url_params: fitAlgorithm=2
+   :keyword: Memory Management; Sequential Fit Memory Allocation

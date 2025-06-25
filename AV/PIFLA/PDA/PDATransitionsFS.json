@@ -1,0 +1,91 @@
+{
+  "translations": {
+    "en": {
+      "pop": {
+        "type": "true/false",
+        "description": "Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.<br/>This means that when in state $q_0$ with $a$ the current symbol on the tape and $b$ on the top of the stack, one of three things can happen: (1) Change to state $q_1$ and push $b$ onto the stack, or (2) Change to state $q_2$ and push $b$ then $ab$ onto the stack (work right to left), or (3) Change to state $q_3$ and put nothing onto the stack.",
+        "question": "This transition pops the top of the stack on each alternative.",
+        "answer": "True",
+        "choices":[]
+      },
+      "always": {
+        "type": "true/false",
+        "description": "Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$. Be sure to note how this description of the transition relates to the information shown on an edge in the graph. For example, the edge that changes state from $q_0$ to $q_1$ requires that the symbol on the tape is $a$, the top of the stack is $b$, and that $b$ is pushed back onto the stack (thus, the net effect is that this transition does not change the contents of the stack).",
+        "question": "All PDA transitions pop the top of the stack.",
+        "answer": "False",
+        "choices":[],
+        "correctFeedback": ["If we write a transition on an edge like $(x, \\lambda; y)$, $\\lambda$ in the second position means to ignore the stack. Of course, if $y$ is $\\lambda$, that means not to put anything onto the stack."],
+        "incorrectFeedback": ["We have not actually seen an example of this yet, but we can write transitions that ignore the stack."]
+      },
+      "change": {
+        "type": "select",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.",
+        "question": "Must the contents of the stack alway change when executing this transition?",
+        "answer": "No",
+        "choices":["No", "Yes"],
+        "correctFeedback":["Sometimes this PDA will fire the transition that will pop 'b' off the stack and then put it back on again."]
+      },
+      "order": {
+        "type": "select",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.<br/>This means: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.<br/>3. go to $q_3$ and do not push any thing to the stack",
+        "question": "If we execute the second choice, what will be at the top of the stack?",
+        "answer": "a",
+        "choices":["a", "b"],
+        "correctFeedback": ["This always puts things onto the stack from right to left, so the leftmost symbol is on the top of the stack."],
+        "incorrectFeedback": ["This always puts things onto the stack from right to left, so the leftmost symbol is on the top of the stack."]
+      },
+      "nopush": {
+        "type": "select",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$.<br/>This means: If in state $q_0$ with $a$ the current tape symbol and $b$ the symbol on top of the stack, then pop $b$, and either<br/>1. go to $q_1$ and push $b$ back to the stack<br/>2. got to $q_2$ and push $b$ back to the stack, then push $a$ to the stack.<br/>3. go to $q_3$ and do not push any thing to the stack",
+        "question": "If we execute the third choice, does that change the contents of the stack?",
+        "answer": "Yes",
+        "choices":["No", "Yes"],
+        "correctFeedback": ["The stack loses the $b$ that was on the top, since $b$ was popped and then nothing is being pushed back."]
+      },
+      "x": {
+        "type": "select",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$. <br/><br/>Look at the edges in the NPDA graph below. Each edge is labeled by $x, y; z$.",
+        "question": "What does $x$ represent?",
+        "answer": "the current input symbol",
+        "choices":["the current input symbol", "the top of the stack", "the symbol(s) that are pushed onto the stack"]
+      },
+      "y": {
+        "type": "select",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$. <br/><br/>Look at the edges in the NPDA graph below. Each edge is labeled by $x, y; z$.",
+        "question": "What does $y$ represent?",
+        "answer": "the top of the stack",
+        "choices":["the current input symbol", "the top of the stack", "the symbol(s) that are pushed onto the stack"]
+      },
+      "z": {
+        "type": "select",
+        "description":"Consider this transition: $\\delta(q_0, a, b) = \\{(q_1, b),\\ (q_2, ab),\\ (q_3, \\lambda)\\}$. <br/><br/>Look at the edges in the NPDA graph below. Each edge is labeled by $x, y; z$.",
+        "question": "What does $z$ represent?",
+        "answer": "the symbol(s)s that are pushed onto the stack",
+        "choices":["the current input symbol", "the top of the stack", "the symbol(s)s that are pushed onto the stack"],
+        "correctFeedback": ["By the way, be sure not to confuse our use of $z$ here to represent the symbols pushed onto the stack with $Z$, which is the special symbol used only to represent the bottom of the stack."]
+      },
+      "move": {
+        "type": "true/false",
+        "description": "<b>Description of a Move:</b> A move means one transition in the PDA. We describe a move with this notation:<br/>$(q_1, aw, bx) \\vdash (q_2, u, yz)$ iff $(q_2, y) \\in \\delta(q_1, a, b)$",
+        "question": "The change from $q_1$ to $q_2$ means that the machine moved from state $q_1$ to $q_2$",
+        "answer": "True",
+        "choices":[]
+      },
+      "input": {
+        "type": "true/false",
+        "description": "<b>Description of a Move:</b> A move means one transition in the PDA. We describe a move with this notation:<br/>$(q_1, au, bz) \\vdash (q_2, u, yz)$ iff $(q_2, y) \\in \\delta(q_1, a, b)$",
+        "question": "The change from $au$ to $u$ means that the machine reads and consumes the input symbol $a$.",
+        "answer": "True",
+        "choices":[]
+      },
+      "stack": {
+        "type": "select",
+        "description": "<b>Description of a Move:</b> A move means one transition in the PDA. We describe a move with this notation:<br/>$(q_1, au, bz) \\vdash (q_2, u, yz)$ iff $(q_2, y) \\in \\delta(q_1, a, b)$",
+        "question": "The change from $bz$ to $yz$ means that the machine changed ",
+        "answer": "the stack contents",
+        "choices": ["the stack contents", "the state", "the input"],
+        "correctFeedback": ["Don't confuse the use of $z$ meant here to represent the stack contents with $Z$, the special symbol that represents the bottom of the stack."]
+      }
+    }
+  }
+}

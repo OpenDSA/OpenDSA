@@ -3,12 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: David Furcy and Tom Naps
+.. avmetadata::
+   :title: Parser Generators
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Parser Generator
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses parser generators.
 
-=====================================
 Parser Generators
-=====================================
+=================
 .. (M 2/8/16)
 
 Jison
@@ -33,12 +38,13 @@ as input a BNF grammar for a source language and outputs a parser for
 this language.
 
 **Jison** is a parser generator developed by Zach Carter.  It is
-available to download or to use online at http://zaa.ch/jison.  It is
-beyond the scope of what we want to do in this Programming Languages
-course to describe Jison in detail.  However, we do want to provide an
-overview of how it is used since it will be incorporated into the
-interpreters we develop later in the course.  A complete description
-of Jison is available at http://zaa.ch/jison/docs.
+available to download or to use online at
+https://gerhobbelt.github.io/jison/.  It is beyond the scope of what
+we want to do in this Programming Languages course to describe Jison
+in detail.  However, we do want to provide an overview of how it is
+used since it will be incorporated into the interpreters we develop
+later in the course.  A description of Jison is available at
+https://gerhobbelt.github.io/jison/docs/.
 
 As an example of using Jison, the grammar we gave as :ref:`eg3`
 in the preceding section would be given to Jison in the
@@ -97,7 +103,7 @@ Your instructor will provide specific instructions about how to use
 Jison at your installation.  However, it is very easy to give it a try
 online.  Simply do the following:
     
-  * Go to http://zaa.ch/jison/try/.   There you will see that Jison gives you a text area into which you can paste your grammar.
+  * Go to https://gerhobbelt.github.io/jison/try/.   There you will see that Jison gives you a text area into which you can paste your grammar.
   * Paste the Jison grammar that appears above into this text area, replacing the default grammar that is already there.   Then click the *Generate Parser* button, and that will consequently produce your parser on the Jison server.
   * Then type a valid expression for :ref:`eg3` into the *Test Your Parser* area, and click the *Parse* button.   If your expression was indeed valid, you should see the message "The program is valid" produced.   Why?   Because *program* is the top-level start symbol in the Jison version of this grammar, and in the Jison specification above, this is the string that should be returned when we have a successful parse  (because of the line in the grammar **return "The program is valid"**).   If the expression you type in isn't valid, you will see a detailed error message that is produced by Jison.
     
@@ -145,4 +151,4 @@ This problem will give you more practice understanding grammars
 defined in the Jison file format.
 
 .. avembed:: Exercises/PL/Jison2.html ka
-   :long_name: Jison Problem 1
+   :long_name: Jison Problem 2

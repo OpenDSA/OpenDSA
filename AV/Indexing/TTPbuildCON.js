@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Cliff Shaffer
 // Building a 2-3+ Tree
+
+// Title: Building a 2-3+ Tree Slideshow
+// Author: Cliff Shaffer; Liling Yuan
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-Based Indexing; 2-3 Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a series of insertions into a 2-3+ tree. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "TTPbuildCON";

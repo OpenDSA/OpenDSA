@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="./css/FA.css" type="text/css" />
     <link rel="stylesheet" href="./css/tester.css" type="text/css" />
     <link rel="stylesheet" href="./css/FAtoRE.css" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery.migrate.min.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,7 +27,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- PDF save link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js" integrity="sha384-CchuzHs077vGtfhGYl9Qtc7Vx64rXBXdIAZIPbItbNyWIRTdG0oYAqki3Ry13Yzu" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/cupertino/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../../lib/jquery.ui.min.css" />
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script> -->
 
@@ -35,14 +36,14 @@
 <body id="bd">
     <div id="container">
         <!-- <h1 id="editor">Finite Automaton Editor</h1>
-			<button id="helpButton"><img src="./help.png" /></button> -->
+			<button id="helpButton"><img src="./help.png" alt="Help" /></button> -->
 
         <table class="headerTable" style="font-size: 12px; border-style: hidden;">
             <tr>
                 <td class="headerLeft" style="border:hidden;"></td>
                 <td class="headerCenter">FA to RE Converter</td>
                 <td class="headerRight" style="border:hidden;">
-                    <button id="helpButton" style="width: 20px !important; height: 20px !important; position: inherit !important;"><img src="./help.png" /></button>
+                    <button id="helpButton" style="width: 20px !important; height: 20px !important; position: inherit !important;"><img src="./help.png" alt="Help" /></button>
                 </td>
             </tr>
         </table>
@@ -119,15 +120,17 @@
         <div id="av">
 <!--             <p class="jsavoutput jsavline">hey</p> -->
             <div id="graphs">
-                <div id="reference" class="jsavcanvas"></div>             
+                <div id="reference" class="jsavcanvas"></div>
             </div>
             <div id="dialog2" title="Transitions" class="transtable" class="jsavcanvas">
                 <div id="TransitionTable"></div>
             </div>
         </div>
-        
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-      <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+        <script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery.migrate.min.js"></script>
+      <script src="../../lib/jquery.ui.min.js"></script>
+<script src="../../lib/timeme-min.js"></script>
       <script src="../../lib/jquery.transit.js"></script>
       <script src="../../lib/raphael.js"></script>
       <script src="../../lib/dagre.min.js"></script>
@@ -138,7 +141,7 @@
       <script src="../../lib/html2canvas.js"></script>
       <script src="../../DataStructures/FLA/serializableGraph.js"></script>
 			<script src="../../DataStructures/FLA/Commands.js"></script>
-			<script src="../../DataStructures/FLA/FA.js"></script>
+			<script src="./FAcopy.js"></script>
 			<script src="../../DataStructures/FLA/TuringMachine.js"></script>
 			<script src="./CustomPrompt.js"></script>
       <script src="./exercises/exerController/ExerciseController.js"></script>

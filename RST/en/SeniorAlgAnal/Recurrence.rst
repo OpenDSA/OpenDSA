@@ -4,7 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Solving Recurrence Relations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
+   :requires: recurrence
+   :satisfies: recurrence solving
+   :topic: Math Background
+   :keyword: Algorithm Analysis; Recurrence Relation
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents an intermediate-level survey of techniques for finding closed-form solutions for recurrence relations, appropriate for a senior-level algorithms course.
 
 Solving Recurrence Relations
 ============================
@@ -197,7 +206,9 @@ work.
    We can again take advantage of logarithms.
    Obviously :math:`n! \leq n^n`, so we know that :math:`\log n!` is
    :math:`O(n \log n)`. 
-   But what about a lower bound for the factorial function?
+   But if we want to prove that :math:`\log n! = \Theta(n \log n)`,
+   then we must show that :math:`\log n!` is also in
+   :math:`\Omega(n \log n)`.
    Consider the following.
 
    .. math::
@@ -317,6 +328,7 @@ and techniques for solving summations can then be used.
    :links: AV//SeniorAlgAnal/ExpandRecurrenceCON.css
    :scripts: AV/SeniorAlgAnal/ExpandRecurrenceCON.js
    :output: show
+   :keyword: Algorithm Analysis; Recurrence Relations
 
 .. topic:: Example
 
@@ -399,6 +411,7 @@ Here is a more visual presentation of this same derivation.
    :links: AV/SeniorAlgAnal/DandCRecurrenceCON.css
    :scripts: AV/SeniorAlgAnal/DandCRecurrenceCON.js
    :output: show
+   :keyword: Algorithm Analysis; Recurrence Relations
 
 So, we are left with this result:
 

@@ -1,0 +1,11 @@
+#PDAEmptyStackFS {
+  height: 525px;
+}
+
+.accepted {
+  background-color: green;
+}
+
+.rejected {
+  background-color: red;
+}

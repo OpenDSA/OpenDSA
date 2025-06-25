@@ -102,7 +102,7 @@ td {
 	margin: 0 auto;
 }
 .jsavcanvas {
-	overflow-x: initial;
+  overflow-x: initial;
 }
 .jsavhorizontalarray .jsavnode {
 	min-width: 50px !important;

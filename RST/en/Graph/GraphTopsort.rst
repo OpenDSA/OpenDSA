@@ -4,9 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Topological Sort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: graph traversal
    :topic: Graphs
+   :keyword: Graph; Topological Sort
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents depth-first and queue-based topological sort algorithms.
 
 Topological Sort
 ================
@@ -34,6 +40,7 @@ meet the prerequisite rules is called a :term:`topological sort`.
    :links:
    :scripts: AV/Graph/topSortCON.js
    :align: center
+   :keyword: Graphs; Topological Sort
 
    An example graph for topological sort. Seven tasks have
    dependencies as shown by the directed graph.
@@ -85,6 +92,7 @@ Here is another example.
    :links: AV/Graph/topSortDFSCON.css
    :scripts: AV/Graph/topSortDFSCON.js
    :output: show
+   :keyword: Graphs; Topological Sort
 
 
 Queue-based Solution
@@ -110,7 +118,6 @@ Place on the queue any neighbor whose count becomes zero.
 If the queue becomes empty without printing all of the vertices, then
 the graph contains a cycle (i.e., there is no possible ordering
 for the tasks that does not violate some prerequisite).
-The printed order for the vertices of the graph in
 Applying the queue version of topological sort to the graph of
 Figure :num:`Figure #TopSort` produces J1, J2, J3, J6, J4, J5, J7.
 Here is an implementation for the algorithm.
@@ -125,6 +132,21 @@ Here is the code to implement the queue-based topological sort:
    :links: AV/Graph/topSortQCON.css
    :scripts: AV/Graph/topSortQCON.js
    :output: show
+   :keyword: Graphs; Topological Sort
+
+The inverse problem of determining whether a proposed node ordering is
+a valid topological sort of the graph can be solved with an algorithm
+nearly identical to the queue-based topological sort algorithm.
+First process the graph to generate the count array with the incoming
+degree of each node.
+Assuming that the proposed ordering has a length of :math:`n`,
+move through the nodes of the proposed ordering in order from
+the beginning.
+For each node :math:`v`, check that it's count is zero.
+Then decrement the count by one for each neighbor reachable by
+:math:`v`.
+If all nodes have a count of zero when they are visited in this order,
+then this is a valid topological sort.
 
 .. TODO::
    :type: Proficiency Exercise

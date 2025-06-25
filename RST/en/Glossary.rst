@@ -63,6 +63,12 @@ Glossary
       the computation in an accepting state, then the machine is said
       to :term:`accept` the string.
 
+   acceptor
+      In formal languages, any machine whose primary purpose is to
+      determine whether a string is accepted (is recognized to be in a
+      language) or rejected. This is in contrast to a machine that
+      computes some value.
+
    activation record
       :to-term: local variable :label: stores
 
@@ -446,15 +452,20 @@ Glossary
       describing the :term:`upper bound` for an :term:`algorithm` or
       :term:`problem`.
 
-   binary insert sort
+   binary insertion sort
       A variation on :term:`insertion sort` where the position of the
       value being inserted is located by binary search, and then put
       into place. In normal usage this is not an improvement on
       standard insertion sort because of the expense of moving many
-      items in the :term:`array`. But it is directly useful if the cost of
+      items in the :term:`array`.
+      But it is practically useful if the cost of
       comparison is high compared to that of moving an element, or
       is theoretically useful if we only care to count the cost of
       comparisons.
+
+   binary relation
+      In set theory, a :term:`relation` defined by a collection of
+      binary :term:`tuples <tuple>`.
 
    binary search
       A standard :term:`recursive <recursion>` algorithm for finding
@@ -522,6 +533,12 @@ Glossary
       on.
       This approach tends to make the hash function dependent on the
       distribution of the high-order bits of the keys.
+
+   binomial tree
+      A binomial tree of height :math:`m` has :math:`2^m` nodes.
+      Either it is a single node (if :math:`m=0`), or else it is
+      two binomial trees of height :math:`m-1`, with one tree's root
+      becoming a child of the other.
 
    bintree
       :to-term: flyweight :label: uses
@@ -1093,10 +1110,12 @@ Glossary
       time.
 
    context-free language
+   CFL
       The set of :term:`languages <language>` that can be defined by
       :term:`context-sensitive grammars <context-sensitive grammar>`.
 
    context-sensitive grammar
+   CFG
       A :term:`grammar` comprised only of productions of the form
       :math:`xAy \rightarrow xvy` where :math:`A` is a
       :term:`non-terminal` and :math:`x` and :math:`y` are each a
@@ -1204,6 +1223,20 @@ Glossary
    deallocated
    deallocation
       Free the memory allocated to an unused object.
+
+   debugging
+      Correcting a program once we determine that it is not operating
+      as we intend. This is in contrast to :term:`testing`.
+
+   decideability
+      In :term:`computability` theory, the question of whether a
+      question can be answered.
+      A typical example is whether to instances within a system are
+      equivalent.
+      "Do two computer programs do the same thing?"
+      is a variation of the :term:`halting problem` (and is not
+      decideable).
+      "Do two :term:`DFAs <DFA>` do the same thing?" is decideable.
 
    decision tree
       A theoretical construct for modeling the behavior of algorithms.
@@ -1691,6 +1724,17 @@ Glossary
       :math:`\mathbf{S}` if it is :term:`reflexive`,
       :term:`symmetric`, and :term:`transitive`.
 
+   equivalent
+      In the study of formal langauges, two entities are equivalent if
+      they accept the same language. That is, entities :math:`M_1` and
+      :math:`M_2` are equivalent if :math:`L(M_1) = L(M_2)`.
+      Two mechanisms for representing or recognizing languages are
+      equivalent if the collection of languages that each accept are
+      the same.
+      For example, :term:`DFAs <DFA>` and :term:`NFAs <NFA>` are
+      equivalent because every DFA is technically an NFA, and every
+      NFA can be converted into a DFA.
+
    estimation
       As a technical skill, this is the process of generating a rough
       estimate in order to evaluate the feasibility of a proposed
@@ -1879,15 +1923,6 @@ Glossary
       Written :math:`\lfloor x \rfloor`, for real value :math:`x` the
       floor is the greatest integer :math:`\leq x`.
 
-   flush
-      The act of removing data from a :term:`cache <caching>`, most
-      typically because other data considered of higher future value
-      must replace it in the cache.
-      If the data being flushed has been modified since it was first
-      read in from :term:`secondary storage` (and the changes are
-      meant to be saved), then it must be written back to that
-      secondary storage.
-
    Floyd's algorithm
       :to-term: k-path :label: uses
 
@@ -1904,6 +1939,13 @@ Glossary
       vertices 0 and 1, and so on.
 
    flush
+      The act of removing data from a :term:`cache <caching>`, most
+      typically because other data considered of higher future value
+      must replace it in the cache.
+      If the data being flushed has been modified since it was first
+      read in from :term:`secondary storage` (and the changes are
+      meant to be saved), then it must be written back to that
+      secondary storage.
       The the context of a :term:`buffer pool`, the process of
       removing the contents stored in a :term:`buffer`
       when that buffer is required in order to store new data.
@@ -2139,16 +2181,18 @@ Glossary
       the I/O head moves to the left from the left-most square of the
       tape, or when the machine goes into an infinite loop.
 
+   happy path testing
+      Testing "proper" inputs or uses of a program.
+
    hard algorithm
-      "Hard" is traditionally defined in relation to running time, and
-      a "hard" algorithm is defined to be an algorithm with exponential
-      running time.
+      "Hard" in CS theory is traditionally defined in relation to
+      running time, and a "hard" algorithm is defined to be an
+      algorithm with exponential running time.
 
    hard problem
-      "Hard" is traditionally defined in relation to running time, and
-      a "hard" problem is defined to be one whose best known algorithm
-      requires exponential running time.
-
+      "Hard" in CS theory is traditionally defined in relation to
+      running time, and a "hard" problem is defined to be one whose
+      best known algorithm requires exponential running time.
 
    harmonic series
       The sum of reciprocals from 1 to :math:`n` is called the
@@ -2190,7 +2234,7 @@ Glossary
       In a properly implemented :term:`hash system`, that position in
       the table will have high probability of containing the record
       that matches the key value.
-      Sometimes, the hash function will return an position that does
+      Sometimes, the hash function will return a position that does
       not store the desired key, due to a process called
       :term:`collision`.
       In that case, the desired record is found through a process
@@ -2675,7 +2719,8 @@ Glossary
       :term:`nodes <node>`.
 
    language
-      A set of strings.
+      A subset of the strings that can be generated from a given
+      :term:`alphabet`.
 
    Las Vegas algorithms
       A form of :term:`randomized algorithm`.
@@ -3083,7 +3128,7 @@ Glossary
       to the memory manager to reserve a block of memory and store
       some bytes there.
 
-   merge insert sort
+   merge insertion sort
       A synonym for the :term:`Ford and Johnson sort`.
 
    message
@@ -3331,6 +3376,21 @@ Glossary
       In the parallel view, the nondeterminism was successful if at
       least one of the choices leads to a correct answer.
 
+   Nondeterministic Finite Automata
+   Nondeterministic Finite Acceptor
+   NFA
+      An :term:`automata` or abstract machine that can process an
+      input string (shown on a tape) from left to right.
+      There is a control unit (with :term:`states <state>`),
+      behavior defined for what to do when in a given state and with a
+      given symbol on the current square of the tape.
+      All that we can "do" is change state before going to the next
+      letter to the right.
+      In distinction from a :term:`DFA`, a NFA may have multiple
+      transitions from a given state on the same input symbol, or
+      there can be a transition from a given state on the empty
+      string.
+
    non-deterministic polynomial time algorithm
       :to-term: NP :label: abbreviation
       :to-term: non-deterministic choice :label: operation
@@ -3405,6 +3465,16 @@ Glossary
       Its purpose is to control hardware, manage resources, and
       present a standard interface to these to other software
       components.
+
+   optimal algorithm
+      Any algorithm is said to be optimal if its cost (for a given
+      class of inputs, such as best, average, or worst case) is within
+      a constant factor of the lower bound to solve that problem.
+      For example, linear search is optimal on an unsorted array for
+      all classes of inputs. Mergesort is optimal for sorting in the
+      average and worst cases, Quicksort is optimal for sorting in the
+      average case, and Insertion Sort is optimal for sorting in the
+      best case.
 
    optimal static ordering
       A theoretical construct defining the best static (non-changing)
@@ -3687,6 +3757,16 @@ Glossary
       :term:`design pattern`.
       Related to the :term:`bintree`.
 
+   practicality window
+      The range of values for problem input size :math:`n` that a
+      real user of an algorithm will give to that algorithm.
+      If two algorithms have different growth rates, by definition one
+      grows faster than the other, meaning that beyond a certain value
+      of  :math:`n`, the one is always faster.
+      But if that value of :math:`n` is outside the practical limit
+      that any real user is likely to use, then the asymptotically
+      faster algorithm is practically faster.
+
    prefix property
       Given a collection of strings, the collection has the prefix
       property if no string in the collection is a prefix for another
@@ -3924,6 +4004,18 @@ Glossary
       This extends the set of languages that can be recognize to the
       :term:`context-free languages <context-free language>`.
 
+   quadratic binary search
+   QBS
+      A variation on :term:`dictionary search` or
+      :term:`interpolation search` for sorted lists.
+      QBS will first calculate a position in the list to check based
+      on the key value being searched for.
+      If this is not the correct value, then the algorithm will make
+      jumps of some size in the correct direction until it has bounded
+      the range where the record can be.
+      It then repeats the process by recomputing a position and making
+      smaller jumps.
+   
    quadratic growth rate
       A growth rate function of the form :math:`cn^2` where :math:`n`
       is the input size and :math:`c` is a constant.
@@ -4041,6 +4133,10 @@ Glossary
       An operation performed on balanced search trees, such as the
       :term:`AVL Tree` or :term:`Splay Tree`, for the purpose of
       keeping the tree :term:`height balanced`.
+
+   recognize
+      In the study of formal languages, the ability to reliably
+      determine whether some string is in a given language or not.
 
    record
       A collection of information, typically implemented as an
@@ -4169,7 +4265,7 @@ Glossary
 
    relation
       In set notation, a relation :math:`R` over set
-      :math:`\mathbf{S}` is a set of ordered pairs from
+      :math:`\mathbf{S}` is a set of :term:`tuples <tuple>` from
       :math:`\mathbf{S}`.
 
    replacement selection
@@ -4755,6 +4851,8 @@ Glossary
       possibly with associated information, that is primarily defined
       in terms of the conditions that the automata may transition from
       its present state to another state.
+      This type of state is generally represented by a node in the
+      graph that represents the automata.
 
    State Machine
       Synonym for :term:`finite automata`.
@@ -4911,6 +5009,10 @@ Glossary
       abstract state in the production.
       Similar to a :term:`literal`, but this is the term more
       typically used in the context of a :term:`compiler`.
+
+   testing
+      Determining whether a program operates as we intend.
+      This is in contrast to :term:`debugging`.
 
    Theta notation
       In :term:`algorithm analysis`, :math:`\Theta` notation is used

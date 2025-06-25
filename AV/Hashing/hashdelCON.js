@@ -1,3 +1,12 @@
+// Title: Hash Table Deletion Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Hashing
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing deletion from a hash table. */
+
 $(document).ready(function () {
   "use strict";
   var empty = [];

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Example of Binary Tree</title>
     <link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
@@ -17,8 +17,10 @@
         <p class="jsavoutput jsavline"></p>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery.migrate.min.js"></script>
+    <script src="../../lib/jquery.ui.min.js"></script>
+<script src="../../lib/timeme-min.js"></script>
     <script src="../../lib/jquery.transit.js"></script>
     <script src="../../lib/raphael.js"></script>
     <script src="../../lib/JSAV-min.js"></script>
@@ -28,12 +30,12 @@
       var jsav = new JSAV("av");
       var bt = jsav.ds.binarytree();
       bt.root("internallongvalueki"); // set the value of the root
-      
+
       bt.root().highlight(); //highlight root
       bt.root().left("3"); // set left child
-      
+
       bt.root().right("longervalue"); // set right, store reference
-      
+
       bt.root().left().right("another");
       bt.layout();
       jsav.displayInit();

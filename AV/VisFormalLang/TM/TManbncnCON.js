@@ -1,6 +1,16 @@
 // Written by Jeffrey Peng, Mostafa Mohammed, and Cliff Shaffer, Fall 2019
 // TODO: The Traversor code needs to be moved to the TM library,
 // and the TM editor needs to use the same Traversor code.
+
+// Title: Visualizaiton of the Turing Machine that accepts a^n b^n c^n
+// Author: Jeffrey Peng; Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Turing Machine
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Detailed trace on some examples for a Turing machine that accepts the langugage a^n b^n c^n. */
+
 $(document).ready(function() {
   "use strict";
 
@@ -52,7 +62,7 @@ $(document).ready(function() {
         tape.setTapeArray(arr, 7-Math.round(inputString.length/2));
       }
       else //create the tape
-        tape = jsav.ds.tape(arr, 150, topos + 140, "both", indexx);
+        tape = jsav.ds.tape(arr, 150, topos + 160, "both", indexx);
       /*var p3 = jsav.g.line(165+30*(7-Math.round(inputString.length/2)), 180 + topos, 165 + 30*(7-Math.round(inputString.length/2)), 125 + topos, {"arrow-end": "classic-wide-long"});
       var rects = jsav.g.rect(150+30*(7-Math.round(inputString.length/2)), 180 + topos, 30, 30);*/
       nodess[0].highlight();
@@ -246,14 +256,11 @@ $(document).ready(function() {
   };
 
   var av_name = "TManbncnCON";
-  var xStart = 50;
-  var yStart = 250;
   var av = new JSAV(av_name);
 
-  av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head.");
-  var url = "../../../AV/VisFormalLang/TM/Machines/TManbncn.jff";
-  av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept any even number. You can click on any cell to see the process again starting from the clicked cell");
-  var tm = new av.ds.TM({width: 610, height: 375, left: 50, url: url});
+  var url = "../../../AV/OpenFLAP/machines/TM/TManbncn.jff";
+  av.umsg("In this slideshow, we will trace the acceptance or rejections of some strings. The given machine can accept $L = \\{a^nb^nc^n: n> 0\\}$.");
+  var tm = new av.ds.TM({width: 610, height: 375, left: 50, top: 10, url: url});
   var trav = new Traversor(tm, av);
   av.displayInit();
   trav.onClickTraverse(["aabbcc", "c", "aaabbcc"]);

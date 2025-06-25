@@ -183,6 +183,7 @@ class avembed(Directive):
                  'threshold': directives.unchanged,
                  'external_url': directives.unchanged,
                  'id': directives.unchanged,
+                 'keyword': directives.unchanged, #keyword directive added 
                  }
 
   def run(self):

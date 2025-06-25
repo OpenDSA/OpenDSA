@@ -1,9 +1,19 @@
 // Written by Irena Shaffer and Alexandru Cioaca
+
+// Title: Polynomial Evaluation
+// Author: Irena Shaffer; Alexandru Cioaca
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Polynomial Multiplication; Evaluation
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visualization of the relationship between evaluation of polynomials and multiplying polynomials. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "EvaluationCON";
-
   var av = new JSAV(av_name);
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 
   // Slide 1
   av.umsg("If we evaluate both polynomials (at the same points), we can simply multiply " +

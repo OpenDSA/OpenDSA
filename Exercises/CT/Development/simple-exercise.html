@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <title>Simple JSAV Proficiency Exercise Example</title>
-<link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" />
+<link rel="stylesheet" href="../../lib/JSAV.css" type="text/css" />
 </head>
 
 <body>
@@ -36,10 +37,11 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="../../JSAV/lib/jquery.transit.js"></script>
-    <script src="../../JSAV/build/JSAV.js"></script>
-    <script src="../../JSAV/lib/raphael.js"></script>
-    <script src="../../JSAV/build/JSAV-min.js"></script>
+    <script src="../../lib/timeme-min.js"></script>    
+    <script src="../../lib/jquery.transit.js"></script>
+    <script src="../../lib/JSAV.js"></script>
+    <script src="../../lib/raphael.js"></script>
+    <script src="../../lib/JSAV-min.js"></script>
     <script>
 
     var arraySize = 8,
@@ -60,7 +62,7 @@
       av.umsg("Directions: Click in right order.");
       initialArray = JSAV.utils.rand.numKeys(10, 100, arraySize);
 
-      jsavArray = av.ds.array(initialArray, {indexed: true});
+      jsavArray = av.ds.array(initialArray, { indexed: true });
       swapIndex = av.variable(-1);
       // bind a function to handle all click events on the array
       jsavArray.click(arrayClickHandler);
@@ -86,10 +88,10 @@
     var swapIndex;
 
     var exercise = av.exercise(modelSolution, initialize,
-                              { feedback: "continuous", compare: {class: "jsavhighlight"}});
+      { feedback: "continuous", compare: { class: "jsavhighlight" } });
     exercise.reset();
 
-    function clickHandler(){
+    function clickHandler() {
       this.addClass("highlight");
       this.removeClass("highlight");
     }
@@ -102,14 +104,14 @@
         if (swapIndex.value() == -1) {
           swapIndex.value(index);
           // apply the CSS property change to index
-          this.css(index, {"font-size": "130%"});
+          this.css(index, { "font-size": "130%" });
           av.step(); // add a step to the animation
         } else {
           // the second click (swapIndex has some value) will cause
           // the swap of indices index and stored swapIndex
           this.swap(index, swapIndex.value());
           // change the font-size back to normal
-          this.css(swapIndex.value(), {"font-size": "100%"});
+          this.css(swapIndex.value(), { "font-size": "100%" });
           swapIndex.value(-1);
           exercise.gradeableStep(); // this step will be graded
         }
@@ -123,6 +125,7 @@
         exercise.gradeableStep();
       }
     }
-    </script>
+  </script>
 </body>
+
 </html>

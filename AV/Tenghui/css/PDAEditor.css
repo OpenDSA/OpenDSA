@@ -1,0 +1,27 @@
+#edge, #editEdge {
+  text-align: center;
+  background-color: white;
+  width: 150px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1000;
+  display: none;
+}
+#input, #pop, #push {
+  width: 90%;
+  text-align: center;
+  border: none;
+}
+#multiInput {
+  width: 90%;
+  text-align: center;
+  border: none;
+  background-color: white;
+}
+#editEdge {
+  width: 200px;
+  transform: translate(-30%, -120%);
+}
+#editEdge > tbody > tr {
+  width: 25%;
+}

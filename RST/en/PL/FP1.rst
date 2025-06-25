@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: List Construction and Deconstruction
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Functional Programming
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces basic concepts for functional programming.
 
-====================================
 List Construction and Deconstruction
 ====================================
 

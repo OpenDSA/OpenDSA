@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda and Mostafa Mohammed
+   :title: Heap Memory
+   :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed
+   :institution: Stanford University; Virginia Tech
    :requires: Local memory
    :satisfies: Heap Memory
    :topic: Pointers
+   :keyword: Pointer; Heap Memory; Garbage Collection
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the concept of heap memory and global variables.
 
 
 Heap Memory
@@ -130,7 +136,7 @@ from heap memory by garbage collection:
    :links: AV/Pointers/garbageDisposalCON.css
    :scripts: AV/Pointers/garbageDisposalCON.js
    :output: show
-
+   :keyword: Pointers; Heap Memory; Garbage Disposal
 
 Before seeing the exact details, let's look at a rough example of
 allocation and deallocation in the heap.
@@ -146,7 +152,7 @@ explicit request by calling the heap :term:`allocation` operation.
 In Java or C++, this is the ``new`` operator.
 The allocation function reserves a block of memory of the requested
 size in the heap (usually, the size of the object that you want) and
-returns a refernece to it.
+returns a reference to it.
 Suppose a program makes three allocation requests to allocate memory
 to hold three separate GIF images in the heap, each of which takes
 1024 bytes of memory.
@@ -155,6 +161,7 @@ After the three allocation requests, memory might look like.
 .. inlineav:: LocalHeapaloc dgm
    :links: AV/Pointers/LocalHeapaloc.css
    :scripts: AV/Pointers/LocalHeapaloc.js
+   :keyword: Pointers; Heap Memory; Memory Management
 
 Each allocation request reserves a contiguous area of the requested
 size in the heap and returns a reference to that new block to the
@@ -202,6 +209,7 @@ deallocates the second of the three blocks.
 .. inlineav:: LocalHeapdealoc dgm
    :links: AV/Pointers/LocalHeapdealoc.css
    :scripts: AV/Pointers/LocalHeapdealoc.js
+   :keyword: Pointers; Heap Memory; Memory Management
 
 After deallocation, the reference continues to point to the now
 deallocated block.
@@ -273,6 +281,7 @@ A Heap Example
    :links: AV/Pointers/LocalHeapintptr42.css
    :scripts: AV/Pointers/LocalHeapintptr42.js
    :output: show
+   :keyword: Pointers; Heap Memory
 
 
 Arrays

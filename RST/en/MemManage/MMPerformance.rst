@@ -4,8 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Sequential Fit Peformance
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
+   :keyword: Sequential Fit Memory Manager
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Compares the performance characteristics of various sequential fit memory management schemes.
 
 Sequential Fit Peformance
 =========================
@@ -30,3 +36,4 @@ serviced by best fit but not by first fit on this same freelist.
 
 .. avembed:: AV/MemManage/firstFitAV.html ss
    :long_name: Sequential Fit Visualization
+   :keyword: Memory Management; Sequential Fit Memory Allocation

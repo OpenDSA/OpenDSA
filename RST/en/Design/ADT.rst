@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Abstract Data Types
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies: ADT; metaphor
    :topic: Abstract Data Types
+   :keyword: Abstract Data Type
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concept of an Abstract Data Type
+
 
 Abstract Data Types
 ===================
@@ -139,12 +146,12 @@ as a disk drive or CD.
    be clear, but the implementation for lists has not been
    specified.
 
-One application that makes use of some ADT might use particular
-member functions of that ADT more than a second application, or the
-two applications might have different time requirements for the
-various operations.
-These differences in the requirements of applications are the reason
-why a given ADT might be supported by more than one implementation.
+Given two applications that make use of an ADT, one might use
+particular operations more frequently than the other,
+or they might have different time constraints for the various
+operations.
+Fortunately, an ADT can accomodate these difference in requirements by
+providing differing implementations.
 
 .. topic:: Example
 
@@ -306,6 +313,8 @@ The interface becomes a form of communication between the two programmers.
 
 .. avembed:: Exercises/CMP/CMdatatypeSumm.html ka
    :long_name: Concept map data types exercises
+   :keyword: Abstract Data Types; Concept Map
 
 .. avembed:: Exercises/Design/IntroADTSumm.html ka
-   :long_name: ADT Summary Questions
+   :long_name: ADT Review Questions
+   :keyword: Abstract Data Types

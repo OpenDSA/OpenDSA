@@ -1,0 +1,36 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
+  "exerciseType": "TM",
+  "totalTestCases": 5,
+  "containLetters": ["a","b","c"],
+  "randomStringLength": [0, 15],
+  "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
+  "hardCodeCasesCounter": 5,
+  "description": "Write a Turing machine that replace every substring aba with aca, where $\\Sigma = \\{a, b\\}$",
+  "testCases": [{
+      "aaaa": "aaaa",
+      "ShowTestCase":true
+    },
+    {
+      "bbbb": "bbbb",
+      "ShowTestCase":true
+    },
+    {
+      "aba": "aca",
+      "ShowTestCase":true
+    },
+    {
+      "aababa": "aacaca",
+      "ShowTestCase":true
+    },
+    {
+      "abbaba": "abbaca",
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": ""
+}]

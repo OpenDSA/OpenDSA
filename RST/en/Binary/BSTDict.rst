@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Dictionary Implementation Using a BST
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: dictionary; BST; linked list; array-based list
    :satisfies: BST Dictionary
    :topic: Binary Trees
+   :keyword: Binary Search Tree; Dictionary
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses how to implement the Dictionary ADT with a BST.
 
 Dictionary Implementation Using a BST
 =====================================

@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binary Trees Definitions and Properties
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree intro
    :satisfies: binary tree terminology
    :topic: Binary Trees
+   :keyword: Binary Tree
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents definitions and properties for binary trees.
+
 
 Binary Trees
 ============
@@ -57,6 +64,7 @@ any node that has at least one non-empty child.
    :links: AV/Binary/BinExampCON.css
    :scripts: AV/Binary/BinExampCON.js
    :align: justify
+   :keyword: Binary Trees; Binary Tree Terminology
 
    A binary tree.
    Node :math:`A` is the root.
@@ -83,6 +91,7 @@ any node that has at least one non-empty child.
    :links: AV/Binary/BinDiffCON.css
    :scripts: AV/Binary/BinDiffCON.js
    :align: justify
+   :keyword: Binary Trees; Binary Tree Terminology
 
    Two different binary trees.
    (a) A binary tree whose root has a non-empty left child.
@@ -106,7 +115,7 @@ is either (1) an internal node with exactly two non-empty children or
 A :term:`complete binary tree` has a restricted shape obtained by
 starting at the root and filling the tree by levels from left to
 right.
-In the complete binary tree of height :math:`d`, all levels
+In a complete binary tree of height :math:`d`, all levels
 except possibly level :math:`d` are completely full.
 The bottom level has its nodes filled in from the left side.
 
@@ -116,6 +125,7 @@ The bottom level has its nodes filled in from the left side.
    :links: AV/Binary/FullCompCON.css
    :scripts: AV/Binary/FullCompCON.js
    :align: center
+   :keyword: Binary Trees; Binary Tree Terminology
 
    Examples of full and complete binary trees.
 
@@ -144,6 +154,7 @@ is an example of a full binary tree.
 
 .. avembed:: Exercises/Binary/DefSumm.html ka
    :long_name: Tree Definition Summary Exercises
+   :keyword: Binary Trees; Binary Tree Terminology
 
 
 Practice Questions
@@ -151,3 +162,4 @@ Practice Questions
 
 .. avembed:: Exercises/Binary/Treeprobs.html ka
    :long_name: Tree/Node Exercises
+   :keyword: Binary Trees; Binary Tree Terminology

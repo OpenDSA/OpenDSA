@@ -4,29 +4,42 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Adversarial Lower Bounds Proofs
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Lower Bounds
+   :keyword: Lower Bound Proof; Adversary Argument
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of an adversary argument for finding the lower bound for a problem. Uses the problem of finding the two largest values in an unsorted list as an example.
 
 Adversarial Lower Bounds Proofs
 ===============================
 
-Our next problem will be finding the second largest in a
+Our next problem to examine will be finding the second largest in a
 collection of objects.
-Consider what happens in a standard single-elimination tournament.
-Even if we assume that the "best" team wins in every game,
+Imagine that we are running a standard single-elimination tournament.
+We are going to overly simplify things by assuming that teams have a
+true "rank order", and that if one team is ranked "better" than
+another, it always wins any game between them.
+Now, even if we assume that the "best" team wins in every game,
 is the second best the one that loses in the finals?
 Not necessarily.
-We might expect that the second best must lose to the best,
+We might expect that the second best team must lose to the best,
 but they might meet at any time.
 
 Let us go through our standard "algorithm for finding algorithms" by
 first proposing an algorithm, then a lower bound, and seeing if they
 match.
-Unlike our analysis for most problems, this time we are going to count
-the exact number of comparisons involved and attempt to minimize this
-count.
+Asymptotically, this is pretty much open-and-shut on what the cost
+will be, and not that interesting.
+However, unlike our analysis for most problems, this time we are going
+to count the **exact number** of comparisons involved, and attempt to
+minimize this count.
+After all, it takes a lot of work to have two teams play a match!
+
 A simple algorithm for finding the second largest is to first find the
 maximum (in :math:`n-1` comparisons), discard it, and then find the
 maximum of the remaining elements (in :math:`n-2` comparisons) for a total
@@ -54,27 +67,33 @@ This proof is wrong.
 It exhibits the :term:`necessary fallacy`:
 "Our algorithm does something, therefore all algorithms solving
 the problem must do the same."
+There is no reason why the maximum element must directly compare
+against every other element.
+Even the most basic standard maximum-finding algorithm does not
+require that this happen.
 
-This leaves us with our best lower bounds argument at the moment
+This leaves us with a default best lower bounds argument at the moment
 being that finding the second largest must cost at least as much as
 finding the largest, or :math:`n-1`.
+
 Let us take another try at finding a better algorithm by adopting a
 strategy of divide and conquer.
 What if we break the list into halves, and run `largest` on each
 half?
+This costs :math:`n-2` comparisons.
 We can then compare the two winners (we have now used a total of
 :math:`n-1` comparisons), and remove the winner from its half.
-Another call to ``largest`` on the winner's half yields its second
-best.
+Another call to ``largest`` on the winner's half (minus the winner)
+yields its second best at a cost of :math:`n/2 - 1`.
 A final comparison against the winner of the other half gives us the
 true second place winner.
 The total cost is :math:`\lceil 3n/2\rceil - 2`.
 Is this optimal?
 What if we break the list into four pieces?
-The best would be :math:`\lceil 5n/4\rceil`.
+The best would be about :math:`\lceil 5n/4\rceil`.
 What if we break the list into eight pieces?
 Then the cost would be about :math:`\lceil 9n/8\rceil`.
-Notice that as we break the list into more parts,
+But notice that as we break the list into more parts,
 comparisons among the winners of the parts becomes a larger concern.
 
 Looking at this another way, the only candidates for second place
@@ -87,10 +106,10 @@ competitors are known to be larger than the same number of other
 values.
 So we would like to arrange our comparisons to be against
 "equally strong" competitors.
-We can do all of this with a \defit{binomial tree}.
+We can do all of this with a :term:`binomial tree`.
 A binomial tree of height :math:`m` has :math:`2^m` nodes.
 Either it is a single node (if :math:`m=0`), or else it is
-two height :math:`m-1` binomial trees with one tree's root becoming
+two binomial trees of height :math:`m-1`, with one tree's root becoming
 a child of the other.
 Let's see how a binomial tree with eight nodes would be constructed.
 
@@ -100,6 +119,7 @@ Let's see how a binomial tree with eight nodes would be constructed.
    :links:  AV/SeniorAlgAnal/BinomialTreeCON.css
    :scripts: AV/SeniorAlgAnal/BinomialTreeCON.js
    :output: show
+   :keyword: Lower Bounds Proofs; Adversary Arguments
 
 The resulting algorithm is simple in principle:
 Build the binomial tree for all :math:`n` elements, and then compare
@@ -112,7 +132,7 @@ Because the shape of a binomial tree is heavily constrained,
 we can also store the binomial tree implicitly in an array, much as we
 do for a heap.
 Assume that two trees, each with :math:`2^k` nodes, are in the array.
-The first tree is in positions 1 to :math`2^k`.
+The first tree is in positions 1 to :math:`2^k`.
 The second tree is in positions :math:`2^k+1` to :math:`2^{k+1}`.
 The root of each subtree is in the final array position for that
 subtree.
@@ -131,7 +151,7 @@ If a comparison is simply a check between two integers, then of course
 moving half the values within the array is too expensive.
 But if a comparison requires that a competition be held between two
 sports teams, then the cost of a little bit (or even a lot) of book
-keeping becomes irrelevent.
+keeping on a computer becomes irrelevent.
 
 Because the binomial tree's root has :math:`\log n` children,
 and building the tree requires :math:`n-1` comparisons,
@@ -140,17 +160,39 @@ the number of comparisons required by this algorithm is
 This is clearly better than our previous algorithm.
 Is it optimal?
 
+**A small digression:** You might be wondering what the deal is with
+presenting a binomial tree here.
+It might seem confusing because you are probably used to seeing
+something like the tournament layout that shows the planned playing
+schedule for various players or teams in a single-elimination
+tounament.
+In particular, if the number of entities competing is :math:`2^n`,
+this tournament layout is a balanced tree, whereas the binomial tree
+is not balanced.
+The difference is that the tournament tree and the binomial tree are
+presenting two views of similar information.
+The tournament tree is showing, *a priori*, the playing schedule.
+The binomial tree is showing the results of competitions,
+such as what would come from executing the schedule from the
+tournament tree.
+In particular, onces a competitor loses, they don't play anymore
+(at least not in a regular single-elimination tournament).
+Since some competitors play less than others, the binomial tree is not
+balanced.
+**End digression.**
+
 We now go back to trying to improve the lower bounds proof.
 To do this, we introduce the concept of an :term:`adversary`.
 The adversary's job is to make an algorithm's cost as high as
 possible.
 Imagine that the adversary keeps a list of all possible inputs.
 We view the algorithm as asking the adversary for information about
-the algorithm's input.
-The adversary may never lie, in that its answer must be consistent
-with the previous answers.
+the algorithm's input, and the adversay will give an answer when asked.
+The adversary may never lie, in that any answer it gives must be
+consistent with all of its previous answers.
 But it is permitted to "rearrange" the input as it sees fit in order
-to drive the total cost for the algorithm as high as possible.
+to drive the total cost for the algorithm as high as possible (so long
+as that rearranged input would be consistent with prior answers).
 In particular, when the algorithm asks a question, the adversary
 must answer in a way that is consistent with at least one remaining
 input.
@@ -184,8 +226,8 @@ In this way, the adversary can hope to make the player guess as many
 letters as possible.
 
 Before explaining how the adversary plays a role in our lower bounds
-proof, first observe that at least :math:`n-1` values must lose at
-least once.
+proof for finding the second best, first observe that at least
+:math:`n-1` values must lose at least once.
 This requires at least :math:`n-1` compares.
 In addition, at least :math:`k-1` values must lose to the second
 largest value.
@@ -220,3 +262,10 @@ All strengths begin at zero, so the winner must make at least
 Thus, there must be at least :math:`n + \lceil \log n\rceil - 2`
 comparisons.
 So our algorithm is optimal.
+
+
+Acknowledgement
+---------------
+
+This page borrows heavily from  presentation in Section 3.3 of
+*Compared to What?* by Gregory J.E. Rawlins.

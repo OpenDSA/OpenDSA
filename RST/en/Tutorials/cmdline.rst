@@ -4,12 +4,18 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Command Line Basics
    :author: Jordan Sablan
+   :institution: Virginia Tech
    :requires:
    :satisfies: Commmand line
-   :topic:
+   :topic: Programming Tutorial
+   :keyword: Command Line Interface
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the command line interface.
 
-===================
+
 Command Line Basics
 ===================
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
   <title>Grammar Transformation Editor</title>
-	<link rel="stylesheet" href="../../../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+	<link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 	<link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css" />
 	<link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css" />
 	<link rel="stylesheet" href="../../css/customPrompt.css" type="text/css" />
@@ -30,12 +30,12 @@
         FATester and the functionality of them are located on the ExerciseController JS file-->
         <div id="container">
                 <h1 id="transformation">Grammar Transformation</h1>
-                <button id="helpbutton"><img src="./help.png"/></button>
+                <button id="helpbutton"><img src="./help.png" alt="Help" /></button>
                 <div id="help" title="Help" style="display:none">
                 <div id="helpInfo">
                     Help:
                     To delete, click on "Delete" and click on the row you want to delete.
-                    To add, click on "Add Row" and click on any row to add a new row.
+                    To add a row at the bottom, click on "Add Row".
                 </div>
                 </div>
                 <h2>Questions: </h2>
@@ -71,12 +71,13 @@
     </div>
   </div>
   </div>
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script src="../../../../../JSAV/lib/jquery.transit.js"></script>
-	<script src="../../../../../JSAV/lib/raphael.js"></script>
-	<script src="../../../../../JSAV/lib/dagre.min.js"></script>
-	<script src="../../../../../JSAV/build/JSAV.js"></script>
+	<script src="../../../../lib/jquery.min.js"></script>
+<script src="../../../../lib/jquery.migrate.min.js"></script>
+	<script src="../../../../lib/jquery.ui.min.js"></script>
+	<script src="../../../../../lib/jquery.transit.js"></script>
+	<script src="../../../../../lib/raphael.js"></script>
+	<script src="../../../../../lib/dagre.min.js"></script>
+	<script src="../../../../../lib/JSAV.js"></script>
 	<script src="../../../../../lib/odsaUtils-min.js"></script>
   <script src="../../../../../lib/odsaAV-min.js"></script>
   <script src="../../../../../DataStructures/FLA/serializableGraph.js"></script>

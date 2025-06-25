@@ -1,0 +1,117 @@
+{
+    "translations": {
+      "en": {
+        "order": {
+          "type": "select",
+          "description": "<b>Example</b>: Consider this simple grammar for arithmetic expressions:<br/> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P);\\qquad P =$<br/>$E \\rightarrow E+E \\ |\\ E*E \\ |\\ (E) \\ |\\ I$<br/>$I\\rightarrow a \\ |\\ b$<br/>One derivation of $a+b∗a$ is:<br/> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E} \\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E \\Rightarrow a+b*\\underline{E}\\Rightarrow$<br/>$a+b* \\underline{I} \\Rightarrow a+b*a$.<br/>The corresponding derivation tree is:",
+          "question": "How are derivation trees evaluated?",
+          "answer": "Bottom up",
+          "choices": ["Top down", "Bottom up"]
+        },
+        "multfirst": {
+          "type": "select",
+          "description": "<b>Example</b>: Consider this simple grammar for arithmetic expressions:<br/> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P);\\qquad P =$<br/>$E \\rightarrow E+E \\ |\\ E*E \\ |\\ (E) \\ |\\ I$<br/>$I\\rightarrow a \\ |\\ b$<br/>One derivation of $a+b∗a$ is:<br/> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E} \\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E \\Rightarrow a+b*\\underline{E}\\Rightarrow$<br/>$a+b* \\underline{I} \\Rightarrow a+b*a$.<br/>The corresponding derivation tree is:",
+          "question": "Since derivation trees of expressions are evaluated bottom up, which operator will be done first?",
+          "answer": "multiplication",
+          "choices": ["multiplication", "addition"],
+          "incorrectFeedback": ["Which operation is lower in the tree?"]
+        },
+        "eval1": {
+          "type": "select",
+          "description": "<b>Example</b>: Consider this simple grammar for arithmetic expressions:<br/> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P);\\qquad P =$<br/>$E \\rightarrow E+E \\ |\\ E*E \\ |\\ (E) \\ |\\ I$<br/>$I\\rightarrow a \\ |\\ b$<br/>One derivation of $a+b∗a$ is:<br/> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E} \\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E \\Rightarrow a+b*\\underline{E}\\Rightarrow$<br/>$a+b* \\underline{I} \\Rightarrow a+b*a$.<br/>The corresponding derivation tree is:",
+          "question": "Let $a = 2$ and $b = 4$. Then the value of $a+b*a$ from the tree on the left will be:",
+          "answer": "10",
+          "choices": ["10", "12"],
+          "correctFeedback": ["Actually, you probably did not look at the tree but instead just did this in your head from your pre-existing knowledge that we usually consider multiplication to have higher precedence than addition. This fact is actually built into the tree in this case, and so the process of evaluating the tree from bottom to top causes the right thing to happen."]
+        },
+        "different": {
+          "type": "true/false",
+          "description": "<b>Example</b>: Consider this simple grammar for arithmetic expressions:<br/> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P);\\qquad P =$<br/>$E \\rightarrow E+E \\ |\\ E*E \\ |\\ (E) \\ |\\ I$<br/>$I\\rightarrow a \\ |\\ b$<br/>One derivation of $a+b∗a$ is:<br/> $E\\Rightarrow \\underline{E}+E\\Rightarrow \\underline{I}+E\\Rightarrow a+\\underline{E} \\Rightarrow a+\\underline{E}*E\\Rightarrow a+\\underline{I}*E \\Rightarrow a+b*\\underline{E}\\Rightarrow$<br/>$a+b* \\underline{I} \\Rightarrow a+b*a$.<br/>The corresponding derivation tree is:",
+          "question": "[T|F]We can find a different derivation tree for the expression $a+b*a$ using the same grammar.",
+          "answer": "True",
+          "choices": []
+        },
+        "addfirst": {
+          "type": "true/false",
+          "description": "<b>Example</b>: Consider this simple grammar for arithmetic expressions:<br/> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P);\\qquad P =$<br/>$E \\rightarrow E+E \\ |\\ E*E \\ |\\ (E) \\ |\\ I$<br/>$I\\rightarrow a \\ |\\ b$<br/><br/>Another derivation of $a+b∗a$ is:<br/>$E\\Rightarrow \\underline{E}*E\\Rightarrow \\underline{E}+E*E\\Rightarrow \\underline{I}+E*E \\Rightarrow a+\\underline{E}*E\\Rightarrow$ $a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br/>The corresponding derivation tree will be:",
+          "question": "[T|F] This is also a valid, but different, derivation tree for this string.",
+          "answer": "True",
+          "choices": []
+        },
+        "eval2": {
+          "type": "select",
+          "description": "<b>Example</b>: Consider this simple grammar for arithmetic expressions:<br/> $G=(\\{E,I\\},\\{a,b,+,∗,(,)\\},E,P);\\qquad P =$<br/>$E \\rightarrow E+E \\ |\\ E*E \\ |\\ (E) \\ |\\ I$<br/>$I\\rightarrow a \\ |\\ b$<br/><br/>Another derivation of $a+b∗a$ is:<br/>$E\\Rightarrow \\underline{E}*E\\Rightarrow \\underline{E}+E*E\\Rightarrow \\underline{I}+E*E \\Rightarrow a+\\underline{E}*E\\Rightarrow$ $a+\\underline{I}*E\\Rightarrow a+b*\\underline{E}\\Rightarrow a+b*\\underline{I}\\Rightarrow a+b*a$<br/>The corresponding derivation tree will be:",
+          "question": "Let $a = 2$ and $b = 4$. the value of $a+b*a$ according to the tree on the left will be:",
+          "answer": "12",
+          "choices": ["10","12"],
+          "correctFeedback": ["According to this tree, the addition operation is done first, and then multiplcation."],
+          "incorrectFeedback": ["Are you really considering the bottom-up evaluation of the tree on the left?"]
+        },
+        "whichcorrect": {
+          "type": "select",
+          "description": "Since the same string can have different derivation trees, this is called an <b>ambiguous</b> grammar.",
+          "question": "Which tree is the correct one?",
+          "answer": "Both are correct based on the given grammar",
+          "choices": ["The one on the left","The one on the right", "Both are correct based on the given grammar"]
+        },
+        "ambiguous": {
+          "type": "select",
+          "description": "Since the same string can have different derivation trees, this is called an <b>ambiguous</b> grammar.",
+          "question": "Which tree will be used by the compiler?",
+          "answer": "There is no way to know what any given compiler will do with this grammar.",
+          "choices": ["The one on the left", "The one on the right", "Neither, the compiler will issue an error due to the ambiguity", "There is no way to know what any given compiler will do with this grammar."]
+        },
+        "precedence": {
+          "type": "select",
+          "description": "Unfortunately, there is no algorithm to remove ambiguity. But there are some common techniques that grammar writers can use.<br/>Operator precedence",
+          "question": "Which operator from our original grammar should have the highest precedence?",
+          "answer": "*",
+          "choices": ["*", "+", "-"],
+          "incorrectFeedback": ["Our original grammar does not include `-'"]
+        },
+        "associativity": {
+          "type": "true/false",
+          "description": "Unfortunately, there is no algorithm to remove ambiguity. But there are some common techniques that grammar writers can use.<br/>Operator precedence<br/>Operator associativity",
+          "question": "[T|F] Operator associativity tells us how to break the tie if we have multiple operators with the same precedence.",
+          "answer": "True",
+          "choices": []
+        },
+        "assoctypes": {
+          "type": "select",
+          "description": "Unfortunately, there is no algorithm to remove ambiguity. But there are some common techniques that grammar writers can use.<br/>Operator precedence<br/>Operator associativity",
+          "question": "What are the ways to break the tie with operator associativity?",
+          "answer": ["Left associativity", "Right associativity"],
+          "choices": ["Left associativity", "Right associativity"]
+        },
+        "leftassoc": {
+          "type": "select",
+          "description": "Unfortunately, there is no algorithm to remove ambiguity. But there are some common techniques that grammar writers can use.<br/>Operator precedence<br/>Operator associativity",
+          "question": "In traditional mathematics notation, which of the following are left associative operators?",
+          "answer": ["+","-","*","/"],
+          "choices": ["+","-","*","/","power operator"]
+        },
+        "rightassoc": {
+          "type": "select",
+          "description": "Unfortunately, there is no algorithm to remove ambiguity. But there are some common techniques that grammar writers can use.<br/>Operator precedence<br/>Operator associativity",
+          "question": "In traditional mathematics notation, which of the following are right associative operators?",
+          "answer": ["power operator"],
+          "choices": ["+","-","*","/","power operator"]
+        },
+        "newgrammar": {
+          "type": "select",
+          "description":  "Now let us try to remove the ambiguity by rewriting the grammar as an unambiguous grammar. Specifically, meaning that multiplication has higher precedence than addition. Consider this grammar.<br/>$E\\rightarrow E+T$ | $T$<br>    $T\\rightarrow T∗*$ | $F$<br>  $F\\rightarrow I$ | $(E)$<br>$I\\rightarrow a$ | $b$",
+          "question": "Can you get a derivation tree from this grammar where addition is evaluated before multiplication?",
+          "answer": "Not without using another operator like ().",
+          "choices": ["Not without using another operator like ().", "Yes"]
+        },
+        "unambig": {
+          "type": "select",
+          "description": "$\\textbf {Definition}$: If $L$ is CFL and $G$ is an unambiguous CFG such that $L=L(G)$, then $L$ is unambiguous.",
+          "question": "The language for mathmatical expressions is an unambiguous language",
+          "answer": "Yes, because it has an unambiguous grammar",
+          "choices": ["No", "Yes, because it has an unambiguous grammar"]
+        }
+      }
+    }
+  }
+  

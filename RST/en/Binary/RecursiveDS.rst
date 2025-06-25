@@ -4,9 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binary Tree as a Recursive Data Structure
    :author: Sally Hamouda
+   :institution: Virginia Tech
    :satisfies: binary tree as a recursive data Structures
    :topic: Binary Tree as a Recursive Data Structures
+   :keyword: Binary Tree Terminology
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the representation of a binary tree through recursion.
+
 
 Binary Tree as a Recursive Data Structure
 =========================================
@@ -32,6 +39,7 @@ other one its right child.
    :links: AV/Binary/RecursiveDSCON.css
    :scripts: AV/Binary/ListRecDSCON.js
    :align: justify
+   :keyword: Binary Trees; Binary Tree Terminology
 
 
 .. _BinRecDS:
@@ -40,6 +48,7 @@ other one its right child.
    :links: AV/Binary/RecursiveDSCON.css
    :scripts: AV/Binary/BinRecDSCON.js
    :align: justify
+   :keyword: Binary Trees; Binary Tree Terminology
    
 The recursive relationships used to define a structure provide a
 natural model for any recursive algorithm on the structure.
@@ -49,3 +58,4 @@ natural model for any recursive algorithm on the structure.
    :links: AV/Binary/RecursiveDSCON.css
    :scripts: AV/Binary/SumBinaryTreeCON.js
    :output: show
+   :keyword: Binary Trees; Binary Tree Terminology

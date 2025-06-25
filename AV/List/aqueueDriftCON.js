@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // The contents of the queue will be permitted to drift within the array.
+
+// Title: Array-Based Queue Drift Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Array-Based Queue
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow presenting the a design that allows elements in an array-based queue to drift. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "aqueueDriftCON";

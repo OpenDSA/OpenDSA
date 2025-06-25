@@ -4,9 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Dynamic Storage Allocation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
-
+   :keyword: Memory Management; Dynamic Storage Allocation
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses dynamic storage allocation and associated memory managers. Presents this as a bit array with allocated and unallocated blocks of various sizes.
+                 
 Dynamic Storage Allocation
 ==========================
 
@@ -28,6 +34,7 @@ a series of memory allocations and deallocations.
    :links: AV/MemManage/dynamicCON.css
    :scripts: AV/MemManage/freeblocklistCON.js
    :align: justify
+   :keyword: Memory Management; Dynamic Storage Allocation
    
    The results from a series of memory allocations and
    deallocations.
@@ -77,6 +84,7 @@ information.
    :links: AV/MemManage/dynamicCON.css
    :scripts: AV/MemManage/fragCON.js
    :align: center
+   :keyword: Memory Management; Dynamic Storage Allocation
 
    An illustration of internal and external fragmentation.
 

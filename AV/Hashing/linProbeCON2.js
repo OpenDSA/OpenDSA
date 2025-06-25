@@ -1,3 +1,12 @@
+// Title: Linear Probing Bad Performance Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing why linear probing is a poor method of collision resolution. */
+
 $(document).ready(function () {
   "use strict";
   var empty = [];

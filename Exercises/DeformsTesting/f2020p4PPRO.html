@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="jsav math MechSolverCommon">
+<html data-require="jsav math MechSolverCommon" lang="en">
 <head>
   <title>Problem 4</title>
   <script src="./mathjs.js" type="text/javascript"></script>
@@ -20,15 +20,15 @@
         <p class="problem">
           A rotating shaft is being designed to carry
 
-          <span class="param" id="param" 
+          <span class="param" id="param1" data-id="param1" 
           data-value="6" data-unit="MW" 
           data-value-display="6"
           data-unit-display="MW" data-domain="power">6 MW</span>
 
           of power at a speed of
           
-          <span class="param" id="param" 
-          data-value="3000" data-unit="rpm" 
+          <span class="param" id="param2" data-id="param2" 
+          data-value="3000" data-unit="rev/minute" 
           data-value-display="3000"
           data-unit-display="rpm" data-domain="angularvelocity">3000 rpm</span>
           .
@@ -40,13 +40,13 @@
 
             [ 
               G= 
-              <span class="param" id="param2" 
+              <span class="param" id="param3" data-id="param3" 
               data-value="85" data-unit="GPa" 
               data-value-display="85"
               data-unit-display="GPa" data-domain="pressure">85 GPa
               </span>,
               <code><var>"{\\tau_{failure}}"</var></code>=
-              <span class="param" id="param3"
+              <span class="param" id="param4" data-id="param4" 
               data-value="100" data-unit="MPa"
               data-value-display="100"
               data-unit-display="MPa" data-domain="pressure">100 MPa
@@ -55,7 +55,7 @@
 
             that can be used if the power factor of safety is
 
-            <span class="param" id="param" 
+            <span class="param" id="param5" data-id="param5" 
             data-value="2.3" data-unit="" 
             data-value-display="2.3"
             data-unit-display="" data-domain="dimensionless">2.3</span>

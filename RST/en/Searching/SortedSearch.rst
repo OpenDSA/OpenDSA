@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Search in Sorted Arrays
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Search
+   :keyword: Search in Sorted Lists; Lower Bound Proof; Binary Search; Interpolation Search; Quadratic Binary Search
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents algorithms for search in sorted arrays, including binary search, interpolation search, and quadratic binary search, along with a lower bounds proof of the problem.
 
 Search in Sorted Arrays
 =======================
@@ -21,11 +27,19 @@ sequential search is unacceptably slow.
 One way to reduce search time is to preprocess the records by
 sorting them.
 Given a sorted array,
-an obvious improvement over simple linear search is to test if the
-current element in **L** is greater than :math:`K`.
+an obvious improvement over simple left-to-right linear search is to
+test if the current element in **L** is greater than :math:`K`.
 If it is, then we know that :math:`K` cannot appear later in the
 array, and we can quit the search early.
 But this still does not improve the worst-case cost of the algorithm.
+
+One of the first algorithms that students learn in any CS course is
+how to more quickly search a sorted list.
+But let's try to forget what we know, and look at this problem with
+fresh eyes.
+And we also consider some details of the typical model assumptions
+that might lead to a better (average case) algorithm that what we
+think we know to be "best".
 
 
 Jump Search
@@ -84,12 +98,16 @@ minimum, which is :math:`j = \sqrt{n}`.
 In this case, the worst case cost will be
 roughly :math:`2\sqrt{n}`.
 
-This example invokes a basic principle of algorithm design.
+This example invokes a basic principle of algorithm design:
 We want to balance the work done while selecting a sublist with the
 work done while searching a sublist.
 In general, it is a good strategy to make subproblems of equal effort.
-This is an example of a
-:term:`divide and conquer` algorithm.
+This is an example of a :term:`divide and conquer` algorithm.
+This seems to be the best that we can do with a two-level algorithm
+(break the list into sublists of equal size, and then process the
+sublists).
+But another principle of algorithm design is to increase the number of
+levels.
 
 What if we extend this idea to three levels?
 We would first make jumps of some size :math:`j` to find a sublist of
@@ -122,18 +140,20 @@ implementation.
    :links: AV/Searching/binarySearchCON.css
    :scripts: AV/Searching/binarySearchCON.js
    :output: show
+   :keyword: Search; Search in Sorted Lists; Lower Bounds Proofs
 
 
-Of couse you know that Binary Search is far better than Sequential
+Of couse you know that binary search on a sorted list is far better
+than sequential search.
 Why would that be?
 Because we have additional information to work with that we do not
 have when the list is unsorted.
 You probably already "know" that the standard binary search algorithm
 has a worst case cost of :math:`O(\log n)`.
 Let's do the math to make sure that it really is in
-:math:`O(\log n`, and see how to handle the nasty details of modeling
+:math:`O(\log n)`, and see how to handle the nasty details of modeling
 the **exact** behavior of a recursive algorithm.
-After that, we can deal with proving that Binary Search is indeed
+After that, we can deal with proving that binary search is indeed
 optimal (at least in the worst case) for solving the problem of search
 in a sorted list.
 
@@ -151,7 +171,7 @@ For example, if the input size is nine, then we actually look at
 position 4 (since :math:`(9-0)/2 = 4` when rounded down), and we then
 either continue to consider four positions to the left
 (positions 0 to 3) or four positions to the right (positions 5 to 8).
-But what if there are ten element?
+But what if there are ten elements?
 Then we actually look at position 5 (since :math:`(10-0)/2 = 5`).
 We will then either need to continue dealing with five positions to
 the left (positions 0 to 4), or four positions to the right.
@@ -320,7 +340,8 @@ Unlike when searching an unsorted list, comparisons between elements
 of **L** tell us nothing new about their relative order (since **L**
 is already sorted), so we consider only comparisons between :math:`K`
 and an element in **L**.
-At the root of the decision tree, our knowledge rules out no positions
+When we start the algorithm at the root of the decision tree,
+our current knowledge rules out no positions
 in **L**, so all are potential candidates.
 As we take branches in the decision tree based on the result of
 comparing :math:`K` to an element in **L**, we gradually rule out
@@ -336,6 +357,25 @@ algorithm.
 Thus, any algorithm on a sorted array requires at least
 :math:`\Omega(\log n)` comparisons in the worst case.
 
+.. inlineav:: SearchingLowerBoundCON dgm
+   :long_name: Sorted Search Lower Bound Diagram
+   :links: AV/Searching/SearchingLowerBoundCON.css
+   :scripts: AV/Searching/SearchingLowerBoundCON.js
+   :output: show
+   :keyword: Search; Sorted Search; Sorted Search Lower Bound
+
+   Decision trees for Binary Search on a problem size of 8 and a
+   problem size of 7.
+   In internal nodes, the top line shows the bounds of the subarray
+   and the bottom line shows the middle index in that subarray.
+   In leaf nodes, the value is the position in the array being
+   checked.
+   Edges are labeled to indicate when the branch is followed whether
+   the value of the search key is less than the value in the middle
+   cell of the subarray or greater.
+   The depth of the deepest node for any decision tree on an input of
+   size :math:`n` is :math:`\lfloor \log n \rfloor + 1`.
+   
 We can modify this proof to find the average cost lower bound.
 Again, we model algorithms using decision trees.
 Except now we are interested not in the depth of the deepest node (the
@@ -355,6 +395,7 @@ While binary search is indeed an optimal algorithm for a sorted list
 in the worst and average cases when searching a sorted array, there
 are a number of circumstances that might lead us to select another
 algorithm instead.
+In other words, there are a number of other models to consider.
 One possibility is that we know something about the distribution of
 the data in the array.
 If each position in **L** is equally likely to hold :math:`K`
@@ -364,7 +405,7 @@ well distributed along the full key range), then an
 is :math:`\Theta(\log \log n)` in the average case.
 If the data are not sorted, then using binary search requires us to
 pay the cost of sorting the list in advance, which is only worthwhile
-if many (at least :math:`O(\log n)` searches will be performed on the
+if many |---| at least :math:`O(\log n)` |---| searches will be performed on the
 list.
 Binary search also requires that the list (even if sorted) be
 implemented using an array or some other structure that supports
@@ -383,15 +424,16 @@ then we have just proved that binary search is the best
 algorithm available for searching a sorted array.
 However, sometimes we do know something about the expected
 key distribution.
+(Or, at least we think we know, and so design for, that key distribution.)
 Consider the typical behavior of a person looking up a word in
 a large dictionary.
 Most people certainly do not use sequential search!
-Typically, people use a modified form of binary search, at least until
-they get close to the word that they are looking for.
-The search generally does not start at the middle of the dictionary.
-People looking for a word starting with 'S'
-generally assume that entries beginning with 'S' start about three
-quarters  of the way through the dictionary.
+But they don't really use binary search, either,
+at least until they get close to the word that they are looking for.
+It is modified in that search generally does not start at the middle of the dictionary.
+People looking for a word starting with 'S' generally assume that
+entries beginning with 'S' start about three quarters  of the way
+through the dictionary.
 Thus, they will first open the dictionary about three quarters of
 the way through and then make a decision based on what is found as to
 where to look next.
@@ -408,9 +450,9 @@ is appropriate to the value of :math:`K` as follows.
 
 This equation is computing the position of :math:`K` as a fraction of
 the distance between the smallest and largest key values.
-This will next be translated into that position which is the same
+This will next be translated into the position that is the same
 fraction of the way through the array,
-and this position is checked first.
+and this position is checked first. 
 As with binary search, the value of the key found eliminates
 all records either above or below that position.
 The actual value of the key found can then be used to
@@ -420,10 +462,10 @@ This proceeds until either the desired record is found, or the array
 is narrowed until no records are left.
 
 A variation on dictionary search is known as
-:math:`Quadratic Binary Search` (QBS),
+:term:`Quadratic Binary Search <quadratic binary search>` (QBS),
 and we will analyze this in detail because its analysis is easier than
 that of the general dictionary search.
-QBS will first compute \(p\) and then examine
+QBS will first compute :math:`p` and then examine
 :math:`\mathbf{L}[\lceil pn\rceil]`.
 If :math:`K < \mathbf{L}[\lceil pn\rceil]` then QBS will sequentially
 probe to the left by steps of size :math:`\sqrt{n}`, that is, we step
@@ -533,7 +575,7 @@ First we compare :math:`\log \log n` to :math:`\log n`.
    \end{array}
 
 It is not always practical to reduce an algorithm's growth rate.
-There is a "practicality window" for every problem, in that we have
+There is a :term:`practicality window` for every problem, in that we have
 a practical limit to how big an input we wish to solve for.
 If our problem size never grows too big, it might not matter if we can
 reduce the cost by an extra log factor, because the constant factors

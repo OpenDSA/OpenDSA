@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // How to recognize when the queue is empty or full.
+
+// Title: Circular Array-Based Queue Empty Representation Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Array-Based Queue
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow presenting design options for recognizing when an array-based queue is empty or full. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "aqueueEmptyCON";

@@ -3,15 +3,23 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Estimation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
+   :requires:
    :satisfies: estimation
    :topic: Math Background
+   :keyword: Estimation
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the basic concept of estimation needed as background for a Data Structures and Algorithms course.
 
 .. index:: ! estimation
 
-Estimation
-==========
+
+Introduction to Estimation
+==========================
 
 One of the most useful life skills that you can gain from your
 computer science training is the ability to perform quick estimates.

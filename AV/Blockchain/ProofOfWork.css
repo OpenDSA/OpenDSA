@@ -1,3 +1,15 @@
+#ProofOfWork {
+    height: 600px;
+    position: relative;
+}
+
+.jsavcanvas {
+    height: 400px;
+}
+
+.jsavoutput.jsavline {
+  height: 90px;
+}
 
 .jsavlistnode {
   height: 30px;
@@ -34,6 +46,11 @@
     color: white;
     border-color: green;
     box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .mining {
+    width: 50px;
+    height: 50px;
   }
 
   .backward {
@@ -84,8 +101,46 @@
     box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
   }
 
+  .yellownode { /* Make a node yellow */
+    background-color: yellow;
+    color: black;
+    border-color: yellow;
+    box-shadow: 2px 2px 2px rgba(255, 255, 0, 0.5);
+  }
+
+  .purplenode { /* Make a node purple */
+    background-color: purple;
+    color: white;
+    border-color: purple;
+    box-shadow: 2px 2px 2px rgba(128, 0, 128, 0.5);
+  }
+
+  .brownnode { /* Make a node brown */
+    background-color: rgba(121, 91, 37, 0.61);
+    color: white;
+    border-color: rgba(121, 91, 37, 0.61);
+    box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+  }
+
+  .rednode { /* Make a node red */
+    background-color: red;
+    color: white;
+    border-color: red;
+    box-shadow: 2px 2px 2px red;
+  }
+
   .orangeedge { /* Make a tree edge to be green */
     stroke: orange;
+    stroke-width: 3;
+  }
+
+  .yellowedge { /* Make a tree edge to be yellow */
+    stroke: yellow;
+    stroke-width: 3;
+  }
+
+  .purpleedge { /* Make a tree edge to be purple */
+    stroke: purple;
     stroke-width: 3;
   }
 

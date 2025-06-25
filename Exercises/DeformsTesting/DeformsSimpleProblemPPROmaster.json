@@ -1,0 +1,249 @@
+{
+    "parameters": {
+        "param1": {
+            "id": "param1",
+            "type": "question_parameter",
+            "valueDisplay": "50mm",
+            "value": "50",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param2": {
+            "id": "param2",
+            "type": "question_parameter",
+            "valueDisplay": "50mm",
+            "value": "50",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param3": {
+            "id": "param3",
+            "type": "question_parameter",
+            "valueDisplay": "1mm",
+            "value": "1",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param4": {
+            "id": "param4",
+            "type": "question_parameter",
+            "valueDisplay": "25degC",
+            "value": "25",
+            "unit": "degC",
+            "parent": "question_params"
+        },
+        "param5": {
+            "id": "param5",
+            "type": "question_parameter",
+            "valueDisplay": "70GPa",
+            "value": "70",
+            "unit": "GPa",
+            "parent": "question_params"
+        },
+        "param6": {
+            "id": "param6",
+            "type": "question_parameter",
+            "valueDisplay": "0.000023degC^-1",
+            "value": "0.000023",
+            "unit": "degC^-1",
+            "parent": "question_params"
+        },
+        "param8": {
+            "id": "param8",
+            "type": "question_parameter",
+            "valueDisplay": "0.8m",
+            "value": "0.8",
+            "unit": "m",
+            "parent": "question_params"
+        }
+    },
+    "workspaces": {
+        "1": {
+            "id": 1,
+            "name": "wk1",
+            "equations": {
+                "0": {
+                    "id": "wk1_axialStress_1_1",
+                    "equation_template_id": "axialStress",
+                    "variables": {
+                        "deform": {
+                            "id": "wk1_axialStress_1_1_deform",
+                            "name": "deform",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\delta_{T_{}}",
+                                "parentSymbolTemplate": "\\delta_{T_{}}",
+                                "parentSymbol": "\\delta_{T_{}}"
+                            },
+                            "currentSymbol": "a_a",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param3",
+                            "valueNegated": false,
+                            "value": "1"
+                        },
+                        "thermalcoeff": {
+                            "id": "wk1_axialStress_1_1_thermalcoeff",
+                            "name": "thermalcoeff",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\alpha_{}",
+                                "parentSymbolTemplate": "\\alpha_{}",
+                                "parentSymbol": "\\alpha_{}"
+                            },
+                            "currentSymbol": "a_b",
+                            "expectedDomain": "temperature-1",
+                            "currentDomain": "temperature-1",
+                            "currentUnit": "degC^-1",
+                            "valueType": "number",
+                            "valueSource": "param6",
+                            "valueNegated": false,
+                            "value": "0.000023"
+                        },
+                        "tempchange": {
+                            "id": "wk1_axialStress_1_1_tempchange",
+                            "name": "tempchange",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\DeltaT_{}",
+                                "parentSymbolTemplate": "\\DeltaT_{}",
+                                "parentSymbol": "\\DeltaT_{}"
+                            },
+                            "currentSymbol": "a_c",
+                            "expectedDomain": "temperature",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_c",
+                                "varDisplay": "\\DeltaT_{}",
+                                "varDisplayTemplate": "\\DeltaT_{}"
+                            }
+                        },
+                        "length": {
+                            "id": "wk1_axialStress_1_1_length",
+                            "name": "length",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "L_{}",
+                                "parentSymbolTemplate": "L_{}",
+                                "parentSymbol": "L_{}"
+                            },
+                            "currentSymbol": "a_d",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "m",
+                            "valueType": "number",
+                            "valueSource": "param8",
+                            "valueNegated": false,
+                            "value": "0.8"
+                        }
+                    }
+                },
+                "1": {
+                    "id": "wk1_add2_2_1",
+                    "equation_template_id": "add2",
+                    "variables": {
+                        "sterm": {
+                            "id": "wk1_add2_2_1_sterm",
+                            "name": "sterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "s_{}",
+                                "parentSymbolTemplate": "s_{}",
+                                "parentSymbol": "s_{}"
+                            },
+                            "currentSymbol": "a_e",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": null,
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": "wk1_add2_2_1_sterm"
+                        },
+                        "aterm": {
+                            "id": "wk1_add2_2_1_aterm",
+                            "name": "aterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "a_{}",
+                                "parentSymbolTemplate": "a_{}",
+                                "parentSymbol": "a_{}"
+                            },
+                            "currentSymbol": "a_f",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_c",
+                                "varDisplay": "\\DeltaT_{}",
+                                "varDisplayTemplate": "\\DeltaT_{}"
+                            }
+                        },
+                        "bterm": {
+                            "id": "wk1_add2_2_1_bterm",
+                            "name": "bterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "b_{}",
+                                "parentSymbolTemplate": "b_{}",
+                                "parentSymbol": "b_{}"
+                            },
+                            "currentSymbol": "a_g",
+                            "expectedDomain": "free",
+                            "currentDomain": "temperature",
+                            "currentUnit": "degC",
+                            "valueType": "number",
+                            "valueSource": "param4",
+                            "valueNegated": false,
+                            "value": "25"
+                        }
+                    }
+                }
+            },
+            "solutionBoxes": {
+                "0": {
+                    "value": 54.3478260869565,
+                    "unit": "degC",
+                    "variable": "a_c",
+                    "variableDisplay": "\\DeltaT_{}",
+                    "valueSourceParent": "a_c",
+                    "valueNegated": false
+                },
+                "1": {
+                    "value": 79.3478260869565,
+                    "unit": "degC",
+                    "variable": "a_e",
+                    "variableDisplay": "s_{}",
+                    "valueSourceParent": "a_e",
+                    "valueNegated": false
+                },
+                "a_c": {
+                    "box_id_current": 0,
+                    "value": 54.3478260869565,
+                    "unit": "degC",
+                    "variable": "a_c",
+                    "variableDisplay": "\\DeltaT_{}"
+                },
+                "a_e": {
+                    "box_id_current": 1,
+                    "value": 79.3478260869565,
+                    "unit": "degC",
+                    "variable": "a_e",
+                    "variableDisplay": "s_{}"
+                }
+            }
+        }
+    },
+    "solutions": {
+        "0": {
+            "id": "0",
+            "solution": "79.35",
+            "unit": "degC",
+            "source": "a_e",
+            "parent": "solution_box",
+            "type": "number"
+        }
+    }
+}

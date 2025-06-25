@@ -4,13 +4,20 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Shellsort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: comparison; insertion sort
    :satisfies: shellsort
    :topic: Sorting
+   :keyword: Sorting; Shellsort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Shellsort including visualizations, code, and self-test questions and exercises.
 
 .. index:: ! Shellsort
 .. index:: Insertion Sort, Selection Sort
+
 
 Shellsort
 =========
@@ -85,6 +92,7 @@ records 4 through 7), then we can skip processing them.
    :links:
    :scripts: AV/Sorting/shellsortCON1.js
    :output: show
+   :keyword: Sorting; Shellsort
 
 Shellsort will sort each of these sublists of length 2 using Insertion
 Sort.
@@ -100,6 +108,7 @@ the two items are being compared you won't see anything yellow anymore!)
    :links: 
    :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON2.js
    :output: show
+   :keyword: Sorting; Shellsort
 
 At the end of the first pass, the resulting array is "a little better
 sorted".
@@ -107,6 +116,7 @@ sorted".
 .. inlineav:: shellsortCON3 dgm
    :links: 
    :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON3.js
+   :keyword: Sorting; Shellsort
 
 The second pass of Shellsort looks at fewer, bigger sublists.
 In our example, the second pass will have an increment of size 4,
@@ -126,6 +136,7 @@ increment size 4.
    :links: 
    :scripts: AV/Sorting/shellsortCON4.js
    :output: show
+   :keyword: Sorting; Shellsort
 
 Each sublist of 3 records would also be sorted using an Insertion
 Sort, as shown next.
@@ -135,6 +146,7 @@ Sort, as shown next.
    :links: 
    :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON5.js
    :output: show
+   :keyword: Sorting; Shellsort
 
 At the end of processing sublists with increment 4, the array is
 "even more sorted".
@@ -142,6 +154,7 @@ At the end of processing sublists with increment 4, the array is
 .. inlineav:: shellsortCON6 dgm
    :links: 
    :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON6.js
+   :keyword: Sorting; Shellsort
 
 The third pass will be made on sublists with increment 2.
 The effect is that we process 2 lists, one consisting of the odd
@@ -153,12 +166,14 @@ As usual, we sort the sublists using Insertion Sort.
    :links: 
    :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON7.js
    :output: show
+   :keyword: Sorting; Shellsort
 
 At this point, we are getting close to sorted.
 
 .. inlineav:: shellsortCON8 dgm
    :links: 
    :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON8.js
+   :keyword: Sorting; Shellsort
 
 Shellsort's final pass will always use an increment of 1,
 which means a "regular" Insertion Sort of all records.
@@ -171,6 +186,7 @@ run Insertion Sort on the original array.
    :links: 
    :scripts: AV/Sorting/shellsortCODE.js AV/Sorting/shellsortCON9.js
    :output: show
+   :keyword: Sorting; Shellsort
 
 Finally, the array is sorted.
 
@@ -183,6 +199,7 @@ Now, test your understanding of the sublist concept.
 
 .. avembed:: Exercises/Sorting/ShellsortSublistSumm.html ka
    :long_name: Shellsort Sublist Proficency Exercise
+   :keyword: Sorting; Shellsort
 
 
 Putting It Together
@@ -204,11 +221,13 @@ works.
 
 .. avembed:: AV/Sorting/shellsortAV.html ss
    :long_name: Shellsort Visualization
+   :keyword: Sorting; Shellsort
 
 Next, let's review what makes for a legal increment series.
 
 .. avembed:: Exercises/Sorting/ShellsortSeries.html ka
    :long_name: Shellsort Series Exercise
+   :keyword: Sorting; Shellsort
 
 
 Shellsort Practice Exercise
@@ -219,6 +238,7 @@ Can you reproduce its behavior?
 
 .. avembed:: AV/Sorting/shellsortPRO.html pe
    :long_name: Shellsort Proficiency Exercise
+   :keyword: Sorting; Shellsort
 
 
 Optimizing Shellsort
@@ -246,6 +266,7 @@ how they affect the cost of Shellsort.
 
 .. avembed:: AV/Sorting/shellsortPerf.html pe
    :long_name: Shellsort Performance Activity
+   :keyword: Sorting; Shellsort
 
 A theoretical analysis of Shellsort is difficult, so we must accept
 without proof that the average-case performance of Shellsort
@@ -269,6 +290,7 @@ Here are some review questions to check that you understand Shellsort.
 
 .. avembed:: Exercises/Sorting/ShellsortSumm.html ka
    :long_name: Shellsort Summary Exercise
+   :keyword: Sorting; Shellsort
 
 If you want to know more about Shellsort, you can find a lot of
 details about its analysis along with ideas on how to pick a good

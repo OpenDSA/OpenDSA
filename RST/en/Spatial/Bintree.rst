@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Bintree
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: BST; Spatial data structures
    :satisfies: Bintree
    :topic: Spatial Data Structures
+   :keyword: Spatial Data Structure, Bintree
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the Bintree data structure.
+
 
 The Bintree
 ===========
@@ -45,6 +52,7 @@ multidimensional coordinates, such as locations in 2D or 3D space.
    :links: AV/Spatial/bintreeCON.css
    :scripts: AV/Spatial/bintreeCON.js
    :align: justify
+   :keyword: Spatial Data Structures, Bintree
 
    Example of a Bintree.
 
@@ -84,10 +92,12 @@ Here is a visualization of the Bintree, that shows how inserting a
 point and removing a point works.
 
 .. avembed:: AV/Spatial/BintreeAV.html ss
+   :keyword: Spatial Data Structures, Bintree
 
 Below is an interactive visualization of the Bintree for practice.
 
 .. avembed:: AV/Spatial/BintreeInter.html ss
+   :keyword: Spatial Data Structures, Bintree
 
 Assume that we want to print out a list of all records that are within
 a certain distance :math:`d` of a given point :math:`P`.
@@ -200,8 +210,7 @@ class or the tree class?
 For example, on an insert operation, you could have the tree class
 control the flow down the tree, looking at (querying) the nodes to see
 their type and reacting accordingly.
-This is the approach used by the BST implementation in
-Module :numref`BST`.
+This is the approach used by a typical BST implementation.
 An alternate approach is to have the node class do the work.
 That is, you have an insert method for the nodes.
 If the node is internal, it passes the city record to the appropriate

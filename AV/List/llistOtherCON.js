@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Move curr around the Linked list
+
+// Title: Linked List Miscillaneous Methods Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow demonstrating some miscillaneous methods for a linked list implementation. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "llistOtherCON";

@@ -1,10 +1,13 @@
 {
   "translations" :{
     "en": {
+      "intro": "There is another approach to keeping the cost of swapping records low, and it can be used by any sorting algorithm even when the records are large. This is to have each element of the array store a pointer to a record rather than store the record itself.",
+      "lang": "In Java, the normal expectation is that an array stores references to objects, not the objects themselves. So the approach we will describe here is the normal behavior in Java. In most other languages, we have the choice of whether an array stores records or pointers to records.",
       "sc1": "Here we see an array with references to four records.",
-      "sc2": "To start with, the record with key value 42 comes before the record with key value 5. So we want to swap them.",
-      "sc3": "All that we actually need to do is swap the pointers, not the records.",
-      "sc4": "Which is effectively the same as reordering the records themselves."
+      "sc2": "Consider any sort that needs to swap two records in the array. In this example we want to swap the record with key value 42 with the record that has key value 5.",
+      "recswap": "If the array stored actual records, the swap would require that the entire contents of the records be moved.",
+      "sc3": "But since we are storing references, all that we actually need to do is swap the pointers, not the records. This is usually far cheaper.",
+      "sc4": "Swapping the references is effectively the same as reordering the records themselves."
     }
   }
 }

@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Sally Hamouda and Cliff Shaffer
 // Visualizing the four steps to write a recursive function
+
+// Title: Recursion Introduction Slideshow: Delegation
+// Author: Sally Hamouda; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Recursion
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow demonstrating the basic concepts of base cases and recursive calls in a function. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "recurWriteStepsCON";

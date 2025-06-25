@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer, Yujie Chen 
+   :title: Sorting Terminology and Notation
+   :author: Cliff Shaffer; Yujie Chen 
+   :institution: Virginia Tech
    :requires: sorting introduction
    :satisfies: sorting terminology
+   :keyword: Sorting; Key; Search Key
+   :naturallanguage: en
+   :programminglanguage: N/A
    :topic: Sorting
+   :description: Sorting terminology and notation overview, including a visualization and self-assessment questions
+
 
 Sorting Terminology and Notation
 ================================
@@ -18,7 +25,7 @@ Sorting Terminology and Notation
 .. index:: key, search key
 
 .. inlineav:: SortNotationS1CON ss
-   :long_name: Sorting Terminology and Notation Slideshow 1
+   :long_name: Sorting Terminology and Notation Slideshow
    :links: AV/Sorting/SortNotationS1CON.css
    :scripts: AV/Sorting/SortNotationS1CON.js
    :output: show

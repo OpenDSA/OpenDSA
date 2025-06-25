@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Simple Collision Resolution
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: open hashing
    :satisfies: collision resolution
    :topic: Hashing
+   :keyword: Hashing; Collision Resolution
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concept of collision resolution, with an explanation for why linear probing is inefficient.
 
 .. index:: ! collision resolution
 
@@ -72,7 +78,7 @@ searches.
 Thus, the hash system should keep a count of the number of records stored,
 and refuse to insert into a table that has only one free slot.
 
-The simplest approach to collsion resolution is simply to move down
+The simplest approach to collision resolution is simply to move down
 the table from the home slot until a free slot is found.
 This is known as :term:`linear probing`.
 The probe function for simple linear probing is
@@ -93,6 +99,7 @@ returns to the home position.
    :links: AV/Hashing/linProbeCON.css
    :scripts: AV/Hashing/linProbeCON1.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 Can you see any reason why this might not be the best approach
 to collision resolution?
@@ -115,6 +122,7 @@ The main problem is illustrated by the next slideshow.
    :links: AV/Hashing/linProbeCON.css
    :scripts: AV/Hashing/linProbeCON2.js
    :output: show
+   :keyword: Hashing; Collision Resolution
 
 Again, the ideal behavior for a collision resolution mechanism is that
 each empty slot in the table will have equal probability of
@@ -129,3 +137,4 @@ long probe sequences.
 
 .. avembed:: Exercises/Hashing/HashLinearPPRO.html ka
    :long_name: Linear Probing Proficiency Exercise
+   :keyword: Hashing; Collision Resolution

@@ -3,7 +3,7 @@
     "en": {
       ".exerciseTitle": "Binary Search",
       ".instructLabel": "Instructions:",
-      ".instructions": "The blue box contains a search key. The array stores values in ascending order, but these are intially hidden from your view. Find the key in the array by clicking on the midpoint positions as they would be calculated by the binary search algorithm. Whenever you click in the array, the value stored there will be displayed. Remember that midpoint calculation uses interger arithmetic, so the position calculation rounds down.",
+      ".instructions": "The blue box contains a search key. The array stores values in ascending order, but these are intially hidden from your view. Find the key in the array by clicking on the midpoint positions as they would be calculated by the binary search algorithm. Whenever you click in the array, the value stored there will be displayed. Since midpoint calculation uses interger arithmetic, the position calculation rounds down. This computation is: <tt>int pos = (low + high)/2;</tt>",
       "#about": "About",
       ".avTitle": "Binary Search Proficiency Exercise",
       "av_Authors": "Kasper Hellström",
@@ -44,6 +44,6 @@
     }
   },
   "params": {
-    "JXOP-feedback": "atend"
+    "JXOP-feedback": "continuous"
   }
 }

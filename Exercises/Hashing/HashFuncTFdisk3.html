@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-require="math">
+<html data-require="math" lang="en">
   <head>
     <title>Hash System Type for Disk: Bucket Hashing</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
@@ -12,15 +12,18 @@
         <div id="HashFuncTFdisk3p">
           <p class="problem">Answer TRUE or FALSE.</p>
           <p class="question">Bucket hashing works well for disk-based hash systems.</p>
-          <div class="solution">False</div>
+          <div class="solution">True</div>
           <ul class="choices" data-category="true">
             <li>True</li>
             <li>False</li>
           </ul>
           <div class="hints">
-            <p>Bucket hashing requires that we deal with the
-              overflow.</p>
-            <p>The overflow table is expensive to process when on disk.</p>
+            <p>The bucket size can be set to the size of a disk block.</p>
+            <p>So only one block needs to be read into memory to do
+              an insert... unless the bucket is full.</p>
+            <p>If the bucket is full, then overflow bucket must be
+            retrieved as well. Naturally, overflow should be kept
+            small to minimize unnecessary disk accesses.
           </div>
         </div>
       </div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Basics 2</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <link rel="stylesheet" type="text/css" media="all" href="ka-code.css"/>
+  </head>
+
+  <body data-height="950" data-width="950">
+    <div class="exercise">
+      <div class="problems">
+        <div id="ARRAYBASICS_Q4">
+        <p class="question">
+          <p>Given the following code:</p>
+          <pre class="prettyprint">
+            for (int i=0; i < values.length; i++) {
+              if (values[i] == searchedValue){
+                found = true; 
+              } else {
+                found = false;
+              }
+            } 
+            if (found) { 
+              System.out.println("found " + searchedValue); 
+            } else { 
+              System.out.println ("not found"); 
+            }      
+        </pre>
+        <p>If the initital values are:</p>
+        <pre class="prettyprint">
+          int[] values = { 3, 6, 10, 12, 100, 200, 250, 500 };
+          int searchedValue = 82;
+          boolean found = false;
+      </pre>
+      <p>What is output?   </p>     
+        </p>
+        <div class="solution"><tt>not found</tt></div>
+        <ul class="choices">
+        <li><tt>found 82</tt></li>
+
+        </ul>
+        <div class="hints">
+        <!--   -->
+        <p>There are no hints for this question</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

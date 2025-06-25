@@ -36,3 +36,11 @@
 .jsavedge.selected {
   stroke: red;
 }
+
+.jsavedgelabel {
+  background-color: #fff;
+  z-index: 700;
+  position: absolute;
+  display: inline-block;
+  margin: 0;
+}

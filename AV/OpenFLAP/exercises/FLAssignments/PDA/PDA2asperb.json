@@ -1,0 +1,59 @@
+[{
+    "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR,PDA,TM.",
+    "exerciseType": "PDA",
+    "totalTrueCases": 8,
+    "totalFalseCases": 3,
+    "containLetters": ["a", "b"],
+    "randomStringLength": [0, 15],
+    "description": "Construct the PDA that accepts strings in $\\{w \\mid w \\in \\{a, b\\}^*\\}$ that have twice as many a's as b's.",
+    "testCases": [{
+            "": true,
+            "ShowTestCase":true
+        },
+        {
+            "aab": true,
+            "ShowTestCase":true
+        },
+        {
+            "aba": true,
+            "ShowTestCase":true
+        },
+        {
+            "baa": true,
+            "ShowTestCase":true
+        },
+        {
+            "aaabab": true,
+            "ShowTestCase":true
+        },
+        {
+            "baabbbaaaa": false,
+            "ShowTestCase":true
+        },
+        {
+            "bbbbaaaaaaaa": true,
+            "ShowTestCase":true
+        },
+        {
+            "bbbaaaaaabaa": true,
+            "ShowTestCase":true
+        },
+        {
+            "aaaaaa": false,
+            "ShowTestCase":true
+        },
+        {
+            "bbbbbbbbbb": false,
+            "ShowTestCase":true
+        },
+        {
+            "baabbaaaa": true,
+            "ShowTestCase":true
+        }
+    ],
+    "graph": {
+        "nodes": [],
+        "edges": []
+    },
+    "solution": ""
+}]

@@ -3,11 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Freelists
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: linked list
    :satisfies: freelist
    :topic: Lists
+   :keyword: Freelist
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses the purpose and implementation of a freelist for more efficient memory management.
 
 Freelists
 =========
@@ -48,6 +54,7 @@ an application of a :ref:`linked stack <linked stack> <StackLinked>`.
    :links: AV/List/listFreeCON.css
    :scripts: AV/List/llist.js AV/List/listFreeCON.js
    :output: show
+   :keyword: Freelists
 
 Freelists are particularly useful for linked lists that periodically
 grow and then shrink.

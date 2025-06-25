@@ -1,0 +1,86 @@
+{
+  "translations": {
+    "en": {
+      "RRG": {
+        "type": "select",
+        "description": "We will use a process that is pretty much the same as what we just did to convert a right-linear grammar to an NFA. By the way, right-regular grammar is a synonym for right-linear grammar.",
+        "question":"What do we mean by RRG?",
+        "answer": ["Right-regular Grammar", "Right-linear grammar"],
+        "choices": ["Regular Expression", "Right-regular Grammar", "Left-regular Grammar", "Regular Grammar", "Right-linear grammar"]
+      },
+      "states": {
+        "type": "multiple",
+        "description": "We will use a process that is pretty much the same as what we just did to convert a RRG to an NFA.<br>Each state from the NFA will have a variable in the grammar.",
+        "question":"How many variables do we need in the grammar for the NFA on the left?",
+        "answer": "2",
+        "choices": ["1", "2", "3", "4"],
+        "correctFeedback": ["There are two states in the NFA."]
+      },
+      "rules": {
+        "type": "multiple",
+        "description": "We will use a process that is pretty much the same as what we just did to convert a RRG to an NFA.<br>Each state from the NFA will have a variable in the grammar.<br>Each transition gets a production rule.",
+        "question":"How many production rules will we need to create?",
+        "answer": "3",
+        "choices": ["1", "2", "3", "4"],
+        "correctFeedback": ["There are three transitions in the NFA."]
+      },
+      "start": {
+        "type": "multiple",
+        "description": "Now let's figure out the production rules. We will use the names of the states $(Q_0$ and $Q_1)$ for our grammar's variable names.",
+        "question":"What is the start variable?",
+        "answer": "$Q_0$, because it is the start state of the NFA",
+        "choices": ["$Q_0$, because it is the start state of the NFA", "$Q_1$", "S, because that is always the start variable."]
+      },
+      "Q0aQ1": {
+        "type": "multiple",
+        "description": "Now let's figure out the production rules. We will use the names of the states $(Q_0$ and $Q_1)$ for our grammar's variable names.",
+        "question":"What is the production rule equivalent to the transition $\\delta(Q_0, a) = Q_1$?",
+        "answer": "$Q_0 \\rightarrow aQ_1$",
+        "choices": ["$Q_0 \\rightarrow aQ_1$", "$Q_1 \\rightarrow bQ_1$", "$Q_1 \\rightarrow aQ_0$"]
+      },
+      "Q1bQ1": {
+        "type": "multiple",
+        "description": "Now let's figure out the production rules. We will use the names of the states $(Q_0$ and $Q_1)$ for our grammar's variable names.",
+        "question":"What is the production rule equivalent to the transition $\\delta(Q_1, b) = Q_1$?",
+        "answer": "$Q_1 \\rightarrow bQ_1$",
+        "choices": ["$Q_0 \\rightarrow aQ_1$", "$Q_1 \\rightarrow bQ_1$", "$Q_1 \\rightarrow aQ_0$"]
+      },
+      "Q1aQ0": {
+        "type": "multiple",
+        "description": "Now let's figure out the production rules. We will use the names of the states $(Q_0$ and $Q_1)$ for our grammar's variable names.",
+        "question":"What is the production rule equivalent to the transition $\\delta(Q_1, a) = Q_0$?",
+        "answer": "$Q_1 \\rightarrow aQ_0$",
+        "choices": ["$Q_0 \\rightarrow aQ_1$", "$Q_1 \\rightarrow bQ_1$", "$Q_1 \\rightarrow aQ_0$"]
+      },
+      "final": {
+        "type": "multiple",
+        "description": "Good. Three transitions in the NFA have been converted to three production rules in the grammar.",
+        "question":"Which state(s) are the final state(s)?",
+        "answer": "$Q_1$",
+        "choices": ["$Q_1$", "$Q_0$"]
+      },
+      "lambda": {
+        "type": "select",
+        "description": "All of the current production rules have a non-terminal in their LHS. So none of them allow the process to stop. We have to add one or more special rules for this purpose.",
+        "question":"Since $Q_1$ is a final state, we can add the production: $Q_1 \\rightarrow \\lambda$",
+        "answer": "True",
+        "choices": [],
+        "correctFeedback": ["If we had more final states, then we would add more such productions."]
+      },
+      "done": {
+        "type": "multiple",
+        "description": "Good. Now we have at least one way to get rid of the non-terminals. Some machines need more ways (if they have more than one final state).",
+        "question":"Are we done?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "equiv": {
+        "type": "select",
+        "description": "We did it. We have shown how to convert this NFA to a Right-regular grammar. We can use the same algorithm to convert any NFA: (1) Invent a non-terminal for every state in the NFA; (2) Add a production rule for each transition in the NFA; (3) Add $\\lambda$ production rules for any non-terminal that is equivalent to some final state in the NFA.",
+        "question":"This means that NFAs are equivalent to right-regular grammars.",
+        "answer": "True",
+        "choices": []
+      }
+    }
+  }
+}

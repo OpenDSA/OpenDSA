@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Quick Sort Average Case
+
+// Title: Quicksort Average Case Analysis Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Quicksort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a visual proof for the average-case cost of Quicksort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "QuickSortAverageCaseCON";

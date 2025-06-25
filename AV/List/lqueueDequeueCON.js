@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // List Queue dequeue method.
+
+// Title: Linked Queue Dequeue Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Linked Queue
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting an implementation for linked queue dequeue. */
+
 $(document).ready(function() {
   "use strict";
   // Helper function for drawing arrow around the node

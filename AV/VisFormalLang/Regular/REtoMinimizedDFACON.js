@@ -1,10 +1,19 @@
+// Title: Regular Expression to Minimized DFA Example
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Regular Expression; Non-Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visualization presenting examples of converting a Regular Expression to an equivalend NFA. */
+
 $(document).ready(function() {
   "use strict";
 
   var av_name = "REtoMinimizedDFACON";
   var av = new JSAV(av_name);
   var regex = "ab*+c";
-  var avWidth = 500,
+  var avWidth = 400,
       avHeight = 300;
   av.umsg("In this example, we will convert the regular expression " + regex + " to a minimized DFA.");
   av.displayInit();

@@ -1,11 +1,40 @@
+<!--
+Title: Parameter Passing by Value vs Reference Exercise
+Author: David Furcy; Tom Naps
+Institution: UW-Oshkosh
+Features: Code Tracing Exercise
+Keyword: Parameter Passing
+Natural Language: en
+Programming Language: N/A
+--> 
+
+<!--
+Description: A collection of self-practice questions to compare parameter passing by value vs passing by reference in language SLang2.
+-->
+
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version2.00/scripts/absyn ../../AV/PL/interpreters/version2.00/scripts/env ../../AV/PL/interpreters/version2.00/scripts/grammar ../../AV/PL/interpreters/version2.00/scripts/interpreter PLutils CallByValVsRef" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>Call By Value vs. By Reference</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version2.00/scripts/absyn",
+            "../../AV/PL/interpreters/version2.00/scripts/env",
+            "../../AV/PL/interpreters/version2.00/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version2.00/scripts/interpreter",
+              "../../DataStructures/PLutils",
+              "CallByValVsRef"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -14,11 +43,12 @@
 	<div class="vars">
 		<var id="init">CallByValVsRef.init()</var>
 		<var id="expression">CallByValVsRef.expression</var>
+		<var id="hint3">CallByValVsRef.hint3</var>		
 	</div>
 
       <div class="problems">
         <div class="CallByValVsRefp">
-          <p class="question">Consider the following C++ program:</p> 
+          <p class="question">Consider the following C++ program:</p>
 <pre class="string">
 <var>expression</var>
 </pre>
@@ -35,13 +65,13 @@
 	      return CallByValVsRef.validateAnswer(guess);
             </div>
 	  </div>
-	  
+
 	  <div class="hints">
 	    <p>The output of this program is a sequence of integers
 	    separated by at least one whitespace character.</p>
 	    <p>You may need a calculator for this problem.</p>
-
-	  </div>	 
+	    <p>The correct answer is: <var>hint3</var></p>
+	  </div>
         </div>
       </div>
     </div>

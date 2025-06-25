@@ -9,7 +9,6 @@
    int sascii(String x, int M) {
      char ch[];
      ch = x.toCharArray();
-     int xlength = x.length();
 
      int i, sum;
      for (sum=0, i=0; i < x.length(); i++)
@@ -39,11 +38,11 @@ int sfold(String s, int M) {
      int home;                     // Home position for e
      int pos = home = h(k);        // Init probe sequence
      for (int i=1; EMPTYKEY != (HT[pos]).key(); i++) {
-       pos = (home + p(k, i)) % M; // probe
        if (k == HT[pos].key()) {
          println("Duplicates not allowed");
          return;
        }
+       pos = (home + p(k, i)) % M; // probe
      }
      HT[pos] = e;
    }

@@ -1,0 +1,43 @@
+<!--
+Title: Grammar Construction Exercise: Balanced Parentheses
+Author: Mostafa Mohammed; Cliff Shaffer
+Institution: Virginia Tech
+Features: Grammar Construction Exercise
+Keywords: Language; Grammar
+Natural Language: en
+Programming Language: N/A
+--> 
+
+<!--
+Description: Exercise where user must write the grammar for a given language. This language has balanced and properly nested parentheses.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Grammar Exercise: Balanced Parentheses</title>
+    <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css">
+    <link rel="stylesheet" href="../../../../../lib/odsaAV-min.css" type="text/css">
+    <link rel="stylesheet" href="../../../../../lib/odsaStyle-min.css" type="text/css">
+    <link rel="stylesheet" href="../../../css/grammar.css" type="text/css">
+    <link rel="stylesheet" href="../../../css/help.css" type="text/css">
+    <link rel="stylesheet" href="../../../css/grammarEditor.css" type="text/css">
+   <script src="../../../../../lib/jquery.min.js"></script>
+   <script>
+     $(document).ready(function() {
+       getExerciseLocation = function () {
+         return "./Parens.json"
+       };
+       $(function(){
+         $("#load_content").load("GrammarExTemplate.html"); 
+       })
+     });
+    </script>
+  </head>
+
+  <body>
+    <div id="load_content"></div>
+  </body>
+</html>

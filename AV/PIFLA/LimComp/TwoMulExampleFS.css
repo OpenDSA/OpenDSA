@@ -1,0 +1,17 @@
+#TwoMulExampleFS {
+  height: 700px;
+}
+
+#TwoMulExampleFS .jsavoutput.jsavline {
+  height: 80px;
+}
+
+#TwoMulExampleFS .jsavhorizontalarray .jsavnode {
+  min-width: 30px !important;
+  max-width: 300px !important;
+}
+
+#TwoMulExampleFS .jsavmatrix .jsavarray {
+  position: relative;
+  top: 0;
+}

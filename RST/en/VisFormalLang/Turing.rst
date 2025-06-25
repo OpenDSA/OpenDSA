@@ -144,11 +144,13 @@ states in :math:`Q` and with edges corresponding to the transitions in
 :math:`\delta`.
 Further, we can visualize the processing of the machine as the
 movement of a head across the tape.
+In the visualizations, the current tape square (the one where the head
+is currently located) is highlighted.
 
 .. inlineav:: RClearCON ss
    :long_name: Turing Machine RClear
    :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/RClearCON.css
-   :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
+   :scripts: DataStructures/FLA/FA.js AV/Yinwen/TuringMachine.js AV/VisFormalLang/TM/RClearCON.js
    :align: center
    :output: show
 
@@ -209,11 +211,12 @@ movement of a head across the tape.
    So, the machine halts, and we interpret this to mean that the
    string has been rejected since it is not currently in a Final State.
 
-   Here is the graphical view of the machine.
+   Here is the graphical view of the machine and a demonstration for
+   how it works.
 
-   .. inlineav:: TMabcCON dgm
+   .. inlineav:: TMabcCON ss
       :links: DataStructures/FLA/FLA.css AV/VisFormalLang/TM/TMabcCON.css
-      :scripts: lib/underscore.js DataStructures/FLA/FA.js AV/Development/formal_language/TuringMachine.js AV/VisFormalLang/TM/TMabcCON.js
+      :scripts: DataStructures/FLA/FA.js AV/Yinwen/TuringMachine.js AV/VisFormalLang/TM/TMabcCON.js
       :align: center
       :output: show
 
@@ -591,9 +594,10 @@ Here are some basic machines and notation
 
 |
 
-.. inlineav:: TuringCopyCON dgm
-   :links: AV/SeniorAlgAnal/TuringCopyCON.css
-   :scripts: AV/SeniorAlgAnal/TuringCopyCON.js
+.. inlineav:: TMcopy ss
+   :links: AV/VisFormalLang/TM/TMcopy.css
+   :scripts: AV/VisFormalLang/TM/TMcopy.js AV/Juwon/FAcopy.js
+   :output: show
    :align: center
 
    Copy Machine: Transform :math:`\#w\underline{\#}` into
@@ -683,7 +687,7 @@ Machines.
      :scripts: AV/SeniorAlgAnal/TuringExt3CON.js
      :align: center
 
-* Non-determinismFormalLanguages2
+* Non-determinism
 
   We can simulate non-deterministic behavior in sequence, doing all
   length 1 computations, then length 2, etc., until we reach a halt

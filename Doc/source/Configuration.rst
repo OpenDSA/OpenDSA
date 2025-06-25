@@ -202,6 +202,11 @@ All are required unless otherwise specified.
   determined by the order specified in ``code_lang``).
   Defaults to ``true`` if omitted.
 
+* **include_tree_view** - (optional) A boolean controlling whether or not
+  a Tree view is displayed with code examples to facilitate using screen
+  readers.
+  Defaults to ``false`` if omitted.
+
 * **lang** (optional) - Specifies the native language of the book
   using the official ISO 639-1 or 639-2 standard abbreviation,
   defaults to ``en`` if omitted.
@@ -209,6 +214,11 @@ All are required unless otherwise specified.
   ``~OpenDSA/RST/[lang]``.
   Any RST files not found in the indicated subdirectory will then be
   located in ``~OpenDSA/RST/en``.
+
+* **sphinx_debug** - (optional) A boolean for debugging errors that 
+  occur within sphinx while it builds books. Useful for advanced developers. 
+  It enables the -E and -P options when running sphinx to build books. It is 
+  false by default. 
 
 * **glob_mod_options** - (optional) An object containing options to be
   applied to every module in the book.
@@ -302,8 +312,14 @@ All are required unless otherwise specified.
       Currently code-workout is the only external tool used by OpenDSA.
 
 * **zeropt_assignments** - (optional) A boolean controlling wheter or not
-  the moduels without exercises should be given 0 point and listed under
-  assignments section.
+  an assignment with 0 points should be created for any module
+  without exercises or other scoreable element.
+  The point to this is to make every module appear in the assignment
+  list at Canvas, because otherwise a student who focusses only on
+  assignments (and not modules) would miss seeing this content.
+  Unfortunately, the ordering of the assignments in Canvas does not
+  match the module ordering, so adding these 0-pt assignments might
+  not really help students to read all of the material.
   Defaults to ``false`` if omitted.
 
 * **build_JSAV** - (optional) A boolean controlling whether or not the
@@ -333,6 +349,13 @@ All are required unless otherwise specified.
 * **start_chap_num** - (optional) Specifies at which number to start
   numbering chapters.
   Defaults to 0 if omitted.
+  
+* **chapter_name** - (optional) A string that will be used as the section name when 
+  building the chapters. Defaults to "Chapter"
+  
+* **html_css_files** - (optional) An array of paths to CSS files to be included
+  in the built book instance. The filepaths should relative to the 
+  ``<opendsa>/RST/_static`` directory 
 
 * **suppress_todo** - (optional) A boolean controlling whether or not
   TODO directives are removed from the RST source files.

@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :title: Closure Properties of Regular Grammars
+   :author: Susan Rodger; Cliff Shaffer
+   :institution: Duke University; Virginia Tech
    :requires:
    :satisfies: Closure Properties of Regular Grammars
    :topic: Finite Automata
+   :keyword: Regular Language; Closure Properties
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a number of closure properties for regular languages.
 
 Closure Properties of Regular Grammars
 ======================================
@@ -136,7 +142,7 @@ In other words, it is prefixs of appropriate strings in :math:`L_1`.
 
    | :math:`L_1 = \{a^*b^* \cup b^*a^*\}`
    | :math:`L_2 = \{b^n\ |\ n` is even, :math:`n > 0 \}`
-   | :math:`L_1/L_2 = \{a^*b^*\}`
+   | :math:`L_1 \backslash L_2 = \{a^*b^*\}`
 
 **Theorem:** If :math:`L_1` and :math:`L_2` are regular, then
 :math:`L_1 \backslash L_2` is regular.

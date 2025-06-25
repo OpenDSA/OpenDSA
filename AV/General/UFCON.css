@@ -19,3 +19,10 @@
 #pathcompCON .jsavoutput.jsavline {
   height: 60px;
 }
+
+.highlight { /* Make a node yellow */
+  background-color: yellow;
+  border-color: black;
+  box-shadow: 2px 2px 2px rgba(120, 120, 120, 0.5);
+}
+

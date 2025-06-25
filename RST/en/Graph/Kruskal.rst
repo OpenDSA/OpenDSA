@@ -4,10 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Kruskal's Minimal Cost Spanning Tree Algorithm
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: MCST; Union/Find
    :topic: Graphs
-
+   :keyword: Minimal-Cost Spanning Tree; Union/Find Algorithm
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents Kruskal's minimal-cost spanning tree algorithm.
 
 Kruskal's Algorithm
 ===================
@@ -31,6 +36,7 @@ This process is repeated until only one disjoint set remains.
    :links: AV/Graph/kruskalCON.css
    :scripts: AV/Graph/kruskalCON.js
    :output: show
+   :keyword: Graphs; Minimal-Cost Spanning Trees; Kruskal's Algorithm
 
 The edges can be processed in order of weight by using a
 min-heap.
@@ -65,6 +71,7 @@ If so, the cost is often close to
 
 .. avembed:: AV/Graph/KruskalPE.html pe
    :long_name: Kruskal's Algorithm Proficiency Exercise
+   :keyword: Graphs; Minimal-Cost Spanning Trees; Kruskal's Algorithm
 
 .. TODO::
    :type: Exercise

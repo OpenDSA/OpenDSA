@@ -1,0 +1,64 @@
+{
+  "translations": {
+    "en": {
+      "notsgrammar": {
+        "type": "select",
+        "description": "<b>LL(k) Grammars:</b><br/>LL means “left-to-right” and that a “left-most derivation” is constructed. $k$ means that we can decide which production to fire next by looking at at most the next $k$ symbols. Every S-grammar is LL, but so are more grammars.",
+        "question": "Consider the grammar $S \\rightarrow aSb \\mid ab$. Is it an S-Grammar?",
+        "answer": "No, because the variable $S$ has productions that start with the same letter",
+        "choices": ["No, because the variable $S$ has productions that start with the same letter", "Yes, the variable $S$ has productions that all start with unique letters"]
+      },
+      "ab": {
+        "type": "select",
+        "description": "<b>LL(k) Grammars:</b><br/>LL means “left-to-right” and that a “left-most derivation” is constructed. $k$ means that we can decide which production to fire next by looking at at most the next $k$ symbols. Every S-grammar is LL, but so are more grammars.",
+        "question": "Consider the grammar $S \\rightarrow aSb \\mid ab$. If we see a string that starts with $ab$, which production should we fire first?",
+        "answer": "$S\\rightarrow ab$",
+        "choices": ["$S\\rightarrow aSb$", "$S\\rightarrow ab$"]
+      },
+      "sure": {
+        "type": "select",
+        "description": "<b>LL(k) Grammars:</b><br/>LL means “left-to-right” and that a “left-most derivation” is constructed. $k$ means that we can decide which production to fire next by looking at at most the next $k$ symbols. Every S-grammar is LL, but so are more grammars.",
+        "question": "Consider the grammar $S \\rightarrow aSb \\mid ab$. If we see a string that starts with $ab$, are we sure that we must fire $S \\rightarrow ab$?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["We can't ever reach $ab$ if we start by firing $S \\rightarrow aSb$. We know this when we look at the second symbol. Actually, we also can deduce that there can be no other symbols after the $b$ because we no longer have any variables."]
+      },
+      "aa": {
+        "type": "select",
+        "description": "<b>LL(k) Grammars:</b><br/>LL means “left-to-right” and that a “left-most derivation” is constructed. $k$ means that we can decide which production to fire next by looking at at most the next $k$ symbols. Every S-grammar is LL, but so are more grammars.",
+        "question": "Consider the grammar $S \\rightarrow aSb \\mid ab$. If we see a string that starts with $aa$, which production rule should we fire first?",
+        "answer": "$S\\rightarrow aSb$",
+        "choices": ["$S\\rightarrow aSb$", "$S\\rightarrow ab$"]
+      },
+      "aasure": {
+        "type": "select",
+        "description": "<b>LL(k) Grammars:</b><br/>LL means “left-to-right” and that a “left-most derivation” is constructed. $k$ means that we can decide which production to fire next by looking at at most the next $k$ symbols. Every S-grammar is LL, but so are more grammars.",
+        "question": "Consider the grammar $S \\rightarrow aSb \\mid ab$. If we see a string that starts with $aa$, are we sure that we have to fire the rule $S \\rightarrow aSb$?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["We cannot generate the second $a$ if we fire $S \\rightarrow ab$. Only $S \\rightarrow aSb$ can get us there. We don't need to look at any more symbols beyond the second $a$ to know this."]
+      },
+      "abab": {
+        "type": "select",
+        "description": "Consider this grammar: $S \\rightarrow aSbS \\mid \\lambda$.<br/><br/>This grammar is $LL(k)$. Think about one thing: Can we know uniquely which production we should use every time by reading only $k$ letters?",
+        "question": "To derive the string $abab$, which production rule should we fire first?",
+        "answer": "To read $a$ we must use $S\\rightarrow aSbS$",
+        "choices": ["To read $a$ we must use $S\\rightarrow aSbS$", "To read $a$ we must use $S\\rightarrow \\lambda$"]
+      },
+      "getb": {
+        "type": "select",
+        "description": "Consider this grammar: $S \\rightarrow aSbS \\mid \\lambda$.<br/><br/>This grammar is $LL(k)$. Think about one thing: Can we know uniquely which production we should use every time by reading only $k$ letters?",
+        "question": "To derive the string $abab$, we next need to generate the first $b$. Which production rule should we fire?",
+        "answer": "$S\\rightarrow \\lambda$",
+        "choices": ["$S\\rightarrow aSbS$", "$S\\rightarrow \\lambda$"]
+      },
+      "DCFL": {
+        "type": "select",
+        "description": "As you can see, reading only one letter can tell us every time which production we need to use. That is why we call this a $LL(K)$ grammar. This is an alternative grammar for generating properly nested parentheses (by using left/right parens instead of $a$ and $b$, respectively).",
+        "question": "A Deterministic Context Free Language is a language that ...",
+        "answer": ["can be accepted by a DPDA", "has an S-Grammar", "has an $LL(k)$ grammar"],
+        "choices": ["can be accepted by a DPDA", "has an S-Grammar", "has an $LL(k)$ grammar"]
+      }
+    }
+  }
+}

@@ -1,3 +1,12 @@
+// Title: Alternate Bucket Hashing Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Bucket Hashing
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a variation on bucket hashing where the key hashes to a slot in the table, and overflows to any other free slot in the bucket. */
+
 $(document).ready(function () {
   "use strict";
   // Convenience function for setting another type of highlight

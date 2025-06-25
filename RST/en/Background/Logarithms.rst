@@ -3,10 +3,18 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Logarithms
    :author: Cliff Shaffer
+   :institution: Virginia Tech
+   :requires:
    :satisfies: logarithms
    :topic: Math Background
+   :keyword: Logarithms
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review of logarithms concepts needed for a Data Structures and Algorithms course.
+
 
 Logarithms
 ==========
@@ -131,3 +139,4 @@ Here is some practice with manipulating logarithms.
 
 .. avembed:: Exercises/Background/MathLogSumm.html ka
    :long_name: Logarithms Practice Questions
+   :keyword: Logarithms

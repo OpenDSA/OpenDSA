@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   // Slide 1
   av.umsg("Here is the graph form for the machine and the intial state of the input tape and the head when beginning to process input string 'II'.");
-  var url = "../../../AV/VisFormalLang/TM/Machines/TMPlusone.jff";
+  var url = "../../../AV/OpenFLAP/machines/TM/TMPlusone.jff";
   var tm = new av.ds.TM({width: 600, height: 200, left: 50, url: url});
   var tape = av.ds.tape(["#", "I", "I", "#", "#"], 470, 50, "both");
   var rect = av.g.rect(350 + xStart, 150 + yStart, 110, 110);
@@ -33,7 +33,8 @@ $(document).ready(function() {
   // Slide 2
   av.umsg("Step 1: Initially, the tape head is scanning the leftmost non-blank tape cell, and the current state is q0");
   node[0].highlight();
-  tape.highlightCurrent();
+  // CAS: Tape highlighting is broken, should get fixed. Leaving out for now.
+  // tape.highlightCurrent();
   av.step();
 
   // Slide 3

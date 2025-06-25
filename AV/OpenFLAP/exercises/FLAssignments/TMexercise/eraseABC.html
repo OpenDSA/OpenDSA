@@ -1,17 +1,28 @@
+<!--
+Title: Turing Machine Exercise: Erase abc
+Author: Mostafa Mohammed
+Institution: Virginia Tech
+Features: Automata Construction Exercise
+Keyword: Turing Machine
+Natural Language: en
+Programming Language: N/A
+-->
+
+<!--
+Description: User creates a Turing machine that erases a string of a's, b's, and c's.
+-->
+
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="FAEditor">
-  <meta name="author" content="Nabil Saad">
 
   <title>TM Editor</title>
   <script>
-    getExerciseLocation = function () { return "./TMexercise2.json" };
+    getExerciseLocation = function () { return "./eraseABC.json" };
   </script>
   <link rel="stylesheet" href="../../../../../lib/JSAV.css" type="text/css" media="screen" title="no title"
     charset="utf-8" />
@@ -24,7 +35,8 @@
 
   <link rel="stylesheet" href="../../../../OpenFLAP/css/multiRun.css" type="text/css" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../../../../../lib/jquery.min.js"></script>
+<script src="../../../../../lib/jquery.migrate.min.js"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -40,6 +52,7 @@
 
 <body id="bd">
   <div id="container">
+    <img id="check_mark" src="../../../green_check.png" alt="Proficient" style="display: none;float: left; width: 40px;">
     <h1 id="tester">Turing Machines Exercise</h1>
     <h2 id="question">Give an NFA or DFA that accepts the language: L(<span id="expression"></span>)</h2>
     <h2 id="description"></h2>
@@ -110,7 +123,6 @@
     </div>
     <p id="percentage"></p>
     <table id="testResults"></table>
-    <div id="rmenu"></div>
     <div id="dialogueoverlay"></div>
     <div id="dialoguebox">
       <div>
@@ -171,11 +183,11 @@
       </table>
       <p class="jsavscore"></p>
       <p class="jsavoutput jsavline"></p>
-    </div>
     <script src="../../exerController/TMhandler.js"></script>
     <script src="../../exerController/TestCaseGenerater.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="../../../../../lib/jquery.min.js"></script>
+<script src="../../../../../lib/jquery.migrate.min.js"></script>
+    <script src="../../../../../lib/jquery.ui.min.js"></script>
     <script src="../../../../../lib/jquery.transit.js"></script>
     <script src="../../../../../lib/raphael.js"></script>
     <script src="../../../../../lib/dagre.min.js"></script>
@@ -190,7 +202,7 @@
     <script src="../../../../../DataStructures/FLA/TuringMachine.js"></script>
     <script src="../../exerController/ExerciseController.js"></script>
     <script src="../../../../../DataStructures/FLA/Grading.js"></script>
-    <script src="../../../../Development/formal_language/TMEditor.js"></script>
+    <script src="../../../../OpenFLAP/TMEditor.js"></script>
   </div>
 </body>
 

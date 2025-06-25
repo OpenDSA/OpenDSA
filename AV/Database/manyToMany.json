@@ -1,0 +1,32 @@
+{
+  "translations": {
+    "en": {
+      "sc1": "student and course entities with many to many relationship.",
+      "sc2": "These are the tables before any student registration.",
+      "sc3": "Assume that Ali registers in Database course.",
+      "sc4": " (201) is Ali's id.",
+      "sc5": "Insert Ali's id in the bridge.",
+      "sc6": "(Is2000) is Database course code.",
+      "sc7": "Insert Database course code in the bridge so as to record ali's registration in Database course.",
+      "sc8": "Ali also registered in java course.",
+      "sc9": "The same student Ali with the same id (201) will register in another course.",
+      "sc10": "Insert Ali's id <span style='color:red;'>(201)</span> again in the bridge along with java course code in the same record in the bridge to save that registration transaction.",
+      "sc11": "(cs1000) is the Java course code.",
+      "sc12": "Now, Ali's registration in java is recorded in the bridge",
+      "sc13": "Then Mona needs to reigister in Java course new empty record is added to the bridge to save her registration data.",
+      "sc14":  "(202) is mona's id.",
+      "sc15":  "Insert mona's id in the new record in the bridge",
+      "sc16":  "(cs1000) is the Java course code",
+      "sc17": " java course code should be inserted beside mona's id in the bridge as shown.",
+      "sc18":   "Layla will register in Math course.",
+      "sc19":  "(403) is layla's id.",
+      "sc20":   "Insert layla's id in a new record in the bridge to record new student registration transaction.",
+      "sc21":  "(G3000) is the Math course code.",
+      "sc22":  "Math course code also inserted with layla's id in the bridge.",
+      "sc23":  "Layla will register in Database course.",
+      "sc24": "Finally layla's registraion in Database course saved the same way by inserting new record containing her id and database course code in the bridge.",
+      "sc25":"Any <span style='color:red;'>Binary N:M</span> relationship decomposed to <span style='color:red;'>two 1:M</span> relationships between the <span style='color:blue;'>two original tables</span> and the <span style='color:blue;'>new bridge</span>."
+       
+    }
+  }
+}

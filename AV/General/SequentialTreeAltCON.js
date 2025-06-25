@@ -1,6 +1,16 @@
 /*global ODSA */
 "use strict";
 // Sequential Tree alternative serialization visualization slideshow
+
+// Title: Binary Tree Serialization Slideshow: Internal Node Mark Bits
+// Author: Kevin Ellis
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Serialization; Binary Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow how to reconstruct a binary tree from a serialized representation of its node values. Alternative representation using mark bits to distinguish internal from leaf nodes. */
+
 $(document).ready(function () {
   var av_name = "SequentialTreeAltCON";
   var av = new JSAV(av_name);

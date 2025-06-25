@@ -4,9 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer
+   :title: Binary Tree Guided Information Flow
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: information flow in a binary tree
    :topic: Information Flow in a Binary
+   :keyword: Binary Tree Traversal
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses information flow in recursive functions. The particular example is implementing range queries in a BST.
+
 
 Binary Tree Guided Information Flow
 ===================================
@@ -51,9 +58,11 @@ than just a single path, but not all of the nodes.
    :links: 
    :scripts: AV/BTRecurTutor/IneffBinaryTreeRangeCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
    
 
 Binary Search Tree Small Count Exercise
 ---------------------------------------
 
 .. extrtoolembed:: 'Binary Search Tree Small Count Exercise'
+   :workout_id: 64

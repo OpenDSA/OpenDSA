@@ -100,22 +100,13 @@
       "Tutorials/junitstart": {}, 
       "Tutorials/junitbasic": {}, 
       "Tutorials/junitcoverage": {},
-      "Testing/TestIntro": {},
-      "Testing/TestCoverage": {
-        "TriangleApplet": {
-          "exer_options": {
-            "code": "true"
-          }
-        }
-      },
-      "Testing/Example2": {},
-      "Testing/Bowling": {
-        "BowlingApplet": {
-          "exer_options": {
-            "code": "true"
-          }
-        }
-      }
+      "Tutorials/mutationtesting": {},
+      "Tutorials/mutationtesting_example": {},
+      "Tutorials/mutationtesting_faq": {},
+      "Testing/TriangleIntro": {},
+      "Testing/TriangleCoverage": {},
+      "Testing/BowlingIntro": {},
+      "Testing/BowlingCoverage": {}
     }, 
     "Mathematical Background": {
       "Background/MathpreIntro": {}, 
@@ -220,7 +211,7 @@
           "threshold": 5
         }
       },
-      "PointersJava/Exercises": {}
+      "PointersJava/ExercisesPtr": {}
     }, 
     "Linear Structures": {
       "List/ListIntro": {}, 
@@ -295,7 +286,7 @@
         "Recursion Programming Exercise: Cummulative Sum": {
           "points": 1.0
         }, 
-        "Recursion Programming Exercise: Add odd positions": {
+        "Recursion Programming Exercise: Add odd values": {
           "points": 1.0
         }, 
         "Recursion Programming Exercise: Sum Of the Digits": {

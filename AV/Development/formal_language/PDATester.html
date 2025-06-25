@@ -9,7 +9,7 @@
     <meta name="author" content="Brannon Angers and Nick Eda">
 
     <title>PDA Editor</title>
-    <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="../../../lib/JSAV.css" type="text/css" media="screen" title="no title" charset="utf-8" />
     <link rel="stylesheet" href="../../../lib/odsaAV-min.css" type="text/css" />
     <link rel="stylesheet" href="../../../lib/odsaStyle-min.css" type="text/css" />
     <link rel="stylesheet" href="./css/customPrompt.css" type="text/css" />
@@ -36,20 +36,20 @@
   <body id="bd">
     <div id="container">
       <!--<h1 id="editor">Finite Automaton Editor</h1>
-      <button id="helpButton"><img src="./help.png" /></button>-->
+      <button id="helpButton"><img src="./help.png" alt="Help" /></button>-->
 
       <table class="headerTable" style="font-size: 12px; border-style: hidden;">
         <tr>
           <td class="headerLeft" style="border:hidden;"></td>
           <td class="headerCenter"> Pushdown Automaton Editor</td>
           <td class="headerRight" style="border:hidden;">
-            <button id="helpButton" style="width: 20px !important; height: 20px !important; position: inherit !important;"><img src="./help.png" /></button>
+            <button id="helpButton" style="width: 20px !important; height: 20px !important; position: inherit !important;"><img src="./help.png" alt="Help" /></button>
           </td>
         </tr>
       </table>
 
       <hr style="margin-top: 0px; border-top: 1px solid #333; margin-bottom: 0px;">
-      
+
       <div style="display:inline;">
         <div style="float: right;" id="menu_options">
           <button id="editButton" class="icon_btn"><i class="fa fa-mouse-pointer"></i></button>
@@ -110,12 +110,12 @@
                   <ul class="dropdown-menu">
 
                     <li><a href="#" class="functionality" id="toGrammarButton">Convert to Grammar</a></li>
-                    
+
                     <li><a href="#" class="functionality" id="combineAutomataButton">Combine Automata</a></li>
-                    
+
                    </ul>
-                  
-                </div> 
+
+                </div>
 
                 <button class="createExercise" id="finish">Finish</button>
               </td>
@@ -123,9 +123,9 @@
           </table>
         </div>
       </div>
-      
-      
-      
+
+
+
       <br>
 
       <div id="help" title="Help" style="display:none">
@@ -158,7 +158,7 @@
         <p align="center" class="arrayPlace"></p>
       </div>
 
-      
+
 
 
       <div id='download'></div>
@@ -223,10 +223,11 @@
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-  <script src="../../../JSAV/lib/jquery.transit.js"></script>
-  <script src="../../../JSAV/lib/raphael.js"></script>
-  <script src="../../../JSAV/lib/dagre.min.js"></script>
-  <script src="../../../JSAV/build/JSAV.js"></script>
+<script src="../../lib/timeme-min.js"></script>
+  <script src="../../../lib/jquery.transit.js"></script>
+  <script src="../../../lib/raphael.js"></script>
+  <script src="../../../lib/dagre.min.js"></script>
+  <script src="../../../lib/JSAV.js"></script>
   <script src="../../../lib/odsaUtils-min.js"></script>
   <script src="../../../lib/odsaAV-min.js"></script>
   <script src="../../../DataStructures/FLA/serializableGraph.js"></script>

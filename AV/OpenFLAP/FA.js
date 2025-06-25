@@ -1,4 +1,5 @@
 var latexit = "http://latex.codecogs.com/svg.latex?";
+
 var exerciseLocation;
 (function ($) {
   "use strict";
@@ -15,7 +16,8 @@ var exerciseLocation;
       type,//type of editor: fixer, tester or editor
       fatoreController,
       exerController;
-
+      $("#rmenu").load("./rmenu.html");
+      $("#rmenu").hide();
   // Handler for initializing graph upon loading the web page.
   // Loads the graph from conversionExercise.html / minimizationTest.html if we are navigating here from those pages.
   // Otherwise simply initializes a default data set.
@@ -261,7 +263,63 @@ var exerciseLocation;
     g.updateEdgePositions();
     g.first = null;
     g.selected = null;
+    avoidOverFlow(g);
   };
+  
+  // called by createEdge to avoid overflow of canvas div
+  function avoidOverFlow(g) {
+    if (g === undefined) {
+      return;
+    }
+    let edges = g._alledges;
+    for (let i = 0; i < edges.length; i++) {
+      // calculate the shift value out of parent div
+      let shiftValue =
+        parseFloat(edges[i]._label.element[0].style.top) +
+        getTranslateY(edges[i]._label.element[0]);
+      if (shiftValue < 0) {
+        let targetEdge = edges[i];
+        // In case of transactions with one node
+        if (targetEdge.endnode.element === targetEdge.startnode.element) {
+          let tpoint = targetEdge.endnode.element[0];
+          tpoint.style.transform =
+            "translateY(" + (getTranslateY(tpoint) + -shiftValue) + "px)";
+          //  check if it has initial or not
+          if (tpoint.classList.contains("start")) {
+            let s = targetEdge.endnode._initialMarker.element[0];
+            s.style.transform =
+              "translateY(" + (getTranslateY(s) - shiftValue) + "px)";
+          }
+        } else {
+          // In case of transactions with two nodes
+          let startPoint = targetEdge.startnode.element[0];
+          let endPoint = targetEdge.endnode.element[0];
+          startPoint.style.transform =
+            "translateY(" + (getTranslateY(startPoint) + -shiftValue) + "px)";
+          endPoint.style.transform =
+            "translateY(" + (getTranslateY(endPoint) + -shiftValue) + "px)";
+          if (endPoint.classList.contains("start")) {
+            let s = targetEdge.endnode._initialMarker.element[0];
+            s.style.transform =
+              "translateY(" + (getTranslateY(s) - shiftValue) + "px)";
+          } else if (startPoint.classList.contains("start")) {
+            let s = targetEdge.startnode._initialMarker.element[0];
+            s.style.transform =
+              "translateY(" + (getTranslateY(s) - shiftValue) + "px)";
+          }
+        }
+        // update new positions of all tranzacitons
+        g.updateEdgePositions();
+      }
+    }
+  }
+
+  // called by avoidOverFlow function to get value of transform: translateY of elements
+  function getTranslateY(element) {
+    var style = window.getComputedStyle(element);
+    var matrix = new WebKitCSSMatrix(style.transform);
+    return matrix.m42;
+  }
 
   // Called by the edit edge custom prompt box to save the graph and update the edge upon clicking "Done".
   function updateEdge(edge_label) {
@@ -517,6 +575,54 @@ var exerciseLocation;
     removeModeClasses();
     removeND();
     g.layout();
+  };
+  //Apply a random layout algorithm to the graph
+  var randomLayout = function() {
+    removeModeClasses();
+    removeND();
+    g.randomLayoutAlg();
+  };
+  // Triggered by clicking the "Circle" button.
+  var circleLayout = function() {
+    removeModeClasses();
+    removeND();
+    g.circleLayoutAlg();
+    //layoutCircle(100, Math.PI, 2*Math.PI);
+  };
+  // Triggered by clicking the "GEM" button.
+  var gemLayout = function() {
+    removeModeClasses();
+    removeND();
+    g.gemLayoutAlg();
+  };
+
+  // Triggered by clicking the "Spiral" button.
+  var spiralLayout = function() {
+    removeModeClasses();
+    removeND();
+    g.spiralLayoutAlg();
+  };
+
+  // Exit out of all editing modes and prepare the view for the input string JSAV array.
+  var readyTraversal = function() {
+    removeModeClasses();
+    jsav.umsg('Click on an input to trace its traversal.');
+  };
+
+  var twoCircleLayout = function() {
+    removeModeClasses();
+    removeND();
+    g.twoCircleLayoutAlg();
+  };
+  var treeLayoutDegree = function() {
+    removeModeClasses();
+    removeND();
+    g.treeLayoutAlg(false);
+  };
+  var treeLayoutHierarchy = function() {
+    removeModeClasses();
+    removeND();
+    g.treeLayoutAlg(true);
   };
 
   // Exit out of all editing modes and prepare the view for the input string JSAV array.
@@ -1242,6 +1348,13 @@ var exerciseLocation;
   $('#editButton').click(editNodes);
   $('#deleteButton').click(deleteNodes);
   $('#layoutButton').click(layoutGraph);
+  $('#circleButton').click(circleLayout);
+  $('#gemButton').click(gemLayout);
+  $('#spiralButton').click(spiralLayout);
+  $('#treeDegreeButton').click(treeLayoutDegree);
+  $('#treeHieButton').click(treeLayoutHierarchy);
+  $('#twoCircleButton').click(twoCircleLayout);
+  $('#randomButton').click(randomLayout);
   $('#ndButton').click(testND);
   $('#lambdaButton').click(testLambda);
   $('#epsilonButton').click(switchEmptyString);
@@ -1256,20 +1369,16 @@ var exerciseLocation;
   $('#exportButton').hide();
   $('#clearLabelButton').hide();
   $( "#dialog" ).dialog({ autoOpen: false });
-  $("#help").dialog({autoOpen: false });
-  $("#helpButton").click(function() {
-    $("#help").dialog({
-      dialogClass: "alert",
-      width: 400,
-      height: 300
-    });
-    $("#help").dialog("open");
-  });
+  $("#helpButton").click(displayHelp);
   $(document).keyup(function(e) {
     if (e.keyCode === 27) cancel();   // esc
   });
   $('#download').hide();
 
+  function displayHelp(){
+    window.open("FAHelp.html", "helpwindow");
+  }
+  
   // magic happens here
   onLoadHandler();
 

@@ -1,9 +1,9 @@
 #threeSATtoHCCON {
-  height: 570px;
+  height: 750px;
 }
 
 #threeSATtoHCCON .jsavoutput.jsavline {
-  height: 50px;
+  height: 190px;
 }
 
 #threeSATtoHCCON .node{
@@ -69,30 +69,30 @@
 }
 
 #threeSATtoHCCON .extranode{
-  width:40px !important;
-  height:40px !important;
-  min-width:40px !important;
-  min-height:40px !important;
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  min-height:30px !important;
   opacity:0.65;
   background-color:Khaki;
 }
 
 #threeSATtoHCCON .democlausenode{
-  width:50px !important;
-  height:50px !important;
-  min-width:50px !important;
-  min-height:50px !important;
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  min-height:30px !important;
   opacity:0.65;
   background-color:Teal;
 }
 
 
 #threeSATtoHCCON .clausenode{
-  width:50px !important;
-  height:50px !important;
-  min-width:50px !important;
-  min-height:50px !important;
-  opacity:0.65;
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  opacity:0.5;
 }
 
 #threeSATtoHCCON .clauseedge{

@@ -1,0 +1,25 @@
+#site-navigation.single-page { display: none; }
+body, .heading-style, h1, h2, h3, h4, h5, h6 { font-family: 'Raleway'; }
+body { font-size: 17px; }
+h2 { border-bottom: 1px solid #ccc; }
+
+.codeWrapper pre { margin-top: 0; }
+
+div.topic {
+    padding: 1em 1em 2px 1em;
+    margin-bottom: 1em;
+}
+p.topic-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+.jsavcontainer { border: 1px solid #ccc; }
+.line-block { display: block; margin-top: 1em; margin-bottom: 1em; }
+.line-block .line-block {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1.5em;
+}
+.prev-next-bottom { display: none; }
+table.docutils col { width: auto; }

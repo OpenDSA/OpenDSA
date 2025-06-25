@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Insertion Sort Average Case
+
+// Title: Insertion Sort Average Case Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Analysis Demonstration
+// Keyword: Insertion Sort; Average Case
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing an analysis of Insertion Sort's average-case behavior and cost. */
+
+
 $(document).ready(function() {
   "use strict";
   var av_name = "InsertionSortAverageCaseCON";
@@ -9,11 +20,12 @@ $(document).ready(function() {
       interpret = config.interpreter,       // get the interpreter
       code = config.code;                   // get the code object
   var av = new JSAV(av_name);
-  var pseudo = av.code(code[0]).hide();
-  var arr;
   var leftAlign = 300;
-  var topAlign = 0;
+  var topAlign = 150;
   var labelGap = 5;
+
+  var pseudo = av.code(code[0], {top: 0, left: 150}).hide();
+  var arr;
 
   // Slide 1
   av.umsg(interpret("sc1"));
@@ -43,7 +55,7 @@ $(document).ready(function() {
 
   //Slide 6
   av.umsg(interpret("sc6"));
-  var eq = av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2}$", {top: "0px", left: "15px"}).addClass("mediumLabel");
+  var eq = av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2}$", {top: topAlign, left: 15}).addClass("mediumLabel");
 
   //Horizontal Line
   av.g.line(leftAlign, topAlign + 70,
@@ -68,7 +80,7 @@ $(document).ready(function() {
   //Slide 7
   av.umsg(interpret("sc7"));
   eq.hide();
-  av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2} = \\frac{n(n+1)}{4}$", {top: "0px", left: "15px"}).addClass("mediumLabel");
+  av.label("$\\displaystyle\\sum_{i=1}^{n-1}\\frac{i}{2} = \\frac{n(n+1)}{4}$", {top: topAlign, left: 15}).addClass("mediumLabel");
   av.step();
 
   //Slide 8

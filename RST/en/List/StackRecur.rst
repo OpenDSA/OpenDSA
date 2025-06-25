@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
+   :title: Implementing Recursion with a Stack
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: stack
    :satisfies: implementing recursion
    :topic: Lists
+   :keyword: Recursion; Stack
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses the implementation of recursion using a stack.
 
 Implementing Recursion
 ======================

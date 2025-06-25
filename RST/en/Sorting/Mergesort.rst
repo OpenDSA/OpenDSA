@@ -4,12 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Mergesort Concepts
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: comparison; sorting terminology
    :satisfies: mergesort
    :topic: Sorting
+   :keyword: Mergesort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Mergesort including visualizations, code, and self-test questions and exercises.
 
 .. index:: ! Mergesort
+
 
 Mergesort Concepts
 ==================
@@ -43,6 +50,7 @@ Here is a visualization that illustrates how Mergesort works.
 
 .. avembed:: AV/Sorting/mergesortAV.html ss
    :long_name: Mergesort Visualization
+   :keyword: Sorting; Mergesort
 
 The hardest step to understand about Mergesort is the merge function.
 The merge function starts by examining the first record of each
@@ -84,11 +92,13 @@ Here is a visualization for the merge operation.
    :long_name: Merging Slideshow
    :scripts: AV/Sorting/mergesortCON.js
    :output: show
+   :keyword: Sorting; Mergesort
 
 Here is a mergesort warmup exercise to practice merging.
 
 .. avembed:: Exercises/Sorting/MergesortMergePRO.html ka
    :long_name: Mergesort Merging Proficiency Exercise
+   :keyword: Sorting; Mergesort
 
 
 Mergesort Practice Exercise
@@ -98,6 +108,7 @@ Now here is a full proficiency exercise to put it all together.
 
 .. avembed:: AV/Sorting/mergesortPRO.html pe
    :long_name: Mergesort Proficiency Exercise
+   :keyword: Sorting; Mergesort
 
 This visualization provides a running time analysis for Merge Sort.
 
@@ -106,3 +117,4 @@ This visualization provides a running time analysis for Merge Sort.
    :links: AV/Sorting/MergeSortAnalysisCON.css
    :scripts: AV/Sorting/MergeSortAnalysisCON.js
    :output: show
+   :keyword: Sorting; Mergesort

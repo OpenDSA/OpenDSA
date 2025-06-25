@@ -1,0 +1,48 @@
+{
+  "translations": {
+    "en": {
+      "assume": {
+        "type": "select",
+        "description": "Can we prove that $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is non-regular by using regular language closure properties?",
+        "question": "What is the first step?",
+        "answer": "Assume $L$ is regular",
+        "choices": ["Assume $L$ is regular", "Assume $L$ is non-regular"]
+      },
+      "regex": {
+        "type": "select",
+        "description": "Can we prove that $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is non-regular by using regular language closure properties?",
+        "question": "Define $L_1 = \\{ bb^{*}aa^{*}\\}$. Is $L_1$ a regular language?",
+        "answer": "Yes, because $L_1$ is described by a RegEx.",
+        "choices": ["Yes, because $L_1$ is described by a RegEx.", "No"]
+      },
+      "intersect": {
+        "type": "true/false",
+        "description": "Assume $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is regular.<br/> Define $L_1 = \\{ bb^{*}aa^{*}\\}$, and let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$.",
+        "question": "By closure under intersection, $L_2$ is regular",
+        "answer": "True",
+        "choices": []
+      },
+      "homo": {
+        "type": "select",
+        "description": "Assume $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is regular.<br/> Define $L_1 = \\{ bb^{*}aa^{*}\\}$, and let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$.<br/>Define homomorphism $h = \\Sigma \\rightarrow \\Sigma^*$ as $h(a) = b\\quad |\\quad h(b) = a$.",
+        "question": "What is $h(L_2)$?",
+        "answer": "$h(L_2) = \\{a^nb^n\\ |\\ n>0 \\}$",
+        "choices": ["$h(L_2) = \\{a^nb^n\\ |\\ n>0 \\}$", "$h(L_2) = \\{a^{2n}\\ |\\ n>0 \\}$", "$h(L_2) = \\{b^{2n}\\ |\\ n>0 \\}$"]
+      },
+      "homo2": {
+        "type": "true/false",
+        "description": "Assume $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is regular.<br/> Define $L_1 = \\{ bb^{*}aa^{*}\\}$, and let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$.<br/>Define homomorphism $h = \\Sigma \\rightarrow \\Sigma^*$ as $h(a) = b\\quad |\\quad h(b) = a$<br/>$h(L_2) = \\{a^nb^n\\ |\\ n > 0 \\}$",
+        "question": "By closure under homomorphism, $h(L_2)$ must be regular",
+        "answer": "True",
+        "choices": []
+      },
+      "result": {
+        "type": "select",
+        "description": "Assume $L = \\{a^nb^ma^{m}\\ |\\ m \\ge 0, n \\ge 0 \\}$ is regular.<br/> Define $L_1 = \\{ bb^{*}aa^{*}\\}$, and let $L_2 = L \\cap L_1 = \\{b^na^n \\mid n > 0\\}$.<br/>Define homomorphism $h = \\Sigma \\rightarrow \\Sigma^*$ as $h(a) = b\\quad |\\quad h(b) = a$<br/>$h(L_2) = \\{a^nb^n\\ |\\ n > 0 \\}$",
+        "question": "But, what do we know about $h(L_2)$ for sure?",
+        "answer": "$\\{a^nb^n\\ |\\ n > 0\\}$ is non-regular",
+        "choices": ["$\\{a^nb^n\\ |\\ n > 0\\}$ is non-regular", "$\\{a^nb^n\\ |\\ n > 0\\}$ is regular"]
+      }
+    }
+  }
+}

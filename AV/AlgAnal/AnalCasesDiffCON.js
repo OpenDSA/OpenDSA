@@ -1,5 +1,15 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
+
+// Title: Best, Worst, and Average cases slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Problem; Algorithm; Program
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow illustrating analysis when there are different inputs of a given size. */
+
 // Best, Worst, Average Cases definitions
 $(document).ready(function() {
   "use strict";

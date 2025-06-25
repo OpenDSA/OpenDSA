@@ -6,8 +6,10 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: Hashing
+   :keyword: Hashing; Perfect Hashing
 
 .. index:: ! perfect hashing
+
 
 Perfect Hashing
 ===============
@@ -35,6 +37,7 @@ hash table of size 15.
 
 .. avembed:: AV/Development/perfectHashAV.html ss
    :long_name: Perfect Hashing Visualization
+   :keyword: Hashing; Perfect Hashing
 
 .. TODO::
    :type: AV

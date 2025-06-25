@@ -1,4 +1,14 @@
 // Written by Yujie Chen, Summer 2019
+
+// Title: Sorting Terminology and Notation Slideshow
+// Author: Yujie Chen
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Sorting Notation
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow introducing the sorting problem. */
+
 /*global ODSA */
 $(document).ready(function() {
   "use strict";
@@ -6,6 +16,10 @@ $(document).ready(function() {
   // Load the config object with interpreter and code created by odsaUtils.js
   var interpret = ODSA.UTILS.loadConfig({av_name: av_name}).interpreter;
   var av = new JSAV(av_name);
+  MathJax.Hub.Config({tex2jax: {inlineMath: [["$", "$"], ["\\(", "\\)"]]}});
+  $(".avcontainer").on("jsav-message", function() {
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  });
   var leftAlign = 150;
   var topAlign = 5;
 

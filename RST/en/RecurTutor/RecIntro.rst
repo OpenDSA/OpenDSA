@@ -3,13 +3,19 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: Sally Hamouda and Cliff Shaffer
+.. avmetadata::
+   :title: Introduction to Recursion
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: recursion intro
    :topic: Recursion
+   :keyword: Recursion
+   :naturallanguage: en
+   :programminglanguage: Java; C++
+   :description: Introduction to the basic ideas of recursion.
 
-Introduction
-============
+Introduction to Recursion
+=========================
 
 Introduction
 ------------
@@ -91,6 +97,7 @@ the rest to some helper, as in this example.
    :links: AV/RecurTutor/recurIntroCON.css
    :scripts: AV/RecurTutor/recurIntroDelegateCON.js
    :output: show  
+   :keyword: Recursion
 
 Let's look deeper into the details of what your friend does when
 you delegate the work.
@@ -104,6 +111,7 @@ you shouldn't worry about all of these details.)
    :links: AV/RecurTutor/recurIntroCON.css
    :scripts: AV/RecurTutor/recurIntroDetailsCON.js
    :output: show  
+   :keyword: Recursion
 
 In order to understand recursion, you need to be able to do two
 things.

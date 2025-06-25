@@ -1,3 +1,12 @@
+// Title: Link Nodes: Iteration
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Link Node; Iteration
+// Natural Language: en
+// Programming Language: Java
+/* Description: Slideshow introducing the concept of iterating through a linked list. */
+
 //variable xPosition controls the horizontal position of the visualization
 $(document).ready(function() {
   "use strict";

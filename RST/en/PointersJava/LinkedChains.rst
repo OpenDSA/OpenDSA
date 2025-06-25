@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mohammed Farghally
+   :title: Additional Pointers Programming Exercises
+   :author: Mostafa Mohammed
+   :institution: Virginia Tech
+   :keyword: Pointer
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: A second collection of practice programming exercises about pointers.
 
 More Practice Exercises
 =======================

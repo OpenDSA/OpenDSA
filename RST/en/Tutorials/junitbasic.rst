@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Writing JUnit Tests
    :author: Jordan Sablan
+   :institution: Virginia Tech
    :requires: JUnit intro
    :satisfies: JUnit test writing
-   :topic: JUnit
+   :topic: Programming Tutorial
+   :keyword: JUnit Testing
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Describes how to write JUnit tests.
+
 
 Writing JUnit Tests
 ===================
@@ -29,7 +36,7 @@ Before you start, be sure you have familiarized yourself with the basics of the
 .. |external_link| raw:: html
 
    <a
-   href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/code/BST.java" target = "_blank">Here is the full BST source code</a>
+   href="https://viterbi-web.usc.edu/~adamchik/15-121/lectures/Trees/code/BST.java" target = "_blank">Here is the full BST source code</a>
 
 
 While this class contains many methods this tutorial will only be testing a few.

@@ -4,8 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Primary versus Secondary Storage
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: File Processing
+   :keyword: File Processing; Disk Drive; Memory
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concept of computer memory performance hierarchy.
+
 
 Primary versus Secondary Storage
 ================================

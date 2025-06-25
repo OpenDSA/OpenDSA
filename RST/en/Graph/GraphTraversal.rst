@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Graph Traversals
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: graph implementation
    :satisfies: graph traversal
    :topic: Graphs
+   :keyword: Graph Traversal
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents standard graph traversals: Depth-first search and breadth-first search. Includes visualizations and algorithm proficiency practice exercises.
+
 
 Graph Traversals
 ================
@@ -127,7 +134,8 @@ It can show you DFS run on a directed graph or an undirected graph.
 Be sure to look at an example for each type of graph.
 
  .. avembed:: AV/Graph/DFSAV.html ss
-      :long_name: DFS AV
+    :long_name: DFS AV
+    :keyword: Graphs; Graph Traversals; Breadth-First Search
 
 DFS processes each edge once in a directed graph.
 In an undirected graph, DFS processes each edge from both
@@ -139,6 +147,7 @@ Here is an exercise for you to practice DFS.
 
 .. avembed:: AV/Graph/DFSPE.html pe
    :long_name: DFS Proficiency Exercise
+   :keyword: Graphs; Graph Traversals; Breadth-First Search
 
 
 Breadth-First Search
@@ -174,12 +183,14 @@ It can show you BFS run on a directed graph or an undirected graph.
 Be sure to look at an example for each type of graph.
 
 .. avembed:: AV/Graph/BFSAV.html ss
-    :long_name: BFS AV
+   :long_name: BFS AV
+   :keyword: Graphs; Graph Traversals; Breadth-First Search
 
 Here is an exercise for you to practice BFS.
 
 .. avembed:: AV/Graph/BFSPE.html pe
    :long_name: BFS Proficiency Exercise
+   :keyword: Graphs; Graph Traversals; Breadth-First Search
 
 .. TODO::
    :type: Exercise

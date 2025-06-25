@@ -4,9 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: General Trees
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: general trees
    :topic: General Trees
+   :keyword: General Tree
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduction to the concept of a general tree: A tree where any node can have any number of children. This module discusses general tree terminology, an ADT, and traversals.
 
 General Trees
 =============
@@ -68,6 +74,7 @@ generalized from the notation for binary trees.
    :links: AV/General/GenTreeCON.css
    :scripts: AV/General/GenTreeCON.js
    :align: justify
+   :keyword: General Trees
 
    Notation for general trees.
    Node :math:`P` is the parent of nodes :math:`V`, :math:`S1`,
@@ -159,6 +166,7 @@ general trees.
    :links: AV/General/GenTreeCON.css
    :scripts: AV/General/GenTreePreTravCON.js
    :output: show
+   :keyword: General Trees
 
 To perform a preorder traversal, it is necessary to visit each of the
 children for a given node (say :math:`R`) from left to right.
@@ -172,6 +180,7 @@ to that node's right sibling, and so on.
    :links: AV/General/GenTreeCON.css
    :scripts: AV/General/GenTreePostTravCON.js
    :output: show
+   :keyword: General Trees
 
 Using the General Tree ADT shown above, here is an
 implementation to print the nodes of a general tree in

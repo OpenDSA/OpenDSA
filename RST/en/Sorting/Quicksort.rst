@@ -4,12 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Quicksort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: sorting terminology; sort code tuning; insertion sort
    :satisfies: quicksort
    :topic: Sorting
+   :keyword: Quicksort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Quicksort, including visualizations and practice exercises.
 
 .. index:: ! Quicksort
+
 
 Quicksort
 =========
@@ -125,6 +132,7 @@ Here is a simple ``findpivot`` function.
 
 .. avembed:: Exercises/Sorting/QuicksortPivotPRO.html ka
    :long_name: Quicksort Pivot Proficiency Exercise
+   :keyword: Sorting; Quicksort
 
 
 Partition
@@ -159,10 +167,12 @@ bound for the recursive calls to ``qsort`` can be determined.
    :links: AV/Sorting/quicksortCON.css
    :scripts: AV/Sorting/quicksortCODE.js AV/Sorting/quicksortCON.js
    :output: show
+   :keyword: Sorting; Quicksort
 
 
 .. avembed:: Exercises/Sorting/QuicksortPartitPRO.html ka
    :long_name: Quicksort Partition Proficiency Exercise
+   :keyword: Sorting; Quicksort
 
 And here is a visualization illustrating the running time analysis of the partition function
 
@@ -171,6 +181,7 @@ And here is a visualization illustrating the running time analysis of the partit
    :links: AV/Sorting/QuickSortPartitionAnalysisCON.css
    :scripts: AV/Sorting/QuickSortPartitionAnalysisCON.js
    :output: show
+   :keyword: Sorting; Quicksort
 
 
 Putting It Together
@@ -186,6 +197,7 @@ the proficiency exercise that follows the visualization).
 
 .. avembed:: AV/Sorting/quicksortAV.html ss
    :long_name: Quicksort Visualization
+   :keyword: Sorting; Quicksort
 
 
 Here is a complete proficiency exercise to see how well you understand
@@ -193,6 +205,7 @@ Quicksort.
 
 .. avembed:: AV/Sorting/quicksortPRO.html pe
    :long_name: Quicksort Proficiency Exercise
+   :keyword: Sorting; Quicksort
 
 
 Quicksort Analysis
@@ -205,6 +218,7 @@ This visualization explains the worst-case running time of Quick Sort
    :links: AV/Sorting/QuickSortWorstCaseCON.css
    :scripts: AV/Sorting/QuickSortWorstCaseCON.js
    :output: show
+   :keyword: Sorting; Quicksort
 
 This is terrible, no better than Bubble Sort.
 When will this worst case occur?
@@ -223,6 +237,7 @@ This visualization explains the best-case running time of Quick Sort
    :links: AV/Sorting/QuickSortBestCaseCON.css
    :scripts: AV/Sorting/QuickSortBestCaseCON.js
    :output: show
+   :keyword: Sorting; Quicksort
 
 Quicksort's average-case behavior falls somewhere
 between the extremes of worst and best case.
@@ -252,6 +267,7 @@ relation was formed.
    :links: AV/Sorting/QuickSortAverageCaseCON.css
    :scripts: AV/Sorting/QuickSortAverageCaseCON.js
    :output: show
+   :keyword: Sorting; Quicksort
 
 This is an unusual situation that the average case cost and the worst
 case cost have asymptotically different growth rates.
@@ -366,3 +382,4 @@ modest speedup.
 
 .. avembed:: Exercises/Sorting/QuicksortSumm.html ka
    :long_name: Quicksort Summary Exercise
+   :keyword: Sorting; Quicksort

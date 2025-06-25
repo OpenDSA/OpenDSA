@@ -29,34 +29,45 @@ _default_ex_options = {
     'ka': {
       'required': True,
       'points': 1,
-      'threshold': 5
+      'threshold': 5,
+      'partial_credit': False
     }, 
     'ss': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     }, 
     'ff': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     }, 
     'pe': {
       'required': True,
       'points': 1,
-      'threshold': 0.9
+      'threshold': 0.9,
+      'partial_credit': False
     },
     'ae': {
       'required': True,
       'points': 1,
-      'threshold': 0
+      'threshold': 0,
+      'partial_credit': False
     },
     'dgm': {
       'required': False,
       'points': 0,
-      'threshold': 1
+      'threshold': 1,
+      'partial_credit': False
     },
     'extr': {
+      'points': 1.0,
+      'partial_credit': False,
+      'enable_scrolling' : False,
+      'frame_width': 1000,
+      'frame_height': 900,
       'points': 1.0
     }
 }
@@ -70,7 +81,7 @@ default_ex_options = {
 
 }
 
-EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options', 'showhide']
+EXERCISE_FIELDS = ['points', 'required', 'long_name', 'threshold', 'exer_options', 'showhide', 'partial_credit']
 MODULE_FIELDS = ['dispModComp', 'mod_options', 'codeinclude']
 REQUIRED_EXERCISE_FIELDS = ['points', 'required', 'threshold']
 
@@ -83,6 +94,7 @@ avembed_element = '''\
     required="True"
     threshold="%(threshold)s"
     av_address="%(av_address)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </avembed>
 '''
@@ -90,9 +102,14 @@ avembed_element = '''\
 extertool_element = '''\
 <extertool
     resource_name=%(resource_name)s
+    workout_id="%(workout_id)s"
     resource_type="%(resource_type)s"
     learning_tool="%(learning_tool)s"
     points="%(points)s"
+    enable_scrolling="%(enable_scrolling)s"
+    frame_width="%(frame_width)s"
+    frame_height="%(frame_height)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </extertool>
 '''
@@ -108,6 +125,7 @@ inlineav_element = '''\
     threshold="%(threshold)s"
     links="%(links)s"
     scripts="%(scripts)s"
+    partial_credit="%(partial_credit)s"
     mod_name="%(mod_name)s">
 </inlineav>
 '''
@@ -115,6 +133,16 @@ inlineav_element = '''\
 odsalink_element = '''<odsalink>%(odsalink)s</odsalink>'''
 odsascript_element = '''<odsascript>%(odsascript)s</odsascript>'''
 
+splicetoolembed_element = '''\
+<splicetoolembed
+    url="%(url)s"
+    name="%(name)s"
+    long_name="%(long_name)s"
+    height="%(height)s"
+    width="%(width)s"
+    mod_name="%(mod_name)s">
+</splicetoolembed>
+'''
 
 class avembed(Directive):
   required_arguments = 2
@@ -136,6 +164,7 @@ class avembed(Directive):
     self.options['required'] = get_default_ex_option(self.options['type'], 'required')
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
+    self.options['partial_credit'] = get_default_ex_option(self.options['type'], 'partial_credit')
     self.options['mod_name'] = current_module_base
     self.options['av_address'] = av_path
 
@@ -182,22 +211,36 @@ class extrtoolembed(Directive):
   has_content = True
   option_spec = {
                  'resource_name': directives.unchanged,
+                 'workout_id': directives.unchanged,
                  'resource_type': directives.unchanged,
                  'learning_tool': directives.unchanged,
-                 'points': directives.unchanged
+                 'enable_scrolling': directives.unchanged,
+                 'points': directives.unchanged,
+                 'frame_width': directives.unchanged,
+                 'frame_height': directives.unchanged
                  }
 
   def run(self):
-
-    resource_name = self.arguments[0]
+    resource_name = self.arguments[0].strip()
+    # change any single-quotes to double-quotes for XML
+    resource_name = re.sub(r"'(.*)'", r'"\1"', resource_name)
     if 'resource_name' not in self.options or self.options['resource_name'] == '':
       self.options['resource_name'] = resource_name
+    if 'workout_id' not in self.options or self.options['workout_id'] == '':
+      self.options['workout_id'] = '0'
     if 'resource_type' not in self.options or self.options['resource_type'] == '':
       self.options['resource_type'] = 'external_assignment'
     if 'learning_tool' not in self.options or self.options['learning_tool'] == '':
       self.options['learning_tool'] = 'code-workout'
     if 'points' not in self.options or self.options['points'] == '':
       self.options['points'] = get_default_ex_option('extr', 'points', self.options['learning_tool'])
+    if 'enable_scrolling' not in self.options or self.options['enable_scrolling'] == '':
+      self.options['enable_scrolling'] = get_default_ex_option('extr', 'enable_scrolling', self.options['learning_tool'])
+    if 'frame_width' not in self.options or self.options['frame_width'] == '':
+      self.options['frame_width'] = get_default_ex_option('extr', 'frame_width', self.options['learning_tool'])
+    if 'frame_height' not in self.options or self.options['frame_height'] == '':
+      self.options['frame_height'] = get_default_ex_option('extr', 'frame_height', self.options['learning_tool'])
+    self.options['partial_credit'] = get_default_ex_option('extr', 'partial_credit', self.options['learning_tool'])
 
     self.options['mod_name'] = current_module_base
     
@@ -230,6 +273,7 @@ class inlineav(Directive):
     self.options['required'] = get_default_ex_option(self.options['type'], 'required')
     self.options['points'] = get_default_ex_option(self.options['type'], 'points')
     self.options['threshold'] = get_default_ex_option(self.options['type'], 'threshold')
+    self.options['partial_credit'] = get_default_ex_option(self.options['type'], 'partial_credit')
     
     self.options['mod_name'] = current_module_base
 
@@ -414,6 +458,7 @@ class odsafig(Directive):
   def run(self):
     return [nodes.raw('', '<odsafig>null</odsafig>', format='xml')]
 
+
 class iframe(Directive):
   '''
   '''
@@ -430,6 +475,38 @@ class iframe(Directive):
   
   def run(self):
     return [nodes.raw('', '<iframe>null</iframe>', format='xml')]
+
+
+class splicetoolembed(Directive):
+  '''
+  '''
+  required_arguments = 1
+  optional_arguments = 4
+  final_argument_whitespace = True
+  has_content = True
+  option_spec = {
+                  'height': directives.unchanged,
+                  'width': directives.unchanged,
+                  'name': directives.unchanged,
+                  'absolute_url': directives.flag,
+                  }
+  
+  def run(self):
+    self.options['url'] = self.arguments[0]
+    self.options['mod_name'] = current_module_base
+
+    if 'name' not in self.options:
+      self.options['name'] = os.path.basename(self.options['url']).partition('.')[0]
+    if 'long_name' not in self.options:
+      self.options['long_name'] = self.options['name']
+    if 'height' not in self.options:
+      self.options['height'] = '600'
+    if 'width' not in self.options:
+      self.options['width'] = '800'
+
+    res = splicetoolembed_element % (self.options)
+    return [nodes.raw('', res, format='xml')]
+
 
 class showhidecontent(Directive):
   '''
@@ -479,17 +556,17 @@ def get_default_ex_option(ex_type, option, learning_tool=None):
     if 'extr' not in default_ex_options:
       print_err('WARNING: Missing "glob_extr_options", using default values instead.')
       default_ex_options['extr'] = _default_ex_options['extr']
-      return default_ex_options['extr']['points']
+      return default_ex_options['extr'][option]
     elif learning_tool in default_ex_options['extr']:
-      if 'points' in default_ex_options['extr'][learning_tool]:
-        return default_ex_options['extr'][learning_tool]['points']
-    if 'points' not in default_ex_options['extr']:
-      def_val = _default_ex_options['extr']['points']
-      print_err('WARNING: "glob_extr_options" is missing field "points". Using default value "{0}".'.format(def_val))
-      default_ex_options['extr']['points'] = def_val
+      if option in default_ex_options['extr'][learning_tool]:
+        return default_ex_options['extr'][learning_tool][option]
+    if option not in default_ex_options['extr']:
+      def_val = _default_ex_options['extr'][option]
+      print_err('WARNING: "glob_extr_options" is missing field "{0}". Using default value "{1}".'.format(option, def_val))
+      default_ex_options['extr'][option] = def_val
       return def_val
     else:
-      return default_ex_options['extr']['points']
+      return default_ex_options['extr'][option]
   elif ex_type == 'dgm':
     return _default_ex_options['dgm']
   else:
@@ -618,6 +695,11 @@ def extract_exs_config(exs_json):
         exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
         exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
         exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+        exs_config['extertool']['long_name'] = ex_obj['@resource_name']
+        exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
+        exs_config['extertool']['frame_width'] = ex_obj['@frame_width']
+        exs_config['extertool']['frame_height'] = ex_obj['@frame_height']
+        exs_config['extertool']['partial_credit'] = ex_obj['@partial_credit']
         exs_config['extertool']['points'] = float(ex_obj['@points'])
         if expanded:
           exs_config['extertool']['type'] = 'extr'
@@ -626,6 +708,22 @@ def extract_exs_config(exs_json):
           for key, value in ex_options[current_module][ex_obj['@resource_name']].items():
               exs_config['extertool'][key] = value
           del ex_options[current_module][ex_obj['@resource_name']]
+
+      if isinstance(x, dict) and 'splicetoolembed' in list(x.keys()):
+        ex_obj = x['splicetoolembed']
+        exer_name = ex_obj['@name']
+        exs_config[exer_name] = OrderedDict()
+        exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+        exs_config[exer_name]['url'] = ex_obj['@url']
+        exs_config[exer_name]['height'] = ex_obj['@height']
+        exs_config[exer_name]['width'] = ex_obj['@width']
+        if expanded:
+          exs_config[exer_name]['type'] = 'splicetoolembed'
+          exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
+        if exer_name in ex_options[current_module]:
+          for key, value in ex_options[current_module][exer_name].items():
+              exs_config[exer_name][key] = value
+          del ex_options[current_module][exer_name]
 
       if isinstance(x, dict) and 'inlineav' in list(x.keys()) and x['inlineav']['@type'] == "ss":
         ex_obj = x['inlineav']
@@ -696,7 +794,13 @@ def extract_exs_config(exs_json):
       exs_config['extertool']['learning_tool'] = ex_obj['@learning_tool']
       exs_config['extertool']['resource_type'] = ex_obj['@resource_type']
       exs_config['extertool']['resource_name'] = ex_obj['@resource_name']
+      exs_config['extertool']['long_name'] = ex_obj['@resource_name']
+      exs_config['extertool']['enable_scrolling'] = ex_obj['@enable_scrolling']
+      exs_config['extertool']['frame_width'] = ex_obj['@frame_width']
+      exs_config['extertool']['frame_height'] = ex_obj['@frame_height']
+      exs_config['extertool']['partial_credit'] = ex_obj['@partial_credit']
       exs_config['extertool']['points'] = float(ex_obj['@points'])
+      exs_config['extertool']['workout_id'] = ex_obj['@workout_id']
       if expanded:
         exs_config['extertool']['type'] = 'extr'
         exs_config['extertool']['mod_name'] = ex_obj['@mod_name']
@@ -704,6 +808,23 @@ def extract_exs_config(exs_json):
           for key, value in ex_options[current_module][ex_obj['@resource_name']].items():
               exs_config['extertool'][key] = value
           del ex_options[current_module][ex_obj['@resource_name']]
+
+    if 'splicetoolembed' in list(exs_json.keys()):
+      ex_obj = exs_json['splicetoolembed']
+      exer_name = ex_obj['@name']
+      exs_config[exer_name] = OrderedDict()
+      exs_config[exer_name]['long_name'] = ex_obj['@long_name']
+      exs_config[exer_name]['url'] = ex_obj['@url']
+      exs_config[exer_name]['height'] = ex_obj['@height']
+      exs_config[exer_name]['width'] = ex_obj['@width']
+      if expanded:
+        exs_config[exer_name]['type'] = 'splicetoolembed'
+        exs_config[exer_name]['mod_name'] = ex_obj['@mod_name']
+      if exer_name in ex_options[current_module]:
+        #KVP 
+        for key, value in ex_options[current_module][exer_name].items():
+          exs_config[exer_name][key] = value
+        del ex_options[current_module][exer_name]
 
     if 'inlineav' in list(exs_json.keys()) and exs_json['inlineav']['@type'] == "ss":
       ex_obj = exs_json['inlineav']
@@ -770,6 +891,7 @@ def register():
   directives.register_directive('slide', slide)
   directives.register_directive('slideconf', slideconf)
   directives.register_directive('iframe', iframe)
+  directives.register_directive('splicetoolembed', splicetoolembed)
   directives.register_directive('showhidecontent', showhidecontent)
 
 
@@ -778,7 +900,6 @@ def remove_markup(source):
   remove unnecessary markups in the rst files
   '''
   global expanded
-
   source = source.replace(' --- ','')
   source = source.replace('|---|','')
   if expanded:
@@ -788,7 +909,6 @@ def remove_markup(source):
     source = re.sub(r"\s+:scripts:.+\n", '\n', source, flags=re.MULTILINE)
     source = re.sub(r"\:(?!output)[a-zA-Z]+\:", '',source, flags=re.MULTILINE)
   source = re.sub(r"\[.+\]\_", '',source, flags=re.MULTILINE)
-
   return source
 
 def get_chapter_module_files(conf_data):
@@ -905,41 +1025,37 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
 
   mod_files = get_chapter_module_files(conf_data)
   for chapter, files in mod_files.items():
+    
     full_config['chapters'][chapter] = OrderedDict()
     for x in files:
       rst_dir_name = x.split(os.sep)[-2]
       rst_fname = os.path.basename(x).partition('.')[0]
       if rst_dir_name == conf_data['lang']:
-        mod_path = rst_fname
+        module_path = rst_fname
       else:
-        mod_path = rst_dir_name + '/' + rst_fname
-      
+        module_path = rst_dir_name + '/' + rst_fname
 
-      current_module = mod_path
       if verbose:
-        print(("Processing module " + mod_path))
-      current_module_base = os.path.basename(mod_path)
+        print(("Processing module " + module_path))
+      current_module = module_path
+      current_module_base = os.path.basename(module_path)
 
       if not os.path.isfile(x):
-        print_err("ERROR: '{0}' is not a valid module path".format(mod_path))
+        print_err("ERROR: '{0}' is not a valid module path".format(module_path))
         sys.exit(1)
 
       with open(x, 'rt', encoding='utf-8') as rstfile:
         source = rstfile.read()
 
       source = remove_markup(source)
-
       rst_parts = publish_parts(source,
                   settings_overrides={'output_encoding': 'utf8',
                   'initial_header_level': 2},
                   writer_name="xml",
-      source_path=mod_path)
-
+      source_path=module_path)
       mod_json = xmltodict.parse(rst_parts['whole'])
       mod_config = extract_mod_config(mod_json)
-
-      full_config['chapters'][chapter][mod_path] = mod_config
-
+      full_config['chapters'][chapter][module_path] = mod_config
   if not slides:
     for mod_name, exercises in ex_options.items():
       for exer in exercises:
@@ -947,6 +1063,11 @@ def generate_full_config(config_file_path, slides, gen_expanded=False, verbose=F
     for mod_name, sections in sect_options.items():
       for sect in sections:
         print_err('WARNING: the section "{0}" does not exist in module "{1}"'.format(sect, mod_name))
+
+    simple_config = read_conf_file(config_file_path)
+    if 'splicetoolembeds' in simple_config:
+      full_config['splicetoolembeds'] = simple_config['splicetoolembeds']
+
   return full_config
 
 if __name__ == '__main__':

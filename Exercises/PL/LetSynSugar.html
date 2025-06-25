@@ -1,11 +1,40 @@
+<!--
+Title: Nested Lets Syntax-Only
+Author: David Furcy; Tom Naps
+Institution: UW-Oshkosh
+Features: Code Tracing Exercise
+Keyword: Functional Programming
+Natural Language: en
+Programming Language: N/A
+--> 
+
+<!--
+Description: A collection of self-practice questions related to nesting Let expressions implemented only syntactically in the functional programming language SLang1.
+-->
+
 <!DOCTYPE html>
-<html data-require="math ../../AV/PL/interpreters/version1.07/scripts/absyn ../../AV/PL/interpreters/version1.07/scripts/env ../../AV/PL/interpreters/version1.07/scripts/grammar ../../AV/PL/interpreters/version1.07/scripts/interpreter PLutils LetSynSugar" lang="en">
+<html data-require="math" lang="en">
   <head>
     <meta charset=utf-8>
     <title>Let Blocks as Syntactic Sugar</title>
     <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
-    <script src="../../khan-exercises/local-only/main.js" ></script>
     <script>var SLang = {};</script>
+    <script src="../../khan-exercises/local-only/main.js" ></script>
+    <script>
+        requirejs([
+            "../../AV/PL/interpreters/version1.07/scripts/absyn",
+            "../../AV/PL/interpreters/version1.07/scripts/env",
+            "../../AV/PL/interpreters/version1.07/scripts/grammar"
+          ],
+          function() {
+            requirejs([
+              "../../AV/PL/interpreters/version1.07/scripts/interpreter",
+              "../../DataStructures/PLutils",
+              "LetSynSugar"
+            ],
+            function() {});
+        });
+    </script>
     <link rel="stylesheet"  href="./styles.css" type="text/css" />
   </head>
 
@@ -14,11 +43,12 @@
 	<div class="vars">
 		<var id="init">LetSynSugar.init()</var>
 		<var id="expression">LetSynSugar.expression</var>
+		<var id="hint4">LetSynSugar.hint4</var>		
 	</div>
 
       <div class="problems">
         <div class="LetSynSugarp">
-          <p class="question">Consider the following SLang 1 expression:</p> 
+          <p class="question">Consider the following SLang 1 expression:</p>
 <pre class="string">
 <var>expression</var>
 </pre>
@@ -36,16 +66,17 @@
 	      return LetSynSugar.validateAnswer(guess);
             </div>
 	  </div>
-	  
+
 	  <div class="hints">
-	    <p>If needed, review the general pattern for converting any 
+	    <p>If needed, review the general pattern for converting any
 	      <span class="string">let</span> expression into an equivalent
 	      function call.</p>
-	    <p>Notice how nested <span class="string">let</span> 
+	    <p>Notice how nested <span class="string">let</span>
 	      expressions translate into nested function calls.</p>
 	    <p>When writing a syntactically correct SLang 1 program,
-	    make sure to match opening and closing parentheses.</p>
-	  </div>	 
+	      make sure to match opening and closing parentheses.</p>
+	    <p><var>hint4</var></p>
+	  </div>
         </div>
       </div>
     </div>

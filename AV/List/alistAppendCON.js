@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Array-based list append
+
+// Title: Array-based List Append Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Array-Based List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow demonstrating the array-based list append operation. */
+
 $(document).ready(function() {
   "use strict";
   var arrValues = [13, 12, 20, 8, 3, "", "", ""];

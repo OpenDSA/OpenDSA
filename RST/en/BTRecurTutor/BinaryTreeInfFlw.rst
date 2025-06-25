@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Sally Hamouda and Cliff Shaffer
+   :title: Information Flow in Recursive Functions
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: mistakes in recursive tree traversal
    :satisfies: recursive function information flow
    :topic: Advanced Recursion
+   :keyword: Binary Tree Traversal; Recursive Tree Functions
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses how to write a binary tree traversal so as to properly control the various ways information flows into and out of the recursive function.
+
 
 Information Flow in Recursive Functions
 =======================================
@@ -58,6 +65,7 @@ Binary Tree Set Depth Exercise
 ------------------------------
 
 .. extrtoolembed:: 'Binary Tree Set Depth Exercise'
+   :workout_id: 66
 
 
 Collect-and-return
@@ -101,24 +109,28 @@ Another common mistake is to not return a value.
    :links: AV/Binary/WriteTrav.css
    :scripts: AV/Binary/BinaryTreeMistakesCON.js
    :output: show
+   :keyword: Binary Tree Traversals; Recursive Tree Functions
 
 
 Binary Tree Check Sum Exercise
 ------------------------------
 
 .. extrtoolembed:: 'Binary Tree Check Sum Exercise'
+   :workout_id: 71
 
 
 Binary Tree Leaf Nodes Count Exercise
 -------------------------------------
 
 .. extrtoolembed:: 'Binary Tree Leaf Nodes Count Exercise'
+   :workout_id: 72
 
 
 Binary Tree Sum Nodes Exercise
 ------------------------------
 
 .. extrtoolembed:: 'Binary Tree Sum Nodes Exercise'
+   :workout_id: 68
 
 
 Combining Information Flows
@@ -140,7 +152,7 @@ Binary Tree Check Value Exercise
 --------------------------------
 
 .. extrtoolembed:: 'Binary Tree Check Value Exercise'
-
+   :workout_id: 65
 
 Combination Problems
 --------------------
@@ -154,16 +166,16 @@ Binary Tree Height Exercise
 ---------------------------
 
 .. extrtoolembed:: 'Binary Tree Height Exercise'
-
+   :workout_id: 70
 
 Binary Tree Get Difference Exercise
 -----------------------------------
 
 .. extrtoolembed:: 'Binary Tree Get Difference Exercise'
-
+   :workout_id: 73
 
 Binary Tree Has Path Sum Exercise
 ---------------------------------
 
 .. extrtoolembed:: 'Binary Tree Has Path Sum Exercise'
-
+   :workout_id: 67

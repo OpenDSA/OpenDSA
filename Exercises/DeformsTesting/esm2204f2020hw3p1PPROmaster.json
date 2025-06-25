@@ -1,0 +1,288 @@
+{
+    "parameters": {
+        "param1": {
+            "id": "param1",
+            "type": "question_parameter",
+            "valueDisplay": "0.16in",
+            "value": "0.16",
+            "unit": "in",
+            "parent": "question_params"
+        },
+        "param2": {
+            "id": "param2",
+            "type": "question_parameter",
+            "valueDisplay": "1650microstrain",
+            "value": "1650",
+            "unit": "microstrain",
+            "parent": "question_params"
+        },
+        "param3": {
+            "id": "param3",
+            "type": "question_parameter",
+            "valueDisplay": "34in",
+            "value": "34",
+            "unit": "in",
+            "parent": "question_params"
+        },
+        "param4": {
+            "id": "param4",
+            "type": "question_parameter",
+            "valueDisplay": "77in",
+            "value": "77",
+            "unit": "in",
+            "parent": "question_params"
+        }
+    },
+    "workspaces": {
+        "1": {
+            "id": 1,
+            "name": "wk1",
+            "equations": {
+                "0": {
+                    "id": "wk1_axialMemberNormalStrainAvgLongdelta_1_1",
+                    "equation_template_id": "axialMemberNormalStrainAvgLongdelta",
+                    "variables": {
+                        "normallongstrain": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_1_1_normallongstrain",
+                            "name": "normallongstrain",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\epsilon_{long_{}}",
+                                "parentSymbolTemplate": "\\epsilon_{long_{}}",
+                                "parentSymbol": "\\epsilon_{long_{AB}}"
+                            },
+                            "currentSymbol": "a_a",
+                            "expectedDomain": "strain",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": null,
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": "wk1_axialMemberNormalStrainAvgLongdelta_1_1_normallongstrain"
+                        },
+                        "length": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_1_1_length",
+                            "name": "length",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "L_{}",
+                                "parentSymbolTemplate": "L_{}",
+                                "parentSymbol": "L_{AB}"
+                            },
+                            "currentSymbol": "a_b",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "in",
+                            "valueType": "number",
+                            "valueSource": "param3",
+                            "valueNegated": false,
+                            "value": "34"
+                        },
+                        "deform": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_1_1_deform",
+                            "name": "deform",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\delta_{}",
+                                "parentSymbolTemplate": "\\delta_{}",
+                                "parentSymbol": "\\delta_{AB}"
+                            },
+                            "currentSymbol": "a_c",
+                            "expectedDomain": "length",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_c",
+                                "varDisplay": "\\delta_{AB}",
+                                "varDisplayTemplate": "\\delta_{}"
+                            }
+                        }
+                    }
+                },
+                "1": {
+                    "id": "wk1_axialMemberNormalStrainAvgLongdelta_2_2",
+                    "equation_template_id": "axialMemberNormalStrainAvgLongdelta",
+                    "variables": {
+                        "normallongstrain": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_2_2_normallongstrain",
+                            "name": "normallongstrain",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\epsilon_{long_{}}",
+                                "parentSymbolTemplate": "\\epsilon_{long_{2}}",
+                                "parentSymbol": "\\epsilon_{long_{BC}}"
+                            },
+                            "currentSymbol": "a_d",
+                            "expectedDomain": "strain",
+                            "currentDomain": "strain",
+                            "currentUnit": "microstrain",
+                            "valueType": "number",
+                            "valueSource": "param2",
+                            "valueNegated": false,
+                            "value": 1650.0000000000002
+                        },
+                        "length": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_2_2_length",
+                            "name": "length",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "L_{}",
+                                "parentSymbolTemplate": "L_{2}",
+                                "parentSymbol": "L_{BC}"
+                            },
+                            "currentSymbol": "a_e",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "in",
+                            "valueType": "number",
+                            "valueSource": "param4",
+                            "valueNegated": false,
+                            "value": "77"
+                        },
+                        "deform": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_2_2_deform",
+                            "name": "deform",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\delta_{}",
+                                "parentSymbolTemplate": "\\delta_{2}",
+                                "parentSymbol": "\\delta_{BC}"
+                            },
+                            "currentSymbol": "a_f",
+                            "expectedDomain": "length",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_f",
+                                "varDisplay": "\\delta_{BC}",
+                                "varDisplayTemplate": "\\delta_{2}"
+                            }
+                        }
+                    }
+                },
+                "2": {
+                    "id": "wk1_add2_3_1",
+                    "equation_template_id": "add2",
+                    "variables": {
+                        "sterm": {
+                            "id": "wk1_add2_3_1_sterm",
+                            "name": "sterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "s_{}",
+                                "parentSymbolTemplate": "s_{}",
+                                "parentSymbol": "s_{}"
+                            },
+                            "currentSymbol": "a_g",
+                            "expectedDomain": "free",
+                            "currentDomain": "length",
+                            "currentUnit": "in",
+                            "valueType": "number",
+                            "valueSource": "param1",
+                            "valueNegated": false,
+                            "value": "0.16"
+                        },
+                        "aterm": {
+                            "id": "wk1_add2_3_1_aterm",
+                            "name": "aterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "a_{}",
+                                "parentSymbolTemplate": "a_{}",
+                                "parentSymbol": "a_{}"
+                            },
+                            "currentSymbol": "a_h",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_c",
+                                "varDisplay": "\\delta_{AB}",
+                                "varDisplayTemplate": "\\delta_{}"
+                            }
+                        },
+                        "bterm": {
+                            "id": "wk1_add2_3_1_bterm",
+                            "name": "bterm",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "b_{}",
+                                "parentSymbolTemplate": "b_{}",
+                                "parentSymbol": "b_{}"
+                            },
+                            "currentSymbol": "a_i",
+                            "expectedDomain": "free",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_f",
+                                "varDisplay": "\\delta_{BC}",
+                                "varDisplayTemplate": "\\delta_{2}"
+                            }
+                        }
+                    }
+                }
+            },
+            "solutionBoxes": {
+                "0": {
+                    "value": 969.1176470600001,
+                    "unit": "microstrain",
+                    "variable": "a_a",
+                    "variableDisplay": "\\epsilon_{long_{AB}}",
+                    "valueSourceParent": "a_a",
+                    "valueNegated": false
+                },
+                "1": {
+                    "value": 0.032949999999960004,
+                    "unit": "in",
+                    "variable": "a_c",
+                    "variableDisplay": "\\delta_{AB}",
+                    "valueSourceParent": "a_c",
+                    "valueNegated": false
+                },
+                "2": {
+                    "value": 0.12705,
+                    "unit": "in",
+                    "variable": "a_f",
+                    "variableDisplay": "\\delta_{BC}",
+                    "valueSourceParent": "a_f",
+                    "valueNegated": false
+                },
+                "a_a": {
+                    "box_id_current": 0,
+                    "value": 0.00096911764706,
+                    "unit": "strain",
+                    "variable": "a_a",
+                    "variableDisplay": "\\epsilon_{long_{AB}}"
+                },
+                "a_c": {
+                    "box_id_current": 1,
+                    "value": 0.032949999999960004,
+                    "unit": "in",
+                    "variable": "a_c",
+                    "variableDisplay": "\\delta_{AB}"
+                },
+                "a_f": {
+                    "box_id_current": 2,
+                    "value": 0.12705,
+                    "unit": "in",
+                    "variable": "a_f",
+                    "variableDisplay": "\\delta_{BC}"
+                }
+            }
+        }
+    },
+    "solutions": {
+        "0": {
+            "id": "0",
+            "solution": "969.1",
+            "unit": "microstrain",
+            "source": "a_a",
+            "parent": "solution_box",
+            "type": "number"
+        }
+    }
+}

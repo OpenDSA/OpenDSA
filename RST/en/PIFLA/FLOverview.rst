@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Susan Rodger and Cliff Shaffer
+   :title: Formal Languages Course Overview
+   :author: Susan Rodger; Cliff Shaffer
+   :institution: Duke University; Virginia Tech
    :requires: FL Introduction
    :satisfies:
    :topic: Introduction
+   :keyword: Formal Language; Grammar; Automata
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Course overview for a course on formal languages and automata.
+
 
 Overview
 ========
@@ -15,12 +22,15 @@ Overview
 Languages, Grammars, and Machines
 ---------------------------------
 
-A :term:`language` is simply a collection of strings.
+A :term:`language` is simply a collection of strings
+(specifically, a subset of the strings that can be derived from some
+:term:`alphabet`).
 A fundamental thing to be able to do with a string is to determine
 whether or not it is part of a given language.
 This semester, we are studying various types of machines to see what
-languages they can reliably "recognize", that is, reliably determine
-whether some string is in that language or not.
+languages they can reliably :term:`recognize`
+(that is, reliably determine whether some string is in that language
+or not).
 We will also study other ways of expressing or defining languages.
 These include :term:`grammars <grammar>`, and other
 "language defining languages"
@@ -30,13 +40,15 @@ Language Hierarchy
 ------------------
 
 This picture shows what we will do most of the semester.
-By the end, you will know how things in this picture apply to
-compilers, and how hard some related problems are to solve.
+By the end, you will know how things in this picture relate to each
+other, how they apply to compilers, and how hard some related problems
+are to solve.
 
 .. inlineav:: HierarchyCON dgm
    :links: AV/PIFLA/Intro/HierarchyCON.css
    :scripts: AV/PIFLA/Intro/HierarchyCON.js
    :align: center
+   :keyword: Formal Languages and Automata; Grammars
 
 You are familiar with programming languages.
 Now we’ll look in finer detail at how programming languages are
@@ -55,11 +67,11 @@ We will see that any finite automaton represents a simple language,
 and that a type of grammar (:term:`regular grammar`) can represent the
 same language.
 Also we will look at :term:`regular expressions <regular expression>`.
-These turn out to be languages that can be represented by a
+These all turn out to be languages that can be represented by a
 program with no extra memory.
 
-Then we will add memory in a very simple way, using a machine
-(:term:`Pushdown Automata` or :term:`PDA`) that can 
+Then we will add memory in a very simple way |---| a stack |---|
+using a machine (:term:`Pushdown Automata` or :term:`PDA`) that can 
 represent a larger set of languages, along with their corresponding
 grammars.
 
@@ -67,8 +79,12 @@ Then we will add more memory and capabilities, bringing us to another
 machine (the Turing machine), the type of languages that it can
 represent, and its corresponding type of grammar.
 
-Finally, we discuss languages that you cannot write a program to
-reliably recognize.
+At the end, we will briefly discuss languages that you cannot write a
+program to reliably recognize (a topic referred to as
+:term:`computability` theory), and also talk a bit about the difference
+between problems that are (relatively) cheap to solve versus ones that
+are (relatively) expensive to solve (a topic referred to as
+:term:`complexity <computational complexity theory>` theory).
 
 
 The Power of Machines
@@ -86,22 +102,13 @@ But this table gives you a quick overview.
    \mathrm{Finite\ Automata}&       \mathrm{recognize\ integers}& \mathrm{recognize\ arithmetic\ expressions}\\
    \mathrm{(no\ memory)}\\
    \hline
-   \mathrm{Push-Down\ Automata}&      \mathrm{recognize\ arithmetic\ expr}& \mathrm{compute\ expression\ value}\\
-   \mathrm{(stack)}\\
+   \mathrm{Push-Down\ Automata}&      \mathrm{recognize\ arithmetic}& \mathrm{compute\ expression\ value}\\
+   \mathrm{(stack)}& \mathrm{expressions}\\
    \hline
    \mathrm{Turing\ Machine}&       \mathrm{compute\ expression}&
    \mathrm{decide\ if\ program\ halts}\\
    \mathrm{(unlimited\ memory)}
    \end{array}
-
-FA - can recognize integers, real numbers, but can’t recognize a valid
-arithmetic expression.
-
-PDA - can recognize a valid arithmetic expression, but can’t compute
-it and give you the answer.
-
-TM - can compute expressions, but can’t write a program that takes any
-Java program and tells you whether that program will halt or not.
 
 
 Application: Compilers
@@ -121,15 +128,17 @@ that, you would need to take a compiler course.
    :links: 
    :scripts: AV/PIFLA/Intro/CompileCON.js
    :align: center
+   :keyword: Formal Languages and Automata; Grammars
 
 You might think that understanding how to write a grammar to recognize
 a language (or design the language so that it is indeed possible to
 write a grammar) is an unnecessary skill.
 But in reality, a lot of programmers write "little languages" as part
 of their job.
-For example, you might go work for a company that makes robots, and
+For example, you might work for a company that makes robots, and
 you could need a little language to control the robot.
-
+Or you might write a web page that has an input box that
+has to be restricted to a certain structure for the input.
 
 Stages of a Compiler
 ~~~~~~~~~~~~~~~~~~~~
@@ -143,6 +152,7 @@ together in an acceptable way.
 .. inlineav:: CompileStagesCON dgm
    :links: 
    :scripts: AV/PIFLA/Intro/CompileStagesCON.js
+   :keyword: Formal Languages and Automata; Grammars
 
 PART 1: Identifying the tokens in a program.
 Regular languages are the foundation for this.
@@ -161,8 +171,8 @@ PART 3. Creating the parse tree.
 An interpretor walks through the parse tree and immediately executes
 the program (it does not generate code to execute the program).
 A compiler will take the parse tree and create a version of
-the program (that is not so nice for a human to read) that can quickly
-execute the program.
+the program (that is not so nice for a human to read) that the
+runtime environment for the language can quickly execute.
 
 
 Some Mindbending Ideas
@@ -179,10 +189,17 @@ Which leads to some questions like:
 * What type of language (from our hierarchy) is the set of regular
   expressions?
 * What type of language (from our hierarchy) is Java?
-* What type of language is a Context Free Grammar?
+* What type of language is the set of all Context Free Grammars?
 
-Here is another interesting "meta" question.
+Here is some other  interesting "meta" questions and claims.
+
 For any given language :math:`L`, define the language co-:math:`L` to be all
 strings **not** in :math:`L`.
 Is co-:math:`L` always the same type of language (in our hierarchy) as
 :math:`L`?
+
+Turing machines can do anything
+(at least, anything that any computer can do).
+
+And, how can it be true that you can't always tell if a loop will
+halt?!

@@ -3,19 +3,20 @@
   "desc": "Test",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
+  "sphinx_debug": false,
   "code_lang": {
-    "Java_Generic": {
-      "ext": [
-        "java"
-      ],
-      "label": "Java (Generic)",
-      "lang": "java"
-    },
     "Java": {
       "ext": [
         "java"
       ],
       "label": "Java",
+      "lang": "java"
+    },
+    "Java_Generic": {
+      "ext": [
+        "java"
+      ],
+      "label": "Java (Generic)",
       "lang": "java"
     },
     "C++": {
@@ -32,48 +33,52 @@
   "build_cmap": false,
   "suppress_todo": false,
   "dispModComp": true,
-  "tag": "CPP;CS2",
   "glob_exer_options": {
     "JXOP-debug": "true"
   },
   "glob_ss_options": {
     "threshold": 1.0,
     "points": 0.0,
-    "required": false
+    "required": false,
+    "partial_credit": false
   },
   "glob_ff_options": {
     "threshold": 1.0,
     "points": 0.0,
-    "required": false
+    "required": false,
+    "partial_credit": false
   },
   "glob_ka_options": {
     "threshold": 5,
     "points": 1.0,
-    "required": true
+    "required": true,
+    "partial_credit": false
   },
   "glob_extr_options": {
     "code-workout": {
       "points": 2.0
     },
-    "points": 1.0
+    "points": 1.0,
+    "partial_credit": false
   },
   "glob_pe_options": {
     "threshold": 0.9,
     "points": 2.0,
-    "required": true
+    "required": true,
+    "partial_credit": false
   },
   "chapters": {
-    "Stuff": {
-      "Design/IntroOO": {}, 
-      "PointersJava/BasicPointers1": {},
-      "MDTest/MDTest1": {},
-      "PointersJava/Exercises": {},
-      "NP/NPComplete": {},
-      "SeniorAlgAnal/Impossible": {}
-    }, 
-    "Appendix": {
-      "Glossary": {},
-      "Bibliography": {}
+      "Stuff": {
+      "Background/MathpreIntro": {}, 
+      "Sorting/InSort": {}, 
+      "Sorting/SortNotation": {
+        "SortIntroSumm": {
+          "threshold": 3
+        }
+      }, 
+      "Sorting/InsertionSort": {}, 
+      "Searching/SortedSearch": {}
+      },
     }
   }
 }

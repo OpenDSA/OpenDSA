@@ -7,7 +7,8 @@
 	init: function () {
 	    var vars = "uvxyz";
 	    var numSteps = 3;  // minimum number of reductions in this exercise
-
+	    var pair;
+	    
 	    function infiniteLoop(reduction) { 
 		return reduction[0].length > 1; 
 	    }
@@ -45,6 +46,7 @@
 	    function generateExpression(sameNumberSteps) {
 		var normalRed, applicativeRed;
 		var e;
+		var hint5;		
 		while ( true ) {		    
 		    e = L.getRndExp(1,2,6,vars,"");
 		    normalRed = L.reduceToNormalForm(e,"normal");
@@ -60,13 +62,23 @@
 		    }
 		    if (sameNumberSteps) {
 			if (normalRed.length === applicativeRed.length) {
-			    return e;
+			    hint5 =  "The correct answer is True because both "
+				+ "strategies take " + normalRed.length
+				+ " steps to reach the normal form.";
+			    return [e, hint5];
 			}
 		    } else{
 			if (normalRed.length !== applicativeRed.length) {
 			    //console.log(JSON.stringify(applicativeRed));
 			    //console.log(JSON.stringify(normalRed));
-			    return e;
+			    hint5 =  "The correct answer is False</br> because "
+				+ "the normal order strategy takes " + normalRed.length
+				+ " steps to reach the normal form,</br>"
+				+ "whereas the applicative order strategy takes "
+				+ applicativeRed.length
+				+ " steps to reach the same normal form.";
+			    
+			    return [e,hint5];
 			}
 		    }
 		}// infinite loop
@@ -74,12 +86,16 @@
 
 	    if (L.getRnd(0,1) === 0) {
 		// same number of steps
-		this.expression = L.printExp(generateExpression(true));
+		pair = generateExpression(true);
+		this.expression = L.printExp( pair[0] );
 		this.answer = "True";
+		this.hint5 = pair[1];
 	    } else {
 		// different number of steps
-		this.expression = L.printExp(generateExpression(false));
+		pair = generateExpression(false);
+		this.expression = L.printExp( pair[0] );
 		this.answer = "False";
+		this.hint5 = pair[1];
 	    }
 	    this.expression = this.expression.replace(/\s/g," ");
 	    //console.log(this.answer)

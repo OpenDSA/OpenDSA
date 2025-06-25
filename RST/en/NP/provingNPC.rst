@@ -4,13 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: NP-Completeness Proofs
    :author: Cliff Shaffer, Nabanita Maji
+   :institution: Virginia Tech
    :topic: NP-completeness
+   :keyword: NP-Completeness Proof
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction the the Satisfiability problem, and the process for proving that a problem is NP-Complete.
 
 NP-Completeness Proofs
 ======================
-
-
 
 NP-Completeness Proofs
 ----------------------
@@ -40,7 +44,7 @@ therefore NP-complete) was done by Stephen Cook.
 For this feat, Cook won the first Turing award, which is the closest
 Computer Science equivalent to the Nobel Prize.
 The "grand-daddy" NP-complete problem that Cook used is called
-SATISFIABILITY (or SAT for short).
+**SATISFIABILITY** (or **SAT** for short).
 
 A :term:`Boolean expression` is comprised of
 :term:`Boolean variables <Boolean variable>` combined
@@ -60,11 +64,11 @@ For example,
    \cdot (x_1 + \overline{x_3} + x_6)
 
 is in CNF, and has three clauses.
-Now we can define the problem SAT.
+Now we can define the problem **SAT**.
 
 .. topic:: Problem
 
-   SATISFIABILITY (SAT)
+   **SATISFIABILITY** (**SAT**)
 
    **Input:** A Boolean expression :math:`E` over variables
    :math:`x_1, x_2, ...` in Conjunctive Normal Form.
@@ -72,8 +76,8 @@ Now we can define the problem SAT.
    **Output:** YES if there is an assignment to the
    variables that makes :math:`E` true, NO otherwise.
 
-Cook proved that SAT is NP-hard.
-Explaining Cook's proof is beyond the scope of this course.
+Cook proved that **SAT** is NP-hard.
+Explaining Cook's proof in detail is beyond the scope of this course.
 But we can briefly summarize it as follows.
 Any decision problem :math:`F` can be recast as some language
 acceptance problem :math:`L`:
@@ -89,12 +93,18 @@ transformation of input :math:`I`.
 Conversely, if :math:`F` would give answer NO for input :math:`I`,
 then :math:`I` 's transformed version :math:`I'` is not in the
 language :math:`L`.
+For example, recognizing that a given graph has a solution to
+**TRAVELING SALESMAN** with cost less than :math:`k` is the same as
+recognizing that a representation for that graph as a string is in the
+language of all such strings that correspond to graphs for which the
+answer to **TRAVELING SALESMAN** is YES.
 
 Turing machines are a simple model of computation for writing
 programs that are language acceptors.
 There is a "universal" Turing machine that can take as input a
 description for a Turing machine, and an input string, and return the
 execution of that machine on that string.
+(The next is the crucial step in the proof.)
 This Turing machine in turn can be cast as a Boolean expression such
 that the expression is satisfiable if and only if the Turing machine
 yields ACCEPT for that string.
@@ -104,21 +114,49 @@ Boolean expressions, but rich enough to be able to compute any
 function that a regular computer can compute.
 The significance of this transformation is that *any* decision
 problem that is performable by the Turing machine is transformable to
-SAT.
-Thus, SAT is NP-hard.
+**SAT**.
+Thus, **SAT** is NP-hard.
 
 To show that a decision problem :math:`X`
 is NP-complete, we prove that :math:`X` is in NP (normally easy, and
 normally done by giving a suitable polynomial-time, non-deterministic
 algorithm) and then prove that :math:`X` is NP-hard.
 To prove that :math:`X` is NP-hard, we choose a known NP-complete
-problem, say :math:`A`. 
+problem, say :math:`A`.
 We describe a polynomial-time transformation that takes an
 *arbitrary* instance :math:`I` of :math:`A` to an instance
 :math:`I'` of :math:`X`.
-We then describe a polynomial-time transformation from
-:math:`SLN'` to :math:`SLN` such that :math:`SLN` is the solution
-for :math:`I`.
+We then describe a polynomial-time transformation from the solution
+for :math:`I'` in problem :math:`X` (call it :math:`SLN'`) to
+:math:`SLN` such that :math:`SLN` is the solution for :math:`I` in
+problem :math:`A`.
+
+**Terminology**: Showing that a problem is NP-complete fundamentally
+involves a reduction from a known NP-complete problem to the problem
+in question.
+Of course getting it backwards would merely mean that a known hard
+problem is being used to solve a problem that might or might not be
+hard.
+Note the terminology sometimes gets used in either order.
+Some people say that we reduce **FROM** the known NP-complete problem
+**TO** the problem in question.
+Other say that we reduce **TO** the problem in question **FROM** the
+known NP-complete problem.
+These sentences both mean the same thing, but alternate phrasing
+sometimes can be confusing.
+
+.. inlineav:: blackBoxNPCON dgm
+   :long_name: General blackbox reduction diagram for NP-Completeness Proofs
+   :links: AV/NP/blackBoxNPCON.css
+   :scripts: AV/NP/blackBoxNPCON.js
+   :output: show
+   :keyword: Reductions; NP-Completeness Proof
+
+   A graphical representation of the general reduction process,
+   modified for NP-completeness proofs. Note the role of the two
+   problems: We want to show that problem X is NP-complete.
+   To do so, we reduce **TO** problem X **FROM** known NP-complete
+   problem A.
 
 The following modules show a number of known NP-complete problems, and
 also some proofs that they are NP-complete.
@@ -130,5 +168,7 @@ The various proofs will link the problems together as shown here:
    :links: 
    :scripts: AV/NP/NPCProofDiagramCON.js
    :align: center
+   :keyword: NP-completeness; NP-completeness Proofs
 
-   We will use this sequence of reductions for the NP Complete Proof
+   We will use this sequence of reductions for in our collection of
+   NP-Completeness Proofs.

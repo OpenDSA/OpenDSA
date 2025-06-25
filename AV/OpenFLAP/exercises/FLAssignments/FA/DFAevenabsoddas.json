@@ -1,0 +1,46 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM",
+  "exerciseType": "DFA",
+  "totalTrueCases": 5,
+  "totalFalseCases": 5,
+  "containLetters": ["a"],
+  "randomStringLength": [0, 15],
+  "expression": "",
+  "description": "Give a DFA that accepts the language over $\\Sigma = \\{a, b\\}$ of an even number of a's, followed by at least one b, followed by zero or an odd number of a's.",
+  "type": "description",
+  "testCases": [
+    {
+      "aaaaaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaaab": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaaabbbbbb": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaaabbbbbba": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaaabbbbbbaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaaabbbbbbaaa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaaabbbbbbaaab": false,
+      "ShowTestCase":false
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": "../../../machines/FA/evenaAtLeastOnebZeroOrOdda.jff"
+}]

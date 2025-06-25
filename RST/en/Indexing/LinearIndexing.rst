@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Linear Indexing
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: indexing
    :satisfies: linear indexing
    :topic: Indexing
+   :keyword: Indexing; Linear Indexing
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the concept of a linear indexing, which is simply a sorted list of keys with associated references to the associated record on disk.
+
 
 Linear Indexing
 ===============
@@ -38,6 +45,7 @@ database records, because it is amenable to
    :links: AV/Indexing/linearIndexingCON.css
    :scripts: AV/Indexing/varindexCON.js
    :output: show
+   :keyword: Indexing; Linear Indexing
 
 If the database contains enough records, the linear index might
 be too large to store in :term:`main memory`.
@@ -82,6 +90,7 @@ record.
    :scripts: AV/Indexing/linindexCON.js
    :output: show
    :align: justify
+   :keyword: Indexing; Linear Indexing
 
    A simple two-level linear index.
    The linear index is stored on disk.
@@ -97,6 +106,7 @@ record.
 
 .. avembed:: AV/Indexing/linearIndexingPRO.html pe
    :long_name: Linear Indexing Proficiency Exercise
+   :keyword: Indexing; Linear Indexing
 
 Every time a record is inserted to or deleted from the database,
 all associated secondary indices must be updated.
@@ -131,6 +141,7 @@ infrequently in applications suited to using this arrangement.
    :links: AV/Indexing/TwoDArrCON.css
    :scripts: AV/Indexing/TwoDArrCON.js
    :align: center
+   :keyword: Indexing; Linear Indexing
 
    A two-dimensional linear index.
    Each row lists the primary keys associated with a particular
@@ -172,6 +183,7 @@ The primary key is a four-character unique identifier.
    :links: AV/Indexing/InvertedCON.css
    :scripts: AV/Indexing/InvertedCON.js
    :align: center
+   :keyword: Indexing; Linear Indexing
 
    Illustration of an inverted list.
    Each secondary key value is stored in the secondary key list.
@@ -198,6 +210,7 @@ this a good implementation for disk-based inverted files.
    :links: AV/Indexing/InvListCON.css
    :scripts: AV/Indexing/InvListCON.js
    :align: center
+   :keyword: Indexing; Linear Indexing
 
    An inverted list implemented as an array of secondary keys and
    combined lists of primary keys.

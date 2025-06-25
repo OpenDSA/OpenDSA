@@ -1,0 +1,119 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :title: Pushdown Automata
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
+   :satisfies: PDA Module
+   :topic: Pushdown Automata
+   :keyword: Pushdown Automata
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to Pushdown Automata, including visualizations and Programmed Instruction presentations.
+
+Pushdown Automata
+=================
+
+PDA: Pushdown Automata
+----------------------
+
+A significant characteristic of DFAs and NFAs is that they have no
+memory.
+So there is no history or way to store information aside from the
+state that they are currently in.
+This restricts what languages they can recognize.
+
+Consider what adding the ability to make use of just a single
+counter variable can do.
+For example, it is easy to recognize the language of balanced
+parentheses with a counter.
+Simply increment the counter when a left parenthesis is seen,
+and decrement when a right parenthesis is seen.
+If the counter ever goes negative, then reject.
+If it is zero after processing the string then accept, otherwise
+reject.
+Likewise, a counter will allow recognizing the language comprised of
+strings of the form :math:`a^nb^n`.
+
+But another alternative to storing a counter is to use a stack.
+Balanced parentheses can be recognized by pushing left parentheses
+onto the stack, and popping the top of the stack when encountering a
+right parentheses.
+Strings of the form :math:`a^nb^n` can likewise be recognized by
+pushing the initial a's onto the stack, and then popping them off as
+the b's are processed.
+Using a stack gives all of the capabilities of a counter, with a bit
+more flexibility.
+
+In the next few chapters we will study two types of machine with
+memory.
+The Pushdown Automata (PDA) uses a stack for its memory,
+and we will see that this allows it to recognize a wider range of
+languages than can the DFA or NFA.
+The Turing Machine has a more flexible form of memory than does the
+PDA, which will allow it to recognize an even broader range of
+languages.
+
+.. inlineav:: PDAFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAFS.css
+   :scripts: DataStructures/FLA/FA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAFS.js
+   :output: show
+   :keyword: Pushdown Automaton
+
+
+Transitions Types for PDAs
+--------------------------
+
+.. inlineav:: PDATransitionsFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDATransitionsFS.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDATransitionsFS.js
+   :output: show
+   :keyword: Pushdown Automaton
+
+
+PDA Acceptace Models - Final State Acceptace
+--------------------------------------------
+
+.. inlineav:: PDAAcceptanceFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAAcceptanceFS.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAAcceptanceFS.js
+   :output: show
+   :keyword: Pushdown Automaton
+
+
+PDA Acceptace Models - Empty Stack Acceptace
+--------------------------------------------
+   
+.. inlineav:: PDAEmptyStackFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAEmptyStackFS.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAEmptyStackFS.js
+   :output: show
+   :keyword: Pushdown Automaton
+
+
+Equivalence of Acceptance Definitions
+-------------------------------------
+
+.. inlineav:: PDAAcceptEquivFS ff
+   :links: DataStructures/FLA/FLA.css AV/PIFLA/PDA/PDAAcceptEquivFS.css
+   :scripts: lib/underscore.js DataStructures/FLA/FA.js DataStructures/FLA/PDA.js DataStructures/PIFrames.js AV/PIFLA/PDA/PDAAcceptEquivFS.js
+   :output: show
+   :keyword: Pushdown Automaton
+
+
+Something to Think About
+------------------------
+
+#. The PDA with its stack can easily recognize the language comprised of
+   strings of the form :math:`a^nb^n`.
+   Can it also recognize the language comprised of
+   strings of the form :math:`a^nb^nc^n`?
+#. Can the PDA recognize the language $wcw^R$?
+   That is the language with a string $w$ followed by the symbol $c$
+   followed by the reverse of $w$.
+   Certainly it can, but can it do this deterministically?
+#. Can the PDA recognize the language $ww^R$?
+   Yes, but can it do this deterministically?

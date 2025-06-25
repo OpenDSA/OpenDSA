@@ -11,6 +11,10 @@
       return question.answer;
     },
 
+    getPrintableAnswer: function() {
+      return question.printableAnswer;
+    },      
+
     initJSAV: function() {
       var jsav = new JSAV("ListOpen");
       var maxLength = 3 + Math.floor(Math.random() * 6);
@@ -25,18 +29,20 @@
         }
       }
       renameListConstants();
-      try {
-        question.answer = String(eval(exp)).replace(/\s+/g, "").split("");
-        question.answer = "\\s*\\[\\s*" + question.answer.join("\\s*") + "\\s*\\]\\s*";
+	try {
+	    question.printableAnswer =   String(eval(exp)).replace(/\s+/g, "");
+            question.answer = question.printableAnswer.split("");
+	    question.printableAnswer = "[" + question.printableAnswer + "]";
+            question.answer = "\\s*\\[\\s*" + question.answer.join("\\s*") + "\\s*\\]\\s*";
       } catch (e) {
-        question.answer = "\\s*error\\s*";
+          question.answer = "\\s*error\\s*";
+	  question.printableAnswer = "error";
       }
       jsav.code(exp, {
         lineNumbers: false
       });
       jsav.displayInit();
       jsav.recorded();
-      console.log("Done");
     }
   };
 

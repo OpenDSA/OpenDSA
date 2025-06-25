@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
-
+   :title: Tying the Knot
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses adding recursion to imperative language SLang2.
 
 Tying The Knot
 ==============

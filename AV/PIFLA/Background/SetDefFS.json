@@ -18,13 +18,13 @@
       "members": {
         "type": "select",
         "description": "Each member of a set is either a primitive element of the base type or is a set itself.",
-        "question": "Let $P = \\{a, b, c, \\{d, e\\}, \\{f\\}\\}$. Which of the followings are an element in the set?",
+        "question": "Let $P = \\{a, b, c, \\{d, e\\}, \\{f\\}\\}$. Which of the following are an element in the set?",
         "answer": ["$a$","$b$","$c$","$\\{d, e\\}$","$\\{f\\}$"],
         "choices": ["$a$","$b$", "$c$", "$d$", "$e$","$\\{d\\}$","$\\{d, e\\}$","$f$","$\\{f\\}$"]
       },
       "bag": {
         "type": "multiple",
-        "description": "A collection of elements with no order (like a set), but with duplicate-valued elements is called a :term:`bag`. To distinguish bags from sets, we will use square brackets [] around a bag's elements.",
+        "description": "A collection of elements with no order (like a set), but with multiple copies of elements is called a :term:`bag`. To distinguish bags from sets, we will use square brackets [] around a bag's elements.",
         "question": "For sets, $\\{3, 4, 5, 4\\} = \\{3, 4, 5\\}$.<br/>[T/F] Bag $[3, 4, 5, 4] = [3, 4, 5]$.",
         "answer": "False",
         "choices": ["True", "False"],
@@ -32,7 +32,7 @@
       },
       "sequence": {
         "type": "multiple",
-        "description": "A :term:`sequence` is a collection of elements with an order, and which may contain duplicate-valued elements. A sequence is also sometimes called a :term:`tuple` or a :term:`vector`. In a sequence, there is a 0th element, a 1st element, 2nd element, and so on. We will use angle brackets $$\\langle\\rangle$$ to enclose the elements of a sequence.",
+        "description": "A :term:`sequence` is a collection of elements with an order, and which may contain duplicate-valued elements. A sequence is also sometimes called a :term:`tuple` or a :term:`vector`. In a sequence, there is a 0th element, a 1st element, 2nd element, and so on. We will use angle brackets $\\langle\\rangle$ to enclose the elements of a sequence.",
         "question": "For sets, $\\{3, 4, 5\\} = \\{5, 4, 3\\}$.<br/>[T/F] Sequence $\\langle 3, 4, 5\\rangle = \\langle 5, 4, 3\\rangle$.",
         "answer": "False",
         "choices": ["True", "False"],

@@ -3,7 +3,7 @@ $(document).ready(function() {
   var av_name = "partDeriv1CON";
   var av = new JSAV(av_name, {animationMode: "none"});
 
-  var tr = av.ds.tree({nodegap: 15});
+  var tr = av.ds.tree({nodegap: 15, top: -30, left: 300});
   var root_s_1 = tr.root("s");
   var A_1 = tr.newNode("A");
   var A_2 = tr.newNode("A");

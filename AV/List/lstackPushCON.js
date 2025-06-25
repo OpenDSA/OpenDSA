@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // LStack push slideshow
+
+// Title: Linked Stack Push Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Linked Stack
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow discussing the implementation for the push operation in a linked stack. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "lstackPushCON";

@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Hash Function Principles
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: hash intro
    :satisfies: hash function
    :topic: Hashing
+   :keyword: Hash Function
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the concept of a hash function. Also introduces the concept (and inevitabilty) of collisions.
 
 .. index:: ! hashing function
 
@@ -52,11 +58,19 @@ the probability of a collision under those conditions.
 
 .. avembed:: AV/Hashing/Birthday.html ss
    :long_name: Birthday Problem Calculator
+   :keyword: Hashing; Hash Functions
 
 Use the calculator to answer the following questions.
 
+#. What is the minimum number of people that need to be in the room in
+   order for there to be at least a 60% chance of two sharing a
+   birthday?
+#. What is the minimum number of items that we need to hash to a table
+   with 1000 slots to have at least a 50% chance of a collision?
+
 .. avembed:: Exercises/Hashing/BirthdayFIB.html ka
    :long_name: Birthday Problem Exercise
+   :keyword: Hashing; Hash Functions
 
 To be practical, a database organized by hashing must store records in a
 hash table that is not so large that it wastes space.

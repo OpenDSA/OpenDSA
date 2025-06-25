@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer, Mohammed Mostafa, and Margaret Ellis
+   :title: Link Nodes Exercises
+   :author: Cliff Shaffer, Mostafa Mohammed, and Margaret Ellis
+   :institution: Virginia Tech
    :requires: Pointer intro
    :satisfies:
    :topic: Link Nodes
+   :keyword: Pointer; Link Node
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Coding exercises for practicing manipulating linked lists.
+
 
 Link Nodes Practice Exercises
 =============================
@@ -16,6 +23,7 @@ createList
 ----------
 
 .. extrtoolembed:: 'createList'
+   :workout_id: 428
 
 
 
@@ -26,11 +34,14 @@ chain, without needing to know how many there actually are.
    :links: AV/Pointers/linkNodes3CON.css
    :scripts: AV/Pointers/linkNodes3CON.js
    :output: show
+   :keyword: Pointers; Link Nodes
 
 
 iterateOverList
 ---------------
+
 .. extrtoolembed:: 'iterateOverList'
+   :workout_id: 426
 
 
 
@@ -40,12 +51,14 @@ One can remove a Link from a chain.
    :links: AV/Pointers/linkNodes4CON.css
    :scripts: AV/Pointers/linkNodes4CON.js
    :output: show
+   :keyword: Pointers; Link Nodes
 
 
 changePointeeNext1
 ------------------
 
 .. extrtoolembed:: 'changePointeeNext1'
+   :workout_id: 424
 
 
 
@@ -56,10 +69,12 @@ Finally, we can also insert new Links.
    :links: AV/Pointers/linkNodes5CON.css
    :scripts: AV/Pointers/linkNodes5CON.js
    :output: show
+   :keyword: Pointers; Link Nodes
 
 
 addNodeAtHead
 -------------
 
 .. extrtoolembed:: 'addNodeAtHead'
+   :workout_id: 429
 

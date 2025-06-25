@@ -1,0 +1,8 @@
+#RemoveUnitFS {
+  height: 700px;
+}
+
+#RemoveUnitFS .jsavhorizontalarray .jsavnode {
+  min-width: 50px !important;
+  max-width: 50px !important;
+}

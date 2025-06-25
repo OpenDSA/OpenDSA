@@ -1,0 +1,74 @@
+{
+  "translations": {
+    "en": {
+      "concat": {
+        "type": "select",
+        "description": "<b>Part 3.</b> Next, we will define a construction for the NFA that can accept the RE $r \\cdot s$, given that we have NFAs that are equivalent to $r$ and $s$.",
+        "question":"What is $L(r \\cdot s)$?",
+        "answer": ["All strings that start with first some string from $r$ immediately followed by some string from $s$.",
+                   "$\\{w \\mid w \\in L(r) \\cdot L(s)\\}$"],
+        "choices": ["All strings that start with first some string from $r$ immediately followed by some string from $s$.",
+                    "$\\{w \\mid w \\in L(r) \\cdot L(s)\\}$"]
+      },
+      "setup": {
+        "type": "multiple",
+        "description": "<b>Part 3.</b> Next, we will define a construction for the NFA that can accept the RE $r \\cdot s$, given that we have NFAs that are equivalent to $r$ and $s$.",
+        "question":"How many NFA schemas do we need to start with?",
+        "answer": "We need two schemas, one for $r$ and the other for $s$",
+        "choices": ["We are trying to create one NFA, so just one schema",
+                    "We need two schemas, one for $r$ and the other for $s$"]
+      },
+      "start": {
+        "type": "multiple",
+        "description": "Now we need to connect these 2 NFAs into one NFA that represents the RegEx $r \\cdot s$",
+        "question":"What should we do first?",
+        "answer": "Create a new start state",
+        "choices": ["Create a new start state",
+                    "Create a new final state",
+                    "Connect the new start state with old start state(s)",
+                    "Connect the new final state with old final state(s)"]
+      },
+      "and": {
+        "type": "multiple",
+        "description": "Now we need to connect these 2 NFAs into one NFA that represents the RegEx $r \\cdot s$",
+        "question":"Concatenation is similar to what logical operation?",
+        "answer": "AND",
+        "choices": ["AND", "OR", "NOT", "NOR"]
+      },
+      "startconnect": {
+        "type": "multiple",
+        "description": "Concatenation is something like an AND operation, in that the result is a string that takes a string from $r$ AND a string from $s$. But actually, a better way to think of this is that the result of the operation of taking first some string from $r$ and THEN some string from $s$.",
+        "question":"Which state should we connect the new start state to?",
+        "answer": "The start state for $r$",
+        "choices": ["The start state for $s$",
+                    "The start state for $r$",
+                    "The start states for $s$ and $r$"]
+      },
+      "lambda": {
+        "type": "select",
+        "description": "Now we connect the new start state with the start state for the NFA that represents $r$ using a lambda transition.",
+        "question":"Why do we use a $\\lambda$ transition?",
+        "answer": ["We need a free transition to the old start state", "This allows the resulting NFA to accept the first part of the string in the NFA for $r$"],
+        "choices": ["We need a free transition to the old start state", "This allows the resulting NFA to accept the first part of the string in the NFA for $r$"],
+        "correctFeedback": ["Since the first part of any string in $L(r \\cdot s)$ must be a string that was accepted by the NFA for $r$."]
+      },
+      "connector": {
+        "type": "select",
+        "description": "Now, connect the final state for the NFA that represents $r$ with the start state of the NFA that represents $s$ with a $\\lambda$ transition. The reason is that, since the first part was already accepted by the NFA for $r$, the remaining part of the string must be accepted by the NFA for $s$.",
+        "question": "Why do this?",
+        "answer": "This connection makes a string for $s$ follow a string for $r$.",
+        "choices": ["This connection makes a string for $s$ follow a string for $r$.", "We don't have anywhere else to go."
+        ]
+      },
+      "final": {
+        "type": "multiple",
+        "description": "Now we just need to create a new final state for the completed NFA.",
+        "question":"Which state should be connected to the new final state?",
+        "answer": "The final state for NFA $s$",
+        "choices": ["The final state for NFA $s$",
+                    "The final state for NFA $r$",
+                    "The final states for both $r$ and $s$"]
+      }
+    }
+  }
+}

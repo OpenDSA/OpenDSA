@@ -5,6 +5,18 @@
 // Because of this, some of the code in the second half is a bit ugly,
 // things did not seem to work as smoothly as expected. This shows itself
 // especially in weird offsets.
+
+// Title: Linked List Insertion Special Case Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow demonstrating some special cases related to insertion into a linked list. */
+
+
 $(document).ready(function() {
   "use strict";
   var av_name = "llistSpecialCON";

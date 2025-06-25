@@ -1,4 +1,15 @@
 // Reduction of true && false using Church bools
+
+// Title: Reduction of True and False using Church Bools
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Lambda Calculus
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing reduction of true and false using Church bools. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "church_boolCON";
@@ -8,14 +19,14 @@ $(document).ready(function() {
     av.umsg("TRUE AND FALSE in Church Booleans");
     l.addClass("church");
     av.displayInit();
-    av.umsg("First beta-reduce the application containing the λp abstraction by applying the λp abstraction to λx.λy.x");
-    l.text("(&nbsp;&nbsp;&nbsp;<span style='color:red'>(λp.λq.((p q) λx.λy.y)&nbsp;&nbsp;&nbsp;</Span> λx.λy.x) λx.λy.y)");
+    av.umsg("First beta-reduce the application containing the λp abstraction by applying it to λx.λy.x");
+    l.text("(<span style='color:red'>(λp.λq.((p q) λx.λy.y) λx.λy.x)</span> λx.λy.y)");
     av.step();
     av.umsg("With λx.λy.x appropriately substituted for p in the prior λp abstraction, we get ... ");
     l.text("(λq.((λx.λy.x q) λx.λy.y) λx.λy.y)");
     av.step();
     av.umsg("Then reduce the leftmost innermost β-redex highlighted below");
-    l.text("(λq.(&nbsp;&nbsp;&nbsp;<span style='color:red'>(λx.λy.x q)&nbsp;&nbsp;&nbsp;</span> λx.λy.y) λx.λy.y)");
+    l.text("(λq.(<span style='color:red'>(λx.λy.x q)</span> λx.λy.y) λx.λy.y)");
     av.step();
     av.umsg("Doing that reduction with the appropriate substitution for x results in ...");
     l.text("(λq.(λy.q λx.λy.y) λx.λy.y)");

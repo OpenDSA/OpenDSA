@@ -7,6 +7,7 @@ class WindowManager{
         this.globalJSAVobject = jsavCanvasObj;
         this.canvasDims = dim_obj;
         this.workspace_list = wkspaceList;
+        this.canvasPointer
         
         document.styleSheets[2].rules[0].style.height = 600+"px";
 	}
@@ -14,10 +15,17 @@ class WindowManager{
 
 	extendCanvas(shiftAmount) {
         var minHeight = 600;
-	// console.log(window.parent.ODSA.UTILS.logUserAction("inside","WindowManager"))
-	// console.log(window.parent.document.querySelector("iframe#DeformsSimpleProblemPPRO_iframe").style.height)
-        document.styleSheets[2].rules[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
-	Window.updateExerciseWindowHeight(shiftAmount);
+	    // console.log(window.parent.ODSA.UTILS.logUserAction("inside","WindowManager"))
+	    // console.log(window.parent.document.querySelector("iframe#DeformsSimpleProblemPPRO_iframe").style.height)
+        // document.styleSheets[2].rules[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
+
+        // Assuming that there is only one .jsavcanvas for the entire the workarea
+        // this.globalJSAVobject.canvas[0].style.height = Math.max(minHeight, (this.workspace_list.DIMENSIONS["HEIGHT"] + shiftAmount)) + "px";
+
+        // Updated: 2/6/2023
+        let currHeight = $('.jsavcanvas').css('height')
+        $('.jsavcanvas').css('height', Math.max(parseInt(currHeight)+shiftAmount, 600)+'px' )
+	    Window.updateExerciseWindowHeight(shiftAmount);
 	}
 
     /*
@@ -588,15 +596,20 @@ class WindowManager{
                 currWorkspace2.DIMENSIONS["POSITION_Y"] -= currWkspace.DIMENSIONS["HEIGHT"];
                 currWorkspace2.DIMENSIONS.ELEMENTS["POSITION_Y"] -= currWkspace.DIMENSIONS["HEIGHT"];
                 for(const eq2 in equations) {
-                    var amountShift = parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top,10) - 
-                        heightShift;
+                    // var amountShift = parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top,10) - 
+                    //     heightShift;
 
-                    equations[eq2].visualComponents["tickmark"]["element"][0].style.top = amountShift + "px";
-                    equations[eq2].visualComponents["delete"]["element"][0].style.top = amountShift + "px";
-                    equations[eq2].visualComponents["help"]["element"][0].style.top = amountShift + "px";
+                    equations[eq2].visualComponents["tickmark"]["element"][0].style.top = 
+                        parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10)   - heightShift + "px";
+                    equations[eq2].visualComponents["delete"]["element"][0].style.top = 
+                        parseInt(equations[eq2].visualComponents["delete"]["element"][0].style.top, 10)     - heightShift + "px";
+                    equations[eq2].visualComponents["help"]["element"][0].style.top = 
+                        parseInt(equations[eq2].visualComponents["help"]["element"][0].style.top, 10)       - heightShift + "px";
 
-                    equations[eq2].visualComponents["text"]["element"][0].style.top = amountShift + 3 + "px";
-                    equations[eq2].jsavequation["element"][0].style.top = amountShift + "px";
+                    equations[eq2].visualComponents["text"]["element"][0].style.top = 
+                        parseInt(equations[eq2].visualComponents["text"]["element"][0].style.top)           - heightShift + "px";
+                    equations[eq2].jsavequation["element"][0].style.top = 
+                        parseInt(equations[eq2].jsavequation["element"][0].style.top, 10)                   - heightShift + "px";
                     // equations[eq2].visualComponents["tickmark"]["element"][0].style.top = 
                     //     parseInt(equations[eq2].visualComponents["tickmark"]["element"][0].style.top, 10) - 
                     //     currWkspaceElementHeight -
@@ -614,16 +627,16 @@ class WindowManager{
                     var currSoln = currWorkspace2.LIST_OF_SOLUTIONS_IN_WORKSPACE[soln];
 
                     currSoln["element"]["deleteButton"]["element"][0].style.top =
-                        parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top, 10) - 
-                        currWkspace.DIMENSIONS["HEIGHT"] + "px";
+                        parseInt(currSoln["element"]["deleteButton"]["element"][0].style.top, 10) -     heightShift + "px";
+                        // currWkspace.DIMENSIONS["HEIGHT"] + "px";
 
                     currSoln["element"]["helpButton"]["element"][0].style.top =
-                        parseInt(currSoln["element"]["helpButton"]["element"][0].style.top, 10) - 
-                        currWkspace.DIMENSIONS["HEIGHT"] + "px";
+                        parseInt(currSoln["element"]["helpButton"]["element"][0].style.top, 10) -       heightShift + "px";
+                        // currWkspace.DIMENSIONS["HEIGHT"] + "px";
 
                     currSoln["element"]["visualComponent"]["element"][0].style.top = 
-                        parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) - 
-                        currWkspace.DIMENSIONS["HEIGHT"] + "px";
+                        parseInt(currSoln["element"]["visualComponent"]["element"][0].style.top,10) -   heightShift + "px";
+                        // currWkspace.DIMENSIONS["HEIGHT"] + "px";
                     
                     // TODO when help button is added
                     // currSoln["element"]["help"]["element"][0].style.top = 

@@ -1,0 +1,114 @@
+{
+  "translations": {
+    "en": {
+      "membership": {
+        "type": "select",
+        "description": "The <b>Membership Problem</b> is to determine if a given string belongs to a given language (as defined by a given grammar).",
+        "question": "If JAVA is the set of all syntactically correct Java programs, what is a Java program?",
+        "answer": "A string in the set JAVA",
+        "choices": ["A string in the set JAVA", "A set of words", "A set of lines of code"]
+      },
+      "java": {
+        "type": "true/false",
+        "description": "Consider the case where G is a grammar for Java, and $w$ is a Java program. Is $w$ a syntactically correct program? Answering this is (part of) what a compiler does. You write a program, you compile it, and the compiler finds all your syntax mistakes.",
+        "question": "The process of compiling the Java source code and determining that the source code is a syntactically correct Java program is an example of the membership problem",
+        "answer": "True",
+        "choices": []
+      },
+      "evena": {
+        "type": "select",
+        "description": "We have seen that if we can find a derivation from $G$ for $w$, then we know that $w$ is $\\in L(G)$.",
+        "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P),$<br/>$P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. What is $L(G)$?",
+        "answer": "The set of strings with an even number of $a$'s",
+        "choices": ["The set of strings with an even number of $a$'s", "The set of strings with one $b$", "$\\{a^nba^n \\mid n \\ge 0\\}$"]
+      },
+      "abbab": {
+        "type": "select",
+        "description": "We have seen that if we can find a derivation from $G$ for $w$, then we know that $w$ is $\\in L(G)$.",
+        "question": "Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P),$<br/>$P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. Is $abbab \\in L$?",
+        "answer": "Yes",
+        "choices": ["Yes", "No"]
+      },
+      "onestep": {
+        "type": "select",
+        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>Examine all sentential forms yielded by $i$ substitutions.<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.",
+        "question": "Use exhaustive search to see if $abbab \\in L$. First select all sentential forms that result from making one substitution from $S$.",
+        "answer": ["$S \\Rightarrow SS$", "$S \\Rightarrow aSa$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$"],
+        "choices": ["$S \\Rightarrow SS$", "$S \\Rightarrow aSa$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$", "$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow aSSa$"]
+      },
+      "twostep": {
+        "type": "select",
+        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions.<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.",
+        "question": "Use exhaustive search to see if $abbab \\in L$. Now select all sentential forms that result from making two substitutions from $S$. Which of these can be reached in two substitutions?",
+        "answer": ["$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow SaSa$"],
+        "choices": ["$S \\Rightarrow SS$", "$S \\Rightarrow aS$", "$S \\Rightarrow b$", "$S \\Rightarrow \\lambda$", "$S \\Rightarrow SS \\Rightarrow SSS$", "$S \\Rightarrow SS \\Rightarrow aSaS$", "$S \\Rightarrow SS \\Rightarrow bS$", "$S \\Rightarrow SS \\Rightarrow S$", "$S \\Rightarrow SS \\Rightarrow SaSa$", "$S \\Rightarrow SS \\Rightarrow aSaaSa$"],
+        "correctFeedback": ["Of course, this does not show all of the possible Sentential forms that can be reached in two substitutions. There is a good reason why this algorithm is called brute force! And it is terribly inefficient."]
+      },
+      "numstep": {
+        "type": "select",
+        "description": "The Exhaustive Search Algorithm is<br/> For all $i = 1, 2, 3, \\ldots$<br/>    Examine all sentential forms yielded by $i$ substitutions.<br/>Suppose that $G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$.<br/>The derivation for $abbab$ is:<br/> $S \\Rightarrow SS \\Rightarrow aSaS \\Rightarrow aSSaS \\Rightarrow abSaS \\Rightarrow abbaS \\Rightarrow abbab$",
+        "question": "How many derivation steps were needed to reach the derivation of $abbab$?",
+        "answer": "6",
+        "choices": ["4", "5", "6", "7"]
+      },
+      "lambda": {
+        "type": "true/false",
+        "description": "If the string is in the language, the search algorithm will find it. But what happens if $w$ is not in $L(G)$?<br/><br/>When do we stop the loop in the algorithm and know for sure that $w$ is not going to be derived?",
+        "question": "Suppose that<br/>$G = (\\{S\\}, \\{a, b\\}, S, P), \\quad P = S \\rightarrow SS\\ |\\ aSa\\ |\\ b\\ |\\ \\lambda$. Suppose we have the following sentential form: $S \\Rightarrow SS \\Rightarrow ... \\Rightarrow SSSSSSSSSS \\Rightarrow ...$. Substitutions can be made on $SSSSSSSSSS$ to derive $\\lambda$",
+        "answer": "True",
+        "choices": [],
+        "correctFeedback": ["This means that the brute force algorithm can enter an infinite loop when trying to derive a string."]
+      },
+      "length": {
+        "type": "true/false",
+        "description": "$\\textbf{Theorem:}$ If CFG $G$ does not contain rules of the form<br/>$A \\rightarrow \\lambda$<br/>$A \\rightarrow B$<br/>where $A,B\\in V$, then we can determine if $w\\in L(G)$ or if $w \\not \\in L(G)$.",
+        "question": "Consider the length of the sentential form. If the grammar follows the theorem, then the length of the sentential form will only increase or stay the same after every substitution.",
+        "answer": "True",
+        "choices": []
+      },
+      "terminals": {
+        "type": "true/false",
+        "description": "$\\textbf{Theorem:}$ If CFG $G$ does not contain rules of the form<br/>$A \\rightarrow \\lambda$<br/>$A \\rightarrow B$<br/>where $A,B\\in V$, then we can determine if $w\\in L(G)$ or if $w \\not \\in L(G)$.",
+        "question": "Consider the number of terminal symbols in a sentential form. If the grammar follows the theorem, then the number of terminals in the sentential form will only increase or stay the same after every substitution.",
+        "answer": "True",
+        "choices": []
+      },
+      "maxstep": {
+        "type": "select",
+        "description": "Following this theorem, either the length of the sentential form or the number of terminal symbols in the sentential form will increase with each derivation",
+        "question": "If $|w| = n$, how many times through the loop will the exhaustive algorithm take to find if the string $w \\in L$ or not?",
+        "answer": "$\\le 2n$",
+        "choices": ["$\\le 2n$", "$\\ge 2n$", "$2n$", "$n^2$"],
+        "correctFeedback": ["Every substitution must either increase the number of terminals or the number of variables. And neither the number of terminals or the number of variables can exceed $n$ in a successful derivation."]
+      },
+      "double": {
+        "type": "select",
+        "description": "If $|w| = n$, how many times through the loop can the exhaustive search take to find if $w \\in L$?",
+        "question": "If we go $>2|w|$ times through loop without deriving the string, then...",
+        "answer": "$w \\not \\in L(G)$",
+        "choices": ["$w \\in L(G)$", "$w \\not \\in L(G)$"]
+      },
+      "goodgram": {
+        "type": "true/false",
+        "description": "$\\textbf{Example}$ Let $L_2 = L_1 - \\{\\lambda\\}$. $L_2 = L(G)$ where $G$ is:<br/>$S \\rightarrow SS\\ |\\ aa\\ |\\ aSa\\ |\\ b$",
+        "question": "The Grammar does not contain rules of the form<br/>$A \\rightarrow \\lambda$<br/>$A \\rightarrow B$.",
+        "answer": "True",
+        "choices": []
+      },
+      "baaba": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ Let $L_2 = L_1 - \\{\\lambda\\}$. $L_2 = L(G)$ where $G$ is:<br/>$S \\rightarrow SS\\ |\\ aa\\ |\\ aSa\\ |\\ b$",
+        "question": "Let $w = baaba$, is $w \\in L$?",
+        "answer": "No",
+        "choices": ["No", "Yes"]
+      },
+      "fail": {
+        "type": "select",
+        "description": "$\\textbf{Example}$ Let $L_2 = L_1 - \\{\\lambda\\}$. $L_2 = L(G)$ where $G$ is:<br/>$S \\rightarrow SS\\ |\\ aa\\ |\\ aSa\\ |\\ b$",
+        "question": "We know that the string is not in the language if we have not derived it within how many substitutions?",
+        "answer": "10",
+        "choices": ["5", "10", "12", "8"]
+      }
+    }
+  }
+}

@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Huffman Coding Trees
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: BST
    :satisfies: Huffman coding tree
    :topic: BinTreeImp
+   :keyword: Huffman Coding Tree
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces Huffman Coding Trees, including algorithms to build a tree and calculate codes.
 
 .. index:: ! Huffman
 
@@ -173,6 +179,7 @@ Table :num:`Table #FreqExamp`. [#]_
    :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
    :scripts: DataStructures/huffman.js AV/Binary/huffmanBuildCON.js
    :output: show
+   :keyword: Huffman Coding Tree
 
 Here is the implementation for Huffman tree nodes.
 
@@ -229,6 +236,7 @@ This process is illustrated by the following slideshow.
    :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
    :scripts: DataStructures/huffman.js AV/Binary/huffmanLabelCON.js
    :output: show
+   :keyword: Huffman Coding Tree
 
 Now that we see how the edges associate with bits in the code, it is a
 simple matter to generate the codes for each letter (since each letter
@@ -239,6 +247,7 @@ corresponds to a leaf node in the tree).
    :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
    :scripts: DataStructures/huffman.js AV/Binary/huffmanCodesCON.js
    :output: show
+   :keyword: Huffman Coding Tree
 
 Now that we have a code for each letter,
 encoding a text message is done by replacing each letter of the
@@ -271,9 +280,11 @@ by traversing the tree appropriately.
    :links: DataStructures/huffman.css AV/Binary/huffmanCON.css
    :scripts: DataStructures/huffman.js AV/Binary/huffmanDecodeCON.js
    :output: show
+   :keyword: Huffman Coding Tree
 
 .. avembed:: Exercises/Binary/HuffmanDecodePRO.html ka
    :long_name: Huffman Decoding Proficiency Exercise
+   :keyword: Huffman Coding Tree
 
 
 How efficient is Huffman coding?
@@ -364,3 +375,4 @@ You can use the following visualization to create a huffman tree for
 your own set of letters and frequencies.
 
 .. avembed:: AV/Binary/huffmanCustomBuildAV.html ss
+   :keyword: Huffman Coding Tree

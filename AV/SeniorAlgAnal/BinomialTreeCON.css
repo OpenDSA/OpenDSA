@@ -1,3 +1,7 @@
 #BinomialTreeCON {
   height: 290px;
 }
+
+#BinomialTreeCON .jsavoutput.jsavline {
+  height: 40px;
+}

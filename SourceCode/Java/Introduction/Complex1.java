@@ -10,8 +10,8 @@ public class Complex {
 
   public static void main(String[] args)
   {
-    Complex a = Complex(1, 0);
-    Complex b = Complex(1, 0);
+    Complex a = new Complex(1, 0);
+    Complex b = new Complex(1, 0);
 
     if (a.equals(b)) {
       System.out.println ("'a' equals 'b'.");

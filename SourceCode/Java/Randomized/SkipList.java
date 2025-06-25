@@ -20,11 +20,14 @@ class SkipList implements Dictionary {
     while (temp != null) {
       System.out
           .print("rec is " + temp.rec + " with length " + temp.forward.length + ": ");
-      for (int i = 0; i < temp.forward.length; i++)
-        if (temp.forward[i] == null)
+      for (int i = 0; i < temp.forward.length; i++) {
+        if (temp.forward[i] == null) {
           System.out.print("null ");
-        else
+        }
+        else{
           System.out.print(temp.forward[i] + " ");
+        }
+      }
       System.out.println();
       temp = temp.forward[0];
     }
@@ -53,8 +56,9 @@ class SkipList implements Dictionary {
   // Pick a level using a geometric distribution
   int randomLevel() {
     int lev;
-    for (lev = 0; Math.abs(ran.nextInt()) % 2 == 0; lev++) // ran is random generator
+    for (lev = 0; Math.abs(ran.nextInt()) % 2 == 0; lev++) { // ran is random generator
       ; // Do nothing
+    }
     return lev;
   }
   /* *** ODSAendTag: SkipRand *** */
@@ -63,14 +67,16 @@ class SkipList implements Dictionary {
   /** Insert a key, element pair into the skip list */
   public void insert(Comparable key, Object elem) {
     int newLevel = randomLevel(); // New node's level
-    if (newLevel > level) // If new node is deeper
+    if (newLevel > level) { // If new node is deeper
       adjustHead(newLevel); // adjust the header
+    }
     // Track end of level
     SkipNode[] update = new SkipNode[level + 1];
     SkipNode x = head; // Start at header node
     for (int i = level; i >= 0; i--) { // Find insert position
-      while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0))
+      while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0)) {
         x = x.forward[i];
+      }
       update[i] = x; // Track end at level i
     }
     x = new SkipNode(key, elem, newLevel);
@@ -84,8 +90,9 @@ class SkipList implements Dictionary {
   private void adjustHead(int newLevel) {
     SkipNode temp = head;
     head = new SkipNode(null, null, newLevel);
-    for (int i = 0; i <= level; i++)
+    for (int i = 0; i <= level; i++) {
       head.forward[i] = temp.forward[i];
+    }
     level = newLevel;
   }
   /* *** ODSAendTag: SkipInsert *** */
@@ -94,12 +101,14 @@ class SkipList implements Dictionary {
   // Return the (first) matching matching element if one exists, null otherwise
   public Object find(Comparable key) {
     SkipNode x = head; // Dummy header node
-    for (int i = level; i >= 0; i--) // For each level...
-      while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0)) // go forward
+    for (int i = level; i >= 0; i--) { // For each level...
+      while ((x.forward[i] != null) && (x.forward[i].key().compareTo(key) < 0)) { // go forward
         x = x.forward[i]; // Go one last step
+      }
+    }
     x = x.forward[0]; // Move to actual record, if it exists
-    if ((x != null) && (x.key().compareTo(key) == 0)) return x.element(); // Got it
-    else return null; // Its not there
+    if ((x != null) && (x.key().compareTo(key) == 0)) { return x.element(); } // Got it
+    else { return null; } // Its not there
   }
   /* *** ODSAendTag: SkipFind *** */
 
@@ -119,8 +128,9 @@ class SkipList implements Dictionary {
     public SkipNode(Comparable key, Object elem, int level) {
       rec = new KVPair(key, elem);
       forward = new SkipNode[level + 1];
-      for (int i = 0; i < level; i++)
+      for (int i = 0; i < level; i++) {
         forward[i] = null;
+      }
     }
 
     public String toString() {

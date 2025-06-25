@@ -11,7 +11,7 @@ public class Main {
        int min = 0; int max = 999;
        int amin = 0; int amax = 26;
        String loc = "";
-      for(int i=0; i<40; i++){
+      for(int i=0; i<40; i++) {
          int ind = rdn.nextInt(max - min + 1) + min;
          int wind = rdn.nextInt(amax - amin + 1) + amin;
          char chr = alpha.charAt(wind);

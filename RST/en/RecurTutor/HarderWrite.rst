@@ -3,10 +3,16 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: Sally Hamouda and Cliff Shaffer
+.. avmetadata::
+   :title: Writing More Sophisticated Recursive Functions
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: recursion writing
    :topic: Recursion
+   :keyword: Recursion
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Several examples of more sophisticated recursive functions.
 
 Writing More Sophisticated Recursive Functions
 ==============================================
@@ -36,7 +42,7 @@ The following is the general structure for a recursive function.
    Given an ``int`` array named ``set``, function
    ``isSubsetSum`` determines whether some of the values in
    ``set`` add up to ``sum``.
-   For example, given the number 3, 8, 1, 7, and -3, with ``sum = 4``,
+   For example, given the numbers 3, 8, 1, 7, and -3, with ``sum = 4``,
    the result is ``true`` because the values 3 and 1 sum to 4. 
    If ``sum = 6``, then the result will be ``true`` because the
    :math:`8 + 1 + -3 = 6`.  

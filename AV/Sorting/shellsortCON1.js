@@ -1,3 +1,13 @@
+/*global ODSA */
+// Title: Shellsort First Pass Sublist Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Shellsort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the sublists that would be processed by the first pass of Shellsort (increments of size n/2). */
+
 $(document).ready(function() {
   "use strict";
   var theArray = [20, 30, 44, 54, 55, 11, 78, 14, 13, 79, 12, 98];

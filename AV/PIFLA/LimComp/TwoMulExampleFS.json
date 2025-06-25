@@ -1,0 +1,55 @@
+{
+  "translations": {
+    "en": {
+      "mult": {
+        "type": "multiple",
+        "description": "As an example of reduction, consider the simple problem of multiplying two $n$-digit numbers.<br/><br/>The standard long-hand method for multiplication is to multiply the last digit of the first number by the second number (taking $\\Theta(n)$ time), multiply the second digit of the first number by the second number (again taking $\\Theta(n)$ time), and so on for each of the $n$ digits of the first number. Finally, the intermediate results are added together.",
+        "question": "Each digit of the first number is multiplied against each digit of the second. Therefore, this algorithm requires how much time?",
+        "answer": "Θ(n<sup>2</sup>)",
+        "choices": ["Θ(n<sup>2</sup>)", "Θ(n)", "Θ(2<sup>n</sup>)"]
+      },
+      "adding": {
+        "type": "multiple",
+        "description":"Because each digit of the first number is multiplied against each digit of the second, this algorithm requires $\\Theta(n^2)$ time. Asymptotically faster (but more complicated) algorithms are known, but none is so fast as to be in $\\Omega(n)$.",
+        "question":"Adding two numbers of length $m$ and $n$ can be done in $\\Theta(m+n)$ time.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "squaring": {
+        "type": "multiple",
+        "description": "This is because:<br/><br/>$\\qquad X×Y = [(X+Y)^2 − (X−Y)^2] / 4$<br/><br/>$\\qquad (X+Y)^2 − (X−Y)^2 = X^2 + 2XY + Y^2 - (X^2 - 2XY + Y^2 = 4XY$<br/><br/>Note that the division by 4 can be done in linear time (simply convert to binary, shift right by two digits, and convert back). This reduction shows that if a linear time algorithm for squaring can be found, it can be used to construct a linear time algorithm for multiplication.",
+        "question": "A linear time algorithm can be constructed if there exists a linear time algorithm for squaring.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "matmult": {
+        "type": "multiple",
+        "description": "The standard algorithm for multiplying two matrices is to multiply each element of the first matrix's first row by the corresponding element of the second matrix's first column, then adding the numbers. This takes $\\Theta(n)$ time. Each of the $n^2$ elements of the solution are computed in similar fashion, requiring a total of $\\Theta(n^3)$ time. Faster algorithms are known (see Strassen's algorithm), but none are so fast as to be in $\\Omega(n^2)$.",
+        "question": "The standard algorithm for multiplying two matrices requires $\\Theta(n^3)$ time",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "fastmat": {
+        "type": "multiple",
+        "description": "The standard algorithm for multiplying two matrices is to multiply each element of the first matrix's first row by the corresponding element of the second matrix's first column, then adding the numbers. This takes $\\Theta(n)$ time. Each of the $n^2$ elements of the solution are computed in similar fashion, requiring a total of $\\Theta(n^3)$ time. Faster algorithms are known (see Strassen's algorithm), but none are so fast as to be in $\\Omega(n^2)$.",        "question":"The fastest algorithms for multiplying two matrices require $\\Theta(n^2)$ time.",
+        "answer": "False",
+        "choices": ["True", "False"]
+      },
+      "symmat": {
+        "type": "multiple",
+        "description":"We can convert matrix $B$ to a symmetric matrix in a similar manner. If symmetric matrices could be multiplied quickly (in particular, if they could be multiplied together in $\\Theta(n^2)$ time), then we could find the result of multiplying two arbitrary $n \\times n$ matrices in $\\Theta(n^2)$ time by taking advantage of the following observation:",
+        "question":"The result of multiplying two arbitrary $n \\times n$ matrices can be find in $\\Theta(n^2)$ time if symmetric matrices could be multiplied together in $\\Theta(n^2)$.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      },
+      "symtrans": {
+        "type": "multiple",
+        "description":"Each of the two matrices are transformed into corresponding symmeric matrices by using its transpose as shown.",
+        "question":"The cost to transform each matrix into corresponding symmetric matrices is $O(mn)$.",
+        "answer": "True",
+        "choices": ["True", "False"]
+      }
+    }
+  }
+}
+

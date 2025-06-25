@@ -48,15 +48,26 @@
 	//Function used by exercise object to show the model answer and to grade the solution by comparing the model answer with student answer.
   //In our case, we will make this function show the test cases only.
   function modelSolution(modeljsav) {
+		var containHideTest = false;
+		var testNum = 1;
 		var testCases = exerController.tests[0]["testCases"];
 		var list = [["Test Number", "Test String"]];
 		for (i = 0; i < testCases.length; i++) {
-		var testNum = i + 1;
-		var testCase = testCases[i];
-		var input = Object.keys(testCase)[0];
-		//var inputResult = FiniteAutomaton.willReject(this.fa, input);
-		list.push([testNum, input]);
+			var testCase = testCases[i];
+			var hideOption = testCase.ShowTestCase;
+			if (hideOption == false || hideOption== undefined) {
+				containHideTest = true;
+			}
+			if(testCase.ShowTestCase){	
+			var input = Object.keys(testCase)[0];
+			//var inputResult = FiniteAutomaton.willReject(this.fa, input);
+			list.push([testNum, input]);
+			testNum = testNum + 1;
+			}
 		}
+		if(containHideTest){
+      list.push([testNum, "Hidden Test", "Hidden Solution"]);
+    }
 		var model = modeljsav.ds.matrix(list);
 		//layoutTable(model);
 		modeljsav.displayInit();
@@ -329,7 +340,7 @@ var nodeClickHandlers = function(e) {
     return 0;
 	}
 	if(exerController)
-		return exerController.startTesting(studentGraph);
+		return exerController.startTesting(studentGraph).score;
   };
   /*
   These function added to compare student solution with the expected solution. Previously, the code was calling the equals method for Grapths, which depend that the 
@@ -392,6 +403,12 @@ var nodeClickHandlers = function(e) {
   $("#exportButton").click(exportToFA);
   $("#checkDone").click(checkDone);
   $("#exportButton").hide();
+  $("#helpbutton").click(displayHelp);
+
+  function displayHelp(){
+    window.open("NFA2DFAHelp.html", "helpwindow");
+  }
+
   //this function to save student solution
   	$("#saveButton").click(function () {
 		$('#download').hide();

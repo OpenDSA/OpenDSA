@@ -1,3 +1,12 @@
+// Title: Quadratic Probing Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating quadratic probing collision resolution. */
+
 $(document).ready(function () {
   "use strict";
 

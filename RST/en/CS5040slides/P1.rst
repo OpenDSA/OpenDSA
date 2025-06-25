@@ -18,15 +18,16 @@ Project 1 Design
 
 .. slide:: Project 1
 
-   | Be aware of due date, milestone dates
+   | Be aware of project due date, milestone due dates
    | Aim to get it done PRIOR to the EARLY BONUS date.
    | You need to write a "scanner" or "parser" to read info from
      command file (text).
    | You need to use command line parameters
-   |   See Tutorials in Chapter 3 of OpenDSA
-   |   For parsing: Use Scanner Class [3.7] or
+   |   See Tutorials in Chapter 2 of OpenDSA
+   |   For parsing: Use Scanner Class [2.7] or
        Pattern/Matcher classes
 
+       
 .. slide:: Project 1 Class Organization (1)
 
    | Q: When do you need separate classes?
@@ -36,7 +37,7 @@ Project 1 Design
    |   Multiple data structures (hash table class, memory manager class)
    |   "Main" routine, that sets things up
    |   Command syntactic parsing (separate the behavior, NOT the code length)
-   |   Command semantic processig (separate the behavior, NOT the code length)
+   |   Command semantic processing (separate the behavior, NOT the code length)
            
 .. slide:: Project 1 Class Organization (2)
 
@@ -45,7 +46,7 @@ Project 1 Design
    | Good:
    |   Main (Program parameters, initialization) ==>
    |     Parser (Syntactic processing of commands) ==>
-   |       "Database" or "World" (symantic processing of commands) ==> 
+   |       "Database" or "World" (semantic processing of commands) ==> 
    |         Various data structures classes
            
 .. slide:: Scheduling the project
@@ -59,7 +60,7 @@ Project 1 Design
    |   2. World Database class next.
    |   3. Hash table, implemented with direct access to strings in memory
           (hidden behind record interface)
-   |   4. Memory manager last!
+   |   4. Graph last!
          
 
 .. slide:: General Project Info              
@@ -76,18 +77,131 @@ Project 1 Design
    | Good names matter. REALLY!
    | Every competent software development organization enforces some
      coding style.
-   | Generalize your container classes
-   |   For P1, your hash table should not be more specialized than the
-       fact that it is storing strings.
-   |   For P1, your memory manager should not know anything about the
-       rest of the project, it just stored bytes
+   |   Web-CAT enforces a particular coding style.
+   | Generalize your container classes (hash table, memory manager)
+   |   For P1, your Graph should not know anything about the
+       rest of the project, it just stores some kind of record
 
-.. slide:: Container Classes
+   
+.. slide:: Container Classes: Hash Table
 
    | The hash table is a container class. A container class is anything
      that stores a collection of arbitrary objects.
-   | Want to support any record type. (Actually, any string is fine)
-   | We will talk about this later in general. For now, just hide
-     details behind some Record class
-   | Need to deal with concept of comparison. Your record should give
-     you back the string as its key.
+   | Want to support any record type. (OK to assume an integer key.)
+   | Hide details behind some Record class
+
+Project 1 Hashing
+-----------------
+
+.. slide:: What you need to know about Hashing
+
+   * Read Module 10.1, Skim 10.3, Read 10.6 carefully, Read 10.7.4
+     Double Hashing, Read 10.9 Deletion
+
+   * Feel free to use code posted as part of OpenDSA modules (Insert, search)
+
+   * You can write Hash Table Class **assuming** that it uses the
+     given hash function, and that the key is an integer.
+
+
+.. slide:: String Folding
+
+   .. codeinclude:: Hashing/Hash
+      :tag: sfold
+
+   .. avembed:: AV/Hashing/StringSfold.html pe
+
+
+.. slide:: Quadratic Probing
+
+   .. inlineav:: collisionCON5 ss
+      :long_name: Quadratic Probing Slideshow
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON5.js
+      :output: show
+
+   .. inlineav:: collisionCON6 ss
+      :long_name: Quadratic Probing Problem
+      :links: AV/Hashing/collisionCON.css
+      :scripts: AV/Hashing/collisionCON6.js
+      :output: show
+
+
+.. slide:: Primary design issue: Communications
+
+   * World/DB/Controller class, Hash Table, Graph need appropriate
+     coordination.
+   
+   * World probably initializes Graph and Hash Tables, and calls controller
+     to insert/process records. Store the Node in a Record in the Hash Table
+   
+   * Hash table does not need to know that there is a Graph.
+
+     
+.. slide:: What is stored in the hash table?
+
+   * Clearly there has to be a key, and there has to be a value
+     (a node?)
+   
+   * The key is an string (the artist or song name)
+
+   * The value is probably some kind of Node object 
+
+
+Project 1 Graphs
+----------------
+
+.. slide:: Undirected Graph Representation
+
+   .. inlineav:: GundirRepCON dgm
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GundirRepCON.js
+      :output: show
+
+
+.. slide:: Connected Components
+
+   .. inlineav:: GconcomCON dgm
+      :links: AV/Graph/GraphDefCON.css
+      :scripts: AV/Graph/GconcomCON.js
+      :output: show
+
+   * The maximum connected subgraphs of an undirected graph are called
+     connected components.
+
+
+.. slide:: Approach
+
+   Each object initially is a separate node in its own tree.
+
+   When two objects are "equivalent", then add them to the same tree.
+
+   Key question: **Given two nodes, are they in the same tree?**
+
+
+.. slide:: Union/FIND
+
+   .. codeinclude:: General/ParPtrTree1
+      :tag: UF1, UF2
+
+
+.. slide:: Algorithm Visualization
+
+   .. inlineav:: ufCON ss
+      :long_name: Union/Find Example
+      :links: AV/General/UFCON.css
+      :scripts: AV/General/ufCON.js
+      :output: show
+
+
+.. slide:: .
+
+   .
+
+
+.. slide:: Milestone 2
+
+   * Must pass some number of tests, some mutant coverage (from your
+     JUnit tests), some style points
+
+   * Functionally: Get the hash table working, at least inserts.

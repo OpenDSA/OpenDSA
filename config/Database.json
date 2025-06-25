@@ -1,0 +1,72 @@
+{
+  "title": "Database",
+  "desc": "Database Concepts Demonstration",
+  "build_dir": "Books",
+  "code_dir": "SourceCode/",
+  "lang": "en",
+  "build_JSAV": false,
+  "suppress_todo": false,
+  "dispModComp": true,
+  "glob_exer_options": {
+    "JXOP-debug": "true"
+  },
+  "glob_ss_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  }, 
+  "glob_ff_options": {
+    "threshold": 1.0, 
+    "points": 0.0, 
+    "required": false
+  },
+  "glob_ka_options": {
+    "threshold": 5, 
+    "points": 1.0, 
+    "required": true
+  }, 
+  "glob_extr_options": {
+    "code-workout": {
+      "points": 2.0
+    }, 
+    "points": 1.0
+  }, 
+  "glob_pe_options": {
+    "threshold": 0.9, 
+    "points": 2.0, 
+    "required": true
+  }, 
+  "chapters": {
+    "Preface": {
+      "Intro": {},
+      "Database/DemoIntro":{}
+
+    },
+    "Main Phases of Relational Database Design":{
+      "Database/RDDVsERD": {},
+      "Database/RDDDefinition": {},
+      "Database/RDDConstraints": {},
+      "Database/RDDBasicOperations": {},
+      "Database/DesignEfficiency": {}
+    },
+    "The ER-Data Model and Mapping to Relational Schema":{
+      "Database/ERDDefinition": {},
+      "Database/ERDComponents": {},
+      "Database/ERDMappingToRDD": {},
+      "Database/ERDNotations": {},
+      "Database/ERDRelationships": {},
+      "Database/ERDTernaryExample": {},
+      "Database/ERDExapmle": {}
+    },
+    "The Structured Query Language (SQL)": {
+      "Database/SQLIntroduction": {},
+      "Database/SQLSelect": {},
+      "Database/NestedQueries": {},
+      "Database/SQLJoin": {},
+      "Database/AggregateFunctions": {},
+      "Database/SQLUpdate": {},
+      "Database/SQLInsert": {},
+      "Database/SQLDelete": {}
+    }
+  }
+}

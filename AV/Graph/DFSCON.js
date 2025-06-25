@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Thomas Walton, Ivan Wong and Cliff Shaffer
 // Hard-coded example version of DFS demo
+
+// Title: Depth-first graph traversal slideshow
+// Author: Thomas Walton; Ivan Wong; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Depth-First Search
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the depth-first search algorithm for traversing a graph. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "DFSCON";

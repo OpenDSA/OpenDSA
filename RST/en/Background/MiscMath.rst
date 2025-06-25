@@ -3,13 +3,21 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Miscellaneous Math Notation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
+   :requires:
    :satisfies: factorial; permuation; modulus
    :topic: Math Background
+   :keyword: Factorial; Permuation; Modulus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review of some miscellaneous math notation needed for a Data Structures and Algorithms course.
 
-Miscellaneous Notation
-======================
+
+Miscellaneous Math Notation
+===========================
 
 This module collects together definitions for a number of mathematical
 terms and concepts, as a place for reference when needed.

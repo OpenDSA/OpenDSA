@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Tree-based Indexing
    :author: Cliff Shaffer
-   :requires: comparison; insertion sort
-   :satisfies: shellsort
+   :institution: Virginia Tech
+   :requires: linear indexing
+   :satisfies: tree-based indexing
    :topic: Indexing
+   :keyword: Tree-Based Indexing
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the concept of using a tree to organize an index for a collection of disk-based records.
+
 
 Tree-based Indexing
 ===================
@@ -89,6 +96,7 @@ too high.
    :links: AV/Indexing/treeIndexingCON.css
    :scripts: AV/Indexing/pagedBSTCON.js
    :output: show
+   :keyword: Indexing; Tree Indexing
 
 As you can see from this slideshow,
 adopting a rule such as requiring the BST to be complete can cause a
@@ -99,6 +107,7 @@ great deal of rearranging of data within the tree.
    :links: AV/Indexing/treeIndexingCON.css
    :scripts: AV/Indexing/rebalanceBSTCON.js
    :output: show
+   :keyword: Indexing; Tree Indexing
 
 We can solve these problems by selecting another tree structure that
 automatically remains balanced after updates, and which is amenable
@@ -116,3 +125,4 @@ most widely used indexing method today.
 
 .. avembed:: Exercises/Indexing/TreeIndexing.html ka
    :long_name: Tree Indexing Proficiency Exercise
+   :keyword: Indexing; Tree Indexing

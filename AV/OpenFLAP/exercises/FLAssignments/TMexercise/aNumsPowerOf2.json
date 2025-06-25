@@ -1,0 +1,36 @@
+[{
+  "_exerciseType": "Comment: DFA, NFA, REGEXP, GRAMMAR, PDA, TM.",
+  "exerciseType": "TM",
+  "totalTestCases": 5,
+  "containLetters": ["a"],
+  "randomStringLength": [0, 15],
+  "_hardCodeCasesCounter": "Comment: Number of hard code test cases.",
+  "hardCodeCasesCounter": 5,
+  "description": "Give a Turing Machine that accepts all strings that has a number of a’s that is a power of two $L = \\{a^{2^n}\\mid n>0\\},  \\Sigma = \\{a\\}$. In other words, it implements the language in Turing Acceptable form.",
+  "testCases": [{
+      "λ": false,
+      "ShowTestCase":true
+    },
+    {
+      "a": false,
+      "ShowTestCase":true
+    },
+    {
+      "aa": true,
+      "ShowTestCase":true
+    },
+    {
+      "aaa": false,
+      "ShowTestCase":true
+    },
+    {
+      "aaaa": true,
+      "ShowTestCase":true
+    }
+  ],
+  "graph": {
+    "nodes": [],
+    "edges": []
+  },
+  "solution": ""
+}]

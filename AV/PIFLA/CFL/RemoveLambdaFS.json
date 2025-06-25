@@ -1,0 +1,93 @@
+{
+  "translations": {
+    "en": {
+      "lambda":{
+        "type": "select",
+        "description": "Previously we saw that we need to remove lambda productions to avoid running into an infinite loop when using brute force expansion of the derivation tree if the string is not in the language of the grammar.",
+        "question": "Which of the following is a lambda production?",
+        "answer": "$A \\rightarrow \\lambda$",
+        "choices": ["$A \\rightarrow aA$", "$A \\rightarrow B$", "$A \\rightarrow \\lambda$"]
+      },
+      "nochange":{
+        "type": "true/false",
+        "description": "$\\textbf{Theorem}$ (remove $\\lambda$ productions): Let $G$ be a CFG with $\\lambda$ not in L(G). Then there exists a CFG $G'$ having no $\\lambda$-productions such that $L(G)=L(G')$.",
+        "question": "Removing lamda productions when $\\lambda$ is not in the language must change the language.",
+        "answer": "False",
+        "choices": [],
+        "correctFeedback": ["We need a lambda production somewhere if we want lambda in the language. But the theorem claims that languages without lambda can always be represented by a grammar without lambda productions."]
+      },
+      "change":{
+        "type": "select",
+        "description": "$\\textbf{Theorem}$ (remove $\\lambda$ productions): Let $G$ be a CFG with $\\lambda$ not in L(G). Then there exists a CFG $G'$ having no $\\lambda$-productions such that $L(G)=L(G')$.",
+        "question": "When $\\lambda$ is in $L(G)$, removing lamda productions must change the language.",
+        "answer": "Yes",
+        "choices": ["Yes", "No"],
+        "correctFeedback": ["Removing lambda productions has to result in a grammar whose language cannot include lambda."]
+      },
+      "gendirect":{
+        "type": "select",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$",
+        "question": "For the grammar on the left, what productions generate lambda directly?",
+        "answer": ["$B \\rightarrow \\lambda$", "$A \\rightarrow \\lambda$"],
+        "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$", "$C \\rightarrow \\lambda$"]
+      },
+      "nomore":{
+        "type": "select",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$<br/>2. Repeat until no more additions<br/>$*\\quad$if $B \\rightarrow A_1A_2 \\ldots A_m$ and $A_i \\in V_n$ for all $i$ then put $B$ in $V_n$<br/>In other words, add $B$ to $V_n$ if it has a production with a RHS where all variables exist in $V_n$. Such a variable also produces $\\lambda$",
+        "question": "Should we add more variables to $V_n$?",
+        "answer": "No",
+        "choices": ["No", "Yes"],
+        "correctFeedback": ["$S$ will not be added because the production $S \\rightarrow AcB$ has something in the RHS other than variables in $V_n$. It includes the terminal symbol 'c'"]
+      },
+      "allvar":{
+        "type": "true/false",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$<br/>2. Repeat until no more additions<br/>$*\\quad$if $B \\rightarrow A_1A_2 \\ldots A_m$ and $A_i \\in V_n$ for all $i$ then put $B$ in $V_n$<br/>In other words, add $B$ to $V_n$ if it has a production with a RHS where all variables exist in $V_n$. Such a variable also produces $\\lambda$",
+        "question": "After we finish the second step, $V_n$ contains all variables that produce $\\lambda$",
+        "answer": ["True"],
+        "choices": []
+      },
+      "copy":{
+        "type": "select",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$<br/>2. Repeat until no more additions<br/>$*\\quad$if $B \\rightarrow A_1A_2 \\ldots A_m$ and $A_i \\in V_n$ for all $i$ then put $B$ in $V_n$<br/>3. Construct $G'$ with productions $P'$ such that<br/>$*\\quad$ if $A \\rightarrow x_1x_2\\ldots x_m \\in P, m \\ge 1$ then put all productions formed when $x_j$ is replaced by $\\lambda$ (for all $x_j\\in V_n$) such that $|rhs|\\ge 1$ into $P'$.",
+        "question": "First, we need to copy all productions that do not produce $\\lambda$ to the new grammar. Select all of them",
+        "answer": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$B \\rightarrow Bbb$"],
+        "choices": ["$S \\rightarrow AcB$", "$A \\rightarrow aAa$", "$A \\rightarrow \\lambda$", "$B \\rightarrow Bbb$", "$B \\rightarrow \\lambda$"]
+      },
+      "S1":{
+        "type": "select",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$<br/>2. Repeat until no more additions<br/>$*\\quad$if $B \\rightarrow A_1A_2 \\ldots A_m$ and $A_i \\in V_n$ for all $i$ then put $B$ in $V_n$<br/>3. Construct $G'$ with productions $P'$ such that<br/>$*\\quad$ if $A \\rightarrow x_1x_2\\ldots x_m \\in P, m \\ge 1$ then put all productions formed when $x_j$ is replaced by $\\lambda$ (for all $x_j\\in V_n$) such that $|rhs|\\ge 1$ into $P'$.",
+        "question": "Now, suppose that the variable $A$ will be substituted by $\\lambda$, what will be the value of the highlighted production rule?",
+        "answer": "$S \\rightarrow cB$",
+        "choices": ["$S \\rightarrow AcB$", "$S \\rightarrow cB$", "$S \\rightarrow c$", "$S \\rightarrow Ac$", "$A \\rightarrow aAa$", "$A \\rightarrow aa$", "$B \\rightarrow Bbb$", "$B \\rightarrow bb$"]
+      },
+      "S2":{
+        "type": "select",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$<br/>2. Repeat until no more additions<br/>$*\\quad$if $B \\rightarrow A_1A_2 \\ldots A_m$ and $A_i \\in V_n$ for all $i$ then put $B$ in $V_n$<br/>3. Construct $G'$ with productions $P'$ such that<br/>$*\\quad$ if $A \\rightarrow x_1x_2\\ldots x_m \\in P, m \\ge 1$ then put all productions formed when $x_j$ is replaced by $\\lambda$ (for all $x_j\\in V_n$) such that $|rhs|\\ge 1$ into $P'$.",
+        "question": "Now, suppose that the variable $B$ will be substituted by $\\lambda$, what will be the value of the highlighted production rule?",
+        "answer": "$S \\rightarrow Ac$",
+        "choices": ["$S \\rightarrow AcB$", "$S \\rightarrow cB$", "$S \\rightarrow c$", "$S \\rightarrow Ac$", "$A \\rightarrow aAa$", "$A \\rightarrow aa$", "$B \\rightarrow Bbb$", "$B \\rightarrow bb$"]
+      },
+      "S3":{
+        "type": "select",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$<br/>2. Repeat until no more additions<br/>$*\\quad$if $B \\rightarrow A_1A_2 \\ldots A_m$ and $A_i \\in V_n$ for all $i$ then put $B$ in $V_n$<br/>3. Construct $G'$ with productions $P'$ such that<br/>$*\\quad$ if $A \\rightarrow x_1x_2\\ldots x_m \\in P, m \\ge 1$ then put all productions formed when $x_j$ is replaced by $\\lambda$ (for all $x_j\\in V_n$) such that $|rhs|\\ge 1$ into $P'$.",
+        "question": "Now, suppose that the variables $A$ and $B$ will be substituted by $\\lambda$, what will be the value of the highlighted production rule?",
+        "answer": "$S \\rightarrow c$",
+        "choices": ["$S \\rightarrow AcB$", "$S \\rightarrow cB$", "$S \\rightarrow c$", "$S \\rightarrow Ac$", "$A \\rightarrow aAa$", "$A \\rightarrow aa$", "$B \\rightarrow Bbb$", "$B \\rightarrow bb$"]
+      },
+      "A1":{
+        "type": "select",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$<br/>2. Repeat until no more additions<br/>$*\\quad$if $B \\rightarrow A_1A_2 \\ldots A_m$ and $A_i \\in V_n$ for all $i$ then put $B$ in $V_n$<br/>3. Construct $G'$ with productions $P'$ such that<br/>$*\\quad$ if $A \\rightarrow x_1x_2\\ldots x_m \\in P, m \\ge 1$ then put all productions formed when $x_j$ is replaced by $\\lambda$ (for all $x_j\\in V_n$) such that $|rhs|\\ge 1$ into $P'$.",
+        "question": "Now, suppose that the variable $A$ will be substituted by $\\lambda$, what will be the value of the highlighted production rule?",
+        "answer": "$A \\rightarrow aa$",
+        "choices": ["$S \\rightarrow AcB$", "$S \\rightarrow cB$", "$S \\rightarrow c$", "$S \\rightarrow Ac$", "$A \\rightarrow aAa$", "$A \\rightarrow aa$", "$B \\rightarrow Bbb$", "$B \\rightarrow bb$"]
+      },
+      "B1":{
+        "type": "select",
+        "description": "To remove $\\lambda$-productions<br/>1. Let $V_n = \\{A \\mid \\exists\\ \\mbox{production}\\ A \\rightarrow \\lambda\\}$<br/>2. Repeat until no more additions<br/>$*\\quad$if $B \\rightarrow A_1A_2 \\ldots A_m$ and $A_i \\in V_n$ for all $i$ then put $B$ in $V_n$<br/>3. Construct $G'$ with productions $P'$ such that<br/>$*\\quad$ if $A \\rightarrow x_1x_2\\ldots x_m \\in P, m \\ge 1$ then put all productions formed when $x_j$ is replaced by $\\lambda$ (for all $x_j\\in V_n$) such that $|rhs|\\ge 1$ into $P'$.",
+        "question": "Now, suppose that the variable $B$ will be substituted by $\\lambda$, what will be the value of the highlighted production rule?",
+        "answer": "$B \\rightarrow bb$",
+        "choices": ["$S \\rightarrow AcB$", "$S \\rightarrow cB$", "$S \\rightarrow c$", "$S \\rightarrow Ac$", "$A \\rightarrow aAa$", "$A \\rightarrow aa$", "$B \\rightarrow Bbb$", "$B \\rightarrow bb$"]
+      }
+    }
+  }
+}

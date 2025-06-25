@@ -1,0 +1,28 @@
+.jsavcanvas {
+  width: 800px;
+  height: 480px;
+}
+
+.jsavtree {
+  position: relative;
+  left:100px;
+  width: 500px;
+  height: 450px;
+}
+
+svg {
+  height: 550px;
+}
+
+path {
+  pointer-events: visible;
+}
+
+.jsavnode.jsavtreenode {
+  line-height : 15px;
+  max-width: 50px;
+  max-height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  font-size: 14px;
+}

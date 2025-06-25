@@ -1,0 +1,119 @@
+{
+    "translations": {
+      "en": {
+        "GTG": {
+          "type": "select",
+          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed. Recall that $\\emptyset$ is the empty set.",
+          "question":"What is a GTG?",
+          "answer": ["Equivalent to a Complete Transition Graph", "A graph with edges labeled by Regular Expressions"],
+          "choices": ["Equivalent to a Complete Transition Graph", "A graph with edges labeled by Regular Expressions"]
+        },
+        "complete": {
+          "type": "multiple",
+          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed. Recall that $\\emptyset$ is the empty set.",
+          "question":"How do we convert any GTG to be a complete GTG?",
+          "answer": "Add all missing edges, and label them with $\\emptyset$",
+          "choices": ["Add all missing edges, and label them with $\\emptyset$", "Connect all nodes together"]
+        },
+        "emptyset": {
+          "type": "select",
+          "description": "$\\textbf {Definition}$: A complete Generalized Transition Graph (GTG) is a complete graph, meaning that every state has a transition to every other state. Any GTG can be converted to a complete GTG by adding edges labeled $\\emptyset$ as needed. Recall that $\\emptyset$ is the empty set.",
+          "question":"How is a transition on $\\emptyset$ different from a transition on $\\lambda$?",
+          "answer": "A transition on $\\lambda$ is a free transition, while a transition on $\\emptyset$ means there is no symbol that allows that transition.",
+          "choices": ["They are the same", "A transition on $\\lambda$ is a free transition, while a transition on $\\emptyset$ means there is no symbol that allows that transition.", "A transition on $\\emptyset$ is a free transition, while a transition on $\\lambda$ means there is no symbol that allows that transition."]
+        },
+        "regular": {
+          "type": "select",
+          "description": "$\\textbf {Proof}$:<br> $L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.",
+          "question":"What do we nean when we say that L is regular?",
+          "answer": ["L is accepted by a DFA", "L is accepted by a NFA", "L is described by a regular expression"],
+          "choices": ["L is accepted by a DFA", "L is accepted by a NFA", "L is described by a regular expression"]
+        },
+        "assume": {
+          "type": "select",
+          "description": "$\\textbf {Proof}$:<br>$L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.<br><b>1.</b> Assume $M$ has one final state, and that start state $s \\not\\in F$.<br><b>2.</b> Convert $M$ to a complete GTG (by addidng $\\emptyset$ transitions).",
+          "question":"Can we really make the assumption in Step 1.?",
+          "answer": "Sure. We have already seen how to convert any NFA to have a single final state. If the original NFA has a start state $s$ that is final, then just add a new dummy start state with a $\\lambda$ transition to $s$.",
+          "choices": ["Sure. We have already seen how to convert any NFA to have a single final state. If the original NFA has a start state $s$ that is final, then just add a new dummy start state with a $\\lambda$ transition to $s$.", "No, not really"]
+        },
+        "rji": {
+          "type": "multiple",
+          "description": "$\\textbf {Proof}$:<br>$L$ is regular $\\Rightarrow \\exists$ NFA $M$ such that $L=L(M)$.<br><b>1.</b> Assume $M$ has one final state, and that start state $s \\not\\in F$.<br><b>2.</b> Convert $M$ to a complete GTG (by addidng $\\emptyset$ transitions).<br>Let $r_{ij}$ stand for the label of the edge from $q_i$ to $q_j$.",
+          "question":"What does $r_{ji}$ mean?",
+          "answer": "It is the label for the transiton from $q_j$ to $q_i$",
+          "choices": ["It is the label for the transiton from $q_i$ to $q_j$", "It is the label for the transiton from $q_j$ to $q_i$", "It is the label for the transiton from $q_i$ to $q_i$", "It is the label for the transiton from $q_j$ to $q_j$"]
+        },
+        "rii": {
+          "type": "select",
+          "description": "Then, the corresponding regular expression is:<br>$r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
+          "question":"Now, let's find how this RegEx is derived from the GTG on the left. Think about the first part of the RegEx $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{ii}^*$ means that, when the machine at the start state, it may loop zero or more times to read zero or more repetitions of RegEx $r_{ii}$",
+          "answer":"True",
+          "choices": []
+        },
+        "rij": {
+          "type": "select",
+          "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
+          "question": "Think about the next part of the RegEx $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$. $r_{ij}$ means the machine will move to state $qj$ by reading RegEx $r_{ij}$",
+          "answer": "True",
+          "choices": []
+        },
+        "rjj": {
+          "type": "select",
+          "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
+          "question": "The third part of the RegEx is $r_{jj}^*$, which means that once the meachine is at $qj$ it may loop zero or more times to read zero or more occurance of RegEx $r_{jj}$",
+          "answer": "True",
+          "choices": []
+        },
+        "rjiagain": {
+          "type": "select",
+          "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
+          "question":"The next part of the RegEx is $r_{ji}$, which means that the machine can go back to $qi$ by reading $r_{ji}$",
+          "answer": "True",
+          "choices": []
+        },
+        "repeats": {
+          "type": "select",
+          "description": "Then, the corresponding regular expression is:<br> $r=(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗r_{ii}^*r_{ij}r_{jj}^*$",
+          "question": "The part of the RegEx $(r_{ii}^*r_{ij}r_{jj}^*r_{ji})^∗$ means that the machine can repeat what we covered so far for zero or more times, and end at $qi$",
+          "answer": "True",
+          "choices": []
+        },
+        "onefinal": {
+          "type": "multiple",
+          "description": "Of course, we might have a machine whose start state is also a final state. There are two ways to deal with this. One is to come up with a rule in this case. (Hint: Its the same rule, with an extra “OR” added for the case where we stay in the start state.) The other is to first convert our NFA to one with a single final state (separate from the start state).",
+          "question":"How can we convert an NFA to have only a single final state?",
+          "answer": "Create a new final state and connect all final states to it with $\\lambda$ transitions",
+          "choices": ["Convert it to a DFA", "Create a new final state and connect all final states to it with $\\lambda$ transitions"]
+        },
+        "clearqk1": {
+          "type": "select",
+          "description": "Make the following replacements:<br>REPLACE<br>$r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$",
+          "question": "We made that replacement because in the 3-state version, $qi$ can go to itself by passing through $qk$. It will read $r_{ik}$, then loop on $qk$ to read zero or more $r_{kk}$, then move back to $qi$ by reading $r_{ki}$",
+          "answer": "True",
+          "choices": []
+        },
+        "clearqk2": {
+          "type": "select",
+          "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$",
+          "question":"We make the second replacement because $qj$ can go to itself by passing through $qk$. It will read $r_{jk}$, then loop in $qk$ to read zero or more $r_{kk}$, then move back to $qj$ by reading $r_{kj}$",
+          "answer": "True",
+          "choices": []
+        },
+        "clearqk3": {
+          "type": "select",
+          "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*r_{kj}$.",
+          "question":"We make the third replacement because $qi$ can go to state $qj$ by passing through $qk$. It will read $r_{ik}$, then loop in $qk$ to read zero or more $r_{kk}$, then move to $qj$ by reading $r_{kj}$",
+          "answer": "True",
+          "choices": []
+        },
+        "clearqk4": {
+          "type": "select",
+          "description": "Make the following replacements:<br> REPLACE<br> $r_{ii} \\Rightarrow r_{ii}+r_{ik}r_{kk}^*r_{ki}$<br> $r_{jj} \\Rightarrow r_{jj}+r_{jk}r_{kk}^*r_{kj}$<br> $r_{ij} \\Rightarrow r_{ij}+r_{ik}r_{kk}^*r_{kj}$<br> $r_{ji} \\Rightarrow r_{ji}+r_{jk}r_{kk}^*r_{ki}$",
+          "question": "We make the fourth replacement because $qj$ can go to state $qi$ by passing through $qk$. It will read $r_{jk}$, then loop in $qk$ to read zero or more $r_{kk}$, then move to $qi$ by reading $r_{ki}$",
+          "answer": "True",
+          "choices": []
+        }
+      }
+    }
+  }
+  

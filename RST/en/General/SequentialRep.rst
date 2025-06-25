@@ -4,8 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Sequential Tree Representations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: General Trees
+   :keyword: General Tree; Sequential Tree Representation
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents several ways to represent trees sequentially, essentially as a layout of a tree traversal.
 
 Sequential Tree Representations
 ===============================
@@ -77,6 +83,7 @@ the tree structure.
    :links: AV/Binary/BinExampCON.css
    :scripts: AV/Binary/BinExampCON.js
    :align: center
+   :keyword: General Trees; Sequential Tree Representations
 
    Sample binary tree for sequential tree implementation examples.
 
@@ -85,9 +92,11 @@ the tree structure.
    :links: AV/General/SequentialTreeCON.css
    :scripts: AV/General/SequentialTreeCON.js
    :output: show
+   :keyword: General Trees; Sequential Tree Representations
 
 .. avembed:: Exercises/General/SequentialTreePRO.html ka
    :long_name: First Sequential Representation Exercise
+   :keyword: General Trees; Sequential Tree Representations
 
 
 Alternative Sequential Representation
@@ -139,6 +148,7 @@ implementation, and so requires less overhead.
    :links: AV/General/SequentialTreeCON.css
    :scripts: AV/General/SequentialTreeAltCON.js
    :output: show
+   :keyword: General Trees; Sequential Tree Representations
 
 Storing :math:`n` extra bits can be a considerable savings over
 storing :math:`n` ``null`` values.
@@ -154,6 +164,7 @@ the mark bit.
 
 .. avembed:: Exercises/General/SequentialTreeAltPRO.html ka
    :long_name: Alternate Sequential Representation Exercise
+   :keyword: General Trees; Sequential Tree Representations
 
 
 Bit Vector Representation
@@ -171,9 +182,11 @@ a leaf node.
    :links: AV/General/SequentialTreeCON.css
    :scripts: AV/General/SequentialTreeBitsCON.js
    :output: show
+   :keyword: General Trees; Sequential Tree Representations
 
 .. avembed:: Exercises/General/SequentialTreeBitVectorPRO.html ka
    :long_name: Bit Vector Sequential Representation Exercise
+   :keyword: General Trees; Sequential Tree Representations
 
 
 General Tree Sequential Representation
@@ -200,6 +213,7 @@ this by two or more successive ")" symbols.
    :links: AV/General/SequentialTreeCON.css
    :scripts: AV/General/SequentialGenTreeCON.js
    :output: show
+   :keyword: General Trees; Sequential Tree Representations
 
 Note that this representation for serializing general trees cannot be
 used for binary trees.
@@ -213,3 +227,4 @@ child of node :math:`B`.
 
 .. avembed:: Exercises/General/SequentialTreeGenTreePRO.html ka
    :long_name: General Tree Sequential Representation Exercise
+   :keyword: General Trees; Sequential Tree Representations

@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda and Mostafa Mohammed
+   :title: Local Memory
+   :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed
+   :institution: Stanford University; Virginia Tech
    :requires: Pointer intro
    :satisfies: Local memory
    :topic: Pointers
+   :keyword: Pointer; Local Variable
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces the concept of local memory and local variables.
+
 
 Local Memory
 ============
@@ -111,6 +118,7 @@ Here is a simple example of the lifetime of local storage.
    :links: AV/Pointers/simpleLifetimeCON.css
    :scripts: AV/Pointers/simpleLifetimeCON.js
    :output: show
+   :keyword: Pointers; Local Variables
 
 Here is a larger example that shows how the simple rule "the locals
 are allocated when their function begins running and are deallocated
@@ -124,6 +132,7 @@ result when the function X() calls the function Y() twice.
    :links: AV/Pointers/T1-T5CON.css
    :scripts: AV/Pointers/T1-T5CON.js
    :output: show
+   :keyword: Pointers; Local Variables
 
 The slideshow showed how the sequence of the locals are allocated and
 deallocated.
@@ -197,7 +206,7 @@ There are two disadvantages of Locals:
    parameters, they do not provide a means of communication from the
    callee back to the caller.
    This is the flip side of the "independence" advantage |---|
-   its not always and advantage.
+   it's not always an advantage.
    Also, sometimes making copies of a value is undesirable for other
    reasons.
    We will see the solution to this problem in the next module.

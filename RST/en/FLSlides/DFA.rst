@@ -16,6 +16,9 @@
 Deterministic Finite Acceptors
 ==============================
 
+Deterministic Finite Acceptors
+------------------------------
+
 .. slide:: Introduction: Terminology
 
    | Finite State Machine
@@ -68,10 +71,10 @@ Deterministic Finite Acceptors
       :align: center
 
    | Assign meaning to the states: q0 - odd numbers, q1 - even numbers, 
-   | Note the arrow: Start State
-   | Note the double circle: Accepting State
+   | Note the triangle: Start State
+   | Note the double circle: Final (Accepting) State
 
-   We accept the string if we halt (finish the string) in an accepting
+   We accept the string if we halt (finish the string) in a final
    state.
 
 
@@ -92,6 +95,17 @@ Deterministic Finite Acceptors
       q0 &  &  \\
       q1 &  &  \\
       \end{array}
+
+
+.. slide:: Example
+
+   .. avembed:: AV/OpenFLAP/exercises/FLAssignments/FA/DFAEvenBinary.html pe
+      :long_name: Accept even binary numbers
+
+
+.. slide:: .
+
+   .
 
 
 .. slide:: Concept: Power of DFAs
@@ -169,19 +183,13 @@ Deterministic Finite Acceptors
       :scripts: DataStructures/FLA/FA.js AV/VisFormalLang/FA/DFA_withTrapStateCON.js
       :align: center
 
-   | There is nothing "special" about the trap state, they are
+   | There is nothing "special" about a trap state, they are
      just conceptual.
    |   A "trap" state means that once in, all transitions keep us
        there.
    |   A "final" trap state is any trap state that is a final.
        Example: Define a machine that accepts any string that starts
        with "ab".
-
-
-.. slide:: Another Example
-
-    .. avembed:: AV/OpenFLAP/examples/mod3.html ss
-       :long_name: draw a DFA for a language example
 
 
 .. slide:: Regular Languages
@@ -194,12 +202,3 @@ Deterministic Finite Acceptors
    languages that they accept.
    A language is **regular** if and only if
    there exists a DFA :math:`M` such that :math:`L = L(M)`.
-
-
-.. slide:: A Final Example
-
-   Consider the language "accept all strings on :math:`\{0, 1\}` that
-   does not contain the substring 001.
-
-   You should work this out on your own, its a good test of your
-   understanding!

@@ -58,7 +58,7 @@
 	var fragLabel6 = av.label("9942", {left : 494, top: 310});
 	var fragLabel7 = av.label("10528", {left : 531, top: 310});
 	var fragLabel8 = av.label("10984", {left : 630, top: 310});	
-	var fragLabel8 = av.label("3000", {left : 137, top: 173});
+	var fragLabel8 = av.label("3000", {left : 137, top: 153});
     }
 	
     // Initialize all data structures for the exercise 

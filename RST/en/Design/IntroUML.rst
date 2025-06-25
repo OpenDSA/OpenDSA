@@ -4,11 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Unified Modeling Language
    :author: Dave Parillo
+   :institution: San Diego Mesa College
+   :requires:
    :satisfies: UML
    :topic: Introduction
+   :keyword: Unified Modeling Language
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to the Unified Modeling Language.
 
 .. index:: unified modeling langauage; selecting
+
 
 The Unified Modeling Language
 =============================
@@ -185,7 +193,7 @@ and interfaces shows that the class realizes the operations offered by the inter
 In this course, we are primarily concerned with relationships between
 classes.
 Note the addition at the top of the **Person** class: ``<<interface>>``.
-The angle brakets define a *stereotype*.
+The angle brackets define a *stereotype*.
 The stereotype allows UML modelers to extend the vocabulary of a model
 element or to be more specific about the role or purpose of a model
 element.
@@ -219,7 +227,6 @@ For example, two classes might be related because one or both takes the
 other as a parameter to a method.
 
 .. codeinclude:: Introduction/UMLassociation
-
 
 *Multiplicity*
 

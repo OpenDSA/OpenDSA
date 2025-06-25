@@ -1,4 +1,15 @@
 // Written by Dana Gurland, Fall 2019
+
+// Title: Heap Inefficient Build Slideshow
+// Author: Dana Gurland
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Heap
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing a naive heap building algorithm. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "HeapBldChoiceCON";

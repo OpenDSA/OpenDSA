@@ -3,11 +3,18 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Proof of Optimality for Huffman Coding
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Huffman coding tree
    :satisfies: Huffman proof
    :topic: Huffman Coding Trees
+   :keyword: Huffman Coding Tree
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents a proof that Huffman Coding Trees generate optimal codes when probabilities are not context dependent.
+
 
 Proof of Optimality for Huffman Coding
 ======================================
@@ -57,6 +64,7 @@ However, this is impossible because :math:`l_1` and
    :scripts: AV/Binary/HuffProofCON.js
    :output: show
    :align: center
+   :keyword: Huffman Coding Tree
 
    An impossible Huffman tree, showing the situation where the two
    nodes with least weight, :math:`l_1` and

@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Common Algorithm Analysis Misunderstandings
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: algorithm analysis
    :satisfies: analysis misunderstandings
    :topic: Algorithm Analysis
+   :keyword: Algorithm Analysis; Misconception
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Explains some common student misunderstandings about asymptotic algorithm analysis.
 
 Common Misunderstandings
 ========================
@@ -93,10 +99,12 @@ worst, and average cases as the input size grows.
 
 
 .. inlineav:: MisunderstandingsGraphCON ss
-   :long_name: Example's graph Visualization
+   :long_name: Misunderstanding Examples: Graph Visualization
    :links: AV/AlgAnal/MisunderstandingsGraphCON.css
    :scripts: AV/AlgAnal/MisunderstandingsGraphCON.js
    :output: show
+   :keyword: Algorithm Analysis; Algorithm Analysis Misconceptions
 
 .. avembed:: Exercises/AlgAnal/MisSumm.html ka
    :long_name: Common Misconceptions Exercise
+   :keyword: Algorithm Analysis; Algorithm Analysis Misconceptions

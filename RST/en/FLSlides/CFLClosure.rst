@@ -53,7 +53,7 @@ Closure Properties for CFLs
           :math:`P_3 = P_1 \cup P_2 \cup \{S_3 \rightarrow S_1S_3|\lambda \}`.
 
 
-.. Slide:: Intersection
+.. slide:: Intersection
 
    | **Theorem:** CFL's are NOT closed under intersection
    |    Let :math:`L_1 = \{a^nb^nc^m | n,m > 0\}` and
@@ -62,7 +62,7 @@ Closure Properties for CFLs
    |    Then :math:`L_1 \cap L_2 = \{a^nb^nc^n | n >0 \}` is not CFL. 
 
 
-.. Slide:: Complementation
+.. slide:: Complementation
 
    | **Theorem:** CFL's are NOT closed under complementation.
    |    Set identity: 
@@ -84,12 +84,6 @@ Closure Properties for CFLs
    CFL's are closed under *regular* intersection. 
    If :math:`L_1` is CFL and :math:`L_2` is regular,
    then :math:`L_1 \cap L_2` is CFL.
-
-   | **Proof:** (sketch)  
-   |    This proof is similar to the construction 
-        proof in which we showed regular languages are closed under intersection. 
-   |    We can take a NPDA for :math:`L_1` and a DFA for :math:`L_2` and
-        construct a NPDA for :math:`L_1 \cap L_2`.
 
 
 .. slide:: Some Decision Problems for CFGs

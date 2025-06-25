@@ -1,0 +1,296 @@
+{
+    "parameters": {
+        "param1": {
+            "id": "param1",
+            "type": "question_parameter",
+            "valueDisplay": "200mm",
+            "value": "200",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param2": {
+            "id": "param2",
+            "type": "question_parameter",
+            "valueDisplay": "20mm",
+            "value": "20",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param3": {
+            "id": "param3",
+            "type": "question_parameter",
+            "valueDisplay": "4kN",
+            "value": "4",
+            "unit": "kN",
+            "parent": "question_params"
+        },
+        "param4": {
+            "id": "param4",
+            "type": "question_parameter",
+            "valueDisplay": "3mm",
+            "value": "3",
+            "unit": "mm",
+            "parent": "question_params"
+        },
+        "param5": {
+            "id": "param5",
+            "type": "question_parameter",
+            "valueDisplay": "0.13mm",
+            "value": "0.13",
+            "unit": "mm",
+            "parent": "question_params"
+        }
+    },
+    "workspaces": {
+        "1": {
+            "id": 1,
+            "name": "wk1",
+            "equations": {
+                "0": {
+                    "id": "wk1_PoissonsRatio_1_1",
+                    "equation_template_id": "PoissonsRatio",
+                    "variables": {
+                        "poissonratio": {
+                            "id": "wk1_PoissonsRatio_1_1_poissonratio",
+                            "name": "poissonratio",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\nu_{}",
+                                "parentSymbolTemplate": "\\nu_{}",
+                                "parentSymbol": "\\nu_{}"
+                            },
+                            "currentSymbol": "a_a",
+                            "expectedDomain": "dimensionless",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": null,
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": "wk1_PoissonsRatio_1_1_poissonratio"
+                        },
+                        "longstrain": {
+                            "id": "wk1_PoissonsRatio_1_1_longstrain",
+                            "name": "longstrain",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\epsilon_{long_{}}",
+                                "parentSymbolTemplate": "\\epsilon_{long_{}}",
+                                "parentSymbol": "\\epsilon_{long_{}}"
+                            },
+                            "currentSymbol": "a_b",
+                            "expectedDomain": "strain",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_d",
+                                "varDisplay": "\\epsilon_{long_{}}",
+                                "varDisplayTemplate": "\\epsilon_{long_{}}"
+                            }
+                        },
+                        "latstrain": {
+                            "id": "wk1_PoissonsRatio_1_1_latstrain",
+                            "name": "latstrain",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\epsilon_{lat_{}}",
+                                "parentSymbolTemplate": "\\epsilon_{lat_{}}",
+                                "parentSymbol": "\\epsilon_{lat_{}}"
+                            },
+                            "currentSymbol": "a_c",
+                            "expectedDomain": "strain",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_g",
+                                "varDisplay": "\\epsilon_{lat_{}}",
+                                "varDisplayTemplate": "\\epsilon_{lat_{}}"
+                            }
+                        }
+                    }
+                },
+                "1": {
+                    "id": "wk1_axialMemberNormalStrainAvgLongdelta_2_1",
+                    "equation_template_id": "axialMemberNormalStrainAvgLongdelta",
+                    "variables": {
+                        "normallongstrain": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_2_1_normallongstrain",
+                            "name": "normallongstrain",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\epsilon_{long_{}}",
+                                "parentSymbolTemplate": "\\epsilon_{long_{}}",
+                                "parentSymbol": "\\epsilon_{long_{}}"
+                            },
+                            "currentSymbol": "a_d",
+                            "expectedDomain": "strain",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_d",
+                                "varDisplay": "\\epsilon_{long_{}}",
+                                "varDisplayTemplate": "\\epsilon_{long_{}}"
+                            }
+                        },
+                        "length": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_2_1_length",
+                            "name": "length",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "L_{}",
+                                "parentSymbolTemplate": "L_{}",
+                                "parentSymbol": "L_{}"
+                            },
+                            "currentSymbol": "a_e",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param1",
+                            "valueNegated": false,
+                            "value": "200"
+                        },
+                        "deform": {
+                            "id": "wk1_axialMemberNormalStrainAvgLongdelta_2_1_deform",
+                            "name": "deform",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\delta_{}",
+                                "parentSymbolTemplate": "\\delta_{}",
+                                "parentSymbol": "\\delta_{}"
+                            },
+                            "currentSymbol": "a_f",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param4",
+                            "valueNegated": false,
+                            "value": "3"
+                        }
+                    }
+                },
+                "2": {
+                    "id": "wk1_axialMemberNormalStrainAvgLatDiameter_3_1",
+                    "equation_template_id": "axialMemberNormalStrainAvgLatDiameter",
+                    "variables": {
+                        "normallatstrain": {
+                            "id": "wk1_axialMemberNormalStrainAvgLatDiameter_3_1_normallatstrain",
+                            "name": "normallatstrain",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\epsilon_{lat_{}}",
+                                "parentSymbolTemplate": "\\epsilon_{lat_{}}",
+                                "parentSymbol": "\\epsilon_{lat_{}}"
+                            },
+                            "currentSymbol": "a_g",
+                            "expectedDomain": "strain",
+                            "currentDomain": null,
+                            "currentUnit": null,
+                            "valueType": "association",
+                            "valueSource": null,
+                            "valueNegated": false,
+                            "value": {
+                                "var": "a_g",
+                                "varDisplay": "\\epsilon_{lat_{}}",
+                                "varDisplayTemplate": "\\epsilon_{lat_{}}"
+                            }
+                        },
+                        "length": {
+                            "id": "wk1_axialMemberNormalStrainAvgLatDiameter_3_1_length",
+                            "name": "length",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "l_{}",
+                                "parentSymbolTemplate": "l_{}",
+                                "parentSymbol": "l_{}"
+                            },
+                            "currentSymbol": "a_h",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param2",
+                            "valueNegated": false,
+                            "value": "20"
+                        },
+                        "changeLength": {
+                            "id": "wk1_axialMemberNormalStrainAvgLatDiameter_3_1_changeLength",
+                            "name": "changeLength",
+                            "symbol_context": {
+                                "parentSymbolTemplateZero": "\\Deltal_{}",
+                                "parentSymbolTemplate": "\\Deltal_{}",
+                                "parentSymbol": "\\Deltal_{}"
+                            },
+                            "currentSymbol": "a_i",
+                            "expectedDomain": "length",
+                            "currentDomain": "length",
+                            "currentUnit": "mm",
+                            "valueType": "number",
+                            "valueSource": "param5",
+                            "valueNegated": true,
+                            "value": -0.13
+                        }
+                    }
+                }
+            },
+            "solutionBoxes": {
+                "3": {
+                    "value": 0.43333333333333,
+                    "unit": "",
+                    "variable": "a_a",
+                    "variableDisplay": "\\nu_{}",
+                    "valueSourceParent": "a_a",
+                    "valueNegated": false
+                },
+                "4": {
+                    "value": -0.0065,
+                    "unit": "strain",
+                    "variable": "a_g",
+                    "variableDisplay": "\\epsilon_{lat_{}}",
+                    "valueSourceParent": "a_g",
+                    "valueNegated": false
+                },
+                "5": {
+                    "value": 0.015,
+                    "unit": "strain",
+                    "variable": "a_d",
+                    "variableDisplay": "\\epsilon_{long_{}}",
+                    "valueSourceParent": "a_d",
+                    "valueNegated": false
+                },
+                "a_a": {
+                    "box_id_current": 3,
+                    "value": 0.43333333333333,
+                    "unit": "",
+                    "variable": "a_a",
+                    "variableDisplay": "\\nu_{}"
+                },
+                "a_g": {
+                    "box_id_current": 4,
+                    "value": -0.0065,
+                    "unit": "strain",
+                    "variable": "a_g",
+                    "variableDisplay": "\\epsilon_{lat_{}}"
+                },
+                "a_d": {
+                    "box_id_current": 5,
+                    "value": 0.015,
+                    "unit": "strain",
+                    "variable": "a_d",
+                    "variableDisplay": "\\epsilon_{long_{}}"
+                }
+            }
+        }
+    },
+    "solutions": {
+        "0": {
+            "id": "0",
+            "solution": "0.4333",
+            "unit": "",
+            "source": "a_a",
+            "parent": "solution_box",
+            "type": "number"
+        }
+    }
+}

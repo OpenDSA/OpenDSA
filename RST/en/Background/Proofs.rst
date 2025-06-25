@@ -3,12 +3,20 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Mathematical Proof Techniques
    :author: Cliff Shaffer
-   :satisfies: induction proofs
+   :institution: Virginia Tech
+   :requires:
+   :satisfies: proofs intro; induction proofs
    :topic: Math Background
+   :keyword: Proofs; Induction Proofs; Proof by Contradiction; Deduction
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Review of basic proof techniques (normally taught in a Discrete Math course) needed as background for a Data Structures and Algorithms course.
 
 .. index:: !proof
+
 
 Mathematical Proof Techniques
 =============================
@@ -48,28 +56,28 @@ argument from scratch.
 
 This section briefly introduces three commonly used proof techniques:
 
-#) deduction, or direct proof;
+#) Deduction, or direct proof;
 
-#) proof by contradiction and
+#) Proof by contradiction and
 
-#) proof by mathematical induction.
+#) Proof by mathematical induction.
 
 
 .. index:: ! proof; direct
-
-In general, a :term:`direct proof` is just a "logical explanation".
-A direct proof is sometimes referred to as an argument by deduction.
-This is simply an argument in terms of logic.
 
 
 Direct Proof
 ~~~~~~~~~~~~
 
+In general, a :term:`direct proof` is just a "logical explanation".
+A direct proof is sometimes referred to as an argument by deduction.
+This is simply an argument in terms of logic.
+
 .. _SumDirect:
 
 .. topic:: Example
 
-   Here is a direct proof that :math:`\sum_{i=1}^n i = (n+1)n/2`.
+   Here is a direct proof that :math:`\sum_{i=1}^n i = \frac{(n+1)n}{2}`.
    If we take the first and last terms of the series, since they are 1
    and :math:`n`, of course they sum to :math:`n+1`.
    If we take the second term and next-to-last term, since they are 2
@@ -230,7 +238,7 @@ hypothesis to prove the theorem.
 The induction hypothesis does not come out of thin air.
 It is true if and only if the theorem itself is true, and
 therefore is reliable within the proof context.
-Using the induction hypothesis it do work is exactly the same as using
+Using the induction hypothesis to do work is exactly the same as using
 a recursive call to do work.
 
 .. _SumIEx:
@@ -240,7 +248,7 @@ a recursive call to do work.
    Here is a sample proof by mathematical induction.
    Call the sum of the first :math:`n` positive integers :math:`\mathbf{S}(n)`.
 
-   **Theorem:** :math:`\mathbf{S}(n) = n(n+1)/2`.
+   **Theorem:** :math:`\mathbf{S}(n) = \frac{n(n+1)}{2}`.
 
    **Proof:**
    The proof is by mathematical induction.
@@ -249,7 +257,7 @@ a recursive call to do work.
       For :math:`n = 1`, verify that :math:`\mathbf{S}(1) = 1(1+1)/2`.
       :math:`\mathbf{S}(1)` is simply the sum of the first positive
       number, which is 1.
-      Because :math:`1(1+1)/2 = 1`, the formula is correct for the base
+      Because :math:`\frac{1(1+1)}{2} = 1`, the formula is correct for the base
       case.
 
    #. **State the induction hypothesis.**
@@ -263,7 +271,7 @@ a recursive call to do work.
    #. **Use the assumption from the induction hypothesis for**
       :math:`n-1` **to show that the result is true for** :math:`n`.
       The induction hypothesis states that
-      :math:`\mathbf{S}(n-1) =  (n-1)(n)/2`,
+      :math:`\mathbf{S}(n-1) =  \frac{(n-1)(n)}{2}`,
       and because :math:`\mathbf{S}(n) = \mathbf{S}(n-1) + n`,
       we can substitute for :math:`\mathbf{S}(n-1)` to get
 
@@ -351,7 +359,12 @@ not be helpful or relevant when proving other summations.
 
    **Theorem:**
    The recurrence relation
-   :math:`\mathbf{T}(n) = \mathbf{T}(n-1) + 1; \quad \mathbf{T}(1) = 0`
+
+   .. math::
+
+      \mathbf{T}(n) &=& \mathbf{T}(n-1) + 1\\
+      \mathbf{T}(1) &=& 0
+      
    has closed-form solution :math:`\mathbf{T}(n) = n - 1`.
 
    **Proof:**
@@ -439,6 +452,7 @@ induction hypothesis.
    :links: AV/Background/twoColorCON.css
    :scripts: AV/Background/twoColorCON.js
    :align: center
+   :keyword: Proofs; Induction Proofs
 
    A two-coloring for the regions formed by three lines in the plane.
 
@@ -447,7 +461,8 @@ induction hypothesis.
 .. topic:: Example
 
    Define a :term:`two-coloring` for a
-   set of regions as a way of assigning one of two colors to each region
+   set of regions in the 2D plane as a way of assigning one of two
+   colors to each region 
    such that no two regions sharing a side have the same color.
    For example, a chessboard is two-colored.
    Figure :num:`Figure #TwoColor` shows a two-coloring for the plane
@@ -465,6 +480,7 @@ induction hypothesis.
       :links: AV/Background/TwoColoringProofCON.css
       :scripts: AV/Background/TwoColoringProofCON.js
       :output: show
+      :keyword: Proofs; Induction Proofs
 
 Compare the proof in Example :num:`Example #ThmRegion` with that in
 Example :num:`Example #ThmStamps`.
@@ -483,6 +499,8 @@ must have the desired property because it matches the induction
 hypothesis.
 From there, we merely need to show that reversing the original
 reduction process preserves the desired property.
+Since we controlled the reduction process, we control the reversal of
+this reduction.
 
 In contrast, consider what is required if we attempt to
 "build" from a set of lines of size :math:`n-1` to one of size
@@ -532,7 +550,7 @@ prove that a recursive function produces the correct result.
 
    **Proof:**
    To prove the base case, observe that when :math:`n=0` or
-   :math:`n=1`, `fact(n)` returns the correct value of 1.
+   :math:`n=1`, ``fact(n)`` returns the correct value of 1.
    The induction hypothesis is that ``fact(n-1)`` returns the correct
    value of `(n-1)!`.
    For any value `n` within the legal range, ``fact(n)`` returns
@@ -547,4 +565,3 @@ then to use the induction hypothesis to show that the recursive step
 also produces the correct result.
 Prior to this, we must prove that the function always terminates,
 which might also be done using an induction proof.
-

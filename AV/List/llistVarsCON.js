@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Show off the data members
+
+// Title: Linked List Data Members Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting the data members for a linked list implementation. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "llistVarsCON";

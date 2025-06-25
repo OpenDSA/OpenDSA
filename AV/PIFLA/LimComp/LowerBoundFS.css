@@ -1,0 +1,12 @@
+#LowerBoundFS {
+  height: 600px;
+}
+
+#LowerBoundFS .jsavoutput.jsavline {
+  height: 35px;
+}
+
+#LowerBoundFS .jsavhorizontalarray .jsavnode {
+  min-width: 25px !important;
+  max-width: 30px !important;
+}

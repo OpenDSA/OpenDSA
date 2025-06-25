@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Insertion Sort Worst Case
+
+// Title: Insertion Sort Worst Case Analysis
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Analysis Demonstration
+// Keyword: Insertion Sort; Worst Case
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing an analysis of Insertion Sort's worst-case behavior and cost. */
+ 
 $(document).ready(function() {
   "use strict";
   var av_name = "InsertionSortWorstCaseCON";

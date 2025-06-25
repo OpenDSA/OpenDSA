@@ -4,16 +4,23 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Introduction to Analyzing a Problem
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
-   :topic:
+   :topic: Towers of Hanoi
+   :keyword: Towers of Hanoi; Algorithm Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a methodology for analyzing a problem's upper and lower bounds to determine whether a proposed algorithm is an efficient solution or not.
+
 
 Introduction to Analyzing a Problem
 ===================================
 
-Towers of Hanoi
----------------
+Introduction
+------------
 
 How do I know if I have a good algorithm to solve a problem?
 If my algorithm runs in :math:`\Theta(n \log n)` time, is that good?
@@ -23,6 +30,17 @@ element.
 The value of an algorithm must be determined in relation to the
 inherent complexity of the problem at hand.
 
+Any algorithm is said to be :term:`optimal <optimal algorithm>`
+if its cost (for a given class of inputs, such as best, average, or
+worst case) is within a constant factor of the lower bound to solve
+that problem.
+For example, we will prove that linear search is optimal on an
+unsorted array for all classes of inputs.
+You should already understand that Mergesort is optimal for sorting in
+the average and worst cases, Quicksort is optimal for sorting in the
+average case, and Insertion Sort is optimal for sorting in the
+best case.
+
 This module presents our first example of the end-to-end process for
 analyzing a problem.
 We will (1) define a simple problem, then (2) find an algorithm for it
@@ -30,29 +48,43 @@ We will (1) define a simple problem, then (2) find an algorithm for it
 solving), and finally (3) analyze the relationship between the
 algorithm and the problem to see if the algorithm is efficient or
 not.
-We will also solve a simple recurrence as part of the process.
+We will also solve a simple recurrence as part of the process, which
+is pretty typical when analyzing recursive algorthms.
 
-The problem that we start with is one that you probably are
-already quite familiar with: Towers of Hanoi.
+Towers of Hanoi
+---------------
+
+The problem that we start with is one that you hopefully are
+already familiar with: Towers of Hanoi.
 As best you can, you should pretend that you have never seen the
-Towers of Hanoi problem before, that you are approaching it for the
+Towers of Hanoi problem before while you read this page.
+You would like to pretend that you are approaching it for the
 first time.
 This problem is especially good for us to use as a starting
 example for the analysis of a problem.
 The reason is that there some simplifying aspects to it that make it
 unusually easy to discuss its analysis.
 First, there is only one problem instance of a given size.
-Second, there is essentially only one optimal algorithm,
+Second, there is essentially only one plausible algorithm,
+this algorithm is optimal,
 and it is simple for us to recognize this to be a fact.
 This avoids a lot of the complication that we normally
 encounter in the analysis process, even when considering the simplest
 of problems.
 In other words, Towers of Hanoi is easy to analyze, which is different
 from being easy to solve, and which is also different from
-having "easy cost" (that is, being cheap to run).
+having "easy" cost (that is, being cheap to run).
 These three aspects of being easy or hard
 (ability to analyze, ability to find a solution, and cost to run) are
 completely independent.
+
+This example also serves to introduce our notation for defining
+problems.
+Remember that a :term:`problem` is a :term:`function`
+(i.e., a mapping of inputs to outputs).
+Our notational convention is that first we state the problem name
+(traditionally in capital letters), then we 
+state the problem inputs, then we state the problem outputs.
 
 .. topic:: TOWERS OF HANOI
 
@@ -73,6 +105,7 @@ completely independent.
    :links: AV/RecurTutor/TOHfigCON.css
    :scripts: AV/RecurTutor/TOHfigCON.js
    :output: show
+   :keyword: Towers of Hanoi
 
 
 The Model
@@ -82,8 +115,8 @@ Recall that to do analysis, we have to define a model with two parts:
 a definition for the size of the input, and a definition for how to
 measure the cost of a solution.
 
-#. **The size of the input** is the number of disks.
-#. **The cost of the solution** is the number of moves made.
+#. For our model, the **size of the input** is the number of disks.
+#. For our model, the **cost of the solution** is the number of moves made.
 
 
 Finding an Algorithm
@@ -91,10 +124,11 @@ Finding an Algorithm
 
 When trying to solve most problems, a good place to start is to try to
 solve it for small instances.
-How would we solve the problem when there are 0 disks, 1 disk, 2
-disks, and so on?
-Those should all be pretty easy for you to figure out.
-How about 3 disks? This starts to get a bit harder.
+How would we solve the problem when there are 0 disks, 1 disk, or 2
+disks?
+These should all be pretty easy for you to figure out.
+How about 3 disks?
+This starts to get a bit harder.
 Think about all the possible choices for a 3-disk series of
 moves.
 There a several possibilities, but you should find that there is only
@@ -128,8 +162,8 @@ Similarly, *analysis* of the problem might rely on a
 This is often a simplification for the "states" or progess of the
 algorithm, or a recognition of the key input classes for the problem.
 
-When we generalize the problem to more disks, we must end up with
-a process something like:
+When we generalize the problem to more disks, any efficient solution
+must end up with a process something like:
 
 * Move all but the bottom disk to Pole C.
 * Move the bottom disk from Pole A to Pole B.
@@ -139,12 +173,14 @@ Notice that in this discussion, we used a number of problem-solving
 heuristics to solve this problem, including:
 
 * Get our hands dirty: Try playing with some simple examples
-* Go to the extremes: Check the small cases first
-* Penultimate step: Key insight is that we can't solve the problem
-  until we move the bottom disk. So to solve the whole problem, we
-  first clear off the bottom disk, then we move the bottom disk, then
-  we solve the rest of the problem. Reducing the full problem to these
-  pieces is hopefully easier to solve than the original problem was.
+  (like input sizes 0, 1, 2).
+* Go to the extremes: Check the small cases first.
+* Penultimate step: The key insight is that we can't solve the problem
+  unless we move the bottom disk, and there is only one way to do this.
+  So to solve the whole problem, we first clear off the bottom disk,
+  then we move the bottom disk, then we solve the rest of the problem.
+  Reducing the full problem to these pieces is hopefully easier to
+  solve than the original problem was.
 
 As a practical matter, how do we deal with the fact that we have to
 move :math:`n-1` disks (twice)?
@@ -179,7 +215,7 @@ instance of size :math:`n`.
 So we do not need to worry about complicating issues related to
 whether we are concerned with the worst, best, or average case costs.
 This is one of the reasons why we picked this problem to discuss first |---|
-we don't have the complexity of a range of inputs for a
+we don't have the complication of a range of inputs for a
 given size :math:`n`.
 
 Given an algorithm to solve the problem, we want to know what the
@@ -188,7 +224,7 @@ In particular, we want to know the :term:`growth rate` for the
 algorithm as the input size grows.
 In particular, our cost model says that our cost is the number of
 moves that are made to solve the problem.
-So, we want to count the number of moves required as a function of
+**So, we want to count the number of moves required as a function of**
 :math:`n`.
 
 To do this, we will need a mathematical model, some equation that
@@ -196,7 +232,8 @@ defines the number of moves as a function of :math:`n`.
 How do we get there?
 We can either deduce this from the structure of the algorithm, or by
 observing its behavior.
-Let's start with behavior (though with a bit of proficiency we will
+Let's start with behavior (though once we build a bit of proficiency
+with recurrence relations, we will
 find that the structure of this particular algorithm makes the
 equation fairly straightforward).
 Here are some facts to get us started, by counting the number of moves
@@ -223,10 +260,10 @@ This is using a :term:`recurrence relation`, and we will need to
 recurrence.
 
 Actually, we can simplify our list of facts.
-We only need f(1) and f(n), facts f(2) and f(3) are redundant
+We only need f(1) and f(n) since facts f(2) and f(3) are redundant
 information.
 But spelling them out might help us to see the pattern.
-We only need one base case in this case.
+We only need one base case for this problem.
 So here is the formal recurrence relation that defines the
 mathematical model for our algorithm's cost:
 
@@ -288,12 +325,13 @@ To prove by induction, we need to show two things:
 #. Being true for :math:`k` implies that it is true also for
    :math:`k+1`.
 
-Here is the complete induction proof for ``Tower1``:
+Here is the complete induction proof for the cost of ``Tower1``:
 
 .. topic:: Proof by Induction
 
    #. **Check the base case.**
-      For :math:`n = 0`, :math:`f(0) = 0`, so :math:`f(0) = 2^0 - 1`.
+      For :math:`n = 1`, :math:`f(1) = 1`, and :math:`f(1) = 2^1 - 1`.
+      So the base case is correct.
 
    #. **State the induction hypothesis.**
       The induction hypothesis is
@@ -333,8 +371,10 @@ infinite number.
 Lower bounds don't give you a good algorithm.
 They only help you know when to stop looking.
 If the lower bound for the problem matches the upper bound for the
-algorithm (within a constant factor), then we know that we can find an
-algorithm that is better only by a constant factor.
+algorithm (within a constant factor), then we know that the best we
+could hope for would be to find an algorithm that is better by a
+constant factor.
+We normally don't worry about doing that.
 
 Can a lower bound tell us if an algorithm is NOT optimal?
 No, sorry!
@@ -374,6 +414,13 @@ Thus, our algorithm is optimal.
 New Models
 ~~~~~~~~~~
 
+We need to go through this whole process again if we decide to change
+the model.
+Sometimes we want to change the model if our original problem is too
+hard in some way, and we can live with solving a different (easier)
+problem.
+Sometimes we want to change the model because our needs change.
+
 New model #1: We can move a stack of disks in one move.
 This is a big help! :math:`O(n)` or even :math:`O(1)`.
 
@@ -405,13 +452,22 @@ Is our lower bound weak, and the true lower bound for the problem is
 greater?
 Or is our algorithm simply not the best?
 
+Notice the similarity to :math:`\Theta` notation.
+We say that :math:`f(n) = \Theta(g(n))` when
+:math:`f(n) \in \Omega(g(n))` and :math:`f(n) \in O(g(n))`.
+In other words, if the upper and lower bounds of the cost function
+meet, within a constant factor, then we "truly understand" the
+cost function.
+Likewise, when the upper and lower bounds of the problem's cost meet,
+then we say that we "understand" the cost of that problem.
+
 Now we know precisely what we are aiming for when designing an
 algorithm:
 We want to find an algorithm who's upper bound matches the lower bound
 of the problem.
 Putting together all that we know so far about algorithms, we can
 organize our thinking into the following "algorithm for designing
-algorithms". [#]_
+algorithms".
 
 | **If** the upper and lower bounds match,
 |   **then** stop,
@@ -455,5 +511,11 @@ You might get stuck in a loop if you go through and make no
 progress.
 So, is it an algorithm?
 
-.. [#] This is a minor reformulation of the "algorithm" given by
-       Gregory J.E. Rawlins in his book *Compared to What?*
+
+Acknowledgement
+---------------
+
+This page is heavily influenced by the presentation in
+Sections 1.1 to 1.6 in *Compared to What?* by Gregory J.E. Rawlins.
+In particular, the "algorithm for designing algorithms" is borrowed
+directly from Rawlins.

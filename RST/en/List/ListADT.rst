@@ -4,16 +4,24 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: A List ADT
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: ADT
    :satisfies: list ADT
    :topic: Lists
+   :keyword: List ADT
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents an ADT for the list class used in this chapter.
 
-The List ADT
-============
 
-The List ADT
-------------
+A List ADT
+==========
+
+
+A List ADT
+----------
 
 We all have an intuitive understanding of what we mean by a "list".
 We want to turn this intuitive understanding into a concrete data
@@ -131,6 +139,7 @@ object, sometimes referred to as an :term:`iterator`.
    :links: AV/List/listADTCON.css
    :scripts: AV/List/listADTposCON.js
    :output: show
+   :keyword: List ADT
 
 The ``List`` member functions allow you to build a list with elements
 in any desired order, and to access any desired position in the list.
@@ -189,6 +198,7 @@ List ADT Programming Exercise
 -----------------------------
 
 .. extrtoolembed:: 'List ADT Programming Exercise'
+   :workout_id: 62
 
 .. TODO::
    :type: Exercise

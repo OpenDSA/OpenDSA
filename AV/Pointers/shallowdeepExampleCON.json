@@ -6,7 +6,7 @@
       "sc3": "Then let's 'shallow copy' by creating a new reference named <tt>shallowCopyEmployee</tt>, and making it also reference the same <tt>Employee</tt> object that <tt>firstEmployee</tt> references.",
       "sc4": "Now, using setName(), update the Employee object's name as \"John\", which shallowCopyEmployee is pointing to.",
       "sc5": "If you print out the name of firstEmployee, you will see that the name of the Employee is now \"John,\" not \"Sam.\".",
-      "sc6": "Now, let's create another <tt>Employee</tt> object, referneced by <tt>secondEmployee</tt>. Set the name of this employee to be 'Patrice'.",
+      "sc6": "Now, let's create another <tt>Employee</tt> object, referenced by <tt>secondEmployee</tt>. Set the name of this employee to be 'Patrice'.",
       "sc7": "Then we create a third <tt>Employee</tt> object, referenced by <tt>deepCopyEmployee</tt>.",
       "sc8": "After that, copy the name of the object referenced by <tt>secondEmployee</tt> and set that name into the object referenced by <tt>deepCopyEmployee</tt>. So you deep-copied the contents of <tt>secondEmployee</tt>'s object.",
       "sc9": "Now, let's set the name of the object referenced by <tt>deepCopyEmployee</tt> to 'John'.",

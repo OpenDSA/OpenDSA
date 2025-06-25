@@ -1,0 +1,13 @@
+#Pair2SortFS {
+  height: 600px;
+}
+
+#Pair2SortFS .jsavoutput.jsavline {
+  height: 35px;
+}
+
+#Pair2SortFS .jsavhorizontalarray .jsavnode {
+  min-width: 27px !important;
+  max-width: 30px !important;
+}
+

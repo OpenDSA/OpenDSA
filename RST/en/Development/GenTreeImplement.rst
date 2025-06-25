@@ -6,6 +6,8 @@
 .. avmetadata::
    :author: Cliff Shaffer
    :topic: General Trees
+   :keyword: General Tree Implementations
+
 
 General Tree Implementations
 ============================

@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Liling Yuan and Cliff Shaffer
 // Deleting from a B+ Tree of order 4
+
+// Title: Deletion from a B+ Tree of Degree 4
+// Author: Liling Yuan; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Tree-Based Indexing; B-Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a series of delete operations in a B+ Tree of degree 4. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "BPdeleteCON";

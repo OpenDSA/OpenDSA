@@ -4,8 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
+   :title: Summation Techniques
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Advanced Analysis
+   :keyword: Algorithm Analysis; Summation
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents an intermediate-level survey of techniques for finding closed-form solutions for summations, appropriate for a senior-level algorithms course.
 
 Summation Techniques
 ====================
@@ -45,6 +51,7 @@ proposed solution is badly wrong.
    :links: AV/Background/SummationOneToNCON.css
    :scripts: AV/Background/SummationOneToNCON.js
    :output: show
+   :keyword: Algorithm Analysis; Summations
 
 Let us now consider some ways that we might hit upon an exact equation
 for the closed form solution to this summation.
@@ -256,11 +263,12 @@ pattern in terms of :math:`f(n) - g(n)` or :math:`f(n)/g(n)`.
 
    This is called a geometric series.
    Our goal is to find some function :math:`g(n)` such
-   that the difference between :math:`f(n)` and :math:`g(n)` one from
-   the other leaves us with an easily manipulated equation.
-   Because the difference between consecutive terms of the summation
-   is a factor of :math:`r`, we can shift terms if we multiply the
-   entire expression by :math:`r`:
+   that the difference between :math:`f(n)` and :math:`g(n)`
+   leaves us with an easily manipulated equation.
+   For example, we might observe that the difference between
+   consecutive terms of the summation is a factor of :math:`r`,
+   so we can shift terms if we multiply the entire expression by
+   :math:`r`:
 
    .. math:: 
 
@@ -373,3 +381,4 @@ Here is another example.
    :links: AV/SeniorAlgAnal/GeometricSumProofCON.css
    :scripts: AV/SeniorAlgAnal/GeometricSumProofCON.js
    :output: show
+   :keyword: Algorithm Analysis; Summations

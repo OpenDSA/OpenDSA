@@ -4,10 +4,17 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Lists and the Array-Based List Implementation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: list ADT
    :satisfies: array-based list
    :topic: Lists
+   :keyword: Array-Based List
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents an implementation for lists stored in arrays.
+
 
 Array-Based List Implementation
 ===============================
@@ -29,12 +36,14 @@ and so must implement all of the member functions of ``List``.
    :links: AV/List/alistCON.css
    :scripts: AV/List/alistVarsCON.js
    :output: show
+   :keyword: Array-based List
 
 .. inlineav:: alistIntroCON ss
    :long_name: Array-based List Intro Slideshow
    :links: AV/List/alistCON.css
    :scripts: AV/List/alistIntroCON.js
    :output: show
+   :keyword: Array-based List
 
 
 Insert
@@ -56,6 +65,7 @@ Insert Practice Exericse
 
 .. avembed:: Exercises/List/AlistInsertPRO.html ka
    :long_name: Array-based List Insert Exercise
+   :keyword: Array-based List
 
 
 Append and Remove
@@ -66,6 +76,7 @@ Append and Remove
    :links: AV/List/alistCON.css
    :scripts: AV/List/alistAppendCON.js
    :output: show
+   :keyword: Array-based List
 
 Removing an element from the head of the list is
 similar to insert in that all remaining elements  must shift toward
@@ -79,6 +90,7 @@ following slideshow.
    :links: AV/List/alistCON.css
    :scripts: AV/List/alistRemoveCON.js
    :output: show
+   :keyword: Array-based List
 
 In the average case, insertion or removal each requires moving half
 of the elements, which is :math:`\Theta(n)`.
@@ -89,6 +101,7 @@ Remove Practice Exericise
 
 .. avembed:: Exercises/List/AlistRemovePRO.html ka
    :long_name: Array-based List Remove Exercise
+   :keyword: Array-based List
 
 Aside from ``insert`` and ``remove``, the only other operations that
 might require more than constant time are the constructor and
@@ -103,3 +116,4 @@ Array-based List Practice Questions
 
 .. avembed:: Exercises/List/ALSumm.html ka
    :long_name: Array-based List Summary
+   :keyword: Array-based List

@@ -4,7 +4,7 @@
      Written by Bailey Spell and Jesse Terrazas 
 -->
 
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Public Key Creator</title>
@@ -22,7 +22,7 @@
     <p class="secretMsgLabel">Your Secret Message:</p>
     <textarea class="secretMsg" rows="2" cols="63" disabled></textarea>
 
-    <p class="publicKeyLabel">Insert Public Key Here:</p>
+    <p class="publicKeyLabel">Paste Your Public Key Here:</p>
     <textarea class="publicKey" rows="2" cols="63" placeholder="Type your public key here"></textarea>
     
     <button class="encrypt">Ecrypt</button>
@@ -32,9 +32,10 @@
     
   </div>
 
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="../../lib/jquery.min.js"></script>
+<script src="../../lib/jquery.migrate.min.js"></script>
   <script src="../../lib/JSAV-min.js"></script>
-  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <script src="../../lib/odsaUtils-min.js"></script>
   <script src="../../lib/odsaAV-min.js"></script>
   <script src="rsa_encryption/jsencrypt.min.js"></script>

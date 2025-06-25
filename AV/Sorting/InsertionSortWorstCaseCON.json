@@ -19,6 +19,17 @@
     }
   },
   "code": {
+    "java_generic": [{
+      "url": "../../../SourceCode/Java_Generic/Sorting/Insertionsort.java",
+      "lineNumbers": false,
+      "startAfter": "/* *** ODSATag: Insertionsort *** */",
+      "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
+      "tags": {
+        "loops": [2, 3],
+        "loop1": 2,
+        "loop2": 3
+      }
+    }],
     "c++": [{
       "url": "../../../SourceCode/C++/Sorting/Insertionsort.cpp",
       "lineNumbers": false,
@@ -41,15 +52,16 @@
         "loop2": 3
       }
     }],
-    "java_generic": [{
-      "url": "../../../SourceCode/Java_Generic/Sorting/Insertionsort.java",
-      "lineNumbers": false,
+    "python": [{
+      "url": "../../../SourceCode/Python/Sorting/Insertionsort.py",
       "startAfter": "/* *** ODSATag: Insertionsort *** */",
       "endBefore": "/* *** ODSAendTag: Insertionsort *** */",
       "tags": {
-        "loops": [2, 3],
-        "loop1": 2,
-        "loop2": 3
+        "sig": 1,
+        "outloop": 2,
+        "inloop": 4,
+        "swap": 5,
+        "end": 6
       }
     }]
   }

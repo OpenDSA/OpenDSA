@@ -1,9 +1,40 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
 
+// Title: Reduction of 3-SAT to Hamiltonian Cycle Slideshow
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction; Satisfiability Problem; Hamiltonian Cycle Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating a reduction from an instance of the 3-Satisfiability problem to an instance of the Hamiltonian Cycle problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "threeSATtoHCCON";
+
+  function hidegraph() {
+    g.hide();
+    gshadow.hide();
+    line0.hide();
+    line1.hide();
+    line2.hide();
+    v1lab.hide();
+    v2lab.hide();
+    v3lab.hide();
+  }
+  
+  function showgraph() {
+    g.show();
+    gshadow.show();
+    line0.show();
+    line1.show();
+    line2.show();
+    v1lab.show();
+    v2lab.show();
+    v3lab.show();
+  }
 
   $(".avcontainer").on("jsav-message" ,  function() {
     // invoke MathJax to do conversion again
@@ -15,6 +46,9 @@ $(document).ready(function () {
 
   var jsav = new JSAV(av_name);
 
+  // Leftover from original version
+  var y = 15;
+  
   /* Description for some global variables used :
    * g: The graph that is constructed for the reduction. Any pair of
    * nodes in any path P_i in G has 2 edges (say forward for left-to-right
@@ -43,7 +77,7 @@ $(document).ready(function () {
    * PE1: The array holds all the edges connecting the source and target to
    * the rest of the graph.
    *
-   * PE2: The array holds all the interconnecting edges that connects wo
+   * PE2: The array holds all the interconnecting edges that connects two
    * paths P_i and P_j.
    *
    * PE3: The array contains the edges that connect clause-nodes to the
@@ -52,523 +86,323 @@ $(document).ready(function () {
    * C: The array that holds the clause nodes of the graph.
    */
 
-  var x= 200 , y1 = 10 , r = 15;
-
-  var label1, label2, label3, label4, label5, label6,label7,label8,label9,label10,label11,
-      g, g1, source,  target, line1, line2,
-      varlabel, exprlabel,
-      literalLabels = new Array(4),
-      clauses = new Array(3),
-      P = new Array(4),
-      C = new Array(3),
-      P1 = new Array(4),
-      color = new Array(3),
-      PLabel = new Array(4),
-      PE = new Array(4),
-      PE1 = new Array(5),
-      PE2 = new Array(4),
-      PE3 = new Array(3);
-
-  var input=[["$x_1$", "$x_2$", "$\\overline{x_3}$"],
-             ["$\\overline{x_2}$", "$x_3$", "$x_4$"],
-             ["$x_1$", "$\\overline{x_2}$", "$x_4$"]];
-
-  function hideGraph(){
-    exprlabel.hide();
-
-    for(var i=0;i<5;i++)
-      PE1[i].hide();
-
-    for(var i=0;i<4;i++){
-      if(i > 0) {
-        for(var j=0;j<4;j++)
-          PE2[i-1][j].hide();
-      }
-      PLabel[i].hide();
-      for(var j=0;j<6;j++){
-        if(j>0){
-          PE[i][j][0].hide();
-          PE[i][j][1].hide();
-        }
-        P[i][j].hide();
-      }
-    }
-    source.hide(); target.hide();
-    for(var i=0;i<3;i++) {
-      C[i].hide();
-      for(var j=0;j<8;j++)
-        clauses[i][j].hide();
-      for(var j=0;j<3;j++){
-        PE3[i][j][0].hide();
-        PE3[i][j][1].hide();
-      }
-    }
-    line1.hide(); line2.hide();
-  }
-
-  //color array for clauses
-  color = ["#669966" , "SlateBlue" , "IndianRed"];
-
-  g1 = jsav.ds.graph({width: 800,  height: 550,  left: 100,  top: 50,
-                      layout: "manual",  directed: true});
-  g = jsav.ds.graph({width: 800,  height: 550,  left: 100,  top: 50,
-                     layout: "manual" ,  directed: true});
-
-  var y=15;
-
   // Slide 1
-  jsav.umsg("<br><b>Reduction of 3-SAT to Hamiltonian Cycle Problem</b>");
-  label1=jsav.label("This slideshow explains the reduction of 3CNF"+
-                    " Satisfiability to Hamiltonian Cycle in polynomial time",{top:y});
+  jsav.umsg("This slideshow explains the reduction (in polynomial time) of an instance of 3CNF Satisfiability (3-SAT) to an instance of the Hamiltonian Cycle problem.");
   jsav.displayInit();
 
-  jsav.step();
-
   // Slide 2
-  label1.hide();
-  jsav.umsg("<br><b>3-SAT and  HAMILTONIAN CYCLE.</b>");
-  label1=jsav.label("For a 3-SAT expression containing $n$ variables," +
-                    " there are $2^n$ possible assignments.",
-                    {left:0,top:y-30});
-  label2=jsav.label("We model these $2^n$ possible truth assignments using a graph with"
-                    +" $2^n$ different Hamiltonian cycles <br>by the following method." ,
-                    {left:0,top:y});
+  jsav.umsg("<b>3-SAT and  HAMILTONIAN CYCLE:</b> To convert a problem instance of 3-SAT to a problem instance of Hamiltonian Cycle, we need some way to convert the collection of boolean clauses to a graph. The following construction will contain a collection of nodes for each variable, some nodes to represent the clauses, and a few extra nodes to tie everything together. There will be times where we might use more nodes than strictly necessary, but this is to make the construction process more clear.");
   jsav.step();
 
   // Slide 3
-  label1.hide();
-  label2.hide();
-  jsav.umsg("<br><b>Step1: Construction of paths</b>");
-  label1=jsav.label("Construct $n$ paths $P_1$, $P_2$, ..., $P_n$ corresponding to the"
-                    +" $n$ variables." , {left:0,top:y-30});
-  label2=jsav.label("Each path $P_i$ should consist of $2k$ nodes ($v_{i,1}$, $v_{i,2}$"
-                    +", ..., $v_{i,2k}$) where $k$ is the number of clauses <br>in the "+
-                    "expression." , {left:0,top:y});
+  jsav.umsg("In the eventual graph, each variable from the 3-SAT problem instance will be represented by its own row of nodes. Each node in the row will be be connected to the one to it's left and it's right. To help clarify the eventual construction, between each row we add a single node that is linked to from the first and last nodes of the row above, and links in turn to the first and last nodes of the row below.<br/><br/>For example, consider a CNF expression with three variables $x_1$, $x_2$, and $x_3$. Be begin the construction as follows.");
+
+  var yoffset = 71;
+  var ystep = 80;
+  
+  var labx1 = jsav.label("$$x_1$$", {left: 100, top: -30+yoffset});
+  var cirx11 = jsav.g.circle(200, 10+yoffset, 5);
+  var cirx12 = jsav.g.circle(230, 10+yoffset, 5);
+  var cirx13 = jsav.g.circle(350, 10+yoffset, 5);
+  var linex1t1 = jsav.g.line(205, 8+yoffset, 223, 8+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex1b1 = jsav.g.line(206, 12+yoffset, 224, 12+yoffset, {"arrow-start": "classic-wide-long"});
+  var linex1t2 = jsav.g.line(325, 8+yoffset, 343, 8+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex1b2 = jsav.g.line(326, 12+yoffset, 344, 12+yoffset, {"arrow-start": "classic-wide-long"});
+  var labelx1dots = jsav.label(". . .", {left: 260, top: -17+yoffset});
+
+  var cirx1extra = jsav.g.circle(280, 50+yoffset, 5);
+  var linex1lext = jsav.g.line(200, 14+yoffset, 274, 47+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex1rext = jsav.g.line(350, 14+yoffset, 286, 47+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex1lexb = jsav.g.line(200, 86+yoffset, 274, 53+yoffset, {"arrow-start": "classic-wide-long"});
+  var linex1rexb = jsav.g.line(350, 86+yoffset, 286, 53+yoffset, {"arrow-start": "classic-wide-long"});
+
+
+  yoffset = yoffset + ystep;
+  var labx2 = jsav.label("$$x_2$$", {left: 100, top: -30+yoffset});
+  var cirx21 = jsav.g.circle(200, 10+yoffset, 5);
+  var cirx22 = jsav.g.circle(230, 10+yoffset, 5);
+  var cirx23 = jsav.g.circle(350, 10+yoffset, 5);
+  var linex2t1 = jsav.g.line(205, 8+yoffset, 223, 8+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex2b1 = jsav.g.line(206, 12+yoffset, 224, 12+yoffset, {"arrow-start": "classic-wide-long"});
+  var linex2t2 = jsav.g.line(325, 8+yoffset, 343, 8+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex2b2 = jsav.g.line(326, 12+yoffset, 344, 12+yoffset, {"arrow-start": "classic-wide-long"});
+  var labelx2dots = jsav.label(". . .", {left: 260, top: -17+yoffset});
+
+  var cirx2extra = jsav.g.circle(280, 50+yoffset, 5);
+  var linex2lext = jsav.g.line(200, 14+yoffset, 274, 47+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex2rext = jsav.g.line(350, 14+yoffset, 286, 47+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex2lexb = jsav.g.line(200, 86+yoffset, 274, 53+yoffset, {"arrow-start": "classic-wide-long"});
+  var linex2rexb = jsav.g.line(350, 86+yoffset, 286, 53+yoffset, {"arrow-start": "classic-wide-long"});
+  
+  yoffset = yoffset + ystep;
+  var labx3 = jsav.label("$$x_3$$", {left: 100, top: -30+yoffset});
+  var cirx31 = jsav.g.circle(200, 10+yoffset, 5);
+  var cirx32 = jsav.g.circle(230, 10+yoffset, 5);
+  var cirx33 = jsav.g.circle(350, 10+yoffset, 5);
+  var linex3t1 = jsav.g.line(205, 8+yoffset, 223, 8+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex3b1 = jsav.g.line(206, 12+yoffset, 224, 12+yoffset, {"arrow-start": "classic-wide-long"});
+  var linex3t2 = jsav.g.line(325, 8+yoffset, 343, 8+yoffset, {"arrow-end": "classic-wide-long"});
+  var linex3b2 = jsav.g.line(326, 12+yoffset, 344, 12+yoffset, {"arrow-start": "classic-wide-long"});
+  var labelx3dots = jsav.label(". . .", {left: 260, top: -17+yoffset});
   jsav.step();
 
   // Slide 4
-  label4=jsav.label("For example, consider the following boolean expression with 4 variables: ",
-                    {left:0,top:y+60});
-  label5=jsav.label("$x_1$, $x_2$, $x_3$, $x_4$" , {left:0,top:y+90});
-  label6=jsav.label("Expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_2} + x_3 + x_4).(x_1 + \\overline{x_2} + x_4)$",
-                    {left:0,top:y+120});
-  label7=jsav.label("We construct 4 paths with 6 nodes each",
-                    {left:0,top:y+150});
-  label8=jsav.label("$P_1$ with nodes $v_{1,1}, v_{1,2}, v_{1,3}, v_{1,4}, v_{1,5}, v_{1,6}$",
-                    {left:0,top:y+180});
-  label9=jsav.label("$P_2$ with nodes $v_{2,1}, v_{2,2}, v_{2,3}, v_{2,4}, v_{2,5}, v_{2,6}$",
-                    {left:0,top:y+210});
-  label10=jsav.label("$P_3$ with nodes $v_{3,1}, v_{3,2}, v_{3,3}, v_{3,4}, v_{3,5}, v_{3,6}$",
-                     {left:0,top:y+240});
-  label11=jsav.label("$P_4$ with nodes $v_{4,1}, v_{4,2}, v_{4,3}, v_{4,4}, v_{4,5}, v_{4,6}$",
-                     {left:0,top:y+270});
+  jsav.umsg("<br/><br/>At the very top we add a node labeled $s$, and at the bottom a node labeled $t$.", {preserve: true});
+
+  var cirs = jsav.g.circle(280, -194+yoffset, 7);
+  var cirt = jsav.g.circle(280, 50+yoffset, 7);
+  var labels = jsav.label("$$s$$",  {left: 277, top: -237+yoffset});
+  var labelt = jsav.label("$$t$$",  {left: 278, top: 8+yoffset}); 
+  var lineslexb = jsav.g.line(200, 86+yoffset-241, 274, 53+yoffset-241, {"arrow-start": "classic-wide-long"});
+  var linesrexb = jsav.g.line(350, 86+yoffset-241, 286, 53+yoffset-241, {"arrow-start": "classic-wide-long"});
+ var linetlext = jsav.g.line(200, 14+yoffset, 272, 47+yoffset, {"arrow-end": "classic-wide-long"});
+  var linetrext = jsav.g.line(350, 14+yoffset, 288, 47+yoffset, {"arrow-end": "classic-wide-long"});
+  
   jsav.step();
 
-  // Slide 5, 6, 7, 8
-  // display the boolean variables
+  // Slide 5
+  jsav.umsg("For our example, let's say that there are two clauses, $C_1$ and $C_2$. Representing the clauses is simple: We merely add a node to represent each clause.");
+  var cirC1 = jsav.g.circle(420, -174+yoffset, 5);
+  var cirC2 = jsav.g.circle(420, -144+yoffset, 5);
+  var labelC1 = jsav.label("$$C_1$$",  {left: 450, top: -215+yoffset});
+  var labelC2 = jsav.label("$$C_2$$",  {left: 450, top: -185+yoffset}); 
+  jsav.step();
 
-  label1.hide(), label2.hide();
-  label4.hide(), label5.hide(); label6.hide();
-  label7.hide(), label8.hide(); label9.hide();
-  label10.hide(), label11.hide();
+  // Slide 6
+  jsav.umsg("<br/>This begs the question: How do we connect the clause nodes to the graph? Before we can answer that, let's consider how many nodes we need in each row.", {preserve: true});
+  jsav.step();
 
-  jsav.umsg("<br><b>Step 1a: Adding nodes for the paths</b>");
-  varlabel = jsav.label("Variables:" , {left:10 , top:y-30});
-  x = 100;
-  for(var i=0;i<6;i=i+2) {
-    literalLabels[i]=jsav.label("$x_"+(i/2+1)+"$" , {left:x , top:y-30});
-    literalLabels[i+1]=jsav.label("," , {left:x+30 , top:y-30});
-    x=x+45;
-  }
-  literalLabels[i]=jsav.label("$x_"+(i/2+1)+"$" , {left:x , top:y-30});
+  // Slide 7
+  jsav.umsg("<br/>We will be associating clauses to variables by using two nodes from the row for the given variable: One to go to the associated clause node and one to come back. So we need at least $2k$ nodes where $k$ is the number of clauses. But we will see that we want to make sure that things work appropriately with the rows (explained soon). For this reason we want an extra node to come between each pair of nodes that we are using for a given clause. So we need to add $k+1$ nodes. Plus a start and end node to make things clearer. So each variable will be represented by a row of $3k +3$ nodes.", {preserve: true});
+  jsav.step();
 
-  y1=60;
-  for(var i=0;i<4;i++) {
-    x=10;
-    P[i]=new Array(6);
-    P1[i]=new Array(6);
-    PE[i]=new Array(6);
-    PLabel[i]=jsav.label("$P_"+(i+1)+"$" , {"left":x+70 , "top":y1+55});
-    if(i>0) {
-      literalLabels[2*(i-1)].removeClass("zoomlabel");
-      for(var j=0;j<6;j++) {
-        P[i-1][j].addClass("blur");
-      }
-    }
+  // Slide 8
+  jsav.umsg("Now let's see the graph that would be constructed for the example expression $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.");
 
-    for(var j=0;j<6;j++) {
-      // Add nodes corresponding to the paths to g and g1
-      // Display the nodes one by one
-      P1[i][j] = g1.addNode(" " , {"top":y1+5 , "left":x})
+  // HIDE THE OLD IMAGE AND START OVER NOW
+  labx1.hide();
+  cirx11.hide();
+  cirx12.hide();
+  cirx13.hide();
+  linex1t1.hide();
+  linex1b1.hide();
+  linex1t2.hide();
+  linex1b2.hide();
+  labelx1dots.hide();
+  cirx1extra.hide();
+  linex1lext.hide();
+  linex1rext.hide();
+  linex1lexb.hide();
+  linex1rexb.hide();
+  labx2.hide();
+  cirx21.hide();
+  cirx22.hide();
+  cirx23.hide();
+  linex2t1.hide();
+  linex2b1.hide();
+  linex2t2.hide();
+  linex2b2.hide();
+  labelx2dots.hide();
+  cirx2extra.hide();
+  linex2lext.hide();
+  linex2rext.hide();
+  linex2lexb.hide();
+  linex2rexb.hide();
+  labx3.hide();
+  cirx31.hide();
+  cirx32.hide();
+  cirx33.hide();
+  linex3t1.hide();
+  linex3b1.hide();
+  linex3t2.hide();
+  linex3b2.hide();
+  labelx3dots.hide();
+  cirs.hide();
+  cirt.hide();
+  labels.hide();
+  labelt.hide();
+  lineslexb.hide();
+  linesrexb.hide();
+  linetlext.hide();
+  linetrext.hide();
+  cirC1.hide();
+  cirC2.hide();
+  labelC1.hide();
+  labelC2.hide();
+  jsav.step();
+
+  // Slide 9
+  jsav.umsg("<br/>First, here are the nodes for the three variables, plus the start and end nodes ($s$ and $t$) and the intermediate nodes between the variable rows. Since in our example $k = 2$ (there are two clauses), we need $3 * 2 + 3 = 9$ nodes for each variable.", {preserve: true});
+
+  // g is the graph generated by the construction process
+  // Any pair of nodes in any path P_i in G has 2 edges (say forward for
+  // left-to-right and reverse for right-to-left) between them. However
+  // display of such pair of edges is not yet supported in jsav. So only
+  // forward edges are included as a part of graph g.
+
+  // gshadow : For the problem described above, as a workaround we have g1,
+  // a second graph which contains a copy of all nodes in g that requires
+  // both reverse and forward edges. These nodes of g1 are not visible and
+  // are placed 5 units beneath the corresponding nodes in g. These nodes
+  // are used to draw the reverse edges on the canvas.
+
+  // Note that the Finite Automata class supports curvey edges that would be
+  // perfect for this use case. Ought to make that available to the graph
+  // class at some point.
+  
+  // We declare gshadow first, because that way g's nodes will display and
+  // hide gshadow's nodes.
+  var gshadow = jsav.ds.graph({width: 800,  height: 450,  left: 10,  top: 10,
+                               layout: "manual",  directed: true});
+  var g = jsav.ds.graph({width: 800,  height: 450,  left: 10,  top: 10,
+                     layout: "manual" ,  directed: true});
+  yoffset = 0
+  var xcenter = 360;
+  var source  = g.addNode("<b>s</b>" , {"top":10+yoffset, "left": xcenter}).addClass("extranode");
+  var target  = g.addNode("<b>t</b>" , {"top":390+yoffset, "left": xcenter}).addClass("extranode");
+  var extra1 = g.addNode(" " , {"top":140+yoffset, "left": xcenter});
+  var extra2  = g.addNode(" " , {"top":260+yoffset, "left": xcenter});
+
+  // nodes holds the nodes for the clauses.
+  var nodes = new Array(3);
+  var nodeshadow = new Array(3);
+  var edges = new Array(3);
+  var edgeshadow = new Array(3);
+
+  yoffset = 80;
+  var xoffset = 120;
+  var ystep = 120;
+  var xstep = 60;
+  var i, j;
+  for (i=0; i<3; i++) {
+    nodes[i] = new Array(9);
+    nodeshadow[i] = new Array(9);
+    edges[i] = new Array(9);
+    edgeshadow[i] = new Array(9);
+    for (j=0; j<9; j++) {
+      nodes[i][j] = g.addNode("" + (j+1),
+                              {top: yoffset + i*ystep, left: xoffset+j*xstep})
+        .addClass("variablenode");      
+      
+      nodeshadow[i][j] = gshadow.addNode(" ",
+                                   {top: yoffset+5 + i*ystep, left: xoffset+j*xstep})
         .addClass("variablenode").addClass("invisible");
-      P[i][j] = g.addNode(" "+(j+1) , {"top":y1 , "left":x})
-        .addClass("variablenode");
-
-      if(j>0) {
-        // Add the forward edges between the nodes to g and reverse edges to g1
-        PE[i][j]=new Array(2);
-        PE[i][j][0]=g.addEdge(P[i][j-1] , P[i][j])
-          .addClass("edgetrue");
-        PE[i][j][0].hide();
-        PE[i][j][1]=g1.addEdge(P1[i][j] , P1[i][j-1])
-          .addClass("edgefalse");
-        PE[i][j][1].hide();
-      }
-      x = x+85;
     }
-
-    // Add the interconnecting edges between the paths to g
-    if(i>0){
-      PE2[i-1]=new Array(4);
-      PE2[i-1][0]=g.addEdge(P[i-1][0] , P[i][0])
-        .addClass("edgeconnect");
-      PE2[i-1][1]=g.addEdge(P[i-1][0] , P[i][j-1])
-        .addClass("edgeconnect");
-      PE2[i-1][2]=g.addEdge(P[i-1][j-1] , P[i][0])
-        .addClass("edgeconnect");
-      PE2[i-1][3]=g.addEdge(P[i-1][j-1] , P[i][j-1])
-        .addClass("edgeconnect");
-      for(j=0;j<4;j++)
-        PE2[i-1][j].hide();
-    }
-    y1 = y1+60;
-    g.layout();
-    g1.layout();
-    literalLabels[2*i].addClass("zoomlabel");
-    jsav.step();
-  }
-
-  // Slide
-  for(var j=0;j<6;j++){
-    P[i-1][j].addClass("blur");
-  }
-  literalLabels[2*(i-1)].removeClass("zoomlabel");
-  varlabel.hide();
-  for( var i=0;i<7;i++)
-    literalLabels[i].hide();
-
-  //display forward edges
-  jsav.umsg("<br><b>Step 1b: Adding edges to the paths</b>");
-  label1=jsav.label("Add edges from $v_{i,j-1}$ to $v_{i,j}$ (i.e. left to right) on"
-                    +" $P_i$ to correspond to the assignment  $x_i = True$" ,
-                    {left:0,top:y-30} );
-  for(var i=0;i<4;i++){
-    for(var j=0;j<6;j++){
-      if(j>0)
-        PE[i][j][0].show();
+    for (j=0; j<8; j++) {
+      edges[i][j] = g.addEdge(nodes[i][j], nodes[i][j+1]).addClass("edgetrue");
+      edgeshadow[i][j] = gshadow.addEdge(nodeshadow[i][j+1], nodeshadow[i][j]).addClass("edgefalse");
     }
   }
+
+  var sl = g.addEdge(source, nodes[0][0]).addClass("edgeconnect");
+  var sr = g.addEdge(source, nodes[0][8]).addClass("edgeconnect");
+  var ex1inl = g.addEdge(nodes[0][0], extra1).addClass("edgeconnect");
+  var ex1inr = g.addEdge(nodes[0][8], extra1).addClass("edgeconnect");
+  var ex1outl = g.addEdge(extra1, nodes[1][0]).addClass("edgeconnect");
+  var ex1outr = g.addEdge(extra1, nodes[1][8]).addClass("edgeconnect");
+  var ex2inl = g.addEdge(nodes[1][0], extra2).addClass("edgeconnect");
+  var ex2inr = g.addEdge(nodes[1][8], extra2).addClass("edgeconnect");
+  var ex2outl = g.addEdge(extra2, nodes[2][0]).addClass("edgeconnect");
+  var ex2outr = g.addEdge(extra2, nodes[2][8]).addClass("edgeconnect");
+  var tl = g.addEdge(nodes[2][0], target).addClass("edgeconnect");
+  var tr = g.addEdge(nodes[2][8], target).addClass("edgeconnect");
+
+  var v1lab = jsav.label("$$x_1$$", {left: 105, top: yoffset});
+  var v2lab = jsav.label("$$x_2$$", {left: 105, top: yoffset + ystep});
+  var v3lab = jsav.label("$$x_3$$", {left: 105, top: yoffset + 2*ystep});
+  g.layout();
+  gshadow.layout();
   jsav.step();
 
-  // Slide 10
-  // Display reverse edges
-  label1.hide();
-  jsav.umsg("<br><b>Step 1b: Adding edges to the paths</b>");
-  label1=jsav.label("Add edges from $v_{i,j}$ to $v_{i,j-1}$ (i.e. right to left) on"+
-                    " $P_i$ to correspond to the assignment $x_i = False$" ,
-                    {left:0,top:y-30} );
-  for(var i=0;i<4;i++){
-    for(var j=0;j<6;j++){
-      if(j>0)
-        PE[i][j][1].show();
-    }
-  }
+  // slide 10
+  jsav.umsg("<br/>Add an edge from the target node to the source node in order to complete the cycle (if there will be one).", {preserve: true});
+  var line0 = jsav.g.line(372, yoffset-25, 90, yoffset-20, {"stroke-width": 1.5, "arrow-start": "classic-wide-long"}).addClass("edgeconnect");
+  var line1 = jsav.g.line(90, yoffset-20, 90, yoffset-5+3*ystep, {"stroke-width": 1.5}).addClass("edgeconnect");
+  var line2 = jsav.g.line(372, yoffset-5+3*ystep, 90, yoffset-5+3*ystep, {"stroke-width": 1.5}).addClass("edgeconnect");
   jsav.step();
 
   // Slide 11
-  // Display interconnecting edges
-  label1.hide();
-  jsav.umsg("<br><b>Step 2: Inter-connecting the paths</b>");
-  label1=jsav.label("Add edges from  $v_{i,1}$ and $v_{i,6}$  to  $v_{i+1,1}$ and "
-                    +"$v_{i+1,6}$" ,
-                    {left:0,top:y-30} );
-  for(var i=1;i<4;i++){
-    for(var j=0;j<4;j++)
-      PE2[i-1][j].show();
-  }
-  jsav.step();
-
-  // Slide 12
-  jsav.umsg("<br><b>Step 3: Adding source and target nodes</b>");
-  y1 = 65;
-
-  //add source and target nodes to g and display.
-  source  = g.addNode("<b>s</b>" , {"top":-5 , "left":220})
-    .addClass("extranode");
-  target  = g.addNode("<b>t</b>" , {"top":y1+250 , "left":220})
-    .addClass("extranode");
-  var tmpnode = g.addNode(" " , {"top":-5 , "left":-200})
-      .addClass("extranode").addClass("invisible");
-
-  //add edges for souce and target to g.
-  PE1[0] = g.addEdge(source , P[0][0])
-    .addClass("edgeconnect");
-  PE1[1] = g.addEdge(source , P[0][5])
-    .addClass("edgeconnect");
-  PE1[2] = g.addEdge(P[3][0] , target)
-    .addClass("edgeconnect");
-  PE1[3] = g.addEdge(P[3][5] , target)
-    .addClass("edgeconnect");
-  PE1[4]=g.addEdge(tmpnode , source)
-    .addClass("edgeconnect");
-
-  for(i=0;i<5;i++)
-    PE1[i].hide();
-
-  line1 = jsav.g.line(100 , 80 , 100 , 405);
-  line1.addClass("edgeconnect");
-  line2 = jsav.g.line(100 , 405 , 320 , 405);
-  line2.addClass("edgeconnect");
-  line1.hide();
-  line2.hide();
-
+  jsav.umsg("<br/>Next, we add the nodes representing the two clauses.", {preserve: true});
+  var clause1 = g.addNode("<b>C1</b>", {top: 0, left: 500}).addClass("clausenode").css({"background-color": "SlateBlue"});
+  var clause2 = g.addNode("<b>C2</b>", {top: 270, left: 700}).addClass("clausenode").css({"background-color": "IndianRed"});
   g.layout();
   jsav.step();
 
-  // Slide 13
-  // display the edges connecting source and target to path nodes in g.
 
-  label1.hide();
-  jsav.umsg("<br><b>Step 4: Connecting  source and target nodes to the "
-            +"paths</b>");
-  label1=jsav.label("Add edges from '$s$' to $v_{1,1}$ and $v_{1,6}$ and from "+
-                    "$v_{4,1}$ and $v_{4,6}$ to '$t$'" ,
-                    {left:0,top:y-30} );
-  for(var i=0;i<4;i++)
-    PE1[i].show();
+  // Slide 12
+  jsav.umsg("<br/>Finally, for each clause we add edges corresponding to the variables in that clause. We have an edge going from the associated variable row to the clause, and one going from the clause to the associated variable row. If the variable $i$ occurs in clause $j$, we draw an edge from node $3k + 2$ to the clause, and an edge from the clause to $3k + 3$. If the clause has instead the negation of the variable, we reverse the direction of the edges.", {preserve: true});
+  jsav.step();
+
+  // Slide 13
+  jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.");
   jsav.step();
 
   // Slide 14
-  //display he edge from target to source.
-  label1.hide();
-  jsav.umsg("<br><b>Step 5: Adding a backpath from target to source");
-  label1=jsav.label("Being the only path from target to source, this path will " +
-                    "always be present in any Hamiltonian Cycle <br>of the graph.",
-                    {left:0,top:y-30} );
-  line2.show();
-  line1.show();
-  PE1[4].show();
+  jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $x_1$ from Clause 1.");
+  var clauseEdges = new Array(2);
+  clauseEdges[0] = new Array(6);
+  clauseEdges[1] = new Array(6);
+  clauseEdges[0][0] = g.addEdge(nodes[0][2], clause1).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[0][1] = g.addEdge(clause1, nodes[0][3]).addClass("clauseedge").addClass("boldedge");
+  g.layout();
   jsav.step();
 
   // Slide 15
-  label1.hide();
-  jsav.umsg("<br><b>Step 6: Adding nodes corresponding to clauses</b>");
-  x=150;
-  y1=-10;
-
-  //display the CNF expression with each clause in different color.
-  exprlabel = jsav.label("3-CNF expression: " , {"top":y1 , "left":10});
-  for(var i=0;i<3;i++){
-    clauses[i] = new Array(8);
-    x=x+15;
-    clauses[i][0]=jsav.label("(", {left:x , top:y1}).css({"color":color[i]});
-    x=x+15;
-    for(var j=1;j<5;j=j+2) {
-      clauses[i][j] = jsav.label(input[i][(j-1)/2],
-                                 {left:x, top:y1}).css({"color":color[i]});
-      x=x+25;
-      clauses[i][j+1] = jsav.label("+", {left:x, top:y1}).css({"color":color[i]});
-      x=x+15;
-    }
-    clauses[i][j] = jsav.label(input[i][(j-1)/2], {left:x, top:y1}).css({"color":color[i]});
-    x=x+25;
-    clauses[i][6] = jsav.label(")", {left:x+5, top:y1}).css({"color":color[i]});
-    x=x+15;
-    clauses[i][7]=jsav.label(".", {left:x+5, top:y1});
-  }
-
-  // Add the caluse nodes to g and display.
-  C[0] = g.addNode("<b>C1</b>" , {"top":-15 , "left":430})
-    .addClass("clausenode").css({"background-color":color[0]});
-  C[1] = g.addNode("<b>C2</b>" , {"top":305 , "left":380})
-    .addClass("clausenode").css({"background-color":color[1]});
-  C[2] = g.addNode("<b>C3</b>" , {"top":300 , "left":580})
-    .addClass("clausenode").css({"background-color":color[2]});
-
-  for(var i=0;i<3;i++){
-    PE3[i] = new Array(3);
-    for(var j=0;j<3;j++)
-      PE3[i][j] = new Array(2);
-  }
-
-  // add the edges connecting clause nodes to path nodes in g
-  PE3[0][0][0] = g.addEdge(P[0][0], C[0]).addClass("clauseedge");
-  PE3[0][0][1] = g.addEdge(C[0], P[0][1]).addClass("clauseedge");
-  PE3[0][1][0] = g.addEdge(P[1][0], C[0]).addClass("clauseedge");
-  PE3[0][1][1] = g.addEdge(C[0], P[1][1]).addClass("clauseedge");
-  PE3[0][2][0] = g.addEdge(C[0], P[2][0]).addClass("clauseedge");
-  PE3[0][2][1] = g.addEdge(P[2][1], C[0]).addClass("clauseedge");
-
-  PE3[1][0][0]=g.addEdge(P[1][3] , C[1]).addClass("clauseedge");
-  PE3[1][0][1]=g.addEdge(C[1] , P[1][2]).addClass("clauseedge");
-  PE3[1][1][0]=g.addEdge(P[2][2] , C[1]).addClass("clauseedge");
-  PE3[1][1][1]=g.addEdge(C[1] , P[2][3]).addClass("clauseedge");
-  PE3[1][2][0]=g.addEdge(P[3][2] , C[1]).addClass("clauseedge");
-  PE3[1][2][1]=g.addEdge(C[1] , P[3][3]).addClass("clauseedge");
-
-  PE3[2][0][0]=g.addEdge(C[2] , P[0][5]).addClass("clauseedge");
-  PE3[2][0][1]=g.addEdge(P[0][4] , C[2]).addClass("clauseedge");
-  PE3[2][1][0]=g.addEdge(C[2] , P[1][4]).addClass("clauseedge");
-  PE3[2][1][1]=g.addEdge(P[1][5] , C[2]).addClass("clauseedge");
-  PE3[2][2][0]=g.addEdge(P[3][4] , C[2]).addClass("clauseedge");
-  PE3[2][2][1]=g.addEdge(C[2] , P[3][5]).addClass("clauseedge");
-
-  for(var i=0;i<3;i++){
-    for(var j=0;j<3;j++){
-      PE3[i][j][0].hide();
-      PE3[i][j][1].hide();
-    }
-  }
+  jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $x_2$ from Clause 1.");
+  clauseEdges[0][0].removeClass("boldedge");  
+  clauseEdges[0][1].removeClass("boldedge");  
+  clauseEdges[0][2] = g.addEdge(nodes[1][2], clause1).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[0][3] = g.addEdge(clause1, nodes[1][3]).addClass("clauseedge").addClass("boldedge");
   g.layout();
   jsav.step();
 
   // Slide 16
-  hideGraph();
-  jsav.umsg("<br><b>Step 7: Connecting clauses to the paths</b>");
-  label1=jsav.label("If a clause $C_j$ contains the variable $x_i$,",
-                    {left:0,top:y-30} );
-  label2=jsav.label("&nbsp;&nbsp;&nbsp;1.Connect $C_j$ to $v_{i,2j-1}$ and "+
-                    "$v_{i,2j}$" ,
-                    {left:0,top:y+0} );
-  label3=jsav.label("&nbsp;&nbsp;&nbsp;2.The direction of the path connecting $C_j$"+
-                    ",$v_{i,2j-1}$ and $v_{i,2j}$ should be:" ,
-                    {left:0,top:y+30} );
+  jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $\\overline{x_3}$ from Clause 1. Since this is negated, we reverse the direction of the edges.");
+  clauseEdges[0][2].removeClass("boldedge");  
+  clauseEdges[0][3].removeClass("boldedge");  
+  clauseEdges[0][4] = g.addEdge(nodes[2][3], clause1).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[0][5] = g.addEdge(clause1, nodes[2][2]).addClass("clauseedge").addClass("boldedge");
+  g.layout();
   jsav.step();
 
   // Slide 17
-  label4 = jsav.label("a. left to right if $C_j$ contains $x_i$" ,
-                      {"left":40 , "top":75} );
-  label5 = jsav.label("For example : $C_1$ i.e. ($x_1$ + $x_2$ + $\\overline{x_3}$)"
-                      +" contains $x_1$. So $C_1$ should be connected as:" ,
-                      {"left":40 , "top":100} );
-  var g2 = jsav.ds.graph({width: 200 ,  height: 100 ,  left: 100 ,  top: y+120 ,
-                          layout: "manual" ,  directed: true});
-  var tmpnode1, tmpnode2, tmpnode3;
-  label6 = jsav.label("$P_1$" , {"left":100 , "top":215});
-  tmpnode1 = g2.addNode("1" , {"top":70 , "left":30}).addClass("variablenode").addClass("blur");
-  tmpnode2 = g2.addNode("2" , {"top":70, "left":130}).addClass("variablenode").addClass("blur");
-  tmpnode3 = g2.addNode("C1" , {"top":6, "left":90}).addClass("democlausenode");
-  g2.addEdge(tmpnode1 , tmpnode3);
-  g2.addEdge(tmpnode3 , tmpnode2);
-  g2.layout();
+  jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $\\overline{x_1}$ from Clause 2. Since this is negated, we reverse the direction of the edges.");
+  clauseEdges[0][4].removeClass("boldedge");  
+  clauseEdges[0][5].removeClass("boldedge");  
+  clauseEdges[1][0] = g.addEdge(nodes[0][6], clause2).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][1] = g.addEdge(clause2, nodes[0][5]).addClass("clauseedge").addClass("boldedge");
+  g.layout();
   jsav.step();
 
   // Slide 18
-  y1=250;
-  label7 = jsav.label("b. right to left if $C_j$ contains $\\overline{x_i}$",
-                      {"left":40 , "top":y1} );
-  label8 = jsav.label("For example : $C_2$ i.e. ($\\overline{x_2}$ + $x_3$ + $x_4$) "
-                      +"contains $\\overline{x_2}$. So $\\overline{C_2}$ should be connected"
-                      +" as:" , {"left":40 , "top":y1+25} );
-  var g3 = jsav.ds.graph({width: 200 ,  height: 100 ,  left: 100 ,  top: y1+45 ,
-                          layout: "manual" ,  directed: true});
-  label9 = jsav.label("$P_2$" , {"left":100 , "top":y1+125});
-  tmpnode1 = g3.addNode("3" , {"top":75 , "left":30}).addClass("variablenode").addClass("blur");
-  tmpnode2 = g3.addNode("4" , {"top":75, "left":130}).addClass("variablenode").addClass("blur");
-  tmpnode3 = g3.addNode("C2" , {"top":10 , "left":90}).addClass("democlausenode");
-  g3.addEdge(tmpnode3 , tmpnode1);
-  g3.addEdge(tmpnode2 , tmpnode3);
-  g3.layout();
+  jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $x_2$ from Clause 2.");
+  clauseEdges[1][0].removeClass("boldedge");  
+  clauseEdges[1][1].removeClass("boldedge");  
+  clauseEdges[1][2] = g.addEdge(nodes[1][5], clause2).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][3] = g.addEdge(clause2, nodes[1][6]).addClass("clauseedge").addClass("boldedge");
+  g.layout();
   jsav.step();
 
   // Slide 19
-  jsav.umsg("<br><b>Step7: Connecting clauses to the paths</b>");
-  //display the graph on canvas
-  g2.hide();
-  g3.hide();
-  label1.hide();
-  label2.hide();
-  label3.hide();
-  label4.hide();
-  label5.hide();
-  label6.hide();
-  label7.hide();
-  label8.hide();
-  label9.hide();
-  line2.show();
-  line1.show();
-
-  for(var i=0;i<5;i++)
-    PE1[i].show();
-
-  for(var i=0;i<4;i++){
-    if(i>0){
-      for(var j=0;j<4;j++)
-        PE2[i-1][j].show();
-    }
-    PLabel[i].show();
-    for(var j=0;j<6;j++){
-      if(j>0){
-        PE[i][j][0].show();
-        PE[i][j][1].show();
-      }
-      P[i][j].show();
-    }
-  }
-
-  source.show(); target.show();
-
-  exprlabel.show();
-  for(var i=0;i<3;i++)
-    for(var j=0;j<8;j++)
-      clauses[i][j].show();
-  C[0].show(); C[1].show(); C[2].show();
-
+  jsav.umsg("Let's see what happens when we add the pairs one by one. Recall that we are constructing the graph for the expression: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/><br/>Add $x_3$ from Clause 2.");
+  clauseEdges[1][2].removeClass("boldedge");  
+  clauseEdges[1][3].removeClass("boldedge");  
+  clauseEdges[1][4] = g.addEdge(nodes[2][5], clause2).addClass("clauseedge").addClass("boldedge");
+  clauseEdges[1][5] = g.addEdge(clause2, nodes[2][6]).addClass("clauseedge").addClass("boldedge");
+  g.layout();
   jsav.step();
 
-  // Slide 20 , side 21 , slide 22 , slide 23 , slide 24 , slide 25 , slide 26
-  // Slide 27 , slide 28 . Slide 29
-
-  // these slides show animation for displaying all the edges for each clause one
-  // by one
-
-  for(var i=0;i<3;i++){
-    if(i>0){
-      clauses[i-1][5].removeClass("zoomlabel");
-      PE3[i-1][2][0].removeClass("boldedge");
-      PE3[i-1][2][1].removeClass("boldedge");
-
-    }
-    for(var j=0;j<3;j++){
-      if(j>0){
-        clauses[i][2*j-1].removeClass("zoomlabel");
-        PE3[i][j-1][0].removeClass("boldedge");
-        PE3[i][j-1][1].removeClass("boldedge");
-      }
-      clauses[i][2*j+1].addClass("zoomlabel");
-      PE3[i][j][0].addClass("boldedge");
-      PE3[i][j][1].addClass("boldedge");
-      PE3[i][j][0].show();
-      PE3[i][j][1].show();
-      jsav.step();
-    }
-  }
-
-  clauses[2][5].addClass("zoomlabel");
-
-  PE3[2][2][0].removeClass("boldedge");
-  PE3[2][2][1].removeClass("boldedge");
-
+  // Slide 20
+  jsav.umsg("That completes the construction. All that we need to do now is find the Hamiltonian Cycle and the corresponding variable assignment. Note that for each variable, all the nodes (1) need to be visited, meaning that (2) the row has to be processed either left-to-right or right-to-left. The only exception is that we can jump out to a variable and back for an associated variable assigned to be true (or its negation assigned to be false). Note that the extra nodes that we added make sure that its not possible to make a cycle by doing something like jumping from a variable row to a given clause and then back to another variable row... doing that can't possibly lead to a proper Hamiltonian Cycle that includes all nodes in the graph.");
+  clauseEdges[1][4].removeClass("boldedge");  
+  clauseEdges[1][5].removeClass("boldedge");  
   jsav.step();
 
-  // Slide 30
-  line1.hide(); line2.hide();
-
-  exprlabel.hide();
-  g.hide();
-  g1.hide();
-
-  for(var i=0;i<4;i++)
-    PLabel[i].hide();
-
-  for(var i=0;i<3;i++)
-    for(j=0;j<8;j++)
-      clauses[i][j].hide();
-
+  // Slide 21
   jsav.umsg("<br><b>Insights about the constructed graph</b><br><br><br>");
-
-  label1=jsav.label("1. Any Hamiltonian Cycle in the constructed graph ($G$) traverses"
-                    +" $P_i$ either from right-to-left or left-to-right.<br>"
+  hidegraph();
+  var label1 = jsav.label("1. Any Hamiltonian Cycle in the constructed graph ($G$) traverses"
+                          +" $P_i$ either from right-to-left or left-to-right.<br>"
                     +"This is because any path entering a node $v_{i,j}$ has to exit "+
                     "from $v_{i,j+1}$ either immediately or  via one <br> clause-node"+
                     " in between, in order to maintain Hamiltonian property<br>"+
@@ -585,23 +419,23 @@ $(document).ready(function () {
 
   jsav.step();
 
-  // Slide 31
+  // Slide 22
   label1.hide();
   jsav.umsg("<br><b>3-SAT and Hamiltonian Cycle</b>");
-  label1=jsav.label("1. <b>If there exists a Hamiltonian cycle $H$ in the graph $G$,"
+  label1 = jsav.label("1. <b>If there exists a Hamiltonian cycle $H$ in the graph $G$,"
                     +"</b><br>" +
                     "If $H$ traverses $P_i$ from left to right, assign $x_i = True$<br>"+
                     "If $H$ traverses $P_i$ from right to left, assign $x_i = False$"+
                     "<br><br>"+
-                    "Since H visits each clause node $C_j$, atleast one one $P_i$ was"
+                    "Since H visits each clause node $C_j$, at least one of $P_i$ was"
                     +" traversed in the right direction relative <br>to the node $C_j$"+
                     "<br>"+
                     "<b>The assignment obtained here satisfies the given 3 CNF.</b>"+
                     "<br><br>",{left:0,top:y-20});
   jsav.step();
 
-  // Slide 32
-  label2=jsav.label("2. <b>If there exists a satisfying assignment for the 3 CNF</b>,"
+  // Slide 23
+  var label2 = jsav.label("2. <b>If there exists a satisfying assignment for the 3 CNF</b>,"
                     +"<br>"+
                     "Select the path that traverses $P_i$ from left-to-right if $x_i"
                     +" = True$ or right-to-left if $x_i = False$<br>"+
@@ -617,107 +451,49 @@ $(document).ready(function () {
                     "<b> The path obtained is a Hamiltonian Cycle</b><br><br>",{left:0,top:y+160});
   jsav.step();
 
-  // Slide 33
-
+  // Slide 24
+  jsav.umsg("<b>Hamiltonian Cycle in the constructed graph.</b><br/><br/> The graph $G$ has a Hamiltonian cycle. (Actually, there is more than one, but here is one.)");
   label1.hide();
   label2.hide();
-  line1.show(); line2.show();
-  g.show();
-  g1.show();
-
-  for(var i=0;i<3;i++)
-    for(j=0;j<8;j++)
-      clauses[i][j].show();
-
-  for(var i=0;i<4;i++)
-    PLabel[i].show();
-
-  for(var i=0;i<PE1.length;i++)
-    PE1[i].addClass("blur");
-
-  for(var i=0;i<4;i++){
-    for(j=1;j<6;j++){
-      PE[i][j][0].addClass("blur");
-      PE[i][j][1].addClass("blur");
-    }
-  }
-
-  for(var i=0;i<3;i++){
-    for(var j=0;j<4;j++)
-      PE2[i][j].addClass("blur");
-  }
-
-  for(var i=0;i<3;i++){
-    for(var j=0;j<3;j++){
-      PE3[i][j][0].addClass("blur");
-      PE3[i][j][1].addClass("blur");
-    }
-  }
-
-  jsav.umsg("<br><b>Hamiltonian Cycle in the constructed graph</b><br><br><br>");
-  label1 = jsav.label("The graph $G$ has a Hamiltonian cycle<br>" , {left:0,top:y-30});
-
-  for(var i=0;i<3;i++)
-    for(j=0;j<8;j++)
-      clauses[i][j].hide();
-
-  // highlight the hamiltonian cycle on the graph in blue.
-
+  showgraph();
+  line0.addClass("highlightedge");
   line1.addClass("highlightedge");
   line2.addClass("highlightedge");
-
-  PE1[4].addClass("highlightedge");
-  PE1[0].addClass("highlightedge");
-  PE1[2].addClass("highlightedge");
-  PE3[0][0][0].addClass("highlightedge");
-  PE3[0][0][1].addClass("highlightedge");
-
-  for(var i=2;i<=5;i++)
-    PE[0][i][0].addClass("highlightedge");
-
-  PE2[0][3].addClass("highlightedge");
-
-  for(var i=1;i<=5;i++)
-    PE[1][i][1].addClass("highlightedge");
-
-  PE2[1][0].addClass("highlightedge");
-
-  for(var i=1;i<=5;i++)
-    if(i!=3)
-      PE[2][i][0].addClass("highlightedge");
-
-  PE2[2][3].addClass("highlightedge");
-
-  for(var i=1;i<=4;i++)
-    PE[3][i][1].addClass("highlightedge");
-
-  PE3[1][1][0].addClass("highlightedge");
-  PE3[1][1][1].addClass("highlightedge");
-  PE3[2][2][0].addClass("highlightedge");
-  PE3[2][2][1].addClass("highlightedge");
+  sl.addClass("highlightedge");
+  edges[0][0].addClass("highlightedge");
+  edges[0][1].addClass("highlightedge");
+  clauseEdges[0][0].addClass("highlightedge");
+  clauseEdges[0][1].addClass("highlightedge");
+  edges[0][3].addClass("highlightedge");
+  edges[0][4].addClass("highlightedge");
+  edges[0][5].addClass("highlightedge");
+  edges[0][6].addClass("highlightedge");
+  edges[0][7].addClass("highlightedge");
+  ex1inr.addClass("highlightedge");
+  ex1outl.addClass("highlightedge");
+  edges[1][0].addClass("highlightedge");
+  edges[1][1].addClass("highlightedge");
+  edges[1][2].addClass("highlightedge");
+  edges[1][3].addClass("highlightedge");
+  edges[1][4].addClass("highlightedge");
+  clauseEdges[1][2].addClass("highlightedge");
+  clauseEdges[1][3].addClass("highlightedge");
+  edges[1][6].addClass("highlightedge");
+  edges[1][7].addClass("highlightedge");
+  ex2inr.addClass("highlightedge");
+  ex2outr.addClass("highlightedge");
+  edgeshadow[2][7].addClass("highlightedge");
+  edgeshadow[2][6].addClass("highlightedge");
+  edgeshadow[2][5].addClass("highlightedge");
+  edgeshadow[2][4].addClass("highlightedge");
+  edgeshadow[2][3].addClass("highlightedge");
+  edgeshadow[2][2].addClass("highlightedge");
+  edgeshadow[2][1].addClass("highlightedge");
+  edgeshadow[2][0].addClass("highlightedge");
+  tl.addClass("highlightedge");
   jsav.step();
 
-  // Slide 33
-  label1.hide();
-  jsav.umsg("<br><b>Assignment for 3-SAT</b><br><br><br>");
-  label1=jsav.label("From the Hamiltonian cycle below the assignment is : <br>"
-                    +"<b>$x_1 = True$  ,  $x_2 = False$  ,  $x_3 = True$  ,  $x_4 = False$</b><br><br>",
-                    {left:0,top:y-30});
-  exprlabel.hide();
-  for(var i=0;i<3;i++)
-    for(j=0;j<8;j++)
-      clauses[i][j].hide();
-  jsav.step();
-
-  // Slide 34
-  label1.hide();
-  jsav.umsg("<br><b>Satisfiability of 3-CNF</b><br><br><br>");
-  hideGraph();
-  jsav.umsg("From the Hamiltonian cycle below the assignment is : <br><br>",
-            {'preserve':true});
-  label1=jsav.label("<b>$x_1 = True$, $x_2 = False$, $x_3 = True$, $x_4 = False$</b><br><br>"+
-                    "The above assignment satisfies the 3CNF ($x_1$ + $x_2$ + "+
-                    "$\\overline{x_3}$).($\\overline{x_2}$ + $x_3$ + $x_4$).($x_1$ + "
-                    +"$\\overline{x_2}$ + $x_4$)<br>" , {left:0,top:y+0});
+  // Slide 25
+  jsav.umsg("<b>Assignment for 3-SAT.</b><br/><br/>The original expression is: $(x_1 + x_2 + \\overline{x_3}).(\\overline{x_1} + x_2 + x_3)$.<br/> From the Hamiltonian cycle below the assignment is:<br/>$x_1 = True$, $x_2 = True$. The value of $x_3$ is irrelevant, though it is shown to have a value of $False$ in the graph.</b>");
   jsav.recorded();
 });

@@ -1,0 +1,132 @@
+{
+  "translations": {
+    "en": {
+      "lemma": {
+        "type":"select",
+        "description":"Let's begin by looking at configurations and combining machines.<br/><br/><b>Lemma</b>: If<br/>&nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$ for strings $u_i$ and $w_i$ and symbols $a_i$, and <br/>&nbsp; &nbsp; $(q_2, w_2\\underline{a_2}u_2) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$ then <br/> &nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$.",
+        "question":"What does this configuration $(q_1, w_1\\underline{a_1}u_1)$ mean?",
+        "answer":["The machine is in state $q_1$", "The read/write head is on the symbol $a_1$"],
+        "choices": ["The machine is in state $q_1$", "The read/write head is on the symbol $a_1$"]
+      },
+      "yield": {
+        "type":"select",
+        "description":"<b>Lemma</b>: If<br/>&nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$ for strings $u_i$ and $w_i$ and symbols $a_i$, and <br/>&nbsp; &nbsp; $(q_2, w_2\\underline{a_2}u_2) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$ then <br/> &nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$.",
+        "question": "What do we mean by $\\vdash_M^*$?",
+        "answer": ["The machine will do zero or more transitions"],
+        "choices": ["The machine will do zero or more transitions", "The machine will do one transition"]
+      },
+      "step1": {
+        "type":"select",
+        "description":"<b>Lemma</b>: If<br/>&nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$ for strings $u_i$ and $w_i$ and symbols $a_i$, and <br/>&nbsp; &nbsp; $(q_2, w_2\\underline{a_2}u_2) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$ then <br/> &nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$.",
+        "question":"What do we mean by<br/>$(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$?",
+        "answer":["The machine will change the state from $q_1$ to $q_2$", "The tape content will be modified from $w_1a_1u_1$ to $w_2a_2u_2$", "The head will be on the symbol $a_2$"],
+        "choices": ["The machine will change the state from $q_1$ to $q_2$", "The tape content will be modified from $w_1a_1u_1$ to $w_2a_2u_2$", "The head will be on the symbol $a_2$", "The machine will accept string $w_2$"]
+      },
+      "meaning1": {
+        "type":"select",
+        "description":"<b>Lemma</b>: If<br/>&nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$ for strings $u_i$ and $w_i$ and symbols $a_i$, and <br/>&nbsp; &nbsp; $(q_2, w_2\\underline{a_2}u_2) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$ then <br/> &nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$.",
+        "question":"In other words, the machine did some processing on the tape contents and modified it accordingly.",
+        "answer":"True",
+        "choices": []
+      },
+      "step2": {
+        "type":"select",
+        "description":"<b>Lemma</b>: If<br/>&nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$ for strings $u_i$ and $w_i$ and symbols $a_i$, and <br/>&nbsp; &nbsp; $(q_2, w_2\\underline{a_2}u_2) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$ then <br/> &nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$.",
+        "question":"What do we mean by<br/>$(q_2, w_2\\underline{a_2}u_2) \\vdash_M^* (q_3, w_3\\underline{a_3}u_3)$?",
+        "answer": ["The machine will change the state from $q_2$ to $q_3$", "The tape content will be modified from $w_2a_2u_2$ to $w_3a_3u_3$", "The head will be on symbol $a_3$"],
+        "choices": ["The machine will change the state from $q_2$ to $q_3$", "The tape content will be modified from $w_2a_2u_2$ to $w_3a_3u_3$", "The head will be on symbol $a_3$", "The machine will accept string $w_3$"]
+      },
+      "meaning2": {
+        "type":"select",
+        "description":"<b>Lemma</b>: If<br/>&nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$ for strings $u_i$ and $w_i$ and symbols $a_i$, and <br/>&nbsp; &nbsp; $(q_2, w_2\\underline{a_2}u_2) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$ then <br/> &nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$.",
+        "question":"In other words, the machine did <b>more</b> processing on the tape contents and modified it accordingly.",
+        "answer":"True",
+        "choices": []
+      },
+      "meaning3": {
+        "type":"select",
+        "description":"<b>Lemma</b>: If<br/>&nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash_M^* (q_2, w_2\\underline{a_2}u_2)$ for strings $u_i$ and $w_i$ and symbols $a_i$, and <br/>&nbsp; &nbsp; $(q_2, w_2\\underline{a_2}u_2) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$ then <br/> &nbsp; &nbsp; $(q_1, w_1\\underline{a_1}u_1) \\vdash^*_M (q_3, w_3\\underline{a_3}u_3)$.",
+        "question":"So, in general we can say that the machine started at $q_1$ with tape content $w_1a_1u_1$, did some processing to it, and ended at $q_3$ with tape content changed to $w_3a_3u_3$.",
+        "answer":"True",
+        "choices": []
+      },
+      "sigma": {
+        "type":"select",
+        "description":"Here are some of the most basic machines and notation that we will use to build more complex machines.<br/>&bull; $|\\Sigma|$ symbol-writing machines (in other words, we need one for each symbol in the input alphabet)): Any given symbol $\\sigma$ has a symbol-writing machine named $\\sigma$.",
+        "question":"If $\\Sigma = \\{a, b\\}$, what does the TM $a$ do?",
+        "answer":"write the symbol $a$ to the tape",
+        "choices": ["write the symbol $a$ to the tape", "$a$ is just a symbol in the alphabet set $\\Sigma$"]
+      },
+      "move": {
+        "type":"select",
+        "description":"Here are some of the most basic machines and notation that we will use to build more complex machines.<br/>&bull; $|\\Sigma|$ symbol-writing machines (in other words, we need one for each symbol in the input alphabet)): Any given symbol $\\sigma$ has a symbol-writing machine named $\\sigma$.<br/>&bull; Head-moving machines, named $R$, $L$ and $S$, that move the head appropriately.",
+        "question":"What does the TM $R$ do?",
+        "answer":"This TM moves the head to the Right",
+        "choices": ["This TM moves the head to the Right", "This TM moves the head to the Left", "This TM makes the head Stay on the current cell"]
+      },
+      "not": {
+        "type":"select",
+        "description":"Here are some of the most basic machines and notation that we will use to build more complex machines.<br/>&bull; $|\\Sigma|$ symbol-writing machines (in other words, we need one for each symbol in the input alphabet)): Any given symbol $\\sigma$ has a symbol-writing machine named $\\sigma$.<br/>&bull; Head-moving machines, named $R$, $L$ and $S$, that move the head appropriately.<br/>&bull; Transitions on anything other than (for example) $\\#$ are labeled $\\overline{\\#}$",
+        "question":"What does a tranistion labled with $\\overline{a}$ mean?",
+        "answer":"Change the state if the TM machine reads anything except $a$",
+        "choices": ["Change the state if the TM machine reads anything except $a$", "Change the state if the TM machine reads $a$"]
+      },
+      "multi": {
+        "type":"select",
+        "description":"Here are some of the most basic machines and notation that we will use to build more complex machines.<br/>&bull; $|\\Sigma|$ symbol-writing machines (in other words, we need one for each symbol in the input alphabet)): Any given symbol $\\sigma$ has a symbol-writing machine named $\\sigma$.<br/>&bull; Head-moving machines, named $R$, $L$ and $S$, that move the head appropriately.<br/>&bull; Transitions on anything other than (for example) $\\#$ are labeled $\\overline{\\#}$.<br/>&bull; Multiple copies of a machine get a superscript.",
+        "question":"$R^3$ means move the read/write head to the right 3 times.",
+        "answer":"True",
+        "choices": []
+      },
+      "first": {
+        "type":"select",
+        "description":"Let's look at an example.",
+        "question":"Which machine will be done first?",
+        "answer":"$M_1$",
+        "choices": ["$M_1$", "$M_2$", "$M_3$"]
+      },
+      "a": {
+        "type":"select",
+        "description":"Let's look at an example:",
+        "question":"Once $M_1$ ends execution, the head will be on some tape symbol. What will happen once $M_1$ completes if the current tape cell contains $a$?",
+        "answer": ["Start $M_2$"],
+        "choices": ["Start $M_1$", "Start $M_2$", "Start $M_3$"]
+      },
+      "b": {
+        "type":"select",
+        "description":"Let's look at an example:",
+        "question":"Once $M_1$ ends execution, the head will be on some tape symbol. What will happen once $M_1$ completes if the current tape cell contains $b$?",
+        "answer": ["Start $M_3$"],
+        "choices": ["Start $M_1$", "Start $M_2$", "Start $M_3$"]
+      },
+      "find": {
+        "type":"select",
+        "description":"Consider this example:",
+        "question":"What does this machine do?",
+        "answer":"Move the head right until an empty cell is found",
+        "choices": ["Move the head right until an empty cell is found", "Move the head right until a non-empty cell is found"]
+      },
+      "rpound": {
+        "type":"select",
+        "description":"Consider this example<br/>We will use the notation $R_\\#$ for this process.",
+        "question":"What does $R_\\#$ machine do?",
+        "answer":"Move the head right until an empty cell is found",
+        "choices": ["Move the head right until an empty cell is found", "Move the head right until a non-empty cell is found"]
+      },
+      "emptyM": {
+        "type":"select",
+        "description":"Consider this example:",
+        "question":"What does this machine do?",
+        "answer":["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"],
+        "choices": ["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run", "Accept the string", "Halt"]
+      },
+      "lpound": {
+        "type":"select",
+        "description":"Consider this example<br/>We will use the notation $L_\\#$ for the Machine that will go left until it finds an empty cell. Thus, the two machines below do the same thing, with one using our new notation $L_\\#$.",
+        "question":"What do these machines do?",
+        "answer":["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"],
+        "choices": ["Move the head left until an empty cell is found", "Once the empty cell is reached, the machine $M$ will run"]
+      }
+    }
+  }
+}

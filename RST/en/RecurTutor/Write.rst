@@ -4,10 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: Sally Hamouda and Cliff Shaffer
+   :title: Writing a Recursive Function
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: recursion intro
    :satisfies: recursion writing
    :topic: Recursion
+   :keyword: Recursion
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduction to writing simple recursive functions.
 
 Writing a recursive function
 ============================
@@ -34,6 +40,7 @@ Here are the basic four steps that you need to write any recursive function.
    :links: AV/RecurTutor/recurWriteCON.css
    :scripts: AV/RecurTutor/recurWriteStepsCON.js
    :output: show
+   :keyword: Recursion
 
 
 Now le't see some different ways that we could write ``Sum`` recursively.
@@ -43,6 +50,7 @@ Now le't see some different ways that we could write ``Sum`` recursively.
    :links: AV/RecurTutor/recurWriteCON.css
    :scripts: AV/RecurTutor/recurWriteSumCON.js
    :output: show  
+   :keyword: Recursion
 
 
 .. topic:: Example
