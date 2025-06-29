@@ -1,5 +1,6 @@
 import os
 import re
+import json
 from pathlib import Path
 
 script_dir = Path(__file__).resolve().parent
@@ -9,11 +10,22 @@ av_root = project_root / "AV"
 output_dir = script_dir / "inlineav"
 output_dir.mkdir(parents=True, exist_ok=True)
 
+catalog_json = project_root / "config" / "Catalog.json"
+with open(catalog_json, encoding='utf-8') as f:
+    catalog = json.load(f)
+
+catalog_rst_paths = []
+for section in catalog.get("chapters", {}).values():
+    for rst_relative_path in section:
+        full_path = rst_root / (rst_relative_path + ".rst")
+        if full_path.exists():
+            catalog_rst_paths.append(full_path)
+
+
 def fallback_title(av_name):
     name = re.sub(r'CON$', '', av_name)
     words = re.sub(r'(?<!^)(?=[A-Z])', ' ', name).split()
     return ' '.join(w.capitalize() for w in words) + " Slideshow"
-
 
 def parse_metadata_block(filepath):
     metadata = {}
@@ -24,6 +36,7 @@ def parse_metadata_block(filepath):
     try:
         with open(filepath, encoding='utf-8') as f:
             lines = f.readlines()
+
         for line in lines:
             stripped = line.strip()
 
@@ -57,22 +70,24 @@ def parse_metadata_block(filepath):
                     continue
 
         return metadata if metadata else None
-
     except Exception as e:
         print(f"Failed to parse metadata from {filepath}: {e}")
         return None
 
 def generate_html(av_name, subfolder, title):
-    html = f"""<html lang ="en">
+    depth = len(Path(subfolder).parts)
+    relative_prefix = "../" * (depth + 2)
+    print(relative_prefix)
+    html = f"""<html lang="en">
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <title>{title}</title>
-  <link href="/OpenDSA/RST/_themes/haiku/static/haiku.css_t" rel="stylesheet" type="text/css"/>
-  <link href="/OpenDSA/lib/normalize.css" rel="stylesheet" type="text/css"/>
-  <link href="/OpenDSA/JSAV/css/JSAV.css" rel="stylesheet" type="text/css"/>
-  <link href="/OpenDSA/lib/odsaMOD-min.css" rel="stylesheet" type="text/css"/>
+  <link href="{relative_prefix}RST/_themes/haiku/static/haiku.css_t" rel="stylesheet" type="text/css"/>
+  <link href="{relative_prefix}lib/normalize.css" rel="stylesheet" type="text/css"/>
+  <link href="{relative_prefix}JSAV/css/JSAV.css" rel="stylesheet" type="text/css"/>
+  <link href="{relative_prefix}lib/odsaMOD-min.css" rel="stylesheet" type="text/css"/>
   <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <link href="/OpenDSA/lib/odsaStyle-min.css" rel="stylesheet" type="text/css"/>
+  <link href="{relative_prefix}lib/odsaStyle-min.css" rel="stylesheet" type="text/css"/>
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({{
       tex2jax: {{
@@ -90,16 +105,17 @@ def generate_html(av_name, subfolder, title):
   <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-  <script src="/OpenDSA/JSAV/lib/jquery.transit.js" type="text/javascript"></script>
-  <script src="/OpenDSA/JSAV/lib/raphael.js" type="text/javascript"></script>
-  <script src="/OpenDSA/JSAV/build/JSAV-min.js" type="text/javascript"></script>
-  <script src="/OpenDSA/lib/odsaUtils.js" type="text/javascript"></script>
-  <script src="/OpenDSA/lib/odsaMOD.js" type="text/javascript"></script>
+  <script src="{relative_prefix}JSAV/lib/jquery.transit.js" type="text/javascript"></script>
+  <script src="{relative_prefix}JSAV/lib/raphael.js" type="text/javascript"></script>
+  <script src="{relative_prefix}JSAV/build/JSAV-min.js" type="text/javascript"></script>
+  <script src="{relative_prefix}lib/odsaUtils.js" type="text/javascript"></script>
+  <script src="{relative_prefix}lib/odsaMOD.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" type="text/javascript"></script>
-  <script src="/OpenDSA/lib/dataStructures.js" type="text/javascript"></script>
+  <script src="{relative_prefix}lib/dataStructures.js" type="text/javascript"></script>
+
   <div class="content">
-    <link rel="stylesheet" href="/OpenDSA/AV/{subfolder}/{av_name}.css"/>
-    <script src="/OpenDSA/AV/{subfolder}/{av_name}.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="{relative_prefix}AV/{subfolder}/{av_name}.css"/>
+    <script src="{relative_prefix}AV/{subfolder}/{av_name}.js" type="text/javascript"></script>
     <div class="section">
       <div id="{av_name}" class="ssAV" data-points="0" data-type="ss" 
           data-required="true" data-long-name="{title}">
@@ -109,10 +125,10 @@ def generate_html(av_name, subfolder, title):
         <p class="jsavoutput jsavline"></p>
         <div class="jsavcanvas"></div>
         <div class="prof_indicators">
-          <img id="{av_name}_check_mark" class="prof_check_mark" src="/OpenDSA/RST/_static/Images/green_check.png" alt="Proficient" />
+          <img id="{av_name}_check_mark" class="prof_check_mark" src="{relative_prefix}RST/_static/Images/green_check.png" alt="Proficient" />
           <span id="{av_name}_cm_saving_msg" class="cm_saving_msg">Saving...</span>
           <span id="{av_name}_cm_error_msg" class="cm_error_msg">
-            <img id="{av_name}_cm_warning_icon" class="cm_warning_icon" src="/OpenDSA/RST/_static/Images/warning.png" alt="Error Saving"/>
+            <img id="{av_name}_cm_warning_icon" class="cm_warning_icon" src="{relative_prefix}RST/_static/Images/warning.png" alt="Error Saving"/>
             <br />Server Error<br />
             <a href="#" class="resubmit_link">Resubmit</a>
           </span>
@@ -123,7 +139,10 @@ def generate_html(av_name, subfolder, title):
   </div>
 </body>
 </html>"""
-    (output_dir / f"{av_name}.html").write_text(html, encoding="utf-8")
+
+    output_path = output_dir / subfolder / f"{av_name}.html"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(html, encoding="utf-8")
 
 
 def extract_inlineavs_from_rst(rst_file):
@@ -131,7 +150,7 @@ def extract_inlineavs_from_rst(rst_file):
     with rst_file.open(encoding='utf-8') as f:
         lines = f.readlines()
 
-    for i, line in enumerate(lines):
+    for line in lines:
         match = re.match(r"\.\. +inlineav:: +(.+)", line.strip())
         if match:
             tokens = match.group(1).strip().split()
@@ -141,12 +160,10 @@ def extract_inlineavs_from_rst(rst_file):
                 inlineavs.append((av_name, rel_path))
     return inlineavs
 
-
-for rst_file in rst_root.rglob("*.rst"):
+for rst_file in catalog_rst_paths:
     for av_name, rel_path in extract_inlineavs_from_rst(rst_file):
         js_path = av_root / rel_path / f"{av_name}.js"
         metadata = parse_metadata_block(js_path)
         title = metadata["Title"] if metadata and "Title" in metadata else fallback_title(av_name)
-
-        print(f" Generating: {av_name}.html | Title: {title}")
+        print(f" Generating: {av_name}.html , Title: {title}")
         generate_html(av_name, rel_path, title)
