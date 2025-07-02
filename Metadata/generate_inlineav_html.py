@@ -84,7 +84,7 @@ def generate_html(av_name, subfolder, title):
   <title>{title}</title>
   <link href="{relative_prefix}RST/_themes/haiku/static/haiku.css_t" rel="stylesheet" type="text/css"/>
   <link href="{relative_prefix}lib/normalize.css" rel="stylesheet" type="text/css"/>
-  <link href="{relative_prefix}JSAV/css/JSAV.css" rel="stylesheet" type="text/css"/>
+  <link href="{relative_prefix}lib/JSAV.css" rel="stylesheet" type="text/css"/>
   <link href="{relative_prefix}lib/odsaMOD-min.css" rel="stylesheet" type="text/css"/>
   <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <link href="{relative_prefix}lib/odsaStyle-min.css" rel="stylesheet" type="text/css"/>
@@ -103,11 +103,11 @@ def generate_html(av_name, subfolder, title):
 </head>
 <body>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-  <script src="{relative_prefix}JSAV/lib/jquery.transit.js" type="text/javascript"></script>
-  <script src="{relative_prefix}JSAV/lib/raphael.js" type="text/javascript"></script>
-  <script src="{relative_prefix}JSAV/build/JSAV-min.js" type="text/javascript"></script>
+  <script src="{relative_prefix}lib/jquery.transit.js" type="text/javascript"></script>
+  <script src="{relative_prefix}lib/raphael.js" type="text/javascript"></script>
+  <script src="{relative_prefix}lib/JSAV-min.js" type="text/javascript"></script>
   <script src="{relative_prefix}lib/odsaUtils.js" type="text/javascript"></script>
   <script src="{relative_prefix}lib/odsaMOD.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" type="text/javascript"></script>
