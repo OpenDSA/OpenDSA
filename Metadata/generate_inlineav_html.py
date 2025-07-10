@@ -108,13 +108,13 @@ def extract_inlineavs_from_rst(rst_file):
     for i, line in enumerate(lines):
         if ".. inlineav::" in line:
             av_name, links, scripts, long_name, is_dgm = parse_inlineav_block(lines, i)
-            if is_dgm or not av_name:
+            if not av_name:
                 continue
             rel_path = rst_file.parent.relative_to(rst_root).as_posix()
-            inlineavs.append((av_name, rel_path, links, scripts, long_name))
+            inlineavs.append((av_name, rel_path, links, scripts, long_name, is_dgm))
     return inlineavs
 
-def generate_html(av_name, subfolder, title, links, scripts):
+def generate_html(av_name, subfolder, title, links, scripts, is_dgm=False):
     depth = len(Path(subfolder).parts)
     relative_prefix = "../" * (depth + 2)
     link_tags = '\n    '.join([f'<link rel="stylesheet" href="{relative_prefix}{link}"/>' for link in links])
@@ -122,6 +122,28 @@ def generate_html(av_name, subfolder, title, links, scripts):
         ['<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>'] +
         [f'<script src="{relative_prefix}{script}" type="text/javascript"></script>' for script in scripts]
     )
+
+    av_div = f"""
+      <div id="{av_name}" class="{('avcontainer' if is_dgm else 'ssAV')}" data-points="0" data-type="{('dgm' if is_dgm else 'ss')}"
+           data-required="true" data-long-name="{title}">
+        {'<div class="jsavcanvas"></div>' if is_dgm else '''
+        <span class="jsavcounter"></span>
+        <a class="jsavsettings" href="#">Settings</a>
+        <div class="jsavcontrols"></div>
+        <p class="jsavoutput jsavline"></p>
+        <div class="jsavcanvas"></div>
+        <div class="prof_indicators">
+          <img id="{av_name}_check_mark" class="prof_check_mark" src="{relative_prefix}RST/_static/Images/green_check.png" alt="Proficient" />
+          <span id="{av_name}_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+          <span id="{av_name}_cm_error_msg" class="cm_error_msg">
+            <img id="{av_name}_cm_warning_icon" class="cm_warning_icon" src="{relative_prefix}RST/_static/Images/warning.png" alt="Error Saving"/>
+            <br />Server Error<br />
+            <a href="#" class="resubmit_link">Resubmit</a>
+          </span>
+        </div>
+        '''}
+      </div>
+    """
 
     html = f"""<html lang="en">
 <head>
@@ -163,24 +185,7 @@ def generate_html(av_name, subfolder, title, links, scripts):
 
   <div class="content">
     <div class="section">
-      <div id="{av_name}" class="ssAV" data-points="0" data-type="ss" 
-           data-required="true" data-long-name="{title}">
-        <span class="jsavcounter"></span>
-        <a class="jsavsettings" href="#">Settings</a>
-        <div class="jsavcontrols"></div>
-        <p class="jsavoutput jsavline"></p>
-        <div class="jsavcanvas"></div>
-        <div class="prof_indicators">
-          <img id="{av_name}_check_mark" class="prof_check_mark" src="{relative_prefix}RST/_static/Images/green_check.png" alt="Proficient" />
-          <span id="{av_name}_cm_saving_msg" class="cm_saving_msg">Saving...</span>
-          <span id="{av_name}_cm_error_msg" class="cm_error_msg">
-            <img id="{av_name}_cm_warning_icon" class="cm_warning_icon" src="{relative_prefix}RST/_static/Images/warning.png" alt="Error Saving"/>
-            <br />Server Error<br />
-            <a href="#" class="resubmit_link">Resubmit</a>
-          </span>
-        </div>
-      </div>
-      <p></p>
+      {av_div}
     </div>
   </div>
 </body>
@@ -190,9 +195,8 @@ def generate_html(av_name, subfolder, title, links, scripts):
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(html, encoding="utf-8")
 
-
 for rst_file in catalog_rst_paths:
-    for av_name, rel_path, links, scripts, long_name in extract_inlineavs_from_rst(rst_file):
+    for av_name, rel_path, links, scripts, long_name, is_dgm in extract_inlineavs_from_rst(rst_file):
         if not av_name:
             continue
         title = long_name
@@ -201,5 +205,5 @@ for rst_file in catalog_rst_paths:
             metadata = parse_metadata_block(js_path)
             title = metadata.get("Title") if metadata and "Title" in metadata else fallback_title(av_name)
 
-        print(f" Generating: {av_name}.html , Title: {title}")
-        generate_html(av_name, rel_path, title, links, scripts)
+        print(f" Generating: {av_name}.html , Title: {title}, DGM: {is_dgm}")
+        generate_html(av_name, rel_path, title, links, scripts, is_dgm)
