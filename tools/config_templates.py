@@ -13,58 +13,58 @@ rst_header = '''\
 
 rst_footer = '''\
  .. raw:: html
-
+ 
     <script type="text/javascript">
      $(function () {
        var moduleName = "%(module_name)s";
        var sections = %(sections)s;
-       
        TimeMe.initialize({
          idleTimeoutInSeconds: 10
        });
        sections.forEach(function (section, i) {
          TimeMe.trackTimeOnElement(section);
        });
-       
        var timeObj = {};
        setInterval(function () {
          timeObj[moduleName.substring(0, 5)] = TimeMe.getTimeOnCurrentPageInSeconds().toFixed(2);
          sections.forEach(function (section, i) {
            timeObj[i + "-" + section.substring(0, 5)] = TimeMe.getTimeOnElementInSeconds(section).toFixed(2);
          });
+         for (var sec of sections) {
+         }
        }, 2000);
        
-       // Scroll depth tracking implementation
-       // Force iframe to have its own scroller
-       window.addEventListener('load', function() {
-         // Ensure iframe content is always scrollable
-         document.body.style.minHeight = '150vh'; // Force content to be taller
-         document.body.style.overflow = 'auto';   // Ensure scrolling enabled
-         document.documentElement.style.overflow = 'auto';
-         
-         // Prevent Canvas from hijacking scroll
-         var maintainScroller = setInterval(function() {
-           if (document.body.scrollHeight <= window.innerHeight) {
-             document.body.style.minHeight = (window.innerHeight + 500) + 'px';
-           }
-         }, 1000);
-         
-         // Initialize ScrollDepth after ensuring scroller exists
-         setTimeout(function() {
-           if (typeof $.scrollDepth === 'function' && typeof ODSA !== 'undefined' && ODSA.UTILS) {
-             $.scrollDepth({
-               percentage: true,
-               eventHandler: function(data) {
-                 ODSA.UTILS.logUserAction('scroll', {
-                   percentage: data.eventLabel,
+       // Initialize scroll depth tracking
+       if (typeof $.scrollDepth === 'function') {
+         $.scrollDepth({
+           minHeight: 0,
+           elements: sections,
+           percentage: true,
+           userTiming: true,
+           pixelDepth: true,
+           nonInteraction: true,
+           eventHandler: function(data) {
+             // Check if ODSA.UTILS exists before calling
+             if (typeof ODSA !== 'undefined' && ODSA.UTILS && typeof ODSA.UTILS.logUserAction === 'function') {
+               ODSA.UTILS.logUserAction(
+                 'scroll', 
+                 {
+                   percentage: data.eventLabel, 
                    pixelDepth: data.pixelDepth,
-                   timing: data.eventTiming
-                 }, null, null);
-               }
-             });
+                   timing: data.eventTiming,
+                   element: data.eventAction || null
+                 },
+                 null,
+                 null
+               );
+             } else {
+               console.warn('ODSA.UTILS.logUserAction not available for scroll logging');
+             }
            }
-         }, 2000);
-       });
+         });
+       } else {
+         console.warn('jQuery scrollDepth plugin not loaded - scroll tracking disabled');
+       }
      });
     </script>
  '''
