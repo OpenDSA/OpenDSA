@@ -6,9 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. odsascript:: AV/Design/ADTCON.js
-.. odsalink:: AV/Design/ADTCON.css
-
 ===================================================
 Data Structures and Algorithm Analysis Introduction
 ===================================================
@@ -92,6 +89,8 @@ Logical vs. Physical Form (2)
 
 
 .. inlineav:: ADTCON dgm
+   :links: AV/Design/ADTCON.css
+   :scripts: AV/Design/ADTCON.js
    :output: show
    :align: center
 
