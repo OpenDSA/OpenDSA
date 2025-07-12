@@ -140,8 +140,7 @@ html:
 	rm Makefile
 
 slides:
-	@SLIDES=yes \
-	$(SPHINXBUILD) $(SPHINXOPTS) -b revealjs source $(HTMLDIR)
+	SLIDES=yes $(SPHINXBUILD) $(SPHINXOPTS) -b revealjs source $(HTMLDIR)
 	rm -f html/_static/jquery.js
 	cp "%(odsa_dir)slib/styles.css" html/_static/ # Overwrites
 	rm -f *.json
@@ -198,7 +197,7 @@ extensions.append('numfig')
 slides_lib = '%(slides_lib)s'
 
 # only import sphinx-revealjs when building course notes
-if slides_lib == 'revealjs':
+if slides_lib == 'revealjs' or on_slides:
   extensions.append('sphinx_revealjs')
 
 # Add any paths that contain templates here, relative to this directory.
@@ -268,19 +267,46 @@ pygments_style = 'xcode' #'sphinx'
 # -- Options for RevealJS Slide output ---------------------------------------------------
 sys.path.append('%(theme_dir)s')
 
-if slides_lib == 'revealjs':
+if slides_lib == 'revealjs' or on_slides:
+    revealjs_style_theme = 'white'
     revealjs_theme = 'white'
     revealjs_static_path = ['_static']
-    revealjs_css_files = []
-    revealjs_script_files = []
+    # Fix paths for reveal.js - it prepends _static/ so we need to compensate
+    revealjs_css_files = [
+        '../%(eb2root)slib/normalize.css',
+        '../%(eb2root)slib/JSAV.css',
+        '../%(eb2root)slib/odsaMOD-min.css',
+        '../%(eb2root)slib/jquery.ui.min.css',
+        '../%(eb2root)slib/odsaStyle-min.css',
+        '../%(eb2root)slib/ODSAcoursenotes.css'
+    ]
+    revealjs_script_files = [
+        '../%(eb2root)slib/jquery.min.js',
+        '../%(eb2root)slib/jquery.migrate.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+        '../%(eb2root)slib/jquery.ui.min.js',
+        '../%(eb2root)slib/jquery.transit.js',
+        '../%(eb2root)slib/raphael.js',
+        '../%(eb2root)slib/JSAV-min.js',
+        '../_static/config.js',
+        '../%(eb2root)slib/odsaUtils-min.js',
+        '../%(eb2root)slib/odsaMOD-min.js',
+        '../%(eb2root)slib/ODSAcoursenotes.js'
+    ]
     revealjs_js_files = revealjs_script_files
     revealjs_script_plugins = []
     revealjs_script_conf = """{
         controls: true,
         progress: true,
+        center: false,
         slideNumber: true,
         transition: 'none',
-        hash: true
+        hash: true,
+        width: 1280,
+        height: 960,
+        margin: 0.1,
+        minScale: 0.2,
+        maxScale: 2.0
     }"""
     
 
