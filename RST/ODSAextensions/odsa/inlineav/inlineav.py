@@ -46,6 +46,21 @@ def depart_av_dgm_html(self, node):
   self.body.append('</div>\n') 
 
 def visit_av_ss_html(self, node):
+  # add link tags if specified (via :links: in RST)
+  if 'links' in node:
+    links = node['links'].split()
+    for link in links:
+      # relative to the output of the book (../Books/<...>/)
+      link_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + link
+      self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
+  
+  #  add script tags if specified (via :scripts: in RST)
+  if 'scripts' in node:
+    scripts = node['scripts'].split()
+    for script in scripts:
+      script_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + script
+      self.body.append('<script src="%s"></script>\n' % script_path)
+  
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
 
@@ -185,6 +200,8 @@ class inlineav(Directive):
                   'align': directives.unchanged,
                   'id': directives.unchanged,
                   'keyword': directives.unchanged, #keyword directive added 
+                  'links': directives.unchanged, 
+                  'scripts': directives.unchanged, 
                 }
   has_content = True
 
@@ -220,22 +237,41 @@ class inlineav(Directive):
       self.options['output_code'] = ''
 
     if self.options['type'] == "dgm":
-      avdgm_node = av_dgm()
+      # compiles all HTML together to avoid container issues & offset mismatches
+      html_parts = []
       
-      avdgm_node['exer_name'] = self.options['exer_name']
-      if self.content:
-        node = nodes.Element()          # anonymous container for parsing
-        self.state.nested_parse(self.content, self.content_offset, node)
-        first_node = node[0]
-        if isinstance(first_node, nodes.paragraph):
-          caption = nodes.caption(first_node.rawsource, '', *first_node.children)
-          caption['align']= self.options['align']
-          avdgm_node += caption
-
-      return [avdgm_node]
+      # get relative path
+      rel_path = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/') + '/'
+      
+      # add any link tags
+      if 'links' in self.options:
+        links = self.options['links'].split()
+        for link in links:
+          html_parts.append('<link href="%s%s" rel="stylesheet" type="text/css" />' % (rel_path, link))
+      
+      # add any script tags
+      if 'scripts' in self.options:
+        scripts = self.options['scripts'].split()
+        for script in scripts:
+          html_parts.append('<script type="text/javascript" src="%s%s"></script>' % (rel_path, script))
+      
+      # visualization container
+      html_parts.append('<div class="divdgm">')
+      html_parts.append('<div id="%s"></div>' % self.options['exer_name'])
+      html_parts.append('</div>')
+      
+      # return everything as single HTML AVSS node
+      return [nodes.raw('', '\n'.join(html_parts), format='html')]
     elif self.options['type'] == "ss" and self.content:
       avss_node = av_ss()
       avss_node['res'] = SLIDESHOW % self.options
+      
+      # pass links & scripts to node
+      if 'links' in self.options:
+        avss_node['links'] = self.options['links']
+      if 'scripts' in self.options:
+        avss_node['scripts'] = self.options['scripts']
+      
       node = nodes.Element()          # anonymous container for parsing
       self.state.nested_parse(self.content, self.content_offset, node)
       first_node = node[0]
