@@ -3,12 +3,19 @@
   text-shadow: none;
 }
 
-/* fix for sphinx-reveal.js slides */
-.reveal .divdgm {
-  position: relative;
-  margin: 40px 0;
-  min-height: 300px;
+/* reveal.js font sizes */
+.reveal {
+  --r-main-font-size: 24px;
+  --r-heading1-size: 2.5em;
+  --r-heading2-size: 1.6em;
+  --r-heading3-size: 1.3em;
+  --r-heading4-size: 1em;
 }
+
+.reveal .slides {
+  font-size: 24px;
+}
+
 .reveal .jsavlabel {
   text-transform: none !important;
   letter-spacing: normal !important;
@@ -20,16 +27,12 @@
 .highlight, .highlight-guess{
   font-size: 15px;
 }
-/*.jsavcode.jsavcenter{
-  width: 500px;
-}*/
 ul li::before {
     content: none;
     width: 0px;
     margin-left: 0px;
 }
 .jsavcanvas{
-  /*min-height: 600px;*/
   overflow-x: visible;
 }
 .hide{
@@ -38,10 +41,6 @@ ul li::before {
 .jsavvaluelabel{
   font-size: 15px;
 }
-
-/*.jsavlabel{
-  line-height: 1em;
-}*/
 .jsavarray{
   font-size: 15px;
 }

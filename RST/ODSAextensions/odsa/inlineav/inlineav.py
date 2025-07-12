@@ -36,58 +36,20 @@ class av_ff(Element):pass
 
 
 def visit_av_dgm_html(self, node):
-  # reveal.js migration fix
-  self.body.append('''<div style="position: relative; min-height: 300px; margin: 40px 0;">
-<style>
-.divdgm .jsavlabel {
-  text-transform: none !important;
-  letter-spacing: normal !important;
-  line-height: 1.2 !important;
-  font-size: 14px !important;
-  text-align: left !important;
-  white-space: nowrap !important;
-}
-.divdgm svg text {
-  text-transform: none !important;
-  letter-spacing: normal !important;
-}
-.divdgm .jsavcanvas {
-  font-size: 14px !important;
-  line-height: normal !important;
-}
-</style>''')
-  self.body.append(self.starttag(node, 'div', CLASS='divdgm'))
+  # Get the exercise name to create the container ID
+  exer_name = node.get('exer_name', '')
+  self.body.append('<div class="divdgm">')
+  self.body.append('<div id="%s">' % exer_name)
+  self.body.append('</div>')
 
 def depart_av_dgm_html(self, node):
-  # close divs for the reveal fix
-  self.body.append('</div>\n')
   self.body.append('</div>\n') 
 
 def visit_av_ss_html(self, node):
-  # same fix as above, but for slideshows
-  self.body.append('''<div style="position: relative; min-height: 400px; margin: 40px 0;">
-<style>
-.ssAV .jsavlabel, .ssAV .jsavvalue {
-  text-transform: none !important;
-  letter-spacing: normal !important;
-  line-height: 1.2 !important;
-  font-size: 14px !important;
-  text-align: left !important;
-}
-.ssAV .jsavarray {
-  font-size: 14px !important;
-}
-.ssAV .jsavcode {
-  font-size: 12px !important;
-  line-height: 1.4 !important;
-}
-</style>''')
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
 
 def depart_av_ss_html(self, node):
-  # close divs for the reveal fix
-  self.body.append('</div>\n')
   self.body.append('</div>\n') 
 
 def visit_av_anchor_html(self, node):
@@ -98,26 +60,10 @@ def depart_av_anchor_html(self, node):
 
 
 def visit_av_ff_html(self, node):
-  # same fix as above, but for frames
-  self.body.append('''<div style="position: relative; min-height: 400px; margin: 40px 0;">
-<style>
-.ffAV .jsavlabel, .ffAV .jsavvalue {
-  text-transform: none !important;
-  letter-spacing: normal !important;
-  line-height: 1.2 !important;
-  font-size: 14px !important;
-  text-align: left !important;
-}
-.ffAV .jsavarray {
-  font-size: 14px !important;
-}
-</style>''')
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
 
 def depart_av_ff_html(self, node):
-  # close divs for the reveal fix
-  self.body.append('</div>\n')
   self.body.append('</div>\n')  
 
 
@@ -275,11 +221,8 @@ class inlineav(Directive):
 
     if self.options['type'] == "dgm":
       avdgm_node = av_dgm()
-      anchor_node = av_anchor()
-
+      
       avdgm_node['exer_name'] = self.options['exer_name']
-      anchor_node['ids'].append(self.options['exer_name'])
-      avdgm_node += anchor_node
       if self.content:
         node = nodes.Element()          # anonymous container for parsing
         self.state.nested_parse(self.content, self.content_offset, node)
