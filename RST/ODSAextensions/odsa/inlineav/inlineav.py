@@ -200,8 +200,8 @@ class inlineav(Directive):
                   'align': directives.unchanged,
                   'id': directives.unchanged,
                   'keyword': directives.unchanged, #keyword directive added 
-                  'links': directives.unchanged, 
-                  'scripts': directives.unchanged, 
+                  'links': directives.unchanged, # links directive added for reveal.js support
+                  'scripts': directives.unchanged, # scripts directive added for reveal.js support
                 }
   has_content = True
 
@@ -260,7 +260,7 @@ class inlineav(Directive):
       html_parts.append('<div id="%s"></div>' % self.options['exer_name'])
       html_parts.append('</div>')
       
-      # return everything as single HTML AVSS node
+      # return everything as single HTML AV node
       return [nodes.raw('', '\n'.join(html_parts), format='html')]
     elif self.options['type'] == "ss" and self.content:
       avss_node = av_ss()
