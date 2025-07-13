@@ -60,6 +60,7 @@
   }, 
   "chapters": {
     "Week 1": {
+      "CS3slides/Intro": {},
       "CS3slides/CS3114Intro": {}
     }
   }

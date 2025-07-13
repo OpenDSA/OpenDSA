@@ -10,11 +10,6 @@
 Data Structures and Algorithm Analysis Introduction
 ===================================================
 
-Introduction
-============
-
-.. revealjs-slide::
-
 Course Introduction
 ===================
 
@@ -33,6 +28,7 @@ Goals of this Course
   * These techniques also allow you to judge the merits of new data
     structures that you or others might invent.
 
+    
 Costs and Benefits
 ==================
 
@@ -66,6 +62,7 @@ Data Structure
 * File structure: an organization for data on peripheral storage, such
   as a disk drive.
 
+  
 Logical vs. Physical Form
 =========================
 
@@ -82,11 +79,11 @@ Logical vs. Physical Form
 
   * Ex: 32/64 bit integers, overflow.
 
+    
 Logical vs. Physical Form (2)
 =============================
 
 .. revealjs-slide::
-
 
 .. inlineav:: ADTCON dgm
    :links: AV/Design/ADTCON.css

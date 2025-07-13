@@ -9,10 +9,10 @@
 CS3114 Introduction
 ===================
 
-.. revealjs-slide::
-
 Introduction
 ------------
+
+.. revealjs-slide::
 
 What we are doing today:
 
@@ -24,6 +24,8 @@ What we are doing today:
 Analysis: Worst Case
 --------------------
 
+.. revealjs-slide::
+
    .. inlineav:: InsertionSortWorstCaseCON ss
       :long_name: Insertion Sort Worst Case Slideshow
       :links: AV/Sorting/InsertionSortWorstCaseCON.css
@@ -33,6 +35,8 @@ Analysis: Worst Case
 
 Administration stuff
 --------------------
+
+.. revealjs-slide::
 
 * Sign-in sheet (be sure to sign-in on one of them)
 * Get a copy of the syllabus
@@ -44,12 +48,16 @@ Administration stuff
 Course Mechanics
 ----------------
 
+.. revealjs-slide::
+
 * Go over Syllabus
 * Course online support: Canvas, OpenDSA, Web-CAT
 
 
 Canvas
 ------
+
+.. revealjs-slide::
 
 We will use Canvas
 
@@ -61,6 +69,8 @@ We will use Canvas
 
 Role in the Curriculum
 ----------------------
+
+.. revealjs-slide::
 
 * This course represents a transition between "learning to
   program" courses (CS 1114, CS 2114) and "content" courses.
@@ -86,6 +96,8 @@ Role in the Curriculum
 OpenDSA
 -------
 
+.. revealjs-slide::
+
 * Access OpenDSA through Canvas->Modules
 
 * Lots of visualizations, exercises
@@ -100,6 +112,8 @@ OpenDSA
 Web-CAT
 -------
 
+.. revealjs-slide::
+
 * Get the updated plugin
 * Project submission
 * Support for junit testing
@@ -108,6 +122,8 @@ Web-CAT
 
 Milestones
 ----------
+
+.. revealjs-slide::
 
 * 4 projects, each with a 3-4 week life cycle
 * Most projects will have 3 milestones
@@ -123,6 +139,8 @@ Milestones
 Today's Homework
 ----------------
 
+.. revealjs-slide::
+
 * Look at Canvas
 * Look at Piazza site, make sure you are enrolled there
 * Look at Project 1 spec: Will discuss next time
@@ -131,6 +149,8 @@ Today's Homework
 
 Before you leave today
 ----------------------
+
+.. revealjs-slide::
 
 * Put your name and PID on sign-up sheet
 * If you need to force add the course:
