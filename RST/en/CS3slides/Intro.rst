@@ -28,7 +28,7 @@ Goals of this Course
   * These techniques also allow you to judge the merits of new data
     structures that you or others might invent.
 
-    
+
 Costs and Benefits
 ==================
 

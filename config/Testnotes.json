@@ -1,6 +1,6 @@
 {
-  "title": "CS3114-specific Coursenotes",
-  "desc": "CS3114-specific Coursenotes",
+  "title": "Reveal-JS Testing: Notes",
+  "desc": "Reveal-JS Testing: Notes",
   "build_dir": "Books",
   "code_dir": "SourceCode/",
   "lang": "en",
@@ -60,8 +60,11 @@
   }, 
   "chapters": {
     "Week 1": {
-      "CS3slides/Intro": {},
-      "CS3slides/CS3114Intro": {}
+      "CS3slides/VTIntro": {},
+      "CS3slides/Intro": {}
+    },
+    "Week 2": {
+      "CS3slides/AlgAnal": {}
     }
   }
 }
