@@ -158,4 +158,5 @@ Before you leave today
 
 * Put your name and PID on sign-up sheet
 * If you need to force add the course:
+
   * https://cs.vt.edu/Academics/Undergraduate/ForceAdd.html
