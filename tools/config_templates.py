@@ -278,7 +278,10 @@ if slides_lib == 'revealjs' or on_slides:
         '../%(eb2root)slib/odsaMOD-min.css',
         '../%(eb2root)slib/jquery.ui.min.css',
         '../%(eb2root)slib/odsaStyle-min.css',
-        '../%(eb2root)slib/ODSAcoursenotes.css'
+        '../%(eb2root)slib/ODSAcoursenotes.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+        '../%(eb2root)slib/customcontrols.css',
+        '../%(eb2root)slib/chalkboard.css'
     ]
     revealjs_script_files = [
         '../%(eb2root)slib/jquery.min.js',
@@ -294,7 +297,16 @@ if slides_lib == 'revealjs' or on_slides:
         '../%(eb2root)slib/ODSAcoursenotes.js'
     ]
     revealjs_js_files = revealjs_script_files
-    revealjs_script_plugins = []
+    revealjs_script_plugins = [
+        {
+            "name": "RevealCustomControls",
+            "src": "../%(eb2root)slib/customcontrols.js"
+        },
+        {
+            "name": "RevealChalkboard",
+            "src": "../%(eb2root)slib/chalkboard.js"
+        }
+    ]
     revealjs_script_conf = """{
         controls: true,
         progress: true,
@@ -306,7 +318,45 @@ if slides_lib == 'revealjs' or on_slides:
         height: 960,
         margin: 0.1,
         minScale: 0.2,
-        maxScale: 2.0
+        maxScale: 2.0,
+        customcontrols: {
+            controls: [
+                {
+                    icon: '<i class="fa fa-pen-square"></i>',
+                    title: 'Toggle chalkboard (B)',
+                    action: 'RevealChalkboard.toggleChalkboard();'
+                },
+                {
+                    icon: '<i class="fa fa-pen"></i>',
+                    title: 'Toggle notes canvas (C)', 
+                    action: 'RevealChalkboard.toggleNotesCanvas();'
+                }
+            ]
+        },
+        chalkboard: {
+            theme: "whiteboard",
+            boardmarkerWidth: 3,
+            chalkWidth: 7,
+            readOnly: false,
+            transition: 800,
+            background: [ 'rgba(127,127,127,.1)' ],
+            grid: false,
+            eraser: {
+                src: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTQ5Ny45NDEgMjczLjk0MWMxOC43NDUtMTguNzQ1IDE4Ljc0NS00OS4xMzcgMC02Ny44ODJsLTE2MC0xNjBjLTE4Ljc0NS0xOC43NDUtNDkuMTM2LTE4Ljc0Ni02Ny44ODMgMGwtMjU2IDI1NmMtMTguNzQ1IDE4Ljc0NS0xOC43NDUgNDkuMTM3IDAgNjcuODgybDk2IDk2QTQ4LjAwNCA0OC4wMDQgMCAwIDAgMTQ0IDQ4MGgzNTZjNi42MjcgMCAxMi01LjM3MyAxMi0xMnYtNDBjMC02LjYyNy01LjM3My0xMi0xMi0xMkgzNTUuODgzbDE0Mi4wNTgtMTQyLjA1OXptLTMwMi42MjctNjIuNjI3bDEzNy4zNzMgMTM3LjM3M0wyNjUuMzczIDQxNkgxNTguMDU5bC05Ni05NiAxMzMuMjU1LTEzMy4yNTV6Ii8+PC9zdmc+',
+                radius: 20
+            },
+            boardmarkers : [
+                { color: 'rgba(100,100,100,1)'},
+                { color: 'rgba(30,144,255,1)'},
+                { color: 'rgba(220,20,60,1)'},
+                { color: 'rgba(50,205,50,1)'},
+                { color: 'rgba(255,140,0,1)'},
+                { color: 'rgba(150,0,20150,1)'},
+                { color: 'rgba(255,220,0,1)'}
+            ],
+            toggleChalkboardButton: { left: "30px", bottom: "30px", top: "auto", right: "auto" },
+            toggleNotesButton: { left: "30px", bottom: "70px", top: "auto", right: "auto" }
+        }
     }"""
     
 
