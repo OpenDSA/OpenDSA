@@ -70,7 +70,8 @@
   "chapters": {
     "Stuff": {
       "Background/MathpreIntro": {}, 
-      "Binary/BST": {}
+      "Binary/BST": {},
+      "Sorting/Insertionsort": {}
     }
   }
 }
