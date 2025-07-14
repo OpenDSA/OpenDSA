@@ -34,37 +34,27 @@ rst_footer = '''\
          }
        }, 2000);
        
-       // Initialize scroll depth tracking
-       if (typeof $.scrollDepth === 'function') {
-         $.scrollDepth({
-           minHeight: 0,
-           elements: sections,
-           percentage: true,
-           userTiming: true,
-           pixelDepth: true,
-           nonInteraction: true,
-           eventHandler: function(data) {
-             // Check if ODSA.UTILS exists before calling
-             if (typeof ODSA !== 'undefined' && ODSA.UTILS && typeof ODSA.UTILS.logUserAction === 'function') {
-               ODSA.UTILS.logUserAction(
-                 'scroll', 
-                 {
-                   percentage: data.eventLabel, 
-                   pixelDepth: data.pixelDepth,
-                   timing: data.eventTiming,
-                   element: data.eventAction || null
-                 },
-                 null,
-                 null
-               );
-             } else {
-               console.warn('ODSA.UTILS.logUserAction not available for scroll logging');
+       // Scroll depth tracking implementation
+       // NOTE: This only works in standalone OpenDSA, not in Canvas LTI environment
+       // Canvas LTI limitations documented in GitHub issue #523:
+       // - Cross-site scripting security limitations prevent access to Canvas parent scroller
+       // - Canvas automatically optimizes iframe height, eliminating internal scrolling
+       // - Two-scroller approach was tested but was too awkward for user experience
+       // - Future implementation would require Canvas-side cooperation
+       window.addEventListener('load', function() {
+         if (typeof $.scrollDepth === 'function' && typeof ODSA !== 'undefined' && ODSA.UTILS) {
+           $.scrollDepth({
+             percentage: true,
+             eventHandler: function(data) {
+               ODSA.UTILS.logUserAction('scroll', {
+                 percentage: data.eventLabel,
+                 pixelDepth: data.pixelDepth,
+                 timing: data.eventTiming
+               }, null, null);
              }
-           }
-         });
-       } else {
-         console.warn('jQuery scrollDepth plugin not loaded - scroll tracking disabled');
-       }
+           });
+         }
+       });
      });
     </script>
  '''
