@@ -314,11 +314,11 @@ if slides_lib == 'revealjs' or on_slides:
         slideNumber: true,
         transition: 'none',
         hash: true,
-        width: 1280,
-        height: 960,
-        margin: 0.1,
-        minScale: 0.2,
-        maxScale: 2.0,
+        width: '100%%',
+        height: '100%%',
+        margin: 0.05,
+        minScale: 0.1,
+        maxScale: 5.0,
         customcontrols: {
             controls: [
                 {

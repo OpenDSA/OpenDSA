@@ -1,9 +1,4 @@
-.jsavcontainer{
-  letter-spacing: 0px;
-  text-shadow: none;
-}
-
-/* reveal.js font sizes */
+/* override reveal's defaults */
 .reveal {
   --r-main-font-size: 24px;
   --r-heading1-size: 2.5em;
@@ -16,40 +11,104 @@
   font-size: 24px;
 }
 
+/* prevent reveal default fonts from affecting jsav */
+.reveal .jsavcontainer,
+.reveal .divdgm,
+.reveal .ssAV {
+  font-size: initial;
+}
+
+/* jsav fixes */
+.jsavcontainer {
+  letter-spacing: 0;
+  text-shadow: none;
+}
+
+.reveal .jsavcontainer {
+  text-align: left;
+}
+
 .reveal .jsavlabel {
   text-transform: none !important;
   letter-spacing: normal !important;
 }
-.divdgm .jsavlabel{
-  font-size: 13px;
-  font-family: san-serif;
+
+.reveal .jsavoutput {
+  text-align: left !important;
 }
-.highlight, .highlight-guess{
-  font-size: 15px;
+
+.reveal .jsavcode {
+  font-family: monospace !important;
+  margin: 0 auto !important;
+  display: table !important;
 }
-ul li::before {
-    content: none;
-    width: 0px;
-    margin-left: 0px;
-}
-.jsavcanvas{
+
+.jsavcanvas {
   overflow-x: visible;
 }
-.hide{
-  display: none;
+
+.reveal .jsavcanvas svg {
+  overflow: visible !important;
 }
-.jsavvaluelabel{
+
+.divdgm text,
+.divdgm .jsavlabel {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+.highlight, .highlight-guess,
+.ui-widget {
   font-size: 15px;
 }
-.jsavarray{
-  font-size: 15px;
+
+.MathJax, .MathJax_Display {
+  font-size: 100% !important;
 }
-.jsavlist{
-  font-size: 15px; 
+
+/* remove list markers */
+ul li::before {
+  content: none;
+  width: 0;
+  margin-left: 0;
 }
-.MathJax, .MathJax_Display  {
-  font-size: 40% ;
+
+/* hide notes  */
+.reveal .note,
+.reveal .admonition.note {
+  display: none !important;
 }
-.ui-widget{
-  font-size: 15px;
+
+/* Table of contents */
+.reveal .toctree-wrapper {
+  font-size: 18px !important;
+}
+
+.reveal .toctree-wrapper ul {
+  list-style: none !important;
+  padding-left: 20px !important;
+}
+
+.reveal .toctree-l2,
+.reveal .toctree-l3,
+.reveal .toctree-l4 {
+  display: none !important;
+}
+
+.reveal .toctree-l1 {
+  display: block !important;
+  margin-bottom: 10px !important;
+}
+
+.reveal .toctree-wrapper a {
+  color: #2a76dd !important;
+  text-decoration: none !important;
+}
+
+.reveal .toctree-wrapper a:hover {
+  text-decoration: underline !important;
+}
+
+/* hide index & search links */
+.reveal .toctree-wrapper + div + ul {
+  display: none !important;
 }

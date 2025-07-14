@@ -56,6 +56,7 @@ Role in the Curriculum
 
   * Programming (we focus on projects with dynamic memory allocation
     and file processing, and they have significant design challenges)
+
   * Content, theory and analysis
 
 * The projects test programming proficiencies
