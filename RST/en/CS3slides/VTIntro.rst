@@ -14,11 +14,11 @@ Introduction
 
 .. revealjs-slide::
 
-What we are doing today:
+* What we are doing today:
 
-* Administration stuff
-* Course mechanics
-* Course introduction (OpenDSA Chapter 1)
+  * Administration stuff
+  * Course mechanics
+  * Course introduction (OpenDSA Chapter 1)
 
 
 Course Mechanics
@@ -35,13 +35,13 @@ Canvas
 
 .. revealjs-slide::
 
-We will use Canvas
+* Course materials are organized and delivered through Canvas
 
-* Course syllabus
-* Project specs and supporting documents
-* Link to Piazza forum
-* Post scores and grades
-* Access to OpenDSA (online textbook)
+  * Course syllabus
+  * Project specs and supporting documents
+  * Link to Piazza forum
+  * Post scores and grades
+  * Access to OpenDSA (online textbook)
 
 
 Role in the Curriculum

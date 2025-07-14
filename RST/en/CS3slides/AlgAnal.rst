@@ -21,13 +21,13 @@ Algorithm Efficiency
 * At the heart of computer program design are two (sometimes
   conflicting) goals.
 
-  #. To design an algorithm that is easy to understand, code, debug.
-  #. To design an algorithm that makes efficient use of the
+  1. To design an algorithm that is easy to understand, code, debug.
+  2. To design an algorithm that makes efficient use of the
      computer’s resources.
 
-Goal (1) is the concern of Software Engineering
+* Goal (1) is the concern of Software Engineering
 
-Goal (2) is the concern of data structures and algorithm analysis
+* Goal (2) is the concern of data structures and algorithm analysis
 
 
 How to Measure Efficiency?
@@ -35,17 +35,19 @@ How to Measure Efficiency?
 
 .. revealjs-slide::
 
-#. Empirical comparison (run programs)
-#. Asymptotic Algorithm Analysis
+* Two approaches:
 
-* Critical resources:
+  1. Empirical comparison (run programs)
+  2. Asymptotic Algorithm Analysis
 
-* Factors affecting running time:
+* What are the Critical resources?
 
-* For most algorithms, running time depends on “size” of the input.
+* What are the factors affecting running time?
 
-* Running time is expressed as :math:`\mathbf{T}(n)` for some
-  function :math:`\mathbf{T}` on input size :math:`n`.
+  * For most algorithms, running time depends on “size” of the input.
+
+  * Running time is expressed as :math:`\mathbf{T}(n)` for some
+    function :math:`\mathbf{T}` on input size :math:`n`.
 
 
 Problems, Algorithms, Programs
@@ -256,9 +258,9 @@ Big-Omega
 ---------
 
 .. revealjs-slide::
-
-:math:`\Omega`
        
+:math:`\Omega`
+
 Definition: For :math:`\textbf{T}(n)` a non-negatively valued
 function, :math:`\textbf{T}(n)` is in the
 set :math:`\Omega(g(n))` if there exist two positive constants :math:`c`
@@ -475,7 +477,7 @@ pixels.
 
 If we use P as the measure, then time is :math:`(P \log P)`.
 
-More accurate is :math:`\Theta(P + C log C)`.
+More accurate is :math:`\Theta(P + C \log C)`.
 
 
 Space Complexity
