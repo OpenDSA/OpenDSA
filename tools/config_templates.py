@@ -35,35 +35,25 @@ rst_footer = '''\
        }, 2000);
        
        // Scroll depth tracking implementation
-       // Force iframe to have its own scroller
+       // NOTE: This only works in standalone OpenDSA, not in Canvas LTI environment
+       // Canvas LTI limitations documented in GitHub issue #523:
+       // - Cross-site scripting security limitations prevent access to Canvas parent scroller
+       // - Canvas automatically optimizes iframe height, eliminating internal scrolling
+       // - Two-scroller approach was tested but was too awkward for user experience
+       // - Future implementation would require Canvas-side cooperation
        window.addEventListener('load', function() {
-         // Ensure iframe content is always scrollable
-         document.body.style.minHeight = '150vh'; // Force content to be taller
-         document.body.style.overflow = 'auto';   // Ensure scrolling enabled
-         document.documentElement.style.overflow = 'auto';
-         
-         // Prevent Canvas from hijacking scroll
-         var maintainScroller = setInterval(function() {
-           if (document.body.scrollHeight <= window.innerHeight) {
-             document.body.style.minHeight = (window.innerHeight + 500) + 'px';
-           }
-         }, 1000);
-         
-         // Initialize ScrollDepth after ensuring scroller exists
-         setTimeout(function() {
-           if (typeof $.scrollDepth === 'function' && typeof ODSA !== 'undefined' && ODSA.UTILS) {
-             $.scrollDepth({
-               percentage: true,
-               eventHandler: function(data) {
-                 ODSA.UTILS.logUserAction('scroll', {
-                   percentage: data.eventLabel,
-                   pixelDepth: data.pixelDepth,
-                   timing: data.eventTiming
-                 }, null, null);
-               }
-             });
-           }
-         }, 2000);
+         if (typeof $.scrollDepth === 'function' && typeof ODSA !== 'undefined' && ODSA.UTILS) {
+           $.scrollDepth({
+             percentage: true,
+             eventHandler: function(data) {
+               ODSA.UTILS.logUserAction('scroll', {
+                 percentage: data.eventLabel,
+                 pixelDepth: data.pixelDepth,
+                 timing: data.eventTiming
+               }, null, null);
+             }
+           });
+         }
        });
      });
     </script>
