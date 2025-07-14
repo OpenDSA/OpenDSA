@@ -15,20 +15,20 @@ Course Introduction
 
 .. revealjs-slide::
 
-Goals of this Course
+* Goals of this Course:
 
-* Reinforce the concept that costs and benefits exist for every data
-  structure.
-* Learn the commonly used data structures.
+  * Reinforce the concept that costs and benefits exist for every data
+    structure.
+  * Learn the commonly used data structures.
 
-  * These form a programmer's basic data structure "toolkit".
+    * These form a programmer's basic data structure "toolkit".
 
-* Understand how to measure the cost of a data structure or program.
+  * Understand how to measure the cost of a data structure or program.
 
-  * These techniques also allow you to judge the merits of new data
-    structures that you or others might invent.
+    * These techniques also allow you to judge the merits of new data
+      structures that you or others might invent.
 
-    
+
 Costs and Benefits
 ==================
 

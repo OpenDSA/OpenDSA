@@ -6,44 +6,19 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-CS3114 Introduction
-===================
+CS3114/5040 Introduction
+========================
 
 Introduction
 ------------
 
 .. revealjs-slide::
 
-What we are doing today:
+* What we are doing today:
 
-* Administration stuff
-* Course mechanics
-* Course introduction (OpenDSA Chapter 1)
-
-
-Analysis: Worst Case
---------------------
-.. revealjs-slide::
-
-.. inlineav:: InsertionSortWorstCaseCON ss
-   :long_name: Insertion Sort Worst Case Slideshow
-   :links: AV/Sorting/InsertionSortWorstCaseCON.css
-   :scripts: AV/Sorting/InsertionSortWorstCaseCON.js
-   :output: show
-
-
-
-Administration stuff
---------------------
-
-.. revealjs-slide::
-
-* Sign-in sheet (be sure to sign-in on one of them)
-* Get a copy of the syllabus
-* Force Add System:
-
-  * https://cs.vt.edu/Academics/Undergraduate/ForceAdd.html/
-  * See at end "By Permission"
+  * Administration stuff
+  * Course mechanics
+  * Course introduction (OpenDSA Chapter 1)
 
 
 Course Mechanics
@@ -51,8 +26,8 @@ Course Mechanics
 
 .. revealjs-slide::
 
-* Go over Syllabus
 * Course online support: Canvas, OpenDSA, Web-CAT
+* Those still needing to get into the course
 
 
 Canvas
@@ -60,12 +35,13 @@ Canvas
 
 .. revealjs-slide::
 
-We will use Canvas
+* Course materials are organized and delivered through Canvas
 
-* Project specs and supporting documents
-* Link to Piazza forum
-* Post scores and grades
-* Access to OpenDSA (online textbook)
+  * Course syllabus
+  * Project specs and supporting documents
+  * Link to Piazza forum
+  * Post scores and grades
+  * Access to OpenDSA (online textbook)
 
 
 Role in the Curriculum
@@ -78,8 +54,9 @@ Role in the Curriculum
 
 * To do well, you must be able to handle both
 
-  * Programming (we focus on projects with dynamic memory allocation and
-    file processing, and they have significant design challenges)
+  * Programming (we focus on projects with dynamic memory allocation
+    and file processing, and they have significant design challenges)
+
   * Content, theory and analysis
 
 * The projects test programming proficiencies
@@ -116,8 +93,9 @@ Web-CAT
 
 .. revealjs-slide::
 
-* Get the updated plugin
-* Project submission
+* Must use Eclipse IDE for submissions: Be up to date!
+* Get the updated Web-CAT plugin
+* Project submission support
 * Support for junit testing
 * Auto-grading: Correctness, style
 
@@ -149,14 +127,3 @@ Today's Homework
 * Look at Piazza site, make sure you are enrolled there
 * Look at Project 1 spec: Will discuss next time
 * Do Chapter 1 exercises in OpenDSA by 11:00pm Thursday (in 2 days)
-
-
-Before you leave today
-----------------------
-
-.. revealjs-slide::
-
-* Put your name and PID on sign-up sheet
-* If you need to force add the course:
-
-  * https://cs.vt.edu/Academics/Undergraduate/ForceAdd.html
