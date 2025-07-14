@@ -4,10 +4,10 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :title: Arrays
+   :title: Multi-dimensional Arrays
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: Multi-dimensional Arrays
+   :keyword: Array
    :naturallanguage: en
    :programminglanguage: Java
    :description: CS1-level introduction to multi-dimensional arrays.

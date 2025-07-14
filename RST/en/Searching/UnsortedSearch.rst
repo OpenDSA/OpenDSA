@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: Search
-   :keyword: Search; Search in Unsorted Lists; Lower Bounds Proofs
+   :keyword: Search in Unsorted Lists; Lower Bound Proof
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents an lower-bounds analysis for the problem of searching an unsorted list.

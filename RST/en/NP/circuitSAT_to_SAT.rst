@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness Proofs; Satisfiability
+   :keyword: NP-Completeness Proof; Satisfiability Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a reduction of an instance of the Circuit Satisfiability problem to an instance of the (general) CNF Satisfiability problem.

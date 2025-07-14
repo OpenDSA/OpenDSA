@@ -10,7 +10,7 @@
    :requires: debugging
    :satisfies: Eclipse debugging
    :topic: Programming Tutorial
-   :keyword: Debugging; Source Level Debugging; Eclipse
+   :keyword: Debugging; Source Level Debugging; Eclipse IDE
    :naturallanguage: en
    :programminglanguage: Java
    :description: Introduction to using the Eclipse source-level debugger.

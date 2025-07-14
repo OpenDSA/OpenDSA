@@ -125,7 +125,7 @@ $(document).ready(function() {
   av.step();
 
   // Slide 9
-  av.umsg("Then, we find the most efficient way to compute ABC");
+  av.umsg("Then, we find the most efficient way to compute ABC.");
   multree.root().child(2).addChild("A(BC)");
   val = "A(BC)" + "<br>" + "28" ;
   multree.root().child(2).child(0).value(val);

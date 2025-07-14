@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: general trees
    :topic: General Trees
-   :keyword: General Trees
+   :keyword: General Tree
    :naturallanguage: en
    :programminglanguage: Java
    :description: Introduction to the concept of a general tree: A tree where any node can have any number of children. This module discusses general tree terminology, an ADT, and traversals.

@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: Multiple Binary Trees
    :topic: Multiple Binary Trees
-   :keyword: Binary Tree Traversals; Recursive Tree Functions
+   :keyword: Binary Tree Traversal; Recursive Tree Functions
    :naturallanguage: en
    :programminglanguage: Java
    :description: Contains practice programming exercises that use multiple binary trees.

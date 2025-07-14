@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :requires: hash function
    :topic: Hashing
-   :keyword: Hashing; Hash Functions
+   :keyword: Hash Function
    :naturallanguage: en
    :programminglanguage: Java; C++
    :description: Introduction to a sampling of hash functions, and why some are better than others.

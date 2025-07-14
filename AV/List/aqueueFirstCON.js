@@ -6,7 +6,7 @@
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Array-based Queue
+// Keyword: Array-Based Queue
 // Natural Language: en
 // Programming Language: N/A
 

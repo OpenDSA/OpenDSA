@@ -4,7 +4,7 @@
 // Author: Yuhui Lyu; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
-// Keyword: Summations
+// Keyword: Poset; Search in Unsorted Lists
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow showing the use of posets in a proof of the lower bound for search in an unsorted list. */

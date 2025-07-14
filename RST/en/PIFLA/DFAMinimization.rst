@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Minimizing the Number of States in a DFA
    :author: Susan Rodger; Cliff Shaffer; Mostafa Mohammed
+   :institution: Duke University; Virginia Tech
    :requires: Non-deterministic Finite Automata
    :satisfies: DFA minimization
    :topic: Finite Automata

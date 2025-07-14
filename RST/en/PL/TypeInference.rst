@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Type Inference in Programming languages
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Types
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the concept of type inference in programming languages.
 
-==============
 Type Inference
 ==============
 

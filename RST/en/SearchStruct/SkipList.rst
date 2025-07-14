@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic: Randomized Algorithms
-   :keyword: Skip Lists; Randomized Algorithms; Probabilistic Algorithms
+   :keyword: Skip List; Randomized Algorithm; Probabilistic Algorithm
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presentation of the Skip List data structure including visualizations and code.

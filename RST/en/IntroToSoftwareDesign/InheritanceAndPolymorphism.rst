@@ -7,7 +7,7 @@
    :title: Inheritance and Polymorphism: Subclasses and Methods
    :author: Molly Domino; Steve Edwards
    :institution: Virginia Tech
-   :keyword: Inheritance; Polymorphism; Subclasses; Methods
+   :keyword: Inheritance; Polymorphism; Subclass; Method
    :naturallanguage: en
    :programminglanguage: Java
    :description: Introduction to Inheritance and Polymorphism

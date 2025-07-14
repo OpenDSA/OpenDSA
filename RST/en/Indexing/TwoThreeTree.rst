@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: 2-3 tree
    :topic: Indexing
-   :keyword: Indexing; 2-3 Trees
+   :keyword: Indexing; 2-3 Tree
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presents the 2-3 Tree Data Structure.

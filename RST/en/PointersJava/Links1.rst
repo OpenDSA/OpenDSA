@@ -5,12 +5,12 @@
 
 .. avmetadata::
    :title: Link Nodes
-   :author: Cliff Shaffer; Mohammed Mostafa; Margaret Ellis
+   :author: Cliff Shaffer; Mostafa Mohammed; Margaret Ellis
    :institution: Virginia Tech
    :requires: Pointer intro
    :satisfies: Link Nodes
    :topic: Link Nodes
-   :keyword: Pointers; Link Nodes
+   :keyword: Pointer; Link Node
    :naturallanguage: en
    :programminglanguage: Java
    :description: An introduction to link nodes.

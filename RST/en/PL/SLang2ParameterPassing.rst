@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: David Furcy and Tom Naps
+   :title: Parameter-Passing Mechanisms
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Parameter Passing
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses various approaches to parameter passing.
 
 .. odsascript:: Exercises/PL/CallByAllFive.js
 .. odsascript:: AV/PL/paramPassingGenerator.js
@@ -17,7 +23,6 @@
 
 Parameter-Passing Mechanisms
 ============================
-
 
 Call By Value vs. Call By Reference
 -----------------------------------
@@ -203,8 +208,6 @@ Now, test yourself with a copy-restore proficiency exercise.
 .. avembed:: AV/PL/paramPassingCopyRestorePRO.html pe
    :long_name: Copy-restore Proficiency Exercise
 
-
-   
 We've now covered the three parameter-passing methods that use eager
 evaluation of function arguments.
 

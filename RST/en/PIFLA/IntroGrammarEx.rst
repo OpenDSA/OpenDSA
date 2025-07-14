@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: Introductory Grammars exercises
-   :keyword: Formal Languages and Automata; Grammars
+   :keyword: Formal Language; Automata; Grammar
    :naturallanguage: en
    :programminglanguage: N/A
    :description: A collection of exercises for a student to construct a grammar for a given language.

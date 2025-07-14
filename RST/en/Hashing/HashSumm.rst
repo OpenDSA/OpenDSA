@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Hashing Chapter Summary Exercises
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: hash deletion
    :topic: Hashing
    :keyword: Hashing

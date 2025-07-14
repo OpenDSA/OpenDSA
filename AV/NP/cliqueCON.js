@@ -2,7 +2,7 @@
 /*global ODSA */
 
 // Title: Introduction to the Clique Problem
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Clique Problem

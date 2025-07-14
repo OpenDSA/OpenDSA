@@ -10,7 +10,7 @@
    :requires: BST; Spatial data structures
    :satisfies: Bintree
    :topic: Spatial Data Structures
-   :keyword: Spatial Data Structures, Bintree
+   :keyword: Spatial Data Structure, Bintree
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to the Bintree data structure.

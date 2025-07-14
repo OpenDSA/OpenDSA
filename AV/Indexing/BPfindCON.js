@@ -6,7 +6,7 @@
 // Author: Cliff Shaffer; Liling Yuan
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Tree-based Index; Indexing; B+ Tree
+// Keyword: Tree-Based Indexing; B-Tree
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow showing a series of search operations in a B+ Tree of degree 4. */

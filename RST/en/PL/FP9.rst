@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Continuations and Continuation Passing
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Functional Programming
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses continuations and continuation passing.
 
-======================================
 Continuations and Continuation Passing
 ======================================
 
@@ -278,6 +283,3 @@ for it, you must solve it correctly three times in a row.
 
 .. avembed:: Exercises/PL/ContinuationPassing4.html ka
    :long_name: Randomized CPS practice
-	    
-
-

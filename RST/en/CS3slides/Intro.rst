@@ -6,66 +6,93 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
+.. odsascript:: AV/Design/ADTCON.js
+.. odsalink:: AV/Design/ADTCON.css
 
 ===================================================
 Data Structures and Algorithm Analysis Introduction
 ===================================================
 
 Introduction
-------------
+============
 
-.. slide:: Course Introduction
+.. revealjs-slide::
 
-   Goals of this Course
+Course Introduction
+===================
 
-   * Reinforce the concept that costs and benefits exist for every data
-     structure.
-   * Learn the commonly used data structures.
-      * These form a programmer's basic data structure "toolkit".
-   * Understand how to measure the cost of a data structure or program.
-      * These techniques also allow you to judge the merits of new data
-        structures that you or others might invent.
+.. revealjs-slide::
 
-.. slide:: Costs and Benefits
+Goals of this Course
 
-   * Each data structure has costs and benefits.
-      * Rarely is one data structure better than another in all situations.
-   * Any data structure requires:
-      * space for each data item it stores,
-      * time to perform each basic operation,
-      * programming effort.
-   * Only after a careful analysis of problem characteristics can we
-     know the best data structure for a task.
+* Reinforce the concept that costs and benefits exist for every data
+  structure.
+* Learn the commonly used data structures.
 
-.. slide:: Data Structure
+  * These form a programmer's basic data structure "toolkit".
 
-   * A data structure is the physical implementation of an ADT.
-      * Each operation associated with the ADT is implemented by one
-        or more subroutines in the implementation.
-   * Data structure usually refers to an organization for data in main
-     memory.
-   * File structure: an organization for data on peripheral storage, such
-     as a disk drive.
+* Understand how to measure the cost of a data structure or program.
 
-.. slide:: Logical vs. Physical Form
+  * These techniques also allow you to judge the merits of new data
+    structures that you or others might invent.
 
-   * Data items have both a logical and a physical form.
+Costs and Benefits
+==================
 
-   * Logical form: definition of the data item within an ADT.
+.. revealjs-slide::
 
-     * Ex: Integers in mathematical sense: +, -
+* Each data structure has costs and benefits.
 
-   * Physical form: implementation of the data item within a data
-     structure.
+  * Rarely is one data structure better than another in all situations.
 
-     * Ex: 32/64 bit integers, overflow.
+* Any data structure requires:
 
-.. slide:: Logical vs. Physical Form (2)
+  * space for each data item it stores,
+  * time to perform each basic operation,
+  * programming effort.
 
-   .. inlineav:: ADTCON dgm
-      :links: AV/Design/ADTCON.css
-      :scripts: AV/Design/ADTCON.js
-      :output: show
+* Only after a careful analysis of problem characteristics can we
+  know the best data structure for a task.
+
+Data Structure
+==============
+
+.. revealjs-slide::
+
+* A data structure is the physical implementation of an ADT.
+
+  * Each operation associated with the ADT is implemented by one
+    or more subroutines in the implementation.
+
+* Data structure usually refers to an organization for data in main
+  memory.
+* File structure: an organization for data on peripheral storage, such
+  as a disk drive.
+
+Logical vs. Physical Form
+=========================
+
+.. revealjs-slide::
+
+* Data items have both a logical and a physical form.
+
+* Logical form: definition of the data item within an ADT.
+
+  * Ex: Integers in mathematical sense: +, -
+
+* Physical form: implementation of the data item within a data
+  structure.
+
+  * Ex: 32/64 bit integers, overflow.
+
+Logical vs. Physical Form (2)
+=============================
+
+.. revealjs-slide::
+
+
+.. inlineav:: ADTCON dgm
+   :output: show
+   :align: center
+
+

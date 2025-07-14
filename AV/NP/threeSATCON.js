@@ -2,10 +2,10 @@
 /*global ODSA */
 
 // Title: Introduction to the 3-CNF Satisfiability Problem
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
-// Keyword: 3-Satisfiability Problem
+// Keyword: Satisfiability Problem
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow demonstrating the 3-CNF satisfiability problem. */

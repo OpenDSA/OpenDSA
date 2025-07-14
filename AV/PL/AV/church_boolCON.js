@@ -1,4 +1,15 @@
 // Reduction of true && false using Church bools
+
+// Title: Reduction of True and False using Church Bools
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Lambda Calculus
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing reduction of true and false using Church bools. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "church_boolCON";

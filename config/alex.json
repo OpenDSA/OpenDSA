@@ -57,6 +57,9 @@
     "Preface": {
       "Intro": {}
     },
+    "Introduction": {
+      "Development/splice_codecheck": {}
+    },
     "Programming Tutorials": {
       "Tutorials/cmdline": {}, 
       "Tutorials/parameters": {}, 

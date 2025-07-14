@@ -13,25 +13,25 @@ rst_header = '''\
 
 rst_footer = '''\
  .. raw:: html
-
+ 
     <script type="text/javascript">
      $(function () {
        var moduleName = "%(module_name)s";
        var sections = %(sections)s;
-       
        TimeMe.initialize({
          idleTimeoutInSeconds: 10
        });
        sections.forEach(function (section, i) {
          TimeMe.trackTimeOnElement(section);
        });
-       
        var timeObj = {};
        setInterval(function () {
          timeObj[moduleName.substring(0, 5)] = TimeMe.getTimeOnCurrentPageInSeconds().toFixed(2);
          sections.forEach(function (section, i) {
            timeObj[i + "-" + section.substring(0, 5)] = TimeMe.getTimeOnElementInSeconds(section).toFixed(2);
          });
+         for (var sec of sections) {
+         }
        }, 2000);
        
        // Scroll depth tracking implementation
@@ -131,10 +131,10 @@ html:
 
 slides:
 	@SLIDES=yes \
-	$(SPHINXBUILD) $(SPHINXOPTS) -b slides source $(HTMLDIR)
-	rm html/_static/jquery.js
+	$(SPHINXBUILD) $(SPHINXOPTS) -b revealjs source $(HTMLDIR)
+	rm -f html/_static/jquery.js
 	cp "%(odsa_dir)slib/styles.css" html/_static/ # Overwrites
-	rm *.json
+	rm -f *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
 '''
@@ -163,7 +163,6 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('%(odsa_dir)sRST/_extensions/hieroglyph_local/src')) # Point to src for hieroglyph package
 
 # -- General configuration -----------------------------------------------------
 
@@ -175,7 +174,7 @@ sys.path.insert(0, os.path.abspath('%(odsa_dir)sRST/_extensions/hieroglyph_local
 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinxcontrib.jquery']
 
-ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe']
+ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
 
 customsDir = '%(odsa_dir)sRST/ODSAextensions/odsa/'
 for c in ourCustoms:
@@ -188,9 +187,9 @@ extensions.append('numfig')
 
 slides_lib = '%(slides_lib)s'
 
-#only import hieroglyph when building course notes
-if slides_lib == 'hieroglyph':
-  extensions.append('hieroglyph') # Use 'hieroglyph' as extension name, found in .../src/
+# only import sphinx-revealjs when building course notes
+if slides_lib == 'revealjs':
+  extensions.append('sphinx_revealjs')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -256,28 +255,24 @@ pygments_style = 'xcode' #'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
-# -- Options for HTML Slide output ---------------------------------------------------
+# -- Options for RevealJS Slide output ---------------------------------------------------
 sys.path.append('%(theme_dir)s')
-slide_theme_path = ['%(theme_dir)s', os.path.abspath('%(odsa_dir)sRST/_extensions/hieroglyph_local/src/hieroglyph/themes')]
 
-# Themes that are defined by hieroglyph; using them breaks some custom ODSA content
-# slide_theme = 'single-level' # basic theme
-# slide_theme = 'slides' # default theme
-# slide_theme = 'slides2' # animated theme
-
-# Custom themes, made for ODSA content:
-slide_theme = 'slidess' # working, default theme for all slides
-# The 'haiku' theme is not for slides
-
-#slide_theme_options = {'custom_css':'custom.css'}
-
-slide_link_html_to_slides = not on_slides
-slide_link_html_sections_to_slides = not on_slides
-#slide_relative_path = "./slides/"
-
-slide_link_to_html = True
-slide_html_relative_path = "../"
-
+if slides_lib == 'revealjs':
+    revealjs_theme = 'white'
+    revealjs_static_path = ['_static']
+    revealjs_css_files = []
+    revealjs_script_files = []
+    revealjs_js_files = revealjs_script_files
+    revealjs_script_plugins = []
+    revealjs_script_conf = """{
+        controls: true,
+        progress: true,
+        slideNumber: true,
+        transition: 'none',
+        hash: true
+    }"""
+    
 
 # -- Options for HTML output ---------------------------------------------------
 #The fully-qualified name of a HTML Translator, that is used to translate document
@@ -363,7 +358,8 @@ html_context = {"script_files": [
                   'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
                   'https://d3js.org/d3-selection-multi.v1.min.js',
                   '%(eb2root)slib/dataStructures.js',
-                  '%(eb2root)slib/conceptMap.js'
+                  '%(eb2root)slib/conceptMap.js',
+                  '%(eb2root)slib/splice-iframe.js',
                 ],
                 "css_files": [
                   '%(eb2root)slib/normalize.css',
@@ -381,6 +377,10 @@ if on_slides:
    html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');
    html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');
 
+# Always add ODSA scripts for slides
+if on_slides:
+  html_context['script_files'] += html_context['odsa_scripts']
+# Also add for non-haiku themes  
 if '%(theme)s' != 'haiku':
   html_context['script_files'] += html_context['odsa_scripts']
 

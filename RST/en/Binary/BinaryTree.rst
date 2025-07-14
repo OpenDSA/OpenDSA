@@ -12,7 +12,7 @@
    :topic: Binary Trees
    :keyword: Binary Tree
    :naturallanguage: en
-   :programminglanguage: N/T
+   :programminglanguage: N/A
    :description: Presents definitions and properties for binary trees.
 
 

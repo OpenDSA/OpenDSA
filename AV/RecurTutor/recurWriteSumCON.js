@@ -5,8 +5,8 @@
 // Title: Writing a Recursive Function: Variations
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Demonstration
-// Keyword: Recusion
+// Features: Code Tracing Visualization
+// Keyword: Recursion
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow showing multiple examples of how to write a recursive function to do summation. */

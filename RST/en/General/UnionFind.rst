@@ -6,10 +6,11 @@
 .. avmetadata::
    :title: Union/Find and the Parent Pointer Implementation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: general trees
    :satisfies: Union/Find
    :topic: Union/Find
-   :keyword: Union/Find Algorithm; Disjoint Sets; Equivalence Classes
+   :keyword: Union/Find Algorithm; Disjoint Set; Equivalence Class
    :naturallanguage: en
    :programminglanguage: Java
    :description: Discusses the union/find algorithm for identifying and managing disjoint sets.

@@ -1,8 +1,8 @@
 // Title: Closure Properties to Show a Language Non-Regular: Example 1
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Programmed Instruction; Proof Demonstration
-// Keyword: Non-Regular Language; Closure Properties
+// Features: Programmed Instruction; Proof Visualization
+// Keyword: Non-Regular Language; Closure Property
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Programmed Instruction slideshow demonstrating an example of using closure properties to prove a language non-regular. Language: a^n b^m a^m. */

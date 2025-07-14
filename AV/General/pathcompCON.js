@@ -5,8 +5,8 @@
 // Title: Union/Find with Path Compression Examaple Slideshow
 // Author: Mohammed Farghally; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Trace Visualization
-// Keyword: Union/Find Algorithm; Disjoint Sets
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Union/Find Algorithm; Disjoint Set
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow demonstrating the path compression optimization for Union/Find. Shows the parent pointer representation used to maintain the set information. */

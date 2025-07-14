@@ -6,10 +6,11 @@
 .. avmetadata:: 
    :title: Implementing the Linked Queue
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: queue
    :satisfies: linked queue
    :topic: Lists
-   :keyword: Linked Queues
+   :keyword: Linked Queue
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presents an implementation for linked queues.

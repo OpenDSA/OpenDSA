@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; Independent Set Problem
+   :keyword: NP-Completeness; Independent Set Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the Independent Set problem. Includes a practice exercise where the user must determine the maximum indpendent set in a given graph.

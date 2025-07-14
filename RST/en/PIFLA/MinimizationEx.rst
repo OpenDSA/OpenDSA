@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: DFA Minimization Exercises
    :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: 
    :topic: DFA Minimization
    :keyword: Finite Automata; DFA Minimization

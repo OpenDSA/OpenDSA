@@ -10,7 +10,7 @@
    :requires:  recursive function information flow
    :satisfies:
    :topic: Advanced Recursion
-   :keyword: Binary Tree Traversals; Recursive Tree Functions
+   :keyword: Binary Tree Traversal; Recursive Tree Functions
    :naturallanguage: en
    :programminglanguage: Java
    :description: Discusses information flow in a recursive tree traversal. The particular example is verifying that a binary tree is a BST.

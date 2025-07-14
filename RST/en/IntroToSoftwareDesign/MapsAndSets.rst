@@ -7,7 +7,7 @@
    :title: Maps and Sets
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: Maps; Sets
+   :keyword: Map; Set
    :naturallanguage: en
    :programminglanguage: Java
    :description: CS1-level introduction to maps and sets.

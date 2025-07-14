@@ -2,7 +2,7 @@
 /*global ODSA*/
 
 // Title: Introduction to the Circuit Satisfiability Problem
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Circuit Satisfiability Problem

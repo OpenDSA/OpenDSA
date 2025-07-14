@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: Turing Machines
-   :keyword: Turing Machines
+   :keyword: Turing Machine
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to Turing machines.

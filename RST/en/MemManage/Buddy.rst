@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic: Memory Management
-   :keyword: Memory Management; Buddy Method Memory Allocation
+   :keyword: Buddy Method Memory Manager
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Discusses the buddy method of memory allocation. Briefly discusses other approaches to memory management not previously discussed in the chapter.

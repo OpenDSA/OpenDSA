@@ -8,7 +8,7 @@
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Tree-based Index; Indexing; 2-3 Tree
+// Keyword: Tree-Based Indexing; 2-3 Tree
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow showing how keys can be promoted on insertion into a 2-3 tree. */

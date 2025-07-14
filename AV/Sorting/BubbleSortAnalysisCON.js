@@ -9,7 +9,7 @@
 // Keyword: Bubble Sort; Worst Case; Average Case; Best Case
 // Natural Language: en
 // Programming Language: N/A
-/* Description: Slideshow showing an analysis of Bubble Sort's cost analysis. */
+/* Description: Slideshow showing an analysis of Bubble Sort's cost in worst, average, and best cases. */
  
 $(document).ready(function() {
   "use strict";

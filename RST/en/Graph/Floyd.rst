@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic:
-   :keyword: Graphs; All-Pairs Shortest Paths; Floyd's Algorithm; Dynamic Programming
+   :keyword: Shortest Path Problem; Floyd's Algorithm; Dynamic Programming
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces the all-pairs shortest paths problem, and various approaches to solving it. Presents Floyd's dynamic programming algorithm for computing the all-pairs sortest paths matrix.
@@ -52,10 +52,10 @@ Define a :term:`k-path` from vertex :math:`v` to vertex
 :math:`u` to be any path whose intermediate vertices (aside from
 :math:`v` and :math:`u`) all have indices less than :math:`k`.
 A 0-path is defined to be a direct edge from :math:`v` to :math:`u`.
-Figure :num:`Figure #FloydExamp` illustrates the concept of
-:math:`k`-paths.
+The following figure illustrates the concept of :math:`k`-paths.
 
 .. _FloydExamp:
+
 .. inlineav:: FloydCON dgm
    :links: AV/Graph/FloydCON.css
    :scripts: AV/Graph/FloydCON.js
