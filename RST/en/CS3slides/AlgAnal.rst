@@ -85,8 +85,8 @@ Example 3: Double loop
    :tag: c3p4
 
          
-Growth Rate Graph
------------------
+Growth Rate Graph (1)
+---------------------
 
 .. revealjs-slide::
 
@@ -95,6 +95,11 @@ Growth Rate Graph
     :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
     :align: center
    :keyword: Algorithm Analysis; Growth Rate
+
+Growth Rate Graph (2)
+---------------------
+
+.. revealjs-slide::
 
 .. inlineav:: GrowthRatesZoomCON dgm
    :links: AV/AlgAnal/GrowthRatesZoomCON.css
@@ -337,14 +342,25 @@ Simplifying Rules
    :math:`O(g_1(n)g_2(n))`.
 
 
-Summary
--------
+Summary (1)
+-----------
 
 .. revealjs-slide::
 
-.. inlineav:: SimpleCostsCON dgm
+.. inlineav:: SimpleCosts1CON dgm
    :links: AV/SeniorAlgAnal/SimpleCostsCON.css
-   :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
+   :scripts: AV/SeniorAlgAnal/SimpleCosts1CON.js
+   :output: show
+
+
+Summary (2)
+-----------
+
+.. revealjs-slide::
+
+.. inlineav:: SimpleCosts2CON dgm
+   :links: AV/SeniorAlgAnal/SimpleCostsCON.css
+   :scripts: AV/SeniorAlgAnal/SimpleCosts2CON.js
    :output: show
 
 
