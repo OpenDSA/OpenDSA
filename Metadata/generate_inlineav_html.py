@@ -3,12 +3,14 @@ import re
 import json
 from pathlib import Path
 
+
 script_dir = Path(__file__).resolve().parent
 project_root = script_dir.parent
 rst_root = project_root / "RST" / "en"
 av_root = project_root / "AV"
 output_dir = script_dir / "inlineav"
 output_dir.mkdir(parents=True, exist_ok=True)
+
 
 catalog_json = project_root / "config" / "Catalog.json"
 with open(catalog_json, encoding='utf-8') as f:
@@ -30,13 +32,11 @@ def fallback_title(av_name):
 
 def parse_metadata_block(filepath):
     metadata = {}
-    if not os.path.isfile(filepath):
-        print(f"JS file not found: {filepath}")
+    if not filepath.is_file():
         return None
     try:
-        with open(filepath, encoding='utf-8') as f:
+        with filepath.open(encoding='utf-8') as f:
             lines = f.readlines()
-
         for line in lines:
             stripped = line.strip()
             if stripped.startswith("//") and ":" in stripped:
@@ -114,9 +114,16 @@ def extract_inlineavs_from_rst(rst_file):
             inlineavs.append((av_name, rel_path, links, scripts, long_name, is_dgm))
     return inlineavs
 
-def generate_html(av_name, subfolder, title, links, scripts, is_dgm=False):
-    depth = len(Path(subfolder).parts)
+def find_js_file(av_name):
+    for js_file in av_root.rglob(f"{av_name}.js"):
+        return js_file
+    return None
+
+def generate_html(av_name, title, links, scripts, is_dgm, output_path):
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    depth = len(output_path.relative_to(output_dir).parents) - 1
     relative_prefix = "../" * (depth + 2)
+
     link_tags = '\n    '.join([f'<link rel="stylesheet" href="{relative_prefix}{link}"/>' for link in links])
     script_tags = '\n    '.join(
         ['<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>'] +
@@ -125,8 +132,7 @@ def generate_html(av_name, subfolder, title, links, scripts, is_dgm=False):
 
     av_div = f"""
       <div id="{av_name}" class="{('avcontainer' if is_dgm else 'ssAV')}" data-points="0" data-type="{('dgm' if is_dgm else 'ss')}"
-           data-required="true" data-long-name="{title}">
-        {'<div class="jsavcanvas"></div>' if is_dgm else '''
+           data-required="true" data-long-name="{title}">{"<div class='jsavcanvas'></div>" if is_dgm else '''
         <span class="jsavcounter"></span>
         <a class="jsavsettings" href="#">Settings</a>
         <div class="jsavcontrols"></div>
@@ -154,7 +160,6 @@ def generate_html(av_name, subfolder, title, links, scripts, is_dgm=False):
   <link rel="stylesheet" href="{relative_prefix}lib/odsaMOD-min.css" />
   <link rel="stylesheet" href="{relative_prefix}lib/odsaStyle-min.css" />
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
-
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({{
       tex2jax: {{
@@ -163,13 +168,10 @@ def generate_html(av_name, subfolder, title, links, scripts, is_dgm=False):
         processEscapes: true,
         ignoreClass: "no-mathjax"
       }},
-      "HTML-CSS": {{
-        scale: "80"
-      }}
+      "HTML-CSS": {{ scale: "80" }}
     }});
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
   {link_tags}
   {script_tags}
 </head>
@@ -191,19 +193,23 @@ def generate_html(av_name, subfolder, title, links, scripts, is_dgm=False):
 </body>
 </html>"""
 
-    output_path = output_dir / subfolder / f"{av_name}.html"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(html, encoding="utf-8")
+
 
 for rst_file in catalog_rst_paths:
     for av_name, rel_path, links, scripts, long_name, is_dgm in extract_inlineavs_from_rst(rst_file):
         if not av_name:
             continue
-        title = long_name
-        if not title:
-            js_path = av_root / rel_path / f"{av_name}.js"
-            metadata = parse_metadata_block(js_path)
-            title = metadata.get("Title") if metadata and "Title" in metadata else fallback_title(av_name)
 
-        print(f" Generating: {av_name}.html , Title: {title}, DGM: {is_dgm}")
-        generate_html(av_name, rel_path, title, links, scripts, is_dgm)
+        js_path = find_js_file(av_name)
+        if not js_path:
+            print(f"JS not found for {av_name}, skipping.")
+            continue
+
+        metadata = parse_metadata_block(js_path)
+        title = long_name or (metadata.get("Title") if metadata and "Title" in metadata else fallback_title(av_name))
+        js_rel_path = js_path.relative_to(av_root).with_suffix(".html")
+        output_html_path = output_dir / js_rel_path
+
+        print(f" Generating: {output_html_path} — Title: {title}")
+        generate_html(av_name, title, links, scripts, is_dgm, output_html_path)
