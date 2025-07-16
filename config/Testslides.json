@@ -65,7 +65,8 @@
   "chapters": {
     "Week 1": {
       "CS3slides/VTIntro": {},
-      "CS3slides/Intro": {}
+      "CS3slides/Intro": {},
+      "CS3slides/StressTest": {}
     },
     "Week 2": {
       "CS3slides/AlgAnal": {}
