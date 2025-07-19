@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Binary Tree Node Implementations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree terminology
    :satisfies: binary tree node implementation; expression tree
    :topic: Binary Trees
    :keyword: Binary Tree Node Implementation
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses how implement binary tree nodes, contrasting full binary tree node implementations to one for a non-full binary tree.
 
 
 Binary Tree Node Implementations

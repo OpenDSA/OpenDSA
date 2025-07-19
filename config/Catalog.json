@@ -69,12 +69,6 @@
     "partial_credit": false
   },
   "chapters": {
-    "Command Line and Git": {
-      "CommandLine/About": {},
-      "CommandLine/Exercises": {},
-      "Git/AboutGit": {},
-      "Git/ExercisesGit": {}
-    },
     "Introduction to Software Design": {
       "IntroToSoftwareDesign/GettingStarted": {},
       "IntroToSoftwareDesign/InheritanceAndPolymorphism": {},
@@ -91,10 +85,16 @@
       "IntroToSoftwareDesign/MapsAndSets": {},
       "IntroToSoftwareDesign/StaticMainAndExceptions":{}
     },
+    "Command Line and Git": {
+      "CommandLine/About": {},
+      "CommandLine/Exercisescmd": {},
+      "Git/AboutGit": {},
+      "Git/ExercisesGit": {}
+    },
     "Introduction for Data Structures and Algorithms Courses": {
       "Background/IntroDSA": {}
     },
-    "Object Oriented Programming": {
+    "Object-Oriented Programming": {
       "Design/IntroOO": {},
       "Design/IntroUML": {},
       "Design/IntroProcess": {},
@@ -129,10 +129,11 @@
       "PointersJava/Links1": {},
       "PointersJava/Links2": {},
       "PointersJava/PointersCM": {},
-      "PointersJava/Exercises": {},
+      "PointersJava/ExercisesPtr": {},
       "PointersJava/LinkedChains": {}
     },
     "Mathematical Background": {
+      "Background/MathpreIntro": {}, 
       "Background/SetDef": {},
       "Background/MiscMath": {},
       "Background/Logarithms": {},
@@ -171,6 +172,7 @@
       "RecurTutor/RecSummaryEx": {}
     },
     "Linear Structures": {
+      "List/ListIntro": {}, 
       "List/ListADT": {},
       "List/ListArray": {},
       "List/ListLinked": {},
@@ -192,6 +194,7 @@
       "Design/Dictionary": {}
     },
     "Binary Trees": {
+      "Binary/BinaryTreeIntro": {}, 
       "Binary/BinaryTree": {},
       "Binary/RecursiveDS": {},
       "Binary/BinaryTreeFullThm": {},
@@ -288,8 +291,7 @@
       "Graph/Floyd": {},
       "Graph/GraphCM": {}
     },
-    "Advanced Data Structures": {
-      "SearchStruct/SkipList": {},
+    "Spatial Data Structures": {
       "Spatial/Spatial": {},
       "Spatial/PRquadtree": {},
       "Spatial/KDtree": {},
@@ -311,7 +313,8 @@
     "Searching": {
       "SeniorAlgAnal/SearchIntro": {},
       "Searching/UnsortedSearch": {},
-      "Searching/SortedSearch": {}
+      "Searching/SortedSearch": {},
+      "SearchStruct/SkipList": {}
     },
     "Lower Bounds": {
       "Bounds/BoundMax": {},
@@ -375,8 +378,8 @@
       "PL/FP9": {}
     },
     "Lambda Calculus": {
-      "PL/Syntax": {},
-      "PL/Semantics": {},
+      "PL/LCSyntax": {},
+      "PL/LCSemantics": {},
       "PL/FreeBoundVariables": {},
       "PL/AlphaConversion": {},
       "PL/Substitution": {},
@@ -385,7 +388,7 @@
       "PL/ChurchNumerals": {},
       "PL/RecursiveFunctions": {}
     },
-    "Interpreting the Functional Language SLang 1": {
+    "Interpreting the Functional Language SLang": {
       "PL/SLang1": {},
       "PL/Environment": {},
       "PL/SLang1withLetExpressions": {},
@@ -400,7 +403,7 @@
       "PL/TypeSystems": {},
       "PL/TypeInference": {}
     },
-    "Formal Languages Introduction": {
+    "Formal Languages Course Introduction": {
       "PIFLA/FLIntro": {},
       "PIFLA/FLOverview": {},
       "PIFLA/MajorConcepts": {},
@@ -408,7 +411,6 @@
     },
     "Mathematical Background": {
       "PIFLA/SetNotationFLAFS": {},
-      "PIFLA/SetNotation": {},
       "PIFLA/Relations": {},
       "PIFLA/MathProof": {}
     },
@@ -417,10 +419,8 @@
       "PIFLA/DFAExercises1": {},
       "PIFLA/DFAExercises2": {},
       "PIFLA/DFAExercises3": {},
-      "PIFLA/DFAComplementEx": {},
       "PIFLA/NFA": {},
       "PIFLA/NFAExercises": {},
-      "PIFLA/NFAExercises2": {},
       "PIFLA/DFAMinimization": {},
       "PIFLA/MinimizationEx": {}
     },
@@ -430,11 +430,9 @@
       "PIFLA/RegExExercises2": {},
       "PIFLA/RegExPower": {},
       "PIFLA/RegularGrammars": {},
-      "PIFLA/RegGrammarShort": {},
       "PIFLA/RegGramEx1": {},
       "PIFLA/RegGramEx2": {},
-      "PIFLA/RegClosure": {},
-      "VisFormalLang/DFAproperties": {}
+      "PIFLA/RegClosure": {}
     },
     "Identifying Non-regular Languages": {
       "PIFLA/NonRegular": {}
@@ -459,15 +457,7 @@
     "Turing Machines": {
       "PIFLA/TuringMachines": {},
       "PIFLA/TuringMachinesAdv": {},
-      "PIFLA/TMExercises": {},
-      "PIFLA/TMExercisesS22": {}
-    },
-    "Parsing": {
-      "VisFormalLang/ParseIntro": {},
-      "VisFormalLang/LLParsing": {},
-      "VisFormalLang/LRParsing": {},
-      "VisFormalLang/CYKParsing": {},
-      "VisFormalLang/Compiler": {}
+      "PIFLA/TMExercises": {}
     }
   }
 }

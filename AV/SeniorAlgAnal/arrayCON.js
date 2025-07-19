@@ -4,6 +4,7 @@
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("arrayCON", {animationMode: "none"});
+  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 
   av.label("$A_z$ = ", {left: 310, top: 105});
   av.ds.matrix([["$1$", "$1$", "$1$", "$1$"], ["$1$", "$i$", "$-1$", "$-i$"],

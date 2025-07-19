@@ -1,5 +1,16 @@
 /*global ODSA */
 // Written by Sally Hamouda (updated by Cliff Shaffer)
+
+// Title: Inefficient Range Query in a BST Slideshow
+// Author: Sally Hamouda; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Binary Search Tree
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing a range query implementation in a BST, contrasting an inefficient and an efficient implementation. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "IneffBinaryTreeRangeCON";

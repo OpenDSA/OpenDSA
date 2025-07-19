@@ -3,11 +3,16 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :nocatalog:
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: math introduction
    :topic: Math Background
    :keyword: Math Background
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introductory module for a chapter on math background for a Data Structures and Algorithms course.
 
 
 Chapter Introduction

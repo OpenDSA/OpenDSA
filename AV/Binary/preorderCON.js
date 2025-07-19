@@ -1,5 +1,16 @@
 // Preorder traversal in detail
 /*global ODSA */
+
+// Title: Preorder Traversal Shown in Detail
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Preorder Traversal
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting a detailed visualization of preorder traversal of a binary tree and how the recursion works. */
+
 $(document).ready(function() {
   "use strict";
 

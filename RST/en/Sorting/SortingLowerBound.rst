@@ -4,13 +4,18 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Lower Bounds for Sorting
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: analyzing problems; sorting terminology
    :satisfies: sorting lower bound
-   :topic: Sorting; Sorting Problem Lower Bound
+   :topic: Sorting Problem Lower Bound
+   :keyword: Sorting; Lower Bound Proof
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presentation of the lower bounds proof for general sorting.
 
 .. index:: ! sorting; lower bounds proof
-
 
 Lower Bounds for Sorting
 ========================

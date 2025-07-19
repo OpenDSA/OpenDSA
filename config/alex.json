@@ -58,97 +58,28 @@
       "Intro": {}
     },
     "Introduction": {
-      "SeniorAlgAnal/AAIntro": {},
-      "SeniorAlgAnal/ProblemSolving": {},
-      "SeniorAlgAnal/AAOverview": {}
+      "Development/splice_codecheck": {}
     },
-    "Analyzing Problems: The Basics": {
-      "SeniorAlgAnal/TOH": {},
-      "SeniorAlgAnal/BoundsReview": {},
-      "SeniorAlgAnal/GrowthRate": {},
-      "Background/Summations": {},
-      "SeniorAlgAnal/AdvSumm": {},
-      "Background/RecurrenceIntro": {},
-      "SeniorAlgAnal/Recurrence": {},
-      "Background/Proofs": {}
-    },
-    "Searching": {
-      "Searching/SearchIntro": {},
-      "Searching/UnsortedSearch": {},
-      "Searching/SortedSearch": {}
-    },
-    "Lower Bounds": {
-      "Sorting/SortingLowerBound": {},
-      "Bounds/BoundMax": {},
-      "Background/SetDef": {},
-      "Bounds/BoundAdversary": {},
-      "Bounds/BoundState": {},
-      "Bounds/BoundiBest": {}
-    },
-    "Number Problems": {
-      "SeniorAlgAnal/Numeric": {},
-      "SeniorAlgAnal/Transform": {},
-      "SeniorAlgAnal/FFT": {}
-    },
-    "Probabilistic Algorithms": {
-      "SeniorAlgAnal/Probabilistic": {},
-      "SeniorAlgAnal/Primes": {},
-      "SeniorAlgAnal/RandomNums": {},
-      "SearchStruct/SkipList": {}
-    },
-    "Miscellaneous": {
-      "SeniorAlgAnal/DynamicProgramming": {},
-      "Graph/Floyd": {},
-      "SeniorAlgAnal/AmortAnal": {},
-      "Bounds/SortingOptimal": {}
-    },
-    "Limits to Computing": {
-      "NP/LimComp": {},
-      "NP/Reduction": {},
-      "NP/NPComplete": {},
-      "NP/provingNPC": {},
-      "NP/circuitSAT": {},
-      "NP/SAT": {},
-      "NP/threeSAT": {
-        "threeSATPRO": {
-          "threshold": 1.0
-        }
-      },
-      "NP/clique": {
-        "cliquePRO": {
-          "threshold": 1.0
-        }
-      },
-      "NP/independentSet": {
-        "independentSetPRO": {
-          "threshold": 1.0
-        }
-      },
-      "NP/vertexCover": {
-        "vertexCoverPRO": {
-          "threshold": 1.0
-        }
-      },
-      "NP/hamiltonianCycle": {
-        "hamiltonianCycPRO": {
-          "threshold": 1.0
-        }
-      },
-      "NP/TSP": {
-        "TSPPRO": {
-          "threshold": 1.0
-        }
-      },
-      "NP/circuitSAT_to_SAT": {},
-      "NP/SAT_to_threeSAT": {},
-      "NP/threeSAT_to_clique": {},
-      "NP/independentSet_to_vertexCover": {},
-      "NP/threeSAT_to_hamiltonianCycle": {},
-      "NP/clique_to_independentSet": {},
-      "NP/hamiltonianCycle_to_TSP": {},
-      "NP/NPCoping": {},
-      "SeniorAlgAnal/Impossible": {},
-      "SeniorAlgAnal/Turing": {}
+    "Programming Tutorials": {
+      "Tutorials/cmdline": {}, 
+      "Tutorials/parameters": {}, 
+      "Tutorials/eclipseparameters": {}, 
+      "Tutorials/webcattools": {}, 
+      "Tutorials/debugmethods": {}, 
+      "Tutorials/debug": {}, 
+      "Tutorials/scanning": {}, 
+      "Tutorials/randomaccessfile": {}, 
+      "Tutorials/junitstart": {}, 
+      "Tutorials/junitbasic": {}, 
+      "Tutorials/junitcoverage": {},
+      "Tutorials/mutationtesting": {},
+      "Tutorials/mutationtesting_example": {},
+      "Tutorials/mutationtesting_faq": {},
+      "Tutorials/testvalidation": {},
+      "Testing/TestIntro": {},
+      "Testing/TestCoverage": {},
+      "Testing/Example2": {},
+      "Testing/Bowling": {}
     },
     "Appendix": {
       "Glossary": {},

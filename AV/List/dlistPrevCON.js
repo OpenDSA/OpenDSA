@@ -1,6 +1,17 @@
 /*global ODSA, setPointer */
 // Written by Jun Yang and Cliff Shaffer
 // Dlist prev method
+
+// Title: Doubly Linked List Prev Method Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Doubly Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow showing how to move to the previous element in a doubly linked list. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "dlistPrevCON";

@@ -3,11 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Matrix Multiplication
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Matrix Multiplication
    :keyword: Number Problems; Matrix Multiplication; Strassen's Algorithm
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the basic concepts behind Strassen's Matrix Multiplcation algorithm.
 
 Matrix Multiplication
 =====================

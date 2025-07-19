@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Context-Free Language Membership Problem Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Context-Free Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset discussing how to recognize if a given string is derivable from a given Context-Free Grammar. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "MembershipFS";

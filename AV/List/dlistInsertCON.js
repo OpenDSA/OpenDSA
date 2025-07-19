@@ -1,6 +1,17 @@
 /*global ODSA, addEdge */
 // Written by Jun Yang and Cliff Shaffer
 // Dlist Insertion
+
+// Title: Doubly Linked List Insert Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Doubly Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting insertion into a doubly linked list. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "dlistInsertCON";

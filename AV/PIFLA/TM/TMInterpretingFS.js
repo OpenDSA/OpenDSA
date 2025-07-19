@@ -1,3 +1,12 @@
+// Title: Turing Machines Configurations and Terminology Frameset
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow presenting the concept of a configuration for a Turing machine, along with defintions for terms like halting, accepting, and computing. */
+
 $(document).ready(function () {
   "use strict";
 

@@ -1,3 +1,12 @@
+// Title: Alternate Double Hashing Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating an alternate version of double hashing collision resolution. */
+
 $(document).ready(function () {
   "use strict";
   var empty = [];

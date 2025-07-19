@@ -1,5 +1,16 @@
 // Show how to decode the word "DEED"
 /*global ODSA */
+
+// Title: Huffman Coding Tree Slideshow: Decoding
+// Author: Laura Avakian; Maoyuan Sun; Rich Episcopo; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Huffman Coding Tree
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing the process of decoding a string of Huffman Codes. */
+
 $(document).ready(function() {
   "use strict";
 

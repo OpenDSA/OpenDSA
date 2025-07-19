@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Lazy Lists Iterates Operation
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Parameter Passing; Lazy List
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow illustrating the iterates operation for a lazy list. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "LazyLists6CON"; // Illustrate and develop the is.map function

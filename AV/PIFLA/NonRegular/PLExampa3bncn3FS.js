@@ -1,7 +1,7 @@
 // Title: Pumping Lemma Example: Harder Proof
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Programmed Instruction; Proof Demonstration
+// Features: Programmed Instruction; Proof Visualization
 // Keyword: Non-Regular Language
 // Natural Language: en
 // Programming Language: N/A

@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
+   :title: Introduction to Probabilistic Algorithms
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Randomized Algorithms
-   :keyword: Randomized Algorithms; Probabilistic Algorithms
-
+   :keyword: Randomized Algorithm; Probabilistic Algorithm
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the basic concept of a probabilistic algorithm. Defines Las Vegas vs. Monte Carlo algorithms, and examples of approximate maximum number finding algorithms.
 
 Introduction to Probabilistic Algorithms
 ========================================

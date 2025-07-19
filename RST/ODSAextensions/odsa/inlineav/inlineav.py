@@ -36,17 +36,36 @@ class av_ff(Element):pass
 
 
 def visit_av_dgm_html(self, node):
-  self.body.append(self.starttag(node, 'div', CLASS='divdgm'))
+  # Get the exercise name to create the container ID
+  exer_name = node.get('exer_name', '')
+  self.body.append('<div class="divdgm">')
+  self.body.append('<div id="%s">' % exer_name)
+  self.body.append('</div>')
 
 def depart_av_dgm_html(self, node):
-  self.body.append('</div>\n')
+  self.body.append('</div>\n') 
 
 def visit_av_ss_html(self, node):
+  # add link tags if specified (via :links: in RST)
+  if 'links' in node:
+    links = node['links'].split()
+    for link in links:
+      # relative to the output of the book (../Books/<...>/)
+      link_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + link
+      self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
+  
+  #  add script tags if specified (via :scripts: in RST)
+  if 'scripts' in node:
+    scripts = node['scripts'].split()
+    for script in scripts:
+      script_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + script
+      self.body.append('<script src="%s"></script>\n' % script_path)
+  
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
 
 def depart_av_ss_html(self, node):
-  self.body.append('</div>\n')
+  self.body.append('</div>\n') 
 
 def visit_av_anchor_html(self, node):
   self.body.append(self.starttag(node, 'div', CLASS=''))
@@ -60,8 +79,7 @@ def visit_av_ff_html(self, node):
   self.body.append(node['res'])
 
 def depart_av_ff_html(self, node):
-  self.body.append('</div>\n')
-
+  self.body.append('</div>\n')  
 
 
 def doctree_read(app, doctree):
@@ -100,13 +118,17 @@ def doctree_read(app, doctree):
 def setup(app):
   app.connect('doctree-read', doctree_read)
   app.add_node(av_dgm,html=(visit_av_dgm_html, depart_av_dgm_html), 
-      slides=(visit_av_dgm_html, depart_av_dgm_html))
+      slides=(visit_av_dgm_html, depart_av_dgm_html),
+      revealjs=(visit_av_dgm_html, depart_av_dgm_html))
   app.add_node(av_anchor,html=(visit_av_anchor_html, depart_av_anchor_html), 
-      slides=(visit_av_anchor_html, depart_av_anchor_html))
+      slides=(visit_av_anchor_html, depart_av_anchor_html),
+      revealjs=(visit_av_anchor_html, depart_av_anchor_html))
   app.add_node(av_ss,html=(visit_av_ss_html, depart_av_ss_html), 
-      slides=(visit_av_ss_html, depart_av_ss_html))
+      slides=(visit_av_ss_html, depart_av_ss_html),
+      revealjs=(visit_av_ss_html, depart_av_ss_html))
   app.add_node(av_ff,html=(visit_av_ff_html, depart_av_ff_html), 
-      slides=(visit_av_ff_html, depart_av_ff_html))
+      slides=(visit_av_ff_html, depart_av_ff_html),
+      revealjs=(visit_av_ff_html, depart_av_ff_html))
 
   app.add_directive('inlineav',inlineav)
 
@@ -178,6 +200,8 @@ class inlineav(Directive):
                   'align': directives.unchanged,
                   'id': directives.unchanged,
                   'keyword': directives.unchanged, #keyword directive added 
+                  'links': directives.unchanged, # links directive added for reveal.js support
+                  'scripts': directives.unchanged, # scripts directive added for reveal.js support
                 }
   has_content = True
 
@@ -213,25 +237,41 @@ class inlineav(Directive):
       self.options['output_code'] = ''
 
     if self.options['type'] == "dgm":
-      avdgm_node = av_dgm()
-      anchor_node = av_anchor()
-
-      avdgm_node['exer_name'] = self.options['exer_name']
-      anchor_node['ids'].append(self.options['exer_name'])
-      avdgm_node += anchor_node
-      if self.content:
-        node = nodes.Element()          # anonymous container for parsing
-        self.state.nested_parse(self.content, self.content_offset, node)
-        first_node = node[0]
-        if isinstance(first_node, nodes.paragraph):
-          caption = nodes.caption(first_node.rawsource, '', *first_node.children)
-          caption['align']= self.options['align']
-          avdgm_node += caption
-
-      return [avdgm_node]
+      # compiles all HTML together to avoid container issues & offset mismatches
+      html_parts = []
+      
+      # get relative path
+      rel_path = os.path.relpath(conf.av_dir, conf.ebook_path).replace('\\', '/') + '/'
+      
+      # add any link tags
+      if 'links' in self.options:
+        links = self.options['links'].split()
+        for link in links:
+          html_parts.append('<link href="%s%s" rel="stylesheet" type="text/css" />' % (rel_path, link))
+      
+      # add any script tags
+      if 'scripts' in self.options:
+        scripts = self.options['scripts'].split()
+        for script in scripts:
+          html_parts.append('<script type="text/javascript" src="%s%s"></script>' % (rel_path, script))
+      
+      # visualization container
+      html_parts.append('<div class="divdgm">')
+      html_parts.append('<div id="%s"></div>' % self.options['exer_name'])
+      html_parts.append('</div>')
+      
+      # return everything as single HTML AV node
+      return [nodes.raw('', '\n'.join(html_parts), format='html')]
     elif self.options['type'] == "ss" and self.content:
       avss_node = av_ss()
       avss_node['res'] = SLIDESHOW % self.options
+      
+      # pass links & scripts to node
+      if 'links' in self.options:
+        avss_node['links'] = self.options['links']
+      if 'scripts' in self.options:
+        avss_node['scripts'] = self.options['scripts']
+      
       node = nodes.Element()          # anonymous container for parsing
       self.state.nested_parse(self.content, self.content_offset, node)
       first_node = node[0]

@@ -1,6 +1,15 @@
 "use strict";
 /*global alert: true, ODSA */
 
+// Title: Dijkstra's Single-Source Shortest Paths Algorithm
+// Author: Ivan Wong; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Shortest Path Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the Dijkstra's single-source shortest paths algorithm. */
+
 $(document).ready(function() {
   var jsav = new JSAV("DijkstraCON");
   var graph;

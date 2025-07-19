@@ -1,3 +1,12 @@
+// Title: Linear Probing Introduction Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a basic linear probing collision resolution. */
+
 $(document).ready(function () {
   "use strict";
   var empty = [];

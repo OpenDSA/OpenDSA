@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Formula Satisfiability
    :author: Nabanita Maji
-   :topic: NP-completeness
-   :keyword: NP-completeness; Satisfiability
-
+   :institution: Virginia Tech
+   :topic: NP-complete
+   :keyword: NP-Complete; Satisfiability Problem
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Visual introduction to the Formula Satisfiability (standard SAT) problem.
 
 Formula Satisfiability
 ======================

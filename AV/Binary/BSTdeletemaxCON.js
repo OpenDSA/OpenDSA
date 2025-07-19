@@ -1,5 +1,16 @@
 /*global ODSA */
 // deletemax slideshow
+
+// Title: BST Delete Max Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Binary Search Tree
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing recursive delete of the maximum value in a BST. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "BSTdeletemaxCON";

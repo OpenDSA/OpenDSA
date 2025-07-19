@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly
-
+   :title: Conditional and Repeating Actions
+   :author: Molly Domino; Steve Edwards
+   :institution: Virginia Tech
+   :keyword: Conditional Statement; While Loop
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: First semester programming course introduction to conditional statements and while loops.
 
 Conditional and Repeating Actions
 =================================

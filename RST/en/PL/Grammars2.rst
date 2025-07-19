@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Ambiguous Grammars
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Parse Tree
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the concept of ambiguous grammars with examples.
 
 .. odsalink::  AV/PL/AV/parseTree.css
 
@@ -12,11 +18,8 @@
 Ambiguous Grammars
 ======================================
 
-
-
 Second Sample Grammar
 ---------------------
-
 
 In :ref:`eg1` in the previous section, we developed a grammar for
 algebraic expressions that involved three non-terminals, namely
@@ -24,8 +27,6 @@ algebraic expressions that involved three non-terminals, namely
 simpler grammar for the same language, for example, a grammar with
 fewer non-terminals?  Here is one candidate grammar using only two
 non-terminals :math:`<exp>` and :math:`<var>`.
-
-
 
 .. math::
 

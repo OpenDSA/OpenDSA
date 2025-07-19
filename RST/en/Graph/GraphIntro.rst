@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Graphs Chapter Introduction
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: graph terminology
    :topic: Graphs
-   :keyword: Graphs; Graph Representations
-
+   :keyword: Graph Representation
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introductory module for a chapter on graphs suitable for a junior-level data structures course. Presents basic terminology, and the adjacency matrix and adjacency list representations.
 
 Graphs Chapter Introduction
 ===========================

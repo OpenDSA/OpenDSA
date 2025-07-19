@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Review of the Concept of Closure Properties
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Language; Closure Property
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset reviewing the concept of closure properties, in the context of regular languages. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "ClosureConceptFS";

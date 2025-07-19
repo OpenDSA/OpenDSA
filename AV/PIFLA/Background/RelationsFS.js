@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 /* Written by Mostafa Mohammed and Cliff Shaffer */
+
+// Title: Relations Review
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Set
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presentation of basic relations terminology review. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "RelationsFS";

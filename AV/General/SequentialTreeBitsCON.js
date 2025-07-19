@@ -1,7 +1,17 @@
 /*global ODSA */
-"use strict";
 // Sequential Tree visualization for bit vectors
+
+// Title: Full Binary Tree Serialization Slideshow: Mark Bits
+// Author: Kevin Ellis
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Serialization; Binary Tree
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow how to reconstruct a full binary tree from a serialized representation of its node values. All that is needed to represent the structure is a series of bit values indicating whether a node is internal or leaf. */
+
 $(document).ready(function () {
+  "use strict";
   var av_name = "SequentialTreeBitsCON";
   var av = new JSAV(av_name);
   var temp1;

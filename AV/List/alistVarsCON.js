@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Show off the private data members
+
+// Title: Array-based List Private Data Members
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Array-Based List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting the private data members from an array-based list implementation. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "alistVarsCON";

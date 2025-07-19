@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly
-
+   :title: Lists, Loop Idioms, Generics, and the Null Keyword
+   :author: Molly Domino
+   :institution: Virginia Tech
+   :keyword: List; Loop; Generics
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: CS1-level more advanced presentation on loops and introduction to generics.
 
 Lists, Loop Idioms, Generics, and the Null Keyword
 ==================================================

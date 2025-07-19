@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // List-based Queue Introduction.
+
+// Title: Linked Queue Data Members Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Linked Queue
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting data members and constructors for a linked queue implementation. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "lqueueIntroCON";

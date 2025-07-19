@@ -1,3 +1,12 @@
+// Title: Composition of Turing Machines
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Turing Machine
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow the formal conepts that support composition of Turing machines, which is a necessary step to building more complicated machines. */
+
 $(document).ready(function () {
   "use strict";
 

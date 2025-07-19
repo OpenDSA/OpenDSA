@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Graph Implementations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: graph terminology
    :satisfies: graph implementation
    :topic: Graphs
-   :keyword: Graphs; Graph Representations
-
+   :keyword: Graph Representation
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents an ADT for graphs along with sample implementations for both Adjacency List and Adjacency Matrix representations.
 
 Graph Implementations
 =====================

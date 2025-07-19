@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Reduction of Independent Set to Vertex Cover Slideshow
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction; Independent Set Problem; Vertex Cover Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating a reduction from an instance of the Independent Set problem to an instance of the Vertex Cover problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "IStoVCCON";

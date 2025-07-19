@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Reduction of Clique to Independent Set Slideshow
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction; Clique Problem; Independent Set Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating a reduction from an instance of the Clique problem to an instance of the Independent Set problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "cliqueToISCON";

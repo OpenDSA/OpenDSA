@@ -1,4 +1,14 @@
 /*global ODSA */
+
+// Title: Quicksort Partition Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Quicksort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing the partition step for Quicksort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "quicksortCON";

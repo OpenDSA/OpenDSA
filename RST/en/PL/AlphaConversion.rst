@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy, Tom Naps and Taylor Rydahl
-
+   :title: Alpha-Conversion
+   :author: David Furcy; Tom Naps; Taylor Rydahl
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses alpha conversion in the lambda calculus.
 
 .. _alpha-conversion:
 
-================
 Alpha-Conversion
 ================
 

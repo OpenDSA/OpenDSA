@@ -41,7 +41,8 @@ class avmetadata(Directive):
     optional_arguments = 3 
     final_argument_whitespace = True
     has_content = True
-    option_spec = {'title': directives.unchanged,
+    option_spec = {'nocatalog': directives.unchanged,
+                   'title': directives.unchanged,
                    'author':directives.unchanged,
                    'institution':directives.unchanged,
                    'topic': directives.unchanged,

@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Types in Programming languages
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Type
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the concept of types in programming languages.
 
-==============================
 Types in Programming Languages
 ==============================
 

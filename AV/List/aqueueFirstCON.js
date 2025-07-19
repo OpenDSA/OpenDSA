@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Elements of the queue are stored in the first n positions of the array
+
+// Title: Array-Based Queue Positions Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Array-Based Queue
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow presenting an initial design for storing a queue in an array. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "aqueueFirstCON";

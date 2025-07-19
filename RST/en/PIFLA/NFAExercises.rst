@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: NFA Exercises 1
    :author: Mostafa Mohammed and Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: NFA exercises
    :keyword: Finite Automata; Non-Deterministic Finite Automata
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Exercises to practice creating NFA or converting an NFA to an equivalent DFA.
 
 NFA exercises
 =============

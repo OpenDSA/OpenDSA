@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
-
+   :title: Recursive Functions and Lambda Calculus
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses recursive functions and the lambda calculus.
 
 Recursive Functions
 ===================

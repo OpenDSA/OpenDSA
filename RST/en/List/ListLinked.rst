@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
+   :title: Linked List Implementation
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: list ADT
    :satisfies: linked list
    :topic: Lists
    :keyword: Linked List
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presents an implementation for a linked list.
 
 
 Linked Lists

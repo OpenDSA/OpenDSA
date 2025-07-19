@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Positions and notation for lists
+
+// Title: List ADT Positions Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: List
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow discussing the concept of current position in a list and its implications for insertion. */
+ 
 $(document).ready(function() {
   "use strict";
   var av_name = "listADTposCON";

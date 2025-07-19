@@ -3,13 +3,17 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Comparison of List Implementations
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: array-based list; linked list
    :satisfies: list implementation analysis; overhead
    :topic: Lists
-   :keyword: List Cost Analysis; Overhead; List Implementation Comparison
-
+   :keyword: List Cost Analysis; Overhead; List Implementation Comparison; Linked List; Array-Based List
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents a comparision of the space and time costs for linked vs. array-based lists.
 
 Comparison of List Implementations
 ==================================

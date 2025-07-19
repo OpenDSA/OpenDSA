@@ -3,7 +3,7 @@
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Analysis Demonstration
-// Keyword: Linear Index; File Processing
+// Keyword: Linear Indexing; File Processing
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow showing a simple linear index for variable length records stored on disk. */

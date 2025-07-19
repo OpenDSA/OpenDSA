@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Failure Policies and Garbage Collection
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Memory Management
    :keyword: Memory Management; Garbage Collection
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses what happens when a memory manager can not meet memory request, including a brief introduction to approaches to garbage collection.
 
 Failure Policies and Garbage Collection
 =======================================

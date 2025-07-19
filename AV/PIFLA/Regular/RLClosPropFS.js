@@ -1,3 +1,14 @@
+/*global PIFRAMES */
+
+// Title: Basic Closure Properties of Regular Languages
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Language; Closure Property
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting some basic operations that are closed for regular languages, like intersection. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "RLClosPropFS";

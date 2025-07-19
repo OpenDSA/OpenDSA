@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Radix Sort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: radix sort
    :requires: binsort
    :topic: Sorting
-   :keyword: Sorting; Radix Sort; Non-comparison Sort
+   :keyword: Radix Sort; Non-Comparison Sort
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Presentation of Radix Sort, including visualizations, analysis, and self-practice exercises.
 
 .. index:: ! Radix Sort
 

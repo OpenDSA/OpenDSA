@@ -1,4 +1,14 @@
 /*global TraverseAcceptor*/
+
+// Title: DFA Example Trace: Even Binary Numbers
+// Author: Jeffrey Peng; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visualization of how a DFA would process input strings for the language of even binary numbers. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "TraceEvenBinaryDFACON";

@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed, Cliff Shaffer
+   :title: DFA Exercises 1
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: DFA exercises
-   :keyword: Finite Automata; Deterministic Finite Acceptor
-
+   :keyword: Deterministic Finite Automata
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: A collection of construction exercises for DFAs.
 
 DFA exercises
 =============

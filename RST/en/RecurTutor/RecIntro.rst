@@ -11,7 +11,7 @@
    :topic: Recursion
    :keyword: Recursion
    :naturallanguage: en
-   :programminglanguage: Java; CPP
+   :programminglanguage: Java; C++
    :description: Introduction to the basic ideas of recursion.
 
 Introduction to Recursion

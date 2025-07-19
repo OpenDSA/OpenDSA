@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Proof that 3-SAT is NP-Complete Slideshow
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Proof Visualization
+// Keyword: Clique Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating that 3-Satisfiability is NP-Complete by a reduction from Satisfiability. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "SATto3SATCON";

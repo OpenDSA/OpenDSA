@@ -10,7 +10,7 @@
    :requires: Command line parameters
    :satisfies: Eclipse command line parameters
    :topic: Programming Tutorial
-   :keyword: Eclipse; Command Line Parameters
+   :keyword: Eclipse IDE; Command Line Parameter
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Describes how to set up passing command line parameters to a program in the Eclipse IDE.

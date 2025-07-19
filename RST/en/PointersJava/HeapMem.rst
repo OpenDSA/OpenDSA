@@ -6,10 +6,11 @@
 .. avmetadata::
    :title: Heap Memory
    :author: Nick Parlante; Cliff Shaffer; Sally Hamouda; Mostafa Mohammed
+   :institution: Stanford University; Virginia Tech
    :requires: Local memory
    :satisfies: Heap Memory
    :topic: Pointers
-   :keyword: Pointers; Heap Memory; Garbage Disposal
+   :keyword: Pointer; Heap Memory; Garbage Collection
    :naturallanguage: en
    :programminglanguage: Java
    :description: Introduces the concept of heap memory and global variables.

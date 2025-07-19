@@ -1,6 +1,16 @@
 /*global ODSA */
 // Written by Mohammed Farghally and Cliff Shaffer
 // Radix Sort Analysis
+
+// Title: Radix Sort Analysis
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Radix Sort
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow showing a visual analysis for the cost of Radix Sort. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "RadixSortAnalysisCON";

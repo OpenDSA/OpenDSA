@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Analysis of Closed Hashing
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: collision resolution
    :satisfies: hashing
    :topic: Hashing
-   :keyword: Hashing; Hashing Cost Analysis
-
+   :keyword: Hashing Cost Analysis
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Analysis for the cost of various approaches to closed hashing.
 
 Analysis of Closed Hashing
 ==========================

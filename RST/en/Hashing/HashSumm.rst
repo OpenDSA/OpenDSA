@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Hashing Chapter Summary Exercises
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: hash deletion
    :topic: Hashing
    :keyword: Hashing
-
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Module containing summary questions for the hashing chapter.
 
 Hashing Chapter Summary Exercises
 =================================

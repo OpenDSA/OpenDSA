@@ -1,3 +1,12 @@
+// Title: Grammars for Deterministic CFL
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Context-Free Language
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset discussing grammars for deterministic context free languages. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "GrammarsForDCFLFS";

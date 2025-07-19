@@ -1,5 +1,15 @@
 /*global Complex */
 // Written by Irena Shaffer
+
+// Title: The Fast Fourier Transform
+// Author: Irena Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Polynomial Multiplication; Fast Fourier Transform
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Visual demonstration of the Fast Fourier Transform for polynomial multiplication. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "FFTprocedureCON";

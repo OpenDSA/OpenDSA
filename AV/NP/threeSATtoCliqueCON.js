@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Reduction of 3-SAT to Clique Slideshow
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction; Satisfiability Problem; Clique Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating a reduction from an instance of the 3-Satisfiability problem to an instance of the Clique problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "threeSATtoCliqueCON";

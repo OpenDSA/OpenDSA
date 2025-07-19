@@ -12,7 +12,7 @@
    :topic: Sorting, Code Tuning
    :keyword: Sorting; N-squared Sorts; Code Tuning
    :naturallanguage: en
-   :programminglanguage: Java; CPP
+   :programminglanguage: Java; C++
    :description: Variations on n-squared sorts to demonstrate code tuning principles.
 
 

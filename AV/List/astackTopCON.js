@@ -1,5 +1,16 @@
 /*global ODSA */
 // Explain why sets top at position n-1.
+
+// Title: Array-Based Stack Top Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Array-Based Stack
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow discussing the implementation for the top position in an array-based stack. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "astackTopCON";

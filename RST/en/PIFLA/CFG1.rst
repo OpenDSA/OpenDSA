@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Context-Free Grammars Part 1
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies:
    :topic: Context-Free Grammars and Languages
-   :keyword: Context-Free Grammars and Languages
-
+   :keyword: Context-Free Grammar; Context-Free Language
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to context-free languages and gramamrs.
 
 Context-Free Grammars Part 1
 ============================

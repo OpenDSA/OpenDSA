@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 /* Written by Mostafa Mohammed and Cliff Shaffer */
+
+// Title: Regular Expressions Equivalent to NFA: Part 2: Or
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Expression; Non-Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting Part 2 of 4 parts of a proof of equivalence of Regular Expressions and NFAs. Or'ing two Regular Expressions. */
+
 $(document).ready(function() {
   "use strict";
 

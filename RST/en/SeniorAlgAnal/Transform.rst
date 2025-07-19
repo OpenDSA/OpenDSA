@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer, Irena Shaffer
+   :title: The Transformation Concept
+   :author: Cliff Shaffer; Irena Shaffer
+   :institution: Virginia Tech
    :requires: logarithms
    :satisfies: transforms
    :topic: Algorithms: Transforms
-   :keyword: Algorithm Analysis; Transforms
-
+   :keyword: Transform; Polynomial Multiplication
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces the concept of a transform. Examples include the slide rule as a transformation for integer multiplication, and polynomial multiplication.
 
 The Transformation Concept
 ==========================

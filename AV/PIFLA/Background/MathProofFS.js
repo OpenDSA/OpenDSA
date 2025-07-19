@@ -1,3 +1,12 @@
+// Title: Programmed Instruction: Proof Techniques Introduction
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Proof
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presentation of basic proofs review, including proof by contradiction review. */
+
 $(document).ready(function () {
     "use strict";
     var av_name = "MathProofFS";

@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: PDA Exercises
+   :author: Mostafa Mohammed
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: Pushdown Automata Exercises
-   :keyword: Pushdown Automaton
-
+   :keyword: Pushdown Automata
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: A collection of construction exercises for Pushdown Automata.
 
 PDA Exercises
 =============

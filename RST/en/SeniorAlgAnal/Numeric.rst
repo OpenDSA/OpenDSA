@@ -3,11 +3,15 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
+   :title: Number Problems
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :topic: Number Problems
-   :keyword: Lower Bound; Number Problems
-
+   :keyword: Lower Bound; Number Problems; Exponentiation; Largest Common Factor
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to number problems for a senior algorithms course. Covers the concept of measure for the input size of a number problem, fast exponentiation algorithm, largest common factor algorithm.
 
 Number Problems
 ===============

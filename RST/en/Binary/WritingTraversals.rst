@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Sally Hamouda and Cliff Shaffer
+   :title: Implementing Tree Traversals
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: binary tree traversal
    :satisfies: mistakes in recursive tree traversal
    :topic: Binary Trees
-   :keyword: Binary Tree Traversals
-
+   :keyword: Binary Tree Traversal
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses how to write a binary tree traversal to achieve various goals, and which is appropriate in a given situation.
 
 Implementing Tree Traversals
 ============================

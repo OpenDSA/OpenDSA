@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Turing Machines: Advanced Topics
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Turing Machines
    :satisfies: Advanced Turing Machines
    :topic: Turing Machines
-   :keyword: Turing Machines
-
+   :keyword: Turing Machine
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents more advanced topics related to Turing machines such as the composition of machines and the computational equivalence of Turing machine extensisons.
 
 Turing Machines: Advanced Topics
 ================================
@@ -46,7 +50,7 @@ DFA, NFA, or PDA can do!
 
 .. inlineav:: TMcopy ss
    :links: DataStructures/FLA/FLA.css AV/Kochan/TMcopy.css
-   :scripts: AV/Kochan/TMcopy.js AV/Juwon/FAcopy.js
+   :scripts: AV/Juwon/FAcopy.js AV/Kochan/TMcopy.js 
    :output: show
    :keyword: Turing Machines
 

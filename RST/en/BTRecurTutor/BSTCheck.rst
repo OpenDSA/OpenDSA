@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Sally Hamouda and Cliff Shaffer
+   :title: A Hard Information Flow Problem
+   :author: Sally Hamouda; Cliff Shaffer
+   :institution: Virginia Tech
    :requires:  recursive function information flow
    :satisfies:
    :topic: Advanced Recursion
-   :keyword: Binary Tree Traversals; Recursive Tree Functions
-
+   :keyword: Binary Tree Traversal; Recursive Tree Functions
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Discusses information flow in a recursive tree traversal. The particular example is verifying that a binary tree is a BST.
 
 A Hard Information Flow Problem
 ===============================

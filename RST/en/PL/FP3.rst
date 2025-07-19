@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Recurring On Lists That Aren't Flat
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Functional Programming
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduces recursive functions on more complex structures in a functional programming language.
 
-===================================
 Recurring On Lists That Aren't Flat
 ===================================
-
    
 Deep Recursion in FP
 --------------------

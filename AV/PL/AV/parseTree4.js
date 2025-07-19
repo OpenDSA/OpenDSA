@@ -1,5 +1,15 @@
 /* global document, console, $, JSAV */
 
+// Title: Parse Tree Example for a Math Expression
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Parse Tree
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing generation of a parse tree for a simple math expression. */
+
 $(document).ready(function () {
     "use strict";
 

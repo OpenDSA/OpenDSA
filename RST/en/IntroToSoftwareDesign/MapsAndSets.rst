@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly
-
+   :title: Maps and Sets
+   :author: Molly Domino
+   :institution: Virginia Tech
+   :keyword: Map; Set
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: CS1-level introduction to maps and sets.
 
 Maps and Sets
 =============

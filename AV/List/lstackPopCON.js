@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // LStack pop slideshow
+
+// Title: Linked Stack Pop Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Linked Stack
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow discussing the implementation for the pop operation in a linked stack. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "lstackPopCON";

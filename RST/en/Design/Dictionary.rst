@@ -12,7 +12,7 @@
    :topic: Design
    :keyword: Dictionary
    :naturallanguage: en
-   :programminglanguage: Java; CPP
+   :programminglanguage: Java
    :description: Presents the concept of a dictionary illustrated by an ADT and examples of use.
 
 

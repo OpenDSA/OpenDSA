@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: The Clique Problem
    :author: Nabanita Maji
+   :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; Clique Problem
-
+   :keyword: NP-Complete; Clique Problem
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents the Clique problem. Includes a practice exercise where the user must determine the largest clique in a given graph.
 
 The Clique Problem
 ==================

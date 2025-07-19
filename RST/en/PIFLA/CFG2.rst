@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Context-Free Grammars Part 2
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies:
    :topic: Context-Free Grammars and Languages
-   :keyword: Context-Free Grammar; Context-Free Language
-
+   :keyword: Context-Free Grammar; Context-Free Language; Ambiguity
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Continuation of Introduction to context-free languages and gramamrs: Ambiguity, Associativity.
 
 Context-Free Grammars Part 2
 ============================
@@ -27,24 +31,24 @@ Ambiguous Grammars (1)
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/FLA/NumParseTrees1.html ka
-   :long_name: Number Of Parse Trees, Problem 1
+   :long_name: Ambiguous CFGs, Problem 1
    :keyword: Context-Free Grammars and Languages
 
 Ambiguous Grammars (2)
 ~~~~~~~~~~~~~~~~~~~~~~
 
-This problem is again about determining how many parse trees a given string
-has in a given grammar.
+This problem is again about determining whether a given string is
+parsed ambiguously or not.
 
 .. avembed:: Exercises/FLA/NumParseTrees2.html ka
-   :long_name: Number Of Parse Trees, Problem 2
+   :long_name: Ambiguous CFGs, Problem 2
    :keyword: Context-Free Grammars and Languages
 
 Ambiguous Grammars (3)
 ~~~~~~~~~~~~~~~~~~~~~~
 
-This problem is once more about determining how many parse trees a
-given string has in a given grammar.
+This problem is once more about determining whether a given string is
+parsed ambiguously or not.
 
 .. avembed:: Exercises/FLA/NumParseTrees3.html ka
    :long_name: Number Of Parse Trees, Problem 3

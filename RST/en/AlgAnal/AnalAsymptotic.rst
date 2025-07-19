@@ -10,7 +10,7 @@
    :satisfies: algorithm analysis
    :requires: growth rate; best and worst case
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis; Asymptotic Algorithm Analysis; Upper Bound; Big O
+   :keyword: Algorithm Analysis; Upper Bound; Big O
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces upper bounds analysis.
@@ -323,11 +323,16 @@ Summary
 
 |
 
-.. inlineav:: SimpleCostsCON dgm
+.. inlineav:: SimpleCosts1CON dgm
    :links: AV/SeniorAlgAnal/SimpleCostsCON.css
-   :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
+   :scripts: AV/SeniorAlgAnal/SimpleCosts1CON.js
    :output: show
-   :keyword: Algorithm Analysis; Upper Bound
+
+.. inlineav:: SimpleCosts2CON dgm
+   :links: AV/SeniorAlgAnal/SimpleCostsCON.css
+   :scripts: AV/SeniorAlgAnal/SimpleCosts2CON.js
+   :output: show
+
 
 Practice Questions
 ~~~~~~~~~~~~~~~~~~

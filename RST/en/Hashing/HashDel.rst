@@ -4,15 +4,19 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Hashing Deletion
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: collision resolution
    :satisfies: hash deletion
    :topic: Hashing
-   :keyword: Hashing; Hash Table Deletion
+   :keyword: Hashing
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presentation of approaches to deleting records from a hash table.
 
-
-Deletion
-========
+Hahing Deletion
+===============
 
 Deletion
 --------

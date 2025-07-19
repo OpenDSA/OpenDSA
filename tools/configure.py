@@ -46,6 +46,17 @@ from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
 from postprocessor import update_TOC, update_TermDef, make_lti
 
+# Register revealjs-slide directive to prevent parse errors
+from docutils import nodes
+from docutils.parsers.rst import Directive, directives
+
+class RevealJSSlideStub(Directive):
+    has_content = True
+    def run(self):
+        return []
+
+directives.register_directive('revealjs-slide', RevealJSSlideStub)
+
 # List ocanvas_module_idf exercises encountered in RST files that do not appear in the
 # configuration file
 missing_exercises = []
@@ -394,7 +405,7 @@ def initialize_conf_py_options(config, slides):
     # files are generated) and the root ODSA directory
     options['eb2root'] = config.rel_build_to_odsa_path
     options['rel_book_output_path'] = config.rel_book_output_path
-    options['slides_lib'] = 'hieroglyph' if slides else ''
+    options['slides_lib'] = 'revealjs' if slides else ''
     options['local_mode'] = str(config.local_mode).title()
 
     # makes sure the ebook uses the same python exec as this script
@@ -514,15 +525,15 @@ def configure(config_file_path, options):
         json.dump(module_chap_map, page_chapter_file)
 
     # Initialize options for conf.py
-    options = initialize_conf_py_options(config, slides)
+    conf_py_options = initialize_conf_py_options(config, slides)
 
     # Create a Makefile in the output directory
-    with open(config.book_dir + 'Makefile', 'w') as makefile:
-        makefile.writelines(config_templates.makefile_template % options)
+    with codecs.open(config.book_dir + 'Makefile', 'w') as makefile:
+        makefile.writelines(config_templates.makefile_template % conf_py_options)
 
     # Create conf.py file in output source directory
     with codecs.open(config.book_src_dir + 'conf.py', 'w', "utf-8") as conf_py:
-        conf_py.writelines(config_templates.conf % options)
+        conf_py.writelines(config_templates.conf % conf_py_options)
 
     # Copy only the images used by the book from RST/Images/ to the book
     # source directory

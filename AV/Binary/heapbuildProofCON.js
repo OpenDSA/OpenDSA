@@ -5,6 +5,16 @@
 // "An Alternative Visual Analysis of the Build Heap Algorithm",
 // ACM Inroads 2, 3(September), 2011.
 
+// Title: Heap Build Proof Slideshow
+// Author: Mohammed Farghally; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Heap
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow visualizing the cost of the efficient heap buiding algorithm, showing that it is a linear-time algorithm. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "heapbuildProofCON";

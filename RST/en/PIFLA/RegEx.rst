@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Regular Expressions
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: Regular Expressions
    :topic: Regular Expressions
-   :keyword: Regular Expressions
-
+   :keyword: Regular Expression
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to Regular Expressions, with definitions and examples.
 
 Regular Expressions
 ===================

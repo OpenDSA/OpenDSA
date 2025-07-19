@@ -1,3 +1,12 @@
+// Title: Quadratic Probing Problems Slideshow
+// Author: Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Collision Resolution
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating how quadratic probing does not always visit all slots of the hash table during collision resolution. */
+
 $(document).ready(function () {
   "use strict";
 

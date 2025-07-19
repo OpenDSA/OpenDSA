@@ -1,3 +1,12 @@
+// Title: Turing Machine to Copy a String
+// Author: Ko Chan; Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Turing Machine
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow presenting the execution of a Turing machine that copies a string. */
+
 $(document).ready(function() {
   "use strict";
   var av = new JSAV("TMcopy");

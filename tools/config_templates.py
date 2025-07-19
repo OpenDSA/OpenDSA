@@ -32,8 +32,39 @@ rst_footer = '''\
          });
          for (var sec of sections) {
          }
-         console.log(JSON.stringify(timeObj))
        }, 2000);
+       
+       // Initialize scroll depth tracking
+       if (typeof $.scrollDepth === 'function') {
+         $.scrollDepth({
+           minHeight: 0,
+           elements: sections,
+           percentage: true,
+           userTiming: true,
+           pixelDepth: true,
+           nonInteraction: true,
+           eventHandler: function(data) {
+             // Check if ODSA.UTILS exists before calling
+             if (typeof ODSA !== 'undefined' && ODSA.UTILS && typeof ODSA.UTILS.logUserAction === 'function') {
+               ODSA.UTILS.logUserAction(
+                 'scroll', 
+                 {
+                   percentage: data.eventLabel, 
+                   pixelDepth: data.pixelDepth,
+                   timing: data.eventTiming,
+                   element: data.eventAction || null
+                 },
+                 null,
+                 null
+               );
+             } else {
+               console.warn('ODSA.UTILS.logUserAction not available for scroll logging');
+             }
+           }
+         });
+       } else {
+         console.warn('jQuery scrollDepth plugin not loaded - scroll tracking disabled');
+       }
      });
     </script>
  '''
@@ -109,11 +140,10 @@ html:
 	rm Makefile
 
 slides:
-	@SLIDES=yes \
-	$(SPHINXBUILD) $(SPHINXOPTS) -b slides source $(HTMLDIR)
-	rm html/_static/jquery.js
+	SLIDES=yes $(SPHINXBUILD) $(SPHINXOPTS) -b revealjs source $(HTMLDIR)
+	rm -f html/_static/jquery.js
 	cp "%(odsa_dir)slib/styles.css" html/_static/ # Overwrites
-	rm *.json
+	rm -f *.json
 	@echo
 	@echo "Build finished. The HTML pages are in $(HTMLDIR)."
 '''
@@ -142,7 +172,6 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration -----------------------------------------------------
 
@@ -154,7 +183,7 @@ on_slides = os.environ.get('SLIDES', None) == "yes"
 
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.ifconfig', 'sphinxcontrib.jquery']
 
-ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe']
+ourCustoms = ['avembed', 'avmetadata', 'extrtoolembed', 'codeinclude', 'chapnum', 'odsalink', 'odsascript', 'inlineav', 'html5', 'odsafig', 'odsatable', 'chapref', 'odsatoctree', 'showhidecontent', 'iframe', 'splicetoolembed']
 
 customsDir = '%(odsa_dir)sRST/ODSAextensions/odsa/'
 for c in ourCustoms:
@@ -167,9 +196,9 @@ extensions.append('numfig')
 
 slides_lib = '%(slides_lib)s'
 
-#only import hieroglyph when building course notes
-if slides_lib == 'hieroglyph':
-  extensions.append('hieroglyph')
+# only import sphinx-revealjs when building course notes
+if slides_lib == 'revealjs' or on_slides:
+  extensions.append('sphinx_revealjs')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -235,28 +264,101 @@ pygments_style = 'xcode' #'sphinx'
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
 
-# -- Options for HTML Slide output ---------------------------------------------------
+# -- Options for RevealJS Slide output ---------------------------------------------------
 sys.path.append('%(theme_dir)s')
-slide_theme_path = ['%(theme_dir)s']
 
-# Themes that are defined by hieroglyph; using them breaks some custom ODSA content
-# slide_theme = 'single-level' # basic theme
-# slide_theme = 'slides' # default theme
-# slide_theme = 'slides2' # animated theme
-
-# Custom themes, made for ODSA content:
-slide_theme = 'slidess' # working, default theme for all slides
-# The 'haiku' theme is not for slides
-
-#slide_theme_options = {'custom_css':'custom.css'}
-
-slide_link_html_to_slides = not on_slides
-slide_link_html_sections_to_slides = not on_slides
-#slide_relative_path = "./slides/"
-
-slide_link_to_html = True
-slide_html_relative_path = "../"
-
+if slides_lib == 'revealjs' or on_slides:
+    revealjs_style_theme = 'white'
+    revealjs_theme = 'white'
+    revealjs_static_path = ['_static']
+    # Fix paths for reveal.js - it prepends _static/ so we need to compensate
+    revealjs_css_files = [
+        '../%(eb2root)slib/normalize.css',
+        '../%(eb2root)slib/JSAV.css',
+        '../%(eb2root)slib/odsaMOD-min.css',
+        '../%(eb2root)slib/jquery.ui.min.css',
+        '../%(eb2root)slib/odsaStyle-min.css',
+        '../%(eb2root)slib/ODSAcoursenotes.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+        '../%(eb2root)slib/customcontrols.css',
+        '../%(eb2root)slib/chalkboard.css'
+    ]
+    revealjs_script_files = [
+        '../%(eb2root)slib/jquery.min.js',
+        '../%(eb2root)slib/jquery.migrate.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+        '../%(eb2root)slib/jquery.ui.min.js',
+        '../%(eb2root)slib/jquery.transit.js',
+        '../%(eb2root)slib/raphael.js',
+        '../%(eb2root)slib/JSAV-min.js',
+        '../_static/config.js',
+        '../%(eb2root)slib/odsaUtils-min.js',
+        '../%(eb2root)slib/odsaMOD-min.js',
+        '../%(eb2root)slib/ODSAcoursenotes.js'
+    ]
+    revealjs_js_files = revealjs_script_files
+    revealjs_script_plugins = [
+        {
+            "name": "RevealCustomControls",
+            "src": "../%(eb2root)slib/customcontrols.js"
+        },
+        {
+            "name": "RevealChalkboard",
+            "src": "../%(eb2root)slib/chalkboard.js"
+        }
+    ]
+    revealjs_script_conf = """{
+        controls: true,
+        progress: true,
+        center: false,
+        slideNumber: true,
+        transition: 'none',
+        hash: true,
+        width: '100%%',
+        height: '100%%',
+        margin: 0.05,
+        minScale: 0.1,
+        maxScale: 5.0,
+        customcontrols: {
+            controls: [
+                {
+                    icon: '<i class="fa fa-pen-square"></i>',
+                    title: 'Toggle chalkboard (B)',
+                    action: 'RevealChalkboard.toggleChalkboard();'
+                },
+                {
+                    icon: '<i class="fa fa-pen"></i>',
+                    title: 'Toggle notes canvas (C)', 
+                    action: 'RevealChalkboard.toggleNotesCanvas();'
+                }
+            ]
+        },
+        chalkboard: {
+            theme: "whiteboard",
+            boardmarkerWidth: 3,
+            chalkWidth: 7,
+            readOnly: false,
+            transition: 800,
+            background: [ 'rgba(127,127,127,.1)' ],
+            grid: false,
+            eraser: {
+                src: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTQ5Ny45NDEgMjczLjk0MWMxOC43NDUtMTguNzQ1IDE4Ljc0NS00OS4xMzcgMC02Ny44ODJsLTE2MC0xNjBjLTE4Ljc0NS0xOC43NDUtNDkuMTM2LTE4Ljc0Ni02Ny44ODMgMGwtMjU2IDI1NmMtMTguNzQ1IDE4Ljc0NS0xOC43NDUgNDkuMTM3IDAgNjcuODgybDk2IDk2QTQ4LjAwNCA0OC4wMDQgMCAwIDAgMTQ0IDQ4MGgzNTZjNi42MjcgMCAxMi01LjM3MyAxMi0xMnYtNDBjMC02LjYyNy01LjM3My0xMi0xMi0xMkgzNTUuODgzbDE0Mi4wNTgtMTQyLjA1OXptLTMwMi42MjctNjIuNjI3bDEzNy4zNzMgMTM3LjM3M0wyNjUuMzczIDQxNkgxNTguMDU5bC05Ni05NiAxMzMuMjU1LTEzMy4yNTV6Ii8+PC9zdmc+',
+                radius: 20
+            },
+            boardmarkers : [
+                { color: 'rgba(100,100,100,1)'},
+                { color: 'rgba(30,144,255,1)'},
+                { color: 'rgba(220,20,60,1)'},
+                { color: 'rgba(50,205,50,1)'},
+                { color: 'rgba(255,140,0,1)'},
+                { color: 'rgba(150,0,20150,1)'},
+                { color: 'rgba(255,220,0,1)'}
+            ],
+            toggleChalkboardButton: { left: "30px", bottom: "30px", top: "auto", right: "auto" },
+            toggleNotesButton: { left: "30px", bottom: "70px", top: "auto", right: "auto" }
+        }
+    }"""
+    
 
 # -- Options for HTML output ---------------------------------------------------
 #The fully-qualified name of a HTML Translator, that is used to translate document
@@ -342,7 +444,8 @@ html_context = {"script_files": [
                   'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
                   'https://d3js.org/d3-selection-multi.v1.min.js',
                   '%(eb2root)slib/dataStructures.js',
-                  '%(eb2root)slib/conceptMap.js'
+                  '%(eb2root)slib/conceptMap.js',
+                  '%(eb2root)slib/splice-iframe.js',
                 ],
                 "css_files": [
                   '%(eb2root)slib/normalize.css',
@@ -360,6 +463,10 @@ if on_slides:
    html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');
    html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');
 
+# Always add ODSA scripts for slides
+if on_slides:
+  html_context['script_files'] += html_context['odsa_scripts']
+# Also add for non-haiku themes  
 if '%(theme)s' != 'haiku':
   html_context['script_files'] += html_context['odsa_scripts']
 

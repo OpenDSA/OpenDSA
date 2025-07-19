@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly
+   :title: Introduction to Software Design: Getting Started
+   :author: Molly Domino; Steve Edwards
+   :institution: Virginia Tech
+   :keyword: Software Design
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduction to the course module for an introductory CS course.
 
 Getting Started
 ===============

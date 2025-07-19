@@ -1,5 +1,15 @@
 /*global PIFRAMES */
 /* Written by Mostafa Mohammed and Cliff Shaffer */
+
+// Title: Regular Expressions Equivalent to NFA: Part 3: Concatenate
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Regular Expression; Non-Deterministic Finite Automata
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset presenting Part 3 of 4 parts of a proof of equivalence of Regular Expressions and NFAs. Concatenating two Regular Expressions. */
+
 $(document).ready(function() {
   "use strict";
 

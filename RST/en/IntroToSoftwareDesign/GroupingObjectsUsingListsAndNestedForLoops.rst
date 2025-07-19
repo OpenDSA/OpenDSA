@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Molly
+   :title: Grouping Objects Using Lists and Nested For Loops
+   :author: Molly Domino
+   :institution: Virginia Tech
+   :keyword: List; Set; Map; For Loop; Interface
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: First semester programming course introduction to using lists to group objects.
 
 Grouping Objects Using Lists and Nested For Loops
 =================================================

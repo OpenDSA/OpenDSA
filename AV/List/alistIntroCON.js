@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 //Array-Based list introduction
+
+// Title: Array-based List Introduction Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Array-Based List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting the array-based list implementation. */
+
 $(document).ready(function() {
   "use strict";
   var arrValues = [13, 12, 20, 8, 3, "", "", ""];

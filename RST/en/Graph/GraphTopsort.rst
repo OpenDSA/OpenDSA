@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Topological Sort
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: graph traversal
    :topic: Graphs
-   :keyword: Graphs; Topological Sort
-
+   :keyword: Graph; Topological Sort
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Presents depth-first and queue-based topological sort algorithms.
 
 Topological Sort
 ================

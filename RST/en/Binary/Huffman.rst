@@ -4,14 +4,18 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Huffman Coding Trees
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: BST
    :satisfies: Huffman coding tree
    :topic: BinTreeImp
    :keyword: Huffman Coding Tree
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: Introduces Huffman Coding Trees, including algorithms to build a tree and calculate codes.
 
 .. index:: ! Huffman
-
 
 Huffman Coding Trees
 ====================

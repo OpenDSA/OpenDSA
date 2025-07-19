@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Work through the constructors
+
+// Title: Linked List Constructors Slideshow
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Code Tracing Visualization
+// Keyword: Linked List
+// Natural Language: en
+// Programming Language: Java
+
+/* Description: Slideshow presenting the constructors for a linked list implementation. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "llistConsCON";

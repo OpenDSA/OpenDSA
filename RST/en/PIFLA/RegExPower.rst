@@ -4,11 +4,15 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: The Power of Regular Expressions
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: Regular Expressions
    :topic: Regular Expressions
-   :keyword: Regular Expressions; Regular Languages
-
+   :keyword: Regular Expression; Regular Language
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the power of regular expressions in the sense of what collection of languages they can represent. It is proven that regular expressions are equivalent to (Non)Deterministic Finite Automata.
 
 The Power of Regular Expressions
 ================================

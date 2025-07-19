@@ -2,7 +2,7 @@
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Programmed Instruction
-// Keyword: Context-Free Language; Closure Properties
+// Keyword: Context-Free Language; Closure Property
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Programmed Instruction slideshow explaining the concept and giving examples of closure properties for Context-Free Languages. */

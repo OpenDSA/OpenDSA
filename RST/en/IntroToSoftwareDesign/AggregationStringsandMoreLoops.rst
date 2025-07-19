@@ -4,8 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: Aggregation, Strings and More Loops
    :author: Molly Domino
-
+   :institution: Virginia Tech
+   :keyword: Aggregation; Composition; String; Loop
+   :naturallanguage: en
+   :programminglanguage: Java
+   :description: First semester programming course introduction to aggregation, strings, and more advanced loop control statements.
 
 Aggregation, Strings and More Loops
 ===================================

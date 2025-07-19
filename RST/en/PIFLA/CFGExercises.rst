@@ -4,12 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: CFG Writing Exercises
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :requires:
    :satisfies:
    :topic: CFL exercises
-   :keyword: Context-Free Languages
-
+   :keyword: Context-Free Grammar
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: A collection of exercises to write context-free grammars for given languages.
 
 CFG exercises
 =============

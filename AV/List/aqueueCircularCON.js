@@ -1,6 +1,17 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 // Array-based circular queue
+
+// Title: Circular Array-Based Queue Design Slideshow: Concepts
+// Author: Jun Yang; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Algorithm Visualization
+// Keyword: Array-Based Queue
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow presenting the concept of a circular array-based queue. */
+
 $(document).ready(function() {
   "use strict";
   var av_name = "aqueueCircularCON";

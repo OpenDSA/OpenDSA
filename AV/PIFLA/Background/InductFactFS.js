@@ -1,3 +1,12 @@
+// Title: Programmed Instruction: Induction Proof For Factorial
+// Author: Mostafa Mohammed; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Programmed Instruction
+// Keyword: Proof by Induction
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Programmed Instruction Frameset examples of induction proof proving a Factorial function implementation correct. */
+
 $(document).ready(function () {
     "use strict";
     var av_name = "InductFactFS";

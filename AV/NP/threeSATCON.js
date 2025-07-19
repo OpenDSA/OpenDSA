@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Introduction to the 3-CNF Satisfiability Problem
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Satisfiability Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating the 3-CNF satisfiability problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "threeSATCON";

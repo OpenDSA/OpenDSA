@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Mostafa Mohammed and Cliff Shaffer
+   :title: Regular Grammars Exercises 2
+   :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: Regular Grammars Exercises
    :requires: Regular Grammars
    :topic: Regular Languages
-   :keyword: Regular Languages; Regular Grammars
+   :keyword: Regular Language; Regular Grammar
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: A second collection of exercises for writing regular grammars.
 
 
 More Regular Grammar Exercises

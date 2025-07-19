@@ -4,10 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
+   :title: NP-Completeness Proofs
    :author: Cliff Shaffer, Nabanita Maji
+   :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; NP-completeness Proofs
-
+   :keyword: NP-Completeness Proof
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction the the Satisfiability problem, and the process for proving that a problem is NP-Complete.
 
 NP-Completeness Proofs
 ======================

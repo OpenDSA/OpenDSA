@@ -164,14 +164,6 @@
           "points": 2.0
         }
       },
-      "PIFLA/DFAComplementEx": {
-        "DFANotaabb": {
-          "points": 2.0
-        },
-        "DFANotevena3b": {
-          "points": 2.0
-        }
-      },
       "PIFLA/NFA": {},
       "PIFLA/NFAExercises": {
         "NFAtoDFAex1": {
