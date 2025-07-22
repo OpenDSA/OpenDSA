@@ -23,7 +23,8 @@
   color: #ccc;
 }
 
-.invisnode { /* Make a tree node invisible in a slideshow */
+.invisnode {
+  /* Make a tree node invisible in a slideshow */
   background-color: #eed;
   color: #eed;
   border-color: #eed;
@@ -59,7 +60,46 @@
 }
 
 .jsavcontainer {
+  background-color: #F5F5EA;
+  margin: 0 auto;
   border: 0;
+  width: 850px;
+  position: relative;
+}
+
+.ssAV {
+  font-size: 15px;
+}
+
+.jsavcontrols {
+  margin-top: -35px;
+  margin-left: 35px;
+  text-align: center;
+}
+
+.jsavcontrols span {
+  display: inline-block;
+  color: #777;
+  font-family: 'Times New Roman';
+  font-size: 20px;
+  font-weight: bolder;
+  line-height: 45px;
+  width: 45px;
+  height: 45px;
+  margin: 15px 40px;
+  background-color: #fff;
+  border: 1px solid #777;
+  -o-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.jsavbegin,
+.jsavend {
+  letter-spacing: -2px;
 }
 
 .jsavnode.sorted {
@@ -103,23 +143,28 @@
   padding-right: 12px;
 }
 
-.jsavnode .jsavhorizontalarray .jsavvalue { /* Center array cell values vertically */
+.jsavnode .jsavhorizontalarray .jsavvalue {
+  /* Center array cell values vertically */
   height: 30px;
 }
 
-.jsavnode .jsavverticalarray .jsavvalue { /* Center array cell values vertically */
+.jsavnode .jsavverticalarray .jsavvalue {
+  /* Center array cell values vertically */
   height: 30px;
 }
 
-.jsavnode .jsavvalue { /* Center tree node values vertically */
+.jsavnode .jsavvalue {
+  /* Center tree node values vertically */
   height: 30px;
 }
 
-.jsavlist .jsavvalue { /* Center linked list cell values vertically */
+.jsavlist .jsavvalue {
+  /* Center linked list cell values vertically */
   height: 30px;
 }
 
-.jsavarray .jsavvalue { /* Center array cell values vertically */
+.jsavarray .jsavvalue {
+  /* Center array cell values vertically */
   height: 30px;
 }
 
@@ -197,7 +242,9 @@
   color: #fff;
 }
 
-.selected, .selected .jsavvalue, .jsavarray.jsavbararray .jsavindex.selected .jsavvalue {
+.selected,
+.selected .jsavvalue,
+.jsavarray.jsavbararray .jsavindex.selected .jsavvalue {
   font-size: 110%;
   background-color: #ddf;
 }
@@ -214,11 +261,15 @@
   box-shadow: 0 0 5px 10px #ddf;
 }
 
-.greybg, .greybg.jsavvalue, .jsavarray.jsavbararray .jsavindex.greybg .jsavvalue {
+.greybg,
+.greybg.jsavvalue,
+.jsavarray.jsavbararray .jsavindex.greybg .jsavvalue {
   background-color: #eee;
 }
 
-.greenbg, .greenbg.jsavvalue, .jsavarray.jsavbararray .jsavindex.greenbg .jsavvalue {
+.greenbg,
+.greenbg.jsavvalue,
+.jsavarray.jsavbararray .jsavindex.greenbg .jsavvalue {
   background-color: #3f5;
 }
 
@@ -228,20 +279,24 @@
 
 
 /* jquery-ui customization */
-.ui-state-active a, .ui-state-hover a, .ui-state-visited a, .ui-state-focus a  {
-    border: none;
-    outline: none;
+.ui-state-active a,
+.ui-state-hover a,
+.ui-state-visited a,
+.ui-state-focus a {
+  border: none;
+  outline: none;
 }
 
 .ui-state-focus {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .ui-state-active {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
-.redbg{
+
+.redbg {
   background-color: #FFB6C1 !important;
 }
