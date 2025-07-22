@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Functional Programming Recursion: BST
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Functional Programming
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing list-of-list (tree) processing in a functional programming language: Binary Search Tree Search. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "FP3Code2CON";

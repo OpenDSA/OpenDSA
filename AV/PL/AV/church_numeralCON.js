@@ -1,4 +1,15 @@
 // Reduction of (SUCC THREE) using Church bools
+
+// Title: Church Numerals
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Lambda Calculus
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow illustrating reduction for Church numerals. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "church_numeralCON";

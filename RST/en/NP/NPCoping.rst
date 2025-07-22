@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; Dynamic Programming; Knapsack Problem
+   :keyword: NP-Completeness; Dynamic Programming; Knapsack Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents strategies for dealing with problems that must be solved even if they are are known to be NP-Complete.

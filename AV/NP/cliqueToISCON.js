@@ -2,7 +2,7 @@
 /*global ODSA */
 
 // Title: Reduction of Clique to Independent Set Slideshow
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Reduction; Clique Problem; Independent Set Problem

@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: information flow in a binary tree
    :topic: Information Flow in a Binary
-   :keyword: Binary Tree Traversals
+   :keyword: Binary Tree Traversal
    :naturallanguage: en
    :programminglanguage: Java
    :description: Discusses information flow in recursive functions. The particular example is implementing range queries in a BST.

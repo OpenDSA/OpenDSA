@@ -3,7 +3,7 @@
 // Title: DFA Example Trace: Even Binary Numbers
 // Author: Jeffrey Peng; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Algorithm Visualization; Code Trace Visualization
+// Features: Algorithm Visualization; Code Tracing Visualization
 // Keyword: Deterministic Finite Automata
 // Natural Language: en
 // Programming Language: N/A

@@ -199,8 +199,8 @@
       }
     },
     "Lambda Calculus": {
-      "PL/Syntax": {},
-      "PL/Semantics": {
+      "PL/LCSyntax": {},
+      "PL/LCSemantics": {
         "LambdaCalcSemantics": {
           "threshold": 1
         }

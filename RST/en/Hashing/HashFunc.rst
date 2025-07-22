@@ -10,7 +10,7 @@
    :requires: hash intro
    :satisfies: hash function
    :topic: Hashing
-   :keyword: Hashing; Hash Functions
+   :keyword: Hash Function
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to the concept of a hash function. Also introduces the concept (and inevitabilty) of collisions.

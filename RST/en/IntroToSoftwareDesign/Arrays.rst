@@ -7,7 +7,7 @@
    :title: Arrays
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: Arrays
+   :keyword: Array
    :naturallanguage: en
    :programminglanguage: Java
    :description: CS1-level presentation on arrays.

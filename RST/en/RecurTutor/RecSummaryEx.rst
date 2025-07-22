@@ -10,6 +10,7 @@
    :requires: recursion tracing
    :satisfies: recursion
    :topic: Recursion
+   :keyword: Recursion
    :naturallanguage: en
    :programminglanguage: Java
    :description: Battery of recursion chapter summery practice questions.

@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Procedural Abstraction: The Filtering and Folding (or Reduce) Patterns
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Functional Programming
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the filtering and folding (or reduce) patterns.
 
-======================================================================
 Procedural Abstraction: The Filtering and Folding (or Reduce) Patterns
 ======================================================================
 
@@ -50,15 +55,11 @@ perform a **cons** operation prior to making a recursive call instead
 of after returning from a recursive call.  Keep that in mind as you look for
 the commonality in the following two examples.
 
-
 .. inlineav:: FP7Code2CON ss
    :long_name: Illustrate Reduce/Folding Pattern
    :links: AV/PL/FP/FP7CON.css
    :scripts: AV/PL/FP/FP7Code2CON.js
    :output: show
-
-
-
 
 The *reduce* function we have defined in the previous examples applies
 its helper function *f* to produce the accumulated value *acc* in

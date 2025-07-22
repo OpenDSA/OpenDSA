@@ -1,5 +1,15 @@
 //Written by Nabanita Maji and Cliff Shaffer, Spring 2015
 /*global ODSA */
+
+// Title: Reduction of Hamiltonian Cycle to Traveling Salesman Slideshow
+// Author: Nabanita Maji; Cliff Shaffer
+// Institution: Virginia Tech
+// Features: Demonstration
+// Keyword: Reduction; Clique Problem; Independent Set Problem
+// Natural Language: en
+// Programming Language: N/A
+/* Description: Slideshow demonstrating a reduction from an instance of the Hamiltonian Cycle problem to an instance of the Traveling Salesman problem. */
+
 $(document).ready(function () {
   "use strict";
   var av_name = "HCtoTSPCON";

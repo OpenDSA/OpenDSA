@@ -1,9 +1,17 @@
-"use strict";
-
 /* global LAMBDA */
 
-$(document).ready(function () {
+// Title: Lambda Calculus: How to Build a Parse Tree
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Lambda Calculus
+// Natural Language: en
+// Programming Language: N/A
 
+/* Description: Slideshow visualizing building a parse tree for lambda calculus expressions. */
+
+$(document).ready(function () {
+"use strict";
     function mySplit(s) {
 	var output = [];
 	var index;

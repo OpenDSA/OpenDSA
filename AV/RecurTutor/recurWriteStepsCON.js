@@ -5,8 +5,8 @@
 // Title: Recursion Introduction Slideshow: Delegation
 // Author: Sally Hamouda; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Demonstration
-// Keyword: Recusion
+// Features: Code Tracing Visualization
+// Keyword: Recursion
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow demonstrating the basic concepts of base cases and recursive calls in a function. */

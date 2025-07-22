@@ -5,7 +5,7 @@
 // Author: Irena Shaffer; Alexandru Cioaca
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Polynomial Multiplication; Evaluation; Interpolation
+// Keyword: Polynomial Multiplication; Polynomial Evaluation; Polynomial Interpolation
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow demonstrating the relationships of evaluation and interpolation of a polynomial. */

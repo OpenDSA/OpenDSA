@@ -11,7 +11,7 @@
    :keyword: Recursion
    :naturallanguage: en
    :programminglanguage: Java
-   :description: Several intermediate recursion programming exercises.
+   :description: Several intermediate recursion code completion exercises.
 
 
 Code Completion Practice Exercises

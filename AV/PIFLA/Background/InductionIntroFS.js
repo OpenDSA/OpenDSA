@@ -2,7 +2,7 @@
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Programmed Instruction
-// Keyword: Proof by Induction
+// Keyword: Induction Proof
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Programmed Instruction Frameset review of induction proofs. */

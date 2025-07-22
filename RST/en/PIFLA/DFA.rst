@@ -9,7 +9,7 @@
    :institution: Duke University; Virginia Tech
    :satisfies: Deterministic Finite Automata
    :topic: Finite Automata
-   :keyword: Finite Automata; Deterministic Finite Acceptor
+   :keyword: Deterministic Finite Automata
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to Deterministic Finite Acceptors

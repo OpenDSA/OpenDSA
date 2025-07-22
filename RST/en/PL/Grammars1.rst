@@ -3,9 +3,14 @@
 .. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
-   :author: David Furcy and Tom Naps
-
+.. avmetadata::
+   :title: Derivations and Parse Trees
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Parse Tree
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Introduction to Parse Trees.
 
 ===========================
 Derivations and Parse Trees

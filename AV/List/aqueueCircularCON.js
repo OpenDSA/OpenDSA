@@ -2,7 +2,7 @@
 // Written by Jun Yang and Cliff Shaffer
 // Array-based circular queue
 
-// Title: Circular Array-Based Queue Design Slideshow
+// Title: Circular Array-Based Queue Design Slideshow: Concepts
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization

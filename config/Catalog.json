@@ -87,14 +87,14 @@
     },
     "Command Line and Git": {
       "CommandLine/About": {},
-      "CommandLine/Exercises": {},
+      "CommandLine/Exercisescmd": {},
       "Git/AboutGit": {},
       "Git/ExercisesGit": {}
     },
     "Introduction for Data Structures and Algorithms Courses": {
       "Background/IntroDSA": {}
     },
-    "Object Oriented Programming": {
+    "Object-Oriented Programming": {
       "Design/IntroOO": {},
       "Design/IntroUML": {},
       "Design/IntroProcess": {},
@@ -129,7 +129,7 @@
       "PointersJava/Links1": {},
       "PointersJava/Links2": {},
       "PointersJava/PointersCM": {},
-      "PointersJava/Exercises": {},
+      "PointersJava/ExercisesPtr": {},
       "PointersJava/LinkedChains": {}
     },
     "Mathematical Background": {
@@ -291,8 +291,7 @@
       "Graph/Floyd": {},
       "Graph/GraphCM": {}
     },
-    "Advanced Data Structures": {
-      "SearchStruct/SkipList": {},
+    "Spatial Data Structures": {
       "Spatial/Spatial": {},
       "Spatial/PRquadtree": {},
       "Spatial/KDtree": {},
@@ -314,7 +313,8 @@
     "Searching": {
       "SeniorAlgAnal/SearchIntro": {},
       "Searching/UnsortedSearch": {},
-      "Searching/SortedSearch": {}
+      "Searching/SortedSearch": {},
+      "SearchStruct/SkipList": {}
     },
     "Lower Bounds": {
       "Bounds/BoundMax": {},
@@ -378,8 +378,8 @@
       "PL/FP9": {}
     },
     "Lambda Calculus": {
-      "PL/Syntax": {},
-      "PL/Semantics": {},
+      "PL/LCSyntax": {},
+      "PL/LCSemantics": {},
       "PL/FreeBoundVariables": {},
       "PL/AlphaConversion": {},
       "PL/Substitution": {},
@@ -388,7 +388,7 @@
       "PL/ChurchNumerals": {},
       "PL/RecursiveFunctions": {}
     },
-    "Interpreting the Functional Language SLang 1": {
+    "Interpreting the Functional Language SLang": {
       "PL/SLang1": {},
       "PL/Environment": {},
       "PL/SLang1withLetExpressions": {},
@@ -403,7 +403,7 @@
       "PL/TypeSystems": {},
       "PL/TypeInference": {}
     },
-    "Formal Languages Introduction": {
+    "Formal Languages Course Introduction": {
       "PIFLA/FLIntro": {},
       "PIFLA/FLOverview": {},
       "PIFLA/MajorConcepts": {},

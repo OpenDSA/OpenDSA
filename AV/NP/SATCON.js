@@ -2,7 +2,7 @@
 /*global ODSA*/
 
 // Title: Introduction to the CNF Satisfiability Problem
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Satisfiability Problem

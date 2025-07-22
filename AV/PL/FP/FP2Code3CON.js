@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Functional Programming List Processing: Substitution
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Functional Programming
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing basic list processing in a functional programming language: substitution function. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "FP2Code3CON";

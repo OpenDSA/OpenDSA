@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: Sorting
-   :keyword: Sorting; Optimal Sorting Algorithms; Ford and Johnson Sort; Binary Insert Sort; Merge Insertion Sort
+   :keyword: Optimal Sorting Algorithms; Ford and Johnson Sort; Binary Insertion Sort; Merge Insertion Sort
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduces concepts related to theoretically optimal sorting algorithms. Sketeches the Ford and Johnson Sorting algorithm.

@@ -7,7 +7,7 @@
    :title: Variable Scoping, Input, and Output 
    :author: Molly Domino
    :institution: Virginia Tech
-   :keyword: Variable Scope; File I/O; Scanner
+   :keyword: Variable Scope; File Processing; Scanner
    :naturallanguage: en
    :programminglanguage: Java
    :description: CS1-level introduction to variable scoping and file I/O.

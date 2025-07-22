@@ -1,5 +1,15 @@
 /* global document, console, $, JSAV */
 
+// Title: Parse Tree Example: Enforcing Order of Operations
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization
+// Keyword: Parse Tree
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing a parse tree from a grammar that enforces the correct order of operations. */
+
 $(document).ready(function () {
     "use strict";
 

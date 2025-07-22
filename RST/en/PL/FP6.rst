@@ -4,11 +4,16 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Procedural Abstraction: Map, Curry, and Compose
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Functional Programming
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses map, curry, and compose operations.
 
-========================================================================
 Procedural Abstraction: Map, Curry, and Compose
-========================================================================
+===============================================
 
 The Mapping Pattern
 -------------------

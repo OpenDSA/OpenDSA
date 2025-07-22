@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness Proofs; Clique Problem; Independent Set Problem
+   :keyword: NP-Completeness Proof; Clique Problem; Independent Set Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a reduction of an instance of the Clique problem to an instance of the Independent Set problem.

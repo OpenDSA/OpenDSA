@@ -5,8 +5,8 @@
 // Title: Garbage Disposal
 // Author: Sushma Mandava; Cliff Shaffer
 // Institution: Virginia Tech
-// Features: Code Visualization; Algorithm Visualization
-// Keyword: Garbage; Heap Memory
+// Features: Code Tracing Visualization; Algorithm Visualization
+// Keyword: Garbage Collection; Heap Memory
 // Natural Language: en
 // Programming Language: Java
 /* Description: Slideshow introducing the concept of garbage collection. */

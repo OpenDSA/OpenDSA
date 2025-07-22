@@ -4,9 +4,14 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Scope, Closures, Higher-order Functions, Static vs. Dynamic Binding
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Functional Programming
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses scope, closures, higher-order functions, static vs. dynamic binding.
 
-===================================================================
 Scope, Closures, Higher-order Functions, Static vs. Dynamic Binding
 ===================================================================
 
@@ -59,9 +64,6 @@ function and not by an inner set of curly braces.
    :links: AV/PL/FP/FP5CON.css
    :scripts: AV/PL/FP/FP5Code2CON.js
    :output: show
-
-
-
 
 ..     var x = 10;
 ..     var f = function(y) { 
@@ -250,6 +252,5 @@ focuses on the difference between static and dynamic binding rules.
 
 .. avembed:: Exercises/PL/StaticDynamic.html ka
    :long_name: Static vs. Dynamic Binding
-
 
 	       

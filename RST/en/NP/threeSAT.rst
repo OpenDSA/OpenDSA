@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; 3-SAT Problem
+   :keyword: NP-Completeness; Satisfiability Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the 3-CNF Satisfiability problem. Includes an exercise to practice finding satisfiable truth settings.

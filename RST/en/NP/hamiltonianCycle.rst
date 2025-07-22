@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness; Hamiltonian Cycle Problem
+   :keyword: NP-Completeness; Hamiltonian Cycle Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the Hamiltonian Cycle problem. Includes a practice exercise where the user must show if there is a Hamiltonian Cycle for a given graph.

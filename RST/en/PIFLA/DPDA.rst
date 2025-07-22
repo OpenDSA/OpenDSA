@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Deterministic Pushdown Automata
    :author: Mostafa Mohammed; Cliff Shaffer
+   :institution: Virginia Tech
    :satisfies: PDA Module
    :topic: Deterministic Pushdown Automata
    :keyword: Deterministic Pushdown Automata

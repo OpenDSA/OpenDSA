@@ -2,7 +2,7 @@
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Programmed Instruction
-// Keyword: Turing Machines
+// Keyword: Turing Machine
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow presenting the distinction between a Turing Machine that decides a language (always halts with a decision) vs. one that accepts (only halts when it recognizes the string as being in the language). */

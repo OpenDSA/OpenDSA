@@ -6,6 +6,7 @@
 .. avmetadata::
    :title: Proof of Optimality for Huffman Coding
    :author: Cliff Shaffer
+   :institution: Virginia Tech
    :requires: Huffman coding tree
    :satisfies: Huffman proof
    :topic: Huffman Coding Trees

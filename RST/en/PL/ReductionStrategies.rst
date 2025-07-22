@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata:: 
-   :author: David Furcy and Tom Naps
+   :title: Reduction Strategies
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Lambda Calculus
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses reduction strategies in the lambda calculus.
 
 
 Reduction Strategies
@@ -119,8 +125,6 @@ are ready to tackle the practice problems that follow.
 
 .. avembed:: AV/PL/LCPractice.html ss
 
-
-      
       
 Beta-Reduction Order (1)
 ------------------------

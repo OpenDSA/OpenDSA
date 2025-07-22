@@ -8,7 +8,7 @@
    :author: Cliff Shaffer, Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness Proof
+   :keyword: NP-Completeness Proof
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction the the Satisfiability problem, and the process for proving that a problem is NP-Complete.

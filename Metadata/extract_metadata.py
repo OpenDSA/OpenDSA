@@ -28,38 +28,36 @@ def contains_nocatalog_directive(content):
 
 
 def detect_duplicate_fields(entries, id_key):
-    seen_titles = defaultdict(list)
-    seen_descriptions = defaultdict(list)
+    seen_titles = defaultdict(set)
+    seen_descriptions = defaultdict(set)
     duplicates = []
 
     for entry in entries:
         title = entry.get("title", "").strip().lower()
         desc = entry.get("description", "").strip().lower()
-        identifier = entry.get(id_key, "unknown")
-
+        identifier = entry.get(id_key)
+        if not identifier:
+            continue
         if title:
-            seen_titles[title].append(identifier)
+            seen_titles[title].add(identifier)
         if desc:
-            seen_descriptions[desc].append(identifier)
+            seen_descriptions[desc].add(identifier)
 
     for value, locations in seen_titles.items():
         if len(locations) > 1:
-            for loc in locations:
-                duplicates.append({
-                    "issue": "Duplicate Title",
-                    "duplicate_value": value,
-                    "duplicate_in": locations,
-                    
-                })
+            duplicates.append({
+                "issue": "Duplicate Title",
+                "duplicate_value": value,
+                "duplicate_in": sorted(locations),
+            })
 
     for value, locations in seen_descriptions.items():
         if len(locations) > 1:
-            for loc in locations:
-                duplicates.append({
-                    "issue": "Duplicate Description",
-                    "duplicate_value": value,
-                    "duplicate_in": locations,
-                })
+            duplicates.append({
+                "issue": "Duplicate Description",
+                "duplicate_value": value,
+                "duplicate_in": sorted(locations),
+            })
 
     return duplicates
 
@@ -87,22 +85,32 @@ def extract_visualization_references(rst_files):
             with open(rst_path, encoding='utf-8') as f:
                 lines = f.readlines()
             for i, line in enumerate(lines):
-                inline_match = re.match(r"\.\. +inlineav:: +(\S+)", line)
+                inline_match = re.match(r"\.\. +inlineav:: +(.+)", line)
                 if inline_match:
                     vis_type = "inlineav"
-                    vis_id = inline_match.group(1)
+                    full_directive = inline_match.group(1)
+                    tokens = full_directive.strip().split()
+                    vis_id = tokens[0]
+                    tags = tokens[1:]
+
+                    if 'dgm' in tags:
+                        continue  
+
                     scripts_line = next((l for l in lines[i+1:i+5] if ":scripts:" in l), None)
+                    js_file = None
                     if scripts_line:
                         scripts = scripts_line.split(":scripts:")[-1].strip().split()
                         js_file = scripts[-1] if scripts else None
-                        if js_file:
-                            visualizations.append({
-                                "module": mod_name,
-                                "type": vis_type,
-                                "id": vis_id,
-                                "source": js_file,
-                                "line": i + 1
-                            })
+                    if js_file:
+                        js_file = js_file.lstrip('/\\')
+                        visualizations.append({
+                            "module": mod_name,
+                            "type": vis_type,
+                            "id": vis_id,
+                            "source": js_file,
+                            "line": i + 1
+                        })
+
                 embed_match = re.match(r"\.\. +avembed:: +(\S+)", line)
                 if embed_match:
                     vis_type = "avembed"
@@ -120,30 +128,24 @@ def extract_visualization_references(rst_files):
 def parse_metadata_block(filepath):
     if not os.path.isfile(filepath):
         return None
+
     metadata = {}
     try:
         with open(filepath, encoding='utf-8') as f:
             content = f.read()
         if contains_nocatalog_directive(content):
             return None
-
         comment_blocks = []
         comment_blocks += re.findall(r"<!--(.*?)-->", content, re.DOTALL)
         comment_blocks += re.findall(r"/\*(.*?)\*/", content, re.DOTALL)
-        lines = content.splitlines()
-        line_comment_block = []
-        for line in lines:
-            striped = line.strip()
-            if striped.startswith("//"):
-                line_comment_block.append(striped[2:].strip())
-            elif striped == "":
-                continue
-            else:
-                break
-        if line_comment_block:
-            comment_blocks.append("\n".join(line_comment_block))
+
+        slashed_lines = re.findall(r"^\s*//.*?:.*", content, re.MULTILINE)
+        if slashed_lines:
+            cleaned_lines = [line.strip()[2:].strip() for line in slashed_lines]
+            comment_blocks.append("\n".join(cleaned_lines))
         for block in comment_blocks:
-            for line in block.strip().split("\n"):
+            lines = block.strip().splitlines()
+            for line in lines:
                 if ':' in line:
                     key, value = line.split(':', 1)
                     key = key.strip().lower()
@@ -154,13 +156,13 @@ def parse_metadata_block(filepath):
                         metadata["Keywords"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'description':
                         metadata["Description"] = value
-                    elif key in ['programming language', 'programming language']:
-                        metadata["Programming Language"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
-                    elif key in ['natural language', 'natural language']:
-                        metadata["Natural Language"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'title':
                         metadata["Title"] = value
-                    elif key in ['features', 'features']:
+                    elif key in ['programming language']:
+                        metadata["Programming Language"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
+                    elif key in ['natural language']:
+                        metadata["Natural Language"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
+                    elif key == 'features':
                         metadata["Features"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
                     elif key == 'institution':
                         metadata["Institution"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
@@ -168,6 +170,7 @@ def parse_metadata_block(filepath):
     except Exception as e:
         print(f"Failed to parse metadata from {filepath}: {e}")
         return None
+
 
 def parse_rst_metadata_block(rst_files, config):
     parsed = []
@@ -203,13 +206,11 @@ def parse_rst_metadata_block(rst_files, config):
                         metadata["Description"] = value
                     elif key == 'title':
                         metadata["Title"] = value
-                    elif key in ['features', 'features']:
-                        metadata["Features"] = [x.strip() for x in re.split(r';|,|\band\b', value)] 
                     elif key == 'institution':
                         metadata["Institution"] = [x.strip() for x in re.split(r';|,|\band\b', value)]
             elif inside_block:
                 break
-        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Features", "Institution", "Programminglanguage"] if field not in metadata]
+        missing = [field for field in ["Title", "Author", "Description", "Keywords", "Institution", "Programminglanguage"] if field not in metadata]
         if missing:
             relative_rst_path = os.path.relpath(rst_path, config.odsa_dir).replace("\\", "/")
             missing_report.append({
@@ -224,9 +225,9 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     source = vis['source']
     short_name = os.path.splitext(os.path.basename(source))[0]
     if vis['type'] == "inlineav":
-        embed_url = f"{host_url}/embed/{short_name}"
+        embed_url = f"{host_url}/Metadata/inlineav/{short_name}"
     elif vis['type'] == "avembed":
-        embed_url = f"{host_url}/{source}"
+        embed_url = f"{host_url}/OpenDSA/{source}"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
     return {
         "catalog_type": "SLCItem",
@@ -261,7 +262,6 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
         "author": metadata.get("Author", []),
         "institution": metadata.get("Institution", []),
         "keywords": metadata.get("Keywords", []),
-        "features": metadata.get("Features", []),
         "title": metadata.get("Title", os.path.basename(mod_name)),
         "programminglanguage": metadata.get("Programminglanguage", []),
         "naturallanguage": metadata.get("Naturallanguage", [])
@@ -293,7 +293,6 @@ def collect_summary_from_existing_parsing(slc_entries, rst_entries, rst_files, c
         update_summary("Author", meta.get("Author", []))
         update_summary("Institution", meta.get("Institution", []))
         update_summary("Keywords", meta.get("Keywords", []))
-        update_summary("Features", meta.get("Features", []))
         update_summary("Naturallanguage", meta.get("Naturallanguage", ""))
         update_summary("Programminglanguage", meta.get("Programminglanguage", []))
 
@@ -352,21 +351,25 @@ if __name__ == "__main__":
         metadata = parse_metadata_block(file_path) or {}
         if metadata is None:
             continue
-        missing = [field for field in ["Title", "Author", "Description", "Keywords","Features",  "Institution", "Programminglanguage", "Naturallanguage"] if not metadata.get(field)]
+        missing = [field for field in ["Title", "Author", "Description", "Keywords","Features",  "Institution", "Programming Language", "Natural Language"] if not metadata.get(field)]
         if missing:
             slc_missing.append({"source_file": vis["source"], "missing_fields": missing})
         entry = build_splice_entry(vis, metadata)
         slc_metadata.append(entry)
 
     save_json(slc_metadata, "SLCItem_metadata.json")
-    slc_duplicates = detect_duplicate_fields(slc_metadata, "iframe_url")
+    for vis, entry in zip(visualizations, slc_metadata):
+        entry["source_file"] = os.path.join(config.odsa_dir, vis["source"]).replace("\\", "/")
+    slc_duplicates = detect_duplicate_fields(slc_metadata, "source_file")
     slc_missing.extend(slc_duplicates)
     save_json(slc_missing, "missing_SLCItem_metadata.json")
 
     catalog_metadata, catalog_missing = parse_rst_metadata_block(rst_files, config)
     catalog_entries = [build_catalog_entry(mod, meta) for mod, meta in catalog_metadata]
     save_json(catalog_entries, "Catalog_metadata.json")
-    catalog_duplicates = detect_duplicate_fields(catalog_entries, "iframe_url")
+    for (mod_name, meta), entry in zip(catalog_metadata, catalog_entries):
+        entry["rst_path"] = os.path.join(config.odsa_dir, "RST", config.lang, f"{mod_name}.rst").replace("\\", "/")
+    catalog_duplicates = detect_duplicate_fields(catalog_entries, "rst_path")
     catalog_missing.extend(catalog_duplicates)
     save_json(catalog_missing, "missing_catalog_metadata.json")
     

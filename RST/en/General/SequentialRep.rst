@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic: General Trees
-   :keyword: General Trees; Sequential Tree Representations
+   :keyword: General Tree; Sequential Tree Representation
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presents several ways to represent trees sequentially, essentially as a layout of a tree traversal.

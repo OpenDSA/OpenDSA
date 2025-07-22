@@ -10,7 +10,7 @@
    :requires: collision resolution
    :satisfies: hash deletion
    :topic: Hashing
-   :keyword: Hash Table Deletion
+   :keyword: Hashing
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presentation of approaches to deleting records from a hash table.

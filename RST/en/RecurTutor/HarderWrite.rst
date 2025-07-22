@@ -11,7 +11,7 @@
    :topic: Recursion
    :keyword: Recursion
    :naturallanguage: en
-   :programminglanguage: Java; CPP
+   :programminglanguage: N/A
    :description: Several examples of more sophisticated recursive functions.
 
 Writing More Sophisticated Recursive Functions

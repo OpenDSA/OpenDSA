@@ -5,12 +5,12 @@
 
 .. avmetadata::
    :title: Link Nodes Exercises
-   :author: Cliff Shaffer, Mohammed Mostafa, and Margaret Ellis
+   :author: Cliff Shaffer, Mostafa Mohammed, and Margaret Ellis
    :institution: Virginia Tech
    :requires: Pointer intro
    :satisfies:
    :topic: Link Nodes
-   :keyword: Pointers; Link Nodes
+   :keyword: Pointer; Link Node
    :naturallanguage: en
    :programminglanguage: Java
    :description: Coding exercises for practicing manipulating linked lists.

@@ -10,7 +10,7 @@
    :requires:
    :satisfies: problems; algorithms; functions
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis; Problem Definition; Algorithm Definition
+   :keyword: Algorithm Analysis; Problem; Algorithm
    :naturallanguage: en
    :programminglanguage: N/A
    :description: An introduction to the concepts of problems vs. algorithms vs. programs.

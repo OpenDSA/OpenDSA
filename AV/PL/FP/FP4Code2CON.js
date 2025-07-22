@@ -1,5 +1,15 @@
 /*global ODSA */
 
+// Title: Functional Programming: Accumulator Pattern Pivot
+// Author: David Furcy; Tom Naps
+// Institution: UW-Oshkosh
+// Features: Algorithm Visualization; Code Tracing Visualization
+// Keyword: Functional Programming
+// Natural Language: en
+// Programming Language: N/A
+
+/* Description: Slideshow visualizing using pivot as an example in the accumlator pattern. */
+
 $(document).ready(function() {
     "use strict";
     var av_name = "FP4Code2CON";

@@ -1,7 +1,7 @@
 /*global ODSA */
 // Written by Jun Yang and Cliff Shaffer
 
-// Title: Circular Array-Based Queue Design Slideshow
+// Title: Circular Array-Based Queue Design Slideshow: Data Members
 // Author: Jun Yang; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Code Tracing Visualization

@@ -5,7 +5,7 @@
 // Author: Ivan Wong; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Shortest Paths Algorithms
+// Keyword: Shortest Path Problem
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow demonstrating the Dijkstra's single-source shortest paths algorithm. */

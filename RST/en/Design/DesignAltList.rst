@@ -9,9 +9,9 @@
    :institution: Virginia Tech
    :requires: ADT; array-based list
    :topic: List ADT Design
-   :keyword: List ADT Design
+   :keyword: List; Abstract Data Type
    :naturallanguage: en
-   :programminglanguage: Java; CPP
+   :programminglanguage: Java
    :description: Presents a list ADT that supports iterators.
 
 

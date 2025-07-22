@@ -10,7 +10,7 @@
    :requires:
    :satisfies:
    :topic: DFA exercises
-   :keyword: Finite Automata; Deterministic Finite Acceptor
+   :keyword: Deterministic Finite Automata
    :naturallanguage: en
    :programminglanguage: N/A
    :description: A collection of construction exercises for DFAs.

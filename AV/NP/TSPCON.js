@@ -2,7 +2,7 @@
 /*global ODSA */
 
 // Title: Introduction to the Traveling Salesman Problem
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Traveling Salesman Problem

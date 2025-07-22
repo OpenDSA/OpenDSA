@@ -8,7 +8,7 @@
    :author: Cliff Shaffer
    :institution: Virginia Tech
    :topic: Memory Management
-   :keyword: Memory Management; Sequential Fit Memory Allocation
+   :keyword: Sequential Fit Memory Manager
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the best fit sequential memory management scheme.

@@ -10,7 +10,7 @@
    :satisfies: radix sort
    :requires: binsort
    :topic: Sorting
-   :keyword: Radix Sort; Non-comparison Sort
+   :keyword: Radix Sort; Non-Comparison Sort
    :naturallanguage: en
    :programminglanguage: Java
    :description: Presentation of Radix Sort, including visualizations, analysis, and self-practice exercises.

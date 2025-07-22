@@ -10,7 +10,7 @@
    :requires: growth rate
    :satisfies: best and worst case
    :topic: Algorithm Analysis
-   :keyword: Algorithm Analysis; Best, Average, Worst Case
+   :keyword: Algorithm Analysis; Best Case; Average Case; Worst Case
    :naturallanguage: en
    :programminglanguage: N/A
    :description: An introduction to best, worst, and average case analysis.

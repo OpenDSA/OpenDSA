@@ -2,7 +2,7 @@
 /*global ODSA */
 
 // Title: Reduction of 3-SAT to Hamiltonian Cycle Slideshow
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Reduction; Satisfiability Problem; Hamiltonian Cycle Problem

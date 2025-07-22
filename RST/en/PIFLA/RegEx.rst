@@ -9,7 +9,7 @@
    :institution: Virginia Tech
    :satisfies: Regular Expressions
    :topic: Regular Expressions
-   :keyword: Regular Expressions
+   :keyword: Regular Expression
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Introduction to Regular Expressions, with definitions and examples.

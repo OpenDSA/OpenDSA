@@ -2,7 +2,7 @@
 /*global ODSA */
 
 // Title: Symmetric Matrix Multiplication Reduction
-// Author: Nabinita Maji; Cliff Shaffer
+// Author: Nabanita Maji; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration
 // Keyword: Reduction

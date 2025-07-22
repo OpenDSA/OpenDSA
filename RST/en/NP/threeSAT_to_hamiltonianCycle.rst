@@ -6,8 +6,9 @@
 .. avmetadata::
    :title: Reduction of 3-SAT to Hamiltonian Cycle
    :author: Nabanita Maji and Cliff Shaffer
+   :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-completeness Proofs; 3-SAT Problem; Hamiltonian Cycle Problem
+   :keyword: NP-Completeness Proof; Satisfiability Problem; Hamiltonian Cycle Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents a reduction of an instance of the 3-SAT problem to an instance of the Hamiltonian Cycle problem.

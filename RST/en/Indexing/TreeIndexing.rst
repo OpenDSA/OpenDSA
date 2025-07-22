@@ -10,7 +10,7 @@
    :requires: linear indexing
    :satisfies: tree-based indexing
    :topic: Indexing
-   :keyword: Indexing; Tree Indexing
+   :keyword: Tree-Based Indexing
    :naturallanguage: en
    :programminglanguage: Java
    :description: Introduces the concept of using a tree to organize an index for a collection of disk-based records.

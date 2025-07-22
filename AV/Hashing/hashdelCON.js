@@ -2,7 +2,7 @@
 // Author: Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Algorithm Visualization
-// Keyword: Hash Table Deletion
+// Keyword: Hashing
 // Natural Language: en
 // Programming Language: N/A
 /* Description: Slideshow showing deletion from a hash table. */

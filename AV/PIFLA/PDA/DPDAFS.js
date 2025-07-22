@@ -1,4 +1,4 @@
-// Title: Pushdown Automata and Context Free Languages
+// Title: Deterministic vs Nondeterministic PDAs
 // Author: Mostafa Mohammed; Cliff Shaffer
 // Institution: Virginia Tech
 // Features: Demonstration

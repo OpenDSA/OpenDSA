@@ -4,7 +4,13 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: David Furcy and Tom Naps
+   :title: Enforcing Order of Operations
+   :author: David Furcy; Tom Naps
+   :institution: UW-Oshkosh
+   :keyword: Parse Tree
+   :naturallanguage: en
+   :programminglanguage: N/A
+   :description: Discusses the concept of writing a grammar such that it enforces the order of operations.
 
 .. odsalink::  AV/PL/AV/parseTree.css
 
