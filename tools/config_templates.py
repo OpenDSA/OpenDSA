@@ -34,27 +34,12 @@ rst_footer = '''\
          }
        }, 2000);
        
-       // Scroll depth tracking implementation
-       // NOTE: This only works in standalone OpenDSA, not in Canvas LTI environment
+       // NOTE: Scroll depth tracking was investigated but not implemented
        // Canvas LTI limitations documented in GitHub issue #523:
        // - Cross-site scripting security limitations prevent access to Canvas parent scroller
        // - Canvas automatically optimizes iframe height, eliminating internal scrolling
        // - Two-scroller approach was tested but was too awkward for user experience
        // - Future implementation would require Canvas-side cooperation
-       window.addEventListener('load', function() {
-         if (typeof $.scrollDepth === 'function' && typeof ODSA !== 'undefined' && ODSA.UTILS) {
-           $.scrollDepth({
-             percentage: true,
-             eventHandler: function(data) {
-               ODSA.UTILS.logUserAction('scroll', {
-                 percentage: data.eventLabel,
-                 pixelDepth: data.pixelDepth,
-                 timing: data.eventTiming
-               }, null, null);
-             }
-           });
-         }
-       });
      });
     </script>
  '''
