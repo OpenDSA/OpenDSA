@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-Completeness; Vertex Cover Problem
+   :keyword: NP-Complete; Vertex Cover Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the Vertex Cover problem. Includes a practice exercise where the user must determine the minimum vertex cover in a given graph.

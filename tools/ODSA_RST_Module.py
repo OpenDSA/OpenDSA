@@ -614,8 +614,10 @@ class ODSA_RST_Module:
                                         for link in link_opts:
                                             if link not in links:
                                                 links[link] = False
-                                    del mod_data[j]
-                                    j -= 1
+                                    # explicitly prevent deletion of :links: from inlineav for slides
+                                    if os.environ.get('SLIDES', 'no') == 'no':
+                                        del mod_data[j]
+                                        j -= 1
 
                                 elif opt_line.startswith(':scripts:'):
                                     script_opts = opt_line[len(
@@ -625,8 +627,10 @@ class ODSA_RST_Module:
                                         for script in script_opts:
                                             if script not in scripts:
                                                 scripts[script] = False
-                                    del mod_data[j]
-                                    j -= 1
+                                    # explicitly prevent deletion of :scripts: from inlineav for slides
+                                    if os.environ.get('SLIDES', 'no') == 'no':
+                                        del mod_data[j]
+                                        j -= 1
 
                                 j += 1
                                 opt_line = mod_data[j].strip(

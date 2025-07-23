@@ -8,7 +8,7 @@
    :author: Nabanita Maji
    :institution: Virginia Tech
    :topic: NP-completeness
-   :keyword: NP-Completeness; Clique Problem
+   :keyword: NP-Complete; Clique Problem
    :naturallanguage: en
    :programminglanguage: N/A
    :description: Presents the Clique problem. Includes a practice exercise where the user must determine the largest clique in a given graph.

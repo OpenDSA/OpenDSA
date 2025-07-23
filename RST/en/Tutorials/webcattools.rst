@@ -367,7 +367,9 @@ Then install it into Eclipse, as described below.
    <a href="https://courses.cs.vt.edu/cs3114/checkstyle.xml" target =
    "_blank">checkstyle.xml</a>
 
-Once it is installed, right click on a file, or on the default package to
+Once it is installed, right click on the project folder, and select
+``Checkstyle --> Activate Checkstyle``.
+Alternatively, right click on a file, or on the default package to
 check your entire project, and select
 ``Checkstyle --> Check Code with Checkstyle``.
 If necessary, you can also right click on a file, or on the default package, to

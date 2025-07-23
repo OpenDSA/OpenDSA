@@ -1,13 +1,9 @@
-#SimpleCostsCON .jsavcanvas {
-  height: 895px;
+#SimpleCosts1CON {
+  height: 240px;
 }
 
-#SimpleCostsCON {
-  height: 895px;
-}
-
-.dashed{
-  stroke-dasharray: 5, 5;
+#SimpleCosts2CON {
+  height: 620px;
 }
 
 .largeLabel{
@@ -18,18 +14,4 @@
 .smallLabel{
   font-size: 8px !important;
   text-align: center;
-}
-
-.largePoint{
-  font-size: 22px;
-  text-align: center;
-}
-
-.mediumPoint{
-  font-size: 16px;
-  text-align: center;
-}
-
-.colored{
-  color: red;
 }

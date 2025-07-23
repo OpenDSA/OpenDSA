@@ -178,11 +178,15 @@ In other words, we don't pick the :math:`n` for which the best
 So it would be wrong to say something like
 "The best case is when :math:`n=1`."
 
-.. inlineav:: SimpleCostsCON dgm
+.. inlineav:: SimpleCosts1CON dgm
    :links: AV/SeniorAlgAnal/SimpleCostsCON.css
-   :scripts: AV/SeniorAlgAnal/SimpleCostsCON.js
+   :scripts: AV/SeniorAlgAnal/SimpleCosts1CON.js
    :output: show
-   :keyword: Algorithm Analysis; Upper and Lower Bounds
+
+.. inlineav:: SimpleCosts2CON dgm
+   :links: AV/SeniorAlgAnal/SimpleCostsCON.css
+   :scripts: AV/SeniorAlgAnal/SimpleCosts2CON.js
+   :output: show
 
 If we want the :term:`average-case cost <average case>`,
 it is even more complicated.
