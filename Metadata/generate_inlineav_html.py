@@ -3,14 +3,12 @@ import re
 import json
 from pathlib import Path
 
-
-script_dir = Path(__file__).resolve().parent
+script_dir = Path("E:/Open/OpenDSA/Metadata")
 project_root = script_dir.parent
 rst_root = project_root / "RST" / "en"
 av_root = project_root / "AV"
 output_dir = script_dir / "inlineav"
 output_dir.mkdir(parents=True, exist_ok=True)
-
 
 catalog_json = project_root / "config" / "Catalog.json"
 with open(catalog_json, encoding='utf-8') as f:
@@ -29,47 +27,6 @@ def fallback_title(av_name):
     name = re.sub(r'CON$', '', av_name)
     words = re.sub(r'(?<!^)(?=[A-Z])', ' ', name).split()
     return ' '.join(w.capitalize() for w in words) + " Slideshow"
-
-def parse_metadata_block(filepath):
-    metadata = {}
-    if not filepath.is_file():
-        return None
-    try:
-        with filepath.open(encoding='utf-8') as f:
-            lines = f.readlines()
-        for line in lines:
-            stripped = line.strip()
-            if stripped.startswith("//") and ":" in stripped:
-                try:
-                    key, val = stripped[2:].split(":", 1)
-                    key = key.strip().lower()
-                    val = val.strip()
-                    if key == "title":
-                        metadata["Title"] = val
-                    elif key in ("author", "authors"):
-                        metadata["Author"] = [x.strip() for x in re.split(r";|,|\band\b", val)]
-                    elif key == "institution":
-                        metadata["Institution"] = [val.strip()]
-                    elif key in ("keyword", "keywords"):
-                        metadata["Keywords"] = [x.strip() for x in re.split(r";|,|\band\b", val)]
-                    elif key == "features":
-                        metadata["Features"] = [x.strip() for x in re.split(r";|,|\band\b", val)]
-                    elif key == "natural language":
-                        metadata["Natural Language"] = [val.strip()]
-                    elif key == "programming language":
-                        metadata["Programming Language"] = [val.strip()]
-                except ValueError:
-                    continue
-            elif stripped.startswith("/*") and "Description:" in stripped:
-                try:
-                    _, val = stripped.split("Description:", 1)
-                    metadata["Description"] = val.strip(" */\n\t")
-                except ValueError:
-                    continue
-        return metadata if metadata else None
-    except Exception as e:
-        print(f"Failed to parse metadata from {filepath}: {e}")
-        return None
 
 def parse_inlineav_block(lines, index):
     av_name = None
@@ -124,67 +81,76 @@ def generate_html(av_name, title, links, scripts, is_dgm, output_path):
     depth = len(output_path.relative_to(output_dir).parents) - 1
     relative_prefix = "../" * (depth + 2)
 
-    link_tags = '\n    '.join([f'<link rel="stylesheet" href="{relative_prefix}{link}"/>' for link in links])
-    script_tags = '\n    '.join(
-        ['<script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>'] +
-        [f'<script src="{relative_prefix}{script}" type="text/javascript"></script>' for script in scripts]
-    )
+    link_tags = '\n    '.join([f'<link rel="stylesheet" href="{relative_prefix}{link}" type="text/css" />' for link in links])
+    script_tags = '\n    '.join([f'<script src="{relative_prefix}{script}" type="text/javascript"></script>' for script in scripts])
 
     av_div = f"""
-      <div id="{av_name}" class="{('avcontainer' if is_dgm else 'ssAV')}" data-points="0" data-type="{('dgm' if is_dgm else 'ss')}"
-           data-required="true" data-long-name="{title}">{"<div class='jsavcanvas'></div>" if is_dgm else '''
-        <span class="jsavcounter"></span>
-        <a class="jsavsettings" href="#">Settings</a>
-        <div class="jsavcontrols"></div>
-        <p class="jsavoutput jsavline"></p>
-        <div class="jsavcanvas"></div>
-        <div class="prof_indicators">
-          <img id="{av_name}_check_mark" class="prof_check_mark" src="{relative_prefix}RST/_static/Images/green_check.png" alt="Proficient" />
-          <span id="{av_name}_cm_saving_msg" class="cm_saving_msg">Saving...</span>
-          <span id="{av_name}_cm_error_msg" class="cm_error_msg">
-            <img id="{av_name}_cm_warning_icon" class="cm_warning_icon" src="{relative_prefix}RST/_static/Images/warning.png" alt="Error Saving"/>
-            <br />Server Error<br />
-            <a href="#" class="resubmit_link">Resubmit</a>
-          </span>
-        </div>
-        '''}
+    <div id="{av_name}" class="{('avcontainer' if is_dgm else 'ssAV')}" data-points="0" data-type="{('dgm' if is_dgm else 'ss')}"
+         data-required="true" data-long-name="{title}">
+      <span class="jsavcounter"></span>
+      <a class="jsavsettings" href="#">Settings</a>
+      <div class="jsavcontrols"></div>
+      <p class="jsavoutput jsavline"></p>
+      <div class="jsavcanvas"></div>
+      <div class="prof_indicators">
+        <img id="{av_name}_check_mark" class="prof_check_mark" src="{relative_prefix}RST/_static/Images/green_check.png" alt="Proficient" />
+        <span id="{av_name}_cm_saving_msg" class="cm_saving_msg">Saving...</span>
+        <span id="{av_name}_cm_error_msg" class="cm_error_msg">
+          <img id="{av_name}_cm_warning_icon" class="cm_warning_icon" src="{relative_prefix}RST/_static/Images/warning.png" alt="Error Saving"/>
+          <br />Server Error<br />
+          <a href="#" class="resubmit_link">Resubmit</a>
+        </span>
       </div>
+    </div>
     """
 
-    html = f"""<html lang="en">
+    html = f"""<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8"/>
   <title>{title}</title>
-  <link rel="stylesheet" href="{relative_prefix}lib/normalize.css" />
-  <link rel="stylesheet" href="{relative_prefix}lib/JSAV.css" />
-  <link rel="stylesheet" href="{relative_prefix}lib/odsaMOD-min.css" />
-  <link rel="stylesheet" href="{relative_prefix}lib/odsaStyle-min.css" />
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{relative_prefix}lib/normalize.css" type="text/css" />
+  <link rel="stylesheet" href="{relative_prefix}lib/JSAV.css" type="text/css" />
+  <link rel="stylesheet" href="{relative_prefix}lib/odsaMOD-min.css" type="text/css" />
+  <link rel="stylesheet" href="{relative_prefix}lib/odsaStyle-min.css" type="text/css" />
+  <link rel="stylesheet" href="{relative_prefix}lib/jquery.ui.min.css" type="text/css" />
+  {link_tags}
+
+  <script type="text/javascript" src="{relative_prefix}lib/jquery.min.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/jquery.migrate.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/jquery.scrolldepth.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/timeme.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/jquery.ui.min.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/jquery.transit.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/raphael.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/JSAV-min.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/odsaUtils-min.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/odsaMOD-min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script type="text/javascript" src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/dataStructures.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/conceptMap.js"></script>
+  <script type="text/javascript" src="{relative_prefix}lib/splice-iframe.js"></script>
+  <script type="text/javascript" src="{relative_prefix}RST/_static/config.js"></script>
+  {script_tags}
+
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({{
       tex2jax: {{
         inlineMath: [['$','$'], ['\\\\(','\\\\)']],
         displayMath: [['$$','$$'], ['\\\\[','\\\\]']],
-        processEscapes: true,
-        ignoreClass: "no-mathjax"
+        processEscapes: true
       }},
-      "HTML-CSS": {{ scale: "80" }}
+      "HTML-CSS": {{
+        scale: "80"
+      }}
     }});
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  {link_tags}
-  {script_tags}
 </head>
 <body>
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-  <script src="{relative_prefix}lib/jquery.transit.js" type="text/javascript"></script>
-  <script src="{relative_prefix}lib/raphael.js" type="text/javascript"></script>
-  <script src="{relative_prefix}lib/JSAV-min.js" type="text/javascript"></script>
-  <script src="{relative_prefix}lib/odsaUtils.js" type="text/javascript"></script>
-  <script src="{relative_prefix}lib/odsaMOD.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" type="text/javascript"></script>
-  <script src="{relative_prefix}lib/dataStructures.js" type="text/javascript"></script>
-
   <div class="content">
     <div class="section">
       {av_div}
@@ -206,10 +172,9 @@ for rst_file in catalog_rst_paths:
             print(f"JS not found for {av_name}, skipping.")
             continue
 
-        metadata = parse_metadata_block(js_path)
-        title = long_name or (metadata.get("Title") if metadata and "Title" in metadata else fallback_title(av_name))
+        title = long_name or fallback_title(av_name)
         js_rel_path = js_path.relative_to(av_root).with_suffix(".html")
         output_html_path = output_dir / js_rel_path
 
-        print(f" Generating: {output_html_path} — Title: {title}")
+        print(f"Generating: {output_html_path} — Title: {title}")
         generate_html(av_name, title, links, scripts, is_dgm, output_html_path)
