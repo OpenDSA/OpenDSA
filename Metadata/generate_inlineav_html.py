@@ -3,14 +3,14 @@ import re
 import json
 from pathlib import Path
 
-script_dir = Path("E:/Open/OpenDSA/Metadata")
+script_dir = Path(__file__).resolve().parent
 project_root = script_dir.parent
 rst_root = project_root / "RST" / "en"
 av_root = project_root / "AV"
 output_dir = script_dir / "inlineav"
 output_dir.mkdir(parents=True, exist_ok=True)
 
-catalog_json = project_root / "config" / "Catalog.json"
+catalog_json = (project_root / "config" / "Catalog.json").resolve()
 with open(catalog_json, encoding='utf-8') as f:
     catalog = json.load(f)
 
