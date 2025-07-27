@@ -28,6 +28,19 @@
   text-align: left;
 }
 
+/* Center AVs in slides */
+.reveal .ssAV,
+.reveal .ffAV,
+.reveal .divdgm,
+.reveal .embedContainer {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reveal .embedContainer iframe {
+  margin: 0 auto;
+}
+
 .reveal .jsavlabel {
   text-transform: none !important;
   letter-spacing: normal !important;

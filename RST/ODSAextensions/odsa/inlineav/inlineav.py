@@ -75,6 +75,21 @@ def depart_av_anchor_html(self, node):
 
 
 def visit_av_ff_html(self, node):
+  # add link tags if specified (via :links: in RST)
+  if 'links' in node:
+    links = node['links'].split()
+    for link in links:
+      # relative to the output of the book (../Books/<...>/)
+      link_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + link
+      self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
+  
+  #  add script tags if specified (via :scripts: in RST)
+  if 'scripts' in node:
+    scripts = node['scripts'].split()
+    for script in scripts:
+      script_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + script
+      self.body.append('<script src="%s"></script>\n' % script_path)
+  
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
 
@@ -164,7 +179,7 @@ SLIDESHOW = '''\
 
 #second copy for frames option
 FRAMES = '''\
-<div id="%(exer_name)s" class="ffAV" data-points="%(points)s" data-threshold="%(threshold)s"  data-type="%(type)s" data-required="%(required)s" data-long-name="%(long_name)s" data-exer-id="%(id)s">
+<div id="%(exer_name)s" class="ffAV" data-points="%(points)s" data-threshold="%(threshold)s"  data-type="%(type)s" data-required="%(required)s" data-long_name="%(long_name)s" data-exer-id="%(id)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
@@ -281,11 +296,32 @@ class inlineav(Directive):
         avss_node += caption
       return [avss_node]
     elif self.options['type'] == "ff":
-      res = FRAMES % self.options
-      return [nodes.raw('', res, format='html')]
+      avff_node = av_ff()
+      avff_node['res'] = FRAMES % self.options
+      
+      # pass links & scripts to node
+      if 'links' in self.options:
+        avff_node['links'] = self.options['links']
+      if 'scripts' in self.options:
+        avff_node['scripts'] = self.options['scripts']
+      
+      return [avff_node]
     else:
-      res = SLIDESHOW % self.options
-      return [nodes.raw('', res, format='html')]
+      # Handle ss without content and other types
+      if self.options['type'] == 'ss':
+        avss_node = av_ss()
+        avss_node['res'] = SLIDESHOW % self.options
+        
+        # pass links & scripts to node
+        if 'links' in self.options:
+          avss_node['links'] = self.options['links']
+        if 'scripts' in self.options:
+          avss_node['scripts'] = self.options['scripts']
+        
+        return [avss_node]
+      else:
+        res = SLIDESHOW % self.options
+        return [nodes.raw('', res, format='html')]
 
 
 
