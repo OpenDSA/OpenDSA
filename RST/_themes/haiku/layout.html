@@ -33,66 +33,11 @@
 {% endmacro %}
 
 {% macro login() %}
-<a id="username-link" style="float:right;color:red;margin:10px 20px auto; display: none" class="username-link" href="Gradebook.html"></a>
-<a id="login-link" style="float:right;color:red;margin:10px 20px auto" class="login-link" href="#">{{ login }}</a>
-<div id="login-box" class="login-popup">
-<a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="{{ close }}" alt="Close" /></a>
-<form method="post" class="signin" action="https://#">
-  <fieldset class="textbox">
-    <label class="username">
-      <span>{{ username  }}</span>
-      <input id="username" value="" type="text" autocomplete="on" placeholder="{{ username  }}" tabindex="1">
-    </label>
-    <label class="password">
-      <span>{{ password }}</span>
-      <input id="password" value="" type="password" placeholder="{{ password }}" tabindex="2">
-      <span><a id="forgot" href="#">{{ password_forget  }}</a></span>
-    </label>
 
-    <p>
-      <input type="submit" id="login-submit-button" value="{{ sign_in  }}" tabindex="3" />
-    </p>
-    <p>
-      <input type="button" id="register-button" value="{{ register }}" tabindex="4" />
-    </p>
-  </fieldset>
-</form>
-</div>
 {% endmacro %}
 
 {% macro registration() %}
-<a id="registration-link" style="float:right;color:red;margin:10px 20px auto" class="registration-link" href="#">{{ register }}</a>
-<div id="registration-box" class="registration-popup ">
-<a href="#" class="close"><img src="_static/Images/close_pop.png" class="btn_close" title="{{ close }}" alt="{{ close }}" /></a>
-<form method="post" class="signin" action="https://#">
-  <fieldset class="textbox">
-    <div id="register_error" class="error"></div>
-    <label class="username">
-      <span>{{ username }}:</span>
-      <input type="text" id="user" placeholder="{{ username }}" />
-    </label>
 
-    <label class="password">
-      <span>{{ password }}</span>
-      <input id="pass" type="password" placeholder="{{ password }}" />
-    </label>
-
-    <label class="password">
-      <span>{{ password_confirm  }}</span>
-      <input id="rpass" type="password" placeholder="{{ password_confirm  }}" />
-    </label>
-
-    <label class="email">
-      <span>{{ email  }}:</span>
-      <input type="text" id="email" placeholder="{{ email  }}">
-    </label>
-
-    <p>
-      <input type="submit" id="register-submit-button" value="{{ register }} &rarr;"/>
-    </p>
-  </fieldset>
-</form>
-</div>
 {% endmacro %}
 
 {% macro nav() %}
@@ -176,7 +121,7 @@
       {% block body %}{% endblock %}
     </div>
     <div class="bottomnav">
-    <p><span class="email_div" style="display:inline;"><a id="contact_us" class="contact" style="float:left;color:blue;" rel="nofollow" href="mailto:">{{ contact }} |</a><a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/Privacy.html' }}" target="_blank">| {{ privacy }} |</a> <a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/license.html' }}" target="_blank">| {{ license }}</a></span>&#160;&#160;
+    <p><span class="email_div" style="display:inline;"><a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/Privacy.html' }}" target="_blank"> {{ privacy }} |</a> <a style="float:left;color:blue;" rel="nofollow" href="{{ odsa_root_path + 'lib/license.html' }}" target="_blank">| {{ license }}</a></span>&#160;&#160;
     {{ btm_nav() }}</p>
     </div>
     <img style="float:right;" src="_static/nsf1.gif" height="62" width="62" alt=""/>
