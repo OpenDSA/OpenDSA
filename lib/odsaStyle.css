@@ -116,7 +116,54 @@ tt {
 }
 
 .redback {
+<<<<<<< HEAD
   background-color: #f00;
+=======
+  background-color: #f00 !important;
+}
+
+.jsavcontainer {
+  background-color: #F5F5EA;
+  margin: 0 auto;
+  border: 0;
+  width: 850px;
+  position: relative;
+}
+
+.ssAV {
+  font-size: 15px;
+}
+
+.jsavcontrols {
+  margin-top: -35px;
+  margin-left: 35px;
+  text-align: center;
+}
+
+.jsavcontrols span {
+  display: inline-block;
+  color: #777;
+  font-family: 'Times New Roman';
+  font-size: 20px;
+  font-weight: bolder;
+  line-height: 45px;
+  width: 45px;
+  height: 45px;
+  margin: 15px 40px;
+  background-color: #fff;
+  border: 1px solid #777;
+  -o-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.jsavbegin,
+.jsavend {
+  letter-spacing: -2px;
+>>>>>>> 1b9b2fbcf53dea1ae42bda3df3779ea319cf0fa1
 }
 
 .jsavnode.sorted {
@@ -141,6 +188,7 @@ tt {
   padding-right: 12px;
 }
 
+<<<<<<< HEAD
 /* Text Alignment */
 
 .jsavnode .jsavhorizontalarray .jsavvalue,
@@ -152,6 +200,32 @@ tt {
 }
 
 /* Code Highlighting */
+=======
+.jsavnode .jsavhorizontalarray .jsavvalue {
+  /* Center array cell values vertically */
+  height: 30px;
+}
+
+.jsavnode .jsavverticalarray .jsavvalue {
+  /* Center array cell values vertically */
+  height: 30px;
+}
+
+.jsavnode .jsavvalue {
+  /* Center tree node values vertically */
+  height: 30px;
+}
+
+.jsavlist .jsavvalue {
+  /* Center linked list cell values vertically */
+  height: 30px;
+}
+
+.jsavarray .jsavvalue {
+  /* Center array cell values vertically */
+  height: 30px;
+}
+>>>>>>> 1b9b2fbcf53dea1ae42bda3df3779ea319cf0fa1
 
 .jsavcodeline {
   margin-bottom: 1px;
@@ -255,13 +329,38 @@ tt {
   stroke-width: 1.5px;
 }
 
+<<<<<<< HEAD
 /* jQuery UI overrides */
 .ui-state-active a,
 .ui-state-hover a,
 .ui-state-visited a,
 .ui-state-focus a,
 .ui-state-active,
+=======
+
+/* jquery-ui customization */
+.ui-state-active a,
+.ui-state-hover a,
+.ui-state-visited a,
+.ui-state-focus a {
+  border: none;
+  outline: none;
+}
+
+>>>>>>> 1b9b2fbcf53dea1ae42bda3df3779ea319cf0fa1
 .ui-state-focus {
   border: none;
   outline: none;
 }
+<<<<<<< HEAD
+=======
+
+.ui-state-active {
+  border: none;
+  outline: none;
+}
+
+.redbg {
+  background-color: #FFB6C1 !important;
+}
+>>>>>>> 1b9b2fbcf53dea1ae42bda3df3779ea319cf0fa1

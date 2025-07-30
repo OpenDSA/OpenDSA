@@ -225,7 +225,10 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     source = vis['source']
     short_name = os.path.splitext(os.path.basename(source))[0]
     if vis['type'] == "inlineav":
-        embed_url = f"{host_url}/embed/{short_name}"
+        rel_path = os.path.dirname(source).replace("\\", "/")  
+        if rel_path.startswith("AV/"):
+            rel_path = rel_path[len("AV/"):] 
+        embed_url = f"{host_url}/Metadata/inlineav/{rel_path}/{short_name}.html"
     elif vis['type'] == "avembed":
         embed_url = f"{host_url}/OpenDSA/{source}"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
