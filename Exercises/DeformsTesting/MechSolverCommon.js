@@ -725,11 +725,11 @@ requirejs(["./mathjs.js"], function(){});
         // TODO: Work on this to update this with
         // 1. Schedule event flushing to server immediately when attempt is submitted
         // 2. Setup calls to event logger without context from HTML files.
-        $("body").on("jsav-log-event", function(event, eventData) {
+        // $("body").on("jsav-log-event", function(event, eventData) {
             // console.log(eventData);
-            if(window.parent.ODSA != undefined)
-	            window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc)
-        });
+            // if(window.parent.ODSA != undefined)
+	        //     window.parent.ODSA.UTILS.logUserAction(eventData.type,eventData.desc)
+        // });
         
         // Setting up the button for training mode, if not inside Canvas.
         if(window.parent.ODSA == undefined)
