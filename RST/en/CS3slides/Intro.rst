@@ -6,35 +6,28 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. odsascript:: AV/Design/ADTCON.js
-.. odsalink:: AV/Design/ADTCON.css
-
 ===================================================
 Data Structures and Algorithm Analysis Introduction
 ===================================================
-
-Introduction
-============
-
-.. revealjs-slide::
 
 Course Introduction
 ===================
 
 .. revealjs-slide::
 
-Goals of this Course
+* Goals of this Course:
 
-* Reinforce the concept that costs and benefits exist for every data
-  structure.
-* Learn the commonly used data structures.
+  * Reinforce the concept that costs and benefits exist for every data
+    structure.
+  * Learn the commonly used data structures.
 
-  * These form a programmer's basic data structure "toolkit".
+    * These form a programmer's basic data structure "toolkit".
 
-* Understand how to measure the cost of a data structure or program.
+  * Understand how to measure the cost of a data structure or program.
 
-  * These techniques also allow you to judge the merits of new data
-    structures that you or others might invent.
+    * These techniques also allow you to judge the merits of new data
+      structures that you or others might invent.
+
 
 Costs and Benefits
 ==================
@@ -69,6 +62,7 @@ Data Structure
 * File structure: an organization for data on peripheral storage, such
   as a disk drive.
 
+  
 Logical vs. Physical Form
 =========================
 
@@ -85,13 +79,15 @@ Logical vs. Physical Form
 
   * Ex: 32/64 bit integers, overflow.
 
+    
 Logical vs. Physical Form (2)
 =============================
 
 .. revealjs-slide::
 
-
 .. inlineav:: ADTCON dgm
+   :links: AV/Design/ADTCON.css
+   :scripts: AV/Design/ADTCON.js
    :output: show
    :align: center
 

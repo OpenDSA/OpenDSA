@@ -225,16 +225,19 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     source = vis['source']
     short_name = os.path.splitext(os.path.basename(source))[0]
     if vis['type'] == "inlineav":
-        embed_url = f"{host_url}/Metadata/inlineav/{short_name}"
+        rel_path = os.path.dirname(source).replace("\\", "/")  
+        if rel_path.startswith("AV/"):
+            rel_path = rel_path[len("AV/"):] 
+        embed_url = f"{host_url}/Metadata/inlineav/{rel_path}/{short_name}.html"
     elif vis['type'] == "avembed":
         embed_url = f"{host_url}/OpenDSA/{source}"
     lti_url = f"{host_url}/lti/launch?custom_ex_short_name={short_name}&custom_ex_settings=%7B%7D"
     return {
         "catalog_type": "SLCItem",
         "platform_name": "OpenDSA",
-        "url": host_url,
         "iframe_url": embed_url,
-        "lti_instructions_url": lti_url,
+        "protocol_url": [lti_url, embed_url],
+        "protocol": ["LTI 1.1", "SPLICE"],
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
         "description": metadata.get("Description", ""),
         "author": metadata.get("Author", []),
@@ -254,10 +257,11 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
     return {
         "catalog_type": "Bundles",
         "platform_name": "OpenDSA",
-        "url": host_url,
         "iframe_url": embed_url,
-        "lti_instructions_url": lti_url,
+        "protocol_url": lti_url,
+        "protocol_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas" ,
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
+        "protocol": ["LTI", "HTTP", "SPLICE Protocol"],
         "description": metadata.get("Description", ""),
         "author": metadata.get("Author", []),
         "institution": metadata.get("Institution", []),

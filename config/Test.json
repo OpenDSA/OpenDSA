@@ -68,17 +68,10 @@
     "partial_credit": false
   },
   "chapters": {
-      "Stuff": {
+    "Stuff": {
       "Background/MathpreIntro": {}, 
-      "Sorting/InSort": {}, 
-      "Sorting/SortNotation": {
-        "SortIntroSumm": {
-          "threshold": 3
-        }
-      }, 
-      "Sorting/InsertionSort": {}, 
-      "Searching/SortedSearch": {}
-      },
+      "Binary/BST": {},
+      "Binary/HeapsTest": {}
     }
   }
 }
