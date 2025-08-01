@@ -143,84 +143,6 @@ def update_mod_html(file_path, data, prefix, standalone_modules):
   with open(file_path, 'wt', encoding='utf-8') as html_file:
     html_file.writelines(html)
 
-# (#NEW)
-def process_points(config):
-    """processes a given book config to extract exercises and their points"""
-    
-    with open(config, 'r') as file:
-        data = json.load(file)
-
-    # get chapters from config
-    chapters = data.get('chapters', {})
-    exercises = []
-    total = 0.0
-    
-    def scan_dict(d):
-        nonlocal exercises, total
-        # itemize exercise - point pairs and extract from the dictionary
-        for key, value in d.items():
-            if isinstance(value, dict):
-                # If the value has a "points" key (non-zero), extract excercise + points
-                if "points" in value and value["points"] > 0:
-                    exercises.append((key, value["points"]))
-                    points += value["points"]
-                else:
-                    # If the value is a dictionary but does not have a "points" key, recurse
-                    scan_dict(value)
-        
-    for chapter_name, chapter_content in chapters.items():
-        # Scan the chapter content for exercises and their points
-        scan_dict(chapter_content)
-    
-    # return the list of exercises and the total points
-    return exercises, total
-
-# (#NEW)
-def inject_exercise_point_summary(index_path, config):
-  """
-  Injects exercise points into the module HTML files.
-  """
-  # collect all exercises and point values
-  exercises, total_points = process_points(config)
-
-  # create the HTML summary widget (emphasizing exercises + points with <strong> tags)
-  html_block = [
-        '<div id="exercise-summary-widget" style="border: 1px solid #ccc; padding: 1em; margin: 1em 0;">',
-        '<h2>Exercise Points Summary</h2>',
-        f'<p><strong>Total Exercises with Points:</strong> {len(exercises)}</p>',
-        f'<p><strong>Total Possible Points:</strong> {total_points:.1f}</p>',
-        '<ul>'
-    ]
-  
-  for exercise, points in exercises:
-    html_block.append(f'<li>{exercise}: {points:.1f} points</li>')
-  html_block.append('</ul>')
-  html_block.append('</div>')
-
-  html_string = '\n'.join(html_block)
-  
-  # read from index_path and inject HTML summary after the content div
-  try:
-    with open(index_path, 'r', encoding='utf-8') as f:
-      lines = f.readlines()
-  except FileNotFoundError:
-    print(f"Error: Could not find index.html at {index_path}")
-    return
-  
-  # find the position ("content") to inject the summary
-  for i, line in enumerate(lines):
-    if '<div class="content">' in line:
-      lines.insert(i + 1, '\n'.join(html_string) + '\n')
-      break
-  
-  # write the modified lines back to index.html
-  with open(index_path, 'w', encoding='utf-8') as f:
-    f.writelines(lines)
-
-  # print success message (debugging)
-  print(f"Successfully injected exercise summary at {index_path}")
-  print("Injected exercise summary into lti_html/index.html")
-
 
 def update_TOC(source_dir, dest_dir, data = None, standalone_modules=False):
   (sectnum, prefix) = parse_index_rst(source_dir)
@@ -396,7 +318,20 @@ def break_up_sections(path, module_data, config, standalone_modules):
   element = soup.find('img', alt='nsf')
   if element:
     element.extract()
+  # Inject exercise widget for this module
+  widget = create_exercise_widget(module_data, mod_name)
+  if widget:
+  # Find the body and inject widget at the beginning
+    body = soup.find('body')
+    if body and body.contents:
+      # Insert at the beginning of body content
+      body.insert(0, widget)
+      print(f"✅ Injected exercise widget into {mod_name}")
+  else:
+    print(f"ℹ️  No exercises with points found in {mod_name}")
 
+  
+  
   filename = mod_name + '.html'
   single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
   
@@ -439,10 +374,6 @@ def make_lti(config, no_lms = False, standalone_modules = False):
   with open(config_file_path, 'wt', encoding='utf-8') as o:
     o.write(json.dumps(config.__dict__))
   
-  # inject exercise summary (#NEW)
-  index_path = os.path.join(dest_dir, '..', 'lti_html', 'index.html') # unsure if path is correct here
-  inject_exercise_point_summary(index_path, config)
-
 
 def get_module_map(config):
     """extract module map from config object"""
@@ -479,3 +410,46 @@ def main(argv):
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))
+
+
+#(New)
+def create_exercise_widget(module_data, mod_name):
+    """
+    Creates exercise widget HTML for a specific module to display exercise overview
+    """
+    # Extract exercises dictionary from module
+    exercises_dict = module_data.get('exercises', {})
+    
+    # Build list of exercises that have point values > 0
+    # Only includes exercises worth points (skips exercises with 0 points)
+    exercises = [(name, data['points']) 
+                 for name, data in exercises_dict.items() 
+                 if data.get('points', 0) > 0]
+    
+    # Return None if no exercises with points found
+    if not exercises:
+        return None
+    
+    # Calculate total possible points for this module    
+    total_points = sum(points for _, points in exercises)
+    
+    # Create the HTML widget
+    widget_html = f'''
+<div id="exercise-summary-widget" style="border: 2px solid #007bff; padding: 15px; margin: 15px 0; background-color: #f8f9fa; border-radius: 8px;">
+    <h3 style="margin-top: 0; color: #007bff;">📊 {mod_name} - Exercise Overview</h3>
+    <p><strong>Exercises with Points:</strong> {len(exercises)}</p>
+    <p><strong>Total Possible Points:</strong> {total_points:.1f}</p>
+    <ul style="margin-bottom: 0;">'''
+    
+    for exercise, points in exercises:
+        widget_html += f'''
+        <li><strong>{exercise}</strong>: {points:.1f} points</li>'''
+    
+    widget_html += '''
+    </ul>
+</div>'''
+    
+    # Convert HTML string to BeautifulSoup object
+    return BeautifulSoup(widget_html, 'html.parser')
+  
+  
