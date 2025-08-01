@@ -318,7 +318,20 @@ def break_up_sections(path, module_data, config, standalone_modules):
   element = soup.find('img', alt='nsf')
   if element:
     element.extract()
+  # Inject exercise widget for this module
+  widget = create_exercise_widget(module_data, mod_name)
+  if widget:
+  # Find the body and inject widget at the beginning
+    body = soup.find('body')
+    if body and body.contents:
+      # Insert at the beginning of body content
+      body.insert(0, widget)
+      print(f"✅ Injected exercise widget into {mod_name}")
+  else:
+    print(f"ℹ️  No exercises with points found in {mod_name}")
 
+  
+  
   filename = mod_name + '.html'
   single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
   
@@ -360,7 +373,7 @@ def make_lti(config, no_lms = False, standalone_modules = False):
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
   with open(config_file_path, 'wt', encoding='utf-8') as o:
     o.write(json.dumps(config.__dict__))
-
+  
 
 def get_module_map(config):
     """extract module map from config object"""
@@ -397,3 +410,46 @@ def main(argv):
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))
+
+
+#(New)
+def create_exercise_widget(module_data, mod_name):
+    """
+    Creates exercise widget HTML for a specific module to display exercise overview
+    """
+    # Extract exercises dictionary from module
+    exercises_dict = module_data.get('exercises', {})
+    
+    # Build list of exercises that have point values > 0
+    # Only includes exercises worth points (skips exercises with 0 points)
+    exercises = [(name, data['points']) 
+                 for name, data in exercises_dict.items() 
+                 if data.get('points', 0) > 0]
+    
+    # Return None if no exercises with points found
+    if not exercises:
+        return None
+    
+    # Calculate total possible points for this module    
+    total_points = sum(points for _, points in exercises)
+    
+    # Create the HTML widget
+    widget_html = f'''
+<div id="exercise-summary-widget" style="border: 2px solid #007bff; padding: 15px; margin: 15px 0; background-color: #f8f9fa; border-radius: 8px;">
+    <h3 style="margin-top: 0; color: #007bff;">📊 {mod_name} - Exercise Overview</h3>
+    <p><strong>Exercises with Points:</strong> {len(exercises)}</p>
+    <p><strong>Total Possible Points:</strong> {total_points:.1f}</p>
+    <ul style="margin-bottom: 0;">'''
+    
+    for exercise, points in exercises:
+        widget_html += f'''
+        <li><strong>{exercise}</strong>: {points:.1f} points</li>'''
+    
+    widget_html += '''
+    </ul>
+</div>'''
+    
+    # Convert HTML string to BeautifulSoup object
+    return BeautifulSoup(widget_html, 'html.parser')
+  
+  
