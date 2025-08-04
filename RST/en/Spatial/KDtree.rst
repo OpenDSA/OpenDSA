@@ -169,20 +169,20 @@ discriminator.
 
 Similar to BST deletion, the record stored in :math:`N` should
 be replaced either by the record in :math:`N`'s right subtree with
-the least value of <var>N</var>'s discriminator, or by the record in
+the least value of :math:`N`'s discriminator, or by the record in
 :math:`N`'s left subtree with the greatest value for this
 discriminator.
 Assume that :math:`N` was at an odd level and therefore :math:`y` is
 the discriminator.
 :math:`N` could then be replaced by the record in its right subtree
 with the least :math:`y` value (call it :math:`Y_{min}`).
-The problem is that <var>Y</var><sub>min</sub> is not necessarily the
+The problem is that :math:`Y_{min}` is not necessarily the
 leftmost node, as it would be in the BST.
 A modified search procedure to find the least :math:`y` value in the
 left subtree must be used to find it instead.
 The implementation for ``findmin`` is shown next.
 A recursive call to the delete routine will then remove
-:math`Y_{min}` from the tree.
+:math:`Y_{min}` from the tree.
 Finally, :math:`Y_{min}`'s record is substituted for the
 record in node :math:`N`.
 
@@ -234,7 +234,7 @@ We first move the left subtree of node :math:`N` to become the
 right subtree (i.e., we simply swap the values of :math:`N`'s left
 and right child pointers).
 At this point, we proceed with the normal deletion process, replacing
-the record of <var>N</var> to be deleted with the record containing
+the record of :math:`N` to be deleted with the record containing
 the **least** value of the discriminator from what is now
 :math:`N`'s right subtree.
 
