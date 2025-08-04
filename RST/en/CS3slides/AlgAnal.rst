@@ -94,7 +94,7 @@ Growth Rate Graph (1)
     :links: AV/AlgAnal/GrowthRatesCON.css
     :scripts: DataStructures/Plot.js AV/AlgAnal/GrowthRatesCON.js
     :align: center
-   :keyword: Algorithm Analysis; Growth Rate
+    :keyword: Algorithm Analysis; Growth Rate
 
 Growth Rate Graph (2)
 ---------------------

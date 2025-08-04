@@ -36,6 +36,21 @@ class av_ff(Element):pass
 
 
 def visit_av_dgm_html(self, node):
+  # add link tags if specified (via :links: in RST)
+  if 'links' in node:
+    links = node['links'].split()
+    for link in links:
+      # relative to the output of the book (../Books/<...>/)
+      link_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + link
+      self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
+  
+  #  add script tags if specified (via :scripts: in RST)
+  if 'scripts' in node:
+    scripts = node['scripts'].split()
+    for script in scripts:
+      script_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + script
+      self.body.append('<script type="text/javascript" src="%s"></script>\n' % script_path)
+  
   # Get the exercise name to create the container ID
   exer_name = node.get('exer_name', '')
   self.body.append('<div class="divdgm">')
