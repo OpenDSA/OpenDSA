@@ -76,6 +76,7 @@ tt {
 
 .jsavcanvas {
   font-family: Helvetica, Arial;
+  background-color: inherit;
 }
 
 .processing {
@@ -116,58 +117,165 @@ tt {
 }
 
 .redback {
-<<<<<<< HEAD
-  background-color: #f00;
-=======
   background-color: #f00 !important;
 }
 
 .jsavcontainer {
   background-color: #F5F5EA;
-  margin: 0 auto;
-  border: 0;
-  width: 850px;
-  position: relative;
-}
-
-.ssAV {
-  font-size: 15px;
-}
-
-.jsavcontrols {
-  margin-top: -35px;
-  margin-left: 35px;
-  text-align: center;
 }
 
 .jsavcontrols span {
-  display: inline-block;
-  color: #777;
   font-family: 'Times New Roman';
   font-size: 20px;
   font-weight: bolder;
-  line-height: 45px;
-  width: 45px;
-  height: 45px;
-  margin: 15px 40px;
+  color: #777;
   background-color: #fff;
   border: 1px solid #777;
-  -o-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-  cursor: pointer;
+}
+
+.jsavnode {
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5);
+}
+
+.jsavhighlight,
+.jsavarray.jsavbararray .jsavindex.jsavhighlight .jsavvalue,
+.jsavvariable.jsavhighlight .jsavvalue {
+  /* !important flags left here to override the same flag in JSAV.css */
+  background-color: yellow !important;
+  color: black !important;
+}
+
+.jsavnode.sorted {
+  background-color: #ffffcc;
+}
+
+.jsavnode {
+  background-color: transparent;
+}
+
+.jsavindexlabel {
+  color: black;
+}
+
+.jsavbararray .jsavnode {
+  /* remove shadow from the white bars */
+  box-shadow: none;
+}
+
+.jsavbararray .jsavvalue {
+  background-color: inherit;
+  box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5);
+}
+
+.jsavbararray .jsavvaluebar {
+  background-color: #fff;
+}
+
+.jsavbararray .jsavindexlabel {
+  font-size: 90%;
+}
+
+.jsavmark {
+  background-color: #FF6464;
+}
+
+.jsavmarkline {
+  background-color: #FF6464;
+  background-color: rgba(255, 100, 100, 0.6);
+}
+
+.jsavline {
+  background-color: inherit;
+}
+
+.jsavscroll {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.jsavoutput .jsavtitle {
+  font-size: 300%;
+}
+
+.jsavindex.jsavarrow:before {
+  background-color: transparent;
+  border: 6px solid transparent;
+  border-top: 6px solid black;
 }
 
 .jsavbegin,
 .jsavend {
   letter-spacing: -2px;
->>>>>>> 1b9b2fbcf53dea1ae42bda3df3779ea319cf0fa1
 }
 
-.jsavnode.sorted {
-  background-color: #ffffcc;
+.jsavdialog {
+  border: 1px solid #aaa;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+.jsavdialog h2 {
+  background-color: #eee;
+  color: black;
+  font-family: Helvetica, Arial;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.jsavsettings {
+  font-family: Helvetica, Arial
+}
+
+.jsavsettings-dialog:after {
+  border: 8px solid transparent;
+  border-left-color: #eee;
+}
+
+.jsavsettings-dialog.arrow-bottom-left:after,
+.jsavsettings-dialog.arrow-bottom-right:after {
+  border-left-color: #fff;
+}
+
+.jsavsettings .jsavhelp {
+  font-size: 80%;
+}
+
+.jsavsettings .jsavversion {
+  font-size: smaller;
+}
+
+a.jsavsettings {
+  background-color: #aaa;
+  text-indent: 120%;
+  border: 1px solid #777;
+}
+
+a.jsavsettings:hover {
+  background-color: #888;
+}
+
+.jsavmodal {
+  background-color: rgb(120, 120, 120);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+a.jsavdialogclose {
+  border: 1px solid #777;
+  color: #777;
+  font-family: monospace;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+a.jsavdialogclose:hover {
+  background-color: #ccc;
+}
+
+.jsavmodelanswer.jsavcontainer {
+  background-color: white;
 }
 
 /* Sizing Rules */
@@ -188,7 +296,6 @@ tt {
   padding-right: 12px;
 }
 
-<<<<<<< HEAD
 /* Text Alignment */
 
 .jsavnode .jsavhorizontalarray .jsavvalue,
@@ -199,33 +306,27 @@ tt {
   height: 30px;
 }
 
+.jsavnode {
+  text-align: center;
+}
+
+.jsavverticalarray .jsavindexlabel {
+  text-align: right;
+}
+
+.jsavoutput .jsavtitle {
+  text-align: center;
+}
+
+.jsavcontrols {
+  text-align: center;
+}
+
+a.jsavdialogclose {
+  text-align: center;
+}
+
 /* Code Highlighting */
-=======
-.jsavnode .jsavhorizontalarray .jsavvalue {
-  /* Center array cell values vertically */
-  height: 30px;
-}
-
-.jsavnode .jsavverticalarray .jsavvalue {
-  /* Center array cell values vertically */
-  height: 30px;
-}
-
-.jsavnode .jsavvalue {
-  /* Center tree node values vertically */
-  height: 30px;
-}
-
-.jsavlist .jsavvalue {
-  /* Center linked list cell values vertically */
-  height: 30px;
-}
-
-.jsavarray .jsavvalue {
-  /* Center array cell values vertically */
-  height: 30px;
-}
->>>>>>> 1b9b2fbcf53dea1ae42bda3df3779ea319cf0fa1
 
 .jsavcodeline {
   margin-bottom: 1px;
@@ -329,38 +430,13 @@ tt {
   stroke-width: 1.5px;
 }
 
-<<<<<<< HEAD
 /* jQuery UI overrides */
 .ui-state-active a,
 .ui-state-hover a,
 .ui-state-visited a,
 .ui-state-focus a,
 .ui-state-active,
-=======
-
-/* jquery-ui customization */
-.ui-state-active a,
-.ui-state-hover a,
-.ui-state-visited a,
-.ui-state-focus a {
-  border: none;
-  outline: none;
-}
-
->>>>>>> 1b9b2fbcf53dea1ae42bda3df3779ea319cf0fa1
 .ui-state-focus {
   border: none;
   outline: none;
 }
-<<<<<<< HEAD
-=======
-
-.ui-state-active {
-  border: none;
-  outline: none;
-}
-
-.redbg {
-  background-color: #FFB6C1 !important;
-}
->>>>>>> 1b9b2fbcf53dea1ae42bda3df3779ea319cf0fa1
