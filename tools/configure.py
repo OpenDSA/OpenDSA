@@ -46,7 +46,7 @@ from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
 from postprocessor import update_TOC, update_TermDef, make_lti
 
-# Register revealjs-slide directive to prevent parse errors
+# Register revealjs directives to prevent parse errors
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 
@@ -55,7 +55,16 @@ class RevealJSSlideStub(Directive):
     def run(self):
         return []
 
+class RevealJSFragmentsStub(Directive):
+    has_content = True
+    def run(self):
+        return []
+
 directives.register_directive('revealjs-slide', RevealJSSlideStub)
+directives.register_directive('revealjs-fragments', RevealJSFragmentsStub)
+directives.register_directive('revealjs-break', RevealJSSlideStub)
+directives.register_directive('revealjs-vertical', RevealJSSlideStub)
+directives.register_directive('revealjs-notes', RevealJSSlideStub)
 
 # List ocanvas_module_idf exercises encountered in RST files that do not appear in the
 # configuration file

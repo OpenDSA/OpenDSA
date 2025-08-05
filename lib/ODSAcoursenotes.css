@@ -40,7 +40,6 @@
 .reveal .jsavcode {
   font-family: monospace !important;
   margin: 0 auto !important;
-  display: table !important;
 }
 
 .jsavcanvas {

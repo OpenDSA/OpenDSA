@@ -860,7 +860,7 @@ class ODSA_RST_Module:
                 if not os.path.exists('{0}/{1}'.format(config.odsa_dir, script)):
                     print_err('%sWARNING: "%s" does not exist.' %
                               (console_msg_prefix, script))
-                if not has_directive:
+                if not has_directive and os.environ['SLIDES'] == 'no':
                     mod_data.append(
                         '{0}.. odsascript:: {1}\n'.format(indent, script))
 
