@@ -61,20 +61,30 @@ def depart_av_dgm_html(self, node):
   self.body.append('</div>\n') 
 
 def visit_av_ss_html(self, node):
+  if hasattr(self, 'builder') and self.builder.name == 'revealjs':
+    ebook_path = conf.ebook_path
+    odsa_path = conf.odsa_path
+    rel_path = os.path.relpath(odsa_path, ebook_path)
+    relative_prefix = rel_path.replace('\\', '/') + '/'
+  else:
+    relative_prefix = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/'
+  
   # add link tags if specified (via :links: in RST)
   if 'links' in node:
     links = node['links'].split()
     for link in links:
-      # relative to the output of the book (../Books/<...>/)
-      link_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + link
+      link_path = relative_prefix + link
       self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
   
   #  add script tags if specified (via :scripts: in RST)
   if 'scripts' in node:
     scripts = node['scripts'].split()
     for script in scripts:
-      script_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + script
-      self.body.append('<script src="%s"></script>\n' % script_path)
+      script_path = relative_prefix + script
+      if hasattr(self, 'builder') and self.builder.name == 'revealjs':
+        self.body.append('<script src="%s" defer></script>\n' % script_path)
+      else:
+        self.body.append('<script src="%s"></script>\n' % script_path)
   
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
@@ -90,20 +100,30 @@ def depart_av_anchor_html(self, node):
 
 
 def visit_av_ff_html(self, node):
+  if hasattr(self, 'builder') and self.builder.name == 'revealjs':
+    ebook_path = conf.ebook_path
+    odsa_path = conf.odsa_path
+    rel_path = os.path.relpath(odsa_path, ebook_path)
+    relative_prefix = rel_path.replace('\\', '/') + '/'
+  else:
+    relative_prefix = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/'
+  
   # add link tags if specified (via :links: in RST)
   if 'links' in node:
     links = node['links'].split()
     for link in links:
-      # relative to the output of the book (../Books/<...>/)
-      link_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + link
+      link_path = relative_prefix + link
       self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
   
   #  add script tags if specified (via :scripts: in RST)
   if 'scripts' in node:
     scripts = node['scripts'].split()
     for script in scripts:
-      script_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + script
-      self.body.append('<script src="%s"></script>\n' % script_path)
+      script_path = relative_prefix + script
+      if hasattr(self, 'builder') and self.builder.name == 'revealjs':
+        self.body.append('<script src="%s" defer></script>\n' % script_path)
+      else:
+        self.body.append('<script src="%s"></script>\n' % script_path)
   
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
