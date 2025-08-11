@@ -594,6 +594,7 @@
       }
     }, 
     "Advanced Data Structures": {
+      "SearchStruct/Sparse": {},
       "SearchStruct/SkipList": {},
       "Spatial/Spatial": {}, 
       "Spatial/PRquadtree": {}, 
