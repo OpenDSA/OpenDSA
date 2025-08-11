@@ -92,3 +92,22 @@ Logical vs. Physical Form (2)
    :align: center
 
 
+Image Test
+==========
+
+Sparse Matrix:
+
+.. image:: /Images/Sparse.png
+   :width: 500
+   :align: center
+   :alt: Sparse Matrix
+
+
+Fragment Test
+=============
+
+.. revealjs-fragments::
+
+   * fragment #1 
+   * fragment #2
+   * fragment #3
