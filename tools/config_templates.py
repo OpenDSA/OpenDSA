@@ -322,6 +322,7 @@ if slides_lib == 'revealjs' or on_slides:
         controls: true,
         progress: true,
         center: false,
+        disableLayout: true,
         slideNumber: true,
         transition: 'none',
         hash: true,

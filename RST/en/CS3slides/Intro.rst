@@ -95,7 +95,9 @@ Logical vs. Physical Form (2)
 Image Test
 ==========
 
-Sparse Matrix:
+.. rst-class:: center
+
+   Sparse Matrix (centered!):
 
 .. image:: /Images/Sparse.png
    :width: 500
