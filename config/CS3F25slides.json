@@ -61,12 +61,16 @@
   "chapters": {
     "Week 1": {
       "CS3slides/VTIntro": {},
-      "CS3slides/Intro": {}
+      "CS3slides/Intro": {},
+      "CS3slides/P1F25": {}
     },
     "Week 2": {
-      "CS3slides/AlgAnal": {}
+      "CS3slides/ProjManage": {},
+      "CS3slides/AlgAnal": {},
+      "CS3slides/JUnit": {}
     },
     "Week 3": {
+      "CS3slides/Coding": {},
       "CS3slides/Lists": {},
       "CS3slides/Binary": {}
     },

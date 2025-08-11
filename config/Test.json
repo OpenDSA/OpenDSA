@@ -71,7 +71,8 @@
     "Stuff": {
       "Background/MathpreIntro": {}, 
       "Binary/BST": {},
-      "Binary/HeapsTest": {}
+      "Binary/HeapsTest": {},
+      "SearchStruct/Sparse": {}
     }
   }
 }
