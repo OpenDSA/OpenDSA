@@ -235,7 +235,7 @@ def build_splice_entry(vis, metadata, host_url="https://opendsa-server.cs.vt.edu
     return {
         "catalog_type": "SLCItem",
         "platform_name": "OpenDSA",
-        "iframe_url": embed_url,
+        "persistentID": embed_url,
         "protocol_url": [lti_url, embed_url],
         "protocol": ["LTI 1.1", "SPLICE"],
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
@@ -257,7 +257,7 @@ def build_catalog_entry(mod_name, metadata, host_url="https://opendsa-server.cs.
     return {
         "catalog_type": "Bundles",
         "platform_name": "OpenDSA",
-        "iframe_url": embed_url,
+        "persistentID": embed_url,
         "protocol_url": lti_url,
         "protocol_instructions_url": "https://opendsa-server.cs.vt.edu/guides/opendsa-canvas" ,
         "license": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
