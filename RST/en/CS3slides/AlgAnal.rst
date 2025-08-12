@@ -253,13 +253,11 @@ A Common Misunderstanding
   all inputs of size :math:`n`.
 
 
-Big Omega
----------
+Big :math:`\Omega`
+------------------
 
 .. revealjs-slide::
        
-* :math:`\Omega`
-
 * Definition: For :math:`\textbf{T}(n)` a non-negatively valued
   function, :math:`\textbf{T}(n)` is in the
   set :math:`\Omega(g(n))` if there exist two positive constants :math:`c`
@@ -289,12 +287,10 @@ Big-Omega Example
 * We want the greatest lower bound.
 
 
-Theta Notation
---------------
+:math:`\Theta` Notation
+-----------------------
 
 .. revealjs-slide::
-
-:math:`\Theta`
        
 * When big-Oh and :math:`\Omega` coincide, we indicate this by using
   :math:`\Theta` (big-Theta) notation.

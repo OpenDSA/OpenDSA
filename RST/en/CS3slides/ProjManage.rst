@@ -63,16 +63,14 @@ Historical Data
 ---------------
 .. revealjs-slide::
 
-   .. _ProgramerData:
+.. image:: /Images/ProgramTime.png
+   :width: 400
+   :align: center
+   :alt: Programmer time data
 
-   .. figure:: Images/ProgramTime.png
-      :width: 400
-      :align: center
-      :alt: Programmer time data
-
-   * X axis is % of total time spent by about one week before program
-     due date.
-   * Y axis is score.
+* X axis is % of total time spent by about one week before program
+  due date.
+* Y axis is score.
 
 
 Historical Data 2
@@ -137,8 +135,10 @@ How to succeed at implementing your project:
 * Write the smallest possible kernel
 * Debug that kernel thoroughly
 * Repeat until completion:
+
   * Add a functional unit
   * Debug the resulting program
+
 * Have a way to track details
 * Do mechanics early
 * Do structural design before implementation
@@ -153,12 +153,15 @@ How to Survive These Projects
 * Keys to success:
 
 * Keeping Track of all the details
+
   * You can't remember it all
 
 * Rational Planning (and keeping to the plan)
+
   * Spread the work over time
 
 * Incremental Development
+
   * Interleave writing and debugging
 
    
@@ -168,10 +171,12 @@ Being Organized 1
 .. revealjs-slide::
 
 * Software development has so many details
+
   * Spec requirements
   * Program interactions
 
 * So does Life
+
   * Assignments and other things to do
 
 

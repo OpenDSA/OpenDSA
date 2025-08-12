@@ -36,6 +36,7 @@ Sparse Matrices
 
 * Here is where we talk about sparse matrices.
 
-   .. image:: https://picsum.photos/450/300
-
-           
+.. image:: /Images/Sparse.png
+   :width: 500
+   :align: center
+   :alt: Sparse Matrix
