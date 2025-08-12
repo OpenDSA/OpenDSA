@@ -6,10 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
-
 ==================
 Project Management
 ==================
