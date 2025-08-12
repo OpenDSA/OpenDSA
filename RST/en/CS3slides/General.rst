@@ -43,7 +43,7 @@ General Tree Traversal
 
 
 Representation: Lists of Children
-----------------------
+---------------------------------
 
 .. revealjs-slide::
 

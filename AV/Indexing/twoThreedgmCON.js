@@ -3,7 +3,7 @@
  *
  * Container ID: twoThreeTreeCON
  */
-(function () {
+$(document).ready(function() {
   "use strict";
 
   var jsav = new JSAV("twoThreedgmCON");
@@ -20,4 +20,4 @@
   var properties = {"stroke-width": 1.5};
   var length = 2;
   window.twothreetree.getArrayNodesEdges(jsav, arrays, length, properties);
-}());
+});

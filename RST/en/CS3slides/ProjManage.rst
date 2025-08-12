@@ -176,7 +176,8 @@ Being Organized 1
   * Assignments and other things to do
 
 
-.. slide:: Being Organized 2
+Being Organized 2
+-----------------
 
 .. revealjs-slide::
 

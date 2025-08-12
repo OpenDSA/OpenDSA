@@ -1,7 +1,7 @@
 /**
  * Creates global functions that serve to facilitate the creation and manipulation of 2-3 trees.
  */
-(function () {
+$(document).ready(function() {
   "use strict";
 
   /**
@@ -153,4 +153,4 @@
   twothreetree.toggleArrayHiglight = toggleArrayHighlight;
   twothreetree.toggleEdgeHiglight = toggleEdgeHighlight;
   window.twothreetree = twothreetree;
-}());
+});
