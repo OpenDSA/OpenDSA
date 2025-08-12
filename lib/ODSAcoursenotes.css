@@ -34,6 +34,34 @@
   margin-right: auto;
 }
 
+/* Fix code block widths in slides */
+.reveal pre {
+  width: 100%;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: visible;
+  max-width: none;
+}
+
+.reveal pre code {
+  display: block;
+  max-height: none;
+  overflow: visible;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Ensure code blocks in fragments use full width */
+.reveal .fragment pre {
+  width: 100%;
+}
+
+.reveal .fragment pre code {
+  max-height: none;
+  overflow: visible;
+}
+
 /* prevent reveal default fonts from affecting jsav */
 .reveal .jsavcontainer,
 .reveal .divdgm,
