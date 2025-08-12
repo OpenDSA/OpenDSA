@@ -6,9 +6,6 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 =============
 General Trees
 =============
@@ -16,110 +13,135 @@ General Trees
 General Trees
 -------------
 
-.. slide:: General Trees
+.. revealjs-slide::
 
-   .. inlineav:: GenTreeCON dgm
-      :links: AV/General/GenTreeCON.css
-      :scripts: AV/General/GenTreeCON.js
-      :align: justify
-
-
-.. slide:: General Tree ADT
-
-   .. codeinclude:: General/GenTree
-      :tag: GenTreeADT
+.. inlineav:: GenTreeCON dgm
+   :links: AV/General/GenTreeCON.css
+   :scripts: AV/General/GenTreeCON.js
+   :align: justify
 
 
-.. slide:: General Tree Traversal
+General Tree ADT
+----------------
 
-   .. inlineav:: GenTreePreTravCON ss
-      :long_name: General Tree Preorder Traversal Slideshow
-      :links: AV/General/GenTreeCON.css
-      :scripts: AV/General/GenTreePreTravCON.js
-      :output: show
+.. revealjs-slide::
 
-
-.. slide:: Rep: Lists of Children
-
-   .. odsafig:: Images/ChildLst.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: The "list of children" implementation for general trees.
+.. codeinclude:: General/GenTree
+   :tag: GenTreeADT
 
 
-.. slide:: Rep: Dynamic Node (Array)
+General Tree Traversal
+----------------------
 
-   .. odsafig:: Images/GenLkFx.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: A dynamic general tree with fixed-size arrays
+.. revealjs-slide::
 
-
-.. slide:: Rep: Dynamic Node (linked list)
-
-   .. odsafig:: Images/GenLkLk.png
-      :width: 500
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: A dynamic general tree with linked lists of child pointers
+.. inlineav:: GenTreePreTravCON ss
+   :long_name: General Tree Preorder Traversal Slideshow
+   :links: AV/General/GenTreeCON.css
+   :scripts: AV/General/GenTreePreTravCON.js
+   :output: show
 
 
-.. slide:: Rep: Left-Child/Right-Sibling
+Representation: Lists of Children
+----------------------
 
-   .. odsafig:: Images/FortoBin.png
-      :width: 600
-      :align: center
-      :capalign: justify
-      :figwidth: 90%
-      :alt: Converting from a forest of general trees to a binary tree
+.. revealjs-slide::
+
+.. odsafig:: Images/ChildLst.png
+   :width: 500
+   :align: center
+   :alt: The "list of children" implementation for general trees.
+
+
+Representation: Dynamic Node (Array)
+------------------------------------
+
+.. revealjs-slide::
+
+.. odsafig:: Images/GenLkFx.png
+   :width: 500
+   :align: center
+   :alt: A dynamic general tree with fixed-size arrays
+
+
+Representation: Dynamic Node (linked list)
+------------------------------------------
+
+.. revealjs-slide::
+
+.. odsafig:: Images/GenLkLk.png
+   :width: 500
+   :align: center
+   :alt: A dynamic general tree with linked lists of child pointers
+
+
+Representation: Left-Child/Right-Sibling
+----------------------------------------
+
+.. revealjs-slide::
+
+.. odsafig:: Images/FortoBin.png
+   :width: 600
+   :align: center
+   :alt: Converting from a forest of general trees to a binary tree
 
            
-.. slide:: Serialization
+Serialization
+-------------
 
-   Serialization is the process of storing an object as a series of
-   bytes.
+.. revealjs-slide::
 
-   A sequential tree serialization typically stores the node values as
-   they would be enumerated by a preorder traversal, along with
-   sufficient information to describe the tree's shape.
+* Serialization is the process of storing an object as a series of
+  bytes.
 
-
-.. slide:: Binary tree serialization
-
-   .. inlineav:: SequentialTreeCON ss
-      :long_name: First sequential representation Slideshow
-      :links: AV/General/SequentialTreeCON.css
-      :scripts: AV/General/SequentialTreeCON.js
-      :output: show
+* A sequential tree serialization typically stores the node values as
+  they would be enumerated by a preorder traversal, along with
+  sufficient information to describe the tree's shape.
 
 
-.. slide:: Alternate serialization
+Binary tree serialization
+-------------------------
 
-   .. inlineav:: SequentialTreeAltCON ss
-      :long_name: Second sequential representation Slideshow
-      :links: AV/General/SequentialTreeCON.css
-      :scripts: AV/General/SequentialTreeAltCON.js
-      :output: show
+.. revealjs-slide::
 
-
-.. slide:: Bit Vector Serialization
-
-   .. inlineav:: SequentialTreeBitsCON ss
-      :long_name: Bit vector sequential representation Slideshow
-      :links: AV/General/SequentialTreeCON.css
-      :scripts: AV/General/SequentialTreeBitsCON.js
-      :output: show
+.. inlineav:: SequentialTreeCON ss
+   :long_name: First sequential representation Slideshow
+   :links: AV/General/SequentialTreeCON.css
+   :scripts: AV/General/SequentialTreeCON.js
+   :output: show
 
 
-.. slide:: General Tree Serialization
+Alternate serialization
+-----------------------
 
-   .. inlineav:: SequentialGenTreeCON ss
-      :long_name: General Tree sequential representation Slideshow
-      :links: AV/General/SequentialTreeCON.css
-      :scripts: AV/General/SequentialGenTreeCON.js
-      :output: show
+.. revealjs-slide::
+
+.. inlineav:: SequentialTreeAltCON ss
+   :long_name: Second sequential representation Slideshow
+   :links: AV/General/SequentialTreeCON.css
+   :scripts: AV/General/SequentialTreeAltCON.js
+   :output: show
+
+
+Bit Vector Serialization
+------------------------
+
+.. revealjs-slide::
+
+.. inlineav:: SequentialTreeBitsCON ss
+   :long_name: Bit vector sequential representation Slideshow
+   :links: AV/General/SequentialTreeCON.css
+   :scripts: AV/General/SequentialTreeBitsCON.js
+   :output: show
+
+
+General Tree Serialization
+--------------------------
+
+.. revealjs-slide::
+
+.. inlineav:: SequentialGenTreeCON ss
+   :long_name: General Tree sequential representation Slideshow
+   :links: AV/General/SequentialTreeCON.css
+   :scripts: AV/General/SequentialGenTreeCON.js
+   :output: show

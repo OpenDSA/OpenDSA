@@ -1,6 +1,6 @@
-"use strict";
+$(document).ready(function () {
+  "use strict";
 
-(function ($) {
   var av = new JSAV("seqFitCON", {"animationMode": "none"});
   var l = av.g.line(10, 30, 490, 30);
   var l2 = av.g.line(10, 80, 490, 80);
@@ -25,5 +25,4 @@
   var polyline10 = av.g.polyline([[425, 65], [425, 90], [475, 90], [475, 65]], {'arrow-end': 'classic-wide-long', 'stroke-width': 1.5});
   var polyline11 = av.g.polyline([[497, 20], [482, 20], [482, 40]], {'arrow-end': 'classic-wide-long', 'stroke-width': 1.5});
   var polyline12 = av.g.polyline([[482, 65], [482, 90], [497, 90]], {'arrow-end': 'classic-wide-long', 'stroke-width': 1.5});
-  
-}(jQuery));
+});
