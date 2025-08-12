@@ -46,25 +46,31 @@ from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config
 from postprocessor import update_TOC, update_TermDef, make_lti
 
-# Register revealjs directives to prevent parse errors
+# Register stub directives for reveal to prevent errors during processing
+# Otherwise, the directives will either be empty or not found. They get filled by reveal.js during the actual build process
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 
-class RevealJSSlideStub(Directive):
+class StubRevealJSDirective(Directive):
+    """Stub directive to preserve content for sphinx-revealjs to process later"""
     has_content = True
+    optional_arguments = 100  # Allow any arguments
+    option_spec = {}  # Accept any options
+    
     def run(self):
-        return []
+        # container preserves all content
+        container = nodes.container()
+        if self.content:
+            self.state.nested_parse(self.content, self.content_offset, container)
+        return [container]
 
-class RevealJSFragmentsStub(Directive):
-    has_content = True
-    def run(self):
-        return []
-
-directives.register_directive('revealjs-slide', RevealJSSlideStub)
-directives.register_directive('revealjs-fragments', RevealJSFragmentsStub)
-directives.register_directive('revealjs-break', RevealJSSlideStub)
-directives.register_directive('revealjs-vertical', RevealJSSlideStub)
-directives.register_directive('revealjs-notes', RevealJSSlideStub)
+# Only register if building slides (checked later when SLIDES env var is set on)
+def register_revealjs_stubs():
+    """Register stub directives for sphinx-revealjs"""
+    directives.register_directive('revealjs-slide', StubRevealJSDirective)
+    directives.register_directive('revealjs-fragments', StubRevealJSDirective)
+    directives.register_directive('revealjs-section', StubRevealJSDirective)
+    directives.register_directive('revealjs-break', StubRevealJSDirective)
 
 # List ocanvas_module_idf exercises encountered in RST files that do not appear in the
 # configuration file
@@ -610,6 +616,8 @@ if __name__ == "__main__":
 
     if args.slides:
         os.environ['SLIDES'] = 'yes'
+        # Register stub directives for sphinx-revealjs when building slides
+        register_revealjs_stubs()
     else:
         os.environ['SLIDES'] = 'no'
 

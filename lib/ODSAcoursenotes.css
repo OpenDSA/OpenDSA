@@ -11,6 +11,29 @@
   font-size: 24px;
 }
 
+/* Explicitly set reveal's layout (since disableLayout = true) */
+.reveal .slides > section,
+.reveal .slides > section > section {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  left: 5%;
+  top: 5%;
+  text-align: left;
+}
+
+/* Centering specific content */
+.reveal .center {
+  text-align: center;
+}
+
+/* Centering images  */
+.reveal img.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* prevent reveal default fonts from affecting jsav */
 .reveal .jsavcontainer,
 .reveal .divdgm,
