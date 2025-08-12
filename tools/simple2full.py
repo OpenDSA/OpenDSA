@@ -638,7 +638,29 @@ def extract_sec_config(sec_json):
     sec_title = None
     for k, v in x.items():
       if k == 'title':
-        sec_title = v
+        # handle titles with math content
+        if isinstance(v, dict) or isinstance(v, OrderedDict):
+          # extract text from title
+          if '#text' in v:
+            parts = []
+            if isinstance(v['#text'], list):
+              parts.extend(v['#text'])
+            else:
+              parts.append(v['#text'])
+            # if math content present, add it 
+            if 'emphasis' in v:
+              if isinstance(v['emphasis'], list):
+                for emp in v['emphasis']:
+                  if '#text' in emp:
+                    parts.append(emp['#text'])
+              elif '#text' in v['emphasis']:
+                parts.append(v['emphasis']['#text'])
+            sec_title = ''.join(str(p) for p in parts if p)
+          else:
+            # go back to the string representation otherwise
+            sec_title = str(v)
+        else:
+          sec_title = v
         sections_config[sec_title] = OrderedDict()
 
       if k == 'raw':
@@ -652,11 +674,11 @@ def extract_sec_config(sec_json):
         elif isinstance(v, dict):
           if 'raw' in list(v.keys()):
             sections_config[sec_title].update(extract_exs_config(v['raw']))
-    if sec_title in sect_options[current_module]:
+    if sec_title and sec_title in sect_options[current_module]:
       for k, v in sect_options[current_module][sec_title].items():
         sections_config[sec_title][k] = v
       del sect_options[current_module][sec_title]
-    if 'extertool' in list(sections_config[sec_title].keys()):
+    if sec_title and 'extertool' in list(sections_config[sec_title].keys()):
       sections_config[sec_title] = sections_config[sec_title]['extertool']
 
   return sections_config

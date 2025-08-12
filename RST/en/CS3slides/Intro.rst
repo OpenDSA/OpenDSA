@@ -90,26 +90,3 @@ Logical vs. Physical Form (2)
    :scripts: AV/Design/ADTCON.js
    :output: show
    :align: center
-
-
-Image Test
-==========
-
-.. rst-class:: center
-
-   Sparse Matrix (centered!):
-
-.. image:: /Images/Sparse.png
-   :width: 500
-   :align: center
-   :alt: Sparse Matrix
-
-
-Fragment Test
-=============
-
-.. revealjs-fragments::
-
-   * fragment #1 
-   * fragment #2
-   * fragment #3
