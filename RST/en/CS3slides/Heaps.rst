@@ -6,83 +6,87 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 =====
 Heaps
 =====
 
-Heaps
------
+Complete Trees
+--------------
 
-.. slide:: Complete Trees
-   
-   .. odsalink:: AV/slides.css
-   .. odsalink:: AV/Binary/heapbuildProofCON.css
-  
-   .. _BinArray:
+.. revealjs-slide::
 
-   .. figure:: Images/BinArray.png
-      :width: 300
-      :align: center
-      :alt: Complete binary tree node numbering
+.. image:: Images/BinArray.png
+   :width: 300
+   :align: center
+   :alt: Complete binary tree node numbering
 
-   .. math::
+.. math::
 
-      \begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-      \hline
-      \textrm{Position} & 0  & 1 & 2 & 3 &  4 &  5 & 6 & 7 & 8 &  9 & 10 & 11\\
-      \hline
-      \hline
-      \textrm{Parent} & \,--\, & 0 & 0 & 1 &  1 &  2 &  2 & 3 & 3 & 4 & 4 & 5\\
-      \hline
-      \textrm{Left Child} & 1  & 3 & 5 & 7 &  9 & 11 & \,--\, & \,--\, & \,--\, &
-      \,--\, & \,--\, &  \,--\,\\
-      \hline
-      \textrm{Right Child} & 2  & 4 & 6 & 8 & 10 & \,--\, & \,--\, & \,--\, &
-      \,--\, & \,--\, & \,--\, &  \,--\,\\
-      \hline
-      \textrm{Left Sibling} & \,--\, & \,--\, & 1 & \,--\, &  3 & \,--\, & 5 &
-      \,--\, & 7 & \,--\, &  9 &  \,--\,\\
-      \hline
-      \textrm{Right Sibling} & \,--\, & 2 & \,--\, & 4 & \,--\, &  6 & \,--\, & 8 &
-      \,--\, & 10 & \,--\, & \,--\,\\
-      \hline
-      \end{array}
+   \begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+   \hline
+   \textrm{Position} & 0  & 1 & 2 & 3 &  4 &  5 & 6 & 7 & 8 &  9 & 10 & 11\\
+   \hline
+   \hline
+   \textrm{Parent} & \,--\, & 0 & 0 & 1 &  1 &  2 &  2 & 3 & 3 & 4 & 4 & 5\\
+   \hline
+   \textrm{Left Child} & 1  & 3 & 5 & 7 &  9 & 11 & \,--\, & \,--\, & \,--\, &
+   \,--\, & \,--\, &  \,--\,\\
+   \hline
+   \textrm{Right Child} & 2  & 4 & 6 & 8 & 10 & \,--\, & \,--\, & \,--\, &
+   \,--\, & \,--\, & \,--\, &  \,--\,\\
+   \hline
+   \textrm{Left Sibling} & \,--\, & \,--\, & 1 & \,--\, &  3 & \,--\, & 5 &
+   \,--\, & 7 & \,--\, &  9 &  \,--\,\\
+   \hline
+   \textrm{Right Sibling} & \,--\, & 2 & \,--\, & 4 & \,--\, &  6 & \,--\, & 8 &
+   \,--\, & 10 & \,--\, & \,--\,\\
+   \hline
+   \end{array}
 
 
-.. slide:: Heap insert
+Heap insert
+-----------
 
-   .. inlineav:: heapinsertCON ss
-      :long_name: Heap insert Slideshow
-      :links: 
-      :scripts: DataStructures/binaryheap.js AV/Binary/heapinsertCON.js
-      :output: show
+.. revealjs-slide::
 
-
-.. slide:: Building a Heap
-
-   .. inlineav:: heapbuildCON ss
-      :long_name: Heapbuild Slideshow
-      :links: 
-      :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildCON.js
-      :output: show
+.. inlineav:: heapinsertCON ss
+   :long_name: Heap insert Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapinsertCON.js
+   :output: show
 
 
-.. slide:: Building a Heap Proof
+Building a Heap
+---------------
 
-   .. inlineav:: heapbuildProofCON ss
-      :long_name: Heap build analysis proof Slideshow
-      :links: AV/Binary/heapbuildProofCON.css
-      :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildProofCON.js
-      :output: show
+.. revealjs-slide::
+
+.. inlineav:: heapbuildCON ss
+   :long_name: Heapbuild Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildCON.js
+   :output: show
 
 
-.. slide:: Delete the maximum value
+Building a Heap: Analysis
+-------------------------
 
-   .. inlineav:: heapmaxCON ss
-      :long_name: Remove Max Slideshow
-      :links: 
-      :scripts: DataStructures/binaryheap.js AV/Binary/heapmaxCON.js
-      :output: show
+.. revealjs-slide::
+
+.. inlineav:: heapbuildProofCON ss
+   :long_name: Heap build analysis proof Slideshow
+   :links: AV/Binary/heapbuildProofCON.css
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapbuildProofCON.js
+   :output: show
+
+
+Delete the maximum value
+------------------------
+
+.. revealjs-slide::
+
+.. inlineav:: heapmaxCON ss
+   :long_name: Remove Max Slideshow
+   :links: 
+   :scripts: DataStructures/binaryheap.js AV/Binary/heapmaxCON.js
+   :output: show

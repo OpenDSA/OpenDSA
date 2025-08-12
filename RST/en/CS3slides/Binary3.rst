@@ -6,162 +6,198 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 ===================
 Binary Trees Part 3
 ===================
 
-Binary Trees Part 3
--------------------
+Comparison (1)
+--------------
 
-.. slide:: Comparison (1)
+.. revealjs-slide::
 
-   * How do we generalize the concept of comparison?
-   * "<" is not good enough. String < String won't give you what you
-     want.
-   * Need a general way to get the key out of a record
-   * Define a method record.key()?
-      * [Note for C++ users: Operator overloading is effectively the
-        same thing.]
-      * That is not good enough. What if we want to search on different
-        key fields?
+* How do we generalize the concept of comparison?
+* "<" is not good enough. String < String won't give you what you
+  want.
+* Need a general way to get the key out of a record
+* Define a method record.key()?
 
-.. slide:: Comparison (2)
+  * [Note for C++ users: Operator overloading is effectively the
+    same thing.]
+  * That is not good enough. What if we want to search on different
+    key fields?
 
-   * Fundamental issue: The key is a property of the context,
-     NOT a property of the record.
+Comparison (2)
+--------------
 
+.. revealjs-slide::
 
-.. slide:: KVpair
+* Fundamental issue: The key is a property of the context,
+  NOT a property of the record.
 
-   This is a truly general way to solve the problem.
 
-   .. codeinclude:: Utils/KVPair
-      :tag: KVPair
+KVpair
+------
 
+.. revealjs-slide::
 
-.. slide:: .
+* This is a truly general way to solve the problem.
 
-   .
+.. codeinclude:: Utils/KVPair
+   :tag: KVPair
 
 
-.. slide:: KVpair: Generics
+KVpair: Generics
+----------------
 
-   .. codeinclude:: Utils/KVPairGen
-      :tag: KVPair
+.. revealjs-slide::
 
+.. codeinclude:: Utils/KVPairGen
+   :tag: KVPair
 
-.. slide:: .
 
-   .
+Using the KVpair (1)
+--------------------
 
+.. revealjs-slide::
 
-.. slide:: Using the KVpair (1)
+.. codeinclude:: Sorting/Insertionsort
+   :tag: Insertionsort
 
-   .. codeinclude:: Sorting/Insertionsort
-      :tag: Insertionsort
+* What is being compared?
 
-   What is being compared?
+* What if we want to find the record that has a given key?
 
-   What if we want to find the record that has a given key?
 
+Binary Tree Implementation (1)
+------------------------------
 
-.. slide:: Binary Tree Implementation (1)
+.. revealjs-slide::
 
-   "Simple" node model.
+* "Simple" node model.
 
-   .. inlineav:: BTnullpointerCON dgm
-      :links: AV/Binary/BTCON.css AV/Binary/BTnullpointerCON.css
-      :scripts: AV/Binary/BTnullpointerCON.js
-      :align: center
+.. inlineav:: BTnullpointerCON dgm
+   :links: AV/Binary/BTCON.css AV/Binary/BTnullpointerCON.css
+   :scripts: AV/Binary/BTnullpointerCON.js
+   :align: center
 
-.. slide:: Binary Tree Implementation (2)
 
-   Internal nodes can be different from leaf nodes.
+Binary Tree Implementation (2)
+------------------------------
 
-   .. inlineav:: expressionTreeCON dgm
-      :links: AV/Binary/BTCON.css AV/Binary/expressionTreeCON.css
-      :scripts: AV/Binary/expressionTreeCON.js
-      :align: center
+.. revealjs-slide::
 
+* Internal nodes can be different from leaf nodes.
 
-.. slide:: Inheritance (1)
+.. inlineav:: expressionTreeCON dgm
+   :links: AV/Binary/BTCON.css AV/Binary/expressionTreeCON.css
+   :scripts: AV/Binary/expressionTreeCON.js
+   :align: center
 
-   .. codeinclude:: Binary/ExpressionTree
-      :tag: ExpressionTree1
 
+Inheritance (1)
+---------------
 
-.. slide:: Inheritance (2)
+.. revealjs-slide::
 
-   .. codeinclude:: Binary/ExpressionTree
-      :tag: ExpressionTree2
+.. codeinclude:: Binary/ExpressionTree
+   :tag: ExpressionTree1
 
 
-.. slide:: Inheritance (3)
+Inheritance (2)
+---------------
 
-   .. inlineav:: expressionTraversalCON ss
-      :long_name: Expression Tree Traversal Slideshow
-      :links: AV/Binary/BTCON.css
-      :scripts: AV/Binary/expressionTraversalCON.js
-      :output: show
+.. revealjs-slide::
 
+.. codeinclude:: Binary/ExpressionTree
+   :tag: ExpressionTree2
 
-.. slide:: Design Patterns
 
-   * Design patterns capture reusable pieces of design wisdom.
+Inheritance (3)
+---------------
 
-   * Goals:
-      * Quickly communicate design wisdom to new designers
-      * Give a shared vocabulary to designers
+.. revealjs-slide::
 
+.. inlineav:: expressionTraversalCON ss
+   :long_name: Expression Tree Traversal Slideshow
+   :links: AV/Binary/BTCON.css
+   :scripts: AV/Binary/expressionTraversalCON.js
+   :output: show
 
-.. slide:: Composite (1)
 
-   .. codeinclude:: Binary/ExpressionTreeC
-      :tag: Composite1
+Design Patterns
+---------------
 
+.. revealjs-slide::
 
-.. slide:: Composite (2)
+* Design patterns capture reusable pieces of design wisdom.
 
-   .. codeinclude:: Binary/ExpressionTreeC
-      :tag: Composite2
+* Goals:
 
-.. slide:: Composite (3)
+  * Quickly communicate design wisdom to new designers
+  * Give a shared vocabulary to designers
 
-   .. codeinclude:: Binary/ExpressionTreeC
-      :tag: Composite3
 
+Composite (1)
+-------------
 
-.. slide:: Space Overhead (1)
+.. revealjs-slide::
 
-   * From the Full Binary Tree Theorem:
-      * Half of the pointers are null.
+.. codeinclude:: Binary/ExpressionTreeC
+   :tag: Composite1
 
-   * If leaves store only data, then overhead depends on whether this
-     is full tree.
 
-   * Ex: Full tree, all nodes the same, with two pointers to children and
-     one to element
+Composite (2)
+-------------
 
-      * Total space required is :math:`(3p + d)n`
-      * Overhead: :math:`3pn`
-      * If :math:`p = d`, this means :math:`3p/(3p + d) = 3/4` overhead.
+.. revealjs-slide::
 
+.. codeinclude:: Binary/ExpressionTreeC
+   :tag: Composite2
 
-.. slide:: Space Overhead (2)
+Composite (3)
+-------------
 
-   Eliminate pointers from the leaf nodes
+.. revealjs-slide::
 
-   .. math::
+.. codeinclude:: Binary/ExpressionTreeC
+   :tag: Composite3
 
-      \frac{n/2(2p)}{n/2(2p) + dn} = \frac{p}{p + d}
 
-   This is 1/2 if :math:`p = d`.
+Space Overhead (1)
+------------------
 
-   :math:`(2p)/(2p + d)` if data only at leaves :math:`\Rightarrow`
-   2/3 overhead.
+.. revealjs-slide::
 
-   Note that some method is needed to distinguish leaves from internal
-   nodes.
+* From the Full Binary Tree Theorem:
+
+  * Half of the pointers are null.
+
+* If leaves store only data, then overhead depends on whether this
+  is full tree.
+
+* Ex: Full tree, all nodes the same, with two pointers to children and
+  one to element
+
+  * Total space required is :math:`(3p + d)n`
+  * Overhead: :math:`3pn`
+  * If :math:`p = d`, this means :math:`3p/(3p + d) = 3/4` overhead.
+
+
+Space Overhead (2)
+------------------
+
+.. revealjs-slide::
+
+* Eliminate pointers from the leaf nodes
+
+.. math::
+
+   \frac{n/2(2p)}{n/2(2p) + dn} = \frac{p}{p + d}
+
+* This is 1/2 if :math:`p = d`.
+
+* :math:`(2p)/(2p + d)` if data only at leaves :math:`\Rightarrow`
+  2/3 overhead.
+
+* Note that some method is needed to distinguish leaves from internal
+  nodes.

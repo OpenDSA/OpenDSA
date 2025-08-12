@@ -6,26 +6,29 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 =====
 Tries
 =====
 
-.. slide:: Tree vs. Trie (1)
+Tree vs. Trie (1)
+-----------------
 
-   .. inlineav:: TreeTimelineCON ss
-      :long_name: Tree timeline Slideshow
-      :links: AV/Development/TreeTrieCON.css
-      :scripts: AV/Development/TreeTimelineCON.js
-      :output: show
+.. revealjs-slide::
+
+.. inlineav:: TreeTimelineCON ss
+   :long_name: Tree timeline Slideshow
+   :links: AV/Binary/TreeTrieCON.css
+   :scripts: AV/Binary/TreeTimelineCON.js
+   :output: show
 
 
-.. slide:: Tree vs. Trie (2)
+Tree vs. Trie (2)
+-----------------
 
-   .. inlineav:: TrieTimelineCON ss
-      :long_name: Trie timeline Slideshow
-      :links: AV/Development/TreeTrieCON.css
-      :scripts: AV/Development/TrieTimelineCON.js
-      :output: show
+.. revealjs-slide::
+
+.. inlineav:: TrieTimelineCON ss
+   :long_name: Trie timeline Slideshow
+   :links: AV/Binary/TreeTrieCON.css
+   :scripts: AV/Binary/TrieTimelineCON.js
+   :output: show

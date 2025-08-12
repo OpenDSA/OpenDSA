@@ -6,112 +6,130 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 ===================
 Binary Trees Part 1
 ===================
 
-Binary Trees Part 1
--------------------
+Binary Trees
+------------
 
-.. slide:: Binary Trees
+.. revealjs-slide::
 
-   A binary tree is made up of a finite set of nodes that is either
-   empty or consists of a node called the root together with two
-   binary trees, called the left and right subtrees, which are
-   disjoint from each other and from the root.
+* A binary tree is made up of a finite set of nodes that is either
+  empty or consists of a node called the root together with two
+  binary trees, called the left and right subtrees, which are
+  disjoint from each other and from the root.
 
-   Notation: Node, children, edge, parent, ancestor, descendant, path,
-   depth, height, level, leaf node, internal node, subtree.
+* Notation: Node, children, edge, parent, ancestor, descendant, path,
+  depth, height, level, leaf node, internal node, subtree.
 
-   .. inlineav:: BinExampCON dgm
-      :links: AV/Binary/BinExampCON.css
-      :scripts: AV/Binary/BinExampCON.js
-      :align: center
-
-
-.. slide:: A Recursive Data Structure
-
-   .. inlineav:: ListRecDSCON dgm
-      :links: AV/Binary/RecursiveDSCON.css
-      :scripts: AV/Binary/ListRecDSCON.js
-      :align: justify
-
-   .. inlineav:: BinRecDSCON dgm
-      :links: AV/Binary/RecursiveDSCON.css
-      :scripts: AV/Binary/BinRecDSCON.js
-      :align: justify
+.. inlineav:: BinExampCON dgm
+   :links: AV/Binary/BinExampCON.css
+   :scripts: AV/Binary/BinExampCON.js
+   :align: center
 
 
-.. slide:: Binary Tree Node Class
+A Recursive Data Structure
+--------------------------
 
-   .. codeinclude:: Binary/BinNode
-      :tag: BinNode
+.. revealjs-slide::
 
+.. inlineav:: ListRecDSCON dgm
+   :links: AV/Binary/RecursiveDSCON.css
+   :scripts: AV/Binary/ListRecDSCON.js
+   :align: justify
 
-.. slide:: Question
-
-   * Write a recursive function named **count** that, given the root to a
-     binary tree, returns a count of the number of nodes in the
-     tree. Function **count** should have the following prototype::
-
-        int count(BinNode root)
-
-
-.. slide:: Traversals
-
-   * Any process for visiting the nodes in some order is called a
-     **traversal**.
-
-   * Any traversal that lists every node in the tree exactly once is called
-     an **enumeration** of the tree's nodes.
-
-   * Preorder traversal: Visit each node before visiting its children.
-
-   * Postorder traversal: Visit each node after visiting its children.
-
-   * Inorder traversal: Visit the left subtree, then the node, then the
-     right subtree.
+.. inlineav:: BinRecDSCON dgm
+   :links: AV/Binary/RecursiveDSCON.css
+   :scripts: AV/Binary/BinRecDSCON.js
+   :align: justify
 
 
-.. slide:: Preorder Traversal (1)
+Binary Tree Node Class
+----------------------
 
-   .. codeinclude:: Binary/Preorder
-      :tag: preorder
+.. revealjs-slide::
 
-.. slide:: Preorder Traversal (2)
-
-   .. odsalink:: AV/Binary/BTCON.css
-
-   .. inlineav:: preorderCON ss
-      :long_name: Preorder Traversal Slideshow
-      :links: AV/Binary/BTCON.css
-      :scripts: AV/Binary/preorderCON.js
-      :output: show
+.. codeinclude:: Binary/BinNode
+   :tag: BinNode
 
 
-.. slide:: How not to write a traversal
+Question
+--------
 
-   .. codeinclude:: Binary/Preorder
-      :tag: preorder2
+.. revealjs-slide::
 
-   | Problems:
-   |    This has a major bug
-   |    It puts the focus in the wrong place: Should focus on the
-        current node, not the children. This version is therefore more
-        complicated. 
+* Write a recursive function named **count** that, given the root to a
+  binary tree, returns a count of the number of nodes in the
+  tree. Function **count** should have the following prototype::
 
-.. slide:: Recursion Examples
+     int count(BinNode root)
 
-   .. odsalink:: AV/Binary/WriteTrav.css
 
-   .. codeinclude:: Binary/Traverse
-      :tag: count
+Traversals
+----------
 
-   .. inlineav:: BinaryTreeMistakesCON ss
-      :long_name: Binary Tree Common Mistakes Slideshow
-      :links: AV/Binary/WriteTrav.css
-      :scripts: AV/Binary/BinaryTreeMistakesCON.js
-      :output: show
+.. revealjs-slide::
+
+* Any process for visiting the nodes in some order is called a
+  **traversal**.
+
+* Any traversal that lists every node in the tree exactly once is called
+  an **enumeration** of the tree's nodes.
+
+* Preorder traversal: Visit each node before visiting its children.
+
+* Postorder traversal: Visit each node after visiting its children.
+
+* Inorder traversal: Visit the left subtree, then the node, then the
+  right subtree.
+
+
+Preorder Traversal (1)
+----------------------
+
+.. revealjs-slide::
+
+.. codeinclude:: Binary/Preorder
+   :tag: preorder
+
+Preorder Traversal (2)
+----------------------
+
+.. revealjs-slide::
+
+.. inlineav:: preorderCON ss
+   :long_name: Preorder Traversal Slideshow
+   :links: AV/Binary/BTCON.css
+   :scripts: AV/Binary/preorderCON.js
+   :output: show
+
+
+How not to write a traversal
+----------------------------
+
+.. revealjs-slide::
+
+.. codeinclude:: Binary/Preorder
+   :tag: preorder2
+
+* Problems:
+
+  * This has a major bug
+  * It puts the focus in the wrong place: Should focus on the
+    current node, not the children. This version is therefore more
+    complicated. 
+
+Recursion Examples
+------------------
+
+.. revealjs-slide::
+
+.. codeinclude:: Binary/Traverse
+   :tag: count
+
+.. inlineav:: BinaryTreeMistakesCON ss
+   :long_name: Binary Tree Common Mistakes Slideshow
+   :links: AV/Binary/WriteTrav.css
+   :scripts: AV/Binary/BinaryTreeMistakesCON.js
+   :output: show

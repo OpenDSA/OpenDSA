@@ -6,154 +6,180 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 ===================
 Binary Trees Part 2
 ===================
 
-Binary Trees Part 2
+Full and Complete Binary Trees
+------------------------------
+
+.. revealjs-slide::
+
+* Full binary tree: Each node is either a leaf or internal node with
+  exactly two non-empty children.
+
+* Complete binary tree: If the height of the tree is :math:`d`,
+  then all leaves except possibly level :math:`d` are completely
+  full.
+  The bottom level has all nodes to the left side.
+
+.. inlineav:: FullCompCON dgm
+   :links: AV/Binary/FullCompCON.css
+   :scripts: AV/Binary/FullCompCON.js
+   :align: center
+
+
+Full Binary Tree Theorem (1)
+----------------------------
+
+.. revealjs-slide::
+
+* **Theorem:** The number of leaves in a non-empty full binary tree
+  is one more than the number of internal nodes.
+
+* **Proof** (by Mathematical Induction):
+
+* **Base case:** A full binary tree with 1 internal node must have
+  two leaf nodes.
+
+* **Induction Hypothesis:** Assume any full binary tree **T** containing
+  :math:`n-1` internal nodes has :math:`n` leaves.
+
+
+Full Binary Tree Theorem (2)
+----------------------------
+
+.. revealjs-slide::
+
+* **Induction Step:** Given tree **T** with :math:`n` internal nodes,
+  pick internal node :math:`I` with two leaf children.
+  Remove :math:`I`'s children, call resulting tree **T'**.
+
+* By induction hypothesis, **T'** is a full binary tree with :math:`n`
+  leaves.
+
+* Restore :math:`I`'s two children.
+  The number of internal nodes has now gone up by 1 to reach
+  :math:`n`.
+  The number of leaves has also gone up by 1.
+
+
+Full Binary Tree Corollary
+--------------------------
+
+.. revealjs-slide::
+
+* **Theorem:** The number of null pointers in a non-empty tree is one
+  more than the number of nodes in the tree.
+
+* **Proof:** Replace all null pointers with a pointer to an empty leaf
+  node.  This is a full binary tree.
+
+
+Dictionary
+----------
+
+.. revealjs-slide::
+
+.. codeinclude:: Design/Dictionary
+   :tag: DictionaryADT
+
+
+Dictionary (2)
+--------------
+
+.. revealjs-slide::
+
+* How can we implement a dictionary?
+
+  * We know about array-based lists and linked lists.
+  * They might be sorted or unsorted.
+  * What are the pros and cons?
+
+
+Binary Search Trees
 -------------------
 
-.. slide:: Full and Complete Binary Trees
+.. revealjs-slide::
 
-   Full binary tree: Each node is either a leaf or internal node with
-   exactly two non-empty children.
+.. inlineav:: BinDiffCON dgm
+   :links: AV/Binary/BinDiffCON.css
+   :scripts: AV/Binary/BinDiffCON.js
+   :align: center
 
-   Complete binary tree: If the height of the tree is :math:`d`,
-   then all leaves except possibly level :math:`d` are completely
-   full.
-   The bottom level has all nodes to the left side.
+BST as a Dictionary (1)
+-----------------------
 
-   .. inlineav:: FullCompCON dgm
-      :links: AV/Binary/FullCompCON.css
-      :scripts: AV/Binary/FullCompCON.js
-      :align: center
+.. revealjs-slide::
 
+.. codeinclude:: Binary/BST
+   :tag: BSTa
 
-.. slide:: Full Binary Tree Theorem (1)
+BST as a Dictionary (2)
+-----------------------
 
-   **Theorem:** The number of leaves in a non-empty full binary tree
-   is one more than the number of internal nodes.
+.. revealjs-slide::
 
-   **Proof** (by Mathematical Induction):
+.. codeinclude:: Binary/BST
+   :tag: BSTb
 
-   **Base case:** A full binary tree with 1 internal node must have
-   two leaf nodes.
+BST ``findhelp``
+----------------
 
-   **Induction Hypothesis:** Assume any full binary tree **T** containing
-   :math:`n-1` internal nodes has :math:`n` leaves.
+.. revealjs-slide::
 
-
-.. slide:: Full Binary Tree Theorem (2)
-
-   **Induction Step:** Given tree **T** with :math:`n` internal nodes,
-   pick internal node :math:`I` with two leaf children.
-   Remove :math:`I`'s children, call resulting tree **T'**.
-
-   By induction hypothesis, **T'** is a full binary tree with :math:`n`
-   leaves.
-
-   Restore :math:`I`'s two children.
-   The number of internal nodes has now gone up by 1 to reach
-   :math:`n`.
-   The number of leaves has also gone up by 1.
+.. inlineav:: BSTsearchCON ss
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTsearchCON.js
+   :output: show
 
 
-.. slide:: Full Binary Tree Corollary
+BST ``inserthelp``
+------------------
 
-   **Theorem:** The number of null pointers in a non-empty tree is one
-   more than the number of nodes in the tree.
+.. revealjs-slide::
 
-   **Proof:** Replace all null pointers with a pointer to an empty leaf
-   node.  This is a full binary tree.
-
-
-.. slide:: Dictionary
-
-   .. codeinclude:: Design/Dictionary
-      :tag: DictionaryADT
+.. inlineav:: BSTinsertCON ss
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTinsertCON.js
+   :output: show
 
 
-.. slide:: .
+BST ``deletemax``
+-----------------
 
-   .
+.. revealjs-slide::
 
-
-.. slide:: Dictionary (2)
-
-   * How can we implement a dictionary?
-
-      * We know about array-based lists and linked lists.
-      * They might be sorted or unsorted.
-      * What are the pros and cons?
+.. inlineav:: BSTdeletemaxCON ss
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTdeletemaxCON.js
+   :output: show
 
 
-.. slide:: Binary Search Trees
+BST ``removehelp``
+------------------
 
-   .. inlineav:: BinDiffCON dgm
-      :links: AV/Binary/BinDiffCON.css
-      :scripts: AV/Binary/BinDiffCON.js
-      :align: center
+.. revealjs-slide::
 
-.. slide:: BST as a Dictionary (1)
-
-   .. codeinclude:: Binary/BST
-      :tag: BSTa
-
-.. slide:: BST as a Dictionary (2)
-
-   .. codeinclude:: Binary/BST
-      :tag: BSTb
-
-.. slide:: BST ``findhelp``
-
-   .. inlineav:: BSTsearchCON ss
-      :links: AV/Binary/BSTCON.css
-      :scripts: AV/Binary/BSTsearchCON.js
-      :output: show
+.. inlineav:: BSTremoveCON ss
+   :links: AV/Binary/BSTCON.css
+   :scripts: AV/Binary/BSTremoveCON.js
+   :output: show
 
 
-.. slide:: BST ``inserthelp``
+BST Analysis
+------------
 
-   .. inlineav:: BSTinsertCON ss
-      :links: AV/Binary/BSTCON.css
-      :scripts: AV/Binary/BSTinsertCON.js
-      :output: show
+.. revealjs-slide::
 
+* Find: :math:`O(d)`
 
-.. slide:: BST ``deletemax``
+* Insert: :math:`O(d)`
 
-   .. inlineav:: BSTdeletemaxCON ss
-      :links: AV/Binary/BSTCON.css
-      :scripts: AV/Binary/BSTdeletemaxCON.js
-      :output: show
+* Delete: :math:`O(d)`
 
+* :math:`d =` depth of the tree
 
-.. slide:: BST ``removehelp``
+* :math:`d` is :math:`O(\log n)` if the tree is balanced.
 
-   .. inlineav:: BSTremoveCON ss
-      :links: AV/Binary/BSTCON.css
-      :scripts: AV/Binary/BSTremoveCON.js
-      :output: show
-
-
-.. slide:: .
-
-   .
-
-
-.. slide:: BST Analysis
-
-   Find: :math:`O(d)`
-
-   Insert: :math:`O(d)`
-
-   Delete: :math:`O(d)`
-
-   :math:`d =` depth of the tree
-
-   :math:`d` is :math:`O(\log n)` if the tree is balanced.
-
-   What is the worst case cost? When?
+* What is the worst case cost? When?
