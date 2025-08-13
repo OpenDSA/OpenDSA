@@ -20,7 +20,7 @@ div.exercises-card {
 }
 
 #modpanel {
-  width:950px;
+  width: 950px;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
 }
 
 #container.single-exercise {
-	min-width: 0;
+  min-width: 0;
 }
 
 @media screen and (max-width: 950px) {
@@ -50,8 +50,7 @@ footer .footer-container {
 }
 
 .CodeMirror {
-  /* Set  borders */
-  border: 1.5px solid #000;
+  border-width: 1.5px;
 }
 
 #warning-bar {
