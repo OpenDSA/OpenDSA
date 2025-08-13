@@ -268,6 +268,7 @@ a.jsavdialogclose {
   font-family: monospace;
   font-size: 30px;
   font-weight: normal;
+  text-decoration: none;
 }
 
 a.jsavdialogclose:hover {
@@ -276,6 +277,160 @@ a.jsavdialogclose:hover {
 
 .jsavmodelanswer.jsavcontainer {
   background-color: white;
+}
+
+.jsavexercisecontrols input[type="button"] {
+  background-color: #eee;
+  background: linear-gradient(#fff, #ccc);
+  border: 1px solid #777;
+}
+
+.jsavexercisecontrols input[type="button"]:hover {
+  background-color: #ddd;
+  background: linear-gradient(#fff, #bbb);
+}
+
+.jsavtree,
+.jsavgraph,
+.jsavlist {
+  background-color: inherit;
+}
+
+.jsavnullnode {
+  border-color: #eee;
+  opacity: 0;
+}
+
+.jsavnulledge {
+  stroke: transparent;
+  opacity: 0;
+}
+
+.jsavedgelabel {
+  background-color: inherit;
+}
+
+.jsavpointerarea {
+  background-color: #eee;
+}
+
+.jsavhorizontallist .jsavpointerarea {
+  border-left: 1px solid black;
+}
+
+.jsavverticallist .jsavpointerarea {
+  border-top: 1px solid black;
+}
+
+.jsavhorizontallist .jsavnonext .jsavpointerarea:after {
+  background-color: #000;
+}
+
+.jsavcodeline {
+  background-color: #FAFAFA;
+}
+
+.jsavcodeline.jsavpreviousline {
+  background-color: #eee;
+}
+
+.jsavcodeline.jsavcurrentline {
+  background-color: #ccc;
+}
+
+/* 
+This rule is already in here with a different bg color - need to figure out why
+.jsavcodeline.jsavhighlight {
+  background-color: yellow;
+} 
+*/
+
+.jsavpointer .jsavpointerarea {
+  border: 1px solid black;
+}
+
+.jsavnullpointer .jsavpointerarea:after {
+  background-color: red;
+}
+
+.jsavmatrix .jsavarray li.jsavnode {
+  font-size: 14px;
+}
+
+.jsavmatrix .jsavarray:first-child li {
+  border-top: 1px solid black;
+}
+
+.jsavmatrix.jsavmatrixmatrix {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.jsavswap,
+.jsavswap .jsavvalue {
+  /* !important here to override the !important in JSAV.css for this rule */
+  background-color: pink !important;
+  color: red !important;
+}
+
+.jsav-pair {
+  border: 2px solid black;
+  font-size: 1.1em;
+  font-family: monospace;
+  box-shadow: 2px 2px 5px rgba(120, 120, 120, 0.5);
+}
+
+.jsav-pair.jsav-pair-highlight {
+  background-color: green;
+}
+
+.jsav-pair-key.jsav-pair-key-highlight {
+  background-color: cornflowerblue;
+}
+
+.jsav-pair-values {
+  border-left: 2px solid black;
+}
+
+.jsav-pair-values.jsav-pair-values-highlight {
+  background-color: yellow;
+}
+
+.jsav-pair:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.idContainer {
+  color: black;
+  border: 2px solid black;
+}
+
+.jsavsound {
+  background-color: #aaa;
+  text-indent: 120%;
+  border: 1px solid #777;
+}
+
+.jsavsound.sound:hover,
+.jsavsound.soundOff:hover {
+  background-color: #888;
+}
+
+.ssAV {
+  font-size: 15px;
+}
+
+form.signin p,
+form.signin span {
+  font-size: 12px;
+}
+
+.showHideLink:hover {
+  box-shadow: 0 24px 0 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+.resubmit_link {
+  text-decoration: underline;
 }
 
 /* Sizing Rules */
@@ -325,6 +480,27 @@ a.jsavdialogclose:hover {
 a.jsavdialogclose {
   text-align: center;
 }
+
+.jsav-pair {
+  text-align: center;
+}
+
+.idContainer {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.course_input_tbl td {
+  text-align: right;
+}
+
+.course_input_tbl td+td {
+  text-align: left;
+}
+
 
 /* Code Highlighting */
 
