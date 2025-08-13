@@ -16,11 +16,11 @@
    :description: Introduces the concept of mutation testing and how to use it in the Eclipse IDE.
 
 
-Mutation Coverage In JUnit
-==========================
+Using Mutation Coverage In Eclipse
+==================================
 
-Mutation Coverage In JUnit
---------------------------
+Using Mutation Coverage In Eclipse
+----------------------------------
 
 Mutation testing (or mutation analysis) can help to design new
 software tests and to evaluate the quality of software test suites.
@@ -185,4 +185,26 @@ Use these visuals to help improve the quality of the test suite of the project
 by writing additional test case assertions. 
 
 
+How do I recover the "Mutation List"/"Mutation Summary" tabs?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+There are two ways to get the "Mutation List" and "Mutation Summary"
+tabs back if you accidentaly close them.
+
+1. Simply run mutation testing again: ``Run as --> Mutation Test``.
+   This might regeneate both the "Mutation List" and "Mutation Summary"
+   tabs.
+
+2. On the menu bar, navigate to ``Window --> Show View --> Other``. 
+   There, under the ``PIT`` option, you should find both "Mutation
+   List" and "Mutation Summary".
+   Click on the desired tab and then ``Open``.
+
+.. odsafig:: Images/mutation_panelview.png
+   :align: center
+   :capalign: center
+   :figwidth: 90%
+   :scale: 50%
+   :alt: Mutation Panel View
+
+   Mutation Panel View
