@@ -31,7 +31,8 @@
 }
 .jsavgraph .jsavedgelabel {
   font-size: 16px;
-  background-color: transparent;
+  background-color: #F5F5EA;
+/*  background-color: transparent; */
   text-shadow: 0 0 5px #fff;
 }
 .jsavautoresize .jsavnode {

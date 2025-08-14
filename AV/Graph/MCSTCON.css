@@ -1,3 +1,8 @@
 #MCSTCON {
   height: 250px;
 }
+
+#MCSTCON .jsavedge.markpath {
+  stroke-width: 4;
+  stroke: #f61010; //red
+}
