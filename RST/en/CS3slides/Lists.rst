@@ -356,3 +356,13 @@ Doubly Linked Remove
    :links: DataStructures/DoubleLinkList.css AV/List/dlistCON.css
    :scripts: DataStructures/DoubleLinkList.js AV/List/dlist.js AV/List/dlistRemoveCON.js
    :output: show
+
+
+Container Class Design Issues
+-----------------------------
+
+.. revealjs-slide::
+
+* Storing a record vs. Storing a reference to a record
+* Homogeneity: Allow different record types? Check and block?
+* Deletion: What happens to the record?

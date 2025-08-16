@@ -256,16 +256,20 @@ Milestones
 
 * Big positive effect with milestones (S16) vs without (F14)
 
-   ====  ===   ===
-         S16   F14
-   ====  ===   ===
-   A     43%   23%
-   B     16%   22%
-   C     11%   11%
-   D/C-   8%    6%
-   F      4%    5%
-   Drop  19%   33%
-   ====  ===   ===
+.. math::
+
+   \begin{array} {crr}
+   \hline
+      & S16 &F14\\
+   \hline
+   A& 43\%& 23\%\\
+   B& 16\%& 22\%\\
+   C& 11\%& 11\%\\
+   D/C-& 8\%& 6\%\\
+   F& 4\%& 5\%\\
+   \textrm{Drop}& 19\%& 33\%\\
+   \hline
+   \end{array}
 
 
 Working with a Partner (1)

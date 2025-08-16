@@ -10,10 +10,81 @@
 Project 1
 =========
 
+General Project Rules
+---------------------
+
+.. revealjs-slide::
+
+* You **must** use Eclipse IDE, and you **must** use it to submit to
+  Web-CAT.
+  We won't accept submissions any other way.
+
+* There are 3 projects during the semester, each has a 3-4 week
+  lifecyle.
+
+  * Each has three milestones, so about one/week.
+  * P1's first milestone is really easy (make minor changes to the
+    starter kit and submit to Web-CAT), and is due at 11pm on
+    Wednesday, September 3.
+
+* A major part of the project score is based on correctness, as
+  defined by passing the reference tests at Web-CAT. We won't tell you
+  a lot of detail about what is in the reference tests.
+
+* A major part of the "correctness" score is adjusted by the quality
+  of your own test suite (as defined by Mutation Testing coverage ---
+  we will discuss this later).
+
+
 Project 1: Movie Rater Database
 -------------------------------
 
 .. revealjs-slide::
+
+* You will implement a "movie recommendation database".
+
+  * Movies have an abstract index (a positive integer).
+
+  * Reviewers have an abstract index (a positive integer).
+
+  * A review is just an integer score from 1-10 for a given
+    reviewer/movie pair.
+
+* Besides storing, updating, and deleting reviews, you will support
+  implementing a simple "similarity" score.
+
+  * This idea is at the heart of "recommender" systems that permeate
+    the internet.
+    Recommender systems "recommend" things to you.
+
+
+Data Representation
+-------------------
+
+.. revealjs-slide::
+
+* The data structures challenge is how to store the ratings.
+
+  * A natural approach would be to use an array.
+  * But there are not many reviews for any given movie, and not many
+    movies are reviewed by any reviewer.
+  * So if we used an array, most positions would have "empty" values.
+  * We solve this problem by implementing a "Sparse Matrix".    
+
+    
+Sparse Matrix
+-------------
+
+.. revealjs-slide::
+
+.. image:: /Images/Sparse.png
+   :width: 350
+   :align: center
+   :alt: Sparse Matrix
+
+
+What We Give You to Get Started
+-------------------------------
 
 * We specify the class name for the project (MovieRaterProj), an
   interface that you must implement (MovieRater), and the name of a
@@ -25,18 +96,12 @@ Project 1: Movie Rater Database
   * Reference tests do not write to System.out, or check the contents
     of System.out.
 
+* We give you some initial tests that are meant to demonstrate all the
+  requirements related to formatting the interface method return
+  values.
+
+  * If we get questions indicating that we left something ambiguous,
+    we will update the example tests for you to see.
+
 * The project design is pretty simple, because all that you really
   need to add is the implementation for the Sparse Matrix.   
-
-
-Sparse Matrices
----------------
-
-.. revealjs-slide::
-
-* Here is where we talk about sparse matrices.
-
-.. image:: /Images/Sparse.png
-   :width: 350
-   :align: center
-   :alt: Sparse Matrix
