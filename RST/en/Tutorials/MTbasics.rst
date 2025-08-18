@@ -16,11 +16,11 @@
    :description: Provides many examples of tests to improve mutation coverage.
 
 
-Mutation Testing Examples
-=========================
+Mutation Testing Basics
+=======================
 
 Types of Mutants
----------------------------
+----------------
 
 The main purpose of writing test cases is to make sure that your
 solution code is working properly and is producing the behavior that

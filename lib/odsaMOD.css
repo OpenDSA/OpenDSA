@@ -9,7 +9,8 @@ body {
   background-color: #FFC0CB;
 }
 .jsavcontainer {
-  background-color: #eed;
+  /* background-color: #eed; */
+  background-color: #F5F5EA;  
   margin: 0 auto;
   border: 0;
   width: 850px;

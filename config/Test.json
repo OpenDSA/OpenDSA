@@ -69,9 +69,8 @@
   },
   "chapters": {
     "Stuff": {
-      "Background/MathpreIntro": {}, 
-      "Binary/BST": {},
-      "Binary/HeapsTest": {},
+      "Tutorials/MTfaq": {},
+      "Tutorials/MTadvanced": {},
       "SearchStruct/Sparse": {}
     }
   }

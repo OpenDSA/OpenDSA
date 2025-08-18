@@ -47,7 +47,7 @@ Figure :num:`Figure #MCSTdgm` shows the MCST for an example graph.
 .. _MCSTdgm:
 
 .. inlineav:: MCSTCON dgm
-   :links:
+   :links: AV/Graph/MCSTCON.css
    :scripts: AV/Graph/MCSTCON.js
    :align: justify
    :keyword: Graphs; Minimal-Cost Spanning Trees

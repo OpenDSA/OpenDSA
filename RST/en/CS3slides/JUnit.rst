@@ -138,6 +138,49 @@ Mutation Testing
 
 .. revealjs-slide::
 
+* Mutation testing changes things in your code in a systematic way.
+
+  * Such a change is called a "mutant".
+
+  * Presumably, changing the code introduces a bug.
+
+  * The issue then becomes: Does some test fail when the bug is
+    introduced? If so, the mutant is said to be "covered".
+
+* There are lots of "mutation operators" that have been tried. We use two:
+
+  * Change a boolean test to TRUE. Separately, change it to FALSE.
+
+  * Drop an operand in an arithmetic expression.
+
+
+Mutation Testing Effects
+------------------------
+
+.. revealjs-slide::
+
+* Mutation Testing is an improvement over code coverage.
+  Becoming an industry standard.
+
+* Code coverage is helpful if you use it correctly, but its easy to
+  "game".
+
+* Code coverage only tells you if a branch is executed, that in
+  itself says nothing about correctness.
+
+* Mutation testing requires both that the branch is executed, and
+  that the execution affects the test results in some way.
+
+* Web-CAT acts as an "oracle" for correctness. You don't get that
+  crutch in the real world.
+
+  * MT is the next best thing to an automated oracle. It's not
+    perfect, but it does a good job of helping you to test and debug.
+
+* In our use in CS3114/5040 in recent years, MT use has improved
+  student project scores, test suite quality, and program code
+  quality.
+
 
 Models
 ------
@@ -159,21 +202,25 @@ What if your model is wrong?
 
 .. revealjs-slide::
 
-* If you have a model in your head, and you write the program to
-  that model, and you test to that model, a "properly working"
+* IF you have a model in your head, AND you write the program to
+  that model, AND you test to that model, THEN a "properly working"
   program will meet that model.
 * What if your model does not match reality?
-* In this program, that most often happens when:
 
-  * Your output text is not what is expected. BUT you should have
-    used the sample output file to write your tests.
-  * You have the wrong model about how probing works. BUT you
-    should then see that you pass your tests, and fail the (one)
-    Web-CAT test. Then you should be suspicious about your model
-    if they tell you different things.
+  * Specifically, Your assertions define a result is not what the
+    project spec requires.
+
+    * BUT you should be using the sample tests we give you to check
+      things like the formatting and the error conditions.
+
+  * You get a bit lazy: You write a test by running your program on
+    some input, taking the output, and asserting that this is correct.
+
+    * Don't do that! Carefully think through what the result SHOULD
+      be, and then verify that your result matches.
 
 
-Regression testing
+Regression Testing
 ------------------
 
 .. revealjs-slide::
@@ -182,10 +229,8 @@ Regression testing
   sure that any new changes don't break anything.
 
 * Students sometimes add print statements to help them debug, and
-  then forget to remove them. Then Web-CAT tells them they failed a
-  bunch of tests.
+  then forget to remove them. Fortunately, we now use a style of
+  testing that ignores System.out content.
 
-  * Your unit tests should warn you about this.
-
-* If you find a bug, and your tests all pass, then update the tests
+* If you find a bug, but your tests all pass, then update the tests
   to trigger on the bug.
