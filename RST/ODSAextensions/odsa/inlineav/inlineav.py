@@ -81,10 +81,7 @@ def visit_av_ss_html(self, node):
     scripts = node['scripts'].split()
     for script in scripts:
       script_path = relative_prefix + script
-      if hasattr(self, 'builder') and self.builder.name == 'revealjs':
-        self.body.append('<script src="%s" defer></script>\n' % script_path)
-      else:
-        self.body.append('<script src="%s"></script>\n' % script_path)
+      self.body.append('<script src="%s"></script>\n' % script_path)
   
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
@@ -120,10 +117,7 @@ def visit_av_ff_html(self, node):
     scripts = node['scripts'].split()
     for script in scripts:
       script_path = relative_prefix + script
-      if hasattr(self, 'builder') and self.builder.name == 'revealjs':
-        self.body.append('<script src="%s" defer></script>\n' % script_path)
-      else:
-        self.body.append('<script src="%s"></script>\n' % script_path)
+      self.body.append('<script src="%s"></script>\n' % script_path)
   
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
@@ -261,7 +255,7 @@ class inlineav(Directive):
     self.options['short_name'] = self.arguments[0]
     self.options['type'] = self.arguments[1]
     self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
-
+    
     # Set defaults for any values that aren't configured
     if 'required' not in self.options:
       self.options['required'] = False

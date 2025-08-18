@@ -15,10 +15,10 @@
 .reveal .slides > section,
 .reveal .slides > section > section {
   position: absolute;
-  width: 90%;
-  height: 90%;
   left: 5%;
   top: 5%;
+  width: 90%;
+  height: 90%;
   text-align: left;
 }
 
@@ -34,39 +34,44 @@
   margin-right: auto;
 }
 
-/* Fix code block widths in slides */
-.reveal pre {
+/* Slides: Code blocks */
+.reveal .highlight pre,
+.reveal .highlight-guess pre,
+.reveal pre.literal-block {
   width: 100%;
-  box-sizing: border-box;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-x: visible;
   max-width: none;
+  box-sizing: border-box;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow: visible !important;  
+  background-color: #f8f8f8 !important;
+  border: 1px solid #ccc !important;
+  padding: 12px !important;
+  border-radius: 6px !important;
+  min-height: fit-content !important;
+  height: auto !important;
+  display: block !important;
+  margin: 10px 0 !important;
 }
 
-.reveal pre code {
-  display: block;
-  max-height: none;
-  overflow: visible;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-/* Ensure code blocks in fragments use full width */
-.reveal .fragment pre {
+/* Slides: Code block fragments */
+.reveal .fragment .highlight pre,
+.reveal .fragment .highlight-guess pre,
+.reveal .fragment pre.literal-block {
   width: 100%;
-}
-
-.reveal .fragment pre code {
-  max-height: none;
-  overflow: visible;
-}
-
-/* prevent reveal default fonts from affecting jsav */
-.reveal .jsavcontainer,
-.reveal .divdgm,
-.reveal .ssAV {
-  font-size: initial;
+  max-width: none;
+  box-sizing: border-box;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow: visible !important; 
+  background-color: #f8f8f8 !important;
+  border: 1px solid #ccc !important;
+  padding: 12px !important;
+  border-radius: 6px !important;
+  min-height: fit-content !important;
+  height: auto !important;
+  display: block !important;
+  margin: 10px 0 !important;
 }
 
 /* jsav fixes */
@@ -75,30 +80,18 @@
   text-shadow: none;
 }
 
-.reveal .jsavcontainer {
-  text-align: left;
-}
-
-.reveal .jsavlabel {
-  text-transform: none !important;
-  letter-spacing: normal !important;
-}
-
-.reveal .jsavoutput {
-  text-align: left !important;
-}
-
-.reveal .jsavcode {
-  font-family: monospace !important;
-  margin: 0 auto !important;
-}
-
 .jsavcanvas {
-  overflow-x: visible;
+  overflow: visible !important;
 }
 
-.reveal .jsavcanvas svg {
+
+/* Slides: prevent scrollbars on JSAV canvas */
+.reveal .jsavcanvas,
+.reveal .ssAV .jsavcanvas,
+.reveal .ffAV .jsavcanvas {
   overflow: visible !important;
+  max-width: none !important;
+  max-height: none !important;
 }
 
 .divdgm text,
@@ -161,4 +154,78 @@ ul li::before {
 /* hide index & search links */
 .reveal .toctree-wrapper + div + ul {
   display: none !important;
+}
+
+/* Hidden slides need to exist for JSAV to measure correctly */
+.reveal .slides > section,
+.reveal .slides > section > section {
+  display: block !important;    
+}
+
+.reveal .slides > section:not(.present),
+.reveal .slides > section > section:not(.present) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.reveal .slides > section.present,
+.reveal .slides > section > section.present {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+.reveal .jsavcontainer,
+.reveal .divdgm,
+.reveal .ssAV {
+  font-size: initial;
+}
+
+.reveal pre[data-id],
+.reveal pre.literal-block,
+.reveal .highlight {
+  background: #f8f8f8 !important;
+  border: 1px solid #ccc !important;
+  border-radius: 6px !important;
+  margin: 12px 0 !important;
+  padding: 0 !important;                  
+  width: 100% !important;
+  max-width: none !important;
+  box-shadow: none !important;
+}
+
+.reveal pre[data-id] code,
+.reveal pre.literal-block code,
+.reveal .highlight pre {
+  background: transparent !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow: visible !important;
+  max-height: none !important;             
+  display: block !important;
+}
+
+.reveal .ssAV,
+.reveal .ffAV,
+.reveal .jsavcontainer {
+  overflow: visible !important;
+}
+.reveal .jsavcanvas,
+.reveal .jsavcanvas svg { 
+  overflow: visible !important; 
+}
+
+.reveal .jsavcode pre {
+  background: #efefef !important; 
+  border: 1px solid #ddd !important;
+  white-space: pre !important;
+  word-wrap: normal !important;
+}
+
+.reveal .chalkboard .chalkboard-canvas {
+  pointer-events: auto !important;
+  z-index: 100 !important;
 }
