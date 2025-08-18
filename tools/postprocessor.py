@@ -9,7 +9,6 @@ import re
 import json
 import xml.dom.minidom as minidom
 from collections.abc import Iterable
-
 from xml.etree.ElementTree import ElementTree
 from bs4 import BeautifulSoup
 import shutil
@@ -417,7 +416,6 @@ def create_exercise_widget(module_data, mod_name):
     """
     Creates exercise widget HTML for a specific module to display exercise overview
     """
-    # Extract exercises dictionary from module
     exercises_dict = module_data.get('exercises', {})
     
     # Build list of exercises that have point values > 0
@@ -429,25 +427,57 @@ def create_exercise_widget(module_data, mod_name):
     # Return None if no exercises with points found
     if not exercises:
         return None
-    
-    # Calculate total possible points for this module    
+     
     total_points = sum(points for _, points in exercises)
     
-    # Create the HTML widget
+    widget_id = f"exercise-widget-{mod_name.replace(' ', '-')}"
+    
+    # Create the hamburger menu HTML widget
     widget_html = f'''
-<div id="exercise-summary-widget" style="border: 2px solid #007bff; padding: 15px; margin: 15px 0; background-color: #f8f9fa; border-radius: 8px;">
-    <h3 style="margin-top: 0; color: #007bff;">📊 {mod_name} - Exercise Overview</h3>
-    <p><strong>Exercises with Points:</strong> {len(exercises)}</p>
-    <p><strong>Total Possible Points:</strong> {total_points:.1f}</p>
-    <ul style="margin-bottom: 0;">'''
+<div id="exercise-summary-widget" style="border: 2px solid #007bff; padding: 10px 15px; margin: 15px 0; background-color: #f8f9fa; border-radius: 8px;">
+    <!-- Hamburger Header (Always Visible) -->
+    <div id="{widget_id}-header" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;" onclick="toggleExerciseWidget('{widget_id}')">
+        <div style="display: flex; align-items: center;">
+            <span id="{widget_id}-icon" style="font-size: 18px; margin-right: 10px; color: #007bff;">☰</span>
+            <span style="color: #007bff; font-weight: bold;">Exercise Overview</span>
+            <span style="margin-left: 10px; color: #6c757d;">({len(exercises)} exercises, {total_points:.1f} points)</span>
+        </div>
+        <span id="{widget_id}-arrow" style="color: #007bff; font-size: 14px; transform: rotate(0deg); transition: transform 0.3s;">▼</span>
+    </div>
+    
+    <!-- Exercise Details (Initially Hidden) -->
+    <div id="{widget_id}-content" style="display: none; margin-top: 15px; padding-top: 10px; border-top: 1px solid #dee2e6;">
+        <h4 style="margin: 0 0 10px 0; color: #007bff;">📊 {mod_name} - Exercise Details</h4>
+        <ul style="margin: 0; padding-left: 20px;">'''
     
     for exercise, points in exercises:
         widget_html += f'''
-        <li><strong>{exercise}</strong>: {points:.1f} points</li>'''
+            <li style="margin-bottom: 5px;"><strong>{exercise}</strong>: {points:.1f} points</li>'''
     
-    widget_html += '''
-    </ul>
-</div>'''
+    widget_html += f'''
+        </ul>
+    </div>
+</div>
+
+<script>
+function toggleExerciseWidget(widgetId) {{
+    const content = document.getElementById(widgetId + '-content');
+    const icon = document.getElementById(widgetId + '-icon');
+    const arrow = document.getElementById(widgetId + '-arrow');
+    
+    if (content.style.display === 'none') {{
+        // Show content
+        content.style.display = 'block';
+        icon.innerHTML = '✕';  
+        arrow.style.transform = 'rotate(180deg)';  
+    }} else {{
+        // Hide content
+        content.style.display = 'none';
+        icon.innerHTML = '☰';  
+        arrow.style.transform = 'rotate(0deg)';   
+    }}
+}}
+</script>'''
     
     # Convert HTML string to BeautifulSoup object
     return BeautifulSoup(widget_html, 'html.parser')
