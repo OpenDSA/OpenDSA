@@ -230,21 +230,14 @@ ul li::before {
   z-index: 100 !important;
 }
 
-/* Center JSAV arrays and visualizations */
-.reveal .jsavarray {
+/* Center single array JSAV visualizations */
+.reveal .ssAV .jsavcanvas:not(:has(.jsavcode)) .jsavarray:not([style*="display: none"]) {
   margin: 0 auto !important;
+  display: table !important;
 }
 
-.reveal .jsavcontainer {
-  text-align: center !important;
-}
-
-.reveal .jsavcanvas {
+/* Center standalone code blocks */
+.reveal .ssAV .jsavcanvas > .jsavcode:first-child:last-child:not([style*="display: none"]) {
   margin: 0 auto !important;
-}
-
-/* Center code blocks when needed */
-.reveal .jsavcode {
-  margin: 0 auto !important;
-  display: inline-block !important;
+  display: table !important;
 }
