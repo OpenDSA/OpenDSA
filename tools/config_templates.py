@@ -6,8 +6,8 @@ rst_header = '''\
 
 .. raw:: html
 
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = %(build_cmap)s;%(mod_options)s</script>
-
+ <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = %(build_cmap)s;%(mod_options)s</script>
+ 
 %(unicode_directive)s
 '''
 
@@ -288,17 +288,17 @@ if slides_lib == 'revealjs' or on_slides:
         '../%(eb2root)slib/jquery.migrate.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
         'https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js',
-        '../%(eb2root)slib/jquery.scrolldepth.js',
-        '../%(eb2root)slib/timeme.js',
         '../%(eb2root)slib/jquery.ui.min.js',
         '../%(eb2root)slib/jquery.transit.js',
         '../%(eb2root)slib/raphael.js',
         '../%(eb2root)slib/JSAV-min.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-core.min.js',
         '../_static/config.js',
-        '../%(eb2root)slib/timeme-min.js',
         '../%(eb2root)slib/odsaUtils-min.js',
         '../%(eb2root)slib/odsaMOD-min.js',
+        '../%(eb2root)slib/jquery.scrolldepth.js',
+        '../%(eb2root)slib/timeme.js',
+        '../%(eb2root)slib/timeme-min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-core.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
         'https://d3js.org/d3-selection-multi.v1.min.js',
         '../%(eb2root)slib/dataStructures.js',
@@ -471,10 +471,7 @@ if on_slides:
    html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');
    html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');
 
-# Always add ODSA scripts for slides
-if on_slides:
-  html_context['script_files'] += html_context['odsa_scripts']
-if '%(theme)s' != 'haiku':
+if '%(theme)s' != 'haiku' and not on_slides:
   html_context['script_files'] += html_context['odsa_scripts']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,

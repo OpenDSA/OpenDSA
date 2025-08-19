@@ -79,9 +79,14 @@ def visit_av_ss_html(self, node):
   #  add script tags if specified (via :scripts: in RST)
   if 'scripts' in node:
     scripts = node['scripts'].split()
+    is_revealjs = hasattr(self, 'builder') and self.builder.name == 'revealjs'
     for script in scripts:
       script_path = relative_prefix + script
-      self.body.append('<script src="%s"></script>\n' % script_path)
+      # For reveal.js, defer DataStructures scripts to ensure JSAV loads first
+      if is_revealjs and 'DataStructures/' in script:
+        self.body.append('<script src="%s" defer></script>\n' % script_path)
+      else:
+        self.body.append('<script src="%s"></script>\n' % script_path)
   
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
@@ -115,9 +120,14 @@ def visit_av_ff_html(self, node):
   #  add script tags if specified (via :scripts: in RST)
   if 'scripts' in node:
     scripts = node['scripts'].split()
+    is_revealjs = hasattr(self, 'builder') and self.builder.name == 'revealjs'
     for script in scripts:
       script_path = relative_prefix + script
-      self.body.append('<script src="%s"></script>\n' % script_path)
+      # For reveal.js, defer DataStructures scripts to ensure JSAV loads first
+      if is_revealjs and 'DataStructures/' in script:
+        self.body.append('<script src="%s" defer></script>\n' % script_path)
+      else:
+        self.body.append('<script src="%s"></script>\n' % script_path)
   
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])

@@ -229,3 +229,22 @@ ul li::before {
   pointer-events: auto !important;
   z-index: 100 !important;
 }
+
+/* Center JSAV arrays and visualizations */
+.reveal .jsavarray {
+  margin: 0 auto !important;
+}
+
+.reveal .jsavcontainer {
+  text-align: center !important;
+}
+
+.reveal .jsavcanvas {
+  margin: 0 auto !important;
+}
+
+/* Center code blocks when needed */
+.reveal .jsavcode {
+  margin: 0 auto !important;
+  display: inline-block !important;
+}
