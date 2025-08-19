@@ -313,6 +313,9 @@ if slides_lib == 'revealjs' or on_slides:
     ]
     revealjs_script_conf = """{
         controls: true,
+        controlsTutorial: false,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'visible',
         progress: true,
         center: false,
         disableLayout: true,
