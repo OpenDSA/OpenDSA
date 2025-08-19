@@ -244,12 +244,14 @@ ul li::before {
 
 .reveal #InsertionSortWorstCaseCON .jsavcode,
 .reveal #InsertionSortBestCaseCON .jsavcode,
-.reveal #InsertionSortAverageCaseCON .jsavcode {
+.reveal #InsertionSortAverageCaseCON .jsavcode,
+.reveal #BSTinsertCON .jsavcode {
   margin: 0 auto !important;
 }
 
 .reveal #InsertionSortWorstCaseCON .jsavcode:not([style*="display: none"]),
 .reveal #InsertionSortBestCaseCON .jsavcode:not([style*="display: none"]),
-.reveal #InsertionSortAverageCaseCON .jsavcode:not([style*="display: none"]) {
+.reveal #InsertionSortAverageCaseCON .jsavcode:not([style*="display: none"]),
+.reveal #BSTinsertCON .jsavcode:not([style*="display: none"]) {
   display: table !important;
 }
