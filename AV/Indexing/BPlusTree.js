@@ -85,17 +85,30 @@ $(document).ready(function() {
   //hw is the half of the width that the block has
   //vw is the height that the block has
   BPTreeproto.printArrow = function(hw){
+    var $canvas = $(this.jsav.canvas);
+    if ($canvas.length === 0) {
+      $canvas = $(this.jsav.container);
+    }
+    var canvasOffset = $canvas.offset();
+    
     var vw = $(this.root.array.element).outerHeight(); //height
     var oblock = (hw * 2) / this.max; //the width of one block in one node
     var tli = this.list.length - 1; //list index, starting from the root
     while(tli > 0){
       var tci = 0; //track children's index
       while(tci < this.list[tli].length){
-        var x = $(this.list[tli][tci].array.element).position().left;
-        var y = $(this.list[tli][tci].array.element).position().top;
+        // Use offset() for positions relative to document 
+        var $parentElement = $(this.list[tli][tci].array.element);
+        var parentOffset = $parentElement.offset();
+        // then subtract canvas offset
+        var x = parentOffset.left - canvasOffset.left;
+        var y = parentOffset.top - canvasOffset.top;
+        
         for(var i = 0; i < this.list[tli][tci].size_child; i++){
-          var x2 = $(this.list[tli][tci].child[i].array.element).position().left + hw;
-          var y2 = $(this.list[tli][tci].child[i].array.element).position().top;
+          var $childElement = $(this.list[tli][tci].child[i].array.element);
+          var childOffset = $childElement.offset();
+          var x2 = childOffset.left - canvasOffset.left + hw;
+          var y2 = childOffset.top - canvasOffset.top;
           var x1 = x + i * oblock;
           var y1 = y + vw;
           var a = this.jsav.g.line(x1, y1, x2, y2, { "stroke-width": 1.0});

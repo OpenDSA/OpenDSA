@@ -84,28 +84,56 @@ $(document).ready(function() {
    * @returns {*} A JSAV line object.
    */
   function drawEdge(jsav, properties, arrayFrom, arrayTo, edgeIndex, length) {
-    var top, left, height, width, step, x1, y1, x2, y2;
-
-    // Get coordinates for the x1 and y1 of the edge.
-    height = extractNumber(arrayFrom.css("height"));
-    width = extractNumber(arrayFrom.css("width"));
-    top = extractNumber(arrayFrom.css("top"));
-    left = extractNumber(arrayFrom.css("left"));
-    step = width / length;
-
-    x1 = left + (step * edgeIndex);
-    y1 = top + height;
-
-    // Get coordinates for the x2 and y2 of the edge.
-    height = extractNumber(arrayTo.css("height"));
-    width = extractNumber(arrayTo.css("width"));
-    top = extractNumber(arrayTo.css("top"));
-    left = extractNumber(arrayTo.css("left"));
-
-    x2 = left  + (width / 2);
-    y2 = top + 1;
-
-    // Create line and return object.
+    // dynamic positioning based on DOM elements
+    var $fromElement = arrayFrom.element;
+    var $toElement = arrayTo.element;
+    var $canvas = $fromElement.closest(".jsavcanvas");
+    
+    // if no canvas found, try container
+    if ($canvas.length === 0) {
+      $canvas = $("#" + jsav.container[0].id);
+    }
+    
+    var canvasOffset = $canvas.offset();
+    
+    // get all cells in "from" array
+    var $fromCells = $fromElement.find("li");
+    var fromElementOffset = $fromElement.offset();
+    
+    // Calculate x1 position based on the edgeIndex
+    // In 2-3 trees, edges come from between values or at edges:
+    // edgeIndex 0: left edge of array
+    // edgeIndex 1: between first and second cell (or right edge if only 1 value)
+    // edgeIndex 2: right edge of array (for nodes with 2 values)
+    
+    var x1, y1;
+    var cellWidth = $fromCells.first().outerWidth();
+    
+    if (edgeIndex === 0) {
+      // left edge
+      x1 = fromElementOffset.left - canvasOffset.left;
+    } else if (edgeIndex === 1) {
+      // between first and second cell; or right edge if only one value
+      if ($fromCells.length > 1 && $fromCells.eq(1).text().trim() !== "") {
+        // node has 2 values, draw from between them
+        var $firstCell = $fromCells.eq(0);
+        var firstCellOffset = $firstCell.offset();
+        x1 = firstCellOffset.left - canvasOffset.left + $firstCell.outerWidth();
+      } else {
+        // node has 1 value, draw from right edge
+        x1 = fromElementOffset.left - canvasOffset.left + $fromElement.outerWidth();
+      }
+    } else { // edgeIndex === 2
+      // right edge of array if only 2 values
+      x1 = fromElementOffset.left - canvasOffset.left + $fromElement.outerWidth();
+    }
+    
+    y1 = fromElementOffset.top - canvasOffset.top + $fromCells.first().outerHeight();
+    
+    var toOffset = $toElement.offset();
+    var x2 = toOffset.left - canvasOffset.left + $toElement.outerWidth() / 2;
+    var y2 = toOffset.top - canvasOffset.top;
+    
     return jsav.g.line(x1, y1, x2, y2, properties);
   }
 
