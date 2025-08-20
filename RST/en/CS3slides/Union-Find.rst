@@ -18,14 +18,10 @@ Disjoint Sets and Equivalence Classes
 * Sometimes we have a collection of objects that we want to divide
   into separate sets.
 
-.. raw:: html
-
-   <iframe src="../../../Metadata/inlineav/General/UFconcomCON.html" 
-           width="960" 
-           height="400" 
-           frameborder="0"
-           style="background: white; display: block; margin: 0 auto;">
-   </iframe>
+.. inlineav:: UFconcomCON dgm
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/UFconcomCON.js
+   :align: left
 
 
 Approach
@@ -45,14 +41,9 @@ Parent Pointer Implementation
 
 .. revealjs-slide::
 
-.. raw:: html
-
-   <iframe src="../../../Metadata/inlineav/General/UFfigCON.html" 
-           width="960" 
-           height="400" 
-           frameborder="0"
-           style="background: white; display: block; margin: 0 auto;">
-   </iframe>
+.. inlineav:: UFfigCON dgm
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/UFfigCON.js
 
 
 Union/FIND
@@ -88,7 +79,7 @@ Algorithm Visualization
 
    <iframe src="../../../Metadata/inlineav/General/ufCON.html" 
            width="960" 
-           height="550" 
+           height="700" 
            frameborder="0"
            style="background: white; display: block; margin: 0 auto;">
    </iframe>
