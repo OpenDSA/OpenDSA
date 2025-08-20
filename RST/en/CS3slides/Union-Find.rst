@@ -98,3 +98,7 @@ Path Compression
            frameborder="0"
            style="background: white; display: block; margin: 0 auto;">
    </iframe>
+
+.. only:: never
+
+   This is a comment that does NOT show in built slides: prevents 'odsalink' from appearing.
