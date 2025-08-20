@@ -10,7 +10,7 @@
 
 /* Description: Slideshow showing the concept of marking a timeline for the values stored in a Trie decomposition version of a BST. */
 
-(function ($) {
+$(document).ready(function() {
 
   var av = new JSAV("TrieTimelineCON");
   var t = av.ds.binarytree({nodegap: 25});
@@ -200,5 +200,4 @@
     return this.add_line(pos, label, height, top);
   };
   }
-
-}(jQuery));
+});

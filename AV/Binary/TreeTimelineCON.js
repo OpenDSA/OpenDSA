@@ -13,7 +13,7 @@
 
 /* Description: Slideshow showing the concept of marking a timeline for the values stored in a BST. This will be contrasted with using a Trie decomposition. */
 
-(function ($) {
+$(document).ready(function() {
   var av = new JSAV("TreeTimelineCON");
   var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("36");
@@ -250,5 +250,4 @@
     return this.add_line(pos, label, height, top);
   };
   }
-
-}(jQuery));
+});
