@@ -18,10 +18,14 @@ Disjoint Sets and Equivalence Classes
 * Sometimes we have a collection of objects that we want to divide
   into separate sets.
 
-.. inlineav:: UFconcomCON dgm
-   :links: AV/General/UFCON.css
-   :scripts: AV/General/UFconcomCON.js
-   :align: left
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/General/UFconcomCON.html" 
+           width="960" 
+           height="400" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Approach
@@ -41,9 +45,14 @@ Parent Pointer Implementation
 
 .. revealjs-slide::
 
-.. inlineav:: UFfigCON dgm
-   :links: AV/General/UFCON.css
-   :scripts: AV/General/UFfigCON.js
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/General/UFfigCON.html" 
+           width="960" 
+           height="400" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
 
 Union/FIND
@@ -75,11 +84,14 @@ Algorithm Visualization
 
 .. revealjs-slide::
 
-.. inlineav:: ufCON ss
-   :long_name: Union/Find Example
-   :links: AV/General/UFCON.css
-   :scripts: AV/General/ufCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/General/ufCON.html" 
+           width="960" 
+           height="550" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
 
             
 Path Compression
@@ -87,8 +99,11 @@ Path Compression
 
 .. revealjs-slide::
 
-.. inlineav:: pathcompCON ss
-   :long_name: Union/Find Path Compression Example
-   :links: AV/General/UFCON.css
-   :scripts: AV/General/pathcompCON.js
-   :output: show
+.. raw:: html
+
+   <iframe src="../../../Metadata/inlineav/General/pathcompCON.html" 
+           width="960" 
+           height="550" 
+           frameborder="0"
+           style="background: white; display: block; margin: 0 auto;">
+   </iframe>
