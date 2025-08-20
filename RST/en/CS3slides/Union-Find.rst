@@ -6,78 +6,89 @@
 .. avmetadata::
    :author: Cliff Shaffer
 
-.. slideconf::
-   :autoslides: False
-
 ==========
 Union/FIND
 ==========
+
+Disjoint Sets and Equivalence Classes
+-------------------------------------
+
+.. revealjs-slide::
+
+* Sometimes we have a collection of objects that we want to divide
+  into separate sets.
+
+.. inlineav:: UFconcomCON dgm
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/UFconcomCON.js
+   :align: left
+
+
+Approach
+--------
+
+.. revealjs-slide::
+
+* Each object initially is a separate node in its own tree.
+
+* When two objects are "equivalent", then add them to the same tree.
+
+* Key question: **Given two nodes, are they in the same tree?**
+
+
+Parent Pointer Implementation
+-----------------------------
+
+.. revealjs-slide::
+
+.. inlineav:: UFfigCON dgm
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/UFfigCON.js
+
 
 Union/FIND
 ----------
 
-.. slide:: Disjoint Sets and Equivalence Classes
+.. revealjs-slide::
 
-   Sometimes we have a collection of objects that we want to divide
-   into separate sets.
-
-   .. inlineav:: UFconcomCON dgm
-      :links: AV/General/UFCON.css
-      :scripts: AV/General/UFconcomCON.js
-      :align: left
+.. codeinclude:: General/ParPtrTree1
+   :tag: UF1, UF2
 
 
-.. slide:: Approach
+Weighted Union
+--------------
 
-   Each object initially is a separate node in its own tree.
+.. revealjs-slide::
 
-   When two objects are "equivalent", then add them to the same tree.
+* A key goal is to keep the depth of nodes as shallow as possible
+  (consistent with efficient processing).
 
-   Key question: **Given two nodes, are they in the same tree?**
+* Weighted Union rule:
 
-
-.. slide:: Parent Pointer Implementation
-
-   .. inlineav:: UFfigCON dgm
-      :links: AV/General/UFCON.css
-      :scripts: AV/General/UFfigCON.js
-
-
-.. slide:: Union/FIND
-
-   .. codeinclude:: General/ParPtrTree1
-      :tag: UF1, UF2
+  * When two trees are unioned, add one with fewer nodes as a child
+    of the root of the tree with more nodes.
+  * Depth is :math:`O(\log n)`
 
 
-.. slide:: Weighted Union
+Algorithm Visualization
+-----------------------
 
-   A key goal is to keep the depth of nodes as shallow as possible
-   (consistent with efficient processing).
+.. revealjs-slide::
 
-   Weighted Union rule:
-    * When two trees are unioned, add one with fewer nodes as a child
-      of the root of the tree with more nodes.
-    * Depth is :math:`O(\log n)`
+.. inlineav:: ufCON ss
+   :long_name: Union/Find Example
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/ufCON.js
+   :output: show
 
+            
+Path Compression
+----------------
 
-.. slide:: Algorithm Visualization
+.. revealjs-slide::
 
-   .. inlineav:: ufCON ss
-      :long_name: Union/Find Example
-      :links: AV/General/UFCON.css
-      :scripts: AV/General/ufCON.js
-      :output: show
-
-
-.. slide:: .
-
-   .
-
-
-.. slide:: Path Compression
-
-   .. inlineav:: pathcompCON ss
-      :long_name: Union/Find Path Compression Example
-      :links: AV/General/UFCON.css
-      :scripts: AV/General/pathcompCON.js
-      :output: show
+.. inlineav:: pathcompCON ss
+   :long_name: Union/Find Path Compression Example
+   :links: AV/General/UFCON.css
+   :scripts: AV/General/pathcompCON.js
+   :output: show

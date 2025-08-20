@@ -524,7 +524,7 @@ class ODSA_RST_Module:
                     # Parse the list of prerequisite topics this module satisfies and add them to a list of satisfied prereqs
                     requirements_satisfied = [
                         req.strip() for req in line.replace(':satisfies:', '').split(';')]
-                elif line.startswith('.. figure::') or line.startswith('.. odsafig::'):
+                elif line.startswith('.. figure::') or line.startswith('.. odsafig::') or line.startswith('.. image::'):
                     # Pass -1 as the expected number of arguments because different directives have different numbers of args (-1 will ignore the check)
                     args = parse_directive_args(
                         mod_data[i], i, -1, console_msg_prefix)
@@ -860,7 +860,7 @@ class ODSA_RST_Module:
                 if not os.path.exists('{0}/{1}'.format(config.odsa_dir, script)):
                     print_err('%sWARNING: "%s" does not exist.' %
                               (console_msg_prefix, script))
-                if not has_directive:
+                if not has_directive and os.environ['SLIDES'] == 'no':
                     mod_data.append(
                         '{0}.. odsascript:: {1}\n'.format(indent, script))
 

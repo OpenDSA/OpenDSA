@@ -426,28 +426,3 @@ Localizing the bug in your code can be a long, iterative process.
 With good techniques (including mutation testing) and strategies
 (writing abundant test cases), you can  
 make the process effective and save time.
-
-How do I recover the "Mutation List"/"Mutation Summary" tabs?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-There are two ways to get the "Mutation List" and "Mutation Summary"
-tabs back if you accidentaly close them.
-
-1. Simply run mutation testing again: ``Run as --> Mutation Test``.
-   This might regeneate both the "Mutation List" and "Mutation Summary"
-   tabs.
-
-2. On the menu bar, navigate to ``Window --> Show View --> Other``. 
-   There, under the ``PIT`` option, you should find both "Mutation
-   List" and "Mutation Summary".
-   Click on the desired tab and then ``Open``.
-
-.. odsafig:: Images/mutation_panelview.png
-   :align: center
-   :capalign: center
-   :figwidth: 90%
-   :scale: 50%
-   :alt: Mutation Panel View
-
-   Mutation Panel View
-

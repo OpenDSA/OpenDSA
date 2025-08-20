@@ -36,16 +36,6 @@ class av_ff(Element):pass
 
 
 def visit_av_dgm_html(self, node):
-  # Get the exercise name to create the container ID
-  exer_name = node.get('exer_name', '')
-  self.body.append('<div class="divdgm">')
-  self.body.append('<div id="%s">' % exer_name)
-  self.body.append('</div>')
-
-def depart_av_dgm_html(self, node):
-  self.body.append('</div>\n') 
-
-def visit_av_ss_html(self, node):
   # add link tags if specified (via :links: in RST)
   if 'links' in node:
     links = node['links'].split()
@@ -59,7 +49,44 @@ def visit_av_ss_html(self, node):
     scripts = node['scripts'].split()
     for script in scripts:
       script_path = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/' + script
-      self.body.append('<script src="%s"></script>\n' % script_path)
+      self.body.append('<script type="text/javascript" src="%s"></script>\n' % script_path)
+  
+  # Get the exercise name to create the container ID
+  exer_name = node.get('exer_name', '')
+  self.body.append('<div class="divdgm">')
+  self.body.append('<div id="%s">' % exer_name)
+  self.body.append('</div>')
+
+def depart_av_dgm_html(self, node):
+  self.body.append('</div>\n') 
+
+def visit_av_ss_html(self, node):
+  if hasattr(self, 'builder') and self.builder.name == 'revealjs':
+    ebook_path = conf.ebook_path
+    odsa_path = conf.odsa_path
+    rel_path = os.path.relpath(odsa_path, ebook_path)
+    relative_prefix = rel_path.replace('\\', '/') + '/'
+  else:
+    relative_prefix = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/'
+  
+  # add link tags if specified (via :links: in RST)
+  if 'links' in node:
+    links = node['links'].split()
+    for link in links:
+      link_path = relative_prefix + link
+      self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
+  
+  #  add script tags if specified (via :scripts: in RST)
+  if 'scripts' in node:
+    scripts = node['scripts'].split()
+    is_revealjs = hasattr(self, 'builder') and self.builder.name == 'revealjs'
+    for script in scripts:
+      script_path = relative_prefix + script
+      # For reveal.js, defer DataStructures scripts to ensure JSAV loads first
+      if is_revealjs and 'DataStructures/' in script:
+        self.body.append('<script src="%s" defer></script>\n' % script_path)
+      else:
+        self.body.append('<script src="%s"></script>\n' % script_path)
   
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
@@ -75,6 +102,33 @@ def depart_av_anchor_html(self, node):
 
 
 def visit_av_ff_html(self, node):
+  if hasattr(self, 'builder') and self.builder.name == 'revealjs':
+    ebook_path = conf.ebook_path
+    odsa_path = conf.odsa_path
+    rel_path = os.path.relpath(odsa_path, ebook_path)
+    relative_prefix = rel_path.replace('\\', '/') + '/'
+  else:
+    relative_prefix = os.path.relpath(conf.odsa_path, conf.ebook_path).replace('\\', '/') + '/'
+  
+  # add link tags if specified (via :links: in RST)
+  if 'links' in node:
+    links = node['links'].split()
+    for link in links:
+      link_path = relative_prefix + link
+      self.body.append('<link href="%s" rel="stylesheet" type="text/css" />\n' % link_path)
+  
+  #  add script tags if specified (via :scripts: in RST)
+  if 'scripts' in node:
+    scripts = node['scripts'].split()
+    is_revealjs = hasattr(self, 'builder') and self.builder.name == 'revealjs'
+    for script in scripts:
+      script_path = relative_prefix + script
+      # For reveal.js, defer DataStructures scripts to ensure JSAV loads first
+      if is_revealjs and 'DataStructures/' in script:
+        self.body.append('<script src="%s" defer></script>\n' % script_path)
+      else:
+        self.body.append('<script src="%s"></script>\n' % script_path)
+  
   self.body.append(self.starttag(node, 'div', CLASS='' ))
   self.body.append(node['res'])
 
@@ -164,7 +218,7 @@ SLIDESHOW = '''\
 
 #second copy for frames option
 FRAMES = '''\
-<div id="%(exer_name)s" class="ffAV" data-points="%(points)s" data-threshold="%(threshold)s"  data-type="%(type)s" data-required="%(required)s" data-long-name="%(long_name)s" data-exer-id="%(id)s">
+<div id="%(exer_name)s" class="ffAV" data-points="%(points)s" data-threshold="%(threshold)s"  data-type="%(type)s" data-required="%(required)s" data-long_name="%(long_name)s" data-exer-id="%(id)s">
  <span class="jsavcounter"></span>
  <a class="jsavsettings" href="#">Settings</a>
  <div class="jsavcontrols"></div>
@@ -211,7 +265,7 @@ class inlineav(Directive):
     self.options['short_name'] = self.arguments[0]
     self.options['type'] = self.arguments[1]
     self.options['odsa_path'] = os.path.relpath(conf.odsa_path,conf.ebook_path)
-
+    
     # Set defaults for any values that aren't configured
     if 'required' not in self.options:
       self.options['required'] = False
@@ -281,11 +335,32 @@ class inlineav(Directive):
         avss_node += caption
       return [avss_node]
     elif self.options['type'] == "ff":
-      res = FRAMES % self.options
-      return [nodes.raw('', res, format='html')]
+      avff_node = av_ff()
+      avff_node['res'] = FRAMES % self.options
+      
+      # pass links & scripts to node
+      if 'links' in self.options:
+        avff_node['links'] = self.options['links']
+      if 'scripts' in self.options:
+        avff_node['scripts'] = self.options['scripts']
+      
+      return [avff_node]
     else:
-      res = SLIDESHOW % self.options
-      return [nodes.raw('', res, format='html')]
+      # Handle ss without content and other types
+      if self.options['type'] == 'ss':
+        avss_node = av_ss()
+        avss_node['res'] = SLIDESHOW % self.options
+        
+        # pass links & scripts to node
+        if 'links' in self.options:
+          avss_node['links'] = self.options['links']
+        if 'scripts' in self.options:
+          avss_node['scripts'] = self.options['scripts']
+        
+        return [avss_node]
+      else:
+        res = SLIDESHOW % self.options
+        return [nodes.raw('', res, format='html')]
 
 
 

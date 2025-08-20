@@ -6,8 +6,8 @@ rst_header = '''\
 
 .. raw:: html
 
-   <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = %(build_cmap)s;%(mod_options)s</script>
-
+ <script>ODSA.SETTINGS.DISP_MOD_COMP = %(dispModComp)s;ODSA.SETTINGS.MODULE_NAME = "%(mod_name)s";ODSA.SETTINGS.MODULE_LONG_NAME = "%(long_name)s";ODSA.SETTINGS.MODULE_CHAPTER = "%(mod_chapter)s"; ODSA.SETTINGS.BUILD_DATE = "%(mod_date)s"; ODSA.SETTINGS.BUILD_CMAP = %(build_cmap)s;%(mod_options)s</script>
+ 
 %(unicode_directive)s
 '''
 
@@ -248,20 +248,21 @@ if slides_lib == 'revealjs' or on_slides:
     revealjs_static_path = ['_static']
     # Fix paths for reveal.js - it prepends _static/ so we need to compensate
     revealjs_css_files = [
+        '../%(eb2root)slib/ODSAcoursenotes.css',
+        '../%(eb2root)slib/customcontrols.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
         '../%(eb2root)slib/normalize.css',
+        '../%(eb2root)slib/jquery.ui.min.css',
         '../%(eb2root)slib/JSAV.css',
         '../%(eb2root)slib/odsaMOD-min.css',
-        '../%(eb2root)slib/jquery.ui.min.css',
         '../%(eb2root)slib/odsaStyle-min.css',
-        '../%(eb2root)slib/ODSAcoursenotes.css',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-        '../%(eb2root)slib/customcontrols.css',
-        '../%(eb2root)slib/chalkboard.css'
+        '../%(eb2root)slib/chalkboard.css',
     ]
     revealjs_script_files = [
         '../%(eb2root)slib/jquery.min.js',
         '../%(eb2root)slib/jquery.migrate.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+        'https://cdnjs.cloudflare.com/ajax/libs/localforage/1.9.0/localforage.min.js',
         '../%(eb2root)slib/jquery.ui.min.js',
         '../%(eb2root)slib/jquery.transit.js',
         '../%(eb2root)slib/raphael.js',
@@ -269,23 +270,30 @@ if slides_lib == 'revealjs' or on_slides:
         '../_static/config.js',
         '../%(eb2root)slib/odsaUtils-min.js',
         '../%(eb2root)slib/odsaMOD-min.js',
+        '../%(eb2root)slib/jquery.scrolldepth.js',
+        '../%(eb2root)slib/timeme.js',
+        '../%(eb2root)slib/timeme-min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.15/paper-core.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js',
+        'https://d3js.org/d3-selection-multi.v1.min.js',
+        '../%(eb2root)slib/dataStructures.js',
+        '../%(eb2root)slib/conceptMap.js',
+        '../%(eb2root)slib/splice-iframe.js',
         '../%(eb2root)slib/ODSAcoursenotes.js'
     ]
     revealjs_js_files = revealjs_script_files
     revealjs_script_plugins = [
-        {
-            "name": "RevealCustomControls",
-            "src": "../%(eb2root)slib/customcontrols.js"
-        },
-        {
-            "name": "RevealChalkboard",
-            "src": "../%(eb2root)slib/chalkboard.js"
-        }
+        { "name": "RevealCustomControls", "src": "../%(eb2root)slib/customcontrols.js" },
+        { "name": "RevealChalkboard",     "src": "../%(eb2root)slib/chalkboard.js" }
     ]
     revealjs_script_conf = """{
         controls: true,
+        controlsTutorial: false,
+        controlsLayout: 'bottom-right',
+        controlsBackArrows: 'visible',
         progress: true,
         center: false,
+        disableLayout: true,
         slideNumber: true,
         transition: 'none',
         hash: true,
@@ -438,11 +446,7 @@ if on_slides:
    html_context["css_files"].append('%(eb2root)slib/ODSAcoursenotes.css');
    html_context["odsa_scripts"].append('%(eb2root)slib/ODSAcoursenotes.js');
 
-# Always add ODSA scripts for slides
-if on_slides:
-  html_context['script_files'] += html_context['odsa_scripts']
-# Also add for non-haiku themes  
-if '%(theme)s' != 'haiku':
+if '%(theme)s' != 'haiku' and not on_slides:
   html_context['script_files'] += html_context['odsa_scripts']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,

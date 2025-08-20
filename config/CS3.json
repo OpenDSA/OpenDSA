@@ -100,9 +100,9 @@
       "Tutorials/junitstart": {}, 
       "Tutorials/junitbasic": {}, 
       "Tutorials/junitcoverage": {},
-      "Tutorials/mutationtesting": {},
-      "Tutorials/mutationtesting_example": {},
-      "Tutorials/mutationtesting_faq": {},
+      "Tutorials/MTeclipse": {},
+      "Tutorials/MTbasics": {},
+      "Tutorials/MTadvanced": {},
       "Testing/TriangleIntro": {},
       "Testing/TriangleCoverage": {},
       "Testing/BowlingIntro": {},
@@ -594,6 +594,7 @@
       }
     }, 
     "Advanced Data Structures": {
+      "SearchStruct/Sparse": {},
       "SearchStruct/SkipList": {},
       "Spatial/Spatial": {}, 
       "Spatial/PRquadtree": {}, 

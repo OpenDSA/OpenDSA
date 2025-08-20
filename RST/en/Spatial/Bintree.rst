@@ -215,14 +215,17 @@ An alternate approach is to have the node class do the work.
 That is, you have an insert method for the nodes.
 If the node is internal, it passes the city record to the appropriate
 child (recursively).
-If the node is a flyweight, it replaces itself with a new leaf node.
-If the node is a full node, it replaces itself with a subtree.
+If the node is a flyweight, it replaces itself with a new leaf node
+(by returning this).
+If the node is a full node, it replaces itself with (returns) a subtree
 This is an example of the
 :ref:`Composite design pattern <Composite design pattern> <Composite>`.
 Use of the composite design would be difficult if null pointers are
-used to represent empty leaf nodes.
-It turns out that the Bintree insert and delete methods are easier to
-implement when using the composite design.
+used to represent empty leaf nodes, which is one reason to use a
+flyweight for this purpose.
+Then the Bintree insert and delete methods are easier to
+implement when using the composite design than with the
+tree-in-control approach.
 
 .. [#] A more efficient computation is
        :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.

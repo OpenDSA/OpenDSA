@@ -130,7 +130,8 @@ form {
   /*border: 1px solid black;
   background-color: #efe;*/
   border: 1px solid #B6C0B2;
-  background-color: #E2EEDD;
+  /* background-color: #E2EEDD; */
+  background-color: #F5F5EA;  
   padding: 5px;
   overflow: hidden;
 }

@@ -1,0 +1,41 @@
+.. This file is part of the OpenDSA eTextbook project. See
+.. http://opendsa.org for more details.
+.. Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and
+.. distributed under an MIT open source license.
+
+.. avmetadata::
+   :author: Cliff Shaffer
+
+=========
+Project 2
+=========
+
+Project 2 Description
+---------------------
+
+.. revealjs-slide::
+
+* Discuss Here
+
+Project 2 Design
+----------------
+
+.. revealjs-slide::
+
+* Discuss Here
+
+
+Spatial Data Structures
+-----------------------
+
+.. revealjs-slide::
+
+* The concept of multi-dimensional keys
+
+
+K-D Tree
+--------
+
+.. revealjs-slide::
+
+* Discuss Here
