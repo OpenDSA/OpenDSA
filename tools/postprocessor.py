@@ -9,7 +9,6 @@ import re
 import json
 import xml.dom.minidom as minidom
 from collections.abc import Iterable
-
 from xml.etree.ElementTree import ElementTree
 from bs4 import BeautifulSoup
 import shutil
@@ -318,7 +317,20 @@ def break_up_sections(path, module_data, config, standalone_modules):
   element = soup.find('img', alt='nsf')
   if element:
     element.extract()
+  # Inject exercise widget for this module
+  widget = create_exercise_widget(module_data, mod_name)
+  if widget:
+  # Find the body and inject widget at the beginning
+    body = soup.find('body')
+    if body and body.contents:
+      # Insert at the beginning of body content
+      body.insert(0, widget)
+      print(f"✅ Injected exercise widget into {mod_name}")
+  else:
+    print(f"ℹ️  No exercises with points found in {mod_name}")
 
+  
+  
   filename = mod_name + '.html'
   single_file_path = os.path.join(os.path.dirname(path), '..', 'lti_html', filename)
   
@@ -360,7 +372,7 @@ def make_lti(config, no_lms = False, standalone_modules = False):
   config_file_path = os.path.join(dest_dir, '..', 'lti_html', 'lti_config.json')
   with open(config_file_path, 'wt', encoding='utf-8') as o:
     o.write(json.dumps(config.__dict__))
-
+  
 
 def get_module_map(config):
     """extract module map from config object"""
@@ -397,3 +409,77 @@ def main(argv):
 
 if __name__ == "__main__":
    sys.exit(main(sys.argv))
+
+
+#(New)
+def create_exercise_widget(module_data, mod_name):
+    """
+    Creates exercise widget HTML for a specific module to display exercise overview
+    """
+    exercises_dict = module_data.get('exercises', {})
+    
+    # Build list of exercises that have point values > 0
+    # Only includes exercises worth points (skips exercises with 0 points)
+    exercises = [(name, data['points']) 
+                 for name, data in exercises_dict.items() 
+                 if data.get('points', 0) > 0]
+    
+    # Return None if no exercises with points found
+    if not exercises:
+        return None
+     
+    total_points = sum(points for _, points in exercises)
+    
+    widget_id = f"exercise-widget-{mod_name.replace(' ', '-')}"
+    
+    # Create the hamburger menu HTML widget
+    widget_html = f'''
+<div id="exercise-summary-widget" style="border: 2px solid #007bff; padding: 10px 15px; margin: 15px 0; background-color: #f8f9fa; border-radius: 8px;">
+    <!-- Hamburger Header (Always Visible) -->
+    <div id="{widget_id}-header" style="cursor: pointer; display: flex; align-items: center; justify-content: space-between;" onclick="toggleExerciseWidget('{widget_id}')">
+        <div style="display: flex; align-items: center;">
+            <span id="{widget_id}-icon" style="font-size: 18px; margin-right: 10px; color: #007bff;">☰</span>
+            <span style="color: #007bff; font-weight: bold;">Exercise Overview</span>
+            <span style="margin-left: 10px; color: #6c757d;">({len(exercises)} exercises, {total_points:.1f} points)</span>
+        </div>
+        <span id="{widget_id}-arrow" style="color: #007bff; font-size: 14px; transform: rotate(0deg); transition: transform 0.3s;">▼</span>
+    </div>
+    
+    <!-- Exercise Details (Initially Hidden) -->
+    <div id="{widget_id}-content" style="display: none; margin-top: 15px; padding-top: 10px; border-top: 1px solid #dee2e6;">
+        <h4 style="margin: 0 0 10px 0; color: #007bff;">📊 {mod_name} - Exercise Details</h4>
+        <ul style="margin: 0; padding-left: 20px;">'''
+    
+    for exercise, points in exercises:
+        widget_html += f'''
+            <li style="margin-bottom: 5px;"><strong>{exercise}</strong>: {points:.1f} points</li>'''
+    
+    widget_html += f'''
+        </ul>
+    </div>
+</div>
+
+<script>
+function toggleExerciseWidget(widgetId) {{
+    const content = document.getElementById(widgetId + '-content');
+    const icon = document.getElementById(widgetId + '-icon');
+    const arrow = document.getElementById(widgetId + '-arrow');
+    
+    if (content.style.display === 'none') {{
+        // Show content
+        content.style.display = 'block';
+        icon.innerHTML = '✕';  
+        arrow.style.transform = 'rotate(180deg)';  
+    }} else {{
+        // Hide content
+        content.style.display = 'none';
+        icon.innerHTML = '☰';  
+        arrow.style.transform = 'rotate(0deg)';   
+    }}
+}}
+</script>'''
+    
+    # Convert HTML string to BeautifulSoup object
+    return BeautifulSoup(widget_html, 'html.parser')
+  
+  
