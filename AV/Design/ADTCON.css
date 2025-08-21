@@ -1,3 +1,28 @@
 #ADTCON {
- height: 215px;
+  height: 215px !important;
+  max-height: 215px !important;
+  overflow: hidden !important;
+}
+
+#ADTCON .jsavcanvas {
+  height: 215px !important;
+  max-height: 215px !important;
+}
+
+#ADTCON .jsavcanvas svg {
+  height: 215px !important;
+  max-height: 215px !important;
+}
+
+/* Force container in reveal.js context */
+.reveal #ADTCON,
+.reveal .divdgm #ADTCON {
+  height: 215px !important;
+  max-height: 215px !important;
+}
+
+.reveal #ADTCON .jsavcanvas,
+.reveal .divdgm #ADTCON .jsavcanvas {
+  height: 215px !important;
+  max-height: 215px !important;
 }

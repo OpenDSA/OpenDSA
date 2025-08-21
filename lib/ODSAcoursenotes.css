@@ -86,12 +86,16 @@
 
 
 /* Slides: prevent scrollbars on JSAV canvas */
-.reveal .jsavcanvas,
 .reveal .ssAV .jsavcanvas,
 .reveal .ffAV .jsavcanvas {
   overflow: visible !important;
   max-width: none !important;
   max-height: none !important;
+}
+
+.reveal .divdgm .jsavcanvas {
+  overflow: visible !important;
+  max-width: none !important;
 }
 
 .divdgm text,
@@ -192,20 +196,33 @@ ul li::before {
   width: 100% !important;
   max-width: none !important;
   box-shadow: none !important;
+  overflow: visible !important;
 }
 
 .reveal pre[data-id] code,
 .reveal pre.literal-block code,
-.reveal .highlight pre {
+.reveal .highlight pre,
+.reveal pre code,
+.reveal pre code.guess {
   background: transparent !important;
   border: 0 !important;
   margin: 0 !important;
   padding: 12px !important;
-  white-space: pre-wrap !important;
-  word-wrap: break-word !important;
+  white-space: pre !important;
+  word-wrap: normal !important;
   overflow: visible !important;
   max-height: none !important;             
   display: block !important;
+}
+
+/* Force no scrollbars on all code blocks */
+.reveal pre {
+  overflow: visible !important;
+  max-width: 100% !important;
+}
+
+.reveal code {
+  overflow: visible !important;
 }
 
 .reveal .ssAV,

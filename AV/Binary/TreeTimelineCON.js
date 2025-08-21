@@ -13,7 +13,7 @@
 
 /* Description: Slideshow showing the concept of marking a timeline for the values stored in a BST. This will be contrasted with using a Trie decomposition. */
 
-(function ($) {
+$(document).ready(function() {
   var av = new JSAV("TreeTimelineCON");
   var t = av.ds.binarytree({nodegap: 25});
   var r = t.root("36");
@@ -169,17 +169,15 @@
   // cleanup
   av.recorded();
 
-}(jQuery));
+  function fillpair(node, split, color)
+  {
+    node.css({"fill": color});
+    node.css({"background-color": color});
+    split.css({"background-color": color});
+    split.css({"fill": color});
+  }
 
-function fillpair(node, split, color)
-{
-  node.css({"fill": color});
-  node.css({"background-color": color});
-  split.css({"background-color": color});
-  split.css({"fill": color});
-}
-
-function split (av, x, x1, y, label, height, top) {
+  function split (av, x, x1, y, label, height, top) {
 
   var label_ht = y - (height/2) - 20;
   if (top) { label_ht = y + (height/2) + 5};
@@ -201,10 +199,10 @@ function split (av, x, x1, y, label, height, top) {
   this.css = function (css) {
     this.rec.css(css);
   }
-}
+  }
 
-/* Timeline Constructor */
-function timeline(av, x, y, len, min, max, inc) {
+  /* Timeline Constructor */
+  function timeline(av, x, y, len, min, max, inc) {
 
   var buffer = 15; // 15 px buffer on each inside edge of arrow
 
@@ -251,4 +249,5 @@ function timeline(av, x, y, len, min, max, inc) {
     var pos = pxPerInc * val; // add 5 because must account for 5 px buffer
     return this.add_line(pos, label, height, top);
   };
-}
+  }
+});
