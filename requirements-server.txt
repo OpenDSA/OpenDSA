@@ -12,4 +12,4 @@ sphinxcontrib.jquery==4.1
 girth==0.8.0
 numpy==1.22.3
 pandas==1.4.2
-mysql-connector-python==8.0.29
+mysql-connector-python==9.1.0
