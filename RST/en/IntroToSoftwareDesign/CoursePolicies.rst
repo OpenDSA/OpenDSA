@@ -90,9 +90,9 @@ activities:
 * Sunday: Reading Activity due, to prepare for the week's lectures
 * Monday: Lab Assignment for the week posted, get started early
 * Monday or Tuesday: Lecture meeting
-* Wednesday: Program Assignment due, posted the previous week
-* Wednesday: New Program Assignment posted, due next week
+* Wednesday: Program Assignment due
 * Wednesday or Thursday: Lecture meeting
+* Thursday: New Program Assignment posted
 * During one lecture meeting: In-Class Quiz approximately every other week
 * Thursday/Friday/Monday/Tuesday/Wednesday: Lab assignment due in your scheduled lab meeting
 
@@ -100,7 +100,11 @@ activities:
 Reading Activities
 ------------------
 
-Each week begins with a Reading Activity due Sunday night. This activity
+Each week begins with a Reading Activity due Sunday night. Despite the due
+date, however, you should **complete the Reading Activity before your lab
+meeting** so that you have covered the background needed for your lab assignment.
+
+Each reading activity
 includes embedded exercises to check your understanding and to allow
 you to practice what you are learning. All exercises in a given activity
 must be successfully answered to receive the maximum grade for that
@@ -134,20 +138,21 @@ remember that you and your lab partner are working together, so you may
 not leave the lab period until both you and your partner are finished
 with all the work including the post-lab quiz, or the lab period ends.
 
-Note that lab meetings will not start until *Thursday* the first week. The
+Note that lab meetings will not start until **Thursday** the first week. The
 first lab sections to work on a given lab assignment will be on Thursdays,
 with the same lab assignment being completed by following lab sections on
 Fridays, Mondays, Tuesdays, and Wednesdays. This allows all students to go
-to both class lecture meetings during the week the lab is posted, before
-the lab is due. This also means lab meetings will continue through the last
-*Wednesday* of classes.
+to both class lecture meetings during the week the lab is posted (and also
+complete the week's Reading Activity), before
+their lab period. This also means lab meetings will continue through the last
+**Wednesday** of classes.
 
 You will not be able to submit your lab for a grade or any feedback until
 the start of your lab period. You can submit your lab as many times as you
-want within the deadline, and make corrections based on the feedback you
+want within the period and make corrections based on the feedback you
 received.  You will also have TAs present for your lab period to answer
-any questions you have or to help you resolve any errors you are running
-into. However, please be aware that your TAs expect you to be prepared and
+any questions you have or to help you resolve any errors you encounter.
+However, please be aware that your TAs expect you to be prepared and
 to do the work. If you have not read the instructions or figured out how to
 get started before coming to your lab period, do not expect them to hold
 your hand. They are a resource to help steer when you run into problems,
@@ -160,8 +165,8 @@ to turn it in late.
 You may also find that some students in the course who have prior programming
 experience are able to complete lab assignments on their own before arriving
 to their lab meeting, and from time to time, you may have one of them as
-your lab partner. However, be aware that it *is not our expectation that
-students can complete lab assignments ahead of time*. While some students
+your lab partner. However, be aware that it **is not our expectation that
+students can complete lab assignments ahead of time**. While some students
 with prior programming experience may be able to do this, for those of you
 who are new to programming, the expectation is that you will need to go to
 your lab meeting, work with your partner, and ask the TAs any questions you
@@ -181,15 +186,18 @@ Programming assignments will be given every other week, posted on Wednesdays
 and due Wednesday night two weeks later. Each programming assignment includes
 two stages, and the expectation is that you will complete and start turning
 in your first stage by one week after the assignment is posted, and finish
-the second stage by the due date a week after that. The purpose of these stages
+the second stage by the due date a week after that.
+The purpose of these stages
 is to encourage students to start their work early enough that they will be
 sure to understand the details of the assignment and have time to go to
 office hours to ask any questions they have, particularly when they run
 into unexpected difficulties. Stage 1 of the assignment will get you started
 on setting up your solution, ensuring all of the names and features are
-correctly arranged, and making sure you have a solid starting point. The
-next week, Stage 2 will be to fill in the remainder of that starting point
-to flesh it out into a full solution.
+correctly arranged, and making sure you have a solid starting point.  Turning
+in Stage 1 on time (a week before the due date) is worth 10% of the credit on
+the assignment. The next week, Stage 2 will be to fill in the remainder of
+that starting point to flesh it out into a full solution for the remaining
+90% of the grade.
 
 We recommend that students schedule in fixed periods of programming time to
 work on programming assignments each week. The best time may be between the
@@ -197,12 +205,16 @@ end of your lab meeting and the following Monday. Or, even better, plan one
 hour each night, every night, to work on your programming assignments.
 Complete as much of your
 assignment as you are able by each Monday so that you can ask any questions
-you run into on the Canvas discussion area for that assignment or during
+you run into on the online discussion forum or during
 TA office hours. It is not uncommon for students who start late and plan to
 do each program assignment the night it is due to run into unexpected
 situations, and then have no time to ask questions or get assistance before
 the program assignment is due, so plan ahead so you build in regular time
 periods to work on programming.
+
+Also, remember that once the due date and time passes, work is no longer
+accepted. Turning a program assignment in late will require waiting until
+after grades are returned and the assignment becomes available for a Free Pass.
 
 
 Programming Language and Environment
@@ -211,7 +223,7 @@ Programming Language and Environment
 This course teaches programming using Java. We will use the BlueJ IDE
 for code development in class, including all examples shown in lecture.
 See the "Install BlueJ" link on the course home page for installation
-instructions--please be sure to download and install directly from Canvas
+instructions--please be sure to **download and install directly from Canvas**
 instead of going to the ``bluej.org`` website. The version on Canvas includes
 the user libraries necessary for assignments in this course,
 and lab or programming assignments will not compile without these.
@@ -248,7 +260,7 @@ Free passes are used according to the following constraints:
   cycles. Assignments will by available for 3 weekly cycles after feedback
   has been released, and resubmission attempts for assignments can only be
   made during those 3 weeks (except for quizzes, which are available for
-  one resubmission in 1 weekly cycle). No resubmission is available after
+  one resubmission in 1 weekly cycle only). No resubmission is available after
   the last day of class meetings at the end of the semester.
 * Employing a free pass allows you to "re-open" a reading, lab, or
   programming assignment to make repeated submissions and receive
@@ -313,7 +325,7 @@ significant rise in violations recently. It is important for all students
 to understand how serious these issues are. You must complete the following
 Canvas module:
 
-* Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/CE7YK9>`_
+* Enroll in and earn the badge for the: `Academic Integrity Success Module <https://canvas.vt.edu/enroll/3TYLTY>`_
 
 Remember that there are some topics you can freely discuss with each
 other in order to learn. In this course, you may freely offer and receive
@@ -359,9 +371,115 @@ to change your major.
 
     "As a Hokie, I will conduct myself with honor and integrity at all times. I will not lie, cheat, or steal, nor will I accept the actions of those who do."
 
+Using Generative AI Tools
+-------------------------
+
+Generative AI tools like ChatGPT, Microsoft Copilot, Gemini, Claude, Github
+Copilot, and any many others, are extremely common and their use is becoming
+a regular occurrence for many. In this class, we want to make sure you
+understand when and how we expect you to use generative AI.
+
+For the purposes of this course, you should consider **generative AI tools**
+just as if they were "other people" outside the classroom, or even
+"fellow students". As stated in the syllabus, you may freely offer and
+receive verbal assistance with your classmates on many topics, including:
+how to use the programming language, what library classes or methods do,
+what errors mean, or how to interpret assignment instructions. These same rules
+apply to generative AI tools--you can ask questions or consult generative
+AI resources for any of these purposes, just like you can your peers.
+
+In fact, there are two very powerful things you can use generative AI for
+that you should really consider: studying and becoming a better student.
+On the studying side, there is a lot of benefit to studying in a group with
+other students, asking each other questions by referring to your notes or
+the reading assignments, and helping each other understand the material. Turning
+studying, particularly if you are reviewing before a quiz or a test, into a
+social activity is a powerful technique. But there is also a lot of potential
+to use generative AI prompts to create self-study quizzes for you (and your
+study group) to check your own knowledge on concepts we are teaching.
+Occasionally during this course, we will suggest possible prompts you can
+use in this way, whether it is about creating self-test questions you can
+use to study, or creating flash cards, or trying to identify possible
+misconceptions you might have, or whatever.
+
+Second, generative AI tools can big help in learning how to be a better student.
+Whether you want an AI-generated work schedule for how to regularly spend
+time on all your assignments, or AI coaching on better note taking skills, or
+AI advice on how to prioritize work across different classes so you know
+what to focus on while also knowing how you'll complete many assignments all
+by their deadlines without crushing yourself, there are many practical ways
+you can use generative AI. Again, we will occasionally look at some of these
+ways throughout the course.
+
+However, treating generative AI tools is the same way as other people
+with respect to the Honor Code means that, as with fellow students,
+you may not **use them to receive help** while working on your program code
+or any graded assignments. You may not **show your code to others** or
+**view code written by others**, including generative AI tools, when working
+on assignments to turn in for this course. In the same
+way, you cannot **copy code** from them (or another person) for any graded
+work.
+
+
+Over-Reliance on AI Undercuts Learning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Relying on generative AI to solve programming problems can significantly
+undermine your development of critical skills and negatively affect your
+performance in internship interviews--especially as a college student still
+building foundational knowledge.
+
+**Loss of Critical Thinking and Problem-Solving Skills**
+
+- Research shows that heavy dependence on AI tools for programming tasks leads to "cognitive offloading," where you let the AI do the thinking for you. This reduces your engagement in analytical tasks and weakens your ability to think critically and solve problems independently.
+- Beginners who frequently use AI for code generation and debugging struggle to develop the foundational skills needed to solve similar problems on their own. This means you might be able to complete assignments with AI help, but when faced with a new or slightly different challenge, you may not know where to start or how to solve the new problem.
+
+**Shallow Learning and Poor Skill Retention**
+
+- When you let AI do the work, you miss out on the iterative process of making mistakes, debugging, and learning from them. This process is essential for deep understanding and long-term retention of programming concepts.
+- Studies show that using AI for direct solutions, rather than as a tool for explanations or feedback, leads to weaker problem-solving skills and poorer performance on independent tasks.
+
+**Increased Frustration for Beginners**
+
+- For students new to programming, relying on AI can actually increase frustration. If you haven't built up confidence and understanding through hands-on practice, you may feel lost when the AI's output doesn't work as expected or when you're asked to explain your code.
+
+
+Negative Impact on Internship Interview Experiences
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In short, companies hiring interns (or full-time employees) already have
+access to all the AI resources they need. They don't need new employees
+who can only feed problems into AI systems. It is imperative that you
+build your foundational skills so that you can read and write code fluently
+before you can use AI tools effectively on coding tasks.
+
+**Inability to Solve Problems Without AI**:
+Many technical interviews, especially for internships, still require you to solve problems on a whiteboard or in a live coding environment--without access to AI tools. If you've relied on AI up to this point, you may freeze or struggle to solve even basic problems independently.
+
+**Difficulty Explaining Your Thought Process**:
+Interviewers often ask you to explain your reasoning, discuss trade-offs, and walk through your solution step by step. If you haven't practiced solving problems yourself, you'll find it hard to articulate your approach or debug under pressure.
+
+**Suspicion from Recruiters**:
+As AI-generated solutions become more common, recruiters are increasingly wary of candidates who submit "too perfect" code or can't explain their solutions in detail. Some companies are implementing AI-detection tools or shifting to interview formats that require real-time problem-solving and explanation.
+
+**Changing Interview Expectations**:
+While the industry is evolving--some companies are moving toward project-based assessments, live coding with explanation, or system design interviews--the expectation remains that you can reason through problems and communicate your approach, not just produce code.
+
+The bottom line is that generative AI is a powerful tool, but if you rely on
+it to do the hard work for you, you risk missing out on the critical thinking,
+problem-solving, and communication skills that employers value--and that you'll
+need to master in order to succeed in interviews and on the job. The impact goes
+far beyond this course, and that is the reason for the course policy regarding
+generative AI use.
+
 
 Self-Check: Confirm Your Understanding
 --------------------------------------
 
-.. avembed:: Exercises/IntroToSoftwareDesign/HonorCodeSumm.html ka
+To check your understanding of the Honor Code policy in this course,
+return to Canvas and take the Honor System quiz provided there. You can
+repeat the quiz as many times as needed, but need to achieve 100% before
+you can begin other work in this course.
+
+.. avembed:: Exercises/IntroToSoftwareDesign/HonorCodeSurvey.html ka
     :long_name: Understanding the Honor Code
