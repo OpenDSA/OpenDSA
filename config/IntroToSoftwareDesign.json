@@ -67,9 +67,9 @@
 
     "Course Policies":{
       "IntroToSoftwareDesign/CoursePolicies": {
-        "HonorCodeSumm": {
+        "HonorCodeSurvey": {
           "points": 100,
-          "threshold": 10
+          "threshold": 1
         }
       }
     },
