@@ -57,21 +57,13 @@ Historical Data
 ---------------
 .. revealjs-slide::
 
-* In prior years, we collected a lot of data about time spent on
-  project and how it was distributed
-
-* This graph shows a relationship between final score on a project,
-  and how much of the project was done about a week before the due
-  date.
+* Relationship between final score on a project (Y axis)
+  and % of total time spent by about a week before the due date (X axis).
 
 .. image:: /Images/ProgramTime.png
    :width: 400
    :align: center
    :alt: Programmer time data
-
-* X axis is % of total time spent by about one week before program
-  due date.
-* Y axis is score.
 
 
 Historical Data 2
@@ -114,7 +106,7 @@ What is the Mechanism?
   * Avoiding the “zombie” effect makes people more productive
     (and cuts time requirements)
 
-
+    
 How to fail at implementing your project:
 -----------------------------------------
 
@@ -135,7 +127,6 @@ How to succeed at implementing your project:
   * Add a functional unit
   * Debug the resulting program
 
-* Have a way to track details
 * Do mechanics early
 
   * Example: Submit to Web-CAT early to make sure the process works.
@@ -143,7 +134,7 @@ How to succeed at implementing your project:
     but you can't control how long it takes to fix outside things when
     something goes wrong.
 
-* Do structural design before implementation
+* Do a full structural design before starting implementation
 * Implement the tricky parts last (get the most bang for your time
   buck early)
 
@@ -155,7 +146,7 @@ How to Survive These Projects
    
 * Keys to success:
 
-* Keeping Track of all the details
+* Have a method for keeping track of all the details
 
   * You can't remember it all
 
