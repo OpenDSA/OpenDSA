@@ -26,8 +26,6 @@ Project Management
 
 * This semester, we will pay a lot of attention to your **process**
 
-  * We are working on ways to grade process
-
 
 Scheduling
 ----------
@@ -59,6 +57,13 @@ Historical Data
 ---------------
 .. revealjs-slide::
 
+* In prior years, we collected a lot of data about time spent on
+  project and how it was distributed
+
+* This graph shows a relationship between final score on a project,
+  and how much of the project was done about a week before the due
+  date.
+
 .. image:: /Images/ProgramTime.png
    :width: 400
    :align: center
@@ -82,12 +87,6 @@ Historical Data 2
   * Some did well who didn’t put in >50% time early, but most who did well
     put in the early time
 
-   
-Historical Data 3
------------------
-
-.. revealjs-slide::
-
 * Correlations:
 
   * Strong correlation between early time and high score
@@ -105,9 +104,11 @@ What is the Mechanism?
   * Do they behave that way because they are good, or does
     behaving that way make them good?
   * But, we have data from students who sometimes spread their
-    work over time (and generally doing better) vs. doing work at
-    the last minute (and generally doing worse)
-  * Why would this matter?
+    work over time (they generally did better) vs. doing work at
+    the last minute (they generally did worse)
+
+* Why would this matter?
+
   * Spreading projects over time allows the “sleep on it”
     heuristic to operate
   * Avoiding the “zombie” effect makes people more productive
@@ -128,8 +129,7 @@ How to succeed at implementing your project:
 
 .. revealjs-slide::
    
-* Write the smallest possible kernel
-* Debug that kernel thoroughly
+* Write the smallest possible kernel then debug that kernel thoroughly
 * Repeat until completion:
 
   * Add a functional unit
@@ -137,8 +137,15 @@ How to succeed at implementing your project:
 
 * Have a way to track details
 * Do mechanics early
+
+  * Example: Submit to Web-CAT early to make sure the process works.
+  * You more-or-less might control how fast you work on the project,
+    but you can't control how long it takes to fix outside things when
+    something goes wrong.
+
 * Do structural design before implementation
-* Implement the tricky parts last
+* Implement the tricky parts last (get the most bang for your time
+  buck early)
 
 
 How to Survive These Projects
@@ -161,8 +168,8 @@ How to Survive These Projects
   * Interleave writing and debugging
 
    
-Being Organized 1
------------------
+Being Organized
+---------------
 
 .. revealjs-slide::
 
@@ -175,12 +182,6 @@ Being Organized 1
 
   * Assignments and other things to do
 
-
-Being Organized 2
------------------
-
-.. revealjs-slide::
-
 * You can't turn this on/off
 
   * Either you get in the habit of developing in an organized way,
@@ -188,13 +189,6 @@ Being Organized 2
   * Part of it is developing the attitude of "sweating the details"
   * Part of it is having the coping mechanisms to handle the
     details (organizational tactics)
-
-   .. note::
-
-      The good news is that there is an alternative: there are plenty of
-      jobs where someone will tell you what to do every minute of the day.
-      The bad news is that they tend not to pay well. Many of these jobs
-      involve hamburgers.
 
 
 Memory Can't Handle It
@@ -254,7 +248,8 @@ Milestones
 
 .. revealjs-slide::
 
-* Big positive effect with milestones (S16) vs without (F14)
+* Big positive effect with milestones (introduced in Spring 2016)
+  vs. without (control group: Fall 2014).
 
 .. math::
 

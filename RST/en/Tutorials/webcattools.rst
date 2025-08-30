@@ -322,7 +322,7 @@ Installing formatting support
 
 You might want to make sure that your Eclipse style checker is as
 close as possible to the style guide that Web-CAT is enforcing.
-To do this, you can install three configuration files for tools
+To do this, you can install configuration files for tools
 that are used by Web-CAT.
 
 Eclipse Formatter
