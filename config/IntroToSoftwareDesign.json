@@ -156,27 +156,23 @@
           "points": 10
         },
         "Week3Quiz1Summ": {
-          "points": 4
+          "points": 5
         },
         "Week3Quiz2Summ": {
-          "points": 4
+          "points": 5
         },
         "Week3Quiz3Summ": {
-          "points": 4
+          "points": 5
         },
         "Week3Quiz4Summ": {
-          "points": 4
+          "points": 5
         },
         "Week3Quiz5Summ": {
-          "points": 4
+          "points": 5
         },
         "Week3ReadingQuizSumm": {
           "points": 15,
           "threshold": 12
-        },
-        "MUSICSurvey": {
-          "points": 5,
-          "threshold": 1
         }
       }
     },
@@ -483,20 +479,16 @@
     "Static, Main, and Exceptions":{
        "IntroToSoftwareDesign/StaticMainAndExceptions":{
           "Week14Quiz1Summ":{
-             "points": 8
-          },
-          "MUSICSurvey": {
-            "points": 5,
-            "threshold": 1
+             "points": 10
           },
           "Week14Quiz2Summ":{
-             "points": 9
+             "points": 10
           },
           "Week14Quiz3Summ":{
-             "points": 9
+             "points": 10
           },
           "Week14Quiz4Summ":{
-             "points": 9
+             "points": 10
           },
           "Syntax Practice: Try-Catch Blocks":{
              "points":30

@@ -27,6 +27,17 @@ Inheritance and Polymorphism: Subclasses and Methods
 
    <br />
 
+.. sidebar:: Learning Objectives
+
+    * **Define** key object-oriented concepts: inheritance, subclass, superclass, and polymorphism.
+    * **Explain** the concept of inheritance in object-oriented programming.
+    * **Write** a new Java subclass that correctly inherits from a given superclass.
+    * **Explain** how a subclass inherits methods and instance variables from its superclass.
+    * **Write** a subclass constructor that uses the ``super()`` keyword to call the superclass's constructor.
+    * **Analyze** the behavior of an overridden method in a subclass.
+    * **Describe** the concept of polymorphism and its relationship to inheritance.
+    * **Construct** a program that utilizes both inheritance and overridden methods to solve a given problem.
+
 
 The Jeroos of Santong Island
 ----------------------------
@@ -410,7 +421,7 @@ answer some or all of the questions.
 
 .. raw:: html
 
-    <a href="https://virginiatech.questionpro.com/t/AYIrDZ5G9X" target="_blank">CS 1114 Grading Policies Survey 1</a>
+    <a href="https://virginiatech.questionpro.com/t/AYIrDZ6vmW" target="_blank">CS 1114 Grading Policies Survey 1</a>
 
 Please answer below and your submission of the survey will be verified
 for credit.
@@ -1486,6 +1497,35 @@ in a row, and planting two adjacent rows with four flowers per row.
 Using a Jeroo Method
 """"""""""""""""""""
 
+.. sidebar:: What is This Error?
+
+    As you type, you will frequently encounter *syntax errors*, where
+    your code is not grammatically correct. These kinds of errors happen
+    all the time as we type, in part because most of us are not perfectly
+    accurate at typing. The previous chapter mentioned some common issues
+    you will encounter, including omitting the semicolon at the end of
+    a statement, not providing matching pairs of parentheses or brackets,
+    or misspelling or miscapitalizing names. BlueJ will usually highlight
+    the line where it discovers the problem and include an appropriate
+    message at the bottom of the editor window.
+    
+    But what do you do if BlueJ shows an error but you do not know what
+    the error message it provides means? Two common techniques are:
+    
+    + Copy the error message text and paste it into a google search.
+    + Use a generative AI tool (like Microsoft Copilot, ChatGPT, Gemini,
+      Claude, etc.).
+      
+    If you want a generative AI tool to explain an error message you
+    don't understand, try asking it something like this:
+    
+        ``I am a beginning programmer learning Java. Explain what this
+        error message means in beginner-friendly terms:`` *[insert error
+        message here]*. ``Provide a simple 1-line example illustrating
+        the error, alone with a version of the example where the error
+        is fixed.``
+
+
 A Jeroo method is used just like any other method.  In our island's
 ``myProgram()`` method, we just have to be sure to create
 a jeroo from our special subclass that contains the new methods we
@@ -1600,6 +1640,15 @@ But for now, this constructor is enough for our
 ``PlantingJeroo`` object by specifying its location and
 number of flowers.  That will in turn allow us to instantiate the
 Ali Jeroo in the previous example without problems.
+
+.. note::
+    Inheritance adds a new layer of complexity to constructors. A common
+    mistake is forgetting that a subclass constructor must call a superclass
+    constructor. If you don't explicitly call super(), the Java compiler tries
+    to insert a no-argument call for you, which will fail if the superclass
+    doesn't have a default constructor. Learning about pitfalls like this is
+    just as important as learning the correct syntax; it's a critical part of
+    becoming a good programmer.
 
 
 Preconditions and Postconditions
@@ -2127,7 +2176,17 @@ so the exact behavior depends on how the method is defined in the specific
 subclass used to create the receiver.
 
 **Polymorphism** means that different receivers can respond to the same method
-call in different ways.
+call in different ways. Polymorphism is not just a theoretical concept; it's a
+powerful tool for writing clean, flexible, and maintainable code. In essence,
+it allows a single interface to represent multiple underlying forms. For
+example, if you have a ``Vehicle`` superclass and subclasses like ``Car``, ``Bicycle``,
+and ``Truck``, a function that takes a ``Vehicle`` as an argument can work with any
+of these subclasses, without needing to know their specific type at compile
+time. This is incredibly useful for building extensible systems. You can add
+a new subclass, like ``Motorcycle``, and your existing code that works with ``Vehicle``
+objects will still function correctly without any changes. This concept of *single
+interface, multiple implementations* is the core benefit of polymorphism in
+practice.
 
 .. raw:: html
 
