@@ -121,42 +121,23 @@ How to succeed at implementing your project:
 
 .. revealjs-slide::
    
-* Write the smallest possible kernel then debug that kernel thoroughly
-* Repeat until completion:
+* Use Incremental Development.
+  Begin with a small initial core
 
-  * Add a functional unit
-  * Debug the resulting program
+  * Implement and TEST and COMMENT the core.
+  * Then gradually add functionality.
+ 
+* The ideal: On any given day, write only as much code as you have
+  time to debug  THAT DAY.
+* This works well with Scheduling and Organizing.
 
-* Do mechanics early
+   .. note::
 
-  * Example: Submit to Web-CAT early to make sure the process works.
-  * You more-or-less might control how fast you work on the project,
-    but you can't control how long it takes to fix outside things when
-    something goes wrong.
-
-* Do a full structural design before starting implementation
-* Implement the tricky parts last (get the most bang for your time
-  buck early)
-
-
-How to Survive These Projects
------------------------------
-
-.. revealjs-slide::
-   
-* Keys to success:
-
-* Have a method for keeping track of all the details
-
-  * You can't remember it all
-
-* Rational Planning (and keeping to the plan)
-
-  * Spread the work over time
-
-* Incremental Development
-
-  * Interleave writing and debugging
+      For our projects, you need implementation, comments, and tests.
+      If you write the comments (especially javadoc comments) and the
+      tests when you add a functional unit, its not that big a burden.
+      If you add them at the end, it feels really tedious (and you don't
+      get any of the benefits).
 
    
 Being Organized
@@ -180,58 +161,6 @@ Being Organized
   * Part of it is developing the attitude of "sweating the details"
   * Part of it is having the coping mechanisms to handle the
     details (organizational tactics)
-
-
-Memory Can't Handle It
-----------------------
-
-.. revealjs-slide::
-
-* Externalize
-
-  * TODO lists (What)
-  * Scheduling (The Plan for How)
-  * Issue trackers
-  * Documenting/Commenting
-  * Be able to update lists at any time,
-  * Repository: GitHub
-
-
-Spread Work Over Time
----------------------
-
-.. revealjs-slide::
-
-* For anything beyond a small software project, you must have a
-  plan/schedule
-* Explicitly develop a schedule:
-
-  * Break into pieces: List of subtasks
-  * Deadlines for subtasks
-  * Realistic, enough flexibility built in
-  * Continuously modify and refine the plan
-
-
-Incremental Development
------------------------
-
-.. revealjs-slide::
-
-* Break the project into a small initial core
-
-  * Implement and TEST and COMMENT the core
-  * Then gradually add functionality
-  * On any given day, write only as much code as you have time to debug
-    THAT DAY
-  * This works well with Scheduling and Organizing
-
-   .. note::
-
-      For our projects, you need implementation, comments, and tests.
-      If you write the comments (especially javadoc comments) and the
-      tests when you add a functional unit, its not that big a burden.
-      If you add them at the end, it feels really tedious (and you don't
-      get any of the benefits).
 
 
 Milestones
