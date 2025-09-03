@@ -1712,7 +1712,7 @@ order to add or remove objects corresponding to the desired behavior.
    Location<br/>
    Direction<br/>
    Flowers
-   </blockquote</td></tr>
+   </blockquote></td></tr>
    <tr><td>Are the contents of certain island cells important?</td>
    <td>Have the contents of any island cells changed?</td></tr>
    </tbody>
