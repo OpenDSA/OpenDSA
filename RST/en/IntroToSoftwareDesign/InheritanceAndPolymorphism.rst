@@ -27,7 +27,7 @@ Inheritance and Polymorphism: Subclasses and Methods
 
    <br />
 
-.. note:: **Learning Objectives**
+.. sidebar:: Learning Objectives
 
     * **Define** key object-oriented concepts: inheritance, subclass, superclass, and polymorphism.
     * **Explain** the concept of inheritance in object-oriented programming.
@@ -1497,7 +1497,7 @@ in a row, and planting two adjacent rows with four flowers per row.
 Using a Jeroo Method
 """"""""""""""""""""
 
-.. note:: **What is This Error?**
+.. sidebar:: What is This Error?
 
     As you type, you will frequently encounter *syntax errors*, where
     your code is not grammatically correct. These kinds of errors happen
