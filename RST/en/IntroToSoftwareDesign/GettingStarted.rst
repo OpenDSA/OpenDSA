@@ -29,7 +29,7 @@ your web browser, and looks like this:
 .. odsafig:: Images/LightBotLevel2.png
    :align: center
 
-.. sidebar:: Learning Objectives
+.. note:: **Learning Objectives**
 
     * **Define** basic LightBot actions and their corresponding icons.
     * **Apply** LightBot commands to solve simple LightBot levels (1-7).
