@@ -856,7 +856,7 @@ skills that can be applied to the next problem.
 
 
 Example: Pick and Plant
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
 
 This section contains an extended example that demonstrates the
 algorithm development process.  To complete the algorithm, we need to
