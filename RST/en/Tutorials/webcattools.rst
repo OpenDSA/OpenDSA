@@ -272,6 +272,13 @@ Installing student.jar
 
 If you are using Web-CAT, then you probably will want to use the VT
 local support for JUnit tests.
+For many courses, you will be given "starter code" in the form of a
+project that you can drop into Eclipse, and that already contains the
+student.jar file in the project library folder along with the proper
+classpath information.
+But in case you want to create your own Eclipse project and add the
+student.jar (or any other library in the form of a .jar file),
+here is the process.
 
 First, download the |studentjar| file.
 
