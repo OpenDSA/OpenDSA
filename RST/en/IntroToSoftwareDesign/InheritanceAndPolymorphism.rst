@@ -1695,7 +1695,10 @@ order to add or remove objects corresponding to the desired behavior.
 .. raw:: html
 
    <table class="table docutils align-default">
+   <thead>
    <tr><th>Precondition Questions</th><th>Postcondition Questions</th></tr>
+   </thead>
+   <tbody>
    <tr><td>Do any of the attributes of the receiving object need
    to have special values?
    <blockquote>
@@ -1709,9 +1712,10 @@ order to add or remove objects corresponding to the desired behavior.
    Location<br/>
    Direction<br/>
    Flowers
-   </blockquote</td></tr>
+   </blockquote></td></tr>
    <tr><td>Are the contents of certain island cells important?</td>
    <td>Have the contents of any island cells changed?</td></tr>
+   </tbody>
    </table>
 
 The preconditions and postconditions can be created rather

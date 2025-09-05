@@ -253,7 +253,7 @@ img.align-center, .figure.align-center, object.align-center {
 
 /* -- sidebars -------------------------------------------------------------- */
 
-aside.sidebar {
+div.sidebar, aside.sidebar {
     margin: 0 0 0.5em 1em;
     border: 1px solid #ddb;
     padding: 7px 7px 0 7px;
@@ -262,7 +262,7 @@ aside.sidebar {
     float: right;
 }
 
-aside.sidebar p.sidebar-title {
+p.sidebar-title {
     font-weight: bold;
 }
 
