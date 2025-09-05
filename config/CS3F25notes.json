@@ -74,6 +74,11 @@
       "CS3slides/AlgAnal2": {},
       "CS3slides/JUnit": {},
       "CS3slides/AlgAnal3": {}
+    },
+    "Week 3": {
+      "CS3slides/Lists": {},
+      "CS3slides/Coding": {},
+      "CS3slides/StackQueue": {}
     }
   }
 }
