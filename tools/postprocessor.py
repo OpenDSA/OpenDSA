@@ -427,7 +427,8 @@ def create_exercise_widget(module_data, mod_name):
     # Return None if no exercises with points found
     if not exercises:
         return None
-     
+    
+    exercise_names = [exercise for exercise, points in exercises] 
     total_points = sum(points for _, points in exercises)
     
     widget_id = f"exercise-widget-{mod_name.replace(' ', '-')}"
@@ -460,25 +461,64 @@ def create_exercise_widget(module_data, mod_name):
 </div>
 
 <script>
+console.log('Script is running!');
+
 function toggleExerciseWidget(widgetId) {{
     const content = document.getElementById(widgetId + '-content');
     const icon = document.getElementById(widgetId + '-icon');
     const arrow = document.getElementById(widgetId + '-arrow');
     
     if (content.style.display === 'none') {{
-        // Show content
         content.style.display = 'block';
         icon.innerHTML = '✕';  
         arrow.style.transform = 'rotate(180deg)';  
     }} else {{
-        // Hide content
         content.style.display = 'none';
         icon.innerHTML = '☰';  
         arrow.style.transform = 'rotate(0deg)';   
     }}
 }}
+
+const currentModuleExercises = {json.dumps(exercise_names)};
+
+fetch('/course_offerings/' + ODSA.TP.courseOfferingId + '/exercise_list')
+    .then(response => response.json())
+    .then(data => {{
+        const exerciseAttempts = data.odsa_exercise_attempts;
+        
+        // Get current module info from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const moduleTitle = decodeURIComponent(urlParams.get('custom_module_title') || '');
+        console.log('Current module title:', moduleTitle);
+
+        // Extract module number
+        const moduleNumber = moduleTitle.match(/^(\d+\.\d+)/)?.[1];
+        console.log('Module number to match:', moduleNumber);
+
+        if (moduleNumber) {{
+            // Filter exercises that start with this module number
+            const moduleExerciseSections = Object.keys(exerciseAttempts).filter(sectionId => {{
+                const exerciseTitle = exerciseAttempts[sectionId][0];
+                return exerciseTitle.startsWith(moduleNumber);
+            }});
+            
+            console.log('Exercises found for module ' + moduleNumber + ':', moduleExerciseSections.length);
+            
+            const completedInModule = moduleExerciseSections.filter(sectionId => {{
+                return exerciseAttempts[sectionId].includes('attempt_flag');
+            }}).length;
+            
+            console.log('Progress:', completedInModule + '/' + moduleExerciseSections.length);
+            
+            // Update widget display
+            const progressText = '(' + completedInModule + '/' + moduleExerciseSections.length + ' complete)';
+            const widgetHeader = document.querySelector('#{widget_id}-header span:nth-child(3)');
+            if (widgetHeader) {{
+                widgetHeader.textContent = progressText;
+            }}
+        }}
+    }});
 </script>'''
-    
     # Convert HTML string to BeautifulSoup object
     return BeautifulSoup(widget_html, 'html.parser')
   
