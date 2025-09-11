@@ -319,26 +319,6 @@ Check Your Understanding: The Static Keyword
    :long_name: The Static Keyword
 
 
-Your Opinions on Learning and Engagement
-----------------------------------------
-
-Please complete the survey at the link provided below. The survey results
-will be used to improve this course, and your input is critical because
-we want to create the best experience possible for students. Because it
-will take you about 10 to 15 minutes to complete, you will receive credit
-for completing it.
- 
-.. raw:: html
-
-    <a href="https://virginiatech.questionpro.com/t/AUHNlZ5DvK" target="_blank">CS 1114 Engagement Survey 2</a>
- 
-Please answer below and your participation in the survey will be verified
-for credit.
-
-.. avembed:: Exercises/IntroToSoftwareDesign/MUSICSurvey.html ka
-   :long_name: Survey Completed
-
-
 Errors
 ------
 
